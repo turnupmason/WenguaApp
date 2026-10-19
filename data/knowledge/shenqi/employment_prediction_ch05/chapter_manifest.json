@@ -1,0 +1,45 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "chapter_key": "shenqi/employment_prediction_ch05/v1",
+  "chapter_title": "第五章 工作就业预测",
+  "source_filename": "神奇之门_工作就业预测_精校完整版(1).txt",
+  "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+  "source_lines": 228,
+  "source_utf8_bytes": 25748,
+  "original_publicly_uploaded": false,
+  "source_sections": [
+    {
+      "name": "第一节 取用判断经验",
+      "lines": [
+        3,
+        17
+      ]
+    },
+    {
+      "name": "第二节 实例解析",
+      "lines": [
+        19,
+        228
+      ]
+    }
+  ],
+  "case_families": 5,
+  "source_nine_palace_charts": 5,
+  "source_raw_palace_cells": 45,
+  "author_or_student_numbered_steps": 20,
+  "ranked_election_candidates": 5,
+  "author_predicted_rank_count": 2,
+  "source_reported_rank_count": 5,
+  "author_book_success_default_count": 5,
+  "explicit_admitted_failed_cases": 0,
+  "externally_verified_real_world_case_count": 0,
+  "conditional_method_candidates": 53,
+  "method_index": "method_index.json",
+  "case_index": "case_index.json",
+  "source_audit": "source_audit.json",
+  "user_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "original_chart_source_status": "Original user transcription compact 3x3 image-like text preserved verbatim in PRIVATE SQLite; chart parser normalizes four field columns only with lossless original chapter source.",
+  "full_source_stored_only_private": true,
+  "prior_chapter_conflicts": "就业第一章标题为第五章，项目按已收到顺序累积处理9章，不是先前的第五章判断依据复写。"
+}
