@@ -85,3 +85,12 @@ python3 -m unittest discover -s tests -v
 
 ## 专业准入
 现在 `semantic_assertions.review_status` 全为 `draft`。符号和组合识别可作研究参考；正式断词必须以后根据问事类型和问测人关系识别用神，再对完整、可靠的九宫/星门神/旺衰/格局进行证据推导及人工审查。**Python CI通过不等于古籍断案通过，更不等于现实预测准确率。** 
+
+
+## 2026-10-19 增量：第四章刑冲害合及旺衰结构查询
+
+另增 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json` 与 `src/wengua/symbol_relations.py`：提供 **42条组合关系**（天干合5/冲4，地支冲6/害6/六合6/三会4/三合4/刑3/自刑4）、**10条天干长生/帝旺/死/墓/绝表**，以及**8门的季节旺相休囚死表**。这些是对第四章原文的进一步结构化索引，**不能当作411条之外新发现了42件断案**。
+
+查询示例：`related('stem_combine',['己','甲'])` 仍关联甲己合；`related('branch_punishment',['巳','申','寅'])` 保留作者相刑的方向循环，而随意倒序不满足；`stem_stage('乙','墓')` 给戌；`door_season('死门','四季月')` 在原书未明确状态时返回 `unspecified_in_original`。九星特殊旺相休囚废仍应通过 `semantic_lookup.nine_star_month_status` 读取，不与八门状态共用算法。新增 `tests/test_symbol_relations.py` 保护这些条件。
+
+以后逐章归一化的新五行、生克、刑冲、用神专题依然先检索并复用已有语义ID，但每一本书的文字及作者意见另留来源，不得静默合并冲突。
