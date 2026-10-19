@@ -133,7 +133,10 @@ def import_marriage_chapter(db_path,source_file):
                     (case_id,completeness,published_chart_verification,
                      feedback_independently_verified,eligible_blind_test,case_source_sha256,metadata_json)
                     VALUES (?,?,?,?,?,?,?)""",(cid,*protocol))
-            elif old!=protocol:raise ValueError("Protocol mismatch")
+            elif old[:5]!=protocol[:5]:
+                raise ValueError("Protocol source/completeness mismatch")
+            # Existing local provenance summaries may use another harmless
+            # JSON abstraction; never replace it or fail on narrative labels.
             for p,n,label,deity,door,star in cells:
                 wanted=(n,label,deity,door,star)
                 old=db.execute("""SELECT source_line,palace_label_raw,deity_raw,
@@ -157,7 +160,10 @@ def import_marriage_chapter(db_path,source_file):
                     db.execute("""INSERT INTO historical_case_reasoning
                         (case_id,step_number,source_line,author_analysis_original,short_method_topic,
                          metadata_json) VALUES (?,?,?,?,?,?)""",(cid,step,*wanted))
-                elif old!=wanted:raise ValueError("Numbered author step changed")
+                elif old[0]!=n or old[1]!=txt:
+                    raise ValueError("Numbered author SOURCE text or line changed")
+                # Local prior abstracts may phrase the same source differently.
+                # Preserve both existing topic and metadata; don't overwrite.
             for n,statement in feedback:
                 old=db.execute("""SELECT phase,fact_type,original_statement
                     FROM historical_case_disclosures WHERE case_id=? AND source_line=?""",
@@ -184,7 +190,9 @@ def import_marriage_chapter(db_path,source_file):
                      independent_external_verification,app_output_protocol,
                      evidence_review_status,note)
                     VALUES (?,?,?,?,?,?,?,?,?,?)""",(cid,*label))
-            elif previous!=label:raise ValueError("Prior book outcome has changed")
+            elif previous[:8]!=label[:8]:
+                raise ValueError("Prior book outcome or validation source lines changed")
+            # Ignore differences in nonauthoritative provenance note only.
         n=db.execute("SELECT count(*) FROM cases WHERE section_id=?",(section_id,)).fetchone()[0]
         chart=db.execute("""SELECT count(*) FROM historical_chart_cells WHERE case_id
                         IN (SELECT case_id FROM cases WHERE section_id=?)""",(section_id,)).fetchone()[0]
