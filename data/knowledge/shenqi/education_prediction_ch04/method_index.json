@@ -1,0 +1,454 @@
+{
+  "schema": "wengua_education_method_index_v1",
+  "source_sha256": "88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43",
+  "chapter_key": "shenqi/education_prediction_ch04/v1",
+  "topic": "education_exam",
+  "intro_line_ranges": [
+    [
+      6,
+      12
+    ],
+    [
+      14,
+      16
+    ],
+    [
+      18,
+      20
+    ]
+  ],
+  "methods": [
+    {
+      "concept_id": "education:method:self_examiner",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:日干",
+      "scenario": "candidate",
+      "source_line": 6,
+      "summary": "考生本人问事以日干代表本人",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:parent_proxy_candidate",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:时干",
+      "scenario": "candidate",
+      "source_line": 6,
+      "summary": "父母代问子女考试时以时干代表考生，不能换成本人日干",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:birth_year_candidate",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:年命",
+      "scenario": "candidate",
+      "source_line": 6,
+      "summary": "考生出生年年干可兼看；来源未提供生年时不凭空推",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:exam_institution",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天辅星",
+      "scenario": "exam_board",
+      "source_line": 8,
+      "summary": "天辅星作考试院，也在证据案例中代表考试中心",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:examiner_zhifu",
+      "kind": "domain_method",
+      "ref_concept_id": "deity:值符",
+      "scenario": "examiner",
+      "source_line": 8,
+      "summary": "值符为主考监考官",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:deputy_examiner_zhishi",
+      "kind": "domain_method",
+      "ref_concept_id": "door:值使",
+      "scenario": "examiner",
+      "source_line": 8,
+      "summary": "值使为副考/副监考",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:essay_ding",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:丁",
+      "scenario": "paper_work",
+      "source_line": 8,
+      "summary": "丁奇作文章，兼须看与考生、考试院/主考落宫关系",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:paper_jing",
+      "kind": "domain_method",
+      "ref_concept_id": "door:景",
+      "scenario": "paper_work",
+      "source_line": 8,
+      "summary": "景门作试卷、答卷；不与丁奇合并成单一盘位",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:school_year_stem",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:年干",
+      "scenario": "admission_school",
+      "source_line": 8,
+      "summary": "年干作录取学校；若同一干兼太岁另记语境",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:strong_candidate_supported",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:strength_support",
+      "scenario": "admission_case",
+      "source_line": 10,
+      "summary": "考生宫旺相、得吉格与考试院/值符/学校相生，古籍判断可能录取",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:strong_candidate_controls",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:cross_palace_control",
+      "scenario": "admission_case",
+      "source_line": 10,
+      "summary": "旺相考生克考试院/学校有时仍能考进较好学校，不可简化为克即失败",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:weak_candidate_supported",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:weak_but_supported",
+      "scenario": "admission_case",
+      "source_line": 10,
+      "summary": "考生休囚而考试院/值符/学校生之，作者允许考分一般而仍被录取",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:weak_candidate_blocked",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:void_tomb_bad_formation",
+      "scenario": "admission_case",
+      "source_line": 10,
+      "summary": "死绝墓空叠加凶门凶格与对方克制为不利候选；所有前提同时满足才评估",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:essay_paper_score",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:ding_jing_strength",
+      "scenario": "exam_score",
+      "source_line": 12,
+      "summary": "丁奇、景门的旺衰和与三方生克用于解释答卷优劣",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_chief",
+      "kind": "domain_method",
+      "ref_concept_id": "deity:值符",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "武试值符主考、天冲星监考；属于旧时制度",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_archer",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天冲星",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "天冲亦可能代表武士，角色随问事确定",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_bow",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:己",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "甲戌己传统象意弓，勿误作普遍文试",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_arrow",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:庚",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "甲申庚传统象意箭",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_target",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:辛",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "甲午辛传统靶心与箭宫冲克",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_horse",
+      "kind": "domain_method",
+      "ref_concept_id": "door:伤",
+      "scenario": "historical_martial_exam",
+      "source_line": 14,
+      "summary": "伤门为马、景门为策论，按原书特定武试",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_modern_adaptation",
+      "kind": "domain_method",
+      "ref_concept_id": "source:author_experiment_note",
+      "scenario": "sports_or_military_exam",
+      "source_line": 16,
+      "summary": "作者仅建议现代武术/军事科目试验参考，未提供准确性保证",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:study_teacher_role",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天芮星",
+      "scenario": "apprenticeship",
+      "source_line": 18,
+      "summary": "古法天芮为访道之人，与疾病章语境不同",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:study_master_role",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天辅星",
+      "scenario": "apprenticeship",
+      "source_line": 18,
+      "summary": "古法天辅为传道高人，生比克关系决定原书类象",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:martial_apprentice_teacher",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天冲星;deity:值符",
+      "scenario": "martial_apprenticeship",
+      "source_line": 20,
+      "summary": "天冲为学武者、值符为武师，反吟伏吟传统不利",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:holistic_counterevidence",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:multi_evidence",
+      "scenario": "admission_reasoning",
+      "source_line": 199,
+      "summary": "考试不佳及被录取并非总矛盾；原案例3以日干父亲/自费途径等反证",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:birth_year_disclosed_late",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:source_information_timing",
+      "scenario": "admission_reasoning",
+      "source_line": 79,
+      "summary": "例1补充年命发生在作者初判成绩之后，归同案验证信息",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:score_and_admission_separate",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:exam_score_vs_admission",
+      "scenario": "admission_reasoning",
+      "source_line": 146,
+      "summary": "区分考试分数、录取分数线、正式录取及自费入学不同结论",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:source_phd_year_scope",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:scope_calendar_year",
+      "scenario": "admission_reasoning",
+      "source_line": 260,
+      "summary": "原书例4回答1997年报考，1998年考上不应认作1997年原盘出错",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_appeal_legal_crossdomain",
+      "kind": "domain_method",
+      "ref_concept_id": "domain:litigation_evidence",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 327,
+      "summary": "执照考试引出申诉/诉讼、证据、费用、法院等跨专题组合",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_month_pattern",
+      "kind": "domain_method",
+      "ref_concept_id": "formation:月格",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 333,
+      "summary": "例5地盘戊上庚月格与玄武解释考务人员质疑",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_birth_year_support",
+      "kind": "domain_method",
+      "ref_concept_id": "stem:年命",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 335,
+      "summary": "代问女儿的年命己、太阴和朱雀入墓须依已知年命",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_evidence_liuhe",
+      "kind": "domain_method",
+      "ref_concept_id": "deity:六合",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 339,
+      "summary": "六合为申诉证据而非仅婚姻媒人；配天辅丁奇、伤门伏吟",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_result_relationship",
+      "kind": "domain_method",
+      "ref_concept_id": "star:天辅星;star:天芮星",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 343,
+      "summary": "考试中心天辅与考生/考试结果生克结合评估录取",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_timing_xunkong",
+      "kind": "domain_method",
+      "ref_concept_id": "principle:xunkong_fill",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 347,
+      "summary": "先验空亡/填实与年命、内外盘、伏吟和节气应期",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    },
+    {
+      "concept_id": "education:method:licensing_late_chart_narration",
+      "kind": "domain_method",
+      "ref_concept_id": "source:narrative_timeline",
+      "scenario": "licensing_exam_dispute",
+      "source_line": 282,
+      "summary": "例5作者把完整复盘放在反馈之后，不因此变成一个新局或多轮App回答",
+      "review_status": "source_draft",
+      "only_source_interpretation": true
+    }
+  ],
+  "method_count": 35,
+  "workflow": [
+    {
+      "step": 1,
+      "id": "identify_candidate",
+      "basis": [
+        6
+      ],
+      "note": "考试本人日干，父母代问时干，考生年命作为附加参考"
+    },
+    {
+      "step": 2,
+      "id": "source_cast_checked",
+      "basis": [
+        8,
+        10
+      ],
+      "note": "取真实九宫/星门神干，区分盘面事实和问事人关系"
+    },
+    {
+      "step": 3,
+      "id": "exam_roles",
+      "basis": [
+        8,
+        12
+      ],
+      "note": "天辅考试院/考试中心、值符主考、值使副考、丁文章、景试卷、年干学校"
+    },
+    {
+      "step": 4,
+      "id": "palace_strength_and_formation",
+      "basis": [
+        10
+      ],
+      "note": "考生和考试院/学校落宫旺相空墓、吉凶格与门星神正反"
+    },
+    {
+      "step": 5,
+      "id": "score_vs_admission",
+      "basis": [
+        10,
+        12,
+        199
+      ],
+      "note": "分别分析考分、学校录取及自费/专业选项，不把所有判断变成一个是/否"
+    },
+    {
+      "step": 6,
+      "id": "special_exam_path",
+      "basis": [
+        14,
+        20,
+        327
+      ],
+      "note": "武试拜师为来源分支；跨诉讼申诉需另外引用六合证据、法院等实际案例"
+    },
+    {
+      "step": 7,
+      "id": "time_conditions",
+      "basis": [
+        347,
+        349
+      ],
+      "note": "来源所用空亡冲实、伏吟、内外、节气及具体时点，用有据条件推应期"
+    },
+    {
+      "step": 8,
+      "id": "single_explanation_with_source_validation",
+      "basis": [
+        203,
+        260,
+        278
+      ],
+      "note": "一次给传统解盘与总结，书中后续反馈同案验证，不冒充独立准确率"
+    }
+  ],
+  "no_generalizations": [
+    "Historical martial examination and apprenticeship rules are not universal modern school-exam rules",
+    "Book anecdotes about exam score, college admission or legal outcome do not independently establish real-world predictive ability",
+    "Do not use user-specific admission decisions or legal outcomes as factual predictions from divination alone"
+  ],
+  "user_policy": "docs/CASE_OUTCOME_POLICY.md"
+}
