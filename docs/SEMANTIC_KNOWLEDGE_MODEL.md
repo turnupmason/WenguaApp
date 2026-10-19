@@ -128,3 +128,12 @@ python3 -m unittest discover -s tests -v
 **特别重要的倒叙**：第五个案例第264行是考生成绩被质疑的初问背景；第268行作者原断、270–280行后来反馈和复述；原书第284行才展示盘，325–349行才呈现五组分析。私有本地 `cases.known_before` 仅含第264行，`historical_chart_cells`仍为312–320行九宫，`historical_case_reasoning`包含全部五段多段推理，`historical_case_disclosures`单独收后来反馈。**一个事件/盘/一次解盘，允许原书先叙结局后解释证据，但不能把结局倒灌入首次预测。** 研究集与回归测试必须保护此界限。新增 `src/wengua/compile_shenqi_education.py`、`tests/test_education_case_import.py`。
 
 本回合私有八章SQLite累计`518`条`semantic_assertions`（七章483＋本章35），原七章章节内容无损；第六章112及起局章32另有独立导入事项。原书的大学及行医执照录取经历仅用于学习作者方法，不能推定术数具现实预测效力。
+
+
+## 2026-10-19 · 第九章工作就业跨领域与多宫候选方法
+
+**当前《神奇之门》9章、28个历史事件家族、252个原书宫位、112段作者编号分析；原书SHA256 `b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05`。** 新公开 `data/knowledge/shenqi/employment_prediction_ch05/method_index.json` 包含53个`employment:method:*`有来源行号的研究候选，跨章引用`door:开`/ `door:杜`/ `role:日干`/ `role:时干`/ `deity:值符`/ `formation:空亡` 等，不创造不能回溯原书的独立“万能规则”。针对毕业分配、母代儿子问工作、部委选择、军职降免、本人调职、退役和五人同局排名，必须根据真实问测人与当事人及来源决定当前用神。
+
+新表 `historical_event_candidates` 储存竞争候选人、所分配宫位、**学生事前预测的前两名**和后来书内报告的**完整5名排序**，所以五个人仍只在一个`event_family_id`之下。`historical_case_source_segments` 储存第226–228行张志春书内简化复盘和第二例“11月25日复看11月4日旧盘”、第四例“共有五次但只给首次原盘”等来源分层。**当出现多个竞争者时，不需要按同姓或亲属分别重新起盘；该案例用五人各自固定居住方位落宫对比时令旺相休囚。**
+
+与古籍其它领域不同：开门在就业作单位或官星，在他处可能另有用途；六合在婚姻作媒人、求学考试第五例作证据、工作竞选第五例只是格局参与者。不得单个象义脱离专题场景决定成败。新私有九章库累计571条semantic_assertions：既有518＋本章53（目前私有metadata存概念ID、来源原文与GitHub公开索引链接，完整关联摘要在公开`method_index.json`），旧第六章112、起局章32未全部物化。古籍人物善恶标签及竞争结果不是独立可靠的现实雇佣/选举评价。
