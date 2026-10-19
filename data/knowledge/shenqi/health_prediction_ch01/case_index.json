@@ -97,7 +97,8 @@
             "phase": "after_birth_year_question",
             "type": "new_birth_year_information"
           }
-        ]
+        ],
+        "progressive_context_guard": "Line 28 supplies birth year only after the earlier surgery/year prediction; cannot be fed to the initial blind prompt."
       },
       "author_predictions": {
         "lines": [
@@ -111,8 +112,7 @@
       },
       "feedback_lines": [
         24,
-        26,
-        28
+        26
       ],
       "feedback_scope": "past_surgery_confirmation_only_no_followup_for_future_lifespan",
       "source_book": "shenqi",
