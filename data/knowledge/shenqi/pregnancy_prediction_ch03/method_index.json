@@ -1,0 +1,272 @@
+{
+  "schema": "wengua_pregnancy_source_method_v1",
+  "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+  "section_key": "pregnancy_prediction_ch03",
+  "method_count": 24,
+  "source_general_rules": [
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+  ],
+  "methods": [
+    {
+      "concept_id": "pregnancy:method:mother_kun_room",
+      "source_line": 12,
+      "ref_concept_id": "trigram:坤",
+      "scenario": "delivery",
+      "source_summary": "坤宫为产室；坤宫的星、门、干要区分天盘与地盘",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:mother_tianrui",
+      "source_line": 12,
+      "ref_concept_id": "star:天芮星",
+      "scenario": "delivery",
+      "source_summary": "原书用地盘天芮为产母；另有日干/值符代表产母的替代方案",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_kun_star",
+      "source_line": 10,
+      "ref_concept_id": "star:天盘星临坤",
+      "scenario": "sex_symbol",
+      "source_summary": "坤宫天盘所临星作胎儿的传统候选",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_kun_door",
+      "source_line": 10,
+      "ref_concept_id": "door:坤宫之门",
+      "scenario": "sex_symbol",
+      "source_summary": "坤宫之门的阴阳作胎儿的备选象意；须同其他条件比较",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_hour_stem",
+      "source_line": 10,
+      "ref_concept_id": "stem:时干",
+      "scenario": "subject_role",
+      "source_summary": "日干母亲、时干子女，按其阴阳/星门宫组合",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:alternate_value_deity",
+      "source_line": 10,
+      "ref_concept_id": "deity:值符;deity:六合",
+      "scenario": "subject_role",
+      "source_summary": "值符代表产母、六合或值使作胎儿是另一路方法，不得同时无条件视作同一层",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_tianqin_twins",
+      "source_line": 10,
+      "ref_concept_id": "star:天禽星",
+      "scenario": "twins_symbol",
+      "source_summary": "天禽在坤为双生古法说法；须提示该法未经科学验证",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:star_yinyang_gender",
+      "source_line": 10,
+      "ref_concept_id": "star:九星阴阳",
+      "scenario": "sex_symbol",
+      "source_summary": "星阳/阴象徵男/女；书中多例显示与门判断冲突",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:door_yinyang_gender",
+      "source_line": 10,
+      "ref_concept_id": "door:八门阴阳",
+      "scenario": "sex_symbol",
+      "source_summary": "门阳/阴象徵男/女，与星、值使不一致时标不确定",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:mother_star_controls_fetus",
+      "source_line": 12,
+      "ref_concept_id": "element:controls",
+      "scenario": "delivery_safety",
+      "source_summary": "天芮克胎星等五行关系作传统产速/风险象，须考虑旺相与吉格反证",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_generates_mother",
+      "source_line": 12,
+      "ref_concept_id": "element:generates",
+      "scenario": "delivery_timing",
+      "source_summary": "胎星生天芮，原书称子恋母腹、产迟",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fetus_controls_mother",
+      "source_line": 12,
+      "ref_concept_id": "element:controls",
+      "scenario": "delivery_safety",
+      "source_summary": "胎星克天芮为传统不利象意；不得推出真实医疗结论",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:door_palace_interactions",
+      "source_line": 14,
+      "ref_concept_id": "door:宫位生克",
+      "scenario": "delivery_safety",
+      "source_summary": "坤宫克门、门克坤等按原文区分；吉格旺相反证",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:fuyin_delay",
+      "source_line": 14,
+      "ref_concept_id": "formation:伏吟",
+      "scenario": "delivery_timing",
+      "source_summary": "伏吟静/迟的传统类象，其他证据可能抵消",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:white_tiger_speed",
+      "source_line": 14,
+      "ref_concept_id": "deity:白虎",
+      "scenario": "delivery_timing",
+      "source_summary": "白虎血光类象被本书用于产速判断，不能视作医学规律",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:three_wonders",
+      "source_line": 14,
+      "ref_concept_id": "stem:乙丙丁",
+      "scenario": "delivery_safety",
+      "source_summary": "临三奇的作者吉利候选，须看整体情况",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:opposite_palace_stem",
+      "source_line": 16,
+      "ref_concept_id": "trigram:坤;trigram:艮",
+      "scenario": "due_date",
+      "source_summary": "坤对冲艮宫天盘所临干推应期，不直接给现实产期",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:geng_above_below",
+      "source_line": 16,
+      "ref_concept_id": "stem:庚",
+      "scenario": "due_date",
+      "source_summary": "阴日看庚上干、阳日看庚下干的作者替代应期",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:doctor_yi_tianxin",
+      "source_line": 155,
+      "ref_concept_id": "stem:乙;star:天心星",
+      "scenario": "treatment",
+      "source_summary": "同健康章医生医药候选，按宫位验证，不替代临床医师",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:contradictory_gender",
+      "source_line": 108,
+      "ref_concept_id": "principle:evidence_conflict",
+      "scenario": "source_uncertainty",
+      "source_summary": "第2例作者明确说拿不准男女；不要把模糊说法硬改成明确正确预测",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:medical_due_date_influence",
+      "source_line": 110,
+      "ref_concept_id": "source:external_due_date",
+      "scenario": "source_prior_information",
+      "source_summary": "第2例已知医院预产期后才从另一种应期法得出一致日期，不能伪装为独立无提示判断",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:revised_student_account",
+      "source_line": 206,
+      "ref_concept_id": "source:author_editor_revision",
+      "scenario": "provenance",
+      "source_summary": "例4、5的学员原判断经作者修改，最终文字为加工稿不是现场独立逐句断语",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:not_every_five_no_meeting_bad",
+      "source_line": 253,
+      "ref_concept_id": "principle:global_counterevidence",
+      "scenario": "cross_chapter_exception",
+      "source_summary": "第5例作者明确五不遇时并不必凶，需用神全盘；跨第六章",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    },
+    {
+      "concept_id": "pregnancy:method:external_b_ultrasound_preknown",
+      "source_line": 257,
+      "ref_concept_id": "source:prenatal_imaging",
+      "scenario": "source_prior_information",
+      "source_summary": "第6例有B超疑虑在先，术数建议复查属于古籍陈述，真正诊疗必须由医疗专业完成",
+      "review_status": "draft_source_only",
+      "allowed_in_clinical_decision": false
+    }
+  ],
+  "one_shot_explanation_flow": [
+    {
+      "step": 1,
+      "name": "question_and_relation",
+      "focus": "父母代问/夫代问/本人; 所问怀孕时机、分娩还是医学问题"
+    },
+    {
+      "step": 2,
+      "name": "source_cast",
+      "focus": "核对实际时辰及完整九宫原始字面，不虚构缺宫"
+    },
+    {
+      "step": 3,
+      "name": "selected_yongshen",
+      "focus": "坤宫/天芮/胎星/时干/值符六合方法标清方法派别"
+    },
+    {
+      "step": 4,
+      "name": "multi_symbol_evidence",
+      "focus": "星门阴阳、生克墓空、伏吟、日时、医药征象正反证据"
+    },
+    {
+      "step": 5,
+      "name": "source_uncertainty",
+      "focus": "冲突的性别/预产期、学员改稿、事前已知B超必须明示"
+    },
+    {
+      "step": 6,
+      "name": "timing_with_conditions",
+      "focus": "坤艮对冲干、庚上下、合冲空墓，条件不足则未知"
+    },
+    {
+      "step": 7,
+      "name": "book_style_one_shot",
+      "focus": "传统来源解释一次输出及最终总结，反馈只存书内验证"
+    }
+  ],
+  "source_case_feedback_in_scope": true,
+  "success_label_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "medical_boundary": "No prenatal diagnostic, sex determination, pregnancy termination or obstetric safety guarantees; treat as historical narrative only."
+}
