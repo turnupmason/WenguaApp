@@ -68,3 +68,8 @@
 
 ## 新对话工作入口
 只要当前用户发来的下一章可见，按以上流程立即处理；无需请求旧对话的记忆。但 GitHub 公开的抽象成果无法恢复未存的全文，逐字复核时仍需要对应的书稿原文附件或可访问的本地来源。
+
+
+## 2026-10-19 新增：原书倒叙预测与结果的硬性防泄漏规则
+
+求学考试第五例展示原书**先讲预测和后来结果，再补写完整九宫和全部解释**的特殊组织方式。因此今后案例即便文字顺序是“结果→盘面→复盘”，也必须区分：`initial_known_facts`、`original_cast`、`author_reasoning`、`author_judgment`、`same_event_validation_information`。这只是**同一整案的资料层次**，不是要App进行多轮对话。任何初始模拟只允许事件当时已经知道的资料以及实际原盘，绝不能从原文整段截取未来反馈当首断问题。作者书内没有明确断错一律仍按`author_book_success_default`记录，研究真实性独立标注。见 `docs/EDUCATION_CASE_REASONING_PROTOCOL.md` 第五例。
