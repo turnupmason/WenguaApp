@@ -94,3 +94,15 @@ python3 -m unittest discover -s tests -v
 查询示例：`related('stem_combine',['己','甲'])` 仍关联甲己合；`related('branch_punishment',['巳','申','寅'])` 保留作者相刑的方向循环，而随意倒序不满足；`stem_stage('乙','墓')` 给戌；`door_season('死门','四季月')` 在原书未明确状态时返回 `unspecified_in_original`。九星特殊旺相休囚废仍应通过 `semantic_lookup.nine_star_month_status` 读取，不与八门状态共用算法。新增 `tests/test_symbol_relations.py` 保护这些条件。
 
 以后逐章归一化的新五行、生克、刑冲、用神专题依然先检索并复用已有语义ID，但每一本书的文字及作者意见另留来源，不得静默合并冲突。
+
+
+## 2026-10-19 第五个来源章：健康预测六案与旧知识完整连接
+
+用户本次传来 `神奇之门_人体疾病预测_精校完整版(1).txt`，源SHA256 `3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a`（298行、34625字节）。这是专题预测部分的**第一章人体疾病预测**，与此前排盘教学 `shijia_qiju` 不同，独立 `chapter_key=shenqi/health_prediction_ch01/v1`。
+
+- **健康专题主档** `data/knowledge/shenqi/health_prediction_ch01/method_index.json`：八宫的体表/体内不同类象8组，天芮病星、天心/乙奇医药、问测人关系等用神14条，读盘→取用→宫位→格局→时令→反证→条件应期→解释的8阶段。
+- **源中完整案例** `case_index.json`：6个事件家族/每个原书九宫完整文字盘共54个宫位/作者29段编号分析。原始“蛇”“阴”“庚伤乙”等均存为**原始字符串**，不是工具推测的天盘、地盘、门、星字段。源中有4条过程中新透露的信息；绝对不应在前期模拟断案时预输入。作者结果只作为后来反馈，不冒充独立测试。
+- **本地SQLite**：`schema/migrations/004_health_case_evidence.sql`，原始全文私有存`sections`，全案在原有`cases`，29个分析步骤在`historical_case_reasoning`，原字54宫在`historical_chart_cells`，新增披露在`historical_case_disclosures`，场景源特征存`semantic_assertions`。原图独立对照与算法验盘尚未实现。
+- **调用**：`src/wengua/health_research.py` 的`health_method_plan` 查询本专题的条件化用神候选，`retrieve_historical_case(...,view='initial_question')` 不给作者分析和反馈，`source_study` 才解锁整案步骤，用于学作者证据推理、用语。未见盲测需事件家族完全未用于示范学习；当前6案均未正式分割。
+- **待审跨章条件**：第五章十干克应及吉凶格＋第六章五不遇时与内外、主客、旺衰，只有确认同一宫、具体求测人关系和真实时令才可使用。疾病章第四例`庚申日丙戌时`与第六章举例`庚日丙子时`有五不遇时定义适用范围疑点，另存`source_audit.json`不修改原书。
+- **医学边界**：原作者古代象数理对癌症、死亡时间、治疗及异地求医的说法均是历史文本，不具独立临床准确性。新App不得直接给用户现实医疗诊断、寿命预言或干预正规治疗。
