@@ -16,6 +16,7 @@ def connect(path):
 def initialize(path):
     with connect(path) as con:
         con.executescript((ROOT/"schema/schema.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/001_chapter_knowledge.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
