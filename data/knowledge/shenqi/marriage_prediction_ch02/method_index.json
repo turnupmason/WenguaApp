@@ -1,0 +1,256 @@
+{
+  "schema": "wengua_marriage_domain_method_v1",
+  "chapter_id": "marriage_prediction_ch02",
+  "source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+  "source_lines": 367,
+  "book": "shenqi",
+  "domain_id": "marriage",
+  "definition_source_lines": [
+    3,
+    13
+  ],
+  "author_method_candidates": [
+    {
+      "concept_id": "marriage:method:female_primary",
+      "ref_concept_id": "stem:乙",
+      "scenario": "female_partner",
+      "source_line": 5,
+      "conditional_interpretation": "天盘乙奇为女方首选，但问事关系与年命可能改取用",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:male_primary",
+      "ref_concept_id": "stem:庚",
+      "scenario": "male_partner",
+      "source_line": 5,
+      "conditional_interpretation": "天盘庚为男方首选，保留上下盘层别",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:match_palace_generation",
+      "ref_concept_id": "relationship:palace_element",
+      "scenario": "compatibility",
+      "source_line": 5,
+      "conditional_interpretation": "乙庚落宫相生、比和并配吉门吉格为传统促成条件",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:match_palace_control",
+      "ref_concept_id": "relationship:palace_element",
+      "scenario": "conflict",
+      "source_line": 5,
+      "conditional_interpretation": "两人落宫刑冲克及凶门格，候选阻碍；反证仍需综合",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:matchmaker_six_harmony",
+      "ref_concept_id": "deity:六合",
+      "scenario": "matchmaker",
+      "source_line": 5,
+      "conditional_interpretation": "六合为媒人及婚姻象; 六合落宫生乙/庚不同方向有偏向",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:profiles_both_partners",
+      "ref_concept_id": "stem:乙+stem:庚",
+      "scenario": "appearance_career",
+      "source_line": 7,
+      "conditional_interpretation": "门星神格组合解释双方形貌职业仅为作者传统类象",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:spouse_combine_heavenly_stems",
+      "ref_concept_id": "relation:stem_combine",
+      "scenario": "married_spouse",
+      "source_line": 9,
+      "conditional_interpretation": "已婚以相合之干辅助取配偶; 干合不是单独婚姻证据",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:birth_year_both_partners",
+      "ref_concept_id": "role:birth_year",
+      "scenario": "marriage_or_divorce_major_event",
+      "source_line": 11,
+      "conditional_interpretation": "双方年命在重大婚姻事件中兼看，优先真实出生年",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:third_party_woman",
+      "ref_concept_id": "stem:丁",
+      "scenario": "affair_third_party_woman",
+      "source_line": 13,
+      "conditional_interpretation": "丁奇在本书用于第三者女性，不等同无条件事实",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:third_party_man",
+      "ref_concept_id": "stem:丙",
+      "scenario": "affair_third_party_man",
+      "source_line": 13,
+      "conditional_interpretation": "丙奇在本书用于第三者男性，不等同无条件事实",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:mother_asks_son",
+      "ref_concept_id": "stem:时干",
+      "scenario": "mother_asks_son",
+      "source_line": 54,
+      "conditional_interpretation": "案例1成年儿子的问事结合庚、伤门、六合、伏吟，不把母亲直接当婚姻主角",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:mother_asks_daughter",
+      "ref_concept_id": "role:birth_year",
+      "scenario": "mother_asks_daughter",
+      "source_line": 107,
+      "conditional_interpretation": "案例2发现乙庚关系不符合实际问事背景时以年命、时干及六合主证据综合",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:secret_divorce",
+      "ref_concept_id": "door:死+deity:六合",
+      "scenario": "divorce",
+      "source_line": 178,
+      "conditional_interpretation": "六合及死门伏吟、乙庚对冲和年令等多证据判断",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:divorce_money_quantities",
+      "ref_concept_id": "stem:戊",
+      "scenario": "divorce_property_division",
+      "source_line": 184,
+      "conditional_interpretation": "案例3干盘主客宫数推金额；仅为该原书案例，不可普适化",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:spouse_affair",
+      "ref_concept_id": "stem:丁+stem:丙",
+      "scenario": "affair",
+      "source_line": 229,
+      "conditional_interpretation": "配合乙庚、日时干、六合、年命、暗宫变化；不据此凭空断言现实婚外情",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:third_party_marry",
+      "ref_concept_id": "stem:丁+stem:庚",
+      "scenario": "third_party_query",
+      "source_line": 293,
+      "conditional_interpretation": "女第三者与原配乙、已婚男性庚、年命和宫位多重分析",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:fuyin_longterm",
+      "ref_concept_id": "formation:伏吟",
+      "scenario": "marriage_stability",
+      "source_line": 363,
+      "conditional_interpretation": "作者用伏吟不动及宫位关系作为稳定辅助，不构成必然事实",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    },
+    {
+      "concept_id": "marriage:method:timing_marriage_divorce",
+      "ref_concept_id": "timing:year_month_stem_branch",
+      "scenario": "marriage_divorce_timing",
+      "source_line": 130,
+      "conditional_interpretation": "相合、月份旺衰、值使等原书条件互证应期，资料不足不填日期",
+      "review_status": "source_method_draft",
+      "one_shot_use": true
+    }
+  ],
+  "author_explanation_flow": [
+    {
+      "id": "identify_inquiry_and_roles",
+      "source_lines": [
+        5,
+        13
+      ],
+      "description": "确定恋爱、已婚、离婚、第三者及代问关系，乙庚/出生年命/日时干分主辅用神"
+    },
+    {
+      "id": "read_party_palaces",
+      "source_lines": [
+        5,
+        9
+      ],
+      "description": "男女所落宫相生相克刑冲、空亡，确认实际个人指代"
+    },
+    {
+      "id": "matchmaker_and_context",
+      "source_lines": [
+        5,
+        7
+      ],
+      "description": "六合落宫、媒人偏向、门星神格和相貌职业类象"
+    },
+    {
+      "id": "counterevidence",
+      "source_lines": [
+        107,
+        125
+      ],
+      "description": "乙庚一般断法若与双方年命/情势不一致，原作者变更侧重点"
+    },
+    {
+      "id": "third_party_branch",
+      "source_lines": [
+        13,
+        229,
+        293
+      ],
+      "description": "已婚或第三者问事须在有证据时引入丁/丙第三者符号"
+    },
+    {
+      "id": "temporal_conditions",
+      "source_lines": [
+        130,
+        241,
+        305
+      ],
+      "description": "用年份合干、宫位旺相、时干/内外等择应期候选"
+    },
+    {
+      "id": "one_shot_explanation",
+      "source_lines": [
+        54,
+        68,
+        125,
+        129,
+        223,
+        245,
+        287,
+        309,
+        361,
+        367
+      ],
+      "description": "从盘面到作者证据链再到整体结论，返回一次性完整断词，补充反馈只留验证层"
+    }
+  ],
+  "linked_chapters": [
+    "shijia_qiju",
+    "shijia_symbols_ch04",
+    "shijia_judgments_ch05",
+    "application_overview_ch06"
+  ],
+  "source_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "notes": [
+    "唐突的私人关系事实（出轨等）不构成事实认定；只有原书作者叙述的案例研究",
+    "第3、5例文字盘与作者分析局部不一致，源中原字各自保留",
+    "第6例1997年早先咨询无九宫，1998年才有一张；源文件截至第367行，无可外推的后续"
+  ]
+}
