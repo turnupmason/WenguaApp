@@ -10,7 +10,7 @@
 - **公开仓库只保存索引/源代码/测试/审校元数据，不存两书整章原文或私密问事**。原书需要用户自己备份 `local/books/`，或者保留已生成的私有 SQLite。
 - 旧 `QimenLLM` 训练项目不动，不自动沿用旧十书抽取、废弃规则或旧模型输出。
 
-## 已处理的《神奇之门》实际章节：7章
+## 已处理的《神奇之门》实际章节：8章
 
 | 章节 | 真实来源 | 主要已入库内容 | 专业审核状态 |
 | --- | --- | --- | --- |
@@ -183,3 +183,22 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 **本轮本地实际七章数据库下载**：`WenguaApp_V1_神奇之门_七章_健康婚姻孕产十八例_私有研究库.sqlite3`；SQLite验证 `sections=7, cases=18, historical_chart_cells=162, historical_case_reasoning=75, historical_case_disclosures=38, historical_case_book_verdicts=18, semantic_assertions=483`，`integrity_check=ok`、外键无错误。原六章的全部原文没有被覆盖。第六章以前公开的112条、起局章32条可复用索引仍有独立本地导入项，不应和已物化的483条混淆。
 
 后续依旧只逐章处理专题取用、案例和作者证据；**UI及旧QimenLLM训练不动**；每一章更新 `AGENTS.md`、`PROJECT_STATUS.md`、`CHAPTER_LEDGER.md`，实际 fetch 核对远程提交/全部文件和最新GitHub Actions双Python测试。
+
+
+## 2026-10-19 最新实际状态：第八章《求学考试预测》五案已入库
+
+**本节为最新准确进度，之前3/4/5/6/7章各小节属于历史过程。** WenguaApp 《神奇之门》累计已处理**8章**：时家起局、象数理、判断依据、应用概述、人体疾病、恋爱婚姻、怀孕分娩、**求学考试预测**；《开悟之门》0章。
+
+**累计23个古籍完整起盘事件家族、23张原始九宫转写盘、207宫位、92组作者或学员编号分析；全部23案按用户要求为作者书内默认判对**，结果并未经独立外部验算或现实准确率验证。UI依旧暂停，旧QimenLLM与27B训练不动。
+
+本次用户上传的 `神奇之门_求学考试预测_精校完整版(1).txt` 真实SHA256 `88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43`，**30539字节、349行**；本章第一节6–20行明确日干本人、父母代问时干、考生年命；天辅考试院、值符主考、值使副考、丁文章、景试卷、年干录取学校，并讨论旺衰生克和正规/自费录取的区分。历史旧武试和拜师学艺独立标注为专门规则。公开 `education_prediction_ch04/method_index.json` **35条**可调用来源候选及8阶段一次断词流程，全部`source_draft`。
+
+五例共有**45宫原字、17组作者原书编号推理**；第5例是一件执照考试与申诉录取的复合问题，原书先写断语及10月结果，再在284行展示8月23日局，在325–349行分五组解释，应完整保存五组的多段内容而非只抽题目。**其初始问事被明确限制为原书第264行，后来的10月9日结果不能泄漏给首次预测输入。** 第4例1997未考取与1998再考录取属于不同考试年份的原书反馈，不是原作者对1997之断认错。五例全部采用用户`CASE_OUTCOME_POLICY.md`所定一事一盘一次解盘、默认书内判对，后补信息当同案验证。
+
+新增公有文件：`data/knowledge/shenqi/education_prediction_ch04/{chapter_manifest,case_index,method_index,source_audit}.json`；`src/wengua/compile_shenqi_education.py`、`scripts/import_shenqi_education.py`、`tests/test_education_case_import.py`、`tests/test_education_handoff_consistency.py`、`docs/EDUCATION_CASE_REASONING_PROTOCOL.md`。已有第一章起局/第四第五象意格局/第六章用神应期均可按`concept_id`关联。原书不在公开GitHub。
+
+**私有八章SQLite已在本次实际生成**：`WenguaApp_V1_神奇之门_八章_求学考试二十三例_私有研究库.sqlite3`；`sections=8`，`cases=23`，`historical_chart_cells=207`，`historical_case_reasoning=92`，`historical_case_disclosures=53`，`historical_case_book_verdicts=23`，`semantic_assertions=518`，`integrity_check=ok`，外键检查无错误。此库从用户七章库SQLite的`backup()`构建，**旧七章全部原文与18案都在**。老第六章112个公开方法、起局章32个公开条目仍未全部补进私有库，不能误称518已包含这些。
+
+**现实边界**：古籍的大学考试、资格执照、申诉/诉讼判断属于传统历史文本，不是现代招生/证照/法律预测的可靠依据；入学及考试争议请以实际官方信息决定。
+
+未来每章必须真实同步根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`，严格校验用户原文SHA、完整九宫和作者整案全文，生成新私有库，添加案例/源条件/后验隔离单测，然后查最新GitHub HEAD的CI双Python job全成功并逐项读远端确认成功，不能只认之前旧commit通过。
