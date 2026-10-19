@@ -1,0 +1,695 @@
+{
+  "schema": "wengua_source_grounded_symbol_index_v1",
+  "book": "shenqi",
+  "chapter": "shijia_symbols_ch04",
+  "source_chapter_sha256": "15ce23c3fff0c9d3a48b595ee3bbf115d0c1e98a64ce1efc88bdb27e67eab22a",
+  "canonical_ids_shared_across_books": true,
+  "privacy": "No original prose included. Full symbol descriptions are local and citation-linked.",
+  "entries": [
+    {
+      "concept_id": "trigram:乾",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 25,
+      "source_line_end": 48,
+      "attributes": {
+        "palace": 6,
+        "wuxing": "金",
+        "direction": "西北"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:坤",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 49,
+      "source_line_end": 70,
+      "attributes": {
+        "palace": 2,
+        "wuxing": "土",
+        "direction": "西南"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:震",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 71,
+      "source_line_end": 94,
+      "attributes": {
+        "palace": 3,
+        "wuxing": "木",
+        "direction": "东"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:巽",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 95,
+      "source_line_end": 118,
+      "attributes": {
+        "palace": 4,
+        "wuxing": "木",
+        "direction": "东南"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:坎",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 119,
+      "source_line_end": 142,
+      "attributes": {
+        "palace": 1,
+        "wuxing": "水",
+        "direction": "北"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:离",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 143,
+      "source_line_end": 166,
+      "attributes": {
+        "palace": 9,
+        "wuxing": "火",
+        "direction": "南"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:艮",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 167,
+      "source_line_end": 190,
+      "attributes": {
+        "palace": 8,
+        "wuxing": "土",
+        "direction": "东北"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "trigram:兑",
+      "kind": "trigram",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 191,
+      "source_line_end": 214,
+      "attributes": {
+        "palace": 7,
+        "wuxing": "金",
+        "direction": "西"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:甲",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 223,
+      "source_line_end": 223,
+      "attributes": {
+        "wuxing": "木",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:乙",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 225,
+      "source_line_end": 225,
+      "attributes": {
+        "wuxing": "木",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:丙",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 227,
+      "source_line_end": 227,
+      "attributes": {
+        "wuxing": "火",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:丁",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 229,
+      "source_line_end": 229,
+      "attributes": {
+        "wuxing": "火",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:戊",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 231,
+      "source_line_end": 231,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:己",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 233,
+      "source_line_end": 233,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:庚",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 235,
+      "source_line_end": 235,
+      "attributes": {
+        "wuxing": "金",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:辛",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 237,
+      "source_line_end": 237,
+      "attributes": {
+        "wuxing": "金",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:壬",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 239,
+      "source_line_end": 239,
+      "attributes": {
+        "wuxing": "水",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "stem:癸",
+      "kind": "stem",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 241,
+      "source_line_end": 241,
+      "attributes": {
+        "wuxing": "水",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:子",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 287,
+      "source_line_end": 287,
+      "attributes": {
+        "wuxing": "水",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:丑",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 289,
+      "source_line_end": 289,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:寅",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 291,
+      "source_line_end": 291,
+      "attributes": {
+        "wuxing": "木",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:卯",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 293,
+      "source_line_end": 293,
+      "attributes": {
+        "wuxing": "木",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:辰",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 295,
+      "source_line_end": 295,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:巳",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 297,
+      "source_line_end": 297,
+      "attributes": {
+        "wuxing": "火",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:午",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 299,
+      "source_line_end": 299,
+      "attributes": {
+        "wuxing": "火",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:未",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 301,
+      "source_line_end": 301,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:申",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 303,
+      "source_line_end": 303,
+      "attributes": {
+        "wuxing": "金",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:酉",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 305,
+      "source_line_end": 305,
+      "attributes": {
+        "wuxing": "金",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:戌",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 307,
+      "source_line_end": 307,
+      "attributes": {
+        "wuxing": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "branch:亥",
+      "kind": "branch",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 309,
+      "source_line_end": 309,
+      "attributes": {
+        "wuxing": "水",
+        "polarity": "yin"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:开",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 351,
+      "source_line_end": 356,
+      "attributes": {
+        "wuxing": "金",
+        "base_palace": 6,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:休",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 357,
+      "source_line_end": 362,
+      "attributes": {
+        "wuxing": "水",
+        "base_palace": 1,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:生",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 363,
+      "source_line_end": 368,
+      "attributes": {
+        "wuxing": "土",
+        "base_palace": 8,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:伤",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 369,
+      "source_line_end": 374,
+      "attributes": {
+        "wuxing": "木",
+        "base_palace": 3,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:杜",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 375,
+      "source_line_end": 380,
+      "attributes": {
+        "wuxing": "木",
+        "base_palace": 4,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:景",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 381,
+      "source_line_end": 386,
+      "attributes": {
+        "wuxing": "火",
+        "base_palace": 9,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:死",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 387,
+      "source_line_end": 392,
+      "attributes": {
+        "wuxing": "土",
+        "base_palace": 2,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door:惊",
+      "kind": "door",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 393,
+      "source_line_end": 398,
+      "attributes": {
+        "wuxing": "金",
+        "base_palace": 7,
+        "note": "good_bad_conditional_on_season_and_palace"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天蓬星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 413,
+      "source_line_end": 416,
+      "attributes": {
+        "wuxing": "水",
+        "base_palace": 1,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天芮星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 417,
+      "source_line_end": 420,
+      "attributes": {
+        "wuxing": "土",
+        "base_palace": 2,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天冲星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 421,
+      "source_line_end": 424,
+      "attributes": {
+        "wuxing": "木",
+        "base_palace": 3,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天辅星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 425,
+      "source_line_end": 428,
+      "attributes": {
+        "wuxing": "木",
+        "base_palace": 4,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天禽星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 429,
+      "source_line_end": 432,
+      "attributes": {
+        "wuxing": "土",
+        "base_palace": 5,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天心星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 433,
+      "source_line_end": 436,
+      "attributes": {
+        "wuxing": "金",
+        "base_palace": 6,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天柱星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 437,
+      "source_line_end": 440,
+      "attributes": {
+        "wuxing": "金",
+        "base_palace": 7,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天任星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 441,
+      "source_line_end": 444,
+      "attributes": {
+        "wuxing": "土",
+        "base_palace": 8,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "star:天英星",
+      "kind": "star",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 445,
+      "source_line_end": 448,
+      "attributes": {
+        "wuxing": "火",
+        "base_palace": 9,
+        "seasonal_formula": "nine_star_separate_wang_xiang_xiu_qiu_fei"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:值符",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 483,
+      "source_line_end": 483,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:螣蛇",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 485,
+      "source_line_end": 485,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:太阴",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 487,
+      "source_line_end": 487,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:六合",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 489,
+      "source_line_end": 489,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:白虎",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 491,
+      "source_line_end": 491,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": "alias_under_GouChen"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:玄武",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 493,
+      "source_line_end": 493,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": "alias_under_ZhuQue"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:九地",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 495,
+      "source_line_end": 495,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "deity:九天",
+      "kind": "deity",
+      "chapter": "shijia_symbols_ch04",
+      "source_line_start": 497,
+      "source_line_end": 497,
+      "attributes": {
+        "usage": "celestial_eight_deities_only",
+        "note": ""
+      },
+      "review_status": "draft"
+    }
+  ]
+}
