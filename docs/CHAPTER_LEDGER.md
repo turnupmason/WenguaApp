@@ -121,3 +121,20 @@
 **累计**《神奇之门》按新WenguaApp流程处理6章（起局、第四、第五、第六、人体疾病预测、恋爱婚姻预测），两专题合计12事件、108个九宫原字单元、52条作者编号分析；《开悟之门》0章。后续各预测领域仍严格同一标准，root `AGENTS.md`＋`PROJECT_STATUS.md`＋本账本每章同步，并核对最新远程CI，UI继续暂停。
 
 **2026-10-19 私有六章数据库最终复核（比上述中间导出更新）**：婚姻专题18条公开的方法候选现已**按同一规范写入本轮私有 SQLite**，故该最终下载件的 `semantic_assertions=459`（原有441＋婚姻18）。`sections=6`、`cases=12`、`historical_chart_cells=108`、`historical_case_reasoning=52`、`historical_case_book_verdicts=12`，`integrity_check=ok`、外键无违规。旧第六章112条方法和起局章32个结构化记录仍有独立导入事项，不能说已入最终下载件。文件名继续为 `WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3`。此前正文对本下载件“只有441/婚姻18未同步”的表述只描述**中间阶段**，以后以本段最新验证状态为准。
+
+
+## 2026-10-19 · 第三预测专题：《神奇之门》怀孕分娩预测＋旧病案补漏
+
+| 日期 | 书 | 新章 | 原书 SHA256 | 字节/行 | 独立起盘案例 | 九宫原字单元 | 作者编号分析 | 专题条件候选 | 作者原书成败标签 |
+| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| 2026-10-19 | 神奇之门 | pregnancy_prediction_ch03 | `51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e` | 28082 / 313 | 6 | 54 | 23 | 24 | 6个author_book_success_default |
+
+**案例编排**：1.女儿何时怀孕（1996-01-13阳3）；2.同一女儿分娩预产期（1996-11-08阴6）；3.叶姓孕妇临产（1996-09-24阴7）；4.电话代问早产（1997-03-25阳3）；5.王立忠妻生育（1997-02-07阳8）；6.丈夫因产检B超疑虑问胎儿与分娩（1998-03-24阳9）。前两例为同一个家庭不同时间、不同问题、不同盘，关联但不合并盘。全章元数据、作者23步行号、54条原字盘、结果来源分别登记 `data/knowledge/shenqi/pregnancy_prediction_ch03/{chapter_manifest,case_index,method_index,source_audit}.json`。
+
+**用户要求的旧病案必须补漏，已真正更新七章私有下载件**：六个原`shenqi.health.`案全部保留书内成功标签与一个事件/盘/解读，之前在中途出现的人物年龄/后续反馈按真实原文字段补入或重分类为**同一案的`validation_information`**，而非仅修改公共索引文字。原有29条作者分析与54个宫位没有删除、分割、重置。公开 `health_prediction_ch01/case_index.json` 同步增加各案 `validation_information_lines`；同一增量处理逻辑永久保留在 `src/wengua/compile_shenqi_pregnancy.py:retroactively_sync_health_book_validation`。六个疾病例默认 `author_book_success_default`；独立医学确认依旧 `not_verified`。详见 `docs/CASE_OUTCOME_POLICY.md`。
+
+**原书例外**：第2例作者“拿不准胎儿性别”，且在已经知道医院11月21日预产期后重选应期；第4、5例学员的原断法经过张志春修改加工；第5例特别警告五不遇时并不必然不利；第6例B超异常疑虑在起盘之前已知，复查与分娩是后来反馈。**不因这些叙述把整案改成书内失败；也不伪装每项子预测独立正确。** 第307–313行精校附注不是作者正文。
+
+**本次下载七章私有SQLite真实检查**：`WenguaApp_V1_神奇之门_七章_健康婚姻孕产十八例_私有研究库.sqlite3`，从六章旧版本 SQLite `backup()` 后增量新增整章和六案，`sections=7`、`chapter_knowledge=7`、`cases=18`、`historical_chart_cells=162`、`historical_case_reasoning=75`、`historical_case_book_verdicts=18`、`historical_case_disclosures=38`、`semantic_assertions=483`（原459＋新孕产24），`PRAGMA integrity_check=ok`、`foreign_key_check=[]`。新生儿健康/诊疗仅做古籍研究，禁止在现实用于产前诊断、胎儿性别认定、是否终止妊娠或分娩治疗。
+
+**累计 WenguaApp**：《神奇之门》7章（起局、第四、第五、第六、人体疾病、恋爱婚姻、怀孕分娩）；《开悟之门》0章。完整原书历史案例家族18，原文盘18、宫162、作者编号步骤75；18案书内默认成功，专业验收和独立预言有效性仍未建立。公开 GitHub 只储存可追溯抽象，不提交原书。七章私有库中之前第六章112方法候选、起局章32结构项仍有单独导入事项，切勿称已全部加载。每章必须同步 `AGENTS.md`、本账本及`PROJECT_STATUS.md`，检查最新HEAD CI。
