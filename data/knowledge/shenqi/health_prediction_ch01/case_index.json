@@ -131,7 +131,16 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        24,
+        26,
+        28
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     },
     {
       "index": 2,
@@ -204,7 +213,15 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        108,
+        109
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     },
     {
       "index": 3,
@@ -291,7 +308,15 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        148,
+        154
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     },
     {
       "index": 4,
@@ -368,7 +393,14 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        197
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     },
     {
       "index": 5,
@@ -445,7 +477,14 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        243
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     },
     {
       "index": 6,
@@ -520,10 +559,20 @@
       "book_explicit_failure_or_correction": false,
       "independent_external_verification": "not_verified",
       "later_disclosures_role": "same_case_book_validation_information",
-      "one_shot_reading": true
+      "one_shot_reading": true,
+      "validation_information_lines": [
+        288,
+        289,
+        290
+      ],
+      "single_one_shot_reading": true,
+      "book_verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+      "validation_classification": "later_confirmation_and_newly_disclosed_details_are_same_event_book_validation",
+      "no_independent_multiturn_predictions": true
     }
   ],
   "case_book_outcome_policy": "docs/CASE_OUTCOME_POLICY.md",
   "user_one_shot_protocol": "one_event_family_one_cast_one_complete_reading",
-  "original_prospective_blind_test_status": "not_performed; author-book success is not external efficacy evidence"
+  "original_prospective_blind_test_status": "not_performed; author-book success is not external efficacy evidence",
+  "retroactive_policy_applied": "2026-10-19; six health historical families each remain one original case with all later confirmations as source-book validation, never a separate forecast or new cast"
 }
