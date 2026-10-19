@@ -70,3 +70,8 @@
 
 GitHub Actions只证明代码结构回归，不代表专业预测有效；每次最终报告应读取当时**最新commit**的CI状态，不复制旧commit的成功结果。
 
+
+
+## 2026-10-19 第四章结构化关系补充（与三章总数同时有效）
+
+除前述411条本地原文断言之外，GitHub提供 **42条天干地支组合关系、10条天干长生墓绝阶段表、8条八门季节旺衰表**的公开原创结构化索引；它们是对第四章已有来源的可执行抽象，**不重复计为411之外的独立来源**。路径 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json`；查询 `src/wengua/symbol_relations.py`；测试 `tests/test_symbol_relations.py`。保留地支相刑的有向循环、对称组合的无序匹配、原文未注明阶段的未知状态；任何规则只能用在真实盘面允许的对应关系上。39格局子变体已使用 `formation_concept_id` 回指本章257个组合/格名索引，供跨书引用。**UI依然暂停。**
