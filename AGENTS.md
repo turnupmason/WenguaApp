@@ -219,3 +219,24 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 6. **绝对医疗边界**：怀孕章古籍对胎儿性别、畸形、保胎、流产、剖宫产、预产期与母婴安危等全部是传统文化文献，不给任何用户当实际医学诊断、判断是否终止妊娠或治疗方法，不凭盘断言现实医疗结果。独立外部验证和古籍书内标签分开。
 7. **最新私人SQLite已真正构建和验证**：`WenguaApp_V1_神奇之门_七章_健康婚姻孕产十八例_私有研究库.sqlite3` 从旧六章库`backup()`只增量处理，`sections=7`、`chapter_knowledge=7`、`cases=18`、`historical_chart_cells=162`、`historical_case_reasoning=75`、`historical_case_disclosures=38`、`historical_case_book_verdicts=18`、`semantic_assertions=483`；`PRAGMA integrity_check=ok`、`foreign_key_check=[]`。公有新章24个方法实际在此私有库已物化，历史第六章112条、起局32条仍待另导。公开 GitHub 不存完整古籍和私人谈话，换对话需要用户自存这个私有版本。
 8. **今后处理每章必须**：精读原书各领域取用及每个整案→核对一案一个实际起盘的九宫54/其他实际数量、作者分步论证/补充反馈→新source-hash索引与增量SQLite→`AGENTS.md`（本段最新实数）、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`更新，相关源码及测试→推 GitHub main →逐一远端读关键文件确认更新成功 → 最新**同一HEAD**的CI Python3.11/3.12全部成功。不要让用户再重复本政策；UI继续不做、旧QimenLLM/27B训练不动。
+
+
+## 最新跨对话交接：2026-10-19 第八章《求学考试预测》五个完整整案
+
+**此段为当前最新事实，上文“3/4/5/6/7章”是历史进度快照。** WenguaApp 根据用户新提交的原书，现实际完成《神奇之门》**8章**：时家起局、象数理（第四章）、判断依据（第五章）、应用概述（第六章）、人体疾病预测、恋爱婚姻预测、怀孕分娩预测、**第四预测专题《求学考试预测》**；《开悟之门》仍0章。合计**23个完整古籍事件家族、23张源文字盘207宫位、92组作者/学员编号分析、23个`author_book_success_default`书内判对标签、私有SQLite 518条来源知识记录**。这些不是独立外部验证的预言准确率；无正式可上线的现实预测断词，UI冻结，旧QimenLLM/27B不碰。
+
+### 用户永久强制规则：比旧聊天过程优先
+
+- **一事、一实际起局时辰、一张真实源盘、一套完整原作者解盘，面向最终App用户一次完整输出**，不是GPT多轮交互；任何中途补充考生年命、估分、考试结果、隔月电话反馈等都归**同一事件的书内验证信息**，不能按问答拆成另一个独立案例/样本。详情`docs/CASE_OUTCOME_POLICY.md`。
+- 原书作者未明确承认断错或复盘纠正，该整案一律记`author_book_success_default`；只有作者明说实际断错才单独转`author_book_error_explicit`并附原始纠错行号；两者都是**来源书内结果标签，不等同外部历史、临床、司法或科学验证**。
+- 先前健康6案已在上次七章私人数据库按此规则更新来源验证；本次保留原全部七章及18案，没有重做或覆盖。
+
+### 最新章具体数据与重要陷阱
+
+- 上传源 `神奇之门_求学考试预测_精校完整版(1).txt`，**349行、30539字节，SHA256 `88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43`**。公开路径 `data/knowledge/shenqi/education_prediction_ch04/` 的 `chapter_manifest.json`、`case_index.json`（5家族/45原字九宫/17组完整原作者分析）、`method_index.json`（35条条件化专题断案/取用方法和8步完整回答流程）、`source_audit.json`。全部保持源行号、真实时干/日干/年命与原盘信息，旧基础与格局通过`concept_id`统一联查。
+- 本章标准考试：**本人问日干，父母代问子女以时干为考生，年命可靠才加看**；天辅星考试院、值符主考、值使副考、丁奇文章、景门试卷、年干录取学校；旺衰/生克/空墓与吉凶格全宫反证；分清**分数、正常录取、自费入学及志愿专业**。另存旧武试/拜师学艺来源方法，不可让通用高考硬套。第五例引入六合为证据（不是婚姻媒人）、开门为法院、申诉/诉讼与应期，是同一件考试录取事件的跨领域案例，不拆两张盘。
+- 5个原案：①1996-07-12父问儿子考分及志愿②1996-04-22母问子高考③1996-07-04父问儿子自费入学④1996-11-03本人问1997博士⑤1997-08-23父代女儿问美国行医资格考试高分被质疑/申诉结果。例④1997未录取，1998之后再考被录取只是后续资料，不把原案1997判断标错。
+- **案例五最大反向叙事陷阱**：第264行是事件发生时已知情况；第268作者断语；第270–280行已经包含后来申诉反馈和10月录取；第284行才倒述起盘，第325–349行才是作者五组**完整多段**复盘（`325–329,331–335,337–339,341–343,345–349`）。**初始问事只取第264行，不能把[264,284]当成已知资料，不可在一次解盘事前输入10/9结果**；全章仍然是一个事件、一张8月23的盘、一个整体断案，不按电话次数拆小案例。例五第276行是作者事后重申而非独立应验事实。
+- 公共源码 `src/wengua/compile_shenqi_education.py` 提供严格源 SHA、9宫×5全字解析、17段完整提取、35知识来源登记、事件家族/验证信息/一次性结果标签的非破坏性 SQLite 增量导入，CLI `scripts/import_shenqi_education.py`；测试 `tests/test_education_case_import.py` 专门检查倒叙后验泄漏，另有 `tests/test_education_handoff_consistency.py`强制检查本段/状态/章账和数量。解释文档 `docs/EDUCATION_CASE_REASONING_PROTOCOL.md`。
+- **本回合真实制作私有八章库** `WenguaApp_V1_神奇之门_八章_求学考试二十三例_私有研究库.sqlite3`，由七章 SQLite `backup()`增量构建。**已实际检查**：`sections=8`、`chapter_knowledge=8`、`cases=23`、`historical_chart_cells=207`、`historical_case_reasoning=92`、`historical_case_disclosures=53`、`historical_case_book_verdicts=23`、`semantic_assertions=518`，`PRAGMA integrity_check=ok`、`foreign_key_check=[]`。此前7章及18案全部原文字节保留。第六章112和起局章32公开结构仍有独立SQL导入任务，勿声称八章库中已有。
+- **每次新章完成前必检查实际GitHub**：根目录`AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`及本章节manifest/方法/整案/审核、源码和单测全部commit之后，从远端再读各文件内容/sha验证；最后读取**当前 main HEAD SHA 对应**的GitHub Actions中Python 3.11和3.12两项必须都success。若任意未成功，先修复再结束，勿把旧commit的绿灯当最新提交成功。永久版权原文仅用户私人SQLite或原TXT，不能提交公开库。
