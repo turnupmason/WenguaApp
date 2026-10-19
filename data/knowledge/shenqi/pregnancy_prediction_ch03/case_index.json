@@ -1,0 +1,345 @@
+{
+  "schema": "wengua_pregnancy_six_case_source_index_v1",
+  "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+  "chapter_key": "shenqi/pregnancy_prediction_ch03/v1",
+  "title": "第三章 怀孕分娩预测",
+  "source_lines": 313,
+  "source_body_lines": [
+    1,
+    304
+  ],
+  "editorial_notes_lines": [
+    307,
+    313
+  ],
+  "case_families": 6,
+  "source_chart_cells": 54,
+  "numbered_reasoning_steps": 23,
+  "verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "author_explicit_uncertainty": [
+    "Case2 fetal sex is uncertain, author says 拿不准",
+    "Case5 has conflicting star/door fetal sex evidence, book editor notes uncertainty"
+  ],
+  "source_editorial_treatment": [
+    "Cases4 and5: 张志春 revised student reasoning for clarity; these are edited source-method statements, not proven original student utterances",
+    "Case1 and2 are the same woman's pregnancy and subsequent delivery, but different dates, questions and two real charts: keep separate cast families linked by shared lineage"
+  ],
+  "never_clinical_use": "Historical divination source material only; no use as prenatal diagnosis, fetal sex determination, decisions about termination or delivery care.",
+  "cases": [
+    {
+      "case_number": 1,
+      "event_family_id": "shenqi.pregnancy.daughter_pregnancy_timing",
+      "source_title": "女儿何时怀孕及希望男孩",
+      "source_case_span": [
+        20,
+        65
+      ],
+      "initial_question_lines": [
+        22,
+        26
+      ],
+      "raw_nine_palace_rows": [
+        45,
+        53
+      ],
+      "numbered_author_step_lines": [
+        57,
+        59,
+        61
+      ],
+      "author_judgment_lines": [
+        63
+      ],
+      "validation_information_lines": [
+        65
+      ],
+      "casting": {
+        "dun": "yang",
+        "ju": 3,
+        "hour_ganzhi": "壬申",
+        "local_date": "1996-01-13",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "日干己/时干壬与空亡",
+        "坤宫天任阳星、伤门阳门相互参看",
+        "天芮艮宫、六合与乙庚合、寅月填实"
+      ],
+      "subdomain": "fertility_timing",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": "shenqi.pregnancy.1996_daughter_distinct_casts"
+    },
+    {
+      "case_number": 2,
+      "event_family_id": "shenqi.pregnancy.daughter_delivery_date",
+      "source_title": "同一女儿临产问分娩与产期",
+      "source_case_span": [
+        67,
+        116
+      ],
+      "initial_question_lines": [
+        69,
+        71
+      ],
+      "raw_nine_palace_rows": [
+        90,
+        98
+      ],
+      "numbered_author_step_lines": [
+        102,
+        104,
+        106,
+        108,
+        110
+      ],
+      "author_judgment_lines": [
+        112
+      ],
+      "validation_information_lines": [
+        116
+      ],
+      "casting": {
+        "dun": "yin",
+        "ju": 6,
+        "hour_ganzhi": "壬申",
+        "local_date": "1996-11-08",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "日时干同宫、母子安全",
+        "坤宫地盘天芮及天盘天心",
+        "惊门与天心同宫、戊壬与值符反证",
+        "性别判断互相冲突：作者明确拿不准",
+        "11月19日候选改用医院11月21日信息及别法定11月21日"
+      ],
+      "subdomain": "delivery_date",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": "shenqi.pregnancy.1996_daughter_distinct_casts"
+    },
+    {
+      "case_number": 3,
+      "event_family_id": "shenqi.pregnancy.pregnant_woman_imminent_birth",
+      "source_title": "孕妇本人到访、推第二日辰时分娩",
+      "source_case_span": [
+        118,
+        159
+      ],
+      "initial_question_lines": [
+        120,
+        122
+      ],
+      "raw_nine_palace_rows": [
+        141,
+        149
+      ],
+      "numbered_author_step_lines": [
+        153,
+        155,
+        157
+      ],
+      "author_judgment_lines": [
+        120
+      ],
+      "validation_information_lines": [
+        159
+      ],
+      "casting": {
+        "dun": "yin",
+        "ju": 7,
+        "hour_ganzhi": "甲戌",
+        "local_date": "1996-09-24",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "日干甲子戊与惊门螣蛇象意",
+        "外应临产、坤宫天芮与太阴、对冲艮宫乙奇生门",
+        "辰戌冲应辰时、天心和开门同参考"
+      ],
+      "subdomain": "delivery_timing",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": null
+    },
+    {
+      "case_number": 4,
+      "event_family_id": "shenqi.pregnancy.phone_premature_birth",
+      "source_title": "代朋友问孕妇早产及手术",
+      "source_case_span": [
+        161,
+        206
+      ],
+      "initial_question_lines": [
+        163,
+        165
+      ],
+      "raw_nine_palace_rows": [
+        184,
+        192
+      ],
+      "numbered_author_step_lines": [
+        196,
+        198,
+        200,
+        202
+      ],
+      "author_judgment_lines": [
+        196,
+        198,
+        200,
+        202
+      ],
+      "validation_information_lines": [
+        204
+      ],
+      "casting": {
+        "dun": "yang",
+        "ju": 3,
+        "hour_ganzhi": "丁酉",
+        "local_date": "1997-03-25",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "坤宫丙庚、丙辛合的作者类象",
+        "天蓬阳星休阳门、时干丁判男",
+        "值符、乙奇、天心与手术条件",
+        "丁酉时与戊戌时、庚下干推应期"
+      ],
+      "subdomain": "premature_birth",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": null
+    },
+    {
+      "case_number": 5,
+      "event_family_id": "shenqi.pregnancy.student_wife_delivery",
+      "source_title": "丈夫问妻生产与胎儿性别、应期",
+      "source_case_span": [
+        208,
+        253
+      ],
+      "initial_question_lines": [
+        210,
+        212
+      ],
+      "raw_nine_palace_rows": [
+        231,
+        239
+      ],
+      "numbered_author_step_lines": [
+        243,
+        245,
+        247,
+        249
+      ],
+      "author_judgment_lines": [
+        247,
+        249
+      ],
+      "validation_information_lines": [
+        251
+      ],
+      "casting": {
+        "dun": "yang",
+        "ju": 8,
+        "hour_ganzhi": "丙戌",
+        "local_date": "1997-02-07",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "坤宫地盘天芮、天柱及杜门旺相",
+        "值符/六合主母胎的不同用法与节令反证",
+        "阴星阳门冲突、学员选值使预测男",
+        "坤冲宫壬干及值使落宫推壬日壬时"
+      ],
+      "subdomain": "birth_outcome",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": null
+    },
+    {
+      "case_number": 6,
+      "event_family_id": "shenqi.pregnancy.prenatal_imaging_concern",
+      "source_title": "产检异常疑虑及后来复查分娩",
+      "source_case_span": [
+        255,
+        304
+      ],
+      "initial_question_lines": [
+        257,
+        261
+      ],
+      "raw_nine_palace_rows": [
+        280,
+        288
+      ],
+      "numbered_author_step_lines": [
+        292,
+        294,
+        298,
+        300
+      ],
+      "author_judgment_lines": [
+        294,
+        302
+      ],
+      "validation_information_lines": [
+        304
+      ],
+      "casting": {
+        "dun": "yang",
+        "ju": 9,
+        "hour_ganzhi": "丙戌",
+        "local_date": "1998-03-24",
+        "chronology": "author_original_not_independent_recast"
+      },
+      "method_topics": [
+        "时干丙入墓、生门、丁奇、螣蛇与头部象意",
+        "死门、玄武与复查时间候选；来源提出复查",
+        "坤宫天英阴星与开门阳门相反，作者选男",
+        "飞宫、天芮、时格、入墓等条件推剖宫产"
+      ],
+      "subdomain": "prenatal_followup",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error_admission": false,
+      "independent_external_verification": "not_verified",
+      "app_delivery_protocol": "single_answer_for_one_cast",
+      "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+      "historical_chart_verified_by_engine": false,
+      "source_status": "complete_in_supplied_transcription_not_independently_verified",
+      "same_event_validation_only": true,
+      "linked_event_family": null
+    }
+  ]
+}
