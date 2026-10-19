@@ -1,0 +1,69 @@
+{
+  "schema": "wengua_education_source_audit_v1",
+  "source_sha256": "88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43",
+  "book_success_policy": "Five source cases default author-book success; author testimony != external validation",
+  "exceptions": [
+    {
+      "case": 1,
+      "lines": [
+        73,
+        79,
+        81,
+        87
+      ],
+      "issue": "After predicting >600 points, father discloses candidate estimated 620 and birth year; preserve as same-event validation prior to author's later major suggestion, not known before first forecast."
+    },
+    {
+      "case": 2,
+      "lines": [
+        136,
+        144,
+        146,
+        150
+      ],
+      "issue": "Author comments on health/study before mother confirms details; later age/birth year belongs in same-case validation, not separate query."
+    },
+    {
+      "case": 3,
+      "lines": [
+        197,
+        203
+      ],
+      "issue": "Differentiate ordinary score threshold, self-funded cutoff and eventual admission; no universal rule that a mediocre score means total admission failure."
+    },
+    {
+      "case": 4,
+      "lines": [
+        258,
+        260
+      ],
+      "issue": "1997 doctoral application failed according to book; candidate passed in 1998, a different exam year not a contradiction to original 1997 question; no second chart or event should be fabricated."
+    },
+    {
+      "case": 5,
+      "lines": [
+        264,
+        349
+      ],
+      "issue": "Book narrates diagnosis/prediction and October outcomes before giving the same 1997 Aug 23 chart and retrospective five-step author reasoning; preserve earlier high scores and center allegation as preknown, exam center response, October outcome as book validation, 10/8 follow-up author's reassurance as same-event author statement."
+    },
+    {
+      "case": 5,
+      "lines": [
+        280,
+        280
+      ],
+      "issue": "Book family member asserts divination is science; this quote is their belief and not independently demonstrated by source."
+    },
+    {
+      "case": 5,
+      "lines": [
+        284,
+        303
+      ],
+      "issue": "Tianzhu valued star at center 5 entrusted to kun 2 in author method; never silently infer a conventional unique 9-palace caster representation."
+    }
+  ],
+  "notes": "All nine-palace tabular row texts are stored verbatim in private SQLite, not copied to public GitHub or overwritten with new calculated chart.",
+  "approved_outcome_verification": 0
+}
