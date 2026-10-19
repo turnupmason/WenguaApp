@@ -136,7 +136,7 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 
 ## 2026-10-19 更新记录：第四、第五章完成（持续交接）
 
-- 当前按新仓库规范完成《神奇之门》3章：时家起局方法、第四章象数理、第五章判断依据；《开悟之门》暂为0章。UI保持暂停，旧QimenLLM不改。
+- 历史快照：当时按新仓库规范完成《神奇之门》3章（下方最新进度为4章）：时家起局方法、第四章象数理、第五章判断依据；《开悟之门》暂为0章。UI保持暂停，旧QimenLLM不改。
 - 这次两章同一个上传文件，共1261行、86324字节，SHA256 `8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147`；公开GitHub不保存原书全文。私人本地SQLite保存三章原文和411条可追溯知识断言；第一章原有32个结构项可另运行原入库命令。
 - 第四章：55个符号主档、87个八卦类象分条；第五章：81个干加干、64个门加门、72个门加奇仪的有序组合，13个吉格与27个凶格一级条目，以及39个条件化格局子候选。**均属draft，真实完整预测案例家族和获批断词仍是0。**
 - 跨章索引以 `concept_id` 为通用键，例如 `heaven_over_earth:癸:丁` 和 `door_over_stem:休:癸`。每条来源留书/章/行号；同一宫的天盘、地盘、门、星、神才允许组合，不能混合其他宫的证据。
@@ -148,4 +148,17 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 
 ## 2026-10-19 同批第四章结构化关系补充（继续保留原文及所有进度）
 
-本次除三章总数、411条来源断言、257项有序组合/格名索引、39个格局子候选外，还建立 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json`：42条天干地支合冲刑害三合三会关系，10条干之长生帝旺死墓绝表，8条八门旺相休囚死表。查询 `src/wengua/symbol_relations.py`，测试 `tests/test_symbol_relations.py`。**这些均从已收到的第四章提炼，不能算新预测实案，也不得不经审核直接输出吉凶。** 39个格局 AND/OR 候选的 `formation_concept_id` 与第五章索引是同一外键，保持跨章、跨书来源可调用。新会话如处理同类知识，先查这个表和 `docs/SEMANTIC_KNOWLEDGE_MODEL.md`，而非重复建表。每完成未来章节都继续更新 AGENTS＋STATUS＋LEDGER＋测试/CI。
+历史三章快照：除当时三章总数、411条来源断言、257项有序组合/格名索引、39个格局子候选外，还建立 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json`：42条天干地支合冲刑害三合三会关系，10条干之长生帝旺死墓绝表，8条八门旺相休囚死表。查询 `src/wengua/symbol_relations.py`，测试 `tests/test_symbol_relations.py`。**这些均从已收到的第四章提炼，不能算新预测实案，也不得不经审核直接输出吉凶。** 39个格局 AND/OR 候选的 `formation_concept_id` 与第五章索引是同一外键，保持跨章、跨书来源可调用。新会话如处理同类知识，先查这个表和 `docs/SEMANTIC_KNOWLEDGE_MODEL.md`，而非重复建表。每完成未来章节都继续更新 AGENTS＋STATUS＋LEDGER＋测试/CI。
+
+## 最新会话交接快照：2026-10-19 · 第六章完成
+
+**目前实际完成《神奇之门》4章**：时家起局、第四章象数理、第五章判断依据、第六章《奇门遁甲应用概述》。《开悟之门》仍0章，UI仍冻结，不训练27B/不修改旧QimenLLM。
+
+- 最新原书：`奇门遁甲应用概述.txt`，240行、31549字节，SHA256 `50c76ce5354d3378a842d6117f06c239bcdfe2f04786663c2e89f606d98c402e`。
+- 新章来源索引在 `data/knowledge/shenqi/application_overview_ch06/`：20项判断方法＋68条关系条件用神候选＋14应期方法＋10五不遇时，共112条 `draft`，有真实行号；1个**不完整**历史实例，因缺全九宫和独立核实而不允许充当盲测。新的独立完整实案仍为0，已批准断词仍为0。
+- 新方法：`src/wengua/ch06_knowledge.py`；本地原文增量导入：`src/wengua/compile_shenqi_ch06.py` 与 `scripts/import_shenqi_ch06.py`；数据库新迁移 `schema/migrations/003_incomplete_historical_case_parts.sql`；回归 `tests/test_shenqi_ch06.py`。严格保存先知事实、作者断语、事后反馈分层。
+- 原始方法：横看用神落宫属性，竖看同一宫星门宫和三奇六仪；主客须分动静/先后/主动性/天地盘/距离；阴阳遁内外近远相反；取用人事时**当前起问人≠代问的当事人**。应期依完整条件与先后方法判断，不编造日期。
+- **1080 vs 8640 数量含义需保护**：`1080=18局态×60时辰键`；`8640=1080×8个外宫位置`，按前书是宫位组合记录，不是8640张不同完整盘或7560张重复完整盘。全年是否重复多少需实际生成全盘按算法版本及输入哈希后独立去重验证；不能直接借8640÷1080推导每盘重复8次。
+- `docs/CH06_LINKED_REASONING_PROTOCOL.md` 是本章方法与跨章 API 的最新详细规范，`docs/PROJECT_STATUS.md` 是实际最新状态，`docs/CHAPTER_LEDGER.md` 是追加历史。
+- **今后每收到一章都必须真实更新根目录AGENTS.md、PROJECT_STATUS.md、CHAPTER_LEDGER.md、章节来源manifest与方法数据及测试；再检查远程main的SHA，fetch每个新文件确认实际存在且内容有效，并核查同一最新SHA的GitHub Actions两个Python工作都成功。** 不拿旧失败通知或旧commit的通过结果代替验证。若仍有失败，先修复，再报告。
+- 公开GitHub不存版权原文，个人应备份私有SQLite/书稿；GitHub只有抽象知识与可复现导入程序。对已有数据库必须**增量**迁移，不删除旧章旧规则。现在等待用户下一章原文，直接接续，不需要用户重讲。
