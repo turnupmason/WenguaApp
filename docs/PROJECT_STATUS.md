@@ -10,7 +10,7 @@
 - **公开仓库只保存索引/源代码/测试/审校元数据，不存两书整章原文或私密问事**。原书需要用户自己备份 `local/books/`，或者保留已生成的私有 SQLite。
 - 旧 `QimenLLM` 训练项目不动，不自动沿用旧十书抽取、废弃规则或旧模型输出。
 
-## 已处理的《神奇之门》实际章节：8章
+## 已处理的《神奇之门》实际章节：9章
 
 | 章节 | 真实来源 | 主要已入库内容 | 专业审核状态 |
 | --- | --- | --- | --- |
@@ -202,3 +202,16 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 **现实边界**：古籍的大学考试、资格执照、申诉/诉讼判断属于传统历史文本，不是现代招生/证照/法律预测的可靠依据；入学及考试争议请以实际官方信息决定。
 
 未来每章必须真实同步根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`，严格校验用户原文SHA、完整九宫和作者整案全文，生成新私有库，添加案例/源条件/后验隔离单测，然后查最新GitHub HEAD的CI双Python job全成功并逐项读远端确认成功，不能只认之前旧commit通过。
+
+
+## 2026-10-19 最新真实进度：九章《工作就业预测》与五例完整原书断案
+
+**本节取代上面7/8章的历史进度**。《神奇之门》累计按新WenguaApp来源流程处理**9章**（起局、象数理、判断依据、应用概述、人体疾病、恋爱婚姻、怀孕分娩、求学考试、工作就业预测）；《开悟之门》0章。累计**28个整体源中事件家族、28张九宫文字原盘、252条原字宫位、112个编号作者/学员断案分析、28个书内默认判对**，未以外部独立验证证明任何现实预测准确率。旧QimenLLM、27B训练及UI冻结。
+
+- 本次原书 `神奇之门_工作就业预测_精校完整版(1).txt`，**228行、25748字节，SHA256 `b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05`**；整个正文仅在私人SQLite。预测专题第五章，与前面理论章“第五章判断依据”不是同一源，不覆盖。
+- 新公开章节目录 `data/knowledge/shenqi/employment_prediction_ch05/`：`chapter_manifest.json`、`case_index.json`、`method_index.json`、`source_audit.json`。**五个完整案例、45宫原字、20条作者/学员编号分析、53条有来源行号的职业/调动/军职/退休/空间竞争条件方法**及8阶段一次性断词流程。所有规则仍为研究draft，跨章以`concept_id/ref_concept_id`关联，不可依据古籍断言真实求职成败或他人品行。
+- 案例一（毕业分配）还利用问者**当时座位东南方**的巽宫作特别取用；案例二母代子问外经部/外交部，**11月25日作者仍拿原11月4日盘判断**，这是同一整案的四条步骤；案例三军官免职及同僚影响，五步；案例四杜新会自测工作调动，**全章只提供1997-04-15首次完整盘，虽说总共预测5次其余4盘没给，绝不伪造**；案例五一个1996-10-27申时局供5个住址方位不同的村支书候选比较，学员**只预测乾6第一、坤2第二**，原书事后报告完整排序；张志春另在226–228行从旺相休囚优先复盘，不能事后移作学员原话。
+- 新迁移`schema/migrations/006_employment_ranked_candidates.sql`引入两张仅追加表`historical_event_candidates`、`historical_case_source_segments`；`src/wengua/database.py`已调用。新增编译/导入`src/wengua/compile_shenqi_employment.py`、`scripts/import_shenqi_employment.py`、`tests/test_employment_case_import.py`；研究完整说明`docs/EMPLOYMENT_CASE_REASONING_PROTOCOL.md`。私有源保存原3×3压缩格式，不据已有起盘引擎覆盖。
+- **本轮真实生成私人九章SQLite** `WenguaApp_V1_神奇之门_九章_工作就业二十八例_私有研究库.sqlite3`（约1.35 MB）：上一八章SQLite`backup()`后增量追加本章完整原书、五案45宫、20步骤、五名候选和五段源叙述与53条来源断法索引。核实`sections=9; chapter_knowledge=9; cases=28; historical_chart_cells=252; historical_case_reasoning=112; historical_case_disclosures=65; historical_case_book_verdicts=28; semantic_assertions=571; historical_case_source_segments=5; historical_event_candidates=5`；`PRAGMA integrity_check=ok`且无外键错误。原八章23案及全文不丢失。
+- 公共知识`method_index.json`包含53条详尽`ref_concept_id/scenario/summary`；此私有下载副本中同53条记录保留真实原句、概念ID及公开文件指针，尚未逐条复制所有详细metadata；另有理论第六章112项和起局章32条源索引仍待私有物化，**不能声称571已含这两批**。
+- 用户永久规则继续生效：**一件事、一实际时辰、一张真实原盘、一套完整解盘；后来的补充及书内反馈是同案验证；默认作者书内判对，明确作者承认断错才更正；外部验证状态独立；App一次给全部结果而非逐轮对话**。每章必须更新根`AGENTS.md`、本状态、`docs/CHAPTER_LEDGER.md`，并逐项从远端读取核实文件及同一最新main SHA的双Python CI都成功。
