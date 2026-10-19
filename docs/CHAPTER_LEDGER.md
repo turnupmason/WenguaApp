@@ -138,3 +138,22 @@
 **本次下载七章私有SQLite真实检查**：`WenguaApp_V1_神奇之门_七章_健康婚姻孕产十八例_私有研究库.sqlite3`，从六章旧版本 SQLite `backup()` 后增量新增整章和六案，`sections=7`、`chapter_knowledge=7`、`cases=18`、`historical_chart_cells=162`、`historical_case_reasoning=75`、`historical_case_book_verdicts=18`、`historical_case_disclosures=38`、`semantic_assertions=483`（原459＋新孕产24），`PRAGMA integrity_check=ok`、`foreign_key_check=[]`。新生儿健康/诊疗仅做古籍研究，禁止在现实用于产前诊断、胎儿性别认定、是否终止妊娠或分娩治疗。
 
 **累计 WenguaApp**：《神奇之门》7章（起局、第四、第五、第六、人体疾病、恋爱婚姻、怀孕分娩）；《开悟之门》0章。完整原书历史案例家族18，原文盘18、宫162、作者编号步骤75；18案书内默认成功，专业验收和独立预言有效性仍未建立。公开 GitHub 只储存可追溯抽象，不提交原书。七章私有库中之前第六章112方法候选、起局章32结构项仍有单独导入事项，切勿称已全部加载。每章必须同步 `AGENTS.md`、本账本及`PROJECT_STATUS.md`，检查最新HEAD CI。
+
+
+## 2026-10-19 · 《神奇之门》第四预测专题《求学考试预测》
+
+| 日期 | 章ID | 原书来源 SHA256 | 原文字节 / 行数 | 完整原书起盘事件 | 原字九宫 | 编号作者分析 | 研究方法索引 | 整案书内标签 |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| 2026-10-19 | `education_prediction_ch04` | `88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43` | 30539 / 349 | **5** | **45宫** | **17组**（最后一例5组多段解释） | **35条** | **5例默认书内判对** |
+
+五案分别：1996-07-12父问儿子高考分数及志愿；1996-04-22母问儿子高考录取；1996-07-04父问儿子成绩及自费入学；1996-11-03本人问1997年考北大心理学博士（书称1997未中，1998再考录取不能拿来否认前一年的整案判断）；1997-08-23父代女儿问美国行医执照考试成绩受质疑的申诉/诉讼与最后通知（**原书先讲10月结果，再贴8月原盘和完整复盘，初始问事仅第264行，不能让书内结果提前泄漏**）。
+
+**案例5的5段分析不是5个新问题或5张盘**，也不是单行大标题：完整原文行号 `325–329, 331–335, 337–339, 341–343, 345–349` 各段均整体保留。该案第268行是起初作者断语，后续第270–280行是同案反馈与第276行作者后来重申；初始已知第264行不含未来结局。其他案例后补考生年命、估分、结果均是原案`validation_information`。
+
+**书内五例全部标为 `author_book_success_default`**，来源认为断对不等于外部真实准确性经独立核查。每案一时一盘、一份完整解盘、App V1一次显示；第五例跨考试/申诉/诉讼/证据，但仍属于一个考试录取事件家族。三类历史领域规则还有“旧武试/拜师学艺”，只记录为对应主题方法，不误用为高考的一般固定算法。
+
+公开新增：`data/knowledge/shenqi/education_prediction_ch04/{chapter_manifest,case_index,method_index,source_audit}.json`；`src/wengua/compile_shenqi_education.py`、`scripts/import_shenqi_education.py`、`tests/test_education_case_import.py`、`tests/test_education_handoff_consistency.py`、`docs/EDUCATION_CASE_REASONING_PROTOCOL.md`。原书全文和个人信息仅存私有 SQLite，源转写九宫未独立排盘验校。
+
+**当前私有八章库已在当前回合用上一七章库备份增量构建并检查**：`WenguaApp_V1_神奇之门_八章_求学考试二十三例_私有研究库.sqlite3`，`sections=8`、`chapter_knowledge=8`、`cases=23`、`historical_chart_cells=207`、`historical_case_reasoning=92`、`historical_case_disclosures=53`、`historical_case_book_verdicts=23`、`semantic_assertions=518`，SQLite `integrity_check=ok`、`foreign_key_check=[]`。先前七章和18个完整案例保留。**5例原文均入库、最后一例known_before按第264行修正，不含10月录取结果**。
+
+**现总进度**：《神奇之门》8章，3个专题疾病/婚姻/孕产加本次求学考试4个专题，**23个历史整案/207宫位/92组原文分析/23默认书内判对**；《开悟之门》0章。此前理论应用第六章112条公开方法及起局章32条结构草稿还未全部物化在本导出 SQLite，不能报称已完成。GitHub root `AGENTS.md`、`PROJECT_STATUS.md`、本账本均要随章同步，要求最新HEAD两项CI成功且真正从远端读到更新文件。
