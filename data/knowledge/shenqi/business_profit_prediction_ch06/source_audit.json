@@ -1,0 +1,75 @@
+{
+  "schema": "wengua_business_chapter_source_audit_v1",
+  "source_sha256": "c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c",
+  "scope": "Book-source success classification by user rule, not independently verified financial results.",
+  "issues": [
+    {
+      "case": 3,
+      "line": 177,
+      "issue": "Manager asks for adverse factors after initial positive result; all forms one full case, not a second cast."
+    },
+    {
+      "case": 6,
+      "line": 302,
+      "issue": "Book describes network marketing and 1998 prohibition; claims about product and legal outcomes are book narrative, not independent legal/medical verification."
+    },
+    {
+      "case": 7,
+      "lines": [
+        308,
+        356
+      ],
+      "issue": "Initial question line contains the original forecast later in the same sentence. Split the initial-known text before the predictions. Full multi-paragraph 5-step reasoning preserved."
+    },
+    {
+      "case": 8,
+      "lines": [
+        360,
+        416
+      ],
+      "issue": "Authenticity of painting only reported in book; not guaranteed real authentication. App must not advise purchasing on chart alone."
+    },
+    {
+      "case": 9,
+      "lines": [
+        420,
+        462
+      ],
+      "issue": "Original writer narrates successful immediate interpretation and operational advice before showing chart. Keep forecast and afterward feedback separate, avoid hindsight contamination."
+    },
+    {
+      "case": 10,
+      "lines": [
+        502,
+        506
+      ],
+      "issue": "Three parallel methods appear as unnumbered text; preserve three explanation records in same one-hour case."
+    },
+    {
+      "case": 12,
+      "lines": [
+        550,
+        643
+      ],
+      "issue": "One four-day drawing campaign with THREE explicit full nine-palace hour charts and additional text-only forecasts, not 12 separate stories or one invented universal cast. Author's alternative analysis at 582,610,639 stays as editorial source segments; third and fourth day full charts not given."
+    },
+    {
+      "case": 13,
+      "lines": [
+        671,
+        679
+      ],
+      "issue": "Author's numbered step 4 is line 677 alone; 679 is actual book feedback, not analysis."
+    },
+    {
+      "case": 14,
+      "lines": [
+        711,
+        717
+      ],
+      "issue": "The user-provided chapter ends at 717 without final punctuation; preserve exactly. Earlier line 687 reports trip failed, so one book feedback exists."
+    }
+  ],
+  "user_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "financial_risk": "Traditional divination is not an independently validated basis for investing, lending, fraud accusation, buying art, or medical product decisions."
+}
