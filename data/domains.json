@@ -1,0 +1,77 @@
+[
+  {
+    "id": "health",
+    "label": "身体健康",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "marriage",
+    "label": "婚姻感情",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "pregnancy",
+    "label": "怀孕分娩",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "education",
+    "label": "求学考试",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "work",
+    "label": "工作就业",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "business",
+    "label": "经营求财",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "travel",
+    "label": "出行出国",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "missing_person",
+    "label": "行人走失",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "criminal",
+    "label": "刑事案件",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "litigation",
+    "label": "官司诉讼",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "sports",
+    "label": "体育竞赛",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "weather",
+    "label": "天时气象",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "geography",
+    "label": "地理环境",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "life",
+    "label": "人生机遇",
+    "status": "awaiting_book_source_review"
+  },
+  {
+    "id": "lost_item",
+    "label": "钱物丢失",
+    "status": "awaiting_book_source_review"
+  }
+]
