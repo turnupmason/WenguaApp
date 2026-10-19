@@ -57,7 +57,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.002",
@@ -84,7 +85,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.003",
@@ -111,7 +113,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.004",
@@ -142,7 +145,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.005",
@@ -173,7 +177,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.006",
@@ -214,7 +219,8 @@
       ],
       "notes": "书中用“或”列出二选一，不应同时强制满足。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.007",
@@ -268,7 +274,8 @@
       ],
       "notes": "保留两个作者明确列出的替代组合，首分支辛与艮宫的具体下临关系仍需审查。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.008",
@@ -295,7 +302,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_03_九遁.009",
@@ -325,7 +333,8 @@
       "alternatives": [],
       "notes": "按原文杜门或开门均属候选。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.010",
@@ -360,7 +369,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.011",
@@ -395,7 +405,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.012",
@@ -430,7 +441,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.013",
@@ -461,7 +473,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.014",
@@ -496,7 +509,8 @@
       "alternatives": [],
       "notes": "原文说丁己癸合杜门，天/地盘搭配需要复核",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.015",
@@ -523,7 +537,8 @@
       "alternatives": [],
       "notes": "原书附加太白入荧的复合条件仅对应捉逃者，不是人假定义条件。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.016",
@@ -554,7 +569,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.017",
@@ -585,7 +601,8 @@
       "alternatives": [],
       "notes": "原文有又一说；保留观点分歧，不强行合并。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_08_三诈五假.018",
@@ -616,7 +633,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.good_09_三奇之灵.019",
@@ -656,7 +674,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:09"
     },
     {
       "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.020",
@@ -678,7 +697,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:06"
     },
     {
       "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.021",
@@ -700,7 +720,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:06"
     },
     {
       "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.022",
@@ -722,7 +743,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:06"
     },
     {
       "variant_id": "shenqi.ch05.good_10_奇游禄位.023",
@@ -753,7 +775,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:10"
     },
     {
       "variant_id": "shenqi.ch05.good_10_奇游禄位.024",
@@ -784,7 +807,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:10"
     },
     {
       "variant_id": "shenqi.ch05.good_10_奇游禄位.025",
@@ -815,7 +839,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:10"
     },
     {
       "variant_id": "shenqi.ch05.good_01.026",
@@ -837,7 +862,8 @@
       "alternatives": [],
       "notes": "若门迫或在震三宫，原书明确说吉事变凶；自动候选必须保留优先级和反证。",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:01"
     },
     {
       "variant_id": "shenqi.ch05.good_02.027",
@@ -859,7 +885,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:good_formation:02"
     },
     {
       "variant_id": "shenqi.ch05.bad_01.028",
@@ -881,7 +908,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:01"
     },
     {
       "variant_id": "shenqi.ch05.bad_02.029",
@@ -903,7 +931,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:02"
     },
     {
       "variant_id": "shenqi.ch05.bad_03.030",
@@ -925,7 +954,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:03"
     },
     {
       "variant_id": "shenqi.ch05.bad_04.031",
@@ -947,7 +977,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:04"
     },
     {
       "variant_id": "shenqi.ch05.bad_05.032",
@@ -969,7 +1000,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:05"
     },
     {
       "variant_id": "shenqi.ch05.bad_06.033",
@@ -991,7 +1023,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:06"
     },
     {
       "variant_id": "shenqi.ch05.bad_07.034",
@@ -1013,7 +1046,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:07"
     },
     {
       "variant_id": "shenqi.ch05.bad_08.035",
@@ -1035,7 +1069,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:08"
     },
     {
       "variant_id": "shenqi.ch05.bad_09.036",
@@ -1057,7 +1092,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:09"
     },
     {
       "variant_id": "shenqi.ch05.bad_11.037",
@@ -1079,7 +1115,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:11"
     },
     {
       "variant_id": "shenqi.ch05.bad_12.038",
@@ -1101,7 +1138,8 @@
       "alternatives": [],
       "notes": "",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:12"
     },
     {
       "variant_id": "shenqi.ch05.bad_26.039",
@@ -1123,7 +1161,9 @@
       "alternatives": [],
       "notes": "作者明确反对把任意癸参与组合都归为天网四张；网高网低两种说法互相矛盾",
       "review_status": "draft",
-      "auto_approved": false
+      "auto_approved": false,
+      "formation_concept_id": "formation:bad_formation:26"
     }
-  ]
+  ],
+  "cross_reference": "formation_concept_id exactly matches chapter 5 concept_index.json and semantic_assertions concept_id; source wording local only"
 }
