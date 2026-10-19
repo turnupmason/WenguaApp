@@ -1,0 +1,368 @@
+{
+  "schema": "wengua_education_case_index_v1",
+  "chapter_key": "shenqi/education_prediction_ch04/v1",
+  "source_sha256": "88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43",
+  "chapter_name": "第四章 求学考试预测",
+  "source_lines": 349,
+  "source_cases": 5,
+  "source_original_chart_rows": 45,
+  "source_numbered_reasoning_sections": 17,
+  "whole_case_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "notes": [
+    "Case 1 and 2 mid-case student birth years disclosed after early prediction are validation within same case, not extra cases",
+    "Case 4 book reports failure for 1997 PhD goal, then a successful 1998 attempt. Scope original verdict to 1997 question; no new chart in book for 1998",
+    "Case 5 historic outcome/telephone messages are narrated before nine-palace chart; the five numbered explanation headings each span multiple paragraphs, fully preserve the source ranges rather than just headings",
+    "Case 5 opening contains known high exam score allegation and exam-center notice; keep as initial facts, but October updates as book validation",
+    "Quoted family claim that traditional divination is scientific is book speech, not independent scientific validation"
+  ],
+  "cases": [
+    {
+      "index": 1,
+      "case_id": "shenqi.education.father_son_university",
+      "event_family_id": "shenqi.education.father_son_university",
+      "title": "父问儿子高考分数、大学志愿",
+      "source_lines": [
+        24,
+        87
+      ],
+      "original_question_source_lines": [
+        26,
+        28
+      ],
+      "original_nine_palace_row_lines": [
+        56,
+        64
+      ],
+      "author_analysis_numbered_lines": [
+        69,
+        71,
+        81
+      ],
+      "author_full_analysis_ranges": [
+        [
+          69,
+          69
+        ],
+        [
+          71,
+          71
+        ],
+        [
+          81,
+          81
+        ]
+      ],
+      "author_predicted_or_interpreted_source_lines": [
+        73,
+        83
+      ],
+      "book_validation_lines": [
+        75,
+        79,
+        85,
+        87
+      ],
+      "cast": {
+        "local_date": "1996-07-12",
+        "hour_ganzhi": "丙戌",
+        "dun": "yin",
+        "ju": 8,
+        "xun": "甲申"
+      },
+      "asker_subject_relation": "father_asking_for_son",
+      "topic": "university_exam_and_major",
+      "reasoning_topics": [
+        "时干丙代表儿子、落艮长生旺相、鸟跌穴与死门反证",
+        "天辅、值符、丁奇与景门按双方落宫作分数证据",
+        "得知年命丁后再判断志愿方向与专业、结合学校年干宫",
+        "后续确认清华应用物理录取；中途告知估分和生年是同案验证"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error": false,
+      "independent_external_verification": "not_verified",
+      "single_answer_for_one_cast": true,
+      "raw_chart_text_only_in_private_sqlite": true,
+      "case_family_split": "indivisible_event"
+    },
+    {
+      "index": 2,
+      "case_id": "shenqi.education.mother_son_exam",
+      "event_family_id": "shenqi.education.mother_son_exam",
+      "title": "母亲问儿子能否高考录取",
+      "source_lines": [
+        89,
+        150
+      ],
+      "original_question_source_lines": [
+        91,
+        93
+      ],
+      "original_nine_palace_row_lines": [
+        121,
+        129
+      ],
+      "author_analysis_numbered_lines": [
+        134,
+        140,
+        146
+      ],
+      "author_full_analysis_ranges": [
+        [
+          134,
+          134
+        ],
+        [
+          140,
+          140
+        ],
+        [
+          146,
+          146
+        ]
+      ],
+      "author_predicted_or_interpreted_source_lines": [
+        136,
+        142,
+        148
+      ],
+      "book_validation_lines": [
+        138,
+        144,
+        150
+      ],
+      "cast": {
+        "local_date": "1996-04-22",
+        "hour_ganzhi": "己巳",
+        "dun": "yang",
+        "ju": 8,
+        "xun": "甲子"
+      },
+      "asker_subject_relation": "mother_asking_for_son",
+      "topic": "university_admission",
+      "reasoning_topics": [
+        "时干己落乾空亡、死门、己丙与文章丁奇阻滞",
+        "天辅/值符/景门/年干与候选人的相生克结合",
+        "后知年命乙再比较大学录取与自费途径",
+        "最终四百多分未过正常录取线，原书提出自费作为备选"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error": false,
+      "independent_external_verification": "not_verified",
+      "single_answer_for_one_cast": true,
+      "raw_chart_text_only_in_private_sqlite": true,
+      "case_family_split": "indivisible_event"
+    },
+    {
+      "index": 3,
+      "case_id": "shenqi.education.father_son_self_funded",
+      "event_family_id": "shenqi.education.father_son_self_funded",
+      "title": "父问儿子能否自费读大学",
+      "source_lines": [
+        152,
+        203
+      ],
+      "original_question_source_lines": [
+        154,
+        156
+      ],
+      "original_nine_palace_row_lines": [
+        184,
+        192
+      ],
+      "author_analysis_numbered_lines": [
+        197,
+        199,
+        201
+      ],
+      "author_full_analysis_ranges": [
+        [
+          197,
+          197
+        ],
+        [
+          199,
+          199
+        ],
+        [
+          201,
+          201
+        ]
+      ],
+      "author_predicted_or_interpreted_source_lines": [
+        197,
+        199,
+        201
+      ],
+      "book_validation_lines": [
+        203
+      ],
+      "cast": {
+        "local_date": "1996-07-04",
+        "hour_ganzhi": "庚戌",
+        "dun": "yin",
+        "ju": 3,
+        "xun": "甲辰"
+      },
+      "asker_subject_relation": "father_asking_for_son",
+      "topic": "exam_score_and_paid_admission",
+      "reasoning_topics": [
+        "丁奇年命及文章受丁癸凶格与伤门反证、时干庚杜门",
+        "年干学校克相关落宫但考生又克天辅考试院等有录取余地",
+        "日干父亲及主考/学校落宫支持通过父亲努力走自费通道",
+        "反馈427分与最低418分、自费大学计算机专业录取"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error": false,
+      "independent_external_verification": "not_verified",
+      "single_answer_for_one_cast": true,
+      "raw_chart_text_only_in_private_sqlite": true,
+      "case_family_split": "indivisible_event"
+    },
+    {
+      "index": 4,
+      "case_id": "shenqi.education.self_phd_exam",
+      "event_family_id": "shenqi.education.self_phd_exam",
+      "title": "本人问报考北大心理学博士",
+      "source_lines": [
+        205,
+        260
+      ],
+      "original_question_source_lines": [
+        207,
+        211
+      ],
+      "original_nine_palace_row_lines": [
+        239,
+        247
+      ],
+      "author_analysis_numbered_lines": [
+        252,
+        254,
+        256
+      ],
+      "author_full_analysis_ranges": [
+        [
+          252,
+          252
+        ],
+        [
+          254,
+          254
+        ],
+        [
+          256,
+          256
+        ]
+      ],
+      "author_predicted_or_interpreted_source_lines": [
+        252,
+        254,
+        256
+      ],
+      "book_validation_lines": [
+        260
+      ],
+      "cast": {
+        "local_date": "1996-11-03",
+        "hour_ganzhi": "壬申",
+        "dun": "yin",
+        "ju": 2,
+        "xun": "甲子"
+      },
+      "asker_subject_relation": "self_exam_candidate",
+      "topic": "doctoral_admission",
+      "reasoning_topics": [
+        "日干兼时干壬同落乾宫虽旺相但空亡、伤门天柱不利",
+        "丁奇文章和景门试卷同时受不同凶星格局约束",
+        "年干丙学校和天辅考试院克考生及文章所在宫",
+        "1997未考取，与1998后又考取不同年度的后续说明不重建盘"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error": false,
+      "independent_external_verification": "not_verified",
+      "single_answer_for_one_cast": true,
+      "raw_chart_text_only_in_private_sqlite": true,
+      "case_family_split": "indivisible_event"
+    },
+    {
+      "index": 5,
+      "case_id": "shenqi.education.us_medical_exam_dispute",
+      "event_family_id": "shenqi.education.us_medical_exam_dispute",
+      "title": "代问美国行医执照高分被质疑与申诉录取",
+      "source_lines": [
+        262,
+        349
+      ],
+      "original_question_source_lines": [
+        264,
+        284
+      ],
+      "original_nine_palace_row_lines": [
+        312,
+        320
+      ],
+      "author_analysis_numbered_lines": [
+        325,
+        331,
+        337,
+        341,
+        345
+      ],
+      "author_full_analysis_ranges": [
+        [
+          325,
+          329
+        ],
+        [
+          331,
+          335
+        ],
+        [
+          337,
+          339
+        ],
+        [
+          341,
+          343
+        ],
+        [
+          345,
+          349
+        ]
+      ],
+      "author_predicted_or_interpreted_source_lines": [
+        268
+      ],
+      "book_validation_lines": [
+        270,
+        272,
+        274,
+        276,
+        278,
+        280
+      ],
+      "cast": {
+        "local_date": "1997-08-23",
+        "hour_ganzhi": "癸卯",
+        "dun": "yin",
+        "ju": 1,
+        "xun": "甲午"
+      },
+      "asker_subject_relation": "father_asking_for_daughter",
+      "topic": "medical_licensing_exam_dispute_appeal",
+      "reasoning_topics": [
+        "伏吟、开门/天乙和值符推是否诉讼及费用，原书建议申诉非打官司",
+        "月格、玄武、休门天任、年命己与阻滞的善意判断",
+        "六合证据、天辅丁奇丙奇生时干，原书提出补集证据",
+        "天辅考试中心与时干落宫生克、继续录取可能",
+        "年命旬空填实、内外宫和伏吟据寒露转戌月断通知日期"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_error": false,
+      "independent_external_verification": "not_verified",
+      "single_answer_for_one_cast": true,
+      "raw_chart_text_only_in_private_sqlite": true,
+      "case_family_split": "indivisible_event"
+    }
+  ]
+}
