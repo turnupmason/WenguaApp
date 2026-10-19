@@ -1,0 +1,394 @@
+{
+  "schema": "wengua_shenqi_marriage_case_index_v1",
+  "book": "shenqi",
+  "chapter_key": "shenqi/marriage_prediction_ch02/v1",
+  "source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+  "chapter_title": "第二章 恋爱婚姻预测",
+  "source_lines": 367,
+  "source_case_families": 6,
+  "complete_nine_palace_text_charts": 6,
+  "author_numbered_analysis_steps": 23,
+  "verdict_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "editorial_caveats": [
+    "Case3 author analysis deviates from its preserved chart rows, editorial flag line175",
+    "Case5 time-stem Ding location differs between narrative and chart, editorial flag line284",
+    "Case6 1997 earlier no-chart phone advice and 1998-04-22 chart are separate source-time layers within the SAME continuing marriage event family",
+    "Case6 user's source ends at line367 after numbered step4; no unprovided later continuation may be invented"
+  ],
+  "cases": [
+    {
+      "case_number": 1,
+      "event_family_id": "shenqi.marriage.mother_asks_son_courtship",
+      "case_id": "shenqi.marriage.mother_asks_son_courtship",
+      "case_title": "母亲问儿子新恋爱能否谈成",
+      "source_case_span": [
+        17,
+        68
+      ],
+      "question_context_span": [
+        19,
+        25
+      ],
+      "source_nine_palace_table_span": [
+        43,
+        51
+      ],
+      "author_numbered_step_lines": [
+        54,
+        58,
+        64
+      ],
+      "author_judgment_source_lines": [
+        60,
+        66
+      ],
+      "author_book_feedback_lines": [
+        56,
+        62,
+        68
+      ],
+      "casting": {
+        "querent": "mother",
+        "subject": "son",
+        "focus": "relationship_outcome",
+        "dun": "yang",
+        "ju": 2,
+        "hour": "甲戌",
+        "date": "1997-01-07",
+        "value_star": "天冲星",
+        "value_door": "伤门",
+        "star_palace": 3,
+        "door_palace": 3
+      },
+      "method_key_points": [
+        "乙庚两宫相生不代表男方愿意",
+        "庚临杜门螣蛇伏吟表示男方阻滞",
+        "六合落坤逢死门空亡，对婚事不利",
+        "最终作者断不成并由书内后续印证"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    },
+    {
+      "case_number": 2,
+      "event_family_id": "shenqi.marriage.mother_asks_daughter_marriage",
+      "case_id": "shenqi.marriage.mother_asks_daughter_marriage",
+      "case_title": "母亲问女儿与年长离婚男教师婚事",
+      "source_case_span": [
+        70,
+        130
+      ],
+      "question_context_span": [
+        72,
+        78
+      ],
+      "source_nine_palace_table_span": [
+        96,
+        104
+      ],
+      "author_numbered_step_lines": [
+        107,
+        113,
+        119,
+        125
+      ],
+      "author_judgment_source_lines": [
+        109,
+        115,
+        121,
+        127
+      ],
+      "author_book_feedback_lines": [
+        111,
+        117,
+        123,
+        129
+      ],
+      "casting": {
+        "querent": "mother",
+        "subject": "daughter",
+        "focus": "relationship_and_family_opposition",
+        "dun": "yang",
+        "ju": 6,
+        "hour": "壬戌",
+        "date": "1996-05-31",
+        "value_star": "天芮星",
+        "value_door": "死门",
+        "star_palace": 1,
+        "door_palace": 1
+      },
+      "method_key_points": [
+        "一般乙庚不如双方已知年命契合现实身份，作者主动调整取用",
+        "年干父母克六合说明父母反对",
+        "男女年命宫生与时干六合休门使婚姻可成",
+        "婚期以时干合当年干推断，反馈为1997夏结婚"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    },
+    {
+      "case_number": 3,
+      "event_family_id": "shenqi.marriage.young_man_divorce",
+      "case_id": "shenqi.marriage.young_man_divorce",
+      "case_title": "男青年保密的离婚、财物分割",
+      "source_case_span": [
+        132,
+        184
+      ],
+      "question_context_span": [
+        134,
+        148
+      ],
+      "source_nine_palace_table_span": [
+        166,
+        174
+      ],
+      "author_numbered_step_lines": [
+        178,
+        180,
+        182,
+        184
+      ],
+      "author_judgment_source_lines": [
+        136,
+        140
+      ],
+      "author_book_feedback_lines": [
+        138,
+        142
+      ],
+      "casting": {
+        "querent": "young_man",
+        "subject": "self_and_ex_spouse",
+        "focus": "divorce_money_timing",
+        "dun": "yang",
+        "ju": 6,
+        "hour": "丁巳",
+        "date": "1996-03-27",
+        "value_star": "天芮星",
+        "value_door": "死门",
+        "star_palace": 3,
+        "door_palace": 5,
+        "door_host_palace": 2
+      },
+      "method_key_points": [
+        "六合下临死门、乙庚冲宫及空亡断婚变",
+        "乙庚旺衰比较说明谁先提出",
+        "丁为时干、离婚文件，开门等提示已办手续",
+        "主客地盘与天盘戊，宫数结合断财物数字",
+        "原文分析部分十干与文字盘不一致，保留"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    },
+    {
+      "case_number": 4,
+      "event_family_id": "shenqi.marriage.middle_aged_woman_divorce",
+      "case_id": "shenqi.marriage.middle_aged_woman_divorce",
+      "case_title": "已婚女问丈夫外遇、协议离婚时间",
+      "source_case_span": [
+        186,
+        247
+      ],
+      "question_context_span": [
+        188,
+        194
+      ],
+      "source_nine_palace_table_span": [
+        212,
+        220
+      ],
+      "author_numbered_step_lines": [
+        223,
+        229,
+        235,
+        241
+      ],
+      "author_judgment_source_lines": [
+        225,
+        231,
+        237,
+        243
+      ],
+      "author_book_feedback_lines": [
+        227,
+        233,
+        239,
+        245
+      ],
+      "casting": {
+        "querent": "wife",
+        "subject": "spouses",
+        "focus": "affair_divorce_timing",
+        "dun": "yin",
+        "ju": 5,
+        "hour": "壬午",
+        "date": "1997-12-04",
+        "value_star": "天辅星",
+        "value_door": "杜门",
+        "star_palace": 1,
+        "door_palace": 5
+      },
+      "method_key_points": [
+        "乙庚不利、六合逢空等多条件",
+        "时干壬与丁奇互相关系被作者用于第三者证据",
+        "日干和时干另判双方离婚意愿",
+        "双方年命宫及未来木旺月判断可能结束时间",
+        "书内后续称次年达成协议"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    },
+    {
+      "case_number": 5,
+      "event_family_id": "shenqi.marriage.third_party_asks_marriage",
+      "case_id": "shenqi.marriage.third_party_asks_marriage",
+      "case_title": "女子为已婚男第三者问其能否结婚",
+      "source_case_span": [
+        249,
+        309
+      ],
+      "question_context_span": [
+        251,
+        257
+      ],
+      "source_nine_palace_table_span": [
+        275,
+        283
+      ],
+      "author_numbered_step_lines": [
+        287,
+        293,
+        299,
+        305
+      ],
+      "author_judgment_source_lines": [
+        289,
+        295,
+        301,
+        307
+      ],
+      "author_book_feedback_lines": [
+        291,
+        297,
+        309
+      ],
+      "casting": {
+        "querent": "unmarried_woman",
+        "subject": "married_man_and_wife",
+        "focus": "third_party_marriage_timing",
+        "dun": "yang",
+        "ju": 7,
+        "hour": "丁亥",
+        "date": "1996-12-29",
+        "value_star": "天英星",
+        "value_door": "景门",
+        "star_palace": 4,
+        "door_palace": 3
+      },
+      "method_key_points": [
+        "日干庚和丁奇及景门格局用于第三者纠纷",
+        "乙奇为该男原配且临六合休门",
+        "女子年命壬与丙奇、庚宫关系用于三角结构",
+        "内盘及值使数字推时间，书内后续印证",
+        "作者时干丁落五宫与转写盘不一致，保留"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    },
+    {
+      "case_number": 6,
+      "event_family_id": "shenqi.marriage.wife_asks_husband_affair",
+      "case_id": "shenqi.marriage.wife_asks_husband_affair",
+      "case_title": "妻子问丈夫外遇与能否维持婚姻",
+      "source_case_span": [
+        311,
+        367
+      ],
+      "question_context_span": [
+        319,
+        331
+      ],
+      "source_nine_palace_table_span": [
+        349,
+        357
+      ],
+      "author_numbered_step_lines": [
+        361,
+        363,
+        365,
+        367
+      ],
+      "author_judgment_source_lines": [
+        315,
+        321,
+        325
+      ],
+      "author_book_feedback_lines": [
+        317,
+        323
+      ],
+      "casting": {
+        "querent": "wife",
+        "subject": "spouses",
+        "focus": "affair_stability",
+        "dun": "yang",
+        "ju": 2,
+        "hour": "辛未",
+        "date": "1998-04-22",
+        "value_star": "天芮星",
+        "value_door": "死门",
+        "star_palace": 5,
+        "star_host_palace": 2,
+        "door_palace": 9,
+        "original_1997_call_has_no_full_chart": true
+      },
+      "method_key_points": [
+        "乙奇与庚两宫相生，六合与九地关联关系",
+        "丈夫戊子与妻子丁亥年命两个土宫冲中有比和",
+        "第三者丁奇落宫及丁壬合判对方身份",
+        "第三者年命癸巳、丙奇及宫位用于三角关系",
+        "1997电话无九宫；1998年再问有盘，绝不虚构前盘",
+        "上传原文到第367行即止，无最终完整后记"
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "source_document_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+      "review_status": "source_record_draft",
+      "one_time_one_chart_one_reading": true,
+      "source_transcription_not_independently_recast": true,
+      "case_family_split": "one_indivisible_event_not_multiturn_tasks"
+    }
+  ]
+}
