@@ -98,7 +98,7 @@ def parse_original(text):
     door_pairs=set();door_stems=set()
     for i in range(691,976):
         s=lines[i-1].strip()
-        m=re.match(r"(["+DOORS+r"])加(["+DOORS+r"乙丙丁戊己庚辛壬癸、]+)：",s)
+        m=re.match(rf"([{DOORS}])加([{DOORS}{STEMS}、]+)：",s)
         if not m:continue
         a,b=m.groups()
         if b in DOORS:
