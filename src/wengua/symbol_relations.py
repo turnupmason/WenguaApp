@@ -3,6 +3,7 @@
 All returns are cultural/source-extraction candidates, not final predictions.
 """
 from __future__ import annotations
+from collections import Counter
 from functools import lru_cache
 import json
 from pathlib import Path
@@ -35,8 +36,14 @@ def related(kind, members):
     for row in _data()["relations"]:
         if row["kind"]!=kind:continue
         target=tuple(row["members"])
-        match=(set(m)==set(target) and len(m)==len(target)
-               if kind in SYMMETRIC else m==target)
+        if kind in SYMMETRIC:
+            match=Counter(m)==Counter(target)
+        elif kind=="branch_punishment" and row.get("attributes",{}).get("mutual"):
+            match=Counter(m)==Counter(target)
+        elif kind=="branch_punishment" and row.get("attributes",{}).get("directed_cycle"):
+            match=len(m)==3 and m in (target,target[1:]+target[:1],target[2:]+target[:2])
+        else:
+            match=m==target
         if match:found.append(row)
     return found
 
