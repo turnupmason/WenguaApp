@@ -1,0 +1,298 @@
+{
+  "schema": "wengua-casting-procedures-v1",
+  "source_sha256": "177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2",
+  "entries": [
+    {
+      "id": "P01",
+      "step": 1,
+      "name": "calendar_to_ganzhi",
+      "lines": [
+        86,
+        86
+      ],
+      "precondition": "external calendar time-to-ganzhi derivation is available",
+      "operation": "Obtain sexagenary year/month/day/hour.",
+      "implemented": false,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P02",
+      "step": 2,
+      "name": "determine_active_solar_term",
+      "lines": [
+        22,
+        38,
+        88
+      ],
+      "precondition": "verified solar-term instant and date available",
+      "operation": "Select relevant term and its Yin/Yang and three yuan values.",
+      "implemented": false,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P03",
+      "step": 3,
+      "name": "day_futou",
+      "lines": [
+        38,
+        38,
+        114,
+        155
+      ],
+      "precondition": "known day sexagenary",
+      "operation": "Backtrack to nearest Jia/Ji day and classify yuan using that day's branch.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P04",
+      "step": 4,
+      "name": "bureau_lookup",
+      "lines": [
+        26,
+        38
+      ],
+      "precondition": "trusted solar-term and day-futou",
+      "operation": "Read Yin/Yang and bureau upper/middle/lower triad.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P05",
+      "step": 5,
+      "name": "ground_plate",
+      "lines": [
+        40,
+        42,
+        92
+      ],
+      "precondition": "dun/ju",
+      "operation": "Lay out Wu Ji Geng Xin Ren Gui Ding Bing Yi around 1..9 ascending/descending.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P06",
+      "step": 6,
+      "name": "hour_local_branch",
+      "lines": [
+        44,
+        46
+      ],
+      "precondition": "local clock and explicit day-boundary policy",
+      "operation": "Map two-hour periods to branches.",
+      "implemented": true,
+      "missing": "zi-hour across midnight needs policy",
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P07",
+      "step": 7,
+      "name": "hour_stem_five_rat",
+      "lines": [
+        48,
+        56
+      ],
+      "precondition": "known day stem and hour branch",
+      "operation": "Choose Zi-hour stem and increment through 12 branches.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P08",
+      "step": 8,
+      "name": "xun_head",
+      "lines": [
+        58,
+        62,
+        94
+      ],
+      "precondition": "trusted sexagenary hour",
+      "operation": "Locate 10-hour cycle head JiaZi/JiaXu/JiaShen/JiaWu/JiaChen/JiaYin.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P09",
+      "step": 9,
+      "name": "jia_hidden_instrument",
+      "lines": [
+        58,
+        62,
+        94
+      ],
+      "precondition": "xun head",
+      "operation": "Map six Jia hidden under six instruments and find original earth palace.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P10",
+      "step": 10,
+      "name": "value_star_and_door",
+      "lines": [
+        60,
+        64,
+        96
+      ],
+      "precondition": "known xun-head earth palace",
+      "operation": "Read fixed star and fixed door, with palace-5 special handling.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P11",
+      "step": 11,
+      "name": "value_star_tracks_hour_stem",
+      "lines": [
+        64,
+        70,
+        98
+      ],
+      "precondition": "hour heavenly stem assigned to ground palace",
+      "operation": "Move value star and its attached earth instrument to hour-stem ground palace.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P12",
+      "step": 12,
+      "name": "all_stars_rotate",
+      "lines": [
+        98,
+        102,
+        140,
+        162
+      ],
+      "precondition": "value star target on outer palace, host policy if center",
+      "operation": "Rotate rest of stars around outer ring preserving relative positions; center TianQin travels with TianRui.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P13",
+      "step": 13,
+      "name": "value_door_tracks_hourly_palace_number",
+      "lines": [
+        68,
+        72,
+        102,
+        184
+      ],
+      "precondition": "xun-head palace and hours since Jia",
+      "operation": "From xun-head palace, count hourly 1..9 forward in Yang or backward in Yin.",
+      "implemented": true,
+      "exception": "target palace 5 currently blocked instead of assuming center host",
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P14",
+      "step": 14,
+      "name": "remaining_doors_rotate",
+      "lines": [
+        102,
+        102,
+        143,
+        184
+      ],
+      "precondition": "value door target and original door host",
+      "operation": "Rotate remaining seven doors preserving clockwise ring order.",
+      "implemented": true,
+      "exception": "target 5 blocked",
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P15",
+      "step": 15,
+      "name": "eight_deities_track_value_star",
+      "lines": [
+        74,
+        76,
+        104,
+        145,
+        186
+      ],
+      "precondition": "actual target palace of value star",
+      "operation": "Small value deity begins with great value star, Yang clockwise, Yin counterclockwise.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P16",
+      "step": 16,
+      "name": "first_complete_worked_layout",
+      "lines": [
+        110,
+        149
+      ],
+      "precondition": "1995-06-11 supplied day癸酉 time丁巳 term芒种",
+      "operation": "Yang3 all 9 palace cells compared against user-provided text source; printed image independently unverified.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    },
+    {
+      "id": "P17",
+      "step": 17,
+      "name": "second_complete_worked_layout",
+      "lines": [
+        151,
+        188
+      ],
+      "precondition": "1995-08-13 supplied day丙子 time戊戌 term立秋",
+      "operation": "Yin8 all 9 palace cells compared against user-provided OCR-restored prose table; printed image independently unverified.",
+      "implemented": true,
+      "kind": "casting_procedure",
+      "source_book": "shenqi",
+      "source_section": "shijia_qiju",
+      "status": "source_extracted_not_final_professional_approved"
+    }
+  ]
+}
