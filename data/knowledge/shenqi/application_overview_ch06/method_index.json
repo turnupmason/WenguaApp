@@ -1,0 +1,1951 @@
+{
+  "schema": "wengua_shenqi_ch06_method_index_v1",
+  "source_sha256": "50c76ce5354d3378a842d6117f06c239bcdfe2f04786663c2e89f606d98c402e",
+  "source": {
+    "book": "shenqi",
+    "chapter_id": "application_overview_ch06",
+    "title": "奇门遁甲应用概述",
+    "lines": 240
+  },
+  "privacy": "Original passages and case feedback only in local SQLite; public rules are short paraphrases.",
+  "status": "extracted_draft_not_approved",
+  "method_count": 20,
+  "role_count": 68,
+  "timing_count": 14,
+  "five_no_encounter_count": 10,
+  "sections": [
+    {
+      "name": "趋吉避凶",
+      "lines": [
+        4,
+        132
+      ]
+    },
+    {
+      "name": "几种判断方法",
+      "lines": [
+        134,
+        152
+      ]
+    },
+    {
+      "name": "用神主要特征",
+      "lines": [
+        154,
+        184
+      ]
+    },
+    {
+      "name": "判断根本思路",
+      "lines": [
+        186,
+        204
+      ]
+    },
+    {
+      "name": "定应期主要方法",
+      "lines": [
+        206,
+        240
+      ]
+    }
+  ],
+  "method_steps": [
+    {
+      "concept_id": "principle:urgent_follow_zhifu",
+      "kind": "interpretive_principle",
+      "title": "急则从神",
+      "source_lines": [
+        14,
+        20
+      ],
+      "method_type": "urgent_action",
+      "requires": [
+        "celestial_zhifu_palace",
+        "earth_zhifu_palace"
+      ],
+      "caution": "紧急情况下提出从值符方向选择；并非现代安全保证",
+      "depends_on_concept_ids": [
+        "deity:值符"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:slow_follow_door",
+      "kind": "interpretive_principle",
+      "title": "缓从门",
+      "source_lines": [
+        22,
+        70
+      ],
+      "method_type": "planned_direction",
+      "requires": [
+        "avoid_five_no_encounter",
+        "avoid_hour_stem_tomb",
+        "choose_auspicious_doors",
+        "check_season_and_palace"
+      ],
+      "caution": "先检查具体行动与当事人的用神，不可单独看吉门",
+      "depends_on_concept_ids": [
+        "door:开",
+        "door:休",
+        "door:生"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:five_no_encounter",
+      "kind": "interpretive_principle",
+      "title": "五不遇时",
+      "source_lines": [
+        26,
+        38
+      ],
+      "method_type": "time_constraint",
+      "requires": [
+        "day_stem",
+        "hour_ganzhi"
+      ],
+      "caution": "原书明确10种对照；含1995年历史个案，完整九宫盘未提供",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:avoid_bad_formation",
+      "kind": "interpretive_principle",
+      "title": "择方时避开特定凶格",
+      "source_lines": [
+        40,
+        50
+      ],
+      "method_type": "planned_direction",
+      "requires": [
+        "method_consistent_chart",
+        "star_door_deity_palace"
+      ],
+      "caution": "吉门优先于只得三奇，特殊事项可能适用伤门或死门",
+      "depends_on_concept_ids": [
+        "door:伤",
+        "door:死"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:deity_direction_supplement",
+      "kind": "interpretive_principle",
+      "title": "神盘作为择方辅助",
+      "source_lines": [
+        52,
+        54
+      ],
+      "method_type": "planned_direction",
+      "requires": [
+        "celestial_deities"
+      ],
+      "caution": "太阴六合九地九天不同功能; 本书采用天盘八神",
+      "depends_on_concept_ids": [
+        "deity:太阴",
+        "deity:六合",
+        "deity:九地",
+        "deity:九天"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:season_and_location_joint",
+      "kind": "interpretive_principle",
+      "title": "得时得地与反证",
+      "source_lines": [
+        56,
+        70
+      ],
+      "method_type": "evaluation",
+      "requires": [
+        "solar_term",
+        "season",
+        "palace",
+        "door",
+        "star",
+        "heaven_stem",
+        "earth_stem"
+      ],
+      "caution": "强烈反对简单标签: 吉门休囚受克不能直接断吉，凶门无气也需降权",
+      "depends_on_concept_ids": [
+        "door:生"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:excluded_other_system_techniques",
+      "kind": "interpretive_principle",
+      "title": "天马、天三门、地四户、地私门",
+      "source_lines": [
+        72,
+        80
+      ],
+      "method_type": "excluded_method",
+      "requires": [],
+      "caution": "作者指出来源于六壬，不作为本书奇门择时择方方法，绝不自动激活",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:host_guest_dynamics",
+      "kind": "interpretive_principle",
+      "title": "主客关系五种视角",
+      "source_lines": [
+        82,
+        104
+      ],
+      "method_type": "relationship",
+      "requires": [
+        "moving_static",
+        "action_order",
+        "initiative",
+        "heaven_earth",
+        "distance"
+      ],
+      "caution": "原文称大致四条，却实际列五条；作为五条保存",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:host_guest_hour_polarity",
+      "kind": "interpretive_principle",
+      "title": "五阳时利客、五阴时利主",
+      "source_lines": [
+        98,
+        102
+      ],
+      "method_type": "relationship",
+      "requires": [
+        "hour_stem"
+      ],
+      "caution": "只记录传统规则的条件，不能单独输出最优行动",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:host_guest_heaven_earth",
+      "kind": "interpretive_principle",
+      "title": "天盘星与地盘宫生克论主客",
+      "source_lines": [
+        104,
+        116
+      ],
+      "method_type": "comparison",
+      "requires": [
+        "star_element",
+        "palace_element",
+        "season"
+      ],
+      "caution": "作者明确若从主方立场说结论不同，客/主两立场要标记",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:major_event_stars",
+      "kind": "interpretive_principle",
+      "title": "大事看星",
+      "source_lines": [
+        120,
+        122
+      ],
+      "method_type": "priority",
+      "requires": [
+        "inquiry_importance",
+        "star",
+        "season",
+        "palace"
+      ],
+      "caution": "特定重要事情需要额外看九星，仍需综合其他证据",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:relative_auspice",
+      "kind": "interpretive_principle",
+      "title": "吉凶的相对性",
+      "source_lines": [
+        124,
+        132
+      ],
+      "method_type": "guard",
+      "requires": [
+        "supportive_evidence",
+        "contrary_evidence"
+      ],
+      "caution": "亦吉亦凶、审慎、尽人事；不把传统吉凶当现实确定性",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:method_three_powers",
+      "kind": "interpretive_principle",
+      "title": "三才判法",
+      "source_lines": [
+        140,
+        144
+      ],
+      "method_type": "interpretation_path",
+      "requires": [
+        "sky",
+        "human",
+        "earth"
+      ],
+      "caution": "书引古籍不同观点必须保留原引用出处，优先级随所问而定",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:method_static_moving",
+      "kind": "interpretive_principle",
+      "title": "动静判法",
+      "source_lines": [
+        146,
+        150
+      ],
+      "method_type": "interpretation_path",
+      "requires": [
+        "query_motion",
+        "value_star",
+        "value_door",
+        "hour_stem",
+        "direction"
+      ],
+      "caution": "静看符使时干，动看方位宫; 来源观点区别不混淆",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:method_multi_yongshen",
+      "kind": "interpretive_principle",
+      "title": "多重用神判断",
+      "source_lines": [
+        152,
+        184
+      ],
+      "method_type": "interpretation_path",
+      "requires": [
+        "domain",
+        "questioner",
+        "subject",
+        "relationship",
+        "chart"
+      ],
+      "caution": "当事人关系决定兼看年/月/日/时干; 一个符号多义，不按单一领域锁死",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:horizontal_palace_comparison",
+      "kind": "interpretive_principle",
+      "title": "横看跨宫五行",
+      "source_lines": [
+        186,
+        194
+      ],
+      "method_type": "reasoning_axis",
+      "requires": [
+        "subject_palace",
+        "object_palace"
+      ],
+      "caution": "比较的是所取用神的落宫五行，而非盲按原始符号元素",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:vertical_same_palace_comparison",
+      "kind": "interpretive_principle",
+      "title": "竖看同宫天人地神",
+      "source_lines": [
+        196,
+        196
+      ],
+      "method_type": "reasoning_axis",
+      "requires": [
+        "palace",
+        "star",
+        "door",
+        "earth_stem",
+        "heaven_stem"
+      ],
+      "caution": "同宫层间生克、长生墓绝、干克应、地支刑冲等；八神通常不和宫直接比较五行",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:inner_outer_speed",
+      "kind": "interpretive_principle",
+      "title": "内外远近快慢",
+      "source_lines": [
+        198,
+        198
+      ],
+      "method_type": "reasoning_axis",
+      "requires": [
+        "dun",
+        "palace"
+      ],
+      "caution": "阳/阴相反，中五宫未分类；伏吟迟、反吟速另看",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:strength_and_season",
+      "kind": "interpretive_principle",
+      "title": "高低旺衰",
+      "source_lines": [
+        200,
+        204
+      ],
+      "method_type": "reasoning_axis",
+      "requires": [
+        "season",
+        "palace",
+        "stem",
+        "door",
+        "star"
+      ],
+      "caution": "使用第四章门、九星不同旺衰公式以及十干生旺死绝",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "principle:timing_three_priorities",
+      "kind": "interpretive_principle",
+      "title": "应期三大纲领",
+      "source_lines": [
+        208,
+        216
+      ],
+      "method_type": "timing_policy",
+      "requires": [
+        "distance",
+        "speed",
+        "branch",
+        "stem",
+        "value_star",
+        "value_door"
+      ],
+      "caution": "近快可看日时、远慢可看年月；先支后干，先符后使；非具体应验保证",
+      "depends_on_concept_ids": [],
+      "review_status": "draft"
+    }
+  ],
+  "yongshen_candidates": [
+    {
+      "concept_id": "role:stem_年干:family:1",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年干",
+      "domain": "family",
+      "meaning": "父母或最高领导",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "relationship",
+      "requires": [
+        "subject_relation"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_月干:family:2",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:月干",
+      "domain": "family",
+      "meaning": "兄弟姐妹、同事或中层领导",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "relationship",
+      "requires": [
+        "subject_relation"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_日干:general:3",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:日干",
+      "domain": "general",
+      "meaning": "求测者本人",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "main",
+      "requires": [
+        "who_is_questioner"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_时干:general:4",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "domain": "general",
+      "meaning": "所问事情、子女或下级",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "main",
+      "requires": [
+        "inquiry_type",
+        "subject_relation"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_开:work:5",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:开",
+      "domain": "work",
+      "meaning": "工作、单位及领导",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_开:business:6",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:开",
+      "domain": "business",
+      "meaning": "门面、店铺、柜台",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_开:litigation:7",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:开",
+      "domain": "litigation",
+      "meaning": "法官",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_休:work:8",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:休",
+      "domain": "work",
+      "meaning": "退休干部、公门人或事务工作者",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_生:business:9",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:生",
+      "domain": "business",
+      "meaning": "生意、老板、财务人员、房屋、利息",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_伤:criminal:10",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:伤",
+      "domain": "criminal",
+      "meaning": "公安捕盗、讨债者、竞争者",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_伤:travel:11",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:伤",
+      "domain": "travel",
+      "meaning": "车辆、司机、船只",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_伤:health:12",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:伤",
+      "domain": "health",
+      "meaning": "身体受伤部位",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_杜:work:13",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:杜",
+      "domain": "work",
+      "meaning": "武官、军警、保密单位",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_杜:health:14",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:杜",
+      "domain": "health",
+      "meaning": "血栓、中风的传统类象",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_杜:missing_person:15",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:杜",
+      "domain": "missing_person",
+      "meaning": "躲藏处或闭塞",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_景:education:16",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "domain": "education",
+      "meaning": "考卷、文章",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_景:litigation:17",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "domain": "litigation",
+      "meaning": "起诉书",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_景:business:18",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "domain": "business",
+      "meaning": "规划及文书",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_景:health:19",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "domain": "health",
+      "meaning": "传统血光象意",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_死:lost_property:20",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:死",
+      "domain": "lost_property",
+      "meaning": "锁或墓地",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_死:geography:21",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:死",
+      "domain": "geography",
+      "meaning": "地皮、坟墓",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_惊:litigation:22",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:惊",
+      "domain": "litigation",
+      "meaning": "官司、诉讼、律师",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_惊:work:23",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:惊",
+      "domain": "work",
+      "meaning": "教师或外交官",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天蓬星:criminal:24",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天蓬星",
+      "domain": "criminal",
+      "meaning": "抢劫杀人犯",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_玄武:criminal:25",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:玄武",
+      "domain": "criminal",
+      "meaning": "小偷小摸",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天芮星:health:26",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天芮星",
+      "domain": "health",
+      "meaning": "疾病及病神",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天芮星:pregnancy:27",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天芮星",
+      "domain": "pregnancy",
+      "meaning": "孕妇",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天心星:health:28",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天心星",
+      "domain": "health",
+      "meaning": "医生与医疗",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_乙:health:29",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:乙",
+      "domain": "health",
+      "meaning": "医生与医药",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_乙:marriage:30",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:乙",
+      "domain": "marriage",
+      "meaning": "女方",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_六合:marriage:31",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:六合",
+      "domain": "marriage",
+      "meaning": "媒人",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_六合:business:32",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:六合",
+      "domain": "business",
+      "meaning": "中介经纪人",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_六合:litigation:33",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:六合",
+      "domain": "litigation",
+      "meaning": "证人证物",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_六合:missing_person:34",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:六合",
+      "domain": "missing_person",
+      "meaning": "走失方位",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_六合:criminal:35",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:六合",
+      "domain": "criminal",
+      "meaning": "逃犯",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_乾:family:36",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:乾",
+      "domain": "family",
+      "meaning": "父亲",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_坤:family:37",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:坤",
+      "domain": "family",
+      "meaning": "母亲",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_巽:family:38",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:巽",
+      "domain": "family",
+      "meaning": "年长姐姐",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_艮:family:39",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:艮",
+      "domain": "family",
+      "meaning": "年幼弟弟或少男",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_兑:family:40",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:兑",
+      "domain": "family",
+      "meaning": "少女",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_离:direction:41",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:离",
+      "domain": "direction",
+      "meaning": "南方来讯息",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_坤:direction:42",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:坤",
+      "domain": "direction",
+      "meaning": "西南方问事方向",
+      "source_lines": [
+        166,
+        166
+      ],
+      "priority": "contextual",
+      "requires": [
+        "matching_question",
+        "explicit_subject"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天芮星:health:43",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天芮星",
+      "domain": "health",
+      "meaning": "疾病部位及程度候选",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_伤:health:44",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:伤",
+      "domain": "health",
+      "meaning": "伤病辅助征象",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_死:health:45",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:死",
+      "domain": "health",
+      "meaning": "伤病辅助征象",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_杜:health:46",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:杜",
+      "domain": "health",
+      "meaning": "伤病辅助征象",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_景:health:47",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "domain": "health",
+      "meaning": "伤病辅助征象",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_白虎:health:48",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:白虎",
+      "domain": "health",
+      "meaning": "伤病相关传统象意",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_玄武:health:49",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:玄武",
+      "domain": "health",
+      "meaning": "伤病相关传统象意",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:deity_螣蛇:health:50",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "deity:螣蛇",
+      "domain": "health",
+      "meaning": "伤病相关传统象意",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_时干:health:51",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "domain": "health",
+      "meaning": "所测疾病事项",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_日干:health:52",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:日干",
+      "domain": "health",
+      "meaning": "患者亲自问事",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_年干:health:53",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年干",
+      "domain": "health",
+      "meaning": "子女询问父母疾病",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_月干:health:54",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:月干",
+      "domain": "health",
+      "meaning": "询问同事或兄弟姐妹疾病",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_时干:health:55",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "domain": "health",
+      "meaning": "父母询问儿女疾病",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_乾:health:56",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:乾",
+      "domain": "health",
+      "meaning": "问父亲可兼看",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_坤:health:57",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:坤",
+      "domain": "health",
+      "meaning": "问母亲可兼看",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_艮:health:58",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:艮",
+      "domain": "health",
+      "meaning": "问少男可兼看",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_兑:health:59",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:兑",
+      "domain": "health",
+      "meaning": "问少女可兼看",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_天心星:health:60",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天心星",
+      "domain": "health",
+      "meaning": "医生、医疗治疗辅助",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_乙:health:61",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:乙",
+      "domain": "health",
+      "meaning": "医药辅助",
+      "source_lines": [
+        170,
+        170
+      ],
+      "priority": "additional",
+      "requires": [
+        "relation_to_subject",
+        "multiple_evidence"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_年命:general:62",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年命",
+      "domain": "general",
+      "meaning": "出生年的年干兼看，非当前问测年干",
+      "source_lines": [
+        172,
+        172
+      ],
+      "priority": "additional",
+      "requires": [
+        "birth_year_reliably_known"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:star_*:weather:63",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:*",
+      "domain": "weather",
+      "meaning": "九星为主",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:door_*:general_personal:64",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:*",
+      "domain": "general_personal",
+      "meaning": "八门为主",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:trigram_*:geography:65",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "trigram:*",
+      "domain": "geography",
+      "meaning": "九宫为主",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_年月日时:family:66",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年月日时",
+      "domain": "family",
+      "meaning": "六亲四柱关系为主",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_日干:general:67",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:日干",
+      "domain": "general",
+      "meaning": "求测人纲领",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "role:stem_时干:general:68",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "domain": "general",
+      "meaning": "所问事纲领",
+      "source_lines": [
+        184,
+        184
+      ],
+      "priority": "principal",
+      "requires": [
+        "matching_domain"
+      ],
+      "review_status": "draft"
+    }
+  ],
+  "timing_candidates": [
+    {
+      "concept_id": "timing:value_symbol_punish_clash_to_combine",
+      "kind": "timing_candidate",
+      "source_lines": [
+        210,
+        216
+      ],
+      "requires": [
+        "value_star",
+        "jia_hidden_branch",
+        "branch_clash_or_punish",
+        "branch_harmony"
+      ],
+      "method": "值符刑冲者以六合所合地支为应期",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:value_symbol_empty_filled",
+      "kind": "timing_candidate",
+      "source_lines": [
+        210,
+        216
+      ],
+      "requires": [
+        "value_star",
+        "xun_void",
+        "void_filled"
+      ],
+      "method": "值符旬空以填实出旬为候选",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:hidden_branch_clash_to_combine",
+      "kind": "timing_candidate",
+      "source_lines": [
+        218,
+        218
+      ],
+      "requires": [
+        "heaven_six_instruments_hidden_branch",
+        "branch_clash",
+        "branch_six_harmony"
+      ],
+      "method": "天盘六仪所带支逢冲以合定支",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:hidden_branch_combine_to_clash",
+      "kind": "timing_candidate",
+      "source_lines": [
+        218,
+        218
+      ],
+      "requires": [
+        "heaven_six_instruments_hidden_branch",
+        "branch_combine",
+        "opposite_branch"
+      ],
+      "method": "逢合以冲定支",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:star_door_generate_control",
+      "kind": "timing_candidate",
+      "source_lines": [
+        220,
+        220
+      ],
+      "requires": [
+        "star",
+        "door",
+        "generate_or_control"
+      ],
+      "method": "若没有刑冲合，可借星门生克择日",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:yongshen_birth_growth",
+      "kind": "timing_candidate",
+      "source_lines": [
+        224,
+        224
+      ],
+      "requires": [
+        "yongshen",
+        "stem_growth_stage",
+        "season"
+      ],
+      "method": "用神长生旺相候选",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:yongshen_death_tomb_extinction",
+      "kind": "timing_candidate",
+      "source_lines": [
+        226,
+        226
+      ],
+      "requires": [
+        "yongshen",
+        "stem_decline_stage"
+      ],
+      "method": "用神死墓绝候选",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:geng_pattern",
+      "kind": "timing_candidate",
+      "source_lines": [
+        228,
+        228
+      ],
+      "requires": [
+        "geng_over_year_month_day_hour",
+        "day_polarity",
+        "relevant_star_polarity"
+      ],
+      "method": "庚格须区分阴阳日与星，破案与走失相关",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:void_fill_or_clash",
+      "kind": "timing_candidate",
+      "source_lines": [
+        230,
+        230
+      ],
+      "requires": [
+        "xun_void",
+        "timing_branch"
+      ],
+      "method": "旬空填实或冲实",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:tomb_collision",
+      "kind": "timing_candidate",
+      "source_lines": [
+        232,
+        232
+      ],
+      "requires": [
+        "tomb_branch",
+        "collision_branch"
+      ],
+      "method": "冲墓为候选",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:horse_star_moves",
+      "kind": "timing_candidate",
+      "source_lines": [
+        234,
+        234
+      ],
+      "requires": [
+        "horse_star_location",
+        "movement_condition"
+      ],
+      "method": "马星动为候选",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:value_door_stem_palace_number",
+      "kind": "timing_candidate",
+      "source_lines": [
+        236,
+        236
+      ],
+      "requires": [
+        "value_door",
+        "its_stem",
+        "its_palace"
+      ],
+      "method": "值使门所临干或落宫数",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:hour_stem_palace_number",
+      "kind": "timing_candidate",
+      "source_lines": [
+        238,
+        238
+      ],
+      "requires": [
+        "hour_stem",
+        "its_palace"
+      ],
+      "method": "时干所落宫数",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    },
+    {
+      "concept_id": "timing:day_hour_branch_harmony_or_clash",
+      "kind": "timing_candidate",
+      "source_lines": [
+        240,
+        240
+      ],
+      "requires": [
+        "day_branch",
+        "hour_branch",
+        "clash_harm_three_harmony"
+      ],
+      "method": "日时支三合六合、刑冲克害综合",
+      "review_status": "draft",
+      "issue": "requires_independent_event_and_calendar_context_no_automatic_calendar_date"
+    }
+  ],
+  "five_no_encounter": [
+    {
+      "concept_id": "constraint:five_no_encounter:甲:庚午",
+      "kind": "five_no_encounter",
+      "day_stem": "甲",
+      "hour_ganzhi": "庚午",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:乙:辛巳",
+      "kind": "five_no_encounter",
+      "day_stem": "乙",
+      "hour_ganzhi": "辛巳",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:丙:壬辰",
+      "kind": "five_no_encounter",
+      "day_stem": "丙",
+      "hour_ganzhi": "壬辰",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:丁:癸卯",
+      "kind": "five_no_encounter",
+      "day_stem": "丁",
+      "hour_ganzhi": "癸卯",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:戊:甲寅",
+      "kind": "five_no_encounter",
+      "day_stem": "戊",
+      "hour_ganzhi": "甲寅",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:己:乙丑",
+      "kind": "five_no_encounter",
+      "day_stem": "己",
+      "hour_ganzhi": "乙丑",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:庚:丙子",
+      "kind": "five_no_encounter",
+      "day_stem": "庚",
+      "hour_ganzhi": "丙子",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:辛:丁酉",
+      "kind": "five_no_encounter",
+      "day_stem": "辛",
+      "hour_ganzhi": "丁酉",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:壬:戊申",
+      "kind": "five_no_encounter",
+      "day_stem": "壬",
+      "hour_ganzhi": "戊申",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "constraint:five_no_encounter:癸:己未",
+      "kind": "five_no_encounter",
+      "day_stem": "癸",
+      "hour_ganzhi": "己未",
+      "source_lines": [
+        26,
+        28
+      ],
+      "review_status": "draft"
+    }
+  ],
+  "decision_branches": [
+    {
+      "id": "urgent",
+      "condition": "urgent",
+      "paths": [
+        "principle:urgent_follow_zhifu"
+      ]
+    },
+    {
+      "id": "deliberate",
+      "condition": "nonurgent",
+      "paths": [
+        "principle:slow_follow_door",
+        "principle:season_and_location_joint"
+      ]
+    },
+    {
+      "id": "static",
+      "condition": "no_directional_action",
+      "paths": [
+        "principle:method_static_moving",
+        "principle:method_multi_yongshen"
+      ]
+    },
+    {
+      "id": "dynamic",
+      "condition": "directional_action",
+      "paths": [
+        "principle:method_static_moving",
+        "principle:host_guest_dynamics"
+      ]
+    }
+  ]
+}
