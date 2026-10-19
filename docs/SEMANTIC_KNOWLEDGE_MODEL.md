@@ -117,3 +117,14 @@ python3 -m unittest discover -s tests -v
 `src/wengua/compile_shenqi_pregnancy.py` 除本章严格来源SHA校验及完整事件落库外，还新增六个旧健康案例`retroactively_sync_health_book_validation`，**实际把先前中途补充、后来确认与反馈归入同一原书事件的`validation_information`，保存原作者29步分析及54宫，不再拆多轮任务**。`health_prediction_ch01/case_index.json`有明确每案来源行号。最新的七章私人数据库包含483条 `semantic_assertions`、18案例、162宫、75步、18个默认书内判对标签；第六章112候选及起局32结构化素材仍有另行导入项。
 
 重要条件源例外：孕产例2性别不确定、先考虑11/19后得知医院11/21预产期而调整方法；例4/5学员文本经作者修订；例5五不遇时不必凶；例6胎儿影像疑虑在问事前已知。*原书中的医学相关判断仅作文化文献研究，不能用于真实医疗选择。* 产品保持“一时一盘一次完整断语”和整案追溯，来源明确不等于医学真实有效性已验证。详情见 `docs/PREGNANCY_CASE_REASONING_PROTOCOL.md`、`docs/CASE_OUTCOME_POLICY.md`。
+
+
+## 2026-10-19 最新：第八章求学考试的来源取用及考试申诉跨领域知识
+
+**当前累计《神奇之门》8章、23个源中完整整案、207宫位原字、92组作者分步解释。** 新上传 `求学考试预测` SHA256 `88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43`，349行、30539字节。新来源本地 `chapter_key=shenqi/education_prediction_ch04/v1`。
+
+`education_prediction_ch04/method_index.json` 有35条 `education:method:*` 条件化来源断法：代问子女时干、本人日干、可靠出生年命，天辅考试院、值符主考、值使副考、丁文章、景卷、年干学校；另有旧武试与拜师学艺的专属角色，以及考试申诉跨领域六合证据、开门法院、月格与旬空应期。**同一象征符号在疾病/婚姻/考试/诉讼不同场景的用神含义必须按域标注，不是无条件激活**。已有`stem:`、`star:`、`door:`、`deity:`、`formation:`概念键仍统一，保留各章独立源行。
+
+**特别重要的倒叙**：第五个案例第264行是考生成绩被质疑的初问背景；第268行作者原断、270–280行后来反馈和复述；原书第284行才展示盘，325–349行才呈现五组分析。私有本地 `cases.known_before` 仅含第264行，`historical_chart_cells`仍为312–320行九宫，`historical_case_reasoning`包含全部五段多段推理，`historical_case_disclosures`单独收后来反馈。**一个事件/盘/一次解盘，允许原书先叙结局后解释证据，但不能把结局倒灌入首次预测。** 研究集与回归测试必须保护此界限。新增 `src/wengua/compile_shenqi_education.py`、`tests/test_education_case_import.py`。
+
+本回合私有八章SQLite累计`518`条`semantic_assertions`（七章483＋本章35），原七章章节内容无损；第六章112及起局章32另有独立导入事项。原书的大学及行医执照录取经历仅用于学习作者方法，不能推定术数具现实预测效力。
