@@ -1,0 +1,44 @@
+{
+  "book_id": "shenqi",
+  "input": "神奇之门_第四章与第五章_完整纯文字精校版(1).txt",
+  "input_full_sha256": "8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147",
+  "input_bytes": 86324,
+  "input_lines": 1261,
+  "public_repository_contains_full_original": false,
+  "original_text_storage": "user_supplied_local_private_SQLite_only",
+  "review_status": "draft_source_transcription_not_professional_acceptance",
+  "current_school": "shijia_zhuanpan",
+  "compiled_with": "src/wengua/compile_shenqi_ch45.py",
+  "database_migration": "schema/migrations/002_semantic_assertions.sql",
+  "query_engine": "src/wengua/semantic_lookup.py",
+  "source_line_numbering": "Global line numbers in supplied 1261-line text; local SQL stores lines relative to each chapter (subtract 500 for chapter 5).",
+  "book_crosslink_key": "concept_id",
+  "real_case_count": 0,
+  "published_reading_count": 0,
+  "chapter_number": 4,
+  "title": "奇门预测符号的象数理含义",
+  "source_line_range": [
+    1,
+    500
+  ],
+  "section_sha256": "15ce23c3fff0c9d3a48b595ee3bbf115d0c1e98a64ce1efc88bdb27e67eab22a",
+  "category_counts": {
+    "symbol_profiles": 55,
+    "trigram_aspect_records": 87,
+    "shared_method_principles_and_derived_context": "See compiler; extra chapter-level principles are separately indexed"
+  },
+  "domain_links": [
+    "all_domains",
+    "health",
+    "marriage",
+    "travel",
+    "business",
+    "education"
+  ],
+  "special_source_caveats": [
+    "门与宫五行相生相克不自动代表吉凶",
+    "九星特殊旺相休囚废与地上五行不一致",
+    "按该书作者本节仅天盘八神",
+    "天芮星为健康问事候选用神，但具体判断还待完整专题规则"
+  ]
+}
