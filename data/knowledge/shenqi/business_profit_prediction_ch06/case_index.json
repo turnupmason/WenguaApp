@@ -1,0 +1,638 @@
+{
+  "schema": "wengua_business_case_index_v1",
+  "source_sha256": "c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c",
+  "book_id": "shenqi",
+  "chapter_key": "shenqi/business_profit_prediction_ch06/v1",
+  "chapter_title": "第六章 经营求财预测",
+  "whole_events": 14,
+  "complete_supplied_casts": 16,
+  "printed_nine_palace_cells": 144,
+  "numbered_and_explicit_analysis_units": 59,
+  "one_shot_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "case12_note": "ONE charity prize drawing family has three fully documented different hour-specific charts, not a fictitious single chart. Day 3 and 4 contain only text without complete charts.",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.business.lease_restaurant",
+      "event_family_id": "shenqi.business.lease_restaurant",
+      "case_title": "租赁酒店未成",
+      "source_span": [
+        65,
+        102
+      ],
+      "initial_source_lines": [
+        67,
+        67
+      ],
+      "chart_source_starts": [
+        70
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          89,
+          89
+        ],
+        [
+          91,
+          91
+        ],
+        [
+          93,
+          93
+        ],
+        [
+          95,
+          95
+        ],
+        [
+          97,
+          97
+        ]
+      ],
+      "same_case_feedback_lines": [
+        101
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.business.foreign_financed_mall",
+      "event_family_id": "shenqi.business.foreign_financed_mall",
+      "case_title": "引资筹建商城",
+      "source_span": [
+        103,
+        140
+      ],
+      "initial_source_lines": [
+        105,
+        105
+      ],
+      "chart_source_starts": [
+        110
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          129,
+          129
+        ],
+        [
+          131,
+          131
+        ],
+        [
+          133,
+          133
+        ],
+        [
+          135,
+          135
+        ]
+      ],
+      "same_case_feedback_lines": [
+        137,
+        139
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.business.mall_opening_profit",
+      "event_family_id": "shenqi.business.mall_opening_profit",
+      "case_title": "商城开业效益",
+      "source_span": [
+        141,
+        196
+      ],
+      "initial_source_lines": [
+        143,
+        145
+      ],
+      "chart_source_starts": [
+        150
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          169,
+          169
+        ],
+        [
+          171,
+          171
+        ],
+        [
+          173,
+          173
+        ],
+        [
+          179,
+          179
+        ],
+        [
+          185,
+          185
+        ]
+      ],
+      "same_case_feedback_lines": [
+        189,
+        193,
+        195
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.business.retail_unit_investment",
+      "event_family_id": "shenqi.business.retail_unit_investment",
+      "case_title": "买商城商位",
+      "source_span": [
+        197,
+        233
+      ],
+      "initial_source_lines": [
+        199,
+        199
+      ],
+      "chart_source_starts": [
+        203
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          222,
+          222
+        ],
+        [
+          224,
+          224
+        ],
+        [
+          226,
+          226
+        ],
+        [
+          228,
+          228
+        ]
+      ],
+      "same_case_feedback_lines": [
+        230,
+        232
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.business.joint_venture_factory",
+      "event_family_id": "shenqi.business.joint_venture_factory",
+      "case_title": "合资纸餐具厂",
+      "source_span": [
+        234,
+        269
+      ],
+      "initial_source_lines": [
+        236,
+        236
+      ],
+      "chart_source_starts": [
+        241
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          260,
+          260
+        ],
+        [
+          262,
+          262
+        ],
+        [
+          264,
+          266
+        ]
+      ],
+      "same_case_feedback_lines": [
+        268
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 6,
+      "case_id": "shenqi.business.network_marketing_supplement",
+      "event_family_id": "shenqi.business.network_marketing_supplement",
+      "case_title": "营养药品传销",
+      "source_span": [
+        270,
+        303
+      ],
+      "initial_source_lines": [
+        272,
+        272
+      ],
+      "chart_source_starts": [
+        275
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          294,
+          294
+        ],
+        [
+          296,
+          296
+        ],
+        [
+          298,
+          298
+        ]
+      ],
+      "same_case_feedback_lines": [
+        302
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 7,
+      "case_id": "shenqi.business.mall_property_rental",
+      "event_family_id": "shenqi.business.mall_property_rental",
+      "case_title": "出租商场",
+      "source_span": [
+        304,
+        357
+      ],
+      "initial_source_lines": [
+        306,
+        308
+      ],
+      "chart_source_starts": [
+        315
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          334,
+          336
+        ],
+        [
+          338,
+          340
+        ],
+        [
+          342,
+          348
+        ],
+        [
+          350,
+          352
+        ],
+        [
+          354,
+          356
+        ]
+      ],
+      "same_case_feedback_lines": [
+        310
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 8,
+      "case_id": "shenqi.business.art_purchase_resale",
+      "event_family_id": "shenqi.business.art_purchase_resale",
+      "case_title": "齐白石画卷购售",
+      "source_span": [
+        358,
+        417
+      ],
+      "initial_source_lines": [
+        360,
+        360
+      ],
+      "chart_source_starts": [
+        375
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          394,
+          396
+        ],
+        [
+          398,
+          400
+        ],
+        [
+          402,
+          404
+        ],
+        [
+          406,
+          408
+        ],
+        [
+          410,
+          412
+        ],
+        [
+          414,
+          416
+        ]
+      ],
+      "same_case_feedback_lines": [
+        365,
+        368,
+        370
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 9,
+      "case_id": "shenqi.business.fertilizer_factory_recovery",
+      "event_family_id": "shenqi.business.fertilizer_factory_recovery",
+      "case_title": "化肥厂回款与策略",
+      "source_span": [
+        418,
+        463
+      ],
+      "initial_source_lines": [
+        420,
+        420
+      ],
+      "chart_source_starts": [
+        435
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          454,
+          454
+        ],
+        [
+          456,
+          456
+        ],
+        [
+          458,
+          462
+        ]
+      ],
+      "same_case_feedback_lines": [
+        428,
+        430
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 10,
+      "case_id": "shenqi.business.bank_loan_application",
+      "event_family_id": "shenqi.business.bank_loan_application",
+      "case_title": "三百万元银行贷款",
+      "source_span": [
+        464,
+        507
+      ],
+      "initial_source_lines": [
+        466,
+        466
+      ],
+      "chart_source_starts": [
+        483
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          502,
+          502
+        ],
+        [
+          504,
+          504
+        ],
+        [
+          506,
+          506
+        ]
+      ],
+      "same_case_feedback_lines": [
+        476,
+        478
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 11,
+      "case_id": "shenqi.business.coal_brokerage_flood",
+      "event_family_id": "shenqi.business.coal_brokerage_flood",
+      "case_title": "煤矿中介生意",
+      "source_span": [
+        508,
+        543
+      ],
+      "initial_source_lines": [
+        510,
+        510
+      ],
+      "chart_source_starts": [
+        519
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          538,
+          538
+        ],
+        [
+          540,
+          540
+        ],
+        [
+          542,
+          542
+        ]
+      ],
+      "same_case_feedback_lines": [
+        514
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 12,
+      "case_id": "shenqi.business.charity_prize_draw",
+      "event_family_id": "shenqi.business.charity_prize_draw",
+      "case_title": "慈善抽奖三时局",
+      "source_span": [
+        544,
+        644
+      ],
+      "initial_source_lines": [
+        550,
+        550
+      ],
+      "chart_source_starts": [
+        555,
+        585,
+        614
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          574,
+          574
+        ],
+        [
+          576,
+          576
+        ],
+        [
+          578,
+          578
+        ],
+        [
+          604,
+          604
+        ],
+        [
+          606,
+          606
+        ],
+        [
+          633,
+          633
+        ],
+        [
+          635,
+          635
+        ]
+      ],
+      "same_case_feedback_lines": [
+        580,
+        608,
+        637
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 13,
+      "case_id": "shenqi.business.debt_collected",
+      "event_family_id": "shenqi.business.debt_collected",
+      "case_title": "第一次讨债得款",
+      "source_span": [
+        645,
+        680
+      ],
+      "initial_source_lines": [
+        647,
+        649
+      ],
+      "chart_source_starts": [
+        652
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          671,
+          671
+        ],
+        [
+          673,
+          673
+        ],
+        [
+          675,
+          675
+        ],
+        [
+          677,
+          677
+        ]
+      ],
+      "same_case_feedback_lines": [
+        679
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    },
+    {
+      "case_number": 14,
+      "case_id": "shenqi.business.debt_collection_failed",
+      "event_family_id": "shenqi.business.debt_collection_failed",
+      "case_title": "第二次讨债无获",
+      "source_span": [
+        681,
+        717
+      ],
+      "initial_source_lines": [
+        683,
+        685
+      ],
+      "chart_source_starts": [
+        692
+      ],
+      "numbered_or_explicit_analysis_ranges": [
+        [
+          711,
+          711
+        ],
+        [
+          713,
+          713
+        ],
+        [
+          715,
+          715
+        ],
+        [
+          717,
+          717
+        ]
+      ],
+      "same_case_feedback_lines": [
+        687
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true,
+      "complete_crossover": "yes"
+    }
+  ],
+  "unsupplied_source_casts": [
+    {
+      "case_number": 12,
+      "source_lines": [
+        641,
+        643
+      ],
+      "note": "The printed book does not provide 9-palace charts for additional later drawing hours; retain textual source only."
+    }
+  ],
+  "source_truncation": "Original user file ends at source line 717, preserve the last unfinished sentence exactly."
+}
