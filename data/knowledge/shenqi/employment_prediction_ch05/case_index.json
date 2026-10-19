@@ -1,0 +1,483 @@
+{
+  "schema": "wengua_employment_case_index_v1",
+  "source_book": "shenqi",
+  "chapter_key": "shenqi/employment_prediction_ch05/v1",
+  "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+  "title": "第五章 工作就业预测",
+  "source_lines": 228,
+  "one_shot_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "cases_total": 5,
+  "full_nine_palace_original_charts": 5,
+  "raw_palace_rows": 45,
+  "numbered_author_or_student_steps": 20,
+  "source_case_notes": [
+    "Case2 follow-up on 1996-11-25 explicitly reuses 1996-11-04 chart. No new cast.",
+    "Case4 reports five total predictions, but only first April15 chart provided. Do not invent other four.",
+    "Case5 uses one chart with five candidate palaces; author's editorial review after results is separate source analysis.",
+    "Traditional 官星人品 judgments are textual claims only, not real character or workplace misconduct evidence."
+  ],
+  "candidate_ranking": {
+    "case_id": "shenqi.employment.village_party_secretary_election",
+    "source_mapping_line": 206,
+    "author_reported_prediction_line": 220,
+    "feedback_line": 222,
+    "review_lines": [
+      226,
+      228
+    ],
+    "predicted_top_k": 2,
+    "reported_full_ranks": 5,
+    "candidates": [
+      {
+        "name": "尚明吉",
+        "palace": 2,
+        "source_line": 206,
+        "author_analysis_line": 210,
+        "author_predicted_rank": 2,
+        "reported_final_rank": 2
+      },
+      {
+        "name": "尚耀坤",
+        "palace": 6,
+        "source_line": 206,
+        "author_analysis_line": 218,
+        "author_predicted_rank": 1,
+        "reported_final_rank": 1
+      },
+      {
+        "name": "尚文才",
+        "palace": 4,
+        "source_line": 206,
+        "author_analysis_line": 212,
+        "author_predicted_rank": null,
+        "reported_final_rank": 4
+      },
+      {
+        "name": "尚用成",
+        "palace": 1,
+        "source_line": 206,
+        "author_analysis_line": 216,
+        "author_predicted_rank": null,
+        "reported_final_rank": 5
+      },
+      {
+        "name": "张相如",
+        "palace": 3,
+        "source_line": 206,
+        "author_analysis_line": 214,
+        "author_predicted_rank": null,
+        "reported_final_rank": 3
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "graduation_first_job",
+      "title": "毕业分配到广播电视厅",
+      "span": [
+        21,
+        54
+      ],
+      "question": [
+        23,
+        23
+      ],
+      "chart_start": 29,
+      "step": [
+        [
+          46,
+          46
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          50,
+          50
+        ],
+        [
+          52,
+          52
+        ]
+      ],
+      "validation": [
+        54
+      ],
+      "pred": [
+        46,
+        48,
+        50,
+        52
+      ],
+      "time": "1996-02-09T18:00",
+      "hour": "丁酉",
+      "dun": "阳",
+      "ju": 2,
+      "xun": "甲午",
+      "role": "graduate_self",
+      "topics": [
+        "当事人现场东南位置以巽四宫开门取工作及方向",
+        "年干日干丙兼看学校、景门及工作落宫生克",
+        "值使死门反吟与值符、时令旺衰综合反证",
+        "空亡辰巳和星门反吟、内盘近快择应期"
+      ],
+      "notes": [
+        "The party chose the querent's physical southeast position as a supplemental working palace (line44); do not automatically assume that all employment inquiries use this palace.",
+        "Agreement signed 甲午日己巳时 after expected 辰巳日; preserve exact evidence and no artificial claim of identical day forecast."
+      ],
+      "index": 1,
+      "case_id": "shenqi.employment.graduation_first_job",
+      "event_family_id": "shenqi.employment.graduation_first_job",
+      "chart_source_groups": [
+        [
+          29,
+          32
+        ],
+        [
+          34,
+          37
+        ],
+        [
+          39,
+          42
+        ]
+      ],
+      "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "one_event_one_primary_cast_one_complete_reading": true,
+      "review_status": "draft_original_case",
+      "source_only_not_independent_calculation": true
+    },
+    {
+      "id": "mother_son_ministries",
+      "title": "母亲代问儿子毕业外经部与外交部选择",
+      "span": [
+        56,
+        105
+      ],
+      "question": [
+        58,
+        58
+      ],
+      "chart_start": 64,
+      "step": [
+        [
+          81,
+          81
+        ],
+        [
+          83,
+          83
+        ],
+        [
+          85,
+          85
+        ],
+        [
+          95,
+          95
+        ]
+      ],
+      "validation": [
+        89,
+        91,
+        99,
+        103,
+        105
+      ],
+      "pred": [
+        87,
+        97,
+        101
+      ],
+      "time": "1996-11-04T08:00",
+      "hour": "庚辰",
+      "dun": "阴",
+      "ju": 2,
+      "xun": "甲戌",
+      "role": "mother_for_son",
+      "topics": [
+        "时干庚代表儿子，年命甲寅癸兼取用",
+        "开门震三与生门离九分别绑定两个待选单位，再比较时干和年命宫",
+        "内外盘不同及九星反吟提示过程反复",
+        "11月25日沿用11月4日原盘，以月干同学/竞争者和年干校方生克分析局势"
+      ],
+      "notes": [
+        "November 25 call asks again but original author explicitly reuses the November 4 chart; one event one chart, not a second cast.",
+        "Sources provide year-life year Jia-yin yielding 值己? Original explicitly states 年命甲寅癸; retain author exactly, no inferred substitute."
+      ],
+      "index": 2,
+      "case_id": "shenqi.employment.mother_son_ministries",
+      "event_family_id": "shenqi.employment.mother_son_ministries",
+      "chart_source_groups": [
+        [
+          64,
+          67
+        ],
+        [
+          69,
+          72
+        ],
+        [
+          74,
+          77
+        ]
+      ],
+      "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "one_event_one_primary_cast_one_complete_reading": true,
+      "review_status": "draft_original_case",
+      "source_only_not_independent_calculation": true
+    },
+    {
+      "id": "military_officer_removed",
+      "title": "军官被免职及同僚连带",
+      "span": [
+        107,
+        140
+      ],
+      "question": [
+        109,
+        109
+      ],
+      "chart_start": 113,
+      "step": [
+        [
+          130,
+          130
+        ],
+        [
+          132,
+          132
+        ],
+        [
+          134,
+          134
+        ],
+        [
+          136,
+          136
+        ],
+        [
+          138,
+          138
+        ]
+      ],
+      "validation": [
+        140
+      ],
+      "pred": [
+        130,
+        132,
+        134,
+        136,
+        138
+      ],
+      "time": "1996-01-02T10:00",
+      "hour": "丁巳",
+      "dun": "阳",
+      "ju": 2,
+      "xun": "甲寅",
+      "role": "military_officer_self",
+      "topics": [
+        "日干戊和值使惊门同落坎宫且空亡，官司口舌类象",
+        "开门值符和杜门分别克日干，同看军职及工作主客",
+        "值符开门杜门克日干合证职务下降",
+        "开门填实与立春月条件推应期",
+        "月干戊同事与当事人同宫推其他受影响者"
+      ],
+      "notes": [
+        "原书记官司、命案类象，不等于已经获得司法事实验证。"
+      ],
+      "index": 3,
+      "case_id": "shenqi.employment.military_officer_removed",
+      "event_family_id": "shenqi.employment.military_officer_removed",
+      "chart_source_groups": [
+        [
+          113,
+          116
+        ],
+        [
+          118,
+          121
+        ],
+        [
+          123,
+          126
+        ]
+      ],
+      "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "one_event_one_primary_cast_one_complete_reading": true,
+      "review_status": "draft_original_case",
+      "source_only_not_independent_calculation": true
+    },
+    {
+      "id": "du_self_transfer_telecom",
+      "title": "杜新会自测工作调动到联通",
+      "span": [
+        142,
+        181
+      ],
+      "question": [
+        144,
+        144
+      ],
+      "chart_start": 156,
+      "step": [
+        [
+          173,
+          177
+        ],
+        [
+          179,
+          181
+        ]
+      ],
+      "validation": [
+        146,
+        148,
+        150
+      ],
+      "pred": [
+        144,
+        173,
+        175,
+        177,
+        179,
+        181
+      ],
+      "time": "1997-04-15T10:00",
+      "hour": "乙巳",
+      "dun": "阳",
+      "ju": 1,
+      "xun": "甲辰",
+      "role": "self_job_transfer",
+      "topics": [
+        "自测丁奇与开门艮坤对冲、空亡及六仪击刑、领导同事之生和工作任务反证",
+        "未月日干旺相且开门旬空冲实推应期"
+      ],
+      "notes": [
+        "Author reports five divinations overall, but source gives complete nine-palace cells only for initial April15 cast; other four charts not supplied.",
+        "June1 rerun is reported without a chart, do not invent it.",
+        "The April15 opening paragraph itself contains initial predicted result; the initial-known view must stop before internal first chart interpretation."
+      ],
+      "index": 4,
+      "case_id": "shenqi.employment.du_self_transfer_telecom",
+      "event_family_id": "shenqi.employment.du_self_transfer_telecom",
+      "chart_source_groups": [
+        [
+          156,
+          159
+        ],
+        [
+          161,
+          164
+        ],
+        [
+          166,
+          169
+        ]
+      ],
+      "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "one_event_one_primary_cast_one_complete_reading": true,
+      "review_status": "draft_original_case",
+      "source_only_not_independent_calculation": true
+    },
+    {
+      "id": "village_party_secretary_election",
+      "title": "五名候选人村党支部书记选举宫位排名",
+      "span": [
+        183,
+        228
+      ],
+      "question": [
+        185,
+        185
+      ],
+      "chart_start": 191,
+      "step": [
+        [
+          210,
+          210
+        ],
+        [
+          212,
+          212
+        ],
+        [
+          214,
+          214
+        ],
+        [
+          216,
+          216
+        ],
+        [
+          218,
+          218
+        ]
+      ],
+      "validation": [
+        222,
+        224
+      ],
+      "pred": [
+        220
+      ],
+      "time": "1996-10-27T15:00",
+      "hour": "戊申",
+      "dun": "阴",
+      "ju": 5,
+      "xun": "甲辰",
+      "role": "election_observer",
+      "topics": [
+        "尚明吉坤二旺相但遇门神克泄",
+        "尚文才巽四囚、景门泄和宫中组合",
+        "张相如震三囚、有六合杜门等支持而优于巽四",
+        "尚用成坎一死于月建、吉星作用受时令压制",
+        "尚耀坤乾六相于月建、戌月申时优势、九地休门组合"
+      ],
+      "notes": [
+        "One chart for five geographically assigned candidates, not five charts or five independent predictions.",
+        "Student predicted ONLY first and second; later book feedback reports full ordered top five.",
+        "The author's review at lines226 and228 gives simplified comparison and must remain available separate from student numbered five steps.",
+        "Book speaker claims predictive practice scientific; this is a historical quote not independent validation."
+      ],
+      "index": 5,
+      "case_id": "shenqi.employment.village_party_secretary_election",
+      "event_family_id": "shenqi.employment.village_party_secretary_election",
+      "chart_source_groups": [
+        [
+          191,
+          194
+        ],
+        [
+          196,
+          199
+        ],
+        [
+          201,
+          204
+        ]
+      ],
+      "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+      "book_outcome_label": "author_book_success_default",
+      "author_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "one_event_one_primary_cast_one_complete_reading": true,
+      "review_status": "draft_original_case",
+      "source_only_not_independent_calculation": true
+    }
+  ]
+}
