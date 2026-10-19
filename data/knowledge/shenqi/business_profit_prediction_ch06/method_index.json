@@ -1,0 +1,1383 @@
+{
+  "schema": "wengua_business_domain_methods_v1",
+  "source_sha256": "c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c",
+  "chapter_key": "shenqi/business_profit_prediction_ch06/v1",
+  "chapter_title": "经营求财预测",
+  "method_count": 81,
+  "source_first_section_lines": [
+    5,
+    61
+  ],
+  "first_section_scenarios": [
+    {
+      "group": 1,
+      "name": "交易",
+      "role_keys": "日干买主/时干卖主/六合中介",
+      "condition_notes": "双方法之间生克、空亡、经纪人偏向"
+    },
+    {
+      "group": 2,
+      "name": "投资",
+      "role_keys": "甲子戊为资本、生门为利息",
+      "condition_notes": "旺相、得奇格、吉凶星、内外盘与应期"
+    },
+    {
+      "group": 3,
+      "name": "买卖货物",
+      "role_keys": "日干为买或卖方、时干为货物",
+      "condition_notes": "货物质量、买卖能否成交及资本利息"
+    },
+    {
+      "group": 4,
+      "name": "地产",
+      "role_keys": "生门房屋、死门地皮、开门商场",
+      "condition_notes": "产权/租赁/开店是不同问事，不得任意互代"
+    },
+    {
+      "group": 5,
+      "name": "合伙",
+      "role_keys": "地盘日干我方、天盘上临干对方",
+      "condition_notes": "也可日干本人、时干合伙人，比较主客"
+    },
+    {
+      "group": 6,
+      "name": "金融",
+      "role_keys": "值符银行、值使借款人、天乙欠款人",
+      "condition_notes": "贷入和放贷须分两套方法，方位星客主备选"
+    },
+    {
+      "group": 7,
+      "name": "讨债",
+      "role_keys": "伤门讨债者、值符债主、天乙欠债人",
+      "condition_notes": "财力与愿意还款、应期、出行安全分开"
+    },
+    {
+      "group": 8,
+      "name": "营销",
+      "role_keys": "六合代理商、景门丁奇广告",
+      "condition_notes": "来自原书个案的策略性解释，并不作为普遍经济规律"
+    },
+    {
+      "group": 9,
+      "name": "应期",
+      "role_keys": "内外盘、甲子戊、生门、地盘时干宫地支",
+      "condition_notes": "伏吟择生门冲宫、空亡填实和时令需核原书条件"
+    },
+    {
+      "group": 10,
+      "name": "抽奖",
+      "role_keys": "伤门汽车、时干摸奖人、开门主办方",
+      "condition_notes": "源第十二例三张实际不同小时盘，另两日只有文字解释"
+    }
+  ],
+  "methods": [
+    {
+      "concept_id": "business:method:business_roles",
+      "source_line": 5,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:shengmen_profit_strength",
+      "source_line": 7,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:capital_timing",
+      "source_line": 9,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:trade_yongshen",
+      "source_line": 11,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:trade_interactions",
+      "source_line": 13,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:investment_capital_profit",
+      "source_line": 15,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:investment_gains_losses",
+      "source_line": 17,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:purchase_goods",
+      "source_line": 19,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:product_quality",
+      "source_line": 21,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:purchase_profit",
+      "source_line": 23,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:seller_buyer_zhifu_zhishi",
+      "source_line": 25,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:seller_goods_relation",
+      "source_line": 27,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:selling_profit",
+      "source_line": 29,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:property_real_estate",
+      "source_line": 31,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:property_day_stem",
+      "source_line": 33,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:property_hour_stem",
+      "source_line": 35,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:shop_business",
+      "source_line": 37,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:shop_kaimen_strength",
+      "source_line": 39,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:shop_hour_stem",
+      "source_line": 41,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:customers_hour",
+      "source_line": 43,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:partnership_day_hour",
+      "source_line": 45,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:partnership_ground_stems",
+      "source_line": 47,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:bank_borrow_roles",
+      "source_line": 49,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:loan_direction_stars",
+      "source_line": 51,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lending_bank_tianyi",
+      "source_line": 53,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:loan_repayment",
+      "source_line": 55,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_recovery_roles",
+      "source_line": 57,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_recovery_combinations",
+      "source_line": 59,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_legal_risk",
+      "source_line": 61,
+      "method_scope": "general_section_10_scenarios",
+      "conditional": true,
+      "source_summary": "原书第一节对应行业/角色/宫位/时令取用，须以该行原文为准。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:hotel_lease_sheng_door",
+      "source_line": 95,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第95行案例中的hotel lease sheng door取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:hotel_lease_open_void",
+      "source_line": 97,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第97行案例中的hotel lease open void取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:mall_investment_shengmen",
+      "source_line": 129,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第129行案例中的mall investment shengmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:foreign_partner_heaven_stem",
+      "source_line": 133,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第133行案例中的foreign partner heaven stem取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:capital_stages_timing",
+      "source_line": 135,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第135行案例中的capital stages timing取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:mall_profit_capital_shengmen",
+      "source_line": 173,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第173行案例中的mall profit capital shengmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:management_profit_counter",
+      "source_line": 179,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第179行案例中的management profit counter取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:partner_counterevidence",
+      "source_line": 185,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第185行案例中的partner counterevidence取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:retail_purchase_open",
+      "source_line": 222,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第222行案例中的retail purchase open取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:retail_unit_floor",
+      "source_line": 224,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第224行案例中的retail unit floor取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:investment_amount_numbers",
+      "source_line": 226,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第226行案例中的investment amount numbers取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:contract_document_timing",
+      "source_line": 228,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第228行案例中的contract document timing取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:joint_venture_failed",
+      "source_line": 260,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第260行案例中的joint venture failed取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:joint_contract_hour_empty",
+      "source_line": 264,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第264行案例中的joint contract hour empty取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:medicinal_product_yi_tianxin",
+      "source_line": 294,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第294行案例中的medicinal product yi tianxin取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:network_sales_fuyin",
+      "source_line": 296,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第296行案例中的network sales fuyin取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:network_sales_shengmen_void",
+      "source_line": 298,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第298行案例中的network sales shengmen void取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:property_rental_same_palace",
+      "source_line": 336,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第336行案例中的property rental same palace取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:rental_solar_term_timing",
+      "source_line": 340,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第340行案例中的rental solar term timing取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:property_rental_opens",
+      "source_line": 344,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第344行案例中的property rental opens取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:rental_lawsuit",
+      "source_line": 352,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第352行案例中的rental lawsuit取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:rent_price_by_palace_numbers",
+      "source_line": 356,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第356行案例中的rent price by palace numbers取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:painting_color_jingmen",
+      "source_line": 396,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第396行案例中的painting color jingmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:painting_age_fuyin",
+      "source_line": 400,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第400行案例中的painting age fuyin取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:painting_authenticity",
+      "source_line": 404,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第404行案例中的painting authenticity取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:art_goods_trade",
+      "source_line": 408,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第408行案例中的art goods trade取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:buy_art_profits",
+      "source_line": 412,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第412行案例中的buy art profits取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:art_price_numbers",
+      "source_line": 416,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第416行案例中的art price numbers取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:factory_kaimen_void",
+      "source_line": 454,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第454行案例中的factory kaimen void取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:factory_cash_goods_inventory",
+      "source_line": 456,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第456行案例中的factory cash goods inventory取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:cash_on_delivery",
+      "source_line": 458,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第458行案例中的cash on delivery取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:distribution_agents_liuhe",
+      "source_line": 460,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第460行案例中的distribution agents liuhe取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:marketing_jing_ding",
+      "source_line": 462,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第462行案例中的marketing jing ding取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:borrow_bank_zhifu_zhishi",
+      "source_line": 502,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第502行案例中的borrow bank zhifu zhishi取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:borrow_east_star_method",
+      "source_line": 504,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第504行案例中的borrow east star method取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:borrow_hour_door",
+      "source_line": 506,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第506行案例中的borrow hour door取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:coal_trade_buyer_seller",
+      "source_line": 538,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第538行案例中的coal trade buyer seller取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:coal_flood_tianpeng",
+      "source_line": 540,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第540行案例中的coal flood tianpeng取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:trade_switch_place",
+      "source_line": 542,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第542行案例中的trade switch place取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lottery_auto_shangmen",
+      "source_line": 574,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第574行案例中的lottery auto shangmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lottery_yang_time_guest",
+      "source_line": 578,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第578行案例中的lottery yang time guest取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lottery_editorial_alt",
+      "source_line": 582,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第582行案例中的lottery editorial alt取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lottery_third_day_only_text",
+      "source_line": 641,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第641行案例中的lottery third day only text取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:lottery_fourth_day_only_text",
+      "source_line": 643,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第643行案例中的lottery fourth day only text取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_zhifu_shangmen",
+      "source_line": 671,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第671行案例中的debt zhifu shangmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_tianyi_debtor",
+      "source_line": 673,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第673行案例中的debt tianyi debtor取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_within_inner_quick",
+      "source_line": 675,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第675行案例中的debt within inner quick取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_direction_kan",
+      "source_line": 677,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第677行案例中的debt direction kan取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_absconder_fuyin",
+      "source_line": 711,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第711行案例中的debt absconder fuyin取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_subordinate_tianpeng",
+      "source_line": 713,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第713行案例中的debt subordinate tianpeng取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:debt_no_return_shangmen",
+      "source_line": 715,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第715行案例中的debt no return shangmen取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    },
+    {
+      "concept_id": "business:method:travel_safety_not_debt_payment",
+      "source_line": 717,
+      "method_scope": "historical_case_specific",
+      "conditional": true,
+      "source_summary": "原书第717行案例中的travel safety not debt payment取用与多宫证据组合；仅在相关情境中启用。",
+      "cross_chapter_prefixes": [
+        "stem:",
+        "door:",
+        "star:",
+        "deity:",
+        "formation:",
+        "role:"
+      ],
+      "review_status": "draft_source_only"
+    }
+  ],
+  "workflow": [
+    "问事领域/本人代问关系",
+    "同一真实起盘时间与九宫",
+    "财利/货物/资本/单位/借贷角色选择",
+    "星门神干时令旺衰和同宫或跨宫证据",
+    "正证反证及同域例外",
+    "如有来源条件才采用应期及数额",
+    "一次性原书风格结论与具体来源",
+    "全部反馈归同一家族书内验证,外部真实性独立标注"
+  ],
+  "policy": "docs/CASE_OUTCOME_POLICY.md",
+  "risk_boundary": "Do not present divination as reliable investment, loan, financial, fraud, medical, legal or lottery guidance."
+}
