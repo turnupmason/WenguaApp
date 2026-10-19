@@ -1,0 +1,495 @@
+{
+  "schema": "wengua_health_case_source_index_v1",
+  "source_book": "shenqi",
+  "chapter_key": "shenqi/health_prediction_ch01/v1",
+  "chapter_title": "人体疾病预测",
+  "file_source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+  "edition_note": "User-edited faithful OCR with reordered nine-palace text; editorial note lines 293-298 is not book author text.",
+  "chapter_topics": [
+    "body_palace_surface_internal",
+    "tianrui_disease",
+    "tianxin_and_yi_treatment",
+    "person_relations_and_birth_year",
+    "multiple_evidence_and_counterevidence",
+    "timing_selection",
+    "travel_for_treatment"
+  ],
+  "shared_concept_id_reference": "docs/SEMANTIC_KNOWLEDGE_MODEL.md",
+  "privacy": "Full prose, original nine-palace rows, named personal details and feedback stored only in private SQLite. Public metadata paraphrases condition sequences.",
+  "total_event_families": 6,
+  "source_case_counts": {
+    "complete_chart_text": 6,
+    "complete_independent_real_world_outcome_verification": 0,
+    "author_reported_later_feedback": 6
+  },
+  "whole_case_integrity_guard": "Do not split multi-turn predictions of one event into independent training/test stories; preserve intermediate disclosures.",
+  "app_safety": "Traditional source interpretation, never real medical diagnosis/prognosis or instruction to discontinue treatment.",
+  "cases": [
+    {
+      "index": 1,
+      "id": "shenqi.health.19960316.self_surgery",
+      "title": "自测身体与既往手术",
+      "line_range": [
+        15,
+        67
+      ],
+      "opening": [
+        17,
+        22
+      ],
+      "chart_rows": [
+        49,
+        57
+      ],
+      "steps": [
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "querent_relation": "self",
+      "patient_relation": "self",
+      "casting": {
+        "date": "1996-03-16",
+        "time_text": "下午4点多",
+        "day_ganzhi": "壬子",
+        "hour_ganzhi": "戊申",
+        "xun": "甲辰",
+        "dun": "yang",
+        "ju": 3,
+        "value_star": "天柱星",
+        "value_star_palace": 3,
+        "value_door": "惊门",
+        "value_door_palace": 2,
+        "variant": "置闰法"
+      },
+      "analysis_topics": [
+        "病星天芮落宫及器官定位",
+        "局内组合与手术、既往病类象",
+        "往年干支与年命推应期",
+        "乙奇天心与治疗关系",
+        "日干求测人、旺衰与身体态势"
+      ],
+      "disclosure": {
+        "line_events": [
+          {
+            "lines": [
+              24,
+              24
+            ],
+            "phase": "after_first_prognosis",
+            "type": "confirmation"
+          },
+          {
+            "lines": [
+              26,
+              26
+            ],
+            "phase": "after_1991_guess",
+            "type": "confirmation"
+          },
+          {
+            "lines": [
+              28,
+              28
+            ],
+            "phase": "after_birth_year_question",
+            "type": "new_birth_year_information"
+          }
+        ]
+      },
+      "author_predictions": {
+        "lines": [
+          23,
+          25,
+          29,
+          59,
+          60
+        ],
+        "status": "multi_turn_not_single_blind_prediction"
+      },
+      "feedback_lines": [
+        24,
+        26,
+        28
+      ],
+      "feedback_scope": "past_surgery_confirmation_only_no_followup_for_future_lifespan",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19960316.self_surgery",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    },
+    {
+      "index": 2,
+      "id": "shenqi.health.19960727.father_illness",
+      "title": "女儿问父病",
+      "line_range": [
+        69,
+        109
+      ],
+      "opening": [
+        71,
+        74
+      ],
+      "chart_rows": [
+        92,
+        100
+      ],
+      "steps": [
+        103,
+        104,
+        105,
+        106
+      ],
+      "querent_relation": "daughter",
+      "patient_relation": "father",
+      "casting": {
+        "date": "1996-07-27",
+        "time_text": "下午4点左右",
+        "day_ganzhi": "乙丑",
+        "hour_ganzhi": "甲申",
+        "xun": "甲申",
+        "dun": "yin",
+        "ju": 7,
+        "value_star": "天禽星",
+        "value_door": "死门",
+        "star_door_fuyin": true
+      },
+      "analysis_topics": [
+        "天芮病星、死门、旬空与格局多证据",
+        "天心乙奇与病星的治疗关系",
+        "年干、乾宫与患者年命综合取用",
+        "内外盘、伏吟和干支刑合推应期"
+      ],
+      "author_predictions": {
+        "lines": [
+          103,
+          106
+        ],
+        "status": "case_author_reported"
+      },
+      "feedback_lines": [
+        108,
+        109
+      ],
+      "feedback_scope": "medical_findings_and_later_death_author_reported",
+      "birth_year_ganzhi": "辛酉",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19960727.father_illness",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    },
+    {
+      "index": 3,
+      "id": "shenqi.health.19960509.nephew_discharge",
+      "title": "叔辈代问侄子术后及出院",
+      "line_range": [
+        111,
+        154
+      ],
+      "opening": [
+        113,
+        116
+      ],
+      "chart_rows": [
+        134,
+        142
+      ],
+      "steps": [
+        145,
+        146,
+        150,
+        153
+      ],
+      "querent_relation": "uncle",
+      "patient_relation": "nephew",
+      "casting": {
+        "date": "1996-05-09",
+        "time_text": "下午4点20分",
+        "day_ganzhi": "丙午",
+        "hour_ganzhi": "丙申",
+        "xun": "甲午",
+        "dun": "yang",
+        "ju": 7,
+        "value_star": "天蓬星",
+        "value_star_palace": 2,
+        "value_door": "休门",
+        "value_door_palace": 3
+      },
+      "analysis_topics": [
+        "时干和病星同宫及部位",
+        "患者年命、伤门与摔伤类象",
+        "日令旺衰、医生治疗证据与后遗症",
+        "旬空填实、生门死门、奇入墓的出院日期推定"
+      ],
+      "progressive_disclosures": [
+        {
+          "lines": [
+            148,
+            148
+          ],
+          "phase": "after_author_steps_1_2",
+          "type": "actual_injury_details"
+        }
+      ],
+      "author_predictions": {
+        "lines": [
+          145,
+          146,
+          150,
+          151,
+          153
+        ],
+        "status": "multi_turn"
+      },
+      "feedback_lines": [
+        148,
+        154
+      ],
+      "feedback_scope": "reported_discharge_date_confirmed_by_source",
+      "birth_year_ganzhi": "乙卯",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19960509.nephew_discharge",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    },
+    {
+      "index": 4,
+      "id": "shenqi.health.19960523.aunt_illness",
+      "title": "代问姨母疾病",
+      "line_range": [
+        156,
+        197
+      ],
+      "opening": [
+        158,
+        161
+      ],
+      "chart_rows": [
+        179,
+        187
+      ],
+      "steps": [
+        190,
+        191,
+        192,
+        193,
+        194,
+        195
+      ],
+      "querent_relation": "relative_intermediary",
+      "patient_relation": "maternal_aunt_or_older_relative",
+      "casting": {
+        "date": "1996-05-23",
+        "time_text": "晚上电话",
+        "day_ganzhi": "庚申",
+        "hour_ganzhi": "丙戌",
+        "xun": "甲申",
+        "dun": "yang",
+        "ju": 8,
+        "value_star": "天蓬星",
+        "value_star_palace": 6,
+        "value_door": "休门",
+        "value_door_palace": 3
+      },
+      "analysis_topics": [
+        "五不遇时作为传统时间类象",
+        "病星头部与宫门神组合",
+        "长辈年干与其时令属性",
+        "坤宫等亲属辅助用神",
+        "天心乙奇与病星治疗关系",
+        "值使门所临干推短期应期"
+      ],
+      "author_predictions": {
+        "lines": [
+          190,
+          195
+        ],
+        "status": "case_author_reported"
+      },
+      "feedback_lines": [
+        197,
+        197
+      ],
+      "feedback_scope": "later_family_feedback_author_reported",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19960523.aunt_illness",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    },
+    {
+      "index": 5,
+      "id": "shenqi.health.19961102.on_site_health",
+      "title": "研讨班现场本人问病",
+      "line_range": [
+        199,
+        244
+      ],
+      "opening": [
+        201,
+        205
+      ],
+      "chart_rows": [
+        223,
+        231
+      ],
+      "steps": [
+        236,
+        237,
+        238,
+        239,
+        240,
+        241
+      ],
+      "querent_relation": "self",
+      "patient_relation": "self",
+      "casting": {
+        "date": "1996-11-02",
+        "time_text": "下午4点",
+        "day_ganzhi": "癸卯",
+        "hour_ganzhi": "庚申",
+        "xun": "甲寅",
+        "dun": "yin",
+        "ju": 8,
+        "value_star": "天冲星",
+        "value_star_palace": 6,
+        "value_door": "伤门",
+        "value_door_palace": 6
+      },
+      "analysis_topics": [
+        "日干本人旺衰与基本状态",
+        "天芮与疾病相关多病象意",
+        "时干辅助及天心等证据",
+        "伤门事故与部位多证据",
+        "坎宫、巽宫、六仪等多宫综合",
+        "病星受克与日干旺衰，综合反证缓和"
+      ],
+      "author_predictions": {
+        "lines": [
+          236,
+          241
+        ],
+        "status": "case_author_reported"
+      },
+      "feedback_lines": [
+        243,
+        243
+      ],
+      "feedback_scope": "on_site_subject_statement_only",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19961102.on_site_health",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    },
+    {
+      "index": 6,
+      "id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "title": "丈夫问妻病与异地求医",
+      "line_range": [
+        246,
+        290
+      ],
+      "opening": [
+        248,
+        253
+      ],
+      "chart_rows": [
+        271,
+        279
+      ],
+      "steps": [
+        282,
+        283,
+        284,
+        285
+      ],
+      "querent_relation": "husband",
+      "patient_relation": "spouse",
+      "casting": {
+        "date": "1997-12-27",
+        "time_text": "晚上9点多",
+        "day_ganzhi": "癸卯",
+        "hour_ganzhi": "癸亥",
+        "xun": "甲寅",
+        "dun": "yang",
+        "ju": 7,
+        "value_star": "天冲星",
+        "value_star_palace": 3,
+        "value_door": "伤门",
+        "value_door_palace": 3,
+        "star_door_fuyin": true
+      },
+      "analysis_topics": [
+        "天芮病星、多重病象与时干",
+        "月令旺衰、六合及现状反证",
+        "天心乙奇医生与宣传者对应宫位的作者观察",
+        "伏吟、主客和是否出行的综合决策"
+      ],
+      "author_predictions": {
+        "lines": [
+          282,
+          287
+        ],
+        "status": "case_author_reported"
+      },
+      "feedback_lines": [
+        288,
+        290
+      ],
+      "feedback_scope": "patient_choice_and_later_phone_followup; third_party_claims_unverified",
+      "source_book": "shenqi",
+      "source_chapter": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "domain_id": "health",
+      "event_family_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "original_chart_rows": "private_local_import_only",
+      "complete_chart_text_supplied": true,
+      "calendar_crosschecked": false,
+      "original_print_independently_verified": false,
+      "author_outcome_is_independent_verification": false,
+      "case_split": "unassigned_do_not_train_and_test_same_family",
+      "review_status": "draft"
+    }
+  ]
+}
