@@ -1,0 +1,64 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "section_key": "health_prediction_ch01",
+  "title": "第一章 人体疾病预测",
+  "source_filename": "神奇之门_人体疾病预测_精校完整版(1).txt",
+  "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+  "source_utf8_bytes": 34625,
+  "source_lines": 298,
+  "source_sections": [
+    {
+      "name": "取用判断经验",
+      "lines": [
+        3,
+        11
+      ]
+    },
+    {
+      "name": "六例历史实案",
+      "lines": [
+        13,
+        290
+      ]
+    },
+    {
+      "name": "整理者附注（非原书）",
+      "lines": [
+        293,
+        298
+      ]
+    }
+  ],
+  "original_public_git": false,
+  "source_status": "user_attached_exact_text; copied to separate private SQLite download; never commit copyright prose",
+  "knowledge_files": [
+    "method_index.json",
+    "case_index.json",
+    "source_audit.json"
+  ],
+  "domain": "health",
+  "first_topic_with_full_historical_case_studies": true,
+  "case_families": 6,
+  "source_nine_palace_cells": 54,
+  "author_numbered_reasoning_steps": 29,
+  "progressive_interview_disclosure_turns": 4,
+  "body_palace_mappings": 8,
+  "health_yongshen_candidates": 14,
+  "method_workflow_nodes": 8,
+  "method_assertion_rows": 30,
+  "original_charts_status": "user-reordered nine-palace text transcription; unverified by independent engine and printed scan",
+  "historical_outcomes_status": "source-reported; none independently proven as prospective tests",
+  "approved_medical_or_prediction_rules": 0,
+  "approved_readings": 0,
+  "private_local_database": "WenguaApp_V1_神奇之门_五章_疾病六例_私有研究库.sqlite3",
+  "private_local_database_note": "Contains existing four chapter source text and previous 411 semantic assertions, plus health exact source, 6 cases, 54 raw nine-palace rows, 29 steps, 4 disclosures and 30 health semantic assertions. Chapter-6 public 112 semantic method candidates still require its import CLI to register inside private DB.",
+  "source_integrity_guard": "Full source exact SHA verified; refuses altered source and missing palace cells.",
+  "next_milestones": [
+    "Human cross-check printed chart vs textual rows",
+    "Compare 6 charts against independent time-casting engine under explicit method variant without silently overwriting source",
+    "Review author method and chronology with disclosed information; audit internal cases for multi-turn leakage",
+    "Derive conditional health-domain case method templates from author source without giving actual medical diagnoses",
+    "Maintain withheld event-family splits before professional blind testing"
+  ]
+}
