@@ -1,0 +1,2980 @@
+{
+  "schema": "wengua_source_derived_concept_index_v1",
+  "source_book": "shenqi",
+  "source_original_combined_sha256": "8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147",
+  "source_chapter5_section_sha256": "e153de133f4c5b6c325361ff30a572e782becbb245bb471599d678bb6349679d",
+  "source_original_publicly_uploaded": false,
+  "meaning": "Indexed ordered relationships and formation top-level headings, NOT approved divination rules and NOT verbatim source text",
+  "counts": {
+    "stem_pair": 81,
+    "door_pair": 64,
+    "door_stem": 72,
+    "good_formation": 13,
+    "bad_formation": 27
+  },
+  "records": [
+    {
+      "concept_id": "heaven_over_earth:戊:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 509,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 511,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 513,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 515,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 517,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 519,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 521,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 523,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:戊:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 525,
+      "check": {
+        "heaven_stem": "戊",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 529,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 531,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 533,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 535,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 537,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 539,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 541,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 543,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:乙:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 545,
+      "check": {
+        "heaven_stem": "乙",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 549,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 551,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 553,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 555,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 557,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 559,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 561,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 563,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丙:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 565,
+      "check": {
+        "heaven_stem": "丙",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 569,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 571,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 573,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 575,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 577,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 579,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 581,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 583,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:丁:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 585,
+      "check": {
+        "heaven_stem": "丁",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 589,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 591,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 593,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 595,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 597,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 599,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 601,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 603,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:己:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 605,
+      "check": {
+        "heaven_stem": "己",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 609,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 611,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 613,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 615,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 617,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 619,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 621,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 623,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:庚:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 625,
+      "check": {
+        "heaven_stem": "庚",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 629,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 631,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 633,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 635,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 637,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 639,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 641,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 643,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:辛:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 645,
+      "check": {
+        "heaven_stem": "辛",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 649,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 651,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 653,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 655,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 657,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 659,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 661,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 663,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:壬:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 665,
+      "check": {
+        "heaven_stem": "壬",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:戊",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 669,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "戊"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:乙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 671,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "乙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:丙",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 673,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "丙"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:丁",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 675,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "丁"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:己",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 677,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "己"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:庚",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 679,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "庚"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:辛",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 681,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "辛"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:壬",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 683,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "壬"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "heaven_over_earth:癸:癸",
+      "kind": "stem_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 685,
+      "check": {
+        "heaven_stem": "癸",
+        "earth_stem": "癸"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 693,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 695,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 697,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 699,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 701,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 703,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 705,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:开:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 707,
+      "check": {
+        "upper_door": "开",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 709,
+      "check": {
+        "door": "开",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 711,
+      "check": {
+        "door": "开",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 713,
+      "check": {
+        "door": "开",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 715,
+      "check": {
+        "door": "开",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 717,
+      "check": {
+        "door": "开",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 719,
+      "check": {
+        "door": "开",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 721,
+      "check": {
+        "door": "开",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 723,
+      "check": {
+        "door": "开",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:开:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 725,
+      "check": {
+        "door": "开",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 729,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 731,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 733,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 735,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 737,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 739,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 741,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:休:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 743,
+      "check": {
+        "upper_door": "休",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 745,
+      "check": {
+        "door": "休",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 747,
+      "check": {
+        "door": "休",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 749,
+      "check": {
+        "door": "休",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 751,
+      "check": {
+        "door": "休",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 753,
+      "check": {
+        "door": "休",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 755,
+      "check": {
+        "door": "休",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 757,
+      "check": {
+        "door": "休",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 759,
+      "check": {
+        "door": "休",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:休:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 759,
+      "check": {
+        "door": "休",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 763,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 765,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 767,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 769,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 771,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 773,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 775,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:生:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 777,
+      "check": {
+        "upper_door": "生",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 779,
+      "check": {
+        "door": "生",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 781,
+      "check": {
+        "door": "生",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 783,
+      "check": {
+        "door": "生",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 785,
+      "check": {
+        "door": "生",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 787,
+      "check": {
+        "door": "生",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 789,
+      "check": {
+        "door": "生",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 791,
+      "check": {
+        "door": "生",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 793,
+      "check": {
+        "door": "生",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:生:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 795,
+      "check": {
+        "door": "生",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 799,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 801,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 803,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 805,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 807,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 809,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 811,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:伤:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 813,
+      "check": {
+        "upper_door": "伤",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 815,
+      "check": {
+        "door": "伤",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 817,
+      "check": {
+        "door": "伤",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 819,
+      "check": {
+        "door": "伤",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 821,
+      "check": {
+        "door": "伤",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 823,
+      "check": {
+        "door": "伤",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 825,
+      "check": {
+        "door": "伤",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 827,
+      "check": {
+        "door": "伤",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 829,
+      "check": {
+        "door": "伤",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:伤:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 831,
+      "check": {
+        "door": "伤",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 835,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 837,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 839,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 841,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 843,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 845,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 847,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:杜:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 849,
+      "check": {
+        "upper_door": "杜",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 851,
+      "check": {
+        "door": "杜",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 853,
+      "check": {
+        "door": "杜",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 855,
+      "check": {
+        "door": "杜",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 857,
+      "check": {
+        "door": "杜",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 859,
+      "check": {
+        "door": "杜",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 861,
+      "check": {
+        "door": "杜",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 863,
+      "check": {
+        "door": "杜",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 865,
+      "check": {
+        "door": "杜",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:杜:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 867,
+      "check": {
+        "door": "杜",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 871,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 873,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 875,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 877,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 879,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 881,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 883,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:景:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 885,
+      "check": {
+        "upper_door": "景",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 887,
+      "check": {
+        "door": "景",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 889,
+      "check": {
+        "door": "景",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 891,
+      "check": {
+        "door": "景",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 893,
+      "check": {
+        "door": "景",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 895,
+      "check": {
+        "door": "景",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 897,
+      "check": {
+        "door": "景",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 899,
+      "check": {
+        "door": "景",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 901,
+      "check": {
+        "door": "景",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:景:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 903,
+      "check": {
+        "door": "景",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 907,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 909,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 911,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 913,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 915,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 917,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 919,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:死:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 921,
+      "check": {
+        "upper_door": "死",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 923,
+      "check": {
+        "door": "死",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 925,
+      "check": {
+        "door": "死",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 927,
+      "check": {
+        "door": "死",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 929,
+      "check": {
+        "door": "死",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 931,
+      "check": {
+        "door": "死",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 933,
+      "check": {
+        "door": "死",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 935,
+      "check": {
+        "door": "死",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 937,
+      "check": {
+        "door": "死",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:死:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 939,
+      "check": {
+        "door": "死",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:惊",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 943,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "惊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:开",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 945,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "开",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:休",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 947,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "休",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:生",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 949,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "生",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:伤",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 951,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "伤",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:杜",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 953,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "杜",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:景",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 955,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "景",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_door:惊:死",
+      "kind": "door_pair",
+      "chapter": "shijia_judgments_ch05",
+      "line": 957,
+      "check": {
+        "upper_door": "惊",
+        "lower_door": "死",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:戊",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 959,
+      "check": {
+        "door": "惊",
+        "instrument": "戊",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:乙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 961,
+      "check": {
+        "door": "惊",
+        "instrument": "乙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:丙",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 963,
+      "check": {
+        "door": "惊",
+        "instrument": "丙",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:丁",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 965,
+      "check": {
+        "door": "惊",
+        "instrument": "丁",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:己",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 967,
+      "check": {
+        "door": "惊",
+        "instrument": "己",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:庚",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 969,
+      "check": {
+        "door": "惊",
+        "instrument": "庚",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:辛",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 971,
+      "check": {
+        "door": "惊",
+        "instrument": "辛",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:壬",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 973,
+      "check": {
+        "door": "惊",
+        "instrument": "壬",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "door_over_stem:惊:癸",
+      "kind": "door_stem",
+      "chapter": "shijia_judgments_ch05",
+      "line": 975,
+      "check": {
+        "door": "惊",
+        "instrument": "癸",
+        "layer_binding": "unresolved"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:01",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 987,
+      "label": "青龙返首",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:02",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 993,
+      "label": "飞鸟跌穴",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:03",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 997,
+      "label": "九遁",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:04",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1017,
+      "label": "三奇得使",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:05",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1027,
+      "label": "玉女守门",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:06",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1031,
+      "label": "三奇贵人升殿",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:07",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1041,
+      "label": "天显时格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:08",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1047,
+      "label": "三诈五假",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:09",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1069,
+      "label": "三奇之灵",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:10",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1073,
+      "label": "奇游禄位",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:11",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1077,
+      "label": "欢怡",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:12",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1081,
+      "label": "奇仪相合",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:good_formation:13",
+      "kind": "good_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1085,
+      "label": "门宫和义",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:01",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1093,
+      "label": "青龙逃走",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:02",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1097,
+      "label": "白虎猖狂",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:03",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1101,
+      "label": "朱雀投江",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:04",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1105,
+      "label": "螣蛇夭矫",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:05",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1109,
+      "label": "荧入太白",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:06",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1113,
+      "label": "太白入荧",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:07",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1117,
+      "label": "大格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:08",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1121,
+      "label": "上格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:09",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1125,
+      "label": "刑格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:10",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1129,
+      "label": "奇格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:11",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1133,
+      "label": "伏宫格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:12",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1137,
+      "label": "飞宫格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:13",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1141,
+      "label": "岁格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:14",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1145,
+      "label": "月格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:15",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1149,
+      "label": "日格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:16",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1153,
+      "label": "飞干格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:17",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1157,
+      "label": "时格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:18",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1163,
+      "label": "六仪击刑",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:19",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1171,
+      "label": "三奇入墓",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:20",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1177,
+      "label": "三奇受刑",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:21",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1181,
+      "label": "时干入墓",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:22",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1197,
+      "label": "门迫",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:23",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1213,
+      "label": "伏吟",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:24",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1223,
+      "label": "反吟",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:25",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1233,
+      "label": "悖格",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:26",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1239,
+      "label": "天网四张",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "formation:bad_formation:27",
+      "kind": "bad_formation",
+      "chapter": "shijia_judgments_ch05",
+      "line": 1255,
+      "label": "五不遇时",
+      "check": {
+        "rule_condition": "requires_source_based_AST_review"
+      },
+      "review_status": "draft"
+    }
+  ]
+}
