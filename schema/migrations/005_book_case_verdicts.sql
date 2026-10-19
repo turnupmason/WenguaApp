@@ -2,7 +2,7 @@
 -- Designed for indivisible event families and single-response product flow.
 PRAGMA foreign_keys=ON;
 CREATE TABLE IF NOT EXISTS historical_case_book_verdicts (
-  event_family_id TEXT PRIMARY KEY REFERENCES cases(event_family_id),
+  event_family_id TEXT PRIMARY KEY,
   primary_case_id TEXT NOT NULL REFERENCES cases(case_id),
   verdict TEXT NOT NULL CHECK(verdict IN
      ('author_book_success_default','author_book_error_explicit')),
