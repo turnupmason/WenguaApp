@@ -61,6 +61,7 @@ def evaluate_candidates(chart,definitions=DEFAULT_VARIANTS):
                 if _matched(all_of,row) and (not or_of or any(_matched(group,row) for group in or_of)):
                     candidates.append({
                         "palace":palace,"star":star["star"],"variant_id":rule["variant_id"],
+                        "formation_concept_id":rule["formation_concept_id"],
                         "formation_name":rule["formation_name"],
                         "source":{"book":"神奇之门","chapter":5,"line":rule["source_line"]},
                         "matched_per_palace_facts":row,
