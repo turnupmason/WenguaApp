@@ -174,3 +174,18 @@
 本轮已从上一八章私有文件 `backup()` 无损创建新私有 `WenguaApp_V1_神奇之门_九章_工作就业二十八例_私有研究库.sqlite3`。**数据库实际核验**：`sections=9`、`chapter_knowledge=9`、`cases=28`、`historical_chart_cells=252`、`historical_case_reasoning=112`、`historical_case_disclosures=65`、`historical_case_book_verdicts=28`、`semantic_assertions=571`、`historical_case_source_segments=5`、`historical_event_candidates=5`，`integrity_check=ok`、`foreign_key_check=[]`；前8章和23个整案没有修改或删除。新53候选在私有库按原文、ID和公共方法索引链接保留，详细`ref_concept_id/scenario/summary`在公开`method_index.json`可查；第六章旧112条方法及起局32条元数据尚未全部入此私有版。
 
 **累计按新规则《神奇之门》9章、28个整案、252宫、112作者编号分析，默认书内判对28，外部独立验证0，《开悟之门》0章**。严格 `docs/CASE_OUTCOME_POLICY.md` 一事一盘一次解读、后补同案验证。每次同步根`AGENTS.md`、`docs/PROJECT_STATUS.md`、本账本，远端取回关键文件并验证当前HEAD对应两套Python CI都成功。职业人格、革职、竞选等只是古籍研究，不当作独立事实判断。
+
+
+## 2026-10-19 · 第六预测专题《神奇之门·经营求财预测》完整十四案
+
+| 章节 | 来源SHA256 | 字节/行 | 整体问事家族 | 真实原盘 | 宫位 | 作者/学员分析组 | 来源取用方法 |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `business_profit_prediction_ch06` | `c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c` | **67599字节/717行** | **14** | **16** | **144** | **59**（56编号＋贷款3条无编号） | **81** |
+
+十个基线方法类别：交易、投资、买货、卖货、房地产、开店、合伙、借钱、放贷、讨债。十四事件依原书：①租赁酒店②引资商城③商城开业④投资买商位⑤合资办厂⑥直销传销保健品⑦出租商场⑧齐白石画卷购售⑨化肥厂经营策略⑩申请银行贷款⑪煤矿中介⑫慈善抽奖汽车⑬上门讨债获还⑭寻找欠债人无获。案例十虽无“（1）”序号，但第一、二、三种贷款预测方法必须算3组。第十二例**同一连续四日抽奖故事仅一个event_family，实际出现3张不同时辰完整文字盘**（555、585、614行），其余第三四日只有641、643行判断而无完整盘，不得补造。老师582/610/639行不同解释独立来源段归同案。
+
+全部14案例按用户约定`author_book_success_default`书内判对，后补事实/奖品领取/追债结果统一同案验证；无外部准确率证明。例7第308行和例9第420行早期作者判断与起问混写、例12第550行已含未来开奖结果必须保证`known_before`防泄漏。原书最后717行句子未结束，保留原文，不能虚构收尾。
+
+公开新增`data/knowledge/shenqi/business_profit_prediction_ch06/{chapter_manifest,case_index,method_index,source_audit}.json`、`schema/migrations/007_business_multi_casts.sql`、`src/wengua/compile_shenqi_business.py`、`src/wengua/business_case_retrieval.py`、`scripts/import_shenqi_business.py`、`tests/test_business_case_import.py`及交接测试、`docs/BUSINESS_CASE_REASONING_PROTOCOL.md`；私有原文仍仅本地保留。**私有库十章** `WenguaApp_V1_神奇之门_十章_经营求财四十二例_私有研究库.sqlite3` 从九章备份增量创建，库实际记录`sections=10, cases=42, historical_chart_cells=378, historical_case_additional_casts=2, historical_case_additional_cast_cells=18, historical_case_reasoning=171, historical_case_disclosures=89, historical_case_book_verdicts=42, semantic_assertions=652`，完整性与外键检查通过；此前九章28案例不删除。**累计10章、42个原书事件、44张有来源的真实盘、396宫、171组作者分析、652条知识候选**。以前理论第六章112条和起局32条结构素材仍有未完全物化部分。
+
+必须同步根`AGENTS.md`、`PROJECT_STATUS.md`和本账本；测试最新main SHA的Python3.11/3.12均通过，不拿旧CI替代本次工作。
