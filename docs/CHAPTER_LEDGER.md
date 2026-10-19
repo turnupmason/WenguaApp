@@ -33,3 +33,30 @@
 **未解决**：公历时间/节气精确瞬时换算与子时日界；书中使用的定局细则与置闰/拆补边界；值使逐宫计数落中五宫的明确处理；原始印刷九宫图复核。图三是邻近正文的恢复表，绝不能声称对印刷原图/第三方历法已经独立验算。
 
 **下一步**：接受用户的下一章原文，按同一目录/来源规范逐章增量；如后续章节提供历法与排盘变体详情，再解除起盘引擎相应阻断。**UI继续暂停。**
+
+
+## 2026-10-19 · 《神奇之门》第四、第五章（同一上传原文，分别入库）
+
+两章均来自用户本次重新提供的原文文件 `神奇之门_第四章与第五章_完整纯文字精校版(1).txt`（1261行、UTF-8 86324字节）。**合并文件**SHA256：`8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147`。不把一份附件误计为两个不同来源文件。
+
+| 日期 | Book ID | 章节标识 | 章节原题 | 分章 SHA256 | 来源状态 | 基础/起盘知识 | 组合与候选规则 | 整体事件案例 | 候选断词 | 测试/审核 | GitHub Commit |
+| --- | --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |
+| 2026-10-19 | shenqi | shijia_symbols_ch04 | 奇门预测符号的象数理含义 | `15ce23c3fff0c9d3a48b595ee3bbf115d0c1e98a64ce1efc88bdb27e67eab22a` | `chat_source + assistant_private_SQLite_download` | **55符号主档＋87八卦象意分条** | 门宫五行与九星季节公式及作者例外待核 | 0 | 0 | 全章已提取，全部draft，源文需用户私有保留；单元测试与CI | `ba36da9` |
+| 2026-10-19 | shenqi | shijia_judgments_ch05 | 奇门预测的判断依据 | `e153de133f4c5b6c325361ff30a572e782becbb245bb471599d678bb6349679d` | `chat_source + assistant_private_SQLite_download` | 结构化书中组合判断依据 | **81十干克应＋64门门＋72门奇仪＋13吉格＋27凶格**（其中有39种复合候选表达式供进一步审查） | 0 | 0 | 全章已提取，完整条件仍未专业批准；程序对前述矩阵完整性及幂等导入测试 | `e92251e` |
+
+**本次来源断言合计411条**：55符号、87八卦细分象意、81＋64＋72有序组合、13＋27吉凶格顶层标题、12条方法、条件/例外。39条子变体为对上述吉凶格的进一步结构化，不是另有39条原书完整案例。**真实历史预测事件家族仍为0**：这两章是知识及判断体系，不含完整“问事—起盘—作者逐步断案—反馈”的独立实案。
+
+**代码/数据目录**：
+- `data/knowledge/shenqi/shijia_symbols_ch04/{chapter_manifest,symbol_index}.json`
+- `data/knowledge/shenqi/shijia_judgments_ch05/{chapter_manifest,concept_index,formation_variants_draft}.json`
+- `schema/migrations/002_semantic_assertions.sql`、`src/wengua/compile_shenqi_ch45.py`、`src/wengua/semantic_lookup.py`、`src/wengua/formation_candidates.py`
+- `scripts/import_shenqi_ch45.py`、`tests/test_shenqi_ch45_semantics.py`、`tests/test_formation_candidates.py`
+- `docs/SEMANTIC_KNOWLEDGE_MODEL.md`
+
+**配合旧第一章的互调用法**：真实九宫盘内每个已知天盘携带干与地盘干映射 `heaven_over_earth:天干:地干`；八卦、门、星、神映射共享ID查各章出处；门生克宫与九星月令采用专门公式；进一步验证39个“同宫 AND/OR”复合吉凶格候选。不允许把上/下门盘未定的八门×八门64项或门×仪72项直接当已判吉凶，也不能把未专业审核的GPT话术当正式断词。
+
+**原书争议与方法边界**：九星旺相休囚废与地上五行不同；作者只取天盘八神；“三奇得使”冲突解释作者明确待实践；“天网四张”作者坚持只癸加癸并保留网高网低争议；五不遇时需要综合星门格局；本书第五章的 `9720/8640` 为宫位格局计数，既不同于局态目录 `1080`，也未证明最终用户问事种类被穷尽。
+
+**本地原文**：本次合并私有数据库输出为 `WenguaApp_V1_神奇之门_起局_第四章_第五章_私有知识库.sqlite3`，含第一章旧原文以及第四、第五章原文和411条来源关联断言；新会话不能通过公开GitHub直接恢复版权原文。第一章额外32条结构化概念可以通过原仓库 `python3 -m scripts.import_casting_chapter01 --db local/wengua.sqlite3` 填入个人SQLite，不重置原文。用户需要保存私有下载件。
+
+**下一步**：继续用户下一章的完整原书、按相同ID和来源/审核机制加入；跨书同概念可复用ID但要独立保留作者/章节说明。UI仍然暂停。
