@@ -110,6 +110,8 @@ python3 -m unittest discover -s tests -v
 
 ## 2026-10-19 跨章知识进展：怀孕分娩新六案与旧健康案例结果归档
 
+**当前总进度：已按新规范处理《神奇之门》7章；18事件家族、162九宫来源格、75作者分析，健康六案的同案书内验证已同步。**
+
 最新《神奇之门》源章 `pregnancy_prediction_ch03`，来源SHA256 `51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e`，313行，28082字节。完整私人源含6个独立起局事件、6张九宫转写盘54宫、23个作者编号推理以及反馈，全部按照书内成功默认标签；公开索引路径 `data/knowledge/shenqi/pregnancy_prediction_ch03/`，24项`pregnancy:method:*`候选的`ref_concept_id`指向已有坤宫、门星神、值符、时干、五行、生克、应期等规则，绝非独立另创的预测引擎。原文和逐字九宫保留私有SQLite。
 
 `src/wengua/compile_shenqi_pregnancy.py` 除本章严格来源SHA校验及完整事件落库外，还新增六个旧健康案例`retroactively_sync_health_book_validation`，**实际把先前中途补充、后来确认与反馈归入同一原书事件的`validation_information`，保存原作者29步分析及54宫，不再拆多轮任务**。`health_prediction_ch01/case_index.json`有明确每案来源行号。最新的七章私人数据库包含483条 `semantic_assertions`、18案例、162宫、75步、18个默认书内判对标签；第六章112候选及起局32结构化素材仍有另行导入项。
