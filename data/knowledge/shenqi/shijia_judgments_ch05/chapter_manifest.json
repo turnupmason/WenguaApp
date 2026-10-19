@@ -1,0 +1,45 @@
+{
+  "book_id": "shenqi",
+  "input": "神奇之门_第四章与第五章_完整纯文字精校版(1).txt",
+  "input_full_sha256": "8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147",
+  "input_bytes": 86324,
+  "input_lines": 1261,
+  "public_repository_contains_full_original": false,
+  "original_text_storage": "user_supplied_local_private_SQLite_only",
+  "review_status": "draft_source_transcription_not_professional_acceptance",
+  "current_school": "shijia_zhuanpan",
+  "compiled_with": "src/wengua/compile_shenqi_ch45.py",
+  "database_migration": "schema/migrations/002_semantic_assertions.sql",
+  "query_engine": "src/wengua/semantic_lookup.py",
+  "source_line_numbering": "Global line numbers in supplied 1261-line text; local SQL stores lines relative to each chapter (subtract 500 for chapter 5).",
+  "book_crosslink_key": "concept_id",
+  "real_case_count": 0,
+  "published_reading_count": 0,
+  "chapter_number": 5,
+  "title": "奇门预测的判断依据",
+  "source_line_range": [
+    501,
+    1261
+  ],
+  "section_sha256": "e153de133f4c5b6c325361ff30a572e782becbb245bb471599d678bb6349679d",
+  "concept_index": "data/knowledge/shenqi/shijia_judgments_ch05/concept_index.json",
+  "category_counts": {
+    "stem_over_stem": 81,
+    "door_over_door": 64,
+    "door_over_instrument": 72,
+    "good_formation_top_level": 13,
+    "bad_formation_top_level": 27
+  },
+  "domain_links": [
+    "all_domains"
+  ],
+  "key_unresolved": [
+    "门加门的天盘/地盘层绑定仍待严格定义，不能直接从单层八门盘推导",
+    "门加三奇六仪的具体层绑定仍待逐格核验",
+    "九遁、三诈五假、三奇得使存在子条件与可选分支，不能只用名称判断",
+    "作者把三奇得使的冲突处理明确标成初步意见，需保留证据级别",
+    "作者主张天网四张仅癸加癸，且网高网低存在两派矛盾，不能伪装成定论",
+    "第五章明确9720或8640个宫位格局计算；与1080局态索引不同计数单位",
+    "五不遇时还要结合完整星门格局，不能忽视作者例外"
+  ]
+}
