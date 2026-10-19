@@ -9,6 +9,7 @@ from unittest.mock import patch
 from src.wengua import compile_shenqi_business as book
 from src.wengua.database import initialize,import_section,connect
 from src.wengua.book_case_retrieval import get_whole_event
+from src.wengua.business_case_retrieval import retrieve_business_event
 
 PALACE=(("巽4","离9","坤2"),("震3","中5","兑7"),("艮8","坎1","乾6"))
 
@@ -97,6 +98,15 @@ class Business14CaseTests(TestCase):
             case12=get_whole_event(db,indexes["case_index"]["cases"][11]["case_id"])
             self.assertNotIn("事后",case12["known_before"])
             self.assertNotIn("original_later_feedback",case12)
+            first=retrieve_business_event(db,indexes["case_index"]["cases"][11]["case_id"])
+            research=retrieve_business_event(db,indexes["case_index"]["cases"][11]["case_id"],view="source_study")
+            self.assertNotIn("all_other_supplied_real_casts",first)
+            self.assertEqual(len(first["first_genuine_cast"]["chart_cells"]),9)
+            self.assertEqual(len(research["all_other_supplied_real_casts"]),2)
+            self.assertTrue(all(len(x["original_chart_cells"])==9 for x in research["all_other_supplied_real_casts"]))
+            self.assertTrue(any(x["kind"]=="lottery_text_only_third_day" for x in research["source_editorial_and_text_only_hours"]))
+            self.assertTrue(research["book_validation_information"])
+
 
     def test_invalid_hash_never_creates_sqlite(self):
         with TemporaryDirectory() as tmp:
