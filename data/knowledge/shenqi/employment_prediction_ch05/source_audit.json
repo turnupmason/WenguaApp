@@ -1,0 +1,68 @@
+{
+  "schema": "wengua_employment_source_audit_v1",
+  "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+  "policy": "Cases default author_book_success_default; explicit author-documented failure needed to reverse book label; independent truth not verified.",
+  "scope": [
+    {
+      "case": 1,
+      "lines": [
+        44,
+        54
+      ],
+      "issue": "原书临时依据问者实际坐在东南巽宫选宫，是特殊空间取用；原预测在辰巳日、实际签约在甲午日己巳时，不得篡改成辰巳日完全符合。"
+    },
+    {
+      "case": 2,
+      "lines": [
+        58,
+        105
+      ],
+      "issue": "11月25日再问时，作者明说取11月4日旧盘；不增造11月25日新盘。4个编号步骤全在一个家族。书内后续竞争、学校领导助力与1997录取同案验证。"
+    },
+    {
+      "case": 3,
+      "lines": [
+        130,
+        140
+      ],
+      "issue": "原书官司、命案等传统符号解释不能当作独立司法事实证实；免职及另两人是书内反馈。"
+    },
+    {
+      "case": 4,
+      "lines": [
+        144,
+        181
+      ],
+      "issue": "书中明确共预测5次，仅第一次1997-04-15给出九宫；后续4张盘及时间均不齐全，不能凭文字补造。首次自测开头单行本身含作者即时预测与未来思路，初始问题应裁切只到自问工作如何为止。"
+    },
+    {
+      "case": 5,
+      "lines": [
+        185,
+        228
+      ],
+      "issue": "一个申时局、五个居住方位分配给五名候选人：学生只预测第一第二；书中后来报告完整五人顺序，张志春于226–228作另层复盘。不能当五份独立盘或把报告第3-5名当学生事前已预测。"
+    },
+    {
+      "case": 5,
+      "lines": [
+        187,
+        224
+      ],
+      "issue": "学生书信中将传统预测称为科学；是来源中的当事人主张，并非独立实验证据。"
+    }
+  ],
+  "author_review": {
+    "case": 5,
+    "source_lines": [
+      226,
+      228
+    ],
+    "type": "editorial_author_method_review_not_separate_event",
+    "summary": "作者指出学生列太多繁琐克应；排名主要由各宫月建旺相休囚、日时与宫星门帮助/克泄决定。"
+  },
+  "special_outcome_labels": {
+    "all_cases": "author_book_success_default",
+    "independent_external_verification": "not_verified"
+  }
+}
