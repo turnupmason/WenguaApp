@@ -11,7 +11,9 @@ def _test(condition,row):
     if not isinstance(condition,dict) or set(condition) - {"field","op","value","values"}:
         raise ValueError("Malformed formation condition")
     field=condition.get("field")
-    if field not in FIELDS or field not in row:
+    if field not in FIELDS:
+        raise ValueError("Unknown formation field")
+    if field not in row:
         return False
     if condition.get("op")=="eq" and set(condition)=={"field","op","value"}:
         return row[field]==condition["value"]
