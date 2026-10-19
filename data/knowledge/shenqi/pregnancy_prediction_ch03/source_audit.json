@@ -1,0 +1,65 @@
+{
+  "schema": "wengua_pregnancy_source_audit_v1",
+  "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+  "book_success_policy": "Six cases default source-author book success; this is NOT independent clinical accuracy.",
+  "events": [
+    {
+      "number": 1,
+      "lines": [
+        22,
+        65
+      ],
+      "note": "Mother-child pregnancy forecast, distinct prior cast to case2. Book response line65 records pregnancy in first lunar month; future sex noted only in later case2.",
+      "label": "author_book_success_default"
+    },
+    {
+      "number": 2,
+      "lines": [
+        102,
+        116
+      ],
+      "note": "Author explicitly says sex undecidable at line108; line110 originally considers 11/19 but after learning hospital due date uses alternative rule to settle 11/21. Neither ambiguity nor adjustment to final verdict should be recoded as author admission of entire case wrong.",
+      "inference_status": "sex_explicit_unknown_due_date_candidate_revision_with_known_medical_prior",
+      "label": "author_book_success_default"
+    },
+    {
+      "number": 3,
+      "lines": [
+        120,
+        159
+      ],
+      "note": "Question line120 already includes consultant's forecast; initial-question view must exclude the appended prediction but source-study view retains complete source.",
+      "label": "author_book_success_default"
+    },
+    {
+      "number": 4,
+      "lines": [
+        196,
+        206
+      ],
+      "note": "Page note 张志春按: student's initial analysis simplified, final printed reasoning modified by author; not an author's explicit admission of a failed result. Distinguish manuscript revision from real-time original analysis.",
+      "label": "author_book_success_default"
+    },
+    {
+      "number": 5,
+      "lines": [
+        243,
+        253
+      ],
+      "note": "Author editor revised student explanation, admits inconsistent sex-determination signals and warns 五不遇时 is not unconditionally bad; reference this counterexample in all later domain logic.",
+      "label": "author_book_success_default"
+    },
+    {
+      "number": 6,
+      "lines": [
+        257,
+        304
+      ],
+      "note": "B-ultrasound concerns were pre-known; later sonography and delivery are only book-provided verification. Do not use divination to decide whether to terminate a pregnancy or to refute medical diagnostics.",
+      "label": "author_book_success_default"
+    }
+  ],
+  "raw_original_boundary": "Editorial notes 307–313 are source-provenance annotations, not ancient author content",
+  "cast_integrity": "All 54 four-column chart lines are retained verbatim in private SQLite; do not claim independent calendar replay.",
+  "medical_safety": "Research source-only; not a diagnostic or prognostic method. Published medical-care advice should recommend qualified clinicians."
+}
