@@ -1,0 +1,11 @@
+{
+  "name": "问卦 Wengua",
+  "short_name": "问卦",
+  "description": "离线优先的传统奇门时家转盘研究界面（开发原型）",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10191c",
+  "theme_color": "#10191c",
+  "lang": "zh-CN"
+}
