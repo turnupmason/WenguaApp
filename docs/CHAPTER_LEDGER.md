@@ -157,3 +157,20 @@
 **当前私有八章库已在当前回合用上一七章库备份增量构建并检查**：`WenguaApp_V1_神奇之门_八章_求学考试二十三例_私有研究库.sqlite3`，`sections=8`、`chapter_knowledge=8`、`cases=23`、`historical_chart_cells=207`、`historical_case_reasoning=92`、`historical_case_disclosures=53`、`historical_case_book_verdicts=23`、`semantic_assertions=518`，SQLite `integrity_check=ok`、`foreign_key_check=[]`。先前七章和18个完整案例保留。**5例原文均入库、最后一例known_before按第264行修正，不含10月录取结果**。
 
 **现总进度**：《神奇之门》8章，3个专题疾病/婚姻/孕产加本次求学考试4个专题，**23个历史整案/207宫位/92组原文分析/23默认书内判对**；《开悟之门》0章。此前理论应用第六章112条公开方法及起局章32条结构草稿还未全部物化在本导出 SQLite，不能报称已完成。GitHub root `AGENTS.md`、`PROJECT_STATUS.md`、本账本均要随章同步，要求最新HEAD两项CI成功且真正从远端读到更新文件。
+
+
+## 2026-10-19 · 第五预测专题《神奇之门·工作就业预测》
+
+| 源章 | 文件大小/行 | 原文 SHA256 | 独立整案 | 完整九宫 | 编号分析 | 候选研究方法 | 源书结果标签 |
+| --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| `employment_prediction_ch05` | **25748字节/228行** | `b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05` | **5** | **5盘/45宫** | **20组** | **53条** | **5个默认书内判对** |
+
+原书五个事件：毕业分配（1996-02-09阳2）、母代子选部委工作（1996-11-04阴2，11月25日重新询问但用的仍是11月4日原盘，**不是两个事件或第二张盘**）、军官免职（1996-01-02阳2）、杜新会自测调任联通（1997-04-15阳1，书中自述共预测5次，但**仅第一次的完整盘存在**；后4盘不得伪造）、五名村党支部书记候选同盘比较（1996-10-27阴5，**一个卦、五个候选人、五组分析，而非五件事情**）。
+
+竞争排名唯一已预测前两名为**乾6尚耀坤第一、坤2尚明吉第二**；第五例事后原书报告震3张相如第三、巽4尚文才第四、坎1尚用成第五。独立`historical_event_candidates`把**事前预测名次仅两条**与书内事后报告完整五名排序分开；张志春第226–228行的点评独立作为`historical_case_source_segments`保存，主张先比月令旺相休囚、日时克泄，再考虑其它繁琐格局，不能回填成学员最初分析。案例一实际签约时间甲午日己巳时也保留，与事前辰巳日候选不同但整案依用户政策仍默认书内判对。全部结论尚无独立外部验证。
+
+新增公开目录`data/knowledge/shenqi/employment_prediction_ch05/`中`chapter_manifest.json`、`case_index.json`、`method_index.json`、`source_audit.json`，代码`schema/migrations/006_employment_ranked_candidates.sql`、`src/wengua/compile_shenqi_employment.py`、`scripts/import_shenqi_employment.py`、`tests/test_employment_case_import.py`，规范`docs/EMPLOYMENT_CASE_REASONING_PROTOCOL.md`。原书原文只保留用户私有 SQLite，不能提交公开库。
+
+本轮已从上一八章私有文件 `backup()` 无损创建新私有 `WenguaApp_V1_神奇之门_九章_工作就业二十八例_私有研究库.sqlite3`。**数据库实际核验**：`sections=9`、`chapter_knowledge=9`、`cases=28`、`historical_chart_cells=252`、`historical_case_reasoning=112`、`historical_case_disclosures=65`、`historical_case_book_verdicts=28`、`semantic_assertions=571`、`historical_case_source_segments=5`、`historical_event_candidates=5`，`integrity_check=ok`、`foreign_key_check=[]`；前8章和23个整案没有修改或删除。新53候选在私有库按原文、ID和公共方法索引链接保留，详细`ref_concept_id/scenario/summary`在公开`method_index.json`可查；第六章旧112条方法及起局32条元数据尚未全部入此私有版。
+
+**累计按新规则《神奇之门》9章、28个整案、252宫、112作者编号分析，默认书内判对28，外部独立验证0，《开悟之门》0章**。严格 `docs/CASE_OUTCOME_POLICY.md` 一事一盘一次解读、后补同案验证。每次同步根`AGENTS.md`、`docs/PROJECT_STATUS.md`、本账本，远端取回关键文件并验证当前HEAD对应两套Python CI都成功。职业人格、革职、竞选等只是古籍研究，不当作独立事实判断。
