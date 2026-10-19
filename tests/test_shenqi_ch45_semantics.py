@@ -97,7 +97,7 @@ class ShenqiCh45Tests(unittest.TestCase):
             self.assertEqual(linked["status"],"draft_source_context_not_approved_divination")
             self.assertGreater(len(linked["matches"]),30)
             self.assertEqual(linked["school_id"],"shijia_zhuanpan")
-            self.assertFalse(any("source_text" in str(i.get("evidence","")) for i in linked["matches"]))
+            self.assertTrue(all(e.get("local_source_text") is None for i in linked["matches"] for e in i.get("evidence",[])))
 
     def test_refuse_wrong_source_hash_no_database_mutation(self):
         with tempfile.TemporaryDirectory() as d:
