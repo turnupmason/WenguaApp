@@ -10,7 +10,7 @@
 - **公开仓库只保存索引/源代码/测试/审校元数据，不存两书整章原文或私密问事**。原书需要用户自己备份 `local/books/`，或者保留已生成的私有 SQLite。
 - 旧 `QimenLLM` 训练项目不动，不自动沿用旧十书抽取、废弃规则或旧模型输出。
 
-## 已处理的《神奇之门》实际章节：6章
+## 已处理的《神奇之门》实际章节：7章
 
 | 章节 | 真实来源 | 主要已入库内容 | 专业审核状态 |
 | --- | --- | --- | --- |
@@ -162,3 +162,24 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 用户会继续提供《神奇之门》下一预测领域章节。必须精读其领域取用与分析流程、**整案逐步来源及所有后补的书内验证**，依本次`marriage_prediction_ch02`完整流程跨章连 `concept_id`、保存原九宫、一次性结果，绝不把一个家族拆N个任务。每章须更新根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、公开结构知识/测试/私有库；查看最新main SHA对应GitHub CI均通过并逐项拉远端文件确认。
 
 **2026-10-19 私有六章数据库最终复核（比上述中间导出更新）**：婚姻专题18条公开的方法候选现已**按同一规范写入本轮私有 SQLite**，故该最终下载件的 `semantic_assertions=459`（原有441＋婚姻18）。`sections=6`、`cases=12`、`historical_chart_cells=108`、`historical_case_reasoning=52`、`historical_case_book_verdicts=12`，`integrity_check=ok`、外键无违规。旧第六章112条方法和起局章32个结构化记录仍有独立导入事项，不能说已入最终下载件。文件名继续为 `WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3`。此前正文对本下载件“只有441/婚姻18未同步”的表述只描述**中间阶段**，以后以本段最新验证状态为准。
+
+
+## 2026-10-19 最新状态：七章，疾病案例规则已追溯补齐＋怀孕分娩六例
+
+**这是当前最新实数**。按 WenguaApp 新流程《神奇之门》累计**7章**：起局方法、第四章象数理、第五章判断依据、第六章应用概述、人体疾病、恋爱婚姻、怀孕分娩；《开悟之门》0章。**现累计18个独立原书起盘事件、18张来源九宫文字盘、162个宫位记录、75条作者编号分析步骤，18案均按用户要求标记“书内判对默认”**。这不代表18次经外界独立证明正确。
+
+### 对之前《人体疾病预测》的要求已实际落实到数据库，不只是改名
+
+用户强调一个案例只按**一件事一个时辰一张盘一份完整解盘**登记，书中后来确认与补充全部作为此案 `validation_information`，不能因为原作者多轮交谈就拆成多个预测任务。已有疾病6案的原书验证行已完整补充到 `historical_case_disclosures` 中并分类，全部有原文字节支持；原案54个宫位与29条作者步骤仍原封保留，且6个 `author_book_success_default` 不变。公开 `health_prediction_ch01/case_index.json` 增 `validation_information_lines`，新模块 `compile_shenqi_pregnancy.py` 默认的 `retroactively_sync_health_book_validation` 对以后私人数据库重复导入保持此规则。学习作者书内判词不等于医学诊断或独立有效性。
+
+### 怀孕分娩新章
+
+`神奇之门_怀孕分娩预测_精校完整版(1).txt`：313行，28082字节，SHA256 `51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e`。六案、每案9宫源文字面共54条、23条作者分析。来源方法 `data/knowledge/shenqi/pregnancy_prediction_ch03/method_index.json` 为**24个带具体行号的研究候选**，存取用孕妇/胎儿的坤宫、天芮、时干、值符六合、门星阴阳，产室生克、时间选择、应期，所有字段只用于古籍研究，不提供临床预测。
+
+需要忠实保留作者疑点：①第一、二例同女儿**不同时间和不同起局**，不可混为一卦；②第二例作者对性别“拿不准”，听到医院预产期后调整日期推法；③第四、第五例学员断法经过张志春修改加工；④第五例指出五不遇时并非必凶；⑤第六例的B超报告在问卦前已知，复查及胎儿分娩后续单列验证资料。任何古籍推断不能用于真实胎儿性别、畸形、是否终止妊娠或手术决定。
+
+**源/代码**：`data/knowledge/shenqi/pregnancy_prediction_ch03/{chapter_manifest,case_index,method_index,source_audit}.json`、`src/wengua/compile_shenqi_pregnancy.py`、`scripts/import_shenqi_pregnancy.py`、`tests/test_pregnancy_case_import.py`、`docs/PREGNANCY_CASE_REASONING_PROTOCOL.md`。复用既有 schema`historical_case_book_verdicts` 等；原书完整文本仍只在私人 SQLite。
+
+**本轮本地实际七章数据库下载**：`WenguaApp_V1_神奇之门_七章_健康婚姻孕产十八例_私有研究库.sqlite3`；SQLite验证 `sections=7, cases=18, historical_chart_cells=162, historical_case_reasoning=75, historical_case_disclosures=38, historical_case_book_verdicts=18, semantic_assertions=483`，`integrity_check=ok`、外键无错误。原六章的全部原文没有被覆盖。第六章以前公开的112条、起局章32条可复用索引仍有独立本地导入项，不应和已物化的483条混淆。
+
+后续依旧只逐章处理专题取用、案例和作者证据；**UI及旧QimenLLM训练不动**；每一章更新 `AGENTS.md`、`PROJECT_STATUS.md`、`CHAPTER_LEDGER.md`，实际 fetch 核对远程提交/全部文件和最新GitHub Actions双Python测试。
