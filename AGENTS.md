@@ -133,3 +133,14 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 
 ---
 **向后续任一代理的直接指令：以用户提供的章节原文为基础，先读全章再分类与提炼，用真实引用/条件/案例构建可验证数据库；每章真实提交 GitHub 并更新进度。不要擅自继续 UI，不要恢复旧27B微调，不要编造1080张盘或未经验证的吉凶断词。**
+
+## 2026-10-19 更新记录：第四、第五章完成（持续交接）
+
+- 当前按新仓库规范完成《神奇之门》3章：时家起局方法、第四章象数理、第五章判断依据；《开悟之门》暂为0章。UI保持暂停，旧QimenLLM不改。
+- 这次两章同一个上传文件，共1261行、86324字节，SHA256 `8b8d7f57fa539785f5613cb6f8fdbdc27090da559d6d2fe5ce0ffd03953c9147`；公开GitHub不保存原书全文。私人本地SQLite保存三章原文和411条可追溯知识断言；第一章原有32个结构项可另运行原入库命令。
+- 第四章：55个符号主档、87个八卦类象分条；第五章：81个干加干、64个门加门、72个门加奇仪的有序组合，13个吉格与27个凶格一级条目，以及39个条件化格局子候选。**均属draft，真实完整预测案例家族和获批断词仍是0。**
+- 跨章索引以 `concept_id` 为通用键，例如 `heaven_over_earth:癸:丁` 和 `door_over_stem:休:癸`。每条来源留书/章/行号；同一宫的天盘、地盘、门、星、神才允许组合，不能混合其他宫的证据。
+- 关键例外：九星旺相休囚废不是地上五行旺相休囚死；作者采用天盘八神；“三奇得使”冲突处理是作者待实践意见；作者限定“天网四张”为癸加癸、网高网低意见冲突；门加门和门加仪的层绑定仍待审核。
+- 1080是18局×60时的候选局态索引；第五章的9720或8640是九宫/八宫位置计数，不能混为一谈。尚未形成完整自动公历起盘或1080张经核验盘。
+- 本次公共文件见 `data/knowledge/shenqi/shijia_symbols_ch04/`、`data/knowledge/shenqi/shijia_judgments_ch05/`、`docs/SEMANTIC_KNOWLEDGE_MODEL.md`、`schema/migrations/002_semantic_assertions.sql`；可调用代码 `src/wengua/compile_shenqi_ch45.py`、`src/wengua/semantic_lookup.py`、`src/wengua/formation_candidates.py`。详细结果按 `docs/PROJECT_STATUS.md` 和 `docs/CHAPTER_LEDGER.md` 为准。
+- **用户要求每章处理完必须同步更新本 AGENTS.md、PROJECT_STATUS.md、CHAPTER_LEDGER.md，并验证最新 GitHub CI。** 新对话以这些仓库文件为准确进度，不得让用户无理由重述已经持久化的规则。
