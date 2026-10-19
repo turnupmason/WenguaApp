@@ -1,0 +1,80 @@
+{
+  "schema": "wengua-casting-examples-v1",
+  "source_sha256": "177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2",
+  "cases": [
+    {
+      "case_id": "chapter01_yang3_19950611",
+      "kind": "casting_worked_example",
+      "source_lines": [
+        110,
+        149
+      ],
+      "date": "1995-06-11",
+      "local_time": "09:30",
+      "day_ganzhi": "癸酉",
+      "hour_ganzhi": "丁巳",
+      "solar_term": "芒种",
+      "fu_tou": "己巳",
+      "yuan": "middle",
+      "dun": "yang",
+      "ju": 3,
+      "xun_shou": "甲寅",
+      "value_star": "天任星",
+      "value_star_palace": 9,
+      "value_door": "生门",
+      "value_door_palace": 2,
+      "whole_palace_text_fixture": "tests/test_casting_shenqi_chapter01.py::YANG_3",
+      "verified_against_source_text": true,
+      "verified_against_printed_image": false,
+      "independent_calendar_verified": false
+    },
+    {
+      "case_id": "chapter01_yin8_19950813",
+      "kind": "casting_worked_example",
+      "source_lines": [
+        151,
+        188
+      ],
+      "date": "1995-08-13",
+      "local_time": "20:00",
+      "day_ganzhi": "丙子",
+      "hour_ganzhi": "戊戌",
+      "solar_term": "立秋",
+      "fu_tou": "甲戌",
+      "yuan": "lower",
+      "dun": "yin",
+      "ju": 8,
+      "xun_shou": "甲午",
+      "value_star": "天禽星",
+      "value_star_palace": 8,
+      "value_door": "死门",
+      "value_door_palace": 1,
+      "whole_palace_text_fixture": "tests/test_casting_shenqi_chapter01.py::YIN_8",
+      "verified_against_source_text": true,
+      "verified_against_printed_image": false,
+      "independent_calendar_verified": false,
+      "chart_diagram_warning": "OCR misaligned; restored from adjacent author steps"
+    },
+    {
+      "case_id": "chapter01_hand_yang2_partial",
+      "kind": "partial_casting_example",
+      "source_lines": [
+        70,
+        72
+      ],
+      "date": null,
+      "day_ganzhi": "戊寅",
+      "hour_ganzhi": "壬戌",
+      "dun": "yang",
+      "ju": 2,
+      "xun_shou": "甲寅",
+      "value_star": "天柱星",
+      "value_star_palace": 6,
+      "value_door": "惊门",
+      "value_door_palace": 6,
+      "verified_against_source_text": true,
+      "complete_chart_in_original_source": false
+    }
+  ],
+  "non_prediction_historical_events": true
+}
