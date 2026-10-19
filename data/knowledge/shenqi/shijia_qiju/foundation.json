@@ -1,0 +1,229 @@
+{
+  "schema": "wengua-foundation-v1",
+  "source_sha256": "177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2",
+  "entries": [
+    {
+      "id": "F01",
+      "kind": "foundation",
+      "name": "twelve_branch_hand_position",
+      "lines": [
+        7,
+        18
+      ],
+      "semantics": "A twelve-point clockwise mnemonic along finger joints; useful as a paper-hand alternative but not the actual palace-location algorithm.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F02",
+      "kind": "foundation",
+      "name": "sexagenary_six_xun",
+      "lines": [
+        14,
+        14
+      ],
+      "semantics": "Cycle of 60 combinations grouped in six ten-hour Jia-headed xun: JiaZi, JiaXu, JiaShen, JiaWu, JiaChen, JiaYin.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F03",
+      "kind": "foundation",
+      "name": "nine_palaces_trigrams_base_doors",
+      "lines": [
+        16,
+        18
+      ],
+      "data": {
+        "1": {
+          "gua": "坎",
+          "door": "休门"
+        },
+        "2": {
+          "gua": "坤",
+          "door": "死门"
+        },
+        "3": {
+          "gua": "震",
+          "door": "伤门"
+        },
+        "4": {
+          "gua": "巽",
+          "door": "杜门"
+        },
+        "5": {
+          "gua": "中",
+          "host_palace": 2
+        },
+        "6": {
+          "gua": "乾",
+          "door": "开门"
+        },
+        "7": {
+          "gua": "兑",
+          "door": "惊门"
+        },
+        "8": {
+          "gua": "艮",
+          "door": "生门"
+        },
+        "9": {
+          "gua": "离",
+          "door": "景门"
+        }
+      },
+      "status": "source_extracted"
+    },
+    {
+      "id": "F04",
+      "kind": "casting_foundation",
+      "name": "yang_and_yin_solar_term_groups",
+      "lines": [
+        26,
+        38
+      ],
+      "semantics": "24 solar terms map to yin or yang and upper/middle/lower bureau index; data is transcribed into deterministic table in casting_shenqi.py.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F05",
+      "kind": "casting_foundation",
+      "name": "futou_yuan_classification",
+      "lines": [
+        38,
+        38
+      ],
+      "semantics": "Find nearest preceding Jia/Ji day fu-tou on sexagenary day chain; classify fu-tou's branch into upper ZiWuMaoYou, middle YinShenSiHai, lower ChenXuChouWei. Do not classify the queried day's own branch.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F06",
+      "kind": "casting_foundation",
+      "name": "zodiac_hour_ranges",
+      "lines": [
+        46,
+        46
+      ],
+      "semantics": "12 earthly branches cover 12 successive two-hour local clock periods; Zi spans 23:00 to 00:59, Chou 01:00 to 02:59, ... Hai 21:00 to 22:59. Day rollover ambiguity remains unsolved.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F07",
+      "kind": "casting_foundation",
+      "name": "five_rat_hour_stems",
+      "lines": [
+        48,
+        56
+      ],
+      "data": {
+        "甲": "甲",
+        "己": "甲",
+        "乙": "丙",
+        "庚": "丙",
+        "丙": "戊",
+        "辛": "戊",
+        "丁": "庚",
+        "壬": "庚",
+        "戊": "壬",
+        "癸": "壬"
+      },
+      "semantics": "For a supplied solar-day stem, determine Zi-hour heavenly stem; each later branch increments stem cyclically.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F08",
+      "kind": "casting_foundation",
+      "name": "six_jia_hidden_instruments",
+      "lines": [
+        58,
+        64
+      ],
+      "data": {
+        "甲子": "戊",
+        "甲戌": "己",
+        "甲申": "庚",
+        "甲午": "辛",
+        "甲辰": "壬",
+        "甲寅": "癸"
+      },
+      "status": "source_extracted"
+    },
+    {
+      "id": "F09",
+      "kind": "casting_foundation",
+      "name": "ground_order_nine_stems",
+      "lines": [
+        90,
+        96
+      ],
+      "data": [
+        "戊",
+        "己",
+        "庚",
+        "辛",
+        "壬",
+        "癸",
+        "丁",
+        "丙",
+        "乙"
+      ],
+      "semantics": "Begin from declared bureau number and step nine-palace integer sequence ascending in Yang or descending in Yin.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F10",
+      "kind": "casting_foundation",
+      "name": "fixed_star_map",
+      "lines": [
+        60,
+        74,
+        98,
+        102,
+        139,
+        162
+      ],
+      "data": {
+        "1": "天蓬星",
+        "2": "天芮星",
+        "3": "天冲星",
+        "4": "天辅星",
+        "5": "天禽星",
+        "6": "天心星",
+        "7": "天柱星",
+        "8": "天任星",
+        "9": "天英星"
+      },
+      "status": "source_reconstructed_from_two_source_prose_cases"
+    },
+    {
+      "id": "F11",
+      "kind": "casting_foundation",
+      "name": "tianqin_host",
+      "lines": [
+        140,
+        163
+      ],
+      "semantics": "When central TianQin is associated with center fifth palace, it travels paired with TianRui at Kun second palace; each carries its own earth stem. Test case Yin8 places both in palace 8.",
+      "status": "source_extracted"
+    },
+    {
+      "id": "F12",
+      "kind": "casting_foundation",
+      "name": "eight_deities_order",
+      "lines": [
+        104,
+        104
+      ],
+      "data": [
+        "值符",
+        "螣蛇",
+        "太阴",
+        "六合",
+        "白虎",
+        "玄武",
+        "九地",
+        "九天"
+      ],
+      "semantics": "Place minor deity Zhifu with the great value star, then eight deity sequence clockwise for Yang, anticlockwise for Yin; alternative parentheses GouChen/ZhuQue require future variant note.",
+      "status": "source_extracted"
+    }
+  ]
+}
