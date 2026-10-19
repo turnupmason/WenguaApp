@@ -74,15 +74,15 @@
       "reasoning_topics": [
         "时干丙代表儿子、落艮长生旺相、鸟跌穴与死门反证",
         "天辅、值符、丁奇与景门按双方落宫作分数证据",
-        "得知年命丁后再判断志愿方向与专业、结合学校年干宫",
-        "后续确认清华应用物理录取；中途告知估分和生年是同案验证"
+        "得知年命丁后再判断志愿方向与专业、结合学校年干宫"
       ],
       "book_outcome_label": "author_book_success_default",
       "author_explicit_error": false,
       "independent_external_verification": "not_verified",
       "single_answer_for_one_cast": true,
       "raw_chart_text_only_in_private_sqlite": true,
-      "case_family_split": "indivisible_event"
+      "case_family_split": "indivisible_event",
+      "validation_interpretation_note": "后续确认清华应用物理录取；中途告知估分和生年是同案验证"
     },
     {
       "index": 2,
@@ -142,15 +142,15 @@
       "reasoning_topics": [
         "时干己落乾空亡、死门、己丙与文章丁奇阻滞",
         "天辅/值符/景门/年干与候选人的相生克结合",
-        "后知年命乙再比较大学录取与自费途径",
-        "最终四百多分未过正常录取线，原书提出自费作为备选"
+        "后知年命乙再比较大学录取与自费途径"
       ],
       "book_outcome_label": "author_book_success_default",
       "author_explicit_error": false,
       "independent_external_verification": "not_verified",
       "single_answer_for_one_cast": true,
       "raw_chart_text_only_in_private_sqlite": true,
-      "case_family_split": "indivisible_event"
+      "case_family_split": "indivisible_event",
+      "validation_interpretation_note": "最终四百多分未过正常录取线，原书提出自费作为备选"
     },
     {
       "index": 3,
@@ -208,15 +208,15 @@
       "reasoning_topics": [
         "丁奇年命及文章受丁癸凶格与伤门反证、时干庚杜门",
         "年干学校克相关落宫但考生又克天辅考试院等有录取余地",
-        "日干父亲及主考/学校落宫支持通过父亲努力走自费通道",
-        "反馈427分与最低418分、自费大学计算机专业录取"
+        "日干父亲及主考/学校落宫支持通过父亲努力走自费通道"
       ],
       "book_outcome_label": "author_book_success_default",
       "author_explicit_error": false,
       "independent_external_verification": "not_verified",
       "single_answer_for_one_cast": true,
       "raw_chart_text_only_in_private_sqlite": true,
-      "case_family_split": "indivisible_event"
+      "case_family_split": "indivisible_event",
+      "validation_interpretation_note": "反馈427分与最低418分、自费大学计算机专业录取"
     },
     {
       "index": 4,
@@ -274,15 +274,15 @@
       "reasoning_topics": [
         "日干兼时干壬同落乾宫虽旺相但空亡、伤门天柱不利",
         "丁奇文章和景门试卷同时受不同凶星格局约束",
-        "年干丙学校和天辅考试院克考生及文章所在宫",
-        "1997未考取，与1998后又考取不同年度的后续说明不重建盘"
+        "年干丙学校和天辅考试院克考生及文章所在宫"
       ],
       "book_outcome_label": "author_book_success_default",
       "author_explicit_error": false,
       "independent_external_verification": "not_verified",
       "single_answer_for_one_cast": true,
       "raw_chart_text_only_in_private_sqlite": true,
-      "case_family_split": "indivisible_event"
+      "case_family_split": "indivisible_event",
+      "validation_interpretation_note": "1997未考取，与1998后又考取不同年度的后续说明不重建盘"
     },
     {
       "index": 5,
