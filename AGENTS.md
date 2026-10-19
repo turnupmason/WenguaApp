@@ -240,3 +240,19 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 - 公共源码 `src/wengua/compile_shenqi_education.py` 提供严格源 SHA、9宫×5全字解析、17段完整提取、35知识来源登记、事件家族/验证信息/一次性结果标签的非破坏性 SQLite 增量导入，CLI `scripts/import_shenqi_education.py`；测试 `tests/test_education_case_import.py` 专门检查倒叙后验泄漏，另有 `tests/test_education_handoff_consistency.py`强制检查本段/状态/章账和数量。解释文档 `docs/EDUCATION_CASE_REASONING_PROTOCOL.md`。
 - **本回合真实制作私有八章库** `WenguaApp_V1_神奇之门_八章_求学考试二十三例_私有研究库.sqlite3`，由七章 SQLite `backup()`增量构建。**已实际检查**：`sections=8`、`chapter_knowledge=8`、`cases=23`、`historical_chart_cells=207`、`historical_case_reasoning=92`、`historical_case_disclosures=53`、`historical_case_book_verdicts=23`、`semantic_assertions=518`，`PRAGMA integrity_check=ok`、`foreign_key_check=[]`。此前7章及18案全部原文字节保留。第六章112和起局章32公开结构仍有独立SQL导入任务，勿声称八章库中已有。
 - **每次新章完成前必检查实际GitHub**：根目录`AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`及本章节manifest/方法/整案/审核、源码和单测全部commit之后，从远端再读各文件内容/sha验证；最后读取**当前 main HEAD SHA 对应**的GitHub Actions中Python 3.11和3.12两项必须都success。若任意未成功，先修复再结束，勿把旧commit的绿灯当最新提交成功。永久版权原文仅用户私人SQLite或原TXT，不能提交公开库。
+
+
+## 最新强制交接：2026-10-19 · 第九章《工作就业预测》五个整案
+
+**此节为最新状态；上面3–8章记录均是历史快照。** 当前WenguaApp按用户重新提供的原书累计处理《神奇之门》**9章**：时家起局、象数理、判断依据、应用概述、人体疾病、恋爱婚姻、怀孕分娩、求学考试、**第五专题《工作就业预测》**；《开悟之门》0章。累计**28件古籍完整事件、28张来源九宫盘、252个原字宫位、112条作者/学员编号分析、28个`author_book_success_default`标签**，独立科学准确率未证实。面向用户的UI、旧QimenLLM及27B训练依旧冻结。
+
+### 工作就业本章真实来源及工程交付
+
+- 原文 `神奇之门_工作就业预测_精校完整版(1).txt`，**228行、25748 UTF-8字节、SHA256 `b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05`**。这是应用专题原书“第五章”，并非此前“判断依据”第五章；不覆盖任何旧章。
+- 公开 `data/knowledge/shenqi/employment_prediction_ch05/`：`chapter_manifest.json`、`case_index.json`（5个完整事件家族、45源中九宫宫位、20作者编号分析及5名候选人映射）、`method_index.json`（**53条**条件化取用/格局/调动/晋升/退役/竞争排名候选、8阶段一次性断词工作流）、`source_audit.json`；各有原书真实来源行号，全部draft。
+- 本章五个原始案例：①1996-02-09丁酉时阳2毕业分配（**特殊起用：问者现场坐东南巽4宫**）；②1996-11-04庚辰时阴2母问儿子就业部委选择（**11月25日再次电话明确沿用11月4日同一盘**，4个编号步骤都属于此案）；③1996-01-02丁巳时阳2军官免职（5步）；④1997-04-15乙巳时阳1杜新会调动联通（**作者称总共占测5次，但唯一完整给出的盘只是第一次，其他4张不得编造**；第173–177行是完整步骤1，第179–181行完整步骤2）；⑤1996-10-27戊申时阴5村支书五名候选的排名（同一张盘，5条学员分析）。
+- **竞争排名必须保留“学生预测”和“事后记录”的边界**：五名候选人按真实居住方位分配坤2、乾6、巽4、坎1、震3，学生原断仅“乾6第一、坤2第二”，原书反馈才报告其余3-5名。新表 `historical_event_candidates` 同案存候选、宫、学员预测名次和反馈完整名次；作者张志春后来第226–228行主张**以各宫月令旺相休囚、日时克泄为主，其他繁多格局次之**，另存 `historical_case_source_segments` 单独评注，绝不可将复盘提前成学员最初原话。
+- 一事一时一盘一次性断词，作者未承认断错就按`author_book_success_default`，后来补充都在同案`validation_information`，但`independent_external_verification=not_verified`，古籍对人品、同事陷害、违法、革职与竞选的类象不可等同真实职业/法律事实。详见`docs/CASE_OUTCOME_POLICY.md`和`docs/EMPLOYMENT_CASE_REASONING_PROTOCOL.md`。
+- `schema/migrations/006_employment_ranked_candidates.sql`对原库**仅新增**源段与候选排名表；`src/wengua/database.py`已调用；`src/wengua/compile_shenqi_employment.py`、`scripts/import_shenqi_employment.py`对原文SHA和五盘紧凑3×3四行×三组九宫严格校验，源原字保留，重复导入无损；`tests/test_employment_case_import.py`用合成数据测完整五案、45宫、20步、53条方法、五名候选、一次出结果和不会把四次未提供盘编造出来。
+- **已实际生成并验证私人SQLite九章下载副本**：`WenguaApp_V1_神奇之门_九章_工作就业二十八例_私有研究库.sqlite3`。从旧八章库真实SQLite`backup()`只增量生成，`sections=9, chapter_knowledge=9, cases=28, historical_chart_cells=252, historical_case_reasoning=112, historical_case_disclosures=65, historical_case_book_verdicts=28, semantic_assertions=571, historical_case_source_segments=5, historical_event_candidates=5`，`PRAGMA integrity_check=ok`且`foreign_key_check=[]`。此前8章、23个事件与原文无损；53个方法在此私有副本具原文段和统一`concept_id`，详细`ref_concept_id/scenario/summary`继续在GitHub的`method_index.json`，之后可补充私有metadata。理论第六章原有112个公开知识候选、起局章32条结构化项目仍需另导入该私有副本，绝不可把571说成包含这两批。
+- **下一章交接程序永不变**：原书逐章精读→问事领域用神和条件→一案一张原字九宫、全步作者论证与验证→逐条基于来源行号关联共享概念，不按问答拆案→本地私有SQLite版本式无损迁移→公开GitHub更新 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、方法/案例/单测→拉最新HEAD核对全部远端文件、检查与HEAD同SHA的GitHub Actions Python3.11/3.12均success。千万不能拿旧提交CI成功代替现在成功。公开仓库不存版权全文，UI依旧冻结。
