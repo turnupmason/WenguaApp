@@ -119,3 +119,5 @@
 新私有 SQLite 下载：`WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3`，由前五章数据库复制、追加完整原文及婚姻六案后验核 `sections=6, chapter_knowledge=6, cases=12, historical_chart_cells=108, historical_case_reasoning=52, historical_case_disclosures=22, historical_case_book_verdicts=12`，`integrity_check=ok`、外键检查无问题。当前下载副本仍为 `semantic_assertions=441`，婚姻18条方法候选在**公开GitHub**，通过完整婚姻章节导入器可补录；旧第六章112条公开方法候选此前亦尚未写入此私有文件。不可把已公开的源码索引等同于私有库已导入的数据。
 
 **累计**《神奇之门》按新WenguaApp流程处理6章（起局、第四、第五、第六、人体疾病预测、恋爱婚姻预测），两专题合计12事件、108个九宫原字单元、52条作者编号分析；《开悟之门》0章。后续各预测领域仍严格同一标准，root `AGENTS.md`＋`PROJECT_STATUS.md`＋本账本每章同步，并核对最新远程CI，UI继续暂停。
+
+**2026-10-19 私有六章数据库最终复核（比上述中间导出更新）**：婚姻专题18条公开的方法候选现已**按同一规范写入本轮私有 SQLite**，故该最终下载件的 `semantic_assertions=459`（原有441＋婚姻18）。`sections=6`、`cases=12`、`historical_chart_cells=108`、`historical_case_reasoning=52`、`historical_case_book_verdicts=12`，`integrity_check=ok`、外键无违规。旧第六章112条方法和起局章32个结构化记录仍有独立导入事项，不能说已入最终下载件。文件名继续为 `WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3`。此前正文对本下载件“只有441/婚姻18未同步”的表述只描述**中间阶段**，以后以本段最新验证状态为准。
