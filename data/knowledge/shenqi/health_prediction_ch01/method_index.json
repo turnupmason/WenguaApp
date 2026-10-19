@@ -1,0 +1,551 @@
+{
+  "schema": "wengua_shenqi_health_method_v1",
+  "book_id": "shenqi",
+  "chapter_id": "health_prediction_ch01",
+  "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+  "original_not_public": true,
+  "domain_id": "health",
+  "source_lines": {
+    "framework": [
+      3,
+      11
+    ],
+    "cases": [
+      13,
+      290
+    ],
+    "editorial_notes": [
+      293,
+      298
+    ]
+  },
+  "body_palace_mappings": [
+    {
+      "palace": 9,
+      "trigram": "离",
+      "surface": [
+        "头",
+        "眼",
+        "面"
+      ],
+      "internal": [
+        "心",
+        "心血管",
+        "脑血管"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:9",
+      "source_trigram_id": "trigram:离",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 2,
+      "trigram": "坤",
+      "surface": [
+        "右耳",
+        "右臂",
+        "右手",
+        "皮肤"
+      ],
+      "internal": [
+        "脾",
+        "胃",
+        "食道",
+        "胰脏",
+        "消化系统"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:2",
+      "source_trigram_id": "trigram:坤",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 4,
+      "trigram": "巽",
+      "surface": [
+        "左耳",
+        "左臂",
+        "头发"
+      ],
+      "internal": [
+        "肝",
+        "胆",
+        "血管",
+        "经络",
+        "气血"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:4",
+      "source_trigram_id": "trigram:巽",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 3,
+      "trigram": "震",
+      "surface": [
+        "左肋",
+        "左腰",
+        "足"
+      ],
+      "internal": [
+        "肝",
+        "胆",
+        "左肺"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:3",
+      "source_trigram_id": "trigram:震",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 7,
+      "trigram": "兑",
+      "surface": [
+        "右肋",
+        "右腰",
+        "口舌",
+        "牙齿"
+      ],
+      "internal": [
+        "肺",
+        "气管",
+        "右肺"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:7",
+      "source_trigram_id": "trigram:兑",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 8,
+      "trigram": "艮",
+      "surface": [
+        "左腿",
+        "左脚",
+        "鼻"
+      ],
+      "internal": [
+        "肠胃",
+        "消化系统"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:8",
+      "source_trigram_id": "trigram:艮",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 6,
+      "trigram": "乾",
+      "surface": [
+        "右腿",
+        "右脚",
+        "头"
+      ],
+      "internal": [
+        "脊髓",
+        "筋骨",
+        "大肠"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:6",
+      "source_trigram_id": "trigram:乾",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    },
+    {
+      "palace": 1,
+      "trigram": "坎",
+      "surface": [
+        "外阴部"
+      ],
+      "internal": [
+        "肾",
+        "膀胱",
+        "内分泌系统"
+      ],
+      "source_lines": [
+        5,
+        7
+      ],
+      "concept_id": "health:body_palace:1",
+      "source_trigram_id": "trigram:坎",
+      "is_medical_diagnosis": false,
+      "review_status": "draft"
+    }
+  ],
+  "yongshen_rules": [
+    {
+      "concept_id": "health:role:illness_star",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天芮星",
+      "source_line": 9,
+      "priority": "primary",
+      "when": "source_conditional",
+      "author_method": "疾病主象；先定位落宫再看门、神、奇仪",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:illness_hour_stem",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "source_line": 9,
+      "priority": "alternate_topic",
+      "when": "source_conditional",
+      "author_method": "所问之事的时干辅助用神；患者是谁仍按关系判断",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:doctor_star",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "star:天心星",
+      "source_line": 11,
+      "priority": "treatment",
+      "when": "source_conditional",
+      "author_method": "医生与药物的传统代表",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:medicine_yi",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:乙",
+      "source_line": 11,
+      "priority": "treatment",
+      "when": "source_conditional",
+      "author_method": "医生与药物的传统代表",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:injury_door",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:伤",
+      "source_line": 9,
+      "priority": "supporting",
+      "when": "source_conditional",
+      "author_method": "伤病部位辅助",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:death_door",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:死",
+      "source_line": 9,
+      "priority": "supporting",
+      "when": "source_conditional",
+      "author_method": "疾病的辅助象意",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:fright_door",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:惊",
+      "source_line": 9,
+      "priority": "supporting",
+      "when": "source_conditional",
+      "author_method": "疾病的辅助象意",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:obstruct_door",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:杜",
+      "source_line": 9,
+      "priority": "supporting",
+      "when": "source_conditional",
+      "author_method": "疾病的辅助象意",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:scene_door",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "door:景",
+      "source_line": 9,
+      "priority": "supporting",
+      "when": "source_conditional",
+      "author_method": "疾病的辅助象意",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:self",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:日干",
+      "source_line": 67,
+      "priority": "subject_if_self",
+      "when": "source_conditional",
+      "author_method": "本人求问本人健康",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:father",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年干",
+      "source_line": 105,
+      "priority": "subject_if_parent",
+      "when": "source_conditional",
+      "author_method": "女问父病，兼乾宫与患者年命",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:nephew",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:时干",
+      "source_line": 145,
+      "priority": "subject_if_nephew_case",
+      "when": "relationship_nephew",
+      "author_method": "叔辈问侄子使用时干；仅本案例方法候选",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:aunt",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年干",
+      "source_line": 192,
+      "priority": "subject_if_older_relative_case",
+      "when": "source_conditional",
+      "author_method": "问姨母等长辈以年干兼坤宫作辅助；勿将其无条件等于所有长辈",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:role:patient_birth_stem",
+      "kind": "yongshen_candidate",
+      "symbol_concept_id": "stem:年命",
+      "source_line": 64,
+      "priority": "additional",
+      "when": "source_conditional",
+      "author_method": "有可靠出生年后再兼看年命",
+      "review_status": "draft"
+    }
+  ],
+  "author_workflow_nodes": [
+    {
+      "concept_id": "health:workflow:choose_question_and_person",
+      "kind": "author_method_workflow",
+      "id": "choose_question_and_person",
+      "order": 1,
+      "lines": [
+        9,
+        11,
+        63,
+        67,
+        103,
+        105,
+        145,
+        192,
+        237,
+        282
+      ],
+      "requires": [
+        "inquiry_type",
+        "relationship_to_subject"
+      ],
+      "next": [
+        "disease_and_treatment_roles"
+      ],
+      "description": "把求测人、患者、病星与医生分别绑定；疾病问事不等于直接给出医疗结论",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:disease_and_treatment_roles",
+      "kind": "author_method_workflow",
+      "id": "disease_and_treatment_roles",
+      "order": 2,
+      "lines": [
+        9,
+        11
+      ],
+      "requires": [
+        "chart",
+        "star:天芮星",
+        "star:天心星",
+        "stem:乙"
+      ],
+      "next": [
+        "palace_mapping"
+      ],
+      "description": "天芮疾病；天心乙奇医生医药，必须核对所在宫和当事人干",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:palace_mapping",
+      "kind": "author_method_workflow",
+      "id": "palace_mapping",
+      "order": 3,
+      "lines": [
+        5,
+        7
+      ],
+      "requires": [
+        "disease_star_palace",
+        "inner_outer_context"
+      ],
+      "next": [
+        "palace_combinations"
+      ],
+      "description": "区分体表与体内八宫象意；同宫含多个可能象意，禁止以象意直接作医学确诊",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:palace_combinations",
+      "kind": "author_method_workflow",
+      "id": "palace_combinations",
+      "order": 4,
+      "lines": [
+        9,
+        63,
+        103,
+        145,
+        191,
+        237,
+        282
+      ],
+      "requires": [
+        "full_chart_cells",
+        "stem_stem_matrix",
+        "door_and_deity_context"
+      ],
+      "next": [
+        "season_and_strength"
+      ],
+      "description": "天盘干地盘干克应、八门、八神与病星同宫和不同宫证据联系，必要条件不明时不得匹配",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:season_and_strength",
+      "kind": "author_method_workflow",
+      "id": "season_and_strength",
+      "order": 5,
+      "lines": [
+        9,
+        63,
+        103,
+        150,
+        194,
+        241,
+        283
+      ],
+      "requires": [
+        "solar_term_or_season",
+        "dun",
+        "patient_reference",
+        "tianrui_palace"
+      ],
+      "next": [
+        "contrary_evidence"
+      ],
+      "description": "原书明确按旺相休囚、内外盘、患者干/年命与病星生克综合强弱",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:contrary_evidence",
+      "kind": "author_method_workflow",
+      "id": "contrary_evidence",
+      "order": 6,
+      "lines": [
+        66,
+        67,
+        104,
+        150,
+        194,
+        241,
+        284
+      ],
+      "requires": [
+        "doctor_star_palace",
+        "yi_stem_palace",
+        "disease_star_palace"
+      ],
+      "next": [
+        "timing_conditional"
+      ],
+      "description": "必须同时看病星受制或有气与医生医药证据，不能见凶格就得出严重预后",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:timing_conditional",
+      "kind": "author_method_workflow",
+      "id": "timing_conditional",
+      "order": 7,
+      "lines": [
+        64,
+        65,
+        106,
+        153,
+        195
+      ],
+      "requires": [
+        "source_linked_timing_method",
+        "known_calendar_input"
+      ],
+      "next": [
+        "explanation"
+      ],
+      "description": "原书仅在有冲合、空亡、墓、值使等理由时择应期；缺数据不写具体日期",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "health:workflow:explanation",
+      "kind": "author_method_workflow",
+      "id": "explanation",
+      "order": 8,
+      "lines": [
+        62,
+        67,
+        103,
+        106,
+        145,
+        154,
+        189,
+        197,
+        235,
+        244,
+        281,
+        290
+      ],
+      "requires": [
+        "matched_evidence",
+        "contrary_evidence",
+        "per_case_source",
+        "limitations"
+      ],
+      "next": [],
+      "description": "逐层写事实、取用、多个证据、反证、条件与最终总结；历史结局不得泄漏到预测输入",
+      "review_status": "draft"
+    }
+  ],
+  "dependency_contract": {
+    "casting": "src/wengua/casting_shenqi.py",
+    "symbols": "src/wengua/symbol_relations.py",
+    "combinations": "src/wengua/semantic_lookup.py",
+    "other_domains": "src/wengua/ch06_knowledge.py",
+    "case_facts": "case_index.json",
+    "professional_review": "all draft; match against complete chart and original author method"
+  },
+  "medical_safety": "These are historical traditional-symbol research records, not clinical diagnosis. Do not produce patient-specific cancer, death, prognosis, prescription or treatment advice as factual conclusions.",
+  "status": "draft"
+}
