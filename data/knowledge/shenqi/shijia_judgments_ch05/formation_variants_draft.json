@@ -322,8 +322,8 @@
           "value": "九地"
         }
       ],
-      "alternatives": "按原文杜门或开门均属候选。",
-      "notes": "",
+      "alternatives": [],
+      "notes": "按原文杜门或开门均属候选。",
       "review_status": "draft",
       "auto_approved": false
     },
@@ -493,8 +493,8 @@
           ]
         }
       ],
-      "alternatives": "原文说丁己癸合杜门，天/地盘搭配需要复核",
-      "notes": "",
+      "alternatives": [],
+      "notes": "原文说丁己癸合杜门，天/地盘搭配需要复核",
       "review_status": "draft",
       "auto_approved": false
     },
@@ -520,8 +520,8 @@
           "value": "九天"
         }
       ],
-      "alternatives": "原书附加太白入荧的复合条件仅对应捉逃者，不是人假定义条件。",
-      "notes": "",
+      "alternatives": [],
+      "notes": "原书附加太白入荧的复合条件仅对应捉逃者，不是人假定义条件。",
       "review_status": "draft",
       "auto_approved": false
     },
@@ -582,8 +582,8 @@
           "value": "六合"
         }
       ],
-      "alternatives": "原文有又一说；保留观点分歧，不强行合并。",
-      "notes": "",
+      "alternatives": [],
+      "notes": "原文有又一说；保留观点分歧，不强行合并。",
       "review_status": "draft",
       "auto_approved": false
     },
