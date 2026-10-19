@@ -106,3 +106,12 @@ python3 -m unittest discover -s tests -v
 - **调用**：`src/wengua/health_research.py` 的`health_method_plan` 查询本专题的条件化用神候选，`retrieve_historical_case(...,view='initial_question')` 不给作者分析和反馈，`source_study` 才解锁整案步骤，用于学作者证据推理、用语。未见盲测需事件家族完全未用于示范学习；当前6案均未正式分割。
 - **待审跨章条件**：第五章十干克应及吉凶格＋第六章五不遇时与内外、主客、旺衰，只有确认同一宫、具体求测人关系和真实时令才可使用。疾病章第四例`庚申日丙戌时`与第六章举例`庚日丙子时`有五不遇时定义适用范围疑点，另存`source_audit.json`不修改原书。
 - **医学边界**：原作者古代象数理对癌症、死亡时间、治疗及异地求医的说法均是历史文本，不具独立临床准确性。新App不得直接给用户现实医疗诊断、寿命预言或干预正规治疗。
+
+
+## 2026-10-19 跨章知识进展：怀孕分娩新六案与旧健康案例结果归档
+
+最新《神奇之门》源章 `pregnancy_prediction_ch03`，来源SHA256 `51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e`，313行，28082字节。完整私人源含6个独立起局事件、6张九宫转写盘54宫、23个作者编号推理以及反馈，全部按照书内成功默认标签；公开索引路径 `data/knowledge/shenqi/pregnancy_prediction_ch03/`，24项`pregnancy:method:*`候选的`ref_concept_id`指向已有坤宫、门星神、值符、时干、五行、生克、应期等规则，绝非独立另创的预测引擎。原文和逐字九宫保留私有SQLite。
+
+`src/wengua/compile_shenqi_pregnancy.py` 除本章严格来源SHA校验及完整事件落库外，还新增六个旧健康案例`retroactively_sync_health_book_validation`，**实际把先前中途补充、后来确认与反馈归入同一原书事件的`validation_information`，保存原作者29步分析及54宫，不再拆多轮任务**。`health_prediction_ch01/case_index.json`有明确每案来源行号。最新的七章私人数据库包含483条 `semantic_assertions`、18案例、162宫、75步、18个默认书内判对标签；第六章112候选及起局32结构化素材仍有另行导入项。
+
+重要条件源例外：孕产例2性别不确定、先考虑11/19后得知医院11/21预产期而调整方法；例4/5学员文本经作者修订；例5五不遇时不必凶；例6胎儿影像疑虑在问事前已知。*原书中的医学相关判断仅作文化文献研究，不能用于真实医疗选择。* 产品保持“一时一盘一次完整断语”和整案追溯，来源明确不等于医学真实有效性已验证。详情见 `docs/PREGNANCY_CASE_REASONING_PROTOCOL.md`、`docs/CASE_OUTCOME_POLICY.md`。
