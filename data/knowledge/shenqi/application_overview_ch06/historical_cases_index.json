@@ -1,0 +1,59 @@
+{
+  "schema": "wengua_partial_historical_cases_index_v1",
+  "chapter": "application_overview_ch06",
+  "source_sha256": "50c76ce5354d3378a842d6117f06c239bcdfe2f04786663c2e89f606d98c402e",
+  "events": [
+    {
+      "event_family_id": "shenqi.ch06.rocket_launch_1995_01_26",
+      "source_lines": {
+        "prior_news": [
+          32,
+          32
+        ],
+        "known_time_and_casting": [
+          34,
+          34
+        ],
+        "author_prediction": [
+          36,
+          36
+        ],
+        "later_result": [
+          38,
+          38
+        ]
+      },
+      "case_type": "source_author_historical_case",
+      "topic": "航天器发射的择时判断",
+      "domain_tags": [
+        "life",
+        "weather",
+        "work"
+      ],
+      "known_before": {
+        "event_date_local": "1995-01-26",
+        "event_time_local": "06:40",
+        "day_ganzhi": "丁巳",
+        "hour_ganzhi": "癸卯",
+        "dun": "yang",
+        "ju": 9,
+        "value_star": "天冲星",
+        "value_door": "伤门"
+      },
+      "author_evidence_summary": [
+        "五不遇时：丁日癸卯时",
+        "天冲值符落中五寄坤二的作者记载",
+        "辛加癸/辛加庚与伤加伤等作者列举条件",
+        "九天临九宫与乙加戊的作者描述"
+      ],
+      "prior_prediction_summary": "原书作者对发射失败、损失和人员伤亡作出不利判断",
+      "later_feedback_summary": "原书随后描述发射失败与伤亡、理赔事项",
+      "complete_nine_palace_chart": false,
+      "complete_author_reasoning_with_chart": false,
+      "author_report_independently_verified": false,
+      "separate_later_feedback": true,
+      "eligible_as_sealed_independent_test": false,
+      "review_status": "draft"
+    }
+  ]
+}
