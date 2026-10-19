@@ -31,9 +31,9 @@ def simulated_chapter():
                     ("冲己","", "芮丁")
                 ]
                 for k in range(4):
-                    lines[a+k]="│"+"│".join(line[k])+"│"
-                if row<2:lines[a+4]="├─┼─┼─┤"
-            lines[start+15]="└─┴─┴─┘"
+                    lines[a+k-1]="│"+"│".join(line[k])+"│"
+                if row<2:lines[a+4-1]="├─┼─┼─┤"
+            lines[start+15-1]="└─┴─┴─┘"
         for j,(a,b) in enumerate(case["numbered_or_explicit_analysis_ranges"],1):
             lines[a-1]=f"（{j}）合成原书方法"
             if i==9:
