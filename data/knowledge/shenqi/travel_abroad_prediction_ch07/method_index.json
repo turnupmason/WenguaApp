@@ -1,0 +1,297 @@
+{
+  "schema": "wengua_travel_method_index_v1",
+  "source_sha256": "c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55",
+  "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1",
+  "method_count": 38,
+  "methods": [
+    {
+      "concept_id": "travel:general:person_destination_relation",
+      "source_line": 5,
+      "category": "general_role_and_conditional_method",
+      "meaning": "日干本人宫、目的地方位宫互生克和吉凶门格，年命/时干空墓为条件性证据",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:road_vehicle",
+      "source_line": 7,
+      "category": "general_role_and_conditional_method",
+      "meaning": "汽车与铁路等乘车：景门道路、伤门车辆；危险象意只作文本来源",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:ship_waterway",
+      "source_line": 9,
+      "category": "general_role_and_conditional_method",
+      "meaning": "乘船：休门水路、伤门船只；风暴沉船等仅记录作者传统类象",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:flight_path_plane",
+      "source_line": 11,
+      "category": "general_role_and_conditional_method",
+      "meaning": "飞机：九天为航线、开门为飞机",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:depart_near_far",
+      "source_line": 13,
+      "category": "general_role_and_conditional_method",
+      "meaning": "日时干内外盘合看出发远近及开门下临地盘干应期",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:return_date_predeparture",
+      "source_line": 15,
+      "category": "general_role_and_conditional_method",
+      "meaning": "未出门测归期：出发日的日干所落宫下临地盘干",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:traveller_abroad",
+      "source_line": 17,
+      "category": "general_role_and_conditional_method",
+      "meaning": "在外行人：用神、年命所在宫及门星神时令综合",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:general:geng_return_and_exceptions",
+      "source_line": 19,
+      "category": "general_role_and_conditional_method",
+      "meaning": "庚格阴阳日上下干、乙庚合/墓空例外，天蓬芮远近及伏吟反吟须条件触发",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:brother_flight:step:1",
+      "source_line": 48,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:brother_flight:step:2",
+      "source_line": 50,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:south_business_trip:step:1",
+      "source_line": 79,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:south_business_trip:step:2",
+      "source_line": 81,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:south_business_trip:step:3",
+      "source_line": 83,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:south_business_trip:step:4",
+      "source_line": 85,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:friend_driver_return:step:1",
+      "source_line": 114,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:friend_driver_return:step:2",
+      "source_line": 116,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:friend_driver_return:step:3",
+      "source_line": 118,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:friend_driver_return:step:4",
+      "source_line": 120,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:friend_driver_return:step:5",
+      "source_line": 122,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:1",
+      "source_line": 173,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:2",
+      "source_line": 175,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:3",
+      "source_line": 185,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:4",
+      "source_line": 203,
+      "category": "later_reuse_old_chart_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:5",
+      "source_line": 213,
+      "category": "later_reuse_old_chart_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:6",
+      "source_line": 223,
+      "category": "later_reuse_old_chart_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:7",
+      "source_line": 231,
+      "category": "later_reuse_old_chart_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:italy_departure_old_cast_reused:step:8",
+      "source_line": 239,
+      "category": "later_reuse_old_chart_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:family_lake_tour:step:1",
+      "source_line": 272,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:family_lake_tour:step:2",
+      "source_line": 274,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:family_lake_tour:step:3",
+      "source_line": 276,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:family_lake_tour:step:4",
+      "source_line": 278,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:1",
+      "source_line": 309,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:2",
+      "source_line": 311,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:3",
+      "source_line": 313,
+      "category": "original_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:4",
+      "source_line": 340,
+      "category": "second_actual_time_cast_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:5",
+      "source_line": 342,
+      "category": "second_actual_time_cast_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:germany_trip_two_real_casts:step:6",
+      "source_line": 344,
+      "category": "second_actual_time_cast_case_specific",
+      "meaning": "原书编号分析：按来源行号读原始全文；不能扩充成无条件万能断语",
+      "status": "draft_source_only"
+    },
+    {
+      "concept_id": "travel:case6:retrospective_rain_explanation",
+      "source_line": 350,
+      "category": "author_post_event_review_not_prior_prediction",
+      "meaning": "作者事后解释雨天和航班延误，不能当作事前明确预言",
+      "status": "draft_source_only"
+    }
+  ],
+  "interpretation_phases": [
+    "问者与行人关系(本人/代兄/战友/妻儿)",
+    "询问时刻或书中指定拟启程时间先说明",
+    "原书真实九宫与各宫旺相门星神干",
+    "方向宫生克及乘车/船/飞机路径选择",
+    "支持证据与不利因素分开",
+    "应期与回程/延误取法以原书为条件",
+    "一次给完整来源解释与结语",
+    "后续事实/同盘再断/不同实际原盘分层保存"
+  ],
+  "cross_concept_keys": [
+    "role:日干",
+    "role:月干",
+    "role:时干",
+    "door:开",
+    "door:景",
+    "door:伤",
+    "deity:九天",
+    "formation:伏吟",
+    "formation:反吟",
+    "formation:空亡",
+    "formation:五不遇时"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book": "shenqi",
+  "source_title": "出行出国预测",
+  "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1",
+  "source_filename": "神奇之门_出行出国预测_精校完整版(2).txt",
+  "source_sha256": "c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55",
+  "source_utf8_bytes": 31026,
+  "source_lines": 350,
+  "whole_source_story_families": 6,
+  "real_original_nine_palace_charts": 7,
+  "source_nine_palace_original_cells": 63,
+  "original_numbered_reasoning_groups": 29,
+  "conditional_method_candidates": 38,
+  "source_file_private_only": true,
+  "independent_verification": "not_verified",
+  "special_cases": {
+    "case1": "原书咨询1月17，实际按1月20预定起飞时间起盘",
+    "case4": "十月复问时沿用二月旧盘，没有新盘；后来五条健康复断属于同案后续",
+    "case6": "同一德国出国考察实际两张完整不同时辰盘，第一问时，第二预定出发时；350行是事后复盘，不能混入事前",
+    "source_last_line": "last line 350 contains author retrospective description; original supplied final sentence has no concluding period"
+  },
+  "existing_migration": "schema/migrations/007_business_multi_casts.sql",
+  "app_protocol": "Single current inquiry -> one time-specific cast -> full answer; historical multi-cast study remains a single story",
+  "source_verdict_policy": "docs/CASE_OUTCOME_POLICY.md"
+}

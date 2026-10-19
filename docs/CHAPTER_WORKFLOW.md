@@ -88,3 +88,17 @@
 经营求财原书 `c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c` 的慈善抽奖例12是完整连续抽奖活动一个事件家族，**但作者真实印有1997-01-25丙午、丁未和01-26丁巳三个不同时间盘**。必须逐盘保留真实源行号及完整九宫（第一盘在主表、后两盘在`historical_case_additional_cast_cells`），并与一个原书故事、七条学员推理及三条作者复盘关联；01-27/28仅文字判断，不推造不存在的源盘。最终用户问一个当前时辰则仍只有**当次起局一张盘和一次完整断词**，不模拟GPT多轮对话。
 
 经营章节实例十未使用“（1）”编号，却按“第一种方法、第二种方法、第三种方法”写了三条完整推论，也必须录入`historical_case_reasoning`，不因无圆括号漏掉。案例七、九、十二的问事初始原文混入当时作者断语或之后结果；生成初断用的`known_before`必须从原文中裁剪掉断语与后来结果，同时保持完整版权源、分析和验证分栏。来源作者没明确承认某次断案错误，均按用户指定的`author_book_success_default`保存，独立外部真实性另列。具体见`docs/BUSINESS_CASE_REASONING_PROTOCOL.md`。
+
+
+## 2026-10-19 最新第十一处理章：《出行出国预测》及#186失败提醒复核
+
+本节为最新交接；前面十章的进度记录是历史快照。上一章Run **39343195782**（commit `c405993`）确实Failure，后续Run **39343304392**（commit `8af463e`）已success（Python3.11/3.12），不是失败未修复；失败的历史邮件不会自动撤回。
+
+最新《神奇之门》累计**11章、48个完整事件家族、51张原书真实打印的九宫、459个原字宫位（主盘432＋附加时局27）、200组作者/学员编号分析、690条有出处的研究候选、48个默认书内判对标签**，《开悟之门》0章。新增原书文件`神奇之门_出行出国预测_精校完整版(2).txt`，**350行31026字节 SHA256 `c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55`**，实际6故事7盘29编号分析38方法。原书首页标题只写“出行出国预测”，仓库`ch07`仅是顺序标识，不能伪造书内第七章原题。UI、旧QimenLLM/27B训练仍不启动。
+
+**本章硬性例外**：例1于1月17咨询，但原作者依据1月20将起飞的计划时刻起局；例4 2月23出国一案10月25再联络母亲时仍使用二月**旧盘**，原作者3条初断+复看5条疾病及家属分析都在同一原事件，不新增十月盘；例6 6月21问时盘和6月24预计下午3点起飞机盘**两张确实打印的不同盘**属于一个出国考察故事，实际因雨拖延到6点属后验反馈，350行事后天气复盘不能提前当作者初断。任何书内叙述不构成航班安全、道路交通或疾病的独立可靠预测。详见`docs/TRAVEL_CASE_REASONING_PROTOCOL.md`。
+
+公有`data/knowledge/shenqi/travel_abroad_prediction_ch07/`四索引、`src/wengua/compile_shenqi_travel.py`、`scripts/import_shenqi_travel.py`与`tests/test_travel_case_import.py`；**完整原书版权TXT与私有SQLite绝不自动上传公开Github**。私有新SQLite`WenguaApp_V1_神奇之门_十一章_出行出国四十八例_私有研究库.sqlite3`由十章库`backup()`无损增量生成，旧十章全部不变，实际计数`sections=11; cases=48; historical_chart_cells=432; historical_case_additional_casts=3; historical_case_additional_cast_cells=27; historical_case_reasoning=200; historical_case_book_verdicts=48; historical_case_disclosures=102; semantic_assertions=690`，integrity_check ok/无外键违规。上一理论第六章112公开规则、起局32结构条目仍有未全部入私有库事项，不宣称已物化。
+
+下一章遵守`docs/CASE_OUTCOME_POLICY.md`：作者若未明确承认断错仍标`author_book_success_default`（不等于外部科学有效），事件后补同案验证，严格保留实际出现的每张不同时间盘，绝不造盘；问用户App仍一问一时一盘一次完整回答。远端逐文件重新读回+GitHub Actions**最新main对应的两Python任务都success**才宣称完成。减少重复推送通知，优先一个原子GitHub提交；禁止拿旧绿灯替代最新。
+历史按计划起飞机时刻起局必须另记为cast_selection_strategy；同一事件真实两张时辰盘必须存实盘，后续旧盘复断绝不补造；不将后验答复和天气复盘作为首问事实。

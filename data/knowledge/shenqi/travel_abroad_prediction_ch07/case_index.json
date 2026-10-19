@@ -1,0 +1,290 @@
+{
+  "schema": "wengua_travel_case_index_v1",
+  "source_sha256": "c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55",
+  "source_title": "出行出国预测",
+  "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1",
+  "case_count": 6,
+  "actual_cast_count": 7,
+  "total_numbered_analysis": 29,
+  "author_book_success_default_count": 6,
+  "cases": [
+    {
+      "index": 1,
+      "case_id": "shenqi.travel.brother_flight",
+      "event_family_id": "shenqi.travel.brother_flight",
+      "title": "代问兄长计划航班安全",
+      "source_span": [
+        23,
+        55
+      ],
+      "initial_source_lines": [
+        25,
+        25
+      ],
+      "original_chart_starts": [
+        32
+      ],
+      "numbered_reasoning_lines": [
+        48,
+        50
+      ],
+      "original_judgment_lines": [
+        52
+      ],
+      "book_feedback_lines": [
+        54
+      ],
+      "querent_relation_and_yongshen": "弟媳代问兄长：月干己",
+      "notes": "预定起飞时间起盘(1月20日)，不同于1月17日咨询时间",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    },
+    {
+      "index": 2,
+      "case_id": "shenqi.travel.south_business_trip",
+      "event_family_id": "shenqi.travel.south_business_trip",
+      "title": "赴广州深圳出差",
+      "source_span": [
+        56,
+        90
+      ],
+      "initial_source_lines": [
+        58,
+        58
+      ],
+      "original_chart_starts": [
+        63
+      ],
+      "numbered_reasoning_lines": [
+        79,
+        81,
+        83,
+        85
+      ],
+      "original_judgment_lines": [
+        87
+      ],
+      "book_feedback_lines": [
+        89
+      ],
+      "querent_relation_and_yongshen": "本人：日干乙",
+      "notes": "正南所去离宫及乘车景门道路伤门车",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    },
+    {
+      "index": 3,
+      "case_id": "shenqi.travel.friend_driver_return",
+      "event_family_id": "shenqi.travel.friend_driver_return",
+      "title": "代问战友自驾往返安全",
+      "source_span": [
+        91,
+        147
+      ],
+      "initial_source_lines": [
+        93,
+        93
+      ],
+      "original_chart_starts": [
+        98
+      ],
+      "numbered_reasoning_lines": [
+        114,
+        116,
+        118,
+        120,
+        122
+      ],
+      "original_judgment_lines": [
+        124,
+        130,
+        134,
+        138
+      ],
+      "book_feedback_lines": [
+        144,
+        146
+      ],
+      "querent_relation_and_yongshen": "代问战友：月干己",
+      "notes": "返程坤宫、道路/车辆及未日应期，与返程交通反馈分别保存",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    },
+    {
+      "index": 4,
+      "case_id": "shenqi.travel.italy_departure_old_cast_reused",
+      "event_family_id": "shenqi.travel.italy_departure_old_cast_reused",
+      "title": "出国意大利并在半年后沿用旧盘研究其他问题",
+      "source_span": [
+        148,
+        246
+      ],
+      "initial_source_lines": [
+        150,
+        150
+      ],
+      "original_chart_starts": [
+        157
+      ],
+      "numbered_reasoning_lines": [
+        173,
+        175,
+        185,
+        203,
+        213,
+        223,
+        231,
+        239
+      ],
+      "original_judgment_lines": [
+        179,
+        189
+      ],
+      "book_feedback_lines": [
+        191,
+        199,
+        207,
+        217,
+        227,
+        235,
+        243
+      ],
+      "querent_relation_and_yongshen": "本人出国日干乙；十月同旧盘复断家庭疾病",
+      "notes": "1995-10-25复看2月23日旧盘，无新盘；疾病分析是后来咨询，不得提前成为2月初断",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    },
+    {
+      "index": 5,
+      "case_id": "shenqi.travel.family_lake_tour",
+      "event_family_id": "shenqi.travel.family_lake_tour",
+      "title": "代问妻儿旅游龙凤湖",
+      "source_span": [
+        247,
+        283
+      ],
+      "initial_source_lines": [
+        249,
+        249
+      ],
+      "original_chart_starts": [
+        256
+      ],
+      "numbered_reasoning_lines": [
+        272,
+        274,
+        276,
+        278
+      ],
+      "original_judgment_lines": [
+        280
+      ],
+      "book_feedback_lines": [
+        282
+      ],
+      "querent_relation_and_yongshen": "代妻儿问：戊癸合取癸代表妻",
+      "notes": "以西南坤宫、景门车路、伤门车辆、空亡和原书雨天结果综合",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    },
+    {
+      "index": 6,
+      "case_id": "shenqi.travel.germany_trip_two_real_casts",
+      "event_family_id": "shenqi.travel.germany_trip_two_real_casts",
+      "title": "老同学德国考察与预定起飞时局复盘",
+      "source_span": [
+        284,
+        350
+      ],
+      "initial_source_lines": [
+        286,
+        286
+      ],
+      "original_chart_starts": [
+        293,
+        324
+      ],
+      "numbered_reasoning_lines": [
+        309,
+        311,
+        313,
+        340,
+        342,
+        344
+      ],
+      "original_judgment_lines": [
+        315,
+        346
+      ],
+      "book_feedback_lines": [
+        348
+      ],
+      "querent_relation_and_yongshen": "本人出行日干己；预定离境时间日干壬",
+      "notes": "6月21日问时盘与6月24日预定15点出发盘都实际提供；雨致18点起飞属书内后来反馈；350行解释雨是事后",
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "app_reads_one_time_cast": true,
+      "chapter_key": "shenqi/travel_abroad_prediction_ch07/v1"
+    }
+  ],
+  "extra_cast": {
+    "case_id": "shenqi.travel.germany_trip_two_real_casts",
+    "chart_start": 324,
+    "hour_ganzhi": "戊申",
+    "calendar_date": "1996-06-24",
+    "kind": "planned_departure_hour_second_real_source_cast",
+    "later_actual_departure": "18时因下雨延误; feedback only"
+  },
+  "retrospective_segments": [
+    {
+      "case": 4,
+      "kind": "reuse_1995_02_23_old_chart_in_october",
+      "source_lines": [
+        195,
+        201
+      ]
+    },
+    {
+      "case": 4,
+      "kind": "late_family_disease_cross_domain_same_old_chart",
+      "source_lines": [
+        203,
+        243
+      ]
+    },
+    {
+      "case": 6,
+      "kind": "late_rain_analysis_not_initial_prediction",
+      "source_lines": [
+        350,
+        350
+      ]
+    },
+    {
+      "case": 6,
+      "kind": "planned_departure_departure_query",
+      "source_lines": [
+        317,
+        319
+      ]
+    },
+    {
+      "case": 3,
+      "kind": "conversation_after_initial_caution_same_story",
+      "source_lines": [
+        126,
+        142
+      ]
+    }
+  ]
+}

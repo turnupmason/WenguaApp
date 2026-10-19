@@ -1,0 +1,16 @@
+{
+  "schema": "wengua_travel_source_audit_v1",
+  "source_sha256": "c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55",
+  "previous_chapter_failure_run": "39343195782",
+  "previous_chapter_fixed_run": "39343304392",
+  "issues": [
+    "本章原文首页仅题为出行出国预测，不在原文里虚构原书第七章标题；仓库用ch07作顺序标识。",
+    "例1 1月17日咨询却按1月20日计划起飞机时刻起盘；现有App默认按本地当前时间，必须把这类特例作为作者取时策略保留。",
+    "例3 同一行程中劝阻与继续通话均是同一局，最终白色车辆的交通损失是书内后来反馈。",
+    "例4 2月初测出国，10月25日拿原盘复查婚姻与三位亲属健康；后5组分析不能变成首问已经知道的资料。医学疾病仅为古籍叙述，不做临床诊断。",
+    "例6 6月21日问时盘及6月24日拟出发时盘均有完整九宫；实际起飞延至18时。末行350日后解释天气只是事后复盘，不算事前明确断出暴雨。",
+    "所有健康、车祸、航空安全等叙述只记传统文本及来源，不用于现实安全决策。"
+  ],
+  "source_quote_not_real_world_verification": true,
+  "privacy": "No original copyrighted chapter text or names in public repo; original full text in user-downloaded private SQLite."
+}

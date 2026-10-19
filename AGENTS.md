@@ -272,3 +272,16 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 6. **数据表与调用**：`data/knowledge/shenqi/business_profit_prediction_ch06/`中的`chapter_manifest.json`（source SHA）、`case_index.json`（14个整案、16真实盘、59分析）、`method_index.json`（81条件方法）、`source_audit.json`；源私有全文完整存`sections`。新迁移`schema/migrations/007_business_multi_casts.sql`新增`historical_case_additional_casts`、`historical_case_additional_cast_cells`，绝不修改之前九章的数据；`src/wengua/database.py`已加入迁移。编译`src/wengua/compile_shenqi_business.py`、CLI`scripts/import_shenqi_business.py`先核验准确717行原文SHA然后增量导入，重复幂等；`src/wengua/business_case_retrieval.py`区分`initial`只读第一盘与`source_study`读全案三张盘、作者分析、反馈和文本缺盘时辰。测试`tests/test_business_case_import.py`和`tests/test_business_handoff_consistency.py`。
 7. **当前真正生成的私人十章库** `WenguaApp_V1_神奇之门_十章_经营求财四十二例_私有研究库.sqlite3` 从上次九章/28案原始私人文件用SQLite`backup()`备份增量创建，旧全部九章原文和28个整案保留；校验`sections=10, cases=42, historical_chart_cells=378, historical_case_additional_casts=2, historical_case_additional_cast_cells=18, historical_case_reasoning=171, historical_case_book_verdicts=42, historical_case_disclosures=89, semantic_assertions=652, historical_case_source_segments=14`、`PRAGMA integrity_check=ok`，外键无异常。**主宫表378＋补充盘表18＝全部396个来源宫位，不能只报378忽略第十二例后两张盘**。原书最后一行717无句号，为文件所提供的最后文字，不得自行补写。第六章早先公开112候选及起局32条结构数据仍有部分未物化到私人库，不能算在652中。
 8. **GitHub校验永久强制**：每处理下一章节，源文件和完整来源行号/用神条件/事件盘面全部检查→新用户私有SQLite无损版本→更新根`AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、知识索引、代码、测试→从远端再次逐一读取确认SHA及内容→当前最新`main`HEAD的GitHub Actions Python3.11与3.12须**两个均success**。不拿之前旧提交通过冒充新提交更新成功，不向公开仓库推版权正文。默认书内判对逻辑及后验隔离绝对不能改变。
+
+
+## 2026-10-19 最新第十一处理章：《出行出国预测》及#186失败提醒复核
+
+本节为最新交接；前面十章的进度记录是历史快照。上一章Run **39343195782**（commit `c405993`）确实Failure，后续Run **39343304392**（commit `8af463e`）已success（Python3.11/3.12），不是失败未修复；失败的历史邮件不会自动撤回。
+
+最新《神奇之门》累计**11章、48个完整事件家族、51张原书真实打印的九宫、459个原字宫位（主盘432＋附加时局27）、200组作者/学员编号分析、690条有出处的研究候选、48个默认书内判对标签**，《开悟之门》0章。新增原书文件`神奇之门_出行出国预测_精校完整版(2).txt`，**350行31026字节 SHA256 `c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55`**，实际6故事7盘29编号分析38方法。原书首页标题只写“出行出国预测”，仓库`ch07`仅是顺序标识，不能伪造书内第七章原题。UI、旧QimenLLM/27B训练仍不启动。
+
+**本章硬性例外**：例1于1月17咨询，但原作者依据1月20将起飞的计划时刻起局；例4 2月23出国一案10月25再联络母亲时仍使用二月**旧盘**，原作者3条初断+复看5条疾病及家属分析都在同一原事件，不新增十月盘；例6 6月21问时盘和6月24预计下午3点起飞机盘**两张确实打印的不同盘**属于一个出国考察故事，实际因雨拖延到6点属后验反馈，350行事后天气复盘不能提前当作者初断。任何书内叙述不构成航班安全、道路交通或疾病的独立可靠预测。详见`docs/TRAVEL_CASE_REASONING_PROTOCOL.md`。
+
+公有`data/knowledge/shenqi/travel_abroad_prediction_ch07/`四索引、`src/wengua/compile_shenqi_travel.py`、`scripts/import_shenqi_travel.py`与`tests/test_travel_case_import.py`；**完整原书版权TXT与私有SQLite绝不自动上传公开Github**。私有新SQLite`WenguaApp_V1_神奇之门_十一章_出行出国四十八例_私有研究库.sqlite3`由十章库`backup()`无损增量生成，旧十章全部不变，实际计数`sections=11; cases=48; historical_chart_cells=432; historical_case_additional_casts=3; historical_case_additional_cast_cells=27; historical_case_reasoning=200; historical_case_book_verdicts=48; historical_case_disclosures=102; semantic_assertions=690`，integrity_check ok/无外键违规。上一理论第六章112公开规则、起局32结构条目仍有未全部入私有库事项，不宣称已物化。
+
+下一章遵守`docs/CASE_OUTCOME_POLICY.md`：作者若未明确承认断错仍标`author_book_success_default`（不等于外部科学有效），事件后补同案验证，严格保留实际出现的每张不同时间盘，绝不造盘；问用户App仍一问一时一盘一次完整回答。远端逐文件重新读回+GitHub Actions**最新main对应的两Python任务都success**才宣称完成。减少重复推送通知，优先一个原子GitHub提交；禁止拿旧绿灯替代最新。
