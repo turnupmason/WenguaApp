@@ -19,6 +19,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/001_chapter_knowledge.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/002_semantic_assertions.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/003_incomplete_historical_case_parts.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/004_health_case_evidence.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
