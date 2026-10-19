@@ -295,7 +295,7 @@
       ],
       "original_question_source_lines": [
         264,
-        284
+        264
       ],
       "original_nine_palace_row_lines": [
         312,
@@ -362,7 +362,12 @@
       "independent_external_verification": "not_verified",
       "single_answer_for_one_cast": true,
       "raw_chart_text_only_in_private_sqlite": true,
-      "case_family_split": "indivisible_event"
+      "case_family_split": "indivisible_event",
+      "retrospective_cast_source_lines": [
+        284,
+        284
+      ],
+      "retroactive_source_view_guard": "Book tells outcome and later reassurances at lines 268–280 before its 284 chart heading; initial question MUST consist only of source line 264, and chart comes from separate literal rows 312–320. Exclude 268–280 from known_before."
     }
   ]
 }
