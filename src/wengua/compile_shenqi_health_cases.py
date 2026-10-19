@@ -93,12 +93,35 @@ def _build(source_text):
                         "chart_rows":rows,"steps":steps,"disclosures":disclosures})
     return lines,methods,records
 
+def _method_entries(methods,lines):
+    """Store compact public research methods as citation-linked local assertions."""
+    groups=(("body_palace_mappings","health_body_map"),
+            ("yongshen_rules","health_yongshen"),
+            ("author_workflow_nodes","health_reasoning_workflow"))
+    entries=[]
+    for attr,kind in groups:
+        for rule in methods[attr]:
+            cid=rule["concept_id"]
+            if attr=="body_palace_mappings":
+                a,b=rule["source_lines"]
+            elif attr=="yongshen_rules":
+                a=b=rule["source_line"]
+            else:
+                a=b=rule["lines"][0]
+            if not 1<=a<=b<=len(lines):
+                raise ValueError("Health research method source span invalid")
+            entries.append((cid,kind,a,b,_json(rule),_text(lines,(a,b))))
+    if len(entries)!=30 or len({e[0] for e in entries})!=30:
+        raise ValueError("Unexpected health method coverage")
+    return entries
+
 def import_health_chapter(db_path,source_file):
     raw=Path(source_file).read_bytes()
     if hashlib.sha256(raw).hexdigest()!=EXPECTED_SHA:
         raise ValueError("Health chapter source SHA256 mismatch")
     text=raw.decode("utf-8")
     lines,methods,records=_build(text)  # validate all 6 complete charts BEFORE mutation
+    method_entries=_method_entries(methods,lines)
     # Append-only; existing 4 chapters + semantic facts remain unchanged.
     import_section(db_path,"shenqi",KEY,TITLE,text)
     initialize(db_path)
@@ -115,6 +138,20 @@ def import_health_chapter(db_path,source_file):
             AND section_key=? AND sha256=?""",(KEY,EXPECTED_SHA)).fetchone()
         if not section:raise ValueError("Missing exact full source section")
         section_id=section[0]
+        for cid,kind,source_start,source_end,metadata,excerpt in method_entries:
+            old=db.execute("""SELECT kind,metadata_json,original_excerpt
+                 FROM semantic_assertions WHERE chapter_key=? AND concept_id=?
+                 AND source_start_line=?""",
+                 (CHAPTER_KEY,cid,source_start)).fetchone()
+            wanted=(kind,metadata,excerpt)
+            if old is None:
+                db.execute("""INSERT INTO semantic_assertions
+                     (chapter_key,concept_id,kind,relation,source_start_line,
+                      source_end_line,metadata_json,original_excerpt,review_status)
+                     VALUES (?,?,?,'source_health_method',?,?,?,?,'draft')""",
+                     (CHAPTER_KEY,cid,kind,source_start,source_end,metadata,excerpt))
+            elif old!=wanted:
+                raise ValueError("Previously imported health method changed")
         for rec in records:
             info=rec["case"]
             case_id=info["event_family_id"]
@@ -195,7 +232,9 @@ def import_health_chapter(db_path,source_file):
         # with this chapter in its complete source. No silent promotion to approved.
         approved=db.execute("""SELECT count(*) FROM rules WHERE status='approved'
                           AND section_id=?""",(section_id,)).fetchone()[0]
-    return {"status":"complete_source_studies_imported_as_draft",
+        method_count=db.execute("SELECT count(*) FROM semantic_assertions WHERE chapter_key=?",
+                               (CHAPTER_KEY,)).fetchone()[0]
+    return {"method_assertions":method_count,"status":"complete_source_studies_imported_as_draft",
             "chapter_key":CHAPTER_KEY,"source_sha256":EXPECTED_SHA,
             "source_lines":len(lines),"case_charts":results["historical_case_protocol"],
             "nine_palace_literal_cells":results["historical_chart_cells"],
