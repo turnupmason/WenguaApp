@@ -184,3 +184,20 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 7. **每次新章节都必须真实更新本根目录AGENTS.md、docs/PROJECT_STATUS.md、docs/CHAPTER_LEDGER.md、原文manifest、案例/知识结构化文件、需要的迁移/源代码及自动测试。** 最后从远程Github读取全部关键文件核对内容与SHA，查询GitHub Actions同一最新main提交Python 3.11/3.12是否均成功。任何失败要修复，不能只写“已经更新”；版权原文只进用户私有仓库/本地SQLite，不上传Public Git。
 8. **从新一章开始**：直接跟随用户提供的下一预测领域文件；不要要求重新上传前五章，除非确实需要逐字复核GitHub未保存的版权原文。不可复用旧十书自动抽取数据，也不强行推进UI或大模型训练。
 
+
+## 最新跨对话交接：2026-10-19 · 恋爱婚姻六案、作者原书判对协议
+
+**此节是最新状态。上方“3/4/5章”均是历史快照。** 目前 WenguaApp 从用户新提交原书实际处理《神奇之门》**6章**：时家奇门起局、第四章象数理、第五章判断依据、第六章应用概述、专题第一章人体疾病预测、专题第二章恋爱婚姻预测；《开悟之门》0章。**两个预测专题累计12个完整书内事件家族，健康6＋婚姻6；共108个九宫原字单元，52条作者编号推理。** 本章六个婚姻案例共23步，完整来源哈希 `64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9`（367行、35777字节）。旧QimenLLM、UI和27B训练仍暂停，不恢复。
+
+### 用户绝对明确的最新案例政策：必须执行！
+
+**[docs/CASE_OUTCOME_POLICY.md](docs/CASE_OUTCOME_POLICY.md) 是最新优先规范**（如旧段落有“先判断/后补充拆成另一个训练任务”“多轮问答慢慢生成答案”“未独立验证就算断错”等与之不一致说法，以此为准）：
+
+1. **一个事情、一个起局时辰、一个实际提供的盘、一个完整解盘；案例整体保留，不按作者的往返问答拆成多个独立训练任务。** 以后离线 App 一次显示全部候选解读、证据及总结，而不是聊天模型的反复断问。
+2. **所有原书案例默认“书内断对”，只要作者未明确承认断错、改断、更正、复盘认为错误，就统一 `author_book_success_default`。** 后来确认、被测人补充的真相、反馈均是同一案的**书内验证信息**；不要因为出现于预测中途就拆案或否决作者。作者明确纠错才 `author_book_error_explicit` 并保存原推理与更正。前六例疾病案例和现在六例婚姻案例已一并按此政策登记。
+3. 技术上另保留`independent_external_verification=not_verified`；书内说对是来源研究标签，不得谎称由外部医疗/历史事件验证100%科学准确率。绝不把历史反馈提前作为真实问事输入，研究记录保留作者分析与反馈分栏。
+4. 必须区分人物代问关系与专项用神：恋爱婚姻章一般天盘乙女/庚男、六合媒人、夫妻相合干、年命，第三者丁女/丙男；一个实例中作者可能变更取用优先级。学习作者**取用条件→多宫证据→反证→应期→最终结果的一整套逻辑**，非机械背断词。
+5. **新婚姻章节**：`data/knowledge/shenqi/marriage_prediction_ch02/` 下 `chapter_manifest.json`、`method_index.json`（18条方法/7步框架）、`case_index.json`（6个事件家族、原始54宫、23分析步骤）、`source_audit.json`（书内字面问题）。代码 `src/wengua/compile_shenqi_marriage.py`、`src/wengua/book_case_retrieval.py`、`src/wengua/book_verdict_sync.py`、迁移`005_book_case_verdicts.sql`、脚本 `scripts/import_shenqi_marriage.py` 和 `scripts/sync_author_book_verdicts.py`、测试`tests/test_marriage_case_import.py`。详见 `docs/MARRIAGE_CASE_REASONING_PROTOCOL.md`。
+6. **源数据例外**：婚姻案3/5整理者指作者分析与文字九宫局部不一致，不得私自改表，也不是作者明确承认断错；案6有1997年原书提到的无图电话咨询及**1998年4月22日实际提供的一张盘**，二者属于连续家庭事件但不能把1998盘说成1997盘。用户上传婚姻原书至**第367行止**，不能编出后面更远的反馈；用户所要求的默认书内成功标签照常适用。
+7. **真实私有六章数据库下载副本**：`WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3` 已自五章旧库复制增量创建、确认 `sections=6`、`cases=12`、`historical_chart_cells=108`、`historical_case_reasoning=52`、`historical_case_book_verdicts=12`、`PRAGMA integrity_check=ok`/外键无异常，版权原文只保存在本地。私人导出版目前 `semantic_assertions=441`（前四/健康来源），**婚姻章18个候选方法在公开索引，待运行婚姻完整GitHub导入器时增补到私有表**；上一第六章112个方法的登记同样尚待在私有库跑CLI。不得声称此下载件已经装了全部公开抽象索引。
+8. 任何下一章节仍是：**完整原书精读 →领域取用规则→六宫/九宫原字及整案全部判断→默认书内判对及全部验证→来源事实/来源异常→增量库→测试→更新根AGENTS与PROJECT_STATUS、CHAPTER_LEDGER**；推送后逐项重新拉远程文件验证 HEAD SHA，对最新HEAD检查两项Python CI，任何失败必须修。公开库不存版权原文、个人隐私。用户直接发下一章即继续。
