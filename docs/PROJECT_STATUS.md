@@ -160,3 +160,5 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 ### 接下来的发展
 
 用户会继续提供《神奇之门》下一预测领域章节。必须精读其领域取用与分析流程、**整案逐步来源及所有后补的书内验证**，依本次`marriage_prediction_ch02`完整流程跨章连 `concept_id`、保存原九宫、一次性结果，绝不把一个家族拆N个任务。每章须更新根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、公开结构知识/测试/私有库；查看最新main SHA对应GitHub CI均通过并逐项拉远端文件确认。
+
+**2026-10-19 私有六章数据库最终复核（比上述中间导出更新）**：婚姻专题18条公开的方法候选现已**按同一规范写入本轮私有 SQLite**，故该最终下载件的 `semantic_assertions=459`（原有441＋婚姻18）。`sections=6`、`cases=12`、`historical_chart_cells=108`、`historical_case_reasoning=52`、`historical_case_book_verdicts=12`，`integrity_check=ok`、外键无违规。旧第六章112条方法和起局章32个结构化记录仍有独立导入事项，不能说已入最终下载件。文件名继续为 `WenguaApp_V1_神奇之门_六章_健康婚姻十二例_私有研究库.sqlite3`。此前正文对本下载件“只有441/婚姻18未同步”的表述只描述**中间阶段**，以后以本段最新验证状态为准。
