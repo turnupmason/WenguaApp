@@ -1,0 +1,49 @@
+{
+  "schema": "wengua_marriage_source_audit_v1",
+  "source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+  "all_six_book_verdicts": "author_book_success_default",
+  "disagreements": [
+    {
+      "case": 3,
+      "source_lines": [
+        175,
+        178,
+        184
+      ],
+      "status": "source_narrative_vs_chart_literal_inconsistency",
+      "handling": "Preserve original 9-palace rows and author's interpretation without silent corrections. Do not mark author_book_error_explicit absent author correction."
+    },
+    {
+      "case": 5,
+      "source_lines": [
+        284,
+        287
+      ],
+      "status": "source_narrative_vs_chart_literal_inconsistency",
+      "handling": "Source note says author time-stem Ding in center 5 while original palace rows show Ding in 3; retain both unaltered."
+    },
+    {
+      "case": 6,
+      "source_lines": [
+        315,
+        358
+      ],
+      "status": "two_inquiry_times_single_family_one_supplied_chart",
+      "handling": "1997 telephone inquiry has no chart, 1998-04-22 chart is provided; do not backfill earlier chart."
+    },
+    {
+      "case": 6,
+      "source_lines": [
+        361,
+        367
+      ],
+      "status": "source_ends_after_step_four",
+      "handling": "No fabricated later feedback beyond line 367, but user-prescribed default author book success label applies absent explicit admission of error."
+    }
+  ],
+  "verification": [
+    "Five cases include later reported outcomes, case6 has context validation at lines317 and323 but no post-step4 epilogue in supplied excerpt.",
+    "Book-level success labels are user-prescribed assessment of author claims, not independent verification.",
+    "Original editor's audit notes are not author admissions of error."
+  ]
+}
