@@ -1,0 +1,1077 @@
+{
+  "schema": "wengua_shenqi_symbol_relations_v1",
+  "book": "shenqi",
+  "chapter": "shijia_symbols_ch04",
+  "source_chapter_sha256": "15ce23c3fff0c9d3a48b595ee3bbf115d0c1e98a64ce1efc88bdb27e67eab22a",
+  "status": "draft_source_transcribed_not_professional_approval",
+  "source_lines_global": "1-based in combined 1261-line input",
+  "conditions": [
+    "These are standalone symbolic relationships; apply only to relevant method/domain and matched chart facts.",
+    "Branch punishment directed triple cycles are not all symmetric.",
+    "Stem growth cycles are base attributes not direct predictions.",
+    "Door seasons follow the author and a missing stage is unknown, not inferred.",
+    "Nine-star monthly 旺相休囚废 has a separate formula in semantic_lookup.py, do not reuse door or ground rules."
+  ],
+  "relation_counts": {
+    "total": 42,
+    "stem_growth_rows": 10,
+    "door_season_rows": 8
+  },
+  "relations": [
+    {
+      "relation_id": "stem_combine:甲:己",
+      "kind": "stem_combine",
+      "members": [
+        "甲",
+        "己"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {
+        "result_element": "土"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_combine:乙:庚",
+      "kind": "stem_combine",
+      "members": [
+        "乙",
+        "庚"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {
+        "result_element": "金"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_combine:丙:辛",
+      "kind": "stem_combine",
+      "members": [
+        "丙",
+        "辛"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {
+        "result_element": "水"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_combine:丁:壬",
+      "kind": "stem_combine",
+      "members": [
+        "丁",
+        "壬"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {
+        "result_element": "木"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_combine:戊:癸",
+      "kind": "stem_combine",
+      "members": [
+        "戊",
+        "癸"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {
+        "result_element": "火"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_clash:甲:庚",
+      "kind": "stem_clash",
+      "members": [
+        "甲",
+        "庚"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_clash:乙:辛",
+      "kind": "stem_clash",
+      "members": [
+        "乙",
+        "辛"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_clash:壬:丙",
+      "kind": "stem_clash",
+      "members": [
+        "壬",
+        "丙"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "stem_clash:癸:丁",
+      "kind": "stem_clash",
+      "members": [
+        "癸",
+        "丁"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        251,
+        251
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:子:午",
+      "kind": "branch_clash",
+      "members": [
+        "子",
+        "午"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:卯:酉",
+      "kind": "branch_clash",
+      "members": [
+        "卯",
+        "酉"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:辰:戌",
+      "kind": "branch_clash",
+      "members": [
+        "辰",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:巳:亥",
+      "kind": "branch_clash",
+      "members": [
+        "巳",
+        "亥"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:丑:未",
+      "kind": "branch_clash",
+      "members": [
+        "丑",
+        "未"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_clash:寅:申",
+      "kind": "branch_clash",
+      "members": [
+        "寅",
+        "申"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        319,
+        321
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:子:未",
+      "kind": "branch_harm",
+      "members": [
+        "子",
+        "未"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:丑:午",
+      "kind": "branch_harm",
+      "members": [
+        "丑",
+        "午"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:寅:巳",
+      "kind": "branch_harm",
+      "members": [
+        "寅",
+        "巳"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:卯:辰",
+      "kind": "branch_harm",
+      "members": [
+        "卯",
+        "辰"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:申:亥",
+      "kind": "branch_harm",
+      "members": [
+        "申",
+        "亥"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_harm:酉:戌",
+      "kind": "branch_harm",
+      "members": [
+        "酉",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        323,
+        325
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:子:丑",
+      "kind": "branch_six_harmony",
+      "members": [
+        "子",
+        "丑"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:寅:亥",
+      "kind": "branch_six_harmony",
+      "members": [
+        "寅",
+        "亥"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:卯:戌",
+      "kind": "branch_six_harmony",
+      "members": [
+        "卯",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:辰:酉",
+      "kind": "branch_six_harmony",
+      "members": [
+        "辰",
+        "酉"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:巳:申",
+      "kind": "branch_six_harmony",
+      "members": [
+        "巳",
+        "申"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_six_harmony:午:未",
+      "kind": "branch_six_harmony",
+      "members": [
+        "午",
+        "未"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {},
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_meeting:寅:卯:辰",
+      "kind": "branch_three_meeting",
+      "members": [
+        "寅",
+        "卯",
+        "辰"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "木"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_meeting:巳:午:未",
+      "kind": "branch_three_meeting",
+      "members": [
+        "巳",
+        "午",
+        "未"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "火"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_meeting:申:酉:戌",
+      "kind": "branch_three_meeting",
+      "members": [
+        "申",
+        "酉",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "金"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_meeting:亥:子:丑",
+      "kind": "branch_three_meeting",
+      "members": [
+        "亥",
+        "子",
+        "丑"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "水"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_harmony:申:子:辰",
+      "kind": "branch_three_harmony",
+      "members": [
+        "申",
+        "子",
+        "辰"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "水"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_harmony:亥:卯:未",
+      "kind": "branch_three_harmony",
+      "members": [
+        "亥",
+        "卯",
+        "未"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "木"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_harmony:寅:午:戌",
+      "kind": "branch_three_harmony",
+      "members": [
+        "寅",
+        "午",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "火"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_three_harmony:巳:酉:丑",
+      "kind": "branch_three_harmony",
+      "members": [
+        "巳",
+        "酉",
+        "丑"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        327,
+        327
+      ],
+      "attributes": {
+        "result_element": "金"
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_punishment:子:卯",
+      "kind": "branch_punishment",
+      "members": [
+        "子",
+        "卯"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        313,
+        315
+      ],
+      "attributes": {
+        "kind": "无礼之刑",
+        "mutual": true
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_punishment:寅:巳:申",
+      "kind": "branch_punishment",
+      "members": [
+        "寅",
+        "巳",
+        "申"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        315,
+        315
+      ],
+      "attributes": {
+        "kind": "无恩之刑",
+        "directed_cycle": true
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_punishment:丑:未:戌",
+      "kind": "branch_punishment",
+      "members": [
+        "丑",
+        "未",
+        "戌"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        315,
+        315
+      ],
+      "attributes": {
+        "kind": "恃势之刑",
+        "directed_cycle": true
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_self_punishment:辰:辰",
+      "kind": "branch_self_punishment",
+      "members": [
+        "辰",
+        "辰"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        317,
+        317
+      ],
+      "attributes": {
+        "directed_cycle": false
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_self_punishment:午:午",
+      "kind": "branch_self_punishment",
+      "members": [
+        "午",
+        "午"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        317,
+        317
+      ],
+      "attributes": {
+        "directed_cycle": false
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_self_punishment:酉:酉",
+      "kind": "branch_self_punishment",
+      "members": [
+        "酉",
+        "酉"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        317,
+        317
+      ],
+      "attributes": {
+        "directed_cycle": false
+      },
+      "review_status": "draft"
+    },
+    {
+      "relation_id": "branch_self_punishment:亥:亥",
+      "kind": "branch_self_punishment",
+      "members": [
+        "亥",
+        "亥"
+      ],
+      "source_chapter": "shenqi/shijia_symbols_ch04/v1",
+      "source_lines": [
+        317,
+        317
+      ],
+      "attributes": {
+        "directed_cycle": false
+      },
+      "review_status": "draft"
+    }
+  ],
+  "stem_life_stages": [
+    {
+      "stem": "甲",
+      "stages": {
+        "长生": "亥",
+        "帝旺": "卯",
+        "死": "午",
+        "墓": "未",
+        "绝": "申"
+      },
+      "source_lines": [
+        253,
+        253
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "乙",
+      "stages": {
+        "长生": "午",
+        "帝旺": "寅",
+        "死": "亥",
+        "墓": "戌",
+        "绝": "酉"
+      },
+      "source_lines": [
+        253,
+        253
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "丙",
+      "stages": {
+        "长生": "寅",
+        "帝旺": "午",
+        "死": "酉",
+        "墓": "戌",
+        "绝": "亥"
+      },
+      "source_lines": [
+        255,
+        255
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "丁",
+      "stages": {
+        "长生": "酉",
+        "帝旺": "巳",
+        "死": "寅",
+        "墓": "丑",
+        "绝": "子"
+      },
+      "source_lines": [
+        255,
+        255
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "戊",
+      "stages": {
+        "长生": "寅",
+        "帝旺": "午",
+        "死": "酉",
+        "墓": "戌",
+        "绝": "亥"
+      },
+      "source_lines": [
+        255,
+        255
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "己",
+      "stages": {
+        "长生": "酉",
+        "帝旺": "巳",
+        "死": "寅",
+        "墓": "丑",
+        "绝": "子"
+      },
+      "source_lines": [
+        255,
+        255
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "庚",
+      "stages": {
+        "长生": "巳",
+        "帝旺": "酉",
+        "死": "子",
+        "墓": "丑",
+        "绝": "寅"
+      },
+      "source_lines": [
+        257,
+        257
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "辛",
+      "stages": {
+        "长生": "子",
+        "帝旺": "申",
+        "死": "巳",
+        "墓": "辰",
+        "绝": "卯"
+      },
+      "source_lines": [
+        257,
+        257
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "壬",
+      "stages": {
+        "长生": "申",
+        "帝旺": "子",
+        "死": "卯",
+        "墓": "辰",
+        "绝": "巳"
+      },
+      "source_lines": [
+        259,
+        259
+      ],
+      "review_status": "draft"
+    },
+    {
+      "stem": "癸",
+      "stages": {
+        "长生": "卯",
+        "帝旺": "亥",
+        "死": "申",
+        "墓": "未",
+        "绝": "午"
+      },
+      "source_lines": [
+        259,
+        259
+      ],
+      "review_status": "draft"
+    }
+  ],
+  "door_seasons": [
+    {
+      "door": "开",
+      "seasonal_states": {
+        "旺": [
+          "秋"
+        ],
+        "相": [
+          "四季月"
+        ],
+        "休": [
+          "冬"
+        ],
+        "囚": [
+          "春"
+        ],
+        "死": [
+          "夏"
+        ]
+      },
+      "source_lines": [
+        351,
+        355
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "休",
+      "seasonal_states": {
+        "旺": [
+          "冬"
+        ],
+        "相": [
+          "秋"
+        ],
+        "休": [
+          "春"
+        ],
+        "囚": [
+          "夏"
+        ],
+        "死": [
+          "四季月"
+        ]
+      },
+      "source_lines": [
+        357,
+        361
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "生",
+      "seasonal_states": {
+        "旺": [
+          "四季月"
+        ],
+        "相": [
+          "夏"
+        ],
+        "休": [
+          "秋"
+        ],
+        "囚": [
+          "冬"
+        ],
+        "死": [
+          "春"
+        ]
+      },
+      "source_lines": [
+        363,
+        367
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "伤",
+      "seasonal_states": {
+        "旺": [
+          "春"
+        ],
+        "相": [
+          "冬"
+        ],
+        "休": [
+          "夏"
+        ],
+        "囚": [
+          "四季月"
+        ],
+        "死": [
+          "秋"
+        ]
+      },
+      "source_lines": [
+        369,
+        373
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "杜",
+      "seasonal_states": {
+        "旺": [
+          "春"
+        ],
+        "相": [
+          "冬"
+        ],
+        "休": [
+          "夏"
+        ],
+        "囚": [
+          "四季月"
+        ],
+        "死": [
+          "秋"
+        ]
+      },
+      "source_lines": [
+        375,
+        379
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "景",
+      "seasonal_states": {
+        "旺": [
+          "夏"
+        ],
+        "相": [
+          "春"
+        ],
+        "休": [
+          "四季月"
+        ],
+        "囚": [
+          "秋"
+        ],
+        "死": [
+          "冬"
+        ]
+      },
+      "source_lines": [
+        381,
+        385
+      ],
+      "review_status": "draft"
+    },
+    {
+      "door": "死",
+      "seasonal_states": {
+        "旺": [
+          "秋"
+        ],
+        "相": [
+          "夏"
+        ],
+        "休": [],
+        "囚": [
+          "冬"
+        ],
+        "死": [
+          "春"
+        ]
+      },
+      "source_lines": [
+        387,
+        391
+      ],
+      "source_note": "原文此处未明确列出休态，必须留空而非补猜",
+      "review_status": "draft"
+    },
+    {
+      "door": "惊",
+      "seasonal_states": {
+        "旺": [
+          "秋"
+        ],
+        "相": [
+          "四季月"
+        ],
+        "休": [
+          "冬"
+        ],
+        "囚": [
+          "春"
+        ],
+        "死": [
+          "夏"
+        ]
+      },
+      "source_lines": [
+        393,
+        397
+      ],
+      "review_status": "draft"
+    }
+  ],
+  "star_general_fortune": {
+    "大吉": [
+      "天心星",
+      "天任星",
+      "天禽星",
+      "天辅星"
+    ],
+    "次吉": [
+      "天冲星"
+    ],
+    "凶": [
+      "天蓬星",
+      "天芮星",
+      "天柱星"
+    ],
+    "中平": [
+      "天英星"
+    ]
+  }
+}
