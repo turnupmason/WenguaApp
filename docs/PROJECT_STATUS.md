@@ -10,7 +10,7 @@
 - **公开仓库只保存索引/源代码/测试/审校元数据，不存两书整章原文或私密问事**。原书需要用户自己备份 `local/books/`，或者保留已生成的私有 SQLite。
 - 旧 `QimenLLM` 训练项目不动，不自动沿用旧十书抽取、废弃规则或旧模型输出。
 
-## 已处理的《神奇之门》实际章节：9章
+## 已处理的《神奇之门》实际章节：10章
 
 | 章节 | 真实来源 | 主要已入库内容 | 专业审核状态 |
 | --- | --- | --- | --- |
@@ -215,3 +215,18 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 - **本轮真实生成私人九章SQLite** `WenguaApp_V1_神奇之门_九章_工作就业二十八例_私有研究库.sqlite3`（约1.35 MB）：上一八章SQLite`backup()`后增量追加本章完整原书、五案45宫、20步骤、五名候选和五段源叙述与53条来源断法索引。核实`sections=9; chapter_knowledge=9; cases=28; historical_chart_cells=252; historical_case_reasoning=112; historical_case_disclosures=65; historical_case_book_verdicts=28; semantic_assertions=571; historical_case_source_segments=5; historical_event_candidates=5`；`PRAGMA integrity_check=ok`且无外键错误。原八章23案及全文不丢失。
 - 公共知识`method_index.json`包含53条详尽`ref_concept_id/scenario/summary`；此私有下载副本中同53条记录保留真实原句、概念ID及公开文件指针，尚未逐条复制所有详细metadata；另有理论第六章112项和起局章32条源索引仍待私有物化，**不能声称571已含这两批**。
 - 用户永久规则继续生效：**一件事、一实际时辰、一张真实原盘、一套完整解盘；后来的补充及书内反馈是同案验证；默认作者书内判对，明确作者承认断错才更正；外部验证状态独立；App一次给全部结果而非逐轮对话**。每章必须更新根`AGENTS.md`、本状态、`docs/CHAPTER_LEDGER.md`，并逐项从远端读取核实文件及同一最新main SHA的双Python CI都成功。
+
+
+## 最新状态 2026-10-19：十章《经营求财预测》14案、16张真实源盘
+
+**此节为最新当前状态，上面3–9章记录只是历史快照。** 按WenguaApp独立逐章流程，《神奇之门》累计完成**10章**：时家起局、象数理、判断依据、应用概述、人体疾病、恋爱婚姻、怀孕分娩、求学考试、工作就业、经营求财预测；《开悟之门》仍0章。**累计42个事件家族、44张真实原书九宫盘（主盘42张＋同一事件另外两张）、396个来源宫位、171组原书分析、42个书内默认判对标签，私有知识652条**。独立外部真实预测有效性仍未证明。App UI与旧QimenLLM/27B训练不启动。
+
+本次原文 `神奇之门_经营求财预测_精校完整版.txt`，**717行、67599字节、SHA256 `c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c`**，有第一节交易、投资、买卖货、房地产、开店、合伙、借款、放贷、讨债共**10个主场景**。第二节14个完整事件，**其中抽奖例十二有3张不同时辰的打印原盘**，分别1997-01-25丙午与丁未、01-26丁巳；1月27–28日原书只有文字解析不得补盘。因此新一章新增**14事件、16盘144宫、59组作者/学员实际说明（56有编号＋贷款例十无编号3种方法）、81个来源条件方法**。原书最后一行717未收尾，保持原样。
+
+**防后验污染**：例7租赁首问和预测在308同一段、例9企业前景420行先给判断、例12初问与未来开奖在550行同一段，研究初始查看只能使用起盘前已知信息。例12学员当时分析与张志春在582/610/639行复盘分开保留；其余第三四日缺完整原盘不许捏造。例13结果实际还款在679行属于同案验证，不是作者第677步。14案按用户规范`author_book_success_default`，不等于真投资收益/贷款/司法/医学/艺术品鉴定有独立准确性。
+
+新增 `data/knowledge/shenqi/business_profit_prediction_ch06/`（manifest/index/audit）、`schema/migrations/007_business_multi_casts.sql`（只增两表）、`src/wengua/compile_shenqi_business.py`、`src/wengua/business_case_retrieval.py`、`scripts/import_shenqi_business.py`、`tests/test_business_case_import.py`、`tests/test_business_handoff_consistency.py`、`docs/BUSINESS_CASE_REASONING_PROTOCOL.md`。新增原书十类用途与既有干星门神/旺相主客统一概念引用；不私自另造通用格局。
+
+**本回合已实际生成私人SQLite新文件**：`WenguaApp_V1_神奇之门_十章_经营求财四十二例_私有研究库.sqlite3`。以前九章28案完整原文均保留，增量备份后检验`sections=10; chapter_knowledge=10; cases=42; historical_chart_cells=378; historical_case_additional_casts=2; historical_case_additional_cast_cells=18; historical_case_reasoning=171; historical_case_book_verdicts=42; historical_case_disclosures=89; semantic_assertions=652; historical_case_source_segments=14`；`PRAGMA integrity_check=ok`且无外键违规。**378个主表宫位＋额外18宫=总396宫、44张实盘**。之前第六章112候选和起局章32结构材料还有单独入私有库事项，不能冒称已包含在652条内。
+
+仍严格按`docs/CASE_OUTCOME_POLICY.md`处理**一个事件家族、实际每次有来源的时辰盘、一个完整分析和同案反馈**；对单次App用户只一次解盘，不进行预测聊天。每章同步根`AGENTS.md`、当前状态与账本，远端确认所有文件实际保存，最新HEAD的两份Python CI真正通过以后才能宣布成功。
