@@ -64,5 +64,7 @@
   ],
   "missing_printed_casts": "January 27 and 28 and other mentioned drawing hours have text explanations only, no source-complete palace chart; do not invent or reverse-cast.",
   "source_last_line_caution": "User source terminates at line 717 mid-sentence; preserve exactly, do not fabricate text.",
-  "human_audit_required": true
+  "human_audit_required": true,
+  "source_last_line_unfinished": true,
+  "source_end_details": "Uploaded user original ends at line 717 without finishing punctuation; must not fabricate omitted continuation."
 }
