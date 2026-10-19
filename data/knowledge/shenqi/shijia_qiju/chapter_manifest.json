@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "book_id": "shenqi",
+  "section_key": "shijia_qiju",
+  "title": "时家奇门的起局方法",
+  "uploaded_source_file": "神奇之门_时家奇门的起局方法.txt",
+  "source_sha256": "177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2",
+  "source_utf8_bytes": 26691,
+  "source_lines": 191,
+  "source_storage": "user_chat_attachment_and_local_private_sqlite_not_public_github",
+  "original_text_publicly_released": false,
+  "copyright_text_embedded_in_json": false,
+  "casting_school_id": "shijia_zhuanpan",
+  "source_sections": [
+    {
+      "id": "hand_cast",
+      "title": "掌上快速起局法",
+      "start_line": 3,
+      "end_line": 80
+    },
+    {
+      "id": "paper_cast",
+      "title": "纸上快速起局法",
+      "start_line": 82,
+      "end_line": 188
+    }
+  ],
+  "source_derived_groups": [
+    "fixed_palace_and_trigram_door_mapping",
+    "24_solar_term_yuan_bureau_table",
+    "day_fu_tou_yuan_identification",
+    "five_rat_hour_ganzhi",
+    "sixty_cycle_xun_shou_hidden_instrument",
+    "ground_six_instrument_three_wonder_plates",
+    "value_star_and_value_door",
+    "heaven_earth_door_deity_clockwise_rotations",
+    "tianqin_center_host_with_tianrui",
+    "three_casting_worked_examples"
+  ],
+  "program_file": "src/wengua/casting_shenqi.py",
+  "tests_file": "tests/test_casting_shenqi_chapter01.py",
+  "foundation_entries": 12,
+  "casting_rule_candidates": 17,
+  "cast_examples": {
+    "full_text_reconstructed": 2,
+    "partial_supplementary": 1
+  },
+  "prediction_event_families": 0,
+  "yongshen_prediction_rules": 0,
+  "reading_candidates": 0,
+  "approved_prediction_readings": 0,
+  "calendar_from_device_datetime_implemented": false,
+  "casting_engine_scope": "explicit_yin_yang_bureau_and_hour_ganzhi_only; no independent calendar",
+  "diagram_warning": "First diagram is rearranged plain-text grid; second original printed diagram OCR was distorted and user-supplied table restored from proximate prose; neither original print image independently verified.",
+  "gaps": [
+    "Gregorian datetime to sexagenary date and verified solar-term instant",
+    "which precisely-defined setting uses ChaiBu/ZhiRun and leap edge mapping",
+    "23:00 zi-hour day boundary and timezone handling",
+    "value door counts into middle palace 5 and its host positioning",
+    "source's full original printed diagram independently inspectable",
+    "broader coverage beyond three textual examples; 1080 candidate state index is not 1080 verified charts"
+  ],
+  "extraction_status": "source_extracted_awaiting_human_review",
+  "approval_status": "not_approved_for_app_public_reading"
+}
