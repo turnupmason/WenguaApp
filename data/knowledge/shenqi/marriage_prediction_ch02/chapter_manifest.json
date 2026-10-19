@@ -1,0 +1,53 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "section_key": "marriage_prediction_ch02",
+  "chapter_title": "第二章 恋爱婚姻预测",
+  "original_filename": "神奇之门_恋爱婚姻预测_精校完整版(1).txt",
+  "source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+  "source_lines": 367,
+  "source_utf8_bytes": 35777,
+  "original_publicly_uploaded": false,
+  "chapter_sections": [
+    {
+      "name": "取用判断经验",
+      "span": [
+        3,
+        13
+      ]
+    },
+    {
+      "name": "六个婚恋事件与原书断法",
+      "span": [
+        15,
+        367
+      ]
+    }
+  ],
+  "complete_original_text_events": 6,
+  "chart_transcriptions": 6,
+  "nine_palace_literal_cells": 54,
+  "author_numbered_analysis_steps": 23,
+  "method_rule_candidates": 18,
+  "author_reasoning_flow_nodes": 7,
+  "book_success_default": 6,
+  "explicit_author_errors": 0,
+  "externally_verified_events": 0,
+  "source_end_caveat": "Provided source ends immediately after sixth case's numbered step 4. Do not fabricate a later conclusion or additional paragraph.",
+  "case6_time_caveat": "Earlier 1997 call has no provided chart; only chart given is 1998-04-22 and must never be attributed to 1997.",
+  "cross_chapter_links": [
+    "shijia_qiju",
+    "shijia_symbols_ch04",
+    "shijia_judgments_ch05",
+    "application_overview_ch06",
+    "health_prediction_ch01"
+  ],
+  "original_chart_policy": "verbatim source four-column strings, no normalizing prefix or silent recasting",
+  "case_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "professional_approval": "draft_not_approved",
+  "files": [
+    "case_index.json",
+    "method_index.json",
+    "source_audit.json"
+  ]
+}
