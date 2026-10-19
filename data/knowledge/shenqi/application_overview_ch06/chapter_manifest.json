@@ -1,0 +1,62 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "section_key": "application_overview_ch06",
+  "chapter_title": "第六章 奇门遁甲应用概述",
+  "input_filename": "奇门遁甲应用概述.txt",
+  "source_sha256": "50c76ce5354d3378a842d6117f06c239bcdfe2f04786663c2e89f606d98c402e",
+  "source_utf8_bytes": 31549,
+  "source_lines": 240,
+  "source_status": "user_supplied_original_current_conversation",
+  "source_publicly_committed": false,
+  "section_line_spans": [
+    [
+      4,
+      132
+    ],
+    [
+      134,
+      152
+    ],
+    [
+      154,
+      184
+    ],
+    [
+      186,
+      204
+    ],
+    [
+      206,
+      240
+    ]
+  ],
+  "knowledge_files": [
+    "method_index.json",
+    "historical_cases_index.json"
+  ],
+  "module": "src/wengua/ch06_knowledge.py",
+  "local_importer": "src/wengua/compile_shenqi_ch06.py",
+  "source_level": "chapter_extracted_draft",
+  "approved_explanations": 0,
+  "complete_historical_case_families": 0,
+  "partial_historical_case_families": 1,
+  "focus": [
+    "主客",
+    "五阳五阴时",
+    "急则从神缓从门",
+    "多义多重用神",
+    "四种判断路径",
+    "横向跨宫/纵向同宫",
+    "阴阳内外远近快慢",
+    "十三类应期条件"
+  ],
+  "important_method_guard": [
+    "Source author calls the host/guest relationship principles four but enumerates five; preserve all five.",
+    "The 1995 rocket launch example has known timing and some chart conditions and outcome but NO complete nine-palace chart; do not use it as complete independent test.",
+    "The historical assertions about damage are the book author's narrative, not externally verified real-world facts.",
+    "Timing rule choice requires conditions; calendar event date cannot be invented.",
+    "No public copyrighted original source.",
+    "Do not treat 8640/1080=8 as evidence of 8 repeated complete charts; 8640 in prior chapter denotes 8 outer palaces per 1080 bureau-hour indices."
+  ]
+}
