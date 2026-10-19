@@ -128,7 +128,7 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 - 本文件建立时，仓库已有空白 SQLite 两书结构、15专题目录、候选1080状态索引、规则匹配保护和粗略 App UI/PWA 原型。
 - **2026-10-19 后续事实更新：已经正式收到并处理《神奇之门·时家奇门的起局方法》191行原文**，SHA256 为 `177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2`。已抽取 12 基础/起盘项目、17 候选起盘步骤、2 个全九宫文字案例与1个局部步骤案例；公开结构化路径是 `data/knowledge/shenqi/shijia_qiju/`，代码 `src/wengua/casting_shenqi.py`，测试 `tests/test_casting_shenqi_chapter01.py`。仅能证明本章文字盘对应的局部程序一致性，不能说公历自动起局、1080完整盘或正式断词已验证；预测事件家族数仍为0。
 - **UI 已被用户判定“不合格”；暂停，不要把它写成已完成设计。**
-- **用户已开始按 WenguaApp 新流程重新提供原文。** 第一章内容已处理（具体哈希、文件、版本与局限见 `docs/PROJECT_STATUS.md` 与 `docs/CHAPTER_LEDGER.md`）；待用户提供下一章。不能从旧聊天凭记忆补写新的规则/案例，也不能假装公开 GitHub 有原书全文。
+- **用户已开始按 WenguaApp 新流程重新提供原文。** 第一章、第四章、第五章均已处理；最新原书哈希、411条组合及符号来源断言、39条候选子条件与精确未决项见 `docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、`docs/SEMANTIC_KNOWLEDGE_MODEL.md`；现在等待下一章。不能从旧聊天凭记忆补写新的规则/案例，也不能假装公开 GitHub 有原书全文。
 - 有效项目进度与本次状态由 `docs/PROJECT_STATUS.md` 管理；新章完成后以该文件为准。
 
 ---
