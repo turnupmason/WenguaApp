@@ -1,0 +1,68 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "chapter_key": "shenqi/business_profit_prediction_ch06/v1",
+  "chapter_title": "第六章 经营求财预测",
+  "source_filename": "神奇之门_经营求财预测_精校完整版.txt",
+  "source_sha256": "c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c",
+  "source_utf8_bytes": 67599,
+  "source_lines": 717,
+  "source_structure": [
+    {
+      "section": "取用判断经验",
+      "source_lines": [
+        3,
+        61
+      ]
+    },
+    {
+      "section": "实例解析（14例）",
+      "source_lines": [
+        63,
+        717
+      ]
+    }
+  ],
+  "ten_common_scenarios": [
+    "交易",
+    "投资",
+    "买货",
+    "卖货",
+    "房地产",
+    "开店",
+    "合伙",
+    "借钱",
+    "放贷",
+    "讨债"
+  ],
+  "event_families": 14,
+  "complete_nine_palace_casts": 16,
+  "primary_charts": 14,
+  "additional_distinct_full_casts": 2,
+  "original_literal_palace_cells": 144,
+  "numbered_and_explicit_unnumbered_author_steps": 59,
+  "source_method_candidates": 81,
+  "book_outcome_success_default": 14,
+  "independently_verified_events": 0,
+  "source_text_public": false,
+  "reported_lottery_three_casts": [
+    {
+      "day": "1997-01-25",
+      "hour": "丙午",
+      "chart_start": 555
+    },
+    {
+      "day": "1997-01-25",
+      "hour": "丁未",
+      "chart_start": 585
+    },
+    {
+      "day": "1997-01-26",
+      "hour": "丁巳",
+      "chart_start": 614
+    }
+  ],
+  "missing_printed_casts": "January 27 and 28 and other mentioned drawing hours have text explanations only, no source-complete palace chart; do not invent or reverse-cast.",
+  "source_last_line_caution": "User source terminates at line 717 mid-sentence; preserve exactly, do not fabricate text.",
+  "human_audit_required": true
+}
