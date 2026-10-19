@@ -1,0 +1,54 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "section_key": "pregnancy_prediction_ch03",
+  "chapter_title": "第三章 怀孕分娩预测",
+  "original_filename": "神奇之门_怀孕分娩预测_精校完整版(1).txt",
+  "source_sha256": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+  "source_lines": 313,
+  "source_utf8_bytes": 28082,
+  "original_publicly_uploaded": false,
+  "source_sections": [
+    {
+      "name": "取用判断经验",
+      "lines": [
+        4,
+        16
+      ]
+    },
+    {
+      "name": "实战案例六例",
+      "lines": [
+        18,
+        304
+      ]
+    },
+    {
+      "name": "精校及原书盘面边界说明：编者附注",
+      "lines": [
+        307,
+        313
+      ]
+    }
+  ],
+  "cases": 6,
+  "complete_original_nine_palace_charts": 6,
+  "chart_literal_cells": 54,
+  "author_numbered_reasoning_steps": 23,
+  "method_candidates": 24,
+  "source_book_success_labels": 6,
+  "explicit_book_author_reversed_wrong_verdicts": 0,
+  "medical_independent_verification": 0,
+  "related_distinct_casts": [
+    "daughter_pregnancy_timing",
+    "daughter_delivery_date"
+  ],
+  "schema_private": "schema/migrations/004_health_case_evidence.sql plus 005_book_case_verdicts.sql already shared with marriage/health",
+  "source_method_data": [
+    "case_index.json",
+    "method_index.json",
+    "source_audit.json"
+  ],
+  "case_outcome_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "source_warning": "Author says fetal sex uncertain in case2; timing reselected after hospital prior; author rewrote two student interpretations in case4/5; no blanket real obstetrics inference."
+}
