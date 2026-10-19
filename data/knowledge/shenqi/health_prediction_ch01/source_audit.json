@@ -1,0 +1,61 @@
+{
+  "schema": "wengua_health_case_source_audit_v1",
+  "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+  "issues": [
+    {
+      "id": "health-case4-five-no-encounter-hour",
+      "case": "shenqi.health.19960523.aunt_illness",
+      "health_source_line": 190,
+      "health_source_timestamp": "庚申日丙戌时",
+      "prior_source_chapter": "application_overview_ch06",
+      "prior_source_lines": [
+        26,
+        28
+      ],
+      "prior_listed_timestamp": "庚日丙子时",
+      "shared_stem_condition": "日干庚、时干丙，原书同阴阳时干克日干定义可能同时涵盖多个时辰",
+      "status": "needs_source_scope_review",
+      "policy": "Keep original author claim unchanged; do not silently repair hour branch, mark exact-pair lookup incomplete relative to broad stem formula. Verify with explicit method text before approved use."
+    },
+    {
+      "id": "health-case1-birth-year-progressive-disclosure",
+      "case": "shenqi.health.19960316.self_surgery",
+      "health_source_lines": [
+        23,
+        28
+      ],
+      "status": "staged_information",
+      "policy": "Birth year first appears after author has already predicted medical history and 1991; never insert into earliest prompt."
+    },
+    {
+      "id": "health-case3-injury-confirmation-progressive",
+      "case": "shenqi.health.19960509.nephew_discharge",
+      "health_source_lines": [
+        145,
+        148
+      ],
+      "status": "staged_information",
+      "policy": "Patient's detailed injury is disclosed after initial two reasoning steps, not known at first question."
+    },
+    {
+      "id": "health-case6-outcome-is-self_reported",
+      "case": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "health_source_lines": [
+        287,
+        290
+      ],
+      "status": "reported_followup_not_clinical_validation",
+      "policy": "Source reports travel decision and later improved health and third-party claims; do not assert clinical efficacy or independent verification."
+    },
+    {
+      "id": "all-six-source-chart-not-recast",
+      "source_lines": [
+        293,
+        298
+      ],
+      "status": "transcription_verification_only",
+      "policy": "Preserve raw 四列 including prefixes and central palace; never overwrite author data with generated chart even if inconsistent."
+    }
+  ],
+  "approvals": 0
+}
