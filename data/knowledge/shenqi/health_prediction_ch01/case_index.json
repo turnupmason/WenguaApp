@@ -475,9 +475,10 @@
       },
       "feedback_lines": [
         288,
+        289,
         290
       ],
-      "feedback_scope": "patient_choice_and_later_phone_followup; third_party_claims_unverified",
+      "feedback_scope": "Decision to remain local, author-reported third-party travel/medical claims and later condition update all preserved as separate followup lines; none independent clinical evidence.",
       "source_book": "shenqi",
       "source_chapter": "health_prediction_ch01",
       "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
