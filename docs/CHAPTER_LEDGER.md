@@ -79,3 +79,22 @@
 - **1080/8640的关键核对**：1080＝18×60个基本局态索引；第五章8640＝8个外宫×1080个局态的宫位条目，不能把8640当成8640张盘或推导7560张完整重复盘。真实重复要按实际起盘输出做hash去重。
 - **技术/验收边界**：阶段仍draft，公历完整起盘和中五宫问题未解决；最终回答需经过问事人关系→所取用神→同宫/跨宫证据→时令及主客→应期条件再审核。UI继续冻结。
 - 后续章节继续严格更新 `AGENTS.md`、`docs/PROJECT_STATUS.md`、本账本、增量源码/测试，并核对对应最新GitHub SHA及CI。
+
+
+## 2026-10-19 · 第一份专题完整实战章：《神奇之门》人体疾病预测
+
+| 日期 | Book ID | 章节ID | 原书章节 | SHA256 | 原文字节/行 | 源中完整九宫案例 | 作者编号推理 | 用神/方法抽象 | 后续反馈 | 专业审批 |
+| --- | --- | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
+| 2026-10-19 | shenqi | health_prediction_ch01 | 第一章 人体疾病预测 | `3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a` | 34,625 / 298 | **6事件家族、54原字宫位** | **29步** | 8体表/体内映射＋14条件用神＋8判断流程 | 六例书内反馈，含4次中途披露分离 | draft，approved=0 |
+
+### 本章新增文档与程序
+
+- 原文由用户本轮提供 `神奇之门_人体疾病预测_精校完整版(1).txt`。原书正文行1–290；**293–298是整理者附注，不是作者自述**；源校九宫按原字保留，不能用模型盘覆盖。
+- 公开资料：`data/knowledge/shenqi/health_prediction_ch01/{chapter_manifest,method_index,case_index,source_audit}.json`；完整29步作者原文以及姓名/谈话/反馈在**私有**SQLite，不上传版权全文。
+- 工程：`schema/migrations/004_health_case_evidence.sql`、`src/wengua/compile_shenqi_health_cases.py`、`scripts/import_shenqi_health.py`、`src/wengua/health_research.py`；具体用法与安全限制在 `docs/HEALTH_CASE_REASONING_PROTOCOL.md`。
+- 自动测试：`tests/test_health_case_import.py` 使用合成而非版权原文的六案九宫数据，验证6事件、54宫、29步骤、30方法条目、4次披露隔离、旧库保留、幂等与错误SHA拒绝。
+- 从此前四章私有下载数据库制作新的五章**私有 SQLite**，实际验证：`sections=5`，`chapter_knowledge=5`，`cases=6`，`historical_chart_cells=54`，`historical_case_reasoning=29`，`historical_case_disclosures=4`，`semantic_assertions=441`（之前411＋本章30），`PRAGMA integrity_check=ok`、`foreign_key_check`空。**此前第六章112条公共方法索引尚未在此私有下载版完成导入**；它们在公开GitHub可检索，若要进入私有SQLite按 `scripts.import_shenqi_ch06` 另做。已保存的源文本不等于已全部导入每项抽象数据。
+- **案例1和3中间新披露**绝不泄漏到最初问题；案例2/4/5/6的作者报告后续也不构成独立真实有效性证据；6个家族整体保留，29步不得拆分成29个独立训练样本。
+- 跨章核对：第四例庚申日丙戌时被原作者标为“五不遇时”，第六章列举表为庚日丙子时，时干一样、时支不同。记录 `source_audit.json` 待澄清范围，不擅自修书。
+- **累计《神奇之门》按新项目处理5章**（时家起局、第四/第五/第六章理论及本疾病预测章）；已收6个完整原书预测事件家族，**0个独立已验证现实预测、0条获批专业断词**。《开悟之门》仍0章，UI继续冻结。
+- 用户明确后续《神奇之门》主要进入各专题的“取用规则＋实际案例”阶段。每次先理解关系与作者分析顺序，再把方法和原始案例存为一整家族，并同步根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、本账本及最新CI，拒绝任意省略字段或恢复旧模型训练路线。
