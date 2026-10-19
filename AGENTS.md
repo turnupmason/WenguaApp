@@ -144,3 +144,8 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 - 1080是18局×60时的候选局态索引；第五章的9720或8640是九宫/八宫位置计数，不能混为一谈。尚未形成完整自动公历起盘或1080张经核验盘。
 - 本次公共文件见 `data/knowledge/shenqi/shijia_symbols_ch04/`、`data/knowledge/shenqi/shijia_judgments_ch05/`、`docs/SEMANTIC_KNOWLEDGE_MODEL.md`、`schema/migrations/002_semantic_assertions.sql`；可调用代码 `src/wengua/compile_shenqi_ch45.py`、`src/wengua/semantic_lookup.py`、`src/wengua/formation_candidates.py`。详细结果按 `docs/PROJECT_STATUS.md` 和 `docs/CHAPTER_LEDGER.md` 为准。
 - **用户要求每章处理完必须同步更新本 AGENTS.md、PROJECT_STATUS.md、CHAPTER_LEDGER.md，并验证最新 GitHub CI。** 新对话以这些仓库文件为准确进度，不得让用户无理由重述已经持久化的规则。
+
+
+## 2026-10-19 同批第四章结构化关系补充（继续保留原文及所有进度）
+
+本次除三章总数、411条来源断言、257项有序组合/格名索引、39个格局子候选外，还建立 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json`：42条天干地支合冲刑害三合三会关系，10条干之长生帝旺死墓绝表，8条八门旺相休囚死表。查询 `src/wengua/symbol_relations.py`，测试 `tests/test_symbol_relations.py`。**这些均从已收到的第四章提炼，不能算新预测实案，也不得不经审核直接输出吉凶。** 39个格局 AND/OR 候选的 `formation_concept_id` 与第五章索引是同一外键，保持跨章、跨书来源可调用。新会话如处理同类知识，先查这个表和 `docs/SEMANTIC_KNOWLEDGE_MODEL.md`，而非重复建表。每完成未来章节都继续更新 AGENTS＋STATUS＋LEDGER＋测试/CI。
