@@ -1,0 +1,49 @@
+{
+  "schema": "wengua_chapter_manifest_v1",
+  "book_id": "shenqi",
+  "chapter_key": "shenqi/education_prediction_ch04/v1",
+  "chapter_title": "第四章 求学考试预测",
+  "source_filename": "神奇之门_求学考试预测_精校完整版(1).txt",
+  "source_sha256": "88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43",
+  "source_lines": 349,
+  "source_utf8_bytes": 30539,
+  "original_publicly_uploaded": false,
+  "chapter_sections": [
+    {
+      "name": "取用判断经验",
+      "lines": [
+        4,
+        20
+      ]
+    },
+    {
+      "name": "五例原书案例",
+      "lines": [
+        22,
+        349
+      ]
+    }
+  ],
+  "historical_event_families": 5,
+  "fully_source_transcribed_charts": 5,
+  "original_nine_palace_rows": 45,
+  "author_numbered_reasoning_groups": 17,
+  "method_candidates": 35,
+  "source_book_success_labels": 5,
+  "source_explicit_case_verdict_errors": 0,
+  "external_independent_accuracy_validation": 0,
+  "data_files": [
+    "chapter_manifest.json",
+    "method_index.json",
+    "case_index.json",
+    "source_audit.json"
+  ],
+  "one_shot_book_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "source_special_characteristics": [
+    "Case 5 recounts author prediction and outcome before retrospective five-question detailed case-analysis; preserve true chronology",
+    "Case 5 complete analysis spans five multi-paragraph ranges from 325 through 349",
+    "Case 4 prediction is scoped to 1997 PhD exam, 1998 succeeding is later development without new source casting",
+    "Case 1 and 2 parent learns birth year in mid-case; it is validation/new detail in same event",
+    "Modern martial-adaptation and teacher apprenticeship are source method knowledge with no chapter case examples"
+  ]
+}
