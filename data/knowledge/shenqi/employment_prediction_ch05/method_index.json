@@ -1,0 +1,584 @@
+{
+  "schema": "wengua_employment_domain_methods_v1",
+  "book_id": "shenqi",
+  "chapter_key": "shenqi/employment_prediction_ch05/v1",
+  "source_sha256": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+  "domain": "employment",
+  "method_count": 53,
+  "methods": [
+    {
+      "concept_id": "employment:method:work_scope",
+      "source_line": 5,
+      "ref_concept_id": "domain:employment",
+      "scenario": "all",
+      "source_summary": "毕业分配、求职、竞争上岗、晋升职称、官职升降与调动均在本专题",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:civil_job_kaimen",
+      "source_line": 7,
+      "ref_concept_id": "door:开",
+      "scenario": "civilian_employment",
+      "source_summary": "开门为文职工作及单位，且因问事具体化选择单位用神",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:military_job_dumen",
+      "source_line": 7,
+      "ref_concept_id": "door:杜",
+      "scenario": "military_employment",
+      "source_summary": "杜门为武职/军队及保密机关相关单位",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:supervisor_year_stem",
+      "source_line": 7,
+      "ref_concept_id": "role:年干",
+      "scenario": "organizational_supervisor",
+      "source_summary": "年干为上级领导",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:direct_boss_zhifu",
+      "source_line": 7,
+      "ref_concept_id": "deity:值符",
+      "scenario": "organizational_supervisor",
+      "source_summary": "值符为顶头上司，与年干上级不同",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:colleague_month_stem",
+      "source_line": 7,
+      "ref_concept_id": "role:月干",
+      "scenario": "colleagues_competitors",
+      "source_summary": "月干为同事及案例中竞争者",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:self_day_stem",
+      "source_line": 7,
+      "ref_concept_id": "role:日干",
+      "scenario": "self_job_question",
+      "source_summary": "日干为求测本人；代问时需另定当事人角色",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:subordinates_hour_stem",
+      "source_line": 7,
+      "ref_concept_id": "role:时干",
+      "scenario": "subordinates_employees",
+      "source_summary": "时干为下级/员工，父母代问子女时按实际案例取时干",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:self_or_lifeyear_strength",
+      "source_line": 9,
+      "ref_concept_id": "role:日干;role:年命",
+      "scenario": "job_success",
+      "source_summary": "日干/年命旺相兼吉门格神为个人条件利",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:company_supports_person",
+      "source_line": 9,
+      "ref_concept_id": "door:开;door:杜",
+      "scenario": "job_success",
+      "source_summary": "本人宫得开门/杜门相生的有利候选",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:person_controls_employer",
+      "source_line": 9,
+      "ref_concept_id": "relation:宫克",
+      "scenario": "job_success",
+      "source_summary": "当事人克工作宫，经努力亦可得职，不得一律断凶",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:person_weak_restrained",
+      "source_line": 9,
+      "ref_concept_id": "relation:宫冲克",
+      "scenario": "job_failure",
+      "source_summary": "自身无时地利且受开杜门冲克为阻碍候选",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:promotion_4_dimensions",
+      "source_line": 11,
+      "ref_concept_id": "principle:天时地利人和自身",
+      "scenario": "promotion",
+      "source_summary": "升职职称需要综合四条件，而不以一个吉格作结论",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:promotion_superior_support",
+      "source_line": 11,
+      "ref_concept_id": "role:年干;deity:值符;door:开",
+      "scenario": "promotion",
+      "source_summary": "年干值符开门相生辅助判断晋升",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:civil_demoted",
+      "source_line": 13,
+      "ref_concept_id": "door:开",
+      "scenario": "demotion",
+      "source_summary": "原书开门克用神象文官降调",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:military_demoted",
+      "source_line": 13,
+      "ref_concept_id": "door:杜",
+      "scenario": "demotion",
+      "source_summary": "原书杜门克用神象军官降职",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:reversal_transfer",
+      "source_line": 13,
+      "ref_concept_id": "formation:反吟",
+      "scenario": "transfer",
+      "source_summary": "反吟用作调任变动象意，仍综合开门等同盘证据",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:void_dismissal",
+      "source_line": 13,
+      "ref_concept_id": "formation:空亡",
+      "scenario": "dismissal",
+      "source_summary": "原书空亡与革职有关，案例须分清空亡落哪宫及其他制约",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:tomb_punishment",
+      "source_line": 13,
+      "ref_concept_id": "formation:入墓",
+      "scenario": "dismissal",
+      "source_summary": "入墓与降罚纠纷的原书象意，不能当司法事实",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:superior_disapproval",
+      "source_line": 13,
+      "ref_concept_id": "role:年干;deity:值符",
+      "scenario": "promotion_obstacle",
+      "source_summary": "年干上级和值符直接上司克用神不同层级",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:peer_reports",
+      "source_line": 13,
+      "ref_concept_id": "role:月干",
+      "scenario": "promotion_obstacle",
+      "source_summary": "月干克用神为同事参劾的传统文本条件",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:staff_reports",
+      "source_line": 13,
+      "ref_concept_id": "role:时干",
+      "scenario": "promotion_obstacle",
+      "source_summary": "时干克用神为下级报告/告状的传统文本条件",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_human_character",
+      "source_line": 15,
+      "ref_concept_id": "door:开;star:九星",
+      "scenario": "character_symbol",
+      "source_summary": "开门所临星用于原书人格比附，不能当真实道德或雇佣评估",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianfu",
+      "source_line": 15,
+      "ref_concept_id": "star:天辅",
+      "scenario": "character_symbol",
+      "source_summary": "天辅文雅",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianren",
+      "source_line": 15,
+      "ref_concept_id": "star:天任",
+      "scenario": "character_symbol",
+      "source_summary": "天任慈祥",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianxin",
+      "source_line": 15,
+      "ref_concept_id": "star:天心",
+      "scenario": "character_symbol",
+      "source_summary": "天心正直",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianqin",
+      "source_line": 15,
+      "ref_concept_id": "star:天禽",
+      "scenario": "character_symbol",
+      "source_summary": "天禽忠厚",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianchong",
+      "source_line": 15,
+      "ref_concept_id": "star:天冲",
+      "scenario": "character_symbol",
+      "source_summary": "天冲风厉",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianying",
+      "source_line": 15,
+      "ref_concept_id": "star:天英",
+      "scenario": "character_symbol",
+      "source_summary": "天英昏烈",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianrui",
+      "source_line": 15,
+      "ref_concept_id": "star:天芮",
+      "scenario": "character_symbol",
+      "source_summary": "天芮贪毒",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianzhu",
+      "source_line": 15,
+      "ref_concept_id": "star:天柱",
+      "scenario": "character_symbol",
+      "source_summary": "天柱奸诈",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:kaimen_tianpeng",
+      "source_line": 15,
+      "ref_concept_id": "star:天蓬",
+      "scenario": "character_symbol",
+      "source_summary": "天蓬大恶",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_retirement_superior",
+      "source_line": 17,
+      "ref_concept_id": "door:杜;role:日干",
+      "scenario": "military_retirement",
+      "source_summary": "退转以杜门为官长、日干为退役人",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_retention",
+      "source_line": 17,
+      "ref_concept_id": "relation:杜门生日干",
+      "scenario": "military_retirement",
+      "source_summary": "杜门生退役者，原书称领导想挽留",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_permits",
+      "source_line": 17,
+      "ref_concept_id": "relation:杜门克日干",
+      "scenario": "military_retirement",
+      "source_summary": "杜门克退役者或宫比和，原书称准退",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_good_bad_formations",
+      "source_line": 17,
+      "ref_concept_id": "formation:青龙逃走;formation:荧入白",
+      "scenario": "military_retirement",
+      "source_summary": "看青龙逃走、荧入白、白入荧、虎猖狂等，必须逐条匹配",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_litigation_block",
+      "source_line": 17,
+      "ref_concept_id": "deity:螣蛇",
+      "scenario": "military_retirement",
+      "source_summary": "日干临螣蛇夭骄等作为传统诉讼阻碍候选",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:veteran_extreme_bad_form",
+      "source_line": 17,
+      "ref_concept_id": "formation:大格;formation:雀投江",
+      "scenario": "military_retirement",
+      "source_summary": "大格或雀投江作为辞退风险文本候选",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:location_based_employment",
+      "source_line": 44,
+      "ref_concept_id": "trigram:巽;door:开",
+      "scenario": "graduate_placement",
+      "source_summary": "案例一按当事人当时座位方位取巽宫、综合开门与邻宫",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:relocation_direction",
+      "source_line": 46,
+      "ref_concept_id": "trigram:巽;trigram:乾",
+      "scenario": "job_location",
+      "source_summary": "案例一巽四宫工作与西北杜门对照断东南方向单位",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:period_emptiness_reversal",
+      "source_line": 52,
+      "ref_concept_id": "formation:空亡;formation:反吟",
+      "scenario": "employment_timing",
+      "source_summary": "案例一以开门空亡辰巳与反吟内盘快综合应期",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:proxy_hour_life_year",
+      "source_line": 81,
+      "ref_concept_id": "role:时干;role:年命",
+      "scenario": "mother_for_son_job",
+      "source_summary": "例二以时干庚为儿子且看甲寅年命癸，不把母亲本人的日干作为儿子",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:multiple_options_specific_doors",
+      "source_line": 83,
+      "ref_concept_id": "door:开;door:生",
+      "scenario": "job_choice",
+      "source_summary": "原书案例二分别用开门外交部、生门外经部，来源局指定而非所有类似单位固定分类",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:same_chart_followup",
+      "source_line": 93,
+      "ref_concept_id": "principle:one_cast_one_case",
+      "scenario": "job_choice",
+      "source_summary": "11月25日再次询问明确找出11月4日原盘，事件不拆第二起盘",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:colleague_vs_school",
+      "source_line": 95,
+      "ref_concept_id": "role:月干;role:年干",
+      "scenario": "job_competition",
+      "source_summary": "月干同学竞争克时干而年干学校生时干，解释同一盘竞争反证",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:military_both_doors",
+      "source_line": 132,
+      "ref_concept_id": "door:开;door:杜;deity:值符",
+      "scenario": "military_demotion",
+      "source_summary": "军职同时比较开门/杜门/值符所在宫与日干",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:other_dismissals_month_stem",
+      "source_line": 138,
+      "ref_concept_id": "role:月干;role:日干",
+      "scenario": "military_demotion",
+      "source_summary": "同事与本人同宫提示他人连带，具体数字为本案例推断非普遍定律",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:transfer_opposite_palace",
+      "source_line": 175,
+      "ref_concept_id": "door:开;role:日干",
+      "scenario": "job_transfer",
+      "source_summary": "案例四开门艮八与丁奇坤二对冲视为调动主证据",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:transfer_support_rebuttal",
+      "source_line": 177,
+      "ref_concept_id": "deity:值符;role:月干;role:时干",
+      "scenario": "job_transfer",
+      "source_summary": "上司同事宫生日干与任务时干克日干的正反证据",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:transfer_fill_void",
+      "source_line": 181,
+      "ref_concept_id": "formation:空亡;principle:旺相",
+      "scenario": "job_transfer_timing",
+      "source_summary": "案例四等未月丁奇变旺、开门空亡被冲实",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:spatial_candidate_assignment",
+      "source_line": 206,
+      "ref_concept_id": "principle:候选人住址方位",
+      "scenario": "competitive_election",
+      "source_summary": "五名竞选人凭住址各固定一宫；一盘多候选，不按亲属六亲拆卦",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:rank_monthly_strength",
+      "source_line": 210,
+      "ref_concept_id": "principle:旺相休囚",
+      "scenario": "competitive_election",
+      "source_summary": "竞争排名首先比较各宫月建旺相休囚，日时助制为次级证据",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    },
+    {
+      "concept_id": "employment:method:simplified_rank_review",
+      "source_line": 228,
+      "ref_concept_id": "principle:时令优先;principle:多宫对比",
+      "scenario": "competitive_election",
+      "source_summary": "张志春复盘明确原学员列格太繁，以空间宫位旺衰为排序主证据",
+      "review_status": "draft_source_traditional",
+      "relation_context_required": true,
+      "external_prediction_validated": false
+    }
+  ],
+  "workflow": [
+    {
+      "stage": 1,
+      "role": "question_relation",
+      "text": "确定本人求职、家长代问、升迁、退役、调动、竞争排名与现实对象"
+    },
+    {
+      "stage": 2,
+      "role": "one_cast",
+      "text": "严格按给定实际年月日时和一个原始九宫，保留缺失的其余未给盘"
+    },
+    {
+      "stage": 3,
+      "role": "main_yongshen",
+      "text": "开杜为工作、本人日干/年命、组织年干值符月干时干按问题类型切换"
+    },
+    {
+      "stage": 4,
+      "role": "palace_conditions",
+      "text": "对比所落宫的星门神干、天时旺衰、门宫/天地盘生克、格局"
+    },
+    {
+      "stage": 5,
+      "role": "evidence_combination",
+      "text": "原书列多重佐证与相反证据，不背单条就推出必然结论"
+    },
+    {
+      "stage": 6,
+      "role": "special_route",
+      "text": "毕业分配方向与备选单位、军职降职、工作调动或五人空间排序分别调用自己的规则"
+    },
+    {
+      "stage": 7,
+      "role": "timing",
+      "text": "只有案例证明适用时结合空亡填实、月令、反吟内外快慢判断应期"
+    },
+    {
+      "stage": 8,
+      "role": "one_final_reading",
+      "text": "一次性展示传统方法、完整证据、反证、来源与总结；所有反馈仍属于同一原案"
+    }
+  ],
+  "safety": "Career/election character or misconduct claims are solely traditional historical source assertions, not vetted facts or real hiring recommendations.",
+  "policy": "docs/CASE_OUTCOME_POLICY.md"
+}
