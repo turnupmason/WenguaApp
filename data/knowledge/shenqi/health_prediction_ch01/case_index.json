@@ -126,7 +126,12 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     },
     {
       "index": 2,
@@ -194,7 +199,12 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     },
     {
       "index": 3,
@@ -276,7 +286,12 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     },
     {
       "index": 4,
@@ -348,7 +363,12 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     },
     {
       "index": 5,
@@ -420,7 +440,12 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     },
     {
       "index": 6,
@@ -490,7 +515,15 @@
       "original_print_independently_verified": false,
       "author_outcome_is_independent_verification": false,
       "case_split": "unassigned_do_not_train_and_test_same_family",
-      "review_status": "draft"
+      "review_status": "draft",
+      "book_outcome_label": "author_book_success_default",
+      "book_explicit_failure_or_correction": false,
+      "independent_external_verification": "not_verified",
+      "later_disclosures_role": "same_case_book_validation_information",
+      "one_shot_reading": true
     }
-  ]
+  ],
+  "case_book_outcome_policy": "docs/CASE_OUTCOME_POLICY.md",
+  "user_one_shot_protocol": "one_event_family_one_cast_one_complete_reading",
+  "original_prospective_blind_test_status": "not_performed; author-book success is not external efficacy evidence"
 }
