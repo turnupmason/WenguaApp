@@ -1,0 +1,1129 @@
+{
+  "schema": "wengua_conditional_formation_primitive_v1",
+  "source_book": "shenqi",
+  "source": "Ch05 lines 987–1261",
+  "status": "candidate_conditions_only_not_validated_engine_rules",
+  "binding_requirement": "For all conditions, heaven_stem means star-carried 天盘干, earth_stem means 地盘干, deity means author's 天盘八神. Some multi-source or gate+stem cases still require review.",
+  "notes": [
+    "Only selected explicitly detailed subvariants are transcribed here; remaining umbrella formations are indexed in concept_index.json and require AST review.",
+    "This is a reviewable AST glossary, not automatically approved reading rules.",
+    "Case-specific caveats and contradictory traditions override any simplistic boolean trigger.",
+    "Each condition is per-palace, never combine facts from different palaces."
+  ],
+  "variant_counts_by_group": {
+    "good_03_九遁": 9,
+    "good_08_三诈五假": 9,
+    "good_09_三奇之灵": 1,
+    "good_06_三奇贵人升殿": 3,
+    "good_10_奇游禄位": 3,
+    "good_01": 1,
+    "good_02": 1,
+    "bad_01": 1,
+    "bad_02": 1,
+    "bad_03": 1,
+    "bad_04": 1,
+    "bad_05": 1,
+    "bad_06": 1,
+    "bad_07": 1,
+    "bad_08": 1,
+    "bad_09": 1,
+    "bad_11": 1,
+    "bad_12": 1,
+    "bad_26": 1
+  },
+  "variants": [
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.001",
+      "formation_name": "天遁",
+      "parent": "good_03_九遁",
+      "source_line": 999,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "生"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "丁"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.002",
+      "formation_name": "地遁",
+      "parent": "good_03_九遁",
+      "source_line": 1001,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "开"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "己"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.003",
+      "formation_name": "人遁",
+      "parent": "good_03_九遁",
+      "source_line": 1003,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丁"
+        },
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "休"
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "太阴"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.004",
+      "formation_name": "风遁",
+      "parent": "good_03_九遁",
+      "source_line": 1005,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 4
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.005",
+      "formation_name": "云遁",
+      "parent": "good_03_九遁",
+      "source_line": 1007,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "辛"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.006",
+      "formation_name": "龙遁",
+      "parent": "good_03_九遁",
+      "source_line": 1009,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        }
+      ],
+      "alternatives": [
+        [
+          {
+            "field": "palace",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        [
+          {
+            "field": "earth_stem",
+            "op": "eq",
+            "value": "癸"
+          }
+        ]
+      ],
+      "notes": "书中用“或”列出二选一，不应同时强制满足。",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.007",
+      "formation_name": "虎遁",
+      "parent": "good_03_九遁",
+      "source_line": 1011,
+      "preconditions": [],
+      "alternatives": [
+        [
+          {
+            "field": "heaven_stem",
+            "op": "eq",
+            "value": "乙"
+          },
+          {
+            "field": "door",
+            "op": "in",
+            "values": [
+              "休",
+              "生"
+            ]
+          },
+          {
+            "field": "earth_stem",
+            "op": "eq",
+            "value": "辛"
+          },
+          {
+            "field": "palace",
+            "op": "eq",
+            "value": 8
+          }
+        ],
+        [
+          {
+            "field": "heaven_stem",
+            "op": "eq",
+            "value": "庚"
+          },
+          {
+            "field": "door",
+            "op": "eq",
+            "value": "开"
+          },
+          {
+            "field": "palace",
+            "op": "eq",
+            "value": 7
+          }
+        ]
+      ],
+      "notes": "保留两个作者明确列出的替代组合，首分支辛与艮宫的具体下临关系仍需审查。",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.008",
+      "formation_name": "神遁",
+      "parent": "good_03_九遁",
+      "source_line": 1013,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "生"
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九天"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_03_九遁.009",
+      "formation_name": "鬼遁",
+      "parent": "good_03_九遁",
+      "source_line": 1015,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丁"
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "杜",
+            "开"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九地"
+        }
+      ],
+      "alternatives": "按原文杜门或开门均属候选。",
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.010",
+      "formation_name": "真诈",
+      "parent": "good_08_三诈五假",
+      "source_line": 1053,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "乙",
+            "丙",
+            "丁"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "太阴"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.011",
+      "formation_name": "休诈",
+      "parent": "good_08_三诈五假",
+      "source_line": 1053,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "乙",
+            "丙",
+            "丁"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "六合"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.012",
+      "formation_name": "重诈",
+      "parent": "good_08_三诈五假",
+      "source_line": 1053,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "乙",
+            "丙",
+            "丁"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九地"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.013",
+      "formation_name": "天假",
+      "parent": "good_08_三诈五假",
+      "source_line": 1059,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "景"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "乙",
+            "丙",
+            "丁"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九天"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.014",
+      "formation_name": "地假",
+      "parent": "good_08_三诈五假",
+      "source_line": 1061,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "杜"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "丁",
+            "己",
+            "癸"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "in",
+          "values": [
+            "九地",
+            "太阴",
+            "六合"
+          ]
+        }
+      ],
+      "alternatives": "原文说丁己癸合杜门，天/地盘搭配需要复核",
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.015",
+      "formation_name": "人假",
+      "parent": "good_08_三诈五假",
+      "source_line": 1063,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "惊"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "壬"
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九天"
+        }
+      ],
+      "alternatives": "原书附加太白入荧的复合条件仅对应捉逃者，不是人假定义条件。",
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.016",
+      "formation_name": "神假/物假（九地）",
+      "parent": "good_08_三诈五假",
+      "source_line": 1065,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "伤"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "丁",
+            "己",
+            "癸"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九地"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.017",
+      "formation_name": "神假/物假（六合异说）",
+      "parent": "good_08_三诈五假",
+      "source_line": 1065,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "伤"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "丁",
+            "己",
+            "癸"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "六合"
+        }
+      ],
+      "alternatives": "原文有又一说；保留观点分歧，不强行合并。",
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_08_三诈五假.018",
+      "formation_name": "鬼假",
+      "parent": "good_08_三诈五假",
+      "source_line": 1067,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "eq",
+          "value": "死"
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "丁",
+            "己",
+            "癸"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "eq",
+          "value": "九地"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_09_三奇之灵.019",
+      "formation_name": "三奇之灵",
+      "parent": "good_09_三奇之灵",
+      "source_line": 1071,
+      "preconditions": [
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        },
+        {
+          "field": "heaven_stem",
+          "op": "in",
+          "values": [
+            "乙",
+            "丙",
+            "丁"
+          ]
+        },
+        {
+          "field": "deity",
+          "op": "in",
+          "values": [
+            "太阴",
+            "六合",
+            "九地",
+            "九天"
+          ]
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.020",
+      "formation_name": "贵人升殿-乙",
+      "parent": "good_06_三奇贵人升殿",
+      "source_line": 1033,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 3
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.021",
+      "formation_name": "贵人升殿-丙",
+      "parent": "good_06_三奇贵人升殿",
+      "source_line": 1035,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 9
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_06_三奇贵人升殿.022",
+      "formation_name": "贵人升殿-丁",
+      "parent": "good_06_三奇贵人升殿",
+      "source_line": 1037,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丁"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 7
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_10_奇游禄位.023",
+      "formation_name": "奇游禄位-乙",
+      "parent": "good_10_奇游禄位",
+      "source_line": 1075,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 3
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_10_奇游禄位.024",
+      "formation_name": "奇游禄位-丙",
+      "parent": "good_10_奇游禄位",
+      "source_line": 1075,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 4
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_10_奇游禄位.025",
+      "formation_name": "奇游禄位-丁",
+      "parent": "good_10_奇游禄位",
+      "source_line": 1075,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丁"
+        },
+        {
+          "field": "palace",
+          "op": "eq",
+          "value": 9
+        },
+        {
+          "field": "door",
+          "op": "in",
+          "values": [
+            "开",
+            "休",
+            "生"
+          ]
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_01.026",
+      "formation_name": "青龙返首",
+      "parent": "good_01",
+      "source_line": 989,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "戊"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "丙"
+        }
+      ],
+      "alternatives": [],
+      "notes": "若门迫或在震三宫，原书明确说吉事变凶；自动候选必须保留优先级和反证。",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.good_02.027",
+      "formation_name": "飞鸟跌穴",
+      "parent": "good_02",
+      "source_line": 995,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "戊"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_01.028",
+      "formation_name": "青龙逃走",
+      "parent": "bad_01",
+      "source_line": 1095,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "乙"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "辛"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_02.029",
+      "formation_name": "白虎猖狂",
+      "parent": "bad_02",
+      "source_line": 1099,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "辛"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "乙"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_03.030",
+      "formation_name": "朱雀投江",
+      "parent": "bad_03",
+      "source_line": 1103,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丁"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "癸"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_04.031",
+      "formation_name": "螣蛇夭矫",
+      "parent": "bad_04",
+      "source_line": 1107,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "癸"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "丁"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_05.032",
+      "formation_name": "荧入太白",
+      "parent": "bad_05",
+      "source_line": 1111,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "丙"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "庚"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_06.033",
+      "formation_name": "太白入荧",
+      "parent": "bad_06",
+      "source_line": 1115,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "庚"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "丙"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_07.034",
+      "formation_name": "大格",
+      "parent": "bad_07",
+      "source_line": 1119,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "庚"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "癸"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_08.035",
+      "formation_name": "上格",
+      "parent": "bad_08",
+      "source_line": 1123,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "庚"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "壬"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_09.036",
+      "formation_name": "刑格",
+      "parent": "bad_09",
+      "source_line": 1127,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "庚"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "己"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_11.037",
+      "formation_name": "伏宫格",
+      "parent": "bad_11",
+      "source_line": 1135,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "庚"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "戊"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_12.038",
+      "formation_name": "飞宫格",
+      "parent": "bad_12",
+      "source_line": 1139,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "戊"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "庚"
+        }
+      ],
+      "alternatives": [],
+      "notes": "",
+      "review_status": "draft",
+      "auto_approved": false
+    },
+    {
+      "variant_id": "shenqi.ch05.bad_26.039",
+      "formation_name": "天网四张（作者定义）",
+      "parent": "bad_26",
+      "source_line": 1245,
+      "preconditions": [
+        {
+          "field": "heaven_stem",
+          "op": "eq",
+          "value": "癸"
+        },
+        {
+          "field": "earth_stem",
+          "op": "eq",
+          "value": "癸"
+        }
+      ],
+      "alternatives": [],
+      "notes": "作者明确反对把任意癸参与组合都归为天网四张；网高网低两种说法互相矛盾",
+      "review_status": "draft",
+      "auto_approved": false
+    }
+  ]
+}
