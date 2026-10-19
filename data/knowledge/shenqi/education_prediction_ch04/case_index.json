@@ -367,7 +367,7 @@
         284,
         284
       ],
-      "retroactive_source_view_guard": "Book tells outcome and later reassurances at lines 268–280 before its 284 chart heading; initial question MUST consist only of source line 264, and chart comes from separate literal rows 312–320. Exclude 268–280 from known_before."
+      "retroactive_source_view_guard": "Book tells outcome and later reassurances at lines 268–280 before its 284 chart heading; initial question MUST consist only of source line 264, and chart comes from separate literal rows 312–320. Exclude 268–280 from known_before. Source feedback is available only in same-case validation, not known_before."
     }
   ]
 }
