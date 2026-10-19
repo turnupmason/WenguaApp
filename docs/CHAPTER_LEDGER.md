@@ -60,3 +60,6 @@
 **本地原文**：本次合并私有数据库输出为 `WenguaApp_V1_神奇之门_起局_第四章_第五章_私有知识库.sqlite3`，含第一章旧原文以及第四、第五章原文和411条来源关联断言；新会话不能通过公开GitHub直接恢复版权原文。第一章额外32条结构化概念可以通过原仓库 `python3 -m scripts.import_casting_chapter01 --db local/wengua.sqlite3` 填入个人SQLite，不重置原文。用户需要保存私有下载件。
 
 **下一步**：继续用户下一章的完整原书、按相同ID和来源/审核机制加入；跨书同概念可复用ID但要独立保留作者/章节说明。UI仍然暂停。
+
+
+**第四章/第五章补充归档（2026-10-19，保留以上旧记录）**：在 `data/knowledge/shenqi/shijia_symbols_ch04/relations_and_lifecycle.json` 新建42条天干地支原书组合关系、10条天干生命周期记录、8条八门季节规则，与已有第四章87类象及55主档共享原书出处。 `formation_variants_draft.json` 的39条格局子候选已加入 `formation_concept_id`，能映射第五章257个公开索引；新 `src/wengua/symbol_relations.py`/测试为这种可调用条件提供程序入口。所有项目仍为来源草稿，非审核合格解词。此处不是新增另一份原书或新案例。
