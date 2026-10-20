@@ -1,0 +1,103 @@
+name: Archive Kaiwu marriage cases into shared Shenqi domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_恋爱婚姻预测.txt'
+      - 'scripts/build_kaiwu_marriage_from_hot_topics.py'
+      - 'schema/migrations/023_kaiwu_marriage_unified_case_provenance.sql'
+      - 'tests/test_kaiwu_marriage_unified_domain.py'
+      - '.github/workflows/build_kaiwu_marriage_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate source 6 cases 6 printed panels 26 source steps and case6 error
+        run: python -m unittest discover -s tests -p test_kaiwu_marriage_unified_domain.py -v
+      - name: Generate full next-version SQLite from exact SHA-pinned previous full archive
+        run: |
+          python -m scripts.build_kaiwu_marriage_from_hot_topics \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_恋爱婚姻预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/marriage_prediction_ch02_section02'
+      - name: Compress verify bytes full case/cast counts and write actual digest manifest
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          prior=root/'WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          src=json.loads(Path('data/knowledge/kaiwu/marriage_prediction_ch02_section02/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(prior.read_bytes()).hexdigest()==src['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={k:db.execute('SELECT COUNT(*) FROM "'+k+'"').fetchone()[0] for k in src['counts']}
+          assert counts==src['counts']
+          assert counts['cases']==127 and counts['crossbook_relationship_literal_palaces']==54
+          assert counts['crossbook_relationship_missing_casts']==2
+          manifest={'schema':'wengua_kaiwu_marriage_6_source_cases_unified_full_archive',
+           'source_title':src['source_title'],'source_sha256':src['source_sha256'],
+           'source_bytes':src['source_bytes'],'source_lines':src['source_lines'],
+           'total_source_sections':29,'book_counts':src['book_counts'],
+           'new_book_cases_accepted_no_manual_user_approval':6,
+           'domain_id':'marriage','new_distinct_historical_events':6,
+           'same_woman_distinct_questions_one_provenance_link':True,
+           'new_original_printed_qimen_charts':6,'new_source_palace_cells':54,
+           'omitted_original_charts_not_invented':2,
+           'new_source_reasoning_steps':26,
+           'case6_initial_answer_explicitly_wrong':True,
+           'case6_orientation_not_disease':True,
+           'past_explicit_book_errors_preserved':7,
+           'all_explicit_book_errors_cumulative':8,
+           'total_event_families':127,'total_original_printed_historical_charts':143,
+           'prior_complete_archive_path':str(prior),
+           'prior_complete_sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'sqlite_integrity':'ok',
+           'sqlite_foreign_key_errors':0,'all_previous_source_rows_preserved':True,
+           'internal_user_book_acceptance_not_independent_scientific_validation':True,
+           'full_public_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_marriage_127cases_manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu-marriage-full-127-event-version
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_marriage_127cases_manifest.json
+          retention-days: 30
+      - name: Commit actual new complete version and all original chapter source indexes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_marriage_127cases_manifest.json' \
+                     'data/knowledge/kaiwu/marriage_prediction_ch02_section02/'
+          git diff --cached --check
+          git commit -m 'Archive Kaiwu 6 accepted source marriage cases in shared domain with original error retained'
+          git push origin HEAD:main
