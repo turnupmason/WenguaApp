@@ -143,7 +143,7 @@ def get_lines(b):
  lines=s.splitlines()
  if len(lines)!=73 or lines[0]!="第五章 人生命运预测古文详解" or not s.endswith("\n"):
   raise ValueError("Original source chapter incomplete")
- if lines[-1].endswith("自己去体会去领悟了。") is False:raise ValueError("Source ending mismatch")
+ if lines[-1].endswith("在实践中去体会去领悟了。") is False:raise ValueError("Source ending mismatch")
  return lines
 
 def pairs(lines):
