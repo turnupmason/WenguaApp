@@ -1,0 +1,33 @@
+{
+  "schema": "wengua_weather_source_manifest_v1",
+  "source_title": "天时气象预测",
+  "source_sha256": "6093f9a89bd2eb889c392242892528a9022c6d9565f74be8912e2a8724663697",
+  "source_bytes": 19857,
+  "source_lines": 156,
+  "chapter_key": "shenqi/weather_prediction_ch14/v1",
+  "whole_events": 5,
+  "actual_printed_charts": 5,
+  "original_nine_palace_cells": 45,
+  "author_numbered_steps": 13,
+  "general_condition_candidates": 36,
+  "new_semantic_assertions": 49,
+  "retrospective_book_only": true,
+  "external_instrumental_weather_verification": false,
+  "baseline_sha256": "d29cfc5cd0779cf0a334b168a48c07f7145d51f0fe1424c5c0954b76e1133867",
+  "archive_sha256": "c20edf3611a71d31a241f45d10f9b4a175212081659ac05908b980fd8854c31c",
+  "counts": {
+    "sections": 18,
+    "cases": 91,
+    "historical_chart_cells": 819,
+    "historical_case_additional_cast_cells": 63,
+    "historical_case_additional_casts": 7,
+    "historical_case_reasoning": 411,
+    "semantic_assertions": 1093,
+    "historical_case_reasoning_trace": 411,
+    "historical_palace_standardization": 882,
+    "historical_weather_cast_context": 5
+  },
+  "historic_centres_normalized_without_invented_stars_doors_gods": 98,
+  "human_expert_author_reasoning_approved": 0,
+  "all_prior_chapter_rows_preserved": true
+}

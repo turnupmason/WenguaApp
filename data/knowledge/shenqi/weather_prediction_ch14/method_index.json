@@ -1,0 +1,232 @@
+{
+  "schema": "wengua_weather_domain_workflow_v1",
+  "source_sha256": "6093f9a89bd2eb889c392242892528a9022c6d9565f74be8912e2a8724663697",
+  "methods": [
+    {
+      "concept_id": "weather:general:primary_nine_stars",
+      "source_line": 7,
+      "conditional_summary": "天气以九星为主，兼看天干、门、神及其落宫",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:ying_sun",
+      "source_line": 8,
+      "conditional_summary": "天英为火神主晴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:fu_wind",
+      "source_line": 8,
+      "conditional_summary": "天辅为风伯主风",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:zhu_rain",
+      "source_line": 8,
+      "conditional_summary": "天柱为雨师主雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:peng_rain",
+      "source_line": 8,
+      "conditional_summary": "天蓬为水神主雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:chong_thunder",
+      "source_line": 8,
+      "conditional_summary": "天冲为雷公主雷",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:winter_xin_zhu_snow",
+      "source_line": 8,
+      "conditional_summary": "冬季天心天柱主雪",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:jing_sun",
+      "source_line": 8,
+      "conditional_summary": "景门晴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:kai_shang_thunder",
+      "source_line": 8,
+      "conditional_summary": "开伤二门雷",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:xiu_cloud_rain",
+      "source_line": 8,
+      "conditional_summary": "休门云雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:sheng_wind",
+      "source_line": 8,
+      "conditional_summary": "生门风",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:du_lightning",
+      "source_line": 8,
+      "conditional_summary": "杜门电",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:jingrainbow",
+      "source_line": 8,
+      "conditional_summary": "惊门虹霓",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:jia_yi_wind",
+      "source_line": 8,
+      "conditional_summary": "甲乙风",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:bing_ding_fire",
+      "source_line": 8,
+      "conditional_summary": "丙丁火晴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:wu_ji_cloud",
+      "source_line": 8,
+      "conditional_summary": "戊己阴云",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:geng_xin_snow",
+      "source_line": 8,
+      "conditional_summary": "庚辛冰雪",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:ren_gui_rain_size",
+      "source_line": 8,
+      "conditional_summary": "壬癸雨水，壬大雨癸小雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:jiutian_sunny_jiudi_cloud",
+      "source_line": 8,
+      "conditional_summary": "九天晴九地阴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:liuhe_sunny_wind_baihu_wind",
+      "source_line": 8,
+      "conditional_summary": "六合风和日丽白虎风",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:xuanwu_rain_taiyin_cloud",
+      "source_line": 8,
+      "conditional_summary": "玄武雨、太阴阴云霜雪",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:tengshe_lightning_rainbow",
+      "source_line": 8,
+      "conditional_summary": "螣蛇闪电虹霓",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:ying_strength_location",
+      "source_line": 9,
+      "conditional_summary": "天英旺相落三四宫或克日时干主晴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:fu_strength_position",
+      "source_line": 9,
+      "conditional_summary": "天辅旺相落离9或克宫、日时干主风晴",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:peng_zhu_water_137",
+      "source_line": 10,
+      "conditional_summary": "蓬柱乘壬癸到一三七宫主雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:wind_rain_lightning_combo",
+      "source_line": 10,
+      "conditional_summary": "英辅天盘干克地盘干兼蓬柱雨象，风雨雷电候选",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:distance_to_zhifu_timing",
+      "source_line": 11,
+      "conditional_summary": "与值符近雨速远雨迟",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:rain_cloud_kun2",
+      "source_line": 11,
+      "conditional_summary": "蓬柱携壬癸游坤2密云不雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:no_water_stem_no_rain",
+      "source_line": 11,
+      "conditional_summary": "蓬柱无壬癸即使在一三七宫也不下雨",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:winter_dry_metal_snow",
+      "source_line": 12,
+      "conditional_summary": "冬天心柱带壬癸在乾兑宫主雪",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:river_peng_xiu",
+      "source_line": 13,
+      "conditional_summary": "河水涨落以蓬星休门为用神",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:flood_strong_three_wonders",
+      "source_line": 13,
+      "conditional_summary": "水旺得三奇虽涨不泛滥",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:flood_geng_pattern",
+      "source_line": 13,
+      "conditional_summary": "旺水得庚格原书指壅塞泛滥",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:flood_jiachen_ren_tengshe",
+      "source_line": 13,
+      "conditional_summary": "甲辰壬螣蛇合庚格主洪水风险",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:flood_earth_palaces",
+      "source_line": 13,
+      "conditional_summary": "蓬或休落二五八宫土克水洪水可消",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "weather:general:flood_no_geng_ren",
+      "source_line": 13,
+      "conditional_summary": "无庚格或甲辰壬则虽涨无决堤",
+      "review_status": "draft"
+    }
+  ],
+  "workflow": [
+    "确定预测所用问时还是指定事件时，不偷用事后气象结果",
+    "九星为主并结合门、神、干和真实宫位，区分晴、阴、风、大小雨、雪、河水涨落",
+    "以天柱天蓬是否带壬癸、所在宫及五行月令旺衰核验雨象",
+    "逐宫比较天英景门火晴、天辅生门风及螣蛇/太阴/玄武等反证",
+    "按问事小时与目标小时分析当时雨势变化而不是拆成不同历史成功事件",
+    "严格隔离书内后验结果，不伪造六爻未印盘，不与同时间体育问事合并",
+    "原九宫中五仅照录单干，寄坤独立为派生标注",
+    "初断与结果、支持反证和限制可追溯，文献学习并非科学气象预报"
+  ]
+}

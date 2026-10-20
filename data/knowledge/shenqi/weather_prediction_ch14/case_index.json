@@ -1,0 +1,561 @@
+{
+  "schema": "wengua_weather_whole_events_v1",
+  "source_sha256": "6093f9a89bd2eb889c392242892528a9022c6d9565f74be8912e2a8724663697",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.weather.case01",
+      "event_family_id": "shenqi.weather.case01",
+      "case_title": "1993秦王湖景区开业典礼阴天无雨",
+      "source_whole_story_lines": [
+        17,
+        43
+      ],
+      "printed_original_cast_line": 24,
+      "actual_printed_nine_palaces": 9,
+      "initial_question_lines": [
+        19,
+        20
+      ],
+      "source_author_numbered_analysis_lines": [
+        40,
+        41
+      ],
+      "source_judgment_line": 42,
+      "source_feedback_line": 42,
+      "author_step_index": [
+        {
+          "step_number": 1,
+          "source_line": 40,
+          "topic": "震3天柱、离9天蓬均无壬癸，组合推不会下雨",
+          "author_claimed_observation_fragments": [
+            "(1)天柱星为雨师",
+            "虽落入震3宫",
+            "但不带壬、癸",
+            "天蓬星为水神",
+            "落入离9宫",
+            "也不带壬、癸",
+            "所以不会下雨"
+          ],
+          "author_expressed_counterevidence": [
+            "但不带壬、癸",
+            "也不带壬、癸"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "star:柱",
+            "star:蓬"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 2,
+          "source_line": 41,
+          "topic": "坎1天英火入水乡乘玄武休门，与未月辰日旺相反证，推阴云",
+          "author_claimed_observation_fragments": [
+            "(2)天英星主晴",
+            "虽然未月、辰日为我生之日、月",
+            "为旺",
+            "巳时为相",
+            "但天英星落入坎宫",
+            "又临玄武、休门之水"
+          ],
+          "author_expressed_counterevidence": [
+            "虽然未月、辰日为我生之日、月",
+            "但天英星落入坎宫"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:玄武",
+            "door:休",
+            "star:英",
+            "trigram:坎"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        }
+      ],
+      "original_book_outcome": "author_book_success_default",
+      "independent_meteorological_truth_verified": false,
+      "printed_chart_independently_recast": false,
+      "positive_training_eligible": false,
+      "whole_story_unsplit": true,
+      "embedded_verdict_and_outcome_same_line": {
+        "line": 42,
+        "separator": "结果，",
+        "split_required": true
+      }
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.weather.case02",
+      "event_family_id": "shenqi.weather.case02",
+      "case_title": "1994提前八天预测5月11日天气",
+      "source_whole_story_lines": [
+        44,
+        72
+      ],
+      "printed_original_cast_line": 51,
+      "actual_printed_nine_palaces": 9,
+      "initial_question_lines": [
+        46,
+        47
+      ],
+      "source_author_numbered_analysis_lines": [
+        67,
+        68,
+        69
+      ],
+      "source_judgment_line": 70,
+      "source_feedback_line": 71,
+      "author_step_index": [
+        {
+          "step_number": 1,
+          "source_line": 67,
+          "topic": "天英值符兑7空亡、巳月火旺酉日填实，综合晴天",
+          "author_claimed_observation_fragments": [
+            "(1)测天气以九星为主要用神",
+            "今天英星为值符",
+            "天英星为火神",
+            "主晴",
+            "落7宫",
+            "得伤门之木和乙奇生助",
+            "5月11日为己巳月丁酉日",
+            "巳月火旺",
+            "天英星当令",
+            "七宫属金",
+            "但火旺金死",
+            "所以必然是晴天"
+          ],
+          "author_expressed_counterevidence": [
+            "但火旺金死"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:值符",
+            "door:伤",
+            "star:英"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 2,
+          "source_line": 68,
+          "topic": "景门值使坎1得乙奇、柱星太阴与时令反证推晚间云彩",
+          "author_claimed_observation_fragments": [
+            "(2)景门为值使",
+            "主晴",
+            "落坎1宫",
+            "逢乙奇生助",
+            "天柱星为雨师",
+            "但巳月火旺水囚",
+            "天柱雨师发挥不了作用",
+            "故只可能在亥子时即晚上9点——凌晨1点这期间天上有些云彩",
+            "其他时间为晴天"
+          ],
+          "author_expressed_counterevidence": [
+            "但巳月火旺水囚"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:太阴",
+            "door:景",
+            "star:柱"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 3,
+          "source_line": 69,
+          "topic": "壬离9水入火乡、癸坤2入墓与辅星入墓，排雨风",
+          "author_claimed_observation_fragments": [
+            "(3)甲辰壬为水主",
+            "落离9宫",
+            "巳月丁日火旺",
+            "甲寅癸主小雨",
+            "落坤2宫为入墓受制",
+            "天辅星主风",
+            "落坤2宫为入墓",
+            "也刮不起风"
+          ],
+          "author_expressed_counterevidence": [
+            "落坤2宫为入墓受制"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "star:辅"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        }
+      ],
+      "original_book_outcome": "author_book_success_default",
+      "independent_meteorological_truth_verified": false,
+      "printed_chart_independently_recast": false,
+      "positive_training_eligible": false,
+      "whole_story_unsplit": true,
+      "other_divination_not_qimen": {
+        "source_line": 46,
+        "hexagram_methods": 3,
+        "extra_qimen_charts_printed": 0,
+        "hexagram_results_do_not_belong_in_first_blind_input": true
+      }
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.weather.case03",
+      "event_family_id": "shenqi.weather.case03",
+      "case_title": "1996学校揭牌仪式前后降雨",
+      "source_whole_story_lines": [
+        73,
+        101
+      ],
+      "printed_original_cast_line": 79,
+      "actual_printed_nine_palaces": 9,
+      "initial_question_lines": [
+        75
+      ],
+      "source_author_numbered_analysis_lines": [
+        95,
+        96,
+        97,
+        98
+      ],
+      "source_judgment_line": 99,
+      "source_feedback_line": 100,
+      "author_step_index": [
+        {
+          "step_number": 1,
+          "source_line": 95,
+          "topic": "甲辰壬艮8与开门生水、蓬兑7玄武、辰库冲刑推甲辰时雨",
+          "author_claimed_observation_fragments": [
+            "(1)甲辰壬为水",
+            "落艮8宫受制",
+            "又临开门",
+            "开门属金",
+            "金生水",
+            "有雨之象",
+            "又当午月壬日",
+            "虽午月火旺",
+            "但壬日主雨",
+            "天蓬星主水",
+            "落入兑7宫得生",
+            "下雨信息明显",
+            "壬辰日甲辰时",
+            "所以甲辰时理应有雨"
+          ],
+          "author_expressed_counterevidence": [
+            "落艮8宫受制",
+            "但上乘值符",
+            "但壬日主雨"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:值符",
+            "deity:玄武",
+            "door:开",
+            "star:蓬"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 2,
+          "source_line": 96,
+          "topic": "乙巳时乙泄壬、巳火制水的时辰转换",
+          "author_claimed_observation_fragments": [
+            "(2)乙巳时",
+            "乙木泄壬水"
+          ],
+          "author_expressed_counterevidence": [],
+          "existing_symbol_lexical_concept_candidates": [],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 3,
+          "source_line": 97,
+          "topic": "震3天英旺相与休门螣蛇冲突，取雨停之象",
+          "author_claimed_observation_fragments": [
+            "(3)天英星为火神",
+            "主晴",
+            "即使临休门又乘螣蛇",
+            "但落震3宫为得生",
+            "旺相",
+            "仍有雨停之象"
+          ],
+          "author_expressed_counterevidence": [
+            "即使临休门又乘螣蛇",
+            "但落震3宫为得生"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:螣蛇",
+            "door:休",
+            "star:英"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 4,
+          "source_line": 98,
+          "topic": "天柱离9不落137雨势被制，综合揭牌时雨停",
+          "author_claimed_observation_fragments": [
+            "(4)天柱星为雨师",
+            "不落一、三、七宫",
+            "却落离9宫",
+            "雨受制"
+          ],
+          "author_expressed_counterevidence": [
+            "不落一、三、七宫",
+            "却落离9宫",
+            "雨受制"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "star:柱"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        }
+      ],
+      "original_book_outcome": "author_book_success_default",
+      "independent_meteorological_truth_verified": false,
+      "printed_chart_independently_recast": false,
+      "positive_training_eligible": false,
+      "whole_story_unsplit": true,
+      "same_event_subhour_phase": {
+        "source_line": 95,
+        "甲辰时": "雨象",
+        "乙巳时": "雨停转弱、揭牌窗口",
+        "late_10am_book_feedback": 100,
+        "additional_printed_chart": false
+      }
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.weather.case04",
+      "event_family_id": "shenqi.weather.case04",
+      "case_title": "1998邢台移动网络露天开通仪式天气",
+      "source_whole_story_lines": [
+        102,
+        129
+      ],
+      "printed_original_cast_line": 109,
+      "actual_printed_nine_palaces": 9,
+      "initial_question_lines": [
+        104,
+        105
+      ],
+      "source_author_numbered_analysis_lines": [
+        125,
+        126
+      ],
+      "source_judgment_line": 127,
+      "source_feedback_line": 128,
+      "author_step_index": [
+        {
+          "step_number": 1,
+          "source_line": 125,
+          "topic": "蓬艮8不带壬癸为少雨，柱乾6带癸及太阴克制交叉推小雨",
+          "author_claimed_observation_fragments": [
+            "(1)天蓬星主水",
+            "落艮8宫受制",
+            "又不带壬、癸",
+            "但天柱雨师落6宫",
+            "而且带壬、癸",
+            "天柱星虽然没有落一、三、七宫",
+            "但六宫属金",
+            "金能生水",
+            "据此断明天有雨",
+            "因死门为土",
+            "克水",
+            "又癸主小雨",
+            "落入坎1宫",
+            "为旺"
+          ],
+          "author_expressed_counterevidence": [
+            "落艮8宫受制",
+            "又不带壬、癸",
+            "但天柱雨师落6宫",
+            "天柱星虽然没有落一、三、七宫",
+            "但六宫属金",
+            "但不会太大"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:太阴",
+            "door:死",
+            "star:柱",
+            "star:蓬"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 2,
+          "source_line": 126,
+          "topic": "辅离9旺、伤门玄武的风象合取三四级风",
+          "author_claimed_observation_fragments": [
+            "(2)天辅星主风",
+            "落离9宫旺相",
+            "伤门也主风",
+            "雨中有风之象",
+            "明天应有三、四级风"
+          ],
+          "author_expressed_counterevidence": [],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:玄武",
+            "door:伤",
+            "star:辅"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        }
+      ],
+      "original_book_outcome": "author_book_success_default",
+      "independent_meteorological_truth_verified": false,
+      "printed_chart_independently_recast": false,
+      "positive_training_eligible": false,
+      "whole_story_unsplit": true,
+      "reused_cast_for_different_question": {
+        "source_line": 105,
+        "original_context": "世界杯巴西荷兰球赛",
+        "separate_weather_question": true,
+        "do_not_duplicate_sports_event_family": true
+      }
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.weather.case05",
+      "event_family_id": "shenqi.weather.case05",
+      "case_title": "1998保定移动网络开通无雨及小风",
+      "source_whole_story_lines": [
+        130,
+        156
+      ],
+      "printed_original_cast_line": 137,
+      "actual_printed_nine_palaces": 9,
+      "initial_question_lines": [
+        132,
+        133
+      ],
+      "source_author_numbered_analysis_lines": [
+        153,
+        154
+      ],
+      "source_judgment_line": 155,
+      "source_feedback_line": 156,
+      "author_step_index": [
+        {
+          "step_number": 1,
+          "source_line": 153,
+          "topic": "柱震3无壬癸、蓬离9带壬但景门火，英坎1水乡取阴云少雨",
+          "author_claimed_observation_fragments": [
+            "(1)天柱星为雨师虽落震3宫",
+            "但不带壬、癸",
+            "天蓬星带壬",
+            "却落离9宫",
+            "而且临景门",
+            "天英星主晴",
+            "却落入坎宫",
+            "而且临壬水、休门"
+          ],
+          "author_expressed_counterevidence": [
+            "但不带壬、癸",
+            "却落离9宫",
+            "却落入坎宫"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "door:休",
+            "door:景",
+            "star:柱",
+            "star:英",
+            "star:蓬",
+            "trigram:坎"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        },
+        {
+          "step_number": 2,
+          "source_line": 154,
+          "topic": "癸巳时癸坤2入墓受土克排雨，白虎风象作反证",
+          "author_claimed_observation_fragments": [
+            "(2)癸巳时",
+            "癸落2宫",
+            "为入墓",
+            "受土克",
+            "不会下雨",
+            "但上乘白虎主风"
+          ],
+          "author_expressed_counterevidence": [
+            "但上乘白虎主风"
+          ],
+          "existing_symbol_lexical_concept_candidates": [
+            "deity:白虎"
+          ],
+          "phase": "author_first_analysis",
+          "author_original_is_private_sqlite": true,
+          "weather_scientific_validation": false,
+          "cross_chapter_semantic_rules_human_verified": false,
+          "positive_training_eligible": false,
+          "review_status": "source_anchor_draft_requires_human_per_step_verification"
+        }
+      ],
+      "original_book_outcome": "author_book_success_default",
+      "independent_meteorological_truth_verified": false,
+      "printed_chart_independently_recast": false,
+      "positive_training_eligible": false,
+      "whole_story_unsplit": true,
+      "cast_strategy": {
+        "source_line": 133,
+        "type": "planned_event_datetime",
+        "question_asked_previous_day": true
+      }
+    }
+  ]
+}

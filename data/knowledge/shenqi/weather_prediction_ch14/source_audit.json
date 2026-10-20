@@ -1,0 +1,45 @@
+{
+  "schema": "wengua_weather_source_audit_v1",
+  "source_sha256": "6093f9a89bd2eb889c392242892528a9022c6d9565f74be8912e2a8724663697",
+  "case1": {
+    "prediction_and_result_same_source_line": 42,
+    "must_split_by": "结果，"
+  },
+  "case2": {
+    "source_line": 46,
+    "hexagram_methods_not_qimen": 3,
+    "original_extra_qimen_charts": 0,
+    "non_qimen_results_are_author_prior_knowledge_not_initial_blind_input": true
+  },
+  "case3": {
+    "source_lines": [
+      95,
+      96,
+      97,
+      98,
+      99,
+      100
+    ],
+    "chen_hour_rain_vs_si_hour_pause": true,
+    "ten_am_rain_resume_is_book_feedback": true,
+    "multiple_printed_boards": false
+  },
+  "case4": {
+    "source_lines": [
+      104,
+      105
+    ],
+    "same_hour_came_from_football_chart": true,
+    "different_question_and_event_family": true,
+    "do_not_double_count_weather_board": false
+  },
+  "case5": {
+    "source_lines": [
+      132,
+      133,
+      134
+    ],
+    "forecast_by_planned_event_hour": true
+  },
+  "source_weather_successes_scientifically_verified": false
+}
