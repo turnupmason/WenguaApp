@@ -168,6 +168,8 @@ def import_lost_property(db_path,source_path):
                 elif old[0]!=original:raise ValueError("Editorial source altered")
         from .case_reasoning_trace import backfill_existing_case_traces
         done=backfill_existing_case_traces(db)
+        from .case_reasoning_trace import attach_lost_property_source_drafts
+        attach_lost_property_source_drafts(db)
         def number(tbl,condition,args):
             return db.execute("SELECT count(*) FROM "+tbl+" WHERE "+condition,args).fetchone()[0]
         result={"cases":number("cases","section_id=?",(sid,)),

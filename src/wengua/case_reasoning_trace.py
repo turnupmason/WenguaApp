@@ -56,3 +56,39 @@ def get_case_trace(db_path,case_id,view="initial_question"):
             v["subsequent_disclosures"]=c.execute("""SELECT source_line,phase,fact_type,original_statement
              FROM historical_case_disclosures WHERE case_id=? ORDER BY source_line""",(case_id,)).fetchall()
         return v
+
+
+def attach_lost_property_source_drafts(db, index_path=None):
+    """Apply line-anchored evidence/contrast outlines, but never auto-approve."""
+    from pathlib import Path
+    from .database import ROOT
+    if index_path is None:
+        index_path=ROOT/"data/knowledge/shenqi/lost_money_property_prediction_ch09/author_reasoning_evidence_index.json"
+    data=json.loads(Path(index_path).read_text(encoding="utf8"))
+    if data["source_sha256"]!="ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9":
+        raise ValueError("Source-specific evidence hash mismatch")
+    if len(data["cases"])!=8 or sum(len(c["steps"]) for c in data["cases"])!=36:
+        raise ValueError("Incomplete source reasoning steps")
+    count=0
+    for case in data["cases"]:
+        cid=case["case_id"]
+        for step in case["steps"]:
+            k=step["step_number"];line=step["source_line"]
+            actual=db.execute("""SELECT source_line FROM historical_case_reasoning
+              WHERE case_id=? AND step_number=?""",(cid,k)).fetchone()
+            if actual!=(line,):raise ValueError("Original author step does not match index")
+            before=db.execute("""SELECT review_status,evidence_json FROM historical_case_reasoning_trace
+              WHERE case_id=? AND step_number=?""",(cid,k)).fetchone()
+            if before is None:raise ValueError("Case trace missing")
+            if before[0]=="human_verified_complete_author_chain":continue
+            if before[0]=="source_grounded_reconstruction_draft_human_review_required":
+                if json.loads(before[1])!=step:raise ValueError("Previously imported source draft differs")
+                continue
+            if before[0]!="mechanical_source_link_needs_author_chain_review":
+                raise ValueError("Unrecognized review status, refusing overwrite")
+            db.execute("""UPDATE historical_case_reasoning_trace
+               SET evidence_json=?,review_status='source_grounded_reconstruction_draft_human_review_required',
+                   positive_training_eligible=0 WHERE case_id=? AND step_number=?""",
+               (json.dumps(step,ensure_ascii=False,sort_keys=True),cid,k))
+            count+=1
+    return {"source_draft_step_links_added":count,"approved":0}
