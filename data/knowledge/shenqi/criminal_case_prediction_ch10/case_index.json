@@ -1,0 +1,235 @@
+{
+  "schema": "wengua_criminal_complete_event_families_v1",
+  "source_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+  "chapter_key": "shenqi/criminal_case_prediction_ch10/v1",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.criminal_case.case01",
+      "event_family_id": "shenqi.criminal_case.case01",
+      "title": "报社现金被盗",
+      "source_span": [
+        29,
+        63
+      ],
+      "initial_question_source_lines": [
+        31,
+        31
+      ],
+      "actual_book_printed_chart_starts": [
+        36
+      ],
+      "source_author_step_lines": [
+        52,
+        54,
+        56,
+        58
+      ],
+      "book_original_conclusion_lines": [
+        60
+      ],
+      "book_feedback_lines": [
+        62
+      ],
+      "subsequent_disclosure_lines": [],
+      "post_result_author_analysis_lines": [],
+      "author_admits_initial_timing_wrong": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "case_event_family_not_split": true,
+      "first_cast_only_for_initial_question": true,
+      "full_sourced_step_count": 4
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.criminal_case.case02",
+      "event_family_id": "shenqi.criminal_case.case02",
+      "title": "服装被盗",
+      "source_span": [
+        64,
+        112
+      ],
+      "initial_question_source_lines": [
+        66,
+        66
+      ],
+      "actual_book_printed_chart_starts": [
+        71
+      ],
+      "source_author_step_lines": [
+        87,
+        89,
+        91,
+        93,
+        95,
+        97
+      ],
+      "book_original_conclusion_lines": [
+        101,
+        105,
+        109
+      ],
+      "book_feedback_lines": [
+        103,
+        107,
+        111
+      ],
+      "subsequent_disclosure_lines": [
+        99,
+        103,
+        107
+      ],
+      "post_result_author_analysis_lines": [],
+      "author_admits_initial_timing_wrong": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "case_event_family_not_split": true,
+      "first_cast_only_for_initial_question": true,
+      "full_sourced_step_count": 6
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.criminal_case.case03",
+      "event_family_id": "shenqi.criminal_case.case03",
+      "title": "持枪抢劫",
+      "source_span": [
+        113,
+        149
+      ],
+      "initial_question_source_lines": [
+        115,
+        117
+      ],
+      "actual_book_printed_chart_starts": [
+        122
+      ],
+      "source_author_step_lines": [
+        138,
+        140,
+        142,
+        144
+      ],
+      "book_original_conclusion_lines": [
+        140,
+        142,
+        144
+      ],
+      "book_feedback_lines": [
+        146
+      ],
+      "subsequent_disclosure_lines": [],
+      "post_result_author_analysis_lines": [],
+      "author_admits_initial_timing_wrong": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "case_event_family_not_split": true,
+      "first_cast_only_for_initial_question": true,
+      "full_sourced_step_count": 4
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.criminal_case.case04",
+      "event_family_id": "shenqi.criminal_case.case04",
+      "title": "银行运钞车抢劫",
+      "source_span": [
+        150,
+        228
+      ],
+      "initial_question_source_lines": [
+        152,
+        154
+      ],
+      "actual_book_printed_chart_starts": [
+        159,
+        193
+      ],
+      "source_author_step_lines": [
+        175,
+        177,
+        179,
+        181,
+        183,
+        209,
+        211,
+        213,
+        215,
+        217,
+        219
+      ],
+      "book_original_conclusion_lines": [
+        175,
+        181,
+        183
+      ],
+      "book_feedback_lines": [
+        185
+      ],
+      "subsequent_disclosure_lines": [
+        185,
+        187,
+        189,
+        191,
+        221,
+        223,
+        225,
+        227
+      ],
+      "post_result_author_analysis_lines": [
+        187,
+        189,
+        191,
+        221,
+        223,
+        225,
+        227
+      ],
+      "author_admits_initial_timing_wrong": true,
+      "book_outcome_label": "author_book_error_explicit",
+      "independent_external_verification": "not_verified",
+      "case_event_family_not_split": true,
+      "first_cast_only_for_initial_question": true,
+      "full_sourced_step_count": 11
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.criminal_case.case05",
+      "event_family_id": "shenqi.criminal_case.case05",
+      "title": "发现尸块的刑案",
+      "source_span": [
+        229,
+        261
+      ],
+      "initial_question_source_lines": [
+        231,
+        231
+      ],
+      "actual_book_printed_chart_starts": [
+        235
+      ],
+      "source_author_step_lines": [
+        251,
+        253,
+        255,
+        257
+      ],
+      "book_original_conclusion_lines": [
+        251,
+        255,
+        257
+      ],
+      "book_feedback_lines": [
+        259
+      ],
+      "subsequent_disclosure_lines": [],
+      "post_result_author_analysis_lines": [
+        261
+      ],
+      "author_admits_initial_timing_wrong": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "case_event_family_not_split": true,
+      "first_cast_only_for_initial_question": true,
+      "full_sourced_step_count": 4
+    }
+  ]
+}

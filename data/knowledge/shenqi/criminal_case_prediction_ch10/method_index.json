@@ -1,0 +1,327 @@
+{
+  "schema": "wengua_criminal_domain_method_v1",
+  "source_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+  "chapter_key": "shenqi/criminal_case_prediction_ch10/v1",
+  "general_conditions": [
+    {
+      "concept_id": "criminal:general:01",
+      "source_line": 5,
+      "conditional_topic": "玄武小盗轻微犯罪",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:02",
+      "source_line": 5,
+      "conditional_topic": "天蓬重大暴力经济犯罪",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:03",
+      "source_line": 5,
+      "conditional_topic": "甲午辛罪人辅助用神",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:04",
+      "source_line": 7,
+      "conditional_topic": "旺衰与罪犯外貌职业性格",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:05",
+      "source_line": 7,
+      "conditional_topic": "临庚惯犯特殊类象",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:06",
+      "source_line": 7,
+      "conditional_topic": "临辛惯犯旧案",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:07",
+      "source_line": 7,
+      "conditional_topic": "临壬癸逃犯类象",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:08",
+      "source_line": 9,
+      "conditional_topic": "伤门及车辆",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:09",
+      "source_line": 9,
+      "conditional_topic": "景门及火器",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:10",
+      "source_line": 9,
+      "conditional_topic": "庚辛及金属器械",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:11",
+      "source_line": 9,
+      "conditional_topic": "巽螣蛇及绳索",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:12",
+      "source_line": 9,
+      "conditional_topic": "甲乙伤杜及木器",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:13",
+      "source_line": 11,
+      "conditional_topic": "伏吟内盘与本地",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:14",
+      "source_line": 11,
+      "conditional_topic": "反吟外盘流窜",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:15",
+      "source_line": 13,
+      "conditional_topic": "六合逃犯杜门藏身",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:16",
+      "source_line": 15,
+      "conditional_topic": "死门尸首代表",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:17",
+      "source_line": 15,
+      "conditional_topic": "死门临戊动机类象",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:18",
+      "source_line": 15,
+      "conditional_topic": "死门诸干桃花类象",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:19",
+      "source_line": 17,
+      "conditional_topic": "伤门白虎庚值使为捕盗",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:20",
+      "source_line": 17,
+      "conditional_topic": "捕盗宫克贼宫",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:21",
+      "source_line": 17,
+      "conditional_topic": "伏吟与反吟破案判断",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:22",
+      "source_line": 17,
+      "conditional_topic": "庚格与破案",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:23",
+      "source_line": 17,
+      "conditional_topic": "杜门干格与破案",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:24",
+      "source_line": 19,
+      "conditional_topic": "庚格年内",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:25",
+      "source_line": 19,
+      "conditional_topic": "庚格月内",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:26",
+      "source_line": 19,
+      "conditional_topic": "庚格日内",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:27",
+      "source_line": 19,
+      "conditional_topic": "庚格时辰",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:28",
+      "source_line": 19,
+      "conditional_topic": "两个庚格叠加",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:29",
+      "source_line": 19,
+      "conditional_topic": "阴日看庚上阳日庚下",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:30",
+      "source_line": 19,
+      "conditional_topic": "阴阳星选庚上下",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:31",
+      "source_line": 19,
+      "conditional_topic": "旬空出空马星值使定期",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:32",
+      "source_line": 21,
+      "conditional_topic": "死门加壬自讼",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:33",
+      "source_line": 21,
+      "conditional_topic": "壬临坤宫自首类象",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:general:34",
+      "source_line": 25,
+      "conditional_topic": "不可代替刑事取证",
+      "review_status": "source_draft",
+      "app_criminal_accusation_use_prohibited": true
+    },
+    {
+      "concept_id": "criminal:foundational:evidence_not_proof",
+      "source_line": 25,
+      "conditional_topic": "占测不得作为刑事侦查与调查取证依据",
+      "review_status": "author_express_disclaimer"
+    }
+  ],
+  "domain_full_workflow": [
+    {
+      "stage": 1,
+      "question": "辨别刑事案件性质及是否已有现实证据",
+      "source_lines": [
+        5,
+        9,
+        15
+      ],
+      "condition": "一般盗窃候选玄武；暴力重大案天蓬；六仪辛辅助，死门用作无名死者象；现实警察证据不容术数替代"
+    },
+    {
+      "stage": 2,
+      "question": "确定实际起盘时刻、阴阳遁和局数",
+      "source_lines": [
+        11,
+        17,
+        19
+      ],
+      "condition": "使用问时或发案时，另记录置闰/拆补定局依据；事后用另一局重排属于 retrospective，不当成首断"
+    },
+    {
+      "stage": 3,
+      "question": "提取人物和工具相关宫位及符号",
+      "source_lines": [
+        7,
+        9,
+        11,
+        13
+      ],
+      "condition": "玄武/天蓬/甲午辛之宫配干门星神五行月令，六合与杜门仅源书传统候选，不能以人口统计等特征实际指控某个人"
+    },
+    {
+      "stage": 4,
+      "question": "逐项列举利弊与相反证据",
+      "source_lines": [
+        17
+      ],
+      "condition": "白虎伤门庚值使等与玄武天蓬之宫相生相克，考虑庚格、星门伏反吟、内外盘及月令先后；相反信号都保留"
+    },
+    {
+      "stage": 5,
+      "question": "破获可能性/应期",
+      "source_lines": [
+        17,
+        19,
+        21
+      ],
+      "condition": "庚格年/月/日/时优先，阳阴日庚上下，旬空填实、马星、值使落宫；多候选不能事后缩成实际命中唯一日期"
+    },
+    {
+      "stage": 6,
+      "question": "注明初断、后反馈与修订的隔离",
+      "source_lines": [
+        25,
+        183,
+        187,
+        189,
+        209,
+        219,
+        223,
+        225
+      ],
+      "condition": "书内案例4初次置闰法应期错误，后来知道结果后改用拆补法起第2真盘复盘；全部放同一家族，不进初次输入"
+    },
+    {
+      "stage": 7,
+      "question": "单次解释结论并说明局限",
+      "source_lines": [
+        23,
+        25
+      ],
+      "condition": "历史术数只用于古籍推理研究，不可据此抓捕、指认、定罪或代替正式刑事侦查"
+    }
+  ],
+  "cannot_act_as_evidence_or_investigative_proof": true
+}

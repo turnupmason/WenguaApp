@@ -1,0 +1,23 @@
+{
+  "schema": "wengua_criminal_source_chapter_v1",
+  "chapter_key": "shenqi/criminal_case_prediction_ch10/v1",
+  "source_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+  "source_utf8_bytes": 37260,
+  "source_lines": 261,
+  "book": "神奇之门",
+  "chapter_title": "刑事案件预测",
+  "original_event_families": 5,
+  "source_actually_printed_charts": 6,
+  "printed_chart_cells": 54,
+  "original_source_analysis_units": 29,
+  "retrospective_second_cast_step_units": 6,
+  "original_pre_feedback_steps": 23,
+  "general_method_source_candidates": 34,
+  "case_step_source_candidates": 29,
+  "total_new_method_assertions": 63,
+  "source_safety_disclaimer_line": 25,
+  "source_original_full_text_in_sqlite": true,
+  "external_independent_verification": false,
+  "review_status": "source_anchored_draft_only",
+  "note": "Last whole story closes at line261; fourth event has two genuine printed charts, second is after-the-fact reconstructed using 拆补."
+}

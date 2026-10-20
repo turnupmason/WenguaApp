@@ -1,0 +1,55 @@
+{
+  "schema": "wengua_criminal_source_audit_v1",
+  "source_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+  "case4": {
+    "initial_zhirun_cast_start": 159,
+    "initial_cast_method": "置闰法阳3局",
+    "initial_source_analysis_lines": [
+      175,
+      177,
+      179,
+      181,
+      183
+    ],
+    "author_admits_timing_wrong": 187,
+    "later_chai_bu_cast_start": 193,
+    "later_cast_method": "拆补法阳2局",
+    "later_cast_source_steps": [
+      209,
+      211,
+      213,
+      215,
+      217,
+      219
+    ],
+    "post_event_annotation_lines": [
+      187,
+      189,
+      191,
+      221,
+      223,
+      225,
+      227
+    ],
+    "later_cast_is_not_prospective_new_pred": true,
+    "source_4_associated_with_one_event_family": true
+  },
+  "case2": {
+    "inquiry_lines": [
+      66,
+      68
+    ],
+    "source_claims_suspects_identified_by_police_in_later_disclosure": [
+      103,
+      105,
+      107
+    ],
+    "treat_as_book_source_not_external_verified": true
+  },
+  "case5": {
+    "author_later_editorial_disclaimer_line": 261,
+    "use_as_criminal_evidence_prohibited": true
+  },
+  "center_palace": "keep source exact center stem and derive 寄坤二宫 from prior shijia_qiju; never fabricate centre deity/door/star",
+  "source_data_hash_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9"
+}

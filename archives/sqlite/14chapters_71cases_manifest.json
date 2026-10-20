@@ -1,0 +1,40 @@
+{
+  "name": "WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3",
+  "size": 2912256,
+  "sha256": "bcffc72c0801dfd46ea0fffad3b67550a4aa533764a0bf2d46373031912a8dd2",
+  "compressed_size": 272468,
+  "compressed_sha256": "cc65627460bc45b7e2235365587c8af6ce5d89add83ceed9542c0209ad402a03",
+  "base64_lines": 1896,
+  "sql_tables": {
+    "sections": 14,
+    "cases": 71,
+    "historical_chart_cells": 639,
+    "historical_case_additional_cast_cells": 45,
+    "historical_case_reasoning": 319,
+    "semantic_assertions": 891,
+    "historical_case_reasoning_trace": 319,
+    "historical_palace_standardization": 684,
+    "historical_case_review_audit": 71
+  },
+  "source_shas": {
+    "application_overview_ch06": "50c76ce5354d3378a842d6117f06c239bcdfe2f04786663c2e89f606d98c402e",
+    "business_profit_prediction_ch06": "c955d56bc7deb1b5c4a99f5b2594625d3d7f690e60063eed10f55864b514698c",
+    "criminal_case_prediction_ch10": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+    "education_prediction_ch04": "88d641e3b2ba541e5ea2acce40cd73af28c362befbff7cbc39fb558f3d84eb43",
+    "employment_prediction_ch05": "b78ab538a090cc8f59474b49bac613318e130dd78a563929b097ac6922e7fa05",
+    "health_prediction_ch01": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+    "lost_money_property_prediction_ch09": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+    "marriage_prediction_ch02": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9",
+    "missing_person_prediction_ch08": "5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574",
+    "pregnancy_prediction_ch03": "51af5117a1390f8af44e27c70fde83722d5df98d9c517e303a1dde7d433b5b9e",
+    "shijia_judgments_ch05": "e153de133f4c5b6c325361ff30a572e782becbb245bb471599d678bb6349679d",
+    "shijia_qiju": "177f6ecba2bf4c165524a48adbdab8fdbd535cdb700dca12b5e5f29b1a75afb2",
+    "shijia_symbols_ch04": "15ce23c3fff0c9d3a48b595ee3bbf115d0c1e98a64ce1efc88bdb27e67eab22a",
+    "travel_abroad_prediction_ch07": "c273c803eb78a02cfb3c6c00065da81312c1851a679a1e3bca4911acdbc3bc55"
+  },
+  "published_github_public_path": "archives/sqlite/WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3",
+  "compressed_path": "archives/sqlite/WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3.xz",
+  "historic_baseline_sha256": "7adb53e0f18288e0993faa486b7a6348531bc0dfabd2ab36ca92750e70a4660e",
+  "legacy_inconsistency_resolved": "Original supplied 12-chapter SQLite had only 2 explicitly-wrong verdicts, but source chapter lists 3. Reclassified missing-person case10 (with audit) plus newly-wrong criminal case4 yields 4 total.",
+  "externally_verified_accuracy_cases": 0
+}

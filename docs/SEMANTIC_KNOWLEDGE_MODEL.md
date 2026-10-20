@@ -175,3 +175,7 @@ python3 -m unittest discover -s tests -v
 公开`data/knowledge/shenqi/missing_person_prediction_ch08/{chapter_manifest,case_index,method_index,source_audit}.json`与`src/wengua/compile_shenqi_missing.py`、`scripts/import_shenqi_missing.py`、`tests/test_missing_case_import.py`、`docs/MISSING_PERSON_CASE_REASONING_PROTOCOL.md`、本交接文档仅含非版权原文的抽象索引及来源行号。**私有原文、未加密原书SQLite不上传公开repo**。上一批CI通知中的失败属历史旧commit；本轮必须一次合并提交、核对远端每个文件、验证当前main HEAD的Python3.11和3.12两个job均success才标成功。旧QimenLLM和App UI保持不动。
 ## 2026-10-19 钱物丢失与全事件证据链统一索引
 钱物丢失新增8案必须根据日干失主、时干失物、景门文书、伤门汽车、戊财货、丁奇文件及玄武天蓬排盗等条件化源域规则，在实际九宫对应宫事实与旧章节符号、格局、五行生克、应期概念键结合；书里例3/6/7存在重要新披露和后验补充，必须隔离。已将旧58案逐一标记完整证据链待补审，新追踪表仅记录私有作者原步骤的词面/来源候选，不构成已经核验可执行的因果规则。
+
+## 新版全量数据库与历史中五宫统一（用户2026-10-19明确授权）
+
+旧《起局方法》记载“五宫寄坤二宫”。在历史76张时局里，每张原书九宫所有字均保留，额外 `historical_palace_standardization` 共684格；中五宫原书六仪干与“寄二宫”推断分开，中五宫未印神门星不可自行制造。`historical_case_reasoning_trace` 为71案319步自动链接的源行号/宫位/符号候选，需要后续逐案人工判定真正用神、条件链和反证才算完成；其正向训练资格均为0。公开 `archives/sqlite/` 依据用户明确许可保存完整版本历史，SHA256在同目录manifest。现实刑案不能用古籍术数作为指认或定罪依据。

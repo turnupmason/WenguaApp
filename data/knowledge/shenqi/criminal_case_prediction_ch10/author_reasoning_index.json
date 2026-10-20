@@ -1,0 +1,585 @@
+{
+  "schema": "wengua_criminal_author_source_step_index_v1",
+  "source_sha256": "289465c220a0701545b9f093b4b91d041d600a4c9da67bf58e33a10ece0f0ea9",
+  "case_families": 5,
+  "real_casts": 6,
+  "author_source_analysis_count": 29,
+  "author_step_positive_training_allowed": false,
+  "cases": [
+    {
+      "case_id": "shenqi.criminal_case.case01",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 52,
+          "subquestion_method_topic": "失物与案犯 / 人物",
+          "actual_cast_start": 36,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武",
+            "door:景",
+            "star:任"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 54,
+          "subquestion_method_topic": "顺序第2步——须以源书原话核对",
+          "actual_cast_start": 36,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            2
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "door:生",
+            "trigram:坤"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 56,
+          "subquestion_method_topic": "顺序第3步——须以源书原话核对",
+          "actual_cast_start": 36,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1,
+            2
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:太阴",
+            "deity:玄武",
+            "deity:白虎",
+            "star:任"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 58,
+          "subquestion_method_topic": "顺序第4步——须以源书原话核对",
+          "actual_cast_start": 36,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [],
+          "candidate_prior_stable_concepts_lexical_only": [],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case02",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 87,
+          "subquestion_method_topic": "失物与案犯 / 人物",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            3,
+            4
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武",
+            "door:伤",
+            "door:景",
+            "star:辅"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 89,
+          "subquestion_method_topic": "顺序第2步——须以源书原话核对",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            4
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武",
+            "door:死"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 91,
+          "subquestion_method_topic": "顺序第3步——须以源书原话核对",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            8
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武",
+            "deity:白虎",
+            "door:伤"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 93,
+          "subquestion_method_topic": "顺序第4步——须以源书原话核对",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            2,
+            7
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:值符",
+            "deity:白虎",
+            "door:伤",
+            "door:开"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 95,
+          "subquestion_method_topic": "顺序第5步——须以源书原话核对",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "door:惊"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 97,
+          "subquestion_method_topic": "顺序第6步——须以源书原话核对",
+          "actual_cast_start": 71,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            3
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case03",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 138,
+          "subquestion_method_topic": "失物与案犯 / 人物",
+          "actual_cast_start": 122,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            3
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:太阴",
+            "door:伤",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 140,
+          "subquestion_method_topic": "顺序第2步——须以源书原话核对",
+          "actual_cast_start": 122,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            4
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:六合",
+            "door:杜"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 142,
+          "subquestion_method_topic": "顺序第3步——须以源书原话核对",
+          "actual_cast_start": 122,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1,
+            7
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:伤",
+            "door:惊",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 144,
+          "subquestion_method_topic": "顺序第4步——须以源书原话核对",
+          "actual_cast_start": 122,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            7
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "door:惊"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case04",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 175,
+          "subquestion_method_topic": "失物与案犯 / 人物",
+          "actual_cast_start": 159,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1,
+            8
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:六合",
+            "door:杜",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 177,
+          "subquestion_method_topic": "顺序第2步——须以源书原话核对",
+          "actual_cast_start": 159,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            8
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:六合",
+            "door:杜",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 179,
+          "subquestion_method_topic": "顺序第3步——须以源书原话核对",
+          "actual_cast_start": 159,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:太阴",
+            "door:伤",
+            "star:心",
+            "trigram:坎"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 181,
+          "subquestion_method_topic": "顺序第4步——须以源书原话核对",
+          "actual_cast_start": 159,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            1,
+            3,
+            4,
+            7,
+            8
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:伤",
+            "door:死",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 183,
+          "subquestion_method_topic": "顺序第5步——须以源书原话核对",
+          "actual_cast_start": 159,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [],
+          "candidate_prior_stable_concepts_lexical_only": [],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 209,
+          "subquestion_method_topic": "顺序第6步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            1,
+            9
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:玄武",
+            "door:死",
+            "star:蓬",
+            "trigram:坎"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 7,
+          "source_line": 211,
+          "subquestion_method_topic": "顺序第7步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            8
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:太阴",
+            "door:伤",
+            "star:禽",
+            "star:芮"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 8,
+          "source_line": 213,
+          "subquestion_method_topic": "顺序第8步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            4
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:景",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 9,
+          "source_line": 215,
+          "subquestion_method_topic": "顺序第9步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            3
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:六合",
+            "door:杜",
+            "star:柱"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 10,
+          "source_line": 217,
+          "subquestion_method_topic": "顺序第10步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            3,
+            4,
+            6,
+            8,
+            9
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:伤",
+            "door:杜",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 11,
+          "source_line": 219,
+          "subquestion_method_topic": "顺序第11步——须以源书原话核对",
+          "actual_cast_start": 193,
+          "stage": "retrospective_after_outcome_alternative_cast",
+          "author_referenced_palace_numbers": [
+            3,
+            6
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:伤",
+            "door:杜",
+            "star:柱",
+            "star:芮"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case05",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 251,
+          "subquestion_method_topic": "失物与案犯 / 人物",
+          "actual_cast_start": 235,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            2,
+            4
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:螣蛇",
+            "door:死",
+            "star:辅"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 253,
+          "subquestion_method_topic": "顺序第2步——须以源书原话核对",
+          "actual_cast_start": 235,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [],
+          "candidate_prior_stable_concepts_lexical_only": [],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 255,
+          "subquestion_method_topic": "顺序第3步——须以源书原话核对",
+          "actual_cast_start": 235,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [
+            3
+          ],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:白虎",
+            "door:伤",
+            "star:蓬",
+            "trigram:震"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": true,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 257,
+          "subquestion_method_topic": "顺序第4步——须以源书原话核对",
+          "actual_cast_start": 235,
+          "stage": "initial_author_source_analysis",
+          "author_referenced_palace_numbers": [],
+          "candidate_prior_stable_concepts_lexical_only": [
+            "deity:六合",
+            "deity:白虎",
+            "door:伤",
+            "door:景",
+            "star:蓬"
+          ],
+          "contains_author_adverse_or_conflicting_conditions": false,
+          "source_original_complete_private_sqlite": true,
+          "human_verified_full_reasoning": false,
+          "positive_training_eligible": false
+        }
+      ]
+    }
+  ]
+}
