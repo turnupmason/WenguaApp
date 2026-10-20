@@ -1,0 +1,913 @@
+{
+  "schema": "wengua_missing_method_index_v1",
+  "source_sha256": "5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574",
+  "chapter_key": "shenqi/missing_person_prediction_ch08/v1",
+  "methods": [
+    {
+      "concept_id": "missing:general:actual_disappearance_time_day_stem",
+      "source_line": 5,
+      "category": "general_conditional",
+      "condition_group": "actual_disappearance_time_day_stem",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:asking_time_parent_child_hour_stem",
+      "source_line": 5,
+      "category": "general_conditional",
+      "condition_group": "asking_time_parent_child_hour_stem",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:asking_time_same_generation_month_stem",
+      "source_line": 5,
+      "category": "general_conditional",
+      "condition_group": "asking_time_same_generation_month_stem",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:asking_time_elder_year_stem",
+      "source_line": 5,
+      "category": "general_conditional",
+      "condition_group": "asking_time_elder_year_stem",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:compatible_birth_year_reference",
+      "source_line": 5,
+      "category": "general_conditional",
+      "condition_group": "compatible_birth_year_reference",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:liuhe_initial_direction",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "liuhe_initial_direction",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:zhifu_possible_stopping_point",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "zhifu_possible_stopping_point",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:zhishi_possible_stopping_point",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "zhishi_possible_stopping_point",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:yongshen_final_location",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "yongshen_final_location",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:du_door_intentional_hiding",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "du_door_intentional_hiding",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:reversal_or_void_opposite_palace",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "reversal_or_void_opposite_palace",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:yang_dun_near_palaces_1_8_3_4",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "yang_dun_near_palaces_1_8_3_4",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:yin_dun_near_palaces_9_2_7_6",
+      "source_line": 7,
+      "category": "general_conditional",
+      "condition_group": "yin_dun_near_palaces_9_2_7_6",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:person_auspicious_strength",
+      "source_line": 9,
+      "category": "general_conditional",
+      "condition_group": "person_auspicious_strength",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:other_stems_beneficial_support",
+      "source_line": 9,
+      "category": "general_conditional",
+      "condition_group": "other_stems_beneficial_support",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:person_weak_malefic_dangers",
+      "source_line": 9,
+      "category": "general_conditional",
+      "condition_group": "person_weak_malefic_dangers",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:day_hour_relation_return",
+      "source_line": 11,
+      "category": "general_conditional",
+      "condition_group": "day_hour_relation_return",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:four_auspicious_doors_not_easily_found",
+      "source_line": 11,
+      "category": "general_conditional",
+      "condition_group": "four_auspicious_doors_not_easily_found",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:four_other_doors_easier_news",
+      "source_line": 11,
+      "category": "general_conditional",
+      "condition_group": "four_other_doors_easier_news",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:deities_change_hiding_danger_context",
+      "source_line": 11,
+      "category": "general_conditional",
+      "condition_group": "deities_change_hiding_danger_context",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:fuyin_slow_fanyin_return",
+      "source_line": 11,
+      "category": "general_conditional",
+      "condition_group": "fuyin_slow_fanyin_return",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:xunkong_fill_or_clash",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "xunkong_fill_or_clash",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:clash_wait_union_union_wait_clash",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "clash_wait_union_union_wait_clash",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:geng_period_year_month_day_hour",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "geng_period_year_month_day_hour",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:geng_yin_upper_yang_lower",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "geng_yin_upper_yang_lower",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:horse_star_trigger",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "horse_star_trigger",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:general:yin_yang_star_hours_choose_geng",
+      "source_line": 13,
+      "category": "general_conditional",
+      "condition_group": "yin_yang_star_hours_choose_geng",
+      "review_status": "source_draft",
+      "source_section": "第一节",
+      "cross_concept_keys": [
+        "stem:",
+        "door:",
+        "deity:",
+        "formation:",
+        "principle:"
+      ]
+    },
+    {
+      "concept_id": "missing:case:1:step:1",
+      "source_line": 45,
+      "category": "case_step",
+      "case_number": 1,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:1:step:2",
+      "source_line": 47,
+      "category": "case_step",
+      "case_number": 1,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:1:step:3",
+      "source_line": 51,
+      "category": "case_step",
+      "case_number": 1,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:1:step:4",
+      "source_line": 53,
+      "category": "case_step",
+      "case_number": 1,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:1",
+      "source_line": 87,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:2",
+      "source_line": 89,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:3",
+      "source_line": 91,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:4",
+      "source_line": 93,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:5",
+      "source_line": 95,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:6",
+      "source_line": 97,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:7",
+      "source_line": 123,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "second_genuine_disappearance_cast",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:8",
+      "source_line": 125,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "second_genuine_disappearance_cast",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:2:step:9",
+      "source_line": 127,
+      "category": "case_step",
+      "case_number": 2,
+      "reasoning_layer": "second_genuine_disappearance_cast",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:3:step:1",
+      "source_line": 163,
+      "category": "case_step",
+      "case_number": 3,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:3:step:2",
+      "source_line": 165,
+      "category": "case_step",
+      "case_number": 3,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:3:step:3",
+      "source_line": 167,
+      "category": "case_step",
+      "case_number": 3,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:3:step:4",
+      "source_line": 169,
+      "category": "case_step",
+      "case_number": 3,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:4:step:1",
+      "source_line": 201,
+      "category": "case_step",
+      "case_number": 4,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:4:step:2",
+      "source_line": 203,
+      "category": "case_step",
+      "case_number": 4,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:4:step:3",
+      "source_line": 205,
+      "category": "case_step",
+      "case_number": 4,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:5:step:1",
+      "source_line": 237,
+      "category": "case_step",
+      "case_number": 5,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:5:step:2",
+      "source_line": 243,
+      "category": "case_step",
+      "case_number": 5,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:5:step:3",
+      "source_line": 245,
+      "category": "case_step",
+      "case_number": 5,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:6:step:1",
+      "source_line": 277,
+      "category": "case_step",
+      "case_number": 6,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:6:step:2",
+      "source_line": 279,
+      "category": "case_step",
+      "case_number": 6,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:6:step:3",
+      "source_line": 281,
+      "category": "case_step",
+      "case_number": 6,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:6:step:4",
+      "source_line": 283,
+      "category": "case_step",
+      "case_number": 6,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:1",
+      "source_line": 315,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:2",
+      "source_line": 317,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:3",
+      "source_line": 319,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:4",
+      "source_line": 321,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:5",
+      "source_line": 323,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:6",
+      "source_line": 325,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:7:step:7",
+      "source_line": 327,
+      "category": "case_step",
+      "case_number": 7,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:8:step:1",
+      "source_line": 359,
+      "category": "case_step",
+      "case_number": 8,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:8:step:2",
+      "source_line": 361,
+      "category": "case_step",
+      "case_number": 8,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:8:step:3",
+      "source_line": 363,
+      "category": "case_step",
+      "case_number": 8,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:8:step:4",
+      "source_line": 365,
+      "category": "case_step",
+      "case_number": 8,
+      "reasoning_layer": "initial_source_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:9:step:1",
+      "source_line": 399,
+      "category": "case_step",
+      "case_number": 9,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:9:step:2",
+      "source_line": 407,
+      "category": "case_step",
+      "case_number": 9,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:9:step:3",
+      "source_line": 409,
+      "category": "case_step",
+      "case_number": 9,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:9:step:4",
+      "source_line": 411,
+      "category": "case_step",
+      "case_number": 9,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:9:step:5",
+      "source_line": 413,
+      "category": "case_step",
+      "case_number": 9,
+      "reasoning_layer": "corrective_book_analysis",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:1",
+      "source_line": 445,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:2",
+      "source_line": 447,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:3",
+      "source_line": 449,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:4",
+      "source_line": 451,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "incorrect_first_reading_counterexample",
+      "positive_training_eligible": false,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:5",
+      "source_line": 463,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:6",
+      "source_line": 465,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:7",
+      "source_line": 467,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:8",
+      "source_line": 469,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:9",
+      "source_line": 471,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:10",
+      "source_line": 473,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    },
+    {
+      "concept_id": "missing:case:10:step:11",
+      "source_line": 475,
+      "category": "case_step",
+      "case_number": 10,
+      "reasoning_layer": "teacher_correction",
+      "positive_training_eligible": true,
+      "review_status": "source_draft"
+    }
+  ],
+  "method_count": 81,
+  "interpretation_pipeline": [
+    "determine actual missing event inquiry or disappearance time cast",
+    "choose relationship-dependent yongshen and birth year if sourced",
+    "read 9 palace source only not recast invented chart",
+    "combine direction palace including 六合/杜门/用神 and near versus far",
+    "compare seasonal strength/door/star/deity and contradictory evidence",
+    "compare return prospects and conditional yingqi",
+    "one full source-attributed explanation without assuming scientific validity",
+    "source outcome/explicit errors and later evidence separated from first reading"
+  ],
+  "safety_boundaries": [
+    "Not a method to determine actual missing person's safety, death or location",
+    "Notify appropriate authorities and use evidence-based missing-person procedures for actual missing persons"
+  ]
+}

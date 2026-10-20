@@ -243,3 +243,15 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 公有`data/knowledge/shenqi/travel_abroad_prediction_ch07/`四索引、`src/wengua/compile_shenqi_travel.py`、`scripts/import_shenqi_travel.py`与`tests/test_travel_case_import.py`；**完整原书版权TXT与私有SQLite绝不自动上传公开Github**。私有新SQLite`WenguaApp_V1_神奇之门_十一章_出行出国四十八例_私有研究库.sqlite3`由十章库`backup()`无损增量生成，旧十章全部不变，实际计数`sections=11; cases=48; historical_chart_cells=432; historical_case_additional_casts=3; historical_case_additional_cast_cells=27; historical_case_reasoning=200; historical_case_book_verdicts=48; historical_case_disclosures=102; semantic_assertions=690`，integrity_check ok/无外键违规。上一理论第六章112公开规则、起局32结构条目仍有未全部入私有库事项，不宣称已物化。
 
 下一章遵守`docs/CASE_OUTCOME_POLICY.md`：作者若未明确承认断错仍标`author_book_success_default`（不等于外部科学有效），事件后补同案验证，严格保留实际出现的每张不同时间盘，绝不造盘；问用户App仍一问一时一盘一次完整回答。远端逐文件重新读回+GitHub Actions**最新main对应的两Python任务都success**才宣称完成。减少重复推送通知，优先一个原子GitHub提交；禁止拿旧绿灯替代最新。
+
+## 2026-10-19 最新第十二处理章：《行人走失预测》及之前多次CI失败的归档原则
+
+**本段为最新事实；早期3–11章小节属于历史过程。** 用户提供原书`神奇之门_行人走失预测_精校完整版(1).txt` **477行、49372字节、SHA256 `5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574`**。新增**10完整案例家族、11真正来源盘、99九宫、54编号作者步骤、81条来源条件候选**。本章例二在同一孩子失踪事件中同时给出问时和走失时两张盘，另外提及六次占测**没有原盘**；旧规则同一事件不因多次交流另增事件家族。
+
+**强制不能遗漏书里明说断错**：例5第239行明确“此例断错”、后面241自复盘；例9第401行明确“此例断错”、403-413修订推理；例10学员前4组误断归来后第455行未验、第457行找老师复核、老师第459-475行重新判断（包括7组修正证据）。这三例保留`author_book_error_explicit`的初始错误标签，原断错证据与后来的新逻辑均在同一个案例，**初始错误不可当正面断词训练**。其他7例按用户政策书内默认成功；但**不是独立现实预测验证**。全库累计**12章、58案、62张有据原盘、558宫（522主表+36额外宫）、254条来源作者分析、771条知识候选，55默认书内成功+3有明确初断错误**。《开悟之门》依旧0章。
+
+**本章与准确性特别相关**：原书第一节的日干/时干/月干/年干依实际走失时或问时取用、不同人物关系；六合初始去向/杜门躲藏/用神落宫最终地点，阴阳内外盘远近、空亡冲宫、旺相制凶、庚格和马星归期均为*条件化来源规则*，不允许凭一个凶门直接断死亡。实例3的源叙述在复盘前就已有后来结果，盲测的`known_before`必须裁断后验。实例10最后第477行仅称另用出行时盘可见恶兆、**没有印出该盘，不得自动捏造**。个人失踪或刑事指控只能依警方和实际证据，术数文献不可作为现实断定依据。
+
+**真正创建的私有SQLite**：`WenguaApp_V1_神奇之门_十二章_行人走失五十八例_私有研究库.sqlite3`，从用户十一章库`backup()`只增量写本章，先前48案与十一章原文不改。经实际检查`sections=12,cases=58,historical_chart_cells=522,historical_case_additional_casts=4,historical_case_additional_cast_cells=36,historical_case_reasoning=254,historical_case_book_verdicts=58,historical_case_disclosures=113,semantic_assertions=771`，SQLite`integrity_check=ok`且`foreign_key_check=[]`。第六章老112理论知识候选与起局章32结构记录仍有部分待补私有物化，勿说771已完全包含。
+
+公开`data/knowledge/shenqi/missing_person_prediction_ch08/{chapter_manifest,case_index,method_index,source_audit}.json`与`src/wengua/compile_shenqi_missing.py`、`scripts/import_shenqi_missing.py`、`tests/test_missing_case_import.py`、`docs/MISSING_PERSON_CASE_REASONING_PROTOCOL.md`、本交接文档仅含非版权原文的抽象索引及来源行号。**私有原文、未加密原书SQLite不上传公开repo**。上一批CI通知中的失败属历史旧commit；本轮必须一次合并提交、核对远端每个文件、验证当前main HEAD的Python3.11和3.12两个job均success才标成功。旧QimenLLM和App UI保持不动。

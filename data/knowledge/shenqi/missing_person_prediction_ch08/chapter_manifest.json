@@ -1,0 +1,32 @@
+{
+  "schema": "wengua_missing_chapter_manifest_v1",
+  "source_sha256": "5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574",
+  "chapter_key": "shenqi/missing_person_prediction_ch08/v1",
+  "book_id": "shenqi",
+  "chapter_title": "行人走失预测",
+  "source_filename": "神奇之门_行人走失预测_精校完整版(1).txt",
+  "source_lines": 477,
+  "source_utf8_bytes": 49372,
+  "case_families": 10,
+  "genuinely_printed_charts": 11,
+  "literal_palace_cells": 99,
+  "numbered_source_analysis_steps": 54,
+  "conditional_method_records": 81,
+  "general_conditional_methods": 27,
+  "case_specific_method_steps": 54,
+  "default_book_success_cases": 7,
+  "explicit_initial_error_cases": [
+    5,
+    9,
+    10
+  ],
+  "external_verified_cases": 0,
+  "source_last_line_unfinished": true,
+  "private_original_text_not_pushed": true,
+  "case2_real_casts": [
+    68,
+    104
+  ],
+  "case2_other_six_not_provided": "Only claimed as six later separate predictions; their times/complete nine-palace grids absent; no invention",
+  "case10_teacher_reanalysis": "Original four numbered learner analyses and seven teacher corrective numbered steps on same supplied chart."
+}

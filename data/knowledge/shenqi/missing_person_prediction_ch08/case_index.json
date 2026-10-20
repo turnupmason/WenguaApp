@@ -1,0 +1,458 @@
+{
+  "schema": "wengua_missing_case_index_v1",
+  "source_sha256": "5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574",
+  "chapter_key": "shenqi/missing_person_prediction_ch08/v1",
+  "case_families": 10,
+  "supplied_chart_count": 11,
+  "source_numbered_steps": 54,
+  "case2_additional_actual_cast": {
+    "case_id": "shenqi.missing.case02",
+    "chart_start": 104,
+    "date": "1996-06-06",
+    "hour_ganzhi": "己巳",
+    "source_cast_type": "known_disappearance_hour_genuine_printed_chart"
+  },
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.missing.case01",
+      "event_family_id": "shenqi.missing.case01",
+      "title": "水库失踪兄长",
+      "source_span": [
+        17,
+        58
+      ],
+      "initial_question_source_lines": [
+        19,
+        19
+      ],
+      "original_chart_starts": [
+        26
+      ],
+      "numbered_reasoning_lines": [
+        45,
+        47,
+        51,
+        53
+      ],
+      "original_judgment_source_lines": [
+        49,
+        55
+      ],
+      "book_feedback_source_lines": [
+        57
+      ],
+      "yongshen_source_summary": "弟问兄：月干己；年命辛",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.missing.case02",
+      "event_family_id": "shenqi.missing.case02",
+      "title": "初中生离家出走",
+      "source_span": [
+        59,
+        134
+      ],
+      "initial_question_source_lines": [
+        61,
+        61
+      ],
+      "original_chart_starts": [
+        68,
+        104
+      ],
+      "numbered_reasoning_lines": [
+        87,
+        89,
+        91,
+        93,
+        95,
+        97,
+        123,
+        125,
+        127
+      ],
+      "original_judgment_source_lines": [
+        129
+      ],
+      "book_feedback_source_lines": [
+        133
+      ],
+      "yongshen_source_summary": "朋友代问子女：问时以时干戊；失踪时以日干",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [
+        {
+          "start": 131,
+          "end": 131,
+          "kind": "six_subsequent_casts_reported_without_source_charts"
+        }
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.missing.case03",
+      "event_family_id": "shenqi.missing.case03",
+      "title": "高中女生出走打工",
+      "source_span": [
+        135,
+        172
+      ],
+      "initial_question_source_lines": [
+        137,
+        137
+      ],
+      "original_chart_starts": [
+        144
+      ],
+      "numbered_reasoning_lines": [
+        163,
+        165,
+        167,
+        169
+      ],
+      "original_judgment_source_lines": [
+        138
+      ],
+      "book_feedback_source_lines": [
+        171
+      ],
+      "yongshen_source_summary": "出走时日干己、年命丁",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [
+        {
+          "start": 138,
+          "end": 139,
+          "kind": "retrospective_disappearance_time_cast_with_outcome_preknown"
+        }
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.missing.case04",
+      "event_family_id": "shenqi.missing.case04",
+      "title": "一岁男孩被带走",
+      "source_span": [
+        173,
+        208
+      ],
+      "initial_question_source_lines": [
+        175,
+        175
+      ],
+      "original_chart_starts": [
+        182
+      ],
+      "numbered_reasoning_lines": [
+        201,
+        203,
+        205
+      ],
+      "original_judgment_source_lines": [
+        205
+      ],
+      "book_feedback_source_lines": [
+        207
+      ],
+      "yongshen_source_summary": "代问幼儿：时干乙",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.missing.case05",
+      "event_family_id": "shenqi.missing.case05",
+      "title": "十九岁女儿离家出走",
+      "source_span": [
+        209,
+        248
+      ],
+      "initial_question_source_lines": [
+        211,
+        211
+      ],
+      "original_chart_starts": [
+        218
+      ],
+      "numbered_reasoning_lines": [
+        237,
+        243,
+        245
+      ],
+      "original_judgment_source_lines": [
+        239
+      ],
+      "book_feedback_source_lines": [
+        247
+      ],
+      "yongshen_source_summary": "代问女儿：时干壬、年命戊",
+      "explicit_source_error": {
+        "source_line": 239,
+        "original_wrong_judgment": "凶多吉少，恐怕难以找回",
+        "corrective_lines": [
+          241,
+          243,
+          245
+        ],
+        "later_feedback_line": 247
+      },
+      "retrospective_review_segments": [
+        {
+          "start": 239,
+          "end": 241,
+          "kind": "explicit_original_error_and_self_review"
+        }
+      ],
+      "book_outcome_label": "author_book_error_explicit",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 6,
+      "case_id": "shenqi.missing.case06",
+      "event_family_id": "shenqi.missing.case06",
+      "title": "叔父代问侄儿",
+      "source_span": [
+        249,
+        286
+      ],
+      "initial_question_source_lines": [
+        251,
+        251
+      ],
+      "original_chart_starts": [
+        258
+      ],
+      "numbered_reasoning_lines": [
+        277,
+        279,
+        281,
+        283
+      ],
+      "original_judgment_source_lines": [
+        253
+      ],
+      "book_feedback_source_lines": [
+        285
+      ],
+      "yongshen_source_summary": "叔父代问侄子：时干己、六合",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 7,
+      "case_id": "shenqi.missing.case07",
+      "event_family_id": "shenqi.missing.case07",
+      "title": "女孩失踪与刑案",
+      "source_span": [
+        287,
+        330
+      ],
+      "initial_question_source_lines": [
+        289,
+        289
+      ],
+      "original_chart_starts": [
+        296
+      ],
+      "numbered_reasoning_lines": [
+        315,
+        317,
+        319,
+        321,
+        323,
+        325,
+        327
+      ],
+      "original_judgment_source_lines": [
+        329
+      ],
+      "book_feedback_source_lines": [
+        329
+      ],
+      "yongshen_source_summary": "按失踪时间以时干乙为用神",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 8,
+      "case_id": "shenqi.missing.case08",
+      "event_family_id": "shenqi.missing.case08",
+      "title": "外甥离家出走",
+      "source_span": [
+        331,
+        370
+      ],
+      "initial_question_source_lines": [
+        333,
+        333
+      ],
+      "original_chart_starts": [
+        340
+      ],
+      "numbered_reasoning_lines": [
+        359,
+        361,
+        363,
+        365
+      ],
+      "original_judgment_source_lines": [
+        367
+      ],
+      "book_feedback_source_lines": [
+        369
+      ],
+      "yongshen_source_summary": "出走时局以日干乙，兼看六合",
+      "explicit_source_error": null,
+      "retrospective_review_segments": [],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 9,
+      "case_id": "shenqi.missing.case09",
+      "event_family_id": "shenqi.missing.case09",
+      "title": "外甥女失踪",
+      "source_span": [
+        371,
+        416
+      ],
+      "initial_question_source_lines": [
+        373,
+        373
+      ],
+      "original_chart_starts": [
+        380
+      ],
+      "numbered_reasoning_lines": [
+        399,
+        407,
+        409,
+        411,
+        413
+      ],
+      "original_judgment_source_lines": [
+        401
+      ],
+      "book_feedback_source_lines": [
+        415
+      ],
+      "yongshen_source_summary": "问时用时干辛兼年命丙",
+      "explicit_source_error": {
+        "source_line": 401,
+        "original_wrong_judgment": "恐怕人已被害死",
+        "corrective_lines": [
+          403,
+          405,
+          407,
+          409,
+          411,
+          413
+        ],
+        "later_feedback_line": 415
+      },
+      "retrospective_review_segments": [
+        {
+          "start": 401,
+          "end": 405,
+          "kind": "explicit_original_error_and_corrective_review"
+        }
+      ],
+      "book_outcome_label": "author_book_error_explicit",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    },
+    {
+      "case_number": 10,
+      "case_id": "shenqi.missing.case10",
+      "event_family_id": "shenqi.missing.case10",
+      "title": "女出租车司机失踪",
+      "source_span": [
+        417,
+        477
+      ],
+      "initial_question_source_lines": [
+        419,
+        419
+      ],
+      "original_chart_starts": [
+        426
+      ],
+      "numbered_reasoning_lines": [
+        445,
+        447,
+        449,
+        451,
+        463,
+        465,
+        467,
+        469,
+        471,
+        473,
+        475
+      ],
+      "original_judgment_source_lines": [
+        453,
+        459
+      ],
+      "book_feedback_source_lines": [
+        455,
+        459
+      ],
+      "yongshen_source_summary": "初学员时干辛，老师纠正为朋友之妻用月干己并看年命丁",
+      "explicit_source_error": {
+        "source_line": 457,
+        "initial_interpreter": "马兰德学员",
+        "original_wrong_judgment": "人车会于10月8日至15日回来",
+        "corrective_lines": [
+          459,
+          461,
+          463,
+          465,
+          467,
+          469,
+          471,
+          473,
+          475
+        ],
+        "later_feedback_line": 459,
+        "source_distinction": "Teacher corrected original student false reassurance/return timing; do not label the original 4 student steps as correct examples."
+      },
+      "retrospective_review_segments": [
+        {
+          "start": 455,
+          "end": 461,
+          "kind": "original_student_miss_and_teacher_correction"
+        },
+        {
+          "start": 477,
+          "end": 477,
+          "kind": "departure_time_chart_mentioned_but_not_provided"
+        }
+      ],
+      "book_outcome_label": "author_book_error_explicit",
+      "independent_external_verification": "not_verified",
+      "one_event_family": true
+    }
+  ]
+}

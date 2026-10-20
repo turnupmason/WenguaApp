@@ -1,0 +1,11 @@
+{
+  "schema": "wengua_missing_source_audit_v1",
+  "source_sha256": "5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574",
+  "chapter_key": "shenqi/missing_person_prediction_ch08/v1",
+  "case2": "One boy; inquiry-time first chart at line68, disappearance-time second actual chart at line104; six later predictions mentioned without complete source charts. Do not add 6 events or invent charts.",
+  "case3": "First retrospective paragraph at line137 already reveals outcome; initial-known must stop before April 11 and later confirmed return.",
+  "case5": "Line239 explicitly says 此例断错, preserve false initial inference and source revision line241 plus subsequent steps; don't train wrong inference as correct.",
+  "case9": "Line401 explicitly says 此例断错, preserve first death claim as negative learning and full revision at 403-413.",
+  "case10": "First four student steps at 445-451 and predicted 8/15 latest return did not occur (455); teacher reply/review at 459-475 gives opposite conclusion; save initial failure and corrected case separately under ONE story; no independent departure-time chart provided at 477.",
+  "public_copyright_policy": "Full unredacted Chinese prose/private person mentions only in user's private SQLite, not in public GitHub."
+}
