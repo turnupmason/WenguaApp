@@ -1,0 +1,210 @@
+{
+  "schema": "wengua_life_domain_conditional_rules_v1",
+  "source_sha256": "92de6590ebf88698d9bf0137e8ecdb780b8f1ff1f66765faf0a69eb3d7eac507",
+  "methods": [
+    {
+      "source_line": 10,
+      "concept_id": "life:general:birth_time_long_term",
+      "conditional_summary": "先天素质与长期机遇使用出生时起局，日干为本人",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:family_year_parent",
+      "conditional_summary": "家庭领域年干为父母，需关联合干及个人资料",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:family_month_siblings",
+      "conditional_summary": "家庭领域月干代表兄弟姐妹",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:family_hour_children",
+      "conditional_summary": "家庭领域时干代表子女",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:society_year_superior",
+      "conditional_summary": "社会领域年干为领导上级",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:society_month_colleagues",
+      "conditional_summary": "社会领域月干为同事朋友",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:society_hour_subordinates",
+      "conditional_summary": "社会领域时干为下级群众",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:stars_time",
+      "conditional_summary": "九星对应作者所谓天时，需要时令强弱",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:doors_human",
+      "conditional_summary": "八门对应人事关系",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:palaces_location",
+      "conditional_summary": "九宫为方向与空间条件",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:deities_symbol",
+      "conditional_summary": "八神为传统象意，非可测能量场科学事实",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 10,
+      "concept_id": "life:general:strength_patterns",
+      "conditional_summary": "旺相休囚及格局生克合参，不能据单象断命",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 11,
+      "concept_id": "life:general:question_time_recent",
+      "conditional_summary": "近期机遇用问测时间起局",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 11,
+      "concept_id": "life:general:day_plus_birthyear",
+      "conditional_summary": "近期以日干本人兼年命落宫综合",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 11,
+      "concept_id": "life:general:visitor_seat",
+      "conditional_summary": "必要时结合来人坐宫，前提事实不可泄漏",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 13,
+      "concept_id": "life:general:poem_body_parts",
+      "conditional_summary": "宫位可作传统身体部位象意，不得据此诊断疾病",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 14,
+      "concept_id": "life:general:spouse_wife_yi_ding",
+      "conditional_summary": "妻妾取乙丁须结合身份/问题，不机械套用",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 14,
+      "concept_id": "life:general:spouse_husband_geng_bing",
+      "conditional_summary": "夫君取庚丙须识别关系与合干",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 14,
+      "concept_id": "life:general:fortune_condition_strength",
+      "conditional_summary": "富贵判断需旺相得奇及具体条件，非无条件定论",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 15,
+      "concept_id": "life:general:pattern_weighting",
+      "conditional_summary": "古籍强调格局分轻重与孤虚旺相先判断",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 16,
+      "concept_id": "life:general:property_sheng_door",
+      "conditional_summary": "生门关联产业，须合三奇旺衰与日干相生克",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 16,
+      "concept_id": "life:general:inner_outer_migration",
+      "conditional_summary": "人宫及生门内外区分祖业/迁居类象",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 17,
+      "concept_id": "life:general:day_hour_loneliness",
+      "conditional_summary": "日时孤虚/空墓条件为古籍孤独类象而非现实定数",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 18,
+      "concept_id": "life:general:star_job_profession",
+      "conditional_summary": "按九星强弱及奇门判断职业只是古籍类象",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 19,
+      "concept_id": "life:general:gate_job_profession",
+      "conditional_summary": "按八门与吉格职业取象需符合问事实际",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 20,
+      "concept_id": "life:general:door_star_joint_profession",
+      "conditional_summary": "八门和对应九星五行须联合解释",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 21,
+      "concept_id": "life:general:star_strong_vs_weak",
+      "conditional_summary": "不同九星旺弱改变传统职业类象",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 22,
+      "concept_id": "life:general:heaven_earth_stem_patterns",
+      "conditional_summary": "干加干与青龙返首/飞鸟跌穴等按原格局条件解释",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 22,
+      "concept_id": "life:general:geng_wu_crosspalace",
+      "conditional_summary": "庚戊与戊庚格局的成败、地点与人物差异条件",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 23,
+      "concept_id": "life:general:xin_ren_gui_classical",
+      "conditional_summary": "辛壬癸象意须看环境旺弱，禁无条件人格贬损",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 24,
+      "concept_id": "life:general:avoid_void_tomb",
+      "conditional_summary": "吉凶格遇空亡墓绝需减益与反证分析",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 24,
+      "concept_id": "life:general:fanyin_fuyin",
+      "conditional_summary": "反吟伏吟依具体事体和月令综合，不套一条绝对规则",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 25,
+      "concept_id": "life:general:source_explicit_caution",
+      "conditional_summary": "作者自言古籍片面绝对，只可综合变通参考",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 26,
+      "concept_id": "life:general:classical_not_science",
+      "conditional_summary": "传统命运推断尚无科学验证，严禁发布死亡疾病确定性预测",
+      "review_status": "draft"
+    }
+  ]
+}

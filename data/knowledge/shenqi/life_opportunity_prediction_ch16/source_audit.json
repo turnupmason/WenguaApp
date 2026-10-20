@@ -1,0 +1,13 @@
+{
+  "schema": "wengua_life_source_chronology_v1",
+  "source_sha256": "92de6590ebf88698d9bf0137e8ecdb780b8f1ff1f66765faf0a69eb3d7eac507",
+  "case1_unnumbered_leadership_step": 78,
+  "case2_multisubquestion_not_15_cases": true,
+  "case3_true_outcome_known_before_step_190": true,
+  "case4_birth_cast_after_known_death": true,
+  "case5_wrong_year_initial": 257,
+  "case5_informant_correction": 258,
+  "case5_after_year_disclosed": 259,
+  "human_complete_reasoning_verified": 0,
+  "positive_training_eligible": false
+}

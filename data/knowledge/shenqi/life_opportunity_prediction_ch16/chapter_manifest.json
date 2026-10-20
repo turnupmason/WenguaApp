@@ -1,0 +1,41 @@
+{
+  "schema": "wengua_life_chapter_full_source_v1",
+  "chapter_key": "shenqi/life_opportunity_prediction_ch16/v1",
+  "title": "人生机遇预测",
+  "source_sha256": "92de6590ebf88698d9bf0137e8ecdb780b8f1ff1f66765faf0a69eb3d7eac507",
+  "source_utf8_bytes": 37761,
+  "source_lines": 273,
+  "case_families": 5,
+  "actual_printed_charts": 5,
+  "source_palace_cells": 45,
+  "author_source_step_units": 51,
+  "general_domain_method_candidates": 34,
+  "new_semantic_candidates": 85,
+  "cast_strategy_counts": {
+    "birth_time": 2,
+    "inquiry_time": 3
+  },
+  "book_failure_details": {
+    "case5_wrong_spouse_death_year": true,
+    "case3_missed_precise_time_then_retroactive": true
+  },
+  "retrospective_literary_only_case4": true,
+  "independent_professional_reviews": 0,
+  "training_approved": 0,
+  "database_sha256": "1332fe460c1e73bd74939760c59a376980c888bb8d9e41c3b7416fadd4bbdaa3",
+  "baseline_sha256": "9412c314a10827b34f6d2e1930124b672f389156d86692d58db1ffdff5ada4b0",
+  "cumulative_counts": {
+    "sections": 20,
+    "cases": 98,
+    "historical_chart_cells": 882,
+    "historical_case_additional_cast_cells": 63,
+    "historical_case_additional_casts": 7,
+    "historical_case_reasoning": 468,
+    "semantic_assertions": 1207,
+    "historical_case_reasoning_trace": 468,
+    "historical_palace_standardization": 945,
+    "historical_life_case_context": 5,
+    "historical_life_source_error_segments": 5
+  },
+  "source_limits": "Book narratives have no independent medical, death, financial or criminal verification; never offer fatality forecasts"
+}
