@@ -1,0 +1,161 @@
+{
+  "source_sha256": "d85e880bd7e09af25b0db75ae995f0e072b2ff8501a9eb836c2b70748a5fd36d",
+  "cases": [
+    {
+      "event_id": "kaiwu.hot.clinton",
+      "main_domain": "litigation",
+      "facets": [
+        "politics_elections",
+        "litigation"
+      ],
+      "source_sections": [
+        "一"
+      ],
+      "same_event_multi_casts": 2
+    },
+    {
+      "event_id": "kaiwu.hot.nato",
+      "main_domain": "military_history_source",
+      "facets": [
+        "military_history_source",
+        "geopolitics"
+      ],
+      "source_sections": [
+        "二"
+      ],
+      "same_event_multi_casts": 2
+    },
+    {
+      "event_id": "kaiwu.hot.river_jump",
+      "main_domain": "sports_competition",
+      "facets": [
+        "sports_competition",
+        "dangerous_stunt"
+      ],
+      "source_sections": [
+        "三"
+      ],
+      "same_event_multi_casts": 2
+    },
+    {
+      "event_id": "kaiwu.hot.apocalypse",
+      "main_domain": "weather_historical_source",
+      "facets": [
+        "weather_historical_source",
+        "world_affairs"
+      ],
+      "source_sections": [
+        "四"
+      ],
+      "same_event_multi_casts": 1
+    },
+    {
+      "event_id": "kaiwu.hot.women_world_cup",
+      "main_domain": "sports_competition",
+      "facets": [
+        "sports_competition"
+      ],
+      "source_sections": [
+        "五"
+      ],
+      "same_event_multi_casts": 2
+    },
+    {
+      "event_id": "kaiwu.hot.rail_xinle_1998",
+      "main_domain": "criminal_case",
+      "facets": [
+        "criminal_case",
+        "transport_security"
+      ],
+      "source_sections": [
+        "六A"
+      ],
+      "same_event_multi_casts": 1
+    },
+    {
+      "event_id": "kaiwu.hot.rail_xingtai_1999",
+      "main_domain": "criminal_case",
+      "facets": [
+        "criminal_case",
+        "transport_security"
+      ],
+      "source_sections": [
+        "六B"
+      ],
+      "same_event_multi_casts": 1
+    },
+    {
+      "event_id": "kaiwu.hot.world_outlook_2000",
+      "main_domain": "world_affairs",
+      "facets": [
+        "world_affairs",
+        "weather_historical_source",
+        "business_profit",
+        "military_history_source",
+        "politics_elections"
+      ],
+      "source_sections": [
+        "七"
+      ],
+      "same_event_multi_casts": 0
+    },
+    {
+      "event_id": "kaiwu.hot.taiwan_2000",
+      "main_domain": "politics_elections",
+      "facets": [
+        "politics_elections"
+      ],
+      "source_sections": [
+        "八"
+      ],
+      "same_event_multi_casts": 1
+    },
+    {
+      "event_id": "kaiwu.hot.beijing_2008",
+      "main_domain": "sports_competition",
+      "facets": [
+        "sports_competition",
+        "competitive_bidding"
+      ],
+      "source_sections": [
+        "九",
+        "十三"
+      ],
+      "same_event_multi_casts": 2
+    },
+    {
+      "event_id": "kaiwu.hot.us_election_2000",
+      "main_domain": "politics_elections",
+      "facets": [
+        "politics_elections",
+        "litigation"
+      ],
+      "source_sections": [
+        "十"
+      ],
+      "same_event_multi_casts": 3
+    },
+    {
+      "event_id": "kaiwu.hot.israel_2001",
+      "main_domain": "politics_elections",
+      "facets": [
+        "politics_elections"
+      ],
+      "source_sections": [
+        "十一"
+      ],
+      "same_event_multi_casts": 1
+    },
+    {
+      "event_id": "kaiwu.hot.shijiazhuang_2001",
+      "main_domain": "criminal_case",
+      "facets": [
+        "criminal_case"
+      ],
+      "source_sections": [
+        "十二"
+      ],
+      "same_event_multi_casts": 2
+    }
+  ]
+}

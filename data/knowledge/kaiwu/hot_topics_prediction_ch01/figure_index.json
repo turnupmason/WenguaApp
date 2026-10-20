@@ -1,0 +1,2462 @@
+{
+  "source_sha256": "d85e880bd7e09af25b0db75ae995f0e072b2ff8501a9eb836c2b70748a5fd36d",
+  "cases": [
+    {
+      "case_id": "kaiwu.hot.clinton",
+      "domain_id": "litigation",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 21,
+          "source_end_line": 31,
+          "date": "1998-09-26",
+          "hour": "甲午",
+          "source_hash": "ca7e19a1acbc362dfc3e3df8d5bd2c24d1c9b7f44bd81b77406345c30d27a129",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 21,
+              "start": 21,
+              "end": 23,
+              "name": "巽四宫",
+              "god": "武",
+              "door": "杜戊",
+              "star": "辅戊",
+              "literal": "巽四宫 武\n杜戊\n辅戊",
+              "sha": "c82441c0b719a874eefc8cc618bcf83cbc4601dcbc082088b1d52097c14a3c32"
+            },
+            {
+              "palace": 9,
+              "line": 22,
+              "start": 21,
+              "end": 23,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "景壬",
+              "star": "英壬",
+              "literal": "离九宫 虎\n景壬\n英壬",
+              "sha": "43e05c6102179f7093c262ed0f255e9f433b5da02cb4bd6d691b850e5d861a67"
+            },
+            {
+              "palace": 2,
+              "line": 23,
+              "start": 21,
+              "end": 23,
+              "name": "坤二宫",
+              "god": "合",
+              "door": "乙死庚",
+              "star": "乙芮庚",
+              "literal": "坤二宫 合\n乙死庚\n乙芮庚",
+              "sha": "51ebc21b09190afb7f5f6465ac60fee8a485c11c74d8578b52d0ca37b5d84bf9"
+            },
+            {
+              "palace": 3,
+              "line": 25,
+              "start": 25,
+              "end": 27,
+              "name": "震三宫",
+              "god": "地",
+              "door": "伤己",
+              "star": "冲己",
+              "literal": "震三宫 地\n伤己\n冲己",
+              "sha": "94e78f9ccc7cfd95fc5437c25dcbab6dfb042904ca3b4d182d8a5fc1a1e2fd0d"
+            },
+            {
+              "palace": 5,
+              "line": 26,
+              "start": 25,
+              "end": 27,
+              "name": "中五宫",
+              "god": "",
+              "door": "乙",
+              "star": "",
+              "literal": "中五宫\n乙\n",
+              "sha": "6e2af2660b2bce30e330330f82dc02ebe2dc29f81217c16ce1616c30fff633d1"
+            },
+            {
+              "palace": 7,
+              "line": 27,
+              "start": 25,
+              "end": 27,
+              "name": "兑七宫",
+              "god": "阴",
+              "door": "惊丁",
+              "star": "柱丁",
+              "literal": "兑七宫 阴\n惊丁\n柱丁",
+              "sha": "fa3ac1eba397c97fd002b29f20ab5539681fed658c6133d413a3be835b146bc9"
+            },
+            {
+              "palace": 8,
+              "line": 29,
+              "start": 29,
+              "end": 31,
+              "name": "艮八宫",
+              "god": "天",
+              "door": "生癸",
+              "star": "任癸",
+              "literal": "艮八宫 天\n生癸\n任癸",
+              "sha": "136460802655902df149d96686d3982e096cdda975e0edceadc6a53641845e72"
+            },
+            {
+              "palace": 1,
+              "line": 30,
+              "start": 29,
+              "end": 31,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "休辛",
+              "star": "蓬辛",
+              "literal": "坎一宫 符\n休辛\n蓬辛",
+              "sha": "0e9df0edbb2830a4604fcacbbba48f2ed01fa4260f4f28f5e0913b54fafa9f46"
+            },
+            {
+              "palace": 6,
+              "line": 31,
+              "start": 29,
+              "end": 31,
+              "name": "乾六宫",
+              "god": "蛇",
+              "door": "开丙",
+              "star": "心丙",
+              "literal": "乾六宫 蛇\n开丙\n心丙",
+              "sha": "e9b6e154cb0136fc488d82c55f439ab9de575317ff0102b07da3ab1570dcc505"
+            }
+          ],
+          "source_metadata_line": 19
+        },
+        {
+          "key": "additional_1",
+          "source_line": 57,
+          "source_end_line": 67,
+          "date": "1999-01-09",
+          "hour": "丁酉",
+          "source_hash": "2891335509a2941860ae7f53c9b192b2dcc8635a5d0805e0ac3771f873529e03",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 57,
+              "start": 57,
+              "end": 59,
+              "name": "巽四宫",
+              "god": "合",
+              "door": "生壬",
+              "star": "任戊",
+              "literal": "巽四宫 合\n生壬\n任戊",
+              "sha": "1d873393d7573c57f5661b425ebb6a31d5e6855d5e4e73a402a3e09428103aab"
+            },
+            {
+              "palace": 9,
+              "line": 58,
+              "start": 57,
+              "end": 59,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "伤乙",
+              "star": "冲癸",
+              "literal": "离九宫 虎\n伤乙\n冲癸",
+              "sha": "b475cada38921460d615096db01d2223b1cdedc8aee98e883c9a87f1f3a3dba2"
+            },
+            {
+              "palace": 2,
+              "line": 59,
+              "start": 57,
+              "end": 59,
+              "name": "坤二宫",
+              "god": "武",
+              "door": "杜戊",
+              "star": "辅丙",
+              "literal": "坤二宫 武\n杜戊\n辅丙",
+              "sha": "4147f116d3e4f8c0db6bede8cfa6dd625da4457a88cc0775a1dfa2fe5054a39a"
+            },
+            {
+              "palace": 3,
+              "line": 61,
+              "start": 61,
+              "end": 63,
+              "name": "震三宫",
+              "god": "阴",
+              "door": "休丁",
+              "star": "蓬乙",
+              "literal": "震三宫 阴\n休丁\n蓬乙",
+              "sha": "ab1ee2cbccb5f717d902b3ef7922aeeae6cd615299ecfab8d78b6df37b990632"
+            },
+            {
+              "palace": 5,
+              "line": 62,
+              "start": 61,
+              "end": 63,
+              "name": "中五宫",
+              "god": "",
+              "door": "己",
+              "star": "",
+              "literal": "中五宫\n己\n",
+              "sha": "157c910907fe1e8ada45af59387cb268a7da9437d6bb0f24f8c6412d09d992e8"
+            },
+            {
+              "palace": 7,
+              "line": 63,
+              "start": 61,
+              "end": 63,
+              "name": "兑七宫",
+              "god": "地",
+              "door": "景癸",
+              "star": "英辛",
+              "literal": "兑七宫 地\n景癸\n英辛",
+              "sha": "4cec01ed11bd5ff8837498dc19b248c026eba639a97d27863e97e777bdbef35d"
+            },
+            {
+              "palace": 8,
+              "line": 65,
+              "start": 65,
+              "end": 67,
+              "name": "艮八宫",
+              "god": "蛇",
+              "door": "开庚",
+              "star": "心壬",
+              "literal": "艮八宫 蛇\n开庚\n心壬",
+              "sha": "0f2b775ba29dd74898f37b80ac6bf438721a60e26e4d6b8af1d02a22c2a5f14c"
+            },
+            {
+              "palace": 1,
+              "line": 66,
+              "start": 65,
+              "end": 67,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "惊辛",
+              "star": "柱丁",
+              "literal": "坎一宫 符\n惊辛\n柱丁",
+              "sha": "f922cc610f7824de40910ae61362154e000c6bdac88d9cb78e28f34e2a6d2141"
+            },
+            {
+              "palace": 6,
+              "line": 67,
+              "start": 65,
+              "end": 67,
+              "name": "乾六宫",
+              "god": "天",
+              "door": "己死丙",
+              "star": "芮庚",
+              "literal": "乾六宫 天\n己死丙\n芮庚",
+              "sha": "f57e010b98ee52984d15b3f9c2957039816708b9b719b21ad65dacd2cfde084c"
+            }
+          ],
+          "source_metadata_line": 55
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.nato",
+      "domain_id": "military_history_source",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 109,
+          "source_end_line": 119,
+          "date": "1999-03-24",
+          "hour": "己卯",
+          "source_hash": "06aa0f873ca048b851b6bbec17de41b3f28b57f838e1562b5bee9532b1faf333",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 109,
+              "start": 109,
+              "end": 111,
+              "name": "巽四宫",
+              "god": "武",
+              "door": "开丙",
+              "star": "辅丙",
+              "literal": "巽四宫 武\n开丙\n辅丙",
+              "sha": "4b181a6b094758c3777e77bf2f9361d311fd028746ff3aa7924e96e8a995ebb9"
+            },
+            {
+              "palace": 9,
+              "line": 110,
+              "start": 109,
+              "end": 111,
+              "name": "离九宫",
+              "god": "地",
+              "door": "休辛",
+              "star": "英辛",
+              "literal": "离九宫 地\n休辛\n英辛",
+              "sha": "bc23593d562886527aaa4ea49d6f6d0f154f9eca72b45429045dde9d95e8a101"
+            },
+            {
+              "palace": 2,
+              "line": 111,
+              "start": 109,
+              "end": 111,
+              "name": "坤二宫",
+              "god": "天",
+              "door": "乙生癸",
+              "star": "乙芮癸",
+              "literal": "坤二宫 天\n乙生癸\n乙芮癸",
+              "sha": "d503720ce55da1c81652037b706430067f8e77977b57e52291ac89094374904a"
+            },
+            {
+              "palace": 3,
+              "line": 113,
+              "start": 113,
+              "end": 115,
+              "name": "震三宫",
+              "god": "虎",
+              "door": "惊丁",
+              "star": "冲丁",
+              "literal": "震三宫 虎\n惊丁\n冲丁",
+              "sha": "54853ac455367815cbeae18ac8e2c1f6cf1b0e9405254378b2cd2f7beb349692"
+            },
+            {
+              "palace": 5,
+              "line": 114,
+              "start": 113,
+              "end": 115,
+              "name": "中五宫",
+              "god": "",
+              "door": "乙",
+              "star": "",
+              "literal": "中五宫\n乙\n",
+              "sha": "6e2af2660b2bce30e330330f82dc02ebe2dc29f81217c16ce1616c30fff633d1"
+            },
+            {
+              "palace": 7,
+              "line": 115,
+              "start": 113,
+              "end": 115,
+              "name": "兑七宫",
+              "god": "符",
+              "door": "伤己",
+              "star": "柱己",
+              "literal": "兑七宫 符\n伤己\n柱己",
+              "sha": "c8b86448889845889dae028b8c6789623173ea6ce53abbef8a5b8ce99db3ace3"
+            },
+            {
+              "palace": 8,
+              "line": 117,
+              "start": 117,
+              "end": 119,
+              "name": "艮八宫",
+              "god": "合",
+              "door": "死庚",
+              "star": "任庚",
+              "literal": "艮八宫 合\n死庚\n任庚",
+              "sha": "02c490a692bc84631da43930e1a43ef8677498ac833c496f742f254e9b58689c"
+            },
+            {
+              "palace": 1,
+              "line": 118,
+              "start": 117,
+              "end": 119,
+              "name": "坎一宫",
+              "god": "阴",
+              "door": "景壬",
+              "star": "蓬壬",
+              "literal": "坎一宫 阴\n景壬\n蓬壬",
+              "sha": "e3c59a4e51d28ebaa449b6a9f07ef50823e292a9146ea1b8563d6bc07efe54c9"
+            },
+            {
+              "palace": 6,
+              "line": 119,
+              "start": 117,
+              "end": 119,
+              "name": "乾六宫",
+              "god": "蛇",
+              "door": "杜戊",
+              "star": "心戊",
+              "literal": "乾六宫 蛇\n杜戊\n心戊",
+              "sha": "4ce463d177528848e45043ff71128f0f4b9dbb8660438a2069f16f77e9facd29"
+            }
+          ],
+          "source_metadata_line": 107
+        },
+        {
+          "key": "additional_1",
+          "source_line": 143,
+          "source_end_line": 153,
+          "date": "1999-03-26",
+          "hour": "戊申",
+          "source_hash": "b31b5c0e1592bc2ccd933921a534865f828954efaae994f7ba51b0c47da13828",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 143,
+              "start": 143,
+              "end": 145,
+              "name": "巽四宫",
+              "god": "虎",
+              "door": "惊辛",
+              "star": "英丙",
+              "literal": "巽四宫 虎\n惊辛\n英丙",
+              "sha": "ab625b4253734cdfc8b2015b5d18bbd0066327d95fc9298041765ea6b8c589f4"
+            },
+            {
+              "palace": 9,
+              "line": 144,
+              "start": 143,
+              "end": 145,
+              "name": "离九宫",
+              "god": "武",
+              "door": "乙开癸",
+              "star": "芮辛",
+              "literal": "离九宫 武\n乙开癸\n芮辛",
+              "sha": "dece47d7929daddda706990c0cabbbac02480f3e8eddc77c63f57bf28b21f79a"
+            },
+            {
+              "palace": 2,
+              "line": 145,
+              "start": 143,
+              "end": 145,
+              "name": "坤二宫",
+              "god": "地",
+              "door": "休己",
+              "star": "柱癸",
+              "literal": "坤二宫 地\n休己\n柱癸",
+              "sha": "18a8d66d4dc00891d43c3be67dc1b04e3dd718a4337d5749323033a49688eb38"
+            },
+            {
+              "palace": 3,
+              "line": 147,
+              "start": 147,
+              "end": 149,
+              "name": "震三宫",
+              "god": "合",
+              "door": "死丙",
+              "star": "辅丁",
+              "literal": "震三宫 合\n死丙\n辅丁",
+              "sha": "e5c463f1066f5ab8868d8bee35a1644911e566ab62b284023c4ec17e3cd5b179"
+            },
+            {
+              "palace": 5,
+              "line": 148,
+              "start": 147,
+              "end": 149,
+              "name": "中五宫",
+              "god": "",
+              "door": "乙",
+              "star": "",
+              "literal": "中五宫\n乙\n",
+              "sha": "6e2af2660b2bce30e330330f82dc02ebe2dc29f81217c16ce1616c30fff633d1"
+            },
+            {
+              "palace": 7,
+              "line": 149,
+              "start": 147,
+              "end": 149,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "生戊",
+              "star": "心己",
+              "literal": "兑七宫 天\n生戊\n心己",
+              "sha": "8fa8e7d50de7b3ea9ec82b7f4b78faef84634a27599956a8f68302fb8a6fe1d5"
+            },
+            {
+              "palace": 8,
+              "line": 151,
+              "start": 151,
+              "end": 153,
+              "name": "艮八宫",
+              "god": "阴",
+              "door": "景丁",
+              "star": "冲庚",
+              "literal": "艮八宫 阴\n景丁\n冲庚",
+              "sha": "45fd669272463d2a6769909d4e5a0ba868fc042edd3012c301059811e3bbe42c"
+            },
+            {
+              "palace": 1,
+              "line": 152,
+              "start": 151,
+              "end": 153,
+              "name": "坎一宫",
+              "god": "蛇",
+              "door": "杜庚",
+              "star": "任壬",
+              "literal": "坎一宫 蛇\n杜庚\n任壬",
+              "sha": "fd19449d9bcca08742be1cd94392ba947b2fc50c6df93092feaa71d6d9ec4956"
+            },
+            {
+              "palace": 6,
+              "line": 153,
+              "start": 151,
+              "end": 153,
+              "name": "乾六宫",
+              "god": "符",
+              "door": "伤壬",
+              "star": "蓬戊",
+              "literal": "乾六宫 符\n伤壬\n蓬戊",
+              "sha": "497d6a8e23e86a96306b58df28b313c2782b63fb5b92b05db7244d337d7acc3e"
+            }
+          ],
+          "source_metadata_line": 141
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.river_jump",
+      "domain_id": "sports_competition",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 187,
+          "source_end_line": 197,
+          "date": "1999-06-20",
+          "hour": "丁巳",
+          "source_hash": "ccdbeacec4a29e91356bd106b0ab45d67833fd303a7c56488fe482828a2a6994",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 187,
+              "start": 187,
+              "end": 189,
+              "name": "巽四宫",
+              "god": "天",
+              "door": "开丙",
+              "star": "蓬己",
+              "literal": "巽四宫 天\n开丙\n蓬己",
+              "sha": "1fda01c36bc68e3b05d940eb212df31c181a50d498e9ce2c1b15db81a843531b"
+            },
+            {
+              "palace": 9,
+              "line": 188,
+              "start": 187,
+              "end": 189,
+              "name": "离九宫",
+              "god": "符",
+              "door": "休癸",
+              "star": "任丁",
+              "literal": "离九宫 符\n休癸\n任丁",
+              "sha": "cc796d6eca2a4485c2cf8b8ed1bdf65e5c0b425a18aaa3dd0fec031304a26e6e"
+            },
+            {
+              "palace": 2,
+              "line": 189,
+              "start": 187,
+              "end": 189,
+              "name": "坤二宫",
+              "god": "蛇",
+              "door": "生戊",
+              "star": "冲乙",
+              "literal": "坤二宫 蛇\n生戊\n冲乙",
+              "sha": "d1d129f5437d7a3206156835b1ae5ad0fe4fde922675395c933c63ef67717f14"
+            },
+            {
+              "palace": 3,
+              "line": 191,
+              "start": 191,
+              "end": 193,
+              "name": "震三宫",
+              "god": "地",
+              "door": "惊辛",
+              "star": "心戊",
+              "literal": "震三宫 地\n惊辛\n心戊",
+              "sha": "1b499fa640c4ad2bce923e2eaed427ce70c2d8b3f327922d672baf5b12f1ee5a"
+            },
+            {
+              "palace": 5,
+              "line": 192,
+              "start": 191,
+              "end": 193,
+              "name": "中五宫",
+              "god": "",
+              "door": "庚",
+              "star": "",
+              "literal": "中五宫\n庚\n",
+              "sha": "6e1f8ae6cf9a79f8712b281d9eb4695c126cc4aa83f1df9ba59db811e87d7363"
+            },
+            {
+              "palace": 7,
+              "line": 193,
+              "start": 191,
+              "end": 193,
+              "name": "兑七宫",
+              "god": "阴",
+              "door": "伤己",
+              "star": "辅壬",
+              "literal": "兑七宫 阴\n伤己\n辅壬",
+              "sha": "c839a45646fa6b2570241c35fb1dfdfcf41f06c6791ab41f2595028f2758467c"
+            },
+            {
+              "palace": 8,
+              "line": 195,
+              "start": 195,
+              "end": 197,
+              "name": "艮八宫",
+              "god": "武",
+              "door": "死壬",
+              "star": "柱癸",
+              "literal": "艮八宫 武\n死壬\n柱癸",
+              "sha": "acee5dea5e07ed487877a0e2fd469901eeb6dd377de1c395d004b806d56aae7c"
+            },
+            {
+              "palace": 1,
+              "line": 196,
+              "start": 195,
+              "end": 197,
+              "name": "坎一宫",
+              "god": "虎",
+              "door": "庚景乙",
+              "star": "芮丙",
+              "literal": "坎一宫 虎\n庚景乙\n芮丙",
+              "sha": "6e6a6f5266a6b07bf63b2f50d0565f447fb81053c70f98f0eeed48d65f0eabd2"
+            },
+            {
+              "palace": 6,
+              "line": 197,
+              "start": 195,
+              "end": 197,
+              "name": "乾六宫",
+              "god": "合",
+              "door": "杜丁",
+              "star": "英辛",
+              "literal": "乾六宫 合\n杜丁\n英辛",
+              "sha": "35afbe858ea95fc5dc11044a7cd7afa84be8bdcee09f4c8456d68e92557aa82c"
+            }
+          ],
+          "source_metadata_line": 185
+        },
+        {
+          "key": "additional_1",
+          "source_line": 227,
+          "source_end_line": 237,
+          "date": "1999-06-20",
+          "hour": "戊午",
+          "source_hash": "418942d403e92d833fc19fdf913194a80912ed3c5e6f8da0b6a076d90dc79666",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 227,
+              "start": 227,
+              "end": 229,
+              "name": "巽四宫",
+              "god": "蛇",
+              "door": "伤戊",
+              "star": "冲己",
+              "literal": "巽四宫 蛇\n伤戊\n冲己",
+              "sha": "28b32b60dc331152dfc44d49d4cd7430e7040c2b4211df2122b3eca3d96b7f1d"
+            },
+            {
+              "palace": 9,
+              "line": 228,
+              "start": 227,
+              "end": 229,
+              "name": "离九宫",
+              "god": "阴",
+              "door": "杜己",
+              "star": "辅丁",
+              "literal": "离九宫 阴\n杜己\n辅丁",
+              "sha": "b9d3b23cba1b2b8742a34221ab8205a349db0c1e36fad8fe5dc65c634559428a"
+            },
+            {
+              "palace": 2,
+              "line": 229,
+              "start": 227,
+              "end": 229,
+              "name": "坤二宫",
+              "god": "合",
+              "door": "景丁",
+              "star": "英乙",
+              "literal": "坤二宫 合\n景丁\n英乙",
+              "sha": "5803dae15f4571311a96371825a206863320c03cea80dd485fc984f6c6c31c4f"
+            },
+            {
+              "palace": 3,
+              "line": 231,
+              "start": 231,
+              "end": 233,
+              "name": "震三宫",
+              "god": "符",
+              "door": "生癸",
+              "star": "任戊",
+              "literal": "震三宫 符\n生癸\n任戊",
+              "sha": "e37b07bd74a64b4443b35748cf2b9fcb20725693505f4185d0772e487482b024"
+            },
+            {
+              "palace": 5,
+              "line": 232,
+              "start": 231,
+              "end": 233,
+              "name": "中五宫",
+              "god": "",
+              "door": "庚",
+              "star": "",
+              "literal": "中五宫\n庚\n",
+              "sha": "6e1f8ae6cf9a79f8712b281d9eb4695c126cc4aa83f1df9ba59db811e87d7363"
+            },
+            {
+              "palace": 7,
+              "line": 233,
+              "start": 231,
+              "end": 233,
+              "name": "兑七宫",
+              "god": "虎",
+              "door": "庚死乙",
+              "star": "芮壬",
+              "literal": "兑七宫 虎\n庚死乙\n芮壬",
+              "sha": "e36c679a3bce37d16f2b965ba0e9fba11b8605ab93b0ec04be2f572c39d23ea7"
+            },
+            {
+              "palace": 8,
+              "line": 235,
+              "start": 235,
+              "end": 237,
+              "name": "艮八宫",
+              "god": "天",
+              "door": "休丙",
+              "star": "蓬癸",
+              "literal": "艮八宫 天\n休丙\n蓬癸",
+              "sha": "088b0f3f046800f505653d447fcc224e3c4deec6fbd82c97fc8a848ce57b85af"
+            },
+            {
+              "palace": 1,
+              "line": 236,
+              "start": 235,
+              "end": 237,
+              "name": "坎一宫",
+              "god": "地",
+              "door": "开辛",
+              "star": "心丙",
+              "literal": "坎一宫 地\n开辛\n心丙",
+              "sha": "047ad3e0f21469d9439f3c68b4b636305c640d4943e55629bac20059e36d75e7"
+            },
+            {
+              "palace": 6,
+              "line": 237,
+              "start": 235,
+              "end": 237,
+              "name": "乾六宫",
+              "god": "武",
+              "door": "惊壬",
+              "star": "柱辛",
+              "literal": "乾六宫 武\n惊壬\n柱辛",
+              "sha": "351099676c075801e73a64bf9e9aa78eeb5af3badb2455c8b141efeb74bf1d28"
+            }
+          ],
+          "source_metadata_line": 225
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.apocalypse",
+      "domain_id": "weather_historical_source",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 281,
+          "source_end_line": 291,
+          "date": "1999-07-25",
+          "hour": "庚申",
+          "source_hash": "fe9f60c25cf81f8772f129b23bd8135214f4abdd16dfdc3bd442cf6328bd5f72",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 281,
+              "start": 281,
+              "end": 283,
+              "name": "巽四宫",
+              "god": "阴",
+              "door": "开丙",
+              "star": "心戊",
+              "literal": "巽四宫 阴\n开丙\n心戊",
+              "sha": "f103670561d888fb5a9c38ee8df5b07b6cc6e4eb9588ff770d56675f14dd259e"
+            },
+            {
+              "palace": 9,
+              "line": 282,
+              "start": 281,
+              "end": 283,
+              "name": "离九宫",
+              "god": "蛇",
+              "door": "休壬",
+              "star": "蓬辛",
+              "literal": "离九宫 蛇\n休壬\n蓬辛",
+              "sha": "5b4aa3c1665b6fdd7e18daed3862502d5438d4ea50b05e1fc5df1f5a363066b2"
+            },
+            {
+              "palace": 2,
+              "line": 283,
+              "start": 281,
+              "end": 283,
+              "name": "坤二宫",
+              "god": "符",
+              "door": "生癸",
+              "star": "任庚",
+              "literal": "坤二宫 符\n生癸\n任庚",
+              "sha": "a6e5ff7d114320c6ebefd9b16880236e6cb9548fe8ce18d3b45c2d9ad51a9ad5"
+            },
+            {
+              "palace": 3,
+              "line": 285,
+              "start": 285,
+              "end": 287,
+              "name": "震三宫",
+              "god": "合",
+              "door": "惊丁",
+              "star": "柱己",
+              "literal": "震三宫 合\n惊丁\n柱己",
+              "sha": "4cd7a72f1a83220c84652b6263448026134610dda9018ed9d9c4a7db85cba553"
+            },
+            {
+              "palace": 5,
+              "line": 286,
+              "start": 285,
+              "end": 287,
+              "name": "中五宫",
+              "god": "",
+              "door": "乙",
+              "star": "",
+              "literal": "中五宫\n乙\n",
+              "sha": "6e2af2660b2bce30e330330f82dc02ebe2dc29f81217c16ce1616c30fff633d1"
+            },
+            {
+              "palace": 7,
+              "line": 287,
+              "start": 285,
+              "end": 287,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "伤己",
+              "star": "冲丁",
+              "literal": "兑七宫 天\n伤己\n冲丁",
+              "sha": "dba8c1aa76f6138309fe2864312572d8f6694dd05e8d610bb2d1b1d100dd5d38"
+            },
+            {
+              "palace": 8,
+              "line": 289,
+              "start": 289,
+              "end": 291,
+              "name": "艮八宫",
+              "god": "虎",
+              "door": "乙死庚",
+              "star": "芮癸",
+              "literal": "艮八宫 虎\n乙死庚\n芮癸",
+              "sha": "93244b4f18cf558a6743c39b0516b940149e8a995e18cf5791e29d9fed1278a7"
+            },
+            {
+              "palace": 1,
+              "line": 290,
+              "start": 289,
+              "end": 291,
+              "name": "坎一宫",
+              "god": "武",
+              "door": "景壬",
+              "star": "英辛",
+              "literal": "坎一宫 武\n景壬\n英辛",
+              "sha": "fb37219e5cb13a89f8be7fbf54da19fa2f6f052f0ef8a3e701844859127ec4fc"
+            },
+            {
+              "palace": 6,
+              "line": 291,
+              "start": 289,
+              "end": 291,
+              "name": "乾六宫",
+              "god": "地",
+              "door": "杜戊",
+              "star": "辅丙",
+              "literal": "乾六宫 地\n杜戊\n辅丙",
+              "sha": "614461f38a8102ada90d070cf002745bc78e149b5d2e9653d6b6bdc4cb00f49f"
+            }
+          ],
+          "source_metadata_line": 279
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.women_world_cup",
+      "domain_id": "sports_competition",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 323,
+          "source_end_line": 333,
+          "date": "1999-07-10",
+          "hour": "庚申",
+          "source_hash": "af99cc6c2042092c11b38ade16e68e3c794445ff209f2c567d5346565e2d1783",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 323,
+              "start": 323,
+              "end": 325,
+              "name": "巽四宫",
+              "god": "天",
+              "door": "戊死辛",
+              "star": "芮己",
+              "literal": "巽四宫 天\n戊死辛\n芮己",
+              "sha": "fbfc48bcf4cb2e8608c3d440b96e1e8b44d842fd4633eeda02ed69f081d3658c"
+            },
+            {
+              "palace": 9,
+              "line": 324,
+              "start": 323,
+              "end": 325,
+              "name": "离九宫",
+              "god": "地",
+              "door": "惊丙",
+              "star": "柱癸",
+              "literal": "离九宫 地\n惊丙\n柱癸",
+              "sha": "27da6343cde8dacca4161b8cec58f5443978030a66b8ca658484754c10320b44"
+            },
+            {
+              "palace": 2,
+              "line": 325,
+              "start": 323,
+              "end": 325,
+              "name": "坤二宫",
+              "god": "武",
+              "door": "开乙",
+              "star": "心辛",
+              "literal": "坤二宫 武\n开乙\n心辛",
+              "sha": "41cda7428d8928b4802dadcc854c968ee8ef550f03d2467549f4d71c4265e019"
+            },
+            {
+              "palace": 3,
+              "line": 327,
+              "start": 327,
+              "end": 329,
+              "name": "震三宫",
+              "god": "符",
+              "door": "景癸",
+              "star": "英庚",
+              "literal": "震三宫 符\n景癸\n英庚",
+              "sha": "0e1fb655ba51162e2c2d435540c48cc59981e71cafc48fc42b9b7d5b43e516d0"
+            },
+            {
+              "palace": 5,
+              "line": 328,
+              "start": 327,
+              "end": 329,
+              "name": "中五宫",
+              "god": "",
+              "door": "戊",
+              "star": "",
+              "literal": "中五宫\n戊\n",
+              "sha": "3d5f9ed33368e4bb64df84b1954165317dc119ad4c172610279e462725553b0b"
+            },
+            {
+              "palace": 7,
+              "line": 329,
+              "start": 327,
+              "end": 329,
+              "name": "兑七宫",
+              "god": "虎",
+              "door": "休壬",
+              "star": "蓬丙",
+              "literal": "兑七宫 虎\n休壬\n蓬丙",
+              "sha": "4f4675b48306ff2c83dc2d3eb955b725a7ecd0cf6339ceeb340c94378b3dd195"
+            },
+            {
+              "palace": 8,
+              "line": 331,
+              "start": 331,
+              "end": 333,
+              "name": "艮八宫",
+              "god": "蛇",
+              "door": "杜己",
+              "star": "辅丁",
+              "literal": "艮八宫 蛇\n杜己\n辅丁",
+              "sha": "2ac8452870641995552d9ad8774cc98321b5564b6ebcaf74a6dfbf0d20e2ccef"
+            },
+            {
+              "palace": 1,
+              "line": 332,
+              "start": 331,
+              "end": 333,
+              "name": "坎一宫",
+              "god": "阴",
+              "door": "伤庚",
+              "star": "冲壬",
+              "literal": "坎一宫 阴\n伤庚\n冲壬",
+              "sha": "bfdb41da173c20262b28110464b65e164eb0873b6fca2590ba6fd57cf7363334"
+            },
+            {
+              "palace": 6,
+              "line": 333,
+              "start": 331,
+              "end": 333,
+              "name": "乾六宫",
+              "god": "合",
+              "door": "生丁",
+              "star": "任乙",
+              "literal": "乾六宫 合\n生丁\n任乙",
+              "sha": "986e9c5ca66ce5d257ec65d6816462dfbc5c2d9e2ce235f2c9c91ab0a102f8d4"
+            }
+          ],
+          "source_metadata_line": 321
+        },
+        {
+          "key": "additional_1",
+          "source_line": 351,
+          "source_end_line": 361,
+          "date": "1999-07-11",
+          "hour": "丙寅",
+          "source_hash": "081bf2b0eccce31c22a53568c014e3a27c0ad29abb8c862502e7945ec75dd409",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 351,
+              "start": 351,
+              "end": 353,
+              "name": "巽四宫",
+              "god": "武",
+              "door": "死乙",
+              "star": "英壬",
+              "literal": "巽四宫 武\n死乙\n英壬",
+              "sha": "d384bb2c7e34600c5a1ba48dff29d86f14ab492def99cc2847e69db5a1c27e4c"
+            },
+            {
+              "palace": 9,
+              "line": 352,
+              "start": 351,
+              "end": 353,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "辛惊丙",
+              "star": "芮乙",
+              "literal": "离九宫 虎\n辛惊丙\n芮乙",
+              "sha": "fbf51b66664cd5d1e8e1e3bf6ab03d32907f6dbe163102fac60bd8b12a1a2183"
+            },
+            {
+              "palace": 2,
+              "line": 353,
+              "start": 351,
+              "end": 353,
+              "name": "坤二宫",
+              "god": "合",
+              "door": "开乙",
+              "star": "辛柱丁",
+              "literal": "坤二宫 合\n开乙\n辛柱丁",
+              "sha": "a7d122215719314ac914e0a745633bdb815108a333a22a1050f5d0c1fb026016"
+            },
+            {
+              "palace": 3,
+              "line": 355,
+              "start": 355,
+              "end": 357,
+              "name": "震三宫",
+              "god": "地",
+              "door": "景壬",
+              "star": "辅癸",
+              "literal": "震三宫 地\n景壬\n辅癸",
+              "sha": "6320868378220e200af6d9fa3dd2fde942dec0959cab09f730be79cf86439ca0"
+            },
+            {
+              "palace": 5,
+              "line": 356,
+              "start": 355,
+              "end": 357,
+              "name": "中五宫",
+              "god": "",
+              "door": "辛",
+              "star": "",
+              "literal": "中五宫\n辛\n",
+              "sha": "20b40bd9f16ef8a2e13f170663e608530e1fbcbd26258076d732cea38671c93f"
+            },
+            {
+              "palace": 7,
+              "line": 357,
+              "start": 355,
+              "end": 357,
+              "name": "兑七宫",
+              "god": "阴",
+              "door": "休庚",
+              "star": "心己",
+              "literal": "兑七宫 阴\n休庚\n心己",
+              "sha": "4e37b375e9261b250915eedeab9eb0b01fd3eb62926270c46a07a5483ab8e878"
+            },
+            {
+              "palace": 8,
+              "line": 359,
+              "start": 359,
+              "end": 361,
+              "name": "艮八宫",
+              "god": "天",
+              "door": "杜癸",
+              "star": "冲戊",
+              "literal": "艮八宫 天\n杜癸\n冲戊",
+              "sha": "177e7d4e312f97048cb3de3ad8dd6bf2a3f678a1dae07852573118bc3eafe7cd"
+            },
+            {
+              "palace": 1,
+              "line": 360,
+              "start": 359,
+              "end": 361,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "伤戊",
+              "star": "任丙",
+              "literal": "坎一宫 符\n伤戊\n任丙",
+              "sha": "0ded64caffc58952f65ddfb8594fc359f050be53c7c1612986e899fd006c0eaf"
+            },
+            {
+              "palace": 6,
+              "line": 361,
+              "start": 359,
+              "end": 361,
+              "name": "乾六宫",
+              "god": "蛇",
+              "door": "生丙",
+              "star": "蓬庚",
+              "literal": "乾六宫 蛇\n生丙\n蓬庚",
+              "sha": "d00046dbcf65b8a0975aa5888b794ebd62b27c3b9695e95734a4c387ca58c68a"
+            }
+          ],
+          "source_metadata_line": 349
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.rail_xinle_1998",
+      "domain_id": "criminal_case",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 391,
+          "source_end_line": 401,
+          "date": "1998-03-18",
+          "hour": "戊戌",
+          "source_hash": "9f0275ecf03470ab280ed8cf1c926dc2f7dbbe5a7ade7a9e9577c516c00ef523",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 391,
+              "start": 391,
+              "end": 393,
+              "name": "巽四宫",
+              "god": "合",
+              "door": "死丁",
+              "star": "柱辛",
+              "literal": "巽四宫 合\n死丁\n柱辛",
+              "sha": "5f3b59bd891682d4c962a3318400e43dfc764368882159a63ae8c42700bcb6b7"
+            },
+            {
+              "palace": 9,
+              "line": 392,
+              "start": 391,
+              "end": 393,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "惊癸",
+              "star": "心乙",
+              "literal": "离九宫 虎\n惊癸\n心乙",
+              "sha": "0e877f7bc178e7d7ceade058f91ea04008b08f700f0f30e2a308d538e62449eb"
+            },
+            {
+              "palace": 2,
+              "line": 393,
+              "start": 391,
+              "end": 393,
+              "name": "坤二宫",
+              "god": "武",
+              "door": "开戊",
+              "star": "壬蓬己",
+              "literal": "坤二宫 武\n开戊\n壬蓬己",
+              "sha": "1031d89d6cda6486d84e2f4cb55fd6b199cf2c358b018d9d53860e39328a9a4f"
+            },
+            {
+              "palace": 3,
+              "line": 395,
+              "start": 395,
+              "end": 397,
+              "name": "震三宫",
+              "god": "阴",
+              "door": "壬景己",
+              "star": "芮庚",
+              "literal": "震三宫 阴\n壬景己\n芮庚",
+              "sha": "c3c02467cb7044feae09aa61e51f7162e77f3d238503de6bd5d17a58f8d4aea1"
+            },
+            {
+              "palace": 5,
+              "line": 396,
+              "start": 395,
+              "end": 397,
+              "name": "中五宫",
+              "god": "",
+              "door": "壬",
+              "star": "",
+              "literal": "中五宫\n壬\n",
+              "sha": "e3a7ae2f54db77c72cf974f9fade573b9625bf1f7b6dc5b128f2231f939e49e9"
+            },
+            {
+              "palace": 7,
+              "line": 397,
+              "start": 395,
+              "end": 397,
+              "name": "兑七宫",
+              "god": "地",
+              "door": "休丙",
+              "star": "任丁",
+              "literal": "兑七宫 地\n休丙\n任丁",
+              "sha": "6590b366bbe5f7de35a4134ff8e4f1a0ae3ef23126cb2e2d8d4c7a20b5efcd76"
+            },
+            {
+              "palace": 8,
+              "line": 399,
+              "start": 399,
+              "end": 401,
+              "name": "艮八宫",
+              "god": "蛇",
+              "door": "乙杜丙",
+              "star": "英乙",
+              "literal": "艮八宫 蛇\n乙杜丙\n英乙",
+              "sha": "9adf1c079048379dc789a4e8d2b046b98d4f2622e52b42a8687ce6688e108326"
+            },
+            {
+              "palace": 1,
+              "line": 400,
+              "start": 399,
+              "end": 401,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "伤辛",
+              "star": "辅戊",
+              "literal": "坎一宫 符\n伤辛\n辅戊",
+              "sha": "2f49bda064c2fe2a094646dfb3c7c0b79ecfc8c0bb2f63f70ffa05ad2a5b891b"
+            },
+            {
+              "palace": 6,
+              "line": 401,
+              "start": 399,
+              "end": 401,
+              "name": "乾六宫",
+              "god": "天",
+              "door": "生庚",
+              "star": "冲癸",
+              "literal": "乾六宫 天\n生庚\n冲癸",
+              "sha": "45b080fff13a474cc78f52eae5125278887af7ba3d5d69a0aed27038380a7feb"
+            }
+          ],
+          "source_metadata_line": 389
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.rail_xingtai_1999",
+      "domain_id": "criminal_case",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 425,
+          "source_end_line": 435,
+          "date": "1999-01-20",
+          "hour": "庚戌",
+          "source_hash": "8f0c0f1a1c449ba13c085717a6b68e56f641751edd6b6fcc1ea31d359dbf9042",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 425,
+              "start": 425,
+              "end": 427,
+              "name": "巽四宫",
+              "god": "合",
+              "door": "丁生辛",
+              "star": "芮癸",
+              "literal": "巽四宫 合\n丁生辛\n芮癸",
+              "sha": "f38f7acccb9abc595a83d18701080d715e826e718511430b3f3aff8c5d51b88e"
+            },
+            {
+              "palace": 9,
+              "line": 426,
+              "start": 425,
+              "end": 427,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "伤乙",
+              "star": "柱己",
+              "literal": "离九宫 虎\n伤乙\n柱己",
+              "sha": "ea62e886c4c3d95645f411021cf35c3b7066e31719102a2985b5f98c67181920"
+            },
+            {
+              "palace": 2,
+              "line": 427,
+              "start": 425,
+              "end": 427,
+              "name": "坤二宫",
+              "god": "武",
+              "door": "杜丙",
+              "star": "心辛",
+              "literal": "坤二宫 武\n杜丙\n心辛",
+              "sha": "9ed50ec962d4638a64eb472e1cd8b4e4e1e0ec7a8a433cc6dc478a98271f8abd"
+            },
+            {
+              "palace": 3,
+              "line": 429,
+              "start": 429,
+              "end": 431,
+              "name": "震三宫",
+              "god": "阴",
+              "door": "休己",
+              "star": "英壬",
+              "literal": "震三宫 阴\n休己\n英壬",
+              "sha": "9c953fbe80fef3edab4920b908a0b4c67876dc4d1ead87668f414bf314aafa6e"
+            },
+            {
+              "palace": 5,
+              "line": 430,
+              "start": 429,
+              "end": 431,
+              "name": "中五宫",
+              "god": "",
+              "door": "丁",
+              "star": "",
+              "literal": "中五宫\n丁\n",
+              "sha": "500ab6007c2ec5feae4d172ac064c4af6b9b887486d1568d1d39209b6241d8ac"
+            },
+            {
+              "palace": 7,
+              "line": 431,
+              "start": 429,
+              "end": 431,
+              "name": "兑七宫",
+              "god": "地",
+              "door": "景庚",
+              "star": "蓬乙",
+              "literal": "兑七宫 地\n景庚\n蓬乙",
+              "sha": "a7013a4ea47c0a60eddab3e35c33882327814501454266af89b0a26b8ffc47bc"
+            },
+            {
+              "palace": 8,
+              "line": 433,
+              "start": 433,
+              "end": 435,
+              "name": "艮八宫",
+              "god": "蛇",
+              "door": "开癸",
+              "star": "辅戊",
+              "literal": "艮八宫 蛇\n开癸\n辅戊",
+              "sha": "619902b920cca42e9128afeac4e1f5632607acd963590992f8dc16ca4bb8f287"
+            },
+            {
+              "palace": 1,
+              "line": 434,
+              "start": 433,
+              "end": 435,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "惊壬",
+              "star": "冲庚",
+              "literal": "坎一宫 符\n惊壬\n冲庚",
+              "sha": "798570903d9acc8fb813fe8d9b652b3f1365de7142c60d464c7834abe3cc7110"
+            },
+            {
+              "palace": 6,
+              "line": 435,
+              "start": 433,
+              "end": 435,
+              "name": "乾六宫",
+              "god": "天",
+              "door": "死戊",
+              "star": "任丙",
+              "literal": "乾六宫 天\n死戊\n任丙",
+              "sha": "190a3ce2a2c3100100e361875ca3cd6518ab7e4095bd63c78f9119b74e1cb794"
+            }
+          ],
+          "source_metadata_line": 423
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.world_outlook_2000",
+      "domain_id": "world_affairs",
+      "figures": []
+    },
+    {
+      "case_id": "kaiwu.hot.taiwan_2000",
+      "domain_id": "politics_elections",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 511,
+          "source_end_line": 521,
+          "date": "2000-02-13",
+          "hour": "己亥",
+          "source_hash": "1109f7617ec04c1b049a9872a20dfb4b356a1ad6d5b799ff7f41d818f956d653",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 511,
+              "start": 511,
+              "end": 513,
+              "name": "巽四宫",
+              "god": "虎",
+              "door": "戊生丁",
+              "star": "芮乙",
+              "literal": "巽四宫 虎\n戊生丁\n芮乙",
+              "sha": "43d07ad1b2925d5c33dbf0f0b73cd65c36b1699e5ab434b35b6f297eab35f484"
+            },
+            {
+              "palace": 9,
+              "line": 512,
+              "start": 511,
+              "end": 513,
+              "name": "离九宫",
+              "god": "武",
+              "door": "伤庚",
+              "star": "柱壬",
+              "literal": "离九宫 武\n伤庚\n柱壬",
+              "sha": "1c54916f20d88ae2f92c65d3186446a66e9ad41fa11a31fedf8161ff6db8d22f"
+            },
+            {
+              "palace": 2,
+              "line": 513,
+              "start": 511,
+              "end": 513,
+              "name": "坤二宫",
+              "god": "地",
+              "door": "杜己",
+              "star": "心丁",
+              "literal": "坤二宫 地\n杜己\n心丁",
+              "sha": "4c6a0185348cf7bbcc925716a06bea26179526218509d4a05efc9c04c20e18ef"
+            },
+            {
+              "palace": 3,
+              "line": 515,
+              "start": 515,
+              "end": 517,
+              "name": "震三宫",
+              "god": "合",
+              "door": "休壬",
+              "star": "英丙",
+              "literal": "震三宫 合\n休壬\n英丙",
+              "sha": "a7cc45ae28c1615fe47ba647da2013c7060661850d34ad61550e7e0fb4c6442f"
+            },
+            {
+              "palace": 5,
+              "line": 516,
+              "start": 515,
+              "end": 517,
+              "name": "中五宫",
+              "god": "",
+              "door": "戊",
+              "star": "",
+              "literal": "中五宫\n戊\n",
+              "sha": "3d5f9ed33368e4bb64df84b1954165317dc119ad4c172610279e462725553b0b"
+            },
+            {
+              "palace": 7,
+              "line": 517,
+              "start": 515,
+              "end": 517,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "景癸",
+              "star": "蓬庚",
+              "literal": "兑七宫 天\n景癸\n蓬庚",
+              "sha": "56a0be4e14de2861a05e390a991ef3d7e26d348f911c26dcf815d73176f9b449"
+            },
+            {
+              "palace": 8,
+              "line": 519,
+              "start": 519,
+              "end": 521,
+              "name": "艮八宫",
+              "god": "阴",
+              "door": "开乙",
+              "star": "辅辛",
+              "literal": "艮八宫 阴\n开乙\n辅辛",
+              "sha": "41044e3db58f08612c1333092ad20fa2b928655dbbc0439aac1b46b5f24f004d"
+            },
+            {
+              "palace": 1,
+              "line": 520,
+              "start": 519,
+              "end": 521,
+              "name": "坎一宫",
+              "god": "蛇",
+              "door": "惊丙",
+              "star": "冲癸",
+              "literal": "坎一宫 蛇\n惊丙\n冲癸",
+              "sha": "df9daa10a77d959091769aad045ba88efa7f94705b93e72679128c428c279d45"
+            },
+            {
+              "palace": 6,
+              "line": 521,
+              "start": 519,
+              "end": 521,
+              "name": "乾六宫",
+              "god": "符",
+              "door": "死辛",
+              "star": "任己",
+              "literal": "乾六宫 符\n死辛\n任己",
+              "sha": "3e381b869a4beb85b88e1117ab74b1c19272f6e43a55b380f17bc88b51067caf"
+            }
+          ],
+          "source_metadata_line": 509
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.beijing_2008",
+      "domain_id": "sports_competition",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 565,
+          "source_end_line": 575,
+          "date": "2000-05-09",
+          "hour": "庚戌",
+          "source_hash": "56260fae432749a0bd9d4e939a17d8c367c34dd3d43bfb26b853f60e12b80147",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 565,
+              "start": 565,
+              "end": 567,
+              "name": "巽四宫",
+              "god": "虎",
+              "door": "己开丙",
+              "star": "芮戊",
+              "literal": "巽四宫 虎\n己开丙\n芮戊",
+              "sha": "590ac4f24aa22c9166a4dad21d48840b0c8f20d690223f9f4c749550ba99988d"
+            },
+            {
+              "palace": 9,
+              "line": 566,
+              "start": 565,
+              "end": 567,
+              "name": "离九宫",
+              "god": "武",
+              "door": "休辛",
+              "star": "柱癸",
+              "literal": "离九宫 武\n休辛\n柱癸",
+              "sha": "45e6b27febf9bddc0fbb3a073908ca4cbab22beacf4d53cf927993bfb614770e"
+            },
+            {
+              "palace": 2,
+              "line": 567,
+              "start": 565,
+              "end": 567,
+              "name": "坤二宫",
+              "god": "地",
+              "door": "生庚",
+              "star": "心丙",
+              "literal": "坤二宫 地\n生庚\n心丙",
+              "sha": "50f0d4078959a056a840d07ca1422007dc91764443cb5cbb5ac10d954b623e20"
+            },
+            {
+              "palace": 3,
+              "line": 569,
+              "start": 569,
+              "end": 571,
+              "name": "震三宫",
+              "god": "合",
+              "door": "惊癸",
+              "star": "英乙",
+              "literal": "震三宫 合\n惊癸\n英乙",
+              "sha": "64c56e13b28e6f1616b5d7021f6baf1aec30f437d7792c00353433bd253ac6bd"
+            },
+            {
+              "palace": 5,
+              "line": 570,
+              "start": 569,
+              "end": 571,
+              "name": "中五宫",
+              "god": "",
+              "door": "己",
+              "star": "",
+              "literal": "中五宫\n己\n",
+              "sha": "157c910907fe1e8ada45af59387cb268a7da9437d6bb0f24f8c6412d09d992e8"
+            },
+            {
+              "palace": 7,
+              "line": 571,
+              "start": 569,
+              "end": 571,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "伤丁",
+              "star": "蓬辛",
+              "literal": "兑七宫 天\n伤丁\n蓬辛",
+              "sha": "5d0eb70e851031b0b23019e1cab5009edd636cb193beee1c6f7d0c7bc76861dc"
+            },
+            {
+              "palace": 8,
+              "line": 573,
+              "start": 573,
+              "end": 575,
+              "name": "艮八宫",
+              "god": "阴",
+              "door": "死戊",
+              "star": "辅壬",
+              "literal": "艮八宫 阴\n死戊\n辅壬",
+              "sha": "ba4d1782a12be060659fc8dfe7b1edb3ce5cfa219811220010fa1e53ebd65a12"
+            },
+            {
+              "palace": 1,
+              "line": 574,
+              "start": 573,
+              "end": 575,
+              "name": "坎一宫",
+              "god": "蛇",
+              "door": "景乙",
+              "star": "冲丁",
+              "literal": "坎一宫 蛇\n景乙\n冲丁",
+              "sha": "50bc55cdc71c2dd20c13754ac3a1512c9e9fb372e1340fe833643f80813dce18"
+            },
+            {
+              "palace": 6,
+              "line": 575,
+              "start": 573,
+              "end": 575,
+              "name": "乾六宫",
+              "god": "符",
+              "door": "杜壬",
+              "star": "任庚",
+              "literal": "乾六宫 符\n杜壬\n任庚",
+              "sha": "91b5ffb5ab807300dacc1e2834dcc16003b25fde4e494dc8a08ab8b6351ab5ab"
+            }
+          ],
+          "source_metadata_line": 563
+        },
+        {
+          "key": "additional_1",
+          "source_line": 865,
+          "source_end_line": 875,
+          "date": "2001-07-13",
+          "hour": "辛亥",
+          "source_hash": "e00891d7de980e253f9a143add3301e9df933066ce48c453ec46c122a50d92bf",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 865,
+              "start": 865,
+              "end": 867,
+              "name": "巽四宫",
+              "god": "阴",
+              "door": "生丙",
+              "star": "柱己",
+              "literal": "巽四宫 阴\n生丙\n柱己",
+              "sha": "f9731bb679beeedfa813ac6ec9137c333bae6871c083cda30dcfdc810c5a55d2"
+            },
+            {
+              "palace": 9,
+              "line": 866,
+              "start": 865,
+              "end": 867,
+              "name": "离九宫",
+              "god": "蛇",
+              "door": "伤乙",
+              "star": "心癸",
+              "literal": "离九宫 蛇\n伤乙\n心癸",
+              "sha": "d0a80b9214aa54c780e85feb0a32d3248045f27ec6ebd9809912616d605268ee"
+            },
+            {
+              "palace": 2,
+              "line": 867,
+              "start": 865,
+              "end": 867,
+              "name": "坤二宫",
+              "god": "符",
+              "door": "杜壬",
+              "star": "蓬辛",
+              "literal": "坤二宫 符\n杜壬\n蓬辛",
+              "sha": "ffc9b73e8af1c9840eda95c570b37ab19d0112f96768ed4cfd575f7a5cd759eb"
+            },
+            {
+              "palace": 3,
+              "line": 869,
+              "start": 869,
+              "end": 871,
+              "name": "震三宫",
+              "god": "合",
+              "door": "戊休辛",
+              "star": "芮庚",
+              "literal": "震三宫 合\n戊休辛\n芮庚",
+              "sha": "5e12cf961599ba49fca9398fc55a5cb74364d4e53a940fb891ff69c518de42a1"
+            },
+            {
+              "palace": 5,
+              "line": 870,
+              "start": 869,
+              "end": 871,
+              "name": "中五宫",
+              "god": "",
+              "door": "戊",
+              "star": "",
+              "literal": "中五宫\n戊\n",
+              "sha": "3d5f9ed33368e4bb64df84b1954165317dc119ad4c172610279e462725553b0b"
+            },
+            {
+              "palace": 7,
+              "line": 871,
+              "start": 869,
+              "end": 871,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "景丁",
+              "star": "任丙",
+              "literal": "兑七宫 天\n景丁\n任丙",
+              "sha": "ce9ae1ee7c35fbecf0c86adbfc3926f76428ecf5c584773c35d8df431aae4883"
+            },
+            {
+              "palace": 8,
+              "line": 873,
+              "start": 873,
+              "end": 875,
+              "name": "艮八宫",
+              "god": "虎",
+              "door": "开癸",
+              "star": "英丁",
+              "literal": "艮八宫 虎\n开癸\n英丁",
+              "sha": "22a0ad1a0b15af06ac37813414740deb4fe8e79cc684b87df16a20f16be1caec"
+            },
+            {
+              "palace": 1,
+              "line": 874,
+              "start": 873,
+              "end": 875,
+              "name": "坎一宫",
+              "god": "武",
+              "door": "惊己",
+              "star": "辅壬",
+              "literal": "坎一宫 武\n惊己\n辅壬",
+              "sha": "7803d75f1aadb3a9a7ca074363374ca8289492a2cfb67c5016422ab283855e75"
+            },
+            {
+              "palace": 6,
+              "line": 875,
+              "start": 873,
+              "end": 875,
+              "name": "乾六宫",
+              "god": "地",
+              "door": "死庚",
+              "star": "冲乙",
+              "literal": "乾六宫 地\n死庚\n冲乙",
+              "sha": "deadd4e92506388c873989387e7c26a9a2c04e7bd9df2341c4bf8ad7d2ebfb13"
+            }
+          ],
+          "source_metadata_line": 863
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.us_election_2000",
+      "domain_id": "politics_elections",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 617,
+          "source_end_line": 627,
+          "date": "2000-10-15",
+          "hour": "己亥",
+          "source_hash": "10361c76d41362fad192554d222687a39805d42ecd8254652ef7c94c403d494e",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 617,
+              "start": 617,
+              "end": 619,
+              "name": "巽四宫",
+              "god": "阴",
+              "door": "景戊",
+              "star": "冲乙",
+              "literal": "巽四宫 阴\n景戊\n冲乙",
+              "sha": "8a88709ff9880b3dad5c4d5021c395183abe1881c411dbf149ed35b51d0bc8b8"
+            },
+            {
+              "palace": 9,
+              "line": 618,
+              "start": 617,
+              "end": 619,
+              "name": "离九宫",
+              "god": "蛇",
+              "door": "死乙",
+              "star": "辅辛",
+              "literal": "离九宫 蛇\n死乙\n辅辛",
+              "sha": "da1f029b47425c8ecd78bd2e0df6cb93f1437b1b7f5b6c99730611f21073deea"
+            },
+            {
+              "palace": 2,
+              "line": 619,
+              "start": 617,
+              "end": 619,
+              "name": "坤二宫",
+              "god": "符",
+              "door": "惊辛",
+              "star": "英己",
+              "literal": "坤二宫 符\n惊辛\n英己",
+              "sha": "22b8650a3c11e1b9eb3de726b6d17e373661cf9b3e4c6f00f69fdeafa7a2c318"
+            },
+            {
+              "palace": 3,
+              "line": 621,
+              "start": 621,
+              "end": 623,
+              "name": "震三宫",
+              "god": "合",
+              "door": "杜壬",
+              "star": "任戊",
+              "literal": "震三宫 合\n杜壬\n任戊",
+              "sha": "30a114e2b068d2e60b1273764babb3c54a9e435d07e6bcef5f9327181735dcf8"
+            },
+            {
+              "palace": 5,
+              "line": 622,
+              "start": 621,
+              "end": 623,
+              "name": "中五宫",
+              "god": "",
+              "door": "丙",
+              "star": "",
+              "literal": "中五宫\n丙\n",
+              "sha": "8881ddda0ae4b1dbb4f0a5f3099e7fb93e6cec442fce52e82b471e324f86e7f0"
+            },
+            {
+              "palace": 7,
+              "line": 623,
+              "start": 621,
+              "end": 623,
+              "name": "兑七宫",
+              "god": "天",
+              "door": "丙开己",
+              "star": "禽芮癸",
+              "literal": "兑七宫 天\n丙开己\n禽芮癸",
+              "sha": "530e91919d5ffc8de6730fccff26121bd68486abf69ab6c14fbce723bc28f35a"
+            },
+            {
+              "palace": 8,
+              "line": 625,
+              "start": 625,
+              "end": 627,
+              "name": "艮八宫",
+              "god": "虎",
+              "door": "伤庚",
+              "star": "蓬壬",
+              "literal": "艮八宫 虎\n伤庚\n蓬壬",
+              "sha": "e62be49f37f22c08de834c357ad61368cf04b6f1bbafd405d43b0dd0fce43bbb"
+            },
+            {
+              "palace": 1,
+              "line": 626,
+              "start": 625,
+              "end": 627,
+              "name": "坎一宫",
+              "god": "武",
+              "door": "生丁",
+              "star": "心庚",
+              "literal": "坎一宫 武\n生丁\n心庚",
+              "sha": "79d435238f1f0aa0099276e387c89a1b4e642df0f3763058b4ec6f4459cdaa45"
+            },
+            {
+              "palace": 6,
+              "line": 627,
+              "start": 625,
+              "end": 627,
+              "name": "乾六宫",
+              "god": "地",
+              "door": "休癸",
+              "star": "柱丁",
+              "literal": "乾六宫 地\n休癸\n柱丁",
+              "sha": "1563cbcea1c607cf0fcfa849ff9bbf9ba48d607953ba62a0b6cbf1be723fa0a6"
+            }
+          ],
+          "source_metadata_line": 615
+        },
+        {
+          "key": "additional_1",
+          "source_line": 657,
+          "source_end_line": 667,
+          "date": "2000-11-10",
+          "hour": "己酉",
+          "source_hash": "87e81d42c5a985d9951eb4a0a2c9a83d9d919e202116491b7de589c5364fd284",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 657,
+              "start": 657,
+              "end": 659,
+              "name": "巽四宫",
+              "god": "地",
+              "door": "景辛",
+              "star": "心癸",
+              "literal": "巽四宫 地\n景辛\n心癸",
+              "sha": "00f7f0ab65f9b7581311f395385217e82c01387859d101918540fa6442d6a54e"
+            },
+            {
+              "palace": 9,
+              "line": 658,
+              "start": 657,
+              "end": 659,
+              "name": "离九宫",
+              "god": "武",
+              "door": "死乙",
+              "star": "蓬戊",
+              "literal": "离九宫 武\n死乙\n蓬戊",
+              "sha": "28eb22f68ab8df8b7654c53c90dea74b223adb6f02784a4b2ed6f2076ee306cf"
+            },
+            {
+              "palace": 2,
+              "line": 659,
+              "start": 657,
+              "end": 659,
+              "name": "坤二宫",
+              "god": "虎",
+              "door": "惊己",
+              "star": "任丙",
+              "literal": "坤二宫 虎\n惊己\n任丙",
+              "sha": "24f81abc504a736e8a0b03ddd3d696c33f3848f18c193d16e1ef7067cc5a3089"
+            },
+            {
+              "palace": 3,
+              "line": 661,
+              "start": 661,
+              "end": 663,
+              "name": "震三宫",
+              "god": "天",
+              "door": "杜庚",
+              "star": "柱丁",
+              "literal": "震三宫 天\n杜庚\n柱丁",
+              "sha": "c604b07eb7b51ea805f9813e87f8b7038273ebcfb0b8817fab7e40bb53ba49ae"
+            },
+            {
+              "palace": 5,
+              "line": 662,
+              "start": 661,
+              "end": 663,
+              "name": "中五宫",
+              "god": "",
+              "door": "壬",
+              "star": "",
+              "literal": "中五宫\n壬\n",
+              "sha": "e3a7ae2f54db77c72cf974f9fade573b9625bf1f7b6dc5b128f2231f939e49e9"
+            },
+            {
+              "palace": 7,
+              "line": 663,
+              "start": 661,
+              "end": 663,
+              "name": "兑七宫",
+              "god": "合",
+              "door": "开丁",
+              "star": "冲庚",
+              "literal": "兑七宫 合\n开丁\n冲庚",
+              "sha": "f88d89b86257152d8569f904855d67c5b2c62bea336f64e9c48c5e7eadceee22"
+            },
+            {
+              "palace": 8,
+              "line": 665,
+              "start": 665,
+              "end": 667,
+              "name": "艮八宫",
+              "god": "符",
+              "door": "丙伤壬",
+              "star": "禽芮己",
+              "literal": "艮八宫 符\n丙伤壬\n禽芮己",
+              "sha": "6176e13334498fa06c7f9c58e945252f0ef354fbf931706b9eca8e9891d8da1f"
+            },
+            {
+              "palace": 1,
+              "line": 666,
+              "start": 665,
+              "end": 667,
+              "name": "坎一宫",
+              "god": "蛇",
+              "door": "生戊",
+              "star": "英乙",
+              "literal": "坎一宫 蛇\n生戊\n英乙",
+              "sha": "ad5d3b2f6173831ab8a626d53b1f29169fe5716121d25a92514dcf1ce99feeb8"
+            },
+            {
+              "palace": 6,
+              "line": 667,
+              "start": 665,
+              "end": 667,
+              "name": "乾六宫",
+              "god": "阴",
+              "door": "休癸",
+              "star": "辅辛",
+              "literal": "乾六宫 阴\n休癸\n辅辛",
+              "sha": "b398b09b9cdf7e2f6468334284385f1ad08021e5c457db348cb4cefec99aa3f1"
+            }
+          ],
+          "source_metadata_line": 655
+        },
+        {
+          "key": "additional_2",
+          "source_line": 705,
+          "source_end_line": 715,
+          "date": "2000-12-09",
+          "hour": "丁酉",
+          "source_hash": "666ce910ce8b9f16996a5b39f8cc639e13084f69047936da12e8ac654c9c94f4",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 705,
+              "start": 705,
+              "end": 707,
+              "name": "巽四宫",
+              "god": "武",
+              "door": "惊戊",
+              "star": "柱辛",
+              "literal": "巽四宫 武\n惊戊\n柱辛",
+              "sha": "29ab7109c3618666cd22232624d0cd4e7f178eeb4713c3dd5fd6626aaf55d8a4"
+            },
+            {
+              "palace": 9,
+              "line": 706,
+              "start": 705,
+              "end": 707,
+              "name": "离九宫",
+              "god": "虎",
+              "door": "开己",
+              "star": "心丙",
+              "literal": "离九宫 虎\n开己\n心丙",
+              "sha": "15fc80a81a8257de811beae365056c05242cfa3414ea944931d16ccf6cf32d29"
+            },
+            {
+              "palace": 2,
+              "line": 707,
+              "start": 705,
+              "end": 707,
+              "name": "坤二宫",
+              "god": "合",
+              "door": "休丁",
+              "star": "蓬癸",
+              "literal": "坤二宫 合\n休丁\n蓬癸",
+              "sha": "8ed933da252881ac719a06e2b943c1a9d38ff7aa90d4000b3beeb4b8530f417c"
+            },
+            {
+              "palace": 3,
+              "line": 709,
+              "start": 709,
+              "end": 711,
+              "name": "震三宫",
+              "god": "地",
+              "door": "庚死癸",
+              "star": "芮壬",
+              "literal": "震三宫 地\n庚死癸\n芮壬",
+              "sha": "5df8002aacfd8a86e835d7c0a7baea7adc3f01a850adb1957aa0f6c0549c62eb"
+            },
+            {
+              "palace": 5,
+              "line": 710,
+              "start": 709,
+              "end": 711,
+              "name": "中五宫",
+              "god": "",
+              "door": "庚",
+              "star": "",
+              "literal": "中五宫\n庚\n",
+              "sha": "6e1f8ae6cf9a79f8712b281d9eb4695c126cc4aa83f1df9ba59db811e87d7363"
+            },
+            {
+              "palace": 7,
+              "line": 711,
+              "start": 709,
+              "end": 711,
+              "name": "兑七宫",
+              "god": "阴",
+              "door": "生乙",
+              "star": "任戊",
+              "literal": "兑七宫 阴\n生乙\n任戊",
+              "sha": "7feb4bd4743d0922e5a605dd727315bbc2d691bae88e2cc8c810ecdb5c957716"
+            },
+            {
+              "palace": 8,
+              "line": 713,
+              "start": 713,
+              "end": 715,
+              "name": "艮八宫",
+              "god": "天",
+              "door": "景丙",
+              "star": "英乙",
+              "literal": "艮八宫 天\n景丙\n英乙",
+              "sha": "4c95daac65850363b863408d03e64901ac737492209e13b4a02d7935f1e4f438"
+            },
+            {
+              "palace": 1,
+              "line": 714,
+              "start": 713,
+              "end": 715,
+              "name": "坎一宫",
+              "god": "符",
+              "door": "杜辛",
+              "star": "辅丁",
+              "literal": "坎一宫 符\n杜辛\n辅丁",
+              "sha": "272344a7644c7606fcf09e1875072930569748d016f4e686261105d81948428d"
+            },
+            {
+              "palace": 6,
+              "line": 715,
+              "start": 713,
+              "end": 715,
+              "name": "乾六宫",
+              "god": "蛇",
+              "door": "伤壬",
+              "star": "冲乙",
+              "literal": "乾六宫 蛇\n伤壬\n冲乙",
+              "sha": "58da85967ea8cf7c54cda5b6d27e32224c70831ae388f9bdac9fc8c499f9a0af"
+            }
+          ],
+          "source_metadata_line": 703
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.israel_2001",
+      "domain_id": "politics_elections",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 749,
+          "source_end_line": 759,
+          "date": "2001-02-06",
+          "hour": "乙酉",
+          "source_hash": "7260312ec294fc3e37588221388999a1f5e388d4ffae7330abb883dcb9fcddec",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 749,
+              "start": 749,
+              "end": 751,
+              "name": "巽四宫",
+              "god": "符",
+              "door": "休庚",
+              "star": "柱乙",
+              "literal": "巽四宫 符\n休庚\n柱乙",
+              "sha": "b6830367d60690c206f1dfb4a4722478da801479edd898a7191a866e66183b76"
+            },
+            {
+              "palace": 9,
+              "line": 750,
+              "start": 749,
+              "end": 751,
+              "name": "离九宫",
+              "god": "蛇",
+              "door": "生己",
+              "star": "心壬",
+              "literal": "离九宫 蛇\n生己\n心壬",
+              "sha": "3eb8cb6aaff2345d3845d11dc3bb2573312442f84f138c3f37bb0cca7cd2ca13"
+            },
+            {
+              "palace": 2,
+              "line": 751,
+              "start": 749,
+              "end": 751,
+              "name": "坤二宫",
+              "god": "阴",
+              "door": "伤癸",
+              "star": "蓬丁",
+              "literal": "坤二宫 阴\n伤癸\n蓬丁",
+              "sha": "56a77e5845552e5914cb59767d3aaed169861625a3f7d6955870c04fd77963a1"
+            },
+            {
+              "palace": 3,
+              "line": 753,
+              "start": 753,
+              "end": 755,
+              "name": "震三宫",
+              "god": "天",
+              "door": "戊开丁",
+              "star": "禽芮丙",
+              "literal": "震三宫 天\n戊开丁\n禽芮丙",
+              "sha": "0916181474f022759836a19f060d78752286667276e2bae8588363c37b6c50b5"
+            },
+            {
+              "palace": 5,
+              "line": 754,
+              "start": 753,
+              "end": 755,
+              "name": "中五宫",
+              "god": "",
+              "door": "戊",
+              "star": "",
+              "literal": "中五宫\n戊\n",
+              "sha": "3d5f9ed33368e4bb64df84b1954165317dc119ad4c172610279e462725553b0b"
+            },
+            {
+              "palace": 7,
+              "line": 755,
+              "start": 753,
+              "end": 755,
+              "name": "兑七宫",
+              "god": "合",
+              "door": "杜辛",
+              "star": "任庚",
+              "literal": "兑七宫 合\n杜辛\n任庚",
+              "sha": "278e82ef3f8c285501fa468865626ee4c8bfd20b879374a1c32dacb8b4ae811d"
+            },
+            {
+              "palace": 8,
+              "line": 757,
+              "start": 757,
+              "end": 759,
+              "name": "艮八宫",
+              "god": "地",
+              "door": "惊壬",
+              "star": "英辛",
+              "literal": "艮八宫 地\n惊壬\n英辛",
+              "sha": "b1c03cfb2e152e678d7f342551ff63d4edc1e12854f22dfeaecb4e81c4a33911"
+            },
+            {
+              "palace": 1,
+              "line": 758,
+              "start": 757,
+              "end": 759,
+              "name": "坎一宫",
+              "god": "武",
+              "door": "死乙",
+              "star": "辅癸",
+              "literal": "坎一宫 武\n死乙\n辅癸",
+              "sha": "415d50c384af327b379c21b924fe8b2ce091ec722cbfbef1aef6acf66081c692"
+            },
+            {
+              "palace": 6,
+              "line": 759,
+              "start": 757,
+              "end": 759,
+              "name": "乾六宫",
+              "god": "虎",
+              "door": "景丙",
+              "star": "冲己",
+              "literal": "乾六宫 虎\n景丙\n冲己",
+              "sha": "31f3b78a86fbd79c8613a93848bf4f14d75a206aa55d84a206bd2d2d7de7d207"
+            }
+          ],
+          "source_metadata_line": 747
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.shijiazhuang_2001",
+      "domain_id": "criminal_case",
+      "figures": [
+        {
+          "key": "primary",
+          "source_line": 787,
+          "source_end_line": 797,
+          "date": "2001-03-16",
+          "hour": "甲寅",
+          "source_hash": "5cb399f0897dced4842a8d2cc1e5a65a1c44cb8f12552e28956afdb630f88b0d",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 787,
+              "start": 787,
+              "end": 789,
+              "name": "巽四宫",
+              "god": "天",
+              "door": "杜戊",
+              "star": "辅戊",
+              "literal": "巽四宫 天\n杜戊\n辅戊",
+              "sha": "9460585fc635d0524e84cd73728502de3e9cc898757c022a6b17764b5bc07367"
+            },
+            {
+              "palace": 9,
+              "line": 788,
+              "start": 787,
+              "end": 789,
+              "name": "离九宫",
+              "god": "符",
+              "door": "景癸",
+              "star": "英癸",
+              "literal": "离九宫 符\n景癸\n英癸",
+              "sha": "6bba4e2d7288a7f5c86e4a2c0d2556c8200c69ba9c60cc63a254b226fca5e64d"
+            },
+            {
+              "palace": 2,
+              "line": 789,
+              "start": 787,
+              "end": 789,
+              "name": "坤二宫",
+              "god": "蛇",
+              "door": "己死丙",
+              "star": "己芮丙",
+              "literal": "坤二宫 蛇\n己死丙\n己芮丙",
+              "sha": "95b950051e027d566d1d5d911f6e18390fe40be7a21623dbcaf6cf8d561b0fd5"
+            },
+            {
+              "palace": 3,
+              "line": 791,
+              "start": 791,
+              "end": 793,
+              "name": "震三宫",
+              "god": "地",
+              "door": "伤乙",
+              "star": "冲乙",
+              "literal": "震三宫 地\n伤乙\n冲乙",
+              "sha": "00e78942d61a12978954a9f6646b3b91b702818998448e96b9274d12dd74a597"
+            },
+            {
+              "palace": 5,
+              "line": 792,
+              "start": 791,
+              "end": 793,
+              "name": "中五宫",
+              "god": "",
+              "door": "己",
+              "star": "",
+              "literal": "中五宫\n己\n",
+              "sha": "157c910907fe1e8ada45af59387cb268a7da9437d6bb0f24f8c6412d09d992e8"
+            },
+            {
+              "palace": 7,
+              "line": 793,
+              "start": 791,
+              "end": 793,
+              "name": "兑七宫",
+              "god": "阴",
+              "door": "惊辛",
+              "star": "柱辛",
+              "literal": "兑七宫 阴\n惊辛\n柱辛",
+              "sha": "a1d176cb94a334ac4da8801b78e9a5d78cacf561b87c09f605198898a08619de"
+            },
+            {
+              "palace": 8,
+              "line": 795,
+              "start": 795,
+              "end": 797,
+              "name": "艮八宫",
+              "god": "武",
+              "door": "生壬",
+              "star": "任壬",
+              "literal": "艮八宫 武\n生壬\n任壬",
+              "sha": "4ab629bdbf2e846ea6c37af5ac5db77a846d394d8483a74d9a69f6f32ca1a1b6"
+            },
+            {
+              "palace": 1,
+              "line": 796,
+              "start": 795,
+              "end": 797,
+              "name": "坎一宫",
+              "god": "虎",
+              "door": "休丁",
+              "star": "蓬丁",
+              "literal": "坎一宫 虎\n休丁\n蓬丁",
+              "sha": "b80c752d543e733251fe6c2fb73ab2b176d3e7c6ab5c556591ee0e79519c0e30"
+            },
+            {
+              "palace": 6,
+              "line": 797,
+              "start": 795,
+              "end": 797,
+              "name": "乾六宫",
+              "god": "合",
+              "door": "开庚",
+              "star": "心庚",
+              "literal": "乾六宫 合\n开庚\n心庚",
+              "sha": "0f08865aedcffe44257bf8a24b0a8de7e5b8ef0ef2a111a516be94f7614c78a3"
+            }
+          ],
+          "source_metadata_line": 785
+        },
+        {
+          "key": "additional_1",
+          "source_line": 801,
+          "source_end_line": 811,
+          "date": "2001-03-16",
+          "hour": "乙卯",
+          "source_hash": "a7e4e277f3e9c1c6970754e310df523a1bf342817aa3825a451431f2dca8ca62",
+          "cells": [
+            {
+              "palace": 4,
+              "line": 801,
+              "start": 801,
+              "end": 803,
+              "name": "巽四宫",
+              "god": "蛇",
+              "door": "己开丙",
+              "star": "芮戊",
+              "literal": "巽四宫 蛇\n己开丙\n芮戊",
+              "sha": "a09ded48709838b19f10c0f818c5c3d04b531ea594458e417a9d812ae35a98ff"
+            },
+            {
+              "palace": 9,
+              "line": 802,
+              "start": 801,
+              "end": 803,
+              "name": "离九宫",
+              "god": "阴",
+              "door": "休辛",
+              "star": "柱癸",
+              "literal": "离九宫 阴\n休辛\n柱癸",
+              "sha": "0e23cd6745de6d1a6b340b0aa6da26c68d458c3f62e32ae916200686ed3aad0b"
+            },
+            {
+              "palace": 2,
+              "line": 803,
+              "start": 801,
+              "end": 803,
+              "name": "坤二宫",
+              "god": "合",
+              "door": "生庚",
+              "star": "己心丙",
+              "literal": "坤二宫 合\n生庚\n己心丙",
+              "sha": "954a2c256a4fd0359996510e899bc1fa82ae88a4fee03ae9f6637f4e4fa6a072"
+            },
+            {
+              "palace": 3,
+              "line": 805,
+              "start": 805,
+              "end": 807,
+              "name": "震三宫",
+              "god": "符",
+              "door": "惊癸",
+              "star": "英乙",
+              "literal": "震三宫 符\n惊癸\n英乙",
+              "sha": "6b7cc850b6f0edaf4221510b5cfef23ffb9e0b1cb89a270866b4f6812f225e87"
+            },
+            {
+              "palace": 5,
+              "line": 806,
+              "start": 805,
+              "end": 807,
+              "name": "中五宫",
+              "god": "",
+              "door": "己",
+              "star": "",
+              "literal": "中五宫\n己\n",
+              "sha": "157c910907fe1e8ada45af59387cb268a7da9437d6bb0f24f8c6412d09d992e8"
+            },
+            {
+              "palace": 7,
+              "line": 807,
+              "start": 805,
+              "end": 807,
+              "name": "兑七宫",
+              "god": "虎",
+              "door": "伤丁",
+              "star": "蓬辛",
+              "literal": "兑七宫 虎\n伤丁\n蓬辛",
+              "sha": "1e1a63c59dea39413de3062afd63b21911e79932fd37b60015aae290b0815d50"
+            },
+            {
+              "palace": 8,
+              "line": 809,
+              "start": 809,
+              "end": 811,
+              "name": "艮八宫",
+              "god": "天",
+              "door": "死戊",
+              "star": "辅壬",
+              "literal": "艮八宫 天\n死戊\n辅壬",
+              "sha": "1fcba69ed8eca8e0e9ac1cdc04c1e88b3907856280269ede5cf65fd71050c0bf"
+            },
+            {
+              "palace": 1,
+              "line": 810,
+              "start": 809,
+              "end": 811,
+              "name": "坎一宫",
+              "god": "地",
+              "door": "景乙",
+              "star": "冲丁",
+              "literal": "坎一宫 地\n景乙\n冲丁",
+              "sha": "90b1f181258da98abc8133361d96a73da06e76200d5a232febbacf0691caf921"
+            },
+            {
+              "palace": 6,
+              "line": 811,
+              "start": 809,
+              "end": 811,
+              "name": "乾六宫",
+              "god": "武",
+              "door": "杜壬",
+              "star": "任庚",
+              "literal": "乾六宫 武\n杜壬\n任庚",
+              "sha": "0709be85474e4dba854eb4f0ce8d73206cf0e0ffdba39a8607222f7430e45eaa"
+            }
+          ],
+          "source_metadata_line": 799
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,938 @@
+{
+  "source_sha256": "d85e880bd7e09af25b0db75ae995f0e072b2ff8501a9eb836c2b70748a5fd36d",
+  "cases": [
+    {
+      "key": "clinton",
+      "n": [
+        "一"
+      ],
+      "title": "克林顿弹劾与是否下台",
+      "domain": "litigation",
+      "facets": [
+        "politics_elections",
+        "litigation"
+      ],
+      "ranges": [
+        [
+          5,
+          100
+        ]
+      ],
+      "q": [
+        7,
+        19
+      ],
+      "charts": [
+        [
+          21,
+          "1998-09-26",
+          "甲午"
+        ],
+        [
+          57,
+          "1999-01-09",
+          "丁酉"
+        ]
+      ],
+      "pred": [
+        43,
+        87
+      ],
+      "feedback": [
+        47,
+        99
+      ],
+      "posthoc": [
+        91,
+        93,
+        95
+      ],
+      "notes": "House impeachment proceedings occurred, but US Senate did not remove him; not identical propositions",
+      "id": "kaiwu.hot.clinton",
+      "steps": [
+        35,
+        37,
+        39,
+        41,
+        71,
+        75,
+        77,
+        79,
+        81,
+        83,
+        85,
+        93,
+        95
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 21,
+          "source_end_line": 31,
+          "date": "1998-09-26",
+          "hour": "甲午",
+          "source_hash": "ca7e19a1acbc362dfc3e3df8d5bd2c24d1c9b7f44bd81b77406345c30d27a129",
+          "source_metadata_line": 19
+        },
+        {
+          "key": "additional_1",
+          "source_line": 57,
+          "source_end_line": 67,
+          "date": "1999-01-09",
+          "hour": "丁酉",
+          "source_hash": "2891335509a2941860ae7f53c9b192b2dcc8635a5d0805e0ac3771f873529e03",
+          "source_metadata_line": 55
+        }
+      ]
+    },
+    {
+      "key": "nato",
+      "n": [
+        "二"
+      ],
+      "title": "1999年北约空袭南联盟持续时间",
+      "domain": "military_history_source",
+      "facets": [
+        "military_history_source",
+        "geopolitics"
+      ],
+      "ranges": [
+        [
+          101,
+          170
+        ]
+      ],
+      "q": [
+        103,
+        107
+      ],
+      "charts": [
+        [
+          109,
+          "1999-03-24",
+          "己卯"
+        ],
+        [
+          143,
+          "1999-03-26",
+          "戊申"
+        ]
+      ],
+      "pred": [
+        137,
+        167
+      ],
+      "feedback": [
+        169
+      ],
+      "posthoc": [
+        121
+      ],
+      "notes": "Zhang expressly edited first correspondent's analysis after original; 79-day account is book reported, not two independent events",
+      "id": "kaiwu.hot.nato",
+      "steps": [
+        123,
+        125,
+        127,
+        129,
+        131,
+        133,
+        135,
+        137,
+        157,
+        159,
+        161,
+        163,
+        165,
+        167
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 109,
+          "source_end_line": 119,
+          "date": "1999-03-24",
+          "hour": "己卯",
+          "source_hash": "06aa0f873ca048b851b6bbec17de41b3f28b57f838e1562b5bee9532b1faf333",
+          "source_metadata_line": 107
+        },
+        {
+          "key": "additional_1",
+          "source_line": 143,
+          "source_end_line": 153,
+          "date": "1999-03-26",
+          "hour": "戊申",
+          "source_hash": "b31b5c0e1592bc2ccd933921a534865f828954efaae994f7ba51b0c47da13828",
+          "source_metadata_line": 141
+        }
+      ]
+    },
+    {
+      "key": "river_jump",
+      "n": [
+        "三"
+      ],
+      "title": "朱朝辉摩托车飞越黄河",
+      "domain": "sports_competition",
+      "facets": [
+        "sports_competition",
+        "dangerous_stunt"
+      ],
+      "ranges": [
+        [
+          171,
+          254
+        ]
+      ],
+      "q": [
+        177,
+        185
+      ],
+      "charts": [
+        [
+          187,
+          "1999-06-20",
+          "丁巳"
+        ],
+        [
+          227,
+          "1999-06-20",
+          "戊午"
+        ]
+      ],
+      "pred": [
+        201,
+        243,
+        245,
+        247
+      ],
+      "feedback": [
+        215,
+        217,
+        251
+      ],
+      "posthoc": [
+        253
+      ],
+      "notes": "TV information about reschedule and bride in lines 215-217 occurs after first prediction but before second cast; do not leak",
+      "id": "kaiwu.hot.river_jump",
+      "steps": [
+        205,
+        207,
+        209,
+        211,
+        243,
+        245,
+        247
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 187,
+          "source_end_line": 197,
+          "date": "1999-06-20",
+          "hour": "丁巳",
+          "source_hash": "ccdbeacec4a29e91356bd106b0ab45d67833fd303a7c56488fe482828a2a6994",
+          "source_metadata_line": 185
+        },
+        {
+          "key": "additional_1",
+          "source_line": 227,
+          "source_end_line": 237,
+          "date": "1999-06-20",
+          "hour": "戊午",
+          "source_hash": "418942d403e92d833fc19fdf913194a80912ed3c5e6f8da0b6a076d90dc79666",
+          "source_metadata_line": 225
+        }
+      ]
+    },
+    {
+      "key": "apocalypse",
+      "n": [
+        "四"
+      ],
+      "title": "1999年8月18日世界末日传言",
+      "domain": "weather_historical_source",
+      "facets": [
+        "weather_historical_source",
+        "world_affairs"
+      ],
+      "ranges": [
+        [
+          255,
+          308
+        ]
+      ],
+      "q": [
+        269,
+        279
+      ],
+      "charts": [
+        [
+          281,
+          "1999-07-25",
+          "庚申"
+        ]
+      ],
+      "pred": [
+        265,
+        275,
+        305
+      ],
+      "feedback": [
+        307
+      ],
+      "posthoc": [
+        295
+      ],
+      "notes": "A book-authored rejection of the false doomsday rumor; no actual apocalypse event or meteorological chart validation implied",
+      "id": "kaiwu.hot.apocalypse",
+      "steps": [
+        297,
+        299,
+        301,
+        303,
+        305
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 281,
+          "source_end_line": 291,
+          "date": "1999-07-25",
+          "hour": "庚申",
+          "source_hash": "fe9f60c25cf81f8772f129b23bd8135214f4abdd16dfdc3bd442cf6328bd5f72",
+          "source_metadata_line": 279
+        }
+      ]
+    },
+    {
+      "key": "women_world_cup",
+      "n": [
+        "五"
+      ],
+      "title": "1999年中国美国女足决赛",
+      "domain": "sports_competition",
+      "facets": [
+        "sports_competition"
+      ],
+      "ranges": [
+        [
+          309,
+          378
+        ]
+      ],
+      "q": [
+        311,
+        321
+      ],
+      "charts": [
+        [
+          323,
+          "1999-07-10",
+          "庚申"
+        ],
+        [
+          351,
+          "1999-07-11",
+          "丙寅"
+        ]
+      ],
+      "pred": [
+        343,
+        345,
+        347,
+        365,
+        367,
+        369
+      ],
+      "feedback": [
+        375
+      ],
+      "posthoc": [
+        371,
+        373,
+        377
+      ],
+      "notes": "Predicted host/guest outcome not unambiguously tied to named country BEFORE score; post-result identification of home USA is hindsight; preserve 0:0 and USA penalty 5:4",
+      "id": "kaiwu.hot.women_world_cup",
+      "steps": [
+        337,
+        339,
+        341,
+        343,
+        345,
+        347,
+        365,
+        367,
+        369
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 323,
+          "source_end_line": 333,
+          "date": "1999-07-10",
+          "hour": "庚申",
+          "source_hash": "af99cc6c2042092c11b38ade16e68e3c794445ff209f2c567d5346565e2d1783",
+          "source_metadata_line": 321
+        },
+        {
+          "key": "additional_1",
+          "source_line": 351,
+          "source_end_line": 361,
+          "date": "1999-07-11",
+          "hour": "丙寅",
+          "source_hash": "081bf2b0eccce31c22a53568c014e3a27c0ad29abb8c862502e7945ec75dd409",
+          "source_metadata_line": 349
+        }
+      ]
+    },
+    {
+      "key": "rail_xinle_1998",
+      "n": [
+        "六A"
+      ],
+      "title": "1998年新乐两次铁路爆炸同一调查",
+      "domain": "criminal_case",
+      "facets": [
+        "criminal_case",
+        "transport_security"
+      ],
+      "ranges": [
+        [
+          379,
+          418
+        ]
+      ],
+      "q": [
+        381,
+        389
+      ],
+      "charts": [
+        [
+          391,
+          "1998-03-18",
+          "戊戌"
+        ]
+      ],
+      "pred": [
+        415
+      ],
+      "feedback": [
+        417
+      ],
+      "posthoc": [
+        455
+      ],
+      "notes": "Two attacks Mar4/14 are one investigation question; '未破' status only as of book writing, not an eternal claim",
+      "id": "kaiwu.hot.rail_xinle_1998",
+      "steps": [
+        405,
+        407,
+        409,
+        411,
+        413,
+        415
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 391,
+          "source_end_line": 401,
+          "date": "1998-03-18",
+          "hour": "戊戌",
+          "source_hash": "9f0275ecf03470ab280ed8cf1c926dc2f7dbbe5a7ade7a9e9577c516c00ef523",
+          "source_metadata_line": 389
+        }
+      ]
+    },
+    {
+      "key": "rail_xingtai_1999",
+      "n": [
+        "六B"
+      ],
+      "title": "1999年邢台铁路爆炸调查",
+      "domain": "criminal_case",
+      "facets": [
+        "criminal_case",
+        "transport_security"
+      ],
+      "ranges": [
+        [
+          419,
+          456
+        ]
+      ],
+      "q": [
+        419,
+        423
+      ],
+      "charts": [
+        [
+          425,
+          "1999-01-20",
+          "庚戌"
+        ]
+      ],
+      "pred": [
+        445
+      ],
+      "feedback": [
+        451
+      ],
+      "posthoc": [
+        455
+      ],
+      "notes": "Separate attack/investigation from March 1998 case, reported suspect arrests with source citation",
+      "id": "kaiwu.hot.rail_xingtai_1999",
+      "steps": [
+        439,
+        441,
+        443,
+        445
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 425,
+          "source_end_line": 435,
+          "date": "1999-01-20",
+          "hour": "庚戌",
+          "source_hash": "8f0c0f1a1c449ba13c085717a6b68e56f641751edd6b6fcc1ea31d359dbf9042",
+          "source_metadata_line": 423
+        }
+      ]
+    },
+    {
+      "key": "world_outlook_2000",
+      "n": [
+        "七"
+      ],
+      "title": "2000年全球气候经济政治多领域年度展望",
+      "domain": "world_affairs",
+      "facets": [
+        "world_affairs",
+        "weather_historical_source",
+        "business_profit",
+        "military_history_source",
+        "politics_elections"
+      ],
+      "ranges": [
+        [
+          457,
+          498
+        ]
+      ],
+      "q": [
+        459,
+        475
+      ],
+      "charts": [],
+      "pred": [
+        477,
+        479,
+        483,
+        487,
+        489
+      ],
+      "feedback": [],
+      "posthoc": [
+        491,
+        493,
+        495
+      ],
+      "notes": "No actual Qimen casting timestamp, printed chart, or postdated outcome evaluation in text; preserve as annual forecast dossier, not fabricate a printed chart",
+      "id": "kaiwu.hot.world_outlook_2000",
+      "steps": [],
+      "casts": []
+    },
+    {
+      "key": "taiwan_2000",
+      "n": [
+        "八"
+      ],
+      "title": "2000年台湾地区领导人选举",
+      "domain": "politics_elections",
+      "facets": [
+        "politics_elections"
+      ],
+      "ranges": [
+        [
+          499,
+          556
+        ]
+      ],
+      "q": [
+        501,
+        509
+      ],
+      "charts": [
+        [
+          511,
+          "2000-02-13",
+          "己亥"
+        ]
+      ],
+      "pred": [
+        533
+      ],
+      "feedback": [
+        541
+      ],
+      "posthoc": [
+        543,
+        545,
+        547,
+        549,
+        551,
+        553,
+        555
+      ],
+      "explicit_error": true,
+      "notes": "Original predicts Song first; actual Chen elected; author literally says 看来我测错了 and only AFTER result corrects supplied birth year 1950 to 1951; retain failure not retroactive success",
+      "id": "kaiwu.hot.taiwan_2000",
+      "steps": [
+        525,
+        529,
+        555
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 511,
+          "source_end_line": 521,
+          "date": "2000-02-13",
+          "hour": "己亥",
+          "source_hash": "1109f7617ec04c1b049a9872a20dfb4b356a1ad6d5b799ff7f41d818f956d653",
+          "source_metadata_line": 509
+        }
+      ]
+    },
+    {
+      "key": "beijing_2008",
+      "n": [
+        "九",
+        "十三"
+      ],
+      "title": "北京申办2008年奥运会：2000初测及2001另测",
+      "domain": "sports_competition",
+      "facets": [
+        "sports_competition",
+        "competitive_bidding"
+      ],
+      "ranges": [
+        [
+          557,
+          604
+        ],
+        [
+          851,
+          913
+        ]
+      ],
+      "q": [
+        559,
+        563
+      ],
+      "charts": [
+        [
+          565,
+          "2000-05-09",
+          "庚戌"
+        ],
+        [
+          865,
+          "2001-07-13",
+          "辛亥"
+        ]
+      ],
+      "pred": [
+        591,
+        603,
+        855,
+        891,
+        901
+      ],
+      "feedback": [
+        857
+      ],
+      "posthoc": [
+        905,
+        907,
+        909,
+        911,
+        913
+      ],
+      "notes": "Same 2008 Olympic bid, two calendar-different published source forecasts; 2000 forecast explicitly qualified/ambiguous and 2001 forecast clear; 'six yao' of others is NOT a new Qimen cast",
+      "id": "kaiwu.hot.beijing_2008",
+      "steps": [
+        583,
+        585,
+        587,
+        589,
+        597,
+        599,
+        601,
+        883,
+        885,
+        887,
+        889,
+        897,
+        899
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 565,
+          "source_end_line": 575,
+          "date": "2000-05-09",
+          "hour": "庚戌",
+          "source_hash": "56260fae432749a0bd9d4e939a17d8c367c34dd3d43bfb26b853f60e12b80147",
+          "source_metadata_line": 563
+        },
+        {
+          "key": "additional_1",
+          "source_line": 865,
+          "source_end_line": 875,
+          "date": "2001-07-13",
+          "hour": "辛亥",
+          "source_hash": "e00891d7de980e253f9a143add3301e9df933066ce48c453ec46c122a50d92bf",
+          "source_metadata_line": 863
+        }
+      ]
+    },
+    {
+      "key": "us_election_2000",
+      "n": [
+        "十"
+      ],
+      "title": "2000年美国总统布什戈尔选举",
+      "domain": "politics_elections",
+      "facets": [
+        "politics_elections",
+        "litigation"
+      ],
+      "ranges": [
+        [
+          605,
+          740
+        ]
+      ],
+      "q": [
+        611,
+        615
+      ],
+      "charts": [
+        [
+          617,
+          "2000-10-15",
+          "己亥"
+        ],
+        [
+          657,
+          "2000-11-10",
+          "己酉"
+        ],
+        [
+          705,
+          "2000-12-09",
+          "丁酉"
+        ]
+      ],
+      "pred": [
+        637,
+        683,
+        727
+      ],
+      "feedback": [
+        729,
+        731,
+        733,
+        735
+      ],
+      "posthoc": [
+        737,
+        739
+      ],
+      "notes": "Three forecasts of same election, each with newly available Florida recount disclosures; distinct cast ≠ independent event/sample",
+      "id": "kaiwu.hot.us_election_2000",
+      "steps": [
+        631,
+        633,
+        635,
+        671,
+        673,
+        677,
+        681,
+        719,
+        723
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 617,
+          "source_end_line": 627,
+          "date": "2000-10-15",
+          "hour": "己亥",
+          "source_hash": "10361c76d41362fad192554d222687a39805d42ecd8254652ef7c94c403d494e",
+          "source_metadata_line": 615
+        },
+        {
+          "key": "additional_1",
+          "source_line": 657,
+          "source_end_line": 667,
+          "date": "2000-11-10",
+          "hour": "己酉",
+          "source_hash": "87e81d42c5a985d9951eb4a0a2c9a83d9d919e202116491b7de589c5364fd284",
+          "source_metadata_line": 655
+        },
+        {
+          "key": "additional_2",
+          "source_line": 705,
+          "source_end_line": 715,
+          "date": "2000-12-09",
+          "hour": "丁酉",
+          "source_hash": "666ce910ce8b9f16996a5b39f8cc639e13084f69047936da12e8ac654c9c94f4",
+          "source_metadata_line": 703
+        }
+      ]
+    },
+    {
+      "key": "israel_2001",
+      "n": [
+        "十一"
+      ],
+      "title": "2001年以色列总理沙龙巴拉克选举",
+      "domain": "politics_elections",
+      "facets": [
+        "politics_elections"
+      ],
+      "ranges": [
+        [
+          741,
+          778
+        ]
+      ],
+      "q": [
+        743,
+        747
+      ],
+      "charts": [
+        [
+          749,
+          "2001-02-06",
+          "乙酉"
+        ]
+      ],
+      "pred": [
+        775
+      ],
+      "feedback": [
+        777
+      ],
+      "posthoc": [],
+      "notes": "Author reports election news next day",
+      "id": "kaiwu.hot.israel_2001",
+      "steps": [
+        763,
+        769
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 749,
+          "source_end_line": 759,
+          "date": "2001-02-06",
+          "hour": "乙酉",
+          "source_hash": "7260312ec294fc3e37588221388999a1f5e388d4ffae7330abb883dcb9fcddec",
+          "source_metadata_line": 747
+        }
+      ]
+    },
+    {
+      "key": "shijiazhuang_2001",
+      "n": [
+        "十二"
+      ],
+      "title": "2001年石家庄3.16爆炸案两候选时辰",
+      "domain": "criminal_case",
+      "facets": [
+        "criminal_case"
+      ],
+      "ranges": [
+        [
+          779,
+          850
+        ]
+      ],
+      "q": [
+        781,
+        785
+      ],
+      "charts": [
+        [
+          787,
+          "2001-03-16",
+          "甲寅"
+        ],
+        [
+          801,
+          "2001-03-16",
+          "乙卯"
+        ]
+      ],
+      "pred": [
+        825,
+        835,
+        837
+      ],
+      "feedback": [
+        839,
+        841,
+        843,
+        845
+      ],
+      "posthoc": [
+        847,
+        849
+      ],
+      "notes": "Two alternative casts due to unknown 5AM precise boundary, not two crimes or independent forecasts; source reports arrest Mar23 and newspaper Mar24",
+      "id": "kaiwu.hot.shijiazhuang_2001",
+      "steps": [
+        815,
+        817,
+        819,
+        821,
+        823,
+        825,
+        827,
+        829,
+        831,
+        833,
+        835,
+        837
+      ],
+      "casts": [
+        {
+          "key": "primary",
+          "source_line": 787,
+          "source_end_line": 797,
+          "date": "2001-03-16",
+          "hour": "甲寅",
+          "source_hash": "5cb399f0897dced4842a8d2cc1e5a65a1c44cb8f12552e28956afdb630f88b0d",
+          "source_metadata_line": 785
+        },
+        {
+          "key": "additional_1",
+          "source_line": 801,
+          "source_end_line": 811,
+          "date": "2001-03-16",
+          "hour": "乙卯",
+          "source_hash": "a7e4e277f3e9c1c6970754e310df523a1bf342817aa3825a451431f2dca8ca62",
+          "source_metadata_line": 799
+        }
+      ]
+    }
+  ]
+}

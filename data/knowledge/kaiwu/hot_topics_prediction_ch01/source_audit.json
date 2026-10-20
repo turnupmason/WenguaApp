@@ -1,0 +1,19 @@
+{
+  "source_sha256": "d85e880bd7e09af25b0db75ae995f0e072b2ff8501a9eb836c2b70748a5fd36d",
+  "taiwan_initial_failure_lines": [
+    533,
+    541,
+    543,
+    545,
+    547
+  ],
+  "women_world_cup_home_team_disambiguated_post_result_line": 377,
+  "2000_annual_forecast_without_cast_or_feedback": true,
+  "usa_2000_three_different_time_casts_same_event": true,
+  "beijing_2008_two_sections_same_historical_bid": true,
+  "nato_first_cast_analysis_revised_by_editor_line": 121,
+  "shijiazhuang_two_hour_boards_are_alternative_causality_not_two_events": true,
+  "full_original_preserved_no_extrapolation_or_manual_case_gate": true,
+  "all_previous_v1_source_rows_unchanged": true,
+  "source_case_acceptance_is_not_independent_scientific_validation": true
+}
