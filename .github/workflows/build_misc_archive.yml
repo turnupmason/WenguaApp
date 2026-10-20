@@ -1,0 +1,83 @@
+name: Build and archive twenty-first miscellaneous source SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_shenqi_21_from_20.py'
+      - 'sources/shenqi/神奇之门_第十七章_其他杂项预测_精校完整版(1).txt'
+      - 'schema/migrations/016_misc_cast_context.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Copy entire previous 20-chapter database and import five source events and seven genuine casts
+        run: |
+          python scripts/build_shenqi_21_from_20.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3' \
+            --source 'sources/shenqi/神奇之门_第十七章_其他杂项预测_精校完整版(1).txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/shenqi/miscellaneous_prediction_ch17'
+      - name: Compress complete SQLite and write actual binary SHA256 archive manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          folder=Path('archives/sqlite')
+          base=folder/'WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3'
+          out=folder/'WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3'
+          xz=out.with_suffix(out.suffix+'.xz')
+          xz.write_bytes(lzma.compress(out.read_bytes(),preset=6))
+          source=json.loads(Path('data/knowledge/shenqi/miscellaneous_prediction_ch17/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(out) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT count(*) FROM historical_misc_cast_context').fetchone()[0]==7
+          m={'schema':'wengua_complete_versioned_sqlite_archive_v7','book':'神奇之门',
+             'chapter_count':21,'event_families':103,'actual_source_charts':112,'original_palace_cells':1008,
+             'original_author_steps':495,'semantic_assertions':1257,'source_title':'其他杂项预测',
+             'source_sha256':source['source_sha256'],'source_bytes':source['source_bytes'],
+             'source_lines':source['source_lines'],'new_whole_events':5,'new_printed_charts':7,
+             'new_author_analysis_and_judgment_units':27,'new_domain_methods':23,
+             'baseline_path':str(base),'baseline_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
+             'main_archive_path':str(out),'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),
+             'size':out.stat().st_size,'compressed_archive_path':str(xz),
+             'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+             'compressed_size':xz.stat().st_size,'integrity_check':'ok','foreign_key_violations':0,
+             'all_20_previous_source_rows_unchanged':True,'same_olympic_event_three_source_casts':True,
+             'sixyao_predictions_not_three_contemporaneous_qimen_proofs':True,
+             'human_verified_causal_chains':0,'external_realworld_validation':False,
+             'public_complete_archive_user_authorized':True}
+          (folder/'21chapters_103cases_manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          PY
+      - name: Check chapter source and full historic regression
+        run: python -m unittest discover -s tests -p test_misc_case_import.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: misc-21-chapters-103-whole-events-complete-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3.xz
+            archives/sqlite/21chapters_103cases_manifest.json
+          retention-days: 30
+      - name: Commit full new binary snapshot and permanent index without overwriting the old archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/21chapters_103cases_manifest.json' \
+                     'data/knowledge/shenqi/miscellaneous_prediction_ch17/'
+          git diff --cached --check
+          git commit -m 'Archive full 21-chapter 103-event miscellaneous SQLite and all historical casts'
+          git push origin HEAD:main

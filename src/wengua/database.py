@@ -31,6 +31,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/013_weather_case_time.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/014_geography_source_context.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/015_life_case_phase.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/016_misc_cast_context.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
