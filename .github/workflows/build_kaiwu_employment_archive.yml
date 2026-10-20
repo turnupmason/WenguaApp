@@ -1,0 +1,104 @@
+name: Archive Kaiwu employment cases into shared Shenqi domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_工作就业预测.txt'
+      - 'scripts/build_kaiwu_employment_from_marriage.py'
+      - 'schema/migrations/024_kaiwu_employment_shared_domain_multi_issue.sql'
+      - 'tests/test_kaiwu_employment_unified_domain.py'
+      - '.github/workflows/build_kaiwu_employment_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify three original source charts 27 palace cells and double-issue chronology
+        run: python -m unittest discover -s tests -p test_kaiwu_employment_unified_domain.py -v
+      - name: Generate complete new SQLite only via exact previous 29-chapter full archive
+        run: |
+          python -m scripts.build_kaiwu_employment_from_marriage \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_工作就业预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/employment_prediction_ch02_section04'
+      - name: Build XZ actual hash manifest and verify same-event one-cast multiple issues
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          parent=root/'WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          data=json.loads(Path('data/knowledge/kaiwu/employment_prediction_ch02_section04/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(parent.read_bytes()).hexdigest()==data['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={name:db.execute('SELECT COUNT(*) FROM "'+name+'"').fetchone()[0]
+                   for name in data['cumulative_counts']}
+           assert counts==data['cumulative_counts']
+           assert counts['cases']==130
+           assert counts['crossbook_employment_source_charts']==3
+           assert counts['crossbook_employment_case_issues']==4
+           assert db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]==8
+          result={'schema':'wengua_kaiwu_employment_3_event_shared_domain_complete_archive',
+           'source_title':data['source_title'],'source_sha256':data['source_sha256'],
+           'source_bytes':data['source_bytes'],'source_lines':data['source_lines'],
+           'book_counts':data['book_counts'],'total_source_sections':30,
+           'new_cases_accepted_without_individual_user_review':3,
+           'new_distinct_event_families':3,'new_printed_actual_original_charts':3,
+           'new_original_source_palace_cells':27,'new_original_author_reasoning_steps':13,
+           'new_issue_rows':4,'case3_two_issues_one_event_one_chart':True,
+           '1999_exact_fatal_date_deduced_post_report_not_in_1997_original':True,
+           'case1_two_undeciphered_stems_not_filled':True,
+           'source_explicit_zhirun_casing_kept':True,
+           'all_eight_old_explicit_book_errors_retained':True,
+           'total_event_families':130,'total_original_source_qimen_charts':146,
+           'prior_complete_archive_path':str(parent),
+           'prior_complete_sha256':hashlib.sha256(parent.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'sqlite_integrity':'ok','sqlite_foreign_key_errors':0,
+           'all_prior_database_rows_identical':True,
+           'public_complete_archive_user_authorized':True,
+           'book_case_acceptance_not_independent_scientific_proof':True}
+          (root/'shenqi21_kaiwu_employment_130cases_manifest.json').write_text(
+             json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu-employment-130-complete-database
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_employment_130cases_manifest.json
+          retention-days: 30
+      - name: Commit new fully versioned actual binary and source evidence indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_employment_130cases_manifest.json' \
+                     'data/knowledge/kaiwu/employment_prediction_ch02_section04/'
+          git diff --cached --check
+          git commit -m 'Archive 3 user-accepted Kaiwu employment events with 3 verbatim boards and one double-issue cast'
+          git push origin HEAD:main
