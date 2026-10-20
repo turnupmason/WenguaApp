@@ -1,0 +1,648 @@
+{
+  "schema": "wengua_lost_property_source_reasoning_draft_v1",
+  "source_sha256": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+  "whole_cases": 8,
+  "author_source_steps": 36,
+  "independent_professional_approval": 0,
+  "author_printed_chart_verified": 0,
+  "after_the_fact_and_corrections_remain_isolated": true,
+  "cases": [
+    {
+      "case_id": "shenqi.lost_property.case01",
+      "steps": [
+        {
+          "source_line": 41,
+          "step_number": 1,
+          "author_step_topic": "景门文书",
+          "author_observed_palace_mentions": [
+            "1宫"
+          ],
+          "author_evidence_sequence_paraphrase": "景门坎1配六合天辅且生两用神，判断可找",
+          "counterevidence_or_caveat": "景门火在坎水宫是相反条件，不能仅取吉象",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:六合",
+            "door:景",
+            "star:辅"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 43,
+          "step_number": 2,
+          "author_step_topic": "日时落宫玄武容器",
+          "author_observed_palace_mentions": [
+            "3宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日己时壬同震3、玄武及庚惊门材质共同定位容器",
+          "counterevidence_or_caveat": "玄武还可能表示失主遗忘，不能据此定偷",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "door:惊"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 45,
+          "step_number": 3,
+          "author_step_topic": "反吟远近及应期",
+          "author_observed_palace_mentions": [
+            "3宫"
+          ],
+          "author_evidence_sequence_paraphrase": "反吟与震3阳遁内盘及宫数推东方近处三日",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "trigram:震"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case02",
+      "steps": [
+        {
+          "source_line": 77,
+          "step_number": 1,
+          "author_step_topic": "日时生宫",
+          "author_observed_palace_mentions": [
+            "3宫",
+            "1宫"
+          ],
+          "author_evidence_sequence_paraphrase": "时癸坎1生日己震3，判断可找到",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 79,
+          "step_number": 2,
+          "author_step_topic": "景门伏吟与颜色",
+          "author_observed_palace_mentions": [
+            "9宫"
+          ],
+          "author_evidence_sequence_paraphrase": "景门离9伏吟，结合离卦颜色容器找位置",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:景"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 81,
+          "step_number": 3,
+          "author_step_topic": "景门加景门",
+          "author_observed_palace_mentions": [],
+          "author_evidence_sequence_paraphrase": "景加景意味着文状未动，排除已卖掉",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:景"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 83,
+          "step_number": 4,
+          "author_step_topic": "时干宫吉星长辈",
+          "author_observed_palace_mentions": [
+            "1宫"
+          ],
+          "author_evidence_sequence_paraphrase": "时癸宫吉门星神、九天等，推长辈找到",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:九天",
+            "door:休",
+            "star:任"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 85,
+          "step_number": 5,
+          "author_step_topic": "庚格或时干生应期",
+          "author_observed_palace_mentions": [
+            "1宫"
+          ],
+          "author_evidence_sequence_paraphrase": "阴癸看庚上壬或旺癸生日主，提出两种应期",
+          "counterevidence_or_caveat": "壬或癸均为事前候选，不能根据后验只保留一日",
+          "cross_chapter_lexical_concepts_only": [
+            "trigram:坤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case03",
+      "steps": [
+        {
+          "source_line": 113,
+          "step_number": 1,
+          "author_step_topic": "坐宫先推未知问题",
+          "author_observed_palace_mentions": [
+            "2宫"
+          ],
+          "author_evidence_sequence_paraphrase": "由未知来意时坐坤2、值符天英与衣物变化象先猜失财",
+          "counterevidence_or_caveat": "第115行才得知皮衣，不能把披露倒灌最初判断",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:值符",
+            "star:英",
+            "trigram:坤"
+          ],
+          "stage": "before_question_disclosure",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 117,
+          "step_number": 2,
+          "author_step_topic": "日时克盗宫与归属",
+          "author_observed_palace_mentions": [
+            "1宫",
+            "7宫"
+          ],
+          "author_evidence_sequence_paraphrase": "坤宫吉门乙奇及生克、与玄武宫关系推货留卖主",
+          "counterevidence_or_caveat": "玄武宫受制是排盗反证",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:九天",
+            "deity:值符",
+            "deity:玄武",
+            "door:休",
+            "door:开",
+            "door:生",
+            "trigram:坤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case04",
+      "steps": [
+        {
+          "source_line": 149,
+          "step_number": 1,
+          "author_step_topic": "时干空亡与场所",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "时丙艮8旬空、伤加丙和白虎道路象推失物所在",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:白虎",
+            "door:伤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 151,
+          "step_number": 2,
+          "author_step_topic": "玄武旬空排盗",
+          "author_observed_palace_mentions": [
+            "3宫",
+            "9宫"
+          ],
+          "author_evidence_sequence_paraphrase": "玄武空亡且天蓬不克时干宫，排除盗窃",
+          "counterevidence_or_caveat": "玄武虽象盗窃，但旬空及不克失物宫是反证",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "door:死",
+            "star:蓬"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 153,
+          "step_number": 3,
+          "author_step_topic": "日时相生与景门",
+          "author_observed_palace_mentions": [
+            "9宫",
+            "8宫",
+            "4宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日时宫相生，景门通信器物生扶日宫，判断找到",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:景",
+            "trigram:离"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 155,
+          "step_number": 4,
+          "author_step_topic": "艮宫少男数量",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "艮少男与伤门三数推拾得者类型",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:伤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 157,
+          "step_number": 5,
+          "author_step_topic": "反吟空亡应期",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "九星反吟、艮8内盘和旬空填实确定日期",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case05",
+      "steps": [
+        {
+          "source_line": 187,
+          "step_number": 1,
+          "author_step_topic": "日时比和物未失",
+          "author_observed_palace_mentions": [
+            "4宫",
+            "3宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日庚巽4与时壬震3比和，推钱在可找范围",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 189,
+          "step_number": 2,
+          "author_step_topic": "玄武空亡非盗",
+          "author_observed_palace_mentions": [
+            "2宫"
+          ],
+          "author_evidence_sequence_paraphrase": "玄武坤2空且不克失物，反对偷盗解释",
+          "counterevidence_or_caveat": "有人怀疑家属，玄武失效不能推成现实指控",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 191,
+          "step_number": 3,
+          "author_step_topic": "甲子戊飞宫与移位",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "甲子戊与日干庚及螣蛇组合，推本人移放",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:螣蛇"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 193,
+          "step_number": 4,
+          "author_step_topic": "天地盘戊原处新处",
+          "author_observed_palace_mentions": [
+            "6宫",
+            "3宫"
+          ],
+          "author_evidence_sequence_paraphrase": "天盘戊与地盘戊异宫、家具材质，推新旧位置",
+          "counterevidence_or_caveat": "天地盘戊的位置不同，不可混成同宫",
+          "cross_chapter_lexical_concepts_only": [
+            "door:惊",
+            "star:芮",
+            "trigram:艮"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 195,
+          "step_number": 5,
+          "author_step_topic": "值使与庚格应期",
+          "author_observed_palace_mentions": [
+            "6宫",
+            "4宫"
+          ],
+          "author_evidence_sequence_paraphrase": "内盘快、值使乾6数和庚阳下干丙确定应期",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:惊"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case06",
+      "steps": [
+        {
+          "source_line": 227,
+          "step_number": 1,
+          "author_step_topic": "日时同宫非盗",
+          "author_observed_palace_mentions": [
+            "2宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日时辛同坤2且盗星宫受克，推非被盗",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "star:蓬"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 229,
+          "step_number": 2,
+          "author_step_topic": "丁奇重要文件牛皮袋",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "丁奇艮8入丑库配土数，推纸袋和文件数量",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:白虎",
+            "trigram:坤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 233,
+          "step_number": 3,
+          "author_step_topic": "冲库回溯移动",
+          "author_observed_palace_mentions": [],
+          "author_evidence_sequence_paraphrase": "未时冲丑库，推曾翻动文件时段",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 237,
+          "step_number": 4,
+          "author_step_topic": "丁奇外盘推寻找地点",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "丁奇艮8外盘，先猜外部住所再依新披露改方向",
+          "counterevidence_or_caveat": "后来第239行新事实推翻先猜家里；第253行承认车内未提前断出",
+          "cross_chapter_lexical_concepts_only": [
+            "door:生"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 243,
+          "step_number": 5,
+          "author_step_topic": "乙未冲库应期",
+          "author_observed_palace_mentions": [
+            "4宫"
+          ],
+          "author_evidence_sequence_paraphrase": "乙未时冲库与填实结合，定寻找时刻",
+          "counterevidence_or_caveat": "应期可能准但不等于准确断出失物具体位置",
+          "cross_chapter_lexical_concepts_only": [
+            "door:开"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case07",
+      "steps": [
+        {
+          "source_line": 281,
+          "step_number": 1,
+          "author_step_topic": "日干伤门惊门",
+          "author_observed_palace_mentions": [
+            "7宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日癸兑7多个不利格与值符减凶一起判断争执",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:值符"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 283,
+          "step_number": 2,
+          "author_step_topic": "时干问事",
+          "author_observed_palace_mentions": [
+            "3宫"
+          ],
+          "author_evidence_sequence_paraphrase": "时己震3惊门格主问事口舌",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "door:惊"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 285,
+          "step_number": 3,
+          "author_step_topic": "戊癸合取妻",
+          "author_observed_palace_mentions": [
+            "2宫"
+          ],
+          "author_evidence_sequence_paraphrase": "戊癸合取妻，生门天任配反吟与惊门判断旅行争议",
+          "counterevidence_or_caveat": "第293行才披露失证，初问只有出行",
+          "cross_chapter_lexical_concepts_only": [
+            "door:惊",
+            "door:生",
+            "star:任"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 295,
+          "step_number": 4,
+          "author_step_topic": "景门身份证与方位",
+          "author_observed_palace_mentions": [
+            "1宫"
+          ],
+          "author_evidence_sequence_paraphrase": "新增身份证问题才取景门坎1分析方位格局",
+          "counterevidence_or_caveat": "此步骤属于新信息披露后的同案判断",
+          "cross_chapter_lexical_concepts_only": [
+            "door:景",
+            "trigram:坎"
+          ],
+          "stage": "after_question_disclosure",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 299,
+          "step_number": 5,
+          "author_step_topic": "地盘老家与容器",
+          "author_observed_palace_mentions": [
+            "9宫"
+          ],
+          "author_evidence_sequence_paraphrase": "地盘景门离9、乙木及一白等推原籍柜子",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:景",
+            "star:蓬"
+          ],
+          "stage": "after_question_disclosure",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 303,
+          "step_number": 6,
+          "author_step_topic": "反吟到讯时间",
+          "author_observed_palace_mentions": [
+            "9宫"
+          ],
+          "author_evidence_sequence_paraphrase": "星门反吟与离宫数三估消息时长",
+          "counterevidence_or_caveat": "第307行的事后作者按语不能作为学员初断",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "after_question_disclosure",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case08",
+      "steps": [
+        {
+          "source_line": 335,
+          "step_number": 1,
+          "author_step_topic": "日干道路伏吟",
+          "author_observed_palace_mentions": [
+            "2宫"
+          ],
+          "author_evidence_sequence_paraphrase": "日主宫伏吟自刑，景门白虎道路象推旅途失财",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:白虎",
+            "door:景"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 337,
+          "step_number": 2,
+          "author_step_topic": "时干汽车与马星",
+          "author_observed_palace_mentions": [
+            "8宫"
+          ],
+          "author_evidence_sequence_paraphrase": "时戊艮8比和但对冲并马星，作者偏难归",
+          "counterevidence_or_caveat": "时干与日干的比和是需保留的相反证据",
+          "cross_chapter_lexical_concepts_only": [],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 339,
+          "step_number": 3,
+          "author_step_topic": "伤门车与天网格局",
+          "author_observed_palace_mentions": [
+            "4宫"
+          ],
+          "author_evidence_sequence_paraphrase": "伤门车巽4克坤2且癸加癸天网，推难寻",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "door:伤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 345,
+          "step_number": 4,
+          "author_step_topic": "玄武偷盗与宫克",
+          "author_observed_palace_mentions": [
+            "7宫",
+            "4宫"
+          ],
+          "author_evidence_sequence_paraphrase": "玄武兑7克伤门宫且受时戊生，推盗窃",
+          "counterevidence_or_caveat": "本步骤未明确记录反证，仍须与其他步骤整体核对",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "door:伤"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        },
+        {
+          "source_line": 349,
+          "step_number": 5,
+          "author_step_topic": "白虎值使刑警与玄武相克",
+          "author_observed_palace_mentions": [],
+          "author_evidence_sequence_paraphrase": "白虎值使捕盗受玄武制并伏吟，推难破",
+          "counterevidence_or_caveat": "属作者古籍解释，不是独立警方证据",
+          "cross_chapter_lexical_concepts_only": [
+            "deity:玄武",
+            "deity:白虎",
+            "door:生"
+          ],
+          "stage": "source_analysis",
+          "review_status": "source_grounded_reconstruction_draft_human_review_required",
+          "positive_training_eligible": false
+        }
+      ]
+    }
+  ]
+}
