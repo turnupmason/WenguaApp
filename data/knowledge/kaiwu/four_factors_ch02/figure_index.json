@@ -1,0 +1,94 @@
+{
+  "source_sha256": "6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83",
+  "didactic_not_historical_cast": true,
+  "figures": [
+    {
+      "figure": 23,
+      "source_start_line": 47,
+      "source_end_line": 54,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "9fa3e54d776e27286fcf13a3d1d7392d834380f6e3ee2c03ca51af7f37d1d20c"
+    },
+    {
+      "figure": 24,
+      "source_start_line": 64,
+      "source_end_line": 71,
+      "figure_type": "didactic_nine_star_month_example",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "fc5c53cf79c50c3e39736423fbb2527e1076fbe867f7170cb8806f0eb4f650c7"
+    },
+    {
+      "figure": 25,
+      "source_start_line": 81,
+      "source_end_line": 88,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "c4e7bab0495d7a35d261e459493c0cb3a323328845e3e1a0f9c886623e3081bd"
+    },
+    {
+      "figure": 26,
+      "source_start_line": 93,
+      "source_end_line": 100,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "001664957e92276af1bec7887a81c9fe020fa7209420d701a4f9ac9e7bb0ea92"
+    },
+    {
+      "figure": 27,
+      "source_start_line": 105,
+      "source_end_line": 112,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "244186b424056b830c6536de00195cb1ba91586f8967704dd6dae7be9b8ca474"
+    },
+    {
+      "figure": 28,
+      "source_start_line": 117,
+      "source_end_line": 124,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "bd1323f8fbd77eb6ea7d3397448f00299149bf9191d7848552417df4448b2644"
+    },
+    {
+      "figure": 29,
+      "source_start_line": 131,
+      "source_end_line": 138,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "14781ce37cdb42cdbec419d606d78d75105e87288a65541bda8929623a1e39cc"
+    },
+    {
+      "figure": 30,
+      "source_start_line": 143,
+      "source_end_line": 150,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "1229bb503919dc20fde26530a8e913a6e834b96e4bee60edbf484bd7092e4634"
+    },
+    {
+      "figure": 31,
+      "source_start_line": 155,
+      "source_end_line": 162,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "aa899c6a2ad021fe1f00946d175b7f13271b98fc6d57f9ce15441f9aaf1179f3"
+    },
+    {
+      "figure": 32,
+      "source_start_line": 167,
+      "source_end_line": 174,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "98c534d09ae3b23a94290d00826cbbe09565150c46855eb13612bdc717819526"
+    },
+    {
+      "figure": 33,
+      "source_start_line": 211,
+      "source_end_line": 218,
+      "figure_type": "didactic_symbol_and_twelve_stage_table",
+      "printed_actual_qimen_cast": false,
+      "excerpt_sha256": "54ac2ccbf249dafa2552ae76a714772208b75d849ccf9f7490b0fa6b9472a05b"
+    }
+  ]
+}

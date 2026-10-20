@@ -1,0 +1,17 @@
+{
+  "source_sha256": "6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83",
+  "boundary_source_line": 239,
+  "source_tail_may_be_incomplete": true,
+  "star_state_priority": "palace_first_month_secondary",
+  "not_equivalent_to_earthly_wang_xiang_xiu_qiu_si": true,
+  "tianqin_lodged_kun_2_without_fabricated_center_door": true,
+  "heaven_stem_soil_follows_fire_but_branch_soil_follows_water": true,
+  "grave_vs_storehouse_requires_month_status": true,
+  "former_error_examples_lines": [
+    180,
+    199
+  ],
+  "no_backfilling_old_errors_as_initial_correct_calls": true,
+  "positive_training_eligible": false,
+  "independent_realworld_validation": false
+}

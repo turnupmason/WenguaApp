@@ -1,0 +1,73 @@
+{
+  "schema": "wengua_multibook_source_chapter_v2",
+  "source_book": "kaiwu",
+  "section_key": "four_factors_ch02",
+  "chapter_key": "kaiwu/four_factors_ch02/v1",
+  "book_chapter_number": 2,
+  "source_sha256": "6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83",
+  "source_bytes": 56862,
+  "source_lines": 239,
+  "source_title": "关乎事物成败的四大要素",
+  "source_sections": {
+    "first_section": 7,
+    "second_section": 29,
+    "heaven_stars": 31,
+    "earth_advantage": 73,
+    "human_doors": 184,
+    "deities": 222
+  },
+  "source_tables": 11,
+  "source_figures": [
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "source_ends_without_terminal_punctuation": true,
+  "source_scope_warning": "exact supplied file only; do not invent continuation if book has additional pages",
+  "book_counts": {
+    "shenqi": 21,
+    "kaiwu": 2
+  },
+  "total_source_sections": 23,
+  "new_concept_occurrences": 232,
+  "new_cross_book_citations": 9,
+  "new_independent_event_families": 0,
+  "new_original_qimen_charts": 0,
+  "total_event_families": 103,
+  "total_historical_qimen_charts": 112,
+  "all_previous_source_rows_preserved": true,
+  "source_record_type_counts": {
+    "six_jia": 6,
+    "three_wonders": 3,
+    "nine_star_profiles": 9,
+    "twelve_stem_stage_assertions": 120,
+    "doors": 8,
+    "eight_deities": 8,
+    "conditional_method_passages": 44,
+    "door_context_exceptions": 10
+  },
+  "cumulative_semantic_assertions": 1697,
+  "cumulative_author_steps": 495,
+  "review_status": "draft",
+  "positive_training_eligible": false,
+  "draft_only_not_independent_scientific_proof": true,
+  "baseline_sha256": "e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a",
+  "produced_db_sha256": "7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726",
+  "counts": {
+    "sections": 23,
+    "cases": 103,
+    "historical_case_reasoning": 495,
+    "historical_palace_standardization": 1008,
+    "semantic_assertions": 1697,
+    "cross_book_concept_tracks": 440,
+    "cross_book_example_references": 15
+  }
+}

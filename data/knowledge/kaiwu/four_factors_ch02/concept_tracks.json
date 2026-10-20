@@ -1,0 +1,4551 @@
+{
+  "schema": "wengua_kaiwu_second_source_occurrences_v1",
+  "chapter_key": "kaiwu/four_factors_ch02/v1",
+  "source_sha256": "6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83",
+  "entries": [
+    {
+      "concept_id": "six_jia:甲子",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 11,
+      "source_end_line": 11,
+      "source_excerpt_sha256": "139e018b22913f20ab0ccd74df9d26b4e12325347df1473a41faae71b32e67ad",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲子",
+        "hidden_flag": "戊",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "six_jia:甲戌",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 12,
+      "source_end_line": 12,
+      "source_excerpt_sha256": "211b5512d2269e6e5370e43ddc902ec4d47c8fffb7b76e3dcdf6f2805f7ba756",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲戌",
+        "hidden_flag": "己",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "six_jia:甲申",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "6c267accf61a3058c59e68e92dc48dc22a397dce05fa04204ab554e6fcf4e1eb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲申",
+        "hidden_flag": "庚",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "six_jia:甲午",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 14,
+      "source_end_line": 14,
+      "source_excerpt_sha256": "0e3a7ef50a9f9af8f0d523097c9fe51d8f16788467adeea65221e2012f2b1a1f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲午",
+        "hidden_flag": "辛",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "six_jia:甲辰",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 15,
+      "source_end_line": 15,
+      "source_excerpt_sha256": "88ce797d7795b8828a19e330090879f062dd5013a27771cf2136e578528828e7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲辰",
+        "hidden_flag": "壬",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "six_jia:甲寅",
+      "kind": "six_jia_hidden_instrument",
+      "source_start_line": 16,
+      "source_end_line": 16,
+      "source_excerpt_sha256": "a4d051aff46677e8e11642442e1ef4699a348ceafd2cb04c7d16ea4204d45066",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:six_jia_flags",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "jia": "甲寅",
+        "hidden_flag": "癸",
+        "military_metaphor": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "wonder:乙",
+      "kind": "three_wonders_solar_metaphor",
+      "source_start_line": 20,
+      "source_end_line": 20,
+      "source_excerpt_sha256": "dea9c4b73e2fac516cb3c9237171cd88a1f9c03b8b38b98ae50e38701a24b5e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:three_wonders",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "乙",
+        "author_claimed_name": "日奇",
+        "not_astronomical_causation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "wonder:丙",
+      "kind": "three_wonders_solar_metaphor",
+      "source_start_line": 20,
+      "source_end_line": 20,
+      "source_excerpt_sha256": "dea9c4b73e2fac516cb3c9237171cd88a1f9c03b8b38b98ae50e38701a24b5e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:three_wonders",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "丙",
+        "author_claimed_name": "月奇",
+        "not_astronomical_causation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "wonder:丁",
+      "kind": "three_wonders_solar_metaphor",
+      "source_start_line": 20,
+      "source_end_line": 20,
+      "source_excerpt_sha256": "dea9c4b73e2fac516cb3c9237171cd88a1f9c03b8b38b98ae50e38701a24b5e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:three_wonders",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "丁",
+        "author_claimed_name": "星奇",
+        "not_astronomical_causation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天蓬星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 36,
+      "source_end_line": 36,
+      "source_excerpt_sha256": "b720e030552403495db206addbdd61dca1dd60a6c90a83756b4d3195e42e250a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天蓬星",
+        "home_palace": 1,
+        "element": "水",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天蓬星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 36,
+      "source_end_line": 36,
+      "source_excerpt_sha256": "b720e030552403495db206addbdd61dca1dd60a6c90a83756b4d3195e42e250a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天芮星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 37,
+      "source_end_line": 37,
+      "source_excerpt_sha256": "c48bd9fccc6d5f509cce19cf5dee37400116d45e4f927c25ea86399ad4a8dbc7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天芮星",
+        "home_palace": 2,
+        "element": "土",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天芮星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 37,
+      "source_end_line": 37,
+      "source_excerpt_sha256": "c48bd9fccc6d5f509cce19cf5dee37400116d45e4f927c25ea86399ad4a8dbc7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天冲星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 38,
+      "source_end_line": 38,
+      "source_excerpt_sha256": "e8ae2929b71a1086ef4069342fdf832ad075ed8017094ae506754dbc2466043f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天冲星",
+        "home_palace": 3,
+        "element": "木",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天冲星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 38,
+      "source_end_line": 38,
+      "source_excerpt_sha256": "e8ae2929b71a1086ef4069342fdf832ad075ed8017094ae506754dbc2466043f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天辅星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 39,
+      "source_end_line": 39,
+      "source_excerpt_sha256": "265f464e1fddc737a4cb8590f429565fbf9368473c521cccbe1791b51d19583a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天辅星",
+        "home_palace": 4,
+        "element": "木",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天辅星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 39,
+      "source_end_line": 39,
+      "source_excerpt_sha256": "265f464e1fddc737a4cb8590f429565fbf9368473c521cccbe1791b51d19583a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": true,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天禽星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 40,
+      "source_end_line": 40,
+      "source_excerpt_sha256": "cefdf9b5e601f36984ed2c40c51f19e9c5fabd5ad67934aca13aa82a094a36be",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天禽星",
+        "home_palace": 5,
+        "element": "土",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天禽星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 40,
+      "source_end_line": 40,
+      "source_excerpt_sha256": "cefdf9b5e601f36984ed2c40c51f19e9c5fabd5ad67934aca13aa82a094a36be",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天心星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 41,
+      "source_end_line": 41,
+      "source_excerpt_sha256": "d001bd14d9ad1ee3bf72fef7b9fb1a23e79698d24bc89191f259208783d12332",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天心星",
+        "home_palace": 6,
+        "element": "金",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天心星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 41,
+      "source_end_line": 41,
+      "source_excerpt_sha256": "d001bd14d9ad1ee3bf72fef7b9fb1a23e79698d24bc89191f259208783d12332",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": true,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天柱星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 42,
+      "source_end_line": 42,
+      "source_excerpt_sha256": "1ab2366d652a7cc141e96b972c24fe59603ec0f152cb20b44772583984ca8677",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天柱星",
+        "home_palace": 7,
+        "element": "金",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天柱星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 42,
+      "source_end_line": 42,
+      "source_excerpt_sha256": "1ab2366d652a7cc141e96b972c24fe59603ec0f152cb20b44772583984ca8677",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天任星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 43,
+      "source_end_line": 43,
+      "source_excerpt_sha256": "1e0ebdcd1dd4a648fa941c63fe12998c805992f1d97cb9798787610c961b1dc3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天任星",
+        "home_palace": 8,
+        "element": "土",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天任星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 43,
+      "source_end_line": 43,
+      "source_excerpt_sha256": "1e0ebdcd1dd4a648fa941c63fe12998c805992f1d97cb9798787610c961b1dc3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天英星",
+      "kind": "nine_star_original_palace",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "f2b379bdf6c96af81b0b714a5cedc68f1993d503567d165d04321f5ebad648e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_original_palace",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "star": "天英星",
+        "home_palace": 9,
+        "element": "火",
+        "conditional_auspiciousness": true,
+        "not_static_forecast": true,
+        "center_tianqin_not_ninth_gate": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:天英星:scope",
+      "kind": "nine_star_context_interpretation",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "f2b379bdf6c96af81b0b714a5cedc68f1993d503567d165d04321f5ebad648e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:nine_star_application_scope",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "source_line_full_original_required": true,
+        "polarity_depends_on_interpretation_frame": false,
+        "not_direct_personal_accusation_or_medical_diagnosis": true,
+        "author_cultural_assertion": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "长生",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "沐浴",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "冠带",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "临官",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "帝旺",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "衰",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "病",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "死",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "墓",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "绝",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "胎",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "stage": "养",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "def08899c0bae982c653ca2e306be38d55616d6d63e3b2779faa3370c96b8163",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "甲",
+        "state_to_branch": {
+          "长生": "亥",
+          "沐浴": "子",
+          "冠带": "丑",
+          "临官": "寅",
+          "帝旺": "卯",
+          "衰": "辰",
+          "病": "巳",
+          "死": "午",
+          "墓": "未",
+          "绝": "申",
+          "胎": "酉",
+          "养": "戌"
+        },
+        "birth_palace": 6,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "长生",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "沐浴",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "冠带",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "临官",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "帝旺",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "衰",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "病",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "死",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "墓",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "绝",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "胎",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "stage": "养",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 91,
+      "source_end_line": 91,
+      "source_excerpt_sha256": "3d0007c09269f75f5b457b7d9c0d288a685e3ccb79c5f31fdb7d0fdbf3a00197",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "乙",
+        "state_to_branch": {
+          "长生": "午",
+          "沐浴": "巳",
+          "冠带": "辰",
+          "临官": "卯",
+          "帝旺": "寅",
+          "衰": "丑",
+          "病": "子",
+          "死": "亥",
+          "墓": "戌",
+          "绝": "酉",
+          "胎": "申",
+          "养": "未"
+        },
+        "birth_palace": 9,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "长生",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "沐浴",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "冠带",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "临官",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "帝旺",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "衰",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "病",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "死",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "墓",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "绝",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "胎",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "stage": "养",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "8e9875236151fe402847e96bca468aac0e6cccd896dae98a7a1904a90ab7ff80",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "丙",
+        "state_to_branch": {
+          "长生": "寅",
+          "沐浴": "卯",
+          "冠带": "辰",
+          "临官": "巳",
+          "帝旺": "午",
+          "衰": "未",
+          "病": "申",
+          "死": "酉",
+          "墓": "戌",
+          "绝": "亥",
+          "胎": "子",
+          "养": "丑"
+        },
+        "birth_palace": 8,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "长生",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "沐浴",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "冠带",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "临官",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "帝旺",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "衰",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "病",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "死",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "墓",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "绝",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "胎",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "stage": "养",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 115,
+      "source_end_line": 115,
+      "source_excerpt_sha256": "e6c74592060b21255b613362169084dc7b8863ccc3ee4cf8a26175ee728dea8a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "丁",
+        "state_to_branch": {
+          "长生": "酉",
+          "沐浴": "申",
+          "冠带": "未",
+          "临官": "午",
+          "帝旺": "巳",
+          "衰": "辰",
+          "病": "卯",
+          "死": "寅",
+          "墓": "丑",
+          "绝": "子",
+          "胎": "亥",
+          "养": "戌"
+        },
+        "birth_palace": 7,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "长生",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "沐浴",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "冠带",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "临官",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "帝旺",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "衰",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "病",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "死",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "墓",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "绝",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "胎",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "stage": "养",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "戊",
+        "state_to_branch": {
+          "长生": "寅",
+          "沐浴": "卯",
+          "冠带": "辰",
+          "临官": "巳",
+          "帝旺": "午",
+          "衰": "未",
+          "病": "申",
+          "死": "酉",
+          "墓": "戌",
+          "绝": "亥",
+          "胎": "子",
+          "养": "丑"
+        },
+        "birth_palace": 8,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "长生",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "沐浴",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "冠带",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "临官",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "帝旺",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "衰",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "病",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "死",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "墓",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "绝",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "胎",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "stage": "养",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "d246cdb100da4fc2cbc0d8e1e825a94dd767cb8e222cb1a6f98dd52968370833",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "己",
+        "state_to_branch": {
+          "长生": "酉",
+          "沐浴": "申",
+          "冠带": "未",
+          "临官": "午",
+          "帝旺": "巳",
+          "衰": "辰",
+          "病": "卯",
+          "死": "寅",
+          "墓": "丑",
+          "绝": "子",
+          "胎": "亥",
+          "养": "戌"
+        },
+        "birth_palace": 7,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "长生",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "沐浴",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "冠带",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "临官",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "帝旺",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "衰",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "病",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "死",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "墓",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "绝",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "胎",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "stage": "养",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 129,
+      "source_end_line": 129,
+      "source_excerpt_sha256": "dc8ec505d742034efbea88b12c26ed7b6abf5178ef56faa3d9b1d489138bb1f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "庚",
+        "state_to_branch": {
+          "长生": "巳",
+          "沐浴": "午",
+          "冠带": "未",
+          "临官": "申",
+          "帝旺": "酉",
+          "衰": "戌",
+          "病": "亥",
+          "死": "子",
+          "墓": "丑",
+          "绝": "寅",
+          "胎": "卯",
+          "养": "辰"
+        },
+        "birth_palace": 4,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "长生",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "沐浴",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "冠带",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "临官",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "帝旺",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "衰",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "病",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "死",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "墓",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "绝",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "胎",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "stage": "养",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "f413c1aa29bb95a21ce759e716e84016790db6e762a92372e5c4d824a118d5df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "辛",
+        "state_to_branch": {
+          "长生": "子",
+          "沐浴": "亥",
+          "冠带": "戌",
+          "临官": "酉",
+          "帝旺": "申",
+          "衰": "未",
+          "病": "午",
+          "死": "巳",
+          "墓": "辰",
+          "绝": "卯",
+          "胎": "寅",
+          "养": "丑"
+        },
+        "birth_palace": 1,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "长生",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "沐浴",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "冠带",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "临官",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "帝旺",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "衰",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "病",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "死",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "墓",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "绝",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "胎",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "stage": "养",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "6b17b2b89111e7994fe64d220d77a396141baa9142b3ebdf135582b13e1e8466",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "壬",
+        "state_to_branch": {
+          "长生": "申",
+          "沐浴": "酉",
+          "冠带": "戌",
+          "临官": "亥",
+          "帝旺": "子",
+          "衰": "丑",
+          "病": "寅",
+          "死": "卯",
+          "墓": "辰",
+          "绝": "巳",
+          "胎": "午",
+          "养": "未"
+        },
+        "birth_palace": 2,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:长生",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "长生",
+        "branch": "卯",
+        "palace": 3,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:沐浴",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "沐浴",
+        "branch": "寅",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:冠带",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "冠带",
+        "branch": "丑",
+        "palace": 8,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:临官",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "临官",
+        "branch": "子",
+        "palace": 1,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:帝旺",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "帝旺",
+        "branch": "亥",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:衰",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "衰",
+        "branch": "戌",
+        "palace": 6,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:病",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "病",
+        "branch": "酉",
+        "palace": 7,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:死",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "死",
+        "branch": "申",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:墓",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "墓",
+        "branch": "未",
+        "palace": 2,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:绝",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "绝",
+        "branch": "午",
+        "palace": 9,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:胎",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "胎",
+        "branch": "巳",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸:stage:养",
+      "kind": "heavenly_stem_twelve_state",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle",
+      "relation_to_prior": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "stage": "养",
+        "branch": "辰",
+        "palace": 4,
+        "same_palace_may_contain_two_distinct_branches": true,
+        "yang_forward_yin_reverse": true,
+        "is_heavenly_stem_not_branch_cycle": true,
+        "earth_stem_follows_fire_stem": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸",
+      "kind": "heavenly_stem_twelve_state_summary",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "5b5eced1bfb7be597a215b6d173c9f70d4efe5f37bb3e9c4b8be0e30ca6aa748",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_stem_life_cycle_summary",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "stem": "癸",
+        "state_to_branch": {
+          "长生": "卯",
+          "沐浴": "寅",
+          "冠带": "丑",
+          "临官": "子",
+          "帝旺": "亥",
+          "衰": "戌",
+          "病": "酉",
+          "死": "申",
+          "墓": "未",
+          "绝": "午",
+          "胎": "巳",
+          "养": "辰"
+        },
+        "birth_palace": 3,
+        "graceful_conflict_handling": "do_not_replace_prior_source"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:seasonal:旺",
+      "kind": "nine_star_wang_xiang_xiu_qiu_fei",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_star_energy",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "if": "star_element_generates_palace",
+        "then": "旺",
+        "author_category": "我生之宫",
+        "priority": "palace_first_and_month_secondary",
+        "not_ordinary_earthly_wang_xiang_xiu_qiu_si": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:seasonal:相",
+      "kind": "nine_star_wang_xiang_xiu_qiu_fei",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_star_energy",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "if": "star_element_equals_palace",
+        "then": "相",
+        "author_category": "与我五行相同",
+        "priority": "palace_first_and_month_secondary",
+        "not_ordinary_earthly_wang_xiang_xiu_qiu_si": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:seasonal:休",
+      "kind": "nine_star_wang_xiang_xiu_qiu_fei",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_star_energy",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "if": "star_element_controls_palace",
+        "then": "休",
+        "author_category": "我克之宫",
+        "priority": "palace_first_and_month_secondary",
+        "not_ordinary_earthly_wang_xiang_xiu_qiu_si": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:seasonal:废",
+      "kind": "nine_star_wang_xiang_xiu_qiu_fei",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_star_energy",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "if": "palace_element_generates_star",
+        "then": "废",
+        "author_category": "生我之宫",
+        "priority": "palace_first_and_month_secondary",
+        "not_ordinary_earthly_wang_xiang_xiu_qiu_si": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "star:seasonal:囚",
+      "kind": "nine_star_wang_xiang_xiu_qiu_fei",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:heavenly_star_energy",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "if": "palace_element_controls_star",
+        "then": "囚",
+        "author_category": "克我之宫",
+        "priority": "palace_first_and_month_secondary",
+        "not_ordinary_earthly_wang_xiang_xiu_qiu_si": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:开",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 201,
+      "source_end_line": 201,
+      "source_excerpt_sha256": "29f6a66aca5a6dccbca859b2f4a399893c572ac7124aa3f8a8aaf79fecdb3306",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "开",
+        "fixed_original_palace": 6,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:休",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 202,
+      "source_end_line": 202,
+      "source_excerpt_sha256": "7a32799d95ee550ad9481d573cc8548abf5a7863926a65a4d005ee27c14642f0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "休",
+        "fixed_original_palace": 1,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:生",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 203,
+      "source_end_line": 203,
+      "source_excerpt_sha256": "d773a0ca69f7994f1bb8824caf4032edb428050dbc163cc0e63e8e4470b97b6d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "生",
+        "fixed_original_palace": 8,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:死",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 204,
+      "source_end_line": 204,
+      "source_excerpt_sha256": "eff82afd9583d55aee4c25887dce8b3a86286ffe050b0ef0e1c140398298e7d5",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "死",
+        "fixed_original_palace": 2,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:惊",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 205,
+      "source_end_line": 205,
+      "source_excerpt_sha256": "475b4cff46a74ed712357a5611a7e744bd7ce6ac641eaf1a8fe839fa5e97f64c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "惊",
+        "fixed_original_palace": 7,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:伤",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 206,
+      "source_end_line": 206,
+      "source_excerpt_sha256": "d371997cb4349f3574b4451c6de715cc968d0294c473a0531b3d88aa3a63b7de",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "伤",
+        "fixed_original_palace": 3,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:杜",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 207,
+      "source_end_line": 207,
+      "source_excerpt_sha256": "02be3ae0193c3a6b8802d88c99feab154370164a110e32237592e675ba01a0c7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "杜",
+        "fixed_original_palace": 4,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:景",
+      "kind": "eight_door_domain_roles",
+      "source_start_line": 208,
+      "source_end_line": 208,
+      "source_excerpt_sha256": "2401798b12ce9c4aff89499777bcf1bc34f508fc74d64a425e2bc5ab8f333b1a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_door_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door": "景",
+        "fixed_original_palace": 9,
+        "contextual_roles_are_in_complete_source_passage": true,
+        "do_not_apply_all_roles_in_one_question": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:值符",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 231,
+      "source_end_line": 231,
+      "source_excerpt_sha256": "6d780078b65e588a417d459f7e3bafb2ec6b1de7616d84b4d53e368e58a8d9c3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "值符",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:螣蛇",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 232,
+      "source_end_line": 232,
+      "source_excerpt_sha256": "4f4bdc0ce6e467d42f7300a41e82e1a852f0be9e8a3d75cb9c4cc9bfdf33aabf",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "螣蛇",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:太阴",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 233,
+      "source_end_line": 233,
+      "source_excerpt_sha256": "c9f89c337f3ff2d1d6e6169582201f201e4c7397d3a8d9dd166085823cff32c2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "太阴",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:六合",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 234,
+      "source_end_line": 234,
+      "source_excerpt_sha256": "399830df53c133f851ba43cfa63c99ef587db321e0bc5b86fac53f46caee4d4d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "六合",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:白虎",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 235,
+      "source_end_line": 235,
+      "source_excerpt_sha256": "104c8cf60734c6cd79528fde4730c8322a46eb562a8bb2a51f707bf248946ba4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "白虎",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:玄武",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 236,
+      "source_end_line": 236,
+      "source_excerpt_sha256": "0a64bcf7fb4da4a3fb8068dd4095efebc5c2b18b1437c76db2de12c6282276be",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "玄武",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:九地",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 237,
+      "source_end_line": 237,
+      "source_excerpt_sha256": "929d26666131a2b4204fc3e3caea7333348ddf31dffee32712178adfec0455e2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "九地",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "deity:九天",
+      "kind": "eight_deity_contextual_symbol",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "c5f0f54f0af74b7bcdb34da309b63110e37fc45cf8f3a262711ae77a0cb6463b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_domains",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "deity": "九天",
+        "source_is_cultural_symbolism": true,
+        "not_actual_proof_of_crime_illness_or_fate": true,
+        "may_have_both_favorable_and_unfavorable_contexts": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:jia_two_meanings",
+      "kind": "conditional_source_method",
+      "source_start_line": 9,
+      "source_end_line": 9,
+      "source_excerpt_sha256": "c7d0b09e1be429dd141f3c493d91f2d809f0bf908a5adc5709ac212ba537b23e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "history_of_jia_military_and_stem",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:nine_visible_stems",
+      "kind": "conditional_source_method",
+      "source_start_line": 10,
+      "source_end_line": 10,
+      "source_excerpt_sha256": "b62c1fc2068d934abcdef591fadd4b543d0391c9a6be188105b638e0c65a430d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "six_instruments_three_wonders_not_visible_jia",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:six_jia_generation",
+      "kind": "conditional_source_method",
+      "source_start_line": 17,
+      "source_end_line": 17,
+      "source_excerpt_sha256": "0136b1c1c1e4af0e8ac6bc61e20fc995ccf206d90d47b22b0226b430c07c0286",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "five_element_sequence_military_flags",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_wonders_origin",
+      "kind": "conditional_source_method",
+      "source_start_line": 19,
+      "source_end_line": 19,
+      "source_excerpt_sha256": "95100c48b375275a21576feab89bd585efe2f3470fe3d23dfbdd75c7fce0d94f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "three_cherished_symbols_as_book_allegory",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_wonders_sun_moon_star",
+      "kind": "conditional_source_method",
+      "source_start_line": 20,
+      "source_end_line": 20,
+      "source_excerpt_sha256": "dea9c4b73e2fac516cb3c9237171cd88a1f9c03b8b38b98ae50e38701a24b5e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "yi_bing_ding_three_rare_attributes",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:main_versus_guest_war",
+      "kind": "conditional_source_method",
+      "source_start_line": 22,
+      "source_end_line": 22,
+      "source_excerpt_sha256": "448cd2cfc17d7960d408952b65764b11ddc89da049a9c68b0cb5fc4319dedae8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "jia_defender_geng_attacker_conditional",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_wonders_counter_geng",
+      "kind": "conditional_source_method",
+      "source_start_line": 23,
+      "source_end_line": 23,
+      "source_excerpt_sha256": "b2cb85c6dcf6e707087c0da5358160eeb645bf3f812ff66e531f3f46f05232fd",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "different_allegorical_strategies_and_ding_ding",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_wonders_roles",
+      "kind": "conditional_source_method",
+      "source_start_line": 25,
+      "source_end_line": 25,
+      "source_excerpt_sha256": "ac542cfa0d64b216f94ab14af7477d28cb3f29651c908a988ff75144aa051982",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "military_advisor_bodyguard_logistics_context",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:fixed_nine_symbol_cycle",
+      "kind": "conditional_source_method",
+      "source_start_line": 27,
+      "source_end_line": 27,
+      "source_excerpt_sha256": "0d07e020564cf1e8528f3a78f995138536c4a1a5fcbf7c62452aaf27fc321483",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "wujigengxinrenguidingbingyi_casting_cycle",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:four_factor_roles",
+      "kind": "conditional_source_method",
+      "source_start_line": 34,
+      "source_end_line": 34,
+      "source_excerpt_sha256": "0ee3a3a5bc5694c1a8ad27ad19ac538fb671121ec559477865435bd4feb3d43b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "heaven_place_people_deity_four_noninterchangeable_layers",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:heaven_stars_context",
+      "kind": "conditional_source_method",
+      "source_start_line": 35,
+      "source_end_line": 35,
+      "source_excerpt_sha256": "579102f338dc466ed9f3f8c0a5e6a31a530e932882119aed4b851bdaaf8fefa2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "nine_star_role_weather_social_and_individual",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_yinyang_relative",
+      "kind": "conditional_source_method",
+      "source_start_line": 39,
+      "source_end_line": 39,
+      "source_excerpt_sha256": "265f464e1fddc737a4cb8590f429565fbf9368473c521cccbe1791b51d19583a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "tianfu_polarity_depends_on_reference_frame",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:center_no_ninth_gate",
+      "kind": "conditional_source_method",
+      "source_start_line": 40,
+      "source_end_line": 40,
+      "source_excerpt_sha256": "cefdf9b5e601f36984ed2c40c51f19e9c5fabd5ad67934aca13aa82a094a36be",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "tianqin_center_lodges_kun_with_tianrui_distinct_stems",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_fuyin_fanyin",
+      "kind": "conditional_source_method",
+      "source_start_line": 45,
+      "source_end_line": 45,
+      "source_excerpt_sha256": "b898f2092e94b57523fd1c99120b875697a3c7f6927274c02800ecae466fedc3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "star_return_home_vs_opposite_palace",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_follow_hour_stem",
+      "kind": "conditional_source_method",
+      "source_start_line": 56,
+      "source_end_line": 56,
+      "source_excerpt_sha256": "300f4d104ef8db0d49f2578ed4dff156de75078a543b1b9a639554a88f83af48",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "on_duty_star_rotates_with_hour_stem",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:ordinary_wuxing_seasons",
+      "kind": "conditional_source_method",
+      "source_start_line": 57,
+      "source_end_line": 57,
+      "source_excerpt_sha256": "109843118c9f812f8a63fb918193700d9add897b54f6db873de07fe001d63796",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "earthly_element_wang_xiang_xiu_qiu_si",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:heaven_star_not_earthly_cycle",
+      "kind": "conditional_source_method",
+      "source_start_line": 58,
+      "source_end_line": 58,
+      "source_excerpt_sha256": "5d276b6b199fc568d13e5e4db2552997a794c1430e36e199da59811f98fd418d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "nine_star_wang_xiang_xiu_qiu_fei",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_interaction_order",
+      "kind": "conditional_source_method",
+      "source_start_line": 59,
+      "source_end_line": 59,
+      "source_excerpt_sha256": "890f98308d89dceca29bff8c192a3576ae3cf70dd88706f2317532a7679ed97f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "star_to_palace_element_effect",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_month_example",
+      "kind": "conditional_source_method",
+      "source_start_line": 60,
+      "source_end_line": 60,
+      "source_excerpt_sha256": "d0be5e692a7809a8e74ad403e3e3f6e207f24ac6d81bd5eba45e49101c7d52d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "tianpeng_month_as_secondary_context",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:star_palace_priority",
+      "kind": "conditional_source_method",
+      "source_start_line": 61,
+      "source_end_line": 61,
+      "source_excerpt_sha256": "5c7f93047f0b31d56cb916164bd7b2afe3919ee557bd4acc9552d860e32b0615",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "palace_primary_month_secondary",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:earth_advantage_yongshen",
+      "kind": "conditional_source_method",
+      "source_start_line": 76,
+      "source_end_line": 76,
+      "source_excerpt_sha256": "6fe4aca68a6e9a91f5c104df8f8466a49b91c230307cac0940087538c3e04dc4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "heavenly_stem_palace_twelve_states",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:twelve_growth_stages",
+      "kind": "conditional_source_method",
+      "source_start_line": 77,
+      "source_end_line": 77,
+      "source_excerpt_sha256": "6360584cfed4f3b20d6f69780b75f7e3f8ef8dce99dbb26b9992ce894c0fa961",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "twelve_growth_stage_order",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:heavenly_yang_forward_yin_backward",
+      "kind": "conditional_source_method",
+      "source_start_line": 78,
+      "source_end_line": 78,
+      "source_excerpt_sha256": "76a126782796fb99bb641cf93e7b6c2baac3db639372a67f7bafd469d162c8b0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "different_from_branch_element_cycle",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:heavenly_stem_vs_branch_cycle",
+      "kind": "conditional_source_method",
+      "source_start_line": 128,
+      "source_end_line": 128,
+      "source_excerpt_sha256": "533a87f9ece6d1d390719143bc79bd2074dd9f3b439f1d8e38ea0a6e3d1334eb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "stems_yang_yin_split_branches_only_clockwise",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:growth_stages_symbolism",
+      "kind": "conditional_source_method",
+      "source_start_line": 177,
+      "source_end_line": 177,
+      "source_excerpt_sha256": "1293ba389f5ef258dc82fc4a2c79479e842bb5313f13fe6c8300d8b6664b8d1d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "stages_describe_analogies_not_clinical",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:advantage_stage_groups",
+      "kind": "conditional_source_method",
+      "source_start_line": 178,
+      "source_end_line": 178,
+      "source_excerpt_sha256": "c71d1bb108bc339799aac3a61e7de3c1292d36807984ef7d440a3123b30afeba",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "five_growth_five_decline_two_gestation",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:grave_versus_storehouse",
+      "kind": "conditional_source_method",
+      "source_start_line": 179,
+      "source_end_line": 179,
+      "source_excerpt_sha256": "84c79511115d62211c86f623ac4fb0ccf71d1c58e8f9c598e7b34d526aa79c7e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "in_grave_when_unfavorable_month_storehouse_when_favorable",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:age_stage_old_young_claim",
+      "kind": "conditional_source_method",
+      "source_start_line": 181,
+      "source_end_line": 181,
+      "source_excerpt_sha256": "0a8db97d7f320de193204c68b35124bbbee78c86b361a5821618809b20e147e6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "traditional_age_explanation_not_approved",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:people_eight_doors",
+      "kind": "conditional_source_method",
+      "source_start_line": 187,
+      "source_end_line": 187,
+      "source_excerpt_sha256": "2e36eeef5f176f1fb8ca18d48f90ad76972d69356bf745fcdf41c96a84a808e7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "door_as_human_factor",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_good_doors",
+      "kind": "conditional_source_method",
+      "source_start_line": 189,
+      "source_end_line": 189,
+      "source_excerpt_sha256": "a842d6fb96cb950a5891be2b1595d280a3232e371f12f3469195291597a70cc4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "open_rest_life_default",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:three_unfavorable_doors",
+      "kind": "conditional_source_method",
+      "source_start_line": 190,
+      "source_end_line": 190,
+      "source_excerpt_sha256": "8869eaa1fbda3ba594a5951566742eb368e6f6abdda8418fc289a49b301805ab",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "death_fright_injury_default",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:neutral_doors",
+      "kind": "conditional_source_method",
+      "source_start_line": 191,
+      "source_end_line": 191,
+      "source_excerpt_sha256": "6f9ca2495e2eb542c9a8171a4c460a63de8a7f7359dbba2cd7c3825ea90d3098",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "du_jing_conditional",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:door_context_overrides",
+      "kind": "conditional_source_method",
+      "source_start_line": 192,
+      "source_end_line": 192,
+      "source_excerpt_sha256": "32f532a4104bb7a1d924569b773d0fe2e18056d8c3404b1d8c3c1d3717b7ea2b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "no_unconditional_door_auspiciousness",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:open_door_conditional",
+      "kind": "conditional_source_method",
+      "source_start_line": 193,
+      "source_end_line": 193,
+      "source_excerpt_sha256": "e5e5f6ba5a8a13e711306edda0a001c6ee69ca757d1995f9da99bce504836c7f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "surgery_or_disclosure_not_universal_benefit",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:missing_person_door_context",
+      "kind": "conditional_source_method",
+      "source_start_line": 194,
+      "source_end_line": 194,
+      "source_excerpt_sha256": "57524c3599b6cfaa3303c63149a2e345a191e0ab0a46d71b0b31c7720458846b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "life_door_delay_unfavorable_gate_may_return",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:death_door_context",
+      "kind": "conditional_source_method",
+      "source_start_line": 195,
+      "source_end_line": 195,
+      "source_excerpt_sha256": "8ccbf1feb811d69bc7806bc82661ba5f8d2e69d0dc6ba6e9db5ad6c872791a7b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "funerals_and_hunting_context",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:hurt_door_context",
+      "kind": "conditional_source_method",
+      "source_start_line": 196,
+      "source_end_line": 196,
+      "source_excerpt_sha256": "32303b9ab992b571ad66007d70a33c7120acfe21f287292f323358abd3bc35e2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "debt_pursuit_competition_context",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:context_specificity",
+      "kind": "conditional_source_method",
+      "source_start_line": 197,
+      "source_end_line": 197,
+      "source_excerpt_sha256": "9164d5c00ec9cfbae66b2c649f99fa9f8e7e90699397a77063fb7d9bff6d592b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "domain_specific_before_valence",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:door_palace_interactions",
+      "kind": "conditional_source_method",
+      "source_start_line": 198,
+      "source_end_line": 198,
+      "source_excerpt_sha256": "a1b3ba56f467a66c32acbaf78e3dabeaed1ea5ccf9daf2e0afbf9f0e622f9377",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "he_ yi_ po_ zhi_with_month",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:door_open_ended_context",
+      "kind": "conditional_source_method",
+      "source_start_line": 220,
+      "source_end_line": 220,
+      "source_excerpt_sha256": "24bb61969117f21d6abdd7f461d24e1df5c505d70adaa92fb08c018dc22ff796",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "do_not_expand_as_hardcoded_universal_rule",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:deities_symbolic_not_proof",
+      "kind": "conditional_source_method",
+      "source_start_line": 225,
+      "source_end_line": 225,
+      "source_excerpt_sha256": "602d94fb0e45ec0622406de919c364709ca43a67f6bd3f3d3876f8210aafa0ee",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "historical_symbolic_tradition",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:deities_role",
+      "kind": "conditional_source_method",
+      "source_start_line": 229,
+      "source_end_line": 229,
+      "source_excerpt_sha256": "c9e982be057b684fd5ea8f20236eadaed7d5315454038f40981f42f61fdd8d01",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "deity_support_requires_context",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:deities_eight",
+      "kind": "conditional_source_method",
+      "source_start_line": 230,
+      "source_end_line": 230,
+      "source_excerpt_sha256": "b5d5b48e310b6988cb5c9055acbe361dc674509385bb76f43caec075fbcc79ad",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "eight_not_ninth_center",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "kaiwu:four_factors:method:deities_dynamic_rotation",
+      "kind": "conditional_source_method",
+      "source_start_line": 239,
+      "source_end_line": 239,
+      "source_excerpt_sha256": "89d948db678af37cabc77f2b5dd4b31c7edccdae2846533725a37e3366ce138f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:conditional_method",
+      "relation_to_prior": "clarifies",
+      "normalized": {
+        "method_topic": "deities_follow_zhifu_yang_shun_yin_ni",
+        "requires_domain_and_full_source_conditions": true,
+        "unverified_human_rule": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:open_with_white_tiger",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 193,
+      "source_end_line": 193,
+      "source_excerpt_sha256": "e5e5f6ba5a8a13e711306edda0a001c6ee69ca757d1995f9da99bce504836c7f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "开",
+        "additional_conditions": [
+          "白虎"
+        ],
+        "author_qualified_effect": "health_or_pregnancy_surgery_possible",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:open_discloses_secrecy",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 193,
+      "source_end_line": 193,
+      "source_excerpt_sha256": "e5e5f6ba5a8a13e711306edda0a001c6ee69ca757d1995f9da99bce504836c7f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "开",
+        "additional_conditions": [
+          "保密"
+        ],
+        "author_qualified_effect": "disclosed_not_guaranteed",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:life_missing_delays",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 194,
+      "source_end_line": 194,
+      "source_excerpt_sha256": "57524c3599b6cfaa3303c63149a2e345a191e0ab0a46d71b0b31c7720458846b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "生",
+        "additional_conditions": [
+          "行人走失"
+        ],
+        "author_qualified_effect": "may_temporarily_delay_return",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:death_fright_hurt_missing",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 194,
+      "source_end_line": 194,
+      "source_excerpt_sha256": "57524c3599b6cfaa3303c63149a2e345a191e0ab0a46d71b0b31c7720458846b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "死惊伤",
+        "additional_conditions": [
+          "行人走失"
+        ],
+        "author_qualified_effect": "may_prompt_return_not_guaranteed",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:death_funeral_or_fishing",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 195,
+      "source_end_line": 195,
+      "source_excerpt_sha256": "8ccbf1feb811d69bc7806bc82661ba5f8d2e69d0dc6ba6e9db5ad6c872791a7b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "死",
+        "additional_conditions": [
+          "吊丧埋葬打猎钓鱼"
+        ],
+        "author_qualified_effect": "may_be_favorable_in_this_context",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:hurt_debt_or_competition",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 196,
+      "source_end_line": 196,
+      "source_excerpt_sha256": "32303b9ab992b571ad66007d70a33c7120acfe21f287292f323358abd3bc35e2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "伤",
+        "additional_conditions": [
+          "索债竞争捕盗渔猎"
+        ],
+        "author_qualified_effect": "may_be_suitable_in_this_context",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:auspicious_door_generates_palace",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 198,
+      "source_end_line": 198,
+      "source_excerpt_sha256": "a1b3ba56f467a66c32acbaf78e3dabeaed1ea5ccf9daf2e0afbf9f0e622f9377",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "吉门",
+        "additional_conditions": [
+          "门生宫"
+        ],
+        "author_qualified_effect": "auspicious_can_be_strengthened",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:inauspicious_door_generates_palace",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 198,
+      "source_end_line": 198,
+      "source_excerpt_sha256": "a1b3ba56f467a66c32acbaf78e3dabeaed1ea5ccf9daf2e0afbf9f0e622f9377",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "凶门",
+        "additional_conditions": [
+          "门生宫"
+        ],
+        "author_qualified_effect": "unfavorable_can_be_strengthened",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:door_controls_palace",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 198,
+      "source_end_line": 198,
+      "source_excerpt_sha256": "a1b3ba56f467a66c32acbaf78e3dabeaed1ea5ccf9daf2e0afbf9f0e622f9377",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "门克宫",
+        "additional_conditions": [
+          "迫"
+        ],
+        "author_qualified_effect": "judgment_requires_door_valence",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "door:conditional:palace_controls_door",
+      "kind": "door_palace_domain_exception",
+      "source_start_line": 198,
+      "source_end_line": 198,
+      "source_excerpt_sha256": "a1b3ba56f467a66c32acbaf78e3dabeaed1ea5ccf9daf2e0afbf9f0e622f9377",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:domain_conditional_door",
+      "relation_to_prior": "extends",
+      "normalized": {
+        "door_or_relation": "宫克门",
+        "additional_conditions": [
+          "制"
+        ],
+        "author_qualified_effect": "judgment_requires_door_valence",
+        "actual_outcome_not_verified": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    }
+  ]
+}

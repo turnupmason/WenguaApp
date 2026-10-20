@@ -1,0 +1,115 @@
+{
+  "schema": "wengua_cross_book_references_v2",
+  "source_sha256": "6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83",
+  "links": [
+    {
+      "source_line": 27,
+      "target_book": "shenqi",
+      "cited_printed_page": "46~51",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:27",
+      "reference_role": "former_book_rule_or_example_not_new_independent_case",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 40,
+      "target_book": "shenqi",
+      "cited_printed_page": "334~337",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:40",
+      "reference_role": "former_book_case_with_book_only_narrative",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 42,
+      "target_book": "shenqi",
+      "cited_printed_page": "322~324",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:42",
+      "reference_role": "former_book_rule_or_example_not_new_independent_case",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 43,
+      "target_book": "shenqi",
+      "cited_printed_page": "323",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:43",
+      "reference_role": "former_book_rule_or_example_not_new_independent_case",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 44,
+      "target_book": "shenqi",
+      "cited_printed_page": "323",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:44",
+      "reference_role": "former_book_rule_or_example_not_new_independent_case",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 180,
+      "target_book": "shenqi",
+      "cited_printed_page": "250~252",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:180",
+      "reference_role": "prior_explicit_error_and_retrospective_correction",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 182,
+      "target_book": "shenqi",
+      "cited_printed_page": "152~154",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:182",
+      "reference_role": "former_book_case_with_book_only_narrative",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 188,
+      "target_book": "shenqi",
+      "cited_printed_page": "100~104",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:188",
+      "reference_role": "former_book_rule_or_example_not_new_independent_case",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 199,
+      "target_book": "shenqi",
+      "cited_printed_page": "246~248",
+      "ref_id": "kaiwu:four_factors:shenqi_reference:199",
+      "reference_role": "prior_explicit_error_and_retrospective_correction",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_old_event_id": null,
+      "source_only_does_not_independently_validate_prediction": true,
+      "review_status": "draft"
+    }
+  ],
+  "no_new_case_or_chart": true
+}
