@@ -1,7 +1,7 @@
 {
   "schema": "wengua_sports_source_audit_v1",
   "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
-  "actual_chart_start": [
+  "printed_charts": [
     22,
     61,
     98,
@@ -10,8 +10,49 @@
     213,
     248
   ],
-  "case2_no_printed_early_chart": true,
-  "case3_all_methods_preserved": true,
-  "case5_literal_OCR": "铺庚",
-  "case6_initial_wrong_winner_and_hindsight_separate": true
+  "case2_unprinted": {
+    "line": 54,
+    "author_first_judgment": 56,
+    "later_printed_chart": 61,
+    "missing_chart_not_generated": true
+  },
+  "case3_alternative_methods": {
+    "palace_number": [
+      114,
+      116
+    ],
+    "eight_gates": [
+      118,
+      120,
+      122,
+      124
+    ],
+    "nine_stars": [
+      126,
+      128,
+      130,
+      132
+    ]
+  },
+  "case5_ocr": {
+    "line": 181,
+    "palace": "离九宫",
+    "raw": "铺庚",
+    "candidate": "辅庚",
+    "not_corrected_without_original_print": true
+  },
+  "case5_score": {
+    "line": 202,
+    "regulation": "1:1",
+    "extra_time": "1:1",
+    "post_penalty_total_reported": "5:3"
+  },
+  "case6_author_initial_error": {
+    "line": 235,
+    "incorrect_winner": "Croatia",
+    "later_true_winner": "France",
+    "score_order_same_digits": "2:1",
+    "retrospective_correction_line": 237,
+    "do_not_train_first_wrong_judgment_as_success": true
+  }
 }

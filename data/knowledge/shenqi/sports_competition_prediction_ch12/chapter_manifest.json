@@ -1,16 +1,40 @@
 {
   "schema": "wengua_sports_prediction_manifest_v1",
-  "stage": "source_metadata_before_immutable_archive",
+  "source_chapter": "体育竞赛预测",
+  "source_chapter_number_printed": "第十二章",
+  "processed_section_count": 16,
   "chapter_key": "shenqi/sports_competition_prediction_ch12/v1",
   "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
-  "source_lines": 276,
   "source_bytes": 26814,
-  "cases": 7,
+  "source_lines": 276,
+  "events": 7,
   "printed_charts": 7,
-  "author_steps": 32,
-  "domain_methods": 11,
-  "source_event_errors": [
+  "printed_palace_literals": 63,
+  "author_analysis_steps": 32,
+  "general_conditional_method_candidates": 11,
+  "case_analysis_candidate_entries": 32,
+  "new_semantic_assertions": 42,
+  "book_case_error_explicit": [
     6
   ],
-  "source_study_only": true
+  "first_unprinted_cast_case": 2,
+  "different_source_reading_methods_case": 3,
+  "score_penalty_not_regulation_case": 5,
+  "source_anomaly_case": 5,
+  "human_professional_approved_steps": 0,
+  "source_predictions_independent_validity": false,
+  "full_archive_baseline_sha256": "44efe2ed11023c763558f3eabd4cc98f55c515482515d89a78a7641cdb1fde4e",
+  "full_archive_sha256": "a3573b3b147c24b2eb149fb43f6c6582d7a10a722c25f6c863571f4d4a29efb9",
+  "actual_count": {
+    "sections": 16,
+    "cases": 84,
+    "historical_chart_cells": 756,
+    "historical_case_additional_cast_cells": 45,
+    "historical_case_reasoning": 376,
+    "semantic_assertions": 990,
+    "historical_case_reasoning_trace": 376,
+    "historical_palace_standardization": 801
+  },
+  "centres_with_source_paired_host": 89,
+  "archive_from_sqlite_backup": true
 }
