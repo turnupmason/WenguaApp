@@ -40,6 +40,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/022_hot_topics_shared_domains.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/023_kaiwu_marriage_unified_case_provenance.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/024_kaiwu_employment_shared_domain_multi_issue.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/025_kaiwu_education_shared_domain.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
