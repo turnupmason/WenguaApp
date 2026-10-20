@@ -1,0 +1,48 @@
+{
+  "schema": "wengua_military_source_audit_v1",
+  "source_sha256": "d8b369785de0110cc20376191332eef31b04e749d8ed764d7a1a155ae6c19c05",
+  "case1": {
+    "type": "retrospective_lookback_after_WWII_outcome",
+    "source_known_history_line": 31,
+    "author_analysis_step_lines": [
+      54,
+      56,
+      58,
+      60,
+      62,
+      64,
+      66,
+      68,
+      70
+    ],
+    "chronology_flag": "1937 Hitler WWII declaration / sequence is a source historical claim, not externally verified here",
+    "prospective_blind_evaluation_allowed": false
+  },
+  "case2": {
+    "same_event_family_with_three_actual_casts": true,
+    "source_board_border_lines": [
+      89,
+      126,
+      161
+    ],
+    "actual_cast_dates": [
+      "1998-01-29",
+      "1998-02-07",
+      "1998-02-22"
+    ],
+    "step_continuation_109_includes_line111": true,
+    "source_known_new_facts_case2_c02": [
+      119,
+      123
+    ],
+    "source_known_news_before_c03": [
+      152,
+      154,
+      156,
+      158
+    ],
+    "no_relabel_as_three_independent_correct_predictions": true,
+    "source_after_episode_feedback_line": 183
+  },
+  "methodological_guard": "Historical divination is not validated geopolitical or military intelligence; no use for military action planning."
+}

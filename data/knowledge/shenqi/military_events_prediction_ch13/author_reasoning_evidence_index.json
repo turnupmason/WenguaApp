@@ -1,0 +1,615 @@
+{
+  "schema": "wengua_military_author_step_candidates_v1",
+  "chapter_key": "shenqi/military_events_prediction_ch13/v1",
+  "source_sha256": "d8b369785de0110cc20376191332eef31b04e749d8ed764d7a1a155ae6c19c05",
+  "author_step_count": 22,
+  "human_verified_complete_causal_chains": 0,
+  "cases": [
+    {
+      "case_id": "shenqi.military.case01",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 54,
+          "source_end_line": 54,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "守方值符艮土与攻方庚坎水月令生克的事后对照",
+          "source_support_fragments_draft": [
+            "以值符落宫为主方为守方",
+            "以庚落宫为客方为发动战争的一方",
+            "值符代表世界正义力量",
+            "落艮8宫属土",
+            "与太岁丑土同宫",
+            "又当辰月月令",
+            "处于旺相状态",
+            "庚代表以希特勒为首的法西斯反动力量",
+            "落坎1宫属水",
+            "死于月令",
+            "处于休囚状态",
+            "艮土克坎水",
+            "值符克庚"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "庚代表以希特勒为首的法西斯反动力量"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 56,
+          "source_end_line": 56,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "九星反吟作为战事结局的事后象义解释",
+          "source_support_fragments_draft": [
+            "(2)大局是九星反吟",
+            "九星代表天时"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "(2)大局是九星反吟"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 58,
+          "source_end_line": 58,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "日干丁取希特勒、乾宫惊门九地解释当时声明及长久",
+          "source_support_fragments_draft": [
+            "(3)以日干丁代表希特勒",
+            "落乾6宫",
+            "临惊门",
+            "惊门主口舌"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:九地",
+            "door:惊"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 60,
+          "source_end_line": 60,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "辰月乾金时令与马星回述初期强弱",
+          "source_support_fragments_draft": [
+            "(4)奇门一般均以落宫论五行",
+            "而且重用天干",
+            "日干丁落乾宫",
+            "以月令为纲",
+            "今辰月土旺生金",
+            "又辰土冲乾宫之戌土生金",
+            "故而按旺相论",
+            "又临马星亥",
+            "又受月令冲动"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "trigram:乾"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 62,
+          "source_end_line": 62,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "逐年天干戊己庚辛壬癸甲乙事后归因的推演",
+          "source_support_fragments_draft": [
+            "(5)1938年年干戊土",
+            "1939年年干己土",
+            "均生助乾金",
+            "1940年年干庚金",
+            "1941年年干辛金",
+            "为乾金当令最旺之时",
+            "1942年年干壬水",
+            "1943年年干癸水",
+            "1944年年干甲木",
+            "1945年年干乙木",
+            "木旺金囚",
+            "自然是希特勒被囚之时了"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 64,
+          "source_end_line": 64,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "沿八门顺序回溯战事兴衰的作者解释",
+          "source_support_fragments_draft": [
+            "(6)奇门主要以八门代表人事",
+            "人事兴衰主要看八门",
+            "代表希特勒的日干落乾宫临惊门",
+            "惊门主口舌",
+            "惊门又代表破阵",
+            "然后是开、休、生三吉门",
+            "到巽宫临伤门",
+            "伤门主搏斗",
+            "然后是杜门不通",
+            "景门主血光",
+            "最后是死门"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "door:伤",
+            "door:惊",
+            "door:景",
+            "door:杜",
+            "door:死",
+            "trigram:乾",
+            "trigram:巽"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 7,
+          "source_line": 66,
+          "source_end_line": 66,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "地支宫位映射1937至1945年的事后时间线",
+          "source_support_fragments_draft": [
+            "(7)奇门是一个时空数理模型",
+            "八宫所含地支代表着自然时序",
+            "地支丑在艮8宫",
+            "寅也在艮8宫",
+            "卯在3宫",
+            "1940年庚辰、1941年辛巳",
+            "辰、巳在巽4宫",
+            "午在离9宫",
+            "未、申在坤2宫",
+            "酉在兑7宫",
+            "临死门"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "door:死"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 8,
+          "source_line": 68,
+          "source_end_line": 68,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "值使死门兑七宫结合七、九年两种应期候选",
+          "source_support_fragments_draft": [
+            "(8)奇门又以值使门落宫断应期",
+            "死门值使",
+            "死门落兑7宫",
+            "二者兑宫属金",
+            "即希特勒发生世界大战"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:九地",
+            "door:死",
+            "trigram:兑"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 9,
+          "source_line": 70,
+          "source_end_line": 70,
+          "source_cast": "primary",
+          "phase": "retrospective_on_known_result_no_blind_test",
+          "domain_method_topic": "乾金与震巽木对立及甲乙木年的事后结论",
+          "source_support_fragments_draft": [
+            "(9)既然以日干落宫乾金代表希特勒",
+            "1944年至1945年年干为甲、乙木",
+            "木旺金囚"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "那么自然应以对立面的震、巽木代表世界反法西斯力量",
+            "世界反法西斯力量胜利"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.military.case02",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 105,
+          "source_end_line": 105,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "主客兵阵以值符守庚攻而非日常民事取用",
+          "source_support_fragments_draft": [
+            "而其最大敌人是庚(因庚金克甲木",
+            "最凶),所以古籍中以值符为战争一方",
+            "以庚为战争另一方"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 107,
+          "source_end_line": 107,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "首盘值符兑7为伊拉克并结合辛己死门状态",
+          "source_support_fragments_draft": [
+            "值符落兑7宫",
+            "代表伊拉克",
+            "这些正符合伊拉克的状况",
+            "临死门"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符",
+            "door:死"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 109,
+          "source_end_line": 111,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "首盘庚巽4伤门的好战征象兼玄武空亡反证，含续段111",
+          "source_support_fragments_draft": [
+            "(3)以庚代表美国一方",
+            "庚落巽4宫",
+            "临伤门",
+            "庚+丙为白入荧",
+            "但巽宫逢空亡"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "但巽宫逢空亡",
+            "但并非真要动武"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:玄武",
+            "door:伤",
+            "trigram:巽"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 113,
+          "source_end_line": 113,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "首盘兑金对巽木、六合调解、月癸朋友宫综合阻战",
+          "source_support_fragments_draft": [
+            "(4)值符落宫属金",
+            "庚落宫属木",
+            "虽然立春以后木旺金囚",
+            "但毕竟木难以克金",
+            "况且代表联合国的六合落8宫为土",
+            "生助兑宫之金",
+            "月干癸为兄弟为伊拉克的朋友之国",
+            "落乾宫为金",
+            "与值符宫比和"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "虽然立春以后木旺金囚",
+            "但毕竟木难以克金",
+            "美国也不敢轻易动武"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符",
+            "deity:六合",
+            "trigram:乾",
+            "trigram:兑"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 115,
+          "source_end_line": 115,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "先动为客、后动为主与天地盘干角色条件",
+          "source_support_fragments_draft": [],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 117,
+          "source_end_line": 117,
+          "source_cast": "primary",
+          "phase": "first_cast_source_study_claim_only",
+          "domain_method_topic": "首盘天日丙地癸与天时己地壬，比较两种相反生克及月令",
+          "source_support_fragments_draft": [
+            "自然应以天盘日干丙代表美国",
+            "地盘六仪癸代表伊拉克",
+            "癸水克丙火",
+            "主克客",
+            "又可取天盘时干己代表美国",
+            "地盘六仪壬代表伊拉克",
+            "己土克壬水",
+            "客克主",
+            "似乎美国要打伊拉克",
+            "寅、卯月木旺土死",
+            "也难以克壬水"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "似乎美国要打伊拉克",
+            "但此时已是丑月之末",
+            "也难以克壬水"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 7,
+          "source_line": 142,
+          "source_end_line": 142,
+          "source_cast": "cast02",
+          "phase": "second_cast_after_new_question",
+          "domain_method_topic": "第二盘值符坎1伊拉克休门伏吟背景",
+          "source_support_fragments_draft": [
+            "(1)以值符为守方",
+            "代表伊拉克",
+            "落坎1宫",
+            "临休门伏吟",
+            "有囚狱词讼之灾",
+            "正符合伊拉克被施行经济制裁"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "不动之象"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符",
+            "deity:玄武",
+            "door:休"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 8,
+          "source_line": 144,
+          "source_end_line": 144,
+          "source_cast": "cast02",
+          "phase": "second_cast_after_new_question",
+          "domain_method_topic": "第二盘庚乾6美国九天与己庚官符格",
+          "source_support_fragments_draft": [
+            "(2)以庚为攻方",
+            "落乾6宫",
+            "庚+己为“官符刑格”,正符合美国充当世界警察角色的情况"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:九天"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 9,
+          "source_line": 146,
+          "source_end_line": 146,
+          "source_cast": "cast02",
+          "phase": "second_cast_after_new_question",
+          "domain_method_topic": "第二盘乾金生坎水且八门伏吟，作为不战证据",
+          "source_support_fragments_draft": [
+            "庚落乾6宫属金",
+            "值符落坎1宫属水",
+            "金生水",
+            "二者处于相生关系",
+            "又八门伏吟"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "(3)但是",
+            "不动之象"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 10,
+          "source_line": 148,
+          "source_end_line": 148,
+          "source_cast": "cast02",
+          "phase": "second_cast_after_new_question",
+          "domain_method_topic": "第二盘六合巽4联合国调解及寅月克制限制",
+          "source_support_fragments_draft": [
+            "落巽4宫",
+            "值符生六合",
+            "伊拉克必然求联合国从中调解",
+            "木旺金囚",
+            "庚落6宫之金虽克六合宫之木",
+            "但克不动"
+          ],
+          "source_counterevidence_fragments_draft": [
+            "但克不动"
+          ],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符",
+            "deity:六合"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 11,
+          "source_line": 150,
+          "source_end_line": 150,
+          "source_cast": "cast02",
+          "phase": "second_cast_after_new_question",
+          "domain_method_topic": "第二盘天地盘日乙壬和时癸辛相生的另组主客证据",
+          "source_support_fragments_draft": [
+            "(5)再看主客关系：以日干乙为先动者为客为美国",
+            "天盘乙在9宫",
+            "下临地盘壬为伊拉克",
+            "壬水生乙木",
+            "主生客",
+            "以时干癸为客为美国",
+            "天盘癸在8宫",
+            "下临地盘辛为伊拉克",
+            "辛金生癸水",
+            "主生客",
+            "主、客相生"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 12,
+          "source_line": 177,
+          "source_end_line": 177,
+          "source_cast": "cast03",
+          "phase": "third_cast_separate_known_news_update",
+          "domain_method_topic": "第三盘值符庚同巽4、六合兑7和景门文书综合推谈判达成",
+          "source_support_fragments_draft": [
+            "(1)值符为伊拉克",
+            "庚为美国",
+            "同落巽4宫",
+            "同宫比和",
+            "落兑7宫",
+            "7宫之金克4宫之木",
+            "以景门为文书",
+            "受值符和庚同落4宫之生"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [
+            "deity:值符",
+            "deity:六合",
+            "door:景"
+          ],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 13,
+          "source_line": 179,
+          "source_end_line": 179,
+          "source_cast": "cast03",
+          "phase": "third_cast_separate_known_news_update",
+          "domain_method_topic": "第三盘庚下丙与丙下癸主克客的补充条件",
+          "source_support_fragments_draft": [
+            "(2)再看主客：日干庚下临丙",
+            "丙火克庚金",
+            "主克客",
+            "时干丙下临癸",
+            "癸水克丙火",
+            "主克客",
+            "伊拉克一方有利"
+          ],
+          "source_counterevidence_fragments_draft": [],
+          "cross_chapter_lexical_candidates_unverified": [],
+          "source_original_kept_in_sqlite": true,
+          "claimed_prediction_independently_historically_verified": false,
+          "completed_human_expert_causal_review": false,
+          "author_reconstruction_status": "source_anchored_draft_needs_full_evidence_chain_review",
+          "positive_training_eligible": false
+        }
+      ]
+    }
+  ]
+}

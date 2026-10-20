@@ -1,0 +1,240 @@
+{
+  "schema": "wengua_military_domain_research_workflow_v1",
+  "chapter_key": "shenqi/military_events_prediction_ch13/v1",
+  "source_sha256": "d8b369785de0110cc20376191332eef31b04e749d8ed764d7a1a155ae6c19c05",
+  "methods": [
+    {
+      "concept_id": "military:general:zhifu_is_defensive_main",
+      "source_line": 11,
+      "conditional_summary": "值符落宫作主方、守方，六庚落宫作客方、攻方",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:symbol_jia_geng_opposition",
+      "source_line": 11,
+      "conditional_summary": "六甲遁六仪；庚克甲是书内选用神依据",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:main_controls_geng",
+      "source_line": 13,
+      "conditional_summary": "值符宫克庚宫原书说主胜",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_controls_main",
+      "source_line": 13,
+      "conditional_summary": "庚宫克值符宫原书说客胜",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:month_strength",
+      "source_line": 13,
+      "conditional_summary": "值符和六庚各宫旺相休囚作为条件",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:jing_jing_gates",
+      "source_line": 13,
+      "conditional_summary": "景门惊门与主客宫相生及战阵人事关系",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:both_auspicious_with_equal_power",
+      "source_line": 13,
+      "conditional_summary": "两方旺相与门条件相等可能不战而退",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_as_zhifu_same_palace",
+      "source_line": 13,
+      "conditional_summary": "六庚为值符时主客同宫，不宜机械决定胜负",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:opposing_palaces_generate",
+      "source_line": 13,
+      "conditional_summary": "主客相生可候选和解",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:day_over_geng",
+      "source_line": 13,
+      "conditional_summary": "日干加庚在书内倾向主胜",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_over_day",
+      "source_line": 13,
+      "conditional_summary": "庚加日干在书内倾向客胜",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:day_hour_roles",
+      "source_line": 13,
+      "conditional_summary": "日干与时干可作额外两方取用，须交代角色",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:military_intelligence_jing",
+      "source_line": 15,
+      "conditional_summary": "景门作军事信息用神，需结合旺相与三奇",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:intel_auspicious_true",
+      "source_line": 15,
+      "conditional_summary": "景门旺相得奇书内称实信",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:intel_no_qi_rumor",
+      "source_line": 15,
+      "conditional_summary": "景门无奇原书称诈信",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:intel_void_weak",
+      "source_line": 15,
+      "conditional_summary": "景门空亡休囚原书称谣言",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:deployment_zhifu_open_geng",
+      "source_line": 17,
+      "conditional_summary": "值符为上级、开门为官长、庚为对方",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:deployment_open_weak",
+      "source_line": 17,
+      "conditional_summary": "开门受克加休囚墓，原书推部署失当",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:deployment_open_supported",
+      "source_line": 17,
+      "conditional_summary": "值符生开门且克庚，原书推部署得当",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:enemy_in_out_palaces",
+      "source_line": 19,
+      "conditional_summary": "庚在内四宫/外四宫作来去取象，须区分未入境与已入境",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:tai_bai_ying",
+      "source_line": 19,
+      "conditional_summary": "太白入荧或荧入太白两格分别有来去解释",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_with_palace_element",
+      "source_line": 19,
+      "conditional_summary": "庚宫与落宫克制关系判断进退的传统说法",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_with_xuanwu_star",
+      "source_line": 19,
+      "conditional_summary": "庚受玄武天蓬白虎等条件，原书说战斗趋势",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_with_jiutian_jiudi",
+      "source_line": 19,
+      "conditional_summary": "九天与九地给攻方气势象义候选",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:geng_below_stem_for_time",
+      "source_line": 19,
+      "conditional_summary": "庚下之干作为来去应期候选",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:attack_geng_tianqin",
+      "source_line": 21,
+      "conditional_summary": "攻城以庚攻、天禽守，不与一般战争混用",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:attack_open_center",
+      "source_line": 21,
+      "conditional_summary": "庚旺相乘星兼开门入中宫传统城攻条件",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:defender_tianqin_strength",
+      "source_line": 21,
+      "conditional_summary": "地盘天禽吉门旺相作为守将状况候选",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:defense_tianqin",
+      "source_line": 23,
+      "conditional_summary": "守城以天禽守、天蓬和六庚攻",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:defense_four_gates_bing",
+      "source_line": 23,
+      "conditional_summary": "守方休生杜景旺相及丙的守城组合",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:defense_invading_center",
+      "source_line": 23,
+      "conditional_summary": "天蓬庚加中宫与开门组合的失守条件",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "military:general:commander_birthday_stem",
+      "source_line": 25,
+      "conditional_summary": "选将需要比较众将年命干与开门冲关系，不能不带现实约束",
+      "source_is_historical_author_opinion": true,
+      "review_status": "draft"
+    }
+  ],
+  "study_workflow": [
+    "确定是不是军事历史事后对照研究，或当时真实问事；事后研究绝不能当初断",
+    "按作者领域方法选择守方值符、攻方六庚，必要时用日干/时干与天地盘主客作为另组证据",
+    "按实际起盘时辰和所印九宫绑定真实门星神、五行时令、格局和旬空，五宫寄坤另记推导",
+    "值符宫与庚宫生克相互证据、旺衰、景惊门、六合调解、伏反吟，区分多个相反条件",
+    "按时间顺序复原案例二的三个不同日时提问、已知新增事实、前三次证据，避免后验泄漏",
+    "区分初始预测、逐步过程、候选应期、事实反馈；独立标记有历史争议的源断言",
+    "全部知识和案例未经独立事实验证、不得作为现实军事决策或可操作情报"
+  ]
+}
