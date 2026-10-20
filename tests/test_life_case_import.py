@@ -47,7 +47,7 @@ class LifeHistoryRegression(unittest.TestCase):
    self.assertEqual(db.execute('PRAGMA foreign_key_check').fetchall(),[])
    expected={'sections':20,'cases':98,'historical_chart_cells':882,'historical_case_additional_cast_cells':63,
      'historical_case_reasoning':468,'semantic_assertions':1207,'historical_palace_standardization':945,
-     'historical_life_case_context':5,'historical_life_source_error_segments':1}
+     'historical_life_case_context':5,'historical_life_source_error_segments':5}
    for t,n in expected.items():self.assertEqual(db.execute('SELECT count(*) FROM '+t).fetchone()[0],n,t)
    self.assertEqual(db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0],6)
    self.assertEqual(db.execute("SELECT count(*) FROM historical_case_reasoning WHERE case_id LIKE 'shenqi.life.%'").fetchone()[0],51)

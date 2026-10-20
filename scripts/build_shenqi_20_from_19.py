@@ -312,7 +312,7 @@ def build(base,source,output,index_dir,migration):
     'historical_case_additional_cast_cells':63,'historical_case_additional_casts':7,
     'historical_case_reasoning':468,'semantic_assertions':1122+len(METHODS)+51,
     'historical_case_reasoning_trace':468,'historical_palace_standardization':945,
-    'historical_life_case_context':5,'historical_life_source_error_segments':1}
+    'historical_life_case_context':5,'historical_life_source_error_segments':5}
   counts={name:db.execute('SELECT count(*) FROM "'+name+'"').fetchone()[0] for name in expected}
   if counts!=expected:raise ValueError(('Unexpected count change',counts,expected))
   center=db.execute('''SELECT count(*) FROM historical_palace_standardization
