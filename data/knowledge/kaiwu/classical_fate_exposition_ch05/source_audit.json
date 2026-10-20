@@ -1,0 +1,12 @@
+{
+  "source_sha256": "0a40f638a61bafcdb0a215925a348e3b5da0aa3586d79d952fb72a63f1e5ffa2",
+  "verses": 12,
+  "distinct_explanations": 12,
+  "new_predicted_case_families": 0,
+  "no_question_cast_charts": true,
+  "author_casting_chaibu_not_overwriting_zhirun": true,
+  "face_body_kinship_and_wealth_symbols_not_scientific_medical_or_legal_facts": true,
+  "same_stem_pair_guest_host_order_preserved": true,
+  "older_book_original_source_unchanged": true,
+  "candidate_training_permission": false
+}

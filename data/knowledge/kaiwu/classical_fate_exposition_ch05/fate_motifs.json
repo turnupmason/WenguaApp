@@ -1,0 +1,1926 @@
+{
+  "chapter_key": "kaiwu/classical_fate_exposition_ch05/v1",
+  "source_sha256": "0a40f638a61bafcdb0a215925a348e3b5da0aa3586d79d952fb72a63f1e5ffa2",
+  "motifs": [
+    {
+      "motif_key": "kaiwu:fate:1:motif:001",
+      "concept_id": "casting:bureau:chaibu_preferred",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "我提倡用拆补法定局",
+      "excerpt_sha256": "5079d4c841207fb82da8690572cc35c1a0e219ea93be669967e836b69c215ea9",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:casting_method",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "casting_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:002",
+      "concept_id": "casting:bureau:zhirun_super_spirit",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "用置闰法定局",
+      "excerpt_sha256": "08d34a60164fbe82dde6f39ad09237785607470c56d25776739899de3bb8893e",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:casting_method",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "casting_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:003",
+      "concept_id": "palace:9:body_head_face",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "离9宫代表一个人的头部和面部",
+      "excerpt_sha256": "fdf76be2b3e8f80a96541ea2c0dbb74a0badc6e2f05c0d4563ea465661e23346",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:004",
+      "concept_id": "palace:6:8:body_legs",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "乾6宫和艮8宫",
+      "excerpt_sha256": "944f90f82daf19adfd703a3a40998975ef2d814d563621bdc46c1993c2656f71",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:005",
+      "concept_id": "palace:2:4:shoulder_ear",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "坤2宫和巽4宫",
+      "excerpt_sha256": "98413e476fc8d0981a612ffe26300a8532552445186933ac1dd62f5bc21b3f93",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:006",
+      "concept_id": "palace:3:7:chest",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "震3宫和兑7宫",
+      "excerpt_sha256": "c7c1b776e1d041530187688e96c9b9e380567480309251512273c624eeafa60f",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:007",
+      "concept_id": "palace:1:urogenital",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "坎1宫代表男女的阴部和肾",
+      "excerpt_sha256": "9b56f6679ad92e5db4064d421fdc6cb879c9ff3110127aa2aa2d523267796c7c",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:1:motif:008",
+      "concept_id": "palace:5:heart_abdomen",
+      "source_line": 7,
+      "verse_number": 1,
+      "layer": "author_explanation",
+      "source_excerpt": "中5宫代表一个人的心脏和腹部",
+      "excerpt_sha256": "b3b6fb6a339e8329f484836bd32a71d1cb06b5e8e8734daa646bdb715ea8ec10",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:palace_body",
+      "condition": {
+        "verse_number": 1,
+        "layer": "commentary",
+        "domain": "palace_body",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:009",
+      "concept_id": "yongshen:family:four_pillars",
+      "source_line": 10,
+      "verse_number": 2,
+      "layer": "ancient_verse",
+      "source_excerpt": "年干父母，月干兄弟，日干本身，时干子女",
+      "excerpt_sha256": "54d73d335558956cc906341243170152e91b78ccd8bdfcd2c58d1a4281587b32",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:family_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "verse",
+        "domain": "family_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:010",
+      "concept_id": "yongshen:work:year_superior",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "年干为上级领导",
+      "excerpt_sha256": "90bff87e17eeb41020824e33e97e92189c211f21b8fa319ae679ca672bd022e1",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:workplace_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "workplace_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:011",
+      "concept_id": "yongshen:work:zhifu_boss",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "以值符为顶头上司",
+      "excerpt_sha256": "5725f74c49dab90a42501a62cd2cb46ee564d97fe36d2d51a772c0b269114693",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:workplace_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "workplace_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:012",
+      "concept_id": "yongshen:work:month_colleague",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "以月干为同事",
+      "excerpt_sha256": "cb11c5d9b66556d4f30b253a4308a3d2691f02d8d7d6da5504d2491e178237c2",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:workplace_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "workplace_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:013",
+      "concept_id": "yongshen:work:hour_subordinate",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "时干为下级",
+      "excerpt_sha256": "5b490d4e9af8e9e60879e4f62ee5ac4b25f0e85c9fd08bdf7b64b9b540938f99",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:workplace_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "workplace_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:014",
+      "concept_id": "yongshen:relationship:yi_ding",
+      "source_line": 10,
+      "verse_number": 2,
+      "layer": "ancient_verse",
+      "source_excerpt": "乙丁之落宫",
+      "excerpt_sha256": "6d088af16c68dd870fb23d8396fe08013eebc5be7482d4a23fe1da786b1a90cd",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:relationship_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "verse",
+        "domain": "relationship_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:015",
+      "concept_id": "yongshen:relationship:geng_bing",
+      "source_line": 10,
+      "verse_number": 2,
+      "layer": "ancient_verse",
+      "source_excerpt": "庚丙二干",
+      "excerpt_sha256": "00420babc8a031af63ac377984f31ecce0bb48c2758fd1f5efb4fbbe4bb64ee0",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:relationship_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "verse",
+        "domain": "relationship_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:016",
+      "concept_id": "yongshen:spouse:day_stem_combination",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "以求测之人的“日干”相合之干",
+      "excerpt_sha256": "19229349a9a3be8cf2d10758eb245c13cbbbe9f57f9937082944fa181e393faa",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:relationship_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "relationship_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:2:motif:017",
+      "concept_id": "yongshen:spouse:both_birth_year",
+      "source_line": 13,
+      "verse_number": 2,
+      "layer": "author_explanation",
+      "source_excerpt": "男女双方的年命落宫",
+      "excerpt_sha256": "0ca1d615ab8e34a544cdb7b41eec6af9739c2d7deaaf38f07ec75587ca4d7ba4",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:relationship_role",
+      "condition": {
+        "verse_number": 2,
+        "layer": "commentary",
+        "domain": "relationship_role",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:018",
+      "concept_id": "fate:solitary:void_and_opposite",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "用神逢空亡为孤，落空亡对冲之宫为虚",
+      "excerpt_sha256": "c6a82681db91a559776273d5d79cd78c221b972bd83a1720583a2aecf6f04b90",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:void_opposite",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "void_opposite",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:019",
+      "concept_id": "fate:geng:palace6_father_claim",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "庚落乾宫",
+      "excerpt_sha256": "6fbd2cf9bc82777d4f4fd87866e3f6aa3caf589a94e94f579ee5a7d0c609aad0",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:symbolic_kin_claim",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "symbolic_kin_claim",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:020",
+      "concept_id": "fate:geng:palace2_mother_claim",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "庚落坤宫",
+      "excerpt_sha256": "c510be67a7ffb034b7e88cf6d02d1362ab6800af95a008ed8e13fe9f3770165b",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:symbolic_kin_claim",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "symbolic_kin_claim",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:021",
+      "concept_id": "fate:geng:month_sibling_claim",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "庚落入月干所在的宫位",
+      "excerpt_sha256": "e1f9d3b147308d76b81f9ca0dc9e8770176db5527426b055cb10326c6841ef02",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:symbolic_kin_claim",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "symbolic_kin_claim",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:022",
+      "concept_id": "fate:yi_geng:ordered_pair_punishment",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "乙+庚，庚+乙均为刑格",
+      "excerpt_sha256": "0eb24f0d93021e9e723e4e2bd2ec0c93e6e5c9d80c5ec53c14bdb939e9353e1c",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:directional_stem_context",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "directional_stem_context",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:3:motif:023",
+      "concept_id": "fate:hour_geng:children_claim",
+      "source_line": 19,
+      "verse_number": 3,
+      "layer": "author_explanation",
+      "source_excerpt": "时干加庚，或庚加时干",
+      "excerpt_sha256": "d17804d518e92983bb21e7bfe6b87262b7dc93f8b040b780188f4a68919dd4bc",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:directional_stem_context",
+      "condition": {
+        "verse_number": 3,
+        "layer": "commentary",
+        "domain": "directional_stem_context",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:024",
+      "concept_id": "door:生:fortune_wealth_property",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "生门代表一个人一生的财运和产业",
+      "excerpt_sha256": "7e99d854a61e6b0c92eb21cdbc7416469fe48c8d7dc601caac5bc15ddc8b8eb0",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:wealth_context",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "wealth_context",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:025",
+      "concept_id": "fate:fortune:life_gate_geng_overcomes_day",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "生门临庚落宫冲克日干之宫",
+      "excerpt_sha256": "5dfd01550bd753e88ec5a422c76fc68d01c9a28b76247a26d6977042525d5ddf",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:conditional_palace_relation",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "conditional_palace_relation",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:026",
+      "concept_id": "fate:fortune:day_overcomes_life_geng",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "日干冲克生门与庚的落宫",
+      "excerpt_sha256": "59ced1b3be8f9e29552fdb4496dce788296bb8cb649d20591ba8d7d1afb2f231",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:conditional_palace_relation",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "conditional_palace_relation",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:027",
+      "concept_id": "fate:fortune:life_outer_day_inner",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "生门落在外盘，而日干本身落在内盘",
+      "excerpt_sha256": "56fcbbb5b2ff3fa10bd450d4efd56924f54e808cc533d58b539130226ec8711c",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:inside_outside",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "inside_outside",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:028",
+      "concept_id": "fate:fortune:day_outer_life_inner",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "日干本身落在外盘，而生门落在内盘",
+      "excerpt_sha256": "8031f89146fa225052e65fec1af649e54628257f3bb72abe04b37294592cda33",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:inside_outside",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "inside_outside",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:029",
+      "concept_id": "fate:fortune:day_life_both_inner",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "日干本身与生门二者都落在内盘宫",
+      "excerpt_sha256": "21d30acf064be1517f4413ca1716cde15f586fca735345f2741e339c62f2bde2",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:inside_outside",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "inside_outside",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:4:motif:030",
+      "concept_id": "fate:fortune:day_life_both_outer",
+      "source_line": 25,
+      "verse_number": 4,
+      "layer": "author_explanation",
+      "source_excerpt": "日干本身和生门都落在外盘宫",
+      "excerpt_sha256": "edb6a241f91e78425aae92fed629918fb4a0ce788e62d1a9edcc39afd6ba66cb",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:inside_outside",
+      "condition": {
+        "verse_number": 4,
+        "layer": "commentary",
+        "domain": "inside_outside",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:5:motif:031",
+      "concept_id": "fate:time:void_day_opposite_hour",
+      "source_line": 28,
+      "verse_number": 5,
+      "layer": "ancient_verse",
+      "source_excerpt": "日值孤，时值虚",
+      "excerpt_sha256": "0b161b136092200d3351e4f18416810e3247f37f82b9f852338c229b46f48c1a",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:void_opposite",
+      "condition": {
+        "verse_number": 5,
+        "layer": "verse",
+        "domain": "void_opposite",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:5:motif:032",
+      "concept_id": "fate:time:void_hour_opposite_day",
+      "source_line": 28,
+      "verse_number": 5,
+      "layer": "ancient_verse",
+      "source_excerpt": "时落孤，日落虚",
+      "excerpt_sha256": "46c6b721fb365c70c33bcf32a5dc1e1bfff0c5a32d92dc09f3352aae726eb0fe",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:void_opposite",
+      "condition": {
+        "verse_number": 5,
+        "layer": "verse",
+        "domain": "void_opposite",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:5:motif:033",
+      "concept_id": "fate:birth_year:palace_clash",
+      "source_line": 28,
+      "verse_number": 5,
+      "layer": "ancient_verse",
+      "source_excerpt": "命被冲克",
+      "excerpt_sha256": "9a94c7ff428bb91d991bc232d80750314beb93385d8b534f3508025094ac0457",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:birth_year",
+      "condition": {
+        "verse_number": 5,
+        "layer": "verse",
+        "domain": "birth_year",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:5:motif:034",
+      "concept_id": "fate:day:grave_extinction",
+      "source_line": 28,
+      "verse_number": 5,
+      "layer": "ancient_verse",
+      "source_excerpt": "日临墓绝",
+      "excerpt_sha256": "05233767b6cea1c712bed036686b6c7ce5d1ec51965005e9138722d9978a26b6",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:twelve_state",
+      "condition": {
+        "verse_number": 5,
+        "layer": "verse",
+        "domain": "twelve_state",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:035",
+      "concept_id": "stem_pair:戊:丙",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "戊+丙",
+      "excerpt_sha256": "4d04a20c237249175e31fd9c54e97fd0ff7ac50a973e35342916044eb43590f2",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:career_guest_host",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "career_guest_host",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:036",
+      "concept_id": "stem_pair:丙:戊",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "丙+戊",
+      "excerpt_sha256": "3aab8788f76c3d61a95ac1917d5992f4e0d676ab5be2584a9efdfbbf53ed3ba8",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:career_guest_host",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "career_guest_host",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:037",
+      "concept_id": "star:天辅星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "天辅星落宫或月令旺相",
+      "excerpt_sha256": "57061b7ccd389993a39588e58f2f45734ce1822b16b7e5c891990f2bd8e51155",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:038",
+      "concept_id": "star:天冲星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "日干临天冲星",
+      "excerpt_sha256": "f7b3b07448d9d7ac5261ef208ca9baecbcddb9410d50ed4883128c06054910d5",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:039",
+      "concept_id": "star:天禽星:center_host_career",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "天禽星本是位镇中宫之星",
+      "excerpt_sha256": "42146de4722bee5e171fb23e2abc540b0bb40bfc9227f90a2d0023aaafccf956",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:040",
+      "concept_id": "star:天柱星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "日干如果临天柱星",
+      "excerpt_sha256": "aa128c432873d5b2ffca8e72c5b21f26b9355936e67b74a21679acf61d8cc8f6",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:041",
+      "concept_id": "star:天心星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "日干如果临天心星",
+      "excerpt_sha256": "6c51350c4ad5805cee0150ae07755adfb75ea50ec5e13eb0ab61f1bc66ddb1b7",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:042",
+      "concept_id": "star:天任星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "日干临天任星",
+      "excerpt_sha256": "926139e501319fc1d2497bd007e8e1ee23094fb7afb8ea4838b45c79149a7e62",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:043",
+      "concept_id": "star:天芮星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "天芮星是颗凶星",
+      "excerpt_sha256": "0c24ae3ee9ff8e6b5a930e90edae7dbf57c936cbc6e8c8bf9963400f15c4627f",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:6:motif:044",
+      "concept_id": "star:天蓬星:career_condition",
+      "source_line": 37,
+      "verse_number": 6,
+      "layer": "author_explanation",
+      "source_excerpt": "日干临天蓬星",
+      "excerpt_sha256": "046dc2c514c76115394111bf5db6afd37560f363033070463be6dc13d6a6db16",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_profession",
+      "condition": {
+        "verse_number": 6,
+        "layer": "commentary",
+        "domain": "star_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:045",
+      "concept_id": "door:开:career_with_wonder",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "开门有奇",
+      "excerpt_sha256": "f0b9823b632d71c2dd0379166e1d14034d36db70ddd885096cc9640b83f2ec0a",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:046",
+      "concept_id": "door:伤:career_in_season",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "伤门得令",
+      "excerpt_sha256": "d5d550abfe4683783453d626fccb86056bd050c349cdc5ffcde7b79398e30902",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:047",
+      "concept_id": "door:生:career_with_wonder",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "生门得奇",
+      "excerpt_sha256": "db839de88e0a3a48c99cbe0e77fa64d40a413bfc6a420bfc59c51576d86e927b",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:048",
+      "concept_id": "door:景:career_matching_chart",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "景门合局",
+      "excerpt_sha256": "f25d6eb95f17187e52d5260a2da5b0238088db9fedfcbbd4c55a4b1668aaff16",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:049",
+      "concept_id": "door:惊:career_matches_pattern",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "惊门入式",
+      "excerpt_sha256": "c22be84edb3bc2807f353cbd319d750d251acbe984bba9b01907683c0317b403",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:050",
+      "concept_id": "door:休:career_with_wonder",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "休门合奇",
+      "excerpt_sha256": "444979d3e7122bc7785494ceb1da8b5f9985790df251c4bbc75d6950f6ff6828",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:051",
+      "concept_id": "door:杜:career_palace",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "杜门得地",
+      "excerpt_sha256": "2ecac9b9e629a51dcbf8b70088a3c769218045b4e588da1733306f3d596463d0",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:7:motif:052",
+      "concept_id": "door:死:career_with_wonder",
+      "source_line": 40,
+      "verse_number": 7,
+      "layer": "ancient_verse",
+      "source_excerpt": "死门得奇",
+      "excerpt_sha256": "3766521dbb4f5c317ed74a136b2c34306e055b9047191489b86eac1cd019d7b1",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_profession",
+      "condition": {
+        "verse_number": 7,
+        "layer": "verse",
+        "domain": "door_profession",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:053",
+      "concept_id": "door_star:开:天心:metal",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "开门、心星皆是金",
+      "excerpt_sha256": "6bc533c358f21d07ef8b23b8ae90670a4a0979e4e7f7a6e873292770e4bb3748",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:054",
+      "concept_id": "door_star:休:天蓬:water",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "休门、天蓬同是水",
+      "excerpt_sha256": "afcfc0d7d83093376069c3891e9094391c501b38aafbb381147c9a5058b5aac6",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:055",
+      "concept_id": "door_star:生:天任:earth",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "生门、天任是土宿",
+      "excerpt_sha256": "ec1d3489a1cac8f0b806d237ac93c5124e421fbbf4266663a19f3cc6e6dd8101",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:056",
+      "concept_id": "door_star:伤:天冲:wood",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "伤门、天冲皆为木",
+      "excerpt_sha256": "f820c2ad1316201edf213f1370707626416d8e953ec8ca2ab7b8f5e40beaf404",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:057",
+      "concept_id": "door_star:杜:天辅:wood",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "杜门、天辅亦是木",
+      "excerpt_sha256": "2a17a37927e0e53030487ff9ab24841464569c562125e2b3fb10b6632f152449",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:058",
+      "concept_id": "door_star:景:天英:fire",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "景门、天英为火宿",
+      "excerpt_sha256": "3bc09e0d437e0662e4607b0af834519096f46585e09d783dd047b3e6111ea1a6",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:059",
+      "concept_id": "door_star:死:天芮:earth",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "死门、天芮俱是土",
+      "excerpt_sha256": "9fa9452b4b4b7d5424ccb22d7ec3cd9c1a20103723633385d6baa9804559eafd",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:060",
+      "concept_id": "door_star:惊:天柱:metal",
+      "source_line": 46,
+      "verse_number": 8,
+      "layer": "ancient_verse",
+      "source_excerpt": "惊门、天柱同属金",
+      "excerpt_sha256": "6b4215b0524ca44edfd20ca3ae863c6a23aafe42680079373d13a40ea83c2ddf",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:door_star_strength",
+      "condition": {
+        "verse_number": 8,
+        "layer": "verse",
+        "domain": "door_star_strength",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:061",
+      "concept_id": "fate:occupation:overall_chart_weakness_required",
+      "source_line": 49,
+      "verse_number": 8,
+      "layer": "author_explanation",
+      "source_excerpt": "在失局的前提下",
+      "excerpt_sha256": "98095662a688b3d4ade5517ca11c13bc061fe02ea51bae139c69ca186c2c74f5",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:qualification",
+      "condition": {
+        "verse_number": 8,
+        "layer": "commentary",
+        "domain": "qualification",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:062",
+      "concept_id": "fate:occupation:some_vitality",
+      "source_line": 49,
+      "verse_number": 8,
+      "layer": "author_explanation",
+      "source_excerpt": "处在休或衰、病、胎、养状态",
+      "excerpt_sha256": "4baff3757dd5084ffacf3b3d0ee77f3671f2b157db0aa529674acc705a2a979f",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:qualification",
+      "condition": {
+        "verse_number": 8,
+        "layer": "commentary",
+        "domain": "qualification",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:8:motif:063",
+      "concept_id": "fate:occupation:extreme_weakness",
+      "source_line": 49,
+      "verse_number": 8,
+      "layer": "author_explanation",
+      "source_excerpt": "死、囚、墓、绝状态",
+      "excerpt_sha256": "24351ef838d1fbc7482659c27b717126851f661515212a10dde41a849a14329b",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:qualification",
+      "condition": {
+        "verse_number": 8,
+        "layer": "commentary",
+        "domain": "qualification",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:064",
+      "concept_id": "star:five_states:heavenly_vs_earthly",
+      "source_line": 55,
+      "verse_number": 9,
+      "layer": "author_explanation",
+      "source_excerpt": "九星也必须分析其旺相休囚废",
+      "excerpt_sha256": "f1d38737ff3e48a5358ef4f7852622c26643f7b773f943eb1c7fcf9088a2ab19",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "commentary",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:065",
+      "concept_id": "star:天蓬星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天蓬乘时",
+      "excerpt_sha256": "0be1cf2b56cb526e6d36f603c1dd5b98299ad2d91fa0da2be9511266e2040574",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:066",
+      "concept_id": "star:天任星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天任得地",
+      "excerpt_sha256": "80d85b16b3e82f10e0d628ed793aa727901e96e28d6adf3f8edac09c5bd93a19",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:067",
+      "concept_id": "star:天冲星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天冲有气者",
+      "excerpt_sha256": "6f71d7c7f474ebd50c00d8746a1fa7bd0764ce71b109c9395ff7e9e2209b6f56",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:068",
+      "concept_id": "star:天辅星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天辅为文昌",
+      "excerpt_sha256": "c5a9669c3583dcefbd98d5597176063de5f90665a8da995037120c32854e50fc",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:069",
+      "concept_id": "star:天英星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天英火司南离",
+      "excerpt_sha256": "fc442721dbc067c4b2960ec4dbe1cab7e927b60c401cf2b51aa2626cf1f435f3",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:070",
+      "concept_id": "star:天芮星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天芮本是黑星",
+      "excerpt_sha256": "b0c226c42f4e194b230ddc3ef82ff8b084b72e1b3b27adec3ef290374c800ed1",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:071",
+      "concept_id": "star:天柱星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "七赤天柱",
+      "excerpt_sha256": "6ccd56dd038670e53f485564181dc6ef5f1e5b659b07ee464e6e677d40cb7624",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:9:motif:072",
+      "concept_id": "star:天心星:career_seasonal",
+      "source_line": 52,
+      "verse_number": 9,
+      "layer": "ancient_verse",
+      "source_excerpt": "天心原是六白",
+      "excerpt_sha256": "f74cdfdf517613ee8db75f6d39a919be717c911cd4c54996519143a8b64ea4dd",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:star_seasonal_method",
+      "condition": {
+        "verse_number": 9,
+        "layer": "verse",
+        "domain": "star_seasonal_method",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:073",
+      "concept_id": "stem_pair:戊:丙",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "戊+丙",
+      "excerpt_sha256": "4d04a20c237249175e31fd9c54e97fd0ff7ac50a973e35342916044eb43590f2",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:074",
+      "concept_id": "stem_pair:丙:戊",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "丙+戊",
+      "excerpt_sha256": "3aab8788f76c3d61a95ac1917d5992f4e0d676ab5be2584a9efdfbbf53ed3ba8",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:075",
+      "concept_id": "stem_pair:丁:戊",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "丁+戊",
+      "excerpt_sha256": "7dda12336a8cfab4f4d2a76e91c851e04941178940abe41777d96c2d2cff1cbf",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:076",
+      "concept_id": "stem_pair:戊:丁",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "戊+丁",
+      "excerpt_sha256": "3a1c37e3e29cae043cbc3e2b6a739568214d0e15eeb449f4620d77abe6f86380",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:077",
+      "concept_id": "stem_pair:辛:乙",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "辛+乙",
+      "excerpt_sha256": "ce0d92f8bd97c32697ff61506e190299c8261370a5febf3d2dcca4d6002e93da",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:078",
+      "concept_id": "stem_pair:乙:辛",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "乙+辛",
+      "excerpt_sha256": "93d89cc4c3fe951869b5aa4b20ffe0f07453be02fc225ce026d47bae5e8f965d",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:079",
+      "concept_id": "stem_pair:丁:癸",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "丁+癸",
+      "excerpt_sha256": "d4501d7e845f7224a75a4b1d1ed8e699029e064c4550f16b88fc81e9dea56a6d",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:080",
+      "concept_id": "stem_pair:癸:丁",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "癸+丁",
+      "excerpt_sha256": "1cb01e1a82876b5a0916ec5c67144be3ffb42c4855a6d5e4745744ada20ca4e4",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:081",
+      "concept_id": "stem_pair:庚:丙",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+丙",
+      "excerpt_sha256": "e239d0eaa1ba969e5de09278fe7f86b07f43db2edf38881fce60e8bd4423f162",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:082",
+      "concept_id": "stem_pair:丙:庚",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "丙+庚",
+      "excerpt_sha256": "e7834a139ac4aa51ad6cbea34da481894df956c64ca6cd8a9d8fe2d8a34c4e27",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:083",
+      "concept_id": "stem_pair:庚:戊",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+戊",
+      "excerpt_sha256": "02eaf23cf65089eb768f14dfb5e751e5f2f9323a73d786072776bf590651edc2",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:084",
+      "concept_id": "stem_pair:戊:庚",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "戊+庚",
+      "excerpt_sha256": "f17e195350359a510d50e3245a63944e68dc3a2ae8b06493b5eb7902d2d5a51c",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:085",
+      "concept_id": "stem_pair:庚:乙",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+乙",
+      "excerpt_sha256": "446c9316281464d6a5e1e30e5bd03c87854edb971b4dfce9ac7b2f36cbe5d635",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:086",
+      "concept_id": "stem_pair:乙:庚",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "乙+庚",
+      "excerpt_sha256": "2cede3da20fb355db884ca43edd28204fe3bb4a09bf4278516bfd2764de1e0bb",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:087",
+      "concept_id": "stem_pair:丁:庚",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "丁+庚",
+      "excerpt_sha256": "efd5d7e983f83f9c80939d9a62ab347f04dae9b40f40cc87610219ae4b3e4d04",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:088",
+      "concept_id": "stem_pair:庚:丁",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+丁",
+      "excerpt_sha256": "46041330cee2d821f074f3ff1e016ebb64d98b895d88ddd44e4caacd50fa9688",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:089",
+      "concept_id": "stem_pair:庚:癸",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+癸",
+      "excerpt_sha256": "e26191f488b7122f36f0631b1ea3f68e8cb6bc2d93fc891bd02c7ddbcf6a78d8",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:10:motif:090",
+      "concept_id": "stem_pair:庚:壬",
+      "source_line": 61,
+      "verse_number": 10,
+      "layer": "author_explanation",
+      "source_excerpt": "庚+壬",
+      "excerpt_sha256": "06cc93418708f94da210461e8261f6e1ec7c61e7dc78e0addb71fc9d7d542dff",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fate_directional_stem_pattern",
+      "condition": {
+        "verse_number": 10,
+        "layer": "commentary",
+        "domain": "fate_directional_stem_pattern",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:091",
+      "concept_id": "fate:gui:high_net_huagai",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "落入六、七、八、九宫为网高",
+      "excerpt_sha256": "8e7f2fb35b8411006ad70ad764a3923925ae45e0b5bcfbecc2cae50c2c1caac9",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:high_low_palace_conditional",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "high_low_palace_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:092",
+      "concept_id": "fate:gui:low_net",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "落入一、二、三、四宫",
+      "excerpt_sha256": "3dcae6ef15a23f0abcfbdd4d0351b20cb4e22989a6f7947d8ad877f166b039b0",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:high_low_palace_conditional",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "high_low_palace_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:093",
+      "concept_id": "fate:spouse:yi_tomb_6",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "乙奇落乾6宫入戌墓",
+      "excerpt_sha256": "58cdad14e8407e3ba596ec00586dac20b4a9b3659f1c89fd8a761393ebe65426",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:tomb_condition",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "tomb_condition",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:094",
+      "concept_id": "fate:marriage:yi_guest_ding_host",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "乙奇在天盘、丁奇在地盘",
+      "excerpt_sha256": "f51ccaffcd1229f1db3f328750d6e852436b8fd94dc0bd2cfaa0fd435d09cfda",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:directional_guest_host",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "directional_guest_host",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:095",
+      "concept_id": "fate:marriage:ding_guest_yi_host",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "丁奇在天盘、乙奇在地盘",
+      "excerpt_sha256": "6f45a963bb4733e24d5fe54d448016beccc299c2efe3e38095e0ab2faa146081",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:directional_guest_host",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "directional_guest_host",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:11:motif:096",
+      "concept_id": "fate:marriage:jade_guard_context_exception",
+      "source_line": 67,
+      "verse_number": 11,
+      "layer": "author_explanation",
+      "source_excerpt": "玉女守门虽然是吉格",
+      "excerpt_sha256": "45b1d3e21f076a38d80e42f31ac9d6ea92dc7dee4ef1400714ba57162cb8b630",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:domain_override",
+      "condition": {
+        "verse_number": 11,
+        "layer": "commentary",
+        "domain": "domain_override",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:12:motif:097",
+      "concept_id": "fate:void:good_or_bad_pattern",
+      "source_line": 70,
+      "verse_number": 12,
+      "layer": "ancient_verse",
+      "source_excerpt": "诸格忌落空亡",
+      "excerpt_sha256": "be574e1569fb6341bc756da6413f5d3c0e6ed0ae9e1220fda3500be261e0b52d",
+      "track_id": "kaiwu:source_v1:traditional_fate:verse:void_conditional",
+      "condition": {
+        "verse_number": 12,
+        "layer": "verse",
+        "domain": "void_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:12:motif:098",
+      "concept_id": "fate:void:good_reduced",
+      "source_line": 73,
+      "verse_number": 12,
+      "layer": "author_explanation",
+      "source_excerpt": "吉格逢空亡",
+      "excerpt_sha256": "d6f7c5bcf4eb9b4229386325f9f9f31f3bd2a321e314136b1836de33a37b8d61",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:void_conditional",
+      "condition": {
+        "verse_number": 12,
+        "layer": "commentary",
+        "domain": "void_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:12:motif:099",
+      "concept_id": "fate:void:bad_stronger",
+      "source_line": 73,
+      "verse_number": 12,
+      "layer": "author_explanation",
+      "source_excerpt": "凶格逢空亡",
+      "excerpt_sha256": "d2c51ea8a2f445cca102bae4b5dc73268e4a80a6d42ae800c6f50c60abb3f587",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:void_conditional",
+      "condition": {
+        "verse_number": 12,
+        "layer": "commentary",
+        "domain": "void_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:12:motif:100",
+      "concept_id": "fate:doors:opposite_palace",
+      "source_line": 73,
+      "verse_number": 12,
+      "layer": "author_explanation",
+      "source_excerpt": "八门反吟的格局",
+      "excerpt_sha256": "30aefa4e3ffc1b71c8005da9c7268bdcca899bc4ac605877faf3bcf610ef9e5f",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fuyin_fanyin_conditional",
+      "condition": {
+        "verse_number": 12,
+        "layer": "commentary",
+        "domain": "fuyin_fanyin_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    },
+    {
+      "motif_key": "kaiwu:fate:12:motif:101",
+      "concept_id": "fate:doors:home_palace",
+      "source_line": 73,
+      "verse_number": 12,
+      "layer": "author_explanation",
+      "source_excerpt": "伏吟的格局",
+      "excerpt_sha256": "1af833e39dea386778cd35657759efcd7bc56d76adca3fa0351a3597926ac6ed",
+      "track_id": "kaiwu:source_v1:traditional_fate:commentary:fuyin_fanyin_conditional",
+      "condition": {
+        "verse_number": 12,
+        "layer": "commentary",
+        "domain": "fuyin_fanyin_conditional",
+        "author_claim_requires_entire_original_commentary_context": true,
+        "current_fate_book_scope_not_universal": true,
+        "not_externally_validated": true,
+        "do_not_infer_character_crime_wealth_illness_from_symbol_alone": true
+      }
+    }
+  ],
+  "not_predictive_rules_approved": true
+}

@@ -1,0 +1,12 @@
+{
+  "chapter_key": "kaiwu/classical_fate_exposition_ch05/v1",
+  "links": [
+    {
+      "source_line": 19,
+      "target_book": "shenqi",
+      "page": null,
+      "relation": "general_prior_book_reference_not_repeated_case",
+      "verified_independent_case": false
+    }
+  ]
+}
