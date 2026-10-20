@@ -1,0 +1,277 @@
+{
+  "schema": "unified_shenqi_kaiwu_marriage_cases_v1",
+  "source_sha256": "4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01",
+  "same_person_not_same_event": [
+    "kaiwu.marriage.case02",
+    "kaiwu.marriage.case03"
+  ],
+  "cases": [
+    {
+      "key": "mother_son_marriage_1998",
+      "title": "王大妈问儿子婚期",
+      "start": 5,
+      "end": 46,
+      "chart": 15,
+      "meta": 13,
+      "question": [
+        7,
+        11
+      ],
+      "step": [
+        39,
+        41,
+        43
+      ],
+      "predictions": [
+        31,
+        35
+      ],
+      "feedback": [
+        33,
+        45
+      ],
+      "extra_phases": [],
+      "facets": [
+        "marriage"
+      ],
+      "date": "1998-11-09",
+      "hour": "丁亥",
+      "nuance": "1997 year prior prediction is referenced but its original complete chart is not printed here; registration Dec16 and wedding Jan17 separately",
+      "number": 1,
+      "id": "kaiwu.marriage.case01",
+      "chart_end": 27,
+      "chart_sha256": "173854267f90f864601cec90abaf645afed40e3af6fa5f0061efc290e056b78f"
+    },
+    {
+      "key": "daughter_divorce_1997",
+      "title": "石建国预测女儿1998年离婚",
+      "start": 47,
+      "end": 94,
+      "chart": 57,
+      "meta": 53,
+      "question": [
+        49,
+        55
+      ],
+      "step": [
+        73,
+        77,
+        81,
+        89
+      ],
+      "predictions": [
+        73,
+        77,
+        81,
+        89
+      ],
+      "feedback": [
+        93
+      ],
+      "extra_phases": [],
+      "facets": [
+        "marriage"
+      ],
+      "date": "1997-02-23",
+      "hour": "乙未",
+      "nuance": "Mother's June4 1998 report is retrospective; domestic violence documented verbatim only in book",
+      "number": 2,
+      "id": "kaiwu.marriage.case02",
+      "chart_end": 69,
+      "chart_sha256": "48f2e308c481fdd0eab47fb15451c61109a62b1898ea57476f845604b74228d0"
+    },
+    {
+      "key": "daughter_courtship_1998",
+      "title": "同一女儿离婚后另择对象",
+      "start": 95,
+      "end": 136,
+      "chart": 105,
+      "meta": 103,
+      "question": [
+        97,
+        103
+      ],
+      "step": [
+        123,
+        125,
+        127,
+        129
+      ],
+      "predictions": [
+        121,
+        131,
+        133
+      ],
+      "feedback": [
+        135
+      ],
+      "extra_phases": [],
+      "facets": [
+        "marriage"
+      ],
+      "date": "1998-06-04",
+      "hour": "辛亥",
+      "nuance": "Same woman as case2 but NEW casting date/question; two rejected 1998 suitors, separate successful new 1999 suitor",
+      "number": 3,
+      "id": "kaiwu.marriage.case03",
+      "chart_end": 117,
+      "chart_sha256": "b79908f28712eb1e0467915c076e74db8c138027be6a68e10c40c7d1cb6b9655"
+    },
+    {
+      "key": "wang_xiqiang_courtship_job",
+      "title": "王夕强女青年恋爱工作失财",
+      "start": 137,
+      "end": 182,
+      "chart": 143,
+      "meta": 141,
+      "question": [
+        139,
+        141
+      ],
+      "step": [
+        173,
+        175,
+        177,
+        179,
+        181
+      ],
+      "predictions": [
+        159,
+        163,
+        165
+      ],
+      "feedback": [
+        161,
+        167
+      ],
+      "extra_phases": [
+        [
+          169,
+          169,
+          "conversation_conclusion"
+        ]
+      ],
+      "facets": [
+        "marriage",
+        "employment",
+        "lost_property"
+      ],
+      "date": "1999-06-27",
+      "hour": "乙酉",
+      "nuance": "Known-before breakup, later job prediction for lunar month seven has no reported fulfillment in this source; money loss confirmed by querent",
+      "number": 4,
+      "id": "kaiwu.marriage.case04",
+      "chart_end": 155,
+      "chart_sha256": "cbe2a517eea679ec5c15fc297dc09dcc0ca3375c8f758471a64da209db8f73c9"
+    },
+    {
+      "key": "wang_xiqiang_remarriage_business",
+      "title": "王夕强妇女家庭复婚和生意",
+      "start": 183,
+      "end": 250,
+      "chart": 195,
+      "meta": 193,
+      "question": [
+        185,
+        193
+      ],
+      "step": [
+        211,
+        217,
+        223,
+        229,
+        235,
+        241
+      ],
+      "predictions": [
+        213,
+        219,
+        225,
+        231,
+        237,
+        243
+      ],
+      "feedback": [
+        215,
+        221,
+        227,
+        233,
+        239,
+        245
+      ],
+      "extra_phases": [
+        [
+          247,
+          249,
+          "author_postscript"
+        ]
+      ],
+      "facets": [
+        "marriage",
+        "business_profit"
+      ],
+      "date": "1999-07-08",
+      "hour": "癸巳",
+      "nuance": "Past divorce/poor sales confirmed in dialogue; future remarriage and business recovery NOT followed up by book",
+      "number": 5,
+      "id": "kaiwu.marriage.case05",
+      "chart_end": 207,
+      "chart_sha256": "a1dca33a7ac66749d47f97bf908ec2d0bc031d60496020e7c9ef11f89afe8ff5"
+    },
+    {
+      "key": "letter_male_same_sex_love_2000",
+      "title": "青年来信测情感困扰与首次错断",
+      "start": 251,
+      "end": 305,
+      "chart": 265,
+      "meta": 263,
+      "question": [
+        259,
+        263
+      ],
+      "step": [
+        283,
+        285,
+        287,
+        289
+      ],
+      "predictions": [
+        293,
+        295
+      ],
+      "feedback": [
+        297,
+        299,
+        301
+      ],
+      "extra_phases": [
+        [
+          253,
+          257,
+          "author_prior_policy_not_guess_intent"
+        ],
+        [
+          303,
+          303,
+          "retrospective_author_secondary_cast_unprinted"
+        ],
+        [
+          305,
+          305,
+          "post_disclosure_author_reply_not_initial_guess"
+        ]
+      ],
+      "facets": [
+        "marriage"
+      ],
+      "date": "2000-08-27",
+      "hour": "庚子",
+      "explicit_error": true,
+      "nuance": "Initial letter guessed infatuation with a woman and user explicitly rejected it; later revealed same-sex attraction in 2000-09-21 private letter; sexuality is NOT disease, different answer cannot be counted as first-time success",
+      "number": 6,
+      "id": "kaiwu.marriage.case06",
+      "chart_end": 277,
+      "chart_sha256": "1ff7f8ea5fc079363c22fdddc5a9f5f5ed67d39127ebcc71a3d45e00b853a4f5"
+    }
+  ]
+}

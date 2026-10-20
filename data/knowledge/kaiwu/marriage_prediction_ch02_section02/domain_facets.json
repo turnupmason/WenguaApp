@@ -1,0 +1,56 @@
+{
+  "source_sha256": "4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01",
+  "cases": [
+    {
+      "case_id": "kaiwu.marriage.case01",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage"
+      ],
+      "same_person_linked_not_merged": false
+    },
+    {
+      "case_id": "kaiwu.marriage.case02",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage"
+      ],
+      "same_person_linked_not_merged": true
+    },
+    {
+      "case_id": "kaiwu.marriage.case03",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage"
+      ],
+      "same_person_linked_not_merged": true
+    },
+    {
+      "case_id": "kaiwu.marriage.case04",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage",
+        "employment",
+        "lost_property"
+      ],
+      "same_person_linked_not_merged": false
+    },
+    {
+      "case_id": "kaiwu.marriage.case05",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage",
+        "business_profit"
+      ],
+      "same_person_linked_not_merged": false
+    },
+    {
+      "case_id": "kaiwu.marriage.case06",
+      "primary_domain": "marriage",
+      "facets": [
+        "marriage"
+      ],
+      "same_person_linked_not_merged": false
+    }
+  ]
+}

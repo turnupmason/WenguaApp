@@ -1,0 +1,22 @@
+{
+  "source_sha256": "4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01",
+  "case6_first_incorrect_guess_source_lines": [
+    293,
+    295,
+    297,
+    299
+  ],
+  "case6_later_disclosure_and_reinterpretation_lines": [
+    301,
+    303,
+    305
+  ],
+  "case6_published_one_chart_two_additional_charts_unprinted": true,
+  "case6_orientation_never_treated_as_disease": true,
+  "case2_3_same_person_but_different_dated_question": true,
+  "case4_future_job_time_not_followed_up": true,
+  "case5_future_remarriage_business_not_followed_up": true,
+  "all_cases_user_accepted_no_manual_review": true,
+  "prior_version_source_history_and_all_book_errors_intact": true,
+  "none_book_results_independently_medically_verified": true
+}
