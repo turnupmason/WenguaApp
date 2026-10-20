@@ -35,6 +35,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/017_cross_book_multitrack.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/018_kaiwu_didactic_casting_figures.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/019_kaiwu_analysis_stem_timing.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/020_kaiwu_classical_fate_parallel_verses.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 

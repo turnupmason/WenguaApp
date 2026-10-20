@@ -1,0 +1,98 @@
+name: Archive Kaiwu fifth chapter classical verses and explanations
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_kaiwu_05_from_04.py'
+      - 'sources/kaiwu/开悟之门_第五章.txt'
+      - 'schema/migrations/020_kaiwu_classical_fate_parallel_verses.sql'
+      - 'tests/test_kaiwu_fifth_part.py'
+      - '.github/workflows/build_kaiwu_05_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check literal original, twelve verse/commentary pairs, 100+ exact motifs, immutable history
+        run: python -m unittest discover -s tests -p test_kaiwu_fifth_part.py -v
+      - name: Derive independent V5 full SQLite only by sqlite3.backup from verified V4
+        run: |
+          python -m scripts.build_kaiwu_05_from_04 \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门4章_103案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_第五章.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/classical_fate_exposition_ch05'
+      - name: Create genuine XZ and SHA256 manifest and verify all source and historical counts
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          parent=root/'WenguaApp_神奇之门21章_开悟之门4章_103案例_完整研究库.sqlite3'
+          out=root/'WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3'
+          xz=out.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(out.read_bytes(),preset=6))
+          info=json.loads(Path('data/knowledge/kaiwu/classical_fate_exposition_ch05/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(parent.read_bytes()).hexdigest()==info['parent_sha256']
+          with sqlite3.connect(out) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0] for t in info['counts']}
+          assert counts==info['counts']
+          manifest={
+           'schema':'wengua_multibook_source_archive_v5',
+           'source_title':info['source_title'],'source_sha256':info['source_sha256'],
+           'source_bytes':info['source_bytes'],'source_lines':info['source_lines'],
+           'book_counts':{'shenqi':21,'kaiwu':5},'total_source_sections':26,
+           'new_verse_commentary_pairs':12,'new_literal_classical_verses':12,
+           'new_separate_explanation_passages':12,
+           'contextual_source_motifs':info['contextual_source_motifs'],
+           'new_semantic_source_occurrences':info['new_semantic_source_occurrences'],
+           'non_case_book_references':1,
+           'new_independent_cases':0,'new_historical_qimen_charts':0,
+           'existing_historical_event_families':103,'historical_original_charts':112,
+           'existing_original_palace_cells':1008,'author_judgment_steps':495,
+           'past_six_explicit_errors_unchanged':True,
+           'previous_source_rows_unchanged':True,
+           'prior_full_archive_path':str(parent),'prior_full_archive_sha256':hashlib.sha256(parent.read_bytes()).hexdigest(),
+           'new_full_archive_path':str(out),'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),
+           'size_bytes':out.stat().st_size,'compressed_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_violations':0,
+           'newly_approved_rules':0,'positive_training_eligible':0,
+           'culturally_historical_verses_not_real_life_evidence':True,
+           'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu05_103cases_manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: complete-shenqi21-kaiwu05-archive-and-provenance
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu05_103cases_manifest.json
+          retention-days: 30
+      - name: Commit immutable V5 database binary and derived source index
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu05_103cases_manifest.json' \
+                     'data/knowledge/kaiwu/classical_fate_exposition_ch05/'
+          git diff --cached --check
+          git commit -m 'Archive Kaiwu fifth chapter classical source and author explanations separately'
+          git push origin HEAD:main

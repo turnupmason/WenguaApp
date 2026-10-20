@@ -222,3 +222,7 @@ Kaiwu 第三章 `kaiwu/paper_grid_casting_ch03/v1` 的12幅原书教学九宫图
 ## 《开悟之门》第四章81个有向组合及三类应期（2026-10-20）
 
 本章`kaiwu/analysis_judgment_ch04/v1`的十干客主组合在`kaiwu_ordered_stem_pair_occurrences`逐原文行保存上干/下干、源文段、原文hash、reverse_pair_key、语料中明示例外触发词；它**不是对调即可同断法的无向关系**。三种应期前提分别在`kaiwu_timing_source_methods`记录success/failed/interception_recovery和limitation（详见`schema/migrations/019_kaiwu_analysis_stem_timing.sql`）。统一概念键另用跨书多轨`semantic_assertions`和`cross_book_concept_tracks`追索，AI自动条目全draft。旧《神奇之门》25行引用只联结出处未核验具体事件ID，原行49–61银行案重印盘及113–119五行教学图只用教育来源图结构单独保存，不增加历史独立案例或命中率。
+
+## 第五章并行古文和现代释义的来源结构
+
+kaiwu/classical_fate_exposition_ch05/v1 由12段古文和12段作者解说组成。020迁移表 kaiwu_classical_verse_explanations 保存原句、解说各自line/hash；kaiwu_classical_fate_motifs 保存可在原文中逐字定位的符号语境片段与条件；semantic_assertions/cross_book_concept_tracks 只追加来源，不将上书词条或V1覆盖。生命/贫富/性格/医疗等属于未验证书内传统主张，default draft/0 positive training；没有新独立历史事件和印盘。
