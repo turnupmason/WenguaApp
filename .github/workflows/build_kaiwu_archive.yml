@@ -1,0 +1,91 @@
+name: Build and archive Kaiwu first source part (multibook)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_kaiwu_01_from_21.py'
+      - 'sources/kaiwu/开悟之门_第一篇.txt'
+      - 'schema/migrations/017_cross_book_multitrack.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Extend verified 21-Shenqi archive with one Kaiwu source part and zero duplicated cases
+        run: |
+          python scripts/build_kaiwu_01_from_21.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_第一篇.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/space_time_model_part01'
+      - name: Compress and independently verify SHA256 in the public version manifest
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          archive=Path('archives/sqlite')
+          old=archive/'WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3'
+          new=archive/'WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3'
+          zipped=new.with_suffix('.sqlite3.xz')
+          zipped.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          ix=json.loads(Path('data/knowledge/kaiwu/space_time_model_part01/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           count={t:db.execute('SELECT count(*) FROM '+t).fetchone()[0] for t in
+            ('sections','cases','historical_case_reasoning','historical_palace_standardization',
+             'semantic_assertions','cross_book_concept_tracks','cross_book_example_references')}
+          assert count==ix['counts']
+          report={'schema':'wengua_multibook_additive_source_archive_v1',
+             'archive_sequence_total_sections':22,'book_counts':{'shenqi':21,'kaiwu':1},
+             'event_families_unchanged':103,'original_source_charts_unchanged':112,
+             'author_reasoning_unchanged':495,'prior_book_shenqi_fully_preserved':True,
+             'source_book':'kaiwu','source_title':ix['source_title'],
+             'source_sha256':ix['source_sha256'],'source_bytes':ix['source_bytes'],
+             'source_lines':ix['source_lines'],'new_concept_occurrences':ix['new_concept_occurrences'],
+             'source_diagrams':ix['source_figures'],'cross_book_links':ix['new_cross_book_citations'],
+             'new_source_cases':0,'new_source_charts':0,
+             'base_path':str(old),'base_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+             'main_archive_path':str(new),'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+             'size':new.stat().st_size,'compressed_archive_path':str(zipped),
+             'compressed_sha256':hashlib.sha256(zipped.read_bytes()).hexdigest(),
+             'compressed_size':zipped.stat().st_size,'counts':count,
+             'integrity_check':'ok','foreign_key_violations':0,
+             'all_old_sqlite_rows_preserved':True,'human_approved_concept_occurrences':0,
+             'positive_training_eligible':0,
+             'public_complete_archive_user_authorized':True}
+          (archive/'shenqi21_kaiwu01_103cases_manifest.json').write_text(
+            json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - name: Verify source, cross-book preservation, and no duplicated historical cases
+        run: python -m unittest discover -s tests -p test_kaiwu_first_part.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kaiwu-first-part-shenqi21-kaiwu1-complete-db
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu01_103cases_manifest.json
+          retention-days: 30
+      - name: Commit only new immutable version plus new public chapter indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu01_103cases_manifest.json' \
+                     'data/knowledge/kaiwu/space_time_model_part01/'
+          git diff --cached --check
+          git commit -m 'Archive first Kaiwu multitrack source without rewriting 21 Shenqi chapters'
+          git push origin HEAD:main
