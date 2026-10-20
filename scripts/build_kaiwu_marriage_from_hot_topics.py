@@ -237,8 +237,8 @@ def add_event(db,L,sid,e):
     "traditional_center_kun2_derived_not_printed" if central else None))
  for z,line in enumerate(e["step"],1):
   literal=src(L,line)
-  phase="author_original_reasoning_with_initial_miss" if e["number"]==6 else
-   "book_author_source_reasoning"
+  phase=("author_original_reasoning_with_initial_miss" if e["number"]==6 else
+   "book_author_source_reasoning")
   meta={"source_line":line,"phase":phase,
     "book_case_accepted_no_user_manual_check":True,
     "source_error_cannot_be_positive_example":bool(e.get("explicit_error")),
