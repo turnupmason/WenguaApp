@@ -1,0 +1,200 @@
+{
+  "schema": "wengua_geography_complete_source_events_v1",
+  "chapter_key": "shenqi/geographic_environment_prediction_ch15/v1",
+  "source_sha256": "c755e3879432b2f84329e0b9491eabdb48b865fa2f1cad96a0187f1bb7a3f5c1",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.geography.case01",
+      "event_family_id": "shenqi.geography.case01",
+      "title": "三方案金融中心主楼艮位与建设资金时间",
+      "source_span": [
+        15,
+        49
+      ],
+      "printed_chart_line": 26,
+      "original_palace_count": 9,
+      "initial_question_line_numbers": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "author_analysis_steps": [
+        {
+          "step_number": 1,
+          "source_line": 41,
+          "source_end_line": 41,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "作者将生门及九天同在艮八宫与事先专家第三方案共识对照（非独立盲断）",
+          "claimed_or_recorded_observation": "生门与九天位于艮八宫；先前专家已经一致倾向第三设计方案",
+          "source_grounded_argument_or_explicit_gap": "作者据生门为房屋、九天为高大，将东北主楼与专家已有意见对照",
+          "counterevidence_and_limits": "专家意见在作者分析前已经公开，不是独立新盘盲测",
+          "related_existing_concept_candidates_lexical_only": [
+            "deity:九天",
+            "door:生"
+          ],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        },
+        {
+          "step_number": 2,
+          "source_line": 44,
+          "source_end_line": 44,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "作者宣称日干辛与甲午时同坎宫、太岁生助，伏吟导致工期拖延",
+          "claimed_or_recorded_observation": "日干辛与时干甲午时所遁辛在坎一宫；太岁丁在兑宫；盘面伏吟",
+          "source_grounded_argument_or_explicit_gap": "作者结合同宫、太岁生扶及伏吟作项目能成但进度缓慢的判断",
+          "counterevidence_and_limits": "伏吟只属传统术数解释，并不证明工程工期；太岁生助需人工核原盘细节",
+          "related_existing_concept_candidates_lexical_only": [],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        },
+        {
+          "step_number": 3,
+          "source_line": 45,
+          "source_end_line": 45,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "作者断项目1995年策划、最早2001年开业，未解释具体应期算法",
+          "claimed_or_recorded_observation": "书内给出1995年策划、2001年才能开业的时间断词",
+          "source_grounded_argument_or_explicit_gap": "作者提供具体年份，但原文没有解释推导算法",
+          "counterevidence_and_limits": "后续原书没有证明2001年实际开业，不能把预测当成功已验证",
+          "related_existing_concept_candidates_lexical_only": [],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        },
+        {
+          "step_number": 4,
+          "source_line": 46,
+          "source_end_line": 46,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "作者断八亿起投、十四亿完工及现金未到位，未解释数理取值算法",
+          "claimed_or_recorded_observation": "书内给出投资八亿及完全建成十四亿两个数额，资金未到位",
+          "source_grounded_argument_or_explicit_gap": "作者报告了投资、总成本及资金缺口的断语；反馈只确认计划八亿元、未筹款",
+          "counterevidence_and_limits": "十四亿元完工规模未获来源结果验证；数字取法没有原书证据，不得补造",
+          "related_existing_concept_candidates_lexical_only": [],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        }
+      ],
+      "author_judgment_line_numbers": [
+        41,
+        44,
+        45,
+        46
+      ],
+      "later_feedback_line_numbers": [
+        47,
+        48,
+        49
+      ],
+      "first_case_previous_expert_conclusion_known": true,
+      "source_is_literary_claim_not_independent_geotechnical_evidence": true,
+      "full_case_preserved": true,
+      "case_book_default_outcome_label": "author_book_success_default",
+      "human_full_causal_chain_reviewed": false,
+      "independent_verification": false,
+      "positive_training_eligible": false,
+      "limitations": [
+        "三图仅同一项目方案，不新增事件或奇门盘",
+        "专家先选择第三方案，作者不是独立盲判",
+        "只确认计划投资8亿元及融资不足；2001开业和最终14亿无事后核实",
+        "原书未给出2001和14亿元具体应期或数理过程"
+      ]
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.geography.case02",
+      "event_family_id": "shenqi.geography.case02",
+      "title": "吴先生拟选辛山乙向墓地的使用权问答",
+      "source_span": [
+        51,
+        81
+      ],
+      "printed_chart_line": 61,
+      "original_palace_count": 9,
+      "initial_question_line_numbers": [
+        56,
+        57,
+        58
+      ],
+      "author_analysis_steps": [
+        {
+          "step_number": 1,
+          "source_line": 76,
+          "source_end_line": 76,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "王庆丰表示墓地形势优美但吴先生不能使用；原书没有解释对应的宫位组合",
+          "claimed_or_recorded_observation": "吴先生新墓地辛山乙向兼戌辰；王庆丰看了地形图及唯一实际原盘",
+          "source_grounded_argument_or_explicit_gap": "原书只报告王庆丰认为景观很优秀却不能使用，没有逐宫方法说明",
+          "counterevidence_and_limits": "**无作者实际给出的取用神、宫位、格局、生克、应期理由**；不可自行编造",
+          "related_existing_concept_candidates_lexical_only": [],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        },
+        {
+          "step_number": 2,
+          "source_line": 78,
+          "source_end_line": 78,
+          "source_phase": "author_book_analysis_before_feedback",
+          "topic": "王庆丰表示墓地已被他人占有，吴先生得不到；没有来源支持完整反证或用神路径",
+          "claimed_or_recorded_observation": "作者表示墓地被前辈占有，吴先生得不到",
+          "source_grounded_argument_or_explicit_gap": "原书只记判断和吴先生惊讶，并未提供地权或外部档案",
+          "counterevidence_and_limits": "**不存在作者书面完整分析链**；不能因故事称赞而补出未说的九宫证据",
+          "related_existing_concept_candidates_lexical_only": [],
+          "specific_old_concept_ids_human_verified": false,
+          "source_original_preserved_in_full_sqlite": true,
+          "independent_real_world_confirmation": false,
+          "positive_training_eligible": false,
+          "review_status": "source_grounded_draft_not_approved",
+          "no_unwritten_author_logic_fabricated": true
+        }
+      ],
+      "author_judgment_line_numbers": [
+        76,
+        78
+      ],
+      "later_feedback_line_numbers": [
+        79,
+        80,
+        81
+      ],
+      "first_case_previous_expert_conclusion_known": false,
+      "source_is_literary_claim_not_independent_geotechnical_evidence": true,
+      "full_case_preserved": true,
+      "case_book_default_outcome_label": "author_book_success_default",
+      "human_full_causal_chain_reviewed": false,
+      "independent_verification": false,
+      "positive_training_eligible": false,
+      "limitations": [
+        "第54—55行先谈另一癸山丁向墓地（无奇门盘），是同一次会话背景，不新建事件及盘",
+        "唯一奇门盘用于吴先生随后拟选辛山乙向墓地",
+        "原文只写最终断语，没有具体用神、宫位证据和推理顺序；不得编造完整链",
+        "墓地所谓已被他人占有未有土地权属文件独立证明"
+      ]
+    }
+  ]
+}

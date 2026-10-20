@@ -1,0 +1,155 @@
+{
+  "schema": "wengua_geography_conditioned_workflow_v1",
+  "chapter_key": "shenqi/geographic_environment_prediction_ch15/v1",
+  "source_sha256": "c755e3879432b2f84329e0b9491eabdb48b865fa2f1cad96a0187f1bb7a3f5c1",
+  "methods": [
+    {
+      "concept_id": "geography:general:day_person",
+      "source_line": 9,
+      "conditional_summary": "日干代表求测之人",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:hour_residence",
+      "source_line": 9,
+      "conditional_summary": "时干代表住宅",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:hour_strong_three_wonders_gives",
+      "source_line": 9,
+      "conditional_summary": "时干临三奇吉门吉星吉神吉格旺相又生日干宫，传统判断最佳宅",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:hour_good_otherwise",
+      "source_line": 9,
+      "conditional_summary": "时干虽未遇三奇吉门但吉星吉神吉格旺相生日干，传统判断较好宅",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:mixed_conditions",
+      "source_line": 9,
+      "conditional_summary": "时干落宫吉凶混杂，传统判断一般宅",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:hour_bad_controls_day",
+      "source_line": 9,
+      "conditional_summary": "时干凶门凶星凶神凶格克日干宫，传统判断不利",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:evaluate_star_door_palace",
+      "source_line": 9,
+      "conditional_summary": "结合星、门、宫的具体生克关系而不只贴吉凶标签",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:living_house_sheng_gate",
+      "source_line": 10,
+      "conditional_summary": "阳宅以生门作房屋",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:living_plot_si_gate",
+      "source_line": 10,
+      "conditional_summary": "阳宅以死门作宅基地皮",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:living_strength_day",
+      "source_line": 10,
+      "conditional_summary": "阳宅生门死门需合旺相休囚与日干生克",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:zhifu_new_home",
+      "source_line": 10,
+      "conditional_summary": "值符作为新宅的专题用神",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:zhishi_old_home",
+      "source_line": 10,
+      "conditional_summary": "值使作为旧宅的专题用神",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_si_gate",
+      "source_line": 11,
+      "conditional_summary": "阴宅以死门作主用神",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_ground_dead_heaven_living",
+      "source_line": 11,
+      "conditional_summary": "阴宅死门宫地盘属死者、天盘属生者的专题关系",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_good_star_wonders_updown_generate",
+      "source_line": 11,
+      "conditional_summary": "阴宅吉神吉星得三奇且上下相生的传统吉条件",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_bad_star_no_wonders_updown_control",
+      "source_line": 11,
+      "conditional_summary": "阴宅凶神凶星不得三奇且上下相克的传统凶条件",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:heaven_controls_ground_dead",
+      "source_line": 11,
+      "conditional_summary": "阴宅天盘克地盘，传统解释对死者不利",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:ground_controls_heaven_living",
+      "source_line": 11,
+      "conditional_summary": "阴宅地盘克天盘，传统解释对生者不利",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_palace_top",
+      "source_line": 11,
+      "conditional_summary": "阴宅死门落二五八九宫的传统优先级",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_palace_second",
+      "source_line": 11,
+      "conditional_summary": "阴宅死门落六七宫的传统次级",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:grave_palace_low",
+      "source_line": 11,
+      "conditional_summary": "阴宅死门落一三四宫的传统不利",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:site_survey_recommended",
+      "source_line": 40,
+      "conditional_summary": "作者明确说勘察地理必须到现场，奇门只能与实地勘察对照",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "geography:general:invisible_field_author_claim",
+      "source_line": 40,
+      "conditional_summary": "原书声称可推磁场生物场微波；未独立实测，不能作为科学事实或地质工程论据",
+      "review_status": "draft"
+    }
+  ],
+  "study_process": [
+    "确认阳宅还是阴宅、当事人及土地关系；不能跨领域随意互换取用",
+    "阳宅先核日干本人、时干住宅及生门房屋死门土地、值符新宅值使旧宅，结合实际盘旺衰生克",
+    "阴宅先取死门及地盘死者天盘生者、星门神干上下生克、吉凶宫位级别",
+    "实际九宫宫位的门星神干与古籍以前章节五行生克、空墓伏吟等交叉核对，明确反证",
+    "必须先区分作者是否已听取其他专家结论、是否使用地形图以及真实起盘何时",
+    "如书中没有推理，必须明确返回证据链缺失而不是猜出作者未说的规则",
+    "书内反馈、项目投资计划、未来工程结果与土地权属独立验证分离",
+    "这只研究传统术数文献，不代替建筑设计、地质勘探、工程审查或土地登记"
+  ]
+}

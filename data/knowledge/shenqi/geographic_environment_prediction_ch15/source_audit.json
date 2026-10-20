@@ -1,0 +1,30 @@
+{
+  "schema": "wengua_geography_source_anomalies_v1",
+  "source_sha256": "c755e3879432b2f84329e0b9491eabdb48b865fa2f1cad96a0187f1bb7a3f5c1",
+  "case1": {
+    "prior_external_expert_result_line": 19,
+    "original_chart_line": 26,
+    "author_matching_expert_claim_line": 41,
+    "source_financing_confirmation_line": 47,
+    "opening_year_2001_not_confirmed": true,
+    "final_14_hundred_million_cost_not_confirmed": true,
+    "one_board_for_three_designs": true,
+    "geomagnetic_field_claim_line": 40,
+    "scientifically_unverified": true
+  },
+  "case2": {
+    "first_cemetery_dialogue_unprinted_qimen_chart_lines": [
+      54,
+      55
+    ],
+    "subsequent_own_grave_question_line": 56,
+    "actual_qimen_cast_line": 61,
+    "no_author_palace_explanation_lines": [
+      76,
+      78
+    ],
+    "source_ownership_not_independently_verified": true
+  },
+  "review_status": "draft_needs_human_review",
+  "no_new_chart_from_earlier_unprinted_cemetery": true
+}
