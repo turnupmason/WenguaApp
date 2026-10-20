@@ -1,0 +1,18 @@
+{
+  "source_sha256": "12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0",
+  "figure_count": 12,
+  "literal_palace_cells": 108,
+  "school": "shijia_zhuanpan",
+  "nine_palace_numerical_zhishi_timing_not_eight_ring": true,
+  "eight_door_rotation_only_after_zhishi_position_fixed": true,
+  "source_2001_08_07_19_34_jieqi_not_independently_checked": true,
+  "futou_middle_yuan_assumed_from_book": true,
+  "six_jia_star_and_door_fuyin_study_claim": true,
+  "six_gui_door_fuyin_study_claim": true,
+  "special_wu_gui_days_gui_hai_star_door_fuyin_claim": true,
+  "missing_deity_info_in_two_full_schematic_examples": true,
+  "center_has_no_source_door_deity_synthetic_value": true,
+  "historical_case_labels_unchanged": true,
+  "no_new_success_claims": true,
+  "candidate_rules_review_status": "draft"
+}

@@ -1,0 +1,1374 @@
+{
+  "schema": "wengua_kaiwu_caster_multitrack_v1",
+  "chapter_key": "kaiwu/paper_grid_casting_ch03/v1",
+  "source_sha256": "12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0",
+  "entries": [
+    {
+      "concept_id": "casting:paper_grid:step:1",
+      "kind": "source_algorithm_step",
+      "source_start_line": 3,
+      "source_end_line": 19,
+      "source_excerpt_sha256": "1ce2dfa266b6dfc423292da3c7bd52e096139418ff0b6bd9261a58931afeed0e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 1,
+        "topic": "ganzhi_conversion",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:2",
+      "kind": "source_algorithm_step",
+      "source_start_line": 21,
+      "source_end_line": 22,
+      "source_excerpt_sha256": "78509defedd2c49e67da2c9900593db13982e00acc742e83894dc44206b6ea96",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 2,
+        "topic": "solar_term_futou_and_bureau",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:3",
+      "kind": "source_algorithm_step",
+      "source_start_line": 24,
+      "source_end_line": 34,
+      "source_excerpt_sha256": "fd3787a41050e88aca77daa508352d0dae8510fa74bffde06b042c2669849ca2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 3,
+        "topic": "nine_instruments_earth_plate",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:4",
+      "kind": "source_algorithm_step",
+      "source_start_line": 36,
+      "source_end_line": 38,
+      "source_excerpt_sha256": "1020f67448fc6704598b64377f6880c5a427f9956ff8e25a33688eb65b4b5d0f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 4,
+        "topic": "xun_head_zhifu_zhishi",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:5",
+      "kind": "source_algorithm_step",
+      "source_start_line": 40,
+      "source_end_line": 63,
+      "source_excerpt_sha256": "bea37f06346000660a7d0154c0ce4b7eb3941498a54027ec0a7e73d963ef74b8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 5,
+        "topic": "value_star_follow_stem_and_star_ring",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:6",
+      "kind": "source_algorithm_step",
+      "source_start_line": 65,
+      "source_end_line": 102,
+      "source_excerpt_sha256": "ffbb24e2d88fe613f77ca9b9dc9cc86990ebae642ab585f997d0908b89288a23",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 6,
+        "topic": "value_door_nine_position_count_then_eight_ring",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:step:7",
+      "kind": "source_algorithm_step",
+      "source_start_line": 104,
+      "source_end_line": 132,
+      "source_excerpt_sha256": "e97fc08be56a403e314e94855899cefc8ebdd9246efe9b5b3dba77cbaeac342d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:algorithm_steps",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "step_order": 7,
+        "topic": "eight_deities_follow_star_dun_direction",
+        "school": "shijia_zhuanpan",
+        "external_calendar_still_requires_validation": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:day_to_hour:甲己",
+      "kind": "five_mouse_day_stem_origin",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "1eb33b960632824f1e5df9ab177a0956abdd6ea3d4e1ddc664d3132efe4a9d54",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:hour_stem",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "day_stem_group": [
+          "甲",
+          "己"
+        ],
+        "start_at_zi_hour": "甲子",
+        "source_verse_lines": [
+          9,
+          11
+        ],
+        "external_date_required": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:day_to_hour:乙庚",
+      "kind": "five_mouse_day_stem_origin",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "1eb33b960632824f1e5df9ab177a0956abdd6ea3d4e1ddc664d3132efe4a9d54",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:hour_stem",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "day_stem_group": [
+          "乙",
+          "庚"
+        ],
+        "start_at_zi_hour": "丙子",
+        "source_verse_lines": [
+          9,
+          11
+        ],
+        "external_date_required": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:day_to_hour:丙辛",
+      "kind": "five_mouse_day_stem_origin",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "1eb33b960632824f1e5df9ab177a0956abdd6ea3d4e1ddc664d3132efe4a9d54",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:hour_stem",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "day_stem_group": [
+          "丙",
+          "辛"
+        ],
+        "start_at_zi_hour": "戊子",
+        "source_verse_lines": [
+          9,
+          11
+        ],
+        "external_date_required": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:day_to_hour:丁壬",
+      "kind": "five_mouse_day_stem_origin",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "1eb33b960632824f1e5df9ab177a0956abdd6ea3d4e1ddc664d3132efe4a9d54",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:hour_stem",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "day_stem_group": [
+          "丁",
+          "壬"
+        ],
+        "start_at_zi_hour": "庚子",
+        "source_verse_lines": [
+          9,
+          11
+        ],
+        "external_date_required": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:day_to_hour:戊癸",
+      "kind": "five_mouse_day_stem_origin",
+      "source_start_line": 13,
+      "source_end_line": 13,
+      "source_excerpt_sha256": "1eb33b960632824f1e5df9ab177a0956abdd6ea3d4e1ddc664d3132efe4a9d54",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:hour_stem",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "day_stem_group": [
+          "戊",
+          "癸"
+        ],
+        "start_at_zi_hour": "壬子",
+        "source_verse_lines": [
+          9,
+          11
+        ],
+        "external_date_required": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:戊",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 31,
+      "source_end_line": 31,
+      "source_excerpt_sha256": "29aec7991b00e90dce5914515d4a7315a87b37018e9d0c56d0324f133c933e1d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 5,
+        "stem": "戊",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:己",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 29,
+      "source_end_line": 29,
+      "source_excerpt_sha256": "052d18c1ac90f7750190bbbe6ebed1c3bf7e25e6d3830924865430c6b9e9761c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 4,
+        "stem": "己",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:庚",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 31,
+      "source_end_line": 31,
+      "source_excerpt_sha256": "29aec7991b00e90dce5914515d4a7315a87b37018e9d0c56d0324f133c933e1d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 3,
+        "stem": "庚",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:辛",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 29,
+      "source_end_line": 29,
+      "source_excerpt_sha256": "052d18c1ac90f7750190bbbe6ebed1c3bf7e25e6d3830924865430c6b9e9761c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 2,
+        "stem": "辛",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:壬",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 33,
+      "source_end_line": 33,
+      "source_excerpt_sha256": "d43926e35ede303ee26b786d93510de76724527003f0c8ea091d2a51986c283d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 1,
+        "stem": "壬",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:癸",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 29,
+      "source_end_line": 29,
+      "source_excerpt_sha256": "052d18c1ac90f7750190bbbe6ebed1c3bf7e25e6d3830924865430c6b9e9761c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 9,
+        "stem": "癸",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:丁",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 33,
+      "source_end_line": 33,
+      "source_excerpt_sha256": "d43926e35ede303ee26b786d93510de76724527003f0c8ea091d2a51986c283d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 8,
+        "stem": "丁",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:丙",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 31,
+      "source_end_line": 31,
+      "source_excerpt_sha256": "29aec7991b00e90dce5914515d4a7315a87b37018e9d0c56d0324f133c933e1d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 7,
+        "stem": "丙",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "stem:乙",
+      "kind": "original_earth_stem_layout",
+      "source_start_line": 33,
+      "source_end_line": 33,
+      "source_excerpt_sha256": "d43926e35ede303ee26b786d93510de76724527003f0c8ea091d2a51986c283d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:yin5_earth_plate",
+      "relation_to_prior": "reaffirms",
+      "conditions": {
+        "dun": "yin",
+        "ju": 5,
+        "palace": 6,
+        "stem": "乙",
+        "not_unconditional_palace_for_any_bureau": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天蓬星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 1,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天芮星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 2,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天冲星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 3,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天辅星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 4,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天禽星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 5,
+        "center_host_kun": true,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天心星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 6,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天柱星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 7,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天任星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 8,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "star:天英星",
+      "kind": "star_source_rotation",
+      "source_start_line": 40,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "7aa13ad696f01071c77b254d8ca444d8ffba3c9561b117269913c85dbf133c35",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:star_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "home_palace": 9,
+        "center_host_kun": false,
+        "source_provenance": "teacher_casting_explanation",
+        "not_a_claim_that_center_printed_all_star_fields": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:休",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 1,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:死",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 2,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:伤",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 3,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:杜",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 4,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:开",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 6,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:惊",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 7,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:生",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 8,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "door:景",
+      "kind": "door_source_rotation",
+      "source_start_line": 66,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "5219eb89036e9db7e69127b4269394e1cdb07f2c35003fc74ff011b4ccd245c1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:door_rotation",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "original_palace": 9,
+        "no_center_door": true,
+        "nine_palace_count_for_value_door_only": true,
+        "eight_palace_ring_after_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:值符",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "值符",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:螣蛇",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "螣蛇",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:太阴",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "太阴",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:六合",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "六合",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:白虎",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "白虎",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:玄武",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "玄武",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:九地",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "九地",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "deity:九天",
+      "kind": "eight_deity_source_rotation",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:eight_deity_order",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "deity": "九天",
+        "yang_clockwise": true,
+        "yin_counterclockwise": true,
+        "lead_deity_follows_value_star_not_value_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:hour_ganzhi_with_five_mouse",
+      "kind": "conditional_source_method",
+      "source_start_line": 13,
+      "source_end_line": 15,
+      "source_excerpt_sha256": "17969d17c5184b38da8651787d4d28b0bf5322edbc5381074685b07aa6f273da",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "five_mouse_from_day_stem",
+        "application_condition": "depends_on_trusted_date",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:jieqi_boundary_not_lunar_day_one",
+      "kind": "conditional_source_method",
+      "source_start_line": 5,
+      "source_end_line": 5,
+      "source_excerpt_sha256": "a780229dc5d1eb173d0fa16fbf20d256bae4ae97367530c9793b5b33b3275e9f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "annual_month_jieqi",
+        "application_condition": "not_precise_device_calendar",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:futou_and_mid_yuan",
+      "kind": "conditional_source_method",
+      "source_start_line": 22,
+      "source_end_line": 22,
+      "source_excerpt_sha256": "431aaf073d48ea355d42ba44f74a7729c621b9c5ecbef9d47cf8e8e6a662a7e2",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "futou_jia_yin_middle",
+        "application_condition": "example_specific_2001_08_20",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:yin_earth_sequence",
+      "kind": "conditional_source_method",
+      "source_start_line": 25,
+      "source_end_line": 25,
+      "source_excerpt_sha256": "e7c535fbe332ac59dbc3c8c16117f2e61de0e5a85d5590da72cb4b8b639d0801",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "jiazi_wu_in_5_negative_palace_sequence",
+        "application_condition": "depends_on_bureau",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:xun_zhifu_zhishi",
+      "kind": "conditional_source_method",
+      "source_start_line": 36,
+      "source_end_line": 37,
+      "source_excerpt_sha256": "3c8f514c23177bac49503e05aec3181e0c493c32cc0c75b24bf72c621c5872df",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "xun_hidden_instrument_source_palace",
+        "application_condition": "center_host_boundary",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:nine_star_ring",
+      "kind": "conditional_source_method",
+      "source_start_line": 40,
+      "source_end_line": 40,
+      "source_excerpt_sha256": "bab1486ec448222551ab782a993ce176d3b06b48ad3403784106e120f25fea46",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "star_perimeter_clockwise_both_yin_yang",
+        "application_condition": "center_tianqin_hosts_kun",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:value_star_with_hour_stem",
+      "kind": "conditional_source_method",
+      "source_start_line": 40,
+      "source_end_line": 41,
+      "source_excerpt_sha256": "7be092fc7abfdecb1cdb0212d5462c2f8645311748b1b4b47a10f2418180181c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "move_value_star_to_hour_symbol_earth_palace",
+        "application_condition": "with_hidden_stem_for_jia",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:star_fuyin_on_jia",
+      "kind": "conditional_source_method",
+      "source_start_line": 52,
+      "source_end_line": 53,
+      "source_excerpt_sha256": "952b22a33babb3713209f22dbc62c205d5ffa3f510c50ddb9afd6e780b42c240",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "jia_xun_head_example_returns_home",
+        "application_condition": "not_general_cause_validation",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:door_fuyin_on_jia",
+      "kind": "conditional_source_method",
+      "source_start_line": 66,
+      "source_end_line": 67,
+      "source_excerpt_sha256": "0bb5b6aa36dd9c20ab5617c8d0101c58ca0515f4633f2e5d3923110165e78e55",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "jia_shen_example_returns_home",
+        "application_condition": "not_general_cause_validation",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:timed_zhishi_nine_palace_steps",
+      "kind": "conditional_source_method",
+      "source_start_line": 66,
+      "source_end_line": 66,
+      "source_excerpt_sha256": "a4ba20345428b58c9f18f9133499be31e424f2b7269af2f41093b9399c82b94c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "zhishi_count_nine_numbers_dun_direction",
+        "application_condition": "not_eight_ring",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:yin_zhishi_three_to_nine",
+      "kind": "conditional_source_method",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "1bbfbdf0f546b82c9aa7caf1cd4e5e167fb518a7c27ed06b0584e43ddab83b72",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "shen_to_hai_three_steps_negative",
+        "application_condition": "known_examples_only",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:door_perimeter_after_target",
+      "kind": "conditional_source_method",
+      "source_start_line": 79,
+      "source_end_line": 79,
+      "source_excerpt_sha256": "1bbfbdf0f546b82c9aa7caf1cd4e5e167fb518a7c27ed06b0584e43ddab83b72",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "rotate_all_doors_on_eight_outer_palaces",
+        "application_condition": "independent_of_nine_count",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:zhuanpan_not_feipan",
+      "kind": "conditional_source_method",
+      "source_start_line": 90,
+      "source_end_line": 90,
+      "source_excerpt_sha256": "9c0bbc7e1912cc6e60b8b447abe032aea28e97b4e18a63b711e31743a2f35d55",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "rotary_vs_jump_palace_rule",
+        "application_condition": "school_shijia_zhuanpan",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:yang_zhishi_three_to_six",
+      "kind": "conditional_source_method",
+      "source_start_line": 101,
+      "source_end_line": 101,
+      "source_excerpt_sha256": "57de35691ccab8f4ee1ef5bee07a82f4284339fac753e2ca36bdd69597e18796",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "shen_to_hai_three_steps_positive",
+        "application_condition": "counterfactual_example",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:door_two_distinct_algorithms",
+      "kind": "conditional_source_method",
+      "source_start_line": 102,
+      "source_end_line": 102,
+      "source_excerpt_sha256": "f14f1619993d56f01e582586da0d09b46812ae4c8182d9d6f4c7d54fd4fb6704",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "nine_for_value_and_eight_for_other_doors",
+        "application_condition": "no_blind_nine_number_rotation",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:deity_follow_zhifu_star",
+      "kind": "conditional_source_method",
+      "source_start_line": 104,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "3e567d3944f5eb68f6e0857a2d77fd178f2786e53d985a379eeb68993b821e34",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "small_zhifu_follows_value_star",
+        "application_condition": "not_value_door",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:yin_deity_counterclockwise",
+      "kind": "conditional_source_method",
+      "source_start_line": 105,
+      "source_end_line": 106,
+      "source_excerpt_sha256": "7c89441aef5f6b3f7d3d671142723a10b06ccb186e8c794ea4092190d23a9cfe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "yin_deities_counterclockwise",
+        "application_condition": "eight_outer_palaces_only",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:yang_deity_clockwise",
+      "kind": "conditional_source_method",
+      "source_start_line": 105,
+      "source_end_line": 120,
+      "source_excerpt_sha256": "9e2c9edd645acfe5ba0d02ec3ee5b1973f1bf65117440f4410cfa8a0404f02f5",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "yang_deities_clockwise",
+        "application_condition": "eight_outer_palaces_only",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:shijia_four_layer_finished",
+      "kind": "conditional_source_method",
+      "source_start_line": 134,
+      "source_end_line": 137,
+      "source_excerpt_sha256": "d73b602eee988f83eec159c4ab08ad3958eb639e34853ba990dce5457686eb5a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "earth_heaven_human_deity",
+        "application_condition": "no_commercial_reading_approval",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:all_jia_hours_source_fuyin",
+      "kind": "conditional_source_method",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "d01856bf27997a87e0b12dbaa8e0ed40c604ded7ad4b7122fb2c177856ddae9f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "author_says_star_door_both_fuyin",
+        "application_condition": "center_host_not_exhaustively_tested",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:all_gui_hours_door_source_fuyin",
+      "kind": "conditional_source_method",
+      "source_start_line": 164,
+      "source_end_line": 166,
+      "source_excerpt_sha256": "b382b92bf17b7625530db7c7f01138dadb9d2d5f34d55a700f47e24d345f8fdb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "author_says_door_fuyin_not_necessarily_star",
+        "application_condition": "center_host_not_exhaustively_tested",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:wu_gui_days_gui_hai_both_fuyin",
+      "kind": "conditional_source_method",
+      "source_start_line": 177,
+      "source_end_line": 178,
+      "source_excerpt_sha256": "0b84c8aeb799138e2b04f35aa934695092bf1aa9951714c7a1552eb8d91251a9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "wu_or_gui_day_at_gui_hai_both",
+        "application_condition": "book_claim_not_externally_validated",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:keep_original_center_stem",
+      "kind": "conditional_source_method",
+      "source_start_line": 139,
+      "source_end_line": 147,
+      "source_excerpt_sha256": "9338f49d1a2339149f68da49d4f9c22f18a5571a0e96e5a8399a392923417c8d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "no_independent_center_door_or_deity",
+        "application_condition": "five_center_host_derived_only",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:paper_grid:rule:calendar_independent_ephemeris_required",
+      "kind": "conditional_source_method",
+      "source_start_line": 3,
+      "source_end_line": 6,
+      "source_excerpt_sha256": "13e8f69c30270a4f792ca5722b6dccc3b41e9d264acb972887b57ab81e835be1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:method_rules",
+      "relation_to_prior": "clarifies",
+      "conditions": {
+        "topic": "never_infer_solar_term_from_unverified_time",
+        "application_condition": "real_year_month_day_must_be_validated",
+        "source_only_not_independent_validation": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:teaching_sample:yin5_jia_shen",
+      "kind": "pedagogical_cast_example",
+      "source_start_line": 139,
+      "source_end_line": 139,
+      "source_excerpt_sha256": "914889194a547788f23b773ae077081bfda4e623afe5f22e05daa4b919c4526f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:example_not_event",
+      "relation_to_prior": "additional_exposition",
+      "conditions": {
+        "ju": 5,
+        "hour": "甲申",
+        "day": "乙卯",
+        "source_date": "2001-08-20",
+        "complete_deities_in_source": true,
+        "old_historical_case": false,
+        "xun_shou": "甲申",
+        "value_star_palace": 3,
+        "value_door_palace": 3
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:teaching_sample:yin5_ding_hai",
+      "kind": "pedagogical_cast_example",
+      "source_start_line": 151,
+      "source_end_line": 151,
+      "source_excerpt_sha256": "73c71d3e68b9f1c76c50fc521699964810d8adad87db0be3ec6448fa5daab5b3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:example_not_event",
+      "relation_to_prior": "additional_exposition",
+      "conditions": {
+        "ju": 5,
+        "hour": "丁亥",
+        "day": "乙卯",
+        "source_date": "2001-08-20",
+        "complete_deities_in_source": true,
+        "old_historical_case": false,
+        "xun_shou": "甲申",
+        "value_star_palace": 8,
+        "value_door_palace": 9
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:teaching_sample:yin5_gui_wei",
+      "kind": "pedagogical_cast_example",
+      "source_start_line": 168,
+      "source_end_line": 168,
+      "source_excerpt_sha256": "3d14a62808e63137de787b70b6b4186f046668c3984d665d12f23678b15a36f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:example_not_event",
+      "relation_to_prior": "additional_exposition",
+      "conditions": {
+        "ju": 5,
+        "hour": "癸未",
+        "day": "乙卯",
+        "source_date": "2001-08-20",
+        "complete_deities_in_source": false,
+        "old_historical_case": false,
+        "xun_shou": "甲戌",
+        "value_star_palace": 9,
+        "value_door_palace": 4
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    },
+    {
+      "concept_id": "casting:teaching_sample:yang2_gui_hai",
+      "kind": "pedagogical_cast_example",
+      "source_start_line": 180,
+      "source_end_line": 180,
+      "source_excerpt_sha256": "57d5cb7ca9f1fc87c105a3bcd76976f94d40cd91638d99275adea5d0b90b48f7",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:example_not_event",
+      "relation_to_prior": "additional_exposition",
+      "conditions": {
+        "ju": 2,
+        "hour": "癸亥",
+        "day": "戊申",
+        "source_date": null,
+        "complete_deities_in_source": false,
+        "old_historical_case": false,
+        "xun_shou": "甲寅",
+        "value_star_palace": 7,
+        "value_door_palace": 7
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false,
+      "author_causal_chain_approved": false
+    }
+  ]
+}

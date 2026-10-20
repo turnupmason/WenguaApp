@@ -1,0 +1,1146 @@
+{
+  "schema": "wengua_source_printed_didactic_cast_tables_v1",
+  "source_sha256": "12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0",
+  "figures": [
+    {
+      "figure_key": "yin5_earth",
+      "caption": "（阴遁5局地盘图）",
+      "caption_line": 27,
+      "source_end_line": 34,
+      "original_figure_sha256": "3a83f206e208a73c745b325bd27c42f7ba2068f88ee9ae1689de8b7cef3b6f67",
+      "pedagogical_stage": "earth_plate",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 29,
+          "source_end_line": 29,
+          "original_cell_text": "巽4宫：己",
+          "original_cell_sha256": "2087e282a3c144f92c5cbfd197568b11db6349245aa62e07c4ef0f7ed462f101",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 29,
+          "source_end_line": 29,
+          "original_cell_text": "离9宫：癸",
+          "original_cell_sha256": "a093f2840ff816d499ccd4887bf814ad3954e0bf4e6f41ead3a08229b6431fb4",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 29,
+          "source_end_line": 29,
+          "original_cell_text": "坤2宫：辛",
+          "original_cell_sha256": "e14a04786ffaea457b5c6dcd1bb50d7f0ce7f941965178bfd0c761fe60f6091f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 31,
+          "source_end_line": 31,
+          "original_cell_text": "震3宫：庚",
+          "original_cell_sha256": "d2726578d517e716d4c9c1d763e6525fb101002622ca0460a9b859be83416c3b",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 31,
+          "source_end_line": 31,
+          "original_cell_text": "中5宫：戊",
+          "original_cell_sha256": "4e3fc56b99759c724ddc05c8e03d35b96f5a30a249d8a33d7d84440f54313d52",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 31,
+          "source_end_line": 31,
+          "original_cell_text": "兑7宫：丙",
+          "original_cell_sha256": "caff73fde8ad83c72da08cfd5167abd5daeb320884eea7a7a2ed69ef52c79280",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 33,
+          "source_end_line": 33,
+          "original_cell_text": "艮8宫：丁",
+          "original_cell_sha256": "cf3c9ec5e66f8effa09f51d3f110011c6f87cda05acdd680a7dd0b7c9603f644",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 33,
+          "source_end_line": 33,
+          "original_cell_text": "坎1宫：壬",
+          "original_cell_sha256": "516b920541279e5f6175c1cd79d532c93fdf8bda67410e77311c09123cbd12bc",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 33,
+          "source_end_line": 33,
+          "original_cell_text": "乾6宫：乙",
+          "original_cell_sha256": "85488a53a30d28ff9e447680eeb906631b05cc80ddad4342eb150f425af47933",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_value_star",
+      "caption": "（值符飞落震三宫天盘图）",
+      "caption_line": 43,
+      "source_end_line": 50,
+      "original_figure_sha256": "b5dff37f70d9b41fa66fb5b749aaa10a05a89742c6d0d8e89eb79665a8b23214",
+      "pedagogical_stage": "heaven_star_partial",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 45,
+          "source_end_line": 45,
+          "original_cell_text": "巽4宫：地盘己",
+          "original_cell_sha256": "cd4a999a73799a9504be2e9f461edd9b0dd93ed196eb1a9555d5cd6cbb6de206",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 45,
+          "source_end_line": 45,
+          "original_cell_text": "离9宫：地盘癸",
+          "original_cell_sha256": "ae90925e19d3e11a4a9743e001ab6f5368f0a740657eec2406ca3f25fb7b1b5f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 45,
+          "source_end_line": 45,
+          "original_cell_text": "坤2宫：地盘辛",
+          "original_cell_sha256": "a738137f2b650c9fdc2d84428aa0c0370df8dbf82bbe863796b5386ad9c7f1f8",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 47,
+          "source_end_line": 47,
+          "original_cell_text": "震3宫：天冲庚／地盘庚",
+          "original_cell_sha256": "420ff74522691a84803c214df18a6e3bc463d55f61783e8dea488ed0d35060bf",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 47,
+          "source_end_line": 47,
+          "original_cell_text": "中5宫：戊",
+          "original_cell_sha256": "4e3fc56b99759c724ddc05c8e03d35b96f5a30a249d8a33d7d84440f54313d52",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 47,
+          "source_end_line": 47,
+          "original_cell_text": "兑7宫：地盘丙",
+          "original_cell_sha256": "e3c16f18826574c24233ade3d12f8b8b5aec52cc9a1d6caa758262a46c670e37",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 49,
+          "source_end_line": 49,
+          "original_cell_text": "艮8宫：地盘丁",
+          "original_cell_sha256": "585123dfc4976fe4bf15e7eb30343b563186e7e1654d151b64f530d5e9622c87",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 49,
+          "source_end_line": 49,
+          "original_cell_text": "坎1宫：地盘壬",
+          "original_cell_sha256": "155380f402d1f9133ca0696425f31576a29c033442bdf7249f14014a034fff83",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 49,
+          "source_end_line": 49,
+          "original_cell_text": "乾6宫：地盘乙",
+          "original_cell_sha256": "9b054dad8f784ed9712e614cecac7380d5baae677d7bbcc7c2ef2df0b907b7a5",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_heaven_fuyin",
+      "caption": "（天盘九星伏吟图）",
+      "caption_line": 55,
+      "source_end_line": 63,
+      "original_figure_sha256": "ca9842bf1e4d717b35b6ef4f7bf4ae838b81e6469f463cd23db9da4d58f93c6c",
+      "pedagogical_stage": "heaven_plate",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 57,
+          "source_end_line": 57,
+          "original_cell_text": "巽4宫：天辅己／地盘己",
+          "original_cell_sha256": "5af3b7570907807d81d100e8c6e7d1dd2cd32d4e5da96f22a480c5f83db2307c",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 57,
+          "source_end_line": 57,
+          "original_cell_text": "离9宫：天英癸／地盘癸",
+          "original_cell_sha256": "0bd79444dcd8c1add4da31e057facda4735b75c7a5185726029956c6696510fd",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 57,
+          "source_end_line": 58,
+          "original_cell_text": "坤2宫：天芮辛、天禽戊\n地盘辛（天禽寄坤）",
+          "original_cell_sha256": "0658d9f54aef6571e6f118ee8fe1b41a71a0056ea5d7e104624850a1cdcf629c",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 60,
+          "source_end_line": 60,
+          "original_cell_text": "震3宫：天冲庚／地盘庚",
+          "original_cell_sha256": "420ff74522691a84803c214df18a6e3bc463d55f61783e8dea488ed0d35060bf",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 60,
+          "source_end_line": 60,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 60,
+          "source_end_line": 60,
+          "original_cell_text": "兑7宫：天柱丙／地盘丙",
+          "original_cell_sha256": "a76669fe2e7bc248cba86bc3ad17a2dbbc16d7eddeb36d7d072de185b80eeff4",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 62,
+          "source_end_line": 62,
+          "original_cell_text": "艮8宫：天任丁／地盘丁",
+          "original_cell_sha256": "7652b7f20b8a4875e46f6a32e41667f58c2935f66fc891a3ba135479aec9f806",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 62,
+          "source_end_line": 62,
+          "original_cell_text": "坎1宫：天蓬壬／地盘壬",
+          "original_cell_sha256": "0bb812ffecf414aa2f7cc355fb4e563552a573b418a8ccf0410baff393909f7f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 62,
+          "source_end_line": 62,
+          "original_cell_text": "乾6宫：天心乙／地盘乙",
+          "original_cell_sha256": "bcd647e252fd4508fc6a4a7ebf2e01486218ad71794721c3d454c4251b21eb8c",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_human_fuyin",
+      "caption": "（八门伏吟图）",
+      "caption_line": 69,
+      "source_end_line": 77,
+      "original_figure_sha256": "ed9d39d2f523feb1f4b1df538a99b7d875d642e5c5f0bc4d17920a3ad8e3e4d8",
+      "pedagogical_stage": "door_plate",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 71,
+          "source_end_line": 71,
+          "original_cell_text": "巽4宫：杜门／天辅己／地己",
+          "original_cell_sha256": "e43cd468e77fc234bdcd263b83f799e30226ba11a307950e79fd7b80f0c0539c",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 71,
+          "source_end_line": 71,
+          "original_cell_text": "离9宫：景门／天英癸／地癸",
+          "original_cell_sha256": "e3c5cde73cffc30f87379a597027c1b05f53b5d0cf371a0094177460eef51d9a",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 71,
+          "source_end_line": 72,
+          "original_cell_text": "坤2宫：死门／天芮辛\n天禽戊寄坤／地辛",
+          "original_cell_sha256": "cc096fad7a7c29f0fbf98a0ea8a107b7ae1082250c45d34547901689b8c6cc1d",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 74,
+          "source_end_line": 74,
+          "original_cell_text": "震3宫：伤门／天冲庚／地庚",
+          "original_cell_sha256": "227694c840ef173faacac8d9c50664d821befb37e8eae4f410f662ff84d2c4ea",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 74,
+          "source_end_line": 74,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 74,
+          "source_end_line": 74,
+          "original_cell_text": "兑7宫：惊门／天柱丙／地丙",
+          "original_cell_sha256": "92850b6d126c421b695ea3e08f2b17e026896b1cb2ce5ddfa2ec75800146aa36",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 76,
+          "source_end_line": 76,
+          "original_cell_text": "艮8宫：生门／天任丁／地丁",
+          "original_cell_sha256": "36c7abac0db9db2f59159fbc1ce698a6c080dc9f87ade2a101e412d7956267e9",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 76,
+          "source_end_line": 76,
+          "original_cell_text": "坎1宫：休门／天蓬壬／地壬",
+          "original_cell_sha256": "3641684618d49e401a0bf10392ae4788b5222f8864dfcacd17f1f380cdc4684c",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 76,
+          "source_end_line": 76,
+          "original_cell_text": "乾6宫：开门／天心乙／地乙",
+          "original_cell_sha256": "d861413f8581bc5b7ebf97388620faa172f02c9e7f18f5fb43c4532d960a5795",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_ding_hai_door",
+      "caption": "（乙卯日丁亥时阴遁八门落宫图）",
+      "caption_line": 81,
+      "source_end_line": 88,
+      "original_figure_sha256": "796b1da7d99a6223f92e247539ac4a6ee937160d463dfcd67c1994c5e77f9eae",
+      "pedagogical_stage": "door_only",
+      "example_key": "yin5_ding_hai",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 83,
+          "source_end_line": 83,
+          "original_cell_text": "巽4宫：生门",
+          "original_cell_sha256": "e145a1a9e54793b474b773c1af32ee5626b5c36488337cddee40bf4647516b1e",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 83,
+          "source_end_line": 83,
+          "original_cell_text": "离9宫：伤门（值使）",
+          "original_cell_sha256": "4c29cf1be7136777c8344f0f3cdf9c227c25129d09f926bee689d117b94cb5b6",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 83,
+          "source_end_line": 83,
+          "original_cell_text": "坤2宫：杜门",
+          "original_cell_sha256": "0bdee4fe1b71aa493861c4cd9658a3d76c3048726980c1b3e4c3209bd9f91e12",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 85,
+          "source_end_line": 85,
+          "original_cell_text": "震3宫：休门",
+          "original_cell_sha256": "ced9c0f20f9ebfc0b0f5b0ac502ee86055f7724bc71018371a69fe16ae52c362",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 85,
+          "source_end_line": 85,
+          "original_cell_text": "中5宫（无门）",
+          "original_cell_sha256": "2b001c9ee830a98a4425c1eb0ad0ec66fc7cfbdaf0913a00fc43f0d3d858a828",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 85,
+          "source_end_line": 85,
+          "original_cell_text": "兑7宫：景门",
+          "original_cell_sha256": "49dff0321a98c5962ab5510cc55fd5e92230ed6c48250c7d8d482689c8f1259f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 87,
+          "source_end_line": 87,
+          "original_cell_text": "艮8宫：开门",
+          "original_cell_sha256": "7d232261aae06a9e8b714783379619c9a15fc900fd775f315845870ee78214d4",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 87,
+          "source_end_line": 87,
+          "original_cell_text": "坎1宫：惊门",
+          "original_cell_sha256": "24089c0bbda63defb3bdbc5f6fc81a8d76b889841d34d2e67d7d0205c15ce123",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 87,
+          "source_end_line": 87,
+          "original_cell_text": "乾6宫：死门",
+          "original_cell_sha256": "36bcfb339edc34e08c53746e7ca8963720b8150028a5b947766cb3db51af29e9",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yang_counterfactual_ding_hai_door",
+      "caption": "（乙卯日丁亥时阳遁八门落宫图）",
+      "caption_line": 92,
+      "source_end_line": 99,
+      "original_figure_sha256": "9920d7e0503a78ccb67b1327cfc74138499567c88a01948a6a0ce98d3196280b",
+      "pedagogical_stage": "door_only",
+      "example_key": "yang5_ding_hai_counterfactual",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 94,
+          "source_end_line": 94,
+          "original_cell_text": "巽4宫：惊门",
+          "original_cell_sha256": "c935d3e2a7469502ec9269883aa5f189b3ef1fd04753119f04cbbf19818d8d44",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 94,
+          "source_end_line": 94,
+          "original_cell_text": "离9宫：开门",
+          "original_cell_sha256": "1bb9e6c4323210f64754e6b503ff24eb1b8389b4f124d8b520641eb9239a0644",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 94,
+          "source_end_line": 94,
+          "original_cell_text": "坤2宫：休门",
+          "original_cell_sha256": "089fb7f97d462c5d8d0eb38271e50fb4b3903011150dd62df5b1c0a89f770172",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 96,
+          "source_end_line": 96,
+          "original_cell_text": "震3宫：死门",
+          "original_cell_sha256": "fa9975b87b8500dc47186d26eca61e8aa41f9efca7a022a5b3e2586dacfb2058",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 96,
+          "source_end_line": 96,
+          "original_cell_text": "中5宫（无门）",
+          "original_cell_sha256": "2b001c9ee830a98a4425c1eb0ad0ec66fc7cfbdaf0913a00fc43f0d3d858a828",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 96,
+          "source_end_line": 96,
+          "original_cell_text": "兑7宫：生门",
+          "original_cell_sha256": "a797187297d82ec39c5c63cb94dfbb084af4aaa9aee6fadddc42b5584cf9714b",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 98,
+          "source_end_line": 98,
+          "original_cell_text": "艮8宫：景门",
+          "original_cell_sha256": "b47aa341d904032684bd9cbef1e3dfcc7d06b2163fc1717f9abcfdb3956520ae",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 98,
+          "source_end_line": 98,
+          "original_cell_text": "坎1宫：杜门",
+          "original_cell_sha256": "e3ea63080c90b03eeaa476a28716439f2680a9e1ec2399065c523a1803e7f707",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 98,
+          "source_end_line": 98,
+          "original_cell_text": "乾6宫：伤门（值使）",
+          "original_cell_sha256": "ee6c41f20a307913d24cab0a22d98bd11ccc239b24711a544869b0fe3f1899f1",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_deity_plate",
+      "caption": "（乙卯日甲申时阴遁5局八神落宫图）",
+      "caption_line": 108,
+      "source_end_line": 118,
+      "original_figure_sha256": "4134a0acaeba5f46bb672c3bf533fe0d8ef8fc8dffd56049d7ef3475cafeb676",
+      "pedagogical_stage": "four_layer_intermediate",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 110,
+          "source_end_line": 111,
+          "original_cell_text": "巽4宫：九天／杜门\n天辅己／地己",
+          "original_cell_sha256": "5eb047acc414af57951fee71ec65a68944ca07163970e0fed55f9c56f3464377",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 110,
+          "source_end_line": 111,
+          "original_cell_text": "离9宫：九地／景门\n天英癸／地癸",
+          "original_cell_sha256": "dfbe87ddb12c7f1196f0964e37a85ae8b0bf7c1f6d1a73999f06b10255f9c758",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 110,
+          "source_end_line": 111,
+          "original_cell_text": "坤2宫：玄武／死门\n天芮辛、天禽戊／地辛",
+          "original_cell_sha256": "76f46b1e47a3a54453ffd4749bb35903cf820aa80deab18bba2c579e99c667fd",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 113,
+          "source_end_line": 114,
+          "original_cell_text": "震3宫：值符／伤门\n天冲庚／地庚",
+          "original_cell_sha256": "392391f95615fe700c8c4303b103ae36e00b728228867294e3e1af463ffba911",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 113,
+          "source_end_line": 113,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 113,
+          "source_end_line": 114,
+          "original_cell_text": "兑7宫：白虎／惊门\n天柱丙／地丙",
+          "original_cell_sha256": "d9d1f2d0f3d12b9424ec10868c2d41e1cdfaa20b8ee5ef9c878acc4c2eb783f2",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 116,
+          "source_end_line": 117,
+          "original_cell_text": "艮8宫：螣蛇／生门\n天任丁／地丁",
+          "original_cell_sha256": "4497f9b4b222821295d2f16f4f02ce70a8d447b55169a91556ad35d096398ad5",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 116,
+          "source_end_line": 117,
+          "original_cell_text": "坎1宫：太阴／休门\n天蓬壬／地壬",
+          "original_cell_sha256": "700464119c9c630328dbfbd8f9b186af741817a44501fc391c0d429fc2b35a9f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 116,
+          "source_end_line": 117,
+          "original_cell_text": "乾6宫：六合／开门\n天心乙／地乙",
+          "original_cell_sha256": "5b69e0470b6e847c902bb7a3fe76cc0e4fe6a5a1199a9c70ae42f415457fc56c",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yang5_deity_counterfactual",
+      "caption": "（乙卯日甲申时阳遁5局八神落宫图）",
+      "caption_line": 122,
+      "source_end_line": 132,
+      "original_figure_sha256": "a3414c735436ce647b2d563550159f2d09e1b3163fa1fb60b18e5e3654f7a5d9",
+      "pedagogical_stage": "four_layer_intermediate",
+      "example_key": "yang5_jia_shen_counterfactual",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 124,
+          "source_end_line": 125,
+          "original_cell_text": "巽4宫：玄武／杜门\n天辅乙／地乙",
+          "original_cell_sha256": "955e5f764b1de0123979a5e328ee94543e2957640de35839128e1f89b462f9a4",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 124,
+          "source_end_line": 125,
+          "original_cell_text": "离9宫：九地／景门\n天英壬／地壬",
+          "original_cell_sha256": "0d300349aaf46f6baf36f5053f90450c5798daea589341656ec4f10cbce07a39",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 124,
+          "source_end_line": 125,
+          "original_cell_text": "坤2宫：九天／死门\n天芮丁、天禽戊／地丁",
+          "original_cell_sha256": "f8324073ee8bc60a8c5d2b556d90ba749f83bcc865eedd394d781d1ad9b4fcac",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 127,
+          "source_end_line": 128,
+          "original_cell_text": "震3宫：白虎／伤门\n天冲丙／地丙",
+          "original_cell_sha256": "e7b038145e6a06f29bf0770bf943d92215be681f14c588eebf61eb2b7a58cafc",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 127,
+          "source_end_line": 127,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 127,
+          "source_end_line": 128,
+          "original_cell_text": "兑7宫：值符／惊门\n天柱庚／地庚",
+          "original_cell_sha256": "49e71b22c2c2830c953cfbeab79f3a0a52cbedda3291d6c470b737f359602928",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 130,
+          "source_end_line": 131,
+          "original_cell_text": "艮8宫：六合／生门\n天任辛／地辛",
+          "original_cell_sha256": "5814e1bd35a8f5b95ba10525afd31de557cda7df6620d2c559e076f083666048",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 130,
+          "source_end_line": 131,
+          "original_cell_text": "坎1宫：太阴／休门\n天蓬癸／地癸",
+          "original_cell_sha256": "bbf5b35c2158c65452cfd6cceac7fb6f9faee708e86440d8b4ced594cd935f2e",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 130,
+          "source_end_line": 131,
+          "original_cell_text": "乾6宫：螣蛇／开门\n天心己／地己",
+          "original_cell_sha256": "3563b79e7820c32c2f07eed5cd467277b20d8963cfec8f531e39dcf0280e2973",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_jia_shen_four_layer",
+      "caption": "（乙卯日甲申时阴遁5局完整奇门格局）",
+      "caption_line": 139,
+      "source_end_line": 147,
+      "original_figure_sha256": "9338f49d1a2339149f68da49d4f9c22f18a5571a0e96e5a8399a392923417c8d",
+      "pedagogical_stage": "complete_four_layer",
+      "example_key": "yin5_jia_shen",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 141,
+          "source_end_line": 141,
+          "original_cell_text": "巽4宫：九天／杜己／辅己",
+          "original_cell_sha256": "0fab2da8e582bfbfee849f4a51600553bdceb54d9f6ee4074b79de3e886f9a53",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 141,
+          "source_end_line": 141,
+          "original_cell_text": "离9宫：九地／景癸／英癸",
+          "original_cell_sha256": "30d37207734a5b17e33b9f213304de8bbace1d970fd530abd6a5e57240180f41",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 141,
+          "source_end_line": 142,
+          "original_cell_text": "坤2宫：玄武／戊死辛\n戊芮辛（天禽寄坤）",
+          "original_cell_sha256": "e09e7c6b09cc45e424694dc8322d720aec30212933fdb3a0a0d19f45f77f259e",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 144,
+          "source_end_line": 144,
+          "original_cell_text": "震3宫：值符／伤庚／冲庚",
+          "original_cell_sha256": "a7c6896e2ecabba87b26d0ab22ab4baeb1fe2c0bcccdc4fd0b4b526e9192f2bc",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 144,
+          "source_end_line": 144,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 144,
+          "source_end_line": 144,
+          "original_cell_text": "兑7宫：白虎／惊丙／柱丙",
+          "original_cell_sha256": "d4b77f078389a5b4ef4dd6c518f1d998baf3a2f7bd74cc4d94b9f68c9538f5df",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 146,
+          "source_end_line": 146,
+          "original_cell_text": "艮8宫：螣蛇／生丁／任丁",
+          "original_cell_sha256": "31a374bad35549fab59fc5ba30787234372e0ae87dad3a77d7d932b98b5e4e44",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 146,
+          "source_end_line": 146,
+          "original_cell_text": "坎1宫：太阴／休壬／蓬壬",
+          "original_cell_sha256": "ba59481bd771f4677443b68b9afd30f572b1e350511647c611d3b345b0eba858",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 146,
+          "source_end_line": 146,
+          "original_cell_text": "乾6宫：六合／开乙／心乙",
+          "original_cell_sha256": "e293f2e2cefd4df99bafd85f8f85e0e0977effa072fdc7a013b4a6ac5527fe5b",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": true,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_ding_hai_four_layer",
+      "caption": "（乙卯日丁亥时阴遁5局完整奇门格局）",
+      "caption_line": 151,
+      "source_end_line": 158,
+      "original_figure_sha256": "1023eb22146181728a4359d97e35c4cc7927781f579c855498bfb6c841536e8d",
+      "pedagogical_stage": "complete_four_layer",
+      "example_key": "yin5_ding_hai",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 153,
+          "source_end_line": 153,
+          "original_cell_text": "巽4宫：九地／生癸／英己",
+          "original_cell_sha256": "07aa9fa374c299664ed016a8b06133ca391cf0644a94d9e31b217ae7558c97f9",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 153,
+          "source_end_line": 153,
+          "original_cell_text": "离9宫：玄武／戊伤辛／芮癸",
+          "original_cell_sha256": "1c2b2857842bb3b49398be9cb2c580a213368b9830672271d50a05896a3e344f",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 153,
+          "source_end_line": 153,
+          "original_cell_text": "坤2宫：白虎／杜丙／柱辛",
+          "original_cell_sha256": "a6bc85c56e2708af9de76ffc6bcca91053f94cc693fa61688f349d9d59d926bc",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 155,
+          "source_end_line": 155,
+          "original_cell_text": "震3宫：九天／休己／辅庚",
+          "original_cell_sha256": "683a1e615f9f23c16caeac28a0eceeaa09604ea6a4ea9f29dfb03318fc23e65c",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 155,
+          "source_end_line": 155,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 155,
+          "source_end_line": 155,
+          "original_cell_text": "兑7宫：六合／景乙／心丙",
+          "original_cell_sha256": "3dc2db81c0e1e473fed407e32fd3cd97d586df2362ab6b1cb218eba3f7104799",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 157,
+          "source_end_line": 157,
+          "original_cell_text": "艮8宫：值符／开庚／冲丁",
+          "original_cell_sha256": "aba96e474d061bf9505fc9d4093f60d57098231affd9ca100dca763a0b86fc89",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 157,
+          "source_end_line": 157,
+          "original_cell_text": "坎1宫：螣蛇／惊丁／任壬",
+          "original_cell_sha256": "323a52313a6848b97cae687b69a78adbc0b008b26829094c9acade2987e58eca",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 157,
+          "source_end_line": 157,
+          "original_cell_text": "乾6宫：太阴／死壬／蓬乙",
+          "original_cell_sha256": "ab413839d5428a876bfd40ac8969a4507f2e7339a01cfdaf140e8410236ba4d3",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": true,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yin5_gui_wei_incomplete",
+      "caption": "（乙卯日癸未时阴遁5局：八门伏吟）",
+      "caption_line": 168,
+      "source_end_line": 175,
+      "original_figure_sha256": "62ab1ac1fa0564e109bfaac9bb0adba7983c67b58ee2a0c9c8bf0a7204c94ccd",
+      "pedagogical_stage": "simplified_chart_no_deities",
+      "example_key": "yin5_gui_wei",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 170,
+          "source_end_line": 170,
+          "original_cell_text": "巽4宫：杜庚／冲己",
+          "original_cell_sha256": "bd1792074b9c7c2ed01202dc6b00b41e4bd09b93f2f0b756d97f8f6b25d2ca07",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 170,
+          "source_end_line": 170,
+          "original_cell_text": "离9宫：景己／辅癸",
+          "original_cell_sha256": "ec533fb5f0347a4bcb44b852210cf560ee22eee63e1a3d02e01d3f23b8b101b4",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 170,
+          "source_end_line": 170,
+          "original_cell_text": "坤2宫：死癸／英辛",
+          "original_cell_sha256": "90979867cec2f4779a736e6b60ffdfe07921941f204ac9847e8acc4732636a27",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 172,
+          "source_end_line": 172,
+          "original_cell_text": "震3宫：伤丁／任庚",
+          "original_cell_sha256": "aaf3c47dee2a67b095596a132853064c70981c3523951e6a024dfb33255792cd",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 172,
+          "source_end_line": 172,
+          "original_cell_text": "中5宫：戊（寄坤2宫）",
+          "original_cell_sha256": "b0c234fa21c6061e612866660cd14e9e8fc2d7a344120cfd4e3e60d238f190ad",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 172,
+          "source_end_line": 172,
+          "original_cell_text": "兑7宫：戊惊辛／芮丙",
+          "original_cell_sha256": "5cce2ffdef936400d461b57ce95ca924ccf0e0b22336c0972b09a0be3bd58003",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 174,
+          "source_end_line": 174,
+          "original_cell_text": "艮8宫：生壬／蓬丁",
+          "original_cell_sha256": "8fa458b538f10a773095e5158d7583c5f488429b2cb2bec4260783cb5c60e0aa",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 174,
+          "source_end_line": 174,
+          "original_cell_text": "坎1宫：休乙／心壬",
+          "original_cell_sha256": "4491442318f850f866417015fa86b35095b317d718da18d61b6e8b9516b64c33",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 174,
+          "source_end_line": 174,
+          "original_cell_text": "乾6宫：开丙／柱乙",
+          "original_cell_sha256": "756d8e43234ca6ecd431945d171a33492ec21acafa7e58f32df17bce0dd25239",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    },
+    {
+      "figure_key": "yang2_gui_hai_incomplete",
+      "caption": "（戊申日癸亥时阳遁2局：星门伏吟）",
+      "caption_line": 180,
+      "source_end_line": 187,
+      "original_figure_sha256": "56053e1fddb08e44a4f2b25bf8fc050973b5919487bf3e5902f217ec326a1e92",
+      "pedagogical_stage": "simplified_chart_no_deities",
+      "example_key": "yang2_gui_hai",
+      "actual_historical_prediction": false,
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽4",
+          "source_start_line": 182,
+          "source_end_line": 182,
+          "original_cell_text": "巽4宫：杜庚／辅庚",
+          "original_cell_sha256": "cd92e7495dc23bdc18afa4040993f0b56cb6241687e34f98ba67fd8d9499e62b",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离9",
+          "source_start_line": 182,
+          "source_end_line": 182,
+          "original_cell_text": "离9宫：景丙／英丙",
+          "original_cell_sha256": "cbe907dc56d927788835bf4aa171ed904492ca775599883ad01102d55a483595",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤2",
+          "source_start_line": 182,
+          "source_end_line": 182,
+          "original_cell_text": "坤2宫：死戊／芮戊",
+          "original_cell_sha256": "067d9cbf2e427d1850890dc169950376d7f051c858aafdc640c3333f6c5264e8",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震3",
+          "source_start_line": 184,
+          "source_end_line": 184,
+          "original_cell_text": "震3宫：伤己／冲己",
+          "original_cell_sha256": "156f27fd47dcbe4bfcdd66562b548da69a5a0ada76a325948df490653242b310",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中5",
+          "source_start_line": 184,
+          "source_end_line": 184,
+          "original_cell_text": "中5宫：辛（寄坤2宫）",
+          "original_cell_sha256": "f4a308c3b99a1540cbfbb3425e10e8a7b6f02a6f7a6b3be47a89bfb010c31a3b",
+          "source_is_center_bare_or_no_door": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑7",
+          "source_start_line": 184,
+          "source_end_line": 184,
+          "original_cell_text": "兑7宫：惊癸／柱癸",
+          "original_cell_sha256": "16cf0baaa9f9e9bffbce1e1e58f7416175187c936fe6d5c5525a8fe0478bd56a",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮8",
+          "source_start_line": 186,
+          "source_end_line": 186,
+          "original_cell_text": "艮8宫：生丁／任丁",
+          "original_cell_sha256": "6d5bb66d9e1a9d7115dd9f542524bb9a7bb9d0d6cf56601b9753ff77963cd654",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎1",
+          "source_start_line": 186,
+          "source_end_line": 186,
+          "original_cell_text": "坎1宫：休乙／蓬乙",
+          "original_cell_sha256": "19af381fcebb46dc7a31a3f00ddedf9d52707de5184afe4ff5585e96975c2671",
+          "source_is_center_bare_or_no_door": false
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾6",
+          "source_start_line": 186,
+          "source_end_line": 186,
+          "original_cell_text": "乾6宫：开壬／心壬",
+          "original_cell_sha256": "79375f2d87eeb409540343ba637ebbcb6fdd0cd7f8273acb79406b89d225ea23",
+          "source_is_center_bare_or_no_door": false
+        }
+      ],
+      "complete_deity_information": false,
+      "source_chart_is_not_case_from_book": true
+    }
+  ]
+}
