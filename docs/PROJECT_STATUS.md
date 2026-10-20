@@ -371,3 +371,12 @@ GitHub Actions `Build and archive Kaiwu first source part (multibook) #1` 成功
 源TXT189行、22715字节、SHA256 `12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0`。明确七个原书起局步骤、五鼠遁元、立秋甲寅符头阴5局、天地人神盘规则。12幅九宫文字图含108宫原字；139/151为四盘完整示例，168/180为八神缺失的简化排盘，108/122为中间示意（阳5为反事实讲解），所有教学盘不得加进原来的103历史事件112真盘计数。源134行仅引用《神奇之门》的排盘格式，未载页码。源163/164/177为三条需条件化的伏吟规律。中5原书缺门神不自动补，值使九宫数字步进与七门外围旋转必须独立保留。外部历法、天文节气、时区与日界尚未完全核验，不能直接生成用户正式预测。
 
 依真实父版 SQLite SHA `7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726` 使用backup()，历史全部源行及旧例保真；新增 `018_kaiwu_didactic_casting_figures.sql` 两表明确隔离教学图/宫，新增对 `casting_shenqi.py` 的源盘一致性回归，新增信息 draft /positive_training=0，0人工批准。新archive、逐字节SHA、实际新增候选数、CI待GitHub Actions完成后补录，不得编造数据。
+
+
+## 2026-10-20 《开悟之门》第三章完整版本化远端归档已成功：下一章唯一父库
+
+原稿《纸上井字格起局法的步骤》189行22,715字节，原书SHA256=12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0。GitHub源码提交8489d6a8df80a25a393069be36ce973797e8051a首次完整CI#216通过，首归档Action#1因脚本执行模式无法import项目包而失败；**仅修复workflow为python -m scripts.build_kaiwu_03_from_02**的提交0989f8111504696e8e9a584acfd98c8718042214之后，**CI#217 (Python3.11/3.12均success) + 本章archive Action#2 success**。远端归档机器人真实二进制提交453362292959dc4867937c5edf1cd0c303dc2164；manifest=archives/sqlite/shenqi21_kaiwu03_103cases_manifest.json，已读取其实际值并通过GitHub目录核查文件实体大小和Git Blob。
+
+**下一章绝对唯一完整基库** archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3，**字节5908480，SHA256=91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f**，Git Blob dffe0ed14b2b57186198cfafb94b7a13563a93f7。配套压缩 .sqlite3.xz **482084字节，SHA256=b1d2eac9f4a70eb5e41bb0435c5679d5cd61b6235c814f57187d296472d9986e**，Git Blob 96f1c0821ac44b06c0bdce2e7166b3505ae635dd。严格从上一23来源节完整SQLite SHA256=7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726 使用sqlite3.backup()增量；旧所有表来源行逐行无修改、integrity_check=ok、FK违规0。**实际累计sections=24（神奇21+开悟3），semantic_assertions=1771（本章+74），cross_book_concept_tracks=514（本章+74），cross_book_example_references=16（本章+1，原书134行引用《神奇之门》排盘格式不含页号），kaiwu_didactic_figures=12、kaiwu_didactic_figure_cells=108**。四组教习盘中2张真正含完整四盘、另2张无八神不能擅补原书；全部只是教学源字一致性对照，非历史真实预测案例或天文验证。103历史事件、112张原历史问事盘、1008历史来源宫、495作者分析、6书内显式首断错误完全不变。新条全部draft、人审专业已批准0、positive_training_eligible=0。
+
+必须遵守 docs/MULTIBOOK_PROVENANCE_PROTOCOL.md 的多书同概念独立来源/多轨/不覆盖早期V1、禁止退回父库、保留时间/版本分层；下一章增量只能从最新24来源节的真实SHA=91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f开始，任何重建旧书、从CSV/JSON补伪原书、UI改动都禁止。最终handoff文本提交后，还要复验该最新HEAD的3.11/3.12 CI通过，不能仅引用源代码commit的#217。

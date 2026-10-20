@@ -487,3 +487,12 @@ GitHub Actions 第20章归档Run #2成功，机器人已在main提交 `e21361337
 用户给出先天测试示例为2001-08-20 16:10 乙卯日甲申时阴遁5局（符头甲寅/立秋中元）、2001-08-20 21:30 丁亥时阴遁5局、癸未时阴遁5局，以及无指定公历日期的戊申日癸亥时阳遁2局。仅允许从**明确给定**阴阳遁、局数和干支，使用 `src/wengua/casting_shenqi.py:layout_from_explicit_bureau` 做逐宫“原书文字一致性”比对；现有代码本身不等于独立天文历法验算，亦非科学预言有效性。源书“六甲时星门同伏吟”、“六癸时门伏吟而星不一定”、“戊癸日癸亥时星门皆伏吟”保留来源限定/中宫处理缺口，不得自证全1080局毫无例外。节气交节时间和合法年份日期不能凭仅本章算准。新书跨书 `《神奇之门》` 格式引用位于第134行，**无原著具体页码，不许杜撰**。构建遵守多书多轨协议、来源 SHA 和旧库全表保真。
 
 **唯一新章父库**仍是已成功远端归档的 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3` SHA256 `7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726`。先旧SQLite backup() 后仅追加，独立归档24来源节（神奇21+开悟3）；不要从索引重建、不要退到第二章之前、不要修改UI/旧QimenLLM。新规则一律draft、训练资格0，必须远端Actions真实成功后二进制SHA/压缩SHA/manifest及最新HEAD CI双Python复验，不能先宣称成功。编译 `scripts/build_kaiwu_03_from_02.py`、测试 `tests/test_kaiwu_third_part.py`。
+
+
+## 2026-10-20 《开悟之门》第三章完整版本化远端归档已成功：下一章唯一父库
+
+原稿《纸上井字格起局法的步骤》189行22,715字节，原书SHA256=12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0。GitHub源码提交8489d6a8df80a25a393069be36ce973797e8051a首次完整CI#216通过，首归档Action#1因脚本执行模式无法import项目包而失败；**仅修复workflow为python -m scripts.build_kaiwu_03_from_02**的提交0989f8111504696e8e9a584acfd98c8718042214之后，**CI#217 (Python3.11/3.12均success) + 本章archive Action#2 success**。远端归档机器人真实二进制提交453362292959dc4867937c5edf1cd0c303dc2164；manifest=archives/sqlite/shenqi21_kaiwu03_103cases_manifest.json，已读取其实际值并通过GitHub目录核查文件实体大小和Git Blob。
+
+**下一章绝对唯一完整基库** archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3，**字节5908480，SHA256=91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f**，Git Blob dffe0ed14b2b57186198cfafb94b7a13563a93f7。配套压缩 .sqlite3.xz **482084字节，SHA256=b1d2eac9f4a70eb5e41bb0435c5679d5cd61b6235c814f57187d296472d9986e**，Git Blob 96f1c0821ac44b06c0bdce2e7166b3505ae635dd。严格从上一23来源节完整SQLite SHA256=7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726 使用sqlite3.backup()增量；旧所有表来源行逐行无修改、integrity_check=ok、FK违规0。**实际累计sections=24（神奇21+开悟3），semantic_assertions=1771（本章+74），cross_book_concept_tracks=514（本章+74），cross_book_example_references=16（本章+1，原书134行引用《神奇之门》排盘格式不含页号），kaiwu_didactic_figures=12、kaiwu_didactic_figure_cells=108**。四组教习盘中2张真正含完整四盘、另2张无八神不能擅补原书；全部只是教学源字一致性对照，非历史真实预测案例或天文验证。103历史事件、112张原历史问事盘、1008历史来源宫、495作者分析、6书内显式首断错误完全不变。新条全部draft、人审专业已批准0、positive_training_eligible=0。
+
+必须遵守 docs/MULTIBOOK_PROVENANCE_PROTOCOL.md 的多书同概念独立来源/多轨/不覆盖早期V1、禁止退回父库、保留时间/版本分层；下一章增量只能从最新24来源节的真实SHA=91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f开始，任何重建旧书、从CSV/JSON补伪原书、UI改动都禁止。最终handoff文本提交后，还要复验该最新HEAD的3.11/3.12 CI通过，不能仅引用源代码commit的#217。
