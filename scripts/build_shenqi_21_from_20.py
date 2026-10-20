@@ -144,7 +144,7 @@ def case_index(lines):
   if n==2:item['three_questions_one_event']=True
   if n==3:item['interim_known_participants_at_line178']=True
   if n==4:item['live_predictions_before_written_reconstruction']={'initial_lines':[196,200,204],
-    'explanation_after_revealed_feedback':[239,243,247],'another_person_face_reading_not_qimen':True}
+    'explanation_after_revealed_feedback':[237,241,245],'another_person_face_reading_not_qimen':True}
   if n==5:item['teacher_retrospective_commentary_line']=280
   items.append(item)
  return items
