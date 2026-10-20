@@ -28,7 +28,7 @@ class KaiwuFifthChapterTests(unittest.TestCase):
   self.assertIn("我提倡用拆补法定局",self.verses[0]["commentary_original"])
   self.assertIn("用置闰法定局",self.verses[0]["commentary_original"])
   self.assertEqual(self.verses[-1]["verse_source_line"],70)
-  self.assertTrue(self.verses[-1]["commentary_original"].endswith("取得预期的效果。"))
+  self.assertTrue(self.verses[-1]["commentary_original"].endswith("自己去体会去领悟了。"))
 
  def test_all_source_motifs_exact_provenance_draft_not_invented_rules(self):
   self.assertEqual(len(self.motifs),len(MOTIFS))
