@@ -294,3 +294,9 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 ## 2026-10-20 第17章《军事事件预测》源稿与归档工作交接
 原稿SHA256 `d8b369785de0110cc20376191332eef31b04e749d8ed764d7a1a155ae6c19c05`，183行22,467字节。2个完整事件，4张实际来源盘（1937事后研究一张+1998海湾危机三张），36来源宫，22条作者编号分析（9+13；第109—111行连续解释归同一步），32个有条件来源通法候选。本章共新增54条 `semantic_assertions` 草稿候选。原书事后回顾的二战案例不作为模型在未知历史上成功预测的证据；第31行有待外部史学核实的日期叙述另列 source caveat。案例二三个真实问时属于单个事件家族；三次新增已知、作者见盘和最终结果严格时间分层。所有源例未在现实战争预测领域获得独立验证，禁止向实际军事活动提供行动结论。
 本章 GitHub source、builder、migration、tests、archive workflow 同时提交，**归档流程成功之前不得宣称17章完整数据库已经发布**。基库16章84案例/89盘/801宫/376分析/990语义研究候选；完整新版本目标17章86案例/93盘/837宫/398分析/1044候选，历史5个明确初断错误保持不变。中五寄二宫数据单列，不篡改原格。真正源码和SQLite的 hash、远端提交、最新CI必须以后续远端实测为准。UI和旧QimenLLM仍不触。
+
+## 2026-10-20 第17章完整公开SQLite实际归档、二进制SHA及最终交接
+
+本条为最新**实际 GitHub 远端核验状态**，覆盖前文只谈“待提交/目标”的阶段描述：GitHub Actions《Build and archive next military history chapter SQLite》Run #2 在提交 `0b7d569a6ac6041f30e111e6ab312690e29a7ccd` 已全部成功（Run #1 的脚本 ROOT 多取一层导致找不到 migration，已实际修复且 #2 通过），Action 生成了完整原始未加密数据库，并由机器人正式落在 GitHub `main` 提交 `262fc590966bd14abe8b7306d1a1f967b9337998`。文件：`archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3`，**3,516,416字节**、SHA256 **`d29cfc5cd0779cf0a334b168a48c07f7145d51f0fe1424c5c0954b76e1133867`**、Git Blob SHA **`fd6603a786128bfc840b3d63692f2321543a721f`**。`.sqlite3.xz` 压缩版本大小319,752字节、SHA256 **`bfa383f11c8c1a146d82faa0156df03b32924625a2a2041c7cc4babfe17c1394`**；完整 `archives/sqlite/17chapters_86cases_manifest.json` 与两份数据库同在远端。
+
+从已归档16章源快照SHA256 `a3573b3b147c24b2eb149fb43f6c6582d7a10a722c25f6c863571f4d4a29efb9` **经sqlite3 backup()无损增量生成**17章真实库；实际数据 sections=17、whole events=86、real printed charts=93、palace records=837、author steps=398、semantic candidates=1044，`integrity_check=ok`、外键违规0，全旧16章原行逐表保留。原书军事新章2个事件、4张印盘、22步及32领域条件候选，第一例历史事后对照不得当独立预测，第二例同一危机3真实起盘不得拆3案，原文1937历史时序争议保留原字并独立警示。所有作者因果证据链人工专业完整核验仍为0；研究候选不能误报为真实可靠军事预测，原书明确初断错误累计仍为5。下一章**必须接续本次已验证的17章86案二进制快照**，绝不沿用16章或从索引重建。最新 handoff 的 Python 3.11/3.12 CI 必须另行在实际最新 HEAD 再核，不拿 #199（机器人提交前）冒充最终绿灯。
