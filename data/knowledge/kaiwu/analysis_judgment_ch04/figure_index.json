@@ -1,0 +1,212 @@
+{
+  "chapter_key": "kaiwu/analysis_judgment_ch04/v1",
+  "old_case_reprinted_not_new": true,
+  "figures": [
+    {
+      "figure_key": "old_shenqi_bank_case_reprinted",
+      "caption": "一个奇门局起好以后，在分析判断前，首先要做好三项准备工作：第一项是把纲领性的用神，即天盘上的年、月、日、时干标出来，同时把求测类别的特殊用神标出来。比如《神奇之门》第271~275页实例三，测北京抢银行大案一例，首先根据1996年6月3日上午8点多发案时间，按干支历丙子年癸巳月辛未日壬辰时，起出阳3局，甲申旬的奇门格局：",
+      "source_caption_line": 49,
+      "source_end_line": 61,
+      "pedagogical_stage": "crossbook_old_case_illustration",
+      "example_key": "shenqi_referenced",
+      "original_figure_sha256": "38cb3ad743ceee19b58b7b1ebd207284862edf2b9d9d91e74a5c9f1aa46899bf",
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽四宫",
+          "source_start_line": 50,
+          "source_end_line": 52,
+          "original_cell_text": "巽四宫\n武　死戊\n冲己",
+          "original_cell_sha256": "bdba01e42491f2b299715f8fc816c20ba816e3df9b60109f26bc3b8961303b18",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离九宫",
+          "source_start_line": 50,
+          "source_end_line": 52,
+          "original_cell_text": "离九宫\n地　惊己\n辅丁",
+          "original_cell_sha256": "d3fe7772ee7b24f1ccae6aeba9615bc0be7ba009f746828abfe48f22be7db158",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤二宫",
+          "source_start_line": 50,
+          "source_end_line": 52,
+          "original_cell_text": "坤二宫\n天　开丁\n庚英乙",
+          "original_cell_sha256": "03b3d99e7981bc27c55af0c6fb19ff08dd472d06d98ee4920e5b1f01d55796a9",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震三宫",
+          "source_start_line": 54,
+          "source_end_line": 56,
+          "original_cell_text": "震三宫\n虎　景癸\n任戊",
+          "original_cell_sha256": "c663b0f3e8f413739484f121082e0d80ebd110057d92880ca43d8a4944471fa6",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中五宫",
+          "source_start_line": 54,
+          "source_end_line": 55,
+          "original_cell_text": "中五宫\n庚",
+          "original_cell_sha256": "64411dc9daf3e6504becb0297fdd4f7155bf686f8f7b4c12105881f918975049",
+          "center_is_bare_original": true,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑七宫",
+          "source_start_line": 54,
+          "source_end_line": 56,
+          "original_cell_text": "兑七宫\n符　乙休庚\n禽壬",
+          "original_cell_sha256": "e6265a965a90a5c1302d2a84f14c501a803221a58393e285744cc6db2059db0a",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮八宫",
+          "source_start_line": 58,
+          "source_end_line": 60,
+          "original_cell_text": "艮八宫\n合　杜丙\n蓬癸",
+          "original_cell_sha256": "670d4af468352c3be5f108c170660661aab7665ba0c78a235d66f2a5e52714f8",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎一宫",
+          "source_start_line": 58,
+          "source_end_line": 60,
+          "original_cell_text": "坎一宫\n阴　伤辛\n心丙",
+          "original_cell_sha256": "8224ffc371addf053979bbc8b8aca09cee59d9b84583a06a98cbe5ada2edfcea",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾六宫",
+          "source_start_line": 58,
+          "source_end_line": 60,
+          "original_cell_text": "乾六宫\n蛇　生壬\n柱辛",
+          "original_cell_sha256": "885f2341ead81045c23055fca1208a2197a939f60bb1eb442944a33f506342ef",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        }
+      ],
+      "verified_against_engine": false,
+      "not_new_independent_prediction": true
+    },
+    {
+      "figure_key": "palace_five_elements",
+      "caption": "(奇门地盘九宫五行图)",
+      "source_caption_line": 113,
+      "source_end_line": 119,
+      "pedagogical_stage": "didactic_five_element_palaces",
+      "example_key": null,
+      "original_figure_sha256": "e93e7314046036456cbc132047aace2a4cf5f0909728a88dba67c5c42f36fddf",
+      "cells": [
+        {
+          "palace": 4,
+          "palace_label_raw": "巽四宫",
+          "source_start_line": 114,
+          "source_end_line": 114,
+          "original_cell_text": "巽四宫　木",
+          "original_cell_sha256": "e40845578c1489621f9ac4d4f3b269d5a94c71b2d20c48722c8101adb5a974e8",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 9,
+          "palace_label_raw": "离九宫",
+          "source_start_line": 114,
+          "source_end_line": 114,
+          "original_cell_text": "离九宫　火",
+          "original_cell_sha256": "5d066334311f64acab960fb5e20618c6571904de14cbfc5699b532130fa5eab9",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 2,
+          "palace_label_raw": "坤二宫",
+          "source_start_line": 114,
+          "source_end_line": 114,
+          "original_cell_text": "坤二宫　土",
+          "original_cell_sha256": "8c9a421384e5216b4343344597f1af1aa07893f568228e710d7daaf2d5425b2e",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 3,
+          "palace_label_raw": "震三宫",
+          "source_start_line": 116,
+          "source_end_line": 116,
+          "original_cell_text": "震三宫　木",
+          "original_cell_sha256": "9dc31bcbc902eee2dc39e16184d64e1f0003e580fb5390e7b2be53beb7f716cb",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 5,
+          "palace_label_raw": "中五宫",
+          "source_start_line": 116,
+          "source_end_line": 116,
+          "original_cell_text": "中五宫　土",
+          "original_cell_sha256": "75a76617a550bcdb6b8c8934277cda4c7911a2ec23664a8fb0e89054a994cf5b",
+          "center_is_bare_original": true,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 7,
+          "palace_label_raw": "兑七宫",
+          "source_start_line": 116,
+          "source_end_line": 116,
+          "original_cell_text": "兑七宫　金",
+          "original_cell_sha256": "6f02fb6a3dc3ec597245ad3aafa22b0f58ae0885175257c648c63ef82e525049",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 8,
+          "palace_label_raw": "艮八宫",
+          "source_start_line": 118,
+          "source_end_line": 118,
+          "original_cell_text": "艮八宫　土",
+          "original_cell_sha256": "0fc6f105b66cc0aa630d923d3754ad12d8f0fc3880e231d4b7d59f0263f57024",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 1,
+          "palace_label_raw": "坎一宫",
+          "source_start_line": 118,
+          "source_end_line": 118,
+          "original_cell_text": "坎一宫　水",
+          "original_cell_sha256": "e2b33c90997a310cbba8e6b807ad9b01e871a7b7e08dbc1b01c9288163202b82",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        },
+        {
+          "palace": 6,
+          "palace_label_raw": "乾六宫",
+          "source_start_line": 118,
+          "source_end_line": 118,
+          "original_cell_text": "乾六宫　金",
+          "original_cell_sha256": "18fa224dc2046cfbd45d7fa79034e9e32a2584bbe33f0a4a255aa44db469f43d",
+          "center_is_bare_original": false,
+          "not_new_historical_chart": true
+        }
+      ],
+      "verified_against_engine": false,
+      "not_new_independent_prediction": true
+    }
+  ]
+}

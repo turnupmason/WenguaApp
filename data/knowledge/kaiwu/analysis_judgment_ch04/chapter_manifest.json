@@ -1,0 +1,60 @@
+{
+  "schema": "wengua_multibook_source_chapter_v4",
+  "chapter_key": "kaiwu/analysis_judgment_ch04/v1",
+  "section_key": "analysis_judgment_ch04",
+  "source_book": "kaiwu",
+  "source_title": "第四章 如何分析判断奇门格局",
+  "source_sha256": "ce3203902f6fa2e129d13899e19ef4a3d02e8698f38eac3dbe7383ba550a2cf4",
+  "source_bytes": 84327,
+  "source_lines": 656,
+  "five_book_sections": {
+    "3": "yongshen_four_characteristics",
+    "41": "judgment_vertical_horizontal",
+    "169": "time_target_methods",
+    "238": "directional_stem_pairs_and_patterns",
+    "592": "decision_after_analysis"
+  },
+  "book_counts": {
+    "shenqi": 21,
+    "kaiwu": 4
+  },
+  "total_source_sections": 25,
+  "source_ordered_stem_pair_count": 81,
+  "unique_directional_pair_keys": 81,
+  "timing_method_counts": {
+    "successful_outcome": 8,
+    "failed_outcome": 6,
+    "interception_recovery": 3,
+    "limitation": 3
+  },
+  "new_semantic_occurrences": 263,
+  "new_shenqi_bibliographic_links": 25,
+  "crossbook_reprinted_old_bank_chart_and_five_elements_chart": 2,
+  "source_diagram_palace_cells": 18,
+  "new_independent_historical_cases": 0,
+  "new_historical_prediction_charts": 0,
+  "historical_cases_unchanged": 103,
+  "historical_charts_unchanged": 112,
+  "author_reasoning_unchanged": 495,
+  "all_previous_source_rows_preserved": true,
+  "all_new_source_occurrences_draft": true,
+  "positive_training_eligible": false,
+  "author_acknowledges_missed_bank_timing_line": 228,
+  "invoice_prediction_one_day_early_result_line": 232,
+  "author_guesses_not_externally_verified": true,
+  "baseline_sha256": "91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f",
+  "created_full_db_sha256": "eeb1a6ee67e49eb76bb3f982c44c78db830d8eaf827316860c519e687497507d",
+  "counts": {
+    "sections": 25,
+    "cases": 103,
+    "historical_case_reasoning": 495,
+    "historical_palace_standardization": 1008,
+    "semantic_assertions": 2034,
+    "cross_book_concept_tracks": 777,
+    "cross_book_example_references": 41,
+    "kaiwu_didactic_figures": 14,
+    "kaiwu_didactic_figure_cells": 126,
+    "kaiwu_ordered_stem_pair_occurrences": 81,
+    "kaiwu_timing_source_methods": 20
+  }
+}

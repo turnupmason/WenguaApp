@@ -1,0 +1,281 @@
+{
+  "chapter_key": "kaiwu/analysis_judgment_ch04/v1",
+  "author_case_source_not_independent_event": true,
+  "references": [
+    {
+      "source_line": 15,
+      "cited_book": "shenqi",
+      "printed_page": "unspecified_in_source",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:15",
+      "relation_role": "book_reference_not_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 25,
+      "cited_book": "shenqi",
+      "printed_page": "144~145",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:25",
+      "relation_role": "book_reference_not_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 47,
+      "cited_book": "shenqi",
+      "printed_page": "271~275",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:47",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 93,
+      "cited_book": "shenqi",
+      "printed_page": "206~207",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:93",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 129,
+      "cited_book": "shenqi",
+      "printed_page": "206~207",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:129",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 157,
+      "cited_book": "shenqi",
+      "printed_page": "206~207",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:157",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 159,
+      "cited_book": "shenqi",
+      "printed_page": "271~275",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:159",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 165,
+      "cited_book": "shenqi",
+      "printed_page": "206~207",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:165",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 167,
+      "cited_book": "shenqi",
+      "printed_page": "271~275",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:167",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 173,
+      "cited_book": "shenqi",
+      "printed_page": "147~148",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:173",
+      "relation_role": "book_reference_not_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 190,
+      "cited_book": "shenqi",
+      "printed_page": "154~155",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:190",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 192,
+      "cited_book": "shenqi",
+      "printed_page": "185~187",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:192",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 204,
+      "cited_book": "shenqi",
+      "printed_page": "152~154",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:204",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 206,
+      "cited_book": "shenqi",
+      "printed_page": "306~308",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:206",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 226,
+      "cited_book": "shenqi",
+      "printed_page": "271~275",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:226",
+      "relation_role": "book_initial_timing_not_disclosed_then_retrospective_explanation",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 230,
+      "cited_book": "shenqi",
+      "printed_page": "246~248",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:230",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 232,
+      "cited_book": "shenqi",
+      "printed_page": "255~257",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:232",
+      "relation_role": "source_predictive_timing_one_day_off_preserve_error",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 234,
+      "cited_book": "shenqi",
+      "printed_page": "258~259",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:234",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 240,
+      "cited_book": "shenqi",
+      "printed_page": "unspecified_in_source",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:240",
+      "relation_role": "book_reference_not_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 270,
+      "cited_book": "shenqi",
+      "printed_page": "323",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:270",
+      "relation_role": "book_source_interpretation_or_rule",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 604,
+      "cited_book": "shenqi",
+      "printed_page": "134~141",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:604",
+      "relation_role": "book_reference_not_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 628,
+      "cited_book": "shenqi",
+      "printed_page": "156~158",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:628",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 630,
+      "cited_book": "shenqi",
+      "printed_page": "282~284",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:630",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 632,
+      "cited_book": "shenqi",
+      "printed_page": "362~363",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:632",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 654,
+      "cited_book": "shenqi",
+      "printed_page": "287~289",
+      "link_id": "kaiwu:analysis_ch04:shenqi_ref:654",
+      "relation_role": "reprinted_original_case_not_independent_new_event",
+      "not_new_event": true,
+      "not_new_printed_chart": true,
+      "not_independently_verified_case_match": true,
+      "review_status": "draft"
+    }
+  ]
+}
