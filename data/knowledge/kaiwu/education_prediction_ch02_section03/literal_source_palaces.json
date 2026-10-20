@@ -1,0 +1,347 @@
+{
+  "source_sha256": "8c72fe2fa37efdd422510b9c762c6890b3ce0116ee3ed3b72c5a19f1b63f3b05",
+  "charts": [
+    {
+      "case_id": "kaiwu.education.19990717.pan_son",
+      "source_grid_start": 29,
+      "nine_literal_palaces": [
+        {
+          "palace": 4,
+          "start": 30,
+          "end": 32,
+          "unique_line": 30,
+          "label": "巽4",
+          "god": "合",
+          "door": "丁休戊",
+          "star": "芮丙",
+          "original": "巽4 合\n丁休戊\n芮丙",
+          "sha": "07b1332ff38fb1b9fab71f83669342be5ec278fb2bb325a9926801eee45daad5"
+        },
+        {
+          "palace": 9,
+          "start": 30,
+          "end": 32,
+          "unique_line": 31,
+          "label": "离9",
+          "god": "阴",
+          "door": "生壬",
+          "star": "柱庚",
+          "original": "离9 阴\n生壬\n柱庚",
+          "sha": "67f759326a9addf8a0a7263016f45b6a77ae965040af93691a82ba276aea35a3"
+        },
+        {
+          "palace": 2,
+          "start": 30,
+          "end": 32,
+          "unique_line": 32,
+          "label": "坤2",
+          "god": "蛇",
+          "door": "伤癸",
+          "star": "心戊",
+          "original": "坤2 蛇\n伤癸\n心戊",
+          "sha": "b1b4f4dac053a3d297ad32bd5dbdbaf4f4ad7c116451376c60c4db417223e4d4"
+        },
+        {
+          "palace": 3,
+          "start": 34,
+          "end": 36,
+          "unique_line": 34,
+          "label": "震3",
+          "god": "虎",
+          "door": "开庚",
+          "star": "英乙",
+          "original": "震3 虎\n开庚\n英乙",
+          "sha": "31bb1487675e987b6fad42f8f02b37a8430723b3fe3d6a9bbc994d640b63a82b"
+        },
+        {
+          "palace": 5,
+          "start": 34,
+          "end": 36,
+          "unique_line": 35,
+          "label": "中5",
+          "god": "",
+          "door": "丁",
+          "star": "",
+          "original": "中5\n丁\n",
+          "sha": "96a81fde2ba3e6752a83484e2ad9562f38b1fb9d6b9dcfe8caf066ffdfe40a27"
+        },
+        {
+          "palace": 7,
+          "start": 34,
+          "end": 36,
+          "unique_line": 36,
+          "label": "兑7",
+          "god": "符",
+          "door": "杜己",
+          "star": "蓬壬",
+          "original": "兑7 符\n杜己\n蓬壬",
+          "sha": "afbba45b0fa92a067ea9db293f74d629fdf545af694702b3c3c797642c4bb006"
+        },
+        {
+          "palace": 8,
+          "start": 38,
+          "end": 40,
+          "unique_line": 38,
+          "label": "艮8",
+          "god": "武",
+          "door": "惊丙",
+          "star": "辅辛",
+          "original": "艮8 武\n惊丙\n辅辛",
+          "sha": "4b47f08f7f7655cd794163fadb739271e65af07783ef04fb8bd20aaf4720c638"
+        },
+        {
+          "palace": 1,
+          "start": 38,
+          "end": 40,
+          "unique_line": 39,
+          "label": "坎1",
+          "god": "地",
+          "door": "死乙",
+          "star": "冲己",
+          "original": "坎1 地\n死乙\n冲己",
+          "sha": "8f91ec961ef37a452096446a3ced76df6b900e5a37caec7f3021424f965f9b65"
+        },
+        {
+          "palace": 6,
+          "start": 38,
+          "end": 40,
+          "unique_line": 40,
+          "label": "乾6",
+          "god": "天",
+          "door": "景辛",
+          "star": "任癸",
+          "original": "乾6 天\n景辛\n任癸",
+          "sha": "ef97986453ae31636ac59dd62adc8dedef6673233ed6d3928c635b97bd46a3e8"
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.education.19990702.wang_daughter",
+      "source_grid_start": 69,
+      "nine_literal_palaces": [
+        {
+          "palace": 4,
+          "start": 70,
+          "end": 72,
+          "unique_line": 70,
+          "label": "巽4",
+          "god": "蛇",
+          "door": "死辛",
+          "star": "英乙",
+          "original": "巽4 蛇\n死辛\n英乙",
+          "sha": "6d068ac4690236f8e50ad5780b9ad0ea2c1322abbf6422aee56e1db2704c64d0"
+        },
+        {
+          "palace": 9,
+          "start": 70,
+          "end": 72,
+          "unique_line": 71,
+          "label": "离9",
+          "god": "符",
+          "door": "惊己",
+          "star": "芮辛",
+          "original": "离9 符\n惊己\n芮辛",
+          "sha": "45cf727cfc7bdbeb0acb7d44b923133044c77267eafda57d2c3e8650d4356861"
+        },
+        {
+          "palace": 2,
+          "start": 70,
+          "end": 72,
+          "unique_line": 72,
+          "label": "坤2",
+          "god": "天",
+          "door": "开癸",
+          "star": "柱己",
+          "original": "坤2 天\n开癸\n柱己",
+          "sha": "dde92d6d337bb5713b3dea6ee37ec37bba5b50abda15ad8186f21084212eaad6"
+        },
+        {
+          "palace": 3,
+          "start": 74,
+          "end": 76,
+          "unique_line": 74,
+          "label": "震3",
+          "god": "阴",
+          "door": "景乙",
+          "star": "辅戊",
+          "original": "震3 阴\n景乙\n辅戊",
+          "sha": "576f00fb1fe52bf264c9c77756e57ba9496808ddae67d2ab6e614b38e37683c3"
+        },
+        {
+          "palace": 5,
+          "start": 74,
+          "end": 76,
+          "unique_line": 75,
+          "label": "中5",
+          "god": "",
+          "door": "丙",
+          "star": "",
+          "original": "中5\n丙\n",
+          "sha": "9744fc3dcae8c4916eb729bd6407424ca6b81d8a8a64a029a85507b25605ec08"
+        },
+        {
+          "palace": 7,
+          "start": 74,
+          "end": 76,
+          "unique_line": 76,
+          "label": "兑7",
+          "god": "地",
+          "door": "休丁",
+          "star": "心癸",
+          "original": "兑7 地\n休丁\n心癸",
+          "sha": "7ef464fa662feb576e30f43f2a8329ac882341cb8532810a23810da56e3d824b"
+        },
+        {
+          "palace": 8,
+          "start": 78,
+          "end": 80,
+          "unique_line": 78,
+          "label": "艮8",
+          "god": "合",
+          "door": "杜戊",
+          "star": "冲壬",
+          "original": "艮8 合\n杜戊\n冲壬",
+          "sha": "883ef1f9d14730539708306ffe0941b380fde3f8b823fb6992692e8b6a258ff0"
+        },
+        {
+          "palace": 1,
+          "start": 78,
+          "end": 80,
+          "unique_line": 79,
+          "label": "坎1",
+          "god": "虎",
+          "door": "伤壬",
+          "star": "任庚",
+          "original": "坎1 虎\n伤壬\n任庚",
+          "sha": "fe27eb1a94e24be5e94800562a75f64b816cc40c7fdec8edd2201aaf1b853b0f"
+        },
+        {
+          "palace": 6,
+          "start": 78,
+          "end": 80,
+          "unique_line": 80,
+          "label": "乾6",
+          "god": "武",
+          "door": "生庚",
+          "star": "蓬丁",
+          "original": "乾6 武\n生庚\n蓬丁",
+          "sha": "737502d34b73a28ca9ca7c213d280749eb45d33d9fbe4ebcf272a5e3b9d0fb61"
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.education.20000711.zhang_sisters",
+      "source_grid_start": 125,
+      "nine_literal_palaces": [
+        {
+          "palace": 4,
+          "start": 126,
+          "end": 128,
+          "unique_line": 126,
+          "label": "巽4",
+          "god": "合",
+          "door": "丁惊戊",
+          "star": "禽芮丙",
+          "original": "巽4 合\n丁惊戊\n禽芮丙",
+          "sha": "af991d62c574c9da72e65759653dd854aa6c56bd280f0d1b3a600a0adbb591ea"
+        },
+        {
+          "palace": 9,
+          "start": 126,
+          "end": 128,
+          "unique_line": 127,
+          "label": "离9",
+          "god": "阴",
+          "door": "开壬",
+          "star": "柱庚",
+          "original": "离9 阴\n开壬\n柱庚",
+          "sha": "718835fa052e21f0aa2b9af279830231c47a3b2590ea33e8ddea796108484bc9"
+        },
+        {
+          "palace": 2,
+          "start": 126,
+          "end": 128,
+          "unique_line": 128,
+          "label": "坤2",
+          "god": "蛇",
+          "door": "休癸",
+          "star": "心戊",
+          "original": "坤2 蛇\n休癸\n心戊",
+          "sha": "b266d72e1ba0ec624eb34c6a3fbf5ef8a2bad18c82c0aad76094472051fddb4f"
+        },
+        {
+          "palace": 3,
+          "start": 130,
+          "end": 132,
+          "unique_line": 130,
+          "label": "震3",
+          "god": "虎",
+          "door": "死庚",
+          "star": "英乙",
+          "original": "震3 虎\n死庚\n英乙",
+          "sha": "a74ca6d6e8e3e99321c7f1b0ba80541e7c9d0b62f84f34d6a311c6516a88dda1"
+        },
+        {
+          "palace": 5,
+          "start": 130,
+          "end": 132,
+          "unique_line": 131,
+          "label": "中5",
+          "god": "",
+          "door": "丁",
+          "star": "",
+          "original": "中5\n丁\n",
+          "sha": "96a81fde2ba3e6752a83484e2ad9562f38b1fb9d6b9dcfe8caf066ffdfe40a27"
+        },
+        {
+          "palace": 7,
+          "start": 130,
+          "end": 132,
+          "unique_line": 132,
+          "label": "兑7",
+          "god": "符",
+          "door": "生己",
+          "star": "蓬壬",
+          "original": "兑7 符\n生己\n蓬壬",
+          "sha": "f10973d054b60612ee2e3e2fb9e71d054c46d090b127bcb1e3e052492632e022"
+        },
+        {
+          "palace": 8,
+          "start": 134,
+          "end": 136,
+          "unique_line": 134,
+          "label": "艮8",
+          "god": "武",
+          "door": "景丙",
+          "star": "辅辛",
+          "original": "艮8 武\n景丙\n辅辛",
+          "sha": "6dd184563eb5215dcff384a1204b85786483b7511641a67276f865dae5bcf43e"
+        },
+        {
+          "palace": 1,
+          "start": 134,
+          "end": 136,
+          "unique_line": 135,
+          "label": "坎1",
+          "god": "地",
+          "door": "杜乙",
+          "star": "冲己",
+          "original": "坎1 地\n杜乙\n冲己",
+          "sha": "c4ebcd803d046f8fad4823c4d6310884a39ab27964ef5c509c804529c9d94994"
+        },
+        {
+          "palace": 6,
+          "start": 134,
+          "end": 136,
+          "unique_line": 136,
+          "label": "乾6",
+          "god": "天",
+          "door": "伤辛",
+          "star": "任癸",
+          "original": "乾6 天\n伤辛\n任癸",
+          "sha": "dc0e52fe928ffd602eea970d5ee25d84b95ae29d621e385a1eb6c14a2aa15623"
+        }
+      ]
+    }
+  ]
+}

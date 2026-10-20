@@ -1,0 +1,37 @@
+{
+  "source_sha256": "8c72fe2fa37efdd422510b9c762c6890b3ce0116ee3ed3b72c5a19f1b63f3b05",
+  "four_candidates": [
+    {
+      "case_id": "kaiwu.education.19990717.pan_son",
+      "key": "pan_son",
+      "birth_year": "1978 戊午",
+      "prediction_line": 21,
+      "outcome_line": 23,
+      "result": "exam_540_university_offered"
+    },
+    {
+      "case_id": "kaiwu.education.19990702.wang_daughter",
+      "key": "wang_daughter",
+      "birth_year": "1981 辛酉",
+      "prediction_line": 87,
+      "outcome_line": 103,
+      "result": "approx_350_actual_342_formal_art_admission"
+    },
+    {
+      "case_id": "kaiwu.education.20000711.zhang_sisters",
+      "key": "elder_daughter",
+      "birth_year": "1978 戊午",
+      "prediction_line": 143,
+      "outcome_line": 151,
+      "result": "ordinary_exam_not_admitted_self_funded_college"
+    },
+    {
+      "case_id": "kaiwu.education.20000711.zhang_sisters",
+      "key": "younger_daughter",
+      "birth_year": "1981 辛酉",
+      "prediction_line": 147,
+      "outcome_line": 151,
+      "result": "ordinary_formal_college_admission"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "source_sha256": "8c72fe2fa37efdd422510b9c762c6890b3ce0116ee3ed3b72c5a19f1b63f3b05",
+  "source_claims": [
+    {
+      "case": "pan_son",
+      "claim_key": "score_540",
+      "topic": "score",
+      "initial_line": 21,
+      "report_line": 23,
+      "source_verdict": "book_reported_match"
+    },
+    {
+      "case": "pan_son",
+      "claim_key": "direction_after_result",
+      "topic": "college_location_direction",
+      "initial_line": 21,
+      "report_line": 59,
+      "source_verdict": "book_explicit_partial_error"
+    },
+    {
+      "case": "wang_daughter",
+      "claim_key": "score_350_342",
+      "topic": "score_approximation",
+      "initial_line": 87,
+      "report_line": 103,
+      "source_verdict": "book_reported_match"
+    },
+    {
+      "case": "wang_daughter",
+      "claim_key": "wrong_south_college",
+      "topic": "college_location_direction",
+      "initial_line": 95,
+      "report_line": 107,
+      "source_verdict": "book_explicit_partial_error"
+    },
+    {
+      "case": "sisters",
+      "claim_key": "elder_normal_vs_self_funded",
+      "topic": "ordinary_versus_paid_admission",
+      "initial_line": 143,
+      "report_line": 151,
+      "source_verdict": "book_reported_match"
+    },
+    {
+      "case": "sisters",
+      "claim_key": "younger_formal_admitted",
+      "topic": "formal_admission",
+      "initial_line": 147,
+      "report_line": 151,
+      "source_verdict": "book_reported_match"
+    }
+  ],
+  "two_directional_errors_not_rewriting_true_score_predictions": true,
+  "one_parent_one_original_cast_two_students": true,
+  "street_diviner_not_additional_qimen_source_chart": true,
+  "initial_prediction_distinguished_from_later_explanations": true,
+  "no_user_manual_case_approval_required": true,
+  "all_parent_database_rows_unchanged": true
+}

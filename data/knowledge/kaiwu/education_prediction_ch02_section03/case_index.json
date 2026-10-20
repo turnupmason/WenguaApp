@@ -1,0 +1,155 @@
+{
+  "source_sha256": "8c72fe2fa37efdd422510b9c762c6890b3ce0116ee3ed3b72c5a19f1b63f3b05",
+  "cases": [
+    {
+      "key": "pan_son",
+      "id": "kaiwu.education.19990717.pan_son",
+      "title": "潘副所长儿子第三次高考与学校志愿",
+      "source": [
+        5,
+        60
+      ],
+      "q": [
+        7,
+        15
+      ],
+      "chart": 29,
+      "calendar": 27,
+      "before": [
+        7,
+        21
+      ],
+      "prediction": [
+        13,
+        17,
+        21
+      ],
+      "feedback": [
+        23
+      ],
+      "reasoning": [
+        [
+          45,
+          47
+        ],
+        [
+          49,
+          55
+        ],
+        [
+          57,
+          59
+        ]
+      ],
+      "after": [
+        [
+          25,
+          27
+        ]
+      ],
+      "date": "1999-07-17",
+      "hour": "壬午",
+      "context": "Estimated 540 and reported exactly 540; author admits imprecision in school-direction reasoning after result; old Shenqi Dai-surname child is a reference, not this event",
+      "grid_sha": "900f43a5377d294af0009eae30858a494347c01ef58ee8c528101daea5795b04"
+    },
+    {
+      "key": "wang_daughter",
+      "id": "kaiwu.education.19990702.wang_daughter",
+      "title": "王亚萍女儿美术生文化课高考及学校方向",
+      "source": [
+        61,
+        118
+      ],
+      "q": [
+        63
+      ],
+      "chart": 69,
+      "calendar": 67,
+      "before": [
+        63,
+        97
+      ],
+      "prediction": [
+        83,
+        87,
+        95
+      ],
+      "feedback": [
+        99,
+        101,
+        103,
+        105,
+        107
+      ],
+      "reasoning": [
+        [
+          111,
+          111
+        ],
+        [
+          113,
+          113
+        ],
+        [
+          115,
+          115
+        ],
+        [
+          117,
+          117
+        ]
+      ],
+      "after": [
+        [
+          109,
+          109
+        ]
+      ],
+      "date": "1999-07-02",
+      "hour": "辛巳",
+      "context": "Predicted about 350; book reports 342 and formal admission to Hebei University north of Shijiazhuang, explicitly admits earlier south prediction wrong",
+      "grid_sha": "c18509544ddc8bc8af3449ea4d2a23f4d39b97a0795d101a40b3906b87295209"
+    },
+    {
+      "key": "sisters",
+      "id": "kaiwu.education.20000711.zhang_sisters",
+      "title": "苏恩两名女儿同一次问事：普通录取与自费入学",
+      "source": [
+        119,
+        151
+      ],
+      "q": [
+        121
+      ],
+      "chart": 125,
+      "calendar": 123,
+      "before": [
+        121,
+        123
+      ],
+      "prediction": [
+        143,
+        147,
+        149
+      ],
+      "feedback": [
+        151
+      ],
+      "reasoning": [
+        [
+          141,
+          143
+        ],
+        [
+          145,
+          147
+        ]
+      ],
+      "after": [],
+      "date": "2000-07-11",
+      "hour": "壬午",
+      "context": "Two different sisters evaluated by the ONE actual printed historical chart; elder failed normal admission but self-financed university; younger formally admitted; street diviner is not a second printed Qimen chart",
+      "grid_sha": "13284b48f16d5513745e87533fa1f2cb9bed77ac09eeadd438d1485037d3a6ce"
+    }
+  ]
+}
