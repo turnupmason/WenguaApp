@@ -24,3 +24,13 @@
 
 ## 逐章固定工作流
 先读根 AGENTS.md、PROJECT_STATUS、CHAPTER_LEDGER、CHAPTER_WORKFLOW、本协议以及最新远端 DB manifest → 读全原文和 SHA 比对 → 先归类理论/专题方法，逐案保留作者真实分步推理和反馈 → 按已存在 concept_id 查重并追加独立轨道 → 增量 SQLite 和回归/旧行保护 → 生成版本化公共索引和完整原文归档 → 同步 AGENTS/STATUS/LEDGER → 推送 GitHub，检验真实远端二进制 SHA 与最新提交的 Python3.11/3.12 CI。UI 与旧 QimenLLM 冻结。所有未来新增书必须保留 V1 的既有来源、版本、验证和可调用能力。
+
+
+## 第二维度案例：开悟第二章要求显式区分的概念轨道
+
+- nine_star_energy_vs_ordinary_element：九星旺相休囚废、地上五行旺相休囚死属于不同作用模型；九星以宫为主以月令为辅，不可因同一个“旺”标签覆盖彼此。
+- heavenly_stem_life_cycle_vs_earthly_branch_cycle：十干阳顺阴逆、戊/己循丙/丁；地支五行不按天干阴逆、地支土循水。旧书与新书各自全源保存，不以同名长生合并周期或任意增加状态。
+- center_host_derived_vs_book_printed_center：中五天禽与天芮同飞寄坤，是额外来源标注/算法派生；原著印盘中五若仅一字就只存一字，不设“平门”或伪中宫神星门。
+- grave_vs_storehouse：月令旺相且落墓位在书的解释中称入库、休囚称入墓；保存相反条件和原书错误复盘（第二章180及199行），不可盲贴一个“入墓”凶断。
+- domain_conditional_doors_and_deities：八门与八神具有同一符号的多种问事含义，不支持从词面吉/凶标签直接硬生成临床结论、刑事指控或寿命；至少考虑门宫生克、月令、人物关系、星神及格局。
+- 本章图23–33教学九星、十干和八门，不计实印起盘。新书9次引用旧书的页码是引用而非新 event、外部验真或独立准确率；读者必须再核对应事件，旧案明确首错不得被后验正解覆盖。

@@ -353,3 +353,10 @@ GitHub Actions 第20章归档Run #2成功，机器人已在main提交 `e21361337
 ## 2026-10-20 已完成《开悟之门》第一篇跨书独立版本归档（以上预期阶段已结束）
 
 GitHub Actions `Build and archive Kaiwu first source part (multibook) #1` 成功、原提交3c46f6efdbdd5b8979dc0c0ce0e6e426aef7ed32 对应 `WenguaApp CI #211` Python3.11/3.12均成功，机器人新归档提交 74af52cbc9dae59ad2ed59fb9cceac50083841f2。新库 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3` 5,003,264字节，SHA256 `e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a`；新 XZ 421,100字节，SHA256 `6ba66d59207751285fe0c19ef6ffff39ed94eec6173121e8bc60e18ffd237734`，manifest `archives/sqlite/shenqi21_kaiwu01_103cases_manifest.json`。旧完整21来源章节 SHA `31707ea58f3854b948c58cee4dc3b0d3d3705ba36a2318812ba092b0ade016e8` 经backup并逐表逐行不变；新项目实测22总来源章（神奇21、开悟1），103事件、112历史真盘、1008宫、495作者步骤均不增加不减少；新增208条来自新书的独立、可重复概念来源，累计1465条 semantic_assertions，并有208条 cross_book_concept_tracks、6条 cross_book_example_references、22个基础示意图。全部draft、人工专业验收0、科学有效性未证实、positive_training_eligible=0。下一步是接收《开悟之门》下一篇，以**本新数据库 sha `e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a` 为唯一后续全量基库**；不可退回神奇21章或只用旧JSON重建。根AGENTS和专门MULTIBOOK_PROVENANCE_PROTOCOL已纳入永久多轨去重/溯源保留规则，UI冻结。归档机器人commit后的最终handoff需要检查最新main双Python CI，不可只引用旧CI#211。
+
+
+## 2026-10-20 《开悟之门》第二章来源与归档准备状态
+
+新输入《关乎事物成败的四大要素》，来源239行/56862字节 SHA256 `6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83`。两个大节、四方面：九星天时，天干十二状态地利，八门人和，八神神助；旧书9处印刷页码引用，全部只作为跨书链接，无新问事事件和原始实盘；图23–33为11教学图，不能当真实来源盘。已经规划每一十天干全部12阶段（120可查记录）、九星原宫与情境、六甲/三奇、八门/八神条件化象义与9跨书出处，保留旧书断错例5/8事后纠正，不改原旧书记录。特别保留：九星“废”≠地上五行“死”；落宫为主月令兼；地支土与天干戊己长生规律不同；中宫天禽寄坤而原中宫无门；入墓入库分月令；八门好坏需具体问事和生克；新来源全draft，0获准训练。该文件来源最后239行可能为书籍截取边界，不补造后续内容。
+
+从已归档21+1完整数据库 sha `e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a` backup()增量；预期达到**21章神奇、2章开悟、23来源节**，历史103事件、112盘、1008宫、495步骤、明确初断错误6全部不变。候选增量由实际运行提取并以归档 manifest 实测，不得事先当作已上传。需校验全旧表行不变、完整性/外键、SHA及最新HEAD Python3.11/3.12 CI；不做UI。

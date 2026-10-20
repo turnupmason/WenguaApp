@@ -463,3 +463,12 @@ GitHub Actions 第20章归档Run #2成功，机器人已在main提交 `e21361337
 ## 2026-10-20 《开悟之门》第一篇已真实GitHub归档成功——跨书下一章唯一基库
 
 上一段“待验证”阶段已由GitHub Actions成功构建取代：来源提交3c46f6efdbdd5b8979dc0c0ce0e6e426aef7ed32，双Python CI#211和跨书完整版本归档#1均成功。机器人完整二进制归档提交 74af52cbc9dae59ad2ed59fb9cceac50083841f2。完整库路径 archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3，**字节5003264、SHA256=e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a**；压缩 .sqlite3.xz 421100字节、SHA256=6ba66d59207751285fe0c19ef6ffff39ed94eec6173121e8bc60e18ffd237734；manifest=archives/sqlite/shenqi21_kaiwu01_103cases_manifest.json。实际总来源 sections=22（神奇21+开悟1），历史完整事件=103、来源印盘=112、来源宫1008、作者步骤495均原封不动；semantic_assertions=1465（旧1257+开悟208），新增 cross_book_concept_tracks=208、cross_book_example_references=6；图例22件、不计实盘。库 PRAGMA integrity_check=ok、FK违规0，所有旧21章节及旧表来源行经逐表保真检查无丢失。全部新项draft/positive_training_eligible=0、人审完整因果链0；不能从208条得出208条全新规则或专业准确性。**以后第二篇与任何新书必须从本完整22节 SQLite 的确切SHA增量 backup()，保留原21章及《开悟之门》第一篇的独立轨道、书源、V1 和负例。** 永久多书协议 docs/MULTIBOOK_PROVENANCE_PROTOCOL.md，继续不做UI/旧QimenLLM。
+
+
+## 2026-10-20 《开悟之门》第二章《关乎事物成败的四大要素》新增永久源规则（未归档阶段）
+
+本章用户原始 TXT = 239行/56862字节/SHA256 `6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83`，两个大节（十天干九宫阵；天时九星/地利十干落宫/人和八门/神助八神），编号图23–33共11件均为理论位置/天干生命状态等**教学图表，不是问时完整九宫印盘**。文内《神奇之门》印刷页码引用九处（27、40、42、43、44、180、182、188、199行），全为旧书取法/事件回看，没有新的完整独立问事或真实起盘。第180/199行明确引用旧案例初断错误的后续修正，必须在交叉引用中记录 `prior_explicit_error_and_retrospective_correction`，**不篡改旧初断、书内错误标签或重写事前输入，不把后验改正视为事前成功**。
+
+本章特别强调的**跨书/跨轨不可混淆规则**，永久适用于后来新书：九星旺相休囚**废**与地上五行旺相休囚**死**分属不同判定轨，九星以落宫为主、月令兼看（书第57–61行）；十天干长生十二状态遵阴阳顺逆，但**地支五行不照搬十干阴逆**，尤其十干戊己按丙丁火同状态、地支土又按地支水循环（第127–128行），要有独立 source track；中五宫无普通门、天禽星和其三奇六仪寄坤二宫与天芮一起转动（第40行），**寄宫的派生关系必须与原书中宫印盘原字分离，绝不能虚构中宫门星神**；入墓/入库要结合用神的月令旺衰辨别，绝不能不看月令就合并（第179–180行）；八门名义吉凶依问事领域、门宫生克、月令、星神格局改变，凶门不可机械判凶（189–199行）；八神只是来源文化符号不是现实犯罪、健康与生死的可靠证据。上述均为draft来源候选，不作科学验真或正向训练。
+
+必须从**最新真实 GitHub 完整基库** `archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3` SHA256 `e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a` 使用 `sqlite3.backup()` 无损追加第二章原文、独立跨书concept轨道、章节来源及九处旧书引用；不重写21神奇章和开悟第一篇以及原103案/112张实盘。新增 `scripts/build_kaiwu_02_from_01.py`, `tests/test_kaiwu_second_part.py`, `.github/workflows/build_kaiwu_02_archive.yml`，全部新条目draft、positive_training_eligible=0。实际创建远端第二章完整SQLite/XZ和manifest之前不可宣称完成，之后在本文件补上远端SHA与最新HEAD双Python CI验收。用户原文最后第239行无句末标点，原文一字不增、不得编造未提供的后续章节。

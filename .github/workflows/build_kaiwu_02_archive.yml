@@ -1,0 +1,94 @@
+name: Archive Kaiwu chapter two with immutable multibook tracks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_kaiwu_02_from_01.py'
+      - 'sources/kaiwu/开悟之门_第二章.txt'
+      - 'tests/test_kaiwu_second_part.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run full second-chapter source-grounding and immutable predecessor regression
+        run: python -m unittest discover -s tests -p test_kaiwu_second_part.py -v
+      - name: Generate full verified Kaiwu second chapter SQLite from preserved first chapter
+        run: |
+          python scripts/build_kaiwu_02_from_01.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_第二章.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/four_factors_ch02'
+      - name: Compress new binary; independently verify all hashes and historical totals
+        run: |
+          python - <<'PY'
+          import hashlib, json, lzma, sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          base=root/'WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3'
+          out=root/'WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3'
+          compressed=out.with_suffix('.sqlite3.xz')
+          compressed.write_bytes(lzma.compress(out.read_bytes(),preset=6))
+          idx=json.loads(Path('data/knowledge/kaiwu/four_factors_ch02/chapter_manifest.json').read_text(encoding='utf-8'))
+          with sqlite3.connect(out) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           tally={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0] for t in
+            ('sections','cases','historical_case_reasoning','historical_palace_standardization',
+             'semantic_assertions','cross_book_concept_tracks','cross_book_example_references')}
+          assert tally==idx['counts']
+          assert idx['baseline_sha256']==hashlib.sha256(base.read_bytes()).hexdigest()
+          m={'schema':'wengua_multibook_additive_source_archive_v2',
+             'archive_sequence_total_sections':23,'book_counts':{'shenqi':21,'kaiwu':2},
+             'event_families_unchanged':103,'original_source_charts_unchanged':112,
+             'author_reasoning_unchanged':495,'source_book':'kaiwu',
+             'source_title':idx['source_title'],
+             'source_sha256':idx['source_sha256'],'source_bytes':idx['source_bytes'],
+             'source_lines':idx['source_lines'],
+             'new_concept_occurrences':idx['new_concept_occurrences'],
+             'new_source_cases':0,'new_source_charts':0,'cross_book_links_new':9,
+             'didactic_figures_new':11,'baseline_path':str(base),
+             'baseline_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
+             'main_archive_path':str(out),'sha256':hashlib.sha256(out.read_bytes()).hexdigest(),
+             'size':out.stat().st_size,'compressed_archive_path':str(compressed),
+             'compressed_sha256':hashlib.sha256(compressed.read_bytes()).hexdigest(),
+             'compressed_size':compressed.stat().st_size,
+             'integrity_check':'ok','foreign_key_violations':0,
+             'all_previous_source_rows_unchanged':True,
+             'source_tail_ends_without_final_punctuation':idx['source_ends_without_terminal_punctuation'],
+             'new_rule_approved':0,'positive_training_eligible':0,
+             'counts':tally,'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu02_103cases_manifest.json').write_text(
+           json.dumps(m,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(m,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi-21-kaiwu-02-complete-immutable-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu02_103cases_manifest.json
+          retention-days: 30
+      - name: Atomically commit next version without rewriting old SQLite
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu02_103cases_manifest.json' \
+                     'data/knowledge/kaiwu/four_factors_ch02/'
+          git diff --cached --check
+          git commit -m 'Archive Kaiwu chapter two with twelve-stage and contextual four-factor tracks'
+          git push origin HEAD:main
