@@ -1,0 +1,92 @@
+name: Archive Kaiwu chapter three source and didactic casting boards
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_kaiwu_03_from_02.py'
+      - 'sources/kaiwu/开悟之门_第三章.txt'
+      - 'schema/migrations/018_kaiwu_didactic_casting_figures.sql'
+      - 'tests/test_kaiwu_third_part.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit third-chapter original, all 12 source figures and four source-board checks
+        run: python -m unittest discover -s tests -p test_kaiwu_third_part.py -v
+      - name: Copy full 23-source archive and append third Kaiwu chapter and 108 genuine text cells
+        run: |
+          python scripts/build_kaiwu_03_from_02.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_第三章.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/paper_grid_casting_ch03'
+      - name: Create actual versioned ZIP-less XZ manifest with strict old-data and source checks
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          folder=Path('archives/sqlite')
+          old=folder/'WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3'
+          new=folder/'WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          doc=json.loads(Path('data/knowledge/kaiwu/paper_grid_casting_ch03/chapter_manifest.json').read_text('utf-8'))
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0] for t in doc['cumulative_counts']}
+          assert counts==doc['cumulative_counts']
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==doc['baseline_sha256']
+          report={'schema':'wengua_multibook_source_archive_v3',
+           'source_title':doc['original_title'],'source_sha256':doc['source_sha256'],
+           'source_bytes':doc['source_bytes'],'source_lines':doc['source_lines'],
+           'book_counts':{'shenqi':21,'kaiwu':3},'total_source_sections':24,
+           'new_semantic_occurrences':doc['new_concept_occurrences'],
+           'source_figures':12,'source_didactic_palace_text_cells':108,
+           'source_educational_worked_charts':4,'new_historical_events':0,
+           'new_historical_prediction_charts':0,
+           'total_historical_events_unchanged':103,'historical_printed_charts_unchanged':112,
+           'historical_reasoning_unchanged':495,'prior_source_rows_unchanged':True,
+           'parent_archive':str(old),'parent_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'main_archive_path':str(new),'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size':new.stat().st_size,'compressed_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size':xz.stat().st_size,
+           'counts':counts,'sqlite_integrity':'ok','foreign_key_violations':0,
+           'human_approved_new_rules':0,'positive_training_eligible':0,
+           'calendar_ephemeris_validation':False,'research_engine_comparison_not_blind_prediction':True,
+           'public_complete_archive_owner_authorized':True}
+          (folder/'shenqi21_kaiwu03_103cases_manifest.json').write_text(
+              json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu03-full-source-and-casting-examples
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu03_103cases_manifest.json
+          retention-days: 30
+      - name: Commit verified new binary and source indices without editing any old archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu03_103cases_manifest.json' \
+                     'data/knowledge/kaiwu/paper_grid_casting_ch03/'
+          git diff --cached --check
+          git commit -m 'Archive full Kaiwu chapter three didactic casting boards and immutable old history'
+          git push origin HEAD:main

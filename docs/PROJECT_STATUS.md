@@ -364,3 +364,10 @@ GitHub Actions `Build and archive Kaiwu first source part (multibook) #1` 成功
 
 ## 2026-10-20 开悟第二章真实归档完成与最新基库
 本次书稿239行56862字节，SHA256=6310246fdaff6dad6516e5ae173b26beac9d9eb563d0044b620cbf3c0e5cab83。修复后的源码提交3b44b46ea79773ba3a67fa0fc48a65d63c58ace5已通过归档Action#2与CI#214（Python3.11/3.12均success）；机器人归档提交9950fdd794784a34e7c51dd26f4ec88060b06659。最新完整SQLite：archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3，5,599,232字节，SHA256=7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726；XZ大小459,728字节，SHA256=364947cb589037f233452af2fc2a140ccc41b908ad41c7bac966bf7815791dc9；manifest=archives/sqlite/shenqi21_kaiwu02_103cases_manifest.json。由上一版完整SQLite SHA e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a通过sqlite3.backup无损扩展，旧表全行未变，integrity_check=ok、FK违规0。实测来源章节23（神奇21+开悟2），新增232条跨书source occurrence，累计semantic_assertions=1697、cross_book_concept_tracks=440、cross_book_example_references=15。完整旧案例103、实盘112、宫位1008、作者步骤495及书内已知6件初断错误均未修改。教学图23-33不是新盘，旧书引用9处不是新案例。全部新来源draft、训练权限0、人工完整因果链审查0。下一章唯一基库即上面SHA 7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726，不覆盖旧快照，不做UI；handoff新HEAD的CI需另外核验。
+
+
+## 2026-10-20 第三章《纸上井字格起局法的步骤》来源入库（远端归档待验）
+
+源TXT189行、22715字节、SHA256 `12250805624a0074858412fa5d5b0ee66c5b0a31d77dac16b7152005429d49c0`。明确七个原书起局步骤、五鼠遁元、立秋甲寅符头阴5局、天地人神盘规则。12幅九宫文字图含108宫原字；139/151为四盘完整示例，168/180为八神缺失的简化排盘，108/122为中间示意（阳5为反事实讲解），所有教学盘不得加进原来的103历史事件112真盘计数。源134行仅引用《神奇之门》的排盘格式，未载页码。源163/164/177为三条需条件化的伏吟规律。中5原书缺门神不自动补，值使九宫数字步进与七门外围旋转必须独立保留。外部历法、天文节气、时区与日界尚未完全核验，不能直接生成用户正式预测。
+
+依真实父版 SQLite SHA `7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726` 使用backup()，历史全部源行及旧例保真；新增 `018_kaiwu_didactic_casting_figures.sql` 两表明确隔离教学图/宫，新增对 `casting_shenqi.py` 的源盘一致性回归，新增信息 draft /positive_training=0，0人工批准。新archive、逐字节SHA、实际新增候选数、CI待GitHub Actions完成后补录，不得编造数据。

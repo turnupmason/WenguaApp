@@ -212,3 +212,8 @@ python3 -m unittest discover -s tests -v
 ## 跨书概念与源轨道（2026-10-20）
 
 《开悟之门》以后新增书籍时，概念索引 concept_id 可复用原《神奇之门》符号 ID，但来源 occurrence 不合并为一条：新增 cross_book_concept_tracks 以章键+概念ID+源行组成稳定唯一键，同时存来源书章SHA/原文摘录SHA、作者的原始版本和方法轨道 track_id、与先前结论的候选关系。cross_book_example_references 存本书页码援引的旧书来源，只有逐字核对同一历史事件才设置 verified_target_case_id。回溯旧案例引用不新增原盘/成功样本。地支宫位与按24节气等分的三个节气/宫是不同数据域、不得合并；任何后出书也不得覆盖原 V1 规则或历史解释。详见 docs/MULTIBOOK_PROVENANCE_PROTOCOL.md。
+
+
+## 教学文字九宫与历史案例源盘两条独立来源轨（2026-10-20）
+
+Kaiwu 第三章 `kaiwu/paper_grid_casting_ch03/v1` 的12幅原书教学九宫图共108宫文字来源，两张四层完整示范和两张缺八神层简化示范；这些存储于 `kaiwu_didactic_figures` 与 `kaiwu_didactic_figure_cells`，即使完成8外围宫与已有研究起盘引擎的源字一致性对照，也不得计入 `historical_chart_cells`、`historical_palace_standardization`、`cases` 或任何预测成功率。七步起盘 + 三伏吟规律有独立source occurrence和条件化规则草稿，日历外部核对和中五特殊派生语义不在原盘事实里偷填。跨书概念同一键多书独立来源，不更改《神奇之门》及之前两章原文和V1。
