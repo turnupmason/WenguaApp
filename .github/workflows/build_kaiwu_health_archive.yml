@@ -1,0 +1,106 @@
+name: Archive Kaiwu health cases in shared Shenqi health domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_人体疾病预测.txt'
+      - 'scripts/build_kaiwu_health_from_05.py'
+      - 'schema/migrations/021_health_crossbook_case_witnesses.sql'
+      - 'tests/test_kaiwu_health_crossbook.py'
+      - '.github/workflows/build_kaiwu_health_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify six original source boards, five new health families, same-event reprint, old-row integrity
+        run: python -m unittest discover -s tests -p test_kaiwu_health_crossbook.py -v
+      - name: Create new full binary only from verified immediate preceding Kaiwu fifth-chapter SQLite
+        run: |
+          python -m scripts.build_kaiwu_health_from_05 \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_人体疾病预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/health_prediction_ch02_section01'
+      - name: Compress, independently hash actual binary and audit historical case/chart deduplication
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3'
+          zipfile=new.with_suffix('.sqlite3.xz')
+          zipfile.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          info=json.loads(Path('data/knowledge/kaiwu/health_prediction_ch02_section01/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==info['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0]
+                   for t in info['cumulative_counts']}
+          assert counts==info['cumulative_counts']
+          assert counts['cases']==108 and counts['health_crossbook_case_witnesses']==6
+          assert counts['historical_palace_standardization']==1053
+          result={'schema':'wengua_shenqi_kaiwu_shared_health_domain_archive_v1',
+           'source_title':info['source_title'],'source_sha256':info['source_sha256'],
+           'source_bytes':info['source_bytes'],'source_lines':info['source_lines'],
+           'book_counts':info['book_counts'],'total_source_sections':27,
+           'printed_original_source_charts':6,'new_distinct_events':5,
+           'book_source_witness_for_existing_father':1,
+           'new_original_independent_historical_charts':5,
+           'new_original_historical_palace_cells':45,
+           'total_unique_historical_cases':108,'total_original_historical_charts':117,
+           'new_original_author_reasoning_steps':21,
+           'new_semantic_source_occurrences':info['new_source_semantic_occurrences'],
+           'all_6_book_charts_preserved_verbatim':True,
+           'all_book_original_witness_palaces':54,
+           'source_hen_death_exact_time_unknown':True,
+           'source_rooster_two_missing_stems_preserved':True,
+           'source_AB_comparison_retrospective_not_initial':True,
+           'old_six_explicit_wrong_predictions_unchanged':True,
+           'original_cases_shenqi_103_unchanged':True,
+           'common_domain_id':'health',
+           'older_complete_archive_path':str(old),'older_archive_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,'compressed_path':str(zipfile),
+           'compressed_sha256':hashlib.sha256(zipfile.read_bytes()).hexdigest(),
+           'compressed_size_bytes':zipfile.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_violations':0,
+           'all_previous_source_rows_unchanged':True,
+           'new_human_approved_case_reasoning':0,'new_positive_training_eligible':0,
+           'independent_medical_outcome_verification':False,
+           'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_health01_108cases_manifest.json').write_text(
+            json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu-health01-108-shared-health-cases
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_health01_108cases_manifest.json
+          retention-days: 30
+      - name: Commit actual new full version and source indices without changing old binary
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_health01_108cases_manifest.json' \
+                     'data/knowledge/kaiwu/health_prediction_ch02_section01/'
+          git diff --cached --check
+          git commit -m 'Archive unified health-domain Kaiwu cases with five new families and one old reprint witness'
+          git push origin HEAD:main
