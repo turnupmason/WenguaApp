@@ -1,0 +1,532 @@
+{
+  "source_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+  "entries": [
+    {
+      "concept_id": "health:one:step:1",
+      "kind": "health_author_step",
+      "line": 25,
+      "original": "(1)天芮星为病神，旺于月建，落离宫，正应头部；逢死门，上乘白虎，凶。乙+壬，死+庚均凶。",
+      "source_sha": "5312e822a249d61fb22beb81e56042f4c21ef37c2db0ec9366b842861a10fcbf",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19960923.nasal_cancer",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:one:step:2",
+      "kind": "health_author_step",
+      "line": 27,
+      "original": "(2)天心星和乙奇为医生，分别落兑宫和离宫，均不能克天芮落宫，故病无治。",
+      "source_sha": "8bd8db5304fd55bbff31d628cac75ff6918583c9bdf71b841db2154ebff38b37",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19960923.nasal_cancer",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:one:step:3",
+      "kind": "health_author_step",
+      "line": 29,
+      "original": "(3)日干癸为病人，落坎宫，虽临天任吉星、生门吉门、值符吉神，但逢空亡，年命不保。又癸+辛为网盖天牢，测病必死。",
+      "source_sha": "37e454bb0dfb8402180646cb377cd06162868412731250155b159852e44d8134",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19960923.nasal_cancer",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:one:step:4",
+      "kind": "health_author_step",
+      "line": 31,
+      "original": "(4)阴遁天芮星落离宫为内盘，主近主快。值符天任星克坎水，克逢克为应期，戌土克坎水近，当死于戊戌月。地盘甲午辛与坎宫子午相冲，冲者以合为应期，午未后，丁火生未土合力大，故当死于戊戌月丁未日。",
+      "source_sha": "7bd61f25f76160a6a1048bed8312c3226122875a5fa88713e65bd06258b97fb0",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19960923.nasal_cancer",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:two_a:step:1",
+      "kind": "health_author_step",
+      "line": 85,
+      "original": "(1)病星天芮所临之干不同，阴遁、阳遁、内外不同：A卦病星天芮临庚，且阳遁坤2宫为外盘，主体表，主肌肤，庚在外主筋骨；时干也代表病，A卦时干为癸，癸在外盘，主体表，主神经系统；另外，断病还可看伤门，A卦伤门临辛，辛也主筋骨，故断脑中枢神经系统疾患。B卦病星天芮临癸，且阴遁坤2宫主内，主脾胃，癸为水道；时干庚也为病，在内主大肠，也主结节、肿块；伤门临壬，壬也主水道，据此，故B卦断为食道癌或胃癌。",
+      "source_sha": "c0ec0f318792a740ab74bfe2562991d6501267d7059428aa0ca0b40e7fdaf365",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "kaiwu.health.19950219.brother_paralysis",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:two_a:step:2",
+      "kind": "health_author_step",
+      "line": 87,
+      "original": "(2)年龄大小不同，年命落宫不同：A卦其弟1995年才二十三岁，年命癸落坤2宫虽为入墓之地，但逢空亡，又在外盘，主远主慢；二十三岁少男，还可看艮宫，艮宫临乙奇，乙奇为医生和药物，又临生门，故断他近期内还不致于有生命危险，不过瘫痪在床罢了。B卦其父1996年已经七十五岁，年命辛落4宫为入墓之地，甲午辛加甲午辛为自刑；年命辛虽在外盘，但病神在内盘，主近主快；又老父可看乾宫，乾宫内己加己为地户逢鬼凶格，测病发凶或必死，故断其父必死无疑。",
+      "source_sha": "94acd3cdcbdb4db20d92209f912cbaf497815d60db3e413d0e67905c5cd511a0",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "kaiwu.health.19950219.brother_paralysis",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:two_a:step:3",
+      "kind": "health_author_step",
+      "line": 89,
+      "original": "(3)月令不同，病星落宫旺相休囚不同：A卦月令为寅月，病星坤宫处死地，病神被制，故不至于死；B卦月令为未月，病星坤宫当令最旺，故发凶必死。",
+      "source_sha": "e8110fd62252f520744c626980017f4555f956feb8fe0df23ac17d80edd74c0b",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "kaiwu.health.19950219.brother_paralysis",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_a:step:1",
+      "kind": "health_author_step",
+      "line": 111,
+      "original": "(1)天芮星为病神，落离宫。癸+辛，为网盖天牢，测病死罪难逃，大凶。乙+辛龙逃走，凶。",
+      "source_sha": "0337bb27b472cc08d90571dc00c42320c83be1337cacaaead3c1ecd74471f975",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980616.hen_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_a:step:2",
+      "kind": "health_author_step",
+      "line": 113,
+      "original": "(2)日干甲午辛为病鸡，落巽宫，为死墓之地，又逢死门，大凶。辛+丙，测病不愈。",
+      "source_sha": "598a60dd0d8a64a696dcae011e944a9f07668d7a2b737f527d48f380140ad238",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980616.hen_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_a:step:3",
+      "kind": "health_author_step",
+      "line": 115,
+      "original": "(3)天心星和乙奇为医生和药物，分别落兑宫、离宫，均不克病星落宫，病无治。",
+      "source_sha": "f203990db978b2195faf3a084d992e7c1820782799b0229a6e23f6c7e4ec61ef",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980616.hen_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_a:step:4",
+      "kind": "health_author_step",
+      "line": 117,
+      "original": "(4)综上所述分析，病无治，必死。因日干辛处死墓之地，又死于月令午火，根据死墓绝应期，金怕火克，必死于火日火时，今正逢甲午日，故判死于当日巳时或午时。",
+      "source_sha": "b82e705208b7091dfea62781732c8531dca4b5b9edfc477e3e8d382354d112f1",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980616.hen_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_b:step:1",
+      "kind": "health_author_step",
+      "line": 139,
+      "original": "(1)天芮星为病神，落坤宫。生门+死门，病难救。",
+      "source_sha": "2aa702da53d929a3a6250dd9d90f8225d1b552256921e8bfbb24fb0228a14754",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980621.rooster_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_b:step:2",
+      "kind": "health_author_step",
+      "line": 141,
+      "original": "(2)天心星和乙奇为医生和药物，分别落乾宫和坤宫，均不克天芮星落宫，病无治。",
+      "source_sha": "01eb22b9ab9d3558f7f916307444ba97878547fcb0cacf2593328dfa8e45374e",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980621.rooster_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_b:step:3",
+      "kind": "health_author_step",
+      "line": 143,
+      "original": "(3)日干己为病鸡，落巽宫为旺地，又得月令午火之生，旺极。物极必反，故必死。",
+      "source_sha": "a58b8a6fdaba97e648ccff1bf371a07cf4a315e5c2f0a0010e09507fdc5d1d2f",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980621.rooster_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:three_b:step:4",
+      "kind": "health_author_step",
+      "line": 145,
+      "original": "(4)综上述，病无治，必死。因开门落巽宫为门迫，又反吟，故死速。日干己土旺极，必死于长生之地，火土同源，应死于寅日寅时，又时比日速，故判死于次日(庚子日)寅时，即1998年6月22日寅时，此为长生旺相应期。",
+      "source_sha": "a46577b9810dae080102b143d9019cbc36acdaaa67b210b209fdf6c7c7cdcc49",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19980621.rooster_illness",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:1",
+      "kind": "health_author_step",
+      "line": 187,
+      "original": "(1)首先看天芮星落宫，今天芮星在坤2宫伏吟，与死门同宫，但甲申旬中午未空，天芮星与死门同宫时，常主肿瘤等疾病，今见空亡，说明脑内无肿瘤。又乙奇为医药，落巽4宫，克天芮星所落之坤2宫，假使有肿瘤，也会医好的。日干乙奇在巽宫，克天芮星落宫，无妨。",
+      "source_sha": "4dfe2dd7559ab607d679959ebef78a7e4da933fb64a7fc5b9a59c28c96e0394b",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:2",
+      "kind": "health_author_step",
+      "line": 189,
+      "original": "(2)次看离9宫，离宫在人体也代表头部，离宫天英星、景门伏吟，格局为辛+辛自刑，临白虎主头脑胀痛，英星、景门均属火，火为气态，无实体质量，故也可断头部无肿瘤。",
+      "source_sha": "78ec804502d08418f65d54e82ecad15be8435809da21cf7068c065085bfcb3d4",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:3",
+      "kind": "health_author_step",
+      "line": 191,
+      "original": "(3)再看乾宫情况：乾宫天心星开门伏吟，格局丁+丁星奇入太阴吉格，上乘螣蛇，螣蛇主虚幻不实，也是没有肿瘤之象。",
+      "source_sha": "dacc3d06054b8c107df95390c9156d1aa9a6e72bb153ff00cd58e2ad63d3ffb1",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:4",
+      "kind": "health_author_step",
+      "line": 193,
+      "original": "(4)最后看值符落宫：值符与天蓬星、休门同宫，格局为庚+庚战格。战格为凶格，庚为阻隔不通之象，蓬星、休门代表水、血液。值符宫直克代表头部的离9宫。水克火，离宫主眼目，故视力下降的根本原因在于头部有积水或积血，压迫视神经而导致视力下降。",
+      "source_sha": "60b9b465531f28a799ad8a18531542c0a863824f0f34a8f31f321802b42442fd",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:5",
+      "kind": "health_author_step",
+      "line": 195,
+      "original": "(5)再看一下年命落宫情况：王连明是戊子年生人，年命戊落震三宫，临天冲星、伤门，格局戊+戊伏吟：凡事闭塞阻滞，静守为吉。再者戊落震宫，又形成六仪击刑之凶格，震宫主人肝脏，故病之根源在于上火，肝火上炎于头部，肝开窍于目，火攻目，导致头部视神经附近有积血压迫，视力下降，因戊所在之震3宫克天芮星落宫，故病可愈。",
+      "source_sha": "87aad9df08dbd112f3ed2899d5153d06c8424bc15d599fe5ae1108e59633a3ec",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:four:step:6",
+      "kind": "health_author_step",
+      "line": 197,
+      "original": "(6)开门代表手术，今开门在乾6宫伏吟不动，有不用手术之象，又开门宫不克天芮星落宫，所以手术是无用的。",
+      "source_sha": "9f46fa263b7ead5c3274f02d337f7ae60dca819167ea0f36e6a9bf13937b3c6c",
+      "meta": {
+        "topic": "prior_to_book_feedback",
+        "source_case_id": "kaiwu.health.19991020.wang_craniotomy",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "additional_exposition",
+      "track": "kaiwu:health:v1:health_author_step"
+    },
+    {
+      "concept_id": "health:critical_symbol_combo",
+      "kind": "health_editor_topic",
+      "line": 39,
+      "original": "(1)癌症的标志：天芮病星与死门、六仪庚、凶神白虎聚在一起，多数情况下为癌症或其他绝症。天芮为九星中的病星，死门为八门中最凶之门，庚为六仪中最凶一干，白虎为八神中最凶之神。这四个最凶的符号聚到一起，自然表示病症最凶最危，是不治之症了。但不一定都是癌症。另外，其中三个符号聚在一起有时也是癌症。大家可以在实践中进一步验证。",
+      "source_sha": "b9938b92c2bae207b36161c547144f21393ea7d6dfd8b1ffbb282a9698585511",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:timing_clash_join_grave",
+      "kind": "health_editor_topic",
+      "line": 41,
+      "original": "(2)断应期的方法。吕常文在这则实例中具体应用了我在答疑中讲的定应期的方法，不仅断出月份，而且断出具体日期，这一点既难能可贵，也说明他学习掌握得很好。其中定为未日，一者冲以合为应期，午未合；二者，未为日干癸水之墓。",
+      "source_sha": "f8d988df480a55c704fd2d41c229e983b6e93d363269ca9ebe4cd32e06e92e49",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:yongshen_news_time_day_stem",
+      "kind": "health_editor_topic",
+      "line": 43,
+      "original": "(3)这例并非别人求测，是吕常文得知本厂工人刘照桂又住进医院的消息后，他自己私下里预测的，所以以日干为用神代表刘照桂。这符合我讲的“以事发时间预测，多以日干为用神”的原则。吕常文另一例1996年10月23日申时他同事张学斌说他的同学因肝病住院而占其吉凶，也是这样取的用神。有的易友问，吕常文这二例为什么不以月干为用神，而取日干为用神?原因就在这里。",
+      "source_sha": "2335a4979322380b9caa7e3c00945b9a9998732115f13356099ae9958fcd9291",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:comparative_inner_outer_yin_yang",
+      "kind": "health_editor_topic",
+      "line": 85,
+      "original": "(1)病星天芮所临之干不同，阴遁、阳遁、内外不同：A卦病星天芮临庚，且阳遁坤2宫为外盘，主体表，主肌肤，庚在外主筋骨；时干也代表病，A卦时干为癸，癸在外盘，主体表，主神经系统；另外，断病还可看伤门，A卦伤门临辛，辛也主筋骨，故断脑中枢神经系统疾患。B卦病星天芮临癸，且阴遁坤2宫主内，主脾胃，癸为水道；时干庚也为病，在内主大肠，也主结节、肿块；伤门临壬，壬也主水道，据此，故B卦断为食道癌或胃癌。",
+      "source_sha": "c0ec0f318792a740ab74bfe2562991d6501267d7059428aa0ca0b40e7fdaf365",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:comparative_age_birth_year",
+      "kind": "health_editor_topic",
+      "line": 87,
+      "original": "(2)年龄大小不同，年命落宫不同：A卦其弟1995年才二十三岁，年命癸落坤2宫虽为入墓之地，但逢空亡，又在外盘，主远主慢；二十三岁少男，还可看艮宫，艮宫临乙奇，乙奇为医生和药物，又临生门，故断他近期内还不致于有生命危险，不过瘫痪在床罢了。B卦其父1996年已经七十五岁，年命辛落4宫为入墓之地，甲午辛加甲午辛为自刑；年命辛虽在外盘，但病神在内盘，主近主快；又老父可看乾宫，乾宫内己加己为地户逢鬼凶格，测病发凶或必死，故断其父必死无疑。",
+      "source_sha": "94acd3cdcbdb4db20d92209f912cbaf497815d60db3e413d0e67905c5cd511a0",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:comparative_month_strength",
+      "kind": "health_editor_topic",
+      "line": 89,
+      "original": "(3)月令不同，病星落宫旺相休囚不同：A卦月令为寅月，病星坤宫处死地，病神被制，故不至于死；B卦月令为未月，病星坤宫当令最旺，故发凶必死。",
+      "source_sha": "e8110fd62252f520744c626980017f4555f956feb8fe0df23ac17d80edd74c0b",
+      "meta": {
+        "topic": "retrospective_comparison",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": true,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:editor_animal_health_cultural_claim",
+      "kind": "health_editor_topic",
+      "line": 153,
+      "original": "吕常文同志测动物病死这两例，向我们说明，奇门不仅能测人体的疾病生死，也能测动物的疾病生死。事实上，奇门不仅能测动物的疾病生死，也能测无机物的疾病生死，例如用于预测汽车的毛病、故障，准确率就相当高。",
+      "source_sha": "55fa0a7302a78303c41b3b5f5a8a938580cd7574debba3c1f89abd44c512f23f",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:animal_day_stem_vs_hour_stem",
+      "kind": "health_editor_topic",
+      "line": 155,
+      "original": "吕常文这二例测鸡的疾病生死，均以日干为用神，代表病鸡，而不是以时干为用神，这一点与奇门传统用法不同，值得读者借鉴。如果，用时干为用神，代表病鸡，结果也是一样的。",
+      "source_sha": "fbc0f7927c15b94fbb698c4c94c61d745776c7131ad2836c0ace44e0e594cd08",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:timing_extreme_strength_claim",
+      "kind": "health_editor_topic",
+      "line": 157,
+      "original": "再者，吕常文灵活运用断应期的原则和方法，也值得读者借鉴。特别是第二例，用旺极必反，必死于长生之时，来判断公鸡的死期，对我们理解阴阳旺衰的相对性、互相转化性，很有帮助。",
+      "source_sha": "e49818772e8d122a2e0b41b3d341cc513123fb7acaa8ef39f21d1c23c3f450d7",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    },
+    {
+      "concept_id": "health:doctor_tianxin_yi_birth_year",
+      "kind": "health_editor_topic",
+      "line": 185,
+      "original": "测病以天芮星为疾病用神，天心星和乙奇代表医生、医药，日干代表求测人，同时兼看求测者年命落宫情况。王连明是戊子(1948)年出生的。看头部疾病，主要看一下离9宫的格局，还要看一下乾六宫的格局，最后还要参看一下值符落宫情况，因值符也代表头部。",
+      "source_sha": "aa343805f6cb961c0a32ec5b63b2365d3987a7303b489381b2bffb435912aef0",
+      "meta": {
+        "topic": "author_posthoc_editorial",
+        "source_case_id": "health_book_source",
+        "source_scope": "traditional health text",
+        "medical_facts_not_independently_verified": true,
+        "after_feedback_cannot_be_initial_prediction": false,
+        "positive_training_eligible": false
+      },
+      "relation": "clarifies",
+      "track": "kaiwu:health:v1:health_editor_topic"
+    }
+  ]
+}

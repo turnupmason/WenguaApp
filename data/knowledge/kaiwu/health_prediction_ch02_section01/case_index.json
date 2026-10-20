@@ -1,0 +1,218 @@
+{
+  "schema": "crossbook_health_six_source_stories_v1",
+  "source_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+  "cases": [
+    {
+      "key": "one",
+      "id": "kaiwu.health.19960923.nasal_cancer",
+      "title": "刘照桂鼻癌住院已知后占病期",
+      "begin": 5,
+      "end": 44,
+      "q": [
+        7,
+        9
+      ],
+      "chart": 11,
+      "chart_end": 21,
+      "chart_sha": "489ea13fa303a3c74ec1f12cee4950aadacfcdc956c55ec5c46412ab4d444853",
+      "steps": [
+        25,
+        27,
+        29,
+        31
+      ],
+      "pred": [
+        25,
+        31
+      ],
+      "feedback": [
+        33,
+        33
+      ],
+      "editor": [
+        35,
+        43
+      ],
+      "subdomain": "human_health",
+      "date": "1996-09-23",
+      "hour": "辛酉",
+      "note": "Cancer diagnosis known before cast; reporter of later death is book only",
+      "existing": false
+    },
+    {
+      "key": "two_a",
+      "id": "kaiwu.health.19950219.brother_paralysis",
+      "title": "原学术论文转述弟病：事前断语未全文重印",
+      "begin": 49,
+      "end": 63,
+      "q": [
+        49,
+        51
+      ],
+      "chart": 53,
+      "chart_end": 63,
+      "chart_sha": "f22f74044afbcaa7c16cc72939d56056865205446b0d52f184aea1d082d6e4c3",
+      "steps": [
+        85,
+        87,
+        89
+      ],
+      "pred": null,
+      "feedback": [
+        81,
+        81
+      ],
+      "editor": [
+        83,
+        89
+      ],
+      "subdomain": "human_health",
+      "date": "1995-02-19",
+      "hour": "癸巳",
+      "note": "Prior scholarly-article results narrated before three after-result comparison steps",
+      "existing": false
+    },
+    {
+      "key": "two_b",
+      "id": "shenqi.health.19960727.father_illness",
+      "title": "与神奇之门1996-07-27测父病为同一事件",
+      "begin": 65,
+      "end": 89,
+      "q": [
+        65,
+        67
+      ],
+      "chart": 69,
+      "chart_end": 79,
+      "chart_sha": "ac84b333ba6054793e0f4945eff751269160c5c64d021b588deb8c44b0a1642d",
+      "steps": [],
+      "pred": null,
+      "feedback": [
+        81,
+        81
+      ],
+      "editor": [
+        83,
+        89
+      ],
+      "subdomain": "human_health",
+      "date": "1996-07-27",
+      "hour": "甲申",
+      "note": "Same querent daughter, father born 辛酉 1921, same yin7 乙丑/甲申; do not duplicate",
+      "existing": true
+    },
+    {
+      "key": "three_a",
+      "id": "kaiwu.health.19980616.hen_illness",
+      "title": "母鸡白痢，验看时已死",
+      "begin": 91,
+      "end": 119,
+      "q": [
+        93,
+        95
+      ],
+      "chart": 97,
+      "chart_end": 107,
+      "chart_sha": "97f12fa8a3a29f3d97dda1dedea3f11021a2d72f494e9583cd2bf8cecf543949",
+      "steps": [
+        111,
+        113,
+        115,
+        117
+      ],
+      "pred": [
+        117,
+        117
+      ],
+      "feedback": [
+        119,
+        119
+      ],
+      "editor": [
+        151,
+        157
+      ],
+      "subdomain": "animal_health",
+      "date": "1998-06-16",
+      "hour": "己巳",
+      "note": "Hen already dead on checking at 10:05; exact actual death time unobserved",
+      "existing": false
+    },
+    {
+      "key": "three_b",
+      "id": "kaiwu.health.19980621.rooster_illness",
+      "title": "公鸡白痢，巽宫原书缺两处天干",
+      "begin": 121,
+      "end": 157,
+      "q": [
+        121,
+        123
+      ],
+      "chart": 125,
+      "chart_end": 135,
+      "chart_sha": "b49dae49a569df521b757189aa124902d54ec1614c26fb18e211f1ed25c0aff4",
+      "steps": [
+        139,
+        141,
+        143,
+        145
+      ],
+      "pred": [
+        145,
+        145
+      ],
+      "feedback": [
+        147,
+        149
+      ],
+      "editor": [
+        151,
+        157
+      ],
+      "subdomain": "animal_health",
+      "date": "1998-06-21",
+      "hour": "戊辰",
+      "note": "Two original slots 〔原文未载天干〕 never fill; author 日时 statement unreconciled",
+      "existing": false
+    },
+    {
+      "key": "four",
+      "id": "kaiwu.health.19991020.wang_craniotomy",
+      "title": "王连明拟开颅手术及次日会诊结果",
+      "begin": 159,
+      "end": 211,
+      "q": [
+        161,
+        169
+      ],
+      "chart": 171,
+      "chart_end": 181,
+      "chart_sha": "631232744a2d289a3aa7d8fbd0eb244db5e03e852e780d3b421afd6da13e4316",
+      "steps": [
+        187,
+        189,
+        191,
+        193,
+        195,
+        197
+      ],
+      "pred": [
+        201,
+        201
+      ],
+      "feedback": [
+        209,
+        209
+      ],
+      "editor": [
+        211,
+        211
+      ],
+      "subdomain": "human_health",
+      "date": "1999-10-20",
+      "hour": "甲申",
+      "note": "Doctors suspected tumour before cast; reported second-day imaging opinion book-only, never skip clinical care",
+      "existing": false
+    }
+  ]
+}

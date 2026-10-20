@@ -1,0 +1,19 @@
+{
+  "source_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+  "chapter_contains_six_printed_boards_one_prior_event": true,
+  "author_1985_comparison": false,
+  "posthoc_comparison_lines": [
+    85,
+    87,
+    89
+  ],
+  "ex1_diagnosis_known_before_cast": true,
+  "hen_dead_on_check_at_10_05_exact_death_time_unknown": true,
+  "rooster_original_missing_stems_count": 2,
+  "original_hen_charts_duplicate_white_tiger_and_yin_token_逢戊": true,
+  "surgery_specialist_outcome_book_only": true,
+  "no_medical_diagnosis_or_unsafe_treatment_recommendation": true,
+  "cross_book_father_event_not_double_counted": true,
+  "all_new_in_same_domain_health": true,
+  "author_reasoning_draft_not_approved": true
+}
