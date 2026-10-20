@@ -1,0 +1,84 @@
+name: Build and archive nineteenth geography source SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_shenqi_19_from_18.py'
+      - 'sources/shenqi/神奇之门_地理环境预测_精校完整版(1).txt'
+      - 'schema/migrations/014_geography_source_context.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Copy the immutable 18-section archive and import two complete geography stories
+        run: |
+          python scripts/build_shenqi_19_from_18.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3' \
+            --source 'sources/shenqi/神奇之门_地理环境预测_精校完整版(1).txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/shenqi/geographic_environment_prediction_ch15'
+      - name: Compress complete database and write hash-verified manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          folder=Path('archives/sqlite')
+          base=folder/'WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3'
+          dest=folder/'WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3'
+          xz=dest.with_suffix(dest.suffix+'.xz')
+          xz.write_bytes(lzma.compress(dest.read_bytes(),preset=6))
+          data=json.loads(Path('data/knowledge/shenqi/geographic_environment_prediction_ch15/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(dest) as con:
+            assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+            assert con.execute('SELECT count(*) FROM historical_geography_source_context').fetchone()[0]==2
+          rec={'schema':'wengua_complete_versioned_sqlite_archive_v5','book':'神奇之门',
+            'chapter_count':19,'event_families':93,'actual_source_charts':100,'original_palace_cells':900,
+            'original_author_steps':417,'semantic_assertions':1122,'source_title':'地理环境预测',
+            'source_sha256':data['source_sha256'],'source_bytes':data['source_bytes'],
+            'source_lines':data['source_lines'],'new_whole_events':2,'new_printed_charts':2,
+            'new_author_steps':6,'new_domain_methods':23,
+            'baseline_path':str(base),'baseline_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
+            'main_archive_path':str(dest),'sha256':hashlib.sha256(dest.read_bytes()).hexdigest(),
+            'size':dest.stat().st_size,'compressed_archive_path':str(xz),
+            'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+            'compressed_size':xz.stat().st_size,'integrity_check':'ok','foreign_key_violations':0,
+            'all_18_previous_source_rows_unchanged':True,
+            'second_case_source_lacks_author_full_causal_steps':True,
+            'first_case_earlier_expert_consensus_known':True,
+            'human_complete_reasoning_chains_verified':0,'no_independent_geotechnical_validation':True,
+            'public_archive_by_prior_user_authorization':True}
+          (folder/'19chapters_93cases_manifest.json').write_text(json.dumps(rec,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          PY
+      - name: Verify real source chart counts, limitations and 18-section data continuity
+        run: python -m unittest discover -s tests -p test_geography_case_import.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: geography-19-chapters-complete-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3.xz
+            archives/sqlite/19chapters_93cases_manifest.json
+          retention-days: 30
+      - name: Commit a NEW full SQLite version, leave old archives unchanged
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/19chapters_93cases_manifest.json' \
+                     'data/knowledge/shenqi/geographic_environment_prediction_ch15/'
+          git diff --cached --check
+          git commit -m 'Archive full 19-section 93-case geographic-environment SQLite'
+          git push origin HEAD:main
