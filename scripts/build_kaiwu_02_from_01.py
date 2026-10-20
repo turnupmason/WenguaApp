@@ -305,7 +305,7 @@ def build(base,source,output,index_dir):
    sid=db.execute("SELECT last_insert_rowid()").fetchone()[0]
    db.execute("""INSERT INTO chapter_knowledge(chapter_key,book_id,title,source_sha256,
     source_length_bytes,knowledge_version,review_status)
-    VALUES (?,'kaiwu',?,?,'1','draft')""",(CHAPTER,lines[2],SOURCE_SHA,len(raw)))
+    VALUES (?,'kaiwu',?,?,?,'1','draft')""",(CHAPTER,lines[2],SOURCE_SHA,len(raw)))
    for item in entries:
     line=item["source_start_line"];end=item["source_end_line"];cid=item["concept_id"]
     metadata={k:v for k,v in item.items() if k not in ("source_start_line","source_end_line","concept_id","kind")}
