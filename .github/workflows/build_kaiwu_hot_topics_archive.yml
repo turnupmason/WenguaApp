@@ -1,0 +1,102 @@
+name: Archive Kaiwu hot topics shared-domain historical corpus
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_热门话题预测评析.txt'
+      - 'scripts/build_kaiwu_hot_topics_from_health.py'
+      - 'schema/migrations/022_hot_topics_shared_domains.sql'
+      - 'tests/test_kaiwu_hot_topics_multidomain.py'
+      - '.github/workflows/build_kaiwu_hot_topics_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check original, cross-domain classification, 20 printed boards, 13 events and Taiwan correction
+        run: python -m unittest discover -s tests -p test_kaiwu_hot_topics_multidomain.py -v
+      - name: Create complete immutable 28-source SQLite by verified previous full archive backup
+        run: |
+          python -m scripts.build_kaiwu_hot_topics_from_health \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_热门话题预测评析.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/hot_topics_prediction_ch01'
+      - name: Compress, hash immutable binary, verify genuine multi-cast event grouping
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          parent=root/'WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          meta=json.loads(Path('data/knowledge/kaiwu/hot_topics_prediction_ch01/chapter_manifest.json').read_text('utf8'))
+          assert hashlib.sha256(parent.read_bytes()).hexdigest()==meta['baseline_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0]
+                   for t in meta['cumulative_counts']}
+           assert counts==meta['cumulative_counts']
+           assert counts['cases']==121 and counts['hot_topic_event_source_witnesses']==20
+           assert counts['hot_topic_witness_palaces']==180
+          manifest={'schema':'wengua_kaiwu_hot_topics_13_event_20_chart_complete',
+           'source_book':'kaiwu','source_title':meta['title'],
+           'source_sha256':meta['source_sha256'],'source_bytes':meta['source_utf8_bytes'],
+           'source_lines':meta['source_lines'],'book_counts':meta['book_counts'],
+           'source_numbered_topics':13,'new_distinct_event_families':13,
+           'new_source_printed_charts':20,
+           'new_actual_chart_containing_families':12,
+           'annual_source_forecast_no_cast_no_followup':1,
+           'new_author_reasoning_source_steps':97,
+           'taiwan_one_explicit_initial_prediction_error_kept':True,
+           'beijing_2008_both_sections_one_event':True,
+           'all_new_case_histories_accepted_by_user_without_manual_case_approval':True,
+           'book_correctness_is_user_assumption_not_independent_scientific_proof':True,
+           'all_shenqi_and_prior_kaiwu_rows_preserved':True,
+           'total_source_sections':28,'total_historical_cases':121,
+           'total_historical_original_charts':137,
+           'full_parent_archive_path':str(parent),
+           'full_parent_archive_sha256':hashlib.sha256(parent.read_bytes()).hexdigest(),
+           'full_new_archive_path':str(new),'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_violations':0,
+           'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_hot_topics_121cases_manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu7-hot-topics-121-all-events
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_hot_topics_121cases_manifest.json
+          retention-days: 30
+      - name: Commit new versioned full SQLite, XZ and indexed source records
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_hot_topics_121cases_manifest.json' \
+                     'data/knowledge/kaiwu/hot_topics_prediction_ch01/'
+          git diff --cached --check
+          git commit -m 'Archive 13 source-accepted mixed-domain hot-topic events and 20 original boards'
+          git push origin HEAD:main
