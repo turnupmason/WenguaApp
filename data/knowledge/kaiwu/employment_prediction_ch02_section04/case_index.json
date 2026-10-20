@@ -1,0 +1,136 @@
+{
+  "schema": "crossbook_unified_employment_3_cases_v1",
+  "source_sha256": "eeaaa79d23528dfc608282f6ab0b120620a7c44d67588145a9166a9bd03c733e",
+  "cases": [
+    {
+      "id": "kaiwu.employment.19960514.publisher_wife_transfer",
+      "key": "wife_transfer",
+      "title": "出版社负责人问妻子跨社调动",
+      "source": [
+        3,
+        35
+      ],
+      "chart": 9,
+      "header": 7,
+      "question": [
+        5,
+        7
+      ],
+      "steps": [
+        28,
+        30,
+        32
+      ],
+      "pred": [
+        30,
+        32
+      ],
+      "feedback": [
+        34
+      ],
+      "editor": [],
+      "facets": [
+        "employment"
+      ],
+      "dun": "阳",
+      "ju": 5,
+      "datetime": "1996-05-14 afternoon",
+      "hour": "丙申",
+      "note": "Uses 置闰法 explicitly; original 坎1 palace door/star report undeciphered stems, not inferred",
+      "chart_end": 24,
+      "chart_sha256": "7426b1a0b43f47fe58cf6377b7781518d42f4202739d14e554a4fa43aaaa50f2"
+    },
+    {
+      "id": "kaiwu.employment.1998.supply_cooperative_director",
+      "key": "director_appointment",
+      "title": "县供销社新主任人选与宣布时间",
+      "source": [
+        37,
+        76
+      ],
+      "chart": 43,
+      "header": 41,
+      "question": [
+        39,
+        41
+      ],
+      "steps": [
+        62,
+        64,
+        66
+      ],
+      "pred": [
+        60,
+        62,
+        64,
+        66
+      ],
+      "feedback": [
+        68,
+        70
+      ],
+      "editor": [
+        74
+      ],
+      "facets": [
+        "employment",
+        "organizational_appointment"
+      ],
+      "dun": "阳",
+      "ju": 2,
+      "datetime": "1998 lunar first month sixteenth 18:00",
+      "hour": "乙酉",
+      "note": "Director appointment winner and Feb25 癸卯 published date are from one cast; 值使杜门落5寄2, preserve center raw",
+      "chart_end": 58,
+      "chart_sha256": "20530722e991aee8902c971a0d09560610953a2ed0532679139c3362a68f7808"
+    },
+    {
+      "id": "kaiwu.employment.19971218.zhang_application_and_accident",
+      "key": "application_accident",
+      "title": "张伟国入党申请与1999年交通事故预警",
+      "source": [
+        77,
+        150
+      ],
+      "chart": 101,
+      "header": 99,
+      "question": [
+        79
+      ],
+      "steps": [
+        122,
+        124,
+        126,
+        128,
+        134,
+        136,
+        138
+      ],
+      "pred": [
+        81
+      ],
+      "feedback": [
+        87,
+        97
+      ],
+      "editor": [
+        144,
+        146,
+        148,
+        150
+      ],
+      "facets": [
+        "employment",
+        "organizational_membership",
+        "transport_accident"
+      ],
+      "dun": "阳",
+      "ju": 1,
+      "datetime": "1997-12-18 19:00",
+      "hour": "甲戌",
+      "note": "1997 predicted party application failure and possible 1999 lunar February crash; post-fatality exact day is NOT part of initial prediction; chart text prints 日甲午 but numbered analysis says 日干辛: retain discrepancy",
+      "chart_end": 116,
+      "chart_sha256": "20aebdf348393e83e40963611a52ee5a5fd2e00252709b53a02e04a5877e42ec"
+    }
+  ]
+}

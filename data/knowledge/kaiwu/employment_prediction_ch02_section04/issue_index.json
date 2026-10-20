@@ -1,0 +1,37 @@
+{
+  "source_sha256": "eeaaa79d23528dfc608282f6ab0b120620a7c44d67588145a9166a9bd03c733e",
+  "issues": [
+    {
+      "case_id": "kaiwu.employment.19960514.publisher_wife_transfer",
+      "issue_key": "work_transfer",
+      "related_domain": "employment",
+      "original_prediction_line": 30,
+      "outcome_line": 34,
+      "chronology": "Known both spouses work at one publishing house; initial says transfer will fail; report says remained there through autumn 1997"
+    },
+    {
+      "case_id": "kaiwu.employment.1998.supply_cooperative_director",
+      "issue_key": "director_appointment",
+      "related_domain": "organizational_appointment",
+      "original_prediction_line": 60,
+      "outcome_line": 68,
+      "chronology": "Reported director selection, direction and age and announcement on 癸卯 1998-02-25"
+    },
+    {
+      "case_id": "kaiwu.employment.19971218.zhang_application_and_accident",
+      "issue_key": "party_membership_application",
+      "related_domain": "organizational_membership",
+      "original_prediction_line": 81,
+      "outcome_line": 87,
+      "chronology": "Party applicant's 1997 request for admission; next-day vote did not include his application"
+    },
+    {
+      "case_id": "kaiwu.employment.19971218.zhang_application_and_accident",
+      "issue_key": "road_accident_1999_warning",
+      "related_domain": "transport_accident",
+      "original_prediction_line": 81,
+      "outcome_line": 97,
+      "chronology": "Original 1997 warning only 1999 lunar February and eastward Shijiazhuang crash; day 23 decided in 1999 AFTER partial death report (lines89-95)"
+    }
+  ]
+}

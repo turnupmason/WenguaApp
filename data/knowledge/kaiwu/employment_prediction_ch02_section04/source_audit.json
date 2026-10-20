@@ -1,0 +1,13 @@
+{
+  "source_sha256": "eeaaa79d23528dfc608282f6ab0b120620a7c44d67588145a9166a9bd03c733e",
+  "case3_original_initial_warns_only_month_and_location": true,
+  "case3_post_accident_specific_date_deduction_not_pre_crash": true,
+  "case3_single_cast_multiple_matters_no_fake_extra_case": true,
+  "case3_day_pillar_canonicalization_prohibited": true,
+  "case1_unknown_stems_both_preserved_as_printed": true,
+  "case1_explicit_zhirun_cast_no_forced_chaibu_recast": true,
+  "case2_original_du_men_witness_five_to_two_host": true,
+  "all_old_source_rows_unchanged": true,
+  "all_cases_accepted_without_individual_review": true,
+  "no_historical_predictions_independently_proven": true
+}
