@@ -1,0 +1,17 @@
+{
+  "schema": "wengua_misc_source_phase_audit_v1",
+  "source_sha256": "8494bbf569b9bb18f8f505fb36a52d6ff327093f27b30240cf64ed455a89da93",
+  "case1_original_1993_letter_is_sixyao_not_three_contemporaneous_qimen_proven": true,
+  "case1_three_qimen_cast_lines": [
+    25,
+    56,
+    83
+  ],
+  "case2_multiple_questions_not_multiple_cases": true,
+  "case3_meeting_attendance_book_result_138_plus_2_not_verified_outside_book": true,
+  "case4_interviewer_identity_known_before_prediction": true,
+  "case4_unwritten_explanations_after_feedback": true,
+  "case5_retrospective_commentary_line": 280,
+  "zero_independently_validated_causal_chains": true,
+  "all_positive_training_forbidden": true
+}

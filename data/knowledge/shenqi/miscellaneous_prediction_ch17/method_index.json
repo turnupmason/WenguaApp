@@ -1,0 +1,144 @@
+{
+  "schema": "wengua_misc_topic_methods_v1",
+  "source_sha256": "8494bbf569b9bb18f8f505fb36a52d6ff327093f27b30240cf64ed455a89da93",
+  "methods": [
+    {
+      "source_line": 44,
+      "concept_id": "misc:method:chair_and_committee",
+      "conditional_summary": "申请选举按首领值符与值使官员分角色，不能无条件套到其他领域",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 44,
+      "concept_id": "misc:method:home_earth_foreign_heaven",
+      "conditional_summary": "申奥以地盘时干为北京、天盘时干为外国城市，仅针对作者该案例",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 46,
+      "concept_id": "misc:method:earth_chair_support",
+      "conditional_summary": "地盘时干与值符同宫，作者取领导支持作为证据",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 48,
+      "concept_id": "misc:method:heaven_chair_and_members",
+      "conditional_summary": "天盘时干宫生值符、克值使宫与月令共同判断主客优势",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 50,
+      "concept_id": "misc:method:fanyin_momentum",
+      "conditional_summary": "八门反吟与天盘地盘旺衰并用判断半途不利",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 75,
+      "concept_id": "misc:method:earth_yi_tomb",
+      "conditional_summary": "第二盘地盘乙在坤入墓且与值使对冲，尽管同值符仍需保留不利",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 77,
+      "concept_id": "misc:method:heaven_yi_in_season",
+      "conditional_summary": "第二盘天盘乙旺相并受值符值使生助，取多证据优劣",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 102,
+      "concept_id": "misc:method:third_board_home",
+      "conditional_summary": "第三盘癸地盘在艮，与值符比和但酉月休地",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 104,
+      "concept_id": "misc:method:third_board_guest",
+      "conditional_summary": "第三盘癸天盘在兑当旺，值使虽然克但月令使克弱",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 106,
+      "concept_id": "misc:method:ticket_ding",
+      "conditional_summary": "第三盘以丁奇为选票，结合天盘/地盘时干克丁宫的不同关系",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 135,
+      "concept_id": "misc:method:association_star",
+      "conditional_summary": "大事以九星值符兼螣蛇生门取象，但学会已注册属当时已知历史",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 137,
+      "concept_id": "misc:method:building_open_door",
+      "conditional_summary": "楼宇建设以开门取用，检查入墓空亡、格局与时干事体",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 139,
+      "concept_id": "misc:method:monthly_caution",
+      "conditional_summary": "近期以日月干、支宫、惊门及出空推作者提示时间，未证实的警告不能记应验",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 170,
+      "concept_id": "misc:method:attendance_hour_open",
+      "conditional_summary": "开门为大会、时干为参会人，月令旺相和宫数合参人数",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 172,
+      "concept_id": "misc:method:host_support_issues",
+      "conditional_summary": "东道主日干结合值符、庚阻隔、门克宫及反吟判断支持与阻力",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 174,
+      "concept_id": "misc:method:leader_support_void",
+      "conditional_summary": "年干领导虽生东道主，但空亡惊门提示仅口头支持",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 176,
+      "concept_id": "misc:method:documents_ding",
+      "conditional_summary": "会议材料取丁奇，空亡丁癸雀投江和宫数推待办文件",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 239,
+      "concept_id": "misc:method:seller_rain_liquor",
+      "conditional_summary": "日干甲子戊财、休门与空亡开门辨离职经商，坎水丁火取烟酒",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 243,
+      "concept_id": "misc:method:inventory_profit",
+      "conditional_summary": "资本戊、利息生门、时干货物、杜门伏吟组合判断亏损积压",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 247,
+      "concept_id": "misc:method:seat_personal_event",
+      "conditional_summary": "坐震宫、伤门及丁癸与已知昨天癸亥共同形成传统眼泪类象",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 274,
+      "concept_id": "misc:method:blast_tianchong",
+      "conditional_summary": "偶发爆炸依震动类象以天冲为用神，连同震坤、门神、干格解析",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 276,
+      "concept_id": "misc:method:fatality_dead_gate",
+      "conditional_summary": "死门为死者，乾六宫、星门神与丁奇推原书关系；不可认定犯罪事实",
+      "review_status": "draft"
+    },
+    {
+      "source_line": 280,
+      "concept_id": "misc:method:flexible_selection_editor",
+      "conditional_summary": "作者事后评语鼓励按象数理灵活选用神，须标记是后验编辑按语",
+      "review_status": "draft"
+    }
+  ]
+}

@@ -1,0 +1,964 @@
+{
+  "schema": "wengua_misc_cases_v1",
+  "source_sha256": "8494bbf569b9bb18f8f505fb36a52d6ff327093f27b30240cf64ed455a89da93",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.misc.case01",
+      "event_family_id": "shenqi.misc.case01",
+      "title": "北京申办2000奥运会三时辰比较",
+      "whole_original_story_line_span": [
+        5,
+        109
+      ],
+      "source_casts": [
+        {
+          "key": "primary",
+          "source_chart_line": 25,
+          "date": "1993-03-07",
+          "hour": "庚戌",
+          "source_cast_metadata_line": 21,
+          "source_analysis_lines": [
+            44,
+            46,
+            48,
+            50,
+            52
+          ],
+          "real_original_cells": 9
+        },
+        {
+          "key": "bid_1993_09_23",
+          "source_chart_line": 56,
+          "date": "1993-09-23",
+          "hour": "乙巳",
+          "source_cast_metadata_line": 54,
+          "source_analysis_lines": [
+            75,
+            77,
+            79
+          ],
+          "real_original_cells": 9
+        },
+        {
+          "key": "vote_1993_09_24",
+          "source_chart_line": 83,
+          "date": "1993-09-24",
+          "hour": "癸丑",
+          "source_cast_metadata_line": 81,
+          "source_analysis_lines": [
+            102,
+            104,
+            106,
+            108
+          ],
+          "real_original_cells": 9
+        }
+      ],
+      "source_analysis_steps": [
+        {
+          "source_end_line": 44,
+          "step_number": 1,
+          "source_line": 44,
+          "cast_key": "primary",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（1）值符为首领，值使为值班的官吏。申办奥运会，决定于奥委会主席和奥委会委员。故应以值符代表奥委会主席，以值使代表奥委会委员。以地盘时干为主，代表北京；以天盘时干为客，代表外国申办城市。以其",
+          "source_claimed_observations": [
+            "（1）值符为首领",
+            "故应以值符代表奥委会主席",
+            "以地盘时干为主",
+            "以天盘时干为客",
+            "生克关系来判断是主方还是客方申办成功"
+          ],
+          "source_counterevidence": [
+            "以其旺相休囚"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 46,
+          "step_number": 2,
+          "source_line": 46,
+          "cast_key": "primary",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（2）地盘时干庚代表北京，落离9宫，上乘值符，即与值符同宫，说明国际奥委会主席很同情并支持北京申办奥运会。值使死门代表奥委会委员，地盘时干庚落宫生值使落宫，说明北京会积极地拉选票。",
+          "source_claimed_observations": [
+            "（2）地盘时干庚代表北京",
+            "落离9宫",
+            "上乘值符",
+            "即与值符同宫",
+            "值使死门代表奥委会委员",
+            "地盘时干庚落宫生值使落宫"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:死"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 48,
+          "step_number": 3,
+          "source_line": 48,
+          "cast_key": "primary",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（3）天盘时干庚代表外国申办城市，落巽4宫，临月建最旺，生值符落宫，说明人家会积极做奥委会主席的工作；同时克值使死门落宫，说明人家能控制奥委会委员。庚+丁为日格，人家成功之象。",
+          "source_claimed_observations": [
+            "（3）天盘时干庚代表外国申办城市",
+            "落巽4宫",
+            "生值符落宫",
+            "同时克值使死门落宫"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:死",
+            "trigram:巽"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 50,
+          "step_number": 4,
+          "source_line": 50,
+          "cast_key": "primary",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（4）八门反吟，半途而废之象。天盘时干最旺，地盘时干为相。",
+          "source_claimed_observations": [
+            "（4）八门反吟",
+            "天盘时干最旺",
+            "地盘时干为相"
+          ],
+          "source_counterevidence": [
+            "（4）八门反吟"
+          ],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 52,
+          "step_number": 5,
+          "source_line": 52,
+          "cast_key": "primary",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "综合起来，北京不如东南方向的外国申办城市有利条件多，故恐怕北京难以申办成功。",
+          "source_claimed_observations": [],
+          "source_counterevidence": [
+            "北京不如东南方向的外国申办城市有利条件多"
+          ],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 75,
+          "step_number": 6,
+          "source_line": 75,
+          "cast_key": "bid_1993_09_23",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（1）以地盘时干乙为北京，在坤2宫，与值符同宫，说明奥委会主席仍然很支持北京申办；但乙在坤2宫为入墓；又与代表奥委会委员的值使景门处于对冲地位；又酉月，坤2宫处休地。",
+          "source_claimed_observations": [
+            "（1）以地盘时干乙为北京",
+            "在坤2宫",
+            "与值符同宫",
+            "但乙在坤2宫为入墓",
+            "又与代表奥委会委员的值使景门处于对冲地位",
+            "坤2宫处休地"
+          ],
+          "source_counterevidence": [
+            "但乙在坤2宫为入墓",
+            "坤2宫处休地"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:景"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 77,
+          "step_number": 7,
+          "source_line": 77,
+          "cast_key": "bid_1993_09_23",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（2）以天盘时干乙为外国申办城市，在兑7宫，处当令最旺之月，不仅代表奥委会主席的值符生助，而且代表奥委会委员的值使也生助人家。",
+          "source_claimed_observations": [
+            "（2）以天盘时干乙为外国申办城市",
+            "在兑7宫",
+            "不仅代表奥委会主席的值符生助",
+            "而且代表奥委会委员的值使也生助人家"
+          ],
+          "source_counterevidence": [
+            "不仅代表奥委会主席的值符生助"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 79,
+          "step_number": 8,
+          "source_line": 79,
+          "cast_key": "bid_1993_09_23",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "此时信息已很明显，北京失利，外国城市申办成功。",
+          "source_claimed_observations": [],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 102,
+          "step_number": 9,
+          "source_line": 102,
+          "cast_key": "vote_1993_09_24",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（1）地盘时干癸为北京，在艮8宫，与值符同宫比和，酉月处休地。",
+          "source_claimed_observations": [
+            "（1）地盘时干癸为北京",
+            "在艮8宫",
+            "与值符同宫比和"
+          ],
+          "source_counterevidence": [
+            "酉月处休地"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 104,
+          "step_number": 10,
+          "source_line": 104,
+          "cast_key": "vote_1993_09_24",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（2）天盘时干癸为外国申办城市，在兑7宫，临月建最旺，又受值符宫生助。景门值使虽克天盘时干落宫，但酉月金旺火囚，无力克之；同时，也无力生地盘时干落宫。",
+          "source_claimed_observations": [
+            "（2）天盘时干癸为外国申办城市",
+            "在兑7宫",
+            "又受值符宫生助",
+            "景门值使虽克天盘时干落宫",
+            "无力克之",
+            "也无力生地盘时干落宫"
+          ],
+          "source_counterevidence": [
+            "但酉月金旺火囚"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:景"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 106,
+          "step_number": 11,
+          "source_line": 106,
+          "cast_key": "vote_1993_09_24",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "（3）丁奇为选票，天盘时干癸落宫克丁奇落宫，癸下又临丁；相反丁奇所落4宫克地盘时干癸落宫。这说明，外国城市所得选票多于北京。",
+          "source_claimed_observations": [
+            "天盘时干癸落宫克丁奇落宫",
+            "相反丁奇所落4宫克地盘时干癸落宫"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 108,
+          "step_number": 12,
+          "source_line": 108,
+          "cast_key": "vote_1993_09_24",
+          "phase": "Qimen_retrospective_as_book_explanation_not_contemporaneous_proof",
+          "author_method_claim": "据此，也是外国城市申办成功。",
+          "source_claimed_observations": [],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        }
+      ],
+      "initial_question_source_lines": [
+        7,
+        7
+      ],
+      "judgment_lines": [
+        9,
+        52,
+        79,
+        108
+      ],
+      "feedback_lines": [
+        15
+      ],
+      "source_note": "May28 letter used the SIX-YAO method; source gives no independent contemporaneous proof that three later Qimen readings were publicly committed before vote result.",
+      "professionally_approved": false,
+      "positive_training_eligible": false,
+      "six_yao_claim_not_qimen_cast": {
+        "book_lines": [
+          7,
+          9,
+          19
+        ],
+        "other_technique": true,
+        "author_book_only_says_later_qimen_analysis": true,
+        "no_proof_contemporaneous_qimen_prediction": true,
+        "one_event_three_separate_real_printed_qimen_casts": true
+      }
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.misc.case02",
+      "event_family_id": "shenqi.misc.case02",
+      "title": "黄永国写信询问学会、大楼与四月运气",
+      "whole_original_story_line_span": [
+        110,
+        142
+      ],
+      "source_casts": [
+        {
+          "key": "primary",
+          "source_chart_line": 116,
+          "date": "1996-05-16",
+          "hour": "丙辰",
+          "source_cast_metadata_line": 114,
+          "source_analysis_lines": [
+            135,
+            137,
+            139
+          ],
+          "real_original_cells": 9
+        }
+      ],
+      "source_analysis_steps": [
+        {
+          "source_end_line": 135,
+          "step_number": 1,
+          "source_line": 135,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（1）大事看星。全国易学研究会应以九星值符为用神，今值符天蓬星落入旺宫，癸加丙虽为华盖悖师格，贵贱逢之皆不利，但惟上人见喜，说明全国易研会已经得到天时，上级已经批准；同时，易学研究属于阴性、",
+          "source_claimed_observations": [
+            "（1）大事看星",
+            "全国易学研究会应以九星值符为用神",
+            "今值符天蓬星落入旺宫",
+            "今螣蛇临生门",
+            "说明已经诞生",
+            "中国周易学会已由山东大学周易研究中心教授刘大钧先生申办成功",
+            "但天蓬星临休门",
+            "一直处于休养生息、洁静致微的状态"
+          ],
+          "source_counterevidence": [
+            "贵贱逢之皆不利",
+            "但惟上人见喜",
+            "但天蓬星临休门",
+            "虽然注册成功",
+            "但连成立大会也未召开",
+            "一直处于休养生息、洁静致微的状态"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "deity:螣蛇",
+            "door:休",
+            "door:生",
+            "star:蓬"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check",
+          "prior_historical_result_within_source_step": true
+        },
+        {
+          "source_end_line": 137,
+          "step_number": 2,
+          "source_line": 137,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（2）筹建易学天下第一楼，以开门为用神。今开门临天心星、上乘九天，虽然志向十分远大，但开门在艮8宫为入墓之地，又逢空亡，己加辛为游魂入墓凶格，显然筹建不成。又时干为所问之事，时干丙在9宫临伤",
+          "source_claimed_observations": [
+            "以开门为用神",
+            "今开门临天心星、上乘九天",
+            "但开门在艮8宫为入墓之地",
+            "又时干为所问之事",
+            "时干丙在9宫临伤门"
+          ],
+          "source_counterevidence": [
+            "虽然志向十分远大",
+            "但开门在艮8宫为入墓之地",
+            "又逢空亡",
+            "显然筹建不成",
+            "也是不成之象"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:九天",
+            "door:伤",
+            "door:开",
+            "star:心"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 139,
+          "step_number": 3,
+          "source_line": 139,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（3）日干癸在3宫，癸加丙华盖悖师，运气不佳，但上乘值符，又临休门，也不会有大灾大难。癸巳月，月干与日干同为癸，在坎1宫逢月格、日格、必然不顺，上乘惊门，主官司口舌。月支巳在4宫，虽临生门，",
+          "source_claimed_observations": [
+            "（3）日干癸在3宫",
+            "但上乘值符",
+            "又临休门",
+            "月干与日干同为癸",
+            "在坎1宫逢月格、日格、必然不顺",
+            "上乘惊门",
+            "月支巳在4宫",
+            "虽临生门",
+            "四月份最好不要出远门"
+          ],
+          "source_counterevidence": [
+            "运气不佳",
+            "但上乘值符",
+            "又临休门",
+            "也不会有大灾大难",
+            "在坎1宫逢月格、日格、必然不顺",
+            "但辛加乙虎猖狂凶格",
+            "四月份最好不要出远门"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:休",
+            "door:惊",
+            "door:生"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        }
+      ],
+      "initial_question_source_lines": [
+        112,
+        114
+      ],
+      "judgment_lines": [
+        135,
+        137,
+        139
+      ],
+      "feedback_lines": [
+        141
+      ],
+      "source_note": "Society registration in March already happened by May question; other predictions must preserve incomplete feedback and prospective warning.",
+      "professionally_approved": false,
+      "positive_training_eligible": false,
+      "three_questions_one_event": true
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.misc.case03",
+      "event_family_id": "shenqi.misc.case03",
+      "title": "学术会议出席人数与会议组织",
+      "whole_original_story_line_span": [
+        143,
+        181
+      ],
+      "source_casts": [
+        {
+          "key": "primary",
+          "source_chart_line": 151,
+          "date": "1997-05-20",
+          "hour": "庚戌",
+          "source_cast_metadata_line": 149,
+          "source_analysis_lines": [
+            170,
+            172,
+            174,
+            176
+          ],
+          "real_original_cells": 9
+        }
+      ],
+      "source_analysis_steps": [
+        {
+          "source_end_line": 170,
+          "step_number": 1,
+          "source_line": 170,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（1）开门为大会，时干庚代表参会人，二者均落巽4宫，巳月4宫旺相，据此断参会人数一百四十人左右；又天芮星为学员为代表，落离9宫，因此正式代表不过九十人左右。",
+          "source_claimed_observations": [
+            "（1）开门为大会",
+            "时干庚代表参会人",
+            "二者均落巽4宫",
+            "巳月4宫旺相",
+            "又天芮星为学员为代表",
+            "落离9宫"
+          ],
+          "source_counterevidence": [
+            "因此正式代表不过九十人左右"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "door:开",
+            "star:芮",
+            "trigram:巽"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 172,
+          "step_number": 2,
+          "source_line": 172,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（2）日干代表东道主高飞同志，落离9宫，处胎地，临月建，旺相，又上乘值符为吉，也正符合他的董事长身份。但壬下临庚，庚为阻隔之神，说明不太顺利，又休门克宫，吉门克宫吉不就。大局为八门反吟，反吟",
+          "source_claimed_observations": [
+            "（2）日干代表东道主高飞同志",
+            "落离9宫",
+            "又上乘值符为吉",
+            "又休门克宫",
+            "吉门克宫吉不就",
+            "大局为八门反吟"
+          ],
+          "source_counterevidence": [
+            "但壬下临庚",
+            "说明不太顺利",
+            "又休门克宫",
+            "吉门克宫吉不就",
+            "大局为八门反吟",
+            "反吟主不顺"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:休"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 174,
+          "step_number": 3,
+          "source_line": 174,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（3）年干丁为领导，在3宫，生日干落宫，说明当地领导对高飞很支持。但3宫逢空亡，又临惊门，说明领导支持主要是口头上的，他们心里还担心，故主要领导不会出席会议。",
+          "source_claimed_observations": [
+            "在3宫",
+            "生日干落宫",
+            "但3宫逢空亡",
+            "又临惊门"
+          ],
+          "source_counterevidence": [
+            "但3宫逢空亡",
+            "故主要领导不会出席会议"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "door:惊"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 176,
+          "step_number": 4,
+          "source_line": 176,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（4）丁奇又为材料、会议文件，落3宫逢空亡，丁+癸又为雀投江凶格，上乘九地主长久。据此，断会议文件材料早就做准备了，但至今还有三份没落实。",
+          "source_claimed_observations": [
+            "落3宫逢空亡"
+          ],
+          "source_counterevidence": [
+            "落3宫逢空亡",
+            "但至今还有三份没落实"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:九地"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        }
+      ],
+      "initial_question_source_lines": [
+        145,
+        149
+      ],
+      "judgment_lines": [
+        170,
+        172,
+        174,
+        176
+      ],
+      "feedback_lines": [
+        178,
+        180
+      ],
+      "source_note": "110 participants already present at intermediate feedback line178; final 138+2 reported line180; do not leak intermediate into initial question.",
+      "professionally_approved": false,
+      "positive_training_eligible": false,
+      "interim_known_participants_at_line178": true
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.misc.case04",
+      "event_family_id": "shenqi.misc.case04",
+      "title": "餐桌高夫人临场判断及事后解盘",
+      "whole_original_story_line_span": [
+        182,
+        248
+      ],
+      "source_casts": [
+        {
+          "key": "primary",
+          "source_chart_line": 218,
+          "date": "1997-05-22",
+          "hour": "癸酉",
+          "source_cast_metadata_line": 216,
+          "source_analysis_lines": [
+            196,
+            200,
+            204,
+            237,
+            241,
+            245
+          ],
+          "real_original_cells": 9
+        }
+      ],
+      "source_analysis_steps": [
+        {
+          "source_end_line": 196,
+          "step_number": 1,
+          "source_line": 196,
+          "cast_key": "primary",
+          "phase": "initial_live_prediction",
+          "author_method_claim": "杜新会把高夫人的手挡回去，幽默地说：“我这手上有反光镜，不用看你的手。我也送你几句。第一，你是做生意的，原来有公职，现在不干了，自己做点买卖，应该是做",
+          "source_claimed_observations": [
+            "你是做生意的",
+            "应该是做烟酒生意的"
+          ],
+          "source_counterevidence": [
+            "不用看你的手",
+            "现在不干了",
+            "对不对？”"
+          ],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 200,
+          "step_number": 2,
+          "source_line": 200,
+          "cast_key": "primary",
+          "phase": "initial_live_prediction",
+          "author_method_claim": "杜新会说：“但你的生意做得不好，赔了本，现在压了一百箱高档烟酒卖不出去，对不对？”",
+          "source_claimed_observations": [
+            "杜新会说：“但你的生意做得不好"
+          ],
+          "source_counterevidence": [
+            "杜新会说：“但你的生意做得不好",
+            "现在压了一百箱高档烟酒卖不出去",
+            "对不对？”"
+          ],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 204,
+          "step_number": 3,
+          "source_line": 204,
+          "cast_key": "primary",
+          "phase": "initial_live_prediction",
+          "author_method_claim": "杜新会又说：“不仅如此，你昨天还为一件口舌是非事伤心生气，而且掉了眼泪……”",
+          "source_claimed_observations": [
+            "你昨天还为一件口舌是非事伤心生气"
+          ],
+          "source_counterevidence": [
+            "杜新会又说：“不仅如此"
+          ],
+          "prior_concept_lexical_candidates_only": [],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 239,
+          "step_number": 4,
+          "source_line": 237,
+          "cast_key": "primary",
+          "phase": "post_feedback_explanatory_analysis",
+          "author_method_claim": "（1）怎么知道高夫人原来有公职，现在不干了，自己做烟酒生意的？\n\n日干甲子戊代表高夫人，落坎1宫，临休门，说明休息了；又开门为公职，在乾6宫逢空亡，说明不干公职了。甲子戊为资本、为钱财，日干",
+          "source_claimed_observations": [
+            "自己做烟酒生意的？\n\n日干甲子戊代表高夫人",
+            "落坎1宫",
+            "临休门",
+            "又开门为公职",
+            "在乾6宫逢空亡",
+            "日干临之",
+            "说明她是做生意的",
+            "甲子戊落坎宫",
+            "所以断她是做烟酒生意的"
+          ],
+          "source_counterevidence": [
+            "现在不干了",
+            "临休门",
+            "说明休息了",
+            "在乾6宫逢空亡",
+            "说明不干公职了"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "door:休",
+            "door:开",
+            "trigram:坎"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 243,
+          "step_number": 5,
+          "source_line": 241,
+          "cast_key": "primary",
+          "phase": "post_feedback_explanatory_analysis",
+          "author_method_claim": "（2）怎么知道高夫人做生意赔了本，压了一百箱高档烟酒卖不出去？\n\n甲子戊为资本落坎宫，生门为利息落8宫，生门克甲子戊，必然赔本。日干为人，时干为货物，日干戊落宫生时干癸落宫，人恋货卖不出去；",
+          "source_claimed_observations": [
+            "（2）怎么知道高夫人做生意赔了本",
+            "压了一百箱高档烟酒卖不出去？\n\n甲子戊为资本落坎宫",
+            "生门为利息落8宫",
+            "生门克甲子戊",
+            "日干为人",
+            "时干为货物",
+            "日干戊落宫生时干癸落宫",
+            "时干癸临杜门",
+            "又临天蓬破财之星"
+          ],
+          "source_counterevidence": [
+            "压了一百箱高档烟酒卖不出去？\n\n甲子戊为资本落坎宫",
+            "人恋货卖不出去",
+            "也主卖不出去"
+          ],
+          "prior_concept_lexical_candidates_only": [
+            "deity:值符",
+            "door:杜",
+            "door:生",
+            "star:蓬",
+            "trigram:坎"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 247,
+          "step_number": 6,
+          "source_line": 245,
+          "cast_key": "primary",
+          "phase": "post_feedback_explanatory_analysis",
+          "author_method_claim": "（3）怎么知道高夫人昨天为口舌是非事伤心生气，而且掉了眼泪？\n\n高夫人坐奇门宫的震位，震3宫临天心星克宫，伤门伏吟，上乘太阴，主阴私之事，己+丙火悖地户凶格；又日干所在坎1宫，丁+癸为雀投江",
+          "source_claimed_observations": [
+            "（3）怎么知道高夫人昨天为口舌是非事伤心生气",
+            "而且掉了眼泪？\n\n高夫人坐奇门宫的震位",
+            "震3宫临天心星克宫",
+            "伤门伏吟",
+            "又日干所在坎1宫",
+            "癸水克丁火"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [
+            "deity:太阴",
+            "door:伤",
+            "star:心"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        }
+      ],
+      "initial_question_source_lines": [
+        186,
+        194
+      ],
+      "judgment_lines": [
+        196,
+        200,
+        204
+      ],
+      "feedback_lines": [
+        198,
+        202,
+        206
+      ],
+      "source_note": "Three in-person answers were before detailed source explanations. Sections 237-247 are explanations written after immediate responses; face-reading by another person is NOT this Qimen cast.",
+      "professionally_approved": false,
+      "positive_training_eligible": false,
+      "live_predictions_before_written_reconstruction": {
+        "initial_lines": [
+          196,
+          200,
+          204
+        ],
+        "explanation_after_revealed_feedback": [
+          237,
+          241,
+          245
+        ],
+        "another_person_face_reading_not_qimen": true
+      }
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.misc.case05",
+      "event_family_id": "shenqi.misc.case05",
+      "title": "胡洪清听爆炸后预测原因与后果",
+      "whole_original_story_line_span": [
+        249,
+        280
+      ],
+      "source_casts": [
+        {
+          "key": "primary",
+          "source_chart_line": 255,
+          "date": "1997-11-03",
+          "hour": "辛未",
+          "source_cast_metadata_line": 253,
+          "source_analysis_lines": [
+            274,
+            276
+          ],
+          "real_original_cells": 9
+        }
+      ],
+      "source_analysis_steps": [
+        {
+          "source_end_line": 274,
+          "step_number": 1,
+          "source_line": 274,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（1）爆炸事件为震动，故取天冲星为用。天冲星落坤2宫，上乘杜门、玄武。杜门克宫凶；辛+己为入狱自刑，凶；辛+壬为凶蛇入狱，两男争女，凶。又坤为田宅，故屋宅炸塌。时干为辛，时逢六辛，路遇死人，",
+          "source_claimed_observations": [
+            "故取天冲星为用",
+            "天冲星落坤2宫",
+            "上乘杜门、玄武",
+            "杜门克宫凶",
+            "时干为辛",
+            "又月干、时干均为辛",
+            "与天冲星同宫"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [
+            "deity:玄武",
+            "door:杜",
+            "star:冲"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        },
+        {
+          "source_end_line": 276,
+          "step_number": 2,
+          "source_line": 276,
+          "cast_key": "primary",
+          "phase": "source_authored_step",
+          "author_method_claim": "（2）死者以死门取用，落乾6宫，故为老父；临天英星克宫，因火、爆炸而死；上乘六合，当为婚姻、阴私和合事；临丁奇，丁为第三者女人，故死者与第三者女人纠缠。",
+          "source_claimed_observations": [
+            "（2）死者以死门取用",
+            "落乾6宫",
+            "临天英星克宫"
+          ],
+          "source_counterevidence": [],
+          "prior_concept_lexical_candidates_only": [
+            "deity:六合",
+            "door:死",
+            "star:英"
+          ],
+          "causal_relation_human_validated": false,
+          "author_original_in_full_sqlite": true,
+          "positive_training_eligible": false,
+          "review_status": "source_anchored_draft_requires_human_step_check"
+        }
+      ],
+      "initial_question_source_lines": [
+        251,
+        253
+      ],
+      "judgment_lines": [
+        274,
+        276
+      ],
+      "feedback_lines": [
+        278
+      ],
+      "source_note": "Fatality and relationship allegations are a book account only, not verified police/medical evidence. Editor evaluation line280 is post outcome.",
+      "professionally_approved": false,
+      "positive_training_eligible": false,
+      "teacher_retrospective_commentary_line": 280
+    }
+  ]
+}
