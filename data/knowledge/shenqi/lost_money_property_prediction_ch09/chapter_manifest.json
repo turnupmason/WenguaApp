@@ -1,0 +1,24 @@
+{
+  "schema": "wengua_lost_property_manifest_v1",
+  "chapter_key": "shenqi/lost_money_property_prediction_ch09/v1",
+  "source_sha256": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+  "source_filename": "神奇之门_钱物丢失预测_精校完整版(2).txt",
+  "source_utf8_bytes": 34197,
+  "source_lines": 362,
+  "source_chapter_title": "钱物丢失预测",
+  "event_families": 8,
+  "real_source_charts": 8,
+  "original_nine_palace_cells": 72,
+  "author_analysis_steps": 36,
+  "unnumbered_analysis_steps": 2,
+  "general_conditional_methods": 18,
+  "case_analysis_candidates": 36,
+  "total_source_knowledge_candidates": 54,
+  "source_editorial_note_lines": [
+    356,
+    362
+  ],
+  "private_original_not_in_public_git": true,
+  "all_source_predictions_draft": true,
+  "independent_verified": 0
+}

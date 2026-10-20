@@ -1,0 +1,749 @@
+{
+  "schema": "wengua_lost_property_whole_case_v1",
+  "chapter_key": "shenqi/lost_money_property_prediction_ch09/v1",
+  "source_sha256": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.lost_property.case01",
+      "event_family_id": "shenqi.lost_property.case01",
+      "title": "遗失发票",
+      "source_span": [
+        16,
+        49
+      ],
+      "initial_question_lines": [
+        18,
+        18
+      ],
+      "original_chart_start": 25,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        41,
+        43,
+        45
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 41,
+          "method_topic": "景门文书",
+          "cross_chapter_lexical_candidates": [
+            "deity:六合",
+            "door:景",
+            "star:辅"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 43,
+          "method_topic": "日时落宫玄武容器",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "door:惊"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 45,
+          "method_topic": "反吟远近及应期",
+          "cross_chapter_lexical_candidates": [
+            "trigram:震"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        47
+      ],
+      "original_judgment_lines": [
+        45
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [],
+      "source_exception": null,
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.lost_property.case02",
+      "event_family_id": "shenqi.lost_property.case02",
+      "title": "搬家后身份证",
+      "source_span": [
+        50,
+        89
+      ],
+      "initial_question_lines": [
+        52,
+        52
+      ],
+      "original_chart_start": 61,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        77,
+        79,
+        81,
+        83,
+        85
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 77,
+          "method_topic": "日时生宫",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 79,
+          "method_topic": "景门伏吟与颜色",
+          "cross_chapter_lexical_candidates": [
+            "door:景"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 81,
+          "method_topic": "景门加景门",
+          "cross_chapter_lexical_candidates": [
+            "door:景"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 83,
+          "method_topic": "时干宫吉星长辈",
+          "cross_chapter_lexical_candidates": [
+            "deity:九天",
+            "door:休",
+            "star:任"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 85,
+          "method_topic": "庚格或时干生应期",
+          "cross_chapter_lexical_candidates": [
+            "trigram:坤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        87
+      ],
+      "original_judgment_lines": [
+        85
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [],
+      "source_exception": null,
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.lost_property.case03",
+      "event_family_id": "shenqi.lost_property.case03",
+      "title": "坐宫先断皮衣失物",
+      "source_span": [
+        90,
+        123
+      ],
+      "initial_question_lines": [
+        92,
+        92
+      ],
+      "original_chart_start": 99,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        113,
+        117
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 113,
+          "method_topic": "坐宫先推未知问题",
+          "cross_chapter_lexical_candidates": [
+            "deity:值符",
+            "star:英",
+            "trigram:坤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 117,
+          "method_topic": "日时克盗宫与归属",
+          "cross_chapter_lexical_candidates": [
+            "deity:九天",
+            "deity:值符",
+            "deity:玄武",
+            "door:休",
+            "door:开",
+            "door:生",
+            "trigram:坤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        121
+      ],
+      "original_judgment_lines": [
+        119
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [
+        115
+      ],
+      "source_exception": "first answer before question is disclosed",
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.lost_property.case04",
+      "event_family_id": "shenqi.lost_property.case04",
+      "title": "BP机丢失",
+      "source_span": [
+        124,
+        161
+      ],
+      "initial_question_lines": [
+        126,
+        126
+      ],
+      "original_chart_start": 133,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        149,
+        151,
+        153,
+        155,
+        157
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 149,
+          "method_topic": "时干空亡与场所",
+          "cross_chapter_lexical_candidates": [
+            "deity:白虎",
+            "door:伤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 151,
+          "method_topic": "玄武旬空排盗",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "door:死",
+            "star:蓬"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 153,
+          "method_topic": "日时相生与景门",
+          "cross_chapter_lexical_candidates": [
+            "door:景",
+            "trigram:离"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 155,
+          "method_topic": "艮宫少男数量",
+          "cross_chapter_lexical_candidates": [
+            "door:伤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 157,
+          "method_topic": "反吟空亡应期",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        159
+      ],
+      "original_judgment_lines": [
+        157
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [],
+      "source_exception": null,
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.lost_property.case05",
+      "event_family_id": "shenqi.lost_property.case05",
+      "title": "家中现金挪动",
+      "source_span": [
+        162,
+        199
+      ],
+      "initial_question_lines": [
+        164,
+        164
+      ],
+      "original_chart_start": 171,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        187,
+        189,
+        191,
+        193,
+        195
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 187,
+          "method_topic": "日时比和物未失",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 189,
+          "method_topic": "玄武空亡非盗",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 191,
+          "method_topic": "甲子戊飞宫与移位",
+          "cross_chapter_lexical_candidates": [
+            "deity:螣蛇"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 193,
+          "method_topic": "天地盘戊原处新处",
+          "cross_chapter_lexical_candidates": [
+            "door:惊",
+            "star:芮",
+            "trigram:艮"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 195,
+          "method_topic": "值使与庚格应期",
+          "cross_chapter_lexical_candidates": [
+            "door:惊"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        197
+      ],
+      "original_judgment_lines": [
+        195
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [],
+      "source_exception": null,
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 6,
+      "case_id": "shenqi.lost_property.case06",
+      "event_family_id": "shenqi.lost_property.case06",
+      "title": "重要文件失踪",
+      "source_span": [
+        200,
+        255
+      ],
+      "initial_question_lines": [
+        202,
+        202
+      ],
+      "original_chart_start": 211,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        227,
+        229,
+        233,
+        237,
+        243
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 227,
+          "method_topic": "日时同宫非盗",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "star:蓬"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 229,
+          "method_topic": "丁奇重要文件牛皮袋",
+          "cross_chapter_lexical_candidates": [
+            "deity:白虎",
+            "trigram:坤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 233,
+          "method_topic": "冲库回溯移动",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 237,
+          "method_topic": "丁奇外盘推寻找地点",
+          "cross_chapter_lexical_candidates": [
+            "door:生"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 243,
+          "method_topic": "乙未冲库应期",
+          "cross_chapter_lexical_candidates": [
+            "door:开"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        251
+      ],
+      "original_judgment_lines": [
+        245
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [
+        231,
+        235,
+        239,
+        247,
+        249,
+        253
+      ],
+      "source_exception": "writer admits car location not foreseen at line253",
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 7,
+      "case_id": "shenqi.lost_property.case07",
+      "event_family_id": "shenqi.lost_property.case07",
+      "title": "从旅行转问身份证",
+      "source_span": [
+        256,
+        309
+      ],
+      "initial_question_lines": [
+        260,
+        260
+      ],
+      "original_chart_start": 265,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        281,
+        283,
+        285,
+        295,
+        299,
+        303
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 281,
+          "method_topic": "日干伤门惊门",
+          "cross_chapter_lexical_candidates": [
+            "deity:值符"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 283,
+          "method_topic": "时干问事",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "door:惊"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 285,
+          "method_topic": "戊癸合取妻",
+          "cross_chapter_lexical_candidates": [
+            "door:惊",
+            "door:生",
+            "star:任"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 295,
+          "method_topic": "景门身份证与方位",
+          "cross_chapter_lexical_candidates": [
+            "door:景",
+            "trigram:坎"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 299,
+          "method_topic": "地盘老家与容器",
+          "cross_chapter_lexical_candidates": [
+            "door:景",
+            "star:蓬"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 303,
+          "method_topic": "反吟到讯时间",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        305
+      ],
+      "original_judgment_lines": [
+        287
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [
+        293,
+        307
+      ],
+      "source_exception": "first question travel, ID disclosed line293, posthoc editor line307",
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    },
+    {
+      "case_number": 8,
+      "case_id": "shenqi.lost_property.case08",
+      "event_family_id": "shenqi.lost_property.case08",
+      "title": "汽车失盗",
+      "source_span": [
+        310,
+        355
+      ],
+      "initial_question_lines": [
+        312,
+        312
+      ],
+      "original_chart_start": 319,
+      "source_nine_palace_count": 9,
+      "numbered_or_unnumbered_analysis_lines": [
+        335,
+        337,
+        339,
+        345,
+        349
+      ],
+      "author_step_evidence_index": [
+        {
+          "step_number": 1,
+          "source_line": 335,
+          "method_topic": "日干道路伏吟",
+          "cross_chapter_lexical_candidates": [
+            "deity:白虎",
+            "door:景"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 337,
+          "method_topic": "时干汽车与马星",
+          "cross_chapter_lexical_candidates": [],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 339,
+          "method_topic": "伤门车与天网格局",
+          "cross_chapter_lexical_candidates": [
+            "door:伤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 345,
+          "method_topic": "玄武偷盗与宫克",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "door:伤"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 349,
+          "method_topic": "白虎值使刑警与玄武相克",
+          "cross_chapter_lexical_candidates": [
+            "deity:玄武",
+            "deity:白虎",
+            "door:生"
+          ],
+          "logical_reasoning_verified": false,
+          "original_source_private_only": true,
+          "positive_training_eligible": false
+        }
+      ],
+      "later_book_feedback_lines": [
+        353
+      ],
+      "original_judgment_lines": [
+        351
+      ],
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "disclosures": [],
+      "source_exception": null,
+      "original_print_independently_checked": false,
+      "editor_notes_not_author": [
+        356,
+        362
+      ]
+    }
+  ]
+}

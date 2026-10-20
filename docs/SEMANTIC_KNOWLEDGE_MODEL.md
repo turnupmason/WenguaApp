@@ -173,3 +173,5 @@ python3 -m unittest discover -s tests -v
 **真正创建的私有SQLite**：`WenguaApp_V1_神奇之门_十二章_行人走失五十八例_私有研究库.sqlite3`，从用户十一章库`backup()`只增量写本章，先前48案与十一章原文不改。经实际检查`sections=12,cases=58,historical_chart_cells=522,historical_case_additional_casts=4,historical_case_additional_cast_cells=36,historical_case_reasoning=254,historical_case_book_verdicts=58,historical_case_disclosures=113,semantic_assertions=771`，SQLite`integrity_check=ok`且`foreign_key_check=[]`。第六章老112理论知识候选与起局章32结构记录仍有部分待补私有物化，勿说771已完全包含。
 
 公开`data/knowledge/shenqi/missing_person_prediction_ch08/{chapter_manifest,case_index,method_index,source_audit}.json`与`src/wengua/compile_shenqi_missing.py`、`scripts/import_shenqi_missing.py`、`tests/test_missing_case_import.py`、`docs/MISSING_PERSON_CASE_REASONING_PROTOCOL.md`、本交接文档仅含非版权原文的抽象索引及来源行号。**私有原文、未加密原书SQLite不上传公开repo**。上一批CI通知中的失败属历史旧commit；本轮必须一次合并提交、核对远端每个文件、验证当前main HEAD的Python3.11和3.12两个job均success才标成功。旧QimenLLM和App UI保持不动。
+## 2026-10-19 钱物丢失与全事件证据链统一索引
+钱物丢失新增8案必须根据日干失主、时干失物、景门文书、伤门汽车、戊财货、丁奇文件及玄武天蓬排盗等条件化源域规则，在实际九宫对应宫事实与旧章节符号、格局、五行生克、应期概念键结合；书里例3/6/7存在重要新披露和后验补充，必须隔离。已将旧58案逐一标记完整证据链待补审，新追踪表仅记录私有作者原步骤的词面/来源候选，不构成已经核验可执行的因果规则。

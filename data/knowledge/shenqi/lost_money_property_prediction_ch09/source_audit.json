@@ -1,0 +1,48 @@
+{
+  "schema": "wengua_lost_property_audit_v1",
+  "chapter_key": "shenqi/lost_money_property_prediction_ch09/v1",
+  "source_sha256": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+  "case3": {
+    "first_unknown_topic_line": 113,
+    "disclosed_loss_line": 115,
+    "source_editor_corrects_prior_OCR_at_line": 360,
+    "prior_unverified": "乙体庚",
+    "provided": "乙休庚",
+    "original_print_unverified": true
+  },
+  "case6": {
+    "new_facts": [
+      231,
+      235,
+      239
+    ],
+    "search_feedback": [
+      247,
+      249,
+      251
+    ],
+    "author_admits_omission_line": 253,
+    "omission_not_equal_whole_prediction_error": true
+  },
+  "case7": {
+    "initial_travel_query": 260,
+    "lost_card_disclosed": 293,
+    "editor_posthoc_method": 307,
+    "never_call_editorial_step_student_initial": true
+  },
+  "source_editor_notes": [
+    356,
+    362
+  ],
+  "real_original_charts": [
+    25,
+    61,
+    99,
+    133,
+    171,
+    211,
+    265,
+    319
+  ],
+  "original_book_prediction_not_scientific_proof": true
+}

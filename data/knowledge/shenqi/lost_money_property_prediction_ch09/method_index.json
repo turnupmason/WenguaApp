@@ -1,0 +1,127 @@
+{
+  "schema": "wengua_lost_property_method_v1",
+  "chapter_key": "shenqi/lost_money_property_prediction_ch09/v1",
+  "source_sha256": "ed3c80f32c213563bf35d9f9790e330ea04e4def404f6e6ca904006a94a9eaf9",
+  "general_methods": [
+    {
+      "concept_id": "lost:general:same_palace",
+      "source_line": 5,
+      "conditional_method": "日时同宫可找回",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:hour_generates_day",
+      "source_line": 5,
+      "conditional_method": "旺相时干宫生日干宫",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:reversal",
+      "source_line": 5,
+      "conditional_method": "反吟作为寻回条件",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:void_tomb_absolute",
+      "source_line": 5,
+      "conditional_method": "时干空亡墓绝作为难寻条件",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:two_inner",
+      "source_line": 7,
+      "conditional_method": "日时同内盘近处",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:two_outer",
+      "source_line": 7,
+      "conditional_method": "日时同外盘远处",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:day_inner_hour_outer",
+      "source_line": 7,
+      "conditional_method": "日内时外丢于外",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:hour_inner_day_outer",
+      "source_line": 7,
+      "conditional_method": "时内日外丢于家",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:hour_xuanwu",
+      "source_line": 9,
+      "conditional_method": "时干乘玄武被盗或遗忘",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:xuanwu_suppresses_hour",
+      "source_line": 9,
+      "conditional_method": "玄武宫克失物宫",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:tianpeng_suppresses_hour",
+      "source_line": 9,
+      "conditional_method": "天蓬宫克失物宫",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:xuanwu_gender",
+      "source_line": 9,
+      "conditional_method": "玄武乘阴阳星性别类象",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:xuanwu_strength",
+      "source_line": 9,
+      "conditional_method": "玄武旺衰年龄类象",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:hour_nourishes_day_timing",
+      "source_line": 11,
+      "conditional_method": "时干生日干的日时",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:yin_geng_above",
+      "source_line": 11,
+      "conditional_method": "阴干寻庚上",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:yang_geng_below",
+      "source_line": 11,
+      "conditional_method": "阳干寻庚下",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:tomb_chong",
+      "source_line": 11,
+      "conditional_method": "入库冲出应期",
+      "status": "draft"
+    },
+    {
+      "concept_id": "lost:general:void_fill",
+      "source_line": 11,
+      "conditional_method": "旬空填实应期",
+      "status": "draft"
+    }
+  ],
+  "author_full_workflow": [
+    "问事领域、问者/当事人、现实已知事实",
+    "日干失主、时干失物与景门/伤门/丁奇/戊等物类用神",
+    "完整九宫与同宫证据",
+    "日时宫生克及内外方向远近",
+    "盗窃/遗忘反证：玄武、天蓬、宫克、旬空、旺衰",
+    "具体物品附加类象及天盘地盘差异",
+    "吉凶冲突权衡与应期：庚格、冲库、填空、伏反吟",
+    "注明作者遗漏、后验与不确定性并提供一次性有出处的解释"
+  ],
+  "method_candidate_count": 54,
+  "source_status": "draft"
+}

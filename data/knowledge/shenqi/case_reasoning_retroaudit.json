@@ -1,0 +1,633 @@
+{
+  "schema": "wengua_all_historical_reasoning_audit_v1",
+  "existing_historical_families": 58,
+  "new_lost_property_families": 8,
+  "total_case_families": 66,
+  "old_history": [
+    {
+      "event_family_id": "shenqi.health.19960316.self_surgery",
+      "case_id": "shenqi.health.19960316.self_surgery",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.health.19960727.father_illness",
+      "case_id": "shenqi.health.19960727.father_illness",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.health.19960509.nephew_discharge",
+      "case_id": "shenqi.health.19960509.nephew_discharge",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.health.19960523.aunt_illness",
+      "case_id": "shenqi.health.19960523.aunt_illness",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.health.19961102.on_site_health",
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "case_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "chapter": "health_prediction_ch01",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.mother_asks_son_courtship",
+      "case_id": "shenqi.marriage.mother_asks_son_courtship",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.mother_asks_daughter_marriage",
+      "case_id": "shenqi.marriage.mother_asks_daughter_marriage",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.young_man_divorce",
+      "case_id": "shenqi.marriage.young_man_divorce",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.middle_aged_woman_divorce",
+      "case_id": "shenqi.marriage.middle_aged_woman_divorce",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.third_party_asks_marriage",
+      "case_id": "shenqi.marriage.third_party_asks_marriage",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.marriage.wife_asks_husband_affair",
+      "case_id": "shenqi.marriage.wife_asks_husband_affair",
+      "chapter": "marriage_prediction_ch02",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.daughter_pregnancy_timing",
+      "case_id": "shenqi.pregnancy.daughter_pregnancy_timing",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.daughter_delivery_date",
+      "case_id": "shenqi.pregnancy.daughter_delivery_date",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.pregnant_woman_imminent_birth",
+      "case_id": "shenqi.pregnancy.pregnant_woman_imminent_birth",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.phone_premature_birth",
+      "case_id": "shenqi.pregnancy.phone_premature_birth",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.student_wife_delivery",
+      "case_id": "shenqi.pregnancy.student_wife_delivery",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.pregnancy.prenatal_imaging_concern",
+      "case_id": "shenqi.pregnancy.prenatal_imaging_concern",
+      "chapter": "pregnancy_prediction_ch03",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.education.father_son_university",
+      "case_id": "shenqi.education.father_son_university",
+      "chapter": "education_prediction_ch04",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.education.mother_son_exam",
+      "case_id": "shenqi.education.mother_son_exam",
+      "chapter": "education_prediction_ch04",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.education.father_son_self_funded",
+      "case_id": "shenqi.education.father_son_self_funded",
+      "chapter": "education_prediction_ch04",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.education.self_phd_exam",
+      "case_id": "shenqi.education.self_phd_exam",
+      "chapter": "education_prediction_ch04",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.education.us_medical_exam_dispute",
+      "case_id": "shenqi.education.us_medical_exam_dispute",
+      "chapter": "education_prediction_ch04",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.employment.graduation_first_job",
+      "case_id": "shenqi.employment.graduation_first_job",
+      "chapter": "employment_prediction_ch05",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.employment.mother_son_ministries",
+      "case_id": "shenqi.employment.mother_son_ministries",
+      "chapter": "employment_prediction_ch05",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.employment.military_officer_removed",
+      "case_id": "shenqi.employment.military_officer_removed",
+      "chapter": "employment_prediction_ch05",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.employment.du_self_transfer_telecom",
+      "case_id": "shenqi.employment.du_self_transfer_telecom",
+      "chapter": "employment_prediction_ch05",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.employment.village_party_secretary_election",
+      "case_id": "shenqi.employment.village_party_secretary_election",
+      "chapter": "employment_prediction_ch05",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.lease_restaurant",
+      "case_id": "shenqi.business.lease_restaurant",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.foreign_financed_mall",
+      "case_id": "shenqi.business.foreign_financed_mall",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.mall_opening_profit",
+      "case_id": "shenqi.business.mall_opening_profit",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.retail_unit_investment",
+      "case_id": "shenqi.business.retail_unit_investment",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.joint_venture_factory",
+      "case_id": "shenqi.business.joint_venture_factory",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.network_marketing_supplement",
+      "case_id": "shenqi.business.network_marketing_supplement",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.mall_property_rental",
+      "case_id": "shenqi.business.mall_property_rental",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.art_purchase_resale",
+      "case_id": "shenqi.business.art_purchase_resale",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.fertilizer_factory_recovery",
+      "case_id": "shenqi.business.fertilizer_factory_recovery",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.bank_loan_application",
+      "case_id": "shenqi.business.bank_loan_application",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.coal_brokerage_flood",
+      "case_id": "shenqi.business.coal_brokerage_flood",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.charity_prize_draw",
+      "case_id": "shenqi.business.charity_prize_draw",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.debt_collected",
+      "case_id": "shenqi.business.debt_collected",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.business.debt_collection_failed",
+      "case_id": "shenqi.business.debt_collection_failed",
+      "chapter": "business_profit_prediction_ch06",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.brother_flight",
+      "case_id": "shenqi.travel.brother_flight",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.south_business_trip",
+      "case_id": "shenqi.travel.south_business_trip",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.friend_driver_return",
+      "case_id": "shenqi.travel.friend_driver_return",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.italy_departure_old_cast_reused",
+      "case_id": "shenqi.travel.italy_departure_old_cast_reused",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.family_lake_tour",
+      "case_id": "shenqi.travel.family_lake_tour",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.travel.germany_trip_two_real_casts",
+      "case_id": "shenqi.travel.germany_trip_two_real_casts",
+      "chapter": "travel_abroad_prediction_ch07",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case01",
+      "case_id": "shenqi.missing.case01",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case02",
+      "case_id": "shenqi.missing.case02",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case03",
+      "case_id": "shenqi.missing.case03",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case04",
+      "case_id": "shenqi.missing.case04",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case05",
+      "case_id": "shenqi.missing.case05",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case06",
+      "case_id": "shenqi.missing.case06",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case07",
+      "case_id": "shenqi.missing.case07",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case08",
+      "case_id": "shenqi.missing.case08",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case09",
+      "case_id": "shenqi.missing.case09",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    },
+    {
+      "event_family_id": "shenqi.missing.case10",
+      "case_id": "shenqi.missing.case10",
+      "chapter": "missing_person_prediction_ch08",
+      "source_public_case_index": true,
+      "historical_step_trace_full_human_review": "required_not_completed",
+      "private_source_sqlite_required_for_backfill": true,
+      "source_exact_author_chain_available_in_public": false,
+      "positive_training_eligible": false
+    }
+  ],
+  "new_chapter": [
+    {
+      "case_id": "shenqi.lost_property.case01",
+      "source_step_count": 3,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case02",
+      "source_step_count": 5,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case03",
+      "source_step_count": 2,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case04",
+      "source_step_count": 5,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case05",
+      "source_step_count": 5,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case06",
+      "source_step_count": 5,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case07",
+      "source_step_count": 6,
+      "complete_source_step_human_review": "required_not_completed"
+    },
+    {
+      "case_id": "shenqi.lost_property.case08",
+      "source_step_count": 5,
+      "complete_source_step_human_review": "required_not_completed"
+    }
+  ],
+  "status": "all_historical_and_future_cases_require_same_full_author_evidence_chain_review",
+  "machine_lexical_backfill_alone_never_certifies_completed": true,
+  "legacy_private_SQLite_not_available_in_this_conversation": true
+}
