@@ -217,3 +217,8 @@ python3 -m unittest discover -s tests -v
 ## 教学文字九宫与历史案例源盘两条独立来源轨（2026-10-20）
 
 Kaiwu 第三章 `kaiwu/paper_grid_casting_ch03/v1` 的12幅原书教学九宫图共108宫文字来源，两张四层完整示范和两张缺八神层简化示范；这些存储于 `kaiwu_didactic_figures` 与 `kaiwu_didactic_figure_cells`，即使完成8外围宫与已有研究起盘引擎的源字一致性对照，也不得计入 `historical_chart_cells`、`historical_palace_standardization`、`cases` 或任何预测成功率。七步起盘 + 三伏吟规律有独立source occurrence和条件化规则草稿，日历外部核对和中五特殊派生语义不在原盘事实里偷填。跨书概念同一键多书独立来源，不更改《神奇之门》及之前两章原文和V1。
+
+
+## 《开悟之门》第四章81个有向组合及三类应期（2026-10-20）
+
+本章`kaiwu/analysis_judgment_ch04/v1`的十干客主组合在`kaiwu_ordered_stem_pair_occurrences`逐原文行保存上干/下干、源文段、原文hash、reverse_pair_key、语料中明示例外触发词；它**不是对调即可同断法的无向关系**。三种应期前提分别在`kaiwu_timing_source_methods`记录success/failed/interception_recovery和limitation（详见`schema/migrations/019_kaiwu_analysis_stem_timing.sql`）。统一概念键另用跨书多轨`semantic_assertions`和`cross_book_concept_tracks`追索，AI自动条目全draft。旧《神奇之门》25行引用只联结出处未核验具体事件ID，原行49–61银行案重印盘及113–119五行教学图只用教育来源图结构单独保存，不增加历史独立案例或命中率。
