@@ -347,3 +347,8 @@ GitHub Actions 第20章归档Run #2成功，机器人已在main提交 `e21361337
 - 专门保留先后天卦/九宫数、地支五行阴阳、十二双时辰、干支六十甲子、刑冲合害、六甲旬空、干支月份/24节气、八宫平均三节气、数理量数选择的条件；**地支固定九宫**和**节气扇区九宫**为不同轨，书内科学/准确性说法是作者主张。结构化索引共享概念名但每一条多轨来源和原文版次都独立保留。
 - 主合同 docs/MULTIBOOK_PROVENANCE_PROTOCOL.md；构建 scripts/build_kaiwu_01_from_21.py，数据 schema/migrations/017_cross_book_multitrack.sql、GitHub Actions build_kaiwu_archive.yml、回归 tests/test_kaiwu_first_part.py。所有新内容均draft/训练权限0，未人审不可发布专业断词。
 - 从已归档基线 SHA256 31707ea58f3854b948c58cee4dc3b0d3d3705ba36a2318812ba092b0ade016e8 原始 SQLite backup()新增，既有原文字节、旧案例和既有V1可调用版本不得覆盖。此行是准备入库/等待 GitHub Actions 实际归档的阶段记录，远端 DB 输出哈希与实际数待 Action 成功后补记；不得冒充已完成。
+
+
+## 2026-10-20 《开悟之门》第一篇远端完整SQLite归档实际验收
+
+本章来源SHA `97e2285b25fd97f120ac1015104c6bf750fbba8c3c8bd0228be82b53563d4598`，38067字节281行；无新实案、无新真盘，22示意图（不当盘）、6处跨《神奇之门》历史举例只建引用。结构化多轨 source occurrence **208条**，以前1257条来源断言一字不动，累计 semantic_assertions=1465；cross_book_concept_tracks=208，cross_book_example_references=6。来自已完整归档旧SHA `31707ea58f3854b948c58cee4dc3b0d3d3705ba36a2318812ba092b0ade016e8` 的 backup()，生成新完整版 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3`，5,003,264字节/ SHA256 **`e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a`**；压缩文件421,100字节 SHA256 `6ba66d59207751285fe0c19ef6ffff39ed94eec6173121e8bc60e18ffd237734`；manifest `archives/sqlite/shenqi21_kaiwu01_103cases_manifest.json`。真实上传：源提交`3c46f6efdbdd5b8979dc0c0ce0e6e426aef7ed32`，GitHub Actions跨书构建Run#1 success、CI#211 Python3.11/3.12 success，归档GitHub机器人commit=`74af52cbc9dae59ad2ed59fb9cceac50083841f2`。累计sections=22，cases=103，原盘112/宫1008/作者步骤495不变；旧21章所有旧表行保真，integrity_check ok，foreign_key_check无错误。新来源draft，正向训练与人审专业完成0。**下一章以新的全量22章SHA `e245...313a` 作为唯一基库，多书永久协议必须继续执行，不做UI。**
