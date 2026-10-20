@@ -1,0 +1,79 @@
+name: Build and archive eighteenth weather source SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_shenqi_18_from_17.py'
+      - 'sources/shenqi/神奇之门_天时气象预测_精校完整版(1).txt'
+      - 'schema/migrations/013_weather_case_time.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate full immutable weather SQLite from the 17-chapter baseline
+        run: |
+          python scripts/build_shenqi_18_from_17.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3' \
+            --source 'sources/shenqi/神奇之门_天时气象预测_精校完整版(1).txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/shenqi/weather_prediction_ch14'
+      - name: Make lossless compressed archive and verify full manifest
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3'
+          db=root/'WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3'
+          zipped=db.with_suffix(db.suffix+'.xz')
+          zipped.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          chapter=json.loads(Path('data/knowledge/shenqi/weather_prediction_ch14/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(db) as conn:
+            assert conn.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert conn.execute('PRAGMA foreign_key_check').fetchall()==[]
+            assert conn.execute('SELECT count(*) FROM historical_weather_cast_context').fetchone()[0]==5
+          rec={'schema':'wengua_versioned_full_archive_v5','book':'神奇之门','chapter_count':18,
+            'event_families':91,'actual_source_charts':98,'original_palace_cells':882,
+            'original_author_steps':411,'semantic_assertions':1093,'source_title':'天时气象预测',
+            'source_sha256':chapter['source_sha256'],'source_bytes':chapter['source_bytes'],'source_lines':chapter['source_lines'],
+            'new_whole_events':5,'new_printed_charts':5,'new_analysis_steps':13,'new_domain_methods':36,
+            'baseline_path':str(old),'baseline_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+            'main_archive_path':str(db),'sha256':hashlib.sha256(db.read_bytes()).hexdigest(),'size':db.stat().st_size,
+            'compressed_archive_path':str(zipped),'compressed_sha256':hashlib.sha256(zipped.read_bytes()).hexdigest(),
+            'compressed_size':zipped.stat().st_size,'integrity_check':'ok','foreign_key_violations':0,
+            'all_17_previous_source_rows_unchanged':True,'all_author_method_chains_human_verified':False,
+            'source_weather_outcomes_not_independently_verified':True,'public_archive_per_user_authorization':True}
+          (root/'18chapters_91cases_manifest.json').write_text(json.dumps(rec,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          PY
+      - name: Assert provenance tests and all prior sources are unchanged
+        run: python -m unittest discover -s tests -p test_weather_case_import.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: weather-18chapters-91events-full-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3.xz
+            archives/sqlite/18chapters_91cases_manifest.json
+          retention-days: 30
+      - name: Publish versioned full SQLite and indexed chapter to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/18chapters_91cases_manifest.json' \
+                     'data/knowledge/shenqi/weather_prediction_ch14/'
+          git diff --cached --check
+          git commit -m 'Archive complete 18-chapter 91-event SQLite with historical weather source evidence'
+          git push origin HEAD:main
