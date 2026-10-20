@@ -1,0 +1,51 @@
+{
+  "schema": "wengua_multibook_source_chapter_v1",
+  "source_book": "kaiwu",
+  "section_key": "space_time_model_part01",
+  "chapter_key": "kaiwu/space_time_model_part01/v1",
+  "source_sha256": "97e2285b25fd97f120ac1015104c6bf750fbba8c3c8bd0228be82b53563d4598",
+  "source_bytes": 38067,
+  "source_lines": 281,
+  "source_title": "奇门遁甲是中国人认知世界的一种时空模型",
+  "section_headings": [
+    {
+      "line": 5,
+      "title": "第一节 奇门九宫格的太极认知原理"
+    },
+    {
+      "line": 33,
+      "title": "第二节 奇门九宫格所包含的空间内容"
+    },
+    {
+      "line": 94,
+      "title": "第三节 奇门九宫格所包含的时间内容"
+    }
+  ],
+  "legacy_shenqi_chapters": 21,
+  "kaiwu_parts": 1,
+  "total_source_sections": 22,
+  "new_concept_occurrences": 208,
+  "new_cross_book_citations": 6,
+  "source_figures": 22,
+  "new_independent_event_families": 0,
+  "new_original_qimen_charts": 0,
+  "total_event_families": 103,
+  "cumulative_semantic_assertions": 1465,
+  "cumulative_author_steps": 495,
+  "all_legacy_rows_preserved": true,
+  "multi_track_behavior": "source_not_overwritten_duplicate_concept_keeps_versioned_occurrence",
+  "author_reliability_not_scientifically_verified": true,
+  "review_status": "draft",
+  "positive_training_eligible": false,
+  "baseline_sha256": "31707ea58f3854b948c58cee4dc3b0d3d3705ba36a2318812ba092b0ade016e8",
+  "produced_db_sha256": "e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a",
+  "counts": {
+    "sections": 22,
+    "cases": 103,
+    "historical_case_reasoning": 495,
+    "historical_palace_standardization": 1008,
+    "semantic_assertions": 1465,
+    "cross_book_concept_tracks": 208,
+    "cross_book_example_references": 6
+  }
+}

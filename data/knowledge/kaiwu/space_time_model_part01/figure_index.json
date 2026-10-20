@@ -1,0 +1,137 @@
+{
+  "source_sha256": "97e2285b25fd97f120ac1015104c6bf750fbba8c3c8bd0228be82b53563d4598",
+  "figures": [
+    {
+      "figure": 1,
+      "source_line": 17,
+      "caption": "图1 太极生两仪：将太极球体切一刀，分为阴、阳两部分。",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 2,
+      "source_line": 19,
+      "caption": "图2 两仪生四象：按十字形切两刀，分成四块。",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 3,
+      "source_line": 21,
+      "caption": "图3 六爻：切三刀，分成六块。",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 4,
+      "source_line": 27,
+      "caption": "图4 井字九宫格：切四刀，分成九块（九块西瓜、十块皮）。",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 5,
+      "source_line": 39,
+      "caption": "[图5 先天八卦]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 6,
+      "source_line": 50,
+      "caption": "[图6 后天八卦九宫格]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 7,
+      "source_line": 61,
+      "caption": "[图7 后天九宫的五行]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 8,
+      "source_line": 74,
+      "caption": "[图8 河图五行生成数在九宫中的分布]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 9,
+      "source_line": 83,
+      "caption": "[图9 九宫所含三组数的归纳]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 10,
+      "source_line": 102,
+      "caption": "[图10 十二地支与九宫的对应]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 11,
+      "source_line": 115,
+      "caption": "图11 十二地支月份与节气对应",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 12,
+      "source_line": 131,
+      "caption": "图12 十二时辰与二十四小时对应",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 13,
+      "source_line": 185,
+      "caption": "图13 十天干与五方对应",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 14,
+      "source_line": 198,
+      "caption": "图14 甲子旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 15,
+      "source_line": 204,
+      "caption": "图15 甲戌旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 16,
+      "source_line": 210,
+      "caption": "图16 甲申旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 17,
+      "source_line": 216,
+      "caption": "图17 甲午旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 18,
+      "source_line": 222,
+      "caption": "图18 甲辰旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 19,
+      "source_line": 228,
+      "caption": "图19 甲寅旬干支与旬空",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 20,
+      "source_line": 246,
+      "caption": "图20 天干相合、相冲",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 21,
+      "source_line": 256,
+      "caption": "[图21 二十四节气在八宫中的等分]",
+      "is_historical_qimen_cast": false
+    },
+    {
+      "figure": 22,
+      "source_line": 267,
+      "caption": "图22 二十四节气与公历的对应日期（原书所列）",
+      "is_historical_qimen_cast": false
+    }
+  ]
+}

@@ -1,0 +1,3919 @@
+{
+  "schema": "wengua_multitrack_occurrence_index_v1",
+  "chapter_key": "kaiwu/space_time_model_part01/v1",
+  "source_sha256": "97e2285b25fd97f120ac1015104c6bf750fbba8c3c8bd0228be82b53563d4598",
+  "entries": [
+    {
+      "concept_id": "model:taiji:parts",
+      "kind": "historical_model",
+      "source_start_line": 23,
+      "source_end_line": 31,
+      "source_excerpt_sha256": "0c7178784eec7813f0ec52ecf003a92a166d7350d322c7adf6752a4441e7fe08",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "additional_exposition",
+      "normalized": {
+        "author_account": "four cuts and nine segments",
+        "scientific_validation": "not_verified"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "model:xiantian_vs_houtian",
+      "kind": "model_variant",
+      "source_start_line": 57,
+      "source_end_line": 57,
+      "source_excerpt_sha256": "856e7b3cc3dc9d6939e9768baf0fbc96512b5ff432d592da6f43e2b7f6e504ba",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "former": "dynamic_yang",
+        "latter": "static_yin",
+        "not_equivalent_to_casting_method": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:jieqi_first",
+      "kind": "casting_calendar_boundary",
+      "source_start_line": 113,
+      "source_end_line": 113,
+      "source_excerpt_sha256": "eb732520fdb55b1a8874aaece17d8bc9604db2b97b5b5042edf0a0cbeac466d6",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "example": "2001-08-07T19:34",
+        "after": "丙申月",
+        "before": "乙未月",
+        "timezone_and_astronomical_ephemeris": "not_specified_do_not_assume"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:lichun_year",
+      "kind": "casting_calendar_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "year_boundary": "立春",
+        "month_boundary": "节",
+        "not": "lunar_first_day"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "numerology:conditional_selection",
+      "kind": "interpretation_constraint",
+      "source_start_line": 88,
+      "source_end_line": 88,
+      "source_excerpt_sha256": "6b42276205faf65198c8627710fa9ae928634e26df13f4f51fbb00cc0a9a8c75",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "depends_on": [
+          "用神",
+          "旺相休囚",
+          "星",
+          "门",
+          "神",
+          "事物常理"
+        ],
+        "numeric_scale_unknown_without_context": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:solar_term_application",
+      "kind": "interpretation_constraint",
+      "source_start_line": 281,
+      "source_end_line": 281,
+      "source_excerpt_sha256": "2fefff208d82dbb8ac196771bfd47c5d7efe65adc11971c49f4e24a47ca3684e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "source_claim": "solar_terms_more_precise_than_lunar_month_dates",
+        "external_validation": false,
+        "is_author_historical_claim": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:4:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 84,
+      "source_end_line": 84,
+      "source_excerpt_sha256": "01c59897e462e9c93f4037925059524b7b51b432b1a635ca73bc32eb482c4a49",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 4,
+        "source_numbers": [
+          3,
+          4,
+          5,
+          8
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:9:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 84,
+      "source_end_line": 84,
+      "source_excerpt_sha256": "01c59897e462e9c93f4037925059524b7b51b432b1a635ca73bc32eb482c4a49",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 9,
+        "source_numbers": [
+          2,
+          3,
+          7,
+          9
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:2:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 84,
+      "source_end_line": 84,
+      "source_excerpt_sha256": "01c59897e462e9c93f4037925059524b7b51b432b1a635ca73bc32eb482c4a49",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 2,
+        "source_numbers": [
+          2,
+          5,
+          8,
+          10
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:3:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 85,
+      "source_end_line": 85,
+      "source_excerpt_sha256": "0c157914f4399aef9f277db5343096239ffa3c22f4027801e2443f9b931517d0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 3,
+        "source_numbers": [
+          3,
+          4,
+          8
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:5:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 85,
+      "source_end_line": 85,
+      "source_excerpt_sha256": "0c157914f4399aef9f277db5343096239ffa3c22f4027801e2443f9b931517d0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 5,
+        "source_numbers": [
+          5,
+          10
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:7:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 85,
+      "source_end_line": 85,
+      "source_excerpt_sha256": "0c157914f4399aef9f277db5343096239ffa3c22f4027801e2443f9b931517d0",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 7,
+        "source_numbers": [
+          2,
+          4,
+          7,
+          9
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:8:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 86,
+      "source_end_line": 86,
+      "source_excerpt_sha256": "bcc6d974d65b048f7562831c2a1342c96a0b891f9c530323ee3120c4d8f2da1a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 8,
+        "source_numbers": [
+          5,
+          7,
+          8,
+          10
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:1:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 86,
+      "source_end_line": 86,
+      "source_excerpt_sha256": "bcc6d974d65b048f7562831c2a1342c96a0b891f9c530323ee3120c4d8f2da1a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 1,
+        "source_numbers": [
+          1,
+          6
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:6:number_options",
+      "kind": "numerical_symbolism",
+      "source_start_line": 86,
+      "source_end_line": 86,
+      "source_excerpt_sha256": "bcc6d974d65b048f7562831c2a1342c96a0b891f9c530323ee3120c4d8f2da1a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:number_selection",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "palace": 6,
+        "source_numbers": [
+          1,
+          4,
+          6,
+          9
+        ],
+        "conditional_not_fixed_prediction": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:巽",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 51,
+      "source_end_line": 51,
+      "source_excerpt_sha256": "2325e1d1c4955db86013f0ba3ccb5c3ea8d9af3f727f2e4e777afd29d814afe3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "巽",
+        "palace": 4,
+        "element": "木",
+        "xiantian_number": 5
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:巽",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "巽",
+        "xiantian_number": 5,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:离",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 51,
+      "source_end_line": 51,
+      "source_excerpt_sha256": "2325e1d1c4955db86013f0ba3ccb5c3ea8d9af3f727f2e4e777afd29d814afe3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "离",
+        "palace": 9,
+        "element": "火",
+        "xiantian_number": 3
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:离",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "离",
+        "xiantian_number": 3,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:坤",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 51,
+      "source_end_line": 51,
+      "source_excerpt_sha256": "2325e1d1c4955db86013f0ba3ccb5c3ea8d9af3f727f2e4e777afd29d814afe3",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "坤",
+        "palace": 2,
+        "element": "土",
+        "xiantian_number": 8
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:坤",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "坤",
+        "xiantian_number": 8,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:震",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 52,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "90a485524c735f7ada0f5ce44108bba3540ceb54b82cd6b8b05929822ebee733",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "震",
+        "palace": 3,
+        "element": "木",
+        "xiantian_number": 4
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:震",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "震",
+        "xiantian_number": 4,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:兑",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 52,
+      "source_end_line": 52,
+      "source_excerpt_sha256": "90a485524c735f7ada0f5ce44108bba3540ceb54b82cd6b8b05929822ebee733",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "兑",
+        "palace": 7,
+        "element": "金",
+        "xiantian_number": 2
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:兑",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "兑",
+        "xiantian_number": 2,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:艮",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 53,
+      "source_end_line": 53,
+      "source_excerpt_sha256": "47bc316ca931d00ea21db43c8e19cf08e68d13de31d6eedfcee979a4eec4ebc4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "艮",
+        "palace": 8,
+        "element": "土",
+        "xiantian_number": 7
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:艮",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "艮",
+        "xiantian_number": 7,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:坎",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 53,
+      "source_end_line": 53,
+      "source_excerpt_sha256": "47bc316ca931d00ea21db43c8e19cf08e68d13de31d6eedfcee979a4eec4ebc4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "坎",
+        "palace": 1,
+        "element": "水",
+        "xiantian_number": 6
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:坎",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "坎",
+        "xiantian_number": 6,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:乾",
+      "kind": "trigram_palace_mapping",
+      "source_start_line": 53,
+      "source_end_line": 53,
+      "source_excerpt_sha256": "47bc316ca931d00ea21db43c8e19cf08e68d13de31d6eedfcee979a4eec4ebc4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "trigram": "乾",
+        "palace": 6,
+        "element": "金",
+        "xiantian_number": 1
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "trigram:乾",
+      "kind": "xiantian_number",
+      "source_start_line": 44,
+      "source_end_line": 44,
+      "source_excerpt_sha256": "9c21c77729bb7bbae95228e3e1c0c0caeddbbb149594341bc99b6cbf4759946c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:xiantian",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "trigram": "乾",
+        "xiantian_number": 1,
+        "different_number_system": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "palace:5:element",
+      "kind": "center_symbolism",
+      "source_start_line": 63,
+      "source_end_line": 63,
+      "source_excerpt_sha256": "4e268f8648bbc38591568f0f646e2dc726445397b5d5a41d3ec7c6234cc87090",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "palace": 5,
+        "element": "土",
+        "no_printed_center_deity_door_star": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:子",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 105,
+      "source_end_line": 105,
+      "source_excerpt_sha256": "cb6b1e3ec65a8524b88cae371c5160b76f9adea7d547cf1262a261d6507315f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "子",
+        "palace": 1,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:子",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "子",
+        "element": "水",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:子",
+      "kind": "branch_double_hour",
+      "source_start_line": 132,
+      "source_end_line": 132,
+      "source_excerpt_sha256": "0799c6334e28b4e3dacd6e4e4ef0370a58b74a560e606e5d0c79b1b46ee4f64f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "子",
+        "hour_start": 23,
+        "hour_end": 1,
+        "last_hour_rolls_over_midnight": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:丑",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 105,
+      "source_end_line": 105,
+      "source_excerpt_sha256": "cb6b1e3ec65a8524b88cae371c5160b76f9adea7d547cf1262a261d6507315f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "丑",
+        "palace": 8,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:丑",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "丑",
+        "element": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:丑",
+      "kind": "branch_double_hour",
+      "source_start_line": 133,
+      "source_end_line": 133,
+      "source_excerpt_sha256": "528a5efcd7f8aa9603e2e0ab3e5f55d43f2420cbc066ccf08eb81b3a4b7c9f1b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "丑",
+        "hour_start": 1,
+        "hour_end": 3,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:寅",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 105,
+      "source_end_line": 105,
+      "source_excerpt_sha256": "cb6b1e3ec65a8524b88cae371c5160b76f9adea7d547cf1262a261d6507315f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "寅",
+        "palace": 8,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:寅",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "寅",
+        "element": "木",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:寅",
+      "kind": "branch_double_hour",
+      "source_start_line": 134,
+      "source_end_line": 134,
+      "source_excerpt_sha256": "809873c2b3c5afd9cd8d42a604eb7349d5062e8d8118ca48bd9f460f20a7fe6d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "寅",
+        "hour_start": 3,
+        "hour_end": 5,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:卯",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 104,
+      "source_end_line": 104,
+      "source_excerpt_sha256": "1eca834034a47f701a34ea3167ad02df68aa26863aa4b48bee56dedd7777943c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "卯",
+        "palace": 3,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:卯",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "卯",
+        "element": "木",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:卯",
+      "kind": "branch_double_hour",
+      "source_start_line": 135,
+      "source_end_line": 135,
+      "source_excerpt_sha256": "4c8c2be4e36ecffd0b3e521f1e3c2e636a26e2a3387de55506caba2d737dbfb4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "卯",
+        "hour_start": 5,
+        "hour_end": 7,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:辰",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "10346adf461c3cf5f20f5d8eaae04b7e5470f9b7b7132b690e4bd3187b6af20d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "辰",
+        "palace": 4,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:辰",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "辰",
+        "element": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:辰",
+      "kind": "branch_double_hour",
+      "source_start_line": 136,
+      "source_end_line": 136,
+      "source_excerpt_sha256": "29b79ade2b506d2d69c7522af73d5a6bf113d0281ec325e997c096346f0aab42",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "辰",
+        "hour_start": 7,
+        "hour_end": 9,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:巳",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "10346adf461c3cf5f20f5d8eaae04b7e5470f9b7b7132b690e4bd3187b6af20d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "巳",
+        "palace": 4,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:巳",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "巳",
+        "element": "火",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:巳",
+      "kind": "branch_double_hour",
+      "source_start_line": 137,
+      "source_end_line": 137,
+      "source_excerpt_sha256": "ab940f8832cc14fb8eb403dde37cabb882e234fc5b8f5caf430d3b47d12a0d2e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "巳",
+        "hour_start": 9,
+        "hour_end": 11,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:午",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "10346adf461c3cf5f20f5d8eaae04b7e5470f9b7b7132b690e4bd3187b6af20d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "午",
+        "palace": 9,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:午",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "午",
+        "element": "火",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:午",
+      "kind": "branch_double_hour",
+      "source_start_line": 138,
+      "source_end_line": 138,
+      "source_excerpt_sha256": "157f867f2bfa801296a051483ee0218e602942da45a6ca909cd19fb6b867dd96",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "午",
+        "hour_start": 11,
+        "hour_end": 13,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:未",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "10346adf461c3cf5f20f5d8eaae04b7e5470f9b7b7132b690e4bd3187b6af20d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "未",
+        "palace": 2,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:未",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "未",
+        "element": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:未",
+      "kind": "branch_double_hour",
+      "source_start_line": 139,
+      "source_end_line": 139,
+      "source_excerpt_sha256": "e3bebe66d74939511ba1342fdc0f76ebbf1056ccaf9cc9f0e5bb0792bb0ae11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "未",
+        "hour_start": 13,
+        "hour_end": 15,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:申",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 103,
+      "source_end_line": 103,
+      "source_excerpt_sha256": "10346adf461c3cf5f20f5d8eaae04b7e5470f9b7b7132b690e4bd3187b6af20d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "申",
+        "palace": 2,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:申",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "申",
+        "element": "金",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:申",
+      "kind": "branch_double_hour",
+      "source_start_line": 140,
+      "source_end_line": 140,
+      "source_excerpt_sha256": "0afa03df1ed435e9609105d0de3cbc85356657b507b769efcfb01495032fb8bc",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "申",
+        "hour_start": 15,
+        "hour_end": 17,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:酉",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 104,
+      "source_end_line": 104,
+      "source_excerpt_sha256": "1eca834034a47f701a34ea3167ad02df68aa26863aa4b48bee56dedd7777943c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "酉",
+        "palace": 7,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:酉",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "酉",
+        "element": "金",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:酉",
+      "kind": "branch_double_hour",
+      "source_start_line": 141,
+      "source_end_line": 141,
+      "source_excerpt_sha256": "d7824b7afd620624aec6a7974ab95d7e2abe36722a4f35c7f2b87f579c2724bd",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "酉",
+        "hour_start": 17,
+        "hour_end": 19,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:戌",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 105,
+      "source_end_line": 105,
+      "source_excerpt_sha256": "cb6b1e3ec65a8524b88cae371c5160b76f9adea7d547cf1262a261d6507315f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "戌",
+        "palace": 6,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:戌",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "戌",
+        "element": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:戌",
+      "kind": "branch_double_hour",
+      "source_start_line": 142,
+      "source_end_line": 142,
+      "source_excerpt_sha256": "72a96aa8c630efe68a3c06958276f06dd3cd202244e784821d870bc461edd215",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "戌",
+        "hour_start": 19,
+        "hour_end": 21,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:亥",
+      "kind": "branch_fixed_palace",
+      "source_start_line": 105,
+      "source_end_line": 105,
+      "source_excerpt_sha256": "cb6b1e3ec65a8524b88cae371c5160b76f9adea7d547cf1262a261d6507315f8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_palace",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "亥",
+        "palace": 6,
+        "coordinate_kind": "fixed_palace_not_term_sector"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:亥",
+      "kind": "branch_polarity_element",
+      "source_start_line": 153,
+      "source_end_line": 153,
+      "source_excerpt_sha256": "be8c5490b6617f3320f1820a3c1e405280ab3ebbf647b90607c0d0ecea999799",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "branch": "亥",
+        "element": "水",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:亥",
+      "kind": "branch_double_hour",
+      "source_start_line": 143,
+      "source_end_line": 143,
+      "source_excerpt_sha256": "f23788ebd12e9f0e71517708b53ca9dc2cbdb8dd99952caafd7f12556f3fbd67",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "亥",
+        "hour_start": 21,
+        "hour_end": 23,
+        "last_hour_rolls_over_midnight": false
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:子",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 116,
+      "source_end_line": 116,
+      "source_excerpt_sha256": "bd3043f9fe7fc7e4d65947e1b35154af725d8d52ba47f7820012335a28bbe76d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "子",
+        "traditional_month": 11,
+        "solar_terms": [
+          "大雪",
+          "冬至"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:丑",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 117,
+      "source_end_line": 117,
+      "source_excerpt_sha256": "812a7da72bb44ed5c9b5f6fc6ea9ac212252d4dff4a0c494a55709b78456aedb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "丑",
+        "traditional_month": 12,
+        "solar_terms": [
+          "小寒",
+          "大寒"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:寅",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 118,
+      "source_end_line": 118,
+      "source_excerpt_sha256": "1eb7a14605b0a80b4c7a2c31b1ed432eb0eb0bc7f40105c2523c50aa63f437c9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "寅",
+        "traditional_month": 1,
+        "solar_terms": [
+          "立春",
+          "雨水"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:卯",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 119,
+      "source_end_line": 119,
+      "source_excerpt_sha256": "f9f6493d36e4a55c4acb8c1f8e1cd96821da7466fa10967c414f37f6e2f0d493",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "卯",
+        "traditional_month": 2,
+        "solar_terms": [
+          "惊蛰",
+          "春分"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:辰",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 120,
+      "source_end_line": 120,
+      "source_excerpt_sha256": "15ba2aacda59f87486eafe3d7a489de323ff5d6899a8587976c2430343dc841a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "辰",
+        "traditional_month": 3,
+        "solar_terms": [
+          "清明",
+          "谷雨"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:巳",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 121,
+      "source_end_line": 121,
+      "source_excerpt_sha256": "7684ce2bd06d389b104c27660b7e96ac78b6dffbddc06de437c86338e296745d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "巳",
+        "traditional_month": 4,
+        "solar_terms": [
+          "立夏",
+          "小满"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:午",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 122,
+      "source_end_line": 122,
+      "source_excerpt_sha256": "b305d88bfdb4d6f2d166fe35c6db75bbb307329387120d665a0454c969f9e82a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "午",
+        "traditional_month": 5,
+        "solar_terms": [
+          "芒种",
+          "夏至"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:未",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 123,
+      "source_end_line": 123,
+      "source_excerpt_sha256": "ea5df41b34df32ce3087703adf48a9e5abf2cd9d4f18592545f9d7bbbf2a5bf1",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "未",
+        "traditional_month": 6,
+        "solar_terms": [
+          "小暑",
+          "大暑"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:申",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 124,
+      "source_end_line": 124,
+      "source_excerpt_sha256": "28e5fdb7f7b757e737182e8ba53437462ece95eb6e7e650c84d8af68e58df7f9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "申",
+        "traditional_month": 7,
+        "solar_terms": [
+          "立秋",
+          "处暑"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:酉",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 125,
+      "source_end_line": 125,
+      "source_excerpt_sha256": "c4320a3bcb6c5bbb0255330e5a40611c150394ef8d3b035149b483844d8bbfb4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "酉",
+        "traditional_month": 8,
+        "solar_terms": [
+          "白露",
+          "秋分"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:戌",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 126,
+      "source_end_line": 126,
+      "source_excerpt_sha256": "cc8e51f150e6b4b1f4e4ef8cd79b7b031553c42c9f38ad2f25153f69248eead4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "戌",
+        "traditional_month": 9,
+        "solar_terms": [
+          "寒露",
+          "霜降"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch:亥",
+      "kind": "branch_month_and_terms",
+      "source_start_line": 127,
+      "source_end_line": 127,
+      "source_excerpt_sha256": "aae135da6e75830cd8dba737b56264b0202d0b70fd9258d490a037725f80677b",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:branch_month",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "亥",
+        "traditional_month": 10,
+        "solar_terms": [
+          "立冬",
+          "小雪"
+        ],
+        "boundary_policy": "starts_at_jie_not_lunar_new_moon"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "甲",
+        "element": "木",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:甲",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "甲",
+        "traditional_direction": "东",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "乙",
+        "element": "木",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:乙",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "乙",
+        "traditional_direction": "东",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "丙",
+        "element": "火",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丙",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "丙",
+        "traditional_direction": "南",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "丁",
+        "element": "火",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:丁",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "丁",
+        "traditional_direction": "南",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "戊",
+        "element": "土",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:戊",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "戊",
+        "traditional_direction": "中",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "己",
+        "element": "土",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:己",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "己",
+        "traditional_direction": "中",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "庚",
+        "element": "金",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:庚",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "庚",
+        "traditional_direction": "西",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "辛",
+        "element": "金",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:辛",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "辛",
+        "traditional_direction": "西",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "壬",
+        "element": "水",
+        "polarity": "yang"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:壬",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "壬",
+        "traditional_direction": "北",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸",
+      "kind": "stem_polarity_element",
+      "source_start_line": 238,
+      "source_end_line": 238,
+      "source_excerpt_sha256": "a371bf318f79610c56a5d833d099183010077dda496d1831bb04a4c930c1345c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "stem": "癸",
+        "element": "水",
+        "polarity": "yin"
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem:癸",
+      "kind": "stem_direction_symbolism",
+      "source_start_line": 185,
+      "source_end_line": 185,
+      "source_excerpt_sha256": "e25d6a6525a0f9865a5355843b69849e3aa1d25eae8b354494d0565324645a87",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:static_symbolic_direction",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "stem": "癸",
+        "traditional_direction": "北",
+        "not_a_claim_of_chart_center_deity_or_door": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲子",
+      "kind": "sexagenary_xun",
+      "source_start_line": 199,
+      "source_end_line": 200,
+      "source_excerpt_sha256": "5f629ce0d4392900ba22e38a3e1936f3c3c6c8d4b698baafd8beb719d08d5156",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲子",
+          "乙丑",
+          "丙寅",
+          "丁卯",
+          "戊辰",
+          "己巳",
+          "庚午",
+          "辛未",
+          "壬申",
+          "癸酉"
+        ],
+        "two_void_branches": [
+          "戌",
+          "亥"
+        ],
+        "void_source_line": 200
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲戌",
+      "kind": "sexagenary_xun",
+      "source_start_line": 205,
+      "source_end_line": 206,
+      "source_excerpt_sha256": "c31956eb255b2f29db35bb2bfa3d4ffe018932ccab2505370c49cb84bfcb0989",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲戌",
+          "乙亥",
+          "丙子",
+          "丁丑",
+          "戊寅",
+          "己卯",
+          "庚辰",
+          "辛巳",
+          "壬午",
+          "癸未"
+        ],
+        "two_void_branches": [
+          "申",
+          "酉"
+        ],
+        "void_source_line": 206
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲申",
+      "kind": "sexagenary_xun",
+      "source_start_line": 211,
+      "source_end_line": 212,
+      "source_excerpt_sha256": "bc95d3f1e8fa32c1da3f6a53014d703c5f0d42df39e0e91df6e66097bbd974bf",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲申",
+          "乙酉",
+          "丙戌",
+          "丁亥",
+          "戊子",
+          "己丑",
+          "庚寅",
+          "辛卯",
+          "壬辰",
+          "癸巳"
+        ],
+        "two_void_branches": [
+          "午",
+          "未"
+        ],
+        "void_source_line": 212
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲午",
+      "kind": "sexagenary_xun",
+      "source_start_line": 217,
+      "source_end_line": 218,
+      "source_excerpt_sha256": "b65df9b259f8672958aee0b8c32b3a9f48656fadd43091671b090a20d8423eee",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲午",
+          "乙未",
+          "丙申",
+          "丁酉",
+          "戊戌",
+          "己亥",
+          "庚子",
+          "辛丑",
+          "壬寅",
+          "癸卯"
+        ],
+        "two_void_branches": [
+          "辰",
+          "巳"
+        ],
+        "void_source_line": 218
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲辰",
+      "kind": "sexagenary_xun",
+      "source_start_line": 223,
+      "source_end_line": 224,
+      "source_excerpt_sha256": "5fe9100bcb914d495b30ae9197c7862a679cebae88c8362f29b428b00a327938",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲辰",
+          "乙巳",
+          "丙午",
+          "丁未",
+          "戊申",
+          "己酉",
+          "庚戌",
+          "辛亥",
+          "壬子",
+          "癸丑"
+        ],
+        "two_void_branches": [
+          "寅",
+          "卯"
+        ],
+        "void_source_line": 224
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:xun:甲寅",
+      "kind": "sexagenary_xun",
+      "source_start_line": 229,
+      "source_end_line": 230,
+      "source_excerpt_sha256": "bd5d74401e84ab4671c40ecc7eab91aadbba491e59959115a253fc7f8c6e65b9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "ten_pairs": [
+          "甲寅",
+          "乙卯",
+          "丙辰",
+          "丁巳",
+          "戊午",
+          "己未",
+          "庚申",
+          "辛酉",
+          "壬戌",
+          "癸亥"
+        ],
+        "two_void_branches": [
+          "子",
+          "丑"
+        ],
+        "void_source_line": 230
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:子:午",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "子",
+          "午"
+        ],
+        "canonical_order": [
+          "子",
+          "午"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:卯:酉",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "卯",
+          "酉"
+        ],
+        "canonical_order": [
+          "卯",
+          "酉"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:丑:未",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丑",
+          "未"
+        ],
+        "canonical_order": [
+          "丑",
+          "未"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:寅:申",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "申"
+        ],
+        "canonical_order": [
+          "寅",
+          "申"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:辰:戌",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "辰",
+          "戌"
+        ],
+        "canonical_order": [
+          "辰",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_clash:巳:亥",
+      "kind": "branch_clash",
+      "source_start_line": 157,
+      "source_end_line": 157,
+      "source_excerpt_sha256": "ffaed6e71b0d848082177e833af8f4e2f6197c28dadab96c5ad2d0d3454254d9",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "巳",
+          "亥"
+        ],
+        "canonical_order": [
+          "巳",
+          "亥"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:子:丑",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "子",
+          "丑"
+        ],
+        "canonical_order": [
+          "子",
+          "丑"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:寅:亥",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "亥"
+        ],
+        "canonical_order": [
+          "寅",
+          "亥"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:卯:戌",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "卯",
+          "戌"
+        ],
+        "canonical_order": [
+          "卯",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:辰:酉",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "辰",
+          "酉"
+        ],
+        "canonical_order": [
+          "辰",
+          "酉"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:巳:申",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "巳",
+          "申"
+        ],
+        "canonical_order": [
+          "巳",
+          "申"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_six_harmony:午:未",
+      "kind": "branch_six_harmony",
+      "source_start_line": 159,
+      "source_end_line": 159,
+      "source_excerpt_sha256": "8d8303d555891b035bbd45f71aa243fd383d6d5bbe9d141658d45fdc9ee79125",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "午",
+          "未"
+        ],
+        "canonical_order": [
+          "午",
+          "未"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_harmony:申:子:辰",
+      "kind": "branch_three_harmony",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "申",
+          "子",
+          "辰"
+        ],
+        "canonical_order": [
+          "申",
+          "子",
+          "辰"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_harmony:寅:午:戌",
+      "kind": "branch_three_harmony",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "午",
+          "戌"
+        ],
+        "canonical_order": [
+          "寅",
+          "午",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_harmony:亥:卯:未",
+      "kind": "branch_three_harmony",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "亥",
+          "卯",
+          "未"
+        ],
+        "canonical_order": [
+          "亥",
+          "卯",
+          "未"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_harmony:巳:酉:丑",
+      "kind": "branch_three_harmony",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "巳",
+          "酉",
+          "丑"
+        ],
+        "canonical_order": [
+          "巳",
+          "酉",
+          "丑"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_meeting:寅:卯:辰",
+      "kind": "branch_three_meeting",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "卯",
+          "辰"
+        ],
+        "canonical_order": [
+          "寅",
+          "卯",
+          "辰"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_meeting:巳:午:未",
+      "kind": "branch_three_meeting",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "巳",
+          "午",
+          "未"
+        ],
+        "canonical_order": [
+          "巳",
+          "午",
+          "未"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_meeting:申:酉:戌",
+      "kind": "branch_three_meeting",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "申",
+          "酉",
+          "戌"
+        ],
+        "canonical_order": [
+          "申",
+          "酉",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_three_meeting:亥:子:丑",
+      "kind": "branch_three_meeting",
+      "source_start_line": 163,
+      "source_end_line": 163,
+      "source_excerpt_sha256": "33c9553edf7713fa8786b497c046d6d4d8241a91f6889d8e17e5c8f2b55bf515",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "亥",
+          "子",
+          "丑"
+        ],
+        "canonical_order": [
+          "亥",
+          "子",
+          "丑"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_punishment:子:卯",
+      "kind": "branch_punishment",
+      "source_start_line": 165,
+      "source_end_line": 165,
+      "source_excerpt_sha256": "8cc41e51d9b88b90dc8919dad9c7d32d6efe461525ccfd7932ab588e076ab32c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "子",
+          "卯"
+        ],
+        "canonical_order": [
+          "子",
+          "卯"
+        ],
+        "directional_sequence_must_be_preserved": true,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_punishment:寅:巳:申",
+      "kind": "branch_punishment",
+      "source_start_line": 167,
+      "source_end_line": 167,
+      "source_excerpt_sha256": "8b17da975d95173bdf2abff57b774fe54bd202d383d24c3ddebbe2690b6a2e16",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "巳",
+          "申"
+        ],
+        "canonical_order": [
+          "寅",
+          "巳",
+          "申"
+        ],
+        "directional_sequence_must_be_preserved": true,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_punishment:丑:未:戌",
+      "kind": "branch_punishment",
+      "source_start_line": 169,
+      "source_end_line": 169,
+      "source_excerpt_sha256": "c5fe1b46e3c8ec6a1f0b346c2f2547b17bc0e41a26a4cfe399c3535c0bc29db4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丑",
+          "戌",
+          "未"
+        ],
+        "canonical_order": [
+          "丑",
+          "未",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": true,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_self_punishment:辰:辰",
+      "kind": "branch_self_punishment",
+      "source_start_line": 171,
+      "source_end_line": 171,
+      "source_excerpt_sha256": "7dc24451878379b38cf73c7ea733677155b8a97fa443841a03e75a3ef7e5454f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "辰",
+          "辰"
+        ],
+        "canonical_order": [
+          "辰",
+          "辰"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_self_punishment:午:午",
+      "kind": "branch_self_punishment",
+      "source_start_line": 171,
+      "source_end_line": 171,
+      "source_excerpt_sha256": "7dc24451878379b38cf73c7ea733677155b8a97fa443841a03e75a3ef7e5454f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "午",
+          "午"
+        ],
+        "canonical_order": [
+          "午",
+          "午"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_self_punishment:酉:酉",
+      "kind": "branch_self_punishment",
+      "source_start_line": 171,
+      "source_end_line": 171,
+      "source_excerpt_sha256": "7dc24451878379b38cf73c7ea733677155b8a97fa443841a03e75a3ef7e5454f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "酉",
+          "酉"
+        ],
+        "canonical_order": [
+          "酉",
+          "酉"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_self_punishment:亥:亥",
+      "kind": "branch_self_punishment",
+      "source_start_line": 171,
+      "source_end_line": 171,
+      "source_excerpt_sha256": "7dc24451878379b38cf73c7ea733677155b8a97fa443841a03e75a3ef7e5454f",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "亥",
+          "亥"
+        ],
+        "canonical_order": [
+          "亥",
+          "亥"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:寅:巳",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "寅",
+          "巳"
+        ],
+        "canonical_order": [
+          "寅",
+          "巳"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:卯:辰",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "卯",
+          "辰"
+        ],
+        "canonical_order": [
+          "卯",
+          "辰"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:丑:午",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丑",
+          "午"
+        ],
+        "canonical_order": [
+          "丑",
+          "午"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:子:未",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "子",
+          "未"
+        ],
+        "canonical_order": [
+          "子",
+          "未"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:申:亥",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "亥",
+          "申"
+        ],
+        "canonical_order": [
+          "申",
+          "亥"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "branch_harm:酉:戌",
+      "kind": "branch_harm",
+      "source_start_line": 175,
+      "source_end_line": 175,
+      "source_excerpt_sha256": "a840c553319b4a3e2e8c0b53e74f3e13f44a1cff1b190db1687db0fdd776741a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "戌",
+          "酉"
+        ],
+        "canonical_order": [
+          "酉",
+          "戌"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_combine:甲:己",
+      "kind": "stem_combine",
+      "source_start_line": 242,
+      "source_end_line": 242,
+      "source_excerpt_sha256": "22096dfcf604d6d26aca4e1817c9ecf8fb95e7d1b1a7b8f8deb2322788023586",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "甲",
+          "己"
+        ],
+        "canonical_order": [
+          "甲",
+          "己"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_combine:乙:庚",
+      "kind": "stem_combine",
+      "source_start_line": 242,
+      "source_end_line": 242,
+      "source_excerpt_sha256": "22096dfcf604d6d26aca4e1817c9ecf8fb95e7d1b1a7b8f8deb2322788023586",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "乙",
+          "庚"
+        ],
+        "canonical_order": [
+          "乙",
+          "庚"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_combine:丙:辛",
+      "kind": "stem_combine",
+      "source_start_line": 242,
+      "source_end_line": 242,
+      "source_excerpt_sha256": "22096dfcf604d6d26aca4e1817c9ecf8fb95e7d1b1a7b8f8deb2322788023586",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丙",
+          "辛"
+        ],
+        "canonical_order": [
+          "丙",
+          "辛"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_combine:丁:壬",
+      "kind": "stem_combine",
+      "source_start_line": 242,
+      "source_end_line": 242,
+      "source_excerpt_sha256": "22096dfcf604d6d26aca4e1817c9ecf8fb95e7d1b1a7b8f8deb2322788023586",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丁",
+          "壬"
+        ],
+        "canonical_order": [
+          "丁",
+          "壬"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_combine:戊:癸",
+      "kind": "stem_combine",
+      "source_start_line": 242,
+      "source_end_line": 242,
+      "source_excerpt_sha256": "22096dfcf604d6d26aca4e1817c9ecf8fb95e7d1b1a7b8f8deb2322788023586",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "戊",
+          "癸"
+        ],
+        "canonical_order": [
+          "戊",
+          "癸"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_clash:甲:庚",
+      "kind": "stem_clash",
+      "source_start_line": 244,
+      "source_end_line": 244,
+      "source_excerpt_sha256": "c098e3dc9010fa7a6d062ca79801fd0ff427cbfe466f5c8af3c1ed00fe9a5efb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "甲",
+          "庚"
+        ],
+        "canonical_order": [
+          "甲",
+          "庚"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_clash:乙:辛",
+      "kind": "stem_clash",
+      "source_start_line": 244,
+      "source_end_line": 244,
+      "source_excerpt_sha256": "c098e3dc9010fa7a6d062ca79801fd0ff427cbfe466f5c8af3c1ed00fe9a5efb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "乙",
+          "辛"
+        ],
+        "canonical_order": [
+          "乙",
+          "辛"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_clash:壬:丙",
+      "kind": "stem_clash",
+      "source_start_line": 244,
+      "source_end_line": 244,
+      "source_excerpt_sha256": "c098e3dc9010fa7a6d062ca79801fd0ff427cbfe466f5c8af3c1ed00fe9a5efb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丙",
+          "壬"
+        ],
+        "canonical_order": [
+          "壬",
+          "丙"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "stem_clash:癸:丁",
+      "kind": "stem_clash",
+      "source_start_line": 244,
+      "source_end_line": 244,
+      "source_excerpt_sha256": "c098e3dc9010fa7a6d062ca79801fd0ff427cbfe466f5c8af3c1ed00fe9a5efb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:symbol_relations",
+      "relation_to_shenqi": "reaffirms",
+      "normalized": {
+        "source_order": [
+          "丁",
+          "癸"
+        ],
+        "canonical_order": [
+          "癸",
+          "丁"
+        ],
+        "directional_sequence_must_be_preserved": false,
+        "lexical_shared_concept_not_automatically_equivalent_author_condition": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:冬至",
+      "kind": "term_reference_date",
+      "source_start_line": 279,
+      "source_end_line": 279,
+      "source_excerpt_sha256": "88f839256a07357fb79e2828e3afdae9251f577d7cf6c1b92e766865fbc4bdd8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          12,
+          21
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:冬至",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 1,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小寒",
+      "kind": "term_reference_date",
+      "source_start_line": 268,
+      "source_end_line": 268,
+      "source_excerpt_sha256": "b9de2afb9e0a21959654d8b1a9d5e9fd59e05e50a87c3dae8e2189b60d945e70",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          1,
+          6
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小寒",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 1,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大寒",
+      "kind": "term_reference_date",
+      "source_start_line": 268,
+      "source_end_line": 268,
+      "source_excerpt_sha256": "b9de2afb9e0a21959654d8b1a9d5e9fd59e05e50a87c3dae8e2189b60d945e70",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          1,
+          21
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大寒",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 1,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立春",
+      "kind": "term_reference_date",
+      "source_start_line": 269,
+      "source_end_line": 269,
+      "source_excerpt_sha256": "d44c6a17e889b9d5f29937d950f9f15f066862cc1746b881cffdd0e85e3e1d5d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          2,
+          4
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立春",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 8,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:雨水",
+      "kind": "term_reference_date",
+      "source_start_line": 269,
+      "source_end_line": 269,
+      "source_excerpt_sha256": "d44c6a17e889b9d5f29937d950f9f15f066862cc1746b881cffdd0e85e3e1d5d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          2,
+          19
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:雨水",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 8,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:惊蛰",
+      "kind": "term_reference_date",
+      "source_start_line": 270,
+      "source_end_line": 270,
+      "source_excerpt_sha256": "2e353ee92675bca49faa88fd18060a13dc9babf6389e5e9e7ef8036c72a1b57c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          3,
+          6
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:惊蛰",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 8,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:春分",
+      "kind": "term_reference_date",
+      "source_start_line": 270,
+      "source_end_line": 270,
+      "source_excerpt_sha256": "2e353ee92675bca49faa88fd18060a13dc9babf6389e5e9e7ef8036c72a1b57c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          3,
+          21
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:春分",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 3,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:清明",
+      "kind": "term_reference_date",
+      "source_start_line": 271,
+      "source_end_line": 271,
+      "source_excerpt_sha256": "858b3e515de653447dfe0f014b480368558f0e8094e22f5fcd731e976d382c6d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          4,
+          5
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:清明",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 3,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:谷雨",
+      "kind": "term_reference_date",
+      "source_start_line": 271,
+      "source_end_line": 271,
+      "source_excerpt_sha256": "858b3e515de653447dfe0f014b480368558f0e8094e22f5fcd731e976d382c6d",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          4,
+          21
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:谷雨",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 3,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立夏",
+      "kind": "term_reference_date",
+      "source_start_line": 272,
+      "source_end_line": 272,
+      "source_excerpt_sha256": "401d1d370b72ce93efda70f0bcc556decc66d2d4f49bad8fcbfbf7a8617e098e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          5,
+          6
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立夏",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 4,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小满",
+      "kind": "term_reference_date",
+      "source_start_line": 272,
+      "source_end_line": 272,
+      "source_excerpt_sha256": "401d1d370b72ce93efda70f0bcc556decc66d2d4f49bad8fcbfbf7a8617e098e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          5,
+          21
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小满",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 4,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:芒种",
+      "kind": "term_reference_date",
+      "source_start_line": 273,
+      "source_end_line": 273,
+      "source_excerpt_sha256": "7c362885bbac00d689c7fd3605d43148fc900032abb5719740a8c55e3bc42bdb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          6,
+          6
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:芒种",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 4,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:夏至",
+      "kind": "term_reference_date",
+      "source_start_line": 273,
+      "source_end_line": 273,
+      "source_excerpt_sha256": "7c362885bbac00d689c7fd3605d43148fc900032abb5719740a8c55e3bc42bdb",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          6,
+          22
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:夏至",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 9,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小暑",
+      "kind": "term_reference_date",
+      "source_start_line": 274,
+      "source_end_line": 274,
+      "source_excerpt_sha256": "8fc4ba7f3da8b07c23d4686ee0d8241952945bad19e95608aeb8be7d76557e75",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          7,
+          7
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小暑",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 9,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大暑",
+      "kind": "term_reference_date",
+      "source_start_line": 274,
+      "source_end_line": 274,
+      "source_excerpt_sha256": "8fc4ba7f3da8b07c23d4686ee0d8241952945bad19e95608aeb8be7d76557e75",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          7,
+          23
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大暑",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 9,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立秋",
+      "kind": "term_reference_date",
+      "source_start_line": 275,
+      "source_end_line": 275,
+      "source_excerpt_sha256": "8c6468e1a24ccb95e709a28b0b63e8ee16cc0777f48f1a02c76f30c4716affbe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          8,
+          8
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立秋",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 2,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:处暑",
+      "kind": "term_reference_date",
+      "source_start_line": 275,
+      "source_end_line": 275,
+      "source_excerpt_sha256": "8c6468e1a24ccb95e709a28b0b63e8ee16cc0777f48f1a02c76f30c4716affbe",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          8,
+          23
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:处暑",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 2,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:白露",
+      "kind": "term_reference_date",
+      "source_start_line": 276,
+      "source_end_line": 276,
+      "source_excerpt_sha256": "4a9c6a5632edf868e7475ea6339dbe4ce1643768a858113197349181f46c44ce",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          9,
+          8
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:白露",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 257,
+      "source_end_line": 257,
+      "source_excerpt_sha256": "5870af53aab37a0e1d9ef7a90b08c1eda3ce93dbeba9e2ec322f664f5bf5a11e",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 2,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:秋分",
+      "kind": "term_reference_date",
+      "source_start_line": 276,
+      "source_end_line": 276,
+      "source_excerpt_sha256": "4a9c6a5632edf868e7475ea6339dbe4ce1643768a858113197349181f46c44ce",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          9,
+          23
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:秋分",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 7,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:寒露",
+      "kind": "term_reference_date",
+      "source_start_line": 277,
+      "source_end_line": 277,
+      "source_excerpt_sha256": "5a3bb26b3374b25bc7c3a58ddbf50f6dd2a8642a449a712619834bf3a45c1be4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          10,
+          8
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:寒露",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 7,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:霜降",
+      "kind": "term_reference_date",
+      "source_start_line": 277,
+      "source_end_line": 277,
+      "source_excerpt_sha256": "5a3bb26b3374b25bc7c3a58ddbf50f6dd2a8642a449a712619834bf3a45c1be4",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          10,
+          23
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:霜降",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 258,
+      "source_end_line": 258,
+      "source_excerpt_sha256": "e1c6af2a75216a2a286d6a3fbde289866246f90c2ab087fe511054ac8b8ce980",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 7,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立冬",
+      "kind": "term_reference_date",
+      "source_start_line": 278,
+      "source_end_line": 278,
+      "source_excerpt_sha256": "4fb35603c48c36b364ac033625c37519a515885322545e5a5526bdbccf009367",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          11,
+          8
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:立冬",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 6,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小雪",
+      "kind": "term_reference_date",
+      "source_start_line": 278,
+      "source_end_line": 278,
+      "source_excerpt_sha256": "4fb35603c48c36b364ac033625c37519a515885322545e5a5526bdbccf009367",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          11,
+          23
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:小雪",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 6,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大雪",
+      "kind": "term_reference_date",
+      "source_start_line": 279,
+      "source_end_line": 279,
+      "source_excerpt_sha256": "88f839256a07357fb79e2828e3afdae9251f577d7cf6c1b92e766865fbc4bdd8",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:approximate_calendar_dates",
+      "relation_to_shenqi": "supplements",
+      "normalized": {
+        "source_approximate_month_day": [
+          12,
+          8
+        ],
+        "not_exact_ephemeris_for_arbitrary_year": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "solar_term:大雪",
+      "kind": "three_terms_per_palace",
+      "source_start_line": 259,
+      "source_end_line": 259,
+      "source_excerpt_sha256": "9dab4dc1288ceeefae7c69f502fef25784534b7ceb62e62bbdfa68c72339f73a",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:evenly_distributed_solar_sectors",
+      "relation_to_shenqi": "extends",
+      "normalized": {
+        "seasonal_sector_palace": 6,
+        "separate_from_branch_fixed_palace": true,
+        "not_a_lunar_month_assignment": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:子",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "子",
+        "month": 11,
+        "starts_on": "大雪",
+        "second_term": "冬至",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:丑",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "丑",
+        "month": 12,
+        "starts_on": "小寒",
+        "second_term": "大寒",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:寅",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "寅",
+        "month": 1,
+        "starts_on": "立春",
+        "second_term": "雨水",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:卯",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "卯",
+        "month": 2,
+        "starts_on": "惊蛰",
+        "second_term": "春分",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:辰",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "辰",
+        "month": 3,
+        "starts_on": "清明",
+        "second_term": "谷雨",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:巳",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "巳",
+        "month": 4,
+        "starts_on": "立夏",
+        "second_term": "小满",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:午",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "午",
+        "month": 5,
+        "starts_on": "芒种",
+        "second_term": "夏至",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:未",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "未",
+        "month": 6,
+        "starts_on": "小暑",
+        "second_term": "大暑",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:申",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "申",
+        "month": 7,
+        "starts_on": "立秋",
+        "second_term": "处暑",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:酉",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "酉",
+        "month": 8,
+        "starts_on": "白露",
+        "second_term": "秋分",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:戌",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "戌",
+        "month": 9,
+        "starts_on": "寒露",
+        "second_term": "霜降",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    },
+    {
+      "concept_id": "calendar:month_jie:亥",
+      "kind": "solar_calendar_month_boundary",
+      "source_start_line": 263,
+      "source_end_line": 263,
+      "source_excerpt_sha256": "67aa00132145d152695d0dfc9c1047369e69a034ca60dcb2abc16dd66ad77b2c",
+      "track_id": "kaiwu:source_v1:shijia_zhuanpan:jie_month_boundaries",
+      "relation_to_shenqi": "clarifies",
+      "normalized": {
+        "branch": "亥",
+        "month": 10,
+        "starts_on": "立冬",
+        "second_term": "小雪",
+        "not_on_lunar_day_one": true
+      },
+      "review_status": "draft",
+      "positive_training_eligible": false
+    }
+  ]
+}

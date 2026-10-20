@@ -1,0 +1,73 @@
+{
+  "schema": "wengua_cross_book_source_link_v1",
+  "chapter_key": "kaiwu/space_time_model_part01/v1",
+  "links": [
+    {
+      "source_line": 90,
+      "cited_book": "shenqi",
+      "cited_print_page": "161",
+      "reference_id": "kaiwu:ref:height_from_kang_numbers",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 92,
+      "cited_book": "shenqi",
+      "cited_print_page": "320",
+      "reference_id": "kaiwu:ref:capital_eight_or_fourteen_hundred_million",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 147,
+      "cited_book": "shenqi",
+      "cited_print_page": "154~155",
+      "reference_id": "kaiwu:ref:discharge_timing_empty_branches",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 149,
+      "cited_book": "shenqi",
+      "cited_print_page": "334",
+      "reference_id": "kaiwu:ref:marriage_year_branch_palace",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 173,
+      "cited_book": "shenqi",
+      "cited_print_page": "152~154",
+      "reference_id": "kaiwu:ref:father_health_retrospective",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    },
+    {
+      "source_line": 281,
+      "cited_book": "shenqi",
+      "cited_print_page": "185~187",
+      "reference_id": "kaiwu:ref:license_letter_timing",
+      "reference_role": "illustrates_previous_source_event",
+      "new_event_family": false,
+      "new_qimen_cast": false,
+      "verified_original_event_match": false,
+      "review_status": "draft"
+    }
+  ],
+  "do_not_add_new_case_family_for_citations": true
+}

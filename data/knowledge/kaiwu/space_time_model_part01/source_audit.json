@@ -1,0 +1,10 @@
+{
+  "source_sha256": "97e2285b25fd97f120ac1015104c6bf750fbba8c3c8bd0228be82b53563d4598",
+  "separate_track_for_branch_fixed_palace_and_three_term_season_sector": true,
+  "number_selection_is_conditional_not_one_fixed_value": true,
+  "exact_solar_term_time_requires_ephemeris_not_book_approximation": true,
+  "older_shenqi_case_references_are_not_new_predictions": true,
+  "scientific_claims_in_source_are_book_author_claims_not_independent_proof": true,
+  "complete_human_audited_causal_chains": 0,
+  "positive_training_eligible": false
+}
