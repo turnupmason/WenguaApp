@@ -68,7 +68,7 @@ class KaiwuHealthCrossBookTests(unittest.TestCase):
    m=build(BASE,SOURCE,out,index)
    self.assertEqual(m["new_event_families"],5)
    self.assertEqual(m["shared_old_event_families"],1)
-   self.assertEqual(m["new_original_historical_printed_charts"],5)
+   self.assertEqual(m["new_independent_historical_charts"],5)
    self.assertEqual(m["total_source_sections"],27)
    with sqlite3.connect(out) as db:
     for table,n in m["cumulative_counts"].items():
