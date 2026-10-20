@@ -261,7 +261,7 @@ def add_event(db,L,sid,e):
    track_id,relation_to_prior,comparison_state,normalized_json,review_status)
    VALUES (?,?,?,?,?,?,?,?,?,'book_case_accepted_not_external_scientific_test',?,'draft')""",
    (CHAPTER,concept,line,line,sid,SOURCE_SHA,h(literal.encode("utf-8")),
-    "kaiwu:marriage:source_v1:author_reasoning","adds_book_source",j(meta)))
+    "kaiwu:marriage:source_v1:author_reasoning","additional_exposition",j(meta)))
  db.execute("""INSERT INTO historical_case_review_audit(case_id,original_steps,
   mechanical_step_trace,human_complete_step_chains,review_status,warning)
   VALUES (?,?,?,0,'user_accepts_original_book_case_no_per_case_review',?)""",
