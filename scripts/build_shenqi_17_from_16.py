@@ -12,7 +12,7 @@ import re
 import sqlite3
 from pathlib import Path
 
-ROOT=Path(__file__).resolve().parents[2]
+ROOT=Path(__file__).resolve().parents[1]
 SOURCE_SHA='d8b369785de0110cc20376191332eef31b04e749d8ed764d7a1a155ae6c19c05'
 BASE_SHA='a3573b3b147c24b2eb149fb43f6c6582d7a10a722c25f6c863571f4d4a29efb9'
 SECTION='military_events_prediction_ch13'
