@@ -1,0 +1,682 @@
+{
+  "schema": "wengua_shenqi_litigation_cases_v1",
+  "chapter_key": "shenqi/litigation_prediction_ch11/v1",
+  "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+  "whole_event_families": 6,
+  "supplied_actual_casts": 6,
+  "complete_nine_palace_cells": 54,
+  "actual_author_analyses": 25,
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.litigation.case01",
+      "event_family_id": "shenqi.litigation.case01",
+      "source_span": [
+        19,
+        59
+      ],
+      "original_chart_start": 30,
+      "nine_real_source_palaces": 9,
+      "topic": "代女问父亲受检察院传讯与释放",
+      "initial_context_lines": [
+        21,
+        25,
+        27
+      ],
+      "numbered_step_lines": [
+        46,
+        48,
+        50,
+        52,
+        54
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 46,
+          "topic": "问女儿的父亲取年干乙,入墓及乙庚格以判拘押",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:螣蛇",
+            "door:开",
+            "door:生"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "6宫",
+            "6宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 48,
+          "topic": "天盘庚和父亲乙宫生克,推举报来源",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:九地",
+            "door:惊"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "6宫",
+            "9宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 50,
+          "topic": "景门举报信震宫空亡,作者断举报不实",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:景"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "3宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 52,
+          "topic": "开门检察院坤宫生父亲乙宫,作者断放回",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:九天",
+            "door:开",
+            "door:生",
+            "trigram:坤"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 54,
+          "topic": "地盘乙上临丙己及阳遁内盘定己日",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "3宫",
+            "3宫"
+          ],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        46,
+        48,
+        50,
+        52,
+        54
+      ],
+      "book_feedback_lines": [
+        56,
+        58
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.litigation.case02",
+      "event_family_id": "shenqi.litigation.case02",
+      "source_span": [
+        60,
+        92
+      ],
+      "original_chart_start": 67,
+      "nine_real_source_palaces": 9,
+      "topic": "代问同事因经济问题拘留及是否判刑",
+      "initial_context_lines": [
+        62,
+        64
+      ],
+      "numbered_step_lines": [
+        83,
+        85,
+        87,
+        89
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 83,
+          "topic": "同事取月干戊,钱财与戊己戊壬官司格",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符",
+            "door:惊",
+            "star:蓬"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 85,
+          "topic": "甲午辛为罪人辅助,与法官开门及吉门判可保释",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符",
+            "deity:六合",
+            "door:开",
+            "door:生",
+            "star:辅"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "1宫",
+            "4宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 87,
+          "topic": "月干戊与天蓬旺相及宫数推需退钱金额",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:惊",
+            "star:蓬"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 89,
+          "topic": "甲午辛地盘戊与子午冲推戊子月放出",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        83,
+        85,
+        87,
+        89
+      ],
+      "book_feedback_lines": [
+        91
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.litigation.case03",
+      "event_family_id": "shenqi.litigation.case03",
+      "source_span": [
+        93,
+        133
+      ],
+      "original_chart_start": 104,
+      "nine_real_source_palaces": 9,
+      "topic": "房产纠纷的起诉、证据、调解、法官倾向及搬迁",
+      "initial_context_lines": [
+        95,
+        97,
+        99,
+        101
+      ],
+      "numbered_step_lines": [
+        120,
+        122,
+        124,
+        126,
+        128
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 120,
+          "topic": "值符作为原告、天乙为被告;取被告须值符落宫地盘之星",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符",
+            "star:芮"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 122,
+          "topic": "值符与天乙、开门三宫生克判断原告愿调解、法官偏原告",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符",
+            "door:开"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫",
+            "7宫",
+            "9宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 124,
+          "topic": "景门诉状与六合证据逢空亡,判断证据不足",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:六合",
+            "door:开",
+            "door:景"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 126,
+          "topic": "甲子戊房租数,生门房屋,调解款及可能搬迁",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:九天",
+            "deity:值符",
+            "door:开",
+            "door:生"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "9宫",
+            "2宫",
+            "7宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 128,
+          "topic": "开门不逢庚与律师惊门宫关系推不会立判",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:开",
+            "door:惊"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "4宫"
+          ],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        120,
+        122,
+        124,
+        126,
+        128
+      ],
+      "book_feedback_lines": [
+        132
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true,
+      "source_chronology_exception": {
+        "older_prior_forecasts_mentioned_at": 95,
+        "unprinted_earlier_casts_not_invented": true
+      }
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.litigation.case04",
+      "event_family_id": "shenqi.litigation.case04",
+      "source_span": [
+        134,
+        178
+      ],
+      "original_chart_start": 145,
+      "nine_real_source_palaces": 9,
+      "topic": "亲属问一男一女被控抱走儿童、判刑或缓刑",
+      "initial_context_lines": [
+        136,
+        138,
+        140,
+        142
+      ],
+      "numbered_step_lines": [
+        161,
+        163,
+        165,
+        167,
+        169
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 161,
+          "topic": "值符原告、天乙被告;和值符空亡生被告看可调解",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫",
+            "6宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 163,
+          "topic": "天乙被告临乙庚下辛,乙辛格相反组合判可能释放",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "star:芮"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "6宫",
+            "6宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 165,
+          "topic": "开门法官入墓;证据不足且开门宫生被告判偏有利",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:开"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "8宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 167,
+          "topic": "惊门律师与原告法官被告的宫生克",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:开",
+            "door:惊"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "一宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 169,
+          "topic": "开门临白虎但不逢庚,推不会当庭立判",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:白虎",
+            "door:开"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        161,
+        163,
+        165,
+        167,
+        169
+      ],
+      "book_feedback_lines": [
+        173,
+        175,
+        177
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.litigation.case05",
+      "event_family_id": "shenqi.litigation.case05",
+      "source_span": [
+        179,
+        223
+      ],
+      "original_chart_start": 188,
+      "nine_real_source_palaces": 9,
+      "topic": "学生李文达用乙奇误取被告、老师后纠正",
+      "initial_context_lines": [
+        181,
+        183,
+        185
+      ],
+      "numbered_step_lines": [
+        204,
+        206,
+        208,
+        214
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 204,
+          "topic": "日干丁同甲子戊、白虎与开死门推纠纷",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:太阴",
+            "deity:白虎"
+          ],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 206,
+          "topic": "时干辛伏吟自刑、杜加辛推词讼打斗",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "8宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 208,
+          "topic": "甲子戊与日干同宫判断经济争议",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [],
+          "phase": "author_source_step",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "2宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 214,
+          "topic": "学生错误取乙奇为被告;后来作者第220-222行明确纠正",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "door:开",
+            "door:景",
+            "door:死"
+          ],
+          "phase": "author_method_explicitly_corrected_later",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "3宫",
+            "4宫"
+          ],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        210,
+        216
+      ],
+      "book_feedback_lines": [
+        218
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true,
+      "explicit_wrong_yongshen": {
+        "student_line": 214,
+        "editor_correction_lines": [
+          220,
+          222
+        ],
+        "student_uses": "乙奇为被告",
+        "author_prefers": "天乙＝值符落宫地盘之星",
+        "outcome_note": "Book claims successful collection; initial student METHOD explicitly wrong, but book does not say court outcome initially wrong."
+      }
+    },
+    {
+      "case_number": 6,
+      "case_id": "shenqi.litigation.case06",
+      "event_family_id": "shenqi.litigation.case06",
+      "source_span": [
+        224,
+        267
+      ],
+      "original_chart_start": 245,
+      "nine_real_source_palaces": 9,
+      "topic": "劳动仲裁原告被告用神与主客被动策略",
+      "initial_context_lines": [
+        226,
+        228
+      ],
+      "numbered_step_lines": [
+        263,
+        267
+      ],
+      "analysis": [
+        {
+          "step_number": 1,
+          "source_line": 263,
+          "topic": "值符原告与开门仲裁机关同震宫,天乙天冲星被告坤宫;克制推胜",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [
+            "deity:值符",
+            "deity:玄武",
+            "door:伤",
+            "door:开",
+            "star:冲"
+          ],
+          "phase": "retrospective_explanation_after_book_feedback",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "二宫",
+            "五宫",
+            "二宫"
+          ],
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 267,
+          "topic": "日干时干天盘地盘主客相克,以利主推被动策略",
+          "author_literal_located_in_private_sqlite": true,
+          "lexical_cross_chapter_ids_only": [],
+          "phase": "retrospective_explanation_after_book_feedback",
+          "evidence_chain_manual_review": "required_not_completed",
+          "specific_palace_mentions": [
+            "一宫"
+          ],
+          "positive_training_eligible": false
+        }
+      ],
+      "initial_or_source_judgment_lines": [
+        228,
+        232
+      ],
+      "book_feedback_lines": [
+        236,
+        238
+      ],
+      "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+      "source_printed_chart_independently_verified": false,
+      "book_outcome_label": "author_book_success_default",
+      "independent_external_verification": "not_verified",
+      "whole_event_unsplit": true,
+      "source_chronology_exception": {
+        "first_judgment_embedded_in": 228,
+        "new_disclosure_lines": [
+          230,
+          232
+        ],
+        "book_outcome_precedes_printed_chart": [
+          236,
+          238
+        ],
+        "printed_chart_start": 245,
+        "analysis_paragraphs_written_after_result": [
+          263,
+          267
+        ],
+        "blind_test_must_not_see_book_outcome": true
+      }
+    }
+  ]
+}

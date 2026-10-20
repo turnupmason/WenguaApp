@@ -1,0 +1,668 @@
+{
+  "schema": "wengua_litigation_step_evidence_source_draft_v1",
+  "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+  "chapter_key": "shenqi/litigation_prediction_ch11/v1",
+  "author_source_steps": 25,
+  "human_professional_complete_chains": 0,
+  "cases": [
+    {
+      "case_id": "shenqi.litigation.case01",
+      "steps": [
+        {
+          "case_number": 1,
+          "step_number": 1,
+          "source_line": 46,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "问女儿的父亲取年干乙,入墓及乙庚格以判拘押",
+          "source_literal_supporting_clauses": [
+            "落乾6宫",
+            "乙墓在戌",
+            "乙奇落乾6宫为入墓",
+            "格局乙+庚",
+            "为日奇被刑",
+            "生门+开门"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:螣蛇",
+            "door:开",
+            "door:生"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 1,
+          "step_number": 2,
+          "source_line": 48,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "天盘庚和父亲乙宫生克,推举报来源",
+          "source_literal_supporting_clauses": [
+            "(2)其父乙奇落乾6宫",
+            "被地盘六仪之庚所刑",
+            "再看天盘庚落离.9宫",
+            "为火而克其父落宫乾金",
+            "惊门主争讼"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:九地",
+            "door:惊"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 1,
+          "step_number": 3,
+          "source_line": 50,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "景门举报信震宫空亡,作者断举报不实",
+          "source_literal_supporting_clauses": [
+            "(3)景门为举报信",
+            "落震3宫为空亡之地(甲辰旬中寅卯空),说明举报不实",
+            "为凭空捏造"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:景"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 1,
+          "step_number": 4,
+          "source_line": 52,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "开门检察院坤宫生父亲乙宫,作者断放回",
+          "source_literal_supporting_clauses": [
+            "(4)开门为法官",
+            "落坤2宫为土",
+            "与日干丁奇(求测人)同宫比和",
+            "开门临坤宫",
+            "宫生门",
+            "又得奇",
+            "又生其父落宫"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [
+            "故断其父一定会被放出"
+          ],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:九天",
+            "door:开",
+            "door:生",
+            "trigram:坤"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 1,
+          "step_number": 5,
+          "source_line": 54,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "地盘乙上临丙己及阳遁内盘定己日",
+          "source_literal_supporting_clauses": [
+            "(5)年干乙奇为用神",
+            "地盘乙奇在3宫",
+            "阳遁3宫为内盘"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [
+            "丙日或己日可放出",
+            "故断己日可放回"
+          ],
+          "prior_chapter_concept_mentions_unverified": [],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case02",
+      "steps": [
+        {
+          "case_number": 2,
+          "step_number": 1,
+          "source_line": 83,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "同事取月干戊,钱财与戊己戊壬官司格",
+          "source_literal_supporting_clauses": [
+            "月干戊落坤2宫",
+            "临天蓬盗星",
+            "临惊门"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符",
+            "door:惊",
+            "star:蓬"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 2,
+          "step_number": 2,
+          "source_line": 85,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "甲午辛为罪人辅助,与法官开门及吉门判可保释",
+          "source_literal_supporting_clauses": [
+            "辛落1宫",
+            "但临天辅吉星",
+            "吉门生门",
+            "4宫地盘辛上又逢丁奇",
+            "所以断不会判刑",
+            "与月干同宫",
+            "开门为法官",
+            "与月干落宫和甲午辛落宫相生"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "但临天辅吉星"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符",
+            "deity:六合",
+            "door:开",
+            "door:生",
+            "star:辅"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 2,
+          "step_number": 3,
+          "source_line": 87,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "月干戊与天蓬旺相及宫数推需退钱金额",
+          "source_literal_supporting_clauses": [
+            "(3)但月干戊临蓬星",
+            "天蓬星在子月正当旺相之时",
+            "坤2宫、惊门均主2数"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "(3)但月干戊临蓬星"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:惊",
+            "star:蓬"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 2,
+          "step_number": 4,
+          "source_line": 89,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "甲午辛地盘戊与子午冲推戊子月放出",
+          "source_literal_supporting_clauses": [
+            "子午相冲"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [
+            "必在戊子月放出"
+          ],
+          "prior_chapter_concept_mentions_unverified": [],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case03",
+      "steps": [
+        {
+          "case_number": 3,
+          "step_number": 1,
+          "source_line": 120,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "值符作为原告、天乙为被告;取被告须值符落宫地盘之星",
+          "source_literal_supporting_clauses": [
+            "代表北京市某区房产部门",
+            "以天乙(值符落坤2宫地盘之星天芮星)为被告"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符",
+            "star:芮"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 3,
+          "step_number": 2,
+          "source_line": 122,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "值符与天乙、开门三宫生克判断原告愿调解、法官偏原告",
+          "source_literal_supporting_clauses": [
+            "(2)值符落坤2宫生天乙所落兑7宫",
+            "开门为法院落离9宫",
+            "生值符宫",
+            "克天乙宫"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "如果判决"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符",
+            "door:开"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 3,
+          "step_number": 3,
+          "source_line": 124,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "景门诉状与六合证据逢空亡,判断证据不足",
+          "source_literal_supporting_clauses": [
+            "(3)甲辰旬中寅、卯空",
+            "景门、六合均逢空亡",
+            "说明虽然开门向原告"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "说明虽然开门向原告",
+            "但原告所诉理由也不充分"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:六合",
+            "door:开",
+            "door:景"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 3,
+          "step_number": 4,
+          "source_line": 126,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "甲子戊房租数,生门房屋,调解款及可能搬迁",
+          "source_literal_supporting_clauses": [
+            "临开门在9宫",
+            "生值符2宫",
+            "被告临生门",
+            "在兑7宫",
+            "生门逢庚"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:九天",
+            "deity:值符",
+            "door:开",
+            "door:生"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 3,
+          "step_number": 5,
+          "source_line": 128,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "开门不逢庚与律师惊门宫关系推不会立判",
+          "source_literal_supporting_clauses": [
+            "(5)开门不逢庚",
+            "惊门为律师",
+            "在巽4宫",
+            "生开门",
+            "克原告",
+            "受被告之克"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:开",
+            "door:惊"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case04",
+      "steps": [
+        {
+          "case_number": 4,
+          "step_number": 1,
+          "source_line": 161,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "值符原告、天乙被告;和值符空亡生被告看可调解",
+          "source_literal_supporting_clauses": [
+            "落坤2宫",
+            "落乾6宫",
+            "原告生被告",
+            "原告又逢空亡"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 4,
+          "step_number": 2,
+          "source_line": 163,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "天乙被告临乙庚下辛,乙辛格相反组合判可能释放",
+          "source_literal_supporting_clauses": [
+            "(2)天乙天芮星为被告落乾6宫",
+            "乙在6宫又为入墓",
+            "但乙+辛为龙逃走格",
+            "以辛为罪人上乘乙奇"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "但乙+辛为龙逃走格"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "star:芮"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 4,
+          "step_number": 3,
+          "source_line": 165,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "开门法官入墓;证据不足且开门宫生被告判偏有利",
+          "source_literal_supporting_clauses": [
+            "(3)开门为法官",
+            "在艮8宫为入墓",
+            "古籍云“开门入墓",
+            "只是在认罪量刑上拿不准",
+            "开门落宫生被告宫",
+            "与原告比和又对冲"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "法官未必糊涂",
+            "原告却认为被告是想拐卖儿童",
+            "但又缺乏证据"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:开"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 4,
+          "step_number": 4,
+          "source_line": 167,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "惊门律师与原告法官被告的宫生克",
+          "source_literal_supporting_clauses": [
+            "(4)惊门为律师",
+            "落坎一宫",
+            "受原告和开门之克",
+            "但与被告相生"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "但与被告相生"
+          ],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:开",
+            "door:惊"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 4,
+          "step_number": 5,
+          "source_line": 169,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "开门临白虎但不逢庚,推不会当庭立判",
+          "source_literal_supporting_clauses": [
+            "(5)开门虽上乘白虎"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [
+            "但不逢庚"
+          ],
+          "literal_timing_clauses_or_unknown": [
+            "故而恐怕不会当庭立判"
+          ],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:白虎",
+            "door:开"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case05",
+      "steps": [
+        {
+          "case_number": 5,
+          "step_number": 1,
+          "source_line": 204,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "日干丁同甲子戊、白虎与开死门推纠纷",
+          "source_literal_supporting_clauses": [
+            "日干丁落坤2宫伏吟",
+            "丁+丁星奇入太阴"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:太阴",
+            "deity:白虎"
+          ],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 5,
+          "step_number": 2,
+          "source_line": 206,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "时干辛伏吟自刑、杜加辛推词讼打斗",
+          "source_literal_supporting_clauses": [
+            "时干辛落8宫伏吟",
+            "午午自刑"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 5,
+          "step_number": 3,
+          "source_line": 208,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "甲子戊与日干同宫判断经济争议",
+          "source_literal_supporting_clauses": [
+            "落坤2宫",
+            "与日干同宫"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [],
+          "author_step_stage": "author_source_step",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 5,
+          "step_number": 4,
+          "source_line": 214,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "学生错误取乙奇为被告;后来作者第220-222行明确纠正",
+          "source_literal_supporting_clauses": [
+            "(4)景门为诉状",
+            "落3宫临丙奇",
+            "乙奇为被告",
+            "落4宫临死门",
+            "又逢空亡",
+            "临开门",
+            "与法官同宫比和"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "door:开",
+            "door:景",
+            "door:死"
+          ],
+          "author_step_stage": "author_method_explicitly_corrected_later",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case06",
+      "steps": [
+        {
+          "case_number": 6,
+          "step_number": 1,
+          "source_line": 263,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "值符原告与开门仲裁机关同震宫,天乙天冲星被告坤宫;克制推胜",
+          "source_literal_supporting_clauses": [
+            "开门为仲裁机关",
+            "天乙天冲星为被告落坤二宫属土",
+            "宫中天盘为丁奇",
+            "丁奇为年干为太岁",
+            "与地盘壬相合为淫荡之和(五宫中的壬也寄于坤二宫),丁下临丙",
+            "宫中又逢伤门和天冲星",
+            "只可惜被告坤土受仲裁机关和原告震木之克"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [
+            "deity:值符",
+            "deity:玄武",
+            "door:伤",
+            "door:开",
+            "star:冲"
+          ],
+          "author_step_stage": "retrospective_explanation_after_book_feedback",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "case_number": 6,
+          "step_number": 2,
+          "source_line": 267,
+          "literal_original_in_private_historical_case_reasoning": true,
+          "author_workflow_topic": "日干时干天盘地盘主客相克,以利主推被动策略",
+          "source_literal_supporting_clauses": [
+            "奇门预测后",
+            "时干丁奇主事体",
+            "天盘丁奇为客",
+            "地盘丁奇为主",
+            "现在是主来克客",
+            "日干丙为李师傅落坎一宫",
+            "也是主来克客",
+            "而是要等待对方上门来找我"
+          ],
+          "literal_counterevidence_clauses_or_unknown": [],
+          "literal_timing_clauses_or_unknown": [],
+          "prior_chapter_concept_mentions_unverified": [],
+          "author_step_stage": "retrospective_explanation_after_book_feedback",
+          "source_derived_not_recast": true,
+          "author_logic_human_complete_review": "not_completed",
+          "original_chart_star_door_god_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    }
+  ]
+}

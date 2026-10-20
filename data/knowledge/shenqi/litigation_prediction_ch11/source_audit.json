@@ -1,0 +1,43 @@
+{
+  "schema": "wengua_litigation_source_audit_v1",
+  "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+  "event_families": 6,
+  "actual_charts": [
+    30,
+    67,
+    104,
+    145,
+    188,
+    245
+  ],
+  "case5_wrong_student_yongshen": {
+    "author_analysis_source_line": 214,
+    "teacher_review_lines": [
+      220,
+      222
+    ],
+    "student_original_wrong_choice": "乙奇为被告",
+    "author_correction": "天乙为被告，取值符落宫地盘之星",
+    "book_result_vs_method_correctness": "book_result_default_success_but_wrong_method_negative_example"
+  },
+  "case6_order": {
+    "initial_excerpt_line": 228,
+    "later_disclosure": [
+      230,
+      232
+    ],
+    "book_feedback_before_printed_chart": [
+      236,
+      238
+    ],
+    "printed_chart_start": 245,
+    "post_result_explanation": [
+      263,
+      267
+    ],
+    "blind_initial_context_only": true
+  },
+  "case3_previous_forecasts_without_printed_charts": "do_not_invent_missing_charts",
+  "center_promotion": "all_82_centres_carry_original_stem_and_derived_kun_host_but_no_invented_god_door_star",
+  "real_world_legal_evidence": false
+}

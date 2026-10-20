@@ -1,0 +1,234 @@
+{
+  "schema": "wengua_litigation_conditional_method_v1",
+  "chapter_key": "shenqi/litigation_prediction_ch11/v1",
+  "source_sha256": "a0cf2a05700bfb832420d3318b2982d25f6150e7a5c5e8c5ecc1ae07f5c810d2",
+  "domain_workflow": [
+    "识别民事诉讼、拘留量刑、劳动仲裁与问事人亲属关系，明确已知阶段",
+    "主辅用神：值符原告、天乙被告（值符落宫地盘之星）、开门法官、六合证据、景门诉状、惊门律师、丁奇传票",
+    "按当事人关系另选年干/月干/日干；不能误将乙奇固定为被告",
+    "观察原九宫与中宫寄坤二宫的来源分层，比较原被告及开门宫生克旺衰",
+    "检验景门起诉书、六合证据与空亡、墓、反吟，不能单项断胜负",
+    "结合犯罪疑问的甲午辛、壬癸网牢及丁奇等，区分个人官司与刑事问事",
+    "处理作者支持证据与相反证据，推应期仅据原文可用条件",
+    "严格隔离事后反馈、学生误断、老师纠正及案例6结果后成文分析，一次完整有条件输出"
+  ],
+  "methods": [
+    {
+      "concept_id": "litigation:general:plaintiff_zhifu",
+      "source_line": 5,
+      "conditional_summary": "值符为原告",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:defendant_tianyi_ground_star",
+      "source_line": 5,
+      "conditional_summary": "天乙是值符落宫的地盘之星，不等于乙奇",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_open_gate",
+      "source_line": 5,
+      "conditional_summary": "开门为法官",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:witness_liuhe",
+      "source_line": 5,
+      "conditional_summary": "六合为证人证据",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:petition_jing_gate",
+      "source_line": 5,
+      "conditional_summary": "景门为诉状",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:summons_ding",
+      "source_line": 5,
+      "conditional_summary": "丁奇为传票",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:lawyer_jingmen",
+      "source_line": 5,
+      "conditional_summary": "惊门为律师",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:unconditional_yiqi_rejected",
+      "source_line": 5,
+      "conditional_summary": "不能通用乙奇代替天乙",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:plaintiff_suppresses_defendant",
+      "source_line": 7,
+      "conditional_summary": "原告有气兼克被告则原告可能胜",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:defendant_suppresses_plaintiff",
+      "source_line": 7,
+      "conditional_summary": "被告有气兼克原告则被告可能胜",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:palaces_equal",
+      "source_line": 7,
+      "conditional_summary": "二宫比和可能和解",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:plaintiff_generates_defendant",
+      "source_line": 7,
+      "conditional_summary": "值符宫生天乙宫可能原告主动和解",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:defendant_generates_plaintiff",
+      "source_line": 7,
+      "conditional_summary": "天乙宫生值符宫可能被告主动和解",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_suppresses_both",
+      "source_line": 9,
+      "conditional_summary": "开门克二者候选公平审判",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_generates_plaintiff",
+      "source_line": 9,
+      "conditional_summary": "开门生值符偏向原告",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_generates_defendant",
+      "source_line": 9,
+      "conditional_summary": "开门生天乙偏向被告",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_tomb",
+      "source_line": 9,
+      "conditional_summary": "开门入墓司法判断困难",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_void",
+      "source_line": 9,
+      "conditional_summary": "开门空亡可能不予审理",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:judge_reverse",
+      "source_line": 9,
+      "conditional_summary": "开门反吟有换审判者之说",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:petition_accepted",
+      "source_line": 11,
+      "conditional_summary": "景门旺相吉格且不受开门冲克可受理",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:petition_rejected",
+      "source_line": 11,
+      "conditional_summary": "景门受开门宫冲克可不受理",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:petition_void_xuanwu_tengshe",
+      "source_line": 11,
+      "conditional_summary": "景门空亡乘玄武螣蛇原书指不实",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:evidence_liuhe_void",
+      "source_line": 11,
+      "conditional_summary": "六合空亡原书指证据不足",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:crime_jiawu_xin_ren_gui",
+      "source_line": 13,
+      "conditional_summary": "甲午辛临壬癸原书指有牢狱风险",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:crime_xin_ding_escape",
+      "source_line": 13,
+      "conditional_summary": "罪人用神临三奇丁奇可能释放",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:crime_and_judge_relation",
+      "source_line": 13,
+      "conditional_summary": "判刑须结合开门法官宫生克",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:relative_role_selection",
+      "source_line": 15,
+      "conditional_summary": "本人及家属求测可用日干六亲关系取用",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:prison_stem_xin_below",
+      "source_line": 15,
+      "conditional_summary": "用神下临辛为天狱",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:net_ren_gui",
+      "source_line": 15,
+      "conditional_summary": "用神临壬癸天罗地网候选",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:net_ren_gui_above_xin",
+      "source_line": 15,
+      "conditional_summary": "天盘壬癸下临地盘辛可能长囚",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    },
+    {
+      "concept_id": "litigation:general:subject_void_prison",
+      "source_line": 15,
+      "conditional_summary": "用神宫空亡原书称不会囚禁",
+      "source_review_status": "draft",
+      "cross_chapter_rule_link": "candidate_needs_verified_source_alignment"
+    }
+  ]
+}
