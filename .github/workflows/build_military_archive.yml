@@ -1,0 +1,83 @@
+name: Build and archive next military history chapter SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_shenqi_17_from_16.py'
+      - 'sources/shenqi/神奇之门_军事事件预测_精校完整版(1).txt'
+      - 'schema/migrations/012_military_event_provenance.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Backup old 16-section SQLite and import the entire military source, idempotence and provenance guarded
+        run: |
+          python scripts/build_shenqi_17_from_16.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3' \
+            --source 'sources/shenqi/神奇之门_军事事件预测_精校完整版(1).txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/shenqi/military_events_prediction_ch13'
+      - name: Make compressed complete database and hash-stamped manifest
+        run: |
+          python - <<'PY'
+          import hashlib, json, lzma, sqlite3
+          from pathlib import Path
+          folder=Path('archives/sqlite')
+          base=folder/'WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3'
+          db=folder/'WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3'
+          zipped=db.with_suffix(db.suffix+'.xz')
+          zipped.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          m=json.loads(Path('data/knowledge/shenqi/military_events_prediction_ch13/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(db) as con:
+            assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+            assert con.execute('SELECT count(*) FROM historical_military_cast_protocol').fetchone()[0]==4
+          record={'schema':'wengua_complete_versioned_sqlite_archive_v4','book':'神奇之门',
+            'chapter_count':17,'event_families':86,'actual_source_charts':93,
+            'original_palace_cells':837,'original_author_reasoning_steps':398,
+            'semantic_source_candidates':1044,'source_title':'军事事件预测',
+            'source_sha256':m['source_sha256'],'source_bytes':m['source_bytes'],'source_lines':m['source_lines'],
+            'source_whole_events':2,'source_real_casts':4,'source_author_steps':22,
+            'source_conditional_methods':32,'source_historical_retrospective_case':1,
+            'baseline_path':str(base),'baseline_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
+            'main_archive_path':str(db),'sha256':hashlib.sha256(db.read_bytes()).hexdigest(),
+            'size':db.stat().st_size,'compressed_archive_path':str(zipped),
+            'compressed_sha256':hashlib.sha256(zipped.read_bytes()).hexdigest(),
+            'compressed_size':zipped.stat().st_size,'integrity_check':'ok',
+            'foreign_key_violations':0,'all_previous_source_rows_unchanged':True,
+            'human_verified_complete_chains':0,'historical_military_forecasts_scientifically_validated':False,
+            'user_public_archive_authorized':True}
+          (folder/'17chapters_86cases_manifest.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          PY
+      - name: Verify source and full SQLite archive including all legacy cases
+        run: python -m unittest discover -s tests -p test_military_case_import.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: military-17chapters-full-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3.xz
+            archives/sqlite/17chapters_86cases_manifest.json
+          retention-days: 30
+      - name: Commit immutable complete 17 chapter archive to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/17chapters_86cases_manifest.json' \
+                     'data/knowledge/shenqi/military_events_prediction_ch13/'
+          git diff --cached --check
+          git commit -m 'Archive complete 17-section 86-case SQLite after military literary source study'
+          git push origin HEAD:main
