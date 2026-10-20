@@ -397,3 +397,11 @@ A 原书原话（含作者原结论），B 人工可核验的事实/规则，C G
 五张盘中五宫只有 `原盘单字：癸/丁/癸/丁/乙`，各保持原字；五宫寄坤二宫仅按旧起局章导出 `derived_host_palace=2`，**绝不捏造中五宫八神/门/星**。五案书内默认成功仅代表**作者报告**、未获独立气象站数据核证；历史17章86案例作者逐项完整专业证据链仍处待人审，不能借新章自动核验谎报完成。天气术数不可替代真实天气预报或洪水预警。
 
 目标快照（仅供构建断言，**不是在归档动作完成前宣称已发布**）：18章/91事件家族/98实际来源盘/882宫/411作者分析/1093语义研究候选，明确原书初断错5例不变。`scripts/build_shenqi_18_from_17.py`、`schema/migrations/013_weather_case_time.sql`、`tests/test_weather_case_import.py`、`.github/workflows/build_weather_archive.yml` 均严格沿用版本化归档流程；归档工作流必须成功提交完整二进制 `.sqlite3`、`.xz`、SHA manifest和五案章节索引，复查GitHub远端路径/哈希与最新HEAD对应Python3.11/3.12 CI通过后才标完成。不开发 UI，不动旧 QimenLLM。
+
+## 2026-10-20 第18章《天时气象预测》完整公开SQLite已归档：实测验证与下一章唯一基库
+
+**此处是GitHub二进制归档成功后的实际状态，优先于本文件此前“目标/待验”描述。** 自动归档工作流 [Build and archive eighteenth weather source SQLite #1](https://github.com/turnupmason/WenguaApp/actions/runs/39451797786) 从来源提交 `fed9806811d25ec0eeb453428cc44a879f3468e4` 构建成功，已由 github-actions[bot] 写入 `main` 归档提交 `8dd8b384ac1d51548fc64979ac5f3acb0401462b`。未压缩原始SQLite独立新路径 `archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3`，Git Blob SHA `81ac96832000a598dda6db0ec207a6ef3997e780`，**实际3,692,544字节**，SHA256 **`c20edf3611a71d31a241f45d10f9b4a175212081659ac05908b980fd8854c31c`**。另存原始数据压缩 `.sqlite3.xz`，大小333,528字节，SHA256 **`574b5d502f315c2b74e6da2fd756f53aac14c337f0795795c447e2af5d6de4c0`**；校验清单 `archives/sqlite/18chapters_91cases_manifest.json` 已从GitHub远端读取并核对，与两份实际Git Blob路径一致。
+
+**新库实际**：原始来源章节18、独立事件家族91、真实印出九宫盘98张、原字宫位882、作者分析步骤411、来源候选1,093；新章新增5案/5印盘/45宫/13步/36通法草稿=49新候选。继续保留历史明确初断错误5案。源稿准确SHA256 `6093f9a89bd2eb889c392242892528a9022c6d9565f74be8912e2a8724663697`，19,857字节、156行。此库由上一版 **17章86案的真实二进制快照** SHA256 `d29cfc5cd0779cf0a334b168a48c07f7145d51f0fe1424c5c0954b76e1133867` 用 SQLite backup() 衍生，**旧17章数据逐表源行不变**；远端构建结果 `PRAGMA integrity_check=ok`、`foreign_key_check=[]`；98个中心宫的原字及“寄坤二宫”独立推导保留，没有造中宫门星神。
+
+例1源第42行初断和“结果”严格拆开；例2另有3次非奇门六爻卦，不新增奇门排盘、不用其已知结果污染初问；例3甲辰/乙巳两时条件只归同一来源盘，书内10点续雨隔离为反馈；例4同一球赛时间盘用于天气不同问事，不合并事件；例5按次日用事时辰而非询问时辰起局。所有气象对应成功只是作者文献陈述、尚无独立气象站验证；历史及新章人审的完整可迁移因果证据链仍未全部完成（目前自动抽取只为draft且禁止正向训练），不能据此宣称能可靠预测天气或洪水。下次必须以**本18章91案完整GitHub SQLite**作为唯一新起点，继续无损版本归档。UI/旧QimenLLM仍冻结。完成交接后需要检查最新handoff提交对应的Python3.11/3.12 CI，不能拿归档机器人写入前的#201冒充最终HEAD已测。
