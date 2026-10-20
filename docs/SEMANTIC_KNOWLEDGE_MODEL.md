@@ -226,3 +226,8 @@ Kaiwu 第三章 `kaiwu/paper_grid_casting_ch03/v1` 的12幅原书教学九宫图
 ## 第五章并行古文和现代释义的来源结构
 
 kaiwu/classical_fate_exposition_ch05/v1 由12段古文和12段作者解说组成。020迁移表 kaiwu_classical_verse_explanations 保存原句、解说各自line/hash；kaiwu_classical_fate_motifs 保存可在原文中逐字定位的符号语境片段与条件；semantic_assertions/cross_book_concept_tracks 只追加来源，不将上书词条或V1覆盖。生命/贫富/性格/医疗等属于未验证书内传统主张，default draft/0 positive training；没有新独立历史事件和印盘。
+
+
+## 2026-10-20 跨书人体疾病同领域事件归并的真实归档例
+
+2026-10-20 《开悟之门》第二章日常百事第一节人体疾病预测原文SHA 49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d，实际书内六个场景六张印盘。和《神奇之门》统一cases.domain_id='health'且统一查询视图health_cases_all_books，重复同一1996-07-27父病只存一个event family（shenqi.health.19960727.father_illness），新书第二份原印盘保留为健康跨书来源witness及9个逐字原宫，但不新增历史盘/案例的独立计数。新增五件新历史事件、五张新独立起盘、21个作者步骤。另存AB事后比较不能代替原事前预测，完整原文和章/书/时序/证据多轨共存。当前新版父SQLite SHA256 79b30135e42129f6596c66f09eec66496ae5d08afb8786f2831581f3fe7c6b05，从前完整版本SHA 1c445680fa5bb4ea928b5154f7cc8c1f0957681cd94dc062e02ffb601461ba9e使用sqlite3.backup生成、旧数据逐行不变。今后跨书同案默认事件维度去重、source witness维度不去重。对人体/动物健康的传统来源断词不是经验证医疗判断；所有新增规则draft、正向训练0。严禁倒灌后验或填造原始宫位缺失。
