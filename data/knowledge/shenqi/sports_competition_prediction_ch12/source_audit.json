@@ -1,0 +1,17 @@
+{
+  "schema": "wengua_sports_source_audit_v1",
+  "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
+  "actual_chart_start": [
+    22,
+    61,
+    98,
+    145,
+    178,
+    213,
+    248
+  ],
+  "case2_no_printed_early_chart": true,
+  "case3_all_methods_preserved": true,
+  "case5_literal_OCR": "铺庚",
+  "case6_initial_wrong_winner_and_hindsight_separate": true
+}

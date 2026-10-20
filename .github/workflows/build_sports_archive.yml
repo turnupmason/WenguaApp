@@ -1,0 +1,83 @@
+name: Build and archive next sports chapter SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_shenqi_16_from_15.py'
+      - 'sources/shenqi/神奇之门_体育竞赛预测_精校完整版(1).txt'
+      - 'schema/migrations/011_sports_source_qualification.sql'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Backup current 15-chapter SQLite and import the source chapter, non-destructively
+        run: |
+          mkdir -p archives/sqlite
+          python scripts/build_shenqi_16_from_15.py \
+            --base 'archives/sqlite/WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3' \
+            --source 'sources/shenqi/神奇之门_体育竞赛预测_精校完整版(1).txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/shenqi/sports_competition_prediction_ch12'
+      - name: Create compressed backup and verifiable manifest
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          folder=Path('archives/sqlite')
+          base=folder/'WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3'
+          db=folder/'WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3'
+          compressed=db.with_suffix(db.suffix+'.xz')
+          compressed.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          m=json.loads(Path('data/knowledge/shenqi/sports_competition_prediction_ch12/chapter_manifest.json').read_text('utf8'))
+          with sqlite3.connect(db) as con:
+              assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+              assert con.execute('SELECT count(*) FROM historical_case_book_verdicts WHERE verdict=\'author_book_error_explicit\'').fetchone()[0]==5
+          doc={
+            'schema':'wengua_full_sqlite_version_archive_v3','book':'神奇之门','chapter_count':16,
+            'event_families':84,'actual_source_charts':89,'source_palace_cells':801,
+            'author_reasoning_units':376,'semantic_assertions':990,
+            'source_title':'体育竞赛预测','source_sha256':m['source_sha256'],
+            'source_bytes':m['source_bytes'],'source_lines':m['source_lines'],
+            'baseline_path':str(base),'baseline_sha256':hashlib.sha256(base.read_bytes()).hexdigest(),
+            'main_archive_path':str(db),'sha256':hashlib.sha256(db.read_bytes()).hexdigest(),'size':db.stat().st_size,
+            'compressed_archive_path':str(compressed),'compressed_sha256':hashlib.sha256(compressed.read_bytes()).hexdigest(),
+            'compressed_size':compressed.stat().st_size,'integrity_check':'ok','foreign_key_violations':0,
+            'source_original_rows_intact':True,'human_causal_reasoning_approved':0,
+            'public_archive_per_user_instruction':True}
+          (folder/'16chapters_84cases_manifest.json').write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          PY
+      - name: Test archive and legacy preservation with stdlib
+        run: python -m unittest discover -s tests -p test_sports_case_import.py -v
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sports-16chapters-full-sqlite
+          path: |
+            archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3.xz
+            archives/sqlite/16chapters_84cases_manifest.json
+          retention-days: 30
+      - name: Commit immutable 16-chapter archival snapshot to current main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/16chapters_84cases_manifest.json' \
+                     'data/knowledge/shenqi/sports_competition_prediction_ch12/' 
+          git diff --cached --check
+          git commit -m 'Archive full 16-chapter 84-case SQLite with source-preserving sports study'
+          git push origin HEAD:main

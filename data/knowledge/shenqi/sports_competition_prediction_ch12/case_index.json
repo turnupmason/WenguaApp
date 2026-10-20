@@ -1,0 +1,682 @@
+{
+  "schema": "wengua_sports_whole_cases_v1",
+  "chapter_key": "shenqi/sports_competition_prediction_ch12/v1",
+  "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
+  "cases": [
+    {
+      "case_number": 1,
+      "case_id": "shenqi.sports.case01",
+      "event_family_id": "shenqi.sports.case01",
+      "title": "1995世界乒乓女团中国韩国决赛",
+      "original_chapter_source_span": [
+        11,
+        47
+      ],
+      "printed_chart_start": 22,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        38,
+        40,
+        42
+      ],
+      "source_question_lines": [
+        13,
+        15,
+        17,
+        19
+      ],
+      "source_original_prediction_lines": [
+        44
+      ],
+      "source_feedback_lines": [
+        46
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 38,
+          "topic": "主队以地盘时壬艮宫，裁判、教练、天英星与巳月加权",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:景",
+            "star:英"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 40,
+          "topic": "客队以天盘时壬兑宫，门星助强但巳月克金",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "door:生",
+            "star:任",
+            "trigram:兑"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 42,
+          "topic": "金牌辛天地盘宫克比较判主队",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true
+    },
+    {
+      "case_number": 2,
+      "case_id": "shenqi.sports.case02",
+      "event_family_id": "shenqi.sports.case02",
+      "title": "1995世界乒乓男团中国瑞典决赛",
+      "original_chapter_source_span": [
+        48,
+        88
+      ],
+      "printed_chart_start": 61,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        56,
+        77,
+        79,
+        81,
+        83
+      ],
+      "source_question_lines": [
+        50,
+        52,
+        54
+      ],
+      "source_original_prediction_lines": [
+        56,
+        85
+      ],
+      "source_feedback_lines": [
+        87
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 56,
+          "topic": "甲戌时星门伏吟比和判9点前势均力敌；只有文字未印原盘",
+          "stage": "unprinted_initial_cast_author_judgment",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 77,
+          "topic": "乙亥时地盘乙主中国队离宫值符开门吉，兼看月令",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:开"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 79,
+          "topic": "乙亥时天盘乙客瑞典巽宫受惊门九天及乙辛凶格",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:九天",
+            "door:惊",
+            "star:英"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 81,
+          "topic": "金牌辛地盘天盘宫比和，另用门神取舍",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:九地",
+            "deity:九天",
+            "door:死"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 83,
+          "topic": "技术指导景门与主客宫关系、时令比较",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "door:景"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true,
+      "unprinted_first_cast": {
+        "time": "1995-05-08 甲戌时",
+        "line_mention": 54,
+        "author_first_judgment_line": 56,
+        "actual_printed_chart": false,
+        "printed_follow_up_hour": "乙亥时",
+        "printed_chart_line": 61
+      }
+    },
+    {
+      "case_number": 3,
+      "case_id": "shenqi.sports.case03",
+      "event_family_id": "shenqi.sports.case03",
+      "title": "1995世乒男子单打孔令辉刘国良号码比较",
+      "original_chapter_source_span": [
+        89,
+        135
+      ],
+      "printed_chart_start": 98,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        114,
+        116,
+        118,
+        120,
+        122,
+        124,
+        126,
+        128,
+        130,
+        132
+      ],
+      "source_question_lines": [
+        91,
+        93,
+        95
+      ],
+      "source_original_prediction_lines": [
+        132
+      ],
+      "source_feedback_lines": [
+        134
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 114,
+          "topic": "两名中国选手无法分传统主客，以背号113、114取宫数候选",
+          "stage": "candidate_palace_number",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 116,
+          "topic": "宫数3和4五行比和；旧格门星神多冲突仍难定胜负",
+          "stage": "candidate_palace_number",
+          "prior_concept_candidate_ids": [
+            "deity:六合",
+            "deity:白虎",
+            "door:开",
+            "door:惊",
+            "star:心",
+            "star:蓬"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 118,
+          "topic": "改以伤门孔令辉、杜门刘国良为八门候选",
+          "stage": "candidate_eight_gates",
+          "prior_concept_candidate_ids": [
+            "door:伤",
+            "door:杜"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 120,
+          "topic": "伤门兑宫与丁戊青龙转光评估孔令辉",
+          "stage": "candidate_eight_gates",
+          "prior_concept_candidate_ids": [
+            "deity:九天",
+            "door:伤"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 122,
+          "topic": "杜门乾宫庚乙太白逢星评估刘国良",
+          "stage": "candidate_eight_gates",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:杜"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 124,
+          "topic": "八门二宫比和反吟仍不分胜负",
+          "stage": "candidate_eight_gates",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 7,
+          "source_line": 126,
+          "topic": "改以天冲星孔令辉、天辅星刘国良取九星",
+          "stage": "final_nine_stars_choice",
+          "prior_concept_candidate_ids": [
+            "star:冲",
+            "star:辅"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 8,
+          "source_line": 128,
+          "topic": "孔令辉天冲星坤宫生门九地奇诈结构",
+          "stage": "final_nine_stars_choice",
+          "prior_concept_candidate_ids": [
+            "deity:九地",
+            "deity:螣蛇",
+            "door:生",
+            "star:冲"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 9,
+          "source_line": 130,
+          "topic": "刘国良天辅星兑宫伤门九天与丁戊",
+          "stage": "final_nine_stars_choice",
+          "prior_concept_candidate_ids": [
+            "deity:九天",
+            "door:伤",
+            "star:辅"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 10,
+          "source_line": 132,
+          "topic": "结合巳月火旺生坤土克兑金，九星候选偏孔令辉",
+          "stage": "final_nine_stars_choice",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true,
+      "method_competition": {
+        "palace_number": [
+          114,
+          116
+        ],
+        "eight_gates": [
+          118,
+          120,
+          122,
+          124
+        ],
+        "nine_stars": [
+          126,
+          128,
+          130,
+          132
+        ],
+        "all_candidates_preserved": true
+      }
+    },
+    {
+      "case_number": 4,
+      "case_id": "shenqi.sports.case04",
+      "event_family_id": "shenqi.sports.case04",
+      "title": "1996亚特兰大奥运会中国队金牌数",
+      "original_chapter_source_span": [
+        136,
+        166
+      ],
+      "printed_chart_start": 145,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        161,
+        163
+      ],
+      "source_question_lines": [
+        138,
+        140,
+        142
+      ],
+      "source_original_prediction_lines": [
+        163
+      ],
+      "source_feedback_lines": [
+        165
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 161,
+          "topic": "地盘时干主中国队坎宫见金牌辛开门值符，天任相反",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:开",
+            "star:任"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 163,
+          "topic": "坎水一六数给十枚或十六枚双候选",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "trigram:坎"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true
+    },
+    {
+      "case_number": 5,
+      "case_id": "shenqi.sports.case05",
+      "event_family_id": "shenqi.sports.case05",
+      "title": "1998巴西荷兰世界杯半决赛",
+      "original_chapter_source_span": [
+        167,
+        203
+      ],
+      "printed_chart_start": 178,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        194,
+        196,
+        198
+      ],
+      "source_question_lines": [
+        169,
+        171,
+        173,
+        175
+      ],
+      "source_original_prediction_lines": [
+        200
+      ],
+      "source_feedback_lines": [
+        202
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 194,
+          "topic": "海外中立场地须按距离确定荷兰主巴西客",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 196,
+          "topic": "荷兰主地盘辛艮宫值符但入墓天蓬衰与失球数候选",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:开",
+            "star:蓬",
+            "trigram:艮"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 198,
+          "topic": "巴西客天盘辛震宫休门九天及木克土得胜",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:九天",
+            "door:休",
+            "star:任"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true,
+      "score_definition": {
+        "90_minute": "1:1",
+        "after_extra_time": "1:1",
+        "post_penalty_total_reported": "5:3",
+        "winner": "Brazil",
+        "prohibition": "do_not_claim_five_three_regulation_time"
+      },
+      "literal_chart_warning": {
+        "source_line": 181,
+        "palace": "离九宫",
+        "source_literal": "铺庚",
+        "may_be_OCR_of": "辅庚",
+        "do_not_silently_correct": true
+      }
+    },
+    {
+      "case_number": 6,
+      "case_id": "shenqi.sports.case06",
+      "event_family_id": "shenqi.sports.case06",
+      "title": "1998法国克罗地亚世界杯半决赛",
+      "original_chapter_source_span": [
+        204,
+        238
+      ],
+      "printed_chart_start": 213,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        229,
+        231,
+        233
+      ],
+      "source_question_lines": [
+        206,
+        208,
+        210
+      ],
+      "source_original_prediction_lines": [
+        235
+      ],
+      "source_feedback_lines": [
+        237
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 229,
+          "topic": "法国东道主取地盘时壬兑宫，值符但伤门被宫克",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:伤"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 231,
+          "topic": "客克罗地亚天盘时壬坎宫景门火入水乡",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:九地",
+            "door:景"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 233,
+          "topic": "作者初断兑金生坎水并取兑二坎一数给客胜2比1",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "trigram:兑",
+            "trigram:坎"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_error_explicit",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true,
+      "error_and_correction": {
+        "first_prediction_line": 235,
+        "later_result_and_self_correction_line": 237,
+        "original_predicted_winner": "Croatia",
+        "actual_winner_in_book": "France",
+        "score_digits_same_but_winner_reversed": true,
+        "after_result_reason_not_initial": true,
+        "training_error_negative": true
+      }
+    },
+    {
+      "case_number": 7,
+      "case_id": "shenqi.sports.case07",
+      "event_family_id": "shenqi.sports.case07",
+      "title": "1998法国巴西世界杯决赛",
+      "original_chapter_source_span": [
+        239,
+        276
+      ],
+      "printed_chart_start": 248,
+      "only_source_printed_charts": 1,
+      "source_author_analysis_lines": [
+        264,
+        266,
+        268,
+        270,
+        272,
+        274
+      ],
+      "source_question_lines": [
+        241,
+        243,
+        245
+      ],
+      "source_original_prediction_lines": [
+        270,
+        272,
+        274
+      ],
+      "source_feedback_lines": [
+        276
+      ],
+      "author_source_steps": [
+        {
+          "step_number": 1,
+          "source_line": 264,
+          "topic": "法国东道主与巴西客队身份区分",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 266,
+          "topic": "法国地盘时丙兑宫值符休门",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:值符",
+            "door:休"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 268,
+          "topic": "巴西天盘时丙震宫白虎景门",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "deity:白虎",
+            "door:景"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 270,
+          "topic": "未月主兑金旺克震木休囚，断主法国胜",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 272,
+          "topic": "天柱星与天冲星宫克、木数三推3比0",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [
+            "star:冲",
+            "star:柱"
+          ],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 274,
+          "topic": "金牌辛地盘与天盘对主客生克，推卫冕失败",
+          "stage": "initial_original_author_analysis",
+          "prior_concept_candidate_ids": [],
+          "review_status": "source_anchored_draft",
+          "positive_training_eligible": false
+        }
+      ],
+      "book_outcome": "author_book_success_default",
+      "independent_sports_prediction_verified": false,
+      "source_printed_original_independently_recast": false,
+      "whole_case_unsplit": true,
+      "last_step_unnumbered_style": "⑥"
+    }
+  ]
+}

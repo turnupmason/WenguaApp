@@ -1,0 +1,73 @@
+{
+  "schema": "wengua_sports_methods_v1",
+  "chapter_key": "shenqi/sports_competition_prediction_ch12/v1",
+  "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
+  "methods": [
+    {
+      "concept_id": "sports:general:referee_zhifu",
+      "source_line": 7,
+      "conditional_summary": "值符代表裁判",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:athlete_day_hour",
+      "source_line": 7,
+      "conditional_summary": "日干或时干可作运动员候选，依问事明确选择",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:home_ground_day_hour",
+      "source_line": 7,
+      "conditional_summary": "主队取地盘日干或时干，不能无条件假设任一方为主队",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:away_heaven_day_hour",
+      "source_line": 7,
+      "conditional_summary": "客队取天盘日干或时干，必须先说明主客依据",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:palace_strength",
+      "source_line": 7,
+      "conditional_summary": "比较用神落宫旺相休囚与时令",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:auspicious_patterns",
+      "source_line": 7,
+      "conditional_summary": "比较双方格局吉凶，不能单凭一门断胜负",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:mutual_promotion_restriction",
+      "source_line": 7,
+      "conditional_summary": "分析主客落宫五行相生相克",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:equipment_geng",
+      "source_line": 7,
+      "conditional_summary": "庚为比赛器械",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:medal_xin",
+      "source_line": 7,
+      "conditional_summary": "辛为金牌",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:coach_jing",
+      "source_line": 7,
+      "conditional_summary": "景门为技术指导",
+      "review_status": "draft"
+    },
+    {
+      "concept_id": "sports:general:multi_evidence",
+      "source_line": 7,
+      "conditional_summary": "应综合值符、门星神、时令与干加干及金牌多个证据",
+      "review_status": "draft"
+    }
+  ]
+}

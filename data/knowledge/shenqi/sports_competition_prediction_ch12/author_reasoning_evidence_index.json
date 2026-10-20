@@ -1,0 +1,811 @@
+{
+  "schema": "wengua_sports_source_step_evidence_v1",
+  "chapter_key": "shenqi/sports_competition_prediction_ch12/v1",
+  "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
+  "author_source_steps": 32,
+  "human_verified_complete_reasoning": 0,
+  "cases": [
+    {
+      "case_id": "shenqi.sports.case01",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 38,
+          "topic": "主队以地盘时壬艮宫，裁判、教练、天英星与巳月加权",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(1)以地盘时干壬为主队",
+            "在艮8宫",
+            "上乘值符",
+            "值符为裁判",
+            "与值符同宫",
+            "上乘天英星",
+            "英星属火",
+            "火生土",
+            "上乘景门",
+            "景门为技术指导",
+            "8宫属土",
+            "月令巳火生助艮土",
+            "时令对我有利",
+            "说明我女队士气旺盛"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:景",
+            "star:英"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 40,
+          "topic": "客队以天盘时壬兑宫，门星助强但巳月克金",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)以天盘时干壬为客队",
+            "落兑宫",
+            "上乘天任星属土",
+            "土生金",
+            "上乘生门",
+            "生门属土",
+            "土生金",
+            "火旺金死",
+            "说明时令对客队不利"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但四月月令巳火",
+            "说明时令对客队不利"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "door:生",
+            "star:任",
+            "trigram:兑"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 42,
+          "topic": "金牌辛天地盘宫克比较判主队",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "辛为金牌",
+            "地盘辛在兑7宫属金",
+            "天盘辛落巽4宫属木",
+            "金克木"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case02",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 56,
+          "topic": "甲戌时星门伏吟比和判9点前势均力敌；只有文字未印原盘",
+          "stage": "unprinted_initial_cast_author_judgment",
+          "source_claimed_evidence_fragments": [
+            "我一看是伏吟局",
+            "地盘时干、天盘时干同宫比和",
+            "再看看乙亥时的奇门格局吧"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "在9点以前(甲戌时内)恐怕难分胜负"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 77,
+          "topic": "乙亥时地盘乙主中国队离宫值符开门吉，兼看月令",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(1)以地盘时干乙为主队",
+            "在离9宫",
+            "上乘芮星为土",
+            "宫生星",
+            "上乘开门属金",
+            "火克金",
+            "宫克门",
+            "上乘值符",
+            "值符为裁判",
+            "四月火旺",
+            "我队落入旺宫",
+            "士气很旺",
+            "又己+乙为地户逢星",
+            "半吉半凶",
+            "开门也为吉门"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "半吉半凶"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:开"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 79,
+          "topic": "乙亥时天盘乙客瑞典巽宫受惊门九天及乙辛凶格",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)以天盘时干乙为客队",
+            "天盘时干乙落4宫",
+            "4宫木生9宫火",
+            "4宫上乘天英星",
+            "木生火",
+            "宫生星",
+            "上乘惊门为凶门为金",
+            "金克木",
+            "门克宫",
+            "金克木",
+            "又乙+辛为龙逃走凶格"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "上乘惊门为凶门为金",
+            "又乙+辛为龙逃走凶格",
+            "客队不利"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九天",
+            "door:惊",
+            "star:英"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 81,
+          "topic": "金牌辛地盘天盘宫比和，另用门神取舍",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(3)以辛为金牌",
+            "地盘辛在巽4宫属木",
+            "天盘辛落3宫",
+            "二宫比和",
+            "但4宫上乘九天",
+            "3宫上乘九地和死门",
+            "所以天盘落宫不利"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但4宫上乘九天",
+            "所以天盘落宫不利"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九地",
+            "deity:九天",
+            "door:死"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 83,
+          "topic": "技术指导景门与主客宫关系、时令比较",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(4)景门为技术指导",
+            "落艮8宫",
+            "与主队落宫相生",
+            "与客队落宫相克",
+            "四月火旺土相木休"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "door:景"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case03",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 114,
+          "topic": "两名中国选手无法分传统主客，以背号113、114取宫数候选",
+          "stage": "candidate_palace_number",
+          "source_claimed_evidence_fragments": [
+            "如果看地盘3宫和4宫："
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 116,
+          "topic": "宫数3和4五行比和；旧格门星神多冲突仍难定胜负",
+          "stage": "candidate_palace_number",
+          "source_claimed_evidence_fragments": [
+            "则①震3宫和巽4宫",
+            "比和",
+            "②3宫乙+癸为华盖逢星",
+            "惊门为金",
+            "门克宫",
+            "星为天心星为金",
+            "也克宫",
+            "与宫比和",
+            "③4宫辛+丁为狱神得奇",
+            "开门为金",
+            "门克宫",
+            "天蓬星为水",
+            "生宫",
+            "又克宫"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但上乘白虎为金"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:六合",
+            "deity:白虎",
+            "door:开",
+            "door:惊",
+            "star:心",
+            "star:蓬"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 118,
+          "topic": "改以伤门孔令辉、杜门刘国梁为八门候选",
+          "stage": "candidate_eight_gates",
+          "source_claimed_evidence_fragments": [
+            "所以如果以地盘宫数为用神",
+            "如果以八门为用神",
+            "则3宫伤门代表孔令辉",
+            "4宫杜门代表刘国良："
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "仍不分胜负"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "door:伤",
+            "door:杜"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 120,
+          "topic": "伤门兑宫与丁戊青龙转光评估孔令辉",
+          "stage": "candidate_eight_gates",
+          "source_claimed_evidence_fragments": [
+            "(1)伤门落兑7宫属金",
+            "宫克星",
+            "宫克门"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九天",
+            "door:伤"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 122,
+          "topic": "杜门乾宫庚乙太白逢星评估刘国梁",
+          "stage": "candidate_eight_gates",
+          "source_claimed_evidence_fragments": [
+            "(2)杜门落乾6宫属金",
+            "庚+乙为太白逢星",
+            "退吉进凶",
+            "星克宫",
+            "宫克门",
+            "上乘值符"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "退吉进凶",
+            "谋为不利"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:杜"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 124,
+          "topic": "八门二宫比和反吟仍不分胜负",
+          "stage": "candidate_eight_gates",
+          "source_claimed_evidence_fragments": [
+            "但二门落宫比和",
+            "又均为反吟"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但二门落宫比和",
+            "又均为反吟"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 7,
+          "source_line": 126,
+          "topic": "改以天冲星孔令辉、天辅星刘国梁取九星",
+          "stage": "final_nine_stars_choice",
+          "source_claimed_evidence_fragments": [
+            "二人均是乒坛明星",
+            "应以九星为用神",
+            "以3宫的天冲星为孔令辉",
+            "以4宫的天辅星为刘国良"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "star:冲",
+            "star:辅"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 8,
+          "source_line": 128,
+          "topic": "孔令辉天冲星坤宫生门九地奇诈结构",
+          "stage": "final_nine_stars_choice",
+          "source_claimed_evidence_fragments": [
+            "(1)代表孔令辉的天冲星落坤2宫",
+            "逢生门为吉门",
+            "生门属土",
+            "门宫比和",
+            "与宫也比和",
+            "开休生三吉门",
+            "百事皆吉"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "贵贱逢之皆不利"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九地",
+            "deity:螣蛇",
+            "door:生",
+            "star:冲"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 9,
+          "source_line": 130,
+          "topic": "刘国梁天辅星兑宫伤门九天与丁戊",
+          "stage": "final_nine_stars_choice",
+          "source_claimed_evidence_fragments": [
+            "(2)代表刘国良的天辅星落兑7宫",
+            "逢伤门为凶门",
+            "且伤门为木",
+            "被兑7宫之金所克",
+            "宫克门",
+            "为凶",
+            "与宫比和"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "逢伤门为凶门",
+            "为凶"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九天",
+            "door:伤",
+            "star:辅"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 10,
+          "source_line": 132,
+          "topic": "结合巳月火旺生坤土克兑金，九星候选偏孔令辉",
+          "stage": "final_nine_stars_choice",
+          "source_claimed_evidence_fragments": [
+            "从以上二星落宫格局看",
+            "再结合时令",
+            "正值四月火旺",
+            "生助孔令辉所落坤2宫之土",
+            "克制刘国良所落兑7宫之金",
+            "2宫旺相",
+            "7宫休囚无力"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case04",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 161,
+          "topic": "地盘时干主中国队坎宫见金牌辛开门值符，天任相反",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(1)以地盘时干为中国队",
+            "在坎1宫",
+            "上乘辛",
+            "辛为金牌",
+            "临开门吉门生宫",
+            "值符吉神",
+            "但天任星克宫"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但天任星克宫",
+            "虽然困难不少",
+            "但会开创一个新局面"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:开",
+            "star:任"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 163,
+          "topic": "坎水一六数给十枚或十六枚双候选",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)金牌辛落1宫",
+            "坎宫属水"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "trigram:坎"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case05",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 194,
+          "topic": "海外中立场地须按距离确定荷兰主巴西客",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [],
+          "source_claimed_counterevidence_fragments": [
+            "但巴西在南美洲"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 196,
+          "topic": "荷兰主地盘辛艮宫值符但入墓天蓬衰与失球数候选",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)以地盘时干辛为主队",
+            "在艮8宫",
+            "己+辛游魂入墓凶格",
+            "上乘值符吉神",
+            "值符又为裁判",
+            "与裁判同宫",
+            "临天蓬凶星",
+            "但蓬星为水受宫之克",
+            "又受月令未土之克",
+            "开门虽为吉门",
+            "但落8宫为入墓",
+            "又足球赛就是破门",
+            "你逢开门",
+            "还不是让人家进球吗?进几个?艮宫属土"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "己+辛游魂入墓凶格",
+            "临天蓬凶星",
+            "但蓬星为水受宫之克",
+            "但落8宫为入墓"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:开",
+            "star:蓬",
+            "trigram:艮"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 198,
+          "topic": "巴西客天盘辛震宫休门九天及木克土得胜",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(3)以天盘时干辛为客队",
+            "在震3宫",
+            "辛+乙虎猖狂",
+            "临天任吉星",
+            "天任星落3宫虽受克",
+            "但旺于月令",
+            "又休门吉门生宫",
+            "震木克艮土",
+            "客克主",
+            "休门在3宫"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但旺于月令"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九天",
+            "door:休",
+            "star:任"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case06",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 229,
+          "topic": "法国东道主取地盘时壬兑宫，值符但伤门被宫克",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "因此以应地盘时干壬为用神",
+            "地盘时干壬在兑7宫",
+            "上乘庚为比赛器械为足球",
+            "值符为裁判",
+            "与裁判同宫",
+            "临伤门",
+            "但伤门受宫克"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但伤门受宫克"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:伤"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 231,
+          "topic": "客克罗地亚天盘时壬坎宫景门火入水乡",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)克罗地亚队为客",
+            "以天盘时干壬为用神",
+            "在坎1宫",
+            "临景门"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:九地",
+            "door:景"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 233,
+          "topic": "作者初断兑金生坎水并取兑二坎一数给客胜2比1",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(3)地盘时干壬生天盘时干壬落宫",
+            "地盘时干壬在兑宫",
+            "天盘时干壬在坎宫"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "trigram:兑",
+            "trigram:坎"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case07",
+      "steps": [
+        {
+          "step_number": 1,
+          "source_line": 264,
+          "topic": "法国东道主与巴西客队身份区分",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 2,
+          "source_line": 266,
+          "topic": "法国地盘时丙兑宫值符休门",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(2)以地盘时干丙为主队",
+            "落兑7宫",
+            "上乘吉神值符、吉门休门",
+            "值符又为裁判"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:值符",
+            "door:休"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 3,
+          "source_line": 268,
+          "topic": "巴西天盘时丙震宫白虎景门",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(3)以天盘时干丙为客队",
+            "落震3宫",
+            "上乘白虎凶神",
+            "景门凶门"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "上乘白虎凶神",
+            "景门凶门"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [
+            "deity:白虎",
+            "door:景"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 4,
+          "source_line": 270,
+          "topic": "未月主兑金旺克震木休囚，断主法国胜",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "兑7宫之金旺相",
+            "直冲克震3宫休囚之木"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 5,
+          "source_line": 272,
+          "topic": "天柱星与天冲星宫克、木数三推3比0",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "(5)兑7宫地盘之星为天柱星",
+            "直冲克震3宫天冲星",
+            "金旺相",
+            "故主破其门3次"
+          ],
+          "source_claimed_counterevidence_fragments": [],
+          "cross_chapter_lexical_concepts_unverified": [
+            "star:冲",
+            "star:柱"
+          ],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        },
+        {
+          "step_number": 6,
+          "source_line": 274,
+          "topic": "金牌辛地盘与天盘对主客生克，推卫冕失败",
+          "stage": "initial_original_author_analysis",
+          "source_claimed_evidence_fragments": [
+            "⑥又以辛为金牌",
+            "地盘辛在坤2宫",
+            "生助兑7宫主队",
+            "天盘辛在艮8宫",
+            "受震3宫客队之克",
+            "但休囚之木克不动旺相之土"
+          ],
+          "source_claimed_counterevidence_fragments": [
+            "但休囚之木克不动旺相之土"
+          ],
+          "cross_chapter_lexical_concepts_unverified": [],
+          "actual_author_step_in_private_original": true,
+          "full_causal_chain_human_reviewed": false,
+          "printed_source_recast_independently_verified": false,
+          "positive_training_eligible": false
+        }
+      ]
+    }
+  ]
+}

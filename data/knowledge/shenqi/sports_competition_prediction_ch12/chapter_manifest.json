@@ -1,0 +1,16 @@
+{
+  "schema": "wengua_sports_prediction_manifest_v1",
+  "stage": "source_metadata_before_immutable_archive",
+  "chapter_key": "shenqi/sports_competition_prediction_ch12/v1",
+  "source_sha256": "784f49224b8a540850dde469a0fe720d23ee4ab551fa9600dca6137eb4fb5a2b",
+  "source_lines": 276,
+  "source_bytes": 26814,
+  "cases": 7,
+  "printed_charts": 7,
+  "author_steps": 32,
+  "domain_methods": 11,
+  "source_event_errors": [
+    6
+  ],
+  "source_study_only": true
+}
