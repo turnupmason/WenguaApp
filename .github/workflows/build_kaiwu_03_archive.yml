@@ -7,6 +7,7 @@ on:
       - 'sources/kaiwu/开悟之门_第三章.txt'
       - 'schema/migrations/018_kaiwu_didactic_casting_figures.sql'
       - 'tests/test_kaiwu_third_part.py'
+      - '.github/workflows/build_kaiwu_03_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -26,7 +27,7 @@ jobs:
         run: python -m unittest discover -s tests -p test_kaiwu_third_part.py -v
       - name: Copy full 23-source archive and append third Kaiwu chapter and 108 genuine text cells
         run: |
-          python scripts/build_kaiwu_03_from_02.py \
+          python -m scripts.build_kaiwu_03_from_02 \
             --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3' \
             --source 'sources/kaiwu/开悟之门_第三章.txt' \
             --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3' \
