@@ -255,3 +255,9 @@ GitHub Actions只证明代码结构回归，不代表专业预测有效；每次
 **真正创建的私有SQLite**：`WenguaApp_V1_神奇之门_十二章_行人走失五十八例_私有研究库.sqlite3`，从用户十一章库`backup()`只增量写本章，先前48案与十一章原文不改。经实际检查`sections=12,cases=58,historical_chart_cells=522,historical_case_additional_casts=4,historical_case_additional_cast_cells=36,historical_case_reasoning=254,historical_case_book_verdicts=58,historical_case_disclosures=113,semantic_assertions=771`，SQLite`integrity_check=ok`且`foreign_key_check=[]`。第六章老112理论知识候选与起局章32结构记录仍有部分待补私有物化，勿说771已完全包含。
 
 公开`data/knowledge/shenqi/missing_person_prediction_ch08/{chapter_manifest,case_index,method_index,source_audit}.json`与`src/wengua/compile_shenqi_missing.py`、`scripts/import_shenqi_missing.py`、`tests/test_missing_case_import.py`、`docs/MISSING_PERSON_CASE_REASONING_PROTOCOL.md`、本交接文档仅含非版权原文的抽象索引及来源行号。**私有原文、未加密原书SQLite不上传公开repo**。上一批CI通知中的失败属历史旧commit；本轮必须一次合并提交、核对远端每个文件、验证当前main HEAD的Python3.11和3.12两个job均success才标成功。旧QimenLLM和App UI保持不动。
+
+## 2026-10-19 重复原书与完整案例教学方法补充
+
+本轮收到 神奇之门_行人走失预测_精校完整版(2).txt，实际检查477行、49372字节、SHA256 5eca2a1a0914691ec439040a9b538fb8e4385fa5cf8ac5286bc5ae86d25b6574，与已处理的 (1).txt 原字节完全相同。没有第13章、没有新修订或新案例，故不重复入库；当前累计仍是《神奇之门》12章、58个完整事件家族、62张真实九宫、558宫、254组作者分析、771条候选，其中55个书内默认成功与3个明确初断错误；《开悟之门》0章。
+
+已将用户再次强调的永久方法写进根AGENTS与CHAPTER_WORKFLOW：各预测领域第一节提供选用神、看宫位、适用条件、结合旧知识、证据冲突、应期和注意事项的解题方法；每一个完整案例应逐步追踪作者如何在原盘事实与前章概念基础上综合解题，保留初断、反证、明确失误、纠正与后续反馈的时序隔离，最终迁移到新盘的有据解释。此轮只更新规范与来源别名去重状态，并未声称重新训练、重新审核旧58案或增设数据库字段。下一步仍等待真正新章。
