@@ -51,7 +51,7 @@ class HotTopicsTests(unittest.TestCase):
   self.assertIn("看来我测错了",self.lines[542])
   self.assertIn("1951年辛卯",self.lines[544])
   self.assertIn("谁是主谁是客，却存在分歧",self.lines[370])
-  self.assertIn("美国队作为东道主队",self.lines[374])
+  self.assertIn("美国女子足球队作为东道主队",self.lines[374])
   self.assertIn("反复三次左右",self.lines[200])
   self.assertIn("人有惊无险",self.lines[200])
   self.assertEqual(by_key["world_outlook_2000"]["feedback"],[])
