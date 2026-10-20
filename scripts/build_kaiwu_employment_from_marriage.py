@@ -69,7 +69,7 @@ def parse_source(raw):
   raise ValueError("Author postscript must remain complete")
  if L[21].find("原文未辨干")<0 or L[22].find("原文未辨干")<0:
   raise ValueError("Printed undeciphered stems must remain explicitly unknown")
- if "明天" not in L[80] or "1999年阴历二月" not in L[80]:
+ if "这件事办不成" not in L[80] or "1999年阴历二月" not in L[80]:
   raise ValueError("Missing 1997 dated original prediction")
  if "前几天死了一个人" not in L[88] or "二月二十三日" not in L[90]:
   raise ValueError("Missing 1999 retrospective details timing")
