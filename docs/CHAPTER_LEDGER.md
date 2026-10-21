@@ -522,3 +522,20 @@ Source: 开悟之门_求学考试预测.txt, 151 lines, 16257 bytes; source SHA2
 脚本 scripts/build_kaiwu_business_from_missing.py、schema/migrations/027_kaiwu_business_mixed_domains_11cases.sql、tests/test_kaiwu_business_11_mixed_domains.py、.github/workflows/build_kaiwu_business_archive.yml；database.py已注册迁移027。远端真实 Archive Kaiwu business 11 cases #1 success，WenguaApp CI #246 Python3.11及3.12均success；机器人归档 commit 9d550e10ba5bd9d491ed20bc16060ff92f0f71b1，真正manifest archives/sqlite/shenqi21_kaiwu_business_149cases_manifest.json。严格从上版父库SHA 9107e3e440a1448cce93fdef288a48c88a8440b3998c5adcf041e2f770172ae7，经sqlite3.backup()全库append-only，所有旧表旧行保真，SQLite integrity_check=ok、foreign_key_check=0。
 
 **下一章唯一新父SQLite：archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3；真实9811968字节，SHA256 cd1f9e1d4e352644b062bc048afb977dcc457c40bf76a5673a6e39ae93f21ac5，Git blob 4a885a27b60bd9794a371d8473f7b3e0e1ac56aa。** 同名sqlite3.xz压缩800264字节，SHA256 88c0b6f0c581ca99ed6555c85563134cc13d8f2510e1c1bf66d0ba73856b426c。累计33来源节、149独立历史案例、166真实原盘、1494历史宫标准化、754作者编号分析、2428语义断言、1171跨书轨和41条历史用户接受记录。未来只准从上述新SHA的完整SQLite增量备份，不得回退到138案例版、重建库、覆写V1、洗白错误、改旧书原文。结束后须核对文档最终HEAD双Python GitHub CI绿灯，UI与旧QimenLLM不动。
+
+
+## 2026-10-20 《开悟之门》第二章第八节《钱物丢失预测（共4例）》：源书四真实案例、下一唯一全库父版本
+
+完整UTF-8原文 sources/kaiwu/开悟之门_钱物丢失预测.txt，**180行、19,588字节，SHA256 fad699fbddf34f7bf4ff16849d4154d4633bce51c234db1cf0ecc4ff7eb8f554**，Git blob d0ede313b7a2501cab1b97d0af53467b62d3ef51。原书实际是“第二章日常百事预测评析／第八节钱物丢失预测”，本仓库第13个开悟之门来源节，不应改称“原著第13章”。四例独立问事，对应4张13行真正原印OCR重排九宫图（开始第16、57、97、156行），**36个逐宫原文**与25段保留完整原文及来源范围的作者编号/A-D分层分析（5+12+3+5）。没有新增“另外三例”未提供的九宫。全部采用《神奇之门》已有的唯一失物类别 cases.domain_id=lost_property：旧Shenqi八例加新Kaiwu四例一起归入同一个cases表和 unified_lost_property_cases_across_books视图；不新建按书籍隔离的重复业务历史案例域，保持user免逐例审批原书史例政策。
+
+四例历史来源要明确区分失物、失盗、现金未归还等：
+1. 1997-10-12田风良公文包原书第9行先报找回及损失4300元现金，第11行反馈第六天晚领回包/证件和欠条但现金不在，拾包者明确称拾得时就没见到现金；**不得凭书中文字认定拾包青年实际偷取4300元**。原原书艮8休门庚乙“原OCR”、坎1开门其余干支缺损等缺失宫位保留原始不完整文本，绝不补猜。
+2. 1997-07-24石建国自测摩托车**被盗**，先报派出所，原书第50行此前对案子的各项判断，第52行公安追逐小偷三名、车受损、后诉讼和990元维修赔偿的书内结果，属于源书回溯的盗窃案例，不与单纯遗忘混合。
+3. 1999-06-11王夕强问耳环，第117行给出的东北/家中/8小时预测、第123行同日17:30在床上寻获，书内说明睡觉掉落、自己不知；**不属于已经证实盗窃犯罪**。
+4. 1999-08-20佟安琪妻子打电话问失踪摩托车，原书明确写最初**用六爻卦**推测（第139行），8/26买《神奇之门》，**七天后才学会奇门起局**（第141行），1999-09-17才找到车抓到嫌疑人，2000-08-27来信复述方法。第171-178行Qimen分析及精确壬申日推导出现在后来书面复盘中，没有独立时间证据证明这些详细断法**当时8/20就曾提出**；必须把初始六爻答案、8/26后学奇门、复述分析及9/17书内结果区分，不能作为8/20精确奇门盲预测成功。第143-147行提及另几局关于乘坐火车及回程预测但无独立真实九宫盘，也不另造两个Qimen完整案例或额外来源实盘。
+
+四例均为书内用户认可的历史报道，**无须用户逐例审核**，但不等于对现代犯罪事实、占术准确度独立外部核验。不能将原书未经判决的拾包人指控为犯罪。原书各非中五宫全部原“神门星”文字/残缺逐格存literaI来源表、古籍重排中五宫只保存中宫干壬庚乙辛，**不能按常规神/门/星伪补**。任何来源OCR缺字、丢失还是偷盗以及后验原书日期不能自动推断或倒灌。老书原文字节、此前9条整例明确初断错误和数据库所有旧表行必须原样留存。
+
+**远端真正归档完成：**源 builder scripts/build_kaiwu_lost_from_business.py、迁移schema/migrations/028_kaiwu_lost_property_crossbook_four_cases.sql、测试tests/test_kaiwu_lost_four_shared_domain.py、GitHub Action .github/workflows/build_kaiwu_lost_archive.yml，src/wengua/database.py已注册新迁移。第一次 Archive Kaiwu lost property #1 成功，WenguaApp CI#248 Python3.11/3.12 成功；GitHub Actions 机器人真正上传 commit **4160f95e3260eb87602a9a3097dc2da212a9db32**，实际 SQLite+XZ+manifest 文件及四份新章节索引均已在main验证。归档 manifest archives/sqlite/shenqi21_kaiwu_lost_153cases_manifest.json；从上一版SHA256 **cd1f9e1d4e352644b062bc048afb977dcc457c40bf76a5673a6e39ae93f21ac5** 的149例完整SQLite仅用 sqlite3.backup() 追加，旧所有表旧行逐字相同，SQLite integrity_check=ok、外键违规0。
+
+**唯一最新父SQLite（下一章必须从这个完整版本增量）：** archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3，**10,035,200字节；SHA256 3e92bdf9a356edb0685bcb803122319ed56477ab97d0fd38b23a2f5c16fc2185**，Git blob 4fa8b721c11d585a415071306a7ef44d08d59586。独立同名 .sqlite3.xz 压缩包大小818,232字节，SHA256 **0b3f82937856b3228f168ac6f762923c809b93a42b42cdc8e55c1c0da2cac945**，Git blob bd90859efb912ba9bc7348ed7e94527c81e5b3b3。累计34来源节（Shenqi21+Kaiwu13）、153个独立问事、170张真正原印盘、historical_chart_cells1368、历史盘宫标准化1530、历史作者完整分析779、semantic_assertions2453、cross_book_concept_tracks1196、historic_book_case_acceptance45、统一跨域facet57，旧9整例明确错误原样保留。后续只从新SHA完整全库sqlite3.backup增量，不得从旧149案例或更老版本重建、删除、覆盖老原文、错例或界面。文档更新提交后要再次校验最终最新HEAD的双Python CI成功才交接。
