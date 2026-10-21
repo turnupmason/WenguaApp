@@ -1,0 +1,101 @@
+name: Archive Kaiwu missing persons in unified Shenqi domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_行人走失预测.txt'
+      - 'scripts/build_kaiwu_missing_from_education.py'
+      - 'schema/migrations/026_kaiwu_missing_crossbook_ocr_multicast.sql'
+      - 'tests/test_kaiwu_missing_shared_domain.py'
+      - '.github/workflows/build_kaiwu_missing_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact original, six genuine source panels, 54 raw palaces and five events
+        run: python -m unittest discover -s tests -p test_kaiwu_missing_shared_domain.py -v
+      - name: Rebuild nothing old; only back up complete previous 133-case SQLite and append
+        run: |
+          python -m scripts.build_kaiwu_missing_from_education \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门10节_133案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_行人走失预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/missing_person_prediction_ch02_section07'
+      - name: LZMA XZ compress, independently hash actual binary and verify printed cast counts
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门10节_133案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          d=json.loads(Path('data/knowledge/kaiwu/missing_person_prediction_ch02_section07/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==d['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT COUNT(*) FROM "'+t+'"').fetchone()[0] for t in d['cumulative_counts']}
+           assert counts==d['cumulative_counts']
+           assert counts['cases']==138 and counts['missing_crossbook_casts']==6
+           assert counts['missing_crossbook_palaces']==54 and counts['missing_crossbook_subjects']==2
+          result={'schema':'wengua_shenqi21_kaiwu11_missing_people_complete_archive_v1',
+           'source_title':d['source_title'],'source_sha256':d['source_sha256'],
+           'source_bytes':d['source_bytes'],'source_lines':d['source_lines'],
+           'new_book_cases_user_accepted_no_manual_approval':5,
+           'new_distinct_events':5,'new_original_printed_charts':6,'new_source_palace_cells':54,
+           'new_book_numbered_author_reasoning_steps':29,'new_real_additional_casts':1,
+           'first_missing_niece_two_charts_one_event':True,
+           'two_hotel_waitresses_one_case_one_chart':True,
+           'student_aug16_predicted_aug17_return_actual_miss':True,
+           'ocr_unreadable_cells_original_preserved_never_inferred':True,
+           'old_shenqi_MaLande_female_taxi_reference_only_not_duplicate':True,
+           'total_source_sections':32,'book_counts':d['book_counts'],
+           'total_distinct_historical_event_families':138,
+           'total_original_book_printed_casts':155,
+           'all_8_prior_explicit_initial_case_errors_preserved':True,
+           'prior_complete_archive_path':str(old),
+           'prior_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'full_new_archive_path':str(new),'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_errors':0,
+           'all_prior_table_rows_unchanged':True,'user_authorized_public_full_archive':True,
+           'not_independently_verified_criminal_or_disappearance_details':True}
+          (root/'shenqi21_kaiwu_missing_138cases_manifest.json').write_text(
+             json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-shenqi21-kaiwu11-missing-138-events
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_missing_138cases_manifest.json
+          retention-days: 30
+      - name: Commit genuinely built full SQLite, XZ and provenance indices as new immutable version
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_missing_138cases_manifest.json' \
+                     'data/knowledge/kaiwu/missing_person_prediction_ch02_section07/'
+          git diff --cached --check
+          git commit -m 'Archive five Kaiwu missing-person book events and six exact original OCR-preserved casts'
+          git push origin HEAD:main
