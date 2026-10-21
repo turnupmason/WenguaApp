@@ -1,0 +1,108 @@
+name: Archive Kaiwu weather two OCR-fragment source cases
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_天时气象预测.txt'
+      - 'scripts/build_kaiwu_weather_from_criminal.py'
+      - 'schema/migrations/031_kaiwu_weather_flattened_original_panels.sql'
+      - 'tests/test_kaiwu_weather_flattened_shared_domain.py'
+      - '.github/workflows/build_kaiwu_weather_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test exact two book cases, unresolvable source OCR and no invented palace source data
+        run: python -m unittest discover -s tests -p test_kaiwu_weather_flattened_shared_domain.py -v
+      - name: Back up SHA-pinned complete 161-event SQLite then append exact Kaiwu chapter
+        run: |
+          python -m scripts.build_kaiwu_weather_from_criminal \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_天时气象预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/weather_prediction_ch02_section13'
+      - name: XZ actual full SQLite; hash binary; verify all old chart cells and raw OCR fragments
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          base=Path('archives/sqlite')
+          old=base/'WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3'
+          new=base/'WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          m=json.loads(Path('data/knowledge/kaiwu/weather_prediction_ch02_section13/chapter_manifest.json').read_text('utf8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==m['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           actual={k:db.execute('SELECT count(*) FROM "'+k+'"').fetchone()[0] for k in m['counts']}
+          assert actual==m['counts']
+          assert actual['cases']==163 and actual['kaiwu_weather_raw_cast_fragments']==2
+          assert actual['kaiwu_weather_raw_fragment_lines']==33
+          assert actual['historical_chart_cells']==1440
+          assert actual['historical_palace_standardization']==1611
+          info={'schema':'wengua_shenqi21_kaiwu16_weather_OCR_two_original_cases_full_v1',
+           'source_title':m['source_title'],'source_sha256':m['source_sha256'],
+           'source_bytes':m['source_bytes'],'source_lines':m['source_lines'],
+           'new_source_book_cases_accepted_without_individual_review':2,
+           'new_actual_independent_question_events':2,
+           'new_source_printed_unresolved_OCR_cast_fragments':2,
+           'new_source_fragment_lines_verbatim':33,
+           'new_certain_full_nine_palace_source_casts':0,
+           'new_certain_nine_palace_original_cells':0,
+           'all_previous_179_full_original_casts_preserved':True,
+           'book_author_palace_claims_not_misrepresented_as_verbatim_source_cells':True,
+           'wedding_two_sunny_days_and_april26_rain_from_book_only':True,
+           'yangtze_flood_recession_guoyan_unverified_by_external_gauges':True,
+           'all_original_first_errors_from_prior_10_cases_retained':True,
+           'total_sections':37,'book_counts':m['book_counts'],
+           'total_historical_case_events':163,
+           'total_previous_complete_original_source_charts':179,
+           'two_new_unresolved_source_fragment_diagrams_additional':True,
+           'old_complete_parent_path':str(old),
+           'old_complete_parent_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'full_new_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':actual,'integrity_check':'ok','foreign_key_errors':0,
+           'all_previous_full_database_rows_unchanged':True,
+           'not_external_instrument_weather_or_hydrology_validation':True,
+           'public_full_archive_user_authorized':True}
+          (base/'shenqi21_kaiwu_weather_163cases_manifest.json').write_text(
+           json.dumps(info,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(info,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-shenqi21-kaiwu16-weather-163cases-archive
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_weather_163cases_manifest.json
+          retention-days: 30
+      - name: Commit genuinely generated full SQLite XZ and sourced weather OCR evidence
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_weather_163cases_manifest.json' \
+                     'data/knowledge/kaiwu/weather_prediction_ch02_section13/'
+          git diff --cached --check
+          git commit -m 'Archive two Kaiwu historical weather questions with raw unresolvable OCR cast witnesses'
+          git push origin HEAD:main
