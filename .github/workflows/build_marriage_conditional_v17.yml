@@ -1,0 +1,94 @@
+name: Archive Complete Marriage V1.7 Multi-Evidence Rules and Honest Other-Family Tests
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/marriage_book_combinator_v17.py'
+      - 'data/knowledge/phrase_library/marriage_v1_7/original_combo_rules.json'
+      - 'scripts/evaluate_marriage_other_families_v17.py'
+      - 'schema/migrations/045_marriage_conditional_combinations_other_family_v17.sql'
+      - 'scripts/build_marriage_conditional_v17.py'
+      - 'tests/test_marriage_combinator_v17.py'
+      - 'tests/test_marriage_other_families_v17.py'
+      - 'tests/test_marriage_conditional_v17_archive.py'
+      - '.github/workflows/build_marriage_conditional_v17.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Run source-verbatim physical-combination tests and new event-family study
+        run: |
+          python -m unittest discover -s tests -p test_marriage_combinator_v17.py -v
+          python -m unittest discover -s tests -p test_marriage_other_families_v17.py -v
+          python -m unittest discover -s tests -p test_marriage_conditional_v17_archive.py -v
+      - name: Incrementally extend SHA-pinned V1.6 complete 194-case SQLite
+        run: |
+          python -m scripts.build_marriage_conditional_v17 \
+            --base 'archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/marriage_v1_7/database_audit'
+      - name: Compress full SQLite and verify preserved original records and real errors
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3'
+          packed=new.with_suffix('.sqlite3.xz')
+          packed.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          digest=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
+          report=json.loads(Path('data/knowledge/phrase_library/marriage_v1_7/database_audit/manifest.json').read_text('utf8'))
+          assert digest(old)==report['parent_full_sqlite_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={x:db.execute('SELECT COUNT(*) FROM "'+x+'"').fetchone()[0] for x in report['counts']}
+          assert counts==report['counts']
+          assert counts['cases']==194 and counts['marriage_v17_book_conditional_rules']==27
+          assert counts['marriage_v17_new_event_family_replays']==2
+          manifest={'schema':'wengua_book_marriage_v17_source_conditioned_full_sqlite',
+           'parent_full_sqlite':str(old),'parent_sha256':digest(old),
+           'full_sqlite':str(new),'sha256':digest(new),'size_bytes':new.stat().st_size,
+           'compressed_sqlite':str(packed),'xz_sha256':digest(packed),'xz_size_bytes':packed.stat().st_size,
+           'historical_books_original_cases_untouched':194,
+           'marriage_22_question_scenarios_retained':22,
+           'new_book_original_conditional_rules':27,
+           'previous_book_dev_matches':1,'previous_dev_misses_preserved':2,
+           'other_source_event_families_examined':2,'new_comparable_actual_outcomes':0,
+           'not_untouched_sealed_test':True,
+           'complete_24_physical_factors_verified':False,
+           'gpt_200_character_marriage_phrases_published':0,
+           'integrity_check':'ok','foreign_keys_errors':0,'counts':counts}
+          (root/'shenqi21_kaiwu22_marriage_conditional_other_family_v17_manifest.json').write_text(
+           json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: marriage-v17-27-source-conditional-rules-full-194-cases-sqlite
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_marriage_conditional_other_family_v17_manifest.json
+          retention-days: 30
+      - name: Commit immutable V1.7 full SQL database archive and original-source rule audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_marriage_conditional_other_family_v17_manifest.json' \
+            'data/knowledge/phrase_library/marriage_v1_7/database_audit/'
+          git diff --cached --check
+          git commit -m 'Archive complete 194 book cases and 27 conditioned rules with previous two incorrect DEV events and two new abstentions'
+          git push origin HEAD:main
