@@ -165,7 +165,7 @@ def build(base,src,out,index_dir):
     if sec==5:facets.append("administrative_approval")
     if sec==10:facets.append("missing_person")
     if sec==8:facets.append("official_document")
-    for rank,d in enumerate(facets):
+    for rank,d in enumerate(dict.fromkeys(facets)):
      db.execute("""INSERT INTO unified_case_domain_facets
      (case_id,domain_id,source_chapter_key,primary_domain,note) VALUES(?,?,?,?,?)""",
      (who,d,CHAPTER,int(rank==0),"Full source scope kept; not independent external truth."))
