@@ -8,8 +8,8 @@ as first-judgment evidence.
 import unittest
 from pathlib import Path
 from src.wengua.marriage_runtime import (
-    SOURCE_EXAMPLES,inspect_marriage_study_cast,compute_source_chart_factors,
-    hourly_void_branches,ELEMENTS,DOOR_ELEMENTS,element_relation)
+    SOURCE_EXAMPLES,inspect_marriage_study_cast,inspect_marriage_chart_json,
+    compute_source_chart_factors,hourly_void_branches,ELEMENTS,DOOR_ELEMENTS,element_relation)
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.phrase_pipeline import FACTOR_IDS
 ROOT=Path(__file__).resolve().parents[1]
@@ -82,4 +82,42 @@ class SourceChartBridgeTests(unittest.TestCase):
   self.assertEqual(element_relation("木","木"),"比和")
   self.assertEqual(element_relation("金","木"),"克")
   self.assertNotIn("杜门",DOOR_ELEMENTS.get("景门"))
+
+ def test_external_chart_json_is_recomputed_and_actor_year_palaces_bound(self):
+  import copy
+  chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
+  payload={"chart":chart,"calendar_inputs":{
+   "day_ganzhi":"癸酉","solar_term":"芒种","hour_ganzhi":"丁巳"},
+   "original_casting_book_example_key":"shenqi_casting_example_1995_06_11",
+   "inquiry":{"domain":"marriage","scene_id":"marriage.scene.02",
+    "question_text":"我们两个人能否交往？",
+    "relationship":"self",
+    "querent":{"year_ganzhi":"癸酉"},
+    "subject":{"year_ganzhi":"乙酉"},
+    "partner":{"year_ganzhi":"庚寅"}}}
+  data=inspect_marriage_chart_json(db_path=FULL_DB,payload=payload)
+  self.assertEqual(data["status"],"actual_chart_json_source_consistent_pending_author_decision_and_timing")
+  self.assertTrue(data["source_cast_replayed_from_json_and_consistent"])
+  self.assertEqual(data["factor_checked_count"],24)
+  self.assertEqual(data["actual_year_stem_candidate_binding"]["subject"]["candidate_palace_cells"][0]["palace"],1)
+  self.assertEqual(data["actual_year_stem_candidate_binding"]["partner"]["candidate_palace_cells"][0]["palace"],1)
+  self.assertEqual(data["factor_audit"]["palace_interactions"]["evidence"]["subject_to_partner"],"比和")
+  self.assertEqual(data["factor_mechanically_resolved_count"],6)
+  self.assertFalse(data["calendar_independently_verified"])
+  self.assertIsNone(data["traditional_forecast_result"])
+  self.assertIsNone(data["human_natural_phrase"])
+  mutated=copy.deepcopy(payload)
+  mutated["chart"]["palaces"]["3"]["door"]="杜门"
+  with self.assertRaisesRegex(ValueError,"Nine-palace JSON altered"):
+   inspect_marriage_chart_json(db_path=FULL_DB,payload=mutated)
+  fake=copy.deepcopy(payload)
+  fake["chart"]["status"]="engine_verified"
+  with self.assertRaisesRegex(ValueError,"not independent source proof"):
+   inspect_marriage_chart_json(db_path=FULL_DB,payload=fake)
+  incomplete=copy.deepcopy(payload)
+  del incomplete["inquiry"]["partner"]["year_ganzhi"]
+  m=inspect_marriage_chart_json(db_path=FULL_DB,payload=incomplete)
+  self.assertIn("person_year_ganzhi_missing:partner",m["missing_to_publish"])
+  self.assertEqual(m["factor_audit"]["palace_interactions"]["status"],"unknown")
+
 if __name__=="__main__":unittest.main()
