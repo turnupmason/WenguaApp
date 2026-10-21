@@ -1,0 +1,106 @@
+name: Archive Kaiwu travel six events seven original casts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_出行出国预测.txt'
+      - 'scripts/build_kaiwu_travel_from_lost.py'
+      - 'schema/migrations/029_kaiwu_travel_two_casts_retrospective.sql'
+      - 'tests/test_kaiwu_travel_shared_domain.py'
+      - '.github/workflows/build_kaiwu_travel_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate exact source, 7 printed boards, one post-event airline cast, Canada same applicant
+        run: python -m unittest discover -s tests -p test_kaiwu_travel_shared_domain.py -v
+      - name: Append strictly from SHA-pinned complete 153-event SQLite, preserving ALL preceding rows
+        run: |
+          python -m scripts.build_kaiwu_travel_from_lost \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_出行出国预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/travel_abroad_prediction_ch02_section06'
+      - name: Compress full binary and verify exact SQLite integrity, originals and actual hashes
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          doc=json.loads(Path('data/knowledge/kaiwu/travel_abroad_prediction_ch02_section06/chapter_manifest.json').read_text('utf-8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==doc['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={key:db.execute('SELECT count(*) FROM "'+key+'"').fetchone()[0] for key in doc['counts']}
+           assert counts==doc['counts']
+           assert counts['cases']==159 and counts['kaiwu_travel_source_casts']==7
+           assert counts['kaiwu_travel_original_palaces']==63
+           assert db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]==9
+           assert db.execute("SELECT count(*) FROM kaiwu_travel_source_casts WHERE outcome_known_at_cast=1").fetchone()[0]==1
+          result={'schema':'wengua_shenqi21_kaiwu14_travel_six_events_seven_original_boards_v1',
+           'source_title':doc['source_title'],'source_sha256':doc['source_sha256'],
+           'source_bytes':doc['source_bytes'],'source_lines':doc['source_lines'],
+           'new_user_accepted_book_cases_no_individual_review':6,
+           'new_distinct_case_event_families':6,'new_true_printed_source_charts':7,
+           'new_exact_literal_palace_cells':63,'new_author_numbered_analysis_steps':34,
+           'case1_airplane_disaster_is_post_news_reconstruction_not_first_forecast':True,
+           'case3_two_actual_source_casts_one_application_one_family':True,
+           'case3_feedback_only_interview_success_no_final_PR_issuance':True,
+           'case3_1999_june_morning_unprinted_cast_not_fabricated':True,
+           'two_train_cases_distinct_from_prior_tong_motorbike_loss':True,
+           'original_OCR_and_extra_rows_verbatim_not_normalized':True,
+           'all_prior_nine_explicit_first_prediction_errors_kept':True,
+           'total_source_sections':35,'book_counts':doc['book_counts'],
+           'total_independent_historical_events':159,
+           'total_genuine_original_historical_casts':177,
+           'parent_archive_path':str(old),
+           'parent_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_errors':0,
+           'all_previous_rows_preserved_unchanged':True,
+           'book_source_not_empirical_travel_aviation_immigration_proof':True,
+           'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_travel_159cases_manifest.json').write_text(
+            json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-shenqi21-kaiwu14-travel-159cases-archive
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_travel_159cases_manifest.json
+          retention-days: 30
+      - name: Commit new immutable full SQLite, compressed binary and original source evidence indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_travel_159cases_manifest.json' \
+                     'data/knowledge/kaiwu/travel_abroad_prediction_ch02_section06/'
+          git diff --cached --check
+          git commit -m 'Archive six Kaiwu travel events with seven genuine original boards and retrospective guards'
+          git push origin HEAD:main
