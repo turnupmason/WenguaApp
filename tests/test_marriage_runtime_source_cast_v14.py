@@ -33,7 +33,7 @@ class SourceChartBridgeTests(unittest.TestCase):
   self.assertEqual(a["role_candidates_not_final_yongshen"]["yi_traditional_candidate"][0]["palace"],1)
   self.assertEqual(a["role_candidates_not_final_yongshen"]["geng_traditional_candidate"][0]["palace"],1)
   self.assertEqual(a["factor_audit"]["xun_kong"]["evidence"]["xun_kong_branches"],["子","丑"])
-  self.assertEqual(set(x["palace"] for x in a["factor_audit"]["door_press"]["evidence"]["exact_mechanical_door_press_palaces"]),{3,4,9})
+  self.assertEqual(set(x["palace"] for x in a["factor_audit"]["door_press_palace"]["evidence"]["exact_mechanical_door_press_palaces"]),{3,4,9})
   self.assertTrue(a["author_first_and_method_source_links"])
   self.assertEqual(a["traditional_forecast_result"],None)
   self.assertEqual(a["calculated_primary_timing"],None)
@@ -46,7 +46,7 @@ class SourceChartBridgeTests(unittest.TestCase):
   self.assertEqual(a["factor_audit"]["xun_kong"]["evidence"]["xun_kong_branches"],["辰","巳"])
   self.assertEqual(a["role_candidates_not_final_yongshen"]["day_stem_palaces"][0]["palace"],9)
   self.assertEqual(a["role_candidates_not_final_yongshen"]["hour_stem_palaces"][0]["palace"],2)
-  self.assertEqual(set(v["palace"] for v in a["factor_audit"]["door_press"]["evidence"]["exact_mechanical_door_press_palaces"]),{1,2,3,6})
+  self.assertEqual(set(v["palace"] for v in a["factor_audit"]["door_press_palace"]["evidence"]["exact_mechanical_door_press_palaces"]),{1,2,3,6})
   self.assertTrue(a["author_first_and_method_source_links"])
   self.assertIsNone(a["human_natural_phrase"])
  def test_all_22_marriage_methods_retrieve_actual_book_lines_without_real_case_claims(self):

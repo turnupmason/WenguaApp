@@ -100,7 +100,7 @@ def compute_source_chart_factors(chart):
              {"source_chart":chart["source_key"],"factor":fac},
              "Requires original-book-specific applicable condition / full source data")
         for fac in FACTOR_IDS}
- facts["door_press"]=_fact("present" if press else "absent",
+ facts["door_press_palace"]=_fact("present" if press else "absent",
    "basic_five_elements:door_over_palace;source_review_pending",
    {"exact_mechanical_door_press_palaces":press,
     "rule_warning":"杜门木落震木 NOT 门迫; percentages never invented"})
