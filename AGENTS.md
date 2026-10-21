@@ -717,3 +717,15 @@ The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 
 19条作者原步推理与张志春6条事后评析分开；第二例张老师于第102行批评原农历五月应期推理不规范并提出值使门3宫约三十天，此推理**后来才写出**，不计最初作者推断；第三例第158、160行老师也批评原应期与大六壬金口诀跨术用数不规范。第四例第193行明说未预见来问人孙某小弟于8月去世，张老师第203行后出解释只作 retrospective，且明确“任何预测也难以穷尽事物的全貌”，不能将案外未预测死亡当成法庭预测结果的命中或把事后解释洗成首断。初断与后来3月/农历六月/农历十二月/11月反馈按出现时序隔离。原有11件明确整体初断错误不变；本章无作者明确否定自己诉讼问题最初总判的书内结论，因此书内 verdict 仍依现行 CASE_OUTCOME_POLICY 默认 success，独立司法/现实结果认证仍为0。古籍案例直接按书认可无须用户逐案人工确认，但所有方法候选保持 draft/positive_training_eligible=0，罪名、羁押、死因不算独立真实法律事实。
 
 **下一章唯一父库** `archives/sqlite/WenguaApp_神奇之门21章_开悟之门20节_179案例_完整研究库.sqlite3`，SHA256 **`fc96be68917a5132f4499e06a61dbe13db54b282814e4d69aa1a84cb44608a35`**；对应XZ SHA256 `3c3bb730830e634ecb1528973ba48fb803db944b2f02d7ee75de01b9b74e56d6`；manifest `archives/sqlite/shenqi21_kaiwu_litigation_179cases_manifest.json`。下一章必须从此SHA真实175→179增量全库sqlite3.backup继承，不退回175/173、不覆盖先前数据库或另设Workflow体系。最新迁移035、原文与脚本、测试和归档workflow已经入库；完成doc handoff及最终HEAD GitHub双Python CI后方交付。旧QimenLLM和UI冻结。
+
+## 2026-10-21 KAIWU COMPETITION CH02 S12 181-CASE FINAL HANDOFF
+
+《开悟之门》原书第二章第十二节《竞争评比预测(共2例)》按最新175→179→181的不可回退完整库流程，增加2件**独立事件**，累计《神奇之门》21节+《开悟之门》21节=42来源节，`cases=181`。第一例市七中袁校长申报省级重点和本人校长职务变化，从1998年7月、11月14日、1999年6月6日反复咨询，**整个持续升校事项只算1个完整event family**，有3个起局提及但首个1998年7月精确日期、时辰和起盘纸张被求测者弄丢，作者明确说“格局只好阙如”；新书不准补造原盘或准确时间，也不允许另算“头次成功”独立盲测。另两次起局只保存文本分散OCR见证，1999年6月10日原书报告七中获省级重点、袁校长留任属于书内反馈；1998年11月主要担心查账与职务、第3次6月担心省政府批准与被调离：问题同一事件不同阶段，禁止多算。
+
+第二例王约生问1999国际大专辩论赛，1999-08-27 22:45阴一局，大学队赛事归既有 `sports_competition`（可跨书检索旧《神奇之门》7件体育案例），学校资格评比主归 `competition_evaluation` 并借多领域 facet 跨专题检索，不按书新建一套赛事业务域。原书**明确西安交通大学获得A组冠军、埃及获得B组冠军**：不可夸成西安交大“该届唯一国际冠军”。张志春第120行特别写“个别分析不当之处，我进行了修改加工”，已印作者原分析可能经过后编修改，不可把全章当不变的赛前完整预言盲测。原书所讲海外队表现只是来源评价而不是独立确认的事实。
+
+本章4个来源起局片段/提及：1998-07 lost cast 无具体日期/时辰/纸张；1998-11 OCR源文本第15–29行、1999-06 第46–63行、1999-08辩论赛第79–96行，共3份散乱OCR字面、51原文行及逐行SHA，全部仅存 source cast fragments，新增**0张独立已核原印完整九宫、0宫已确原始位置**，旧179原可靠完整盘/1440源主宫及附加盘19次171格、标准化1611宫全保留。14个完整原书分段理由(1998-11学校4、1999-06学校3、1999辩论7)，12个conditional workflow方法 source-only / draft / positive_training_eligible=0。全部书本例子用户已批准免人工逐例复核，但未建立现实科学预测有效性；保留印出来源整篇、初断、后来反馈、前后阶段及具体证据限制。
+
+真实新增脚本 `scripts/build_kaiwu_competition_from_litigation.py`，迁移 `schema/migrations/036_kaiwu_competition_multicast_unprinted.sql`，独立测试 `tests/test_kaiwu_competition_multicast.py`，Action `.github/workflows/build_kaiwu_competition_archive.yml`，索引 `data/knowledge/kaiwu/competition_evaluation_ch02_section12/`。归档成功机器人commit `0f5620edc86db3d0b5bf6da5b3a107adc6743ddd`，完整SQLite旧179 SHA `fc96be68917a5132f4499e06a61dbe13db54b282814e4d69aa1a84cb44608a35`经 `sqlite3.backup()` append-only，全部旧表全部原行未改，integrity_check=ok/foreign_key_check=0，旧11案作者明确初断错误不变。
+
+**下章唯一父库必须是已真正上传GitHub的完整版** `archives/sqlite/WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3` SHA256 `a5641d2b420380e218f5f537facd578ce7a0758db1c55d69975c3ecb2153d9b5`；XZ SHA `467ca13944bc9034a1c11088e85a8fdfc0468d35534f9409b8222bba22892152`；manifest `archives/sqlite/shenqi21_kaiwu_competition_181cases_manifest.json`。禁止退回179、更早重建、重算原书遗失盘、篡改旧案、开发UI。用户说“下一个”仍按顺序处理、同步status ledger AGENTS，更新新增036在database.py注册，最新main双Python CI必须成功。
