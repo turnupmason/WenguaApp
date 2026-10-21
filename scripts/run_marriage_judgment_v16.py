@@ -9,7 +9,7 @@ python -m scripts.run_marriage_judgment_v16 --input in.json \
   --database <latest_complete_sqlite> --output judgment.json
 """
 from __future__ import annotations
-import argparse,json,sys
+import argparse,json,sys,sqlite3
 from pathlib import Path
 from src.wengua.marriage_judgment_v16 import analyze_marriage_unseen_chart
 def main(argv=None):
@@ -38,5 +38,4 @@ def main(argv=None):
  else:sys.stdout.write(result)
  return output
 if __name__=="__main__":
- import sqlite3
  main()
