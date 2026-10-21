@@ -1,0 +1,89 @@
+name: Archive Kaiwu geography three original examples and two new events
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_地理风水预测.txt'
+      - 'scripts/build_kaiwu_geography_from_recent.py'
+      - 'schema/migrations/034_kaiwu_geography_crossbook_fengshui.sql'
+      - 'tests/test_kaiwu_geography_crossbook.py'
+      - '.github/workflows/build_kaiwu_geography_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify full source and lossless inheritance of 173 old cases
+        run: python -m unittest discover -s tests -p test_kaiwu_geography_crossbook.py -v
+      - name: Append one new source witness and two genuine new events to SHA-locked full SQLite
+        run: |
+          python -m scripts.build_kaiwu_geography_from_recent \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门18节_173案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_地理风水预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/fengshui_geography_ch02_section14'
+      - name: Compress actual full SQLite and independently verify counts and binary digests
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门18节_173案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          info=json.loads(Path('data/knowledge/kaiwu/fengshui_geography_ch02_section14/chapter_manifest.json').read_text('utf8'))
+          assert sha(old)==info['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={k:db.execute('SELECT count(*) FROM "'+k+'"').fetchone()[0] for k in info['counts']}
+          assert counts==info['counts']
+          assert counts['cases']==175 and counts['historical_chart_cells']==1440
+          assert counts['kaiwu_geography_source_witnesses']==3 and counts['kaiwu_geography_raw_lines']==41
+          manifest={'schema':'wengua_shenqi21_kaiwu19_geography_175cases_full_v1',
+            'source_title':info['source_title'],'source_sha256':info['source_sha256'],
+            'source_bytes':info['source_bytes'],'source_lines':info['source_lines'],
+            'book_examples':3,'new_independent_events':2,'shared_prior_case_id':'shenqi.geography.case02',
+            'new_unresolved_OCR_casts':3,'new_verified_original_nine_palaces':0,
+            'all_prior_179_complete_source_charts_preserved':True,
+            'previous_full_archive_path':str(old),'previous_sha256':sha(old),
+            'new_full_archive_path':str(new),'sha256':sha(new),'size_bytes':new.stat().st_size,
+            'compressed_archive_path':str(xz),'compressed_sha256':sha(xz),'compressed_size_bytes':xz.stat().st_size,
+            'source_methods_conditional_draft':True,
+            'previous_book_errors_preserved':11,'all_old_original_rows_unchanged':True,
+            'integrity_check':'ok','foreign_key_errors':0,'counts':counts,
+            'public_full_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_geography_175cases_manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: complete-kaiwu-geography-175cases
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_geography_175cases_manifest.json
+          retention-days: 30
+      - name: Commit real generated full binary DB, XZ, manifest, source indexes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_geography_175cases_manifest.json' \
+                     'data/knowledge/kaiwu/fengshui_geography_ch02_section14/'
+          git diff --cached --check
+          git commit -m 'Archive Kaiwu geography 3 text witnesses and 2 new complete book cases'
+          git push origin HEAD:main
