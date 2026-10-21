@@ -211,7 +211,7 @@ def render_health_severity(chart, inquiry, *, calendar=None, db_path=None):
                             set(empty["xun_kong_branches"]))
     pair = "heaven_over_earth:" + ill_carrier["carried_stem"] + ":" + illness["earth_stem"]
     pair_source, pair_meaning = _semantic_pair(pair, db_path)
-    formations = [x for x in evaluate_candidates(chart) if x["palace"] == illness["palace"]]
+    formations = [x for x in evaluate_candidates(chart)["matches"] if x["palace"] == illness["palace"]]
     formations_text = ("；".join(x["formation_name"] + "（" + x["variant_id"] + "，draft）"
                               for x in formations) if formations else "未匹配到可核实的已编码复合候选；不是无格局")
     facts = compute_source_chart_factors(chart)
