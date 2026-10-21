@@ -1,0 +1,265 @@
+{
+  "schema": "marriage_v16_book_family_heldout_initial_verdict_full_sqlite",
+  "complete_parent_archive_sha256": "619867ef0f81234c662fbc1796de1c6844e9c1ecf12f59a904d20f9c90b757f3",
+  "new_full_sqlite_sha256": "89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4",
+  "prior_original_book_cases_exactly_preserved": 194,
+  "old_22_scenes_kept": 22,
+  "new_executable_author_initial_decisions": 3,
+  "two_complete_event_families_heldout": 2,
+  "printed_original_eight_deity_doors_aligned": 24,
+  "matched_book_reported_feedback_in_dev": 1,
+  "mismatched_book_reported_feedback_in_dev": 2,
+  "external_unseen_real_predictions": 0,
+  "not_a_sealed_untouched_final_blind_test": true,
+  "all_parent_rows_unchanged": true,
+  "development_source_eval": {
+    "schema": "wengua_marriage_v16_book_family_dev_holdout",
+    "historical_book_material_was_available_during_development": true,
+    "not_claimed_to_be_untouched_blind_test": true,
+    "heldout_by_complete_event_family": true,
+    "author_judgment_and_feedback_never_initial_inference_inputs": true,
+    "candidate_questions": 3,
+    "printed_original_chart_alignment_count": 3,
+    "scored_decisive_cases": 3,
+    "matched_book_reported_outcomes": 1,
+    "number_of_distinct_heldout_book_families": 2,
+    "original_source_outcomes_are_not_objective_ground_truth": true,
+    "no_automatic_update_to_rule_weights_from_heldout_results": true,
+    "results": [
+      {
+        "heldout_event_family_id": "kaiwu.marriage.case02",
+        "actual_question": "婚姻接下来还能继续吗？",
+        "original_book_chart_alignment": {
+          "eight_printed_outer_palaces_checked": 8,
+          "agrees_with_original_book": true,
+          "disagreements": [],
+          "center_five_not_fabricated": true
+        },
+        "initial_inference_without_author_label_or_feedback": {
+          "outcome": "success",
+          "support": [
+            {
+              "phase": "primary_two_real_birth_years",
+              "palaces": [
+                4,
+                3
+              ],
+              "relation": "比和",
+              "rule_id": "person_palace",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line11",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "双方实际年命落宫相互关系为主证，乙庚性别模板不能覆盖真人年命",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            }
+          ],
+          "counter": [],
+          "other_computed_timing": null,
+          "computed_factors": 12,
+          "book_witness_families_used": [
+            "shenqi.marriage.wife_asks_husband_affair",
+            "shenqi.marriage.middle_aged_woman_divorce",
+            "kaiwu.marriage.case05"
+          ],
+          "publication_ready": false
+        },
+        "validation_only_later": {
+          "original_author_forecast_lines": [
+            81,
+            89
+          ],
+          "later_source_feedback_lines": [
+            93
+          ],
+          "book_reported_event_outcome": "failure",
+          "source_mentioned_result_is_not_independently_verified": true,
+          "matched_initial_decision": false
+        }
+      },
+      {
+        "heldout_event_family_id": "kaiwu.marriage.case03",
+        "actual_question": "女儿和第一位对象能不能谈成？",
+        "original_book_chart_alignment": {
+          "eight_printed_outer_palaces_checked": 8,
+          "agrees_with_original_book": true,
+          "disagreements": [],
+          "center_five_not_fabricated": true
+        },
+        "initial_inference_without_author_label_or_feedback": {
+          "outcome": "failure",
+          "support": [],
+          "counter": [
+            {
+              "phase": "primary_two_real_birth_years",
+              "palaces": [
+                3,
+                6
+              ],
+              "relation": "受克",
+              "rule_id": "person_palace",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line11",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "双方实际年命落宫相互关系为主证，乙庚性别模板不能覆盖真人年命",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            },
+            {
+              "phase": "secondary_liuhe",
+              "palaces": [
+                9,
+                3,
+                6
+              ],
+              "relation": "受生/克",
+              "rule_id": "liuhe",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line5",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "六合宫与一方相克，作为双方主证的反证",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            },
+            {
+              "phase": "source_obstruction",
+              "palaces": [
+                6
+              ],
+              "relation": "month_day_break",
+              "rule_id": "book_exception",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line107",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "month_day_break（详见已核符号出处）",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            },
+            {
+              "phase": "source_obstruction",
+              "palaces": [
+                6
+              ],
+              "relation": "heaven_stem_tomb",
+              "rule_id": "book_exception",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line107",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "heaven_stem_tomb（详见已核符号出处）",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            }
+          ],
+          "other_computed_timing": null,
+          "computed_factors": 12,
+          "book_witness_families_used": [
+            "shenqi.marriage.mother_asks_son_courtship",
+            "shenqi.marriage.mother_asks_daughter_marriage",
+            "kaiwu.marriage.case04"
+          ],
+          "publication_ready": false
+        },
+        "validation_only_later": {
+          "original_author_forecast_lines": [
+            121,
+            123
+          ],
+          "later_source_feedback_lines": [
+            135
+          ],
+          "book_reported_event_outcome": "failure",
+          "source_mentioned_result_is_not_independently_verified": true,
+          "matched_initial_decision": true
+        }
+      },
+      {
+        "heldout_event_family_id": "kaiwu.marriage.case03",
+        "actual_question": "女儿和第二位对象能不能谈成？",
+        "original_book_chart_alignment": {
+          "eight_printed_outer_palaces_checked": 8,
+          "agrees_with_original_book": true,
+          "disagreements": [],
+          "center_five_not_fabricated": true
+        },
+        "initial_inference_without_author_label_or_feedback": {
+          "outcome": "success",
+          "support": [
+            {
+              "phase": "primary_two_real_birth_years",
+              "palaces": [
+                3,
+                1
+              ],
+              "relation": "受生",
+              "rule_id": "person_palace",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line11",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "双方实际年命落宫相互关系为主证，乙庚性别模板不能覆盖真人年命",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            }
+          ],
+          "counter": [
+            {
+              "phase": "source_obstruction",
+              "palaces": [
+                1
+              ],
+              "relation": "month_day_break",
+              "rule_id": "book_exception",
+              "source_rule": {
+                "rule_ref": "shenqi/marriage_prediction_ch02/v1:line107",
+                "original_source_sha256": "64c7e9c1c0e646814c11644809277f71587d21736bdbd49679e6ad65611303c9"
+              },
+              "reason": "month_day_break（详见已核符号出处）",
+              "source_status": "determinate",
+              "not_scientifically_validated": true
+            }
+          ],
+          "other_computed_timing": null,
+          "computed_factors": 12,
+          "book_witness_families_used": [
+            "shenqi.marriage.mother_asks_son_courtship",
+            "shenqi.marriage.mother_asks_daughter_marriage",
+            "kaiwu.marriage.case04"
+          ],
+          "publication_ready": false
+        },
+        "validation_only_later": {
+          "original_author_forecast_lines": [
+            121,
+            125
+          ],
+          "later_source_feedback_lines": [
+            135
+          ],
+          "book_reported_event_outcome": "failure",
+          "source_mentioned_result_is_not_independently_verified": true,
+          "matched_initial_decision": false
+        }
+      }
+    ]
+  },
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "historical_chart_cells": 1440,
+    "marriage22_scenario_protocol": 22,
+    "marriage_runtime_scenario_study": 44,
+    "phrase_intent_workflows": 9,
+    "book_timing_method_source_rules": 20,
+    "marriage_author_time_source_studies": 1,
+    "marriage_v16_judgment_contract": 1,
+    "marriage_v16_historical_holdout_inputs": 3,
+    "marriage_v16_historical_initial_verdicts": 3,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v16_family_dev_audit": 1
+  }
+}
