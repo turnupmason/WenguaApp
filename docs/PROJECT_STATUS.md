@@ -672,3 +672,8 @@ GitHub Archive first marriage phrase corpus 工作流#1成功，真实完整新S
 
 技术持续集成已修正：`.github/workflows/build_marriage_phrase_archive.yml` 在V1文件已存在时查旧SQLite/XZ/manifest实际SHA，保持原归档不可覆盖；`.github/workflows/build_marriage_phrase_pilot.yml` 则作为V1.1的Python3.11/3.12计时算法与短语检查专用**回归workflow，不再重复提交相同SQLite**。下一步完成真实起盘与24因子计算校验后，婚姻领域先运行少量真实可复现盘、核验主次用神/双方年命和反证、计算真正有条件应期，再GPT润色约200字进新版本DB。所有进度与待办详见 `docs/PHRASE_DOMAIN_PROGRESS.md`。仍然未启动388800项批量出词、未改变UI，其他领域尚未开始。
 
+## 2026-10-21 婚姻九类具体问事的古籍断案流程 V1.2（已归档）
+
+已按用户要求把“每个领域先按**具体问题**预编作者式取用与推理流程、实际盘JSON运行时才计算结果与应期、最后GPT润色”写入根 `AGENTS.md`。首个婚姻领域有9个问事目标：恋爱谈成、订婚议婚、登记领证、举办婚礼、指定期间婚姻稳不稳、离婚及法律手续、分手争执后和好、离婚后复婚、第三者疑虑。每类8阶段证据流程，合计**9流程、72步、30条原书行号/来源SHA/原始文字/案例关联**。原书来自《神奇之门》6件婚姻案例、《开悟之门》6件婚姻案例与最终两个固定年命断错案例，源引用附首次论证/后验反馈标记。并非九套无条件万用成败话术，个别没有单独作者验证的订婚与争执后和好明记相邻书案方法推导，研究草稿待验证。完整细节 `docs/MARRIAGE_INTENT_WORKFLOWS_V1_2.md`；机器规则 `data/knowledge/phrase_library/marriage_v1_2/intent_workflows.json`；执行Prompt `prompts/marriage_intent_workflows_v1_2.md`。
+
+最新历史全库从真实194案婚姻V1.1版 SHA256 `53bab00cefa4754753ab124b0653c0b7b2f68f0d63dae7783f6eea3d387f0e75` sqlite3.backup追加迁移 `040_marriage_intent_workflow_sources.sql`，源书/旧案例/4个初始语料草稿及V1.1硬性应期规则旧行不变，SQLite integrity_check=ok、外键0。**最新完整SQLite父库** `archives/sqlite/WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3`，SHA256 `2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d`，Xz为同名 `.sqlite3.xz`，manifest `archives/sqlite/shenqi21_kaiwu22_marriage_intent_workflow_v1_2_manifest.json`。以后婚姻下一版必须以上述SHA版本增量，不回退只含phrase V1.1或无phrase的旧194书源。仍是0已核九宫实例/0实际核历法断语成品，下一任务是接入起局引擎与各流程动态用神/证据排序/应期引擎再测试。其余领域尚未开展，不开发UI。
