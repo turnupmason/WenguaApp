@@ -1,0 +1,111 @@
+{
+  "schema": "marriage_v14_real_book_cast_source_fact_runtime_integration",
+  "full_parent_SQLite_SHA256": "0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857",
+  "new_complete_SQLite_SHA256": "ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da",
+  "book_case_count": 194,
+  "source_book_sections": 43,
+  "real_original_casting_book_examples_compared": 2,
+  "source_chart_palaces_compared": 18,
+  "all_scene_source_retrieval_checks": 44,
+  "marriage_question_scenarios": 22,
+  "factor_slots_in_each_sample": 24,
+  "real_marriage_questioners_in_source_examples": 0,
+  "new_verified_external_calendar_dates": 0,
+  "genuinely_end_to_end_decisive_reading_instances": 0,
+  "new_gpt_prose_generated_for_nonexistent_casts": 0,
+  "all_previous_sqlite_rows_unmodified": true,
+  "source_comparison_only_not_real_world_accuracy": true,
+  "per_sample_analysis": {
+    "shenqi_casting_example_1995_06_11": {
+      "dun": "yang",
+      "ju": 3,
+      "hour_ganzhi": "丁巳",
+      "xun_void_branches": [
+        "子",
+        "丑"
+      ],
+      "mechanical_door_pressure": [
+        {
+          "palace": 3,
+          "door": "惊门",
+          "door_element": "金",
+          "palace_element": "木",
+          "rule": "door_element_controls_palace_element"
+        },
+        {
+          "palace": 4,
+          "door": "开门",
+          "door_element": "金",
+          "palace_element": "木",
+          "rule": "door_element_controls_palace_element"
+        },
+        {
+          "palace": 9,
+          "door": "休门",
+          "door_element": "水",
+          "palace_element": "火",
+          "rule": "door_element_controls_palace_element"
+        }
+      ],
+      "resolved_factors": 5,
+      "factor_count": 24,
+      "palace_count": 9
+    },
+    "shenqi_casting_example_1995_08_13": {
+      "dun": "yin",
+      "ju": 8,
+      "hour_ganzhi": "戊戌",
+      "xun_void_branches": [
+        "辰",
+        "巳"
+      ],
+      "mechanical_door_pressure": [
+        {
+          "palace": 1,
+          "door": "死门",
+          "door_element": "土",
+          "palace_element": "水",
+          "rule": "door_element_controls_palace_element"
+        },
+        {
+          "palace": 2,
+          "door": "伤门",
+          "door_element": "木",
+          "palace_element": "土",
+          "rule": "door_element_controls_palace_element"
+        },
+        {
+          "palace": 3,
+          "door": "开门",
+          "door_element": "金",
+          "palace_element": "木",
+          "rule": "door_element_controls_palace_element"
+        },
+        {
+          "palace": 6,
+          "door": "景门",
+          "door_element": "火",
+          "palace_element": "金",
+          "rule": "door_element_controls_palace_element"
+        }
+      ],
+      "resolved_factors": 5,
+      "factor_count": 24,
+      "palace_count": 9
+    }
+  },
+  "counts": {
+    "sections": 43,
+    "cases": 194,
+    "historical_chart_cells": 1440,
+    "phrase_template_drafts": 4,
+    "phrase_intent_workflows": 9,
+    "marriage22_scenario_protocol": 22,
+    "marriage22_six_layer_steps": 132,
+    "marriage22_original_case_links": 89,
+    "phrase_context_instances": 0,
+    "marriage_runtime_source_cast_fixture": 2,
+    "marriage_runtime_scenario_study": 44,
+    "marriage_runtime_study_audit": 1
+  }
+}
