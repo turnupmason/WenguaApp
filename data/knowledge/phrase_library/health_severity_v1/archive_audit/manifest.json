@@ -1,0 +1,22 @@
+{
+  "schema": "wengua_v19_health_severity_dynamic_template_complete_archive",
+  "parent_sha256": "fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536",
+  "new_sha256": "b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f",
+  "original_194_cases_unchanged": true,
+  "original_43_sections_unchanged": true,
+  "earlier_misses_retained": 2,
+  "prior_marriage_rules_retained": 27,
+  "health_severity_template_sections": 21,
+  "new_real_world_clinical_validation": 0,
+  "source_template_sha256": "0240edccd3b86abd715da6e595a43bf43a0df80ba9ecf0d075073343a177bff7",
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v17_book_conditional_rules": 27,
+    "marriage_v18_optional_year_scene_methods": 22,
+    "health_severity_v19_protocol": 1,
+    "health_severity_v19_template_sections": 21,
+    "health_severity_v19_archive_audit": 1
+  }
+}
