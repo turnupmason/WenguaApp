@@ -1,0 +1,93 @@
+name: Archive Kaiwu Marriage Author Timing and Astronomical Jie-Months V1.5
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/astro_calendar.py'
+      - 'src/wengua/book_timing_runtime.py'
+      - 'schema/migrations/043_marriage_original_book_timing_astro_v15.sql'
+      - 'scripts/build_marriage_astro_v15.py'
+      - 'tests/test_astro_calendar_book_timing_v15.py'
+      - 'tests/test_marriage_astro_v15_archive.py'
+      - '.github/workflows/build_marriage_astro_v15.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Test exact Kaiwu original 20 timing rules, two-books calendar and full immutable parent archive
+        run: |
+          python -m unittest discover -s tests -p test_astro_calendar_book_timing_v15.py -v
+          python -m unittest discover -s tests -p test_marriage_astro_v15_archive.py -v
+      - name: Back up all 194 historical book cases and append astronomy-based event timing
+        run: |
+          python -m scripts.build_marriage_astro_v15 \
+            --base 'archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/marriage_v1_5/astronomical_timing'
+      - name: Produce versioned XZ, manifest and complete counts with integrity check
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,lzma,sqlite3
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          report=json.loads(Path('data/knowledge/phrase_library/marriage_v1_5/astronomical_timing/manifest.json').read_text('utf8'))
+          assert h(old)==report['parent_complete_archive_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={k:db.execute('SELECT COUNT(*) FROM "'+k+'"').fetchone()[0] for k in report['counts']}
+          assert counts==report['counts']
+          assert counts['cases']==194 and counts['book_timing_method_source_rules']==20
+          assert counts['marriage_author_timing_month_windows']==2
+          assert counts['marriage_author_time_feedback_validation']==2
+          manifest={
+           'schema':'wengua_book_author_initial_verdict_real_solar_term_timing_complete_v15',
+           'parent_full_book_archive':str(old),'parent_sha256':h(old),
+           'full_sqlite':str(new),'sha256':h(new),'size_bytes':new.stat().st_size,
+           'full_xz':str(xz),'xz_sha256':h(xz),'xz_size_bytes':xz.stat().st_size,
+           'book_cases_preserved':194,'earlier_marriage_22_scenes_preserved':22,
+           'source_timing_methods_stored':20,
+           'book_author_initial_timing_candidate_months':2,
+           'book_later_feedback_dates_separately_compared':2,
+           'no_new_independent_live_marriage_prediction_claims':True,
+           'fully_offline_computed_astronomy':True,
+           'historical_source_case_rows_unmodified':True,
+           'integrity_check':'ok','foreign_key_errors':0,
+           'counts':counts}
+          (root/'shenqi21_kaiwu22_marriage_author_timing_astro_v15_manifest.json').write_text(
+           json.dumps(manifest,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-two-books-marriage-timing-v15-full-194-cases
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_marriage_author_timing_astro_v15_manifest.json
+          retention-days: 30
+      - name: Commit full append-only SQLite and exact timing method source audit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_marriage_author_timing_astro_v15_manifest.json' \
+            'data/knowledge/phrase_library/marriage_v1_5/astronomical_timing/'
+          git diff --cached --check
+          git commit -m 'Archive complete 194-case SQLite with Kaiwu 20 exact original timing rules and computed Zi Chou solar months'
+          git push origin HEAD:main
