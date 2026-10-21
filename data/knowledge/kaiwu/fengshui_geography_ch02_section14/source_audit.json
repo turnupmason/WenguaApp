@@ -1,0 +1,201 @@
+{
+  "source_sha256": "612c64b12172ffc50378323a1035da5d55eda3913f73bc408392da82c48a72d3",
+  "source_panels": [
+    {
+      "case_id": "shenqi.geography.case02",
+      "start_end": [
+        8,
+        22
+      ],
+      "row_hashes": [
+        {
+          "line": 8,
+          "sha256": "a536deee83f705c0d7efd366198b6d663d57d4692458ba685d06c7f970d9b23a"
+        },
+        {
+          "line": 9,
+          "sha256": "9e441b171931a8ded4ec15df6b3a8ca22fb59dce7092209dcdf8329c52093188"
+        },
+        {
+          "line": 10,
+          "sha256": "7e78679d3768d23fd9bdf4c5f2f419fc637d78bc13138839d08a10716f7bc50e"
+        },
+        {
+          "line": 11,
+          "sha256": "52a3c5a9c435b018af31817d7cf9fe66c4ec2bfcdb937b91925532e81c1f4d74"
+        },
+        {
+          "line": 12,
+          "sha256": "26690c2b10fc082e703cb1fde12556272d3318f6c879e6d13e6e20dc920b8ea0"
+        },
+        {
+          "line": 13,
+          "sha256": "e36973009bc30ac8d337d22b7de9a84cebd81d090bf085e33b843cda38704928"
+        },
+        {
+          "line": 14,
+          "sha256": "59d77dbc131f6f6779b59e743ec752fe6d7463d7a4e3a583ad8bb2ebaaeffdd5"
+        },
+        {
+          "line": 15,
+          "sha256": "1bbe708f1b2456d25b91ff717d36b45dd4dc80e3f1d8857fa21160d9b2161623"
+        },
+        {
+          "line": 16,
+          "sha256": "a86d76b50f77620456f3639f011f55f12429f7bb2ce5bd0cf393061ddece6c50"
+        },
+        {
+          "line": 17,
+          "sha256": "2bc431f461021f63048b9e8ded8f634151d36dc6c55adb311a3d89d0114d5ed9"
+        },
+        {
+          "line": 18,
+          "sha256": "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709"
+        },
+        {
+          "line": 19,
+          "sha256": "34538180a29aca9c2272380e06a489e7b709edb9294fabec0ab28a406f9cd9d8"
+        },
+        {
+          "line": 20,
+          "sha256": "887d444f3960c79f0c2068f28fa57b58f176a0aa43c42bef7154d1d1c2b93cb9"
+        },
+        {
+          "line": 21,
+          "sha256": "15a1a7a596017ba26d63af8bb17eed9f67228987bf8e8dca6d0b25910a9c206c"
+        },
+        {
+          "line": 22,
+          "sha256": "1777e9dd32d343651ddef6d46c7b156c767e77feb0ed34c96a3a133c8e7b9501"
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.geography.case02",
+      "start_end": [
+        42,
+        54
+      ],
+      "row_hashes": [
+        {
+          "line": 42,
+          "sha256": "cc10bbf046e7b9ef0baf3159f0355b93e3bc7d233786090519e602245e591a27"
+        },
+        {
+          "line": 43,
+          "sha256": "3a00e3803ae55e7df36db35e4379a10721885a171e5446733f19ddc4823a578e"
+        },
+        {
+          "line": 44,
+          "sha256": "1747693534aaeff68428667d020a8bf16660323bbac11118dc026653a903bf02"
+        },
+        {
+          "line": 45,
+          "sha256": "bdbd41e490e2e1d08a8ed62adba9528b52eacb3e4cf8819aa983cf1cf9dfacc3"
+        },
+        {
+          "line": 46,
+          "sha256": "ed4f03dd6842d2c572552d4fdcb17af0553d64a6a9956570775c01caa6ee2395"
+        },
+        {
+          "line": 47,
+          "sha256": "290b7b505d6746640aa2c47b6cc3c5ba8c3248e7cf747e45b7a9885e858dcfd5"
+        },
+        {
+          "line": 48,
+          "sha256": "d214e1d15eaabdb7baea9a764b8c63049e6f1741eb5201c8c3b638e507e2ed33"
+        },
+        {
+          "line": 49,
+          "sha256": "7c29b6735b15308ae09ab5bbeb7b2683459818f6883cbd9c2ef86fc2b929e551"
+        },
+        {
+          "line": 50,
+          "sha256": "249ea41b90ad372fcb50a87eb393a9ea4b40185683ab398d0745f04e11548abf"
+        },
+        {
+          "line": 51,
+          "sha256": "49da61ceeea2f2714263cb2baf9985b856f7c9ce77a025c5815de59aa4aa6092"
+        },
+        {
+          "line": 52,
+          "sha256": "202ea67297478b017f83c31920df54f94cb2ba2ceda1b11bfafa91cf3fda2ce7"
+        },
+        {
+          "line": 53,
+          "sha256": "98643284e6894fc5c5657e4da279b449d708d5c39befd32e641924ae9a05b6f3"
+        },
+        {
+          "line": 54,
+          "sha256": "2783e703e8459df124db2d4908bdc85481d04e80e0c564b8c6f7815169592503"
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.geography.case03",
+      "start_end": [
+        83,
+        95
+      ],
+      "row_hashes": [
+        {
+          "line": 83,
+          "sha256": "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709"
+        },
+        {
+          "line": 84,
+          "sha256": "5eeccfe752fa3e8023fd3726668de2dde31afcab2074faa89171fe47ea4f82af"
+        },
+        {
+          "line": 85,
+          "sha256": "2f6d27bb0f30ca73bb14f5c1f5400356c0aed199ee123fc08c7707620860c63e"
+        },
+        {
+          "line": 86,
+          "sha256": "9abd291778970c741e78741b156b0cd697eaa472ea72a853eb0b654c66cc00be"
+        },
+        {
+          "line": 87,
+          "sha256": "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340"
+        },
+        {
+          "line": 88,
+          "sha256": "42174ae3c86b0d5c7fec8e6b2b61dd050e12af89099b0a5fb28c0f95cca49db1"
+        },
+        {
+          "line": 89,
+          "sha256": "c84d9b16dd9deaf99468f15f6cf4f27671ec8d0705612eda8730979301d5f54a"
+        },
+        {
+          "line": 90,
+          "sha256": "6bbad3f7c992e5fa65daa3585012dc00cf070427d6b2f21edab4e1cf655239d0"
+        },
+        {
+          "line": 91,
+          "sha256": "a2f9bdcb556891dc1bc45ec5eb2619f01f7e4be559d603b70d41b433c2e95ae6"
+        },
+        {
+          "line": 92,
+          "sha256": "a536deee83f705c0d7efd366198b6d663d57d4692458ba685d06c7f970d9b23a"
+        },
+        {
+          "line": 93,
+          "sha256": "41341938fc3e0dc6ef3782f7647d46adabb410377b60d0a1512a8530bd80cc01"
+        },
+        {
+          "line": 94,
+          "sha256": "f02f19706a22c665307b4bb628767495420ff0ecfcbc4c87ddb0a5c0326d4c22"
+        },
+        {
+          "line": 95,
+          "sha256": "b02f5abe1ed9d087a974c6842d48176755703bf281e9e2be84483fac8f2e1efc"
+        }
+      ]
+    }
+  ],
+  "source_middle_palace_not_assumed": true,
+  "presale_without_living_feedback": true,
+  "historical_ownership_claims_not_title_verification": true,
+  "cross_book_same_event_not_new_case": true,
+  "no_fabricated_original_chart_cells": true
+}

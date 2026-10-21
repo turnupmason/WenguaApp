@@ -1,0 +1,247 @@
+{
+  "source_sha256": "612c64b12172ffc50378323a1035da5d55eda3913f73bc408392da82c48a72d3",
+  "conditional_candidates": [
+    {
+      "method_key": "burial_si_door",
+      "case_id": "shenqi.geography.case02",
+      "source_line": 26,
+      "domain": "burial_plot",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_burial_plot",
+            "required": true
+          },
+          {
+            "fact": "death_door_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Traditional burial plot: use 死门 and conditionally inspect strength, month and door/star/stem.",
+      "source_original": "(1)吴先生选的是一块墓地，是阴宅，自然应以死门为用神。今死门落巽4宫，4宫属木，寅月木旺，又临丁奇，丁奇落4宫为帝旺，自然这块地理气势宏大，丁为玉女，自然主秀丽，天柱星和辛均为金，自然又带刚健。这块地理，既气势宏大，又秀丽中带刚健，当然是一块很好的风水宝地了。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "burial_time_stem",
+      "case_id": "shenqi.geography.case02",
+      "source_line": 28,
+      "domain": "burial_plot",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_burial_plot",
+            "required": true
+          },
+          {
+            "fact": "hour_stem_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Also check 时干 representing the specific grave plot.",
+      "source_original": "(2)除了死门这一特殊用神外，时干为所问之事，时干也可代表吴先生所选的墓地。今时干戊落坤2宫临开门吉门，一方面说明这块地理气势开阔宏大，另一方面上乘玄武，也说明已经被人偷偷打开过了。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "burial_questioner_relation",
+      "case_id": "shenqi.geography.case02",
+      "source_line": 32,
+      "domain": "burial_plot",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_burial_plot",
+            "required": true
+          },
+          {
+            "fact": "day_stem_and_hour_stem_palaces_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Consider questioner day stem in relation to grave and hour-stem palace.",
+      "source_original": "(4)日干辛生巽4宫死门，所以说吴先生想用这块墓地。但是，时干在坤2宫又克日干，所以说他不能用。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "burial_locks_metaphor",
+      "case_id": "shenqi.geography.case02",
+      "source_line": 34,
+      "domain": "burial_plot",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_burial_plot",
+            "required": true
+          },
+          {
+            "fact": "source_literary_deity_and_door_claims_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Book analogies of lock, metal pins and clandestine ownership; not property title evidence.",
+      "source_original": "(5)为什么王庆丰老师说这地方已经被前辈高人用连环锁锁住了?第一，死门又为锁，第二上乘六合，自然就为连环锁了。具体锁法，是用两头尖的铁钉钉在穴位上，丁就主钉，天柱星和辛金均主金属，故为铁钉或钢钉。为什么说是前辈高人，因代表墓地的时干戊，同时又是年干，而且戊落坤2宫为衰、病之地，自然为前辈人了。临天蓬星主大智慧，又临开门吉门，自然是高人了。上乘玄武，下临开门，所以说这地方早被前辈高人打开暗中占领了。年干、时干克日干，自然是不允许吴先生再来用这块地理了。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "home_day_hour",
+      "case_id": "kaiwu.geography.case02",
+      "source_line": 62,
+      "domain": "living_home",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_residential_purchase",
+            "required": true
+          },
+          {
+            "fact": "day_hour_stem_relationship_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Day stem=person, hour stem=residence, check mutual palace relation.",
+      "source_original": "(3)日干为人，时干为宅，日、时同宫比和，为吉。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "home_sheng_gate",
+      "case_id": "kaiwu.geography.case02",
+      "source_line": 64,
+      "domain": "living_home",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_residential_purchase",
+            "required": true
+          },
+          {
+            "fact": "sheng_door_and_star_deity_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Conditionally use 生门 to evaluate book-described residential environment.",
+      "source_original": "(4)生门为房屋为住宅，在艮8宫为吉，上乘九天，说明位置较高，也为气场好，丁+丁为星奇入太阴，文书证件即至，喜事从心，万事如意；临天任吉星。说明此处住宅环境气场均佳。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "home_year_life",
+      "case_id": "kaiwu.geography.case02",
+      "source_line": 66,
+      "domain": "living_home",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_residential_purchase",
+            "required": true
+          },
+          {
+            "fact": "person_year_stem_branch_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Source adds 年命 and 地支 for occupant when provided.",
+      "source_original": "(5)这位朋友年命为癸丑，天干癸落9宫生助生门宫，地支丑就是艮8宫，说明很适合他居住。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "home_price_capital",
+      "case_id": "kaiwu.geography.case02",
+      "source_line": 70,
+      "domain": "living_home",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_residential_purchase",
+            "required": true
+          },
+          {
+            "fact": "capital_symbol_available",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Source book chooses 戊寄坤二 and 土囚 as number 2; no general numeric pricing rule.",
+      "source_original": "(7)甲子戊又为资本，戊寄2宫，亥月土囚，故按二数断，大约需投资二十万元左右。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "land_si_door",
+      "case_id": "kaiwu.geography.case03",
+      "source_line": 99,
+      "domain": "residential_land",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_land_building_plot",
+            "required": true
+          },
+          {
+            "fact": "death_door_and_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Use 死门 for宅基地 and additional 格局/星/击刑, not infer real death from symbols.",
+      "source_original": "(1)以死门为地皮，为宅基地，今死门落3宫受制，天辅星虽吉，但戊+己为青龙入天牢凶格，又戊土为阳宅，戊落3宫子卯刑为六仪击刑，故可能死过人，震为长男，故可能死过男人。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "land_hour_stem",
+      "case_id": "kaiwu.geography.case03",
+      "source_line": 101,
+      "domain": "residential_land",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_land_building_plot",
+            "required": true
+          },
+          {
+            "fact": "hour_stem_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Check 时干 and specific secondary signs; literal book claim, no verified death evidence.",
+      "source_original": "(2)又可以时干为宅基地，今时干壬落4宫，为入墓，又为辰辰自刑，惊门凶门又克宫，上乘凶神螣蛇，主缠绕，主虚惊怪异之事，天英星和巽宫都主女人，壬又为年干，故可能有长辈女人在此处上吊自缢过。",
+      "review_status": "draft"
+    },
+    {
+      "method_key": "land_onsite_confirmation",
+      "case_id": "kaiwu.geography.case03",
+      "source_line": 102,
+      "domain": "residential_land",
+      "conditions_json": {
+        "all": [
+          {
+            "fact": "question_is_land_building_plot",
+            "required": true
+          },
+          {
+            "fact": "on_site_evidence_unknown",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence_no_unconditional_verdict"
+      },
+      "scope": "Book advises field investigation before decision; independently verify factual claims.",
+      "source_original": "综合以上分析，我对贾双萍说：“这块宅基地风水不好，虽然你盖了房子短期内不会出问题，但毕竟不好，因此建议你回去后到当地实地调查一番，如果确实发生过上述凶事，最好坚决退掉。”",
+      "review_status": "draft"
+    }
+  ]
+}

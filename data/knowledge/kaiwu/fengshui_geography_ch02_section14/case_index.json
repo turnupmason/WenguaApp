@@ -1,0 +1,79 @@
+{
+  "source_sha256": "612c64b12172ffc50378323a1035da5d55eda3913f73bc408392da82c48a72d3",
+  "cases": [
+    {
+      "case_id": "shenqi.geography.case02",
+      "source_span": [
+        3,
+        35
+      ],
+      "source_OCR_panel_lines": [
+        8,
+        22
+      ],
+      "source_analysis_step_lines": [
+        26,
+        28,
+        30,
+        32,
+        34
+      ],
+      "same_event_in_old_shenqi": true,
+      "geo_type": "burial_plot",
+      "feedback_lines": null,
+      "book_claim_caveat": "same 1998-03-05 19:20 戊戌 Wu cemetery from Shenqi. Preserve old initial result, new five author reasonings",
+      "no_independent_real_world_validation": true
+    },
+    {
+      "case_id": "kaiwu.geography.case02",
+      "source_span": [
+        36,
+        73
+      ],
+      "source_OCR_panel_lines": [
+        42,
+        54
+      ],
+      "source_analysis_step_lines": [
+        58,
+        60,
+        62,
+        64,
+        66,
+        68,
+        70
+      ],
+      "same_event_in_old_shenqi": false,
+      "geo_type": "living_home",
+      "feedback_lines": [
+        71,
+        72
+      ],
+      "book_claim_caveat": "The book reports actual 20万元 quote and signed pre-sale agreement while house was not yet built; no later residence-quality outcome",
+      "no_independent_real_world_validation": true
+    },
+    {
+      "case_id": "kaiwu.geography.case03",
+      "source_span": [
+        74,
+        103
+      ],
+      "source_OCR_panel_lines": [
+        83,
+        95
+      ],
+      "source_analysis_step_lines": [
+        99,
+        101
+      ],
+      "same_event_in_old_shenqi": false,
+      "geo_type": "residential_land",
+      "feedback_lines": [
+        103,
+        103
+      ],
+      "book_claim_caveat": "Reported historical death stories and loss of 10000-yuan deposit are book testimony, no independent ownership/suicide records; not engineering proof",
+      "no_independent_real_world_validation": true
+    }
+  ]
+}
