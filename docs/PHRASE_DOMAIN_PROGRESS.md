@@ -104,3 +104,11 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 
 **DB继续增量，不重置**：以最新版婚姻V1.4 SHA256 `ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da` 为唯一本轮上游，迁移`schema/migrations/043_marriage_original_book_timing_astro_v15.sql`新增20条规则、1个作者首断历史研究、2个天文节气月候选、2个书源反馈检验与审计记录；原194案例/43章、9基本婚姻方法/22细场景、2古籍起盘样本44回归均原字未改，SQLite `integrity_check=ok`、外键0。**V1.5最新完整SQLite** `archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3`，大小14495744字节，SHA256 **`619867ef0f81234c662fbc1796de1c6844e9c1ecf12f59a904d20f9c90b757f3`**，XZ同名`.sqlite3.xz`大小1151600字节 SHA256`e1ceb920ac1e675e869aad0b30c11f7db26e6db7710d41ffab8446283b605159`，manifest`archives/sqlite/shenqi21_kaiwu22_marriage_author_timing_astro_v15_manifest.json`。有书中历史已知预判择月的研究回归，但**未见现实婚姻事件的全六层正式预测实例仍为0**。之后凡新增知识/方法/细领域/历史反馈均以V1.5完整SHA为上游，用新的编号新文件名版本增量。
 
+## 2026-10-21 V1.6 INDEPENDENT MARRIAGE AUTHOR-JUDGMENT + FAMILY HOLDOUT FINAL
+
+**最新已归档完整双书婚姻研究 V1.6**。不是重复写22场景流程；源码作者式初断可依据真实已起盘JSON及当事人年命形成带正反古籍依据的传统 success/failure 判断；在对应六合旬空且原书适用时可调用已有20条应期法及离线节气月真实换算。实现加入原书符号章节的六冲、六害、相刑、月日破、天干墓库和八门旺衰条件，但24项尚未全实现，不能把研究初断宣布为最终预测成品。
+
+全家族初判隔离研究覆盖《开悟之门》婚姻例二一问、例三两问，共**3问、2个原书事件家族、24个与原文对照的外围门神宫位，1次吻合书内后验、2次错断**。女儿原婚姻和第二个相亲对象误判成，具体错误对照、原先作者出处和修正目标已保存；程序不读当前家族作者结论和反馈，得出结果后独立比较。注意本测试不是新从未见过的封存盲测，无法声称准确率或“已学会全部断案”。下一步按原书补全乙庚与年命主辅冲突、六合旺衰及反证、击刑墓空太岁和应期优先级等，使主年命关系不覆盖其他直接不利证据；用其他事件家族检测新增规则，不能据既看过的两个错例做机械答案修正。
+
+完整 V1.6 SQLite archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3，14,534,656字节，SHA256 89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4；XZ 1,154,228字节，SHA256 168db015644c9ad4e86a8d1f8573703de80f7555dd400404d85b50a0afea8942；manifest archives/sqlite/shenqi21_kaiwu22_marriage_author_family_dev_v16_manifest.json。旧194案例、43章、22场景、9旧流程、20原书应期、4语言草稿均原行保留。迁移044 +独立后验标签物理分表+ 专用GitHub archive 均完成，数据库 integrity_check=ok，外键错误0。详细方法和错误报告 docs/MARRIAGE_SOURCE_BLIND_JUDGMENT_V1_6.md。
+
