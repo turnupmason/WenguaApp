@@ -1,0 +1,155 @@
+{
+  "source_sha256": "5fbdc0cc88012934beabe8e9a13e656c4be72afa8706245649f8d11b8e5ffe1e",
+  "fragments": [
+    {
+      "case_id": "kaiwu.weather.case01",
+      "source_lines": [
+        16,
+        32
+      ],
+      "original_raw_lines": [
+        {
+          "line": 16,
+          "literal": "阴"
+        },
+        {
+          "line": 17,
+          "literal": "伤 癸"
+        },
+        {
+          "line": 18,
+          "literal": "辅 癸    合"
+        },
+        {
+          "line": 19,
+          "literal": "杜 己"
+        },
+        {
+          "line": 20,
+          "literal": "英 己    虎"
+        },
+        {
+          "line": 21,
+          "literal": "丁景辛"
+        },
+        {
+          "line": 22,
+          "literal": "丁芮辛"
+        },
+        {
+          "line": 23,
+          "literal": "生  王"
+        },
+        {
+          "line": 24,
+          "literal": "冲  士"
+        },
+        {
+          "line": 25,
+          "literal": "丁    武"
+        },
+        {
+          "line": 26,
+          "literal": "死乙"
+        },
+        {
+          "line": 27,
+          "literal": "柱乙"
+        },
+        {
+          "line": 28,
+          "literal": "符"
+        },
+        {
+          "line": 29,
+          "literal": "休 戊 任 戊    天"
+        },
+        {
+          "line": 30,
+          "literal": "开 庚  蓬  庚    地"
+        },
+        {
+          "line": 31,
+          "literal": "惊丙"
+        },
+        {
+          "line": 32,
+          "literal": "心丙"
+        }
+      ]
+    },
+    {
+      "case_id": "kaiwu.weather.case02",
+      "source_lines": [
+        52,
+        67
+      ],
+      "original_raw_lines": [
+        {
+          "line": 52,
+          "literal": "武"
+        },
+        {
+          "line": 53,
+          "literal": "休戊"
+        },
+        {
+          "line": 54,
+          "literal": "蓬 丁    虎"
+        },
+        {
+          "line": 55,
+          "literal": "生 庚"
+        },
+        {
+          "line": 56,
+          "literal": "任  己    丙  乙"
+        },
+        {
+          "line": 57,
+          "literal": "合"
+        },
+        {
+          "line": 58,
+          "literal": "地"
+        },
+        {
+          "line": 59,
+          "literal": "开  壬"
+        },
+        {
+          "line": 60,
+          "literal": "心  丙"
+        },
+        {
+          "line": 61,
+          "literal": "癸    阴"
+        },
+        {
+          "line": 62,
+          "literal": "杜 丁 辅  辛"
+        },
+        {
+          "line": 63,
+          "literal": "天"
+        },
+        {
+          "line": 64,
+          "literal": "惊 辛 柱 庚    符"
+        },
+        {
+          "line": 65,
+          "literal": "癸 死 乙"
+        },
+        {
+          "line": 66,
+          "literal": "芮  戊    蛇"
+        },
+        {
+          "line": 67,
+          "literal": "景  己 英  壬"
+        }
+      ]
+    }
+  ]
+}

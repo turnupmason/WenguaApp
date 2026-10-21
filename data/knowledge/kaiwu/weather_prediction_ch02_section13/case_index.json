@@ -1,0 +1,68 @@
+{
+  "source_sha256": "5fbdc0cc88012934beabe8e9a13e656c4be72afa8706245649f8d11b8e5ffe1e",
+  "cases": [
+    {
+      "key": "wedding_weather_19990422",
+      "id": "kaiwu.weather.case01",
+      "title": "1999年4月24至26日石家庄婚礼及回门天气",
+      "begin": 3,
+      "end": 46,
+      "known": [
+        12,
+        14
+      ],
+      "calendar": 14,
+      "chart": [
+        16,
+        32
+      ],
+      "steps": [
+        36,
+        38,
+        40,
+        42
+      ],
+      "first_answer": [
+        42,
+        43
+      ],
+      "feedback": [
+        45
+      ],
+      "question_date": "1999-04-22 08:30",
+      "target_date": "1999-04-24/26",
+      "note": "4/24 and 4/25 dry and sunny; book-reported rain on 4/26. Nearby friend moving Apr25 is only a separate mentioned choice, not another printed chart and lacks outcome feedback."
+    },
+    {
+      "key": "yangtze_1998_flood_recession",
+      "id": "kaiwu.weather.case02",
+      "title": "1998年长江特大洪水退落的书内推演",
+      "begin": 47,
+      "end": 79,
+      "known": [
+        47,
+        50
+      ],
+      "calendar": 50,
+      "chart": [
+        52,
+        67
+      ],
+      "steps": [
+        71,
+        73,
+        75,
+        77
+      ],
+      "first_answer": [
+        78
+      ],
+      "feedback": [
+        78
+      ],
+      "question_date": "1998-08-19 midday",
+      "target_date": "lunar_renxu_month_1998",
+      "note": "Major Yangtze flooding already underway and known before prediction; book concludes retreat by lunar 壬戌月 and says 果验 without independent level/station/date measurements; six-yao also mentioned with no printed chart."
+    }
+  ]
+}
