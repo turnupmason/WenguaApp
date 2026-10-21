@@ -1,0 +1,106 @@
+name: Archive Kaiwu criminal two source cases with explicit first errors
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_刑事案件预测.txt'
+      - 'scripts/build_kaiwu_criminal_from_travel.py'
+      - 'schema/migrations/030_kaiwu_criminal_shared_domain_two_cases.sql'
+      - 'tests/test_kaiwu_criminal_shared_domain.py'
+      - '.github/workflows/build_kaiwu_criminal_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact two source boards, 18 palaces, staged feedback and 2 source-admitted errors
+        run: python -m unittest discover -s tests -p test_kaiwu_criminal_shared_domain.py -v
+      - name: Append only by backup of exact 159-case complete prior source SQLite SHA
+        run: |
+          python -m scripts.build_kaiwu_criminal_from_travel \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_刑事案件预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/criminal_case_prediction_ch02_section09'
+      - name: Compress genuine binary and verify SHA source rows and all real database counts
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          d=json.loads(Path('data/knowledge/kaiwu/criminal_case_prediction_ch02_section09/chapter_manifest.json').read_text('utf8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==d['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0] for t in d['counts']}
+           assert counts==d['counts']
+           assert counts['cases']==161 and counts['kaiwu_criminal_source_casts']==2
+           assert counts['kaiwu_criminal_original_palaces']==18
+           assert db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]==10
+          meta={'schema':'wengua_shenqi21_kaiwu15_two_criminal_book_cases_original_v1',
+           'source_title':d['source_title'],'source_sha256':d['source_sha256'],
+           'source_bytes':d['source_bytes'],'source_lines':d['source_lines'],
+           'new_original_book_cases_user_accepted_without_individual_approval':2,
+           'new_distinct_historical_events':2,'new_source_printed_charts':2,
+           'new_literal_original_palaces':18,'new_original_author_reasoning_turns':13,
+           'original_crime_existing_before_both_queries':True,
+           'case1_late_arrest_prediction_unconfirmed':True,
+           'case1_classroom_staged_feedback_not_independent_blind':True,
+           'case2_two_explicit_prediction_misses_preserved':True,
+           'case2_other_approximate_victim_discrepancy_separate':True,
+           'case2_unprinted_incident_time_board_NOT_invented':True,
+           'case2_editors_post_result_reinterpretation_not_first_guess':True,
+           'total_book_sources':36,'book_counts':d['book_counts'],
+           'total_unique_historical_cases':161,
+           'total_actual_printed_historical_casts':179,
+           'total_explicit_initial_whole_case_errors':10,
+           'complete_old_archive_path':str(old),
+           'complete_old_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_violations':0,
+           'all_older_source_rows_verbatim_preserved':True,
+           'no_claim_of_external_police_or_judicial_verification':True,
+           'public_complete_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_criminal_161cases_manifest.json').write_text(
+           json.dumps(meta,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(meta,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-shenqi21-kaiwu15-criminal-161cases-archive
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_criminal_161cases_manifest.json
+          retention-days: 30
+      - name: Commit genuine full SQLite XZ and sourced original evidence indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_criminal_161cases_manifest.json' \
+                     'data/knowledge/kaiwu/criminal_case_prediction_ch02_section09/'
+          git diff --cached --check
+          git commit -m 'Archive 2 original criminal cases with two admitted first errors and unprinted-board provenance'
+          git push origin HEAD:main
