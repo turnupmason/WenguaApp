@@ -223,7 +223,7 @@ def build(parent,source,out,index):
    'historical_case_additional_casts':19,'historical_case_additional_cast_cells':171,
    'historical_palace_standardization':1611,'historical_case_reasoning':933,
    'historical_case_reasoning_trace':933,'semantic_assertions':2651,
-   'cross_book_concept_tracks':1394,'historic_book_case_acceptance':69,
+   'cross_book_concept_tracks':1394,'historic_book_case_acceptance':67,
    'unified_case_domain_facets':107,'kaiwu_geography_source_witnesses':3,
    'kaiwu_geography_raw_lines':41,'kaiwu_geography_author_steps':14,
    'kaiwu_geography_method_candidates':11}
