@@ -121,7 +121,7 @@ def seed(base,output,indexdir):
      target_age_band,target_sex,rule_conditions_json,obligatory_evidence_json,
      counterevidence_json,reasoning_trace_json,draft_text,draft_text_sha256,
      style_version,created_utc)
-    VALUES (?,'marriage',?,?,?,?,?,?,?,?,?,?,?,?,?,'2026-10-21')""",
+    VALUES (?,'marriage',?,?,?,?,?,?,?,?,?,?,?,?,'2026-10-21')""",
     (p["id"],p["scenario"],p["question"],p["relationship"],p["age"],p["sex"],
      asjson(when),asjson(evidence),asjson(counter),asjson(trace),
      text,sha(text.encode()),VERSION))
