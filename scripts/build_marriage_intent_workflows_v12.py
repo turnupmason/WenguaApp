@@ -114,7 +114,7 @@ def compile_workflows(base,output,index_dir):
       raise ValueError("Invalid or out-of-order original source lines: "+jsonv(r))
      excerpts=[{"line":n,"original":lines[n-1],
                 "sha256":sha(lines[n-1].encode("utf8"))} for n in nums]
-     is_feedback=int("feedback" in r["phase_role"] or r["phase_role"]=="later_distinct_wedding_date")
+     is_feedback=int(r["phase_role"] in ("later_feedback_date_not_training_label","later_distinct_wedding_date","later_feedback_do_not_train"))
      db.execute("""INSERT INTO phrase_intent_evidence_links
        (intent_id,source_ordinal,book_id,source_section_key,
         source_sha256,case_id,original_source_line_numbers_json,
@@ -125,8 +125,8 @@ def compile_workflows(base,output,index_dir):
         r["phase_role"],is_feedback))
      distinct.add(r["case_id"])
      source_count+=1
-   if source_count!=28 or step_count!=72:
-    raise ValueError("All 28 exact author source witness links and 72 steps required")
+   if source_count!=30 or step_count!=72:
+    raise ValueError("All 30 exact author source witness links and 72 steps required")
    details={"source_status":"book_original_method_drafts_not_independent_science",
     "applies_one_subquestion_specific_event_at_a_time":True,
     "nine_intents_with_not_all_direct_examples":True,
@@ -155,7 +155,7 @@ def compile_workflows(base,output,index_dir):
  if counts!={"sections":43,"cases":194,"historical_chart_cells":1440,
   "phrase_template_drafts":4,"phrase_source_links":9,"phrase_context_instances":0,
   "phrase_outcome_timing_contracts":4,"phrase_intent_workflows":9,
-  "phrase_intent_workflow_steps":72,"phrase_intent_evidence_links":28,
+  "phrase_intent_workflow_steps":72,"phrase_intent_evidence_links":30,
   "phrase_intent_workflow_audit":1}:
   raise ValueError(("New full source database has unexpected counts",counts))
  result={"schema":"wengua_marriage_question_specific_workflows_v1_2",
