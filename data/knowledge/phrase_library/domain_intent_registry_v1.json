@@ -1,0 +1,162 @@
+{
+  "schema": "WenguaApp question_intent_registry_v1",
+  "status": "design_only_not_mass_precomputed_phrases",
+  "principle": "A domain contains subquestions; every completed real chart requires dynamic question-specific yongshen, case reasoning, forecast conclusion and computed applicable timing. GPT only verbalizes approved structured result.",
+  "sequence": [
+    "verify_original_nine_palace",
+    "compute_every_physical_factor",
+    "resolve_querent_subject_partner_relationships",
+    "classify_intent_and_target_event",
+    "retrieve_domain_and_intent_author_methods_and_errors",
+    "select_primary_secondary_yongshen",
+    "evidence_support_counter_and_conflicts",
+    "compute_event-specific_outcome",
+    "derive_and_choose_applicable_calendar_timing",
+    "human_polish_chinese_approximately_200_chars",
+    "persist_case_independent_instance_with_rule_version"
+  ],
+  "source_truth": "194 source-book cases, 43 book sections, existing marriage phrase V1.1 draft (4 prototypes, 0 verified chart instances)",
+  "coverage": {
+    "unique_cast_state_index": 1080,
+    "year_birth_ganzhi": 60,
+    "age_band": 3,
+    "sex": 2,
+    "per_domain_base_contexts": 388800,
+    "preapproved_statements": 0
+  },
+  "not_all_phrases_precomputed": true,
+  "review_policy": {
+    "book_author_historical_cases": "accepted_as_book_source_per_user",
+    "new_method_candidate": "draft_until_rule_checked",
+    "gpt_phrase": "human_style_only_not_authoritative",
+    "calendar_date": "must_be_calculated_not_invented",
+    "external_future_accuracy": "not_guaranteed"
+  },
+  "domains": {
+    "marriage": {
+      "stage": "first_active_domain",
+      "intents": [
+        {
+          "key": "relationship_form",
+          "user_question": "能不能发展恋爱",
+          "target": "明确恋爱关系",
+          "time": "成事窗口"
+        },
+        {
+          "key": "marriage_proposal",
+          "user_question": "能否求婚订婚",
+          "target": "双方确定婚约",
+          "time": "成事窗口"
+        },
+        {
+          "key": "marriage_registration",
+          "user_question": "什么时候领证",
+          "target": "婚姻登记",
+          "time": "可计算日期窗口"
+        },
+        {
+          "key": "wedding_date",
+          "user_question": "什么时候办婚礼",
+          "target": "婚礼举办",
+          "time": "可计算日期窗口"
+        },
+        {
+          "key": "marriage_stability",
+          "user_question": "未来一段婚姻是否顺利",
+          "target": "指定期间内关系走势",
+          "time": "连续期间和转折点"
+        },
+        {
+          "key": "divorce",
+          "user_question": "会不会离婚、何时落实",
+          "target": "婚姻解除",
+          "time": "事件日期窗口"
+        },
+        {
+          "key": "reconciliation",
+          "user_question": "能否和好、什么时候",
+          "target": "关系恢复",
+          "time": "事件日期窗口"
+        },
+        {
+          "key": "remarriage",
+          "user_question": "能否复婚、什么时候",
+          "target": "重新登记",
+          "time": "事件日期窗口"
+        },
+        {
+          "key": "trust_question",
+          "user_question": "是否涉及第三者",
+          "target": "具体关系信任疑虑",
+          "time": "指定期间",
+          "caution": "古籍象意不能证明现实出轨"
+        }
+      ]
+    },
+    "employment": {
+      "stage": "taxonomy_only_next_domains_wait_for_marriage_quality_gate",
+      "intents": [
+        {
+          "key": "job_offer",
+          "user_question": "何时找到工作",
+          "target": "获取正式offer",
+          "time": "拿到录用或入职时间"
+        },
+        {
+          "key": "job_change",
+          "user_question": "何时跳槽、是否成功",
+          "target": "获得并接受新职位",
+          "time": "offer、离职、新入职须分别算"
+        },
+        {
+          "key": "promotion",
+          "user_question": "何时升职",
+          "target": "晋升任命",
+          "time": "审批/公布/生效时间"
+        },
+        {
+          "key": "transfer",
+          "user_question": "何时调岗调动",
+          "target": "调岗批准及实际生效",
+          "time": "批准和实施分开"
+        },
+        {
+          "key": "job_security",
+          "user_question": "会不会被裁员、工作稳不稳",
+          "target": "保住岗位或解除劳动关系",
+          "time": "给明确观察期，必要时关键变动窗口"
+        },
+        {
+          "key": "career_trend",
+          "user_question": "工作是否顺利",
+          "target": "设定观察期内整体发展",
+          "time": "走势窗口而非强迫某一日"
+        },
+        {
+          "key": "salary",
+          "user_question": "能否涨薪、何时到账",
+          "target": "涨薪批准和实际兑现",
+          "time": "批准和实际支付区分"
+        },
+        {
+          "key": "colleague_competition",
+          "user_question": "领导同事相处及竞争",
+          "target": "特定关系或具体事件",
+          "time": "有关事件窗口，必须绑定人物"
+        }
+      ]
+    }
+  },
+  "routing": {
+    "new_question_type_not_covered": "extend_taxonomy_from_real_user_question_without_inventing_new_rule",
+    "multi_intent": "decompose_to_distinct_outcome_and_timing_targets_same_chart_not_necessarily_distinct_independent_case",
+    "unknown": "return_specific_missing_evidence_not_generic_hedge"
+  },
+  "timing": {
+    "must_attempt": "select_best_book_supported_timing_from_verified_calendar_and_complete_chart",
+    "single_date_when_justified": true,
+    "trend_questions": "determine_requested_horizon_or_report_the_actual_needed_horizon",
+    "no_calendar_or_conflicting_primary_yongshen": "no_fabricated_date"
+  },
+  "no_UI": true
+}
