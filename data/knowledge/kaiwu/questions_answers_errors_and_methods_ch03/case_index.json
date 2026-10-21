@@ -1,0 +1,215 @@
+{
+  "new_cases": [
+    {
+      "case_id": "kaiwu.final.taiwan_zhang",
+      "section": 5,
+      "domain": "travel_abroad",
+      "source_range": [
+        52,
+        78
+      ],
+      "predicted_at_lines": [
+        77
+      ],
+      "outcomes_reported_at_lines": [
+        78
+      ],
+      "initial_book_error_explicit": false
+    },
+    {
+      "case_id": "kaiwu.final.taiwan_tang",
+      "section": 5,
+      "domain": "travel_abroad",
+      "source_range": [
+        79,
+        113
+      ],
+      "predicted_at_lines": [
+        106
+      ],
+      "outcomes_reported_at_lines": [
+        107
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.committee_chen",
+      "section": 6,
+      "domain": "competition_evaluation",
+      "source_range": [
+        116,
+        154
+      ],
+      "predicted_at_lines": [
+        145
+      ],
+      "outcomes_reported_at_lines": [
+        146
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.license",
+      "section": 8,
+      "domain": "lost_property",
+      "source_range": [
+        212,
+        251
+      ],
+      "predicted_at_lines": [
+        243
+      ],
+      "outcomes_reported_at_lines": [
+        244
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.opera",
+      "section": 9,
+      "domain": "sports_competition",
+      "source_range": [
+        254,
+        310
+      ],
+      "predicted_at_lines": [
+        279
+      ],
+      "outcomes_reported_at_lines": [
+        257
+      ],
+      "initial_book_error_explicit": false
+    },
+    {
+      "case_id": "kaiwu.final.missing_daughter",
+      "section": 10,
+      "domain": "missing_person",
+      "source_range": [
+        313,
+        378
+      ],
+      "predicted_at_lines": [
+        341
+      ],
+      "outcomes_reported_at_lines": [
+        342
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.divorce",
+      "section": 11,
+      "domain": "marriage",
+      "source_range": [
+        381,
+        413
+      ],
+      "predicted_at_lines": [
+        382
+      ],
+      "outcomes_reported_at_lines": [
+        382
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.remarriage",
+      "section": 11,
+      "domain": "marriage",
+      "source_range": [
+        381,
+        413
+      ],
+      "predicted_at_lines": [
+        382
+      ],
+      "outcomes_reported_at_lines": [
+        382
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.weather",
+      "section": 12,
+      "domain": "weather",
+      "source_range": [
+        416,
+        448
+      ],
+      "predicted_at_lines": [
+        418
+      ],
+      "outcomes_reported_at_lines": [
+        417
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.football",
+      "section": 13,
+      "domain": "sports_competition",
+      "source_range": [
+        451,
+        523
+      ],
+      "predicted_at_lines": [
+        474,
+        502
+      ],
+      "outcomes_reported_at_lines": [
+        451
+      ],
+      "initial_book_error_explicit": true
+    },
+    {
+      "case_id": "kaiwu.final.transfer",
+      "section": 14,
+      "domain": "employment",
+      "source_range": [
+        528,
+        570
+      ],
+      "predicted_at_lines": [
+        554
+      ],
+      "outcomes_reported_at_lines": [
+        570
+      ],
+      "initial_book_error_explicit": false
+    },
+    {
+      "case_id": "kaiwu.final.recovery",
+      "section": 14,
+      "domain": "health",
+      "source_range": [
+        555,
+        571
+      ],
+      "predicted_at_lines": [
+        561,
+        562
+      ],
+      "outcomes_reported_at_lines": [
+        571
+      ],
+      "initial_book_error_explicit": false
+    },
+    {
+      "case_id": "kaiwu.final.exam",
+      "section": 14,
+      "domain": "education",
+      "source_range": [
+        563,
+        569
+      ],
+      "predicted_at_lines": [
+        568
+      ],
+      "outcomes_reported_at_lines": [
+        569
+      ],
+      "initial_book_error_explicit": false
+    }
+  ],
+  "cross_book_same_event_reused": "kaiwu.business.case05"
+}
