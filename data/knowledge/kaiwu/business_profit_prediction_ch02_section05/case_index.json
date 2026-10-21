@@ -1,0 +1,374 @@
+{
+  "source_sha256": "10d777fe514315c8e56dbef6d6a5152300b79c0ed041b92ee10f15cccef18fdf",
+  "cases": [
+    {
+      "key": "lottery_xu_1997",
+      "number": 1,
+      "id": "kaiwu.business.case01",
+      "title": "(例一)海南省澄迈县学员许开大测例。",
+      "begin": 3,
+      "end": 45,
+      "caption": 6,
+      "chart_start": 7,
+      "chart_end": 20,
+      "chart_sha": "f163ae4460b34da337a53f5d8f5f53cc2c60b363fe1444087ef061711b53b52d",
+      "question": 4,
+      "initial": [
+        24,
+        26,
+        28,
+        30,
+        32,
+        34
+      ],
+      "feedback": [
+        35
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "prize_draw"
+      ],
+      "note": "Book first reported source winner and dream; 5不遇时 editorial analysis is later",
+      "steps": [
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        40,
+        44
+      ]
+    },
+    {
+      "key": "loan_liu_1997",
+      "number": 2,
+      "id": "kaiwu.business.case02",
+      "title": "(例二)辽宁学员刘文元测借钱例。",
+      "begin": 46,
+      "end": 84,
+      "caption": 59,
+      "chart_start": 60,
+      "chart_end": 73,
+      "chart_sha": "5d56a534b5c3ad39feb8d6ae76048560f98f1b2b22fcd3eec8f086309a3807df",
+      "question": 52,
+      "initial": [
+        53
+      ],
+      "feedback": [
+        54
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "credit_borrowing"
+      ],
+      "note": "First consultation and failure occurred before later printed and analysed historical chart",
+      "steps": [
+        77,
+        80
+      ]
+    },
+    {
+      "key": "joint_factory_shi_1997",
+      "number": 3,
+      "id": "kaiwu.business.case03",
+      "title": "(例三)石建国为人预测合伙办工厂。",
+      "begin": 85,
+      "end": 134,
+      "caption": 95,
+      "chart_start": 96,
+      "chart_end": 110,
+      "chart_sha": "32569faa24309260cda806d7458fa71287af4127c44bcd4a44081bf55c64b677",
+      "question": 86,
+      "initial": [
+        87,
+        89,
+        91
+      ],
+      "feedback": [
+        133
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "joint_venture"
+      ],
+      "note": "1998 feedback 15万 original investment and 6万 loss, disputes with partner",
+      "steps": [
+        114,
+        116,
+        118,
+        120,
+        122,
+        124,
+        128,
+        131
+      ]
+    },
+    {
+      "key": "kedi_funding_1998",
+      "number": 4,
+      "id": "kaiwu.business.case04",
+      "title": "(例四)中药高新技术产业，能否得到国家科技基金?",
+      "begin": 135,
+      "end": 173,
+      "caption": 142,
+      "chart_start": 143,
+      "chart_end": 156,
+      "chart_sha": "6c019732fbb0a41b6cf9058b7a21e0a5255df45538dfd207ee4f2307e8185bfd",
+      "question": 138,
+      "initial": [
+        171
+      ],
+      "feedback": [
+        172
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "project_financing"
+      ],
+      "note": "Same Kedi company as case05 but distinct Aug 1998 funding application; 3000万元 grant Dec1 and later 2000万元 bond loan",
+      "steps": [
+        160,
+        162,
+        164,
+        166,
+        170
+      ]
+    },
+    {
+      "key": "kedi_permit_miss_1999",
+      "number": 5,
+      "id": "kaiwu.business.case05",
+      "title": "(例五)制药厂建设项目，何日才能开工?",
+      "begin": 174,
+      "end": 203,
+      "caption": 180,
+      "chart_start": 181,
+      "chart_end": 193,
+      "chart_sha": "39807d041cc54116be62fd0e4d574e998a064a546fd1ffc037d8a92f35ddf0bd",
+      "question": 176,
+      "initial": [
+        200
+      ],
+      "feedback": [
+        201,
+        202
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "administrative_permit"
+      ],
+      "note": "Explicit author mistake predicted Jun21/22; construction permit and actual start only Jun29; NEVER retrospectively mark advance success",
+      "steps": [
+        197,
+        199
+      ]
+    },
+    {
+      "key": "drugstore_tax_shi_1997",
+      "number": 6,
+      "id": "kaiwu.business.case06",
+      "title": "(例六)石建国为人预测财运：“你将被税务局罚款!”",
+      "begin": 204,
+      "end": 251,
+      "caption": 211,
+      "chart_start": 212,
+      "chart_end": 225,
+      "chart_sha": "13fa39d99356345ac326ca5a230a0d89d7c72103a4da2ddd0013b6d7edaf6ae1",
+      "question": 205,
+      "initial": [
+        205
+      ],
+      "feedback": [
+        206,
+        250
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "tax_dispute"
+      ],
+      "note": "March 4 37500-yuan tax penalty; prior 1996 official dispute already existed",
+      "steps": [
+        229,
+        231,
+        233,
+        235,
+        239,
+        241,
+        243,
+        245,
+        248
+      ]
+    },
+    {
+      "key": "taihe_mall_build_1999",
+      "number": 7,
+      "id": "kaiwu.business.case07",
+      "title": "(例七)在石家庄南三条再搞一个“太和日化城”能否成功?",
+      "begin": 252,
+      "end": 287,
+      "caption": 258,
+      "chart_start": 259,
+      "chart_end": 272,
+      "chart_sha": "d835d477541e9f2ab43ad9bf3f1886be7038c269598cfd900bcc58a70aa89d69",
+      "question": 254,
+      "initial": [
+        283
+      ],
+      "feedback": [
+        284,
+        286
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "property_development"
+      ],
+      "note": "Taihe daily chemicals mall actual opening Jan8 2000; same mall as case08 but question different",
+      "steps": [
+        276,
+        278,
+        280,
+        282
+      ]
+    },
+    {
+      "key": "taihe_shop_purchase_1999",
+      "number": 8,
+      "id": "kaiwu.business.case08",
+      "title": "(例八)购买“太和日化城”商位，能否获利?",
+      "begin": 288,
+      "end": 333,
+      "caption": 294,
+      "chart_start": 295,
+      "chart_end": 308,
+      "chart_sha": "cd161e23e9a65d330eec64bdbb628ca39d40fc9a5fa61bb21e0a05bc8c3c99fd",
+      "question": 290,
+      "initial": [
+        321
+      ],
+      "feedback": [
+        322,
+        323,
+        324
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "property_investment"
+      ],
+      "note": "Different buyer, same Taihe mall project; advance first-quarter rent vs unverified long-term rental yield",
+      "steps": [
+        312,
+        314,
+        316,
+        318,
+        320,
+        328,
+        330,
+        332
+      ]
+    },
+    {
+      "key": "cake_water_issue_1999",
+      "number": 9,
+      "id": "kaiwu.business.case09",
+      "title": "(例九)远行求神无效，近访周易有成。",
+      "begin": 334,
+      "end": 365,
+      "caption": 342,
+      "chart_start": 343,
+      "chart_end": 356,
+      "chart_sha": "7c412200251125b6dcd789320402824c266a346c83c86ed7c8d65bf20eb98002",
+      "question": 337,
+      "initial": [
+        338
+      ],
+      "feedback": [
+        339
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "food_production"
+      ],
+      "note": "Author already heard cake troubles and privately cast before explaining to owner; warm water restored production by book report",
+      "steps": [
+        360,
+        362,
+        364
+      ]
+    },
+    {
+      "key": "mine_rescue_liu_1999",
+      "number": 10,
+      "id": "kaiwu.business.case10",
+      "title": "(例十)大连市瓦房店学员刘文元测煤矿塌陷事故。",
+      "begin": 366,
+      "end": 429,
+      "caption": 379,
+      "chart_start": 380,
+      "chart_end": 393,
+      "chart_sha": "2b81ac23530319ddce2f3c6b204de43b7dcac5105c27e2ceba02abdabe6e4ea2",
+      "question": 373,
+      "initial": [
+        410,
+        413,
+        416
+      ],
+      "feedback": [
+        411,
+        414,
+        418
+      ],
+      "domain": "industrial_safety",
+      "facets": [
+        "business_profit"
+      ],
+      "note": "Five trapped workers rescued at 19:10 without reported injuries; mine-safety life risk, NOT ordinary profit success or scientific safety certification",
+      "steps": [
+        397,
+        399,
+        401,
+        403,
+        405,
+        410,
+        413,
+        416,
+        422,
+        424,
+        426
+      ]
+    },
+    {
+      "key": "lottery_he_2000",
+      "number": 11,
+      "id": "kaiwu.business.case11",
+      "title": "(例十一)江西省湖口县读者何新钦测体育彩票摸奖。",
+      "begin": 430,
+      "end": 467,
+      "caption": 437,
+      "chart_start": 438,
+      "chart_end": 452,
+      "chart_sha": "bd893108d2fea3e6c70aa3858afc3982400e56057440b88051e19ddc9254796f",
+      "question": 435,
+      "initial": [
+        456,
+        458,
+        460
+      ],
+      "feedback": [
+        433,
+        463
+      ],
+      "domain": "business_profit",
+      "facets": [
+        "prize_draw"
+      ],
+      "note": "One first prize of 9900 yuan; another boy's 100000 prize is a mention not extra question or new printed chart",
+      "steps": [
+        456,
+        458,
+        460,
+        462
+      ]
+    }
+  ]
+}
