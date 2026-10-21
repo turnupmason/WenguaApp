@@ -1,0 +1,105 @@
+name: Archive Kaiwu business 11 cases in shared cross-book domains
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_经营求财预测.txt'
+      - 'scripts/build_kaiwu_business_from_missing.py'
+      - 'schema/migrations/027_kaiwu_business_mixed_domains_11cases.sql'
+      - 'tests/test_kaiwu_business_11_mixed_domains.py'
+      - '.github/workflows/build_kaiwu_business_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify all original 11 casts, 99 raw palaces, explicit date failure and mine safety
+        run: python -m unittest discover -s tests -p test_kaiwu_business_11_mixed_domains.py -v
+      - name: Back up exact full 138-event SQLite and append source-only book evidence
+        run: |
+          python -m scripts.build_kaiwu_business_from_missing \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_经营求财预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/business_profit_prediction_ch02_section05'
+      - name: Compress actual DB, independently calculate SHA and verify old source integrity
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          info=json.loads(Path('data/knowledge/kaiwu/business_profit_prediction_ch02_section05/chapter_manifest.json').read_text('utf8'))
+          assert hashlib.sha256(old.read_bytes()).hexdigest()==info['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={name:db.execute('SELECT count(*) FROM "'+name+'"').fetchone()[0]
+                   for name in info['cumulative_counts']}
+           assert counts==info['cumulative_counts']
+           assert counts['cases']==149 and counts['kaiwu_business_source_casts']==11
+           assert counts['kaiwu_business_literal_palaces']==99
+           assert db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]==9
+          meta={'schema':'wengua_shenqi21_kaiwu12_mixed_business_mine_complete_archive_v1',
+           'source_title':info['source_title'],'source_sha256':info['source_sha256'],
+           'source_bytes':info['source_bytes'],'source_lines':info['source_lines'],
+           'source_cases_user_accepted_without_per_case_review':11,
+           'new_unique_question_event_families':11,'new_true_original_printed_charts':11,
+           'new_original_palace_cells':99,'new_author_source_analysis_heads':64,
+           'new_author_explicit_opening_day_error':1,
+           'mine_accident_primary_domain_is_industrial_safety':True,
+           'same_company_or_mall_project_links_between_distinct_questions':2,
+           'historical_lottery_other_jackpot_without_chart_not_added_as_case':True,
+           'original_unreadable_OCR_and_extra_rows_retained':True,
+           'cumulative_explicit_initial_book_case_errors':9,
+           'total_source_sections':33,'book_counts':info['book_counts'],
+           'total_independent_historical_events':149,
+           'total_actual_original_historical_casts':166,
+           'parent_complete_archive_path':str(old),
+           'parent_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),
+           'full_new_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'sqlite_integrity_check':'ok',
+           'sqlite_foreign_key_errors':0,'all_old_tables_all_rows_preserved':True,
+           'public_full_archive_user_authorized':True,
+           'book_feedback_not_independent_financial_or_safety_validation':True}
+          (root/'shenqi21_kaiwu_business_149cases_manifest.json').write_text(
+            json.dumps(meta,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(meta,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu12-full-business-mine-149-cases
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_business_149cases_manifest.json
+          retention-days: 30
+      - name: Commit new complete SQLite snapshot and source evidence version
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_business_149cases_manifest.json' \
+                     'data/knowledge/kaiwu/business_profit_prediction_ch02_section05/'
+          git diff --cached --check
+          git commit -m 'Archive 11 original Kaiwu business and mine safety cases with authors admitted wrong opening forecast'
+          git push origin HEAD:main
