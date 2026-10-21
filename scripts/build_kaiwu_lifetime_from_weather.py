@@ -86,7 +86,7 @@ def append_source_step(db,L,w,e,sid,k,a,b,kind):
   VALUES (?,?,?,?,?,?,?,?,?,'source_retrospective_or_book_analysis_not_external_verification',?,'draft')""",
   (CHAPTER,concept,a,b,sid,SOURCE_SHA,sh(t.encode()),
    'kaiwu:lifetime:historical_birthtime_exposition', 
-   'explains_prior_event' if e.get('same_prior') else 'additional_retrospective_example',js(note)))
+   'additional_exposition',js(note)))
  if not e.get('same_prior'):
   db.execute("""INSERT INTO historical_case_reasoning(
    case_id,step_number,source_line,author_analysis_original,short_method_topic,metadata_json)
