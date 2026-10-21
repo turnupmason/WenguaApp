@@ -1,0 +1,975 @@
+{
+  "schema": "wengua_marriage_22_scene_two_phase_six_layer_author_protocol_v1",
+  "version": "marriage.scene.v1.3",
+  "domain": "marriage",
+  "source_stage": "user_direction_to_be_cross_checked_with_author_originals",
+  "parent_full_SQLite_sha256": "2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d",
+  "source_method_registry": "data/knowledge/phrase_library/marriage_v1_2/intent_workflows.json",
+  "stages": [
+    {
+      "id": "chart_facts",
+      "number": 1,
+      "mandatory": true,
+      "required": [
+        "verified_cast_engine",
+        "full_nine_palaces_with_five_center_special_handling",
+        "calendar_time_zone_solar_terms",
+        "heaven_earth_stems_stars_doors_deities",
+        "hidden_stems_void_travel_horse"
+      ]
+    },
+    {
+      "id": "all_palace_relations",
+      "number": 2,
+      "mandatory": true,
+      "required": [
+        "all_24_factor_statuses_with_source",
+        "punishment_clash_break_harm",
+        "tomb_storage_door_pressure",
+        "five_elements_prosperity_month",
+        "star_deity_hidden_symbol_conflicts"
+      ]
+    },
+    {
+      "id": "role_and_domain_yongshen",
+      "number": 3,
+      "mandatory": true,
+      "required": [
+        "domain_and_22_scene",
+        "specific_target_event",
+        "querent_subject_partner_role_binding",
+        "birth_stems_age_sex_as_real_input",
+        "primary_and_secondary_yongshen_reasoned"
+      ]
+    },
+    {
+      "id": "author_methods_and_case_evidence",
+      "number": 4,
+      "mandatory": true,
+      "required": [
+        "original_book_method_and_case_link",
+        "source_sha_lines_and_version",
+        "author_first_reasoning_separated_from_outcome_feedback",
+        "supports_refutes_unknown_and_historic_errors",
+        "all_relevant_books_considered"
+      ]
+    },
+    {
+      "id": "decision_and_calendar_timing",
+      "number": 5,
+      "mandatory": true,
+      "required": [
+        "explicit_bounded_traditional_decision",
+        "source_based_timing_candidates_where_applicable",
+        "calendar_calculated_primary_window_where_justified",
+        "counterevidence_resolved",
+        "blocked_when_decisive_data_missing"
+      ]
+    },
+    {
+      "id": "gpt_human_language",
+      "number": 6,
+      "mandatory": true,
+      "required": [
+        "natural_160_to_240_chinese_chars",
+        "answer_result_and_primary_window_if_available",
+        "no_invented_sources_dates_or_reality_accusations",
+        "grounded_specific_reasons_and_limitations"
+      ]
+    }
+  ],
+  "reuse": "each_specific_scene_maps_to_one_of_9_book_grounded_intent_workflows_and_inherits_its_eight_step_evidence_logic",
+  "schema_guards": {
+    "no_fixed_judgment_text": true,
+    "no_claim_exact_event_probability": true,
+    "sex_health_and_criminal_diagnoses_forbidden": true,
+    "domestic_abuse_accusation_not_from_symbols": true,
+    "legal_results_not_certified": true,
+    "each_full_chart_factor_checked_not_all_repeated_out_loud": true,
+    "author_case_errors_kept_and_later_feedback_not_model_input": true,
+    "dated_prediction_requires_verified_calendar": true,
+    "unknown_strictly_reported": true
+  },
+  "scenes": [
+    {
+      "scene_id": "marriage.scene.01",
+      "display_number": 1,
+      "title": "脱离空窗",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "与潜在对象建立真实恋爱关系",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "本人日干/年命、对方由已知角色和年命绑定；六合仅婚缘辅证",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方及六合宫旺衰、空亡填实、驿马、相生克刑冲；行业和方位只作传统象意，不当职业事实",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "本人日干/年命、对方由已知角色和年命绑定；六合仅婚缘辅证",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "与潜在对象建立真实恋爱关系",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "恋爱关系建立的可计算期间",
+        "unsupported_absolute_claim_to_exclude": "六合空亡不能断三个月绝无正缘或必遇烂桃花"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.02",
+      "display_number": 2,
+      "title": "情侣成败",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "现有情侣能否继续或发展",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "乙庚传统候选需绑定双方真实年命与日时、六合",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "两方用神宫生克比和、击刑适用格、三奇墓库、门迫、六合及反证",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "乙庚传统候选需绑定双方真实年命与日时、六合",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "direct_cases",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "现有情侣能否继续或发展",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "关系阶段变化与是否继续的观察期",
+        "unsupported_absolute_claim_to_exclude": "庚击刑不能指控男方家暴；乙入墓不能断女方必被伤害"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.03",
+      "display_number": 3,
+      "title": "约会表白",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "特定约会或表白是否被接受",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "问者日干、对象年命/乙庚候选、时干事体、景门作为表达象候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方用神、景门与时干宫生克、伤死门、空亡及值使；同宫不代表他人内心",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "问者日干、对象年命/乙庚候选、时干事体、景门作为表达象候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "特定约会或表白是否被接受",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "选定表白事件的日期/时段",
+        "unsupported_absolute_claim_to_exclude": "时干同宫不能锁定必成，也不能声称表白失败后绝对失去友情"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.04",
+      "display_number": 4,
+      "title": "真心考察",
+      "parent_intent_id": "trust_question",
+      "target_event_definition": "双方交往言行是否一致、关系值不值得继续",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "双方实际年命、日干和可辨对象用神，暗干与玄武仅提示候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "天盘地盘干、六合、太阴螣蛇玄武、对宫生克与真实行为信息交叉",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "双方实际年命、日干和可辨对象用神，暗干与玄武仅提示候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/trust_question",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "not_proof_of_motive",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "双方交往言行是否一致、关系值不值得继续",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "评估指定时期关系沟通及信任的趋势",
+        "unsupported_absolute_claim_to_exclude": "螣蛇玄武不能证明诈骗、财务隐瞒或人格恶劣"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.05",
+      "display_number": 5,
+      "title": "作风人品",
+      "parent_intent_id": "trust_question",
+      "target_event_definition": "是否适合继续接触及保持边界",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "对象真实身份/年命、本人宫、六合与日时干",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "天蓬玄武沐浴天芮门星神与宫位相互作用，核查证据边界",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "对象真实身份/年命、本人宫、六合与日时干",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/trust_question",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "medical_claim_unsupported",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "是否适合继续接触及保持边界",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "仅能对关系互动给传统判断；疾病无盘定应期",
+        "unsupported_absolute_claim_to_exclude": "严禁凭星神判嫖娼、性传播疾病、传染风险、性倾向或医疗检查结果"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.06",
+      "display_number": 6,
+      "title": "暗恋相思",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "暗恋对象是否有成为恋人的机会",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "日干、对方真实年命与乙庚候选、杜门只能作为交流阻隔候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方宫生克、杜门/入墓/空亡、六合、旺衰及真实接触证据",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "日干、对方真实年命与乙庚候选、杜门只能作为交流阻隔候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "暗恋对象是否有成为恋人的机会",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "双方开始接触或确认关系的时间段",
+        "unsupported_absolute_claim_to_exclude": "杜门或宫克不能直接证明对方不喜欢或必拒绝"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.07",
+      "display_number": 7,
+      "title": "网络恋爱",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "线上认识对象能否继续并安全见面",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "双方年命/主体用神、景门作为媒介候选、马星为出行候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "媒介景门空亡、六合、双方门星神、驿马和现实身份资料交叉",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "双方年命/主体用神、景门作为媒介候选、马星为出行候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "线上认识对象能否继续并安全见面",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "可信沟通和安全约见分别估计窗口",
+        "unsupported_absolute_claim_to_exclude": "景门空+玄武不等于百分百诈骗；核查身份与不汇款是现实防护而非术数实证"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.08",
+      "display_number": 8,
+      "title": "特殊/同性情感",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "明确的两位同性或非传统性别伴侣能否发展",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "必须绑定真实二人、日时与年命；月干只是平辈候选；六合辅助",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方各自宫位生克旺衰、六合空墓刑冲、社会压力仅在已提供时考虑",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "必须绑定真实二人、日时与年命；月干只是平辈候选；六合辅助",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "direct_book_error_on_gender_assumption",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "明确的两位同性或非传统性别伴侣能否发展",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "关系推进、双方愿意接触的窗口",
+        "unsupported_absolute_claim_to_exclude": "不可强制乙庚两性或固定日/月干等式；不得编造性取向与社会歧视"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.09",
+      "display_number": 9,
+      "title": "恋爱走向",
+      "parent_intent_id": "marriage_stability",
+      "target_event_definition": "既有感情在指定数月内是否持续稳定",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "实际双方年命/乙庚候选、六合、值使门与时干事体",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "观察期旺衰生克、门迫击刑墓库、伏吟反吟、值使变化，分阶段",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "实际双方年命/乙庚候选、六合、值使门与时干事体",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_stability",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_cases",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "既有感情在指定数月内是否持续稳定",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "分段月度走势及显著变化窗口",
+        "unsupported_absolute_claim_to_exclude": "伤惊门、击刑或入墓不能识别施暴者及受害者"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.10",
+      "display_number": 10,
+      "title": "吵架冷战",
+      "parent_intent_id": "reconciliation",
+      "target_event_definition": "双方何时恢复联系、是否重归于好",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "二人角色年命、日时干与六合；丁/景门通讯意象待核",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方宫、死杜门/空亡、丁奇景门候选、联系活动现实证据",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "二人角色年命、日时干与六合；丁/景门通讯意象待核",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/reconciliation",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "messaging_symbol_not_directly_verified",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "双方何时恢复联系、是否重归于好",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "联系恢复与情感和好分开择时",
+        "unsupported_absolute_claim_to_exclude": "无法证明微信已被拉黑、对方等台阶或今晚一定回复"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.11",
+      "display_number": 11,
+      "title": "长辈逼婚",
+      "parent_intent_id": "marriage_proposal",
+      "target_event_definition": "长辈施压或介绍对象能否取得当事人同意",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "真正当事人及年命、实际父母年命；年干/值符候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "家长本人宫与当事人宫、六合/乙庚、击刑和白虎等相互支持冲突",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "真正当事人及年命、实际父母年命；年干/值符候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_proposal",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "direct_parents_cases",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "长辈施压或介绍对象能否取得当事人同意",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "协商压力缓解与订婚各自时间段",
+        "unsupported_absolute_claim_to_exclude": "白虎克宫不能断家族暴力经济制裁，年干生我不代表对象质量高"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.12",
+      "display_number": 12,
+      "title": "异地异国",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "异地伴侣能否继续、何时实际见面",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "已确定二人和各自年命、六合及马星九天候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "实距已知背景、驿马动与旬空内外盘、双方宫生克",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "已确定二人和各自年命、六合及马星九天候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "异地伴侣能否继续、何时实际见面",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "下一次联系和见面的不同窗口",
+        "unsupported_absolute_claim_to_exclude": "马星动不证明买票，九天空不证明有新圈或必断联"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.13",
+      "display_number": 13,
+      "title": "老少/阶层恋",
+      "parent_intent_id": "relationship_form",
+      "target_event_definition": "年龄/经济背景差异双方是否继续",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "两人的真实年命、日干与乙庚候选；年干不可等同年长者",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "年龄社会身份为输入事实，双方宫生克、家长宫、六合证据",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "两人的真实年命、日干与乙庚候选；年干不可等同年长者",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/relationship_form",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "age_difference_no_fixed_person_stem",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "年龄/经济背景差异双方是否继续",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "确认关系、家人同意及婚事各自事件时间",
+        "unsupported_absolute_claim_to_exclude": "天芮/玄武不能推出衰退、骗财骗色或疾病；年龄差不是人格证据"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.14",
+      "display_number": 14,
+      "title": "多角危机",
+      "parent_intent_id": "trust_question",
+      "target_event_definition": "现实已经确认的复杂关系会如何发展",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "先独立绑定已知三方；乙庚丙丁为传统候选不得猜出第三者存在",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "上下盘干与月令旺衰、多方用神、六合/日时交叉及反证",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "先独立绑定已知三方；乙庚丙丁为传统候选不得猜出第三者存在",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/trust_question",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "no_intrusion_proof",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "现实已经确认的复杂关系会如何发展",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "实际关系选择与明确沟通变化时间",
+        "unsupported_absolute_claim_to_exclude": "庚下临丁或乙下临丙不构成现实出轨实锤，无符号也不能证伪"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.15",
+      "display_number": 15,
+      "title": "长期三人行",
+      "parent_intent_id": "marriage_stability",
+      "target_event_definition": "已知三方关系未来是分开还是持续",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "真实已知人年命，夫妻与第三方分别绑定，六合、开门依法理辅助不固定",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "三方宫旺衰、生克、六合空死与相关手续事实比对",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "真实已知人年命，夫妻与第三方分别绑定，六合、开门依法理辅助不固定",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_stability",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "traditional_symbols_not_behavior_proof",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "已知三方关系未来是分开还是持续",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "给观察期，离婚手续另拆具体target",
+        "unsupported_absolute_claim_to_exclude": "不能推断谁自私、暗中动机，也不能由开门推出法律结果"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.16",
+      "display_number": 16,
+      "title": "冷战挽回",
+      "parent_intent_id": "reconciliation",
+      "target_event_definition": "双方是否和好及谁可能主动联系",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "双方出生年命和问者/被问者关系、乙庚六合候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方宫和六合生合、死门、空亡、伏吟及实际联系时间",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "双方出生年命和问者/被问者关系、乙庚六合候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/reconciliation",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_case",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "双方是否和好及谁可能主动联系",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "首次联系与真正复合分别求时间",
+        "unsupported_absolute_claim_to_exclude": "庚生六合不等于男先道歉，乙生六合不等于女先低头"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.17",
+      "display_number": 17,
+      "title": "前任纠缠",
+      "parent_intent_id": "reconciliation",
+      "target_event_definition": "前任持续联系能否终止并保护现实边界",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "前任和本人实际身份年命、日时宫；地盘前任年命是候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "联系已发生事实、双方宫空墓旺衰及关系变化",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "前任和本人实际身份年命、日时宫；地盘前任年命是候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/reconciliation",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "no_psychological_certainty",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "前任持续联系能否终止并保护现实边界",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "联系减少、完全停止分开设定观察期",
+        "unsupported_absolute_claim_to_exclude": "入墓、空亡不能断前任骚扰意图或必在下月消失；严重骚扰需现实安全支持"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.18",
+      "display_number": 18,
+      "title": "谈婚论嫁",
+      "parent_intent_id": "marriage_proposal",
+      "target_event_definition": "见家长、彩礼房产谈判、办理领证的多目标问题",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "二人年命/乙庚六合，双方父母实际角色，开门生门为有条件辅助",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "双方与长辈宫、门星旺衰、财物/法律现实关系；门迫严格为门克宫",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "二人年命/乙庚六合，双方父母实际角色，开门生门为有条件辅助",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_proposal",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "direct_parental_cases",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "见家长、彩礼房产谈判、办理领证的多目标问题",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "婚事谈妥与领证需分别选时间",
+        "unsupported_absolute_claim_to_exclude": "杜门木落震木并非门迫；不推断扣户口本或暴力掀桌"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.19",
+      "display_number": 19,
+      "title": "再婚复婚",
+      "parent_intent_id": "remarriage",
+      "target_event_definition": "与原配复婚或与新人再次结婚，先分问事",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "原配或新人分别定人，双方年命与日时干、乙庚、六合、开门登记辅用",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "原作者复婚用日干配偶合干、双方乙庚及年命；核墓空与扶生",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "原配或新人分别定人，双方年命与日时干、乙庚、六合、开门登记辅用",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/remarriage",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "direct_unverified_remarriage_feedback",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "与原配复婚或与新人再次结婚，先分问事",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "原配登记与新人婚姻分别算时间",
+        "unsupported_absolute_claim_to_exclude": "不能强制关闭乙庚只用时干；书本给十十一月的复婚未见验收"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.20",
+      "display_number": 20,
+      "title": "婚后生活",
+      "parent_intent_id": "marriage_stability",
+      "target_event_definition": "婚后家庭和财务分工、亲属相处是否平稳",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "夫妇本人年命/日时宫，双方父母独立角色；财星依求财领域取证",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "家庭关系的多宫生克、六合、值符/生门为财辅助和门星状况",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "夫妇本人年命/日时宫，双方父母独立角色；财星依求财领域取证",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_stability",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "adjacent_cases",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "婚后家庭和财务分工、亲属相处是否平稳",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "以指定期间关系走势及矛盾转折为主",
+        "unsupported_absolute_claim_to_exclude": "谁克谁不能证明家暴、谁掌管钱、婆婆必欺凌儿媳"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.21",
+      "display_number": 21,
+      "title": "私密生活",
+      "parent_intent_id": "marriage_stability",
+      "target_event_definition": "亲密沟通是否和谐及可改善的关系因素",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "真实双方角色/年命，休门天芮仅传统辅助类象",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "休门门迫与双方宫关系旺衰；身体健康数据不得由符号替代",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "真实双方角色/年命，休门天芮仅传统辅助类象",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/marriage_stability",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "medical_diagnosis_unsupported",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "亲密沟通是否和谐及可改善的关系因素",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "关系互动期间，不提供疾病确诊或治疗时间",
+        "unsupported_absolute_claim_to_exclude": "不能用天芮断性传播疾病或‘元气虚耗’病因；医疗应循临床证据"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    },
+    {
+      "scene_id": "marriage.scene.22",
+      "display_number": 22,
+      "title": "离婚析产",
+      "parent_intent_id": "divorce",
+      "target_event_definition": "离婚登记/判决、财产分割、抚养安排各自结果",
+      "stage_1": {
+        "inquiry_domain": "marriage",
+        "actor_and_symbol_candidates": "夫妻双方及子女实际身份年命；六合、开门诉讼与生门求财为候选",
+        "must_use_true_engine_cast": true
+      },
+      "stage_2": {
+        "additional_dynamic_cross_checks": "按婚姻、诉讼、财产多个专题交叉检索法院判决、财物及子女实际利益",
+        "all_24_global_factors_required": true
+      },
+      "stage_3": {
+        "primary_and_secondary_yongshen_binding": "夫妻双方及子女实际身份年命；六合、开门诉讼与生门求财为候选",
+        "do_not_assume_stem_roles_from_age_or_sex": true
+      },
+      "stage_4": {
+        "source_inheritance": "v1.2/divorce",
+        "not_yet_all_subscenarios_directly_verified": true,
+        "evidence_grade": "legal_determination_unsupported",
+        "negative_case_coverage": true
+      },
+      "stage_5": {
+        "event_goal": "离婚登记/判决、财产分割、抚养安排各自结果",
+        "source_derived_conclusion_with_counterevidence": true,
+        "timing_target": "每个行政/法律结果分别有界时间，不给保证性法律结论",
+        "unsupported_absolute_claim_to_exclude": "六合克开门不能断法院必判离；生门生我不等于财产必归我；时干不决定抚养权"
+      },
+      "stage_6": {
+        "natural_200_hanzi_after_computation": true,
+        "not_preprinted_user_template": true,
+        "do_not_announce_uncorroborated_medical_abuse_fraud_or_affair_facts": true
+      },
+      "source_evidence_status": "inherits_existing_verified_book_hashes_not_direct_claim_of_22_original_examples",
+      "required_review_status": "draft_source_grounded",
+      "real_chart_instances_approved": 0
+    }
+  ]
+}
