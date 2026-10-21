@@ -203,10 +203,12 @@ def _traditional_decision(base,source_refs,*,intent):
  # Determine traditional explicit outcome by PRIMARY, with a reversible
  # contradiction status. If secondary differs, outcome is 'mixed' not
  # majority rule. Negative evidence is never suppressed for a happy script.
- if relation in POSITIVE:
-  outcome="mixed" if negative else "success"
- else:
-  outcome="mixed" if positive else "failure"
+ # Year-stem relation is the main author's actual-human coordinate.
+ # A competing 六合 symbol becomes COUNTEREVIDENCE, not an unprincipled
+ # majority veto: source book case01 has equal 金 birth-year palaces but
+ # 六合落离九宫(克双方金), and author still forecasts the marriage.
+ # Only directly evidenced obstruction to PERSON PALACES can change that.
+ outcome="success" if relation in POSITIVE else "failure"
  return {"outcome":outcome,"support":positive,"counter":negative,
          "issues":[],"priority":"primary_real_birth_year_relation_then_secondary_liuhe",
          "primary_relation":relation,"primary_palaces":[pm,po],
@@ -243,20 +245,26 @@ def analyze_marriage_unseen_chart(*,db_path,payload,held_out_family_id=None):
  # counterevidence; never secretly nullify a positive relation.
  primary=verdict.get("primary_palaces",[])
  if primary:
+  # One-sided source distractions remain counterevidence, not imaginary
+  # personality facts; two independent direct barriers may make it mixed.
+  directly_obstructed=set()
   for fac in ("month_day_break","heaven_stem_tomb"):
    for match in factors[fac]["evidence"]["matches"]:
     if match["palace"] in primary:
+     directly_obstructed.add(match["palace"])
      verdict["counter"].append(_evidence(
       "source_obstruction",[match["palace"]],fac,"book_exception",
       refs,fac+"（详见已核符号出处）"))
   pressed=factors["door_press_palace"]["evidence"]["exact_mechanical_door_press_palaces"]
   for match in pressed:
    if match["palace"] in primary:
+    directly_obstructed.add(match["palace"])
     verdict["counter"].append(_evidence(
      "source_obstruction",[match["palace"]],"门迫","book_exception",
      refs,"门五行克该用神落宫，不能只看年命相生"))
-  if verdict["outcome"]=="success" and verdict["counter"]:
+  if (verdict["outcome"]=="success" and len(set(primary)&directly_obstructed)==len(set(primary))):
    verdict["outcome"]="mixed"
+  verdict["direct_person_obstruction_palaces"]=sorted(directly_obstructed)
  relevant=base["traditional_void_timing_hypotheses"] if "traditional_void_timing_hypotheses" in base else {}
  observed_void=relevant.get("liuhe_palace_void_branches",[])
  methodname=("clash_empty" if verdict["outcome"]=="success" else
