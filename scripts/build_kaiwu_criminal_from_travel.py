@@ -311,8 +311,12 @@ def build(base,source_path,out,index_dir):
     "kaiwu_criminal_scoped_claims":8,"kaiwu_criminal_unprinted_cast_mentions":1}
   counts={tab:db.execute('SELECT count(*) FROM "'+tab+'"').fetchone()[0] for tab in expected}
   if counts!=expected:raise ValueError(("Unexpected old/new historical totals",counts,expected))
-  if db.execute("SELECT count(*) FROM unified_criminal_cases_across_books").fetchone()[0]!=7:
-   raise ValueError("Five old Shenqi and two new Kaiwu cases must share criminal_case")
+  expected_case_ids=[f"shenqi.criminal_case.case{i:02}" for i in range(1,6)]+[e["id"] for e in cases]
+  matches=db.execute("SELECT case_id,domain_id FROM unified_criminal_cases_across_books").fetchall()
+  covered={row[0] for row in matches}
+  if not set(expected_case_ids).issubset(covered):
+   raise ValueError(("All five older criminal book cases and two new ones must be in SAME shared domain",
+                     expected_case_ids,matches))
   if db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]!=10:
    raise ValueError("Nine earlier source initial errors plus new murderer/date errors must remain")
   if db.execute("SELECT count(*) FROM kaiwu_criminal_scoped_claims WHERE verdict='book_explicit_error'").fetchone()[0]!=2:
