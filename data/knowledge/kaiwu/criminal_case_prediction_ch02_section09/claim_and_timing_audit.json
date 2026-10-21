@@ -1,0 +1,13 @@
+{
+  "source_sha256": "f7e7dd3790e56bd43ed73e72d30ca9554609343c10640840b247b665d5b18b50",
+  "case1_7000_robbery_cash_reported_live": true,
+  "case1_two_perpetrators_reported_live": true,
+  "case1_final_arrest_prediction_has_no_book_feedback": true,
+  "case2_murder_already_occurred_when_inquired": true,
+  "case2_first_unprinted_crime_time_cast_not_fabricated": true,
+  "case2_actual_one_perpetrator_not_predicted_two_or_three": true,
+  "case2_predicted_DingChou_month_not_actual_DingChou_day": true,
+  "case2_reported_four_victims_vs_initial_approx_three": true,
+  "case2_editor_reanalysis_after_book_result_separate": true,
+  "two_book_accepted_historical_cases_not_forensic_external_proof": true
+}

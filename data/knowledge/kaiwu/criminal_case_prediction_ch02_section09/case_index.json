@@ -1,0 +1,88 @@
+{
+  "source_sha256": "f7e7dd3790e56bd43ed73e72d30ca9554609343c10640840b247b665d5b18b50",
+  "cases": [
+    {
+      "key": "robbery_classroom",
+      "id": "kaiwu.criminal.case01",
+      "title": "石家庄1996年张志春、杜新会研讨班抢劫案课堂逐步推断",
+      "begin": 5,
+      "end": 50,
+      "calendar": 12,
+      "start": 15,
+      "question": [
+        7,
+        9
+      ],
+      "steps": [
+        31,
+        35,
+        39,
+        43,
+        45,
+        49
+      ],
+      "first_forecasts": [
+        31,
+        35,
+        39,
+        43,
+        45,
+        49
+      ],
+      "book_responses": [
+        33,
+        37,
+        41,
+        45,
+        47
+      ],
+      "facets": [
+        "robbery"
+      ],
+      "note": "1996-12-14 classroom already aware of earlier robbery; 7000 yuan, two offenders, woman loss confirmed by ongoing class dialogue; instructor's one-suspect eventual arrest forecast line49 has NO later arrest feedback in original",
+      "chart_sha": "5b1af29fa4611ab3d2e34a942dc2b426db28310006cbf1a009938fae14d5e27b",
+      "number": 1
+    },
+    {
+      "key": "lanzhou_homicide",
+      "id": "kaiwu.criminal.case02",
+      "title": "1999年兰州凶杀案问测、事后自首与人数时间初断错误",
+      "begin": 51,
+      "end": 100,
+      "calendar": 55,
+      "start": 58,
+      "question": [
+        53,
+        55
+      ],
+      "steps": [
+        74,
+        76,
+        78,
+        80,
+        82,
+        84,
+        86
+      ],
+      "first_forecasts": [
+        74,
+        76,
+        78,
+        80,
+        82,
+        84,
+        86
+      ],
+      "book_responses": [
+        88,
+        90
+      ],
+      "facets": [
+        "homicide"
+      ],
+      "note": "Homicide occurred Nov9 and was told to diviner Nov14; this printed Qimen board belongs to question-time verification, NOT unprinted incident-time cast. Initial offender count 2-3 vs book one; prediction 丁丑月 vs Nov21 丁丑日, author explicitly says both wrong. Book says approx three victims vs actual four; editor line98/100 post-case explanations only",
+      "chart_sha": "1be139ba1bc478a692a34a42e4f519d2635ebe60ad46aa51aa1669287ff1f45f",
+      "number": 2
+    }
+  ]
+}
