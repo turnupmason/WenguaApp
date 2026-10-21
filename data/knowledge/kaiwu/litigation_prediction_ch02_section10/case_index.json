@@ -1,0 +1,201 @@
+{
+  "source_sha256": "c80b016c5f0afb70819412017be7bb0beb3d53e8b8c71ea4adbacc12230b61d5",
+  "cases": [
+    {
+      "case_id": "kaiwu.litigation.case01",
+      "source_span": [
+        5,
+        47
+      ],
+      "source_rendered_OCR_panel": [
+        15,
+        28
+      ],
+      "author_original_lines": [
+        32,
+        34,
+        40,
+        42
+      ],
+      "teacher_after_fact_lines": [],
+      "initial_prediction_lines": [
+        [
+          36,
+          36
+        ],
+        [
+          44,
+          44
+        ]
+      ],
+      "later_feedback_lines": [
+        [
+          38,
+          38
+        ],
+        [
+          46,
+          46
+        ]
+      ],
+      "questioner_context_lines": [
+        7,
+        13
+      ],
+      "source_limitations": "Original questioner had not filed claim; first forecast said favorable, September 1998 victory only later in book. Amount 200万元 first revealed after author asked.",
+      "not_original_print_verified_nine_palace": true,
+      "domain_facets": [
+        "property_purchase",
+        "civil_land_dispute"
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case02",
+      "source_span": [
+        48,
+        103
+      ],
+      "source_rendered_OCR_panel": [
+        59,
+        72
+      ],
+      "author_original_lines": [
+        78,
+        80,
+        82,
+        86,
+        88,
+        90,
+        94
+      ],
+      "teacher_after_fact_lines": [
+        100,
+        102
+      ],
+      "initial_prediction_lines": [
+        [
+          52,
+          52
+        ]
+      ],
+      "later_feedback_lines": [
+        [
+          54,
+          54
+        ],
+        [
+          96,
+          96
+        ]
+      ],
+      "questioner_context_lines": [
+        50,
+        51
+      ],
+      "source_limitations": "First reply confirms economic allegation only; June interview reports release in lunar May. Teacher says original lunar-May method nonstandard, proposes 30-day reasoning after outcome.",
+      "not_original_print_verified_nine_palace": true,
+      "domain_facets": [
+        "criminal_investigation",
+        "detention_release"
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case03",
+      "source_span": [
+        104,
+        161
+      ],
+      "source_rendered_OCR_panel": [
+        121,
+        134
+      ],
+      "author_original_lines": [
+        140,
+        144,
+        148,
+        152,
+        154
+      ],
+      "teacher_after_fact_lines": [
+        158,
+        160
+      ],
+      "initial_prediction_lines": [
+        [
+          110,
+          110
+        ],
+        [
+          114,
+          114
+        ]
+      ],
+      "later_feedback_lines": [
+        [
+          112,
+          112
+        ],
+        [
+          116,
+          116
+        ]
+      ],
+      "questioner_context_lines": [
+        106,
+        109
+      ],
+      "source_limitations": "Author predicts 3–5-year sentence; book reports original six years with one-year reduction resulting five. Teacher rejects original timing/foreign 六壬 numerical reasoning as nonstandard.",
+      "not_original_print_verified_nine_palace": true,
+      "domain_facets": [
+        "criminal_investigation",
+        "sentence_duration"
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case04",
+      "source_span": [
+        162,
+        203
+      ],
+      "source_rendered_OCR_panel": [
+        168,
+        181
+      ],
+      "author_original_lines": [
+        185,
+        187,
+        189
+      ],
+      "teacher_after_fact_lines": [
+        201,
+        203
+      ],
+      "initial_prediction_lines": [
+        [
+          185,
+          189
+        ]
+      ],
+      "later_feedback_lines": [
+        [
+          191,
+          191
+        ],
+        [
+          193,
+          193
+        ]
+      ],
+      "questioner_context_lines": [
+        164,
+        166
+      ],
+      "source_limitations": "One questioner one cast: son robbery and later seven-year sentence. The unasked uncle death in August explicitly NOT predicted; teacher retrofits symbols only after death. Transcription chart source vs analysis palace contradicts itself.",
+      "not_original_print_verified_nine_palace": true,
+      "domain_facets": [
+        "criminal_robbery",
+        "sentence_duration"
+      ]
+    }
+  ]
+}

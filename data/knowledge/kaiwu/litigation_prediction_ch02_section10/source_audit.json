@@ -1,0 +1,270 @@
+{
+  "source_sha256": "c80b016c5f0afb70819412017be7bb0beb3d53e8b8c71ea4adbacc12230b61d5",
+  "ocr_rendered_panels": [
+    {
+      "case": "kaiwu.litigation.case01",
+      "original_span": [
+        15,
+        28
+      ],
+      "line_sha256": [
+        {
+          "line": 15,
+          "sha": "1f6ab50e15ab9cc831fb11615f767965f33789cc0a0d2235a1db9836d3d89426"
+        },
+        {
+          "line": 16,
+          "sha": "b0d99f5c7de452509b0e5e356de6000376672a57cf6aa68f42aebe41cd773caf"
+        },
+        {
+          "line": 17,
+          "sha": "f5b0e04d836b7a6edfc72ffb1877db9b170619780ba703354864fe7cc9d90bf9"
+        },
+        {
+          "line": 18,
+          "sha": "84cc82dd15d270e948cc2636b716ceca534b12bdb62ee24ba5ee84f08f6ef36a"
+        },
+        {
+          "line": 19,
+          "sha": "912c7aaa5e28c13fa057e56ad34f4f2e8ef1174a772fa427622ac9072e13353c"
+        },
+        {
+          "line": 20,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 21,
+          "sha": "8a90ddfc634cf2e43d319b3b7f938d0e6e9643fb6a0cdd08872291a0c32f9d1f"
+        },
+        {
+          "line": 22,
+          "sha": "703cd20533f791a9f19399473c28d6ecaa2f9299f794079a4c13d409c933b0aa"
+        },
+        {
+          "line": 23,
+          "sha": "c4ae7a11da53102f477e5470036b6bc80c0b71b97f7027c13aa6f28c10e3486b"
+        },
+        {
+          "line": 24,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 25,
+          "sha": "7fcbe487cfcf8a1e9f0ee7d89e70d35551ac40166a3bfabc224b327bff1da1a1"
+        },
+        {
+          "line": 26,
+          "sha": "6465ce7bd54762785274133deb36961a66bd5623ec83582cd8b7ebfd39d8e0fb"
+        },
+        {
+          "line": 27,
+          "sha": "9e6a39117ada8144d1f215a7023608ad8736b090e40cbde765fafe7f2246f4b1"
+        },
+        {
+          "line": 28,
+          "sha": "ab9ef16afd6dd06ce778a2f4986bdb1b3f6a7741ce6d87c5428d25fcbe889d7a"
+        }
+      ]
+    },
+    {
+      "case": "kaiwu.litigation.case02",
+      "original_span": [
+        59,
+        72
+      ],
+      "line_sha256": [
+        {
+          "line": 59,
+          "sha": "d3913fcfc254170ba4e2ee6a78663a6242c333c92e0b20855e123acb5043b858"
+        },
+        {
+          "line": 60,
+          "sha": "b0d99f5c7de452509b0e5e356de6000376672a57cf6aa68f42aebe41cd773caf"
+        },
+        {
+          "line": 61,
+          "sha": "de1462a584e7625ffcea2fc3431de0979a61a5eb4cb25acd824bc376c2bece40"
+        },
+        {
+          "line": 62,
+          "sha": "2e153c885a3af2c03c4e4c9f663c33b150a550f0dc95a785817364e0750df23a"
+        },
+        {
+          "line": 63,
+          "sha": "720f3debae8e6c111b10e09866cd7a36a1e77c93506a97f2cd50ce16b8b6fb1c"
+        },
+        {
+          "line": 64,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 65,
+          "sha": "44961cfe2f28fb410418cdf226cb5cba37bc205772146c8d95c0cf6abd6b1a92"
+        },
+        {
+          "line": 66,
+          "sha": "4cba0654c9dc5cf964722ac3fa8aa2a3fab6a54da1d17f2601f3d6b60248332b"
+        },
+        {
+          "line": 67,
+          "sha": "60453c4166b6ae2edeb7367c8796fc77e7df971357f2716710d3af9b69eae931"
+        },
+        {
+          "line": 68,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 69,
+          "sha": "ba1b7ee946e2ce0d5c994e396f830407806d5c7b7881a823894375050d5633cd"
+        },
+        {
+          "line": 70,
+          "sha": "b3c6b556b2fd5b3fd878c0761e73652f30eea7ee7edcff29724d51802afb48ae"
+        },
+        {
+          "line": 71,
+          "sha": "8d451c1df121ff5d4618064eb658a4fc11848288ecdd5a6338dbb64461c33677"
+        },
+        {
+          "line": 72,
+          "sha": "ab9ef16afd6dd06ce778a2f4986bdb1b3f6a7741ce6d87c5428d25fcbe889d7a"
+        }
+      ]
+    },
+    {
+      "case": "kaiwu.litigation.case03",
+      "original_span": [
+        121,
+        134
+      ],
+      "line_sha256": [
+        {
+          "line": 121,
+          "sha": "5064d23ea57aa950292a08ecc8715a1388bc4e9113fc105a7a147a3a31558969"
+        },
+        {
+          "line": 122,
+          "sha": "b0d99f5c7de452509b0e5e356de6000376672a57cf6aa68f42aebe41cd773caf"
+        },
+        {
+          "line": 123,
+          "sha": "ada1bcffb9b3727dc6078295f97149d59fa82814bb3934ea4b8ac7ae43365c03"
+        },
+        {
+          "line": 124,
+          "sha": "fc4f05173296c20928b930cfe7c236139e567106624e58bea19be9e3c2c4f004"
+        },
+        {
+          "line": 125,
+          "sha": "5a57a0456e0e4b3e39d4db404f4924e55806b37906b5bc3b3306ca0b8ba20309"
+        },
+        {
+          "line": 126,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 127,
+          "sha": "a4c96a12eb854e66547b29c3ce035c02ce48b41a8bf10161317250fe75c3af8f"
+        },
+        {
+          "line": 128,
+          "sha": "18fb3ff3f4695b5abd0f7228891bf843fe4bd409c45d6d30595e72971ebfc0e8"
+        },
+        {
+          "line": 129,
+          "sha": "bb52b03bdeddcb900c6258e1a5a38804082ace6c826d39d907a59f8f00e1b553"
+        },
+        {
+          "line": 130,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 131,
+          "sha": "2bd9bdf0e78ecb95ae59004077d5f5d7c94726a543141ccf2c6bc6f3d8055c79"
+        },
+        {
+          "line": 132,
+          "sha": "c3058a31c28cea06e6f16d6bd5cb3877c48fd2661f940e1a188b7b09121c6a9a"
+        },
+        {
+          "line": 133,
+          "sha": "c30b7f4161752676017e7ef67b373daacf2bfd515bd741e755cddfed0b0127b3"
+        },
+        {
+          "line": 134,
+          "sha": "ab9ef16afd6dd06ce778a2f4986bdb1b3f6a7741ce6d87c5428d25fcbe889d7a"
+        }
+      ]
+    },
+    {
+      "case": "kaiwu.litigation.case04",
+      "original_span": [
+        168,
+        181
+      ],
+      "line_sha256": [
+        {
+          "line": 168,
+          "sha": "56bca940ed1bc56ea3b9e80437db6471698ff12a8eb77a23b23f8c278f7db9a3"
+        },
+        {
+          "line": 169,
+          "sha": "b0d99f5c7de452509b0e5e356de6000376672a57cf6aa68f42aebe41cd773caf"
+        },
+        {
+          "line": 170,
+          "sha": "3a93b502c49abfb3c2489fc8c301e2c19c0fa8b22b2dcee34790035b0c19c143"
+        },
+        {
+          "line": 171,
+          "sha": "832acd5d88a2023efb519bba9fc2dc52a81c238b4c8701ab167bc6bd3518ca93"
+        },
+        {
+          "line": 172,
+          "sha": "b24886875d2ddc357f2f6a55b772d8020fe2b0e9796dbb6019fa9f71ee04a7b9"
+        },
+        {
+          "line": 173,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 174,
+          "sha": "7c20e09561e5efffa2e299f701ed754cc54b05d14654c7c9a20c815767d8bb9c"
+        },
+        {
+          "line": 175,
+          "sha": "1edd6144f9cbfa1fc99963a0455a0b74b63ecffc0e372c9104d32b83dd0bebf9"
+        },
+        {
+          "line": 176,
+          "sha": "3a305d7921e77fba18eb62d8e35481ef3c3eb08837870de3100d1c31d44e6ca8"
+        },
+        {
+          "line": 177,
+          "sha": "f00d2bcc32632f365e95870e7497747ebd4d69070b328711de39c1aa633a7014"
+        },
+        {
+          "line": 178,
+          "sha": "79257abd88f346efddcccdbef08c1e037af6989b9dc9b699e1f863599ca57035"
+        },
+        {
+          "line": 179,
+          "sha": "f4dda87e00d053efbdc215bf1a842e253addf2d46824ba20b00ae53a6cf92131"
+        },
+        {
+          "line": 180,
+          "sha": "93443cbcd27da376b67ed1b8e808939efe6e22b0b92b57b5f98c0665e030f3b3"
+        },
+        {
+          "line": 181,
+          "sha": "ab9ef16afd6dd06ce778a2f4986bdb1b3f6a7741ce6d87c5428d25fcbe889d7a"
+        }
+      ]
+    }
+  ],
+  "no_book_original_palace_certification": true,
+  "first_prediction_and_post_feedback_separated": true,
+  "teacher_after_released_date_analyses_not_initial_pred": true,
+  "case4_relative_dead_unpredicted_not_case_success": true,
+  "original_uncertain_OCR_gaps_not_filled": true
+}

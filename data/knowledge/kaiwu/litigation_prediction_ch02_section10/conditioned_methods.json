@@ -1,0 +1,333 @@
+{
+  "source_sha256": "c80b016c5f0afb70819412017be7bb0beb3d53e8b8c71ea4adbacc12230b61d5",
+  "methods": [
+    {
+      "key": "civil_day_person",
+      "source_case": "kaiwu.litigation.case01",
+      "line": 32,
+      "conditions": {
+        "all": [
+          {
+            "fact": "dispute_is_civil_land",
+            "required": true
+          },
+          {
+            "fact": "day_stem_position_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "日干为当事人；合看伤门、空亡、螣蛇与买地受阻",
+      "approved": false
+    },
+    {
+      "key": "civil_hour_investment",
+      "source_case": "kaiwu.litigation.case01",
+      "line": 34,
+      "conditions": {
+        "all": [
+          {
+            "fact": "dispute_is_civil_land",
+            "required": true
+          },
+          {
+            "fact": "hour_stem_position_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "时干与甲子戊资金、景门诉状同时取用",
+      "approved": false
+    },
+    {
+      "key": "civil_jing_petition",
+      "source_case": "kaiwu.litigation.case01",
+      "line": 40,
+      "conditions": {
+        "all": [
+          {
+            "fact": "formal_lawsuit_pending",
+            "required": true
+          },
+          {
+            "fact": "jing_door_palace_known",
+            "required": true
+          },
+          {
+            "fact": "court_kai_door_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "景门为诉状，开门为法院，比较双方关系",
+      "approved": false
+    },
+    {
+      "key": "civil_parties_court",
+      "source_case": "kaiwu.litigation.case01",
+      "line": 42,
+      "conditions": {
+        "all": [
+          {
+            "fact": "plaintiff_defendant_roles_known",
+            "required": true
+          },
+          {
+            "fact": "zhifu_tianyi_kai_positions_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "值符为原告、天乙为被告、开门法院，按书内生克判断",
+      "approved": false
+    },
+    {
+      "key": "spouse_geng_relation",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 78,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_husband",
+            "required": true
+          },
+          {
+            "fact": "geng_spouse_and_day_stem_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "乙庚夫妇用神、丙辛合问丈夫，结合值符",
+      "approved": false
+    },
+    {
+      "key": "spouse_financial_investigation",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 80,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_economic_offense",
+            "required": true
+          },
+          {
+            "fact": "capital_stem_and_related_star_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "戊为财和天芮等条件组合；不作为现实有罪证据",
+      "approved": false
+    },
+    {
+      "key": "police_baihu",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 82,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_detainment",
+            "required": true
+          },
+          {
+            "fact": "baihu_and_husband_positions_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "白虎传统代表公安，比较丈夫用神相冲克",
+      "approved": false
+    },
+    {
+      "key": "spouse_release_judge",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 86,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_release",
+            "required": true
+          },
+          {
+            "fact": "geng_and_judge_kai_door_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "开门作为法官，结合夫星庚、值符、休门",
+      "approved": false
+    },
+    {
+      "key": "release_hour_stem",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 90,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_release",
+            "required": true
+          },
+          {
+            "fact": "time_stem_and_other_door_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "时干与壬庚格局作为书内是否脱险线索",
+      "approved": false
+    },
+    {
+      "key": "teacher_lunar_month",
+      "source_case": "kaiwu.litigation.case02",
+      "line": 102,
+      "conditions": {
+        "all": [
+          {
+            "fact": "lunar_release_timing_asked",
+            "required": true
+          },
+          {
+            "fact": "zhishi_gate_palace_known",
+            "required": true
+          },
+          {
+            "fact": "large_case_day_timing_illogical",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "老师事后反评值使落3宫之3天不合事理，转约30天；不能当初断",
+      "approved": false
+    },
+    {
+      "key": "husband_year_stem",
+      "source_case": "kaiwu.litigation.case03",
+      "line": 144,
+      "conditions": {
+        "all": [
+          {
+            "fact": "asked_about_husband_criminal_case",
+            "required": true
+          },
+          {
+            "fact": "husband_birth_year_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "年命及辛戊组合按原书取用",
+      "approved": false
+    },
+    {
+      "key": "law_timing_existing_offense",
+      "source_case": "kaiwu.litigation.case03",
+      "line": 152,
+      "conditions": {
+        "all": [
+          {
+            "fact": "existing_criminal_case",
+            "required": true
+          },
+          {
+            "fact": "month_ganzhi_available",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "年支冲与月干庚作为书中结案时间判断",
+      "approved": false
+    },
+    {
+      "key": "teacher_sentence_duration",
+      "source_case": "kaiwu.litigation.case03",
+      "line": 158,
+      "conditions": {
+        "all": [
+          {
+            "fact": "sentencing_duration_asked",
+            "required": true
+          },
+          {
+            "fact": "zhishi_or_hour_stem_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "老师事后提供两种取刑期数法，不重写原分析",
+      "approved": false
+    },
+    {
+      "key": "son_question_hour",
+      "source_case": "kaiwu.litigation.case04",
+      "line": 185,
+      "conditions": {
+        "all": [
+          {
+            "fact": "parent_asking_about_son",
+            "required": true
+          },
+          {
+            "fact": "hour_stem_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "时干兼儿子和所问事件；按源书受问关系取用",
+      "approved": false
+    },
+    {
+      "key": "son_birth_year",
+      "source_case": "kaiwu.litigation.case04",
+      "line": 187,
+      "conditions": {
+        "all": [
+          {
+            "fact": "parent_asking_about_son",
+            "required": true
+          },
+          {
+            "fact": "son_birth_stem_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "儿子年命丙为用神，书中判断劫车罪案",
+      "approved": false
+    },
+    {
+      "key": "duration_zhishi_six_seven",
+      "source_case": "kaiwu.litigation.case04",
+      "line": 189,
+      "conditions": {
+        "all": [
+          {
+            "fact": "criminal_sentencing_asked",
+            "required": true
+          },
+          {
+            "fact": "zhishi_palace_known",
+            "required": true
+          }
+        ],
+        "unknown": "insufficient_evidence"
+      },
+      "book_author_summary": "书内原作者判六七年和冬月开庭，报告七年",
+      "approved": false
+    }
+  ]
+}
