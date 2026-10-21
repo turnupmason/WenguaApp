@@ -1,0 +1,126 @@
+{
+  "schema": "wengua_full_194_cases_marriage_book_astro_timings_v15",
+  "parent_complete_archive_sha256": "ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da",
+  "new_full_archive_sha256": "619867ef0f81234c662fbc1796de1c6844e9c1ecf12f59a904d20f9c90b757f3",
+  "fully_preserved_book_historical_cases": 194,
+  "previous_nine_workflows": 9,
+  "previous_twenty_two_scenes": 22,
+  "original_book_timing_methods": 20,
+  "astronomically_computed_original_marriage_month_windows": 2,
+  "posterior_feedback_checks_strictly_separated": 2,
+  "new_actual_unseen_real_marriage_predictions": 0,
+  "all_prior_source_and_phrase_rows_exactly_preserved": true,
+  "calendar_method": "wen-gua-local-meeus-solar-longitude-v1",
+  "single_book_author_timing_study": {
+    "status": "historical_author_timing_method_computed_and_feedback_separated",
+    "original_case_id": "kaiwu.marriage.case01",
+    "book_source_exact_sha256": "4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01",
+    "author_original_success_judgment_lines": [
+      39,
+      41
+    ],
+    "author_original_timing_reasoning_line": 43,
+    "source_timing_rule_ref": "kaiwu/analysis_judgment_ch04/v1:line184",
+    "original_judgment": "作者原文判定婚事能成（与现代世界事件真值保证区分）",
+    "author_original_void_branches": [
+      "午",
+      "未"
+    ],
+    "timing_algorithm": "real_ephemeris_solar_month_clash_empty_after_book_success_verdict",
+    "actual_solar_month_candidates_pre_feedback": [
+      {
+        "method": "clash_empty",
+        "source_empty_branch": "午",
+        "trigger_branch": "子",
+        "granularity": "month",
+        "window_start_iso": "1998-12-07T15:52:49.923650+08:00",
+        "window_end_iso": "1999-01-06T03:06:20.942760+08:00",
+        "source_method_ref": "kaiwu/analysis_judgment_ch04/v1:line184",
+        "calendar_method_version": "wen-gua-local-meeus-solar-longitude-v1",
+        "calendar_receipt": "69d237a7d6c8717341457a6a4ffc44f4b55531f3cb8845a3d6dfbfd0f1972cb5",
+        "traditional_symbolic_condition_only": true
+      },
+      {
+        "method": "clash_empty",
+        "source_empty_branch": "未",
+        "trigger_branch": "丑",
+        "granularity": "month",
+        "window_start_iso": "1999-01-06T03:06:20.942760+08:00",
+        "window_end_iso": "1999-02-04T14:45:55.569564+08:00",
+        "source_method_ref": "kaiwu/analysis_judgment_ch04/v1:line184",
+        "calendar_method_version": "wen-gua-local-meeus-solar-longitude-v1",
+        "calendar_receipt": "69d237a7d6c8717341457a6a4ffc44f4b55531f3cb8845a3d6dfbfd0f1972cb5",
+        "traditional_symbolic_condition_only": true
+      }
+    ],
+    "all_competing_calculated_windows": [
+      {
+        "method": "clash_empty",
+        "source_empty_branch": "午",
+        "trigger_branch": "子",
+        "granularity": "month",
+        "window_start_iso": "1998-12-07T15:52:49.923650+08:00",
+        "window_end_iso": "1999-01-06T03:06:20.942760+08:00",
+        "source_method_ref": "kaiwu/analysis_judgment_ch04/v1:line184",
+        "calendar_method_version": "wen-gua-local-meeus-solar-longitude-v1",
+        "calendar_receipt": "69d237a7d6c8717341457a6a4ffc44f4b55531f3cb8845a3d6dfbfd0f1972cb5",
+        "traditional_symbolic_condition_only": true
+      },
+      {
+        "method": "clash_empty",
+        "source_empty_branch": "未",
+        "trigger_branch": "丑",
+        "granularity": "month",
+        "window_start_iso": "1999-01-06T03:06:20.942760+08:00",
+        "window_end_iso": "1999-02-04T14:45:55.569564+08:00",
+        "source_method_ref": "kaiwu/analysis_judgment_ch04/v1:line184",
+        "calendar_method_version": "wen-gua-local-meeus-solar-longitude-v1",
+        "calendar_receipt": "69d237a7d6c8717341457a6a4ffc44f4b55531f3cb8845a3d6dfbfd0f1972cb5",
+        "traditional_symbolic_condition_only": true
+      }
+    ],
+    "posterior_validation_only_not_prediction_input": [
+      {
+        "event": "legal_marriage_registration",
+        "book_reported_date": "1998-12-16",
+        "book_source_line": 45,
+        "independent_solar_month": "甲子",
+        "independent_day_ganzhi": "丁酉",
+        "falls_inside_initial_author_candidate_month": true,
+        "candidate_trigger": "子"
+      },
+      {
+        "event": "wedding_ceremony",
+        "book_reported_date": "1999-01-17",
+        "book_source_line": 45,
+        "independent_solar_month": "乙丑",
+        "independent_day_ganzhi": "己巳",
+        "falls_inside_initial_author_candidate_month": true,
+        "candidate_trigger": "丑"
+      }
+    ],
+    "first_branch_month_selected_for_first_potential_event": "子",
+    "second_branch_month_for_possible_followup": "丑",
+    "not_a_computed_single_legal_registration_day": true,
+    "historical_book_feedback_is_not_empirical_independent_verification": true,
+    "first_judgment_does_not_read_book_line45": true,
+    "calendar_method_version": "wen-gua-local-meeus-solar-longitude-v1",
+    "source_forecast_calendar_receipt_sha256": "69d237a7d6c8717341457a6a4ffc44f4b55531f3cb8845a3d6dfbfd0f1972cb5"
+  },
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "historical_chart_cells": 1440,
+    "marriage22_scenario_protocol": 22,
+    "marriage_runtime_source_cast_fixture": 2,
+    "marriage_runtime_scenario_study": 44,
+    "phrase_intent_workflows": 9,
+    "phrase_template_drafts": 4,
+    "phrase_context_instances": 0,
+    "book_timing_method_source_rules": 20,
+    "marriage_author_time_source_studies": 1,
+    "marriage_author_timing_month_windows": 2,
+    "marriage_author_time_feedback_validation": 2,
+    "marriage_v15_astro_method_audit": 1
+  }
+}
