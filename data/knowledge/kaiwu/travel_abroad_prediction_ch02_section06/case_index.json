@@ -1,0 +1,284 @@
+{
+  "source_sha256": "b561f1d0a216ab9da83955112752164c4bf6558be15a0a7017f350e423d37f67",
+  "cases": [
+    {
+      "id": "kaiwu.travel.case01",
+      "key": "flight_disaster_retrospective",
+      "label": "1992年南京厦门航班事故新闻后复盘",
+      "bounds": [
+        3,
+        35
+      ],
+      "question": [
+        4,
+        6
+      ],
+      "original_forecast": [],
+      "reported": [
+        5
+      ],
+      "steps": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "facets": [
+        "aviation_accident"
+      ],
+      "note": "Aug1 news before Qimen examination: NOT a pre-flight or pre-news warning; no postevent forecast success",
+      "number": 1,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 10,
+          "start": 11,
+          "end": 28,
+          "cal": 8,
+          "role": "post_news_retrospective",
+          "outcome_known": true,
+          "sha": "e2efad9534ce68032617f255aab3f4e585ca6e921ca537aa25d3322a997538d5"
+        }
+      ]
+    },
+    {
+      "id": "kaiwu.travel.case02",
+      "key": "hongkong_permanent_resident",
+      "label": "上海母亲代儿问香港永久居留及春节返乡",
+      "bounds": [
+        36,
+        66
+      ],
+      "question": [
+        37,
+        39
+      ],
+      "original_forecast": [
+        64
+      ],
+      "reported": [
+        65
+      ],
+      "steps": [
+        60,
+        61,
+        62,
+        63
+      ],
+      "facets": [
+        "immigration_status",
+        "family_visit"
+      ],
+      "note": "Book says Apr8 residency approved; preserve literal lunar parenthetical, not re-compute or correct; Spring Festival visit was a separate question",
+      "number": 2,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 41,
+          "start": 42,
+          "end": 57,
+          "cal": 39,
+          "role": "before_residency_result",
+          "outcome_known": false,
+          "sha": "773e0f1aa3b5f769ad989ed6187804d1d10fb7fa641a98194293f34c628c5d13"
+        }
+      ]
+    },
+    {
+      "id": "kaiwu.travel.case03",
+      "key": "canada_immigration_two_consultations",
+      "label": "广州男士加拿大技术移民两次问面试",
+      "bounds": [
+        67,
+        136
+      ],
+      "question": [
+        68,
+        72
+      ],
+      "original_forecast": [
+        98,
+        130
+      ],
+      "reported": [
+        131
+      ],
+      "steps": [
+        94,
+        95,
+        96,
+        97,
+        123,
+        124,
+        125,
+        126,
+        127,
+        128,
+        133,
+        134,
+        135
+      ],
+      "facets": [
+        "immigration_status",
+        "immigration_interview"
+      ],
+      "note": "Known 1998 prior failed interview; first June letter and Oct 2 reconsult one immigration application; two Qimen boards. Oct29 interview PASS reported, final residency issuance NOT reported; 10/2 contradictory use-deity analysis and post-result reread distinguish phases",
+      "number": 3,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 74,
+          "start": 75,
+          "end": 91,
+          "cal": 72,
+          "role": "first_letter_19990616",
+          "outcome_known": false,
+          "sha": "92a3ce9b62d5a147b674a282412ff83f1636f007ad26cfde4cd3955b45b54636"
+        },
+        {
+          "key": "additional_1",
+          "caption": 103,
+          "start": 104,
+          "end": 120,
+          "cal": 101,
+          "role": "second_phone_19991002",
+          "outcome_known": false,
+          "sha": "4a2d7023c36afd5325cc2a87401423dad2e91c2c37fe946eebc26085c624feec"
+        }
+      ]
+    },
+    {
+      "id": "kaiwu.travel.case04",
+      "key": "france_passport_refused",
+      "label": "赴法国讲学护照审批未获批准",
+      "bounds": [
+        137,
+        169
+      ],
+      "question": [
+        138,
+        141
+      ],
+      "original_forecast": [
+        167
+      ],
+      "reported": [
+        168
+      ],
+      "steps": [
+        162,
+        163,
+        164,
+        165,
+        166
+      ],
+      "facets": [
+        "passport_application"
+      ],
+      "note": "Book report: local departments permitted but culture authorities withheld; passports not issued",
+      "number": 4,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 143,
+          "start": 144,
+          "end": 159,
+          "cal": 141,
+          "role": "prior_to_official_refusal",
+          "outcome_known": false,
+          "sha": "33450372fffe44d78412fb8a7e0cf901abf25f0c250bed6e6d63e1f7df279b4a"
+        }
+      ]
+    },
+    {
+      "id": "kaiwu.travel.case05",
+      "key": "tong_outbound_train_20000810",
+      "label": "佟安琪乘火车赴石家庄遭雨毁路基后换乘",
+      "bounds": [
+        170,
+        201
+      ],
+      "question": [
+        170,
+        173
+      ],
+      "original_forecast": [
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "reported": [
+        200
+      ],
+      "steps": [
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ],
+      "facets": [
+        "transport_disruption"
+      ],
+      "note": "Outbound 8/10: rain-washed rail foundation, changed to coach 8/11; same man referenced in earlier Kaiwu missing-motorcycle CASE but distinctly timed trip event",
+      "number": 5,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 175,
+          "start": 176,
+          "end": 191,
+          "cal": 172,
+          "role": "outbound_train",
+          "outcome_known": false,
+          "sha": "d4dc3e35acc2f51c96b25682744e5dd01b98eee0e132f7316f1b9b00608d06a1"
+        }
+      ]
+    },
+    {
+      "id": "kaiwu.travel.case06",
+      "key": "tong_return_train_20000818",
+      "label": "佟安琪返程火车因停电延误约三小时",
+      "bounds": [
+        202,
+        230
+      ],
+      "question": [
+        202,
+        204
+      ],
+      "original_forecast": [
+        225,
+        226
+      ],
+      "reported": [
+        227
+      ],
+      "steps": [
+        225,
+        226
+      ],
+      "facets": [
+        "transport_delay"
+      ],
+      "note": "Return train on 8/18, reported rail station power loss and 3h delay. Book's stated destination Shenyang versus return-time location Shijiazhuang is unchanged source text, not silently reconciled",
+      "number": 6,
+      "boards": [
+        {
+          "key": "primary",
+          "caption": 206,
+          "start": 207,
+          "end": 222,
+          "cal": 204,
+          "role": "return_train",
+          "outcome_known": false,
+          "sha": "9068c5e91e96985877995da4d9ada8ff4afa54e19679fc605a921b66f5994eb9"
+        }
+      ]
+    }
+  ]
+}
