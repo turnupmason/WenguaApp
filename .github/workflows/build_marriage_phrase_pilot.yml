@@ -1,88 +1,47 @@
-name: Build Marriage Phrase Pilot on Complete 194-case Books
+name: Marriage phrase prompt and timing regression (no duplicate archival)
 on:
   push:
     branches: [main]
     paths:
-      - 'schema/migrations/038_marriage_phrase_library.sql'
-      - 'scripts/seed_marriage_phrase_library.py'
-      - 'src/wengua/phrase_pipeline.py'
       - 'src/wengua/timing_engine.py'
       - 'prompts/marriage_reading_v1.md'
       - 'tests/test_marriage_phrase_pilot.py'
       - '.github/workflows/build_marriage_phrase_pilot.yml'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  archive:
-    if: github.repository == 'turnupmason/WenguaApp'
+  regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
     steps:
       - uses: actions/checkout@v4
-        with: {persist-credentials: true}
       - uses: actions/setup-python@v5
-        with: {python-version: '3.11'}
-      - name: Verify full 194-book-case regression, domain phrases and actual timing computation guard
+        with: {python-version: '${{ matrix.python-version }}'}
+      - name: Run marriage timing and phrase pilot guard tests
         run: python -m unittest discover -s tests -p test_marriage_phrase_pilot.py -v
-      - name: SQLite backup complete two-book case corpus and add phrase library
-        run: |
-          python -m scripts.seed_marriage_phrase_library \
-            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3' \
-            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3' \
-            --index-dir 'data/knowledge/phrase_library/marriage_v1'
-      - name: Compress actual SQLite binary and exact manifest for versioned review
+      - name: Verify already-versioned full 194-book-case SQLite remains immutable
         run: |
           python - <<'PY'
           from pathlib import Path
-          import hashlib,json,lzma,sqlite3
+          import hashlib,json,sqlite3
           root=Path('archives/sqlite')
-          original=root/'WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3'
-          new=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
-          xz=new.with_suffix('.sqlite3.xz')
-          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          db=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
+          xz=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz'
+          mf=root/'shenqi21_kaiwu22_marriage_phrase_v1_manifest.json'
+          if not all(x.exists() for x in (db,xz,mf)):
+           raise RuntimeError('Full V1 archive missing; use canonical build_marriage_phrase_archive.yml')
           h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-          d=json.loads(Path('data/knowledge/phrase_library/marriage_v1/manifest.json').read_text('utf8'))
-          assert h(original)==d['upstream_full_source_archive_sha256']
-          with sqlite3.connect(new) as db:
-           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
-           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
-           counts={t:db.execute('SELECT COUNT(*) FROM "'+t+'"').fetchone()[0] for t in d['counts']}
-          assert counts==d['counts']
-          assert counts['cases']==194 and counts['sections']==43
-          assert counts['phrase_template_drafts']==4 and counts['phrase_context_instances']==0
-          dest=root/'shenqi21_kaiwu22_marriage_phrase_v1_manifest.json'
-          payload={'schema':'wengua_full_194case_marriage_phrase_pilot_v1',
-           'upstream_full_archive_sha256':d['upstream_full_source_archive_sha256'],
-           'appended_source_book_cases':0,'unchanged_book_case_total':194,
-           'appended_human_style_conditional_phrase_drafts':4,'approved_final_predictions':0,
-           'mandatory_explicit_outcome_and_timing_prompt_version':'marriage_reading_v1.1',
-           'new_verified_nine_palace_charts':0,'manufactured_388800_nodes':0,
-           'new_full_archive_path':str(new),'sha256':h(new),
-           'size_bytes':new.stat().st_size,
-           'compressed_archive_path':str(xz),'compressed_sha256':h(xz),
-           'compressed_size_bytes':xz.stat().st_size,
-           'full_archive_integrity_check':'ok','foreign_key_check_errors':0,
-           'previous_source_rows_intact':True,'counts':counts}
-          dest.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n','utf8')
-          print(json.dumps(payload,ensure_ascii=False,indent=2))
+          m=json.loads(mf.read_text('utf8'))
+          assert h(db)==m['sha256'] and h(xz)==m['xz_sha256']
+          with sqlite3.connect(db) as con:
+           assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert con.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert con.execute('SELECT COUNT(*) FROM phrase_template_drafts').fetchone()[0]==4
+          print('This run is review-only. For updated GPT prompt V1.1, create a distinct versioned SQLite; do not overwrite V1.0 archive.')
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: full194books-marriage-phrase-pilot-v1
-          path: |
-            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3
-            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz
-            archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json
-          retention-days: 30
-      - name: Commit full append-only SQLite with four source-linked unapproved phrase draft prototypes
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
-          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz' \
-             'archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json' \
-             'data/knowledge/phrase_library/marriage_v1/'
-          git diff --cached --check
-          git commit -m 'Archive complete 194-case DB plus conditional marriage phrase drafts, none falsely approved'
-          git push origin HEAD:main
