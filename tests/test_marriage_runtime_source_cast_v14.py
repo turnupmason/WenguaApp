@@ -167,7 +167,7 @@ class SourceChartBridgeTests(unittest.TestCase):
   self.assertIsNone(result["traditional_forecast_result"])
   self.assertIsNone(result["calculated_primary_timing"])
   bad=copy.deepcopy(payload);bad["calendar_inputs"]["day_ganzhi"]="丙子"
-  with self.assertRaisesRegex(ValueError,"Civil solar-term and Ganzhi"):
+  with self.assertRaisesRegex(ValueError,"Original book bureau|Civil solar-term and Ganzhi"):
    inspect_marriage_chart_json(db_path=FULL_DB,payload=bad)
   wrong_month=copy.deepcopy(payload);wrong_month["calendar_inputs"]["month_ganzhi"]="癸巳"
   with self.assertRaisesRegex(ValueError,"month_ganzhi"):
