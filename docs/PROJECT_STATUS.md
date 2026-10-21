@@ -747,3 +747,14 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 **实际运行**：`scripts/run_marriage_judgment_v18.py`接受已有起盘JSON、天文历法`calendar_inputs`（有时区时刻、四柱核盘）、婚姻`scene_id`与`question_text`；可以不提供`inquiry.subject.year_ganzhi`、`partner.year_ganzhi`乃至整段对象出生信息，结果中会清楚记录 no_year_optional 或 one_year_optional、原书SHA证据、没有发明出生年及真实应期触发。`tests/test_marriage_no_year_v18.py`遍历22种场景，`tests/test_marriage_optional_year_cli_v18.py`真实读写文件，`tests/test_marriage_optional_year_v18_archive.py`复核全194原书和旧两个错案。**未来所有领域参考同样处理“未提供年命”：必须先研究本领域古籍其他取用神，不问年命则正常按其他原书用神断，不得默认要求用户补充。**
 
 核心方法细节及 JSON 调用：`docs/MARRIAGE_OPTIONAL_BIRTH_YEAR_V1_8.md`。未来下一步不是重启旧版本、更不能调参回看 V1.6 的两个错题当秘密测试，而是继续按原书逐条实现24项全部明确适用条件、不同问事领域主辅角色绑定和应期，使用真正未参与规则选择的整族事件作独立评测；所有失败样本保留，多轨原著来源保留。
+
+
+## 2026-10-21 疾病严重程度动态填空断词 V1.9（待最新归档CI最终验收）
+
+**架构转向：不用1080局×60年命人工预写断词。** 每领域单独建立细分问事的长模板，直接通过现有排盘读取九宫、值符值使、天盘地盘干、神门星、宫位八卦身体部位、干的条件化病象、旺衰、门迫、旬空、月破候选、患者关系与医药用神的有向生克等，再根据原书条件选择有利不利事实填入，自动组装中文。GPT可辅助研发模板，但离线App不依赖GPT，后续每领域只写专业模板与知识规则，不按每盘写完整文章。
+
+**首个细分** domain=health, intent=severity（仅「测病情严不严重」，不复用到出院/看病方式/手术/疾病定位）。有可执行21段结构，见 docs/HEALTH_SEVERITY_DYNAMIC_TEMPLATE_V1_9.md、data/knowledge/phrase_library/health_severity_v1/template.json、src/wengua/health_severity_template.py、scripts/run_health_severity_v19.py。原始事实复算检查且不信伪造的engine_verified标志；24项因子全被审计，未验证的月破、墓库等维持unknown；同宫天干组合保留有序concept_id，支持只读SQLite来源摘句，门迫必须门克宫。天芮落宫身体部位完整区分表面/内部，丁/癸/庚/辛/壬以书中内外盘及组合条件解释，绝不把一个天干当一个病名。人无年命直接不查年命；没有原书依据的妈妈、弟弟等个人用神不得乱补。天心和乙奇仅按原书作传统医药象，实际不等于西医治疗有效性。
+
+吉凶并非「吉数量减凶数量」：例如作者条件化复合天芮+死门+庚+白虎出现才记录为传统警示象，天心/乙奇宫克病宫可作为相反象；重复证据不重复算。证据不充分就列明缺项，不编疗效、死亡、病情真实性或具体康复日期。**传统符号断语不得冒充医学诊断**。本次是生成器和来源索引研究，不表示新增真实用户病情预测或专业审批完成。
+
+基于V1.8 194事件/43节完整数据库 SHA256 fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 使用sqlite3.backup+迁移047追加21个模板段/协议/审计，不覆盖上游或历史19本书明确错案；V1.6两次开发错判和V1.7 27条规则不可删除。构建脚本 scripts/build_health_severity_template_v19.py 与工作流 .github/workflows/build_health_severity_v19.yml，成功后产出新V1.9 SQLite、XZ及manifest；**未收到Action结果前不得声称新归档存在**。当前不处理其他疾病子问题，不做UI。

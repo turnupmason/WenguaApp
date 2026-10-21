@@ -131,3 +131,8 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 **实际运行**：`scripts/run_marriage_judgment_v18.py`接受已有起盘JSON、天文历法`calendar_inputs`（有时区时刻、四柱核盘）、婚姻`scene_id`与`question_text`；可以不提供`inquiry.subject.year_ganzhi`、`partner.year_ganzhi`乃至整段对象出生信息，结果中会清楚记录 no_year_optional 或 one_year_optional、原书SHA证据、没有发明出生年及真实应期触发。`tests/test_marriage_no_year_v18.py`遍历22种场景，`tests/test_marriage_optional_year_cli_v18.py`真实读写文件，`tests/test_marriage_optional_year_v18_archive.py`复核全194原书和旧两个错案。**未来所有领域参考同样处理“未提供年命”：必须先研究本领域古籍其他取用神，不问年命则正常按其他原书用神断，不得默认要求用户补充。**
 
 核心方法细节及 JSON 调用：`docs/MARRIAGE_OPTIONAL_BIRTH_YEAR_V1_8.md`。未来下一步不是重启旧版本、更不能调参回看 V1.6 的两个错题当秘密测试，而是继续按原书逐条实现24项全部明确适用条件、不同问事领域主辅角色绑定和应期，使用真正未参与规则选择的整族事件作独立评测；所有失败样本保留，多轨原著来源保留。
+
+
+## 2026-10-21 健康·病情严重程度动态模板 V1.9
+
+用户新方向：弃用1080×60年命人工逐篇预写；各领域逐细分问事写一份包含真实条件、可填字段和证据冲突的长模板，代码每次根据真实九宫及原著条件填值。首发**health/severity**21段动态插槽及Python填充器，参考 docs/HEALTH_SEVERITY_DYNAMIC_TEMPLATE_V1_9.md。可定位天芮宫/体表内里及天心乙奇、天干有序克应和门迫/旬空；丁癸庚等疾病象意必须按内外盘、月令和门星神格上下文选取；24要素部分仍unknown不得胡填。当前研发draft，不发表任何实际医学严重程度、疾病类型或疗效断言。待CI归档的新V1.9全量SQLite只能以V1.8真194案库SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536为父；历史原始书章和旧错断不变，其余领域/子问事尚未按本新模式完成。

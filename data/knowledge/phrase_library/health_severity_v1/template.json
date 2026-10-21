@@ -1,0 +1,148 @@
+{
+  "schema": "wengua_health_severity_dynamic_template_v1",
+  "domain": "health",
+  "intent": "severity",
+  "target_event": "traditional_illness_symbol_strength",
+  "release_status": "draft_research_not_clinical",
+  "generation_mode": "deterministic_runtime_slot_fill_no_gpt",
+  "provenance": [
+    {
+      "book": "神奇之门",
+      "chapter": "人体疾病预测",
+      "sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "source_lines": [
+        3,
+        11
+      ],
+      "index": "data/knowledge/shenqi/health_prediction_ch01/method_index.json"
+    },
+    {
+      "book": "开悟之门",
+      "chapter": "第二章第一节 人体疾病预测",
+      "sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfb3a3a26ef7303d",
+      "source_lines": [
+        25,
+        27,
+        29,
+        31,
+        39,
+        41,
+        85,
+        87,
+        89,
+        185,
+        187,
+        191,
+        195
+      ],
+      "index": "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json"
+    }
+  ],
+  "sections": [
+    {
+      "id": "01_question",
+      "title": "问事绑定",
+      "format": "求测人为{asker}，此次问{relationship}病情是否严重。患者个人用神：{patient_binding}。{birth_year_status}"
+    },
+    {
+      "id": "02_far_star",
+      "title": "远看·值符星",
+      "format": "值符星{value_star}落{value_star_palace}；宫内八神、门及天盘干分别为{value_star_contents}。这里是整体背景，不能单看一个字便定病情。"
+    },
+    {
+      "id": "03_far_door",
+      "title": "远看·值使门",
+      "format": "值使门{value_door}落{value_door_palace}；门宫五行关系：{value_door_relation}；其宫星、神、天干为{value_door_contents}。"
+    },
+    {
+      "id": "04_illness_star",
+      "title": "近看·病星定位",
+      "format": "疾病传统用神天芮星落{illness_palace}，宫五行为{illness_element}，其天盘携带干为{illness_stem}、地盘干为{illness_earth_stem}。"
+    },
+    {
+      "id": "05_body_part",
+      "title": "近看·宫位身体部位",
+      "format": "{illness_palace}对应的传统表面部位包括{body_surface}，内部部位包括{body_internal}；内外盘核查为{inner_outer}。这些是原书多种类象，不能同时当作实际病灶。"
+    },
+    {
+      "id": "06_stem_image",
+      "title": "近看·奇仪疾病类象",
+      "format": "天芮所临天干{illness_stem}的五行与疾病候选象意：{illness_stem_image}；地盘干{illness_earth_stem}的五行为{earth_stem_element}。须同时根据宫位、内外、时干及其他规则限定。"
+    },
+    {
+      "id": "07_strength",
+      "title": "近看·月令与九星旺衰",
+      "format": "起局节令所取月支{month_branch}、月五行{month_element}；天芮星按九星专用旺相休囚废算法为{illness_star_stage}；本宫气势不能直接当作临床病情分级。"
+    },
+    {
+      "id": "08_stem_pair",
+      "title": "近看·天地盘干克应",
+      "format": "病星宫天盘{illness_stem}加地盘{illness_earth_stem}，有序组合{stem_pair_id}；基础原著格局索引：{stem_pair_source}；含义与病象：{stem_pair_meaning}。不得把天、地干颠倒。"
+    },
+    {
+      "id": "09_formations",
+      "title": "近看·复合格局",
+      "format": "在本宫确实满足全部条件的复合格局候选：{formation_matches}；每项需校对原文条件和例外，不自动将候选判为实病。"
+    },
+    {
+      "id": "10_deity",
+      "title": "近看·上乘八神",
+      "format": "病星宫上乘{illness_deity}，传统类象参考：{deity_image}；需区分来源个案用法和任何普适判断。"
+    },
+    {
+      "id": "11_door",
+      "title": "近看·所临八门",
+      "format": "病星宫临{illness_door}，本门五行与落宫关系为{illness_door_relation}，门迫专门核验为{door_press}；门的季节旺衰为{door_season_stage}。门迫必须是门五行克宫，不是任意不利门。"
+    },
+    {
+      "id": "12_void_break",
+      "title": "近看·月破旬空",
+      "format": "本时辰旬首{hour_xun}、旬空{void_branches}，病宫候选旬空核查：{illness_void}；月破判断：{month_break}。没有独立的月破规则时不以普通冲字强填。"
+    },
+    {
+      "id": "13_patient",
+      "title": "近看·患者用神",
+      "format": "患者的选用依据为{patient_binding}，所在宫或辅助参考宫为{patient_palace}；与天芮宫五行关系为{patient_illness_relation}；不能将年干、日干、时干、出生年命混为一谈。"
+    },
+    {
+      "id": "14_doctor",
+      "title": "近看·天心医生象",
+      "format": "传统天心星作为医药辅助象落{doctor_palace}，与天芮所在宫的有向五行关系为{doctor_relation}；并查看对应门神与旺衰：{doctor_contents}。"
+    },
+    {
+      "id": "15_medicine",
+      "title": "近看·乙奇医药象",
+      "format": "乙奇作为医药辅助象落{yi_palace}，与天芮所在宫的有向关系为{yi_relation}；同宫星门神为{yi_contents}；乙奇不能不经原书条件便固定指西医。"
+    },
+    {
+      "id": "16_disease_interaction",
+      "title": "近看·时干事体",
+      "format": "问事时干{event_stem}所在宫{event_palace}，与病星宫关系{event_relation}；其作用是否能作为此疾病事件证据，仍以原书适用条件为准。"
+    },
+    {
+      "id": "17_hard_factors",
+      "title": "全盘·刑冲墓迫",
+      "format": "六仪击刑、三奇入墓、干墓库、月日冲破、支冲刑害与门迫逐项结果：{hard_factor_summary}。未知项必须写未知，不默认为未触发。"
+    },
+    {
+      "id": "18_movement",
+      "title": "全盘·伏吟反吟与动静",
+      "format": "伏吟反吟、旬空填冲、驿马、暗干、宫位生克及格局冲突审计：{movement_factor_summary}；没有足够的源法和时序不能直接断快慢。"
+    },
+    {
+      "id": "19_counter",
+      "title": "综合·证据与反证",
+      "format": "本盘已计算的传统条件：{known_evidence}。关键反证、不可直接相加的证据及待核项：{counter_evidence}。当前综合规则状态：{evidence_status}。"
+    },
+    {
+      "id": "20_timing",
+      "title": "应期·条件门槛",
+      "format": "应期需在事件判断、具体古籍条件与本地节气历全部成立后选择。当前：{timing_result}。不得从静态宫位硬写具体好转日期。"
+    },
+    {
+      "id": "21_summary",
+      "title": "总结·研究性传统象意",
+      "format": "{traditional_summary} 这不是对真实病情严重程度、疾病类型、疗效或康复时间的医学判断；现实疾病评估应依据临床检查和医生意见。"
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+name: Archive V1.9 Health Severity Dynamic Template
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_template.py'
+      - 'data/knowledge/phrase_library/health_severity_v1/template.json'
+      - 'tests/test_health_severity_template_v19.py'
+      - 'scripts/build_health_severity_template_v19.py'
+      - 'schema/migrations/047_health_severity_dynamic_template_v19.sql'
+      - '.github/workflows/build_health_severity_v19.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check 21 dynamic sections and immutable original-chart safety
+        run: python -m unittest discover -s tests -p test_health_severity_template_v19.py -v
+  archive:
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    needs: regression
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Append V1.9 disease severity template to exact complete 194-event V1.8
+        run: |
+          python -m scripts.build_health_severity_template_v19 \
+            --base 'archives/sqlite/WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/health_severity_v1/archive_audit'
+      - name: Archive immutable SQLite and prove source table preservation
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          archive=Path('archives/sqlite')
+          source=archive/'WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3'
+          new=archive/'WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3'
+          compressed=Path(str(new)+'.xz')
+          compressed.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+          audit=json.loads(Path('data/knowledge/phrase_library/health_severity_v1/archive_audit/manifest.json').read_text('utf-8'))
+          assert sha(source)==audit['parent_sha256']
+          assert sha(new)==audit['new_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM health_severity_v19_template_sections').fetchone()[0]==21
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM marriage_v17_book_conditional_rules').fetchone()[0]==27
+           assert db.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          manifest={
+           'schema':'wengua_health_severity_dynamic_v19_full_194_event_archive',
+           'parent_archive':str(source),'parent_sha256':sha(source),
+           'latest_full_sqlite':str(new),'sha256':sha(new),
+           'size_bytes':new.stat().st_size,
+           'compressed_sqlite':str(compressed),'compressed_sha256':sha(compressed),
+           'compressed_size_bytes':compressed.stat().st_size,
+           'health_template_sections':21,
+           'old_194_events_unchanged':True,'old_43_sections_unchanged':True,
+           'old_v16_misses_retained':2,'old_v17_rules_retained':27,
+           'new_medically_verified_forecasts':0,
+           'integrity_check':'ok','foreign_key_errors':0,'counts':audit['counts'],
+          }
+          (archive/'shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json').write_text(
+             json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-194-case-health-severity-dynamic-v19
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json
+          retention-days: 30
+      - name: Commit versioned full source SQLite, XZ and manifest without overwriting parents
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json' \
+            'data/knowledge/phrase_library/health_severity_v1/archive_audit/'
+          git diff --cached --check
+          git commit -m 'Archive V1.9 full 194-case SQLite with 21 source anchored health severity dynamic slots'
+          git push origin HEAD:main
