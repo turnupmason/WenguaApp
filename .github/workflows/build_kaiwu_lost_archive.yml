@@ -1,0 +1,103 @@
+name: Archive Kaiwu lost property four cases into unified Shenqi domain
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_钱物丢失预测.txt'
+      - 'scripts/build_kaiwu_lost_from_business.py'
+      - 'schema/migrations/028_kaiwu_lost_property_crossbook_four_cases.sql'
+      - 'tests/test_kaiwu_lost_four_shared_domain.py'
+      - '.github/workflows/build_kaiwu_lost_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify original 180 lines, four source casts, 36 palace literals, six-yao/Qimen chronology
+        run: python -m unittest discover -s tests -p test_kaiwu_lost_four_shared_domain.py -v
+      - name: Generate full next SQLite only by exact SHA-pinned complete 149-case prior archive
+        run: |
+          python -m scripts.build_kaiwu_lost_from_business \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/开悟之门_钱物丢失预测.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/lost_property_prediction_ch02_section08'
+      - name: XZ compress and measure real versioned full binary SHA and row/foreign-key verification
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          prior=root/'WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          d=json.loads(Path('data/knowledge/kaiwu/lost_property_prediction_ch02_section08/chapter_manifest.json').read_text('utf8'))
+          assert hashlib.sha256(prior.read_bytes()).hexdigest()==d['source_immutable_parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={k:db.execute('SELECT count(*) FROM "'+k+'"').fetchone()[0] for k in d['counts']}
+           assert counts==d['counts']
+           assert counts['cases']==153 and counts['kaiwu_lost_source_charts']==4
+           assert counts['kaiwu_lost_source_palaces']==36
+           assert db.execute("SELECT count(*) FROM historical_case_book_verdicts WHERE verdict='author_book_error_explicit'").fetchone()[0]==9
+          result={'schema':'wengua_shenqi21_kaiwu13_four_lost_property_cases_complete_full_archive',
+           'source_title':d['source_title'],'source_sha256':d['source_sha256'],
+           'source_bytes':d['source_bytes'],'source_lines':d['source_lines'],
+           'source_book_cases_accepted_without_per_case_review':4,
+           'new_independent_historical_events':4,'new_printed_actual_charts':4,
+           'new_raw_palace_cells':36,'new_original_reasoning_heads':25,
+           'original_1999_first_lost_motorbike_sixyao_not_qimen':True,
+           'book_cites_unprinted_trip_casts_without_invented_5th_chart':True,
+           'cash_not_returned_not_proven_collector_theft':True,
+           'mislaid_earring_is_not_criminal_theft':True,
+           'total_source_sections':34,'book_counts':d['book_counts'],
+           'total_independent_historical_events':153,
+           'total_original_printed_historical_casts':170,
+           'nine_prior_explicit_book_errors_all_preserved':True,
+           'previous_complete_archive_path':str(prior),
+           'previous_sha256':hashlib.sha256(prior.read_bytes()).hexdigest(),
+           'new_complete_archive_path':str(new),
+           'sha256':hashlib.sha256(new.read_bytes()).hexdigest(),
+           'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),
+           'compressed_sha256':hashlib.sha256(xz.read_bytes()).hexdigest(),
+           'compressed_size_bytes':xz.stat().st_size,
+           'counts':counts,'integrity_check':'ok','foreign_key_violations':0,
+           'all_prior_table_rows_unchanged':True,
+           'not_independently_verified_crime_or_predictive_method':True,
+           'user_authorized_public_full_archive':True}
+          (root/'shenqi21_kaiwu_lost_153cases_manifest.json').write_text(
+             json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shenqi21-kaiwu13-full-153-source-cases-lost-property
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_lost_153cases_manifest.json
+          retention-days: 30
+      - name: Commit genuinely built complete SQLite XZ and user supplied original source indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_lost_153cases_manifest.json' \
+                     'data/knowledge/kaiwu/lost_property_prediction_ch02_section08/'
+          git diff --cached --check
+          git commit -m 'Archive four Kaiwu lost-property book cases with literal OCR and six-yao-first chronology'
+          git push origin HEAD:main
