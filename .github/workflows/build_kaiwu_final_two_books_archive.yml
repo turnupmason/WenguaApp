@@ -1,0 +1,91 @@
+name: Archive Kaiwu final book chapter 14 subsections 194 cases
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/kaiwu_ch03_questions_and_case_reviews.txt'
+      - 'data/knowledge/kaiwu/final_ch03_source_anchors.json'
+      - 'scripts/build_kaiwu_ch03_source_final_194.py'
+      - 'schema/migrations/037_kaiwu_final_method_and_error_provenance.sql'
+      - 'tests/test_kaiwu_final_two_books_complete.py'
+      - '.github/workflows/build_kaiwu_final_two_books_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Source book SHA and complete-case unit tests with no previous row deletion
+        run: python -m unittest discover -s tests -p test_kaiwu_final_two_books_complete.py -v
+      - name: Back up 181-case SHA-locked full source database, add 13 distinct families
+        run: |
+          python -m scripts.build_kaiwu_ch03_source_final_194 \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3' \
+            --source 'sources/kaiwu/kaiwu_ch03_questions_and_case_reviews.txt' \
+            --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/kaiwu/questions_answers_errors_and_methods_ch03'
+      - name: Compress complete SQLite and manifest with verified row counts and two book SHA
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          meta=json.loads(Path('data/knowledge/kaiwu/questions_answers_errors_and_methods_ch03/chapter_manifest.json').read_text('utf8'))
+          assert sha(old)==meta['prior_full_archive_SHA256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT COUNT(*) FROM "'+t+'"').fetchone()[0] for t in meta['counts']}
+          assert counts==meta['counts']
+          assert counts['cases']==194 and counts['sections']==43 and counts['historical_chart_cells']==1440
+          manifest={'schema':'wengua_two_books_final_full_sqlite_194cases_v1',
+           'source_title':meta['source_title'],'source_sha256':meta['source_sha256'],
+           'source_bytes':meta['source_bytes'],'source_lines':meta['source_lines'],
+           'original_book_two_chapters_total':43,'original_source_end_may_be_incomplete':True,
+           'final_chapter_sections':14,'direct_QA':15,'added_unique_question_events':13,
+           'reused_identical_Kedi_permit_event_id':'kaiwu.business.case05',
+           'original_OCR_casts':16,'new_certified_printed_charts':0,
+           'known_original_wrong_answers_retained':19,
+           'prior_full_archive_path':str(old),'prior_sha256':sha(old),
+           'new_full_archive_path':str(new),'sha256':sha(new),'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),'compressed_sha256':sha(xz),
+           'compressed_size_bytes':xz.stat().st_size,
+           'all_old_rows_unchanged':True,'integrity_check':'ok','foreign_key_errors':0,
+           'no_388800_phrase_generation_yet':True,'counts':counts,
+           'public_full_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu22_final_194cases_manifest.json').write_text(
+            json.dumps(manifest,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: two-books-final-194-full-sqlite-and-xz
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json
+          retention-days: 30
+      - name: Commit the actual full historic SQLite XZ manifest and chapter source index
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json' \
+            'data/knowledge/kaiwu/questions_answers_errors_and_methods_ch03/'
+          git diff --cached --check
+          git commit -m 'Archive 194 case full two-book corpus and final 14-section error curriculum'
+          git push origin HEAD:main
