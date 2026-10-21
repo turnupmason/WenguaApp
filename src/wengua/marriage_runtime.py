@@ -210,3 +210,100 @@ def inspect_marriage_study_cast(*,db_path,scene_id,day_ganzhi,solar_term,
   "calculated_primary_timing":None,
   "human_natural_phrase":None,
   "book_accuracy_independently_verified":False}
+
+
+def inspect_marriage_chart_json(*,db_path,payload):
+ """JSON-in marriage evidence bridge with full nine-palace deterministic replay.
+
+ User flags are not independently authenticated astronomy receipts. Day and
+ hour from supplied book-style sexagenary calendar are still not externally
+ validated. Reject any changed palace, door, star, deity or xun-head cell.
+ """
+ if not isinstance(payload,dict):
+  raise ValueError("Expect root JSON document with chart and inquiry objects")
+ chart=payload.get("chart")
+ inquiry=payload.get("inquiry")
+ if not isinstance(chart,dict) or not isinstance(inquiry,dict):
+  raise ValueError("Full chart and explicit marriage inquiry required")
+ if chart.get("school_id")!="shijia_zhuanpan":
+  raise ValueError("Unknown school cannot be silently recast")
+ if chart.get("status")!="source_text_consistency_only":
+  raise ValueError("Self-reported engine_verified status is not independent source proof")
+ for key in ("dun","ju","hour_ganzhi","palaces","xun_shou","hidden_stem",
+             "value_star","value_door","value_star_palace","value_door_palace"):
+  if key not in chart:raise ValueError("Missing source comparison chart field: "+key)
+ if inquiry.get("domain")!="marriage" or not inquiry.get("scene_id"):
+  raise ValueError("A specific marriage scene_id is required")
+ if not inquiry.get("question_text"):
+  raise ValueError("Actual question text must be preserved")
+ calendar=payload.get("calendar_inputs")
+ if not isinstance(calendar,dict) or not all(calendar.get(k) for k in ("day_ganzhi","solar_term")):
+  raise ValueError("Day ganzhi and solar term must be explicitly supplied")
+ if calendar.get("hour_ganzhi")!=chart["hour_ganzhi"]:
+  raise ValueError("Question time does not match chart hour ganzhi")
+ bureau=bureau_for_term(calendar["day_ganzhi"],calendar["solar_term"])
+ if (chart["dun"],chart["ju"])!=(bureau["dun"],bureau["ju"]):
+  raise ValueError("Original book bureau and chart conflict")
+ replay=layout_from_explicit_bureau(dun=bureau["dun"],ju=bureau["ju"],
+                                   hour_ganzhi=chart["hour_ganzhi"])
+ for key in ("palaces","xun_shou","hidden_stem","value_star","value_door",
+             "value_star_palace","value_door_palace","dun","ju","hour_ganzhi"):
+  if replay[key]!=chart[key]:
+   raise ValueError("Nine-palace JSON altered or inconsistent with book casting: "+key)
+ people={k:v for k,v in inquiry.items() if k in ("querent","subject","partner","parents","third_party")}
+ for role,actor in people.items():
+  if not isinstance(actor,dict):
+   raise ValueError("Every role must be an explicit person object: "+role)
+ response=inspect_marriage_study_cast(
+  db_path=db_path,scene_id=inquiry["scene_id"],
+  day_ganzhi=calendar["day_ganzhi"],solar_term=calendar["solar_term"],
+  hour_ganzhi=calendar["hour_ganzhi"],
+  example_key=payload.get("original_casting_book_example_key"),
+  people=people)
+ stems=_palace_mapping(replay)
+ resolved={}
+ missing=[]
+ from .casting_shenqi import SIX_JIA
+ for role in ("querent","subject","partner","parents","third_party"):
+  actor=people.get(role)
+  if actor is None:continue
+  year=actor.get("year_ganzhi")
+  if year is None:
+   resolved[role]={"status":"birth_year_not_supplied","no_guessed_palace":True}
+   missing.append("person_year_ganzhi_missing:"+role)
+   continue
+  if year not in cycle60():raise ValueError("Invalid 60-year sexagenary year for "+role)
+  stem=SIX_JIA[year] if year in SIX_JIA else year[0]
+  matched=stems.get(stem,[])
+  resolved[role]={
+   "status":"year_stem_palace_candidate_only_not_selected_primary_yongshen",
+   "year_ganzhi":year,"symbol_stem":stem,
+   "original_jaia_six_yi_mapping":stem if year.startswith("甲") else None,
+   "candidate_palace_cells":matched,
+   "matching_rule":"year_symbol_or_six_jia_hidden_stem_to_heavenly_star_carrier",
+   "person_is_not_verified_by_symbolic_tradition":True}
+  if not matched:missing.append("actor_stem_not_located_in_actual_heaven_plate:"+role)
+ if not people:missing.append("no_querent_subject_partner_data")
+ if not people.get("subject"):missing.append("subject_role_missing")
+ subj=resolved.get("subject",{}).get("candidate_palace_cells",[])
+ partner=resolved.get("partner",{}).get("candidate_palace_cells",[])
+ if len(subj)==1 and len(partner)==1:
+  sp,pp=subj[0]["palace"],partner[0]["palace"]
+  response["factor_audit"]["palace_interactions"]=_fact(
+   "present","computed_pure_palace_elements_not_relational_forecast",
+   {"subject_palace":sp,"partner_palace":pp,
+    "subject_element":ELEMENTS[sp],"partner_element":ELEMENTS[pp],
+    "subject_to_partner":element_relation(ELEMENTS[sp],ELEMENTS[pp]),
+    "candidate_role_binding_only":True})
+ response["factor_mechanically_resolved_count"]=sum(
+  x["status"] in ("present","absent") for x in response["factor_audit"].values())
+ response["actual_input_inquiry"]={
+  "scene_id":inquiry["scene_id"],"domain":"marriage",
+  "question_text":inquiry["question_text"],
+  "relationship":inquiry.get("relationship")}
+ response["actual_year_stem_candidate_binding"]=resolved
+ response["source_cast_replayed_from_json_and_consistent"]=True
+ response["calendar_independently_verified"]=False
+ response["status"]="actual_chart_json_source_consistent_pending_author_decision_and_timing"
+ response["missing_to_publish"]=sorted(set(response["missing_to_publish"]+missing))
+ return response
