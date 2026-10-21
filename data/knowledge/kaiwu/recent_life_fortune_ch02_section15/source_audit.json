@@ -1,0 +1,135 @@
+{
+  "source_sha256": "f5c2f65f0781eed540aec048c1a734a978bc35c6a9b01aee6b75baec3902e619",
+  "source_ocr_lines_hashed": [
+    {
+      "case_id": "kaiwu.recent_fortune.case01",
+      "first": 9,
+      "last": 22,
+      "line_digests": [
+        "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709",
+        "0ca4caddc8b5389d9e18c3b2da44182995b31cadc2bc4ae46b8c3c7bb16684fb",
+        "d122a2bef0ecfae7b9045535a7f367ea04202af510e6f3e64eb4291b0a94173c",
+        "444bb2cc082a99bb04523a849686851fb00f8953b663a7066a2fe3bb276908c6",
+        "628d8d9a6f4b14573d52263a50bcf9fb0e2927ecf253dcf76a280e160eef91fc",
+        "612b6f4bcdc6cb39229db6ed3b55e859f3a936466526b93d1d996e8feed3fb6d",
+        "d2b76ff1430b58e7509195dad337564adf477831af2101a4c637ff1876021599",
+        "de7b7bc62d3fe60139e7d76b8ffe513acb4f86758052ea1aa07874222c150bc5",
+        "a18a8bf30aa3e4ac955fa3d206a075207863b5c1f036e2a1dce8e083bf274538",
+        "49da61ceeea2f2714263cb2baf9985b856f7c9ce77a025c5815de59aa4aa6092",
+        "6989cbb7f180eee79012ca8ac0375dde487aded3d17d9540f02e81fb8ccb8fc0",
+        "b62ff9d15acc49588fe731ed803fcbcb8716866a02af5092d724c9bb3d0c4c9a",
+        "b01c74cd52537cdbc284a67fe45e9ff7f803f2ab2c037d68edcb1417679899db",
+        "4ece4c45aca3123268318b386bf21a11faa565de4575bc32b0eff0ece7b8a841"
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case02",
+      "first": 74,
+      "last": 87,
+      "line_digests": [
+        "54ed5d46d5a85379e3f9ecd7f0519ac807afa80da11c46475d268f583c0dd402",
+        "d944d753876954d5dff81bff8a9367bcdfec76b7e2032e9f82001be268c0e3ac",
+        "7f2630962a2b6e539b7418da75796883efb52e7ac8dbc66623e5d382eb635013",
+        "815d2d5fe431e01ffd98429956c7e1d64b7b9cf011c3511c5793b147fecf4fb0",
+        "37fa0b30b08011a4fef2a64dc7bf910a6ad1381c60dfe75c6cdeb6ef55728250",
+        "628d8d9a6f4b14573d52263a50bcf9fb0e2927ecf253dcf76a280e160eef91fc",
+        "74b6028053a9dee78032ea47fc9dd84afc676f2762c9db47d12ccc0885b969ab",
+        "cb020f27f548f9b6363961b3d44da01d95c8fc60ef4f392943087e2b7ef45a95",
+        "9424fdbcb8631314aff85cdcabb00029fc321264b7fb929baa9282eff9a85e40",
+        "49da61ceeea2f2714263cb2baf9985b856f7c9ce77a025c5815de59aa4aa6092",
+        "fd3d19974fcfdae0ff373d611c6370b7dbc488de878a35dc6c46dddd7a620a56",
+        "a922f390810ddf274f172425d1fbef53127083e7284fac8f28c19712c270f1f6",
+        "2883d7ca6b956d95a81189bd80b5386223b2082fe62cf909d9bad8ed2d82aeb8",
+        "b2499e7bc48856b80705f0a1f8a48dd15c4f1008a19afe811de4d6414bf39657"
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case03",
+      "first": 118,
+      "last": 130,
+      "line_digests": [
+        "438341bd440510fda3570af460362e661791d88ff3fc00a99e074b9cc1a811c9",
+        "145dafb960c1f88d65756adcf5b14f27a187c83002a31b14295f1d00edd1a83e",
+        "708a9b637a8c83e4c57969a4d90cd421558ce2ced8c6a82240588381ee8f24d8",
+        "e2399b2012aa6f69392ec5b8cb708456d90756d785bd87833ea326a1a0b0cb00",
+        "a536deee83f705c0d7efd366198b6d663d57d4692458ba685d06c7f970d9b23a",
+        "2ecdca4a2ca545cd6becc70d10329d61bc958777748451f97aefc1812cd0723e",
+        "62d242126e554d78d72b57ed0a54fc615923296b76493fce18ea68e21c5466f2",
+        "a65dd11c4ebb9dddb219e0f68cd8c8d7bbb45e66f488abd2b059cc66d2b704f4",
+        "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340",
+        "13343482ff5ee8996fb9190fdbf84402b916394a4c0836bfe564320dff421998",
+        "79de67541165a67fc06ceffaa489a60a7ca44b2671386adf6b1a7a97829f0956",
+        "d5f9755ddc93e7f28879c30db856525461c7d7b7f35c0c4618cb582c5acc2017",
+        "b87546311d2fd39662651eee867996642f4d6ac0c9792684ce9f73d3326af9bc"
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case04",
+      "first": 167,
+      "last": 183,
+      "line_digests": [
+        "f4525494436ff0f7802e64ec7b22b2468b98f5e03124b89e3ea6a4df192104b4",
+        "78d2cf3bf3cc0f6f6dc0c9ce1ff3fee20c71dc1759c57683f2491b30d685e36c",
+        "2883d7ca6b956d95a81189bd80b5386223b2082fe62cf909d9bad8ed2d82aeb8",
+        "e189afe0a9ab05f5f03b3d0cc693ff5ee6ab4fc6726ba89be1ff6aa14771c9ac",
+        "7b04cf55e91a9df4aef0d6858d78742b459c84efefaf9eb57714cbf6f4033252",
+        "bde2caafeb19c3cabc38f47484ced49b004ab72196aa074dc35a134c8eee8d50",
+        "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340",
+        "f74cbeff2b5250b655b1566af7e47506a6f3e1c8c8b0cf133d56a9888bb7eb6a",
+        "cb18d2c04c721b1fdcab87470ab14d8cfbfb418be75e61762e3f106583d038d0",
+        "ce747a7fd936f01502a4bf69e70482cb9cb92d23eec60af7fb7a3d988c08af4f",
+        "7d292bccfbf530827960fb5a4a329e2bd233dfafe3121b9c895e9df486e1d5bc",
+        "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709",
+        "faf574365403b517072488a37abba18444f19c93e6ae5c18eaf04f5a2e99750b",
+        "023eff5dc4aa6e084cf3cee89807887da38e83b791e0e39077917bda40be2d6c",
+        "5d8488c2f8a44be53feb7e415d825b6c0b137fda72e301d01d089cb2499fe3bb",
+        "ca45fcb54f5062265a3211ca8b1b6100f46f7c3ca98a9c374b254c9decd3981b",
+        "b7d2e32ac65be5c89daf942677031579cb557f031cc300945a8224b45e0fb72a"
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case05",
+      "first": 217,
+      "last": 229,
+      "line_digests": [
+        "a536deee83f705c0d7efd366198b6d663d57d4692458ba685d06c7f970d9b23a",
+        "dd07cf70cdb1f0bc5c04ed316d80f0351b4a5b6b0c857c5f9fe26496bc094de0",
+        "c063e1b421bac7783a35661f0e36e02e93c830a6d05cb3fdf94dac4b3df2fae9",
+        "4ae7103976ff3615a467b2748596a4a95fba6c5f26d694afc4d2270a36a330ef",
+        "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340",
+        "93b82cf2a6859085ae0c032392ed7bc10ae5e60af109cb0711d7afa595eb4e34",
+        "997890675822d10b678466b4e1cfffa695ff401c03b71c7ec45e304f64730e1a",
+        "ce7cbb4900aa50ef7ef6b7362fd9c01c3b9a4d0be963162ee0b9fe974df987fe",
+        "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709",
+        "01c3b66d14018dc049a9ddf4fa62f119ea230fbdc49833243fba8a90e2dbb874",
+        "e55fd234d3d599d013f8edeb08fab654096dbf9b58aff916a150dcc5d8261099",
+        "a6827c1002c097a198a17aad4888d78b68861a1da6336e566fbe6ee8ae349ae4",
+        "b5e28dc99202222b3accd4bdd951a653c70720e0c8fdbea8aefc6a219040b6ba"
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case06",
+      "first": 249,
+      "last": 261,
+      "line_digests": [
+        "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340",
+        "6195f1a99621d069299a7f48b00389880d32d15f3ebeff2a6593631532c33829",
+        "427c380658b27ae7c39eeb868deef4e3f598f0ad023f2bdad48a7197b66e07ef",
+        "1268fd0d2debc39d1e8ccf88d4f0bef4a2537aa057c1d965c54ae4c25253936a",
+        "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709",
+        "9e65fc971113a297cb241f624432711c2e81bed7af66b5a5337947f6759227cb",
+        "5942ce7888557f235cebdd05a50beeeec8087e351632efbf9204e6db599612f7",
+        "db63207c8a9b789a8efb0eda3bc131a333100505a64e32ad15b9c28b6df26cde",
+        "628d8d9a6f4b14573d52263a50bcf9fb0e2927ecf253dcf76a280e160eef91fc",
+        "6dff116597c3f23785aba97db5f234b2c741f426fc2ee918b88cf1d41f175c79",
+        "e744de8b145a0ea5010aa6bfbd37805e3607e88b6458cc075d44e60e8d674869",
+        "311f5bd052bc3a1f3e634ddda4cc5b8d54da52172dd5e3668a98ebb6ab5a61f9",
+        "378b8fe0c456ea680066679461c729b466c5579fe497d5dc251cd1d1cc9ba33a"
+      ]
+    }
+  ],
+  "no_invented_original_nine_palace_cells": true,
+  "wrong_chart_author_original_line": 212,
+  "cannot_correct_printed_board_in_place": true,
+  "book_first_prediction_and_later_feedback_separately_hashed": true
+}

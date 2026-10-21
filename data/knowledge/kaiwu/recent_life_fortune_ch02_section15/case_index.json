@@ -1,0 +1,285 @@
+{
+  "source_sha256": "f5c2f65f0781eed540aec048c1a734a978bc35c6a9b01aee6b75baec3902e619",
+  "cases": [
+    {
+      "case_id": "kaiwu.recent_fortune.case01",
+      "original_source_span": [
+        3,
+        56
+      ],
+      "original_OCR_chart_lines": [
+        9,
+        22
+      ],
+      "author_analysis_step_lines": [
+        26,
+        29,
+        32,
+        35,
+        38
+      ],
+      "teacher_later_step_lines": [
+        45,
+        47,
+        49,
+        51,
+        53
+      ],
+      "first_book_claim_source": [
+        [
+          5,
+          5
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          6,
+          6
+        ]
+      ],
+      "previously_known_events": true,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "marriage",
+        "business_profit"
+      ],
+      "original_source_note": "1999 question about previously completed 1996-98 years; retrospective not blind"
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case02",
+      "original_source_span": [
+        57,
+        106
+      ],
+      "original_OCR_chart_lines": [
+        74,
+        87
+      ],
+      "author_analysis_step_lines": [
+        89,
+        90,
+        92,
+        93,
+        94,
+        96,
+        98
+      ],
+      "teacher_later_step_lines": [
+        104,
+        105
+      ],
+      "first_book_claim_source": [
+        [
+          90,
+          90
+        ],
+        [
+          94,
+          94
+        ],
+        [
+          96,
+          96
+        ],
+        [
+          98,
+          98
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          91,
+          91
+        ],
+        [
+          99,
+          100
+        ]
+      ],
+      "previously_known_events": true,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "criminal_case"
+      ],
+      "original_source_note": "Event was already past; do not make two unrelated unprinted introductory anecdotes new complete events"
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case03",
+      "original_source_span": [
+        107,
+        158
+      ],
+      "original_OCR_chart_lines": [
+        118,
+        130
+      ],
+      "author_analysis_step_lines": [
+        134,
+        138,
+        141,
+        143,
+        146
+      ],
+      "teacher_later_step_lines": [
+        151,
+        153,
+        154,
+        155,
+        156,
+        157
+      ],
+      "first_book_claim_source": [
+        [
+          111,
+          111
+        ],
+        [
+          113,
+          114
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          112,
+          112
+        ],
+        [
+          115,
+          115
+        ]
+      ],
+      "previously_known_events": true,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "lost_property",
+        "travel_domestic"
+      ],
+      "original_source_note": "One questioner and one chart reused for a missing phone and a prior traffic incident; no new second chart"
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case04",
+      "original_source_span": [
+        159,
+        213
+      ],
+      "original_OCR_chart_lines": [
+        167,
+        183
+      ],
+      "author_analysis_step_lines": [
+        195,
+        197,
+        199,
+        201,
+        203,
+        205,
+        207
+      ],
+      "teacher_later_step_lines": [
+        211,
+        212
+      ],
+      "first_book_claim_source": [
+        [
+          187,
+          191
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          208,
+          208
+        ]
+      ],
+      "previously_known_events": true,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "employment",
+        "lost_property",
+        "health"
+      ],
+      "original_source_note": "Teacher explicitly states 庚申日巳时应辛巳, mistaken 丁巳 and 甲寅旬; original chart retained unchanged"
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case05",
+      "original_source_span": [
+        214,
+        245
+      ],
+      "original_OCR_chart_lines": [
+        217,
+        229
+      ],
+      "author_analysis_step_lines": [
+        233,
+        235,
+        237,
+        239,
+        241
+      ],
+      "teacher_later_step_lines": [],
+      "first_book_claim_source": [
+        [
+          233,
+          241
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          244,
+          244
+        ]
+      ],
+      "previously_known_events": false,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "employment",
+        "health",
+        "marriage"
+      ],
+      "original_source_note": "Author explicitly did not predict severity and workplace mechanism until after year; scoped initial miss"
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case06",
+      "original_source_span": [
+        246,
+        284
+      ],
+      "original_OCR_chart_lines": [
+        249,
+        261
+      ],
+      "author_analysis_step_lines": [
+        265,
+        267,
+        269,
+        271,
+        273,
+        275
+      ],
+      "teacher_later_step_lines": [
+        284
+      ],
+      "first_book_claim_source": [
+        [
+          265,
+          276
+        ]
+      ],
+      "book_feedback_spans": [
+        [
+          277,
+          281
+        ]
+      ],
+      "previously_known_events": false,
+      "domain_facets": [
+        "life_opportunity_book_study",
+        "employment",
+        "health",
+        "housing"
+      ],
+      "original_source_note": "Initial Feb 1997 year-outlook kept separate from later father-death and housing/workplace account"
+    }
+  ]
+}
