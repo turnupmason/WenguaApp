@@ -26,13 +26,48 @@ jobs:
         with: {python-version: '3.11'}
       - name: Test original book SHA and 1080-state non-duplication, full 194-event preservation
         run: python -m unittest discover -s tests -p test_marriage_phrase_library.py -v
+      - name: Verify previously archived immutable output or mark a fresh build
+        id: archive_state
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,os,sqlite3
+          root=Path('archives/sqlite')
+          db=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
+          xz=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz'
+          manifest=root/'shenqi21_kaiwu22_marriage_phrase_v1_manifest.json'
+          sha=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
+          if db.exists():
+           if not xz.exists() or not manifest.exists():
+            raise RuntimeError('Existing full SQLite lacks matching compressed archival files')
+           m=json.loads(manifest.read_text('utf8'))
+           if m['sha256']!=sha(db) or m['xz_sha256']!=sha(xz):
+            raise RuntimeError('Immutable archive checksum mismatch: create a new version, never overwrite')
+           current_prompt=sha(Path('prompts/marriage_reading_v1.md'))
+           if current_prompt!=m['prompt_sha256']:
+            raise RuntimeError('The current prompt differs from archived phrase version: increment version first')
+           with sqlite3.connect(db) as con:
+            assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+            assert con.execute('SELECT COUNT(*) FROM phrase_template_drafts').fetchone()[0]==4
+           exist=True
+          else:
+           if xz.exists() or manifest.exists():
+            raise RuntimeError('Partial archive exists: fail closed, do not silently regenerate')
+           exist=False
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf8') as out:
+           out.write('exists='+str(exist).lower()+'\n')
+          print('Immutable marriage phrase pilot already archived:',exist)
+          PY
       - name: Append 4 marriage phrase prototypes to true 194-case full SQLite
+        if: steps.archive_state.outputs.exists != 'true'
         run: |
           python -m scripts.seed_marriage_phrase_library \
             --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3' \
             --output 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3' \
             --index-dir 'data/phrase_domains/marriage/v1'
       - name: Compress actual full SQLite and independently verify manifest
+        if: steps.archive_state.outputs.exists != 'true'
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -68,6 +103,7 @@ jobs:
           print(json.dumps(manifest,ensure_ascii=False,indent=2))
           PY
       - uses: actions/upload-artifact@v4
+        if: steps.archive_state.outputs.exists != 'true'
         with:
           name: full-two-books-194-cases-marriage-phrase-v1-sqlite
           path: |
@@ -76,6 +112,7 @@ jobs:
             archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json
           retention-days: 30
       - name: Archive real full 194-case DB, new marriage phrase tables, XZ and source indexes to main
+        if: steps.archive_state.outputs.exists != 'true'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
