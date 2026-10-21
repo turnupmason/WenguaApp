@@ -1,0 +1,28 @@
+{
+  "domain": "marriage",
+  "prompt_version": "marriage_reading_v1.1",
+  "prompt_sha256": "a65cc606cede3be6fdc42bde912ecf220565aa06dac290bce0bc72ee71af8ca9",
+  "inherited_complete_V1_sha256": "4c57e8bfdc4d745c19711542039c3f24aa95b7574de00843e64c1676082d4968",
+  "source_194_case_archive_sha256": "c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83",
+  "new_SQLite_sha256": "53bab00cefa4754753ab124b0653c0b7b2f68f0d63dae7783f6eea3d387f0e75",
+  "historical_events": 194,
+  "historical_chapters": 43,
+  "old_draft_phrases": 4,
+  "concrete_phrase_instances_without_real_boards": 0,
+  "required_concrete_primary_time_if_calculable": true,
+  "original_source_rows_and_v1_phrases_unchanged": true,
+  "source_only_not_scientifically_verified": true,
+  "counts": {
+    "sections": 43,
+    "cases": 194,
+    "historical_chart_cells": 1440,
+    "phrase_domain_progress": 1,
+    "phrase_template_drafts": 4,
+    "phrase_source_links": 9,
+    "phrase_context_instances": 0,
+    "phrase_pipeline_audit": 2,
+    "phrase_version_progress": 1,
+    "phrase_outcome_timing_contracts": 4,
+    "phrase_instance_timing_windows": 0
+  }
+}
