@@ -304,6 +304,56 @@ def inspect_marriage_chart_json(*,db_path,payload):
  response["actual_year_stem_candidate_binding"]=resolved
  response["source_cast_replayed_from_json_and_consistent"]=True
  response["calendar_independently_verified"]=False
+ # Independently recompute book-style calendar from a civil instant. This
+ # cannot be bypassed by caller-provided "engine_verified" flags or arbitrary
+ # sexagenary date labels. Near solar-term boundaries fail closed.
+ if calendar.get("local_time_iso") or calendar.get("iana_timezone"):
+  if not calendar.get("local_time_iso") or not calendar.get("iana_timezone"):
+   raise ValueError("Both local_time_iso and iana_timezone required for an astronomical calendar")
+  from .astro_calendar import solar_chart_clock,branch_periods,EPHEMERIS_VERSION
+  computed=solar_chart_clock(calendar["local_time_iso"],calendar["iana_timezone"])
+  calculated=computed["four_pillars"]
+  if (calculated["day"]!=calendar["day_ganzhi"]
+      or calculated["hour"]!=calendar["hour_ganzhi"]
+      or computed["active_solar_term"]!=calendar["solar_term"]):
+   raise ValueError("Civil solar-term and Ganzhi calendar disagrees with claimed chart inputs")
+  for field,stem in (("year_ganzhi","year"),("month_ganzhi","month")):
+   if calendar.get(field) is not None and calendar[field]!=calculated[stem]:
+    raise ValueError("Independently calculated "+field+" disagrees with supplied value")
+  response["calendar_independently_verified"]=True
+  response["astronomical_local_calendar_receipt"]=computed
+  response["missing_to_publish"]=[
+   b for b in response["missing_to_publish"]
+   if b!="calendar_solar_term_provided_not_independently_verified"]
+  # A source-conditional event trigger is calculable before predicting
+  # the outcome. 六合 must itself be in a branch group intersecting XunKong.
+  # A calculated month is NOT proof the case will succeed at that time.
+  lh=response["role_candidates_not_final_yongshen"]["liuhe"][0]["palace"]
+  empties=response["factor_audit"]["xun_kong"]["evidence"]["xun_kong_branches"]
+  matching=sorted(set(PALACE_BRANCHES[lh])&set(empties))
+  response["traditional_void_timing_hypotheses"]={
+   "liuhe_palace":lh,"liuhe_palace_void_branches":matching,
+   "eligible_for_void_trigger":bool(matching),"condition":"kaiwu marriage method void 六合 + author prior event result",
+   "candidate_windows_only_not_success_prediction":True}
+  if matching:
+   from .timing_engine import derive_timing_candidates
+   from .book_timing_runtime import load_source_timing_rules
+   rules=load_source_timing_rules()
+   periods=branch_periods(calendar["local_time_iso"],calendar["iana_timezone"],
+                          granularity="month",days_ahead=370)
+   for key,method in (("success_fill_empty","fill_empty"),
+                      ("success_clash_empty","clash_empty"),
+                      ("failure_fill_empty","fill_empty")):
+    source_key="failed_outcome:3" if key.startswith("failure") else "successful_outcome:4"
+    rule=rules[source_key]
+    values=derive_timing_candidates(
+     empty_branches=empties,periods=periods,granularity="month",
+     method=method,reference_iso=calendar["local_time_iso"],
+     calendar_method_version=EPHEMERIS_VERSION,
+     calendar_receipt=computed["sha256"],
+     source_method_ref="kaiwu/analysis_judgment_ch04/v1:line"+str(rule["source_line"]))
+    response["traditional_void_timing_hypotheses"][key]=values
+   response["traditional_void_timing_hypotheses"]["primary_choice_blocked_until_author_style_outcome"]=True
  response["status"]="actual_chart_json_source_consistent_pending_author_decision_and_timing"
  response["missing_to_publish"]=sorted(set(response["missing_to_publish"]+missing))
  return response
