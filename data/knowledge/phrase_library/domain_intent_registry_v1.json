@@ -96,8 +96,14 @@
       "latest_scene_protocol_version": "marriage.scene.v1.3",
       "user_scenario_count": 22,
       "mandatory_all_domain_six_layer_contract": "src/wengua/six_layer_contract.py",
-      "current_full_database_sha256": "0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857",
-      "actual_verified_chart_reading_instances": 0
+      "current_full_database_sha256": "ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da",
+      "actual_verified_chart_reading_instances": 0,
+      "latest_full_database_version": "marriage.source_cast.runtime.v1.4",
+      "real_historical_casting_examples_studied": 2,
+      "source_cast_to_scene_regression": 44,
+      "candidate_palace_runtime": "src/wengua/marriage_runtime.py",
+      "remaining_unknown_or_blocked_factors": "Most factors not implemented in authoritative original book method-specific code",
+      "validated_actual_chart_forecast_instances": 0
     },
     "employment": {
       "stage": "taxonomy_only_next_domains_wait_for_marriage_quality_gate",

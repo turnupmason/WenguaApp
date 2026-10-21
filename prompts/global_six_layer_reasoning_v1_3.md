@@ -25,3 +25,12 @@
 
 ## 22个婚姻场景与九套源书大流程的衔接
 读取 `data/knowledge/phrase_library/marriage_v1_3/twenty_two_scene_methods.json` 的22个 `scene_id`；每一个继承 `marriage_v1_2/intent_workflows.json` 中某个可查原书的八步骤主流程。新增第3层场景人物坐标、第2层额外相互作用，第4层出处和错误案例，第5层目标事件及应期/禁断现实指控。22条不是22个书上独立验证的故事；只有可引用到原著的才留 source provenance，未覆盖的子问事标记`draft_source_grounded`，不得升为真实可靠预测方法。**继续按真实古籍及未见家族测试逐条完善，不重新起盘编假数据，不改UI。**
+
+## V1.4 盘面 JSON 实际接入状态（更新）
+
+按照`AGENTS.md`六层强制架构，婚姻22场景启动实际工程链路。现在服务`src/wengua/marriage_runtime.py:inspect_marriage_study_cast`支持将已有`casting_shenqi.layout_from_explicit_bureau`算出的真实九宫符号与场景原书规则数据库联结：读给定节气/日时干支得到阴阳遁和九局，提取日/时干与乙庚天盘所在宫、六合宫、实际门克宫即门迫、旬首旬空二支、全九宫元素以及九星天干组合，按场景从`marriage22_original_case_links`拿原章节SHA、作者首次推理与独立后验反馈。古籍两张完整原著起局图与source_test以18格核对；无法从源支撑的因子保留unknown，不可口头宣布“已经全部计算”。
+
+现在`marriage_runtime_source_cast_fixture`的2张原著示例盘和`marriage_runtime_scenario_study`的44条研究记录只是端到端**部分**真实运算事实回归，绝不是44次现实婚恋预测。原书未确定的中心五宫值使落点、独立节气历法与未见盘核验、人物年命关系、剩余24项组合条件、成败/具体应期尚在开发，需拒绝对外真实断言/杜撰时间。当输入是真正有完整条件、由引擎核验的盘，未来才可由第5层推论阶段性传统结局，令真实历法推出有界首选应期，然后第6层GPT自然约200字口语化；条件缺失则明确指出缺项。源码不允许模型臆造`status=engine_verified`来绕过卡点。
+
+新最新版完整研究数据库 V1.4 SHA256 **`ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da`**，路径 `archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3`，此前193/194历史库和V1.3保留为历史存档。`src/wengua/phrase_pipeline.py:FACTOR_IDS`准确包含24项（`door_press_palace`为唯一门迫id）；禁止另创建`door_press`造成双计。
+

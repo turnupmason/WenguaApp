@@ -685,3 +685,11 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 **仅继承完整版V1.2** `archives/sqlite/WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3` SHA `2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d`，迁移041使用sqlite3.backup保留所有旧表历史原行。最新完成的二进制完整版V1.3路径 `archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3`，14,043,136字节、SHA256 `0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857`；xz 1,143,472字节、SHA256`d48491d9ce044d63f3e0ccdd4603e823ae3016c4fce55bf50fa548433006b827`；manifest`archives/sqlite/shenqi21_kaiwu22_marriage22_six_layer_v13_manifest.json`，integrity_check=ok，foreign keys 0。源书43节194历史整案、旧9流程72步30出处、旧4条GPT风格草稿全部保留。新增22场景132层、89个古籍重复来源见证、一个ALL_DOMAINS新合规合同与实例审批前层数trigger。**V1.3完整盘正式验收实例仍是0**，因为尚未实际接入九宫计算和独立节气历法。下一步连接JSON起盘与实际应期推理，对每个问事真正解盘和盲测。
 
 全范围指令位置：根`AGENTS.md`、`prompts/global_six_layer_reasoning_v1_3.md`、`docs/MARRIAGE_22_SCENARIO_PROTOCOL_V1_3.md`、`data/knowledge/phrase_library/marriage_v1_3/twenty_two_scene_methods.json`，运行门禁`src/wengua/six_layer_contract.py`，数据库迁移041，专用回归测试和归档Workflow。之后每个领域都必须按六层阶段100%留痕、经测试后才有可发布断语，绝不能仅将某个神煞对应一个未经证实的现实指控。
+
+## 2026-10-21 MARRIAGE V1.4 ACTUAL SOURCE CHART RUNTIME BRIDGE
+
+婚姻V1.4首次运行**源码真实起盘结果 → 22场景分类 → 主次用神符号候选 → 部分可核盘面物理关系 → 两本书原始案例出处检索**。`src/wengua/marriage_runtime.py`使用现有Shenqi起盘模块在明确给定的节气和日/时干支下输出九宫地盘、天盘九星携干、八门八神、中五宫例外；得到日干/时干及乙庚、六合所在宫，计算真门迫（门克宫）、旬首旬空二支、宫五行。其余24因子没有真实古籍可执行规则或必要输入时明确标记unknown，不准GPT用“高权值”补算。两本书来源切换遵守后验反馈隔离。原书有两张完整起局实例：1995年6月11日阳3局丁巳时与1995年8月13日阴8局戊戌时，逐原印九宫对照；这**不**是两张婚姻真实问事盘，也没有独立现代历法核验。22场景×两张示例盘=44个完整的来源链调用研究fixture，**新增真实婚姻案例0、完整正式断语0、经验证具体应期0**。首次CI检测`door_press`误字段导致25而非24审计项目，经修复`door_press_palace`后双Python版本通过。
+
+从V1.3完整研究库SHA `0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857`进行备份追加，迁移042与builder、source runtime tests和GitHub Archive流程全部成功，历史194个case/43source、9大问事/22场景方法及4草稿旧行未改。V1.4完整SQLite `archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3`，大小14454784字节，SHA256 **`ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da`**；XZ同名`.sqlite3.xz`大小1149336字节SHA256 `369669099fe98654f8f8e5bdcfbb839349fd7586df13a2bc4707dbad331fd6d0`，manifest`archives/sqlite/shenqi21_kaiwu22_marriage_source_cast_runtime_v1_4_manifest.json`，integrity_check=ok、外键0。
+
+下一个工程门槛：校验真实用户时区和节气、解决少数中五宫值使门特殊落宫起局法；逐条由原书建立其余全盘24因子事实计算；把真实问测对象的年命角色绑定到九宫；建立从作者首断案例选择主次证据与否定错误推导的综合判断器；采用已核干支历计算具体可辩应期，在真正未见盘上给出有界传统结论和GPT自然表达。不能说流程资料已齐就代表已经有任意盘全自动准确答案。
