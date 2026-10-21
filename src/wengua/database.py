@@ -53,6 +53,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/035_kaiwu_litigation_four_source_ocr_panels.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/036_kaiwu_competition_multicast_unprinted.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/037_kaiwu_final_method_and_error_provenance.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/038_marriage_phrase_library.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
