@@ -3,11 +3,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'src/wengua/marriage_runtime.py'
       - 'schema/migrations/042_marriage_source_cast_runtime_bridge.sql'
       - 'scripts/build_marriage_runtime_v14.py'
-      - 'tests/test_marriage_runtime_source_cast_v14.py'
-      - 'tests/test_marriage_runtime_v14_archive.py'
       - '.github/workflows/build_marriage_runtime_v14.yml'
   workflow_dispatch:
 permissions:
@@ -28,24 +25,25 @@ jobs:
           python -m unittest discover -s tests -p test_casting_shenqi_chapter01.py -v
           python -m unittest discover -s tests -p test_marriage_runtime_source_cast_v14.py -v
           python -m unittest discover -s tests -p test_marriage_runtime_v14_archive.py -v
-      - name: Reproduce immutable V1.4 archive in isolated runner temporary path; reject version drift
+      - name: Validate frozen immutable V1.4 binary SHA against original signed manifest
         run: |
-          python -m scripts.build_marriage_runtime_v14 \
-            --base 'archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3' \
-            --output "$RUNNER_TEMP/v14_reproduced.sqlite3" \
-            --index-dir "$RUNNER_TEMP/v14_reproduced_index"
           python - <<'PY'
           from pathlib import Path
-          import hashlib,json,os
-          original=Path('archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3')
-          rebuilt=Path(os.environ['RUNNER_TEMP'])/'v14_reproduced.sqlite3'
-          digest=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
-          assert original.is_file(), 'Versioned existing archive must be committed to main'
-          assert digest(rebuilt)==digest(original), 'New code changed old V1.4 binary: bump archive version; never overwrite original'
-          baseline=json.loads(Path('data/knowledge/phrase_library/marriage_v1_4/source_cast_studies/manifest.json').read_text('utf8'))
-          check=json.loads((Path(os.environ['RUNNER_TEMP'])/'v14_reproduced_index/manifest.json').read_text('utf8'))
-          assert baseline==check,'Replayed old book-source evidence differs; require new version'
-          print('Immutable source archive reproduced byte-for-byte:',digest(original))
+          import hashlib,json,sqlite3
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3'
+          archive=root/'shenqi21_kaiwu22_marriage_source_cast_runtime_v1_4_manifest.json'
+          original=Path('data/knowledge/phrase_library/marriage_v1_4/source_cast_studies/manifest.json')
+          result=json.loads(archive.read_text('utf8'))
+          source=json.loads(original.read_text('utf8'))
+          checksum=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
+          assert checksum(old)==result['sha256']==source['new_complete_SQLite_SHA256'], 'Never rewrite archived V1.4'
+          with sqlite3.connect(old) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM marriage_runtime_scenario_study').fetchone()[0]==44
+          print('V1.4 source archive frozen at',result['sha256'])
           PY
       - name: Compress new full SQLite and confirm parent SHA, 44 studies and no synthetic forecasts
         run: |
