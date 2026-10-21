@@ -729,3 +729,15 @@ The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 
 真实新增脚本 `scripts/build_kaiwu_competition_from_litigation.py`，迁移 `schema/migrations/036_kaiwu_competition_multicast_unprinted.sql`，独立测试 `tests/test_kaiwu_competition_multicast.py`，Action `.github/workflows/build_kaiwu_competition_archive.yml`，索引 `data/knowledge/kaiwu/competition_evaluation_ch02_section12/`。归档成功机器人commit `0f5620edc86db3d0b5bf6da5b3a107adc6743ddd`，完整SQLite旧179 SHA `fc96be68917a5132f4499e06a61dbe13db54b282814e4d69aa1a84cb44608a35`经 `sqlite3.backup()` append-only，全部旧表全部原行未改，integrity_check=ok/foreign_key_check=0，旧11案作者明确初断错误不变。
 
 **下章唯一父库必须是已真正上传GitHub的完整版** `archives/sqlite/WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3` SHA256 `a5641d2b420380e218f5f537facd578ce7a0758db1c55d69975c3ecb2153d9b5`；XZ SHA `467ca13944bc9034a1c11088e85a8fdfc0468d35534f9409b8222bba22892152`；manifest `archives/sqlite/shenqi21_kaiwu_competition_181cases_manifest.json`。禁止退回179、更早重建、重算原书遗失盘、篡改旧案、开发UI。用户说“下一个”仍按顺序处理、同步status ledger AGENTS，更新新增036在database.py注册，最新main双Python CI必须成功。
+
+## 2026-10-21 FINAL TWO-BOOK SOURCE HANDOFF — 194 CASES
+
+已接收的《神奇之门》与《开悟之门》书源全部完成本轮导入，43个来源节（21+22）、194个独立历史案例。最后新增《开悟之门》第三章（问答及错例总结），完整用户来源仓库路径 `sources/kaiwu/kaiwu_ch03_questions_and_case_reviews.txt`，571原行、62625原字节、SHA256 `2f52d1ed878f77f619e5cf48c088a9f2e25afe59daaae037b97fcb96b0bd947a`，原文存于 SQLite `sections.original_text` 及源TXT。此用户提供文本末句“还得恢复一段时间”无明确书末/章节终止标记，**不声称印刷本已核实无续页**；若未来有续页必须作为新来源版本追加而不修旧原文。
+
+新增14子节、15组作者问答、13独立问事 + 旧 `kaiwu.business.case05` 科迪开工证旧事件同一来源补证。科迪三次错误开工证应期仍是**一件失败事件**，原始错误与6月29日部分土地开工证、事后作者从开门转为景门取用必须分别保存。新增八个作者明确最初错误整案，累计明确初断错误由11到**19**。刑案责任推理只是书中事后说法，不能冒充司法确认；戏曲竞赛原盘起错但是结论对，不应伪造初盘正确；足球比赛两次错误断同一场比赛不是两件失败事件；婚姻两名当事人同一盘不同问题仍为两案；同一盘问桂林调动、河北伤后恢复、广东高考三个人各自三案。全部初断/已有信息/后来的报告/反证/老师讲评隔离，不让后验作为先知输入。
+
+本次16个散乱OCR九宫源片段295逐行文本行+hash、19例关联，仅作字面见证，新增**0张源印刷版可认证的原盘**，旧历史179完整盘/1440主格和19附盘171格全部不变。15组Q/A包括交节起局、值符天乙歧义、六甲与年命、格局多重矛盾的条件选择、中宫寄坤及主次天禽天芮、当地时间、气象有限适用等。新增27条source-conditioned候选均draft，positive_training_eligible=0。书本案例按用户规则免逐案人工批准，但不得宣称现代医学、刑事案件、天气预报及历史预测有效性有独立验证。
+
+新完整库唯一后续父版本 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3` 13498368字节 SHA256 `c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83`，对应XZ SHA `0cbc754dbe7a89707d915467bdd4524a19304f903c3c70e51c495182ee9a1f2c`，manifest `archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json`。从181全库精确SHA备份增量、所有旧表旧行不变、integrity_check ok、外键0。新迁移037，GitHub归档已成功。
+
+**下阶段只做设计讨论，暂不生成388800短语**。用户算式1080基础局×60年命×3年龄段×2性别=388800，属于388800待覆盖条件情境，并非388800条已由古籍独立证明的固定结论。本章第11节明确批判背万能短句，第14节同盘三人三问要求先绑定事由和问测人物关系，再按相应年命、用神、九宫生克旺衰及反证判。必须等用户后续详细prompt或方案确认，先明确“1080”如何定义及基盘领域组合，不用静态决断模板绕过原书条件。禁止改UI、重置项目或改旧实验。
