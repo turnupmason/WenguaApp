@@ -741,3 +741,21 @@ The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 
 新完整库唯一后续父版本 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3` 13498368字节 SHA256 `c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83`，对应XZ SHA `0cbc754dbe7a89707d915467bdd4524a19304f903c3c70e51c495182ee9a1f2c`，manifest `archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json`。从181全库精确SHA备份增量、所有旧表旧行不变、integrity_check ok、外键0。新迁移037，GitHub归档已成功。
 
 **下阶段只做设计讨论，暂不生成388800短语**。用户算式1080基础局×60年命×3年龄段×2性别=388800，属于388800待覆盖条件情境，并非388800条已由古籍独立证明的固定结论。本章第11节明确批判背万能短句，第14节同盘三人三问要求先绑定事由和问测人物关系，再按相应年命、用神、九宫生克旺衰及反证判。必须等用户后续详细prompt或方案确认，先明确“1080”如何定义及基盘领域组合，不用静态决断模板绕过原书条件。禁止改UI、重置项目或改旧实验。
+
+## 2026-10-21 MARRIAGE PHRASE ENGINE V1 — SIX LAYER PIPELINE
+
+**最新高优先级用户决定：** 《神奇之门》《开悟之门》已收到书源仍冻结保存，基础盘面索引1080个 `yin/yang×1–9局×60甲子时`，为**完整、不重复的候选状态组合索引**（`state_index()` 已测试严格1080不重复）；请注意 `core.State.as_dict().status=index_only_unverified_chart`，每个state目前还不等于经过核验的全九宫JSON。只有按仓库既有时家转盘方法计算、核验并取得真实引擎凭据的九宫事实，才可进入实例化断语。年命60×年龄少壮老3×男女性别2构成**每领域388800个基础情境坐标**，另外领域子题/代测关系/多当事人会继续细分；坐标不是388800条已确认断案或已独立验证结论。
+
+**最高执行规则：六层解盘与中文人话：**
+1. 确定性起盘：真实年月日时、时区与交节、阴阳遁、局数、旬首值符值使，九宫天/地干、门星神（中五宫特殊缺项不能伪造），须保存引擎版本、SHA、校核凭证；
+2. **全盘物理因素交叉检查**，`src/wengua/phrase_pipeline.py` 中 `FACTOR_IDS` 规定24项必查：六仪击刑、地支冲刑害、月日破、门迫、天干入墓/入库、驿马、旬空及近远空/填实/冲实、暗干、月令旺衰、宫五行、天/地盘干、门星神、伏吟反吟、多宫生克和格局吉凶、主次用神、冲突反证与应期条件。每项标 `present/absent/not_applicable/unknown`、所作用宫和对象、来源规则、原始证据、未知原因，**不得随意跳过或把unknown填成absent**。传统门迫不自行杜撰成50%或60%数学扣分；
+3. 问事人物网络：问者/被问者/配偶/子女/父母朋友同事等分开绑定，日干/时干/月干/年干/值符乾坤为候选取用而非死映射。婚姻原书乙庚、六合、年命、配偶合干以及特定问题的丁丙象均为**有条件、可冲突**的用神选择；年龄和性别只按真实主体和具体古籍语境起作用，禁止无根据刻板猜测；
+4. 检索本项目 SQLite 两书婚姻领域原著12整案+最后错例章2整案、基础知识、逐案作者推理、来源SHA与原书行号、已知历史错误和作者后见反思；来源后验不得被当首判；
+5. 强制生成支持、反对、未知三组证据，先看主次证据组合与相互克制，未知不凑结论/应期；`单看年命相生=复婚` 等单因子机械断语必须被阻断；没有证据不虚构婚外情、疾病或具体时间；
+6. **GPT只做自然语言成文**：约200汉字（建议160—240）、真人对话口吻，抓主结论/核心证据/反证和现实建议，不念程序枚举、不能添虚构盘面事实、不能覆写机器审计。不满足前面各层条件就说明缺少什么、拒绝凭空出肯定断案。
+
+已落地统一 `docs/PHRASE_GENERATION_PROTOCOL.md`、领域专用 `prompts/marriage_reading_v1.md`、输入审计 `src/wengua/phrase_pipeline.py`、迁移 `schema/migrations/038_marriage_phrase_library.sql`、研究原型 `scripts/seed_marriage_phrase_library.py`、回归 `tests/test_marriage_phrase_library.py`、归档workflow `.github/workflows/build_marriage_phrase_archive.yml`；最新进度追踪 `docs/PHRASE_DOMAIN_PROGRESS.md`。两书194案例和43来源仍为唯一基础文献，研究原型储存在相同完整 SQLite **新增phrase表**，不是文件夹里单独一堆生硬固定文本，更不另拷贝伪造旧案。首批婚姻4条原型（**GPT候选但未经过具体完整实盘核验**），全部`review_status=draft`、`chart_instantiated=0`、`approved=0`，有9个两书书源行号/案例关联；各自都有适用条件、必须覆盖的物理因素、反证、200字自然文字、Prompt版本。每轮更改可用版本化新row，不要洗掉原始候选或来源负例。下一阶段从婚姻领域真实九宫JSON和已核用神关系逐条完成实例核验/草稿审查，才逐场景扩展，不要无端直接生成388800条未经实盘计算的产品答案。
+
+**本轮最新完整父库** `archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3`，大小13539328字节，SHA256 `4c57e8bfdc4d745c19711542039c3f24aa95b7574de00843e64c1676082d4968`；同名 `.sqlite3.xz` 1116872字节、SHA256 `1607be07f470c94c7739e218e14185cabbb38500650e54e61a6d2e7805adff5e`，manifest `archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json`。以上自上一194库SHA `c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83` `sqlite3.backup()` 无损增量：旧表全部原始行不变，完整性ok、外键0。今后必须从此带phrase表的最新完整版继续，不能回退原194无phrase版重建，否则丢失工作。
+
+**按领域逐个处理：目前仅marriage=prototype_draft，其余领域not_started。** 婚姻原型覆盖婚恋发展、母亲代问孩子、离婚复婚、第三者疑虑，非全场景覆盖，也不是已获批可对外预测数据。任何增量批次必须同步AGENTS/status/progress、Prompt版本与SHA、源书追溯、SQLite与xz归档以及最新HEAD双Python CI。不开发UI。
