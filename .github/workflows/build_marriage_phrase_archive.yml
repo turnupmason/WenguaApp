@@ -1,0 +1,88 @@
+name: Archive first marriage phrase corpus in full 194 historical case SQLite
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'schema/migrations/038_marriage_phrase_library.sql'
+      - 'prompts/marriage_reading_v1.md'
+      - 'docs/PHRASE_GENERATION_PROTOCOL.md'
+      - 'src/wengua/phrase_pipeline.py'
+      - 'scripts/seed_marriage_phrase_library.py'
+      - 'tests/test_marriage_phrase_library.py'
+      - '.github/workflows/build_marriage_phrase_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Test original book SHA and 1080-state non-duplication, full 194-event preservation
+        run: python -m unittest discover -s tests -p test_marriage_phrase_library.py -v
+      - name: Append 4 marriage phrase prototypes to true 194-case full SQLite
+        run: |
+          python -m scripts.seed_marriage_phrase_library \
+            --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3' \
+            --index-dir 'data/phrase_domains/marriage/v1'
+      - name: Compress actual full SQLite and independently verify manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          base=Path('archives/sqlite')
+          old=base/'WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3'
+          dbpath=base/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
+          xz=dbpath.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(dbpath.read_bytes(),preset=6))
+          s=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
+          m=json.loads(Path('data/phrase_domains/marriage/v1/manifest.json').read_text('utf8'))
+          assert s(old)==m['upstream_full_source_archive_sha256']
+          assert s(dbpath)==m['new_full_database_sha256']
+          with sqlite3.connect(dbpath) as con:
+           assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert con.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert con.execute('SELECT COUNT(*) FROM phrase_template_drafts').fetchone()[0]==4
+           assert con.execute('SELECT COUNT(*) FROM phrase_context_instances').fetchone()[0]==0
+          manifest={'schema':'full_194cases_marriage_phrase_pilot_v1',
+           'domain':'marriage','old_194_case_full_database_sha256':s(old),
+           'new_complete_SQLite_path':str(dbpath),'sha256':s(dbpath),'size_bytes':dbpath.stat().st_size,
+           'xz_path':str(xz),'xz_sha256':s(xz),'xz_bytes':xz.stat().st_size,
+           'book_cases':194,'book_sources':43,'marriage_source_cases':14,
+           'theoretical_unique_state_contexts':388800,
+           'verified_original_complete_states':0,'phrase_draft_count':4,
+           'approved_phrases':0,'instantiated_nodes':0,
+           'old_full_case_rows_unchanged':True,'integrity':'ok','foreign_key_errors':0,
+           'prompt_version':m['prompt_version'],'prompt_sha256':m['prompt_sha256'],
+           'counts':m['counts']}
+          (base/'shenqi21_kaiwu22_marriage_phrase_v1_manifest.json').write_text(
+           json.dumps(manifest,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-two-books-194-cases-marriage-phrase-v1-sqlite
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json
+          retention-days: 30
+      - name: Archive real full 194-case DB, new marriage phrase tables, XZ and source indexes to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_manifest.json' \
+            'data/phrase_domains/marriage/v1/'
+          git diff --cached --check
+          git commit -m 'Archive first 4 GPT-language marriage drafts as append-only tables to 194 historical cases'
+          git push origin HEAD:main
