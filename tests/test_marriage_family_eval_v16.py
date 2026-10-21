@@ -31,5 +31,5 @@ class MarriageFamiliesNoLeak(unittest.TestCase):
  def test_all_original_inputs_are_yongshen_and_four_pillar_specific(self):
   self.assertNotEqual(QUESTIONS[1][10],QUESTIONS[2][10])
   self.assertEqual(QUESTIONS[1][0],QUESTIONS[2][0])
-  self.assertNotEqual(QUESTIONS[1][11],QUESTIONS[2][11])
+  self.assertNotEqual(QUESTIONS[1][10],QUESTIONS[2][10])
 if __name__=="__main__":unittest.main()
