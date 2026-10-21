@@ -101,7 +101,7 @@ def build(parent,out,indexdir):
    for i,row in enumerate(result["results"]):
     q=QUESTIONS[i]
     label=row["validation_only_later"]
-    if q[13]!=label["original_author_forecast_lines"] or q[14]!=label["later_source_feedback_lines"]:
+    if (q[14]!=label["original_author_forecast_lines"] or q[15]!=label["later_source_feedback_lines"] or q[13]!=label["book_reported_event_outcome"]):
      raise ValueError("Post-inference label source line mismatch")
     db.execute("""INSERT INTO marriage_v16_post_inference_labels
      (study_id,reported_book_event_result,original_author_first_verdict_lines_json,
