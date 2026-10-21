@@ -18,7 +18,7 @@ except ImportError:
 from .core import STEMS,BRANCHES,cycle60
 from .casting_shenqi import hour_branch_from_wall_clock,hour_ganzhi_from_day
 
-EPHEMERIS_VERSION="pyswisseph-moshier-2.10.3.2-solar-term-v1"
+EPHEMERIS_VERSION="wen-gua-local-meeus-solar-longitude-v1"
 SOLAR_TERMS=("冬至","小寒","大寒","立春","雨水","惊蛰","春分","清明",
              "谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋",
              "处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪")
@@ -27,8 +27,8 @@ DAY_ANCHOR=date(1995,6,11)
 DAY_ANCHOR_GANZHI="癸酉"
 JULIAN_UNIX_EPOCH=2440587.5
 def _need_ephemeris():
- if swe is None:
-  raise RuntimeError("Install explicitly pinned pyswisseph==2.10.3.2; no guessed solar terms")
+ # Local built-in Meeus series is the deterministic engine, never network.
+ return True
 def _at(s,zone):
  if not isinstance(s,str) or not isinstance(zone,str):
   raise ValueError("Date must be explicit timezone-aware ISO8601 and IANA timezone")
@@ -47,17 +47,41 @@ def _at(s,zone):
  return local
 def _jd(dt):
  u=dt.astimezone(timezone.utc)
- return swe.julday(u.year,u.month,u.day,u.hour+u.minute/60+
-                   u.second/3600+u.microsecond/3600000000)
+ return JULIAN_UNIX_EPOCH+(u-datetime(1970,1,1,tzinfo=timezone.utc)).total_seconds()/86400
+
 def _sun_longitude(jd):
- _need_ephemeris()
- try:
-  p,flags=swe.calc_ut(jd,swe.SUN,swe.FLG_MOSEPH|swe.FLG_SPEED)
- except Exception as e:
-  raise RuntimeError("Cannot compute Sun longitude from Moshier ephemeris") from e
- if not math.isfinite(p[0]) or not 0<=p[0]<360:
-  raise RuntimeError("Invalid solar ecliptic longitude")
- return p[0]
+ """NOAA/Meeus apparent solar ecliptic longitude in degrees, offline.
+
+ Solar equation-of-center approximation; no external ephemeris download.
+ Separately compared with Moshier when optional pyswisseph is installed.
+ The method has about 0.01-degree (~15 minute) model discrepancy on
+ source book years; date classification CLOSE to any 15-degree boundary
+ is conservatively blocked rather than silently assigned a wrong jie.
+ """
+ t=(jd-2451545.0)/36525.0
+ mean_longitude=(280.46646+t*(36000.76983+0.0003032*t))%360
+ anomaly=357.52911+t*(35999.05029-0.0001537*t)
+ rad=math.radians
+ correction=(
+  (1.914602-t*(0.004817+0.000014*t))*math.sin(rad(anomaly))
+  +(0.019993-0.000101*t)*math.sin(rad(2*anomaly))
+  +0.000289*math.sin(rad(3*anomaly)))
+ omega=125.04-1934.136*t
+ longitude=(mean_longitude+correction-0.00569
+            -0.00478*math.sin(rad(omega)))%360
+ if not math.isfinite(longitude):raise RuntimeError("Nonfinite Sun longitude")
+ return longitude
+
+def compare_with_optional_swiss(iso,timezone_name):
+ """External cross-check only. Not a library or online dependency."""
+ if swe is None:return {"available":False,"does_not_block_offline_calendar":True}
+ dt=_at(iso,timezone_name)
+ local=_jd(dt)
+ true=swe.calc_ut(local,swe.SUN,swe.FLG_MOSEPH)[0][0]
+ approximate=_sun_longitude(local)
+ error=((approximate-true+180)%360)-180
+ return {"available":True,"absolute_longitude_error_deg":abs(error),
+         "reference":"Swiss Ephemeris Moshier","offline_algorithm":EPHEMERIS_VERSION}
 def _solar_longitude_offset(jd,angle):
  return ((_sun_longitude(jd)-angle+180)%360)-180
 def _crossing(lo,hi,angle):
@@ -81,6 +105,9 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
   raise ValueError("Late-Zi 23h day boundary ambiguous; original school method required")
  jd=_jd(local)
  longitude=_sun_longitude(jd)
+ distance_to_nearest_jie=min(longitude%15,15-(longitude%15))
+ if distance_to_nearest_jie<0.05:
+  raise ValueError("Astronomical solar-term boundary within ~1.2-hour uncertainty; do not invent month/term. Require higher precision local ephemeris")
  solar_index=math.floor(((longitude-270)%360)/15)
  term=SOLAR_TERMS[solar_index]
  cy=cycle60()
@@ -96,7 +123,8 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
  hour_branch=hour_branch_from_wall_clock(local.hour)
  hour_gz=hour_ganzhi_from_day(day_gz[0],hour_branch)
  receipt={
-  "method":EPHEMERIS_VERSION,"ephemeris_flag":"FLG_MOSEPH",
+  "method":EPHEMERIS_VERSION,"ephemeris_flag":"offline_Meeus_NOAA_apparent_longitude",
+  "solar_term_border_ambiguity_rejected_below_degrees":0.05,
   "reference_civil_local":local.isoformat(),"iana_zone":timezone_name,
   "day_boundary":"civil_midnight_no_23h","sun_ecliptic_longitude_deg":round(longitude,9),
   "active_solar_term":term,
@@ -106,7 +134,7 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
    "third_original_book_fixture":"2001-08-20 乙卯"}}
  receipt["sha256"]=sha256(json.dumps(receipt,ensure_ascii=False,
                 sort_keys=True,separators=(",",":")).encode()).hexdigest()
- receipt["note"]="Astronomical conversion receipt; does not certify prediction or historical method variant"
+ receipt["note"]="Offline computed astronomical approximation; near-term border uncertainty blocked; this does not certify prediction or historical method variant"
  return receipt
 
 def branch_periods(reference_iso,timezone_name,*,granularity="month",days_ahead=180):
