@@ -1,0 +1,85 @@
+name: Archive Kaiwu lifetime 5 source examples (4 new events)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'sources/kaiwu/开悟之门_人生命运预测.txt'
+      - 'scripts/build_kaiwu_lifetime_from_weather.py'
+      - 'schema/migrations/032_kaiwu_lifetime_crossbook_retrospectives.sql'
+      - 'tests/test_kaiwu_lifetime_crossbook.py'
+      - '.github/workflows/build_kaiwu_lifetime_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Verify original SHA, duplicate Su case, all 74 explanations, 163-case unchanged
+        run: python -m unittest discover -s tests -p test_kaiwu_lifetime_crossbook.py -v
+      - name: Incrementally backup verified 163-case complete archive
+        run: |
+          python -m scripts.build_kaiwu_lifetime_from_weather \
+           --base 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3' \
+           --source 'sources/kaiwu/开悟之门_人生命运预测.txt' \
+           --output 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3' \
+           --index-dir 'data/knowledge/kaiwu/lifetime_fate_prediction_ch02_section16'
+      - name: Generate XZ and SHA manifest from actual SQLite
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          root=Path('archives/sqlite')
+          parent=root/'WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3'
+          new=root/'WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3'
+          xz=new.with_suffix('.sqlite3.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          i=json.loads(Path('data/knowledge/kaiwu/lifetime_fate_prediction_ch02_section16/chapter_manifest.json').read_text('utf8'))
+          assert sha(parent)==i['parent_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           got={k:db.execute('SELECT count(*) FROM "'+k+'"').fetchone()[0] for k in i['counts']}
+          assert got==i['counts']
+          assert got['cases']==167 and got['historical_chart_cells']==1440
+          m={'schema':'wengua_shenqi21_kaiwu17_lifetime_source_witness_full_v1',
+           'source_title':i['source_title'],'source_sha256':i['source_sha256'],
+           'source_bytes':i['source_bytes'],'source_lines':i['source_lines'],
+           'five_book_examples':5,'new_independent_events':4,'shared_prior_shenqi_event':'shenqi.life.case05',
+           'new_book_source_OCR_fragments':5,'new_verified_nine_palace_source_cells':0,
+           'all_previous_179_original_complete_charts_preserved':True,
+           'new_full_archive_path':str(new),'sha256':sha(new),'size_bytes':new.stat().st_size,
+           'compressed_archive_path':str(xz),'compressed_sha256':sha(xz),'compressed_size_bytes':xz.stat().st_size,
+           'old_complete_parent_path':str(parent),'old_parent_sha256':sha(parent),
+           'all_prior_rows_unchanged':True,'counts':got,'integrity_check':'ok','foreign_key_errors':0,
+           'ten_prior_explicit_initial_errors_preserved':True,
+           'retrospective_not_blind_validation':True,'public_full_archive_user_authorized':True}
+          (root/'shenqi21_kaiwu_lifetime_167cases_manifest.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(m,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-shenqi21-kaiwu17-lifetime-167events
+          path: |
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu_lifetime_167cases_manifest.json
+          retention-days: 30
+      - name: Commit genuinely generated SQLite XZ manifest and source-anchored indices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu_lifetime_167cases_manifest.json' \
+                     'data/knowledge/kaiwu/lifetime_fate_prediction_ch02_section16/'
+          git diff --cached --check
+          git commit -m 'Archive Kaiwu lifetime five source witnesses and four new retrospective event families'
+          git push origin HEAD:main
