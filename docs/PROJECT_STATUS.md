@@ -758,3 +758,12 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 吉凶并非「吉数量减凶数量」：例如作者条件化复合天芮+死门+庚+白虎出现才记录为传统警示象，天心/乙奇宫克病宫可作为相反象；重复证据不重复算。证据不充分就列明缺项，不编疗效、死亡、病情真实性或具体康复日期。**传统符号断语不得冒充医学诊断**。本次是生成器和来源索引研究，不表示新增真实用户病情预测或专业审批完成。
 
 基于V1.8 194事件/43节完整数据库 SHA256 fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 使用sqlite3.backup+迁移047追加21个模板段/协议/审计，不覆盖上游或历史19本书明确错案；V1.6两次开发错判和V1.7 27条规则不可删除。构建脚本 scripts/build_health_severity_template_v19.py 与工作流 .github/workflows/build_health_severity_v19.yml，成功后产出新V1.9 SQLite、XZ及manifest；**未收到Action结果前不得声称新归档存在**。当前不处理其他疾病子问题，不做UI。
+
+
+## 2026-10-21 V1.9 健康病情严重程度动态断词成功归档（真正下一轮完整父库）
+
+已由 GitHub Actions Archive V1.9 Health Severity Dynamic Template #39694290131 成功完成 Python 3.11/3.12 两套回归、无损 sqlite3.backup 和 SQLite/XZ+manifest 上传；对应 WenguaApp CI #39694290195 亦成功。构建源代码 commit 126165a00921fb9888e53936be3345c09d984703，归档机器人commit 383e2dc33a2ebfd87252de1881340006293fd3c3。之前调试阶段的失败 #39694070752、#39694207573 不删记录，也不当作当前成功状态。
+
+**下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
+
+后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。

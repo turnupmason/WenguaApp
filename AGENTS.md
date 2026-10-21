@@ -906,3 +906,12 @@ The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 
 模板综合段必须同时包括有利/不利原书证据、反例、关键条件合取、冲突优先级和未知；**不允许吉象凶象简单计票，不许凭空造数字扣分权重**。病星与死门、庚、白虎组成原书特定警示组合时可列传统候选，但不是临床癌症或医学判死。只有当病事目标、全部适用原书应期法、实际节气历法成立才计算应期，不得凭空日期；现实疾病轻重、患病名称、死亡风险和治疗效果必须遵循医学检查，不从文化盘象做可信断言。不得将不完整模板吹成专业批准成品。
 
 **执行入口和交接文件**：docs/HEALTH_SEVERITY_DYNAMIC_TEMPLATE_V1_9.md 详述21段；机器骨架 data/knowledge/phrase_library/health_severity_v1/template.json；代码 src/wengua/health_severity_template.py 和 scripts/run_health_severity_v19.py；测试 tests/test_health_severity_template_v19.py；归档migration047、builder以及新V1.9全量SQLite归档工作流（应Action完成实际检查后更新SHA）。本轮只做这一件细分问事，其它人体疾病子问事和其余领域往后逐个做。源书43节/194整案、V1.6两次错判、V1.7 27条规则和V1.8无年命方案全部保留。任何新版从最新带所有历史表的V1.8全库按SHA增量备份，不可从旧无断词表数据库重做，旧SQLite必须保持不可变，UI冻结。
+
+
+## 2026-10-21 V1.9 健康病情严重程度动态断词成功归档（真正下一轮完整父库）
+
+已由 GitHub Actions Archive V1.9 Health Severity Dynamic Template #39694290131 成功完成 Python 3.11/3.12 两套回归、无损 sqlite3.backup 和 SQLite/XZ+manifest 上传；对应 WenguaApp CI #39694290195 亦成功。构建源代码 commit 126165a00921fb9888e53936be3345c09d984703，归档机器人commit 383e2dc33a2ebfd87252de1881340006293fd3c3。之前调试阶段的失败 #39694070752、#39694207573 不删记录，也不当作当前成功状态。
+
+**下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
+
+后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。
