@@ -120,4 +120,30 @@ class SourceChartBridgeTests(unittest.TestCase):
   self.assertIn("person_year_ganzhi_missing:partner",m["missing_to_publish"])
   self.assertEqual(m["factor_audit"]["palace_interactions"]["status"],"unknown")
 
+
+ def test_real_json_in_cli_entrypoint_and_immutable_database(self):
+  import json,tempfile
+  from scripts.run_marriage_json_study import main
+  chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
+  payload={
+   "chart":chart,
+   "calendar_inputs":{"day_ganzhi":"癸酉","solar_term":"芒种","hour_ganzhi":"丁巳"},
+   "original_casting_book_example_key":"shenqi_casting_example_1995_06_11",
+   "inquiry":{"domain":"marriage","scene_id":"marriage.scene.19",
+     "question_text":"离婚后能复婚吗？","relationship":"self",
+     "subject":{"year_ganzhi":"乙酉"},"partner":{"year_ganzhi":"庚寅"}}}
+  with tempfile.TemporaryDirectory() as d:
+   filepath=Path(d)/"source_question.json"
+   output=Path(d)/"structured_reading_audit.json"
+   filepath.write_text(json.dumps(payload,ensure_ascii=False),encoding="utf8")
+   original_size=FULL_DB.stat().st_size
+   result=main(["--input",str(filepath),"--database",str(FULL_DB),"--output",str(output)])
+   self.assertEqual(result["scene_id"],"marriage.scene.19")
+   written=json.loads(output.read_text("utf8"))
+   self.assertEqual(written["factor_checked_count"],24)
+   self.assertEqual(written["actual_year_stem_candidate_binding"]["subject"]["candidate_palace_cells"][0]["palace"],1)
+   self.assertIsNone(written["calculated_primary_timing"])
+   self.assertIsNone(written["human_natural_phrase"])
+   self.assertEqual(FULL_DB.stat().st_size,original_size)
+
 if __name__=="__main__":unittest.main()
