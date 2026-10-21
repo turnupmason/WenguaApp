@@ -28,12 +28,25 @@ jobs:
           python -m unittest discover -s tests -p test_casting_shenqi_chapter01.py -v
           python -m unittest discover -s tests -p test_marriage_runtime_source_cast_v14.py -v
           python -m unittest discover -s tests -p test_marriage_runtime_v14_archive.py -v
-      - name: Append true book-casting layout source studies to complete 194-case SQLite
+      - name: Reproduce immutable V1.4 archive in isolated runner temporary path; reject version drift
         run: |
           python -m scripts.build_marriage_runtime_v14 \
             --base 'archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3' \
-            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3' \
-            --index-dir 'data/knowledge/phrase_library/marriage_v1_4/source_cast_studies'
+            --output "$RUNNER_TEMP/v14_reproduced.sqlite3" \
+            --index-dir "$RUNNER_TEMP/v14_reproduced_index"
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,os
+          original=Path('archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3')
+          rebuilt=Path(os.environ['RUNNER_TEMP'])/'v14_reproduced.sqlite3'
+          digest=lambda path:hashlib.sha256(path.read_bytes()).hexdigest()
+          assert original.is_file(), 'Versioned existing archive must be committed to main'
+          assert digest(rebuilt)==digest(original), 'New code changed old V1.4 binary: bump archive version; never overwrite original'
+          baseline=json.loads(Path('data/knowledge/phrase_library/marriage_v1_4/source_cast_studies/manifest.json').read_text('utf8'))
+          check=json.loads((Path(os.environ['RUNNER_TEMP'])/'v14_reproduced_index/manifest.json').read_text('utf8'))
+          assert baseline==check,'Replayed old book-source evidence differs; require new version'
+          print('Immutable source archive reproduced byte-for-byte:',digest(original))
+          PY
       - name: Compress new full SQLite and confirm parent SHA, 44 studies and no synthetic forecasts
         run: |
           python - <<'PY'
@@ -90,5 +103,9 @@ jobs:
             'archives/sqlite/shenqi21_kaiwu22_marriage_source_cast_runtime_v1_4_manifest.json' \
             'data/knowledge/phrase_library/marriage_v1_4/source_cast_studies/'
           git diff --cached --check
-          git commit -m 'Archive true book-source nine-palace runtime tests across marriage 22 scene intents'
-          git push origin HEAD:main
+          if git diff --cached --quiet; then
+            echo 'Immutable V1.4 archive already committed; SHA-replay matches; no new commit needed.'
+          else
+            git commit -m 'Archive true book-source nine-palace runtime tests across marriage 22 scene intents'
+            git push origin HEAD:main
+          fi
