@@ -1,0 +1,115 @@
+{
+  "version": "marriage_original_source_rule_tree_v1.7",
+  "parent_full_sqlite_sha256": "89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4",
+  "new_full_sqlite_sha256": "e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675",
+  "unchanged_historical_book_case_count": 194,
+  "exact_new_original_conditional_rules": 27,
+  "81_ordered_kaiwu_stem_pairs_read_with_source": 81,
+  "two_new_book_families_tested_without_scoring_unknown_future": 2,
+  "prior_dev_retained_total": 3,
+  "prior_dev_retained_matches": 1,
+  "prior_dev_retained_misses": 2,
+  "new_real_forecast_correctness_verified": 0,
+  "24_factor_full_inference_approved": false,
+  "new_200_chinese_character_GPT_phrases_published": 0,
+  "source_not_predicted_reality": true,
+  "all_previous_rows_identical": true,
+  "new_event_family_study": {
+    "schema": "marriage_v17_other_family_not_sealed_holdout",
+    "new_historical_event_families": [
+      "kaiwu.marriage.case04",
+      "kaiwu.marriage.case05"
+    ],
+    "excluded_prior_development_event_families": [
+      "kaiwu.marriage.case01",
+      "kaiwu.marriage.case02",
+      "kaiwu.marriage.case03"
+    ],
+    "not_untouched_sealed": true,
+    "historical_corpus_already_known_to_method_designer": true,
+    "actual_new_forecast_correctness_scores": 0,
+    "book_original_cases_future_outcome_not_verified": true,
+    "case06_explicit_first_author_failure_kept_out_of_positive_training": true,
+    "unsafe_inferences_from_sexual_orientation_forbidden": true,
+    "original_book_source_sha256": "4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01",
+    "before_feedback_initial_study": [
+      {
+        "family": "kaiwu.marriage.case04",
+        "source_chart_alignment": {
+          "eight_printed_outer_palaces_checked": 8,
+          "agrees_with_original_book": true,
+          "disagreements": [],
+          "center_five_not_fabricated": true
+        },
+        "initial_source_judgment": {
+          "outcome": "unresolved",
+          "source_combo_rule_count": 27,
+          "real_81_ordered_pairs": 81,
+          "person_details_missing_are_not_fabricated": true,
+          "future_window": null,
+          "publication_ready": false
+        },
+        "family_initial_inference_source_hash": "6e6cd713eaec4f893cce8aeebd83d52d3bdc83d550d06fb262ebb585639cdf13"
+      },
+      {
+        "family": "kaiwu.marriage.case05",
+        "source_chart_alignment": {
+          "eight_printed_outer_palaces_checked": 8,
+          "agrees_with_original_book": true,
+          "disagreements": [],
+          "center_five_not_fabricated": true
+        },
+        "initial_source_judgment": {
+          "outcome": "unresolved",
+          "source_combo_rule_count": 27,
+          "real_81_ordered_pairs": 81,
+          "person_details_missing_are_not_fabricated": true,
+          "future_window": null,
+          "publication_ready": false
+        },
+        "family_initial_inference_source_hash": "730ef583c2ac2b0d4f2606bc072a40e3b4281d596cb9fa22fe32dde6f2206202"
+      }
+    ],
+    "after_initial_author_comments": [
+      {
+        "family": "kaiwu.marriage.case04",
+        "original_first_lines": [
+          159,
+          175
+        ],
+        "later_source_lines": [
+          161,
+          167
+        ],
+        "author_outcome_vs_unobserved_future_not_scorable": true,
+        "initial_author_verdict_was_not_a_model_input": true
+      },
+      {
+        "family": "kaiwu.marriage.case05",
+        "original_first_lines": [
+          229,
+          231
+        ],
+        "later_source_lines": [],
+        "author_outcome_vs_unobserved_future_not_scorable": true,
+        "initial_author_verdict_was_not_a_model_input": true
+      }
+    ]
+  },
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "historical_chart_cells": 1440,
+    "marriage22_scenario_protocol": 22,
+    "marriage_runtime_scenario_study": 44,
+    "phrase_intent_workflows": 9,
+    "book_timing_method_source_rules": 20,
+    "marriage_v16_historical_holdout_inputs": 3,
+    "marriage_v16_historical_initial_verdicts": 3,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v16_family_dev_audit": 1,
+    "marriage_v17_book_conditional_rules": 27,
+    "marriage_v17_new_event_family_replays": 2,
+    "marriage_v17_rule_change_and_error_audit": 1
+  }
+}
