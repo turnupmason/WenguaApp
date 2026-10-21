@@ -1,0 +1,29 @@
+name: Marriage V1.6 Original Family Dev Holdout Evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/marriage_judgment_v16.py'
+      - 'scripts/evaluate_marriage_family_holdout_v16.py'
+      - 'tests/test_marriage_source_blind_v16.py'
+      - 'tests/test_marriage_family_eval_v16.py'
+      - '.github/workflows/test_marriage_family_holdout_v16.yml'
+  workflow_dispatch:
+jobs:
+  family-study:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Historical full-family holdout unit tests
+        run: |
+          python -m unittest discover -s tests -p test_marriage_source_blind_v16.py -v
+          python -m unittest discover -s tests -p test_marriage_family_eval_v16.py -v
+      - name: Source case blind-first evaluation and error ledger
+        run: |
+          python -m scripts.evaluate_marriage_family_holdout_v16
