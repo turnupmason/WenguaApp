@@ -1,0 +1,95 @@
+[
+  {
+    "phrase_id": "marriage.pilot.courtship_balanced.v1",
+    "scenario": "courtship_balanced",
+    "question": "courtship_to_marriage",
+    "required_conditions": [
+      "marriage_people_bound",
+      "yi_geng_mutual_support",
+      "liuhe_supports_contact",
+      "partner_birth_year_considered",
+      "counterevidence_checked"
+    ],
+    "counterevidence": [
+      "palace_conflict",
+      "void_over_promised_timing",
+      "partner_actual_willingness"
+    ],
+    "chinese_char_count": 198,
+    "source_case_refs": [
+      "shenqi.marriage.mother_asks_son_courtship",
+      "kaiwu.marriage.case01"
+    ],
+    "review_status": "draft"
+  },
+  {
+    "phrase_id": "marriage.pilot.parent_asks_child.v1",
+    "scenario": "parent_asks_adult_child",
+    "question": "child_courtship_marriage",
+    "required_conditions": [
+      "child_is_real_subject",
+      "birth_year_of_child_present",
+      "day_and_hour_roles_not_conflated",
+      "yi_geng_link_checked",
+      "liuhe_and_counterevidence_checked"
+    ],
+    "counterevidence": [
+      "child_does_not_consent",
+      "querent_role_confused_with_subject",
+      "calendar_timing_unverified"
+    ],
+    "chinese_char_count": 192,
+    "source_case_refs": [
+      "shenqi.marriage.mother_asks_son_courtship",
+      "kaiwu.marriage.case01"
+    ],
+    "review_status": "draft"
+  },
+  {
+    "phrase_id": "marriage.pilot.divorce_or_reunion.v1",
+    "scenario": "divorce_remarriage_context",
+    "question": "divorce_or_remarriage",
+    "required_conditions": [
+      "marital_status_clarified",
+      "question_divorce_vs_reunion_clarified",
+      "partners_year_stems_checked",
+      "spouse_palace_pair_checked",
+      "contradicting_conditions_reconciled"
+    ],
+    "counterevidence": [
+      "year_stem_compatibility_only",
+      "fuyin_opposes_claim",
+      "real_world_no_contact"
+    ],
+    "chinese_char_count": 199,
+    "source_case_refs": [
+      "shenqi.marriage.mother_asks_son_courtship",
+      "kaiwu.marriage.case02",
+      "kaiwu.final.divorce"
+    ],
+    "review_status": "draft"
+  },
+  {
+    "phrase_id": "marriage.pilot.third_party_caution.v1",
+    "scenario": "suspected_third_party",
+    "question": "relationship_trust_concern",
+    "required_conditions": [
+      "third_party_question_explicit",
+      "symbol_roles_selected_by_context",
+      "yi_geng_and_liuhe_checked",
+      "birth_stems_known_or_marked_unknown",
+      "possible_false_positive_reviewed"
+    ],
+    "counterevidence": [
+      "no_independent_behavior_evidence",
+      "third_party_symbol_ambiguous",
+      "original_author_guess_proved_wrong"
+    ],
+    "chinese_char_count": 192,
+    "source_case_refs": [
+      "shenqi.marriage.wife_asks_husband_affair",
+      "kaiwu.final.divorce"
+    ],
+    "review_status": "draft"
+  }
+]
