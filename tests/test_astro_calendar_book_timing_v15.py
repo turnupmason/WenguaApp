@@ -8,8 +8,9 @@ against book later outcome information.
 """
 import unittest
 from datetime import datetime
-from src.wengua.astro_calendar import solar_chart_clock,branch_periods,EPHEMERIS_VERSION
+from src.wengua.astro_calendar import solar_chart_clock,branch_periods,EPHEMERIS_VERSION,swe
 from src.wengua.book_timing_runtime import load_source_timing_rules,book_case01_marriage_timing_study
+@unittest.skipUnless(swe is not None,'Astronomical tests require pinned pyswisseph==2.10.3.2; dedicated workflow runs them')
 class ActualSolarTermAndBookTimingTests(unittest.TestCase):
  def test_shenqi_both_worked_casting_dates_and_kaiwu_third_day(self):
   for civil,day,solar_term,month in [
