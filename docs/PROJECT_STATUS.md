@@ -501,3 +501,12 @@ GitHub最初源码提交 c30241f0f8118719cb745e480ce4d949c90e9168 在Action#1/CI
 
 ## 2026-10-20 Kaiwu education source archived
 3 education events and 3 literal historical casts, 4 student outcomes, 2 partial errors in school direction. Accumulated 31 book sections, 133 events, 149 casts. Full SQLite SHA256 320347f0c25ccd050171b391611d7188f8e822d99f3d1dbd67d98688b03431dc, 9060352 bytes, integrity OK. This is the only parent for the next full archive. The original book cases are user accepted without per-case approval; earlier data and eight explicit case-level errors are unchanged.
+
+
+## 2026-10-20 Kaiwu 行人走失预测(共5例)：成功增量全库归档
+
+原著第七节而非第十一章，本项目第11份Kaiwu源。sources/kaiwu/开悟之门_行人走失预测.txt 200行27441字节，SHA256 **193e1eb8438a83e1408efa804daf66ea43e64f36155e221be23c9de53215ab71**。新5独立missing_person域事件，6张真正来源ASCII九宫原盘、54宫原文字/29作者编号分析；与《神奇之门》已有missing_person10例统一领域查询，所有来自书里的案例项目直接接受无需用户人工逐例审核。首例同一外甥女问时盘4月9日、失踪时盘2月28日两张原印盘但只一真实问事家族；第三例同一酒店两女服务员只1案1盘但保存两人分别后续；第二例原书预测8/16到家，实际8/17一天误差；郝星立男司机案与旧马兰德女司机案是**相似对比但不同事件**，仅建立跨书引文不指派错误的旧案唯一ID，旧明确错断8条不变。第一、二、三、四、五例的OCR缺字/神名残损、首例兑7多个未辨字段、第五例坤2特殊额外“原OCR：庚 辛”第四个原布局之后的第五行，均由source witness原文字及54逐宫raw保留，绝不伪修或补造普通中宫神门星；判词与书报反馈保持初断/后来评论信息时序。相关犯罪和生命安全是古籍作者书内叙述，不等于独立法医或公安材料。
+
+源码commit 7f73da86e3a420564986baee2fe95f1fdb769533首轮Archive#1/CI#243因错误把相似参考强加已验证旧案例外键而失败；仅调整跨书引文逻辑commit 9db1e346db5610b02b46119a69f7c5d5ebd4d682，Archive#2 success、WenguaApp CI#244 Python3.11/3.12双success，机器人真实归档提交 **cbd0d3e5fd5d44cd219c1d53033975c47aa71309**。完整manifest archives/sqlite/shenqi21_kaiwu_missing_138cases_manifest.json；SQLite PRAGMA integrity_check=ok、foreign_key_check=0；上一全量133例父库SHA320347f0c25ccd050171b391611d7188f8e822d99f3d1dbd67d98688b03431dc所有旧表旧行逐字保留。
+
+**以后下一章唯一父库：archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3，9,353,216字节，SHA256 9107e3e440a1448cce93fdef288a48c88a8440b3998c5adcf041e2f770172ae7，Git blob 79c108895d376a7d95623280c1e8a8824ad479c2。** 同名.xz 759324字节SHA2563355abaafc24454771fbeb4d6d164777327f674a97bf09d81eec0e0493b28f85。累计32来源节/138历史独立事件/155实际原印盘/1395历史宫/690分析步骤/2364语义断言/1107跨书知识轨；新raw来源见证6盘54宫、学生一日误差单独命题1、两名酒店服务员对象2。严格只从此版SHA做sqlite3.backup，不修改旧书、旧错例和旧原始行。所有项目书内史例继续免人工逐例审批。最终文档提交后必须再次核对最新HEAD双Python CI成功，UI和旧QimenLLM不动。

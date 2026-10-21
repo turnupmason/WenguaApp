@@ -619,3 +619,16 @@ GitHub最初源码提交 c30241f0f8118719cb745e480ce4d949c90e9168 在Action#1/CI
 
 ## 2026-10-20 Kaiwu exam source accepted
 The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 students, and two source-explicit partial school-direction misses. Preserve exact original and claim-level verdicts; both sisters share one chart. The next immutable full SQLite parent has sha256 320347f0c25ccd050171b391611d7188f8e822d99f3d1dbd67d98688b03431dc and holds 133 events/149 original charts/31 source sections. No per-case user approval required. Never overwrite previous sources.
+
+
+## 2026-10-20 真实归档交接：《开悟之门》行人走失预测（共5例）
+
+原著是“第七节 行人走失预测（共5例）”，本仓库累计第11个Kaiwu来源节，不是原著第十一章。上传的完整原文 sources/kaiwu/开悟之门_行人走失预测.txt，**200行、27441字节、SHA256 193e1eb8438a83e1408efa804daf66ea43e64f36155e221be23c9de53215ab71**，Git blob 426a6237a0d374c63ede6f0b7115fe10b352cba6。一章5个真实书中问事、6张原书ASCII九宫盘（起始9/36/67/101/138/174），共54逐宫原始文字，29条作者编号推理。统一使用《神奇之门》已有 cases.domain_id='missing_person'，**旧神奇之门10例与本次开悟5例在同一个领域库中查询**，绝对不得按书名新建独立业务案例域。用户接受原书问事与后续报告作为项目历史案例，不需要逐例人工批准；但书内资料不等于独立外部公安调查或科学验证，且不能用古籍预测替代真实寻人求助。
+
+例一1998年赵经理外甥女只有**1个历史事件**，问测1998-04-09（局始9）与已知失踪时间1998-02-28（局始36）**两张真正印出的历史盘**；5月5日找到（从失踪至找到书称66天），不拆两个独立案例/盲测样本。例二赵国宝测大学生出走，原断8月16日，原书第91行实为8月17日到家，**一天应期误差必须如实标注**，作者张志春第93-94行事后按语质疑绝对的年/月格应期，不能倒灌成先前推断。例三两名酒店女服务员是**一个问事、一张盘，两名对象**，8月31日取得联系与广东地址、9月10日两人被找回，两个对象各存来源子记录；张志春事后修订学员原有分析不能冒充原先学员的逐字结论。例四1999年郝星立测**男性**出租车司机遇害，原书第164行提及《神奇之门》马兰德测**女性**出租车司机作为**相似参考、非同一事件**，cross_book_example_references仅建书目引用，未强加无法验证的旧case外键。例五2000年女大学生旅途中失联，同一个问事第198行书中报告8月15日安全回到新余，只存1盘1事件。所有原书后验/书中案例成功标签须与“现实独立法庭/公安证据”分开。
+
+来源原OCR残缺强制完整保留：首例第一盘兑7“神名原OCR：牲／原OCR：辛／辅 丁／门字及其他残字未辨”；第二盘坤2“原OCR：之／门、星其余字未辨”；第三原盘艮8“神名缺损”；第四盘坤2“神名缺损／原OCR：乙／己／冲 丙／门字及天干未辨”；第五盘坤2“休门（门干未辨）”且附加特殊第五行“原OCR：庚 辛”。中5宫原字如“壬（原OCR）”“庚（原OCR）”“天禽 庚”按字保留，不捏造门／星／神三重普通字段；OCR不清的其他宫也不凭算法计算后冒充原书。6盘6份source witness和54逐宫原文字及额外残字行均保存；不因首例额外第二盘重复计算案件。
+
+**已实际远端归档：**来源builder scripts/build_kaiwu_missing_from_education.py，迁移026，回归tests/test_kaiwu_missing_shared_domain.py，GitHub archive workflow第2次成功、WenguaApp CI#244双Python成功；机器人实际完整二进制提交 **cbd0d3e5fd5d44cd219c1d53033975c47aa71309**，真实manifest archives/sqlite/shenqi21_kaiwu_missing_138cases_manifest.json。最初archive #1/CI#243因试图将相似参考强加 verified_target_case_id 产生外键失败；修复源码提交 **9db1e346db5610b02b46119a69f7c5d5ebd4d682**，保留参考原文但不误标已验证同案。完整SQLite从上一完整父库SHA **320347f0c25ccd050171b391611d7188f8e822d99f3d1dbd67d98688b03431dc** sqlite3.backup()无损追加，旧所有表所有记录逐行保持；integrity_check=ok、foreign_key_check=0。累计来源节32（神奇21+开悟11），独立cases138、历史原印盘155、historical_palace_standardization1395、作者编号分析steps690、semantic_assertions2364、cross_book_concept_tracks1107，旧8条明确书内整例首次失误保持不变。
+
+**下一章唯一父库（重要）：** archives/sqlite/WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3，大小**9353216字节**、真实SHA256 **9107e3e440a1448cce93fdef288a48c88a8440b3998c5adcf041e2f770172ae7**，git blob 79c108895d376a7d95623280c1e8a8824ad479c2。对应同名.sqlite3.xz大小759324字节，SHA256 3355abaafc24454771fbeb4d6d164777327f674a97bf09d81eec0e0493b28f85。禁止下章退回133例旧版父库、重新建库、删除任何原文/案例或重写旧知识，必须继续真实sqlite3.backup增量和逐表旧行保留，并检验最后HEAD GitHub CI3.11/3.12成功。UI和旧QimenLLM项目都不碰。
