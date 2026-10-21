@@ -8,9 +8,8 @@ against book later outcome information.
 """
 import unittest
 from datetime import datetime
-from src.wengua.astro_calendar import solar_chart_clock,branch_periods,EPHEMERIS_VERSION,swe
+from src.wengua.astro_calendar import solar_chart_clock,branch_periods,EPHEMERIS_VERSION,swe,compare_with_optional_swiss
 from src.wengua.book_timing_runtime import load_source_timing_rules,book_case01_marriage_timing_study
-@unittest.skipUnless(swe is not None,'Astronomical tests require pinned pyswisseph==2.10.3.2; dedicated workflow runs them')
 class ActualSolarTermAndBookTimingTests(unittest.TestCase):
  def test_shenqi_both_worked_casting_dates_and_kaiwu_third_day(self):
   for civil,day,solar_term,month in [
@@ -66,6 +65,14 @@ class ActualSolarTermAndBookTimingTests(unittest.TestCase):
   self.assertTrue(data["first_judgment_does_not_read_book_line45"])
   self.assertTrue(data["not_a_computed_single_legal_registration_day"])
   self.assertTrue(data["historical_book_feedback_is_not_empirical_independent_verification"])
+ def test_optional_swiss_software_reference_agrees_with_offline_formula(self):
+  # Core CI never downloads a sky library. If available, independently
+  # compare two astronomical algorithms in one process.
+  if swe is None:self.skipTest("Optional Moshier external cross-reference not installed")
+  for timestamp in ("1995-06-11T12:00:00+08:00","1998-12-07T12:00:00+08:00",
+                    "1999-01-06T12:00:00+08:00","2026-10-21T12:00:00+08:00"):
+   value=compare_with_optional_swiss(timestamp,"Asia/Shanghai")
+   self.assertLess(value["absolute_longitude_error_deg"],0.02)
  def test_ephemeris_timezone_and_zi_hour_must_not_be_faked(self):
   with self.assertRaises(ValueError):
    solar_chart_clock("2026-07-01T12:00:00-05:00","America/New_York")

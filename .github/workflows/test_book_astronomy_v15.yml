@@ -1,4 +1,4 @@
-name: Kaiwu Source-Verified Astronomy and Marriage Timing Regression
+name: Offline Book Astronomy and Marriage Timing Tests
 on:
   push:
     branches: [main]
@@ -20,8 +20,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install fixed Swiss Ephemeris Moshier astronomy implementation
-        run: python -m pip install --disable-pip-version-check --only-binary=:all: pyswisseph==2.10.3.2
       - name: Compare old two-book casting dates, solar Jie months and author-first Zi/Chou timing
         run: python -m unittest discover -s tests -p test_astro_calendar_book_timing_v15.py -v
       - name: Source-four-pillars and case01 author forecast timing diagnostics
