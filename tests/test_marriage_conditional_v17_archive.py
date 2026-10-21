@@ -8,7 +8,7 @@ class MarriageOriginalConditionalFullArchive(unittest.TestCase):
  def test_source_sha_27_rules_two_other_families_old_194_cases_and_two_misses_kept(self):
   self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)
   with tempfile.TemporaryDirectory() as d:
-   out=Path(d)/NEW
+   out=Path(d)/NEW_NAME
    report=build(PARENT,out,Path(d)/"rule_evidence")
    self.assertTrue(report["all_previous_rows_identical"])
    self.assertEqual(report["exact_new_original_conditional_rules"],27)
@@ -28,7 +28,7 @@ class MarriageOriginalConditionalFullArchive(unittest.TestCase):
     self.assertEqual(conn.execute("PRAGMA foreign_key_check").fetchall(),[])
  def test_versioned_full_database_must_not_be_rewritten(self):
   with tempfile.TemporaryDirectory() as d:
-   out=Path(d)/NEW;out.write_text("already archived")
+   out=Path(d)/NEW_NAME;out.write_text("already archived")
    with self.assertRaisesRegex(ValueError,"Cannot overwrite"):
     build(PARENT,out,Path(d)/"rule_evidence")
 if __name__=="__main__":unittest.main()
