@@ -728,3 +728,10 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 
 新增可以直接执行的真实盘面JSON -> 自主古籍初断CLI：scripts/run_marriage_judgment_v16.py。输入上一版盘面九宫JSON（已经由同一现有时家转盘引擎对照重起）+经离线节气历法校验的年月日时、真实问者/当事人/伴侣的年命、婚姻22场景scene_id和具体问事；以 --database 指向V1.6最新完整历史194案SQLite，以 --input 指向原始JSON，以 --output 指向新创建的独立审计输出文件。可选 --exclude-event-family 用于历史family全隔离研发研究，不是让用户输入自己的问题答案。禁止由caller status自称engine_verified绕过、禁止覆盖书原文或完整SQLite、禁止复制任何heldout家族作者结论/反馈到第5层、禁止GPT在核心判定前补写日期。无必要人物年命/实际可核历法会阻断。确切2026年新用户预测尚无经六层完整封存验证，输出的traditional_initial_outcome与conditional_timing属于古籍来源的传统研究初断、publication_ready=false，不能伪称现实事件100%命中。真实用法及案例参数见 docs/MARRIAGE_SOURCE_BLIND_JUDGMENT_V1_6.md；自动测试 tests/test_marriage_json_judgment_v16.py 独立覆盖了CLI路径、古籍家族初断不泄漏、具体子月候选与SQLite不被覆盖。程序可连接完整数据库，但本阶段尚未声称全24项物理因素和所有22婚姻细场景得到最终实战验证。
 
+## 2026-10-21 V1.7 MARRIAGE ORIGINAL RULE COMBINATOR 27 CONDITIONS / TWO OTHER FAMILIES
+
+**必须保持婚姻V1.7真实状态而非重开工程。** 已实现27条《开悟之门》第四章及婚姻原案逐字索引，含章节整SHA/原文行/条件用神/反证/应期范围；引擎`src/wengua/marriage_book_combinator_v17.py`已经计算天盘六仪指定击刑、三奇墓、时支马星、81对有方向的天盘/地盘干、门迫和月令旺衰、九星八门真伏吟/反吟、太岁支所在宫、日时干位置与关系；`analyze_marriage_v17()`在V1.6初判基础上按书中条件合取，年命主证不能静默覆盖乙庚、六合、刑墓空迫等反证。只在新旧成败相容且确有书源应期条件时使用已计算节气窗口，不能沿用结果已被反证改变的旧应期，不能做机械概率加权或编造时间。六甲天显伏吟例外、土转换月与门迫月令强弱，必须有原文对应。未做的24项仍unknown；不推算真实人格、性行为、法律裁判或健康结论。
+
+**开发测试/错误账本强制保持**：V1.6看过的3问不能再作为新秘密盲测，结果仍为1吻合2错断；V1.7例四、五仅为其它事件家族source-holdout和原书八宫几何、缺失年命拒断回归，缺对方年命/最终结果都未评分，真实新命中评测为0。例六作者自承初断失误保留负例，性取向非疾病。我们接受原书真实案例无需用户逐件人工审批，但绝不把作者书中自述当做独立科学验证。不得根据旧错题结果反向拟合规则后宣布同批错误消失；下一轮使用新未参与调节的其它family，保留所有失败。
+
+**当前唯一新版完整SQLite**：`archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3`，SHA256 **`e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675`**，旧194案例和旧2个错断均在；独立`schema/migrations/045_marriage_conditional_combinations_other_family_v17.sql`、builder、回归和工作流已经GitHub归档成功。详细完成范围和下一验收门槛见`docs/MARRIAGE_BOOK_COMBINATOR_V1_7.md`。禁止覆盖V1.6原始二进制，禁止用旧SHA继续派生；不做UI，第六层成品断语须全24项和真实应期可辩后才发布。

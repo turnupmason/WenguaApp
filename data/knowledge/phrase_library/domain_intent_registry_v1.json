@@ -96,9 +96,9 @@
       "latest_scene_protocol_version": "marriage.scene.v1.3",
       "user_scenario_count": 22,
       "mandatory_all_domain_six_layer_contract": "src/wengua/six_layer_contract.py",
-      "current_full_database_sha256": "89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4",
+      "current_full_database_sha256": "e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675",
       "actual_verified_chart_reading_instances": 0,
-      "latest_full_database_version": "marriage.author_initial_family_holdout.v1.6",
+      "latest_full_database_version": "marriage.original_source_conditional_combinations.v1.7",
       "real_historical_casting_examples_studied": 2,
       "source_cast_to_scene_regression": 44,
       "candidate_palace_runtime": "src/wengua/marriage_runtime.py",
@@ -123,7 +123,18 @@
       "correctly_verified_new_real_world_marriage_forecast_count": 0,
       "public_json_book_first_judgment_entrypoint": "scripts/run_marriage_judgment_v16.py",
       "json_cli_tests": "tests/test_marriage_json_judgment_v16.py",
-      "real_world_marriage_forecast_release_status": "blocked_pending_full_six_layer_original_book_validation"
+      "real_world_marriage_forecast_release_status": "blocked_pending_full_six_layer_original_book_validation",
+      "book_condition_rules_v17": 27,
+      "book_condition_rule_index": "data/knowledge/phrase_library/marriage_v1_7/original_combo_rules.json",
+      "book_conditional_judger": "src/wengua/marriage_book_combinator_v17.py",
+      "other_heldout_families_v17": [
+        "kaiwu.marriage.case04",
+        "kaiwu.marriage.case05"
+      ],
+      "new_event_family_result_comparisons_v17": 0,
+      "old_v16_development_errors_preserved": 2,
+      "all_24_source_factors_fully_computed": false,
+      "gpt_final_phrases_release_authorized": false
     },
     "employment": {
       "stage": "taxonomy_only_next_domains_wait_for_marriage_quality_gate",

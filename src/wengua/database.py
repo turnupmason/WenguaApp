@@ -60,6 +60,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/042_marriage_source_cast_runtime_bridge.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/043_marriage_original_book_timing_astro_v15.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/044_marriage_source_initial_judgment_and_family_holdout_v16.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/045_marriage_conditional_combinations_other_family_v17.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
