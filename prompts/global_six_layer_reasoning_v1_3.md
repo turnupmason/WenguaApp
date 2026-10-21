@@ -34,3 +34,13 @@
 
 新最新版完整研究数据库 V1.4 SHA256 **`ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da`**，路径 `archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3`，此前193/194历史库和V1.3保留为历史存档。`src/wengua/phrase_pipeline.py:FACTOR_IDS`准确包含24项（`door_press_palace`为唯一门迫id）；禁止另创建`door_press`造成双计。
 
+## 2026-10-21 MARRIAGE V1.4 JSON-IN CLI AND IMMUTABLE SOURCE REPLAY
+
+新增真实运行入口`scripts/run_marriage_json_study.py`：以`--input`接收真实盘JSON + `inquiry.domain=marriage`、22场景`scene_id`、用户`question_text`及问者/实际对象/伴侣年命，以`--database`只读打开**最新版婚姻V1.4全量194历史案例SQLite**；`--output`输出独立结构化JSON审计文件，不触碰输入JSON和旧完整数据库。程序调用`src/wengua/marriage_runtime.py:inspect_marriage_chart_json`，依据已给出的日干支/节气/时干支重新算阴阳局、九宫、值星值门/旬首，然后和传入的所有原九宫门星神天地干数据逐字段核对，任一宫位或值使不匹配立即拒绝；自行把`status`改成`engine_verified`也不被当成可信签名。JSON要符合当前已有`casting_shenqi.layout_from_explicit_bureau`生成的数据结构（九宫字典`"1".."9"`、各宫`heaven_stars`载干、八门、八神，中五宫无常规门神），不能拿其它学校九宫风格硬塞。
+
+真实问者和婚姻当事人绑定：用输入的六十甲子出生年`year_ganzhi`对应真实天盘载干落宫，六甲须按原书六仪遁干映射；如给定`subject`和`partner`双方年命，会计算各自候选落宫及两宫五行关系，**但绝不因年份组合自动决定夫妻主次用神/成败**。全24因素审计中目前可基于已对照的盘事实计算旬首旬空、门迫、宫位五行、天地干携星及门星神组合，真实人物给齐后还可计算人物年命候选宫的纯五行关系；其他原书尚无明确可执行方法或时序的因素一律`unknown`。实际`source JSON`输入如果年命或节气缺失就阻断相关下一层，而不是给假应期。古籍方法按22个场景读取，并将作者首断证据和后期回访分开，保留当前完整盘与真正历法尚未完全验明导致的`missing_to_publish`清单。
+
+**当前source-only规则重要**：根据已有两张《神奇之门》起盘章示例盘可做九宫文本一致性检验，不等于独立验证真实当下时间的天文节气；未实现的24因素、同年命不同具体提问、作者全链成败和实算应期尚未补全。由此产生的是研究性JSON证据审计，绝对不能声称已经正式完成六层/给出婚姻成败或经过验证日期，也不能凭GT/模型声称“有calendar_receipt”自动提升。执行示例及输入字段见`docs/MARRIAGE_RUNTIME_JSON_V1_4.md`；测试`tests/test_marriage_runtime_source_cast_v14.py`已加真实命令行JSON回归和假核验标志/篡改九宫的拒绝测试，原194书案、V1.4真实二进制母库不变。
+
+当前数据库仍是`archives/sqlite/WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3` SHA256 `ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da`，用户后续全部研究以它为唯一父库；`build_marriage_runtime_v14.yml`已按字节重算校验历史 V1.4 immutable SQL，当源码与历史归档生成结果不一致则失败并要求新的数据库版本，不可覆盖已有文件。后续关键是逐条对照两书完成每一项物理规则的实际计算、现代历法真正核验、中五宫值使挂宫未明分支、规则优先级和负例，加上真实用户案例后才能产出正式成败+具体应期+GPT的人话。此约束对所有领域依根`AGENTS.md`仍是100%强制流程。
+
