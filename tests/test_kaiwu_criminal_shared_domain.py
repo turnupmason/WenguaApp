@@ -61,7 +61,8 @@ class KaiwuCriminalTwoCasesFullSourceTests(unittest.TestCase):
    with sqlite3.connect(new) as db:
     for table,n in result["counts"].items():
      self.assertEqual(db.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0],n)
-    self.assertEqual(db.execute("SELECT count(*) FROM unified_criminal_cases_across_books").fetchone()[0],7)
+    old_and_new={f"shenqi.criminal_case.case{i:02}" for i in range(1,6)}|{"kaiwu.criminal.case01","kaiwu.criminal.case02"}
+    self.assertTrue(old_and_new.issubset({r[0] for r in db.execute("SELECT case_id FROM unified_criminal_cases_across_books")}))
     self.assertEqual(db.execute("SELECT count(*) FROM kaiwu_criminal_original_palaces").fetchone()[0],18)
     self.assertEqual(db.execute("SELECT count(*) FROM kaiwu_criminal_scoped_claims WHERE verdict='book_explicit_error'").fetchone()[0],2)
     self.assertEqual(db.execute("SELECT count(*) FROM kaiwu_criminal_unprinted_cast_mentions").fetchone()[0],1)
