@@ -666,3 +666,9 @@ GitHub Archive first marriage phrase corpus 工作流#1成功，真实完整新S
 
 本轮尚未向外发布任何“验证通过的断语”，尚未将388800组合实际逐盘计算，更未跑实盘独立预测验证；接下来用户可提供经过真实引擎起出的JSON，或先补齐仓库实际九宫运算与24类因素计算，再循婚姻短语条件一步步增加真正实例，不因只有Prompt就绕过程序。
 
+## 2026-10-21 MARRIAGE V1.1 PROMPT STATUS — V1 DATABASE UNCHANGED
+
+**持续开发状态补充：** 最初归档V1完整SQLite（完整194书案+婚姻原型4+出处9、实盘实例0/批准0）仍严格绑定 Prompt `marriage_reading_v1.0` 和已存manifest的SHA，数据库完整SHA `4c57e8bfdc4d745c19711542039c3f24aa95b7574de00843e64c1676082d4968` 原样不变。随后仓库Prompt已经迭代到**V1.1**，新增具体应期计算工具 `src/wengua/timing_engine.py`，机器输入需使用真实有时区的历法周期与适用的古籍应期方法；即使用户提供假定收据也不代表历法/起盘已密码学核真。未经核实的真实九宫、未知年命关系或不可确定的应期，一律不得生成貌似确定的结果或具体日期。Prompt V1.1尚未单独发布新SQLite版本，下一版必须**从带phrase表的V1完整库无损增量**建不同文件名，不能覆盖或假装V1库已含V1.1成品断语。
+
+技术持续集成已修正：`.github/workflows/build_marriage_phrase_archive.yml` 在V1文件已存在时查旧SQLite/XZ/manifest实际SHA，保持原归档不可覆盖；`.github/workflows/build_marriage_phrase_pilot.yml` 则作为V1.1的Python3.11/3.12计时算法与短语检查专用**回归workflow，不再重复提交相同SQLite**。下一步完成真实起盘与24因子计算校验后，婚姻领域先运行少量真实可复现盘、核验主次用神/双方年命和反证、计算真正有条件应期，再GPT润色约200字进新版本DB。所有进度与待办详见 `docs/PHRASE_DOMAIN_PROGRESS.md`。仍然未启动388800项批量出词、未改变UI，其他领域尚未开始。
+
