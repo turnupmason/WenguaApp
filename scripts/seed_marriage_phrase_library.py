@@ -17,7 +17,7 @@ SOURCE_BOOKS={
  "kaiwu":("marriage_prediction_ch02_section02","4df9dfe432daec759df4f0e01449bc4a2381eb4251e1290a0d99d199e467fa01"),
  "final":("questions_answers_errors_and_methods_ch03","2f52d1ed878f77f619e5cf48c088a9f2e25afe59daaae037b97fcb96b0bd947a")
 }
-VERSION="marriage_reading_v1.0"
+VERSION="marriage_reading_v1.1"
 FACTOR_NAMES=[
  "six_yi_striking_punishment","branch_opposition","branch_punishment",
  "branch_harm","month_day_break","door_press_palace","heaven_stem_tomb",
