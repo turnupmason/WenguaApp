@@ -1,47 +1,89 @@
-name: Marriage phrase prompt and timing regression (no duplicate archival)
+name: Archive Marriage V1.1 Decisive Outcome and Timing
 on:
   push:
     branches: [main]
     paths:
+      - 'schema/migrations/039_marriage_decisive_timing_v11.sql'
+      - 'scripts/upgrade_marriage_phrase_timing_v11.py'
       - 'src/wengua/timing_engine.py'
-      - 'prompts/marriage_reading_v1.md'
-      - 'tests/test_marriage_phrase_pilot.py'
+      - 'tests/test_marriage_timing_v11.py'
       - '.github/workflows/build_marriage_phrase_pilot.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
-  regression:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ['3.11','3.12']
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with: {persist-credentials: true}
       - uses: actions/setup-python@v5
-        with: {python-version: '${{ matrix.python-version }}'}
-      - name: Run marriage timing and phrase pilot guard tests
-        run: python -m unittest discover -s tests -p test_marriage_phrase_pilot.py -v
-      - name: Verify already-versioned full 194-book-case SQLite remains immutable
+        with: {python-version: '3.11'}
+      - name: Source-fidelity, timing guards, and historical database unit tests
+        run: |
+          python -m unittest discover -s tests -p test_marriage_phrase_pilot.py -v
+          python -m unittest discover -s tests -p test_marriage_timing_v11.py -v
+      - name: Append V1.1 policy and timing tables to exact archived V1 without replacing it
+        run: |
+          python -m scripts.upgrade_marriage_phrase_timing_v11 \
+           --base 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3' \
+           --output 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3' \
+           --index-dir 'data/knowledge/phrase_library/marriage_v1_1'
+      - name: Generate compressed complete SQLite and SHA manifest for GitHub
         run: |
           python - <<'PY'
           from pathlib import Path
-          import hashlib,json,sqlite3
+          import hashlib,json,lzma,sqlite3
           root=Path('archives/sqlite')
-          db=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
-          xz=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz'
-          mf=root/'shenqi21_kaiwu22_marriage_phrase_v1_manifest.json'
-          if not all(x.exists() for x in (db,xz,mf)):
-           raise RuntimeError('Full V1 archive missing; use canonical build_marriage_phrase_archive.yml')
-          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-          m=json.loads(mf.read_text('utf8'))
-          assert h(db)==m['sha256'] and h(xz)==m['xz_sha256']
-          with sqlite3.connect(db) as con:
-           assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
-           assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
-           assert con.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
-           assert con.execute('SELECT COUNT(*) FROM phrase_template_drafts').fetchone()[0]==4
-          print('This run is review-only. For updated GPT prompt V1.1, create a distinct versioned SQLite; do not overwrite V1.0 archive.')
+          old=root/'WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3'
+          compressed=new.with_suffix('.sqlite3.xz')
+          compressed.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          checksum=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          m=json.loads(Path('data/knowledge/phrase_library/marriage_v1_1/manifest.json').read_text('utf8'))
+          assert checksum(old)==m['inherited_complete_V1_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT count(*) FROM "'+t+'"').fetchone()[0] for t in m['counts']}
+          assert counts==m['counts'] and counts['cases']==194 and counts['phrase_outcome_timing_contracts']==4
+          result={'schema':'wengua_marriage_V1_1_full_book194_and_timing_contract',
+           'parent_full_V1_archive':str(old),'parent_SHA256':checksum(old),
+           'full_complete_V1_1_SQLite':str(new),'sha256':checksum(new),
+           'size_bytes':new.stat().st_size,
+           'compressed_path':str(compressed),
+           'compressed_sha256':checksum(compressed),
+           'compressed_size_bytes':compressed.stat().st_size,
+           'book_historical_events_unchanged':194,
+           'source_books_sections_unchanged':43,
+           'four_old_GPT_style_prototypes_retained_as_draft':True,
+           'approved_concrete_predictions':0,
+           'hard_requirement':'must_predict_traditional_outcome_and_compute_original_calendar_source_timing',
+           'source_book_methods_not_real_world_scientific_certainty':True,
+           'integrity_check':'ok','foreign_key_errors':0,'old_rows_intact':True,
+           'counts':counts}
+          (root/'shenqi21_kaiwu22_marriage_phrase_v1_1_manifest.json').write_text(
+           json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
           PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: full-194-books-marriage-v1-1-concrete-timing
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_1_manifest.json
+          retention-days: 30
+      - name: Push new immutable V1.1 full SQLite and sourced phrase-timing metadata
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_marriage_phrase_v1_1_manifest.json' \
+            'data/knowledge/phrase_library/marriage_v1_1/'
+          git diff --cached --check
+          git commit -m 'Archive V1.1 marriage concrete timing requirement as append-only full 194-case DB'
+          git push origin HEAD:main
