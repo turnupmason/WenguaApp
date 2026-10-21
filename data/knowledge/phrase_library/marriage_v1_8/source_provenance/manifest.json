@@ -1,0 +1,41 @@
+{
+  "schema": "wengua_marriage_optional_nianming_v18",
+  "parent_full_sqlite_sha256": "e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675",
+  "new_full_sqlite_sha256": "fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536",
+  "all_book_events_preserved": 194,
+  "previous_27_author_rules_preserved": 27,
+  "previous_v16_wrong_dev_predictions_preserved": 2,
+  "all_22_marriage_scenes_accept_absent_year": true,
+  "exact_original_method_line_hashes": 10,
+  "other_two_historical_families_no_year_comparison": 2,
+  "new_independently_verified_real_world_predictions": 0,
+  "original_all_prior_database_rows_unchanged": true,
+  "source_methods_development_not_certified_complete": true,
+  "first_results": [
+    {
+      "family": "kaiwu.marriage.case04",
+      "year_mode": "one_year_optional",
+      "initial_traditional_symbolic_result": "mixed",
+      "person_identification_guessed": false
+    },
+    {
+      "family": "kaiwu.marriage.case05",
+      "year_mode": "no_year_optional",
+      "initial_traditional_symbolic_result": "success",
+      "person_identification_guessed": false
+    }
+  ],
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "historical_chart_cells": 1440,
+    "marriage22_scenario_protocol": 22,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v17_book_conditional_rules": 27,
+    "marriage_v18_optional_nianming_protocol": 1,
+    "marriage_v18_book_optional_role_sources": 10,
+    "marriage_v18_optional_year_scene_methods": 22,
+    "marriage_v18_missing_year_dev_studies": 2,
+    "marriage_v18_optional_year_archive_audit": 1
+  }
+}

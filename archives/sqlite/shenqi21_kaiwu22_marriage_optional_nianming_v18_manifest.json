@@ -1,0 +1,33 @@
+{
+  "schema": "wengua_marriage_optional_nianming_v18_complete_194_historical_cases",
+  "parent_archive": "archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3",
+  "parent_sha256": "e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675",
+  "latest_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3",
+  "sha256": "fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536",
+  "size_bytes": 14673920,
+  "compressed_sqlite": "archives/sqlite/WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3.xz",
+  "compressed_sha256": "48c01e5603baac1f37baae41c9c32e6f5c70f7ab4abfa088f2a9e3b53e9f75cb",
+  "compressed_size_bytes": 1166504,
+  "all_original_194_book_cases_unchanged": true,
+  "previous_v16_wrong_dev_answers_unchanged": 2,
+  "prior_v17_book_method_rules_retained": 27,
+  "no_birth_year_allowed_all_marriage_scenes": 22,
+  "original_source_line_sha_records": 10,
+  "new_real_world_verified_predictions": 0,
+  "all_historical_rows_preserved": true,
+  "integrity_check": "ok",
+  "foreign_key_errors": 0,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "historical_chart_cells": 1440,
+    "marriage22_scenario_protocol": 22,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v17_book_conditional_rules": 27,
+    "marriage_v18_optional_nianming_protocol": 1,
+    "marriage_v18_book_optional_role_sources": 10,
+    "marriage_v18_optional_year_scene_methods": 22,
+    "marriage_v18_missing_year_dev_studies": 2,
+    "marriage_v18_optional_year_archive_audit": 1
+  }
+}
