@@ -1,0 +1,252 @@
+{
+  "source_sha256": "fad699fbddf34f7bf4ff16849d4154d4633bce51c234db1cf0ecc4ff7eb8f554",
+  "cases": [
+    {
+      "key": "briefcase_cash_missed",
+      "case_id": "kaiwu.lost_property.case01",
+      "title": "田风良摩托车公文包及现金丢失",
+      "start": 5,
+      "end": 45,
+      "caption": 15,
+      "grid": 16,
+      "question": 7,
+      "calendar": 13,
+      "first": 9,
+      "feedback": 11,
+      "analyze": [
+        31,
+        44
+      ],
+      "reason_end": 44,
+      "facets": [
+        "monetary_loss"
+      ],
+      "notes": "1997-10-12 pouch recovered sixth evening; ¥4,300 cash missing, others returned; not established that collector stole cash",
+      "chronology": "1997-10-12 evening inquiry, 1997-10-18 morning reported return",
+      "issue": "bag_returned_but_cash_missing",
+      "theft": false,
+      "number": 1,
+      "steps": [
+        31,
+        34,
+        37,
+        40,
+        43
+      ],
+      "chart_sha": "b53b42b1b554d5efbe8549cb7b4bae487e52c57c54d89811dab9798386c9573e",
+      "reasoning_spans": [
+        [
+          31,
+          33
+        ],
+        [
+          34,
+          36
+        ],
+        [
+          37,
+          39
+        ],
+        [
+          40,
+          42
+        ],
+        [
+          43,
+          44
+        ]
+      ]
+    },
+    {
+      "key": "stolen_motorbike_police_recovered",
+      "case_id": "kaiwu.lost_property.case02",
+      "title": "石建国自测摩托车失窃与警方追回",
+      "start": 46,
+      "end": 88,
+      "caption": 56,
+      "grid": 57,
+      "question": 48,
+      "calendar": 54,
+      "first": 50,
+      "feedback": 52,
+      "analyze": [
+        72,
+        87
+      ],
+      "reason_end": 87,
+      "facets": [
+        "criminal_theft"
+      ],
+      "notes": "1997-07-24 three thieves, police chase and accident, court compensation 990 yuan; reported in book only",
+      "chronology": "night 1997-07-24 theft, next-morning police report, post-case account",
+      "issue": "motorbike_stolen_recovered_police_prosecution",
+      "theft": true,
+      "number": 2,
+      "steps": [
+        72,
+        73,
+        74,
+        75,
+        77,
+        78,
+        79,
+        81,
+        84,
+        85,
+        86,
+        87
+      ],
+      "chart_sha": "9ba277e30f2f15ce263a8d220db0d8dfebafae1cc6be91c60a488cb396176467",
+      "reasoning_spans": [
+        [
+          72,
+          72
+        ],
+        [
+          73,
+          73
+        ],
+        [
+          74,
+          74
+        ],
+        [
+          75,
+          76
+        ],
+        [
+          77,
+          77
+        ],
+        [
+          78,
+          78
+        ],
+        [
+          79,
+          80
+        ],
+        [
+          81,
+          83
+        ],
+        [
+          84,
+          84
+        ],
+        [
+          85,
+          85
+        ],
+        [
+          86,
+          86
+        ],
+        [
+          87,
+          87
+        ]
+      ]
+    },
+    {
+      "key": "mislaid_earring_at_home",
+      "case_id": "kaiwu.lost_property.case03",
+      "title": "王夕强测耳环误以为外出丢失",
+      "start": 89,
+      "end": 124,
+      "caption": 96,
+      "grid": 97,
+      "question": 91,
+      "calendar": 94,
+      "first": 117,
+      "feedback": 123,
+      "analyze": [
+        112,
+        114
+      ],
+      "reason_end": 114,
+      "facets": [],
+      "notes": "A lost earring was found on the bed at home 17:30; not a crime; original says forgotten/mislaid, not stolen",
+      "chronology": "1999-06-11 13:40 cast, 17:30 reported found at home",
+      "issue": "mislaid_earring_recovered_same_day",
+      "theft": false,
+      "number": 3,
+      "steps": [
+        112,
+        113,
+        114
+      ],
+      "chart_sha": "3b21d19d5fafefdf319275fbedc9a0a1b7f1da21384740be628f6d039ca54b88",
+      "reasoning_spans": [
+        [
+          112,
+          112
+        ],
+        [
+          113,
+          113
+        ],
+        [
+          114,
+          114
+        ]
+      ]
+    },
+    {
+      "key": "tong_motorbike_later_qimen",
+      "case_id": "kaiwu.lost_property.case04",
+      "title": "佟安琪1999年摩托车失窃追回与后学奇门回顾",
+      "start": 125,
+      "end": 180,
+      "caption": 155,
+      "grid": 156,
+      "question": 139,
+      "calendar": 153,
+      "first": 139,
+      "feedback": 180,
+      "analyze": [
+        171,
+        178
+      ],
+      "reason_end": 178,
+      "facets": [
+        "criminal_theft"
+      ],
+      "notes": "Initial Aug 20 forecast by 六爻, not Qimen; bought 神奇之门 on Aug26, learned chart seven days later; Sep17 recovery, original precise day reading is retrospectively recounted without documented contemporaneous timing",
+      "chronology": "1999-08-20 phone/six-yao, 08-26 book purchase, early Sep Qimen learned, 09-17 found, 2000-08-27 letter",
+      "issue": "motorbike_stolen_recovered_28_days",
+      "theft": true,
+      "number": 4,
+      "steps": [
+        171,
+        172,
+        173,
+        174,
+        175
+      ],
+      "chart_sha": "8ed4ddf779992e21e5b11ede118cb0dd6c404adb8b35eb8f4bb65555dbe9bbff",
+      "reasoning_spans": [
+        [
+          171,
+          171
+        ],
+        [
+          172,
+          172
+        ],
+        [
+          173,
+          173
+        ],
+        [
+          174,
+          174
+        ],
+        [
+          175,
+          178
+        ]
+      ]
+    }
+  ]
+}
