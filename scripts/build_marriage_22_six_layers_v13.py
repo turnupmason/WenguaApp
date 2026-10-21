@@ -98,9 +98,9 @@ def build(base,out,indexdir):
       (scene_id,layer_number,layer_id,full_requirement_json,subtype_action_json)
       VALUES (?,?,?,?,?)""",
       (s["scene_id"],i,layer["id"],js(layer["required"]),js(action)))
-    citations=db.execute("""SELECT book_id,section_key,original_source_sha256,
-       original_case_id,source_lines_json,source_snippets_json,source_phase,
-       feedback_not_initial_reasoning
+    citations=db.execute("""SELECT book_id,source_section_key,source_sha256,
+       case_id,original_source_line_numbers_json,original_book_snippets_json,original_phase_role,
+       is_future_feedback
        FROM phrase_intent_evidence_links
        WHERE intent_id=? ORDER BY source_ordinal""",(pid,)).fetchall()
     if not citations:raise ValueError("No actual canonical book evidence for "+pid)
