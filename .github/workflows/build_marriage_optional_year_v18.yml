@@ -1,0 +1,27 @@
+name: Marriage V1.8 Optional Nianming Source Method Tests
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/marriage_no_year_v18.py'
+      - 'tests/test_marriage_no_year_v18.py'
+      - 'scripts/build_marriage_optional_year_v18.py'
+      - 'schema/migrations/046_marriage_optional_nianming_v18.sql'
+      - '.github/workflows/build_marriage_optional_year_v18.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify zero missing-year invention, 22 scenario paths, original book SHA and family holdout
+        run: python -m unittest discover -s tests -p test_marriage_no_year_v18.py -v
