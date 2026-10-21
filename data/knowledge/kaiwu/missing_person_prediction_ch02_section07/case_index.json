@@ -1,0 +1,315 @@
+{
+  "source_sha256": "193e1eb8438a83e1408efa804daf66ea43e64f36155e221be23c9de53215ab71",
+  "cases": [
+    {
+      "key": "niece_1998",
+      "id": "kaiwu.missing.19980409.zhao_niece",
+      "title": "1998赵经理外甥女失踪",
+      "bounds": [
+        3,
+        60
+      ],
+      "question": [
+        4,
+        6
+      ],
+      "charts": [
+        [
+          9,
+          6,
+          "1998-04-09",
+          "壬辰",
+          "inquiry_time"
+        ],
+        [
+          36,
+          33,
+          "1998-02-28",
+          "戊戌",
+          "known_disappearance_time"
+        ]
+      ],
+      "steps": [
+        27,
+        28,
+        29,
+        30,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "pred": [
+        30,
+        58
+      ],
+      "feedback": [
+        59
+      ],
+      "editor": [],
+      "facets": [
+        "missing_person",
+        "relationship"
+      ],
+      "notes": "One woman, two source chart times; disappearance Feb28, found May5 after 66 days; first query-time cast and second disappearance-time cast are not independent event successes",
+      "casts": [
+        {
+          "key": "primary",
+          "start": 9,
+          "end": 24,
+          "calendar": 6,
+          "date": "1998-04-09",
+          "hour": "壬辰",
+          "kind": "inquiry_time",
+          "sha": "8d9730d25e5f25d47957f1bf8ec8be194234ea85fad34e60fdaaeb7a0a1ea154"
+        },
+        {
+          "key": "additional_1",
+          "start": 36,
+          "end": 51,
+          "calendar": 33,
+          "date": "1998-02-28",
+          "hour": "戊戌",
+          "kind": "known_disappearance_time",
+          "sha": "376e8985c5dc32f927775f012e7ab48870e998f1707743de51381296879a7d35"
+        }
+      ]
+    },
+    {
+      "key": "student_1998",
+      "id": "kaiwu.missing.19980802.zhao_student",
+      "title": "1998江苏大学生离家出走",
+      "bounds": [
+        61,
+        95
+      ],
+      "question": [
+        62,
+        64
+      ],
+      "charts": [
+        [
+          67,
+          64,
+          "1998-07-02",
+          "辛巳",
+          "known_disappearance_time"
+        ]
+      ],
+      "steps": [
+        85,
+        86,
+        87,
+        88
+      ],
+      "pred": [
+        90
+      ],
+      "feedback": [
+        91
+      ],
+      "editor": [
+        93,
+        94
+      ],
+      "facets": [
+        "missing_person",
+        "education"
+      ],
+      "notes": "Predicted Aug16 return and within 20 days; actual Aug17, one-day timing miss, author corrects rigid year/month/day/hour rule after outcome",
+      "casts": [
+        {
+          "key": "primary",
+          "start": 67,
+          "end": 82,
+          "calendar": 64,
+          "date": "1998-07-02",
+          "hour": "辛巳",
+          "kind": "known_disappearance_time",
+          "sha": "3565506214307f93e9a378817bd2075a4da939ebcf930c39bad2f3b913c14d26"
+        }
+      ]
+    },
+    {
+      "key": "waitresses_1998",
+      "id": "kaiwu.missing.19980826.two_waitresses",
+      "title": "1998湖南两名女服务员被带走",
+      "bounds": [
+        96,
+        128
+      ],
+      "question": [
+        97,
+        98
+      ],
+      "charts": [
+        [
+          101,
+          98,
+          "1998-08-26",
+          "甲申",
+          "disappearance_time"
+        ]
+      ],
+      "steps": [
+        119,
+        120,
+        121,
+        122,
+        123
+      ],
+      "pred": [
+        119,
+        121,
+        122,
+        123
+      ],
+      "feedback": [
+        124,
+        125
+      ],
+      "editor": [
+        127
+      ],
+      "facets": [
+        "missing_person",
+        "criminal_case"
+      ],
+      "notes": "One hotel request, two missing waitresses; Aug31 contact/location learned, Sep10 both physically located; editor modified student's original narration in book",
+      "casts": [
+        {
+          "key": "primary",
+          "start": 101,
+          "end": 116,
+          "calendar": 98,
+          "date": "1998-08-26",
+          "hour": "甲申",
+          "kind": "disappearance_time",
+          "sha": "b5632afc062d1e872529e97d4893521f9a73f0da75be64c5cdcb7d8984829c80"
+        }
+      ]
+    },
+    {
+      "key": "taxi_male_1999",
+      "id": "kaiwu.missing.19990309.hao_male_taxi",
+      "title": "1999郝星立测男性出租车司机遇害",
+      "bounds": [
+        129,
+        167
+      ],
+      "question": [
+        130,
+        135
+      ],
+      "charts": [
+        [
+          138,
+          135,
+          "1999-03-09",
+          "乙酉",
+          "inquiry_time"
+        ]
+      ],
+      "steps": [
+        156,
+        157,
+        158,
+        159,
+        160,
+        161
+      ],
+      "pred": [
+        131,
+        132,
+        160,
+        161
+      ],
+      "feedback": [
+        133,
+        162
+      ],
+      "editor": [
+        164,
+        165,
+        166
+      ],
+      "facets": [
+        "missing_person",
+        "criminal_case"
+      ],
+      "notes": "Male taxi driver 1979, reported homicide and hijacked car; NOT older Shenqi case10 female driver Ma Lande; note older book reference only",
+      "casts": [
+        {
+          "key": "primary",
+          "start": 138,
+          "end": 153,
+          "calendar": 135,
+          "date": "1999-03-09",
+          "hour": "乙酉",
+          "kind": "inquiry_time",
+          "sha": "355890e0368fbb3fd4693b345a00376e5cc611b0590991d6f05e757cb7f42468"
+        }
+      ]
+    },
+    {
+      "key": "college_girl_2000",
+      "id": "kaiwu.missing.20000811.zhou_female_student",
+      "title": "2000周平测女大学生失踪",
+      "bounds": [
+        168,
+        200
+      ],
+      "question": [
+        169,
+        171
+      ],
+      "charts": [
+        [
+          174,
+          171,
+          "2000-08-07",
+          "己酉",
+          "departure_time"
+        ]
+      ],
+      "steps": [
+        193,
+        194,
+        195,
+        196,
+        197
+      ],
+      "pred": [
+        193,
+        194,
+        195,
+        196,
+        197
+      ],
+      "feedback": [
+        198
+      ],
+      "editor": [
+        200
+      ],
+      "facets": [
+        "missing_person",
+        "criminal_case"
+      ],
+      "notes": "Original chart has extra damaged OCR row under first band; preserve source extra row; report states safe Aug15 return, not externally verified",
+      "casts": [
+        {
+          "key": "primary",
+          "start": 174,
+          "end": 190,
+          "calendar": 171,
+          "date": "2000-08-07",
+          "hour": "己酉",
+          "kind": "departure_time",
+          "sha": "61674fb41a4bedc767fee682fbffe138ceb93a6e0df9872cc741990059e451a3"
+        }
+      ]
+    }
+  ]
+}
