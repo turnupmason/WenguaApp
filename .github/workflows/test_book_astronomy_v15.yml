@@ -1,0 +1,41 @@
+name: Kaiwu Source-Verified Astronomy and Marriage Timing Regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/astro_calendar.py'
+      - 'src/wengua/book_timing_runtime.py'
+      - 'tests/test_astro_calendar_book_timing_v15.py'
+      - '.github/workflows/test_book_astronomy_v15.yml'
+  workflow_dispatch:
+jobs:
+  calendar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install fixed Swiss Ephemeris Moshier astronomy implementation
+        run: python -m pip install --disable-pip-version-check --only-binary=:all: pyswisseph==2.10.3.2
+      - name: Compare old two-book casting dates, solar Jie months and author-first Zi/Chou timing
+        run: python -m unittest discover -s tests -p test_astro_calendar_book_timing_v15.py -v
+      - name: Source-four-pillars and case01 author forecast timing diagnostics
+        run: |
+          python - <<'PY'
+          from src.wengua.astro_calendar import solar_chart_clock
+          from src.wengua.book_timing_runtime import book_case01_marriage_timing_study
+          a=solar_chart_clock('1998-12-16T12:00:00+08:00','Asia/Shanghai')
+          b=solar_chart_clock('1999-01-17T12:00:00+08:00','Asia/Shanghai')
+          study=book_case01_marriage_timing_study()
+          assert a['four_pillars']['month']=='甲子'
+          assert a['four_pillars']['day']=='丁酉'
+          assert b['four_pillars']['day']=='己巳' and b['four_pillars']['month'][1]=='丑'
+          assert len(study['actual_solar_month_candidates_pre_feedback'])==2
+          assert all(x['falls_inside_initial_author_candidate_month'] for x in study['posterior_validation_only_not_prediction_input'])
+          print('Computed book author first timing:',study['actual_solar_month_candidates_pre_feedback'])
+          PY
