@@ -157,7 +157,7 @@ def add_case(db,L,e,sid):
   phase(db,L,e,"initial_forecast_"+str(i),"author_claim_source",n)
  for i,n in enumerate(e["feedback"],1):
   phase(db,L,e,"book_feedback_"+str(i),"book_reported_later_weather_event",n,
-   {"no_instrumental_station_or_river_level_series":True})
+   extra={"no_instrumental_station_or_river_level_series":True})
  if cid.endswith("case01"):
   phase(db,L,e,"house_moving_mention","third_party_auspicious_date_only_no_weather_outcome",44,
    {"not_an_independent_complete_historical_weather_case":True})
