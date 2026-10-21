@@ -1,0 +1,93 @@
+name: Archive 194-case Marriage V1.6 Author-Initial Judgment and Historical Family Holdouts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/marriage_judgment_v16.py'
+      - 'scripts/evaluate_marriage_family_holdout_v16.py'
+      - 'schema/migrations/044_marriage_source_initial_judgment_and_family_holdout_v16.sql'
+      - 'scripts/build_marriage_judgment_v16.py'
+      - 'tests/test_marriage_source_blind_v16.py'
+      - 'tests/test_marriage_family_eval_v16.py'
+      - 'tests/test_marriage_judgment_v16_archive.py'
+      - '.github/workflows/build_marriage_judgment_v16.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Independently execute initial source reasoning with historical family holdout
+        run: |
+          python -m unittest discover -s tests -p test_marriage_source_blind_v16.py -v
+          python -m unittest discover -s tests -p test_marriage_family_eval_v16.py -v
+          python -m unittest discover -s tests -p test_marriage_judgment_v16_archive.py -v
+      - name: Append source-blind development cases and original book feedback to two separate tables
+        run: |
+          python -m scripts.build_marriage_judgment_v16 \
+            --base 'archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/marriage_v1_6/initial_and_posthoc'
+      - name: Compress full V1.6 SQLite and make honest accuracy/error manifest
+        run: |
+          python - <<'PY'
+          import json,hashlib,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3'
+          packed=new.with_suffix('.sqlite3.xz')
+          packed.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          hashfile=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          r=json.loads(Path('data/knowledge/phrase_library/marriage_v1_6/initial_and_posthoc/manifest.json').read_text('utf8'))
+          assert hashfile(old)==r['complete_parent_archive_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           counts={t:db.execute('SELECT COUNT(*) FROM "'+t+'"').fetchone()[0] for t in r['counts']}
+          assert counts==r['counts']
+          assert counts['cases']==194 and counts['marriage_v16_post_inference_labels']==3
+          assert counts['marriage_v16_historical_initial_verdicts']==3
+          report={'schema':'wengua_marriage_source_initial_and_family_holdout_v16',
+           'parent_full_sqlite':str(old),'parent_sha256':hashfile(old),
+           'latest_full_sqlite':str(new),'sha256':hashfile(new),'size_bytes':new.stat().st_size,
+           'compressed_sqlite':str(packed),'compressed_sha256':hashfile(packed),
+           'compressed_size_bytes':packed.stat().st_size,
+           'book_cases_retained':194,'prior_22_scenes':22,
+           'source_verified_heldout_question_circuits':3,
+           'source_deities_and_doors_compared':24,
+           'distinct_historical_event_families_held_out':2,
+           'matched_book_followup_in_dev':1,'not_matched_book_followup_in_dev':2,
+           'not_a_never_seen_final_blind_test':True,
+           'real_world_predictions_claimed':0,'prior_source_data_changed':False,
+           'integrity_check':'ok','foreign_key_errors':0,'counts':counts}
+          (root/'shenqi21_kaiwu22_marriage_author_family_dev_v16_manifest.json').write_text(
+            json.dumps(report,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(report,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: marriage-v16-author-initial-and-true-dev-misses-full-194-case-sqlite
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_marriage_author_family_dev_v16_manifest.json
+          retention-days: 30
+      - name: Push append-only full SQLite, XZ, errors and exact source journal to main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_marriage_author_family_dev_v16_manifest.json' \
+            'data/knowledge/phrase_library/marriage_v1_6/initial_and_posthoc/'
+          git diff --cached --check
+          git commit -m 'Archive full 194-source-case database with family holdout author judgment, one match and two explicit misses'
+          git push origin HEAD:main
