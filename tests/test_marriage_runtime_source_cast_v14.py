@@ -146,4 +146,34 @@ class SourceChartBridgeTests(unittest.TestCase):
    self.assertIsNone(written["human_natural_phrase"])
    self.assertEqual(FULL_DB.stat().st_size,original_size)
 
+
+ def test_real_civil_clock_four_pillars_enforce_original_cast_before_timing(self):
+  import copy
+  chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
+  payload={"chart":chart,
+   "calendar_inputs":{"day_ganzhi":"癸酉","solar_term":"芒种","hour_ganzhi":"丁巳",
+    "year_ganzhi":"乙亥","month_ganzhi":"壬午",
+    "local_time_iso":"1995-06-11T10:00:00+08:00","iana_timezone":"Asia/Shanghai"},
+   "inquiry":{"domain":"marriage","scene_id":"marriage.scene.01",
+     "question_text":"我何时能够确定恋爱关系？","relationship":"self",
+     "subject":{"year_ganzhi":"乙酉"},"partner":{"year_ganzhi":"庚寅"}}}
+  result=inspect_marriage_chart_json(db_path=FULL_DB,payload=payload)
+  self.assertTrue(result["calendar_independently_verified"])
+  self.assertEqual(result["astronomical_local_calendar_receipt"]["active_solar_term"],"芒种")
+  self.assertEqual(result["astronomical_local_calendar_receipt"]["four_pillars"]["hour"],"丁巳")
+  self.assertEqual(result["astronomical_local_calendar_receipt"]["four_pillars"]["month"],"壬午")
+  self.assertIn("traditional_void_timing_hypotheses",result)
+  self.assertFalse(result["traditional_void_timing_hypotheses"]["eligible_for_void_trigger"])
+  self.assertIsNone(result["traditional_forecast_result"])
+  self.assertIsNone(result["calculated_primary_timing"])
+  bad=copy.deepcopy(payload);bad["calendar_inputs"]["day_ganzhi"]="丙子"
+  with self.assertRaisesRegex(ValueError,"Civil solar-term and Ganzhi"):
+   inspect_marriage_chart_json(db_path=FULL_DB,payload=bad)
+  wrong_month=copy.deepcopy(payload);wrong_month["calendar_inputs"]["month_ganzhi"]="癸巳"
+  with self.assertRaisesRegex(ValueError,"month_ganzhi"):
+   inspect_marriage_chart_json(db_path=FULL_DB,payload=wrong_month)
+  no_zone=copy.deepcopy(payload);del no_zone["calendar_inputs"]["iana_timezone"]
+  with self.assertRaisesRegex(ValueError,"Both local_time_iso"):
+   inspect_marriage_chart_json(db_path=FULL_DB,payload=no_zone)
+
 if __name__=="__main__":unittest.main()
