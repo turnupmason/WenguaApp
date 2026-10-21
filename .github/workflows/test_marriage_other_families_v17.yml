@@ -1,0 +1,28 @@
+name: Marriage V1.7 Source-conditioned Family Holdout Tests
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/marriage_book_combinator_v17.py'
+      - 'scripts/evaluate_marriage_other_families_v17.py'
+      - 'tests/test_marriage_combinator_v17.py'
+      - 'tests/test_marriage_other_families_v17.py'
+      - '.github/workflows/test_marriage_other_families_v17.yml'
+  workflow_dispatch:
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test source-sha rule catalog and additional historical-family study
+        run: |
+          python -m unittest discover -s tests -p test_marriage_combinator_v17.py -v
+          python -m unittest discover -s tests -p test_marriage_other_families_v17.py -v
+      - name: Print honest source-family no-ground-truth study audit
+        run: python -m scripts.evaluate_marriage_other_families_v17
