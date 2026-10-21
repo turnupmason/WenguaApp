@@ -724,3 +724,7 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 
 完整 V1.6 SQLite archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3，14,534,656字节，SHA256 89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4；XZ 1,154,228字节，SHA256 168db015644c9ad4e86a8d1f8573703de80f7555dd400404d85b50a0afea8942；manifest archives/sqlite/shenqi21_kaiwu22_marriage_author_family_dev_v16_manifest.json。旧194案例、43章、22场景、9旧流程、20原书应期、4语言草稿均原行保留。迁移044 +独立后验标签物理分表+ 专用GitHub archive 均完成，数据库 integrity_check=ok，外键错误0。详细方法和错误报告 docs/MARRIAGE_SOURCE_BLIND_JUDGMENT_V1_6.md。
 
+## V1.6 RUNNABLE UNSEEN CHART JSON ENTRYPOINT
+
+新增可以直接执行的真实盘面JSON -> 自主古籍初断CLI：scripts/run_marriage_judgment_v16.py。输入上一版盘面九宫JSON（已经由同一现有时家转盘引擎对照重起）+经离线节气历法校验的年月日时、真实问者/当事人/伴侣的年命、婚姻22场景scene_id和具体问事；以 --database 指向V1.6最新完整历史194案SQLite，以 --input 指向原始JSON，以 --output 指向新创建的独立审计输出文件。可选 --exclude-event-family 用于历史family全隔离研发研究，不是让用户输入自己的问题答案。禁止由caller status自称engine_verified绕过、禁止覆盖书原文或完整SQLite、禁止复制任何heldout家族作者结论/反馈到第5层、禁止GPT在核心判定前补写日期。无必要人物年命/实际可核历法会阻断。确切2026年新用户预测尚无经六层完整封存验证，输出的traditional_initial_outcome与conditional_timing属于古籍来源的传统研究初断、publication_ready=false，不能伪称现实事件100%命中。真实用法及案例参数见 docs/MARRIAGE_SOURCE_BLIND_JUDGMENT_V1_6.md；自动测试 tests/test_marriage_json_judgment_v16.py 独立覆盖了CLI路径、古籍家族初断不泄漏、具体子月候选与SQLite不被覆盖。程序可连接完整数据库，但本阶段尚未声称全24项物理因素和所有22婚姻细场景得到最终实战验证。
+

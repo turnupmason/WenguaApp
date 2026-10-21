@@ -120,7 +120,10 @@
       "dev_mismatched_book_followup_outcomes": 2,
       "historical_book_source_labels_as_initial_inference": false,
       "source_development_holdout_is_never_seen_sealed_test": false,
-      "correctly_verified_new_real_world_marriage_forecast_count": 0
+      "correctly_verified_new_real_world_marriage_forecast_count": 0,
+      "public_json_book_first_judgment_entrypoint": "scripts/run_marriage_judgment_v16.py",
+      "json_cli_tests": "tests/test_marriage_json_judgment_v16.py",
+      "real_world_marriage_forecast_release_status": "blocked_pending_full_six_layer_original_book_validation"
     },
     "employment": {
       "stage": "taxonomy_only_next_domains_wait_for_marriage_quality_gate",

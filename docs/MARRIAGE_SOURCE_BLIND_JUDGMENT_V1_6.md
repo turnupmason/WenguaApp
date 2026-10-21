@@ -40,3 +40,7 @@
 
 实现作者经常在“年命比和但离婚”及“年命生扶但相亲不成”中实际调用的乙庚配对、六合方向克应、月日太岁、六仪击刑、入墓、伏吟反吟、时干事体等条件和冲突优先级。每一条要写明 book section/line/hash、适用关系、正反例、应期触发条件及证据为何不充分，**不得把3道已经看过答案的开发题当成新秘密盲测**；改进后使用其他尚未用于本轮调参的历史家族，并保留所有失败数据。全部24项真实计算且第5层成败/应期可辩时，第6层GPT再生成约200字的自然中文结论。
 
+## V1.6 RUNNABLE UNSEEN CHART JSON ENTRYPOINT
+
+新增可以直接执行的真实盘面JSON -> 自主古籍初断CLI：scripts/run_marriage_judgment_v16.py。输入上一版盘面九宫JSON（已经由同一现有时家转盘引擎对照重起）+经离线节气历法校验的年月日时、真实问者/当事人/伴侣的年命、婚姻22场景scene_id和具体问事；以 --database 指向V1.6最新完整历史194案SQLite，以 --input 指向原始JSON，以 --output 指向新创建的独立审计输出文件。可选 --exclude-event-family 用于历史family全隔离研发研究，不是让用户输入自己的问题答案。禁止由caller status自称engine_verified绕过、禁止覆盖书原文或完整SQLite、禁止复制任何heldout家族作者结论/反馈到第5层、禁止GPT在核心判定前补写日期。无必要人物年命/实际可核历法会阻断。确切2026年新用户预测尚无经六层完整封存验证，输出的traditional_initial_outcome与conditional_timing属于古籍来源的传统研究初断、publication_ready=false，不能伪称现实事件100%命中。真实用法及案例参数见 docs/MARRIAGE_SOURCE_BLIND_JUDGMENT_V1_6.md；自动测试 tests/test_marriage_json_judgment_v16.py 独立覆盖了CLI路径、古籍家族初断不泄漏、具体子月候选与SQLite不被覆盖。程序可连接完整数据库，但本阶段尚未声称全24项物理因素和所有22婚姻细场景得到最终实战验证。
+
