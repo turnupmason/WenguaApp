@@ -47,6 +47,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/029_kaiwu_travel_two_casts_retrospective.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/030_kaiwu_criminal_shared_domain_two_cases.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/031_kaiwu_weather_flattened_original_panels.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/032_kaiwu_lifetime_crossbook_retrospectives.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 
