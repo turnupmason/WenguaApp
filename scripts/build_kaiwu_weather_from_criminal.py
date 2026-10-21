@@ -160,7 +160,7 @@ def add_case(db,L,e,sid):
    extra={"no_instrumental_station_or_river_level_series":True})
  if cid.endswith("case01"):
   phase(db,L,e,"house_moving_mention","third_party_auspicious_date_only_no_weather_outcome",44,
-   {"not_an_independent_complete_historical_weather_case":True})
+   extra={"not_an_independent_complete_historical_weather_case":True})
  else:
   phase(db,L,e,"already_raging_flood","flood_is_publicly_known_at_1998_inquiry",47,50)
   phase(db,L,e,"six_yao_mention","separate_unprinted_method_not_another_Qimen_cast",48)
