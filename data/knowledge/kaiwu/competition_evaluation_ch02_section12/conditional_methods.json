@@ -1,0 +1,136 @@
+{
+  "source_sha256": "ef2f70119c7e4a1a12d42430b786f7aac6d921cc83b25bebcb0ef1dd9eec731b",
+  "methods": [
+    {
+      "key": "school_questioner_day",
+      "case": "kaiwu.competition.case01",
+      "source_line": 33,
+      "conditions": [
+        "school_principal_asking",
+        "day_stem_known"
+      ],
+      "summary": "日干为校长,以惊门玄武等判断忧扰",
+      "review_status": "draft"
+    },
+    {
+      "key": "school_opponent_hour",
+      "case": "kaiwu.competition.case01",
+      "source_line": 35,
+      "conditions": [
+        "school_accreditation_dispute",
+        "hour_stem_known"
+      ],
+      "summary": "时干代表原书所称对立者/告状者;月干为其他官员",
+      "review_status": "draft"
+    },
+    {
+      "key": "school_document_gate",
+      "case": "kaiwu.competition.case01",
+      "source_line": 35,
+      "conditions": [
+        "school_accreditation_dispute",
+        "jing_door_known"
+      ],
+      "summary": "景门被用作报告与状纸，考量空亡等条件",
+      "review_status": "draft"
+    },
+    {
+      "key": "school_approval_gate",
+      "case": "kaiwu.competition.case01",
+      "source_line": 39,
+      "conditions": [
+        "school_rank_review",
+        "kai_gate_known"
+      ],
+      "summary": "开门作学校或批准机关；必须结合实际问事角色",
+      "review_status": "draft"
+    },
+    {
+      "key": "school_gan_year_stem",
+      "case": "kaiwu.competition.case01",
+      "source_line": 69,
+      "conditions": [
+        "school_rank_review",
+        "day_time_year_stems_known"
+      ],
+      "summary": "日干时干和太岁关系、开门生助仅属作者论证",
+      "review_status": "draft"
+    },
+    {
+      "key": "school_approval_timing",
+      "case": "kaiwu.competition.case01",
+      "source_line": 71,
+      "conditions": [
+        "school_review_pending",
+        "solar_term_date_and_clash_available"
+      ],
+      "summary": "伏吟逢冲、乾宫批准与芒种夏至间的作者应期链",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_judge_zhifu",
+      "case": "kaiwu.competition.case02",
+      "source_line": 102,
+      "conditions": [
+        "academic_debate_competition",
+        "zhifu_known"
+      ],
+      "summary": "竞赛用值符为裁判、景门为指导老师",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_home_away_stems",
+      "case": "kaiwu.competition.case02",
+      "source_line": 102,
+      "conditions": [
+        "academic_debate_competition",
+        "home_away_relationship_known"
+      ],
+      "summary": "原书以地盘时干主队天盘时干客队且日干代表女儿学校",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_gold_xin",
+      "case": "kaiwu.competition.case02",
+      "source_line": 104,
+      "conditions": [
+        "academic_debate_competition",
+        "xin_symbol_known"
+      ],
+      "summary": "辛对应书中金牌象，用神选择需来源限制",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_coach_jing",
+      "case": "kaiwu.competition.case02",
+      "source_line": 108,
+      "conditions": [
+        "academic_debate_competition",
+        "jing_door_and_day_palaces_known"
+      ],
+      "summary": "景门指导老师、相生与螣蛇交互研判",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_opponent_month",
+      "case": "kaiwu.competition.case02",
+      "source_line": 112,
+      "conditions": [
+        "academic_debate_competition",
+        "month_stem_and_opponent_relation_known"
+      ],
+      "summary": "月干壬为对手、惊门口才，分组第一与总体第一不可混淆",
+      "review_status": "draft"
+    },
+    {
+      "key": "debate_editor_revision",
+      "case": "kaiwu.competition.case02",
+      "source_line": 120,
+      "conditions": [
+        "later_editorial_review"
+      ],
+      "summary": "张志春明言个别分析不当经过修改加工, 不可将编辑后文章全部视为原始未改预测",
+      "review_status": "draft"
+    }
+  ]
+}

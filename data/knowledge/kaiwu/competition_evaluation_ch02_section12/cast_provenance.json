@@ -1,0 +1,273 @@
+{
+  "source_sha256": "ef2f70119c7e4a1a12d42430b786f7aac6d921cc83b25bebcb0ef1dd9eec731b",
+  "casts": [
+    {
+      "case_id": "kaiwu.competition.case01",
+      "episode": "jul1998_missing",
+      "source_span": [
+        5,
+        10
+      ],
+      "date_claim": "1998-07 unknown day/hour",
+      "status": "historical_original_lost",
+      "exact_original_chart_OCR_span": null,
+      "line_hashes": [],
+      "not_original_verified_grid": true
+    },
+    {
+      "case_id": "kaiwu.competition.case01",
+      "episode": "nov1998",
+      "source_span": [
+        11,
+        41
+      ],
+      "date_claim": "1998-11-14 16:15",
+      "status": "printed_OCR_flattened",
+      "exact_original_chart_OCR_span": [
+        15,
+        29
+      ],
+      "line_hashes": [
+        {
+          "line": 15,
+          "sha256": "7b48f82c68f7cbd5b8d0112b64f117540b364caa272a265d8bbcc5ba709bc85f"
+        },
+        {
+          "line": 16,
+          "sha256": "d6c72bfd5ba5b0635ea152c3a02ecea5008f2b75384061798220aee7d70afcdc"
+        },
+        {
+          "line": 17,
+          "sha256": "fba36fcfba6a081b9394c800472cfe2cf9a74f767fc4a7dd1d9dd6d379715d12"
+        },
+        {
+          "line": 18,
+          "sha256": "5f869aa227d22e710e20058cde8a751b7523baff32cedff7021a0abc8cbd9e70"
+        },
+        {
+          "line": 19,
+          "sha256": "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709"
+        },
+        {
+          "line": 20,
+          "sha256": "473902d36bdfba6fb3358359dab33e4817638db2f4090362d9b884eb90e27b72"
+        },
+        {
+          "line": 21,
+          "sha256": "3f1c895b782e15fb0f142e5357113c9151a7cf9841ce65c2cb113caa9191da61"
+        },
+        {
+          "line": 22,
+          "sha256": "9ab0b7a91a73ec81c7018f02a2d92cbe77f330da4c14c1b43884e1e8303375a5"
+        },
+        {
+          "line": 23,
+          "sha256": "0e004b7cc99852ce20ddab54a40c1e635a21b670b55293e7bd683545c25c7ca1"
+        },
+        {
+          "line": 24,
+          "sha256": "1d864c97a70c6e551e0ac5cabf9139180c2721c63bf3fadbf97c537f3a192ea9"
+        },
+        {
+          "line": 25,
+          "sha256": "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340"
+        },
+        {
+          "line": 26,
+          "sha256": "1c1f5bd0ba21899a2930aede3d7bf4f9f71c55570a6b097eef989b67e92394e3"
+        },
+        {
+          "line": 27,
+          "sha256": "0bfb484b0effc0cd809904d3257db54411cc7fa13f9db69c9c2f1a4069690e9f"
+        },
+        {
+          "line": 28,
+          "sha256": "23c9b1f36a430d8d7ffd87aab700eeb93646322f9e699b77d9aa90a6c517961b"
+        },
+        {
+          "line": 29,
+          "sha256": "d0bf3d642824032f415e4eb738e20458b8a4e0e3a70212ed025ec3e6b7334b17"
+        }
+      ],
+      "not_original_verified_grid": true
+    },
+    {
+      "case_id": "kaiwu.competition.case01",
+      "episode": "jun1999",
+      "source_span": [
+        42,
+        73
+      ],
+      "date_claim": "1999-06-06 19:40",
+      "status": "printed_OCR_flattened",
+      "exact_original_chart_OCR_span": [
+        46,
+        63
+      ],
+      "line_hashes": [
+        {
+          "line": 46,
+          "sha256": "e3f5e3921fc1c02be66eee446f8914dfaa69dc278bdc5da14a5e637f905c3af7"
+        },
+        {
+          "line": 47,
+          "sha256": "89346ab1782060fbcd2b60d3869e0a50c65a623ce0213e677ddf2fb84ba1b18b"
+        },
+        {
+          "line": 48,
+          "sha256": "2c91dd8822b51c634aa9b3a5c2ed9109450d9ad954d67c674c4f17a33c9eef68"
+        },
+        {
+          "line": 49,
+          "sha256": "21ca8193887108abb08677d1ad8308e7ec49c02b02cc041fbe3971f0c7ed1049"
+        },
+        {
+          "line": 50,
+          "sha256": "dbf22e15759a42d10dfad0f4121b322041c6568564b9eba09dd441f57e19a397"
+        },
+        {
+          "line": 51,
+          "sha256": "0918a8416d6c83a4f78da7cdba4258ef7084f2464b016b7233e1d39343343d6d"
+        },
+        {
+          "line": 52,
+          "sha256": "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340"
+        },
+        {
+          "line": 53,
+          "sha256": "473902d36bdfba6fb3358359dab33e4817638db2f4090362d9b884eb90e27b72"
+        },
+        {
+          "line": 54,
+          "sha256": "3f1c895b782e15fb0f142e5357113c9151a7cf9841ce65c2cb113caa9191da61"
+        },
+        {
+          "line": 55,
+          "sha256": "14ea7aaea3064b7934f831759421af792b43940308b761f48ff56eecfec3edbd"
+        },
+        {
+          "line": 56,
+          "sha256": "7c29b6735b15308ae09ab5bbeb7b2683459818f6883cbd9c2ef86fc2b929e551"
+        },
+        {
+          "line": 57,
+          "sha256": "249ea41b90ad372fcb50a87eb393a9ea4b40185683ab398d0745f04e11548abf"
+        },
+        {
+          "line": 58,
+          "sha256": "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709"
+        },
+        {
+          "line": 59,
+          "sha256": "a68f40020b1d181c31a351fbaf654e4421ec6aa354741d4a017b699b650b9d8b"
+        },
+        {
+          "line": 60,
+          "sha256": "e6340082050240c71c3d3fa1b8e399f7c416f0ec86ab03b6a78320b44c107a7d"
+        },
+        {
+          "line": 61,
+          "sha256": "13414fb30e1435131c73adc17fe1769dbdb9197b1984f6af68f891425c84a757"
+        },
+        {
+          "line": 62,
+          "sha256": "3521a4eb63eea57fcfa4601f7ebbc9473c15bbb8fa77555c1f87a849ddee0950"
+        },
+        {
+          "line": 63,
+          "sha256": "59316dd75ef7db9f30b2acc9601ea1b2f530a366e3cd83119cda4c0cad719ed8"
+        }
+      ],
+      "not_original_verified_grid": true
+    },
+    {
+      "case_id": "kaiwu.competition.case02",
+      "episode": "debate1999",
+      "source_span": [
+        75,
+        120
+      ],
+      "date_claim": "1999-08-27 22:45",
+      "status": "printed_OCR_flattened",
+      "exact_original_chart_OCR_span": [
+        79,
+        96
+      ],
+      "line_hashes": [
+        {
+          "line": 79,
+          "sha256": "e49587b1da36007f0f2ac9b5ad5b536e2753857be920c2553b636abf38294709"
+        },
+        {
+          "line": 80,
+          "sha256": "930a580fa7054fd3acaefd0649bd25efd7155d22ef13dce4f5f7574bd376c510"
+        },
+        {
+          "line": 81,
+          "sha256": "255ddbb716c6e82e2482d07e28bd56417c4789024d21b059227b02045c36e3b6"
+        },
+        {
+          "line": 82,
+          "sha256": "53fe335e783d07eea4d3d9c37d60ba5bf324337d5c24d6cfaea557c80d4d5920"
+        },
+        {
+          "line": 83,
+          "sha256": "c842b41e5c0c1dda98e872f99d850f9c11315fd5337ffdc61b2d624180ddd8ef"
+        },
+        {
+          "line": 84,
+          "sha256": "8b3ee8cfbfd5a2dc761802d416826e2aee6c1fe17cf8ac403bc003c6c8ee7731"
+        },
+        {
+          "line": 85,
+          "sha256": "b2da201123a3145262bf8acc98014971f47b9961e9df8910a7e25a5a19fdb8ff"
+        },
+        {
+          "line": 86,
+          "sha256": "78df214e37ef162d5d2868c430ede399ad86aaf09ffbc4400c62e5727d5d1340"
+        },
+        {
+          "line": 87,
+          "sha256": "e05b7e3944e7fe980c39f7f0a3d47c6930d51783975235d7654e07b5656205fe"
+        },
+        {
+          "line": 88,
+          "sha256": "50e1a97acc3649c69f99fccab1956f58b3ab217e9c4f5cbb99b5bb9556a52d91"
+        },
+        {
+          "line": 89,
+          "sha256": "14ea7aaea3064b7934f831759421af792b43940308b761f48ff56eecfec3edbd"
+        },
+        {
+          "line": 90,
+          "sha256": "6248714c2040a08e8c79edb833af1e214dec21a22b1a0a9cc2a9e392887402f7"
+        },
+        {
+          "line": 91,
+          "sha256": "a3077fadd83b268e62c9d7eb3455d8b6e01c599ee8fab07e4976a0b39e7d9763"
+        },
+        {
+          "line": 92,
+          "sha256": "a536deee83f705c0d7efd366198b6d663d57d4692458ba685d06c7f970d9b23a"
+        },
+        {
+          "line": 93,
+          "sha256": "1847821837fc76b501b6b783fbb8f092beef849bb5805c4968f5f28aa2e0578a"
+        },
+        {
+          "line": 94,
+          "sha256": "78c5b9354472c31c75c12b8fe0c66a4658cf0b584d9f542b022c1baa6661d18e"
+        },
+        {
+          "line": 95,
+          "sha256": "0a9fb75a4c7d63707e8804e07aa2572dfdbddad390b1ed561c6497e1cada1d68"
+        },
+        {
+          "line": 96,
+          "sha256": "fc912d591447c9e34912d3e1f89415d3e3739ccfa2b3c0799a27bbc714a77e5d"
+        }
+      ],
+      "not_original_verified_grid": true
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "source_sha256": "ef2f70119c7e4a1a12d42430b786f7aac6d921cc83b25bebcb0ef1dd9eec731b",
+  "cases": [
+    {
+      "case_id": "kaiwu.competition.case01",
+      "source_lines": [
+        3,
+        73
+      ],
+      "question_lines": [
+        3,
+        6
+      ],
+      "analysis_episodes": {
+        "nov1998": [
+          33,
+          35,
+          37,
+          39
+        ],
+        "jun1999": [
+          67,
+          69,
+          71
+        ]
+      },
+      "original_prediction_lines": [
+        [
+          7,
+          7
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          40,
+          40
+        ],
+        [
+          72,
+          72
+        ]
+      ],
+      "result_lines": [
+        [
+          8,
+          8
+        ],
+        [
+          41,
+          41
+        ],
+        [
+          73,
+          73
+        ]
+      ],
+      "source_domain": "competition_evaluation",
+      "multi_cast_same_event": true,
+      "note": "One single continuing school accreditation; 1998 July no time and chart missing; Nov and June independent recasts do not become new event families"
+    },
+    {
+      "case_id": "kaiwu.competition.case02",
+      "source_lines": [
+        75,
+        120
+      ],
+      "question_lines": [
+        75,
+        77
+      ],
+      "analysis_episodes": {
+        "debate1999": [
+          100,
+          102,
+          104,
+          106,
+          108,
+          110,
+          112
+        ]
+      },
+      "original_prediction_lines": [
+        [
+          102,
+          113
+        ]
+      ],
+      "result_lines": [
+        [
+          114,
+          116
+        ]
+      ],
+      "source_domain": "sports_competition",
+      "multi_cast_same_event": false,
+      "note": "A-group Xi An Jiaotong winner and B-group Egypt winner, not a single overall champion. Teacher at line 120 says some author analysis was edited after the event."
+    }
+  ]
+}
