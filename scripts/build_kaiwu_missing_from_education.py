@@ -308,7 +308,9 @@ def build(base,source,output,index_dir):
    VALUES (?,164,'shenqi','unspecified_in_source',?,?,?)""",
    (CHAPTER,"kaiwu:male_taxi_vs_shenqi_MaLande_female_taxi",
     js({"different_person":"male_driver_v_female_driver",
-        "source_quote":span(L,164),"reference_only_not_same_event":True}),"shenqi.missing.case10"))
+        "source_quote":span(L,164),"reference_only_not_same_event":True,
+        "related_old_case_index_reference":"shenqi.missing.case10",
+        "same_historical_event":False}),None))
    db.execute("""INSERT INTO chapter_archival_versions(archive_label,baseline_sha256,new_db_sha256,
      contains_complete_private_copyright_source,snapshot_type,created_utc,repo_public_archive_policy)
      VALUES (?,?,NULL,1,'shared_missing_five_events_six_source_panels_including_damaged_OCR',
