@@ -56,6 +56,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/038_marriage_phrase_library.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/039_marriage_decisive_timing_v11.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/040_marriage_intent_workflow_sources.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/041_global_six_layers_marriage22_scenarios.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))
 

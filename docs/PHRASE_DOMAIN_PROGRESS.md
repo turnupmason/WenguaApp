@@ -66,3 +66,10 @@
 - 当前完整数据库SHA256 `2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d`，路径 `archives/sqlite/WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3`，由V1.1 SHA `53bab00cefa4754753ab124b0653c0b7b2f68f0d63dae7783f6eea3d387f0e75` 无损备份增量。章节43、独立案例194、旧4原型、完整盘实例0、受审通过断语0。
 - 下个进度门槛：真实JSON九宫全24因子、人物关系年命及每问事的主次用神条件核验；结合两书作者首次推理及后验错误审计计算传统成败、候选年/月/日应期并依据真实节气历法选首选窗口。GPT仅把已决定的结果写成人话。不能生成空泛“等填实再看”或编日期。之后逐领域复制同样方法。
 
+## 2026-10-21 MARRIAGE 22 / GLOBAL SIX LAYERS V1.3 ARCHIVED
+
+WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档，采用用户提供场景作为问题目录，以原有《神奇之门》《开悟之门》婚姻14个不同历史事件和9套旧方法的真实证据链作为基础。22场景并不是22个原书独立证明的预言方法，数据库保存132条六层详细步骤、89条携带原书HASH/原字行号/原案ID的来源关联，未经书内直接核实的场景明确标记研究草稿；用户示例里的身心疾病、家暴、出轨诈骗、强烈操控性格、法院判决、财产归属等“答案锁死”全部保留审计为不可从某一格局自动认定的现实事实，改为要查证的传统候选象意。婚姻细分场景的层三取用神与层五应期目标互不混淆。全领域统一六层：核九宫→算24全盘因素→绑定六亲/具体领域用神→检索全部古籍首断证据与错例→实际作出传统结果及计算应期→GPT自然约200字表达，完成合规检查率必须100%，现实预测准确率不得承诺。
+
+**仅继承完整版V1.2** `archives/sqlite/WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3` SHA `2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d`，迁移041使用sqlite3.backup保留所有旧表历史原行。最新完成的二进制完整版V1.3路径 `archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3`，14,043,136字节、SHA256 `0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857`；xz 1,143,472字节、SHA256`d48491d9ce044d63f3e0ccdd4603e823ae3016c4fce55bf50fa548433006b827`；manifest`archives/sqlite/shenqi21_kaiwu22_marriage22_six_layer_v13_manifest.json`，integrity_check=ok，foreign keys 0。源书43节194历史整案、旧9流程72步30出处、旧4条GPT风格草稿全部保留。新增22场景132层、89个古籍重复来源见证、一个ALL_DOMAINS新合规合同与实例审批前层数trigger。**V1.3完整盘正式验收实例仍是0**，因为尚未实际接入九宫计算和独立节气历法。下一步连接JSON起盘与实际应期推理，对每个问事真正解盘和盲测。
+
+全范围指令位置：根`AGENTS.md`、`prompts/global_six_layer_reasoning_v1_3.md`、`docs/MARRIAGE_22_SCENARIO_PROTOCOL_V1_3.md`、`data/knowledge/phrase_library/marriage_v1_3/twenty_two_scene_methods.json`，运行门禁`src/wengua/six_layer_contract.py`，数据库迁移041，专用回归测试和归档Workflow。之后每个领域都必须按六层阶段100%留痕、经测试后才有可发布断语，绝不能仅将某个神煞对应一个未经证实的现实指控。

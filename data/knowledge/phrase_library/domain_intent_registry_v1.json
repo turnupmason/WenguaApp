@@ -91,7 +91,13 @@
           "time": "指定期间",
           "caution": "古籍象意不能证明现实出轨"
         }
-      ]
+      ],
+      "scene_catalog_latest": "data/knowledge/phrase_library/marriage_v1_3/twenty_two_scene_methods.json",
+      "latest_scene_protocol_version": "marriage.scene.v1.3",
+      "user_scenario_count": 22,
+      "mandatory_all_domain_six_layer_contract": "src/wengua/six_layer_contract.py",
+      "current_full_database_sha256": "0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857",
+      "actual_verified_chart_reading_instances": 0
     },
     "employment": {
       "stage": "taxonomy_only_next_domains_wait_for_marriage_quality_gate",
