@@ -1,0 +1,33 @@
+{
+  "schema": "wengua_marriage_question_specific_workflows_v1_2",
+  "parent_complete_sqlite_sha256": "53bab00cefa4754753ab124b0653c0b7b2f68f0d63dae7783f6eea3d387f0e75",
+  "full_new_sqlite_sha256": "2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d",
+  "workflow_source_json_sha256": "aa192678e1f6d14c0474c0aaec36148b372c65c7ff4f4aad3e25ae81b9642bb2",
+  "workflow_version": "marriage.intent.v1.2",
+  "domains_completed_for_method_design": 1,
+  "domain": "marriage",
+  "subtype_workflows": 9,
+  "eight_stage_methods": 72,
+  "author_original_book_provenance_links": 30,
+  "distinct_referenced_book_case_families": 14,
+  "all_194_old_historical_cases_unchanged": true,
+  "four_older_draft_phrases_unchanged": true,
+  "source_approved_full_chart_reading_instances": 0,
+  "new_phrase_instances": 0,
+  "new_verified_nine_palace_state_instances": 0,
+  "no_unconditional_phrase_presets": true,
+  "empirical_accuracy_not_claimed": true,
+  "counts": {
+    "sections": 43,
+    "cases": 194,
+    "historical_chart_cells": 1440,
+    "phrase_template_drafts": 4,
+    "phrase_source_links": 9,
+    "phrase_context_instances": 0,
+    "phrase_outcome_timing_contracts": 4,
+    "phrase_intent_workflows": 9,
+    "phrase_intent_workflow_steps": 72,
+    "phrase_intent_evidence_links": 30,
+    "phrase_intent_workflow_audit": 1
+  }
+}
