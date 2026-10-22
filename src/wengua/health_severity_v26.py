@@ -119,9 +119,9 @@ def _evidence_summary(*,verdict,stage,ill,person,doctor,medicine,press,
     if ill["door"]=="死门":
         adverse.append("病宫临死门")
     if ill["palace"] in press:
-        adverse.append(_palace(ill)+"的"+ill["door"]+"门迫")
+        adverse.append(_palace(ill)+"的"+ill["door"]+"构成门迫")
     if person["palace"] in press and person["palace"]!=ill["palace"]:
-        adverse.append(_palace(person)+"的"+person["door"]+"门迫")
+        adverse.append(_palace(person)+"的"+person["door"]+"构成门迫")
     if person_empty:
         adverse.append("患者宫逢旬空")
     if _star_relation(ill).endswith("病星受宫制"):
