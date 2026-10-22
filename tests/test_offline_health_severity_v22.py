@@ -56,7 +56,8 @@ class OfflineSeverityV22Gate(unittest.TestCase):
         self.assertIn("六合",x["sections"][8]["text"])
         source=x["audit"]["stem_pair_source"]
         self.assertEqual(source["id"],"heaven_over_earth:壬:辛")
-        self.assertEqual(source["provenance"]["line"],661)
+        self.assertEqual(source["provenance"]["line"],161)
+        self.assertEqual(source["provenance"]["concept_index_line"],661)
         self.assertIn("螣蛇相缠",source["original_excerpt"])
     def test_04_not_confuse_whole_board_door_press_with_illness(self):
         x=run()
@@ -76,9 +77,12 @@ class OfflineSeverityV22Gate(unittest.TestCase):
         self.assertIn("螣蛇相缠",a)
         self.assertIn("戌",x["sections"][6]["text"])
         self.assertIn("震三宫属木，克天芮土",f)
+        self.assertNotIn("前者受后者",x["reading_text"])
+        self.assertIn("患者宫得病宫生扶",x["sections"][12]["text"])
         self.assertIn("离九宫不逢旬空",f)
         self.assertIn("开门",f)
-        self.assertIn("吉凶",x["sections"][18]["text"])
+        self.assertIn("不利象",x["sections"][18]["text"])
+        self.assertIn("制约病象或有利象",x["sections"][18]["text"])
         self.assertIn("吉凶交见",x["sections"][20]["text"])
     def test_06_no_fake_clinical_medical_lifespan_or_timing(self):
         x=run()
@@ -131,6 +135,7 @@ class OfflineSeverityV22Gate(unittest.TestCase):
         print("OFFLINE_SEVERITY_V22_AUDIT="+str({
             "source":r["audit"]["stem_pair_source"]["id"],
             "source_line":r["audit"]["stem_pair_source"]["provenance"]["line"],
+            "concept_index_line":r["audit"]["stem_pair_source"]["provenance"]["concept_index_line"],
             "factors_unknown":len(r["audit"]["unknown_factor_ids"]),
             "actual_door_press_palaces":r["audit"]["actual_door_press_palaces"],
             "all_sections":len(r["sections"]),"approved_by_user":False}))

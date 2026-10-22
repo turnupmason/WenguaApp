@@ -48,10 +48,10 @@ PALACE_LABEL = {1:"坎一宫",2:"坤二宫",3:"震三宫",4:"巽四宫",
 DOOR_EL = {"开门":"金","休门":"水","生门":"土","伤门":"木",
            "杜门":"木","景门":"火","死门":"土","惊门":"金"}
 RELATION_WORDS = {
-    "克":"{a}{a_el}克{b}{b_el}，前者对后者有克制之象",
-    "生":"{a}{a_el}生{b}{b_el}，前者对后者有生扶之象",
-    "受克":"{b}{b_el}克{a}{a_el}，前者受后者制约",
-    "受生":"{b}{b_el}生{a}{a_el}，前者受后者生扶",
+    "克":"{a}{a_el}克{b}{b_el}，{b}受{a}克制",
+    "生":"{a}{a_el}生{b}{b_el}，{b}得{a}生扶",
+    "受克":"{b}{b_el}克{a}{a_el}，{a}受{b}克制",
+    "受生":"{b}{b_el}生{a}{a_el}，{a}得{b}生扶",
     "比和":"{a}与{b}五行同属{a_el}，相互比和",
 }
 
@@ -117,7 +117,7 @@ def _read_stem_pair_from_source(db_path, heaven,earth):
     if heaven=="壬" and earth=="辛" and "螣蛇相缠" in original:
         return {"id":key,"name":"壬加辛（螣蛇相缠）",
                 "short":"螣蛇相缠主纠缠阻滞，即使遇吉门亦有不宁之象",
-                "category":"source_named_obstruction","provenance":{"line":line,"review_status":status},
+                "category":"source_named_obstruction","provenance":{"line":line,"concept_index_line":661,"review_status":status},
                 "original_excerpt":original}
     if term:
         return {"id":key,"name":heaven+"加"+earth+"（"+term+"）",
@@ -344,8 +344,11 @@ def analyze_health_severity_v22(*,chart,inquiry,calendar=None,db_path=None):
         "ill_door_severity_phrase":"死门主闭塞病困，病象偏滞" if ill["door"]=="死门" else
             ill["door"]+"主"+_meaning_door(ill["door"]),
         "body_surface":body_surface,"body_internal":body_internal,
-        "body_specific_link":"本宫再合天盘"+carrier["carried_stem"]+"与地盘"+earth_stem+
-                            "的水、火、金、木、土象意辨别轻重与偏向",
+        "body_specific_link":(_palace(ill)+"属"+palace_element+"，天盘"+
+                              carrier["carried_stem"]+"主"+
+                              _meaning_stem(carrier["carried_stem"],chart,ill)+
+                              "，地盘"+earth_stem+"主"+_meaning_stem(earth_stem,chart,ill)+
+                              "，同宫合参身体象意"),
         "ill_stem_el":STEM_ELEMENTS[carrier["carried_stem"]],
         "ill_stem_image":_meaning_stem(carrier["carried_stem"],chart,ill),
         "ill_earth_el":STEM_ELEMENTS[earth_stem],

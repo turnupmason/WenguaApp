@@ -54,7 +54,7 @@ def build(parent,output,index_dir):
                 "SELECT original_excerpt,source_start_line FROM semantic_assertions "
                 "WHERE concept_id='heaven_over_earth:壬:辛' "
                 "ORDER BY source_start_line LIMIT 1").fetchone()
-            if not result or "螣蛇相缠" not in result[0] or result[1]!=661:
+            if not result or "螣蛇相缠" not in result[0] or result[1]!=161:
                 raise ValueError("Missing exact original source of 壬加辛")
             db.execute("""INSERT INTO health_v22_source_pair_explanations
                         (source_pair_id,source_line,original_excerpt,
@@ -96,7 +96,7 @@ def build(parent,output,index_dir):
         "no_ai_generation_or_llm_polish":True,
         "actual_user_acceptance":"pending",
         "source_original_pair":"heaven_over_earth:壬:辛",
-        "original_pair_source_line":661,
+        "original_pair_db_line":161,"original_pair_concept_index_line":661,
         "unchanged_all_old_rows":True,
         "counts":counts,
     }
