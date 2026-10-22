@@ -1,0 +1,26 @@
+name: V4 Symbolic Score Regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_symbolic_score_v40.py'
+      - 'data/knowledge/score_models/health_severity_v40/weights_draft.json'
+      - 'scripts/run_health_v40_score_three_cases.py'
+      - 'tests/test_health_v40_symbolic_score.py'
+      - '.github/workflows/health_v40_symbolic_score_experiment.yml'
+  workflow_dispatch:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate 100-base symbolic rule ledger and fixed three source-cast examples
+        run: |
+          python -m unittest discover -s tests -p test_health_v40_symbolic_score.py -v
+          python -m scripts.run_health_v40_score_three_cases
