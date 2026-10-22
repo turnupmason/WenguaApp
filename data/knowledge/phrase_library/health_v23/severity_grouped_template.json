@@ -1,0 +1,38 @@
+{
+  "schema": "wengua_severity_grouped_by_disease_palace_v23",
+  "render_mode": "local_python_format_map_no_gpt",
+  "parent_v22_sections": 21,
+  "display_sections": 16,
+  "group": {
+    "id": "04_illness_palace_combined",
+    "title": "天芮病宫综合",
+    "source_ids": [
+      "04_illness_star",
+      "05_body_part",
+      "08_stem_pair",
+      "09_formations",
+      "10_deity",
+      "11_door"
+    ],
+    "format": "天芮星主疾病，属土，与{other_stars}同在{palace}，此宫属{palace_element}，天盘{heaven_stem}、地盘{earth_stem}，临{door}、乘{deity}。{star_palace_relation}。依据古籍，此宫体表主{surface}，体内主{internal}；天盘{heaven_stem}主{heaven_meaning}，地盘{earth_stem}主{earth_meaning}。{pair_name}，{pair_meaning}。{door}主{door_meaning}，{deity}主{deity_meaning}；{door_palace_relation}。{palace_pressure}。{combined_symbol_meaning}。"
+  },
+  "father_aux": {
+    "full": "父亲另参{father_palace}，{father_contents}；{father_door}主{father_door_meaning}，{father_deity}主{father_deity_meaning}。{father_relation}。",
+    "evidence": "父亲乾宫{father_relation}；{father_door}与{father_deity}同宫",
+    "summary": "父亲乾宫{father_relation}"
+  },
+  "rules": {
+    "no_llm_runtime": true,
+    "no_manual_output_revision": true,
+    "only_verified_chart_fields": true,
+    "unknown_factor_audit_kept_separately": true,
+    "do_not_interpret_four_other_unapproved_health_intents": true,
+    "father_candidate_year_stem_from_calendar_year": true,
+    "father_fixed_aux_palace": 6,
+    "patient_birth_year_optional": true,
+    "same_input_identical_bytes": true,
+    "previous_failure_records_preserved": true
+  },
+  "source_pair_citation": "internal_only",
+  "public_source_label": "依据古籍"
+}
