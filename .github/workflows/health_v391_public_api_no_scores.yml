@@ -1,0 +1,23 @@
+name: V3.9.1 Public Auto-Cast No Scores
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_text_pipeline.py'
+      - 'tests/test_health_v391_public_auto_cast.py'
+      - '.github/workflows/health_v391_public_api_no_scores.yml'
+  workflow_dispatch:
+jobs:
+  public_api_regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify full real solar clock->cast->V3.9 text plus complete twelve stages, no numeric models
+        run: |
+          python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
