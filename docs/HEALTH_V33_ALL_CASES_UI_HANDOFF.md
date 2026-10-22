@@ -36,3 +36,10 @@
 
 ## 下一窗口唯一交接指令
 先读最新 root AGENTS.md 底部、PROJECT_STATUS.md 底部、本文件与 `archives/sqlite/wengua_health_v33_full_manifest.json`（若存在）；核对最新 GitHub HEAD 和该提交CI。显示/比对本次十二条事件中已成功断词与明确阻断的全部真实结果，不得把成功 CI 直接等同用户专业通过。用户已说明下一个窗口希望处理 UI 和其它疾病模板；**用户下一窗口明确授权 UI 后可开始现有 iOS 产品 UI 设计，不能再因老版冻结备注一概拒绝**，但没有明确认可模板前不得宣布十一段医疗断词已经专业通过。UI需体现离线真盘、人物关系、用神、九宫、证据和古籍文化提示。其它四个疾病子题分别先出模板测试并等待用户确认，未通过前不在界面冒充已实现。真实 iOS app 仍需签名、Apple开发者账号与上架审核，不把静态设计称“已上架”。
+
+## 本窗口实测完结状态（覆盖上文“待归档”阶段，2026-10-22）
+GitHub 机器人实有 `e932c728fe41070b4b30e1ca6114f55ec282a613`；**最新全量母库改为 V3.3** `archives/sqlite/WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3`，SHA256 `abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5`（14,993,408 B），XZ SHA `9d2e5109d464cfb3e6057ae44c025c08261b85686f11aeb29fc7d309fb42642d`。新封存12案 `data/evaluation/health_v33/all_historical_health_V31_READOUTS_SEALED.json` SHA `2169156087c9f6960b4ddef3365c4eeec03a1b76a4666d591404b38c2f1c3730`，`archives/sqlite/wengua_health_v33_full_manifest.json` 为归档凭据。8个 V3.1 原样已断：神奇自病1996-03-16病凶、父病1996-07-27病凶、侄病1996-05-09病吉、姨母病1996-05-23病凶、自病1996-11-02病凶；开悟工人1996-09-23病凶、弟弟1995-02-19病凶、1999-10-20本人手术问事借疾病轻重模板病凶。4个明确阻断：1997妻子求医、1998母鸡、1998公鸡、2000女婿腰椎康复。源码两例 V3.2 回归读数原文逐字相同；用户尚未确认新版8案，不是医学病情验证。
+
+新版本11固定段的**知识输入版本**在 `data/knowledge/phrase_library/health_v33/severity_fixed_template.json`，每段已带用户新方法的关联主题与执行状态；**它尚未替换 V3.1 正式渲染器，也不代表42+17方法条件全部编程实现**。如果新窗口用户要求审核/提高覆盖，依据此文件和 `health_v33/user_disease_supplement_template_coverage.json` 在独立新版本修复。V3.1 已封存内容不可事后修改。已记录一个文字缺陷：部分输出把仅涉及单一性别辅助宫概括为“乾坤辅助宫”，新版本应修复后重新封存，不得暗中改老 SHA。
+
+在当前检查时，Github Actions #39800888802 的 archive job SUCCESS 并机器人实际提交；但该工作流整体check matrix的 API 状态仍显示 queued，不能虚称全工作流矩阵已完成。源代码提交 ed002a3 对应普通 WenguaApp CI #39800889299 SUCCESS。下一对话必须重新核对新 HEAD CI 状态再动工。
