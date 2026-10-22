@@ -6,7 +6,7 @@ No modern clinical diagnostic validity is asserted.
 """
 from __future__ import annotations
 from .health_severity_v34 import analyze_health_severity_v34
-from .health_severity_v22 import _find_star,_find_heaven_stem,_yes_void
+from .health_severity_v22 import _find_star,_find_heaven_stem,_yes_void,_palace
 from .health_dynamic_v21 import bind_patient
 from .marriage_runtime import ELEMENTS,element_relation
 from .health_severity_v26 import _direction
@@ -93,12 +93,24 @@ def analyze_health_severity_v35(*,chart,inquiry,calendar=None,db_path=None):
     for s in base["sections"]:
         phrase=s["text"]
         if s["id"]=="01_role" and combined:
-            # V3.4's old appended wording remains physically archived but
-            # V3.5 uses a separately composed, consistent role paragraph.
-            start=phrase.split("；按妻乙夫庚与日干五合分别取用")[0]
-            start=start.split("；动物无明确其它用神")[0]
-            start=start.split("；岳父代问女婿")[0]
-            phrase=start.rstrip("。")+"；"+"；".join(combined)+"。"
+            # Completely replace old V3.4 malformed actor phrase in a NEW
+            # version, never edit original sealed source readouts in-place.
+            relation=inquiry["relationship"]
+            if relation in ("spouse","wife","husband"):
+                label="妻子" if person_data["stem"]=="乙" else "丈夫"
+                phrase=("依据古籍，此次为"+label+"测病情轻重。"+
+                    combined[0]+"；主用神落"+_palace(patient)+"，天芮主病。")
+                if len(combined)>1:phrase+="；"+"；".join(combined[1:])+"。"
+            elif relation in ("animal","animal_hen","animal_rooster"):
+                label=person_data["label"]
+                phrase=("依据古籍，此次为"+label+"测病情轻重。无其它明确用神，"
+                     "以时干"+person_data["stem"]+"落"+_palace(patient)+
+                     "为动物用神，天芮主病。")
+            elif relation=="son_in_law":
+                phrase=("依据古籍，此次为女婿测病情轻重。岳父代问女婿，"
+                       "以时干"+person_data["stem"]+"落"+_palace(patient)+
+                       "为用神，天芮主病。")
+                if natal:phrase+="另参已知出生年命"+str(birth)+"，落"+_palace(natal)+"。"
         if s["id"]=="11_final":
             attention_text=("时干或病宫与天心/乙奇同宫，传统有及时医治机会；"
                  "医药力量弱或受迫空影响发挥，但不取消这一同宫象"
