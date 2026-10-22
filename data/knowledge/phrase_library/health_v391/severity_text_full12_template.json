@@ -1,0 +1,27 @@
+{
+  "schema": "wengua_health_v391_v39_customer_template_with_full_twelve_lifecycle",
+  "version": "V3.9.1",
+  "baseline_source": "data/knowledge/phrase_library/health_v39/severity_customer_template.json",
+  "status": "draft_waiting_user_review_before_final_seal",
+  "scoring_disabled": true,
+  "original_sections_unchanged_count": 11,
+  "optional_section": "06_gender",
+  "lifecycle_source": "data/knowledge/score_models/health_severity_v42/twelve_life_stages_source_anchor_full.json",
+  "all_chart_facts_automatically_computed": true,
+  "slot_extensions": {
+    "03_illness": "十二长生：天芮所携{illness_stem}在{illness_palace}临{illness_stages}。{illness_note}",
+    "05_patient": "十二长生：{patient_identity}用干{patient_stem}在{patient_palace}临{patient_stages}。{patient_note}",
+    "07_medicine": "十二长生：天心所携{doctor_stem}在{doctor_palace}临{doctor_stages}；乙奇在{yi_palace}临{yi_stages}。",
+    "08_hour": "十二长生：时干{hour_stem}在{hour_palace}临{hour_stages}。"
+  },
+  "customer_rules": [
+    "keep 11 original V3.9 sections and exact original text as prefix; only add lifecycle facts",
+    "all real palace branches enumerated; for two branches display both, never select convenient one",
+    "do not add score or percentages or probability",
+    "do not reapply tomb/extinction as extra independent negative or favorable evidence",
+    "source line SHA audit only not customer",
+    "real new/chronic and natal are not inferred from hour",
+    "same nine-palace actual casting and source-backed six-source judgment as prior V3.9"
+  ],
+  "finalization": "only user can approve seal and UI stage"
+}
