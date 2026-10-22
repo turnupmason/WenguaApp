@@ -26,7 +26,7 @@ def build(parent,output,index_dir):
     if meta.get("intent")!="severity" or len(meta["sections"])!=21:
         raise ValueError("Exactly one approved 21 section health intent")
     output.parent.mkdir(parents=True,exist_ok=True)
-    with sqlite3.connect(parent.as_uri()+"?mode=ro",uri=True) as old, sqlite3.connect(output) as db:
+    with sqlite3.connect(parent.resolve().as_uri()+"?mode=ro",uri=True) as old, sqlite3.connect(output) as db:
         old.backup(db)
         db.executescript(MIG.read_text(encoding="utf8"))
         db.execute("PRAGMA foreign_keys=ON")
