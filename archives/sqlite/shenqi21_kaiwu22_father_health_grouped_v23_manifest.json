@@ -1,0 +1,32 @@
+{
+  "schema": "wengua_v23_father_health_grouped_full_archive",
+  "sha256": "2634ffff6f6033861a333cc0ee3007a261d76fb97bac3a597fa70f06a16569ad",
+  "size_bytes": 14833664,
+  "parent_sha256": "db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6",
+  "file": "archives/sqlite/WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3",
+  "xz_file": "archives/sqlite/WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3.xz",
+  "xz_sha256": "7427808e9277e97ede6ac3a89139c9966b197c9e69a12e3d72a953ae331c63e5",
+  "xz_bytes": 1182380,
+  "cases": 194,
+  "original_sections": 43,
+  "old_wrong_dev_cases": 2,
+  "user_display_paragraphs": 16,
+  "underlying_health_facts": 21,
+  "merged_disease_palace_source_paragraphs": 6,
+  "father_qian_six": true,
+  "no_llm": true,
+  "clinical_accuracy_validated": false,
+  "other_four_health_templates_user_approved": false,
+  "user_acceptance": "pending",
+  "sqlite_integrity": "ok",
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_steps": 66,
+    "health_v22_customer_severity_sections": 21,
+    "health_v23_display_groups": 1,
+    "health_v23_role_auxiliary": 1,
+    "health_v23_acceptance_audit": 1
+  }
+}

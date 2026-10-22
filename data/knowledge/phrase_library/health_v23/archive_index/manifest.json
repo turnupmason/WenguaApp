@@ -1,0 +1,27 @@
+{
+  "schema": "wengua_v23_full_194_case_father_health_grouped",
+  "exact_parent_v22_sha256": "db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6",
+  "new_full_v23_sha256": "2634ffff6f6033861a333cc0ee3007a261d76fb97bac3a597fa70f06a16569ad",
+  "source_cases_unchanged": 194,
+  "source_sections_unchanged": 43,
+  "failed_development_examples_preserved": 2,
+  "all_v22_21_source_sections_preserved": true,
+  "six_same_palace_sections_combined_into_one": true,
+  "display_paragraphs": 16,
+  "new_year_stem_father_and_qian6_aux": true,
+  "four_other_health_intents_approved": false,
+  "runtime_llm_calls": 0,
+  "actual_illness_outcome_validation": 0,
+  "user_review_status": "pending",
+  "all_prior_rows_identical": true,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_steps": 66,
+    "health_v22_customer_severity_sections": 21,
+    "health_v23_display_groups": 1,
+    "health_v23_role_auxiliary": 1,
+    "health_v23_acceptance_audit": 1
+  }
+}
