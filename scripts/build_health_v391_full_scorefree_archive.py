@@ -79,7 +79,7 @@ def build(parent,output,seal,manifest,readout):
             for x in payload["samples"]:
                 p=x["four_pillars"];roles=x["book_verifiable_chart_facts"]
                 db.execute("""INSERT INTO health_v391_random_hour_narratives VALUES
-                  (?,?,?,?,?,?,?,?,?,?,?,0,0,'pending_user_review')""",
+                  (?,?,?,?,?,?,?,?,?,?,?,?,0,0,'pending_user_review')""",
                   (x["case_id"],x["local_datetime"],p["year"],p["month"],p["day"],p["hour"],
                    x["solar_term"],"self",roles["patient"]["palace"],roles["illness_tianrui_heaven"]["palace"],
                    x["original_v39_reading_sha256"],x["v391_customer_reading_sha256"]))
