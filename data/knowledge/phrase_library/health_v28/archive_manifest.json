@@ -1,0 +1,14 @@
+{
+  "schema": "wengua_v28_194_original_full_2_source_case_medical_timing",
+  "parent_sha256": "2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7",
+  "new_full_sha256": "1837107123d78f1da47e1046c9043827484985e6cb1ff01689e70057c7d6c301",
+  "readouts_sha256": "c543dcfa56c0e9257262312e397eb9a2f533e3c7a1629b9444e185b8d8150363",
+  "original_family_count": 194,
+  "original_sections": 43,
+  "original_v27_two_readouts_untouched": true,
+  "user_approval": "second old V27 output only; both updated V28 pending",
+  "first_original_outcome_unreviewed": true,
+  "no_gpt_or_network": true,
+  "no_real_clinical_prognosis": true,
+  "other_four_intents_remain_frozen": true
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "wengua_v28_full_194_source_11_fixed_customer_sections",
+  "sha256": "1837107123d78f1da47e1046c9043827484985e6cb1ff01689e70057c7d6c301",
+  "size_bytes": 14897152,
+  "old_parent_sha256": "2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7",
+  "xz_sha256": "13564ef12952bd3c29f72874276342d71b0588ac9249b958306186e313a9a404",
+  "new_sealed_sha256": "c543dcfa56c0e9257262312e397eb9a2f533e3c7a1629b9444e185b8d8150363",
+  "original_cases": 194,
+  "old_seals_unchanged": true,
+  "user_confirmed": "historical_second V27 only",
+  "updated_v28_user_review": "pending",
+  "no_GPT_or_network": true,
+  "clinical_validation": false,
+  "other_health_subtypes_unreviewed": 4,
+  "integrity": "ok"
+}
