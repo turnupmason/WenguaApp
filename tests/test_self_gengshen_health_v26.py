@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 from unittest.mock import patch
 from pathlib import Path
-from scripts.run_self_health_20261021_gengshen_v25 import run,PARENT_DB,PILLARS
+from scripts.run_self_health_20261021_gengshen_v26 import run,PARENT_DB,PILLARS
 from src.wengua.health_severity_v26 import (
     analyze_health_severity_v26,fuyin_fanyin_facts,FORBIDDEN_CUSTOMER)
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
@@ -13,6 +13,8 @@ class SelfGengshenHealthV26(unittest.TestCase):
     def test_real_calendar_self_role_and_observed_four_pillars(self):
         r=run()
         self.assertEqual(r["test_receipt"]["four_pillars"],PILLARS)
+        self.assertEqual(r["schema"],"wengua_health_severity_11_concise_v26_corrected")
+        self.assertEqual(r["audit"]["render_mode"],"local_python_static_strings_no_llm")
         self.assertEqual(r["test_receipt"]["solar_term"],"寒露")
         self.assertEqual(r["test_receipt"]["bureau"]["dun"],"yin")
         self.assertEqual(r["test_receipt"]["bureau"]["ju"],6)
