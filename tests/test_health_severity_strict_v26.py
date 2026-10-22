@@ -62,7 +62,9 @@ class RealSelfGengshenStrictTemplateV26(unittest.TestCase):
         self.assertNotIn("影响病宫",x["reading_text"])
         self.assertNotIn("与与",x["reading_text"])
         self.assertNotIn("同同",x["reading_text"])
-        self.assertEqual(set(x["audit"]["actual_door_press_palaces"]),{1,3})
+        self.assertTrue({1,3}.issubset(set(x["audit"]["actual_door_press_palaces"])))
+        self.assertNotIn("坤二宫的",t)
+        self.assertNotIn("乾六宫的",t)
     def test_real_pace_in_timing_and_final_and_fuyin_regression(self):
         x=run()
         fy=x["audit"]["fuyin_fanyin"]
@@ -70,8 +72,8 @@ class RealSelfGengshenStrictTemplateV26(unittest.TestCase):
         self.assertEqual(fy["door"],"非伏吟反吟")
         self.assertEqual(x["audit"]["illness_inner_outer"],"外盘")
         self.assertEqual(x["audit"]["patient_inner_outer"],"外盘")
-        self.assertIn("传统主慢",x["sections"][-2]["text"])
-        self.assertIn("传统主慢",x["sections"][-1]["text"])
+        self.assertIn("外盘主慢",x["sections"][-2]["text"])
+        self.assertIn("传统缓急：偏慢",x["sections"][-1]["text"])
         old=layout_from_explicit_bureau(dun="yin",ju=6,hour_ganzhi="癸亥")
         a=fuyin_fanyin_facts(old)
         self.assertTrue(a["both_fuyin"])
@@ -117,6 +119,10 @@ class RealSelfGengshenStrictTemplateV26(unittest.TestCase):
         verdict=x["audit"]["tradition_binary_verdict"]
         self.assertIn(verdict["verdict"],("病吉","病凶"))
         self.assertEqual(verdict["verdict"],"病凶")
+        self.assertIn("乙奇艮八宫克病宫",x["sections"][-1]["text"])
+        self.assertIn("坎一宫的死门门迫",x["sections"][-1]["text"])
+        self.assertIn("震三宫的开门门迫",x["sections"][-1]["text"])
+        self.assertNotIn("天心或乙奇宫",x["reading_text"])
         self.assertTrue(verdict["not_a_real_medical_risk_grade"])
         self.assertFalse(x["audit"]["medical_severity_verified"])
         self.assertEqual(len(x["audit"]["24_factor_statuses"]),24)

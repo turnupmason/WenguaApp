@@ -103,10 +103,44 @@ def _pace(fy,ill,person,dun):
     if fy["star"]=="反吟" or fy["door"]=="反吟":
         return "反吟主快，变化较急"
     if illness==patient=="外盘":
-        return "星门不伏不反，病宫与患者均在外盘，传统主慢"
+        return "外盘主慢"
     if illness==patient=="内盘":
-        return "星门不伏不反，病宫与患者均在内盘，传统主快"
-    return "星门不伏不反，病患分居内外盘，缓急并见"
+        return "内盘主快"
+    return "病患分居内外盘，缓急并见"
+
+
+def _evidence_summary(*,verdict,stage,ill,person,doctor,medicine,press,
+                      person_empty,month):
+    """Traditional evidence priority with palace-specific facts. No guessed weights."""
+    adverse=[]
+    favorable=[]
+    if stage in ("旺","相"):
+        adverse.append("天芮于"+month+"月为"+stage)
+    if ill["door"]=="死门":
+        adverse.append("病宫临死门")
+    if ill["palace"] in press:
+        adverse.append(_palace(ill)+"的"+ill["door"]+"门迫")
+    if person["palace"] in press and person["palace"]!=ill["palace"]:
+        adverse.append(_palace(person)+"的"+person["door"]+"门迫")
+    if person_empty:
+        adverse.append("患者宫逢旬空")
+    if _star_relation(ill).endswith("病星受宫制"):
+        favorable.append("病星受落宫克制")
+    if element_relation(ELEMENTS[doctor["palace"]],ELEMENTS[ill["palace"]])=="克":
+        favorable.append("天心"+_palace(doctor)+"克病宫")
+    if element_relation(ELEMENTS[medicine["palace"]],ELEMENTS[ill["palace"]])=="克":
+        favorable.append("乙奇"+_palace(medicine)+"克病宫")
+    if person["door"] in ("开门","生门","休门"):
+        favorable.append("患者临"+person["door"])
+    if not person_empty:
+        favorable.append("患者宫不空")
+    if verdict["verdict"]=="病凶":
+        adverse_text="、".join(adverse[:4]) if adverse else "病宫仍有传统不利象"
+        counter="；虽"+"、".join(favorable[:2])+"，仍以病宫不利象为主" if favorable else ""
+        return adverse_text+counter
+    main="、".join(favorable[:3]) if favorable else "用神有传统扶助象"
+    counter="；虽"+"、".join(adverse[:2])+"，主判仍以制病扶助为重" if adverse else ""
+    return main+counter
 
 
 def _meaning_singular(cell,chart):
@@ -177,11 +211,11 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
         specific=""
     timing="不强定实际应期日期"+specific
     if person["palace"]==doctor["palace"]:
-        doc_loc="与患者同宫的"+_palace(doctor)
+        doc_loc=_palace(doctor)+"（与患者同宫）"
     else:
         doc_loc=_palace(doctor)
     if doctor["palace"]==medicine["palace"]:
-        medicine_loc="与天心同宫的"+_palace(medicine)
+        medicine_loc=_palace(medicine)+"（与天心同宫）"
     else:medicine_loc=_palace(medicine)
     value_star=chart["palaces"][str(chart["value_star_palace"])]
     value_door=chart["palaces"][str(chart["value_door_palace"])]
@@ -193,7 +227,9 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
     method=("以日干"+role_stem+"为本人用神" if inquiry["relationship"]=="self" else
             "以"+user["role_name"].replace("（长辈候选）","")+"为"+user["label"]+"用神")
     born=inquiry.get("patient_birth_ganzhi")
-    reason=verdict["rationale"].rstrip("。")
+    reason=_evidence_summary(verdict=verdict,stage=stage,ill=ill,person=person,
+                 doctor=doctor,medicine=medicine,press=bad_press,
+                 person_empty=person_void,month=calendar["month_branch"])
     body_image="、".join(x for x in (surface,internal) if x)
     fields={
         "patient_label":user["label"],"patient_method":method,
@@ -230,7 +266,7 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
         "inner_outer_fact":inner_facts,"pace_judgement":pace,
         "duration_qualifier":"","timing_qualifier":timing,
         "traditional_verdict":verdict["verdict"],
-        "evidence_reason":reason,"final_pace":pace,
+        "evidence_reason":reason,"final_pace":("传统缓急：偏慢" if "慢" in pace else "传统缓急：偏快" if "快" in pace else "缓急仍须合参"),
     }
     if born:
         fields["patient_method"]+="，另参出生年命"+born
