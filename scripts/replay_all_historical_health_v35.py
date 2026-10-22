@@ -1,4 +1,4 @@
-"""V3.5 corrected V3.5 twelve-source-event re-evaluation: source conditions only.
+"""V3.5 corrected V3.4 twelve-source-event re-evaluation: source conditions only.
 
 This never edits old V3.1 or V3.4 sealed files. Real question date/hour,
 book bureau, first-question known person/sex and actual hidden six-instrument
@@ -28,7 +28,7 @@ def evaluate(*,db_path=PARENT):
           "source_hour":spec["hour"],"source_intent":spec["original_intent"],
           "review":"pending","author_answer_used":False,"later_feedback_used":False,
           "source_clock_minute_attested":spec["minute_known"],
-          "template":"health_severity_v34","result":"pending"}
+          "template":"health_severity_v35","result":"pending"}
         try:
             t=spec["date"]+"T"+spec["clock"]+":00+08:00"
             cal=solar_chart_clock(t,"Asia/Shanghai")["four_pillars"]
