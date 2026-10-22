@@ -15,7 +15,7 @@ class V30DiseaseDomainCurriculum(unittest.TestCase):
     self.assertGreaterEqual(len(bank["pairs"]),40)
     self.assertGreaterEqual(len(bank["composites"]),15)
     self.assertGreaterEqual(len(text["role_order"]),8)
-    self.assertIn("index",text["statuses"]["indexed_not_executable"])
+    self.assertIn("further rule verification",text["statuses"]["indexed_not_executable"])
     self.assertEqual(len(json.loads(TEMPLATE.read_text("utf8"))["sections"]),11)
     self.assertEqual(LATEST_DB.name,"WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3")
  def test_old_historical_probes_no_answer_and_preserve_older_seals(self):
