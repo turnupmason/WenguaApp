@@ -220,8 +220,8 @@ def analyze_health_severity_v27(*,chart,inquiry,calendar=None,db_path=None):
         role_name+="，另参年命"+inquiry["patient_birth_ganzhi"]
     pace=_pace(fy,ill,person,chart["dun"])
     inner_ill=_inside(ill,chart["dun"]);inner_p=_inside(person,chart["dun"])
-    inner_fact=("阴遁" if chart["dun"]=="yin" else "阳遁")+
-               "病宫在"+inner_ill+"、患者宫在"+inner_p
+    inner_fact=(("阴遁" if chart["dun"]=="yin" else "阳遁")+
+                "病宫在"+inner_ill+"、患者宫在"+inner_p)
     ill_door_sign=("偏凶" if ill["door"]=="死门" else
         "吉象需合看" if ill["door"] in ("生门","开门","休门") else "结合用神")
     ill_deity_sign=("偏凶" if ill["deity"]=="白虎" else
