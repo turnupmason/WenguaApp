@@ -3,136 +3,338 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="light">
-<title>问卦 · iOS V1 交互设计预览</title>
+<meta name="theme-color" content="#f6f6f6">
+<title>问卦 · 九宫专业排盘 V2（交互设计预览）</title>
 <style>
-:root{--paper:#f7f6f1;--card:#fff;--ink:#232b29;--muted:#728078;--green:#153f3a;--gold:#af9062;--wash:#e8f0ed;--stroke:#e6e8df}
+:root{--blue:#267dff;--red:#e8483a;--orange:#e9991e;--green:#23ab65;--black:#2b2b2d;--grey:#929399;--line:#d9dadc;--paper:#f6f6f6;--light:#fff}
 *{box-sizing:border-box}
-body{margin:0;background:#e8e9e5;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
-button,input,textarea,select{font:inherit}button{cursor:pointer}
-.stage{width:min(100%,430px);margin:16px auto;min-height:min(900px,calc(100dvh - 32px));border-radius:33px;background:var(--paper);box-shadow:0 20px 90px #24352b25;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.viewport{flex:1;min-height:520px;overflow:auto;padding:28px 20px 110px}
-.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.muted{color:var(--muted)}.small{font-size:12px}.micro{font-size:10px}
-.top-label{letter-spacing:.25em;font-size:12px;color:var(--green);font-weight:700}
-h1{font-size:34px;letter-spacing:.14em;font-weight:650;margin:8px 0 8px;font-family:"Songti SC",serif}
-h2{font-size:26px;font-family:"Songti SC",serif;font-weight:600;margin:14px 0 8px}
-h3{font-size:16px;margin:0 0 12px}.lead{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 14px}
-.card{background:var(--card);border:1px solid var(--stroke);border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #1c2b2510}
-.hero{background:#fff;padding:23px 19px}.hero .copy{font-size:29px;font-family:"Songti SC",serif;font-weight:600;line-height:1.42;margin:16px 0}
-.chip{display:inline-block;background:var(--paper);color:var(--muted);border-radius:99px;padding:6px 10px;font-size:11px}
-.chip.active{color:var(--green);background:var(--wash);font-weight:650}
-.cta{width:100%;border:none;border-radius:13px;background:var(--green);color:white;padding:16px;font-weight:650;display:flex;align-items:center;justify-content:center;gap:8px}
-.ghost{border:1px solid var(--stroke);background:#fff;border-radius:13px;padding:10px 13px;color:var(--green);font-size:12px}
-.section{font-weight:700;font-size:16px;margin:24px 0 12px}
-.domain{display:flex;align-items:center;gap:13px;margin:9px 0;padding:13px 15px;border:1px solid var(--stroke);border-radius:17px;background:#fff}
-.symbol{width:44px;height:44px;border-radius:14px;background:var(--wash);color:var(--green);display:grid;place-items:center;font-size:21px}
-.domain-title{font-weight:700;font-size:14px}.domain-sub{font-size:11px;color:var(--muted);margin-top:5px}
-.tabbar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:#fffdfbeb;backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-around;border-top:1px solid var(--stroke);padding:13px 8px max(18px,env(safe-area-inset-bottom))}
-.tabbar button{border:0;background:none;display:flex;align-items:center;flex-direction:column;gap:3px;color:var(--muted);font-size:11px;min-width:75px}.tabbar button span{font-size:23px}.tabbar .selected{color:var(--green);font-weight:750}
-.subnav{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:0 0 20px}.subnav button{border:0;background:none;color:var(--green);padding:4px 0}
-.field-label{display:block;font-weight:700;margin:0 0 9px;font-size:13px}
-select,textarea{width:100%;padding:13px 12px;border:1px solid var(--stroke);border-radius:12px;background:#fcfcf9;color:var(--ink);outline:none}
-textarea{min-height:80px;resize:vertical}.field-help{font-size:11px;color:var(--muted);line-height:1.65;margin:7px 0 0}
-.segment{display:flex;background:#e9ede8;border-radius:13px;padding:4px;gap:4px}
-.segment button{flex:1;border:0;padding:10px 4px;border-radius:10px;color:var(--muted);background:transparent;font-size:12px}
-.segment button.selected{background:#fff;color:var(--green);font-weight:750;box-shadow:0 1px 5px #142b221a}
-.palace-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px}
-.palace{border:1px solid var(--stroke);background:white;border-radius:11px;text-align:left;min-height:115px;padding:10px 7px;display:flex;flex-direction:column;gap:6px;justify-content:space-between;color:var(--ink)}
-.palace.role{background:var(--wash);border-color:#afad85}
-.palace-header{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}.palace-header b{font-weight:650}
-.palace-body{font-size:11px;line-height:1.65}.palace-body .name{font-weight:700;font-size:13px}
-.palace-role{font-size:10px;color:var(--green);font-weight:650}
-.palace.is-center{background:#f9faf6;justify-content:center;align-items:center;text-align:center;color:var(--muted)}
-.note{background:var(--wash);border-radius:13px;padding:13px;font-size:12px;line-height:1.65;color:var(--green)}
-.summary{font-size:18px;font-weight:700;line-height:1.5;margin:9px 0;color:var(--ink)}
-details{border:1px solid var(--stroke);background:#fff;border-radius:14px;margin:8px 0;padding:14px}
-summary{font-size:13px;font-weight:650;cursor:pointer}
-details p{font-size:13px;line-height:1.82;color:var(--muted);margin:12px 0 0}
-.cover{display:none;position:absolute;inset:0;background:#17272166;z-index:10;align-items:flex-end}.cover.visible{display:flex}
-.sheet{background:var(--paper);padding:18px 22px 30px;border-radius:25px 25px 0 0;width:100%;max-height:80%;overflow:auto;box-shadow:0 -10px 30px #0002}
-.sheet .handle{height:4px;width:38px;border-radius:4px;background:#aab3ab;margin:-4px auto 20px}
-.screen{display:none}.screen.active{display:block}
-@media(max-width:460px){body{background:var(--paper)}.stage{border-radius:0;margin:0;box-shadow:none;min-height:100dvh}.viewport{padding-top:35px}}
+body{margin:0;background:#e7e8e9;color:var(--black);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.phone{max-width:460px;margin:14px auto;background:#fff;min-height:calc(100dvh - 28px);box-shadow:0 14px 65px #42464b30;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.screen{display:none;flex:1;min-height:0;overflow-y:auto;padding-bottom:105px}.screen.on{display:block}
+.screen-title{padding:10px 14px 8px;font-size:15px;color:#777}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 12px 11px;background:white;border-bottom:1px solid #f3f3f3}
+.date-control{border:0;background:none;text-align:left;color:#282828;font-size:16px;letter-spacing:.01em;padding:3px 0}
+.now{border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:6px;padding:5px 8px;font-size:13px}
+.pillars{display:grid;grid-template-columns:repeat(4,34px) 1fr;align-items:center;column-gap:5px;padding:13px 12px 8px;background:#f6f6f6}
+.pillar{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:22px;font-weight:500}
+.pillar small{color:#9e9fa5;font-size:10px}.pillarmeta{padding-left:9px;color:#888;font-size:13px;line-height:1.9}
+.pillarmeta strong{color:#333;font-weight:500}
+.cherry{color:var(--red)}.earth{color:#cd7525}.water{color:#267dff}.wood{color:#20af69}.fire{color:#e98e16}
+.info-strip{display:flex;align-items:center;justify-content:space-between;background:#f6f6f6;padding:6px 11px 10px;color:#989898;font-size:12px}
+.method-label{border:1px solid #b5b5b8;border-radius:50px;padding:4px 10px}
+.head-actions{display:flex;gap:7px}
+.icon-button{border:1px solid #c7c8ca;background:transparent;color:#9b9b9c;border-radius:50%;padding:1px 10px;font-size:18px}
+.board-frame{border-top:1px solid #dedee1;border-bottom:1px solid #dedee1}
+.board-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--line);gap:1px}
+.palace{height:clamp(146px,43vw,191px);border:0;background:#fff;padding:8px 7px 7px;position:relative;text-align:left;display:flex;flex-direction:column;justify-content:space-between;min-width:0;color:var(--black)}
+.palace.selected{background:#f4f9ff;box-shadow:inset 0 0 0 1px #92b9ff}
+.palace-head{display:flex;align-items:center;justify-content:space-between;color:#a0a0a4;font-size:10px;gap:2px;white-space:nowrap;overflow:hidden}
+.palace-branch{overflow:hidden;text-overflow:ellipsis}
+.palace-n{font-size:10px;color:#bbb}
+.palace-deity{display:grid;grid-template-columns:25px minmax(0,1fr);align-items:start;gap:3px;min-height:30px}
+.palace-symbol{font-size:11px;color:#777}
+.deity-name{font-size:17px;line-height:1.2;color:#df8430;white-space:nowrap;letter-spacing:-.02em}
+.deity-name.red{color:var(--red)}.deity-name.blue{color:var(--blue)}
+.palace-content{display:grid;grid-template-columns:minmax(0,1fr) 22px;gap:2px 1px;align-items:center}
+.sky-star{color:var(--green);font-size:17px;font-weight:500;white-space:nowrap;letter-spacing:-.03em}
+.palace-stem{color:var(--red);font-size:19px;text-align:right}
+.door-name{color:var(--blue);font-size:17px;white-space:nowrap;letter-spacing:-.03em}
+.bottom-stem{color:#c9822d;font-size:19px;text-align:right}
+.palace-foot{display:flex;align-items:center;gap:4px;min-height:14px;overflow:hidden}
+.palace-foot .small{color:#999;font-size:9px;white-space:nowrap}
+.role-mark{font-size:10px;color:#1767e8;font-weight:650;border-radius:3px;padding:1px 4px;background:#ecf4ff}
+.void-mark{font-size:10px;color:#e34c43}
+.center-tile{display:flex;align-items:center;justify-content:center;gap:8px;color:#939494}
+.center-tile .center-text{font-size:22px;color:#888}
+.center-tile .center-caption{font-size:10px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;padding:13px 10px 8px;background:#f6f6f6}
+.legend span{border:1px solid #c8c8cc;border-radius:99px;padding:5px 9px;font-size:12px;color:#7c7c80;background:#fff}
+.lower-info{background:#f6f6f6;padding:5px 13px 15px;color:#909096;font-size:12px;line-height:2}
+.lower-info b{color:#525359;font-weight:500}
+.lower-info button{border:1px solid #b6b6b7;border-radius:99px;color:#909095;background:transparent;padding:3px 9px;font-size:12px;margin:2px}
+.safe-notice{margin:13px 12px;border-left:3px solid #aac8f0;padding:8px 11px;background:#eff6ff;font-size:11px;line-height:1.65;color:#6b7786}
+.bottombar{position:absolute;z-index:6;bottom:0;left:0;right:0;display:flex;justify-content:space-around;align-items:stretch;background:#fff;border-top:1px solid #f0f0f0;padding:10px 3px max(18px,env(safe-area-inset-bottom))}
+.bottombar button{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;background:none;border:none;min-width:65px;padding:4px;color:#9b9ba0;font-size:11px}
+.bottombar button b{font-weight:500;font-size:22px}.bottombar button.active{color:var(--blue);font-weight:700}
+.entry{padding:12px 18px}
+.back{border:0;background:none;color:var(--blue);padding:5px 0;font-size:14px}
+.h1{font-size:26px;font-weight:600;margin:14px 0 7px;letter-spacing:.02em}
+.muted{color:#9a9aa0;font-size:13px;line-height:1.75}
+.form-card{margin:14px 0;padding:17px;border-radius:18px;background:#f7f7f8}
+.form-label{color:#777;font-size:13px;margin:7px 0 9px;display:block}
+.textbox{padding:12px;width:100%;background:#fff;border:1px solid #e6e6e6;border-radius:12px;color:#333;resize:vertical}
+.wheel{display:flex;align-items:center;gap:5px;flex-direction:column;background:#f8f8f8;padding:14px 10px;border-radius:19px;margin:10px 0}
+.wheel input{border:1px solid #ddd;background:#fff;border-radius:11px;padding:13px 8px;text-align:center;width:100%;color:#333;font-size:17px;max-width:310px}
+.split-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.half{border:1px solid #e0e0e3;border-radius:12px;background:#fff;padding:11px;color:#666}
+.cta{background:#327ff6;border:0;border-radius:99px;color:#fff;padding:15px;text-align:center;width:100%;font-weight:700;font-size:17px;min-height:53px}
+.cta:disabled{background:#c1c7d1;cursor:default}
+.secondary{color:var(--blue);border:1px solid #c1d8fa;background:#fff;border-radius:99px;padding:10px 13px;font-size:13px}
+.policy{border:1px solid #e5e0d6;background:#fffdf8;border-radius:15px;color:#675f52;padding:13px;font-size:12px;line-height:1.8}
+.policy strong{color:#916e2c}
+.progress-ring{width:195px;height:195px;margin:42px auto 23px;border:2px solid #bdd1ed;border-radius:50%;display:grid;place-items:center;position:relative}
+.progress-ring:before{content:"";position:absolute;inset:15px;border-radius:50%;border:1px dashed #d2d7df}
+.remaining{font-size:66px;font-weight:350;color:var(--blue);font-variant-numeric:tabular-nums}
+.progress-track{background:#edf0f4;height:4px;border-radius:9px;overflow:hidden;margin:20px 0}
+.progress-track>span{display:block;height:100%;background:var(--blue);width:0}
+.result-title{padding:10px 14px}
+.result-tabrow{display:flex;justify-content:space-evenly;gap:10px;padding:0 14px;border-bottom:1px solid #ddd}
+.result-tabrow button{background:none;border:0;padding:13px 8px;font-size:14px;color:#8b8b8c;border-bottom:2px solid transparent}
+.result-tabrow button.active{border-bottom-color:var(--blue);color:var(--blue)}
+.summary-card{margin:16px 12px;border:1px solid #e8e8e9;border-radius:14px;padding:15px;background:#fff}
+.summary-card .headline{font-size:20px;color:#2c3f50;margin:7px 0}
+.summary-card p{font-size:13px;color:#777;line-height:1.85}
+.section-content{padding:0 13px}
+details{border-bottom:1px solid #eaeaec;padding:14px 2px}
+details summary{cursor:pointer;font-size:14px;font-weight:650}
+details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
+.overlay{display:none;position:absolute;inset:0;background:#26344180;z-index:20;align-items:flex-end}
+.overlay.open{display:flex}
+.sheet{width:100%;background:#f7f8fa;border-radius:25px 25px 0 0;box-shadow:0 -17px 60px #0003;max-height:85vh;overflow-y:auto;padding:13px 18px max(24px,env(safe-area-inset-bottom))}
+.handle{width:40px;height:5px;border-radius:99px;background:#d1d4d9;margin:1px auto 20px}
+.sheet-header{display:flex;justify-content:space-between;align-items:start;gap:8px}
+.sheet-title{font-size:26px;font-weight:650;margin:0}
+.sheet-sub{color:#9099a5;font-size:12px;margin:4px 0}
+.sheet-tags{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0}
+.sheet-tags span{font-size:12px;border-radius:99px;padding:5px 10px;color:#3380a5;background:#e8f4ff}
+.sheet-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}
+.sheet-fact{background:#fff;border:1px solid #edf0f1;border-radius:15px;padding:12px}
+.sheet-fact small{display:block;color:#a2a3a8;margin:0 0 7px;font-size:11px}
+.sheet-fact b{font-size:21px;font-weight:550}
+.sheet-card{background:white;padding:15px;border-radius:15px;border:1px solid #eceef1;margin:11px 0}
+.sheet-card h3{font-size:13px;color:#333;margin:0 0 10px}
+.sheet-card p{font-size:13px;line-height:1.85;color:#787e87;margin:0}
+.warning{color:#956f26;background:#fff6e3;padding:12px;border-radius:12px;font-size:12px}
+@media(max-width:480px){body{background:#fff}.phone{margin:0;min-height:100dvh;box-shadow:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
 </style>
-</head>
-<body>
-<div class="stage">
-<main class="viewport" id="viewport">
-<section id="home" class="screen active">
-  <div class="row between"><div><div class="top-label">WENGUA</div><h1>問 卦</h1><div class="small muted">观时 · 识局 · 明理</div></div><div style="font-size:36px;color:var(--gold)">☷</div></div>
-  <div class="card hero"><span class="chip active">时家转盘</span> <span class="chip">离线优先</span><div class="copy">心有所问<br>自有一局</div><p class="lead">古籍为据，因时起盘，观其所问。<br>盘面、证据、断词，都清晰可见。</p><button class="cta" onclick="go('question')">开始问事 →</button></div>
-  <div class="section">问事领域</div>
-  <div class="domain"><div class="symbol">✚</div><div style="flex:1"><div class="domain-title">身体健康</div><div class="domain-sub">病情轻重 · V3.9.1 古籍断词</div></div><span class="chip active">首个专题</span></div>
-  <div class="domain"><div class="symbol">♡</div><div style="flex:1"><div class="domain-title">婚姻感情</div><div class="domain-sub">规则建设中</div></div><span class="chip">开发中</span></div>
-  <div class="domain"><div class="symbol">▣</div><div style="flex:1"><div class="domain-title">工作与求财</div><div class="domain-sub">规则建设中</div></div><span class="chip">开发中</span></div>
-  <p class="field-help">传统文化与古籍研究工具，不提供医学诊断、治疗建议或风险概率。</p>
-</section>
-<section id="question" class="screen">
-  <div class="subnav"><button onclick="go('home')">← 返回首页</button><span>01 / 02 · 问事资料</span></div>
-  <div class="top-label">ASK A QUESTION</div><h2>所问何事？</h2>
-  <p class="lead">系统按实际人物关系取用神，不要求每位用户输入出生年份。</p>
-  <div class="card"><label class="field-label">问事类型</label><div class="row between"><b>✚　健康 · 病情轻重</b><span class="chip active">V3.9.1</span></div><div style="height:16px"></div>
-    <label class="field-label" for="relation">你在为谁问事？</label><select id="relation"><option>本人</option><option>父亲</option><option>母亲</option><option>丈夫</option><option>妻子</option><option>兄弟</option><option>姐妹</option><option>儿子</option><option>女儿</option></select>
-    <p class="field-help">人物关系决定患者主用神。其他身份需先匹配有效规则。</p>
-  </div>
-  <div class="card"><label class="field-label" for="description">描述想问的事（可选）</label><textarea id="description" placeholder="例如：想了解病势变化的古籍象意……"></textarea><div style="height:14px"></div>
-    <label class="field-label" for="duration">是否新病 / 久病？（可选）</label><select id="duration"><option>未说明</option><option>新病</option><option>久病</option></select><p class="field-help">不从盘面虚构现实病史、年命或诊断。</p>
-  </div>
-  <div class="note">◷　真实版本将在点击“起盘”时锁定时刻、时区、节气与四柱。静心仪式可选，不改变起盘算法。</div>
-  <button class="cta" style="margin-top:17px" onclick="go('result')">查看界面演示 →</button>
-  <p class="field-help" style="text-align:center">下一页固定展示 2026-10-22 历史测试盘，与你刚填写的内容无关。</p>
-</section>
-<section id="result" class="screen">
-  <div class="subnav"><button onclick="go('question')">← 返回问事</button><span>02 / 02 · 演示结果</span></div>
-  <span class="chip active">固定历史样例 · 非实时起盘</span><h2>一局一问</h2>
-  <p class="lead">丙午年 · 戊戌月 · 己巳日 · 庚午时<br>阴遁九局 · 寒露 · 本人问身体</p>
-  <div class="segment" id="resulttabs"><button class="selected" onclick="switchTab('board',this)">九宫盘</button><button onclick="switchTab('read',this)">断词</button><button onclick="switchTab('sources',this)">依据</button></div>
-  <div id="board" class="result-panel"><div class="card"><div class="row between"><b>九宫结构</b><span class="small muted">点击任意宫位</span></div><div class="palace-grid" id="palaces"></div><p class="micro muted">巽 · 离 · 坤 / 震 · 中 · 兑 / 艮 · 坎 · 乾</p></div>
-    <div class="card"><h3>本盘角色</h3><div class="row" style="flex-wrap:wrap"><span class="chip active">患者 · 巽四</span><span class="chip active">病宫 · 乾六</span><span class="chip">天心 · 艮八</span><span class="chip">乙奇 · 震三</span><span class="chip">时干 · 坎一</span></div></div>
-  </div>
-  <div id="read" class="result-panel" style="display:none"><div class="card"><span class="small muted">古籍象意主判断 · 样例</span><div class="summary">偏凶，但存在明确反证</div><p class="lead">患者宫受病宫克，又有己加癸地刑玄武；病宫丙辛月奇相合、天芮泄气及旬空构成反向依据。不代表现实健康结论。</p></div>
-    <div id="reading-sections"></div>
-  </div>
-  <div id="sources" class="result-panel" style="display:none"><div class="card"><h3>为何得出这一传统判断</h3><p class="lead">患者己在巽四、死门、六合；天芮携丙在乾六，戌墓、亥绝且戌亥旬空。天心在艮八、乙奇在震三。主证与反证都应保留。</p></div><div class="card"><h3>方法与版本</h3><p class="lead">V3.9.1 自然断词＋完整十二长生，81组原书有序组合、42条疾病补充、17类复合条件。细节溯源留在本地审计，不把SQL和书籍行号堆在用户正文。</p></div></div>
-  <p class="field-help">传统古籍研究，不是现实疾病诊断、病情预后、疗效判断或医疗决定依据。</p>
-</section>
-<section id="history" class="screen"><div class="top-label">MY RECORDS</div><h2>问事记录</h2><div class="card"><p class="lead">正式版将把时辰、九宫、断词版本与问事资料保存在设备本地。</p><p class="field-help">本原型不存储任何问事内容，也不会联网起盘。</p></div></section>
-<section id="more" class="screen"><div class="top-label">LIBRARY & SETTINGS</div><h2>典籍与设置</h2><div class="card"><h3>两书原文方法</h3><p class="lead">《神奇之门》《开悟之门》的来源目录、规则、术语解释（合法展示范围另行核对）。</p></div><div class="card"><h3>数据与隐私</h3><p class="lead">本地记录、手动导出、删除问事历史、颜色与字体偏好。</p></div></section>
-</main>
-<nav class="tabbar" aria-label="主导航">
-  <button id="tab-home" class="selected" onclick="go('home')"><span>☰</span>问事</button>
-  <button id="tab-history" onclick="go('history')"><span>◷</span>记录</button>
-  <button id="tab-more" onclick="go('more')"><span>▤</span>更多</button>
-</nav>
-<div class="cover" id="cover" onclick="closeSheet(event)"><div class="sheet" id="sheet"><div class="handle"></div><h2 id="sheet-title"></h2><div id="sheet-body"></div><button class="ghost" style="width:100%;margin-top:10px" onclick="document.querySelector('#cover').classList.remove('visible')">关闭</button></div></div>
+</head><body>
+<div class="phone">
+<section id="board" class="screen on">
+<div class="top"><button class="date-control" data-nav="setup">2026年11月1日 05:00　⌄</button><button class="now" data-nav="setup">选时</button></div>
+<div class="pillars">
+  <div class="pillar cherry">丙<small>年</small><span>午</span></div>
+  <div class="pillar earth">戊<small>月</small><span>戌</span></div>
+  <div class="pillar earth">己<small>日</small><span>卯</span></div>
+  <div class="pillar water">丁<small>时</small><span>卯</span></div>
+  <div class="pillarmeta">阴遁·<strong>五局</strong>　甲子旬<br>值符:<strong>天禽</strong>　值使:<strong>死门</strong></div>
 </div>
+<div class="info-strip"><span class="method-label">时家转盘 · 霜降上元</span><span class="head-actions"><button class="icon-button" data-nav="setup" aria-label="选择时间">◷</button><button class="icon-button" data-nav="reading" aria-label="阅读断词">☷</button></span></div>
+<div class="board-frame"><div class="board-grid" id="palaces"></div></div>
+<div class="legend"><span>原书九宫</span><span>十二长生</span><span>空亡</span><span>点宫查格局</span></div>
+<div class="lower-info">年命：<b>未选（不虚构）</b><br>日空：<b>源书按日旬</b>　时空：<b>甲子旬·戌亥空</b>　时干：<b>丁</b><br><button data-nav="setup">问测何事</button><button data-nav="reading">V3.9.1 完整断词</button><button data-nav="setup">30秒静心起局</button></div>
+<div class="safe-notice">固定研究样例：2026-11-01 05:00 美国东部时区，阴遁五局。星、门、神和天地干取自已保存的真实起盘记录，并非你当前所选时辰的实时推算。</div>
+</section>
+
+<section id="setup" class="screen">
+<div class="entry">
+<button class="back" data-nav="board">← 返回九宫</button>
+<h1 class="h1">问测何事？</h1><div class="muted">起局之前明确同一件具体事情，真实起局后15天内不重复。</div>
+<div class="form-card">
+ <label class="form-label" for="question">这一件事是什么？（必填）</label>
+ <textarea class="textbox" id="question" rows="3" placeholder="例如：关于父亲最近这一次身体状况的发展……"></textarea>
+ <label class="form-label" for="relation">谁是当事人？</label>
+ <select class="textbox" id="relation"><option value="self">本人</option><option value="father">父亲</option><option value="mother">母亲</option><option value="husband">丈夫</option><option value="wife">妻子</option><option value="brother">兄弟</option><option value="sister">姐妹</option><option value="son">儿子</option><option value="daughter">女儿</option></select>
+ <label class="form-label" for="subject">当事人称呼（可选，用于区分不同的人）</label>
+ <input class="textbox" id="subject" placeholder="如：大哥、二哥；仅本地处理" autocomplete="off">
+ <label class="form-label" for="duration">疾病新旧（可选）</label>
+ <select class="textbox" id="duration"><option value="">未说明</option><option value="new">新病</option><option value="chronic">久病</option></select>
+</div>
+<div class="form-card">
+ <div class="form-label">所选时间 · 先设置，再静心30秒</div>
+ <div class="wheel"><input type="datetime-local" id="date-time" aria-label="选择年月日时分"><button class="secondary" id="use-now" type="button">使用现在时间</button></div>
+ <div class="muted">时家转盘 · 设备本地时区；原书不同起局流派不在这里混用。正式起局将以最后确认时刻锁定时间。</div>
+</div>
+<div class="policy"><strong>一事一占 · 敬畏事实</strong><br>静下心想这件事30秒，心诚则灵，尊重事实。**同一件事15天内只允许完成一次起局。**<br>这里的“同一件事”是具体问题，不是整个健康领域；改写说法或换设备并不能靠本地记录完全识别。此页面目前仅为演示，不消耗真实起局次数。</div>
+<p id="lockstate" class="muted" role="status" style="margin:11px 0"></p>
+<button class="cta" id="to-ritual">确认问题，进入30秒静心</button>
+</div></section>
+
+<section id="ritual" class="screen">
+<div class="entry" style="text-align:center">
+<button class="back" data-nav="setup" style="display:block;text-align:left">← 返回修改问题</button>
+<div style="margin:26px auto 0;font-size:14px;color:#8b8f96;letter-spacing:.18em">一事一占</div><h1 class="h1" style="font-size:29px">静心 · 默念所问</h1>
+<p class="muted">静下心来，将注意力只放在刚才这件事上。<br><b style="color:#70869d">心诚则灵，尊重事实。</b></p>
+<div class="progress-ring"><span class="remaining" id="seconds">30</span></div>
+<div class="muted" id="ritual-status">静心前确认好问题，再开始倒计时。</div>
+<div class="progress-track"><span id="progress"></span></div>
+<div class="policy">同一件事15天内只起一次局。计时不自动起盘；正式版将在30秒结束后点击“确认起局”的时刻记录排盘时间。</div>
+<div style="height:20px"></div><button id="start-calm" class="cta">开始静心30秒</button>
+<button id="finish-calm" class="cta" style="display:none">查看演示盘（真起局未接入）</button>
+<p class="muted">原型中的固定样例与你本次问事无关，不会记录成已完成的一次起局。</p>
+</div></section>
+
+<section id="reading" class="screen">
+<div class="top"><button class="back" data-nav="board">← 九宫盘</button><span style="font-size:13px;color:#96969c">V3.9.1 · 文字断词</span></div>
+<div class="result-title"><h1 class="h1">断词 · 证据与反证</h1><div class="muted">以下对应上方固定历史样例，不是本次填写问题的新断案。</div></div>
+<div class="result-tabrow"><button class="active" data-result="conclusion">主判断</button><button data-result="full">完整断词</button><button data-result="basis">古籍依据</button></div>
+<div id="conclusion" class="result-panel">
+<div class="summary-card"><div class="muted">样例 · 传统古籍象意</div><div class="headline">原书主判偏凶，有相反依据</div><p>本例是由旧版 V3.9.1 自动起盘得出的传统象意，不表示现实疾病结局。原始11栏目保留，具体因果以完整断词审计为准。</p></div>
+<div class="summary-card"><h3>先看哪三件事？</h3><p>① 依据当事人关系确定用神。<br>② 对照天芮病宫与患者本宫的关系。<br>③ 再看天心、乙奇、十二长生、旬空、应期条件等正反证据。</p></div>
+</div>
+<div id="full" class="result-panel" style="display:none"><div id="sections" class="section-content"></div></div>
+<div id="basis" class="result-panel" style="display:none"><div class="summary-card"><h3>书源依据</h3><p>《神奇之门》《开悟之门》原书与已保存的九宫计算记录。源码行号、哈希、原始研究数据库供内部溯源，不作为客户断词显示。</p><p>整套81组有序天地干、42条疾病增补及17组条件复合判断不能机械叠加，必须有真实角色和原书适用条件。</p></div></div>
+<div class="safe-notice">传统文化研究与古籍象意，不是现实医学诊断、预后或治疗建议。</div>
+</section>
+<section id="other" class="screen"><div class="entry"><h1 class="h1" id="other-title">其他功能</h1><p class="muted">当前只对健康·病情轻重的 V3.9.1 源书解释进行界面设计。多局、研习、案例检索、账户等将逐步建设；未完成的功能不冒充正式断案。</p><button class="secondary" data-nav="board">返回局式</button></div></section>
+<nav class="bottombar" aria-label="主导航">
+<button class="active" data-tab="board"><b>⌂</b>局式</button>
+<button data-tab="setup"><b>▦</b>起局</button>
+<button data-tab="reading"><b>◎</b>断词</button>
+<button data-tab="other" data-name="案例"><b>☷</b>案例</button>
+<button data-tab="other" data-name="我的"><b>◇</b>我的</button>
+</nav>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="九宫详情"><div class="sheet">
+<div class="handle"></div><div class="sheet-header"><div><h2 class="sheet-title" id="sheet-title">宫位</h2><div class="sheet-sub" id="sheet-sub"></div></div><button class="icon-button" id="close-sheet" aria-label="关闭详情">×</button></div>
+<div class="sheet-tags" id="sheet-tags"></div><div id="sheet-main"></div>
+</div></div>
+</div>
+<script src="./issue-policy.js"></script>
 <script>
-const data=[
-{id:4,n:"巽四",s:"天任",d:"死门",g:"六合",t:"己",e:"癸",r:"患者"},
-{id:9,n:"离九",s:"天冲",d:"惊门",g:"太阴",t:"丁",e:"戊",r:""},
-{id:2,n:"坤二",s:"天辅",d:"开门",g:"螣蛇",t:"癸",e:"丙",r:""},
-{id:3,n:"震三",s:"天蓬",d:"景门",g:"白虎",t:"乙",e:"丁",r:"乙奇"},
-{id:5,n:"中五",s:"",d:"",g:"",t:"",e:"壬",r:""},
-{id:7,n:"兑七",s:"天英",d:"休门",g:"值符",t:"戊",e:"庚",r:""},
-{id:8,n:"艮八",s:"天心",d:"杜门",g:"玄武",t:"辛",e:"己",r:"天心"},
-{id:1,n:"坎一",s:"天柱",d:"伤门",g:"九地",t:"庚",e:"乙",r:"时干"},
-{id:6,n:"乾六",s:"天芮·天禽",d:"生门",g:"九天",t:"丙·壬",e:"辛",r:"天芮"}];
-const sections=[
-["01 · 问事取用","本人以日干己为主用神，落巽四宫；天芮在乾六宫。"],
-["02 · 值符值使","值符天英星落兑七宫，值使景门落震三宫。"],
-["03 · 天芮病宫","天芮携丙落乾六宫，丙加辛月奇相合；丙在戌墓、亥绝，戌亥旬空。"],
-["04 · 病星月令","戌月天芮相，病星有气；也须结合病宫旬空与泄气。"],
-["05 · 患者用神宫","日干己在巽四宫，死门、六合，己加癸地刑玄武，十二长生辰衰、巳帝旺。"],
-["07 · 医生医药","天心在艮八宫，乙奇在震三宫；原书三奇得使、玉女守门等格局由真实条件触发。"],
-["08 · 时干事体","时干庚在坎一宫，伤门、天柱、九地；庚在子死。"],
-["09 · 特殊格局","需以实盘审查门迫、击刑、墓库、旬空、双重制病与双重不利。"],
-["10 · 伏吟反吟与应期","出现真实冲合或出墓条件才论应期，不能凭空给病愈日期。"],
-["11 · 最后断词","传统主判偏凶，但丙辛月奇相合、天芮土泄气、病宫旬空等构成反证。"]];
-function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.toggle("active",x.id===id));["home","history","more"].forEach(x=>document.querySelector("#tab-"+x).classList.toggle("selected",x===id||(x==="home"&&["question","result"].includes(id))));document.querySelector("#viewport").scrollTop=0;}
-function switchTab(id,btn){document.querySelectorAll(".result-panel").forEach(p=>p.style.display=p.id===id?"block":"none");document.querySelectorAll("#resulttabs button").forEach(p=>p.classList.toggle("selected",p===btn));}
-function openPalace(id){const p=data.find(x=>x.id===id);document.querySelector("#sheet-title").textContent=p.n+(p.r?" · "+p.r:"");document.querySelector("#sheet-body").innerHTML=p.id===5?'<p class="lead">中五宫：地盘壬。本宫不强行填入常规八门、九星与八神。</p>':'<p class="lead">九星：'+p.s+'<br>八门：'+p.d+'<br>八神：'+p.g+'<br>天盘干：'+p.t+'<br>地盘干：'+p.e+'</p><p class="field-help">更多十二长生、旬空、刑冲等完整证据将在实际引擎接入后展示。</p>';document.querySelector("#cover").classList.add("visible");}
-function closeSheet(e){if(e.target.id==="cover")document.querySelector("#cover").classList.remove("visible");}
-document.querySelector("#palaces").innerHTML=data.map(x=>x.id===5?'<button class="palace is-center" onclick="openPalace(5)"><b>中五</b><span>地壬</span></button>':'<button class="palace '+(x.r?"role":"")+'" onclick="openPalace('+x.id+')"><div class="palace-header"><b>'+x.n+'</b>'+(x.r?"●":"")+'</div><div class="palace-body"><div class="name">'+x.s+'</div>'+x.d+' · '+x.g+'<br>天'+x.t+' / 地'+x.e+'</div><div class="palace-role">'+(x.r||"　")+'</div></button>').join("");
-document.querySelector("#reading-sections").innerHTML=sections.map(([t,b])=>'<details><summary>'+t+'</summary><p>'+b+'</p></details>').join("");
+"use strict";
+// All eight real heavenly/earth/star/door/deity pairs below are copied from
+// frozen, independently cast 2026-11-01T05:00 America/New_York V3.9.1 audit.
+// Screenshot supplies PRESENTATION style ONLY, never a new casting algorithm.
+const demo={
+ localTime:"2026-11-01T05:00:00-05:00",
+ roles:{patient:6,illness:8,doctor:4,yi:4,hour:2},
+ palaces:[
+ {p:4,n:"巽四",element:"木",deity:"九地",door:"杜门",earth:"己",heaven:[["天心","乙","辰冠带、巳沐浴"]],branches:"辰巳"},
+ {p:9,n:"离九",element:"火",deity:"玄武",door:"景门",earth:"癸",heaven:[["天蓬","壬","午胎"]],branches:"午"},
+ {p:2,n:"坤二",element:"土",deity:"白虎",door:"死门",earth:"辛",heaven:[["天任","丁","未冠带、申沐浴"]],branches:"未申"},
+ {p:3,n:"震三",element:"木",deity:"九天",door:"伤门",earth:"庚",heaven:[["天柱","丙","卯沐浴"]],branches:"卯"},
+ {p:5,n:"中五",element:"土",deity:"",door:"",earth:null,heaven:[],branches:""},
+ {p:7,n:"兑七",element:"金",deity:"六合",door:"惊门",earth:"丙",heaven:[["天冲","庚","酉帝旺"]],branches:"酉"},
+ {p:8,n:"艮八",element:"土",deity:"值符",door:"生门",earth:"丁",heaven:[["天芮","辛","丑养、寅胎"],["天禽","戊","丑养、寅长生"]],branches:"丑寅"},
+ {p:1,n:"坎一",element:"水",deity:"螣蛇",door:"休门",earth:"壬",heaven:[["天英","癸","子临官"]],branches:"子"},
+ {p:6,n:"乾六",element:"金",deity:"太阴",door:"开门",earth:"乙",heaven:[["天辅","己","戌养、亥胎"]],branches:"戌亥"}
+]};
+const posRoles=p=>Object.entries(demo.roles).filter(([,v])=>v===p).map(([k])=>({"patient":"患者","illness":"天芮","doctor":"天心","yi":"乙奇","hour":"时干"}[k]));
+function renderBoard(){
+ document.querySelector("#palaces").innerHTML=demo.palaces.map(x=>{
+   if(x.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span class="center-caption">中宫独立解析</span></button>';
+   const sky=x.heaven.map(s=>s[1]).join("·"), stars=x.heaven.map(s=>s[0]).join("·");
+   const role=posRoles(x.p);
+   return '<button class="palace" data-palace="'+x.p+'" aria-label="'+x.n+' '+stars+' '+x.door+' '+x.deity+'">'+
+   '<div class="palace-head"><span class="palace-branch">'+x.branches+' · '+x.heaven[0][2]+'</span><span class="palace-n">'+x.p+'宫</span></div>'+
+   '<div class="palace-deity"><span class="palace-symbol">'+x.earth+'</span><span class="deity-name '+(x.deity==="白虎"?"red":"")+'">'+x.deity+'</span></div>'+
+   '<div class="palace-content"><span class="sky-star">'+stars+'</span><span class="palace-stem">'+sky+'</span>'+
+   '<span class="door-name">'+x.door+'</span><span class="bottom-stem">'+x.earth+'</span></div>'+
+   '<div class="palace-foot">'+role.map(r=>'<span class="role-mark">'+r+'</span>').join("")+
+   (x.p===6?'<span class="void-mark">戌亥空</span>':'')+'</div></button>';
+ }).join("");
+}
+function palaceDetail(index){
+ const p=demo.palaces.find(x=>x.p===index);if(!p)return;
+ const names=posRoles(p.p);
+ document.querySelector("#sheet-title").textContent=p.n+" · "+p.element+"行";
+ document.querySelector("#sheet-sub").textContent=p.p===5?"中五宫按独立规则，不套普通星门神。":"真正的星、门、神、天地干与十二长生";
+ document.querySelector("#sheet-tags").innerHTML=names.map(s=>"<span>"+s+"</span>").join("")+
+ (p.p===6?"<span>戌亥旬空</span>":"")+'<span>已封存演示盘</span>';
+ if(p.p===5){document.querySelector("#sheet-main").innerHTML='<div class="sheet-card"><h3>中五宫 · 特殊规则</h3><p>此份冻结审计没有独立列出中五宫天盘星、八门、八神，不把其他宫的配置伪造到中五。中宫单独根据源书计算显示。</p></div>';return;}
+ let star=p.heaven.map(s=>s[0]).join(" · "),sky=p.heaven.map(s=>s[1]).join(" · ");
+ const stage=p.heaven.map(s=>s[0]+"携"+s[1]+"："+s[2]).join("<br>");
+ document.querySelector("#sheet-main").innerHTML=
+ '<div class="sheet-grid"><div class="sheet-fact"><small>八神 · 神盘</small><b style="color:#d48732">'+p.deity+'</b></div>'+
+ '<div class="sheet-fact"><small>九星 · 天盘</small><b style="color:#29a869">'+star+'</b></div>'+
+ '<div class="sheet-fact"><small>八门 · 人盘</small><b style="color:#2785f6">'+p.door+'</b></div>'+
+ '<div class="sheet-fact"><small>天盘干 / 地盘干</small><b><span style="color:#ef4b3b">'+sky+'</span> / <span style="color:#c68836">'+p.earth+'</span></b></div></div>'+
+ '<div class="sheet-card"><h3>十二长生 · 实际落宫地支</h3><p>'+stage+'</p></div>'+
+ '<div class="sheet-card"><h3>宫位结构与取用</h3><p>'+p.n+'属'+p.element+'，所辖地支'+p.branches+'。'+
+ (names.length?('在此盘承担 '+names.join("、")+' 角色。'):"本宫不直接承担患者、天芮、天心、乙奇或时干主角色。")+
+ (p.p===6?'本占时甲子旬戌亥空。':'')+
+ '所有角色共宫时先保留各自依据，不把同一项证据重复当作两个结论。</p></div>'+
+ '<div class="warning">这是传统古籍盘面分析，不代表现实疾病状态。软件不会自动显示不存在的应期或医学结论。</div>';
+}
+function navigate(page){
+ clearTimer();
+ document.querySelectorAll(".screen").forEach(el=>el.classList.toggle("on",el.id===page));
+ document.querySelectorAll("[data-tab]").forEach(el=>el.classList.toggle("active",el.dataset.tab===page || (page==="ritual"&&el.dataset.tab==="setup")));
+ document.querySelector(".screen.on")?.scrollTo(0,0);
+}
+let timer=null,expires=0,started=false;
+function clearTimer(){if(timer){clearInterval(timer);timer=null;}expires=0;started=false;resetCalm();}
+function resetCalm(){
+ const s=document.querySelector("#seconds"),b=document.querySelector("#progress");
+ if(s)s.textContent="30";if(b)b.style.width="0";
+ const start=document.querySelector("#start-calm"),finish=document.querySelector("#finish-calm");
+ if(start)start.style.display="block";if(finish)finish.style.display="none";
+}
+function updateCalm(){
+ if(!expires)return;
+ const remain=Math.max(0,Math.ceil((expires-Date.now())/1000));
+ document.querySelector("#seconds").textContent=String(remain).padStart(2,"0");
+ document.querySelector("#progress").style.width=((30-remain)/30*100)+"%";
+ if(remain===0){clearInterval(timer);timer=null;expires=0;
+ document.querySelector("#start-calm").style.display="none";
+ document.querySelector("#finish-calm").style.display="block";
+ document.querySelector("#ritual-status").textContent="静心已满30秒。现在可以确认下一步。";}
+}
+document.querySelector("#start-calm").addEventListener("click",()=>{
+ if(timer||started)return;
+ started=true;expires=Date.now()+30_000;
+ document.querySelector("#start-calm").style.display="none";
+ document.querySelector("#ritual-status").textContent="静心中 · 保持专注，不跳过这段时间";
+ updateCalm();timer=setInterval(updateCalm,250);
+});
+document.querySelector("#finish-calm").addEventListener("click",()=>{
+ // No production engine here. Do NOT consume an issue, and don't imply that
+ // the user's entered local date/time corresponds to this fixed historic board.
+ navigate("board");document.querySelector(".safe-notice").textContent=
+ "已完成30秒静心。但此版是固定历史盘的视觉预览，尚未在手机里实际起新局，也不会耗用15天一次的正式起局机会。";
+});
+function setNow(){
+ const d=new Date(),pad=n=>String(n).padStart(2,"0");
+ document.querySelector("#date-time").value=d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+"T"+pad(d.getHours())+":"+pad(d.getMinutes());
+}
+document.querySelector("#use-now").addEventListener("click",setNow);setNow();
+document.querySelector("#to-ritual").addEventListener("click",async()=>{
+ const question=document.querySelector("#question").value;
+ const label=document.querySelector("#lockstate");
+ if(!window.WenguaIssuePolicy){label.textContent="15天校验模块未加载，无法继续";return;}
+ if(!WenguaIssuePolicy.questionIsSpecific(question)){
+   label.textContent="请先用至少4个字明确这一件具体的事，防止按整个领域错误锁定。";return;
+ }
+ const issue={topic:"health.severity",relation:document.querySelector("#relation").value,
+   subject:document.querySelector("#subject").value,question};
+ try {
+   const check=await WenguaIssuePolicy.checkIssue(issue,localStorage);
+   if(check.locked){
+      label.textContent="这件事距上次真正完成的起局尚未满15天，下次允许："+new Date(check.nextAllowedAt).toLocaleString("zh-CN");return;
+   }
+   label.textContent="";
+   navigate("ritual");
+ }catch(e){label.textContent="未能安全核对同题15天限制："+e.message;}
+});
+document.querySelectorAll("[data-nav]").forEach(e=>e.addEventListener("click",()=>navigate(e.dataset.nav)));
+document.querySelectorAll("[data-palace]").forEach(e=>e.addEventListener("click",()=>{
+ palaceDetail(Number(e.dataset.palace));document.querySelector("#overlay").classList.add("open");
+}));
+document.querySelector("#close-sheet").addEventListener("click",()=>document.querySelector("#overlay").classList.remove("open"));
+document.querySelector("#overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("open")});
+document.querySelectorAll("[data-tab]").forEach(e=>e.addEventListener("click",()=>{
+ if(e.dataset.tab==="other"){document.querySelector("#other-title").textContent=e.dataset.name==="我的"?"我的":"案例（开发中）";}
+ navigate(e.dataset.tab);
+}));
+document.querySelectorAll("[data-result]").forEach(e=>e.addEventListener("click",()=>{
+ document.querySelectorAll("[data-result]").forEach(el=>el.classList.toggle("active",el===e));
+ document.querySelectorAll(".result-panel").forEach(el=>el.style.display=el.id===e.dataset.result?"block":"none");
+}));
+const oldTexts=[
+["问事取用","本人以日干己为主要用神，落乾六宫；天芮落艮八宫。"],
+["值符值使","值符天禽星落艮八宫，值使死门落坤二宫。"],
+["天芮病宫","天芮落艮八宫，携辛丑养、寅胎，天禽携戊丑养、寅长生；二者同宫不重复投票。"],
+["病星月令","戌月天芮旺衰及星门神关系必须与原书规则一起判断。"],
+["患者用神宫","日干己落乾六宫，开门、太阴；用干己在戌养、亥胎，宫位逢戌亥旬空。"],
+["医生医药","天心与乙奇同在巽四宫，携乙辰冠带、巳沐浴。同宫两类取用不代表两次独立医药收益。"],
+["时干事体","时干丁落坤二宫，死门、白虎，丁在未冠带、申沐浴。"],
+["特殊凶吉格局","以真实宫位分别核对刑冲墓空、门迫及原书有序天地干。"],
+["伏吟反吟与快慢","应期以条件触发为先；静心仪式并不改变古籍规则及盘面真实性。"],
+["最后断词","本视图仅展示历史样例关键证据。完整版请以项目封存的 V3.9.1 原始11段文本为准，禁止把这段设计说明当成生成的占断。"]];
+document.querySelector("#sections").innerHTML=oldTexts.map(([t,s])=>"<details><summary>"+t+"</summary><p>"+s+"</p></details>").join("");
+renderBoard();
 </script>
 </body></html>
