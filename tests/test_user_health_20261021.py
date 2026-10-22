@@ -20,6 +20,7 @@ EXPECTED = {"year": "丙午", "month": "戊戌", "day": "戊辰", "hour": "壬�
 WALL_TIME = "2026-10-21T19:30:00-04:00"
 TIMEZONE = "America/New_York"
 AUDIT_MARKER = "USER_REQUEST_20261021_HEALTH_SEVERITY_TEST"
+FULL_DB = Path(__file__).resolve().parents[1] / "archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3"
 
 
 def run_case():
@@ -47,8 +48,10 @@ def run_case():
         "hour_ganzhi": pillars["hour"],
         "month_branch": pillars["month"][1],
     }
+    if not FULL_DB.is_file():
+        raise AssertionError("Latest complete V2.1 SQLite missing: no pretending knowledge is loaded")
     response = analyze_health_v21(
-        chart=chart, inquiry=inquire, calendar=actual_calendar)
+        chart=chart, inquiry=inquire, calendar=actual_calendar, db_path=FULL_DB)
     return calendar, method, chart, inquire, response
 
 
@@ -88,6 +91,7 @@ class UserInputHealthSeverityGate(unittest.TestCase):
         print("BUREAU="+json.dumps(method,ensure_ascii=False,sort_keys=True))
         print("CHART="+json.dumps(chart,ensure_ascii=False,sort_keys=True))
         print("INQUIRY="+json.dumps(inquiry,ensure_ascii=False,sort_keys=True))
+        print("SOURCE_DATABASE="+str(FULL_DB))
         print("ROLE_BINDING="+json.dumps(result["role_binding"],ensure_ascii=False,sort_keys=True))
         print("CONCLUSION="+json.dumps({
             "status":result["status"],
