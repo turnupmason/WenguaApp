@@ -1,0 +1,13 @@
+请继续开发我的 WenguaApp iOS 软件，不要重新开始、不要再做静态九宫排版。我已明确要求真正离线自动起盘，不能反复手工填写九宫。GitHub 主仓库：https://github.com/turnupmason/WenguaApp （main）。请在开始前读取根目录 AGENTS.md，docs/PROJECT_STATUS.md、docs/CHAPTER_LEDGER.md，尤其 docs/IOS_NATIVE_ENGINE_HANDOFF_2026-10-22.md。若当前聊天是新的 ChatGPT 账号，需要先连接 GitHub 授权才可以提交，不能凭空声称已经更新仓库。
+
+当前已实际提交：
+1）ios/WenguaAppUI/WenguaNativeCore.swift：Foundation-only Swift 离线真计算，按现有 Python astro_calendar.py 和 casting_shenqi.py 实现太阳黄经→节气→四柱→三元符头/阴阳遁局→九宫地盘、九星、八门、八神、值符值使、中五特例，并计算空亡、时支驿马、天盘和地盘入墓、十干×十二长生。不可猜测23点换日、节气太近或值使入中五未核实的盘。
+2）ios/WenguaAppUI/WenguaDesignPreviewApp.swift：已从纯演示开始接入 WenguaNativeCore.compute(at:timezone:)、实时九宫渲染，30秒静心、同一具体事项15天一次、本地保存实盘等；尚需 macOS Xcode 类型检查/模拟器真构建。
+3）ios/WenguaAppUI/GoldenNativeCastCases.json、NativeParityMain.swift、tests/test_ios_native_cast_against_python.py，及 GitHub workflow ios_native_cast_parity.yml：Linux Swift 真编译，4个源书数据库封存测试时辰对照；工作流还配置了 macOS XcodeGen 完整模拟器 build。检查并修复所有最新 CI 红灯。
+4）ios/WenguaAppUI/project.yml：使用 XcodeGen 生成 iOS17+ 的正式 Xcode 工程，只纳入 WenguaDesignPreviewApp.swift 和 WenguaNativeCore.swift，不要把带 @main 的 NativeParityMain.swift 加进 App 导致双入口。
+5）Python完整基线 src/wengua/health_text_pipeline.py:auto_cast_health_v39_text，采用 V3.9.1 用户已认可的疾病轻重自然断词：11栏、原书正反证据与应期、81原书天地干有序组合、42疾病增补、17复合条件。V4.0-V4.2数字打分已弃用，不能恢复。原194个古籍案例、43章、失败记录、所有历史SQL必须保留。完整研究库仍为 archives/sqlite/WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3，SHA256 21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405。
+6）五行配色绝不是「星一种颜色、门一种颜色」：所有天干、星、门、神各按自身五行：金黄、木绿、水蓝、火红、土棕。九宫图要跟我此前发的专业iPhone排盘截图同密度，包含逢空、驿马、入墓（分天盘地盘）、十二长生，每宫点击出漂亮的详情页。中五宫不得虚构星门神。
+
+请直接执行下一步真实软件开发：检查最新 Actions、修复 Python↔Swift 四盘一致性和 Xcode真编译问题；确认点击选时→30秒静心→确认起局后，Swift 真计算新盘且九宫从计算结果渲染，演示样例不计入15天限制；再继续把 V3.9.1 角色取用、原书81+42+17条件、11栏断词移植到离线 Swift/只读本地数据库。真实断词移植前绝不能把旧样例当新用户占断。要有可重复构建工程、自动测试、真实 GitHub 提交并更新 AGENTS.md/状态/章节账本；每次清楚说明已实算、已通过CI、待macOS真机验证或未移植部分，不做AI医学诊断或寿命概率。
+
+现在开始直接在 main 上按现有项目规范继续做，不要重置，不要重复让我解释旧需求，也不要以重新画静态UI取代真正计算。
