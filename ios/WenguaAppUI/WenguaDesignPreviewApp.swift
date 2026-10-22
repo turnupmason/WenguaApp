@@ -517,38 +517,54 @@ struct ProfessionalPalaceDetail: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("\(palace.name) · \(palace.element)行")
-                        .font(.system(size: 27, weight: .semibold))
-                        .foregroundStyle(QStyle.text)
-                    Text("真实研究盘的宫位资料 · 不代表现实疾病")
-                        .font(.caption)
-                        .foregroundStyle(QStyle.secondary)
-                }
-                HStack(spacing: 7) {
-                    ForEach(statusTags, id: \.self) { detailTag($0) }
-                }
-
-                if palace.id == 5 {
-                    factCard("中五宫特殊规则", text: "中五不强行套用外围八门、九星与八神；研究库未提供的中宫事项不伪造。")
-                } else {
-                    LazyVGrid(columns: columns, spacing: 10) {
-                        valueCard("八神", value: palace.deity, color: QFive.shade("deity",palace.deity))
-                        valueCard("九星", value: palace.stars, color: QFive.shade("star",palace.stars.components(separatedBy:"·").first ?? ""))
-                        valueCard("八门", value: palace.door, color: QFive.shade("door",palace.door))
-                        stemCard("天 / 地盘干", sky:palace.sky, ground:palace.ground)
-                    }
-                    factCard("十二长生", text: palace.stages)
-                    factCard("空亡 · 驿马 · 入墓（实盘显示）",text:conditionDescription)
-                    factCard("宫位角色及实盘信息",text:roleDescription)
-                }
-                Text("传统文化与古籍象意展示。具体断词使用 V3.9.1 原文，不输出分数或临床结论。")
+                headerBlock
+                tagBlock
+                factsBlock
+                Text("传统文化与古籍象意展示。新盘完整断词尚待 V3.9.1 原生移植。")
                     .font(.footnote)
                     .foregroundStyle(QStyle.secondary)
             }
             .padding(20)
         }
         .background(QStyle.backing)
+    }
+    private var headerBlock: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(palace.name + " · " + palace.element + "行")
+                .font(.system(size:27,weight:.semibold))
+                .foregroundStyle(QStyle.text)
+            Text(palace.computed == nil ? "已计算测试盘 · 古籍研究" :
+                  "本机 Swift 实算九宫 · 不是现实疾病诊断")
+                .font(.caption).foregroundStyle(QStyle.secondary)
+        }
+    }
+    private var tagBlock: some View {
+        HStack(spacing:7) {
+            ForEach(statusTags,id: \.self) { tag in detailTag(tag) }
+        }
+    }
+    @ViewBuilder private var factsBlock: some View {
+        if palace.id == 5 {
+            factCard("中五宫特殊规则",
+                     text:"中五不套普通八门、九星与八神；中五地盘实测干："+palace.ground)
+        } else {
+            factsGrid
+            factCard("十二长生",text:palace.stages)
+            factCard("空亡 · 驿马 · 入墓",text:conditionDescription)
+            factCard("宫位与角色",text:roleDescription)
+        }
+    }
+    private var factsGrid: some View {
+        LazyVGrid(columns: columns, spacing: 10) {
+            valueCard("八神",value:palace.deity,
+                      color:QFive.shade("deity",palace.deity))
+            valueCard("九星",value:palace.stars,
+                      color:QFive.shade("star",
+                         palace.stars.components(separatedBy:"·").first ?? ""))
+            valueCard("八门",value:palace.door,
+                      color:QFive.shade("door",palace.door))
+            stemCard("天 / 地盘干",sky:palace.sky,ground:palace.ground)
+        }
     }
 
     private func detailTag(_ label: String) -> some View {
