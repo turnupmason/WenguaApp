@@ -1,0 +1,611 @@
+{
+  "schema": "wengua_health_supplement_pairs_and_composites_v30",
+  "notes": [
+    "王→壬仅候选OCR归一，原文与归一并存",
+    "丙庚和庚丙需分病宫/患者宫含义，辛乙存在冲突实践保留",
+    "仅实际盘位匹配才调用；未计算不得作为已命中的条件",
+    "所有书中绝对生死及癌症文本留内部源，患者断词不作临床预测"
+  ],
+  "pairs": [
+    {
+      "id": "health_supplement_pair_01",
+      "heaven": "戊",
+      "earth": "丙",
+      "name": "青龙返首",
+      "mode": "role_dependent",
+      "meaning": "病宫病象深入/反复，人物宫吉",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_02",
+      "heaven": "丙",
+      "earth": "戊",
+      "name": "飞鸟跌穴",
+      "mode": "role_dependent",
+      "meaning": "病宫病象返回，人物宫吉",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_03",
+      "heaven": "辛",
+      "earth": "乙",
+      "name": "白虎猖狂",
+      "mode": "conflict",
+      "meaning": "凶中吉的古诀与病加重的实践同时存档",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_04",
+      "heaven": "乙",
+      "earth": "辛",
+      "name": "青龙逃走",
+      "mode": "duration",
+      "meaning": "新病趋好，久病不利，刑迫符使另凶",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_05",
+      "heaven": "乙",
+      "earth": "己",
+      "name": "日奇入墓",
+      "mode": "ill_adverse",
+      "meaning": "隐藏深，难诊;患者宫另判",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_06",
+      "heaven": "乙",
+      "earth": "壬",
+      "name": "日奇入地",
+      "mode": "ill_adverse",
+      "meaning": "缠绵象，待核正文",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_07",
+      "heaven": "丁",
+      "earth": "辛",
+      "name": "朱雀入狱",
+      "mode": "ill_adverse",
+      "meaning": "病象不利，不可和辛丁混淆",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_08",
+      "heaven": "丁",
+      "earth": "癸",
+      "name": "朱雀投江",
+      "mode": "ill_adverse",
+      "meaning": "古籍重凶象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_09",
+      "heaven": "癸",
+      "earth": "丁",
+      "name": "螣蛇夭矫",
+      "mode": "ill_adverse",
+      "meaning": "鬼怪古类象非现代精神医学诊断",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_10",
+      "heaven": "戊",
+      "earth": "庚",
+      "name": "青龙/飞宫候选",
+      "mode": "ill_adverse",
+      "meaning": "扩散象，不能直接建议换医院",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_11",
+      "heaven": "庚",
+      "earth": "戊",
+      "name": "飞宫伏宫候选",
+      "mode": "ill_adverse",
+      "meaning": "扩散象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_12",
+      "heaven": "丙",
+      "earth": "庚",
+      "name": "荧入太白",
+      "mode": "role_dependent",
+      "meaning": "病宫可病神离去，人物宫可病添",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_13",
+      "heaven": "庚",
+      "earth": "丙",
+      "name": "太白入荧",
+      "mode": "role_dependent",
+      "meaning": "病宫可病加重，人物宫可灾退",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_14",
+      "heaven": "戊",
+      "earth": "丁",
+      "name": "青龙转光",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_15",
+      "heaven": "丁",
+      "earth": "丙",
+      "name": "星随月转",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_16",
+      "heaven": "辛",
+      "earth": "丁",
+      "name": "狱神得奇",
+      "mode": "ill_favorable",
+      "meaning": "好转、有良药师",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_17",
+      "heaven": "乙",
+      "earth": "丙",
+      "name": "奇仪顺遂",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_18",
+      "heaven": "乙",
+      "earth": "丁",
+      "name": "奇仪相佐",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_19",
+      "heaven": "丙",
+      "earth": "乙",
+      "name": "日月并行",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_20",
+      "heaven": "丁",
+      "earth": "丁",
+      "name": "星奇入太阴",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_21",
+      "heaven": "庚",
+      "earth": "乙",
+      "name": "太白逢星",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_22",
+      "heaven": "壬",
+      "earth": "乙",
+      "name": "小蛇得势",
+      "mode": "ill_favorable",
+      "meaning": "好转象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_23",
+      "heaven": "己",
+      "earth": "戊",
+      "name": "犬遇青龙",
+      "mode": "ill_favorable",
+      "meaning": "得人援助",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_24",
+      "heaven": "壬",
+      "earth": "戊",
+      "name": "小蛇化龙",
+      "mode": "ill_favorable",
+      "meaning": "得人援助",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_25",
+      "heaven": "己",
+      "earth": "辛",
+      "name": "游魂入墓",
+      "mode": "ill_adverse",
+      "meaning": "缠绵，旧病不去新病来",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_26",
+      "heaven": "己",
+      "earth": "己",
+      "name": "地户逢鬼",
+      "mode": "ill_adverse",
+      "meaning": "缠绵旧病不去",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_27",
+      "heaven": "己",
+      "earth": "癸",
+      "name": "地刑玄武",
+      "mode": "ill_adverse",
+      "meaning": "缠绵象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_28",
+      "heaven": "己",
+      "earth": "壬",
+      "name": "地网高张",
+      "mode": "ill_adverse",
+      "meaning": "缠绵象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_29",
+      "heaven": "辛",
+      "earth": "戊",
+      "name": "困龙被伤",
+      "mode": "ill_adverse",
+      "meaning": "病象不利",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_30",
+      "heaven": "辛",
+      "earth": "癸",
+      "name": "天牢华盖",
+      "mode": "ill_adverse",
+      "meaning": "缠绵",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_31",
+      "heaven": "壬",
+      "earth": "辛",
+      "name": "螣蛇相缠",
+      "mode": "ill_adverse",
+      "meaning": "缠绵",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_32",
+      "heaven": "壬",
+      "earth": "壬",
+      "name": "蛇入地罗",
+      "mode": "ill_adverse",
+      "meaning": "缠绵",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_33",
+      "heaven": "癸",
+      "earth": "庚",
+      "name": "太白入网",
+      "mode": "ill_adverse",
+      "meaning": "病象难解",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_34",
+      "heaven": "癸",
+      "earth": "辛",
+      "name": "网盖天牢",
+      "mode": "ill_adverse",
+      "meaning": "难解",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_35",
+      "heaven": "癸",
+      "earth": "癸",
+      "name": "天网四张",
+      "mode": "ill_adverse",
+      "meaning": "难解",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_36",
+      "heaven": "己",
+      "earth": "乙",
+      "name": "地户遇奇候选",
+      "mode": "conditional",
+      "meaning": "死门太阴阴宅类象，仅传统病因比类",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_37",
+      "heaven": "辛",
+      "earth": "庚",
+      "name": "白虎出力",
+      "mode": "ill_adverse",
+      "meaning": "病加重",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_38",
+      "heaven": "丙",
+      "earth": "癸",
+      "name": "阴人害事",
+      "mode": "ill_adverse",
+      "meaning": "病加重",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_39",
+      "heaven": "戊",
+      "earth": "壬",
+      "name": "青龙入天牢",
+      "mode": "ill_adverse",
+      "meaning": "缠绵象",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_40",
+      "heaven": "庚",
+      "earth": "癸",
+      "name": "刑格候选",
+      "mode": "needs_source",
+      "meaning": "肢体脉络古象，精确格局需查",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_41",
+      "heaven": "庚",
+      "earth": "庚",
+      "name": "大格候选",
+      "mode": "needs_source",
+      "meaning": "胸膈便道类象候选",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    },
+    {
+      "id": "health_supplement_pair_42",
+      "heaven": "辛",
+      "earth": "辛",
+      "name": "伏干候选",
+      "mode": "needs_source",
+      "meaning": "久病慢象候选",
+      "source": "user_supplement_2026-10-22",
+      "source_book_line_hash": "not_claimed; original_book_alignment_pending",
+      "review_status": "source_user_confirmed_classification_not_independent_author_blind_test"
+    }
+  ],
+  "composites": [
+    {
+      "id": "health_composite_01",
+      "name": "地遁",
+      "conditions": "开休生门+乙己",
+      "traditional_meaning": "病宫隐深难诊，患者宫古籍重凶",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_02",
+      "name": "鬼遁",
+      "conditions": "丁+杜门(或开门)+九地",
+      "traditional_meaning": "病宫不利",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_03",
+      "name": "人遁",
+      "conditions": "丁+休门+太阴",
+      "traditional_meaning": "病宫不利",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_04",
+      "name": "鬼假",
+      "conditions": "死门+丁己癸+九地",
+      "traditional_meaning": "病宫不利",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_05",
+      "name": "人假",
+      "conditions": "惊门+壬+九天",
+      "traditional_meaning": "病宫不利",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_06",
+      "name": "三诈",
+      "conditions": "标准三诈并具体宫位成立",
+      "traditional_meaning": "病情反复",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_07",
+      "name": "三奇得使",
+      "conditions": "真三奇得使格局",
+      "traditional_meaning": "医药解救，丁乙尤重",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_08",
+      "name": "玉女守门",
+      "conditions": "玉女守门格局",
+      "traditional_meaning": "久病不利",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_09",
+      "name": "丧门吊客",
+      "conditions": "年命+太岁年月支推",
+      "traditional_meaning": "不可直接断生死",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_10",
+      "name": "三门四户",
+      "conditions": "合规三门四户遇刑墓",
+      "traditional_meaning": "吉格受阻",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_11",
+      "name": "伏干飞干飞宫伏宫",
+      "conditions": "真实天地干条件",
+      "traditional_meaning": "诊断不明或人不安",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_12",
+      "name": "马星",
+      "conditions": "实算驿马及动冲",
+      "traditional_meaning": "病转化或应期触发",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_13",
+      "name": "长生旺衰年龄",
+      "conditions": "实际年龄档与患者天干长生十二神",
+      "traditional_meaning": "老怕帝旺少怕衰，中年怕死绝胎",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_14",
+      "name": "新病久病空亡",
+      "conditions": "明确新旧+用神宫旬空",
+      "traditional_meaning": "新病转好候选，久病不利候选",
+      "calculation_status": "partially_implemented",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_15",
+      "name": "星门反伏",
+      "conditions": "8颗外宫星+8门本位对宫完整比对",
+      "traditional_meaning": "反吟快或突发、伏吟久慢、应期合冲",
+      "calculation_status": "partially_implemented",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_16",
+      "name": "天网/罗网",
+      "conditions": "癸辛、癸癸、癸庚与实际星门神角色",
+      "traditional_meaning": "病象缠绵，结合用神",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    },
+    {
+      "id": "health_composite_17",
+      "name": "时干地盘日干生克",
+      "conditions": "病现状的时干宫 vs 用神宫",
+      "traditional_meaning": "人克病偏吉、病克人偏凶",
+      "calculation_status": "indexed_condition_required",
+      "source": "user_supplied_2026-10-22"
+    }
+  ]
+}

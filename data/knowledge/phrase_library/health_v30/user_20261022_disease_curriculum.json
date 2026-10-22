@@ -1,0 +1,44 @@
+{
+  "schema": "wengua_user_disease_supplement_20261022_v30",
+  "provenance": "user_message_2026-10-22; not fabricated original_book line/hash; retain wording when later book-matched",
+  "state": "research_curriculum_partial_rules_only; not_medical_diagnosis",
+  "role_order": [
+    "天芮病星主疾病性质部位；地盘天芮本位坤二宫辅助；时干病情现状与趋势；天心乙奇医生医药；最终取患者用神/可选出生年命为重。",
+    "本人日干；妻子日干合干及乙；丈夫日干合干及庚；父母年干并父乾母坤；兄弟姐妹月干；子女晚辈时干；动物疾病用神未明则时干。",
+    "一次问多人须分别绑定每个人用神，不能用同一张天芮宫判断各人；无真实年命不猜；遇值符值使有关联时要提升纲领证据优先级。",
+    "主动问病先天芮+患者+时干；非主动问病日干落宫组合有传统健康类象，比如丁癸近视心脏候选，但不做医学诊断。",
+    "病宫/人物宫对格局含义可能相反: 戊丙、丙戊、丙庚、庚丙；天芮受木宫制不保证痊愈，月令土旺仍需合参。",
+    "本体天芮宫与坤二宫、时干宫、值使门、患者宫及医药宫的五行生克、各自门神干、宫位内外、月令均可作条件证据。",
+    "五不遇时: 时干克日干且同阴阳，传统凶时但不等于临床将死亡；击刑、门迫、三奇六仪入墓要目标宫实际触发。",
+    "内盘应近外盘应远；伏吟慢逢冲应，反吟快逢合应；空亡填实/冲实应，击刑逢冲以合应，墓库出墓冲墓应，马星逢动为应；无触发不得捏造具体日期。",
+    "新病空亡或反吟古籍有转愈象；久病空亡或反吟古籍偏凶；伏吟常久病慢恢复；不知新旧不可硬用旧病凶断。",
+    "天心西医乙奇中医仅古籍符号类比；时干或病宫与天心/乙奇同宫→有及时就医机会，不代表已经医治更不代表疗效。乙奇/天心克病宫古籍偏吉，但自身月废月囚、空、门迫、墓、刑均可能削弱。"
+  ],
+  "disease_palace": [
+    "天芮土落离火为受生助病;艮坤得土助主缠绵；落震巽受木制偏有利但辰戌丑未月病土强可反例；落坎主慢病缠绵；乾兑也有难治象，不能把任一宫直接判致命。",
+    "星门体象：天蓬变/血液泌尿候选；天任慢；天冲快；天辅感染/神经候选；天英表面/血压候选；天芮病灶；天柱脊椎/口腔耳候选；天心内因和医生象。",
+    "庚辛颗粒/肿瘤、己囊肿、戊良性候选；死伤+庚/辛及白虎凶门凶星虽原书提癌症，但现代不得据盘确诊癌症。",
+    "天芮落坤死门伏吟/戊戊辛辛腹部颈椎古象，必须同时满足盘面组合；不应把原书类象当真实诊断。"
+  ],
+  "medicine": [
+    "天心九星月令旺相休囚废；乙奇干木月令旺相休囚死；乙/丁三奇与值符值使、开休生/死惊伤景、太阴、玄武、螣蛇、白虎、杜门分别判断，有利医象不是现代疗法效果。",
+    "病宫与天心或乙奇同宫时有及时医疗机会;时干与天心或乙奇同宫亦然;两触发独立记录;天心乙奇同宫及地盘乙、地盘天心要独立层证据。",
+    "若医药宫克病宫，古籍为医药制病吉;若病克医药宫，古籍医药难发挥；医药不克病也不代表现实无法治愈；不要建议停药或放弃治疗。",
+    "开门/丁针灸/手术、丙放疗刮痧等只为古籍治疗取象，现实具体治疗必须遵医嘱。",
+    "求医方位应以克病宫为传统象，但不直接生成现实换医院/远行医疗安排。"
+  ],
+  "harmfulness": [
+    "用户原文包含‘必死/必癌症’等绝对古语;保留在内部有引文来源的古籍文化记录,不进入用户健康断词作为事实。",
+    "五不遇/六仪击刑/三奇入墓/空亡/门迫/马星/伏吟反吟既可凶亦可能冲合转化;先证据后结论，患命为决,不盲投票。",
+    "三诈病反复；鬼遁、人遁、鬼假、人假古籍在疾病非吉；地遁病宫可能隐深难诊、患者宫有重凶古文；三奇得使有解救象;玉女守门久病不利。",
+    "丧门吊客太岁前后二辰，需真实年命与太岁才能判断，绝不借此断死；三门四户与门迫击刑墓真实触发才出现。",
+    "六仪击刑真天盘：戊震3、己坤2、庚艮8、辛离9、壬巽4、癸巽4；三奇入墓乙丙乾6丁艮8；墓与库须月令辨；新病久病别混用。",
+    "古诀辛乙‘病神离去’与实践‘病情加重’冲突并存，不能选一条改成通用真理；乙辛新/旧分开，丙庚与庚丙必须区别病宫和用神宫。",
+    "疑OCR王=壬、门追=门迫、天矫=夭矫、干金决=千金决。保留raw与候选normalized，不未经比对原书就宣称完全核定。"
+  ],
+  "statuses": {
+    "implemented_existing": "V2.9 two immediate medical-co-palace triggers; monthly Tianxin/Yi, real tomb/striking, door pressure, fuyin fanyin, hour-vs-day five-not-encounter, sex Qian6/Kun2, local 11 slot renderer",
+    "new_in_v30": "additional source-matched role- and duration-conditioned pair interpretations, ground Tianrui Kun2 reference and time->development emphasis; no unsafe death assertions",
+    "indexed_not_executable": "spouse/sibling/animal multi-person binding, horse/三诈/三奇得使/玉女守门/丧吊 exact source matched conditions, true month-grave qualification, precise dated triggers, patient life-death inference; further rule verification and source line work needed"
+  }
+}

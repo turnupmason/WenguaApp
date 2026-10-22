@@ -1,0 +1,128 @@
+name: V3.0 Health User Curriculum Append-Only and Two Historical Regression Cases
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v30.py'
+      - 'data/knowledge/phrase_library/health_v30/**'
+      - 'scripts/run_two_historical_health_v30.py'
+      - 'tests/test_health_supplement_v30.py'
+      - 'scripts/build_health_v30_archive.py'
+      - 'schema/migrations/058_health_user_disease_supplement_v30.sql'
+      - '.github/workflows/health_v30.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verified:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: 11 fixed sections, literal source-role lookup, old 2 chart regressions and offline
+        run: python -m unittest discover -s tests -p test_health_supplement_v30.py -v
+  full_versioned_archive:
+    needs: verified
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Never replace an existing full V3.0 archive or sealed readout
+        id: old
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          d=Path('archives/sqlite')
+          f=d/'WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3'
+          p=d/'wengua_health_v30_manifest.json'
+          if f.exists():
+            assert p.is_file()
+            assert hashlib.sha256(f.read_bytes()).hexdigest()==json.loads(p.read_text('utf8'))['sha256']
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build full SQLite by append-only from exact V2.9 and seal 2 V3.0 evaluations
+        if: steps.old.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v30_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3' \
+            --sealed 'data/evaluation/health_v30/two_historical_supplement_V30_SEALED.json' \
+            --manifest 'data/knowledge/phrase_library/health_v30/archive_manifest.json'
+      - name: Verify source rows, checksum, old failures and compress
+        if: steps.old.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import sqlite3,json,hashlib,lzma
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3')
+          parent=Path('archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3')
+          result=Path('data/evaluation/health_v30/two_historical_supplement_V30_SEALED.json')
+          audit=json.loads(Path('data/knowledge/phrase_library/health_v30/archive_manifest.json').read_text('utf8'))
+          sh=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert audit['new_full_sha256']==sh(db)
+          assert audit['parent_sha256']==sh(parent)
+          report=json.loads(result.read_text('utf8'))
+          assert len(report['samples'])==2 and not report['source_author_endings_used']
+          assert all(sh(parent) for x in report['samples'])
+          for x in report['samples']:
+            assert hashlib.sha256(x['readout'].encode('utf8')).hexdigest()==x['sha256']
+          with sqlite3.connect(db) as c:
+            assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert c.execute('PRAGMA foreign_key_check').fetchall()==[]
+            for name,n in [('cases',194),('sections',43),('health_v30_fixed_template',11),
+                    ('health_v30_stem_pair_rules',42),('health_v30_composite_rule_index',17),
+                    ('health_v30_historical_readout_seals',2)]:
+                assert c.execute('SELECT COUNT(*) FROM "'+name+'"').fetchone()[0]==n
+            assert c.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          xz=Path(str(db)+'.xz')
+          xz.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          meta={'schema':'wengua_v30_194_original_cases_source_plus_user_disease_curriculum',
+                'sha256':sh(db),'parent_sha256':sh(parent),
+                'xz_sha256':sh(xz),'sealed_json_sha256':sh(result),
+                'original_cases':194,'original_chapters':43,'old_failed_examples':2,
+                'rules':42,'composite_index':17,
+                'unchanged_previous_versions':True,'historical_feedback_not_used':True,
+                'medical_outcomes_validated':False,'user_review':'pending',
+                'other_four_health_intents_approved':False}
+          Path('archives/sqlite/wengua_health_v30_manifest.json').write_text(
+            json.dumps(meta,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(meta,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.old.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V30-full194-user-disease-method-curriculum
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v30_manifest.json
+            data/evaluation/health_v30/two_historical_supplement_V30_SEALED.json
+      - name: Commit the append-only full archive and all verifiable receipts
+        if: steps.old.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v30_manifest.json' \
+            'data/evaluation/health_v30/two_historical_supplement_V30_SEALED.json' \
+            'data/knowledge/phrase_library/health_v30/archive_manifest.json'
+          git diff --cached --check
+          git commit -m 'Archive immutable full 194-case V3.0 source with user disease rules and two new sealed historical previews'
+          git push origin HEAD:main
