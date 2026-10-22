@@ -1,314 +1,269 @@
-"""V2.6: corrected offline 11-slot Chinese reading, six disease facets combined.
+"""Fixed ten/eleven-section offline Chinese severity renderer.
 
-One runtime route: source-checked calendar/chart -> actual actor roles -> local
-book-pair SQLite -> classical fact criteria -> fixed Python phrase slots.
-No GPT, API, network, freehand polishing, guessed conditions, prognosis dates.
-Earlier 194 cases and all previous model errors are input-independent.
+NO generated prose after filling the approved literal V2.6 JSON template;
+no web/network/LLM. All decisions are ancient textual symbolism only,
+not a real patient's clinical severity or treatment recommendation.
 """
 from __future__ import annotations
+import json
 from pathlib import Path
-import json, re
 from .casting_shenqi import STARS, DOORS
+from .health_dynamic_v21 import bind_patient, _checked_calendar, _meaning_door, _meaning_deity, _meaning_star, _meaning_stem
 from .health_severity_v22 import (
-    analyze_health_severity_v22, _find_star, _find_heaven_stem,
-    _p, _palace, _qualified, _body, _read, SHENQI,
-    _yes_void, _meaning_deity, _meaning_door, _meaning_star,
-    _meaning_stem, _relation, _phase_from_chart, FORBIDDEN_CUSTOMER)
-from .health_dynamic_v21 import bind_patient, _checked_calendar
+    analyze_health_severity_v22,_find_star,_find_heaven_stem,_palace,_body,_read,
+    SHENQI,_yes_void,_phase_from_chart,FORBIDDEN_CUSTOMER
+)
+from .health_severity_v25 import fuyin_fanyin_facts, _traditional_choice, INNER
 from .marriage_runtime import ELEMENTS, element_relation
-from .semantic_lookup import door_palace_relation
 from .health_severity_template import STEM_ELEMENTS
 
-TEMPLATE=Path(__file__).resolve().parents[2]/"data/knowledge/phrase_library/health_v26/severity_11_concise_template.json"
-OPPOSITE={1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4}
-INNER={"yin":{9,2,7,6},"yang":{1,8,3,4}}
+ROOT=Path(__file__).resolve().parents[2]
+TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v26/severity_customer_template.json"
+EL_PRODUCES={"木":"火","火":"土","土":"金","金":"水","水":"木"}
+EL_CONTROLS={"木":"土","土":"水","水":"火","火":"金","金":"木"}
 
-def fuyin_fanyin_facts(chart):
-    """Eight actual exterior stars & eight doors checked separately, exact home/opposite.
 
-    Source: 开悟 第四章 伏吟/反吟 paragraphs and source-v1 concept tracks.
-    Center-5 Tianqin excluded; never fake its door, star or deity.
+def _direction(left,right,left_label,right_label):
+    """Explicit subject, object and direction for every ordered 五行 relation."""
+    el=ELEMENTS[left["palace"]]
+    er=ELEMENTS[right["palace"]]
+    if el==er:
+        return left_label+"与"+right_label+"同属"+el+"，比和"
+    if EL_PRODUCES[el]==er:
+        return left_label+el+"生"+right_label+er+"，"+right_label+"受生"
+    if EL_CONTROLS[el]==er:
+        return left_label+el+"克"+right_label+er+"，"+right_label+"受制"
+    if EL_PRODUCES[er]==el:
+        return right_label+er+"生"+left_label+el+"，"+left_label+"受生"
+    if EL_CONTROLS[er]==el:
+        return right_label+er+"克"+left_label+el+"，"+left_label+"受制"
+    raise ValueError("Invalid directional element relation")
+
+
+def _star_relation(ill):
+    palace=ELEMENTS[ill["palace"]]
+    if palace=="土":return "病宫与天芮土比和，病星宫星同气"
+    if EL_CONTROLS[palace]=="土":
+        return "病宫"+palace+"克天芮土，病星受宫制"
+    if EL_CONTROLS["土"]==palace:
+        return "天芮土克病宫"+palace+"，病星克宫"
+    if EL_PRODUCES[palace]=="土":
+        return "病宫"+palace+"生天芮土，病星受宫生"
+    if EL_PRODUCES["土"]==palace:
+        return "天芮土生病宫"+palace+"，病星生宫"
+    raise ValueError("Incomplete five elements")
+
+
+def _source_pair_prose(pair,stem_heaven,stem_earth,chart,ill):
+    """Only domain-relevant book semantics may appear in user text.
+
+    The original excerpt/name/hash still stay in internal audit. A salacious
+    unrelated original title is NOT a health outcome or a patient's trait.
     """
-    home_stars={name:palace for palace,name in STARS.items() if palace!=5}
-    home_doors={name:palace for palace,name in DOORS.items()}
-    star_at={s["star"]:int(key) for key,c in chart["palaces"].items()
-             for s in c["heaven_stars"] if s["star"] in home_stars}
-    door_at={c["door"]:int(key) for key,c in chart["palaces"].items()
-             if c["door"] in home_doors}
-    if set(star_at)!=set(home_stars) or set(door_at)!=set(home_doors):
-        raise ValueError("Incomplete nine-star/eight-door external positions")
-    if len(set(star_at.values()))!=8 or len(set(door_at.values()))!=8:
-        raise ValueError("Repeated exterior symbol position")
-    sf=sum(star_at[s]==h for s,h in home_stars.items())
-    sr=sum(star_at[s]==OPPOSITE[h] for s,h in home_stars.items())
-    df=sum(door_at[d]==h for d,h in home_doors.items())
-    dr=sum(door_at[d]==OPPOSITE[h] for d,h in home_doors.items())
-    def state(home,reverse):
-        return "伏吟" if home==8 else "反吟" if reverse==8 else "非伏吟反吟"
-    star=state(sf,sr); door=state(df,dr)
-    pace=("主迟滞、较慢" if "伏吟" in (star,door) else
-          "主变化、较快" if "反吟" in (star,door) else
-          "不凭伏吟反吟断缓急")
-    return {"star":star,"door":door,"star_home":sf,"star_opposite":sr,
-            "door_home":df,"door_opposite":dr,"pace":pace,
-            "both_fuyin":star=="伏吟" and door=="伏吟",
-            "both_fanyin":star=="反吟" and door=="反吟",
-            "basis":"kaiwu_ch04_lines_556_580", "not_medical_timing":True}
+    key=pair["id"]
+    if key=="heaven_over_earth:壬:辛" and "螣蛇相缠" in pair["name"]:
+        return "壬加辛为螣蛇相缠，主纠缠阻滞"
+    if key=="heaven_over_earth:壬:壬" and "蛇入地罗" in pair["name"]:
+        return "壬加壬为蛇入地罗，主事体反复牵缠"
+    if stem_heaven==stem_earth:
+        return stem_heaven+"加"+stem_earth+"，同一五行之象重见"
+    el1,el2=STEM_ELEMENTS[stem_heaven],STEM_ELEMENTS[stem_earth]
+    if el1==el2:
+        return stem_heaven+"加"+stem_earth+"，两干同属"+el1+"，"+_meaning_stem(stem_heaven,chart,ill)+"之象重叠"
+    if EL_PRODUCES[el1]==el2:
+        return stem_heaven+"加"+stem_earth+"，天盘"+el1+"生地盘"+el2
+    if EL_CONTROLS[el1]==el2:
+        return stem_heaven+"加"+stem_earth+"，天盘"+el1+"克地盘"+el2
+    if EL_PRODUCES[el2]==el1:
+        return stem_heaven+"加"+stem_earth+"，地盘"+el2+"生天盘"+el1
+    return stem_heaven+"加"+stem_earth+"，地盘"+el2+"克天盘"+el1
+
+
+def _fuyin_text(fy):
+    st,dt=fy["star"],fy["door"]
+    if st=="伏吟" and dt=="伏吟":
+        return "九星、八门俱伏吟，主慢、主迟滞"
+    if st=="反吟" and dt=="反吟":
+        return "九星、八门俱反吟，主快、主变化反复"
+    if st=="伏吟" or dt=="伏吟":
+        return ("九星伏吟" if st=="伏吟" else "八门伏吟")+"，主慢；另一项非伏吟"
+    if st=="反吟" or dt=="反吟":
+        return ("九星反吟" if st=="反吟" else "八门反吟")+"，主快；另一项非反吟"
+    return "九星、八门均非伏吟或反吟"
+
 
 def _inside(cell,dun):
     return "内盘" if cell["palace"] in INNER[dun] else "外盘"
 
-def _stem_mean(stem,chart,cell):
-    return _meaning_stem(stem,chart,cell)
 
-def _short_cell(cell, include_stem=True):
-    if not cell: return ""
-    stars="、".join(s["star"] for s in cell["heaven_stars"])
-    parts=stars+"、"+cell["door"]+"、"+cell["deity"]
-    if include_stem:
-        top="、".join(s["carried_stem"] for s in cell["heaven_stars"])
-        parts+="，天盘"+top+"、地盘"+cell["earth_stem"]
-    return parts
+def _pace(fy,ill,person,dun):
+    illness=_inside(ill,dun);patient=_inside(person,dun)
+    if fy["star"]=="伏吟" or fy["door"]=="伏吟":
+        return "伏吟主慢，进展偏迟"
+    if fy["star"]=="反吟" or fy["door"]=="反吟":
+        return "反吟主快，变化较急"
+    if illness==patient=="外盘":
+        return "星门不伏不反，病宫与患者均在外盘，传统主慢"
+    if illness==patient=="内盘":
+        return "星门不伏不反，病宫与患者均在内盘，传统主快"
+    return "星门不伏不反，病患分居内外盘，缓急并见"
 
-def _relation_mean(a,b,label_a,label_b):
-    return _relation(a,b,label_a,label_b)
 
-def _pure_relation(a,b):
-    return element_relation(ELEMENTS[a["palace"]],ELEMENTS[b["palace"]])
+def _meaning_singular(cell,chart):
+    stars="、".join(s["star"] for s in cell["heaven_stars"] if s["star"]!="天禽星")
+    return stars+"、"+cell["door"]+"、"+cell["deity"]
 
-def _traditional_choice(ill,person,doc,yi,stage,ill_star_relation,person_void,ill_press=False,person_press=False):
-    strong=stage in ("旺","相")
-    death=ill["door"]=="死门"
-    medicine_controls=_pure_relation(doc,ill)=="克" or _pure_relation(yi,ill)=="克"
-    star_controlled=ill_star_relation=="克"
-    life=person["door"] in ("生门","休门","开门")
-    adverse=[]
-    if strong:adverse.append("天芮临月令"+stage+"，病象有气")
-    if death:adverse.append("天芮临死门，主闭塞病困")
-    if person_void:adverse.append("患者用神宫逢空")
-    if ill_press:adverse.append("病宫门迫，病象受阻")
-    if person_press:adverse.append("患者宫门迫，人物门象受阻")
-    if ill["deity"]=="白虎":adverse.append("病星乘白虎，有伤损象")
-    beneficial=[]
-    if star_controlled:beneficial.append("病星受落宫克制")
-    if medicine_controls:beneficial.append("天心或乙奇宫能克病宫")
-    if life:beneficial.append("患者临"+person["door"]+"，有生机象"+("，但此门受迫" if person_press else ""))
-    if not person_void:beneficial.append("患者宫不逢旬空")
-    if strong and death and not (medicine_controls and star_controlled and life and not person_void):
-        choice="病凶"
-        why="；".join(adverse[:4])+"；虽有"+("、".join(beneficial[:2]) if beneficial else "其他宫位辅助象")+"，本盘仍以病困为主。"
-    elif medicine_controls and life and not person_void:
-        choice="病吉"
-        why="；".join(beneficial[:3])+"，传统病象有制有扶。"
-    elif star_controlled and life and not person_void and not (strong and death):
-        choice="病吉"
-        why="；".join(beneficial[:3])+"，传统病象趋缓。"
-    elif strong and death:
-        choice="病凶"
-        why="；".join(adverse[:3])+"，暂以病困为主。"
-    elif life and not person_void and not (strong and ill["deity"]=="白虎"):
-        choice="病吉"
-        why="；".join(beneficial[:3])+"，偏向可调养之象。"
-    else:
-        choice="病凶"
-        why="；".join(adverse[:3])+"，暂以不利象为主。"
-    return {"verdict":choice,"rationale":why,"unfavorable":adverse,
-            "favorable":beneficial,"binary_is_traditional_only":True,
-            "not_a_real_medical_risk_grade":True,
-            "rule_branch":("sick_door_strong" if strong and death else
-                           "controlled_and_beneficial" if choice=="病吉" else
-                           "other_evidence_conflict"),
-            "source_judgement_requires_user_review":True}
 
 def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
     if not isinstance(inquiry,dict) or inquiry.get("intent")!="severity":
-        raise ValueError("Four other unreviewed health intents cannot render")
+        raise ValueError("Unreviewed four other health intents cannot run")
     calendar=_checked_calendar(calendar,chart)
-    base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)
-    role=bind_patient(chart,inquiry,calendar)
-    person=role["main_cell"]
-    if not person:raise ValueError("No source-supported patient stem/palace; cannot force binary reading")
-    pack=_read(TEMPLATE)
-    if len(pack["sections"])!=11:raise ValueError("Exactly 11 chapter templates required")
+    source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)
+    user=bind_patient(chart,inquiry,calendar)
+    person=user["main_cell"]
+    if not person:
+        raise ValueError("Patient role missing; cannot assert a traditional verdict")
+    pack=json.loads(TEMPLATE.read_text("utf8"))
+    if len(pack["sections"])!=11:
+        raise ValueError("Unexpected template section count")
     ill,carrier=_find_star(chart,"天芮星")
-    doc,_=_find_star(chart,"天心星")
-    yi=_find_heaven_stem(chart,"乙")
-    if not yi: raise ValueError("乙奇宫缺失")
+    doctor,_=_find_star(chart,"天心星")
+    medicine=_find_heaven_stem(chart,"乙")
     event=_find_heaven_stem(chart,chart["hour_ganzhi"][0])
-    if event is None:raise ValueError("Hour stem needs a real carrier")
+    if not medicine or not event: raise ValueError("Missing source chart role")
+    stage=_phase_from_chart(ill,calendar.get("month_branch"))
     fy=fuyin_fanyin_facts(chart)
-    month=calendar.get("month_branch")
-    stage=_phase_from_chart(ill,month)
-    pair=base["audit"]["stem_pair_source"]
-    star_rel=element_relation(ELEMENTS[ill["palace"]],"土")
-    pressed=base["audit"]["actual_door_press_palaces"]
-    verdict=_traditional_choice(ill,person,doc,yi,stage,star_rel,_yes_void(chart,person),
-                                ill["palace"] in pressed,person["palace"] in pressed)
-    other_stars=[s["star"] for s in ill["heaven_stars"] if s["star"]!="天芮星"]
-    disease_name="与"+"、".join(other_stars)+"同" if other_stars else ""
-    body_a,body_b=_body(_read(SHENQI),ill["palace"])
-    symbols=(ill["door"]+"主"+_meaning_door(ill["door"])+"，"+
-             ill["deity"]+"主"+_meaning_deity(ill["deity"]))
-    pair_label=pair["name"] if pair["category"]=="source_named_obstruction" else (
-        carrier["carried_stem"]+"加"+ill["earth_stem"])
-    if pair["category"]=="source_named_obstruction":
-        symbols+="；"+pair["short"]
-    elif STEM_ELEMENTS[carrier["carried_stem"]]==STEM_ELEMENTS[ill["earth_stem"]]:
-        symbols+=("；两干同属"+STEM_ELEMENTS[carrier["carried_stem"]]+"，"+
-                  _stem_mean(carrier["carried_stem"],chart,ill)+"之象重见")
-    if star_rel=="克":star_line="宫"+ELEMENTS[ill["palace"]]+"克天芮土，病星受制"
-    elif star_rel=="比和":star_line="宫星同属土，病象有根"
-    elif star_rel=="生":star_line="落宫生扶病星"
-    elif star_rel=="受克":star_line="天芮土克落宫"+ELEMENTS[ill["palace"]]+"，病星克宫"
-    elif star_rel=="受生":star_line="天芮土生扶落宫"+ELEMENTS[ill["palace"]]
-    else:star_line="病星与落宫五行相互作用"
-    role_line={"self":"本人以日干"+calendar["day_ganzhi"][0]+"为用神",
-               "father":"父亲参起局年干"+calendar["year_ganzhi"][0]+"为用神"}.get(
-               inquiry["relationship"],"以"+role["role_name"]+"为患者用神")
-    aux=role["extra_cells"]
-    aux=next((c for c in aux if c and c["palace"]!=person["palace"]),None)
+    bad_press=source["audit"]["actual_door_press_palaces"]
+    pair=source["audit"]["stem_pair_source"]
+    if pair["id"]!="heaven_over_earth:"+carrier["carried_stem"]+":"+ill["earth_stem"]:
+        raise ValueError("Paired source must agree with actual 天/地")
+    verdict=_traditional_choice(ill,person,doctor,medicine,stage,
+                                element_relation(ELEMENTS[ill["palace"]],"土"),
+                                _yes_void(chart,person))
+    extras=[c for c in user.get("extra_cells",[]) if c and c["palace"]!=person["palace"]]
+    aux=extras[0] if extras else None
     if inquiry["relationship"]=="father":
-        aux=chart["palaces"]["6"]
-    p_void=_yes_void(chart,person)
-    press=base["audit"]["actual_door_press_palaces"]
-    pointed_press=[chart["palaces"][str(i)] for i in press]
-    relevant_press=[c for c in pointed_press if c["palace"] in {person["palace"],ill["palace"]}]
-    if relevant_press:
-        pdetail="；".join(("病宫" if c["palace"]==ill["palace"] else "患者宫")+
-                           _palace(c)+c["door"]+"受门迫" for c in relevant_press)
+        aux=chart["palaces"]["6"] if person["palace"]!=6 else None
+    # One palace display per section, no duplicate star-door-deity descriptions.
+    starred=[s["star"] for s in ill["heaven_stars"] if s["star"]!="天芮星"]
+    star_suffix=("与"+"、".join(starred)+"同") if starred else ""
+    surface,internal=_body(_read(SHENQI),ill["palace"])
+    if ill["door"]=="死门":
+        door_image="死门主闭塞、病困"
     else:
-        pdetail="病宫与患者宫均无门迫"
-    pdetail+="；患者宫"+("逢旬空" if p_void else "不逢旬空")
-    focus=pdetail
+        door_image=ill["door"]+"主"+_meaning_door(ill["door"])
+    person_void=_yes_void(chart,person)
+    void_mean="患者宫逢旬空，吉象受虚" if person_void else "患者宫不逢旬空"
+    press_targets=[
+        chart["palaces"][str(p)] for p in bad_press
+        if p in {ill["palace"],person["palace"]}
+    ]
+    specific_press="；".join(_palace(c)+"的"+c["door"]+"构成门迫" for c in press_targets)
+    special="；".join(x for x in (specific_press,void_mean) if x)
+    if not special:special="病宫与患者宫均未见门迫或旬空"
+    pace=_pace(fy,ill,person,chart["dun"])
     inner_ill=_inside(ill,chart["dun"])
-    inner_p=_inside(person,chart["dun"])
-    inner_line=("阴遁" if chart["dun"]=="yin" else "阳遁")+\
-        "病宫在"+inner_ill+"、患者宫在"+inner_p
-    if inner_ill==inner_p:
-        inner_line+="；"+("内盘主近快" if inner_ill=="内盘" else "外盘主远慢")
-    else:inner_line+="；内外分居，缓急并参"
-    # Physical fuyin/fanyin may oppose the inside/outside speed cue.
-    if "伏吟" in (fy["star"],fy["door"]):
-        timely="伏吟主慢，不据此强定应期"
-    elif "反吟" in (fy["star"],fy["door"]):
-        timely="反吟主快，不据此强定应期"
-    else:timely="未见星门整盘伏吟反吟，不以此定应期"
-    if "反吟" in (fy["star"],fy["door"]):
-        known=inquiry.get("illness_duration")
-        duration="新病反吟有转愈之象" if known=="new" else \
-                 "久病反吟有不利之象" if known=="chronic" else \
-                 "病程未注明，新病与久病不混断"
+    inner_person=_inside(person,chart["dun"])
+    inner_facts="阴遁" if chart["dun"]=="yin" else "阳遁"
+    inner_facts+="病宫在"+inner_ill+"、患者宫在"+inner_person
+    if fy["star"] in ("伏吟","反吟") or fy["door"] in ("伏吟","反吟"):
+        qualifier="以伏吟反吟定快慢，再参内外盘"
     else:
-        duration="病程长短还须结合患者用神"
-    if "伏吟" in (fy["star"],fy["door"]):
-        speed="伏吟主迟，传统进展偏慢"
-    elif "反吟" in (fy["star"],fy["door"]):
-        speed="反吟主速，传统进展偏快"
-    elif inner_ill==inner_p=="外盘":
-        speed="病宫和患者宫均在外盘，传统进展偏慢"
-    elif inner_ill==inner_p=="内盘":
-        speed="病宫和患者宫均在内盘，传统进展偏快"
+        qualifier="星门无整盘伏吟反吟，按内外盘断缓急"
+    disease_duration=inquiry.get("illness_duration")
+    if (fy["star"]=="反吟" or fy["door"]=="反吟") and inquiry.get("illness_duration") in ("new","chronic"):
+        specific="；新病反吟传统有趋愈之象" if inquiry["illness_duration"]=="new" else "；久病反吟传统偏不利"
     else:
-        speed="病宫在"+inner_ill+"，传统缓急尚须合看内外盘"
-    clock_status=speed+"；不据此推算实际康复日期"
-    # The front-end does not repeat any palace's full symbol set in
-    # multiple paragraphs; doctor/person same-palace shown as shared place.
-    doctor_line="天心落"+_palace(doc)
-    if doc["palace"]==person["palace"]:doctor_line+="，与患者同宫"
-    yi_line="乙奇落"+_palace(yi)
-    if yi["palace"]==doc["palace"]:yi_line+="，与天心同宫"
-    med_line=_relation_mean(doc,ill,"天心宫","病宫")+"；"+_relation_mean(yi,ill,"乙奇宫","病宫")
-    role_support=("另参"+_palace(aux)+"，临"+aux["door"]+"、"+aux["deity"]+
-                  "；"+_relation_mean(aux,ill,"亲属辅助宫","病宫")) if aux else ""
-    phrase={
-        "who":role["label"],"role":role_line,"person":_palace(person),
-        "birth":("年命"+inquiry["patient_birth_ganzhi"] if inquiry.get("patient_birth_ganzhi") else ""),
-        "value_star":chart["value_star"],"value_star_palace":_palace(chart["palaces"][str(chart["value_star_palace"])]),
-        "value_star_image":_meaning_star(chart["value_star"]),
-        "value_door":chart["value_door"],"value_door_palace":_palace(chart["palaces"][str(chart["value_door_palace"])]),
-        "value_door_image":_meaning_door(chart["value_door"]),
-        "far_relation":_relation_mean(chart["palaces"][str(chart["value_star_palace"])],ill,"值符宫","病宫"),
-        "ill_p":_palace(ill),"other_star":disease_name,"ill_door":ill["door"],"ill_deity":ill["deity"],
+        specific=""
+    timing="不强定实际应期日期"+specific
+    if person["palace"]==doctor["palace"]:
+        doc_loc="与患者同宫的"+_palace(doctor)
+    else:
+        doc_loc=_palace(doctor)
+    if doctor["palace"]==medicine["palace"]:
+        medicine_loc="与天心同宫的"+_palace(medicine)
+    else:medicine_loc=_palace(medicine)
+    value_star=chart["palaces"][str(chart["value_star_palace"])]
+    value_door=chart["palaces"][str(chart["value_door_palace"])]
+    if value_star["palace"]==value_door["palace"]:
+        value_loc=_palace(value_star)
+    else:
+        value_loc=_palace(value_star)+"、"+_palace(value_door)
+    role_stem=user["stem"]
+    method=("以日干"+role_stem+"为本人用神" if inquiry["relationship"]=="self" else
+            "以"+user["role_name"].replace("（长辈候选）","")+"为"+user["label"]+"用神")
+    born=inquiry.get("patient_birth_ganzhi")
+    reason=verdict["rationale"].rstrip("。")
+    body_image="、".join(x for x in (surface,internal) if x)
+    fields={
+        "patient_label":user["label"],"patient_method":method,
+        "patient_palace":_palace(person),
+        "value_star":chart["value_star"],"value_door":chart["value_door"],
+        "value_palace_sentence":value_loc,
+        "value_star_meaning":_meaning_star(chart["value_star"]),
+        "value_door_meaning":_meaning_door(chart["value_door"]),
+        "value_disease_relation":_direction(value_star,ill,"值符宫","病宫"),
+        "extra_stars":star_suffix,"ill_palace":_palace(ill),
+        "ill_door":ill["door"],"ill_deity":ill["deity"],
         "ill_heaven":carrier["carried_stem"],"ill_earth":ill["earth_stem"],
-        "pair":pair_label,"symbols":symbols,"star_line":star_line,
-        "parts":body_a+"；"+body_b,
-        "palace_special":("本宫门迫" if ill["palace"] in press else ""),
-        "month":month,"stage":stage,
-        "strength":("有气，须留意疾病阻滞象" if stage in ("旺","相") else "气势转弱，仍需看用神宫"),
-        "person_contents":_short_cell(person),
-        "person_relation":_relation_mean(person,ill,"患者宫","病宫"),
-        "person_factors":("逢旬空，吉象受虚" if p_void else "不逢旬空"),
-        "family_extra":role_support,
-        "doc":doctor_line,"yi":yi_line,"med_relation":med_line,
-        "hour":chart["hour_ganzhi"][0],"event_palace":_palace(event),
-        "event_relation":_relation_mean(event,ill,"时干事体宫","病宫"),
-        "factors":focus,
-        "star_pattern":"九星"+fy["star"],"door_pattern":"八门"+fy["door"],
-        "inner_outer":inner_line,"duration":duration,"timing":timely,
-        "verdict":verdict["verdict"],"rationale":verdict["rationale"],
-        "rhythm":clock_status,
+        "palace_star_relation":_star_relation(ill),
+        "ill_door_image":door_image,
+        "ill_deity_image":ill["deity"]+"主"+_meaning_deity(ill["deity"]),
+        "pair_domain_meaning":_source_pair_prose(pair,carrier["carried_stem"],ill["earth_stem"],chart,ill),
+        "body_image":body_image,
+        "month_branch":calendar["month_branch"],"ill_strength":stage,
+        "strength_significance":("病星有气，不宜单取吉门判断" if stage in ("旺","相") else
+                                  "病星气弱，仍须看人物与医药宫"),
+        "patient_symbols":_meaning_singular(person,chart),
+        "person_relation":_direction(person,ill,"患者宫","病宫"),
+        "person_void_meaning":void_mean,
+        "aux_palace":_palace(aux) if aux else "",
+        "aux_symbols":_meaning_singular(aux,chart) if aux else "",
+        "aux_relation":_direction(aux,ill,"辅助宫","病宫") if aux else "",
+        "doctor_palace":doc_loc,"medicine_palace":medicine_loc,
+        "doctor_relation":_direction(doctor,ill,"天心宫","病宫"),
+        "medicine_relation":_direction(medicine,ill,"乙奇宫","病宫"),
+        "hour_stem":chart["hour_ganzhi"][0],"event_palace":_palace(event),
+        "event_relation":_direction(event,ill,"时干宫","病宫"),
+        "targeted_special_facts":special,
+        "star_door_pattern":_fuyin_text(fy),
+        "inner_outer_fact":inner_facts,"pace_judgement":pace,
+        "duration_qualifier":"","timing_qualifier":timing,
+        "traditional_verdict":verdict["verdict"],
+        "evidence_reason":reason,"final_pace":pace,
     }
-    # Data template enumerates only fixed phrases; optional factual sentences
-    # are skipped, not filled with "unimplemented/unreviewed".
-    display=[]
-    for it in pack["sections"]:
-        if it.get("optional")=="family_aux" and not aux: continue
-        if it["id"]=="01_role":
-            val="依据古籍，本次为"+phrase["who"]+"测病情轻重。"+phrase["role"]+"，落"+phrase["person"]+"。"
-            if phrase["birth"]:val+="另参"+phrase["birth"]+"。"
-        elif it["id"]=="02_far":
-            val=("值符"+phrase["value_star"]+"落"+phrase["value_star_palace"]+"，主"+
-                 phrase["value_star_image"]+"；值使"+phrase["value_door"]+"落"+
-                 phrase["value_door_palace"]+"，主"+phrase["value_door_image"]+"。"+
-                 phrase["far_relation"]+"。")
-        elif it["id"]=="03_ill":
-            val=("天芮"+(phrase["other_star"] if phrase["other_star"] else "")+"落"+
-                 phrase["ill_p"]+"，临"+phrase["ill_door"]+"、乘"+phrase["ill_deity"]+
-                 "，天盘"+phrase["ill_heaven"]+"加地盘"+phrase["ill_earth"]+"，为"+
-                 phrase["pair"]+"。"+phrase["symbols"]+"；"+phrase["star_line"]+
-                 "。人体类象涉及"+phrase["parts"]+"。")
-        elif it["id"]=="04_strength":
-            val=phrase["month"]+"月天芮为"+phrase["stage"]+"，"+phrase["strength"]+"。"
-        elif it["id"]=="05_person":
-            val=(phrase["role"]+"落"+phrase["person"]+"，"+phrase["person_contents"]+"。"+
-                 phrase["person_relation"]+"；"+phrase["person_factors"]+"。")
-        elif it["id"]=="06_family":
-            val=phrase["family_extra"]+"。"
-        elif it["id"]=="07_med":
-            val=phrase["doc"]+"，"+phrase["yi"]+"；"+phrase["med_relation"]+"。"
-        elif it["id"]=="08_event":
-            val="时干"+phrase["hour"]+"落"+phrase["event_palace"]+"；"+phrase["event_relation"]+"。"
-        elif it["id"]=="09_factors":
-            val=phrase["factors"]+"。"
-        elif it["id"]=="10_rhythm":
-            val=(phrase["star_pattern"]+"、"+phrase["door_pattern"]+"，"+fy["pace"]+"。"+
-                 phrase["inner_outer"]+"；"+phrase["duration"]+"。"+phrase["timing"]+"。")
-        elif it["id"]=="11_final":
-            val=("依据古籍，传统主判："+phrase["verdict"]+"。"+phrase["rationale"]+
-                 phrase["rhythm"]+"。")
-        else:raise ValueError("Unexpected display section")
-        if any(s in val for s in FORBIDDEN_CUSTOMER) or "{" in val or "}" in val:
-            raise ValueError("Customer output contained implementation text or unexpanded data")
-        display.append({"id":it["id"],"title":it["title"],"text":val})
-    if len(display)!=11-(1 if not aux else 0):
-        raise AssertionError("Visible conditional section count")
-    audit={**base["audit"],
-           "source_facts_retained":21,
-           "visible_sections":len(display),
-           "fuyin_fanyin":fy,
-           "yin_inner_palaces":sorted(INNER[chart["dun"]]),
-           "illness_inner_outer":inner_ill,
-           "patient_inner_outer":inner_p,
-           "binary_traditional_conclusion":verdict,
-        "filtered_context_unrelated_stem_pair_name":pair["name"] if pair_label!=pair["name"] else None,
-        "actual_timing_speed_sentence":speed,
-           "user_accepted":False,
-           "render_mode":"local_python_static_strings_no_llm",
-           "runtime_llm_calls":0,
-           "runtime_web_calls":0,
-           "clinical_severity_diagnosis":None}
-    return {"domain":"health","intent":"severity","schema":pack["schema"],
-            "status":"offline_user_acceptance_pending",
-            "sections":display,
-            "reading_text":"\n\n".join(x["title"]+"："+x["text"] for x in display),
-            "audit":audit,"source_provenance":base["source_provenance"]}
+    if born:
+        fields["patient_method"]+="，另参出生年命"+born
+    visible=[]
+    for section in pack["sections"]:
+        if section.get("optional")=="auxiliary" and not aux:
+            continue
+        paragraph=section["format"].format_map(fields)
+        if any(forbid in paragraph for forbid in FORBIDDEN_CUSTOMER):
+            raise ValueError("Internal engineering language cannot reach patient")
+        if any(word in paragraph for word in pack["pair_domain_policy"]["banned_rendered_name_substrings"]):
+            raise ValueError("Irrelevant ancient pair-name leaked")
+        if "{" in paragraph or "}" in paragraph:
+            raise ValueError("Unexpanded template slots")
+        if "门门迫" in paragraph or "与与" in paragraph or "同同" in paragraph:
+            raise ValueError("Duplicated template words")
+        visible.append({"id":section["id"],"title":section["title"],"text":paragraph})
+    if len(visible)!=11-(0 if aux else 1):
+        raise ValueError("Actual visible template count mismatch")
+    audit={**source["audit"],
+        "fuyin_fanyin":fy,
+        "illness_inner_outer":inner_ill,"patient_inner_outer":inner_person,
+        "tradition_binary_verdict":verdict,
+        "customer_sections":len(visible),
+        "source_facts_retained":21,
+        "pair_original_still_auditable":pair,
+        "render_mode":"strict_static_format_map_offline_no_GPT",
+        "runtime_model_calls":0,"runtime_network_calls":0,
+        "medical_severity_verified":False,"user_content_accepted":False}
+    return {
+        "schema":pack["schema"],"domain":"health","intent":"severity",
+        "status":"software_test_not_user_content_acceptance",
+        "sections":visible,
+        "reading_text":"\n\n".join(x["title"]+"："+x["text"] for x in visible),
+        "audit":audit,"source_provenance":source["source_provenance"]
+    }

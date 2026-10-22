@@ -1,0 +1,86 @@
+{
+  "schema": "wengua_health_severity_v26_strict_fact_slots",
+  "mode": "literal_format_map_offline",
+  "template_sections": 11,
+  "display_rule": "family_auxiliary_only_when_applicable",
+  "rules": {
+    "no_duplicate_palace_descriptions": true,
+    "customer_never_sees_engine_terms": true,
+    "no_irrelevant_pair_titles": true,
+    "no_gpt_rewrite": true,
+    "one_explicit_traditional_binary_verdict": true,
+    "pace_must_include_actual_fuyin_fanyin_or_inner_outer": true,
+    "no_clinical_claims": true,
+    "four_other_health_intents_remain_unapproved": true
+  },
+  "sections": [
+    {
+      "id": "01_role",
+      "title": "问事取用",
+      "format": "依据古籍，本次为{patient_label}测病情轻重。{patient_method}落{patient_palace}。"
+    },
+    {
+      "id": "02_far",
+      "title": "值符值使",
+      "format": "值符{value_star}、值使{value_door}落{value_palace_sentence}，分别主{value_star_meaning}和{value_door_meaning}。{value_disease_relation}。"
+    },
+    {
+      "id": "03_ill",
+      "title": "病宫综合",
+      "format": "天芮{extra_stars}落{ill_palace}，临{ill_door}、乘{ill_deity}，天盘{ill_heaven}、地盘{ill_earth}。{palace_star_relation}。{ill_door_image}；{ill_deity_image}。{pair_domain_meaning}。此宫传统身体类象涉及{body_image}。"
+    },
+    {
+      "id": "04_strength",
+      "title": "病星旺衰",
+      "format": "{month_branch}月天芮为{ill_strength}，{strength_significance}。"
+    },
+    {
+      "id": "05_patient",
+      "title": "患者用神",
+      "format": "{patient_palace}临{patient_symbols}。{person_relation}；{person_void_meaning}。"
+    },
+    {
+      "id": "06_aux",
+      "title": "亲属辅助",
+      "optional": "auxiliary",
+      "format": "另参{aux_palace}，临{aux_symbols}，{aux_relation}。"
+    },
+    {
+      "id": "07_med",
+      "title": "医生医药",
+      "format": "天心在{doctor_palace}，乙奇在{medicine_palace}。{doctor_relation}；{medicine_relation}。"
+    },
+    {
+      "id": "08_event",
+      "title": "时干事体",
+      "format": "时干{hour_stem}落{event_palace}。{event_relation}。"
+    },
+    {
+      "id": "09_special",
+      "title": "关键格局",
+      "format": "{targeted_special_facts}。"
+    },
+    {
+      "id": "10_pace",
+      "title": "伏吟反吟与缓急",
+      "format": "{star_door_pattern}。{inner_outer_fact}。{pace_judgement}。{timing_qualifier}。"
+    },
+    {
+      "id": "11_verdict",
+      "title": "最终断词",
+      "format": "依据古籍，传统主判：{traditional_verdict}。{evidence_reason}。{final_pace}。"
+    }
+  ],
+  "pair_domain_policy": {
+    "default": "ordered_pair_only_without_unsupported_ancient_title",
+    "strict_traditional_health_explanation_only": [
+      "heaven_over_earth:壬:辛",
+      "heaven_over_earth:壬:壬"
+    ],
+    "banned_rendered_name_substrings": [
+      "幼女奸淫"
+    ],
+    "retain_full_original_in_internal_audit": true
+  },
+  "base_sha256": "6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf"
+}
