@@ -166,3 +166,12 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 新测试复核V2.0在中间解释器的一个**真实方向性bug**：字符串endswith("克")也匹配"受克"，导致某些天心星、乙奇、患者宫「受病宫克」被误说成「克病宫」。不能因V2.0 CI通过就宣称全部语义正确。**V2.0完整数据库、原代码和失败发现均保留不覆盖**；V2.1在独立 src/wengua/health_dynamic_v21.py 正确分支区分克、受克、生、受生、比和，且不同关系映射明确传统五行有向含义。针对治疗象，优先根据医生天心与乙奇宫是否确实克病宫生成条件化医药象，不再直接复用病重模板的普通综合结论；开门手术象按开门宫对病宫具体有向克制判断，不能自动视为实际手术建议。
 
 新历法 guard 要求：用户提供的年/月/日/时各柱都符合六十甲子，month_ganzhi与month_branch必须同支，未给month_branch而month_ganzhi可验证则直接填实际月支，hour_ganzhi与真起局小时柱必须一致；不能将这个普通干支相容性检查冒充完整节气、时区或占验科学验证。患者出生年命仍完全可选。新运行脚本 scripts/run_health_dynamic_v21.py，tests/test_health_dynamic_v21.py（五个有向关系、实际月份/时柱冲突、阴遁五领域、多用户关系）；新迁移 schema/migrations/049_health_v21_directed_palace_relations.sql，append-only版本scripts/build_health_v21_archive.py，官方流程 .github/workflows/build_health_v21.yml。将从**最新完整V2.0库SHA 8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e** 全量备份并追加新五种关系规则和一条历法协议，不改194件案例、43原书节、两旧开发错判、V2.0的14人物和5问事66段；每次发布需独立SQLite+XZ+manifest，新V2.1工作流后续也必须检测已封存二进制不可重复写。此段仅为本轮执行交接，**CI尚未验收的版本不能写成完成**。全部五问事的用户文字仍只说“依据古籍”；不能给真实医学诊断或恢复日期。
+
+
+## 2026-10-21 最终 V2.1 归档成功，唯一下一轮父库（健康方向人物/问事独立）
+
+官方「Archive V2.1 Correct Directed Health Relations」运行 #39702020148 实际成功，Python3.11/3.12专项方向性+历法校验成功；「WenguaApp CI」 #39702020114 成功。源提交60f06bc39961ff8a45459b7fc85535718e840adf；机器人完整数据库归档提交 292b8b07cf68d773b46d24c186b627c67e7236f9。
+
+**以后基于此唯一最新版完整父库递增**：archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3，14,798,848字节，SHA256 **25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3**。同名 .sqlite3.xz 1,180,032字节，SHA256 **a3a69f7bc8971cf9a90f4cc5e4fed2f4d5521e1b2bdccb256f3dfbf00980d372**。归档凭据 archives/sqlite/shenqi21_kaiwu22_health_directed_v21_manifest.json，PRAGMA integrity_check=ok、foreign key错误0。V2.0旧完整库SHA 8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e 保持不可变；V2.1无损保留两书原194件史案、43节、所有历史作者错断及开发两次错断、健康14人物、五问事66段、原婚姻27规则，仅新增有向生克五关系与月支/时柱相容检查审计。正式用户入口 scripts/run_health_dynamic_v21.py 与 src/wengua/health_dynamic_v21.py；旧V2.0代码保留，不要回退。
+
+重要真实验收边界：测试通过的是九宫复算结构、角色路由、跨阴阳五意图填空、五种方向关系、历法相容、数据库行无损和接口回归；**并不证明所有24因素已全面实算、所有亲属源法都得到原书明确验证，亦不证明任何传统疾病判断具有医学预后准确性**。下个健康子领域要先有独立作者取用与单独长模板、正反例以及全24因素可用性条件，不许复用“病重”答案冒充其它问事。历史测试不能利用已看作者结局作为盲测。所有后续DB从此V2.1真完整SHA增量，新增迁移050/新version，不覆盖任何之前文件；界面冻结。对外说明依旧只写“依据古籍”，21段详细疾病严重程度模板的完整结构不可省略。
