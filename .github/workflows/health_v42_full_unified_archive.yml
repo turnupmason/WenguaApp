@@ -26,3 +26,12 @@ jobs:
             --seal 'data/evaluation/health_v42/verified_5_original_questions_full12_unified_SEALED.json' \
             --manifest 'archives/sqlite/wengua_health_v42_full12_unified_manifest.json' \
             --report 'docs/HEALTH_V42_FIVE_UNIFIED_V39_AND_SCORE_READINGS.md'
+      - name: Store verified new version outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3.xz' 'archives/sqlite/wengua_health_v42_full12_unified_manifest.json' 'data/evaluation/health_v42/verified_5_original_questions_full12_unified_SEALED.json' 'docs/HEALTH_V42_FIVE_UNIFIED_V39_AND_SCORE_READINGS.md'
+          git diff --cached --check
+          git commit -m 'Archive V4.2 integrated full original SQLite and scored actual chart outputs'
+          git push origin HEAD:main
