@@ -188,7 +188,7 @@ def analyze_health_severity_v27(*,chart,inquiry,calendar=None,db_path=None):
             gender_symbol="临"+_meaning_singular(aux,chart)
         gender_label="男性患者" if sex=="male" else "女性患者"
         if aux["palace"] in press:
-            gender_rel+="；辅助宫"+aux["door"]+"门迫，偏凶"
+            gender_rel+="；辅助宫"+aux["door"]+"构成门迫，偏凶"
         if _yes_void(chart,aux):
             gender_rel+="；辅助宫逢空，吉象受虚"
     else:gender_rel=gender_symbol=gender_label=""
