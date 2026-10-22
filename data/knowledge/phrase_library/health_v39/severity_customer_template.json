@@ -1,0 +1,68 @@
+{
+  "schema": "wengua_health_v39_customer_editorial_evidence",
+  "version": "V3.9",
+  "parent": "V3.8",
+  "status": "pending_user_acceptance",
+  "sections": [
+    {
+      "id": "01_role",
+      "format": "{content}"
+    },
+    {
+      "id": "02_far",
+      "format": "{content}"
+    },
+    {
+      "id": "03_illness",
+      "format": "{content}"
+    },
+    {
+      "id": "04_season",
+      "format": "{content}"
+    },
+    {
+      "id": "05_patient",
+      "format": "{content}"
+    },
+    {
+      "id": "06_gender",
+      "format": "{content}"
+    },
+    {
+      "id": "07_medicine",
+      "format": "{content}"
+    },
+    {
+      "id": "08_hour",
+      "format": "{content}"
+    },
+    {
+      "id": "09_hazards",
+      "format": "{content}"
+    },
+    {
+      "id": "10_pace",
+      "format": "{content}"
+    },
+    {
+      "id": "11_final",
+      "format": "{content}"
+    }
+  ],
+  "optional_sections": [
+    "06_gender"
+  ],
+  "customer_guidance": [
+    "hide book line and SHA metadata",
+    "include actual stem stages and void only where computed",
+    "remove repeated evidence",
+    "honor specific person relation",
+    "preserve separate contrary evidence"
+  ],
+  "training_rows_preserved": {
+    "stem_pairs": 81,
+    "disease_pairs": 42,
+    "composites": 17
+  },
+  "next": "after user agrees freeze approved template then start UI"
+}
