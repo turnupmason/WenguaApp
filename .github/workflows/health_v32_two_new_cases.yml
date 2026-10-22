@@ -1,0 +1,130 @@
+name: V3.2 Two New Original Health Case Replays and UI Handoff
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/replay_two_new_historical_health_v32.py'
+      - 'tests/test_health_v32_fresh_two_families.py'
+      - 'scripts/build_health_v32_replay_archive.py'
+      - 'schema/migrations/060_health_v31_real_cases_ui_handoff_v32.sql'
+      - '.github/workflows/health_v32_two_new_cases.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source_replay:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Source given four pillars, original value star/door, actual offline fixed prose
+        run: python -m unittest discover -s tests -p test_health_v32_fresh_two_families.py -v
+  archive:
+    needs: source_replay
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build only if no immutable V3.2 exists
+        id: guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3')
+          manifest=Path('archives/sqlite/wengua_health_v32_replay_manifest.json')
+          if db.exists():
+            assert manifest.is_file()
+            assert hashlib.sha256(db.read_bytes()).hexdigest()==json.loads(manifest.read_text('utf8'))['sha256']
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Append full 194-source V3.1, seal pre-answer reading and migration 060
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v32_replay_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3' \
+            --sealed 'data/evaluation/health_v32/two_new_source_families_V31_READOUTS_SEALED.json' \
+            --manifest 'data/knowledge/phrase_library/health_v32/replay_manifest.json'
+      - name: Verify two immutable hashes, all original rows and XZ archive
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3')
+          par=Path('archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3')
+          sealed=Path('data/evaluation/health_v32/two_new_source_families_V31_READOUTS_SEALED.json')
+          a=json.loads(sealed.read_text('utf8'))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          meta=json.loads(Path('data/knowledge/phrase_library/health_v32/replay_manifest.json').read_text('utf8'))
+          assert len(a['samples'])==2
+          assert not a['original_book_conclusions_loaded']
+          assert sha(db)==meta['new_full_archive_sha256']
+          assert sha(par)==meta['exact_previous_v31_full_sha256']
+          for x in a['samples']:
+            assert not x['original_author_outcome_used']
+            assert hashlib.sha256(x['text'].encode('utf8')).hexdigest()==x['text_sha256']
+          with sqlite3.connect(db) as con:
+            assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert con.execute('PRAGMA foreign_key_check').fetchall()==[]
+            for tab,n in [('cases',194),('sections',43),
+                          ('health_v30_stem_pair_rules',42),('health_v30_composite_rule_index',17),
+                          ('health_v31_correction_archive',2),('health_v32_pre_disclosure_history',2)]:
+               assert con.execute('SELECT count(*) FROM "'+tab+'"').fetchone()[0]==n
+            assert con.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          xz=Path(str(db)+'.xz')
+          xz.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          receipt={
+            'schema':'wengua_v32_full_source_new_families_replay',
+            'sha256':sha(db),'size_bytes':db.stat().st_size,
+            'exact_parent_v31_sha256':sha(par),'xz_sha256':sha(xz),
+            'sealed_sha256':sha(sealed),'cases':194,'original_book_sections':43,
+            'old_failed_development_cases':2,'previous_all_rows_preserved':True,
+            'source_historical_not_new_secret_blind':True,
+            'old_answers_not_used':True,'readouts':2,'pure_python_no_runtime_gpt':True,
+            'four_other_health_intents':'unapproved','ui_approval':'pending',
+            'ios_status':'not_started','medical_validation':False
+          }
+          Path('archives/sqlite/wengua_health_v32_replay_manifest.json').write_text(
+              json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(receipt,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.guard.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V32-TwoOriginalCaseReadouts-Full194
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v32_replay_manifest.json
+            data/evaluation/health_v32/two_new_source_families_V31_READOUTS_SEALED.json
+      - name: Save new versioned full SQLite and readouts, not old versions
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3'
+          git add -- \
+            'archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v32_replay_manifest.json' \
+            'data/evaluation/health_v32/two_new_source_families_V31_READOUTS_SEALED.json' \
+            'data/knowledge/phrase_library/health_v32/replay_manifest.json'
+          git diff --cached --check
+          git commit -m 'Archive V3.2 full 194-source SQLite and 2 new pre-disclosure V3.1 health predictions'
+          git push origin HEAD:main
