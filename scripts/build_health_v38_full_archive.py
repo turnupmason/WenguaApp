@@ -60,7 +60,7 @@ def build(parent,output,seal,manifest,readout):
             for i,row in enumerate(results["records"]):
                 f=row["illness_stem_tomb_absence"]
                 db.execute("""INSERT INTO health_v38_case_readouts VALUES
-                 (?,?,?,?,?,?,?,?,1,1,?,'pending')""",
+                 (?,?,?,?,?,?,?,?,?,1,1,?,'pending')""",
                  (row["case_id"],"new_user_question" if i==0 else "ancient_source_first_question",
                   row["four_pillars"]["day"],row["four_pillars"]["hour"],
                   row["patient_palace"],row["illness_palace"],
