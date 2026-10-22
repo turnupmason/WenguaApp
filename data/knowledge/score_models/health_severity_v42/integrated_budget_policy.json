@@ -1,0 +1,62 @@
+{
+  "schema": "wengua_health_v42_integrated_provenance_and_six_budgets_draft",
+  "version": "V4.2",
+  "status": "experimental_integrated_with_unchanged_V3.9_not_user_approved",
+  "intent": "severity",
+  "original_reading_version": "V3.9",
+  "original_score_lineage": "V4.1",
+  "baseline": 50,
+  "score_min": 0,
+  "score_max": 100,
+  "score_is_probability": false,
+  "clinical_health_index": false,
+  "stage_mapping": {
+    "method": "Yang-forward / Yin-reverse, all 5 original stages cross-checked; 8 palaces have one or two Earth branches",
+    "mode": "enumerate ALL real palace branches, average stage candidate severity; tomb accounted in conditional tomb module only",
+    "patient_stage_illustrative_delta": {
+      "长生": 6,
+      "沐浴": -2,
+      "冠带": 3,
+      "临官": 5,
+      "帝旺": 6,
+      "衰": -3,
+      "病": -5,
+      "死": -6,
+      "墓": 0,
+      "绝": -6,
+      "胎": 2,
+      "养": 2
+    },
+    "illness_carried_stage_display_only": "Illness star's carried stem stages are not a medical virus activity or automatic sign reversal; no weight until author-specific context is confirmed"
+  },
+  "module_budgets": {
+    "主体与天芮及其月令": 17,
+    "时干事体": 7,
+    "医药相互作用": 10,
+    "刑冲破墓空与马星": 9,
+    "原书有序天地盘格局": 5,
+    "复合格局与节奏": 2
+  },
+  "module_raw_denominator": {
+    "主体与天芮及其月令": 46,
+    "时干事体": 18,
+    "医药相互作用": 30,
+    "刑冲破墓空与马星": 45,
+    "原书有序天地盘格局": 25,
+    "复合格局与节奏": 25
+  },
+  "time_relation_candidate": {
+    "克": -10,
+    "受克": 7,
+    "生": 8,
+    "受生": -4,
+    "比和": 0
+  },
+  "patient_disease_relation": "Always share same rule ledger as V4.1, don't add twice",
+  "one_evidence_one_family_policy": "only exact unique physical evidence gets one budgeted vote; link separate counterevidence, never count multiple aliases as multiple harms",
+  "unknown_context_policy": "fully compute every available chart fact. If new/chronic not supplied, show both deterministic what-if branches and nominal midpoint; never manufacture disease duration. Natal/sex only if known; do not invent.",
+  "tomb_open_policy": "actual palace stage, month storage vs tomb, real branch clash vs separate opposite-palace horse, 70% provisional V4 source only, no new unreviewed automatic medical claim",
+  "customer_narrative": "V3.9 text verbatim plus succinct separate symbolic scoring paragraph, no provenance SHA/line",
+  "source_pairs": "81 ancient original+42 user disease supplements+17 conditional composites preserved",
+  "requires_approval_before_app": true
+}
