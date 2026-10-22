@@ -1,0 +1,3236 @@
+{
+  "schema": "wengua_v42_unified_v39_qualitative_full12_six_budget_numeric",
+  "parent_exact_full_V41_sha256": "f90e9de80b24a852c26d4957e4e91234f86b76c9289cbc9f4738eb1b735bf01a",
+  "same_3_old_plus_two_distinct_first_health_questions": true,
+  "case_ids_in_source_fixed_order": [
+    "user_20261022_1200_EDT",
+    "kaiwu.health.19950219.brother_paralysis",
+    "shenqi.health.19961102.on_site_health",
+    "shenqi.health.19960316.self_surgery",
+    "shenqi.health.19960727.father_illness"
+  ],
+  "no_original_book_post_event_outcome_input": true,
+  "stages_all_source_anchors_validated": true,
+  "score_is_not_a_medical_probability": true,
+  "user_approved": false,
+  "records": [
+    {
+      "family_id": "user_20261022_1200_EDT",
+      "datetime": "2026-10-22T12:00:00-04:00",
+      "source_scope": "current user: self question, not book case",
+      "four_pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "己巳",
+        "hour": "庚午"
+      },
+      "original_question": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self"
+      },
+      "bureau": {
+        "dun": "yin",
+        "ju": 9,
+        "yuan": "middle",
+        "futou": "己巳",
+        "solar_term": "寒露",
+        "calendar_status": "supplied_solar_term_not_independently_checked"
+      },
+      "value_star": "天英星",
+      "value_door": "景门",
+      "original_v39_reading_sha256": "e7a747742db38125566c5e03237b619ce5195780667ae56752ec1006a26d5e83",
+      "old_v39_reading_byte_identical": true,
+      "new_integrated_reading_sha256": "b4749c82718767f3866557a53b5d57fc6074962007fa9d5440f7e3209c9e5f10",
+      "V39_exact_legacy_customer_text": "问事取用：本人以日干为主要用神，落巽四宫；天芮星是疾病用神，落乾六宫。\n\n值符值使：值符天英星落兑七宫，值使景门落震三宫。\n\n天芮病宫：天芮与天禽同宫，临生门、九天。所携天盘丙加地盘辛，丙加辛「月奇相合」、壬加辛「螣蛇相缠」。天芮土生病宫金，病星有泄气之象。天盘丙在戌入墓；在亥临绝；占时庚午属甲子旬，戌/亥空，乾六宫旬空。三象同宫，病星所携干的作用受到牵制；空亡还须区分新病久病，不可把入墓、绝地、空亡直接等同于疾病结局。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见死门、六合，天地干己加癸「地刑玄武」。病宫克患者宫，用神受克。患者宫未逢旬空。本盘不利关系相互叠加：病宫克患者、患者宫又临原书凶格。\n\n医生医药：天心落艮八宫，辛加己「入狱自刑」；乙奇落震三宫，乙加丁「奇仪相佐」。天心月废，乙奇月囚。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落坎一宫，庚加乙「太白逢星」。时干代表病情现状，时干宫生患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见乙加丁「奇仪相佐」、戊加庚「值符飞宫」，须合本事取义。值使宫满足三奇得使。值使宫满足玉女守门。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在内盘、患者宫在外盘。病患分居内外盘，缓急并见。不强断具体应期。已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时午支，驿马在申，落2宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：三奇得使、玉女守门。\n\n最后断词：综合看，本盘古籍取象偏凶。病宫克患者宫，用神受克；病宫克患者、患者宫又临原书凶格。同时还有天芮土生病宫金，病星泄气；病宫亦见丙加辛「月奇相合」；病宫旬空，需辨新病与久病；病星所携丙临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "V42_integrated_customer_text": "问事取用：本人以日干为主要用神，落巽四宫；天芮星是疾病用神，落乾六宫。\n\n值符值使：值符天英星落兑七宫，值使景门落震三宫。\n\n天芮病宫：天芮与天禽同宫，临生门、九天。所携天盘丙加地盘辛，丙加辛「月奇相合」、壬加辛「螣蛇相缠」。天芮土生病宫金，病星有泄气之象。天盘丙在戌入墓；在亥临绝；占时庚午属甲子旬，戌/亥空，乾六宫旬空。三象同宫，病星所携干的作用受到牵制；空亡还须区分新病久病，不可把入墓、绝地、空亡直接等同于疾病结局。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见死门、六合，天地干己加癸「地刑玄武」。病宫克患者宫，用神受克。患者宫未逢旬空。本盘不利关系相互叠加：病宫克患者、患者宫又临原书凶格。\n\n医生医药：天心落艮八宫，辛加己「入狱自刑」；乙奇落震三宫，乙加丁「奇仪相佐」。天心月废，乙奇月囚。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落坎一宫，庚加乙「太白逢星」。时干代表病情现状，时干宫生患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见乙加丁「奇仪相佐」、戊加庚「值符飞宫」，须合本事取义。值使宫满足三奇得使。值使宫满足玉女守门。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在内盘、患者宫在外盘。病患分居内外盘，缓急并见。不强断具体应期。已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时午支，驿马在申，落2宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：三奇得使、玉女守门。\n\n最后断词：综合看，本盘古籍取象偏凶。病宫克患者宫，用神受克；病宫克患者、患者宫又临原书凶格。同时还有天芮土生病宫金，病星泄气；病宫亦见丙加辛「月奇相合」；病宫旬空，需辨新病与久病；病星所携丙临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。\n\n传统病势象意分：古籍病势象意实验分：34/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令-13、时干事体+3、医药相互作用+0、刑冲破墓空与马星-2、原书有序天地盘格局-4、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病36分、久病34分，两种条件取向不冒充真实病史。己在患者宫：辰衰、巳帝旺；天芮携丙在病宫：戌墓、亥绝。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。",
+      "V42_integrated_extra_section": {
+        "id": "12_symbolic_score",
+        "title": "传统病势象意分",
+        "text": "古籍病势象意实验分：34/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令-13、时干事体+3、医药相互作用+0、刑冲破墓空与马星-2、原书有序天地盘格局-4、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病36分、久病34分，两种条件取向不冒充真实病史。己在患者宫：辰衰、巳帝旺；天芮携丙在病宫：戌墓、亥绝。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。"
+      },
+      "old_verdict": "病凶",
+      "stage_actor_audit": {
+        "patient": {
+          "stem": "己",
+          "palace": 4,
+          "palace_branches": [
+            "辰",
+            "巳"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "辰",
+              "stage": "衰"
+            },
+            {
+              "branch": "巳",
+              "stage": "帝旺"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        },
+        "tianrui_heaven": {
+          "stem": "丙",
+          "palace": 6,
+          "palace_branches": [
+            "戌",
+            "亥"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "戌",
+              "stage": "墓"
+            },
+            {
+              "branch": "亥",
+              "stage": "绝"
+            }
+          ],
+          "is_tomb": true,
+          "is_extinct": true,
+          "is_strong_stage": false,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        }
+      },
+      "complete_real_chart_facts": {
+        "four_pillars": {
+          "year": "丙午",
+          "month": "戊戌",
+          "day": "己巳",
+          "hour": "庚午"
+        },
+        "month_branch": "戌",
+        "patient_role": "本人",
+        "patient_stem": "己",
+        "patient_palace": 4,
+        "illness_palace": 6,
+        "illness_carried_stem": "丙",
+        "doctor_palace": 8,
+        "yi_medicine_palace": 3,
+        "hour_event_palace": 1,
+        "void_from_hour": {
+          "xun_head": "甲子",
+          "xun_kong_branches": [
+            "戌",
+            "亥"
+          ]
+        },
+        "actual_full_8_palace_inventory": [
+          {
+            "palace": 1,
+            "element": "水",
+            "branches": [
+              "子"
+            ],
+            "earth_stem": "乙",
+            "heaven": [
+              {
+                "star": "天柱星",
+                "stem": "庚",
+                "lifecycle": {
+                  "stem": "庚",
+                  "palace": 1,
+                  "palace_branches": [
+                    "子"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "子",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "伤门",
+            "deity": "九地"
+          },
+          {
+            "palace": 2,
+            "element": "土",
+            "branches": [
+              "未",
+              "申"
+            ],
+            "earth_stem": "丙",
+            "heaven": [
+              {
+                "star": "天辅星",
+                "stem": "癸",
+                "lifecycle": {
+                  "stem": "癸",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "开门",
+            "deity": "螣蛇"
+          },
+          {
+            "palace": 3,
+            "element": "木",
+            "branches": [
+              "卯"
+            ],
+            "earth_stem": "丁",
+            "heaven": [
+              {
+                "star": "天蓬星",
+                "stem": "乙",
+                "lifecycle": {
+                  "stem": "乙",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "临官"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "景门",
+            "deity": "白虎"
+          },
+          {
+            "palace": 4,
+            "element": "木",
+            "branches": [
+              "辰",
+              "巳"
+            ],
+            "earth_stem": "癸",
+            "heaven": [
+              {
+                "star": "天任星",
+                "stem": "己",
+                "lifecycle": {
+                  "stem": "己",
+                  "palace": 4,
+                  "palace_branches": [
+                    "辰",
+                    "巳"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "死门",
+            "deity": "六合"
+          },
+          {
+            "palace": 6,
+            "element": "金",
+            "branches": [
+              "戌",
+              "亥"
+            ],
+            "earth_stem": "辛",
+            "heaven": [
+              {
+                "star": "天芮星",
+                "stem": "丙",
+                "lifecycle": {
+                  "stem": "丙",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              },
+              {
+                "star": "天禽星",
+                "stem": "壬",
+                "lifecycle": {
+                  "stem": "壬",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "冠带"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "临官"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "生门",
+            "deity": "九天"
+          },
+          {
+            "palace": 7,
+            "element": "金",
+            "branches": [
+              "酉"
+            ],
+            "earth_stem": "庚",
+            "heaven": [
+              {
+                "star": "天英星",
+                "stem": "戊",
+                "lifecycle": {
+                  "stem": "戊",
+                  "palace": 7,
+                  "palace_branches": [
+                    "酉"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "酉",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "休门",
+            "deity": "值符"
+          },
+          {
+            "palace": 8,
+            "element": "土",
+            "branches": [
+              "丑",
+              "寅"
+            ],
+            "earth_stem": "己",
+            "heaven": [
+              {
+                "star": "天心星",
+                "stem": "辛",
+                "lifecycle": {
+                  "stem": "辛",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "养"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "胎"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "杜门",
+            "deity": "玄武"
+          },
+          {
+            "palace": 9,
+            "element": "火",
+            "branches": [
+              "午"
+            ],
+            "earth_stem": "戊",
+            "heaven": [
+              {
+                "star": "天冲星",
+                "stem": "丁",
+                "lifecycle": {
+                  "stem": "丁",
+                  "palace": 9,
+                  "palace_branches": [
+                    "午"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "临官"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "惊门",
+            "deity": "太阴"
+          }
+        ],
+        "source12_stage_for_actors": {
+          "patient": {
+            "stem": "己",
+            "palace": 4,
+            "palace_branches": [
+              "辰",
+              "巳"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "辰",
+                "stage": "衰"
+              },
+              {
+                "branch": "巳",
+                "stage": "帝旺"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          },
+          "tianrui_heaven": {
+            "stem": "丙",
+            "palace": 6,
+            "palace_branches": [
+              "戌",
+              "亥"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "戌",
+                "stage": "墓"
+              },
+              {
+                "branch": "亥",
+                "stage": "绝"
+              }
+            ],
+            "is_tomb": true,
+            "is_extinct": true,
+            "is_strong_stage": false,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          }
+        },
+        "source12_all_ten_stems_checked": true,
+        "source12_total_stage_facts_checked": 120,
+        "fuyin_fanyin": {
+          "star": "非伏吟反吟",
+          "door": "非伏吟反吟",
+          "star_home": 0,
+          "star_opposite": 0,
+          "door_home": 0,
+          "door_opposite": 0,
+          "pace": "不凭伏吟反吟断缓急",
+          "both_fuyin": false,
+          "both_fanyin": false,
+          "basis": "kaiwu_ch04_lines_556_580",
+          "not_medical_timing": true
+        },
+        "chart_relevant_facts_calculated": true
+      },
+      "symbolic_scoring": {
+        "observed_or_unspecified_nominal": {
+          "baseline": 50,
+          "score": 34,
+          "six_modules": [
+            {
+              "name": "主体与天芮及其月令",
+              "budget": 17,
+              "raw_rule_sum": -36,
+              "applied_signed_score": -13,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "illness_controls_patient",
+                  "points": -25,
+                  "family": "main_patient_illness_relation",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_stem_month_vigorous",
+                  "points": 6,
+                  "family": "season_patient_stem",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_palace_month_weak",
+                  "points": -4,
+                  "family": "season_patient_palace",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_tianrui_star_month_vigorous",
+                  "points": -15,
+                  "family": "season_tianrui",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_twelve_stage_at_actual_palace",
+                  "points": 2,
+                  "family": "book_anchored_full12_patient",
+                  "actual_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "帝旺"
+                    }
+                  ]
+                }
+              ],
+              "unclamped_candidate": -13.304347826086957
+            },
+            {
+              "name": "时干事体",
+              "budget": 7,
+              "raw_rule_sum": 8,
+              "applied_signed_score": 3,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "real_hour_vs_real_patient",
+                  "points": 8,
+                  "family": "directed_hour_person_5element",
+                  "actual_relation": "生",
+                  "hour": 1,
+                  "patient": 4
+                }
+              ],
+              "unclamped_candidate": 3.111111111111111
+            },
+            {
+              "name": "医药相互作用",
+              "budget": 10,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "刑冲破墓空与马星",
+              "budget": 9,
+              "raw_rule_sum": -8,
+              "applied_signed_score": -2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "death_door_co_palace_patient",
+                  "points": -8,
+                  "family": "door_patient",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_good_deity",
+                  "points": 8,
+                  "family": "deity_patient",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_branch_month_break",
+                  "points": -8,
+                  "family": "patient_month_break",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": -1.6
+            },
+            {
+              "name": "原书有序天地盘格局",
+              "budget": 5,
+              "raw_rule_sum": -20,
+              "applied_signed_score": -4,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "v41_pair_己_癸",
+                  "points": -20,
+                  "family": "original_81_book_pair",
+                  "original_source_role": "patient"
+                }
+              ],
+              "unclamped_candidate": -4.0
+            },
+            {
+              "name": "复合格局与节奏",
+              "budget": 2,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            }
+          ],
+          "legacy_v41_raw": 34,
+          "sub_scores_sum": -16,
+          "no_implicit_good_when_rule_not_applicable": true,
+          "no_modern_medical_probability": true,
+          "source_context": "unprovided",
+          "known_chart_not_missing": true
+        },
+        "conditional_scenarios": {
+          "unprovided": 34,
+          "new": 36,
+          "chronic": 34
+        },
+        "scenario_range": [
+          34,
+          36
+        ],
+        "duration_provided": false,
+        "duration_not_invented": true,
+        "unknown_personal_context_not_chart_missing": true
+      },
+      "new_medical_diagnosis": false,
+      "author_book_outcome_used": false,
+      "user_approved": false
+    },
+    {
+      "family_id": "kaiwu.health.19950219.brother_paralysis",
+      "datetime": "1995-02-19T09:30:00+08:00",
+      "source_scope": "ancient actual first question only; no author diagnosis used",
+      "four_pillars": {
+        "year": "乙亥",
+        "month": "戊寅",
+        "day": "辛巳",
+        "hour": "癸巳"
+      },
+      "original_question": {
+        "intent": "severity",
+        "relationship": "younger_sibling",
+        "consultation_context": "direct_proxy",
+        "patient_sex": "male",
+        "patient_birth_ganzhi": "癸丑"
+      },
+      "bureau": {
+        "dun": "yang",
+        "ju": 9,
+        "source_override": true
+      },
+      "value_star": "天芮星",
+      "value_door": "死门",
+      "original_v39_reading_sha256": "f9c119291a8d9e7c3d73b2fc3013cef7eeada695bdcad51b48aa994a8a004681",
+      "old_v39_reading_byte_identical": true,
+      "new_integrated_reading_sha256": "7e28881a1a6dbc155169bb47410f458e11fe287617483573298f3107296486aa",
+      "V39_exact_legacy_customer_text": "问事取用：弟弟以月干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。已知年命癸丑另参坤二宫。\n\n值符值使：值符天芮星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、值符。所携天盘庚加地盘庚，庚加庚「战格」、癸加庚「太白入网」。病宫与天芮同为土，病星有根。占时癸巳属甲申旬，午/未空，坤二宫旬空。\n\n病星月令：寅月天芮囚，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：弟弟宫见景门、九天，天地干戊加戊「伏吟」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。\n\n男女辅助宫：男性患者另参乾六宫。临天心星、开门、太阴。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。\n\n医生医药：天心落乾六宫，丁加丁「星奇伏吟」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月休，乙奇月旺。这些都不能直接推出药物疗效。\n\n时干事体：时干癸落坤二宫，庚加庚「战格」、癸加庚「太白入网」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。病宫其他携干见癸入墓地。值符值使宫见庚加庚「战格」、癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门俱伏吟，主慢、主迟滞。阳遁病宫在外盘、患者宫在外盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时巳支，驿马在亥，落6宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：丧门吊客、星门反伏、天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "V42_integrated_customer_text": "问事取用：弟弟以月干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。已知年命癸丑另参坤二宫。\n\n值符值使：值符天芮星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、值符。所携天盘庚加地盘庚，庚加庚「战格」、癸加庚「太白入网」。病宫与天芮同为土，病星有根。占时癸巳属甲申旬，午/未空，坤二宫旬空。\n\n病星月令：寅月天芮囚，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：弟弟宫见景门、九天，天地干戊加戊「伏吟」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。\n\n男女辅助宫：男性患者另参乾六宫。临天心星、开门、太阴。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。\n\n医生医药：天心落乾六宫，丁加丁「星奇伏吟」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月休，乙奇月旺。这些都不能直接推出药物疗效。\n\n时干事体：时干癸落坤二宫，庚加庚「战格」、癸加庚「太白入网」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。病宫其他携干见癸入墓地。值符值使宫见庚加庚「战格」、癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门俱伏吟，主慢、主迟滞。阳遁病宫在外盘、患者宫在外盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时巳支，驿马在亥，落6宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：丧门吊客、星门反伏、天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。\n\n传统病势象意分：古籍病势象意实验分：48/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+2、时干事体-2、医药相互作用+0、刑冲破墓空与马星-2、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病50分、久病44分，两种条件取向不冒充真实病史。戊在患者宫：午帝旺；天芮携庚在病宫：未冠带、申临官。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。",
+      "V42_integrated_extra_section": {
+        "id": "12_symbolic_score",
+        "title": "传统病势象意分",
+        "text": "古籍病势象意实验分：48/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+2、时干事体-2、医药相互作用+0、刑冲破墓空与马星-2、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病50分、久病44分，两种条件取向不冒充真实病史。戊在患者宫：午帝旺；天芮携庚在病宫：未冠带、申临官。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。"
+      },
+      "old_verdict": "病凶",
+      "stage_actor_audit": {
+        "patient": {
+          "stem": "戊",
+          "palace": 9,
+          "palace_branches": [
+            "午"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "午",
+              "stage": "帝旺"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        },
+        "tianrui_heaven": {
+          "stem": "庚",
+          "palace": 2,
+          "palace_branches": [
+            "未",
+            "申"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "未",
+              "stage": "冠带"
+            },
+            {
+              "branch": "申",
+              "stage": "临官"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        }
+      },
+      "complete_real_chart_facts": {
+        "four_pillars": {
+          "year": "乙亥",
+          "month": "戊寅",
+          "day": "辛巳",
+          "hour": "癸巳"
+        },
+        "month_branch": "寅",
+        "patient_role": "弟弟或妹妹",
+        "patient_stem": "戊",
+        "patient_palace": 9,
+        "illness_palace": 2,
+        "illness_carried_stem": "庚",
+        "doctor_palace": 6,
+        "yi_medicine_palace": 8,
+        "hour_event_palace": 2,
+        "void_from_hour": {
+          "xun_head": "甲申",
+          "xun_kong_branches": [
+            "午",
+            "未"
+          ]
+        },
+        "actual_full_8_palace_inventory": [
+          {
+            "palace": 1,
+            "element": "水",
+            "branches": [
+              "子"
+            ],
+            "earth_stem": "己",
+            "heaven": [
+              {
+                "star": "天蓬星",
+                "stem": "己",
+                "lifecycle": {
+                  "stem": "己",
+                  "palace": 1,
+                  "palace_branches": [
+                    "子"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "子",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "休门",
+            "deity": "六合"
+          },
+          {
+            "palace": 2,
+            "element": "土",
+            "branches": [
+              "未",
+              "申"
+            ],
+            "earth_stem": "庚",
+            "heaven": [
+              {
+                "star": "天芮星",
+                "stem": "庚",
+                "lifecycle": {
+                  "stem": "庚",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "冠带"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "临官"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              },
+              {
+                "star": "天禽星",
+                "stem": "癸",
+                "lifecycle": {
+                  "stem": "癸",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "死门",
+            "deity": "值符"
+          },
+          {
+            "palace": 3,
+            "element": "木",
+            "branches": [
+              "卯"
+            ],
+            "earth_stem": "辛",
+            "heaven": [
+              {
+                "star": "天冲星",
+                "stem": "辛",
+                "lifecycle": {
+                  "stem": "辛",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "伤门",
+            "deity": "玄武"
+          },
+          {
+            "palace": 4,
+            "element": "木",
+            "branches": [
+              "辰",
+              "巳"
+            ],
+            "earth_stem": "壬",
+            "heaven": [
+              {
+                "star": "天辅星",
+                "stem": "壬",
+                "lifecycle": {
+                  "stem": "壬",
+                  "palace": 4,
+                  "palace_branches": [
+                    "辰",
+                    "巳"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "杜门",
+            "deity": "九地"
+          },
+          {
+            "palace": 6,
+            "element": "金",
+            "branches": [
+              "戌",
+              "亥"
+            ],
+            "earth_stem": "丁",
+            "heaven": [
+              {
+                "star": "天心星",
+                "stem": "丁",
+                "lifecycle": {
+                  "stem": "丁",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "养"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "胎"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "开门",
+            "deity": "太阴"
+          },
+          {
+            "palace": 7,
+            "element": "金",
+            "branches": [
+              "酉"
+            ],
+            "earth_stem": "丙",
+            "heaven": [
+              {
+                "star": "天柱星",
+                "stem": "丙",
+                "lifecycle": {
+                  "stem": "丙",
+                  "palace": 7,
+                  "palace_branches": [
+                    "酉"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "酉",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "惊门",
+            "deity": "螣蛇"
+          },
+          {
+            "palace": 8,
+            "element": "土",
+            "branches": [
+              "丑",
+              "寅"
+            ],
+            "earth_stem": "乙",
+            "heaven": [
+              {
+                "star": "天任星",
+                "stem": "乙",
+                "lifecycle": {
+                  "stem": "乙",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "生门",
+            "deity": "白虎"
+          },
+          {
+            "palace": 9,
+            "element": "火",
+            "branches": [
+              "午"
+            ],
+            "earth_stem": "戊",
+            "heaven": [
+              {
+                "star": "天英星",
+                "stem": "戊",
+                "lifecycle": {
+                  "stem": "戊",
+                  "palace": 9,
+                  "palace_branches": [
+                    "午"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "景门",
+            "deity": "九天"
+          }
+        ],
+        "source12_stage_for_actors": {
+          "patient": {
+            "stem": "戊",
+            "palace": 9,
+            "palace_branches": [
+              "午"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "午",
+                "stage": "帝旺"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          },
+          "tianrui_heaven": {
+            "stem": "庚",
+            "palace": 2,
+            "palace_branches": [
+              "未",
+              "申"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "未",
+                "stage": "冠带"
+              },
+              {
+                "branch": "申",
+                "stage": "临官"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          }
+        },
+        "source12_all_ten_stems_checked": true,
+        "source12_total_stage_facts_checked": 120,
+        "fuyin_fanyin": {
+          "star": "伏吟",
+          "door": "伏吟",
+          "star_home": 8,
+          "star_opposite": 0,
+          "door_home": 8,
+          "door_opposite": 0,
+          "pace": "主迟滞、较慢",
+          "both_fuyin": true,
+          "both_fanyin": false,
+          "basis": "kaiwu_ch04_lines_556_580",
+          "not_medical_timing": true
+        },
+        "chart_relevant_facts_calculated": true
+      },
+      "symbolic_scoring": {
+        "observed_or_unspecified_nominal": {
+          "baseline": 50,
+          "score": 48,
+          "six_modules": [
+            {
+              "name": "主体与天芮及其月令",
+              "budget": 17,
+              "raw_rule_sum": 6,
+              "applied_signed_score": 2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_generates_illness",
+                  "points": -8,
+                  "family": "main_patient_illness_relation",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_stem_month_weak",
+                  "points": -6,
+                  "family": "season_patient_stem",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_palace_month_vigorous",
+                  "points": 4,
+                  "family": "season_patient_palace",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_tianrui_star_month_weak",
+                  "points": 10,
+                  "family": "season_tianrui",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_twelve_stage_at_actual_palace",
+                  "points": 6,
+                  "family": "book_anchored_full12_patient",
+                  "actual_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "帝旺"
+                    }
+                  ]
+                }
+              ],
+              "unclamped_candidate": 2.217391304347826
+            },
+            {
+              "name": "时干事体",
+              "budget": 7,
+              "raw_rule_sum": -4,
+              "applied_signed_score": -2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "real_hour_vs_real_patient",
+                  "points": -4,
+                  "family": "directed_hour_person_5element",
+                  "actual_relation": "受生",
+                  "hour": 2,
+                  "patient": 9
+                }
+              ],
+              "unclamped_candidate": -1.5555555555555556
+            },
+            {
+              "name": "医药相互作用",
+              "budget": 10,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "刑冲破墓空与马星",
+              "budget": 9,
+              "raw_rule_sum": -10,
+              "applied_signed_score": -2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "tianrui_geng_same_palace",
+                  "points": -10,
+                  "family": "illness_stem_geng",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": -2.0
+            },
+            {
+              "name": "原书有序天地盘格局",
+              "budget": 5,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "复合格局与节奏",
+              "budget": 2,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            }
+          ],
+          "legacy_v41_raw": 90,
+          "sub_scores_sum": -2,
+          "no_implicit_good_when_rule_not_applicable": true,
+          "no_modern_medical_probability": true,
+          "source_context": "unprovided",
+          "known_chart_not_missing": true
+        },
+        "conditional_scenarios": {
+          "unprovided": 48,
+          "new": 50,
+          "chronic": 44
+        },
+        "scenario_range": [
+          44,
+          50
+        ],
+        "duration_provided": false,
+        "duration_not_invented": true,
+        "unknown_personal_context_not_chart_missing": true
+      },
+      "new_medical_diagnosis": false,
+      "author_book_outcome_used": false,
+      "user_approved": false
+    },
+    {
+      "family_id": "shenqi.health.19961102.on_site_health",
+      "datetime": "1996-11-02T16:00:00+08:00",
+      "source_scope": "ancient actual first question only; no author diagnosis used",
+      "four_pillars": {
+        "year": "丙子",
+        "month": "戊戌",
+        "day": "癸卯",
+        "hour": "庚申"
+      },
+      "original_question": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self"
+      },
+      "bureau": {
+        "dun": "yin",
+        "ju": 8,
+        "source_override": true
+      },
+      "value_star": "天冲星",
+      "value_door": "伤门",
+      "original_v39_reading_sha256": "de8780e1ed6d7129ee1ceb3df27d4747841404ff958c33992ede975e124cd7fb",
+      "old_v39_reading_byte_identical": true,
+      "new_integrated_reading_sha256": "1a2bd0351a829708460b3bce20f064c0ccc2c2ff2898ed94bcf56f731b8e3575",
+      "V39_exact_legacy_customer_text": "问事取用：本人以日干为主要用神，落乾六宫；天芮星是疾病用神，落震三宫。\n\n值符值使：值符天冲星落乾六宫，值使伤门落乾六宫。值符与患者用神同宫，权重需提高。值使与患者宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、玄武。所携天盘丁加地盘癸，丁加癸「雀投江」、辛加癸「天牢华盖」。病宫木克天芮土，病星受制。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见伤门、值符，天地干癸加庚「太白入网」。患者宫克病宫，具有制病方向。患者宫未逢旬空。患者宫制病、病宫又制天芮，两重有利条件相合。\n\n医生医药：天心落离九宫，庚加乙「太白逢星」；乙奇落艮八宫，乙加戊「阴害阳门」。天心月废，乙奇月囚。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落离九宫，庚加乙「太白逢星」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期；时干与天心同在离九宫，传统主有及时得到医治的机会；但天心月废，医生象偏弱、乙奇月囚，医药象偏弱、乙奇宫旬空，吉象受虚，不能直接断治疗见效；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏吉。患者宫克病宫，具有制病方向；双重制病形成有利主证。同时还有病宫克天芮，病星受制；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "V42_integrated_customer_text": "问事取用：本人以日干为主要用神，落乾六宫；天芮星是疾病用神，落震三宫。\n\n值符值使：值符天冲星落乾六宫，值使伤门落乾六宫。值符与患者用神同宫，权重需提高。值使与患者宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、玄武。所携天盘丁加地盘癸，丁加癸「雀投江」、辛加癸「天牢华盖」。病宫木克天芮土，病星受制。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见伤门、值符，天地干癸加庚「太白入网」。患者宫克病宫，具有制病方向。患者宫未逢旬空。患者宫制病、病宫又制天芮，两重有利条件相合。\n\n医生医药：天心落离九宫，庚加乙「太白逢星」；乙奇落艮八宫，乙加戊「阴害阳门」。天心月废，乙奇月囚。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落离九宫，庚加乙「太白逢星」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期；时干与天心同在离九宫，传统主有及时得到医治的机会；但天心月废，医生象偏弱、乙奇月囚，医药象偏弱、乙奇宫旬空，吉象受虚，不能直接断治疗见效；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏吉。患者宫克病宫，具有制病方向；双重制病形成有利主证。同时还有病宫克天芮，病星受制；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。\n\n传统病势象意分：古籍病势象意实验分：53/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+2、时干事体-4、医药相互作用+2、刑冲破墓空与马星+2、原书有序天地盘格局+0、复合格局与节奏+1。占盘内所有星门神与干支已计算；病程未说明，分别计算新病53分、久病53分，两种条件取向不冒充真实病史。癸在患者宫：戌衰、亥帝旺；天芮携丁在病宫：卯病。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。",
+      "V42_integrated_extra_section": {
+        "id": "12_symbolic_score",
+        "title": "传统病势象意分",
+        "text": "古籍病势象意实验分：53/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+2、时干事体-4、医药相互作用+2、刑冲破墓空与马星+2、原书有序天地盘格局+0、复合格局与节奏+1。占盘内所有星门神与干支已计算；病程未说明，分别计算新病53分、久病53分，两种条件取向不冒充真实病史。癸在患者宫：戌衰、亥帝旺；天芮携丁在病宫：卯病。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。"
+      },
+      "old_verdict": "病吉",
+      "stage_actor_audit": {
+        "patient": {
+          "stem": "癸",
+          "palace": 6,
+          "palace_branches": [
+            "戌",
+            "亥"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "戌",
+              "stage": "衰"
+            },
+            {
+              "branch": "亥",
+              "stage": "帝旺"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        },
+        "tianrui_heaven": {
+          "stem": "丁",
+          "palace": 3,
+          "palace_branches": [
+            "卯"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "卯",
+              "stage": "病"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": false,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        }
+      },
+      "complete_real_chart_facts": {
+        "four_pillars": {
+          "year": "丙子",
+          "month": "戊戌",
+          "day": "癸卯",
+          "hour": "庚申"
+        },
+        "month_branch": "戌",
+        "patient_role": "本人",
+        "patient_stem": "癸",
+        "patient_palace": 6,
+        "illness_palace": 3,
+        "illness_carried_stem": "丁",
+        "doctor_palace": 9,
+        "yi_medicine_palace": 8,
+        "hour_event_palace": 9,
+        "void_from_hour": {
+          "xun_head": "甲寅",
+          "xun_kong_branches": [
+            "子",
+            "丑"
+          ]
+        },
+        "actual_full_8_palace_inventory": [
+          {
+            "palace": 1,
+            "element": "水",
+            "branches": [
+              "子"
+            ],
+            "earth_stem": "丙",
+            "heaven": [
+              {
+                "star": "天辅星",
+                "stem": "壬",
+                "lifecycle": {
+                  "stem": "壬",
+                  "palace": 1,
+                  "palace_branches": [
+                    "子"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "子",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "杜门",
+            "deity": "九天"
+          },
+          {
+            "palace": 2,
+            "element": "土",
+            "branches": [
+              "未",
+              "申"
+            ],
+            "earth_stem": "丁",
+            "heaven": [
+              {
+                "star": "天蓬星",
+                "stem": "丙",
+                "lifecycle": {
+                  "stem": "丙",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "病"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "休门",
+            "deity": "太阴"
+          },
+          {
+            "palace": 3,
+            "element": "木",
+            "branches": [
+              "卯"
+            ],
+            "earth_stem": "癸",
+            "heaven": [
+              {
+                "star": "天芮星",
+                "stem": "丁",
+                "lifecycle": {
+                  "stem": "丁",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "病"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              },
+              {
+                "star": "天禽星",
+                "stem": "辛",
+                "lifecycle": {
+                  "stem": "辛",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "死门",
+            "deity": "玄武"
+          },
+          {
+            "palace": 4,
+            "element": "木",
+            "branches": [
+              "辰",
+              "巳"
+            ],
+            "earth_stem": "壬",
+            "heaven": [
+              {
+                "star": "天柱星",
+                "stem": "己",
+                "lifecycle": {
+                  "stem": "己",
+                  "palace": 4,
+                  "palace_branches": [
+                    "辰",
+                    "巳"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "惊门",
+            "deity": "白虎"
+          },
+          {
+            "palace": 6,
+            "element": "金",
+            "branches": [
+              "戌",
+              "亥"
+            ],
+            "earth_stem": "庚",
+            "heaven": [
+              {
+                "star": "天冲星",
+                "stem": "癸",
+                "lifecycle": {
+                  "stem": "癸",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "伤门",
+            "deity": "值符"
+          },
+          {
+            "palace": 7,
+            "element": "金",
+            "branches": [
+              "酉"
+            ],
+            "earth_stem": "己",
+            "heaven": [
+              {
+                "star": "天任星",
+                "stem": "戊",
+                "lifecycle": {
+                  "stem": "戊",
+                  "palace": 7,
+                  "palace_branches": [
+                    "酉"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "酉",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "生门",
+            "deity": "螣蛇"
+          },
+          {
+            "palace": 8,
+            "element": "土",
+            "branches": [
+              "丑",
+              "寅"
+            ],
+            "earth_stem": "戊",
+            "heaven": [
+              {
+                "star": "天英星",
+                "stem": "乙",
+                "lifecycle": {
+                  "stem": "乙",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "景门",
+            "deity": "九地"
+          },
+          {
+            "palace": 9,
+            "element": "火",
+            "branches": [
+              "午"
+            ],
+            "earth_stem": "乙",
+            "heaven": [
+              {
+                "star": "天心星",
+                "stem": "庚",
+                "lifecycle": {
+                  "stem": "庚",
+                  "palace": 9,
+                  "palace_branches": [
+                    "午"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "沐浴"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "开门",
+            "deity": "六合"
+          }
+        ],
+        "source12_stage_for_actors": {
+          "patient": {
+            "stem": "癸",
+            "palace": 6,
+            "palace_branches": [
+              "戌",
+              "亥"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "戌",
+                "stage": "衰"
+              },
+              {
+                "branch": "亥",
+                "stage": "帝旺"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          },
+          "tianrui_heaven": {
+            "stem": "丁",
+            "palace": 3,
+            "palace_branches": [
+              "卯"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "卯",
+                "stage": "病"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": false,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          }
+        },
+        "source12_all_ten_stems_checked": true,
+        "source12_total_stage_facts_checked": 120,
+        "fuyin_fanyin": {
+          "star": "非伏吟反吟",
+          "door": "非伏吟反吟",
+          "star_home": 0,
+          "star_opposite": 0,
+          "door_home": 0,
+          "door_opposite": 0,
+          "pace": "不凭伏吟反吟断缓急",
+          "both_fuyin": false,
+          "both_fanyin": false,
+          "basis": "kaiwu_ch04_lines_556_580",
+          "not_medical_timing": true
+        },
+        "chart_relevant_facts_calculated": true
+      },
+      "symbolic_scoring": {
+        "observed_or_unspecified_nominal": {
+          "baseline": 50,
+          "score": 53,
+          "six_modules": [
+            {
+              "name": "主体与天芮及其月令",
+              "budget": 17,
+              "raw_rule_sum": 5,
+              "applied_signed_score": 2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_controls_illness",
+                  "points": 20,
+                  "family": "main_patient_illness_relation",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_stem_month_weak",
+                  "points": -6,
+                  "family": "season_patient_stem",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_palace_month_vigorous",
+                  "points": 4,
+                  "family": "season_patient_palace",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_tianrui_star_month_vigorous",
+                  "points": -15,
+                  "family": "season_tianrui",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_twelve_stage_at_actual_palace",
+                  "points": 2,
+                  "family": "book_anchored_full12_patient",
+                  "actual_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "帝旺"
+                    }
+                  ]
+                }
+              ],
+              "unclamped_candidate": 1.8478260869565217
+            },
+            {
+              "name": "时干事体",
+              "budget": 7,
+              "raw_rule_sum": -10,
+              "applied_signed_score": -4,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "real_hour_vs_real_patient",
+                  "points": -10,
+                  "family": "directed_hour_person_5element",
+                  "actual_relation": "克",
+                  "hour": 9,
+                  "patient": 6
+                }
+              ],
+              "unclamped_candidate": -3.888888888888889
+            },
+            {
+              "name": "医药相互作用",
+              "budget": 10,
+              "raw_rule_sum": 5,
+              "applied_signed_score": 2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "same_palace_event_or_illness_medicine_opportunity",
+                  "points": 5,
+                  "family": "medical_access",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": 1.6666666666666667
+            },
+            {
+              "name": "刑冲破墓空与马星",
+              "budget": 9,
+              "raw_rule_sum": 8,
+              "applied_signed_score": 2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_good_deity",
+                  "points": 8,
+                  "family": "deity_patient",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": 1.6
+            },
+            {
+              "name": "原书有序天地盘格局",
+              "budget": 5,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "复合格局与节奏",
+              "budget": 2,
+              "raw_rule_sum": 8,
+              "applied_signed_score": 1,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "double_suppression_distinct_chain_bonus",
+                  "points": 8,
+                  "family": "interaction",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": 0.64
+            }
+          ],
+          "legacy_v41_raw": 124,
+          "sub_scores_sum": 3,
+          "no_implicit_good_when_rule_not_applicable": true,
+          "no_modern_medical_probability": true,
+          "source_context": "unprovided",
+          "known_chart_not_missing": true
+        },
+        "conditional_scenarios": {
+          "unprovided": 53,
+          "new": 53,
+          "chronic": 53
+        },
+        "scenario_range": [
+          53,
+          53
+        ],
+        "duration_provided": false,
+        "duration_not_invented": true,
+        "unknown_personal_context_not_chart_missing": true
+      },
+      "new_medical_diagnosis": false,
+      "author_book_outcome_used": false,
+      "user_approved": false
+    },
+    {
+      "family_id": "shenqi.health.19960316.self_surgery",
+      "datetime": "1996-03-16T16:30:00+08:00",
+      "source_scope": "ancient actual first question only; no author diagnosis used",
+      "four_pillars": {
+        "year": "丙子",
+        "month": "辛卯",
+        "day": "壬子",
+        "hour": "戊申"
+      },
+      "original_question": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self"
+      },
+      "bureau": {
+        "dun": "yang",
+        "ju": 3,
+        "source_override": true
+      },
+      "value_star": "天柱星",
+      "value_door": "惊门",
+      "original_v39_reading_sha256": "d01f0cca8d10deefbfdb07a7192602c68c54eb42626e031e3d584822fcb0d0f7",
+      "old_v39_reading_byte_identical": true,
+      "new_integrated_reading_sha256": "ddad9a407d47405d275b7b8c3bf6d45b30c4bf217f264c6bdf4aa27ba215ed47",
+      "V39_exact_legacy_customer_text": "问事取用：本人以日干为主要用神，落震三宫；天芮星是疾病用神，落艮八宫。\n\n值符值使：值符天柱星落震三宫，值使惊门落坤二宫。值符与患者用神同宫，权重需提高。\n\n天芮病宫：天芮与天禽同宫，临伤门、九天。所携天盘乙加地盘癸，乙加癸「日奇入地网」、庚加癸「庚加癸（原书未明确另名）」。病宫与天芮同为土，病星有根。占时戊申属甲辰旬，寅/卯空，艮八宫旬空。\n\n病星月令：卯月天芮囚，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：本人宫见杜门、值符，天地干壬加戊「小蛇化龙」。患者宫克病宫，具有制病方向。患者宫旬空，力量需打折。\n\n医生医药：天心落巽四宫，辛加己「入狱自刑」；乙奇落艮八宫，乙加癸「日奇入地网」、庚加癸「庚加癸（原书未明确另名）」。天心月休，乙奇月旺。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。这些都不能直接推出药物疗效。\n\n时干事体：时干戊落兑七宫，戊加壬「青龙入天牢」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰出现五不遇时。病宫其他携干见庚六仪击刑、庚入墓地。值符值使宫见癸加乙「华盖逢星」、壬加戊「小蛇化龙」，须合本事取义。\n\n伏吟反吟与快慢：九星反吟，主快；另一项非反吟。阳遁病宫在内盘、患者宫在内盘。反吟主快，变化较急。不强断具体应期；病宫与乙奇同在艮八宫，传统主有及时得到医治的机会；但乙奇宫旬空，吉象受虚、乙奇宫伤门构成门迫，偏不利，不能直接断治疗见效。反吟逢合为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；已见六仪击刑，逢冲后合为候选；依据占时申支，驿马在寅，落8宫，涉及病宫，为传统变化动象；没有应期触发就不能指定日期；本盘另见实算条件：星门反伏。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫克病宫，具有制病方向；其余关系需合看。同时还有病宫旬空，需辨新病与久病；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "V42_integrated_customer_text": "问事取用：本人以日干为主要用神，落震三宫；天芮星是疾病用神，落艮八宫。\n\n值符值使：值符天柱星落震三宫，值使惊门落坤二宫。值符与患者用神同宫，权重需提高。\n\n天芮病宫：天芮与天禽同宫，临伤门、九天。所携天盘乙加地盘癸，乙加癸「日奇入地网」、庚加癸「庚加癸（原书未明确另名）」。病宫与天芮同为土，病星有根。占时戊申属甲辰旬，寅/卯空，艮八宫旬空。\n\n病星月令：卯月天芮囚，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：本人宫见杜门、值符，天地干壬加戊「小蛇化龙」。患者宫克病宫，具有制病方向。患者宫旬空，力量需打折。\n\n医生医药：天心落巽四宫，辛加己「入狱自刑」；乙奇落艮八宫，乙加癸「日奇入地网」、庚加癸「庚加癸（原书未明确另名）」。天心月休，乙奇月旺。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。这些都不能直接推出药物疗效。\n\n时干事体：时干戊落兑七宫，戊加壬「青龙入天牢」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰出现五不遇时。病宫其他携干见庚六仪击刑、庚入墓地。值符值使宫见癸加乙「华盖逢星」、壬加戊「小蛇化龙」，须合本事取义。\n\n伏吟反吟与快慢：九星反吟，主快；另一项非反吟。阳遁病宫在内盘、患者宫在内盘。反吟主快，变化较急。不强断具体应期；病宫与乙奇同在艮八宫，传统主有及时得到医治的机会；但乙奇宫旬空，吉象受虚、乙奇宫伤门构成门迫，偏不利，不能直接断治疗见效。反吟逢合为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；已见六仪击刑，逢冲后合为候选；依据占时申支，驿马在寅，落8宫，涉及病宫，为传统变化动象；没有应期触发就不能指定日期；本盘另见实算条件：星门反伏。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫克病宫，具有制病方向；其余关系需合看。同时还有病宫旬空，需辨新病与久病；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。\n\n传统病势象意分：古籍病势象意实验分：59/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+8、时干事体-4、医药相互作用+7、刑冲破墓空与马星-2、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病62分、久病54分，两种条件取向不冒充真实病史。壬在患者宫：卯死；天芮携乙在病宫：丑衰、寅帝旺。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。",
+      "V42_integrated_extra_section": {
+        "id": "12_symbolic_score",
+        "title": "传统病势象意分",
+        "text": "古籍病势象意实验分：59/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令+8、时干事体-4、医药相互作用+7、刑冲破墓空与马星-2、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病62分、久病54分，两种条件取向不冒充真实病史。壬在患者宫：卯死；天芮携乙在病宫：丑衰、寅帝旺。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。"
+      },
+      "old_verdict": "病凶",
+      "stage_actor_audit": {
+        "patient": {
+          "stem": "壬",
+          "palace": 3,
+          "palace_branches": [
+            "卯"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "卯",
+              "stage": "死"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": false,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        },
+        "tianrui_heaven": {
+          "stem": "乙",
+          "palace": 8,
+          "palace_branches": [
+            "丑",
+            "寅"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "丑",
+              "stage": "衰"
+            },
+            {
+              "branch": "寅",
+              "stage": "帝旺"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        }
+      },
+      "complete_real_chart_facts": {
+        "four_pillars": {
+          "year": "丙子",
+          "month": "辛卯",
+          "day": "壬子",
+          "hour": "戊申"
+        },
+        "month_branch": "卯",
+        "patient_role": "本人",
+        "patient_stem": "壬",
+        "patient_palace": 3,
+        "illness_palace": 8,
+        "illness_carried_stem": "乙",
+        "doctor_palace": 4,
+        "yi_medicine_palace": 8,
+        "hour_event_palace": 7,
+        "void_from_hour": {
+          "xun_head": "甲辰",
+          "xun_kong_branches": [
+            "寅",
+            "卯"
+          ]
+        },
+        "actual_full_8_palace_inventory": [
+          {
+            "palace": 1,
+            "element": "水",
+            "branches": [
+              "子"
+            ],
+            "earth_stem": "丙",
+            "heaven": [
+              {
+                "star": "天英星",
+                "stem": "丁",
+                "lifecycle": {
+                  "stem": "丁",
+                  "palace": 1,
+                  "palace_branches": [
+                    "子"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "子",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "生门",
+            "deity": "九地"
+          },
+          {
+            "palace": 2,
+            "element": "土",
+            "branches": [
+              "未",
+              "申"
+            ],
+            "earth_stem": "乙",
+            "heaven": [
+              {
+                "star": "天任星",
+                "stem": "癸",
+                "lifecycle": {
+                  "stem": "癸",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "惊门",
+            "deity": "六合"
+          },
+          {
+            "palace": 3,
+            "element": "木",
+            "branches": [
+              "卯"
+            ],
+            "earth_stem": "戊",
+            "heaven": [
+              {
+                "star": "天柱星",
+                "stem": "壬",
+                "lifecycle": {
+                  "stem": "壬",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "杜门",
+            "deity": "值符"
+          },
+          {
+            "palace": 4,
+            "element": "木",
+            "branches": [
+              "辰",
+              "巳"
+            ],
+            "earth_stem": "己",
+            "heaven": [
+              {
+                "star": "天心星",
+                "stem": "辛",
+                "lifecycle": {
+                  "stem": "辛",
+                  "palace": 4,
+                  "palace_branches": [
+                    "辰",
+                    "巳"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "景门",
+            "deity": "螣蛇"
+          },
+          {
+            "palace": 6,
+            "element": "金",
+            "branches": [
+              "戌",
+              "亥"
+            ],
+            "earth_stem": "辛",
+            "heaven": [
+              {
+                "star": "天辅星",
+                "stem": "己",
+                "lifecycle": {
+                  "stem": "己",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "养"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "胎"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "休门",
+            "deity": "玄武"
+          },
+          {
+            "palace": 7,
+            "element": "金",
+            "branches": [
+              "酉"
+            ],
+            "earth_stem": "壬",
+            "heaven": [
+              {
+                "star": "天冲星",
+                "stem": "戊",
+                "lifecycle": {
+                  "stem": "戊",
+                  "palace": 7,
+                  "palace_branches": [
+                    "酉"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "酉",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "开门",
+            "deity": "白虎"
+          },
+          {
+            "palace": 8,
+            "element": "土",
+            "branches": [
+              "丑",
+              "寅"
+            ],
+            "earth_stem": "癸",
+            "heaven": [
+              {
+                "star": "天芮星",
+                "stem": "乙",
+                "lifecycle": {
+                  "stem": "乙",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              },
+              {
+                "star": "天禽星",
+                "stem": "庚",
+                "lifecycle": {
+                  "stem": "庚",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "伤门",
+            "deity": "九天"
+          },
+          {
+            "palace": 9,
+            "element": "火",
+            "branches": [
+              "午"
+            ],
+            "earth_stem": "丁",
+            "heaven": [
+              {
+                "star": "天蓬星",
+                "stem": "丙",
+                "lifecycle": {
+                  "stem": "丙",
+                  "palace": 9,
+                  "palace_branches": [
+                    "午"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "死门",
+            "deity": "太阴"
+          }
+        ],
+        "source12_stage_for_actors": {
+          "patient": {
+            "stem": "壬",
+            "palace": 3,
+            "palace_branches": [
+              "卯"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "卯",
+                "stage": "死"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": false,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          },
+          "tianrui_heaven": {
+            "stem": "乙",
+            "palace": 8,
+            "palace_branches": [
+              "丑",
+              "寅"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "丑",
+                "stage": "衰"
+              },
+              {
+                "branch": "寅",
+                "stage": "帝旺"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          }
+        },
+        "source12_all_ten_stems_checked": true,
+        "source12_total_stage_facts_checked": 120,
+        "fuyin_fanyin": {
+          "star": "反吟",
+          "door": "非伏吟反吟",
+          "star_home": 0,
+          "star_opposite": 8,
+          "door_home": 0,
+          "door_opposite": 0,
+          "pace": "主变化、较快",
+          "both_fuyin": false,
+          "both_fanyin": false,
+          "basis": "kaiwu_ch04_lines_556_580",
+          "not_medical_timing": true
+        },
+        "chart_relevant_facts_calculated": true
+      },
+      "symbolic_scoring": {
+        "observed_or_unspecified_nominal": {
+          "baseline": 50,
+          "score": 59,
+          "six_modules": [
+            {
+              "name": "主体与天芮及其月令",
+              "budget": 17,
+              "raw_rule_sum": 22,
+              "applied_signed_score": 8,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_controls_illness",
+                  "points": 20,
+                  "family": "main_patient_illness_relation",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_stem_month_weak",
+                  "points": -6,
+                  "family": "season_patient_stem",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_palace_month_vigorous",
+                  "points": 4,
+                  "family": "season_patient_palace",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_tianrui_star_month_weak",
+                  "points": 10,
+                  "family": "season_tianrui",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_twelve_stage_at_actual_palace",
+                  "points": -6,
+                  "family": "book_anchored_full12_patient",
+                  "actual_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "死"
+                    }
+                  ]
+                }
+              ],
+              "unclamped_candidate": 8.130434782608695
+            },
+            {
+              "name": "时干事体",
+              "budget": 7,
+              "raw_rule_sum": -10,
+              "applied_signed_score": -4,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "real_hour_vs_real_patient",
+                  "points": -10,
+                  "family": "directed_hour_person_5element",
+                  "actual_relation": "克",
+                  "hour": 7,
+                  "patient": 3
+                }
+              ],
+              "unclamped_candidate": -3.888888888888889
+            },
+            {
+              "name": "医药相互作用",
+              "budget": 10,
+              "raw_rule_sum": 20,
+              "applied_signed_score": 7,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "physician_or_derived_medicine_controls_illness",
+                  "points": 15,
+                  "family": "medicine_main",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "same_palace_event_or_illness_medicine_opportunity",
+                  "points": 5,
+                  "family": "medical_access",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": 6.666666666666667
+            },
+            {
+              "name": "刑冲破墓空与马星",
+              "budget": 9,
+              "raw_rule_sum": -8,
+              "applied_signed_score": -2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_good_deity",
+                  "points": 8,
+                  "family": "deity_patient",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "tianrui_geng_same_palace",
+                  "points": -10,
+                  "family": "illness_stem_geng",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_door_press",
+                  "points": -6,
+                  "family": "door_press_8",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": -1.6
+            },
+            {
+              "name": "原书有序天地盘格局",
+              "budget": 5,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "复合格局与节奏",
+              "budget": 2,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            }
+          ],
+          "legacy_v41_raw": 140,
+          "sub_scores_sum": 9,
+          "no_implicit_good_when_rule_not_applicable": true,
+          "no_modern_medical_probability": true,
+          "source_context": "unprovided",
+          "known_chart_not_missing": true
+        },
+        "conditional_scenarios": {
+          "unprovided": 59,
+          "new": 62,
+          "chronic": 54
+        },
+        "scenario_range": [
+          54,
+          62
+        ],
+        "duration_provided": false,
+        "duration_not_invented": true,
+        "unknown_personal_context_not_chart_missing": true
+      },
+      "new_medical_diagnosis": false,
+      "author_book_outcome_used": false,
+      "user_approved": false
+    },
+    {
+      "family_id": "shenqi.health.19960727.father_illness",
+      "datetime": "1996-07-27T16:00:00+08:00",
+      "source_scope": "ancient actual first question only; no author diagnosis used",
+      "four_pillars": {
+        "year": "丙子",
+        "month": "乙未",
+        "day": "乙丑",
+        "hour": "甲申"
+      },
+      "original_question": {
+        "intent": "severity",
+        "relationship": "father",
+        "consultation_context": "direct_proxy",
+        "patient_sex": "male"
+      },
+      "bureau": {
+        "dun": "yin",
+        "ju": 7,
+        "source_override": true
+      },
+      "value_star": "天禽星",
+      "value_door": "死门",
+      "original_v39_reading_sha256": "78afc2f640bac7fe907a950db17e72b68f62c96439d26a10abad93325ab791a1",
+      "old_v39_reading_byte_identical": true,
+      "new_integrated_reading_sha256": "69d9378988f47f9bb0d09a77e3887e04e67156bb7c38c0c7bbee5b4243461658",
+      "V39_exact_legacy_customer_text": "问事取用：父亲以年干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。并参乾六宫。\n\n值符值使：值符天禽星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、值符。所携天盘癸加地盘癸，癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」。病宫与天芮同为土，病星有根。天盘癸在未入墓；占时甲申属甲申旬，午/未空，坤二宫旬空。\n\n病星月令：未月天芮相，病星有气，偏不利。\n\n患者用神宫：父亲宫见景门、螣蛇，天地干丙加丙「月奇悖师」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。\n\n男女辅助宫：男性患者另参乾六宫。临天心星、开门、九地。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。\n\n医生医药：天心落乾六宫，己加己「地户逢鬼」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月废，乙奇月囚。这些都不能直接推出药物疗效。\n\n时干事体：时干甲落坤二宫，癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门俱伏吟，主慢、主迟滞。阴遁病宫在内盘、患者宫在内盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：星门反伏、天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病；病星所携癸临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "V42_integrated_customer_text": "问事取用：父亲以年干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。并参乾六宫。\n\n值符值使：值符天禽星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、值符。所携天盘癸加地盘癸，癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」。病宫与天芮同为土，病星有根。天盘癸在未入墓；占时甲申属甲申旬，午/未空，坤二宫旬空。\n\n病星月令：未月天芮相，病星有气，偏不利。\n\n患者用神宫：父亲宫见景门、螣蛇，天地干丙加丙「月奇悖师」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。\n\n男女辅助宫：男性患者另参乾六宫。临天心星、开门、九地。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。\n\n医生医药：天心落乾六宫，己加己「地户逢鬼」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月废，乙奇月囚。这些都不能直接推出药物疗效。\n\n时干事体：时干甲落坤二宫，癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见癸加癸「天网四张」、庚加癸「庚加癸（原书未明确另名）」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门俱伏吟，主慢、主迟滞。阴遁病宫在内盘、患者宫在内盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：星门反伏、天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病；病星所携癸临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。\n\n传统病势象意分：古籍病势象意实验分：37/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令-10、时干事体-2、医药相互作用+0、刑冲破墓空与马星-1、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病39分、久病33分，两种条件取向不冒充真实病史。丙在患者宫：午帝旺；天芮携癸在病宫：未墓、申死。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。",
+      "V42_integrated_extra_section": {
+        "id": "12_symbolic_score",
+        "title": "传统病势象意分",
+        "text": "古籍病势象意实验分：37/100。以50分为中性起点，各模块已设置独立分值预算：主体与天芮及其月令-10、时干事体-2、医药相互作用+0、刑冲破墓空与马星-1、原书有序天地盘格局+0、复合格局与节奏+0。占盘内所有星门神与干支已计算；病程未说明，分别计算新病39分、久病33分，两种条件取向不冒充真实病史。丙在患者宫：午帝旺；天芮携癸在病宫：未墓、申死。本分数表示古籍规则下的象意比较，不是现实健康概率、病情评估或用药建议。"
+      },
+      "old_verdict": "病凶",
+      "stage_actor_audit": {
+        "patient": {
+          "stem": "丙",
+          "palace": 9,
+          "palace_branches": [
+            "午"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "午",
+              "stage": "帝旺"
+            }
+          ],
+          "is_tomb": false,
+          "is_extinct": false,
+          "is_strong_stage": true,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        },
+        "tianrui_heaven": {
+          "stem": "癸",
+          "palace": 2,
+          "palace_branches": [
+            "未",
+            "申"
+          ],
+          "all_actual_branch_stages": [
+            {
+              "branch": "未",
+              "stage": "墓"
+            },
+            {
+              "branch": "申",
+              "stage": "死"
+            }
+          ],
+          "is_tomb": true,
+          "is_extinct": false,
+          "is_strong_stage": false,
+          "full12_computed": true,
+          "origin": "5 book anchors + exact cycle parity and steps",
+          "not_a_clinical_statement": true
+        }
+      },
+      "complete_real_chart_facts": {
+        "four_pillars": {
+          "year": "丙子",
+          "month": "乙未",
+          "day": "乙丑",
+          "hour": "甲申"
+        },
+        "month_branch": "未",
+        "patient_role": "父亲",
+        "patient_stem": "丙",
+        "patient_palace": 9,
+        "illness_palace": 2,
+        "illness_carried_stem": "癸",
+        "doctor_palace": 6,
+        "yi_medicine_palace": 8,
+        "hour_event_palace": 2,
+        "void_from_hour": {
+          "xun_head": "甲申",
+          "xun_kong_branches": [
+            "午",
+            "未"
+          ]
+        },
+        "actual_full_8_palace_inventory": [
+          {
+            "palace": 1,
+            "element": "水",
+            "branches": [
+              "子"
+            ],
+            "earth_stem": "丁",
+            "heaven": [
+              {
+                "star": "天蓬星",
+                "stem": "丁",
+                "lifecycle": {
+                  "stem": "丁",
+                  "palace": 1,
+                  "palace_branches": [
+                    "子"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "子",
+                      "stage": "绝"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": true,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "休门",
+            "deity": "玄武"
+          },
+          {
+            "palace": 2,
+            "element": "土",
+            "branches": [
+              "未",
+              "申"
+            ],
+            "earth_stem": "癸",
+            "heaven": [
+              {
+                "star": "天芮星",
+                "stem": "癸",
+                "lifecycle": {
+                  "stem": "癸",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              },
+              {
+                "star": "天禽星",
+                "stem": "庚",
+                "lifecycle": {
+                  "stem": "庚",
+                  "palace": 2,
+                  "palace_branches": [
+                    "未",
+                    "申"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "未",
+                      "stage": "冠带"
+                    },
+                    {
+                      "branch": "申",
+                      "stage": "临官"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "死门",
+            "deity": "值符"
+          },
+          {
+            "palace": 3,
+            "element": "木",
+            "branches": [
+              "卯"
+            ],
+            "earth_stem": "壬",
+            "heaven": [
+              {
+                "star": "天冲星",
+                "stem": "壬",
+                "lifecycle": {
+                  "stem": "壬",
+                  "palace": 3,
+                  "palace_branches": [
+                    "卯"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "卯",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "伤门",
+            "deity": "六合"
+          },
+          {
+            "palace": 4,
+            "element": "木",
+            "branches": [
+              "辰",
+              "巳"
+            ],
+            "earth_stem": "辛",
+            "heaven": [
+              {
+                "star": "天辅星",
+                "stem": "辛",
+                "lifecycle": {
+                  "stem": "辛",
+                  "palace": 4,
+                  "palace_branches": [
+                    "辰",
+                    "巳"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "辰",
+                      "stage": "墓"
+                    },
+                    {
+                      "branch": "巳",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": true,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "杜门",
+            "deity": "太阴"
+          },
+          {
+            "palace": 6,
+            "element": "金",
+            "branches": [
+              "戌",
+              "亥"
+            ],
+            "earth_stem": "己",
+            "heaven": [
+              {
+                "star": "天心星",
+                "stem": "己",
+                "lifecycle": {
+                  "stem": "己",
+                  "palace": 6,
+                  "palace_branches": [
+                    "戌",
+                    "亥"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "戌",
+                      "stage": "养"
+                    },
+                    {
+                      "branch": "亥",
+                      "stage": "胎"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "开门",
+            "deity": "九地"
+          },
+          {
+            "palace": 7,
+            "element": "金",
+            "branches": [
+              "酉"
+            ],
+            "earth_stem": "戊",
+            "heaven": [
+              {
+                "star": "天柱星",
+                "stem": "戊",
+                "lifecycle": {
+                  "stem": "戊",
+                  "palace": 7,
+                  "palace_branches": [
+                    "酉"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "酉",
+                      "stage": "死"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": false,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "惊门",
+            "deity": "九天"
+          },
+          {
+            "palace": 8,
+            "element": "土",
+            "branches": [
+              "丑",
+              "寅"
+            ],
+            "earth_stem": "乙",
+            "heaven": [
+              {
+                "star": "天任星",
+                "stem": "乙",
+                "lifecycle": {
+                  "stem": "乙",
+                  "palace": 8,
+                  "palace_branches": [
+                    "丑",
+                    "寅"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "丑",
+                      "stage": "衰"
+                    },
+                    {
+                      "branch": "寅",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "生门",
+            "deity": "白虎"
+          },
+          {
+            "palace": 9,
+            "element": "火",
+            "branches": [
+              "午"
+            ],
+            "earth_stem": "丙",
+            "heaven": [
+              {
+                "star": "天英星",
+                "stem": "丙",
+                "lifecycle": {
+                  "stem": "丙",
+                  "palace": 9,
+                  "palace_branches": [
+                    "午"
+                  ],
+                  "all_actual_branch_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "帝旺"
+                    }
+                  ],
+                  "is_tomb": false,
+                  "is_extinct": false,
+                  "is_strong_stage": true,
+                  "full12_computed": true,
+                  "origin": "5 book anchors + exact cycle parity and steps",
+                  "not_a_clinical_statement": true
+                }
+              }
+            ],
+            "door": "景门",
+            "deity": "螣蛇"
+          }
+        ],
+        "source12_stage_for_actors": {
+          "patient": {
+            "stem": "丙",
+            "palace": 9,
+            "palace_branches": [
+              "午"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "午",
+                "stage": "帝旺"
+              }
+            ],
+            "is_tomb": false,
+            "is_extinct": false,
+            "is_strong_stage": true,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          },
+          "tianrui_heaven": {
+            "stem": "癸",
+            "palace": 2,
+            "palace_branches": [
+              "未",
+              "申"
+            ],
+            "all_actual_branch_stages": [
+              {
+                "branch": "未",
+                "stage": "墓"
+              },
+              {
+                "branch": "申",
+                "stage": "死"
+              }
+            ],
+            "is_tomb": true,
+            "is_extinct": false,
+            "is_strong_stage": false,
+            "full12_computed": true,
+            "origin": "5 book anchors + exact cycle parity and steps",
+            "not_a_clinical_statement": true
+          }
+        },
+        "source12_all_ten_stems_checked": true,
+        "source12_total_stage_facts_checked": 120,
+        "fuyin_fanyin": {
+          "star": "伏吟",
+          "door": "伏吟",
+          "star_home": 8,
+          "star_opposite": 0,
+          "door_home": 8,
+          "door_opposite": 0,
+          "pace": "主迟滞、较慢",
+          "both_fuyin": true,
+          "both_fanyin": false,
+          "basis": "kaiwu_ch04_lines_556_580",
+          "not_medical_timing": true
+        },
+        "chart_relevant_facts_calculated": true
+      },
+      "symbolic_scoring": {
+        "observed_or_unspecified_nominal": {
+          "baseline": 50,
+          "score": 37,
+          "six_modules": [
+            {
+              "name": "主体与天芮及其月令",
+              "budget": 17,
+              "raw_rule_sum": -27,
+              "applied_signed_score": -10,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_generates_illness",
+                  "points": -8,
+                  "family": "main_patient_illness_relation",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_stem_month_weak",
+                  "points": -6,
+                  "family": "season_patient_stem",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_palace_month_weak",
+                  "points": -4,
+                  "family": "season_patient_palace",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "illness_tianrui_star_month_vigorous",
+                  "points": -15,
+                  "family": "season_tianrui",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "patient_twelve_stage_at_actual_palace",
+                  "points": 6,
+                  "family": "book_anchored_full12_patient",
+                  "actual_stages": [
+                    {
+                      "branch": "午",
+                      "stage": "帝旺"
+                    }
+                  ]
+                }
+              ],
+              "unclamped_candidate": -9.978260869565217
+            },
+            {
+              "name": "时干事体",
+              "budget": 7,
+              "raw_rule_sum": -4,
+              "applied_signed_score": -2,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "real_hour_vs_real_patient",
+                  "points": -4,
+                  "family": "directed_hour_person_5element",
+                  "actual_relation": "受生",
+                  "hour": 2,
+                  "patient": 9
+                }
+              ],
+              "unclamped_candidate": -1.5555555555555556
+            },
+            {
+              "name": "医药相互作用",
+              "budget": 10,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "刑冲破墓空与马星",
+              "budget": 9,
+              "raw_rule_sum": -4,
+              "applied_signed_score": -1,
+              "all_scored_facts": [
+                {
+                  "evidence_id": "patient_three_wonders",
+                  "points": 6,
+                  "family": "patient_three_wonders",
+                  "original_source_role": null
+                },
+                {
+                  "evidence_id": "tianrui_geng_same_palace",
+                  "points": -10,
+                  "family": "illness_stem_geng",
+                  "original_source_role": null
+                }
+              ],
+              "unclamped_candidate": -0.8
+            },
+            {
+              "name": "原书有序天地盘格局",
+              "budget": 5,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            },
+            {
+              "name": "复合格局与节奏",
+              "budget": 2,
+              "raw_rule_sum": 0,
+              "applied_signed_score": 0,
+              "all_scored_facts": [],
+              "unclamped_candidate": 0.0
+            }
+          ],
+          "legacy_v41_raw": 63,
+          "sub_scores_sum": -13,
+          "no_implicit_good_when_rule_not_applicable": true,
+          "no_modern_medical_probability": true,
+          "source_context": "unprovided",
+          "known_chart_not_missing": true
+        },
+        "conditional_scenarios": {
+          "unprovided": 37,
+          "new": 39,
+          "chronic": 33
+        },
+        "scenario_range": [
+          33,
+          39
+        ],
+        "duration_provided": false,
+        "duration_not_invented": true,
+        "unknown_personal_context_not_chart_missing": true
+      },
+      "new_medical_diagnosis": false,
+      "author_book_outcome_used": false,
+      "user_approved": false
+    }
+  ]
+}

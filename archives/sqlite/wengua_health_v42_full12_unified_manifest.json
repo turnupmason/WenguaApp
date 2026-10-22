@@ -1,0 +1,71 @@
+{
+  "schema": "wengua_v42_unified_v39_express_reading_and_book_anchor_120_score_full",
+  "full_parent_v41_sha256": "f90e9de80b24a852c26d4957e4e91234f86b76c9289cbc9f4738eb1b735bf01a",
+  "complete_v42_sqlite_sha256": "f76b26200d8ed945621139217fcd63d55dddd010c1e4a2848d4e9ad544b3ec66",
+  "complete_v42_sqlite_bytes": 15155200,
+  "compressed_complete_v42_sqlite_sha256": "7c8754cb965f44308e1d3a38ce87f310f362a2b41f32638014c6cd794740baf0",
+  "sealed_five_real_question_sha256": "bcd77e5522b023d4cd712958ff4aaea3adba0b33fbf02578d88d6016e8413fd7",
+  "five_integrated_human_readings_sha256": "0d49eed7062496ca4803e19f573cf3f316e79ef70ccf5a1a7bf922fcad477e17",
+  "full12_10stems5sourceanchors_sha256": "2f24355ea139d8bfce3e14554ace49ef4d0144df15049aa63815834e2aab77c1",
+  "six_budget_policy_sha256": "d9567a11ae23d917fac9dbc3f031f6dc2bf3e2474799a863a72a6886d56edb5d",
+  "all_old_194_and_43_and_81_42_17_preserved": true,
+  "old_developer_failure_count": 2,
+  "extra_health_first_question_families": 2,
+  "stage_count_computed_from_verified_anchors": 120,
+  "actual_six_budget_snapshots": 30,
+  "all_first_3_v39_user_readings_unchanged": true,
+  "user_current_score_approval": false,
+  "medical_risk_or_probability": false,
+  "results": [
+    {
+      "id": "user_20261022_1200_EDT",
+      "score": 34,
+      "scenario_low_high": [
+        34,
+        36
+      ],
+      "v39_sha256": "e7a747742db38125566c5e03237b619ce5195780667ae56752ec1006a26d5e83",
+      "v39_verbatim_preserved": true
+    },
+    {
+      "id": "kaiwu.health.19950219.brother_paralysis",
+      "score": 48,
+      "scenario_low_high": [
+        44,
+        50
+      ],
+      "v39_sha256": "f9c119291a8d9e7c3d73b2fc3013cef7eeada695bdcad51b48aa994a8a004681",
+      "v39_verbatim_preserved": true
+    },
+    {
+      "id": "shenqi.health.19961102.on_site_health",
+      "score": 53,
+      "scenario_low_high": [
+        53,
+        53
+      ],
+      "v39_sha256": "de8780e1ed6d7129ee1ceb3df27d4747841404ff958c33992ede975e124cd7fb",
+      "v39_verbatim_preserved": true
+    },
+    {
+      "id": "shenqi.health.19960316.self_surgery",
+      "score": 59,
+      "scenario_low_high": [
+        54,
+        62
+      ],
+      "v39_sha256": "d01f0cca8d10deefbfdb07a7192602c68c54eb42626e031e3d584822fcb0d0f7",
+      "v39_verbatim_preserved": true
+    },
+    {
+      "id": "shenqi.health.19960727.father_illness",
+      "score": 37,
+      "scenario_low_high": [
+        33,
+        39
+      ],
+      "v39_sha256": "78afc2f640bac7fe907a950db17e72b68f62c96439d26a10abad93325ab791a1",
+      "v39_verbatim_preserved": true
+    }
+  ]
+}
