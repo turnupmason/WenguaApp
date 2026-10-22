@@ -1,0 +1,20 @@
+{
+  "schema": "wengua_v32_full_source_new_families_replay",
+  "sha256": "e4110828bbfb621e1bb7ed972284d4602d2ab361a12edc48d6f4750c965dddf9",
+  "size_bytes": 14977024,
+  "exact_parent_v31_sha256": "3a72dbb798d73413c2ebb994e232b83039a483d91cfa8a8f60f246d4ad84b529",
+  "xz_sha256": "efd9bd33181ef79f79ea0f9494778ec0ff62ad782f87ec53596921826980cea0",
+  "sealed_sha256": "93c9755cfc7e2e7832dbe41ac14e8afff7ef8e4d1bf42522829541dbfa32ef48",
+  "cases": 194,
+  "original_book_sections": 43,
+  "old_failed_development_cases": 2,
+  "previous_all_rows_preserved": true,
+  "source_historical_not_new_secret_blind": true,
+  "old_answers_not_used": true,
+  "readouts": 2,
+  "pure_python_no_runtime_gpt": true,
+  "four_other_health_intents": "unapproved",
+  "ui_approval": "pending",
+  "ios_status": "not_started",
+  "medical_validation": false
+}

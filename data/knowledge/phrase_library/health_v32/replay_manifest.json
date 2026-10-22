@@ -1,0 +1,28 @@
+{
+  "schema": "wengua_v32_two_new_event_families_v31_engine_replay",
+  "exact_previous_v31_full_sha256": "3a72dbb798d73413c2ebb994e232b83039a483d91cfa8a8f60f246d4ad84b529",
+  "new_full_archive_sha256": "e4110828bbfb621e1bb7ed972284d4602d2ab361a12edc48d6f4750c965dddf9",
+  "sealed_output_sha256": "93c9755cfc7e2e7832dbe41ac14e8afff7ef8e4d1bf42522829541dbfa32ef48",
+  "two_source_families": [
+    "shenqi.health.19960316.self_surgery",
+    "shenqi.health.19960727.father_illness"
+  ],
+  "readout_sha256s": {
+    "shenqi.health.19960316.self_surgery": "19cb6fe2d99e1b20229f4b6dfd7a42a6c1e958eaedab8bd59e25845c4ab14a54",
+    "shenqi.health.19960727.father_illness": "e4f117f10c3dde46a3e7f564b5c8547b6b2863bab7b481df12aeedc7969870bb"
+  },
+  "engine_version": "V3.1 unchanged",
+  "source_cases": 194,
+  "original_sections": 43,
+  "old_failed_dev_cases": 2,
+  "indexed_ordered_pairs": 42,
+  "indexed_composites": 17,
+  "original_source_outcomes_used": false,
+  "source_cases_were_in_book_library": true,
+  "no_secret_blind_validation_claim": true,
+  "prior_all_rows_preserved": true,
+  "four_other_health_intents_approved": false,
+  "medical_accuracy_validated": false,
+  "ui_approval": "pending after user reviews predictions",
+  "ios_submission_status": "not started"
+}
