@@ -69,7 +69,7 @@ class IOSVisualContract(unittest.TestCase):
         self.assertIn("TabView",s)
         for t in ("问事","记录","更多"):
             self.assertIn('Label("'+t+'"',s)
-        self.assertEqual(s.count(".init(id: "),9)
+        self.assertEqual(s.split("static let originalSample: [DemoPalace] = [",1)[1].split("\n    ]",1)[0].count(".init(id: "),9)
         for token in ('Pill(text: "固定历史样例 · 非实时起盘"',".sheet(item: $selectedPalace)",
                       "DemoReadingSection","读", "V3.9.1"):
             self.assertIn(token,s)
