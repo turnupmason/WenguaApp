@@ -71,6 +71,7 @@ def initialize(path):
         con.executescript((ROOT/"schema/migrations/053_health_severity_11_fuyin_verdict_v25.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/054_health_severity_strict_customer_template_v26.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/055_health_severity_five_not_encounter_v27.sql").read_text(encoding="utf-8"))
+        con.executescript((ROOT/"schema/migrations/056_health_medical_timing_tomb_v28.sql").read_text(encoding="utf-8"))
         con.executescript((ROOT/"schema/migrations/054_health_severity_gengshen_corrected_v26.sql").read_text(encoding="utf-8"))
         con.executemany("INSERT OR IGNORE INTO books(book_id,title) VALUES (?,?)",
                         sorted(BOOKS.items()))

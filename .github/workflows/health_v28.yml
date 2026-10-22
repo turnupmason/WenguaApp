@@ -1,0 +1,103 @@
+name: V28 Health Medicine Timing Tomb and Striking Regression
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v28.py'
+      - 'data/knowledge/phrase_library/health_v28/**'
+      - 'tests/test_medical_timing_tomb_v28.py'
+      - 'scripts/run_two_historical_health_v28.py'
+      - 'scripts/build_health_medical_timing_v28_archive.py'
+      - 'schema/migrations/056_health_medical_timing_tomb_v28.sql'
+      - '.github/workflows/health_v28.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  actual_two_cases:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check actual two original cases and all tomb/striking timing combinations, offline
+        run: python -m unittest discover -s tests -p test_medical_timing_tomb_v28.py -v
+  full_immutable_sqlite:
+    needs: actual_two_cases
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Build new full immutable database and new source-blinded predictions
+        run: |
+          if [ ! -f 'archives/sqlite/WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3' ]; then
+            python -m scripts.build_health_medical_timing_v28_archive \
+              --base 'archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3' \
+              --output 'archives/sqlite/WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3' \
+              --sealed 'data/evaluation/health_v28/two_historical_medical_timing_SEALED.json' \
+              --ledger 'data/knowledge/phrase_library/health_v28/archive_manifest.json'
+          fi
+      - name: Verify frozen archive, compressed copy and independent old seals
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          folder=Path('archives/sqlite')
+          old=folder/'WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3'
+          new=folder/'WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3'
+          xz=Path(str(new)+'.xz')
+          if not xz.exists():xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sh=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+          manifest=json.loads(Path('data/knowledge/phrase_library/health_v28/archive_manifest.json').read_text('utf8'))
+          assert manifest['parent_sha256']==sh(old)
+          assert manifest['new_full_sha256']==sh(new)
+          p=Path('data/evaluation/health_v28/two_historical_medical_timing_SEALED.json')
+          predictions=json.loads(p.read_text('utf8'))['new_predictions']
+          assert len(predictions)==2
+          with sqlite3.connect(new) as db:
+            assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+            for table,count in [('cases',194),('sections',43),
+               ('health_v27_sealed_historical_predictions',2),
+               ('health_v28_fixed_customer_sections',11),
+               ('health_v28_medical_timing_rules',5),
+               ('health_v28_historical_review',2)]:
+              assert db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0]==count
+          record={
+            'schema':'wengua_v28_full_194_source_11_fixed_customer_sections',
+            'sha256':sh(new),'size_bytes':new.stat().st_size,
+            'old_parent_sha256':sh(old),'xz_sha256':sh(xz),
+            'new_sealed_sha256':sh(p),
+            'original_cases':194,'old_seals_unchanged':True,
+            'user_confirmed':'historical_second V27 only',
+            'updated_v28_user_review':'pending',
+            'no_GPT_or_network':True,'clinical_validation':False,
+            'other_health_subtypes_unreviewed':4,
+            'integrity':'ok'}
+          (folder/'wengua_health_v28_medical_timing_manifest.json').write_text(
+            json.dumps(record,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(record,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit ONLY new versioned archive and two new readouts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f 'archives/sqlite/WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3'
+          git add 'archives/sqlite/WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v28_medical_timing_manifest.json' \
+            'data/evaluation/health_v28/two_historical_medical_timing_SEALED.json' \
+            'data/knowledge/phrase_library/health_v28/archive_manifest.json'
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive full V28 194-case medical timing SQLite and new sealed readings'
+            git push origin HEAD:main
+          fi

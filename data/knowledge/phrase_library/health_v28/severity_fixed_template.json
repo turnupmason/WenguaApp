@@ -1,0 +1,102 @@
+{
+  "schema": "wengua_health_severity_v28_medical_timing_tomb_and_punishment",
+  "engine": "offline_python_str_format_map_no_gpt",
+  "user_visible_columns": "十一固定章节，未知性别不输出乾坤章节",
+  "source_contract": {
+    "five_not_encounter": "时干克日干且两干同阴或同阳；独立真干五行逻辑；区分求测占时和择时；对测病是重要传统凶象但不可单条断亡",
+    "gender": "male->乾六宫，female->坤二宫；不因姓名推断性别；在主用神之外辅助参照",
+    "directions": "所有五行有序关系必须附目标角色及吉凶意义，平为中性不能假装吉凶",
+    "door_press": "仅计算准确宫位；病宫、人物宫和有性别时辅助宫各自取断",
+    "conclusion": "必须有传统主判病吉/病凶、有效证据和反证；对现实病情医学风险不作断言",
+    "unreviewed_intents": [
+      "treatment",
+      "discharge",
+      "surgery",
+      "travel_for_treatment"
+    ],
+    "source": "shenqi health case methods; kaiwu chapter4 lines 580-590",
+    "medical_timing": "事件时干与天心/乙奇同宫，或天芮病宫与天心/乙奇同宫，传统有及时就医机会；必须同时看医生星月令旺相休囚废、乙奇木五行月令旺相休囚死、旬空门迫入墓击刑及克病关系，不自动断治疗有效",
+    "star_phase": "天心用既有nine_star_month_status九星法；乙奇用五行月令旺相休囚死，严禁拿天心的月废公式套乙奇",
+    "tomb": "据原书三奇入墓乙/丙落乾6，丁落艮8；时干干墓用原书干十二长生墓支与地盘宫支对应，只称入墓地并按月令分墓/库，不妄断准确应期",
+    "six_instrument_punishment": "六仪击刑: 戊震3、己坤2、庚艮8、辛离9、壬巽4、癸巽4，须在具体相关宫的天盘携干及实际位置验证；普通三刑无书源有效条件不推断"
+  },
+  "sections": [
+    {
+      "id": "01_role",
+      "title": "问事取用",
+      "format": "依据古籍，此次为{person_label}测病情轻重。{subject_method}落{person_palace}，天芮主病。"
+    },
+    {
+      "id": "02_far",
+      "title": "值符值使",
+      "format": "值符{value_star}在{value_star_palace}，值使{value_door}在{value_door_palace}。{value_relation}。"
+    },
+    {
+      "id": "03_illness",
+      "title": "天芮病宫",
+      "format": "天芮{with_extra_stars}落{ill_palace}，临{ill_door}、乘{ill_deity}，天盘{ill_heaven}加地盘{ill_earth}。{star_palace_meaning}。{door_deity_meaning}。{pair_domain_meaning}。人体传统取象为{body_image}。"
+    },
+    {
+      "id": "04_season",
+      "title": "病星月令",
+      "format": "{month_branch}月天芮{stage}，{stage_meaning}。"
+    },
+    {
+      "id": "05_patient",
+      "title": "患者用神宫",
+      "format": "{person_palace}临{person_star_door_deity}。{person_vs_ill_relation}。{patient_void_or_factor}。"
+    },
+    {
+      "id": "06_gender",
+      "title": "男女辅助宫",
+      "optional": "patient_sex",
+      "format": "{sex_label}另参{gender_palace}。{gender_symbol_sentence}。{gender_vs_ill_relation}。"
+    },
+    {
+      "id": "07_medicine",
+      "title": "医生医药",
+      "format": "天心在{doctor_palace}，月令{doctor_month_stage}，{doctor_strength_judgement}；乙奇在{medicine_palace}，月令{medicine_month_stage}，{medicine_strength_judgement}。{doctor_effect}；{medicine_effect}{medical_obstacles}。"
+    },
+    {
+      "id": "08_hour",
+      "title": "时干事体",
+      "format": "时干{hour_stem}落{event_palace}。{event_relation}{timely_treatment_event}。"
+    },
+    {
+      "id": "09_hazards",
+      "title": "特殊凶吉格局",
+      "format": "{five_not_encounter_sentence}。{targeted_press_sentence}{tomb_punishment_sentence}。"
+    },
+    {
+      "id": "10_pace",
+      "title": "伏吟反吟与快慢",
+      "format": "{fuyin_fanyin_statement}。{inner_outer_statement}。{pace_statement}。{timing_statement}{timely_treatment_timing}。"
+    },
+    {
+      "id": "11_final",
+      "title": "最后断词",
+      "format": "依据古籍，病情传统主判：{final_verdict}。{major_evidence_sentence}。{counter_evidence_sentence}{timely_treatment_verdict}。{final_tempo_sentence}。"
+    }
+  ],
+  "validation": {
+    "no_tokens": [
+      "GPT",
+      "程序",
+      "数据库",
+      "规则库",
+      "未实现",
+      "未收录",
+      "门门迫",
+      "与与",
+      "同同在",
+      "。。"
+    ],
+    "evidence_provenance_internal_only": true,
+    "all_11_required_for_known_sex": true,
+    "no_duplicate_genders_or_star_palaces": true,
+    "offline_no_rewrite": true
+  },
+  "parent_v26_sha": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+  "approval": "pending user content review; author approved older second historical prediction only",
+  "parent_version": "v27 sealed immutable 2 historical test original readings"
+}
