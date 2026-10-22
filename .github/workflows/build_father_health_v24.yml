@@ -1,0 +1,122 @@
+name: V2.4 Corrected Father Health and Grouped Palace Acceptance
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v24.py'
+      - 'data/knowledge/phrase_library/health_v24/**'
+      - 'scripts/run_father_health_20261021_v24.py'
+      - 'tests/test_father_health_20261021_v24.py'
+      - 'schema/migrations/052_health_severity_father_corrected_v24.sql'
+      - 'scripts/build_father_health_corrected_v24_archive.py'
+      - '.github/workflows/build_father_health_v24.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Offline input calendar, real father role and six-in-one paragraph regression
+        run: python -m unittest discover -s tests -p test_father_health_20261021_v24.py -v
+  full_archive:
+    runs-on: ubuntu-latest
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Guard immutable V2.4 archive
+        id: archive_guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          folder=Path('archives/sqlite')
+          db=folder/'WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3'
+          manifest=folder/'shenqi21_kaiwu22_father_health_corrected_v24_manifest.json'
+          if db.exists():
+           assert manifest.exists()
+           assert hashlib.sha256(db.read_bytes()).hexdigest()==json.loads(manifest.read_text('utf8'))['sha256']
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Append new V2.4 full database from exact immutable V2.2
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_father_health_corrected_v24_archive \
+            --base 'archives/sqlite/WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/health_v24/archive_index'
+      - name: Compress, integrity-check and manifest immutable all-original-data SQLite
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3'
+          xz=Path(str(new)+'.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+          audit=json.loads(Path('data/knowledge/phrase_library/health_v24/archive_index/manifest.json').read_text('utf8'))
+          assert audit['parent_full_sqlite_sha256']==sha(old)
+          assert audit['new_full_sqlite_sha256']==sha(new)
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM health_v22_customer_severity_sections').fetchone()[0]==21
+           assert db.execute('SELECT COUNT(*) FROM health_v24_corrected_father_prose').fetchone()[0]==4
+           assert db.execute('SELECT COUNT(*) FROM health_v24_acceptance_audit').fetchone()[0]==1
+           assert db.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          record={
+           'schema':'wengua_v24_father_health_corrected_full_archive',
+           'sha256':sha(new),'size_bytes':new.stat().st_size,
+           'parent_sha256':sha(old),'file':str(new),
+           'xz_file':str(xz),'xz_sha256':sha(xz),'xz_bytes':xz.stat().st_size,
+           'cases':194,'original_sections':43,'old_wrong_dev_cases':2,
+           'user_display_paragraphs':16,'underlying_health_facts':21,
+           'merged_disease_palace_source_paragraphs':6,'father_qian_six':True, 'corrected_summary':True,
+           'no_llm':True,'clinical_accuracy_validated':False,
+           'other_four_health_templates_user_approved':False,
+           'user_acceptance':'pending','sqlite_integrity':'ok',
+           'counts':audit['counts']}
+          (root/'shenqi21_kaiwu22_father_health_corrected_v24_manifest.json').write_text(
+            json.dumps(record,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(record,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.archive_guard.outputs.exists == 'false'
+        with:
+          name: wengua-father-health-corrected-v24-full194
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_father_health_corrected_v24_manifest.json
+      - name: Save versioned SQLite binary, compressed copy, SHA receipt to main
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3.xz' \
+                     'archives/sqlite/shenqi21_kaiwu22_father_health_corrected_v24_manifest.json' \
+                     'data/knowledge/phrase_library/health_v24/archive_index/'
+          git diff --cached --check
+          git commit -m 'Archive immutable V2.4 full 194-case SQLite with father-role and six-in-one disease palace'
+          git push origin HEAD:main
