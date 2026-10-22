@@ -1,0 +1,23 @@
+{
+  "schema": "wengua_v34_full_book_source_role_disease_replay",
+  "full_db_sha256": "9008f8803a6a2f95352b5d8bc62c332cba371c8cfdcad0473462c16f7e249bf4",
+  "full_db_bytes": 15007744,
+  "xz_sha256": "39a0311e5df4147699f4f7d14941e05c4e22403e9aeeb802c1ca0bfc430df15a",
+  "full_parent_v33_sha256": "abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5",
+  "sealed_readout_sha256": "e8ba2f5b4d1d9da9d690bbb16bafe2d1a6ff045a26f31dcd9013527cf6ea1515",
+  "book_cases": 194,
+  "book_sections": 43,
+  "health_unique_source_families": 12,
+  "rendered": 12,
+  "blocked": 0,
+  "ordered_pairs_indexed_and_condition_checked": 42,
+  "composite_patterns_indexed_and_condition_checked": 17,
+  "unsupported_condition_predicates_are_explicit_unknown_not_claimed_complete": true,
+  "original_source_outcome_loaded": false,
+  "medical_validation": false,
+  "prior_seals_and_failure_records_immutable": true,
+  "no_runtime_llm_or_network": true,
+  "user_review": "pending",
+  "other_four_health_intents": "unapproved",
+  "ui": "user_design_needed"
+}
