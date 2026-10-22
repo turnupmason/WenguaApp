@@ -1,0 +1,29 @@
+{
+  "schema": "wengua_complete_health_v21_corrected_relations",
+  "parent_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3",
+  "parent_sha256": "8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e",
+  "latest_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3",
+  "sha256": "25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3",
+  "size_bytes": 14798848,
+  "compressed_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3.xz",
+  "compressed_sha256": "a3a69f7bc8971cf9a90f4cc5e4fed2f4d5521e1b2bdccb256f3dfbf00980d372",
+  "compressed_size_bytes": 1180032,
+  "five_directed_relations_verified": true,
+  "calendar_consistency_guards": true,
+  "old_five_health_intents_and_66_sections_preserved": true,
+  "194_old_event_families_unchanged": true,
+  "old_dev_wrong_answers": 2,
+  "clinical_predictions_verified": 0,
+  "integrity_check": "ok",
+  "foreign_key_errors": 0,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_templates": 5,
+    "health_v20_intent_steps": 66,
+    "health_v21_directed_palace_relations": 5,
+    "health_v21_calendar_guard": 1,
+    "health_v21_archive_audit": 1
+  }
+}

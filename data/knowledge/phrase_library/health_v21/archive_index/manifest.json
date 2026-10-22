@@ -1,0 +1,25 @@
+{
+  "schema": "wengua_health_v21_directed_palace_and_calendar_guard",
+  "parent_full_sqlite_sha256": "8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e",
+  "new_full_sqlite_sha256": "25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3",
+  "previous_194_book_cases_unchanged": true,
+  "previous_43_book_sections_unchanged": true,
+  "previous_v16_two_wrong_development_cases_retained": 2,
+  "previous_health_v20_person_roles_retained": 14,
+  "previous_five_health_intents_retained": 5,
+  "previous_health_dynamic_templates_retained": 66,
+  "directional_relation_variants": 5,
+  "calendar_guard_protocols": 1,
+  "real_medical_prognoses_validated": 0,
+  "previous_rows_unchanged": true,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_templates": 5,
+    "health_v20_intent_steps": 66,
+    "health_v21_directed_palace_relations": 5,
+    "health_v21_calendar_guard": 1,
+    "health_v21_archive_audit": 1
+  }
+}
