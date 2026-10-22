@@ -37,7 +37,7 @@ class IOSVisualContract(unittest.TestCase):
         self.assertIn("非实时起盘",js)
         self.assertIn("固定历史样例",native)
         self.assertIn("demo",native.lower())
-        self.assertIn("无分数", (ROOT/"ios/design-v1/README.md").read_text("utf8"))
+        self.assertIn("无 V4.2 分数", (ROOT/"ios/design-v1/README.md").read_text("utf8"))
         self.assertIn("auto_cast_health_v39_text",ACTIVE.read_text("utf8"))
         self.assertTrue(json.loads(FULL.read_text("utf8"))["new_active_v391_has_no_score_or_probability"])
     def test_standalone_browser_mock_has_true_9_standard_positions(self):
