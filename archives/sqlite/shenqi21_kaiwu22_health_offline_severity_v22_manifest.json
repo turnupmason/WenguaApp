@@ -1,0 +1,30 @@
+{
+  "schema": "wengua_v22_health_severity_full_archive",
+  "parent_sha256": "25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3",
+  "latest_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3",
+  "sha256": "db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6",
+  "size_bytes": 14817280,
+  "xz": "archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3.xz",
+  "xz_sha256": "15985cf964c97884e66e89c3b1b159f6f6a40e62b415750caa101015d249f003",
+  "xz_size_bytes": 1182388,
+  "old_cases": 194,
+  "old_original_sections": 43,
+  "old_v16_dev_errors": 2,
+  "other_four_health_intents": "unapproved",
+  "offline_21_sections": 21,
+  "no_llm_runtime": true,
+  "independent_medical_validations": 0,
+  "user_approved": "pending",
+  "sqlite_integrity_check": "ok",
+  "foreign_key_check_errors": 0,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_steps": 66,
+    "health_v21_directed_palace_relations": 5,
+    "health_v22_customer_severity_sections": 21,
+    "health_v22_source_pair_explanations": 1,
+    "health_v22_acceptance_receipt": 1
+  }
+}

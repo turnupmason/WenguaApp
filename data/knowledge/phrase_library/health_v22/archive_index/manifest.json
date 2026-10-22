@@ -1,0 +1,27 @@
+{
+  "schema": "health_severity_pure_offline_v22_full_194_case_parent",
+  "parent_sha256": "25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3",
+  "full_new_sha256": "db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6",
+  "original_event_families": 194,
+  "original_sections": 43,
+  "old_v16_wrong_case_count": 2,
+  "14_prior_patient_roles_unchanged": true,
+  "4_unapproved_health_intents_frozen": true,
+  "21_customer_facing_sections": 21,
+  "no_ai_generation_or_llm_polish": true,
+  "actual_user_acceptance": "pending",
+  "source_original_pair": "heaven_over_earth:壬:辛",
+  "original_pair_db_line": 161,
+  "original_pair_concept_index_line": 661,
+  "unchanged_all_old_rows": true,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_steps": 66,
+    "health_v21_directed_palace_relations": 5,
+    "health_v22_customer_severity_sections": 21,
+    "health_v22_source_pair_explanations": 1,
+    "health_v22_acceptance_receipt": 1
+  }
+}
