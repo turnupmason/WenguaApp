@@ -1,0 +1,75 @@
+name: V4 Append-only Score Database
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_health_v40_full_score_archive.py'
+      - 'schema/migrations/068_health_v40_symbolic_score_prototype.sql'
+      - '.github/workflows/health_v40_score_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check exact baseline and run all numerical evidence tests
+        run: |
+          python -m unittest discover -s tests -p test_health_v40_symbolic_score.py -v
+          python - <<'PY'
+          import hashlib
+          from pathlib import Path
+          p=Path('archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='0e565ff5c4fea8d0510b155ab264b1af4c8ab9b63a173eb8cf96a00909c04ed1'
+          PY
+      - name: Append score experiments without changing earlier full records
+        run: |
+          python - <<'PY'
+          import json,hashlib,sqlite3
+          from pathlib import Path
+          from scripts.build_health_v40_full_score_archive import build
+          folder=Path('archives/sqlite')
+          full=folder/'WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3'
+          seal=Path('data/evaluation/health_v40/score_3_source_questions_unapproved.json')
+          meta=folder/'wengua_health_v40_score_draft_manifest.json'
+          report=Path('docs/HEALTH_V40_SYMBOLIC_SCORE_3_CASE_REPORT.md')
+          parent=folder/'WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3'
+          if not full.exists():
+              assert not any(p.exists() for p in (seal,meta,report))
+              print(build(parent,full,seal,meta,report))
+          else:
+              assert all(p.exists() for p in (seal,meta,report))
+          manifest=json.loads(meta.read_text('utf8'))
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert h(full)==manifest['new_complete_v40_sha256']
+          assert h(seal)==manifest['sealed_three_score_ledgers_sha256']
+          assert h(report)==manifest['score_report_sha256']
+          assert h(Path(str(full)+'.xz'))==manifest['new_complete_v40_xz_sha256']
+          with sqlite3.connect(full) as db:
+              assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              for table,n in [('cases',194),('sections',43),
+                 ('kaiwu_ordered_stem_pair_occurrences',81),
+                 ('health_v30_stem_pair_rules',42),
+                 ('health_v30_composite_rule_index',17),
+                 ('health_v39_concise_user_readings',3),
+                 ('health_v40_symbolic_score_model',1),
+                 ('health_v40_three_symbolic_score_trials',3)]:
+                 assert db.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0]==n,table
+          PY
+      - name: Commit only new research archives and preserve all prior versions
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3.xz' 'archives/sqlite/wengua_health_v40_score_draft_manifest.json' 'data/evaluation/health_v40/score_3_source_questions_unapproved.json' 'docs/HEALTH_V40_SYMBOLIC_SCORE_3_CASE_REPORT.md'
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive V4 symbolic health score experiments, exact old source parent preserved'
+            git push origin HEAD:main
+          fi
