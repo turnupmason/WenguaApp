@@ -1,0 +1,17 @@
+{
+  "schema": "wengua_v30_194_original_cases_source_plus_user_disease_curriculum",
+  "sha256": "713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b",
+  "parent_sha256": "511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19",
+  "xz_sha256": "a07ccdf2fb25165c380f567cc9b2b12f475dd96597284ae739685e5617fcaa35",
+  "sealed_json_sha256": "9e36d28eb8d727a9a75e095901406e9119f77fc18bee57ae1d67510be60a3c02",
+  "original_cases": 194,
+  "original_chapters": 43,
+  "old_failed_examples": 2,
+  "rules": 42,
+  "composite_index": 17,
+  "unchanged_previous_versions": true,
+  "historical_feedback_not_used": true,
+  "medical_outcomes_validated": false,
+  "user_review": "pending",
+  "other_four_health_intents_approved": false
+}

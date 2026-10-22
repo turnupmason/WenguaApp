@@ -1,0 +1,18 @@
+{
+  "version": "V3.0",
+  "parent_sha256": "511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19",
+  "new_full_sha256": "713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b",
+  "sealed_sha256": "9e36d28eb8d727a9a75e095901406e9119f77fc18bee57ae1d67510be60a3c02",
+  "cases": 194,
+  "source_sections": 43,
+  "prior_wrong_dev_cases": 2,
+  "source_type": "user_supplied_2026_10_22",
+  "pair_rules": 42,
+  "composite_rules": 17,
+  "template_slots": 11,
+  "previous_v27_v28_v29_seals_preserved": true,
+  "other_four_health_intents_user_review": "not_approved",
+  "user_approval": "pending",
+  "no_gpt_or_network_runtime": true,
+  "clinical_accuracy_verified": false
+}
