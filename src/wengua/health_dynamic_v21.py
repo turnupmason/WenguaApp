@@ -84,7 +84,12 @@ def _cell(chart, palace):
 
 
 def _stem_cell(chart, stem):
-    if not stem or stem == "甲":
+    if not stem:
+        return None
+    if stem == "甲":
+        # Only actual Jia-HOUR has a verified hidden six-instrument carrier.
+        if chart.get("hour_ganzhi","").startswith("甲"):
+            return _find_heaven_stem(chart,"甲")
         return None
     return _find_heaven_stem(chart, stem)
 
@@ -141,21 +146,44 @@ def bind_patient(chart, inquiry, calendar):
     else:
         source_rule = "no fixed personal signifier in indexed chapter"
         confidence = "unknown"
-    if via in ("day_stem", "casting_day_stem"):
+    harmony_stem = None
+    if via == "spouse_gender_harmony":
+        sex = inquiry.get("patient_sex")
+        if relation == "wife":sex="female"
+        if relation == "husband":sex="male"
+        if sex not in ("male","female"):
+            raise ValueError("妻夫取用须明确病人性别，不能把求测者日干当配偶")
+        if inquiry.get("patient_sex") and inquiry["patient_sex"]!=sex:
+            raise ValueError("Explicit spouse relation conflicts with patient sex")
         ganzhi = calendar.get("day_ganzhi")
-    elif via == "casting_year_stem":
-        ganzhi = calendar.get("year_ganzhi")
-    elif via == "casting_month_stem":
-        ganzhi = calendar.get("month_ganzhi")
-    elif via == "casting_hour_stem":
-        ganzhi = chart["hour_ganzhi"]
+        if ganzhi not in cycle60():
+            raise ValueError("日干合干需真实问测日柱")
+        harmony={"甲":"己","己":"甲","乙":"庚","庚":"乙",
+                 "丙":"辛","辛":"丙","丁":"壬","壬":"丁",
+                 "戊":"癸","癸":"戊"}
+        harmony_stem=harmony[ganzhi[0]]
+        # 妻乙夫庚 is principal; spouse day combination is a second evidence palace.
+        stem="乙" if sex=="female" else "庚"
     else:
-        ganzhi = None
-    if ganzhi is not None and (ganzhi not in cycle60()):
-        raise ValueError("Reference ganzhi must be an actual sexagenary pillar")
-    stem = ganzhi[:1] if ganzhi else None
+        if via in ("day_stem", "casting_day_stem"):
+            ganzhi = calendar.get("day_ganzhi")
+        elif via == "casting_year_stem":
+            ganzhi = calendar.get("year_ganzhi")
+        elif via == "casting_month_stem":
+            ganzhi = calendar.get("month_ganzhi")
+        elif via == "casting_hour_stem":
+            ganzhi = chart["hour_ganzhi"]
+        else:
+            ganzhi = None
+        if ganzhi is not None and (ganzhi not in cycle60()):
+            raise ValueError("Reference ganzhi must be an actual sexagenary pillar")
+        stem = ganzhi[:1] if ganzhi else None
     primary = _stem_cell(chart, stem)
     fixed_palaces = list(profile["palaces"])
+    if harmony_stem:
+        secondary=_stem_cell(chart,harmony_stem)
+        if secondary is not None and secondary["palace"] not in fixed_palaces:
+            fixed_palaces.append(secondary["palace"])
     is_child = relation in ("child","son","daughter","nephew")
     if is_child:
         sex = inquiry.get("patient_sex")
@@ -183,11 +211,15 @@ def bind_patient(chart, inquiry, calendar):
         p=_p(c), m=("父辈/乾" if c["palace"]==6 and relation in ("father","parent")
                     else "母辈/坤" if c["palace"]==2 and relation in ("mother","parent")
                     else "年龄排行辅助象")) for c in extra_cells if c]
-    role_name = ("闻讯事件日干" if mode == "event_news" and via == "day_stem" else
+    role_name = ("妻子乙奇并参日干五合"+str(harmony_stem)
+                 if via=="spouse_gender_harmony" and stem=="乙" else
+                 "丈夫庚金并参日干五合"+str(harmony_stem)
+                 if via=="spouse_gender_harmony" and stem=="庚" else
+                 "闻讯事件日干" if mode == "event_news" and via == "day_stem" else
                  "日干" if via in ("day_stem","casting_day_stem") else
                  "年干（长辈候选）" if via=="casting_year_stem" else
                  "月干（同辈候选）" if via=="casting_month_stem" else
-                 "时干（晚辈候选）" if via=="casting_hour_stem" else "未核定的患者个人用神")
+                 "时干（动物/晚辈候选）" if via=="casting_hour_stem" else "未核定的患者个人用神")
     if stem:
         role_name += stem
     elif via:
@@ -206,6 +238,8 @@ def bind_patient(chart, inquiry, calendar):
         "main_cell":primary,"extra_cells":extra_cells,
         "birth_cell":birth_cell,"birth_note":birth_note,
         "source_rule":source_rule,"confidence":confidence,"status":status,
+        "harmony_stem":harmony_stem,
+        "harmony_palace":(_stem_cell(chart,harmony_stem)["palace"] if harmony_stem and _stem_cell(chart,harmony_stem) else None),
         "note":profile["note"],"extra_meaning":"；".join(extras) or "无额外固定人物宫",
     }
 
