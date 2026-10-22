@@ -292,3 +292,40 @@ def analyze_health_severity_v34(*,chart,inquiry,calendar=None,db_path=None):
     return {**base,"schema":"wengua_health_severity_v34_role_priority_co_palace_and_42_17_conditions",
        "sections":sections,"reading_text":"\n\n".join(z["title"]+"："+z["text"] for z in sections),
        "audit":audit,"user_accepted":False}
+
+
+def analyze_multi_person_health_v34(*,chart,inquiries,calendar,db_path=None):
+    """One real chart, several distinct questions; separately resolve EACH patient.
+
+    Tianrui is shared background, not itself evidence that every queried
+    individual is ill. The caller must provide distinct explicit persons.
+    """
+    if not isinstance(inquiries,(list,tuple)) or len(inquiries)<2:
+        raise ValueError("Multi-person health requires two or more named people")
+    seen=set()
+    items=[]
+    for q in inquiries:
+        if not isinstance(q,dict) or q.get("intent")!="severity":
+            raise ValueError("Each person requires an explicit health severity inquiry")
+        identity=q.get("subject_id")
+        if not isinstance(identity,str) or not identity.strip() or identity in seen:
+            raise ValueError("Each queried patient requires unique subject_id")
+        seen.add(identity)
+        out=analyze_health_severity_v34(chart=chart,inquiry=q,calendar=calendar,db_path=db_path)
+        bind=bind_patient(chart,q,calendar)
+        # Separately rendered traditional symbol interpretation; even identical
+        # actor reference palaces may occur in source's peer generation system.
+        # They must never be misrepresented as independently identifying disease.
+        summary=("多位他人同一时辰求健康时，天芮为共有病象背景；"
+                 "本人的主用神与可知年命及其星门格局才是单人取断依据。")
+        out["sections"]=[{**z,"text":_append(z["text"],summary)}
+                         if z["id"]=="01_role" else z for z in out["sections"]]
+        out["reading_text"]="\n\n".join(z["title"]+"："+z["text"] for z in out["sections"])
+        out["audit"]["v34_multiple_people_no_shared_tianrui_as_personal_diagnosis"]=True
+        items.append({"subject_id":identity,"patient_role":q["relationship"],
+                      "actual_person_palace":bind["main_cell"]["palace"],
+                      "reading":out})
+    return {"schema":"wengua_health_v34_multi_person_distinct_source_roles",
+            "actual_single_source_chart_used":True,"source_subjects":items,
+            "per_subject_no_clinical_diagnosis":True,
+            "interpreter_v34_all_roles":True}
