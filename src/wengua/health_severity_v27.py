@@ -205,7 +205,7 @@ def analyze_health_severity_v27(*,chart,inquiry,calendar=None,db_path=None):
         if p in press and not any(p==q for q,_ in focal):
             focal.append((p,role_label))
     focal_txt="；".join(role_label+_palace(chart["palaces"][str(p)])+
-             "的"+chart["palaces"][str(p)]["door"]+"门迫，偏凶" for p,role_label in focal)
+             "的"+chart["palaces"][str(p)]["door"]+"构成门迫，偏凶" for p,role_label in focal)
     if not focal_txt:focal_txt="病宫和患者宫没有门迫"
     p_void="患者宫逢旬空，偏凶" if _yes_void(chart,person) else "患者宫不空，有利于用神发挥"
     with_extra=[x["star"] for x in ill["heaven_stars"] if x["star"]!="天芮星"]
