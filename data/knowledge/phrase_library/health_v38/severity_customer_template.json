@@ -1,0 +1,102 @@
+{
+  "schema": "wengua_health_v38_tomb_extinction_vacancy_source_provenance_internal_only",
+  "version": "V3.8",
+  "parent": "V3.7",
+  "intent": "severity",
+  "source_book_pair_catalog": "data/knowledge/kaiwu/analysis_judgment_ch04/ordered_stem_pairs.json",
+  "source_health_pairs": "data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json",
+  "coverage": {
+    "full_ordered_pairs": 81,
+    "supplementary_health_pairs": 42,
+    "composite_patterns": 17
+  },
+  "sections": [
+    {
+      "id": "01_role",
+      "title": "一、问事与用神",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "02_far",
+      "title": "二、值符值使",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "03_illness",
+      "title": "三、病星及原书病宫组合",
+      "format": "{clean_original}\n{actual_stem_tomb_extinction_void}"
+    },
+    {
+      "id": "04_season",
+      "title": "四、月令旺衰",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "05_patient",
+      "title": "五、病人主用神与双向证据",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "06_gender",
+      "title": "六、辅助人物宫",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "07_medicine",
+      "title": "七、医生医药组合",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "08_hour",
+      "title": "八、时干病势",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "09_hazards",
+      "title": "九、真实格局与反证",
+      "format": "{clean_original}\n{combination_and_limitations}"
+    },
+    {
+      "id": "10_pace",
+      "title": "十、应期条件",
+      "format": "{clean_original}"
+    },
+    {
+      "id": "11_final",
+      "title": "十一、传统综合判断",
+      "format": "{revised_final}"
+    }
+  ],
+  "rule_precedence": [
+    "source verified patient role before every pairing",
+    "patient-vs-illness palace and illness-palace-vs-Tianrui independently calculated",
+    "double_control; double_adverse_disease_supported; harmful_patient_nourishes_illness; adverse_patient_combo_and_disease_controls_person",
+    "patient empty/punish/tomb and same-palace medical opportunity are independent counters",
+    "full 81 ordered book pair provenance + disease-aware 42 pair cues, never symmetric reversal",
+    "same palace mixed bird/center star pair readings cannot be silently collapsed",
+    "threat and favorable evidence preserved without giving real medical prognosis"
+  ],
+  "source_visibility": "only source-supported name and scoped polarity; clinical death/cancer outcome language is prohibited",
+  "user_approved": false,
+  "customer_exclusions": [
+    "（原书第NN行）",
+    "本地数据库行号",
+    "SHA校验号",
+    "规则实现状态",
+    "GPT/AI/SQL/测试/回归"
+  ],
+  "new_illness_pregnancy": false,
+  "audit_new_fact_axes": [
+    "天芮病宫所携天盘丙真实落乾6宫",
+    "丙阳火十二长生墓支戌和绝支亥，须分别按真实落宫所辖支辨",
+    "庚午时甲子旬空戌亥，乾6宫旬空（与丙奇墓/绝不是同一规则）",
+    "与月令、门、病人宫、医药冲突综合但不可将宫支双支虚称两次独立死亡征兆"
+  ],
+  "rendering_rules": {
+    "preserve_source_names_no_line_ids": true,
+    "show_tomb_stage_and_extinction_separately": true,
+    "show_vacancy_from_actual_hour_xun": true,
+    "retain_opposite_positive_counterevidence": true,
+    "hold_release_for_user_approval": true
+  }
+}
