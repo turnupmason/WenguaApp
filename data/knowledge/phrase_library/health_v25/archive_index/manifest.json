@@ -1,0 +1,26 @@
+{
+  "schema": "wengua_v25_11_source_sections_self_gengshen_full_194_case",
+  "exact_parent_sha256": "9b5e574543bf7fc298412ac98ededf09445dc3c555312ad7b525f92f22aa41e0",
+  "new_sqlite_sha256": "6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf",
+  "original_book_cases": 194,
+  "original_book_sections": 43,
+  "old_dev_failures": 2,
+  "source_21_facets_preserved": true,
+  "template_total_sections": 11,
+  "visible_self_sections": 10,
+  "optional_family_section_skipped_for_self": true,
+  "other_four_health_templates_unapproved": true,
+  "source_fuyin_fanyin": true,
+  "traditional_binary_verdict_not_clinical": true,
+  "offline_no_gpt": true,
+  "user_content_approved": false,
+  "all_previous_rows_preserved": true,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v22_customer_severity_sections": 21,
+    "health_v24_corrected_father_prose": 4,
+    "health_v25_concise_sections": 11,
+    "health_v25_evidence_acceptance": 1
+  }
+}
