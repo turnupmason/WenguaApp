@@ -643,3 +643,8 @@ Source: 开悟之门_求学考试预测.txt, 151 lines, 16257 bytes; source SHA2
 **下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
 
 后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。
+
+
+## 2026-10-21 V2.0 五种疾病子问事动态模板（非新古籍章节）
+
+本轮不新加古籍原文或历史家族，旧194件/43节及作者初断错例均保持。用户批准21段「病情是否严重」细样稿后，又要求自测、测父母、朋友、孩子等按用户前期关系及占测情境绑定各自原书用神。新增14关系profile，5个独立健康子问事模板66段；严重程度21段，其它为治疗12、出院12、手术10、异地求医11，完全自动提取真盘填空。未验证的母亲/朋友/子女普适取用仅候选，保留依据古籍具体源案例与研究限制，不假定年命。新工程见 docs/HEALTH_DYNAMIC_FIVE_INTENTS_V2_0.md。以V1.9全量194案SHA b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f 为唯一父库增量048；CI成功后才写入真正新V2.0 SHA。新增细病种必须另有原书取用和模板，UI不动。

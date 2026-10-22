@@ -1,0 +1,100 @@
+name: Archive V2.0 Five Health Dynamic Intents
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_dynamic_v20.py'
+      - 'data/knowledge/phrase_library/health_v20/**'
+      - 'tests/test_health_dynamic_v20.py'
+      - 'scripts/build_health_five_intents_v20.py'
+      - 'schema/migrations/048_health_five_intents_actor_roles_v20.sql'
+      - '.github/workflows/build_health_v20.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify role selection for self parents friends children and five separate intents
+        run: python -m unittest discover -s tests -p test_health_dynamic_v20.py -v
+  archive:
+    runs-on: ubuntu-latest
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Create immutable full 194-case SQLite V2.0 from exact V1.9 parent
+        run: |
+          python -m scripts.build_health_five_intents_v20 \
+            --base 'archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/health_v20/archive_index'
+      - name: Compress validate and record exact current SHA
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          directory=Path('archives/sqlite')
+          prior=directory/'WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3'
+          new=directory/'WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3'
+          xz=Path(str(new)+'.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sh=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+          audit=json.loads(Path('data/knowledge/phrase_library/health_v20/archive_index/manifest.json').read_text('utf-8'))
+          assert sh(prior)==audit['parent_full_sqlite_sha256']
+          assert sh(new)==audit['new_full_sqlite_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM health_v20_actor_role_profiles').fetchone()[0]==14
+           assert db.execute('SELECT COUNT(*) FROM health_v20_intent_templates').fetchone()[0]==5
+           assert db.execute('SELECT COUNT(*) FROM health_v20_intent_steps').fetchone()[0]==66
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          receipt={
+           'schema':'wengua_full_v20_health_dynamic_intents_194_original_cases',
+           'parent_full_sqlite':str(prior),'parent_sha256':sh(prior),
+           'latest_full_sqlite':str(new),'sha256':sh(new),'size_bytes':new.stat().st_size,
+           'compressed_sqlite':str(xz),'compressed_sha256':sh(xz),
+           'compressed_size_bytes':xz.stat().st_size,
+           'health_role_profiles':14,'health_distinct_intents':5,'dynamic_sections':66,
+           'historical_events_unchanged':194,'historical_sections_unchanged':43,
+           'original_v16_dev_errors_preserved':2,'prior_marriage_v17_rules_preserved':27,
+           'real_world_medical_predictions_validated':0,
+           'integrity_check':'ok','foreign_key_errors':0,
+           'counts':audit['counts']
+          }
+          (directory/'shenqi21_kaiwu22_health_five_intents_v20_manifest.json').write_text(
+             json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','utf-8')
+          print(json.dumps(receipt,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wengua-full-194-cases-health-five-intents-v20
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json
+      - name: Preserve exact new full SQLite, XZ, and manifest on main
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json' \
+            'data/knowledge/phrase_library/health_v20/archive_index/'
+          git diff --cached --check
+          git commit -m 'Archive V2.0 full 194-case database with five health intents and 14 patient-role paths'
+          git push origin HEAD:main

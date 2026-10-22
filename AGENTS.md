@@ -915,3 +915,14 @@ The full exam chapter has 3 distinct education cases, 3 original Qimen casts, 4 
 **下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
 
 后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。
+
+
+## 2026-10-21 用户正式批准21段细致断词后：所有疾病子问事 V2.0 强制规则
+
+**最高优先且跨领域的永久规则**：绝不为1080局×60年命人工逐盘预写断词；以后所有领域先区分独立问事子意图，在现有古籍知识基础上写详细的固定条件式断案骨架，每一段由程序提取真实九宫、宫位五行、星门神八卦象、天盘干/地盘干有序格局、旺衰、刑冲墓迫、应期等，并同时填出「XX星/门/神/干主什么」和具体问事中的传统利弊。没有对应事实不编结论。中文对外统一「依据古籍」，不得出现具体两本书标题、行号、开发术语、「例如满足条件时」；不能只生成一句话而跳过21段细节。完整21段样稿已被用户确认，后续修改要保持同等细节和结构。
+
+**必须在用户前期选择三维条件后才选用神**：①患者关系 self/father/mother/parent/friend/colleague/son/daughter/child/nephew/spouse/older_relative/older_sibling/younger_sibling；②情境 direct_self本人现场问 / direct_proxy为他人专门代测 / event_news闻他人病讯按事件时间起盘；③具体问事 severity、treatment、discharge、surgery、travel_for_treatment。此三维不可互相替代；同一张盘给父、给母、给朋友、给子女测，患者主辅取用宫和断词必须不同。本人以日干、父亲长辈年干候选兼乾、母亲长辈年干候选兼坤、同辈朋友月干候选、晚辈孩子时干候选；但**候选不等于已经经完整两书证明的绝对公式**。现有书内真正可核：自测日干原案、女测父病年干兼乾、叔测侄子时干、姨母长辈年干兼坤、事件闻讯测同事取事发日干（不是直接代朋友问的普通流程）。母亲、朋友、孩子的普适取用要继续追原著；不准暗中把源例类比升级为已审核。患者性别、出生排行和年龄用户给才用，长男震、中男坎、少男艮，长女巽、中女离、少女兑仅参考宫象；出生年命可选，没有就不要求、不猜、不把起局年干冒充出生年干。无法定位某人物宫则明示待核，但仍按天芮病星及医药象继续分析。
+
+**疾病五问事分别独立模板**：severity=21完整详细段，treatment治疗类=12段，discharge出院应期=12段，surgery开门手术象=10段，travel_for_treatment异地求医=11段。每个子问题的取用优先级不同，不得把“病重”的模板当成“能出院”“是否手术”结论。新增病位、具体病种、慢性病、后遗症等必须经古籍另建独立方法/模板，不得冒用五类。文件 data/knowledge/phrase_library/health_v20/actor_profiles.json、severity_template.json、other_intent_templates.json；计算 src/wengua/health_dynamic_v20.py；脚本 scripts/run_health_dynamic_v20.py；测试 tests/test_health_dynamic_v20.py；说明 docs/HEALTH_DYNAMIC_FIVE_INTENTS_V2_0.md。所有中文断词事实必须来源于本次真盘，保留内部 source line/hash 与正反例，作者历史结局不可提前泄漏。**现实病情严重程度、诊断、治愈率、死亡日期、医疗干预不能由古籍推断成医学事实**，可以研究性说明传统象意。前五层和全24因素审计保留，unknown不能当absent。
+
+V2.0只准从V1.9完整194历史家族、43节、已通过验收的父SQLite SHA b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f 以sqlite3.backup追加，迁移 schema/migrations/048_health_five_intents_actor_roles_v20.sql，保留所有旧表原行、原书19错误记载及婚姻V1.6两次开发错断、婚姻27条件法、原V1.9 21段。构建 scripts/build_health_five_intents_v20.py，Action .github/workflows/build_health_v20.yml。**本次编写期间不得伪称CI已通过、V2库已生成或未见独立精度已验证；只有真实Actions成功并记录SQLite SHA后才标完成**。UI冻结、没有云GPT，继续逐子领域开发。

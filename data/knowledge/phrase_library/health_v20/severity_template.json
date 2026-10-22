@@ -1,0 +1,155 @@
+{
+  "schema": "wengua_health_severity_full_length_v20",
+  "domain": "health",
+  "intent": "severity",
+  "sections": [
+    {
+      "id": "01_question",
+      "title": "问事与人物绑定",
+      "format": "本次为{relationship_label}测病情是否严重，起盘情境为{consultation_label}。依据古籍，本次患者的用神取{patient_role_name}，{patient_role_meaning}。{patient_role_note}。{patient_birth_note}。另以天芮星主疾病、天心星和乙奇主医药，问者与患者不可混同。"
+    },
+    {
+      "id": "02_far_star",
+      "title": "远看：值符星",
+      "format": "值符星为{value_star}，主{value_star_meaning}，落{value_star_palace}，本宫五行{value_star_element}。同宫{value_star_contents}。所临门主{value_star_door_meaning}，所乘神主{value_star_deity_meaning}。值符星所在宫与天芮病宫为{value_star_illness_relation}，远看传统象意为{far_star_decision}。"
+    },
+    {
+      "id": "03_far_door",
+      "title": "远看：值使门",
+      "format": "值使门为{value_door}，主{value_door_meaning}，落{value_door_palace}；宫内{value_door_contents}。门宫五行形成{value_door_relation}，{value_door_relation_meaning}。结合本宫星、神、天盘干及病宫生克，远看传统象意为{far_door_decision}。"
+    },
+    {
+      "id": "04_illness_star",
+      "title": "近看：天芮病星",
+      "format": "天芮星是疾病用神，五行属土，落{illness_palace}，本宫五行{illness_element}。病星所临天盘{illness_stem}、地盘{illness_earth_stem}，同宫乘{illness_deity}、临{illness_door}。本宫与天芮土的五行关系为{illness_palace_star_relation}，{illness_palace_star_meaning}。近看病星传统象意为{illness_anchor_signal}。"
+    },
+    {
+      "id": "05_body_part",
+      "title": "病星落宫：人体部位",
+      "format": "天芮落{illness_palace}，依据古籍，此宫主的体表部位有{body_surface}，体内对应{body_internal}。{body_focus_meaning}。再结合本宫阴阳遁与内外盘，属于{inner_outer_meaning}，以{body_priority}作为本次传统病象的部位取舍。"
+    },
+    {
+      "id": "06_stem_image",
+      "title": "天盘干与地盘干：疾病类象",
+      "format": "病星宫天盘{illness_stem}，属{illness_stem_element}，主{illness_heaven_stem_meaning}；地盘{illness_earth_stem}，属{earth_stem_element}，主{illness_earth_stem_meaning}。结合{illness_palace}的身体部位，形成{illness_stem_combined_meaning}。时干{event_stem}辅助主事体，{event_stem_meaning}。这些是本盘的传统组合病象，不是互不相干的病名罗列。"
+    },
+    {
+      "id": "07_strength",
+      "title": "月令与病星旺衰",
+      "format": "起局月支为{month_branch}，五行{month_element}。天芮星依九星旺相休囚废判为{illness_star_stage}，{star_stage_meaning}。本宫五行与病星五行关系为{illness_palace_star_relation}，结合月令，病星的传统强弱倾向为{illness_strength_conclusion}。八门{illness_door}于该季节的状态为{door_season_stage}，需与九星旺衰分开判断。"
+    },
+    {
+      "id": "08_stem_pair",
+      "title": "天地盘干克应与格局",
+      "format": "病星宫天盘{illness_stem}加地盘{illness_earth_stem}，为{stem_pair_short}。依据古籍，此有序组合的格局和传统含义为{stem_pair_meaning_short}；在测病语境下，关联{illness_pair_health_meaning}，传统性质{stem_pair_orientation}。天、地干不能颠倒，也不能只凭格名代替对同宫星门神的分析。"
+    },
+    {
+      "id": "09_formations",
+      "title": "复合吉凶格局",
+      "format": "本宫满足原书条件的复合格局为{formation_matches_short}。其中对应传统象意为{formation_interpretation}，对病情问事的作用为{formation_effect}。同宫天芮、八门、八神、干克应之间若属于同一复合条件，只算一组证据，不重复计算吉凶。"
+    },
+    {
+      "id": "10_deity",
+      "title": "上乘八神",
+      "format": "天芮病星宫上乘{illness_deity}，此神主{deity_short_meaning}。结合天芮疾病象、所临{illness_door}与天地盘干，病情传统含义为{deity_health_effect}，倾向{deity_orientation}。八神必须与实际问题及同宫条件合断，不能脱离病星直接给所有人固定吉凶。"
+    },
+    {
+      "id": "11_door",
+      "title": "所临八门、门迫与门旺衰",
+      "format": "天芮宫临{illness_door}，此门主{illness_door_meaning}，五行为{illness_door_element}。门落{illness_palace}，门宫关系{illness_door_relation}，其具体含义{illness_door_relation_meaning}；门迫状态为{door_press}。此门在{season_label}为{door_season_stage}，与病星旺衰合看，本项传统倾向{door_health_effect}。"
+    },
+    {
+      "id": "12_void_break",
+      "title": "旬空、月破及冲填",
+      "format": "本局时柱{hour_ganzhi}，旬首{hour_xun}，旬空{void_branches}。天芮落宫旬空为{illness_void}，患者用神宫旬空为{patient_void}；空亡主虚、空、待填等传统含义，是否利病须视具体格局。月破状态为{month_break_short}；空亡填实、逢冲应期核对为{void_trigger_short}。这几项分别判断，不以空亡替代月破。"
+    },
+    {
+      "id": "13_patient",
+      "title": "患者实际用神及其生克",
+      "format": "患者为{relationship_label}，本盘按{consultation_label}采用{patient_role_name}，所在{patient_palace}，{patient_role_meaning}。其宫星、门、神、干为{patient_contents}，门神含义为{patient_door_deity_meaning}，与天芮病宫的方向关系为{patient_illness_relation}；传统患者状态为{patient_condition_signal}。{patient_extra_palace_note}。"
+    },
+    {
+      "id": "14_doctor",
+      "title": "天心星：医生治疗象",
+      "format": "天心星主医药、医者、治理，落{doctor_palace}，本宫{doctor_contents}。其五行对天芮宫的有向关系为{doctor_relation}，代表{doctor_relation_meaning}；本宫门、神分别主{doctor_door_meaning}、{doctor_deity_meaning}。本项传统医药象判断为{doctor_signal}。"
+    },
+    {
+      "id": "15_medicine",
+      "title": "乙奇：医药辅助象",
+      "format": "乙奇主药物、医药辅助，落{yi_palace}，同宫{yi_contents}。乙奇所在宫对天芮所在宫为{yi_relation}，代表{yi_relation_meaning}。再看同宫门主{yi_door_meaning}、神主{yi_deity_meaning}，本项传统医药象为{yi_signal}，不把乙奇固定等同某种现代医学流派。"
+    },
+    {
+      "id": "16_disease_interaction",
+      "title": "时干与疾病事体",
+      "format": "时干为{event_stem}，属{event_stem_element}，主{event_stem_meaning}，落{event_palace}，本宫{event_contents}。其所在宫与天芮病宫形成{event_relation}，传统事体关系为{event_relation_meaning}。时干是问事辅助用神，与患者人物用神分别记录；符合原书事件取用时才并入主要证据。"
+    },
+    {
+      "id": "17_hard_factors",
+      "title": "刑、冲、破、墓、迫逐项断",
+      "format": "根据本盘逐项核算：{hard_factor_summary_zh}。六仪击刑主刑伤阻滞，入墓主收藏受困，地支冲刑害主冲动牵制，门迫主门克宫，月日破主冲破原有气势；每项是否真正落到病星或患者宫，按{hard_target_effect}分析。没有算出的条件不按凶格增加。"
+    },
+    {
+      "id": "18_movement",
+      "title": "伏吟反吟、内外盘与动静",
+      "format": "本盘动静相关项目为{movement_factor_summary_zh}。伏吟主重复、滞留，反吟主变化、反复，驿马主动，空亡填冲应等待实际支干触发；内外盘判断为{inner_outer_meaning}。病星与患者两宫若出现相反动静象，按{motion_conflict_meaning}说明，不将近快等同实际医疗时长。"
+    },
+    {
+      "id": "19_counter",
+      "title": "吉凶证据、反证与优先级",
+      "format": "本盘已经成立的传统不利证据为{adverse_evidence_zh}；有利证据为{positive_evidence_zh}；相互冲突之处为{counter_evidence_zh}。依据古籍，优先核对患者用神、天芮病星、医药宫及同宫复合条件，再看一般吉门吉神；本盘传统象意综合倾向{evidence_status}。未具来源或缺算的因素为{missing_factors_zh}，不与已触发条件简单计票。"
+    },
+    {
+      "id": "20_timing",
+      "title": "应期：事件和时间条件",
+      "format": "本盘与时间有关的事实为{timing_conditions_zh}。依据古籍，病情问事须把患者用神、疾病、动静、空亡、冲合墓库及所问时间目标联合核对。实际可成立的传统应期窗口为{timing_result_zh}；没有触发条件时不捏造痊愈日期，也不把古籍中的应死日写成现实预测。"
+    },
+    {
+      "id": "21_summary",
+      "title": "最终完整断词",
+      "format": "依据古籍，此次为{relationship_label}测病，主病星天芮落{illness_palace}，传统部位象意为{body_summary_short}；其月令状态{illness_star_stage}，天地盘干{stem_pair_short}，上乘{illness_deity}、临{illness_door}。患者取{patient_role_name}，与病宫为{patient_illness_relation}；天心对病宫{doctor_relation}，乙奇对病宫{yi_relation}。支持及不利证据合参后，传统盘象{traditional_summary_v20}；{timing_result_zh}。该段仅是古籍术数象意，不是医学确诊、病情分级或疗效判断。"
+    }
+  ],
+  "text_style": {
+    "source_display": "依据古籍",
+    "mandatory_all_sections": true,
+    "meaning_after_every_symbol": true,
+    "all_slots_must_resolve": true,
+    "no_other_book_names": true,
+    "no_examples_or_meta_instruction_in_user_reading": true,
+    "no_clinical_diagnosis": true
+  },
+  "parent_schema": "wengua_health_severity_dynamic_template_v1",
+  "provenance": [
+    {
+      "book_id": "shenqi",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "lines": [
+        3,
+        11,
+        67,
+        105,
+        145,
+        192
+      ]
+    },
+    {
+      "book_id": "kaiwu",
+      "source_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+      "lines": [
+        25,
+        27,
+        29,
+        39,
+        41,
+        43,
+        85,
+        87,
+        89,
+        185,
+        187,
+        191,
+        195
+      ]
+    }
+  ]
+}

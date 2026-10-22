@@ -767,3 +767,8 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 **下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
 
 后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。
+
+
+## 2026-10-21 — 健康V2.0 分人分问事动态断辞（等待本轮CI实测）
+
+用户批准21段完整断词样稿，本轮不覆盖已封存V1.9，而是增加真实情境/关系角色路由：14种人际身份+direct_self/direct_proxy/event_news，朋友按事件闻讯与现场代测不同，父乾母坤、孩子晚辈候选结合年龄性别排行选辅助宫，年命可选无则不查。每一字段用盘值+简短象意+问事结论，21段不可缩写。新五问事模板 severity21/treatment12/discharge12/surgery10/travel_for_treatment11，共66段且方法分别写。新源码 src/wengua/health_dynamic_v20.py、新模板 data/knowledge/phrase_library/health_v20、新独立测试和append-only sqlite3.backup builder，迁移048，Action build_health_v20.yml。全24因子仍按实算未算区分，严重程度传统象不当医学诊断。父V1.9 SHA b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f，旧194事件/43节和所有错断留存。当前状态：**提交后须查真实CI+归档，未核验前不是已验收版**。详情 docs/HEALTH_DYNAMIC_FIVE_INTENTS_V2_0.md。

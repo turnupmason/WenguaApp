@@ -145,3 +145,8 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 **下一轮唯一完整父库** archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3，14,714,880字节，SHA256 **b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f**；同名.sqlite3.xz 1,169,532字节 SHA256 bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40；manifest archives/sqlite/shenqi21_kaiwu22_health_severity_dynamic_v19_manifest.json。父V1.8 SHA fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536 所有旧表原行保存，数据库 integrity_check=ok，外键错误0。计数 sections=43,cases=194,health_severity_v19_protocol=1,health_severity_v19_template_sections=21,health_severity_v19_archive_audit=1,marriage_v17_book_conditional_rules=27,marriage_v18_optional_year_scene_methods=22；V1.6两次错断继续保留。正式可批准实际医学预测0，真实疾病病情严重程度推断不可由古籍盘象证实。
 
 后续疾病领域其他子问事都必须**基于这一版V1.9完整父库增量**，不得回退到婚姻V1.8或重新建空数据库。UI冻结，其他疾病子领域尚未开发。若还修改此模板，发布新迁移/新档案版本，不要覆写 V1.9。
+
+
+## 2026-10-21 健康V2.0 多问事与人际角色绑定
+
+21段「病情严重程度」详细模板由用户确认；必须填各星门神干代表意思、天地干病象、落宫内外身体对应、医药患者有向生克及条件化古籍综合，不可随意缩成一两句；对外只说“依据古籍”。朋友闻讯事件日干与朋友直接托测同辈月干候选不相同；自测、父母、孩子、侄辈、配偶亦不同。真实年龄性别排行由用户输入；无年命继续判断且不乱绑定个人宫。V2.0新增5具体健康问事及66段，文件 data/knowledge/phrase_library/health_v20/，执行 src/wengua/health_dynamic_v20.py，数据库迁移048，完整运行单测后归档。用户尚未批准其它病种模板，未来逐问题扩展，不能假称覆盖所有人体疾病方向。

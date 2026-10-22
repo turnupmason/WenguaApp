@@ -1,0 +1,260 @@
+{
+  "schema": "wengua_health_other_intent_templates_v20",
+  "domain": "health",
+  "preserve_original_intent": true,
+  "descriptions": {
+    "treatment": {
+      "title": "治疗是否有利",
+      "special_method": "核对治疗方法传统象意而不是判医学疗效",
+      "source": "kaiwu.health lines 27/115/141/187 and shenqi.health line 11",
+      "sections": [
+        {
+          "id": "01_subject",
+          "title": "患者关系与问事",
+          "format": "此次为{relationship_label}询问治疗是否有利，属于{consultation_label}。患者取{patient_role_name}落{patient_palace}；天芮主病、天心和乙奇主医药，治疗为本次目标。"
+        },
+        {
+          "id": "02_disease",
+          "title": "病星与病宫",
+          "format": "天芮落{illness_palace}，临{illness_door}、乘{illness_deity}，天盘{illness_stem}加地盘{illness_earth_stem}，月令为{illness_star_stage}，病象主{body_summary_short}。"
+        },
+        {
+          "id": "03_doctor",
+          "title": "医生天心",
+          "format": "天心主医者医药，落{doctor_palace}，{doctor_contents}，其宫{doctor_relation}病宫；{doctor_relation_meaning}，传统象意{doctor_signal}。"
+        },
+        {
+          "id": "04_medicine",
+          "title": "药物乙奇",
+          "format": "乙奇主医药，落{yi_palace}，{yi_contents}，其宫{yi_relation}病宫；{yi_relation_meaning}，传统象意{yi_signal}。"
+        },
+        {
+          "id": "05_medical_door",
+          "title": "开门与治疗路径",
+          "format": "开门主开通，也可用于手术和治疗手段的辅助象，落{open_door_palace}，同宫{open_door_contents}，对病宫为{open_door_relation}；此项说明{open_door_signal}。"
+        },
+        {
+          "id": "06_patient",
+          "title": "患者承受",
+          "format": "患者取{patient_role_name}，所在{patient_palace}，其宫{patient_illness_relation}病宫；是否逢空及本宫门神为{patient_condition_signal}。"
+        },
+        {
+          "id": "07_deity",
+          "title": "医药相关门神",
+          "format": "天心宫门主{doctor_door_meaning}，神主{doctor_deity_meaning}；乙奇宫门主{yi_door_meaning}，神主{yi_deity_meaning}。"
+        },
+        {
+          "id": "08_season",
+          "title": "病与医药旺衰",
+          "format": "天芮为{illness_star_stage}，病宫月令强弱{illness_strength_conclusion}，治疗宫的生克不与月令互相取代。"
+        },
+        {
+          "id": "09_formation",
+          "title": "相关格局",
+          "format": "天芮宫格局{stem_pair_short}，其含义{stem_pair_meaning_short}。其他同宫复合条件{formation_matches_short}。"
+        },
+        {
+          "id": "10_movement",
+          "title": "反复与阻力",
+          "format": "与治疗过程相关的伏吟、反吟、旬空、刑破和门迫核查：{movement_factor_summary_zh}；未知项不视为发生。"
+        },
+        {
+          "id": "11_conflict",
+          "title": "治疗象吉凶合参",
+          "format": "医药支持象为{positive_evidence_zh}，不利象为{adverse_evidence_zh}。患者与病宫、医生与病宫、乙奇与病宫有冲突时，优先核对真实的有向关系。"
+        },
+        {
+          "id": "12_result",
+          "title": "传统治疗象总结",
+          "format": "依据古籍，本盘传统医药象倾向{treatment_result}；实际疗效无法由盘面确定，不据此决定是否接受治疗或停药。"
+        }
+      ]
+    },
+    "discharge": {
+      "title": "出院与恢复时间",
+      "special_method": "出院是明确事件，先判出院条件，再看时干旬空冲合，不能与病重模板共用结论",
+      "source": "shenqi.health lines 145-154 and kaiwu.health lines 31/41",
+      "sections": [
+        {
+          "id": "01_subject",
+          "title": "问事与目标",
+          "format": "为{relationship_label}测何时可以出院或恢复，起盘情境{consultation_label}。患者采用{patient_role_name}，位于{patient_palace}。"
+        },
+        {
+          "id": "02_illness",
+          "title": "病星状态",
+          "format": "天芮落{illness_palace}，主疾病，临{illness_door}、乘{illness_deity}，月令{illness_star_stage}，反映传统病象。"
+        },
+        {
+          "id": "03_patient",
+          "title": "患者能否脱困",
+          "format": "患者用神{patient_role_name}所在{patient_palace}，{patient_illness_relation}病宫，宫内{patient_contents}。此项传统象为{patient_condition_signal}。"
+        },
+        {
+          "id": "04_yi",
+          "title": "乙奇医药",
+          "format": "乙奇落{yi_palace}，与病宫{yi_relation}，传统医药象{yi_signal}。"
+        },
+        {
+          "id": "05_tianxin",
+          "title": "天心医者",
+          "format": "天心落{doctor_palace}，与病宫{doctor_relation}，传统医药象{doctor_signal}。"
+        },
+        {
+          "id": "06_hour",
+          "title": "时干与出院目标",
+          "format": "时干{event_stem}落{event_palace}，{event_relation}病宫，出院属于事件应期，不能把时干当作患者出生年命。"
+        },
+        {
+          "id": "07_void",
+          "title": "旬空与填实",
+          "format": "本局旬首{hour_xun}，空亡{void_branches}。患者宫{patient_void}，病宫{illness_void}；填实或逢冲触发为{void_trigger_short}。"
+        },
+        {
+          "id": "08_palace",
+          "title": "门迫刑墓",
+          "format": "患者和病宫所涉门迫、六仪击刑、入墓、月破、支冲等：{hard_factor_summary_zh}。"
+        },
+        {
+          "id": "09_movement",
+          "title": "伏吟与反吟",
+          "format": "动静依据为{movement_factor_summary_zh}，伏吟主滞、反吟主动与变，不能据字面直接写日期。"
+        },
+        {
+          "id": "10_timing",
+          "title": "应期触发",
+          "format": "依据古籍，出院时间先看患者是否可离病困，再按空亡填实、逢冲、墓库、内外盘及应期法；现在触发{timing_conditions_zh}。"
+        },
+        {
+          "id": "11_window",
+          "title": "实际历法窗口",
+          "format": "当前可确定的传统时间窗口：{timing_result_zh}。时间转换必须有合法实际日期、时区及节气，不能虚构月日。"
+        },
+        {
+          "id": "12_result",
+          "title": "出院问事结论",
+          "format": "依据古籍，本盘出院问事传统象为{discharge_result}。出院与恢复是不同目标；现实是否出院须由医疗团队评估。"
+        }
+      ]
+    },
+    "surgery": {
+      "title": "手术必要性传统象",
+      "special_method": "仅古籍开门等手术象，不作真正是否手术的医疗建议",
+      "source": "kaiwu.health lines 185/191/197 and shenqi.health first case",
+      "sections": [
+        {
+          "id": "01_subject",
+          "title": "求测患者",
+          "format": "此次为{relationship_label}问手术相关事情，患者取{patient_role_name}，落{patient_palace}。"
+        },
+        {
+          "id": "02_open",
+          "title": "开门手术象",
+          "format": "开门在古籍手术问事中代表手术，落{open_door_palace}，本宫{open_door_contents}，对病宫{open_door_relation}，其传统意义{open_door_signal}。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮与手术对象",
+          "format": "天芮落{illness_palace}，传统病位主{body_summary_short}，临{illness_door}、乘{illness_deity}。"
+        },
+        {
+          "id": "04_pair",
+          "title": "病宫格局",
+          "format": "天盘{illness_stem}加地盘{illness_earth_stem}，格局{stem_pair_short}，传统含义{stem_pair_meaning_short}。"
+        },
+        {
+          "id": "05_doctor",
+          "title": "天心医生象",
+          "format": "天心星落{doctor_palace}，对病宫{doctor_relation}，传统医者象{doctor_signal}。"
+        },
+        {
+          "id": "06_yi",
+          "title": "乙奇医药象",
+          "format": "乙奇落{yi_palace}，对病宫{yi_relation}，传统药物象{yi_signal}。"
+        },
+        {
+          "id": "07_patient",
+          "title": "患者用神",
+          "format": "患者{patient_role_name}在{patient_palace}，与病宫{patient_illness_relation}，宫内{patient_contents}。"
+        },
+        {
+          "id": "08_motion",
+          "title": "开门动静",
+          "format": "伏吟、反吟、门迫、入墓、旬空等手术象相关审计：{movement_factor_summary_zh}。"
+        },
+        {
+          "id": "09_conflict",
+          "title": "反证审计",
+          "format": "手术象与其他治疗象支持为{positive_evidence_zh}，阻力为{adverse_evidence_zh}；这些是古籍象意而非手术适应证。"
+        },
+        {
+          "id": "10_result",
+          "title": "手术问事总结",
+          "format": "依据古籍，本盘开门传统手术象为{surgery_result}。任何手术必要性与风险收益须由具资质医生评估，不能按盘决定。"
+        }
+      ]
+    },
+    "travel_for_treatment": {
+      "title": "异地求医出行",
+      "special_method": "出行方向与医药、患者用神三层比较，不能用原病重结论替代出行成功判断",
+      "source": "shenqi.health 1997-12-27 spouse travel for treatment and travel chapter",
+      "sections": [
+        {
+          "id": "01_subject",
+          "title": "出行目标与主体",
+          "format": "此次为{relationship_label}测异地求医出行，患者取{patient_role_name}，{patient_palace}；问事是出行而非病情轻重。"
+        },
+        {
+          "id": "02_illness",
+          "title": "原病星",
+          "format": "天芮落{illness_palace}，主疾病，相关传统部位象{body_summary_short}。"
+        },
+        {
+          "id": "03_patient",
+          "title": "患者用神",
+          "format": "患者宫{patient_palace}，与病宫为{patient_illness_relation}，宫内{patient_contents}。"
+        },
+        {
+          "id": "04_doctor",
+          "title": "异地求医医者",
+          "format": "天心在{doctor_palace}，对病宫{doctor_relation}，代表传统医者力量{doctor_signal}。"
+        },
+        {
+          "id": "05_medicine",
+          "title": "乙奇",
+          "format": "乙奇在{yi_palace}，对病宫{yi_relation}，代表医药象{yi_signal}。"
+        },
+        {
+          "id": "06_open",
+          "title": "开门行路与就医",
+          "format": "开门在{open_door_palace}，对病宫{open_door_relation}，盘面{open_door_contents}。"
+        },
+        {
+          "id": "07_hour",
+          "title": "时干所问出行",
+          "format": "时干{event_stem}落{event_palace}，与病宫{event_relation}。"
+        },
+        {
+          "id": "08_motion",
+          "title": "动静出行条件",
+          "format": "驿马、内外盘、伏吟反吟、空亡、门迫及冲合条件为{movement_factor_summary_zh}。"
+        },
+        {
+          "id": "09_direction",
+          "title": "出行方向",
+          "format": "本盘的方向信息需由实际选定目的地与宫位映射核实；本次方向条件为{travel_direction_status}。"
+        },
+        {
+          "id": "10_conflict",
+          "title": "出行与病象冲突",
+          "format": "传统有利因素{positive_evidence_zh}；不利因素{adverse_evidence_zh}，不把疾病轻重直接替代出行判断。"
+        },
+        {
+          "id": "11_result",
+          "title": "异地求医问事结论",
+          "format": "依据古籍，本盘出行求医传统象{travel_result}；实际转院、就医地点与交通安排以医疗建议和现实条件决定。"
+        }
+      ]
+    }
+  }
+}
