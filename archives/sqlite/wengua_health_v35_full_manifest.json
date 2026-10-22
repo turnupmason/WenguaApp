@@ -1,0 +1,22 @@
+{
+  "schema": "wengua_v35_194_source_12_patients_priority_complete_archive",
+  "sqlite_sha256": "35940c872435cb3017710557b83bc8600fcff436e35510212b33b3f202ae2b9a",
+  "sqlite_bytes": 15020032,
+  "xz_sha256": "d0ad78377fa8355b71127dadca74a0f3770172671ca3053d15910247df03ff74",
+  "exact_v34_parent_sha256": "9008f8803a6a2f95352b5d8bc62c332cba371c8cfdcad0473462c16f7e249bf4",
+  "sealed_12_case_sha256": "b9627993931fe4ddb5218a58354aeeb8308a5bc1623746632a565d16b52cee60",
+  "book_case_families": 194,
+  "source_sections": 43,
+  "historical_illness_cases": 12,
+  "cases_rendered": 12,
+  "cases_blocked": 0,
+  "previous_failed_developer_forecasts_preserved": 2,
+  "previous_v31_v33_v34_sealed_readouts_unchanged": true,
+  "all_42_pairs_and_17_composites_audited_tristate": true,
+  "incomplete_source_rules_not_falsely_claimed_complete": true,
+  "author_book_outcomes_not_used": true,
+  "medical_forecast_validated": false,
+  "other_four_health_intents_unapproved": true,
+  "user_review": "pending",
+  "ui_not_yet_built": true
+}
