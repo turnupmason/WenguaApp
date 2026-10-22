@@ -30,3 +30,20 @@ jobs:
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
         run: |
           swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
+  real_ios_xcode_build:
+    runs-on: macos-15
+    needs: native_core
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen and generate real iOS Xcode project
+        run: |
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+          cd ios/WenguaAppUI
+          xcodegen generate --spec project.yml
+      - name: Build real SwiftUI app and Foundation offline casting core for iOS simulator
+        run: |
+          xcodebuild -project ios/WenguaAppUI/WenguaApp.xcodeproj \
+            -scheme WenguaApp -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath /tmp/wengua-ios-derived \
+            CODE_SIGNING_ALLOWED=NO build
