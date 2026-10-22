@@ -1,0 +1,73 @@
+name: V27 Seal Two Historical Health Readings
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v27.py'
+      - 'scripts/run_two_historical_health_v27.py'
+      - 'tests/test_health_severity_five_not_encounter_v27.py'
+      - 'scripts/build_health_v27_full_archive.py'
+      - '.github/workflows/build_health_severity_v27.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  seal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test two actual historical inputs and medical-style traditional output
+        run: python -m unittest discover -s tests -p test_health_severity_five_not_encounter_v27.py -v
+      - name: Preserve older database and create exact full V27 with sealed readouts
+        run: |
+          if [ ! -f 'archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3' ]; then
+            python -m scripts.build_health_v27_full_archive --base 'archives/sqlite/WenguaApp_双书194案例_庚申时本人病情精简模板纠错V2_6_完整研究库.sqlite3' --output 'archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3' --index-dir 'data/knowledge/phrase_library/health_v27/archive_index' --sealed-predictions 'data/evaluation/health_v27/two_historical_predictions_SEALED.json'
+          fi
+      - name: Check SQLite and immutable sealed predictions
+        run: |
+          python - <<'PY'
+          import sqlite3,json,hashlib
+          from pathlib import Path
+          p=Path('archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3')
+          r=json.loads(Path('data/evaluation/health_v27/two_historical_predictions_SEALED.json').read_text('utf8'))
+          assert len(r['predictions'])==2 and not r['original_book_outcomes_appended']
+          with sqlite3.connect(p) as c:
+            assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert c.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+            assert c.execute('SELECT COUNT(*) FROM health_v27_sealed_historical_predictions').fetchone()[0]==2
+          for a in r['predictions']:
+            assert hashlib.sha256(a['readout_text'].encode('utf8')).hexdigest()==a['readout_sha256']
+          print('FULL_V27_SHA256='+hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Compress full source SQLite and save independent checksums
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3')
+          arc=Path(str(db)+'.xz')
+          if not arc.exists(): arc.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          sh=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          sealed=Path('data/evaluation/health_v27/two_historical_predictions_SEALED.json')
+          receipt={'version':'V2.7','full_sqlite':str(db),'sha256':sh(db),
+                   'xz_sha256':sh(arc),'sealed_pred_sha256':sh(sealed),
+                   'cases':194,'source_sections':43,'user_review':'pending',
+                   'old_archives_preserved':True,'source_outcomes_not_used':True}
+          Path('archives/sqlite/shenqi21_kaiwu22_health_five_not_gender_v27_manifest.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(receipt,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit new append-only full original SQLite and sealed predictions
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f 'archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3'
+          git add 'data/knowledge/phrase_library/health_v27/archive_index/manifest.json' 'data/evaluation/health_v27/two_historical_predictions_SEALED.json' 'archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3.xz' 'archives/sqlite/shenqi21_kaiwu22_health_five_not_gender_v27_manifest.json'
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive immutable full 194-case V2.7 and 2 sealed actual historical health readings'
+            git push origin HEAD:main
+          fi
