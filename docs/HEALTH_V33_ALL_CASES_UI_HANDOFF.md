@@ -43,3 +43,6 @@ GitHub 机器人实有 `e932c728fe41070b4b30e1ca6114f55ec282a613`；**最新全�
 新版本11固定段的**知识输入版本**在 `data/knowledge/phrase_library/health_v33/severity_fixed_template.json`，每段已带用户新方法的关联主题与执行状态；**它尚未替换 V3.1 正式渲染器，也不代表42+17方法条件全部编程实现**。如果新窗口用户要求审核/提高覆盖，依据此文件和 `health_v33/user_disease_supplement_template_coverage.json` 在独立新版本修复。V3.1 已封存内容不可事后修改。已记录一个文字缺陷：部分输出把仅涉及单一性别辅助宫概括为“乾坤辅助宫”，新版本应修复后重新封存，不得暗中改老 SHA。
 
 在当前检查时，Github Actions #39800888802 的 archive job SUCCESS 并机器人实际提交；但该工作流整体check matrix的 API 状态仍显示 queued，不能虚称全工作流矩阵已完成。源代码提交 ed002a3 对应普通 WenguaApp CI #39800889299 SUCCESS。下一对话必须重新核对新 HEAD CI 状态再动工。
+
+## 最终 CI 全绿（替代前面API排队中状态）
+`https://github.com/turnupmason/WenguaApp/actions/runs/39800888802` 已核实全部三项 job SUCCESS：check Python 3.11、check Python 3.12、archive。可读的8份 V3.1 原样全断词、4份严谨阻断目录：`docs/HEALTH_V33_ALL_12_CASES_VERBATIM_READOUTS.md`。原始结构化封存：`data/evaluation/health_v33/all_historical_health_V31_READOUTS_SEALED.json`。下一对话先以这些原样结果供用户核对，允许开始讨论用户明确要求的UI，但绝不擅称八份专业已通过。未来数据库准确接 V3.3 SHA256 `abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5`。
