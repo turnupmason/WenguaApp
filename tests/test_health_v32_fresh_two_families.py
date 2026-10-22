@@ -30,6 +30,12 @@ class SourceFamilyV32HistoricalCheck(unittest.TestCase):
         self.assertEqual(q["value_door"],"死门")
         self.assertEqual(q["value_door_palace"],2)
         self.assertTrue(fuyin_fanyin_facts(q)["both_fuyin"])
+        from src.wengua.health_severity_template import _find_heaven_stem
+        # This is 甲申 itself: the hour event is hidden under 六仪庚,
+        # carried by 天禽 at 坤2, never a manufactured 天盘甲.
+        self.assertEqual(q["hidden_stem"],"庚")
+        self.assertEqual(_find_heaven_stem(q,"甲")["palace"],2)
+        self.assertEqual(_find_heaven_stem(q,"庚")["palace"],2)
         # Previously blocked unknown NONZERO centre routes stay blocked.
         with self.assertRaisesRegex(ValueError,"centre 5"):
             layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")

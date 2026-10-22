@@ -80,6 +80,16 @@ def _find_star(chart, name):
 
 
 def _find_heaven_stem(chart, stem):
+    # 甲旬首时六甲遁于六仪，天盘没有普通的“甲”携干。
+    # Only resolve an actual 甲-HOUR to its internally verified 旬首遁干;
+    # other 甲 uses are not implicitly converted into a patient stem.
+    if stem == "甲" and chart.get("hour_ganzhi", "")[:1] == "甲":
+        from .casting_shenqi import SIX_JIA
+        xun = chart.get("xun_shou")
+        hidden = SIX_JIA.get(xun)
+        if not hidden or hidden != chart.get("hidden_stem"):
+            raise ValueError("Actual Jia-hour hidden stem contradicts the xun head")
+        stem = hidden
     hits = [(c, s) for c in chart["palaces"].values()
             for s in c["heaven_stars"] if s["carried_stem"] == stem]
     return hits[0][0] if len(hits) == 1 else None

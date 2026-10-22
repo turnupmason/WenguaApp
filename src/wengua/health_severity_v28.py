@@ -108,7 +108,8 @@ def analyze_health_severity_v28(*,chart,inquiry,calendar=None,db_path=None):
     patient=bind_patient(chart,inquiry,calendar)["main_cell"]
     roles=[("illness",ill,None),("patient",patient,None),
            ("doctor",doctor,None),("medicine",medicine,["乙"]),
-           ("event",event,[chart["hour_ganzhi"][0]])]
+           ("event",event,[chart["hidden_stem"] if chart["hour_ganzhi"][0]=="甲"
+                                   else chart["hour_ganzhi"][0]])]
     sex=previous["audit"]["real_patient_sex"]
     if sex:
         aux=chart["palaces"]["6" if sex=="male" else "2"]
