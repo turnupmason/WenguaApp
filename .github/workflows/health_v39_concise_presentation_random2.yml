@@ -26,8 +26,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Genuine source-stem tomb/extinction, hour void and 3 clean Chinese replays
         run: |
-          python -m unittest discover -s tests -p test_health_v39_user_noon_random2_customer.py -v
-          python -m scripts.replay_health_v39_user_and_two_seeded_cases
+          python -m unittest discover -s tests -p test_health_v39_concise_three_cases.py -v
+          python -m scripts.replay_health_v39_fixed_cases
   archive:
     needs: regression
     if: github.repository == 'turnupmason/WenguaApp'
@@ -47,7 +47,7 @@ jobs:
           from pathlib import Path
           old=Path('archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3')
           assert hashlib.sha256(old.read_bytes()).hexdigest()=='f101804acdaa839b89cb1dd2eee5e6391fb3e28f390ffad225b9f6db34f2838e'
-          db=Path('archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3')
+          db=Path('archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3')
           seal=Path('data/evaluation/health_v39/user_noon_two_seeded_book_families_V39_SEALED.json')
           report=Path('docs/HEALTH_V39_THREE_CUSTOMER_READINGS.md')
           meta=Path('archives/sqlite/wengua_health_v39_full_manifest.json')
@@ -59,7 +59,7 @@ jobs:
           else:
             assert not any(x.exists() for x in (seal,report,meta)), 'Never overwrite half-written archive'
           PY
-          if [ -f 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3' ]; then
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3' ]; then
             echo 'exists=true' >> "$GITHUB_OUTPUT"
           else
             echo 'exists=false' >> "$GITHUB_OUTPUT"
@@ -69,7 +69,7 @@ jobs:
         run: |
           python -m scripts.build_health_v39_full_archive \
             --parent 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3' \
-            --output 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3' \
             --seal 'data/evaluation/health_v39/user_noon_two_seeded_book_families_V39_SEALED.json' \
             --manifest 'archives/sqlite/wengua_health_v39_full_manifest.json' \
             --readout 'docs/HEALTH_V39_THREE_CUSTOMER_READINGS.md'
@@ -79,7 +79,7 @@ jobs:
           python - <<'PY'
           import hashlib,json,lzma,re,sqlite3
           from pathlib import Path
-          f=Path('archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3')
+          f=Path('archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3')
           seal=Path('data/evaluation/health_v39/user_noon_two_seeded_book_families_V39_SEALED.json')
           doc=Path('docs/HEALTH_V39_THREE_CUSTOMER_READINGS.md')
           info=json.loads(Path('archives/sqlite/wengua_health_v39_full_manifest.json').read_text('utf8'))
@@ -122,8 +122,8 @@ jobs:
           name: WenguaApp-V39-Full194-Three-Unapproved-Readings
           retention-days: 30
           path: |
-            archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3
-            archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3.xz
+            archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3.xz
             archives/sqlite/wengua_health_v39_full_manifest.json
             data/evaluation/health_v39/user_noon_two_seeded_book_families_V39_SEALED.json
             docs/HEALTH_V39_THREE_CUSTOMER_READINGS.md
@@ -132,9 +132,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3'
           git add -- \
-            'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3.xz' \
+            'archives/sqlite/WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3.xz' \
             'archives/sqlite/wengua_health_v39_full_manifest.json' \
             'data/evaluation/health_v39/user_noon_two_seeded_book_families_V39_SEALED.json' \
             'docs/HEALTH_V39_THREE_CUSTOMER_READINGS.md'
