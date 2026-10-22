@@ -1,0 +1,32 @@
+{
+  "schema": "wengua_v27_194_case_11_section_five_not_gender_2_sealed_trials",
+  "parent_full_sha256": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+  "new_full_sha256": "2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7",
+  "original_194_events": 194,
+  "original_43_chapters": 43,
+  "original_failed_case_examples": 2,
+  "old21_health_source_sections_kept": true,
+  "previous_all_rows_bytewise": true,
+  "gender_qian_kun_added": true,
+  "five_not_encounter_added": true,
+  "predictions_sealed_before_book_outcome_comparison": true,
+  "actual_truly_unseen_blind_test": false,
+  "traditional_verdict_not_medical_prognosis": true,
+  "runtime_GPT_or_network_calls": 0,
+  "other_four_health_subdomains": "unapproved",
+  "user_acceptance": "pending",
+  "prediction_readout_sha256s": {
+    "shenqi.health.19961102.on_site_health": "a33eef7840def5a50368e6f81871553519663a1b1ceaaf1d4ac278f19d0ee8ff",
+    "shenqi.health.19960523.aunt_illness": "9e875b960235f00724214db7dadcb32c174d90f00438da9e54e96e50b8e388c2"
+  },
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "health_v22_customer_severity_sections": 21,
+    "health_v26_strict_customer_template": 11,
+    "health_v27_fixed_customer_sections": 11,
+    "health_v27_conditional_rule_registry": 3,
+    "health_v27_sealed_historical_predictions": 2,
+    "health_v27_acceptance_history": 1
+  }
+}

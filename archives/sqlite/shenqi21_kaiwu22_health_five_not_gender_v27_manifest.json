@@ -1,0 +1,12 @@
+{
+  "version": "V2.7",
+  "full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3",
+  "sha256": "2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7",
+  "xz_sha256": "abc023f9e3eed1282f3b557219ccb95a778721d2280ffdad44325d94223dee7f",
+  "sealed_pred_sha256": "58b867db65cbbeffd03fb0644964d886b95bb94125b6ae4c730016becd959828",
+  "cases": 194,
+  "source_sections": 43,
+  "user_review": "pending",
+  "old_archives_preserved": true,
+  "source_outcomes_not_used": true
+}

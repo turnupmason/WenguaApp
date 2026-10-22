@@ -1,0 +1,538 @@
+{
+  "schema": "wengua_v27_two_historical_case_sealed_readouts",
+  "selection_seed": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+  "selection_algorithm": "FNV1a32_from_exact_parent_full_sqlite_sha",
+  "candidate_pool": [
+    "shenqi.health.19960727.father_illness",
+    "shenqi.health.19960523.aunt_illness",
+    "shenqi.health.19961102.on_site_health",
+    "kaiwu.health.19960923.nasal_cancer",
+    "kaiwu.health.19950219.brother_paralysis",
+    "kaiwu.health.19991020.wang_craniotomy"
+  ],
+  "selection_ranks": {
+    "shenqi.health.19960727.father_illness": 3998141268,
+    "shenqi.health.19960523.aunt_illness": 2092425828,
+    "shenqi.health.19961102.on_site_health": 174095103,
+    "kaiwu.health.19960923.nasal_cancer": 4007855660,
+    "kaiwu.health.19950219.brother_paralysis": 2717941186,
+    "kaiwu.health.19991020.wang_craniotomy": 3506086799
+  },
+  "selected_ids": [
+    "shenqi.health.19961102.on_site_health",
+    "shenqi.health.19960523.aunt_illness"
+  ],
+  "training_and_review_note": "These historical families are in the source library; this run did not retrieve their endings; retrospective review only, not untouched secret blind testing.",
+  "predictions": [
+    {
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "case_title": "研讨班现场本人问病",
+      "question_known_before_outcome": "本人当面问身体情况（书中问事已知）",
+      "civil_clock_anchor": "1996-11-02T16:00:00+08:00",
+      "year_ganzhi": "丙子",
+      "month_ganzhi": "戊戌",
+      "day_ganzhi": "癸卯",
+      "hour_ganzhi": "庚申",
+      "book_source_bureau": {
+        "dun": "yin",
+        "ju": 8
+      },
+      "patient_sex": null,
+      "book_metadata_only_used": true,
+      "original_pred_and_feedback_read": false,
+      "role": {
+        "relationship": "self",
+        "label": "本人",
+        "context": "direct_self",
+        "consultation_label": "本人当面问自身疾病",
+        "role_name": "日干癸",
+        "role_via": "day_stem",
+        "stem": "癸",
+        "birth_note": "患者年命未提供，本次不使用年命",
+        "source_rule": "shenqi.health line 67",
+        "confidence": "source_case_specific",
+        "status": "matched_source_condition",
+        "note": "本人测病以日干为人，天芮为病，天心乙奇为医药",
+        "extra_meaning": "无额外固定人物宫"
+      },
+      "five_not_encounter": {
+        "triggered": false,
+        "hour_stem": "庚",
+        "day_stem": "癸",
+        "hour_element": "金",
+        "day_element": "水",
+        "same_yin_yang": false,
+        "hour_controls_day": false,
+        "rule": "hour_controls_day_same_polarity",
+        "source": {
+          "book": "kaiwu",
+          "chapter": "analysis_judgment_ch04",
+          "lines": [
+            580,
+            590
+          ]
+        },
+        "effect": "不成五不遇时"
+      },
+      "gender_auxiliary_palace": null,
+      "traditional_verdict": "病凶",
+      "readout_sections": [
+        {
+          "id": "01_role",
+          "title": "问事取用",
+          "text": "依据古籍，此次为本人测病情轻重。本人以日干癸为用神落乾六宫，天芮主病。"
+        },
+        {
+          "id": "02_far",
+          "title": "值符值使",
+          "text": "值符天冲星在乾六宫，值使伤门在乾六宫。值符宫金克病宫木，病宫受制，值符宫克病宫，偏吉。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮病宫",
+          "text": "天芮与天禽星同落震三宫，临死门、乘玄武，天盘丁加地盘癸。木克天芮土，病星受制，偏吉。死门主闭塞、病困、停滞，偏凶；玄武主隐情、反复、暗昧，作辅助判断。丁加癸，地盘水克天盘火。人体传统取象为左肋、左腰、足、肝、胆、左肺。"
+        },
+        {
+          "id": "04_season",
+          "title": "病星月令",
+          "text": "戌月天芮相，病星有气，偏不利。"
+        },
+        {
+          "id": "05_patient",
+          "title": "患者用神宫",
+          "text": "乾六宫临天冲星、伤门、值符。患者宫金克病宫木，病宫受制，偏吉，患者制病。患者宫不空，有利于用神发挥。"
+        },
+        {
+          "id": "07_medicine",
+          "title": "医生医药",
+          "text": "天心在离九宫，乙奇在艮八宫。病宫木生天心宫火，天心宫受生，受生但未制病，不能单定疗效；病宫木克乙奇宫土，乙奇宫受制，偏凶，医药受病宫克制。"
+        },
+        {
+          "id": "08_hour",
+          "title": "时干事体",
+          "text": "时干庚落离九宫。病宫木生时干宫火，时干宫受生，事体宫受病宫生，需合参，非单凭此断愈。"
+        },
+        {
+          "id": "09_hazards",
+          "title": "特殊凶吉格局",
+          "text": "时干庚未对日干癸构成同性相克，不属五不遇时。病宫和患者宫没有门迫。"
+        },
+        {
+          "id": "10_pace",
+          "title": "伏吟反吟与快慢",
+          "text": "九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期。"
+        },
+        {
+          "id": "11_final",
+          "title": "最后断词",
+          "text": "依据古籍，病情传统主判：病凶。主因：天芮在戌月为相，病星有气；病宫临死门。反证：病宫五行克天芮，病星受制；患者宫不空。传统缓急尚难单定。"
+        }
+      ],
+      "readout_text": "问事取用：依据古籍，此次为本人测病情轻重。本人以日干癸为用神落乾六宫，天芮主病。\n\n值符值使：值符天冲星在乾六宫，值使伤门在乾六宫。值符宫金克病宫木，病宫受制，值符宫克病宫，偏吉。\n\n天芮病宫：天芮与天禽星同落震三宫，临死门、乘玄武，天盘丁加地盘癸。木克天芮土，病星受制，偏吉。死门主闭塞、病困、停滞，偏凶；玄武主隐情、反复、暗昧，作辅助判断。丁加癸，地盘水克天盘火。人体传统取象为左肋、左腰、足、肝、胆、左肺。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：乾六宫临天冲星、伤门、值符。患者宫金克病宫木，病宫受制，偏吉，患者制病。患者宫不空，有利于用神发挥。\n\n医生医药：天心在离九宫，乙奇在艮八宫。病宫木生天心宫火，天心宫受生，受生但未制病，不能单定疗效；病宫木克乙奇宫土，乙奇宫受制，偏凶，医药受病宫克制。\n\n时干事体：时干庚落离九宫。病宫木生时干宫火，时干宫受生，事体宫受病宫生，需合参，非单凭此断愈。\n\n特殊凶吉格局：时干庚未对日干癸构成同性相克，不属五不遇时。病宫和患者宫没有门迫。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期。\n\n最后断词：依据古籍，病情传统主判：病凶。主因：天芮在戌月为相，病星有气；病宫临死门。反证：病宫五行克天芮，病星受制；患者宫不空。传统缓急尚难单定。",
+      "readout_sha256": "a33eef7840def5a50368e6f81871553519663a1b1ceaaf1d4ac278f19d0ee8ff",
+      "full_chart": {
+        "school_id": "shijia_zhuanpan",
+        "casting_variant": "shenqi_book_explicit_bureau_v1",
+        "status": "source_text_consistency_only",
+        "source_key": "shenqi/shijia-qiju/v1-20261019",
+        "dun": "yin",
+        "ju": 8,
+        "hour_ganzhi": "庚申",
+        "xun_shou": "甲寅",
+        "hidden_stem": "癸",
+        "xun_elapsed_hours": 6,
+        "xun_start_palace": 3,
+        "value_star": "天冲星",
+        "value_star_palace": 6,
+        "value_door": "伤门",
+        "value_door_palace": 6,
+        "palaces": {
+          "1": {
+            "palace": 1,
+            "gua": "坎",
+            "earth_stem": "丙",
+            "heaven_stars": [
+              {
+                "star": "天辅星",
+                "carried_stem": "壬"
+              }
+            ],
+            "door": "杜门",
+            "deity": "九天"
+          },
+          "2": {
+            "palace": 2,
+            "gua": "坤",
+            "earth_stem": "丁",
+            "heaven_stars": [
+              {
+                "star": "天蓬星",
+                "carried_stem": "丙"
+              }
+            ],
+            "door": "休门",
+            "deity": "太阴"
+          },
+          "3": {
+            "palace": 3,
+            "gua": "震",
+            "earth_stem": "癸",
+            "heaven_stars": [
+              {
+                "star": "天芮星",
+                "carried_stem": "丁"
+              },
+              {
+                "star": "天禽星",
+                "carried_stem": "辛"
+              }
+            ],
+            "door": "死门",
+            "deity": "玄武"
+          },
+          "4": {
+            "palace": 4,
+            "gua": "巽",
+            "earth_stem": "壬",
+            "heaven_stars": [
+              {
+                "star": "天柱星",
+                "carried_stem": "己"
+              }
+            ],
+            "door": "惊门",
+            "deity": "白虎"
+          },
+          "5": {
+            "palace": 5,
+            "gua": "中",
+            "earth_stem": "辛",
+            "heaven_stars": [],
+            "door": null,
+            "deity": null
+          },
+          "6": {
+            "palace": 6,
+            "gua": "乾",
+            "earth_stem": "庚",
+            "heaven_stars": [
+              {
+                "star": "天冲星",
+                "carried_stem": "癸"
+              }
+            ],
+            "door": "伤门",
+            "deity": "值符"
+          },
+          "7": {
+            "palace": 7,
+            "gua": "兑",
+            "earth_stem": "己",
+            "heaven_stars": [
+              {
+                "star": "天任星",
+                "carried_stem": "戊"
+              }
+            ],
+            "door": "生门",
+            "deity": "螣蛇"
+          },
+          "8": {
+            "palace": 8,
+            "gua": "艮",
+            "earth_stem": "戊",
+            "heaven_stars": [
+              {
+                "star": "天英星",
+                "carried_stem": "乙"
+              }
+            ],
+            "door": "景门",
+            "deity": "九地"
+          },
+          "9": {
+            "palace": 9,
+            "gua": "离",
+            "earth_stem": "乙",
+            "heaven_stars": [
+              {
+                "star": "天心星",
+                "carried_stem": "庚"
+              }
+            ],
+            "door": "开门",
+            "deity": "六合"
+          }
+        },
+        "limitations": [
+          "Calendar/solar-term method not verified",
+          "Original printed source charts not independently inspected",
+          "Middle-palace timed value-door policy not established"
+        ]
+      },
+      "source_case_index_sha256": "4bf790f8d59efa3666745fd5d85faff5b49ed452e8fdaa130be17d4f2ad72b31",
+      "source_database_sha256": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+      "end_user_review_status": "pending",
+      "historical_case_is_not_truly_unseen": true,
+      "modern_medical_validation": false
+    },
+    {
+      "case_id": "shenqi.health.19960523.aunt_illness",
+      "case_title": "代问姨母疾病",
+      "question_known_before_outcome": "亲属代问姨母病情（女性关系已知）",
+      "civil_clock_anchor": "1996-05-23T19:30:00+08:00",
+      "year_ganzhi": "丙子",
+      "month_ganzhi": "癸巳",
+      "day_ganzhi": "庚申",
+      "hour_ganzhi": "丙戌",
+      "book_source_bureau": {
+        "dun": "yang",
+        "ju": 8
+      },
+      "patient_sex": "female",
+      "book_metadata_only_used": true,
+      "original_pred_and_feedback_read": false,
+      "role": {
+        "relationship": "older_relative",
+        "label": "其他长辈",
+        "context": "direct_proxy",
+        "consultation_label": "代亲属或朋友专门起盘问该人的疾病",
+        "role_name": "年干（长辈候选）丙",
+        "role_via": "casting_year_stem",
+        "stem": "丙",
+        "birth_note": "患者年命未提供，本次不使用年命",
+        "source_rule": "shenqi.health line 192",
+        "confidence": "source_case_specific",
+        "status": "matched_source_condition",
+        "note": "年干作辅助；如关系明确为姨母可兼坤宫，但不泛化所有长辈",
+        "extra_meaning": "2宫（坤）参考宫主年龄排行辅助象"
+      },
+      "five_not_encounter": {
+        "triggered": true,
+        "hour_stem": "丙",
+        "day_stem": "庚",
+        "hour_element": "火",
+        "day_element": "金",
+        "same_yin_yang": true,
+        "hour_controls_day": true,
+        "rule": "hour_controls_day_same_polarity",
+        "source": {
+          "book": "kaiwu",
+          "chapter": "analysis_judgment_ch04",
+          "lines": [
+            580,
+            590
+          ]
+        },
+        "effect": "凶时信号，但不单条断生死"
+      },
+      "gender_auxiliary_palace": 2,
+      "traditional_verdict": "病凶",
+      "readout_sections": [
+        {
+          "id": "01_role",
+          "title": "问事取用",
+          "text": "依据古籍，此次为其他长辈测病情轻重。以年干丙为患者用神落兑七宫，天芮主病。"
+        },
+        {
+          "id": "02_far",
+          "title": "值符值使",
+          "text": "值符天蓬星在乾六宫，值使休门在震三宫。病宫火克值符宫金，值符宫受制，值符宫受病宫克，偏不利。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮病宫",
+          "text": "天芮与天禽星同落离九宫，临伤门、乘玄武，天盘辛加地盘己。火生天芮土，病星受生，偏凶。伤门主伤损、伤病、损耗，结合用神；玄武主隐情、反复、暗昧，作辅助判断。辛加己，地盘土生天盘金。人体传统取象为头、眼、面、心、心血管、脑血管。"
+        },
+        {
+          "id": "04_season",
+          "title": "病星月令",
+          "text": "巳月天芮废，病星气弱，偏有利但仍看患者宫。"
+        },
+        {
+          "id": "05_patient",
+          "title": "患者用神宫",
+          "text": "兑七宫临天心星、景门、九天。病宫火克患者宫金，患者宫受制，偏凶，病宫克身。患者宫不空，有利于用神发挥。"
+        },
+        {
+          "id": "06_gender",
+          "title": "男女辅助宫",
+          "text": "女性患者另参坤二宫。临天柱星、杜门、九地。病宫火生辅助宫土，辅助宫受生，辅助宫得生扶，偏吉；辅助宫杜门构成门迫，偏凶；辅助宫逢空，吉象受虚。"
+        },
+        {
+          "id": "07_medicine",
+          "title": "医生医药",
+          "text": "天心在兑七宫，乙奇在坤二宫。病宫火克天心宫金，天心宫受制，偏凶，医药受病宫克制；病宫火生乙奇宫土，乙奇宫受生，受生但未制病，不能单定疗效。"
+        },
+        {
+          "id": "08_hour",
+          "title": "时干事体",
+          "text": "时干丙落兑七宫。病宫火克时干宫金，时干宫受制，事体宫受病宫克，偏凶。"
+        },
+        {
+          "id": "09_hazards",
+          "title": "特殊凶吉格局",
+          "text": "五不遇时：时干丙火克日干庚金，阳克阳，测病为传统凶时，但不可仅凭此断生死。患者宫兑七宫的景门构成门迫，偏凶。"
+        },
+        {
+          "id": "10_pace",
+          "title": "伏吟反吟与快慢",
+          "text": "九星、八门均非伏吟或反吟。阳遁病宫在外盘、患者宫在外盘。外盘主慢。不强断具体应期。"
+        },
+        {
+          "id": "11_final",
+          "title": "最后断词",
+          "text": "依据古籍，病情传统主判：病凶。主因：兑七宫的景门构成门迫；五不遇时，时干克日干且阴阳同性。反证：患者宫不空；乾坤辅助宫有生扶或制病象。传统缓急偏慢。"
+        }
+      ],
+      "readout_text": "问事取用：依据古籍，此次为其他长辈测病情轻重。以年干丙为患者用神落兑七宫，天芮主病。\n\n值符值使：值符天蓬星在乾六宫，值使休门在震三宫。病宫火克值符宫金，值符宫受制，值符宫受病宫克，偏不利。\n\n天芮病宫：天芮与天禽星同落离九宫，临伤门、乘玄武，天盘辛加地盘己。火生天芮土，病星受生，偏凶。伤门主伤损、伤病、损耗，结合用神；玄武主隐情、反复、暗昧，作辅助判断。辛加己，地盘土生天盘金。人体传统取象为头、眼、面、心、心血管、脑血管。\n\n病星月令：巳月天芮废，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：兑七宫临天心星、景门、九天。病宫火克患者宫金，患者宫受制，偏凶，病宫克身。患者宫不空，有利于用神发挥。\n\n男女辅助宫：女性患者另参坤二宫。临天柱星、杜门、九地。病宫火生辅助宫土，辅助宫受生，辅助宫得生扶，偏吉；辅助宫杜门构成门迫，偏凶；辅助宫逢空，吉象受虚。\n\n医生医药：天心在兑七宫，乙奇在坤二宫。病宫火克天心宫金，天心宫受制，偏凶，医药受病宫克制；病宫火生乙奇宫土，乙奇宫受生，受生但未制病，不能单定疗效。\n\n时干事体：时干丙落兑七宫。病宫火克时干宫金，时干宫受制，事体宫受病宫克，偏凶。\n\n特殊凶吉格局：五不遇时：时干丙火克日干庚金，阳克阳，测病为传统凶时，但不可仅凭此断生死。患者宫兑七宫的景门构成门迫，偏凶。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阳遁病宫在外盘、患者宫在外盘。外盘主慢。不强断具体应期。\n\n最后断词：依据古籍，病情传统主判：病凶。主因：兑七宫的景门构成门迫；五不遇时，时干克日干且阴阳同性。反证：患者宫不空；乾坤辅助宫有生扶或制病象。传统缓急偏慢。",
+      "readout_sha256": "9e875b960235f00724214db7dadcb32c174d90f00438da9e54e96e50b8e388c2",
+      "full_chart": {
+        "school_id": "shijia_zhuanpan",
+        "casting_variant": "shenqi_book_explicit_bureau_v1",
+        "status": "source_text_consistency_only",
+        "source_key": "shenqi/shijia-qiju/v1-20261019",
+        "dun": "yang",
+        "ju": 8,
+        "hour_ganzhi": "丙戌",
+        "xun_shou": "甲申",
+        "hidden_stem": "庚",
+        "xun_elapsed_hours": 2,
+        "xun_start_palace": 1,
+        "value_star": "天蓬星",
+        "value_star_palace": 6,
+        "value_door": "休门",
+        "value_door_palace": 3,
+        "palaces": {
+          "1": {
+            "palace": 1,
+            "gua": "坎",
+            "earth_stem": "庚",
+            "heaven_stars": [
+              {
+                "star": "天任星",
+                "carried_stem": "戊"
+              }
+            ],
+            "door": "惊门",
+            "deity": "螣蛇"
+          },
+          "2": {
+            "palace": 2,
+            "gua": "坤",
+            "earth_stem": "辛",
+            "heaven_stars": [
+              {
+                "star": "天柱星",
+                "carried_stem": "乙"
+              }
+            ],
+            "door": "杜门",
+            "deity": "九地"
+          },
+          "3": {
+            "palace": 3,
+            "gua": "震",
+            "earth_stem": "壬",
+            "heaven_stars": [
+              {
+                "star": "天辅星",
+                "carried_stem": "癸"
+              }
+            ],
+            "door": "休门",
+            "deity": "六合"
+          },
+          "4": {
+            "palace": 4,
+            "gua": "巽",
+            "earth_stem": "癸",
+            "heaven_stars": [
+              {
+                "star": "天英星",
+                "carried_stem": "己"
+              }
+            ],
+            "door": "生门",
+            "deity": "白虎"
+          },
+          "5": {
+            "palace": 5,
+            "gua": "中",
+            "earth_stem": "丁",
+            "heaven_stars": [],
+            "door": null,
+            "deity": null
+          },
+          "6": {
+            "palace": 6,
+            "gua": "乾",
+            "earth_stem": "丙",
+            "heaven_stars": [
+              {
+                "star": "天蓬星",
+                "carried_stem": "庚"
+              }
+            ],
+            "door": "死门",
+            "deity": "值符"
+          },
+          "7": {
+            "palace": 7,
+            "gua": "兑",
+            "earth_stem": "乙",
+            "heaven_stars": [
+              {
+                "star": "天心星",
+                "carried_stem": "丙"
+              }
+            ],
+            "door": "景门",
+            "deity": "九天"
+          },
+          "8": {
+            "palace": 8,
+            "gua": "艮",
+            "earth_stem": "戊",
+            "heaven_stars": [
+              {
+                "star": "天冲星",
+                "carried_stem": "壬"
+              }
+            ],
+            "door": "开门",
+            "deity": "太阴"
+          },
+          "9": {
+            "palace": 9,
+            "gua": "离",
+            "earth_stem": "己",
+            "heaven_stars": [
+              {
+                "star": "天芮星",
+                "carried_stem": "辛"
+              },
+              {
+                "star": "天禽星",
+                "carried_stem": "丁"
+              }
+            ],
+            "door": "伤门",
+            "deity": "玄武"
+          }
+        },
+        "limitations": [
+          "Calendar/solar-term method not verified",
+          "Original printed source charts not independently inspected",
+          "Middle-palace timed value-door policy not established"
+        ]
+      },
+      "source_case_index_sha256": "4bf790f8d59efa3666745fd5d85faff5b49ed452e8fdaa130be17d4f2ad72b31",
+      "source_database_sha256": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+      "end_user_review_status": "pending",
+      "historical_case_is_not_truly_unseen": true,
+      "modern_medical_validation": false
+    }
+  ],
+  "original_book_outcomes_appended": false
+}
