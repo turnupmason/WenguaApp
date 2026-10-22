@@ -49,3 +49,16 @@ http://localhost:8000/preview.html
 ## 当前迭代边界
 
 **现在是 UI 设计与原生代码骨架阶段**，不是完整 iOS app 完工。保持 V3.9.1 自然断词和全十二长生，无 V4.2 分数。新的评分、医学预测、云 GPT、强制60秒、假盘正式占断、提前标注 App Store 已通过均不可进入这版 UI。用户可就界面审美、问事输入步骤及九宫信息密度提出修改，确定后进行 iOS 真引擎移植与 TestFlight 测试。
+
+## 2026-10-22 V2 参考图改版（以此节为准）
+
+用户提供两张 iPhone 排盘截图，要求专业细线九宫排版、四柱/阴遁/值符值使顶部栏、宫中神星门天地干的四色高密度显示，**点击宫位展开精致分组详情**，并且**静心30秒、心诚则灵、尊重事实、同一件具体事15天内只能完成一次真实起局**。
+
+- 直接打开 **[preview.html](preview.html)**：新版已覆盖旧简约卡片布局。手机 Safari 上九宫显示巽/离/坤、震/中/兑、艮/坎/乾，神橙、星绿、门蓝、天干红、地干橙，宫内标记实盘角色、十二长生与旬空；宫位详情可点击弹出。
+- **起局入口**：选事项、患者真实关系、可选当事人称呼和新久病、日期时间选择器 → 静心30秒倒计时（不能跳过）→ 完成后**只查看固定测试盘视觉演示**。网页端尚无真实本机排盘引擎，不能把用户填写的时间冒充真的演算结果。
+- **本地15天同题策略代码**：[issue-policy.js](issue-policy.js)。问事专题、关系、当事人、规范化事项的 SHA-256，只保存摘要与成功时间，锁定15×24小时；**仅正式离线起盘成功、记录已保存后**通过 `commitCompletedCast` 记一卦。网页演示绝不调用它，所以不会因为预览被锁。改写问句、换设备等无法靠这个简单摘要完美识别，正式应用需有明确事项ID管理。
+- 同步原生 SwiftUI：[`../WenguaAppUI/WenguaDesignPreviewApp.swift`](../WenguaAppUI/WenguaDesignPreviewApp.swift)，使用 iOS 日期时间滚轮、不可跳过的 30 秒 `TimelineView` 与 CryptoKit/UserDefaults 的同题15天接口；还没有 Xcode 真机类型检查或完成本地 Python 算法移植。
+- 实际固定示范盘改为**2026-11-01 05:00 美国东部时区**，这是已起盘核对的**未来测试时辰**，不是历史真实案件。来源是 `data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json` 的第一盘：阴遁五局，十天干完整十二长生。截图中的 10/22 16:39 排法仅供界面视觉参照，不移植其他产品流派差异。
+- 运行测试：`python3 -m unittest discover -s tests -p test_ios_design_v1_contract.py -v` 和 `node --test tests/ios_issue_policy_v2.test.cjs`。Github 专项CI运行源书盘面对照与真实15天算法，不等于已 Xcode 上架。
+
+**请以 V2 改版为当前视觉规范；前文首次 V1 文字仅是历史留存**。
