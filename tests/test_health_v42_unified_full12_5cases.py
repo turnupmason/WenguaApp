@@ -13,11 +13,11 @@ from src.wengua.symbol_relations import stem_stage
 from src.wengua.marriage_runtime import PALACE_BRANCHES
 class V42SourceUnified(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.run=evaluate()
+ def setUpClass(cls):cls.batch=evaluate()
  def test_immutable_full_v41_parent_and_exact_three_v39_output_text(self):
     self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)
-    self.assertEqual([r["family_id"] for r in self.run["records"]],IDS)
-    for r in self.run["records"][:3]:
+    self.assertEqual([r["family_id"] for r in self.batch["records"]],IDS)
+    for r in self.batch["records"][:3]:
        self.assertTrue(r["old_v39_reading_byte_identical"])
        self.assertTrue(r["V42_integrated_customer_text"].startswith(r["V39_exact_legacy_customer_text"]))
        self.assertEqual(hashlib.sha256(r["V39_exact_legacy_customer_text"].encode()).hexdigest(),r["original_v39_reading_sha256"])
@@ -31,7 +31,7 @@ class V42SourceUnified(unittest.TestCase):
        for name in ("长生","帝旺","死","墓","绝"):
           self.assertEqual(row["stage_to_branch"][name],stem_stage(stem,name)["branch"])
  def test_user_real_factual_yiji_patient_illness_all_branch_stages(self):
-    q=self.run["records"][0]
+    q=self.batch["records"][0]
     self.assertEqual(q["four_pillars"],{"year":"丙午","month":"戊戌","day":"己巳","hour":"庚午"})
     self.assertEqual(q["complete_real_chart_facts"]["patient_palace"],4)
     self.assertEqual(q["complete_real_chart_facts"]["illness_palace"],6)
@@ -43,7 +43,7 @@ class V42SourceUnified(unittest.TestCase):
     self.assertEqual(len(q["complete_real_chart_facts"]["actual_full_8_palace_inventory"]),8)
     self.assertIn("戌墓、亥绝",q["V42_integrated_extra_section"]["text"])
  def test_all_six_budgets_sum50_and_neutral_baseline(self):
-    for r in self.run["records"]:
+    for r in self.batch["records"]:
        score=r["symbolic_scoring"]
        obs=score["observed_or_unspecified_nominal"]
        self.assertEqual(obs["baseline"],50)
@@ -57,7 +57,7 @@ class V42SourceUnified(unittest.TestCase):
        self.assertEqual(len(score["scenario_range"]),2)
        self.assertLessEqual(score["scenario_range"][0],score["scenario_range"][1])
  def test_each_known_chart_factor_not_misclassified_as_missing(self):
-    for r in self.run["records"]:
+    for r in self.batch["records"]:
        c=r["complete_real_chart_facts"]
        self.assertTrue(c["chart_relevant_facts_calculated"])
        self.assertTrue(c["source12_all_ten_stems_checked"])
@@ -73,15 +73,15 @@ class V42SourceUnified(unittest.TestCase):
        self.assertIn("chronic",score["conditional_scenarios"])
        self.assertIn("unprovided",score["conditional_scenarios"])
  def test_two_other_unseen_for_current_weight_tuning_are_first_health_questions(self):
-    for r in self.run["records"][3:]:
+    for r in self.batch["records"][3:]:
        self.assertTrue(r["family_id"].startswith("shenqi.health."))
        self.assertFalse(r["author_book_outcome_used"])
        self.assertIn("古籍病势象意实验分",r["V42_integrated_extra_section"]["text"])
  def test_no_false_probability_and_no_repetition_alias_tianqin_tianrui(self):
-    for r in self.run["records"]:
+    for r in self.batch["records"]:
        self.assertFalse(r["new_medical_diagnosis"])
        self.assertFalse(r["author_book_outcome_used"])
-       self.assertFalse(self.run["score_is_not_a_medical_probability"] is False)
+       self.assertFalse(self.batch["score_is_not_a_medical_probability"] is False)
        self.assertEqual(r["complete_real_chart_facts"]["source12_total_stage_facts_checked"],120)
        self.assertIn("不是现实健康概率",r["V42_integrated_extra_section"]["text"])
  def test_stage_lifecycle_bijective_for_unequal_palaces(self):
