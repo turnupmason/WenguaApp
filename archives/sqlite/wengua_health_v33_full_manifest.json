@@ -1,0 +1,21 @@
+{
+  "schema": "wengua_v33_full_194_12_health_indexed_family_replays",
+  "complete_sqlite_sha256": "abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5",
+  "complete_size_bytes": 14993408,
+  "compressed_xz_sha256": "9d2e5109d464cfb3e6057ae44c025c08261b85686f11aeb29fc7d309fb42642d",
+  "source_parent_v32_sha256": "e4110828bbfb621e1bb7ed972284d4602d2ab361a12edc48d6f4750c965dddf9",
+  "historical_readouts_sha256": "2169156087c9f6960b4ddef3365c4eeec03a1b76a4666d591404b38c2f1c3730",
+  "supplement_coverage_sha256": "ad28c2954062b86259704a8f1797108fb6b1a66804cf672cd5b966de72b7eec3",
+  "cases_original": 194,
+  "sections_original": 43,
+  "indexed_health_unique_events": 12,
+  "rendered": 8,
+  "blocked": 4,
+  "earlier_two_failed_dev_readings_preserved": true,
+  "author_answers_not_used": true,
+  "scientific_medical_validation": false,
+  "v31_renderer_unchanged": true,
+  "user_approval": "pending",
+  "ui": "not_yet_approved",
+  "other_four_health_intents": "unapproved"
+}
