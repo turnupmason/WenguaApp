@@ -1,0 +1,615 @@
+{
+  "schema": "wengua_health_v41_81_user_weight_candidates_with_separate_author_source",
+  "status": "PENDING_INDEPENDENT_SOURCE_CONDITION_REVIEW",
+  "version": "V4.1",
+  "source_of_weights": "user_supplied_proposal_2026_10_22_not_ancient_author_certified",
+  "title_correction": "The 9x9 supplied table has 81 rather than 42 rows",
+  "source_priority": "book's genuine illness-specific qualification overrides generic luck; user aliases are not canonical source names",
+  "zero_claims": [
+    "no diagnoses",
+    "no cure time",
+    "no severity probability",
+    "no mortality/critical-care diagnosis",
+    "no real drug efficacy",
+    "no remote clinical action"
+  ],
+  "allow_role_inversion_by_formula": false,
+  "book_negative_explicit_pairs": [
+    "戊/丙",
+    "丙/戊",
+    "己/己",
+    "己/癸"
+  ],
+  "book_health_favorable_explicit_pairs": [
+    "丙/辛"
+  ],
+  "book_conflicts_hold": [
+    "戊/丙",
+    "丙/戊",
+    "丁/壬",
+    "丙/辛"
+  ],
+  "missing_duration_policy": "defer",
+  "shared_chart_source_pairs": 81,
+  "user_specific_supplement_rules": 42,
+  "composite_rules": 17,
+  "client_score_type": "traditional_symbology_audit_candidate",
+  "candidate_pairs": [
+    {
+      "pair_key": "戊/戊",
+      "top": "戊",
+      "bottom": "戊",
+      "user_alias": "青龙伏吟",
+      "proposed_points": -8
+    },
+    {
+      "pair_key": "戊/乙",
+      "top": "戊",
+      "bottom": "乙",
+      "user_alias": "青龙合灵",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "戊/丙",
+      "top": "戊",
+      "bottom": "丙",
+      "user_alias": "青龙返首",
+      "proposed_points": 20
+    },
+    {
+      "pair_key": "戊/丁",
+      "top": "戊",
+      "bottom": "丁",
+      "user_alias": "青龙耀明",
+      "proposed_points": 15
+    },
+    {
+      "pair_key": "戊/己",
+      "top": "戊",
+      "bottom": "己",
+      "user_alias": "贵人入狱",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "戊/庚",
+      "top": "戊",
+      "bottom": "庚",
+      "user_alias": "值符飞宫",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "戊/辛",
+      "top": "戊",
+      "bottom": "辛",
+      "user_alias": "青龙折足",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "戊/壬",
+      "top": "戊",
+      "bottom": "壬",
+      "user_alias": "青龙入天牢",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "戊/癸",
+      "top": "戊",
+      "bottom": "癸",
+      "user_alias": "青龙华盖",
+      "proposed_points": 8
+    },
+    {
+      "pair_key": "乙/戊",
+      "top": "乙",
+      "bottom": "戊",
+      "user_alias": "阴害阳门",
+      "proposed_points": -6
+    },
+    {
+      "pair_key": "乙/乙",
+      "top": "乙",
+      "bottom": "乙",
+      "user_alias": "日奇伏吟",
+      "proposed_points": -8
+    },
+    {
+      "pair_key": "乙/丙",
+      "top": "乙",
+      "bottom": "丙",
+      "user_alias": "奇仪顺遂",
+      "proposed_points": 15
+    },
+    {
+      "pair_key": "乙/丁",
+      "top": "乙",
+      "bottom": "丁",
+      "user_alias": "奇仪相佐",
+      "proposed_points": 18
+    },
+    {
+      "pair_key": "乙/己",
+      "top": "乙",
+      "bottom": "己",
+      "user_alias": "日奇入墓",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "乙/庚",
+      "top": "乙",
+      "bottom": "庚",
+      "user_alias": "日奇被刑",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "乙/辛",
+      "top": "乙",
+      "bottom": "辛",
+      "user_alias": "青龙逃走",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "乙/壬",
+      "top": "乙",
+      "bottom": "壬",
+      "user_alias": "日奇入地罗",
+      "proposed_points": -10
+    },
+    {
+      "pair_key": "乙/癸",
+      "top": "乙",
+      "bottom": "癸",
+      "user_alias": "华盖逢星",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "丙/戊",
+      "top": "丙",
+      "bottom": "戊",
+      "user_alias": "飞鸟跌穴",
+      "proposed_points": 20
+    },
+    {
+      "pair_key": "丙/乙",
+      "top": "丙",
+      "bottom": "乙",
+      "user_alias": "日月并行",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "丙/丙",
+      "top": "丙",
+      "bottom": "丙",
+      "user_alias": "月奇悖师",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "丙/丁",
+      "top": "丙",
+      "bottom": "丁",
+      "user_alias": "星月皎洁",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "丙/己",
+      "top": "丙",
+      "bottom": "己",
+      "user_alias": "火悖入刑",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "丙/庚",
+      "top": "丙",
+      "bottom": "庚",
+      "user_alias": "荧入太白",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "丙/辛",
+      "top": "丙",
+      "bottom": "辛",
+      "user_alias": "谋事成就",
+      "proposed_points": null,
+      "duration_points": {
+        "new": 10,
+        "chronic": -15
+      },
+      "requires_duration": true
+    },
+    {
+      "pair_key": "丙/壬",
+      "top": "丙",
+      "bottom": "壬",
+      "user_alias": "火入天罗",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "丙/癸",
+      "top": "丙",
+      "bottom": "癸",
+      "user_alias": "华盖悖师",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "丁/戊",
+      "top": "丁",
+      "bottom": "戊",
+      "user_alias": "青龙转光",
+      "proposed_points": 15
+    },
+    {
+      "pair_key": "丁/乙",
+      "top": "丁",
+      "bottom": "乙",
+      "user_alias": "人奇得使",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "丁/丙",
+      "top": "丁",
+      "bottom": "丙",
+      "user_alias": "星随月转",
+      "proposed_points": 8
+    },
+    {
+      "pair_key": "丁/丁",
+      "top": "丁",
+      "bottom": "丁",
+      "user_alias": "星奇伏吟",
+      "proposed_points": -10
+    },
+    {
+      "pair_key": "丁/己",
+      "top": "丁",
+      "bottom": "己",
+      "user_alias": "火入勾陈",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "丁/庚",
+      "top": "丁",
+      "bottom": "庚",
+      "user_alias": "文书阻隔",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "丁/辛",
+      "top": "丁",
+      "bottom": "辛",
+      "user_alias": "朱雀入狱",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "丁/壬",
+      "top": "丁",
+      "bottom": "壬",
+      "user_alias": "五吉化合格",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "丁/癸",
+      "top": "丁",
+      "bottom": "癸",
+      "user_alias": "朱雀投江",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "己/戊",
+      "top": "己",
+      "bottom": "戊",
+      "user_alias": "犬遇青龙",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "己/乙",
+      "top": "己",
+      "bottom": "乙",
+      "user_alias": "墓神不明",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "己/丙",
+      "top": "己",
+      "bottom": "丙",
+      "user_alias": "火悖地户",
+      "proposed_points": -10
+    },
+    {
+      "pair_key": "己/丁",
+      "top": "己",
+      "bottom": "丁",
+      "user_alias": "朱雀入墓",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "己/己",
+      "top": "己",
+      "bottom": "己",
+      "user_alias": "地户逢鬼",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "己/庚",
+      "top": "己",
+      "bottom": "庚",
+      "user_alias": "刑格大凶",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "己/辛",
+      "top": "己",
+      "bottom": "辛",
+      "user_alias": "游魂入墓",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "己/壬",
+      "top": "己",
+      "bottom": "壬",
+      "user_alias": "地网高张",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "己/癸",
+      "top": "己",
+      "bottom": "癸",
+      "user_alias": "地刑玄武",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "庚/戊",
+      "top": "庚",
+      "bottom": "戊",
+      "user_alias": "天府飞宫",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "庚/乙",
+      "top": "庚",
+      "bottom": "乙",
+      "user_alias": "太白逢星",
+      "proposed_points": null,
+      "duration_points": {
+        "chronic": 15
+      },
+      "requires_duration": true
+    },
+    {
+      "pair_key": "庚/丙",
+      "top": "庚",
+      "bottom": "丙",
+      "user_alias": "太白入荧",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "庚/丁",
+      "top": "庚",
+      "bottom": "丁",
+      "user_alias": "婷婷之格",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "庚/己",
+      "top": "庚",
+      "bottom": "己",
+      "user_alias": "官符刑格",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "庚/庚",
+      "top": "庚",
+      "bottom": "庚",
+      "user_alias": "太白同宫",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "庚/辛",
+      "top": "庚",
+      "bottom": "辛",
+      "user_alias": "白虎出力",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "庚/壬",
+      "top": "庚",
+      "bottom": "壬",
+      "user_alias": "上格大凶",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "庚/癸",
+      "top": "庚",
+      "bottom": "癸",
+      "user_alias": "大格雪上加霜",
+      "proposed_points": -25
+    },
+    {
+      "pair_key": "辛/戊",
+      "top": "辛",
+      "bottom": "戊",
+      "user_alias": "困龙被伤",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "辛/乙",
+      "top": "辛",
+      "bottom": "乙",
+      "user_alias": "白虎猖狂",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "辛/丙",
+      "top": "辛",
+      "bottom": "丙",
+      "user_alias": "干合悖师",
+      "proposed_points": -10
+    },
+    {
+      "pair_key": "辛/丁",
+      "top": "辛",
+      "bottom": "丁",
+      "user_alias": "狱神得奇",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "辛/己",
+      "top": "辛",
+      "bottom": "己",
+      "user_alias": "入狱自刑",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "辛/庚",
+      "top": "辛",
+      "bottom": "庚",
+      "user_alias": "白虎出力",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "辛/辛",
+      "top": "辛",
+      "bottom": "辛",
+      "user_alias": "公庭自刑",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "辛/壬",
+      "top": "辛",
+      "bottom": "壬",
+      "user_alias": "凶蛇入狱",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "辛/癸",
+      "top": "辛",
+      "bottom": "癸",
+      "user_alias": "天网牢狱",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "壬/戊",
+      "top": "壬",
+      "bottom": "戊",
+      "user_alias": "小蛇化龙",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "壬/乙",
+      "top": "壬",
+      "bottom": "乙",
+      "user_alias": "采戏逢春",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "壬/丙",
+      "top": "壬",
+      "bottom": "丙",
+      "user_alias": "水火相战",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "壬/丁",
+      "top": "壬",
+      "bottom": "丁",
+      "user_alias": "干合化吉",
+      "proposed_points": -10
+    },
+    {
+      "pair_key": "壬/己",
+      "top": "壬",
+      "bottom": "己",
+      "user_alias": "反吟大凶",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "壬/庚",
+      "top": "壬",
+      "bottom": "庚",
+      "user_alias": "太白擒蛇",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "壬/辛",
+      "top": "壬",
+      "bottom": "辛",
+      "user_alias": "网罗相缠",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "壬/壬",
+      "top": "壬",
+      "bottom": "壬",
+      "user_alias": "天网地网",
+      "proposed_points": -18
+    },
+    {
+      "pair_key": "壬/癸",
+      "top": "壬",
+      "bottom": "癸",
+      "user_alias": "幼女奸淫",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "癸/戊",
+      "top": "癸",
+      "bottom": "戊",
+      "user_alias": "天乙会合",
+      "proposed_points": 12
+    },
+    {
+      "pair_key": "癸/乙",
+      "top": "癸",
+      "bottom": "乙",
+      "user_alias": "华盖逢星",
+      "proposed_points": 10
+    },
+    {
+      "pair_key": "癸/丙",
+      "top": "癸",
+      "bottom": "丙",
+      "user_alias": "华盖悖师",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "癸/丁",
+      "top": "癸",
+      "bottom": "丁",
+      "user_alias": "腾蛇夭矫",
+      "proposed_points": -20
+    },
+    {
+      "pair_key": "癸/己",
+      "top": "癸",
+      "bottom": "己",
+      "user_alias": "华盖入墓",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "癸/庚",
+      "top": "癸",
+      "bottom": "庚",
+      "user_alias": "太白入网",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "癸/辛",
+      "top": "癸",
+      "bottom": "辛",
+      "user_alias": "网罗相缠",
+      "proposed_points": -12
+    },
+    {
+      "pair_key": "癸/壬",
+      "top": "癸",
+      "bottom": "壬",
+      "user_alias": "复见腾蛇",
+      "proposed_points": -15
+    },
+    {
+      "pair_key": "癸/癸",
+      "top": "癸",
+      "bottom": "癸",
+      "user_alias": "天网四张",
+      "proposed_points": -22
+    }
+  ]
+}
