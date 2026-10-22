@@ -213,6 +213,23 @@ struct ProfessionalChartScreen: View {
         nativeChart?.pillars ?? WenguaNativePillars(year:"丙午",month:"戊戌",
                                                       day:"己卯",hour:"丁卯")
     }
+    private var bureauInfo: String {
+        let b=nativeChart?.bureau
+        return (b?.dun == "yang" ? "阳遁" : "阴遁")+" · "+String(b?.ju ?? 5)+
+               "局 › "+(nativeChart?.xunShou ?? "甲子")+"旬"
+    }
+    private var starDoorInfo: String {
+        "值符："+(nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")+
+        "  值使："+(nativeChart?.valueDoor ?? "死门")
+    }
+    private var solarInfo: String {
+        "时家转盘 · "+(nativeChart?.solarTerm ?? "霜降")+
+        " · "+(nativeChart?.bureau.yuan ?? "upper")
+    }
+    private var voidInfo: String {
+        "时空："+(nativeChart?.xunShou ?? "甲子")+"旬，"+
+        (nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥")+"空"
+    }
 
     var body: some View {
         ScrollView {
@@ -240,11 +257,8 @@ struct ProfessionalChartScreen: View {
                     pillar(String(shownPillars.hour.prefix(1)),String(shownPillars.hour.suffix(1)),"时",color:QStyle.blue)
                     Spacer(minLength: 0)
                     VStack(alignment: .leading, spacing: 6) {
-                        Text((nativeChart?.bureau.dun=="yang" ? "阳遁" : "阴遁")+" · "+
-                             String(nativeChart?.bureau.ju ?? 5)+"局 › "+
-                             (nativeChart?.xunShou ?? "甲子")+"旬")
-                        Text("值符："+((nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:""))+
-                             "  值使："+(nativeChart?.valueDoor ?? "死门"))
+                        Text(bureauInfo)
+                        Text(starDoorInfo)
                     }
                     .font(.system(size: 11))
                     .foregroundStyle(QStyle.secondary)
@@ -255,8 +269,7 @@ struct ProfessionalChartScreen: View {
                 .background(QStyle.backing)
 
                 HStack {
-                    Text("时家转盘 · "+(nativeChart?.solarTerm ?? "霜降")+
-                         " · "+(nativeChart?.bureau.yuan ?? "upper"))
+                    Text(solarInfo)
                         .font(.caption)
                         .foregroundStyle(QStyle.secondary)
                         .padding(.horizontal, 10)
@@ -300,8 +313,7 @@ struct ProfessionalChartScreen: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("年命：未选择 · 不臆造")
-                    Text("时空："+(nativeChart?.xunShou ?? "甲子")+"旬，"+
-                             (nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥")+"空")
+                    Text(voidInfo)
                     HStack(spacing: 10) {
                         Button("问测何事") { showAsk = true }
                         Button("V3.9.1 断词") { showReading = true }
@@ -751,9 +763,7 @@ struct CastSetupScreen: View {
         }
         do {
             let finalInstant=useCurrentInstant ? Date() : chosenTime
-            guard let localZone=TimeZone.current.identifier as String? else {
-                validationMessage="设备时区不可用。";return
-            }
+            let localZone=TimeZone.current.identifier
             let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
             // Persistent case receipt is ONLY original board/clock facts and
             // hashed issue ID. User's raw private question is NOT stored here.
