@@ -5,6 +5,7 @@ on:
     paths:
       - 'ios/design-v1/**'
       - 'tests/ios_issue_policy_v2.test.cjs'
+      - 'tests/ios_five_element_board_v3.test.cjs'
       - 'ios/WenguaAppUI/**'
       - 'tests/test_ios_design_v1_contract.py'
       - '.github/workflows/ios_v1_ui_design_contract.yml'
@@ -23,7 +24,20 @@ jobs:
         run: |
           python -m unittest discover -s tests -p test_ios_design_v1_contract.py -v
       - name: Exercise fifteen-day private question lock with real 15-day TTL and zero demo writes
-        run: node --test tests/ios_issue_policy_v2.test.cjs
+        run: node --test tests/ios_issue_policy_v2.test.cjs tests/ios_five_element_board_v3.test.cjs
+      - name: Parse inline browser JavaScript (prevents blank demo on phones)
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          html=Path('ios/design-v1/preview.html').read_text('utf8')
+          start=html.rfind('<script>')+len('<script>')
+          end=html.rfind('</script>')
+          assert start>=len('<script>') and end>start
+          Path('/tmp/wengua_v3_inline.js').write_text(html[start:end],encoding='utf8')
+          PY
+          node --check /tmp/wengua_v3_inline.js
+          node --check ios/design-v1/chart-facts-v3.js
+          node --check ios/design-v1/five-element-colors.js
       - name: Swift source syntax parse only (NOT Xcode/iOS compilation)
         run: |
           if command -v swiftc >/dev/null 2>&1; then
