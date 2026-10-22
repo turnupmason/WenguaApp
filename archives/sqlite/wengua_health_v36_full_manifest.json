@@ -1,0 +1,22 @@
+{
+  "schema": "wengua_health_v36_complete_book_source_four_symbols",
+  "full_sqlite_sha256": "dc086d67e2ebb477b47ce27f39e7d58879ac33bbd56715152230e638862be9d8",
+  "full_sqlite_bytes": 15032320,
+  "full_sqlite_xz_sha256": "d29c187f8b80b756247fa5a65c15e88197a6431cdc4eae2f888ea693cd65ad3b",
+  "exact_parent_v35_sha256": "35940c872435cb3017710557b83bc8600fcff436e35510212b33b3f202ae2b9a",
+  "twelve_readouts_sha256": "81db30bf6c02d4bd81587e4613b44f3a2097444b768dfe7998eb4da859303d8f",
+  "book_source_families": 194,
+  "source_chapters": 43,
+  "historical_health_source_families": 12,
+  "all_twelve_rendered": true,
+  "42_ordered_pairs_in_each_case": true,
+  "17_composite_audits_in_each_case": true,
+  "three_wonders_and_jade_woman_actual_value_door_checked": true,
+  "horse_uses_source_actual_hour_branch": true,
+  "unsupported_source_conditions_remain_explicit_unknown": true,
+  "previous_all_readouts_and_failures_unchanged": true,
+  "not_an_independent_secret_blind_test": true,
+  "real_medical_predictiveness": false,
+  "user_approval": "pending",
+  "ui_status": "not_started"
+}
