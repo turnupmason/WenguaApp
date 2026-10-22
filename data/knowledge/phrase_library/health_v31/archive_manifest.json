@@ -1,0 +1,17 @@
+{
+  "version": "V3.1",
+  "full_sqlite_sha256": "3a72dbb798d73413c2ebb994e232b83039a483d91cfa8a8f60f246d4ad84b529",
+  "exact_parent_v30_sha256": "713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b",
+  "sealed_readouts_sha256": "0f84c309524b7de8c7aa38e235a6db7837cf898753504f1a555c657305fa062e",
+  "full_original_cases": 194,
+  "original_chapters": 43,
+  "prior_two_failed_dev_cases": 2,
+  "v30_bad_hour_verdict_retained_as_failure": true,
+  "v31_changed_only_hour_patient_role_semantics": true,
+  "pair_catalog_count": 42,
+  "composite_catalog_count": 17,
+  "patient_severity_content_user_review": "pending",
+  "four_other_health_intents_approved": false,
+  "no_gpt_or_network_rewrite": true,
+  "clinical_validation": false
+}

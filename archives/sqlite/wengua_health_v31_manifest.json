@@ -1,0 +1,19 @@
+{
+  "schema": "wengua_v31_194_source_correct_patient_hour",
+  "sha256": "3a72dbb798d73413c2ebb994e232b83039a483d91cfa8a8f60f246d4ad84b529",
+  "parent_sha256": "713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b",
+  "xz_sha256": "6652672be87874aa194a82e0669799760a0e12934bbfb3465d0f2f9382d46f16",
+  "v31_sealed_sha256": "0f84c309524b7de8c7aa38e235a6db7837cf898753504f1a555c657305fa062e",
+  "cases": 194,
+  "old_book_sections": 43,
+  "old_dev_errors": 2,
+  "ordered_pairs": 42,
+  "composites": 17,
+  "readouts": 2,
+  "old_v30_bad_hour_directions_preserved": true,
+  "no_legacy_answers_used": true,
+  "no_runtime_gpt": true,
+  "clinical_accuracy_validated": false,
+  "user_review": "pending",
+  "other_four_health_intents": "unapproved"
+}
