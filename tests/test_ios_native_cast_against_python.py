@@ -37,7 +37,7 @@ for i,(a,g) in enumerate(zip(actual,gold),1):
         for f in ("earthStem","door","deity","heavenStars"):
             assert p[f]==e[f],(i,n,f,p[f],e[f])
         assert p["voidBranches"]==[b for b in bs if b in g["voidBranches"]]
-        assert (p["horseBranch"] is not None)==(g["hourHorse"] in bs)
+        assert (p.get("horseBranch") is not None)==(g["hourHorse"] in bs)
         t=[]
         for st in e["heavenStars"]:
             t.extend([("天盘",st["carriedStem"],life["branch"]) for life in st["stages"] if life["stage"]=="墓"])
