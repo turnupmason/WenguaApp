@@ -158,9 +158,15 @@
     {
       "id": "spouse",
       "label": "配偶",
-      "references": [],
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_day_heavenly_combine_plus_Yi_wife_Geng_husband",
+          "status": "user_explicit_direction_verified_by_actual_chart"
+        }
+      ],
       "palaces": [],
-      "note": "需要当前问事关系和来源流程；不把日干当作配偶"
+      "note": "依已知病人性别：妻乙奇、夫庚为主体，日干五合另参；不得把求测者日干直接当配偶"
     },
     {
       "id": "older_relative",
@@ -200,6 +206,84 @@
       ],
       "palaces": [],
       "note": "同辈月干候选；原书另有年轻男性兼艮宫的案例，只有年龄信息匹配才参照"
+    },
+    {
+      "id": "wife",
+      "label": "妻子",
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "妻以乙为人物主参，日干五合并参，具体实际宫须核"
+    },
+    {
+      "id": "husband",
+      "label": "丈夫",
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "夫以庚为人物主参，日干五合并参，具体实际宫须核"
+    },
+    {
+      "id": "animal",
+      "label": "动物",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物没有明确用神用时干，不以本人日干代替"
+    },
+    {
+      "id": "animal_hen",
+      "label": "母鸡",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物求病不明独立用神则取时干，且仍必须核原盘"
+    },
+    {
+      "id": "animal_rooster",
+      "label": "公鸡",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物求病不明独立用神则取时干，未印天干保留缺项"
+    },
+    {
+      "id": "son_in_law",
+      "label": "女婿",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "开悟末章2000-06-05岳父代问女婿明以时干为用神，原九宫OCR需另验"
     }
   ],
   "event_news_override": {
@@ -227,5 +311,12 @@
     "原书未给定的个人天盘干",
     "从年龄推断实际患病概率"
   ],
-  "unverified_rule_policy": "具体人物取用没有书源证实，标候选或未知，不可替换成已证主用神；但天芮、天心、乙奇和实际九宫继续分析"
+  "unverified_rule_policy": "具体人物取用没有书源证实，标候选或未知，不可替换成已证主用神；但天芮、天心、乙奇和实际九宫继续分析",
+  "role_routing_20261022": {
+    "spouse": "Patient sex explicit: female=Yi heaven carrier; male=Geng heaven carrier; also day-stem five-combination carried stem if actual visible; known birth Ganzhi optional. Do not turn into asker day.",
+    "animal": "unknown direct personal signifier -> actual casting hour stem; no human Qian/Kun sex auxiliary",
+    "son_in_law": "Kaiwu final chapter expressly says 岳父问女婿以时干为用神",
+    "multi_person": "Each person separately bind, never reuse same patient cell as common Tianrui",
+    "staff": "Brother/sister month stem, parent year stem + Qian6/Kun2, younger generation hour stem"
+  }
 }
