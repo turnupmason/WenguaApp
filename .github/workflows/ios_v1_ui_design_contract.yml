@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'ios/design-v1/**'
+      - 'tests/ios_issue_policy_v2.test.cjs'
       - 'ios/WenguaAppUI/**'
       - 'tests/test_ios_design_v1_contract.py'
       - '.github/workflows/ios_v1_ui_design_contract.yml'
@@ -21,6 +22,8 @@ jobs:
       - name: Verify truthful preview, original nine-palace and text-only engine boundaries
         run: |
           python -m unittest discover -s tests -p test_ios_design_v1_contract.py -v
+      - name: Exercise fifteen-day private question lock with real 15-day TTL and zero demo writes
+        run: node --test tests/ios_issue_policy_v2.test.cjs
       - name: Swift source syntax parse only (NOT Xcode/iOS compilation)
         run: |
           if command -v swiftc >/dev/null 2>&1; then
