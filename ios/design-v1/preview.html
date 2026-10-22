@@ -110,6 +110,40 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 .warning{color:#956f26;background:#fff6e3;padding:12px;border-radius:12px;font-size:12px}
 @media(max-width:480px){body{background:#fff}.phone{margin:0;min-height:100dvh;box-shadow:none}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+
+/* V3 professional chart: one palette per symbol's OWN 五行, not glyph type. */
+:root{--metal:#D39A19;--wood:#18A557;--water:#2679E7;--fire:#E34B3F;--earth:#9C7447}
+.palace{height:clamp(172px,46vw,205px);gap:4px;padding:6px 6px 7px}
+.palace-head{font-size:10px;min-height:13px}
+.palace-deity{grid-template-columns:22px minmax(0,1fr);min-height:25px}
+.deity-name{font-size:18px;font-weight:500}
+.sky-star{font-size:17px;white-space:normal;overflow:hidden;line-height:1.25}
+.door-name{font-size:18px}
+.palace-content{gap:2px 0}
+.palace-stem,.bottom-stem{font-size:18px}
+.palace-foot{min-height:19px;flex-wrap:wrap;gap:2px}
+.status-marker{display:inline-flex;align-items:center;font-size:10px;font-weight:600;border:1px solid currentColor;border-radius:3px;padding:0 3px;white-space:nowrap;line-height:1.45}
+.status-marker.is-void{color:#727d8f}
+.status-marker.is-horse{color:var(--water)}
+.status-marker.is-tomb{color:var(--earth)}
+.role-mark{font-size:9px;background:#edf4fb;color:#315d97}
+.palace-stage{font-size:9px;line-height:1.2;color:#929398;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.palace-branch{font-size:10px}
+.sample-strip{display:flex;gap:7px;overflow-x:auto;background:#f6f6f6;padding:8px 10px;scrollbar-width:none}
+.sample-strip button{border:1px solid #c9cbd0;background:#fff;color:#60636a;border-radius:7px;padding:7px 8px;font-size:11px;white-space:nowrap;flex-shrink:0}
+.sample-strip button.active{background:#e7f1ff;border-color:#599af9;color:#1469d1;font-weight:600}
+.legend span{font-weight:600}
+.legend .metal{color:var(--metal)}.legend .wood{color:var(--wood)}
+.legend .water{color:var(--water)}.legend .fire{color:var(--fire)}.legend .earth{color:var(--earth)}
+.detail-facts{display:flex;flex-direction:column;gap:7px}
+.detail-fact{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.65;border-bottom:1px solid #f1f1f2;padding-bottom:7px}
+.detail-fact:last-child{border:0;padding-bottom:0}
+.detail-dot{font-weight:700;min-width:32px;flex-shrink:0}
+.detail-alert{background:#f1f5f9;border-radius:12px;padding:12px;color:#596579;font-size:12px;line-height:1.7}
+.detail-stage{font-size:12px;line-height:1.7;color:#65666c}
+.sheet-fact b{font-size:19px;line-height:1.3;display:block;overflow-wrap:anywhere}
+.sheet-grid{align-items:stretch}
+
 </style>
 </head><body>
 <div class="phone">
@@ -123,9 +157,10 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
   <div class="pillarmeta">阴遁·<strong>五局</strong>　甲子旬<br>值符:<strong>天禽</strong>　值使:<strong>死门</strong></div>
 </div>
 <div class="info-strip"><span class="method-label">时家转盘 · 霜降上元</span><span class="head-actions"><button class="icon-button" data-nav="setup" aria-label="选择时间">◷</button><button class="icon-button" data-nav="reading" aria-label="阅读断词">☷</button></span></div>
+<div class="sample-strip" id="sample-switcher" aria-label="选择已核对的四个测试时辰"></div>
 <div class="board-frame"><div class="board-grid" id="palaces"></div></div>
-<div class="legend"><span>原书九宫</span><span>十二长生</span><span>空亡</span><span>点宫查格局</span></div>
-<div class="lower-info">年命：<b>未选（不虚构）</b><br>日空：<b>源书按日旬</b>　时空：<b>甲子旬·戌亥空</b>　时干：<b>丁</b><br><button data-nav="setup">问测何事</button><button data-nav="reading">V3.9.1 完整断词</button><button data-nav="setup">30秒静心起局</button></div>
+<div class="legend" aria-label="五行颜色图例"><span class="metal">金</span><span class="wood">木</span><span class="water">水</span><span class="fire">火</span><span class="earth">土</span><span>空亡</span><span>驿马</span><span>入墓</span></div>
+<div class="lower-info">年命：<b>未选（不虚构）</b><br><span id="runtime-status"></span><br><button data-nav="setup">问测何事</button><button data-nav="reading">V3.9.1 完整断词</button><button data-nav="setup">30秒静心起局</button></div>
 <div class="safe-notice">固定研究样例 · 非实时起盘：2026-11-01 05:00 美国东部时区，阴遁五局。星、门、神和天地干取自已保存的真实起盘记录。实际起盘需要未来的原生离线引擎，当前盘不是你新问题的计算结果。</div>
 </section>
 
@@ -193,61 +228,146 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 </div></div>
 </div>
 <script src="./issue-policy.js"></script>
+<script src="./five-element-colors.js"></script>
+<script src="./chart-facts-v3.js"></script>
 <script>
 "use strict";
 // All eight real heavenly/earth/star/door/deity pairs below are copied from
 // frozen, independently cast 2026-11-01T05:00 America/New_York V3.9.1 audit.
 // Screenshot supplies PRESENTATION style ONLY, never a new casting algorithm.
-const demo={
- localTime:"2026-11-01T05:00:00-05:00",
- roles:{patient:6,illness:8,doctor:4,yi:4,hour:2},
- palaces:[
- {p:4,n:"巽四",element:"木",deity:"九地",door:"杜门",earth:"己",heaven:[["天心","乙","辰冠带、巳沐浴"]],branches:"辰巳"},
- {p:9,n:"离九",element:"火",deity:"玄武",door:"景门",earth:"癸",heaven:[["天蓬","壬","午胎"]],branches:"午"},
- {p:2,n:"坤二",element:"土",deity:"白虎",door:"死门",earth:"辛",heaven:[["天任","丁","未冠带、申沐浴"]],branches:"未申"},
- {p:3,n:"震三",element:"木",deity:"九天",door:"伤门",earth:"庚",heaven:[["天柱","丙","卯沐浴"]],branches:"卯"},
- {p:5,n:"中五",element:"土",deity:"",door:"",earth:null,heaven:[],branches:""},
- {p:7,n:"兑七",element:"金",deity:"六合",door:"惊门",earth:"丙",heaven:[["天冲","庚","酉帝旺"]],branches:"酉"},
- {p:8,n:"艮八",element:"土",deity:"值符",door:"生门",earth:"丁",heaven:[["天芮","辛","丑养、寅胎"],["天禽","戊","丑养、寅长生"]],branches:"丑寅"},
- {p:1,n:"坎一",element:"水",deity:"螣蛇",door:"休门",earth:"壬",heaven:[["天英","癸","子临官"]],branches:"子"},
- {p:6,n:"乾六",element:"金",deity:"太阴",door:"开门",earth:"乙",heaven:[["天辅","己","戌养、亥胎"]],branches:"戌亥"}
-]};
-const posRoles=p=>Object.entries(demo.roles).filter(([,v])=>v===p).map(([k])=>({"patient":"患者","illness":"天芮","doctor":"天心","yi":"乙奇","hour":"时干"}[k]));
+// The four samples below are REAL SOURCE-COMPUTED immutable Python V3.9.1 casts.
+const sourceCharts=window.WenguaVerifiedCharts.samples;
+const five=window.WenguaFiveElements;
+if(!sourceCharts||sourceCharts.length!==4||!five)throw new Error("Verified chart facts or 5-element colors failed to load");
+let sampleIndex=0;
+let demo=sourceCharts[0];
+const roleNames={patient:"患者",illness:"病宫天芮",doctor:"天心",yi:"乙奇",hour:"时干"};
+function color(type,symbol){return five.color(type,symbol);}
+function colored(type,value,cls=""){return '<span class="'+cls+'" style="color:'+color(type,value)+'">'+value+'</span>';}
+function statusBadges(p){
+  const bits=[];
+  if(p.void.length)bits.push('<span class="status-marker is-void">空'+p.void.join("")+'</span>');
+  if(p.horse)bits.push('<span class="status-marker" style="color:'+color("branch",p.horse)+'">马'+p.horse+'</span>');
+  for(const t of p.tomb){
+    bits.push('<span class="status-marker" style="color:'+color("stem",t.stem)+'">'+(t.plane==="天盘"?"天":"地")+t.stem+t.branch+"墓"+'</span>');
+  }
+  return bits.join("");
+}
+function legendBranch(p){
+ if(!p.heaven.length)return "中五";
+ const x=p.heaven[0];
+ return p.branches.join("")+" "+x.stages.map(z=>z.branch+z.stage).join("、");
+}
 function renderBoard(){
- document.querySelector("#palaces").innerHTML=demo.palaces.map(x=>{
-   if(x.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span class="center-caption">中宫独立解析</span></button>';
-   const sky=x.heaven.map(s=>s[1]).join("·"), stars=x.heaven.map(s=>s[0]).join("·");
-   const role=posRoles(x.p);
-   return '<button class="palace" data-palace="'+x.p+'" aria-label="'+x.n+' '+stars+' '+x.door+' '+x.deity+'">'+
-   '<div class="palace-head"><span class="palace-branch">'+x.branches+' · '+x.heaven[0][2]+'</span><span class="palace-n">'+x.p+'宫</span></div>'+
-   '<div class="palace-deity"><span class="palace-symbol">'+x.earth+'</span><span class="deity-name '+(x.deity==="白虎"?"red":"")+'">'+x.deity+'</span></div>'+
-   '<div class="palace-content"><span class="sky-star">'+stars+'</span><span class="palace-stem">'+sky+'</span>'+
-   '<span class="door-name">'+x.door+'</span><span class="bottom-stem">'+x.earth+'</span></div>'+
-   '<div class="palace-foot">'+role.map(r=>'<span class="role-mark">'+r+'</span>').join("")+
-   (x.p===6?'<span class="void-mark">戌亥空</span>':'')+'</div></button>';
+ const grid=document.querySelector("#palaces");
+ grid.innerHTML=demo.palaces.map(p=>{
+   if(p.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span class="center-caption">中宫另论</span></button>';
+   const role=p.roles.map(z=>'<span class="role-mark">'+z+'</span>').join("");
+   const stars=p.heaven.map(z=>colored("star",z.star)).join("·");
+   const skies=p.heaven.map(z=>colored("stem",z.stem)).join("·");
+   return '<button class="palace" data-palace="'+p.p+'" aria-label="'+p.name+
+     '，'+p.heaven.map(z=>z.star).join("、")+'，'+p.door+'，'+p.deity+'，'+
+     p.void.join("")+'空，'+(p.horse?"马"+p.horse:"")+'">'+
+     '<div class="palace-head"><span class="palace-branch">'+p.branches.join("")+" · "+p.element+
+     '</span><span class="palace-n">'+p.p+'宫</span></div>'+
+     '<div class="palace-deity"><span class="palace-symbol">'+colored("stem",p.earth)+'</span>'+
+     '<span class="deity-name">'+colored("deity",p.deity)+'</span></div>'+
+     '<div class="palace-content"><span class="sky-star">'+stars+'</span><span class="palace-stem">'+skies+'</span>'+
+     '<span class="door-name">'+colored("door",p.door)+'</span><span class="bottom-stem">'+colored("stem",p.earth)+'</span></div>'+
+     '<div class="palace-stage">'+legendBranch(p)+'</div>'+
+     '<div class="palace-foot">'+role+statusBadges(p)+'</div></button>';
+ }).join("");
+}
+function renderHeader(){
+ const fmt=demo.iso.slice(0,10).replaceAll("-","年").replace("年","年");
+ const d=demo.iso.slice(0,10).split("-");
+ const local=demo.iso.slice(11,16);
+ document.querySelector(".date-control").textContent=d[0]+"年"+Number(d[1])+"月"+Number(d[2])+"日 "+local+"  ⌄";
+ const pp=[["year","年"],["month","月"],["day","日"],["hour","时"]];
+ document.querySelector(".pillars").innerHTML=pp.map(([k,label])=>{
+   const v=demo.pillars[k];
+   return '<div class="pillar">'+colored("stem",v[0])+'<small>'+label+'</small>'+colored("branch",v[1])+'</div>';
+ }).join("")+
+ '<div class="pillarmeta">阴遁·<strong>'+demo.bureau.ju+'局</strong>　'+demo.xunHead+'旬'+
+ '<br>值符:<strong>'+demo.valueStar+'</strong>　值使:<strong>'+demo.valueDoor+'</strong></div>';
+ document.querySelector(".method-label").textContent="时家转盘 · "+demo.solarTerm;
+ document.querySelector("#runtime-status").textContent="时空："+demo.xunHead+"旬·"+demo.voidBranches.join("")+
+   "空　时支马："+demo.hourHorse+"（"+demo.hourHorsePalace+"宫）";
+ document.querySelector(".safe-notice").textContent=
+  "固定测试盘 · 非实时起盘："+demo.iso.slice(0,16)+"，阴遁"+demo.bureau.ju+
+  "局。空亡、驿马、天盘/地盘入墓均由对应真盘机械计算，不是这次问事的实时占断。";
+ document.querySelector("#sample-switcher").innerHTML=sourceCharts.map((x,i)=>{
+   const d=x.iso.slice(5,10).replace("-","/");
+   return '<button data-sample="'+i+'" class="'+(i===sampleIndex?"active":"")+'">'+d+" "+
+      x.pillars.hour+' · '+(i===sampleIndex?"当前":"切换")+'</button>';
  }).join("");
 }
 function palaceDetail(index){
  const p=demo.palaces.find(x=>x.p===index);if(!p)return;
- const names=posRoles(p.p);
- document.querySelector("#sheet-title").textContent=p.n+" · "+p.element+"行";
- document.querySelector("#sheet-sub").textContent=p.p===5?"中五宫按独立规则，不套普通星门神。":"真正的星、门、神、天地干与十二长生";
- document.querySelector("#sheet-tags").innerHTML=names.map(s=>"<span>"+s+"</span>").join("")+
- (p.p===6?"<span>戌亥旬空</span>":"")+'<span>已封存演示盘</span>';
- if(p.p===5){document.querySelector("#sheet-main").innerHTML='<div class="sheet-card"><h3>中五宫 · 特殊规则</h3><p>此份冻结审计没有独立列出中五宫天盘星、八门、八神，不把其他宫的配置伪造到中五。中宫单独根据源书计算显示。</p></div>';return;}
- let star=p.heaven.map(s=>s[0]).join(" · "),sky=p.heaven.map(s=>s[1]).join(" · ");
- const stage=p.heaven.map(s=>s[0]+"携"+s[1]+"："+s[2]).join("<br>");
+ document.querySelector("#sheet-title").textContent=p.name+" · "+p.element+"行";
+ document.querySelector("#sheet-sub").textContent=p.p===5?
+   "中五宫按独立原书规则处理":"落宫地支："+p.branches.join("、")+" · 冻结测试盘，非实时占断";
+ const tags=[...p.roles.map(r=>'<span>'+r+'</span>')];
+ if(p.void.length)tags.push('<span>旬空：'+p.void.join("、")+'</span>');
+ if(p.horse)tags.push('<span>时马：'+p.horse+'</span>');
+ if(p.tomb.length)tags.push('<span>入墓：'+p.tomb.length+'项（分天地盘）</span>');
+ document.querySelector("#sheet-tags").innerHTML=tags.join("");
+ if(p.p===5){
+    document.querySelector("#sheet-main").innerHTML='<div class="sheet-card"><h3>中五特殊宫位</h3><p>原起盘未给普通九星、八门、八神；不可凭九宫布局硬造三项。</p></div>';
+    document.querySelector("#overlay").classList.add("open");return;
+ }
+ const facts=[["八神","deity",p.deity],["九星","star",p.heaven.map(z=>z.star)],["八门","door",p.door],["天盘干","stem",p.heaven.map(z=>z.stem)],["地盘干","stem",p.earth]];
+ const factsGrid=facts.map(([label,type,v])=>{
+    const values=Array.isArray(v)?v:[v];
+    return '<div class="sheet-fact"><small>'+label+'</small><b>'+
+       values.map(x=>colored(type,x)).join(" · ")+'</b></div>';
+ }).join("");
+ const lifecycle=p.heaven.map(z=>
+    '<div class="detail-fact"><span class="detail-dot">'+colored("stem",z.stem)+'</span>'+
+    '<span>'+z.star+' · 天盘'+z.stem+'：'+z.stages.map(st=>st.branch+st.stage).join("、")+'</span></div>'
+ ).join("");
+ const earth='<div class="detail-fact"><span class="detail-dot">'+colored("stem",p.earth)+'</span>'+
+   '<span>地盘'+p.earth+'：'+p.earthStages.map(st=>st.branch+st.stage).join("、")+'</span></div>';
+ const states=[
+   p.void.length?'<div class="detail-fact"><span class="detail-dot">空亡</span><span>占时'+
+         demo.xunHead+'旬，'+demo.voidBranches.join("、")+'空；本宫包含'+p.void.join("、")+'支。</span></div>':"",
+   p.horse?'<div class="detail-fact"><span class="detail-dot">'+colored("branch",p.horse)+'</span>'+
+         '<span>占时'+demo.pillars.hour+'，以时支'+demo.pillars.hour[1]+'取驿马，马支'+p.horse+
+         '落本宫。不是见马就能自动认定入墓已冲开。</span></div>':"",
+   ...p.tomb.map(t=>'<div class="detail-fact"><span class="detail-dot">'+
+        colored("stem",t.stem)+'</span><span>'+t.plane+t.stem+'在'+t.branch+
+        '支入墓；'+(demo.openedTombs.some(x=>x.palace===p.p&&x.plane===t.plane&&x.stem===t.stem&&x.branch===t.branch)?
+           '实际马支与墓支六冲，记录为冲墓候选。':'未见时马支直接六冲该墓支；不可直接当作冲开。')+
+        '</span></div>')]
+ ].filter(Boolean).join("");
  document.querySelector("#sheet-main").innerHTML=
- '<div class="sheet-grid"><div class="sheet-fact"><small>八神 · 神盘</small><b style="color:#d48732">'+p.deity+'</b></div>'+
- '<div class="sheet-fact"><small>九星 · 天盘</small><b style="color:#29a869">'+star+'</b></div>'+
- '<div class="sheet-fact"><small>八门 · 人盘</small><b style="color:#2785f6">'+p.door+'</b></div>'+
- '<div class="sheet-fact"><small>天盘干 / 地盘干</small><b><span style="color:#ef4b3b">'+sky+'</span> / <span style="color:#c68836">'+p.earth+'</span></b></div></div>'+
- '<div class="sheet-card"><h3>十二长生 · 实际落宫地支</h3><p>'+stage+'</p></div>'+
- '<div class="sheet-card"><h3>宫位结构与取用</h3><p>'+p.n+'属'+p.element+'，所辖地支'+p.branches+'。'+
- (names.length?('在此盘承担 '+names.join("、")+' 角色。'):"本宫不直接承担患者、天芮、天心、乙奇或时干主角色。")+
- (p.p===6?'本占时甲子旬戌亥空。':'')+
- '所有角色共宫时先保留各自依据，不把同一项证据重复当作两个结论。</p></div>'+
- '<div class="warning">这是传统古籍盘面分析，不代表现实疾病状态。软件不会自动显示不存在的应期或医学结论。</div>';
+   '<div class="sheet-grid">'+factsGrid+'</div>'+
+   '<div class="sheet-card"><h3>十二长生 · 天盘与地盘分别实算</h3><div class="detail-facts">'+lifecycle+earth+'</div></div>'+
+   '<div class="sheet-card"><h3>空亡 · 驿马 · 入墓</h3>'+
+     (states?'<div class="detail-facts">'+states+'</div>':'<p>本宫此次未触发时旬空、驿马落宫或天／地盘干入墓。</p>')+
+   '</div>'+
+   '<div class="sheet-card"><h3>本宫实际角色与取用</h3><p>'+p.name+
+     '属'+p.element+'，辖'+p.branches.join("、")+'。'+
+     (p.roles.length?'问事角色：'+p.roles.join("、")+'。':'本宫非已明确的核心问事角色。')+
+     '角色和组合条件共宫时保留不同证据，但同一事实不重复判断。</p></div>'+
+   '<div class="detail-alert">五行色只随符号本身属性变化，不随神、星、门类别变化。墓与旬空各是独立事实，不直接等同现实疾病结局。</div>';
+ document.querySelector("#overlay").classList.add("open");
+}
+function renderReading(){
+ const ch=demo.readingSections;
+ if(!Array.isArray(ch)||!ch.length)throw new Error("Missing unmodified V3.9.1 reading for selected source chart");
+ document.querySelector("#sections").innerHTML=ch.map(z=>'<details><summary>'+
+    z.title+'</summary><p>'+z.text+'</p></details>').join("");
+ document.querySelector("#conclusion .headline").textContent=
+    '原书主判'+(demo.sourceVerdict==="病凶"?"偏凶":"偏吉")+' · 正反证据同列';
+ const paras=document.querySelectorAll("#conclusion .summary-card p");
+ if(paras.length)paras[0].textContent=ch[ch.length-1].text+
+    '（此为固定测试盘的传统象意，不代表实际医学判断。）';
+}
+function chooseSample(i){
+ if(i<0||i>=sourceCharts.length||!Number.isInteger(i))throw new Error("Invalid sample index");
+ sampleIndex=i; demo=sourceCharts[i];
+ renderHeader(); renderBoard(); renderReading();
 }
 function navigate(page){
  clearTimer();
@@ -310,9 +430,8 @@ document.querySelector("#to-ritual").addEventListener("click",async()=>{
  }catch(e){label.textContent="未能安全核对同题15天限制："+e.message;}
 });
 document.querySelectorAll("[data-nav]").forEach(e=>e.addEventListener("click",()=>navigate(e.dataset.nav)));
-document.querySelectorAll("[data-palace]").forEach(e=>e.addEventListener("click",()=>{
- palaceDetail(Number(e.dataset.palace));document.querySelector("#overlay").classList.add("open");
-}));
+document.querySelector("#palaces").addEventListener("click",e=>{const b=e.target.closest("[data-palace]");if(b)palaceDetail(Number(b.dataset.palace));});
+document.querySelector("#sample-switcher").addEventListener("click",e=>{const b=e.target.closest("[data-sample]");if(b)chooseSample(Number(b.dataset.sample));});
 document.querySelector("#close-sheet").addEventListener("click",()=>document.querySelector("#overlay").classList.remove("open"));
 document.querySelector("#overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("open")});
 document.querySelectorAll("[data-tab]").forEach(e=>e.addEventListener("click",()=>{
@@ -323,18 +442,6 @@ document.querySelectorAll("[data-result]").forEach(e=>e.addEventListener("click"
  document.querySelectorAll("[data-result]").forEach(el=>el.classList.toggle("active",el===e));
  document.querySelectorAll(".result-panel").forEach(el=>el.style.display=el.id===e.dataset.result?"block":"none");
 }));
-const oldTexts=[
-["问事取用","本人以日干己为主要用神，落乾六宫；天芮落艮八宫。"],
-["值符值使","值符天禽星落艮八宫，值使死门落坤二宫。"],
-["天芮病宫","天芮落艮八宫，携辛丑养、寅胎，天禽携戊丑养、寅长生；二者同宫不重复投票。"],
-["病星月令","戌月天芮旺衰及星门神关系必须与原书规则一起判断。"],
-["患者用神宫","日干己落乾六宫，开门、太阴；用干己在戌养、亥胎，宫位逢戌亥旬空。"],
-["医生医药","天心与乙奇同在巽四宫，携乙辰冠带、巳沐浴。同宫两类取用不代表两次独立医药收益。"],
-["时干事体","时干丁落坤二宫，死门、白虎，丁在未冠带、申沐浴。"],
-["特殊凶吉格局","以真实宫位分别核对刑冲墓空、门迫及原书有序天地干。"],
-["伏吟反吟与快慢","应期以条件触发为先；静心仪式并不改变古籍规则及盘面真实性。"],
-["最后断词","本视图仅展示历史样例关键证据。完整版请以项目封存的 V3.9.1 原始11段文本为准，禁止把这段设计说明当成生成的占断。"]];
-document.querySelector("#sections").innerHTML=oldTexts.map(([t,s])=>"<details><summary>"+t+"</summary><p>"+s+"</p></details>").join("");
-renderBoard();
+chooseSample(0);
 </script>
 </body></html>
