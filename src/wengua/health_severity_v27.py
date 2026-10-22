@@ -112,9 +112,9 @@ def _evidence_and_verdict(ill,person,doctor,medicine,aux,month,stage,five,press,
     if stage in ("旺","相"):
         bad.append("天芮在"+month+"月为"+stage+"，病星有气")
     if ill["door"]=="死门":bad.append("病宫临死门")
-    if ill["palace"] in press:bad.append(_palace(ill)+"的"+ill["door"]+"门迫")
+    if ill["palace"] in press:bad.append(_palace(ill)+"的"+ill["door"]+"构成门迫")
     if person["palace"] in press and person["palace"]!=ill["palace"]:
-        bad.append(_palace(person)+"的"+person["door"]+"门迫")
+        bad.append(_palace(person)+"的"+person["door"]+"构成门迫")
     if _yes_void(chart,person):bad.append("患者宫旬空")
     if ill["deity"]=="白虎":bad.append("病星乘白虎")
     if five["triggered"]:bad.append("五不遇时，时干克日干且阴阳同性")
