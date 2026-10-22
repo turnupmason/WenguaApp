@@ -68,18 +68,26 @@ enum QFive {
     static var horseBranch: String { horseByHourBranch["卯"] ?? "" }
     static func localBranches(_ p: QPalace) -> [String] {p.branches.map {String($0)}}
     static func void(_ p: QPalace) -> [String] {
-        localBranches(p).filter {voidBranches.contains($0)}
+        if let c=p.computed { return c.voidBranches }
+        return localBranches(p).filter {voidBranches.contains($0)}
     }
     static func horse(_ p: QPalace) -> String? {
-        localBranches(p).contains(horseBranch) ? horseBranch : nil
+        if let c=p.computed { return c.horseBranch }
+        return localBranches(p).contains(horseBranch) ? horseBranch : nil
     }
     static func heavenTombs(_ p: QPalace) -> [String] {
-        p.sky.components(separatedBy:"·").compactMap { stem in
+        if let c=p.computed {
+            return c.tombs.filter{$0.plane=="天盘"}.map{"天"+$0.stem+$0.branch+"墓"}
+        }
+        return p.sky.components(separatedBy:"·").compactMap { stem in
             guard let tomb=tombBranches[stem],localBranches(p).contains(tomb) else {return nil}
             return "天\(stem)\(tomb)墓"
         }
     }
     static func earthTombs(_ p: QPalace) -> [String] {
+        if let c=p.computed {
+            return c.tombs.filter{$0.plane=="地盘"}.map{"地"+$0.stem+$0.branch+"墓"}
+        }
         guard let tomb=tombBranches[p.ground],localBranches(p).contains(tomb) else {return []}
         return ["地\(p.ground)\(tomb)墓"]
     }
@@ -97,6 +105,7 @@ struct QPalace: Identifiable {
     let ground: String
     let stages: String
     let roles: [String]
+    var computed: WenguaNativePalace? = nil
 
     static let actualSourceFixture: [QPalace] = [
         .init(id: 4, name: "巽四", element: "木", branches: "辰巳",
@@ -131,6 +140,42 @@ struct QPalace: Identifiable {
     ]
 }
 
+
+extension QPalace {
+    // Maps newly computed Swift chart directly into the exact original UI.
+    // No hand-filled nine palace rows, and no false subject-specific day use
+    // for persons whose V3.9 relationship binder is not yet ported.
+    static func fromNative(_ cell: WenguaNativePalace,
+                           chart: WenguaNativeChart,
+                           relation: String) -> QPalace {
+        let p=cell.id
+        let e=["坎":"水","坤":"土","震":"木","巽":"木","中":"土",
+               "乾":"金","兑":"金","艮":"土","离":"火"][cell.gua] ?? "土"
+        let names=cell.heavenStars.map{$0.star.replacingOccurrences(of:"星",with:"")}
+        let sky=cell.heavenStars.map{$0.carriedStem}.joined(separator:"·")
+        let life=cell.heavenStars.map { star in
+            star.star.replacingOccurrences(of:"星",with:"")+"携"+star.carriedStem+"："+
+            star.stages.map{$0.branch+$0.stage}.joined(separator:"、")
+        }.joined(separator:"；")
+        var tags=[String]()
+        if cell.heavenStars.contains(where:{$0.star=="天芮星"}) {tags.append("病宫")}
+        if cell.heavenStars.contains(where:{$0.star=="天心星"}) {tags.append("天心")}
+        if cell.heavenStars.contains(where:{$0.carriedStem=="乙"}) {tags.append("乙奇")}
+        if cell.heavenStars.contains(where:{$0.carriedStem==String(chart.pillars.hour.prefix(1))}) {
+            tags.append("时干")
+        }
+        if relation=="本人" &&
+           cell.heavenStars.contains(where:{$0.carriedStem==String(chart.pillars.day.prefix(1))}) {
+            tags.append("患者")
+        }
+        return QPalace(id:p,name:cell.gua+(p==5 ? "五" : String(p)),
+                       element:e,branches:cell.branches.joined(),
+                       deity:cell.deity ?? "",stars:names.joined(separator:"·"),
+                       door:cell.door ?? "",sky:sky,ground:cell.earthStem,
+                       stages:life,roles:tags,computed:cell)
+    }
+}
+
 struct WenguaRootView: View {
     var body: some View {
         TabView {
@@ -153,6 +198,21 @@ struct ProfessionalChartScreen: View {
     @State private var chosenPalace: QPalace?
     @State private var showAsk = false
     @State private var showReading = false
+    @State private var nativeChart: WenguaNativeChart? = nil
+    @State private var castRelation = "本人"
+
+    private var shownPalaces: [QPalace] {
+        guard let chart=nativeChart else {return QPalace.actualSourceFixture}
+        let byId=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
+        return WenguaNativeCore.branchOrderPalaces.compactMap {
+            guard let cell=byId[$0] else {return nil}
+            return QPalace.fromNative(cell,chart:chart,relation:castRelation)
+        }
+    }
+    private var shownPillars: WenguaNativePillars {
+        nativeChart?.pillars ?? WenguaNativePillars(year:"丙午",month:"戊戌",
+                                                      day:"己卯",hour:"丁卯")
+    }
 
     var body: some View {
         ScrollView {
@@ -161,7 +221,7 @@ struct ProfessionalChartScreen: View {
                     Button {
                         showAsk = true
                     } label: {
-                        Text("2026年11月1日 05:00  ⌄")
+                        Text(nativeChart.map { String($0.iso.prefix(16)).replacingOccurrences(of:"T",with:" ") + "  ⌄" } ?? "2026年11月1日 05:00 · 测试盘  ⌄")
                             .font(.system(size: 16))
                             .foregroundStyle(QStyle.text)
                     }
@@ -174,14 +234,17 @@ struct ProfessionalChartScreen: View {
                 .padding(.vertical, 13)
 
                 HStack(alignment: .top, spacing: 8) {
-                    pillar("丙", "午", "年", color: QStyle.red)
-                    pillar("戊", "戌", "月", color: QStyle.orange)
-                    pillar("己", "卯", "日", color: QStyle.orange)
-                    pillar("丁", "卯", "时", color: QStyle.blue)
+                    pillar(String(shownPillars.year.prefix(1)),String(shownPillars.year.suffix(1)),"年",color:QStyle.red)
+                    pillar(String(shownPillars.month.prefix(1)),String(shownPillars.month.suffix(1)),"月",color:QStyle.orange)
+                    pillar(String(shownPillars.day.prefix(1)),String(shownPillars.day.suffix(1)),"日",color:QStyle.orange)
+                    pillar(String(shownPillars.hour.prefix(1)),String(shownPillars.hour.suffix(1)),"时",color:QStyle.blue)
                     Spacer(minLength: 0)
                     VStack(alignment: .leading, spacing: 6) {
-                        Text("阴遁 · 五局  ›  甲子旬")
-                        Text("值符：天禽  值使：死门")
+                        Text((nativeChart?.bureau.dun=="yang" ? "阳遁" : "阴遁")+" · "+
+                             String(nativeChart?.bureau.ju ?? 5)+"局 › "+
+                             (nativeChart?.xunShou ?? "甲子")+"旬")
+                        Text("值符："+((nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:""))+
+                             "  值使："+(nativeChart?.valueDoor ?? "死门"))
                     }
                     .font(.system(size: 11))
                     .foregroundStyle(QStyle.secondary)
@@ -192,7 +255,8 @@ struct ProfessionalChartScreen: View {
                 .background(QStyle.backing)
 
                 HStack {
-                    Text("时家转盘 · 霜降上元")
+                    Text("时家转盘 · "+(nativeChart?.solarTerm ?? "霜降")+
+                         " · "+(nativeChart?.bureau.yuan ?? "upper"))
                         .font(.caption)
                         .foregroundStyle(QStyle.secondary)
                         .padding(.horizontal, 10)
@@ -215,7 +279,7 @@ struct ProfessionalChartScreen: View {
                     columns: Array(repeating: GridItem(.flexible(), spacing: 1), count: 3),
                     spacing: 1
                 ) {
-                    ForEach(QPalace.actualSourceFixture) { palace in
+                    ForEach(shownPalaces) { palace in
                         Button { chosenPalace = palace } label: {
                             ProfessionalPalaceTile(palace: palace)
                         }
@@ -236,7 +300,8 @@ struct ProfessionalChartScreen: View {
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("年命：未选择 · 不臆造")
-                    Text("时空：甲子旬，戌亥空")
+                    Text("时空："+(nativeChart?.xunShou ?? "甲子")+"旬，"+
+                             (nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥")+"空")
                     HStack(spacing: 10) {
                         Button("问测何事") { showAsk = true }
                         Button("V3.9.1 断词") { showReading = true }
@@ -249,22 +314,30 @@ struct ProfessionalChartScreen: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(QStyle.backing)
 
-                Text("固定源书研究样例 · 非实时起盘。演示盘不会对应你随后输入的新问题。")
+                Text(nativeChart == nil
+                     ? "当前为固定测试盘。点击选时并静心30秒后，即可用原生 Swift 离线实时生成新盘。"
+                     : "本局由本机离线 Swift 实算四柱、九宫及空马墓。疾病 V3.9.1 自然断词尚未移植，勿将其视为已完成的诊断。")
                     .font(.caption2)
                     .foregroundStyle(QStyle.secondary)
                     .padding(14)
             }
         }
         .background(.white)
-        .navigationTitle("局式 · 演示盘")
+        .navigationTitle(nativeChart == nil ? "局式 · 固定测试盘" : "局式 · 原生实算")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $chosenPalace) { palace in
             ProfessionalPalaceDetail(palace: palace)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
-        .sheet(isPresented: $showAsk) { CastSetupScreen() }
-        .sheet(isPresented: $showReading) { TraditionalReadingPreview() }
+        .sheet(isPresented: $showAsk) {
+            CastSetupScreen { computed, relation in
+                nativeChart=computed
+                castRelation=relation
+                showAsk=false
+            }
+        }
+        .sheet(isPresented: $showReading) { TraditionalReadingPreview(nativeChart:nativeChart) }
     }
 
     private func pillar(_ sky: String, _ branch: String, _ label: String, color: Color) -> some View {
