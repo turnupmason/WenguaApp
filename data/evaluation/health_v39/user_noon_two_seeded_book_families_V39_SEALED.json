@@ -1,0 +1,3476 @@
+{
+  "schema": "wengua_health_v38_random_two_ancient_and_user_real_noon_pre_outcome_predictions",
+  "full_parent_v37_sha256": "f101804acdaa839b89cb1dd2eee5e6391fb3e28f390ffad225b9f6db34f2838e",
+  "rng_seed_input": "V3.8|f927956e98bb4c193b0be6291c1e01edd31ee61a60b150900095fea0264931d7|丙午-戊戌-己巳-庚午",
+  "rng_seed_sha256": "0d149ccb15de0119e4b57ec7244f484736b99f8b41139590a74649702dd39c8c",
+  "random_selection_indices": [
+    7,
+    4
+  ],
+  "randomly_selected_family_ids": [
+    "kaiwu.health.19950219.brother_paralysis",
+    "shenqi.health.19961102.on_site_health"
+  ],
+  "random_draw_frozen_before_outputs": true,
+  "historical_known_family_not_a_secret_blind_test": true,
+  "all_original_book_outcomes_excluded": true,
+  "new_templates_pending_user_professional_review": true,
+  "total_sealed_tests": 3,
+  "records": [
+    {
+      "selection_index": 0,
+      "case_id": "user_20261022_1200_EDT",
+      "origin": "2026 real user question, NOT an ancient book case",
+      "original_question_intent": "severity",
+      "cast_datetime": "2026-10-22T12:00:00-04:00",
+      "exact_minute_verified": true,
+      "four_pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "己巳",
+        "hour": "庚午"
+      },
+      "solar_term": "寒露",
+      "casting_bureau": {
+        "dun": "yin",
+        "ju": 9,
+        "yuan": "middle",
+        "futou": "己巳",
+        "solar_term": "寒露",
+        "calendar_status": "supplied_solar_term_not_independently_checked"
+      },
+      "xun_shou": "甲子",
+      "value_star": "天英星",
+      "value_door": "景门",
+      "relationship": "self",
+      "patient_palace": 4,
+      "illness_palace": 6,
+      "illness_stem_tomb_absence": {
+        "illness_tianrui_star": "天芮星",
+        "actual_heaven_carried_stem": "丙",
+        "illness_palace": 6,
+        "illness_palace_branches": [
+          "戌",
+          "亥"
+        ],
+        "stage_tomb_branch": "戌",
+        "tomb_branch_in_illness_palace": true,
+        "stage_extinct_branch": "亥",
+        "extinct_branch_in_illness_palace": true,
+        "hour_ganzhi": "庚午",
+        "hour_xun_head": "甲子",
+        "void_branches": [
+          "戌",
+          "亥"
+        ],
+        "void_in_illness_palace": true,
+        "void_palace_branches": [
+          "戌",
+          "亥"
+        ],
+        "tomb_branch_also_void": true,
+        "compound_tomb_extinct_void_same_palace": true,
+        "separate_stages_not_separate_deaths": true,
+        "source_stem_tomb": {
+          "status": "draft_source_fact",
+          "branch": "戌",
+          "source_lines": [
+            255,
+            255
+          ],
+          "stem": "丙",
+          "stage": "墓"
+        },
+        "source_stem_extinct": {
+          "status": "draft_source_fact",
+          "branch": "亥",
+          "source_lines": [
+            255,
+            255
+          ],
+          "stem": "丙",
+          "stage": "绝"
+        },
+        "interpretation_not_a_medical_prediction": true
+      },
+      "book_81_ordered_pairs_current_chart": [
+        {
+          "palace": 1,
+          "star": "天柱星",
+          "roles": [
+            "时干宫"
+          ],
+          "top": "庚",
+          "bottom": "乙",
+          "pair_key": "庚/乙",
+          "title": "太白逢星",
+          "alternate_user_health_name": [],
+          "source_line": 302,
+          "source_sha256": "c00b916f892bc1176d146d97ec523019d21ac8de04aba2b1a02427ada31acb13",
+          "source_original": "庚/乙，二者换了主客关系，故名“太白逢星”格，由于庚克乙、乙庚又相合，所以为客有利，为主就不利了，只宜退不宜进了。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": true,
+            "为客": true
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_21",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 2,
+          "star": "天辅星",
+          "roles": [
+            "天芮地盘坤本位"
+          ],
+          "top": "癸",
+          "bottom": "丙",
+          "pair_key": "癸/丙",
+          "title": "华盖悖师",
+          "alternate_user_health_name": [],
+          "source_line": 342,
+          "source_sha256": "3ddf0a436b037061692b6c43782167c53751d0af6a976d3b3e27d2090d64f7fb",
+          "source_original": "癸/丙，阴阳颠倒，阴水癸在上，阳火丙在下。癸高者可称“华盖”，丙又为“悖师”，故名“华盖悖师”格，贵贱逢之皆不利。只有修养高超、能屈能伸、善于因势利导的上等人物才能变不利为有利，反怒为喜。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 3,
+          "star": "天蓬星",
+          "roles": [
+            "乙奇宫",
+            "值使宫"
+          ],
+          "top": "乙",
+          "bottom": "丁",
+          "pair_key": "乙/丁",
+          "title": "奇仪相佐",
+          "alternate_user_health_name": [],
+          "source_line": 292,
+          "source_sha256": "3a46f9b97fbce3d56ce94209204badb5aa9dabc518e3b1d155e62f9bd25ad8b5",
+          "source_original": "乙/丁，即天盘为乙奇，地盘为丁奇，乙木生丁火，故名“奇仪相佐”吉格，最利文书、考试，百事可为。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_favorable_formation",
+          "user_health_supplement": "health_supplement_pair_18",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 4,
+          "star": "天任星",
+          "roles": [
+            "患者宫"
+          ],
+          "top": "己",
+          "bottom": "癸",
+          "pair_key": "己/癸",
+          "title": "地刑玄武",
+          "alternate_user_health_name": [],
+          "source_line": 384,
+          "source_sha256": "5db5792c5f9491784646c58d43b366d1ef8e3bceeef4514503f79f0e28b392d4",
+          "source_original": "己/癸，甲戌己加甲寅癸。己土克癸水，癸水又在北方玄武之位，故名“地刑玄武”凶格，主男女疾病垂危，有囚狱词讼之灾。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": "health_supplement_pair_27",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 6,
+          "star": "天芮星",
+          "roles": [
+            "病宫"
+          ],
+          "top": "丙",
+          "bottom": "辛",
+          "pair_key": "丙/辛",
+          "title": "月奇相合",
+          "alternate_user_health_name": [],
+          "source_line": 332,
+          "source_sha256": "78bfed6fe6a3a30994eb95c051b127f76488883c1a51f9b544b3bd9dc4e7e437",
+          "source_original": "丙/辛，丙在上，辛在下。丙火克辛金，丙为月奇为阳，又与阴金辛相合，故曰“月奇相合”吉格。凡谋事能成，测人疾病也不凶。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_health_favorable",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 6,
+          "star": "天禽星",
+          "roles": [
+            "病宫"
+          ],
+          "top": "壬",
+          "bottom": "辛",
+          "pair_key": "壬/辛",
+          "title": "螣蛇相缠",
+          "alternate_user_health_name": [],
+          "source_line": 410,
+          "source_sha256": "22cdcc36e87a045a40e72d17f46d5fa524bbc2c9526b35e0e31ba10601fa2581",
+          "source_original": "壬/辛，壬在上，辛在下。辛金入辰墓，辰墓中有壬水，壬为螣蛇，又为天网，罩住辛金，故名“螣蛇相缠”格，纵得吉门，也不能安宁，若有谋望，被人欺瞒。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": true,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_31",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 7,
+          "star": "天英星",
+          "roles": [
+            "值符宫"
+          ],
+          "top": "戊",
+          "bottom": "庚",
+          "pair_key": "戊/庚",
+          "title": "值符飞宫",
+          "alternate_user_health_name": [
+            "青龙/飞宫候选"
+          ],
+          "source_line": 268,
+          "source_sha256": "8e466009652a13d59d05a5b2e65ebb835c48398abed172e8e2e1d8183544aeae",
+          "source_original": "戊/庚，即甲子戊加甲申庚。因值符甲最怕庚金克杀，天盘值符甲在地盘遇到庚金，自然要躲避，故名“值符飞宫”格。甲为青龙为吉神，庚为白虎为阻隔凶神，所以测好事不吉，凶事更凶，求财没利益，测病也主凶。惟一的出路，就是值符甲飞离此宫，所以遇此格，又主换地方、换人。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": true,
+            "求财": true,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": "health_supplement_pair_10",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 8,
+          "star": "天心星",
+          "roles": [
+            "天心宫"
+          ],
+          "top": "辛",
+          "bottom": "己",
+          "pair_key": "辛/己",
+          "title": "入狱自刑",
+          "alternate_user_health_name": [],
+          "source_line": 378,
+          "source_sha256": "b09e1ab264ae8687eff8df21d36293533f65f4da4797ba99259259f9407c4010",
+          "source_original": "辛/己，天盘为辛，地盘为己。辛为罪人，己为地户为监狱，故名“入狱自刑”格。主错误由自己造成，奴仆背主，有苦诉讼难伸。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 9,
+          "star": "天冲星",
+          "roles": [],
+          "top": "丁",
+          "bottom": "戊",
+          "pair_key": "丁/戊",
+          "title": "青龙转光",
+          "alternate_user_health_name": [],
+          "source_line": 262,
+          "source_sha256": "d20297ae9d0b3421794be62000586e834e1c08be76969f03bd36d3120f27e78d",
+          "source_original": "丁/戊，即丁奇在天盘，甲子戊在地盘，与前者正好相反。但仍是主客相生，所以列为第四吉格，名曰“青龙转光”。因甲木生丁火，丁火在上，光明更加显著。所以，诸如求婚、求学、求财、求官等好事会更加顺利。故古人讲遇此格“官人升迁，常人威昌”，也就是说，即使平民百姓遇此吉格，也会事业发达、声名卓著。同样，如果遇到入墓或门迫之时，吉的程度会大减，甚至招来是非。",
+          "source_conditions": {
+            "门迫": true,
+            "入墓": true,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": true,
+            "但": true,
+            "测婚": false,
+            "测病": false,
+            "求财": true,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_conditional_auspicious",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        }
+      ],
+      "user_42_stem_pairs_audit": [
+        {
+          "id": "health_supplement_pair_01",
+          "name": "青龙返首",
+          "pattern": [
+            "戊",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_02",
+          "name": "飞鸟跌穴",
+          "pattern": [
+            "丙",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_03",
+          "name": "白虎猖狂",
+          "pattern": [
+            "辛",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_04",
+          "name": "青龙逃走",
+          "pattern": [
+            "乙",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_05",
+          "name": "日奇入墓",
+          "pattern": [
+            "乙",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_06",
+          "name": "日奇入地",
+          "pattern": [
+            "乙",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_07",
+          "name": "朱雀入狱",
+          "pattern": [
+            "丁",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_08",
+          "name": "朱雀投江",
+          "pattern": [
+            "丁",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_09",
+          "name": "螣蛇夭矫",
+          "pattern": [
+            "癸",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_10",
+          "name": "青龙/飞宫候选",
+          "pattern": [
+            "戊",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_11",
+          "name": "飞宫伏宫候选",
+          "pattern": [
+            "庚",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_12",
+          "name": "荧入太白",
+          "pattern": [
+            "丙",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_13",
+          "name": "太白入荧",
+          "pattern": [
+            "庚",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_14",
+          "name": "青龙转光",
+          "pattern": [
+            "戊",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_15",
+          "name": "星随月转",
+          "pattern": [
+            "丁",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_16",
+          "name": "狱神得奇",
+          "pattern": [
+            "辛",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_17",
+          "name": "奇仪顺遂",
+          "pattern": [
+            "乙",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_18",
+          "name": "奇仪相佐",
+          "pattern": [
+            "乙",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_19",
+          "name": "日月并行",
+          "pattern": [
+            "丙",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_20",
+          "name": "星奇入太阴",
+          "pattern": [
+            "丁",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_21",
+          "name": "太白逢星",
+          "pattern": [
+            "庚",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_22",
+          "name": "小蛇得势",
+          "pattern": [
+            "壬",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_23",
+          "name": "犬遇青龙",
+          "pattern": [
+            "己",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_24",
+          "name": "小蛇化龙",
+          "pattern": [
+            "壬",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_25",
+          "name": "游魂入墓",
+          "pattern": [
+            "己",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_26",
+          "name": "地户逢鬼",
+          "pattern": [
+            "己",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_27",
+          "name": "地刑玄武",
+          "pattern": [
+            "己",
+            "癸"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "患者宫",
+              "palace": 4,
+              "literal": "己加癸"
+            }
+          ],
+          "meaning": "缠绵象",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_28",
+          "name": "地网高张",
+          "pattern": [
+            "己",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_29",
+          "name": "困龙被伤",
+          "pattern": [
+            "辛",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_30",
+          "name": "天牢华盖",
+          "pattern": [
+            "辛",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_31",
+          "name": "螣蛇相缠",
+          "pattern": [
+            "壬",
+            "辛"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "病宫",
+              "palace": 6,
+              "literal": "壬加辛"
+            }
+          ],
+          "meaning": "缠绵",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_32",
+          "name": "蛇入地罗",
+          "pattern": [
+            "壬",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_33",
+          "name": "太白入网",
+          "pattern": [
+            "癸",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_34",
+          "name": "网盖天牢",
+          "pattern": [
+            "癸",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_35",
+          "name": "天网四张",
+          "pattern": [
+            "癸",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_36",
+          "name": "地户遇奇候选",
+          "pattern": [
+            "己",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_37",
+          "name": "白虎出力",
+          "pattern": [
+            "辛",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_38",
+          "name": "阴人害事",
+          "pattern": [
+            "丙",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_39",
+          "name": "青龙入天牢",
+          "pattern": [
+            "戊",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_40",
+          "name": "刑格候选",
+          "pattern": [
+            "庚",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_41",
+          "name": "大格候选",
+          "pattern": [
+            "庚",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_42",
+          "name": "伏干候选",
+          "pattern": [
+            "辛",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        }
+      ],
+      "composites_17_audit": [
+        {
+          "id": "health_composite_01",
+          "name": "地遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_02",
+          "name": "鬼遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_03",
+          "name": "人遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_04",
+          "name": "鬼假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_05",
+          "name": "人假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_06",
+          "name": "三诈",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_07",
+          "name": "三奇得使",
+          "state": "triggered",
+          "evidence": [
+            {
+              "value_door": "景门",
+              "value_door_palace": 3,
+              "same_palace_heaven_three_wonders": [
+                "乙"
+              ],
+              "source": "kaiwu_ch04_section_三奇得使"
+            }
+          ],
+          "reason": "",
+          "source": "kaiwu_ch04_section_三奇得使"
+        },
+        {
+          "id": "health_composite_08",
+          "name": "玉女守门",
+          "state": "triggered",
+          "evidence": [
+            {
+              "value_door": "景门",
+              "value_door_palace": 3,
+              "earth_stem": "丁",
+              "source": "kaiwu_ch04_section_玉女守门"
+            }
+          ],
+          "reason": "",
+          "source": "kaiwu_ch04_section_玉女守门"
+        },
+        {
+          "id": "health_composite_09",
+          "name": "丧门吊客",
+          "state": "unknown_missing_birth_year",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_10",
+          "name": "三门四户",
+          "state": "unknown_definition",
+          "evidence": [],
+          "reason": "书源未给出这一组全部可判定的机械条件，不得强套单一星门",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_11",
+          "name": "伏干飞干飞宫伏宫",
+          "state": "unknown_partially_defined",
+          "evidence": [],
+          "reason": "飞宫伏宫已实算，伏干飞干条件仍需独立古籍定义",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_12",
+          "name": "马星",
+          "state": "not_triggered",
+          "evidence": [
+            {
+              "hour_branch": "午",
+              "horse_branch": "申",
+              "roles_in_horse_palace": [],
+              "horse_palace": 2,
+              "source": "kaiwu_ch04_preparation_时辰驿马"
+            }
+          ],
+          "reason": "有马星方位≠应期已到，需真实冲合方可判断变化",
+          "source": "kaiwu_ch04_preparation_时辰驿马"
+        },
+        {
+          "id": "health_composite_13",
+          "name": "长生旺衰年龄",
+          "state": "unknown_missing_age_or_birth",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_14",
+          "name": "新病久病空亡",
+          "state": "unknown_missing_duration",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_15",
+          "name": "星门反伏",
+          "state": "not_triggered",
+          "evidence": [
+            {
+              "star": "非伏吟反吟",
+              "door": "非伏吟反吟"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_16",
+          "name": "天网/罗网",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_17",
+          "name": "时干地盘日干生克",
+          "state": "triggered",
+          "evidence": [
+            {
+              "patient_palace": 4,
+              "event_palace": 1,
+              "patient_vs_hour_relation": "受生"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        }
+      ],
+      "two_sided_evidence": {
+        "patient_element": "木",
+        "illness_element": "金",
+        "patient_vs_illness": "受克",
+        "illness_palace_vs_tianrui_earth": "受生",
+        "illness_star_relation_prose": "天芮土生病宫五行，病星泄气，需结合月令",
+        "double_control": false,
+        "double_adverse_disease_growth": false,
+        "double_adverse_patient_nourishes": false,
+        "double_adverse_patient_formation": true,
+        "double_adverse_types": [
+          "病宫克患者、患者宫又临原书凶格"
+        ],
+        "double_favorable_types": [],
+        "actual_patient_adverse_formation": [
+          {
+            "name": "地刑玄武",
+            "pair": "己/癸",
+            "source_line": 384
+          }
+        ],
+        "patient_void": false,
+        "patient_hazards": [],
+        "medicine_controlling_palace_counter": false,
+        "decision_override": "病凶",
+        "priority": "两项不同的传统凶证相互加强，患者宫受制；不能以单个吉格推翻主证",
+        "scope": "traditional_cultural_judgment_only"
+      },
+      "traditional_research_verdict": "病凶",
+      "original_author_conclusion_used_as_input": false,
+      "source_post_event_feedback_used_as_input": false,
+      "medical_validity_claim": false,
+      "template_version": "V3.9",
+      "reading_text": "问事取用：本人以日干为主要用神，落巽四宫；天芮星是疾病用神，落乾六宫。\n\n值符值使：值符天英星落兑七宫，值使景门落震三宫。\n\n天芮病宫：天芮与天禽同宫，临生门、九天。所携天盘丙加地盘辛，丙加辛「月奇相合」、壬加辛「螣蛇相缠」。天芮土生病宫金，病星有泄气之象。天盘丙在戌入墓；在亥临绝；占时庚午属甲子旬，戌/亥空，乾六宫旬空。三象同宫，病星所携干的作用受到牵制；空亡还须区分新病久病，不可把入墓、绝地、空亡直接等同于疾病结局。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见死门、六合，天地干己加癸「地刑玄武」。病宫克患者宫，用神受克。患者宫未逢旬空。本盘不利关系相互叠加：病宫克患者、患者宫又临原书凶格。\n\n医生医药：天心落艮八宫，辛加己「入狱自刑」；乙奇落震三宫，乙加丁「奇仪相佐」。天心月废，乙奇月囚。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落坎一宫，庚加乙「太白逢星」。时干代表病情现状，时干宫生患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见乙加丁「奇仪相佐」、戊加庚「值符飞宫」，须合本事取义。值使宫满足三奇得使。值使宫满足玉女守门。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在内盘、患者宫在外盘。病患分居内外盘，缓急并见。不强断具体应期。已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时午支，驿马在申，落2宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：三奇得使、玉女守门。\n\n最后断词：综合看，本盘古籍取象偏凶。病宫克患者宫，用神受克；病宫克患者、患者宫又临原书凶格。同时还有天芮土生病宫金，病星泄气；病宫亦见丙加辛「月奇相合」；病宫旬空，需辨新病与久病；病星所携丙临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "readout_sha256": "e7a747742db38125566c5e03237b619ce5195780667ae56752ec1006a26d5e83",
+      "sections": [
+        {
+          "id": "01_role",
+          "title": "问事取用",
+          "text": "本人以日干为主要用神，落巽四宫；天芮星是疾病用神，落乾六宫。"
+        },
+        {
+          "id": "02_far",
+          "title": "值符值使",
+          "text": "值符天英星落兑七宫，值使景门落震三宫。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮病宫",
+          "text": "天芮与天禽同宫，临生门、九天。所携天盘丙加地盘辛，丙加辛「月奇相合」、壬加辛「螣蛇相缠」。天芮土生病宫金，病星有泄气之象。天盘丙在戌入墓；在亥临绝；占时庚午属甲子旬，戌/亥空，乾六宫旬空。三象同宫，病星所携干的作用受到牵制；空亡还须区分新病久病，不可把入墓、绝地、空亡直接等同于疾病结局。"
+        },
+        {
+          "id": "04_season",
+          "title": "病星月令",
+          "text": "戌月天芮相，病星有气，偏不利。"
+        },
+        {
+          "id": "05_patient",
+          "title": "患者用神宫",
+          "text": "本人宫见死门、六合，天地干己加癸「地刑玄武」。病宫克患者宫，用神受克。患者宫未逢旬空。本盘不利关系相互叠加：病宫克患者、患者宫又临原书凶格。"
+        },
+        {
+          "id": "07_medicine",
+          "title": "医生医药",
+          "text": "天心落艮八宫，辛加己「入狱自刑」；乙奇落震三宫，乙加丁「奇仪相佐」。天心月废，乙奇月囚。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。"
+        },
+        {
+          "id": "08_hour",
+          "title": "时干事体",
+          "text": "时干庚落坎一宫，庚加乙「太白逢星」。时干代表病情现状，时干宫生患者宫，需与病宫共同推断发展方向。"
+        },
+        {
+          "id": "09_hazards",
+          "title": "特殊凶吉格局",
+          "text": "本时辰不属五不遇时。值符值使宫见乙加丁「奇仪相佐」、戊加庚「值符飞宫」，须合本事取义。值使宫满足三奇得使。值使宫满足玉女守门。"
+        },
+        {
+          "id": "10_pace",
+          "title": "伏吟反吟与快慢",
+          "text": "九星、八门均非伏吟或反吟。阴遁病宫在内盘、患者宫在外盘。病患分居内外盘，缓急并见。不强断具体应期。已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时午支，驿马在申，落2宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：三奇得使、玉女守门。"
+        },
+        {
+          "id": "11_final",
+          "title": "最后断词",
+          "text": "综合看，本盘古籍取象偏凶。病宫克患者宫，用神受克；病宫克患者、患者宫又临原书凶格。同时还有天芮土生病宫金，病星泄气；病宫亦见丙加辛「月奇相合」；病宫旬空，需辨新病与久病；病星所携丙临墓或绝，其相关吉格难以全力发挥。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。"
+        }
+      ],
+      "user_review": "pending",
+      "book_case_board_caveat": "True 2026 user civil clock and source fixed casting variant, not a clinic record"
+    },
+    {
+      "selection_index": 1,
+      "case_id": "kaiwu.health.19950219.brother_paralysis",
+      "origin": "original-book first question only",
+      "original_question_intent": "health",
+      "cast_datetime": "1995-02-19T09:30:00+08:00",
+      "exact_minute_verified": false,
+      "four_pillars": {
+        "year": "乙亥",
+        "month": "戊寅",
+        "day": "辛巳",
+        "hour": "癸巳"
+      },
+      "solar_term": "立春",
+      "casting_bureau": {
+        "dun": "yang",
+        "ju": 9,
+        "solar_term": "立春",
+        "source_bureau_override": true
+      },
+      "xun_shou": "甲申",
+      "value_star": "天芮星",
+      "value_door": "死门",
+      "relationship": "younger_sibling",
+      "patient_palace": 9,
+      "illness_palace": 2,
+      "illness_stem_tomb_absence": {
+        "illness_tianrui_star": "天芮星",
+        "actual_heaven_carried_stem": "庚",
+        "illness_palace": 2,
+        "illness_palace_branches": [
+          "未",
+          "申"
+        ],
+        "stage_tomb_branch": "丑",
+        "tomb_branch_in_illness_palace": false,
+        "stage_extinct_branch": "寅",
+        "extinct_branch_in_illness_palace": false,
+        "hour_ganzhi": "癸巳",
+        "hour_xun_head": "甲申",
+        "void_branches": [
+          "午",
+          "未"
+        ],
+        "void_in_illness_palace": true,
+        "void_palace_branches": [
+          "未"
+        ],
+        "tomb_branch_also_void": false,
+        "compound_tomb_extinct_void_same_palace": false,
+        "separate_stages_not_separate_deaths": true,
+        "source_stem_tomb": {
+          "status": "draft_source_fact",
+          "branch": "丑",
+          "source_lines": [
+            257,
+            257
+          ],
+          "stem": "庚",
+          "stage": "墓"
+        },
+        "source_stem_extinct": {
+          "status": "draft_source_fact",
+          "branch": "寅",
+          "source_lines": [
+            257,
+            257
+          ],
+          "stem": "庚",
+          "stage": "绝"
+        },
+        "interpretation_not_a_medical_prediction": true
+      },
+      "book_81_ordered_pairs_current_chart": [
+        {
+          "palace": 1,
+          "star": "天蓬星",
+          "roles": [],
+          "top": "己",
+          "bottom": "己",
+          "pair_key": "己/己",
+          "title": "地户逢鬼",
+          "alternate_user_health_name": [],
+          "source_line": 370,
+          "source_sha256": "c3d2720cb3457384f0fff64c4db7140d493cd8a6e44041e7a4f6089faba1821f",
+          "source_original": "己/己，天地盘均为甲戌己，己又名地户，故名“地户逢鬼”凶格。测病遇此格，发凶或必死。求谋好事不成，可暂不谋为，谋为则凶。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": true,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": "health_supplement_pair_26",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 2,
+          "star": "天芮星",
+          "roles": [
+            "病宫",
+            "时干宫",
+            "值符宫",
+            "值使宫",
+            "天芮地盘坤本位"
+          ],
+          "top": "庚",
+          "bottom": "庚",
+          "pair_key": "庚/庚",
+          "title": "战格",
+          "alternate_user_health_name": [
+            "大格候选"
+          ],
+          "source_line": 390,
+          "source_sha256": "99cb8e88a21bc0e96ee2f0ca38f96149d85346119fdedfbebbc64024904ce37c",
+          "source_original": "庚/庚，名为“太白同宫”，又名“战格”。二个凶神相遇，必然相互争斗，所以主同事、朋友或兄弟之间不和，不仅不利谋事，而且还容易招来官灾横祸。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_41",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 2,
+          "star": "天禽星",
+          "roles": [
+            "病宫",
+            "时干宫",
+            "值符宫",
+            "值使宫",
+            "天芮地盘坤本位"
+          ],
+          "top": "癸",
+          "bottom": "庚",
+          "pair_key": "癸/庚",
+          "title": "太白入网",
+          "alternate_user_health_name": [],
+          "source_line": 402,
+          "source_sha256": "9c5bdd3976c01b55d39ef2c0fbbdb6d150e3040dbd0189ac4a2c3672b4e35e13",
+          "source_original": "癸/庚，癸在上，庚在下。癸又名地网，庚为太白，故名“太白入网”格。由于寅申相冲相刑，所以凡事无成，吉事也易成空。又主以暴力争讼，自罹罪责。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_33",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 3,
+          "star": "天冲星",
+          "roles": [],
+          "top": "辛",
+          "bottom": "辛",
+          "pair_key": "辛/辛",
+          "title": "伏吟天庭",
+          "alternate_user_health_name": [
+            "伏干候选"
+          ],
+          "source_line": 406,
+          "source_sha256": "4ee2b4b77115ff49b9f99b4b3707fcd43c17ee4777de0aa7c1230c819f6149c3",
+          "source_original": "辛/辛，即甲午辛加甲午辛。由于午午自刑，辛又名天狱、天庭，故名“伏吟天庭”格，主为事自破，进退不果，公废私就，讼狱自罹罪名。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_42",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 4,
+          "star": "天辅星",
+          "roles": [],
+          "top": "壬",
+          "bottom": "壬",
+          "pair_key": "壬/壬",
+          "title": "天狱自刑",
+          "alternate_user_health_name": [
+            "蛇入地罗"
+          ],
+          "source_line": 418,
+          "source_sha256": "009ba7b7f40993363273ead5bb85a0af518a0c73dc2e2258fa58fb0579cf0d77",
+          "source_original": "壬/壬，即甲辰壬加甲辰壬，壬为天罗，又名天狱，辰辰自刑，故名“天狱自刑”格。又因壬为蛇，壬又名地罗，故又名“蛇入地罗”格。主求谋无成，祸患起于内部，诸事主破败，外人缠绕，内事索索。如果遇吉门吉星，尚可缓解困顿的处境。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": true,
+            "凶门": false,
+            "如果": true,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_32",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 6,
+          "star": "天心星",
+          "roles": [
+            "天心宫"
+          ],
+          "top": "丁",
+          "bottom": "丁",
+          "pair_key": "丁/丁",
+          "title": "星奇伏吟",
+          "alternate_user_health_name": [
+            "星奇入太阴"
+          ],
+          "source_line": 346,
+          "source_sha256": "0d012c9d93a6b1f6f38e3c9756508cc86c1b1e638493bca92f4bd87acd156907",
+          "source_original": "丁/丁，为“星奇伏吟”格。由于丁奇最灵，其他天干伏吟都不吉、不宜动，惟独丁奇伏吟，仍然为吉，主文书证件即至，喜事从心，万事如意。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_20",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 7,
+          "star": "天柱星",
+          "roles": [],
+          "top": "丙",
+          "bottom": "丙",
+          "pair_key": "丙/丙",
+          "title": "月奇悖师",
+          "alternate_user_health_name": [],
+          "source_line": 318,
+          "source_sha256": "53e789c5d0ce36d4666fffed8ecd1735db0f12c1bc6f93dc8132b8aa45dba111",
+          "source_original": "丙/丙，天地盘皆为丙奇，即月奇伏吟，由于丙的性格暴躁，办事容易偏激过火，不守常规，主客二个丙到一起，犹如午午自刑一样，更加重了丙奇的缺点，故名“月奇悖师”格，主文书逼迫，破耗遗失，特别是容易出现单据票证遗失不明的情况。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 8,
+          "star": "天任星",
+          "roles": [
+            "乙奇宫"
+          ],
+          "top": "乙",
+          "bottom": "乙",
+          "pair_key": "乙/乙",
+          "title": "日奇伏吟",
+          "alternate_user_health_name": [],
+          "source_line": 286,
+          "source_sha256": "94bee7aca1a4c9975c20e4c54c9a2378b680cb260eba5522b1cab46b0bf3842f",
+          "source_original": "乙/乙，即乙乙比肩，名曰“日奇伏吟”格。不宜见上层领导和贵人，不宜求名求利，只宜安分守己。也就是伏吟利主，宜静不宜动，宜守不宜进。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 9,
+          "star": "天英星",
+          "roles": [
+            "患者宫"
+          ],
+          "top": "戊",
+          "bottom": "戊",
+          "pair_key": "戊/戊",
+          "title": "伏吟",
+          "alternate_user_health_name": [],
+          "source_line": 250,
+          "source_sha256": "34e616f511b6a8f823ddeee3b01638bb63572eea6405921214fe153848a4ca6e",
+          "source_original": "戊/戊，甲甲比肩，名谓“伏吟”。遇此，凡事不利，道路闭塞，以守为好。伏吟主本地，主内部，主迟，如果是六甲之时问事，尚可谋为行动。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": true,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        }
+      ],
+      "user_42_stem_pairs_audit": [
+        {
+          "id": "health_supplement_pair_01",
+          "name": "青龙返首",
+          "pattern": [
+            "戊",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_02",
+          "name": "飞鸟跌穴",
+          "pattern": [
+            "丙",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_03",
+          "name": "白虎猖狂",
+          "pattern": [
+            "辛",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_04",
+          "name": "青龙逃走",
+          "pattern": [
+            "乙",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_05",
+          "name": "日奇入墓",
+          "pattern": [
+            "乙",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_06",
+          "name": "日奇入地",
+          "pattern": [
+            "乙",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_07",
+          "name": "朱雀入狱",
+          "pattern": [
+            "丁",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_08",
+          "name": "朱雀投江",
+          "pattern": [
+            "丁",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_09",
+          "name": "螣蛇夭矫",
+          "pattern": [
+            "癸",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_10",
+          "name": "青龙/飞宫候选",
+          "pattern": [
+            "戊",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_11",
+          "name": "飞宫伏宫候选",
+          "pattern": [
+            "庚",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_12",
+          "name": "荧入太白",
+          "pattern": [
+            "丙",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_13",
+          "name": "太白入荧",
+          "pattern": [
+            "庚",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_14",
+          "name": "青龙转光",
+          "pattern": [
+            "戊",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_15",
+          "name": "星随月转",
+          "pattern": [
+            "丁",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_16",
+          "name": "狱神得奇",
+          "pattern": [
+            "辛",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_17",
+          "name": "奇仪顺遂",
+          "pattern": [
+            "乙",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_18",
+          "name": "奇仪相佐",
+          "pattern": [
+            "乙",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_19",
+          "name": "日月并行",
+          "pattern": [
+            "丙",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_20",
+          "name": "星奇入太阴",
+          "pattern": [
+            "丁",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_21",
+          "name": "太白逢星",
+          "pattern": [
+            "庚",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_22",
+          "name": "小蛇得势",
+          "pattern": [
+            "壬",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_23",
+          "name": "犬遇青龙",
+          "pattern": [
+            "己",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_24",
+          "name": "小蛇化龙",
+          "pattern": [
+            "壬",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_25",
+          "name": "游魂入墓",
+          "pattern": [
+            "己",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_26",
+          "name": "地户逢鬼",
+          "pattern": [
+            "己",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_27",
+          "name": "地刑玄武",
+          "pattern": [
+            "己",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_28",
+          "name": "地网高张",
+          "pattern": [
+            "己",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_29",
+          "name": "困龙被伤",
+          "pattern": [
+            "辛",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_30",
+          "name": "天牢华盖",
+          "pattern": [
+            "辛",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_31",
+          "name": "螣蛇相缠",
+          "pattern": [
+            "壬",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_32",
+          "name": "蛇入地罗",
+          "pattern": [
+            "壬",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_33",
+          "name": "太白入网",
+          "pattern": [
+            "癸",
+            "庚"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "病宫",
+              "palace": 2,
+              "literal": "癸加庚"
+            }
+          ],
+          "meaning": "病象难解",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_34",
+          "name": "网盖天牢",
+          "pattern": [
+            "癸",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_35",
+          "name": "天网四张",
+          "pattern": [
+            "癸",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_36",
+          "name": "地户遇奇候选",
+          "pattern": [
+            "己",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_37",
+          "name": "白虎出力",
+          "pattern": [
+            "辛",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_38",
+          "name": "阴人害事",
+          "pattern": [
+            "丙",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_39",
+          "name": "青龙入天牢",
+          "pattern": [
+            "戊",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_40",
+          "name": "刑格候选",
+          "pattern": [
+            "庚",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_41",
+          "name": "大格候选",
+          "pattern": [
+            "庚",
+            "庚"
+          ],
+          "state": "unknown_exact_condition",
+          "matched": [
+            {
+              "role": "病宫",
+              "palace": 2,
+              "literal": "庚加庚"
+            }
+          ],
+          "meaning": "双干已匹配；古籍对应完整复合条件未核定",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_42",
+          "name": "伏干候选",
+          "pattern": [
+            "辛",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        }
+      ],
+      "composites_17_audit": [
+        {
+          "id": "health_composite_01",
+          "name": "地遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_02",
+          "name": "鬼遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_03",
+          "name": "人遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_04",
+          "name": "鬼假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_05",
+          "name": "人假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_06",
+          "name": "三诈",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_07",
+          "name": "三奇得使",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "kaiwu_ch04_section_三奇得使"
+        },
+        {
+          "id": "health_composite_08",
+          "name": "玉女守门",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "kaiwu_ch04_section_玉女守门"
+        },
+        {
+          "id": "health_composite_09",
+          "name": "丧门吊客",
+          "state": "triggered",
+          "evidence": [
+            {
+              "birth_branch": "丑",
+              "year_branch": "亥",
+              "candidate_branches": [
+                "丑",
+                "酉"
+              ]
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_10",
+          "name": "三门四户",
+          "state": "unknown_definition",
+          "evidence": [],
+          "reason": "书源未给出这一组全部可判定的机械条件，不得强套单一星门",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_11",
+          "name": "伏干飞干飞宫伏宫",
+          "state": "unknown_partially_defined",
+          "evidence": [],
+          "reason": "飞宫伏宫已实算，伏干飞干条件仍需独立古籍定义",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_12",
+          "name": "马星",
+          "state": "not_triggered",
+          "evidence": [
+            {
+              "hour_branch": "巳",
+              "horse_branch": "亥",
+              "roles_in_horse_palace": [],
+              "horse_palace": 6,
+              "source": "kaiwu_ch04_preparation_时辰驿马"
+            }
+          ],
+          "reason": "有马星方位≠应期已到，需真实冲合方可判断变化",
+          "source": "kaiwu_ch04_preparation_时辰驿马"
+        },
+        {
+          "id": "health_composite_13",
+          "name": "长生旺衰年龄",
+          "state": "unknown_missing_age_or_birth",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_14",
+          "name": "新病久病空亡",
+          "state": "unknown_missing_duration",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_15",
+          "name": "星门反伏",
+          "state": "triggered",
+          "evidence": [
+            {
+              "star": "伏吟",
+              "door": "伏吟"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_16",
+          "name": "天网/罗网",
+          "state": "triggered",
+          "evidence": [
+            {
+              "role": "病宫",
+              "palace": 2,
+              "heaven": "癸",
+              "earth": "庚"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_17",
+          "name": "时干地盘日干生克",
+          "state": "triggered",
+          "evidence": [
+            {
+              "patient_palace": 9,
+              "event_palace": 2,
+              "patient_vs_hour_relation": "生"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        }
+      ],
+      "two_sided_evidence": {
+        "patient_element": "火",
+        "illness_element": "土",
+        "patient_vs_illness": "生",
+        "illness_palace_vs_tianrui_earth": "比和",
+        "illness_star_relation_prose": "病宫与天芮同属土，病星有根",
+        "double_control": false,
+        "double_adverse_disease_growth": false,
+        "double_adverse_patient_nourishes": false,
+        "double_adverse_patient_formation": false,
+        "double_adverse_types": [],
+        "double_favorable_types": [],
+        "actual_patient_adverse_formation": [],
+        "patient_void": true,
+        "patient_hazards": [],
+        "medicine_controlling_palace_counter": false,
+        "decision_override": null,
+        "priority": "未形成无阻双重制病或双重不利，沿用综合主判并保留冲突证据；患者宫空亡或刑墓需加强谨慎",
+        "scope": "traditional_cultural_judgment_only"
+      },
+      "traditional_research_verdict": "病凶",
+      "original_author_conclusion_used_as_input": false,
+      "source_post_event_feedback_used_as_input": false,
+      "medical_validity_claim": false,
+      "template_version": "V3.9",
+      "reading_text": "问事取用：弟弟以月干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。已知年命癸丑另参坤二宫。\n\n值符值使：值符天芮星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、值符。所携天盘庚加地盘庚，庚加庚「战格」、癸加庚「太白入网」。病宫与天芮同为土，病星有根。占时癸巳属甲申旬，午/未空，坤二宫旬空。\n\n病星月令：寅月天芮囚，病星气弱，偏有利但仍看患者宫。\n\n患者用神宫：弟弟宫见景门、九天，天地干戊加戊「伏吟」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。\n\n男女辅助宫：男性患者另参乾六宫。临天心星、开门、太阴。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。\n\n医生医药：天心落乾六宫，丁加丁「星奇伏吟」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月休，乙奇月旺。这些都不能直接推出药物疗效。\n\n时干事体：时干癸落坤二宫，庚加庚「战格」、癸加庚「太白入网」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。病宫其他携干见癸入墓地。值符值使宫见庚加庚「战格」、癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门俱伏吟，主慢、主迟滞。阳遁病宫在外盘、患者宫在外盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时巳支，驿马在亥，落6宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：丧门吊客、星门反伏、天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "readout_sha256": "f9c119291a8d9e7c3d73b2fc3013cef7eeada695bdcad51b48aa994a8a004681",
+      "sections": [
+        {
+          "id": "01_role",
+          "title": "问事取用",
+          "text": "弟弟以月干为主要用神，落离九宫；天芮星是疾病用神，落坤二宫。已知年命癸丑另参坤二宫。"
+        },
+        {
+          "id": "02_far",
+          "title": "值符值使",
+          "text": "值符天芮星落坤二宫，值使死门落坤二宫。值符与病星同宫，病势需要重点核对。值使与病宫同宫。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮病宫",
+          "text": "天芮与天禽同宫，临死门、值符。所携天盘庚加地盘庚，庚加庚「战格」、癸加庚「太白入网」。病宫与天芮同为土，病星有根。占时癸巳属甲申旬，午/未空，坤二宫旬空。"
+        },
+        {
+          "id": "04_season",
+          "title": "病星月令",
+          "text": "寅月天芮囚，病星气弱，偏有利但仍看患者宫。"
+        },
+        {
+          "id": "05_patient",
+          "title": "患者用神宫",
+          "text": "弟弟宫见景门、九天，天地干戊加戊「伏吟」。患者宫生病宫，有助病之象。患者宫旬空，力量需打折。"
+        },
+        {
+          "id": "06_gender",
+          "title": "男女辅助宫",
+          "text": "男性患者另参乾六宫。临天心星、开门、太阴。病宫土生辅助宫金，辅助宫受生，辅助宫得生扶，偏吉。"
+        },
+        {
+          "id": "07_medicine",
+          "title": "医生医药",
+          "text": "天心落乾六宫，丁加丁「星奇伏吟」；乙奇落艮八宫，乙加乙「日奇伏吟」。天心月休，乙奇月旺。这些都不能直接推出药物疗效。"
+        },
+        {
+          "id": "08_hour",
+          "title": "时干事体",
+          "text": "时干癸落坤二宫，庚加庚「战格」、癸加庚「太白入网」。时干代表病情现状，患者宫生时干宫，需与病宫共同推断发展方向。"
+        },
+        {
+          "id": "09_hazards",
+          "title": "特殊凶吉格局",
+          "text": "本时辰不属五不遇时。病宫其他携干见癸入墓地。值符值使宫见庚加庚「战格」、癸加庚「太白入网」，须合本事取义。"
+        },
+        {
+          "id": "10_pace",
+          "title": "伏吟反吟与快慢",
+          "text": "九星、八门俱伏吟，主慢、主迟滞。阳遁病宫在外盘、患者宫在外盘。伏吟主慢，进展偏迟。不强断具体应期。伏吟逢冲为传统应期候选；已见入墓地，出墓冲墓为候选，仍须分墓库；依据占时巳支，驿马在亥，落6宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：丧门吊客、星门反伏、天网/罗网。"
+        },
+        {
+          "id": "11_final",
+          "title": "最后断词",
+          "text": "综合看，本盘古籍取象偏凶。患者宫生病宫，有助病之象；其余关系需合看。同时还有病宫旬空，需辨新病与久病。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。"
+        }
+      ],
+      "user_review": "pending",
+      "book_case_board_caveat": "Source first-hour bureau star and door matched but original OCR source palace-by-palace not all independently checked"
+    },
+    {
+      "selection_index": 2,
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "origin": "original-book first question only",
+      "original_question_intent": "health",
+      "cast_datetime": "1996-11-02T16:00:00+08:00",
+      "exact_minute_verified": false,
+      "four_pillars": {
+        "year": "丙子",
+        "month": "戊戌",
+        "day": "癸卯",
+        "hour": "庚申"
+      },
+      "solar_term": "霜降",
+      "casting_bureau": {
+        "dun": "yin",
+        "ju": 8,
+        "solar_term": "霜降",
+        "source_bureau_override": true
+      },
+      "xun_shou": "甲寅",
+      "value_star": "天冲星",
+      "value_door": "伤门",
+      "relationship": "self",
+      "patient_palace": 6,
+      "illness_palace": 3,
+      "illness_stem_tomb_absence": {
+        "illness_tianrui_star": "天芮星",
+        "actual_heaven_carried_stem": "丁",
+        "illness_palace": 3,
+        "illness_palace_branches": [
+          "卯"
+        ],
+        "stage_tomb_branch": "丑",
+        "tomb_branch_in_illness_palace": false,
+        "stage_extinct_branch": "子",
+        "extinct_branch_in_illness_palace": false,
+        "hour_ganzhi": "庚申",
+        "hour_xun_head": "甲寅",
+        "void_branches": [
+          "子",
+          "丑"
+        ],
+        "void_in_illness_palace": false,
+        "void_palace_branches": [],
+        "tomb_branch_also_void": false,
+        "compound_tomb_extinct_void_same_palace": false,
+        "separate_stages_not_separate_deaths": true,
+        "source_stem_tomb": {
+          "status": "draft_source_fact",
+          "branch": "丑",
+          "source_lines": [
+            255,
+            255
+          ],
+          "stem": "丁",
+          "stage": "墓"
+        },
+        "source_stem_extinct": {
+          "status": "draft_source_fact",
+          "branch": "子",
+          "source_lines": [
+            255,
+            255
+          ],
+          "stem": "丁",
+          "stage": "绝"
+        },
+        "interpretation_not_a_medical_prediction": true
+      },
+      "book_81_ordered_pairs_current_chart": [
+        {
+          "palace": 1,
+          "star": "天辅星",
+          "roles": [],
+          "top": "壬",
+          "bottom": "丙",
+          "pair_key": "壬/丙",
+          "title": "水蛇入火",
+          "alternate_user_health_name": [],
+          "source_line": 338,
+          "source_sha256": "488ebf8842054dd58f9181cc3c6bef9137bbbc656ba97b11833c61bd3f67a6ef",
+          "source_original": "壬/丙，二者颠倒了主客关系，但仍然是互相冲克，天盘壬又名“水蛇”，所以起名“水蛇入火”格，也为凶格，主官灾刑禁，络绎不绝，两败俱伤。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": true,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 2,
+          "star": "天蓬星",
+          "roles": [
+            "天芮地盘坤本位"
+          ],
+          "top": "丙",
+          "bottom": "丁",
+          "pair_key": "丙/丁",
+          "title": "星奇朱雀",
+          "alternate_user_health_name": [],
+          "source_line": 320,
+          "source_sha256": "ea64fbf2dcf1f9538bed6cae01816cc526ac15df07ee4491129e43f6e5f373d5",
+          "source_original": "丙/丁，天盘为丙，地盘为丁，阳在上，阴在下，丙火又名朱雀，丁为星奇，故名“星奇朱雀”，二奇阴阳互补，自然为吉，所以主贵人文书吉利，常人平静安乐。如果再逢开、休、生三吉门，则为天遁吉格。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": true,
+            "凶门": false,
+            "如果": true,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_conditional_auspicious",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 3,
+          "star": "天芮星",
+          "roles": [
+            "病宫"
+          ],
+          "top": "丁",
+          "bottom": "癸",
+          "pair_key": "丁/癸",
+          "title": "雀投江",
+          "alternate_user_health_name": [
+            "朱雀投江"
+          ],
+          "source_line": 364,
+          "source_sha256": "8d82538358f64c92dd98c5cda0d7a947423880a7238ef5e1710c010cf9e8c830",
+          "source_original": "丁/癸，丁在上，癸在下。丁为阴火，癸为阴水，又为地网，二者又对冲，故名“雀投江”凶格。主文书口舌是非，经官动府，词讼不利，音信沉溺不到。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": "health_supplement_pair_08",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 3,
+          "star": "天禽星",
+          "roles": [
+            "病宫"
+          ],
+          "top": "辛",
+          "bottom": "癸",
+          "pair_key": "辛/癸",
+          "title": "天牢华盖",
+          "alternate_user_health_name": [],
+          "source_line": 412,
+          "source_sha256": "b18315cc1a0a5e8aaf8689a6a87539f75544677d75b7580e43171a563e2d06e1",
+          "source_original": "辛/癸，辛为天牢，癸为华盖，故名“天牢华盖”格，主日月失明，误入天网，动止乖张。辛为白虎，癸为地网，故又名“虎投地网”格。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_30",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 4,
+          "star": "天柱星",
+          "roles": [],
+          "top": "己",
+          "bottom": "壬",
+          "pair_key": "己/壬",
+          "title": "地网高张",
+          "alternate_user_health_name": [],
+          "source_line": 380,
+          "source_sha256": "602c4e43ae289839d13d3d1537fa400b2c7111438720f95dd8b11f8221d3c52a",
+          "source_original": "己/壬，己为地户，壬为天网，己在上，壬在下，故名“地网高张”凶格。凡事不吉，谋为不利。一阴一阳暗中冲克，己为阴、壬为阳，甲戌己与甲辰壬又有辰、戌相冲，故易出狡童佚女、奸情伤杀之事。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": "health_supplement_pair_28",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 6,
+          "star": "天冲星",
+          "roles": [
+            "患者宫",
+            "值符宫",
+            "值使宫"
+          ],
+          "top": "癸",
+          "bottom": "庚",
+          "pair_key": "癸/庚",
+          "title": "太白入网",
+          "alternate_user_health_name": [],
+          "source_line": 402,
+          "source_sha256": "9c5bdd3976c01b55d39ef2c0fbbdb6d150e3040dbd0189ac4a2c3672b4e35e13",
+          "source_original": "癸/庚，癸在上，庚在下。癸又名地网，庚为太白，故名“太白入网”格。由于寅申相冲相刑，所以凡事无成，吉事也易成空。又主以暴力争讼，自罹罪责。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_33",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 7,
+          "star": "天任星",
+          "roles": [],
+          "top": "戊",
+          "bottom": "己",
+          "pair_key": "戊/己",
+          "title": "贵人入狱",
+          "alternate_user_health_name": [],
+          "source_line": 264,
+          "source_sha256": "8c8ef2cb0c329eef6319de1a397dd762dd8c17a624a3cee65b96627ee76c9552",
+          "source_original": "戊/己，即甲子戊在天盘，甲戌己在地盘。由于天盘戊入地盘戌之墓库，所以名曰“贵人入狱”凶格，于公于私都不利。只有等待冲出墓库之时，才能有转机。这是站在天盘甲子戊为贵人的角度讲的。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": false,
+            "为客": false
+          },
+          "applicability": "book_adverse_formation",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 8,
+          "star": "天英星",
+          "roles": [
+            "乙奇宫"
+          ],
+          "top": "乙",
+          "bottom": "戊",
+          "pair_key": "乙/戊",
+          "title": "阴害阳门",
+          "alternate_user_health_name": [],
+          "source_line": 254,
+          "source_sha256": "172acba01888e422392310ff128ede511274c2d2699b0eff719f47a72ada17d7",
+          "source_original": "乙/戊，前者为甲子戊在天盘为客，乙奇在地盘为主，阳木与阴木会和，由门来决定其吉凶，门吉事也吉，门凶事也凶。现在二者颠倒过来了，乙奇在天盘为客，甲子戊在地盘为主，为客必然主动进攻，这时乙木就会克戊土，故曰“阴害阳门”(戊为阳土为天门，己为阴土为地户)。利于阴人、阴事，不利阳人、阳事，也就是说对女人或隐蔽性的事情有利，对男人或公开性的事情不利。决定吉凶，还是看门。如果门吉，尚可谋为；门凶、门迫，则要破财伤人。",
+          "source_conditions": {
+            "门迫": true,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": true,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": true,
+            "为客": true
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": null,
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        },
+        {
+          "palace": 9,
+          "star": "天心星",
+          "roles": [
+            "时干宫",
+            "天心宫"
+          ],
+          "top": "庚",
+          "bottom": "乙",
+          "pair_key": "庚/乙",
+          "title": "太白逢星",
+          "alternate_user_health_name": [],
+          "source_line": 302,
+          "source_sha256": "c00b916f892bc1176d146d97ec523019d21ac8de04aba2b1a02427ada31acb13",
+          "source_original": "庚/乙，二者换了主客关系，故名“太白逢星”格，由于庚克乙、乙庚又相合，所以为客有利，为主就不利了，只宜退不宜进了。",
+          "source_conditions": {
+            "门迫": false,
+            "入墓": false,
+            "击刑": false,
+            "月令": false,
+            "吉门": false,
+            "凶门": false,
+            "如果": false,
+            "但": false,
+            "测婚": false,
+            "测病": false,
+            "求财": false,
+            "为主": true,
+            "为客": true
+          },
+          "applicability": "book_context_required",
+          "user_health_supplement": "health_supplement_pair_21",
+          "interpretation_policy": "book_role_and_gate_conditions_not_a_medical_diagnosis"
+        }
+      ],
+      "user_42_stem_pairs_audit": [
+        {
+          "id": "health_supplement_pair_01",
+          "name": "青龙返首",
+          "pattern": [
+            "戊",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_02",
+          "name": "飞鸟跌穴",
+          "pattern": [
+            "丙",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_03",
+          "name": "白虎猖狂",
+          "pattern": [
+            "辛",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_04",
+          "name": "青龙逃走",
+          "pattern": [
+            "乙",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_05",
+          "name": "日奇入墓",
+          "pattern": [
+            "乙",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_06",
+          "name": "日奇入地",
+          "pattern": [
+            "乙",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_07",
+          "name": "朱雀入狱",
+          "pattern": [
+            "丁",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_08",
+          "name": "朱雀投江",
+          "pattern": [
+            "丁",
+            "癸"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "病宫",
+              "palace": 3,
+              "literal": "丁加癸"
+            }
+          ],
+          "meaning": "古籍重凶象",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_09",
+          "name": "螣蛇夭矫",
+          "pattern": [
+            "癸",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_10",
+          "name": "青龙/飞宫候选",
+          "pattern": [
+            "戊",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_11",
+          "name": "飞宫伏宫候选",
+          "pattern": [
+            "庚",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_12",
+          "name": "荧入太白",
+          "pattern": [
+            "丙",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_13",
+          "name": "太白入荧",
+          "pattern": [
+            "庚",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_14",
+          "name": "青龙转光",
+          "pattern": [
+            "戊",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_15",
+          "name": "星随月转",
+          "pattern": [
+            "丁",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_16",
+          "name": "狱神得奇",
+          "pattern": [
+            "辛",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_17",
+          "name": "奇仪顺遂",
+          "pattern": [
+            "乙",
+            "丙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_18",
+          "name": "奇仪相佐",
+          "pattern": [
+            "乙",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_19",
+          "name": "日月并行",
+          "pattern": [
+            "丙",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_20",
+          "name": "星奇入太阴",
+          "pattern": [
+            "丁",
+            "丁"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_21",
+          "name": "太白逢星",
+          "pattern": [
+            "庚",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_22",
+          "name": "小蛇得势",
+          "pattern": [
+            "壬",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_23",
+          "name": "犬遇青龙",
+          "pattern": [
+            "己",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_24",
+          "name": "小蛇化龙",
+          "pattern": [
+            "壬",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_25",
+          "name": "游魂入墓",
+          "pattern": [
+            "己",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_26",
+          "name": "地户逢鬼",
+          "pattern": [
+            "己",
+            "己"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_27",
+          "name": "地刑玄武",
+          "pattern": [
+            "己",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_28",
+          "name": "地网高张",
+          "pattern": [
+            "己",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_29",
+          "name": "困龙被伤",
+          "pattern": [
+            "辛",
+            "戊"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_30",
+          "name": "天牢华盖",
+          "pattern": [
+            "辛",
+            "癸"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "病宫",
+              "palace": 3,
+              "literal": "辛加癸"
+            }
+          ],
+          "meaning": "缠绵",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_31",
+          "name": "螣蛇相缠",
+          "pattern": [
+            "壬",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_32",
+          "name": "蛇入地罗",
+          "pattern": [
+            "壬",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_33",
+          "name": "太白入网",
+          "pattern": [
+            "癸",
+            "庚"
+          ],
+          "state": "triggered",
+          "matched": [
+            {
+              "role": "患者宫",
+              "palace": 6,
+              "literal": "癸加庚"
+            }
+          ],
+          "meaning": "病象难解",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_34",
+          "name": "网盖天牢",
+          "pattern": [
+            "癸",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_35",
+          "name": "天网四张",
+          "pattern": [
+            "癸",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_36",
+          "name": "地户遇奇候选",
+          "pattern": [
+            "己",
+            "乙"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_37",
+          "name": "白虎出力",
+          "pattern": [
+            "辛",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_38",
+          "name": "阴人害事",
+          "pattern": [
+            "丙",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_39",
+          "name": "青龙入天牢",
+          "pattern": [
+            "戊",
+            "壬"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_40",
+          "name": "刑格候选",
+          "pattern": [
+            "庚",
+            "癸"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_41",
+          "name": "大格候选",
+          "pattern": [
+            "庚",
+            "庚"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_supplement_pair_42",
+          "name": "伏干候选",
+          "pattern": [
+            "辛",
+            "辛"
+          ],
+          "state": "not_triggered",
+          "matched": [],
+          "meaning": "",
+          "provenance": "user_supplied_2026_10_22"
+        }
+      ],
+      "composites_17_audit": [
+        {
+          "id": "health_composite_01",
+          "name": "地遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_02",
+          "name": "鬼遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_03",
+          "name": "人遁",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_04",
+          "name": "鬼假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_05",
+          "name": "人假",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_06",
+          "name": "三诈",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_07",
+          "name": "三奇得使",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "kaiwu_ch04_section_三奇得使"
+        },
+        {
+          "id": "health_composite_08",
+          "name": "玉女守门",
+          "state": "not_triggered",
+          "evidence": [],
+          "reason": "",
+          "source": "kaiwu_ch04_section_玉女守门"
+        },
+        {
+          "id": "health_composite_09",
+          "name": "丧门吊客",
+          "state": "unknown_missing_birth_year",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_10",
+          "name": "三门四户",
+          "state": "unknown_definition",
+          "evidence": [],
+          "reason": "书源未给出这一组全部可判定的机械条件，不得强套单一星门",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_11",
+          "name": "伏干飞干飞宫伏宫",
+          "state": "unknown_partially_defined",
+          "evidence": [],
+          "reason": "飞宫伏宫已实算，伏干飞干条件仍需独立古籍定义",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_12",
+          "name": "马星",
+          "state": "not_triggered",
+          "evidence": [
+            {
+              "hour_branch": "申",
+              "horse_branch": "寅",
+              "roles_in_horse_palace": [],
+              "horse_palace": 8,
+              "source": "kaiwu_ch04_preparation_时辰驿马"
+            }
+          ],
+          "reason": "有马星方位≠应期已到，需真实冲合方可判断变化",
+          "source": "kaiwu_ch04_preparation_时辰驿马"
+        },
+        {
+          "id": "health_composite_13",
+          "name": "长生旺衰年龄",
+          "state": "unknown_missing_age_or_birth",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_14",
+          "name": "新病久病空亡",
+          "state": "unknown_missing_duration",
+          "evidence": [],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_15",
+          "name": "星门反伏",
+          "state": "not_triggered",
+          "evidence": [
+            {
+              "star": "非伏吟反吟",
+              "door": "非伏吟反吟"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_16",
+          "name": "天网/罗网",
+          "state": "triggered",
+          "evidence": [
+            {
+              "role": "患者宫",
+              "palace": 6,
+              "heaven": "癸",
+              "earth": "庚"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        },
+        {
+          "id": "health_composite_17",
+          "name": "时干地盘日干生克",
+          "state": "triggered",
+          "evidence": [
+            {
+              "patient_palace": 6,
+              "event_palace": 9,
+              "patient_vs_hour_relation": "受克"
+            }
+          ],
+          "reason": "",
+          "source": "user_supplied_2026_10_22"
+        }
+      ],
+      "two_sided_evidence": {
+        "patient_element": "金",
+        "illness_element": "木",
+        "patient_vs_illness": "克",
+        "illness_palace_vs_tianrui_earth": "克",
+        "illness_star_relation_prose": "病宫克天芮土，病星受宫制",
+        "double_control": true,
+        "double_adverse_disease_growth": false,
+        "double_adverse_patient_nourishes": false,
+        "double_adverse_patient_formation": false,
+        "double_adverse_types": [],
+        "double_favorable_types": [
+          "患者宫克病宫、病宫又克天芮土"
+        ],
+        "actual_patient_adverse_formation": [],
+        "patient_void": false,
+        "patient_hazards": [],
+        "medicine_controlling_palace_counter": false,
+        "decision_override": "病吉",
+        "priority": "双重制病成立、病人用神不空且无已核刑墓，传统倾向有利",
+        "scope": "traditional_cultural_judgment_only"
+      },
+      "traditional_research_verdict": "病吉",
+      "original_author_conclusion_used_as_input": false,
+      "source_post_event_feedback_used_as_input": false,
+      "medical_validity_claim": false,
+      "template_version": "V3.9",
+      "reading_text": "问事取用：本人以日干为主要用神，落乾六宫；天芮星是疾病用神，落震三宫。\n\n值符值使：值符天冲星落乾六宫，值使伤门落乾六宫。值符与患者用神同宫，权重需提高。值使与患者宫同宫。\n\n天芮病宫：天芮与天禽同宫，临死门、玄武。所携天盘丁加地盘癸，丁加癸「雀投江」、辛加癸「天牢华盖」。病宫木克天芮土，病星受制。\n\n病星月令：戌月天芮相，病星有气，偏不利。\n\n患者用神宫：本人宫见伤门、值符，天地干癸加庚「太白入网」。患者宫克病宫，具有制病方向。患者宫未逢旬空。患者宫制病、病宫又制天芮，两重有利条件相合。\n\n医生医药：天心落离九宫，庚加乙「太白逢星」；乙奇落艮八宫，乙加戊「阴害阳门」。天心月废，乙奇月囚。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。\n\n时干事体：时干庚落离九宫，庚加乙「太白逢星」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。\n\n特殊凶吉格局：本时辰不属五不遇时。值符值使宫见癸加庚「太白入网」，须合本事取义。\n\n伏吟反吟与快慢：九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期；时干与天心同在离九宫，传统主有及时得到医治的机会；但天心月废，医生象偏弱、乙奇月囚，医药象偏弱、乙奇宫旬空，吉象受虚，不能直接断治疗见效；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：天网/罗网。\n\n最后断词：综合看，本盘古籍取象偏吉。患者宫克病宫，具有制病方向；双重制病形成有利主证。同时还有病宫克天芮，病星受制；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。",
+      "readout_sha256": "de8780e1ed6d7129ee1ceb3df27d4747841404ff958c33992ede975e124cd7fb",
+      "sections": [
+        {
+          "id": "01_role",
+          "title": "问事取用",
+          "text": "本人以日干为主要用神，落乾六宫；天芮星是疾病用神，落震三宫。"
+        },
+        {
+          "id": "02_far",
+          "title": "值符值使",
+          "text": "值符天冲星落乾六宫，值使伤门落乾六宫。值符与患者用神同宫，权重需提高。值使与患者宫同宫。"
+        },
+        {
+          "id": "03_illness",
+          "title": "天芮病宫",
+          "text": "天芮与天禽同宫，临死门、玄武。所携天盘丁加地盘癸，丁加癸「雀投江」、辛加癸「天牢华盖」。病宫木克天芮土，病星受制。"
+        },
+        {
+          "id": "04_season",
+          "title": "病星月令",
+          "text": "戌月天芮相，病星有气，偏不利。"
+        },
+        {
+          "id": "05_patient",
+          "title": "患者用神宫",
+          "text": "本人宫见伤门、值符，天地干癸加庚「太白入网」。患者宫克病宫，具有制病方向。患者宫未逢旬空。患者宫制病、病宫又制天芮，两重有利条件相合。"
+        },
+        {
+          "id": "07_medicine",
+          "title": "医生医药",
+          "text": "天心落离九宫，庚加乙「太白逢星」；乙奇落艮八宫，乙加戊「阴害阳门」。天心月废，乙奇月囚。时干或病星与医药同宫，有及时得到医治的传统有利象；医药力量弱仍不抵消同宫事实。病宫克乙奇宫，药象受制。这些都不能直接推出药物疗效。"
+        },
+        {
+          "id": "08_hour",
+          "title": "时干事体",
+          "text": "时干庚落离九宫，庚加乙「太白逢星」。时干代表病情现状，时干宫克患者宫，需与病宫共同推断发展方向。"
+        },
+        {
+          "id": "09_hazards",
+          "title": "特殊凶吉格局",
+          "text": "本时辰不属五不遇时。值符值使宫见癸加庚「太白入网」，须合本事取义。"
+        },
+        {
+          "id": "10_pace",
+          "title": "伏吟反吟与快慢",
+          "text": "九星、八门均非伏吟或反吟。阴遁病宫在外盘、患者宫在内盘。病患分居内外盘，缓急并见。不强断具体应期；时干与天心同在离九宫，传统主有及时得到医治的机会；但天心月废，医生象偏弱、乙奇月囚，医药象偏弱、乙奇宫旬空，吉象受虚，不能直接断治疗见效；依据占时申支，驿马在寅，落8宫，未直接落患者与病宫；没有应期触发就不能指定日期；本盘另见实算条件：天网/罗网。"
+        },
+        {
+          "id": "11_final",
+          "title": "最后断词",
+          "text": "综合看，本盘古籍取象偏吉。患者宫克病宫，具有制病方向；双重制病形成有利主证。同时还有病宫克天芮，病星受制；医药同宫仍有医治机会。这是传统象意的分析，不能当作现实疾病诊断、预后或治疗依据。"
+        }
+      ],
+      "user_review": "pending",
+      "book_case_board_caveat": "Source first-hour bureau star and door matched but original OCR source palace-by-palace not all independently checked"
+    }
+  ]
+}

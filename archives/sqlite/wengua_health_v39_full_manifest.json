@@ -1,0 +1,24 @@
+{
+  "schema": "wengua_v39_three_source_readings_and_internal_only_provenance",
+  "full_sqlite_sha256": "0e565ff5c4fea8d0510b155ab264b1af4c8ab9b63a173eb8cf96a00909c04ed1",
+  "full_sqlite_size": 15071232,
+  "full_sqlite_xz_sha256": "9123fd9a91bace23b97ef780500f3bf22214e896c600f07d3d78dfea8aae1cb8",
+  "exact_parent_full_v38_sha256": "f101804acdaa839b89cb1dd2eee5e6391fb3e28f390ffad225b9f6db34f2838e",
+  "full_three_predictions_sha256": "7bf13b90e17229adc6bcdab94486d7b6f7e16515e6083615130fa8af8335f586",
+  "client_three_readings_sha256": "7a755e6dcd36ba1fcbaa9a828391fd74c0c51bbd553992fb6f2edc71eb68e87f",
+  "seed_input": "V3.8|f927956e98bb4c193b0be6291c1e01edd31ee61a60b150900095fea0264931d7|丙午-戊戌-己巳-庚午",
+  "random_selection_seed_sha256": "0d149ccb15de0119e4b57ec7244f484736b99f8b41139590a74649702dd39c8c",
+  "random_original_source_family_ids": [
+    "kaiwu.health.19950219.brother_paralysis",
+    "shenqi.health.19961102.on_site_health"
+  ],
+  "source_194_and_43_unchanged": true,
+  "source_full81_user42_composites17_unchanged": true,
+  "all_previous_sealed_outputs_and_failures_unchanged": true,
+  "new_user_question_is_not_historical_case": true,
+  "all_three_actual_temporal_charts_source_based": true,
+  "client_does_not_see_book_line_ids": true,
+  "actual_medical_predictiveness_claim": false,
+  "further_professional_acceptance_before_ui_or_release": "pending",
+  "template_file": "data/knowledge/phrase_library/health_v39/severity_customer_template.json"
+}
