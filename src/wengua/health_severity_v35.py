@@ -6,7 +6,7 @@ No modern clinical diagnostic validity is asserted.
 """
 from __future__ import annotations
 from .health_severity_v34 import analyze_health_severity_v34
-from .health_severity_v22 import _find_star,_yes_void
+from .health_severity_v22 import _find_star,_find_heaven_stem,_yes_void
 from .health_dynamic_v21 import bind_patient
 from .marriage_runtime import ELEMENTS,element_relation
 from .health_severity_v26 import _direction
@@ -64,6 +64,14 @@ def analyze_health_severity_v35(*,chart,inquiry,calendar=None,db_path=None):
     attention=base["audit"]["v34_treatment_co_palace"]
     stages=base["audit"]["medical_timing_v28"]
     combined=[]
+    # If the original question actually supplies a full 甲旬 birth year (e.g.
+    # 1964 甲辰), the matching 六仪 is determinable from that natal pillar.
+    # Never borrow the casting HOUR's xun for a different Jia year.
+    from .casting_shenqi import SIX_JIA
+    birth=inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+    natal=person_data["birth_cell"]
+    if birth and birth[:1]=="甲" and birth in SIX_JIA:
+        natal=_find_heaven_stem(chart,SIX_JIA[birth])
     # Context known sex and actual traditional gender reference, not generic 乾坤.
     if inquiry.get("relationship") in ("spouse","wife","husband"):
         complementary=person_data["harmony_stem"]
@@ -79,8 +87,8 @@ def analyze_health_severity_v35(*,chart,inquiry,calendar=None,db_path=None):
         combined.append("动物无单独明确用神时，以实际时干宫为动物用神")
     if inquiry.get("relationship")=="son_in_law":
         combined.append("原书岳父代测女婿以时干为人物用神")
-    if person_data["birth_cell"]:
-        combined.append("已给患者年命，另参"+str(person_data["birth_cell"]["palace"])+"宫，不取代本次时干或亲属主用神")
+    if natal:
+        combined.append("已给患者年命"+str(birth)+"，另参"+str(natal["palace"])+"宫，不取代本次时干或亲属主用神")
     sections=[]
     for s in base["sections"]:
         phrase=s["text"]
@@ -111,7 +119,7 @@ def analyze_health_severity_v35(*,chart,inquiry,calendar=None,db_path=None):
     return {**base,"schema":"wengua_health_v35_patient_first_true_decision_with_doctor_copalace",
         "sections":sections,"reading_text":"\n\n".join(s["title"]+"："+s["text"] for s in sections),
         "audit":{**base["audit"],"v35_patient_first_decision":calc,
-                 "v35_patient_birth_reference":person_data["birth_cell"]["palace"] if person_data["birth_cell"] else None,
+                 "v35_patient_birth_reference":natal["palace"] if natal else None,
                  "v35_doctor_copalace_preserved_even_when_weak":True,
                  "author_book_feedback_used":False,"runtime_gpt_calls":0},
         "user_accepted":False}
