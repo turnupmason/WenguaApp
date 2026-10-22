@@ -19,6 +19,20 @@ class SourceFamilyV32HistoricalCheck(unittest.TestCase):
           {"shenqi.health.19960316.self_surgery","shenqi.health.19960727.father_illness"})
         self.assertFalse(r["original_book_conclusions_loaded"])
         self.assertFalse(r["old_evaluation_families_reused"])
+    def test_original_centre_5_head_hour_uses_only_source_attested_kun_host(self):
+        from src.wengua.casting_shenqi import layout_from_explicit_bureau
+        from src.wengua.health_severity_v25 import fuyin_fanyin_facts
+        q=layout_from_explicit_bureau(dun="yin",ju=7,hour_ganzhi="甲申")
+        self.assertEqual(q["xun_shou"],"甲申")
+        self.assertEqual(q["xun_start_palace"],5)
+        self.assertEqual(q["value_star"],"天禽星")
+        self.assertEqual(q["value_star_palace"],2)
+        self.assertEqual(q["value_door"],"死门")
+        self.assertEqual(q["value_door_palace"],2)
+        self.assertTrue(fuyin_fanyin_facts(q)["both_fuyin"])
+        # Previously blocked unknown NONZERO centre routes stay blocked.
+        with self.assertRaisesRegex(ValueError,"centre 5"):
+            layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
     def test_actual_calendar_charts_and_original_value_symbols_match(self):
         for x in evaluate()["samples"]:
             self.assertEqual(x["full_chart"]["hour_ganzhi"],x["four_pillars"]["hour"])
