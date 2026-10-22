@@ -1,0 +1,28 @@
+{
+  "schema": "wengua_v391_no_scores_true_solar_random_four_full194",
+  "exact_full_parent_v42_sha256": "f76b26200d8ed945621139217fcd63d55dddd010c1e4a2848d4e9ad544b3ec66",
+  "new_complete_v391_sqlite_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "new_complete_v391_sqlite_bytes": 15175680,
+  "new_complete_v391_sqlite_xz_sha256": "0e9c5e7ebd32ad2e3a9a66149267c4099532d1a4082205b50eb83c4ac1f23d2a",
+  "four_actual_cast_source_audit_sha256": "f5e3a35280778806fb8cba4e74e0426af109a3ef14474a43de3fd1a3f784cf90",
+  "customer_four_full_v391_readings_sha256": "047d1b8d396443465c5cce11d169a42003b692a0f80d64be2c1007ccde6abafe",
+  "score_free_original_text_template_sha256": "faddc677e90385a7410bffb00dcc2a30d3619cf17e95ab9db55aaeeb246b25c0",
+  "source_original_book_cases": 194,
+  "source_original_chapters": 43,
+  "original_author_ordered_stem_pairs": 81,
+  "old_illness_supplement_pairs": 42,
+  "old_composites": 17,
+  "retained_failed_historical_model_outputs": 2,
+  "retained_all_deactivated_score_model_history": true,
+  "new_active_v391_has_no_score_or_probability": true,
+  "stage_ten_stems_twelve_stages_verified": 120,
+  "four_synthetic_unanswered_real_hour_astro_casts": 4,
+  "random_seed_sha256": "182df84ae491bfdde4aa5da50488332877db742dcfe21b1219af89ea89b30059",
+  "random_sample_hours": [
+    "2026-11-01T05:00:00-05:00",
+    "2026-11-04T05:00:00-05:00",
+    "2026-11-10T21:00:00-05:00",
+    "2026-11-21T17:00:00-05:00"
+  ],
+  "user_has_approved_final_packaging": false
+}
