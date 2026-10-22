@@ -96,8 +96,8 @@ def build(parent,output,seal,manifest,readout):
             count=0
             for r in payload["records"]:
                 s=r["score"]
-                report=s["book_pair_source_audit"]
-                for matched in report["matched_real_star_pairs"]:
+                pair_audit=s["book_pair_source_audit"]
+                for matched in pair_audit["matched_real_star_pairs"]:
                     db.execute("""INSERT INTO health_v41_real_chart_81_pair_checks
                       VALUES (?,?,?,?,?,?,?,?,?)""",
                       (r["family_id"],matched["matched_actual_star"],
