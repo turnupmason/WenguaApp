@@ -1,0 +1,27 @@
+name: V3.9.1 Original Text and Full12 Random Cast CI
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_lifecycle_v391.py'
+      - 'src/wengua/health_severity_v391_active.py'
+      - 'data/knowledge/phrase_library/health_v391/**'
+      - 'scripts/replay_health_v391_four_seeded_real_times.py'
+      - 'tests/test_health_v391_source_12stage_four_random.py'
+      - '.github/workflows/health_v391_active_text_random.yml'
+  workflow_dispatch:
+jobs:
+  true_random_source_casts:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify all 120 source lifecycle states and no accidental scores, restore original V3.9 Chinese
+        run: |
+          python -m unittest discover -s tests -p test_health_v391_source_12stage_four_random.py -v
+          python -m scripts.replay_health_v391_four_seeded_real_times
