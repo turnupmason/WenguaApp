@@ -338,7 +338,7 @@ function palaceDetail(index){
         colored("stem",t.stem)+'</span><span>'+t.plane+t.stem+'在'+t.branch+
         '支入墓；'+(demo.openedTombs.some(x=>x.palace===p.p&&x.plane===t.plane&&x.stem===t.stem&&x.branch===t.branch)?
            '实际马支与墓支六冲，记录为冲墓候选。':'未见时马支直接六冲该墓支；不可直接当作冲开。')+
-        '</span></div>')]
+        '</span></div>')
  ].filter(Boolean).join("");
  document.querySelector("#sheet-main").innerHTML=
    '<div class="sheet-grid">'+factsGrid+'</div>'+
