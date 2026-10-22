@@ -244,8 +244,8 @@ struct ProfessionalPalaceTile: View {
                 HStack(spacing: 2) {
                     Text(palace.branches)
                     Text("·")
-                    Text(palace.stages.replacingOccurrences(of: "天芮携", with: "")
-                        .prefix(8) + "…")
+                    Text(String(palace.stages.replacingOccurrences(of: "天芮携", with: "")
+                        .prefix(8)) + "…")
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)
                     Spacer(minLength: 0)
