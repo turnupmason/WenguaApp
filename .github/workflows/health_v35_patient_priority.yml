@@ -1,0 +1,128 @@
+name: V3.5 Patient-First Disease Severity and Source Rules
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v35.py'
+      - 'scripts/replay_all_historical_health_v35.py'
+      - 'tests/test_health_v35_patient_priority.py'
+      - 'schema/migrations/063_health_patient_first_priority_v35.sql'
+      - 'scripts/build_health_v35_full_archive.py'
+      - '.github/workflows/health_v35_patient_priority.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Twelve real disease family roles, double-control, weak medicine, Jia natal, past seals
+        run: |
+          python -m unittest discover -s tests -p test_health_v35_patient_priority.py -v
+          python -m scripts.replay_all_historical_health_v35
+  archive:
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard immutable V3.5 and old full V3.4 parent
+        id: guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          old=Path('archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=='9008f8803a6a2f95352b5d8bc62c332cba371c8cfdcad0473462c16f7e249bf4'
+          new=Path('archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3')
+          meta=Path('archives/sqlite/wengua_health_v35_full_manifest.json')
+          seal=Path('data/evaluation/health_v35/all_12_source_patients_first_V35_SEALED.json')
+          if new.exists():
+            assert meta.exists() and seal.exists()
+            m=json.loads(meta.read_text('utf8'))
+            assert hashlib.sha256(new.read_bytes()).hexdigest()==m['sqlite_sha256']
+            assert hashlib.sha256(seal.read_bytes()).hexdigest()==m['sealed_12_case_sha256']
+          else:
+            assert not meta.exists() and not seal.exists(), 'Partial archive must not be overwritten'
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Create new complete V3.5 archive, SHA receipt and sealed all-twelve readings
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v35_full_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3' \
+            --seal 'data/evaluation/health_v35/all_12_source_patients_first_V35_SEALED.json' \
+            --manifest 'archives/sqlite/wengua_health_v35_full_manifest.json'
+      - name: Validate original 194, all 12 V3.5, 42 pairs, 17 composites and binary hashes
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          base=Path('archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3')
+          seal=Path('data/evaluation/health_v35/all_12_source_patients_first_V35_SEALED.json')
+          info=json.loads(Path('archives/sqlite/wengua_health_v35_full_manifest.json').read_text('utf8'))
+          r=json.loads(seal.read_text('utf8'))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert sha(base)==info['sqlite_sha256']
+          assert sha(seal)==info['sealed_12_case_sha256']
+          assert sha(Path(str(base)+'.xz'))==info['xz_sha256']
+          assert lzma.decompress(Path(str(base)+'.xz').read_bytes())==base.read_bytes()
+          assert len(r['samples'])==12 and r['counts']=={'rendered':12,'blocked':0}
+          for q in r['samples']:
+              assert not q['author_answer_used'] and not q['later_feedback_used']
+              assert hashlib.sha256(q['reading'].encode('utf8')).hexdigest()==q['sha256']
+          with sqlite3.connect(base) as db:
+              assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not db.execute('PRAGMA foreign_key_check').fetchall()
+              for table,expected in [
+                ('cases',194),('sections',43),
+                ('health_v33_all_historical_health_replay',12),
+                ('health_v34_role_and_condition_replay',12),
+                ('health_v35_patient_first_replay',12),
+                ('health_v35_complete_parent_archive',1),
+                ('health_v30_stem_pair_rules',42),
+                ('health_v30_composite_rule_index',17)]:
+                  assert db.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0]==expected,table
+              assert db.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.guard.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V35-PatientPriority-Full194
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v35_full_manifest.json
+            data/evaluation/health_v35/all_12_source_patients_first_V35_SEALED.json
+      - name: Commit only new V3.5 full archive files
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3'
+          git add -- \
+            'archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v35_full_manifest.json' \
+            'data/evaluation/health_v35/all_12_source_patients_first_V35_SEALED.json'
+          git diff --cached --check
+          git commit -m 'Archive full V3.5 patient-first actual source twelve-case research database'
+          git push origin HEAD:main
