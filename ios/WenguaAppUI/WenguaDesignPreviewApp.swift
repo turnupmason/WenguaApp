@@ -153,9 +153,10 @@ extension QPalace {
                "乾":"金","兑":"金","艮":"土","离":"火"][cell.gua] ?? "土"
         let names=cell.heavenStars.map{$0.star.replacingOccurrences(of:"星",with:"")}
         let sky=cell.heavenStars.map{$0.carriedStem}.joined(separator:"·")
-        let life=cell.heavenStars.map { star in
-            star.star.replacingOccurrences(of:"星",with:"")+"携"+star.carriedStem+"："+
-            star.stages.map{$0.branch+$0.stage}.joined(separator:"、")
+        let life = cell.heavenStars.map { star -> String in
+            let starName = star.star.replacingOccurrences(of:"星",with:"")
+            let stagesText = star.stages.map { $0.branch + $0.stage }.joined(separator:"、")
+            return starName + "携" + star.carriedStem + "：" + stagesText
         }.joined(separator:"；")
         var tags=[String]()
         if cell.heavenStars.contains(where:{$0.star=="天芮星"}) {tags.append("病宫")}
@@ -214,21 +215,25 @@ struct ProfessionalChartScreen: View {
                                                       day:"己卯",hour:"丁卯")
     }
     private var bureauInfo: String {
-        let b=nativeChart?.bureau
-        return (b?.dun == "yang" ? "阳遁" : "阴遁")+" · "+String(b?.ju ?? 5)+
-               "局 › "+(nativeChart?.xunShou ?? "甲子")+"旬"
+        let kind = nativeChart?.bureau.dun == "yang" ? "阳遁" : "阴遁"
+        let number = String(nativeChart?.bureau.ju ?? 5)
+        let head = nativeChart?.xunShou ?? "甲子"
+        return kind + " · " + number + "局 › " + head + "旬"
     }
     private var starDoorInfo: String {
-        "值符："+(nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")+
-        "  值使："+(nativeChart?.valueDoor ?? "死门")
+        let star = (nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")
+        let door = nativeChart?.valueDoor ?? "死门"
+        return "值符：" + star + "  值使：" + door
     }
     private var solarInfo: String {
-        "时家转盘 · "+(nativeChart?.solarTerm ?? "霜降")+
-        " · "+(nativeChart?.bureau.yuan ?? "upper")
+        let term = nativeChart?.solarTerm ?? "霜降"
+        let yuan = nativeChart?.bureau.yuan ?? "upper"
+        return "时家转盘 · " + term + " · " + yuan
     }
     private var voidInfo: String {
-        "时空："+(nativeChart?.xunShou ?? "甲子")+"旬，"+
-        (nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥")+"空"
+        let head = nativeChart?.xunShou ?? "甲子"
+        let empties = nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥"
+        return "时空：" + head + "旬，" + empties + "空"
     }
 
     var body: some View {
