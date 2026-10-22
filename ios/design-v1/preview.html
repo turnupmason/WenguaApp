@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>问卦 · iOS V1 交互设计预览</title>
+<style>
+:root{--paper:#f7f6f1;--card:#fff;--ink:#232b29;--muted:#728078;--green:#153f3a;--gold:#af9062;--wash:#e8f0ed;--stroke:#e6e8df}
+*{box-sizing:border-box}
+body{margin:0;background:#e8e9e5;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.stage{width:min(100%,430px);margin:16px auto;min-height:min(900px,calc(100dvh - 32px));border-radius:33px;background:var(--paper);box-shadow:0 20px 90px #24352b25;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.viewport{flex:1;min-height:520px;overflow:auto;padding:28px 20px 110px}
+.row{display:flex;align-items:center;gap:10px}.between{justify-content:space-between}.muted{color:var(--muted)}.small{font-size:12px}.micro{font-size:10px}
+.top-label{letter-spacing:.25em;font-size:12px;color:var(--green);font-weight:700}
+h1{font-size:34px;letter-spacing:.14em;font-weight:650;margin:8px 0 8px;font-family:"Songti SC",serif}
+h2{font-size:26px;font-family:"Songti SC",serif;font-weight:600;margin:14px 0 8px}
+h3{font-size:16px;margin:0 0 12px}.lead{color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--stroke);border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #1c2b2510}
+.hero{background:#fff;padding:23px 19px}.hero .copy{font-size:29px;font-family:"Songti SC",serif;font-weight:600;line-height:1.42;margin:16px 0}
+.chip{display:inline-block;background:var(--paper);color:var(--muted);border-radius:99px;padding:6px 10px;font-size:11px}
+.chip.active{color:var(--green);background:var(--wash);font-weight:650}
+.cta{width:100%;border:none;border-radius:13px;background:var(--green);color:white;padding:16px;font-weight:650;display:flex;align-items:center;justify-content:center;gap:8px}
+.ghost{border:1px solid var(--stroke);background:#fff;border-radius:13px;padding:10px 13px;color:var(--green);font-size:12px}
+.section{font-weight:700;font-size:16px;margin:24px 0 12px}
+.domain{display:flex;align-items:center;gap:13px;margin:9px 0;padding:13px 15px;border:1px solid var(--stroke);border-radius:17px;background:#fff}
+.symbol{width:44px;height:44px;border-radius:14px;background:var(--wash);color:var(--green);display:grid;place-items:center;font-size:21px}
+.domain-title{font-weight:700;font-size:14px}.domain-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.tabbar{position:absolute;bottom:0;left:0;right:0;z-index:3;background:#fffdfbeb;backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:space-around;border-top:1px solid var(--stroke);padding:13px 8px max(18px,env(safe-area-inset-bottom))}
+.tabbar button{border:0;background:none;display:flex;align-items:center;flex-direction:column;gap:3px;color:var(--muted);font-size:11px;min-width:75px}.tabbar button span{font-size:23px}.tabbar .selected{color:var(--green);font-weight:750}
+.subnav{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin:0 0 20px}.subnav button{border:0;background:none;color:var(--green);padding:4px 0}
+.field-label{display:block;font-weight:700;margin:0 0 9px;font-size:13px}
+select,textarea{width:100%;padding:13px 12px;border:1px solid var(--stroke);border-radius:12px;background:#fcfcf9;color:var(--ink);outline:none}
+textarea{min-height:80px;resize:vertical}.field-help{font-size:11px;color:var(--muted);line-height:1.65;margin:7px 0 0}
+.segment{display:flex;background:#e9ede8;border-radius:13px;padding:4px;gap:4px}
+.segment button{flex:1;border:0;padding:10px 4px;border-radius:10px;color:var(--muted);background:transparent;font-size:12px}
+.segment button.selected{background:#fff;color:var(--green);font-weight:750;box-shadow:0 1px 5px #142b221a}
+.palace-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:12px}
+.palace{border:1px solid var(--stroke);background:white;border-radius:11px;text-align:left;min-height:115px;padding:10px 7px;display:flex;flex-direction:column;gap:6px;justify-content:space-between;color:var(--ink)}
+.palace.role{background:var(--wash);border-color:#afad85}
+.palace-header{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}.palace-header b{font-weight:650}
+.palace-body{font-size:11px;line-height:1.65}.palace-body .name{font-weight:700;font-size:13px}
+.palace-role{font-size:10px;color:var(--green);font-weight:650}
+.palace.is-center{background:#f9faf6;justify-content:center;align-items:center;text-align:center;color:var(--muted)}
+.note{background:var(--wash);border-radius:13px;padding:13px;font-size:12px;line-height:1.65;color:var(--green)}
+.summary{font-size:18px;font-weight:700;line-height:1.5;margin:9px 0;color:var(--ink)}
+details{border:1px solid var(--stroke);background:#fff;border-radius:14px;margin:8px 0;padding:14px}
+summary{font-size:13px;font-weight:650;cursor:pointer}
+details p{font-size:13px;line-height:1.82;color:var(--muted);margin:12px 0 0}
+.cover{display:none;position:absolute;inset:0;background:#17272166;z-index:10;align-items:flex-end}.cover.visible{display:flex}
+.sheet{background:var(--paper);padding:18px 22px 30px;border-radius:25px 25px 0 0;width:100%;max-height:80%;overflow:auto;box-shadow:0 -10px 30px #0002}
+.sheet .handle{height:4px;width:38px;border-radius:4px;background:#aab3ab;margin:-4px auto 20px}
+.screen{display:none}.screen.active{display:block}
+@media(max-width:460px){body{background:var(--paper)}.stage{border-radius:0;margin:0;box-shadow:none;min-height:100dvh}.viewport{padding-top:35px}}
+</style>
+</head>
+<body>
+<div class="stage">
+<main class="viewport" id="viewport">
+<section id="home" class="screen active">
+  <div class="row between"><div><div class="top-label">WENGUA</div><h1>問 卦</h1><div class="small muted">观时 · 识局 · 明理</div></div><div style="font-size:36px;color:var(--gold)">☷</div></div>
+  <div class="card hero"><span class="chip active">时家转盘</span> <span class="chip">离线优先</span><div class="copy">心有所问<br>自有一局</div><p class="lead">古籍为据，因时起盘，观其所问。<br>盘面、证据、断词，都清晰可见。</p><button class="cta" onclick="go('question')">开始问事 →</button></div>
+  <div class="section">问事领域</div>
+  <div class="domain"><div class="symbol">✚</div><div style="flex:1"><div class="domain-title">身体健康</div><div class="domain-sub">病情轻重 · V3.9.1 古籍断词</div></div><span class="chip active">首个专题</span></div>
+  <div class="domain"><div class="symbol">♡</div><div style="flex:1"><div class="domain-title">婚姻感情</div><div class="domain-sub">规则建设中</div></div><span class="chip">开发中</span></div>
+  <div class="domain"><div class="symbol">▣</div><div style="flex:1"><div class="domain-title">工作与求财</div><div class="domain-sub">规则建设中</div></div><span class="chip">开发中</span></div>
+  <p class="field-help">传统文化与古籍研究工具，不提供医学诊断、治疗建议或风险概率。</p>
+</section>
+<section id="question" class="screen">
+  <div class="subnav"><button onclick="go('home')">← 返回首页</button><span>01 / 02 · 问事资料</span></div>
+  <div class="top-label">ASK A QUESTION</div><h2>所问何事？</h2>
+  <p class="lead">系统按实际人物关系取用神，不要求每位用户输入出生年份。</p>
+  <div class="card"><label class="field-label">问事类型</label><div class="row between"><b>✚　健康 · 病情轻重</b><span class="chip active">V3.9.1</span></div><div style="height:16px"></div>
+    <label class="field-label" for="relation">你在为谁问事？</label><select id="relation"><option>本人</option><option>父亲</option><option>母亲</option><option>丈夫</option><option>妻子</option><option>兄弟</option><option>姐妹</option><option>儿子</option><option>女儿</option></select>
+    <p class="field-help">人物关系决定患者主用神。其他身份需先匹配有效规则。</p>
+  </div>
+  <div class="card"><label class="field-label" for="description">描述想问的事（可选）</label><textarea id="description" placeholder="例如：想了解病势变化的古籍象意……"></textarea><div style="height:14px"></div>
+    <label class="field-label" for="duration">是否新病 / 久病？（可选）</label><select id="duration"><option>未说明</option><option>新病</option><option>久病</option></select><p class="field-help">不从盘面虚构现实病史、年命或诊断。</p>
+  </div>
+  <div class="note">◷　真实版本将在点击“起盘”时锁定时刻、时区、节气与四柱。静心仪式可选，不改变起盘算法。</div>
+  <button class="cta" style="margin-top:17px" onclick="go('result')">查看界面演示 →</button>
+  <p class="field-help" style="text-align:center">下一页固定展示 2026-10-22 历史测试盘，与你刚填写的内容无关。</p>
+</section>
+<section id="result" class="screen">
+  <div class="subnav"><button onclick="go('question')">← 返回问事</button><span>02 / 02 · 演示结果</span></div>
+  <span class="chip active">固定历史样例 · 非实时起盘</span><h2>一局一问</h2>
+  <p class="lead">丙午年 · 戊戌月 · 己巳日 · 庚午时<br>阴遁九局 · 寒露 · 本人问身体</p>
+  <div class="segment" id="resulttabs"><button class="selected" onclick="switchTab('board',this)">九宫盘</button><button onclick="switchTab('read',this)">断词</button><button onclick="switchTab('sources',this)">依据</button></div>
+  <div id="board" class="result-panel"><div class="card"><div class="row between"><b>九宫结构</b><span class="small muted">点击任意宫位</span></div><div class="palace-grid" id="palaces"></div><p class="micro muted">巽 · 离 · 坤 / 震 · 中 · 兑 / 艮 · 坎 · 乾</p></div>
+    <div class="card"><h3>本盘角色</h3><div class="row" style="flex-wrap:wrap"><span class="chip active">患者 · 巽四</span><span class="chip active">病宫 · 乾六</span><span class="chip">天心 · 艮八</span><span class="chip">乙奇 · 震三</span><span class="chip">时干 · 坎一</span></div></div>
+  </div>
+  <div id="read" class="result-panel" style="display:none"><div class="card"><span class="small muted">古籍象意主判断 · 样例</span><div class="summary">偏凶，但存在明确反证</div><p class="lead">患者宫受病宫克，又有己加癸地刑玄武；病宫丙辛月奇相合、天芮泄气及旬空构成反向依据。不代表现实健康结论。</p></div>
+    <div id="reading-sections"></div>
+  </div>
+  <div id="sources" class="result-panel" style="display:none"><div class="card"><h3>为何得出这一传统判断</h3><p class="lead">患者己在巽四、死门、六合；天芮携丙在乾六，戌墓、亥绝且戌亥旬空。天心在艮八、乙奇在震三。主证与反证都应保留。</p></div><div class="card"><h3>方法与版本</h3><p class="lead">V3.9.1 自然断词＋完整十二长生，81组原书有序组合、42条疾病补充、17类复合条件。细节溯源留在本地审计，不把SQL和书籍行号堆在用户正文。</p></div></div>
+  <p class="field-help">传统古籍研究，不是现实疾病诊断、病情预后、疗效判断或医疗决定依据。</p>
+</section>
+<section id="history" class="screen"><div class="top-label">MY RECORDS</div><h2>问事记录</h2><div class="card"><p class="lead">正式版将把时辰、九宫、断词版本与问事资料保存在设备本地。</p><p class="field-help">本原型不存储任何问事内容，也不会联网起盘。</p></div></section>
+<section id="more" class="screen"><div class="top-label">LIBRARY & SETTINGS</div><h2>典籍与设置</h2><div class="card"><h3>两书原文方法</h3><p class="lead">《神奇之门》《开悟之门》的来源目录、规则、术语解释（合法展示范围另行核对）。</p></div><div class="card"><h3>数据与隐私</h3><p class="lead">本地记录、手动导出、删除问事历史、颜色与字体偏好。</p></div></section>
+</main>
+<nav class="tabbar" aria-label="主导航">
+  <button id="tab-home" class="selected" onclick="go('home')"><span>☰</span>问事</button>
+  <button id="tab-history" onclick="go('history')"><span>◷</span>记录</button>
+  <button id="tab-more" onclick="go('more')"><span>▤</span>更多</button>
+</nav>
+<div class="cover" id="cover" onclick="closeSheet(event)"><div class="sheet" id="sheet"><div class="handle"></div><h2 id="sheet-title"></h2><div id="sheet-body"></div><button class="ghost" style="width:100%;margin-top:10px" onclick="document.querySelector('#cover').classList.remove('visible')">关闭</button></div></div>
+</div>
+<script>
+const data=[
+{id:4,n:"巽四",s:"天任",d:"死门",g:"六合",t:"己",e:"癸",r:"患者"},
+{id:9,n:"离九",s:"天冲",d:"惊门",g:"太阴",t:"丁",e:"戊",r:""},
+{id:2,n:"坤二",s:"天辅",d:"开门",g:"螣蛇",t:"癸",e:"丙",r:""},
+{id:3,n:"震三",s:"天蓬",d:"景门",g:"白虎",t:"乙",e:"丁",r:"乙奇"},
+{id:5,n:"中五",s:"",d:"",g:"",t:"",e:"壬",r:""},
+{id:7,n:"兑七",s:"天英",d:"休门",g:"值符",t:"戊",e:"庚",r:""},
+{id:8,n:"艮八",s:"天心",d:"杜门",g:"玄武",t:"辛",e:"己",r:"天心"},
+{id:1,n:"坎一",s:"天柱",d:"伤门",g:"九地",t:"庚",e:"乙",r:"时干"},
+{id:6,n:"乾六",s:"天芮·天禽",d:"生门",g:"九天",t:"丙·壬",e:"辛",r:"天芮"}];
+const sections=[
+["01 · 问事取用","本人以日干己为主用神，落巽四宫；天芮在乾六宫。"],
+["02 · 值符值使","值符天英星落兑七宫，值使景门落震三宫。"],
+["03 · 天芮病宫","天芮携丙落乾六宫，丙加辛月奇相合；丙在戌墓、亥绝，戌亥旬空。"],
+["04 · 病星月令","戌月天芮相，病星有气；也须结合病宫旬空与泄气。"],
+["05 · 患者用神宫","日干己在巽四宫，死门、六合，己加癸地刑玄武，十二长生辰衰、巳帝旺。"],
+["07 · 医生医药","天心在艮八宫，乙奇在震三宫；原书三奇得使、玉女守门等格局由真实条件触发。"],
+["08 · 时干事体","时干庚在坎一宫，伤门、天柱、九地；庚在子死。"],
+["09 · 特殊格局","需以实盘审查门迫、击刑、墓库、旬空、双重制病与双重不利。"],
+["10 · 伏吟反吟与应期","出现真实冲合或出墓条件才论应期，不能凭空给病愈日期。"],
+["11 · 最后断词","传统主判偏凶，但丙辛月奇相合、天芮土泄气、病宫旬空等构成反证。"]];
+function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.toggle("active",x.id===id));["home","history","more"].forEach(x=>document.querySelector("#tab-"+x).classList.toggle("selected",x===id||(x==="home"&&["question","result"].includes(id))));document.querySelector("#viewport").scrollTop=0;}
+function switchTab(id,btn){document.querySelectorAll(".result-panel").forEach(p=>p.style.display=p.id===id?"block":"none");document.querySelectorAll("#resulttabs button").forEach(p=>p.classList.toggle("selected",p===btn));}
+function openPalace(id){const p=data.find(x=>x.id===id);document.querySelector("#sheet-title").textContent=p.n+(p.r?" · "+p.r:"");document.querySelector("#sheet-body").innerHTML=p.id===5?'<p class="lead">中五宫：地盘壬。本宫不强行填入常规八门、九星与八神。</p>':'<p class="lead">九星：'+p.s+'<br>八门：'+p.d+'<br>八神：'+p.g+'<br>天盘干：'+p.t+'<br>地盘干：'+p.e+'</p><p class="field-help">更多十二长生、旬空、刑冲等完整证据将在实际引擎接入后展示。</p>';document.querySelector("#cover").classList.add("visible");}
+function closeSheet(e){if(e.target.id==="cover")document.querySelector("#cover").classList.remove("visible");}
+document.querySelector("#palaces").innerHTML=data.map(x=>x.id===5?'<button class="palace is-center" onclick="openPalace(5)"><b>中五</b><span>地壬</span></button>':'<button class="palace '+(x.r?"role":"")+'" onclick="openPalace('+x.id+')"><div class="palace-header"><b>'+x.n+'</b>'+(x.r?"●":"")+'</div><div class="palace-body"><div class="name">'+x.s+'</div>'+x.d+' · '+x.g+'<br>天'+x.t+' / 地'+x.e+'</div><div class="palace-role">'+(x.r||"　")+'</div></button>').join("");
+document.querySelector("#reading-sections").innerHTML=sections.map(([t,b])=>'<details><summary>'+t+'</summary><p>'+b+'</p></details>').join("");
+</script>
+</body></html>
