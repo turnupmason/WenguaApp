@@ -1,0 +1,137 @@
+name: V3.7 Genuine Full 81 Pair Double Risk Noon Research
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v37.py'
+      - 'data/knowledge/phrase_library/health_v37/severity_fixed_template.json'
+      - 'scripts/run_health_v37_user_20261022_noon.py'
+      - 'tests/test_health_v37_double_risk_full81_noon.py'
+      - 'schema/migrations/065_health_full_81_pair_double_adverse_v37.sql'
+      - 'scripts/build_health_v37_full_archive.py'
+      - '.github/workflows/health_v37_all81_double_risk_noon.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Source 81 pairs, double favorable/adverse counterexamples, genuine 2026 noon cast
+        run: |
+          python -m unittest discover -s tests -p test_health_v37_double_risk_full81_noon.py -v
+          python -m scripts.run_health_v37_user_20261022_noon
+  archive:
+    runs-on: ubuntu-latest
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Guard sealed full V3.6 and new V3.7 uniqueness
+        id: guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          p=Path('archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='dc086d67e2ebb477b47ce27f39e7d58879ac33bbd56715152230e638862be9d8'
+          new=Path('archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3')
+          meta=Path('archives/sqlite/wengua_health_v37_noon_manifest.json')
+          case=Path('data/evaluation/health_v37/20261022_ji_si_geng_wu_V37_SEALED.json')
+          doc=Path('docs/HEALTH_V37_20261022_USER_TEST_VERBATIM.md')
+          if new.exists():
+              assert meta.exists() and case.exists() and doc.exists()
+              info=json.loads(meta.read_text('utf8'))
+              assert hashlib.sha256(new.read_bytes()).hexdigest()==info['sqlite_sha256']
+              assert hashlib.sha256(case.read_bytes()).hexdigest()==info['test_case_sha256']
+          else:
+              assert not meta.exists() and not case.exists() and not doc.exists()
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Append full 194-case V3.7 database and seal real noon result
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v37_full_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3' \
+            --seal 'data/evaluation/health_v37/20261022_ji_si_geng_wu_V37_SEALED.json' \
+            --manifest 'archives/sqlite/wengua_health_v37_noon_manifest.json' \
+            --readout 'docs/HEALTH_V37_20261022_USER_TEST_VERBATIM.md'
+      - name: Verify complete source cases, 81 pair originals, isolated new sample, all digest hashes
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import json,hashlib,lzma,sqlite3
+          from pathlib import Path
+          src=Path('archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3')
+          meta=json.loads(Path('archives/sqlite/wengua_health_v37_noon_manifest.json').read_text('utf8'))
+          casepath=Path('data/evaluation/health_v37/20261022_ji_si_geng_wu_V37_SEALED.json')
+          doc=Path('docs/HEALTH_V37_20261022_USER_TEST_VERBATIM.md')
+          x=json.loads(casepath.read_text('utf8'))
+          sha=lambda q:hashlib.sha256(q.read_bytes()).hexdigest()
+          assert sha(src)==meta['sqlite_sha256']
+          assert sha(casepath)==meta['test_case_sha256']
+          assert sha(doc)==meta['readable_report_sha256']
+          assert sha(Path(str(src)+'.xz'))==meta['xz_sha256']
+          assert lzma.decompress(Path(str(src)+'.xz').read_bytes())==src.read_bytes()
+          assert len(x['actual_all_nine_source_pairs'])==9
+          assert x['bureau']['ju']==9 and x['bureau']['dun']=='yin'
+          assert x['pillars']=={'year':'丙午','month':'戊戌','day':'己巳','hour':'庚午'}
+          assert hashlib.sha256(x['reading_text'].encode()).hexdigest()==x['reading_sha256']
+          assert x['double_evidence']['double_adverse_patient_formation'] is True
+          assert x['double_evidence']['double_adverse_disease_growth'] is False
+          with sqlite3.connect(src) as db:
+              assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not db.execute('PRAGMA foreign_key_check').fetchall()
+              for table,n in [('cases',194),('sections',43),
+                  ('kaiwu_ordered_stem_pair_occurrences',81),
+                  ('health_v30_stem_pair_rules',42),('health_v30_composite_rule_index',17),
+                  ('health_v33_all_historical_health_replay',12),
+                  ('health_v34_role_and_condition_replay',12),
+                  ('health_v35_patient_first_replay',12),
+                  ('health_v36_source_horse_and_value_door',12),
+                  ('health_v37_user_noon_test',1),('health_v37_ordered_81_pair_policy',1)]:
+                  assert db.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0]==n,table
+              assert db.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.guard.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V37-Real-Noon-81-Pairs-Full194
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v37_noon_manifest.json
+            data/evaluation/health_v37/20261022_ji_si_geng_wu_V37_SEALED.json
+            docs/HEALTH_V37_20261022_USER_TEST_VERBATIM.md
+      - name: Publish only new immutable V3.7 full archive and readout
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3'
+          git add -- \
+            'archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v37_noon_manifest.json' \
+            'data/evaluation/health_v37/20261022_ji_si_geng_wu_V37_SEALED.json' \
+            'docs/HEALTH_V37_20261022_USER_TEST_VERBATIM.md'
+          git diff --cached --check
+          git commit -m 'Archive original 81-pair and two-sided V3.7 actual 2026 noon complete research DB'
+          git push origin HEAD:main
