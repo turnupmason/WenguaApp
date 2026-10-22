@@ -1,0 +1,38 @@
+{
+  "schema": "wengua_health_v40_nonclinical_symbolic_score_archive",
+  "parent_complete_v39_sha256": "0e565ff5c4fea8d0510b155ab264b1af4c8ab9b63a173eb8cf96a00909c04ed1",
+  "new_complete_v40_sha256": "d16f31598433541e239285ba2af2e1085a6ccf9d11057d1b53c338d2f5122304",
+  "new_complete_v40_bytes": 15083520,
+  "new_complete_v40_xz_sha256": "07ee0225737307cacf59a8db18bab621fbc4b5122eeed68a87fc34342daab3b8",
+  "sealed_three_score_ledgers_sha256": "b7051bfbda7bb97e34a06114c6b243bb768152f5cc5f787bb6ec110117d8e166",
+  "score_report_sha256": "88f084ce16dd5f7e909cfd7f5ac846c6628f6394667d556db461b823f3525c5c",
+  "weight_config_sha256": "dfd5df45020afd4715e042921974ad65fd9e61edef5803baf67de140d0287ae6",
+  "book_cases_original": 194,
+  "source_chapters_original": 43,
+  "book_ordered_pairs_original": 81,
+  "supplement_pairs_original": 42,
+  "composite_catalog_original": 17,
+  "old_known_errors_preserved": 2,
+  "latest_user_acceptance_of_score_weights": false,
+  "medical_probability_or_actual_health_prediction": false,
+  "v39_staged_baseline_unchanged": true,
+  "score_model_is_unvalidated_prototype": true,
+  "raw_scores_not_same_as_probabilities": true,
+  "three_scores": [
+    {
+      "case": "user_20261022_1200_EDT",
+      "raw": 46,
+      "display": 46
+    },
+    {
+      "case": "kaiwu.health.19950219.brother_paralysis",
+      "raw": 90,
+      "display": 90
+    },
+    {
+      "case": "shenqi.health.19961102.on_site_health",
+      "raw": 124,
+      "display": 100
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "schema": "wengua_health_v40_3_fixed_score_trials",
+  "exact_complete_v39_source_sha256": "0e565ff5c4fea8d0510b155ab264b1af4c8ab9b63a173eb8cf96a00909c04ed1",
+  "unseen_blind_trial": false,
+  "user_approved": false,
+  "records": [
+    {
+      "family_id": "user_20261022_1200_EDT",
+      "pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "己巳",
+        "hour": "庚午"
+      },
+      "datetime": "2026-10-22T12:00:00-04:00",
+      "relationship": "self",
+      "score": {
+        "schema": "wengua_health_v40_experimental_traditional_symbolic_100_score",
+        "policy_version": "V4.0-score-experiment-1",
+        "approval": "unreviewed_research_candidate",
+        "score_label": "奇门病势象意分（实验）",
+        "baseline": 100,
+        "signed_delta_sum": -54,
+        "raw_score": 46,
+        "display_score_0_100": 46,
+        "score_is_probability": false,
+        "medical_health_index": false,
+        "clinical_accuracy_validated": false,
+        "illness_duration": null,
+        "person": "本人",
+        "patient_palace": 4,
+        "illness_palace": 6,
+        "male_female_aux_reference": null,
+        "tomb_and_horse": {
+          "stem": "己",
+          "patient_palace": 4,
+          "tomb_branch": "丑",
+          "palace_branches": [
+            "辰",
+            "巳"
+          ],
+          "in_tomb_palace": false,
+          "month_stage": "旺",
+          "name": "入库",
+          "horse_from_hour_branch": "午",
+          "horse_branch": "申",
+          "horse_palace": 2,
+          "opposite_palace": 6,
+          "horse_spatial_opposite": false,
+          "direct_clashing_branch": "未",
+          "direct_clash_in_pillars": false,
+          "direct_clash_pillar_labels": [],
+          "opening_mode": "not_in_tomb",
+          "source_texts": [
+            "开悟之门第二章墓库月令及冲库原文",
+            "开悟之门第四章时支驿马及六甲旬空、马星动象"
+          ],
+          "two_methods_not_silently_equated": true
+        },
+        "selected_medical_palace": 8,
+        "month_stage": {
+          "patient_stem": "旺",
+          "patient_palace": "囚",
+          "tianrui_star": "相"
+        },
+        "ledger": [
+          {
+            "id": "illness_controls_patient",
+            "family": "main_patient_illness_relation",
+            "points": -25,
+            "why": "病宫克患者宫",
+            "evidence": {
+              "p": 4,
+              "i": 6
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "death_door_co_palace_patient",
+            "family": "door_patient",
+            "points": -8,
+            "why": "患者本宫临死门",
+            "evidence": {
+              "palace": 4
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_vigorous",
+            "family": "season_patient_stem",
+            "points": 6,
+            "why": "患者主用干在月令旺",
+            "evidence": {
+              "stem": "己",
+              "state": "旺",
+              "month": "戌"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_weak",
+            "family": "season_patient_palace",
+            "points": -4,
+            "why": "患者宫五行在月令囚",
+            "evidence": {
+              "palace": 4,
+              "state": "囚"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_vigorous",
+            "family": "season_tianrui",
+            "points": -15,
+            "why": "天芮月令相",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_good_deity",
+            "family": "deity_patient",
+            "points": 8,
+            "why": "患者宫乘六合",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_branch_month_break",
+            "family": "patient_month_break",
+            "points": -8,
+            "why": "月支冲患者宫所辖地支",
+            "evidence": {
+              "month": "戌",
+              "clash": "辰",
+              "patient": 4
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "double_adverse_distinct_chain_penalty",
+            "family": "interaction",
+            "points": -8,
+            "why": "疾病攻人或患者助病并见独立凶证，只扣一次协同项",
+            "evidence": {
+              "patient_vs_illness": "受克",
+              "illness_vs_tianrui": "受生",
+              "patient_original_bad_formation": true
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "unscored_unknowns": [
+          {
+            "id": "qian_kun_missing_patient_sex",
+            "reason": "未提供患者性别，不猜乾坤辅助宫"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "natal_context",
+            "reason": "没有提供出生年命，年命只作为未取值辅助"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          }
+        ],
+        "unadjusted_original_v39_readout": true,
+        "book_source_outcomes_used": false
+      },
+      "original_post_event_result_used": false
+    },
+    {
+      "family_id": "kaiwu.health.19950219.brother_paralysis",
+      "pillars": {
+        "year": "乙亥",
+        "month": "戊寅",
+        "day": "辛巳",
+        "hour": "癸巳"
+      },
+      "datetime": "1995-02-19T09:30:00+08:00",
+      "relationship": "younger_sibling",
+      "score": {
+        "schema": "wengua_health_v40_experimental_traditional_symbolic_100_score",
+        "policy_version": "V4.0-score-experiment-1",
+        "approval": "unreviewed_research_candidate",
+        "score_label": "奇门病势象意分（实验）",
+        "baseline": 100,
+        "signed_delta_sum": -10,
+        "raw_score": 90,
+        "display_score_0_100": 90,
+        "score_is_probability": false,
+        "medical_health_index": false,
+        "clinical_accuracy_validated": false,
+        "illness_duration": null,
+        "person": "弟弟或妹妹",
+        "patient_palace": 9,
+        "illness_palace": 2,
+        "male_female_aux_reference": "male",
+        "tomb_and_horse": {
+          "stem": "戊",
+          "patient_palace": 9,
+          "tomb_branch": "戌",
+          "palace_branches": [
+            "午"
+          ],
+          "in_tomb_palace": false,
+          "month_stage": "死",
+          "name": "入墓",
+          "horse_from_hour_branch": "巳",
+          "horse_branch": "亥",
+          "horse_palace": 6,
+          "opposite_palace": 1,
+          "horse_spatial_opposite": false,
+          "direct_clashing_branch": "辰",
+          "direct_clash_in_pillars": false,
+          "direct_clash_pillar_labels": [],
+          "opening_mode": "not_in_tomb",
+          "source_texts": [
+            "开悟之门第二章墓库月令及冲库原文",
+            "开悟之门第四章时支驿马及六甲旬空、马星动象"
+          ],
+          "two_methods_not_silently_equated": true
+        },
+        "selected_medical_palace": 6,
+        "month_stage": {
+          "patient_stem": "死",
+          "patient_palace": "相",
+          "tianrui_star": "囚"
+        },
+        "ledger": [
+          {
+            "id": "patient_generates_illness",
+            "family": "main_patient_illness_relation",
+            "points": -8,
+            "why": "患者宫生病宫",
+            "evidence": {
+              "p": 9,
+              "i": 2
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_weak",
+            "family": "season_patient_stem",
+            "points": -6,
+            "why": "患者主用干在月令死",
+            "evidence": {
+              "stem": "戊",
+              "state": "死",
+              "month": "寅"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_vigorous",
+            "family": "season_patient_palace",
+            "points": 4,
+            "why": "患者宫五行在月令相",
+            "evidence": {
+              "palace": 9,
+              "state": "相"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_weak",
+            "family": "season_tianrui",
+            "points": 10,
+            "why": "天芮月令囚",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "tianrui_geng_same_palace",
+            "family": "illness_stem_geng",
+            "points": -10,
+            "why": "庚与天芮同宫",
+            "evidence": {
+              "illness_palace": 2
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "unscored_unknowns": [
+          {
+            "id": "patient_void_duration",
+            "reason": "患者宫旬空，但未提供新病或久病，不给固定吉凶分"
+          },
+          {
+            "id": "fuyin_duration",
+            "reason": "伏吟主迟，但未确认为久病，不机械扣轻重分"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          }
+        ],
+        "unadjusted_original_v39_readout": true,
+        "book_source_outcomes_used": false
+      },
+      "original_post_event_result_used": false
+    },
+    {
+      "family_id": "shenqi.health.19961102.on_site_health",
+      "pillars": {
+        "year": "丙子",
+        "month": "戊戌",
+        "day": "癸卯",
+        "hour": "庚申"
+      },
+      "datetime": "1996-11-02T16:00:00+08:00",
+      "relationship": "self",
+      "score": {
+        "schema": "wengua_health_v40_experimental_traditional_symbolic_100_score",
+        "policy_version": "V4.0-score-experiment-1",
+        "approval": "unreviewed_research_candidate",
+        "score_label": "奇门病势象意分（实验）",
+        "baseline": 100,
+        "signed_delta_sum": 24,
+        "raw_score": 124,
+        "display_score_0_100": 100,
+        "score_is_probability": false,
+        "medical_health_index": false,
+        "clinical_accuracy_validated": false,
+        "illness_duration": null,
+        "person": "本人",
+        "patient_palace": 6,
+        "illness_palace": 3,
+        "male_female_aux_reference": null,
+        "tomb_and_horse": {
+          "stem": "癸",
+          "patient_palace": 6,
+          "tomb_branch": "未",
+          "palace_branches": [
+            "戌",
+            "亥"
+          ],
+          "in_tomb_palace": false,
+          "month_stage": "死",
+          "name": "入墓",
+          "horse_from_hour_branch": "申",
+          "horse_branch": "寅",
+          "horse_palace": 8,
+          "opposite_palace": 4,
+          "horse_spatial_opposite": false,
+          "direct_clashing_branch": "丑",
+          "direct_clash_in_pillars": false,
+          "direct_clash_pillar_labels": [],
+          "opening_mode": "not_in_tomb",
+          "source_texts": [
+            "开悟之门第二章墓库月令及冲库原文",
+            "开悟之门第四章时支驿马及六甲旬空、马星动象"
+          ],
+          "two_methods_not_silently_equated": true
+        },
+        "selected_medical_palace": 9,
+        "month_stage": {
+          "patient_stem": "死",
+          "patient_palace": "相",
+          "tianrui_star": "相"
+        },
+        "ledger": [
+          {
+            "id": "patient_controls_illness",
+            "family": "main_patient_illness_relation",
+            "points": 20,
+            "why": "患者宫克病宫",
+            "evidence": {
+              "p": 6,
+              "i": 3
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "same_palace_event_or_illness_medicine_opportunity",
+            "family": "medical_access",
+            "points": 5,
+            "why": "时干/病宫与医药宫同宫，古籍的医治机会辅助象",
+            "evidence": {
+              "hour": 9,
+              "illness": 3,
+              "medicine": [
+                9,
+                8
+              ]
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_weak",
+            "family": "season_patient_stem",
+            "points": -6,
+            "why": "患者主用干在月令死",
+            "evidence": {
+              "stem": "癸",
+              "state": "死",
+              "month": "戌"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_vigorous",
+            "family": "season_patient_palace",
+            "points": 4,
+            "why": "患者宫五行在月令相",
+            "evidence": {
+              "palace": 6,
+              "state": "相"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_vigorous",
+            "family": "season_tianrui",
+            "points": -15,
+            "why": "天芮月令相",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_good_deity",
+            "family": "deity_patient",
+            "points": 8,
+            "why": "患者宫乘值符",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "double_suppression_distinct_chain_bonus",
+            "family": "interaction",
+            "points": 8,
+            "why": "患者制病并且病宫制天芮的独立两段关系，只加一次协同项",
+            "evidence": {
+              "patient_vs_illness": "克",
+              "illness_vs_tianrui": "克"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "unscored_unknowns": [
+          {
+            "id": "qian_kun_missing_patient_sex",
+            "reason": "未提供患者性别，不猜乾坤辅助宫"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "natal_context",
+            "reason": "没有提供出生年命，年命只作为未取值辅助"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          }
+        ],
+        "unadjusted_original_v39_readout": true,
+        "book_source_outcomes_used": false
+      },
+      "original_post_event_result_used": false
+    }
+  ]
+}
