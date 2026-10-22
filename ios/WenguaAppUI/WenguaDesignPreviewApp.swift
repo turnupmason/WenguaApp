@@ -560,7 +560,7 @@ struct TraditionalReadingPreview: View {
                 VStack(alignment: .leading, spacing: 15) {
                     Text("古籍断词 · V3.9.1")
                         .font(.system(size: 28, weight: .medium))
-                    Text("固定历史样例，不是刚输入的新问题。")
+                    Text("固定已计算测试盘，不是刚输入的新问题。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                     Text("保留主证、反证、应期和完整十二长生，不显示任何分数。")
                         .font(.subheadline)
