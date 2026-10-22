@@ -154,8 +154,8 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
     if pair["category"]=="source_named_obstruction":
         symbols+="；"+pair["short"]
     elif STEM_ELEMENTS[carrier["carried_stem"]]==STEM_ELEMENTS[ill["earth_stem"]]:
-        symbols+="；两干同属"+STEM_ELEMENTS[carrier["carried_stem"]]+"，"+
-                 _stem_mean(carrier["carried_stem"],chart,ill)+"之象重见"
+        symbols+=("；两干同属"+STEM_ELEMENTS[carrier["carried_stem"]]+"，"+
+                  _stem_mean(carrier["carried_stem"],chart,ill)+"之象重见")
     if star_rel=="克":star_line="宫"+ELEMENTS[ill["palace"]]+"克天芮土，病星受制"
     elif star_rel=="比和":star_line="宫星同属土，病象有根"
     elif star_rel=="生":star_line="落宫生扶病星"
