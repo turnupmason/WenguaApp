@@ -23,6 +23,5 @@ CREATE TABLE health_v40_three_symbolic_score_trials (
   score_ledger_sha256 TEXT NOT NULL CHECK(length(score_ledger_sha256)=64),
   uncertain_rules_count INTEGER NOT NULL CHECK(uncertain_rules_count>=0),
   older_original_answer_as_input INTEGER NOT NULL CHECK(older_original_answer_as_input=0),
-  customer_approved INTEGER NOT NULL CHECK(customer_approved=0),
-  FOREIGN KEY (case_id) REFERENCES health_v40_three_symbolic_score_trials(case_id)
+  customer_approved INTEGER NOT NULL CHECK(customer_approved=0)
 );
