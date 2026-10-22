@@ -88,7 +88,7 @@ def build(parent,output,seal,manifest,readout):
             for name,row in sorted(proposals.items()):
                 original=originals[name]
                 db.execute("""INSERT INTO health_v41_candidate_ordered_pair_weights VALUES
-                  (?,?,?,?,?,?,?,?,0)""",
+                  (?,?,?,?,?,?,?,?,?,0)""",
                   (name,row["top"],row["bottom"],row["user_alias"],
                    row["proposed_points"],json.dumps(row.get("duration_points"),ensure_ascii=False),
                    original["excerpt_sha256"],original["source_line"],
