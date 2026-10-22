@@ -52,13 +52,13 @@ def evaluate(db_path=PARENT):
         findings.append({"family_id":name,"pillars":pillars,"datetime":clock,
                          "relationship":q["relationship"],"score":output,
                          "original_post_event_result_used":False})
-    return {"schema":"wengua_health_v40_3_fixed_score_trials",
-       "exact_complete_v39_source_sha256":PARENT_SHA,
+    return {"schema":"wengua_health_v41_3_fixed_source_gated_score_trials",
+       "exact_complete_v40_source_sha256":PARENT_SHA,
        "unseen_blind_trial":False,"user_approved":False,"records":findings}
 
 if __name__=="__main__":
     result=evaluate()
     print(json.dumps({"samples":[{"id":r["family_id"],"score":r["score"]["revised_display_score"],
        "raw":r["score"]["revised_raw_score"],"adjustment":r["score"]["source_constrained_pair_increment"],
-       "rows":[{"name":x["id"],"points":x["points"]} for x in r["score"]["evidence_ledger"]],
+       "rows":[{"name":x.get("id",x.get("rule_id")),"points":x["points"]} for x in r["score"]["evidence_ledger"]],
        "unknown":r["score"]["source_uncertainties"]} for r in result["records"]]},ensure_ascii=False,indent=2))
