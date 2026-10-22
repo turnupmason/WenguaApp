@@ -1,0 +1,13 @@
+{
+  "version": "V2.9",
+  "parent_sha256": "1837107123d78f1da47e1046c9043827484985e6cb1ff01689e70057c7d6c301",
+  "new_full_sha256": "511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19",
+  "new_sealed_sha256": "f27b263ac75088617d099623e0a288473d6e3993bada3d3889959b1628ba3b7b",
+  "original_cases": 194,
+  "original_sections": 43,
+  "original_v27_v28_readings_preserved": true,
+  "older_second_user_approved_v27_only": true,
+  "new_v29_review": "pending",
+  "pure_offline_no_GPT": true,
+  "medical_accuracy_not_validated": true
+}

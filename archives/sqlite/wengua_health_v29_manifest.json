@@ -1,0 +1,15 @@
+{
+  "version": "V2.9",
+  "sha256": "511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19",
+  "full_original_cases": 194,
+  "source_sections": 43,
+  "parent_sha256": "1837107123d78f1da47e1046c9043827484985e6cb1ff01689e70057c7d6c301",
+  "xz_sha256": "d0ce80a3265816fb0ae98ed21eebcb4a15f160f44b1eabd6d672de2ec191facd",
+  "new_seal_sha256": "f27b263ac75088617d099623e0a288473d6e3993bada3d3889959b1628ba3b7b",
+  "original_archives_unchanged": true,
+  "user_content_review": "pending",
+  "legacy_second_case_V27_user_confirmed": true,
+  "other_four_health_templates_approved": false,
+  "no_gpt": true,
+  "medical_accuracy_verified": false
+}
