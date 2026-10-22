@@ -49,3 +49,11 @@
 - 真实iOS综合自然中文断词尚未移植，当前绝不能对新盘展示旧V3.9.1断词示例作为正式结果。
 - 用户提供的《奇门》九宫排盘截图是视觉参考，**不替换书籍原有置闰/阴阳遁方法**。暂时未确认节气边界、晚子时和某些中五门寄宫须抛错/明确阻塞。
 - 恢复下一阶段任务时直接编辑已有 main 分支、保留历史失败，不重置仓库、不重复整理全部原书、不回去画海报或做固定宫位JS演示。
+
+### VERIFIED native iOS implementation checkpoint — 2026-10-22 late session
+
+**Actual macOS Xcode build SUCCESS CONFIRMED**: https://github.com/turnupmason/WenguaApp/actions/runs/39868998543 (commit `d8a3a398be934b86fe31227762467f4ec11b35c5`), jobs `native_core` SUCCESS and `real_ios_xcode_build` SUCCESS; GitHub Actions used XcodeGen `ios/WenguaAppUI/project.yml` to create an iOS 17+ .xcodeproj and really compiled `WenguaDesignPreviewApp.swift` together with `WenguaNativeCore.swift` targeting the iOS Simulator on macos-15, **without signing**. This is not merely Swift parser validation: app compilation succeeded. Four-source-cast parity generated independently with Swift and fully compared to Python golden. Main WenguaApp CI & iOS design contract also SUCCESS on same source commit.
+
+Most recent subsequent clean-up commit `c2aa4f86d68e8c6098e897ee0744532dbcfdc549` refactored the native palace detail ViewBuilder into separately typechecked parts. Check its latest CI run `https://github.com/turnupmason/WenguaApp/actions/runs/39869156240` before calling THAT later HEAD successfully built; earlier d8 checkpoint is definitively confirmed green. All old failures (unittest import side effect, Swift nil JSON fields, bad SwiftUI concatenation/type-check complexity) retained in workflow run history and fixed.
+
+**Verified deliverable** = real native-cast Swift source plus generated-iOS-project definition, source-parity-tested and iOS Simulator BUILD-COMPILED. NOT YET = signed/installable IPA, physical device/testflight run, actual on-device clicks through 30sec and local issue persistence, V3.9.1 offline reading engine, cross-device 15 day enforcement, Apple release. The native computed board represents REAL casting; old precomputed fixture is preview-only. User asked for a new account handoff: `docs/NEXT_CHAT_PROMPT_IOS_NATIVE_2026-10-22.txt` is the complete prompt and `docs/IOS_NATIVE_ENGINE_HANDOFF_2026-10-22.md` is the complete scope/limits/history. Do not accidentally claim that the entire book's diagnostic reasoning was ported just because native calendar/board and app compile pass.
