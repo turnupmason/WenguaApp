@@ -150,3 +150,12 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 ## 2026-10-21 健康V2.0 多问事与人际角色绑定
 
 21段「病情严重程度」详细模板由用户确认；必须填各星门神干代表意思、天地干病象、落宫内外身体对应、医药患者有向生克及条件化古籍综合，不可随意缩成一两句；对外只说“依据古籍”。朋友闻讯事件日干与朋友直接托测同辈月干候选不相同；自测、父母、孩子、侄辈、配偶亦不同。真实年龄性别排行由用户输入；无年命继续判断且不乱绑定个人宫。V2.0新增5具体健康问事及66段，文件 data/knowledge/phrase_library/health_v20/，执行 src/wengua/health_dynamic_v20.py，数据库迁移048，完整运行单测后归档。用户尚未批准其它病种模板，未来逐问题扩展，不能假称覆盖所有人体疾病方向。
+
+
+## 2026-10-21 V2.0 正式归档验收及下一版本不可变保护
+
+**GitHub原始程序专项验收成功**：Archive V2.0 Five Health Dynamic Intents #39700990517 对提交 2fa28e7e2269ec3f62d0e81d03ac8c9e9ba549f1 在 Python 3.11/3.12 回归全部通过；全库 WenguaApp CI #39700990516 全部通过。官方 Archive 工作流构建并推送真正的V2.0全量SQLite，commit e0a60cda3f68bd26fbf1c792bd09877329c29d34。数据库完整性 integrity_check=ok、foreign_key_check=0，且逐表逐行对照父库保留：194历史家族、43原书来源节、19原书错断记录索引、旧V1.6两个开发错断、婚姻V1.7 27条源规则、上一版V1.9 21段。
+
+**之后的唯一父库**：archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3，14,782,464 bytes，SHA256 **8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e**；同名 .sqlite3.xz 1,178,468 bytes，SHA256 **94d8be866314faebee1987ceb43394c3220e9f131c25c51af10a048b293f461d**。Manifest：archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json。DB新增health_v20_actor_role_profiles=14、health_v20_intent_templates=5、health_v20_intent_steps=66、health_v20_archive_audit=1。医学真实预测验证数=0（此项目不能声称古籍预测医学准确）。
+
+**重要：该完整V2.0数据库不可覆盖**；此前Workflow会被后续测试代码push再次触发，现增设archive_guard验证已存在文件必须等于manifest SHA及正式sha，并在已归档时只运行回归、不重新build/push相同版本；以后每次新的知识规则或真正断词版本都从此最新V2.0 SHA派生新迁移049、新V2.1文件及新工作流，不可借旧V1.9重写V2.0。追加跨阴阳、同一盘自测/父母/朋友/孩子、五意图×多盘50组动态填空回归以及全部九星八门八神十干象意字典覆盖审计，必须保持通过。UI仍冻结。

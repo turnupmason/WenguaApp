@@ -35,3 +35,12 @@
 内部每一个符号保持原书章节、行号、SHA、条件、正反证及可核状态。病象上的头眼面、丁火血热、癸水道、庚筋骨、螣蛇反复等要由实际盘面和适用条件触发才输出，不能凑字。格局必须验证真同宫有序天盘干＋地盘干及星门神，门迫只有门克宫。没有准确源法的因素记未核实，不自动当吉凶。数字计分不凭空设权重；有原书复合格局则先合取分析，不重复记证据。应期需要真实事件目标、完整时空历法和真实古籍触发；没有就写暂不定日。古籍文化类象不构成真实医学诊断、病情分级、死亡风险预测、治愈率或手术治疗建议。
 
 所有本次新文件是V2.0并行升级，不覆盖原V1.9。完整194案、43节、两条开发错断和历史19次书内作者错例仍存；旧27条婚姻书源条件、21段V1.9数据库段落必须逐行不动。父库V1.9 SHA b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f，新迁移048通过sqlite3.backup增加14关系、5问事、66段，GitHub Actions成功后才认新二进制。旧错误不可删，UI冻结。
+
+
+## 2026-10-21 V2.0 正式归档验收及下一版本不可变保护
+
+**GitHub原始程序专项验收成功**：Archive V2.0 Five Health Dynamic Intents #39700990517 对提交 2fa28e7e2269ec3f62d0e81d03ac8c9e9ba549f1 在 Python 3.11/3.12 回归全部通过；全库 WenguaApp CI #39700990516 全部通过。官方 Archive 工作流构建并推送真正的V2.0全量SQLite，commit e0a60cda3f68bd26fbf1c792bd09877329c29d34。数据库完整性 integrity_check=ok、foreign_key_check=0，且逐表逐行对照父库保留：194历史家族、43原书来源节、19原书错断记录索引、旧V1.6两个开发错断、婚姻V1.7 27条源规则、上一版V1.9 21段。
+
+**之后的唯一父库**：archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3，14,782,464 bytes，SHA256 **8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e**；同名 .sqlite3.xz 1,178,468 bytes，SHA256 **94d8be866314faebee1987ceb43394c3220e9f131c25c51af10a048b293f461d**。Manifest：archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json。DB新增health_v20_actor_role_profiles=14、health_v20_intent_templates=5、health_v20_intent_steps=66、health_v20_archive_audit=1。医学真实预测验证数=0（此项目不能声称古籍预测医学准确）。
+
+**重要：该完整V2.0数据库不可覆盖**；此前Workflow会被后续测试代码push再次触发，现增设archive_guard验证已存在文件必须等于manifest SHA及正式sha，并在已归档时只运行回归、不重新build/push相同版本；以后每次新的知识规则或真正断词版本都从此最新V2.0 SHA派生新迁移049、新V2.1文件及新工作流，不可借旧V1.9重写V2.0。追加跨阴阳、同一盘自测/父母/朋友/孩子、五意图×多盘50组动态填空回归以及全部九星八门八神十干象意字典覆盖审计，必须保持通过。UI仍冻结。

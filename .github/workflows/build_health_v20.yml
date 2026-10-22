@@ -34,13 +34,37 @@ jobs:
         with: {persist-credentials: true}
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
+      - name: Guard immutable V2.0 archive from re-creation on later code and test commits
+        id: archive_guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          db=root/'WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3'
+          manifest=root/'shenqi21_kaiwu22_health_five_intents_v20_manifest.json'
+          if db.exists():
+           assert manifest.exists(), 'Existing full V2.0 must have a receipt'
+           recorded=json.loads(manifest.read_text('utf-8'))
+           actual=hashlib.sha256(db.read_bytes()).hexdigest()
+           assert actual==recorded['sha256'], 'V2.0 archive has changed: FAIL CLOSED'
+           assert actual=='8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e'
+           print('Immutable full V2.0 archive verified; do not overwrite on test/doc change')
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
       - name: Create immutable full 194-case SQLite V2.0 from exact V1.9 parent
+        if: steps.archive_guard.outputs.exists == 'false'
         run: |
           python -m scripts.build_health_five_intents_v20 \
             --base 'archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3' \
             --output 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3' \
             --index-dir 'data/knowledge/phrase_library/health_v20/archive_index'
       - name: Compress validate and record exact current SHA
+        if: steps.archive_guard.outputs.exists == 'false'
         run: |
           python - <<'PY'
           import hashlib,json,lzma,sqlite3
@@ -80,6 +104,7 @@ jobs:
           print(json.dumps(receipt,ensure_ascii=False,indent=2))
           PY
       - uses: actions/upload-artifact@v4
+        if: steps.archive_guard.outputs.exists == 'false'
         with:
           name: wengua-full-194-cases-health-five-intents-v20
           retention-days: 30
@@ -88,6 +113,7 @@ jobs:
             archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3.xz
             archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json
       - name: Preserve exact new full SQLite, XZ, and manifest on main
+        if: steps.archive_guard.outputs.exists == 'false'
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'

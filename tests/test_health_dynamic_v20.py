@@ -26,7 +26,9 @@ class HealthV20Tests(unittest.TestCase):
         self.assertEqual(len(o["sections"]),21)
         self.assertGreater(len(o["reading_text"]),2400)
         self.assertIn("天芮星",o["reading_text"])
-        self.assertIn("头",o["reading_text"]+"头") # body is chart-specific
+        self.assertIn("体表部位",o["reading_text"])
+        self.assertIn("体内对应",o["reading_text"])
+        self.assertIn("本宫五行",o["reading_text"])
         self.assertIn("天盘",o["reading_text"])
         self.assertIn("地盘",o["reading_text"])
         self.assertIn("天心星",o["reading_text"])
@@ -123,6 +125,34 @@ class HealthV20Tests(unittest.TestCase):
         self.assertEqual(self.chart,before)
         self.assertEqual(o["status"],"traditional_source_research_not_clinical")
         self.assertFalse(o["audit"]["historical_feedback_used_as_input"])
+    def test_cross_dun_multiple_roles_and_intents_fully_expand(self):
+        """Several genuinely recalculated layouts across both Yin and Yang."""
+        for dun,ju,hour in (("yang",3,"丁巳"),("yin",8,"戊戌")):
+            actual=layout_from_explicit_bureau(dun=dun,ju=ju,hour_ganzhi=hour)
+            for who in ("self","father","mother","friend","daughter"):
+                for intent in INTENTS:
+                    with self.subTest(dun=dun,who=who,intent=intent):
+                        q=self.inquire(who,intent,patient_sex="female" if who=="daughter" else None,
+                                       birth_order="youngest" if who=="daughter" else None)
+                        o=analyze_health_v20(chart=actual,inquiry=q,calendar=self.cal)
+                        self.assertEqual(len(o["sections"]),
+                                         {"severity":21,"treatment":12,"discharge":12,
+                                          "surgery":10,"travel_for_treatment":11}[intent])
+                        self.assertEqual(len(o["audit"]["twenty_four_factors"]),24)
+                        self.assertFalse(any("{" in x["text"] for x in o["sections"]))
+                        self.assertFalse(any("《" in x["text"] for x in o["sections"]))
+                        self.assertEqual(len({x["id"] for x in o["sections"]}),
+                                         len(o["sections"]))
+
+    def test_traditional_symbol_glossary_covers_actual_casting_symbols(self):
+        from src.wengua.casting_shenqi import STARS, DOORS, DEITIES, STEMS
+        from src.wengua.health_dynamic_v20 import (
+            STAR_MEANINGS,DOOR_MEANINGS,DEITY_MEANINGS,STEM_MEANINGS)
+        self.assertEqual(set(STARS.values()),set(STAR_MEANINGS))
+        self.assertEqual(set(DOORS.values()),set(DOOR_MEANINGS))
+        self.assertEqual(set(DEITIES),set(DEITY_MEANINGS))
+        self.assertEqual(set(STEMS),set(STEM_MEANINGS))
+
     def test_invalid_chart_or_intent_rejected(self):
         wrong=copy.deepcopy(self.chart)
         wrong["palaces"]["1"]["earth_stem"]="乙"
