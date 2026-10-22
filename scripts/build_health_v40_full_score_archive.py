@@ -89,7 +89,7 @@ def build(parent,output,seal,manifest,readout):
             for i,r in enumerate(data["records"]):
                 sc=r["score"]
                 db.execute("""INSERT INTO health_v40_three_symbolic_score_trials VALUES
-                     (?,?,?,?,?,?,0,0)""",
+                     (?,?,?,?,?,?,?,0,0)""",
                    (r["family_id"],"user_new" if i==0 else "older_book_first_question",
                     sc["signed_delta_sum"],sc["raw_score"],sc["display_score_0_100"],
                     row_sha(sc),len(sc["unscored_unknowns"])))
