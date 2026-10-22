@@ -1,0 +1,834 @@
+{
+  "schema": "ios_native_golden_four_from_sealed_v391_source",
+  "reference": "data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json",
+  "samples": [
+    {
+      "iso": "2026-11-01T05:00:00-05:00",
+      "timezone": "America/New_York",
+      "pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "己卯",
+        "hour": "丁卯"
+      },
+      "solarTerm": "霜降",
+      "bureau": {
+        "dun": "yin",
+        "ju": 5,
+        "yuan": "upper",
+        "futou": "己卯",
+        "solarTerm": "霜降"
+      },
+      "xunShou": "甲子",
+      "valueStar": "天禽星",
+      "valueDoor": "死门",
+      "voidBranches": [
+        "戌",
+        "亥"
+      ],
+      "hourHorse": "巳",
+      "roles": {
+        "patient_palace": 6,
+        "illness_palace": 8,
+        "doctor_palace": 4,
+        "yi_palace": 4,
+        "hour_palace": 2
+      },
+      "palaces": [
+        {
+          "id": 1,
+          "earthStem": "壬",
+          "deity": "螣蛇",
+          "door": "休门",
+          "heavenStars": [
+            {
+              "star": "天英星",
+              "carriedStem": "癸",
+              "stages": [
+                {
+                  "branch": "子",
+                  "stage": "临官"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "earthStem": "辛",
+          "deity": "白虎",
+          "door": "死门",
+          "heavenStars": [
+            {
+              "star": "天任星",
+              "carriedStem": "丁",
+              "stages": [
+                {
+                  "branch": "未",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "申",
+                  "stage": "沐浴"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "earthStem": "庚",
+          "deity": "九天",
+          "door": "伤门",
+          "heavenStars": [
+            {
+              "star": "天柱星",
+              "carriedStem": "丙",
+              "stages": [
+                {
+                  "branch": "卯",
+                  "stage": "沐浴"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "earthStem": "己",
+          "deity": "九地",
+          "door": "杜门",
+          "heavenStars": [
+            {
+              "star": "天心星",
+              "carriedStem": "乙",
+              "stages": [
+                {
+                  "branch": "辰",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "巳",
+                  "stage": "沐浴"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "earthStem": "乙",
+          "deity": "太阴",
+          "door": "开门",
+          "heavenStars": [
+            {
+              "star": "天辅星",
+              "carriedStem": "己",
+              "stages": [
+                {
+                  "branch": "戌",
+                  "stage": "养"
+                },
+                {
+                  "branch": "亥",
+                  "stage": "胎"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "earthStem": "丙",
+          "deity": "六合",
+          "door": "惊门",
+          "heavenStars": [
+            {
+              "star": "天冲星",
+              "carriedStem": "庚",
+              "stages": [
+                {
+                  "branch": "酉",
+                  "stage": "帝旺"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "earthStem": "丁",
+          "deity": "值符",
+          "door": "生门",
+          "heavenStars": [
+            {
+              "star": "天芮星",
+              "carriedStem": "辛",
+              "stages": [
+                {
+                  "branch": "丑",
+                  "stage": "养"
+                },
+                {
+                  "branch": "寅",
+                  "stage": "胎"
+                }
+              ]
+            },
+            {
+              "star": "天禽星",
+              "carriedStem": "戊",
+              "stages": [
+                {
+                  "branch": "丑",
+                  "stage": "养"
+                },
+                {
+                  "branch": "寅",
+                  "stage": "长生"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "earthStem": "癸",
+          "deity": "玄武",
+          "door": "景门",
+          "heavenStars": [
+            {
+              "star": "天蓬星",
+              "carriedStem": "壬",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "胎"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "iso": "2026-11-04T05:00:00-05:00",
+      "timezone": "America/New_York",
+      "pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "壬午",
+        "hour": "癸卯"
+      },
+      "solarTerm": "霜降",
+      "bureau": {
+        "dun": "yin",
+        "ju": 5,
+        "yuan": "upper",
+        "futou": "己卯",
+        "solarTerm": "霜降"
+      },
+      "xunShou": "甲午",
+      "valueStar": "天芮星",
+      "valueDoor": "死门",
+      "voidBranches": [
+        "辰",
+        "巳"
+      ],
+      "hourHorse": "巳",
+      "roles": {
+        "patient_palace": 6,
+        "illness_palace": 9,
+        "doctor_palace": 7,
+        "yi_palace": 7,
+        "hour_palace": 4
+      },
+      "palaces": [
+        {
+          "id": 1,
+          "earthStem": "壬",
+          "deity": "白虎",
+          "door": "休门",
+          "heavenStars": [
+            {
+              "star": "天任星",
+              "carriedStem": "丁",
+              "stages": [
+                {
+                  "branch": "子",
+                  "stage": "绝"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "earthStem": "辛",
+          "deity": "九天",
+          "door": "死门",
+          "heavenStars": [
+            {
+              "star": "天柱星",
+              "carriedStem": "丙",
+              "stages": [
+                {
+                  "branch": "未",
+                  "stage": "衰"
+                },
+                {
+                  "branch": "申",
+                  "stage": "病"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "earthStem": "庚",
+          "deity": "太阴",
+          "door": "伤门",
+          "heavenStars": [
+            {
+              "star": "天辅星",
+              "carriedStem": "己",
+              "stages": [
+                {
+                  "branch": "卯",
+                  "stage": "病"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "earthStem": "己",
+          "deity": "螣蛇",
+          "door": "杜门",
+          "heavenStars": [
+            {
+              "star": "天英星",
+              "carriedStem": "癸",
+              "stages": [
+                {
+                  "branch": "辰",
+                  "stage": "养"
+                },
+                {
+                  "branch": "巳",
+                  "stage": "胎"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "earthStem": "乙",
+          "deity": "玄武",
+          "door": "开门",
+          "heavenStars": [
+            {
+              "star": "天蓬星",
+              "carriedStem": "壬",
+              "stages": [
+                {
+                  "branch": "戌",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "亥",
+                  "stage": "临官"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "earthStem": "丙",
+          "deity": "九地",
+          "door": "惊门",
+          "heavenStars": [
+            {
+              "star": "天心星",
+              "carriedStem": "乙",
+              "stages": [
+                {
+                  "branch": "酉",
+                  "stage": "绝"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "earthStem": "丁",
+          "deity": "六合",
+          "door": "生门",
+          "heavenStars": [
+            {
+              "star": "天冲星",
+              "carriedStem": "庚",
+              "stages": [
+                {
+                  "branch": "丑",
+                  "stage": "墓"
+                },
+                {
+                  "branch": "寅",
+                  "stage": "绝"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "earthStem": "癸",
+          "deity": "值符",
+          "door": "景门",
+          "heavenStars": [
+            {
+              "star": "天芮星",
+              "carriedStem": "辛",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "病"
+                }
+              ]
+            },
+            {
+              "star": "天禽星",
+              "carriedStem": "戊",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "帝旺"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "iso": "2026-11-10T21:00:00-05:00",
+      "timezone": "America/New_York",
+      "pillars": {
+        "year": "丙午",
+        "month": "己亥",
+        "day": "戊子",
+        "hour": "癸亥"
+      },
+      "solarTerm": "立冬",
+      "bureau": {
+        "dun": "yin",
+        "ju": 9,
+        "yuan": "middle",
+        "futou": "甲申",
+        "solarTerm": "立冬"
+      },
+      "xunShou": "甲寅",
+      "valueStar": "天辅星",
+      "valueDoor": "杜门",
+      "voidBranches": [
+        "子",
+        "丑"
+      ],
+      "hourHorse": "巳",
+      "roles": {
+        "patient_palace": 9,
+        "illness_palace": 2,
+        "doctor_palace": 6,
+        "yi_palace": 1,
+        "hour_palace": 4
+      },
+      "palaces": [
+        {
+          "id": 1,
+          "earthStem": "乙",
+          "deity": "六合",
+          "door": "休门",
+          "heavenStars": [
+            {
+              "star": "天蓬星",
+              "carriedStem": "乙",
+              "stages": [
+                {
+                  "branch": "子",
+                  "stage": "病"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "earthStem": "丙",
+          "deity": "九地",
+          "door": "死门",
+          "heavenStars": [
+            {
+              "star": "天芮星",
+              "carriedStem": "丙",
+              "stages": [
+                {
+                  "branch": "未",
+                  "stage": "衰"
+                },
+                {
+                  "branch": "申",
+                  "stage": "病"
+                }
+              ]
+            },
+            {
+              "star": "天禽星",
+              "carriedStem": "壬",
+              "stages": [
+                {
+                  "branch": "未",
+                  "stage": "养"
+                },
+                {
+                  "branch": "申",
+                  "stage": "长生"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "earthStem": "丁",
+          "deity": "螣蛇",
+          "door": "伤门",
+          "heavenStars": [
+            {
+              "star": "天冲星",
+              "carriedStem": "丁",
+              "stages": [
+                {
+                  "branch": "卯",
+                  "stage": "病"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "earthStem": "癸",
+          "deity": "值符",
+          "door": "杜门",
+          "heavenStars": [
+            {
+              "star": "天辅星",
+              "carriedStem": "癸",
+              "stages": [
+                {
+                  "branch": "辰",
+                  "stage": "养"
+                },
+                {
+                  "branch": "巳",
+                  "stage": "胎"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "earthStem": "辛",
+          "deity": "白虎",
+          "door": "开门",
+          "heavenStars": [
+            {
+              "star": "天心星",
+              "carriedStem": "辛",
+              "stages": [
+                {
+                  "branch": "戌",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "亥",
+                  "stage": "沐浴"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "earthStem": "庚",
+          "deity": "玄武",
+          "door": "惊门",
+          "heavenStars": [
+            {
+              "star": "天柱星",
+              "carriedStem": "庚",
+              "stages": [
+                {
+                  "branch": "酉",
+                  "stage": "帝旺"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "earthStem": "己",
+          "deity": "太阴",
+          "door": "生门",
+          "heavenStars": [
+            {
+              "star": "天任星",
+              "carriedStem": "己",
+              "stages": [
+                {
+                  "branch": "丑",
+                  "stage": "墓"
+                },
+                {
+                  "branch": "寅",
+                  "stage": "死"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "earthStem": "戊",
+          "deity": "九天",
+          "door": "景门",
+          "heavenStars": [
+            {
+              "star": "天英星",
+              "carriedStem": "戊",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "帝旺"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "iso": "2026-11-21T17:00:00-05:00",
+      "timezone": "America/New_York",
+      "pillars": {
+        "year": "丙午",
+        "month": "己亥",
+        "day": "己亥",
+        "hour": "癸酉"
+      },
+      "solarTerm": "立冬",
+      "bureau": {
+        "dun": "yin",
+        "ju": 9,
+        "yuan": "middle",
+        "futou": "己亥",
+        "solarTerm": "立冬"
+      },
+      "xunShou": "甲子",
+      "valueStar": "天英星",
+      "valueDoor": "景门",
+      "voidBranches": [
+        "戌",
+        "亥"
+      ],
+      "hourHorse": "亥",
+      "roles": {
+        "patient_palace": 1,
+        "illness_palace": 9,
+        "doctor_palace": 7,
+        "yi_palace": 6,
+        "hour_palace": 3
+      },
+      "palaces": [
+        {
+          "id": 1,
+          "earthStem": "乙",
+          "deity": "六合",
+          "door": "休门",
+          "heavenStars": [
+            {
+              "star": "天任星",
+              "carriedStem": "己",
+              "stages": [
+                {
+                  "branch": "子",
+                  "stage": "绝"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "earthStem": "丙",
+          "deity": "九地",
+          "door": "死门",
+          "heavenStars": [
+            {
+              "star": "天柱星",
+              "carriedStem": "庚",
+              "stages": [
+                {
+                  "branch": "未",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "申",
+                  "stage": "临官"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "earthStem": "丁",
+          "deity": "螣蛇",
+          "door": "伤门",
+          "heavenStars": [
+            {
+              "star": "天辅星",
+              "carriedStem": "癸",
+              "stages": [
+                {
+                  "branch": "卯",
+                  "stage": "长生"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "earthStem": "癸",
+          "deity": "值符",
+          "door": "杜门",
+          "heavenStars": [
+            {
+              "star": "天英星",
+              "carriedStem": "戊",
+              "stages": [
+                {
+                  "branch": "辰",
+                  "stage": "冠带"
+                },
+                {
+                  "branch": "巳",
+                  "stage": "临官"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "earthStem": "辛",
+          "deity": "白虎",
+          "door": "开门",
+          "heavenStars": [
+            {
+              "star": "天蓬星",
+              "carriedStem": "乙",
+              "stages": [
+                {
+                  "branch": "戌",
+                  "stage": "墓"
+                },
+                {
+                  "branch": "亥",
+                  "stage": "死"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "earthStem": "庚",
+          "deity": "玄武",
+          "door": "惊门",
+          "heavenStars": [
+            {
+              "star": "天心星",
+              "carriedStem": "辛",
+              "stages": [
+                {
+                  "branch": "酉",
+                  "stage": "临官"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "earthStem": "己",
+          "deity": "太阴",
+          "door": "生门",
+          "heavenStars": [
+            {
+              "star": "天冲星",
+              "carriedStem": "丁",
+              "stages": [
+                {
+                  "branch": "丑",
+                  "stage": "墓"
+                },
+                {
+                  "branch": "寅",
+                  "stage": "死"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "earthStem": "戊",
+          "deity": "九天",
+          "door": "景门",
+          "heavenStars": [
+            {
+              "star": "天芮星",
+              "carriedStem": "丙",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "帝旺"
+                }
+              ]
+            },
+            {
+              "star": "天禽星",
+              "carriedStem": "壬",
+              "stages": [
+                {
+                  "branch": "午",
+                  "stage": "胎"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
