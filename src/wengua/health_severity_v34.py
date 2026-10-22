@@ -93,9 +93,31 @@ def _composite_catalog(chart,ill,person,event,inquiry,calendar,base):
                 else:hit=c["door"]=="惊门" and matches(c,"壬") and c["deity"]=="九天"
                 if hit:evidence.append({"role":role,"palace":c["palace"]})
             status="triggered" if evidence else "not_triggered"
-        elif i in (6,7,8,10,11):
-            # Catalog gives a name rather than a machine-complete predicate:
-            # never equate an arbitrary gate/symbol with verified 三诈/得使/守门.
+        elif i==6:
+            # 神奇第五章 line 1053: 真诈/休诈/重诈 are all same-palace
+            # 乙丙丁奇 + 开休生 + 太阴/六合/九地, in that order.
+            for role,c in roles.items():
+                if (c["door"] in DOORS_FAVORABLE
+                    and any(matches(c,st) for st in ("乙","丙","丁"))
+                    and c["deity"] in ("太阴","六合","九地")):
+                    subtype={"太阴":"真诈","六合":"休诈","九地":"重诈"}[c["deity"]]
+                    evidence.append({"role":role,"palace":c["palace"],"subtype":subtype,
+                       "source":"shenqi_ch05:1053"})
+            status="triggered" if evidence else "not_triggered"
+        elif i==11:
+            # Source-verified subset: 伏宫 庚加戊 and 飞宫 戊加庚.
+            # 伏干/飞干 remain unknown until their independent stem pairs
+            # have been sourced; absence of these two is NOT proof of all absent.
+            for role,c in roles.items():
+                if matches(c,"庚") and c["earth_stem"]=="戊":
+                    evidence.append({"role":role,"palace":c["palace"],"subtype":"伏宫",
+                      "source":"shenqi_ch05:1135"})
+                if matches(c,"戊") and c["earth_stem"]=="庚":
+                    evidence.append({"role":role,"palace":c["palace"],"subtype":"飞宫",
+                      "source":"shenqi_ch05:1139"})
+            status="triggered" if evidence else "unknown_partially_defined"
+            reason="飞宫伏宫已实算，伏干飞干条件仍需独立古籍定义"
+        elif i in (7,8,10):
             status="unknown_definition"
             reason="书源未给出这一组全部可判定的机械条件，不得强套单一星门"
         elif i==9:
