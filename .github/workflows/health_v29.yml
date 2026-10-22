@@ -1,0 +1,93 @@
+name: V29 Concise Medical Month Timing and Immutable Archive
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v29.py'
+      - 'data/knowledge/phrase_library/health_v29/**'
+      - 'tests/test_health_timing_clean_v29.py'
+      - 'scripts/run_two_historical_health_v29.py'
+      - 'scripts/build_health_v29_archive.py'
+      - 'schema/migrations/057_health_medical_no_duplicate_v29.sql'
+      - '.github/workflows/health_v29.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Regression on two actual historical health events, verify concise fixed template
+        run: python -m unittest discover -s tests -p test_health_timing_clean_v29.py -v
+  full_archive:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Append complete 194-case V29 without modifying existing V27/V28
+        run: |
+          if [ ! -f 'archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3' ]; then
+            python -m scripts.build_health_v29_archive \
+              --parent 'archives/sqlite/WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3' \
+              --output 'archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3' \
+              --sealed 'data/evaluation/health_v29/two_historical_medical_timing_SEALED.json' \
+              --manifest 'data/knowledge/phrase_library/health_v29/archive_manifest.json'
+          fi
+      - name: Audit and compress new immutable complete source
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,lzma,sqlite3
+          d=Path('archives/sqlite')
+          p=d/'WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3'
+          parent=d/'WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3'
+          xz=Path(str(p)+'.xz')
+          if not xz.exists():xz.write_bytes(lzma.compress(p.read_bytes(),preset=6))
+          sha=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
+          m=json.loads(Path('data/knowledge/phrase_library/health_v29/archive_manifest.json').read_text('utf8'))
+          assert sha(parent)==m['parent_sha256'] and sha(p)==m['new_full_sha256']
+          with sqlite3.connect(p) as db:
+            assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+            for table,n in [('cases',194),('sections',43),
+                            ('health_v27_sealed_historical_predictions',2),
+                            ('health_v28_historical_review',2),
+                            ('health_v29_no_duplicate_medical_template',11),
+                            ('health_v29_archival_readouts',2)]:
+              assert db.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0]==n
+          receipt={'version':'V2.9','sha256':sha(p),'full_original_cases':194,
+                   'source_sections':43,'parent_sha256':sha(parent),
+                   'xz_sha256':sha(xz),'new_seal_sha256':m['new_sealed_sha256'],
+                   'original_archives_unchanged':True,'user_content_review':'pending',
+                   'legacy_second_case_V27_user_confirmed':True,
+                   'other_four_health_templates_approved':False,'no_gpt':True,
+                   'medical_accuracy_verified':False}
+          (d/'wengua_health_v29_manifest.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(receipt,ensure_ascii=False,indent=2))
+          PY
+      - name: Commit only new database and new sealed readouts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f 'archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3'
+          git add 'archives/sqlite/WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v29_manifest.json' \
+            'data/evaluation/health_v29/two_historical_medical_timing_SEALED.json' \
+            'data/knowledge/phrase_library/health_v29/archive_manifest.json'
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive immutable V29 full194 and fixed nonrepeating monthly medical strength reading'
+            git push origin HEAD:main
+          fi
