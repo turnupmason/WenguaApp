@@ -89,10 +89,10 @@ class V3SourceUI(unittest.TestCase):
                      "const DEITY=","玄武:\"水\"","白虎:\"金\"","九地:\"土\"",
                      "九天:\"金\"","杜门:\"木\"","天心:\"金\""]:
             self.assertIn(text,c)
-        self.assertIn('color("deity",p.deity)',self.html)
-        self.assertIn('color("star",z.star)',self.html)
-        self.assertIn('color("door",p.door)',self.html)
-        self.assertIn('color("stem",p.earth)',self.html)
+        self.assertIn('colored("deity",p.deity)',self.html)
+        self.assertIn('colored("star",z.star)',self.html)
+        self.assertIn('colored("door",p.door)',self.html)
+        self.assertIn('colored("stem",p.earth)',self.html)
         self.assertIn("enum QFive",self.swift)
         self.assertIn("QFive.shade(\"deity\"",self.swift)
         self.assertIn("QFive.shade(\"door\"",self.swift)
