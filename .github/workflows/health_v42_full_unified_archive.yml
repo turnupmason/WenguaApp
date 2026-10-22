@@ -1,6 +1,12 @@
 name: V4.2 Unified Archive
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_health_v42_complete_integrated_archive.py'
+      - 'schema/migrations/070_health_v42_unified_v39_full12_sixmodule.sql'
+      - '.github/workflows/health_v42_full_unified_archive.yml'
 permissions:
   contents: write
 jobs:
@@ -12,3 +18,11 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s tests -p test_health_v42_unified_full12_5cases.py -v
+      - name: Make V4.2 full database snapshot
+        run: |
+          python -m scripts.build_health_v42_complete_integrated_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3' \
+            --seal 'data/evaluation/health_v42/verified_5_original_questions_full12_unified_SEALED.json' \
+            --manifest 'archives/sqlite/wengua_health_v42_full12_unified_manifest.json' \
+            --report 'docs/HEALTH_V42_FIVE_UNIFIED_V39_AND_SCORE_READINGS.md'
