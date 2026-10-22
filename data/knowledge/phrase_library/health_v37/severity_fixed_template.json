@@ -1,0 +1,81 @@
+{
+  "schema": "wengua_health_v37_complete_81_book_pairs_double_positive_double_adverse",
+  "version": "V3.7",
+  "parent": "V3.6",
+  "intent": "severity",
+  "source_book_pair_catalog": "data/knowledge/kaiwu/analysis_judgment_ch04/ordered_stem_pairs.json",
+  "source_health_pairs": "data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json",
+  "coverage": {
+    "full_ordered_pairs": 81,
+    "supplementary_health_pairs": 42,
+    "composite_patterns": 17
+  },
+  "sections": [
+    {
+      "id": "01_role",
+      "title": "一、问事与用神",
+      "format": "{old}"
+    },
+    {
+      "id": "02_far",
+      "title": "二、值符值使",
+      "format": "{old}"
+    },
+    {
+      "id": "03_illness",
+      "title": "三、病星及原书病宫组合",
+      "format": "{old}\n{illness_details}"
+    },
+    {
+      "id": "04_season",
+      "title": "四、月令旺衰",
+      "format": "{old}"
+    },
+    {
+      "id": "05_patient",
+      "title": "五、病人主用神与双向证据",
+      "format": "{old}\n{patient_details}"
+    },
+    {
+      "id": "06_gender",
+      "title": "六、辅助人物宫",
+      "format": "{old}"
+    },
+    {
+      "id": "07_medicine",
+      "title": "七、医生医药组合",
+      "format": "{old}\n{doctor_details}"
+    },
+    {
+      "id": "08_hour",
+      "title": "八、时干病势",
+      "format": "{old}\n{hour_details}"
+    },
+    {
+      "id": "09_hazards",
+      "title": "九、真实格局与反证",
+      "format": "{old}\n{chief_details}"
+    },
+    {
+      "id": "10_pace",
+      "title": "十、应期条件",
+      "format": "{old}"
+    },
+    {
+      "id": "11_final",
+      "title": "十一、传统综合判断",
+      "format": "{final_text}"
+    }
+  ],
+  "rule_precedence": [
+    "source verified patient role before every pairing",
+    "patient-vs-illness palace and illness-palace-vs-Tianrui independently calculated",
+    "double_control; double_adverse_disease_supported; harmful_patient_nourishes_illness; adverse_patient_combo_and_disease_controls_person",
+    "patient empty/punish/tomb and same-palace medical opportunity are independent counters",
+    "full 81 ordered book pair provenance + disease-aware 42 pair cues, never symmetric reversal",
+    "same palace mixed bird/center star pair readings cannot be silently collapsed",
+    "threat and favorable evidence preserved without giving real medical prognosis"
+  ],
+  "source_visibility": "only source-supported name and scoped polarity; clinical death/cancer outcome language is prohibited",
+  "user_approved": false
+}
