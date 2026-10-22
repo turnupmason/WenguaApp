@@ -814,3 +814,7 @@ WenguaApp婚姻领域V1.3的“22大具体场景×六层强制执行”已归档
 - 门的旺衰、内外盘和大量24因素仍unknown，不能称全24实算；语言有过多工程空话与没有盘面意义的通用字句。
 - 用户没有给出患者与求测者关系；正式人物角色路由待其明确，年命仍可选无则不用。
 在本领域达到用户确认之前**不得继续其他四种疾病场景的开发，更不得说它们通过模板用户验收**；之前写入的66段里，另外四种仍是源码草稿。保留所有失败日志和旧V2.1完整SQLite；下一次继续优先修疾病轻重自动断案结构而非重开。禁止将未使用作者结果的这个输入称为封存盲测100%成功；任何健康领域的传统判断也非可信临床诊断。
+
+## V2.2: health severity customer reading offline-only (pending acceptance)
+
+New deterministic 21-section template and renderer; user-facing prose only actual Qimen chart facts, concise symbolism and interpretation, never GPT-generated polish or internal software status. Input 2026-10-21 戌时 remains a development fixture with self-role unconfirmed. Source pair 壬加辛/螣蛇相缠 and every actual palace/door pressure targeted. Favorable and adverse evidence included together. Strict offline/forbidden-language tests in tests/test_offline_health_severity_v22.py. Four other health intents remain drafts not approved. Immutable complete parent DB V2.1 SHA256 25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3. V2.2 archival verification pending CI; no further domains until user signs off.

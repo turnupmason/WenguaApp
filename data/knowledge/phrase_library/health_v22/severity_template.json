@@ -1,0 +1,143 @@
+{
+  "schema": "wengua_health_severity_21_sections_pure_offline_v22",
+  "domain": "health",
+  "intent": "severity",
+  "user_approved_structure": true,
+  "engine": "stdlib_python_string_format_only",
+  "hard_rules": {
+    "customer_terminology": "依据古籍",
+    "no_llm_inference_or_rewrite": true,
+    "engine_runtime_network": false,
+    "role_from_user_selection": true,
+    "only_actual_mechanical_facts": true,
+    "internal_audit_is_separate": true,
+    "unsupported_details_omitted_in_customer_text": true,
+    "requires_all_21_nonempty": true,
+    "other_intents_unapproved": true
+  },
+  "sections": [
+    {
+      "id": "01_question",
+      "title": "问事与患者",
+      "format": "依据古籍，此次{consultation_name}。患者用神{role_name}，{role_location_sentence}。天芮主疾病，天心主医生，乙奇主医药。{birth_line}"
+    },
+    {
+      "id": "02_far_star",
+      "title": "远看值符星",
+      "format": "值符星为{value_star}，主{value_star_image}，落{value_star_palace}，{value_star_cell_image}。{far_star_relation_line}"
+    },
+    {
+      "id": "03_far_door",
+      "title": "远看值使门",
+      "format": "值使门为{value_door}，主{value_door_image}，落{value_door_palace}。{value_door_cell_image}。{value_door_interaction}。{far_door_relation_line}"
+    },
+    {
+      "id": "04_illness_star",
+      "title": "天芮病星",
+      "format": "天芮星属土，落{ill_palace}，本宫属{ill_element}，天盘{ill_stem}、地盘{ill_earth}，临{ill_door}、乘{ill_deity}。{ill_palace_star_edge}。{ill_door_severity_phrase}"
+    },
+    {
+      "id": "05_body_part",
+      "title": "落宫人体类象",
+      "format": "{ill_palace}的传统体表象为{body_surface}，体内象为{body_internal}。{body_specific_link}"
+    },
+    {
+      "id": "06_stem_image",
+      "title": "天盘地盘病象",
+      "format": "天盘{ill_stem}属{ill_stem_el}，主{ill_stem_image}；地盘{ill_earth}属{ill_earth_el}，主{ill_earth_image}。两干同临{ill_palace}，连同{body_short}一起取象。时干{hour_stem}主{event_image}，{event_body_link}。"
+    },
+    {
+      "id": "07_strength",
+      "title": "月令与病星旺衰",
+      "format": "月支{month_branch}属{month_el}，天芮星处于{ill_stage}，{ill_stage_meaning}。{ill_palace_star_edge}。{strength_combined}"
+    },
+    {
+      "id": "08_stem_pair",
+      "title": "天地干克应",
+      "format": "天盘{ill_stem}加地盘{ill_earth}，形成{pair_name}。{pair_interpretation}。{pair_context}"
+    },
+    {
+      "id": "09_formations",
+      "title": "病宫星门神格局",
+      "format": "病星宫天芮与{ill_door}、{ill_deity}及{pair_name}同宫。天芮主病，{ill_door}主{ill_door_image}，{ill_deity}主{ill_deity_image}；{joint_illness_meaning}。{extra_formation_sentence}"
+    },
+    {
+      "id": "10_deity",
+      "title": "八神象意",
+      "format": "病宫乘{ill_deity}，主{ill_deity_image}；与天芮星及{ill_door}同宫，{ill_deity_health_sentence}。"
+    },
+    {
+      "id": "11_door",
+      "title": "八门及门宫",
+      "format": "病宫{ill_palace}临{ill_door}，属{ill_door_el}，主{ill_door_image}。{ill_door_palace_detail}。{door_other_press_sentence}"
+    },
+    {
+      "id": "12_void",
+      "title": "旬空与病患状态",
+      "format": "{hour_gz}时为{hour_xun}旬，空{void_branches}。{ill_void_sentence}。{patient_void_sentence}。{void_conclusion}"
+    },
+    {
+      "id": "13_patient",
+      "title": "患者用神宫",
+      "format": "{role_subject_sentence}。{patient_cell_sentence}。{patient_relation_sentence}。{patient_extra_sentence}"
+    },
+    {
+      "id": "14_doctor",
+      "title": "天心医生象",
+      "format": "天心星主医生及医药辅助，落{doctor_palace}，{doctor_contents_sentence}。{doctor_relation_sentence}。{doctor_result_sentence}"
+    },
+    {
+      "id": "15_medicine",
+      "title": "乙奇医药象",
+      "format": "乙奇主医药，落{yi_palace}，{yi_contents_sentence}。{yi_relation_sentence}。{yi_result_sentence}"
+    },
+    {
+      "id": "16_event",
+      "title": "时干事体",
+      "format": "本次时干{hour_stem}，主所问之事，落{event_palace}，与天芮{event_joint_relation}。时干{hour_stem}又主{event_image}，{event_person_context}。"
+    },
+    {
+      "id": "17_hard_factors",
+      "title": "刑冲墓迫",
+      "format": "{hard_anchors_sentence}。{hard_effect_sentence}"
+    },
+    {
+      "id": "18_movement",
+      "title": "宫位动静",
+      "format": "本局{dun_zh}{ju_zh}局，病星在{ill_palace}，患者宫{patient_palace_short}。{movement_actual_sentence}。{movement_relation_sentence}"
+    },
+    {
+      "id": "19_counter",
+      "title": "吉凶证据与反证",
+      "format": "不利象为：{adverse_combined}。制约病象或有利象为：{favorable_combined}。{conflict_reason_sentence}"
+    },
+    {
+      "id": "20_timing",
+      "title": "应期",
+      "format": "{timing_known_sentence}。{timing_result_sentence}"
+    },
+    {
+      "id": "21_summary",
+      "title": "综合断词",
+      "format": "依据古籍，天芮落{ill_palace}，{ill_door}、{ill_deity}同宫，{pair_name}，病星月令{ill_stage}；{ill_palace_star_edge}。{patient_brief}。{medicine_brief}。综合传统盘象：{decision_sentence}。{timing_short}"
+    }
+  ],
+  "provenance": [
+    {
+      "book_id": "shenqi",
+      "chapter": "health_prediction_ch01",
+      "sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a"
+    },
+    {
+      "book_id": "kaiwu",
+      "chapter": "health_prediction_ch02",
+      "sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d"
+    },
+    {
+      "book_id": "shenqi",
+      "chapter": "shijia_judgments_ch05",
+      "concept_id": "heaven_over_earth",
+      "source_line_for_test_pair": 661
+    }
+  ]
+}

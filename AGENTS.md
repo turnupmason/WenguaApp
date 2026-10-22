@@ -968,3 +968,7 @@ V2.0只准从V1.9完整194历史家族、43节、已通过验收的父SQLite SHA
 - 门的旺衰、内外盘和大量24因素仍unknown，不能称全24实算；语言有过多工程空话与没有盘面意义的通用字句。
 - 用户没有给出患者与求测者关系；正式人物角色路由待其明确，年命仍可选无则不用。
 在本领域达到用户确认之前**不得继续其他四种疾病场景的开发，更不得说它们通过模板用户验收**；之前写入的66段里，另外四种仍是源码草稿。保留所有失败日志和旧V2.1完整SQLite；下一次继续优先修疾病轻重自动断案结构而非重开。禁止将未使用作者结果的这个输入称为封存盲测100%成功；任何健康领域的传统判断也非可信临床诊断。
+
+## 2026-10-21 V2.2 offline customer template gate
+
+Only deterministic local Python fills all 21 health-severity sections. No LLM, GPT, network, or post-render rewrite. Customer prose includes chart facts and concise traditional meanings, never implementation status, SQLite metadata, unknown-factor logs, or code explanations. Keep audit separate. Preserve exact source chart, actor relationship routing, known beneficial and adverse evidence, correct palace-targeted door pressure and original book pair names. User must approve real output before proceeding; the other four health intents remain unapproved. Files: src/wengua/health_severity_v22.py, data/knowledge/phrase_library/health_v22/severity_template.json, tests/test_offline_health_severity_v22.py, docs/HEALTH_SEVERITY_PURE_OFFLINE_V2_2.md. V2.1 full archive parent sha256: 25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3. Never rewrite old tables or claim a clinical prediction.

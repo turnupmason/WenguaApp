@@ -1,0 +1,122 @@
+name: Verify and Archive V2.2 Offline Health Severity Only
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v22.py'
+      - 'data/knowledge/phrase_library/health_v22/**'
+      - 'scripts/run_health_severity_v22.py'
+      - 'tests/test_offline_health_severity_v22.py'
+      - 'scripts/build_health_severity_v22_archive.py'
+      - 'schema/migrations/050_health_severity_offline_customer_language_v22.sql'
+      - '.github/workflows/build_health_severity_v22.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pure_offline_tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Deny sockets, test literal 21-section customer prose and exact source-case
+        run: python -m unittest discover -s tests -p test_offline_health_severity_v22.py -v
+  archive:
+    runs-on: ubuntu-latest
+    needs: pure_offline_tests
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Guard existing complete V2.2 from overwrite
+        id: archive_guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          directory=Path('archives/sqlite')
+          db=directory/'WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3'
+          receipt=directory/'shenqi21_kaiwu22_health_offline_severity_v22_manifest.json'
+          if db.exists():
+            assert receipt.is_file(), 'V2.2 must have its recorded manifest'
+            obj=json.loads(receipt.read_text('utf8'))
+            assert hashlib.sha256(db.read_bytes()).hexdigest()==obj['sha256']
+            print('Existing immutable V2.2 verified, no recreation')
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Build append-only entire 194 original cases from EXACT V2.1 SHA
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_severity_v22_archive \
+            --base 'archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/health_v22/archive_index'
+      - name: Create XZ, cryptographic manifest, and verify database unchanged
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          parent=root/'WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3'
+          xz=Path(str(new)+'.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+          audit=json.loads(Path('data/knowledge/phrase_library/health_v22/archive_index/manifest.json').read_text('utf8'))
+          assert sha(parent)==audit['parent_sha256']
+          assert sha(new)==audit['full_new_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM health_v20_intent_steps').fetchone()[0]==66
+           assert db.execute('SELECT COUNT(*) FROM health_v22_customer_severity_sections').fetchone()[0]==21
+           assert db.execute('SELECT COUNT(*) FROM health_v22_source_pair_explanations').fetchone()[0]==1
+           assert db.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          data={'schema':'wengua_v22_health_severity_full_archive',
+              'parent_sha256':sha(parent),'latest_full_sqlite':str(new),
+              'sha256':sha(new),'size_bytes':new.stat().st_size,
+              'xz':str(xz),'xz_sha256':sha(xz),'xz_size_bytes':xz.stat().st_size,
+              'old_cases':194,'old_original_sections':43,
+              'old_v16_dev_errors':2,'other_four_health_intents':'unapproved',
+              'offline_21_sections':21,'no_llm_runtime':True,
+              'independent_medical_validations':0,'user_approved':'pending',
+              'sqlite_integrity_check':'ok','foreign_key_check_errors':0,
+              'counts':audit['counts']}
+          (root/'shenqi21_kaiwu22_health_offline_severity_v22_manifest.json').write_text(
+            json.dumps(data,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(data,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.archive_guard.outputs.exists == 'false'
+        with:
+          name: wengua-194-cases-health-pure-offline-v22
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_health_offline_severity_v22_manifest.json
+      - name: Commit only new versioned full SQLite and preserved audit
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_health_offline_severity_v22_manifest.json' \
+            'data/knowledge/phrase_library/health_v22/archive_index/'
+          git diff --cached --check
+          git commit -m 'Archive immutable full 194-event V2.2 with approved-shape 21 offline-only health sections'
+          git push origin HEAD:main
