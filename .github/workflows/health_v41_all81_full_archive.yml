@@ -1,0 +1,78 @@
+name: V4.1 Append Full 81 Book Source Gate Archive
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_health_v41_complete_archive.py'
+      - 'schema/migrations/069_health_v41_original_book_81_user_weights_source_gated.sql'
+      - '.github/workflows/health_v41_all81_full_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check source provenance and original inputs
+        run: |
+          python -m unittest discover -s tests -p test_health_v41_all81_original_book_gates.py -v
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          old=Path('archives/sqlite/WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=='d16f31598433541e239285ba2af2e1085a6ccf9d11057d1b53c338d2f5122304'
+          PY
+      - name: Create distinct V4.1 full SQLite and three exact initial-case score reports
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json,hashlib,sqlite3,lzma
+          from scripts.build_health_v41_complete_archive import build
+          source=Path('archives/sqlite/WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3')
+          dest=Path('archives/sqlite/WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3')
+          seal=Path('data/evaluation/health_v41/three_actual_cases_ordered81_source_gate_SEALED.json')
+          manifest=Path('archives/sqlite/wengua_health_v41_81_source_gate_manifest.json')
+          report=Path('docs/HEALTH_V41_81_PAIR_SOURCE_CONFLICT_REPORT.md')
+          if dest.exists():
+              assert seal.exists() and manifest.exists() and report.exists()
+          else:
+              assert not any(q.exists() for q in (seal,manifest,report))
+              print(json.dumps(build(source,dest,seal,manifest,report),ensure_ascii=False,indent=2))
+          receipt=json.loads(manifest.read_text('utf8'))
+          h=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert h(dest)==receipt['complete_v41_sqlite_sha256']
+          assert h(seal)==receipt['three_case_sealed_sha256']
+          assert h(report)==receipt['readable_report_sha256']
+          assert h(Path(str(dest)+'.xz'))==receipt['complete_v41_xz_sha256']
+          assert lzma.decompress(Path(str(dest)+'.xz').read_bytes())==dest.read_bytes()
+          with sqlite3.connect(dest) as c:
+              assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not c.execute('PRAGMA foreign_key_check').fetchall()
+              for table,n in [('cases',194),('sections',43),
+                  ('kaiwu_ordered_stem_pair_occurrences',81),
+                  ('health_v30_stem_pair_rules',42),('health_v30_composite_rule_index',17),
+                  ('health_v40_symbolic_score_model',1),
+                  ('health_v40_three_symbolic_score_trials',3),
+                  ('health_v41_candidate_ordered_pair_weights',81),
+                  ('health_v41_real_chart_81_pair_checks',27),
+                  ('health_v41_scoring_3_fixed_cases',3)]:
+                  assert c.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0]==n,table
+              assert c.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          PY
+      - name: Publish separate immutable V4.1 research archive with previous V4 unchanged
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3.xz' 'archives/sqlite/wengua_health_v41_81_source_gate_manifest.json' 'data/evaluation/health_v41/three_actual_cases_ordered81_source_gate_SEALED.json' 'docs/HEALTH_V41_81_PAIR_SOURCE_CONFLICT_REPORT.md'
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive V4.1 full original81 source-gated disease symbolism and 3 actual source case ledgers'
+            git push origin HEAD:main
+          fi
