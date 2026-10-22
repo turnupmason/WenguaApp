@@ -1,10 +1,18 @@
 # 问卦 · WenguaApp
 
-> **当前优先级（2026-10-19）**：用户已决定暂缓 UI，逐章重建《神奇之门》《开悟之门》来源核对、时家转盘起盘规则、案例及断词数据库。请先阅读 **[AGENTS.md](AGENTS.md)**，然后阅读 **[项目实时状态](docs/PROJECT_STATUS.md)**、**[逐章处理流程](docs/CHAPTER_WORKFLOW.md)** 与 **[章节账本](docs/CHAPTER_LEDGER.md)**。任何新对话从这四个文件接续，不靠旧聊天记忆。
+> **最新状态（2026-10-22）**：用户决定开始 **iOS 软件界面设计**。疾病轻重的 V3.9.1 自然断词与完整十二长生继续作为第一版引擎基线，V4.0–V4.2 评分已停用。现在已新增独立的原生 SwiftUI 与 HTML 可点击设计预览，现有旧 PWA 不作为新产品正式界面。请先阅读 **[AGENTS.md](AGENTS.md)**，然后阅读 **[项目实时状态](docs/PROJECT_STATUS.md)**、**[逐章处理流程](docs/CHAPTER_WORKFLOW.md)** 与 **[章节账本](docs/CHAPTER_LEDGER.md)**。任何新对话从这四个文件接续，不靠旧聊天记忆。
+
+
+## 当前 iOS 视觉设计（2026-10-22 新增）
+
+- **[点按式手机页面预览](ios/design-v1/preview.html)**：无需外部依赖的单文件 HTML，包含首页、问事、固定真实历史示例九宫、宫位详情、V3.9.1 断词/依据/记录/更多；结果清楚标记演示，**不调用真实实时引擎**。
+- **[SwiftUI 原生 iPhone UI 骨架](ios/WenguaAppUI/WenguaDesignPreviewApp.swift)**：可用于新 Xcode SwiftUI 工程的独立页面源码；**不是已编译的 .ipa**。
+- **[设计规格/上架风险/引擎接口门槛](docs/IOS_V1_PRODUCT_UX_DESIGN_2026-10-22.md)** 与 **[本地浏览器/SwiftUI 预览方法](ios/design-v1/README.md)**。
+- Python 权威引擎仍为 `src/wengua/health_text_pipeline.py:auto_cast_health_v39_text`，原 V3.9.1 文本不变，移动端真实本地计算尚需移植并通过逐宫对照测试；现阶段只在原生页面上展示固定示例盘，**不允许演示假盘冒充预测**。
 
 ## 首次/跨对话接续
 
-复制本仓库 URL，让代理读取根目录 `AGENTS.md` 及上述三个进度文件，再提供下一章原书。现有 `app/` 是用户尚不满意的旧原型，**暂停任何 UI 工作**；不把数据库基础表与 1080 状态索引当作已完成的专业断盘。
+复制本仓库 URL，让代理读取根目录 `AGENTS.md` 及上述三个进度文件接续。**当前可以继续软件 UI 设计，但还不能声称 iOS 已接通真实离线排盘引擎。** 现有 `app/` 是早期不满意的旧 PWA，保留历史代码，不改造成现在的 iOS 主版本。
 
 离线优先的奇门遁甲手机 App（V1 工程起点，非已验收断案产品）。
 
