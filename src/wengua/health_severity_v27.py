@@ -276,12 +276,13 @@ def analyze_health_severity_v27(*,chart,inquiry,calendar=None,db_path=None):
         if section.get("optional")=="patient_sex" and not sex:continue
         text=section["format"].format_map(fields)
         forbidden=tuple(FORBIDDEN_CUSTOMER)+tuple(pack["validation"]["no_tokens"])
-        if any(x in text for x in forbidden):
-            raise ValueError("Banned technical/irrelevant term in customer-facing text")
+        hits=[x for x in forbidden if x in text]
+        if hits:
+            raise ValueError("Invalid V2.7 template render at "+section["id"]+": "+repr(hits)+"; output="+text)
         if any(x in text for x in ("{","}","（未提供","门门迫","与与")):
             raise ValueError("Invalid static template output")
         visible.append({"id":section["id"],"title":section["title"],"text":text})
-    if len(visible)!=11 if sex else len(visible)!=10:
+    if len(visible)!=(11 if sex else 10):
         raise ValueError("Gender subsection selection mismatch")
     audit={
         **base["audit"],
