@@ -487,6 +487,33 @@ struct ProfessionalPalaceDetail: View {
     let palace: QPalace
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
+    private var conditionDescription: String {
+        let void = QFive.void(palace)
+        let horse = QFive.horse(palace)
+        let sky = QFive.heavenTombs(palace)
+        let earth = QFive.earthTombs(palace)
+        let emptiness = void.isEmpty ? "本宫无" : void.joined(separator:"、") + "空"
+        let horseState = horse == nil ? "不落本宫" : "在本宫" + (horse ?? "")
+        let top = sky.isEmpty ? "无" : sky.joined(separator:"、")
+        let lower = earth.isEmpty ? "无" : earth.joined(separator:"、")
+        return ["旬空：" + emptiness,"时支驿马：" + horseState,
+                "天盘干入墓：" + top,"地盘干入墓：" + lower,
+                "未经原书条件确认，不因马和墓同现就断墓已冲开"].joined(separator:"；")
+    }
+    private var roleDescription: String {
+        let identity = palace.roles.isEmpty
+            ? "本宫未被选为此问主要角色"
+            : "本宫角色：" + palace.roles.joined(separator:"、")
+        let emptiness = QFive.void(palace).isEmpty
+            ? "" : "；旬空：" + QFive.void(palace).joined(separator:"、")
+        return palace.name + "属" + palace.element + "，辖" + palace.branches +
+            "支。" + identity + emptiness + "。同宫同事实不得当作两个独立证据。"
+    }
+    private var statusTags: [String] {
+        palace.roles + QFive.void(palace).map{$0 + "空"} +
+            (palace.computed == nil ? ["测试盘"] : ["本机实算"])
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
@@ -499,13 +526,7 @@ struct ProfessionalPalaceDetail: View {
                         .foregroundStyle(QStyle.secondary)
                 }
                 HStack(spacing: 7) {
-                    ForEach(palace.roles, id: \.self) { role in
-                        detailTag(role)
-                    }
-                    ForEach(QFive.void(palace),id: \.self) { branch in
-                        detailTag(branch+"空")
-                    }
-                    detailTag("已校验样例")
+                    ForEach(statusTags, id: \.self) { detailTag($0) }
                 }
 
                 if palace.id == 5 {
@@ -518,18 +539,8 @@ struct ProfessionalPalaceDetail: View {
                         stemCard("天 / 地盘干", sky:palace.sky, ground:palace.ground)
                     }
                     factCard("十二长生", text: palace.stages)
-                    factCard("空亡 · 驿马 · 入墓（实盘显示）",
-                        text: "旬空：" + (QFive.void(palace).isEmpty ? "本宫无" : QFive.void(palace).joined(separator:"、") + "空") +
-                            "；时支驿马：" + (QFive.horse(palace) == nil ? "不落本宫" : "在本宫"+(QFive.horse(palace) ?? "")) +
-                            "；天盘干入墓：" + (QFive.heavenTombs(palace).isEmpty ? "无" : QFive.heavenTombs(palace).joined(separator:"、")) +
-                            "；地盘干入墓：" + (QFive.earthTombs(palace).isEmpty ? "无" : QFive.earthTombs(palace).joined(separator:"、")) +
-                            "。本盘不因马与墓同现就自动视为墓已冲开。")
-                    factCard("宫位角色及实盘信息",
-                        text: "\(palace.name)为\(palace.element)行，辖\(palace.branches)支。" +
-                         (palace.roles.isEmpty ? "此宫没有被选为本问患者、病宫、天心、乙奇或时干主角色。" :
-                            "此宫承担：" + palace.roles.joined(separator: "、") + "。") +
-                         (QFive.void(palace).isEmpty ? "" : " 本宫旬空："+QFive.void(palace).joined(separator:"、")+"。") +
-                         " 同一事实不会因为两个身份共宫而重复计入论断。")
+                    factCard("空亡 · 驿马 · 入墓（实盘显示）",text:conditionDescription)
+                    factCard("宫位角色及实盘信息",text:roleDescription)
                 }
                 Text("传统文化与古籍象意展示。具体断词使用 V3.9.1 原文，不输出分数或临床结论。")
                     .font(.footnote)
