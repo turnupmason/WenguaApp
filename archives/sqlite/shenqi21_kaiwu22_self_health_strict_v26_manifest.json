@@ -1,0 +1,21 @@
+{
+  "schema": "wengua_v25_11_health_source_offline_full_archive",
+  "sha256": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+  "size_bytes": 14864384,
+  "file": "archives/sqlite/WenguaApp_双书194案例_庚申时本人病情精简模板纠错V2_6_完整研究库.sqlite3",
+  "xz_sha256": "8bd9c30181b896fc434d0e2bc8097bbd6dbae43b925dd4133a0e7959ffd0100a",
+  "xz_size_bytes": 1185116,
+  "parent_sha256": "6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf",
+  "old_cases": 194,
+  "old_sections": 43,
+  "previous_failed_development_cases": 2,
+  "underlying_source_facts": 21,
+  "template_sections": 11,
+  "this_self_case_visible_sections": 10,
+  "star_door_fuyin_fanyin_separate": true,
+  "traditional_binary_only_not_medical": true,
+  "runtime_gpt": false,
+  "user_content_approval": "pending",
+  "four_other_health_intents_approval": "unapproved",
+  "integrity_check": "ok"
+}
