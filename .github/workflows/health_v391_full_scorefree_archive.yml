@@ -1,0 +1,80 @@
+name: V3.9.1 Full Score-Free Research Archive
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_health_v391_full_scorefree_archive.py'
+      - 'schema/migrations/071_health_v391_active_source12_without_scores.sql'
+      - '.github/workflows/health_v391_full_scorefree_archive.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  source_and_full_snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify identical original V3.9 source, 120 lifecycle anchors and four seeded casts
+        run: |
+          python -m unittest discover -s tests -p test_health_v391_source_12stage_four_random.py -v
+      - name: Append only new V3.9.1 full score-free data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,sqlite3,lzma
+          from scripts.build_health_v391_full_scorefree_archive import build
+          d=Path('archives/sqlite')
+          old=d/'WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3'
+          newer=d/'WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3'
+          seal=Path('data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json')
+          readout=Path('docs/HEALTH_V391_FOUR_RANDOM_COMPLETE_CUSTOMER_READINGS.md')
+          manifest=d/'wengua_health_v391_active_numerics_disabled_manifest.json'
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=='f76b26200d8ed945621139217fcd63d55dddd010c1e4a2848d4e9ad544b3ec66'
+          if not newer.exists():
+              assert not any(x.exists() for x in (seal,readout,manifest))
+              print(json.dumps(build(old,newer,seal,manifest,readout),ensure_ascii=False,indent=2))
+          else:assert all(x.exists() for x in (seal,readout,manifest))
+          meta=json.loads(manifest.read_text('utf8'))
+          h=lambda x:hashlib.sha256(x.read_bytes()).hexdigest()
+          assert h(newer)==meta['new_complete_v391_sqlite_sha256']
+          assert h(seal)==meta['four_actual_cast_source_audit_sha256']
+          assert h(readout)==meta['customer_four_full_v391_readings_sha256']
+          assert h(Path(str(newer)+'.xz'))==meta['new_complete_v391_sqlite_xz_sha256']
+          assert lzma.decompress(Path(str(newer)+'.xz').read_bytes())==newer.read_bytes()
+          sample=json.loads(seal.read_text('utf8'))
+          assert len(sample['samples'])==4
+          assert len(set(sample['four_selection_local_isos']))==4
+          assert all(row['no_numerical_score'] for row in sample['samples'])
+          assert all(row['book_verifiable_chart_facts']['v39_health_supplement_size']==42 for row in sample['samples'])
+          assert '古籍病势象意实验分：' not in readout.read_text('utf8')
+          with sqlite3.connect(newer) as db:
+              assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not db.execute('PRAGMA foreign_key_check').fetchall()
+              for name,n in [('cases',194),('sections',43),
+                  ('kaiwu_ordered_stem_pair_occurrences',81),
+                  ('health_v30_stem_pair_rules',42),
+                  ('health_v30_composite_rule_index',17),
+                  ('health_v39_concise_user_readings',3),
+                  ('health_v42_book_anchored_twelve_stages',120),
+                  ('health_v391_active_narrative_policy',1),
+                  ('health_v391_random_hour_narratives',4),
+                  ('health_v391_actual_role_lifecycle',20)]:
+                  assert db.execute('SELECT COUNT(*) FROM "'+name+'"').fetchone()[0]==n,name
+              assert db.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          PY
+      - name: Commit only new V3.9.1 full archive and reader-approval-pending sample readings
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3.xz' 'archives/sqlite/wengua_health_v391_active_numerics_disabled_manifest.json' 'data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json' 'docs/HEALTH_V391_FOUR_RANDOM_COMPLETE_CUSTOMER_READINGS.md'
+          git diff --cached --check
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive score-free V3.9.1 full source and four true random-hour reader samples'
+            git push origin HEAD:main
+          fi
