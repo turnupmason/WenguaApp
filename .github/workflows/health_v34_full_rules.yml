@@ -1,0 +1,132 @@
+name: V3.4 Full Person Roles and Disease Rule Conditions
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_dynamic_v21.py'
+      - 'src/wengua/health_severity_v34.py'
+      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
+      - 'scripts/replay_all_historical_health_v34.py'
+      - 'tests/test_health_v34_user_full_rules.py'
+      - 'schema/migrations/062_health_full_actor_and_source_predicates_v34.sql'
+      - 'scripts/build_health_v34_full_archive.py'
+      - '.github/workflows/health_v34_full_rules.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regressions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Test all 12 historical health events, all 42 pairs and 17 composites
+        run: |
+          python -m unittest discover -s tests -p test_health_v34_user_full_rules.py -v
+          python -m scripts.replay_all_historical_health_v34
+  archive:
+    needs: regressions
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check immutable prior and guard new full archive
+        id: guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          old=Path('archives/sqlite/WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=='abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5'
+          new=Path('archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3')
+          m=Path('archives/sqlite/wengua_health_v34_full_manifest.json')
+          sealed=Path('data/evaluation/health_v34/all_12_original_source_conditions_V34_SEALED.json')
+          if new.exists():
+              assert m.exists() and sealed.exists()
+              data=json.loads(m.read_text('utf8'))
+              assert hashlib.sha256(new.read_bytes()).hexdigest()==data['full_db_sha256']
+              assert hashlib.sha256(sealed.read_bytes()).hexdigest()==data['sealed_readout_sha256']
+          else:
+              assert not m.exists() and not sealed.exists(), 'Never overwrite partial archive'
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Create new V3.4 complete 194 book-family SQL, original twelve readouts, manifest
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v34_full_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3' \
+            --seal 'data/evaluation/health_v34/all_12_original_source_conditions_V34_SEALED.json' \
+            --manifest 'archives/sqlite/wengua_health_v34_full_manifest.json'
+      - name: Verify full archive, old error records, and all role/rule audits
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,sqlite3,lzma
+          from pathlib import Path
+          parent=Path('archives/sqlite/WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3')
+          db=Path('archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3')
+          seal=Path('data/evaluation/health_v34/all_12_original_source_conditions_V34_SEALED.json')
+          m=json.loads(Path('archives/sqlite/wengua_health_v34_full_manifest.json').read_text('utf8'))
+          a=json.loads(seal.read_text('utf8'))
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          assert sha(parent)==m['full_parent_v33_sha256']
+          assert sha(db)==m['full_db_sha256']
+          assert sha(seal)==m['sealed_readout_sha256']
+          assert sha(Path(str(db)+'.xz'))==m['xz_sha256']
+          assert lzma.decompress(Path(str(db)+'.xz').read_bytes())==db.read_bytes()
+          assert len(a['samples'])==12
+          assert a['counts']['rendered']+a['counts']['blocked']==12
+          with sqlite3.connect(db) as c:
+              assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not c.execute('PRAGMA foreign_key_check').fetchall()
+              for name,n in [('cases',194),('sections',43),
+                 ('health_v33_all_historical_health_replay',12),
+                 ('health_v34_role_and_condition_replay',12),
+                 ('health_v34_source_rule_audit',1),
+                 ('health_v30_stem_pair_rules',42),
+                 ('health_v30_composite_rule_index',17)]:
+                 assert c.execute('SELECT count(*) FROM "'+name+'"').fetchone()[0]==n,name
+              assert c.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          for x in a['samples']:
+              assert x['review']=='pending'
+              assert not x['author_answer_used'] and not x['later_feedback_used']
+              if x['result']=='rendered':
+                  assert hashlib.sha256(x['reading'].encode('utf8')).hexdigest()==x['sha256']
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.guard.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V34-Full194-NewRoleEvidence
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v34_full_manifest.json
+            data/evaluation/health_v34/all_12_original_source_conditions_V34_SEALED.json
+      - name: Push only new immutable V3.4 archive
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v34_full_manifest.json' \
+            'data/evaluation/health_v34/all_12_original_source_conditions_V34_SEALED.json'
+          git diff --cached --check
+          git commit -m 'Archive V3.4 full source 194 and twelve actual historical health rule readouts'
+          git push origin HEAD:main
