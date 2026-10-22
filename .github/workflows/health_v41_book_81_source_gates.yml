@@ -1,0 +1,26 @@
+name: V4.1 Original 81 Source-Pair Gates
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/knowledge/score_models/health_severity_v41/ordered81_user_weight_candidates.json'
+      - 'src/wengua/health_symbolic_score_v41.py'
+      - 'scripts/run_health_v41_source_gated_3_cases.py'
+      - 'tests/test_health_v41_all81_original_book_gates.py'
+      - '.github/workflows/health_v41_book_81_source_gates.yml'
+  workflow_dispatch:
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source-attested 81 directed book pairs and illness-specific safety guards
+        run: |
+          python -m unittest discover -s tests -p test_health_v41_all81_original_book_gates.py -v
+          python -m scripts.run_health_v41_source_gated_3_cases
