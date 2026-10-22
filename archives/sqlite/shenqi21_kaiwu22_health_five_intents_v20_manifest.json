@@ -1,0 +1,32 @@
+{
+  "schema": "wengua_full_v20_health_dynamic_intents_194_original_cases",
+  "parent_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3",
+  "parent_sha256": "b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f",
+  "latest_full_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3",
+  "sha256": "8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e",
+  "size_bytes": 14782464,
+  "compressed_sqlite": "archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3.xz",
+  "compressed_sha256": "94d8be866314faebee1987ceb43394c3220e9f131c25c51af10a048b293f461d",
+  "compressed_size_bytes": 1178468,
+  "health_role_profiles": 14,
+  "health_distinct_intents": 5,
+  "dynamic_sections": 66,
+  "historical_events_unchanged": 194,
+  "historical_sections_unchanged": 43,
+  "original_v16_dev_errors_preserved": 2,
+  "prior_marriage_v17_rules_preserved": 27,
+  "real_world_medical_predictions_validated": 0,
+  "integrity_check": "ok",
+  "foreign_key_errors": 0,
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v17_book_conditional_rules": 27,
+    "health_severity_v19_template_sections": 21,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_templates": 5,
+    "health_v20_intent_steps": 66,
+    "health_v20_archive_audit": 1
+  }
+}

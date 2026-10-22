@@ -1,0 +1,37 @@
+{
+  "schema": "wengua_health_v20_five_distinct_intent_194_case_append_only",
+  "parent_full_sqlite_sha256": "b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f",
+  "new_full_sqlite_sha256": "8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e",
+  "original_historical_case_families_unchanged": 194,
+  "original_source_sections_unchanged": 43,
+  "previous_two_dev_errors_preserved": 2,
+  "previous_27_author_combinator_rules_preserved": 27,
+  "prior_health_21_sections_preserved": 21,
+  "patient_role_profiles": 14,
+  "separate_health_intents": {
+    "severity": 21,
+    "treatment": 12,
+    "discharge": 12,
+    "surgery": 10,
+    "travel_for_treatment": 11
+  },
+  "total_dynamic_template_sections": 66,
+  "new_independently_verified_clinical_predictions": 0,
+  "all_old_tables_and_rows_identical": true,
+  "source_files_sha256": {
+    "roles": "f526bed8a9e3cc42793daa8dad47a29a5116e4d586d5d4af7d517cc4ebe871e0",
+    "severity": "0f642866abd1feb4ac64f0e9b499e78daccbc7a17232b04672fd360742b9c192",
+    "other": "04b60c831133964e2d9226917eef2312d64ab0a69384ffdf1d8818bede5f7bdb"
+  },
+  "counts": {
+    "cases": 194,
+    "sections": 43,
+    "marriage_v16_post_inference_labels": 3,
+    "marriage_v17_book_conditional_rules": 27,
+    "health_severity_v19_template_sections": 21,
+    "health_v20_actor_role_profiles": 14,
+    "health_v20_intent_templates": 5,
+    "health_v20_intent_steps": 66,
+    "health_v20_archive_audit": 1
+  }
+}
