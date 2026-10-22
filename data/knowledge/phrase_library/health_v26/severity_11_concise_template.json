@@ -1,0 +1,90 @@
+{
+  "schema": "wengua_health_severity_11_concise_v26_corrected",
+  "engine": "local_deterministic_python_only",
+  "intent": "severity",
+  "guidelines": [
+    "no_repeated_palace_explanations",
+    "star_door_fuyin_fanyin_independently_computed",
+    "yin_yang_inner_outer",
+    "final_binary_traditional_only",
+    "no_birth_year_if_missing",
+    "no_GPT_or_model_runtime",
+    "other_health_intents_unapproved",
+    "suppress_book_formation_names_unrelated_to_illness",
+    "ordered_palace_star_element_relation",
+    "patient_illness_door_pressure_assigned_by_palace",
+    "final_speed_uses_inner_outer_if_not_fuyin_or_fanyin"
+  ],
+  "sections": [
+    {
+      "id": "01_role",
+      "title": "问事取用",
+      "format": "依据古籍，为（患者关系）测病情轻重。（患者用神）落（患者宫）。（年命补充句）"
+    },
+    {
+      "id": "02_far",
+      "title": "值符值使",
+      "format": "值符（值符星）落（值符宫），主（值符象意）；值使（值使门）落（值使宫），主（值使象意）。（与病宫的关键联系）"
+    },
+    {
+      "id": "03_ill",
+      "title": "病宫综合",
+      "format": "天芮（及同宫九星）落（病宫），临（八门）、乘（八神），天盘（天干）加地盘（地干）为（格局）。（门神及格局象意）。（宫星生克）。传统身体类象：（体表与脏腑）。（已成立的病宫特殊格局）"
+    },
+    {
+      "id": "04_strength",
+      "title": "病星旺衰",
+      "format": "（月支）月天芮（旺相休囚废），（与病宫旺衰合断的解释）。"
+    },
+    {
+      "id": "05_person",
+      "title": "患者用神宫",
+      "format": "（人物用神）落（患者宫），同宫（星门神干简要）。（患者与病宫五行关系）。（空墓刑迫仅实际触发的影响）"
+    },
+    {
+      "id": "06_family",
+      "title": "亲属辅助宫",
+      "optional": "family_aux",
+      "format": "另参（亲属辅助宫），（该宫星门神）。（与病宫实际关系和作用）。"
+    },
+    {
+      "id": "07_med",
+      "title": "医药",
+      "format": "（天心医生宫）。（乙奇医药宫）。（仅一次说明的医药宫对病宫作用）。"
+    },
+    {
+      "id": "08_event",
+      "title": "时干事体",
+      "format": "时干（时干）落（时宫），主所问病事。（时宫对病宫患者宫的实算作用）。"
+    },
+    {
+      "id": "09_factors",
+      "title": "关键格局",
+      "format": "（实际命中的旬空、门迫、六仪击刑、入墓或其他确立条件及关联对象）。"
+    },
+    {
+      "id": "10_rhythm",
+      "title": "伏吟反吟与应期",
+      "format": "（九星伏吟反吟结果）。（八门伏吟反吟结果）。（阴阳遁内外盘的快慢关系）。（新久病限定条件）。（应期结论）。"
+    },
+    {
+      "id": "11_final",
+      "title": "最终断词",
+      "format": "依据古籍，传统主判：（病吉或病凶）。（最有决定性的主证与反证）。（缓急结论）。"
+    }
+  ],
+  "display_placeholder": "（中文字段）",
+  "archive_parent_sha256": "6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf",
+  "source_provenance": [
+    {
+      "path": "sources/kaiwu/开悟之门_第四章.txt",
+      "range": "147-156",
+      "concept": "fuyin_near_slow_fanyin_far_fast_qualifier"
+    },
+    {
+      "path": "sources/kaiwu/开悟之门_第四章.txt",
+      "range": "556-580",
+      "concept": "star_door_fuyin_fanyin_and_new_vs_chronic_disease"
+    }
+  ]
+}
