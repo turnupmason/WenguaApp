@@ -1,0 +1,143 @@
+name: V3.8 Client Tomb Extinction Void and Two Seeded Book Cases
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v38.py'
+      - 'data/knowledge/phrase_library/health_v38/severity_customer_template.json'
+      - 'scripts/replay_health_v38_user_and_two_seeded_cases.py'
+      - 'tests/test_health_v38_user_noon_random2_customer.py'
+      - 'schema/migrations/066_health_customer_tomb_void_seal_random2_v38.sql'
+      - 'scripts/build_health_v38_full_archive.py'
+      - '.github/workflows/health_v38_customer_tomb_void_random2.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Genuine source-stem tomb/extinction, hour void and 3 clean Chinese replays
+        run: |
+          python -m unittest discover -s tests -p test_health_v38_user_noon_random2_customer.py -v
+          python -m scripts.replay_health_v38_user_and_two_seeded_cases
+  archive:
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Do not overwrite old sealed source models and full research databases
+        id: guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          old=Path('archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3')
+          assert hashlib.sha256(old.read_bytes()).hexdigest()=='f927956e98bb4c193b0be6291c1e01edd31ee61a60b150900095fea0264931d7'
+          db=Path('archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3')
+          seal=Path('data/evaluation/health_v38/user_noon_two_seeded_book_families_V38_SEALED.json')
+          report=Path('docs/HEALTH_V38_THREE_CUSTOMER_READINGS.md')
+          meta=Path('archives/sqlite/wengua_health_v38_full_manifest.json')
+          if db.exists():
+            assert seal.exists() and report.exists() and meta.exists()
+            x=json.loads(meta.read_text('utf8'))
+            assert hashlib.sha256(db.read_bytes()).hexdigest()==x['full_sqlite_sha256']
+            assert hashlib.sha256(seal.read_bytes()).hexdigest()==x['full_three_predictions_sha256']
+          else:
+            assert not any(x.exists() for x in (seal,report,meta)), 'Never overwrite half-written archive'
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Append new full V3.8 archive plus exactly three no-source-line customer texts
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v38_full_archive \
+            --parent 'archives/sqlite/WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3' \
+            --seal 'data/evaluation/health_v38/user_noon_two_seeded_book_families_V38_SEALED.json' \
+            --manifest 'archives/sqlite/wengua_health_v38_full_manifest.json' \
+            --readout 'docs/HEALTH_V38_THREE_CUSTOMER_READINGS.md'
+      - name: Audit 194 source families, 81 ordered stems, no line leakage and archive SHA
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,re,sqlite3
+          from pathlib import Path
+          f=Path('archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3')
+          seal=Path('data/evaluation/health_v38/user_noon_two_seeded_book_families_V38_SEALED.json')
+          doc=Path('docs/HEALTH_V38_THREE_CUSTOMER_READINGS.md')
+          info=json.loads(Path('archives/sqlite/wengua_health_v38_full_manifest.json').read_text('utf8'))
+          results=json.loads(seal.read_text('utf8'))
+          sha=lambda a:hashlib.sha256(a.read_bytes()).hexdigest()
+          assert sha(f)==info['full_sqlite_sha256']
+          assert sha(seal)==info['full_three_predictions_sha256']
+          assert sha(doc)==info['client_three_readings_sha256']
+          assert sha(Path(str(f)+'.xz'))==info['full_sqlite_xz_sha256']
+          assert lzma.decompress(Path(str(f)+'.xz').read_bytes())==f.read_bytes()
+          assert len(results['records'])==3
+          assert len(results['randomly_selected_family_ids'])==2
+          for idx,item in enumerate(results['records']):
+              assert hashlib.sha256(item['reading_text'].encode()).hexdigest()==item['readout_sha256']
+              assert not re.search(r'原书第\s*\d+\s*行',item['reading_text'])
+              assert item['user_review']=='pending'
+              assert not item['original_author_conclusion_used_as_input']
+          q=results['records'][0]['illness_stem_tomb_absence']
+          assert q['stage_tomb_branch']=='戌' and q['stage_extinct_branch']=='亥'
+          assert q['compound_tomb_extinct_void_same_palace']
+          with sqlite3.connect(f) as db:
+              assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+              assert not db.execute('PRAGMA foreign_key_check').fetchall()
+              for table,n in [('cases',194),('sections',43),
+                 ('kaiwu_ordered_stem_pair_occurrences',81),
+                 ('health_v30_stem_pair_rules',42),
+                 ('health_v30_composite_rule_index',17),
+                 ('health_v33_all_historical_health_replay',12),
+                 ('health_v34_role_and_condition_replay',12),
+                 ('health_v35_patient_first_replay',12),
+                 ('health_v36_source_horse_and_value_door',12),
+                 ('health_v37_user_noon_test',1),
+                 ('health_v38_case_readouts',3),('health_v38_latest_full_archive',1)]:
+                  assert db.execute('SELECT count(*) FROM "'+table+'"').fetchone()[0]==n,table
+              assert db.execute('SELECT count(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.guard.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V38-Full194-Three-Unapproved-Readings
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v38_full_manifest.json
+            data/evaluation/health_v38/user_noon_two_seeded_book_families_V38_SEALED.json
+            docs/HEALTH_V38_THREE_CUSTOMER_READINGS.md
+      - name: Commit new full V3.8 archived user-approval-pending outputs only
+        if: steps.guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3'
+          git add -- \
+            'archives/sqlite/WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3.xz' \
+            'archives/sqlite/wengua_health_v38_full_manifest.json' \
+            'data/evaluation/health_v38/user_noon_two_seeded_book_families_V38_SEALED.json' \
+            'docs/HEALTH_V38_THREE_CUSTOMER_READINGS.md'
+          git diff --cached --check
+          git commit -m 'Archive source-backed V3.8 reader-safe tomb extinction vacancy and two seeded historic predictions'
+          git push origin HEAD:main
