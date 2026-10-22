@@ -1,0 +1,175 @@
+{
+  "schema": "wengua_health_v33_user_20261022_full_supplement_to_fixed_11_sections",
+  "purpose": "Map user's latest illness-study supplement to V3.1 11-section slots without retroactively modifying immutable V3.1 forecasts",
+  "source": {
+    "kind": "direct_user_message",
+    "date": "2026-10-22",
+    "original_text": "available_in_conversation_not_republished_verbatim",
+    "source_book_claim": "user_supplied_not_independently_original_line_verified",
+    "raw_ocr_preserved_elsewhere": "health_v30/user_20261022_pair_catalog.json",
+    "book_source_authorship_disclaimer": true
+  },
+  "precedence": [
+    "patient verified principal yongshen or supplied birth year",
+    "illness Tianrui and supporting Kun2 ground association",
+    "hour event and value star/door whenever actually linked",
+    "doctor Tianxin and Yi, then conditionally confirmed contrasts",
+    "reverse evidence and conflicts",
+    "traditional provisional judgment and source-condition timing only"
+  ],
+  "template_slots": [
+    {
+      "id": "01_role",
+      "rule_family": "person_relation",
+      "state": "partially_executable_v31",
+      "facts": [
+        "self day",
+        "parents year plus father Qian/mother Kun",
+        "peer month candidate",
+        "younger hour candidate",
+        "spouse pair signifier not yet verified",
+        "unknown animal, multiple-person routing blocks"
+      ],
+      "requirements": "No guess birth year, age, sex; source-qualified person-specific binding required"
+    },
+    {
+      "id": "02_far",
+      "rule_family": "value_star_and_door",
+      "state": "partially_executable_v31",
+      "facts": [
+        "value star and door real palaces",
+        "relevant person's relation to chief signs"
+      ],
+      "requirements": "Never claim unconditional value chief overrides all actual patient and illness evidence"
+    },
+    {
+      "id": "03_illness",
+      "rule_family": "tianrui_and_home",
+      "state": "partially_executable_v31",
+      "facts": [
+        "actual Tianrui star palace, deity gate carrying stems",
+        "ground Tianrui home in Kun2 as supplemental association only",
+        "body image/inner-outer/combination selectors",
+        "ordered heavenly over earthly pairs role-specific"
+      ],
+      "requirements": "Head, belly, organ or tumor analogies are not clinical disease identification"
+    },
+    {
+      "id": "04_season",
+      "rule_family": "illness_star_vs_palace_and_month",
+      "state": "partially_executable_v31",
+      "facts": [
+        "nine-star monthly state",
+        "palace controls/begets illness star as different dimension",
+        "Li begets Tianrui earth, Gen/Kun support, Zhen/Xun control, Kan/Cian/Dui other judgments"
+      ],
+      "requirements": "Source warning: Tianrui in a controlling wood palace does not guarantee recovery; strong earth month counteracts"
+    },
+    {
+      "id": "05_patient",
+      "rule_family": "patient_priority_and_age",
+      "state": "partially_executable_v31",
+      "facts": [
+        "patient palace versus illness and hour directed interactions",
+        "true void/mortuary and life-stage facts",
+        "age-based old child middle constraints only if age given"
+      ],
+      "requirements": "One patient cannot stand in for many; lack of person signifier must stop output"
+    },
+    {
+      "id": "06_gender",
+      "rule_family": "auxiliary_palace",
+      "state": "executable_when_sex_known_v31",
+      "facts": [
+        "known male Qian6, known female Kun2"
+      ],
+      "requirements": "Do not infer sex from name or disease"
+    },
+    {
+      "id": "07_medicine",
+      "rule_family": "tianxin_yi_and_treatment_symbols",
+      "state": "partially_executable_v31",
+      "facts": [
+        "Tianxin star vs Yi stem independent monthly phases",
+        "doctor/medicine vs illness directed palace relationship",
+        "event-hour or illness same palace as Yi/Tianxin conditional medical opportunity",
+        "doctor palace emptiness, door oppression, tomb, punishment",
+        "opening door surgery, Ding acupuncture, Bing radiotherapy as traditional analogy only"
+      ],
+      "requirements": "No diagnosis, treatment effectiveness, therapy selection or advice to stop medical care"
+    },
+    {
+      "id": "08_hour",
+      "rule_family": "disease_progression",
+      "state": "executable_patient_hour_relation_v31",
+      "facts": [
+        "hour branch as event and disease trend",
+        "patient controls illness/hour traditionally favorable; hour controls patient adverse",
+        "same palace not automatic recovery"
+      ],
+      "requirements": "Retain actual direction; do not reuse wrong V3.0 patient-vs-hour label"
+    },
+    {
+      "id": "09_hazards",
+      "rule_family": "conditioned_ancient_formations",
+      "state": "partially_executable_and_remaining_indexed",
+      "facts": [
+        "42 ordered pairs 17 composites indexed since v30",
+        "full conditions needed for underground escape, ghost/human escape, ghost/human false, three tricks, jade guard",
+        "five-not-encounter; true six-instrument punish, tomb, pressure, nets",
+        "bereavement signs require real year and birth data"
+      ],
+      "requirements": "Names in ancient odes including death/cancer are scholarly text, never asserted as clinical prediction; conflicting 辛乙 and 荧白 readings coexist"
+    },
+    {
+      "id": "10_pace",
+      "rule_family": "duration_and_timing",
+      "state": "partially_executable_v31",
+      "facts": [
+        "new/chronic status only when known",
+        "inner/outer; star-and-gate real fuyin/fanyin",
+        "void fill/oppose, tomb exit, punishment then combine, horse activation when actually established",
+        "value gate number timing only after corroboration"
+      ],
+      "requirements": "No specific date from unqualified branch or undifferentiated palace number"
+    },
+    {
+      "id": "11_final",
+      "rule_family": "evidence_weighting",
+      "state": "partially_executable_v31",
+      "facts": [
+        "patient-first strengths and weakness",
+        "multiple adverse and favorable independent facts",
+        "genuine triggered exception/context"
+      ],
+      "requirements": "No vote-count substitutes author conditional prioritization, no mortality or modern medical risk labels"
+    }
+  ],
+  "preserved_v30_catalog": {
+    "ordered_stem_pairs": 42,
+    "composite_patterns": 17,
+    "original_pair_catalog": "data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json",
+    "status": "indexed_more_than_executable"
+  },
+  "runtime_contract": {
+    "engine_for_v33_batch": "V3.1 unchanged; do not automatically activate indexed rules in customer text",
+    "status": "research_mapping_not_user_approved_new_automatic_template",
+    "banned_actions": [
+      "runtime GPT",
+      "web generated per-chart prose",
+      "retrofit readings to original author result",
+      "recommend abandoning treatment",
+      "claim cancer diagnosis from symbol combinations"
+    ]
+  },
+  "open_items": [
+    "Fully source-grounded spouse/multi-person/animal role assignments",
+    "Independent tests for 42 ordered pairs and 17 composites",
+    "Conflict and counterexample precedence, including 辛+乙 disagreement",
+    "Known disease duration and birth year in source cases without outcome leaks",
+    "True horse-star triggered calendar windows",
+    "Original chapter line/hash matching for user's cited 《诸葛武侯千金决》 wording and OCR alternatives",
+    "All four other health intents still unapproved",
+    "User to approve historical readout and later UI separately"
+  ]
+}
