@@ -815,13 +815,11 @@ struct TraditionalReadingPreview: View {
                     if let chart=nativeChart {
                         Text("当前九宫已由 iPhone Swift 离线引擎真实起盘。")
                             .font(.caption).foregroundStyle(QStyle.secondary)
-                        Text("本次："+chart.pillars.year+" "+chart.pillars.month+" "+
-                             chart.pillars.day+" "+chart.pillars.hour+
+                        Text(([chart.pillars.year,chart.pillars.month,
+                               chart.pillars.day,chart.pillars.hour].joined(separator:" "))+
                              " · "+chart.solarTerm)
                             .font(.headline)
-                        Text("V3.9.1 古籍规则的完整取用、吉凶推理和断词尚未移植到 iOS。"+
-                             "这里不展示任何假断词，不输出分数。下一阶段严格移植81组原书有序天地干、"+
-                             "42组疾病补充、17复合条件及全部11栏文字。")
+                        Text("V3.9.1 完整古籍推理和断词尚未移植到 iOS。本次只展示真实计算九宫，不输出假断词或分数。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                     } else {
                         Text("固定已计算测试盘，不是刚输入的新问题。")
