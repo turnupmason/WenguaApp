@@ -1,0 +1,125 @@
+name: V3.1 Patient-Hour Disease Direction Correction and Immutable Archive
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_v31.py'
+      - 'data/knowledge/phrase_library/health_v31/**'
+      - 'scripts/run_two_historical_health_v31.py'
+      - 'tests/test_health_hour_patient_v31.py'
+      - 'scripts/build_health_v31_archive.py'
+      - 'schema/migrations/059_health_patient_hour_direction_v31.sql'
+      - '.github/workflows/health_v31.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Strict patient vs hour disease semantics and historical seals
+        run: |
+          python -m unittest discover -s tests -p test_health_hour_patient_v31.py -v
+          python -m unittest discover -s tests -p test_health_supplement_v30.py -v
+  archive:
+    needs: regression
+    runs-on: ubuntu-latest
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Guard existing immutable V3.1 SQLite archive
+        id: check
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3')
+          receipt=Path('archives/sqlite/wengua_health_v31_manifest.json')
+          if db.exists():
+           assert receipt.is_file()
+           assert hashlib.sha256(db.read_bytes()).hexdigest()==json.loads(receipt.read_text('utf8'))['sha256']
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Copy exact V3.0 full original source and append migration059
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v31_archive \
+           --parent 'archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3' \
+           --output 'archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3' \
+           --sealed 'data/evaluation/health_v31/two_historical_patient_hour_V31_SEALED.json' \
+           --manifest 'data/knowledge/phrase_library/health_v31/archive_manifest.json'
+      - name: Verify new whole source, compress and record SHA
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          db=Path('archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3')
+          par=Path('archives/sqlite/WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3')
+          sealed=Path('data/evaluation/health_v31/two_historical_patient_hour_V31_SEALED.json')
+          sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          audit=json.loads(Path('data/knowledge/phrase_library/health_v31/archive_manifest.json').read_text('utf8'))
+          assert audit['full_sqlite_sha256']==sha(db)
+          assert audit['exact_parent_v30_sha256']==sha(par)
+          with sqlite3.connect(db) as c:
+            assert c.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+            assert c.execute('PRAGMA foreign_key_check').fetchall()==[]
+            for table,num in [('cases',194),('sections',43),
+             ('health_v30_stem_pair_rules',42),('health_v30_composite_rule_index',17),
+             ('health_v31_hour_patient_fixed_templates',1),('health_v31_correction_archive',2)]:
+              assert c.execute('SELECT COUNT(*) FROM "'+table+'"').fetchone()[0]==num
+            assert c.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          data=json.loads(sealed.read_text('utf8'))
+          assert len(data['samples'])==2 and data['original_book_author_answers_not_used']
+          for x in data['samples']:
+           assert hashlib.sha256(x['readout'].encode('utf8')).hexdigest()==x['sha256']
+           assert x['sha256']!=x['v30_original_sha256']
+          xz=Path(str(db)+'.xz')
+          xz.write_bytes(lzma.compress(db.read_bytes(),preset=6))
+          receipt={'schema':'wengua_v31_194_source_correct_patient_hour',
+             'sha256':sha(db),'parent_sha256':sha(par),'xz_sha256':sha(xz),
+             'v31_sealed_sha256':sha(sealed),'cases':194,'old_book_sections':43,
+             'old_dev_errors':2,'ordered_pairs':42,'composites':17,'readouts':2,
+             'old_v30_bad_hour_directions_preserved':True,'no_legacy_answers_used':True,
+             'no_runtime_gpt':True,'clinical_accuracy_validated':False,
+             'user_review':'pending','other_four_health_intents':'unapproved'}
+          Path('archives/sqlite/wengua_health_v31_manifest.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n','utf8')
+          print(json.dumps(receipt,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.check.outputs.exists == 'false'
+        with:
+          name: WenguaApp-V31-Immutable-PatientHour-Full194
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_v31_manifest.json
+            data/evaluation/health_v31/two_historical_patient_hour_V31_SEALED.json
+      - name: Commit versioned full SQLite and old-to-new hash evidence
+        if: steps.check.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3.xz' \
+           'archives/sqlite/wengua_health_v31_manifest.json' \
+           'data/evaluation/health_v31/two_historical_patient_hour_V31_SEALED.json' \
+           'data/knowledge/phrase_library/health_v31/archive_manifest.json'
+          git diff --cached --check
+          git commit -m 'Archive full original V3.1 SQLite fixing patient vs hour illness role meanings while preserving V3.0 errors'
+          git push origin HEAD:main
