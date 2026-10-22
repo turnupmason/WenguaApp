@@ -111,7 +111,7 @@ def _route_weight(rule):
     if rule.get("family")=="original_81_book_pair":return MODULES[4]
     if label.startswith("same_palace_event_or_illness_medicine") or (
         label.startswith(("physician_","illness_controls_all_available_medicine",
-         "doctor_and_yi_","qian_kun_gender")):
+         "doctor_and_yi_","qian_kun_gender"))):
         return MODULES[2]
     if label.startswith("double_") or "fuyin" in label or "fanyin" in label:
         return MODULES[5]
