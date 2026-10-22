@@ -1,0 +1,947 @@
+{
+  "schema": "wengua_health_v41_3_fixed_source_gated_score_trials",
+  "exact_complete_v40_source_sha256": "d16f31598433541e239285ba2af2e1085a6ccf9d11057d1b53c338d2f5122304",
+  "unseen_blind_trial": false,
+  "user_approved": false,
+  "records": [
+    {
+      "family_id": "user_20261022_1200_EDT",
+      "pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "己巳",
+        "hour": "庚午"
+      },
+      "datetime": "2026-10-22T12:00:00-04:00",
+      "relationship": "self",
+      "score": {
+        "schema": "wengua_health_v41_original_81_book_constrained_scoring_prototype",
+        "version": "V4.1",
+        "status": "draft_awaiting_user_source_review",
+        "score_label": "古籍病势象意实验分，不是医学健康指数或概率",
+        "baseline": 100,
+        "previous_v40_raw": 46,
+        "previous_v40_visible": 46,
+        "revised_raw_score": 34,
+        "revised_display_score": 34,
+        "source_constrained_pair_increment": -20,
+        "removed_duplicate_interactions": [
+          {
+            "id": "double_adverse_distinct_chain_penalty",
+            "family": "interaction",
+            "points": -8,
+            "why": "疾病攻人或患者助病并见独立凶证，只扣一次协同项",
+            "evidence": {
+              "patient_vs_illness": "受克",
+              "illness_vs_tianrui": "受生",
+              "patient_original_bad_formation": true
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "evidence_ledger": [
+          {
+            "id": "illness_controls_patient",
+            "family": "main_patient_illness_relation",
+            "points": -25,
+            "why": "病宫克患者宫",
+            "evidence": {
+              "p": 4,
+              "i": 6
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "death_door_co_palace_patient",
+            "family": "door_patient",
+            "points": -8,
+            "why": "患者本宫临死门",
+            "evidence": {
+              "palace": 4
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_vigorous",
+            "family": "season_patient_stem",
+            "points": 6,
+            "why": "患者主用干在月令旺",
+            "evidence": {
+              "stem": "己",
+              "state": "旺",
+              "month": "戌"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_weak",
+            "family": "season_patient_palace",
+            "points": -4,
+            "why": "患者宫五行在月令囚",
+            "evidence": {
+              "palace": 4,
+              "state": "囚"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_vigorous",
+            "family": "season_tianrui",
+            "points": -15,
+            "why": "天芮月令相",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_good_deity",
+            "family": "deity_patient",
+            "points": 8,
+            "why": "患者宫乘六合",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_branch_month_break",
+            "family": "patient_month_break",
+            "points": -8,
+            "why": "月支冲患者宫所辖地支",
+            "evidence": {
+              "month": "戌",
+              "clash": "辰",
+              "patient": 4
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "rule_id": "v41_pair_己_癸",
+            "family": "original_81_book_pair",
+            "palace": 4,
+            "star": "天任星",
+            "role": "patient",
+            "source_qualified": "traditional_illness_adverse",
+            "points": -20,
+            "source_pair_key": "己/癸"
+          }
+        ],
+        "book_pair_source_audit": {
+          "source_81_total": 81,
+          "supplement_42_total": 42,
+          "matched_real_star_pairs": [
+            {
+              "matched_actual_palace": 1,
+              "matched_actual_star": "天柱星",
+              "actual_role": "event",
+              "ordered_pair": "庚/乙",
+              "source_book_name": "太白逢星",
+              "user_proposed_alias": "太白逢星",
+              "user_proposed_numeric_weight": null,
+              "user_proposed_duration_weights": {
+                "chronic": 15
+              },
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_21",
+              "supplement_mode": "ill_favorable",
+              "source_line_internal_only": 302,
+              "source_sha256_internal_only": "c00b916f892bc1176d146d97ec523019d21ac8de04aba2b1a02427ada31acb13",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 2,
+              "matched_actual_star": "天辅星",
+              "actual_role": null,
+              "ordered_pair": "癸/丙",
+              "source_book_name": "华盖悖师",
+              "user_proposed_alias": "华盖悖师",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 342,
+              "source_sha256_internal_only": "3ddf0a436b037061692b6c43782167c53751d0af6a976d3b3e27d2090d64f7fb",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 3,
+              "matched_actual_star": "天蓬星",
+              "actual_role": "medicine",
+              "ordered_pair": "乙/丁",
+              "source_book_name": "奇仪相佐",
+              "user_proposed_alias": "奇仪相佐",
+              "user_proposed_numeric_weight": 18,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_18",
+              "supplement_mode": "ill_favorable",
+              "source_line_internal_only": 292,
+              "source_sha256_internal_only": "3a46f9b97fbce3d56ce94209204badb5aa9dabc518e3b1d155e62f9bd25ad8b5",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 4,
+              "matched_actual_star": "天任星",
+              "actual_role": "patient",
+              "ordered_pair": "己/癸",
+              "source_book_name": "地刑玄武",
+              "user_proposed_alias": "地刑玄武",
+              "user_proposed_numeric_weight": -20,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "traditional_illness_adverse",
+              "supplement_source_id": "health_supplement_pair_27",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 384,
+              "source_sha256_internal_only": "5db5792c5f9491784646c58d43b366d1ef8e3bceeef4514503f79f0e28b392d4",
+              "match_status": "book_illness_adverse_and_user_sign_aligned",
+              "applied_delta": -20,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 6,
+              "matched_actual_star": "天芮星",
+              "actual_role": "illness",
+              "ordered_pair": "丙/辛",
+              "source_book_name": "月奇相合",
+              "user_proposed_alias": "谋事成就",
+              "user_proposed_numeric_weight": null,
+              "user_proposed_duration_weights": {
+                "new": 10,
+                "chronic": -15
+              },
+              "original_book_health_semantics": "traditional_illness_favorable",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 332,
+              "source_sha256_internal_only": "78bfed6fe6a3a30994eb95c051b127f76488883c1a51f9b544b3bd9dc4e7e437",
+              "match_status": "requires_original_new_or_chronic",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 6,
+              "matched_actual_star": "天禽星",
+              "actual_role": "illness_companion_unscored",
+              "ordered_pair": "壬/辛",
+              "source_book_name": "螣蛇相缠",
+              "user_proposed_alias": "网罗相缠",
+              "user_proposed_numeric_weight": -12,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_31",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 410,
+              "source_sha256_internal_only": "22cdcc36e87a045a40e72d17f46d5fa524bbc2c9526b35e0e31ba10601fa2581",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 7,
+              "matched_actual_star": "天英星",
+              "actual_role": null,
+              "ordered_pair": "戊/庚",
+              "source_book_name": "值符飞宫",
+              "user_proposed_alias": "值符飞宫",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "traditional_illness_adverse",
+              "supplement_source_id": "health_supplement_pair_10",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 268,
+              "source_sha256_internal_only": "8e466009652a13d59d05a5b2e65ebb835c48398abed172e8e2e1d8183544aeae",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 8,
+              "matched_actual_star": "天心星",
+              "actual_role": "doctor",
+              "ordered_pair": "辛/己",
+              "source_book_name": "入狱自刑",
+              "user_proposed_alias": "入狱自刑",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 378,
+              "source_sha256_internal_only": "b09e1ab264ae8687eff8df21d36293533f65f4da4797ba99259259f9407c4010",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 9,
+              "matched_actual_star": "天冲星",
+              "actual_role": null,
+              "ordered_pair": "丁/戊",
+              "source_book_name": "青龙转光",
+              "user_proposed_alias": "青龙转光",
+              "user_proposed_numeric_weight": 15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 262,
+              "source_sha256_internal_only": "d20297ae9d0b3421794be62000586e834e1c08be76969f03bd36d3120f27e78d",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            }
+          ],
+          "eligible_book_explicit_ledger": [
+            {
+              "rule_id": "v41_pair_己_癸",
+              "family": "original_81_book_pair",
+              "palace": 4,
+              "star": "天任星",
+              "role": "patient",
+              "source_qualified": "traditional_illness_adverse",
+              "points": -20,
+              "source_pair_key": "己/癸"
+            }
+          ],
+          "applied_pair_total": -20,
+          "unscored_pair_count": 8,
+          "not_an_unconditional_81_pair_multiplier": true
+        },
+        "source_uncertainties": [
+          {
+            "id": "qian_kun_missing_patient_sex",
+            "reason": "未提供患者性别，不猜乾坤辅助宫"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "natal_context",
+            "reason": "没有提供出生年命，年命只作为未取值辅助"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          },
+          {
+            "id": "81_source_pair_role_conditions_pending",
+            "reason": "81天盘地盘原文是领域通用知识，并非全部具有明确测病分值"
+          }
+        ],
+        "actual_medical_risk_probability": null,
+        "real_health_or_treatment_outcome_predicted": false,
+        "users_81_weights_signed_off": false,
+        "old_v39_and_v40_outputs_unchanged": true,
+        "historical_book_feedback_seen_by_model": false
+      },
+      "original_post_event_result_used": false
+    },
+    {
+      "family_id": "kaiwu.health.19950219.brother_paralysis",
+      "pillars": {
+        "year": "乙亥",
+        "month": "戊寅",
+        "day": "辛巳",
+        "hour": "癸巳"
+      },
+      "datetime": "1995-02-19T09:30:00+08:00",
+      "relationship": "younger_sibling",
+      "score": {
+        "schema": "wengua_health_v41_original_81_book_constrained_scoring_prototype",
+        "version": "V4.1",
+        "status": "draft_awaiting_user_source_review",
+        "score_label": "古籍病势象意实验分，不是医学健康指数或概率",
+        "baseline": 100,
+        "previous_v40_raw": 90,
+        "previous_v40_visible": 90,
+        "revised_raw_score": 90,
+        "revised_display_score": 90,
+        "source_constrained_pair_increment": 0,
+        "removed_duplicate_interactions": [],
+        "evidence_ledger": [
+          {
+            "id": "patient_generates_illness",
+            "family": "main_patient_illness_relation",
+            "points": -8,
+            "why": "患者宫生病宫",
+            "evidence": {
+              "p": 9,
+              "i": 2
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_weak",
+            "family": "season_patient_stem",
+            "points": -6,
+            "why": "患者主用干在月令死",
+            "evidence": {
+              "stem": "戊",
+              "state": "死",
+              "month": "寅"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_vigorous",
+            "family": "season_patient_palace",
+            "points": 4,
+            "why": "患者宫五行在月令相",
+            "evidence": {
+              "palace": 9,
+              "state": "相"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_weak",
+            "family": "season_tianrui",
+            "points": 10,
+            "why": "天芮月令囚",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "tianrui_geng_same_palace",
+            "family": "illness_stem_geng",
+            "points": -10,
+            "why": "庚与天芮同宫",
+            "evidence": {
+              "illness_palace": 2
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "book_pair_source_audit": {
+          "source_81_total": 81,
+          "supplement_42_total": 42,
+          "matched_real_star_pairs": [
+            {
+              "matched_actual_palace": 1,
+              "matched_actual_star": "天蓬星",
+              "actual_role": null,
+              "ordered_pair": "己/己",
+              "source_book_name": "地户逢鬼",
+              "user_proposed_alias": "地户逢鬼",
+              "user_proposed_numeric_weight": -18,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "traditional_illness_adverse",
+              "supplement_source_id": "health_supplement_pair_26",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 370,
+              "source_sha256_internal_only": "c3d2720cb3457384f0fff64c4db7140d493cd8a6e44041e7a4f6089faba1821f",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 2,
+              "matched_actual_star": "天芮星",
+              "actual_role": "illness",
+              "ordered_pair": "庚/庚",
+              "source_book_name": "战格",
+              "user_proposed_alias": "太白同宫",
+              "user_proposed_numeric_weight": -20,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_41",
+              "supplement_mode": "needs_source",
+              "source_line_internal_only": 390,
+              "source_sha256_internal_only": "99cb8e88a21bc0e96ee2f0ca38f96149d85346119fdedfbebbc64024904ce37c",
+              "match_status": "no_specific_health_semantics_do_not_invert_or_medicalize",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 2,
+              "matched_actual_star": "天禽星",
+              "actual_role": "illness_companion_unscored",
+              "ordered_pair": "癸/庚",
+              "source_book_name": "太白入网",
+              "user_proposed_alias": "太白入网",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_33",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 402,
+              "source_sha256_internal_only": "9c5bdd3976c01b55d39ef2c0fbbdb6d150e3040dbd0189ac4a2c3672b4e35e13",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 3,
+              "matched_actual_star": "天冲星",
+              "actual_role": null,
+              "ordered_pair": "辛/辛",
+              "source_book_name": "伏吟天庭",
+              "user_proposed_alias": "公庭自刑",
+              "user_proposed_numeric_weight": -18,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_42",
+              "supplement_mode": "needs_source",
+              "source_line_internal_only": 406,
+              "source_sha256_internal_only": "4ee2b4b77115ff49b9f99b4b3707fcd43c17ee4777de0aa7c1230c819f6149c3",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 4,
+              "matched_actual_star": "天辅星",
+              "actual_role": null,
+              "ordered_pair": "壬/壬",
+              "source_book_name": "天狱自刑",
+              "user_proposed_alias": "天网地网",
+              "user_proposed_numeric_weight": -18,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_32",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 418,
+              "source_sha256_internal_only": "009ba7b7f40993363273ead5bb85a0af518a0c73dc2e2258fa58fb0579cf0d77",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 6,
+              "matched_actual_star": "天心星",
+              "actual_role": "doctor",
+              "ordered_pair": "丁/丁",
+              "source_book_name": "星奇伏吟",
+              "user_proposed_alias": "星奇伏吟",
+              "user_proposed_numeric_weight": -10,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_20",
+              "supplement_mode": "ill_favorable",
+              "source_line_internal_only": 346,
+              "source_sha256_internal_only": "0d012c9d93a6b1f6f38e3c9756508cc86c1b1e638493bca92f4bd87acd156907",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 7,
+              "matched_actual_star": "天柱星",
+              "actual_role": null,
+              "ordered_pair": "丙/丙",
+              "source_book_name": "月奇悖师",
+              "user_proposed_alias": "月奇悖师",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 318,
+              "source_sha256_internal_only": "53e789c5d0ce36d4666fffed8ecd1735db0f12c1bc6f93dc8132b8aa45dba111",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 8,
+              "matched_actual_star": "天任星",
+              "actual_role": "medicine",
+              "ordered_pair": "乙/乙",
+              "source_book_name": "日奇伏吟",
+              "user_proposed_alias": "日奇伏吟",
+              "user_proposed_numeric_weight": -8,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 286,
+              "source_sha256_internal_only": "94bee7aca1a4c9975c20e4c54c9a2378b680cb260eba5522b1cab46b0bf3842f",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 9,
+              "matched_actual_star": "天英星",
+              "actual_role": "patient",
+              "ordered_pair": "戊/戊",
+              "source_book_name": "伏吟",
+              "user_proposed_alias": "青龙伏吟",
+              "user_proposed_numeric_weight": -8,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 250,
+              "source_sha256_internal_only": "34e616f511b6a8f823ddeee3b01638bb63572eea6405921214fe153848a4ca6e",
+              "match_status": "no_specific_health_semantics_do_not_invert_or_medicalize",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            }
+          ],
+          "eligible_book_explicit_ledger": [],
+          "applied_pair_total": 0,
+          "unscored_pair_count": 9,
+          "not_an_unconditional_81_pair_multiplier": true
+        },
+        "source_uncertainties": [
+          {
+            "id": "patient_void_duration",
+            "reason": "患者宫旬空，但未提供新病或久病，不给固定吉凶分"
+          },
+          {
+            "id": "fuyin_duration",
+            "reason": "伏吟主迟，但未确认为久病，不机械扣轻重分"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          },
+          {
+            "id": "81_source_pair_role_conditions_pending",
+            "reason": "81天盘地盘原文是领域通用知识，并非全部具有明确测病分值"
+          }
+        ],
+        "actual_medical_risk_probability": null,
+        "real_health_or_treatment_outcome_predicted": false,
+        "users_81_weights_signed_off": false,
+        "old_v39_and_v40_outputs_unchanged": true,
+        "historical_book_feedback_seen_by_model": false
+      },
+      "original_post_event_result_used": false
+    },
+    {
+      "family_id": "shenqi.health.19961102.on_site_health",
+      "pillars": {
+        "year": "丙子",
+        "month": "戊戌",
+        "day": "癸卯",
+        "hour": "庚申"
+      },
+      "datetime": "1996-11-02T16:00:00+08:00",
+      "relationship": "self",
+      "score": {
+        "schema": "wengua_health_v41_original_81_book_constrained_scoring_prototype",
+        "version": "V4.1",
+        "status": "draft_awaiting_user_source_review",
+        "score_label": "古籍病势象意实验分，不是医学健康指数或概率",
+        "baseline": 100,
+        "previous_v40_raw": 124,
+        "previous_v40_visible": 100,
+        "revised_raw_score": 124,
+        "revised_display_score": 100,
+        "source_constrained_pair_increment": 0,
+        "removed_duplicate_interactions": [],
+        "evidence_ledger": [
+          {
+            "id": "patient_controls_illness",
+            "family": "main_patient_illness_relation",
+            "points": 20,
+            "why": "患者宫克病宫",
+            "evidence": {
+              "p": 6,
+              "i": 3
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "same_palace_event_or_illness_medicine_opportunity",
+            "family": "medical_access",
+            "points": 5,
+            "why": "时干/病宫与医药宫同宫，古籍的医治机会辅助象",
+            "evidence": {
+              "hour": 9,
+              "illness": 3,
+              "medicine": [
+                9,
+                8
+              ]
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_stem_month_weak",
+            "family": "season_patient_stem",
+            "points": -6,
+            "why": "患者主用干在月令死",
+            "evidence": {
+              "stem": "癸",
+              "state": "死",
+              "month": "戌"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_palace_month_vigorous",
+            "family": "season_patient_palace",
+            "points": 4,
+            "why": "患者宫五行在月令相",
+            "evidence": {
+              "palace": 6,
+              "state": "相"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "illness_tianrui_star_month_vigorous",
+            "family": "season_tianrui",
+            "points": -15,
+            "why": "天芮月令相",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "patient_good_deity",
+            "family": "deity_patient",
+            "points": 8,
+            "why": "患者宫乘值符",
+            "evidence": {},
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          },
+          {
+            "id": "double_suppression_distinct_chain_bonus",
+            "family": "interaction",
+            "points": 8,
+            "why": "患者制病并且病宫制天芮的独立两段关系，只加一次协同项",
+            "evidence": {
+              "patient_vs_illness": "克",
+              "illness_vs_tianrui": "克"
+            },
+            "calibration": "user_proposal_plus_explicit_draft_interactions",
+            "clinical_interpretation": null
+          }
+        ],
+        "book_pair_source_audit": {
+          "source_81_total": 81,
+          "supplement_42_total": 42,
+          "matched_real_star_pairs": [
+            {
+              "matched_actual_palace": 1,
+              "matched_actual_star": "天辅星",
+              "actual_role": null,
+              "ordered_pair": "壬/丙",
+              "source_book_name": "水蛇入火",
+              "user_proposed_alias": "水火相战",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 338,
+              "source_sha256_internal_only": "488ebf8842054dd58f9181cc3c6bef9137bbbc656ba97b11833c61bd3f67a6ef",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 2,
+              "matched_actual_star": "天蓬星",
+              "actual_role": null,
+              "ordered_pair": "丙/丁",
+              "source_book_name": "星奇朱雀",
+              "user_proposed_alias": "星月皎洁",
+              "user_proposed_numeric_weight": 10,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 320,
+              "source_sha256_internal_only": "ea64fbf2dcf1f9538bed6cae01816cc526ac15df07ee4491129e43f6e5f373d5",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 3,
+              "matched_actual_star": "天芮星",
+              "actual_role": "illness",
+              "ordered_pair": "丁/癸",
+              "source_book_name": "雀投江",
+              "user_proposed_alias": "朱雀投江",
+              "user_proposed_numeric_weight": -20,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_08",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 364,
+              "source_sha256_internal_only": "8d82538358f64c92dd98c5cda0d7a947423880a7238ef5e1710c010cf9e8c830",
+              "match_status": "no_specific_health_semantics_do_not_invert_or_medicalize",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 3,
+              "matched_actual_star": "天禽星",
+              "actual_role": "illness_companion_unscored",
+              "ordered_pair": "辛/癸",
+              "source_book_name": "天牢华盖",
+              "user_proposed_alias": "天网牢狱",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_30",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 412,
+              "source_sha256_internal_only": "b18315cc1a0a5e8aaf8689a6a87539f75544677d75b7580e43171a563e2d06e1",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 4,
+              "matched_actual_star": "天柱星",
+              "actual_role": null,
+              "ordered_pair": "己/壬",
+              "source_book_name": "地网高张",
+              "user_proposed_alias": "地网高张",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_28",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 380,
+              "source_sha256_internal_only": "602c4e43ae289839d13d3d1537fa400b2c7111438720f95dd8b11f8221d3c52a",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 6,
+              "matched_actual_star": "天冲星",
+              "actual_role": "patient",
+              "ordered_pair": "癸/庚",
+              "source_book_name": "太白入网",
+              "user_proposed_alias": "太白入网",
+              "user_proposed_numeric_weight": -15,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_33",
+              "supplement_mode": "ill_adverse",
+              "source_line_internal_only": 402,
+              "source_sha256_internal_only": "9c5bdd3976c01b55d39ef2c0fbbdb6d150e3040dbd0189ac4a2c3672b4e35e13",
+              "match_status": "no_specific_health_semantics_do_not_invert_or_medicalize",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 7,
+              "matched_actual_star": "天任星",
+              "actual_role": null,
+              "ordered_pair": "戊/己",
+              "source_book_name": "贵人入狱",
+              "user_proposed_alias": "贵人入狱",
+              "user_proposed_numeric_weight": -12,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 264,
+              "source_sha256_internal_only": "8c8ef2cb0c329eef6319de1a397dd762dd8c17a624a3cee65b96627ee76c9552",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 8,
+              "matched_actual_star": "天英星",
+              "actual_role": "medicine",
+              "ordered_pair": "乙/戊",
+              "source_book_name": "阴害阳门",
+              "user_proposed_alias": "阴害阳门",
+              "user_proposed_numeric_weight": -6,
+              "user_proposed_duration_weights": null,
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": null,
+              "supplement_mode": null,
+              "source_line_internal_only": 254,
+              "source_sha256_internal_only": "172acba01888e422392310ff128ede511274c2d2699b0eff719f47a72ada17d7",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            },
+            {
+              "matched_actual_palace": 9,
+              "matched_actual_star": "天心星",
+              "actual_role": "doctor",
+              "ordered_pair": "庚/乙",
+              "source_book_name": "太白逢星",
+              "user_proposed_alias": "太白逢星",
+              "user_proposed_numeric_weight": null,
+              "user_proposed_duration_weights": {
+                "chronic": 15
+              },
+              "original_book_health_semantics": "not_explicitly_health_qualified",
+              "supplement_source_id": "health_supplement_pair_21",
+              "supplement_mode": "ill_favorable",
+              "source_line_internal_only": 302,
+              "source_sha256_internal_only": "c00b916f892bc1176d146d97ec523019d21ac8de04aba2b1a02427ada31acb13",
+              "match_status": "no_author_health_rule_for_this_actual_role",
+              "applied_delta": 0,
+              "source_is_clinically_validated": false
+            }
+          ],
+          "eligible_book_explicit_ledger": [],
+          "applied_pair_total": 0,
+          "unscored_pair_count": 9,
+          "not_an_unconditional_81_pair_multiplier": true
+        },
+        "source_uncertainties": [
+          {
+            "id": "qian_kun_missing_patient_sex",
+            "reason": "未提供患者性别，不猜乾坤辅助宫"
+          },
+          {
+            "id": "illness_duration",
+            "reason": "未说明新病/久病，伏吟反吟/空亡条件评分不足"
+          },
+          {
+            "id": "natal_context",
+            "reason": "没有提供出生年命，年命只作为未取值辅助"
+          },
+          {
+            "id": "unverified_81_and_17_conditions",
+            "reason": "原书部分复合条件仍待逐条考证，未自动转成一票否决或加减分"
+          },
+          {
+            "id": "81_source_pair_role_conditions_pending",
+            "reason": "81天盘地盘原文是领域通用知识，并非全部具有明确测病分值"
+          }
+        ],
+        "actual_medical_risk_probability": null,
+        "real_health_or_treatment_outcome_predicted": false,
+        "users_81_weights_signed_off": false,
+        "old_v39_and_v40_outputs_unchanged": true,
+        "historical_book_feedback_seen_by_model": false
+      },
+      "original_post_event_result_used": false
+    }
+  ]
+}

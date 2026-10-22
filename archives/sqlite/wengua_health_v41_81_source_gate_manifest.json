@@ -1,0 +1,43 @@
+{
+  "schema": "wengua_v41_81_user_candidacy_and_author_illness_gating_appendonly",
+  "exact_v40_parent_sha256": "d16f31598433541e239285ba2af2e1085a6ccf9d11057d1b53c338d2f5122304",
+  "complete_v41_sqlite_sha256": "f90e9de80b24a852c26d4957e4e91234f86b76c9289cbc9f4738eb1b735bf01a",
+  "complete_v41_sqlite_bytes": 15122432,
+  "complete_v41_xz_sha256": "629ac1aaba471bc08dd5372edbb73157db64b7b9449ac0059f8a151ca7e41d83",
+  "three_case_sealed_sha256": "82ba2e6d864330de4e12295723ae3a9d2b8ad03ffeb7fb6466fac24d997a30e4",
+  "readable_report_sha256": "0d5133e080f74fd326a36d7953fc627334b0714c3e735be89ab0c2807dcb0b11",
+  "user_candidate_matrix_sha256": "455eb30c90500a139645e2fc18cdd5eec52877d42c17655452a0646417e50966",
+  "source_cases_unchanged": 194,
+  "original_source_sections_unchanged": 43,
+  "book_all_ordered_stem_combos": 81,
+  "user_disease_supplement_combos": 42,
+  "composite_condition_rows_retained": 17,
+  "prior_dev_fails_retained": 2,
+  "original_v39_and_v40_user_predictions_untouched": true,
+  "all81_user_weights_are_UNAPPROVED": true,
+  "no_clinical_risk_claim": true,
+  "book_outcome_not_used": true,
+  "scores": [
+    {
+      "id": "user_20261022_1200_EDT",
+      "previous_v40_raw": 46,
+      "new_v41_raw": 34,
+      "v41_display": 34,
+      "applied_pair_count": 1
+    },
+    {
+      "id": "kaiwu.health.19950219.brother_paralysis",
+      "previous_v40_raw": 90,
+      "new_v41_raw": 90,
+      "v41_display": 90,
+      "applied_pair_count": 0
+    },
+    {
+      "id": "shenqi.health.19961102.on_site_health",
+      "previous_v40_raw": 124,
+      "new_v41_raw": 124,
+      "v41_display": 100,
+      "applied_pair_count": 0
+    }
+  ]
+}
