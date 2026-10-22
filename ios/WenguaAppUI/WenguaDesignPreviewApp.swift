@@ -270,10 +270,11 @@ struct ProfessionalChartScreen: View {
     private func pillar(_ sky: String, _ branch: String, _ label: String, color: Color) -> some View {
         VStack(spacing: 1) {
             Text(sky).font(.system(size: 23, weight: .medium))
+                .foregroundStyle(QFive.shade("stem",sky))
             Text(label).font(.system(size: 9)).foregroundStyle(QStyle.secondary)
             Text(branch).font(.system(size: 22, weight: .medium))
+                .foregroundStyle(QFive.shade("branch",branch))
         }
-        .foregroundStyle(color)
         .frame(width: 35)
     }
 
@@ -328,13 +329,21 @@ struct ProfessionalPalaceTile: View {
 
                 Spacer(minLength: 3)
                 HStack(spacing: 2) {
-                    Text(palace.stars)
-                        .foregroundStyle(QFive.shade("star",palace.stars.components(separatedBy:"·").first ?? ""))
-                        .lineLimit(1).minimumScaleFactor(0.6)
+                    HStack(spacing: 1) {
+                        ForEach(Array(palace.stars.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
+                            if entry.offset > 0 { Text("·").foregroundStyle(QStyle.secondary) }
+                            Text(entry.element).foregroundStyle(QFive.shade("star",entry.element))
+                        }
+                    }
+                    .lineLimit(1).minimumScaleFactor(0.6)
                     Spacer(minLength: 1)
-                    Text(palace.sky)
-                        .foregroundStyle(QFive.shade("stem",palace.sky.components(separatedBy:"·").first ?? ""))
-                        .lineLimit(1).minimumScaleFactor(0.65)
+                    HStack(spacing: 1) {
+                        ForEach(Array(palace.sky.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
+                            if entry.offset > 0 { Text("·").foregroundStyle(QStyle.secondary) }
+                            Text(entry.element).foregroundStyle(QFive.shade("stem",entry.element))
+                        }
+                    }
+                    .lineLimit(1).minimumScaleFactor(0.65)
                 }
                 .font(.system(size: 15, weight: .medium))
 
@@ -352,11 +361,6 @@ struct ProfessionalPalaceTile: View {
                         Text(role)
                             .font(.system(size: 9))
                             .foregroundStyle(QStyle.blue)
-                    }
-                    if palace.id == 6 {
-                        Text("戌亥空")
-                            .font(.system(size: 9))
-                            .foregroundStyle(QStyle.red)
                     }
                 }
                 .frame(minHeight: 12, alignment: .leading)
@@ -419,7 +423,7 @@ struct ProfessionalPalaceDetail: View {
                         valueCard("八神", value: palace.deity, color: QFive.shade("deity",palace.deity))
                         valueCard("九星", value: palace.stars, color: QFive.shade("star",palace.stars.components(separatedBy:"·").first ?? ""))
                         valueCard("八门", value: palace.door, color: QFive.shade("door",palace.door))
-                        valueCard("天 / 地盘干", value: palace.sky + " / " + palace.ground, color: QFive.shade("stem",palace.sky.components(separatedBy:"·").first ?? ""))
+                        stemCard("天 / 地盘干", sky:palace.sky, ground:palace.ground)
                     }
                     factCard("十二长生", text: palace.stages)
                     factCard("空亡 · 驿马 · 入墓（实盘显示）",
@@ -457,6 +461,25 @@ struct ProfessionalPalaceDetail: View {
             Text(label).font(.caption).foregroundStyle(QStyle.secondary)
             Text(value).font(.system(size: 21, weight: .medium))
                 .foregroundStyle(color).minimumScaleFactor(0.7).lineLimit(1)
+        }
+        .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
+        .padding(13)
+        .background(.white, in: RoundedRectangle(cornerRadius: 15))
+    }
+
+    private func stemCard(_ label: String, sky: String, ground: String) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(label).font(.caption).foregroundStyle(QStyle.secondary)
+            HStack(spacing: 2) {
+                ForEach(Array(sky.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
+                    if entry.offset>0 { Text("·").foregroundStyle(QStyle.secondary) }
+                    Text(entry.element).foregroundStyle(QFive.shade("stem",entry.element))
+                }
+                Text(" / ").foregroundStyle(QStyle.secondary)
+                Text(ground).foregroundStyle(QFive.shade("stem",ground))
+            }
+            .font(.system(size: 20,weight: .medium))
+            .lineLimit(1).minimumScaleFactor(0.55)
         }
         .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
         .padding(13)
