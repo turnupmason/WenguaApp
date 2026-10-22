@@ -96,6 +96,12 @@ def audit_scoring_81(*,chart,inquiry,calendar):
         status="source_condition_unresolved"
         final_delta=0
         if same_palace_tag in used:status="duplicated_same_palace_source_pair"
+        elif priority_role not in ("patient","illness"):
+            # A general book '测病不利' is NOT a free global minus sign.
+            # 值符/值使、时干、天心乙奇 need an EXPLICIT author rule that
+            # specifically addresses their medical role, never inherit a
+            # patient's symptom meaning from a coincidental other palace.
+            status="no_author_health_rule_for_this_actual_role"
         elif priority_role=="illness_companion_unscored":
             status="illness_companion_only_no_double_vote"
         elif val is None:
