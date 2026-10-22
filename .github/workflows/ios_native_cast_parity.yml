@@ -1,0 +1,32 @@
+name: iOS Offline Native Casting Parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/WenguaAppUI/WenguaNativeCore.swift'
+      - 'ios/WenguaAppUI/NativeParityMain.swift'
+      - 'ios/WenguaAppUI/GoldenNativeCastCases.json'
+      - 'ios/WenguaAppUI/WenguaDesignPreviewApp.swift'
+      - 'ios/WenguaAppUI/project.yml'
+      - 'tests/test_ios_native_cast_against_python.py'
+      - '.github/workflows/ios_native_cast_parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native_core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile TRUE offline Swift executable (Foundation, no simulator)
+        run: |
+          which swiftc
+          swiftc --version
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/NativeParityMain.swift -o /tmp/wengua-native
+      - name: Compute four new astronomical boards in Swift and compare with original sealed Python fixtures
+        run: |
+          /tmp/wengua-native ios/WenguaAppUI/GoldenNativeCastCases.json > /tmp/wengua-native-results.json
+          python3 tests/test_ios_native_cast_against_python.py /tmp/wengua-native-results.json
+      - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
+        run: |
+          swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
