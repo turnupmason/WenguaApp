@@ -1,0 +1,120 @@
+name: Archive V2.1 Correct Directed Health Relations
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_dynamic_v21.py'
+      - 'tests/test_health_dynamic_v21.py'
+      - 'scripts/build_health_v21_archive.py'
+      - 'schema/migrations/049_health_v21_directed_palace_relations.sql'
+      - '.github/workflows/build_health_v21.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify five directed relations and health intent calendar guard
+        run: python -m unittest discover -s tests -p test_health_dynamic_v21.py -v
+  archive:
+    runs-on: ubuntu-latest
+    needs: regression
+    if: github.repository == 'turnupmason/WenguaApp'
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Refuse to rewrite an existing V2.1 full database
+        id: archive_guard
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          base=Path('archives/sqlite')
+          db=base/'WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3'
+          manifest=base/'shenqi21_kaiwu22_health_directed_v21_manifest.json'
+          if db.exists():
+           assert manifest.exists()
+           receipt=json.loads(manifest.read_text('utf-8'))
+           assert hashlib.sha256(db.read_bytes()).hexdigest()==receipt['sha256']
+           print('Immutable V2.1 verified; not creating or overwriting this version')
+          PY
+          if [ -f 'archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3' ]; then
+            echo 'exists=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'exists=false' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Append V2.1 to EXACT full 194-case V2.0 source
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python -m scripts.build_health_v21_archive \
+            --base 'archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3' \
+            --output 'archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3' \
+            --index-dir 'data/knowledge/phrase_library/health_v21/archive_index'
+      - name: Compress and verify entire source and corrected new SQLite
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          python - <<'PY'
+          import hashlib,json,lzma,sqlite3
+          from pathlib import Path
+          root=Path('archives/sqlite')
+          old=root/'WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3'
+          new=root/'WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3'
+          xz=Path(str(new)+'.xz')
+          xz.write_bytes(lzma.compress(new.read_bytes(),preset=6))
+          sh=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+          info=json.loads(Path('data/knowledge/phrase_library/health_v21/archive_index/manifest.json').read_text('utf-8'))
+          assert sh(old)==info['parent_full_sqlite_sha256']
+          assert sh(new)==info['new_full_sqlite_sha256']
+          with sqlite3.connect(new) as db:
+           assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+           assert db.execute('PRAGMA foreign_key_check').fetchall()==[]
+           assert db.execute('SELECT COUNT(*) FROM cases').fetchone()[0]==194
+           assert db.execute('SELECT COUNT(*) FROM health_v20_intent_steps').fetchone()[0]==66
+           assert db.execute('SELECT COUNT(*) FROM health_v21_directed_palace_relations').fetchone()[0]==5
+           assert db.execute('SELECT COUNT(*) FROM marriage_v16_post_inference_labels WHERE matches_initial_book_retrospective_result=0').fetchone()[0]==2
+          result={
+           'schema':'wengua_complete_health_v21_corrected_relations',
+           'parent_full_sqlite':str(old),'parent_sha256':sh(old),
+           'latest_full_sqlite':str(new),'sha256':sh(new),'size_bytes':new.stat().st_size,
+           'compressed_sqlite':str(xz),'compressed_sha256':sh(xz),
+           'compressed_size_bytes':xz.stat().st_size,
+           'five_directed_relations_verified':True,'calendar_consistency_guards':True,
+           'old_five_health_intents_and_66_sections_preserved':True,
+           '194_old_event_families_unchanged':True,'old_dev_wrong_answers':2,
+           'clinical_predictions_verified':0,
+           'integrity_check':'ok','foreign_key_errors':0,'counts':info['counts']}
+          (root/'shenqi21_kaiwu22_health_directed_v21_manifest.json').write_text(
+             json.dumps(result,ensure_ascii=False,indent=2)+'\n','utf-8')
+          print(json.dumps(result,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: steps.archive_guard.outputs.exists == 'false'
+        with:
+          name: wengua-health-v21-full-194-event-database
+          retention-days: 30
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3.xz
+            archives/sqlite/shenqi21_kaiwu22_health_directed_v21_manifest.json
+      - name: Push NEW versioned full SQLite and SHA receipt without changing V2.0
+        if: steps.archive_guard.outputs.exists == 'false'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- 'archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3'
+          git add -- 'archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3.xz' \
+            'archives/sqlite/shenqi21_kaiwu22_health_directed_v21_manifest.json' \
+            'data/knowledge/phrase_library/health_v21/archive_index/'
+          git diff --cached --check
+          git commit -m 'Archive full 194-case V2.1 with corrected five directed relations and calendar guards'
+          git push origin HEAD:main

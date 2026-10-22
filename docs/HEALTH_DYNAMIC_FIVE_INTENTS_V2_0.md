@@ -44,3 +44,10 @@
 **之后的唯一父库**：archives/sqlite/WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3，14,782,464 bytes，SHA256 **8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e**；同名 .sqlite3.xz 1,178,468 bytes，SHA256 **94d8be866314faebee1987ceb43394c3220e9f131c25c51af10a048b293f461d**。Manifest：archives/sqlite/shenqi21_kaiwu22_health_five_intents_v20_manifest.json。DB新增health_v20_actor_role_profiles=14、health_v20_intent_templates=5、health_v20_intent_steps=66、health_v20_archive_audit=1。医学真实预测验证数=0（此项目不能声称古籍预测医学准确）。
 
 **重要：该完整V2.0数据库不可覆盖**；此前Workflow会被后续测试代码push再次触发，现增设archive_guard验证已存在文件必须等于manifest SHA及正式sha，并在已归档时只运行回归、不重新build/push相同版本；以后每次新的知识规则或真正断词版本都从此最新V2.0 SHA派生新迁移049、新V2.1文件及新工作流，不可借旧V1.9重写V2.0。追加跨阴阳、同一盘自测/父母/朋友/孩子、五意图×多盘50组动态填空回归以及全部九星八门八神十干象意字典覆盖审计，必须保持通过。UI仍冻结。
+
+
+## 2026-10-21 V2.1 五行有向生克修正与历法信息自洽校验（专项修复）
+
+新测试复核V2.0在中间解释器的一个**真实方向性bug**：字符串endswith("克")也匹配"受克"，导致某些天心星、乙奇、患者宫「受病宫克」被误说成「克病宫」。不能因V2.0 CI通过就宣称全部语义正确。**V2.0完整数据库、原代码和失败发现均保留不覆盖**；V2.1在独立 src/wengua/health_dynamic_v21.py 正确分支区分克、受克、生、受生、比和，且不同关系映射明确传统五行有向含义。针对治疗象，优先根据医生天心与乙奇宫是否确实克病宫生成条件化医药象，不再直接复用病重模板的普通综合结论；开门手术象按开门宫对病宫具体有向克制判断，不能自动视为实际手术建议。
+
+新历法 guard 要求：用户提供的年/月/日/时各柱都符合六十甲子，month_ganzhi与month_branch必须同支，未给month_branch而month_ganzhi可验证则直接填实际月支，hour_ganzhi与真起局小时柱必须一致；不能将这个普通干支相容性检查冒充完整节气、时区或占验科学验证。患者出生年命仍完全可选。新运行脚本 scripts/run_health_dynamic_v21.py，tests/test_health_dynamic_v21.py（五个有向关系、实际月份/时柱冲突、阴遁五领域、多用户关系）；新迁移 schema/migrations/049_health_v21_directed_palace_relations.sql，append-only版本scripts/build_health_v21_archive.py，官方流程 .github/workflows/build_health_v21.yml。将从**最新完整V2.0库SHA 8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e** 全量备份并追加新五种关系规则和一条历法协议，不改194件案例、43原书节、两旧开发错判、V2.0的14人物和5问事66段；每次发布需独立SQLite+XZ+manifest，新V2.1工作流后续也必须检测已封存二进制不可重复写。此段仅为本轮执行交接，**CI尚未验收的版本不能写成完成**。全部五问事的用户文字仍只说“依据古籍”；不能给真实医学诊断或恢复日期。
