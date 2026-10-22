@@ -1,0 +1,30 @@
+name: iOS V1 Design Contract (UI Mock Only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/design-v1/**'
+      - 'ios/WenguaAppUI/**'
+      - 'tests/test_ios_design_v1_contract.py'
+      - '.github/workflows/ios_v1_ui_design_contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  design_contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify truthful preview, original nine-palace and text-only engine boundaries
+        run: |
+          python -m unittest discover -s tests -p test_ios_design_v1_contract.py -v
+      - name: Swift source syntax parse only (NOT Xcode/iOS compilation)
+        run: |
+          if command -v swiftc >/dev/null 2>&1; then
+            swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
+          else
+            echo 'Swift parser unavailable on runner; native Xcode build remains pending.'
+          fi
