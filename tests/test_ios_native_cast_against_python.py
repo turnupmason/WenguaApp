@@ -31,7 +31,7 @@ for i,(a,g) in enumerate(zip(actual,gold),1):
         n=p["id"];bs=palace_branches[n]
         assert p["branches"]==list(bs)
         if n==5:
-            assert p["door"] is None and p["deity"] is None and p["heavenStars"]==[]
+            assert p.get("door") is None and p.get("deity") is None and p["heavenStars"]==[]
             continue
         e=expected[n]
         for f in ("earthStem","door","deity","heavenStars"):
