@@ -54,8 +54,8 @@ def main():
     print(report["reading_text"])
     print("AUDIT="+json.dumps({
         "fuyin_fanyin":report["audit"]["fuyin_fanyin"],
-        "verdict":report["audit"]["binary_traditional_conclusion"]["verdict"],
-        "visible_sections":report["audit"]["visible_sections"],
+        "verdict":report["audit"]["tradition_binary_verdict"]["verdict"],
+        "visible_sections":report["audit"]["customer_sections"],
         "runtime_llm_calls":0,
     },ensure_ascii=False))
 

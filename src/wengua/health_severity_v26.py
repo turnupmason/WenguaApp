@@ -193,7 +193,7 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
         if p in {ill["palace"],person["palace"]}
     ]
     specific_press="；".join(_palace(c)+"的"+c["door"]+"构成门迫" for c in press_targets)
-    special="；".join(x for x in (specific_press,void_mean) if x)
+    special=specific_press
     if not special:special="病宫与患者宫均未见门迫或旬空"
     pace=_pace(fy,ill,person,chart["dun"])
     inner_ill=_inside(ill,chart["dun"])
@@ -232,7 +232,7 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
                  person_empty=person_void,month=calendar["month_branch"])
     body_image="、".join(x for x in (surface,internal) if x)
     fields={
-        "patient_label":user["label"],"patient_method":method,
+        "patient_label":user["label"],"patient_method":method+"，",
         "patient_palace":_palace(person),
         "value_star":chart["value_star"],"value_door":chart["value_door"],
         "value_palace_sentence":value_loc,
@@ -289,7 +289,8 @@ def analyze_health_severity_v26(*,chart,inquiry,calendar=None,db_path=None):
     audit={**source["audit"],
         "fuyin_fanyin":fy,
         "illness_inner_outer":inner_ill,"patient_inner_outer":inner_person,
-        "tradition_binary_verdict":verdict,
+        "tradition_binary_verdict":{**verdict,"rationale":reason},
+        "legacy_v25_traditional_evidence":verdict,
         "customer_sections":len(visible),
         "source_facts_retained":21,
         "pair_original_still_auditable":pair,

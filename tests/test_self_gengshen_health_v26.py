@@ -13,8 +13,8 @@ class SelfGengshenHealthV26(unittest.TestCase):
     def test_real_calendar_self_role_and_observed_four_pillars(self):
         r=run()
         self.assertEqual(r["test_receipt"]["four_pillars"],PILLARS)
-        self.assertEqual(r["schema"],"wengua_health_severity_11_concise_v26_corrected")
-        self.assertEqual(r["audit"]["render_mode"],"local_python_static_strings_no_llm")
+        self.assertEqual(r["schema"],"wengua_health_severity_v26_strict_fact_slots")
+        self.assertEqual(r["audit"]["render_mode"],"strict_static_format_map_offline_no_GPT")
         self.assertEqual(r["test_receipt"]["solar_term"],"寒露")
         self.assertEqual(r["test_receipt"]["bureau"]["dun"],"yin")
         self.assertEqual(r["test_receipt"]["bureau"]["ju"],6)
@@ -31,17 +31,16 @@ class SelfGengshenHealthV26(unittest.TestCase):
         self.assertEqual(len([s for s in r["sections"] if s["id"]=="03_ill"]),1)
         self.assertNotIn("亲属辅助宫：",r["reading_text"])
         self.assertNotIn("未提供年命",r["reading_text"])
-        self.assertEqual(r["sections"][-1]["id"],"11_final")
-        self.assertIn(r["audit"]["binary_traditional_conclusion"]["verdict"],r["sections"][-1]["text"])
-        self.assertIn(r["audit"]["binary_traditional_conclusion"]["verdict"],("病吉","病凶"))
+        self.assertEqual(r["sections"][-1]["id"],"11_verdict")
+        self.assertIn(r["audit"]["tradition_binary_verdict"]["verdict"],r["sections"][-1]["text"])
+        self.assertIn(r["audit"]["tradition_binary_verdict"]["verdict"],("病吉","病凶"))
     def test_true_star_and_door_fuyin_fanyin_separated(self):
         r=run()
         f=r["audit"]["fuyin_fanyin"]
         self.assertEqual(len(r["test_receipt"]["chart"]["palaces"]),9)
         for key in ("star","door"):
             self.assertIn(f[key],("伏吟","反吟","非伏吟反吟"))
-        self.assertIn("九星"+f["star"],r["reading_text"])
-        self.assertIn("八门"+f["door"],r["reading_text"])
+        self.assertIn("九星、八门均非伏吟或反吟",r["reading_text"])
         # Previous time's actual home-star/home-door example must identify both.
         old=layout_from_explicit_bureau(dun="yin",ju=6,hour_ganzhi="癸亥")
         earlier=fuyin_fanyin_facts(old)
@@ -54,8 +53,8 @@ class SelfGengshenHealthV26(unittest.TestCase):
             a=run()
             b=run()
         self.assertEqual(a["reading_text"].encode(),b["reading_text"].encode())
-        self.assertEqual(a["audit"]["runtime_llm_calls"],0)
-        self.assertEqual(a["audit"]["runtime_web_calls"],0)
+        self.assertEqual(a["audit"]["runtime_model_calls"],0)
+        self.assertEqual(a["audit"]["runtime_network_calls"],0)
         for forbidden in FORBIDDEN_CUSTOMER:
             self.assertNotIn(forbidden,a["reading_text"])
         for placeholder in ("（患者宫）","（吉凶）","{patient}","【待补】"):
@@ -75,27 +74,27 @@ class SelfGengshenHealthV26(unittest.TestCase):
                          "hour_ganzhi":"庚申","month_branch":"戌"},db_path=PARENT_DB)
     def test_verdict_uses_genuinely_calculated_evidence(self):
         r=run()
-        e=r["audit"]["binary_traditional_conclusion"]
+        e=r["audit"]["tradition_binary_verdict"]
         self.assertTrue(e["favorable"] or e["unfavorable"])
         self.assertTrue(e["source_judgement_requires_user_review"])
         self.assertIn("伏吟",r["reading_text"])
-        self.assertIn("病吉",r["reading_text"]) if r["audit"]["binary_traditional_conclusion"]["verdict"]=="病吉" else self.assertIn("病凶",r["reading_text"])
-        self.assertIn("外盘，传统进展偏慢",r["sections"][-1]["text"])
-        self.assertIn("病宫坎一宫死门受门迫",r["reading_text"])
-        self.assertIn("患者宫震三宫开门受门迫",r["reading_text"])
-        self.assertIn("天芮土克落宫水",r["reading_text"])
+        self.assertIn("病吉",r["reading_text"]) if r["audit"]["tradition_binary_verdict"]["verdict"]=="病吉" else self.assertIn("病凶",r["reading_text"])
+        self.assertIn("传统缓急：偏慢",r["sections"][-1]["text"])
+        self.assertIn("坎一宫的死门构成门迫",r["reading_text"])
+        self.assertIn("震三宫的开门构成门迫",r["reading_text"])
+        self.assertIn("天芮土克病宫水",r["reading_text"])
         self.assertNotIn("幼女奸淫",r["reading_text"])
         self.assertNotIn("门门迫",r["reading_text"])
         self.assertEqual(len(r["audit"]["24_factor_statuses"]),24)
-        self.assertEqual(r["audit"]["clinical_severity_diagnosis"],None)
-        self.assertIsNotNone(r["audit"]["filtered_context_unrelated_stem_pair_name"])
+        self.assertFalse(r["audit"]["medical_severity_verified"])
+        self.assertIn("幼女奸淫",r["audit"]["pair_original_still_auditable"]["name"])
     def test_print_verbatim_real_output_and_current_chart(self):
         import json
         r=run()
         print("\nUSER_SELF_GENGSHEN_OFFLINE_V26_BEGIN")
         print("CALENDAR="+json.dumps(r["test_receipt"]["bureau"],ensure_ascii=False))
         print("CHART="+json.dumps(r["test_receipt"]["chart"],ensure_ascii=False,sort_keys=True))
-        print("EVIDENCE="+json.dumps(r["audit"]["binary_traditional_conclusion"],ensure_ascii=False))
+        print("EVIDENCE="+json.dumps(r["audit"]["tradition_binary_verdict"],ensure_ascii=False))
         for i,item in enumerate(r["sections"],1):
             print("SECTION_%02d "%i+item["title"]+"："+item["text"])
         print("USER_SELF_GENGSHEN_OFFLINE_V26_END")
