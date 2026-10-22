@@ -485,7 +485,9 @@ struct ProfessionalPalaceDetail: View {
                     ForEach(palace.roles, id: \.self) { role in
                         detailTag(role)
                     }
-                    if palace.id == 6 { detailTag("戌亥旬空") }
+                    ForEach(QFive.void(palace),id: \.self) { branch in
+                        detailTag(branch+"空")
+                    }
                     detailTag("已校验样例")
                 }
 
@@ -501,7 +503,7 @@ struct ProfessionalPalaceDetail: View {
                     factCard("十二长生", text: palace.stages)
                     factCard("空亡 · 驿马 · 入墓（实盘显示）",
                         text: "旬空：" + (QFive.void(palace).isEmpty ? "本宫无" : QFive.void(palace).joined(separator:"、") + "空") +
-                            "；时支卯驿马巳：" + (QFive.horse(palace) == nil ? "不落本宫" : "落本宫") +
+                            "；时支驿马：" + (QFive.horse(palace) == nil ? "不落本宫" : "在本宫"+(QFive.horse(palace) ?? "")) +
                             "；天盘干入墓：" + (QFive.heavenTombs(palace).isEmpty ? "无" : QFive.heavenTombs(palace).joined(separator:"、")) +
                             "；地盘干入墓：" + (QFive.earthTombs(palace).isEmpty ? "无" : QFive.earthTombs(palace).joined(separator:"、")) +
                             "。本盘不因马与墓同现就自动视为墓已冲开。")
@@ -509,7 +511,7 @@ struct ProfessionalPalaceDetail: View {
                         text: "\(palace.name)为\(palace.element)行，辖\(palace.branches)支。" +
                          (palace.roles.isEmpty ? "此宫没有被选为本问患者、病宫、天心、乙奇或时干主角色。" :
                             "此宫承担：" + palace.roles.joined(separator: "、") + "。") +
-                         (palace.id == 6 ? " 本盘甲子旬，戌亥空。" : "") +
+                         (QFive.void(palace).isEmpty ? "" : " 本宫旬空："+QFive.void(palace).joined(separator:"、")+"。") +
                          " 同一事实不会因为两个身份共宫而重复计入论断。")
                 }
                 Text("传统文化与古籍象意展示。具体断词使用 V3.9.1 原文，不输出分数或临床结论。")
@@ -603,13 +605,25 @@ enum QIssuePolicy {
     }
 }
 
+private struct LocalNativeCase: Codable {
+    let issueFingerprint: String
+    let relation: String
+    let completedAt: Date
+    let chart: WenguaNativeChart
+}
+
 struct CastSetupScreen: View {
+    let onNativeCast: (WenguaNativeChart, String) -> Void
+    init(onNativeCast: @escaping (WenguaNativeChart,String)->Void) {
+        self.onNativeCast=onNativeCast
+    }
     @Environment(\.dismiss) private var dismiss
     @State private var subject = "本人"
     @State private var subjectName = ""
     @State private var question = ""
     @State private var duration = "未说明"
     @State private var chosenTime = Date()
+    @State private var useCurrentInstant = true
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
@@ -637,13 +651,19 @@ struct CastSetupScreen: View {
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
-                            DatePicker("选择起局时刻",
-                                selection: $chosenTime, displayedComponents: [.date, .hourAndMinute])
-                                .datePickerStyle(.wheel)
-                                .labelsHidden()
-                                .frame(maxWidth: .infinity)
-                            Button("使用现在时间") { chosenTime = .now }
-                                .foregroundStyle(QStyle.blue)
+                            Toggle("此刻起局（静心结束后锁定当时的实时时刻）",isOn:$useCurrentInstant)
+                                .tint(QStyle.blue)
+                            if !useCurrentInstant {
+                                DatePicker("指定复盘时间",selection:$chosenTime,
+                                           displayedComponents:[.date,.hourAndMinute])
+                                    .datePickerStyle(.wheel)
+                                    .labelsHidden()
+                                    .frame(maxWidth:.infinity)
+                            }
+                            Text(useCurrentInstant ?
+                                 "30秒结束后按确认起局时，采集本机真实时刻与 IANA 时区。" :
+                                 "当前选择指定时刻复盘，按你明确指定的时间起盘，仍须通过30秒静心。")
+                                .font(.caption).foregroundStyle(QStyle.secondary)
                         }
                         .padding(12)
                         .background(.white, in: RoundedRectangle(cornerRadius: 14))
@@ -683,7 +703,8 @@ struct CastSetupScreen: View {
                                     Button("开始静心30秒") { calmEnds = Date().addingTimeInterval(30) }
                                         .buttonStyle(.borderedProminent)
                                 } else if remaining == 0 {
-                                    Button("完成静心 · 返回固定九宫演示") { dismiss() }
+                                    Button("确认起局 · 离线实算九宫") { completeNativeCast() }
+                                        .disabled(!validationMessage.isEmpty)
                                         .buttonStyle(.borderedProminent)
                                 } else {
                                     Text("静心进行中 · 无跳过按钮")
@@ -693,7 +714,11 @@ struct CastSetupScreen: View {
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 30)
                         }
-                        Text("演示版不真正计算新盘，也不耗用15天正式起局记录。正式版在30秒结束后点击确认起局时锁定实际时间。")
+                        if !validationMessage.isEmpty {
+                            Text(validationMessage)
+                                .font(.footnote).foregroundStyle(QStyle.red)
+                        }
+                        Text("九宫将由本地 Swift 真实计算；V3.9.1 自然断词移植尚未完成，因此不会用固定案例断词冒充本次结果。")
                             .font(.footnote).foregroundStyle(QStyle.secondary)
                     }
                 }
@@ -707,6 +732,44 @@ struct CastSetupScreen: View {
                     Button("关闭") { dismiss() }
                 }
             }
+        }
+    }
+
+
+    // The only UI path that calls actual native astronomical chart creation.
+    // Past 'fixed demo' never comes here and cannot consume the 15day lock.
+    private func completeNativeCast() {
+        guard let calmEnds, Date() >= calmEnds else {
+            validationMessage="必须完成完整30秒静心后才能起局。"
+            return
+        }
+        let key=QIssuePolicy.signature(topic:"health.severity",relation:subject,
+                                       subject:subjectName,question:question)
+        if let next=QIssuePolicy.nextPermitted(key) {
+            validationMessage="同一件事未满15天；下次允许："+next.formatted()
+            return
+        }
+        do {
+            let finalInstant=useCurrentInstant ? Date() : chosenTime
+            guard let localZone=TimeZone.current.identifier as String? else {
+                validationMessage="设备时区不可用。";return
+            }
+            let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
+            // Persistent case receipt is ONLY original board/clock facts and
+            // hashed issue ID. User's raw private question is NOT stored here.
+            let record=LocalNativeCase(issueFingerprint:key,relation:subject,
+                                       completedAt:Date(),chart:result)
+            let encoded=try JSONEncoder().encode(record)
+            let recordId="wengua:nativecase:"+UUID().uuidString
+            UserDefaults.standard.set(encoded,forKey:recordId)
+            guard UserDefaults.standard.data(forKey:recordId)==encoded else {
+                throw WenguaCastError.invalidChart
+            }
+            QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)
+            onNativeCast(result,subject)
+            dismiss()
+        } catch {
+            validationMessage="本次未起局成功，也不会登记15天限制："+error.localizedDescription
         }
     }
 
@@ -730,6 +793,7 @@ struct CastSetupScreen: View {
 }
 
 struct TraditionalReadingPreview: View {
+    let nativeChart: WenguaNativeChart?
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -738,22 +802,31 @@ struct TraditionalReadingPreview: View {
                 VStack(alignment: .leading, spacing: 15) {
                     Text("古籍断词 · V3.9.1")
                         .font(.system(size: 28, weight: .medium))
-                    Text("固定已计算测试盘，不是刚输入的新问题。")
-                        .font(.caption).foregroundStyle(QStyle.secondary)
-                    Text("保留主证、反证、应期和完整十二长生，不显示任何分数。")
-                        .font(.subheadline)
-                    Divider()
-                    ForEach(TraditionalChapter.demo, id: \.0) { row in
-                        DisclosureGroup(row.0) {
-                            Text(row.1)
-                                .font(.subheadline)
-                                .foregroundStyle(QStyle.secondary)
-                                .padding(.top, 8)
+                    if let chart=nativeChart {
+                        Text("当前九宫已由 iPhone Swift 离线引擎真实起盘。")
+                            .font(.caption).foregroundStyle(QStyle.secondary)
+                        Text("本次："+chart.pillars.year+" "+chart.pillars.month+" "+
+                             chart.pillars.day+" "+chart.pillars.hour+
+                             " · "+chart.solarTerm)
+                            .font(.headline)
+                        Text("V3.9.1 古籍规则的完整取用、吉凶推理和断词尚未移植到 iOS。"+
+                             "这里不展示任何假断词，不输出分数。下一阶段严格移植81组原书有序天地干、"+
+                             "42组疾病补充、17复合条件及全部11栏文字。")
+                            .font(.subheadline).foregroundStyle(QStyle.secondary)
+                    } else {
+                        Text("固定已计算测试盘，不是刚输入的新问题。")
+                            .font(.caption).foregroundStyle(QStyle.secondary)
+                        ForEach(TraditionalChapter.demo, id: \.0) { row in
+                            DisclosureGroup(row.0) {
+                                Text(row.1).font(.subheadline)
+                                    .foregroundStyle(QStyle.secondary)
+                                    .padding(.top,8)
+                            }
+                            .padding(13)
+                            .background(.white,in:RoundedRectangle(cornerRadius:12))
                         }
-                        .padding(13)
-                        .background(.white, in: RoundedRectangle(cornerRadius: 12))
                     }
-                    Text("演示条目仅展示结构，不冒充与实时用户相关的古籍断案。完整生成的V3.9.1原文以研究库封存版本为准。")
+                    Text("此软件仅展示传统古籍象意。尚无 iOS 原生 V3.9.1 本次断词；医疗问题须咨询专业医护人员。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
                 .padding()
