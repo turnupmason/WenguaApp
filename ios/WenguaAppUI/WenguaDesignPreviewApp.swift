@@ -25,6 +25,66 @@ enum QStyle {
     static let line = Color(red: 0.86, green: 0.87, blue: 0.88)
 }
 
+// Consistent per-symbol five-element palette, never a per-layer color.
+enum QFive {
+    static let palette: [String: Color] = [
+        "金": Color(red: 0.83, green: 0.60, blue: 0.10),
+        "木": Color(red: 0.09, green: 0.65, blue: 0.34),
+        "水": Color(red: 0.15, green: 0.47, blue: 0.91),
+        "火": Color(red: 0.89, green: 0.29, blue: 0.25),
+        "土": Color(red: 0.61, green: 0.46, blue: 0.28)
+    ]
+    static let stems = ["甲":"木","乙":"木","丙":"火","丁":"火","戊":"土",
+                        "己":"土","庚":"金","辛":"金","壬":"水","癸":"水"]
+    static let stars = ["天蓬":"水","天任":"土","天冲":"木","天辅":"木",
+                        "天英":"火","天芮":"土","天柱":"金","天心":"金","天禽":"土"]
+    static let doors = ["休门":"水","生门":"土","伤门":"木","杜门":"木",
+                        "景门":"火","死门":"土","惊门":"金","开门":"金"]
+    static let deities = ["值符":"土","螣蛇":"火","太阴":"金","六合":"木",
+                          "白虎":"金","玄武":"水","九地":"土","九天":"金"]
+    static let branches = ["子":"水","亥":"水","寅":"木","卯":"木",
+                           "巳":"火","午":"火","申":"金","酉":"金",
+                           "丑":"土","辰":"土","未":"土","戌":"土"]
+    static func shade(_ kind: String, _ name: String) -> Color {
+        let t: [String:String]
+        switch kind {
+        case "stem": t=stems
+        case "star": t=stars
+        case "door": t=doors
+        case "deity": t=deities
+        case "branch": t=branches
+        default: return QStyle.secondary
+        }
+        guard let five=t[name],let col=palette[five] else {return QStyle.secondary}
+        return col
+    }
+    static let hourPillar="丁卯"
+    static let voidBranches=["戌","亥"]
+    static let tombBranches=["甲":"未","乙":"戌","丙":"戌","丁":"丑",
+                             "戊":"戌","己":"丑","庚":"丑","辛":"辰","壬":"辰","癸":"未"]
+    static let horseByHourBranch=["申":"寅","子":"寅","辰":"寅","寅":"申",
+                                  "午":"申","戌":"申","巳":"亥","酉":"亥",
+                                  "丑":"亥","亥":"巳","卯":"巳","未":"巳"]
+    static var horseBranch: String { horseByHourBranch["卯"] ?? "" }
+    static func localBranches(_ p: QPalace) -> [String] {p.branches.map {String($0)}}
+    static func void(_ p: QPalace) -> [String] {
+        localBranches(p).filter {voidBranches.contains($0)}
+    }
+    static func horse(_ p: QPalace) -> String? {
+        localBranches(p).contains(horseBranch) ? horseBranch : nil
+    }
+    static func heavenTombs(_ p: QPalace) -> [String] {
+        p.sky.components(separatedBy:"·").compactMap { stem in
+            guard let tomb=tombBranches[stem],localBranches(p).contains(tomb) else {return nil}
+            return "天\(stem)\(tomb)墓"
+        }
+    }
+    static func earthTombs(_ p: QPalace) -> [String] {
+        guard let tomb=tombBranches[p.ground],localBranches(p).contains(tomb) else {return []}
+        return ["地\(p.ground)\(tomb)墓"]
+    }
+}
+
 struct QPalace: Identifiable {
     let id: Int
     let name: String
@@ -257,10 +317,10 @@ struct ProfessionalPalaceTile: View {
 
                 HStack {
                     Text(palace.ground)
-                        .foregroundStyle(QStyle.secondary)
+                        .foregroundStyle(QFive.shade("stem", palace.ground))
                     Spacer()
                     Text(palace.deity)
-                        .foregroundStyle(palace.deity == "白虎" ? QStyle.red : QStyle.orange)
+                        .foregroundStyle(QFive.shade("deity", palace.deity))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                 }
@@ -269,21 +329,21 @@ struct ProfessionalPalaceTile: View {
                 Spacer(minLength: 3)
                 HStack(spacing: 2) {
                     Text(palace.stars)
-                        .foregroundStyle(QStyle.green)
+                        .foregroundStyle(QFive.shade("star",palace.stars.components(separatedBy:"·").first ?? ""))
                         .lineLimit(1).minimumScaleFactor(0.6)
                     Spacer(minLength: 1)
                     Text(palace.sky)
-                        .foregroundStyle(QStyle.red)
+                        .foregroundStyle(QFive.shade("stem",palace.sky.components(separatedBy:"·").first ?? ""))
                         .lineLimit(1).minimumScaleFactor(0.65)
                 }
                 .font(.system(size: 15, weight: .medium))
 
                 HStack(spacing: 2) {
                     Text(palace.door)
-                        .foregroundStyle(QStyle.blue)
+                        .foregroundStyle(QFive.shade("door",palace.door))
                     Spacer(minLength: 1)
                     Text(palace.ground)
-                        .foregroundStyle(QStyle.orange)
+                        .foregroundStyle(QFive.shade("stem",palace.ground))
                 }
                 .font(.system(size: 17, weight: .medium))
 
@@ -300,6 +360,22 @@ struct ProfessionalPalaceTile: View {
                     }
                 }
                 .frame(minHeight: 12, alignment: .leading)
+                HStack(spacing: 3) {
+                    ForEach(QFive.void(palace),id: \.self) { branch in
+                        Text(branch + "空")
+                            .foregroundStyle(QStyle.secondary)
+                    }
+                    if let horse=QFive.horse(palace) {
+                        Text("马" + horse)
+                            .foregroundStyle(QFive.shade("branch",horse))
+                    }
+                    ForEach(QFive.heavenTombs(palace) + QFive.earthTombs(palace),id: \.self) { label in
+                        Text(label)
+                            .foregroundStyle(QStyle.red)
+                    }
+                }
+                .font(.system(size: 9, weight: .semibold))
+                .lineLimit(1).minimumScaleFactor(0.65)
             }
         }
         .padding(.horizontal, 7)
@@ -340,12 +416,18 @@ struct ProfessionalPalaceDetail: View {
                     factCard("中五宫特殊规则", text: "中五不强行套用外围八门、九星与八神；研究库未提供的中宫事项不伪造。")
                 } else {
                     LazyVGrid(columns: columns, spacing: 10) {
-                        valueCard("八神", value: palace.deity, color: QStyle.orange)
-                        valueCard("九星", value: palace.stars, color: QStyle.green)
-                        valueCard("八门", value: palace.door, color: QStyle.blue)
-                        valueCard("天 / 地盘干", value: palace.sky + " / " + palace.ground, color: QStyle.red)
+                        valueCard("八神", value: palace.deity, color: QFive.shade("deity",palace.deity))
+                        valueCard("九星", value: palace.stars, color: QFive.shade("star",palace.stars.components(separatedBy:"·").first ?? ""))
+                        valueCard("八门", value: palace.door, color: QFive.shade("door",palace.door))
+                        valueCard("天 / 地盘干", value: palace.sky + " / " + palace.ground, color: QFive.shade("stem",palace.sky.components(separatedBy:"·").first ?? ""))
                     }
                     factCard("十二长生", text: palace.stages)
+                    factCard("空亡 · 驿马 · 入墓（实盘显示）",
+                        text: "旬空：" + (QFive.void(palace).isEmpty ? "本宫无" : QFive.void(palace).joined(separator:"、") + "空") +
+                            "；时支卯驿马巳：" + (QFive.horse(palace) == nil ? "不落本宫" : "落本宫") +
+                            "；天盘干入墓：" + (QFive.heavenTombs(palace).isEmpty ? "无" : QFive.heavenTombs(palace).joined(separator:"、")) +
+                            "；地盘干入墓：" + (QFive.earthTombs(palace).isEmpty ? "无" : QFive.earthTombs(palace).joined(separator:"、")) +
+                            "。本盘不因马与墓同现就自动视为墓已冲开。")
                     factCard("宫位角色及实盘信息",
                         text: "\(palace.name)为\(palace.element)行，辖\(palace.branches)支。" +
                          (palace.roles.isEmpty ? "此宫没有被选为本问患者、病宫、天心、乙奇或时干主角色。" :
