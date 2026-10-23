@@ -61,6 +61,66 @@ def effect_of_relation(relation,actor_stage,target_stage,*,blocked=False):
     return {"effect":"conditional","why":"月令不能单独证明最终作用，仍需核空墓刑迫与同宫格局"}
 
 
+def compare_vigor_before_control(relation,*,actor_symbol_month,
+                                 target_symbol_month,actor_palace_month,
+                                 target_palace_month,blocked=False):
+    """First test a named symbol's month THEN both actual landing palaces.
+
+    This is a conditional interpretation of the user's 旺者克衰、衰者难克
+    research rule, NOT a clinical or proven outcome. A star's strength cannot
+    silently be substituted with just its palace's element, or vice versa.
+    Distinct 'nominal' and 'effective' statuses are always retained.
+
+    Two high-contrast branches:
+      weak Tianxin -> nominal 克 -> strong Tianrui => 反侮候选 / no control
+      strong Tianxin -> nominal 受克 <- weak Tianrui => 反克候选 /
+      nominal attack by illness cannot suppress doctor; NOT automatic cure.
+    """
+    valid=(actor_symbol_month,target_symbol_month,
+           actor_palace_month,target_palace_month)
+    if relation not in ("克","生","受克","受生","比和"):
+        raise ValueError("Invalid directional relation")
+    if any(v not in VALID_STAGES for v in valid):
+        return {"nominal_relation":relation,"effect":"unknown",
+                "power_class":"unverified_month_and_palace",
+                "why":"星及落宫旺衰必须分别核实，不可凭五行方向单断"}
+    if blocked:
+        return {"nominal_relation":relation,"effect":"obstructed",
+                "power_class":"blocked_by_actual_palace_condition",
+                "why":"存在空墓刑迫候选，实际发挥仍须核条件"}
+    actor_both_weak=(actor_symbol_month in WEAK and actor_palace_month in WEAK)
+    target_both_strong=(target_symbol_month in STRONG and
+                        target_palace_month in STRONG)
+    actor_both_strong=(actor_symbol_month in STRONG and
+                       actor_palace_month in STRONG)
+    target_both_weak=(target_symbol_month in WEAK and
+                      target_palace_month in WEAK)
+    if relation=="克" and actor_both_weak and target_both_strong:
+        return {"nominal_relation":relation,"effect":"limited",
+                "power_class":"反侮候选",
+                "why":"虽名义克病，但施力星与落宫均弱、病星与落宫均旺；弱者难克旺者，不把克病记为成功"}
+    if relation=="受克" and actor_both_strong and target_both_weak:
+        return {"nominal_relation":relation,"effect":"resists_weak_attack",
+                "power_class":"反克候选",
+                "why":"虽名义受病宫克，施力的病星及其落宫均弱，医生星与其落宫均旺；弱克难奏效，不等于已经治愈"}
+    # For other nominal interactions, retain direction and vigor distinction.
+    src=effect_of_relation(relation,actor_symbol_month,target_symbol_month)
+    if actor_symbol_month in WEAK and target_symbol_month in STRONG:
+        src={**src,"effect":"limited",
+             "why":"符号月令弱而对方旺，即使落宫补助仍须另验；不能视为制病已成"}
+    if actor_symbol_month in STRONG and target_symbol_month in WEAK:
+        src={**src,"effect":"supported",
+             "why":"符号月令旺而对方弱，有发挥作用的条件，仍需看双方落宫和空墓刑迫"}
+    if actor_symbol_month in STRONG and actor_palace_month in WEAK:
+        src={**src,"effect":"conditional",
+             "why":"星旺但落宫弱，内外旺弱冲突，不能只用星旺直接推论"}
+    if actor_symbol_month in WEAK and actor_palace_month in STRONG:
+        src={**src,"effect":"conditional",
+             "why":"星弱但落宫旺，须区分星自身与落宫承载力，暂不反向定论"}
+    return {"nominal_relation":relation,"power_class":"ordinary_conditional",
+            **src}
+
+
 def _month_status_for_star(name,month_el):
     return nine_star_month_status(name,month_el)["value"]
 
@@ -117,13 +177,17 @@ def inspect_pair(actor,target,*,actor_stage=None,target_stage=None):
     rel=element_relation(actor["element"],target["element"])
     blocked=bool(actor["void_branches"] or actor["striking_stems"] or
                  actor["sky_tombs"] or actor["door_pressure"])
+    actor_month=actor_stage or actor["month_stage"] or actor["palace_month_stage"]
+    target_month=target_stage or target["month_stage"] or target["palace_month_stage"]
     return {
         "from":actor["role"],"to":target["role"],"relationship":rel,
-        "actor_month":actor_stage or actor["month_stage"] or actor["palace_month_stage"],
-        "target_month":target_stage or target["month_stage"] or target["palace_month_stage"],
-        **effect_of_relation(rel,actor_stage or actor["month_stage"] or actor["palace_month_stage"],
-                             target_stage or target["month_stage"] or target["palace_month_stage"],
-                             blocked=blocked)
+        "actor_month":actor_month,"target_month":target_month,
+        "actor_palace_month":actor["palace_month_stage"],
+        "target_palace_month":target["palace_month_stage"],
+        **compare_vigor_before_control(
+            rel,actor_symbol_month=actor_month,target_symbol_month=target_month,
+            actor_palace_month=actor["palace_month_stage"],
+            target_palace_month=target["palace_month_stage"],blocked=blocked),
     }
 
 
@@ -248,6 +312,19 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         add("illness_star:"+str(ill["palace"]),"pending",
             "病宫对天芮虽"+star["relationship"]+"，但"+star["why"],
             "directed five elements; ineffective source","天芮病宫")
+    # These are the only role relationships for which both month-of-star
+    # AND month-of-landing-palace must gate nominal doctor/medicine control.
+    # 反侮/反克 describe candidates, not guaranteed reverse attack or cure.
+    for marker,key in (("天心","天心宫对病宫"),("乙奇","乙奇宫对病宫")):
+        contrast=interactions[key]
+        if contrast["power_class"]=="反侮候选":
+            add("strength_contrast:"+key,"adverse",
+                marker+"名义克病宫，但星弱宫弱而病星旺宫旺，传统反侮候选；不能记作医药制病已成",
+                "star month + real palace month + directional five elements",marker)
+        elif contrast["power_class"]=="反克候选":
+            add("strength_contrast:"+key,"favorable",
+                marker+"名义受病宫克，但星旺宫旺而病星弱宫弱，传统反克候选；保留医药防御象，不等于痊愈",
+                "star month + real palace month + directional five elements",marker)
     # Co-location is an opportunity even when doctor/medicine are weak.
     if doc["palace"]==ill["palace"] or yi["palace"]==ill["palace"]:
         aid=sorted([z for z in (doc,yi) if z["palace"]==ill["palace"]],
@@ -269,7 +346,7 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         identity=("relation:%d:%d:%s"%(next(
             c["palace"] for c in (doc,yi,patient,hour,*([natal] if natal else []))
             if c["role"]==role),ill["palace"],rel["relationship"]))
-        if rel["effect"] in ("limited","obstructed","unknown"):
+        if rel["effect"] in ("limited","obstructed","unknown","resists_weak_attack"):
             add(identity,"pending",key+rel["relationship"]+"，但"+rel["why"],
                 "palace mutual relation with qualitative strength",role)
         else:
