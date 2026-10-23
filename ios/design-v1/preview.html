@@ -387,7 +387,8 @@ function color(type,symbol){return five.color(type,symbol);}
 function colored(type,value,cls=""){return '<span class="'+cls+'" style="color:'+color(type,value)+'">'+value+'</span>';}
 function statusBadges(p){
   const bits=[];
-  if(p.void.length)bits.push('<span class="status-marker is-void">空'+p.void.join("")+'</span>');
+  if(p.void.length)bits.push('<span class="status-marker is-void">空'+
+    p.void.map(b=>colored("branch",b)).join("、")+'</span>');
   if(p.horse)bits.push('<span class="status-marker" style="color:'+color("branch",p.horse)+'">马'+p.horse+'</span>');
   for(const t of p.tomb){
     bits.push('<span class="status-marker" style="color:'+color("stem",t.stem)+'">'+(t.plane==="天盘"?"天":"地")+t.stem+t.branch+"墓"+'</span>');
@@ -435,7 +436,7 @@ function renderBoard(){
      '，八神'+p.deity+'，九星'+p.heaven.map(z=>z.star).join("、")+
      '，八门'+p.door+'，天盘干'+p.heaven.map(z=>z.stem).join("、")+
      '，地盘干'+p.earth+'，'+p.void.join("")+'空，'+(p.horse?"马"+p.horse:"")+'">'+
-     '<div class="palace-head"><strong>'+p.name+'</strong><span class="palace-branch">'+
+     '<div class="palace-head"><strong style="color:'+five.ELEMENT_COLORS[p.element]+'">'+p.name+'</strong><span class="palace-branch">'+
      p.branches.map(b=>colored("branch",b)).join("、")+'</span></div>'+
      '<div class="palace-symbols">'+line("神",colored("deity",p.deity))+
        line("星",stars)+line("门",colored("door",p.door))+'</div>'+
@@ -462,8 +463,8 @@ function renderHeader(){
      '<span class="bureau-dun">'+(demo.bureau.dun==="yang"?"阳遁":"阴遁")+'　<strong>'+demo.bureau.ju+'局</strong></span>'+
      '<span class="bureau-xun">'+demo.xunHead+'旬</span></div>'+
      '<div class="bureau-details"><div><small>节气</small><strong>'+demo.solarTerm+
-     '</strong></div><div><small>值符</small><strong>'+demo.valueStar+
-     '</strong></div><div><small>值使</small><strong>'+demo.valueDoor+
+     '</strong></div><div><small>值符</small><strong>'+colored("star",demo.valueStar.replace(/星$/,""))+'星'+
+     '</strong></div><div><small>值使</small><strong>'+colored("door",demo.valueDoor)+
      '</strong></div></div></div>';
  document.querySelector(".method-label").textContent="时家转盘 · "+demo.solarTerm;
  document.querySelector("#runtime-status").textContent=demo.xunHead+"旬 · "+
