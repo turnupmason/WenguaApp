@@ -9,6 +9,7 @@ on:
       - 'ios/WenguaAppUI/WenguaDesignPreviewApp.swift'
       - 'ios/WenguaAppUI/project.yml'
       - 'tests/test_ios_native_cast_against_python.py'
+      - 'tests/test_ios_five_random_live_casts.py'
       - '.github/workflows/ios_native_cast_parity.yml'
   workflow_dispatch:
 permissions:
@@ -27,6 +28,18 @@ jobs:
         run: |
           /tmp/wengua-native ios/WenguaAppUI/GoldenNativeCastCases.json > /tmp/wengua-native-results.json
           python3 tests/test_ios_native_cast_against_python.py /tmp/wengua-native-results.json
+      - name: Five fresh reproducible random hours - independent source-Python versus offline-Swift complete plate
+        run: |
+          mkdir -p /tmp/wengua-five
+          python3 tests/test_ios_five_random_live_casts.py /tmp/wengua-native /tmp/wengua-five
+      - name: Preserve five-hour evidence, accepted and rejected candidates (also on failure)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: five-new-true-charts-and-pillar-template-audit
+          path: /tmp/wengua-five/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
         run: |
           swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
