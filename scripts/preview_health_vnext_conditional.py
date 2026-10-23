@@ -54,7 +54,7 @@ def main():
         print("旧版古籍主判:",x["old_v39_verdict_internal_only"])
         print("新版判断:",x["new_review_conclusion"])
         print("原书仍待完整条件核定的天地干:",x["source_pairs_require_full_predicate"])
-        print("去重后的重点人物十二长生事实:",x["deduplicated_life_facts"])
+        print("去重后的天盘角色及八宫地盘十二长生事实:",x["deduplicated_life_facts"])
         print("---")
     first=report["cases"][0]
     print("=== REAL SIX-SECTION REVIEW EXAMPLE / case #1; all source-calculated ===")
