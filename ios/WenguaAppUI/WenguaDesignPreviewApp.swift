@@ -214,15 +214,59 @@ struct WenguaRootView: View {
     }
 }
 
+// Read-only V3.9.1 sample readings: NOT used to predict or read a newly cast chart.
+struct FrozenReadingSection: Decodable, Identifiable {
+    let id: String
+    let title: String
+    let text: String
+}
+struct FrozenReadingSample: Decodable {
+    let id: String
+    let iso: String
+    let originalReading: String
+    let readingSections: [FrozenReadingSection]
+}
+private struct FrozenReadingEnvelope: Decodable {
+    let samples: [FrozenReadingSample]
+}
+enum FrozenPreview {
+    static let isos = [
+        "2026-11-01T05:00:00-05:00","2026-11-04T05:00:00-05:00",
+        "2026-11-10T21:00:00-05:00","2026-11-21T17:00:00-05:00"
+    ]
+    static let labels = ["11/01 卯时","11/04 卯时","11/10 亥时","11/21 酉时"]
+    static let readings: [FrozenReadingSample] = {
+        guard let url=Bundle.main.url(forResource:"FrozenReadingV391",withExtension:"json"),
+              let data=try? Data(contentsOf:url),
+              let records=try? JSONDecoder().decode(FrozenReadingEnvelope.self,from:data),
+              records.samples.map(\.iso)==isos else {return []}
+        return records.samples
+    }()
+    static func cast(_ index: Int) -> WenguaNativeChart? {
+        guard isos.indices.contains(index) else {return nil}
+        let formatter=ISO8601DateFormatter()
+        formatter.formatOptions=[.withInternetDateTime]
+        guard let date=formatter.date(from:isos[index]) else {return nil}
+        // This is an actual deterministic offline calculation from each FIXED
+        // input instant, not a user query and never a persisted issue receipt.
+        return try? WenguaNativeCore.compute(at:date,timezone:"America/New_York")
+    }
+}
+
 struct ProfessionalChartScreen: View {
     @State private var chosenPalace: QPalace?
     @State private var showAsk = false
     @State private var showReading = false
     @State private var nativeChart: WenguaNativeChart? = nil
     @State private var castRelation = "本人"
+    @State private var selectedSampleIndex = 0
+
+    private var displayChart: WenguaNativeChart? {
+        nativeChart ?? FrozenPreview.cast(selectedSampleIndex)
+    }
 
     private var shownPalaces: [QPalace] {
-        guard let chart=nativeChart else {return QPalace.actualSourceFixture}
+        guard let chart=displayChart else {return QPalace.actualSourceFixture}
         let byId=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
         return WenguaNativeCore.branchOrderPalaces.compactMap {
             guard let cell=byId[$0] else {return nil}
@@ -230,28 +274,28 @@ struct ProfessionalChartScreen: View {
         }
     }
     private var shownPillars: WenguaNativePillars {
-        nativeChart?.pillars ?? WenguaNativePillars(year:"丙午",month:"戊戌",
+        displayChart?.pillars ?? WenguaNativePillars(year:"丙午",month:"戊戌",
                                                       day:"己卯",hour:"丁卯")
     }
     private var bureauInfo: String {
-        let kind = nativeChart?.bureau.dun == "yang" ? "阳遁" : "阴遁"
-        let number = String(nativeChart?.bureau.ju ?? 5)
-        let head = nativeChart?.xunShou ?? "甲子"
+        let kind = displayChart?.bureau.dun == "yang" ? "阳遁" : "阴遁"
+        let number = String(displayChart?.bureau.ju ?? 5)
+        let head = displayChart?.xunShou ?? "甲子"
         return kind + " · " + number + "局 › " + head + "旬"
     }
     private var starDoorInfo: String {
-        let star = (nativeChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")
-        let door = nativeChart?.valueDoor ?? "死门"
+        let star = (displayChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")
+        let door = displayChart?.valueDoor ?? "死门"
         return "值符：" + star + "  值使：" + door
     }
     private var solarInfo: String {
-        let term = nativeChart?.solarTerm ?? "霜降"
-        let yuan = nativeChart?.bureau.yuan ?? "upper"
+        let term = displayChart?.solarTerm ?? "霜降"
+        let yuan = displayChart?.bureau.yuan ?? "upper"
         return "时家转盘 · " + term + " · " + yuan
     }
     private var voidInfo: String {
-        let head = nativeChart?.xunShou ?? "甲子"
-        let empties = nativeChart?.voidBranches.joined(separator:"、") ?? "戌亥"
+        let head = displayChart?.xunShou ?? "甲子"
+        let empties = displayChart?.voidBranches.joined(separator:"、") ?? "戌亥"
         return "时空：" + head + "旬，" + empties + "空"
     }
 
@@ -262,7 +306,9 @@ struct ProfessionalChartScreen: View {
                     Button {
                         showAsk = true
                     } label: {
-                        Text(nativeChart.map { String($0.iso.prefix(16)).replacingOccurrences(of:"T",with:" ") + "  ⌄" } ?? "2026年11月1日 05:00 · 测试盘  ⌄")
+                        Text(displayChart.map { String($0.iso.prefix(16)).replacingOccurrences(of:"T",with:" ") +
+                              (nativeChart == nil ? " · 固定测试  ⌄" : " · 本机实算  ⌄") }
+                             ?? "测试盘未能计算 · 请查看构建日志")
                             .font(.system(size: 16))
                             .foregroundStyle(QStyle.text)
                     }
@@ -311,6 +357,29 @@ struct ProfessionalChartScreen: View {
                 .padding(.horizontal, 12)
                 .padding(.vertical, 9)
                 .background(QStyle.backing)
+
+                if nativeChart == nil {
+                    ScrollView(.horizontal, showsIndicators:false) {
+                        HStack(spacing:7) {
+                            ForEach(FrozenPreview.isos.indices,id: \.self) { index in
+                                Button(FrozenPreview.labels[index]) {
+                                    selectedSampleIndex=index
+                                }
+                                .font(.system(size: 11,weight: selectedSampleIndex==index ? .semibold : .regular))
+                                .padding(.vertical,8)
+                                .padding(.horizontal,9)
+                                .background(selectedSampleIndex==index
+                                    ? Color(red:0.88,green:0.94,blue:1) : .white,
+                                    in:RoundedRectangle(cornerRadius:7))
+                                .overlay(RoundedRectangle(cornerRadius:7)
+                                    .stroke(QStyle.line))
+                            }
+                        }
+                        .padding(.horizontal,10)
+                        .padding(.vertical,7)
+                    }
+                    .background(QStyle.backing)
+                }
 
                 LazyVGrid(
                     columns: Array(repeating: GridItem(.flexible(), spacing: 1), count: 3),
@@ -363,8 +432,8 @@ struct ProfessionalChartScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $chosenPalace) { palace in
             ProfessionalPalaceDetail(palace: palace,
-                hourHorse:nativeChart?.hourHorse ?? "巳",
-                hourHorsePalace:nativeChart?.hourHorsePalace ?? 4)
+                hourHorse:displayChart?.hourHorse ?? "巳",
+                hourHorsePalace:displayChart?.hourHorsePalace ?? 4)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
@@ -375,7 +444,7 @@ struct ProfessionalChartScreen: View {
                 showAsk=false
             }
         }
-        .sheet(isPresented: $showReading) { TraditionalReadingPreview(nativeChart:nativeChart) }
+        .sheet(isPresented: $showReading) { TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:selectedSampleIndex) }
     }
 
     private func pillar(_ sky: String, _ branch: String, _ label: String, color: Color) -> some View {
@@ -967,6 +1036,7 @@ struct CastSetupScreen: View {
 
 struct TraditionalReadingPreview: View {
     let nativeChart: WenguaNativeChart?
+    let sampleIndex: Int
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -984,18 +1054,29 @@ struct TraditionalReadingPreview: View {
                             .font(.headline)
                         Text("V3.9.1 完整古籍推理和断词尚未移植到 iOS。本次只展示真实计算九宫，不输出假断词或分数。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                    } else {
-                        Text("固定已计算测试盘，不是刚输入的新问题。")
+                    } else if FrozenPreview.readings.indices.contains(sampleIndex) {
+                        let sample=FrozenPreview.readings[sampleIndex]
+                        Text("封存的 V3.9.1 固定计算测试盘：" + sample.iso)
                             .font(.caption).foregroundStyle(QStyle.secondary)
-                        ForEach(TraditionalChapter.demo, id: \.0) { row in
-                            DisclosureGroup(row.0) {
-                                Text(row.1).font(.subheadline)
+                        Text(sample.originalReading)
+                            .font(.subheadline)
+                            .textSelection(.enabled)
+                            .fixedSize(horizontal:false,vertical:true)
+                            .padding(14)
+                            .background(.white,in:RoundedRectangle(cornerRadius:12))
+                        ForEach(sample.readingSections) { section in
+                            DisclosureGroup(section.title) {
+                                Text(section.text).font(.subheadline)
                                     .foregroundStyle(QStyle.secondary)
                                     .padding(.top,8)
+                                    .textSelection(.enabled)
                             }
                             .padding(13)
                             .background(.white,in:RoundedRectangle(cornerRadius:12))
                         }
+                    } else {
+                        Text("封存原始断词资源未加载；拒绝以其它测试盘文本替代。")
+                            .foregroundStyle(QStyle.red)
                     }
                     Text("此软件仅展示传统古籍象意。尚无 iOS 原生 V3.9.1 本次断词；医疗问题须咨询专业医护人员。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
