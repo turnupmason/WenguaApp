@@ -833,3 +833,6 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 ### 2026-10-22 品牌资源补充
 新增 `ios/WenguaAppUI/Brand/WenguaMark.svg` 原创可编辑矢量“问卦”深蓝金字印章源图，并在 SwiftUI `WenguaMark` 中以程序化标志显示。**SVG不是已经打包为 App Store 所需的 1024×1024 PNG AppIcon**，提交前仍须按 Apple 当前图标规格生成资源、在 Xcode 资产目录配置并用真机验证字形和可读性。不可宣称商店图标已经完成。
+
+### 2026-10-22 补充｜实时盘完整九宫事实阅读页
+在 `ios/WenguaAppUI/WenguaDesignPreviewApp.swift` 新增 `NativePalaceEvidenceCard`：真正按用户选择的时间离线起盘后，“完整解读”页连续展示九宫所有已核定的事实（原书中五宫特殊、神门、天地盘长生、逐支空亡/时马/分别天地入墓），**无需逐段点击 DisclosureGroup**。它是可溯源盘面事实汇编，不等于尚未移植的 V3.9.1 专业用神/证据优先级/应期预测；正式主判断必须等规则审计完成，不可伪造。此前4个封存测试盘仍保存作对照，用户打开不会以测试盘为新问事。此次仅更新 UI 源码，不触及核心起盘/书库，继续以最新 CI Xcode 真构建为准。
