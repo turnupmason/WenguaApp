@@ -74,9 +74,13 @@ def generated_case(iso:str,lookup:dict):
         tombs.extend({"plane":"地盘","stem":source["earth_stem"],
                       "branch":v["branch"],"star":None}
                      for v in earth_life if v["stage"]=="墓")
-        golden_palaces.append({"id":idx,"earthStem":source["earth_stem"],
-                        "door":source["door"],"deity":source["deity"],
-                        "heavenStars":heavens})
+        # NativeParityMain intentionally expects only the eight OUTER
+        # ordinary door/deity cells in GoldenPalace. Mid-five is checked
+        # separately by the full output equality checks below.
+        if idx != 5:
+            golden_palaces.append({"id":idx,"earthStem":source["earth_stem"],
+                            "door":source["door"],"deity":source["deity"],
+                            "heavenStars":heavens})
         expected[idx]={"id":idx,"gua":source["gua"],
              "earthStem":source["earth_stem"],"door":source["door"],
              "deity":source["deity"],"heavenStars":heavens,
