@@ -258,6 +258,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     network={
         "schema":"selected_domain_signifier_network_vnext_1",
         "mode":"selective","domain":"health","subtopic":"severity",
+        "factor_one_nine_star_table":"user_exact_nine_star_5x5_20261023",
+        "factor_two_duel_table":"user_exact_duel_5x5_20261023",
         "nodes":nodes,"directed_edges":edges,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
@@ -333,7 +335,11 @@ def selected_health_sections(result,*,actor,chart):
             x=edges.get(a+"->"+b)
             if not x:continue
             goal="病宫" if b=="illness" else "患者宫"
-            details.append("对"+goal+x["relation"]+"，作用"+x["ability"])
+            details.append(
+                "对"+goal+x["relation"]+
+                "；符号对抗「"+x["symbol_duel_result"]+"」"+
+                "，宫位对抗「"+x["palace_duel_result"]+"」"+
+                "，综合作用候选"+x["ability"])
         if details:text+="；"+"；".join(details)+"。"
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
