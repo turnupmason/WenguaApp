@@ -176,9 +176,16 @@ def _section(title,content,key):
 
 
 def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
-    """Standalone review API; V3.9.1 remains byte-for-byte and callable."""
+    """Review-only real chart route, now in strict macro→individual-palace order.
+
+    The public V3.9.1 SHA/readings stay unchanged. All negative/positive votes
+    are distinct, source-qualified traditional symbolic facts, never numeric
+    healthcare severity scores.
+    """
     if inquiry.get("intent")!="severity":
-        raise ValueError("Only disease-severity domain-specific review is implemented")
+        raise ValueError("Only illness-severity subtopic review is implemented")
+    from .health_palace_sequence_vnext import (
+        collect_sequence,format_sequence_sections)
     v391=analyze_health_severity_v391(
         chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)
     legacy=analyze_health_severity_v39(
@@ -190,118 +197,67 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
     ill,_=_find_star(chart,"天芮星")
     doctor,_=_find_star(chart,"天心星")
     yi=_find_heaven_stem(chart,"乙")
-    hour=_find_heaven_stem(chart,chart["hour_ganzhi"][0])
-    pairs=review_ordered_pairs(legacy["audit"]["v37_81_ordered_full_book_pairs"],inquiry)
-    source_patient=[x for x in pairs if "患者宫" in x["roles"]]
-    confirmed_bad=any(x["applicability"] in BOOK_BAD_PATIENT
-                      and x["source_state"]=="fully_verified_original_predicate"
-                      for x in source_patient)
-    uncertain_bad=any(x["applicability"] in BOOK_BAD_PATIENT
-                      and x["source_state"]!="fully_verified_original_predicate"
-                      for x in source_patient)
-    relation=element_relation(ELEMENTS[person["palace"]],ELEMENTS[ill["palace"]])
-    star_relation=element_relation(ELEMENTS[ill["palace"]],"土")
-    medicine_controlled=any(
-        element_relation(ELEMENTS[c["palace"]],ELEMENTS[ill["palace"]])=="克"
-        for c in (doctor,yi))
-    original_hazards=legacy["audit"]["actual_tomb_punishment_v28"]
-    patient_hazards=[x["kind"] for x in original_hazards if x["role"]=="patient"]
-    void=legacy["audit"]["v37_2_sided_double_evidence"]["patient_void"]
-    result=decide_review(
-        role_confidence=actor["confidence"],patient_void=void,
-        patient_hazards=patient_hazards,patient_to_illness=relation,
-        illness_to_star=star_relation,medicine_controls=medicine_controlled,
-        eligible_bad_patient_pair=confirmed_bad,
-        unverified_bad_patient_pair=uncertain_bad)
-    legacy_sections={x["id"]:x["text"] for x in v391["sections"]}
+    pairs=review_ordered_pairs(
+        legacy["audit"]["v37_81_ordered_full_book_pairs"],inquiry)
+    sequence=collect_sequence(
+        chart=chart,calendar=calendar,actor=actor,
+        inquiry=inquiry,matched_pairs=pairs)
+    verdict=sequence["verdict"]
+    sections=format_sequence_sections(sequence,actor=actor,chart=chart)
+    # Preserve internal original source provenance; no source hash in user prose.
+    text="\n\n".join(s["title"]+"：\n"+s["text"] for s in sections)
+    if any(x in text for x in (
+        "健康指数","吉凶概率","100分","SHA256","数据库","原书第")):
+        raise ValueError("Review prose leaked prohibited internal/scored terms")
     pending=[p for p in pairs if p["source_state"] in (
         "needs_complete_source_predicate","health_phrase_needs_full_gate",
         "source_disagreement","missing_duration")]
-    stages=dedup_lifecycle_facts(v391["source_chart_evidence"],chart=chart)
-    roles=v391["source_chart_evidence"]
-    def life(role):
-        z=roles[role]
-        return z["stem"]+"在"+_palace({"palace":z["palace"]})+"临"+"、".join(
-            r["branch"]+r["stage"] for r in z["actual_stage_facts"])
-    def pair_note(p):
-        return ("天"+p["heaven"]+"加地"+p["earth"]+"「"+p["book_title"]+"」"+
-                "（只核定干组合，完整原书吉凶条件尚待核实）")
-    lead=(result["label"]+"。"+result["reason"]+"。"+
-          "这是传统古籍的象意分析，不是医学诊断、治疗建议或预后。")
-    main=(actor["label"]+"以"+actor["role_name"]+"落"+_palace(person)+"为患者主要参考；"+
-          "天芮落"+_palace(ill)+"。患者宫对病宫："+relation+
-          "；病宫对天芮土："+star_relation+"。"+
-          "患者用干十二长生："+life("patient")+"；病星携干十二长生："+life("illness_tianrui_heaven")+"。"+
-          ("患者宫旬空，相关作用受限制。" if void else "患者宫未逢旬空。"))
-    medicine=("天心星落"+_palace(doctor)+"，乙奇落"+_palace(yi)+"。"+
-              "天心携干："+life("doctor_tianxin_heaven")+"；乙奇："+life("medicine_yi")+"。"+
-              ("医药宫有直接克病宫的传统有利反证；仍需看空迫旺衰。"
-               if medicine_controlled else
-               "医药宫未直接克病宫，并不等于现实不存在有效治疗。")+
-              "月令原始核验："+legacy_sections.get("04_season","尚待核实"))
-    matched=[p for p in pairs if "病宫" in p["roles"] or "患者宫" in p["roles"]]
-    conditions="、".join(dict.fromkeys(
-        x["stem"]+x["kind"]+"落"+str(x["palace"])+"宫"
-        for x in original_hazards if x["role"] in ("patient","illness")))
-    hazards=("已核的患者/病宫刑墓："+(conditions or "无命中")+"。"+
-             "同一盘层、同一干支的临墓与入墓属同一事实；天盘和地盘不能合并。"+
-             "全盘匹配"+str(len(pairs))+"条有序天地干，其中"+str(len(pending))+
-             "条缺完整原书适用条件；目前不能依据格局名称擅自推翻主证。"+
-             ("与主要用神有关的格局："+ "；".join(pair_note(p) for p in matched)+"。" if matched else ""))
-    xun=hourly_void_branches(chart["hour_ganzhi"])
-    fy=fuyin_fanyin_facts(chart)
-    horse=HORSE[chart["hour_ganzhi"][1]]
-    time_rel=element_relation(ELEMENTS[hour["palace"]],ELEMENTS[person["palace"]])
-    time=("时干"+chart["hour_ganzhi"][0]+"落"+_palace(hour)+"，对患者宫："+time_rel+
-          "；十二长生："+life("hour_event")+"。"+
-          "星"+fy["star"]+"、门"+fy["door"]+"；"+
-          xun["xun_head"]+"旬，空"+"/".join(xun["xun_kong_branches"])+
-          "，时支驿马"+horse+"。仅有驿马、伏反吟或入墓不等于已发生冲墓；"+
-          "须核实际地支六冲与填实等触发，条件未全不指定日期。")
-    vstar=chart["palaces"][str(chart["value_star_palace"])]
-    vdoor=chart["palaces"][str(chart["value_door_palace"])]
-    value=("值符"+chart["value_star"]+"落"+_palace(vstar)+
-           "，值使"+chart["value_door"]+"落"+_palace(vdoor)+"。"+
-           "这两宫仅作辅助，不取代患者和病宫。"+
-           legacy_sections.get("06_gender",""))
-    result_sections=[
-        _section("主判断",lead,"01_conclusion"),
-        _section("患者与疾病主证",main,"02_main"),
-        _section("医药及相反证据",medicine,"03_counter"),
-        _section("格局限制与冲突",hazards,"04_limits"),
-        _section("病势与应期条件",time,"05_time"),
-        _section("值符值使与辅助参考",value,"06_extra"),
-    ]
-    life=stages
-    public="\n\n".join(x["title"]+"：\n"+x["text"] for x in result_sections)
-    if any(x in public for x in ("健康指数","吉凶概率","100分","原书第","SHA256","数据库")):
-        raise ValueError("Review prose leaked an internal marker, score or source line")
+    lifecycle=dedup_lifecycle_facts(
+        v391["source_chart_evidence"],chart=chart)
+    original_hazards=legacy["audit"]["actual_tomb_punishment_v28"]
+    doctor_ill=element_relation(
+        ELEMENTS[doctor["palace"]],ELEMENTS[ill["palace"]])
+    yi_ill=element_relation(
+        ELEMENTS[yi["palace"]],ELEMENTS[ill["palace"]])
     return {
-        "schema":"wengua_health_severity_vnext_conditional_preview_v1",
+        "schema":"wengua_health_severity_vnext_macro_palaces_v2",
         "status":"independent_review_not_public_release",
         "domain":"health","intent":"severity",
-        "verdict":result,
-        "sections":result_sections,"reading_text":public,
+        "verdict":verdict,"sections":sections,"reading_text":text,
         "no_scores":True,"medical_validity_claimed":False,
         "baseline_v391_unchanged":True,
+        "evidence_counts":sequence["counts"],
+        "evidence_ledger":sequence["evidence"],
+        "ordered_palace_roles":sequence["ordered_roles"],
+        "macro_fuyin_fanyin":sequence["macro"],
+        "qualitative_palace_relationships":sequence["interactions"],
         "audit":{
-            "legacy_v39_symbolic_verdict":legacy["audit"]["v37_actual_health_priority_verdict"],
+            "legacy_v39_symbolic_verdict":
+                legacy["audit"]["v37_actual_health_priority_verdict"],
             "legacy_v391_reading_text":v391["reading_text"],
             "role_confidence":actor["confidence"],
             "role_via":actor["role_via"],
             "primary_role_palace":person["palace"],
             "illness_palace":ill["palace"],
-            "patient_to_illness":relation,"illness_to_star":star_relation,
-            "medicine_controls":medicine_controlled,
+            "patient_to_illness":element_relation(
+                ELEMENTS[person["palace"]],ELEMENTS[ill["palace"]]),
+            "illness_to_star":element_relation(
+                ELEMENTS[ill["palace"]],"土"),
+            "medicine_controls":doctor_ill=="克" or yi_ill=="克",
             "conditional_source_pairs":pairs,
             "book_81_catalog_size":legacy["audit"]["v37_source_book_pair_count"],
             "matched_real_star_pairs":len(pairs),
-            "supplement_rules_preserved":len(legacy["audit"]["v34_42_directional_pairs"]),
-            "composites_preserved":len(legacy["audit"]["v36_17_source_rechecked_composites"]),
-            "actual_stage_facts_unique":life,
-            "patient_hazards":patient_hazards,
+            "supplement_rules_preserved":
+                len(legacy["audit"]["v34_42_directional_pairs"]),
+            "composites_preserved":
+                len(legacy["audit"]["v36_17_source_rechecked_composites"]),
+            "actual_stage_facts_unique":lifecycle,
+            "patient_hazards":[x["kind"] for x in original_hazards
+                               if x["role"]=="patient"],
             "missing_source_predicates":len(pending),
             "actual_original_author_outcomes_not_used":True,
-            "legacy_score":None
+            "legacy_score":None,
+            "void_truth_verified":False,
+            "vote_sources_are_independent":True,
         }
     }
