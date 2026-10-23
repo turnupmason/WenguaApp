@@ -95,6 +95,51 @@ class PureDecisionTests(unittest.TestCase):
         self.assertEqual(len(facts[0]["roles"]),5)
 
 
+class MonthAndPalaceControlTests(unittest.TestCase):
+    def compare(self,rel,**adjustments):
+        from src.wengua.health_palace_sequence_vnext import compare_vigor_before_control
+        opts=dict(relation=rel,actor_symbol_month="废",
+                  target_symbol_month="旺",
+                  actor_palace_month="囚",target_palace_month="旺")
+        opts.update(adjustments)
+        return compare_vigor_before_control(**opts)
+
+    def test_weak_tianxin_versus_strong_tianrui_is_not_effective_control(self):
+        # 天心星月废、医生落宫囚；天芮月旺、病星落宫旺。
+        fact=self.compare("克")
+        self.assertEqual(fact["nominal_relation"],"克")
+        self.assertEqual(fact["power_class"],"反侮候选")
+        self.assertEqual(fact["effect"],"limited")
+        self.assertIn("弱者难克旺者",fact["why"])
+
+    def test_strong_tianxin_resists_weak_disease_nominal_attack(self):
+        fact=self.compare("受克",actor_symbol_month="旺",
+                          actor_palace_month="旺",
+                          target_symbol_month="废",target_palace_month="囚")
+        self.assertEqual(fact["nominal_relation"],"受克")
+        self.assertEqual(fact["power_class"],"反克候选")
+        self.assertEqual(fact["effect"],"resists_weak_attack")
+        self.assertIn("不等于已经治愈",fact["why"])
+
+    def test_star_and_palace_mixed_strength_must_not_trigger_reverse(self):
+        fact=self.compare("克",actor_symbol_month="废",
+                          actor_palace_month="旺",
+                          target_symbol_month="旺",target_palace_month="旺")
+        self.assertEqual(fact["power_class"],"ordinary_conditional")
+        self.assertEqual(fact["effect"],"conditional")
+
+    def test_void_obstruction_and_unknown_stages_cannot_be_assumed(self):
+        fact=self.compare("克",blocked=True)
+        self.assertEqual(fact["effect"],"obstructed")
+        self.assertNotEqual(fact["power_class"],"反侮候选")
+        fact=self.compare("克",actor_symbol_month="未知")
+        self.assertEqual(fact["effect"],"unknown")
+
+    def test_same_element_must_still_compare_strength(self):
+        fact=self.compare("比和")
+        self.assertIn(fact["effect"],("same_element","limited"))
+        self.assertIn("比和",fact["nominal_relation"])
+
 class FullRealChartPreview(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -119,9 +164,15 @@ class FullRealChartPreview(unittest.TestCase):
     def test_new_readings_complete_and_no_scores_or_unverified_claims(self):
         for row,old,review in self.results:
             self.assertEqual(review["four_pillars"],row["four_pillars"])
-            self.assertEqual(len(review["sections"]),6)
-            self.assertEqual(review["sections"][0]["title"],"主判断")
-            self.assertEqual(review["sections"][1]["title"],"患者与疾病主证")
+            names=[part["title"] for part in review["sections"]]
+            self.assertGreaterEqual(len(names),8)
+            self.assertEqual(names[:5],["先看伏吟反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
+            self.assertIn("全部证据合断",names)
+            self.assertEqual(names[-1],"时空及应期")
+            self.assertEqual(review["evidence_counts"]["qualified_favorable"],
+                             len(review["evidence_ledger"]["favorable"]))
+            self.assertEqual(review["evidence_counts"]["qualified_adverse"],
+                             len(review["evidence_ledger"]["adverse"]))
             self.assertTrue(review["verdict"]["state"] in
                             {"favorable","adverse","conflicted","unresolved"})
             self.assertEqual(review["audit"]["matched_real_star_pairs"],9)
@@ -145,7 +196,9 @@ class FullRealChartPreview(unittest.TestCase):
         for n,(row,old,review) in enumerate(self.results,1):
             print("CASE",n,row["local_datetime"])
             print("BASELINE",old["reading_text"].split("最后断词：")[-1][:250].strip())
-            print("REVIEW",review["sections"][0]["text"])
+            print("MACRO",review["sections"][0]["text"])
+            print("REVIEW",next(x["text"] for x in review["sections"]
+                                if x["title"]=="全部证据合断"))
             print("GATES",review["audit"]["missing_source_predicates"],
                   "LIFECYCLE_UNIQUE",len(review["audit"]["actual_stage_facts_unique"]))
 
@@ -189,7 +242,8 @@ class OldBookQuestionOnlySmoke(unittest.TestCase):
             self.assertEqual(answer["audit"]["supplement_rules_preserved"],42)
             self.assertEqual(answer["audit"]["composites_preserved"],17)
             self.assertTrue(answer["audit"]["actual_original_author_outcomes_not_used"])
-            self.assertEqual(len(answer["sections"]),6)
+            self.assertGreaterEqual(len(answer["sections"]),8)
+            self.assertEqual(answer["sections"][0]["title"],"先看伏吟反吟")
             self.assertTrue(answer["no_scores"])
             seen.append((spec["id"],answer["verdict"]["label"],
                          answer["audit"]["role_confidence"]))
