@@ -98,6 +98,30 @@ class FullIllnessRoleNetwork(unittest.TestCase):
             self.assertEqual(graph["added_independent_verdict_votes"],0)
             self.assertFalse(graph["clinical_prediction"])
 
+    def test_every_deity_door_star_and_both_stem_planes_crossed(self):
+        graph=self.male_birth["full_health_role_strength_network"]
+        total=0
+        for source, targets in graph["focus_against_disease_and_patient"].items():
+            for target, edge in targets.items():
+                a=graph["nodes"][source]["all_factors"]
+                b=graph["nodes"][target]["all_factors"]
+                count=len(a)*len(b)
+                self.assertEqual(edge["factor_pair_count"],count)
+                cross=edge["all_cross_layer_factor_pairs"]
+                self.assertEqual(len(cross),count)
+                kinds={(x["actor_kind"],x["target_kind"]) for x in cross}
+                self.assertEqual({x["kind"] for x in a},
+                                 {k for k,_ in kinds})
+                self.assertEqual({x["kind"] for x in b},
+                                 {k for _,k in kinds})
+                self.assertTrue(all(x["full_physical_25x25_precomputed"] for x in cross))
+                self.assertFalse(any(x["eligible_as_independent_verdict_vote"] for x in cross))
+                self.assertEqual(len({(x["actor_fact_id"],x["target_fact_id"])
+                                     for x in cross}),count)
+                total+=count
+        self.assertEqual(total,graph["focused_cross_layer_factor_pairs"])
+        self.assertGreater(total,50)
+
     def test_colocation_kept_without_double_counting_physical_relation(self):
         graph=self.male_birth["full_health_role_strength_network"]
         edges=graph["directed_edges"]
