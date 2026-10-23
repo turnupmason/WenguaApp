@@ -24,6 +24,9 @@ from .health_severity_v34 import HORSE
 from .symbol_relations import door_season
 from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
 from .health_tianrui_25_matrix import inspect_tianrui_25
+from .factor_energy_25_rules import (
+    inspect_strength_25, compare_role_strength,
+    format_strength_template, format_duel_template)
 
 from .qualitative_month_palace import (
     STRONG,WEAK,VALID_STAGES,effect_of_relation,compare_vigor_before_control)
@@ -149,6 +152,39 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         if c and c["palace"] not in {patient["palace"],natal["palace"] if natal else 0}:
             extras.append(inspect_palace(chart=chart,cell=c,role="辅助宫"+str(c["palace"]),
                                          month_branch=month,stem=c["earth_stem"]))
+    # Shared deterministic V-next strength review for every actual palace.
+    # This layer does NOT add any favorable/adverse evidence votes.
+    for role_fact in (ill,doc,yi,patient,*([natal] if natal else []),hour,*extras):
+        strength=[]
+        seen=set()
+        flags=tuple(
+            (["旬空待辨"] if role_fact["void_branches"] else [])+
+            (["天盘入墓"] if role_fact["sky_tombs"] else [])+
+            (["地盘入墓"] if role_fact["earth_tombs"] else [])+
+            (["六仪击刑"] if role_fact["striking_stems"] else [])+
+            (["门迫"] if role_fact["door_pressure"] else []))
+        def add_factor(kind, symbol, plane="heaven"):
+            key=(kind,symbol,plane)
+            if not symbol or key in seen:
+                return
+            seen.add(key)
+            strength.append(inspect_strength_25(
+                kind,symbol,month,role_fact["palace"],plane=plane,
+                restrictions=flags))
+        add_factor("deity",role_fact["deity"])
+        add_factor("door",role_fact["door"])
+        for star_entry in role_fact["heaven"]:
+            add_factor("star",star_entry["star"])
+            add_factor("stem",star_entry["stem"])
+        add_factor("stem",role_fact["earth_stem"],plane="earth")
+        role_fact["all_symbol_strength_25"]=strength
+        primary_kind="star" if role_fact["star"] else "stem"
+        primary_symbol=role_fact["star"] or role_fact["stem"]
+        role_fact["primary_strength_25"]=next((
+            s for s in strength
+            if s["kind"]==primary_kind and s["symbol"]==primary_symbol),None)
+    if ill["primary_strength_25"] is None or doc["primary_strength_25"] is None:
+        raise ValueError("Both real Tianrui and Tianxin must have a star strength")
     interactions={
         "病宫五行对天芮本体":{
             "relationship":element_relation(ill["element"],STAR_ELEMENT["天芮星"]),
@@ -173,6 +209,9 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         striking_stems=ill["striking_stems"],
         door_pressure=ill["door_pressure"])
     interactions["天芮星月令×星宫五行25格"]=tianrui_25
+    interactions["天心对天芮25格力量推演"]=compare_role_strength(
+        doc["primary_strength_25"],ill["primary_strength_25"],
+        actor_name="天心星",target_name="天芮星")
     if natal:interactions["年命宫对病宫"]=inspect_pair(natal,ill)
     for i,p in enumerate(extras,1):interactions["辅助宫"+str(i)+"对病宫"]=inspect_pair(p,ill)
     evidence={}
@@ -358,7 +397,11 @@ def format_sequence_sections(result,*,actor,chart):
                 "；空亡"+("/".join(r["void_branches"]) if r["void_branches"] else "无")+
                 "；"+("、".join(tombs) if tombs else "无入墓")+
                 ("；六仪击刑"+"/".join(r["striking_stems"]) if r["striking_stems"] else "")+
-                ("；门迫" if r["door_pressure"] else "；非门迫"))
+                ("；门迫" if r["door_pressure"] else "；非门迫")+
+                "；星门神天地干强弱："+"/".join(
+                    x["symbol"]+x["strength_label"]+
+                    ("（宫载）" if x["kind"]=="deity" else "")
+                    for x in r["all_symbol_strength_25"]))
     sections=[]
     def push(k,title,txt):sections.append({"id":k,"title":title,"text":txt})
     m=result["macro"]
@@ -367,12 +410,14 @@ def format_sequence_sections(result,*,actor,chart):
          "。先定全盘宏观动静，不直接据此判断病人康复或恶化。")
     ill,doc,yi,patient=roles[:4]
     t25=result["interactions"]["天芮星月令×星宫五行25格"]
+    duel=result["interactions"]["天心对天芮25格力量推演"]
     push("02_illness","天芮病宫",name(ill)+facts(ill)+
          "。以天芮星为起点，第"+str(t25["case_number"])+"格："+t25["category"]+
          "、天芮月令"+t25["star_month"]+"，传统象意「"+
          t25["traditional_title"]+"」；落宫月令"+t25["palace_month"]+
          "，作用条件："+t25["why"]+
-         "。星宫关系是名义五行事实，此条不等于临床治疗或预后。")
+         "。强弱矩阵："+format_strength_template(ill["primary_strength_25"])+
+         "以上为传统候选，不计第二条吉凶证据或临床判断。")
     for number,title,record,k in (
         ("03","天心医生",doc,"天心宫对病宫"),
         ("04","乙奇医药",yi,"乙奇宫对病宫"),
@@ -381,7 +426,10 @@ def format_sequence_sections(result,*,actor,chart):
         comparison=result["interactions"][k]
         co=record["palace"]==ill["palace"]
         push(number+"_"+record["role"],title,name(record)+facts(record)+
-             "。对天芮病宫："+comparison["relationship"]+
+             "。力量矩阵："+(format_strength_template(record["primary_strength_25"])
+                           if record["primary_strength_25"] else "该用神待核。")+
+             (("两星对抗："+format_duel_template(duel)) if record["role"]=="天心医生" else "")+
+             "对天芮病宫："+comparison["relationship"]+
              "；"+comparison["why"]+"。"+
              ("与病宫同宫，代表存在干预/接触候选；弱象并非零作用。"
               if co and record["role"] in ("天心医生","乙奇医药") else ""))
