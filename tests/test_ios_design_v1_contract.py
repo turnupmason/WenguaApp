@@ -99,11 +99,29 @@ class V3SourceUI(unittest.TestCase):
         self.assertIn("QFive.shade(\"door\"",self.swift)
         self.assertIn("QFive.heavenTombs(palace)",self.swift)
         self.assertIn("QFive.earthTombs(palace)",self.swift)
-    def test_sample_selector_updates_narrative_too(self):
-        for fragment in ['id="sample-switcher"','chooseSample(i)','renderHeader(); renderBoard(); renderReading();',
+    def test_no_historical_case_selector_and_no_fake_cast_after_meditation(self):
+        # Four sealed charts must remain test fixtures, not user-facing choices.
+        self.assertEqual(len(self.fixture["samples"]),4)
+        self.assertNotIn('id="sample-switcher"',self.html)
+        self.assertNotIn('data-sample=',self.html)
+        self.assertIn('id="demo-preview"',self.html)
+        self.assertIn('查看九宫排版示例（不是新起局）',self.html)
+        self.assertIn('id="cast-unavailable"',self.html)
+        self.assertIn('navigate("cast-unavailable");',self.html)
+        self.assertNotIn('navigate("board");document.querySelector(".safe-notice")',self.html)
+        self.assertNotIn('WenguaIssuePolicy.commitCompletedCast(',self.html)
+        for fragment in ['chooseSample(i)','renderHeader(); renderBoard(); renderReading();',
             'demo.readingSections','sourceCharts=window.WenguaVerifiedCharts.samples',
-            'document.querySelector("#palaces").addEventListener("click"', '五行颜色图例']:
+            'document.querySelector("#palaces").addEventListener("click"']:
             self.assertIn(fragment,self.html)
+        for fragment in ['four-pillar-grid','bureau-band','palace-symbols',
+                         'symbol-line','stem-bar','palace-stages']:
+            self.assertIn(fragment,self.html)
+        self.assertIn('min-height:270px',self.html)
+        self.assertIn('position:sticky',self.html)
+        self.assertIn('colored("deity",p.deity)',self.html)
+        self.assertIn('colored("star",z.star)',self.html)
+        self.assertIn('colored("door",p.door)',self.html)
     def test_native_launch_uses_domain_route_and_preserves_frozen_source_audit_offline(self):
         bundled=json.loads(FROZEN.read_text("utf8"))["samples"]
         self.assertEqual(len(bundled),4)
@@ -171,7 +189,7 @@ class V3SourceUI(unittest.TestCase):
     def test_all_screen_elements_and_no_fake_live_cast(self):
         parser=Tags();parser.feed(self.html)
         for id in ("board","setup","ritual","reading","palaces","overlay",
-                   "sheet-main","seconds","question","sample-switcher"):
+                   "sheet-main","seconds","question","cast-unavailable","demo-preview"):
             self.assertIn(id,parser.ids)
         self.assertIn("非实时起盘",self.html)
         self.assertNotIn("calculate_health_symbolic_score",self.html)
