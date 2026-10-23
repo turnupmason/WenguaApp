@@ -185,7 +185,8 @@ extension QPalace {
            cell.heavenStars.contains(where:{$0.carriedStem==String(chart.pillars.day.prefix(1))}) {
             tags.append("患者")
         }
-        return QPalace(id:p,name:cell.gua+(p==5 ? "五" : String(p)),
+        let chineseName=[1:"一",2:"二",3:"三",4:"四",5:"五",6:"六",7:"七",8:"八",9:"九"][p] ?? String(p)
+        return QPalace(id:p,name:cell.gua + chineseName,
                        element:e,branches:cell.branches.joined(),
                        deity:cell.deity ?? "",stars:names.joined(separator:"·"),
                        door:cell.door ?? "",sky:sky,ground:cell.earthStem,
