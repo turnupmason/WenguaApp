@@ -61,44 +61,49 @@ class UserAuthoredCells(unittest.TestCase):
         with self.assertRaises(ValueError):
             user_duel_lookup("弱","大")
 
-    def test_all_25_pair_labels_survive_both_independent_lookups(self):
-        # Use genuine inspected chart symbol facts for actual palace relation
-        # then change only synthetic strength tiers to enumerate table combos.
+    def test_all_25_pair_labels_survive_ONE_lookup_per_pair(self):
+        # Use real inspected signifiers and every synthetic power-cell pair,
+        # deliberately reverse palace context to prove it is NOT a rival.
         doctor=inspect_strength_25("star","天心星","申",6)
         illness=inspect_strength_25("star","天冲星","申",3)
-        for i,a in enumerate(DUEL_COLUMN_TIERS):
+        for a in DUEL_COLUMN_TIERS:
             for j,b in enumerate(DUEL_COLUMN_TIERS):
-                x={**doctor,"strength_label":a,"palace_strength_label":a}
-                y={**illness,"strength_label":b,"palace_strength_label":b}
+                x={**doctor,"strength_label":a,"palace_strength_label":b}
+                y={**illness,"strength_label":b,"palace_strength_label":a}
                 with self.subTest(from_power=a,to_power=b):
                     edge=matchup(x,y,actor_role="doctor",target_role="illness")
-                    self.assertEqual(edge["symbol_duel_result"],
-                                     USER_DUEL_ROWS[a][j])
-                    self.assertEqual(edge["palace_duel_result"],
-                                     USER_DUEL_ROWS[a][j])
+                    self.assertEqual(edge["duel_result"],USER_DUEL_ROWS[a][j])
+                    self.assertEqual(edge["symbol_duel_result"],USER_DUEL_ROWS[a][j])
+                    self.assertNotIn("palace_duel_result",edge)
+                    self.assertEqual(edge["table_two_lookups_for_pair"],1)
+                    self.assertTrue(edge["palace_strength_is_context_only"])
                     self.assertEqual(edge["relation"],"克")
                     self.assertEqual(edge["version"],VERSION)
                     self.assertTrue(edge["raw_user_duel_cells_preserved"])
 
-    def test_backfire_and_mixed_forces_not_silent_certainty(self):
+    def test_palace_context_is_not_a_second_strength_fight(self):
         doctor=inspect_strength_25("star","天心星","申",6)
         illness=inspect_strength_25("star","天冲星","申",3)
-        low={**doctor,"strength_label":"极小","palace_strength_label":"极小"}
-        high={**illness,"strength_label":"极大","palace_strength_label":"极大"}
+        low={**doctor,"strength_label":"极小","palace_strength_label":"极大"}
+        high={**illness,"strength_label":"极大","palace_strength_label":"极小"}
         edge=matchup(low,high,actor_role="doctor",target_role="illness")
-        self.assertEqual(edge["symbol_duel_result"],"硬干反而受伤")
-        self.assertEqual(edge["palace_duel_result"],"硬干反而受伤")
+        self.assertEqual(edge["duel_result"],"硬干反而受伤")
         self.assertTrue(edge["backfire_risk_symbolic"])
         self.assertEqual(edge["ability"],"不能")
+        self.assertEqual(edge["table_two_lookups_for_pair"],1)
+        # Swapping PALACE context cannot reverse or override table-two result.
         mixed={**doctor,"strength_label":"极大","palace_strength_label":"极小"}
         inverted={**illness,"strength_label":"极小","palace_strength_label":"极大"}
         edge=matchup(mixed,inverted,actor_role="doctor",target_role="illness")
-        self.assertEqual(edge["symbol_duel_result"],"世界级压制干得过")
-        self.assertEqual(edge["palace_duel_result"],"硬干反而受伤")
-        self.assertEqual(edge["ability"],"条件待核")
+        self.assertEqual(edge["duel_result"],"世界级压制干得过")
+        self.assertEqual(edge["ability"],"能")
+        self.assertNotIn("palace_duel_result",edge)
         obstructed={**doctor,"restrictions":["门迫待核"]}
-        self.assertEqual(matchup(obstructed,illness,actor_role="a",
-                                 target_role="b")["ability"],"条件待核")
+        blocked=matchup(obstructed,illness,actor_role="a",target_role="b")
+        self.assertEqual(blocked["ability"],"条件待核")
+        self.assertEqual(blocked["duel_result"],
+                         user_duel_lookup(doctor["strength_label"],
+                                          illness["strength_label"]))
 
     def test_raw_user_labels_flow_into_real_selected_health_reading(self):
         result=auto_cast_health_review_text(
@@ -116,12 +121,11 @@ class UserAuthoredCells(unittest.TestCase):
             self.assertEqual(
                 edge["symbol_duel_result"],
                 user_duel_lookup(edge["actor_strength"],edge["target_strength"]))
-            self.assertEqual(
-                edge["palace_duel_result"],
-                user_duel_lookup(edge["actor_palace_strength"],
-                                 edge["target_palace_strength"]))
-        self.assertIn("符号对抗「",result["reading_text"])
-        self.assertIn("宫位对抗「",result["reading_text"])
+            self.assertEqual(edge["table_two_lookups_for_pair"],1)
+            self.assertTrue(edge["palace_strength_is_context_only"])
+            self.assertNotIn("palace_duel_result",edge)
+        self.assertIn("两用神表一力量查表二：「",result["reading_text"])
+        self.assertNotIn("宫位对抗「",result["reading_text"])
         self.assertTrue(result["no_scoring"])
         self.assertFalse(result["medical_validity_claimed"])
 
