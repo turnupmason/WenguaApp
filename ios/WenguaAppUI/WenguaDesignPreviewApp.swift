@@ -659,74 +659,18 @@ struct PalaceLifeRow: View {
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
     private let labelColor = Color(red:0.49,green:0.56,blue:0.63)
+
     var body: some View {
         VStack(alignment:.leading,spacing:7) {
-            HStack(alignment:.firstTextBaseline,spacing:3) {
-                Text(palace.name)
-                    .font(.system(size:13,weight:.bold))
-                    .foregroundStyle(QStyle.text)
-                Spacer(minLength:0)
-                HStack(spacing:1) {
-                    ForEach(Array(palace.branches.map{String($0)}.enumerated()),id: \.offset) { part in
-                        Text(part.element)
-                            .foregroundStyle(QFive.shade("branch",part.element))
-                    }
-                }
-                .font(.system(size:10))
-            }
+            palaceHeading
             if palace.id == 5 {
-                Spacer(minLength:24)
-                Text("中五")
-                    .font(.system(size:29,weight:.medium))
-                    .foregroundStyle(QStyle.secondary)
-                    .frame(maxWidth:.infinity)
-                if !palace.ground.isEmpty {
-                    Text("地盘　" + palace.ground)
-                        .font(.system(size:14))
-                        .foregroundStyle(QFive.shade("stem",palace.ground))
-                        .frame(maxWidth:.infinity)
-                }
-                Text("神、门、星另论")
-                    .font(.system(size:11))
-                    .foregroundStyle(labelColor)
-                    .frame(maxWidth:.infinity)
-                Spacer(minLength:18)
+                centralPalace
             } else {
-                namedSymbol("神",palace.deity,kind:"deity")
-                multiSymbol("星",palace.stars,kind:"star")
-                namedSymbol("门",palace.door,kind:"door")
-                Rectangle().fill(QStyle.line.opacity(0.65)).frame(height:1)
-                HStack(alignment:.firstTextBaseline,spacing:3) {
-                    stemLine("天",palace.sky)
-                    Spacer(minLength:0)
-                    stemLine("地",palace.ground)
-                }
-                VStack(alignment:.leading,spacing:3) {
-                    ForEach(palace.roles,id: \.self) { role in
-                        Text(role)
-                            .font(.system(size:10,weight:.medium))
-                            .foregroundStyle(QStyle.blue)
-                    }
-                    ForEach(QFive.void(palace),id: \.self) { branch in
-                        Text(branch+"空")
-                            .foregroundStyle(QFive.shade("branch",branch))
-                    }
-                    if let horse=QFive.horse(palace) {
-                        Text("马"+horse).foregroundStyle(QFive.shade("branch",horse))
-                    }
-                    ForEach(QFive.heavenTombs(palace) + QFive.earthTombs(palace),id: \.self) { label in
-                        Text(label).foregroundStyle(
-                            QFive.shade("stem",String(label.dropFirst().prefix(1))))
-                    }
-                }
-                .font(.system(size:10,weight:.medium))
-                .fixedSize(horizontal:false,vertical:true)
+                symbolsSection
+                stemsSection
+                statusSection
                 Spacer(minLength:3)
-                VStack(alignment:.leading,spacing:3) {
-                    ForEach(palace.lifeRows) { line in PalaceLifeRow(line:line) }
-                }
-                .frame(maxWidth:.infinity,alignment:.leading)
-                Rectangle().fill(QStyle.line.opacity(0.55)).frame(height:1)
+                lifecycleSection
             }
             Text("宫位详解 ›")
                 .font(.system(size:10))
@@ -738,10 +682,84 @@ struct ProfessionalPalaceTile: View {
         .frame(maxWidth:.infinity,minHeight:274,alignment:.topLeading)
         .background(.white)
         .contentShape(Rectangle())
-        .accessibilityLabel(palace.id == 5 ? "中五宫，按原书独立处理" :
-            [palace.name,"八神"+palace.deity,"九星"+palace.stars,
-             "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground,
-             palace.stages].joined(separator:"，"))
+        .accessibilityLabel(accessibleText)
+    }
+
+    private var accessibleText: String {
+        if palace.id == 5 {return "中五宫，按原书独立处理"}
+        return [palace.name,"八神" + palace.deity,"九星" + palace.stars,
+                "八门" + palace.door,"天盘" + palace.sky,"地盘" + palace.ground,
+                palace.stages].joined(separator:"，")
+    }
+    private var palaceHeading: some View {
+        HStack(alignment:.firstTextBaseline,spacing:3) {
+            Text(palace.name).font(.system(size:13,weight:.bold)).foregroundStyle(QStyle.text)
+            Spacer(minLength:0)
+            HStack(spacing:1) {
+                ForEach(Array(palace.branches.map{String($0)}.enumerated()),id: \.offset) { part in
+                    Text(part.element).foregroundStyle(QFive.shade("branch",part.element))
+                }
+            }
+            .font(.system(size:10))
+        }
+    }
+    private var centralPalace: some View {
+        VStack(alignment:.center,spacing:10) {
+            Spacer(minLength:24)
+            Text("中五").font(.system(size:29,weight:.medium))
+                .foregroundStyle(QStyle.secondary)
+            if !palace.ground.isEmpty {
+                Text("地盘　" + palace.ground)
+                    .font(.system(size:14))
+                    .foregroundStyle(QFive.shade("stem",palace.ground))
+            }
+            Text("神、门、星另论").font(.system(size:11)).foregroundStyle(labelColor)
+            Spacer(minLength:18)
+        }
+        .frame(maxWidth:.infinity)
+    }
+    private var symbolsSection: some View {
+        VStack(alignment:.leading,spacing:7) {
+            namedSymbol("神",palace.deity,kind:"deity")
+            multiSymbol("星",palace.stars,kind:"star")
+            namedSymbol("门",palace.door,kind:"door")
+        }
+    }
+    private var stemsSection: some View {
+        VStack(spacing:5) {
+            Rectangle().fill(QStyle.line.opacity(0.65)).frame(height:1)
+            HStack(alignment:.firstTextBaseline,spacing:3) {
+                stemLine("天",palace.sky)
+                Spacer(minLength:0)
+                stemLine("地",palace.ground)
+            }
+        }
+    }
+    private var statusSection: some View {
+        VStack(alignment:.leading,spacing:3) {
+            ForEach(palace.roles,id: \.self) { role in
+                Text(role).foregroundStyle(QStyle.blue)
+            }
+            ForEach(QFive.void(palace),id: \.self) { branch in
+                Text(branch + "空").foregroundStyle(QFive.shade("branch",branch))
+            }
+            if let horse=QFive.horse(palace) {
+                Text("马" + horse).foregroundStyle(QFive.shade("branch",horse))
+            }
+            ForEach(QFive.heavenTombs(palace) + QFive.earthTombs(palace),id: \.self) { label in
+                Text(label).foregroundStyle(
+                    QFive.shade("stem",String(label.dropFirst().prefix(1))))
+            }
+        }
+        .font(.system(size:10,weight:.medium))
+        .fixedSize(horizontal:false,vertical:true)
+    }
+    private var lifecycleSection: some View {
+        VStack(alignment:.leading,spacing:4) {
+            Rectangle().fill(QStyle.line.opacity(0.55)).frame(height:1)
+            ForEach(palace.lifeRows) { line in PalaceLifeRow(line:line) }
+        }
+        .frame(maxWidth:.infinity,alignment:.leading)
     }
     private func namedSymbol(_ label:String,_ value:String,kind:String) -> some View {
         HStack(alignment:.firstTextBaseline,spacing:4) {
@@ -1288,9 +1306,13 @@ struct NativePalaceEvidenceCard: View {
             palace.earthStages.map{$0.branch+$0.stage}.joined(separator:"、")
     }
     private var conditions: String {
-        let markers=palace.voidBranches.map{$0+"空"} +
-            (palace.horseBranch.map{["马"+$0]} ?? []) +
-            palace.tombs.map{($0.plane=="天盘" ? "天" : "地")+$0.stem+$0.branch+"墓"}
+        let blanks: [String] = palace.voidBranches.map { branch in branch + "空" }
+        let horseMarkers: [String] = palace.horseBranch.map { ["马" + $0] } ?? []
+        let tombMarkers: [String] = palace.tombs.map { item in
+            let plane = item.plane == "天盘" ? "天" : "地"
+            return [plane,item.stem,item.branch,"墓"].joined()
+        }
+        let markers: [String] = blanks + horseMarkers + tombMarkers
         return markers.isEmpty ? "无已核定的空、马、墓标记" : markers.joined(separator:"、")
     }
     var body: some View {
