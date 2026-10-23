@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f6f6">
-<title>问卦 · 九宫专业排盘 V2（交互设计预览）</title>
+<title>问卦 · 选择问事 · 九宫排盘</title>
 <style>
 :root{--blue:#267dff;--red:#e8483a;--orange:#e9991e;--green:#23ab65;--black:#2b2b2d;--grey:#929399;--line:#d9dadc;--paper:#f6f6f6;--light:#fff}
 *{box-sizing:border-box}
@@ -154,10 +154,35 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 .status-marker{font-size:9px;line-height:1.35}
 @media(max-width:365px){.palace{min-height:252px}.sky-star,.door-name,.deity-name{font-size:15px}.status-marker{font-size:8px}}
 
+.brand-mark{display:grid;place-items:center;width:60px;height:60px;background:#233849;color:#efd094;border:double 4px #d3ab55;border-radius:50%;font-size:29px;font-weight:600;box-shadow:0 4px 15px #2439491c;flex-shrink:0}
+.brand-lockup{display:flex;align-items:center;gap:12px;margin:12px 0 26px}
+.brand-lockup strong{font-size:29px;font-family:serif;font-weight:650}
+.domain-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}
+.domain-choice{background:#fff;border:1px solid #e6e8ea;border-radius:15px;min-height:100px;text-align:left;padding:15px;display:flex;flex-direction:column;justify-content:space-between;font-size:16px;color:#303c45}
+.domain-choice span{font-size:10px;color:#7d8389}
+.domain-choice.current{border-color:#4f8cce;background:#eff6ff}
+.topic-choice{background:#fff;border:1px solid #e3e6ea;border-radius:11px;text-align:left;padding:13px 14px;margin:7px 0;width:100%;color:#353b43}
+.topic-choice.active{border-color:#4385d0;background:#edf5ff}
+.topic-choice small{display:block;color:#7d8188;margin-top:5px}
+.reading-section{border:1px solid #edf0f3;border-radius:13px;margin:11px 12px;padding:16px;background:#fff}
+.reading-section h3{font-size:14px;margin:0 0 10px;color:#2e485b}
+.reading-section p{font-size:13px;line-height:1.85;margin:0;color:#676d75;white-space:pre-wrap}
+@media(max-width:365px){.domain-grid{gap:7px}.domain-choice{min-height:94px}}
 </style>
 </head><body>
 <div class="phone">
-<section id="board" class="screen on">
+<section id="domain" class="screen on">
+<div class="entry">
+<div class="brand-lockup"><div class="brand-mark" aria-label="问卦标志">问</div><div><strong>问卦</strong><div class="muted">心诚则灵 · 尊重事实</div></div></div>
+<h1 class="h1" id="domain-heading">先选择问事领域</h1>
+<p class="muted">再选具体事项，才能绑定相应的问事模板。尚未完成的断案领域不会套用疾病轻重规则。</p>
+<div id="domain-options" class="domain-grid"></div>
+<div id="topic-options"></div>
+<button id="domain-back" class="secondary" style="display:none">返回领域</button>
+<p class="muted">网页版为可点击布局参考，真正自选时间的自动起盘请在 Mac 的 Xcode 中运行原生 iOS App。</p>
+</div>
+</section>
+<section id="board" class="screen">
 <div class="top"><button class="date-control" data-nav="setup">2026年11月1日 05:00　⌄</button><button class="now" data-nav="setup">选时</button></div>
 <div class="pillars">
   <div class="pillar cherry">丙<small>年</small><span>午</span></div>
@@ -170,13 +195,13 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 <div class="sample-strip" id="sample-switcher" aria-label="选择已核对的四个测试时辰"></div>
 <div class="board-frame"><div class="board-grid" id="palaces"></div></div>
 <div class="legend" aria-label="五行颜色图例"><span class="metal">金</span><span class="wood">木</span><span class="water">水</span><span class="fire">火</span><span class="earth">土</span><span>空亡</span><span>驿马</span><span>入墓</span></div>
-<div class="lower-info">年命：<b>未选（不虚构）</b><br><span id="runtime-status"></span><br><button data-nav="setup">问测何事</button><button data-nav="reading">V3.9.1 完整断词</button><button data-nav="setup">30秒静心起局</button></div>
+<div class="lower-info">年命：<b>未选（不虚构）</b><br><span id="runtime-status"></span><br><button data-nav="setup">问测何事</button><button data-nav="reading">完整解读</button><button data-nav="setup">30秒静心起局</button></div>
 <div class="safe-notice">固定研究样例 · 非实时起盘：2026-11-01 05:00 美国东部时区，阴遁五局。星、门、神和天地干取自已保存的真实起盘记录。实际起盘需要未来的原生离线引擎，当前盘不是你新问题的计算结果。</div>
 </section>
 
 <section id="setup" class="screen">
 <div class="entry">
-<button class="back" data-nav="board">← 返回九宫</button>
+<button class="back" data-nav="domain">← 返回领域选择</button>
 <h1 class="h1">问测何事？</h1><div class="muted">起局之前明确同一件具体事情，真实起局后15天内不重复。</div>
 <div class="form-card">
  <label class="form-label" for="question">这一件事是什么？（必填）</label>
@@ -216,14 +241,14 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 </div></section>
 
 <section id="reading" class="screen">
-<div class="top"><button class="back" data-nav="board">← 九宫盘</button><span style="font-size:13px;color:#96969c">V3.9.1 · 文字断词</span></div>
+<div class="top"><button class="back" data-nav="board">← 九宫盘</button><span style="font-size:13px;color:#96969c">问卦 · 完整解读</span></div>
 <div class="result-title"><h1 class="h1">断词 · 证据与反证</h1><div class="muted">以下对应上方固定历史样例，不是本次填写问题的新断案。</div></div>
-<div class="result-tabrow"><button class="active" data-result="conclusion">主判断</button><button data-result="full">完整断词</button><button data-result="basis">古籍依据</button></div>
+<div class="result-tabrow" style="display:none" aria-hidden="true"></div>
 <div id="conclusion" class="result-panel">
-<div class="summary-card"><div class="muted">样例 · 传统古籍象意</div><div class="headline">原书主判偏凶，有相反依据</div><p>本例是由旧版 V3.9.1 自动起盘得出的传统象意，不表示现实疾病结局。原始11栏目保留，具体因果以完整断词审计为准。</p></div>
-<div class="summary-card"><h3>先看哪三件事？</h3><p>① 依据当事人关系确定用神。<br>② 对照天芮病宫与患者本宫的关系。<br>③ 再看天心、乙奇、十二长生、旬空、应期条件等正反证据。</p></div>
+<div class="summary-card"><div class="muted">历史测试示例 · 传统古籍象意</div><div class="headline">本例主判断</div><p>本例是由旧版 V3.9.1 自动起盘得出的传统象意，不表示现实疾病结局。原始11栏目保留，具体因果以完整断词审计为准。</p></div>
+<div class="summary-card"><h3>判断依据</h3><p>以下保留完整原书取用、星门神、天地干、长生、证据与应期的分段说明，不把正反证据塞在主判断同一行。</p></div>
+<div id="sections" class="section-content"></div>
 </div>
-<div id="full" class="result-panel" style="display:none"><div id="sections" class="section-content"></div></div>
 <div id="basis" class="result-panel" style="display:none"><div class="summary-card"><h3>书源依据</h3><p>《神奇之门》《开悟之门》原书与已保存的九宫计算记录。源码行号、哈希、原始研究数据库供内部溯源，不作为客户断词显示。</p><p>整套81组有序天地干、42条疾病增补及17组条件复合判断不能机械叠加，必须有真实角色和原书适用条件。</p></div></div>
 <div class="safe-notice">传统文化研究与古籍象意，不是现实医学诊断、预后或治疗建议。</div>
 </section>
@@ -388,14 +413,49 @@ function palaceDetail(index){
 function renderReading(){
  const ch=demo.readingSections;
  if(!Array.isArray(ch)||!ch.length)throw new Error("Missing unmodified V3.9.1 reading for selected source chart");
- document.querySelector("#sections").innerHTML=ch.map(z=>'<details><summary>'+
-    z.title+'</summary><p>'+z.text+'</p></details>').join("");
+ document.querySelector("#sections").innerHTML=ch.map(z=>
+    '<section class="reading-section"><h3>'+z.title+'</h3><p>'+z.text+'</p></section>').join("");
  document.querySelector("#conclusion .headline").textContent=
-    '原书主判'+(demo.sourceVerdict==="病凶"?"偏凶":"偏吉")+' · 正反证据同列';
+    '本例古籍主判断：'+(demo.sourceVerdict==="病凶"?"偏凶":"偏吉");
  const paras=document.querySelectorAll("#conclusion .summary-card p");
  if(paras.length)paras[0].textContent=ch[ch.length-1].text+
     '（此为固定测试盘的传统象意，不代表实际医学判断。）';
 }
+const domainMap=[
+ ["疾病健康",["病情轻重","病势发展","医药效果","病愈应期"]],
+ ["恋爱婚姻",["恋爱进展","婚姻关系"]],["工作就业",["求职面试","职位变化"]],
+ ["经营求财",["经营项目","求财借贷"]],["求学考试",["升学考试"]],
+ ["出行出国",["旅途出行"]],["行人走失",["寻找行人"]],
+ ["钱物丢失",["寻找财物"]],["官司诉讼",["诉讼结果"]],
+ ["刑事案件",["案件调查"]],["天时气象",["气象变化"]],
+ ["体育竞赛",["比赛结果"]],["地理环境",["环境方位"]],
+ ["人生命运",["人生机遇"]],["其他杂项",["其它事项"]]
+];
+let selectedDomain=null,selectedDetail=null;
+function renderDomain(){
+ const list=document.querySelector("#domain-options");
+ document.querySelector("#domain-heading").textContent=selectedDomain===null?"先选择问事领域":"再选择具体事项";
+ document.querySelector("#domain-back").style.display=selectedDomain===null?"none":"inline-block";
+ list.innerHTML=selectedDomain===null?domainMap.map((d,i)=>
+   '<button class="domain-choice" data-domain="'+i+'"><strong>'+d[0]+'</strong><span>'+(i===0?"离线起盘已接入":"断案模块规划中")+'</span></button>').join(""):"";
+ document.querySelector("#topic-options").innerHTML=selectedDomain===null?"":domainMap[selectedDomain][1].map((v,i)=>{
+   const ready=selectedDomain===0&&i===0;
+   return '<button class="topic-choice'+(selectedDetail===i?" active":"")+'" data-topic="'+i+'" '+(ready?"":"disabled")+'>'+v+
+    '<small>'+(ready?"可继续设置真实问事与时间（新盘断词尚待移植）":"专题规则未完成，暂不能起此题")+'</small></button>';
+ }).join("")+(selectedDetail===0&&selectedDomain===0?'<button class="cta" data-start-topic="health.severity">继续设置具体事项</button>':"");
+}
+document.querySelector("#domain-options").addEventListener("click",e=>{
+ const b=e.target.closest("[data-domain]");if(!b)return;
+ selectedDomain=Number(b.dataset.domain);selectedDetail=null;renderDomain();
+});
+document.querySelector("#topic-options").addEventListener("click",e=>{
+ const item=e.target.closest("[data-topic]");if(item){selectedDetail=Number(item.dataset.topic);renderDomain();return;}
+ if(e.target.closest("[data-start-topic]"))navigate("setup");
+});
+document.querySelector("#domain-back").addEventListener("click",()=>{
+ selectedDomain=null;selectedDetail=null;renderDomain();
+});
+renderDomain();
 function chooseSample(i){
  if(i<0||i>=sourceCharts.length||!Number.isInteger(i))throw new Error("Invalid sample index");
  sampleIndex=i; demo=sourceCharts[i];
