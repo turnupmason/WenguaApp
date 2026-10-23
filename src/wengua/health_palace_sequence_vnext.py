@@ -23,6 +23,7 @@ from .health_severity_v22 import _find_star,_find_heaven_stem,_palace
 from .health_severity_v34 import HORSE
 from .symbol_relations import door_season
 from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
+from .health_tianrui_25_matrix import inspect_tianrui_25
 
 from .qualitative_month_palace import (
     STRONG,WEAK,VALID_STAGES,effect_of_relation,compare_vigor_before_control)
@@ -161,6 +162,17 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "患者宫对病宫":inspect_pair(patient,ill),
         "时干宫对病宫":inspect_pair(hour,ill),
     }
+    tianrui_25=inspect_tianrui_25(
+        star_month=ill["month_stage"],
+        star_element=STAR_ELEMENT["天芮星"],
+        palace_element=ill["element"],
+        palace_month=ill["palace_month_stage"],
+        void_branches=ill["void_branches"],
+        sky_tombs=ill["sky_tombs"],
+        earth_tombs=ill["earth_tombs"],
+        striking_stems=ill["striking_stems"],
+        door_pressure=ill["door_pressure"])
+    interactions["天芮星月令×星宫五行25格"]=tianrui_25
     if natal:interactions["年命宫对病宫"]=inspect_pair(natal,ill)
     for i,p in enumerate(extras,1):interactions["辅助宫"+str(i)+"对病宫"]=inspect_pair(p,ill)
     evidence={}
@@ -188,14 +200,14 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         meaningful=role in ("天芮病宫","天心医生","乙奇医药",
                             "患者用神","患者年命")
         if cell["month_stage"] in STRONG:
-            direction=("adverse" if role=="天芮病宫" else
+            direction=("neutral" if role=="天芮病宫" else
                        "favorable" if meaningful else "neutral")
             add("monthly:"+role+":"+str(p),direction,
                 role+"月令"+cell["month_stage"]+
                 ("；仅说明事体旺弱，须联系病宫判断" if not meaningful else ""),
                 "nine_star_month_status or original ordinary-stem month law",role)
         elif cell["month_stage"] in WEAK:
-            direction=("favorable" if role=="天芮病宫" else
+            direction=("neutral" if role=="天芮病宫" else
                        "adverse" if meaningful else "neutral")
             add("monthly:"+role+":"+str(p),direction,
                 role+"月令"+cell["month_stage"]+"，作用弱但不代表完全没有作用",
@@ -231,17 +243,16 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         if role=="天芮病宫" and cell["deity"]=="白虎":
             add("illness:white_tiger:"+str(p),"adverse",
                 "天芮病宫临白虎，按原书伤病象候选","illness deity source",role)
-    # Illness palace controls Tianrui body only when source strength can act.
-    star=interactions["病宫五行对天芮本体"]
-    star_dir={"克":"favorable","生":"adverse","比和":"adverse"}.get(star["relationship"])
-    if star_dir and star["effect"] not in ("obstructed","limited","unknown"):
-        add("illness_star:"+str(ill["palace"]),star_dir,
-            "病宫对天芮"+star["relationship"]+"，强弱审查："+star["why"],
-            "directed five elements + distinct monthly status","天芮病宫")
-    elif star_dir:
-        add("illness_star:"+str(ill["palace"]),"pending",
-            "病宫对天芮虽"+star["relationship"]+"，但"+star["why"],
-            "directed five elements; ineffective source","天芮病宫")
+    # The five monthly stages x five directed STAR→PALACE relationships are
+    # ONE compound interpretation. Do NOT separately tally bare Tianrui month
+    # and its element relationship, or assume a weak palace can restrain it.
+    add("illness:tianrui_25:"+str(ill["palace"]),
+        tianrui_25["eligible_evidence_direction"],
+        "天芮月令"+tianrui_25["star_month"]+"，"+tianrui_25["category"]+
+        "「"+tianrui_25["traditional_title"]+"」；落宫月令"+
+        tianrui_25["palace_month"]+"；"+tianrui_25["why"],
+        "source-verified month+element; user-proposed traditional 25-case interpretation",
+        "天芮病宫")
     # These are the only role relationships for which both month-of-star
     # AND month-of-landing-palace must gate nominal doctor/medicine control.
     # 反侮/反克 describe candidates, not guaranteed reverse attack or cure.
@@ -355,9 +366,13 @@ def format_sequence_sections(result,*,actor,chart):
          "九星"+m["star"]+"、八门"+m["door"]+"；"+m["pace"]+
          "。先定全盘宏观动静，不直接据此判断病人康复或恶化。")
     ill,doc,yi,patient=roles[:4]
+    t25=result["interactions"]["天芮星月令×星宫五行25格"]
     push("02_illness","天芮病宫",name(ill)+facts(ill)+
-         "。病宫对天芮本体："+result["interactions"]["病宫五行对天芮本体"]["relationship"]+
-         "，"+result["interactions"]["病宫五行对天芮本体"]["why"]+"。")
+         "。以天芮星为起点，第"+str(t25["case_number"])+"格："+t25["category"]+
+         "、天芮月令"+t25["star_month"]+"，传统象意「"+
+         t25["traditional_title"]+"」；落宫月令"+t25["palace_month"]+
+         "，作用条件："+t25["why"]+
+         "。星宫关系是名义五行事实，此条不等于临床治疗或预后。")
     for number,title,record,k in (
         ("03","天心医生",doc,"天心宫对病宫"),
         ("04","乙奇医药",yi,"乙奇宫对病宫"),
