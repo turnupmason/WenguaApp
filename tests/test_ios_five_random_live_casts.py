@@ -181,7 +181,8 @@ def run(native_binary:Path,outdir:Path):
             p=cells[idx];source=expected[idx]
             for key in ("gua","earthStem","door","deity","heavenStars",
                         "earthStages","branches","voidBranches","horseBranch"):
-                same(key,p[key],source[key],where+f"/{idx}")
+                value=p.get(key) if key in {"door","deity","horseBranch"} else p[key]
+                same(key,value,source[key],where+f"/{idx}")
             def normalized_tombs(items):
                 return sorted((v["plane"],v["stem"],v["branch"],v.get("star")) for v in items)
             same("heaven / earth tomb markers",
@@ -192,7 +193,7 @@ def run(native_binary:Path,outdir:Path):
             hour_life+=sum(len(h["stages"]) for h in p["heavenStars"])
             if idx==5:
                 same("center unassigned ordinary symbols",
-                     [p["door"],p["deity"],p["heavenStars"],p["branches"],p["earthStages"]],
+                     [p.get("door"),p.get("deity"),p["heavenStars"],p["branches"],p["earthStages"]],
                      [None,None,[],[],[]],where)
             else:
                 stars.extend(h["star"] for h in p["heavenStars"])
@@ -201,7 +202,7 @@ def run(native_binary:Path,outdir:Path):
         same("8 unique doors",len(set(doors)),8,where)
         same("all 9 stars including same-palace Tianrui/Tianqin",set(stars),STAR_NAMES,where)
         assert hour_life>=25
-        assert sum(bool(p["horseBranch"]) for p in cells.values())==1
+        assert sum(bool(p.get("horseBranch")) for p in cells.values())==1
         assert sum(len(p["voidBranches"]) for p in cells.values())==2
         total_tombs+=tombs;total_life+=hour_life
         summary={"n":i,"iso":golden["iso"],"pillars":golden["pillars"],
