@@ -924,3 +924,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 目前已真正接通 `health/severity` Python V-next：选天芮、天心、乙、患者实际关系宫、时干；真实合法出生年命且能定位才加；**男性只加乾六、女性只加坤二、未给性别均不加**；原书明确绑定其它辅助宫才加。表一 `selected_duel_table_vnext.table_one` 复用20主格与真实第五关系，表二 `selected_duel_table_vnext.matchup` 用两个5×5及一个3×3固定综合矩阵，仅对 `domain_selected_energy_vnext.HEALTH_EDGES` 已选实际角色组合计算；借 `HEALTH_POLARITY` 去重归入候选传统吉凶。用户要求的真正小内存按需计算为默认热路径。
 - 曾经全宫星门神干强度网 `health_full_role_network_vnext.py` **仅由 `inquiry["_research_full_graph"]=True` 显式运行**，源代码、失败 CI 和旧全图测试留存。新单测 `tests/test_domain_selected_energy_vnext.py` 实盘验证男女/未知性别、无年命/有年命、无需全图及候选吉凶计数；旧 `tests/test_health_full_role_network_vnext.py` 明确研究开关维持历史验证；新总规 `docs/DOMAIN_SELECTIVE_TWO_TABLE_PIPELINE_VNEXT_2026-10-23.md`，AGENTS 与状态已同步。
 - **这是规则运行路径修正，新增原书章节和案例均为0**；保留43章194例、V3.9.1、iOS既有自动起盘、81天地干、42疾病补充、17复合、已废弃V4.2及所有失败记录。五档与对抗等级仍是待原书独立事件家族检验的硬编码研究规则，不是能据此直接判断现实疾病、用药或临床预后。最新 CI 以同一 HEAD 的3.11/3.12和疾病专项审查结果为准。
+
+
+## 2026-10-23 · 用户原样九星25格＋双因素胜负25格硬编码入库（非新章节）
+- 用户本轮亲自提供两张原样完整5×5表：九星「旺相休囚废×被宫生/被宫克/克宫/生宫/比和」25个力量原值；「施力方极小/小/中等/大/极大×受力方同5级」25个详细胜负文本，包含「极小→极大：硬干反而受伤」「极大→极小：世界级压制干得过」，**任何数值或文字不得由助手自行改写**。 `factor_energy_25_rules.USER_STAR_25` 与旧 `STAR_25` 精确一致但保留用户原列序； `selected_duel_table_vnext.USER_DUEL_5X5` 新原文25格取代旧粗糙表的实际使用，旧表不删除只供历史审计。
+- 新 `matchup` 先分别查双方符号的用户胜负文字与两宫的用户胜负文字，再结合真实宫位方向/空墓刑迫等给研究级 `ability`，明确把用户原表与程序综合候选门槛区分开。 `domain_selected_energy_vnext` 按原模板选择真实相关用神、只计算必要边、审阅断词显示双方原词；先前完整九宫全组合仍保留研究开关、非默认路径。
+- 新 `tests/test_user_exact_energy_duel_grids_vnext.py` 25+25逐格测试，旧 `tests/test_domain_selected_energy_vnext.py` 同步新能力标签、疾病专项CI新增回归。完整双表历史契约 `docs/USER_EXACT_TWO_TABLES_2026-10-23.md`，AGENTS及项目状态末节优先于以前20格主关系和旧“相持”对抗默认规则。**本次未加入任何新原书章节或独立案例，仍43章194案，原V3.9.1、iOS九宫算法、失败CI、放弃V4.2、所有原书来源不动。** 五档和比喻胜负不等于两书作者已逐案验证，更不能作为临床疾病预言。
