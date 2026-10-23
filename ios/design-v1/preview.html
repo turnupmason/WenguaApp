@@ -355,7 +355,7 @@ body{background:#ebeff3;color:var(--black)}
 <div id="basis" class="result-panel" style="display:none"><div class="summary-card"><h3>书源依据</h3><p>《神奇之门》《开悟之门》原书与已保存的九宫计算记录。源码行号、哈希、原始研究数据库供内部溯源，不作为客户断词显示。</p><p>整套81组有序天地干、42条疾病增补及17组条件复合判断不能机械叠加，必须有真实角色和原书适用条件。</p></div></div>
 <div class="safe-notice">传统文化研究与古籍象意，不是现实医学诊断、预后或治疗建议。</div>
 </section>
-<section id="other" class="screen"><div class="entry"><h1 class="h1" id="other-title">其他功能</h1><p class="muted">当前只对健康·病情轻重的 V3.9.1 源书解释进行界面设计。多局、研习、案例检索、账户等将逐步建设；未完成的功能不冒充正式断案。</p><button class="secondary" data-nav="board">返回局式</button></div></section>
+<section id="other" class="screen"><div class="entry"><h1 class="h1" id="other-title">其他功能</h1><p class="muted">当前只对健康·病情轻重完成了专业九宫的界面原型。多局、研习、案例检索、账户等将逐步建设；未完成的功能不冒充正式断案。</p><button class="secondary" data-nav="board">返回局式</button></div></section>
 <nav class="bottombar" aria-label="主导航">
 <button class="active" data-tab="domain"><b>⌂</b>问事</button>
 <button data-tab="setup"><b>▦</b>起局</button>
@@ -459,7 +459,7 @@ function renderHeader(){
       '<div class="pillar-pair">'+colored("stem",v[0])+colored("branch",v[1])+'</div></div>';
   }).join("")+'</div>'+
   '<div class="bureau-band"><div class="bureau-primary">'+
-     '<span class="bureau-dun">阴遁　<strong>'+demo.bureau.ju+'局</strong></span>'+
+     '<span class="bureau-dun">'+(demo.bureau.dun==="yang"?"阳遁":"阴遁")+'　<strong>'+demo.bureau.ju+'局</strong></span>'+
      '<span class="bureau-xun">'+demo.xunHead+'旬</span></div>'+
      '<div class="bureau-details"><div><small>节气</small><strong>'+demo.solarTerm+
      '</strong></div><div><small>值符</small><strong>'+demo.valueStar+
