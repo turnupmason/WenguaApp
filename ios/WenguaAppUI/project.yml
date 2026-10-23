@@ -16,6 +16,8 @@ targets:
     sources:
       - path: WenguaDesignPreviewApp.swift
       - path: WenguaNativeCore.swift
+      - path: FrozenReadingV391.json
+        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.wengua.ios
