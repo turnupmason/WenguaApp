@@ -529,10 +529,11 @@ struct ProfessionalChartScreen: View {
                 Button("重新选时") {showAsk=true}.font(.caption).buttonStyle(.bordered)
             }
             HStack(alignment:.top,spacing:10) {
-                ForEach([
+                ForEach(Array([
                     ("年",chart.pillars.year),("月",chart.pillars.month),
                     ("日",chart.pillars.day),("时",chart.pillars.hour)
-                ],id: \.0) { entry in
+                ].enumerated()),id: \.offset) { indexed in
+                    let entry = indexed.element
                     VStack(spacing:2) {
                         Text(String(entry.1.prefix(1)))
                             .foregroundStyle(QFive.shade("stem",String(entry.1.prefix(1))))
@@ -544,15 +545,13 @@ struct ProfessionalChartScreen: View {
                     .frame(maxWidth:.infinity)
                 }
                 VStack(alignment:.leading,spacing:3) {
-                    Text((chart.bureau.dun=="yang" ? "阳遁" : "阴遁")+
-                         String(chart.bureau.ju)+"局")
+                    Text((chart.bureau.dun == "yang" ? "阳遁" : "阴遁") + String(chart.bureau.ju) + "局")
                     Text(chart.xunShou+"旬")
                     Text("值符："+chart.valueStar)
                     Text("值使："+chart.valueDoor)
                 }.font(.system(size:10)).foregroundStyle(QStyle.secondary)
             }
-            Text("旬空："+chart.voidBranches.joined(separator:"、")+
-                 " · 驿马："+chart.hourHorse+"（"+String(chart.hourHorsePalace)+"宫）")
+            Text("旬空：" + chart.voidBranches.joined(separator:"、") + " · 驿马：" + chart.hourHorse + "（" + String(chart.hourHorsePalace) + "宫）")
                 .font(.caption).foregroundStyle(QStyle.secondary)
         }
         .padding(12)
