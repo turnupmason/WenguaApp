@@ -1169,6 +1169,16 @@ struct TraditionalReadingPreview: View {
                             .font(.headline)
                         Text("当前已完成真实九宫事实计算，完整专业解读尚在接入中；不会输出未核准的吉凶结论。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
+                        Text("本盘九宫事实")
+                            .font(.title3.weight(.semibold))
+                            .padding(.top,10)
+                        ForEach(chart.palaces.sorted(by:{
+                            let a=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$0.id) ?? 9
+                            let b=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$1.id) ?? 9
+                            return a < b
+                        })) { palace in
+                            NativePalaceEvidenceCard(palace:palace)
+                        }
                     } else if FrozenPreview.readings.indices.contains(sampleIndex) {
                         let sample=FrozenPreview.readings[sampleIndex]
                         Text("研究案例 · " + sample.iso)
@@ -1208,6 +1218,56 @@ struct TraditionalReadingPreview: View {
                 }
             }
         }
+    }
+}
+
+// Separate fact report: fully expanded authentic offline nine-palace facts,
+// NOT a substitute for V3.9.1 domain reasoning or a clinical prognosis.
+struct NativePalaceEvidenceCard: View {
+    let palace: WenguaNativePalace
+    private var stageText: String {
+        palace.heavenStars.map { star in
+            star.star + "携" + star.carriedStem + "：" +
+            star.stages.map{$0.branch+$0.stage}.joined(separator:"、")
+        }.joined(separator:"；")
+    }
+    private var groundStages: String {
+        palace.earthStem + "：" +
+            palace.earthStages.map{$0.branch+$0.stage}.joined(separator:"、")
+    }
+    private var conditions: String {
+        let markers=palace.voidBranches.map{$0+"空"} +
+            (palace.horseBranch.map{["马"+$0]} ?? []) +
+            palace.tombs.map{($0.plane=="天盘" ? "天" : "地")+$0.stem+$0.branch+"墓"}
+        return markers.isEmpty ? "无已核定的空、马、墓标记" : markers.joined(separator:"、")
+    }
+    var body: some View {
+        VStack(alignment:.leading,spacing:9) {
+            HStack {
+                Text(palace.gua + String(palace.id) + "宫")
+                    .font(.headline)
+                Spacer()
+                Text(palace.branches.joined(separator:"、"))
+                    .font(.caption).foregroundStyle(QStyle.secondary)
+            }
+            if palace.id == 5 {
+                Text("地盘：" + palace.earthStem + "。中五不伪造普通星、门、神。")
+                    .font(.subheadline).foregroundStyle(QStyle.secondary)
+            } else {
+                Text("神：" + (palace.deity ?? "未核定") +
+                     "　门：" + (palace.door ?? "未核定"))
+                    .font(.subheadline)
+                Text("天盘：" + stageText)
+                    .font(.subheadline).foregroundStyle(QStyle.secondary)
+                Text("地盘：" + groundStages)
+                    .font(.subheadline).foregroundStyle(QStyle.secondary)
+                Text(conditions)
+                    .font(.caption).foregroundStyle(QStyle.blue)
+            }
+        }
+        .frame(maxWidth:.infinity,alignment:.leading)
+        .padding(16)
+        .background(.white,in:RoundedRectangle(cornerRadius:14))
     }
 }
 
