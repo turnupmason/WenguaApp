@@ -5,7 +5,7 @@ The old path remains separately tested through _research_full_graph opt-in.
 """
 import unittest
 from src.wengua.selected_duel_table_vnext import (
-    table_one, matchup, STRONG_WEAK_5X5, DUEL_OUTCOMES_3X3)
+    table_one, matchup, USER_DUEL_5X5, user_duel_lookup, VERSION)
 from src.wengua.domain_selected_energy_vnext import (
     DOMAIN_CASE_TEMPLATES, HEALTH_EDGES, selected_health_sequence)
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
@@ -18,14 +18,18 @@ BASE={"intent":"severity","relationship":"self",
 
 class CompactTables(unittest.TestCase):
     def test_two_separate_hardcoded_tables_and_25_case_exception(self):
-        self.assertEqual(len(STRONG_WEAK_5X5),5)
-        self.assertEqual(len(DUEL_OUTCOMES_3X3),3)
+        self.assertEqual(len(USER_DUEL_5X5),5)
+        self.assertEqual(sum(len(row) for row in USER_DUEL_5X5.values()),25)
         a=table_one("star","天心星","申",6)
         b=table_one("star","天冲星","申",3)
         comparison=matchup(a,b,actor_role="doctor",target_role="illness")
         self.assertEqual(comparison["relation"],"克")
         self.assertIn(comparison["ability"],("能","不能","艰难","条件待核"))
-        self.assertEqual(comparison["version"],"selected_two_table_duel_v1")
+        self.assertEqual(comparison["version"],VERSION)
+        self.assertEqual(comparison["symbol_duel_result"],
+                         user_duel_lookup(a["strength_label"],b["strength_label"]))
+        self.assertEqual(comparison["palace_duel_result"],
+                         user_duel_lookup(a["palace_strength_label"],b["palace_strength_label"]))
         overflow=table_one("star","天芮星","亥",1)
         self.assertEqual(overflow["relation"],"符号克宫")
         self.assertTrue(overflow["one_compound_fact"])
@@ -39,8 +43,12 @@ class CompactTables(unittest.TestCase):
         weak_a={**a,"strength_label":"极小","palace_strength_label":"极小"}
         high_b={**b,"strength_label":"极大","palace_strength_label":"极大"}
         self.assertEqual(matchup(weak_a,high_b,actor_role="a",target_role="b")["ability"],"不能")
-        mixed={**a,"palace_strength_label":"极小"}
-        self.assertEqual(matchup(mixed,b,actor_role="a",target_role="b")["ability"],"艰难")
+        mixed={**a,"strength_label":"极大","palace_strength_label":"极小"}
+        high_palace={**b,"strength_label":"极小","palace_strength_label":"极大"}
+        mixed_result=matchup(mixed,high_palace,actor_role="a",target_role="b")
+        self.assertEqual(mixed_result["ability"],"条件待核")
+        self.assertEqual(mixed_result["palace_duel_result"],"硬干反而受伤")
+        self.assertTrue(mixed_result["backfire_risk_symbolic"])
         blocked={**a,"restrictions":["旬空待核"]}
         self.assertEqual(matchup(blocked,b,actor_role="a",target_role="b")["ability"],"条件待核")
         same=table_one("star","天心星","申",3)
