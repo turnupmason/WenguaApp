@@ -1244,3 +1244,14 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - `src/wengua/health_palace_sequence_vnext.py` 已在原02天芮03天心04乙奇05患者后、90全部证据合断前新增**「年命、时干与乾坤全宫力量」**中文段；完整结构从 `src/wengua/health_severity_vnext_review.py`、`src/wengua/health_text_pipeline_vnext_review.py` 两层 V-next DTO 暴露。年命缺失要明确说不造盘；已有出生年乙丑样例需真实按盘定位，另测男性/女性/未知三个条件。用户问事可能已有具体原书条件，不可被新网中的研究级强弱档取代。
 - 回归 `tests/test_health_full_role_network_vnext.py` 包含真实时辰三种问事输入、星门神及天/地盘双干、所有方向角色对照、对病宫/患者宫逐层全交叉、重复事实不加票与完整断词顺序；旧源码字面断言改为同时核 collect_sequence 和共享模块。初次拆分模块后测试有2项源码位置断言失败，其失败CI保留，修正后需看最新同SHA CI。
 - 文档 `docs/HEALTH_FULL_ROLE_NETWORK_VNEXT_2026-10-23.md`；43章/194真实书案例、V3.9.1古籍/健康冻结、原天芮25格/更正20格主矩阵、81天地干/42病补充/17复合、已废弃V4.2、既有iOS离线起盘均未更动。这只是离线 V-next 研究入口，不是向App Store发布；强弱候选并非科学疾病模型。
+
+
+### 2026-10-23 · 最新产品计算结构：专题按需取用后只查两张硬编码表（覆盖全宫网默认方案）
+
+- **用户最新产品方向为「起盘已经含全部事实，但断案只抽需要的用神」，此处覆盖前期“每盘算乾坤两个宫、全部门星神干全交叉”默认逻辑。** 旧全宫网源码 `src/wengua/health_full_role_network_vnext.py` 不删除、不覆盖历史失败；只在显式 `inquiry["_research_full_graph"]=True` 调试回归时调用，默认不再用全笛卡尔积。
+- **选择器** `src/wengua/domain_selected_energy_vnext.py` 实际实现领域＋子领域 `("health","severity")`，其 `DOMAIN_CASE_TEMPLATES` 选择天芮、天心、乙奇、真实关系患者用神、时干、真实提供且定位的年命（可选）以及**男性乾六／女性坤二仅其一，未知性别两者不调用**，另加只有原书人物档案实际指定的辅助宫。九宫图仍由原有源起盘一次生成，不能因未选宫不审而偷偷删除盘面事实。
+- **表一**：`src/wengua/selected_duel_table_vnext.py:table_one` 只对被选符号调用已硬编码 `factor_energy_25_rules.inspect_strength_25`：星旺相休囚废、门干旺相休囚死 ×4主关系=20、五行第五种“符号克宫”保真；八神无自身月令，值符仍土。另取真实宫的月令、宫力、旬空、墓、刑、门迫、全十二长生。每个选中角色不再自动对整个宫的星门神及所有天地干反复计算二十格。
+- **表二**：`selected_duel_table_vnext.py:matchup` 固定两侧符号 **5×5**、两侧宫力 **5×5** 对比加 **3×3** 合并表；结合两宫真实生克方向与阻碍输出**能／不能／艰难／条件待核／不适用**。它是小规模固定表，不把先前20×20、4×20×20、16×25×25共数万条索引加载进默认问事流程。只有领域模板 `HEALTH_EDGES` 确定的两个用神才算，不无条件穷举每对角色及所有符号。
+- **合断**：疾病模板 `HEALTH_POLARITY` 决定实际关系有效时有利/不利的**候选方向**，并去重同一真实宫关系，保留原天芮25格唯一复合事实及已核原书条件；统计独立有利、不利与待定，给保守研究候选或证据不足。源用神不明、临床效果、药量、生死和确切应期不能由未经两书独立校准的五档术数等级保证。
+- **文件／测试**：`src/wengua/domain_selected_energy_vnext.py`、`src/wengua/selected_duel_table_vnext.py`、`tests/test_domain_selected_energy_vnext.py`；原 `tests/test_health_full_role_network_vnext.py` 仅加显式历史研究开关保留所有归档行为；专项 CI 配置 `.github/workflows/health_vnext_conditional_review.yml` 现须同时覆盖两张表的新测试和原 V3.9.1 不变检查；文档 `docs/DOMAIN_SELECTIVE_TWO_TABLE_PIPELINE_VNEXT_2026-10-23.md`。
+- **当前发布状态**：V-next **Python 研究候选**默认按需跑，正式 V3.9.1 / iOS 离线排盘与冻结模板未切；两书43章194案例、81原书天地干、42疾病补充、17复合、老 CI 失败记录和弃用 V4.2 均原样保留。其它领域子类型尚未据其原书模板接线，不能声称已经通用上线。GitHub Actions 必须以本轮最新 main HEAD 同一SHA核实。
