@@ -1,0 +1,38 @@
+name: Health Conditional Evidence Review Preview (V-next, V3.9.1 preserved)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_severity_vnext_review.py'
+      - 'src/wengua/health_text_pipeline_vnext_review.py'
+      - 'tests/test_health_vnext_conditional_review.py'
+      - 'scripts/preview_health_vnext_conditional.py'
+      - '.github/workflows/health_vnext_conditional_review.yml'
+  workflow_dispatch:
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify new gate, unique actual facts, abstention, four unchanged V3.9.1 readings
+        run: |
+          python -m unittest discover -s tests -p test_health_vnext_conditional_review.py -v
+          python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
+      - name: Create before and after example report from independent source casts
+        run: |
+          python -m scripts.preview_health_vnext_conditional "artifacts/vnext_review_examples_python_${{ matrix.python-version }}.json"
+      - name: Preserve comparison and failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-vnext-review-examples-python-${{ matrix.python-version }}
+          path: artifacts/
+          retention-days: 90
+          if-no-files-found: warn
