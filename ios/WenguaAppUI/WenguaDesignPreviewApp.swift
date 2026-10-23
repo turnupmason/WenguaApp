@@ -40,7 +40,7 @@ enum QFive {
                         "天英":"火","天芮":"土","天柱":"金","天心":"金","天禽":"土"]
     static let doors = ["休门":"水","生门":"土","伤门":"木","杜门":"木",
                         "景门":"火","死门":"土","惊门":"金","开门":"金"]
-    static let deities = ["值符":"土","螣蛇":"火","太阴":"金","六合":"木",
+    static let deities = ["值符":"土","螣蛇":"火","腾蛇":"火","太阴":"金","六合":"木",
                           "白虎":"金","玄武":"水","九地":"土","九天":"金"]
     static let branches = ["子":"水","亥":"水","寅":"木","卯":"木",
                            "巳":"火","午":"火","申":"金","酉":"金",
@@ -66,6 +66,25 @@ enum QFive {
                                   "午":"申","戌":"申","巳":"亥","酉":"亥",
                                   "丑":"亥","亥":"巳","卯":"巳","未":"巳"]
     static var horseBranch: String { horseByHourBranch["卯"] ?? "" }
+    static let opposite = [1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4]
+    static let sixClash = ["子":"午","午":"子","丑":"未","未":"丑",
+                           "寅":"申","申":"寅","卯":"酉","酉":"卯",
+                           "辰":"戌","戌":"辰","巳":"亥","亥":"巳"]
+    static func tombHorseRelation(palace: Int, tombBranch: String,
+                                  horseBranch: String, horsePalace: Int) -> String {
+        if sixClash[tombBranch] == horseBranch {
+            return "墓支" + tombBranch + "与马支" + horseBranch +
+              "地支六冲：仅为冲墓候选，不代表已冲开"
+        }
+        if palace == horsePalace {
+            return "驿马与入墓同宫，但" + horseBranch + "与" + tombBranch + "并不六冲"
+        }
+        if opposite[palace] == horsePalace {
+            return "驿马位于对宫，但" + horseBranch + "与" + tombBranch +
+              "不六冲，不能以宫位相对代替地支冲"
+        }
+        return "马支与墓支不六冲，不能自动断墓开"
+    }
     static func localBranches(_ p: QPalace) -> [String] {p.branches.map {String($0)}}
     static func void(_ p: QPalace) -> [String] {
         if let c=p.computed { return c.voidBranches }
@@ -343,7 +362,9 @@ struct ProfessionalChartScreen: View {
         .navigationTitle(nativeChart == nil ? "局式 · 固定测试盘" : "局式 · 原生实算")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $chosenPalace) { palace in
-            ProfessionalPalaceDetail(palace: palace)
+            ProfessionalPalaceDetail(palace: palace,
+                hourHorse:nativeChart?.hourHorse ?? "巳",
+                hourHorsePalace:nativeChart?.hourHorsePalace ?? 4)
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.visible)
         }
@@ -377,6 +398,59 @@ struct ProfessionalChartScreen: View {
     }
 }
 
+// Both heaven and earth per-branch life stages share ONE display contract.
+// Native casts read the actual Swift engine, frozen preview recalculates from
+// the identical canonical full 10x12 dictionary, not hardcoded palace labels.
+struct QLifeRow: Identifiable {
+    let id: String
+    let plane: String
+    let stem: String
+    let stages: [WenguaNativeStage]
+}
+extension QPalace {
+    var lifeRows: [QLifeRow] {
+        if let cell=computed {
+            let tops=cell.heavenStars.enumerated().map { index, star in
+                QLifeRow(id:"h"+String(index),plane:"天",
+                         stem:star.carriedStem,stages:star.stages)
+            }
+            return tops + [QLifeRow(id:"earth",plane:"地",
+                 stem:cell.earthStem,stages:cell.earthStages)]
+        }
+        let bs=QFive.localBranches(self)
+        func actualStages(_ stem:String) -> [WenguaNativeStage] {
+            bs.compactMap { branch in
+                guard let state=WenguaNativeCore.stages[stem]?[branch] else {return nil}
+                return WenguaNativeStage(branch:branch,stage:state)
+            }
+        }
+        let tops=sky.components(separatedBy:"·").enumerated().compactMap { index, stem -> QLifeRow? in
+            guard !stem.isEmpty else {return nil}
+            return QLifeRow(id:"h"+String(index),plane:"天",
+                            stem:stem,stages:actualStages(stem))
+        }
+        if id==5 {return []}
+        return tops + [QLifeRow(id:"earth",plane:"地",
+                      stem:ground,stages:actualStages(ground))]
+    }
+}
+struct PalaceLifeRow: View {
+    let line: QLifeRow
+    var body: some View {
+        HStack(spacing: 1) {
+            Text(line.plane).foregroundStyle(QStyle.secondary)
+            Text(line.stem).foregroundStyle(QFive.shade("stem",line.stem))
+            ForEach(line.stages,id: \.branch) { stage in
+                Text(stage.branch).foregroundStyle(QFive.shade("branch",stage.branch))
+                Text(stage.stage).foregroundStyle(QStyle.secondary)
+            }
+        }
+        .font(.system(size: 9))
+        .lineLimit(1)
+        .minimumScaleFactor(0.72)
+    }
+}
+
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
 
@@ -387,24 +461,27 @@ struct ProfessionalPalaceTile: View {
                 Text("中五")
                     .font(.system(size: 22))
                     .foregroundStyle(QStyle.secondary)
+                if !palace.ground.isEmpty {
+                    Text("地盘 " + palace.ground)
+                        .font(.system(size: 12))
+                        .foregroundStyle(QFive.shade("stem",palace.ground))
+                }
                 Text("特殊宫位")
                     .font(.system(size: 10))
                     .foregroundStyle(QStyle.secondary)
                 Spacer()
             } else {
                 HStack(spacing: 2) {
-                    Text(palace.branches)
-                    Text("·")
-                    Text(String(palace.stages.replacingOccurrences(of: "天芮携", with: "")
-                        .prefix(8)) + "…")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.6)
+                    ForEach(Array(palace.branches.map{String($0)}.enumerated()),id: \.offset) { part in
+                        Text(part.element).foregroundStyle(QFive.shade("branch",part.element))
+                    }
+                    Text("·").foregroundStyle(QStyle.secondary)
+                    Text(palace.element + "行")
+                        .foregroundStyle(QFive.palette[palace.element] ?? QStyle.secondary)
                     Spacer(minLength: 0)
-                    Text("\(palace.id)")
+                    Text("\(palace.id)").foregroundStyle(QStyle.secondary)
                 }
-                .font(.system(size: 9))
-                .foregroundStyle(QStyle.secondary)
-                .lineLimit(1)
+                .font(.system(size: 10)).lineLimit(1)
 
                 HStack {
                     Text(palace.ground)
@@ -446,6 +523,10 @@ struct ProfessionalPalaceTile: View {
                 }
                 .font(.system(size: 17, weight: .medium))
 
+                VStack(alignment: .leading, spacing: 2) {
+                    ForEach(palace.lifeRows) { line in PalaceLifeRow(line:line) }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
                 HStack(spacing: 3) {
                     ForEach(palace.roles, id: \.self) { role in
                         Text(role)
@@ -454,27 +535,27 @@ struct ProfessionalPalaceTile: View {
                     }
                 }
                 .frame(minHeight: 12, alignment: .leading)
-                HStack(spacing: 3) {
-                    ForEach(QFive.void(palace),id: \.self) { branch in
-                        Text(branch + "空")
-                            .foregroundStyle(QStyle.secondary)
-                    }
-                    if let horse=QFive.horse(palace) {
-                        Text("马" + horse)
-                            .foregroundStyle(QFive.shade("branch",horse))
+                VStack(alignment: .leading, spacing: 2) {
+                    HStack(spacing: 3) {
+                        ForEach(QFive.void(palace),id: \.self) { branch in
+                            Text(branch + "空").foregroundStyle(QFive.shade("branch",branch))
+                        }
+                        if let horse=QFive.horse(palace) {
+                            Text("马" + horse).foregroundStyle(QFive.shade("branch",horse))
+                        }
                     }
                     ForEach(QFive.heavenTombs(palace) + QFive.earthTombs(palace),id: \.self) { label in
                         Text(label)
-                            .foregroundStyle(QStyle.red)
+                            .foregroundStyle(QFive.shade("stem",String(label.dropFirst().prefix(1))))
+                            .fixedSize(horizontal: true,vertical: false)
                     }
                 }
                 .font(.system(size: 9, weight: .semibold))
-                .lineLimit(1).minimumScaleFactor(0.65)
             }
         }
         .padding(.horizontal, 7)
         .padding(.vertical, 9)
-        .frame(maxWidth: .infinity, minHeight: 156, maxHeight: 156, alignment: .topLeading)
+        .frame(maxWidth: .infinity, minHeight: 238, alignment: .topLeading)
         .background(.white)
         .contentShape(Rectangle())
         .accessibilityLabel(palace.id == 5
@@ -485,6 +566,8 @@ struct ProfessionalPalaceTile: View {
 
 struct ProfessionalPalaceDetail: View {
     let palace: QPalace
+    let hourHorse: String
+    let hourHorsePalace: Int
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     private var conditionDescription: String {
@@ -496,9 +579,19 @@ struct ProfessionalPalaceDetail: View {
         let horseState = horse == nil ? "不落本宫" : "在本宫" + (horse ?? "")
         let top = sky.isEmpty ? "无" : sky.joined(separator:"、")
         let lower = earth.isEmpty ? "无" : earth.joined(separator:"、")
+        let allTombBranches = palace.computed?.tombs.map{$0.branch} ??
+            (sky + earth).compactMap { label -> String? in
+                let chars=Array(label)
+                return chars.count>=4 ? String(chars[2]) : nil
+            }
+        let conflictNotes=allTombBranches.map { branch in
+            QFive.tombHorseRelation(palace:palace.id,tombBranch:branch,
+                                    horseBranch:hourHorse,horsePalace:hourHorsePalace)
+        }
         return ["旬空：" + emptiness,"时支驿马：" + horseState,
                 "天盘干入墓：" + top,"地盘干入墓：" + lower,
-                "未经原书条件确认，不因马和墓同现就断墓已冲开"].joined(separator:"；")
+                "冲墓条件：" + (conflictNotes.isEmpty ? "本宫无入墓" :
+                  conflictNotes.joined(separator:"；"))].joined(separator:"；")
     }
     private var roleDescription: String {
         let identity = palace.roles.isEmpty
@@ -532,7 +625,7 @@ struct ProfessionalPalaceDetail: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(palace.name + " · " + palace.element + "行")
                 .font(.system(size:27,weight:.semibold))
-                .foregroundStyle(QStyle.text)
+                .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
             Text(palace.computed == nil ? "已计算测试盘 · 古籍研究" :
                   "本机 Swift 实算九宫 · 不是现实疾病诊断")
                 .font(.caption).foregroundStyle(QStyle.secondary)
@@ -549,24 +642,62 @@ struct ProfessionalPalaceDetail: View {
                      text:"中五不套普通八门、九星与八神；中五地盘实测干："+palace.ground)
         } else {
             factsGrid
-            factCard("十二长生",text:palace.stages)
+            lifeDetailCard
             factCard("空亡 · 驿马 · 入墓",text:conditionDescription)
             factCard("宫位与角色",text:roleDescription)
+            factCard("旺相休囚废 · 击刑 · 门迫",
+                     text:"目前原生结构尚无上述状态经书源校对的独立触发字段；不得伪造或将未计算当作未发生。")
         }
     }
     private var factsGrid: some View {
         LazyVGrid(columns: columns, spacing: 10) {
             valueCard("八神",value:palace.deity,
                       color:QFive.shade("deity",palace.deity))
-            valueCard("九星",value:palace.stars,
-                      color:QFive.shade("star",
-                         palace.stars.components(separatedBy:"·").first ?? ""))
+            multiValueCard("九星",value:palace.stars,kind:"star")
             valueCard("八门",value:palace.door,
                       color:QFive.shade("door",palace.door))
             stemCard("天 / 地盘干",sky:palace.sky,ground:palace.ground)
         }
     }
 
+    private var lifeDetailCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text("十二长生 · 天盘／地盘分别实算").font(.headline)
+            ForEach(palace.lifeRows) { line in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(line.plane + "盘干 " + line.stem)
+                        .foregroundStyle(QFive.shade("stem",line.stem))
+                    HStack(spacing: 7) {
+                        ForEach(line.stages,id: \.branch) { stage in
+                            HStack(spacing: 2) {
+                                Text(stage.branch)
+                                    .foregroundStyle(QFive.shade("branch",stage.branch))
+                                Text(stage.stage).foregroundStyle(QStyle.secondary)
+                            }
+                        }
+                    }.font(.subheadline)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(15)
+        .background(.white, in: RoundedRectangle(cornerRadius:15))
+    }
+    private func multiValueCard(_ label:String,value:String,kind:String) -> some View {
+        VStack(alignment:.leading,spacing:10) {
+            Text(label).font(.caption).foregroundStyle(QStyle.secondary)
+            HStack(spacing:2) {
+                ForEach(Array(value.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
+                    Text(entry.element).foregroundStyle(QFive.shade(kind,entry.element))
+                }
+            }
+            .font(.system(size:20,weight:.medium))
+            .lineLimit(1).minimumScaleFactor(0.65)
+        }
+        .frame(maxWidth:.infinity,minHeight:90,alignment:.leading)
+        .padding(13)
+        .background(.white,in:RoundedRectangle(cornerRadius:15))
+    }
     private func detailTag(_ label: String) -> some View {
         Text(label)
             .font(.caption2)
