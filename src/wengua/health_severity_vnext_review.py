@@ -231,6 +231,7 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
         "ordered_palace_roles":sequence["ordered_roles"],
         "macro_fuyin_fanyin":sequence["macro"],
         "qualitative_palace_relationships":sequence["interactions"],
+        "full_health_role_strength_network":sequence["full_health_role_strength_network"],
         "audit":{
             "legacy_v39_symbolic_verdict":
                 legacy["audit"]["v37_actual_health_priority_verdict"],
