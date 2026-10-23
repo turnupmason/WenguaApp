@@ -893,3 +893,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **代码**：`src/wengua/health_tianrui_25_matrix.py:inspect_tianrui_25` 根据原始真实月令+九宫宫号五行选 **唯一一格**；输出原始星/宫月令、五行关系、格名、有限/条件/可能有效/受阻、真实限制、可用吉凶方向与原始说明。 由 `src/wengua/health_palace_sequence_vnext.py` 天芮宫初步阶段调用；**「天芮月令」和「宫星生克」二合一条复合证据**，旧的双条加票已修正。保持先伏反吟→天芮→天心乙奇→患者年命→时干辅助→独立吉凶汇总→应期。
 - **测试/证据**：`tests/test_health_tianrui_25_matrix.py` 以原始月令计算结合真实九宫对应5个宫型共覆盖25/25；还检查弱宫制旺星应延期、强宫制弱星、空墓刑迫、九星「废」与普通「死」不得混用、封存实盘仅1张病星复合证据；`scripts/preview_health_tianrui_25.py` 输出实际可达的25组季节+宫位事实（**不等于25个完整独立起盘，更非预测准确率**）。`.github/workflows/health_vnext_conditional_review.yml` Python3.11/3.12 自动保存25格 JSON + 四张封存 V3.9.1 未变全文，不删失败 Actions。
 - **阶段门槛**：本次只更改独立 V-next Python 审阅版本；原书194例、43章、81原书天地干、42疾病补充、17复合规则、V3.9.1及iOS已核定起盘不修改，V4.2永不恢复，没在iPhone正式启用。真空假空判据、25个象意对应作者全文、未调参新家族结果仍需独立核验。
+
+
+## 2026-10-23 · 全专题能量规则工程交接（非原书章节，不计入43章）
+- 用户再次明确 **「任何事需逐因素核实际强弱」**，本次补充强制 AGENTS 规范，保留 43章/194书内案例及原书数据库。值符按**土**，JS与Swift原有配置保持。
+- 新事实抽象：`src/wengua/factor_energy_review.py` + `tests/test_factor_energy_review.py` + `docs/CROSS_DOMAIN_ENERGY_CONTRACT_2026-10-23.md`；只读研究态，不修改 V3.9.1、iOS 原生起盘、25格天芮、废弃 V4.2 或历史失败记录。跨章节新事件数 0。
+- 用户示例原值 `申月+10-4=+6`、`亥月+3-4=-1` 原样记录为尚未校准的研究算术假说；实际震木宫的月令分别为死/相，不能只套固定 -4 得出有效宫克，更不可据此给医学加药/治愈建议。细节核对见新文档及 AGENTS 末节。新 GitHub commit 和 CI 以最新 main 审核为准。
