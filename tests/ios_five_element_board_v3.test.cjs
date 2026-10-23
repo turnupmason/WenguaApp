@@ -69,3 +69,53 @@ test("void, hour horse and both sky/ground tomb are from source branches, not fr
 test("no false automatic tomb opening without true six branch clash",()=>{
  for(const x of samples)assert.deepEqual(x.openedTombs,[]);
 });
+
+test("every actual palace retains source heaven AND earth lifecycle for all real branches",()=>{
+  for(const chart of samples)for(const p of chart.palaces){
+    assert.equal(p.earthStages.length,p.branches.length);
+    for(const z of p.earthStages){
+      assert.ok(p.branches.includes(z.branch));
+      assert.ok(z.stage);
+      five.element("branch",z.branch);
+    }
+    for(const z of p.heaven){
+      assert.equal(z.stages.length,p.branches.length);
+      for(const life of z.stages)assert.ok(p.branches.includes(life.branch));
+    }
+    if(p.p===5){
+      assert.deepEqual(p.heaven,[]);
+      assert.equal(p.door,null);
+      assert.equal(p.deity,null);
+    }
+  }
+  const coHosted=samples.flatMap(x=>x.palaces).filter(p=>p.heaven.length===2);
+  assert.ok(coHosted.length>=4);
+  for(const p of coHosted){
+    assert.ok(p.heaven.some(s=>s.star==="天禽"));
+    assert.ok(p.heaven.some(s=>s.star==="天芮"));
+    assert.equal(p.heaven.reduce((n,h)=>n+h.stages.length,0),2*p.branches.length);
+  }
+});
+test("opposite palace and same palace do not mean a six-branch horse versus tomb clash",()=>{
+ const clash={子:"午",午:"子",丑:"未",未:"丑",寅:"申",申:"寅",卯:"酉",
+  酉:"卯",辰:"戌",戌:"辰",巳:"亥",亥:"巳"};
+ const opposite={1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4};
+ let opposition=0;
+ for(const chart of samples)for(const p of chart.palaces)for(const tomb of p.tomb){
+    assert.notEqual(clash[tomb.branch],chart.hourHorse);
+    if(opposite[p.p]===chart.hourHorsePalace)opposition++;
+ }
+ assert.ok(opposition>0,"must actually cover an opposing palace without false clash");
+});
+test("five-element full canonical mapping includes variants and all elements",()=>{
+ for(const [name,elem] of Object.entries({甲:"木",丁:"火",戊:"土",辛:"金",壬:"水"})){
+   assert.equal(five.element("stem",name),elem);
+ }
+ for(const [name,elem] of Object.entries({天心:"金",天芮:"土",天辅:"木",天蓬:"水",天英:"火"})){
+   assert.equal(five.element("star",name),elem);
+ }
+ for(const [name,elem] of Object.entries({休门:"水",生门:"土",杜门:"木",景门:"火",开门:"金"})){
+   assert.equal(five.element("door",name),elem);
+ }
+ assert.equal(five.element("deity","螣蛇"),five.element("deity","腾蛇"));
+});
