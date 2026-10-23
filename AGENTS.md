@@ -1427,3 +1427,15 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 5. **方向全图、物理去重。** 新 `src/wengua/health_full_role_network_vnext.py` 给每个真实角色完整 `nodes`，输出其全部 `directed_edges` 和对病宫、患者宫的 `focus_against_disease_and_patient`，且逐层提供 `all_cross_layer_factor_pairs`。同一个真实宫即使同时被称作乾、患者、年命，也应留下别名身份关联和同宫事实，记录 `physical_pair_id`、重复关系首见 ID，**新增交叉矩阵一律不向吉凶证据表自动加票**。真/假空、应期等原书完整条件未核实仍标待核。
 6. **模板/状态**：`src/wengua/health_palace_sequence_vnext.py` 必须在“全部证据合断”之前显示“年命、时干与乾坤全宫力量”，用自然、简洁中文记录以上完整宫力和生克方向；审计详表留在 `full_health_role_strength_network`，并经 `health_severity_vnext_review.py` 与 `health_text_pipeline_vnext_review.py` 的 V-next 独立 DTO 提供。**严禁声称 V3.9.1 正式断词或已核定 iOS 离线接口已切换**，也不能从五档术数强弱提出用药、诊断、死亡/治愈日期等现实医疗结论。
 7. **交接/验收**：`docs/HEALTH_FULL_ROLE_NETWORK_VNEXT_2026-10-23.md`、`tests/test_health_full_role_network_vnext.py` 是必须查的新增流程和回归。Python3.11/3.12 全量CI、冻结4盘 V3.9.1 SHA及两原书已见独立家族烟测仍要保留；旧源码字面断言因模块抽取而失败的 CI 不许删除，后续修复同时核函数调用与真实共享实现。两书43章、194例、81天地干、42疾病补充、17复合、弃用V4.2及原有SwiftUI原盘事实不动。五档数值尚是研究假说，独立新家族校准仍为未来门槛。
+
+
+## 2026-10-23 · 最新强制覆盖上轮全宫网：起盘后按领域/子专题按需取用＋两个硬编码表
+
+> **用户最新明确更正，优先级高于上方「乾坤双宫必查、各宫全符号×全宫穷举」说明**。旧研究版不得删除、失败记录不得删除，但**默认运行路径不再使用**。九宫图起盘事实完整，不等于断案要对全部宫和全部符号做力量查表。完整规范 `docs/DOMAIN_SELECTIVE_TWO_TABLE_PIPELINE_VNEXT_2026-10-23.md`。
+
+1. **严格按顺序：** 真实时辰起出唯一完整九宫→用户确定断案**领域**及该领域**细分类别**→从该领域已核原著断事模板选出**必须的用神及人物关系**→仅对选中的用神运行**表一**“月令×落宫→因素力量五档”→仅对模板规定的**用神对抗边**运行**表二**“双方因素五档＋双方宫力＋实际两宫克生＋空墓刑迫→谁能作用/艰难/不能/待核”→根据该领域明确的吉凶对应关系去重统计有利、不利和待定证据→最后合断应期。未选择的宫不查表、不参与交叉、不生成冗长解释。矩阵必须在代码中预置，断案时禁止即时猜测阈值。
+2. **疾病 severity 当前已实现的选择器** `src/wengua/domain_selected_energy_vnext.py:DOMAIN_CASE_TEMPLATES`：选天芮病星、天心医生、乙奇医药、来源人物绑定的患者用神、时干事体；真实合法出生年干支**提供且起盘能定位年命干落宫**才选年命，否则明确缺失；**男只选乾六宫、女只选坤二宫；性别未知两个都不选**。原著明确按关系取用而引入的额外参考宫按来源条件才选，绝不能把未选的乾坤作为额外凶吉票。性别宫仍仅为辅助，不能替换患者用神。旧 `AGENTS` 对无条件算乾坤两宫的要求作为历史实验保留、已被本条明确修正。
+3. **两个表，不是全盘笛卡尔积：** 表一直接复用硬编码 `src/wengua/factor_energy_25_rules.py` 的九星／门／干 **4×5=20主关系**＋实际五行第五关系兜底；八神默认无本体月令，值符土；对一宫只取已选中的关键象、必要宫环境和约束，不能无条件计算此宫全部星门神天地干。表二 `src/wengua/selected_duel_table_vnext.py` 固定 `STRONG_WEAK_5X5` 比两符号，另用相同预设比两宫，`DUEL_OUTCOMES_3X3` 综合后结合宫克/生/比和/同宫与限制输出传统候选。这是恒定规模小表，不在每次断事初始化以前的400、1600、10000条跨层组合大对象。
+4. **疾病只比较模板选的对抗，且主次可追溯**：天心→天芮/患者、乙→天芮/患者、患者↔病宫、时干→天芮/患者，年命/性别对应乾或坤（有才有）→天芮/患者，其它真实已绑定辅助宫→指定角色。对抗方向决定医学古籍传统有利/不利象，不是能量越大越吉。重复物理宫关系只能形成一次合格候选，弱克强等归待定；结合病星唯一25格和原书证据/反证汇总候选吉凶。年命缺失绝不按问测年造；其他领域必须有自己的书源选用、用事类型和吉凶对抗映射，当前仅疾病轻重子专题接通，其余不得伪装已做。
+5. **真实热路径已改**：`health_palace_sequence_vnext.py:collect_sequence` **默认直接调用** `selected_health_sequence`，`format_sequence_sections` 默认走 `selected_health_sections`，返回 `full_health_role_strength_network` 字段但结构为 `mode=selective`、只含用神 `nodes`/边 `directed_edges`/实际 `table_one_queries`/ `table_two_queries`。此前 `health_full_role_network_vnext.py` 全宫全符号历史实验只有传 `inquiry["_research_full_graph"]=True` 才触发，保留原代码、老回归与失败 CI 以作研究比对，绝不作为每次用户断卦的默认步骤。
+6. **验证与发布隔离**：`tests/test_domain_selected_energy_vnext.py` 验证男性只选乾、女性只选坤、未知不选、实际年命可选、未选择因素无全局笛卡尔积、二表确定性、天芮唯一旧25复合格与当前吉凶候选计数；`tests/test_health_full_role_network_vnext.py` 的 `_research_full_graph` 显式维持历史完整网络测试。冻结 V3.9.1、原生 iOS 起盘、既有43章194事件、81天地干、42病增补、17复合、失败实验和已废弃 V4.2 完整保留。所有五档力量标签尚属**未做独立原书校准的研究级假说**，不能据之向现实用户推荐加药、宣告根治或推出生死日期。每次最新 CI 分 Python3.11/3.12 全量及 V-next 专项均须确认。
