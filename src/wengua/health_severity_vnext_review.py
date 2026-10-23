@@ -57,8 +57,10 @@ def review_ordered_pairs(pairs, inquiry):
             state="needs_complete_source_predicate"
             why="原书存在条件语句或特殊限制，尚无逐项核实的可执行判据："+ "、".join(missing)
         elif kind in SOURCE_HEALTH_POLARITIES:
-            state="source_health_phrase_no_extra_gate"
-            why="原书含测病专述；本条无已标注的条件缺口，仍须结合宫位主证"
+            # The index contains keyword-presence flags, not an executable
+            # author predicate. Absence of a known flag ≠ gates passed.
+            state="health_phrase_needs_full_gate"
+            why="原书有测病专述，但索引没有可逐项核实的完整条件表达式，不能单凭词句直接定吉凶"
         else:
             state="context_only"
             why="天地干名称命中，但未证明此处能作疾病轻重的独立吉凶证据"
@@ -176,10 +178,10 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
     pairs=review_ordered_pairs(legacy["audit"]["v37_81_ordered_full_book_pairs"],inquiry)
     source_patient=[x for x in pairs if "患者宫" in x["roles"]]
     confirmed_bad=any(x["applicability"] in BOOK_BAD_PATIENT
-                      and x["source_state"]=="source_health_phrase_no_extra_gate"
+                      and x["source_state"]=="fully_verified_original_predicate"
                       for x in source_patient)
     uncertain_bad=any(x["applicability"] in BOOK_BAD_PATIENT
-                      and x["source_state"]!="source_health_phrase_no_extra_gate"
+                      and x["source_state"]!="fully_verified_original_predicate"
                       for x in source_patient)
     relation=element_relation(ELEMENTS[person["palace"]],ELEMENTS[ill["palace"]])
     star_relation=element_relation(ELEMENTS[ill["palace"]],"土")
@@ -197,9 +199,9 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
         unverified_bad_patient_pair=uncertain_bad)
     sections={s["id"]:s["text"] for s in v391["sections"]}
     def has(key):return sections.get(key,"")
-    q=list(x for x in pairs if x["source_state"]=="source_health_phrase_no_extra_gate")
     pending=list(x for x in pairs if x["source_state"] in
-       ("needs_complete_source_predicate","source_disagreement","missing_duration"))
+       ("needs_complete_source_predicate","health_phrase_needs_full_gate",
+        "source_disagreement","missing_duration"))
     life=dedup_lifecycle_facts(v391["source_chart_evidence"])
     # A useful *presentation* order, not a new claim or post hoc answer fit.
     lead=(result["label"]+"。"+result["reason"]+"。"
@@ -241,7 +243,8 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
             "patient_to_illness":relation,"illness_to_star":star_relation,
             "medicine_controls":medicine_controlled,
             "conditional_source_pairs":pairs,
-            "book_81_catalog_complete":len(pairs)==9,
+            "book_81_catalog_size":legacy["audit"]["v37_source_book_pair_count"],
+            "matched_real_star_pairs":len(pairs),
             "supplement_rules_preserved":len(legacy["audit"]["v34_42_directional_pairs"]),
             "composites_preserved":len(legacy["audit"]["v36_17_source_rechecked_composites"]),
             "actual_stage_facts_unique":life,
