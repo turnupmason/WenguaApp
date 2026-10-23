@@ -68,6 +68,22 @@ class PureDecisionTests(unittest.TestCase):
         self.assertEqual(out[0]["roles"],["病宫","值符宫"])
         self.assertEqual(out[0]["supplement_id_internal"],"health_supplement_pair_02")
 
+    def test_sky_earth_same_stem_same_branch_are_separate_facts(self):
+        both={"stem":"丙","palace":6,"actual_stage_facts":[
+            {"branch":"戌","stage":"墓"},{"branch":"亥","stage":"绝"}]}
+        roles={x:both for x in ("patient","illness_tianrui_heaven",
+                  "doctor_tianxin_heaven","medicine_yi","hour_event")}
+        chart={"palaces":{str(i):{"earth_stem":"丙","heaven_stars":[],
+                    "door":None,"deity":None} for i in range(1,10)}}
+        facts=dedup_lifecycle_facts(roles,chart=chart)
+        self.assertEqual(len(facts),14) # 12 real Earth branches + 2 sky branches
+        sky=[x for x in facts if x["plane"]=="天盘" and x["palace"]==6]
+        earth=[x for x in facts if x["plane"]=="地盘" and x["palace"]==6]
+        self.assertEqual({x["stage"] for x in sky},{"墓","绝"})
+        self.assertEqual({x["stage"] for x in earth},{"墓","绝"})
+        self.assertTrue(set(x["fact_id"] for x in sky).isdisjoint(
+                        x["fact_id"] for x in earth))
+
     def test_overlapping_roles_share_one_real_lifecycle_fact(self):
         common={"stem":"丙","palace":6,"actual_stage_facts":[
                 {"branch":"戌","stage":"墓"},{"branch":"亥","stage":"绝"}]}
