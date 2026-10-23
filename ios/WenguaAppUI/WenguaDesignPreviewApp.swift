@@ -558,8 +558,8 @@ struct ProfessionalChartScreen: View {
                 Rectangle().fill(QStyle.line).frame(height:1)
                 HStack(alignment:.top,spacing:9) {
                     factLabel("节气",chart.solarTerm)
-                    factLabel("值符",chart.valueStar)
-                    factLabel("值使",chart.valueDoor)
+                    factLabel("值符",chart.valueStar,kind:"star")
+                    factLabel("值使",chart.valueDoor,kind:"door")
                 }
                 Text("时家转盘 · " + chart.timezone + " · 旬空：" +
                      chart.voidBranches.joined(separator:"、") + " · 时马：" +
@@ -590,10 +590,13 @@ struct ProfessionalChartScreen: View {
         .frame(maxWidth:.infinity)
     }
 
-    private func factLabel(_ title: String,_ value: String) -> some View {
-        VStack(alignment:.leading,spacing:5) {
+    private func factLabel(_ title:String,_ value:String,kind:String? = nil) -> some View {
+        let normalized=value.replacingOccurrences(of:"星",with:"")
+        let ink=kind.map{QFive.shade($0,normalized)} ?? QStyle.text
+        return VStack(alignment:.leading,spacing:5) {
             Text(title).font(.system(size:11)).foregroundStyle(QStyle.secondary)
-            Text(value).font(.system(size:15,weight:.semibold)).foregroundStyle(QStyle.text)
+            Text(value).font(.system(size:15,weight:.semibold))
+                .foregroundStyle(ink)
                 .lineLimit(1).minimumScaleFactor(0.82)
         }
         .frame(maxWidth:.infinity,alignment:.leading)
@@ -693,7 +696,8 @@ struct ProfessionalPalaceTile: View {
     }
     private var palaceHeading: some View {
         HStack(alignment:.firstTextBaseline,spacing:3) {
-            Text(palace.name).font(.system(size:13,weight:.bold)).foregroundStyle(QStyle.text)
+            Text(palace.name).font(.system(size:13,weight:.bold))
+                .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
             Spacer(minLength:0)
             HStack(spacing:1) {
                 ForEach(Array(palace.branches.map{String($0)}.enumerated()),id: \.offset) { part in
