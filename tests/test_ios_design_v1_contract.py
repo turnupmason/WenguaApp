@@ -14,6 +14,7 @@ COLORS=ROOT/"ios/design-v1/five-element-colors.js"
 FIXTURE=ROOT/"ios/design-v1/chart-facts-v3.js"
 SWIFT=ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift"
 POLICY=ROOT/"ios/design-v1/issue-policy.js"
+FROZEN=ROOT/"ios/WenguaAppUI/FrozenReadingV391.json"
 AUDIT=ROOT/"data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json"
 class Tags(HTMLParser):
     def __init__(self):
@@ -103,6 +104,31 @@ class V3SourceUI(unittest.TestCase):
             'demo.readingSections','sourceCharts=window.WenguaVerifiedCharts.samples',
             'document.querySelector("#palaces").addEventListener("click"', '五行颜色图例']:
             self.assertIn(fragment,self.html)
+    def test_native_four_demos_are_recomputed_and_readings_switch_by_the_same_index(self):
+        bundled=json.loads(FROZEN.read_text("utf8"))["samples"]
+        self.assertEqual(len(bundled),4)
+        for i, (native, browser) in enumerate(zip(bundled,self.fixture["samples"])):
+            self.assertEqual(native["iso"],browser["iso"])
+            self.assertEqual(native["pillars"],browser["pillars"])
+            self.assertEqual(native["originalReading"],browser["originalReading"])
+            self.assertEqual(native["readingSections"],browser["readingSections"])
+            self.assertEqual(len(native["readingSections"]),10)
+        for text in ['FrozenPreview.cast(selectedSampleIndex)',
+                     'WenguaNativeCore.compute(at:date,timezone:"America/New_York")',
+                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:selectedSampleIndex)',
+                     'FrozenPreview.readings.indices.contains(sampleIndex)',
+                     'palace.lifeRows',
+                     'QFive.tombHorseRelation(',
+                     'multiValueCard("九星"']:
+            self.assertIn(text,self.swift)
+        for text in ['stageRow("地",p.earth,p.earthStages)',
+                     'tombHorseRelation(demo,p,t)',
+                     'sixClash[t.branch]===chart.hourHorse',
+                     'p.branches.map(b=>colored("branch",b))']:
+            self.assertIn(text,self.html)
+        project=(ROOT/"ios/WenguaAppUI/project.yml").read_text("utf8")
+        self.assertIn("FrozenReadingV391.json",project)
+
     def test_original_30second_and_15day_rules_survive(self):
         self.assertIn('30_000',self.html)
         self.assertIn('engineResultValidated',POLICY.read_text("utf8"))
