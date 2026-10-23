@@ -162,12 +162,54 @@ def build_full_health_network(*, illness, doctor, medicine, patient, hour,
             for target in ("illness", "patient")
             if target != label
         }
+    # Each domain-critical edge additionally compares *every* actual
+    # deity, door, star and sky/earth stem against every factor on its target.
+    # The public prose remains concise, while audit retains the complete
+    # across-layer comparisons. These are physical factor pairs, NOT votes.
+    for source, targets in focus.items():
+        for target, summary in targets.items():
+            crossed = []
+            seen = set()
+            for a in facts[source]["all_symbol_strength_25"]:
+                for b in facts[target]["all_symbol_strength_25"]:
+                    identity = (a["fact_id"], b["fact_id"])
+                    if identity in seen:
+                        continue
+                    seen.add(identity)
+                    pair = compare_full_factors(
+                        a, b, actor_name=a["symbol"], target_name=b["symbol"])
+                    crossed.append({
+                        "actor_fact_id": a["fact_id"],
+                        "target_fact_id": b["fact_id"],
+                        "actor_symbol": a["symbol"],
+                        "target_symbol": b["symbol"],
+                        "actor_kind": a["kind"],
+                        "target_kind": b["kind"],
+                        "actor_strength": pair["actor_strength"],
+                        "target_strength": pair["target_strength"],
+                        "actor_palace_strength": pair["actor_palace_strength"],
+                        "target_palace_strength": pair["target_palace_strength"],
+                        "palace_relation": pair["relation"],
+                        "control_ability": pair["ability_to_control"],
+                        "primary_4x5_path": (
+                            pair["actor_case"]["path"],
+                            pair["target_case"]["path"]),
+                        "full_physical_25x25_precomputed": (
+                            pair["exhaustive_physical_pair_covered"]),
+                        "eligible_as_independent_verdict_vote": False,
+                    })
+            summary["all_cross_layer_factor_pairs"] = crossed
+            summary["factor_pair_count"] = len(crossed)
+    total_focused_factor_pairs = sum(
+        e["factor_pair_count"] for targeting in focus.values()
+        for e in targeting.values())
     return {
         "schema": "full_health_role_energy_network_vnext_1",
         "nodes": nodes, "directed_edges": edges,
         "focus_against_disease_and_patient": focus,
         "physical_palace_pair_count": len(physical_first),
         "role_pair_count": len(edges),
+        "focused_cross_layer_factor_pairs": total_focused_factor_pairs,
         "role_gating_applied": True,
         "all_9_palace_symbols_recomputed": False,
         "qian_and_kun_always_observed": True,
