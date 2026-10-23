@@ -31,6 +31,11 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
                        "value_door":chart["value_door"]},
         "verdict":review["verdict"],"sections":review["sections"],
         "reading_text":review["reading_text"],
+        "evidence_counts":review["evidence_counts"],
+        "evidence_ledger":review["evidence_ledger"],
+        "ordered_palace_roles":review["ordered_palace_roles"],
+        "macro_fuyin_fanyin":review["macro_fuyin_fanyin"],
+        "qualitative_palace_relationships":review["qualitative_palace_relationships"],
         "audit":review["audit"],
         "no_scoring":True,"medical_validity_claimed":False
     }
