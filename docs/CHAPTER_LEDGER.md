@@ -860,3 +860,13 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 验证程序：`tests/test_ios_five_random_live_casts.py`；Workflow `.github/workflows/ios_native_cast_parity.yml`；运行成功（**包含真正的 Xcode iOS Simulator 编译**）：https://github.com/turnupmason/WenguaApp/actions/runs/39886204311 。五盘完整原 Python/Swift 数据报告： https://github.com/turnupmason/WenguaApp/actions/runs/39886204311/artifacts/12472846851 。
 - 严格保留从首次测试环境 `ModuleNotFoundError`、JSON 中五可选 `null` 与 Swift Codable 省略可选字段，到最终成功的所有失败 Actions；不删除失败实验、不重写起盘规则，不改变原书194例/43章/81天地干/42疾病补充/17复合格局。
 - 完整记录：`docs/IOS_NINE_PALACE_TEMPLATE_FIVE_HOUR_ACCEPTANCE_2026-10-22.md`。基础九宫模板进入**可复用冻结状态**，后续大批量领域细分模板均复用；**下一阶段**开发领域→子领域独立取用神、书源正反证据、条件推理、应期、V3.9.1离线中文完整断词的批量编排和测试，绝不能把九宫测试成功说成疾病/其它领域自然断案模型移植已完成。用户 Mac/iPhone 真机视觉测试、正式发布仍是独立验收阶段。
+
+## 2026-10-23 · 疾病病情轻重 V-next 条件证据审查候选（用户同意改进；旧 V3.9.1 不改）
+- **开发顺序**：继续现有项目！真实起盘事实层、用户已确认 V3.9.1 原文/SQLite、194古籍例、43章节、81原书天地干、42疾病补充、17复合格局和失败记录不可覆盖；**V4.2评分仍永久禁用**。用户要求先改疾病推理再呈现对照，不代表允许未经审查自动替换正式 iOS 断词。
+- 新增 `src/wengua/health_severity_vnext_review.py`：角色真实可信度 → 病人/病宫/天芮真实有向生克 → 用神旬空/刑墓 → 医药制病独立反证 → 古籍有序天地干命中 + 完整源谓词状态 → 基于可证链的 favorable/adverse/conflicted/unresolved 四态；严格禁止因为「源书关键字里有吉格或凶格」就直接采纳，`source_conditions_present` 仅为原文关键词索引而非完整条件表达式，未完成全部条件者不能参与主判。
+- 一张真实盘只有 9 个天星携干的实际匹配，不是 81个同时吉凶。源书异名/42补充不得再算第二条证据。针对病星携干、患者干、时干、天心携干、乙奇的十二长生按真实双支和同一证据 ID 去重：入墓与长生临墓是同一事实，不二次叠加。当前已核三种传统双链：患者制病+病宫制天芮（无患者空刑墓时可偏吉）；病宫克患者+病宫扶天芮 / 患者生病宫再扶天芮（偏不利）；双链遭患者空刑墓或独立医药制病反证则冲突待辨；其他情形允许**暂不能定论**。
+- 新版六段真实自然中文：主判断→患者/病宫→医药与反证→原书格局限制→时干与应期→值符值使及辅助。**必须从核定的宫位和原始角色事实重新生成**，不能把 V3.9.1 未充分验证的吉凶句子塞回新断词里。传统象意不等于现代医学诊断/预后，不得声称现实医学有效性或日期。
+- **调用边界**：新的可测试入口 `src/wengua/health_text_pipeline_vnext_review.py:auto_cast_health_review_text`，原生产入口 `src/wengua/health_text_pipeline.py:auto_cast_health_v39_text` 保留完全原样；SwiftUI 新盘当前不调用 V-next 断词。未通过用户复审，不可改正式 UI 路由。
+- Python3.11/3.12 真实专项 workflow `.github/workflows/health_vnext_conditional_review.yml`：`tests/test_health_vnext_conditional_review.py` 断案四态/条件不明/人物限制/证据去重、4张封存起盘新旧对照、原 V3.9.1 逐字 SHA 无变化，输出自动生成新旧全部正文的 JSON artifacts；https://github.com/turnupmason/WenguaApp/actions/runs/39984268819 成功（不是独立前瞻盲测）。
+- 4开发盘旧基线判吉凶 → V-next：2026-11-01 05:00 病凶→暂不能定；11-04 05:00 病凶→偏不利；11-10 21:00 病凶→暂不能定；11-21 17:00 病吉→暂不能定。**这里只证明代码符合更保守的证据契约，不是证明哪一个更准确**。优先看全部六段原始示例和证据态，再讨论需要补的作者完整条件。
+- 完整交接：`docs/HEALTH_VNEXT_CONDITIONAL_REASONING_REVIEW_2026-10-23.md`，留有后续逐条作者前置条件、唯一事实ID与新未调参家族独立对照计划。绝不删之前已见的失败测试。更新此交接后以最新 GitHub CI 为准。
