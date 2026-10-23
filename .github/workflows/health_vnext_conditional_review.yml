@@ -5,10 +5,16 @@ on:
     paths:
       - 'src/wengua/health_severity_vnext_review.py'
       - 'src/wengua/health_palace_sequence_vnext.py'
+      - 'src/wengua/health_full_role_network_vnext.py'
+      - 'src/wengua/factor_energy_25_rules.py'
+      - 'src/wengua/factor_energy_combinations.py'
       - 'src/wengua/health_tianrui_25_matrix.py'
       - 'src/wengua/qualitative_month_palace.py'
       - 'src/wengua/health_text_pipeline_vnext_review.py'
       - 'tests/test_health_vnext_conditional_review.py'
+      - 'tests/test_health_full_role_network_vnext.py'
+      - 'tests/test_factor_energy_25_rules.py'
+      - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
       - 'scripts/preview_health_tianrui_25.py'
       - 'scripts/preview_health_vnext_conditional.py'
@@ -30,6 +36,9 @@ jobs:
         run: |
           python -m unittest discover -s tests -p test_health_tianrui_25_matrix.py -v
           python -m unittest discover -s tests -p test_health_vnext_conditional_review.py -v
+          python -m unittest discover -s tests -p test_health_full_role_network_vnext.py -v
+          python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
+          python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
       - name: Create before and after example report from independent source casts
         run: |
