@@ -119,7 +119,7 @@ class MonthAndPalaceControlTests(unittest.TestCase):
         self.assertEqual(fact["nominal_relation"],"受克")
         self.assertEqual(fact["power_class"],"反克候选")
         self.assertEqual(fact["effect"],"resists_weak_attack")
-        self.assertIn("不等于已经治愈",fact["why"])
+        self.assertIn("不能推断最终结果",fact["why"])
 
     def test_star_and_palace_mixed_strength_must_not_trigger_reverse(self):
         fact=self.compare("克",actor_symbol_month="废",
@@ -134,6 +134,15 @@ class MonthAndPalaceControlTests(unittest.TestCase):
         self.assertNotEqual(fact["power_class"],"反侮候选")
         fact=self.compare("克",actor_symbol_month="未知")
         self.assertEqual(fact["effect"],"unknown")
+
+    def test_shared_strength_engine_can_be_imported_without_health_domain(self):
+        from src.wengua.qualitative_month_palace import compare_vigor_before_control
+        f=compare_vigor_before_control(
+            "克",actor_symbol_month="废",actor_palace_month="囚",
+            target_symbol_month="旺",target_palace_month="旺")
+        self.assertEqual(f["power_class"],"反侮候选")
+        self.assertNotIn("痊愈",f["why"])
+        self.assertNotIn("医生",f["why"])
 
     def test_same_element_must_still_compare_strength(self):
         fact=self.compare("比和")
