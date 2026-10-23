@@ -1,11 +1,8 @@
 import SwiftUI
 import CryptoKit
 
-// Wengua iOS professional chart design V2, based on user's two screenshots.
-// THIS IS A UI DEMO, NOT A LIVE NATIVE DIVINATION ENGINE.
-// Never call V4 numeric scores. Do not treat samples as actual user casts.
-// Source: verified V3.9.1 case 2026-11-01 05:00 -05, 阴遁五局.
-// Stars, doors, gods, heavenly and earth stems copied from sealed actual chart.
+// Wengua native iOS app: source-checked deterministic chart plus separate
+// domain-gated offline narration. No numeric scores or fabricated new readings.
 
 @main
 struct WenguaDesignPreviewApp: App {
@@ -946,6 +943,7 @@ enum QIssuePolicy {
 }
 
 private struct LocalNativeCase: Codable {
+    let topicID: String
     let issueFingerprint: String
     let relation: String
     let optionalBirthYear: Int?
@@ -955,10 +953,8 @@ private struct LocalNativeCase: Codable {
 }
 
 struct CastSetupScreen: View {
+    let topic: QuestionTopic
     let onNativeCast: (WenguaNativeChart, String) -> Void
-    init(onNativeCast: @escaping (WenguaNativeChart,String)->Void) {
-        self.onNativeCast=onNativeCast
-    }
     @Environment(\.dismiss) private var dismiss
     @State private var subject = "本人"
     @State private var subjectName = ""
@@ -977,12 +973,12 @@ struct CastSetupScreen: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 17) {
                     if phase == 0 {
-                        Text("问测何事？")
+                        Text(topic.domainTitle + " · " + topic.title)
                             .font(.system(size: 28, weight: .medium))
                         Text("同一件具体事情，15天内只起一次。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                         Group {
-                            Text("问事内容（必填）").font(.headline)
+                            Text("具体事项（必填）").font(.headline)
                             TextField("描述一件具体的事，至少四个字", text: $question, axis: .vertical)
                                 .lineLimit(2...4)
                             Text("当事人").font(.headline)
@@ -998,10 +994,10 @@ struct CastSetupScreen: View {
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
-                            Toggle("此刻起局（静心结束后锁定当时的实时时刻）",isOn:$useCurrentInstant)
+                            Toggle("按当前时间起局",isOn:$useCurrentInstant)
                                 .tint(QStyle.blue)
                             if !useCurrentInstant {
-                                DatePicker("指定复盘时间",selection:$chosenTime,
+                                DatePicker("手动选择年月日时分",selection:$chosenTime,
                                            displayedComponents:[.date,.hourAndMinute])
                                     .datePickerStyle(.wheel)
                                     .labelsHidden()
@@ -1065,7 +1061,7 @@ struct CastSetupScreen: View {
                             Text(validationMessage)
                                 .font(.footnote).foregroundStyle(QStyle.red)
                         }
-                        Text("九宫将由本地 Swift 真实计算；V3.9.1 自然断词移植尚未完成，因此不会用固定案例断词冒充本次结果。")
+                        Text("九宫由本机离线计算；本次断案内容尚未完成前，不会以历史样例替代。")
                             .font(.footnote).foregroundStyle(QStyle.secondary)
                     }
                 }
@@ -1086,11 +1082,15 @@ struct CastSetupScreen: View {
     // The only UI path that calls actual native astronomical chart creation.
     // Past 'fixed demo' never comes here and cannot consume the 15day lock.
     private func completeNativeCast() {
+        guard topic.enabled && topic.id == "health.severity" else {
+            validationMessage="该领域的断案模板尚未接入，不能套用其它领域模板。"
+            return
+        }
         guard let calmEnds, Date() >= calmEnds else {
             validationMessage="必须完成完整30秒静心后才能起局。"
             return
         }
-        let key=QIssuePolicy.signature(topic:"health.severity",relation:subject,
+        let key=QIssuePolicy.signature(topic:topic.id,relation:subject,
                                        subject:subjectName,question:question)
         if let next=QIssuePolicy.nextPermitted(key) {
             validationMessage="同一件事未满15天；下次允许："+next.formatted()
@@ -1102,7 +1102,7 @@ struct CastSetupScreen: View {
             let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
             // Persistent case receipt is ONLY original board/clock facts and
             // hashed issue ID. User's raw private question is NOT stored here.
-            let record=LocalNativeCase(issueFingerprint:key,relation:subject,
+            let record=LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
                                        optionalBirthYear:Int(birthYear),
                                        course:duration=="未说明" ? nil : duration,
                                        completedAt:Date(),chart:result)
@@ -1121,6 +1121,10 @@ struct CastSetupScreen: View {
     }
 
     private func tryStartRitual() {
+        guard topic.enabled && topic.id == "health.severity" else {
+            validationMessage="请选择有实际计算支持的细分事项。"
+            return
+        }
         let cleanedYear=birthYear.trimmingCharacters(in:.whitespacesAndNewlines)
         if !cleanedYear.isEmpty {
             guard let year=Int(cleanedYear), (1850...2150).contains(year) else {
@@ -1133,7 +1137,7 @@ struct CastSetupScreen: View {
             validationMessage = "请先明确至少四个字的一件具体事情。"
             return
         }
-        let key = QIssuePolicy.signature(topic: "health.severity",
+        let key = QIssuePolicy.signature(topic: topic.id,
              relation: subject, subject: subjectName, question: question)
         if let date = QIssuePolicy.nextPermitted(key) {
             validationMessage = "同一问题15天内已经起过局。下次允许：" +
@@ -1155,20 +1159,20 @@ struct TraditionalReadingPreview: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 15) {
-                    Text("古籍断词 · V3.9.1")
+                    Text("完整解读")
                         .font(.system(size: 28, weight: .medium))
                     if let chart=nativeChart {
-                        Text("当前九宫已由 iPhone Swift 离线引擎真实起盘。")
+                        Text("本次九宫已在本机离线生成。")
                             .font(.caption).foregroundStyle(QStyle.secondary)
                         let actualPillars = [chart.pillars.year,chart.pillars.month,
                                              chart.pillars.day,chart.pillars.hour]
                         Text(actualPillars.joined(separator:" ") + " · " + chart.solarTerm)
                             .font(.headline)
-                        Text("V3.9.1 完整古籍推理和断词尚未移植到 iOS。本次只展示真实计算九宫，不输出假断词或分数。")
+                        Text("当前已完成真实九宫事实计算，完整专业解读尚在接入中；不会输出未核准的吉凶结论。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                     } else if FrozenPreview.readings.indices.contains(sampleIndex) {
                         let sample=FrozenPreview.readings[sampleIndex]
-                        Text("封存的 V3.9.1 固定计算测试盘：" + sample.iso)
+                        Text("研究案例 · " + sample.iso)
                             .font(.caption).foregroundStyle(QStyle.secondary)
                         Text(sample.originalReading)
                             .font(.subheadline)
@@ -1177,20 +1181,22 @@ struct TraditionalReadingPreview: View {
                             .padding(14)
                             .background(.white,in:RoundedRectangle(cornerRadius:12))
                         ForEach(sample.readingSections) { section in
-                            DisclosureGroup(section.title) {
+                            VStack(alignment:.leading,spacing:9) {
+                                Text(section.title).font(.headline)
                                 Text(section.text).font(.subheadline)
                                     .foregroundStyle(QStyle.secondary)
-                                    .padding(.top,8)
+                                    .fixedSize(horizontal:false,vertical:true)
                                     .textSelection(.enabled)
                             }
-                            .padding(13)
-                            .background(.white,in:RoundedRectangle(cornerRadius:12))
+                            .frame(maxWidth:.infinity,alignment:.leading)
+                            .padding(16)
+                            .background(.white,in:RoundedRectangle(cornerRadius:14))
                         }
                     } else {
                         Text("封存原始断词资源未加载；拒绝以其它测试盘文本替代。")
                             .foregroundStyle(QStyle.red)
                     }
-                    Text("此软件仅展示传统古籍象意。尚无 iOS 原生 V3.9.1 本次断词；医疗问题须咨询专业医护人员。")
+                    Text("本软件仅用于传统文化研究及古籍象意展示，不提供医学诊断、预后或治疗建议。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
                 .padding()
