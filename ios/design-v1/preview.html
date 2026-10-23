@@ -642,7 +642,7 @@ document.querySelector("#palaces").addEventListener("click",e=>{const b=e.target
 document.querySelector("#close-sheet").addEventListener("click",()=>document.querySelector("#overlay").classList.remove("open"));
 document.querySelector("#overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("open")});
 document.querySelectorAll("[data-tab]").forEach(e=>e.addEventListener("click",()=>{
- if(e.dataset.tab==="reading"){navigate("board");return;}
+ if(e.dataset.tab==="reading"){navigate("reading");return;}
  if(e.dataset.tab==="other"){document.querySelector("#other-title").textContent=e.dataset.name==="我的"?"我的":"案例（开发中）";}
  navigate(e.dataset.tab);
 }));
