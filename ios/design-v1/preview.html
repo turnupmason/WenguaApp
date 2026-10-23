@@ -315,49 +315,61 @@ function tombHorseRelation(chart,p,t){
   return "马在墓宫对宫，但"+chart.hourHorse+"与墓支"+t.branch+"未六冲，不能以宫位相对代替地支六冲。";
  return "时马"+chart.hourHorse+"与墓支"+t.branch+"未六冲；不构成冲墓候选。";
 }
+// Presentation only: each glyph is colored using its OWN canonical five-element
+// mapping. All text is laid out by semantic fields, not squeezed into a word cloud.
 function renderBoard(){
  const grid=document.querySelector("#palaces");
+ const line=(key,value)=>'<div class="symbol-line"><span class="symbol-kind">'+key+
+                  '</span><strong class="symbol-value">'+value+'</strong></div>';
  grid.innerHTML=demo.palaces.map(p=>{
-   if(p.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span>地盘 '+(p.earth?colored("stem",p.earth):"待核")+'</span><span class="center-caption">中宫另论 · 点开详情</span></button>';
+   if(p.p===5)return '<button class="palace center-tile" data-palace="5" aria-label="中五宫特殊规则">'+
+     '<span class="center-overline">中宫</span><span class="center-text">中五</span>'+
+     '<span class="center-stem">地盘　'+(p.earth?colored("stem",p.earth):"待核")+'</span>'+
+     '<span class="center-caption">神、星、门另论</span><span class="center-link">宫位详解 ›</span></button>';
    const role=p.roles.map(z=>'<span class="role-mark">'+z+'</span>').join("");
-   const stars=p.heaven.map(z=>colored("star",z.star)).join("·");
-   const skies=p.heaven.map(z=>colored("stem",z.stem)).join("·");
+   const stars=p.heaven.map(z=>colored("star",z.star)).join(" · ");
+   const skies=p.heaven.map(z=>colored("stem",z.stem)).join(" · ");
    return '<button class="palace" data-palace="'+p.p+'" aria-label="'+p.name+
-     '，'+p.heaven.map(z=>z.star).join("、")+'，'+p.door+'，'+p.deity+'，'+
-     p.void.join("")+'空，'+(p.horse?"马"+p.horse:"")+'">'+
-     '<div class="palace-head"><span class="palace-branch">'+p.branches.map(b=>colored("branch",b)).join("")+" · "+p.element+
-     '</span><span class="palace-n">'+p.p+'宫</span></div>'+
-     '<div class="palace-deity"><span class="palace-symbol">'+colored("stem",p.earth)+'</span>'+
-     '<span class="deity-name">'+colored("deity",p.deity)+'</span></div>'+
-     '<div class="palace-content"><span class="sky-star">'+stars+'</span><span class="palace-stem">'+skies+'</span>'+
-     '<span class="door-name">'+colored("door",p.door)+'</span><span class="bottom-stem">'+colored("stem",p.earth)+'</span></div>'+
+     '，八神'+p.deity+'，九星'+p.heaven.map(z=>z.star).join("、")+
+     '，八门'+p.door+'，天盘干'+p.heaven.map(z=>z.stem).join("、")+
+     '，地盘干'+p.earth+'，'+p.void.join("")+'空，'+(p.horse?"马"+p.horse:"")+'">'+
+     '<div class="palace-head"><strong>'+p.name+'</strong><span class="palace-branch">'+
+     p.branches.map(b=>colored("branch",b)).join("、")+'</span></div>'+
+     '<div class="palace-symbols">'+line("神",colored("deity",p.deity))+
+       line("星",stars)+line("门",colored("door",p.door))+'</div>'+
+     '<div class="stem-bar"><span><small>天盘</small>'+skies+'</span>'+
+       '<span><small>地盘</small>'+colored("stem",p.earth)+'</span></div>'+
+     '<div class="palace-foot">'+role+statusBadges(p)+'</div>'+
      '<div class="palace-stages">'+legendBranch(p)+'</div>'+
-     '<div class="palace-foot">'+role+statusBadges(p)+'</div></button>';
+     '<div class="palace-more">点看详细断盘 ›</div></button>';
  }).join("");
 }
 function renderHeader(){
- const fmt=demo.iso.slice(0,10).replaceAll("-","年").replace("年","年");
  const d=demo.iso.slice(0,10).split("-");
  const local=demo.iso.slice(11,16);
- document.querySelector(".date-control").textContent=d[0]+"年"+Number(d[1])+"月"+Number(d[2])+"日 "+local+"  ⌄";
- const pp=[["year","年"],["month","月"],["day","日"],["hour","时"]];
- document.querySelector(".pillars").innerHTML=pp.map(([k,label])=>{
-   const v=demo.pillars[k];
-   return '<div class="pillar">'+colored("stem",v[0])+'<small>'+label+'</small>'+colored("branch",v[1])+'</div>';
- }).join("")+
- '<div class="pillarmeta">阴遁·<strong>'+demo.bureau.ju+'局</strong>　'+demo.xunHead+'旬'+
- '<br>值符:<strong>'+demo.valueStar+'</strong>　值使:<strong>'+demo.valueDoor+'</strong></div>';
+ document.querySelector("#chart-date").textContent=
+   d[0]+"年"+Number(d[1])+"月"+Number(d[2])+"日 · "+local;
+ const pp=[["year","年柱"],["month","月柱"],["day","日柱"],["hour","时柱"]];
+ document.querySelector(".pillars").innerHTML=
+  '<div class="four-pillar-grid">'+pp.map(([k,label])=>{
+    const v=demo.pillars[k];
+    return '<div class="pillar"><span class="pillar-label">'+label+'</span>'+
+      '<div class="pillar-pair">'+colored("stem",v[0])+colored("branch",v[1])+'</div></div>';
+  }).join("")+'</div>'+
+  '<div class="bureau-band"><div class="bureau-primary">'+
+     '<span class="bureau-dun">阴遁　<strong>'+demo.bureau.ju+'局</strong></span>'+
+     '<span class="bureau-xun">'+demo.xunHead+'旬</span></div>'+
+     '<div class="bureau-details"><div><small>节气</small><strong>'+demo.solarTerm+
+     '</strong></div><div><small>值符</small><strong>'+demo.valueStar+
+     '</strong></div><div><small>值使</small><strong>'+demo.valueDoor+
+     '</strong></div></div></div>';
  document.querySelector(".method-label").textContent="时家转盘 · "+demo.solarTerm;
- document.querySelector("#runtime-status").textContent="时空："+demo.xunHead+"旬·"+demo.voidBranches.join("")+
-   "空　时支马："+demo.hourHorse+"（"+demo.hourHorsePalace+"宫）";
+ document.querySelector("#runtime-status").textContent=demo.xunHead+"旬 · "+
+     demo.voidBranches.join("、")+"空 · 时支马："+demo.hourHorse+
+     "（"+demo.hourHorsePalace+"宫）";
  document.querySelector(".safe-notice").textContent=
-  "固定测试盘 · 非实时起盘："+demo.iso.slice(0,16)+"，阴遁"+demo.bureau.ju+
-  "局。空亡、驿马、天盘/地盘入墓均由对应真盘机械计算，不是这次问事的实时占断。";
- document.querySelector("#sample-switcher").innerHTML=sourceCharts.map((x,i)=>{
-   const d=x.iso.slice(5,10).replace("-","/");
-   return '<button data-sample="'+i+'" class="'+(i===sampleIndex?"active":"")+'">'+d+" "+
-      x.pillars.hour+' · '+(i===sampleIndex?"当前":"切换")+'</button>';
- }).join("");
+   "原书固定盘 · 非实时起盘。本盘八神、九星、八门、天地干与墓空马来自已核定的历史计算记录。"+
+   "点开宫位可阅读更完整的长生与依据；真正起新局请使用原生 iOS App。";
 }
 function palaceDetail(index){
  const p=demo.palaces.find(x=>x.p===index);if(!p)return;
