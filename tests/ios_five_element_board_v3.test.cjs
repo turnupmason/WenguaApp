@@ -127,3 +127,29 @@ test("five-element full canonical mapping includes variants and all elements",()
  }
  assert.equal(five.element("deity","螣蛇"),five.element("deity","腾蛇"));
 });
+
+test("SwiftUI and HTML exactly agree for ALL 10 stems, 12 branches, 9 stars, 8 doors and deities",()=>{
+ const fs=require("node:fs");
+ const swift=fs.readFileSync(require("node:path").join(__dirname,
+     "../ios/WenguaAppUI/WenguaDesignPreviewApp.swift"),"utf8");
+ function swiftSymbols(kind){
+   const pattern=new RegExp("static let "+kind+"\\s*=\\s*\\[([\\s\\S]*?)\\]");
+   const match=swift.match(pattern);
+   assert.ok(match,"Swift mapping is missing "+kind);
+   const pairs=Array.from(match[1].matchAll(/"([^"]+)":"([^"]+)"/g),v=>[v[1],v[2]]);
+   return Object.fromEntries(pairs);
+ }
+ for(const [kind,js] of [
+   ["stems",five.STEM],["branches",five.BRANCH],["stars",five.STAR],
+   ["doors",five.DOOR],["deities",five.DEITY]]){
+   assert.deepEqual(swiftSymbols(kind),js,kind+" layer must be one canonical five-element system");
+ }
+ for(const [element,hex] of Object.entries(five.ELEMENT_COLORS)){
+   const pattern=new RegExp('"'+element+'": Color\\(red: ([0-9.]+), green: ([0-9.]+), blue: ([0-9.]+)\\)');
+   const m=swift.match(pattern);
+   assert.ok(m,"Swift palette missing "+element);
+   const rgb=[1,3,5].map(i=>parseInt(hex.slice(i,i+2),16)/255);
+   for(let i=0;i<3;i++)assert.ok(Math.abs(rgb[i]-Number(m[i+1]))<0.015,
+     "palette mismatch "+element+" channel "+i);
+ }
+});
