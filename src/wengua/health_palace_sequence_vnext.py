@@ -24,9 +24,8 @@ from .health_severity_v34 import HORSE
 from .symbol_relations import door_season
 from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
 from .health_tianrui_25_matrix import inspect_tianrui_25
-from .factor_energy_25_rules import (
-    inspect_strength_25, compare_role_strength,
-    format_strength_template, format_duel_template)
+from .factor_energy_25_rules import inspect_strength_25, format_strength_template
+from .factor_energy_combinations import compare_full_factors, format_full_pair
 
 from .qualitative_month_palace import (
     STRONG,WEAK,VALID_STAGES,effect_of_relation,compare_vigor_before_control)
@@ -209,9 +208,25 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         striking_stems=ill["striking_stems"],
         door_pressure=ill["door_pressure"])
     interactions["天芮星月令×星宫五行25格"]=tianrui_25
-    interactions["天心对天芮25格力量推演"]=compare_role_strength(
+    interactions["天心对天芮25格力量推演"]=compare_full_factors(
         doc["primary_strength_25"],ill["primary_strength_25"],
         actor_name="天心星",target_name="天芮星")
+    # Cross-layer STEM (including medicine, patient and event) versus STAR:
+    # both symbol strengths are inspected independently before the palace
+    # direction is applied. Candidate explanatory views, NOT extra votes.
+    for k,one,name in (
+        ("乙奇对天芮20格交叉",yi,"乙奇"),
+        ("患者对天芮20格交叉",patient,"患者用神"),
+        ("时干对天芮20格交叉",hour,"时干事体"),
+    ):
+        if one["primary_strength_25"]:
+            interactions[k]=compare_full_factors(
+                one["primary_strength_25"],ill["primary_strength_25"],
+                actor_name=name,target_name="天芮星")
+    if natal and natal["primary_strength_25"]:
+        interactions["年命对天芮20格交叉"]=compare_full_factors(
+            natal["primary_strength_25"],ill["primary_strength_25"],
+            actor_name="患者年命",target_name="天芮星")
     if natal:interactions["年命宫对病宫"]=inspect_pair(natal,ill)
     for i,p in enumerate(extras,1):interactions["辅助宫"+str(i)+"对病宫"]=inspect_pair(p,ill)
     evidence={}
@@ -428,7 +443,9 @@ def format_sequence_sections(result,*,actor,chart):
         push(number+"_"+record["role"],title,name(record)+facts(record)+
              "。力量矩阵："+(format_strength_template(record["primary_strength_25"])
                            if record["primary_strength_25"] else "该用神待核。")+
-             (("两星对抗："+format_duel_template(duel)) if record["role"]=="天心医生" else "")+
+             (("两星对抗："+format_full_pair(duel)) if record["role"]=="天心医生" else
+               ("跨层比较："+format_full_pair(result["interactions"]["乙奇对天芮20格交叉"]))
+                if record["role"]=="乙奇医药" else "")+
              "对天芮病宫："+comparison["relationship"]+
              "；"+comparison["why"]+"。"+
              ("与病宫同宫，代表存在干预/接触候选；弱象并非零作用。"
