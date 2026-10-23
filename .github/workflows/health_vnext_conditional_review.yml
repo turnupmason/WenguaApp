@@ -5,6 +5,8 @@ on:
     paths:
       - 'src/wengua/health_severity_vnext_review.py'
       - 'src/wengua/health_palace_sequence_vnext.py'
+      - 'src/wengua/domain_selected_energy_vnext.py'
+      - 'src/wengua/selected_duel_table_vnext.py'
       - 'src/wengua/health_full_role_network_vnext.py'
       - 'src/wengua/factor_energy_25_rules.py'
       - 'src/wengua/factor_energy_combinations.py'
@@ -13,6 +15,7 @@ on:
       - 'src/wengua/health_text_pipeline_vnext_review.py'
       - 'tests/test_health_vnext_conditional_review.py'
       - 'tests/test_health_full_role_network_vnext.py'
+      - 'tests/test_domain_selected_energy_vnext.py'
       - 'tests/test_factor_energy_25_rules.py'
       - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
@@ -37,6 +40,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_tianrui_25_matrix.py -v
           python -m unittest discover -s tests -p test_health_vnext_conditional_review.py -v
           python -m unittest discover -s tests -p test_health_full_role_network_vnext.py -v
+          python -m unittest discover -s tests -p test_domain_selected_energy_vnext.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
