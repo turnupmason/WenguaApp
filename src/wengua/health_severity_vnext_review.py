@@ -80,12 +80,11 @@ def review_ordered_pairs(pairs, inquiry):
     return list(by_key.values())
 
 
-def dedup_lifecycle_facts(evidence):
-    """One fact ID per physical stem/branch/palace/stage, irrespective of role.
+def dedup_lifecycle_facts(evidence,*,chart=None):
+    """A distinct fact is keyed by PLANE, palace, stem, real branch, stage.
 
-    Repeated mention of 墓 in V3.9 and full twelve-cycle text is ONE stage
-    fact, not two separately weighted adverse events. Heaven and earth planes
-    remain distinct. Include both branches where the real palace has two.
+    Five sky-role mentions can share one sky fact. Independent earth board facts
+    must not be merged with sky facts. Centre-5 holds no ordinary door/star/god.
     """
     roles={
         "patient":evidence["patient"],
@@ -95,20 +94,32 @@ def dedup_lifecycle_facts(evidence):
         "hour_event":evidence["hour_event"],
     }
     collected={}
-    for role, data in roles.items():
-        stem=data.get("stem")
-        palace=data.get("palace")
-        # The returned source verifier stores per-branch stage entries.
+    def add(plane,stem,palace,branch,stage,role):
+        token=(plane,stem,palace,branch,stage)
+        if token not in collected:
+            collected[token]={
+                "fact_id":"life:%s:%s:%s:%s:%s"%(plane,stem,palace,branch,stage),
+                "plane":plane,"stem":stem,"palace":palace,
+                "branch":branch,"stage":stage,"roles":[role],
+                "one_fact_even_if_referenced_twice":True}
+        elif role not in collected[token]["roles"]:
+            collected[token]["roles"].append(role)
+    for role,data in roles.items():
         for row in data.get("actual_stage_facts",[]):
-            token=(stem,palace,row["branch"],row["stage"])
-            if token not in collected:
-                collected[token]={
-                    "fact_id":"life:%s:%s:%s:%s"%(stem,palace,row["branch"],row["stage"]),
-                    "stem":stem,"palace":palace,"branch":row["branch"],
-                    "stage":row["stage"],"roles":[role],
-                    "one_fact_even_if_referenced_twice":True}
-            elif role not in collected[token]["roles"]:
-                collected[token]["roles"].append(role)
+            add("天盘",data["stem"],data["palace"],row["branch"],row["stage"],role)
+    if chart is not None:
+        from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
+        table=source_full12()
+        for palace in range(1,10):
+            cell=chart["palaces"][str(palace)]
+            if palace==5:
+                if cell["heaven_stars"] or cell["door"] or cell["deity"]:
+                    raise ValueError("Centre five may not invent star/door/deity")
+                continue
+            stem=cell["earth_stem"]
+            real=stage_for_stem_at_actual_palace(stem,palace,table=table)
+            for row in real["actual_stage_facts"]:
+                add("地盘",stem,palace,row["branch"],row["stage"],"earth_board_fact")
     return list(collected.values())
 
 
@@ -206,7 +217,7 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
     pending=[p for p in pairs if p["source_state"] in (
         "needs_complete_source_predicate","health_phrase_needs_full_gate",
         "source_disagreement","missing_duration")]
-    stages=dedup_lifecycle_facts(v391["source_chart_evidence"])
+    stages=dedup_lifecycle_facts(v391["source_chart_evidence"],chart=chart)
     roles=v391["source_chart_evidence"]
     def life(role):
         z=roles[role]
@@ -233,7 +244,7 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
         x["stem"]+x["kind"]+"落"+str(x["palace"])+"宫"
         for x in original_hazards if x["role"] in ("patient","illness")))
     hazards=("已核的患者/病宫刑墓："+(conditions or "无命中")+"。"+
-             "一组十二长生临墓与入墓标记属同一底层事实，不能重复计算。"+
+             "同一盘层、同一干支的临墓与入墓属同一事实；天盘和地盘不能合并。"+
              "全盘匹配"+str(len(pairs))+"条有序天地干，其中"+str(len(pending))+
              "条缺完整原书适用条件；目前不能依据格局名称擅自推翻主证。"+
              ("与主要用神有关的格局："+ "；".join(pair_note(p) for p in matched)+"。" if matched else ""))
