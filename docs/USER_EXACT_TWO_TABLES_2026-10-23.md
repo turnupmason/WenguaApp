@@ -45,3 +45,16 @@
 - 新规则：`src/wengua/factor_energy_25_rules.py` 的 `USER_STAR_25`；`src/wengua/selected_duel_table_vnext.py` 的 `USER_DUEL_5X5`、`user_duel_lookup`、`matchup`；`src/wengua/domain_selected_energy_vnext.py` 默认按需角色模板，断词输出原词、审计输出两个力量对抗结果。
 - 单测 `tests/test_user_exact_energy_duel_grids_vnext.py` 核全部25+25、示例弱强冲突、逐层实际用神接线、原来四盘V3.9.1冻结状态。 `tests/test_domain_selected_energy_vnext.py` 随规则版本更新真实好坏判别测试，不删除早前失败CI。
 - **两书43章194案、老九星 `STAR_25`、原天芮25象意、全部20主模板和第五关系历史分支、弃用的V4.2、iOS/Swift实际起盘、V3.9.1冻结旧断词及旧全宫实验保持不变**。本次没有新古籍章节，不改变原始资料，不重起盘，未把V-next应用到正式iOS。
+
+
+## 最新用户澄清覆盖上方「表二查第二次」：表二仅查一次
+
+> **最新更正（高优先级，覆盖上方「两次查表」「宫力互打」「符号与落宫力量矛盾」文字）**：用户指出起盘后所有九宫原始事实确定，表一已经把**该用神的月令和落宫五行关系**合成**唯一的用神力量**，表二只需对**两个用神在表一所得的最终力量**查一次即可。上一轮助手自行发明的「宫力再互打一次→强弱结果矛盾→据此否决首查」**不是用户设计**，已从 V-next 默认算法、对用户断词和对应测试中纠正。旧文和失败记录保留便于追溯。
+
+正确流水线：
+- 九宫实盘→领域/子题选天心、天芮等用神→分别查**表一**（月令×用神和自己落宫的五行关系→唯一档位）→**表二仅查一次**（施力方最终档位×受力方最终档位→用户给定25个胜负描述之一）→专题内再根据真实生克方向及空墓刑迫等条件解释是否可当证据、对应何种吉凶。不可再造另一张宫力对宫力输赢矩阵。
+- 例如天心表一=极大、天芮表一=小，则表二**固定为「碾压式干得过」**，不需要再算宫力竞争去推翻；真实盘若有门迫等事实，只改变该胜负格能否适用于专题判语的确定性，**绝不能篡改格子本身**。
+- **宫力不是矛盾**：`palace_month_stage` 和 `palace_strength_label` 仍是独立盘面来源事实、解释/核验上下文。它与该星按月令×落宫关系查出的 `strength_label` 不同是正常的，绝对不能称“冲突”“矛盾”或当第二场对抗。保留星月令、落宫与十二长生、旬空、墓、刑迫等各自真实条件。
+- 新 `src/wengua/selected_duel_table_vnext.py:matchup`：仅一次 `user_duel_lookup(first["strength_label"],second["strength_label"])`；`duel_result` 保存用户25格原词，`table_two_lookups_for_pair=1`，`palace_strength_is_context_only=True`；**不再导出 `palace_duel_result`、不再让第二次假想战役否决首查**。旧强/相持/弱、3×3、历史完整宫网与原先误设计文档只保留归档、不参与默认。
+- `tests/test_user_exact_energy_duel_grids_vnext.py` 逐查用户25+25原表、25种用神力量对抗、刻意变化宫力却不改变固定结果、原书事实限制不篡改查表原词、真实疾病断词只呈现唯一用神胜负；`tests/test_domain_selected_energy_vnext.py` 也禁止第二胜负字段。
+- **表二以固定五档给研究候选胜负**，不是医学验证，也不能据此宣称医生治疗疾病的实际能力。该研究模型与冻结V3.9.1严格隔离。
