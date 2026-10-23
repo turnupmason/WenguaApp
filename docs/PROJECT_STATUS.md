@@ -1255,3 +1255,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **合断**：疾病模板 `HEALTH_POLARITY` 决定实际关系有效时有利/不利的**候选方向**，并去重同一真实宫关系，保留原天芮25格唯一复合事实及已核原书条件；统计独立有利、不利与待定，给保守研究候选或证据不足。源用神不明、临床效果、药量、生死和确切应期不能由未经两书独立校准的五档术数等级保证。
 - **文件／测试**：`src/wengua/domain_selected_energy_vnext.py`、`src/wengua/selected_duel_table_vnext.py`、`tests/test_domain_selected_energy_vnext.py`；原 `tests/test_health_full_role_network_vnext.py` 仅加显式历史研究开关保留所有归档行为；专项 CI 配置 `.github/workflows/health_vnext_conditional_review.yml` 现须同时覆盖两张表的新测试和原 V3.9.1 不变检查；文档 `docs/DOMAIN_SELECTIVE_TWO_TABLE_PIPELINE_VNEXT_2026-10-23.md`。
 - **当前发布状态**：V-next **Python 研究候选**默认按需跑，正式 V3.9.1 / iOS 离线排盘与冻结模板未切；两书43章194案例、81原书天地干、42疾病补充、17复合、老 CI 失败记录和弃用 V4.2 均原样保留。其它领域子类型尚未据其原书模板接线，不能声称已经通用上线。GitHub Actions 必须以本轮最新 main HEAD 同一SHA核实。
+
+
+### 2026-10-23 · 用户直接指定九星25格与对抗25格逐字胜负（最新规范）
+- **本轮用户直接给出两张完整5×5原表**。第一张：九星旺相休囚废 × 被宫生/被宫克/克宫/生宫/比和；与以前 `STAR_25` 数值逐格相同，但新 `USER_STAR_25` 保留用户五列原序，`lookup_25("star",...)` 直接查用户版并回归断言原归档case_number不变。旧20格主方式仍可历史溯源、**不再以「第五关系只是附带例外」描述本轮九星完整表**。门干、八神仍沿用此前自身不同的月令规则；未获这张九星专门数据的跨类授权不伪装已经核验。
+- 第二张用户五档对抗表 `USER_DUEL_5X5` **25格原词逐字保存**，包括「极小对小=干得过」「极小对极大=硬干反而受伤」「中等对极大=勉强干得过」「大对极小=碾压式干得过」「极大对极小=世界级压制干得过」等。旧 `STRONG_WEAK_5X5` 与 `DUEL_OUTCOMES_3X3` 仅作为历史遗留，不再是 V-next 运行时 `matchup` 的输入。无需内存预制20×20×20的全盘对抗图，只对所选两个用神实时查两次O(1)固定表。
+- V-next `selected_duel_table_vnext.matchup` 给 `symbol_duel_result`（符号对符号）及 `palace_duel_result`（落宫宫力对宫力），保留原表每层的文字和 `backfire_risk_symbolic`；另结合真实宫克／生、空墓刑迫，在**工程研究合并门槛**给 `ability`「能/不能/艰难/条件待核/不适用」。胜负文本不等同临床事实，双方一胜一负不能强定总体胜出。 `domain_selected_energy_vnext.selected_health_sections` 现在逐边展示两层原词。
+- 新回归 `tests/test_user_exact_energy_duel_grids_vnext.py` 精确全25+25；修改既有 `tests/test_domain_selected_energy_vnext.py` 版本/冲突测试；疾病专项CI .github/workflows/health_vnext_conditional_review.yml 已添加新测试并持续校验 V3.9.1 原4固定盘SHA。规范 `docs/USER_EXACT_TWO_TABLES_2026-10-23.md` 保留全部原表和区分「用户原表」vs「工程合并条件」。
+- **不变项**：仍只按问事领域/子类型和真实人物条件选用神；未选宫不算、年命无不造、男性只参乾女性只参坤；V3.9.1、iOS真盘、旧全宫实验、V4.2弃用、两书43章194例及全部失败CI保持。用户五档是未经新独立书案验证的研究候选，不能拿来现实病情/药物/死亡判定。最终请按最新main同一SHA全仓CI和专项3.11/3.12结论核对。
