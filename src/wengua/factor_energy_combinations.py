@@ -101,6 +101,39 @@ STEM_STAR_4X20X20={
         PALACE_INTERACTIONS,LAYER20["stem"],LAYER20["star"])
 }
 
+# A parallel full-physical 25×25 index ensures the user's four-relation
+# primary view never loses an actually reachable fifth relation in any
+# combination of star / door / stem / deity. For deity a "stage" here is the
+# PALACE monthly state, not an intrinsic monthly status of the god.
+PHYSICAL25={
+    kind:{**LAYER20[kind],
+          **{(s,EXTRA_RELATION):entry
+             for s,entry in LAYER5_EXCEPTION[kind].items()}}
+    for kind in MONTHS
+}
+PHYSICAL25["deity"]={
+    (month,relationship):_one("deity",month,relationship)
+    for month,relationship in product(EARTH_STAGES,PRIMARY_RELATIONS+(EXTRA_RELATION,))
+}
+PAIR_PHYSICAL_25X25={
+    (a,b):{(a_state,b_state):{
+        "actor_state":PHYSICAL25[a][a_state],
+        "target_state":PHYSICAL25[b][b_state],
+        "comparison_only":(
+            "actor_stronger" if RANK[PHYSICAL25[a][a_state]["strength"]]>
+                                RANK[PHYSICAL25[b][b_state]["strength"]]
+            else "target_stronger" if RANK[PHYSICAL25[a][a_state]["strength"]]<
+                                       RANK[PHYSICAL25[b][b_state]["strength"]]
+            else "equal_tier"),
+        "deity_stage_is_only_palace_environment":a=="deity" or b=="deity",
+        "requires_actual_two_palace_conditions":True,
+    } for a_state,b_state in product(PHYSICAL25[a],PHYSICAL25[b])}
+    for a,b in product(("star","door","stem","deity"),repeat=2)
+}
+assert all(len(v)==25 for v in PHYSICAL25.values())
+assert len(PAIR_PHYSICAL_25X25)==16
+assert all(len(v)==625 for v in PAIR_PHYSICAL_25X25.values())
+
 # 4 deity-to-symbol relationship positions x 20 seasonal cases. These are
 # dimensional catalogs only, not a claim that deity itself has seasonal qi.
 GOD4X20={
@@ -156,6 +189,13 @@ def compare_full_factors(actor,target,*,actor_name="施力方",target_name="受�
     pair=None
     if actor["kind"] in MONTHS and target["kind"] in MONTHS:
         pair=PAIR20X20[(actor["kind"],target["kind"])].get((akey,bkey))
+    physical_a=(actor["palace_month_stage"] if actor["kind"]=="deity"
+                else actor["symbol_month_stage"])
+    physical_b=(target["palace_month_stage"] if target["kind"]=="deity"
+                else target["symbol_month_stage"])
+    full_precomputed=PAIR_PHYSICAL_25X25[(actor["kind"],target["kind"])][
+        ((physical_a,actor["nominal_relation_from_symbol"]),
+         (physical_b,target["nominal_relation_from_symbol"]))]
     comparison=compare_role_strength(
         actor,target,actor_name=actor_name,target_name=target_name)
     # The full 20×20 is not allowed to replace the actual two-palace verdict:
@@ -163,6 +203,8 @@ def compare_full_factors(actor,target,*,actor_name="施力方",target_name="受�
     return {**comparison,"schema":SOURCE_VERSION,
             "actor_case":a,"target_case":b,
             "precomputed_20x20_pair":pair,
+            "precomputed_physical_25x25_pair":full_precomputed,
+            "exhaustive_physical_pair_covered":True,
             "fallback_reason":None if pair else
                 "第五种实际关系/八神情形，已由独立分支保真",
             "actor_palace_month":actor["palace_month_stage"],
