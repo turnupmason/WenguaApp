@@ -4,7 +4,7 @@ import unittest
 from src.wengua.factor_energy_combinations import (
     PRIMARY_RELATIONS,EXTRA_RELATION,PALACE_INTERACTIONS,
     LAYER20,LAYER5_EXCEPTION,GOD4,GOD_EXCEPTION,PAIR20X20,
-    STEM_STAR_4X20,STEM_STAR_4X20X20,GOD4X20,
+    STEM_STAR_4X20,STEM_STAR_4X20X20,GOD4X20,PHYSICAL25,PAIR_PHYSICAL_25X25,
     single_case,compare_full_factors,format_full_pair)
 from src.wengua.factor_energy_25_rules import inspect_strength_25
 
@@ -84,6 +84,24 @@ class FullSymbolCombinations(unittest.TestCase):
         mix=compare_full_factors(deity,normal)
         self.assertEqual(mix["actor_case"]["path"],single_case(deity)["path"])
         self.assertIsNone(mix["precomputed_20x20_pair"])
+
+    def test_complete_physical_25x25_across_all_16_layer_pairs(self):
+        self.assertEqual(set(PHYSICAL25),{"star","door","stem","deity"})
+        self.assertEqual(len(PAIR_PHYSICAL_25X25),16)
+        for kinds,catalog in PAIR_PHYSICAL_25X25.items():
+            self.assertEqual(len(catalog),625,kinds)
+            self.assertTrue(all(x["requires_actual_two_palace_conditions"]
+                                for x in catalog.values()))
+        overflow=inspect_strength_25("star","天芮星","亥",1)
+        normal=inspect_strength_25("star","天心星","亥",6)
+        combined=compare_full_factors(overflow,normal)
+        self.assertTrue(combined["exhaustive_physical_pair_covered"])
+        self.assertIsNotNone(combined["precomputed_physical_25x25_pair"])
+        self.assertIsNone(combined["precomputed_20x20_pair"])
+        deity=inspect_strength_25("deity","值符","亥",1)
+        with_deity=compare_full_factors(deity,normal)
+        self.assertTrue(with_deity["precomputed_physical_25x25_pair"][
+            "deity_stage_is_only_palace_environment"])
 
     def test_blocked_and_same_palace_remain_indeterminate(self):
         xin=inspect_strength_25("star","天心星","申",6,
