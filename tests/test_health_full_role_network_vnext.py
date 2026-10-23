@@ -5,8 +5,9 @@ from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review
 
 WHEN="2026-10-22T12:00:00-04:00"
 ZONE="America/New_York"
+# Historical exhaustive graph is still testable, but NO LONGER the default.
 BASE={"intent":"severity","relationship":"self",
-      "consultation_context":"direct_self"}
+      "consultation_context":"direct_self","_research_full_graph":True}
 
 
 class FullIllnessRoleNetwork(unittest.TestCase):
