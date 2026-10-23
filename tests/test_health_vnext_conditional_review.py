@@ -134,5 +134,52 @@ class FullRealChartPreview(unittest.TestCase):
                   "LIFECYCLE_UNIQUE",len(review["audit"]["actual_stage_facts_unique"]))
 
 
+class OldBookQuestionOnlySmoke(unittest.TestCase):
+    """Two preselected historical families: verify source-first inputs ONLY.
+
+    These are known development cases. Never read author's outcome/feedback,
+    never claim this is an untouched blind accuracy evaluation.
+    """
+    def test_two_source_historical_roles_are_not_forced_to_self(self):
+        from scripts.replay_health_v39_fixed_cases import (
+            CASES,RANDOM_INDICES,PARENT)
+        from src.wengua.astro_calendar import solar_chart_clock
+        from src.wengua.casting_shenqi import layout_from_explicit_bureau
+        from src.wengua.health_severity_vnext_review import analyze_health_severity_review
+        seen=[]
+        for index in RANDOM_INDICES:
+            spec=CASES[index]
+            iso=spec["date"]+"T"+spec["clock"]+":00+08:00"
+            clock=solar_chart_clock(iso,"Asia/Shanghai")
+            p=clock["four_pillars"]
+            self.assertEqual(p["day"],spec["day"])
+            self.assertEqual(p["hour"],spec["hour"])
+            chart=layout_from_explicit_bureau(
+                 dun=spec["dun"],ju=spec["ju"],hour_ganzhi=p["hour"])
+            self.assertEqual(chart["value_star"],spec["star"])
+            self.assertEqual(chart["value_door"],spec["door"])
+            q={"intent":"severity","relationship":spec["relation"],
+               "consultation_context":spec.get("context","direct_proxy")}
+            if spec.get("sex"):q["patient_sex"]=spec["sex"]
+            if spec.get("relative_specific"):q["relative_specific"]=spec["relative_specific"]
+            if spec.get("birth_ganzhi"):q["patient_birth_ganzhi"]=spec["birth_ganzhi"]
+            calendar={"year_ganzhi":p["year"],"month_ganzhi":p["month"],
+                      "day_ganzhi":p["day"],"hour_ganzhi":p["hour"],
+                      "month_branch":p["month"][1]}
+            answer=analyze_health_severity_review(
+                chart=chart,inquiry=q,calendar=calendar,db_path=PARENT)
+            self.assertEqual(answer["audit"]["matched_real_star_pairs"],9)
+            self.assertEqual(answer["audit"]["book_81_catalog_size"],81)
+            self.assertEqual(answer["audit"]["supplement_rules_preserved"],42)
+            self.assertEqual(answer["audit"]["composites_preserved"],17)
+            self.assertTrue(answer["audit"]["actual_original_author_outcomes_not_used"])
+            self.assertEqual(len(answer["sections"]),6)
+            self.assertTrue(answer["no_scores"])
+            seen.append((spec["id"],answer["verdict"]["label"],
+                         answer["audit"]["role_confidence"]))
+        self.assertEqual(len({k for k,*_ in seen}),2)
+        print("KNOWN HISTORICAL QUESTION-ONLY SMOKE; NOT SECRET BLIND:",seen)
+
+
 if __name__=="__main__":
     unittest.main()
