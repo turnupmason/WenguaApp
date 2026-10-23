@@ -135,6 +135,10 @@ class V3SourceUI(unittest.TestCase):
         self.assertIn('persistedRecord!==true',POLICY.read_text("utf8"))
         self.assertNotIn("WenguaIssuePolicy.commitCompletedCast(",self.html)
         self.assertIn('15天',self.html)
+        self.assertIn('id="birth-year"',self.html)
+        self.assertIn('text:$birthYear',self.swift)
+        self.assertIn('optionalBirthYear:Int(birthYear)',self.swift)
+        self.assertIn('course:duration=="未说明" ? nil : duration',self.swift)
     def test_all_screen_elements_and_no_fake_live_cast(self):
         parser=Tags();parser.feed(self.html)
         for id in ("board","setup","ritual","reading","palaces","overlay",
