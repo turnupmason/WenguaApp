@@ -1327,3 +1327,13 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 ### 2026-10-22 补充｜实时盘完整九宫事实阅读页
 在 `ios/WenguaAppUI/WenguaDesignPreviewApp.swift` 新增 `NativePalaceEvidenceCard`：真正按用户选择的时间离线起盘后，“完整解读”页连续展示九宫所有已核定的事实（原书中五宫特殊、神门、天地盘长生、逐支空亡/时马/分别天地入墓），**无需逐段点击 DisclosureGroup**。它是可溯源盘面事实汇编，不等于尚未移植的 V3.9.1 专业用神/证据优先级/应期预测；正式主判断必须等规则审计完成，不可伪造。此前4个封存测试盘仍保存作对照，用户打开不会以测试盘为新问事。此次仅更新 UI 源码，不触及核心起盘/书库，继续以最新 CI Xcode 真构建为准。
+
+## 2026-10-22 · 根据 iPhone 网页实机截图重构九宫可读性与静心后严禁冒充起盘
+
+- **触发：用户提供手机截图，指出旧预览四张固定盘仍在起局后出现、四柱与“阴遁几局”混挤、九宫神星门/天地干/十二长生太小且乱、底部被 Safari 遮挡。** 这是对 iOS UI 的修复，不是新增古籍、重置规则或模型训练。历史 194 书例/43 章、81/42/17 规则和失败记录均不删除。
+- **严格修正真实性：** `ios/design-v1/preview.html` 已删除可见的 `sample-switcher` 四盘切换栏。历史 `chart-facts-v3.js` 四张封存真盘继续保留供回归验证，**不许**因完成30秒静心就把它当刚起的新局。浏览器点击30秒结束 → `cast-unavailable`（“静心已完成、本次未起局成功、不会登记15天”），**不再** `navigate("board")`。九宫页面只可通过领域页上标明“查看九宫排版示例（不是新起局）”的显式按钮进入。示例页顶部也有“仅供查看排版·非实时起盘”明显提示。
+- **HTML 九宫排版：** 日期标题、年/月/日/时四柱改四等宽格和更大字；“阴阳遁几局/旬首”独立横条，节气/值符/值使明确标签；九宫使用无圆角独立卡片的 **3×3 细灰分隔九宫**，每宫标题独立+五行地支、神/星/门 17px 主符号、天/地盘两栏、大字优先、地支长生分行、空/马/天墓/地墓独立标签、点击宫位详情展示详细依据；中五仍不伪造八神门星。五行色始终按各符号自身元素，不按层统一颜色。
+- **移动端安全：** 旧 absolute bottom navbar 改 sticky flex 底部控件并留 bottom safe-area；主内容可滚动，避免顶部巨大留白和手机底部控件盖字。CSS 375–430px 响应式；最终布局仍需 Mac Safari/iPhone 真机人工截图确认。
+- **原生 SwiftUI 也已对应重排：** `ProfessionalChartScreen.chartHeader` 独立四柱与局信息，`ProfessionalPalaceTile` 重写神/星/门/天/地/空马墓/长生清晰分层，字号提高。真正根据当前时间/手动时间的排盘 **仍由 `WenguaNativeCore.compute(at:timezone:)`，不是 JS 动态算盘**；原生日志/数据库/事项限制/30秒静心逻辑均不改。用户打开原生 App 依旧先选择领域、细分，成功保存才登记15天；浏览器不能起局、不假称完成断案。
+- **测试：** 更新 Python UI 契约反向确认 `sample-switcher` 不存在、无 `data-sample=`、只通过示例预览进入固定盘、完成静心不会显示历史盘、四柱/局式/九宫字层/移动底栏样式生效。Source fixture 全部留存。过程中旧测试误要求 visible sample-switcher 的 CI 失败记录保留并修正；Swift accessibilityLabel 换行解析错误单独修复。检查当前 HEAD 的 GitHub `iOS V1 Design Contract` 及 `iOS Offline Native Casting Parity`，不得以仅 syntax-parse 宣称模拟器正式 build 成功。
+- **未完成的产品门槛**：独立手机版 V3.9.1 完整自然语言推理并未移植；仅在原生 App 上真实算盘后展示核定事实。HTML 样例只是静态视觉验证。未来 iOS 仍需真机、TestFlight、正式图标和 App Store 审核。
