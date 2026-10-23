@@ -17,6 +17,10 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+# Running a script as `python tests/file.py` does not add repository root
+# to sys.path on GitHub Actions. This ensures the ORIGINAL local package wins.
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+
 from src.wengua.astro_calendar import solar_chart_clock
 from src.wengua.casting_shenqi import bureau_for_term, layout_from_explicit_bureau
 from src.wengua.marriage_runtime import PALACE_BRANCHES, hourly_void_branches
