@@ -179,23 +179,19 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 <div id="domain-options" class="domain-grid"></div>
 <div id="topic-options"></div>
 <button id="domain-back" class="secondary" style="display:none">返回领域</button>
+<button id="demo-preview" class="secondary" type="button">查看九宫排版示例（不是新起局）</button>
 <p class="muted">网页版为可点击布局参考，真正自选时间的自动起盘请在 Mac 的 Xcode 中运行原生 iOS App。</p>
 </div>
 </section>
 <section id="board" class="screen">
-<div class="top"><button class="date-control" data-nav="setup">2026年11月1日 05:00　⌄</button><button class="now" data-nav="setup">选时</button></div>
-<div class="pillars">
-  <div class="pillar cherry">丙<small>年</small><span>午</span></div>
-  <div class="pillar earth">戊<small>月</small><span>戌</span></div>
-  <div class="pillar earth">己<small>日</small><span>卯</span></div>
-  <div class="pillar water">丁<small>时</small><span>卯</span></div>
-  <div class="pillarmeta">阴遁·<strong>五局</strong>　甲子旬<br>值符:<strong>天禽</strong>　值使:<strong>死门</strong></div>
-</div>
-<div class="info-strip"><span class="method-label">时家转盘 · 霜降上元</span><span class="head-actions"><button class="icon-button" data-nav="setup" aria-label="选择时间">◷</button><button class="icon-button" data-nav="reading" aria-label="阅读断词">☷</button></span></div>
-<div class="sample-strip" id="sample-switcher" aria-label="选择已核对的四个测试时辰"></div>
+<div class="chart-top"><div><span class="chart-eyebrow">问卦 · 九宫盘</span><div class="chart-date" id="chart-date">已保存排盘示例</div></div><button class="now" data-nav="setup">设置时间</button></div>
+<div class="pillars" aria-label="四柱与局式"></div>
+<div class="info-strip"><span class="method-label">时家转盘 · 原书历法</span><button class="mini-link" data-nav="domain">更换问事</button></div>
+<div class="board-demo-banner" role="note"><span class="demo-dot"></span><span><strong>仅供查看排版 · 非实时起盘</strong>　本页不会把历史样例当作你的新问事结果。</span></div>
+
 <div class="board-frame"><div class="board-grid" id="palaces"></div></div>
-<div class="legend" aria-label="五行颜色图例"><span class="metal">金</span><span class="wood">木</span><span class="water">水</span><span class="fire">火</span><span class="earth">土</span><span>空亡</span><span>驿马</span><span>入墓</span></div>
-<div class="lower-info">年命：<b>未选（不虚构）</b><br><span id="runtime-status"></span><br><button data-nav="setup">问测何事</button><button data-nav="reading">完整解读</button><button data-nav="setup">30秒静心起局</button></div>
+<div class="legend" aria-label="五行颜色图例"><span class="metal">金</span><span class="wood">木</span><span class="water">水</span><span class="fire">火</span><span class="earth">土</span></div>
+<div class="lower-info"><div class="fact-heading">本盘重点事实</div><div id="runtime-status"></div><div class="board-links"><button data-nav="setup">重新填写事项</button><button data-nav="reading">查看示例全文</button></div></div>
 <div class="safe-notice">固定研究样例 · 非实时起盘：2026-11-01 05:00 美国东部时区，阴遁五局。星、门、神和天地干取自已保存的真实起盘记录。实际起盘需要未来的原生离线引擎，当前盘不是你新问题的计算结果。</div>
 </section>
 
@@ -236,10 +232,15 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 <div class="progress-track"><span id="progress"></span></div>
 <div class="policy">同一件事15天内只起一次局。计时不自动起盘；正式版将在30秒结束后点击“确认起局”的时刻记录排盘时间。</div>
 <div style="height:20px"></div><button id="start-calm" class="cta">开始静心30秒</button>
-<button id="finish-calm" class="cta" style="display:none">查看演示盘（真起局未接入）</button>
-<p class="muted">原型中的固定样例与你本次问事无关，不会记录成已完成的一次起局。</p>
+<button id="finish-calm" class="cta" style="display:none">查看起局状态</button>
+<p class="muted">网页原型没有实时离线起盘引擎，静心完成也不代表本次问题已起局。</p>
 </div></section>
 
+<section id="cast-unavailable" class="screen"><div class="entry offline-entry"><div class="brand-mark">问</div><h1 class="h1">静心已完成</h1>
+<p class="muted">本网页尚未接入实盘计算，因此没有生成本次九宫。此操作也不会占用15天限制。</p>
+<div class="policy"><strong>本次未起局成功</strong><p>真正的本机离线排盘，请在 Mac 的 Xcode 中运行 WenguaApp。原生 App 支持当前时间及手动指定时间。</p></div>
+<button class="cta" data-nav="setup">返回问题和时间</button><button class="secondary" data-nav="domain">返回领域选择</button>
+</div></section>
 <section id="reading" class="screen">
 <div class="top"><button class="back" data-nav="board">← 九宫盘</button><span style="font-size:13px;color:#96969c">问卦 · 完整解读</span></div>
 <div class="result-title"><h1 class="h1">断词 · 证据与反证</h1><div class="muted">以下对应上方固定历史样例，不是本次填写问题的新断案。</div></div>
@@ -254,9 +255,9 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 </section>
 <section id="other" class="screen"><div class="entry"><h1 class="h1" id="other-title">其他功能</h1><p class="muted">当前只对健康·病情轻重的 V3.9.1 源书解释进行界面设计。多局、研习、案例检索、账户等将逐步建设；未完成的功能不冒充正式断案。</p><button class="secondary" data-nav="board">返回局式</button></div></section>
 <nav class="bottombar" aria-label="主导航">
-<button class="active" data-tab="board"><b>⌂</b>局式</button>
+<button class="active" data-tab="domain"><b>⌂</b>问事</button>
 <button data-tab="setup"><b>▦</b>起局</button>
-<button data-tab="reading"><b>◎</b>断词</button>
+<button data-tab="reading"><b>◎</b>示例解读</button>
 <button data-tab="other" data-name="案例"><b>☷</b>案例</button>
 <button data-tab="other" data-name="我的"><b>◇</b>我的</button>
 </nav>
@@ -456,6 +457,7 @@ document.querySelector("#domain-back").addEventListener("click",()=>{
  selectedDomain=null;selectedDetail=null;renderDomain();
 });
 renderDomain();
+document.querySelector("#demo-preview").addEventListener("click",()=>navigate("board"));
 function chooseSample(i){
  if(i<0||i>=sourceCharts.length||!Number.isInteger(i))throw new Error("Invalid sample index");
  sampleIndex=i; demo=sourceCharts[i];
@@ -493,10 +495,8 @@ document.querySelector("#start-calm").addEventListener("click",()=>{
  updateCalm();timer=setInterval(updateCalm,250);
 });
 document.querySelector("#finish-calm").addEventListener("click",()=>{
- // No production engine here. Do NOT consume an issue, and don't imply that
- // the user's entered local date/time corresponds to this fixed historic board.
- navigate("board");document.querySelector(".safe-notice").textContent=
- "已完成30秒静心。但此版是固定历史盘的视觉预览，尚未在手机里实际起新局，也不会耗用15天一次的正式起局机会。";
+ // No browser engine: no fake chart navigation, record, or issue-lock write.
+ navigate("cast-unavailable");
 });
 function setNow(){
  const d=new Date(),pad=n=>String(n).padStart(2,"0");
@@ -523,10 +523,11 @@ document.querySelector("#to-ritual").addEventListener("click",async()=>{
 });
 document.querySelectorAll("[data-nav]").forEach(e=>e.addEventListener("click",()=>navigate(e.dataset.nav)));
 document.querySelector("#palaces").addEventListener("click",e=>{const b=e.target.closest("[data-palace]");if(b)palaceDetail(Number(b.dataset.palace));});
-document.querySelector("#sample-switcher").addEventListener("click",e=>{const b=e.target.closest("[data-sample]");if(b)chooseSample(Number(b.dataset.sample));});
+
 document.querySelector("#close-sheet").addEventListener("click",()=>document.querySelector("#overlay").classList.remove("open"));
 document.querySelector("#overlay").addEventListener("click",e=>{if(e.target.id==="overlay")e.currentTarget.classList.remove("open")});
 document.querySelectorAll("[data-tab]").forEach(e=>e.addEventListener("click",()=>{
+ if(e.dataset.tab==="reading"){navigate("board");return;}
  if(e.dataset.tab==="other"){document.querySelector("#other-title").textContent=e.dataset.name==="我的"?"我的":"案例（开发中）";}
  navigate(e.dataset.tab);
 }));
