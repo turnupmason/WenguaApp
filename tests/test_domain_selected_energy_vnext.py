@@ -28,8 +28,9 @@ class CompactTables(unittest.TestCase):
         self.assertEqual(comparison["version"],VERSION)
         self.assertEqual(comparison["symbol_duel_result"],
                          user_duel_lookup(a["strength_label"],b["strength_label"]))
-        self.assertEqual(comparison["palace_duel_result"],
-                         user_duel_lookup(a["palace_strength_label"],b["palace_strength_label"]))
+        self.assertEqual(comparison["table_two_lookups_for_pair"],1)
+        self.assertTrue(comparison["palace_strength_is_context_only"])
+        self.assertNotIn("palace_duel_result",comparison)
         overflow=table_one("star","天芮星","亥",1)
         self.assertEqual(overflow["relation"],"符号克宫")
         self.assertTrue(overflow["one_compound_fact"])
@@ -43,12 +44,15 @@ class CompactTables(unittest.TestCase):
         weak_a={**a,"strength_label":"极小","palace_strength_label":"极小"}
         high_b={**b,"strength_label":"极大","palace_strength_label":"极大"}
         self.assertEqual(matchup(weak_a,high_b,actor_role="a",target_role="b")["ability"],"不能")
+        # The factor's final strength is already fixed by TABLE ONE. Palace
+        # strength remains context and must NOT start a second duel.
         mixed={**a,"strength_label":"极大","palace_strength_label":"极小"}
         high_palace={**b,"strength_label":"极小","palace_strength_label":"极大"}
         mixed_result=matchup(mixed,high_palace,actor_role="a",target_role="b")
-        self.assertEqual(mixed_result["ability"],"条件待核")
-        self.assertEqual(mixed_result["palace_duel_result"],"硬干反而受伤")
-        self.assertTrue(mixed_result["backfire_risk_symbolic"])
+        self.assertEqual(mixed_result["duel_result"],"世界级压制干得过")
+        self.assertEqual(mixed_result["ability"],"能")
+        self.assertFalse(mixed_result["backfire_risk_symbolic"])
+        self.assertEqual(mixed_result["table_two_lookups_for_pair"],1)
         blocked={**a,"restrictions":["旬空待核"]}
         self.assertEqual(matchup(blocked,b,actor_role="a",target_role="b")["ability"],"条件待核")
         same=table_one("star","天心星","申",3)
