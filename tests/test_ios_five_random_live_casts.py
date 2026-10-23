@@ -150,6 +150,8 @@ def run(native_binary:Path,outdir:Path):
                             capture_output=True,text=True,check=True)
     except subprocess.CalledProcessError as err:
         (outdir/"swift_stderr.txt").write_text(err.stderr,encoding="utf8")
+        print("Swift CLI error from 5 genuinely new Python generated inputs:\n"+
+              err.stderr, file=sys.stderr, flush=True)
         raise AssertionError("Swift rejected a Python-approved live chart; "
                              "see preserved swift_stderr.txt") from err
     actual=json.loads(proc.stdout)
