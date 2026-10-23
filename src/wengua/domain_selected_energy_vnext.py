@@ -337,9 +337,8 @@ def selected_health_sections(result,*,actor,chart):
             goal="病宫" if b=="illness" else "患者宫"
             details.append(
                 "对"+goal+x["relation"]+
-                "；符号对抗「"+x["symbol_duel_result"]+"」"+
-                "，宫位对抗「"+x["palace_duel_result"]+"」"+
-                "，综合作用候选"+x["ability"])
+                "；两用神表一力量查表二：「"+x["duel_result"]+"」"+
+                "，作用条件"+x["ability"])
         if details:text+="；"+"；".join(details)+"。"
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
