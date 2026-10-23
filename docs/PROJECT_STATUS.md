@@ -1263,3 +1263,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - V-next `selected_duel_table_vnext.matchup` 给 `symbol_duel_result`（符号对符号）及 `palace_duel_result`（落宫宫力对宫力），保留原表每层的文字和 `backfire_risk_symbolic`；另结合真实宫克／生、空墓刑迫，在**工程研究合并门槛**给 `ability`「能/不能/艰难/条件待核/不适用」。胜负文本不等同临床事实，双方一胜一负不能强定总体胜出。 `domain_selected_energy_vnext.selected_health_sections` 现在逐边展示两层原词。
 - 新回归 `tests/test_user_exact_energy_duel_grids_vnext.py` 精确全25+25；修改既有 `tests/test_domain_selected_energy_vnext.py` 版本/冲突测试；疾病专项CI .github/workflows/health_vnext_conditional_review.yml 已添加新测试并持续校验 V3.9.1 原4固定盘SHA。规范 `docs/USER_EXACT_TWO_TABLES_2026-10-23.md` 保留全部原表和区分「用户原表」vs「工程合并条件」。
 - **不变项**：仍只按问事领域/子类型和真实人物条件选用神；未选宫不算、年命无不造、男性只参乾女性只参坤；V3.9.1、iOS真盘、旧全宫实验、V4.2弃用、两书43章194例及全部失败CI保持。用户五档是未经新独立书案验证的研究候选，不能拿来现实病情/药物/死亡判定。最终请按最新main同一SHA全仓CI和专项3.11/3.12结论核对。
+
+
+### 2026-10-23 · 用户更正：表二只查一次，用神强弱没有自造「矛盾」
+- 用户明确否定上轮错误：**起盘后所有九宫盘面事实已确定，表一把用神的月令及其自身落宫五行关系合并成唯一候选力量，所以两个用神之间只需表二25格查一次**。原“符号对抗一次＋落宫月令宫力另对抗一次、不同结果就叫矛盾”的第二层是助手擅自发明，不属于用户规则，不可再用于默认运行。真实宫的月令旺弱、十二长生、空墓刑迫可以记录并按古籍条件解释，但不另作为比赛对象。
+- **已修改 Python V-next 真实热路径**：`selected_duel_table_vnext.matchup` 使用一次 `user_duel_lookup(first["strength_label"],second["strength_label"])`，不再对 `palace_strength_label` 调 `user_duel_lookup`，不导出 `palace_duel_result`，保留唯一原文 `duel_result`、`table_two_lookups_for_pair=1`、`palace_strength_is_context_only=True` 和背景宫力事实。 `domain_selected_energy_vnext.selected_health_sections` 只叙述两用神表一力量直接查表二的实际结果。暂行的是否计入吉凶之门槛与原表胜负语分开，仍需原书校准。
+- **强制测试** `tests/test_user_exact_energy_duel_grids_vnext.py` 全25胜负×故意反向的宫力背景结果不变；`tests/test_domain_selected_energy_vnext.py` 断言仅一次查表、不出现第二场宫力胜负。完整说明在 `docs/USER_EXACT_TWO_TABLES_2026-10-23.md` 尾部新增用户纠偏，旧文和GitHub失败实验都保留。疾病其他角色绑定不变，未引入新章节（仍43章194案）、不改iOS自动起盘或V3.9.1、不会恢复弃用V4.2。最新同SHA CI Python3.11/3.12再核。
