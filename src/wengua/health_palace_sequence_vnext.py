@@ -26,6 +26,10 @@ from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
 from .health_tianrui_25_matrix import inspect_tianrui_25
 from .factor_energy_25_rules import inspect_strength_25, format_strength_template
 from .factor_energy_combinations import compare_full_factors, format_full_pair
+from .health_full_role_network_vnext import (
+    attach_all_factor_strengths, build_full_health_network,
+    format_health_network_summary)
+from .health_dynamic_v21 import _cell as actual_palace_cell
 
 from .qualitative_month_palace import (
     STRONG,WEAK,VALID_STAGES,effect_of_relation,compare_vigor_before_control)
@@ -151,37 +155,33 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         if c and c["palace"] not in {patient["palace"],natal["palace"] if natal else 0}:
             extras.append(inspect_palace(chart=chart,cell=c,role="辅助宫"+str(c["palace"]),
                                          month_branch=month,stem=c["earth_stem"]))
-    # Shared deterministic V-next strength review for every actual palace.
-    # This layer does NOT add any favorable/adverse evidence votes.
-    for role_fact in (ill,doc,yi,patient,*([natal] if natal else []),hour,*extras):
-        strength=[]
-        seen=set()
-        flags=tuple(
-            (["旬空待辨"] if role_fact["void_branches"] else [])+
-            (["天盘入墓"] if role_fact["sky_tombs"] else [])+
-            (["地盘入墓"] if role_fact["earth_tombs"] else [])+
-            (["六仪击刑"] if role_fact["striking_stems"] else [])+
-            (["门迫"] if role_fact["door_pressure"] else []))
-        def add_factor(kind, symbol, plane="heaven"):
-            key=(kind,symbol,plane)
-            if not symbol or key in seen:
-                return
-            seen.add(key)
-            strength.append(inspect_strength_25(
-                kind,symbol,month,role_fact["palace"],plane=plane,
-                restrictions=flags))
-        add_factor("deity",role_fact["deity"])
-        add_factor("door",role_fact["door"])
-        for star_entry in role_fact["heaven"]:
-            add_factor("star",star_entry["star"])
-            add_factor("stem",star_entry["stem"])
-        add_factor("stem",role_fact["earth_stem"],plane="earth")
-        role_fact["all_symbol_strength_25"]=strength
-        primary_kind="star" if role_fact["star"] else "stem"
-        primary_symbol=role_fact["star"] or role_fact["stem"]
-        role_fact["primary_strength_25"]=next((
-            s for s in strength
-            if s["kind"]==primary_kind and s["symbol"]==primary_symbol),None)
+    # The original disease/doctor/medicine/patient/year/hour roles remain
+    # bound by the existing author-source role profiles. Independently inspect
+    # the REAL 乾六宫 and 坤二宫 on every chart, regardless of sex/relationship.
+    # Observing those palaces does NOT automatically give them patient identity.
+    qian_cell=actual_palace_cell(chart,6)
+    kun_cell=actual_palace_cell(chart,2)
+    if not qian_cell or not kun_cell:
+        raise ValueError("Actual Qian and Kun palace facts are required")
+    qian_star=(qian_cell["heaven_stars"][0]["star"]
+               if qian_cell["heaven_stars"] else None)
+    kun_star=(kun_cell["heaven_stars"][0]["star"]
+              if kun_cell["heaven_stars"] else None)
+    qian=inspect_palace(
+        chart=chart,cell=qian_cell,role="乾六宫观察",
+        month_branch=month,star=qian_star,
+        stem=qian_cell["earth_stem"] if not qian_star else None)
+    kun=inspect_palace(
+        chart=chart,cell=kun_cell,role="坤二宫观察",
+        month_branch=month,star=kun_star,
+        stem=kun_cell["earth_stem"] if not kun_star else None)
+    for role_fact in (ill,doc,yi,patient,*([natal] if natal else []),
+                      hour,*extras,qian,kun):
+        attach_all_factor_strengths(role_fact,month)
+    full_health_network=build_full_health_network(
+        illness=ill,doctor=doc,medicine=yi,patient=patient,
+        hour=hour,natal=natal,qian=qian,kun=kun,extras=extras,
+        inquiry=inquiry,actor=actor)
     if ill["primary_strength_25"] is None or doc["primary_strength_25"] is None:
         raise ValueError("Both real Tianrui and Tianxin must have a star strength")
     interactions={
@@ -383,7 +383,9 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
              "no_numeric_health_score":True}
     return {"schema":"health_palace_sequence_review_1","macro":macro,
             "ordered_roles":[ill,doc,yi,patient,*([natal] if natal else []),hour,*extras],
-            "interactions":interactions,"verdict":verdict,
+            "interactions":interactions,
+            "full_health_role_strength_network":full_health_network,
+            "verdict":verdict,
             "evidence":{"favorable":good,"adverse":bad,"pending":pending,
                         "neutral":[x for x in evidence.values() if x["direction"]=="neutral"]},
             "counts":{"qualified_favorable":len(good),"qualified_adverse":len(bad),
@@ -458,6 +460,10 @@ def format_sequence_sections(result,*,actor,chart):
         push(str(i).zfill(2)+"_"+record["role"],record["role"],
              name(record)+facts(record)+
              ("。对病宫："+cmp["relationship"]+"；"+cmp["why"] if cmp else "")+"。")
+    # Always display the real Qian/Kun palaces, even if neither is bound
+    # to the patient's identity; natal is displayed only if actually supplied.
+    push("80_full_palace_network","年命、时干与乾坤全宫力量",
+         format_health_network_summary(result["full_health_role_strength_network"]))
     counts=result["counts"]; v=result["verdict"]
     push("90_review","全部证据合断",
          v["label"]+"。"+v["reason"]+"。"+
