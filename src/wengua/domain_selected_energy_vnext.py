@@ -215,6 +215,22 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         earth_tombs=tianrui["earth_tombs"],
         striking_stems=tianrui["striking_stems"],
         door_pressure=tianrui["door_pressure"])
+    # Keep the source-aware Tianrui 25-case interpretation as ONE compound
+    # candidate observation, never double-vote raw monthly stage + relation.
+    if t25["eligible_evidence_direction"] in ("favorable","adverse","pending","neutral"):
+        direction=t25["eligible_evidence_direction"]
+        if direction not in candidate:
+            candidate["neutral"]=[]
+        candidate[direction].append({
+            "id":"illness:tianrui_25:"+str(tianrui["palace"]),
+            "direction":direction,
+            "text":"天芮传统格局候选："+t25["traditional_title"],
+            "source":"existing_tianrui_25_source_qualified_review",
+            "roles":["天芮病宫"]})
+    # Candidate win/loss is still research-only, not an author-verified vote.
+    favor=len(candidate["favorable"]);against=len(candidate["adverse"])
+    counts={"qualified_favorable":favor,"qualified_adverse":against,
+            "pending_conditions":len(candidate["pending"])}
     # Preserve original Tianrui compound and reviewer provenance as one fact,
     # never automatically counted again as independent candidate duel.
     nodes={k:{
@@ -258,8 +274,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "full_health_role_strength_network":network,
         "verdict":verdict,
         "evidence":candidate,
-        "counts":{"qualified_favorable":favor,"qualified_adverse":against,
-                  "pending_conditions":len(candidate["pending"])},
+        "counts":counts,
         "missing_natal":missing_natal,
         "gender_palace":gender_palace,
         "book_pair_source_hits":len(matched_pairs),
@@ -293,6 +308,9 @@ def selected_health_sections(result,*,actor,chart):
         if key not in roles:continue
         r=roles[key];energy=r["primary_strength_25"]
         text=r["role"]+"落"+r["name"]+"。"+format_strength_template(energy)
+        if key=="illness":
+            t25=result["interactions"]["天芮星月令×星宫五行25格"]
+            text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
         details=[]
         for a,b in (("doctor","illness"),("doctor","patient"),
                     ("medicine","illness"),("medicine","patient"),
