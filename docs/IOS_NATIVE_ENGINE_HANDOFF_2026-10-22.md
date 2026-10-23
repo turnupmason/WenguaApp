@@ -93,3 +93,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **原生 SwiftUI 也已对应重排：** `ProfessionalChartScreen.chartHeader` 独立四柱与局信息，`ProfessionalPalaceTile` 重写神/星/门/天/地/空马墓/长生清晰分层，字号提高。真正根据当前时间/手动时间的排盘 **仍由 `WenguaNativeCore.compute(at:timezone:)`，不是 JS 动态算盘**；原生日志/数据库/事项限制/30秒静心逻辑均不改。用户打开原生 App 依旧先选择领域、细分，成功保存才登记15天；浏览器不能起局、不假称完成断案。
 - **测试：** 更新 Python UI 契约反向确认 `sample-switcher` 不存在、无 `data-sample=`、只通过示例预览进入固定盘、完成静心不会显示历史盘、四柱/局式/九宫字层/移动底栏样式生效。Source fixture 全部留存。过程中旧测试误要求 visible sample-switcher 的 CI 失败记录保留并修正；Swift accessibilityLabel 换行解析错误单独修复。检查当前 HEAD 的 GitHub `iOS V1 Design Contract` 及 `iOS Offline Native Casting Parity`，不得以仅 syntax-parse 宣称模拟器正式 build 成功。
 - **未完成的产品门槛**：独立手机版 V3.9.1 完整自然语言推理并未移植；仅在原生 App 上真实算盘后展示核定事实。HTML 样例只是静态视觉验证。未来 iOS 仍需真机、TestFlight、正式图标和 App Store 审核。
+
+## 2026-10-22 · 基础九宫模板五个全新随机时辰验收（关闭当前基础模板阶段）
+- **结论：基础专业九宫起盘、五行分色字段与天盘/地盘/空马墓/十二长生数据契约通过真实五时辰验收；此轮基础盘模板结束。** 本轮不是旧四张固定盘回放，也不是古籍案例新增或模型断词准确率测试。
+- 固定随机种子 `20261022`，2027年1/3/5/8/10月按各自日期与实际干支时辰随机抽取，`America/New_York`，无历史四盘复用、无跳过已校准失败候选。五张输入：2027-01-20 19:00（阳9、大寒）、03-18 05:00（阳1、惊蛰）、05-10 07:00（阳7、立夏）、08-16 07:00（阴2、立秋）、10-09 17:00（阴3、寒露）。
+- 真正运行 **Python 原算法逐盘实算 → Swift 本地离线 `compute(at:timezone:)` 真正重新计算 → 两套引擎全部字段比较**。结果 **5/5、45/45 九宫（40 外围）、128 天地盘逐支长生、8 个真实天地入墓，五盘均八神、九星、八门、天地干、四柱、遁局、节气、旬首、值符值使、旬空、马一致，天芮与天禽同宫亦通过**；不触发状态不可伪造。旧四张基线也同次通过。
+- 验证程序：`tests/test_ios_five_random_live_casts.py`；Workflow `.github/workflows/ios_native_cast_parity.yml`；运行成功（**包含真正的 Xcode iOS Simulator 编译**）：https://github.com/turnupmason/WenguaApp/actions/runs/39886204311 。五盘完整原 Python/Swift 数据报告： https://github.com/turnupmason/WenguaApp/actions/runs/39886204311/artifacts/12472846851 。
+- 严格保留从首次测试环境 `ModuleNotFoundError`、JSON 中五可选 `null` 与 Swift Codable 省略可选字段，到最终成功的所有失败 Actions；不删除失败实验、不重写起盘规则，不改变原书194例/43章/81天地干/42疾病补充/17复合格局。
+- 完整记录：`docs/IOS_NINE_PALACE_TEMPLATE_FIVE_HOUR_ACCEPTANCE_2026-10-22.md`。基础九宫模板进入**可复用冻结状态**，后续大批量领域细分模板均复用；**下一阶段**开发领域→子领域独立取用神、书源正反证据、条件推理、应期、V3.9.1离线中文完整断词的批量编排和测试，绝不能把九宫测试成功说成疾病/其它领域自然断案模型移植已完成。用户 Mac/iPhone 真机视觉测试、正式发布仍是独立验收阶段。
