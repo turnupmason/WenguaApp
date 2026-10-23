@@ -4,8 +4,12 @@ on:
     branches: [main]
     paths:
       - 'src/wengua/health_severity_vnext_review.py'
+      - 'src/wengua/health_palace_sequence_vnext.py'
+      - 'src/wengua/health_tianrui_25_matrix.py'
+      - 'src/wengua/qualitative_month_palace.py'
       - 'src/wengua/health_text_pipeline_vnext_review.py'
       - 'tests/test_health_vnext_conditional_review.py'
+      - 'tests/test_health_tianrui_25_matrix.py'
       - 'scripts/preview_health_vnext_conditional.py'
       - '.github/workflows/health_vnext_conditional_review.yml'
   workflow_dispatch:
@@ -23,6 +27,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Verify new gate, unique actual facts, abstention, four unchanged V3.9.1 readings
         run: |
+          python -m unittest discover -s tests -p test_health_tianrui_25_matrix.py -v
           python -m unittest discover -s tests -p test_health_vnext_conditional_review.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
       - name: Create before and after example report from independent source casts
