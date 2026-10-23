@@ -1125,3 +1125,13 @@ Most recent subsequent clean-up commit `c2aa4f86d68e8c6098e897ee0744532dbcfdc549
 
 ### Latest final parity / Xcode status after view refactor (verified)
 **Latest genuine macOS Xcode Simulator BUILD PASS at commit `c2aa4f86d68e8c6098e897ee0744532dbcfdc549`**, https://github.com/turnupmason/WenguaApp/actions/runs/39869156240 ; **native_core=SUCCESS** (Swift compiler independently computes 4 true sealed Python casts), **real_ios_xcode_build=SUCCESS** (XcodeGen iOS17 App actually compiles for iOS Simulator). Also `iOS V1 Design Contract` https://github.com/turnupmason/WenguaApp/actions/runs/39869156637 SUCCESS and `WenguaApp CI` https://github.com/turnupmason/WenguaApp/actions/runs/39869156009 SUCCESS. Additional docs-only commits AFTER c2 do not change native code. This is a real compiling iOS Simulator app project, NOT a signed .ipa or a physical device run or full source-book narration port. Continue Xcode true simulator interactions and offline V3.9.1 reasoning next, not another hand-coded demo.
+
+## 2026-10-22 — 九宫显示延续开发（基于现有原生引擎，保留历史）
+- **不是新项目**。已读取本仓库 AGENTS / STATUS / LEDGER / iOS 设计和 NativeCore。现有的 `WenguaNativeCore.compute(at:timezone:)` 是真实离线历法/时家转盘计算，本轮没有变更底层原书起盘规则、四柱和原书已验来源，亦没有重建数据库。
+- `ios/design-v1/preview.html`：九宫细分隔线不变；依据封存4张审计真盘，宫内逐行显示 **每个天盘携干与地盘干对应全部真实辖支的十二长生**（含天芮／天禽双星），地支及干按各自五行色，空亡／时支马／天墓／地墓仍直接可见。中五只显示真实地盘干，不伪造神星门及无辖支的十二长生。
+- 同宫、对宫与**真实墓支-马支地支六冲**为独立条件；纯宫位相对不得称“冲开”。如存在六冲最多标为**冲墓候选**，需原书其他条件，不自动作结论。旺相休囚废、六仪击刑、门迫没有独立审计状态字段时标明未实现，不能伪造已发生或错误断言未发生。
+- `ios/WenguaAppUI/WenguaDesignPreviewApp.swift`：九宫和宫详情共用实盘 `WenguaNativePalace` 携带的天/地两盘十二长生；固定第一盘也基于既有原书12长生常量生成显示行。详情里双星分色、宫支逐一上色、天/地墓按**真实干五行**区分，不按神门星类别上色；遵守中五特殊规则。
+- **四张演示盘现在也能在原生 SwiftUI 中选择**：只读样例时间为 2026-11-01 05:00、11-04 05:00、11-10 21:00、11-21 17:00（`America/New_York`）。SwiftUI 对每个固定时刻调用 `WenguaNativeCore.compute` **重新实算**，不预填九宫字段；`FrozenReadingV391.json` 为从既有 `chart-facts-v3.js` 等量复制的4条已封存 V3.9.1 源文本，切换盘时自动同步断词。它们仅是 **固定测试盘而非本次真实问事**，不能占用15天事项次数；若 JSON 资源缺失，拒绝拿其他盘断词填充。
+- 新用户真正按“具体问事→30秒完整静心→确认起局”后，`nativeChart` 仍来自实时本机计算，15天 SHA256 事项限制继续只在成功算盘且记录保存后登记；**V3.9.1 新盘真实完整离线断词仍待移植，绝不冒充已完成**。
+- 回归：新增 Node 对外围八宫天地盘真实十二长生、中五排除、双星携干和对宫非六冲的检查；原有对四盘的测试、Python UI 契约、15天事项测试持续保留。2026-10-22 首次新增的 Node 检查错误地要求无辖支的中五拥有 `earthStages`，CI 红灯已保存并由下一提交修正，不能擦除失败历史。
+- 不改旧194原书案例、43章、81天地干、42疾病补充、17复合格局、原书错断和失败记录；不用 V4.2 数值评分。未签名真机测试/IPA/App Store 未完成，UI 图片视觉比对与真实 Xcode Simulator 手动交互仍待完成。按本次代码最新 Actions 核验新提交，不能以旧成功覆盖新失败。
