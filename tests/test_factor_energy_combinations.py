@@ -116,7 +116,13 @@ class FullSymbolCombinations(unittest.TestCase):
         import inspect
         from src.wengua import health_palace_sequence_vnext
         src=inspect.getsource(health_palace_sequence_vnext.collect_sequence)
-        self.assertIn("all_symbol_strength_25",src)
+        # After factoring the audited role strengths into a reusable module,
+        # ensure collect_sequence calls the helper and the helper still records
+        # every real sky/earth/deity/door/star factor.
+        self.assertIn("attach_all_factor_strengths",src)
+        from src.wengua import health_full_role_network_vnext as network_module
+        self.assertIn("all_symbol_strength_25",
+                      inspect.getsource(network_module.attach_all_factor_strengths))
         self.assertIn("compare_full_factors",src)
         self.assertIn("天心对天芮25格力量推演",src)
         self.assertIn("inspect_tianrui_25",src)
