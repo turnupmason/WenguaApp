@@ -25,11 +25,7 @@ from .symbol_relations import door_season
 from .health_lifecycle_v391 import source_full12,stage_for_stem_at_actual_palace
 from .health_tianrui_25_matrix import inspect_tianrui_25
 from .factor_energy_25_rules import inspect_strength_25, format_strength_template
-from .factor_energy_combinations import compare_full_factors, format_full_pair
-from .health_full_role_network_vnext import (
-    attach_all_factor_strengths, build_full_health_network,
-    format_health_network_summary)
-from .health_dynamic_v21 import _cell as actual_palace_cell
+# Full Cartesian historic research imports are LAZY and never loaded by the selected default.
 
 from .qualitative_month_palace import (
     STRONG,WEAK,VALID_STAGES,effect_of_relation,compare_vigor_before_control)
@@ -129,6 +125,16 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     """
     month=calendar["month_branch"]
     if month not in SEASONS:raise ValueError("A genuine month branch is required")
+    if not inquiry.get("_research_full_graph",False):
+        from .domain_selected_energy_vnext import selected_health_sequence
+        return selected_health_sequence(
+            chart=chart,calendar=calendar,actor=actor,
+            inquiry=inquiry,matched_pairs=matched_pairs)
+    # Historical comparison graph remains opt-in for research regression ONLY.
+    from .factor_energy_combinations import compare_full_factors
+    from .health_full_role_network_vnext import (
+        attach_all_factor_strengths, build_full_health_network)
+    from .health_dynamic_v21 import _cell as actual_palace_cell
     ill_cell,ill_star=_find_star(chart,"天芮星")
     doc_cell,doc_star=_find_star(chart,"天心星")
     yi_cell=_find_heaven_stem(chart,"乙")
@@ -395,6 +401,11 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
 
 def format_sequence_sections(result,*,actor,chart):
     """Human Chinese explanation in explicit requested reasoning order."""
+    if result.get("selected_energy_pipeline"):
+        from .domain_selected_energy_vnext import selected_health_sections
+        return selected_health_sections(result,actor=actor,chart=chart)
+    from .factor_energy_combinations import format_full_pair
+    from .health_full_role_network_vnext import format_health_network_summary
     roles=result["ordered_roles"]
     name=lambda r:r["role"]+"落"+r["name"]
     def facts(r):
