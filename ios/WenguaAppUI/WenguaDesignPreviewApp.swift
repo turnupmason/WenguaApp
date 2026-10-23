@@ -196,21 +196,176 @@ extension QPalace {
     }
 }
 
-struct WenguaRootView: View {
+// Stable, explicit routing IDs. Only approved offline narration templates may
+// be enabled. The other book domains remain visible as roadmap, NOT runnable.
+struct QuestionTopic: Identifiable, Equatable {
+    let id: String
+    let title: String
+    let domainTitle: String
+    let enabled: Bool
+}
+struct QuestionDomain: Identifiable {
+    let id: String
+    let title: String
+    let symbol: String
+    let topics: [QuestionTopic]
+}
+enum QuestionCatalog {
+    static func domain(_ id:String,_ title:String,_ symbol:String,
+                       _ subjects:[String]) -> QuestionDomain {
+        QuestionDomain(id:id,title:title,symbol:symbol,
+            topics:subjects.enumerated().map { index, name in
+                QuestionTopic(id:id+"."+String(index),title:name,
+                              domainTitle:title,enabled:false)
+            })
+    }
+    static let domains: [QuestionDomain] = [
+        QuestionDomain(id:"health",title:"疾病健康",symbol:"cross.case",
+          topics:[
+            QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
+            QuestionTopic(id:"health.trend",title:"病势发展",domainTitle:"疾病健康",enabled:false),
+            QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
+            QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
+        domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),
+        domain("career","工作就业","briefcase",["求职面试","在职发展","升迁调动"]),
+        domain("business","经营求财","chart.line.uptrend.xyaxis",["经营项目","投资求财","债务借贷"]),
+        domain("education","求学考试","graduationcap",["升学申请","考试结果"]),
+        domain("travel","出行出国","airplane",["出行安全","海外发展"]),
+        domain("missing","行人走失","figure.walk",["寻找行人","是否归来"]),
+        domain("property","钱物丢失","shippingbox",["遗失物品","寻找财物"]),
+        domain("lawsuit","官司诉讼","building.columns",["诉讼结果","纠纷处理"]),
+        domain("crime","刑事案件","shield.lefthalf.filled",["案件调查"]),
+        domain("weather","天时气象","cloud.sun",["天气变化"]),
+        domain("sports","体育竞赛","sportscourt",["赛事结果"]),
+        domain("geography","地理环境","map",["环境与方位"]),
+        domain("life","人生命运","person.crop.circle",["人生机遇"]),
+        domain("other","其他杂项","square.grid.2x2",["其它具体事项"])
+    ]
+    static let defaultTopic = domains[0].topics[0]
+}
+
+struct WenguaMark: View {
+    var size: CGFloat = 44
     var body: some View {
-        TabView {
-            NavigationStack { ProfessionalChartScreen() }
-                .tabItem { Label("局式", systemImage: "house") }
-            NavigationStack { NotReadyScreen(name: "多局") }
-                .tabItem { Label("多局", systemImage: "square.grid.2x2") }
-            NavigationStack { NotReadyScreen(name: "研习") }
-                .tabItem { Label("研习", systemImage: "viewfinder") }
-            NavigationStack { NotReadyScreen(name: "案例") }
-                .tabItem { Label("案例", systemImage: "list.bullet") }
-            NavigationStack { NotReadyScreen(name: "我") }
-                .tabItem { Label("我", systemImage: "person.crop.circle") }
+        ZStack {
+            Circle().fill(Color(red:0.12,green:0.22,blue:0.31))
+            Circle().stroke(Color(red:0.83,green:0.67,blue:0.33),lineWidth:1.5)
+                .padding(size*0.10)
+            Circle().stroke(Color(red:0.83,green:0.67,blue:0.33).opacity(0.55),lineWidth:1)
+                .padding(size*0.19)
+            Text("问").font(.system(size:size*0.40,weight:.semibold,design:.serif))
+                .foregroundStyle(Color(red:0.95,green:0.83,blue:0.55))
         }
-        .tint(QStyle.blue)
+        .frame(width:size,height:size)
+        .accessibilityLabel("问卦")
+    }
+}
+
+struct WenguaRootView: View {
+    @State private var topic: QuestionTopic?
+    var body: some View {
+        if let topic {
+            NavigationStack {
+                ProfessionalChartScreen(topic:topic,changeTopic:{self.topic=nil})
+            }
+        } else {
+            QuestionEntryScreen { next in topic=next }
+        }
+    }
+}
+struct QuestionEntryScreen: View {
+    let select: (QuestionTopic) -> Void
+    @State private var chosenDomain: String?
+    @State private var chosenTopic: String?
+    private var domain: QuestionDomain? {
+        QuestionCatalog.domains.first(where:{$0.id==chosenDomain})
+    }
+    private var selected: QuestionTopic? {
+        domain?.topics.first(where:{$0.id==chosenTopic})
+    }
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment:.leading,spacing:17) {
+                    HStack(spacing:14) {
+                        WenguaMark(size:62)
+                        VStack(alignment:.leading,spacing:3) {
+                            Text("问卦").font(.system(size:32,weight:.semibold,design:.serif))
+                            Text("心诚则灵 · 尊重事实")
+                                .font(.subheadline).foregroundStyle(QStyle.secondary)
+                        }
+                    }
+                    .padding(.vertical,24)
+                    Text(chosenDomain==nil ? "先选择问事领域" : "再选择具体事项")
+                        .font(.system(size:24,weight:.semibold))
+                    Text("选定领域和细分事项后，才会调用对应的离线排盘与断案模板。未完成的模板不会冒充可用。")
+                        .font(.subheadline).foregroundStyle(QStyle.secondary)
+                    if let domain {
+                        Button("〈 返回领域") {chosenDomain=nil;chosenTopic=nil}
+                            .font(.subheadline).foregroundStyle(QStyle.blue)
+                        Text(domain.title).font(.headline)
+                        ForEach(domain.topics) { item in
+                            Button {chosenTopic=item.id} label: {
+                                HStack {
+                                    Image(systemName:chosenTopic==item.id ?
+                                          "largecircle.fill.circle":"circle")
+                                        .foregroundStyle(QStyle.blue)
+                                    VStack(alignment:.leading,spacing:3) {
+                                        Text(item.title).foregroundStyle(QStyle.text)
+                                        Text(item.enabled ? "九宫离线实算已接入 · 完整断词仍在移植" :
+                                                "本专题的独立断案规则尚未移植")
+                                            .font(.caption).foregroundStyle(QStyle.secondary)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(14)
+                                .background(.white,in:RoundedRectangle(cornerRadius:14))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        if let selected {
+                            Button(selected.enabled ? "继续设置时间与当事人" : "此项规则开发中") {
+                                if selected.enabled {select(selected)}
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(!selected.enabled)
+                            .frame(maxWidth:.infinity)
+                            Text(selected.enabled ?
+                                 "自动起盘与文字断案是独立阶段；当前上线前仍须完成新盘全文断词模块。" :
+                                 "不调用疾病轻重模板代替其它问事。")
+                                .font(.caption).foregroundStyle(QStyle.secondary)
+                        }
+                    } else {
+                        LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing:11) {
+                            ForEach(QuestionCatalog.domains) { item in
+                                Button {
+                                    chosenDomain=item.id
+                                    chosenTopic=nil
+                                } label: {
+                                    VStack(alignment:.leading,spacing:11) {
+                                        Image(systemName:item.symbol)
+                                            .font(.system(size:24))
+                                            .foregroundStyle(QStyle.blue)
+                                        Text(item.title).font(.headline)
+                                            .foregroundStyle(QStyle.text)
+                                        Text(item.id=="health" ? "已接入起盘" : "规划中")
+                                            .font(.caption).foregroundStyle(QStyle.secondary)
+                                    }
+                                    .frame(maxWidth:.infinity,minHeight:110,alignment:.leading)
+                                    .padding(13)
+                                    .background(.white,in:RoundedRectangle(cornerRadius:15))
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
+                    }
+                }
+                .padding(18)
+            }
+            .background(QStyle.backing)
+            .navigationTitle("问卦")
+            .navigationBarTitleDisplayMode(.inline)
+        }
     }
 }
 
@@ -254,216 +409,157 @@ enum FrozenPreview {
 }
 
 struct ProfessionalChartScreen: View {
+    let topic: QuestionTopic
+    let changeTopic: () -> Void
     @State private var chosenPalace: QPalace?
     @State private var showAsk = false
     @State private var showReading = false
-    @State private var nativeChart: WenguaNativeChart? = nil
+    @State private var nativeChart: WenguaNativeChart?
     @State private var castRelation = "本人"
-    @State private var selectedSampleIndex = 0
 
-    private var displayChart: WenguaNativeChart? {
-        nativeChart ?? FrozenPreview.cast(selectedSampleIndex)
-    }
-
-    private var shownPalaces: [QPalace] {
-        guard let chart=displayChart else {return QPalace.actualSourceFixture}
+    private var palaces: [QPalace] {
+        guard let chart=nativeChart else {return []}
         let byId=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
         return WenguaNativeCore.branchOrderPalaces.compactMap {
             guard let cell=byId[$0] else {return nil}
             return QPalace.fromNative(cell,chart:chart,relation:castRelation)
         }
     }
-    private var shownPillars: WenguaNativePillars {
-        displayChart?.pillars ?? WenguaNativePillars(year:"丙午",month:"戊戌",
-                                                      day:"己卯",hour:"丁卯")
-    }
-    private var bureauInfo: String {
-        let kind = displayChart?.bureau.dun == "yang" ? "阳遁" : "阴遁"
-        let number = String(displayChart?.bureau.ju ?? 5)
-        let head = displayChart?.xunShou ?? "甲子"
-        return kind + " · " + number + "局 › " + head + "旬"
-    }
-    private var starDoorInfo: String {
-        let star = (displayChart?.valueStar ?? "天禽星").replacingOccurrences(of:"星",with:"")
-        let door = displayChart?.valueDoor ?? "死门"
-        return "值符：" + star + "  值使：" + door
-    }
-    private var solarInfo: String {
-        let term = displayChart?.solarTerm ?? "霜降"
-        let yuan = displayChart?.bureau.yuan ?? "upper"
-        return "时家转盘 · " + term + " · " + yuan
-    }
-    private var voidInfo: String {
-        let head = displayChart?.xunShou ?? "甲子"
-        let empties = displayChart?.voidBranches.joined(separator:"、") ?? "戌亥"
-        return "时空：" + head + "旬，" + empties + "空"
-    }
-
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Button {
-                        showAsk = true
-                    } label: {
-                        Text(displayChart.map { String($0.iso.prefix(16)).replacingOccurrences(of:"T",with:" ") +
-                              (nativeChart == nil ? " · 固定测试  ⌄" : " · 本机实算  ⌄") }
-                             ?? "测试盘未能计算 · 请查看构建日志")
-                            .font(.system(size: 16))
-                            .foregroundStyle(QStyle.text)
+            VStack(alignment:.leading,spacing:0) {
+                HStack(spacing:12) {
+                    WenguaMark(size:43)
+                    VStack(alignment:.leading,spacing:3) {
+                        Text("问卦").font(.system(size:22,weight:.semibold,design:.serif))
+                        Text(topic.domainTitle + " · " + topic.title)
+                            .font(.caption).foregroundStyle(QStyle.secondary)
                     }
                     Spacer()
-                    Button("选时") { showAsk = true }
-                        .buttonStyle(.bordered)
-                        .controlSize(.small)
-                }
-                .padding(.horizontal, 12)
-                .padding(.vertical, 13)
+                    Button("更换领域",action:changeTopic)
+                        .font(.caption).buttonStyle(.bordered)
+                }.padding(14)
 
-                HStack(alignment: .top, spacing: 8) {
-                    pillar(String(shownPillars.year.prefix(1)),String(shownPillars.year.suffix(1)),"年",color:QStyle.red)
-                    pillar(String(shownPillars.month.prefix(1)),String(shownPillars.month.suffix(1)),"月",color:QStyle.orange)
-                    pillar(String(shownPillars.day.prefix(1)),String(shownPillars.day.suffix(1)),"日",color:QStyle.orange)
-                    pillar(String(shownPillars.hour.prefix(1)),String(shownPillars.hour.suffix(1)),"时",color:QStyle.blue)
-                    Spacer(minLength: 0)
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(bureauInfo)
-                        Text(starDoorInfo)
-                    }
-                    .font(.system(size: 11))
-                    .foregroundStyle(QStyle.secondary)
-                    .fixedSize(horizontal: false, vertical: true)
-                }
-                .padding(12)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(QStyle.backing)
+                if let chart=nativeChart {
+                    chartHeader(chart)
+                    palaceBoard
+                    HStack {
+                        Text("点击九宫查看五行、十二长生、空马墓与出处条件")
+                        Spacer()
+                    }.font(.caption2).foregroundStyle(QStyle.secondary).padding(12)
 
-                HStack {
-                    Text(solarInfo)
-                        .font(.caption)
-                        .foregroundStyle(QStyle.secondary)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .overlay(Capsule().stroke(QStyle.line))
-                    Spacer()
-                    Button { showAsk = true } label: {
-                        Image(systemName: "calendar.badge.clock")
-                    }
-                    Button { showReading = true } label: {
-                        Image(systemName: "text.book.closed")
-                    }
-                }
-                .foregroundStyle(QStyle.secondary)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 9)
-                .background(QStyle.backing)
-
-                if nativeChart == nil {
-                    ScrollView(.horizontal, showsIndicators:false) {
-                        HStack(spacing:7) {
-                            ForEach(FrozenPreview.isos.indices,id: \.self) { index in
-                                Button(FrozenPreview.labels[index]) {
-                                    selectedSampleIndex=index
-                                }
-                                .font(.system(size: 11,weight: selectedSampleIndex==index ? .semibold : .regular))
-                                .padding(.vertical,8)
-                                .padding(.horizontal,9)
-                                .background(selectedSampleIndex==index
-                                    ? Color(red:0.88,green:0.94,blue:1) : .white,
-                                    in:RoundedRectangle(cornerRadius:7))
-                                .overlay(RoundedRectangle(cornerRadius:7)
-                                    .stroke(QStyle.line))
+                    VStack(alignment:.leading,spacing:12) {
+                        Button {showReading=true} label: {
+                            HStack {
+                                Image(systemName:"text.book.closed")
+                                Text("查看完整解读")
+                                Spacer()
+                                Image(systemName:"chevron.right")
                             }
+                            .font(.headline)
+                            .padding(14)
+                            .background(Color(red:0.93,green:0.96,blue:1),
+                                        in:RoundedRectangle(cornerRadius:12))
                         }
-                        .padding(.horizontal,10)
-                        .padding(.vertical,7)
+                        Text("九宫由本机离线起盘。新盘自然语言断案模板尚待原生移植；不会使用固定历史盘的结论替代。")
+                            .font(.caption).foregroundStyle(QStyle.secondary)
+                    }.padding(14)
+                } else {
+                    VStack(alignment:.leading,spacing:15) {
+                        Text("准备起局").font(.system(size:27,weight:.semibold))
+                        Text("事项已选："+topic.domainTitle+" / "+topic.title)
+                            .font(.subheadline).foregroundStyle(QStyle.secondary)
+                        Text("你可以选择按确认时刻起局，或者手动指定年月日时分。两种模式都由同一套本机离线算法计算九宫。")
+                            .font(.subheadline).foregroundStyle(QStyle.secondary)
+                        Button("设置问事与时间") {showAsk=true}
+                            .buttonStyle(.borderedProminent)
+                            .frame(maxWidth:.infinity)
+                        Text("之后需完整静心30秒。仅在成功起盘、保存记录后登记同一事项15天限制。")
+                            .font(.caption).foregroundStyle(QStyle.secondary)
                     }
-                    .background(QStyle.backing)
-                }
-
-                LazyVGrid(
-                    columns: Array(repeating: GridItem(.flexible(), spacing: 1), count: 3),
-                    spacing: 1
-                ) {
-                    ForEach(shownPalaces) { palace in
-                        Button { chosenPalace = palace } label: {
-                            ProfessionalPalaceTile(palace: palace)
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(.vertical, 1)
-                .background(QStyle.line)
-
-                HStack(spacing: 8) {
-                    tag("十二长生")
-                    tag("空亡")
-                    tag("宫位详情")
-                    Spacer()
-                }
-                .padding(12)
-                .background(QStyle.backing)
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("年命：未选择 · 不臆造")
-                    Text(voidInfo)
-                    HStack(spacing: 10) {
-                        Button("问测何事") { showAsk = true }
-                        Button("V3.9.1 断词") { showReading = true }
-                    }
-                    .buttonStyle(.bordered)
-                }
-                .foregroundStyle(QStyle.secondary)
-                .font(.subheadline)
-                .padding(14)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(QStyle.backing)
-
-                Text(nativeChart == nil
-                     ? "当前为固定测试盘。点击选时并静心30秒后，即可用原生 Swift 离线实时生成新盘。"
-                     : "本局由本机离线 Swift 实算四柱、九宫及空马墓。疾病 V3.9.1 自然断词尚未移植，勿将其视为已完成的诊断。")
-                    .font(.caption2)
-                    .foregroundStyle(QStyle.secondary)
+                    .frame(maxWidth:.infinity,alignment:.leading)
+                    .padding(22)
+                    .background(.white,in:RoundedRectangle(cornerRadius:18))
                     .padding(14)
+                }
             }
         }
-        .background(.white)
-        .navigationTitle(nativeChart == nil ? "局式 · 固定测试盘" : "局式 · 原生实算")
+        .background(QStyle.backing)
+        .navigationTitle("局式")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(item: $chosenPalace) { palace in
-            ProfessionalPalaceDetail(palace: palace,
-                hourHorse:displayChart?.hourHorse ?? "巳",
-                hourHorsePalace:displayChart?.hourHorsePalace ?? 4)
-                .presentationDetents([.medium, .large])
+        .sheet(item:$chosenPalace) { palace in
+            ProfessionalPalaceDetail(palace:palace,
+                hourHorse:nativeChart?.hourHorse ?? "",
+                hourHorsePalace:nativeChart?.hourHorsePalace ?? 0)
+                .presentationDetents([.medium,.large])
                 .presentationDragIndicator(.visible)
         }
-        .sheet(isPresented: $showAsk) {
-            CastSetupScreen { computed, relation in
+        .sheet(isPresented:$showAsk) {
+            CastSetupScreen(topic:topic) { computed,relation in
                 nativeChart=computed
                 castRelation=relation
                 showAsk=false
             }
         }
-        .sheet(isPresented: $showReading) { TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:selectedSampleIndex) }
-    }
-
-    private func pillar(_ sky: String, _ branch: String, _ label: String, color: Color) -> some View {
-        VStack(spacing: 1) {
-            Text(sky).font(.system(size: 23, weight: .medium))
-                .foregroundStyle(QFive.shade("stem",sky))
-            Text(label).font(.system(size: 9)).foregroundStyle(QStyle.secondary)
-            Text(branch).font(.system(size: 22, weight: .medium))
-                .foregroundStyle(QFive.shade("branch",branch))
+        .sheet(isPresented:$showReading) {
+            TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1)
         }
-        .frame(width: 35)
+        .onAppear {
+            // Initial app path: domain > subquestion > setup > calm > native cast.
+            if nativeChart == nil {showAsk=true}
+        }
     }
-
-    private func tag(_ title: String) -> some View {
-        Text(title)
-            .font(.caption2)
-            .foregroundStyle(QStyle.secondary)
-            .padding(.horizontal, 10).padding(.vertical, 5)
-            .overlay(Capsule().stroke(QStyle.line))
+    private var palaceBoard: some View {
+        LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:1),count:3),spacing:1) {
+            ForEach(palaces) { palace in
+                Button {chosenPalace=palace} label:{ProfessionalPalaceTile(palace:palace)}
+                    .buttonStyle(.plain)
+            }
+        }
+        .padding(.vertical,1)
+        .background(QStyle.line)
+    }
+    private func chartHeader(_ chart: WenguaNativeChart) -> some View {
+        VStack(alignment:.leading,spacing:8) {
+            HStack {
+                VStack(alignment:.leading,spacing:3) {
+                    Text(chart.iso.replacingOccurrences(of:"T",with:" ").prefix(16))
+                        .font(.system(size:15,weight:.medium))
+                    Text(chart.timezone+" · "+chart.solarTerm)
+                        .font(.caption).foregroundStyle(QStyle.secondary)
+                }
+                Spacer()
+                Button("重新选时") {showAsk=true}.font(.caption).buttonStyle(.bordered)
+            }
+            HStack(alignment:.top,spacing:10) {
+                ForEach([
+                    ("年",chart.pillars.year),("月",chart.pillars.month),
+                    ("日",chart.pillars.day),("时",chart.pillars.hour)
+                ],id: \.0) { entry in
+                    VStack(spacing:2) {
+                        Text(String(entry.1.prefix(1)))
+                            .foregroundStyle(QFive.shade("stem",String(entry.1.prefix(1))))
+                        Text(entry.0).font(.system(size:9)).foregroundStyle(QStyle.secondary)
+                        Text(String(entry.1.suffix(1)))
+                            .foregroundStyle(QFive.shade("branch",String(entry.1.suffix(1))))
+                    }
+                    .font(.system(size:20))
+                    .frame(maxWidth:.infinity)
+                }
+                VStack(alignment:.leading,spacing:3) {
+                    Text((chart.bureau.dun=="yang" ? "阳遁" : "阴遁")+
+                         String(chart.bureau.ju)+"局")
+                    Text(chart.xunShou+"旬")
+                    Text("值符："+chart.valueStar)
+                    Text("值使："+chart.valueDoor)
+                }.font(.system(size:10)).foregroundStyle(QStyle.secondary)
+            }
+            Text("旬空："+chart.voidBranches.joined(separator:"、")+
+                 " · 驿马："+chart.hourHorse+"（"+String(chart.hourHorsePalace)+"宫）")
+                .font(.caption).foregroundStyle(QStyle.secondary)
+        }
+        .padding(12)
+        .background(.white)
     }
 }
 
