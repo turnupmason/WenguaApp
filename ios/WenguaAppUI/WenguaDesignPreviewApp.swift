@@ -738,11 +738,10 @@ struct ProfessionalPalaceTile: View {
         .frame(maxWidth:.infinity,minHeight:274,alignment:.topLeading)
         .background(.white)
         .contentShape(Rectangle())
-        .accessibilityLabel(palace.id == 5
-           ? "中五宫，按原书独立处理"
-           : palace.name+"，八神"+palace.deity+"，九星"+palace.stars+
-             "，八门"+palace.door+"，天盘"+palace.sky+"，地盘"+palace.ground+
-             "，"+palace.stages)
+        .accessibilityLabel(palace.id == 5 ? "中五宫，按原书独立处理" :
+            [palace.name,"八神"+palace.deity,"九星"+palace.stars,
+             "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground,
+             palace.stages].joined(separator:"，"))
     }
     private func namedSymbol(_ label:String,_ value:String,kind:String) -> some View {
         HStack(alignment:.firstTextBaseline,spacing:4) {
