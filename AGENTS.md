@@ -1337,3 +1337,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **原生 SwiftUI 也已对应重排：** `ProfessionalChartScreen.chartHeader` 独立四柱与局信息，`ProfessionalPalaceTile` 重写神/星/门/天/地/空马墓/长生清晰分层，字号提高。真正根据当前时间/手动时间的排盘 **仍由 `WenguaNativeCore.compute(at:timezone:)`，不是 JS 动态算盘**；原生日志/数据库/事项限制/30秒静心逻辑均不改。用户打开原生 App 依旧先选择领域、细分，成功保存才登记15天；浏览器不能起局、不假称完成断案。
 - **测试：** 更新 Python UI 契约反向确认 `sample-switcher` 不存在、无 `data-sample=`、只通过示例预览进入固定盘、完成静心不会显示历史盘、四柱/局式/九宫字层/移动底栏样式生效。Source fixture 全部留存。过程中旧测试误要求 visible sample-switcher 的 CI 失败记录保留并修正；Swift accessibilityLabel 换行解析错误单独修复。检查当前 HEAD 的 GitHub `iOS V1 Design Contract` 及 `iOS Offline Native Casting Parity`，不得以仅 syntax-parse 宣称模拟器正式 build 成功。
 - **未完成的产品门槛**：独立手机版 V3.9.1 完整自然语言推理并未移植；仅在原生 App 上真实算盘后展示核定事实。HTML 样例只是静态视觉验证。未来 iOS 仍需真机、TestFlight、正式图标和 App Store 审核。
+
+### 2026-10-22 · iPhone Screenshot UI 修复最终 Xcode 验证记录与小修
+- 九宫 `ProfessionalPalaceTile` 拆成宫头、星门神、天地盘、状态、长生多个明确 SwiftUI 子视图；原生 Xcode 类型检查曾因单个 ViewBuilder 过大超时（保留失败 https://github.com/turnupmason/WenguaApp/actions/runs/39882473142），之后拆分并给实时事实报告 `conditions` 增加显式 `[String]` 类型。`594a34aae14376f910e176daf4cb4f7b4ac4d142` 的完整离线原生比对 + macOS iOS Simulator 真编译已成功：https://github.com/turnupmason/WenguaApp/actions/runs/39882843793 ；`f5a818dde9ab9417c3bc4cc58a5664e71a04f38d` 同样 Xcode 真实模拟器构建成功：https://github.com/turnupmason/WenguaApp/actions/runs/39882967752。不能以此宣称用户 iPhone 真机视觉测试已过。
+- 最终按每个符号真实五行修复 JS/Swift 头部的值符所属星色、值使门色、宫名五行色、旬空内各地支分别着色；`QPalace.fromNative` 使用巽四／离九等汉字宫名而非巽4；没有重算或修改原始起盘。
+- 网页“示例解读”按钮显式进入示例文本页面，不再误跳到固定局；`30秒结束` 始终只进入 `cast-unavailable` 而不是九宫。其他已保存的研究案例仍是内部只读回归资源。
+- 当前代码 HEAD 再检查对应 GitHub Actions；尤其 `190fd5e9` 的末次宫名修改以后新 Xcode run 不能用旧记录冒充已过。Web Safari 样式必须由用户复看截图，不能宣称已真机实测。
