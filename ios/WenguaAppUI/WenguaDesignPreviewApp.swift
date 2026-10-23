@@ -852,6 +852,8 @@ enum QIssuePolicy {
 private struct LocalNativeCase: Codable {
     let issueFingerprint: String
     let relation: String
+    let optionalBirthYear: Int?
+    let course: String?
     let completedAt: Date
     let chart: WenguaNativeChart
 }
@@ -864,6 +866,7 @@ struct CastSetupScreen: View {
     @Environment(\.dismiss) private var dismiss
     @State private var subject = "本人"
     @State private var subjectName = ""
+    @State private var birthYear = ""
     @State private var question = ""
     @State private var duration = "未说明"
     @State private var chosenTime = Date()
@@ -892,6 +895,10 @@ struct CastSetupScreen: View {
                             }
                             .pickerStyle(.menu)
                             TextField("当事人称呼 · 可选", text: $subjectName)
+                            TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
+                                .keyboardType(.numberPad)
+                            Text("未提供出生年份时不计算年命；填写年份也不代表关系取用神已完成原生移植。")
+                                .font(.caption).foregroundStyle(QStyle.secondary)
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
@@ -1000,6 +1007,8 @@ struct CastSetupScreen: View {
             // Persistent case receipt is ONLY original board/clock facts and
             // hashed issue ID. User's raw private question is NOT stored here.
             let record=LocalNativeCase(issueFingerprint:key,relation:subject,
+                                       optionalBirthYear:Int(birthYear),
+                                       course:duration=="未说明" ? nil : duration,
                                        completedAt:Date(),chart:result)
             let encoded=try JSONEncoder().encode(record)
             let recordId="wengua:nativecase:"+UUID().uuidString
@@ -1016,6 +1025,13 @@ struct CastSetupScreen: View {
     }
 
     private func tryStartRitual() {
+        let cleanedYear=birthYear.trimmingCharacters(in:.whitespacesAndNewlines)
+        if !cleanedYear.isEmpty {
+            guard let year=Int(cleanedYear), (1850...2150).contains(year) else {
+                validationMessage="出生年份需是有效公历年份（1850–2150），或留空。"
+                return
+            }
+        }
         let normalized = question.filter { !$0.isWhitespace && !$0.isPunctuation }
         guard normalized.count >= 4 else {
             validationMessage = "请先明确至少四个字的一件具体事情。"
