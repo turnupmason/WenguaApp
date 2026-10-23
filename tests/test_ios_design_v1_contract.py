@@ -104,7 +104,7 @@ class V3SourceUI(unittest.TestCase):
             'demo.readingSections','sourceCharts=window.WenguaVerifiedCharts.samples',
             'document.querySelector("#palaces").addEventListener("click"', '五行颜色图例']:
             self.assertIn(fragment,self.html)
-    def test_native_four_demos_are_recomputed_and_readings_switch_by_the_same_index(self):
+    def test_native_launch_uses_domain_route_and_preserves_frozen_source_audit_offline(self):
         bundled=json.loads(FROZEN.read_text("utf8"))["samples"]
         self.assertEqual(len(bundled),4)
         for i, (native, browser) in enumerate(zip(bundled,self.fixture["samples"])):
@@ -113,9 +113,13 @@ class V3SourceUI(unittest.TestCase):
             self.assertEqual(native["originalReading"],browser["originalReading"])
             self.assertEqual(native["readingSections"],browser["readingSections"])
             self.assertEqual(len(native["readingSections"]),10)
-        for text in ['FrozenPreview.cast(selectedSampleIndex)',
+        for text in ['struct QuestionEntryScreen',
+                     'QuestionCatalog.domains',
+                     'chosenDomain',
+                     'chosenTopic',
+                     'QuestionTopic(id:"health.severity"',
                      'WenguaNativeCore.compute(at:date,timezone:"America/New_York")',
-                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:selectedSampleIndex)',
+                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1)',
                      'FrozenPreview.readings.indices.contains(sampleIndex)',
                      'palace.lifeRows',
                      'QFive.tombHorseRelation(',
@@ -147,6 +151,14 @@ class V3SourceUI(unittest.TestCase):
         self.assertIn("非实时起盘",self.html)
         self.assertNotIn("calculate_health_symbolic_score",self.html)
         self.assertNotIn("吉凶概率",self.html)
-        self.assertIn("QPalace.actualSourceFixture",self.swift)
+        self.assertIn("guard let chart=nativeChart else {return []}",self.swift)
+        self.assertIn("CastSetupScreen(topic:topic)",self.swift)
+        self.assertIn("let finalInstant=useCurrentInstant ? Date() : chosenTime",self.swift)
+        self.assertIn("DatePicker(\"手动选择年月日时分\"",self.swift)
+        self.assertIn("topicID:topic.id",self.swift)
+        self.assertIn("QIssuePolicy.signature(topic:topic.id",self.swift)
+        self.assertNotIn("DisclosureGroup(section.title)",self.swift)
+        self.assertNotIn("古籍断词 · V3.9.1",self.swift)
+        self.assertIn("WenguaMark(size:62)",self.swift)
         self.assertEqual(self.swift.count("@main"),1)
 if __name__=="__main__":unittest.main()
