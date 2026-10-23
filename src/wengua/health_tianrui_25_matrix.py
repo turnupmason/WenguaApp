@@ -23,11 +23,11 @@ STAR_RELATIONS={"受克":"宫克星","生":"星生宫","克":"星克宫",
 # Source: user-provided 2026-10-23 25 traditional hypotheses, NOT book-verified
 # and not allowed to introduce clinical assertions.
 TITLES={
- "宫克星":("强病受制","相病受制","休病再受制","囚病再受制","废病受制"),
- "星生宫":("旺病泄气","相病泄气","休病余气外泄","囚病续泄","废病余气外泄"),
- "星克宫":("旺病攻宫","相病攻宫","休病仍攻宫","囚病弱攻","废病难攻"),
- "宫生星":("旺病受生","相病受生","休病待扶","囚病受扶","废病微气受扶"),
- "宫星比和":("旺病同气","相病同气","休病同气","囚病弱而同气","废病同气残象"),
+ "宫克星":("强弩受挫","萌芽被扼","兵败如山倒","关押绞杀","斩草除根"),
+ "星生宫":("疯狂消耗","排毒宣泄","残存流逝","油尽灯枯","灰飞烟灭"),
+ "星克宫":("病魔猖獗","病情扩散","贼心不死","自不量力／反侮","蚍蜉撼树"),
+ "宫生星":("养虎为患","迅速恶化","养精蓄锐","顽固包庇","百足之虫"),
+ "宫星比和":("全面爆发","结党营私","负隅顽抗","潜伏菌群","无害残留"),
 }
 # A preliminary *symbolic* direction, gated below by the palace's ability
 # to do what the relation says; descriptions of treatment/cancer/survival are
