@@ -16,6 +16,7 @@ on:
       - 'tests/test_health_vnext_conditional_review.py'
       - 'tests/test_health_full_role_network_vnext.py'
       - 'tests/test_domain_selected_energy_vnext.py'
+      - 'tests/test_user_exact_energy_duel_grids_vnext.py'
       - 'tests/test_factor_energy_25_rules.py'
       - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
@@ -41,6 +42,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_vnext_conditional_review.py -v
           python -m unittest discover -s tests -p test_health_full_role_network_vnext.py -v
           python -m unittest discover -s tests -p test_domain_selected_energy_vnext.py -v
+          python -m unittest discover -s tests -p test_user_exact_energy_duel_grids_vnext.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
