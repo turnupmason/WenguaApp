@@ -870,3 +870,8 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - Python3.11/3.12 真实专项 workflow `.github/workflows/health_vnext_conditional_review.yml`：`tests/test_health_vnext_conditional_review.py` 断案四态/条件不明/人物限制/证据去重、4张封存起盘新旧对照、原 V3.9.1 逐字 SHA 无变化，输出自动生成新旧全部正文的 JSON artifacts；https://github.com/turnupmason/WenguaApp/actions/runs/39984268819 成功（不是独立前瞻盲测）。
 - 4开发盘旧基线判吉凶 → V-next：2026-11-01 05:00 病凶→暂不能定；11-04 05:00 病凶→偏不利；11-10 21:00 病凶→暂不能定；11-21 17:00 病吉→暂不能定。**这里只证明代码符合更保守的证据契约，不是证明哪一个更准确**。优先看全部六段原始示例和证据态，再讨论需要补的作者完整条件。
 - 完整交接：`docs/HEALTH_VNEXT_CONDITIONAL_REASONING_REVIEW_2026-10-23.md`，留有后续逐条作者前置条件、唯一事实ID与新未调参家族独立对照计划。绝不删之前已见的失败测试。更新此交接后以最新 GitHub CI 为准。
+
+### 2026-10-23 · V-next 后续真实回归补录（纠正不同盘层去重）
+- 原审阅版4盘、Python3.11/3.12专项已通过。继续补充**天盘和地盘分别作为标准事实 ID**：`dedup_lifecycle_facts(...,chart=chart)` 采用 `plane/stem/palace/branch/stage` 做唯一键，天盘多角色同一事实可去重，但地盘即使同宫、同干、同支、同阶段也必须与天盘分别保存；八外围宫地盘干的十二长生全部依原书全12映射另算，中五宫不能假造普通星门神。新的纯测试验证该极端重叠。
+- 再次通过两份**已知旧书首次问事**多人物烟测（不传任何原书结局）：`kaiwu.health.19950219.brother_paralysis` 的月干仅候选，输出“取用待核”；`shenqi.health.19961102.on_site_health`（本人）审阅结构偏吉。只测运行和证据守门，**不是秘密盲测，更不是准确率**。
+- 成功专项 https://github.com/turnupmason/WenguaApp/actions/runs/39985285038 ，4旧+新全文对照 https://github.com/turnupmason/WenguaApp/actions/runs/39985285038/artifacts/12514752997 ，可直接读的首例全文见 `docs/HEALTH_VNEXT_FOUR_CASE_READING_COMPARISON_2026-10-23.md`。四盘标准化阶段数 20/18/20/18（含重点天盘角色与八宫各地盘），不是吉凶评分。后续任何人不得把它说成 V3.9.1 或 iOS 已经切换。
