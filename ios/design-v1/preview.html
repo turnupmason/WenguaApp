@@ -143,6 +143,16 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
 .detail-stage{font-size:12px;line-height:1.7;color:#65666c}
 .sheet-fact b{font-size:19px;line-height:1.3;display:block;overflow-wrap:anywhere}
 .sheet-grid{align-items:stretch}
+/* Fully display independently calculated heavenly and earthly stages in each palace. */
+.palace{height:auto;min-height:238px;justify-content:flex-start;gap:3px;padding:7px 5px;overflow:visible}
+.palace-head{flex-shrink:0}
+.palace-stages{display:flex;flex-direction:column;gap:2px;margin-top:4px;min-width:0}
+.palace-stage-row{font-size:9px;line-height:1.32;white-space:normal;overflow-wrap:anywhere}
+.life-layer{color:#82848b;margin-right:2px}
+.life-stages{color:#697079}
+.palace-foot{margin-top:auto;overflow:visible;flex-wrap:wrap;align-content:flex-start}
+.status-marker{font-size:9px;line-height:1.35}
+@media(max-width:365px){.palace{min-height:252px}.sky-star,.door-name,.deity-name{font-size:15px}.status-marker{font-size:8px}}
 
 </style>
 </head><body>
@@ -253,28 +263,46 @@ function statusBadges(p){
   }
   return bits.join("");
 }
+// Every symbol's stage uses the SOURCE-COMPUTED branch and ten-stem lifecycle.
+function stageRow(layer,stem,stages){
+ return '<div class="palace-stage-row"><span class="life-layer">'+layer+'</span>'+
+   colored("stem",stem)+'<span class="life-stages">'+
+   stages.map(z=>colored("branch",z.branch)+z.stage).join(" ")+'</span></div>';
+}
 function legendBranch(p){
- if(!p.heaven.length)return "中五";
- const x=p.heaven[0];
- return p.branches.join("")+" "+x.stages.map(z=>z.branch+z.stage).join("、");
+ if(!p.heaven.length)return "";
+ return p.heaven.map(z=>stageRow("天",z.stem,z.stages)).join("")+
+   stageRow("地",p.earth,p.earthStages);
+}
+const oppositePalaces={1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4};
+const sixClash={子:"午",午:"子",丑:"未",未:"丑",寅:"申",申:"寅",卯:"酉",酉:"卯",
+                辰:"戌",戌:"辰",巳:"亥",亥:"巳"};
+function tombHorseRelation(chart,p,t){
+ if(sixClash[t.branch]===chart.hourHorse)
+  return "墓支与时马支地支六冲，仅为冲墓候选；是否有效冲开还须原书其他条件。";
+ if(chart.hourHorsePalace===p.p)
+  return "马与墓同宫，但"+chart.hourHorse+"与墓支"+t.branch+"未六冲，不能当作冲开。";
+ if(oppositePalaces[p.p]===chart.hourHorsePalace)
+  return "马在墓宫对宫，但"+chart.hourHorse+"与墓支"+t.branch+"未六冲，不能以宫位相对代替地支六冲。";
+ return "时马"+chart.hourHorse+"与墓支"+t.branch+"未六冲；不构成冲墓候选。";
 }
 function renderBoard(){
  const grid=document.querySelector("#palaces");
  grid.innerHTML=demo.palaces.map(p=>{
-   if(p.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span class="center-caption">中宫另论</span></button>';
+   if(p.p===5)return '<button class="palace center-tile" data-palace="5"><span class="center-text">中五</span><span>地盘 '+(p.earth?colored("stem",p.earth):"待核")+'</span><span class="center-caption">中宫另论 · 点开详情</span></button>';
    const role=p.roles.map(z=>'<span class="role-mark">'+z+'</span>').join("");
    const stars=p.heaven.map(z=>colored("star",z.star)).join("·");
    const skies=p.heaven.map(z=>colored("stem",z.stem)).join("·");
    return '<button class="palace" data-palace="'+p.p+'" aria-label="'+p.name+
      '，'+p.heaven.map(z=>z.star).join("、")+'，'+p.door+'，'+p.deity+'，'+
      p.void.join("")+'空，'+(p.horse?"马"+p.horse:"")+'">'+
-     '<div class="palace-head"><span class="palace-branch">'+p.branches.join("")+" · "+p.element+
+     '<div class="palace-head"><span class="palace-branch">'+p.branches.map(b=>colored("branch",b)).join("")+" · "+p.element+
      '</span><span class="palace-n">'+p.p+'宫</span></div>'+
      '<div class="palace-deity"><span class="palace-symbol">'+colored("stem",p.earth)+'</span>'+
      '<span class="deity-name">'+colored("deity",p.deity)+'</span></div>'+
      '<div class="palace-content"><span class="sky-star">'+stars+'</span><span class="palace-stem">'+skies+'</span>'+
      '<span class="door-name">'+colored("door",p.door)+'</span><span class="bottom-stem">'+colored("stem",p.earth)+'</span></div>'+
-     '<div class="palace-stage">'+legendBranch(p)+'</div>'+
+     '<div class="palace-stages">'+legendBranch(p)+'</div>'+
      '<div class="palace-foot">'+role+statusBadges(p)+'</div></button>';
  }).join("");
 }
@@ -313,7 +341,7 @@ function palaceDetail(index){
  if(p.tomb.length)tags.push('<span>入墓：'+p.tomb.length+'项（分天地盘）</span>');
  document.querySelector("#sheet-tags").innerHTML=tags.join("");
  if(p.p===5){
-    document.querySelector("#sheet-main").innerHTML='<div class="sheet-card"><h3>中五特殊宫位</h3><p>原起盘未给普通九星、八门、八神；不可凭九宫布局硬造三项。</p></div>';
+    document.querySelector("#sheet-main").innerHTML='<div class="sheet-card"><h3>中五特殊宫位</h3><p>本宫地盘干：'+(p.earth?colored("stem",p.earth):"原盘未给")+'。原起盘未给普通九星、八门、八神；不可凭九宫布局硬造三项。</p></div>';
     document.querySelector("#overlay").classList.add("open");return;
  }
  const facts=[["八神","deity",p.deity],["九星","star",p.heaven.map(z=>z.star)],["八门","door",p.door],["天盘干","stem",p.heaven.map(z=>z.stem)],["地盘干","stem",p.earth]];
@@ -337,7 +365,7 @@ function palaceDetail(index){
    ...p.tomb.map(t=>'<div class="detail-fact"><span class="detail-dot">'+
         colored("stem",t.stem)+'</span><span>'+t.plane+t.stem+'在'+t.branch+
         '支入墓；'+(demo.openedTombs.some(x=>x.palace===p.p&&x.plane===t.plane&&x.stem===t.stem&&x.branch===t.branch)?
-           '实际马支与墓支六冲，记录为冲墓候选。':'未见时马支直接六冲该墓支；不可直接当作冲开。')+
+           '实际马支与墓支六冲，仅作候选，绝不自动认定已冲开。':tombHorseRelation(demo,p,t))+
         '</span></div>')
  ].filter(Boolean).join("");
  document.querySelector("#sheet-main").innerHTML=
@@ -350,6 +378,7 @@ function palaceDetail(index){
      '属'+p.element+'，辖'+p.branches.join("、")+'。'+
      (p.roles.length?'问事角色：'+p.roles.join("、")+'。':'本宫非已明确的核心问事角色。')+
      '角色和组合条件共宫时保留不同证据，但同一事实不重复判断。</p></div>'+
+   '<div class="sheet-card"><h3>旺相休囚废 · 击刑 · 门迫</h3><p>当前冻结盘面没有这三类状态已通过原书条件审校的独立触发字段；不伪造已触发，不把未计算当成未发生。</p></div>'+
    '<div class="detail-alert">五行色只随符号本身属性变化，不随神、星、门类别变化。墓与旬空各是独立事实，不直接等同现实疾病结局。</div>';
  document.querySelector("#overlay").classList.add("open");
 }
