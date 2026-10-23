@@ -260,13 +260,21 @@ def collect_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         macro["basis"],"宏观伏反吟")
     for cell in (ill,doc,yi,patient,*([natal] if natal else []),hour,*extras):
         role=cell["role"]; p=cell["palace"]
+        # Strength describes a role's capacity; it has no default direction
+        # for time/event or unbound auxiliary roles. Avoid treating every 旺 as
+        # an independent auspicious sign and every 废 as a malicious omen.
+        meaningful=role in ("天芮病宫","天心医生","乙奇医药",
+                            "患者用神","患者年命")
         if cell["month_stage"] in STRONG:
-            direction="adverse" if role=="天芮病宫" else "favorable"
+            direction=("adverse" if role=="天芮病宫" else
+                       "favorable" if meaningful else "neutral")
             add("monthly:"+role+":"+str(p),direction,
-                role+"月令"+cell["month_stage"],
+                role+"月令"+cell["month_stage"]+
+                ("；仅说明事体旺弱，须联系病宫判断" if not meaningful else ""),
                 "nine_star_month_status or original ordinary-stem month law",role)
         elif cell["month_stage"] in WEAK:
-            direction="favorable" if role=="天芮病宫" else "adverse"
+            direction=("favorable" if role=="天芮病宫" else
+                       "adverse" if meaningful else "neutral")
             add("monthly:"+role+":"+str(p),direction,
                 role+"月令"+cell["month_stage"]+"，作用弱但不代表完全没有作用",
                 "nine_star_month_status or original ordinary-stem month law",role)
