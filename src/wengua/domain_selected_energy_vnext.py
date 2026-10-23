@@ -231,6 +231,17 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     favor=len(candidate["favorable"]);against=len(candidate["adverse"])
     counts={"qualified_favorable":favor,"qualified_adverse":against,
             "pending_conditions":len(candidate["pending"])}
+    # Include the single eligible disease-symbol compound before final tally,
+    # so the displayed good/bad numbers and provisional direction agree.
+    stance=("favorable" if favor>against else "adverse" if against>favor
+            else "unresolved")
+    verdict["state"]=stance if confident and (favor or against) else "unresolved"
+    verdict["label"]=("古籍规则研究候选偏吉" if stance=="favorable"
+                      else "古籍规则研究候选偏凶" if stance=="adverse"
+                      else "候选吉凶尚不明")
+    verdict["decisive_chain"]=(
+        "candidate_duels_plus_one_illness_compound"
+        if confident and (favor or against) else None)
     # Preserve original Tianrui compound and reviewer provenance as one fact,
     # never automatically counted again as independent candidate duel.
     nodes={k:{
