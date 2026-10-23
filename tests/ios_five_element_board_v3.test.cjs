@@ -72,6 +72,14 @@ test("no false automatic tomb opening without true six branch clash",()=>{
 
 test("every actual palace retains source heaven AND earth lifecycle for all real branches",()=>{
   for(const chart of samples)for(const p of chart.palaces){
+    if(p.p===5){
+      // Mid-five has no governing branch; it must NOT be forced into 12-life.
+      assert.deepEqual(p.branches,[]);
+      assert.deepEqual(p.heaven,[]);
+      assert.equal(p.door,null);
+      assert.equal(p.deity,null);
+      continue;
+    }
     assert.equal(p.earthStages.length,p.branches.length);
     for(const z of p.earthStages){
       assert.ok(p.branches.includes(z.branch));
