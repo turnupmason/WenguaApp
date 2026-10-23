@@ -185,6 +185,9 @@ details p{font-size:13px;line-height:1.85;color:#777;margin:12px 0}
  <select class="textbox" id="relation"><option value="self">本人</option><option value="father">父亲</option><option value="mother">母亲</option><option value="husband">丈夫</option><option value="wife">妻子</option><option value="brother">兄弟</option><option value="sister">姐妹</option><option value="son">儿子</option><option value="daughter">女儿</option></select>
  <label class="form-label" for="subject">当事人称呼（可选，用于区分不同的人）</label>
  <input class="textbox" id="subject" placeholder="如：大哥、二哥；仅本地处理" autocomplete="off">
+ <label class="form-label" for="birth-year">出生公历年份（可选，不据此臆造年命）</label>
+ <input class="textbox" type="number" id="birth-year" min="1850" max="2150" inputmode="numeric" placeholder="例如：1988">
+ <p class="muted">仅记录自愿提供的年份；目前原型不自动推导未提供的命式、人物关系或医学判断。</p>
  <label class="form-label" for="duration">疾病新旧（可选）</label>
  <select class="textbox" id="duration"><option value="">未说明</option><option value="new">新病</option><option value="chronic">久病</option></select>
 </div>
