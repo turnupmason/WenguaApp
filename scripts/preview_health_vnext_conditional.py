@@ -22,12 +22,14 @@ def make_report():
               "inquiry":dict(INQUIRY)}
         before=auto_cast_health_v39_text(**opts)
         after=auto_cast_health_review_text(**opts)
+        main_conclusion=next(x for x in after["sections"]
+                             if x["title"]=="全部证据合断")
         result.append({
             "instant":sample["local_datetime"],
             "four_pillars":sample["four_pillars"],
             "original_v391_reading_text":before["reading_text"],
             "original_v391_reading_sha256":sample["v391_customer_reading_sha256"],
-            "new_review_conclusion":after["sections"][0]["text"],
+            "new_review_conclusion":main_conclusion["text"],
             "new_review_state":after["verdict"]["state"],
             "new_review_full_reading":after["reading_text"],
             "new_review_sections":after["sections"],
