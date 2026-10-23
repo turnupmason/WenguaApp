@@ -45,3 +45,9 @@
 5. 用户复审通过后再将 review 候选正式路由至 iOS，保留 V3.9.1 作为可回退基线，并在新版本数据库中只追加、不覆盖源库。
 
 本轮初步完成**独立条件核验框架和六段可读断词**，但尚不是“81条原书每条完整条件、所有领域或医学准确率”最终验收。
+
+### 最后一轮来源结构化修正与多人物回归
+
+- 增加 `dedup_lifecycle_facts(evidence, chart=chart)`，事实主键含 `plane`（天盘/地盘）、stem、palace、branch、stage。五个天盘角色的重叠只去一次；八外围宫各地盘干都经原书十二长生代码逐支计算，天盘和地盘**即使干支、宫位相同也不混合**。新增独立单元测试对此明确检查，旧 4 例合计重点唯一阶段事实 20/18/20/18。
+- 已见的2个古籍家族用首次问事及原局、**不读书中的事后答案或反馈**做多人物烟测：`kaiwu.health.19950219.brother_paralysis` 的月干是 research_candidate_only，故主判「取用待核」；`shenqi.health.19961102.on_site_health` 原问本人能够生成传统偏吉结构主判。这些都是开发已见家族，**不是新的秘密盲测**。
+- Python3.11/3.12 最新真实专项均通过：https://github.com/turnupmason/WenguaApp/actions/runs/39985285038 ；最新四例完整旧/新文本：https://github.com/turnupmason/WenguaApp/actions/runs/39985285038/artifacts/12514752997 。
