@@ -26,6 +26,27 @@ ORDINARY_25={
  "休":("大","中等","小","小","极小"),
  "囚":("中等","小","极小","极小","极小"),
  "死":("小","极小","极小","极小","极小")}
+# User's exact *five-column* nine-star grid, 2026-10-23.
+# New display order: 被宫生 / 被宫克 / 克宫 / 生宫 / 比和.
+# Keep old STAR_25 unchanged for historical case-number compatibility.
+USER_STAR_RELATIONS=("宫生符号","宫克符号","符号克宫","符号生宫","比和")
+USER_STAR_25={
+ "旺":("极大","中等","大","大","极大"),
+ "相":("极大","小","中等","中等","大"),
+ "休":("大","极小","小","小","中等"),
+ "囚":("中等","极小","极小","极小","小"),
+ "废":("小","极小","极小","极小","极小"),
+}
+# Assert the user-confirmed layout is identical to historical canonical
+# physical 25 cells regardless of the differently ordered columns.
+assert set(USER_STAR_RELATIONS)==set(RELATIONS)
+assert all(
+    USER_STAR_25[stage][USER_STAR_RELATIONS.index(rel)]
+    == STAR_25[stage][RELATIONS.index(rel)]
+    for stage in STAR_STAGES for rel in RELATIONS
+)
+USER_STAR_TABLE_VERSION="user_exact_nine_star_5x5_20261023"
+
 # Gods have no inherent monthly stage. Its matrix concerns the monthly
 # strength of the LANDING PALACE, not the deity's own month.
 DEITY_PALACE_25=dict(ORDINARY_25)
@@ -41,8 +62,12 @@ def lookup_25(kind,stage,relation):
     if stage not in stages or relation not in RELATIONS:
         raise ValueError("Unknown moon stage or directed relationship")
     index=RELATIONS.index(relation)
+    strength=(USER_STAR_25[stage][USER_STAR_RELATIONS.index(relation)]
+              if kind=="star" else table[stage][index])
     return {"matrix_id":METHOD+":"+kind,"case_number":stages.index(stage)*5+index+1,
-            "stage":stage,"relation":relation,"strength":table[stage][index],
+            "stage":stage,"relation":relation,"strength":strength,
+            "table_version":USER_STAR_TABLE_VERSION if kind=="star" else METHOD,
+            "user_exact_star_table":kind=="star",
             "status":"uncalibrated_review_heuristic"}
 
 def inspect_strength_25(kind,symbol,month_branch,palace,*,plane="heaven",restrictions=()):
