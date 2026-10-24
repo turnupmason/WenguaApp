@@ -75,22 +75,37 @@ CONTROL_FAKE_VOID_TARGET={
     "大":("绝对主克","强力主克","有效主克","微弱克制","效力递减"),
     "极大":("完全清除","绝对主克","强力主克","有效主克","微弱克制"),
 }
-# Original user grid #4 has EXACT SAME heading as #2 in input, but its
-# 25 cells are materially different. Do NOT guess this was meant as 真空.
-CONTROL_FAKE_VOID_ATTACKER_B={
+# Corrected 2026-10-23 user grid #4 is actually 施力方宫空亡(真空).
+# Previously archived as fake_void_attacker_B; preserve that historical
+# name as an alias for provenance only; it must NOT be a selectable fake grid.
+CONTROL_TRUE_VOID_ATTACKER_A={
     "极小":("有效克制","减力克制","效力递减","克制失效","完全失控"),
     "小":("减力克制","效力递减","效力递减","克制失效","完全失控"),
     "中等":("断续克制","效力递减","克制失效","完全失控","完全失控"),
     "大":("克制失效","克制失效","完全失控","完全失控","完全失控"),
     "极大":("完全失控","完全失控","完全失控","完全失控","完全失控"),
 }
+# Another new user grid has the *same heading* 施力方宫空亡(真空)
+# but distinct literal cells. No distinguishing premise was provided.
+CONTROL_TRUE_VOID_ATTACKER_B={
+    "极小":("终极解体","终极解体","终极解体","终极解体","终极解体"),
+    "小":("丧失能力","丧失能力","完全失控","完全失控","完全失控"),
+    "中等":("克制失效","克制失效","完全失控","完全失控","完全失控"),
+    "大":("断续克制","效力递减","效力递减","克制失效","完全失控"),
+    "极大":("微弱克制","断续克制","效力递减","克制失效","完全失控"),
+}
+# Historical identifier retained for audit/regression compatibility, not
+# exposed in the live dispatch table (its input label was corrected).
+CONTROL_FAKE_VOID_ATTACKER_B=CONTROL_TRUE_VOID_ATTACKER_A
+
 CONTROL_GRID_BY_ID={
     "normal":CONTROL_NORMAL,
     "fake_void_attacker_A":CONTROL_FAKE_VOID_ATTACKER_A,
     "fake_void_target":CONTROL_FAKE_VOID_TARGET,
-    "fake_void_attacker_B":CONTROL_FAKE_VOID_ATTACKER_B,
+    "true_void_attacker_A":CONTROL_TRUE_VOID_ATTACKER_A,
+    "true_void_attacker_B":CONTROL_TRUE_VOID_ATTACKER_B,
 }
-CONTROL_GRID_VERSION="user_5x5_control_with_void_20261023_v1"
+CONTROL_GRID_VERSION="user_5x5_control_with_void_20261023_v2_true_void"
 STEM_POWER_VERSION="user_stem_life_stage_x_month_relation_20261023_v1"
 DOOR_POWER_VERSION="user_door_month_x_palace_relation_20261023_v1"
 
@@ -169,40 +184,58 @@ def lookup_selected_factor(kind,symbol,month_branch,palace,*,plane="heaven",
 
 def inspect_control(*,actor_power,target_power,palace_relation,
                     attacker_fake_void=False,target_fake_void=False,
-                    attacker_fake_void_variant=None,attacker_void_unknown=False,
-                    target_void_unknown=False):
-    """Lookup a chosen control scenario, preserve duplicate fake-void labels.
+                    attacker_fake_void_variant=None,
+                    attacker_true_void=False,target_true_void=False,
+                    attacker_true_void_variant=None,
+                    attacker_void_unknown=False,target_void_unknown=False):
+    """One source-selected matrix lookup; corrected fake/true void provenance.
 
-    Requires an actual 克 relation. Void classification must be *proven* by
-    caller's original method, not inferred from void-branch presence alone.
+    One real 克 pair gets ONE final result only when void scenario is
+    determined. Both supplied true-void attacker matrices have the exact
+    same header but DIFFERENT literal entries, so never auto-pick A or B.
     """
     if palace_relation!="克":
         return {"status":"not_control_relation","result":None,
-                "reason":"仅宫位主动克对方才使用克制矩阵；其它生克走自身专题规则",
+                "reason":"仅施力宫实际克受力宫使用克制专表",
                 "table_version":CONTROL_GRID_VERSION}
     for x in (actor_power,target_power):
-        if x not in COLS:raise ValueError("Need both resolved table-one powers")
+        if x not in COLS:raise ValueError("Need two resolved table-one powers")
     if attacker_void_unknown or target_void_unknown:
         return {"status":"void_type_pending","result":None,
-                "reason":"宫位有空亡候选，但未确认真假空和完整适用条件",
+                "reason":"已知空亡候选未核真假，不能臆选真假空表",
                 "table_version":CONTROL_GRID_VERSION}
-    if attacker_fake_void and target_fake_void:
+    if attacker_fake_void_variant not in (None,"A"):
+        raise ValueError("Corrected source has ONE fake-void attacker grid; historic fake B is TRUE A")
+    if attacker_true_void_variant not in (None,"A","B"):
+        raise ValueError("True-void attacker variant must be source A or B")
+
+    flags=(attacker_fake_void,target_fake_void,
+           attacker_true_void,target_true_void)
+    if sum(bool(x) for x in flags)>1:
         return {"status":"both_void_unspecified","result":None,
-                "reason":"原用户表未提供施受两宫同时假空的专用矩阵",
+                "reason":"用户未提供双宫同时空亡、真假组合的专用矩阵",
+                "table_version":CONTROL_GRID_VERSION}
+    if target_true_void:
+        return {"status":"target_true_void_unspecified","result":None,
+                "reason":"用户未提供受力方宫真空的专用矩阵",
                 "table_version":CONTROL_GRID_VERSION}
     if attacker_fake_void:
-        if attacker_fake_void_variant not in ("A","B"):
-            return {"status":"duplicate_attacker_label_pending","result":None,
-                    "candidate_tables":(
-                        {"id":"fake_void_attacker_A","result":raw_cell(
-                            CONTROL_FAKE_VOID_ATTACKER_A,actor_power,target_power)},
-                        {"id":"fake_void_attacker_B","result":raw_cell(
-                            CONTROL_FAKE_VOID_ATTACKER_B,actor_power,target_power)},
-                    ),"reason":"两张不同25格表都标施力方宫空亡(假空)，未确认区分条件",
-                    "table_version":CONTROL_GRID_VERSION}
-        key="fake_void_attacker_"+attacker_fake_void_variant
+        key="fake_void_attacker_A"
     elif target_fake_void:
         key="fake_void_target"
+    elif attacker_true_void:
+        if attacker_true_void_variant not in ("A","B"):
+            return {"status":"duplicate_true_attacker_label_pending",
+                    "result":None,
+                    "candidate_tables":(
+                        {"id":"true_void_attacker_A","result":raw_cell(
+                            CONTROL_TRUE_VOID_ATTACKER_A,actor_power,target_power)},
+                        {"id":"true_void_attacker_B","result":raw_cell(
+                            CONTROL_TRUE_VOID_ATTACKER_B,actor_power,target_power)},
+                    ),
+                    "reason":"两张不同25格原表都写施力方宫空亡(真空)，条件未明不能自动择表",
+                    "table_version":CONTROL_GRID_VERSION}
+        key="true_void_attacker_"+attacker_true_void_variant
     else:
         key="normal"
     return {"status":"matched","scenario":key,
