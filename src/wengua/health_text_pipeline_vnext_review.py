@@ -64,6 +64,7 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
         "evidence_ledger":review["evidence_ledger"],
         "ordered_palace_roles":review["ordered_palace_roles"],
         "macro_fuyin_fanyin":review["macro_fuyin_fanyin"],
+        "first_stage_macro":review["first_stage_macro"],
         "qualitative_palace_relationships":review["qualitative_palace_relationships"],
         "full_health_role_strength_network":review["full_health_role_strength_network"],
         "audit":review["audit"],
