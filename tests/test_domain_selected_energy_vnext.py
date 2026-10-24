@@ -9,6 +9,7 @@ from src.wengua.selected_duel_table_vnext import (
 from src.wengua.domain_selected_energy_vnext import (
     DOMAIN_CASE_TEMPLATES, HEALTH_EDGES, selected_health_sequence)
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+from src.wengua.user_domain_matrices_20261023 import CONTROL_NORMAL, raw_cell, CONTROL_GRID_VERSION
 
 WHEN="2026-10-22T12:00:00-04:00"
 ZONE="America/New_York"
@@ -26,8 +27,8 @@ class CompactTables(unittest.TestCase):
         self.assertEqual(comparison["relation"],"克")
         self.assertIn(comparison["ability"],("能","不能","艰难","条件待核"))
         self.assertEqual(comparison["version"],VERSION)
-        self.assertEqual(comparison["symbol_duel_result"],
-                         user_duel_lookup(a["strength_label"],b["strength_label"]))
+        self.assertEqual(comparison["control_result"],raw_cell(
+            CONTROL_NORMAL,a["strength_label"],b["strength_label"]))
         self.assertEqual(comparison["table_two_lookups_for_pair"],1)
         self.assertTrue(comparison["palace_strength_is_context_only"])
         self.assertNotIn("palace_duel_result",comparison)
@@ -36,7 +37,7 @@ class CompactTables(unittest.TestCase):
         self.assertTrue(overflow["one_compound_fact"])
         self.assertIsNone(table_one("deity","值符","亥",1)["symbol_month_stage"])
 
-    def test_duel_both_symbol_and_palace_matter(self):
+    def test_one_user_control_matrix_and_palace_context_only(self):
         a=table_one("star","天心星","申",6)
         b=table_one("star","天冲星","申",3)
         strong=matchup(a,b,actor_role="doctor",target_role="illness")
@@ -49,7 +50,7 @@ class CompactTables(unittest.TestCase):
         mixed={**a,"strength_label":"极大","palace_strength_label":"极小"}
         high_palace={**b,"strength_label":"极小","palace_strength_label":"极大"}
         mixed_result=matchup(mixed,high_palace,actor_role="a",target_role="b")
-        self.assertEqual(mixed_result["duel_result"],"世界级压制干得过")
+        self.assertEqual(mixed_result["duel_result"],"极限压制")
         self.assertEqual(mixed_result["ability"],"能")
         self.assertFalse(mixed_result["backfire_risk_symbolic"])
         self.assertEqual(mixed_result["table_two_lookups_for_pair"],1)
