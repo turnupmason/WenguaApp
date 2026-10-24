@@ -20,6 +20,7 @@ from .health_palace_detailed_vnext import (
     inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
 from .health_role_majority_vnext import assess_disease_relationships
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
+from .marriage_runtime import ELEMENTS,element_relation
 
 # Other subtopics will be added only when their original source conditions
 # and relevant person-role bindings are implemented and tested.
@@ -154,6 +155,34 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
             primary_factor=energy,matched_pairs=matched_pairs)
         view["void_classification"]=view["complete_palace"]["void"]["classification"]
         inspected[key]=view
+
+    # User's latest instruction: ALWAYS observe the real 乾、坤 palaces
+    # as secondary context and compare their nominal palace relationship
+    # with Tianrui.  This does NOT bind both as the patient, fabricate a
+    # gender, or duplicate votes if one is already the primary patient.
+    auxiliary_palaces={}
+    for alias,pid in (("qian",6),("kun",2)):
+        palace_cell=_cell(chart,pid)
+        if palace_cell is None:raise ValueError("Real Qian/Kun palace missing")
+        resident=palace_cell["heaven_stars"]
+        selected_star=resident[0]["star"] if resident else None
+        observed=inspect_palace(
+            chart=chart,cell=palace_cell,
+            role=("乾六宫辅助观察" if pid==6 else "坤二宫辅助观察"),
+            month_branch=month,star=selected_star,
+            stem=palace_cell["earth_stem"] if selected_star is None else None)
+        inspected_detail=inspect_complete_selected_palace(
+            chart=chart,cell=palace_cell,record=observed,
+            month_branch=month,matched_pairs=matched_pairs)
+        auxiliary_palaces[alias]={
+            "palace":pid,"role":observed["role"],
+            "complete_palace":inspected_detail,
+            "relation_to_illness":element_relation(
+                ELEMENTS[pid],ELEMENTS[inspected["illness"]["palace"]]),
+            "used_only_as_auxiliary":True,
+            "cannot_vote_without_role_source":True,
+            "patient_identity_not_implied":True,
+        }
 
     edges={}
     unique_pair={}
@@ -303,6 +332,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "nodes":nodes,"directed_edges":edges,
         "complete_selected_palace_audits":{
             k:v["complete_palace"] for k,v in inspected.items()},
+        "qian_kun_auxiliary_observations":auxiliary_palaces,
         "void_rule_version":"user_20261023_void_month_horse_v1",
         "first_stage_macro":macro_facts,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
@@ -337,6 +367,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "counts":counts,
         "missing_natal":missing_natal,
         "gender_palace":gender_palace,
+        "qian_kun_auxiliary_observations":auxiliary_palaces,
         "book_pair_source_hits":len(matched_pairs),
         "role_group_majority":groups,
         "not_medical_outcome":True,
@@ -386,6 +417,18 @@ def selected_health_sections(result,*,actor,chart):
         push("08_"+key,"源书辅助宫",
              render_complete_selected_palace(x["complete_palace"])+
              "按来源取用，不能仅因旺就判吉。")
+    # These are always real chart palaces, even when patient sex is
+    # unspecified; they remain auxiliary observations, not natal/sex votes.
+    qk=result["qian_kun_auxiliary_observations"]
+    auxiliary_texts=[]
+    for alias in ("qian","kun"):
+        ob=qk[alias]
+        auxiliary_texts.append(
+            ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
+            " 与天芮病宫"+ob["relation_to_illness"]+
+            "，仅供人物关系辅助，不直接计独立吉凶票。")
+    push("09_qian_kun_auxiliary","乾坤宫辅助观察",
+         " ".join(auxiliary_texts))
     v=result["verdict"];n=result["counts"]
     push("90_review","全部证据合断",
          v["label"]+"。逐宫已查星、神、门、天地干、格局和空马墓刑迫；"+
