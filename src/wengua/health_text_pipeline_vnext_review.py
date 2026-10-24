@@ -26,6 +26,8 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
     # all-palace chart access is NOT an all-pairs strength inference.
     from .health_palace_sequence_vnext import inspect_palace
     from .health_palace_detailed_vnext import inspect_role_void
+    from .selected_duel_table_vnext import table_one
+    from .health_five_level_quant_vnext import door_break_penalty_policy
     nine_palace_conditions={}
     for p in range(1,10):
         cell=chart["palaces"][str(p)]
@@ -37,15 +39,25 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
             continue
         raw=inspect_palace(chart=chart,cell=cell,role="九宫事实",
                            month_branch=cal["month_branch"])
+        door_factor=table_one("door",cell["door"],cal["month_branch"],p)
+        door_policy=door_break_penalty_policy(
+            door_name=cell["door"],palace=p,
+            door_relation=door_factor["user_cell_col"])
         nine_palace_conditions[str(p)]={
             "palace":p,"palace_month_stage":raw["palace_month_stage"],
+            "user_door_relation":door_factor["user_cell_col"],
+            "door_strength_from_200_cells":door_factor["strength_label"],
+            "door_break":door_policy["has_door_break"],
+            "door_break_extra_two_level_shift":door_policy["two_level_shift"],
+            "door_break_exception_no_penalty":door_policy["no_extra_two_level_shift"],
+            "legacy_door_pressure":raw["door_pressure"],
             "void":inspect_role_void(
                 palace=p,occupied_void_branches=raw["void_branches"],
                 month_branch=cal["month_branch"],hour_ganzhi=chart["hour_ganzhi"]),
             "sky_tombs":raw["sky_tombs"],
             "earth_tombs":raw["earth_tombs"],
             "striking_stems":raw["striking_stems"],
-            "door_pressure":raw["door_pressure"],
+            "door_pressure":door_factor["user_cell_col"]=="宫迫",
             "heaven_lifecycle":raw["heaven"],
             "earth_lifecycle":raw["earth_life"]}
     return {
