@@ -1,16 +1,15 @@
-"""Regress eight exact handwritten 25-cell user grids = 200 cells.
+"""Latest user's hand-corrected eight 5x5 tables, exactly 200 literal cells.
 
-The latest source correction fixes the former fake-attacker-B label as
-true-attacker-A, adds another same-heading true-attacker-B, and forbids
-guessing which one applies. Historical changes and failures are in git.
+The fourth/fifth void tables are now definitively separated by whether
+the SOURCE or TARGET is 真空, rather than guessed A/B aliases. Older
+versions and failed experiments remain in repository history.
 """
 import unittest
 from src.wengua.user_domain_matrices_20261023 import (
     STAR_POWER,DOOR_POWER,STEM_POWER,POWER_RELATIONS,STEM_COLUMNS,
     DOOR_COLUMNS,STEM_STAGE_ROWS,CONTROL_GRID_BY_ID,
-    CONTROL_NORMAL,CONTROL_FAKE_VOID_ATTACKER_A,
-    CONTROL_FAKE_VOID_TARGET,CONTROL_TRUE_VOID_ATTACKER_A,
-    CONTROL_TRUE_VOID_ATTACKER_B,CONTROL_GRID_VERSION,
+    CONTROL_NORMAL,CONTROL_FAKE_VOID_ATTACKER,CONTROL_FAKE_VOID_TARGET,
+    CONTROL_TRUE_VOID_ATTACKER,CONTROL_TRUE_VOID_TARGET,CONTROL_GRID_VERSION,
     raw_cell,lookup_selected_factor,inspect_control,stem_month_relation)
 from src.wengua.selected_duel_table_vnext import matchup
 
@@ -29,33 +28,33 @@ NORMAL={
     "大":("绝对主克","强力主克","高效克制","有效克制","有效克制"),
     "极大":("极限压制","绝对主克","强力主克","高效克制","有效克制"),
 }
-ATT_A={
-    "极小":("减力克制","微弱克制","克制失效","反侮受损","系统性失控"),
-    "小":("有效克制","减力克制","反侮受损","系统性失控","系统性失控"),
-    "中等":("高效克制","有效克制","减力克制","微弱克制","克制失效"),
+FAKE_SOURCE={
+    "极小":("减力克制","微弱克制","克制失效","反侮受损","完全失控"),
+    "小":("有效克制","减力克制","反侮受损","完全失控","完全失控"),
+    "中等":("高效克制","有效克制","减力克制","微弱克制","完全失控"),
     "大":("强力主克","高效克制","有效克制","减力克制","微弱克制"),
     "极大":("绝对主克","强力主克","高效克制","有效克制","减力克制"),
 }
-TARGET={
-    "极小":("微弱克制","效力递减","克制失效","完全失控","完全失控"),
-    "小":("有效主克","微弱克制","效力递减","克制失效","完全失控"),
+FAKE_TARGET={
+    "极小":("高效克制","有效克制","完全失控","完全失控","完全失控"),
+    "小":("强力主克","高效克制","减力克制","完全失控","完全失控"),
     "中等":("强力主克","有效主克","微弱克制","效力递减","克制失效"),
     "大":("绝对主克","强力主克","有效主克","微弱克制","效力递减"),
-    "极大":("完全清除","绝对主克","强力主克","有效主克","微弱克制"),
+    "极大":("完全清除","完全清除","绝对主克","强力主克","微弱克制"),
 }
-TRUE_A={
-    "极小":("有效克制","减力克制","效力递减","克制失效","完全失控"),
-    "小":("减力克制","效力递减","效力递减","克制失效","完全失控"),
-    "中等":("断续克制","效力递减","克制失效","完全失控","完全失控"),
-    "大":("克制失效","克制失效","完全失控","完全失控","完全失控"),
-    "极大":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+TRUE_SOURCE={
+    "极小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "中等":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "大":("微弱克制","微弱克制","完全失控","完全失控","完全失控"),
+    "极大":("减力克制","微弱克制","完全失控","完全失控","完全失控"),
 }
-TRUE_B={
-    "极小":("终极解体","终极解体","终极解体","终极解体","终极解体"),
-    "小":("丧失能力","丧失能力","完全失控","完全失控","完全失控"),
-    "中等":("克制失效","克制失效","完全失控","完全失控","完全失控"),
-    "大":("断续克制","效力递减","效力递减","克制失效","完全失控"),
-    "极大":("微弱克制","断续克制","效力递减","克制失效","完全失控"),
+TRUE_TARGET={
+    "极小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "中等":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "大":("完全失控","完全失控","完全失控","微弱克制","完全失控"),
+    "极大":("完全失控","完全失控","完全失控","减力克制","微弱克制"),
 }
 STEM={
     "长生/冠带/临官/帝旺/沐浴":STAR["旺"],
@@ -66,22 +65,28 @@ STEM={
 
 class UserLiteralMatrixTests(unittest.TestCase):
     def test_all_eight_grids_are_exact_25_each(self):
+        expected_door={
+            "旺":STAR["旺"],"相":STAR["相"],"休":STAR["休"],
+            "囚":STAR["囚"],"死":STAR["废"]}
         for name,real,expected in (
-            ("star",STAR_POWER,STAR),("door",DOOR_POWER,
-             {"旺":STAR["旺"],"相":STAR["相"],"休":STAR["休"],
-              "囚":STAR["囚"],"死":STAR["废"]}),
+            ("star",STAR_POWER,STAR),
             ("stem",STEM_POWER,STEM),
+            ("door",DOOR_POWER,expected_door),
             ("normal",CONTROL_NORMAL,NORMAL),
-            ("fake_attacker_A",CONTROL_FAKE_VOID_ATTACKER_A,ATT_A),
-            ("fake_target",CONTROL_FAKE_VOID_TARGET,TARGET),
-            ("true_attacker_A",CONTROL_TRUE_VOID_ATTACKER_A,TRUE_A),
-            ("true_attacker_B",CONTROL_TRUE_VOID_ATTACKER_B,TRUE_B),
+            ("fake_source",CONTROL_FAKE_VOID_ATTACKER,FAKE_SOURCE),
+            ("fake_target",CONTROL_FAKE_VOID_TARGET,FAKE_TARGET),
+            ("true_source",CONTROL_TRUE_VOID_ATTACKER,TRUE_SOURCE),
+            ("true_target",CONTROL_TRUE_VOID_TARGET,TRUE_TARGET),
         ):
             self.assertEqual(real,expected,name)
-            self.assertEqual(len(real)*len(next(iter(real.values()))),25,name)
-        self.assertEqual(DOOR_COLUMNS,("被宫生","被宫克","门破","生宫","比和"))
+            self.assertEqual(len(real),5,name)
+            for row in real.values():self.assertEqual(len(row),5,name)
+        self.assertEqual(DOOR_COLUMNS,("被宫生","宫迫","门破","生宫","比和"))
         self.assertEqual(STEM_COLUMNS,("被月令生","被月令克","克月令","生月令","比和"))
         self.assertEqual(len(set(STEM_STAGE_ROWS)-{"囚"}),12)
+        self.assertEqual(CONTROL_GRID_VERSION,
+                         "user_5x5_control_with_void_20261023_v3_corrected_roles")
+        self.assertEqual(len(CONTROL_GRID_BY_ID),5)
 
     def test_life_group_vs_month_direction_no_substituting_star_rule(self):
         # 申为金; 乙木: 被月令克. 乙 stem uses actual-palace lifecycle.
@@ -129,42 +134,29 @@ class UserLiteralMatrixTests(unittest.TestCase):
                 self.assertEqual((out["status"],out["result"]),("matched",value))
                 self.assertEqual(out["scenario"],"normal")
 
-    def test_corrected_fake_and_both_true_void_matrices_all_25_cells(self):
+    def test_all_four_correct_void_cases_each_25_cells(self):
         self.assertEqual(set(CONTROL_GRID_BY_ID),{
-            "normal","fake_void_attacker_A","fake_void_target",
-            "true_void_attacker_A","true_void_attacker_B"})
-        self.assertEqual(CONTROL_GRID_VERSION,
-                         "user_5x5_control_with_void_20261023_v2_true_void")
+            "normal","fake_void_attacker","fake_void_target",
+            "true_void_attacker","true_void_target"})
         for a in LEVELS:
             for b in LEVELS:
-                with self.subTest(a=a,b=b):
-                    fake=inspect_control(actor_power=a,target_power=b,
-                                         palace_relation="克",
-                                         attacker_fake_void=True)
-                    self.assertEqual(fake["scenario"],"fake_void_attacker_A")
-                    self.assertEqual(fake["result"],raw_cell(ATT_A,a,b))
-                    target=inspect_control(actor_power=a,target_power=b,
-                                           palace_relation="克",
-                                           target_fake_void=True)
-                    self.assertEqual(target["result"],raw_cell(TARGET,a,b))
-                    pending=inspect_control(actor_power=a,target_power=b,
-                                             palace_relation="克",
-                                             attacker_true_void=True)
-                    self.assertEqual(pending["status"],
-                                     "duplicate_true_attacker_label_pending")
-                    self.assertIsNone(pending["result"])
-                    self.assertEqual(
-                        tuple(v["result"] for v in pending["candidate_tables"]),
-                        (raw_cell(TRUE_A,a,b),raw_cell(TRUE_B,a,b)))
-                    for variant,expected in (("A",TRUE_A),("B",TRUE_B)):
-                        resolved=inspect_control(
-                            actor_power=a,target_power=b,palace_relation="克",
-                            attacker_true_void=True,
-                            attacker_true_void_variant=variant)
-                        self.assertEqual(resolved["result"],
-                                         raw_cell(expected,a,b))
-                        self.assertEqual(resolved["scenario"],
-                                         "true_void_attacker_"+variant)
+                with self.subTest(actor=a,target=b):
+                    for kwargs,key,expected in (
+                        ({"attacker_fake_void":True},
+                         "fake_void_attacker",FAKE_SOURCE),
+                        ({"target_fake_void":True},
+                         "fake_void_target",FAKE_TARGET),
+                        ({"attacker_true_void":True},
+                         "true_void_attacker",TRUE_SOURCE),
+                        ({"target_true_void":True},
+                         "true_void_target",TRUE_TARGET),
+                    ):
+                        out=inspect_control(
+                            actor_power=a,target_power=b,
+                            palace_relation="克",**kwargs)
+                        self.assertEqual(out["status"],"matched")
+                        self.assertEqual(out["scenario"],key)
+                        self.assertEqual(out["result"],raw_cell(expected,a,b))
         self.assertEqual(inspect_control(
             actor_power="极小",target_power="极大",palace_relation="克",
             attacker_void_unknown=True)["status"],"void_type_pending")
@@ -173,15 +165,41 @@ class UserLiteralMatrixTests(unittest.TestCase):
             attacker_true_void=True,target_fake_void=True)["status"],
                          "both_void_unspecified")
         self.assertEqual(inspect_control(
-            actor_power="极小",target_power="极大",palace_relation="克",
-            target_true_void=True)["status"],"target_true_void_unspecified")
+            actor_power="极小",target_power="极大",palace_relation="生")["status"],
+                         "not_control_relation")
+        with self.assertRaises(ValueError):
+            inspect_control(actor_power="大",target_power="小",
+                            palace_relation="克",attacker_true_void=True,
+                            attacker_true_void_variant="A")
         with self.assertRaises(ValueError):
             inspect_control(actor_power="大",target_power="小",
                             palace_relation="克",attacker_fake_void=True,
                             attacker_fake_void_variant="B")
+
+    def test_true_void_source_target_do_not_get_conflated(self):
+        # Same strength pair yields different readings because the void
+        # side is an explicit factual branch, not a second power duel.
+        actor=inspect_control(actor_power="大",target_power="大",
+                              palace_relation="克",attacker_true_void=True)
+        target=inspect_control(actor_power="大",target_power="大",
+                               palace_relation="克",target_true_void=True)
+        self.assertEqual(actor["result"],"完全失控")
+        self.assertEqual(target["result"],"微弱克制")
+        self.assertNotEqual(actor["result"],target["result"])
         self.assertEqual(inspect_control(
-            actor_power="极小",target_power="极大",palace_relation="生")["status"],
-                         "not_control_relation")
+            actor_power="极小",target_power="极小",palace_relation="克",
+            target_fake_void=True)["result"],"高效克制")
+        self.assertEqual(inspect_control(
+            actor_power="极小",target_power="极小",palace_relation="克")["result"],
+                         "有效克制")
+
+    def test_matchup_can_choose_both_corrected_true_void_sides(self):
+        actor=lookup_selected_factor("star","天心星","申",6)
+        target=lookup_selected_factor("star","天冲星","申",3)
+        self.assertEqual(matchup(actor,target,actor_role="a",target_role="b",
+            attacker_true_void=True)["control_scenario"],"true_void_attacker")
+        self.assertEqual(matchup(actor,target,actor_role="a",target_role="b",
+            target_true_void=True)["control_scenario"],"true_void_target")
 
     def test_selected_matchup_no_second_palace_duel(self):
         a=lookup_selected_factor("star","天心星","申",6)
