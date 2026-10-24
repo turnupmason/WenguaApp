@@ -130,7 +130,12 @@ class UserAuthoredCells(unittest.TestCase):
                     "not_control_relation","duplicate_attacker_label_pending"))
             self.assertTrue(edge["palace_strength_is_context_only"])
             self.assertNotIn("palace_duel_result",edge)
-        self.assertIn("克制表",result["reading_text"])
+        # Revised complete-palace narrative only cites a control matrix when
+        # an actually selected role has a real eligible 克 direction; the
+        # fixed live chart can have no such usable edge.
+        self.assertIn("对天芮病宫",result["reading_text"])
+        self.assertIn("八神",result["reading_text"])
+        self.assertIn("八门",result["reading_text"])
         self.assertNotIn("宫位对抗「",result["reading_text"])
         self.assertTrue(result["no_scoring"])
         self.assertFalse(result["medical_validity_claimed"])
