@@ -16,6 +16,7 @@ from .health_severity_v22 import _find_star, _find_heaven_stem, _palace
 from .marriage_runtime import ELEMENTS, element_relation, hourly_void_branches
 from .health_severity_v25 import fuyin_fanyin_facts
 from .health_severity_v34 import HORSE
+from .health_macro_facts_vnext import first_stage_macro
 
 # Original book annotations are keyword/index metadata, NOT executable proofs.
 # These flags make a pair conditional; without a source-authored predicate
@@ -231,10 +232,7 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
         "ordered_palace_roles":sequence["ordered_roles"],
         "macro_fuyin_fanyin":sequence["macro"],
         "first_stage_macro":sequence.get("first_stage_macro") or
-            __import__(
-                "src.wengua.health_macro_facts_vnext",
-                fromlist=["first_stage_macro"]).first_stage_macro(
-                    chart=chart,calendar=calendar),
+            first_stage_macro(chart=chart,calendar=calendar),
         "qualitative_palace_relationships":sequence["interactions"],
         "full_health_role_strength_network":sequence["full_health_role_strength_network"],
         "audit":{
