@@ -13,6 +13,7 @@ from .health_severity_v34 import HORSE
 from .marriage_runtime import PALACE_BRANCHES
 from .semantic_lookup import GENERATES
 from .selected_duel_table_vnext import table_one
+from .health_five_level_quant_vnext import door_break_penalty_policy
 
 GOOD_GODS=frozenset(("值符","六合","太阴","九天"))
 BAD_GODS=frozenset(("白虎","玄武","螣蛇","腾蛇","九地"))
@@ -129,6 +130,10 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
                                  restrictions=restrictions)})
     door_factor=(table_one("door",cell["door"],month_branch,palace,
                            restrictions=restrictions) if cell["door"] else None)
+    door_break=(door_break_penalty_policy(
+        door_name=cell["door"],palace=palace,
+        door_relation=door_factor["user_cell_col"])
+        if door_factor else None)
     heaven=[]
     for entry in cell["heaven_stars"]:
         stem=entry["carried_stem"]
@@ -161,6 +166,7 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
         "palace_element":record["element"],
         "palace_month_stage":record["palace_month_stage"],
         "stars":star_factors,"deity":god,"door":door_factor,
+        "door_break_penalty_policy":door_break,
         "heaven_stems":heaven,"earth_stem":earth,
         "primary_strength":primary_factor,
         "ordered_book_81_pairs":pairs,
@@ -209,8 +215,13 @@ def render_complete_selected_palace(detail):
     vt=("不空" if v["classification"]=="not_void" else
         "假空" if v["classification"]=="fake_void" else "真空")
     vwhy="、".join(v["reasons"])
+    door_break=detail.get("door_break_penalty_policy")
     conditions="、".join(
-        x for x,active in (("天盘入墓",bool(detail["sky_tombs"])),
+        x for x,active in (("门破（不额外降级）",bool(
+                                door_break and door_break["no_extra_two_level_shift"])),
+                           ("门破（另降两级）",bool(
+                                door_break and door_break["apply_extra_two_level_shift"])),
+                           ("天盘入墓",bool(detail["sky_tombs"])),
                            ("地盘入墓",bool(detail["earth_tombs"])),
                            ("六仪击刑",bool(detail["striking_stems"])),
                            ("门迫",bool(detail["door_pressure"])),
