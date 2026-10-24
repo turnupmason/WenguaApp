@@ -9,6 +9,7 @@ from src.wengua.health_five_level_quant_vnext import (
 from src.wengua.health_quant_overlay_vnext import _quantize_one
 from src.wengua.selected_duel_table_vnext import table_one
 from src.wengua.health_palace_detailed_vnext import normalize_new_door_relation
+from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
 
 MONTH="戌"
 BASE={"star":5,"door":1,"deity":-3,"pattern":1}  # +4
@@ -87,6 +88,33 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
         self.assertFalse(gong["door_break"])
         self.assertFalse(gong["legacy_door_pressure"])
         self.assertEqual(gong["door_relation_user_200_cells"],"宫迫")
+
+    def test_two_real_seeded_casts_expose_no_penalty_and_correct_direction(self):
+        inquiry={"intent":"severity","relationship":"self",
+                 "consultation_context":"direct_self"}
+        for iso,pid,door in (
+            ("2026-11-01T21:00:00-05:00",1,"生门"),
+            ("2026-10-26T05:00:00-04:00",6,"景门")):
+            with self.subTest(iso=iso):
+                r=auto_cast_health_review_text(
+                    iso=iso,timezone_name="America/New_York",inquiry=inquiry)
+                self.assertEqual(r["nine_palaces"][str(pid)]["door"],door)
+                fact=r["nine_palace_condition_facts"][str(pid)]
+                self.assertEqual(fact["user_door_relation"],"门破")
+                self.assertTrue(fact["door_break"])
+                self.assertFalse(fact["door_pressure"])
+                self.assertTrue(fact["legacy_door_pressure"])
+                self.assertEqual(fact["door_break_extra_two_level_shift"],0)
+                self.assertTrue(fact["door_break_exception_no_penalty"])
+                self.assertIn(fact["door_strength_from_200_cells"],
+                              ("极小","小","中等","大","极大"))
+        # First stage fully chosen Tianrui illness palace in 乾六宫.
+        r=auto_cast_health_review_text(
+            iso="2026-10-26T05:00:00-04:00",
+            timezone_name="America/New_York",inquiry=inquiry)
+        illness=next(x for x in r["sections"] if x["title"]=="天芮病宫")
+        self.assertIn("门破（不额外降级）",illness["text"])
+        self.assertNotIn("门迫",illness["text"])
 
     def test_signed_results_when_all_four_factors_are_verified(self):
         # +4 with no void; the only difference here is user-specified -2.
