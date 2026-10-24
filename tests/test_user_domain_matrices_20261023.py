@@ -100,10 +100,12 @@ class UserLiteralMatrixTests(unittest.TestCase):
         # produce genuinely distinct row powers, so fail closed.
         from unittest.mock import patch
         from src.wengua import user_domain_matrices_20261023 as module
-        real=module.inspect_strength_25("stem","乙","申",6)
+        from src.wengua.factor_energy_25_rules import inspect_strength_25
+        real=inspect_strength_25("stem","乙","申",6)
         fake={**real,"palace_twelve_life_facts":[
             {"branch":"戌","stage":"帝旺"},{"branch":"亥","stage":"绝"}]}
-        with patch.object(module,"inspect_strength_25",return_value=fake):
+        with patch("src.wengua.factor_energy_25_rules.inspect_strength_25",
+                   return_value=fake):
             output=lookup_selected_factor("stem","乙","申",6)
         self.assertIsNone(output["strength_label"])
         self.assertTrue(output["stem_life_strength_pending"])
