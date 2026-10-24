@@ -87,8 +87,8 @@ class RealSelectedPalacePipeline(unittest.TestCase):
             self.assertIn(d["void"]["classification"],
                           ("not_void","fake_void","true_void"))
             self.assertIsInstance(d["ordered_book_81_pairs"],list)
-            self.assertIn("十二",render_complete_selected_palace(d)
-                          if False else "十二")  # no invented count in reading
+            self.assertIn("九星",render_complete_selected_palace(d))
+            self.assertIn("天地格",render_complete_selected_palace(d))
             self.assertFalse(d["medical_diagnosis"])
         self.assertIn("八神",self.self_reading["reading_text"])
         self.assertIn("八门",self.self_reading["reading_text"])
