@@ -18,6 +18,7 @@ from .health_severity_v34 import HORSE
 from .semantic_lookup import STAR_ELEMENT
 from .health_palace_detailed_vnext import (
     inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
+from .health_role_majority_vnext import assess_disease_relationships
 
 # Other subtopics will be added only when their original source conditions
 # and relevant person-role bindings are implemented and tested.
@@ -233,7 +234,19 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
             "text":"天芮传统格局候选："+t25["traditional_title"],
             "source":"existing_tianrui_25_source_qualified_review",
             "roles":["天芮病宫"]})
-    # Candidate win/loss is still research-only, not an author-verified vote.
+    # The old slim edge candidates remain a historical calculation, but the
+    # authoritative user workflow counts complete role-to-illness groups.
+    groups=assess_disease_relationships(
+        roles=inspected,edges=edges,role_confidence=actor.get("confidence"))
+    candidate=groups["evidence"]
+    direction=t25["eligible_evidence_direction"]
+    if direction in ("favorable","adverse","pending","neutral"):
+        candidate.setdefault(direction,[]).append({
+            "id":"illness:tianrui_25:"+str(tianrui["palace"]),
+            "direction":direction,
+            "text":"天芮传统格局候选："+t25["traditional_title"],
+            "source":"existing_tianrui_25_source_qualified_review",
+            "roles":["天芮病宫"]})
     favor=len(candidate["favorable"]);against=len(candidate["adverse"])
     counts={"qualified_favorable":favor,"qualified_adverse":against,
             "pending_conditions":len(candidate["pending"])}
@@ -246,7 +259,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
                       else "古籍规则研究候选偏凶" if stance=="adverse"
                       else "候选吉凶尚不明")
     verdict["decisive_chain"]=(
-        "candidate_duels_plus_one_illness_compound"
+        "complete_selected_palaces_majority_plus_one_illness_compound"
         if confident and (favor or against) else None)
     # Preserve original Tianrui compound and reviewer provenance as one fact,
     # never automatically counted again as independent candidate duel.
@@ -285,8 +298,10 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "table_one_queries":len(one_cache),"table_two_queries":len(edges),
         "inspected_palace_ids":sorted(physical_inspections),
         "precomputed_cartesian_pairs_materialized":False,
-        "domain_template_version":"health_severity_minimal_vnext_1",
-        "physical_evidence_pairs_counted_once":sorted(unique_pair),
+        "domain_template_version":"health_severity_complete_palace_vnext_2",
+        "physical_evidence_pairs_counted_once":groups["counted_physical_pairs"],
+        "role_group_reviews":groups["reviews"],
+        "role_group_selection_confident":groups["selection_confident"],
         "independent_candidate_favorable":favor,
         "independent_candidate_adverse":against,
         "conditional_candidate_unresolved":len(candidate["pending"]),
@@ -296,7 +311,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "table_two_selected_edges":edges,
     }
     result={
-        "schema":"health_selective_two_table_review_vnext_1",
+        "schema":"health_selective_complete_palace_review_vnext_2",
         "selected_energy_pipeline":True,
         "macro":macro,"selected_roles":inspected,
         "ordered_roles":[inspected[k] for k in inspected],
@@ -308,6 +323,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "missing_natal":missing_natal,
         "gender_palace":gender_palace,
         "book_pair_source_hits":len(matched_pairs),
+        "role_group_majority":groups,
         "not_medical_outcome":True,
     }
     return result
@@ -328,8 +344,8 @@ def selected_health_sections(result,*,actor,chart):
                ("doctor","03","天心医生"),
                ("medicine","04","乙奇医药"),
                ("patient","05","患者用神"),
-               ("natal","06","患者年命"),
-               ("hour","07","时干事体"),
+               ("hour","06","时干事体"),
+               ("natal","07","患者年命"),
                ("gender","08","乾坤辅助宫"))
     for key,serial,title in key_order:
         if key=="natal" and key not in roles:
@@ -341,35 +357,12 @@ def selected_health_sections(result,*,actor,chart):
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
-        details=[]
-        for a,b in (("doctor","illness"),("doctor","patient"),
-                    ("medicine","illness"),("medicine","patient"),
-                    ("patient","illness"),("illness","patient"),
-                    ("natal","illness"),("natal","patient"),
-                    ("hour","illness"),("hour","patient"),
-                    ("gender","illness"),("gender","patient")):
-            if a!=key:continue
-            x=edges.get(a+"->"+b)
-            if not x:continue
-            goal="病宫" if b=="illness" else "患者宫"
-            if x["control_status"]=="matched":
-                explanation=("克制表「"+x["control_result"]+"」"+
-                             "（"+str(x["control_scenario"])+"）")
-            elif x["control_status"]=="duplicate_true_attacker_label_pending":
-                explanation="历史真空两表已由用户更新为施力、受力各一表；旧版本不再适用"
-            elif x["control_status"]=="factor_power_pending":
-                explanation="十干长生分支取用未定，不能生成对抗胜负"
-            elif x["control_status"]=="void_type_pending":
-                explanation="空亡真假未核，暂不套空亡专表"
-            elif x["control_status"]=="target_true_void_unspecified":
-                explanation="历史待核状态（最新版受力方真空表已经明确）"
-            elif x["control_status"]=="both_void_unspecified":
-                explanation="两宫同时空亡缺少对应专用表，暂不强定克制"
-            else:
-                explanation="此关系不适用克制表"
-            details.append("对"+goal+x["relation"]+"；"+explanation+
-                           "，作用条件"+x["ability"])
-        if details:text+="；"+"；".join(details)+"。"
+        group=result["role_group_majority"]["reviews"].get(key)
+        if group:
+            outcome=("偏吉" if group["direction"]=="favorable" else
+                     "偏凶" if group["direction"]=="adverse" else "待核")
+            text+=(" 对天芮病宫"+group["relation"]+"；"+group["why"]+
+                   "；本组"+outcome+"。")
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
         push(serial,title,text)
@@ -381,12 +374,13 @@ def selected_health_sections(result,*,actor,chart):
              "按来源取用，不能仅因旺就判吉。")
     v=result["verdict"];n=result["counts"]
     push("90_review","全部证据合断",
-         v["label"]+"。候选力量对抗去重后，有利"+
+         v["label"]+"。逐宫已查星、神、门、天地干、格局和空马墓刑迫；"+
+         "各组对天芮病宫一组一票、同一实际宫对关系只算一次，有利"+
          str(n["qualified_favorable"])+"条、不利"+
          str(n["qualified_adverse"])+"条、条件未定"+
          str(n["pending_conditions"])+"条。"+
-         "本次只计算专题选中的用神，不按所有九宫穷举；候选强度尚未古籍独立校准，"+
-         "不用于临床病情或治疗判断。")
+         "吉多偏吉、凶多偏凶、相等或关键证据不全则待核；"+
+         "术数研究候选，不用于现实病情诊断或用药。")
     push("91_timing","时空及应期",
          "驿马参考"+HORSE[chart["hour_ganzhi"][1]]+
          "；应期还需原书空墓、冲合、填实和具体问事条件共同触发，"+
