@@ -230,7 +230,11 @@ def analyze_health_severity_review(*,chart,inquiry,calendar,db_path):
         "evidence_ledger":sequence["evidence"],
         "ordered_palace_roles":sequence["ordered_roles"],
         "macro_fuyin_fanyin":sequence["macro"],
-        "first_stage_macro":sequence["first_stage_macro"],
+        "first_stage_macro":sequence.get("first_stage_macro") or
+            __import__(
+                "src.wengua.health_macro_facts_vnext",
+                fromlist=["first_stage_macro"]).first_stage_macro(
+                    chart=chart,calendar=calendar),
         "qualitative_palace_relationships":sequence["interactions"],
         "full_health_role_strength_network":sequence["full_health_role_strength_network"],
         "audit":{
