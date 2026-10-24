@@ -17,7 +17,8 @@ from .health_tianrui_25_matrix import inspect_tianrui_25
 from .health_severity_v34 import HORSE
 from .semantic_lookup import STAR_ELEMENT
 from .health_palace_detailed_vnext import (
-    inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
+    inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace,
+    normalize_new_door_relation)
 from .health_role_majority_vnext import assess_disease_relationships
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
 from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review
@@ -134,10 +135,12 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         index=cell["palace"]
         cachekey=(index,kind,symbol)
         if cachekey not in one_cache:
-            record=inspect_palace(
+            legacy_record=inspect_palace(
                 chart=chart,cell=cell,role=ROLE_TITLES.get(key,"原书辅助宫"+str(index)),
                 month_branch=month,star=symbol if kind=="star" else None,
                 stem=symbol if kind=="stem" else None)
+            record=normalize_new_door_relation(
+                record=legacy_record,cell=cell,month_branch=month)
             obstacles=tuple(
                 (["旬空待辨"] if record["void_branches"] else [])+
                 (["天盘入墓"] if record["sky_tombs"] else [])+
@@ -167,11 +170,13 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         if palace_cell is None:raise ValueError("Real Qian/Kun palace missing")
         resident=palace_cell["heaven_stars"]
         selected_star=resident[0]["star"] if resident else None
-        observed=inspect_palace(
+        legacy_observed=inspect_palace(
             chart=chart,cell=palace_cell,
             role=("乾六宫辅助观察" if pid==6 else "坤二宫辅助观察"),
             month_branch=month,star=selected_star,
             stem=palace_cell["earth_stem"] if selected_star is None else None)
+        observed=normalize_new_door_relation(
+            record=legacy_observed,cell=palace_cell,month_branch=month)
         inspected_detail=inspect_complete_selected_palace(
             chart=chart,cell=palace_cell,record=observed,
             month_branch=month,matched_pairs=matched_pairs)
