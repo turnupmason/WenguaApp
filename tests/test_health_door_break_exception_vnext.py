@@ -8,6 +8,7 @@ from src.wengua.health_five_level_quant_vnext import (
     door_break_penalty_policy,palace_tally)
 from src.wengua.health_quant_overlay_vnext import _quantize_one
 from src.wengua.selected_duel_table_vnext import table_one
+from src.wengua.health_palace_detailed_vnext import normalize_new_door_relation
 
 MONTH="戌"
 BASE={"star":5,"door":1,"deity":-3,"pattern":1}  # +4
@@ -62,6 +63,30 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
             door_name="开门",palace=9,door_relation="宫迫")
         self.assertFalse(p["has_door_break"])
         self.assertFalse(p["apply_extra_two_level_shift"])
+
+    def test_legacy_迫_is_preserved_but_does_not_double_block_new_门破(self):
+        # Historical semantic_lookup originally called 门克宫 '迫'.
+        # The latest user distinguishes 宫迫=宫克门 and 门破=门克宫.
+        for name,palace in (("生门",1),("景门",6),("景门",7)):
+            updated=normalize_new_door_relation(
+                record={"door_pressure":True},
+                cell={"door":name,"palace":palace},month_branch=MONTH)
+            self.assertTrue(updated["legacy_door_pressure"])
+            self.assertTrue(updated["door_break"])
+            self.assertFalse(updated["door_pressure"])
+            self.assertEqual(updated["door_relation_user_200_cells"],"门破")
+            twice=normalize_new_door_relation(
+                record=updated,cell={"door":name,"palace":palace},
+                month_branch=MONTH)
+            self.assertTrue(twice["legacy_door_pressure"])
+            self.assertFalse(twice["door_pressure"])
+        gong=normalize_new_door_relation(
+            record={"door_pressure":False},
+            cell={"door":"开门","palace":9},month_branch=MONTH)
+        self.assertTrue(gong["door_pressure"])
+        self.assertFalse(gong["door_break"])
+        self.assertFalse(gong["legacy_door_pressure"])
+        self.assertEqual(gong["door_relation_user_200_cells"],"宫迫")
 
     def test_signed_results_when_all_four_factors_are_verified(self):
         # +4 with no void; the only difference here is user-specified -2.
