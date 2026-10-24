@@ -35,8 +35,14 @@ def _candidate_clock():
         cal=solar_chart_clock(iso,TZ)
         p=cal["four_pillars"]
         bureau=bureau_for_term(p["day"],cal["active_solar_term"])
-        chart=layout_from_explicit_bureau(
-            dun=bureau["dun"],ju=bureau["ju"],hour_ganzhi=p["hour"])
+        try:
+            chart=layout_from_explicit_bureau(
+                dun=bureau["dun"],ju=bureau["ju"],hour_ganzhi=p["hour"])
+        except ValueError:
+            # Original-method boundary: value door can fall into centre 5
+            # without a user-authorized hosting rule. Preserve the historic
+            # failure, NEVER invent a palace solely to fill sample coverage.
+            continue
         cells=chart["palaces"]
         flags=tuple(
             key for key,door,palace in (
@@ -119,25 +125,32 @@ def generate_random_cases():
     # third independent randomly selected chart. This is a SHOWCASE
     # selection, never an independent held-out accuracy evaluation.
     candidates=list(_candidate_clock())
-    selected=[]
-    for wanted in ("生门坎免减级","景门乾免减级"):
-        x=next((p for p in candidates if wanted in p[1] and
-                p[0] not in {z[0] for z in selected}),None)
-        if x is not None:selected.append(x)
-    selected.extend(x for x in candidates
-                    if x[0] not in {z[0] for z in selected})
-    reports=[];failures=[]
-    for iso,flags in selected:
-        if len(reports)>=3:break
+    reports=[];failures=[];selected_ids=set()
+    def attempt(pair):
+        iso,flags=pair
+        if iso in selected_ids:return False
         try:
             r=auto_cast_health_review_text(
                 iso=iso,timezone_name=TZ,inquiry=INQUIRY)
         except ValueError as exc:
-            # If the original chart cannot bind a self patient (hidden 甲
-            # etc), SKIP. Never fabricate a substitute birth/natal role.
+            # Invalid source bound or unresolved centre-5 hosting is a
+            # legitimate excluded candidate, not license to substitute a
+            # fictitious patient or fake calendar facts.
             failures.append({"iso":iso,"reason":str(exc)})
-            continue
+            selected_ids.add(iso)
+            return False
         reports.append(_simplify(r,flags))
+        selected_ids.add(iso)
+        return True
+    # Cover both user exception patterns using real randomly ordered casts.
+    # Each must ALSO pass all original self-patient source-identity gates.
+    for wanted in ("生门坎免减级","景门乾免减级"):
+        for pair in candidates:
+            if wanted not in pair[1]:continue
+            if attempt(pair):break
+    for pair in candidates:
+        if len(reports)>=3:break
+        attempt(pair)
     if len(reports)!=3:
         raise AssertionError("Could not generate three actual self-charts")
     return {"seed":SEED,"timezone":TZ,"intent":"health/severity/self",
