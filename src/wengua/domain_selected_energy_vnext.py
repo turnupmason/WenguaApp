@@ -20,6 +20,7 @@ from .health_palace_detailed_vnext import (
     inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
 from .health_role_majority_vnext import assess_disease_relationships
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
+from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review
 from .marriage_runtime import ELEMENTS,element_relation
 
 # Other subtopics will be added only when their original source conditions
@@ -350,6 +351,10 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "independent_candidate_adverse":against,
         "conditional_candidate_unresolved":len(candidate["pending"]),
         "clinical_prediction":False}
+    new_quant=inspect_selected_quantization(
+        selected_roles=inspected,qian_kun_observations=auxiliary_palaces,
+        first_stage_macro=macro_facts)
+    network["candidate_five_grade_quantization"]=new_quant
     interactions={
         "天芮星月令×星宫五行25格":t25,
         "table_two_selected_edges":edges,
@@ -370,6 +375,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "qian_kun_auxiliary_observations":auxiliary_palaces,
         "book_pair_source_hits":len(matched_pairs),
         "role_group_majority":groups,
+        "candidate_five_grade_quantization":new_quant,
         "not_medical_outcome":True,
     }
     return result
@@ -429,6 +435,8 @@ def selected_health_sections(result,*,actor,chart):
             "，仅供人物关系辅助，不直接计独立吉凶票。")
     push("09_qian_kun_auxiliary","乾坤宫辅助观察",
          " ".join(auxiliary_texts))
+    push("89_quant","五级能量量化合断",
+         render_quant_review(result["candidate_five_grade_quantization"]))
     v=result["verdict"];n=result["counts"]
     push("90_review","全部证据合断",
          v["label"]+"。逐宫已查星、神、门、天地干、格局和空马墓刑迫；"+
