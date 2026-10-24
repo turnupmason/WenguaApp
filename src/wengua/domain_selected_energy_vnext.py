@@ -16,6 +16,8 @@ from .health_severity_v25 import fuyin_fanyin_facts
 from .health_tianrui_25_matrix import inspect_tianrui_25
 from .health_severity_v34 import HORSE
 from .semantic_lookup import STAR_ELEMENT
+from .health_palace_detailed_vnext import (
+    inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
 
 # Other subtopics will be added only when their original source conditions
 # and relevant person-role bindings are implemented and tested.
@@ -141,8 +143,11 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         record,energy=one_cache[cachekey]
         view={**record,"role":ROLE_TITLES.get(key,"原书辅助宫"+str(index)),
               "primary_strength_25":energy,
-              # The selected factor is the ONLY table-one factor queried.
               "all_symbol_strength_25":[energy]}
+        view["complete_palace"]=inspect_complete_selected_palace(
+            chart=chart,cell=cell,record=view,month_branch=month,
+            primary_factor=energy,matched_pairs=matched_pairs)
+        view["void_classification"]=view["complete_palace"]["void"]["classification"]
         inspected[key]=view
 
     edges={}
@@ -156,7 +161,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         x,y=inspected[a],inspected[b]
         edge=matchup(
             x["primary_strength_25"],y["primary_strength_25"],
-            actor_role=a,target_role=b)
+            actor_role=a,target_role=b,
+            **void_kwargs(x["complete_palace"],y["complete_palace"]))
         eid=a+"->"+b
         edges[eid]=edge
 
@@ -254,6 +260,12 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "fact_id":r["primary_strength_25"]["fact_id"],
         "palace_context":{"door":r["door"],"deity":r["deity"],
                           "sky_stars":r["heaven"],"earth_stem":r["earth_stem"]},
+        "deity_energy":r["complete_palace"]["deity"],
+        "void_classification":r["void_classification"],
+        "door_energy":r["complete_palace"]["door"],
+        "heaven_stem_energy":r["complete_palace"]["heaven_stems"],
+        "earth_stem_energy":r["complete_palace"]["earth_stem"],
+        "source_81_palace_formations":r["complete_palace"]["ordered_book_81_pairs"],
     } for k,r in inspected.items()}
     network={
         "schema":"selected_domain_signifier_network_vnext_1",
@@ -263,6 +275,9 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "factor_one_stem_table":"user_stem_life_stage_x_month_relation_20261023_v1",
         "factor_one_door_table":"user_door_month_x_palace_relation_20261023_v1",
         "nodes":nodes,"directed_edges":edges,
+        "complete_selected_palace_audits":{
+            k:v["complete_palace"] for k,v in inspected.items()},
+        "void_rule_version":"user_20261023_void_month_horse_v1",
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
         "unselected_gender_palace":(2 if gender_palace==6 else
@@ -322,20 +337,7 @@ def selected_health_sections(result,*,actor,chart):
             continue
         if key not in roles:continue
         r=roles[key];energy=r["primary_strength_25"]
-        if energy.get("table_version")=="user_stem_life_stage_x_month_relation_20261023_v1":
-            if energy.get("stem_life_strength_pending"):
-                strength_desc=(
-                    "十天干按真实宫支十二长生查表；候选"+
-                    "、".join(x["row"]+"为"+x["strength"]
-                              for x in energy["stem_life_candidate_cells"])+
-                    "，尚缺该宫两支择用原书条件，本次不造唯一强度。")
-            else:
-                strength_desc=("十天干十二长生归组"+str(energy["user_cell_row"])+
-                               "，与月令"+str(energy["user_cell_col"])+
-                               "，力量"+str(energy["strength_label"])+"。")
-            text=r["role"]+"落"+r["name"]+"。"+strength_desc
-        else:
-            text=r["role"]+"落"+r["name"]+"。"+format_strength_template(energy)
+        text=render_complete_selected_palace(r["complete_palace"])
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
@@ -375,8 +377,7 @@ def selected_health_sections(result,*,actor,chart):
         if not key.startswith("extra_"):continue
         x=roles[key]
         push("08_"+key,"源书辅助宫",
-             x["role"]+"落"+x["name"]+"，"+format_strength_template(
-                 x["primary_strength_25"])+
+             render_complete_selected_palace(x["complete_palace"])+
              "按来源取用，不能仅因旺就判吉。")
     v=result["verdict"];n=result["counts"]
     push("90_review","全部证据合断",
