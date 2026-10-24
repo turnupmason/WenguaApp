@@ -32,16 +32,16 @@ def _candidate_clock():
     Random(SEED).shuffle(moments)
     for moment in moments:
         iso=moment.isoformat()
-        cal=solar_chart_clock(iso,TZ)
-        p=cal["four_pillars"]
-        bureau=bureau_for_term(p["day"],cal["active_solar_term"])
         try:
+            cal=solar_chart_clock(iso,TZ)
+            p=cal["four_pillars"]
+            bureau=bureau_for_term(p["day"],cal["active_solar_term"])
             chart=layout_from_explicit_bureau(
                 dun=bureau["dun"],ju=bureau["ju"],hour_ganzhi=p["hour"])
         except ValueError:
-            # Original-method boundary: value door can fall into centre 5
-            # without a user-authorized hosting rule. Preserve the historic
-            # failure, NEVER invent a palace solely to fill sample coverage.
+            # Original-method boundary: uncertain solar-term instant OR
+            # value door's unresolved centre-5 hosting. Do not interpolate
+            # month/term, fabricate a centre-door, or fake the chart.
             continue
         cells=chart["palaces"]
         flags=tuple(
