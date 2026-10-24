@@ -2,7 +2,7 @@
 
 This layer cannot invent:
  - intrinsic polarity for all nine stars, especially neutral/conditional stars;
- - the TWO door interpretation cases promised, but not yet specified;
+ - door polarity in severity; the two named 门破 penalty exemptions ARE now verified;
  - a numeric deity power conversion (prior source has only 更/微 吉凶);
  - a source-verified 吉/凶 designation plus all executable gates for 81
    ordered heaven+earth stem patterns.
@@ -12,7 +12,8 @@ pending even though the hand-authored example is exactly reproducible.
 from __future__ import annotations
 
 from .health_five_level_quant_vnext import (
-    points,palace_tally,multi_palace_tally,pattern_grade,VERSION)
+    points,palace_tally,multi_palace_tally,pattern_grade,VERSION,
+    door_break_penalty_policy)
 
 # Role-bound condition only, not a universal auspice claim about all stars.
 ROLE_STAR_POLARITY={"illness":("天芮星","凶"),
@@ -36,12 +37,24 @@ def _quantize_one(role,detail,*,five_not_encounter):
                         "polarity":sign,"score":star_score,
                         "scope":"health_role_not_general_star_definition"}
     door=detail["door"]
-    # User says 八门有两种情况, but the question does not define either
-    # situation's auspice conditions. Exact tier is still usable as a fact.
-    door_audit={"status":"two_door_conditions_missing",
-                "symbol":door["symbol"] if door else None,
-                "strength":door.get("strength_label") if door else None,
-                "symbol_palace_relation":door.get("user_cell_col") if door else None}
+    # Current source explicitly exempts TWO physical 门破 cases from the
+    # added two-level penalty. Their actual monthly 25-cell power remains
+    # unchanged, and the door's separate health-topic auspice polarity is
+    # still source-pending (never auto-score a door as 吉/凶).
+    door_policy=(door_break_penalty_policy(
+        door_name=door["symbol"],palace=detail["palace"],
+        door_relation=door["user_cell_col"])
+        if door else None)
+    door_audit={
+        "status":"door_polarity_rule_pending",
+        "symbol":door["symbol"] if door else None,
+        "strength":door.get("strength_label") if door else None,
+        "symbol_palace_relation":door.get("user_cell_col") if door else None,
+        "penalty_policy":door_policy,
+        "applied_door_break_shift":door_policy["two_level_shift"] if door_policy else 0,
+        "strength_lookup_unchanged":True,
+        "score":None,
+    }
     deity=detail["deity"]
     god_audit={
         "status":"deity_five_tier_conversion_missing",
@@ -66,7 +79,7 @@ def _quantize_one(role,detail,*,five_not_encounter):
     # but do not invent 81 吉/凶 conversion before the source gating.
     summary=palace_tally(
         factors={"star":star_score,"door":None,"deity":None,"pattern":None},
-        door_break=bool(door and door.get("user_cell_col")=="门破"),
+        door_break=bool(door_policy and door_policy["apply_extra_two_level_shift"]),
         five_not_encounter=bool(five_not_encounter),
         void_state=detail["void"]["classification"],
         horse_cleared_void=bool(detail["void"].get("horse_cleared_void")))
