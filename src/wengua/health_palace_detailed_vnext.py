@@ -101,6 +101,27 @@ def inspect_god(*,deity,palace_element):
     }
 
 
+def normalize_new_door_relation(*,record,cell,month_branch):
+    """Only V-next: remap old source's `迫=门克宫` to NEW USER two columns.
+
+    The original source fact remains `legacy_door_pressure` for audit.
+    The user defined 宫迫 as 宫克门, 门破 as 门克宫; do not let legacy
+    `门迫` accidentally create a second adverse restriction on the two
+    explicitly exempted special real palace/door combinations.
+    Never change inspect_palace or frozen V3.9.1 semantics.
+    """
+    door=cell["door"]
+    if door is None:return record
+    basic=table_one("door",door,month_branch,cell["palace"])
+    relation=basic["user_cell_col"]
+    return {**record,
+            "legacy_door_pressure":record["door_pressure"],
+            "door_pressure":relation=="宫迫",
+            "door_break":relation=="门破",
+            "door_relation_user_200_cells":relation,
+            "door_relation_normalized_to_user":True}
+
+
 def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
                                      matched_pairs=(),primary_factor=None):
     """All real resident chart objects in one chosen outer palace.
@@ -109,6 +130,8 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
     Include BOTH sky and earth; keep exact 81-source matches with source gates.
     Role-specific primary strength is not double-counted against occupants.
     """
+    record=normalize_new_door_relation(
+        record=record,cell=cell,month_branch=month_branch)
     palace=cell["palace"]
     if palace==5:
         raise ValueError("Middle five needs book-specific method, no fake symbols")
