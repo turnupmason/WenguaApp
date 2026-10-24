@@ -15,6 +15,8 @@ from __future__ import annotations
 
 from .factor_energy_25_rules import TIERS, inspect_strength_25
 from .semantic_lookup import CONTROLS,GENERATES
+from .user_domain_matrices_20261023 import (
+    lookup_selected_factor,inspect_control,CONTROL_GRID_VERSION)
 
 # Original 2026-10-23 user-authored table, copied cell-for-cell.
 USER_DUEL_5X5 = {
@@ -42,7 +44,7 @@ DUEL_OUTCOMES_3X3 = {
 }
 assert set(USER_DUEL_5X5)==set(TIERS)==set(DUEL_COLUMN_TIERS)
 assert all(len(row)==len(TIERS) for row in USER_DUEL_5X5.values())
-VERSION="selected_two_table_duel_v3_single_lookup"
+VERSION="selected_table_v4_stem_lifecycle_control_void"
 
 
 def user_duel_lookup(actor_strength, target_strength):
@@ -77,67 +79,90 @@ FAIL="干不过"
 BACKFIRE="硬干反而受伤"
 
 
-def matchup(first,second,*,actor_role,target_role):
-    """One user-authored 25-cell strength matchup; no second palace duel.
+def matchup(first,second,*,actor_role,target_role,
+            attacker_fake_void=False,target_fake_void=False,
+            attacker_fake_void_variant=None):
+    """One control matrix query per selected actual actor->target relationship.
 
-    TABLE ONE already combines the chosen symbol's month-stage and actual
-    symbol-to-landing-palace relationship into strength_label. Each selected
-    factor therefore has ONE final power label from TABLE ONE.
-    Palace-month facts remain independently auditable CONTEXT, not another
-    opponent or a source of a fictional 'strength contradiction'.
+    Normal 克 and verified void cases use the user's new exact 25-cell
+    matrices. The previous '干得过' table remains a historical reference,
+    NOT an additional fight. Palace strengths are NOT pitted separately.
     """
-    for item in (first,second):
-        if item["strength_label"] not in TIERS or item["palace_strength_label"] not in TIERS:
-            raise ValueError("Both genuine table-one facts are required")
     relation=relation_between_palaces(first,second)
-    result=user_duel_lookup(first["strength_label"],second["strength_label"])
+    a,b=first.get("strength_label"),second.get("strength_label")
     restrictions=tuple(dict.fromkeys(
         tuple(first.get("restrictions",()))+tuple(second.get("restrictions",()))))
-
-    # Role relevance and unresolved obstructions are interpretation guards,
-    # not additional power contests or override tables.
-    if relation not in ("克","生"):
-        ability="不适用"
-        reason="本方宫未主动克或生对方宫；保留胜负格，供专题确认是否反向比较"
-    elif restrictions:
-        ability="条件待核"
-        reason="旬空入墓击刑门迫待核实；不修改表二唯一胜负格"
-    elif result in SUCCESS:
-        ability="能"
-        reason="双方表一力量均已包含月令和本身落宫关系，表二胜负格为胜出"
-    elif result==MARGINAL:
-        ability="艰难"
-        reason="表二唯一胜负格为勉强胜出"
-    elif result in (FAIL,BACKFIRE):
-        ability="不能"
-        reason="表二唯一胜负格为未胜出或传统反伤象意候选"
+    unresolved_power=(a not in TIERS or b not in TIERS)
+    void_uncertain_a=("旬空待辨" in first.get("restrictions",()))
+    void_uncertain_b=("旬空待辨" in second.get("restrictions",()))
+    if unresolved_power:
+        control={"status":"factor_power_pending","result":None,
+                 "reason":"用神真实落宫十二长生可能跨两个不同档，缺原著择支法，不能虚构唯一力量",
+                 "table_version":CONTROL_GRID_VERSION}
     else:
-        raise ValueError("Unrecognized user-authored duel label")
+        control=inspect_control(
+            actor_power=a,target_power=b,palace_relation=relation,
+            attacker_fake_void=attacker_fake_void,
+            target_fake_void=target_fake_void,
+            attacker_fake_void_variant=attacker_fake_void_variant,
+            attacker_void_unknown=void_uncertain_a and not attacker_fake_void,
+            target_void_unknown=void_uncertain_b and not target_fake_void)
+    out=control.get("result")
+    if control["status"]=="not_control_relation":
+        ability="不适用"
+    elif control["status"]!="matched":
+        ability="条件待核"
+    elif restrictions:
+        # Control grid can select a proven void variant without masking
+        # unrelated tomb/door-punishment evidence.
+        unverified=[
+            x for x in restrictions
+            if x!="旬空待辨" or not (attacker_fake_void or target_fake_void)]
+        ability="条件待核" if unverified else (
+            "能" if out in CONTROL_CONFIDENT else
+            "艰难" if out in CONTROL_LIMITED else "不能")
+    else:
+        ability=("能" if out in CONTROL_CONFIDENT else
+                 "艰难" if out in CONTROL_LIMITED else "不能")
+    # Explicitly retain the separate original raw source conditions; do
+    # not imply void is 'fake' merely because Xun Kong branches are present.
     return {
-        "version":VERSION,"table_two_version":USER_DUEL_TABLE_VERSION,
+        "version":VERSION,"table_two_version":CONTROL_GRID_VERSION,
         "actor":actor_role,"target":target_role,
         "actor_fact_id":first["fact_id"],"target_fact_id":second["fact_id"],
         "actor_palace":first["palace"],"target_palace":second["palace"],
         "physical_relation_id":"%s:%s"%tuple(sorted((first["palace"],second["palace"]))),
         "relation":relation,
-        "duel_result":result,
-        "symbol_duel_result":result,
-        "symbol_contrast":result,
-        "actor_strength":first["strength_label"],
-        "target_strength":second["strength_label"],
+        "duel_result":out,"control_result":out,
+        "control_status":control["status"],
+        "control_scenario":control.get("scenario"),
+        "control_candidates":control.get("candidate_tables",()),
+        "control_reason":control.get("reason"),
+        "actor_strength":a,"target_strength":b,
         "actor_palace_strength":first["palace_strength_label"],
         "target_palace_strength":second["palace_strength_label"],
         "palace_strength_is_context_only":True,
-        "table_two_lookups_for_pair":1,
-        "ability":ability,"why":reason,
-        "backfire_risk_symbolic":result==BACKFIRE,
+        "table_two_lookups_for_pair":1 if control["status"]=="matched" else 0,
+        "ability":ability,
+        "why":control.get("reason") or "五行方向与用户25格克制原表独立核实",
+        "backfire_risk_symbolic":out in ("反侮受损",),
         "raw_user_duel_cells_preserved":True,
-        "restrictions":restrictions,
-        "requires_domain_rule":True,"medical_validity_claimed":False,
+        "restrictions":restrictions,"requires_domain_rule":True,
+        "medical_validity_claimed":False,
     }
 
+# These labels do NOT add invented 5x5 gradations: they only decide whether
+# verified candidate evidence can be provisionally used by a source-role
+# domain. The exact original expression is always control_result.
+CONTROL_CONFIDENT=frozenset((
+    "有效克制","高效克制","强力主克","绝对主克","极限压制",
+    "有效主克","完全清除",
+))
+CONTROL_LIMITED=frozenset((
+    "微弱克制","减力克制","断续克制","效力递减",
+))
 
 def table_one(kind,symbol,month_branch,palace,*,plane="heaven",restrictions=()):
     """Alias for reusable fixed TABLE ONE; only selected symbol is inspected."""
-    return inspect_strength_25(
+    return lookup_selected_factor(
         kind,symbol,month_branch,palace,plane=plane,restrictions=restrictions)
