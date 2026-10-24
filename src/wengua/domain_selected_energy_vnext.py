@@ -259,7 +259,9 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "schema":"selected_domain_signifier_network_vnext_1",
         "mode":"selective","domain":"health","subtopic":"severity",
         "factor_one_nine_star_table":"user_exact_nine_star_5x5_20261023",
-        "factor_two_duel_table":"user_exact_duel_5x5_20261023",
+        "factor_two_duel_table":"user_5x5_control_with_void_20261023_v1",
+        "factor_one_stem_table":"user_stem_life_stage_x_month_relation_20261023_v1",
+        "factor_one_door_table":"user_door_month_x_palace_relation_20261023_v1",
         "nodes":nodes,"directed_edges":edges,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
@@ -320,7 +322,20 @@ def selected_health_sections(result,*,actor,chart):
             continue
         if key not in roles:continue
         r=roles[key];energy=r["primary_strength_25"]
-        text=r["role"]+"落"+r["name"]+"。"+format_strength_template(energy)
+        if energy.get("table_version")=="user_stem_life_stage_x_month_relation_20261023_v1":
+            if energy.get("stem_life_strength_pending"):
+                strength_desc=(
+                    "十天干按真实宫支十二长生查表；候选"+
+                    "、".join(x["row"]+"为"+x["strength"]
+                              for x in energy["stem_life_candidate_cells"])+
+                    "，尚缺该宫两支择用原书条件，本次不造唯一强度。")
+            else:
+                strength_desc=("十天干十二长生归组"+str(energy["user_cell_row"])+
+                               "，与月令"+str(energy["user_cell_col"])+
+                               "，力量"+str(energy["strength_label"])+"。")
+            text=r["role"]+"落"+r["name"]+"。"+strength_desc
+        else:
+            text=r["role"]+"落"+r["name"]+"。"+format_strength_template(energy)
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
@@ -335,10 +350,19 @@ def selected_health_sections(result,*,actor,chart):
             x=edges.get(a+"->"+b)
             if not x:continue
             goal="病宫" if b=="illness" else "患者宫"
-            details.append(
-                "对"+goal+x["relation"]+
-                "；两用神表一力量查表二：「"+x["duel_result"]+"」"+
-                "，作用条件"+x["ability"])
+            if x["control_status"]=="matched":
+                explanation=("克制表「"+x["control_result"]+"」"+
+                             "（"+str(x["control_scenario"])+"）")
+            elif x["control_status"]=="duplicate_attacker_label_pending":
+                explanation="施力方假空有两张同名不同值的原表，等用户确认分支"
+            elif x["control_status"]=="factor_power_pending":
+                explanation="十干长生分支取用未定，不能生成对抗胜负"
+            elif x["control_status"]=="void_type_pending":
+                explanation="空亡真假未核，暂不套假空表"
+            else:
+                explanation="此关系不适用克制表"
+            details.append("对"+goal+x["relation"]+"；"+explanation+
+                           "，作用条件"+x["ability"])
         if details:text+="；"+"；".join(details)+"。"
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
