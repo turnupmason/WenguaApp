@@ -1473,3 +1473,15 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 5. **克制专表不能套在生、被克、受生、比和或同宫**：`selected_duel_table_vnext.matchup` 核 `relation_between_palaces`，仅实际施力宫「克」目标宫且双方能量确定、空亡状态可选时查相应克制矩阵；其他方向仅保留宫事实并交专题书法独立判断，禁止将新克制矩阵当任何方向的“全部人事关系”万能判定。不从未校准的克制强度推出实际临床病情、治疗或死亡时间。
 6. **已接入并回归**：`src/wengua/selected_duel_table_vnext.py:table_one` 对九星／门／十干做专有分流；`matchup` 根据正确空亡门控调用 `inspect_control`；`src/wengua/domain_selected_energy_vnext.py` 默认只选疾病相关用神，V-next 审阅输出所用原表版本、十干阶段待核、空亡真假待核和真实克制原文。独立单元测试 `tests/test_user_domain_matrices_20261023.py` 逐字核七张表175格、真实十干分支和歧义门控。继续全仓 Python3.11/3.12 + 疾病 V-next 专项 CI，并确认冻结V3.9.1哈希不变，旧失败测试和历史8宫实验都保存。
 7. **版本保护**：未获作者独立新事件家族校准的新五档矩阵只是研究候选；两书43章194事件/81天地干/42病增补/17复合、旧 V3.9.1 自动起盘和断词、iOS设计源码、放弃V4.2原样不动。没有新古籍章节／真实案例，不准在账本增加案例数。
+
+
+## 2026-10-23 · 用户最终更正：八表200格；施力假空一表，施力真空两表
+
+> **用户本轮重新粘贴更正后的完整200格**，优先于前面所有175格七表“施力假空A/B”记载；旧版本**仅留历史归档**，不得继续作为当前真实表格。原文唯一最新版为 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23.md`；新增第八张25格 `src/wengua/user_domain_matrices_20261023.py:CONTROL_TRUE_VOID_ATTACKER_B`。前次把第七张表标记假空B的说法已被用户明确更正为**真空A**，不是可选假空B。
+
+1. **固定八张各25格（200个字面值）**：①九星旺相休囚废×五种星宫关系；②十干真实12长生分组×本干对月令五行五方向；③八门旺相休囚死×五种门宫关系（用户第三列原文“门破”保留）；④无空普通克制；⑤施力方宫假空唯一版 `fake_void_attacker_A`；⑥受力方宫假空 `fake_void_target`；⑦施力方宫**真空第1张A** `true_void_attacker_A`（原175格版本曾错误按用户旧字存为 `fake_void_attacker_B`，该旧名称现在仅**历史别名，不在活跃 `CONTROL_GRID_BY_ID`**）；⑧施力方宫**真空第2张B** `true_void_attacker_B`（本轮用户新增，极小×五档全是“终极解体”）。原值不可修辞改写、强行单调重排或挪列。
+2. **真空两版适用条件尚不明确**：用户同样把A、B标题写成「遇空亡(真空)：施力方宫空亡 ↓ / 受力方宫 →」，但表值不同。输入 `attacker_true_void=True` 而未给**可追溯适用分支**时，`inspect_control` 固定返回 `duplicate_true_attacker_label_pending` 并显示两张同坐标原值；不能默认选A或B，也不得臆测A是假空、B真空或为“同真空按病情轻重分支”。只有原著或用户明确来源判据允许适用真实A/B，研究接口传入 `attacker_true_void_variant='A'/'B'` 后查相应矩阵。原旧 `attacker_fake_void_variant='B'` 现在直接拒绝，**不能再偷偷套第七张表**。
+3. **假空只有两类已提供位置**：施力方假空唯一25格 `fake_void_attacker_A` 可以在*已验证假空*时直接用；受力方假空是另一25格。**用户没有提供受力方真空专表、两宫同时空亡组合表或真假判断方法**；这些应返回 `target_true_void_unspecified`、`both_void_unspecified`、`void_type_pending`，不能把旬空提示等同真假空。源限制、宫位关系、领域条件继续独立检查。
+4. **计算仍是起盘后按需取用神，先专有能量表再唯一克制表**：`selected_duel_table_vnext.matchup` 的 `attacker_true_void`／`attacker_true_void_variant` 已接通分支；只对实际「施力宫克目标宫」查询一次25格，非相克关系不能强套；虚构“宫力再打一次”和数值4.2评分继续禁止。 `domain_selected_energy_vnext.selected_health_sections` 解释「施力方真空两同名表待核」而非旧“假空两同名表”。十干真实落宫两支十二长生择支规则未得到来源时继续保留两个候选，不强定用神档位。
+5. **校验与存档**：`tests/test_user_domain_matrices_20261023.py` 现在逐字独立核8×25=200原始单元（尤其真空B“终极解体”全五格）、真实来源长生、假空与真空A/B门控、重复真空标题不自动确定。既有175格文档 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md`、旧源码变更、失败CI均保留，最新版文档新增，不覆盖历史。完整V-next CI Python3.11/3.12、旧冻结V3.9.1四盘原 SHA 和 Github HEAD 须回归核定。
+6. **范围和风险**：这是新用户输入规则研究 V-next，不是原书已验证预测，也不代表真实医疗疾病预后／干预疗效。两书43章194个原案、81干规则、42疾病补充、17复合、原生SwiftUI九宫源盘、V3.9.1冻结断词、弃用V4.2和一切失败历史均不能擅自改动；本轮新书章节/案例都0。
