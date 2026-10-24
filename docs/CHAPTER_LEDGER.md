@@ -936,3 +936,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 用户直接指出：时辰起盘后九宫事实均已确定，表一已经根据月令与**用神自己落宫**的五行关系形成**唯一的用神候选力量**；表二应使用两用神各自表一力量**只查一次**得到用户亲自提供的25格胜负原文。前轮助手设计的星力对抗后“宫力再打一次”，称两次结果“矛盾”并以第二次否决第一次，属于擅自添加的错误逻辑，不属于用户规则。
 - 现 `src/wengua/selected_duel_table_vnext.py:matchup` 仅查询 `USER_DUEL_5X5` 一次并原样保留 `duel_result`，真实落宫月令宫力仅作为来源事实和独立书源条件留档，移除默认 `palace_duel_result`。 `src/wengua/domain_selected_energy_vnext.py` 中文断词已移除“宫位对抗导致矛盾”。`tests/test_user_exact_energy_duel_grids_vnext.py` 用故意相反宫力强弱覆盖25格唯一查表稳定性；`tests/test_domain_selected_energy_vnext.py` 维护年命、乾坤、人物关系和一表二查测试。
 - 上轮错误历史、失败CI与所有原著原始资料依然保留，没有重置或覆盖；`docs/USER_EXACT_TWO_TABLES_2026-10-23.md` / `AGENTS.md` / `docs/PROJECT_STATUS.md` 追加本条最高优先级工程约束。新增原书案例0、章节0；仍43章194例、V3.9.1冻结、iOS九宫原样、V4.2不恢复。传统研究强弱与临床有效性不等价。
+
+
+## 2026-10-23 · 七张五档力量与克制空亡原表175格（工程纠偏，不增加古籍章节）
+- 用户本轮完整粘贴新版手工七张25格＝175个字面规则。三个领域符号单体能量表：九星「自身旺相休囚废×被宫生/被宫克/克宫/生宫/比和」，八门「自身旺相休囚死×被宫生/被宫克/门破/生宫/比和」（“门破”字眼原样保留），十天干「真实落宫全十二长生5归组（另列囚）×被月令生/被月令克/克月令/生月令/比和」。四张**宫克对抗**表：正常、施力方假空A、受力方假空、施力方假空B；用户两张施力方表**标题同样明确写假空，内容不同**，绝不悄悄把B改成真空或覆盖A，当前缺来源分支条件须暂不定案。
+- 代码 `src/wengua/user_domain_matrices_20261023.py` 保留原文25格，`src/wengua/selected_duel_table_vnext.py` 对每一选中角色用对应单因素查表，只有本方克目标时才尝试实际适用普通／已核假空矩阵一次克制，不再做宫力第二对抗。不同支的真实十干十二长生可能落在不同组和档位：`stem_life_candidate_cells` 留候选、`stem_life_strength_pending` 拦强断；旬空未核真假也拦假空克制票。 `src/wengua/domain_selected_energy_vnext.py` 仍仅当次按需选择疾病角色/宫位并输出核查信息；不更动正式版本或预测终局。
+- 新 `tests/test_user_domain_matrices_20261023.py` 七张表逐格校验，专项 `.github/workflows/health_vnext_conditional_review.yml` 纳入该测试；原有历史表及全部失败CI依旧保存。原用户完整表文档 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md`；AGENTS 和 PROJECT_STATUS 最新强制规范已追加。本次新增原书章节0、案例0，依旧两书43章194案例，V3.9.1、iOS已核九宫、弃用V4.2、原书本身均不变；需看最后SHA CI结果。五档术数格不构成临床预后或实际用药指引。
