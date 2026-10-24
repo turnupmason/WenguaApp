@@ -259,7 +259,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "schema":"selected_domain_signifier_network_vnext_1",
         "mode":"selective","domain":"health","subtopic":"severity",
         "factor_one_nine_star_table":"user_exact_nine_star_5x5_20261023",
-        "factor_two_duel_table":"user_5x5_control_with_void_20261023_v2_true_void",
+        "factor_two_duel_table":"user_5x5_control_with_void_20261023_v3_corrected_roles",
         "factor_one_stem_table":"user_stem_life_stage_x_month_relation_20261023_v1",
         "factor_one_door_table":"user_door_month_x_palace_relation_20261023_v1",
         "nodes":nodes,"directed_edges":edges,
@@ -354,13 +354,13 @@ def selected_health_sections(result,*,actor,chart):
                 explanation=("克制表「"+x["control_result"]+"」"+
                              "（"+str(x["control_scenario"])+"）")
             elif x["control_status"]=="duplicate_true_attacker_label_pending":
-                explanation="施力方真空有两张同名不同值的原表，尚缺适用条件，不自动择表"
+                explanation="历史真空两表已由用户更新为施力、受力各一表；旧版本不再适用"
             elif x["control_status"]=="factor_power_pending":
                 explanation="十干长生分支取用未定，不能生成对抗胜负"
             elif x["control_status"]=="void_type_pending":
                 explanation="空亡真假未核，暂不套空亡专表"
             elif x["control_status"]=="target_true_void_unspecified":
-                explanation="受力方真空还没有用户专用表，暂不强定克制"
+                explanation="历史待核状态（最新版受力方真空表已经明确）"
             elif x["control_status"]=="both_void_unspecified":
                 explanation="两宫同时空亡缺少对应专用表，暂不强定克制"
             else:
