@@ -1286,3 +1286,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - `src/wengua/selected_duel_table_vnext.py:matchup` 加实际真假空专用参数并继续严格一次克制矩阵查询、不复活虚构两宫对抗；`src/wengua/domain_selected_energy_vnext.py` 更正V-next问病的真空双表待核断词、新表版本。九星/干/门类别力量矩阵未乱动，十干落宫两个地支长生不同档时只留候选不造强度。用户明确最新完全原文收录 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23.md`；原 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md` 故意保留历史与误识纠偏链。
 - `tests/test_user_domain_matrices_20261023.py` 独立核8组全200格，包括真实/假空分支、两同名真空版本适用门槛、阻止误用历史假空B，并继续真实用神查表无第二宫力竞赛。保持 `.github/workflows/health_vnext_conditional_review.yml` 中 Python3.11/3.12 新专测及 V3.9.1旧4真实盘冻结验证。旧中途失败保留可追踪。
 - 状态仍为 **Python V-next 候选**，绝不以模拟术数强弱替代临床判断；两书43章194事件、81原干、42疾病补充、17复合、正式V3.9.1、iOS Swift 九宫预览、弃用V4.2全保留，本次新增原书章节0案例0。以最终 main SHA CI 为准。
+
+
+### 2026-10-23 · 用户再次修订八张200格：假空、真空已按施力／受力分别明确（最新版）
+- **最高优先本轮手工定稿内容**：八张5×5=200格，九星／十天干／八门力量表均保持（八门**第二列宫迫、第三列门破**，第二列名称从旧“被宫克”改为“宫迫”）；普通克制25格不改；施力宫假空25格与受力宫假空25格按用户原文重新调格（尤其受力假空极小×极小现为**高效克制**，普通同格为有效克制）；两张真空表现在分别是**施力宫真空**和**受力宫真空**，各25格均重新填写，不存在上一版「两张施力真空A/B」的猜测分支。全表当前权威原文：`docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23_V3.md`。前旧文档保留为历史状态与错误纠偏记录，不修改或删除。
+- 真实代码 `src/wengua/user_domain_matrices_20261023.py` 保持七个符号/月令相关类型组之前计算方式不变，仅准确更新 `DOOR_COLUMNS`、`CONTROL_FAKE_VOID_ATTACKER`、`CONTROL_FAKE_VOID_TARGET`、`CONTROL_TRUE_VOID_ATTACKER`、`CONTROL_TRUE_VOID_TARGET` 的全部新格；五张现行克制表为 normal/fake_void_attacker/fake_void_target/true_void_attacker/true_void_target。新版本 `user_5x5_control_with_void_20261023_v3_corrected_roles`。旧真空A/B参数非空一律报错，防止静默误套上一版。旧表及失败CI在GitHub历史可完整审计。
+- `src/wengua/selected_duel_table_vnext.py` 对选中两用神仍**只查一次**实际适用克制表，旧表格和宫位本体旺衰不重复打一遍。`src/wengua/domain_selected_energy_vnext.py` 当前审阅网络版本改为v3，不再把受力真空称“没有原表”，也不再把两张真空视为无区别的A/B选择。仅被原书选中的领域用神参与；未知真假空仍按 `void_type_pending` 挡、双方都空按 `both_void_unspecified` 挡，十干真实双宫支十二长生不同档仍待核。没有修改封存正式V3.9.1和实际起盘。
+- `tests/test_user_domain_matrices_20261023.py` 逐个固定8×25原字结果，对四类空亡各做25格运行时场景核验，还新增目标真空与施力真空实际效力不同、普通极小×极小「有效克制」和受力假空极小×极小「高效克制」的确定性回归，以及禁止旧A/B参数的测试。健康V-next专项两版本 Python3.11/3.12 和全仓CI仍以最终main最新SHA单独检查。按 `AGENTS.md` 最新节覆盖旧七表、旧两张施力真空标题的工程记录；全部失败历史留档。
+- **边界**：本次新增原书章0、案例0；旧两书43章194案、81干格、42疾病补充、17复合、Swift/iOS真九宫、已放弃V4.2和正式V3.9.1不动。强弱格是用户研究规则，不能当现代医学预后及用药建议。
