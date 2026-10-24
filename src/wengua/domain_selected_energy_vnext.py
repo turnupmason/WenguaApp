@@ -19,6 +19,7 @@ from .semantic_lookup import STAR_ELEMENT
 from .health_palace_detailed_vnext import (
     inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace)
 from .health_role_majority_vnext import assess_disease_relationships
+from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
 
 # Other subtopics will be added only when their original source conditions
 # and relevant person-role bindings are implemented and tested.
@@ -62,6 +63,9 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     from .health_palace_sequence_vnext import inspect_palace
     if inquiry.get("intent")!="severity":
         raise ValueError("Only book-grounded health severity subtype is implemented")
+    # First-stage global conditions are calculated immediately after casting,
+    # BEFORE the domain-selected per-palace energy and 81-case analysis.
+    macro_facts=first_stage_macro(chart=chart,calendar=calendar)
     month=calendar["month_branch"]
     schema=("health",inquiry["intent"])
     if schema not in DOMAIN_CASE_TEMPLATES:
@@ -210,7 +214,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "reason":"按专题取用的独立有效候选对抗吉凶去重比较，需原著案例再校准",
         "decisive_chain":"candidate_duels_only" if confident and (favor or against) else None,
         "no_numeric_health_score":True,"unvalidated_tiers":True}
-    macro=fuyin_fanyin_facts(chart)
+    macro=macro_facts["fuyin_fanyin"]
     tianrui=inspected["illness"]
     t25=inspect_tianrui_25(
         star_month=tianrui["month_stage"],
@@ -247,6 +251,15 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
             "text":"天芮传统格局候选："+t25["traditional_title"],
             "source":"existing_tianrui_25_source_qualified_review",
             "roles":["天芮病宫"]})
+    # One global 五不遇时 adverse signal, NOT one per role or per 81-case
+    # match. It is a general traditional warning, separate from tempo.
+    if macro_facts["five_not_encounter_triggered"]:
+        candidate["adverse"].append({
+            "id":"macro:five_not_encounter:"+chart["hour_ganzhi"],
+            "direction":"adverse",
+            "text":"五不遇时主诸事凶的独立全局凶时信号",
+            "source":"kaiwu_ch04_original_five_not_encounter_user_priority",
+            "roles":["全局时辰"],"not_clinical_diagnosis":True})
     favor=len(candidate["favorable"]);against=len(candidate["adverse"])
     counts={"qualified_favorable":favor,"qualified_adverse":against,
             "pending_conditions":len(candidate["pending"])}
@@ -291,6 +304,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "complete_selected_palace_audits":{
             k:v["complete_palace"] for k,v in inspected.items()},
         "void_rule_version":"user_20261023_void_month_horse_v1",
+        "first_stage_macro":macro_facts,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
         "unselected_gender_palace":(2 if gender_palace==6 else
@@ -313,7 +327,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     result={
         "schema":"health_selective_complete_palace_review_vnext_2",
         "selected_energy_pipeline":True,
-        "macro":macro,"selected_roles":inspected,
+        "macro":macro,
+        "first_stage_macro":macro_facts,"selected_roles":inspected,
         "ordered_roles":[inspected[k] for k in inspected],
         "interactions":interactions,
         "full_health_role_strength_network":network,
@@ -337,9 +352,8 @@ def selected_health_sections(result,*,actor,chart):
     sections=[]
     def push(code,title,message):
         sections.append({"id":code,"title":title,"text":message})
-    push("01_macro","先看伏吟反吟",
-         "九星"+macro["star"]+"、八门"+macro["door"]+"；"+macro["pace"]+
-         "。宏观节奏与吉凶独立判断。")
+    push("01_macro","起盘总纲：五不遇时、伏吟、反吟",
+         render_first_stage_macro(result["first_stage_macro"]))
     key_order=(("illness","02","天芮病宫"),
                ("doctor","03","天心医生"),
                ("medicine","04","乙奇医药"),
