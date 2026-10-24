@@ -942,3 +942,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 用户本轮完整粘贴新版手工七张25格＝175个字面规则。三个领域符号单体能量表：九星「自身旺相休囚废×被宫生/被宫克/克宫/生宫/比和」，八门「自身旺相休囚死×被宫生/被宫克/门破/生宫/比和」（“门破”字眼原样保留），十天干「真实落宫全十二长生5归组（另列囚）×被月令生/被月令克/克月令/生月令/比和」。四张**宫克对抗**表：正常、施力方假空A、受力方假空、施力方假空B；用户两张施力方表**标题同样明确写假空，内容不同**，绝不悄悄把B改成真空或覆盖A，当前缺来源分支条件须暂不定案。
 - 代码 `src/wengua/user_domain_matrices_20261023.py` 保留原文25格，`src/wengua/selected_duel_table_vnext.py` 对每一选中角色用对应单因素查表，只有本方克目标时才尝试实际适用普通／已核假空矩阵一次克制，不再做宫力第二对抗。不同支的真实十干十二长生可能落在不同组和档位：`stem_life_candidate_cells` 留候选、`stem_life_strength_pending` 拦强断；旬空未核真假也拦假空克制票。 `src/wengua/domain_selected_energy_vnext.py` 仍仅当次按需选择疾病角色/宫位并输出核查信息；不更动正式版本或预测终局。
 - 新 `tests/test_user_domain_matrices_20261023.py` 七张表逐格校验，专项 `.github/workflows/health_vnext_conditional_review.yml` 纳入该测试；原有历史表及全部失败CI依旧保存。原用户完整表文档 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md`；AGENTS 和 PROJECT_STATUS 最新强制规范已追加。本次新增原书章节0、案例0，依旧两书43章194案例，V3.9.1、iOS已核九宫、弃用V4.2、原书本身均不变；需看最后SHA CI结果。五档术数格不构成临床预后或实际用药指引。
+
+
+## 2026-10-23 · 最新用户原表校正为八张200格、假空仅一施力表、真空两同名表（非新增书章）
+- 用户又完整贴出最新版八张5×5手工表（200格）：九星、十天干十二长生×月令、八门（第三列仍为“门破”）、常规宫克、施力宫假空唯一25格、受力宫假空唯一25格、施力宫真空A25格、施力宫真空B25格。明确更正上轮175格中的第七张**不是假空B而是真空A**；第八张新真空B首行「极小」对全部五档为「终极解体」，其余如本轮用户原文完整保留。
+- 两张真空标题依旧都写「施力方宫空亡（真空）」但数值不同，按最新版分别存 `CONTROL_TRUE_VOID_ATTACKER_A`、`CONTROL_TRUE_VOID_ATTACKER_B`，在缺少区别条件时 `duplicate_true_attacker_label_pending`，携两个候选同坐标单元，**不硬定A/B或改成受力方**。原 `CONTROL_FAKE_VOID_ATTACKER_B` 是上轮表头误录的历史别名，仅留审计，不能用于本轮正常输入；旧假空唯一版已可以被已核真实假空调用。真空受力方、双空、未知真假空仍只能待核。
+- 代码更新 `src/wengua/user_domain_matrices_20261023.py`、`src/wengua/selected_duel_table_vnext.py`、`src/wengua/domain_selected_energy_vnext.py`，保持先起一张真实九宫再按疾病领域用神选择的**单因素一次力量、实克仅一次矩阵克制**流程，原有月令、十二长生、年命、乾坤绑定、应期等出处规则均不擅改。测试 `tests/test_user_domain_matrices_20261023.py` 逐格锁定**8×25=200**原文字值、真空两版与假空分支及旧名称禁止；原有 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md`、源错误历史和失败CI保留，新权威版为 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23.md`；AGENTS/PROJECT_STATUS更新为最高优先新指令。
+- **非古籍处理章节**：新增案例0、章节0；继续两书43章194真实案例，旧 V3.9.1 四盘SHA、iOS Swift真起盘、放弃V4.2、所有失败实验和备查来源均不得覆盖。仅术数研究强弱演示，不可据此宣称现实医疗治疗、重症预测有临床依据。CI须核最后 main SHA 的3.11/3.12状态。
