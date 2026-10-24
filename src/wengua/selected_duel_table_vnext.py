@@ -44,7 +44,7 @@ DUEL_OUTCOMES_3X3 = {
 }
 assert set(USER_DUEL_5X5)==set(TIERS)==set(DUEL_COLUMN_TIERS)
 assert all(len(row)==len(TIERS) for row in USER_DUEL_5X5.values())
-VERSION="selected_table_v4_stem_lifecycle_control_void"
+VERSION="selected_table_v5_corrected_fake_true_source_target"
 
 
 def user_duel_lookup(actor_strength, target_strength):
@@ -86,8 +86,8 @@ def matchup(first,second,*,actor_role,target_role,
             attacker_fake_void_variant=None):
     """One control matrix query per selected actual actor->target relationship.
 
-    Normal 克 and verified void cases use the user's new exact 25-cell
-    matrices. The previous '干得过' table remains a historical reference,
+    Normal 克 and verified source/target fake or true void use the
+    user's newest corrected exact 25-cell matrices. The previous '干得过' table remains a historical reference,
     NOT an additional fight. Palace strengths are NOT pitted separately.
     """
     relation=relation_between_palaces(first,second)
@@ -160,6 +160,8 @@ def matchup(first,second,*,actor_role,target_role,
         "medical_validity_claimed":False,
     }
 
+# Final candidate ability labels are independent from the raw user cell.
+# All void cases are resolved by a SINGLE selected corrected user matrix.
 # These labels do NOT add invented 5x5 gradations: they only decide whether
 # verified candidate evidence can be provisionally used by a source-role
 # domain. The exact original expression is always control_result.
