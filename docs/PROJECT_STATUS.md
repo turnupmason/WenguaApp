@@ -1278,3 +1278,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - V-next 默认 `domain_selected_energy_vnext` 仍只按疾病 severity 用神领域模板选天芮、天心、乙、真正患者用神、时干、真的有且能定位的年命和按性别选乾或坤。新 DTO `factor_one_stem_table`／`factor_one_door_table`／`factor_two_duel_table` 明确版本；实际断词显示十干长生分组／月令方向、克制原文，或“空亡真假未核”“两张同名假空未辨”；不计算无关九宫，未改九宫起盘。
 - 新 `tests/test_user_domain_matrices_20261023.py` 独立核所有175原格和跨宫支选择、真假空场景及强弱一次克制；先前 `tests/test_user_exact_energy_duel_grids_vnext.py` 仍检验旧用户「干得过」原始25格但不再要求当前克制输出旧字句，`tests/test_domain_selected_energy_vnext.py` 也更新适配。CI 健康专项新增直接回归，保持冻结V3.9.1旧4盘及全部 Python3.11/3.12 全仓检查；失败实验不删、原知识不覆盖。来源文件 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md` 完整保真四张克制（含同名假空）与三类能量表。
 - **两书43章194例，81天地干/42疾病补充/17复合、V3.9.1、SwiftUI和Swift原生九宫、弃用V4.2都不改**。五档及克制表属于未经独立古籍新案例确认的术数研究假说，不能当成真实医学预后或治疗指引；这一轮没有新书案例。最新版SHA与CI需单独核定。
+
+
+### 2026-10-23 · 最新纠错：八张25格＝200格，真空施力方同名两版
+- **用户第二次完整贴表更正最后两张标题**：原七表175格“施力假空B”本轮已明确是「施力方宫真空第1张」，又额外贴出「施力方宫真空第2张」25格。现共**八张×25＝200个手工单元**：九星、十天干、八门力量各一；正常克制、施力假空唯一版、受力假空唯一版、施力真空A、施力真空B克制各一。两个真空表**标题完全相同且数值不同**，绝不可将它们自动合并或互相覆盖。真空B新增最显著一行“极小×极小/小/中等/大/极大全为终极解体”。
+- 更新 `src/wengua/user_domain_matrices_20261023.py`：将历史误标 `CONTROL_FAKE_VOID_ATTACKER_B` 的数据归为 `CONTROL_TRUE_VOID_ATTACKER_A`（旧名称保留非激活别名），新增 `CONTROL_TRUE_VOID_ATTACKER_B` 并加入活动 `CONTROL_GRID_BY_ID`；版本标记 `user_5x5_control_with_void_20261023_v2_true_void`。`inspect_control(attacker_fake_void=True)` 只选假空A；`attacker_true_void=True` 未核分支则返回 `duplicate_true_attacker_label_pending` 和两个原格，手工明确A/B才能调表；受力真空、双方均空或真假未知分别待核，旧fake-B再选择直接报错。
+- `src/wengua/selected_duel_table_vnext.py:matchup` 加实际真假空专用参数并继续严格一次克制矩阵查询、不复活虚构两宫对抗；`src/wengua/domain_selected_energy_vnext.py` 更正V-next问病的真空双表待核断词、新表版本。九星/干/门类别力量矩阵未乱动，十干落宫两个地支长生不同档时只留候选不造强度。用户明确最新完全原文收录 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23.md`；原 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md` 故意保留历史与误识纠偏链。
+- `tests/test_user_domain_matrices_20261023.py` 独立核8组全200格，包括真实/假空分支、两同名真空版本适用门槛、阻止误用历史假空B，并继续真实用神查表无第二宫力竞赛。保持 `.github/workflows/health_vnext_conditional_review.yml` 中 Python3.11/3.12 新专测及 V3.9.1旧4真实盘冻结验证。旧中途失败保留可追踪。
+- 状态仍为 **Python V-next 候选**，绝不以模拟术数强弱替代临床判断；两书43章194事件、81原干、42疾病补充、17复合、正式V3.9.1、iOS Swift 九宫预览、弃用V4.2全保留，本次新增原书章节0案例0。以最终 main SHA CI 为准。
