@@ -23,7 +23,9 @@ class CurrentQuantReview(unittest.TestCase):
         self.assertEqual(q["roles"]["doctor"]["star"]["polarity"],"吉")
         for role in ("illness","doctor","patient","medicine","hour"):
             row=q["roles"][role]
-            self.assertEqual(row["door"]["status"],"two_door_conditions_missing")
+            self.assertEqual(row["door"]["status"],"door_polarity_rule_pending")
+            self.assertIn(row["door"]["applied_door_break_shift"],(0,2))
+            self.assertTrue(row["door"]["strength_lookup_unchanged"])
             self.assertEqual(row["deity"]["status"],
                              "deity_five_tier_conversion_missing")
             self.assertEqual(row["pattern"]["status"],
