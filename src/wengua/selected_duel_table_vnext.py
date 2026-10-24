@@ -81,6 +81,8 @@ BACKFIRE="硬干反而受伤"
 
 def matchup(first,second,*,actor_role,target_role,
             attacker_fake_void=False,target_fake_void=False,
+            attacker_true_void=False,target_true_void=False,
+            attacker_true_void_variant=None,
             attacker_fake_void_variant=None):
     """One control matrix query per selected actual actor->target relationship.
 
@@ -104,9 +106,14 @@ def matchup(first,second,*,actor_role,target_role,
             actor_power=a,target_power=b,palace_relation=relation,
             attacker_fake_void=attacker_fake_void,
             target_fake_void=target_fake_void,
+            attacker_true_void=attacker_true_void,
+            target_true_void=target_true_void,
+            attacker_true_void_variant=attacker_true_void_variant,
             attacker_fake_void_variant=attacker_fake_void_variant,
-            attacker_void_unknown=void_uncertain_a and not attacker_fake_void,
-            target_void_unknown=void_uncertain_b and not target_fake_void)
+            attacker_void_unknown=void_uncertain_a and not (
+                attacker_fake_void or attacker_true_void),
+            target_void_unknown=void_uncertain_b and not (
+                target_fake_void or target_true_void))
     out=control.get("result")
     if control["status"]=="not_control_relation":
         ability="不适用"
@@ -117,7 +124,9 @@ def matchup(first,second,*,actor_role,target_role,
         # unrelated tomb/door-punishment evidence.
         unverified=[
             x for x in restrictions
-            if x!="旬空待辨" or not (attacker_fake_void or target_fake_void)]
+            if x!="旬空待辨" or not (
+                attacker_fake_void or target_fake_void or
+                attacker_true_void or target_true_void)]
         ability="条件待核" if unverified else (
             "能" if out in CONTROL_CONFIDENT else
             "艰难" if out in CONTROL_LIMITED else "不能")
