@@ -63,8 +63,13 @@ class FirstStageMacroFacts(unittest.TestCase):
                 found=iso
                 break
         self.assertIsNotNone(found,"Expected at least one five-not-encounter date")
+        # At a 五不遇时 instant the original self-day stem can be 甲 and
+        # hide; do NOT fake its placement to force a self reading. Instead
+        # use an explicitly bound real 乾六 father as a proxy patient.
         out=auto_cast_health_review_text(
-            iso=found,timezone_name="America/New_York",inquiry=QUERY)
+            iso=found,timezone_name="America/New_York",
+            inquiry={"intent":"severity","relationship":"father",
+                     "consultation_context":"direct_proxy"})
         macro=out["first_stage_macro"]
         self.assertTrue(macro["five_not_encounter_triggered"])
         self.assertIn("主诸事凶",out["sections"][0]["text"])
