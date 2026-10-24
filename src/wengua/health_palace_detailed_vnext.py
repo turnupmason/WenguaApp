@@ -32,7 +32,7 @@ assert all(BRANCH_CLASH[BRANCH_CLASH[x]]==x for x in BRANCH_CLASH)
 
 
 def inspect_role_void(*,palace,occupied_void_branches,month_branch,hour_ganzhi):
-    """User: 有旬空 + 宫得月令生/比，或马星对宫六冲空支 => 假空，否则真空.
+    """Latest user: 对宫冲空马星先使宫不按空；否则月令生/比假空，其余真空.
 
     The horse must have an actual mapped branch/palace. Opposite position is
     checked by *actual* branch clash; geometric diagonal alone is insufficient
@@ -48,20 +48,30 @@ def inspect_role_void(*,palace,occupied_void_branches,month_branch,hour_ganzhi):
         return {"classification":"not_void","void_branches":[],
                 "horse_branch":horse_branch,"horse_palace":horse_palaces[0],
                 "month_support":False,"horse_clashes_void":False,
-                "reasons":[],"rule":"user_20261023_void_month_horse_v1"}
+                "had_xun_void":False,"horse_cleared_void":False,
+                "reasons":[],"rule":"user_20261024_void_horse_cancels_first_v2"}
     pe=ELEMENTS[palace]
     me=MONTH_ELEMENTS[month_branch]
     from_month=(me==pe or GENERATES[me]==pe)
     opposite=any(BRANCH_CLASH[b]==horse_branch for b in empties)
-    flags=[]
-    if from_month: flags.append("逢空宫得月令生扶或与月令比和")
-    if opposite: flags.append("时支马星实际对宫六冲逢空支")
-    klass="fake_void" if flags else "true_void"
+    # Latest user amendment supersedes earlier "horse makes fake void":
+    # a verified opposite horse breaks/cancels the void first; ONLY if
+    # there is no horse can month support make the remaining void 假空.
+    if opposite:
+        klass="not_void"
+        flags=["马星与逢空宫实际地支相冲：冲空后不按逢空处理"]
+    elif from_month:
+        klass="fake_void"
+        flags=["逢空且落宫受月令生扶或比和：假空"]
+    else:
+        klass="true_void"
+        flags=["逢空、无马星冲空且月令不生扶或比和：真空"]
     return {"classification":klass,"void_branches":list(empties),
+            "had_xun_void":True,"horse_cleared_void":opposite,
             "horse_branch":horse_branch,"horse_palace":horse_palaces[0],
             "month_support":from_month,"horse_clashes_void":opposite,
-            "reasons":flags if flags else ["逢空且未得到月令生助或马星六冲"],
-            "rule":"user_20261023_void_month_horse_v1"}
+            "reasons":flags,
+            "rule":"user_20261024_void_horse_cancels_first_v2"}
 
 
 def inspect_god(*,deity,palace_element):
