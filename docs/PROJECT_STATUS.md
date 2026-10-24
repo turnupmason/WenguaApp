@@ -1269,3 +1269,12 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 用户明确否定上轮错误：**起盘后所有九宫盘面事实已确定，表一把用神的月令及其自身落宫五行关系合并成唯一候选力量，所以两个用神之间只需表二25格查一次**。原“符号对抗一次＋落宫月令宫力另对抗一次、不同结果就叫矛盾”的第二层是助手擅自发明，不属于用户规则，不可再用于默认运行。真实宫的月令旺弱、十二长生、空墓刑迫可以记录并按古籍条件解释，但不另作为比赛对象。
 - **已修改 Python V-next 真实热路径**：`selected_duel_table_vnext.matchup` 使用一次 `user_duel_lookup(first["strength_label"],second["strength_label"])`，不再对 `palace_strength_label` 调 `user_duel_lookup`，不导出 `palace_duel_result`，保留唯一原文 `duel_result`、`table_two_lookups_for_pair=1`、`palace_strength_is_context_only=True` 和背景宫力事实。 `domain_selected_energy_vnext.selected_health_sections` 只叙述两用神表一力量直接查表二的实际结果。暂行的是否计入吉凶之门槛与原表胜负语分开，仍需原书校准。
 - **强制测试** `tests/test_user_exact_energy_duel_grids_vnext.py` 全25胜负×故意反向的宫力背景结果不变；`tests/test_domain_selected_energy_vnext.py` 断言仅一次查表、不出现第二场宫力胜负。完整说明在 `docs/USER_EXACT_TWO_TABLES_2026-10-23.md` 尾部新增用户纠偏，旧文和GitHub失败实验都保留。疾病其他角色绑定不变，未引入新章节（仍43章194案）、不改iOS自动起盘或V3.9.1、不会恢复弃用V4.2。最新同SHA CI Python3.11/3.12再核。
+
+
+### 2026-10-23 · 用户最新七张25格力量／克制／假空矩阵（最高优先，175原格）
+- 用户完整手工提供九星25格、十干分组25格、八门25格以及普通宫克25格／施力宫假空A25格／受力宫假空25格／再次标作施力宫假空B25格，合计**七张表175原字格**。 九星表与此前 V-next 25格完全相同；八门用户第三列原名“门破”必须保留，工程映射为门克宫的五行方向，尚不能反向断言用户确认了传统“门迫”；十天干表**行按12长生归5组（额外「囚」独立存）＋列按实际月令与本干的定向五行关系**，不得沿用旧stem旺相休囚死×宫关系替代。
+- 新真实实现 `src/wengua/user_domain_matrices_20261023.py` 写入七表、 `lookup_selected_factor` 九星／门／干分门查询、干的宫支全十二长生两支可产生不同分组的候选并返回待核；`selected_duel_table_vnext.matchup` **只对施力宫克受力宫**调用 `inspect_control` 新克制25格，输出用户原词不算第二次宫力战争。生、受克、比和、同宫暂不误用克制矩阵；原「干得过」5×5作为历史版本保存，不再视为当前克制规则。
+- **最后一张与第2张空亡表标题完全同名，但25格数值不同**。新表分 `fake_void_attacker_A`、`fake_void_attacker_B` 原样保留。不给来源时 `duplicate_attacker_label_pending` 且携两格候选，不凭空把末表称“真空”；未核真假空则 `void_type_pending`，双宫都假空暂无用户格 `both_void_unspecified`。源盘有旬空提示不能视为已证假空。真实独立古籍核原判据仍是后续门槛。
+- V-next 默认 `domain_selected_energy_vnext` 仍只按疾病 severity 用神领域模板选天芮、天心、乙、真正患者用神、时干、真的有且能定位的年命和按性别选乾或坤。新 DTO `factor_one_stem_table`／`factor_one_door_table`／`factor_two_duel_table` 明确版本；实际断词显示十干长生分组／月令方向、克制原文，或“空亡真假未核”“两张同名假空未辨”；不计算无关九宫，未改九宫起盘。
+- 新 `tests/test_user_domain_matrices_20261023.py` 独立核所有175原格和跨宫支选择、真假空场景及强弱一次克制；先前 `tests/test_user_exact_energy_duel_grids_vnext.py` 仍检验旧用户「干得过」原始25格但不再要求当前克制输出旧字句，`tests/test_domain_selected_energy_vnext.py` 也更新适配。CI 健康专项新增直接回归，保持冻结V3.9.1旧4盘及全部 Python3.11/3.12 全仓检查；失败实验不删、原知识不覆盖。来源文件 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md` 完整保真四张克制（含同名假空）与三类能量表。
+- **两书43章194例，81天地干/42疾病补充/17复合、V3.9.1、SwiftUI和Swift原生九宫、弃用V4.2都不改**。五档及克制表属于未经独立古籍新案例确认的术数研究假说，不能当成真实医学预后或治疗指引；这一轮没有新书案例。最新版SHA与CI需单独核定。
