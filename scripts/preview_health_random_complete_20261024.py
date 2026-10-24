@@ -17,6 +17,8 @@ import sys
 from src.wengua.astro_calendar import solar_chart_clock
 from src.wengua.casting_shenqi import bureau_for_term,layout_from_explicit_bureau
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+from src.wengua.selected_duel_table_vnext import table_one
+from src.wengua.health_five_level_quant_vnext import door_break_penalty_policy
 
 SEED=20261024
 TZ="America/New_York"
@@ -101,7 +103,34 @@ def _simplify(report,flags):
                      "grade":q["palace_score"]["grade"],
                      "status":q["palace_score"]["status"]},
         }
+    # A generated nine-palace fact may be outside the selected illness
+    # role-palaces. Show these two explicitly verified exceptions without
+    # adding an unrelated palace to the disease verdict.
+    exceptional=[]
+    selected_palaces={x["palace"] for x in
+                      net["complete_selected_palace_audits"].values()}
+    for flag in flags:
+        door,palace=(("生门",1) if flag=="生门坎免减级"
+                     else ("景门",6))
+        live=report["nine_palaces"][str(palace)]
+        if live["door"]!=door:
+            raise AssertionError("Exception must be verified on REAL chart")
+        fact=table_one("door",door,report["four_pillars"]["month"][1],palace)
+        policy=door_break_penalty_policy(
+            door_name=door,palace=palace,door_relation=fact["user_cell_col"])
+        if not policy["no_extra_two_level_shift"]:
+            raise AssertionError("User exemption must bypass additional -2")
+        exceptional.append({
+            "case":flag,"palace":palace,"door":door,
+            "strength_from_200_cell":fact["strength_label"],
+            "month_stage":fact["symbol_month_stage"],
+            "door_relation":fact["user_cell_col"],
+            "extra_two_level_shift":policy["two_level_shift"],
+            "participates_in_selected_roles":palace in selected_palaces,
+            "unselected_palace_does_not_vote":palace not in selected_palaces,
+        })
     return {
+        "exception_demonstrations":exceptional,
         "iso":report["instant"],"timezone":report["timezone"],
         "selection":"seeded_random_real_clock_filter_for_door_exception",
         "seed":SEED,"triggered_exception_examples":flags,
