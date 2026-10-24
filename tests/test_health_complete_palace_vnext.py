@@ -25,12 +25,14 @@ class UserVoidDefinition(unittest.TestCase):
             self.assertEqual(x["classification"],"fake_void",m)
             self.assertTrue(x["month_support"])
 
-    def test_horse_opposite_branch_clash_also_fake_void(self):
+    def test_horse_opposite_branch_clash_cancels_void_before_month(self):
         # 旬空在艮八宫寅，寅午戌时马在申，申冲寅，对角巽/乾
         # here 艮/坤 are the actual diagonally opposite palaces.
         x=inspect_role_void(palace=8,occupied_void_branches=["寅"],
                             month_branch="卯",hour_ganzhi="甲寅")
-        self.assertEqual(x["classification"],"fake_void")
+        self.assertEqual(x["classification"],"not_void")
+        self.assertTrue(x["horse_cleared_void"])
+        self.assertTrue(x["had_xun_void"])
         self.assertFalse(x["month_support"])
         self.assertTrue(x["horse_clashes_void"])
         self.assertEqual(x["horse_palace"],2)
@@ -76,7 +78,7 @@ class RealSelectedPalacePipeline(unittest.TestCase):
         graph=self.self_reading["full_health_role_strength_network"]
         self.assertEqual(graph["mode"],"selective")
         self.assertEqual(graph["void_rule_version"],
-                         "user_20261023_void_month_horse_v1")
+                         "user_20261024_void_horse_cancels_first_v2")
         for role in ("illness","doctor","medicine","patient","hour"):
             d=graph["complete_selected_palace_audits"][role]
             self.assertTrue(d["stars"])
