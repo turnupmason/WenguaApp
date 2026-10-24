@@ -175,7 +175,7 @@ class FullRealChartPreview(unittest.TestCase):
             self.assertEqual(review["four_pillars"],row["four_pillars"])
             names=[part["title"] for part in review["sections"]]
             self.assertGreaterEqual(len(names),8)
-            self.assertEqual(names[:5],["先看伏吟反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
+            self.assertEqual(names[:5],["起盘总纲：五不遇时、伏吟、反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
             self.assertIn("全部证据合断",names)
             self.assertEqual(names[-1],"时空及应期")
             self.assertEqual(review["evidence_counts"]["qualified_favorable"],
@@ -252,7 +252,7 @@ class OldBookQuestionOnlySmoke(unittest.TestCase):
             self.assertEqual(answer["audit"]["composites_preserved"],17)
             self.assertTrue(answer["audit"]["actual_original_author_outcomes_not_used"])
             self.assertGreaterEqual(len(answer["sections"]),8)
-            self.assertEqual(answer["sections"][0]["title"],"先看伏吟反吟")
+            self.assertEqual(answer["sections"][0]["title"],"起盘总纲：五不遇时、伏吟、反吟")
             self.assertTrue(answer["no_scores"])
             seen.append((spec["id"],answer["verdict"]["label"],
                          answer["audit"]["role_confidence"]))
