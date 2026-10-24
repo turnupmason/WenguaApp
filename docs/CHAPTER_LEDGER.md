@@ -949,3 +949,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 两张真空标题依旧都写「施力方宫空亡（真空）」但数值不同，按最新版分别存 `CONTROL_TRUE_VOID_ATTACKER_A`、`CONTROL_TRUE_VOID_ATTACKER_B`，在缺少区别条件时 `duplicate_true_attacker_label_pending`，携两个候选同坐标单元，**不硬定A/B或改成受力方**。原 `CONTROL_FAKE_VOID_ATTACKER_B` 是上轮表头误录的历史别名，仅留审计，不能用于本轮正常输入；旧假空唯一版已可以被已核真实假空调用。真空受力方、双空、未知真假空仍只能待核。
 - 代码更新 `src/wengua/user_domain_matrices_20261023.py`、`src/wengua/selected_duel_table_vnext.py`、`src/wengua/domain_selected_energy_vnext.py`，保持先起一张真实九宫再按疾病领域用神选择的**单因素一次力量、实克仅一次矩阵克制**流程，原有月令、十二长生、年命、乾坤绑定、应期等出处规则均不擅改。测试 `tests/test_user_domain_matrices_20261023.py` 逐格锁定**8×25=200**原文字值、真空两版与假空分支及旧名称禁止；原有 `docs/USER_7_GRID_STRENGTH_CONTROL_2026-10-23.md`、源错误历史和失败CI保留，新权威版为 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23.md`；AGENTS/PROJECT_STATUS更新为最高优先新指令。
 - **非古籍处理章节**：新增案例0、章节0；继续两书43章194真实案例，旧 V3.9.1 四盘SHA、iOS Swift真起盘、放弃V4.2、所有失败实验和备查来源均不得覆盖。仅术数研究强弱演示，不可据此宣称现实医疗治疗、重症预测有临床依据。CI须核最后 main SHA 的3.11/3.12状态。
+
+
+## 2026-10-23 · 用户修订八张原表v3：五种克制状态与八门宫迫，200格（工程纠偏）
+- 用户最新重新提供八张5×5，共200原字格。除九星、十干表及普通克制不变，八门第二列由先前「被宫克」改写为原文 **「宫迫」**、第三列仍为「门破」；施力宫假空、受力宫假空两张矩阵多格修订；**受力方假空**极小施力对极小受力明确为「高效克制」（普通同格为「有效克制」）。**真空现在是两张不同位置的单独表**：施力方宫真空25格与受力方宫真空25格，不再是两张施力宫真空A/B，实质不同格值全部以用户最新表录入。本版本原文固定见 `docs/USER_8_GRID_STRENGTH_CONTROL_2026-10-23_V3.md`，旧v1/v2文件与前次纠错记录继续留存，避免覆盖失败实验和原始来源。
+- 实码 `src/wengua/user_domain_matrices_20261023.py` 的 `DOOR_COLUMNS` 及四张新版空亡矩阵精确更新，五个`CONTROL_GRID_BY_ID`分支 normal/fake_void_attacker/fake_void_target/true_void_attacker/true_void_target，`inspect_control` 按经来源核定的真假空和实际施力／受力角色选**唯一**克制表。旧真空A/B参数不再允许填值，错误默认拒绝；不知道真假空／两个宫同时空／十干因真实双宫支十二长生缺来源无法取唯一档时仍待核，禁止虚构第二次宫力对抗。
+- `selected_duel_table_vnext.py:matchup` 版本标记同步，`domain_selected_energy_vnext.py` 审阅断词/网络适用最新真空两角色方向，旧“真空两表同名择A/B”历史用语现被新规范覆盖。 `tests/test_user_domain_matrices_20261023.py` 全200格独立原字校验、每个空亡25种组合逐一运行、含极小同档正常vs受力假空的直接反例、施力vs受力真空区别及旧参数拒绝。疾病专项和全仓 Python3.11/3.12 持续核验，失败历史保持不动。
+- **非古籍章节，原书新章节0、新案例0**；两书43章194例、V3.9.1完整封存、iOS九宫与视觉设计、旧V4.2弃用、历史书源表、失败CI原样保留。此用户数学象意格为V-next研究试验，绝不作为真实临床疗效/药物指引。
