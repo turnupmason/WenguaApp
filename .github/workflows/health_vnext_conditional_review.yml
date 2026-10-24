@@ -7,6 +7,7 @@ on:
       - 'src/wengua/health_palace_sequence_vnext.py'
       - 'src/wengua/domain_selected_energy_vnext.py'
       - 'src/wengua/selected_duel_table_vnext.py'
+      - 'src/wengua/user_domain_matrices_20261023.py'
       - 'src/wengua/health_full_role_network_vnext.py'
       - 'src/wengua/factor_energy_25_rules.py'
       - 'src/wengua/factor_energy_combinations.py'
@@ -17,6 +18,7 @@ on:
       - 'tests/test_health_full_role_network_vnext.py'
       - 'tests/test_domain_selected_energy_vnext.py'
       - 'tests/test_user_exact_energy_duel_grids_vnext.py'
+      - 'tests/test_user_domain_matrices_20261023.py'
       - 'tests/test_factor_energy_25_rules.py'
       - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
@@ -43,6 +45,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_full_role_network_vnext.py -v
           python -m unittest discover -s tests -p test_domain_selected_energy_vnext.py -v
           python -m unittest discover -s tests -p test_user_exact_energy_duel_grids_vnext.py -v
+          python -m unittest discover -s tests -p test_user_domain_matrices_20261023.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
