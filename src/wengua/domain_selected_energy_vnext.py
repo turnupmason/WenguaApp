@@ -438,14 +438,20 @@ def selected_health_sections(result,*,actor,chart):
     push("89_quant","五级能量量化合断",
          render_quant_review(result["candidate_five_grade_quantization"]))
     v=result["verdict"];n=result["counts"]
+    q=result["candidate_five_grade_quantization"]["summary"]
+    if q["score"] is None:
+        conclusion=("最终五级量化吉凶尚不能定；尚有未核的星门神格来源"+
+                    "或尚无合计超五档时的正式分档规则。")
+    else:
+        conclusion=("最终五级量化象意为"+q["grade"]+
+                    "（"+str(q["score"])+"分）。")
     push("90_review","全部证据合断",
-         v["label"]+"。逐宫已查星、神、门、天地干、格局和空马墓刑迫；"+
-         "各组对天芮病宫一组一票、同一实际宫对关系只算一次，有利"+
-         str(n["qualified_favorable"])+"条、不利"+
-         str(n["qualified_adverse"])+"条、条件未定"+
-         str(n["pending_conditions"])+"条。"+
-         "吉多偏吉、凶多偏凶、相等或关键证据不全则待核；"+
-         "术数研究候选，不用于现实病情诊断或用药。")
+         conclusion+"旧版定性证据仅作对照："+v["label"]+
+         "；去重有利"+str(n["qualified_favorable"])+
+         "条、不利"+str(n["qualified_adverse"])+
+         "条、未定"+str(n["pending_conditions"])+
+         "条，不能替代当前五级总分。"+
+         "伏吟反吟只管缓急；传统研究象意不能代替真实诊断或用药。")
     push("91_timing","时空及应期",
          "驿马参考"+HORSE[chart["hour_ganzhi"][1]]+
          "；应期还需原书空墓、冲合、填实和具体问事条件共同触发，"+
