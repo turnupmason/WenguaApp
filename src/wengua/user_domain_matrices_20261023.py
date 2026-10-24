@@ -1,7 +1,7 @@
-"""Wengua research V-next: user-authored 2026-10-23 5x5 factor and control grids.
+"""Wengua research V-next: newest user-corrected 8 x 25-cell strength/control grids.
 
 Literal entries only. Do not interpolate, infer original-author calibration,
-silently repair a label (门破 vs 门迫), or change contradictory source variants.
+silently change 宫迫/门破, or re-enable older duplicate true-void versions.
 Full chart already exists: only query a selected role/pair as needed.
 """
 from __future__ import annotations
@@ -16,10 +16,10 @@ POWER_RELATIONS=("宫生符号","宫克符号","符号克宫","符号生宫","�
 # The user's 九星 grid matches prior USER_STAR_25 byte-for-byte.
 STAR_POWER=dict(USER_STAR_25)
 
-# User wrote 门破 (not silently changed into the traditional 门迫).
-# Physical five-element relationship is "门克宫", but the original label
-# 门破 survives in the published user grid and audit.
-DOOR_COLUMNS=("被宫生","被宫克","门破","生宫","比和")
+# User corrected the palace-over-door second column to 宫迫; the
+# door-over-palace third column remains their exact label 门破.
+# These original names are not inferred aliases for a new opening method.
+DOOR_COLUMNS=("被宫生","宫迫","门破","生宫","比和")
 DOOR_POWER={
     "旺":("极大","中等","大","大","极大"),
     "相":("极大","小","中等","中等","大"),
@@ -51,7 +51,9 @@ STEM_POWER={
 # Twelve lifecycle has 12 states and does NOT include 囚. The user
 # additionally gave 囚, stored but never invented as a lifecycle stage.
 
-# Original user grid #1. No void.
+# User's latest complete revision after comparing vacant-palace effects.
+# The earlier v1/v2 text, including mistaken duplicate true-void attacker
+# headings, stays immutable in docs/USER_7_GRID... and USER_8_GRID... and Git.
 CONTROL_NORMAL={
     "极小":("有效克制","有效克制","微弱克制","克制失效","反侮受损"),
     "小":("高效克制","有效克制","有效克制","微弱克制","克制失效"),
@@ -59,53 +61,49 @@ CONTROL_NORMAL={
     "大":("绝对主克","强力主克","高效克制","有效克制","有效克制"),
     "极大":("极限压制","绝对主克","强力主克","高效克制","有效克制"),
 }
-# Original user grid #2: 施力方宫空亡 (假空) — variant 1, label AS GIVEN.
-CONTROL_FAKE_VOID_ATTACKER_A={
-    "极小":("减力克制","微弱克制","克制失效","反侮受损","系统性失控"),
-    "小":("有效克制","减力克制","反侮受损","系统性失控","系统性失控"),
-    "中等":("高效克制","有效克制","减力克制","微弱克制","克制失效"),
+# 已核假空 / actual source palace is void.
+CONTROL_FAKE_VOID_ATTACKER={
+    "极小":("减力克制","微弱克制","克制失效","反侮受损","完全失控"),
+    "小":("有效克制","减力克制","反侮受损","完全失控","完全失控"),
+    "中等":("高效克制","有效克制","减力克制","微弱克制","完全失控"),
     "大":("强力主克","高效克制","有效克制","减力克制","微弱克制"),
     "极大":("绝对主克","强力主克","高效克制","有效克制","减力克制"),
 }
-# Original user grid #3: 受力方宫空亡 (假空).
+# 已核假空 / actual target palace is void.
 CONTROL_FAKE_VOID_TARGET={
-    "极小":("微弱克制","效力递减","克制失效","完全失控","完全失控"),
-    "小":("有效主克","微弱克制","效力递减","克制失效","完全失控"),
+    "极小":("高效克制","有效克制","完全失控","完全失控","完全失控"),
+    "小":("强力主克","高效克制","减力克制","完全失控","完全失控"),
     "中等":("强力主克","有效主克","微弱克制","效力递减","克制失效"),
     "大":("绝对主克","强力主克","有效主克","微弱克制","效力递减"),
-    "极大":("完全清除","绝对主克","强力主克","有效主克","微弱克制"),
+    "极大":("完全清除","完全清除","绝对主克","强力主克","微弱克制"),
 }
-# Corrected 2026-10-23 user grid #4 is actually 施力方宫空亡(真空).
-# Previously archived as fake_void_attacker_B; preserve that historical
-# name as an alias for provenance only; it must NOT be a selectable fake grid.
-CONTROL_TRUE_VOID_ATTACKER_A={
-    "极小":("有效克制","减力克制","效力递减","克制失效","完全失控"),
-    "小":("减力克制","效力递减","效力递减","克制失效","完全失控"),
-    "中等":("断续克制","效力递减","克制失效","完全失控","完全失控"),
-    "大":("克制失效","克制失效","完全失控","完全失控","完全失控"),
-    "极大":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+# 已核真空 / actual source palace is void.
+CONTROL_TRUE_VOID_ATTACKER={
+    "极小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "中等":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "大":("微弱克制","微弱克制","完全失控","完全失控","完全失控"),
+    "极大":("减力克制","微弱克制","完全失控","完全失控","完全失控"),
 }
-# Another new user grid has the *same heading* 施力方宫空亡(真空)
-# but distinct literal cells. No distinguishing premise was provided.
-CONTROL_TRUE_VOID_ATTACKER_B={
-    "极小":("终极解体","终极解体","终极解体","终极解体","终极解体"),
-    "小":("丧失能力","丧失能力","完全失控","完全失控","完全失控"),
-    "中等":("克制失效","克制失效","完全失控","完全失控","完全失控"),
-    "大":("断续克制","效力递减","效力递减","克制失效","完全失控"),
-    "极大":("微弱克制","断续克制","效力递减","克制失效","完全失控"),
+# 已核真空 / actual target palace is void.
+CONTROL_TRUE_VOID_TARGET={
+    "极小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "小":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "中等":("完全失控","完全失控","完全失控","完全失控","完全失控"),
+    "大":("完全失控","完全失控","完全失控","微弱克制","完全失控"),
+    "极大":("完全失控","完全失控","完全失控","减力克制","微弱克制"),
 }
-# Historical identifier retained for audit/regression compatibility, not
-# exposed in the live dispatch table (its input label was corrected).
-CONTROL_FAKE_VOID_ATTACKER_B=CONTROL_TRUE_VOID_ATTACKER_A
-
+# The old singular fake_attacker_A symbol is kept as an explicit
+# compatibility alias only; it now resolves to the corrected latest table.
+CONTROL_FAKE_VOID_ATTACKER_A=CONTROL_FAKE_VOID_ATTACKER
 CONTROL_GRID_BY_ID={
     "normal":CONTROL_NORMAL,
-    "fake_void_attacker_A":CONTROL_FAKE_VOID_ATTACKER_A,
+    "fake_void_attacker":CONTROL_FAKE_VOID_ATTACKER,
     "fake_void_target":CONTROL_FAKE_VOID_TARGET,
-    "true_void_attacker_A":CONTROL_TRUE_VOID_ATTACKER_A,
-    "true_void_attacker_B":CONTROL_TRUE_VOID_ATTACKER_B,
+    "true_void_attacker":CONTROL_TRUE_VOID_ATTACKER,
+    "true_void_target":CONTROL_TRUE_VOID_TARGET,
 }
-CONTROL_GRID_VERSION="user_5x5_control_with_void_20261023_v2_true_void"
+CONTROL_GRID_VERSION="user_5x5_control_with_void_20261023_v3_corrected_roles"
 STEM_POWER_VERSION="user_stem_life_stage_x_month_relation_20261023_v1"
 DOOR_POWER_VERSION="user_door_month_x_palace_relation_20261023_v1"
 
@@ -184,60 +182,37 @@ def lookup_selected_factor(kind,symbol,month_branch,palace,*,plane="heaven",
 
 def inspect_control(*,actor_power,target_power,palace_relation,
                     attacker_fake_void=False,target_fake_void=False,
-                    attacker_fake_void_variant=None,
                     attacker_true_void=False,target_true_void=False,
-                    attacker_true_void_variant=None,
-                    attacker_void_unknown=False,target_void_unknown=False):
-    """One source-selected matrix lookup; corrected fake/true void provenance.
+                    attacker_void_unknown=False,target_void_unknown=False,
+                    attacker_fake_void_variant=None,attacker_true_void_variant=None):
+    """Exactly ONE of five current 25-cell tables, never two palace duels.
 
-    One real 克 pair gets ONE final result only when void scenario is
-    determined. Both supplied true-void attacker matrices have the exact
-    same header but DIFFERENT literal entries, so never auto-pick A or B.
+    Caller must independently verify fake vs true emptiness. A bare Xun Kong
+    flag is NOT verification of fake or true void. The v2 A/B variants are
+    historical mistakes and not selectable in the corrected source table.
     """
     if palace_relation!="克":
         return {"status":"not_control_relation","result":None,
-                "reason":"仅施力宫实际克受力宫使用克制专表",
+                "reason":"仅施力宫实际克受力宫可使用克制矩阵，其他关系交给专题书法",
                 "table_version":CONTROL_GRID_VERSION}
     for x in (actor_power,target_power):
         if x not in COLS:raise ValueError("Need two resolved table-one powers")
+    if attacker_fake_void_variant is not None or attacker_true_void_variant is not None:
+        raise ValueError("Superseded A/B void variants are not valid in latest tables")
     if attacker_void_unknown or target_void_unknown:
         return {"status":"void_type_pending","result":None,
-                "reason":"已知空亡候选未核真假，不能臆选真假空表",
+                "reason":"九宫空亡已提示但真假或适用条件未核，暂不查定向矩阵",
                 "table_version":CONTROL_GRID_VERSION}
-    if attacker_fake_void_variant not in (None,"A"):
-        raise ValueError("Corrected source has ONE fake-void attacker grid; historic fake B is TRUE A")
-    if attacker_true_void_variant not in (None,"A","B"):
-        raise ValueError("True-void attacker variant must be source A or B")
-
-    flags=(attacker_fake_void,target_fake_void,
-           attacker_true_void,target_true_void)
+    flags=(attacker_fake_void,target_fake_void,attacker_true_void,target_true_void)
     if sum(bool(x) for x in flags)>1:
         return {"status":"both_void_unspecified","result":None,
-                "reason":"用户未提供双宫同时空亡、真假组合的专用矩阵",
+                "reason":"用户未提供双方同时空亡及真假组合的独立克制表",
                 "table_version":CONTROL_GRID_VERSION}
-    if target_true_void:
-        return {"status":"target_true_void_unspecified","result":None,
-                "reason":"用户未提供受力方宫真空的专用矩阵",
-                "table_version":CONTROL_GRID_VERSION}
-    if attacker_fake_void:
-        key="fake_void_attacker_A"
-    elif target_fake_void:
-        key="fake_void_target"
-    elif attacker_true_void:
-        if attacker_true_void_variant not in ("A","B"):
-            return {"status":"duplicate_true_attacker_label_pending",
-                    "result":None,
-                    "candidate_tables":(
-                        {"id":"true_void_attacker_A","result":raw_cell(
-                            CONTROL_TRUE_VOID_ATTACKER_A,actor_power,target_power)},
-                        {"id":"true_void_attacker_B","result":raw_cell(
-                            CONTROL_TRUE_VOID_ATTACKER_B,actor_power,target_power)},
-                    ),
-                    "reason":"两张不同25格原表都写施力方宫空亡(真空)，条件未明不能自动择表",
-                    "table_version":CONTROL_GRID_VERSION}
-        key="true_void_attacker_"+attacker_true_void_variant
-    else:
-        key="normal"
+    key=("fake_void_attacker" if attacker_fake_void
+         else "fake_void_target" if target_fake_void
+         else "true_void_attacker" if attacker_true_void
+         else "true_void_target" if target_true_void
+         else "normal")
     return {"status":"matched","scenario":key,
             "result":raw_cell(CONTROL_GRID_BY_ID[key],actor_power,target_power),
             "actor_power":actor_power,"target_power":target_power,
