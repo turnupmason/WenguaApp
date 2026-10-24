@@ -28,6 +28,8 @@ on:
       - 'tests/test_health_first_macro_vnext.py'
       - 'tests/test_health_five_level_quant_vnext.py'
       - 'tests/test_health_quant_overlay_vnext.py'
+      - 'tests/test_health_door_break_exception_vnext.py'
+      - 'scripts/preview_health_random_complete_20261024.py'
       - 'tests/test_factor_energy_25_rules.py'
       - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
@@ -59,6 +61,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_first_macro_vnext.py -v
           python -m unittest discover -s tests -p test_health_five_level_quant_vnext.py -v
           python -m unittest discover -s tests -p test_health_quant_overlay_vnext.py -v
+          python -m unittest discover -s tests -p test_health_door_break_exception_vnext.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
           python -m unittest discover -s tests -p test_health_v391_public_auto_cast.py -v
@@ -66,6 +69,7 @@ jobs:
         run: |
           python -m scripts.preview_health_vnext_conditional "artifacts/vnext_review_examples_python_${{ matrix.python-version }}.json"
           python -m scripts.preview_health_tianrui_25 "artifacts/tianrui_25_python_${{ matrix.python-version }}.json"
+          python -m scripts.preview_health_random_complete_20261024 "artifacts/random_health_complete_python_${{ matrix.python-version }}.json"
       - name: Preserve comparison and failures
         if: always()
         uses: actions/upload-artifact@v4
