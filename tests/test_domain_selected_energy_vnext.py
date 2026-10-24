@@ -134,7 +134,7 @@ class SelectedRealCases(unittest.TestCase):
         for out in (self.unspecified,self.male,self.birth):
             names=[s["title"] for s in out["sections"]]
             self.assertEqual(names[:5],[
-                "先看伏吟反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
+                "起盘总纲：五不遇时、伏吟、反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
             self.assertEqual(names[-1],"时空及应期")
             self.assertEqual(names[-2],"全部证据合断")
             evidence=[x for v in out["evidence_ledger"].values() for x in v]
