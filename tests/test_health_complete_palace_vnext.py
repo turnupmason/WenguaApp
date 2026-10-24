@@ -105,6 +105,25 @@ class RealSelectedPalacePipeline(unittest.TestCase):
         self.assertEqual(g["role_group_reviews"]["gender"]["role_key"],"gender")
         self.assertNotIn("natal",g["role_group_reviews"])
 
+    def test_qian_and_kun_are_always_real_auxiliaries_not_two_patients(self):
+        for report in (self.self_reading,self.male):
+            graph=report["full_health_role_strength_network"]
+            qk=graph["qian_kun_auxiliary_observations"]
+            self.assertEqual({qk["qian"]["palace"],qk["kun"]["palace"]},{6,2})
+            for name in ("qian","kun"):
+                ob=qk[name]
+                self.assertTrue(ob["used_only_as_auxiliary"])
+                self.assertTrue(ob["patient_identity_not_implied"])
+                self.assertTrue(ob["cannot_vote_without_role_source"])
+                self.assertTrue(ob["complete_palace"]["stars"])
+                self.assertIsNotNone(ob["complete_palace"]["door"])
+                self.assertIn(ob["relation_to_illness"],
+                              ("生","克","受生","受克","比和"))
+            self.assertIn("乾坤宫辅助观察",report["reading_text"])
+        unknown=self.self_reading["full_health_role_strength_network"]
+        self.assertIsNone(unknown["selected_gender_palace"])
+        self.assertNotIn("gender",unknown["nodes"])
+
     def test_avoids_double_voting_multiple_symbols_of_same_palace(self):
         net=self.self_reading["full_health_role_strength_network"]
         reviews=net["role_group_reviews"]
