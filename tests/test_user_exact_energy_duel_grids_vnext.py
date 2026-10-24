@@ -11,6 +11,7 @@ from src.wengua.selected_duel_table_vnext import (
     USER_DUEL_5X5, DUEL_COLUMN_TIERS, user_duel_lookup,
     matchup, VERSION, USER_DUEL_TABLE_VERSION)
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+from src.wengua.user_domain_matrices_20261023 import CONTROL_NORMAL, raw_cell, CONTROL_GRID_VERSION
 
 
 USER_STAR_ROWS={
@@ -72,8 +73,8 @@ class UserAuthoredCells(unittest.TestCase):
                 y={**illness,"strength_label":b,"palace_strength_label":a}
                 with self.subTest(from_power=a,to_power=b):
                     edge=matchup(x,y,actor_role="doctor",target_role="illness")
-                    self.assertEqual(edge["duel_result"],USER_DUEL_ROWS[a][j])
-                    self.assertEqual(edge["symbol_duel_result"],USER_DUEL_ROWS[a][j])
+                    self.assertEqual(edge["duel_result"],CONTROL_NORMAL[a][j])
+                    self.assertEqual(edge["control_result"],CONTROL_NORMAL[a][j])
                     self.assertNotIn("palace_duel_result",edge)
                     self.assertEqual(edge["table_two_lookups_for_pair"],1)
                     self.assertTrue(edge["palace_strength_is_context_only"])
@@ -87,7 +88,7 @@ class UserAuthoredCells(unittest.TestCase):
         low={**doctor,"strength_label":"极小","palace_strength_label":"极大"}
         high={**illness,"strength_label":"极大","palace_strength_label":"极小"}
         edge=matchup(low,high,actor_role="doctor",target_role="illness")
-        self.assertEqual(edge["duel_result"],"硬干反而受伤")
+        self.assertEqual(edge["duel_result"],"反侮受损")
         self.assertTrue(edge["backfire_risk_symbolic"])
         self.assertEqual(edge["ability"],"不能")
         self.assertEqual(edge["table_two_lookups_for_pair"],1)
@@ -95,15 +96,15 @@ class UserAuthoredCells(unittest.TestCase):
         mixed={**doctor,"strength_label":"极大","palace_strength_label":"极小"}
         inverted={**illness,"strength_label":"极小","palace_strength_label":"极大"}
         edge=matchup(mixed,inverted,actor_role="doctor",target_role="illness")
-        self.assertEqual(edge["duel_result"],"世界级压制干得过")
+        self.assertEqual(edge["duel_result"],"极限压制")
         self.assertEqual(edge["ability"],"能")
         self.assertNotIn("palace_duel_result",edge)
         obstructed={**doctor,"restrictions":["门迫待核"]}
         blocked=matchup(obstructed,illness,actor_role="a",target_role="b")
         self.assertEqual(blocked["ability"],"条件待核")
         self.assertEqual(blocked["duel_result"],
-                         user_duel_lookup(doctor["strength_label"],
-                                          illness["strength_label"]))
+                         raw_cell(CONTROL_NORMAL,doctor["strength_label"],
+                                  illness["strength_label"]))
 
     def test_raw_user_labels_flow_into_real_selected_health_reading(self):
         result=auto_cast_health_review_text(
@@ -113,18 +114,23 @@ class UserAuthoredCells(unittest.TestCase):
                      "consultation_context":"direct_self"})
         net=result["full_health_role_strength_network"]
         self.assertEqual(net["mode"],"selective")
-        self.assertEqual(net["factor_two_duel_table"],USER_DUEL_TABLE_VERSION)
+        self.assertEqual(net["factor_two_duel_table"],CONTROL_GRID_VERSION)
         self.assertEqual(net["factor_one_nine_star_table"],
                          "user_exact_nine_star_5x5_20261023")
         self.assertLessEqual(net["table_two_queries"],10)
         for edge in net["directed_edges"].values():
-            self.assertEqual(
-                edge["symbol_duel_result"],
-                user_duel_lookup(edge["actor_strength"],edge["target_strength"]))
-            self.assertEqual(edge["table_two_lookups_for_pair"],1)
+            if edge["relation"]=="克" and edge["control_status"]=="matched":
+                self.assertEqual(edge["control_result"],raw_cell(
+                    CONTROL_NORMAL,edge["actor_strength"],edge["target_strength"]))
+                self.assertEqual(edge["table_two_lookups_for_pair"],1)
+            else:
+                self.assertIsNone(edge["control_result"])
+                self.assertIn(edge["control_status"],(
+                    "void_type_pending","factor_power_pending",
+                    "not_control_relation","duplicate_attacker_label_pending"))
             self.assertTrue(edge["palace_strength_is_context_only"])
             self.assertNotIn("palace_duel_result",edge)
-        self.assertIn("两用神表一力量查表二：「",result["reading_text"])
+        self.assertIn("克制表",result["reading_text"])
         self.assertNotIn("宫位对抗「",result["reading_text"])
         self.assertTrue(result["no_scoring"])
         self.assertFalse(result["medical_validity_claimed"])
