@@ -48,7 +48,10 @@ class FirstStageMacroFacts(unittest.TestCase):
         self.assertIn("伏吟",out["sections"][0]["text"])
         self.assertIn("反吟",out["sections"][0]["text"])
         self.assertTrue(out["reading_text"].startswith("起盘总纲"))
-        self.assertIn("逐宫已查星",out["reading_text"])
+        # Latest signed-energy conclusion demotes old count-only text.
+        self.assertIn("五级能量量化合断",out["reading_text"])
+        self.assertIn("天芮病宫",out["reading_text"])
+        self.assertIn("八神",out["reading_text"])
 
     def test_real_not_encounter_hour_counts_exactly_one_global_bad_fact(self):
         # Find a REAL future-free ordinary dated chart, never invent a
