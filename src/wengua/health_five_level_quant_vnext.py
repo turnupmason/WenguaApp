@@ -85,6 +85,45 @@ def pattern_grade(*,polarity,heaven_stage=None,heaven_tomb=False,
             "version":VERSION}
 
 
+# User-authored 2026-10-24 explicit exceptions to the TWO-LEVEL
+# 门破 penalty. These are still physical 门克宫 in the *200-cell* strength
+# table. Exemption affects ONLY the extra -2 stage; neither door strength
+# nor door auspice polarity is rewritten.
+DOOR_BREAK_NO_PENALTY=frozenset({("生门",1),("景门",6)})
+DOOR_BREAK_POLICY_VERSION="health_door_break_two_exception_cases_20261024_v1"
+
+
+def door_break_penalty_policy(*,door_name,palace,door_relation):
+    """Return literal user exception matched against a REAL palace and door.
+
+    门克宫 may be recorded as 门破; only the two named real cases skip the
+    separate two-level adverse shift. Other genuinely verified 门破 cases
+    retain the existing shift; 宫迫 or 比和 never trigger that shift.
+    Do NOT infer the door's 吉/凶 from the physical break alone.
+    """
+    if not isinstance(palace,int) or palace not in range(1,10):
+        raise ValueError("Require actual numbered chart palace")
+    if door_relation not in ("门破","宫迫","被宫生","生宫","比和"):
+        raise ValueError("Only user-provided door/palace relation")
+    actual=door_relation=="门破"
+    exempt=actual and (door_name,palace) in DOOR_BREAK_NO_PENALTY
+    return {
+        "version":DOOR_BREAK_POLICY_VERSION,
+        "door":door_name,"palace":palace,
+        "raw_relation":door_relation,
+        "has_door_break":actual,
+        "no_extra_two_level_shift":exempt,
+        "apply_extra_two_level_shift":actual and not exempt,
+        "two_level_shift":0 if not actual or exempt else 2,
+        "why":("生门落坎或景门落乾：虽门克宫（门破），按用户最新规则不额外降两级"
+               if exempt else
+               "实际门破按现有规则另外降两级" if actual else
+               "非门破，不触发门破额外降级"),
+        "door_month_palace_200_cell_strength_unchanged":True,
+        "door_polarity_not_inferred":True,
+    }
+
+
 def adverse_shift(score,levels=2):
     """五不遇时/门破: 吉减两级(底=极小吉); 凶增两级(顶=极大凶).
 
