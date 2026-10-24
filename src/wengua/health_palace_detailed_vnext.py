@@ -115,7 +115,7 @@ def normalize_new_door_relation(*,record,cell,month_branch):
     basic=table_one("door",door,month_branch,cell["palace"])
     relation=basic["user_cell_col"]
     return {**record,
-            "legacy_door_pressure":record["door_pressure"],
+            "legacy_door_pressure":record.get("legacy_door_pressure",record["door_pressure"]),
             "door_pressure":relation=="宫迫",
             "door_break":relation=="门破",
             "door_relation_user_200_cells":relation,
