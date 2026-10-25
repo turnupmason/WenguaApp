@@ -27,8 +27,16 @@ def make_report():
         iso=CASE_INSTANT, timezone_name=ZONE, inquiry=dict(INQUIRY))
     if report["instant"] != CASE_INSTANT:
         raise ValueError("Calendar response did not preserve actual input instant")
-    if report["audit"]["primary_role_palace"] != 6:
-        raise ValueError("Father role must bind from original source to 乾六宫")
+    # This book's father profile binds its PRIMARY to the real casting
+    # YEAR heavenly stem; 乾六宫 is a separate father AUXILIARY, not an
+    # unconditional replacement for the stem's actual landing palace.
+    if report["audit"]["role_via"] != "casting_year_stem":
+        raise ValueError("Father primary must use original older-generation year-stem rule")
+    if not report["audit"]["primary_role_palace"]:
+        raise ValueError("Father year stem must have a real visible palace")
+    if report["full_health_role_strength_network"][
+        "qian_kun_auxiliary_observations"]["qian"]["palace"] != 6:
+        raise ValueError("Actual Qian six auxiliary required")
     if len(report["nine_palaces"]) != 9:
         raise ValueError("Real chart needs all nine palaces")
     if any(str(k) not in report["nine_palaces"] for k in range(1, 10)):
