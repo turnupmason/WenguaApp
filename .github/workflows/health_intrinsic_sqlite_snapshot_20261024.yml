@@ -40,7 +40,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3" "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3.xz" "archives/sqlite/wengua_health_intrinsic_20261024_manifest.json"
+          git add -f -- "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3" "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3.xz" "archives/sqlite/wengua_health_intrinsic_20261024_manifest.json"
           git diff --cached --quiet && { echo "Already archived in main"; exit 0; }
           git commit -m "Archive new complete 194-case SQLite with 9-star 8-door 8-deity and 78 user ordered-pair classification records"
           git push origin HEAD:main
