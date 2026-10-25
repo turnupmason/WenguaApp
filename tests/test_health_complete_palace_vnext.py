@@ -121,7 +121,10 @@ class RealSelectedPalacePipeline(unittest.TestCase):
                 self.assertIsNotNone(ob["complete_palace"]["door"])
                 self.assertIn(ob["relation_to_illness"],
                               ("生","克","受生","受克","比和"))
-            self.assertIn("乾坤宫辅助观察",report["reading_text"])
+            if report is self.male:
+                self.assertIn("男乾女坤辅助",report["reading_text"])
+            else:
+                self.assertNotIn("男乾女坤辅助",report["reading_text"])
         unknown=self.self_reading["full_health_role_strength_network"]
         self.assertIsNone(unknown["selected_gender_palace"])
         self.assertNotIn("gender",unknown["nodes"])
