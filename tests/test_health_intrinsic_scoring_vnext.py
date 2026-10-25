@@ -54,18 +54,27 @@ class LiteralPolarityTests(unittest.TestCase):
                 self.assertEqual(x["status"],"calculated")
         self.assertEqual(god_score("腾蛇","宫生符号")["score"],-5)
 
-    def test_ordered81_are_not_fabricated_missing_or_duplicate(self):
+    def test_ordered81_latest_four_completed_and_duplicate_preserved(self):
         c=catalog_validation()
         self.assertEqual(c["expected_pair_positions"],81)
-        self.assertEqual(c["literal_supplied_rows"],78)
-        self.assertEqual(c["distinct_declared_pairs"],77)
-        self.assertEqual(set(c["missing_pair_keys"]),
-                         {"乙/壬","乙/癸","丙/癸","戊/乙"})
+        self.assertEqual(c["literal_supplied_rows"],82)
+        self.assertEqual(c["distinct_declared_pairs"],81)
+        self.assertEqual(c["missing_pair_keys"],[])
         self.assertEqual(c["duplicate"][0]["key"],"庚/己")
         self.assertEqual(resolve_ordered_pair("庚","己")["status"],
                          "duplicate_user_pair_variants_pending")
-        self.assertEqual(resolve_ordered_pair("戊","乙")["status"],
-                         "user_pair_not_supplied")
+        self.assertEqual(resolve_ordered_pair("戊","乙")["baseline"],3)
+        for upper,lower,title,base in (
+            ("乙","壬","日奇入地网",-3),
+            ("乙","癸","华盖逢星",-3),
+            ("丙","癸","华盖悖师",-3),
+            ("戊","乙","青龙得绿",3)):
+            with self.subTest(top=upper,bottom=lower):
+                value=resolve_ordered_pair(upper,lower)
+                self.assertEqual((value["user_title"],value["baseline"]),(title,base))
+                self.assertEqual(value["status"],"user_latest_four_added_with_book_name_conflict")
+                self.assertTrue(value["original_book_name_not_overwritten"])
+                self.assertEqual(len(value["book_excerpt_sha256"]),64)
         self.assertEqual(resolve_ordered_pair("乙","丁")["baseline"],3)
         self.assertEqual(resolve_ordered_pair("庚","癸")["baseline"],-3)
         self.assertEqual(resolve_ordered_pair(
