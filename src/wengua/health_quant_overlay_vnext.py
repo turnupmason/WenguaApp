@@ -188,7 +188,7 @@ def inspect_selected_quantization(*,selected_roles,
     for key,row in selected_roles.items():
         if key.startswith("extra_") or key in (
                 "illness","doctor","medicine","patient",
-                "hour","natal","gender"):
+                "hour","natal","gender","chief"):
             detail=row["complete_palace"]
             item=_quantize_one(key,detail,five_not_encounter=five,
                                xun_shou=xun_shou)
