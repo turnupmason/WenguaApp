@@ -1,0 +1,54 @@
+name: Wengua 2026-10-24 Complete 81 Ordered Pairs 194 Case SQLite V3
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_complete81_sqlite_v3_20261024.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: user-81-complete-20261024-v3-sqlite
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate 81 unique pairs and complete signed user scores
+        run: |
+          python -m unittest discover -s tests -p test_health_intrinsic_scoring_vnext.py -v
+          python -m unittest discover -s tests -p test_health_relationship_language_vnext.py -v
+          python -m unittest discover -s tests -p test_casting_chai_bu_user_process_vnext.py -v
+      - name: Copy archived 194-case SQL and add 81 full user pairs without replacing old data
+        run: |
+          python -m scripts.archive_health_complete81_sqlite_20261024
+      - name: Upload complete new SQL/XZ/manifest even if commit is blocked
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: WenguaApp_194真实案例_81用户全格_完整SQL_V3_20261024
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_complete81_user_20261024_v3_manifest.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Commit entirely NEW SQL and XZ to main, preserving old 194-case archives
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- \
+            "archives/sqlite/WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3" \
+            "archives/sqlite/WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3.xz" \
+            "archives/sqlite/wengua_health_complete81_user_20261024_v3_manifest.json"
+          git diff --cached --quiet && { echo "Already archived"; exit 0; }
+          git commit -m "Archive full 194-case SQLite new v3 81 unique user ordered pairs, preserve former 78 and four book-name variants"
+          git push origin HEAD:main
+          echo "Verified new SQL archive commit pushed."
