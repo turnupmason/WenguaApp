@@ -1,0 +1,710 @@
+{
+  "schema": "wengua_user_intrinsic_polarity_and_81_pair_candidates_v20261024",
+  "authored_date": "2026-10-24",
+  "domain": "health/severity_symbolic_candidate",
+  "precedence": "user_rules_latest_general_polarity_with_original_book_health_specific_conditions_preserved",
+  "note": "81 positions not 81 individually supplied classifications; do not invent missing rows or override book disease-specific exceptions",
+  "stems": [
+    "乙",
+    "丙",
+    "丁",
+    "戊",
+    "己",
+    "庚",
+    "辛",
+    "壬",
+    "癸"
+  ],
+  "stars": {
+    "天辅星": 4,
+    "天禽星": 4,
+    "天心星": 4,
+    "天冲星": 3,
+    "天任星": 3,
+    "天英星": -1,
+    "天蓬星": -4,
+    "天芮星": -4,
+    "天柱星": -2
+  },
+  "doors": {
+    "开门": 3,
+    "休门": 3,
+    "生门": 3,
+    "死门": -3,
+    "惊门": -3,
+    "伤门": -3,
+    "杜门": 0,
+    "景门": 0
+  },
+  "gods": {
+    "值符": 3,
+    "六合": 3,
+    "太阴": 3,
+    "九天": 3,
+    "白虎": -3,
+    "玄武": -3,
+    "螣蛇": -3,
+    "九地": -3
+  },
+  "god_relations": {
+    "符号生宫": "中等",
+    "符号克宫": "中等",
+    "比和": "大",
+    "宫克符号": "小",
+    "宫生符号": "极大"
+  },
+  "pattern_baseline": {
+    "吉": 3,
+    "凶": -3
+  },
+  "records": [
+    {
+      "key": "戊/丙",
+      "title": "青龙回首",
+      "explain": "第一吉格，动作大吉，求财、求官皆极顺遂",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丙/戊",
+      "title": "飞鸟跌穴",
+      "explain": "第二吉格，不劳而获，财官双美，意外之喜",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "戊/丁",
+      "title": "青龙转光",
+      "explain": "贵人提携，升迁、求名利，好事倍增",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丁/戊",
+      "title": "青龙耀明",
+      "explain": "官运亨通，利于见贵人，求取功名",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "乙/丙",
+      "title": "奇仪顺遂",
+      "explain": "日月相逢，有贵人扶持，升职进财（婚测防桃花缠身）",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "乙/丁",
+      "title": "奇仪相佐",
+      "explain": "百事可为，尤其利于文书、考试、订单与策划",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丙/乙",
+      "title": "日月并行",
+      "explain": "公私皆吉，谋事顺心",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丙/丁",
+      "title": "星奇朱雀",
+      "explain": "贵人相助，文书遂心，常有意外好消息",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丁/乙",
+      "title": "人遁吉格",
+      "explain": "贵人暗助，利于谋划和文书类私密事",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丁/丙",
+      "title": "星随月转",
+      "explain": "贵人提携，因人成事，越变越好",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "丁/丁",
+      "title": "星奇伏吟",
+      "explain": "奇才大展，文书即至，利于学业、考试",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "乙/戊",
+      "title": "利阴害阳",
+      "explain": "利于阴人阴事、暗中筹款；若门吉则吉，门凶则破财人伤",
+      "polarity": "吉",
+      "gate": "door_gate",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "己/戊",
+      "title": "犬遇青龙",
+      "explain": "门吉则事吉，有贵人相助，多得外力",
+      "polarity": "吉",
+      "gate": "door_good",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "庚/丁",
+      "title": "太白逢星",
+      "explain": "虽有阻力，但因火克金，反利于捕捉、打官司、解决困难",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "辛/丁",
+      "title": "狱神得奇",
+      "explain": "经商获倍利，囚犯逢赦免，坏事变好事",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "壬/戊",
+      "title": "小蛇化龙",
+      "explain": "职场、生意迎来重大转变，男命发迹",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "壬/乙",
+      "title": "小蛇得势",
+      "explain": "柔能克刚，女子多助，求谋有转机",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "壬/丁",
+      "title": "干合蛇刑",
+      "explain": "文书虽有波折，但多主合伙利财（男吉女凶）",
+      "polarity": "吉",
+      "gate": "gender",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "壬/庚",
+      "title": "太白擒蛇",
+      "explain": "邪不压正，官司平反，坏事到头",
+      "polarity": "吉",
+      "gate": "unconditional",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "癸/戊",
+      "title": "天乙会合",
+      "explain": "门吉则吉事成，利于合伙、结婚",
+      "polarity": "吉",
+      "gate": "door_good",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "癸/乙",
+      "title": "华盖逢星",
+      "explain": "门吉则平顺，宜退守、钻研技术、隐蔽",
+      "polarity": "吉",
+      "gate": "door_good",
+      "group": "用户本轮吉格"
+    },
+    {
+      "key": "乙/乙",
+      "title": "日奇伏吟",
+      "explain": "不宜冒进，安分守己则吉",
+      "polarity": "条件",
+      "gate": "activity",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "丙/己",
+      "title": "火悖入刑",
+      "explain": "门吉主因祸得福，门凶主口舌是非",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "丁/己",
+      "title": "火入勾陈",
+      "explain": "门吉则文书顺遂，门凶则有小人暗算",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "戊/戊",
+      "title": "青龙伏吟",
+      "explain": "凡事宜守不宜动，动则破财",
+      "polarity": "条件",
+      "gate": "activity",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "戊/庚",
+      "title": "值符飞宫",
+      "explain": "测吉事吉，测凶事凶，主环境变换",
+      "polarity": "条件",
+      "gate": "intent",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "己/丙",
+      "title": "火悖地户",
+      "explain": "门吉得男人相助，门凶易犯冤枉",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "庚/己",
+      "title": "官府刑格",
+      "explain": "门吉主变动，门凶主官非",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "辛/丙",
+      "title": "干合悖师",
+      "explain": "门吉合作愉快，门凶因财生灾",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "癸/丙",
+      "title": "华盖悖师",
+      "explain": "门吉尚可，门凶易贵人变仇人",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "癸/己",
+      "title": "华盖地户",
+      "explain": "门吉利隐藏，门凶则音信全无、事多阻碍",
+      "polarity": "条件",
+      "gate": "door_gate",
+      "group": "用户本轮列作条件型格局"
+    },
+    {
+      "key": "庚/癸",
+      "title": "大格",
+      "explain": "车祸、大破财、官司，凡事皆不可动",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "癸/庚",
+      "title": "太白入网",
+      "explain": "凡事无成，暴力冲突，陷入罗网",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/壬",
+      "title": "移荡格（小格）",
+      "explain": "动荡不安，求财破财，远行防灾",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "壬/癸",
+      "title": "天罗逢地网",
+      "explain": "纠缠不清，越动越凶，寸步难行",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "癸/辛",
+      "title": "网盖天牢",
+      "explain": "官司牢狱，大凶，动辄得咎",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丙/庚",
+      "title": "荧入太白",
+      "explain": "门户洞开，盗贼将至，财物易失，火灾",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/丙",
+      "title": "太白入荧",
+      "explain": "贼人主动走，或主客易位，多惊恐、突发破财",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "乙/辛",
+      "title": "青龙逃走",
+      "explain": "财运破败，家破人亡，女测婚主主动离婚",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/乙",
+      "title": "白虎猖狂",
+      "explain": "家败人亡，男测婚主妻子离异，易出伤残",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "乙/己",
+      "title": "日奇入墓",
+      "explain": "贵人入墓，暗中遭人嫉妒，事情停滞不前",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "乙/庚",
+      "title": "日奇被刑",
+      "explain": "夫妻不和，财运受阻，争执不断",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丙/丙",
+      "title": "月奇悖师",
+      "explain": "脾气暴躁，文书出错，祸起萧墙",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丙/辛",
+      "title": "谋事不顺",
+      "explain": "虽表面有合，但貌合神离，多暗疾、阻碍",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丙/壬",
+      "title": "火入天罗",
+      "explain": "口舌不断，为长辈、官司所累",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丁/庚",
+      "title": "文书阻隔",
+      "explain": "合作破裂，出行受阻，求财无望",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丁/辛",
+      "title": "朱雀投江",
+      "explain": "官非口舌，文书丢失，音信全无",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丁/壬",
+      "title": "星奇受制",
+      "explain": "感情防欺骗，私欲过重，因色生灾",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "丁/癸",
+      "title": "朱雀投江",
+      "explain": "口舌官非，文书失落，极易招致祸端",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "戊/己",
+      "title": "贵人入狱",
+      "explain": "公私皆不利，陷于经济危机",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "戊/辛",
+      "title": "青龙折足",
+      "explain": "吉事变凶，破财、伤灾、投资亏损、折断",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "戊/壬",
+      "title": "青龙入天牢",
+      "explain": "凡事不利，受制于人，财路断绝",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "戊/癸",
+      "title": "青龙华盖",
+      "explain": "容易因小失大，吉凶参半（多偏凶）",
+      "polarity": "凶",
+      "gate": "mixed_bad",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/乙",
+      "title": "墓神不明",
+      "explain": "前途迷茫，做事拖延，容易犯糊涂",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/丁",
+      "title": "朱雀入墓",
+      "explain": "文书受阻，词讼不利，长辈有灾",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/己",
+      "title": "地户逢鬼",
+      "explain": "贪心自败，病者加重，事多败坏",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/庚",
+      "title": "刑格反名",
+      "explain": "词讼先动者输，疾病加重，破财",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/辛",
+      "title": "游魂入墓",
+      "explain": "小人暗算，易撞邪祟，房产纠纷",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/壬",
+      "title": "地网高张",
+      "explain": "狡诈不实，防被骗，男子伤灾",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "己/癸",
+      "title": "地网高张",
+      "explain": "漏财、阴人害事，买卖易起争端",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/乙",
+      "title": "太白逢星",
+      "explain": "逆水行舟，退守为吉，动则受克",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/戊",
+      "title": "天乙伏宫",
+      "explain": "谋事大忌，主破财、换地、百事不宜",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/己",
+      "title": "官府刑格",
+      "explain": "官非口舌，诉讼不利",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/庚",
+      "title": "太白同宫（战格）",
+      "explain": "兄弟阋墙，官司相打，凡事皆凶",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "庚/辛",
+      "title": "白虎留置",
+      "explain": "行程受阻，远行大忌，防血光",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/戊",
+      "title": "困龙被伤",
+      "explain": "破财官司，因财犯法，陷入困境",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/己",
+      "title": "入狱自刑",
+      "explain": "下属背叛，奴欺主，有苦难言",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/庚",
+      "title": "天狱自刑",
+      "explain": "主客相残，互不相让，两败俱伤",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/辛",
+      "title": "伏吟天庭",
+      "explain": "凡事自败，因自己失误导致破财、疾病",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/壬",
+      "title": "凶蛇入狱",
+      "explain": "先动者失理，讼狱缠身，口舌多端",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "辛/癸",
+      "title": "天牢华盖",
+      "explain": "误入陷阱，越陷越深，求谋大忌",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "壬/丙",
+      "title": "水蛇入火",
+      "explain": "相互克制，主客两败俱伤，财物损失",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "壬/己",
+      "title": "反吟蛇刑",
+      "explain": "大祸将至，妄动招凶，大忌",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "壬/辛",
+      "title": "螣蛇相缠",
+      "explain": "受人欺骗，纠缠不清，夜长梦多",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "壬/壬",
+      "title": "天狱自刑",
+      "explain": "诸事破败，外来纠纷，动辄得咎",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "癸/丁",
+      "title": "螣蛇夭矫",
+      "explain": "官司文书口舌，大火、惊恐、失财",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "癸/壬",
+      "title": "复见螣蛇",
+      "explain": "婚姻多变，重婚，事多反复",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    },
+    {
+      "key": "癸/癸",
+      "title": "天网四张",
+      "explain": "极度受困，寸步难行，宜退避隐藏",
+      "polarity": "凶",
+      "gate": "unconditional",
+      "group": "用户本轮凶格"
+    }
+  ],
+  "coverage": {
+    "asserted_total_ordered_pairs": 81,
+    "supplied_rows": 78,
+    "unique_pairs": 77,
+    "missing_pairs": [
+      "乙/壬",
+      "乙/癸",
+      "丙/癸",
+      "戊/乙"
+    ],
+    "duplicate_pairs": [
+      {
+        "key": "庚/己",
+        "count": 2
+      }
+    ]
+  },
+  "book_health_exception_keys": [
+    "戊/丙",
+    "丙/戊",
+    "丁/壬",
+    "丙/辛"
+  ],
+  "not_medical": true
+}
