@@ -13,7 +13,7 @@ from .health_five_level_quant_vnext import (
 
 from .health_intrinsic_scoring_vnext import (
     star_score,door_score,god_score,resolve_ordered_pair,
-    catalog_validation,VERSION as INTRINSIC_VERSION)
+    stem_intrinsic_score,catalog_validation,VERSION as INTRINSIC_VERSION)
 from .health_five_level_quant_vnext import label as grade_label
 
 def _matching_restriction(entries,stem):
@@ -26,7 +26,7 @@ def _matching_restriction(entries,stem):
     return False
 
 
-def _quantize_one(role,detail,*,five_not_encounter):
+def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
     """Score the four categories using user's latest exact symbolic rules.
 
     Four categories can contain multiple REAL stars or 81 pairs, but not
@@ -38,17 +38,31 @@ def _quantize_one(role,detail,*,five_not_encounter):
     star_entries=[]
     for entry in detail["stars"]:
         st=entry["strength"]
-        star_entries.append(star_score(entry["name"],st.get("strength_label")))
-    valid_stars=[x["score"] for x in star_entries if x.get("score") is not None]
+        # User's 2026-10-24 strict illness rule: 天芮 and its piggyback
+        # 天禽 appear together in real chart, but only 天芮 contributes to
+        # illness-severity points. Keep Tianqin as a raw chart fact.
+        if role=="illness" and entry["name"]!="天芮星":
+            star_entries.append({
+                "symbol":entry["name"],"baseline":None,"score":None,
+                "status":"real_cohost_not_health_signifier",
+                "not_scored_in_illness":True,
+                "carried_stem":entry.get("carried_stem")})
+        else:
+            star_entries.append(star_score(entry["name"],st.get("strength_label")))
+    scored_stars=[x for x in star_entries if not x.get("not_scored_in_illness")]
+    valid_stars=[x["score"] for x in scored_stars if x.get("score") is not None]
     star_values=(valid_stars[0] if len(valid_stars)==1
                  else valid_stars if len(valid_stars)>1 else None)
-    if len(valid_stars)!=len(star_entries):star_values=None
+    if len(valid_stars)!=len(scored_stars):star_values=None
     star_audit={
         "status":"calculated" if star_values is not None else "some_real_star_strength_pending",
         "per_star":star_entries,
         "score":sum(valid_stars) if star_values is not None else None,
         "intrinsic_baselines":[v.get("baseline") for v in star_entries],
         "co_palace_source_stars_not_silenced":True,
+        "illness_tianrui_only":role=="illness",
+        "excluded_real_stars":[x["symbol"] for x in star_entries
+                               if x.get("not_scored_in_illness")],
         "user_rule_version":INTRINSIC_VERSION,
         "polarity":next((x["polarity"] for x in star_entries if
                          x.get("polarity") is not None),None),
@@ -75,10 +89,17 @@ def _quantize_one(role,detail,*,five_not_encounter):
     earth=detail["earth_stem"]
     bottom=earth["symbol"] if earth else None
     heaven={x["symbol"]:x for x in detail["heaven_stems"]}
+    illness_top_stems={
+        e["carried_stem"] for e in detail["stars"]
+        if e["name"]=="天芮星" and e.get("carried_stem")}
+    skipped_health_cohosts=[]
     origin={(p["heaven"],p["earth"]):p
             for p in detail["ordered_book_81_pairs"]}
     pairs=[]
     for top,stem_fact in heaven.items():
+        if role=="illness" and top not in illness_top_stems:
+            skipped_health_cohosts.append(top)
+            continue
         if not bottom:continue
         candidate=resolve_ordered_pair(top,bottom,door_name=door["symbol"] if door else None)
         stages=[s["stage"] for s in stem_fact.get("palace_twelve_life_facts",())
@@ -94,7 +115,8 @@ def _quantize_one(role,detail,*,five_not_encounter):
         polarity=candidate.get("polarity")
         gate_ok=candidate["status"] in (
             "user_exact_unconditional","user_door_condition_satisfied",
-            "user_gender_condition_satisfied")
+            "user_gender_condition_satisfied",
+            "user_health_explicit_jiayi_override")
         if polarity in ("吉","凶"):
             graded=pattern_grade(
                 polarity=polarity,heaven_stage=stages,
@@ -126,7 +148,9 @@ def _quantize_one(role,detail,*,five_not_encounter):
         "pending":[p["key"] for p in pairs if p["score"] is None],
         "explicit_81_coverage":catalog_validation(),
         "default_tier":"中等","base_per_user_pattern":3,
-        "preserve_book_source_conditions":True}
+        "preserve_book_source_conditions":True,
+        "only_tianrui_carried_stem_if_illness":role=="illness",
+        "skipped_cohost_heaven_stems":skipped_health_cohosts}
     summary=palace_tally(
         factors={"star":star_values,
                  "door":door_out["score"],
@@ -136,9 +160,16 @@ def _quantize_one(role,detail,*,five_not_encounter):
         five_not_encounter=bool(five_not_encounter),
         void_state=detail["void"]["classification"],
         horse_cleared_void=bool(detail["void"].get("horse_cleared_void")))
+    stem_audit={
+        "heaven":[stem_intrinsic_score(x["symbol"]) for x in detail["heaven_stems"]],
+        "earth":stem_intrinsic_score(bottom) if bottom else None,
+        "jia_hidden_cycle":stem_intrinsic_score("甲",xun_shou=xun_shou)
+                            if xun_shou else None,
+        "not_doubled_on_four_categories":True}
     return {"role":role,"palace":detail["palace"],
             "star":star_audit,"door":door_audit,
             "deity":god_audit,"pattern":pattern_audit,
+            "ten_stem_intrinsic":stem_audit,
             "real_heaven_stem_facts":detail["heaven_stems"],
             "real_earth_stem_fact":detail["earth_stem"],
             "palace_score":summary,
@@ -148,7 +179,8 @@ def _quantize_one(role,detail,*,five_not_encounter):
 
 
 def inspect_selected_quantization(*,selected_roles,
-                                  qian_kun_observations,first_stage_macro):
+                                  qian_kun_observations,first_stage_macro,
+                                  xun_shou=None,selected_gender_palace=None):
     """Do not count same real palace twice in numeric summary."""
     five=first_stage_macro["five_not_encounter_triggered"]
     roles={}
@@ -158,7 +190,8 @@ def inspect_selected_quantization(*,selected_roles,
                 "illness","doctor","medicine","patient",
                 "hour","natal","gender"):
             detail=row["complete_palace"]
-            item=_quantize_one(key,detail,five_not_encounter=five)
+            item=_quantize_one(key,detail,five_not_encounter=five,
+                               xun_shou=xun_shou)
             roles[key]=item
             # User: score only truly selected relationship roles; stage-one
             # illness still included. Physical duplicates merge at total.
@@ -167,10 +200,14 @@ def inspect_selected_quantization(*,selected_roles,
     qian_kun={}
     for k,row in qian_kun_observations.items():
         qian_kun[k]=_quantize_one(
-            k,row["complete_palace"],five_not_encounter=five)
+            k,row["complete_palace"],five_not_encounter=five,
+            xun_shou=xun_shou)
         qian_kun[k]["auxiliary_only_not_auto_counted"]=True
+        qian_kun[k]["selected_if_patient_gender_known"]=(
+            row["palace"]==selected_gender_palace)
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
+            "selected_gender_palace":selected_gender_palace,
             "summary":multi_palace_tally(palaces=aggregate),
             "incomplete_conversion_not_silently_scored":True,
             "source_condition_gate_required":True,
@@ -182,6 +219,9 @@ def render_palace_signed_score(item):
     star=item["star"]
     descriptions=[]
     for st in star["per_star"]:
+        if st.get("not_scored_in_illness"):
+            descriptions.append(st["symbol"]+"真实同宫但疾病不另计分")
+            continue
         descriptions.append(
             st["symbol"]+"基准"+str(st.get("baseline","待核"))+
             "，200格现值"+str(st.get("tier") or "待核")+
@@ -200,6 +240,18 @@ def render_palace_signed_score(item):
         "→"+str(god.get("tier") or "待核")+
         ("、"+str(god.get("label"))+"（"+str(god["score"])+"）"
          if god.get("score") is not None else "→待核"))
+    ten=item.get("ten_stem_intrinsic",{})
+    for x in ten.get("heaven",()):
+        descriptions.append("天盘"+x["stem"]+"本体默认"+
+                            ("%+d"%x["baseline"])+"（宫内四项不重复加）")
+    if ten.get("earth"):
+        x=ten["earth"]
+        descriptions.append("地盘"+x["stem"]+"本体默认"+
+                            ("%+d"%x["baseline"])+"（宫内四项不重复加）")
+    if ten.get("jia_hidden_cycle") and ten["jia_hidden_cycle"]["baseline"] is not None:
+        x=ten["jia_hidden_cycle"]
+        descriptions.append(x["xun_shou"]+"遁甲本体默认"+
+                            ("%+d"%x["baseline"])+"（不造可见甲）")
     pattern=item["pattern"]
     if not pattern["matches"]:
         descriptions.append("天地有序格无核定本次候选")
