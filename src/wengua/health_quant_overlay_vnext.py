@@ -279,6 +279,37 @@ def render_palace_signed_score(item):
     return "；".join(descriptions)+"；"+final+"。"
 
 
+def render_palace_compact_score(item):
+    """Customer-facing concise four-category points, no duplicated facts.
+
+    Full provenance remains available under the exact raw JSON and
+    render_palace_signed_score() for developer audits.
+    """
+    def signed(x):
+        return "%+d"%x if isinstance(x,int) else "待核"
+    stars="、".join(x["symbol"]+signed(x.get("score"))
+                   for x in item["star"]["per_star"]
+                   if not x.get("not_scored_in_illness"))
+    door=item["door"]
+    deity=item["deity"]
+    patterns=item["pattern"]["matches"]
+    pq="、".join(x["name"]+signed(x.get("score")) for x in patterns) or "无已核格局"
+    parts=[
+        "星"+(stars or "待核"),
+        "门"+str(door.get("symbol") or "无")+signed(door.get("score")),
+        "神"+str(deity.get("symbol") or "无")+signed(deity.get("score")),
+        "格"+pq,
+    ]
+    pal=item["palace_score"]
+    if pal["score"] is not None:
+        tail=("原始净分"+str(pal["raw_sum"])+
+              "，五档"+str(pal["score"])+pal["grade"])
+    else:
+        tail=("已核小计"+str(pal["known_subtotal"])+
+              "，待核"+"/".join(pal["unresolved_categories"]))
+    return "、".join(parts)+"；"+tail+"。"
+
+
 def render_quant_review(report):
     summary=report["summary"]
     score=summary["score"]
