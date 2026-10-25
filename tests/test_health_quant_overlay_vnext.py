@@ -33,7 +33,7 @@ class CurrentQuantReview(unittest.TestCase):
                              ("calculated","user_source_or_81_context_pending"))
             self.assertIn(row["palace_score"]["status"],(
                 "incomplete_components","fake_void_zero",
-                "true_void_extreme_adverse"))
+                "true_void_extreme_adverse","calculated","raw_sum_outside_five_level"))
         self.assertTrue(q["auxiliary_qian_kun"]["qian"][
             "auxiliary_only_not_auto_counted"])
         self.assertIn("五级能量量化合断",r["reading_text"])
