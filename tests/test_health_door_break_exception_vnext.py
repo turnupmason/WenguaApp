@@ -40,7 +40,8 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
                 self.assertEqual(x["door"]["strength_label"],strength)
                 audited=_quantize_one("medicine",x,five_not_encounter=False)
                 self.assertEqual(audited["door"]["strength"],strength)
-                self.assertEqual(audited["door"]["status"],"door_polarity_rule_pending")
+                self.assertIn(audited["door"]["status"],("calculated","neutral"))
+                self.assertIsNotNone(audited["door"]["score"])
                 self.assertFalse(audited["palace_score"]["door_break"])
                 self.assertEqual(audited["door"]["applied_door_break_shift"],0)
 
@@ -133,11 +134,11 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
         self.assertEqual(palace_tally(
             factors=BASE,void_state="true_void")["score"],-5)
 
-    def test_unverified_door_polarity_is_still_pending(self):
+    def test_user_now_defines_door_intrinsic_polarity(self):
         x=_quantize_one("illness",detail("生门",1),five_not_encounter=False)
-        self.assertIsNone(x["palace_score"]["score"])
-        self.assertIsNone(x["door"]["score"])
-        self.assertIn("door",x["palace_score"]["unresolved_categories"])
+        self.assertIsNotNone(x["door"]["score"])
+        self.assertEqual(x["door"]["baseline"],3)
+        self.assertNotIn("door",x["palace_score"]["unresolved_categories"])
 
 
 if __name__=="__main__":
