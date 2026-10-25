@@ -116,7 +116,8 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         gate_ok=candidate["status"] in (
             "user_exact_unconditional","user_door_condition_satisfied",
             "user_gender_condition_satisfied",
-            "user_health_explicit_jiayi_override")
+            "user_health_explicit_jiayi_override",
+            "user_latest_four_added_with_book_name_conflict")
         if polarity in ("吉","凶"):
             graded=pattern_grade(
                 polarity=polarity,heaven_stage=stages,
