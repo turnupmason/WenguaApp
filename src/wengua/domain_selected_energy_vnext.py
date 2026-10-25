@@ -29,8 +29,8 @@ from .marriage_runtime import ELEMENTS,element_relation
 DOMAIN_CASE_TEMPLATES = {
     ("health", "severity"): (
         "illness", "doctor", "medicine", "patient",
-        "natal_if_provided", "hour", "gender_palace_if_known",
-        "book_profile_auxiliary_if_bound",
+        "natal_if_provided", "hour", "chief_protection",
+        "gender_palace_if_known","book_profile_auxiliary_if_bound",
     ),
 }
 # Exact domain choice of meaningful two-way relationships; not all pairs.
@@ -41,6 +41,7 @@ HEALTH_EDGES = (
     ("natal","illness"),("natal","patient"),
     ("hour","illness"),("hour","patient"),
     ("gender","illness"),("gender","patient"),
+    ("chief","illness"),("chief","patient"),
 )
 # Interpret strong, domain-eligible edges only; neither the table nor
 # the Qian/Kun sex correspondence automatically becomes a verdict vote.
@@ -58,7 +59,8 @@ HEALTH_POLARITY = {
 }
 ROLE_TITLES={"illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
              "patient":"患者用神","natal":"患者年命","hour":"时干事体",
-             "gender":"乾坤性别辅助宫"}
+             "gender":"乾坤性别辅助宫",
+             "chief":"值符护持宫"}
 
 
 def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
@@ -87,6 +89,20 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
                medicine=(yi,"stem","乙"),
                patient=(patient,"stem",actor["stem"]),
                hour=(hour,"stem",chart["hour_ganzhi"][0]))
+
+    # Eight-deity 值符: its ACTUAL palace is a further selected health
+    # protection role, not the eight-star 值符 (or an invented new palace).
+    chief_cells=[c for c in chart["palaces"].values()
+                 if c.get("deity")=="值符"]
+    if len(chief_cells)!=1:
+        raise ValueError("A real cast must have one actual 值符 deity palace")
+    chief_cell=chief_cells[0]
+    if chief_cell["palace"]==5:
+        raise ValueError("Do not invent ordinary middle-five resident god")
+    chief_star=(chief_cell["heaven_stars"][0]["star"]
+                if chief_cell["heaven_stars"] else None)
+    raw["chief"]=(chief_cell,"star" if chief_star else "stem",
+                  chief_star or chief_cell["earth_stem"])
 
     natal_name=inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
     if natal_name and not actor.get("birth_cell"):
@@ -358,7 +374,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "clinical_prediction":False}
     new_quant=inspect_selected_quantization(
         selected_roles=inspected,qian_kun_observations=auxiliary_palaces,
-        first_stage_macro=macro_facts)
+        first_stage_macro=macro_facts,xun_shou=chart["xun_shou"],
+        selected_gender_palace=gender_palace)
     network["candidate_five_grade_quantization"]=new_quant
     interactions={
         "天芮星月令×星宫五行25格":t25,
@@ -401,8 +418,9 @@ def selected_health_sections(result,*,actor,chart):
                ("medicine","04","乙奇医药"),
                ("patient","05","患者用神"),
                ("hour","06","时干事体"),
-               ("natal","07","患者年命"),
-               ("gender","08","乾坤辅助宫"))
+               ("chief","07","值符护持宫"),
+               ("natal","08","患者年命"),
+               ("gender","09","乾坤性别辅助宫"))
     for key,serial,title in key_order:
         if key=="natal" and key not in roles:
             push(serial,title,"患者未提供可核的真实生年干支或落宫，本次不使用年命。")
@@ -433,29 +451,30 @@ def selected_health_sections(result,*,actor,chart):
              "宫内吉凶能量："+render_palace_signed_score(
                  result["candidate_five_grade_quantization"]["roles"][key])+
              "按来源取用，不能仅因旺就判吉。")
-    # These are always real chart palaces, even when patient sex is
-    # unspecified; they remain auxiliary observations, not natal/sex votes.
-    qk=result["qian_kun_auxiliary_observations"]
-    auxiliary_texts=[]
-    for alias in ("qian","kun"):
-        ob=qk[alias]
-        auxiliary_texts.append(
-            ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
-            " 宫内吉凶能量："+render_palace_signed_score(
-                result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias])+
-            " 与天芮病宫"+ob["relation_to_illness"]+
-            "，仅供人物关系辅助，不直接计独立吉凶票。")
-    push("09_qian_kun_auxiliary","乾坤宫辅助观察",
-         " ".join(auxiliary_texts))
+    # Patient-sex auxiliary: male -> Qian six, female -> Kun two. Both
+    # raw actual palace facts stay available internally, but user prose and
+    # verdict use ONLY the appropriate side. Never infer sex from the name.
+    sex_palace=result["gender_palace"]
+    if sex_palace in (2,6):
+        alias="qian" if sex_palace==6 else "kun"
+        ob=result["qian_kun_auxiliary_observations"][alias]
+        qitem=result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias]
+        push("09_gender_palace","男乾女坤辅助",
+             ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
+             " 宫内吉凶能量："+render_palace_signed_score(qitem)+
+             " 与天芮病宫"+ob["relation_to_illness"]+
+             "，只按真实角色及与病宫的关系辅助，不重复实际同宫分数。")
     push("89_quant","五级能量量化合断",
          render_quant_review(result["candidate_five_grade_quantization"]))
     v=result["verdict"];n=result["counts"]
     q=result["candidate_five_grade_quantization"]["summary"]
     if q["score"] is None:
-        conclusion=("最终五级量化吉凶尚不能定；尚有未核的星门神格来源"+
-                    "或尚无合计超五档时的正式分档规则。")
+        conclusion=("已核宫位小计"+str(q["raw_known_sum"])+"分，"+
+                    "暂为"+q["provisional_known_grade"]+
+                    "，但尚有未核来源，不能作为最终吉凶净分。")
     else:
-        conclusion=("最终五级量化象意为"+q["grade"]+
+        conclusion=("宫位原始总净分"+str(q["raw_known_sum"])+
+                    "分，按±5上限判"+q["grade"]+
                     "（"+str(q["score"])+"分）。")
     push("90_review","全部证据合断",
          conclusion+"旧版定性证据仅作对照："+v["label"]+
