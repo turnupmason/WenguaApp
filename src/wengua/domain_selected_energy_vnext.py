@@ -20,6 +20,7 @@ from .health_palace_detailed_vnext import (
     inspect_complete_selected_palace,void_kwargs,render_complete_selected_palace,
     normalize_new_door_relation)
 from .health_role_majority_vnext import assess_disease_relationships
+from .health_relationship_language_vnext import explain_selected_role
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
 from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review,render_palace_compact_score
 from .marriage_runtime import ELEMENTS,element_relation
@@ -434,12 +435,11 @@ def selected_health_sections(result,*,actor,chart):
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
-        group=result["role_group_majority"]["reviews"].get(key)
-        if group:
-            outcome=("偏吉" if group["direction"]=="favorable" else
-                     "偏凶" if group["direction"]=="adverse" else "待核")
-            text+=(" 对天芮病宫"+group["relation"]+"；"+group["why"]+
-                   "；本组"+outcome+"。")
+        # Interpret the ACTUAL 200-cell palace attack/defence, rather than
+        # only reciting raw 克/生 or ambiguous independent votes.
+        if key!="illness":
+            text+=" "+explain_selected_role(
+                role=key,roles=roles,edges=edges)
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
         push(serial,title,text)
