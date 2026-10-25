@@ -1,13 +1,9 @@
-"""Real selected-palace adapter to NEW user five-grade research arithmetic.
+"""2026-10-24 current user classification: signed real palace star/door/god/pattern.
 
-This layer cannot invent:
- - intrinsic polarity for all nine stars, especially neutral/conditional stars;
- - door polarity in severity; the two named 门破 penalty exemptions ARE now verified;
- - a numeric deity power conversion (prior source has only 更/微 吉凶);
- - a source-verified 吉/凶 designation plus all executable gates for 81
-   ordered heaven+earth stem patterns.
-All those facts are saved rather than guessed, so a numeric final can be
-pending even though the hand-authored example is exactly reproducible.
+Every real resident star contributes; god follows five palace relationships
+WITHOUT month, and neutral Du/Jing doors contribute explicit zero. Exact
+source-specific 81 stem-pair exceptions, two-branch life uncertainty and
+unknown final >5 grade bands are audit-gated. Frozen V3.9.1 is untouched.
 """
 from __future__ import annotations
 
@@ -15,70 +11,127 @@ from .health_five_level_quant_vnext import (
     points,palace_tally,multi_palace_tally,pattern_grade,VERSION,
     door_break_penalty_policy)
 
-# Role-bound condition only, not a universal auspice claim about all stars.
-ROLE_STAR_POLARITY={"illness":("天芮星","凶"),
-                    "doctor":("天心星","吉")}
+from .health_intrinsic_scoring_vnext import (
+    star_score,door_score,god_score,resolve_ordered_pair,
+    catalog_validation,VERSION as INTRINSIC_VERSION)
+from .health_five_level_quant_vnext import label as grade_label
+
+def _matching_restriction(entries,stem):
+    """Only a genuinely explicit stem-labelled source fact matches."""
+    for item in entries:
+        if isinstance(item,dict):
+            label=item.get("stem") or item.get("heaven_stem") or item.get("earth_stem")
+            if label==stem:return True
+        elif item==stem:return True
+    return False
 
 
 def _quantize_one(role,detail,*,five_not_encounter):
+    """Score the four categories using user's latest exact symbolic rules.
+
+    Four categories can contain multiple REAL stars or 81 pairs, but not
+    multiple invented votes for a single chart source. Per factor baseline
+    remains visible beside actual 200-cell strength.
+    """
     if detail["palace"]==5:
         raise ValueError("No invented middle-five star/door/god")
-    star_score=None
-    star_audit={"status":"source_polarity_pending"}
-    selected=ROLE_STAR_POLARITY.get(role)
-    if selected:
-        name,sign=selected
-        chosen=next((x["strength"] for x in detail["stars"]
-                     if x["name"]==name),None)
-        if chosen and chosen.get("strength_label"):
-            star_score=points(chosen["strength_label"],sign)
-            star_audit={"status":"calculated","symbol":name,
-                        "tier":chosen["strength_label"],
-                        "polarity":sign,"score":star_score,
-                        "scope":"health_role_not_general_star_definition"}
+    star_entries=[]
+    for entry in detail["stars"]:
+        st=entry["strength"]
+        star_entries.append(star_score(entry["name"],st.get("strength_label")))
+    valid_stars=[x["score"] for x in star_entries if x.get("score") is not None]
+    star_values=(valid_stars[0] if len(valid_stars)==1
+                 else valid_stars if len(valid_stars)>1 else None)
+    if len(valid_stars)!=len(star_entries):star_values=None
+    star_audit={
+        "status":"calculated" if star_values is not None else "some_real_star_strength_pending",
+        "per_star":star_entries,
+        "score":sum(valid_stars) if star_values is not None else None,
+        "intrinsic_baselines":[v.get("baseline") for v in star_entries],
+        "co_palace_source_stars_not_silenced":True,
+        "user_rule_version":INTRINSIC_VERSION,
+        "polarity":next((x["polarity"] for x in star_entries if
+                         x.get("polarity") is not None),None),
+    }
     door=detail["door"]
-    # Current source explicitly exempts TWO physical 门破 cases from the
-    # added two-level penalty. Their actual monthly 25-cell power remains
-    # unchanged, and the door's separate health-topic auspice polarity is
-    # still source-pending (never auto-score a door as 吉/凶).
     door_policy=(door_break_penalty_policy(
         door_name=door["symbol"],palace=detail["palace"],
         door_relation=door["user_cell_col"])
         if door else None)
-    door_audit={
-        "status":"door_polarity_rule_pending",
-        "symbol":door["symbol"] if door else None,
+    door_out=(door_score(door["symbol"],door.get("strength_label"))
+              if door else {"status":"no_real_door","score":None})
+    door_audit={**door_out,"symbol":door["symbol"] if door else None,
         "strength":door.get("strength_label") if door else None,
         "symbol_palace_relation":door.get("user_cell_col") if door else None,
         "penalty_policy":door_policy,
         "applied_door_break_shift":door_policy["two_level_shift"] if door_policy else 0,
         "strength_lookup_unchanged":True,
-        "score":None,
-    }
+        "neutral_door_is_known_zero":door_out.get("score")==0}
     deity=detail["deity"]
-    god_audit={
-        "status":"deity_five_tier_conversion_missing",
-        "symbol":deity["name"],"auspice":deity["polarity"],
-        "nominal_relation":deity["relation"],
-        "month_stage_is_not_used":True}
-    # An 81 title is evidence that the ordered pair occurred, NOT that
-    # its actual 吉凶 predicate was fully true in the user inquiry.
-    patterns=[]
-    for pair in detail["ordered_book_81_pairs"]:
-        patterns.append({
-            "fact_id":pair["fact_id"],"name":pair["name"],
-            "status":"source_pattern_auspice_and_gate_pending",
-            "eligible":pair["can_vote"],
-            "reason":pair["reason"],
-            "source_line_internal":pair["source_line_internal"],
-            "source_sha256_internal":pair["source_sha256_internal"]})
-    pattern_audit={"status":"pattern_full_source_gate_and_polarity_pending",
-                   "matches":patterns,"default_tier":"中等",
-                   "verified_81_pattern_count":sum(1 for p in patterns if p["eligible"])}
-    # Always inspect strength data for real heavenly stems and Earth stem,
-    # but do not invent 81 吉/凶 conversion before the source gating.
+    god_audit=god_score(deity["name"],deity.get("nominal_relation"))
+    god_audit.update({"auspice":deity["polarity"],"relation":deity["relation"],
+        "month_stage_is_not_used":True,
+        "intrinsic_polarity_is_user_explicit":True})
+    earth=detail["earth_stem"]
+    bottom=earth["symbol"] if earth else None
+    heaven={x["symbol"]:x for x in detail["heaven_stems"]}
+    origin={(p["heaven"],p["earth"]):p
+            for p in detail["ordered_book_81_pairs"]}
+    pairs=[]
+    for top,stem_fact in heaven.items():
+        if not bottom:continue
+        candidate=resolve_ordered_pair(top,bottom,door_name=door["symbol"] if door else None)
+        stages=[s["stage"] for s in stem_fact.get("palace_twelve_life_facts",())
+                if s.get("stage")]
+        if not stages: stages=None
+        # Restriction facts must identify the SPECIFIC original stem; don't
+        # charge another cohost's tomb twice.
+        heavenly_tomb=_matching_restriction(detail.get("sky_tombs",()),top)
+        earthly_tomb=_matching_restriction(detail.get("earth_tombs",()),bottom)
+        heaven_penalty=_matching_restriction(detail.get("striking_stems",()),top)
+        earth_penalty=_matching_restriction(detail.get("striking_stems",()),bottom)
+        actual_source=origin.get((top,bottom))
+        polarity=candidate.get("polarity")
+        gate_ok=candidate["status"] in (
+            "user_exact_unconditional","user_door_condition_satisfied",
+            "user_gender_condition_satisfied")
+        if polarity in ("吉","凶"):
+            graded=pattern_grade(
+                polarity=polarity,heaven_stage=stages,
+                heaven_tomb=heavenly_tomb,earth_tomb=earthly_tomb,
+                heaven_punishment=heaven_penalty,earth_punishment=earth_penalty,
+                source_gate_verified=gate_ok)
+        else:
+            graded={"status":"source_polarity_or_context_pending","score":None}
+        pairs.append({
+            "key":candidate["key"],"name":candidate["user_rows"][0]["title"] if candidate["user_rows"] else "未分类",
+            "source_rule":candidate,
+            "actual_book_source":actual_source,
+            "heaven_lifecycle":stages,
+            "grade":graded,
+            "score":graded.get("score"),
+            "status":graded.get("status"),
+            "book_illness_conflict":candidate["status"]=="book_illness_conflict_pending",
+            "no_invented_author_outcome":True,
+        })
+    applied=[p["score"] for p in pairs if p["score"] is not None]
+    pattern_score=(0 if not pairs else
+                   applied[0] if len(applied)==len(pairs)==1 else
+                   applied if len(applied)==len(pairs) else None)
+    pattern_audit={
+        "status":("calculated" if pattern_score is not None
+                  else "user_source_or_81_context_pending"),
+        "matches":pairs,
+        "score":sum(applied) if pattern_score is not None else None,
+        "pending":[p["key"] for p in pairs if p["score"] is None],
+        "explicit_81_coverage":catalog_validation(),
+        "default_tier":"中等","base_per_user_pattern":3,
+        "preserve_book_source_conditions":True}
     summary=palace_tally(
-        factors={"star":star_score,"door":None,"deity":None,"pattern":None},
+        factors={"star":star_values,
+                 "door":door_out["score"],
+                 "deity":god_audit.get("score"),
+                 "pattern":pattern_score},
         door_break=bool(door_policy and door_policy["apply_extra_two_level_shift"]),
         five_not_encounter=bool(five_not_encounter),
         void_state=detail["void"]["classification"],
@@ -89,6 +142,8 @@ def _quantize_one(role,detail,*,five_not_encounter):
             "real_heaven_stem_facts":detail["heaven_stems"],
             "real_earth_stem_fact":detail["earth_stem"],
             "palace_score":summary,
+            "intrinsic_user_baselines_applied":True,
+            "source_coverage":catalog_validation(),
             "scope":"user_candidate_health_severity_not_clinical"}
 
 
