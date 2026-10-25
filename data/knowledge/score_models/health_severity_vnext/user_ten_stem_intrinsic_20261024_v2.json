@@ -1,0 +1,35 @@
+{
+  "schema": "wengua_health_ten_heavenly_stems_user_intrinsic_20261024_v2",
+  "effective_subtopic": "health/severity",
+  "provenance": "latest_explicit_user_20261024",
+  "stems": {
+    "乙": 3,
+    "丙": 3,
+    "丁": 3,
+    "戊": 0,
+    "己": 0,
+    "庚": -3,
+    "辛": 0,
+    "壬": 0,
+    "癸": 0
+  },
+  "jia_hidden": {
+    "甲申": "庚"
+  },
+  "jia_hidden_baselines": {
+    "甲申": -3,
+    "甲子": 0,
+    "甲戌": 0,
+    "甲午": 0,
+    "甲辰": 0,
+    "甲寅": 0
+  },
+  "rules": [
+    "乙丙丁中吉默认+3",
+    "戊己辛壬癸中平0",
+    "庚中凶默认-3",
+    "甲申遁庚默认-3，其余甲旬首中平0",
+    "实际能量依200格/十二长生记录；干本体默认为身份/格局解释标签，不在用户固定四项宫分(星门神格)上重复计分"
+  ],
+  "medical_validity": false
+}
