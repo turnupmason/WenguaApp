@@ -61,7 +61,7 @@ class CompactTables(unittest.TestCase):
 
     def test_only_registered_subtype_is_eligible(self):
         self.assertEqual(set(DOMAIN_CASE_TEMPLATES),{("health","severity")})
-        self.assertEqual(len(HEALTH_EDGES),12)
+        self.assertEqual(len(HEALTH_EDGES),14)  # includes verified real 值符->病宫/患者宫
 
 
 class SelectedRealCases(unittest.TestCase):
