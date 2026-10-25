@@ -1,0 +1,19 @@
+{
+  "version": "user_81_completed_20261024_v3_original_book_names_preserved",
+  "file": "WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3",
+  "bytes": 15202304,
+  "sha256": "91464a3392d4aa6887e030204d6eedbaa710e35d3355a366d9d720e62176568d",
+  "compressed_bytes": 1215144,
+  "base_historical_file": "WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3",
+  "existing_old_table_counts_preserved": true,
+  "old_table_count": 249,
+  "new_tables": {
+    "health_ordered_pair_current_v3_20261024": 82,
+    "health_ordered_pair_coverage_v3_20261024": 81,
+    "health_user_book_name_conflict_v3_20261024": 4,
+    "health_runtime_rule_metadata_v3_20261024": 8
+  },
+  "integrity_check": "ok",
+  "never_replace_source": true,
+  "not_clinical": true
+}
