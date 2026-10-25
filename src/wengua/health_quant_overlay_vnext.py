@@ -215,10 +215,13 @@ def render_palace_signed_score(item):
         final="本宫当前"+str(palace["score"])+"分："+palace["grade"]
     elif palace["score"] is not None:
         final="本宫当前"+str(palace["score"])+"分（"+str(palace["status"])+"）"
+    elif palace["status"]=="raw_sum_outside_five_level":
+        final=("本宫原始净分"+str(palace["raw_sum"])+
+               "，绝对值超过5；已有真实计算值，但用户尚未规定跨档归并方法，不虚写极大吉凶")
     else:
         final=("本宫已核分项小计"+str(palace["known_subtotal"])+
                "，尚缺"+"/".join(palace["unresolved_categories"])+
-               "；总分/五级待核（"+palace["status"]+"）")
+               "；最终五级待核（"+palace["status"]+"）")
     return "；".join(descriptions)+"；"+final+"。"
 
 
