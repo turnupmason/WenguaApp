@@ -70,8 +70,9 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         self.assertIsNone(chief["month_stage"])
         self.assertEqual(chief["strength"],GOD_RELATIONS[
             details["deity"]["nominal_relation"]])
-        self.assertIn("resident_star_strength_for_context_only",
-                      report["selected_roles"]["chief"])
+        # Public preview exports full palace facts, not internal role cache.
+        self.assertEqual(details["primary_strength"]["kind"],"deity")
+        self.assertTrue(details["stars"])  # original co-host star still shown
         self.assertIn("克制",report["reading_text"])
         self.assertIn("宫内吉凶能量",report["reading_text"])
 
