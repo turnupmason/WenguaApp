@@ -175,6 +175,28 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
             chart=chart,cell=cell,record=view,month_branch=month,
             primary_factor=energy,matched_pairs=matched_pairs)
         view["void_classification"]=view["complete_palace"]["void"]["classification"]
+        if key=="chief":
+            # 值符 is the ACTUAL eight-deity signifier. Its power is taken
+            # from the user's five deity/palace relationships WITHOUT a
+            # month status. Do not silently use the resident star as the
+            # chief god when comparing protection vs illness.
+            from .health_intrinsic_scoring_vnext import GOD_RELATIONS
+            dg=view["complete_palace"]["deity"]
+            if dg["name"]!="值符" or dg["nominal_relation"] not in GOD_RELATIONS:
+                raise ValueError("Real chief deity lacks palace relationship")
+            value_strength={
+                **energy,
+                "kind":"deity","symbol":"值符",
+                "symbol_element":dg["symbol_element"],
+                "symbol_month_stage":None,
+                "strength_label":GOD_RELATIONS[dg["nominal_relation"]],
+                "fact_id":"chief_deity:值符:"+str(index)+":"+month,
+                "table_version":"user_eight_deity_palace_five_relations_20261024",
+                "god_relation_no_month_stage":dg["nominal_relation"],
+                "source_200_cell_deity_without_month":True}
+            view["resident_star_strength_for_context_only"]=energy
+            view["primary_strength_25"]=value_strength
+            view["complete_palace"]["primary_strength"]=value_strength
         inspected[key]=view
 
     # User's latest instruction: ALWAYS observe the real 乾、坤 palaces
