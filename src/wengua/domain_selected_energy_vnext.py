@@ -21,7 +21,7 @@ from .health_palace_detailed_vnext import (
     normalize_new_door_relation)
 from .health_role_majority_vnext import assess_disease_relationships
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
-from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review,render_palace_signed_score
+from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review,render_palace_compact_score
 from .marriage_runtime import ELEMENTS,element_relation
 
 # Other subtopics will be added only when their original source conditions
@@ -430,7 +430,7 @@ def selected_health_sections(result,*,actor,chart):
         text=render_complete_selected_palace(r["complete_palace"])
         qrole=result["candidate_five_grade_quantization"]["roles"].get(key)
         if qrole:
-            text+=" 宫内吉凶能量："+render_palace_signed_score(qrole)
+            text+=" 宫内吉凶能量："+render_palace_compact_score(qrole)
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
@@ -448,7 +448,7 @@ def selected_health_sections(result,*,actor,chart):
         x=roles[key]
         push("08_"+key,"源书辅助宫",
              render_complete_selected_palace(x["complete_palace"])+
-             "宫内吉凶能量："+render_palace_signed_score(
+             "宫内吉凶能量："+render_palace_compact_score(
                  result["candidate_five_grade_quantization"]["roles"][key])+
              "按来源取用，不能仅因旺就判吉。")
     # Patient-sex auxiliary: male -> Qian six, female -> Kun two. Both
@@ -461,10 +461,10 @@ def selected_health_sections(result,*,actor,chart):
         qitem=result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias]
         push("09_gender_palace","男乾女坤辅助",
              ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
-             " 宫内吉凶能量："+render_palace_signed_score(qitem)+
+             " 宫内吉凶能量："+render_palace_compact_score(qitem)+
              " 与天芮病宫"+ob["relation_to_illness"]+
              "，只按真实角色及与病宫的关系辅助，不重复实际同宫分数。")
-    push("89_quant","五级能量量化合断",
+    push("89_quant","宫位五级吉凶净分合断",
          render_quant_review(result["candidate_five_grade_quantization"]))
     v=result["verdict"];n=result["counts"]
     q=result["candidate_five_grade_quantization"]["summary"]
