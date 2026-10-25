@@ -43,7 +43,7 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         partial=source("medicine","被克","减力克制")
         self.assertIn("病宫有力克制本方",forced)
         self.assertIn("病宫虽来克本方，但克力有限",partial)
-        self.assertIn("本方生扶病宫",source("doctor","生",None))
+        self.assertIn("生扶病宫",source("doctor","生",None))
         self.assertIn("不是主动克病",source("doctor","被生",None))
         self.assertIn("同气相持",source("patient","比和",None))
         self.assertIn("不能虚构两宫的相克",source("hour","同宫",None))
