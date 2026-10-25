@@ -17,8 +17,8 @@ class CurrentQuantReview(unittest.TestCase):
         r=self.report
         net=r["full_health_role_strength_network"]
         q=net["candidate_five_grade_quantization"]
-        self.assertIn(q["summary"]["status"],("unresolved_palaces","raw_total_outside_five_level"))
-        self.assertIsNone(q["summary"]["score"])
+        self.assertIn(q["summary"]["status"],("unresolved_palaces","saturated_five_grade","calculated"))
+        self.assertEqual(q["summary"]["score"],None if q["summary"]["pending_palaces"] else q["summary"]["score"])
         self.assertEqual(q["roles"]["illness"]["star"]["polarity"],"凶")
         self.assertEqual(q["roles"]["doctor"]["star"]["polarity"],"吉")
         for role in ("illness","doctor","patient","medicine","hour"):
@@ -33,11 +33,11 @@ class CurrentQuantReview(unittest.TestCase):
                              ("calculated","user_source_or_81_context_pending"))
             self.assertIn(row["palace_score"]["status"],(
                 "incomplete_components","fake_void_zero",
-                "true_void_extreme_adverse","calculated","raw_sum_outside_five_level"))
+                "true_void_extreme_adverse","calculated","saturated_five_grade"))
         self.assertTrue(q["auxiliary_qian_kun"]["qian"][
             "auxiliary_only_not_auto_counted"])
         self.assertIn("五级能量量化合断",r["reading_text"])
-        self.assertIn("暂不生成虚构的极大吉",render_quant_review(q))
+        self.assertIn("±5",render_quant_review(q))
 
     def test_selected_role_real_void_always_matches_new_priority(self):
         q=self.report["full_health_role_strength_network"][
