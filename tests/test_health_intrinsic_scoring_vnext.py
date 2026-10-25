@@ -97,7 +97,7 @@ class LiteralPolarityTests(unittest.TestCase):
             self.assertIn("神基准",render_palace_signed_score(d))
             self.assertIn("门基准",render_palace_signed_score(d))
         self.assertIn("宫内吉凶能量",out["reading_text"])
-        self.assertIn("五级能量量化合断",out["reading_text"])
+        self.assertIn("宫位五级吉凶净分合断",out["reading_text"])
         self.assertTrue(q["not_a_medical_diagnosis"])
 
 
