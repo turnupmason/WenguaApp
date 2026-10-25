@@ -11,6 +11,8 @@ on:
       - 'src/wengua/health_macro_facts_vnext.py'
       - 'src/wengua/health_five_level_quant_vnext.py'
       - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'src/wengua/health_intrinsic_scoring_vnext.py'
+      - 'data/knowledge/score_models/health_severity_vnext/**'
       - 'src/wengua/selected_duel_table_vnext.py'
       - 'src/wengua/user_domain_matrices_20261023.py'
       - 'src/wengua/health_full_role_network_vnext.py'
@@ -28,8 +30,11 @@ on:
       - 'tests/test_health_first_macro_vnext.py'
       - 'tests/test_health_five_level_quant_vnext.py'
       - 'tests/test_health_quant_overlay_vnext.py'
+      - 'tests/test_health_intrinsic_scoring_vnext.py'
       - 'tests/test_health_door_break_exception_vnext.py'
       - 'scripts/preview_health_random_complete_20261024.py'
+      - 'scripts/preview_health_random_2025_intrinsic_vnext.py'
+      - 'scripts/archive_health_intrinsic_sqlite_20261024.py'
       - 'tests/test_factor_energy_25_rules.py'
       - 'tests/test_factor_energy_combinations.py'
       - 'tests/test_health_tianrui_25_matrix.py'
@@ -61,6 +66,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_first_macro_vnext.py -v
           python -m unittest discover -s tests -p test_health_five_level_quant_vnext.py -v
           python -m unittest discover -s tests -p test_health_quant_overlay_vnext.py -v
+          python -m unittest discover -s tests -p test_health_intrinsic_scoring_vnext.py -v
           python -m unittest discover -s tests -p test_health_door_break_exception_vnext.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
@@ -70,6 +76,7 @@ jobs:
           python -m scripts.preview_health_vnext_conditional "artifacts/vnext_review_examples_python_${{ matrix.python-version }}.json"
           python -m scripts.preview_health_tianrui_25 "artifacts/tianrui_25_python_${{ matrix.python-version }}.json"
           python -m scripts.preview_health_random_complete_20261024 "artifacts/random_health_complete_python_${{ matrix.python-version }}.json"
+          python -m scripts.preview_health_random_2025_intrinsic_vnext "artifacts/random_health_2025_intrinsic_python_${{ matrix.python-version }}.json"
       - name: Preserve comparison and failures
         if: always()
         uses: actions/upload-artifact@v4
