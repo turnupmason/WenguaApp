@@ -133,7 +133,8 @@ class UserAuthoredCells(unittest.TestCase):
         # Revised complete-palace narrative only cites a control matrix when
         # an actually selected role has a real eligible 克 direction; the
         # fixed live chart can have no such usable edge.
-        self.assertIn("对天芮病宫",result["reading_text"])
+        self.assertIn("天芮病宫",result["reading_text"])
+        self.assertIn("天心医生宫",result["reading_text"])
         self.assertIn("八神",result["reading_text"])
         self.assertIn("八门",result["reading_text"])
         self.assertNotIn("宫位对抗「",result["reading_text"])
