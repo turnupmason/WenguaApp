@@ -3,7 +3,7 @@
 This is the CURRENT candidate rule layer, not frozen V3.9.1 or obsolete
 V4.2 0–100 scoring. Literal defaults are recorded separately from the
 month/palace five-tier ACTUAL strength; no unsupported ad-hoc interpolation.
-Ordered 81 positions: user only supplied 77 distinct pairs, one twice.
+Ordered 81 unique positions completed by user: 82 rows, retaining one duplicated 庚/己 source record.
 Historic original book disease-specific contradictions remain blocked.
 """
 from __future__ import annotations
@@ -16,7 +16,7 @@ from .user_domain_matrices_20261023 import COLS
 
 CATALOG_PATH=Path(__file__).resolve().parents[2]/(
     "data/knowledge/score_models/health_severity_vnext/"
-    "user_intrinsic_and_ordered_pairs_20261024.json")
+    "user_intrinsic_and_ordered_pairs_20261024_v3_81_completed.json")
 CATALOG=json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 STARS=CATALOG["stars"]
 DOORS=CATALOG["doors"]
@@ -36,10 +36,10 @@ NEGATIVE_DOORS=frozenset(("死门","惊门","伤门"))
 NEUTRAL_DOORS=frozenset(("杜门","景门"))
 
 assert len(STARS)==9 and len(DOORS)==8 and len(GODS)==8
-assert len(USER_PATTERN_ROWS)==78 and len(PAIR_ROWS)==77
-assert len(CATALOG["coverage"]["missing_pairs"])==4
+assert len(USER_PATTERN_ROWS)==82 and len(PAIR_ROWS)==81
+assert len(CATALOG["coverage"]["missing_pairs"])==0
 assert set(GOD_RELATIONS)=={"符号生宫","符号克宫","比和","宫克符号","宫生符号"}
-VERSION="health_user_intrinsic_baselines_200_cell_v20261024_v2_stems"
+VERSION="health_user_intrinsic_baselines_200_cell_v20261024_v3_81complete"
 
 
 def _signed_power(name,source,actual_tier):
@@ -122,7 +122,7 @@ def resolve_ordered_pair(top,bottom,*,door_name=None,illness_domain=True,
                          sex=None):
     """Literal supplied declaration by ORDERED pair; no book title fuzzy match.
 
-    User input has one duplicated pair 庚/己 and four unspecified rows.
+    User completed the last four pairs; 庚/己 retains two historical source variants.
     Original books explicitly disagree on particular generic favourable
     patterns for measuring illness, so preserve source conflict without
     taking the optimistic outcome as qualified sickness evidence.
@@ -135,6 +135,19 @@ def resolve_ordered_pair(top,bottom,*,door_name=None,illness_domain=True,
     if not declared:
         return {**base,"status":"user_pair_not_supplied",
                 "reason":"用户本次81种有序组合中此项未单独给吉凶；保留既存原书来源"}
+    if len(declared)==1 and declared[0].get("user_supplied") and declared[0].get("book_title_mismatch"):
+        # Latest USER-DECLARED name/polarity drives current scoring, while
+        # the distinct ancient-book name+SHA is retained for future
+        # line-by-line interpretation and NEVER silently relabelled.
+        row=declared[0]
+        return {**base,"status":"user_latest_four_added_with_book_name_conflict",
+                "polarity":row["polarity"],"baseline":row["baseline"],
+                "conditional":False,"user_title":row["title"],
+                "book_excerpt_sha256":row["book_excerpt_sha256"],
+                "book_source_line":row["book_source_line"],
+                "book_original_excerpt":row["book_original_title_from_source"],
+                "original_book_name_not_overwritten":True,
+                "reason":"用户补齐81格按最新基础吉凶分；古籍同有序组合名称不同，双版本并存"}
     if len(declared)!=1:
         return {**base,"status":"duplicate_user_pair_variants_pending",
                 "reason":"相同有序天地干出现多种断语，不以最后一条自动覆盖条件格"}
