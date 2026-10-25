@@ -4,7 +4,8 @@ Only the user-registered health severity roles are candidates. A matched
 control 5x5 grid is consulted at most once in the ACTUAL control direction;
 nominal 五行生/同宫 does not silently become a fabricated control outcome.
 Physical pairs are deduplicated; one doctor+medicine co-palace is not two votes.
-No modern health prediction or numeric health SCORE.
+Candidate signed scoring is implemented independently; this legacy evidence
+vote is preserved as explanation, NOT a replacement for raw ±5 user score.
 """
 from __future__ import annotations
 
@@ -12,7 +13,7 @@ from .selected_duel_table_vnext import (
     matchup,CONTROL_CONFIDENT,CONTROL_LIMITED)
 from .health_palace_detailed_vnext import void_kwargs
 
-GROUP_ROLES=("doctor","medicine","patient","hour","natal","gender")
+GROUP_ROLES=("doctor","medicine","patient","hour","natal","gender","chief")
 CONTROL_IMPAIRED=frozenset((
     "克制失效","完全失控","系统性失控","反侮受损","终极解体","丧失能力",
 ))
