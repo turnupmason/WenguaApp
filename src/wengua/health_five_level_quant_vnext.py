@@ -4,9 +4,7 @@ This is a SEPARATE, explicitly new candidate method, NOT resurrecting discarded
 V4.2 scores, NOT changing frozen V3.9.1, and NOT a medical diagnosis.
 
 Transparent +1..+5 for 吉, -1..-5 for 凶, 0 exclusively neutral/假空.
-Only evidence with a chosen source-backed polarity and five-level tier enters
-a fixed total. Missing dual-door rule, deity tier, unverified 81-case polarity,
-or two-branched lifecycle does NOT silently become medium strength.
+Only actually grounded symbol polarity with a real five-level energy enters\na resolved current score. Neutral doors are explicit zero; same-palace\nstars and actual ordered pairs are preserved individually, never clamped.
 """
 from __future__ import annotations
 
@@ -154,14 +152,27 @@ def palace_tally(*,factors,door_break=False,five_not_encounter=False,
         raise ValueError("Horse-cleared void must be not_void")
     if len(factors)!=4 or set(factors)!=set(("star","door","deity","pattern")):
         raise ValueError("Need all four named categories; use None if source pending")
-    seen={};unresolved=[]
+    seen={};unresolved=[];instances={}
     for k,v in factors.items():
         if v is None:
             unresolved.append(k)
             continue
-        if not isinstance(v,int) or isinstance(v,bool) or v==0 or abs(v)>5:
-            raise ValueError("Resolved component needs signed level +/-1..5")
-        seen[k]=v
+        # Latest user rule: neutral 杜/景门 are *known zero* rather than an
+        # unknown polarity. Multiple real stars (天禽同宫) and ordered
+        # stem pairs remain distinct source audit items within the category.
+        if isinstance(v,(list,tuple)):
+            if k not in ("star","pattern") or not v:
+                raise ValueError("Only star and pattern can contain multiple real items")
+            components=tuple(v)
+        else:
+            components=(v,)
+        for score in components:
+            if (not isinstance(score,int) or isinstance(score,bool)
+                    or abs(score)>5 or
+                    (score==0 and k not in ("door","pattern"))):
+                raise ValueError("Resolved component needs signed tier; only neutral door or absent pattern can be zero")
+        instances[k]=list(components)
+        seen[k]=sum(components)
     subtotal=sum(seen.values())
     original_sum=subtotal if not unresolved else None
     if void_state=="fake_void":
@@ -180,6 +191,8 @@ def palace_tally(*,factors,door_break=False,five_not_encounter=False,
         if door_break:final=adverse_shift(final,2)
         status="calculated"
     return {"version":VERSION,"status":status,"components":seen,
+            "component_instances":instances,
+            "known_neutral_door":factors.get("door")==0,
             "unresolved_categories":unresolved,
             "known_subtotal":subtotal,
             "raw_sum":original_sum,
