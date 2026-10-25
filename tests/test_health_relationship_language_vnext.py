@@ -47,7 +47,7 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         self.assertIn("不是主动克病",source("doctor","被生",None))
         self.assertIn("同气相持",source("patient","比和",None))
         self.assertIn("不能虚构两宫的相克",source("hour","同宫",None))
-        self.assertIn("不能",source("chief","克",None,status="factor_power_pending"))
+        self.assertIn("尚未形成唯一有效结论",source("chief","克",None,status="factor_power_pending"))
 
     def test_real_caster_selected_roles_have_grounded_prose(self):
         report=auto_cast_health_review_text(
