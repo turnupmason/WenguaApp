@@ -302,8 +302,15 @@ def render_palace_compact_score(item):
     ]
     pal=item["palace_score"]
     if pal["score"] is not None:
-        tail=("原始净分"+str(pal["raw_sum"])+
-              "，五档"+str(pal["score"])+pal["grade"])
+        if pal["void_state"]=="fake_void":
+            tail=("假空当前计0分（原始已核项"+
+                  str(pal["known_subtotal"])+"；未核格局不强定）")
+        elif pal["void_state"]=="true_void":
+            tail=("真空按当前规则计-5分极大凶；"+
+                  "宫内原始已核项"+str(pal["known_subtotal"]))
+        else:
+            tail=("原始净分"+str(pal["raw_sum"])+
+                  "，五档"+str(pal["score"])+pal["grade"])
     else:
         tail=("已核小计"+str(pal["known_subtotal"])+
               "，待核"+"/".join(pal["unresolved_categories"]))
