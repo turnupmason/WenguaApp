@@ -1,0 +1,30 @@
+{
+  "status": "append_only_complete_SQLite_snap_vnext",
+  "source_sqlite": "WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3",
+  "new_sqlite": "WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3",
+  "size_bytes": 15163392,
+  "xz_bytes": 1212452,
+  "sha256": "9ff6962828f2201592d5e3c3be1ffff4280948bec2d3af024fde654e27446bdc",
+  "xz_sha256": "e6b0151dc6691304992052834aed96919d70acd462d5bf6228f63e83da14a3d1",
+  "original_sqlite_table_rows_unchanged": 244,
+  "catalog_table_rows": {
+    "intrinsic_baselines": 25,
+    "god_physical_relations": 5,
+    "user_pattern_rows": 78,
+    "ordered_pair_positions": 81,
+    "unique_user_pairs": 77
+  },
+  "unclassified_user_pairs": [
+    "乙/壬",
+    "乙/癸",
+    "丙/癸",
+    "戊/乙"
+  ],
+  "ambiguous_user_pairs": [
+    {
+      "key": "庚/己",
+      "count": 2
+    }
+  ],
+  "not_a_medical_assessment": true
+}
