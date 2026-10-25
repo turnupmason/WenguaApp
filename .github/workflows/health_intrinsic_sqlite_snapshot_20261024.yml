@@ -1,0 +1,47 @@
+name: User 2026-10-24 Health Intrinsic SQLite Archive (194 cases retained)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_intrinsic_sqlite_snapshot_20261024.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: user-health-20261024-sqlite-archive
+  cancel-in-progress: false
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify current user baselines and full 194-case source archive
+        run: |
+          python -m unittest discover -s tests -p test_health_intrinsic_scoring_vnext.py -v
+          python -m scripts.archive_health_intrinsic_sqlite_20261024
+      - name: Preserve generated SQL snapshot as downloadable artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wengua-health-intrinsic-194-cases-sqlite-vnext-20261024
+          path: |
+            archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3
+            archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3.xz
+            archives/sqlite/wengua_health_intrinsic_20261024_manifest.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Commit NEW full SQLite and xz to GitHub main, keep all old archives
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3" "archives/sqlite/WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3.xz" "archives/sqlite/wengua_health_intrinsic_20261024_manifest.json"
+          git diff --cached --quiet && { echo "Already archived in main"; exit 0; }
+          git commit -m "Archive new complete 194-case SQLite with 9-star 8-door 8-deity and 78 user ordered-pair classification records"
+          git push origin HEAD:main
+          echo "New SQL archive committed, old database snapshot unchanged"
