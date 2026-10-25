@@ -62,6 +62,16 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
                   "patient":"患者用神","hour":"时干事体",
                   "chief":"值符大吉神"}[key]
             self.assertIn(term,report["reading_text"])
+        chief=net["nodes"]["chief"]
+        details=net["complete_selected_palace_audits"]["chief"]
+        from src.wengua.health_intrinsic_scoring_vnext import GOD_RELATIONS
+        self.assertEqual(chief["symbol"],"值符")
+        self.assertEqual(chief["kind"],"deity")
+        self.assertIsNone(chief["month_stage"])
+        self.assertEqual(chief["strength"],GOD_RELATIONS[
+            details["deity"]["nominal_relation"]])
+        self.assertIn("resident_star_strength_for_context_only",
+                      report["selected_roles"]["chief"])
         self.assertIn("克制",report["reading_text"])
         self.assertIn("宫内吉凶能量",report["reading_text"])
 
