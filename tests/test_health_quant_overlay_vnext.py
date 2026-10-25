@@ -17,19 +17,20 @@ class CurrentQuantReview(unittest.TestCase):
         r=self.report
         net=r["full_health_role_strength_network"]
         q=net["candidate_five_grade_quantization"]
-        self.assertEqual(q["summary"]["status"],"unresolved_palaces")
+        self.assertIn(q["summary"]["status"],("unresolved_palaces","raw_total_outside_five_level"))
         self.assertIsNone(q["summary"]["score"])
         self.assertEqual(q["roles"]["illness"]["star"]["polarity"],"凶")
         self.assertEqual(q["roles"]["doctor"]["star"]["polarity"],"吉")
         for role in ("illness","doctor","patient","medicine","hour"):
             row=q["roles"][role]
-            self.assertEqual(row["door"]["status"],"door_polarity_rule_pending")
+            self.assertIn(row["door"]["status"],("calculated","neutral"))
+            self.assertIsNotNone(row["door"]["score"])
             self.assertIn(row["door"]["applied_door_break_shift"],(0,2))
             self.assertTrue(row["door"]["strength_lookup_unchanged"])
-            self.assertEqual(row["deity"]["status"],
-                             "deity_five_tier_conversion_missing")
-            self.assertEqual(row["pattern"]["status"],
-                             "pattern_full_source_gate_and_polarity_pending")
+            self.assertEqual(row["deity"]["status"],"calculated")
+            self.assertIn(row["deity"]["score"],range(-5,6))
+            self.assertIn(row["pattern"]["status"],
+                             ("calculated","user_source_or_81_context_pending"))
             self.assertIn(row["palace_score"]["status"],(
                 "incomplete_components","fake_void_zero",
                 "true_void_extreme_adverse"))
