@@ -1006,3 +1006,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 看病模板不再只展示生克关系：`health_relationship_language_vnext.py`经自然口语叙述天心医生、乙奇、患者用神、时干事体、值符大吉神**是否可以/勉强/无法压制病宫**及象意缓解机会；只有真实宫对克且200格正向匹配才说制病，用神被天芮克就换方向计算，值符虽吉若不克病不写得神护佑制病。五不遇时、伏吟反吟与实际宫内天芮独计、天地干格四项原净分/±5最后封顶、同宫不重复总分均保留。术数结论不能当医学诊疗预后。
 - `casting_chai_bu_audit_vnext.py` 对照用户时家拆补步骤逐项验证现有地盘顺逆、旬首、值符携干随时干/九星外盘顺旋、值使随时宫/八门顺旋、八神阳顺阴逆、中五天禽/天盘干寄坤二；`tests/test_casting_chai_bu_user_process_vnext.py` 比照1995两原书九宫＋24节气模型交节回执与±0.05°防误盘。现天文Meeus模型交节时间不是已证准确到秒，非零步值使落中五未有已核原书起法，原代码保护不盲开。现有起盘与冻结V3.9.1两案例/正式版均不重写。
 - 新版8×25、81当前坐标+四最新定分与原书冲突完整规范在 `docs/HEALTH_81_COMPLETE_RELATION_CAST_2026-10-24.md`，旧目录、旧模板、失败 Actions 和SQL保留； `scripts/archive_health_complete81_sqlite_20261024.py` 只以已归档真194案例SQL copy新文件并附82用户声明、81全坐标、4书名冲突/xz/manifest与所有历史表行数不变，须GitHub Actions与最终文件核实后才能记二进制归档成功。AGENTS、PROJECT_STATUS已追加。**无新古籍章节0、无新真实案例0，仍两书43章194例，V3.9.1冻结、V4.2废弃、旧iOS不覆盖。**
+
+
+## 2026-10-24 · 最新SQL v3全81格实际归档、值符本神能量纠正（工程交接）
+- 本轮用户给四个格局（乙壬「日奇入地网」凶−3；乙癸「华盖逢星」凶−3；丙癸「华盖悖师」凶−3；戊乙「青龙得绿」吉+3）已按用户原名/有序天干写入**最新82行81键**新JSON（保留旧庚己双轨），四格原书同向不同名称及line/hash也各自保留不假称原书一样。本轮不是四个新真实案例，用户原先五不遇时与分数均为例示。
+- **用户要求的每轮新完整SQLite真实完成并入GitHub main**：GitHub Actions `40151584127` SUCCESS；bot SHA `ce73d7944c`，新SQL文件`archives/sqlite/WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3`、xz、manifest SHA256 `91464a3392d4aa6887e030204d6eedbaa710e35d3355a366d9d720e62176568d`；原旧249张表行数不变、新完整用户82声明/81不同坐标/4书原名冲突均入新表，`integrity_check=ok`。先前旧15MB完整194案SQL、旧source数据库、所有归档失败Actions和旧json保留。
+- **值符独立本神力量**：真实天盘符神“值符”落宫的神兽能量（五行神宫五方向、**无神月令**）是chief对天芮病宫克制表的本方力量，之前宫内九星不再冒充神力量；源码 `domain_selected_energy_vnext.py` 的`primary_strength_25` for chief明确kind=`deity`、month_stage=None、保留九星纯宫内信息；新测试`test_health_relationship_language_vnext.py` 真盘保证。医生天心/乙奇/患者/时干/值符有“有效制病/勉强压病/无法制病”的自然书象解释，因真实方向未克者不得说保佑治好；疾病严重要按用户有符号五级原分真实宫位去重总和±5封顶，不回旧票数模式。
+- 时家拆补继续基于原`casting_shenqi.py`起盘，不重开，`casting_chai_bu_audit_vnext.py` 检交节模型、地盘阴阳、值符值使随时干宫、八神顺逆、天禽天盘干中五寄坤二；两张1995原例全九宫及临节拒绝误盘均测试。新文档`docs/HEALTH_81_COMPLETE_RELATION_CAST_2026-10-24.md`，AGENTS/PROJECT_STATUS最新节交接。**古籍新增章0案0**，两书仍43章194真实案，V3.9.1冻结/iOS不动、V4.2停用、全部失败数据不删除。术数吉凶分不是医学临床风险评级。
