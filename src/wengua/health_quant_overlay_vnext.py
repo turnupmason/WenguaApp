@@ -177,6 +177,51 @@ def inspect_selected_quantization(*,selected_roles,
             "not_a_medical_diagnosis":True}
 
 
+def render_palace_signed_score(item):
+    """Report EVERY known star/door/god and ordered stem pair, no fake final."""
+    star=item["star"]
+    descriptions=[]
+    for st in star["per_star"]:
+        descriptions.append(
+            st["symbol"]+"基准"+str(st.get("baseline","待核"))+
+            "，200格现值"+str(st.get("tier") or "待核")+
+            ("→"+st["label"]+"（"+str(st["score"])+"）" if
+             st.get("label") else "→待核"))
+    door=item["door"]
+    descriptions.append(
+        str(door.get("symbol"))+"门基准"+str(door.get("baseline","待核"))+
+        "，200格"+str(door.get("strength") or "待核")+
+        ("→"+str(door.get("label"))+"（"+str(door["score"])+"）"
+         if door.get("score") is not None else "→待核"))
+    god=item["deity"]
+    descriptions.append(
+        str(god.get("symbol"))+"神基准"+str(god.get("baseline","待核"))+
+        "，对宫"+str(god.get("nominal_relation"))+
+        "→"+str(god.get("tier") or "待核")+
+        ("、"+str(god.get("label"))+"（"+str(god["score"])+"）"
+         if god.get("score") is not None else "→待核"))
+    pattern=item["pattern"]
+    if not pattern["matches"]:
+        descriptions.append("天地有序格无核定本次候选")
+    for pair in pattern["matches"]:
+        sub=pair["name"]+"（"+pair["key"]+"）"
+        sc=pair["score"]
+        descriptions.append(
+            sub+(("→"+grade_label(sc)+"（"+str(sc)+"）")
+                 if sc is not None else
+                 "→"+str(pair["source_rule"]["status"])+"待核"))
+    palace=item["palace_score"]
+    if palace["grade"] is not None:
+        final="本宫当前"+str(palace["score"])+"分："+palace["grade"]
+    elif palace["score"] is not None:
+        final="本宫当前"+str(palace["score"])+"分（"+str(palace["status"])+"）"
+    else:
+        final=("本宫已核分项小计"+str(palace["known_subtotal"])+
+               "，尚缺"+"/".join(palace["unresolved_categories"])+
+               "；总分/五级待核（"+palace["status"]+"）")
+    return "；".join(descriptions)+"；"+final+"。"
+
+
 def render_quant_review(report):
     summary=report["summary"]
     score=summary["score"]
@@ -188,10 +233,12 @@ def render_quant_review(report):
     sub=[]
     if summary["pending_palaces"]:
         sub.append("仍有"+str(len(summary["pending_palaces"]))+
-                   "个宫缺完整门／神／格局转换来源")
+                   "个宫的81格原书条件／干长生择支等尚待核")
     if summary["needs_final_band_rule"]:
-        sub.append("跨宫累计分已超五级范围，最终分档规则未定")
-    return ("五级宫内量化已建立逐宫审查；"+
-            "，".join(sub or ["最终分档待核"])+"，"+
+        sub.append("跨宫累计分超五级范围，用户尚未给正式分档规则")
+    return ("现已逐宫核算星、门、八神的带符号五级能量和有序天地格；"+
+            "，".join(sub or ["最终分档待核"])+"。"+
+            "不重复相关宫的当前已核分值为"+
+            str(summary["raw_known_sum"])+"；"+
             "暂不生成虚构的极大吉／极大凶最终结论。"+
-            "旧版按吉凶证据条数的合断只作定性对照。")
+            "旧版吉凶票仅作定性对照。")
