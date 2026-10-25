@@ -22,6 +22,9 @@ STARS=CATALOG["stars"]
 DOORS=CATALOG["doors"]
 GODS=CATALOG["gods"]
 GOD_RELATIONS=CATALOG["god_relations"]
+STEM_CATALOG=json.loads((CATALOG_PATH.parent/"user_ten_stem_intrinsic_20261024_v2.json").read_text(encoding="utf-8"))
+STEM_INTRINSIC=STEM_CATALOG["stems"]
+JIA_HIDDEN_INTRINSIC=STEM_CATALOG["jia_hidden_baselines"]
 USER_PATTERN_ROWS=tuple(CATALOG["records"])
 PAIR_ROWS={}
 for _row in USER_PATTERN_ROWS:
@@ -36,7 +39,7 @@ assert len(STARS)==9 and len(DOORS)==8 and len(GODS)==8
 assert len(USER_PATTERN_ROWS)==78 and len(PAIR_ROWS)==77
 assert len(CATALOG["coverage"]["missing_pairs"])==4
 assert set(GOD_RELATIONS)=={"符号生宫","符号克宫","比和","宫克符号","宫生符号"}
-VERSION="health_user_intrinsic_baselines_200_cell_v20261024_v1"
+VERSION="health_user_intrinsic_baselines_200_cell_v20261024_v2_stems"
 
 
 def _signed_power(name,source,actual_tier):
@@ -90,6 +93,31 @@ def god_score(name,nominal_relation):
     return out
 
 
+def stem_intrinsic_score(stem, *, xun_shou=None):
+    """Signed USER default, independent of 200-cell monthly stem magnitude.
+
+    Never pretend 甲 visibly appears in a palace or assign the 甲申 -3 to
+    all Jia cycles. These are provenance/polarity observations, NOT a
+    fifth palace point category on top of the four-user-example items.
+    """
+    if stem=="甲":
+        if xun_shou not in JIA_HIDDEN_INTRINSIC:
+            return {"status":"jia_xun_not_resolved","stem":"甲",
+                    "xun_shou":xun_shou,"baseline":None}
+        value=JIA_HIDDEN_INTRINSIC[xun_shou]
+    elif stem in STEM_INTRINSIC:
+        value=STEM_INTRINSIC[stem]
+    else:
+        raise ValueError("Unknown stem intrinsic default")
+    return {"status":"user_intrinsic_default","stem":stem,
+            "xun_shou":xun_shou if stem=="甲" else None,
+            "hidden_in":"庚" if stem=="甲" and xun_shou=="甲申" else None,
+            "baseline":value,
+            "polarity":"吉" if value>0 else "凶" if value<0 else "中平",
+            "not_an_extra_fifth_palace_component":True,
+            "source":"user_ten_stem_intrinsic_20261024_v2"}
+
+
 def resolve_ordered_pair(top,bottom,*,door_name=None,illness_domain=True,
                          sex=None):
     """Literal supplied declaration by ORDERED pair; no book title fuzzy match.
@@ -110,6 +138,14 @@ def resolve_ordered_pair(top,bottom,*,door_name=None,illness_domain=True,
     if len(declared)!=1:
         return {**base,"status":"duplicate_user_pair_variants_pending",
                 "reason":"相同有序天地干出现多种断语，不以最后一条自动覆盖条件格"}
+    # 2026-10-24 explicit HEALTH scoring correction: 乙加乙默认为凶 -3,
+    # although the original general-purpose text called it 日奇伏吟 and
+    # required an activity context. Preserve that original record unedited.
+    if illness_domain and key=="乙/乙":
+        return {**base,"status":"user_health_explicit_jiayi_override",
+                "polarity":"凶","baseline":-3,
+                "conditional":False,"reason":"用户最新明确乙加乙问病为凶格默认-3；原文条件型格局并存不覆盖",
+                "historical_text_remains_conditional":True}
     row=declared[0]
     if illness_domain and key in BOOK_HEALTH_CONFLICTS:
         return {**base,"status":"book_illness_conflict_pending",
