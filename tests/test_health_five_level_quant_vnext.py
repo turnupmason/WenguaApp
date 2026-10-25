@@ -97,12 +97,13 @@ class QuantizedCases(unittest.TestCase):
         self.assertEqual(set(result["unresolved_categories"]),
                          {"door","deity","pattern"})
 
-    def test_sum_greater_than_five_is_not_silently_capped(self):
+    def test_sum_greater_than_five_is_explicitly_saturated_and_raw_preserved(self):
         result=palace_tally(
             factors={"star":5,"door":5,"deity":5,"pattern":5})
         self.assertEqual(result["raw_sum"],20)
-        self.assertEqual(result["status"],"raw_sum_outside_five_level")
-        self.assertIsNone(result["grade"])
+        self.assertEqual(result["status"],"saturated_five_grade")
+        self.assertEqual((result["score"],result["grade"]),(5,"极大吉"))
+        self.assertEqual(result["saturated_from_raw"],20)
         self.assertEqual(label(-4),"大凶")
 
     def test_multi_palace_dedup_and_pending_bands(self):
@@ -117,7 +118,7 @@ class QuantizedCases(unittest.TestCase):
         self.assertEqual(len(result["duplicate_physical_roles"]),1)
         self.assertEqual(multi_palace_tally(palaces={
             "doctor":row(6,5),"illness":row(8,5)})["status"],
-                         "raw_total_outside_five_level")
+                         "saturated_five_grade")
         self.assertEqual(multi_palace_tally(palaces={
             "doctor":row(6,None),"illness":row(8,-3)})["status"],
                          "unresolved_palaces")
