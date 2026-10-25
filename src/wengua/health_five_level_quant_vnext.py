@@ -13,7 +13,7 @@ POINT={name:i+1 for i,name in enumerate(TIERS)}
 SIGNS={"吉":1,"凶":-1}
 STAGE_EXTREME=frozenset(("长生","冠带","临官","帝旺","沐浴"))
 STAGE_LARGE=frozenset(("胎","养"))
-VERSION="user_health_five_grade_signed_20261024_v1"
+VERSION="user_health_five_grade_signed_20261024_v2_saturated_extremes"
 
 
 def points(tier,polarity):
@@ -28,6 +28,16 @@ def label(score):
         raise ValueError("One grade must be an integer between -5 and +5")
     if score==0:return "中性0分"
     return TIERS[abs(score)-1]+("吉" if score>0 else "凶")
+
+
+def saturate(score):
+    """User-confirmed final grade: <=-5 always 极大凶; >=+5 极大吉.
+
+    Preserve the pre-saturation signed sum independently for auditing.
+    """
+    if not isinstance(score,int) or isinstance(score,bool):
+        raise ValueError("Raw score must be integer")
+    return max(-5,min(5,score))
 
 
 def downgrade_strength(tier,levels):
@@ -181,15 +191,14 @@ def palace_tally(*,factors,door_break=False,five_not_encounter=False,
         final=-5;status="true_void_extreme_adverse"
     elif unresolved:
         final=None;status="incomplete_components"
-    elif abs(subtotal)>5:
-        # Never silently clamp a FOUR-symbol sum into the five-level scale.
-        # Preserve full arithmetic; later user will define >=6 grade bands.
-        final=None;status="raw_sum_outside_five_level"
     else:
-        final=subtotal
+        # Explicit user cutoff: raw +13 -> +5, raw -17 -> -5.
+        # Apply actual adverse level shifts to the 5-grade category, never
+        # discard raw source arithmetic or equate it to the capped output.
+        final=saturate(subtotal)
         if five_not_encounter:final=adverse_shift(final,2)
         if door_break:final=adverse_shift(final,2)
-        status="calculated"
+        status="saturated_five_grade" if abs(subtotal)>5 else "calculated"
     return {"version":VERSION,"status":status,"components":seen,
             "component_instances":instances,
             "known_neutral_door":factors.get("door")==0,
@@ -203,15 +212,18 @@ def palace_tally(*,factors,door_break=False,five_not_encounter=False,
             "score":final,
             "grade":label(final) if final is not None else None,
             "raw_sum_exceeds_five":original_sum is not None and abs(original_sum)>5,
+            "saturated_from_raw":original_sum if original_sum is not None
+                                  and abs(original_sum)>5 else None,
             "score_is_research_only":True}
 
 
 def multi_palace_tally(*,palaces):
-    """One UNIQUE physical palace score per relevant role, never duplicate.
+    """ONE unique real palace, raw arithmetic summed BEFORE ±5 saturation.
 
-    Pending sources/blockers: don't return a fake final verdict. For a
-    total beyond 5 grades, preserve signed raw sum and request user rule
-    for final compression instead of inventing a saturating scale.
+    Same physical palace shared by patient/hour/值符/乙 or sex auxiliary
+    counts once. A palace can carry a bounded grade (-5) AND an
+    independently true raw signed subtotal (-17).  Cross-palace netting
+    must use raw contributions (-17+13+...) rather than early-capped -5.
     """
     chosen={};duplicate=[]
     for role,row in palaces.items():
@@ -220,16 +232,29 @@ def multi_palace_tally(*,palaces):
             duplicate.append({"role":role,"palace":pid,
                               "already_counted_role":chosen[pid][0]})
         else:chosen[pid]=(role,row)
-    audit={str(pid):row for pid,(role,row) in chosen.items()}
     pending=[str(pid) for pid,(role,row) in chosen.items()
              if row["score"] is None]
-    known=sum(row["score"] for _,row in chosen.values() if row["score"] is not None)
-    score=known if not pending and abs(known)<=5 else None
-    status=("unresolved_palaces" if pending else
-            "raw_total_outside_five_level" if abs(known)>5 else "calculated")
-    return {"version":VERSION,"status":status,"raw_known_sum":known,
-            "pending_palaces":pending,"duplicate_physical_roles":duplicate,
-            "unique_palace_count":len(chosen),"score":score,
-            "grade":label(score) if score is not None else None,
-            "needs_final_band_rule":not pending and abs(known)>5,
+    raw_known=0
+    for _,row in chosen.values():
+        if row["score"] is None:
+            raw_known+=row.get("known_subtotal",0)
+        else:
+            raw_known+=row.get("raw_sum") if row.get("raw_sum") is not None else row["score"]
+    score=saturate(raw_known) if not pending else None
+    return {"version":VERSION,
+            "status":("unresolved_palaces" if pending else
+                      "saturated_five_grade" if abs(raw_known)>5 else
+                      "calculated"),
+            "raw_known_sum":raw_known,
+            "raw_grade_if_all_known":label(saturate(raw_known))
+                                      if not pending else None,
+            "provisional_known_grade":label(saturate(raw_known)),
+            "provisional_is_not_final":bool(pending),
+            "pending_palaces":pending,
+            "duplicate_physical_roles":duplicate,
+            "unique_palace_count":len(chosen),
+            "score":score,"grade":label(score) if score is not None else None,
+            "needs_final_band_rule":False,
+            "user_extreme_cutoff":5,
+            "raw_components_not_clamped_before_cross_palace_sum":True,
             "not_a_medical_assessment":True}
