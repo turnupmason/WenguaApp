@@ -196,7 +196,9 @@ def inspect_selected_quantization(*,selected_roles,
             # User: score only truly selected relationship roles; stage-one
             # illness still included. Physical duplicates merge at total.
             aggregate[key]={"palace":item["palace"],
-                            "score":item["palace_score"]["score"]}
+                            "score":item["palace_score"]["score"],
+                            "raw_sum":item["palace_score"]["raw_sum"],
+                            "known_subtotal":item["palace_score"]["known_subtotal"]}
     qian_kun={}
     for k,row in qian_kun_observations.items():
         qian_kun[k]=_quantize_one(
@@ -264,12 +266,12 @@ def render_palace_signed_score(item):
                  "→"+str(pair["source_rule"]["status"])+"待核"))
     palace=item["palace_score"]
     if palace["grade"] is not None:
-        final="本宫当前"+str(palace["score"])+"分："+palace["grade"]
+        final=("本宫原始净分"+str(palace["raw_sum"])+
+               "，五档最终"+str(palace["score"])+"分："+palace["grade"]
+               if palace["raw_sum_exceeds_five"] else
+               "本宫当前"+str(palace["score"])+"分："+palace["grade"])
     elif palace["score"] is not None:
         final="本宫当前"+str(palace["score"])+"分（"+str(palace["status"])+"）"
-    elif palace["status"]=="raw_sum_outside_five_level":
-        final=("本宫原始净分"+str(palace["raw_sum"])+
-               "，绝对值超过5；已有真实计算值，但用户尚未规定跨档归并方法，不虚写极大吉凶")
     else:
         final=("本宫已核分项小计"+str(palace["known_subtotal"])+
                "，尚缺"+"/".join(palace["unresolved_categories"])+
@@ -281,19 +283,15 @@ def render_quant_review(report):
     summary=report["summary"]
     score=summary["score"]
     if score is not None:
-        return ("五级宫内量化研究合计"+str(score)+"分（"+
-                summary["grade"]+"）。共"+
-                str(summary["unique_palace_count"])+
-                "个不重复相关宫；此结果仅为用户规则研究象意。")
-    sub=[]
-    if summary["pending_palaces"]:
-        sub.append("仍有"+str(len(summary["pending_palaces"]))+
-                   "个宫的81格原书条件／干长生择支等尚待核")
-    if summary["needs_final_band_rule"]:
-        sub.append("跨宫累计分超五级范围，用户尚未给正式分档规则")
-    return ("现已逐宫核算星、门、八神的带符号五级能量和有序天地格；"+
-            "，".join(sub or ["最终分档待核"])+"。"+
-            "不重复相关宫的当前已核分值为"+
-            str(summary["raw_known_sum"])+"；"+
-            "暂不生成虚构的极大吉／极大凶最终结论。"+
-            "旧版吉凶票仅作定性对照。")
+        return ("本次相关独立实宫原始净分"+str(summary["raw_known_sum"])+
+                "，按用户±5截断为"+str(score)+"分（"+
+                summary["grade"]+"）；共"+
+                str(summary["unique_palace_count"])+"个不重复相关宫。"+
+                "四类星门神格原分独立保存；时干、值符、性别辅助若与"+
+                "其他用神同宫不重复加总；仅为术数研究。")
+    return ("已知相关宫当前原始小计"+
+            str(summary["raw_known_sum"])+"分，暂示"+
+            str(summary["provisional_known_grade"])+"；另有"+
+            str(len(summary["pending_palaces"]))+"个宫的格局触发、"+
+            "十二长生分支或人物条件未核，不能当最终断案净分。"+
+            "最终档位只有证据齐备后按±5上限确定。")
