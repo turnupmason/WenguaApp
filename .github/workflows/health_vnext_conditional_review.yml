@@ -31,6 +31,7 @@ on:
       - 'tests/test_health_five_level_quant_vnext.py'
       - 'tests/test_health_quant_overlay_vnext.py'
       - 'tests/test_health_intrinsic_scoring_vnext.py'
+      - 'tests/test_health_user_final_signed_template_vnext.py'
       - 'tests/test_health_door_break_exception_vnext.py'
       - 'scripts/preview_health_random_complete_20261024.py'
       - 'scripts/preview_health_random_2025_intrinsic_vnext.py'
@@ -67,6 +68,7 @@ jobs:
           python -m unittest discover -s tests -p test_health_five_level_quant_vnext.py -v
           python -m unittest discover -s tests -p test_health_quant_overlay_vnext.py -v
           python -m unittest discover -s tests -p test_health_intrinsic_scoring_vnext.py -v
+          python -m unittest discover -s tests -p test_health_user_final_signed_template_vnext.py -v
           python -m unittest discover -s tests -p test_health_door_break_exception_vnext.py -v
           python -m unittest discover -s tests -p test_factor_energy_25_rules.py -v
           python -m unittest discover -s tests -p test_factor_energy_combinations.py -v
