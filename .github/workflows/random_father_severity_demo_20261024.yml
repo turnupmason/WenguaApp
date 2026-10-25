@@ -1,0 +1,35 @@
+name: Reproducible Random Father Severity Cast (Research Only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/demo_random_father_20261024.py'
+      - '.github/workflows/random_father_severity_demo_20261024.yml'
+  workflow_dispatch:
+jobs:
+  cast_and_narrate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run one user-requested random father chart, original cast and latest reading
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m scripts.demo_random_father_20261024 | tee father_cast_log.txt
+      - name: Save complete auditable source chart and simulation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: father-cast-20261116-21-python-${{ matrix.python-version }}
+          path: |
+            artifacts/random_father_severity_20261024.json
+            father_cast_log.txt
+          if-no-files-found: warn
+          retention-days: 90
