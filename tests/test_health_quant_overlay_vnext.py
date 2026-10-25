@@ -36,7 +36,7 @@ class CurrentQuantReview(unittest.TestCase):
                 "true_void_extreme_adverse","calculated","saturated_five_grade"))
         self.assertTrue(q["auxiliary_qian_kun"]["qian"][
             "auxiliary_only_not_auto_counted"])
-        self.assertIn("五级能量量化合断",r["reading_text"])
+        self.assertIn("宫位五级吉凶净分合断",r["reading_text"])
         self.assertIn("±5",render_quant_review(q))
 
     def test_selected_role_real_void_always_matches_new_priority(self):
