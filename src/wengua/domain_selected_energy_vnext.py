@@ -21,7 +21,7 @@ from .health_palace_detailed_vnext import (
     normalize_new_door_relation)
 from .health_role_majority_vnext import assess_disease_relationships
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
-from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review
+from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review,render_palace_signed_score
 from .marriage_runtime import ELEMENTS,element_relation
 
 # Other subtopics will be added only when their original source conditions
@@ -410,6 +410,9 @@ def selected_health_sections(result,*,actor,chart):
         if key not in roles:continue
         r=roles[key];energy=r["primary_strength_25"]
         text=render_complete_selected_palace(r["complete_palace"])
+        qrole=result["candidate_five_grade_quantization"]["roles"].get(key)
+        if qrole:
+            text+=" 宫内吉凶能量："+render_palace_signed_score(qrole)
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
@@ -427,6 +430,8 @@ def selected_health_sections(result,*,actor,chart):
         x=roles[key]
         push("08_"+key,"源书辅助宫",
              render_complete_selected_palace(x["complete_palace"])+
+             "宫内吉凶能量："+render_palace_signed_score(
+                 result["candidate_five_grade_quantization"]["roles"][key])+
              "按来源取用，不能仅因旺就判吉。")
     # These are always real chart palaces, even when patient sex is
     # unspecified; they remain auxiliary observations, not natal/sex votes.
@@ -436,6 +441,8 @@ def selected_health_sections(result,*,actor,chart):
         ob=qk[alias]
         auxiliary_texts.append(
             ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
+            " 宫内吉凶能量："+render_palace_signed_score(
+                result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias])+
             " 与天芮病宫"+ob["relation_to_illness"]+
             "，仅供人物关系辅助，不直接计独立吉凶票。")
     push("09_qian_kun_auxiliary","乾坤宫辅助观察",
