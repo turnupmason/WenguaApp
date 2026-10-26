@@ -480,7 +480,7 @@ enum WenguaVNextEngine {
             ("doctor",try only{$0.heavenStars.contains(where:{$0.star=="天心星"})},"天心星"),
             ("medicine",try stem("乙"),"乙"),
             ("patient",try stem(patientStem),patientStem),
-            ("hour",try stem(hourStem),hourStem),
+            ("hour",try stem(hourStem=="甲" ? chart.hiddenStem : hourStem),hourStem),
             ("chief",try only{$0.deity=="值符"},"值符"),
         ]
         guard let ill=selected.first?.1 else {throw WenguaVNextReadingGate.unresolvedRole}
@@ -523,12 +523,31 @@ enum WenguaVNextEngine {
                 strength[role]=try factor(kind:"star",symbol:st.star,palace:p.id,
                                           month:month,catalog:energy)
             } else {
-                guard let st=p.heavenStars.first(where:{$0.carriedStem==symbol}) else {
-                    throw WenguaVNextReadingGate.unresolvedRole
+                let actualStages:[WenguaNativeStage]
+                if role=="hour" && symbol=="甲" {
+                    // Only 甲时 is bound through xunShou hiddenStem to an
+                    // ACTUAL palace; its factor stays 甲 and its 12 life is
+                    // independently the stem 甲, never a forged visible 甲.
+                    guard p.heavenStars.contains(where:{
+                        $0.carriedStem==chart.hiddenStem
+                    }),let jiaStages=WenguaNativeCore.stages["甲"] else {
+                        throw WenguaVNextReadingGate.unresolvedRole
+                    }
+                    actualStages=try p.branches.map{ branch in
+                        guard let stage=jiaStages[branch] else {
+                            throw WenguaCastError.invalidChart
+                        }
+                        return WenguaNativeStage(branch:branch,stage:stage)
+                    }
+                } else {
+                    guard let st=p.heavenStars.first(where:{
+                        $0.carriedStem==symbol
+                    }) else {throw WenguaVNextReadingGate.unresolvedRole}
+                    actualStages=st.stages
                 }
-                strength[role]=try factor(kind:"stem",symbol:symbol,palace:p.id,
-                                         month:month,catalog:energy,
-                                         stages:st.stages)
+                strength[role]=try factor(kind:"stem",symbol:symbol,
+                    palace:p.id,month:month,catalog:energy,
+                    stages:actualStages)
             }
         }
         let scoreList=physical.values

@@ -98,7 +98,14 @@ enum WenguaNativeReadingRouter {
             return list[0]
         }
         func atStem(_ name:String) throws -> WenguaNativePalace {
-            try unique { $0.heavenStars.contains(where:{$0.carriedStem==name}) }
+            // The original verified _find_heaven_stem method maps ONLY a
+            // genuine 甲-HOUR to its own six-Jia hidden instrument. Do not
+            // create an ordinary visible 甲 or remap patient/father 甲.
+            let carried=(name=="甲" && chart.pillars.hour.hasPrefix("甲"))
+                      ? chart.hiddenStem : name
+            return try unique {
+                $0.heavenStars.contains(where:{$0.carriedStem==carried})
+            }
         }
         let illness=try unique {$0.heavenStars.contains(where:{$0.star=="天芮星"})}
         let doctor=try unique {$0.heavenStars.contains(where:{$0.star=="天心星"})}
