@@ -9,6 +9,17 @@ struct WenguaVNextFactor {
     let strength:String?
     let value:Int?
 }
+// Private computation evidence, NEVER serialized into user-facing reading.
+struct WenguaVNextStrengthEvidence {
+    let source:String // star, cohost, door, god, pattern
+    let symbol:String
+    let monthStage:String? // god is ALWAYS nil: no monthly adjustment
+    let palaceRelation:String?
+    let tier:String?
+    let internalScore:Int?
+    let lifeStages:[String]
+    let restrictions:[String]
+}
 struct WenguaVNextPalace {
     let id:Int
     let roles:[String]
@@ -24,6 +35,7 @@ struct WenguaVNextPalace {
     let patterns:[String]
     let unresolved:[String]
     let starStrength:String?
+    let energyEvidence:[WenguaVNextStrengthEvidence]
 }
 struct WenguaVNextControl {
     let role:String
@@ -51,6 +63,7 @@ struct WenguaVNextAudit {
     let roleConfidence:String
     let roleStatus:String
     let roleSourceNote:String
+    let roleEnergy:[String:WenguaVNextFactor]
 }
 enum WenguaVNextEngine {
     static let tiers=["极小","小","中等","大","极大"]
@@ -255,10 +268,21 @@ enum WenguaVNextEngine {
         var starScores:[Int]=[]
         var unresolved:[String]=[]
         var stars:[WenguaVNextFactor]=[]
+        var underlying:[WenguaVNextStrengthEvidence]=[]
         for star in p.heavenStars {
             let part=try factor(kind:"star",symbol:star.star,palace:p.id,
                                  month:month,catalog:catalog)
             stars.append(part)
+            let isRealHealthSignifier = role != "illness" || star.star=="天芮星"
+            underlying.append(WenguaVNextStrengthEvidence(
+                source:isRealHealthSignifier ? "star":"cohost",
+                symbol:star.star,
+                monthStage:try starMonth(try must(starElement[star.star]),month),
+                palaceRelation:try directed(try must(starElement[star.star]),pe),
+                tier:part.strength,
+                internalScore:isRealHealthSignifier ? part.value : nil,
+                lifeStages:star.stages.map{$0.stage},
+                restrictions:[]))
             // Tianqin is real, but its health-illness factor and carried
             // pattern are not a second independent illness source.
             if role=="illness" && star.star != "天芮星" {continue}
@@ -268,10 +292,20 @@ enum WenguaVNextEngine {
         let doorFact=try factor(kind:"door",symbol:door,palace:p.id,
                                 month:month,catalog:catalog)
         if doorFact.value==nil {unresolved.append("八门："+door)}
+        underlying.append(WenguaVNextStrengthEvidence(
+            source:"door",symbol:door,
+            monthStage:try normalMonth(try must(doorElement[door]),month),
+            palaceRelation:doorRelation,tier:doorFact.strength,
+            internalScore:doorFact.value,lifeStages:[],
+            restrictions:br ? ["门破加重不利"]:[]))
         let deityRel=try directed(godEl,pe)
         let godTier=try must(godTiers[deityRel])
         let godScore=signed(godTier,gp)
         if godScore==nil {unresolved.append("八神："+deity)}
+        underlying.append(WenguaVNextStrengthEvidence(
+            source:"god",symbol:deity,monthStage:nil,
+            palaceRelation:deityRel,tier:godTier,internalScore:godScore,
+            lifeStages:[],restrictions:[]))
         var patternPoints:[Int]=[]
         var patternNames:[String]=[]
         for star in p.heavenStars {
@@ -282,9 +316,20 @@ enum WenguaVNextEngine {
             }
             patternNames.append(fields[2])
             let polarity=fields[3]=="吉" ? 1 : -1
-            if let score=pattern(star,p,polarity:polarity) {
-                patternPoints.append(score)
-            }
+            let score=pattern(star,p,polarity:polarity)
+            if let score {patternPoints.append(score)}
+            let relevantTombs=p.tombs.filter{$0.plane=="天盘" &&
+                                             $0.stem==star.carriedStem}
+            let restrictions=([striking[star.carriedStem]==p.id
+                                  ? "六仪击刑" : nil] as [String?])
+                .compactMap{$0} + relevantTombs.map{"天盘入墓："+$0.branch}
+            underlying.append(WenguaVNextStrengthEvidence(
+                source:"pattern",symbol:fields[2],
+                monthStage:nil,palaceRelation:fields[3],
+                tier:nil,internalScore:score,
+                lifeStages:star.stages.map{$0.stage},
+                restrictions:restrictions))
+            
         }
         let allStar=unresolved.contains(where:{$0.hasPrefix("九星")}) ? nil :
                     Optional(starScores.reduce(0,+))
@@ -303,7 +348,8 @@ enum WenguaVNextEngine {
               afterVoid:after,void:v,doorBreak:br,patterns:patternNames,
               unresolved:unresolved,
               starStrength:stars.first(where:{$0.symbol=="天芮星"})?.strength
-                            ?? stars.first?.strength)
+                            ?? stars.first?.strength,
+              energyEvidence:underlying)
     }
     private static func primary(_ role:String,_ cell:WenguaNativePalace,
                                 month:String,
@@ -521,7 +567,8 @@ enum WenguaVNextEngine {
                     raw:prior.raw,beforeVoid:prior.beforeVoid,
                     afterVoid:prior.afterVoid,void:prior.void,
                     doorBreak:prior.doorBreak,patterns:prior.patterns,
-                    unresolved:prior.unresolved,starStrength:prior.starStrength)
+                    unresolved:prior.unresolved,starStrength:prior.starStrength,
+                    energyEvidence:prior.energyEvidence)
                 physical[p.id]=prior
             } else {
                 physical[p.id]=try evaluate(p,role:role,chart:chart,
@@ -636,7 +683,8 @@ enum WenguaVNextEngine {
             roleConfidence:actor?.confidence ?? "legacy_two_role_parity",
             roleStatus:(actor == nil || actor!.eligibleForFirmTraditionalJudgment)
                  ? "eligible" : "source_conditional_candidate",
-            roleSourceNote:actor?.note ?? "")
+            roleSourceNote:actor?.note ?? "",
+            roleEnergy:strength)
     }
 }
 enum WenguaVNextReadingGate:Error {case unresolvedRole}
