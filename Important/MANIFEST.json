@@ -163,7 +163,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_palace_detailed_vnext.py",
       "snapshot": "Important/python/reading/health_palace_detailed_vnext.py",
-      "sha": "774009b50731cc13ecf921fdf3c56f11acf1798b"
+      "sha": "15dc256c74d210af428c28f19cb30e2bef7dabf2"
     },
     {
       "platform": "python",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "10f10beb9744cc03f91f272c7494571446ab73ba"
+      "sha": "4bff27c60c3775dfa98fb73e30fc1d5ec94bac60"
     },
     {
       "platform": "swift",

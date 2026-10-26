@@ -264,10 +264,8 @@ def render_complete_selected_palace(detail, *, quantified=None):
 
     stars="、".join(
         x["name"]+signed(star_score(
-            x["name"],x["strength"].get("strength_label"))["score"])+
-        ("（同宫不另计病星）" if quantified is not None and
-         quantified["role"]=="illness" and x["name"]!="天芮星" else "")
-        for x in detail["stars"]) or "无已核星"
+            x["name"],x["strength"].get("strength_label"))["score"])
+        for x in detail["stars"] if x["name"]!="天禽星") or "无已核星"
     d=detail["deity"]
     deity=(d["name"]+d["relation"]+"、"+
            signed(quantified["deity"].get("score"))
@@ -285,13 +283,10 @@ def render_complete_selected_palace(detail, *, quantified=None):
     v=detail["void"]
     vt=("不空" if v["classification"]=="not_void" else
         "假空" if v["classification"]=="fake_void" else "真空")
-    vwhy="、".join(v["reasons"])
     door_break=detail.get("door_break_penalty_policy")
     conditions="、".join(
-        x for x,active in (("门破（不额外降级）",bool(
-                                door_break and door_break["no_extra_two_level_shift"])),
-                           ("门破（另降两级）",bool(
-                                door_break and door_break["apply_extra_two_level_shift"])),
+        x for x,active in (("门破",bool(
+                                door_break and door_break["has_door_break"])),
                            ("天盘入墓",bool(detail["sky_tombs"])),
                            ("地盘入墓",bool(detail["earth_tombs"])),
                            ("六仪击刑",bool(detail["striking_stems"])),
@@ -299,10 +294,9 @@ def render_complete_selected_palace(detail, *, quantified=None):
                            ("本宫驿马",detail["horse_in_this_palace"]))
         if active) or "无已核特殊刑墓迫"
     palace=quantified["palace_score"] if quantified is not None else None
-    final=("；本宫综合"+signed(palace.get("score"))
+    final=("全部因素推断后，此宫为"+signed(palace.get("score"))+"。"
            if palace is not None else "")
     return ("落"+detail["palace_name"]+"；九星"+stars+"；八神"+deity+
             "；八门"+door_text+"；天盘干"+top+
-            "、地盘干"+bottom+"（天干仅列强弱）"+booktext+"；空亡"+vt+
-            ("（"+vwhy+"）" if vwhy else "")+
-            "；"+conditions+final+"。")
+            "、地盘干"+bottom+booktext+"；空亡"+vt+
+            "；"+conditions+"。"+final)

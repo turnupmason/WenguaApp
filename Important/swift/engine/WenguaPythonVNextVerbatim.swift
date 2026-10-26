@@ -351,9 +351,7 @@ enum WenguaPythonVNextVerbatim {
             }
             let full:String
             if let original=viewed[pid] {
-                full="与前述"+original+"同在"+label(p)+
-                    "。全部因素推断后，此宫为"+
-                    signed(review.palaces[pid]?.afterVoid)+"。"
+                full="与前述"+original+"同在"+label(p)+"。全部因素推断后，此宫为"+signed(review.palaces[pid]?.afterVoid)+"。"
             } else {
                 full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup)
@@ -364,17 +362,17 @@ enum WenguaPythonVNextVerbatim {
                 let t25=try WenguaVNextTianrui25.caseFor(chart:chart,audit:review)
                 extra=try phrase("illness",["name":t25.title,"explanation":t25.why])
             }
-            let roleText=roleAgainstIllness(role,review:review)
+            let roleText=try roleAgainstIllness(role,review:review)
             let concise=roleText.components(separatedBy:"；").first ?? ""
+            let simple=concise.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
+            let relationshipPhrase=concise.isEmpty ? "" : simple+"。"
             let relationText=role=="illness" ? "" :
-                try phrase("role_relation",[
-                    "relation_text":concise.trimmingCharacters(
-                        in:CharacterSet(charactersIn:"。"))+
-                        (concise.isEmpty ? "" : "。")])
+                try phrase("role_relation",["relation_text":relationshipPhrase])
             let genderNote=role=="gender" ? try phrase("gender_note") : ""
-            let displayTitle=(role=="gender" ?
-                 (pid==2 ? "坤宫辅助（女）" : pid==6 ? "乾宫辅助（男）" :
-                  (try title(key))) : (try title(key)))
+            let defaultTitle=try title(key)
+            let displayTitle=role=="gender" && pid==2 ? "坤宫辅助（女）" :
+                             role=="gender" && pid==6 ? "乾宫辅助（男）" :
+                             defaultTitle
             push(id,displayTitle,try phrase("role",[
                 "palace_detail":full,"palace_score":"",
                 "extra_illness":extra,"role_relation":relationText,

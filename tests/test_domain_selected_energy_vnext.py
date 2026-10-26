@@ -145,7 +145,7 @@ class SelectedRealCases(unittest.TestCase):
                              len(out["evidence_ledger"]["favorable"]))
             self.assertEqual(out["evidence_counts"]["qualified_adverse"],
                              len(out["evidence_ledger"]["adverse"]))
-            self.assertIn("候选",out["reading_text"])
+            self.assertIn("全部因素推断后，此宫为",out["reading_text"])
             self.assertNotIn("加大药量",out["reading_text"])
             self.assertNotIn("康复保证",out["reading_text"])
 
