@@ -66,7 +66,14 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                            edge?.cell ?? "none"]
                 print("SWIFT_ROLE_GATE",fixture.instant,words.joined(separator:":"))
             }
-            try require(audit.score==fixture.summary.score,"summary signed score mismatch: \(String(describing:audit.score)) / \(String(describing:fixture.summary.score))")
+            let controlsSummary=audit.controls.map{ e in
+                e.role+":"+e.direction+":"+e.applicability+":"+(e.cell ?? "nil")
+            }.sorted().joined(separator:";")
+            let palaceSummary=audit.roles.map{ role,pid in
+                role+":"+String(pid)+":"+String(describing:audit.palaces[pid]?.afterVoid)
+            }.sorted().joined(separator:";")
+            try require(audit.score==fixture.summary.score,
+                "summary signed score mismatch: \(String(describing:audit.score)) / \(String(describing:fixture.summary.score)) | roles "+palaceSummary+" | controls "+controlsSummary)
             try require(audit.postVoidKnownSum==fixture.summary.post_void_known_sum,"post-void sum mismatch \(audit.postVoidKnownSum) / \(fixture.summary.post_void_known_sum)")
             for (role,r) in fixture.roles {
                 guard let p=audit.roles[role],let x=audit.palaces[p] else {
