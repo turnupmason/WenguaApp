@@ -50,7 +50,8 @@ class FirstStageMacroFacts(unittest.TestCase):
         self.assertTrue(out["reading_text"].startswith("起盘总纲"))
         # Latest signed-energy conclusion demotes old count-only text.
         self.assertNotIn("宫位五级吉凶净分合断",out["reading_text"])
-        self.assertIn("candidate_five_grade_quantization",\n                      out["full_health_role_strength_network"])
+        self.assertIn("candidate_five_grade_quantization",
+                      out["full_health_role_strength_network"])
         self.assertIn("天芮病宫",out["reading_text"])
         self.assertIn("八神",out["reading_text"])
 
