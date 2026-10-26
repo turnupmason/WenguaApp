@@ -62,7 +62,7 @@ enum WenguaVNextReasoner {
             "reason_title_details","reason_title_illness","reason_title_relation",
             "reason_title_verdict","reason_verdict_candidate",
             "reason_verdict_conflict","reason_verdict_resolved",
-            "reason_verdict_incomplete"
+            "reason_verdict_incomplete","reason_tianrui_25"
         ]
         guard required.allSatisfy({!(words[$0] ?? "").isEmpty}) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -158,6 +158,15 @@ enum WenguaVNextReasoner {
                 "star":star,"door":door,"god":god,"pattern":pair,
                 "adjustment":try shifts(row),
                 "conclusion":trend(row.afterVoid)]))
+            if role=="illness" {
+                let selected=try WenguaVNextTianrui25.caseFor(
+                    chart:chart,audit:audit)
+                important.append(try fill("reason_tianrui_25",[
+                    "title":selected.title,"month":selected.starMonth,
+                    "palace_month":selected.palaceMonth,
+                    "relation":selected.category,"why":selected.why
+                ]))
+            }
         }
         // Full factor-level computation provenance is collapsible in the UI;
         // no scores or test-case outcomes in this customer DTO.
