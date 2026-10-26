@@ -135,6 +135,54 @@ jobs:
           path: /tmp/wengua-vnext-nine/
           retention-days: 90
           if-no-files-found: warn
+      - name: NEW two-wife randomized real clock Python and actual iOS production Swift narratives
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-two-wife
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610268047 --count 2 --wife-only --output /tmp/wengua-two-wife/python_truth.json
+          /tmp/wengua-vnext-three-native /tmp/wengua-two-wife/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-two-wife/swift_public_readings.log
+      - name: HARD GATE both wife charts Python reading versus iOS exact literal and metadata
+        run: |
+          set -euo pipefail
+          if ! python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-two-wife/python_truth.json /tmp/wengua-two-wife/swift_public_readings.log /tmp/wengua-two-wife/exact_wording_diff.md; then
+            sed -n '1,500p' /tmp/wengua-two-wife/exact_wording_diff.md
+            exit 1
+          fi
+      - name: Produce and print verbatim two-wife Python and actual production Swift reading, side by side
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-two-wife")
+          src=json.loads((p/"python_truth.json").read_text(encoding="utf8"))
+          raw=(p/"swift_public_readings.log").read_text(encoding="utf8").splitlines()
+          ios=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in raw if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(ios)==len(src["cases"])==2
+          out=["# 2026-10-26 两张新随机妻子测病盘：Python 原稿与 Swift 真生产断案全文","","新种子：202610268047；仅剔除引擎无法完成的技术输入，不按吉凶抽选。"]
+          for i,(a,b) in enumerate(zip(src["cases"],ios),1):
+              assert a["instant"]==b["instant"] and a["relationship"]==b["relationship"]=="妻子"
+              sw="\n\n".join(x["title"]+"：\n"+x["text"] for x in b["sections"])
+              out.extend(["",f"## 第{i}盘 | {a['instant']} | 妻子",
+                          f"四柱：{'／'.join(b['pillars'])}；{b['solar_term']}；{b['bureau']}",
+                          "### GPT / Python 原代码断案",a["python_reading_text"],
+                          "### iOS / Swift 生产 Router 断案",sw,
+                          f"逐字完全相同：{a['python_reading_text']==sw}；段落数量：{len(b['sections'])}"])
+          out.extend(["","## 无法正常计算而拒绝的原始抽样记录",
+            json.dumps(src["rejected"],ensure_ascii=False,indent=2)])
+          rendered="\n\n".join(out)+"\n"
+          (p/"python_swift_two_wife_full_readings.md").write_text(rendered,encoding="utf8")
+          print("TWO_WIFE_FULL_READINGS_START")
+          print(rendered)
+          print("TWO_WIFE_FULL_READINGS_END")
+          PY
+      - name: Preserve two wife Python originals, Swift product output, report and complete readable text even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: two-wife-verbatim-python-ios-vnext-20261026
+          path: /tmp/wengua-two-wife/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck

@@ -16,9 +16,9 @@ RELATIONS=(("self","本人","direct_self",None),
            ("father","父亲","direct_proxy",None),
            ("wife","妻子","direct_proxy","female"))
 
-def produce(seed=SEED,count=3):
-    if not 3 <= count <= 24:
-        raise ValueError('batch count must be 3..24')
+def produce(seed=SEED,count=3,wife_only=False):
+    if not 2 <= count <= 24:
+        raise ValueError('batch count must be 2..24')
     rng=random.Random(seed)
     cases=[]
     rejected=[]
@@ -28,7 +28,7 @@ def produce(seed=SEED,count=3):
         instant=datetime(rng.randint(2020,2025),rng.randint(1,12),
             rng.randint(1,28),rng.choice([1,3,5,7,9,11,13,15,17,19,21]),
             tzinfo=ZoneInfo("America/New_York")).isoformat()
-        rel,label,context,sex=RELATIONS[len(cases)%len(RELATIONS)]
+        rel,label,context,sex=RELATIONS[2 if wife_only else len(cases)%len(RELATIONS)]
         if instant in accepted_instants:
             rejected.append({"draw":draw,"instant":instant,"relationship":label,
                              "reason":"duplicate previously accepted clock"})
@@ -76,7 +76,7 @@ def produce(seed=SEED,count=3):
     assert len(cases)==count, f"Insufficient accepted technical casts: {len(cases)}/{count}"
     return {"schema":"wengua_ios_random_batch_vnext_20261026_v2",
             "seed":seed,"timezone":"America/New_York",
-            "selection":f"first {count} technically valid instants in seeded random order; profiles cycle self father wife; no selection by score/verdict",
+            "selection":f"first {count} technically valid instants in seeded random order; " + ("wife direct_proxy female for all" if wife_only else "profiles cycle self father wife") + "; no selection by score/verdict",
             "rejected":rejected,"cases":cases}
 
 def main():
@@ -84,8 +84,9 @@ def main():
     ap.add_argument("--output",required=True)
     ap.add_argument("--seed",type=int,default=SEED)
     ap.add_argument("--count",type=int,default=3)
+    ap.add_argument("--wife-only",action="store_true",help="Use wife/direct_proxy/female for every sampled chart")
     args=ap.parse_args()
-    obj=produce(seed=args.seed,count=args.count)
+    obj=produce(seed=args.seed,count=args.count,wife_only=args.wife_only)
     p=Path(args.output)
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
