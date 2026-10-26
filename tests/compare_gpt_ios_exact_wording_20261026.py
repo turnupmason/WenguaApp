@@ -27,10 +27,19 @@ def compare(python_path,swift_path,report_path):
         app=native[i]
         actual="\n\n".join(s["title"]+"：\n"+s["text"] for s in app["sections"])
         expected=one["python_reading_text"]
-        if actual==expected:
-            report.append("## %d %s: EXACT MATCH"%(i+1,one["instant"]))
+        # Byte-identical prose alone does not prove stable app routing.
+        # Require source-exact sections, order, IDs and all three raw fields
+        # so the native product and Python cannot silently use different
+        # subsections while reconstructing similar paragraphs.
+        python_sections=one["source_sections"]
+        native_sections=app["sections"]
+        exact_sections=(python_sections==native_sections)
+        if actual==expected and exact_sections:
+            report.append("## %d %s: EXACT MATCH (text + all section IDs/titles/bodies)"%(
+                i+1,one["instant"]))
         else:
-            issues.append("%s %s FULL_TEXT_MISMATCH"%(one["instant"],one["relationship"]))
+            issues.append("%s %s %s"%(one["instant"],one["relationship"],
+                "FULL_TEXT_MISMATCH" if actual!=expected else "SECTION_STRUCTURE_MISMATCH"))
             report.append("## %d %s (%s): MISMATCH"%(i+1,one["instant"],one["relationship"]))
             report.append("Python sections %d, Swift sections %d; character lengths %d and %d"%(
                 len(one["source_sections"]),len(app["sections"]),len(expected),len(actual)))
@@ -38,6 +47,12 @@ def compare(python_path,swift_path,report_path):
                 expected.splitlines(),actual.splitlines(),
                 fromfile="live_Python_GPT_Vnext",tofile="native_iOS_Vnext",
                 lineterm="",n=2))
+            if not exact_sections:
+                report.append("Section records differ (including IDs, order or text):")
+                report.append(json.dumps({
+                    "python_sections":python_sections,
+                    "ios_sections":native_sections
+                },ensure_ascii=False,sort_keys=True)[:10000])
             report.extend(["", "DIFF START",comparison[:26000],"DIFF END",""])
             print("EXACT_WORDING_FIRST_DIFF_"+str(i+1)+" "+comparison[:4200])
     report.append("\nExact equality: %d of %d"%(
