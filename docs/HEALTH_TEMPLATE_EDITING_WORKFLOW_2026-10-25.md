@@ -1,5 +1,8 @@
 # WenguaApp · 疾病严重程度断词模板在哪里、从哪抓数据、如何自行修改（2026-10-25）
 
+> **2026-10-26 最高优先新版（覆盖本文2026-10-25旧展示规则）**：`reading_template.json` 现在正式把客户显示与内部评分分开。GitHub 编辑 `native_customer` 各字段直接改变下一次 **重新构建打包后** iOS 用户阅读的自然中文；编辑 `macros` 则改变 Python V-next 客户断词。两组都不显示评分；内部的 `candidate_five_grade_quantization` 继续计算但不写入客户段落。原旧完整评分话术只读历史版另存 `data/templates/health_severity_vnext/internal_audit_template_20261025.json`，不要再照下文旧指导添加 `{palace_score}`、`{score}`、`{post_void_sum}`。原 `formation` 七变量依旧保持同步供古文/81格详细依据展示，改这个同时影响 Swift/Python。原 iOS 的 `health.severity` 目前是基于真盘的**证据解释**，并非全部Python合断算术移植。iOS人物关系目前只开放已核本人（日干）和父亲（年干）；其它领域／角色硬拒绝不造断词。200格最新8×25已单独导出 `data/mobile/health_vnext/health_energy_200.json` 并经原始Python全部200格逐值测试。上架计划与缺项见 [App Store 关卡](APP_STORE_RELEASE_GATE_2026-10-26.md)。
+
+
 **本文件是当前真正可运行 V-next 支线的编辑手册，不是重新设计的假想流程。** 老 V3.9.1 发布版本、iOS SwiftUI 画盘源码、旧81格局候选索引均不动。下面所有路径以公开仓库 `turnupmason/WenguaApp` 的 `main` 为准。
 
 ## 只需要改的两个地方

@@ -29,3 +29,7 @@
 ## 发布主线下一交付
 
 研究层 V-next 与 iOS 原生共享事实契约、完整推理层 parity → 至少多个人物/多种时辰稳定无内部评分的自然断词 → 真人设备测试/版权和隐私审查 → TestFlight → 提交Apple审核。**此轮未提交App Store、未生成签名IPA，不能宣称已上架。**
+
+## 2026-10-26 200格离线资源补档
+
+新版另增 `data/mobile/health_vnext/health_energy_200.json` 作为八张25格用户权威表的**全部真实单元格**静态 Bundle；`WenguaNativeEnergyBundle.swift` 校验本地资源，且 `scripts/export_ios_health_energy_200.py --check` / `tests/test_ios_energy_200_source_parity.py` 比对 Python 8×25。注意只是**数据已搬入iOS应用**，尚不是 Python `health_quant_overlay_vnext.py` 的全套推理和结论已经 Swift 等价执行；上架门槛仍要求全链数值内部一致、客户输出不得展示任何分数。
