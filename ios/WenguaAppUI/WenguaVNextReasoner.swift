@@ -17,6 +17,22 @@ enum WenguaVNextReasoner {
         if n < 0 {return n <= -4 ? "不利明显" : "偏向不利"}
         return "有利不利相持"
     }
+    private static func factorTrend(_ value:Int?)->String {
+        if value==0 {return "此项中性，不额外加重吉凶"}
+        return trend(value)
+    }
+    private static func elementRelationText(_ original:String,
+                                            kind:String)->String {
+        let actor=kind=="god" ? "八神" : kind=="door" ? "门" : "星"
+        switch original {
+        case "符号生宫":return actor+"生落宫"
+        case "宫生符号":return "落宫生"+actor
+        case "符号克宫":return actor+"克落宫"
+        case "宫克符号":return "落宫克"+actor
+        case "比和":return "与落宫比和"
+        default:return original
+        }
+    }
     private static func relation(_ source:Int,_ target:Int)->String {
         if source==target{return "同宫"}
         let e=WenguaNativeReadingRouter.palaceElements
@@ -68,8 +84,8 @@ enum WenguaVNextReasoner {
         }
         func factorLine(_ f:WenguaVNextStrengthEvidence)throws->String {
             let stage=f.monthStage ?? "不适用"
-            let sign=trend(f.internalScore)
-            let relation=f.palaceRelation ?? "未核"
+            let sign=factorTrend(f.internalScore)
+            let relation=elementRelationText(f.palaceRelation ?? "未核",kind:f.source)
             let tier=f.tier ?? "未核"
             let lifes=f.lifeStages.isEmpty ? "未核" : f.lifeStages.joined(separator:"、")
             let lim=f.restrictions.isEmpty ? "" :
