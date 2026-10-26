@@ -138,14 +138,17 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
             "no_invented_author_outcome":True,
         })
     applied=[p["score"] for p in pairs if p["score"] is not None]
-    pattern_score=(0 if not pairs else
-                   applied[0] if len(applied)==len(pairs)==1 else
-                   applied if len(applied)==len(pairs) else None)
+    # All 81 user declarations remain visible. A non-triggered additional
+    # pattern condition is not a reason to withhold already measured star,
+    # door, god and other *qualified* patterns: this one contributes zero.
+    # Keep the original candidates, gates and provenance for source audit.
+    pattern_score=sum(applied)
     pattern_audit={
-        "status":("calculated" if pattern_score is not None
-                  else "user_source_or_81_context_pending"),
+        "status":("calculated" if len(applied)==len(pairs)
+                  else "nontriggered_patterns_excluded_from_current_score"),
         "matches":pairs,
-        "score":sum(applied) if pattern_score is not None else None,
+        "score":pattern_score,
+        "excluded_patterns_not_assumed_true":len(pairs)-len(applied),
         "pending":[p["key"] for p in pairs if p["score"] is None],
         "explicit_81_coverage":catalog_validation(),
         "default_tier":"中等","base_per_user_pattern":3,
@@ -187,15 +190,16 @@ def inspect_selected_quantization(*,selected_roles,
     roles={}
     aggregate={}
     for key,row in selected_roles.items():
-        if key.startswith("extra_") or key in (
+        if key in (
                 "illness","doctor","medicine","patient",
                 "hour","natal","gender","chief"):
             detail=row["complete_palace"]
             item=_quantize_one(key,detail,five_not_encounter=five,
                                xun_shou=xun_shou)
             roles[key]=item
-            # User: score only truly selected relationship roles; stage-one
-            # illness still included. Physical duplicates merge at total.
+            # User: ONLY the exact selected health roles. No unrelated extra
+            # palace inferred through a generic family/profile traversal.
+            # Shared physical palaces are collapsed by multi_palace_tally.
             aggregate[key]={"palace":item["palace"],
                             "score":item["palace_score"]["score"],
                             "raw_sum":item["palace_score"]["raw_sum"],
@@ -205,9 +209,19 @@ def inspect_selected_quantization(*,selected_roles,
         qian_kun[k]=_quantize_one(
             k,row["complete_palace"],five_not_encounter=five,
             xun_shou=xun_shou)
-        qian_kun[k]["auxiliary_only_not_auto_counted"]=True
+        qian_kun[k]["auxiliary_only_not_auto_counted"]=False
         qian_kun[k]["selected_if_patient_gender_known"]=(
             row["palace"]==selected_gender_palace)
+    # Two user-specified auxiliary palaces remain part of the relevance
+    # closure. Each is counted once if physically distinct. Never treat
+    # both as two patient identities or double-count overlaps.
+    for alias,entry in qian_kun.items():
+        pal=entry["palace"]
+        aggregate["aux_"+alias]={
+            "palace":pal,
+            "score":entry["palace_score"]["score"],
+            "raw_sum":entry["palace_score"]["raw_sum"],
+            "known_subtotal":entry["palace_score"]["known_subtotal"]}
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
             "selected_gender_palace":selected_gender_palace,
@@ -268,9 +282,9 @@ def render_palace_signed_score(item):
     palace=item["palace_score"]
     if palace["grade"] is not None:
         final=("本宫原始净分"+str(palace["raw_sum"])+
-               "，五档最终"+str(palace["score"])+"分："+palace["grade"]
-               if palace["raw_sum_exceeds_five"] else
-               "本宫当前"+str(palace["score"])+"分："+palace["grade"])
+               "，空亡调整前"+str(palace["score_before_void"])+
+               "分，实际"+str(palace["score"])+"分："+ 
+               ("不凶不吉" if palace["score"]==0 else palace["grade"]))
     elif palace["score"] is not None:
         final="本宫当前"+str(palace["score"])+"分（"+str(palace["status"])+"）"
     else:
@@ -303,15 +317,16 @@ def render_palace_compact_score(item):
     ]
     pal=item["palace_score"]
     if pal["score"] is not None:
-        if pal["void_state"]=="fake_void":
-            tail=("假空当前计0分（原始已核项"+
-                  str(pal["known_subtotal"])+"；未核格局不强定）")
-        elif pal["void_state"]=="true_void":
-            tail=("真空按当前规则计-5分极大凶；"+
-                  "宫内原始已核项"+str(pal["known_subtotal"]))
+        if pal["void_state"] in ("fake_void","true_void"):
+            kind="假空" if pal["void_state"]=="fake_void" else "真空"
+            tail=(kind+"宫空前"+str(pal["score_before_void"])+"分，"+
+                  "按正减3／负加3／零不变→"+str(pal["score"])+
+                  "分（"+("不凶不吉" if pal["score"]==0 else pal["grade"])+
+                  "）；只在后续填实冲开应期上区分真假空")
         else:
             tail=("原始净分"+str(pal["raw_sum"])+
-                  "，五档"+str(pal["score"])+pal["grade"])
+                  "，五档"+str(pal["score"])+
+                  ("不凶不吉" if pal["score"]==0 else pal["grade"]))
     else:
         tail=("已核小计"+str(pal["known_subtotal"])+
               "，待核"+"/".join(pal["unresolved_categories"]))
@@ -322,9 +337,10 @@ def render_quant_review(report):
     summary=report["summary"]
     score=summary["score"]
     if score is not None:
-        return ("本次相关独立实宫原始净分"+str(summary["raw_known_sum"])+
-                "，按用户±5截断为"+str(score)+"分（"+
-                summary["grade"]+"）；共"+
+        return ("本次相关实宫空亡调整前原分合计"+str(summary["raw_known_sum"])+
+                "，空亡调整后各宫实际净分合计"+str(summary["post_void_known_sum"])+
+                "，最后按±5截断为"+str(score)+"分（"+
+                ("不凶不吉" if score==0 else summary["grade"])+"）；共"+
                 str(summary["unique_palace_count"])+"个不重复相关宫。"+
                 "四类星门神格原分独立保存；时干、值符、性别辅助若与"+
                 "其他用神同宫不重复加总；仅为术数研究。")
