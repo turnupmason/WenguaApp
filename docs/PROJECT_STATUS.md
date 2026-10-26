@@ -1414,3 +1414,8 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 ### 2026-10-26 原生Xcode完整编译首版失败与修正（历史不能删除）
 `iOS Offline Native Casting Parity #40342644023` 的 Linux `native_core` 检查与两真盘81格桥均 success（`NATIVE_HEALTH_TEMPLATE_BRIDGE_OK charts=2 catalog=81/81`），Xcode macOS `real_ios_xcode_build` **失败**：`WenguaDesignPreviewApp.swift:1232:25: error: the compiler is unable to type-check this expression in reasonable time`。这是将新增81格多层列表写在已有巨型`TraditionalReadingPreview.body` ViewBuilder 造成的 SwiftUI 类型推导超时，并非改变起盘或源表。修正：把新增 SwiftUI 列表拆成单独`WenguaHealthFormationSection`（formationList／formationCard 分拆），原父View仅一行插入；先前失败run永存，并由新提交macOS实际Simulator build重新验收。不能拿Linux syntax-parse或先前2026-10-22旧Xcode通过来宣称新代码已Build。
+
+
+### 2026-10-26 新 iOS 模板桥首次完整 Xcode Simulator BUILD 成功（已验证）
+- 实际源码提交 `e9ce3a81346ac9eaf729170d9bcd94c13f68df04` 对应 GitHub Actions [iOS Offline Native Casting Parity #40344256873](https://github.com/turnupmason/WenguaApp/actions/runs/40344256873)：`native_core=success`（Swift/Python原始盘对照、两张真盘按81有序格从资源JSON+TSV显示、严格坏TSV拒绝），`real_ios_xcode_build=success`（macOS XcodeGen + 真正iOS Simulator App编译）。[iOS Design Contract #40344256767](https://github.com/turnupmason/WenguaApp/actions/runs/40344256767) success；[WenguaApp CI #40344256796](https://github.com/turnupmason/WenguaApp/actions/runs/40344256796) 3.11和3.12 success。先前失败 [#40342644023](https://github.com/turnupmason/WenguaApp/actions/runs/40342644023)（巨大SwiftUI body typecheck超时）及第一张拒盘失败 `#40342643735` 完整保留，未删任何失败记录。
+- **真实完成的是一阶段 iOS 资料接入，不是 iOS 完整健康断案移植**：本地 Swift 真起盘→宫内天地盘干序对→本地已打包81格完整七列和新版`formation`话术。V-next用户200格能量、人物关系、真假空±3、宫内五级、跨宫冲突优先级、完整模板断词仍仅Python运行/研究测试，不能把原生UI当已交付诊断。原生真机安装、签名、TestFlight仍未验证。本轮两模拟样本完整原字仍见 `docs/HEALTH_TWO_20261026_REAL_READINGS_AND_CONFLICTS.md`；古书43章194例不变。
