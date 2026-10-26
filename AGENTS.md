@@ -1674,3 +1674,8 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **明确不转码 GitHub 全部 Python 文件**：仅 App 离线执行需要的确定性起局/断事算法移植Swift与打包其小型规则索引，古籍原书、全部历史案例、SQLite全存现有GitHub/研究本地备份便于以后查阅和人工修正规则，不将仓库改成古籍阅读App，不删除既有书数据。
 - 本轮依旧只有健康病情轻重子领域已移植；其他14大领域及细分并未因 UI 出现而冒称可断。对健康已经覆盖的核心200格/81格/生克/评分，真实五盘 Python vs Swift 的宫分和克制方向结论回归见现行 Actions；更广泛已知来源分支、同宫角色、多样时辰仍需追加实盘验收。Xcode 更新不用建新项目，步骤 `docs/IOS_VNEXT_MAC_XCODE_UPDATE_2026-10-26.md`，必须 `git pull --ff-only origin main` 后 xcodegen generate，再 Clean Build Folder + ⌘R；用户本地 Mac 不会随远端 push 自动更新。
 - 本轮原著新章0、原书事件家族新0，累计两书43章194事件不变；旧所有CI失败保留，最终是否绿以对应 HEAD 工作流实时结果为准，未签 IPA/未 Apple 上架。
+
+
+### 2026-10-26 20关系原书附证进入新版断词主流程（UI简洁）
+- 从已保存的 `health_v20/actor_profiles.json` 源索引执行配偶妻乙/夫庚的真实日干五合辅助、乾坤及排行补充、实际年命独立实宫；**不把辅助宫直接充当患者主用神，也不当成第二独立分数**。`WenguaVNextCustomerComposer.swift` 已在主断案的角色解释里显示经核实际 `natal` / `gender` 角色，其他人物取用来源说明和五合补充仅在折叠的「人物取用的额外依据」中，避免啰嗦。所有新增话术都归现行 `reading_template.json` 的 `native_customer.vnext_actor_*`，客户看不到数值。
+- 原 `native_core` 对照门槛继续要求同一真实时辰的五盘 Python/Swift 完整星门神/格/实宫签名后得分一致；新的20档案是取用**来源索引及条件性实现**，不是所有来源已通过足量原著未见家族案例判对；其他专题不可挪用疾病模板。任何后续新 Xcode build 都要在改动代码的同一SHA Actions验证。旧UI与失败记录不删除。

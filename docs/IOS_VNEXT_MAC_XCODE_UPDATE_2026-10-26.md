@@ -60,3 +60,8 @@
 ## 发行门槛
 
 真正 App Store 发行还需官方开发者证书、真机和 TestFlight、公众隐私政策 URL、App Store Connect 信息和 Apple 审核。这里的 Xcode Simulator 成功并不等于已上架。
+
+
+### 2026-10-26 20关系原书附证进入新版断词主流程（UI简洁）
+- 从已保存的 `health_v20/actor_profiles.json` 源索引执行配偶妻乙/夫庚的真实日干五合辅助、乾坤及排行补充、实际年命独立实宫；**不把辅助宫直接充当患者主用神，也不当成第二独立分数**。`WenguaVNextCustomerComposer.swift` 已在主断案的角色解释里显示经核实际 `natal` / `gender` 角色，其他人物取用来源说明和五合补充仅在折叠的「人物取用的额外依据」中，避免啰嗦。所有新增话术都归现行 `reading_template.json` 的 `native_customer.vnext_actor_*`，客户看不到数值。
+- 原 `native_core` 对照门槛继续要求同一真实时辰的五盘 Python/Swift 完整星门神/格/实宫签名后得分一致；新的20档案是取用**来源索引及条件性实现**，不是所有来源已通过足量原著未见家族案例判对；其他专题不可挪用疾病模板。任何后续新 Xcode build 都要在改动代码的同一SHA Actions验证。旧UI与失败记录不删除。
