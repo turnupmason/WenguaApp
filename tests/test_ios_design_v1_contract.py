@@ -136,9 +136,9 @@ class V3SourceUI(unittest.TestCase):
                      'chosenDomain',
                      'chosenTopic',
                      'QuestionTopic(id:"health.severity"',
-                     'WenguaNativeCore.compute(at:date,timezone:"America/New_York")',
+                     'WenguaNativeCore.compute(at:finalInstant,timezone:localZone)',
                      'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)',
-                     'FrozenPreview.readings.indices.contains(sampleIndex)',
+                     'WenguaVNextInlineReading(reading:reading,',
                      'palace.lifeRows',
                      'QFive.tombHorseRelation(',
                      'multiValueCard("九星"']:
@@ -149,7 +149,9 @@ class V3SourceUI(unittest.TestCase):
                      'p.branches.map(b=>colored("branch",b))']:
             self.assertIn(text,self.html)
         project=(ROOT/"ios/WenguaAppUI/project.yml").read_text("utf8")
-        self.assertIn("FrozenReadingV391.json",project)
+        self.assertNotIn("FrozenReadingV391.json",project)
+        self.assertIn("actor_profiles.json",project)
+        self.assertNotIn("FrozenPreview",self.swift)
 
     def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):
         self.assertEqual(len(re.findall(r'^\s*domain\("',self.swift,re.M)),14)

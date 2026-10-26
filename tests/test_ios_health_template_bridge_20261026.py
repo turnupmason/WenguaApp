@@ -38,6 +38,8 @@ class NativeTemplateBundleContract(unittest.TestCase):
         view=MAIN.read_text("utf8")
         self.assertIn("尚非完整断案",view)
         self.assertNotIn("auto_cast_health_review_text(",swift)
-        self.assertIn("最终200格合断仍在逐盘移植与验收",view)
+        self.assertIn("WenguaVNextInlineReading",view)
+        self.assertIn("WenguaNativeCustomerView(reading:reading)",view)
+        self.assertNotIn("FrozenPreview",view)
 if __name__=="__main__":
     unittest.main()
