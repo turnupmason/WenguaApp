@@ -21,7 +21,7 @@
   "macros": {
     "macro": "{macro_text}",
     "role": "{palace_detail}{extra_illness}{role_relation}{gender_note}",
-    "no_natal": "未提供真实年命，不纳入本次计算。",
+    "no_natal": "患者未提供真实年命，不纳入本次计算。",
     "illness": " 传统病星格局候选「{name}」，其独立条件：{explanation}。",
     "role_score": "",
     "role_relation": " {relation_text}",
