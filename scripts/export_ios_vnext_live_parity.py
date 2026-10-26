@@ -42,7 +42,16 @@ def make_fixture():
                 "score":row["palace_score"]["score"]}
            for key,row in q["auxiliary_qian_kun"].items()
         }
+        role_checks=r["full_health_role_strength_network"]["role_group_reviews"]
+        controls={
+            key:{"direction":row["relation"],
+                 "cell":row.get("control_result"),
+                 "scenario":row.get("control_scenario")}
+            for key,row in role_checks.items()
+        }
         reports.append({
+            "evidenceDirection":r["verdict"]["state"],
+            "controls":controls,
             "instant":instant,
             "relationship":"父亲" if relationship=="father" else "本人",
             "summary":q["summary"],

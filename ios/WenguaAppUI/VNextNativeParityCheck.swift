@@ -19,7 +19,14 @@ private struct ExpectedSummary:Decodable {
     let post_void_known_sum:Int
     let effective_palace_scores:[String:Int?]
 }
+private struct ExpectedControl:Decodable {
+    let direction:String
+    let cell:String?
+    let scenario:String?
+}
 private struct ExpectedCast:Decodable {
+    let evidenceDirection:String
+    let controls:[String:ExpectedControl]
     let instant:String
     let relationship:String
     let summary:ExpectedSummary
@@ -71,6 +78,21 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                 }
                 try require(pid==r.palace,"auxiliary palace "+k+" mismatch")
                 try require(p.afterVoid==r.score,"auxiliary score "+k+" mismatch")
+            }
+            try require(audit.evidenceDirection==fixture.evidenceDirection,
+                "directional verdict mismatch Swift="+audit.evidenceDirection+
+                " Python="+fixture.evidenceDirection)
+            for (role,original) in fixture.controls {
+                guard let current=audit.controls.first(where:{$0.role==role}) else {
+                    throw WenguaVNextReadingGate.unresolvedRole
+                }
+                try require(current.direction==original.direction,
+                    "directed relation "+role+" mismatch")
+                try require(current.cell==original.cell,
+                    "actual directed 5x5 control "+role+" mismatch Swift="+
+                    String(describing:current.cell)+" Python="+String(describing:original.cell))
+                try require(current.scenario==original.scenario,
+                    "true/fake source-target 5x5 "+role+" mismatch")
             }
             print("SWIFT_PYTHON_FULL_VNEXT_MATCH "+fixture.instant+" score="+String(describing:audit.score))
             tested+=1
