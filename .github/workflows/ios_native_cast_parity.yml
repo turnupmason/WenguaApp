@@ -14,6 +14,8 @@ on:
       - 'ios/WenguaAppUI/WenguaVNextCustomerComposer.swift'
       - 'ios/WenguaAppUI/VNextNativeParityCheck.swift'
       - 'scripts/export_ios_vnext_live_parity.py'
+      - 'scripts/ios_vnext_three_random_20261026.py'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
       - 'data/evaluation/health_vnext/ios_native_vnext_python_parity_20261026.json'
       - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
       - 'ios/WenguaAppUI/WenguaLocalHistoryView.swift'
@@ -87,6 +89,20 @@ jobs:
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/VNextNativeParityCheck.swift -o /tmp/wengua-vnext-parity
           python3 -m scripts.export_ios_vnext_live_parity --output /tmp/wengua-vnext-five-current.json
           /tmp/wengua-vnext-parity data/mobile/health_vnext/health_energy_200.json /tmp/wengua-vnext-five-current.json
+      - name: Independently check 3 new randomly drawn real instants and compose iOS current JSON text
+        run: |
+          mkdir -p /tmp/wengua-vnext-three
+          python3 -m scripts.ios_vnext_three_random_20261026 --output /tmp/wengua-vnext-three/python_truth.json
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
+          /tmp/wengua-vnext-three-native /tmp/wengua-vnext-three/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-vnext-three/swift_public_readings.log
+      - name: Preserve 3 truly random Python and Swift evidence whether passing or failing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vnext-three-new-random-swift-python-parity-20261026
+          path: /tmp/wengua-vnext-three/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
