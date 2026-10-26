@@ -38,8 +38,8 @@ enum WenguaNativeReadingRouter {
     static let supportedRelations = ["本人","父亲"]
     static let supportedTopics = ["health.severity"]
     static let palaceOrder = [4,9,2,3,7,8,1,6]
-    static let homeStars = ["天蓬":1,"天芮":2,"天冲":3,"天辅":4,
-                            "天心":6,"天柱":7,"天任":8,"天英":9]
+    static let homeStars = ["天蓬星":1,"天芮星":2,"天冲星":3,"天辅星":4,
+                            "天心星":6,"天柱星":7,"天任星":8,"天英星":9]
     static let homeDoors = ["休门":1,"死门":2,"伤门":3,"杜门":4,
                             "开门":6,"惊门":7,"生门":8,"景门":9]
     static let opposites = [1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4]
@@ -95,8 +95,8 @@ enum WenguaNativeReadingRouter {
         func atStem(_ name:String) throws -> WenguaNativePalace {
             try unique { $0.heavenStars.contains(where:{$0.carriedStem==name}) }
         }
-        let illness=try unique {$0.heavenStars.contains(where:{$0.star=="天芮"})}
-        let doctor=try unique {$0.heavenStars.contains(where:{$0.star=="天心"})}
+        let illness=try unique {$0.heavenStars.contains(where:{$0.star=="天芮星"})}
+        let doctor=try unique {$0.heavenStars.contains(where:{$0.star=="天心星"})}
         let medicine=try atStem("乙")
         let patientStem=String((relationship=="父亲" ? chart.pillars.year :
                               chart.pillars.day).prefix(1))

@@ -38,7 +38,7 @@ class CurrentQuantReview(unittest.TestCase):
             "auxiliary_only_not_auto_counted"])
         self.assertIn("qian",q["auxiliary_qian_kun"])
         self.assertIn("kun",q["auxiliary_qian_kun"])
-        self.assertIn("宫位五级吉凶净分合断",r["reading_text"])
+        self.assertNotIn("宫位五级吉凶净分合断",r["reading_text"])
         self.assertIn("±5",render_quant_review(q))
 
     def test_selected_role_real_void_always_matches_new_priority(self):

@@ -74,7 +74,7 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         self.assertEqual(details["primary_strength"]["kind"],"deity")
         self.assertTrue(details["stars"])  # original co-host star still shown
         self.assertIn("克制",report["reading_text"])
-        self.assertIn("宫内吉凶能量",report["reading_text"])
+        self.assertNotIn("宫内吉凶能量",report["reading_text"])
 
 
 if __name__=="__main__":
