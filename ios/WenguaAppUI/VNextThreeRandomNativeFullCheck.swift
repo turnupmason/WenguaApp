@@ -229,6 +229,15 @@ private struct PublicCast:Encodable {
             let full=try WenguaPythonVNextVerbatim.sections(
                 chart:chart,review:audit,actor:actor,
                 template:template,catalog:pairs,energy:energy)
+            try require(reading.sections.count==full.count,
+                loc+"production customer differs from exact source renderer count")
+            for n in full.indices {
+                try require(reading.sections[n].id==full[n].id &&
+                            reading.sections[n].title==full[n].title &&
+                            reading.sections[n].text==full[n].text,
+                            loc+"production customer differs from source renderer line "+
+                            String(n+1))
+            }
             let fullResult=PublicCast(
                 ordinal:i+1,instant:test.instant,
                 relationship:test.relationship,
@@ -236,10 +245,10 @@ private struct PublicCast:Encodable {
                          chart.pillars.day,chart.pillars.hour],
                 solar_term:chart.solarTerm,
                 bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+String(chart.bureau.ju)+"局",
-                section_count:full.count,
+                section_count:reading.sections.count,
                 source_direction:audit.evidenceDirection,
                 evidence_conflict:audit.evidenceConflict,
-                sections:full)
+                sections:reading.sections)
             print("VNEXT_IOS_PYEXACT="+String(
                 data:try encoder.encode(fullResult),encoding:.utf8)!)
             print("VNEXT_IOS_3_RANDOM="+String(data:try encoder.encode(result),

@@ -237,48 +237,33 @@ enum WenguaNativeReadingRouter {
             evidence.append(try fill("details",[
                 "palace":palaceName(p),"names":titles.joined(separator:"、")]))
         }
-        // The customer sees one coherent chain, not duplicate rough drafts:
-        // actual macro -> relevant palaces -> directed roles -> optional
-        // classical details -> verdict -> timing -> disclaimer.
-        var sections=[WenguaNativeCustomerSection(
-            id:"01",title:"局势与缓急",text:macro)]
-        let evidenceStatus:String
+        // STRICT source-text contract. The complete Python V-next text is
+        // rendered from the fresh actual Swift audit and SAME editable JSON.
+        // No extra native paraphrase, no inserted sections, no internal scores.
+        // All mandatory arithmetic, actor, 81/200 and directional rules stay
+        // inside WenguaVNextEngine; only the customer words cross this DTO.
         if let energy {
-            let current=try WenguaVNextEngine.compute(
+            let review=try WenguaVNextEngine.compute(
                 chart:chart,relationship:relationship,energy:energy,
                 catalog:catalog,actor:actor)
-            let final=try WenguaVNextCustomerComposer.sections(
-                current,chart:chart,template:template,actor:actor)
-            // The 81 Excel excerpts remain user-accessible but initially
-            // folded away; they are not duplicated in the main judgment.
-            sections += [final[0],final[1]]
-            if let extra=final.first(where:{$0.id=="88subject"}) {
-                sections.append(extra)
-            }
-            if let evidence=final.first(where:{$0.id=="87vnext"}) {
-                sections.append(evidence)
-            }
-            sections += [WenguaNativeCustomerSection(id:"03classical",
-                    title:"本盘原格古诀（点击展开）",
-                    text:evidence.joined(separator:"\n")),
-                final.first(where:{$0.id=="90vnext"})!,
-                final.first(where:{$0.id=="91vnext"})!]
-            evidenceStatus="native_vnext_200_81_signed_source_logic_review"
-        } else {
-            sections += [
-                WenguaNativeCustomerSection(id:"02",title:"选用神与宫位关系",
-                                            text:roleSentences.joined(separator:"\n")),
-                WenguaNativeCustomerSection(id:"03",title:"本盘格局依据",
-                                            text:evidence.joined(separator:"\n")),
-                WenguaNativeCustomerSection(id:"04",title:"专业合断尚未接通",
-                                            text:try fill("pending"))]
-            evidenceStatus="native_factual_template_only"
+            let exact=try WenguaPythonVNextVerbatim.sections(
+                chart:chart,review:review,actor:actor,template:template,
+                catalog:catalog,energy:energy)
+            return WenguaNativeCustomerReading(
+                version:"gpt_python_original_vnext_literal_customer_20261026",
+                topicID:topicID,relationship:relationship,iso:chart.iso,
+                evidenceStatus:"real_native_score_private_python_full_text_parity",
+                sections:exact)
         }
-        sections.append(WenguaNativeCustomerSection(id:"95",
-            title:"传统文化说明",text:try fill("disclaimer")))
+        // Original injectable stage-one entry used by legacy tests only.
+        // The production fromBundle path ALWAYS supplies 200 original cells.
         return WenguaNativeCustomerReading(
-            version:"native_vnext_20261026_full_health_candidate",
+            version:"legacy_stage_one_factual_source_only",
             topicID:topicID,relationship:relationship,iso:chart.iso,
-            evidenceStatus:evidenceStatus,sections:sections)
+            evidenceStatus:"no_signed_source_energy_fail_closed",
+            sections:[WenguaNativeCustomerSection(
+                id:"04",title:"专业合断尚未接通",
+                text:try fill("pending"))])
+
     }
 }
