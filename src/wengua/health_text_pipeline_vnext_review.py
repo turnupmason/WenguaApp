@@ -28,8 +28,14 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
     from .health_palace_detailed_vnext import inspect_role_void
     from .selected_duel_table_vnext import table_one
     from .health_five_level_quant_vnext import door_break_penalty_policy
+    # Casting still returns the complete nine REAL palaces. Follow-up
+    # score/condition computation is restricted to exactly the selected
+    # health role palaces and both user-requested Qian/Kun auxiliaries.
+    net=review["full_health_role_strength_network"]
+    relevant_palaces={v["palace"] for v in net["nodes"].values()}
+    relevant_palaces.update((2,6))
     nine_palace_conditions={}
-    for p in range(1,10):
+    for p in sorted(relevant_palaces):
         cell=chart["palaces"][str(p)]
         if p==5:
             if cell["heaven_stars"] or cell["door"] or cell["deity"]:
@@ -70,6 +76,7 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
                        "value_door":chart["value_door"]},
         "nine_palaces":chart["palaces"],
         "nine_palace_condition_facts":nine_palace_conditions,
+        "scored_relevant_palaces":sorted(relevant_palaces),
         "verdict":review["verdict"],"sections":review["sections"],
         "reading_text":review["reading_text"],
         "evidence_counts":review["evidence_counts"],
