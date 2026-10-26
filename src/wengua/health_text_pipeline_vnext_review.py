@@ -32,8 +32,14 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
     # score/condition computation is restricted to exactly the selected
     # health role palaces and both user-requested Qian/Kun auxiliaries.
     net=review["full_health_role_strength_network"]
-    relevant_palaces={v["palace"] for v in net["nodes"].values()}
-    relevant_palaces.update((2,6))
+    if net.get("mode")=="selective":
+        relevant_palaces={v["palace"] for v in net["nodes"].values()}
+        relevant_palaces.update((2,6))
+    else:
+        # Explicit opt-in historical research graph has a distinct node
+        # schema; preserve its original all-nine fact audit instead of
+        # attempting to reinterpret node IDs as physical palace objects.
+        relevant_palaces=set(range(1,10))
     nine_palace_conditions={}
     for p in sorted(relevant_palaces):
         cell=chart["palaces"][str(p)]
