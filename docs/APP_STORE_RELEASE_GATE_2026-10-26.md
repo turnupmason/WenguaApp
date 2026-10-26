@@ -37,3 +37,9 @@
 ## 2026-10-26 发行资源补充
 - `ios/WenguaAppUI/PrivacyInfo.xcprivacy` 声明 UserDefaults 只访问当前App本机偏好（Apple已确认理由 `CA92.1`）、没有声明第三方跟踪/收集；需在正式发行前按实际 SDK 与网络行为重新审查，不能只靠此文件解决全部隐私义务。来源：Apple `https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitypereasons`。
 - `.github/workflows/ios_native_cast_parity.yml` 完整Xcode Simulator构建成功时产**未签名模拟器调试App artifact**（30天），不是iPhone可安装IPA或App Store签名包。真实开发者账号、Team ID和App Store Connect仍须本人处理。
+
+
+### 2026-10-26 原生 iOS 离线接线／模拟器工件最终已验证（本轮实测）
+- 本轮真实源码构建提交 `073078cef6ff16349fc30289928a3ebfaa571e9f`；其对应 [iOS Offline Native Casting Parity #40350794158](https://github.com/turnupmason/WenguaApp/actions/runs/40350794158) 的 `native_core=success`、`real_ios_xcode_build=success`，两者是实际 Swift 核心运行及 macOS XcodeGen + iOS Simulator `xcodebuild` 全工程编译，不是只做 syntax parse。已真实导出 GitHub Actions artifact `wengua-unsigned-simulator-debug-app`（artifact ID **12663004530**，下载从该 run 的 Artifacts 区域进入）；另有五盘审计 `five-new-true-charts-and-pillar-template-audit`（ID **12662799274**）。
+- 同源码 [WenguaApp CI #40350794314](https://github.com/turnupmason/WenguaApp/actions/runs/40350794314) 的 Python 3.11/3.12 全仓 success；[iOS V1 Design Contract #40350794872](https://github.com/turnupmason/WenguaApp/actions/runs/40350794872) success。此轮此前 SwiftUI 历史页语法/类型检查失败、CLI 忘带200格依赖、Python tuples/list 数组转换失败等旧Run 全部保留，不覆盖、不删除。未来一旦再次提交代码，仍需以最新 HEAD 对应CI重验。
+- **产品可用性界线**：生成的 `.app` 是 **unsigned Simulator Debug**，不适用于用户直接安装 iPhone、不代表 TestFlight、Apple Connect 上传或 App Store审核通过。手机现在已有真盘、明确支持的本人/父亲两条用神、81格、200格静态资源、真实宏观条件和简明中文证据、本地存储与隐私，但**未完成跨语言 V-next 核心200格运行推理／真假空规则／内部评分合断的完整逐盘一致性**，所以原生综合吉凶仍明确为待核而非假冒真断。用户后续人工改模板靠 `reading_template.json/native_customer` 并重新编译发版本；既有V3.9.1、81来源、全部194古籍案例和失败数据保留。
