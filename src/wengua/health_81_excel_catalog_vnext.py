@@ -63,7 +63,14 @@ def for_real_palace(cell):
     earth=cell.get("earth_stem")
     if not earth or cell["palace"]==5:return []
     return [dict(lookup_pair(s["carried_stem"],earth),
-                 star=s["star"],palace=cell["palace"])
+                 star=s["star"],palace=cell["palace"],
+                 can_vote=True,
+                 source_state="user_excel_explicit_81",
+                 applicability="user_excel_heaven_earth_pair",
+                 source_conditions=(),
+                 explanation="用户Excel该天盘、地盘组合吉凶已明确",
+                 fact_id="user_excel81:"+str(cell["palace"])+":"+
+                         s["carried_stem"]+"/"+earth)
             for s in cell["heaven_stars"]
             if s.get("carried_stem") in STEMS]
 
