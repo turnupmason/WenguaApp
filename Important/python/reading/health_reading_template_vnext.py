@@ -19,7 +19,8 @@ FIELDS=("heaven","earth","name","polarity",
 def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
     if raw.get("schema") not in ("health_severity_user_editable_template_v20261025_v1",
-                                 "health_severity_user_editable_template_v20261026_customer_v2"):
+                                 "health_severity_user_editable_template_v20261026_customer_v2",
+                                 "health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades"):
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):

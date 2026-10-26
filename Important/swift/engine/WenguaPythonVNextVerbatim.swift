@@ -134,8 +134,7 @@ enum WenguaPythonVNextVerbatim {
               let polarity=WenguaVNextEngine.godPolarity[name] else {
             return name+(rel[direction] ?? "待核")+"、吉凶待核"
         }
-        return name+(rel[direction] ?? "待核")+"、"+tier+
-               (polarity>0 ? "吉":"凶")
+        return name+(rel[direction] ?? "待核")+"、"+tier+(polarity > 0 ? "吉" : "凶")
     }
     private static func voidReason(_ p:WenguaNativePalace,
                                    chart:WenguaNativeChart,
