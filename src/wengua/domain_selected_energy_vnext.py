@@ -363,7 +363,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "complete_selected_palace_audits":{
             k:v["complete_palace"] for k,v in inspected.items()},
         "qian_kun_auxiliary_observations":auxiliary_palaces,
-        "void_rule_version":"user_20261024_void_horse_cancels_first_v2",
+        "void_rule_version":"user_20261025_void_horse_same_palace_fake_v3",
         "first_stage_macro":macro_facts,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
