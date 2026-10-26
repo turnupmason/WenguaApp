@@ -22,12 +22,12 @@ OUTPUT=Path("artifacts/demo_2024_health_selected_20261025.json")
 def make_report():
     # Seed and selection rule fixed BEFORE observing any outcome.
     rng=random.Random(20241025)
-    offsets=list(range(0,240))
+    offsets=list(range(0,220))
     rng.shuffle(offsets)
     skipped=[]
     for offset in offsets:
         day=datetime(2024,3,15,13,0)+timedelta(days=offset)
-        # March 15-November 9, 2024: all 13:00 local clocks observe EDT.
+        # March 15-October 20, 2024: all 13:00 local clocks observe EDT.
         iso=day.isoformat()+"-04:00"
         try:
             report=auto_cast_health_review_text(
