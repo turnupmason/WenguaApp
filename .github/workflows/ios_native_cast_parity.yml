@@ -17,6 +17,7 @@ on:
       - 'ios/WenguaAppUI/VNextNativeParityCheck.swift'
       - 'scripts/export_ios_vnext_live_parity.py'
       - 'scripts/ios_vnext_three_random_20261026.py'
+      - 'tests/compare_gpt_ios_exact_wording_20261026.py'
       - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
       - 'data/evaluation/health_vnext/ios_native_vnext_python_parity_20261026.json'
       - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
@@ -98,6 +99,9 @@ jobs:
           python3 -m scripts.ios_vnext_three_random_20261026 --output /tmp/wengua-vnext-three/python_truth.json
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
           /tmp/wengua-vnext-three-native /tmp/wengua-vnext-three/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-vnext-three/swift_public_readings.log
+      - name: STRICT full GPT Python reading_text versus native iOS every Chinese character - release gate
+        run: |
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-vnext-three/python_truth.json /tmp/wengua-vnext-three/swift_public_readings.log /tmp/wengua-vnext-three/exact_wording_diff.md
       - name: Preserve 3 truly random Python and Swift evidence whether passing or failing
         if: always()
         uses: actions/upload-artifact@v4
