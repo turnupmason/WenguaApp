@@ -78,6 +78,7 @@ def compare(python_path,swift_path,report_path):
             print("EXACT_WORDING_FIRST_DIFF_"+str(i+1)+" "+comparison[:4200])
     report.append("\nExact equality: %d of %d"%(
         sum(1 for line in report if ": EXACT MATCH" in line),len(cases)))
+    report.append("ISSUES: "+(" | ".join(issues) if issues else "none"))
     report.append("VERDICT: "+("PASS" if not issues else "FAIL - cannot claim complete iOS migration."))
     Path(report_path).write_text("\n".join(report)+"\n",encoding="utf8")
     print("VNEXT_GPT_IOS_EXACT_WORDING "+("PASS" if not issues else "FAIL"))

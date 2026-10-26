@@ -654,8 +654,14 @@ enum WenguaVNextEngine {
         if tianrui=="favorable" {favorable+=1}
         if tianrui=="adverse" {adverse+=1}
         if fiveNot {adverse+=1}
-        let evidenceDirection=favorable>adverse ? "favorable" :
-             adverse>favorable ? "adverse" : "unresolved"
+        // Python domain_selected_energy_vnext.selected_health_sequence
+        // suppresses firm evidence polarity when the person's SOURCE binding
+        // is conditional, regardless of the vote majority. A candidate
+        // patient is not permission to issue a definite adverse reading.
+        let confident=actor == nil || actor!.eligibleForFirmTraditionalJudgment
+        let evidenceDirection=confident && (favorable+adverse)>0 ?
+             (favorable>adverse ? "favorable" :
+              adverse>favorable ? "adverse" : "unresolved") : "unresolved"
         let conflict = (result != nil && result != 0 &&
                   (evidenceDirection=="unresolved" ||
                    (result!>0 && evidenceDirection=="adverse") ||

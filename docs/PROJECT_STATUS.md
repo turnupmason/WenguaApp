@@ -1477,3 +1477,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **手机正式路由端**用与原三盘相同的已编译 `VNextThreeRandomNativeFullCheck.swift`：逐实际真盘重新调用 `WenguaNativeCore.compute`、`WenguaVNextEngine.compute`、`WenguaNativeReadingRouter.compose`，无缓存的预存九盘断词。源端则对同一 `instant/timezone/inquiry` 独立调用 `auto_cast_health_review_text`。
 - `tests/compare_gpt_ios_exact_wording_20261026.py` 除全部中文与段落 `id/title/text` 完全相同外，另强制对齐时辰、人物、顺序号和分段数量；不能把其它盘答案放到当前盘后仍报通过。新增独立防伪比较器 unittest，故意错换时辰、漏盘、改标点必须红灯。
 - GitHub Actions 每次同时保留这9盘的 Python 金标、Swift 原生 stdout、差异日志，即使失败亦不删除。**在该源码最新 HEAD 对应 native_core 和 macOS `real_ios_xcode_build` 确认成功前，该9盘状态为待验，不得预报9/9通过。** 不变：健康病情轻重专题才有已移植路径；其他14专题与全部20人事条件不能因此冒称完成；评分仅内部，保留历史V3.9.1和43章194古籍案例。
+
+
+### 2026-10-26 9随机批次首跑真实失败与定向修复（保留不覆盖）
+
+- 首次九盘完整iOS Actions `#40397196549` **真实失败**；随机seed `202610265117` 的前9个Python技术可计算盘中：原抽3/4拒绝值使中五寄宫尚未核、10拒绝节气边界、11拒绝人物用神不明，全部在CI `python_truth.json` 及 artifact `12685679513` 保留；不是因为吉凶筛选。
+- 第一新盘 `2021-04-18 11:00 EDT` 可完成Swift逐项审查；**第二新盘 `2020-03-27 21:00 EDT` 父亲** 真实抓到：Python `verdict.state=unresolved`、Swift `evidenceDirection=adverse`。已核根因不是九宫错而是 Swift 漏掉 Python `domain_selected_energy_vnext.selected_health_sequence` 的 `actor.confidence` 审核门槛；人物取用是原书条件候选，不能凭角色宫投票单方面硬断。只在 `WenguaNativeVNextEngine.compute` 按 Python 两个唯一准许值 `source_case_specific/user_explicit_direction_verified_by_actual_chart` 加同等约束，未更改Python源判词、八十一格、两百格或样本。
+- 同HEAD Python3.12 CI `#40397196509` 首次失败3项为新增防误判测试的**差异报告可见性**：比较器已经按错标点/错section ID/漏盘正确返回FAIL，但报告忘列 `issues`。已改为原样附上 `ISSUES` 以利审计，不放宽比较门槛。**上述两次真实失败 run 均保留，下一版最终9盘是否完全同字只看新SHA Actions，不得称已经通过。**
