@@ -18,14 +18,14 @@ struct NativeHealthCustomerCheck {
         let reading=try WenguaNativeReadingRouter.compose(
             chart:chart,topicID:"health.severity",relationship:"本人",
             template:template,catalog:catalog,energy:energy)
-        guard reading.sections.count==12,
+        guard reading.sections.count==9,
               reading.sections[0].id=="01_macro",
               reading.sections[0].text.contains("五不遇"),
               reading.sections.contains(where:{$0.id=="02" && $0.text.contains("天芮星")}),
               reading.sections.contains(where:{$0.id=="03" && $0.text.contains("天地格：")}),
-              reading.sections.contains(where:{$0.id=="08"}),
-              reading.sections.contains(where:{$0.id=="09_qian"}),
-              reading.sections.contains(where:{$0.id=="09_kun"}),
+              !reading.sections.contains(where:{$0.id=="08"}),
+              !reading.sections.contains(where:{$0.id=="09_qian"}),
+              !reading.sections.contains(where:{$0.id=="09_kun"}),
               reading.sections.contains(where:{$0.id=="90_review"}),
               reading.sections.contains(where:{$0.id=="91_timing"}),
               !reading.sections.map(\.text).joined().contains("净分"),

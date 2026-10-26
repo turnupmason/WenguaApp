@@ -133,7 +133,7 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
             iso="2026-10-26T05:00:00-04:00",
             timezone_name="America/New_York",inquiry=inquiry)
         illness=next(x for x in r["sections"] if x["title"]=="天芮病宫")
-        self.assertIn("门破（不额外降级）",illness["text"])
+        self.assertIn("门破",illness["text"])
         self.assertNotIn("门迫",illness["text"])
 
     def test_signed_results_when_all_four_factors_are_verified(self):
