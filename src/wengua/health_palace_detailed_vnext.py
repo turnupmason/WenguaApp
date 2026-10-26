@@ -14,6 +14,7 @@ from .marriage_runtime import PALACE_BRANCHES
 from .semantic_lookup import GENERATES
 from .selected_duel_table_vnext import table_one
 from .health_five_level_quant_vnext import door_break_penalty_policy
+from .health_81_excel_catalog_vnext import for_real_palace
 
 GOOD_GODS=frozenset(("值符","六合","太阴","九天"))
 BAD_GODS=frozenset(("白虎","玄武","螣蛇","腾蛇","九地"))
@@ -170,25 +171,25 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
                                 plane="heaven",restrictions=restrictions))
     earth=table_one("stem",cell["earth_stem"],month_branch,palace,
                     plane="earth",restrictions=restrictions)
-    # Actual 81 sky/earth ordered pair source matches. A book title alone does
-    # not establish all positive/negative preconditions; preserve provenance.
-    pairs=[]
-    visible={(x["star"],x["carried_stem"],cell["earth_stem"])
-             for x in cell["heaven_stars"]}
-    for pair in matched_pairs:
-        if pair["palace"]!=palace:continue
-        if (pair["star"],pair["heaven"],pair["earth"]) not in visible:
-            continue
-        pairs.append({
-            "fact_id":pair["fact_id"],"name":pair["book_title"],
-            "star":pair["star"],"heaven":pair["heaven"],"earth":pair["earth"],
-            "source_state":pair["source_state"],"applicability":pair["applicability"],
-            "source_conditions":pair.get("source_gate_flags",()),
-            "can_vote":pair["source_state"]=="fully_verified_original_predicate",
-            "reason":pair["explanation"],
-            "source_line_internal":pair.get("source_line_internal"),
-            "source_sha256_internal":pair.get("source_sha256_internal"),
-        })
+    # The user's latest complete Excel has exactly one definitive name,
+    # 81-pair 吉凶 and FOUR requested interpretations for each real pair.
+    # Keep the historical review pairs in a separate audit field, never
+    # overwrite source history or let its old gates silence the Excel result.
+    pairs=for_real_palace(cell)
+    historical_pairs=[
+        {"fact_id":pair["fact_id"],"name":pair["book_title"],
+         "heaven":pair["heaven"],"earth":pair["earth"],
+         "source_state":pair["source_state"],
+         "source_conditions":pair.get("source_gate_flags",()),
+         "source_line_internal":pair.get("source_line_internal"),
+         "source_sha256_internal":pair.get("source_sha256_internal")}
+        for pair in matched_pairs
+        if pair["palace"]==palace and
+           any(entry["star"]==pair["star"] and
+               entry["carried_stem"]==pair["heaven"] and
+               cell["earth_stem"]==pair["earth"]
+               for entry in cell["heaven_stars"])
+    ]
     return {
         "schema":"health_complete_selected_palace_v1",
         "palace":palace,"role":record["role"],"palace_name":record["name"],
@@ -199,6 +200,8 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
         "heaven_stems":heaven,"earth_stem":earth,
         "primary_strength":primary_factor,
         "ordered_book_81_pairs":pairs,
+        "historical_book_81_audit":historical_pairs,
+        "user_excel_81_is_authoritative":True,
         "void":void,"horse_branch":void["horse_branch"],
         "horse_in_this_palace":void["horse_palace"]==palace,
         "sky_tombs":record["sky_tombs"],
@@ -237,9 +240,9 @@ def render_complete_selected_palace(detail):
     top="、".join(power(x) for x in detail["heaven_stems"]) or "无"
     bottom=power(detail["earth_stem"])
     book=detail["ordered_book_81_pairs"]
-    booktext=("；天地格"+ "、".join(
-        p["name"]+("（条件核定）" if p["can_vote"] else "（条件待核）")
-        for p in book) if book else "；本宫没有命中已收录的完整天地干格")
+    from .health_reading_template_vnext import formation_sentence
+    booktext=("；天地格："+ "；".join(formation_sentence(p)
+        for p in book) if book else "；本宫没有实际天地盘有序格")
     v=detail["void"]
     vt=("不空" if v["classification"]=="not_void" else
         "假空" if v["classification"]=="fake_void" else "真空")
