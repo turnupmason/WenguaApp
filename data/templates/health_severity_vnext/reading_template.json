@@ -75,10 +75,13 @@
     "vnext_verdict_neutral": "相关宫位合断为不凶不吉之象，仍须结合问事情境。",
     "vnext_verdict_conflict": "宫内格局与人物生克存在相反证据，尚不能作出确定吉凶判断。",
     "vnext_verdict_pending": "部分实际力量或用神条件未能唯一核定，本次不强断吉凶。",
-    "vnext_timing": "本盘驿马{horse}；伏吟主慢、反吟主快，应期仍须审查空墓冲合与实际问事条件，不虚构日期。",
+    "vnext_timing": "本盘驿马{horse}；伏吟反吟的实际缓急见局势说明。具体应期还需空墓冲合及问事条件触发，证据不足不虚构日期。",
     "vnext_title_palace": "相关宫位格局",
     "vnext_title_role": "人物关系与制约",
     "vnext_title_verdict": "综合判断",
-    "vnext_title_timing": "时空与应期"
+    "vnext_title_timing": "时空与应期",
+    "vnext_disease_control_effective": "，病宫向本宫施克的实际格为「{outcome}」，本方受制之象较明显",
+    "vnext_disease_control_limited": "，病宫施克格为「{outcome}」，克力有限，不可直接断病象尽得其势",
+    "vnext_disease_control_failed": "，病宫名义来克，但实际格为「{outcome}」，不能断已成功制住本方"
   }
 }

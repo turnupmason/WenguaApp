@@ -8,6 +8,20 @@ enum WenguaVNextCustomerComposer {
         "medicine":"乙奇医药","patient":"患者用神","hour":"时干事体",
         "chief":"值符护持","qian":"乾宫辅助","kun":"坤宫辅助"]
 
+    private static func actualRelation(_ a:Int,_ b:Int)->String {
+        if a==b {return "同宫"}
+        let elements=WenguaNativeReadingRouter.palaceElements
+        let generates=WenguaNativeReadingRouter.generating
+        let controls=WenguaNativeReadingRouter.controlling
+        guard let x=elements[a],let y=elements[b] else {return "待核"}
+        if x==y {return "比和"}
+        if controls[x]==y {return "克"}
+        if controls[y]==x {return "被克"}
+        if generates[x]==y {return "生"}
+        if generates[y]==x {return "被生"}
+        return "待核"
+    }
+
     static func sections(_ review:WenguaVNextAudit,
                          chart:WenguaNativeChart,
                          template:Data) throws -> [WenguaNativeCustomerSection] {
@@ -18,7 +32,9 @@ enum WenguaVNextCustomerComposer {
         let slots=[
             "vnext_palace","vnext_role","vnext_control_effective",
             "vnext_control_limited","vnext_control_failed",
-            "vnext_control_pending","vnext_no_control","vnext_void_fake",
+            "vnext_control_pending","vnext_no_control",
+            "vnext_disease_control_effective","vnext_disease_control_limited",
+            "vnext_disease_control_failed","vnext_void_fake",
             "vnext_void_true","vnext_verdict_good","vnext_verdict_bad",
             "vnext_verdict_neutral","vnext_verdict_conflict",
             "vnext_verdict_pending","vnext_timing","vnext_title_palace",
@@ -61,15 +77,18 @@ enum WenguaVNextCustomerComposer {
                      "hour","chief","qian","kun"] {
             guard let pid=review.roles[role],let p=byID[pid] else{continue}
             let c=review.controls.first{$0.role==role}
-            let relation=c?.direction ?? (pid==review.roles["illness"] ? "同宫" : "关系需合断")
+            let relation=c?.direction ??
+                actualRelation(pid,review.roles["illness"] ?? pid)
             let control:String
             if let comparison=c,let outcome=comparison.cell {
+                let inverse=comparison.attacker=="illness"
                 let slot=comparison.applicability=="strong" ?
-                    "vnext_control_effective" :
+                    (inverse ? "vnext_disease_control_effective" : "vnext_control_effective") :
                     comparison.applicability=="limited" ?
-                    "vnext_control_limited" :
+                    (inverse ? "vnext_disease_control_limited" : "vnext_control_limited") :
                     comparison.applicability=="failed" ?
-                    "vnext_control_failed" : "vnext_control_pending"
+                    (inverse ? "vnext_disease_control_failed" : "vnext_control_failed") :
+                    "vnext_control_pending"
                 control=try phrase(slot,["outcome":outcome])
             } else if c?.applicability=="pending" {
                 control=try phrase("vnext_control_pending")
