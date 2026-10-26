@@ -1459,3 +1459,12 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 本轮用户可见三套**真 Swift 最新客户模板原始读稿**以不可静默覆盖的新名称存储在 `docs/HEALTH_VNEXT_THREE_RANDOM_REAL_IOS_READINGS_2026-10-26.md` 和 `data/evaluation/health_vnext/three_random_20261026_ios_vnext_customer_reports.json`，其中完整详文含8段用户显示原样，与 Python研究内部数值分离；GitHub Actions artifact 保留独立源Python金标及 Swift stdout（默认90天）。书籍章节/原著案例不新增，历史43章194案例家族不改变。用户的未来人工修改模板**只影响重新编译后的后续读稿**，不会修改封存的本次历史测试原样输出。
 - 用户询问“所有东西已接入”：**就目前唯一可运行的「疾病健康 → 病情轻重 V-next」在真实盘触发的列举确定性计算步骤、三盘 Swift↔Python 值、三盘原生客户模板断词而言，证据成立**；**不代表**所有20类人物取用的独立来源与条件均已完全确认，也不代表81格所有墓刑分支/全年节气边界/值使中宫未经原书核实的寄宫/全部五张克制表所有条件组合都已穷举；尤其**其它14大领域和健康其它细分尚未移植**。早前用户人工确认的 81 Excel 与200表资源都在本机包内，不把整库古籍SQLite或所有Python放手机。
 - 本轮三个实际结论是传统象意候选：本人甲辰壬申己巳丁卯 `偏凶`；父亲壬寅甲辰戊子辛酉宏局 `反吟主快`，按年干候选与病宫独立门槛`尚不强断`；妻子甲辰甲戌庚戌甲申宏局`伏吟主慢`，妻乙夫庚加庚日干五合辅助，同样`用神来源条件性待核`。**不是医学诊断、病情预测或实际预后**。
+
+
+## 2026-10-26 GPT/Python ⇄ iOS Swift 同一逻辑/断词**原字**验收（最高优先发布关卡）
+
+- 用户澄清绝对要求：平台语言可不同，但原始 `auto_cast_health_review_text` 所调用的权威 Python 取用+200格+81格+十二长生+空墓刑迫+真实定向克制+冲突优先级+应期+**最新宏与 section_titles 模板**，必须与 iOS 本地 Swift 一致，**同一时辰/同一条件全文逐字（含段落ID、次序、标题、换行和标点）相同才算接入**。仅数值一致、复读历史盘/模板另写、只看简短结论均不能验收。
+- 已接入**实际 iOS 生产 router** `WenguaNativeReadingRouter.compose` → `WenguaPythonVNextVerbatim.sections`，用真盘 `WenguaNativeVNextEngine.compute` 内部 DTO、原始 Python 模板 `reading_template.json/macros+section_titles`、同源200格和81格、20类关系索引；不再用与GPT不一样的独立短文 `WenguaVNextReasoner` 当正式全文输出。评分留研究内层，不进入手机用户文字或持久化的本地读稿。
+- 三个新随机盘 ①2024-09-02 05:00 本人 ②2022-04-05 17:00 父亲 ③2024-10-13 15:00 妻子，**全文原字对照已经通过** [iOS Offline Native Casting Parity #40390048734](https://github.com/turnupmason/WenguaApp/actions/runs/40390048734)，包含真正 Linux Swift 和 macOS Xcode iPhone Simulator 构建。第一轮严格全文失败 [#40389982048](https://github.com/turnupmason/WenguaApp/actions/runs/40389982048) 真实定位 `乾坤辅助` 专用 `受生/比和` ≠ 人物 `被生/同宫`，按 Python `marriage_runtime.element_relation` 仅修对应分支；失败Run/完整diff/artifact一律保留。
+- CI 新加强：`tests/compare_gpt_ios_exact_wording_20261026.py` 除整篇中文原字之外还检查 Python `source_sections` 与 Swift **真实生产 compose** 的 `id/title/text` 按顺序完全一致；遇任一不同必须保留失败并标明未通过，绝不能为绿灯跳过全文或做宽松空格规范化。`docs/IOS_GPT_PYTHON_VERBATIM_PARITY_2026-10-26.md` 是以后所有领域复用的规范。
+- 这只是**现行健康·病情轻重**的已测试输入分支；其它专题、20类每一角色的全部取用条件、全年节气特殊边界**尚未全部逐项 Swift 原生移植及穷举**，不得宣传「所有GitHub的.py均已变Swift」或「所有领域已上线」。古籍全文、194原著案例、SQLite 保持 GitHub 研究存储，不打包进手机，不删除V3.9.1/失败记录。实际苹果签名/TestFlight仍未完成。
