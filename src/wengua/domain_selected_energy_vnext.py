@@ -384,7 +384,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     new_quant=inspect_selected_quantization(
         selected_roles=inspected,qian_kun_observations=auxiliary_palaces,
         first_stage_macro=macro_facts,xun_shou=chart["xun_shou"],
-        selected_gender_palace=gender_palace)
+        selected_gender_palace=gender_palace,directed_edges=edges)
     network["candidate_five_grade_quantization"]=new_quant
     interactions={
         "天芮星月令×星宫五行25格":t25,
@@ -437,6 +437,66 @@ def selected_health_sections(result,*,actor,chart):
             while old in text:text=text.replace(old,new)
         sections.append({"id":code,"title":title,"text":text.strip()})
 
+    # This is the display of EXISTING exact table-one (month x 5 relations)
+    # and table-two (attacker x target) results. No power is invented here.
+    def role_power_note(key,row):
+        power=row["primary_strength_25"]
+        kind=power["kind"]
+        strength=str(power.get("strength_label") or "待核")
+        if kind=="deity":
+            god=row["complete_palace"]["deity"]
+            return ("值符按神宫"+god["relation"]+"，用神力量为"+strength+"。")
+        if kind=="star":
+            rel={"宫生符号":"被宫生","宫克符号":"被宫克",
+                 "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"}
+            col=power.get("user_cell_col") or power.get("nominal_relation_from_symbol")
+            return (power["symbol"]+"月令"+str(power.get("symbol_month_stage") or "待核")+
+                    "、"+rel.get(col,str(col))+"，用神力量为"+strength+"。")
+        if kind=="stem":
+            col=power.get("user_cell_col") or "月令关系待核"
+            row_name=power.get("user_cell_row") or "长生分支待核"
+            return (power["symbol"]+"天干十二长生"+str(row_name)+
+                    "、"+str(col)+"，用神力量为"+strength+"。")
+        return "用神力量为"+strength+"。"
+
+    def role_control_note(key,row):
+        gate=quant["role_effectiveness_gates"][key]
+        rel=gate["relation"]
+        name={"doctor":"天心医生","medicine":"乙奇医药",
+              "patient":"患者用神","hour":"时干事体",
+              "chief":"值符大吉神","gender":"性别辅助宫",
+              "natal":"患者年命"}.get(key,key)
+        strength=role_power_note(key,row)
+        outcome=gate["control_result"]
+        if key=="chief" and gate["void"]!="not_void":
+            return (strength+"因值符空亡，神兽不在宫内，无法提供帮助；"
+                    "值符护持不参与最终合断。")
+        if rel=="克":
+            if gate["score_eligible"]:
+                meaning=("疾病得到了"+name+"的压制。"
+                         "施力方与病宫查克制表，结果为"+str(outcome)+"。")
+            else:
+                meaning=("疾病尚未得到"+name+"的有效压制。"
+                         "克制表结果为"+str(outcome or "待核")+"。")
+            return (strength+name+"宫克天芮病宫，意思为："+meaning+
+                    ("值符护持不参与最终合断。" if key=="chief" and
+                     not gate["score_eligible"] else ""))
+        if rel=="生":
+            meaning=name+"宫生天芮病宫，意思为：疾病得不到"+name+"的压制，反受其生扶。"
+        elif rel=="被克":
+            meaning=name+"宫受天芮病宫克，意思为："+name+"受病宫压制，无法制病。"
+        elif rel=="被生":
+            meaning=name+"宫受天芮病宫生，意思为：本宫受病宫生扶，未形成对病宫的克制。"
+        elif rel=="比和":
+            meaning=name+"宫与天芮病宫比和，意思为：双方同气，未形成对病宫的克制。"
+        elif rel=="同宫":
+            meaning=name+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
+        else:
+            meaning=name+"与病宫的五行关系待核。"
+        if key=="chief" and not gate["score_eligible"]:
+            meaning+="值符护持不参与最终合断。"
+        return strength+meaning
+
     push("01_macro",template_title("macro"),
          render_slot("macro",macro_text=render_first_stage_macro(
              result["first_stage_macro"])))
@@ -464,11 +524,9 @@ def selected_health_sections(result,*,actor,chart):
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             extra=render_slot("illness",name=t25["traditional_title"],
                               explanation=t25["why"])
-        relation=""
-        if key!="illness":
-            statement=explain_selected_role(role=key,roles=roles,edges=edges)
-            relation=render_slot("role_relation",relation_text=(
-                statement.split("；",1)[0].rstrip("。")+"。" if statement else ""))
+        relation=(render_slot("role_relation",
+                 relation_text=role_control_note(key,role))
+                 if key!="illness" else "")
         title=template_title(title_key)
         if key=="gender":
             title=("坤宫辅助（女）" if pid==2 else

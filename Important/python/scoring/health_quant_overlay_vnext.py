@@ -202,7 +202,7 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
 
 def inspect_selected_quantization(*,selected_roles,
                                   qian_kun_observations,first_stage_macro,
-                                  xun_shou=None,selected_gender_palace=None):
+                                  xun_shou=None,selected_gender_palace=None,directed_edges=None):
     """Do not count same real palace twice in numeric summary."""
     five=first_stage_macro["five_not_encounter_triggered"]
     roles={}
@@ -251,10 +251,54 @@ def inspect_selected_quantization(*,selected_roles,
     # When gender is supplied, its one real selected palace is already
     # counted under the "gender" role. No sex means neither is added.
     # Both unselected technical observations remain in audit for provenance.
+    # Existing authoritative source-grid control result is the permission
+    # gate, not a second invented energy table. The illness palace remains.
+    # A nominal 克 with a failed/unknown real 5x5 source cell does not count
+    # as independently effective assistance. 值符 is stricter: it is zero
+    # unless it truly 克病, is not void, and its actual control is effective.
+    # When another legitimate role occupies the same palace, that role can
+    # still bring the single physical palace into the total exactly once.
+    accepted={"能","艰难"}
+    gates={}
+    effective={}
+    for key,row in selected_roles.items():
+        if key not in roles:continue
+        pid=row["palace"]
+        edge=(directed_edges or {}).get(key+"->illness")
+        rel=edge.get("relation") if edge else ("病宫本体" if key=="illness" else None)
+        void=row["complete_palace"]["void"]["classification"]
+        ability=edge.get("ability") if edge else None
+        scenario=edge.get("control_scenario") if edge else None
+        outcome=edge.get("control_result") if edge else None
+        is_control=rel=="克"
+        chief=key=="chief"
+        active=(key=="illness" or
+                (not chief and not is_control) or
+                (is_control and ability in accepted and
+                 (not chief or void=="not_void")))
+        reason=("病宫自身"
+                if key=="illness" else
+                "值符空亡，不提供护持" if chief and void!="not_void" else
+                "值符受病宫克，不能压制病宫" if chief and rel=="被克" else
+                "值符没有克病方向，不作为制病护持" if chief and not is_control else
+                "克制矩阵"+str(outcome or "未核定")+"，未形成有效克制"
+                if not active and is_control else
+                "克病能力："+str(outcome) if is_control else
+                "非克制方向，按原宫位象意计入")
+        gates[key]={"palace":pid,"relation":rel,
+                    "actor_strength":row["primary_strength_25"].get("strength_label"),
+                    "disease_strength":selected_roles["illness"]["primary_strength_25"].get("strength_label"),
+                    "control_result":outcome,"control_scenario":scenario,
+                    "control_ability":ability,"void":void,
+                    "score_eligible":active,"reason":reason,
+                    "chief_zero_score":chief and not active}
+        if active:effective[key]=aggregate[key]
+    summary=multi_palace_tally(palaces=effective)
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
             "selected_gender_palace":selected_gender_palace,
-            "summary":multi_palace_tally(palaces=aggregate),
+            "role_effectiveness_gates":gates,
+            "summary":summary,
             "incomplete_conversion_not_silently_scored":True,
             "source_condition_gate_required":True,
             "not_a_medical_diagnosis":True}

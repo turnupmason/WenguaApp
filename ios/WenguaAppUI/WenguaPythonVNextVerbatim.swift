@@ -212,81 +212,114 @@ enum WenguaPythonVNextVerbatim {
         }.joined(separator:"、")
         let doorPart=try signedSymbol("door",door,palace:p.id,
                                       month:month,energy:energy)
-        let heaven=try p.heavenStars.map{
+        let hasIllness=p.heavenStars.contains{$0.star=="天芮星"}
+        let accepted=p.heavenStars.filter{!hasIllness || $0.star=="天芮星"}
+        let heaven=try accepted.map{
             try powerStem($0.carriedStem,stages:$0.stages,
                           palace:p.id,month:month,energy:energy)
         }.joined(separator:"、")
         let earth=try powerStem(p.earthStem,stages:p.earthStages,
                                 palace:p.id,month:month,energy:energy)
-        let book=formation.sentences.isEmpty ? "；本宫没有实际天地盘有序格" :
-            "；天地格："+formation.sentences.joined(separator:"；")
+        let chosen=zip(p.heavenStars,formation.sentences).filter{
+            !hasIllness || $0.0.star=="天芮星"
+        }.map{$0.1}
+        let book=chosen.isEmpty ? "；本宫没有实际天地盘有序格" :
+            "；天地格："+chosen.joined(separator:"；")
         let klass=row.void=="not_void" ? "不空" :
                   row.void=="fake_void" ? "假空" : "真空"
         let special=try conditions(p,chart)
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+"；"+special+"。全部因素推断后，此宫为"+signed(row.afterVoid)+"。"
+        let broken=special.components(separatedBy:"、").contains("门破")
+        let brokenNote=broken ? "。八门压制宫力量，吉事不吉，凶事更凶" : ""
+        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+"；"+special+brokenNote+"。全部因素推断后，此宫为"+signed(row.afterVoid)+"。"
+    }
+
+    private static func powerNote(_ role:String,_ p:WenguaNativePalace,
+        _ own:WenguaVNextFactor,chart:WenguaNativeChart)throws->String {
+        let strength=own.strength ?? "待核"
+        guard let pe=elements[p.id] else{throw WenguaCastError.invalidChart}
+        if role=="chief" {
+            guard let deity=p.deity,let ge=WenguaVNextEngine.godElement[deity]
+                else {throw WenguaCastError.invalidChart}
+            let r=try WenguaVNextEngine.directed(ge,pe)
+            let map=["宫生符号":"被宫生","宫克符号":"被宫克",
+                     "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
+            return "值符按神宫"+(map[r] ?? r)+"，用神力量为"+strength+"。"
+        }
+        if role=="doctor" || role=="gender" {
+            guard let se=WenguaVNextEngine.starElement[own.symbol] else {
+                throw WenguaCastError.invalidChart
+            }
+            let month=try month(chart)
+            let stage=try WenguaVNextEngine.starMonth(se,month)
+            let rel=try WenguaVNextEngine.directed(se,pe)
+            let map=["宫生符号":"被宫生","宫克符号":"被宫克",
+                     "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
+            return own.symbol+"月令"+stage+"、"+(map[rel] ?? rel)+
+                "，用神力量为"+strength+"。"
+        }
+        let m=try month(chart)
+        let col=try monthColumn(own.symbol,m)
+        let carried=p.heavenStars.first{$0.carriedStem==own.symbol}
+        var rows:[String]=[]
+        if let carried {
+            for st in carried.stages {
+                let row=lifeRow(st.stage)
+                if !rows.contains(row){rows.append(row)}
+            }
+        }
+        let stage=rows.count==1 ? rows[0] : "长生分支待核"
+        return own.symbol+"天干十二长生"+stage+"、"+col+
+            "，用神力量为"+strength+"。"
     }
 
     private static func roleAgainstIllness(
-        _ role:String,review:WenguaVNextAudit)throws->String {
-        guard let a=review.roles[role],let b=review.roles["illness"],
+        _ role:String,review:WenguaVNextAudit,
+        chart:WenguaNativeChart)throws->String {
+        guard let aid=review.roles[role],
+              let pid=review.roles["illness"],
+              let p=chart.palaces.first(where:{$0.id==aid}),
               let own=review.roleEnergy[role],
-              let disease=review.roleEnergy["illness"],
-              let names=roleLabels[role],names.count==4,
-              let edge=review.controls.first(where:{$0.role==role}) else {
+              let names=roleLabels[role],
+              let edge=review.controls.first(where:{$0.role==role}) else{
             return ""
         }
-        let r=relation(a,b)
-        let who=names[0],source=names[1],success=names[2],failure=names[3]
-        let cond="本宫用神力量"+(own.strength ?? "待核")+"，天芮病星力量"+(disease.strength ?? "待核")
-        let out=edge.cell
-        if r=="克" {
-            let result:String
-            if out==nil || edge.scenario==nil {
-                result="有克病的五行方向，但当前克制条件尚未形成唯一有效结论"
-            } else if solid.contains(out!) {
-                result=success+"，从传统盘象看有压制病势、缓解病象的机会"
-            } else if weak.contains(out!) {
-                result=source+"可形成一定制约，但力度有限，只能说勉强压制病宫"
-            } else if failed.contains(out!) {
-                result=failure+"，尚看不出由此推动病象缓解的有效力量"
-            } else {
-                result="克制原格为"+out!+"，应结合已核宫内证据"
-            }
-            var words=result
-            if role=="chief" && out != nil && solid.contains(out!) {
-                words="求测人有值符吉神护持，"+words
-            }
-            if role=="chief" && out != nil && failed.contains(out!) {
-                words="本盘虽见值符大吉神，但"+words
-            }
-            return who+"宫克天芮病宫；"+cond+"；克制表为"+(out ?? "条件待核")+"，"+words+"。"
+        let who=names[0]
+        let rel=relation(aid,pid)
+        let note=try powerNote(role,p,own,chart:chart)
+        let outcome=edge.cell
+        let eligible=role=="chief" ?
+            (review.palaces[aid]?.void=="not_void" && rel=="克" &&
+             ["strong","limited"].contains(edge.applicability)) :
+            (rel != "克" || ["strong","limited"].contains(edge.applicability))
+        if role=="chief" && review.palaces[aid]?.void != "not_void" {
+            return note+"因值符空亡，神兽不在宫内，无法提供帮助；值符护持不参与最终合断。"
         }
-        if r=="被克" {
-            let statement:String
-            if let out,solid.contains(out) {
-                statement="病宫有力克制本方，"+source+"受到明显压制，难以形成有效的制病助力"
-            } else if let out,weak.contains(out) {
-                statement="病宫虽来克本方，但克力有限，仍有相持空间"
-            } else if let out,failed.contains(out) {
-                statement="病宫名义克本宫却难落实，不能因此反断病必重"
-            } else {
-                statement="病宫克本方的实际力度尚需按原格和限制核算"
-            }
-            return who+"宫受天芮病宫克；"+cond+"；病宫施克结果"+(out ?? "条件待核")+"，"+statement+"。"
+        if rel=="克" {
+            let content=eligible ?
+               "疾病得到了"+who+"的压制。施力方与病宫查克制表，结果为"+
+                    (outcome ?? "待核")+"。" :
+               "疾病尚未得到"+who+"的有效压制。克制表结果为"+
+                    (outcome ?? "待核")+"。"
+            return note+who+"宫克天芮病宫，意思为："+content+
+                (role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
         }
-        if r=="生" {
-            return who+"宫生天芮病宫；"+cond+"。此时"+source+"在五行上反而生扶病宫，不能仅凭用神吉性便认为已压制病象。"
+        let explanation:String
+        switch rel {
+        case "生":
+            explanation=who+"宫生天芮病宫，意思为：疾病得不到"+who+"的压制，反受其生扶。"
+        case "被克":
+            explanation=who+"宫受天芮病宫克，意思为："+who+"受病宫压制，无法制病。"
+        case "被生":
+            explanation=who+"宫受天芮病宫生，意思为：本宫受病宫生扶，未形成对病宫的克制。"
+        case "比和":
+            explanation=who+"宫与天芮病宫比和，意思为：双方同气，未形成对病宫的克制。"
+        case "同宫":
+            explanation=who+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
+        default:
+            explanation=who+"与病宫的五行关系待核。"
         }
-        if r=="被生" {
-            return who+"宫得病宫生扶；"+cond+"。本方有受生之象，但这不是主动克病，是否转为有利仍看宫内吉凶及人物条件。"
-        }
-        if r=="比和" {
-            return who+"宫与病宫比和；"+cond+"。双方同气相持，并非本方已经克住病宫，应结合本宫吉凶力量合断。"
-        }
-        if r=="同宫" {
-            return who+"与天芮同宫；"+cond+"。病象与"+source+"在同一宫交织，不能虚构两宫的相克，需要看本宫神星门干格局。"
-        }
-        return who+"与病宫的作用方向仍未核。"
+        return note+explanation+
+            (role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
     }
 
     static func sections(chart:WenguaNativeChart,review:WenguaVNextAudit,
@@ -362,12 +395,9 @@ enum WenguaPythonVNextVerbatim {
                 let t25=try WenguaVNextTianrui25.caseFor(chart:chart,audit:review)
                 extra=try phrase("illness",["name":t25.title,"explanation":t25.why])
             }
-            let roleText=try roleAgainstIllness(role,review:review)
-            let concise=roleText.components(separatedBy:"；").first ?? ""
-            let simple=concise.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
-            let relationshipPhrase=concise.isEmpty ? "" : simple+"。"
+            let roleText=try roleAgainstIllness(role,review:review,chart:chart)
             let relationText=role=="illness" ? "" :
-                try phrase("role_relation",["relation_text":relationshipPhrase])
+                try phrase("role_relation",["relation_text":roleText])
             let genderNote=role=="gender" ? try phrase("gender_note") : ""
             let defaultTitle=try title(key)
             let displayTitle=role=="gender" && pid==2 ? "坤宫辅助（女）" :

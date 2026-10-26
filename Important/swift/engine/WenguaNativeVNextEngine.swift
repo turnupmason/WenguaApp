@@ -118,7 +118,7 @@ enum WenguaVNextEngine {
         if controls[month]==element {return "死"}
         throw WenguaHealthTemplateError.invalidCatalog
     }
-    private static func starMonth(_ element:String,_ month:String) throws -> String {
+    static func starMonth(_ element:String,_ month:String) throws -> String {
         if generates[element]==month {return "旺"}
         if element==month {return "相"}
         if generates[month]==element {return "废"}
