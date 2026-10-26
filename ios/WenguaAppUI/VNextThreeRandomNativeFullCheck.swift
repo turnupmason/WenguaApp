@@ -170,9 +170,13 @@ private struct PublicCast:Encodable {
                 loc+"monthly+palace powers absent from consumer reasoning")
             try require(overview.contains("天干十二长生"),
                 loc+"81 original pair lifecycle condition lost in narrative")
-            try require(detailed.contains("只按落宫") &&
-                detailed.contains("不套月令"),
-                loc+"God was silently subjected to a monthly rule")
+            try require(detailed.contains("不套月令") &&
+                audit.palaces.values.allSatisfy({ palace in
+                    palace.energyEvidence.filter({$0.source=="god"}).allSatisfy({
+                        $0.monthStage==nil
+                    })
+                }),
+                loc+"God no-season source invariant lost")
             try require(controls.contains("力量") && controls.contains("病宫"),
                 loc+"real person selected 25-cell power/directed relation lost")
             try require(!detailed.contains("净分") && !overview.contains("加分"),
