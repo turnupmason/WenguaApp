@@ -160,9 +160,9 @@ enum WenguaVNextEngine {
     }
     private static func doorRelation(_ symbol:String,_ palace:String) throws -> String {
         let rel=try directed(symbol,palace)
-        return try ["宫生符号":"被宫生","宫克符号":"宫迫",
-            "符号克宫":"门破","符号生宫":"生宫","比和":"比和"][rel].map{ $0 }
-            ?? must(nil)
+        let mapping=["宫生符号":"被宫生","宫克符号":"宫迫",
+            "符号克宫":"门破","符号生宫":"生宫","比和":"比和"]
+        return try must(mapping[rel])
     }
     private static func factor(kind:String,symbol:String,palace:Int,
                                month:String,catalog:WenguaNativeEnergyCatalog,
