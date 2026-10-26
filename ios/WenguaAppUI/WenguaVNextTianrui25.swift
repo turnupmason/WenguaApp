@@ -26,13 +26,16 @@ enum WenguaVNextTianrui25 {
     private static let generates=WenguaNativeReadingRouter.generating
     private static let controls=WenguaNativeReadingRouter.controlling
     private static let elements=WenguaNativeReadingRouter.palaceElements
+    private static let monthElements=[
+        "寅":"木","卯":"木","辰":"土","巳":"火","午":"火","未":"土",
+        "申":"金","酉":"金","戌":"土","亥":"水","子":"水","丑":"土"]
     static func caseFor(chart:WenguaNativeChart,
                         audit:WenguaVNextAudit)throws->WenguaTianrui25Case {
         guard let id=audit.roles["illness"],
               let p=chart.palaces.first(where:{$0.id==id}),
               let row=audit.palaces[id],
               let el=elements[id],
-              let monthElement=WenguaNativeReadingRouter.monthElements[
+              let monthElement=monthElements[
                   String(chart.pillars.month.suffix(1))],
               let starMonth=row.energyEvidence.first(where:{
                   $0.source=="star" && $0.symbol=="天芮星"
