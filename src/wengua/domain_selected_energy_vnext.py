@@ -444,9 +444,8 @@ def selected_health_sections(result,*,actor,chart):
         if key not in roles:continue
         role=roles[key]
         palace_detail=render_complete_selected_palace(role["complete_palace"])
-        qrole=quant["roles"].get(key)
-        score_text=(render_slot("role_score",score_text=render_palace_compact_score(qrole))
-                    if qrole else "")
+        # Keep quant in the internal DTO. The customer template is text-only.
+        score_text=""
         extra_illness=""
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
@@ -469,21 +468,28 @@ def selected_health_sections(result,*,actor,chart):
         push("09_"+alias,template_title(alias,role=ob["role"]),
              render_slot("auxiliary",
                  palace_detail=render_complete_selected_palace(ob["complete_palace"]),
-                 palace_score=render_palace_compact_score(qitem),
+                 palace_score="",
                  relation=ob["relation_to_illness"]))
 
-    push("89_quant",template_title("quant"),render_quant_review(quant))
+    # No scores, totals, or arithmetic in the customer-visible template.
+    # Both the signed internal model and the directed role evidence are kept.
     q=quant["summary"]
     if q["score"] is None:
-        conclusion=render_slot(
-            "overall_pending",post_void_sum=q["post_void_known_sum"])
+        conclusion=render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
     else:
-        conclusion=render_slot(
-            "overall_resolved",
-            palace_count=q["unique_palace_count"],
-            post_void_sum=q["post_void_known_sum"],
-            score=q["score"],
-            grade="不凶不吉" if q["score"]==0 else q["grade"])
+        value=q["score"]
+        grade="不凶不吉" if value==0 else ("偏吉" if value>0 else "偏凶")
+        direction=result["verdict"]["state"]
+        # Do not silently reconcile a positive palace tally with unresolved or
+        # adverse directional evidence, as happened in 2022-07-19 real demo.
+        if (direction=="unresolved" and value!=0) or (
+            value>0 and direction=="adverse") or (
+            value<0 and direction=="favorable"):
+            conclusion="宫位本体与人物关系的判断尚有分歧，暂不强断吉凶。"
+        else:
+            conclusion=render_slot(
+                "overall_resolved",palace_count=q["unique_palace_count"],
+                post_void_sum=q["post_void_known_sum"],score=value,grade=grade)
     push("90_review",template_title("verdict"),
          render_slot("verdict",conclusion=conclusion))
     push("91_timing",template_title("timing"),

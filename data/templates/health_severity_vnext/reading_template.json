@@ -1,6 +1,6 @@
 {
-  "schema": "health_severity_user_editable_template_v20261025_v1",
-  "comment": "只修改每个字段的汉字及括号变量排列，不要删掉 JSON 双引号；GitHub 改这里即可更新疾病严重程度断词。格局内容不在模板内写死，而是按当天真实天盘干+地盘干从81_pairs.tsv取值。",
+  "schema": "health_severity_user_editable_template_v20261026_customer_v2",
+  "comment": "V-next 当前正式客户展示模板：不在客户断词中显示任何计算分数、等级数字或公式；研究数值只存内部DTO。GitHub人工只改中文和已有花括号变量；需重新打包iOS后生效。旧版本保留Git历史与internal_audit_template.json。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -14,23 +14,23 @@
     "gender": "乾坤性别辅助宫",
     "qian": "乾坤辅助：{role}",
     "kun": "乾坤辅助：{role}",
-    "quant": "宫位五级吉凶净分合断",
+    "quant": "内部研究计算（不提供客户展示）",
     "verdict": "全部证据合断",
     "timing": "时空及应期"
   },
   "macros": {
     "macro": "{macro_text}",
-    "role": "{palace_detail}{palace_score}{extra_illness}{role_relation}{gender_note}",
+    "role": "{palace_detail}{extra_illness}{role_relation}{gender_note}",
     "no_natal": "患者未提供可核的真实生年干支或落宫，本次不使用年命。",
     "illness": " 传统病星格局候选「{name}」，其独立条件：{explanation}。",
-    "role_score": " 宫内吉凶能量：{score_text}",
+    "role_score": "",
     "role_relation": " {relation_text}",
     "gender_note": "仅为实际性别辅助宫，不自动作为患者主要用神。",
-    "auxiliary": "{palace_detail} 本宫净分：{palace_score} 与天芮病宫{relation}；只作为与病宫有关的实际辅助宫，和其他角色同宫不重复计分。",
-    "overall_resolved": "只合计相关{palace_count}个不同实宫；各宫空亡调整后合计{post_void_sum}分，最终{score}分，{grade}。",
-    "overall_pending": "存在实际缺失的星门神力量，已知宫位净分{post_void_sum}；缺失事实无法计算，不虚构值。",
-    "verdict": "{conclusion}每个宫内的星、门、神、实际命中的天地盘格按照当前吉凶规则计分；相同物理宫只计一次，生克关系单独解释而不重复加扣分。伏吟反吟只管缓急；传统盘象不代表医学诊断、治疗结果。",
-    "timing": "驿马参考{horse}；应期还需原书空墓、冲合、填实和具体问事条件共同触发，证据不足时不虚构具体日期。"
+    "auxiliary": "{palace_detail}此宫与天芮病宫{relation}，仅作辅助参考；同宫不重复判断。",
+    "overall_resolved": "综合相关宫位的星门神格与人物关系，本次传统象意倾向{grade}；遇相反证据须综合审看。",
+    "overall_pending": "相关证据尚有分歧，暂不下肯定的吉凶判断。",
+    "verdict": "{conclusion}以上只作传统古籍象意参考，不能据此判断真实病情。",
+    "timing": "时马在{horse}；应期须另有空、墓、冲合及问事情境支持，不能直接断定某一天。"
   },
   "data_paths": {
     "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
@@ -41,5 +41,25 @@
     "sections": "src/wengua/domain_selected_energy_vnext.py:selected_health_sections",
     "output": "src/wengua/health_severity_vnext_review.py:analyze_health_severity_review",
     "score": "src/wengua/health_quant_overlay_vnext.py:_quantize_one"
+  },
+  "native_customer": {
+    "schema": "wengua_native_customer_phrases_v1",
+    "subtitle": "根据本次真实时辰与选中问事生成的传统盘象依据。",
+    "macro_five": "此时属五不遇时，按古诀是不利的时象，但不能仅凭这一条定事件结果。",
+    "macro_clear": "本盘不属于五不遇时。",
+    "macro_slow": "全局有伏吟，主进展缓慢。",
+    "macro_fast": "全局有反吟，主变化较快。",
+    "macro_mixed": "伏吟与反吟并见，缓急需结合具体用神。",
+    "macro_unset": "不见整盘伏吟或反吟，暂不由此判断快慢。",
+    "illness": "天芮落{palace}，宫内见{star}、{door}与{deity}。这是传统断病时首先查看的病象。",
+    "doctor": "天心落{palace}，见{door}与{deity}。其宫位与病宫{relation}。",
+    "medicine": "乙奇落{palace}，见{door}与{deity}。其宫位与病宫{relation}。",
+    "patient": "{person}的主用神{stem}落{palace}，与天芮病宫{relation}。",
+    "hour": "时干{stem}落{palace}，与病宫{relation}，作为本次问事的事体旁证。",
+    "chief": "值符落{palace}，与病宫{relation}，不能只因值符为吉神就断制病。",
+    "details": "{palace}内的天地干组合为「{names}」。其吉凶古诀与其它同宫事实须合看。",
+    "pending": "当前原生端已核定时辰、九宫、人物宫与81格；200格能量、真假空调整和跨宫最终优先级尚未完成与Python逐盘验收，因此暂不强断结果。",
+    "unavailable": "此领域或人物关系的离线推理条件尚未通过一致性验收，不得复用其他领域断词。",
+    "disclaimer": "古籍文化研究及盘象说明，不属于诊断、治疗、病情预测或医学建议。"
   }
 }
