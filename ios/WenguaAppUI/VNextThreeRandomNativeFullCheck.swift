@@ -137,6 +137,23 @@ private struct PublicCast:Encodable {
                 try require(!joined.contains(forbidden),
                    loc+"internal numerical data leaked "+forbidden)
             }
+            let conclusion=reading.sections.first(where:{$0.id=="90vnext"})?.text ?? ""
+            let detailed=reading.sections.first(where:{$0.id=="87vnext"})?.text ?? ""
+            let overview=reading.sections.first(where:{$0.id=="82vnext"})?.text ?? ""
+            let controls=reading.sections.first(where:{$0.id=="83vnext"})?.text ?? ""
+            try require(!conclusion.isEmpty && conclusion.contains("宫"),
+                loc+"score-conditioned conclusion missing")
+            try require(overview.contains("月令") && overview.contains("落宫"),
+                loc+"monthly+palace powers absent from consumer reasoning")
+            try require(overview.contains("天干十二长生"),
+                loc+"81 original pair lifecycle condition lost in narrative")
+            try require(detailed.contains("只按落宫") &&
+                detailed.contains("不套月令"),
+                loc+"God was silently subjected to a monthly rule")
+            try require(controls.contains("力量") && controls.contains("病宫"),
+                loc+"real person selected 25-cell power/directed relation lost")
+            try require(!detailed.contains("净分") && !overview.contains("加分"),
+                loc+"private arithmetic leaked into template")
             try require(reading.sections.contains(where:{$0.id=="90vnext"}),
                 loc+"current native verdict missing")
             let result=PublicCast(
