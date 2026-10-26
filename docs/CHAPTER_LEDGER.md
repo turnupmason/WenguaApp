@@ -1048,3 +1048,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 按用户要求，不修改起盘、四柱/九宫算法或历史旧断词，使用 seed `20261026` 随机不筛选吉凶抽取 2022-04-22 05:00 EDT 与 2025-07-18 03:00 EDT 两个本人病情严重程度**软件模拟**时辰。`tests/test_health_two_random_template_20261026.py` 实时调用现行 `auto_cast_health_review_text`，CI日志保存完整结构化报告和中文断词。抽样不是古籍第195/196例，不代表现实医学有效性。
 - Swift 原生桥 `ios/WenguaAppUI/WenguaHealthTemplateBridge.swift` 直接将已有 JSON/81格 TSV 打包进 App，真实 `WenguaNativeCore.compute` 逐宫真天地干有序匹配，复用原 `formation` 带古文/释义/象形，严格校验81/81与占位符。UI只显示基础格局，不冒充 200格/人物用神/真假空±3/最终五级吉凶已全移植；原生完整断案仍待下一阶段。严禁用固定四张封存盘文本代替新盘。
 - 编辑位置和完整接线说明 `docs/HEALTH_IOS_LIVE_TEMPLATE_FIRST_BRIDGE_2026-10-26.md`、原 `docs/HEALTH_TEMPLATE_EDITING_WORKFLOW_2026-10-25.md`。GitHub线上改模板后需新的本地安装包才在iPhone生效，无在线读取。新增书章0/原书事件0，保留两书43章194例、81原Excel、200格、冻结V3.9.1、弃用V4.2及失败历史。新提交CI需以本次 HEAD 对应实际运行结果为准。
+
+
+### 2026-10-26 CI 正常发现引擎守护阻断（保留失败并纠正样本门槛）
+首次新增随机双盘 `WenguaApp CI #40342643735` 实际失败：候选时辰存在尚未核定值使门中五寄宫，后续样本不得捏造起局。随后将测试改为同一seed逐个候选，只跳原引擎明确拒绝的中五寄宫／患者真实干落宫不可定时辰，日志保留拒盘原因和次序，取前两张真正可出九宫的盘；不因断词偏凶／偏吉重抽。保留失败 Actions 和前一次候选日期的记录。原九宫算法及 V3.9.1/81格/200格/194古籍案例一律不修改，Swift桥第一轮 `NATIVE_HEALTH_TEMPLATE_BRIDGE_OK charts=2 catalog=81/81` 已在 #40342644023 native_core job 实际验证，仍待同一修复提交的最终 iOS Xcode/全仓 CI 状态。
