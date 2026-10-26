@@ -238,26 +238,50 @@ def void_kwargs(actor_detail,target_detail):
             "target_true_void":b=="true_void"}
 
 
-def render_complete_selected_palace(detail):
-    """Smoothly ordered short source/energy facts for a *single* selected role."""
-    def power(x):
-        if x is None:return "无"
+def render_complete_selected_palace(detail, *, quantified=None):
+    """Output signed current star/door/god/palace tiers from real scoring audit.
+
+    Heavenly and earthly stem 200-cell grades express strength, not automatically
+    auspiciousness. No invented score for an unresolved source/lifecycle branch.
+    """
+    from .health_five_level_quant_vnext import label as signed_grade
+    from .health_intrinsic_scoring_vnext import star_score
+
+    def signed(score):
+        if score is None:
+            return "吉凶待核"
+        return "中平" if score == 0 else signed_grade(score)
+
+    def stem_strength(x):
+        if x is None:
+            return "无"
         if x["strength_label"] is not None:
-            return str(x["symbol"])+str(x["strength_label"])
+            return str(x["symbol"])+"势"+str(x["strength_label"])
         choices=x.get("stem_life_candidate_cells",())
-        return (str(x["symbol"])+
-                "长生分支待核（"+
-                "／".join(str(y["row"])+str(y["strength"]) for y in choices)+"）")
-    stars="、".join(power(x["strength"]) for x in detail["stars"]) or "无已核星"
+        return (str(x["symbol"])+"长生分支待核（"+
+                "／".join(str(y["row"])+"势"+str(y["strength"])
+                         for y in choices)+"）")
+
+    stars="、".join(
+        x["name"]+signed(star_score(
+            x["name"],x["strength"].get("strength_label"))["score"])+
+        ("（同宫不另计病星）" if quantified is not None and
+         quantified["role"]=="illness" and x["name"]!="天芮星" else "")
+        for x in detail["stars"]) or "无已核星"
     d=detail["deity"]
-    deity=(d["name"]+d["relation"]+"、"+d["polarity"]
-           if d["status"]=="calculated" else "未核")
-    top="、".join(power(x) for x in detail["heaven_stems"]) or "无"
-    bottom=power(detail["earth_stem"])
+    deity=(d["name"]+d["relation"]+"、"+
+           signed(quantified["deity"].get("score"))
+           if quantified is not None and d["status"]=="calculated"
+           else "未核")
+    door=detail["door"]
+    door_text=(door["symbol"]+signed(quantified["door"].get("score"))
+               if door and quantified is not None else "门势待核")
+    top="、".join(stem_strength(x) for x in detail["heaven_stems"]) or "无"
+    bottom=stem_strength(detail["earth_stem"])
     book=detail["ordered_book_81_pairs"]
     from .health_reading_template_vnext import formation_sentence
-    booktext=("；天地格："+ "；".join(formation_sentence(p)
-        for p in book) if book else "；本宫没有实际天地盘有序格")
+    booktext=("；天地格："+ "；".join(formation_sentence(pair)
+        for pair in book) if book else "；本宫没有实际天地盘有序格")
     v=detail["void"]
     vt=("不空" if v["classification"]=="not_void" else
         "假空" if v["classification"]=="fake_void" else "真空")
@@ -274,10 +298,11 @@ def render_complete_selected_palace(detail):
                            ("门迫",bool(detail["door_pressure"])),
                            ("本宫驿马",detail["horse_in_this_palace"]))
         if active) or "无已核特殊刑墓迫"
-    return (
-        "落"+detail["palace_name"]+"；九星"+stars+"；八神"+deity+
-        "；八门"+power(detail["door"])+"；天盘干"+top+
-        "、地盘干"+bottom+booktext+"；空亡"+vt+
-        ("（"+vwhy+"）" if vwhy else "")+
-        "；"+conditions+"。"
-    )
+    palace=quantified["palace_score"] if quantified is not None else None
+    final=("；本宫综合"+signed(palace.get("score"))
+           if palace is not None else "")
+    return ("落"+detail["palace_name"]+"；九星"+stars+"；八神"+deity+
+            "；八门"+door_text+"；天盘干"+top+
+            "、地盘干"+bottom+"（天干仅列强弱）"+booktext+"；空亡"+vt+
+            ("（"+vwhy+"）" if vwhy else "")+
+            "；"+conditions+final+"。")

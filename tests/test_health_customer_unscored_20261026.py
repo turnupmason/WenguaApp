@@ -6,7 +6,7 @@ from src.wengua.health_reading_template_vnext import template
 class CustomerOnlyUnscored(unittest.TestCase):
     def test_template_has_no_visible_score_words(self):
         t=template()
-        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261026_customer_v2")
+        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades")
         user_slots=("role","auxiliary","overall_resolved","overall_pending","verdict","timing")
         for slot in user_slots:
             text=t["macros"][slot]
@@ -29,7 +29,7 @@ class CustomerOnlyUnscored(unittest.TestCase):
             self.assertNotIn("宫内吉凶能量：",text)
             self.assertNotIn("五级吉凶净分",text)
             self.assertNotIn("原始净分",text)
-            self.assertNotIn("空亡调整后",text)
+            self.assertIn("天干仅列强弱",text)
             self.assertNotIn("合计-7分",text)
             self.assertNotIn("最后按±5",text)
             self.assertFalse(any(s["id"]=="89_quant" for s in report["sections"]))

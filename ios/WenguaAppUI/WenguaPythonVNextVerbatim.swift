@@ -104,7 +104,7 @@ enum WenguaPythonVNextVerbatim {
         let source=try WenguaVNextEngine.factor(
             kind:"stem",symbol:symbol,palace:palace,
             month:month,catalog:energy,stages:stages)
-        if let x=source.strength{return symbol+x}
+        if let x=source.strength{return symbol+"势"+x}
         let col=try monthColumn(symbol,month)
         var rows:[String]=[]
         for st in stages {
@@ -112,7 +112,7 @@ enum WenguaPythonVNextVerbatim {
             if !rows.contains(row){rows.append(row)}
         }
         let options=try rows.map{
-            $0+(try WenguaNativeEnergyBundle.cell("stem",row:$0,
+            $0+"势"+(try WenguaNativeEnergyBundle.cell("stem",row:$0,
                                                    column:col,catalog:energy))
         }
         return symbol+"长生分支待核（"+options.joined(separator:"／")+"）"
@@ -130,12 +130,12 @@ enum WenguaPythonVNextVerbatim {
         let direction=try WenguaVNextEngine.directed(element,palaceElement)
         let rel=["宫生符号":"被宫生","宫克符号":"被宫克",
                  "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
-        let strength=direction=="宫生符号" || direction=="比和"
-        let polarity=WenguaVNextEngine.godPolarity[name] ?? 0
-        let good=polarity==1
-        let label=good ? (strength ? "更吉":"微吉") :
-                        (strength ? "更凶":"微凶")
-        return name+(rel[direction] ?? "待核")+"、"+label
+        guard let tier=WenguaVNextEngine.godTiers[direction],
+              let polarity=WenguaVNextEngine.godPolarity[name] else {
+            return name+(rel[direction] ?? "待核")+"、吉凶待核"
+        }
+        return name+(rel[direction] ?? "待核")+"、"+tier+
+               (polarity>0 ? "吉":"凶")
     }
     private static func voidReason(_ p:WenguaNativePalace,
                                    chart:WenguaNativeChart,
@@ -174,7 +174,26 @@ enum WenguaPythonVNextVerbatim {
         return terms.joined(separator:"、").isEmpty
           ? "无已核特殊刑墓迫" : terms.joined(separator:"、")
     }
-    private static func palaceText(_ p:WenguaNativePalace,
+    private static func signed(_ score:Int?)->String {
+        guard let score else {return "吉凶待核"}
+        if score==0{return "中平"}
+        return WenguaVNextEngine.tiers[abs(score)-1]+(score>0 ? "吉":"凶")
+    }
+    private static func signedSymbol(_ kind:String,_ symbol:String,
+                                     palace:Int,month:String,
+                                     energy:WenguaNativeEnergyCatalog)throws->String {
+        let factor=try WenguaVNextEngine.factor(
+            kind:kind,symbol:symbol,palace:palace,month:month,catalog:energy)
+        guard let tier=factor.strength,
+              let idx=WenguaVNextEngine.tiers.firstIndex(of:tier) else {
+            return symbol+"吉凶待核"
+        }
+        let polarity=kind=="star" ? WenguaVNextEngine.starPolarity[symbol] :
+                                     WenguaVNextEngine.doorPolarity[symbol]
+        guard let polarity else{return symbol+"吉凶待核"}
+        return symbol+signed((idx+1)*polarity)
+    }
+    private static func palaceText(_ p:WenguaNativePalace,role:String,
                                    chart:WenguaNativeChart,
                                    review:WenguaVNextAudit,
                                    energy:WenguaNativeEnergyCatalog,
@@ -187,9 +206,13 @@ enum WenguaPythonVNextVerbatim {
             throw WenguaVNextReadingGate.unresolvedRole
         }
         let stars=try p.heavenStars.map{
-            try power("star",$0.star,p.id,month,energy)
+            let title=try signedSymbol("star",$0.star,palace:p.id,
+                                       month:month,energy:energy)
+            return title+(role=="illness" && $0.star != "天芮星" ?
+                "（同宫不另计病星）" : "")
         }.joined(separator:"、")
-        let doorPart=try power("door",door,p.id,month,energy)
+        let doorPart=try signedSymbol("door",door,palace:p.id,
+                                      month:month,energy:energy)
         let heaven=try p.heavenStars.map{
             try powerStem($0.carriedStem,stages:$0.stages,
                           palace:p.id,month:month,energy:energy)
@@ -202,7 +225,7 @@ enum WenguaPythonVNextVerbatim {
                   row.void=="fake_void" ? "假空" : "真空"
         let vwhy=voidReason(p,chart:chart,month:month,klass:klass)
         let special=try conditions(p,chart)
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+(vwhy.isEmpty ? "" : "（"+vwhy+"）")+"；"+special+"。"
+        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+"（天干仅列强弱）"+book+"；空亡"+klass+(vwhy.isEmpty ? "" : "（"+vwhy+"）")+"；"+special+"；本宫综合"+signed(row.afterVoid)+"。"
     }
 
     private static func roleAgainstIllness(
@@ -322,7 +345,7 @@ enum WenguaPythonVNextVerbatim {
                 }
                 continue
             }
-            let full=try palaceText(p,chart:chart,review:review,
+            let full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup)
             var extra=""
             if role=="illness" {
@@ -351,24 +374,17 @@ enum WenguaPythonVNextVerbatim {
                       nominal=="被生" ? "受生" :
                       nominal=="被克" ? "受克" : nominal
             let name=alias=="qian" ? "乾六宫辅助观察":"坤二宫辅助观察"
-            let text=try palaceText(p,chart:chart,review:review,
+            let text=try palaceText(p,role:alias,chart:chart,review:review,
                 energy:energy,formations:lookup)
             push("09_"+alias,try title(alias,["role":name]),try phrase("auxiliary",[
                 "palace_detail":text,"palace_score":"","relation":rel]))
         }
         let verdict:String
         if let score=review.score {
-            let hasConflict=(review.evidenceDirection=="unresolved" && score != 0) ||
-                (score>0 && review.evidenceDirection=="adverse") ||
-                (score<0 && review.evidenceDirection=="favorable")
-            if hasConflict {
-                verdict="宫位本体与人物关系的判断尚有分歧，暂不强断吉凶。"
-            } else {
-                let grade=score==0 ? "不凶不吉": score>0 ? "偏吉":"偏凶"
-                verdict=try phrase("overall_resolved",["grade":grade,
-                    "score":String(score),"post_void_sum":String(review.postVoidKnownSum),
-                    "palace_count":String(review.palaces.count)])
-            }
+            let grade=score==0 ? "不凶不吉" : signed(score)
+            verdict=try phrase("overall_resolved",["grade":grade,
+                "score":String(score),"post_void_sum":String(review.postVoidKnownSum),
+                "palace_count":String(review.palaces.count)])
         } else {
             verdict=try phrase("overall_pending",[
                 "post_void_sum":String(review.postVoidKnownSum)])

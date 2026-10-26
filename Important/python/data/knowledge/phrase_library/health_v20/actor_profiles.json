@@ -1,0 +1,322 @@
+{
+  "schema": "wengua_health_actor_profiles_v20",
+  "domain": "health",
+  "basis": "依据古籍",
+  "selection_required": [
+    "relationship",
+    "consultation_context"
+  ],
+  "optional": [
+    "patient_birth_ganzhi",
+    "patient_age_band",
+    "patient_sex",
+    "birth_order",
+    "calendar.day_ganzhi",
+    "calendar.month_ganzhi",
+    "calendar.year_ganzhi"
+  ],
+  "contexts": {
+    "direct_self": "本人当面问自身疾病",
+    "direct_proxy": "代亲属或朋友专门起盘问该人的疾病",
+    "event_news": "知悉他人突发病事，按事件时辰起局"
+  },
+  "profiles": [
+    {
+      "id": "self",
+      "label": "本人",
+      "references": [
+        {
+          "kind": "day_stem",
+          "source": "shenqi.health line 67",
+          "status": "source_case_specific"
+        }
+      ],
+      "palaces": [],
+      "note": "本人测病以日干为人，天芮为病，天心乙奇为医药"
+    },
+    {
+      "id": "father",
+      "label": "父亲",
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health line 105",
+          "status": "source_conditional_older_generation"
+        }
+      ],
+      "palaces": [
+        6
+      ],
+      "note": "长辈参考年干，父亲另参乾六宫；出生年命有则兼看而非必填"
+    },
+    {
+      "id": "mother",
+      "label": "母亲",
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health line 192 elderly-relative method analogy",
+          "status": "analogy_not_exact_mother_case"
+        }
+      ],
+      "palaces": [
+        2
+      ],
+      "note": "母亲参坤二宫，年干仅为长辈取用候选，不能强称原书有母亲一律年干的病例"
+    },
+    {
+      "id": "parent",
+      "label": "父母",
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health lines 105/192",
+          "status": "conditional_parent_candidate"
+        }
+      ],
+      "palaces": [],
+      "note": "必须进一步区分父亲或母亲才能绑定乾/坤特定宫位"
+    },
+    {
+      "id": "friend",
+      "label": "朋友",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation symbolic role requires chapter-level confirmation",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "直接朋友代测以月干作同辈候选；闻讯按事件占测改走event_news日干，不可混用"
+    },
+    {
+      "id": "colleague",
+      "label": "同事",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation symbolic role requires chapter-level confirmation",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "现场同事代测与听到同事病讯不同"
+    },
+    {
+      "id": "son",
+      "label": "儿子",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "shenqi.health line 145 nephew younger-generation analogy",
+          "status": "analogy_not_exact_son_case"
+        }
+      ],
+      "palaces": [],
+      "note": "时干作晚辈候选，年命可选；按出生顺序与具体儿子身份再查参考宫"
+    },
+    {
+      "id": "daughter",
+      "label": "女儿",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "shenqi.health line 145 younger-generation analogy",
+          "status": "analogy_not_exact_daughter_case"
+        }
+      ],
+      "palaces": [],
+      "note": "时干作晚辈候选；按年龄出生顺序另查相关女卦象，不直接指定一个永远不变的个人天干"
+    },
+    {
+      "id": "child",
+      "label": "孩子",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "shenqi.health line 145 younger-generation analogy",
+          "status": "conditional_young_generation"
+        }
+      ],
+      "palaces": [],
+      "note": "孩子需再区分年龄性别出生顺序，不能仅凭「孩子」确定一个具体个人宫"
+    },
+    {
+      "id": "nephew",
+      "label": "侄子",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "shenqi.health line 145",
+          "status": "source_case_specific"
+        }
+      ],
+      "palaces": [],
+      "note": "书内已有叔辈问侄儿何时出院使用时干的记录"
+    },
+    {
+      "id": "spouse",
+      "label": "配偶",
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_day_heavenly_combine_plus_Yi_wife_Geng_husband",
+          "status": "user_explicit_direction_verified_by_actual_chart"
+        }
+      ],
+      "palaces": [],
+      "note": "依已知病人性别：妻乙奇、夫庚为主体，日干五合另参；不得把求测者日干直接当配偶"
+    },
+    {
+      "id": "older_relative",
+      "label": "其他长辈",
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health line 192",
+          "status": "source_case_specific"
+        }
+      ],
+      "palaces": [],
+      "note": "年干作辅助；如关系明确为姨母可兼坤宫，但不泛化所有长辈"
+    },
+    {
+      "id": "older_sibling",
+      "label": "哥哥或姐姐",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation general symbolism",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "同辈月干仅候选，不能凭其自动认定长兄长姐"
+    },
+    {
+      "id": "younger_sibling",
+      "label": "弟弟或妹妹",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation general symbolism",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "同辈月干候选；原书另有年轻男性兼艮宫的案例，只有年龄信息匹配才参照"
+    },
+    {
+      "id": "wife",
+      "label": "妻子",
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "妻以乙为人物主参，日干五合并参，具体实际宫须核"
+    },
+    {
+      "id": "husband",
+      "label": "丈夫",
+      "references": [
+        {
+          "kind": "spouse_gender_harmony",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "夫以庚为人物主参，日干五合并参，具体实际宫须核"
+    },
+    {
+      "id": "animal",
+      "label": "动物",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物没有明确用神用时干，不以本人日干代替"
+    },
+    {
+      "id": "animal_hen",
+      "label": "母鸡",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物求病不明独立用神则取时干，且仍必须核原盘"
+    },
+    {
+      "id": "animal_rooster",
+      "label": "公鸡",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "动物求病不明独立用神则取时干，未印天干保留缺项"
+    },
+    {
+      "id": "son_in_law",
+      "label": "女婿",
+      "references": [
+        {
+          "kind": "casting_hour_stem",
+          "source": "user_2026_10_22_explicit_role_rule_and_kaiwu_final_recovery",
+          "status": "user_rule_actual_cast_conditional"
+        }
+      ],
+      "palaces": [],
+      "note": "开悟末章2000-06-05岳父代问女婿明以时干为用神，原九宫OCR需另验"
+    }
+  ],
+  "event_news_override": {
+    "eligible": [
+      "friend",
+      "colleague",
+      "son",
+      "daughter",
+      "child",
+      "father",
+      "mother",
+      "older_relative",
+      "older_sibling",
+      "younger_sibling",
+      "spouse"
+    ],
+    "role_kind": "day_stem",
+    "source": "kaiwu.health line 43",
+    "note": "根据事发时间闻讯占事，原书以日干代表事件病人；只适用于这一明确占测情境"
+  },
+  "never_infer": [
+    "个人出生年命",
+    "实际患者性别",
+    "亲属排行",
+    "原书未给定的个人天盘干",
+    "从年龄推断实际患病概率"
+  ],
+  "unverified_rule_policy": "具体人物取用没有书源证实，标候选或未知，不可替换成已证主用神；但天芮、天心、乙奇和实际九宫继续分析",
+  "role_routing_20261022": {
+    "spouse": "Patient sex explicit: female=Yi heaven carrier; male=Geng heaven carrier; also day-stem five-combination carried stem if actual visible; known birth Ganzhi optional. Do not turn into asker day.",
+    "animal": "unknown direct personal signifier -> actual casting hour stem; no human Qian/Kun sex auxiliary",
+    "son_in_law": "Kaiwu final chapter expressly says 岳父问女婿以时干为用神",
+    "multi_person": "Each person separately bind, never reuse same patient cell as common Tianrui",
+    "staff": "Brother/sister month stem, parent year stem + Qian6/Kun2, younger generation hour stem"
+  }
+}

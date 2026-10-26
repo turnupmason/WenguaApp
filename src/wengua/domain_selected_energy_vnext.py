@@ -443,7 +443,8 @@ def selected_health_sections(result,*,actor,chart):
             continue
         if key not in roles:continue
         role=roles[key]
-        palace_detail=render_complete_selected_palace(role["complete_palace"])
+        palace_detail=render_complete_selected_palace(
+            role["complete_palace"],quantified=quant["roles"][key])
         # Keep quant in the internal DTO. The customer template is text-only.
         score_text=""
         extra_illness=""
@@ -467,7 +468,8 @@ def selected_health_sections(result,*,actor,chart):
         qitem=quant["auxiliary_qian_kun"][alias]
         push("09_"+alias,template_title(alias,role=ob["role"]),
              render_slot("auxiliary",
-                 palace_detail=render_complete_selected_palace(ob["complete_palace"]),
+                 palace_detail=render_complete_selected_palace(
+                     ob["complete_palace"],quantified=qitem),
                  palace_score="",
                  relation=ob["relation_to_illness"]))
 
@@ -477,19 +479,16 @@ def selected_health_sections(result,*,actor,chart):
     if q["score"] is None:
         conclusion=render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
     else:
+        # User final decision: the source-calculated de-duplicated, post-void
+        # five-tier signed score is decisive when and ONLY when complete.
+        # Other tentative role votes remain archived for research; they do not
+        # replace the known palace total with generic "contradiction" wording.
+        from .health_five_level_quant_vnext import label as signed_label
         value=q["score"]
-        grade="不凶不吉" if value==0 else ("偏吉" if value>0 else "偏凶")
-        direction=result["verdict"]["state"]
-        # Do not silently reconcile a positive palace tally with unresolved or
-        # adverse directional evidence, as happened in 2022-07-19 real demo.
-        if (direction=="unresolved" and value!=0) or (
-            value>0 and direction=="adverse") or (
-            value<0 and direction=="favorable"):
-            conclusion="宫位本体与人物关系的判断尚有分歧，暂不强断吉凶。"
-        else:
-            conclusion=render_slot(
-                "overall_resolved",palace_count=q["unique_palace_count"],
-                post_void_sum=q["post_void_known_sum"],score=value,grade=grade)
+        grade="不凶不吉" if value==0 else signed_label(value)
+        conclusion=render_slot(
+            "overall_resolved",palace_count=q["unique_palace_count"],
+            post_void_sum=q["post_void_known_sum"],score=value,grade=grade)
     push("90_review",template_title("verdict"),
          render_slot("verdict",conclusion=conclusion))
     push("91_timing",template_title("timing"),

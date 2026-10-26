@@ -1,6 +1,6 @@
 {
-  "schema": "health_severity_user_editable_template_v20261026_customer_v2",
-  "comment": "V-next 当前正式客户展示模板：不在客户断词中显示任何计算分数、等级数字或公式；研究数值只存内部DTO。GitHub人工只改中文和已有花括号变量；需重新打包iOS后生效。旧版本保留Git历史与internal_audit_template.json。",
+  "schema": "health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades",
+  "comment": "客户明示五档吉凶：星门神原有正负属性加真实能量强弱，天干单独述势不冒充吉凶；去重实宫空亡调整后最终±5五档直接合断，未核数值不硬判。Python和Swift严格同模板；冻结V3.9.1不变。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -21,14 +21,14 @@
   "macros": {
     "macro": "{macro_text}",
     "role": "{palace_detail}{extra_illness}{role_relation}{gender_note}",
-    "no_natal": "患者未提供可核的真实生年干支或落宫，本次不使用年命。",
+    "no_natal": "未提供真实年命，不纳入本次计算。",
     "illness": " 传统病星格局候选「{name}」，其独立条件：{explanation}。",
     "role_score": "",
     "role_relation": " {relation_text}",
     "gender_note": "仅为实际性别辅助宫，不自动作为患者主要用神。",
     "auxiliary": "{palace_detail}此宫与天芮病宫{relation}，仅作辅助参考；同宫不重复判断。",
-    "overall_resolved": "综合相关宫位的星门神格与人物关系，本次传统象意倾向{grade}；遇相反证据须综合审看。",
-    "overall_pending": "相关证据尚有分歧，暂不下肯定的吉凶判断。",
+    "overall_resolved": "综合本次所选实际宫位的星门神格、刑墓空亡与五行，去重及空亡调整后，最终断为{grade}。",
+    "overall_pending": "相关实宫尚有未核定的星门神格、十二长生分支或空亡条件，当前不足以给出最终五档吉凶。",
     "verdict": "{conclusion}以上只作传统古籍象意参考，不能据此判断真实病情。",
     "timing": "时马在{horse}；应期须另有空、墓、冲合及问事情境支持，不能直接断定某一天。"
   },

@@ -1,0 +1,45 @@
+{
+  "schema": "health_severity_user_editable_template_v20261025_v1",
+  "comment": "只修改每个字段的汉字及括号变量排列，不要删掉 JSON 双引号；GitHub 改这里即可更新疾病严重程度断词。格局内容不在模板内写死，而是按当天真实天盘干+地盘干从81_pairs.tsv取值。",
+  "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
+  "section_titles": {
+    "macro": "起盘总纲：五不遇时、伏吟、反吟",
+    "illness": "天芮病宫",
+    "doctor": "天心医生",
+    "medicine": "乙奇医药",
+    "patient": "患者用神",
+    "hour": "时干事体",
+    "chief": "值符护持宫",
+    "natal": "患者年命",
+    "gender": "乾坤性别辅助宫",
+    "qian": "乾坤辅助：{role}",
+    "kun": "乾坤辅助：{role}",
+    "quant": "宫位五级吉凶净分合断",
+    "verdict": "全部证据合断",
+    "timing": "时空及应期"
+  },
+  "macros": {
+    "macro": "{macro_text}",
+    "role": "{palace_detail}{palace_score}{extra_illness}{role_relation}{gender_note}",
+    "no_natal": "患者未提供可核的真实生年干支或落宫，本次不使用年命。",
+    "illness": " 传统病星格局候选「{name}」，其独立条件：{explanation}。",
+    "role_score": " 宫内吉凶能量：{score_text}",
+    "role_relation": " {relation_text}",
+    "gender_note": "仅为实际性别辅助宫，不自动作为患者主要用神。",
+    "auxiliary": "{palace_detail} 本宫净分：{palace_score} 与天芮病宫{relation}；只作为与病宫有关的实际辅助宫，和其他角色同宫不重复计分。",
+    "overall_resolved": "只合计相关{palace_count}个不同实宫；各宫空亡调整后合计{post_void_sum}分，最终{score}分，{grade}。",
+    "overall_pending": "存在实际缺失的星门神力量，已知宫位净分{post_void_sum}；缺失事实无法计算，不虚构值。",
+    "verdict": "{conclusion}每个宫内的星、门、神、实际命中的天地盘格按照当前吉凶规则计分；相同物理宫只计一次，生克关系单独解释而不重复加扣分。伏吟反吟只管缓急；传统盘象不代表医学诊断、治疗结果。",
+    "timing": "驿马参考{horse}；应期还需原书空墓、冲合、填实和具体问事条件共同触发，证据不足时不虚构具体日期。"
+  },
+  "data_paths": {
+    "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
+    "source_api": "src/wengua/health_81_excel_catalog_vnext.py",
+    "chart": "src/wengua/health_text_pipeline_vnext_review.py:auto_cast_health_review_text",
+    "match": "src/wengua/health_palace_detailed_vnext.py:inspect_complete_selected_palace",
+    "sentence": "src/wengua/health_reading_template_vnext.py:formation_sentence",
+    "sections": "src/wengua/domain_selected_energy_vnext.py:selected_health_sections",
+    "output": "src/wengua/health_severity_vnext_review.py:analyze_health_severity_review",
+    "score": "src/wengua/health_quant_overlay_vnext.py:_quantize_one"
+  }
+}

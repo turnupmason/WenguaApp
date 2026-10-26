@@ -1,0 +1,67 @@
+name: WenguaApp
+options:
+  bundleIdPrefix: com.wengua
+  deploymentTarget:
+    iOS: '17.0'
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    IPHONEOS_DEPLOYMENT_TARGET: '17.0'
+    TARGETED_DEVICE_FAMILY: '1'
+targets:
+  WenguaApp:
+    type: application
+    platform: iOS
+    sources:
+      - path: WenguaDesignPreviewApp.swift
+      - path: WenguaNativeCore.swift
+      - path: WenguaHealthTemplateBridge.swift
+      - path: WenguaNativeReadingRouter.swift
+      - path: WenguaNativeActorBinding.swift
+      - path: ../../data/knowledge/phrase_library/health_v20/actor_profiles.json
+        buildPhase: resources
+      - path: WenguaNativeVNextEngine.swift
+      - path: WenguaVNextCustomerComposer.swift
+      - path: WenguaVNextReasoner.swift
+      - path: WenguaPythonVNextVerbatim.swift
+      - path: WenguaVNextTianrui25.swift
+      - path: WenguaNativeCustomerView.swift
+      - path: WenguaLocalHistoryView.swift
+      - path: WenguaNativeEnergyBundle.swift
+      - path: ../../data/mobile/health_vnext/health_energy_200.json
+        buildPhase: resources
+      - path: ../../data/templates/health_severity_vnext/reading_template.json
+        buildPhase: resources
+      - path: ../../data/knowledge/health_81_excel_20261025/81_pairs.tsv
+        buildPhase: resources
+      - path: PrivacyInfo.xcprivacy
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.wengua.ios
+        PRODUCT_NAME: 问卦
+        CODE_SIGN_STYLE: Automatic
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: 问卦
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIRequiresFullScreen: YES
+        INFOPLIST_KEY_UIInterfaceOrientationPortrait: YES
+        DEVELOPMENT_TEAM: ''
+        MARKETING_VERSION: '0.2.0'
+        CURRENT_PROJECT_VERSION: '1'
+    info:
+      path: WenguaInfo.plist
+      properties:
+        CFBundleDisplayName: 问卦
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+schemes:
+  WenguaApp:
+    build:
+      targets:
+        WenguaApp: all
+    run:
+      config: Debug
