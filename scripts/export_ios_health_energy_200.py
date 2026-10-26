@@ -15,10 +15,10 @@ def source_data():
                 "src/wengua/user_domain_matrices_20261023.py:DOOR_POWER/STEM_POWER/CONTROL_GRID_BY_ID"],
       "note":"8x25 identical cells from current original Python. Native full scoring parity not approved.",
       "tables":{
-        "star":{"columns":list(USER_STAR_RELATIONS),"rows":USER_STAR_25},
-        "door":{"columns":list(DOOR_COLUMNS),"rows":DOOR_POWER},
-        "stem":{"columns":list(STEM_COLUMNS),"rows":STEM_POWER},
-        **{k:{"columns":list(COLS),"rows":v} for k,v in CONTROL_GRID_BY_ID.items()},
+        "star":{"columns":list(USER_STAR_RELATIONS),"rows":{k:list(v) for k,v in USER_STAR_25.items()}},
+        "door":{"columns":list(DOOR_COLUMNS),"rows":{k:list(v) for k,v in DOOR_POWER.items()}},
+        "stem":{"columns":list(STEM_COLUMNS),"rows":{k:list(v) for k,v in STEM_POWER.items()}},
+        **{k:{"columns":list(COLS),"rows":{s:list(c) for s,c in v.items()}} for k,v in CONTROL_GRID_BY_ID.items()},
       }
     }
 def main():

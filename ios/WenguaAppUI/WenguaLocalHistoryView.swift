@@ -41,6 +41,26 @@ enum WenguaRecordStore {
     }
 }
 
+// Keep List's result-builder small enough for the real Xcode type-checker.
+private struct WenguaStoredCaseRow: View {
+    let record: LocalNativeCase
+    var body: some View {
+        VStack(alignment:.leading,spacing:5) {
+            Text(record.topicID=="health.severity" ? "健康 · 病情轻重" : record.topicID)
+                .font(.headline)
+            Text(record.relation + " · " +
+                 record.completedAt.formatted(date:.abbreviated,time:.shortened))
+                .font(.caption).foregroundStyle(.secondary)
+            Text("真实本地盘 · " + [
+                record.chart.pillars.year,record.chart.pillars.month,
+                record.chart.pillars.day,record.chart.pillars.hour
+            ].joined(separator:" "))
+                .font(.caption2).foregroundStyle(.secondary)
+        }
+        .padding(.vertical,3)
+    }
+}
+
 struct WenguaLocalHistoryView: View {
     @State private var entries:[WenguaStoredCase]=[]
     @State private var confirmEraseAll=false
@@ -58,23 +78,7 @@ struct WenguaLocalHistoryView: View {
                                 nativeChart:item.record.chart,sampleIndex:-1,
                                 nativeReading:item.record.reading)
                         } label: {
-                            VStack(alignment:.leading,spacing:5) {
-                                Text(item.record.topicID=="health.severity" ?
-                                     "健康 · 病情轻重" : item.record.topicID)
-                                    .font(.headline)
-                                Text(item.record.relation+" · "+
-                                     item.record.completedAt.formatted(
-                                       date:.abbreviated,time:.shortened))
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                                Text("真实本地盘 · "+item.record.chart.pillars.year+" "+
-                                     item.record.chart.pillars.month+" "+
-                                     item.record.chart.pillars.day+" "+
-                                     item.record.chart.pillars.hour)
-                                    .font(.caption2)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding(.vertical,3)
+                            WenguaStoredCaseRow(record:item.record)
                         }
                     }
                     .onDelete { indices in
