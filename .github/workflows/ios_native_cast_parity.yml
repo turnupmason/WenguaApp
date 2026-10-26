@@ -7,6 +7,8 @@ on:
       - 'ios/WenguaAppUI/WenguaHealthTemplateBridge.swift'
       - 'ios/WenguaAppUI/WenguaNativeReadingRouter.swift'
       - 'ios/WenguaAppUI/WenguaNativeActorBinding.swift'
+      - 'ios/WenguaAppUI/NativeActorProfileCheck.swift'
+      - 'tests/test_ios_vnext_production_entry_20261026.py'
       - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
       - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
       - 'ios/WenguaAppUI/WenguaVNextCustomerComposer.swift'
@@ -71,6 +73,10 @@ jobs:
         run: |
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeHealthCustomerCheck.swift -o /tmp/wengua-customer
           /tmp/wengua-customer data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json
+      - name: Audit all 20 original actor profiles in actual Swift runtime
+        run: |
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeActorProfileCheck.swift -o /tmp/wengua-actor-check
+          /tmp/wengua-actor-check data/knowledge/phrase_library/health_v20/actor_profiles.json
       - name: Verify exact 200 source cells and native offline loader
         run: |
           python3 -m scripts.export_ios_health_energy_200 --check
