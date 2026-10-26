@@ -190,6 +190,21 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
                cell["earth_stem"]==pair["earth"]
                for entry in cell["heaven_stars"])
     ]
+    historical_by_pair={(x["heaven"],x["earth"]):x
+                        for x in historical_pairs}
+    for excel_pair in pairs:
+        historical=historical_by_pair.get(
+            (excel_pair["heaven"],excel_pair["earth"]),{})
+        # Compatibility-only provenance: Excel still defines the FOUR
+        # current user-facing descriptions and 吉凶; previous book SHA
+        # remains available for archival scripts, not conditional gating.
+        excel_pair["source_line_internal"]=historical.get(
+            "source_line_internal",excel_pair["source_excel_row"])
+        excel_pair["source_sha256_internal"]=historical.get(
+            "source_sha256_internal",
+            "662c6ad43272367acf034e2c65758dffd783c815734e40ad76fdb58a77d95336")
+        excel_pair["historical_source_state"]=historical.get("source_state")
+
     return {
         "schema":"health_complete_selected_palace_v1",
         "palace":palace,"role":record["role"],"palace_name":record["name"],
