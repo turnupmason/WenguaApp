@@ -342,7 +342,14 @@ enum WenguaPythonVNextVerbatim {
             guard let p=cells[id],let ill=review.roles["illness"] else {
                 throw WenguaVNextReadingGate.unresolvedRole
             }
-            let rel=relation(id,ill)
+            // Python selected_health_sequence uses marriage_runtime.element_relation
+            // for Qian/Kun: identical ELEMENT (including same physical palace)
+            // is 比和, and passive direction is 受生/受克 rather than
+            // matchup's 被生/被克. These are distinct source conventions.
+            let nominal=relation(id,ill)
+            let rel = nominal=="同宫" ? "比和" :
+                      nominal=="被生" ? "受生" :
+                      nominal=="被克" ? "受克" : nominal
             let name=alias=="qian" ? "乾六宫辅助观察":"坤二宫辅助观察"
             let text=try palaceText(p,chart:chart,review:review,
                 energy:energy,formations:lookup)
