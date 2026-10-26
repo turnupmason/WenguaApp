@@ -193,13 +193,22 @@ def inspect_selected_quantization(*,selected_roles,
     five=first_stage_macro["five_not_encounter_triggered"]
     roles={}
     aggregate={}
+    physical_cache={}
     for key,row in selected_roles.items():
         if key in (
                 "illness","doctor","medicine","patient",
                 "hour","natal","gender","chief"):
             detail=row["complete_palace"]
-            item=_quantize_one(key,detail,five_not_encounter=five,
-                               xun_shou=xun_shou)
+            palace=detail["palace"]
+            if palace in physical_cache:
+                canonical=physical_cache[palace]
+                item={**canonical["item"],"role":key,
+                      "score_shared_with_role":canonical["role"],
+                      "same_real_palace_same_score":True}
+            else:
+                item=_quantize_one(key,detail,five_not_encounter=five,
+                                   xun_shou=xun_shou)
+                physical_cache[palace]={"role":key,"item":item}
             roles[key]=item
             # User: ONLY the exact selected health roles. No unrelated extra
             # palace inferred through a generic family/profile traversal.
@@ -210,9 +219,17 @@ def inspect_selected_quantization(*,selected_roles,
                             "known_subtotal":item["palace_score"]["known_subtotal"]}
     qian_kun={}
     for k,row in qian_kun_observations.items():
-        qian_kun[k]=_quantize_one(
-            k,row["complete_palace"],five_not_encounter=five,
-            xun_shou=xun_shou)
+        palace=row["palace"]
+        if palace in physical_cache:
+            canonical=physical_cache[palace]
+            qian_kun[k]={**canonical["item"],"role":k,
+                          "score_shared_with_role":canonical["role"],
+                          "same_real_palace_same_score":True}
+        else:
+            qian_kun[k]=_quantize_one(
+                k,row["complete_palace"],five_not_encounter=five,
+                xun_shou=xun_shou)
+            physical_cache[palace]={"role":k,"item":qian_kun[k]}
         qian_kun[k]["auxiliary_only_not_auto_counted"]=False
         qian_kun[k]["selected_if_patient_gender_known"]=(
             row["palace"]==selected_gender_palace)
