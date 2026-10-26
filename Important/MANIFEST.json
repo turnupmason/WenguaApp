@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "f36a8ccbcfc6d35b4ba87da5a7a4b6a1c7966be3"
+      "sha": "664b15dfc0d234a78d7a92cb4cacd4d0dfb809e1"
     },
     {
       "platform": "python",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "4bff27c60c3775dfa98fb73e30fc1d5ec94bac60"
+      "sha": "a07e8b696fdf067d890959119d9d8ef67b5c0ec7"
     },
     {
       "platform": "swift",

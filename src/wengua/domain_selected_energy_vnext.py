@@ -484,7 +484,7 @@ def selected_health_sections(result,*,actor,chart):
     q=quant["summary"]
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
-                render_slot("overall_resolved",grade=grade(q["score"]),
+                render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
                     palace_count=q["unique_palace_count"],
                     post_void_sum=q["post_void_known_sum"],score=q["score"]))
     push("90_review",template_title("verdict"),
