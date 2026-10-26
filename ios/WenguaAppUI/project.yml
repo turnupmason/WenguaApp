@@ -24,6 +24,7 @@ targets:
       - path: WenguaNativeVNextEngine.swift
       - path: WenguaVNextCustomerComposer.swift
       - path: WenguaVNextReasoner.swift
+      - path: WenguaVNextTianrui25.swift
       - path: WenguaNativeCustomerView.swift
       - path: WenguaLocalHistoryView.swift
       - path: WenguaNativeEnergyBundle.swift
