@@ -57,13 +57,15 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                        userInfo:[NSLocalizedDescriptionKey:fixture.instant+" "+explanation])}
             }
             try require(audit.firstMacroFiveNot==fixture.firstStage,"macro five-not mismatch")
-            print("SWIFT_ROLE_GATE",fixture.instant,
-                audit.roles.map{ k,v in
-                    let edge=audit.controls.first(where:{$0.role==k})
-                    return k+":"+String(v)+":"+String(describing:audit.palaces[v]?.afterVoid)+
-                           ":"+(edge?.direction ?? "illness")+":"+
-                           (edge?.applicability ?? "none")+":"+(edge?.cell ?? "none")
-                }.sorted().joined(separator:";"))
+            for (role,pid) in audit.roles.sorted(by:{$0.key<$1.key}) {
+                let edge=audit.controls.first(where:{$0.role==role})
+                let words=[role,String(pid),
+                           String(describing:audit.palaces[pid]?.afterVoid),
+                           edge?.direction ?? "illness",
+                           edge?.applicability ?? "none",
+                           edge?.cell ?? "none"]
+                print("SWIFT_ROLE_GATE",fixture.instant,words.joined(separator:":"))
+            }
             try require(audit.score==fixture.summary.score,"summary signed score mismatch: \(String(describing:audit.score)) / \(String(describing:fixture.summary.score))")
             try require(audit.postVoidKnownSum==fixture.summary.post_void_known_sum,"post-void sum mismatch \(audit.postVoidKnownSum) / \(fixture.summary.post_void_known_sum)")
             for (role,r) in fixture.roles {
