@@ -223,6 +223,26 @@ private struct PublicCast:Encodable {
                 source_direction:audit.evidenceDirection,
                 evidence_conflict:audit.evidenceConflict,
                 sections:reading.sections)
+            // Source-driven attempt at the ORIGINAL Python complete reading,
+            // not the independent short Swift summary. Strict test checks
+            // every heading, string, Chinese punctuation and newline.
+            let full=try WenguaPythonVNextVerbatim.sections(
+                chart:chart,review:audit,actor:actor,
+                template:template,catalog:pairs,energy:energy)
+            let fullResult=PublicCast(
+                ordinal:i+1,instant:test.instant,
+                relationship:test.relationship,
+                pillars:[chart.pillars.year,chart.pillars.month,
+                         chart.pillars.day,chart.pillars.hour],
+                solar_term:chart.solarTerm,
+                bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+
+                    String(chart.bureau.ju)+"局",
+                section_count:full.count,
+                source_direction:audit.evidenceDirection,
+                evidence_conflict:audit.evidenceConflict,
+                sections:full)
+            print("VNEXT_IOS_PYEXACT="+String(
+                data:try encoder.encode(fullResult),encoding:.utf8)!)
             print("VNEXT_IOS_3_RANDOM="+String(data:try encoder.encode(result),
                                                 encoding:.utf8)!)
             print("VNEXT_IOS_RANDOM_PARITY_PASS "+String(i+1)+" "+loc)

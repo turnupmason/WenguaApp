@@ -9,7 +9,7 @@ import difflib
 import json
 from pathlib import Path
 
-MARKER="VNEXT_IOS_3_RANDOM="
+MARKER="VNEXT_IOS_PYEXACT="
 def compare(python_path,swift_path,report_path):
     source=json.loads(Path(python_path).read_text(encoding="utf8"))
     raw=Path(swift_path).read_text(encoding="utf8").splitlines()

@@ -13,6 +13,7 @@ on:
       - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
       - 'ios/WenguaAppUI/WenguaVNextCustomerComposer.swift'
       - 'ios/WenguaAppUI/WenguaVNextReasoner.swift'
+      - 'ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift'
       - 'ios/WenguaAppUI/WenguaVNextTianrui25.swift'
       - 'ios/WenguaAppUI/VNextNativeParityCheck.swift'
       - 'scripts/export_ios_vnext_live_parity.py'
@@ -97,7 +98,7 @@ jobs:
           set -euo pipefail
           mkdir -p /tmp/wengua-vnext-three
           python3 -m scripts.ios_vnext_three_random_20261026 --output /tmp/wengua-vnext-three/python_truth.json
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
           /tmp/wengua-vnext-three-native /tmp/wengua-vnext-three/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-vnext-three/swift_public_readings.log
       - name: STRICT full GPT Python reading_text versus native iOS every Chinese character - release gate
         run: |
