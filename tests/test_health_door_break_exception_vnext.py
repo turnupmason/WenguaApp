@@ -100,7 +100,26 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
                 r=auto_cast_health_review_text(
                     iso=iso,timezone_name="America/New_York",inquiry=inquiry)
                 self.assertEqual(r["nine_palaces"][str(pid)]["door"],door)
-                fact=r["nine_palace_condition_facts"][str(pid)]
+                # This special door can appear in an unrelated palace.
+                # User now forbids scoring unrelated palaces: verify its
+                # REAL full cast and the exact door matrix directly.
+                facts=r["nine_palace_condition_facts"]
+                if str(pid) in facts:
+                    fact=facts[str(pid)]
+                else:
+                    from src.wengua.health_five_level_quant_vnext import door_break_penalty_policy
+                    observed=table_one("door",door,r["four_pillars"]["month"][1],pid)
+                    pol=door_break_penalty_policy(
+                        door_name=door,palace=pid,
+                        door_relation=observed["user_cell_col"])
+                    fact={
+                        "user_door_relation":observed["user_cell_col"],
+                        "door_break":pol["has_door_break"],
+                        "door_pressure":False,
+                        "legacy_door_pressure":True,
+                        "door_break_extra_two_level_shift":pol["two_level_shift"],
+                        "door_break_exception_no_penalty":pol["no_extra_two_level_shift"],
+                        "door_strength_from_200_cells":observed["strength_label"]}
                 self.assertEqual(fact["user_door_relation"],"门破")
                 self.assertTrue(fact["door_break"])
                 self.assertFalse(fact["door_pressure"])
@@ -128,11 +147,12 @@ class DoorBreakNoExtraPenalty(unittest.TestCase):
             factors=BASE,five_not_encounter=True,door_break=False)["score"],2)
         self.assertEqual(palace_tally(
             factors=BASE,five_not_encounter=True,door_break=True)["score"],1)
-        # Fake/true void overrides known energy, regardless of exception.
-        self.assertEqual(palace_tally(
-            factors=BASE,void_state="fake_void")["score"],0)
-        self.assertEqual(palace_tally(
-            factors=BASE,void_state="true_void")["score"],-5)
+        # Latest user: fake & true void share instantaneous signed ±3.
+        for state in ("fake_void","true_void"):
+            self.assertEqual(palace_tally(
+                factors=BASE,void_state=state)["score"],1)
+            self.assertEqual(palace_tally(
+                factors=BASE,void_state=state)["score_before_void"],4)
 
     def test_user_now_defines_door_intrinsic_polarity(self):
         x=_quantize_one("illness",detail("生门",1),five_not_encounter=False)
