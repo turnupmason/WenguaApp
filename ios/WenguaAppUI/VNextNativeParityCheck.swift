@@ -75,7 +75,7 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
             print("SWIFT_PYTHON_FULL_VNEXT_MATCH "+fixture.instant+" score="+String(describing:audit.score))
             tested+=1
         }
-        guard tested==2 else {throw WenguaCastError.invalidChart}
-        print("WENGUA_VNEXT_PARITY_OK verified_two_independent_true_Python_casts")
+        guard tested==5 else {throw WenguaCastError.invalidChart}
+        print("WENGUA_VNEXT_PARITY_OK verified_five_current_live_Python_casts")
     }
 }

@@ -9,6 +9,7 @@ on:
       - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
       - 'ios/WenguaAppUI/WenguaVNextCustomerComposer.swift'
       - 'ios/WenguaAppUI/VNextNativeParityCheck.swift'
+      - 'scripts/export_ios_vnext_live_parity.py'
       - 'data/evaluation/health_vnext/ios_native_vnext_python_parity_20261026.json'
       - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
       - 'ios/WenguaAppUI/WenguaLocalHistoryView.swift'
@@ -76,7 +77,8 @@ jobs:
       - name: Full signed V-next Swift-to-Python current truth parity (two actual hours)
         run: |
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/VNextNativeParityCheck.swift -o /tmp/wengua-vnext-parity
-          /tmp/wengua-vnext-parity data/mobile/health_vnext/health_energy_200.json data/evaluation/health_vnext/ios_native_vnext_python_parity_20261026.json
+          python3 -m scripts.export_ios_vnext_live_parity --output /tmp/wengua-vnext-five-current.json
+          /tmp/wengua-vnext-parity data/mobile/health_vnext/health_energy_200.json /tmp/wengua-vnext-five-current.json
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
