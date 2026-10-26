@@ -15,6 +15,8 @@ from .health_intrinsic_scoring_vnext import (
     star_score,door_score,god_score,resolve_ordered_pair,
     stem_intrinsic_score,catalog_validation,VERSION as INTRINSIC_VERSION)
 from .health_five_level_quant_vnext import label as grade_label
+from .health_81_excel_catalog_vnext import (
+    authoritative_score_source,catalog,VERSION as EXCEL_VERSION)
 
 def _matching_restriction(entries,stem):
     """Only a genuinely explicit stem-labelled source fact matches."""
@@ -101,7 +103,10 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
             skipped_health_cohosts.append(top)
             continue
         if not bottom:continue
-        candidate=resolve_ordered_pair(top,bottom,door_name=door["symbol"] if door else None)
+        # Current 81 classification is user Excel, NOT the older 82-record
+        # condition-gated book/health conflict corpus. Old records remain
+        # separately auditable but no longer silence known Excel 吉/凶.
+        candidate=authoritative_score_source(top,bottom)
         stages=[s["stage"] for s in stem_fact.get("palace_twelve_life_facts",())
                 if s.get("stage")]
         if not stages: stages=None
@@ -113,11 +118,7 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         earth_penalty=_matching_restriction(detail.get("striking_stems",()),bottom)
         actual_source=origin.get((top,bottom))
         polarity=candidate.get("polarity")
-        gate_ok=candidate["status"] in (
-            "user_exact_unconditional","user_door_condition_satisfied",
-            "user_gender_condition_satisfied",
-            "user_health_explicit_jiayi_override",
-            "user_latest_four_added_with_book_name_conflict")
+        gate_ok=candidate["status"]=="user_excel_exact_81"
         if polarity in ("吉","凶"):
             graded=pattern_grade(
                 polarity=polarity,heaven_stage=stages,
@@ -127,14 +128,21 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         else:
             graded={"status":"source_polarity_or_context_pending","score":None}
         pairs.append({
-            "key":candidate["key"],"name":candidate["user_rows"][0]["title"] if candidate["user_rows"] else "未分类",
+            "key":candidate["key"],"name":candidate["excel_original"]["name"],
+            "polarity":candidate["polarity"],
+            "classical_text":candidate["excel_original"]["classical_text"],
+            "classical_meaning":candidate["excel_original"]["classical_meaning"],
+            "imagery":candidate["excel_original"]["imagery"],
+            "excel_version":EXCEL_VERSION,
+            "excel_row":candidate["excel_original"]["source_excel_row"],
             "source_rule":candidate,
             "actual_book_source":actual_source,
             "heaven_lifecycle":stages,
             "grade":graded,
             "score":graded.get("score"),
             "status":graded.get("status"),
-            "book_illness_conflict":candidate["status"]=="book_illness_conflict_pending",
+            "book_illness_conflict":False,
+            "user_excel_authoritative":True,
             "no_invented_author_outcome":True,
         })
     applied=[p["score"] for p in pairs if p["score"] is not None]
@@ -154,9 +162,15 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         "score":sum(applied),
         "excluded_patterns_not_assumed_true":len(pairs)-len(applied),
         "pending":[p["key"] for p in pairs if p["score"] is None],
-        "explicit_81_coverage":catalog_validation(),
+        "explicit_81_coverage":{
+            "expected_pair_positions":81,
+            "distinct_declared_pairs":len(catalog()),
+            "source_version":EXCEL_VERSION,
+            "classification":"Excel user explicit all 81",
+            "previous_82_row_source_historical_only":True},
         "default_tier":"中等","base_per_user_pattern":3,
-        "preserve_book_source_conditions":True,
+        "preserve_book_source_conditions":"historical_archive_only",
+        "latest_user_excel_is_authoritative":True,
         "only_tianrui_carried_stem_if_illness":role=="illness",
         "skipped_cohost_heaven_stems":skipped_health_cohosts}
     summary=palace_tally(
