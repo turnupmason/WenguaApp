@@ -61,6 +61,7 @@ def produce():
             "summary":q["summary"],"roles":roles,"auxiliaries":aux,
             "controls":controls,"evidenceDirection":r["verdict"]["state"],
             "source_sections":r["sections"],
+            "tianrui25":r["qualitative_palace_relationships"]["天芮星月令×星宫五行25格"],
             "macro":r["first_stage_macro"]
         })
     assert len(cases)==3, "Insufficient accepted technical casts"
