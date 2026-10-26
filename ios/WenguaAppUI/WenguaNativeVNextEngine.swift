@@ -126,7 +126,7 @@ enum WenguaVNextEngine {
         if controls[month]==element {return "囚"}
         throw WenguaHealthTemplateError.invalidCatalog
     }
-    private static func directed(_ symbol:String,_ palace:String) throws -> String {
+    static func directed(_ symbol:String,_ palace:String) throws -> String {
         if symbol==palace {return "比和"}
         if generates[symbol]==palace {return "符号生宫"}
         if generates[palace]==symbol {return "宫生符号"}
@@ -144,7 +144,7 @@ enum WenguaVNextEngine {
         if generates[b]==a {return "被生"}
         return "待核"
     }
-    private static func monthly(_ branch:String) throws -> String {
+    static func monthly(_ branch:String) throws -> String {
         if "寅卯".contains(branch) {return "木"}
         if "巳午".contains(branch) {return "火"}
         if "申酉".contains(branch) {return "金"}
@@ -180,7 +180,7 @@ enum WenguaVNextEngine {
             "符号克宫":"门破","符号生宫":"生宫","比和":"比和"]
         return try must(mapping[rel])
     }
-    private static func factor(kind:String,symbol:String,palace:Int,
+    static func factor(kind:String,symbol:String,palace:Int,
                                month:String,catalog:WenguaNativeEnergyCatalog,
                                stages:[WenguaNativeStage]=[]) throws ->WenguaVNextFactor {
         guard let pe=elements[palace] else {throw WenguaCastError.invalidChart}
