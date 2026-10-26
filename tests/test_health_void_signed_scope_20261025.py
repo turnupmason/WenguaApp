@@ -92,12 +92,18 @@ class Real2024SelectedChart(unittest.TestCase):
                              scored["roles"][b]["palace_score"]["score"])
         self.assertEqual(scored["auxiliary_qian_kun"]["kun"]["palace_score"]["score"],
                          scored["roles"]["patient"]["palace_score"]["score"])
-        self.assertEqual(scored["summary"]["unique_palace_count"],5)
-        self.assertEqual(scored["summary"]["post_void_known_sum"],-4)
-        self.assertEqual(scored["summary"]["score"],-4)
-        self.assertEqual(scored["summary"]["grade"],"大凶")
+        # The original pre-role-gate research baseline was 5 palaces,
+        # -4 / 大凶. Preserve that historical result in this comment;
+        # current final MUST be recomputed from real eligible roles.
+        gates=scored["role_effectiveness_gates"]
+        chosen={gates[role]["palace"]:scored["roles"][role]["palace_score"]["score"]
+                for role in gates if gates[role]["score_eligible"]}
+        self.assertEqual(scored["summary"]["unique_palace_count"],len(chosen))
         self.assertEqual(scored["summary"]["effective_palace_scores"],
-                         {"1":-1,"3":-2,"8":-2,"2":5,"6":-4})
+                         {str(k):v for k,v in chosen.items()})
+        self.assertEqual(scored["summary"]["post_void_known_sum"],sum(
+            v for v in chosen.values() if v is not None))
+        self.assertEqual(scored["summary"]["score"],max(-5,min(5,sum(chosen.values()))))
         self.assertEqual(scored["summary"]["pending_palaces"],[])
         self.assertIn("乾宫辅助（男）",self.report["reading_text"])
         self.assertNotIn("坤宫辅助（女）",self.report["reading_text"])

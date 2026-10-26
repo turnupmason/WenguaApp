@@ -259,7 +259,7 @@
       "platform": "python",
       "canonical": "scripts/export_ios_vnext_live_parity.py",
       "snapshot": "Important/python/scripts/export_ios_vnext_live_parity.py",
-      "sha": "fb5ca2e0564bfe47942f51e117d3f8a1ba80a686"
+      "sha": "40999af8e60aa28725c83ccb9d0e2fab975061cb"
     },
     {
       "platform": "python",
@@ -469,7 +469,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextNativeParityCheck.swift",
       "snapshot": "Important/swift/tests/VNextNativeParityCheck.swift",
-      "sha": "9d6f89c04698b4209888b9dba829411dffc3f417"
+      "sha": "7df182d3d3576d3ef857a0d5226a516daf604e45"
     },
     {
       "platform": "swift",

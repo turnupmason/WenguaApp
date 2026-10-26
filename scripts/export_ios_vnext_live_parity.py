@@ -25,6 +25,7 @@ def make_fixture():
             inquiry={"intent":"severity","relationship":relationship,
                      "consultation_context":context})
         q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+        print("PY_ROLE_EFFECTIVE_GATE",instant,json.dumps(q.get("role_effectiveness_gates"),ensure_ascii=False,sort_keys=True))
         roles={}
         for key,row in q["roles"].items():
             roles[key]={
