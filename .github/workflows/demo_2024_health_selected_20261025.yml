@@ -1,0 +1,31 @@
+name: 2024 User-Scoped Health Research Demo
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/demo_2024_health_selected_20261025.py'
+      - '.github/workflows/demo_2024_health_selected_20261025.yml'
+  workflow_dispatch:
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compute independent 2024 real nine-palace cast and selected factors
+        run: |
+          python -m scripts.demo_2024_health_selected_20261025
+      - name: Archive full actual chart and evidence without adding book cases
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: user-2024-health-example-python-${{ matrix.python-version }}
+          path: artifacts/demo_2024_health_selected_20261025.json
+          retention-days: 90
+          if-no-files-found: warn
