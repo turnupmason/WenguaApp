@@ -586,35 +586,8 @@ enum WenguaVNextEngine {
         } else {
             sentence="相关宫位存在真实未核力量，暂不作确定的吉凶合断。"
         }
-        var factual:[String]=[]
-        let titles=["illness":"天芮病宫","doctor":"天心医者","medicine":"乙奇医药",
-                    "patient":relationship+"用神","hour":"时干事体",
-                    "chief":"值符护持","qian":"乾六辅助","kun":"坤二辅助"]
-        var seenPalaces:Set<Int>=[]
-        for (role,p,_) in allSelected {
-            guard let pl=physical[p.id] else {continue}
-            let rel=palaceRelation(p.id,ill.id)
-            let detail=(titles[role] ?? role)+"在"+p.gua+String(p.id)+"宫"+
-             "，对天芮病宫"+rel+
-             (rel=="克" ? "；是否真正制病另看力量与空墓等条件" :
-              rel=="被克" ? "；是否受制需审病宫的实际克制力度" :
-              "；不把同宫或比和当作主动克病")
-            var line=detail+"。"
-            if let ctl=controls.first(where:{$0.role==role}),
-               let raw=ctl.cell {
-                line+=" 实际克制格为「"+raw+"」"+
-                (ctl.applicability=="pending" ? "，但限制条件尚未排除。" : "。")
-            }
-            factual.append(line)
-            if seenPalaces.insert(p.id).inserted {
-                let palaceName=p.gua+String(p.id)+"宫"
-                factual.append(palaceName+"见"+
-                  pl.patterns.map{"「"+$0+"」"}.joined(separator:"、")+
-                  (pl.void=="fake_void" ? "，为假空" :
-                   pl.void=="true_void" ? "，为真空" : "")+"。")
-            }
-        }
-        if !pending.isEmpty {factual.append("确有力量档位未能唯一确认的宫位，需保留判断条件。")}
+        // User-readable phrases are composed solely by the editable JSON layer.
+        let factual:[String]=[]
         _ = diseaseStrength // Already independently bound via selected factor.
         return WenguaVNextAudit(
             schema:"wengua_native_vnext_exact_200_81_selected_five_v20261026",
