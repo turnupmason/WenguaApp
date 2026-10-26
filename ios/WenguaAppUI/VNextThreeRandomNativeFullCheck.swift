@@ -235,8 +235,7 @@ private struct PublicCast:Encodable {
                 try require(reading.sections[n].id==full[n].id &&
                             reading.sections[n].title==full[n].title &&
                             reading.sections[n].text==full[n].text,
-                            loc+"production customer differs from source renderer line "+
-                            String(n+1))
+                            loc+"production customer differs from source renderer line "+String(n+1))
             }
             let fullResult=PublicCast(
                 ordinal:i+1,instant:test.instant,
