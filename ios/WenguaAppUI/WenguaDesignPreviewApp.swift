@@ -1243,6 +1243,29 @@ struct TraditionalReadingPreview: View {
                         Text(actualPillars.joined(separator:" ") + " · " + chart.solarTerm)
                             .font(.headline)
                         Text("当前已完成真实九宫事实计算，完整专业解读尚在接入中；不会输出未核准的吉凶结论。")
+                        if let blocks = try? WenguaHealthTemplateBridge.fromBundle(chart:chart) {
+                            Text("本盘81格原文与模板实时替换 · 基础事实，尚非完整断案")
+                                .font(.title3.weight(.semibold))
+                                .padding(.top,10)
+                            Text("各条古文和取象对应本盘真实天盘携干与地盘干；200格能量、人物关系及最后吉凶尚未原生移植。")
+                                .font(.caption).foregroundStyle(QStyle.secondary)
+                            ForEach(blocks) { block in
+                                VStack(alignment:.leading,spacing:7) {
+                                    Text(block.palace).font(.headline)
+                                    ForEach(Array(block.sentences.enumerated()),id: \.offset) { pair in
+                                        Text(pair.element).font(.subheadline)
+                                            .textSelection(.enabled)
+                                            .fixedSize(horizontal:false,vertical:true)
+                                    }
+                                }
+                                .padding(14)
+                                .frame(maxWidth:.infinity,alignment:.leading)
+                                .background(.white,in:RoundedRectangle(cornerRadius:12))
+                            }
+                        } else {
+                            Text("本机81格或断词模板校验失败；拒绝显示伪造的格局与合断。")
+                                .foregroundStyle(QStyle.red)
+                        }
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                         Text("本盘九宫事实")
                             .font(.title3.weight(.semibold))

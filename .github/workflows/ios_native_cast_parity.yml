@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - 'ios/WenguaAppUI/WenguaNativeCore.swift'
+      - 'ios/WenguaAppUI/WenguaHealthTemplateBridge.swift'
+      - 'ios/WenguaAppUI/HealthTemplateBridgeCheck.swift'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
+      - 'tests/test_ios_health_template_bridge_20261026.py'
       - 'ios/WenguaAppUI/NativeParityMain.swift'
       - 'ios/WenguaAppUI/GoldenNativeCastCases.json'
       - 'ios/WenguaAppUI/WenguaDesignPreviewApp.swift'
@@ -40,6 +45,12 @@ jobs:
           path: /tmp/wengua-five/
           retention-days: 90
           if-no-files-found: warn
+      - name: Real Swift cast -> exact editable template and 81 Excel pairs (plus broken-TSV rejection)
+        run: |
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/HealthTemplateBridgeCheck.swift -o /tmp/wengua-health-template-bridge
+          /tmp/wengua-health-template-bridge data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv
+      - name: Parse Swift bridge syntax
+        run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
         run: |
           swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
