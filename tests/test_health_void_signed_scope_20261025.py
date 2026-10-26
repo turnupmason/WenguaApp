@@ -42,7 +42,7 @@ class VoidScoreTests(unittest.TestCase):
         # Same branch becomes true void if no matching horse/moon support.
         w=inspect_role_void(
             palace=4,occupied_void_branches=("巳",),
-            month_branch="申",hour_ganzhi="辛亥")
+            month_branch="申",hour_ganzhi="戊申")
         self.assertEqual(w["classification"],"true_void")
 
     def test_no_unrelated_place_and_no_prevoid_sum_can_overwrite_final(self):
