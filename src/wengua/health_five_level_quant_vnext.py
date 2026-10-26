@@ -184,9 +184,8 @@ def palace_tally(*,factors,door_break=False,five_not_encounter=False,
             raise ValueError("Only star/pattern can contain multiple real scored items")
         for value in components:
             if (not isinstance(value,int) or isinstance(value,bool)
-                or abs(value)>5 or
-                (value==0 and k not in ("door","pattern"))):
-                raise ValueError("Only a source-known signed energy tier or neutral door/pattern")
+                or abs(value)>5):
+                raise ValueError("Only a source-known signed energy tier or documented neutral factor")
         seen[k]=sum(components);instances[k]=list(components)
     subtotal=sum(seen.values())
     complete=not unresolved
