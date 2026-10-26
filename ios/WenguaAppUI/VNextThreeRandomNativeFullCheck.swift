@@ -156,6 +156,36 @@ private struct PublicCast:Encodable {
                 loc+"private arithmetic leaked into template")
             try require(reading.sections.contains(where:{$0.id=="90vnext"}),
                 loc+"current native verdict missing")
+            // Developer-only, signed original factor ledger. This STDOUT is
+            // archived by CI; NEVER returned as customer section or saved
+            // into LocalNativeCase on-device.
+            var privatePalaces:[[String:Any]]=[]
+            for id in audit.palaces.keys.sorted() {
+                guard let row=audit.palaces[id] else{continue}
+                privatePalaces.append([
+                    "palace":id,"roles":row.roles,
+                    "star":row.star as Any? ?? NSNull(),
+                    "door":row.door as Any? ?? NSNull(),
+                    "god":row.deity as Any? ?? NSNull(),
+                    "pattern":row.pattern,
+                    "raw":row.raw as Any? ?? NSNull(),
+                    "before_void":row.beforeVoid as Any? ?? NSNull(),
+                    "after_void":row.afterVoid as Any? ?? NSNull(),
+                    "void":row.void,"door_break":row.doorBreak])
+            }
+            let developer:[String:Any]=[
+                "instant":test.instant,"relationship":test.relationship,
+                "unique_real_palaces":privatePalaces,
+                "post_void_known_sum":audit.postVoidKnownSum,
+                "final_private_score":audit.score as Any? ?? NSNull(),
+                "direction":audit.evidenceDirection,
+                "conflict":audit.evidenceConflict,
+                "separation":"DEV_ONLY_NOT_EXPOSED_TO_CUSTOMER_TEMPLATE"
+            ]
+            let auditData=try JSONSerialization.data(withJSONObject:developer,
+                                                      options:[.sortedKeys])
+            print("VNEXT_IOS_INTERNAL_DEVELOPER_AUDIT="+
+                  String(data:auditData,encoding:.utf8)!)
             let result=PublicCast(
                 ordinal:i+1,instant:test.instant,
                 relationship:test.relationship,
