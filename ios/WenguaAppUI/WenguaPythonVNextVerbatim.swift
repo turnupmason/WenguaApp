@@ -1,8 +1,6 @@
 import Foundation
 
-// Verbatim candidate port of Python's CURRENT selected_health_sections +
-// render_complete_selected_palace + render_first_stage_macro +
-// explain_selected_role. NO fixed/secret past chart text or lookup by instant.
+// Verbatim candidate port of Python's CURRENT selected_health_sections +// render_complete_selected_palace + render_first_stage_macro +// explain_selected_role. NO fixed/secret past chart text or lookup by instant.
 // We retain both engines and compare the entire generated text byte-for-byte
 // before this renderer may replace the current production Swift customer view.
 enum WenguaPythonVNextVerbatim {
@@ -204,11 +202,7 @@ enum WenguaPythonVNextVerbatim {
                   row.void=="fake_void" ? "假空" : "真空"
         let vwhy=voidReason(p,chart:chart,month:month,klass:klass)
         let special=try conditions(p,chart)
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+
-             "；八神"+(try god(deity,pe))+"；八门"+doorPart+
-             "；天盘干"+(heaven.isEmpty ? "无":heaven)+
-             "、地盘干"+earth+book+"；空亡"+klass+
-             (vwhy.isEmpty ? "" : "（"+vwhy+"）")+"；"+special+"。"
+        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+(vwhy.isEmpty ? "" : "（"+vwhy+"）")+"；"+special+"。"
     }
 
     private static func roleAgainstIllness(
@@ -222,8 +216,7 @@ enum WenguaPythonVNextVerbatim {
         }
         let r=relation(a,b)
         let who=names[0],source=names[1],success=names[2],failure=names[3]
-        let cond="本宫用神力量"+(own.strength ?? "待核")+
-                 "，天芮病星力量"+(disease.strength ?? "待核")
+        let cond="本宫用神力量"+(own.strength ?? "待核")+"，天芮病星力量"+(disease.strength ?? "待核")
         let out=edge.cell
         if r=="克" {
             let result:String
@@ -245,14 +238,12 @@ enum WenguaPythonVNextVerbatim {
             if role=="chief" && out != nil && failed.contains(out!) {
                 words="本盘虽见值符大吉神，但"+words
             }
-            return who+"宫克天芮病宫；"+cond+"；克制表为"+
-                   (out ?? "条件待核")+"，"+words+"。"
+            return who+"宫克天芮病宫；"+cond+"；克制表为"+(out ?? "条件待核")+"，"+words+"。"
         }
         if r=="被克" {
             let statement:String
             if let out,solid.contains(out) {
-                statement="病宫有力克制本方，"+source+
-                          "受到明显压制，难以形成有效的制病助力"
+                statement="病宫有力克制本方，"+source+"受到明显压制，难以形成有效的制病助力"
             } else if let out,weak.contains(out) {
                 statement="病宫虽来克本方，但克力有限，仍有相持空间"
             } else if let out,failed.contains(out) {
@@ -260,23 +251,19 @@ enum WenguaPythonVNextVerbatim {
             } else {
                 statement="病宫克本方的实际力度尚需按原格和限制核算"
             }
-            return who+"宫受天芮病宫克；"+cond+"；病宫施克结果"+
-                   (out ?? "条件待核")+"，"+statement+"。"
+            return who+"宫受天芮病宫克；"+cond+"；病宫施克结果"+(out ?? "条件待核")+"，"+statement+"。"
         }
         if r=="生" {
-            return who+"宫生天芮病宫；"+cond+"。此时"+source+
-               "在五行上反而生扶病宫，不能仅凭用神吉性便认为已压制病象。"
+            return who+"宫生天芮病宫；"+cond+"。此时"+source+"在五行上反而生扶病宫，不能仅凭用神吉性便认为已压制病象。"
         }
         if r=="被生" {
             return who+"宫得病宫生扶；"+cond+"。本方有受生之象，但这不是主动克病，是否转为有利仍看宫内吉凶及人物条件。"
         }
         if r=="比和" {
-            return who+"宫与病宫比和；"+cond+
-             "。双方同气相持，并非本方已经克住病宫，应结合本宫吉凶力量合断。"
+            return who+"宫与病宫比和；"+cond+"。双方同气相持，并非本方已经克住病宫，应结合本宫吉凶力量合断。"
         }
         if r=="同宫" {
-            return who+"与天芮同宫；"+cond+"。病象与"+source+
-                "在同一宫交织，不能虚构两宫的相克，需要看本宫神星门干格局。"
+            return who+"与天芮同宫；"+cond+"。病象与"+source+"在同一宫交织，不能虚构两宫的相克，需要看本宫神星门干格局。"
         }
         return who+"与病宫的作用方向仍未核。"
     }
