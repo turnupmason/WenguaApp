@@ -48,6 +48,9 @@ struct WenguaVNextAudit {
     let evidenceConflict:Bool
     let traditionalSentence:String
     let factSentences:[String]
+    let roleConfidence:String
+    let roleStatus:String
+    let roleSourceNote:String
 }
 enum WenguaVNextEngine {
     static let tiers=["极小","小","中等","大","极大"]
@@ -313,7 +316,7 @@ enum WenguaVNextEngine {
             return WenguaVNextFactor(symbol:deity,strength:godTiers[direction],value:nil)
         }
         if role=="illness" || role=="doctor" ||
-              role=="qian" || role=="kun" {
+              role=="gender" || role=="qian" || role=="kun" {
             guard let star=cell.heavenStars.first(where:{
                 illness ? $0.star=="天芮星" : true
             }) else {throw WenguaVNextReadingGate.unresolvedRole}
@@ -442,7 +445,8 @@ enum WenguaVNextEngine {
 
     // Validated against the original Python V-next stored factual snapshots.
     static func compute(chart:WenguaNativeChart,relationship:String,
-                        energy:WenguaNativeEnergyCatalog,catalog:String) throws
+                        energy:WenguaNativeEnergyCatalog,catalog:String,
+                        actor:WenguaNativeActor? = nil) throws
      -> WenguaVNextAudit {
         guard WenguaNativeReadingRouter.supportedRelations.contains(relationship) else {
             throw WenguaNativeReadingError.unsupportedRelationship
@@ -472,17 +476,29 @@ enum WenguaVNextEngine {
         func stem(_ s:String)throws->WenguaNativePalace {
             try only{$0.heavenStars.contains(where:{$0.carriedStem==s})}
         }
-        let patientStem=String((relationship=="父亲" ?
+        let patientStem=actor?.mainStem ?? String((relationship=="父亲" ?
                               chart.pillars.year:chart.pillars.day).prefix(1))
         let hourStem=String(chart.pillars.hour.prefix(1))
         let selected:[(String,WenguaNativePalace,String)]=[
             ("illness",try only{$0.heavenStars.contains(where:{$0.star=="天芮星"})},"天芮星"),
             ("doctor",try only{$0.heavenStars.contains(where:{$0.star=="天心星"})},"天心星"),
             ("medicine",try stem("乙"),"乙"),
-            ("patient",try stem(patientStem),patientStem),
+            ("patient",try (actor == nil ?
+                stem(patientStem) : only{$0.id==actor!.mainPalace}),patientStem),
             ("hour",try stem(hourStem=="甲" ? chart.hiddenStem : hourStem),hourStem),
             ("chief",try only{$0.deity=="值符"},"值符"),
         ]
+        var personalized=selected
+        if let actor {
+            if let natal=actor.natalStem,let pid=actor.natalPalace {
+                personalized.append(("natal",try only{$0.id==pid},natal))
+            }
+            if let pid=actor.genderPalace {
+                let auxiliary=try only{$0.id==pid}
+                let resident=auxiliary.heavenStars.first?.star ?? ""
+                personalized.append(("gender",auxiliary,resident))
+            }
+        }
         guard let ill=selected.first?.1 else {throw WenguaVNextReadingGate.unresolvedRole}
         var physical:[Int:WenguaVNextPalace]=[:]
         var roles:[String:Int]=[:]
@@ -491,7 +507,7 @@ enum WenguaVNextEngine {
         // Role binding order must match Python physical_cache. The first
         // role at a real palace is canonical; later co-palace roles share
         // its already evaluated score even if their signifier is different.
-        var allSelected=selected
+        var allSelected=personalized
         for (tag,id) in [("qian",6),("kun",2)] {
             guard let cell=all[id] else {throw WenguaCastError.invalidChart}
             allSelected.append((tag,cell,cell.heavenStars.first?.star ?? ""))
@@ -524,7 +540,9 @@ enum WenguaVNextEngine {
                                           month:month,catalog:energy)
             } else {
                 let actualStages:[WenguaNativeStage]
-                if role=="hour" && symbol=="甲" {
+                if symbol=="甲" && chart.pillars.hour.hasPrefix("甲") &&
+                   (role=="hour" || actor?.kind=="casting_hour_stem" ||
+                    actor?.kind=="day_stem") {
                     // Only 甲时 is bound through xunShou hiddenStem to an
                     // ACTUAL palace; its factor stays 甲 and its 12 life is
                     // independently the stem 甲, never a forged visible 甲.
@@ -557,7 +575,7 @@ enum WenguaVNextEngine {
         var controls:[WenguaVNextControl]=[]
         let diseaseStrength=try must(strength["illness"]?.strength)
         var votes=[String:String]()
-        for (role,p,_) in selected where role != "illness" {
+        for (role,p,_) in personalized where role != "illness" {
             guard let a=strength[role],let b=strength["illness"] else {
                 throw WenguaVNextReadingGate.unresolvedRole
             }
@@ -614,7 +632,11 @@ enum WenguaVNextEngine {
             postVoidKnownSum:known,score:result,pending:pending,
             controls:controls,evidenceDirection:evidenceDirection,
             evidenceConflict:conflict,traditionalSentence:sentence,
-            factSentences:factual)
+            factSentences:factual,
+            roleConfidence:actor?.confidence ?? "legacy_two_role_parity",
+            roleStatus:(actor == nil || actor!.eligibleForFirmTraditionalJudgment)
+                 ? "eligible" : "source_conditional_candidate",
+            roleSourceNote:actor?.note ?? "")
     }
 }
 enum WenguaVNextReadingGate:Error {case unresolvedRole}

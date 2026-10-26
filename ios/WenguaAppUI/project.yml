@@ -18,6 +18,9 @@ targets:
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift
+      - path: WenguaNativeActorBinding.swift
+      - path: ../../data/knowledge/phrase_library/health_v20/actor_profiles.json
+        buildPhase: resources
       - path: WenguaNativeVNextEngine.swift
       - path: WenguaVNextCustomerComposer.swift
       - path: WenguaNativeCustomerView.swift

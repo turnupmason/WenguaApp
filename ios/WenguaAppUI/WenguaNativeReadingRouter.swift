@@ -35,7 +35,9 @@ enum WenguaNativeReadingRouter {
     // Current source-verified native binding: day stem for self, real year
     // stem for father. Other relatives retain their original book candidates
     // in actor_profiles.json, but CANNOT silently reuse self in a native app.
-    static let supportedRelations = ["本人","父亲"]
+    static let supportedRelations = ["本人","父亲","母亲","父母","朋友","同事",
+        "儿子","女儿","孩子","侄子","配偶","其他长辈","哥哥或姐姐",
+        "弟弟或妹妹","妻子","丈夫","动物","母鸡","公鸡","女婿"]
     static let supportedTopics = ["health.severity"]
     static let palaceOrder = [4,9,2,3,7,8,1,6]
     static let homeStars = ["天蓬星":1,"天芮星":2,"天冲星":3,"天辅星":4,
@@ -53,22 +55,31 @@ enum WenguaNativeReadingRouter {
     static let generating = ["木":"火","火":"土","土":"金","金":"水","水":"木"]
 
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
+                        inquiry:WenguaNativeInquiry? = nil,
                         bundle:Bundle = .main) throws -> WenguaNativeCustomerReading {
         guard let t=bundle.url(forResource:"reading_template",withExtension:"json"),
               let p=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
         }
         let energy=try WenguaNativeEnergyBundle.fromBundle(bundle)
+        let source=try WenguaNativeActorSource.fromBundle(bundle)
+        let request=inquiry ?? WenguaNativeInquiry.standard(relationship)
+        guard request.relationship==relationship else {
+            throw WenguaNativeReadingError.unsupportedRelationship
+        }
+        let actor=try WenguaNativeActorSource.bind(
+            chart:chart,inquiry:request,index:source)
         return try compose(chart:chart,topicID:topicID,
                            relationship:relationship,
                            template:Data(contentsOf:t),
                            catalog:String(contentsOf:p,encoding:.utf8),
-                           energy:energy)
+                           energy:energy,actor:actor)
     }
 
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
                         template:Data, catalog:String,
-                        energy:WenguaNativeEnergyCatalog? = nil)
+                        energy:WenguaNativeEnergyCatalog? = nil,
+                        actor:WenguaNativeActor? = nil)
                         throws -> WenguaNativeCustomerReading {
         guard supportedTopics.contains(topicID) else {throw WenguaNativeReadingError.unsupportedTopic}
         guard supportedRelations.contains(relationship) else {
@@ -110,9 +121,15 @@ enum WenguaNativeReadingRouter {
         let illness=try unique {$0.heavenStars.contains(where:{$0.star=="天芮星"})}
         let doctor=try unique {$0.heavenStars.contains(where:{$0.star=="天心星"})}
         let medicine=try atStem("乙")
-        let patientStem=String((relationship=="父亲" ? chart.pillars.year :
-                              chart.pillars.day).prefix(1))
-        let patient=try atStem(patientStem)
+        let patientStem=actor?.mainStem ?? String(
+            (relationship=="父亲" ? chart.pillars.year :
+             chart.pillars.day).prefix(1))
+        let patient:WenguaNativePalace
+        if let actor {
+            patient=try unique{$0.id==actor.mainPalace}
+        } else {
+            patient=try atStem(patientStem)
+        }
         let hourStem=String(chart.pillars.hour.prefix(1))
         let hour=try atStem(hourStem)
         let chief=try unique {$0.deity=="值符"}
@@ -229,7 +246,7 @@ enum WenguaNativeReadingRouter {
         if let energy {
             let current=try WenguaVNextEngine.compute(
                 chart:chart,relationship:relationship,energy:energy,
-                catalog:catalog)
+                catalog:catalog,actor:actor)
             let final=try WenguaVNextCustomerComposer.sections(
                 current,chart:chart,template:template)
             // The 81 Excel excerpts remain user-accessible but initially
