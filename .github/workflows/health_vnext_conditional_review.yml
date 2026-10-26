@@ -29,6 +29,7 @@ on:
       - 'tests/test_user_exact_energy_duel_grids_vnext.py'
       - 'tests/test_user_domain_matrices_20261023.py'
       - 'tests/test_health_complete_palace_vnext.py'
+      - 'tests/test_health_void_signed_scope_20261025.py'
       - 'tests/test_health_first_macro_vnext.py'
       - 'tests/test_health_five_level_quant_vnext.py'
       - 'tests/test_health_quant_overlay_vnext.py'
@@ -68,6 +69,7 @@ jobs:
           python -m unittest discover -s tests -p test_user_exact_energy_duel_grids_vnext.py -v
           python -m unittest discover -s tests -p test_user_domain_matrices_20261023.py -v
           python -m unittest discover -s tests -p test_health_complete_palace_vnext.py -v
+          python -m unittest discover -s tests -p test_health_void_signed_scope_20261025.py -v
           python -m unittest discover -s tests -p test_health_first_macro_vnext.py -v
           python -m unittest discover -s tests -p test_health_five_level_quant_vnext.py -v
           python -m unittest discover -s tests -p test_health_quant_overlay_vnext.py -v
