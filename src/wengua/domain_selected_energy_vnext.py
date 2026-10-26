@@ -36,13 +36,10 @@ DOMAIN_CASE_TEMPLATES = {
 }
 # Exact domain choice of meaningful two-way relationships; not all pairs.
 HEALTH_EDGES = (
-    ("doctor","illness"),("doctor","patient"),
-    ("medicine","illness"),("medicine","patient"),
-    ("patient","illness"),("illness","patient"),
-    ("natal","illness"),("natal","patient"),
-    ("hour","illness"),("hour","patient"),
-    ("gender","illness"),("gender","patient"),
-    ("chief","illness"),("chief","patient"),
+    ("doctor","illness"),("medicine","illness"),
+    ("patient","illness"),("hour","illness"),
+    ("chief","illness"),("natal","illness"),
+    ("gender","illness"),
 )
 # Interpret strong, domain-eligible edges only; neither the table nor
 # the Qian/Kun sex correspondence automatically becomes a verdict vote.
@@ -132,18 +129,9 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         raw["gender"]=(cell,"star" if resident else "stem",
                        resident or cell["earth_stem"])
 
-    used={t[0]["palace"] for t in raw.values()}
-    bound_extras={x["palace"] for x in actor.get("extra_cells",()) if x}
-    for palace in sorted(bound_extras):
-        if palace in (2,6) and palace!=gender_palace:
-            continue
-        if palace in used:
-            continue
-        cell=_cell(chart,palace)
-        if not cell or palace==5:
-            continue
-        raw["extra_"+str(palace)]=(cell,"stem",cell["earth_stem"])
-        used.add(palace)
+    # Strict user-specified illness scope: no generic actor.extra_cells.
+    # All nine raw chart cells remain cast and available for inspection,
+    # but only source-selected roles and 乾/坤 auxiliaries get scored.
 
     inspected={}
     one_cache={}
@@ -232,9 +220,6 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     edges={}
     unique_pair={}
     edges_template=list(HEALTH_EDGES)
-    for key in inspected:
-        if key.startswith("extra_"):
-            edges_template.extend(((key,"illness"),(key,"patient")))
     for a,b in edges_template:
         if a not in inspected or b not in inspected or a==b:continue
         x,y=inspected[a],inspected[b]
@@ -465,46 +450,34 @@ def selected_health_sections(result,*,actor,chart):
         if key=="gender":
             text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
         push(serial,title,text)
-    for key in roles:
-        if not key.startswith("extra_"):continue
-        x=roles[key]
-        push("08_"+key,"源书辅助宫",
-             render_complete_selected_palace(x["complete_palace"])+
-             "宫内吉凶能量："+render_palace_compact_score(
-                 result["candidate_five_grade_quantization"]["roles"][key])+
-             "按来源取用，不能仅因旺就判吉。")
-    # Patient-sex auxiliary: male -> Qian six, female -> Kun two. Both
-    # raw actual palace facts stay available internally, but user prose and
-    # verdict use ONLY the appropriate side. Never infer sex from the name.
-    sex_palace=result["gender_palace"]
-    if sex_palace in (2,6):
-        alias="qian" if sex_palace==6 else "kun"
+
+    # Two explicit user-specified 乾六/坤二 auxiliary palaces are reviewed,
+    # but their physical score is counted once each and not as two patients.
+    for alias in ("qian","kun"):
         ob=result["qian_kun_auxiliary_observations"][alias]
         qitem=result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias]
-        push("09_gender_palace","男乾女坤辅助",
-             ob["role"]+"："+render_complete_selected_palace(ob["complete_palace"])+
-             " 宫内吉凶能量："+render_palace_compact_score(qitem)+
+        push("09_"+alias,"乾坤辅助："+ob["role"],
+             render_complete_selected_palace(ob["complete_palace"])+
+             " 本宫净分："+render_palace_compact_score(qitem)+
              " 与天芮病宫"+ob["relation_to_illness"]+
-             "，只按真实角色及与病宫的关系辅助，不重复实际同宫分数。")
+             "；只作为与病宫有关的实际辅助宫，和其他角色同宫不重复计分。")
     push("89_quant","宫位五级吉凶净分合断",
          render_quant_review(result["candidate_five_grade_quantization"]))
     v=result["verdict"];n=result["counts"]
     q=result["candidate_five_grade_quantization"]["summary"]
     if q["score"] is None:
-        conclusion=("已核宫位小计"+str(q["raw_known_sum"])+"分，"+
-                    "暂为"+q["provisional_known_grade"]+
-                    "，但尚有未核来源，不能作为最终吉凶净分。")
+        conclusion=("存在实际缺失的星门神力量，已知宫位净分"+
+                    str(q["post_void_known_sum"])+"；缺失事实无法计算，不虚构值。")
     else:
-        conclusion=("宫位原始总净分"+str(q["raw_known_sum"])+
-                    "分，按±5上限判"+q["grade"]+
-                    "（"+str(q["score"])+"分）。")
+        conclusion=("只合计相关"+str(q["unique_palace_count"])+
+                    "个不同实宫；各宫空亡调整后合计"+
+                    str(q["post_void_known_sum"])+"分，最终"+
+                    str(q["score"])+"分，"+
+                    ("不凶不吉" if q["score"]==0 else q["grade"])+"。")
     push("90_review","全部证据合断",
-         conclusion+"旧版定性证据仅作对照："+v["label"]+
-         "；去重有利"+str(n["qualified_favorable"])+
-         "条、不利"+str(n["qualified_adverse"])+
-         "条、未定"+str(n["pending_conditions"])+
-         "条，不能替代当前五级总分。"+
-         "伏吟反吟只管缓急；传统研究象意不能代替真实诊断或用药。")
+         conclusion+"每个宫内的星、门、神、实际触发的天地盘格独立计分；"+
+         "相同物理宫只计一次，生克关系单独解释而不擅自加扣分。"+
+         "伏吟反吟只管缓急；传统盘象不代表医学诊断、治疗结果。")
     push("91_timing","时空及应期",
          "驿马参考"+HORSE[chart["hour_ganzhi"][1]]+
          "；应期还需原书空墓、冲合、填实和具体问事条件共同触发，"+
