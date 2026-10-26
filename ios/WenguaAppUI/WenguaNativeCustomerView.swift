@@ -11,11 +11,20 @@ struct WenguaNativeCustomerView: View {
                 .font(.title3.weight(.semibold))
             ForEach(reading.sections) { section in
                 VStack(alignment:.leading,spacing:8) {
-                    Text(section.title).font(.headline)
-                    Text(section.text)
-                        .font(.subheadline)
-                        .fixedSize(horizontal:false,vertical:true)
-                        .textSelection(.enabled)
+                    if section.id=="03classical" {
+                        DisclosureGroup(section.title) {
+                            Text(section.text)
+                                .font(.subheadline)
+                                .fixedSize(horizontal:false,vertical:true)
+                                .textSelection(.enabled)
+                        }
+                    } else {
+                        Text(section.title).font(.headline)
+                        Text(section.text)
+                            .font(.subheadline)
+                            .fixedSize(horizontal:false,vertical:true)
+                            .textSelection(.enabled)
+                    }
                 }
                 .frame(maxWidth:.infinity,alignment:.leading)
                 .padding(14)

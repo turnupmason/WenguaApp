@@ -220,28 +220,34 @@ enum WenguaNativeReadingRouter {
             evidence.append(try fill("details",[
                 "palace":palaceName(p),"names":titles.joined(separator:"、")]))
         }
-        var sections=[
-            WenguaNativeCustomerSection(id:"01",title:"局势与缓急",text:macro),
-            WenguaNativeCustomerSection(id:"02",title:"选用神与宫位关系",
-                                        text:roleSentences.joined(separator:"\n")),
-            WenguaNativeCustomerSection(id:"03",title:"本盘格局依据",
-                                        text:evidence.joined(separator:"\n"))
-        ]
+        // The customer sees one coherent chain, not duplicate rough drafts:
+        // actual macro -> relevant palaces -> directed roles -> optional
+        // classical details -> verdict -> timing -> disclaimer.
+        var sections=[WenguaNativeCustomerSection(
+            id:"01",title:"局势与缓急",text:macro)]
         let evidenceStatus:String
         if let energy {
-            // The actual iPhone code path ALWAYS supplies the 200 original
-            // source cells, and computes a fresh verdict for this chart.
             let current=try WenguaVNextEngine.compute(
                 chart:chart,relationship:relationship,energy:energy,
                 catalog:catalog)
-            sections += try WenguaVNextCustomerComposer.sections(
+            let final=try WenguaVNextCustomerComposer.sections(
                 current,chart:chart,template:template)
+            // The 81 Excel excerpts remain user-accessible but initially
+            // folded away; they are not duplicated in the main judgment.
+            sections += [final[0],final[1],
+                WenguaNativeCustomerSection(id:"03classical",
+                    title:"本盘原格古诀（点击展开）",
+                    text:evidence.joined(separator:"\\n")),
+                final[2],final[3]]
             evidenceStatus="native_vnext_200_81_signed_source_logic_review"
         } else {
-            // Legacy test injection only. Never claim finished V-next
-            // without a real compiled and source-verified energy resource.
-            sections.append(WenguaNativeCustomerSection(
-                id:"04",title:"专业合断尚未接通",text:try fill("pending")))
+            sections += [
+                WenguaNativeCustomerSection(id:"02",title:"选用神与宫位关系",
+                                            text:roleSentences.joined(separator:"\\n")),
+                WenguaNativeCustomerSection(id:"03",title:"本盘格局依据",
+                                            text:evidence.joined(separator:"\\n")),
+                WenguaNativeCustomerSection(id:"04",title:"专业合断尚未接通",
+                                            text:try fill("pending"))]
             evidenceStatus="native_factual_template_only"
         }
         sections.append(WenguaNativeCustomerSection(id:"95",
