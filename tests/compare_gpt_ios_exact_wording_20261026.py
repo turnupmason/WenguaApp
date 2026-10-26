@@ -39,6 +39,7 @@ def compare(python_path,swift_path,report_path):
                 fromfile="live_Python_GPT_Vnext",tofile="native_iOS_Vnext",
                 lineterm="",n=2))
             report.extend(["", "DIFF START",comparison[:26000],"DIFF END",""])
+            print("EXACT_WORDING_FIRST_DIFF_"+str(i+1)+" "+comparison[:4200])
     report.append("\nExact equality: %d of %d"%(
         sum(1 for line in report if ": EXACT MATCH" in line),len(cases)))
     report.append("VERDICT: "+("PASS" if not issues else "FAIL - cannot claim complete iOS migration."))
