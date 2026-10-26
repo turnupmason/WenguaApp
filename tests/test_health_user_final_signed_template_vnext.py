@@ -59,7 +59,10 @@ class UserSignedFinalScore(unittest.TestCase):
             "patient":{"palace":7,"raw_sum":-5,"score":-5},
             "hour":{"palace":7,"raw_sum":-5,"score":-5}})
         self.assertEqual(net["raw_known_sum"],-5)
-        self.assertEqual((net["score"],net["grade"]),(-5,"极大凶"))
+        # Current authoring now nets each REAL palace's adjusted five-tier
+        # score, NOT raw signed component sums across all palaces.
+        self.assertEqual(net["post_void_known_sum"],-1)
+        self.assertEqual((net["score"],net["grade"]),(-1,"极小凶"))
         self.assertEqual(len(net["duplicate_physical_roles"]),1)
 
     def test_real_2025_chart_tianqin_fact_not_second_illness_star(self):
@@ -91,23 +94,29 @@ class UserSignedFinalScore(unittest.TestCase):
                       net["candidate_five_grade_quantization"]["summary"]["pending_palaces"]
                       else "暂")
 
-    def test_male_qian_female_kun_only_in_verdict_prose(self):
-        for sex,should,other in (
-            ("male","乾六宫辅助观察","坤二宫辅助观察"),
-            ("female","坤二宫辅助观察","乾六宫辅助观察")):
+    def test_user_requires_both_real_qian_and_kun_auxiliary_palaces(self):
+        for sex in ("male","female"):
             with self.subTest(sex=sex):
                 r=auto_cast_health_review_text(
                     iso=DATE,timezone_name=ZONE,
                     inquiry={**INQUIRY,"patient_sex":sex})
-                sections=[x for x in r["sections"]
-                          if x["title"]=="男乾女坤辅助"]
-                self.assertEqual(len(sections),1)
-                self.assertIn(should,sections[0]["text"])
-                self.assertNotIn(other,sections[0]["text"])
+                titles=[x["title"] for x in r["sections"]]
+                self.assertEqual(len([
+                    x for x in titles if x.startswith("乾坤辅助：")]),2)
+                self.assertTrue(any("乾六宫辅助观察" in x for x in titles))
+                self.assertTrue(any("坤二宫辅助观察" in x for x in titles))
+                q=r["full_health_role_strength_network"][
+                    "candidate_five_grade_quantization"]
+                self.assertIn("qian",q["auxiliary_qian_kun"])
+                self.assertIn("kun",q["auxiliary_qian_kun"])
         none=auto_cast_health_review_text(
             iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)
-        self.assertNotIn("男乾女坤辅助",
-                         [s["title"] for s in none["sections"]])
+        self.assertEqual(len([
+            s for s in none["sections"]
+            if s["title"].startswith("乾坤辅助：")]),2)
+        # Unprovided sex is not the same as guessing two patient identities.
+        self.assertIsNone(none["full_health_role_strength_network"][
+            "selected_gender_palace"])
 
 
 if __name__=="__main__":
