@@ -236,7 +236,7 @@ def multi_palace_tally(*,palaces):
     pending=[str(pid) for pid,(_,row) in chosen.items()
              if row.get("score") is None]
     raw_known=sum(row.get("raw_sum") if row.get("raw_sum") is not None else
-                  row.get("known_subtotal",0)
+                  row.get("known_subtotal",row.get("score") or 0)
                   for _,row in chosen.values())
     actual_known=sum(row["score"] for _,row in chosen.values()
                      if row.get("score") is not None)
