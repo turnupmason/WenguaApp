@@ -153,10 +153,11 @@ enum WenguaVNextReasoner {
                 .map{try factorLine($0)} ?? ""
             let pair=try row.energyEvidence.first(where:{$0.source=="pattern"})
                 .map{try factorLine($0)} ?? ""
+            let impact=try shifts(row)
             important.append(try fill("reason_role_palace",[
                 "role":roleTitles[role] ?? role,"palace":name(id),
                 "star":star,"door":door,"god":god,"pattern":pair,
-                "adjustment":try shifts(row).isEmpty ? "" : shifts(row)+"；",
+                "adjustment":impact.isEmpty ? "" : impact+"；",
                 "conclusion":trend(row.afterVoid)]))
             if role=="illness" {
                 let selected=try WenguaVNextTianrui25.caseFor(
