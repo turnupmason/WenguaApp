@@ -23,6 +23,7 @@ from .health_role_majority_vnext import assess_disease_relationships
 from .health_relationship_language_vnext import explain_selected_role
 from .health_macro_facts_vnext import first_stage_macro,render_first_stage_macro
 from .health_quant_overlay_vnext import inspect_selected_quantization,render_quant_review,render_palace_compact_score
+from .health_reading_template_vnext import render as render_slot,title as template_title
 from .marriage_runtime import ELEMENTS,element_relation
 
 # Other subtopics will be added only when their original source conditions
@@ -412,74 +413,79 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
 
 
 def selected_health_sections(result,*,actor,chart):
-    """Concise user-facing fixed template: selected roles only."""
-    roles=result["selected_roles"];net=result["full_health_role_strength_network"]
-    edges=net["directed_edges"]
-    macro=result["macro"]
+    """Linked user-editable text template; actual data is computed upstream.
+
+    User edits:
+      data/templates/health_severity_vnext/reading_template.json
+    Source facts:
+      data/knowledge/health_81_excel_20261025/81_pairs.tsv
+    The template NEVER creates an 81 pair or a chart outcome.
+    """
+    roles=result["selected_roles"]
+    edges=result["full_health_role_strength_network"]["directed_edges"]
     sections=[]
-    def push(code,title,message):
-        sections.append({"id":code,"title":title,"text":message})
-    push("01_macro","起盘总纲：五不遇时、伏吟、反吟",
-         render_first_stage_macro(result["first_stage_macro"]))
-    key_order=(("illness","02","天芮病宫"),
-               ("doctor","03","天心医生"),
-               ("medicine","04","乙奇医药"),
-               ("patient","05","患者用神"),
-               ("hour","06","时干事体"),
-               ("chief","07","值符护持宫"),
-               ("natal","08","患者年命"),
-               ("gender","09","乾坤性别辅助宫"))
-    for key,serial,title in key_order:
+    def push(code,title,text):
+        sections.append({"id":code,"title":title,"text":text})
+
+    push("01_macro",template_title("macro"),
+         render_slot("macro",macro_text=render_first_stage_macro(
+             result["first_stage_macro"])))
+
+    key_order=(
+        ("illness","02","illness"),("doctor","03","doctor"),
+        ("medicine","04","medicine"),("patient","05","patient"),
+        ("hour","06","hour"),("chief","07","chief"),
+        ("natal","08","natal"),("gender","09","gender"))
+    quant=result["candidate_five_grade_quantization"]
+    for key,serial,titlekey in key_order:
         if key=="natal" and key not in roles:
-            push(serial,title,"患者未提供可核的真实生年干支或落宫，本次不使用年命。")
+            push(serial,template_title(titlekey),render_slot("no_natal"))
             continue
         if key not in roles:continue
-        r=roles[key];energy=r["primary_strength_25"]
-        text=render_complete_selected_palace(r["complete_palace"])
-        qrole=result["candidate_five_grade_quantization"]["roles"].get(key)
-        if qrole:
-            text+=" 宫内吉凶能量："+render_palace_compact_score(qrole)
+        role=roles[key]
+        palace_detail=render_complete_selected_palace(role["complete_palace"])
+        qrole=quant["roles"].get(key)
+        score_text=(render_slot("role_score",score_text=render_palace_compact_score(qrole))
+                    if qrole else "")
+        extra_illness=""
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
-            text+="传统病星格局候选「"+t25["traditional_title"]+"」，其独立条件："+t25["why"]+"。"
-        # Interpret the ACTUAL 200-cell palace attack/defence, rather than
-        # only reciting raw 克/生 or ambiguous independent votes.
-        if key!="illness":
-            text+=" "+explain_selected_role(
-                role=key,roles=roles,edges=edges)
-        if key=="gender":
-            text+="仅为实际性别辅助宫，不自动作为患者主要用神。"
-        push(serial,title,text)
+            extra_illness=render_slot(
+                "illness",name=t25["traditional_title"],explanation=t25["why"])
+        relation_text=(
+            render_slot("role_relation",relation_text=explain_selected_role(
+                role=key,roles=roles,edges=edges)) if key!="illness" else "")
+        note=render_slot("gender_note") if key=="gender" else ""
+        push(serial,template_title(titlekey),
+             render_slot("role",palace_detail=palace_detail,
+                 palace_score=score_text,extra_illness=extra_illness,
+                 role_relation=relation_text,gender_note=note))
 
-    # Two explicit user-specified 乾六/坤二 auxiliary palaces are reviewed,
-    # but their physical score is counted once each and not as two patients.
+    # Qian and Kun are two real auxiliary palace observations, not invented
+    # patient birth or a second signed score for an already scored palace.
     for alias in ("qian","kun"):
         ob=result["qian_kun_auxiliary_observations"][alias]
-        qitem=result["candidate_five_grade_quantization"]["auxiliary_qian_kun"][alias]
-        push("09_"+alias,"乾坤辅助："+ob["role"],
-             render_complete_selected_palace(ob["complete_palace"])+
-             " 本宫净分："+render_palace_compact_score(qitem)+
-             " 与天芮病宫"+ob["relation_to_illness"]+
-             "；只作为与病宫有关的实际辅助宫，和其他角色同宫不重复计分。")
-    push("89_quant","宫位五级吉凶净分合断",
-         render_quant_review(result["candidate_five_grade_quantization"]))
-    v=result["verdict"];n=result["counts"]
-    q=result["candidate_five_grade_quantization"]["summary"]
+        qitem=quant["auxiliary_qian_kun"][alias]
+        push("09_"+alias,template_title(alias,role=ob["role"]),
+             render_slot("auxiliary",
+                 palace_detail=render_complete_selected_palace(ob["complete_palace"]),
+                 palace_score=render_palace_compact_score(qitem),
+                 relation=ob["relation_to_illness"]))
+
+    push("89_quant",template_title("quant"),render_quant_review(quant))
+    q=quant["summary"]
     if q["score"] is None:
-        conclusion=("存在实际缺失的星门神力量，已知宫位净分"+
-                    str(q["post_void_known_sum"])+"；缺失事实无法计算，不虚构值。")
+        conclusion=render_slot(
+            "overall_pending",post_void_sum=q["post_void_known_sum"])
     else:
-        conclusion=("只合计相关"+str(q["unique_palace_count"])+
-                    "个不同实宫；各宫空亡调整后合计"+
-                    str(q["post_void_known_sum"])+"分，最终"+
-                    str(q["score"])+"分，"+
-                    ("不凶不吉" if q["score"]==0 else q["grade"])+"。")
-    push("90_review","全部证据合断",
-         conclusion+"每个宫内的星、门、神、实际触发的天地盘格独立计分；"+
-         "相同物理宫只计一次，生克关系单独解释而不擅自加扣分。"+
-         "伏吟反吟只管缓急；传统盘象不代表医学诊断、治疗结果。")
-    push("91_timing","时空及应期",
-         "驿马参考"+HORSE[chart["hour_ganzhi"][1]]+
-         "；应期还需原书空墓、冲合、填实和具体问事条件共同触发，"+
-         "证据不足时不虚构具体日期。")
+        conclusion=render_slot(
+            "overall_resolved",
+            palace_count=q["unique_palace_count"],
+            post_void_sum=q["post_void_known_sum"],
+            score=q["score"],
+            grade="不凶不吉" if q["score"]==0 else q["grade"])
+    push("90_review",template_title("verdict"),
+         render_slot("verdict",conclusion=conclusion))
+    push("91_timing",template_title("timing"),
+         render_slot("timing",horse=HORSE[chart["hour_ganzhi"][1]]))
     return sections
