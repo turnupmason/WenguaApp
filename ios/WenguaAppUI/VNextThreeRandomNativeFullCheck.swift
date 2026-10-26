@@ -159,30 +159,39 @@ private struct PublicCast:Encodable {
                 try require(!joined.contains(forbidden),
                    loc+"internal numerical data leaked "+forbidden)
             }
-            let conclusion=reading.sections.first(where:{$0.id=="90vnext"})?.text ?? ""
-            let detailed=reading.sections.first(where:{$0.id=="87vnext"})?.text ?? ""
-            let overview=reading.sections.first(where:{$0.id=="82vnext"})?.text ?? ""
-            let controls=reading.sections.first(where:{$0.id=="83vnext"})?.text ?? ""
-            try require(!conclusion.isEmpty && conclusion.contains("宫"),
-                loc+"score-conditioned conclusion missing")
-            try require(overview.contains("月令") && overview.contains("落宫") &&
-                        overview.contains("「"+star25.title+"」"),
-                loc+"monthly+palace powers absent from consumer reasoning")
-            try require(overview.contains("天干十二长生"),
-                loc+"81 original pair lifecycle condition lost in narrative")
-            try require(detailed.contains("不套月令") &&
-                audit.palaces.values.allSatisfy({ palace in
+            // The actual GPT/Python customer contract uses original
+            // 01_macro/02..09/90_review/91_timing IDs, NOT the older
+            // independent Swift reasoner 82vnext/83vnext variants.
+            let conclusion=reading.sections.first(where:{$0.id=="90_review"})?.text ?? ""
+            let illness=reading.sections.first(where:{$0.id=="02"})?.text ?? ""
+            let doctor=reading.sections.first(where:{$0.id=="03"})?.text ?? ""
+            let medicine=reading.sections.first(where:{$0.id=="04"})?.text ?? ""
+            try require(!conclusion.isEmpty &&
+                conclusion.contains("传统古籍象意参考"),
+                loc+"original GPT source-verdict paragraph missing")
+            try require(illness.contains("九星") &&
+                        illness.contains("八门") &&
+                        illness.contains("八神") &&
+                        illness.contains("「"+star25.title+"」"),
+                loc+"original GPT illness star/door/god/tianrui case missing")
+            try require(joined.contains("天盘干") &&
+                        joined.contains("地盘干") &&
+                        joined.contains("天地格：") &&
+                        joined.contains("空亡"),
+                loc+"original GPT sky-earth life / 81 / void text missing")
+            try require(audit.palaces.values.allSatisfy({ palace in
                     palace.energyEvidence.filter({$0.source=="god"}).allSatisfy({
                         $0.monthStage==nil
                     })
-                }),
+                }) && joined.contains("八神"),
                 loc+"God no-season source invariant lost")
-            try require(controls.contains("力量") && controls.contains("病宫"),
-                loc+"real person selected 25-cell power/directed relation lost")
-            try require(!detailed.contains("净分") && !overview.contains("加分"),
-                loc+"private arithmetic leaked into template")
-            try require(reading.sections.contains(where:{$0.id=="90vnext"}),
-                loc+"current native verdict missing")
+            try require(doctor.contains("本宫用神力量") &&
+                        medicine.contains("天芮病星力量"),
+                loc+"original selected factor-power and actual relations absent")
+            try require(!joined.contains("净分") && !joined.contains("加分"),
+                loc+"private arithmetic leaked into original template")
+            try require(reading.sections.contains(where:{$0.id=="91_timing"}),
+                loc+"original GPT timing paragraph missing")
             // Developer-only, signed original factor ledger. This STDOUT is
             // archived by CI; NEVER returned as customer section or saved
             // into LocalNativeCase on-device.
