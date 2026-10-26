@@ -61,52 +61,6 @@ enum WenguaVNextCustomerComposer {
             return value
         }
         let byID=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
-        var palaces:[String]=[]
-        for id in review.palaces.keys.sorted() {
-            guard let cell=byID[id],let item=review.palaces[id] else {
-                throw WenguaCastError.invalidChart
-            }
-            let voidText=item.void=="fake_void" ? try phrase("vnext_void_fake") :
-                item.void=="true_void" ? try phrase("vnext_void_true") : ""
-            palaces.append(try phrase("vnext_palace",[
-                "palace":cell.gua+String(id)+"宫",
-                "stars":cell.heavenStars.map{$0.star}.joined(separator:"、"),
-                "door":cell.door ?? "未核",
-                "deity":cell.deity ?? "未核",
-                "patterns":item.patterns.map{"「"+$0+"」"}.joined(separator:"、"),
-                "void_note":voidText
-            ]))
-        }
-        var roleTexts:[String]=[]
-        for role in ["illness","doctor","medicine","patient",
-                     "hour","chief","natal","gender","qian","kun"] {
-            guard let pid=review.roles[role],let p=byID[pid] else{continue}
-            let c=review.controls.first{$0.role==role}
-            let relation=c?.direction ??
-                actualRelation(pid,review.roles["illness"] ?? pid)
-            let control:String
-            if let comparison=c,let outcome=comparison.cell {
-                let inverse=comparison.attacker=="illness"
-                let slot=comparison.applicability=="strong" ?
-                    (inverse ? "vnext_disease_control_effective" : "vnext_control_effective") :
-                    comparison.applicability=="limited" ?
-                    (inverse ? "vnext_disease_control_limited" : "vnext_control_limited") :
-                    comparison.applicability=="failed" ?
-                    (inverse ? "vnext_disease_control_failed" : "vnext_control_failed") :
-                    "vnext_control_pending"
-                control=try phrase(slot,["outcome":outcome])
-            } else if c?.applicability=="pending" {
-                control=try phrase("vnext_control_pending")
-            } else {
-                control=try phrase("vnext_no_control")
-            }
-            roleTexts.append(try phrase("vnext_role",[
-                "role":titles[role] ?? role,
-                "palace":p.gua+String(pid)+"宫",
-                "relation":relation,
-                "control_note":control
-            ]))
-        }
         var subjectEvidence:[String]=[]
         if let actor {
             if let harmony=actor.harmonyStem,
@@ -132,25 +86,11 @@ enum WenguaVNextCustomerComposer {
                 ]))
             }
         }
-        let final:String
-        if review.roleStatus != "eligible" {
-            final=try phrase("vnext_role_candidate")
-        } else if review.score==nil {final=try phrase("vnext_verdict_pending")}
-        else if review.evidenceConflict {final=try phrase("vnext_verdict_conflict")}
-        else if review.score==0 {final=try phrase("vnext_verdict_neutral")}
-        else {final=try phrase(review.score!>0 ?
-            "vnext_verdict_good" : "vnext_verdict_bad")}
-        var reading=[
-            WenguaNativeCustomerSection(id:"82vnext",title:try phrase("vnext_title_palace"),
-                                        text:palaces.joined(separator:"\n")),
-            WenguaNativeCustomerSection(id:"83vnext",title:try phrase("vnext_title_role"),
-                                        text:roleTexts.joined(separator:"\n")),
-            WenguaNativeCustomerSection(id:"90vnext",title:try phrase("vnext_title_verdict"),
-                                        text:final),
-            WenguaNativeCustomerSection(id:"91vnext",title:try phrase("vnext_title_timing"),
-                                        text:try phrase("vnext_timing",[
-                                            "horse":chart.hourHorse]))
-        ]
+        var reading=try WenguaVNextReasoner.build(
+            review,chart:chart,template:template)
+        reading.append(WenguaNativeCustomerSection(
+            id:"91vnext",title:try phrase("vnext_title_timing"),
+            text:try phrase("vnext_timing",["horse":chart.hourHorse])))
         if !subjectEvidence.isEmpty {
             reading.insert(WenguaNativeCustomerSection(
                 id:"88subject",title:try phrase("vnext_actor_details_title"),

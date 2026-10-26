@@ -11,7 +11,7 @@ struct WenguaNativeCustomerView: View {
                 .font(.title3.weight(.semibold))
             ForEach(reading.sections) { section in
                 VStack(alignment:.leading,spacing:8) {
-                    if section.id=="03classical" || section.id=="88subject" {
+                    if section.id=="03classical" || section.id=="88subject" || section.id=="87vnext" {
                         DisclosureGroup(section.title) {
                             Text(section.text)
                                 .font(.subheadline)

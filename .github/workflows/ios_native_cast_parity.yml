@@ -12,6 +12,7 @@ on:
       - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
       - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
       - 'ios/WenguaAppUI/WenguaVNextCustomerComposer.swift'
+      - 'ios/WenguaAppUI/WenguaVNextReasoner.swift'
       - 'ios/WenguaAppUI/VNextNativeParityCheck.swift'
       - 'scripts/export_ios_vnext_live_parity.py'
       - 'scripts/ios_vnext_three_random_20261026.py'
@@ -73,11 +74,11 @@ jobs:
           /tmp/wengua-health-template-bridge data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv
       - name: Offline Swift native domain/relationship/template/customer narrative test
         run: |
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeHealthCustomerCheck.swift -o /tmp/wengua-customer
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeHealthCustomerCheck.swift -o /tmp/wengua-customer
           /tmp/wengua-customer data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json
       - name: Audit all 20 original actor profiles in actual Swift runtime
         run: |
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeActorProfileCheck.swift -o /tmp/wengua-actor-check
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeActorProfileCheck.swift -o /tmp/wengua-actor-check
           /tmp/wengua-actor-check data/knowledge/phrase_library/health_v20/actor_profiles.json
       - name: Verify exact 200 source cells and native offline loader
         run: |
@@ -86,14 +87,14 @@ jobs:
           /tmp/wengua-native-200 data/mobile/health_vnext/health_energy_200.json
       - name: Full signed V-next Swift-to-Python current truth parity (two actual hours)
         run: |
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/VNextNativeParityCheck.swift -o /tmp/wengua-vnext-parity
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/VNextNativeParityCheck.swift -o /tmp/wengua-vnext-parity
           python3 -m scripts.export_ios_vnext_live_parity --output /tmp/wengua-vnext-five-current.json
           /tmp/wengua-vnext-parity data/mobile/health_vnext/health_energy_200.json /tmp/wengua-vnext-five-current.json
       - name: Independently check 3 new randomly drawn real instants and compose iOS current JSON text
         run: |
           mkdir -p /tmp/wengua-vnext-three
           python3 -m scripts.ios_vnext_three_random_20261026 --output /tmp/wengua-vnext-three/python_truth.json
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
           /tmp/wengua-vnext-three-native /tmp/wengua-vnext-three/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-vnext-three/swift_public_readings.log
       - name: Preserve 3 truly random Python and Swift evidence whether passing or failing
         if: always()

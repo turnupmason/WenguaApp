@@ -23,6 +23,7 @@ targets:
         buildPhase: resources
       - path: WenguaNativeVNextEngine.swift
       - path: WenguaVNextCustomerComposer.swift
+      - path: WenguaVNextReasoner.swift
       - path: WenguaNativeCustomerView.swift
       - path: WenguaLocalHistoryView.swift
       - path: WenguaNativeEnergyBundle.swift

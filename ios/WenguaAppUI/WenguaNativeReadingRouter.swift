@@ -255,6 +255,9 @@ enum WenguaNativeReadingRouter {
             if let extra=final.first(where:{$0.id=="88subject"}) {
                 sections.append(extra)
             }
+            if let evidence=final.first(where:{$0.id=="87vnext"}) {
+                sections.append(evidence)
+            }
             sections += [WenguaNativeCustomerSection(id:"03classical",
                     title:"本盘原格古诀（点击展开）",
                     text:evidence.joined(separator:"\n")),
