@@ -23,12 +23,21 @@ private struct ResultSummary:Decodable {
     let post_void_known_sum:Int
 }
 private struct Auxiliary:Decodable {let palace:Int;let score:Int?}
+private struct TianruiSource25:Decodable {
+    let category:String
+    let star_month:String
+    let palace_month:String
+    let traditional_title:String
+    let effectiveness:String
+    let eligible_evidence_direction:String
+}
 private struct TestCast:Decodable {
     let instant:String
     let relationship:String
     let patient_sex:String?
     let context:String
     let firstStage:Bool
+    let tianrui25:TianruiSource25
     let summary:ResultSummary
     let roles:[String:RoleScore]
     let auxiliaries:[String:Auxiliary]
@@ -90,6 +99,20 @@ private struct PublicCast:Encodable {
             let audit=try WenguaVNextEngine.compute(chart:chart,
                 relationship:test.relationship,energy:energy,
                 catalog:pairs,actor:actor)
+            let star25=try WenguaVNextTianrui25.caseFor(
+                chart:chart,audit:audit)
+            try require(star25.category==test.tianrui25.category,
+                test.instant+" Tianrui-25 category")
+            try require(star25.starMonth==test.tianrui25.star_month &&
+                        star25.palaceMonth==test.tianrui25.palace_month,
+                test.instant+" nine-star versus landing-palace month")
+            try require(star25.title==test.tianrui25.traditional_title,
+                test.instant+" exact user-proposed 25-case imagery")
+            try require(star25.effectiveness==test.tianrui25.effectiveness,
+                test.instant+" original 25-case applicability restriction")
+            try require(star25.eligibleDirection==
+                        test.tianrui25.eligible_evidence_direction,
+                test.instant+" original 25-case eligible symbol only")
             let loc=test.instant+" ["+test.relationship+"] "
             try require(audit.firstMacroFiveNot==test.firstStage,loc+"five-not")
             try require(audit.score==test.summary.score,loc+"final score Swift "+String(describing:audit.score)+" Python "+String(describing:test.summary.score))
@@ -143,7 +166,8 @@ private struct PublicCast:Encodable {
             let controls=reading.sections.first(where:{$0.id=="83vnext"})?.text ?? ""
             try require(!conclusion.isEmpty && conclusion.contains("宫"),
                 loc+"score-conditioned conclusion missing")
-            try require(overview.contains("月令") && overview.contains("落宫"),
+            try require(overview.contains("月令") && overview.contains("落宫") &&
+                        overview.contains("「"+star25.title+"」"),
                 loc+"monthly+palace powers absent from consumer reasoning")
             try require(overview.contains("天干十二长生"),
                 loc+"81 original pair lifecycle condition lost in narrative")
