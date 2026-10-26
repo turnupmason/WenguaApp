@@ -93,6 +93,7 @@ jobs:
           /tmp/wengua-vnext-parity data/mobile/health_vnext/health_energy_200.json /tmp/wengua-vnext-five-current.json
       - name: Independently check 3 new randomly drawn real instants and compose iOS current JSON text
         run: |
+          set -euo pipefail
           mkdir -p /tmp/wengua-vnext-three
           python3 -m scripts.ios_vnext_three_random_20261026 --output /tmp/wengua-vnext-three/python_truth.json
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
