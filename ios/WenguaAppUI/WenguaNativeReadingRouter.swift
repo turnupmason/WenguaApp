@@ -237,15 +237,15 @@ enum WenguaNativeReadingRouter {
             sections += [final[0],final[1],
                 WenguaNativeCustomerSection(id:"03classical",
                     title:"本盘原格古诀（点击展开）",
-                    text:evidence.joined(separator:"\\n")),
+                    text:evidence.joined(separator:"\n")),
                 final[2],final[3]]
             evidenceStatus="native_vnext_200_81_signed_source_logic_review"
         } else {
             sections += [
                 WenguaNativeCustomerSection(id:"02",title:"选用神与宫位关系",
-                                            text:roleSentences.joined(separator:"\\n")),
+                                            text:roleSentences.joined(separator:"\n")),
                 WenguaNativeCustomerSection(id:"03",title:"本盘格局依据",
-                                            text:evidence.joined(separator:"\\n")),
+                                            text:evidence.joined(separator:"\n")),
                 WenguaNativeCustomerSection(id:"04",title:"专业合断尚未接通",
                                             text:try fill("pending"))]
             evidenceStatus="native_factual_template_only"
