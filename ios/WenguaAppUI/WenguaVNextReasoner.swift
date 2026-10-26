@@ -156,7 +156,7 @@ enum WenguaVNextReasoner {
             important.append(try fill("reason_role_palace",[
                 "role":roleTitles[role] ?? role,"palace":name(id),
                 "star":star,"door":door,"god":god,"pattern":pair,
-                "adjustment":try shifts(row),
+                "adjustment":try shifts(row).isEmpty ? "" : shifts(row)+"；",
                 "conclusion":trend(row.afterVoid)]))
             if role=="illness" {
                 let selected=try WenguaVNextTianrui25.caseFor(
