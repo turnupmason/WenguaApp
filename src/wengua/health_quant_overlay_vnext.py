@@ -142,12 +142,16 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
     # pattern condition is not a reason to withhold already measured star,
     # door, god and other *qualified* patterns: this one contributes zero.
     # Keep the original candidates, gates and provenance for source audit.
-    pattern_score=sum(applied)
+    # Retain each actual ordered sky/earth pattern's +/-1..5 component.
+    # Several real cohost stems may produce an aggregate >5, which is
+    # legitimate raw palace arithmetic but NOT a single five-tier factor.
+    pattern_score=(applied if len(applied)>1 else
+                   applied[0] if len(applied)==1 else 0)
     pattern_audit={
         "status":("calculated" if len(applied)==len(pairs)
                   else "nontriggered_patterns_excluded_from_current_score"),
         "matches":pairs,
-        "score":pattern_score,
+        "score":sum(applied),
         "excluded_patterns_not_assumed_true":len(pairs)-len(applied),
         "pending":[p["key"] for p in pairs if p["score"] is None],
         "explicit_81_coverage":catalog_validation(),
