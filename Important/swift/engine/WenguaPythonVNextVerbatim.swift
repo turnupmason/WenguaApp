@@ -265,6 +265,16 @@ enum WenguaPythonVNextVerbatim {
                 let row=lifeRow(st.stage)
                 if !rows.contains(row){rows.append(row)}
             }
+        } else if own.symbol=="甲",let stages=WenguaNativeCore.stages["甲"] {
+            // Hidden Xunshou 甲 never appears as a visible sky carrier,
+            // but its independently verified natal/hour life stage MUST use
+            // actual branch seats, not an invented unresolved fallback.
+            for branch in p.branches {
+                if let actual=stages[branch] {
+                    let row=lifeRow(actual)
+                    if !rows.contains(row){rows.append(row)}
+                }
+            }
         }
         let stage=rows.count==1 ? rows[0] : "长生分支待核"
         return own.symbol+"天干十二长生"+stage+"、"+col+"，用神力量为"+strength+"。"
