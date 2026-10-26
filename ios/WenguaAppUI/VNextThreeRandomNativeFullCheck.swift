@@ -82,7 +82,7 @@ private struct PublicCast:Encodable {
             guard condition else {throw NSError(domain:"WenguaThreeFreshSourceParity",
                 code:1,userInfo:[NSLocalizedDescriptionKey:problem])}
         }
-        try require(fixture.cases.count==3,"expected 3 actual clocks")
+        try require((3...24).contains(fixture.cases.count),"expected 3...24 actual clocks")
         var times:Set<String>=[]
         for (i,test) in fixture.cases.enumerated() {
             guard let d=time.date(from:test.instant) else {
@@ -263,6 +263,9 @@ private struct PublicCast:Encodable {
                                                 encoding:.utf8)!)
             print("VNEXT_IOS_RANDOM_PARITY_PASS "+String(i+1)+" "+loc)
         }
-        print("VNEXT_IOS_3_RANDOM_ALL_PASSED "+String(fixture.seed))
+        if fixture.cases.count==3 {
+            print("VNEXT_IOS_3_RANDOM_ALL_PASSED "+String(fixture.seed))
+        }
+        print("VNEXT_IOS_RANDOM_BATCH_ALL_PASSED seed="+String(fixture.seed)+" count="+String(fixture.cases.count))
     }
 }

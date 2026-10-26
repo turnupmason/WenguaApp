@@ -41,3 +41,12 @@
 4. 未签真机 IPA、未完成 App Store Connect/TestFlight 和 Apple 审核。本轮是研究性传统文化软件计算一致性，不是临床真实性证明。
 
 开发原项目 `turnupmason/WenguaApp` 不 reset，不清除旧版本/历史失败；更新进展同步 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`。
+
+
+## 2026-10-26 本对话扩大随机原字验收批次（等待该提交 CI 实测）
+
+- 保留种子 `202610263311` 的既有3张真盘、旧成功和失败 GitHub Run，不重写历史结论。
+- 新增**独立随机种子 `202610265117`、9个技术可计算的有效真实钟点**，`scripts/ios_vnext_three_random_20261026.py --seed 202610265117 --count 9 --output ...`；按第1至第9个成功技术盘循环本人、父亲、妻子，不凭凶吉筛盘，技术拒盘按抽样次序入 `rejected`，不计成功。
+- **手机正式路由端**用与原三盘相同的已编译 `VNextThreeRandomNativeFullCheck.swift`：逐实际真盘重新调用 `WenguaNativeCore.compute`、`WenguaVNextEngine.compute`、`WenguaNativeReadingRouter.compose`，无缓存的预存九盘断词。源端则对同一 `instant/timezone/inquiry` 独立调用 `auto_cast_health_review_text`。
+- `tests/compare_gpt_ios_exact_wording_20261026.py` 除全部中文与段落 `id/title/text` 完全相同外，另强制对齐时辰、人物、顺序号和分段数量；不能把其它盘答案放到当前盘后仍报通过。新增独立防伪比较器 unittest，故意错换时辰、漏盘、改标点必须红灯。
+- GitHub Actions 每次同时保留这9盘的 Python 金标、Swift 原生 stdout、差异日志，即使失败亦不删除。**在该源码最新 HEAD 对应 native_core 和 macOS `real_ios_xcode_build` 确认成功前，该9盘状态为待验，不得预报9/9通过。** 不变：健康病情轻重专题才有已移植路径；其他14专题与全部20人事条件不能因此冒称完成；评分仅内部，保留历史V3.9.1和43章194古籍案例。

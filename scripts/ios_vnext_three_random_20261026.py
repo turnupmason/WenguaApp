@@ -16,16 +16,23 @@ RELATIONS=(("self","本人","direct_self",None),
            ("father","父亲","direct_proxy",None),
            ("wife","妻子","direct_proxy","female"))
 
-def produce():
-    rng=random.Random(SEED)
+def produce(seed=SEED,count=3):
+    if not 3 <= count <= 24:
+        raise ValueError('batch count must be 3..24')
+    rng=random.Random(seed)
     cases=[]
     rejected=[]
-    for draw in range(1,81):
-        if len(cases)==3:break
+    accepted_instants=set()
+    for draw in range(1,max(81,count*40)+1):
+        if len(cases)==count:break
         instant=datetime(rng.randint(2020,2025),rng.randint(1,12),
             rng.randint(1,28),rng.choice([1,3,5,7,9,11,13,15,17,19,21]),
             tzinfo=ZoneInfo("America/New_York")).isoformat()
-        rel,label,context,sex=RELATIONS[len(cases)]
+        rel,label,context,sex=RELATIONS[len(cases)%len(RELATIONS)]
+        if instant in accepted_instants:
+            rejected.append({"draw":draw,"instant":instant,"relationship":label,
+                             "reason":"duplicate previously accepted clock"})
+            continue
         inquiry={"intent":"severity","relationship":rel,
                  "consultation_context":context}
         if sex:inquiry["patient_sex"]=sex
@@ -36,6 +43,7 @@ def produce():
             rejected.append({"draw":draw,"instant":instant,
                              "relationship":label,"reason":str(e)})
             continue
+        accepted_instants.add(instant)
         q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
         roles={
             k:{"palace":v["palace"],"components":{
@@ -65,22 +73,24 @@ def produce():
             "tianrui25":r["qualitative_palace_relationships"]["天芮星月令×星宫五行25格"],
             "macro":r["first_stage_macro"]
         })
-    assert len(cases)==3, "Insufficient accepted technical casts"
-    return {"schema":"wengua_ios_three_new_random_vnext_20261026_v1",
-            "seed":SEED,"timezone":"America/New_York",
-            "selection":"first 3 technically valid instants in seeded random order; profiles self father wife; no selection by score/verdict",
+    assert len(cases)==count, f"Insufficient accepted technical casts: {len(cases)}/{count}"
+    return {"schema":"wengua_ios_random_batch_vnext_20261026_v2",
+            "seed":seed,"timezone":"America/New_York",
+            "selection":f"first {count} technically valid instants in seeded random order; profiles cycle self father wife; no selection by score/verdict",
             "rejected":rejected,"cases":cases}
 
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--output",required=True)
+    ap.add_argument("--seed",type=int,default=SEED)
+    ap.add_argument("--count",type=int,default=3)
     args=ap.parse_args()
-    obj=produce()
+    obj=produce(seed=args.seed,count=args.count)
     p=Path(args.output)
     p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
-    print("VNEXT_3_NEW_PYTHON_TIMES="+json.dumps({
-        "seed":obj["seed"],"rejected":obj["rejected"],
+    print("VNEXT_RANDOM_PYTHON_TIMES="+json.dumps({
+        "seed":obj["seed"],"count":len(obj["cases"]),"rejected":obj["rejected"],
         "accepted":[{"instant":c["instant"],"draw":c["draw"],"relation":c["relationship"]}
                     for c in obj["cases"]]},ensure_ascii=False))
 if __name__=="__main__":main()

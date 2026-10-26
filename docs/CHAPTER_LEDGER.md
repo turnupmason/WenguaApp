@@ -1115,3 +1115,12 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 三个新随机盘 ①2024-09-02 05:00 本人 ②2022-04-05 17:00 父亲 ③2024-10-13 15:00 妻子，**全文原字对照已经通过** [iOS Offline Native Casting Parity #40390048734](https://github.com/turnupmason/WenguaApp/actions/runs/40390048734)，包含真正 Linux Swift 和 macOS Xcode iPhone Simulator 构建。第一轮严格全文失败 [#40389982048](https://github.com/turnupmason/WenguaApp/actions/runs/40389982048) 真实定位 `乾坤辅助` 专用 `受生/比和` ≠ 人物 `被生/同宫`，按 Python `marriage_runtime.element_relation` 仅修对应分支；失败Run/完整diff/artifact一律保留。
 - CI 新加强：`tests/compare_gpt_ios_exact_wording_20261026.py` 除整篇中文原字之外还检查 Python `source_sections` 与 Swift **真实生产 compose** 的 `id/title/text` 按顺序完全一致；遇任一不同必须保留失败并标明未通过，绝不能为绿灯跳过全文或做宽松空格规范化。`docs/IOS_GPT_PYTHON_VERBATIM_PARITY_2026-10-26.md` 是以后所有领域复用的规范。
 - 这只是**现行健康·病情轻重**的已测试输入分支；其它专题、20类每一角色的全部取用条件、全年节气特殊边界**尚未全部逐项 Swift 原生移植及穷举**，不得宣传「所有GitHub的.py均已变Swift」或「所有领域已上线」。古籍全文、194原著案例、SQLite 保持 GitHub 研究存储，不打包进手机，不删除V3.9.1/失败记录。实际苹果签名/TestFlight仍未完成。
+
+
+## 2026-10-26 本对话扩大随机原字验收批次（等待该提交 CI 实测）
+
+- 保留种子 `202610263311` 的既有3张真盘、旧成功和失败 GitHub Run，不重写历史结论。
+- 新增**独立随机种子 `202610265117`、9个技术可计算的有效真实钟点**，`scripts/ios_vnext_three_random_20261026.py --seed 202610265117 --count 9 --output ...`；按第1至第9个成功技术盘循环本人、父亲、妻子，不凭凶吉筛盘，技术拒盘按抽样次序入 `rejected`，不计成功。
+- **手机正式路由端**用与原三盘相同的已编译 `VNextThreeRandomNativeFullCheck.swift`：逐实际真盘重新调用 `WenguaNativeCore.compute`、`WenguaVNextEngine.compute`、`WenguaNativeReadingRouter.compose`，无缓存的预存九盘断词。源端则对同一 `instant/timezone/inquiry` 独立调用 `auto_cast_health_review_text`。
+- `tests/compare_gpt_ios_exact_wording_20261026.py` 除全部中文与段落 `id/title/text` 完全相同外，另强制对齐时辰、人物、顺序号和分段数量；不能把其它盘答案放到当前盘后仍报通过。新增独立防伪比较器 unittest，故意错换时辰、漏盘、改标点必须红灯。
+- GitHub Actions 每次同时保留这9盘的 Python 金标、Swift 原生 stdout、差异日志，即使失败亦不删除。**在该源码最新 HEAD 对应 native_core 和 macOS `real_ios_xcode_build` 确认成功前，该9盘状态为待验，不得预报9/9通过。** 不变：健康病情轻重专题才有已移植路径；其他14专题与全部20人事条件不能因此冒称完成；评分仅内部，保留历史V3.9.1和43章194古籍案例。

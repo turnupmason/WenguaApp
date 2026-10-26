@@ -17,6 +17,8 @@ def compare(python_path,swift_path,report_path):
             for line in raw if MARKER in line]
     cases=source["cases"]
     issues=[]
+    if not cases:
+        issues.append("EMPTY_SOURCE_CASES")
     report=["# STRICT GPT-Python versus iOS native literal reading parity","",
        "Both entire paragraphs and their headings, line breaks, punctuation must match.",
        "No whitespace normalization or omitted sections is permitted.",""]
@@ -25,6 +27,21 @@ def compare(python_path,swift_path,report_path):
     for i,one in enumerate(cases):
         if i>=len(native):break
         app=native[i]
+        metadata_errors=[]
+        if app.get("instant")!=one["instant"]:
+            metadata_errors.append("clock mismatch")
+        if app.get("relationship")!=one["relationship"]:
+            metadata_errors.append("role mismatch")
+        if app.get("ordinal")!=i+1:
+            metadata_errors.append("ordinal mismatch")
+        if app.get("section_count")!=len(app.get("sections",[])):
+            metadata_errors.append("section count mismatch")
+        if not isinstance(app.get("sections"),list):
+            metadata_errors.append("missing native sections")
+            app["sections"]=[]
+        if not all(isinstance(s,dict) and all(k in s for k in ("id","title","text")) for s in app["sections"]):
+            metadata_errors.append("incomplete native section fields")
+            app["sections"]=[]
         actual="\n\n".join(s["title"]+"：\n"+s["text"] for s in app["sections"])
         expected=one["python_reading_text"]
         # Byte-identical prose alone does not prove stable app routing.
@@ -34,13 +51,17 @@ def compare(python_path,swift_path,report_path):
         python_sections=one["source_sections"]
         native_sections=app["sections"]
         exact_sections=(python_sections==native_sections)
-        if actual==expected and exact_sections:
+        if actual==expected and exact_sections and not metadata_errors:
             report.append("## %d %s: EXACT MATCH (text + all section IDs/titles/bodies)"%(
                 i+1,one["instant"]))
         else:
-            issues.append("%s %s %s"%(one["instant"],one["relationship"],
-                "FULL_TEXT_MISMATCH" if actual!=expected else "SECTION_STRUCTURE_MISMATCH"))
+            reason=("FULL_TEXT_MISMATCH" if actual!=expected else
+                    "SECTION_STRUCTURE_MISMATCH" if not exact_sections else
+                    "METADATA_MISMATCH")
+            issues.append("%s %s %s %s"%(one["instant"],one["relationship"],reason,",".join(metadata_errors)))
             report.append("## %d %s (%s): MISMATCH"%(i+1,one["instant"],one["relationship"]))
+            if metadata_errors:
+                report.append("METADATA ERRORS: "+", ".join(metadata_errors))
             report.append("Python sections %d, Swift sections %d; character lengths %d and %d"%(
                 len(one["source_sections"]),len(app["sections"]),len(expected),len(actual)))
             comparison="\n".join(difflib.unified_diff(
