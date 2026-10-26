@@ -90,9 +90,9 @@ class Excel81(unittest.TestCase):
                 self.assertTrue(pair["can_vote"])
                 self.assertEqual(pair["source_state"],"user_excel_explicit_81")
                 text=out["reading_text"]
-                self.assertIn("古文："+expected["classical_text"],text)
-                self.assertIn("古诀大意："+expected["classical_meaning"],text)
-                self.assertIn("天地盘取象："+expected["imagery"],text)
+                self.assertIn("古文："+expected["classical_text"].rstrip("。；"),text)
+                self.assertIn("古诀大意："+expected["classical_meaning"].rstrip("。；"),text)
+                self.assertIn("天地盘取象："+expected["imagery"].rstrip("。；"),text)
         self.assertNotIn("（条件待核）",out["reading_text"])
         # One true heaven + earth pair counts once; no invented missing 82nd.
         source_polarities=[]

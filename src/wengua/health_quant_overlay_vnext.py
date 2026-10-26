@@ -244,19 +244,13 @@ def inspect_selected_quantization(*,selected_roles,
                 k,row["complete_palace"],five_not_encounter=five,
                 xun_shou=xun_shou)
             physical_cache[palace]={"role":k,"item":qian_kun[k]}
-        qian_kun[k]["auxiliary_only_not_auto_counted"]=False
+        qian_kun[k]["auxiliary_only_not_auto_counted"]=True
         qian_kun[k]["selected_if_patient_gender_known"]=(
             row["palace"]==selected_gender_palace)
-    # Two user-specified auxiliary palaces remain part of the relevance
-    # closure. Each is counted once if physically distinct. Never treat
-    # both as two patient identities or double-count overlaps.
-    for alias,entry in qian_kun.items():
-        pal=entry["palace"]
-        aggregate["aux_"+alias]={
-            "palace":pal,
-            "score":entry["palace_score"]["score"],
-            "raw_sum":entry["palace_score"]["raw_sum"],
-            "known_subtotal":entry["palace_score"]["known_subtotal"]}
+    # Do not add the unselected Qian/Kun auxiliary to the final aggregate.
+    # When gender is supplied, its one real selected palace is already
+    # counted under the "gender" role. No sex means neither is added.
+    # Both unselected technical observations remain in audit for provenance.
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
             "selected_gender_palace":selected_gender_palace,

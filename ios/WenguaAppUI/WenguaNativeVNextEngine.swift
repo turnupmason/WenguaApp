@@ -615,7 +615,8 @@ enum WenguaVNextEngine {
                     stages:actualStages)
             }
         }
-        let scoreList=physical.values
+        let counted=Set(personalized.map{$0.1.id})
+        let scoreList=physical.values.filter{counted.contains($0.id)}
         let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
         let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
         let result=pending.isEmpty ? Optional(saturation(known)) : nil

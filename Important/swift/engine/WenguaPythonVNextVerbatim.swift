@@ -161,7 +161,8 @@ enum WenguaPythonVNextVerbatim {
         if relation=="符号克宫" {
             let noExtra=(door=="生门" && p.id==1) ||
                         (door=="景门" && p.id==6)
-            terms.append(noExtra ? "门破（不额外降级）" : "门破（另降两级）")
+            _ = noExtra // only audit retains the extra-tier exception
+            terms.append("门破")
         }
         if p.tombs.contains(where:{$0.plane=="天盘"}){terms.append("天盘入墓")}
         if p.tombs.contains(where:{$0.plane=="地盘"}){terms.append("地盘入墓")}
@@ -176,7 +177,8 @@ enum WenguaPythonVNextVerbatim {
     private static func signed(_ score:Int?)->String {
         guard let score else {return "吉凶待核"}
         if score==0{return "中平"}
-        return WenguaVNextEngine.tiers[abs(score)-1]+(score>0 ? "吉":"凶")
+        let tier=WenguaVNextEngine.tiers[abs(score)-1]
+        return (tier=="中等" ? "中" : tier)+(score>0 ? "吉":"凶")
     }
     private static func signedSymbol(_ kind:String,_ symbol:String,
                                      palace:Int,month:String,
@@ -204,11 +206,9 @@ enum WenguaPythonVNextVerbatim {
               let formation=formations[p.id] else {
             throw WenguaVNextReadingGate.unresolvedRole
         }
-        let stars=try p.heavenStars.map{
-            let title=try signedSymbol("star",$0.star,palace:p.id,
-                                       month:month,energy:energy)
-            return title+(role=="illness" && $0.star != "天芮星" ?
-                "（同宫不另计病星）" : "")
+        let stars=try p.heavenStars.filter{$0.star != "天禽星"}.map{
+            try signedSymbol("star",$0.star,palace:p.id,
+                             month:month,energy:energy)
         }.joined(separator:"、")
         let doorPart=try signedSymbol("door",door,palace:p.id,
                                       month:month,energy:energy)
@@ -222,9 +222,8 @@ enum WenguaPythonVNextVerbatim {
             "；天地格："+formation.sentences.joined(separator:"；")
         let klass=row.void=="not_void" ? "不空" :
                   row.void=="fake_void" ? "假空" : "真空"
-        let vwhy=voidReason(p,chart:chart,month:month,klass:klass)
         let special=try conditions(p,chart)
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+"（天干仅列强弱）"+book+"；空亡"+klass+(vwhy.isEmpty ? "" : "（"+vwhy+"）")+"；"+special+"；本宫综合"+signed(row.afterVoid)+"。"
+        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+"；"+special+"。全部因素推断后，此宫为"+signed(row.afterVoid)+"。"
     }
 
     private static func roleAgainstIllness(
@@ -328,10 +327,19 @@ enum WenguaPythonVNextVerbatim {
         let cells=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
         var result:[WenguaNativeCustomerSection]=[]
         func push(_ id:String,_ heading:String,_ body:String) {
-            result.append(WenguaNativeCustomerSection(id:id,title:heading,text:body))
+            var text=body
+            for (old,new) in [("。；","；"),("；；","；"),
+                              ("。。","。"),("，；","；"),("。。，","。")] {
+                while text.contains(old) {
+                    text=text.replacingOccurrences(of:old,with:new)
+                }
+            }
+            result.append(WenguaNativeCustomerSection(id:id,title:heading,
+                                                       text:text.trimmingCharacters(in:.whitespacesAndNewlines)))
         }
         push("01_macro",try title("macro"),try phrase("macro",[
             "macro_text":fullMacro(chart,review)]))
+        var viewed:[Int:String]=[:]
         for (role,id,key) in [
             ("illness","02","illness"),("doctor","03","doctor"),
             ("medicine","04","medicine"),("patient","05","patient"),
@@ -339,45 +347,41 @@ enum WenguaPythonVNextVerbatim {
             ("natal","08","natal"),("gender","09","gender")
         ] {
             guard let pid=review.roles[role],let p=cells[pid] else {
-                if role=="natal" {
-                    push(id,try title("natal"),try phrase("no_natal"))
-                }
                 continue
             }
-            let full=try palaceText(p,role:role,chart:chart,review:review,
+            let full:String
+            if let original=viewed[pid] {
+                full="与前述"+original+"同在"+label(p)+
+                    "。全部因素推断后，此宫为"+
+                    signed(review.palaces[pid]?.afterVoid)+"。"
+            } else {
+                full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup)
+                viewed[pid]=try title(key)
+            }
             var extra=""
             if role=="illness" {
                 let t25=try WenguaVNextTianrui25.caseFor(chart:chart,audit:review)
                 extra=try phrase("illness",["name":t25.title,"explanation":t25.why])
             }
+            let roleText=roleAgainstIllness(role,review:review)
+            let concise=roleText.components(separatedBy:"；").first ?? ""
             let relationText=role=="illness" ? "" :
                 try phrase("role_relation",[
-                    "relation_text":roleAgainstIllness(role,review:review)])
+                    "relation_text":concise.trimmingCharacters(
+                        in:CharacterSet(charactersIn:"。"))+
+                        (concise.isEmpty ? "" : "。")])
             let genderNote=role=="gender" ? try phrase("gender_note") : ""
-            push(id,try title(key),try phrase("role",[
+            let displayTitle=(role=="gender" ?
+                 (pid==2 ? "坤宫辅助（女）" : pid==6 ? "乾宫辅助（男）" :
+                  (try title(key))) : (try title(key)))
+            push(id,displayTitle,try phrase("role",[
                 "palace_detail":full,"palace_score":"",
                 "extra_illness":extra,"role_relation":relationText,
                 "gender_note":genderNote]))
         }
-        for (alias,id) in [("qian",6),("kun",2)] {
-            guard let p=cells[id],let ill=review.roles["illness"] else {
-                throw WenguaVNextReadingGate.unresolvedRole
-            }
-            // Python selected_health_sequence uses marriage_runtime.element_relation
-            // for Qian/Kun: identical ELEMENT (including same physical palace)
-            // is 比和, and passive direction is 受生/受克 rather than
-            // matchup's 被生/被克. These are distinct source conventions.
-            let nominal=relation(id,ill)
-            let rel = nominal=="同宫" ? "比和" :
-                      nominal=="被生" ? "受生" :
-                      nominal=="被克" ? "受克" : nominal
-            let name=alias=="qian" ? "乾六宫辅助观察":"坤二宫辅助观察"
-            let text=try palaceText(p,role:alias,chart:chart,review:review,
-                energy:energy,formations:lookup)
-            push("09_"+alias,try title(alias,["role":name]),try phrase("auxiliary",[
-                "palace_detail":text,"palace_score":"","relation":rel]))
-        }
+        // Qian and Kun remain full source facts in internal audit; the
+        // patient's selected sex already uses one real gender palace once.
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)

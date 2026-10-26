@@ -413,82 +413,80 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
 
 
 def selected_health_sections(result,*,actor,chart):
-    """Linked user-editable text template; actual data is computed upstream.
+    """V4 public prose from live scored real palaces, with no repeated evidence.
 
-    User edits:
-      data/templates/health_severity_vnext/reading_template.json
-    Source facts:
-      data/knowledge/health_81_excel_20261025/81_pairs.tsv
-    The template NEVER creates an 81 pair or a chart outcome.
+    Previous original books, source 81 rows and full 200-cell audits are untouched.
+    Male -> Qian; female -> Kun; no gender -> neither auxiliary vote.
     """
+    from .health_five_level_quant_vnext import label as score_label
+
     roles=result["selected_roles"]
     edges=result["full_health_role_strength_network"]["directed_edges"]
+    quant=result["candidate_five_grade_quantization"]
     sections=[]
+    seen={}
+    def grade(score):
+        if score is None:return "吉凶待核"
+        if score==0:return "中平"
+        return score_label(score).replace("中等吉","中吉").replace("中等凶","中凶")
     def push(code,title,text):
-        sections.append({"id":code,"title":title,"text":text})
+        # Punctuation is sanitized ONLY after rendering immutable book quotes.
+        # "文书不行。；古诀" => "文书不行；古诀", never mutate TSV.
+        for old,new in (("。；","；"),("；；","；"),
+                        ("。。","。"),("，；","；"),("。。，","。")):
+            while old in text:text=text.replace(old,new)
+        sections.append({"id":code,"title":title,"text":text.strip()})
 
     push("01_macro",template_title("macro"),
          render_slot("macro",macro_text=render_first_stage_macro(
              result["first_stage_macro"])))
-
-    key_order=(
+    for key,serial,title_key in (
         ("illness","02","illness"),("doctor","03","doctor"),
         ("medicine","04","medicine"),("patient","05","patient"),
         ("hour","06","hour"),("chief","07","chief"),
-        ("natal","08","natal"),("gender","09","gender"))
-    quant=result["candidate_five_grade_quantization"]
-    for key,serial,titlekey in key_order:
-        if key=="natal" and key not in roles:
-            push(serial,template_title(titlekey),render_slot("no_natal"))
+        ("natal","08","natal"),("gender","09","gender")):
+        if key not in roles:
             continue
-        if key not in roles:continue
         role=roles[key]
-        palace_detail=render_complete_selected_palace(
-            role["complete_palace"],quantified=quant["roles"][key])
-        # Keep quant in the internal DTO. The customer template is text-only.
-        score_text=""
-        extra_illness=""
+        qitem=quant["roles"][key]
+        pid=role["palace"]
+        strength=grade(qitem["palace_score"]["score"])
+        if pid in seen:
+            detail=("与前述"+seen[pid]+"同在"+
+                    role["complete_palace"]["palace_name"]+
+                    "。全部因素推断后，此宫为"+strength+"。")
+        else:
+            detail=render_complete_selected_palace(
+                role["complete_palace"],quantified=qitem)
+            seen[pid]=template_title(title_key)
+        extra=""
         if key=="illness":
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
-            extra_illness=render_slot(
-                "illness",name=t25["traditional_title"],explanation=t25["why"])
-        relation_text=(
-            render_slot("role_relation",relation_text=explain_selected_role(
-                role=key,roles=roles,edges=edges)) if key!="illness" else "")
-        note=render_slot("gender_note") if key=="gender" else ""
-        push(serial,template_title(titlekey),
-             render_slot("role",palace_detail=palace_detail,
-                 palace_score=score_text,extra_illness=extra_illness,
-                 role_relation=relation_text,gender_note=note))
+            extra=render_slot("illness",name=t25["traditional_title"],
+                              explanation=t25["why"])
+        relation=""
+        if key!="illness":
+            statement=explain_selected_role(role=key,roles=roles,edges=edges)
+            relation=render_slot("role_relation",relation_text=(
+                statement.split("；",1)[0].rstrip("。")+"。" if statement else ""))
+        title=template_title(title_key)
+        if key=="gender":
+            title=("坤宫辅助（女）" if pid==2 else
+                   "乾宫辅助（男）" if pid==6 else title)
+        push(serial,title,render_slot("role",palace_detail=detail,
+            palace_score="",extra_illness=extra,role_relation=relation,
+            gender_note=""))
 
-    # Qian and Kun are two real auxiliary palace observations, not invented
-    # patient birth or a second signed score for an already scored palace.
-    for alias in ("qian","kun"):
-        ob=result["qian_kun_auxiliary_observations"][alias]
-        qitem=quant["auxiliary_qian_kun"][alias]
-        push("09_"+alias,template_title(alias,role=ob["role"]),
-             render_slot("auxiliary",
-                 palace_detail=render_complete_selected_palace(
-                     ob["complete_palace"],quantified=qitem),
-                 palace_score="",
-                 relation=ob["relation_to_illness"]))
+    # Qian/Kun audit records remain retained for internal investigations.
+    # The chosen patient-sex palace was already shown/scored as 'gender';
+    # displaying Qian+Kun again causes both double-reading and duplication.
 
-    # No scores, totals, or arithmetic in the customer-visible template.
-    # Both the signed internal model and the directed role evidence are kept.
     q=quant["summary"]
-    if q["score"] is None:
-        conclusion=render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
-    else:
-        # User final decision: the source-calculated de-duplicated, post-void
-        # five-tier signed score is decisive when and ONLY when complete.
-        # Other tentative role votes remain archived for research; they do not
-        # replace the known palace total with generic "contradiction" wording.
-        from .health_five_level_quant_vnext import label as signed_label
-        value=q["score"]
-        grade="不凶不吉" if value==0 else signed_label(value)
-        conclusion=render_slot(
-            "overall_resolved",palace_count=q["unique_palace_count"],
-            post_void_sum=q["post_void_known_sum"],score=value,grade=grade)
+    conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
+                if q["score"] is None else
+                render_slot("overall_resolved",grade=grade(q["score"]),
+                    palace_count=q["unique_palace_count"],
+                    post_void_sum=q["post_void_known_sum"],score=q["score"]))
     push("90_review",template_title("verdict"),
          render_slot("verdict",conclusion=conclusion))
     push("91_timing",template_title("timing"),

@@ -26,10 +26,10 @@ class SignedHealthCustomerVerbatim(unittest.TestCase):
                 full = r["reading_text"]
                 q = r["full_health_role_strength_network"][
                     "candidate_five_grade_quantization"]
-                self.assertIn("（天干仅列强弱）", full)
-                self.assertIn("本宫综合", full)
-                self.assertIn("未提供真实年命，不纳入本次计算。", full)
-                self.assertIn("（同宫不另计病星）", full)
+                self.assertNotIn("（天干仅列强弱）", full)
+                self.assertIn("全部因素推断后，此宫为", full)
+                self.assertNotIn("患者年命：", full)
+                self.assertNotIn("天禽星", full)
                 # The source's own original score is decisive only if all
                 # actually selected, de-duplicated real palaces are known.
                 score = q["summary"]["score"]
@@ -37,16 +37,18 @@ class SignedHealthCustomerVerbatim(unittest.TestCase):
                     self.assertIn("当前不足以给出最终五档吉凶", full)
                 else:
                     grade = "不凶不吉" if score == 0 else label(score)
-                    self.assertIn("最终断为" + grade + "。", full)
+                    self.assertIn("综上所述，此病为" + grade.replace("中等吉","中吉").replace("中等凶","中凶") + "。", full)
                     self.assertNotIn("宫位本体与人物关系的判断尚有分歧", full)
                 self.assertNotIn("健康指数", full)
                 self.assertEqual(
                     full, "\n\n".join(
                         s["title"] + "：\n" + s["text"]
                         for s in r["sections"]))
-                self.assertTrue(r["full_health_role_strength_network"][
-                    "candidate_five_grade_quantization"]["summary"][
-                        "duplicate_physical_roles"])
+                self.assertNotIn("乾宫辅助（男）", full)
+                self.assertIn("坤宫辅助（女）", full)
+                self.assertNotIn("。；", full)
+                self.assertNotIn("门破（另降两级）", full)
+                self.assertFalse(any(x["id"].startswith("09_") for x in r["sections"]))
 
 
 if __name__ == "__main__":

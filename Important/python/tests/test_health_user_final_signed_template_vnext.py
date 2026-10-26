@@ -90,9 +90,7 @@ class UserSignedFinalScore(unittest.TestCase):
             if c["deity"]=="值符"))
         self.assertIn("值符护持宫",out["reading_text"])
         self.assertIn("时干事体",out["reading_text"])
-        self.assertIn("暂",out["reading_text"] if
-                      net["candidate_five_grade_quantization"]["summary"]["pending_palaces"]
-                      else "暂")
+        self.assertIn("全部因素推断后，此宫为",out["reading_text"])
 
     def test_user_requires_both_real_qian_and_kun_auxiliary_palaces(self):
         for sex in ("male","female"):
@@ -101,19 +99,16 @@ class UserSignedFinalScore(unittest.TestCase):
                     iso=DATE,timezone_name=ZONE,
                     inquiry={**INQUIRY,"patient_sex":sex})
                 titles=[x["title"] for x in r["sections"]]
-                self.assertEqual(len([
-                    x for x in titles if x.startswith("乾坤辅助：")]),2)
-                self.assertTrue(any("乾六宫辅助观察" in x for x in titles))
-                self.assertTrue(any("坤二宫辅助观察" in x for x in titles))
+                self.assertFalse(any(x.startswith("乾坤辅助：") for x in titles))
+                self.assertIn("乾宫辅助（男）" if sex=="male" else "坤宫辅助（女）",titles)
+                self.assertNotIn("坤宫辅助（女）" if sex=="male" else "乾宫辅助（男）",titles)
                 q=r["full_health_role_strength_network"][
                     "candidate_five_grade_quantization"]
                 self.assertIn("qian",q["auxiliary_qian_kun"])
                 self.assertIn("kun",q["auxiliary_qian_kun"])
         none=auto_cast_health_review_text(
             iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)
-        self.assertEqual(len([
-            s for s in none["sections"]
-            if s["title"].startswith("乾坤辅助：")]),2)
+        self.assertFalse(any(x["title"].startswith("乾坤辅助：") for x in none["sections"]))
         # Unprovided sex is not the same as guessing two patient identities.
         self.assertIsNone(none["full_health_role_strength_network"][
             "selected_gender_palace"])

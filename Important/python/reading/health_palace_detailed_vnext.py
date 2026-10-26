@@ -250,7 +250,7 @@ def render_complete_selected_palace(detail, *, quantified=None):
     def signed(score):
         if score is None:
             return "吉凶待核"
-        return "中平" if score == 0 else signed_grade(score)
+        return ("中平" if score == 0 else signed_grade(score).replace("中等吉","中吉").replace("中等凶","中凶"))
 
     def stem_strength(x):
         if x is None:

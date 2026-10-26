@@ -185,9 +185,9 @@ private struct PublicCast:Encodable {
                     })
                 }) && joined.contains("八神"),
                 loc+"God no-season source invariant lost")
-            try require(doctor.contains("本宫用神力量") &&
-                        medicine.contains("天芮病星力量"),
-                loc+"original selected factor-power and actual relations absent")
+            try require(doctor.contains("全部因素推断后，此宫为") &&
+                        medicine.contains("全部因素推断后，此宫为"),
+                loc+"signed palace conclusion absent")
             try require(!joined.contains("净分") && !joined.contains("加分"),
                 loc+"private arithmetic leaked into original template")
             try require(reading.sections.contains(where:{$0.id=="91_timing"}),
