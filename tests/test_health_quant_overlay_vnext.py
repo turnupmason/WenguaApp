@@ -30,12 +30,14 @@ class CurrentQuantReview(unittest.TestCase):
             self.assertEqual(row["deity"]["status"],"calculated")
             self.assertIn(row["deity"]["score"],range(-5,6))
             self.assertIn(row["pattern"]["status"],
-                             ("calculated","user_source_or_81_context_pending"))
+                             ("calculated","nontriggered_patterns_excluded_from_current_score"))
             self.assertIn(row["palace_score"]["status"],(
-                "incomplete_components","fake_void_zero",
-                "true_void_extreme_adverse","calculated","saturated_five_grade"))
-        self.assertTrue(q["auxiliary_qian_kun"]["qian"][
+                "incomplete_components","void_signed_three_shift",
+                "calculated","saturated_five_grade"))
+        self.assertFalse(q["auxiliary_qian_kun"]["qian"][
             "auxiliary_only_not_auto_counted"])
+        self.assertIn("qian",q["auxiliary_qian_kun"])
+        self.assertIn("kun",q["auxiliary_qian_kun"])
         self.assertIn("宫位五级吉凶净分合断",r["reading_text"])
         self.assertIn("±5",render_quant_review(q))
 
@@ -47,10 +49,14 @@ class CurrentQuantReview(unittest.TestCase):
         for role,item in q["roles"].items():
             d=details[role]["void"]
             self.assertEqual(item["palace_score"]["void_state"],d["classification"])
-            if d["classification"]=="fake_void":
-                self.assertEqual(item["palace_score"]["score"],0)
-            elif d["classification"]=="true_void":
-                self.assertEqual(item["palace_score"]["score"],-5)
+            if d["classification"] in ("fake_void","true_void"):
+                pal=item["palace_score"]
+                if pal["score_before_void"] is not None:
+                    before=pal["score_before_void"]
+                    want=before-3 if before>0 else before+3 if before<0 else 0
+                    self.assertEqual(pal["score"],want)
+                    self.assertEqual(pal["status"],"void_signed_three_shift")
+                    self.assertNotEqual(pal["score"],-5)
             if d.get("horse_cleared_void"):
                 self.assertEqual(item["palace_score"]["void_state"],"not_void")
 
