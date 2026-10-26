@@ -83,6 +83,11 @@
     "vnext_disease_control_effective": "，病宫向本宫施克的实际格为「{outcome}」，本方受制之象较明显",
     "vnext_disease_control_limited": "，病宫施克格为「{outcome}」，克力有限，不可直接断病象尽得其势",
     "vnext_disease_control_failed": "，病宫名义来克，但实际格为「{outcome}」，不能断已成功制住本方",
-    "vnext_role_candidate": "本次患者用神来自原书条件类推，虽已按真实九宫计算相关星门神格及生克，人物身份的独立适用条件尚未核全，因此暂不下确定的吉凶结论。"
+    "vnext_role_candidate": "本次患者用神来自原书条件类推，虽已按真实九宫计算相关星门神格及生克，人物身份的独立适用条件尚未核全，因此暂不下确定的吉凶结论。",
+    "vnext_actor_details_title": "人物取用的额外依据（点击展开）",
+    "vnext_actor_harmony": "日干五合所指{stem}在{palace}，仅作配偶取用辅助，不与本人主用神重复判断。",
+    "vnext_actor_auxiliary": "另参考{palaces}的实际象意，不把辅助宫当成新的患者。",
+    "vnext_actor_note": "人物关系条件：{note}",
+    "vnext_actor_natal_pending": "已提供年命但天盘本次无法唯一绑定实际携干，不虚构其落宫。"
   }
 }

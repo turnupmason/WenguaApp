@@ -248,14 +248,18 @@ enum WenguaNativeReadingRouter {
                 chart:chart,relationship:relationship,energy:energy,
                 catalog:catalog,actor:actor)
             let final=try WenguaVNextCustomerComposer.sections(
-                current,chart:chart,template:template)
+                current,chart:chart,template:template,actor:actor)
             // The 81 Excel excerpts remain user-accessible but initially
             // folded away; they are not duplicated in the main judgment.
-            sections += [final[0],final[1],
-                WenguaNativeCustomerSection(id:"03classical",
+            sections += [final[0],final[1]]
+            if let extra=final.first(where:{$0.id=="88subject"}) {
+                sections.append(extra)
+            }
+            sections += [WenguaNativeCustomerSection(id:"03classical",
                     title:"本盘原格古诀（点击展开）",
                     text:evidence.joined(separator:"\n")),
-                final[2],final[3]]
+                final.first(where:{$0.id=="90vnext"})!,
+                final.first(where:{$0.id=="91vnext"})!]
             evidenceStatus="native_vnext_200_81_signed_source_logic_review"
         } else {
             sections += [
