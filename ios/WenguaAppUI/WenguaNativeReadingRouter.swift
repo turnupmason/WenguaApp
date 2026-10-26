@@ -58,6 +58,10 @@ enum WenguaNativeReadingRouter {
               let p=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
         }
+        // The native binary must carry the literal latest 8x25 matrices.
+        // This checks source resources; full V-next numeric/relationship parity
+        // is intentionally NOT inferred from their presence.
+        _ = try WenguaNativeEnergyBundle.fromBundle(bundle)
         return try compose(chart:chart,topicID:topicID,relationship:relationship,
                            template:Data(contentsOf:t),
                            catalog:String(contentsOf:p,encoding:.utf8))

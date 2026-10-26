@@ -8,6 +8,11 @@ on:
       - 'ios/WenguaAppUI/WenguaNativeReadingRouter.swift'
       - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
       - 'ios/WenguaAppUI/WenguaLocalHistoryView.swift'
+      - 'ios/WenguaAppUI/WenguaNativeEnergyBundle.swift'
+      - 'ios/WenguaAppUI/Native200SourceCheck.swift'
+      - 'data/mobile/health_vnext/health_energy_200.json'
+      - 'scripts/export_ios_health_energy_200.py'
+      - 'tests/test_ios_energy_200_source_parity.py'
       - 'ios/WenguaAppUI/NativeHealthCustomerCheck.swift'
       - 'ios/WenguaAppUI/HealthTemplateBridgeCheck.swift'
       - 'data/templates/health_severity_vnext/reading_template.json'
@@ -57,6 +62,11 @@ jobs:
         run: |
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeHealthCustomerCheck.swift -o /tmp/wengua-customer
           /tmp/wengua-customer data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv
+      - name: Verify exact 200 source cells and native offline loader
+        run: |
+          python3 -m scripts.export_ios_health_energy_200 --check
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/Native200SourceCheck.swift -o /tmp/wengua-native-200
+          /tmp/wengua-native-200 data/mobile/health_vnext/health_energy_200.json
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
