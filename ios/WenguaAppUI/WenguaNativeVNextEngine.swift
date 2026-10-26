@@ -615,11 +615,6 @@ enum WenguaVNextEngine {
                     stages:actualStages)
             }
         }
-        let counted=Set(personalized.map{$0.1.id})
-        let scoreList=physical.values.filter{counted.contains($0.id)}
-        let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
-        let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
-        let result=pending.isEmpty ? Optional(saturation(known)) : nil
         var controls:[WenguaVNextControl]=[]
         let diseaseStrength=try must(strength["illness"]?.strength)
         var votes=[String:String]()
@@ -649,6 +644,28 @@ enum WenguaVNextEngine {
             // co-palace roles, just like health_role_majority_vnext.
             if votes[pair]==nil {votes[pair]=direction}
         }
+        // Source-aligned selected role activation. Only a real 克 relation
+        // looks up the second 5x5 matrix. Chief without an effective 克
+        // direction, chief void, or chief受病克 is zero assistance.
+        var enabled:Set<Int>=[]
+        for (tag,p,_) in personalized {
+            if tag=="illness" {enabled.insert(p.id);continue}
+            let edge=controls.first(where:{$0.role==tag})
+            let working=["strong","limited"].contains(edge?.applicability ?? "")
+            let active:Bool
+            if tag=="chief" {
+                active=actualVoid(p,chart,month:month)=="not_void" &&
+                       edge?.direction=="克" && working
+            } else if edge?.direction=="克" {
+                active=working
+            } else {active=true}
+            if active {enabled.insert(p.id)}
+        }
+        // One physical palace once, including accepted co-located roles.
+        let scoreList=physical.values.filter{enabled.contains($0.id)}
+        let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
+        let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
+        let result=pending.isEmpty ? Optional(saturation(known)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
         var adverse=votes.values.filter{$0=="adverse"}.count
         let tianrui=try tianruiVote(ill,month:month)
