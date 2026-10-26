@@ -5,6 +5,9 @@ on:
     paths:
       - 'ios/WenguaAppUI/WenguaNativeCore.swift'
       - 'ios/WenguaAppUI/WenguaHealthTemplateBridge.swift'
+      - 'ios/WenguaAppUI/WenguaNativeReadingRouter.swift'
+      - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
+      - 'ios/WenguaAppUI/NativeHealthCustomerCheck.swift'
       - 'ios/WenguaAppUI/HealthTemplateBridgeCheck.swift'
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
@@ -49,6 +52,10 @@ jobs:
         run: |
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/HealthTemplateBridgeCheck.swift -o /tmp/wengua-health-template-bridge
           /tmp/wengua-health-template-bridge data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv
+      - name: Offline Swift native domain/relationship/template/customer narrative test
+        run: |
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/NativeHealthCustomerCheck.swift -o /tmp/wengua-customer
+          /tmp/wengua-customer data/templates/health_severity_vnext/reading_template.json data/knowledge/health_81_excel_20261025/81_pairs.tsv
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck

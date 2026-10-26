@@ -414,6 +414,7 @@ struct ProfessionalChartScreen: View {
     @State private var showReading = false
     @State private var nativeChart: WenguaNativeChart?
     @State private var castRelation = "本人"
+    @State private var nativeReading: WenguaNativeCustomerReading?
 
     private var palaces: [QPalace] {
         guard let chart=nativeChart else {return []}
@@ -450,7 +451,7 @@ struct ProfessionalChartScreen: View {
                         Button {showReading=true} label: {
                             HStack {
                                 Image(systemName:"text.book.closed")
-                                Text("查看完整解读")
+                                Text("查看本次传统盘象")
                                 Spacer()
                                 Image(systemName:"chevron.right")
                             }
@@ -459,7 +460,7 @@ struct ProfessionalChartScreen: View {
                             .background(Color(red:0.93,green:0.96,blue:1),
                                         in:RoundedRectangle(cornerRadius:12))
                         }
-                        Text("九宫由本机离线起盘。新盘自然语言断案模板尚待原生移植；不会使用固定历史盘的结论替代。")
+                        Text("本机离线实算九宫，自动依领域和人物关系读取新版模板；最终200格合断仍在逐盘移植与验收。")
                             .font(.caption).foregroundStyle(QStyle.secondary)
                     }.padding(14)
                 } else {
@@ -493,14 +494,15 @@ struct ProfessionalChartScreen: View {
                 .presentationDragIndicator(.visible)
         }
         .sheet(isPresented:$showAsk) {
-            CastSetupScreen(topic:topic) { computed,relation in
+            CastSetupScreen(topic:topic) { computed,relation,reading in
                 nativeChart=computed
                 castRelation=relation
+                nativeReading=reading
                 showAsk=false
             }
         }
         .sheet(isPresented:$showReading) {
-            TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1)
+            TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)
         }
         .onAppear {
             // Initial app path: domain > subquestion > setup > calm > native cast.
@@ -1024,11 +1026,12 @@ private struct LocalNativeCase: Codable {
     let course: String?
     let completedAt: Date
     let chart: WenguaNativeChart
+    let reading: WenguaNativeCustomerReading?
 }
 
 struct CastSetupScreen: View {
     let topic: QuestionTopic
-    let onNativeCast: (WenguaNativeChart, String) -> Void
+    let onNativeCast: (WenguaNativeChart, String, WenguaNativeCustomerReading) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var subject = "本人"
     @State private var subjectName = ""
@@ -1040,7 +1043,7 @@ struct CastSetupScreen: View {
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
-    private let relations = ["本人", "父亲", "母亲", "丈夫", "妻子", "兄弟", "姐妹", "儿子", "女儿"]
+    private let relations = WenguaNativeReadingRouter.supportedRelations
 
     var body: some View {
         NavigationStack {
@@ -1063,7 +1066,7 @@ struct CastSetupScreen: View {
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)
-                            Text("未提供出生年份时不计算年命；填写年份也不代表关系取用神已完成原生移植。")
+                            Text("目前本人、父亲的主用神已接入原生；其他亲属关系待独立验盘后开放。出生年命暂只保存输入，不伪造已移植的年命断法。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
@@ -1174,12 +1177,17 @@ struct CastSetupScreen: View {
             let finalInstant=useCurrentInstant ? Date() : chosenTime
             let localZone=TimeZone.current.identifier
             let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
+            // A successful chart is not enough: fail before issuing the 15-day
+            // receipt unless the selected native domain and role can read its
+            // true local evidence from the bundled, user-editable template.
+            let reading=try WenguaNativeReadingRouter.compose(
+                chart:result,topicID:topic.id,relationship:subject)
             // Persistent case receipt is ONLY original board/clock facts and
             // hashed issue ID. User's raw private question is NOT stored here.
             let record=LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
                                        optionalBirthYear:Int(birthYear),
                                        course:duration=="未说明" ? nil : duration,
-                                       completedAt:Date(),chart:result)
+                                       completedAt:Date(),chart:result,reading:reading)
             let encoded=try JSONEncoder().encode(record)
             let recordId="wengua:nativecase:"+UUID().uuidString
             UserDefaults.standard.set(encoded,forKey:recordId)
@@ -1187,7 +1195,7 @@ struct CastSetupScreen: View {
                 throw WenguaCastError.invalidChart
             }
             QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)
-            onNativeCast(result,subject)
+            onNativeCast(result,subject,reading)
             dismiss()
         } catch {
             validationMessage="本次未起局成功，也不会登记15天限制："+error.localizedDescription
@@ -1227,6 +1235,7 @@ struct CastSetupScreen: View {
 struct TraditionalReadingPreview: View {
     let nativeChart: WenguaNativeChart?
     let sampleIndex: Int
+    let nativeReading: WenguaNativeCustomerReading?
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -1242,8 +1251,12 @@ struct TraditionalReadingPreview: View {
                                              chart.pillars.day,chart.pillars.hour]
                         Text(actualPillars.joined(separator:" ") + " · " + chart.solarTerm)
                             .font(.headline)
-                        Text("当前已完成真实九宫事实计算，完整专业解读尚在接入中；不会输出未核准的吉凶结论。")
-                        WenguaHealthFormationSection(chart:chart)
+                        if let reading=nativeReading {
+                            WenguaNativeCustomerView(reading:reading)
+                        } else {
+                            Text("此九宫只有真实盘面事实，未能完成本次专题的原生断案依据校验。")
+                                .foregroundStyle(QStyle.red)
+                        }
                         Text("本盘九宫事实")
                             .font(.title3.weight(.semibold))
                             .padding(.top,10)

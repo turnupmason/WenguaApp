@@ -137,7 +137,7 @@ class V3SourceUI(unittest.TestCase):
                      'chosenTopic',
                      'QuestionTopic(id:"health.severity"',
                      'WenguaNativeCore.compute(at:date,timezone:"America/New_York")',
-                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1)',
+                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)',
                      'FrozenPreview.readings.indices.contains(sampleIndex)',
                      'palace.lifeRows',
                      'QFive.tombHorseRelation(',

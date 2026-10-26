@@ -17,6 +17,8 @@ targets:
       - path: WenguaDesignPreviewApp.swift
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
+      - path: WenguaNativeReadingRouter.swift
+      - path: WenguaNativeCustomerView.swift
       - path: ../../data/templates/health_severity_vnext/reading_template.json
         buildPhase: resources
       - path: ../../data/knowledge/health_81_excel_20261025/81_pairs.tsv
@@ -35,6 +37,8 @@ targets:
         INFOPLIST_KEY_UIRequiresFullScreen: YES
         INFOPLIST_KEY_UIInterfaceOrientationPortrait: YES
         DEVELOPMENT_TEAM: ''
+        MARKETING_VERSION: '0.2.0'
+        CURRENT_PROJECT_VERSION: '1'
     info:
       path: WenguaInfo.plist
       properties:
