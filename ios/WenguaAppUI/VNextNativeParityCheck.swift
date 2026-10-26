@@ -53,7 +53,7 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
             try require(audit.score==fixture.summary.score,"summary signed score mismatch: \(String(describing:audit.score)) / \(String(describing:fixture.summary.score))")
             try require(audit.postVoidKnownSum==fixture.summary.post_void_known_sum,"post-void sum mismatch \(audit.postVoidKnownSum) / \(fixture.summary.post_void_known_sum)")
             for (role,r) in fixture.roles {
-                guard let p= audit.roles[role],let x=audit.palaces[p] else {
+                guard let p=audit.roles[role],let x=audit.palaces[p] else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
                 try require(p==r.palace,"role "+role+" palace mismatch")
