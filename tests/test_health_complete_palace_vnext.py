@@ -78,7 +78,7 @@ class RealSelectedPalacePipeline(unittest.TestCase):
         graph=self.self_reading["full_health_role_strength_network"]
         self.assertEqual(graph["mode"],"selective")
         self.assertEqual(graph["void_rule_version"],
-                         "user_20261024_void_horse_cancels_first_v2")
+                         "user_20261025_void_horse_same_palace_fake_v3")
         for role in ("illness","doctor","medicine","patient","hour"):
             d=graph["complete_selected_palace_audits"][role]
             self.assertTrue(d["stars"])
