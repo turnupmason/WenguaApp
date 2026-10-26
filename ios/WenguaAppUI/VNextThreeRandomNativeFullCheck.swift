@@ -110,8 +110,7 @@ private struct PublicCast:Encodable {
                 test.instant+" exact user-proposed 25-case imagery")
             try require(star25.effectiveness==test.tianrui25.effectiveness,
                 test.instant+" original 25-case applicability restriction")
-            try require(star25.eligibleDirection==
-                        test.tianrui25.eligible_evidence_direction,
+            try require(star25.eligibleDirection==test.tianrui25.eligible_evidence_direction,
                 test.instant+" original 25-case eligible symbol only")
             let loc=test.instant+" ["+test.relationship+"] "
             try require(audit.firstMacroFiveNot==test.firstStage,loc+"five-not")
@@ -208,8 +207,7 @@ private struct PublicCast:Encodable {
             ]
             let auditData=try JSONSerialization.data(withJSONObject:developer,
                                                       options:[.sortedKeys])
-            print("VNEXT_IOS_INTERNAL_DEVELOPER_AUDIT="+
-                  String(data:auditData,encoding:.utf8)!)
+            print("VNEXT_IOS_INTERNAL_DEVELOPER_AUDIT="+String(data:auditData,encoding:.utf8)!)
             let result=PublicCast(
                 ordinal:i+1,instant:test.instant,
                 relationship:test.relationship,
