@@ -1410,3 +1410,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 ## 2026-10-26 · 真实CI双新时辰完成，全文断词与冲突永久落档
 - seed `20261026` 第一候选2022-04-22 05:00 EDT被引擎值使门中五寄宫边界真实拒绝；按同一随机序列第2、3抽在 **2025-07-18 03:00 EDT**（乙巳/癸未/戊子/甲寅；阴2、双伏吟、五不遇）与 **2022-07-19 11:00 EDT**（壬寅/丁未/癸酉/戊午；阴2、无五不遇与伏反吟）成功自动起盘，用现有TSV81格、200表、JSON模板产生真实逐段中文；`WenguaApp CI #40343060059` Python3.11/3.12 success。旧失败`40342643735`保留。
 - 第一有效盘用户±5宫分合断-5极大凶、独立方向证据偏凶；第二有效盘用户±5宫分合断+5极大吉、但旧方向证据的verdict仍“候选吉凶尚不明”。**必须同时公开两层矛盾，不得为了结论好看随意更改实盘、原格或研究代码**；后续在模板冲突/优先级层做专项实盘回归。完整原字断词 `docs/HEALTH_TWO_20261026_REAL_READINGS_AND_CONFLICTS.md`，机器全报告 `data/evaluation/health_vnext/two_random_20261026_live_source_reports.json`。仅软件模拟未新增古书0章0例，43章194案例和旧失败保留。
+
+
+### 2026-10-26 原生Xcode完整编译首版失败与修正（历史不能删除）
+`iOS Offline Native Casting Parity #40342644023` 的 Linux `native_core` 检查与两真盘81格桥均 success（`NATIVE_HEALTH_TEMPLATE_BRIDGE_OK charts=2 catalog=81/81`），Xcode macOS `real_ios_xcode_build` **失败**：`WenguaDesignPreviewApp.swift:1232:25: error: the compiler is unable to type-check this expression in reasonable time`。这是将新增81格多层列表写在已有巨型`TraditionalReadingPreview.body` ViewBuilder 造成的 SwiftUI 类型推导超时，并非改变起盘或源表。修正：把新增 SwiftUI 列表拆成单独`WenguaHealthFormationSection`（formationList／formationCard 分拆），原父View仅一行插入；先前失败run永存，并由新提交macOS实际Simulator build重新验收。不能拿Linux syntax-parse或先前2026-10-22旧Xcode通过来宣称新代码已Build。

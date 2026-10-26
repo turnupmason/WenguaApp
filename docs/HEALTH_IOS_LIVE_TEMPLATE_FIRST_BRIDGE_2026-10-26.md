@@ -31,3 +31,7 @@
 ## 首次实跑发现的旧引擎守护拒盘（故意保留 CI 失败）
 
 首次 CI `40342643735` 在抽样阶段真实触发 `ValueError: Timed value door falls into centre 5; hosting rule not yet confirmed`。这说明随机候选时辰**并非全部能出完整九宫**，不能为了满足数量把中五值使硬寄宫。原来文档列出的2022-04-22与2025-07-18是前两次**抽样候选**，不应在未通过引擎之前称作“两份已出结果”。修订测试只按相同 seed 和随机序列往下取，允许跳过这个已知寄宫保护/已核人物落宫失败；所有跳过记录 `WENGUA_20261026_TECH_REJECTION=`，成功的前两个可计算新盘才打印 `WENGUA_20261026_TWO_RANDOM=`。失败 run 历史保留不删除，实盘选择绝不检查吉凶再重抽。
+
+
+### 2026-10-26 原生Xcode完整编译首版失败与修正（历史不能删除）
+`iOS Offline Native Casting Parity #40342644023` 的 Linux `native_core` 检查与两真盘81格桥均 success（`NATIVE_HEALTH_TEMPLATE_BRIDGE_OK charts=2 catalog=81/81`），Xcode macOS `real_ios_xcode_build` **失败**：`WenguaDesignPreviewApp.swift:1232:25: error: the compiler is unable to type-check this expression in reasonable time`。这是将新增81格多层列表写在已有巨型`TraditionalReadingPreview.body` ViewBuilder 造成的 SwiftUI 类型推导超时，并非改变起盘或源表。修正：把新增 SwiftUI 列表拆成单独`WenguaHealthFormationSection`（formationList／formationCard 分拆），原父View仅一行插入；先前失败run永存，并由新提交macOS实际Simulator build重新验收。不能拿Linux syntax-parse或先前2026-10-22旧Xcode通过来宣称新代码已Build。
