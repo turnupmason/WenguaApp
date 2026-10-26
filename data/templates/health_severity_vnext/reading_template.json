@@ -113,6 +113,7 @@
     "reason_verdict_candidate": "相关宫位内部合断{inner}，跨宫克制依据{outer}。但此人物取用仍有原书条件待核，故不将其写成确定吉凶。",
     "reason_verdict_conflict": "相关实宫内部合断{inner}，跨宫制病证据却{outer}；两层依据不一致，暂不能强断吉凶。",
     "reason_verdict_resolved": "相关实宫内部合断{inner}，跨宫克制证据{outer}；按已核条件，本次传统象意{result}。",
-    "reason_verdict_incomplete": "已核实宫{inner}，跨宫证据{outer}；仍有力量条件不能确认，吉凶暂不定。"
+    "reason_verdict_incomplete": "已核实宫{inner}，跨宫证据{outer}；仍有力量条件不能确认，吉凶暂不定。",
+    "reason_tianrui_25": "天芮月令{month}、落宫月令{palace_month}，星宫关系{relation}，对应「{title}」之象：{why}。"
   }
 }
