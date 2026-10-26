@@ -68,7 +68,7 @@ enum WenguaNativeActorSource {
         let decoded=try JSONDecoder().decode(WenguaActorSourceIndex.self,from:data)
         let ids=decoded.profiles.map(\.id)
         let labels=decoded.profiles.map(\.label)
-        guard ids.count==19,Set(ids).count==19,Set(labels).count==19,
+        guard ids.count==20,Set(ids).count==20,Set(labels).count==20,
               decoded.profiles.allSatisfy({ !$0.references.isEmpty }) else {
             throw WenguaNativeReadingError.invalidPhrase
         }
