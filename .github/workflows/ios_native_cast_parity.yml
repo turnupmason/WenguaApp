@@ -7,6 +7,7 @@ on:
       - 'ios/WenguaAppUI/WenguaHealthTemplateBridge.swift'
       - 'ios/WenguaAppUI/WenguaNativeReadingRouter.swift'
       - 'ios/WenguaAppUI/WenguaNativeCustomerView.swift'
+      - 'ios/WenguaAppUI/WenguaLocalHistoryView.swift'
       - 'ios/WenguaAppUI/NativeHealthCustomerCheck.swift'
       - 'ios/WenguaAppUI/HealthTemplateBridgeCheck.swift'
       - 'data/templates/health_severity_vnext/reading_template.json'

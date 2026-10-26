@@ -292,6 +292,13 @@ struct QuestionEntryScreen: View {
                             Text("心诚则灵 · 尊重事实")
                                 .font(.subheadline).foregroundStyle(QStyle.secondary)
                         }
+                        Spacer(minLength:0)
+                        NavigationLink {
+                            WenguaLocalHistoryView()
+                        } label: {
+                            Label("记录",systemImage:"clock.arrow.circlepath")
+                                .font(.subheadline)
+                        }
                     }
                     .padding(.vertical,24)
                     Text(chosenDomain==nil ? "先选择问事领域" : "再选择具体事项")
@@ -1018,7 +1025,7 @@ enum QIssuePolicy {
     }
 }
 
-private struct LocalNativeCase: Codable {
+struct LocalNativeCase: Codable {
     let topicID: String
     let issueFingerprint: String
     let relation: String
