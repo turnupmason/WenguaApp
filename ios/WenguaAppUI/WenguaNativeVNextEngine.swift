@@ -532,7 +532,7 @@ enum WenguaVNextEngine {
                 strength[role]=try primary(role,p,month:month,catalog:energy,
                                            illness:false)
             } else if role=="illness" || role=="doctor" ||
-                       role=="qian" || role=="kun" {
+                       role=="gender" || role=="qian" || role=="kun" {
                 guard let st=p.heavenStars.first(where:{$0.star==symbol}) else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
