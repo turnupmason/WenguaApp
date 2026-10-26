@@ -27,6 +27,8 @@ targets:
         buildPhase: resources
       - path: ../../data/knowledge/health_81_excel_20261025/81_pairs.tsv
         buildPhase: resources
+      - path: PrivacyInfo.xcprivacy
+        buildPhase: resources
       - path: FrozenReadingV391.json
         buildPhase: resources
     settings:

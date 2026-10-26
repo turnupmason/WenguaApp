@@ -33,3 +33,7 @@
 ## 2026-10-26 200格离线资源补档
 
 新版另增 `data/mobile/health_vnext/health_energy_200.json` 作为八张25格用户权威表的**全部真实单元格**静态 Bundle；`WenguaNativeEnergyBundle.swift` 校验本地资源，且 `scripts/export_ios_health_energy_200.py --check` / `tests/test_ios_energy_200_source_parity.py` 比对 Python 8×25。注意只是**数据已搬入iOS应用**，尚不是 Python `health_quant_overlay_vnext.py` 的全套推理和结论已经 Swift 等价执行；上架门槛仍要求全链数值内部一致、客户输出不得展示任何分数。
+
+## 2026-10-26 发行资源补充
+- `ios/WenguaAppUI/PrivacyInfo.xcprivacy` 声明 UserDefaults 只访问当前App本机偏好（Apple已确认理由 `CA92.1`）、没有声明第三方跟踪/收集；需在正式发行前按实际 SDK 与网络行为重新审查，不能只靠此文件解决全部隐私义务。来源：Apple `https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacyaccessedapitypes/nsprivacyaccessedapitypereasons`。
+- `.github/workflows/ios_native_cast_parity.yml` 完整Xcode Simulator构建成功时产**未签名模拟器调试App artifact**（30天），不是iPhone可安装IPA或App Store签名包。真实开发者账号、Team ID和App Store Connect仍须本人处理。

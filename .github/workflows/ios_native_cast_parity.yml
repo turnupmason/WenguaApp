@@ -10,6 +10,8 @@ on:
       - 'ios/WenguaAppUI/WenguaLocalHistoryView.swift'
       - 'ios/WenguaAppUI/WenguaNativeEnergyBundle.swift'
       - 'ios/WenguaAppUI/Native200SourceCheck.swift'
+      - 'ios/WenguaAppUI/PrivacyInfo.xcprivacy'
+      - 'tests/test_ios_privacy_manifest_20261026.py'
       - 'data/mobile/health_vnext/health_energy_200.json'
       - 'scripts/export_ios_health_energy_200.py'
       - 'tests/test_ios_energy_200_source_parity.py'
@@ -89,3 +91,11 @@ jobs:
             -destination 'generic/platform=iOS Simulator' \
             -derivedDataPath /tmp/wengua-ios-derived \
             CODE_SIGNING_ALLOWED=NO build
+      - name: Preserve unsigned iOS Simulator debug app (NOT an iPhone IPA)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wengua-unsigned-simulator-debug-app
+          path: /tmp/wengua-ios-derived/Build/Products/Debug-iphonesimulator/问卦.app/
+          retention-days: 30
+          if-no-files-found: error
