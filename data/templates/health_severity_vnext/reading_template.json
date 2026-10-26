@@ -60,6 +60,25 @@
     "details": "{palace}内的天地干组合为「{names}」。其吉凶古诀与其它同宫事实须合看。",
     "pending": "当前原生端已核定时辰、九宫、人物宫与81格；200格能量、真假空调整和跨宫最终优先级尚未完成与Python逐盘验收，因此暂不强断结果。",
     "unavailable": "此领域或人物关系的离线推理条件尚未通过一致性验收，不得复用其他领域断词。",
-    "disclaimer": "古籍文化研究及盘象说明，不属于诊断、治疗、病情预测或医学建议。"
+    "disclaimer": "古籍文化研究及盘象说明，不属于诊断、治疗、病情预测或医学建议。",
+    "vnext_palace": "{palace}：{stars}、{door}、{deity}；天地格{patterns}{void_note}。",
+    "vnext_role": "{role}在{palace}，与天芮病宫{relation}{control_note}。",
+    "vnext_control_effective": "，实际克制格为「{outcome}」，有克制之象，仍须看宫内限制",
+    "vnext_control_limited": "，实际克制格为「{outcome}」，相克力量有限",
+    "vnext_control_failed": "，实际克制格为「{outcome}」，名义相克难落实",
+    "vnext_control_pending": "，空、墓、刑或力量尚有限制，暂不强断",
+    "vnext_no_control": "，此关系不能当作主动克病",
+    "vnext_void_fake": "，旬空为假空；冲填应期另审",
+    "vnext_void_true": "，旬空为真空；不能以冲填直接断恢复",
+    "vnext_verdict_good": "综合所选实宫的星门神格、空亡及人物关系，本次传统象意偏吉。",
+    "vnext_verdict_bad": "综合所选实宫的星门神格、空亡及人物关系，本次传统象意偏凶。",
+    "vnext_verdict_neutral": "相关宫位合断为不凶不吉之象，仍须结合问事情境。",
+    "vnext_verdict_conflict": "宫内格局与人物生克存在相反证据，尚不能作出确定吉凶判断。",
+    "vnext_verdict_pending": "部分实际力量或用神条件未能唯一核定，本次不强断吉凶。",
+    "vnext_timing": "本盘驿马{horse}；伏吟主慢、反吟主快，应期仍须审查空墓冲合与实际问事条件，不虚构日期。",
+    "vnext_title_palace": "相关宫位格局",
+    "vnext_title_role": "人物关系与制约",
+    "vnext_title_verdict": "综合判断",
+    "vnext_title_timing": "时空与应期"
   }
 }

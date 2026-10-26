@@ -58,17 +58,18 @@ enum WenguaNativeReadingRouter {
               let p=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
         }
-        // The native binary must carry the literal latest 8x25 matrices.
-        // This checks source resources; full V-next numeric/relationship parity
-        // is intentionally NOT inferred from their presence.
-        _ = try WenguaNativeEnergyBundle.fromBundle(bundle)
-        return try compose(chart:chart,topicID:topicID,relationship:relationship,
+        let energy=try WenguaNativeEnergyBundle.fromBundle(bundle)
+        return try compose(chart:chart,topicID:topicID,
+                           relationship:relationship,
                            template:Data(contentsOf:t),
-                           catalog:String(contentsOf:p,encoding:.utf8))
+                           catalog:String(contentsOf:p,encoding:.utf8),
+                           energy:energy)
     }
 
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
-                        template:Data, catalog:String) throws -> WenguaNativeCustomerReading {
+                        template:Data, catalog:String,
+                        energy:WenguaNativeEnergyCatalog? = nil)
+                        throws -> WenguaNativeCustomerReading {
         guard supportedTopics.contains(topicID) else {throw WenguaNativeReadingError.unsupportedTopic}
         guard supportedRelations.contains(relationship) else {
             throw WenguaNativeReadingError.unsupportedRelationship
@@ -212,20 +213,35 @@ enum WenguaNativeReadingRouter {
             evidence.append(try fill("details",[
                 "palace":palaceName(p),"names":titles.joined(separator:"、")]))
         }
-        let sections=[
+        var sections=[
             WenguaNativeCustomerSection(id:"01",title:"局势与缓急",text:macro),
             WenguaNativeCustomerSection(id:"02",title:"选用神与宫位关系",
                                         text:roleSentences.joined(separator:"\n")),
             WenguaNativeCustomerSection(id:"03",title:"本盘格局依据",
-                                        text:evidence.joined(separator:"\n")),
-            WenguaNativeCustomerSection(id:"04",title:"综合研判",
-                                        text:try fill("pending")),
-            WenguaNativeCustomerSection(id:"05",title:"说明",
-                                        text:try fill("disclaimer"))
+                                        text:evidence.joined(separator:"\n"))
         ]
+        let evidenceStatus:String
+        if let energy {
+            // The actual iPhone code path ALWAYS supplies the 200 original
+            // source cells, and computes a fresh verdict for this chart.
+            let current=try WenguaVNextEngine.compute(
+                chart:chart,relationship:relationship,energy:energy,
+                catalog:catalog)
+            sections += try WenguaVNextCustomerComposer.sections(
+                current,chart:chart,template:template)
+            evidenceStatus="native_vnext_200_81_signed_source_logic_review"
+        } else {
+            // Legacy test injection only. Never claim finished V-next
+            // without a real compiled and source-verified energy resource.
+            sections.append(WenguaNativeCustomerSection(
+                id:"04",title:"专业合断尚未接通",text:try fill("pending")))
+            evidenceStatus="native_factual_template_only"
+        }
+        sections.append(WenguaNativeCustomerSection(id:"95",
+            title:"传统文化说明",text:try fill("disclaimer")))
         return WenguaNativeCustomerReading(
-            version:"native_evidence_vnext_20261026_stage2",
+            version:"native_vnext_20261026_full_health_candidate",
             topicID:topicID,relationship:relationship,iso:chart.iso,
-            evidenceStatus:"needs_200_cell_and_conflict_parity",sections:sections)
+            evidenceStatus:evidenceStatus,sections:sections)
     }
 }

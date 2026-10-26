@@ -19,6 +19,7 @@ targets:
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift
       - path: WenguaNativeVNextEngine.swift
+      - path: WenguaVNextCustomerComposer.swift
       - path: WenguaNativeCustomerView.swift
       - path: WenguaLocalHistoryView.swift
       - path: WenguaNativeEnergyBundle.swift
