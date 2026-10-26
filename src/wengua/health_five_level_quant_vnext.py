@@ -13,7 +13,7 @@ POINT={name:i+1 for i,name in enumerate(TIERS)}
 SIGNS={"吉":1,"凶":-1}
 STAGE_EXTREME=frozenset(("长生","冠带","临官","帝旺","沐浴"))
 STAGE_LARGE=frozenset(("胎","养"))
-VERSION="user_health_five_grade_signed_20261024_v2_saturated_extremes"
+VERSION="user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores"
 
 
 def points(tier,polarity):
@@ -146,84 +146,86 @@ def adverse_shift(score,levels=2):
     return 0
 
 
+def void_shift_three(score,*,void_state):
+    """User 2026-10-25 signed palace grade rule, identical TODAY for 真/假空.
+
+    +2/-3 -> -1/0; -2/-3 -> +1/0. No made-up -5 extreme for true void.
+    Timing is separate: fake may restore on 冲/填, true may not.
+    """
+    if not isinstance(score,int) or isinstance(score,bool) or abs(score)>5:
+        raise ValueError("Void shift requires bounded integer palace score")
+    if void_state not in ("not_void","fake_void","true_void"):
+        raise ValueError("Void state must come from actual nine palace")
+    if void_state=="not_void" or score==0:return score
+    return score-3 if score>0 else score+3
+
+
 def palace_tally(*,factors,door_break=False,five_not_encounter=False,
                  void_state="not_void",horse_cleared_void=False):
-    """User order: factor energies -> 81 gate -> two-level penalties -> void.
+    """Current sign of a REAL palace, then an explicit +/-3 emptiness shift.
 
-    '假空' unconditionally makes the palace CURRENT contribution zero and
-    keeps the pre-void grade only in audit (future 填实 NOT implemented).
-    '真空' overrides both auspicious and adverse to 极大凶(-5).
-    An actual 马冲空 already returns not_void upstream, never fake void.
-    A sum of four signed factors can exceed 5. DO NOT invent thresholds.
+    Unresolved book-conditioned patterns should be provided as known zero by
+    their source gate (not as proof a favourable pattern actually activates).
+    Genuine missing required star/door/deity still remains unresolved rather
+    than pretending it has zero force.
     """
     if void_state not in ("not_void","fake_void","true_void"):
         raise ValueError("Need actual real-chart void classification")
     if horse_cleared_void and void_state!="not_void":
         raise ValueError("Horse-cleared void must be not_void")
-    if len(factors)!=4 or set(factors)!=set(("star","door","deity","pattern")):
-        raise ValueError("Need all four named categories; use None if source pending")
+    if len(factors)!=4 or set(factors)!={"star","door","deity","pattern"}:
+        raise ValueError("Need precisely star, door, deity, ordered pattern")
     seen={};unresolved=[];instances={}
     for k,v in factors.items():
         if v is None:
-            unresolved.append(k)
-            continue
-        # Latest user rule: neutral 杜/景门 are *known zero* rather than an
-        # unknown polarity. Multiple real stars (天禽同宫) and ordered
-        # stem pairs remain distinct source audit items within the category.
-        if isinstance(v,(list,tuple)):
-            if k not in ("star","pattern") or not v:
-                raise ValueError("Only star and pattern can contain multiple real items")
-            components=tuple(v)
-        else:
-            components=(v,)
-        for score in components:
-            if (not isinstance(score,int) or isinstance(score,bool)
-                    or abs(score)>5 or
-                    (score==0 and k not in ("door","pattern"))):
-                raise ValueError("Resolved component needs signed tier; only neutral door or absent pattern can be zero")
-        instances[k]=list(components)
-        seen[k]=sum(components)
+            unresolved.append(k);continue
+        components=tuple(v) if isinstance(v,(list,tuple)) else (v,)
+        if isinstance(v,(list,tuple)) and (k not in ("star","pattern") or not components):
+            raise ValueError("Only star/pattern can contain multiple real scored items")
+        for value in components:
+            if (not isinstance(value,int) or isinstance(value,bool)
+                or abs(value)>5 or
+                (value==0 and k not in ("door","pattern"))):
+                raise ValueError("Only a source-known signed energy tier or neutral door/pattern")
+        seen[k]=sum(components);instances[k]=list(components)
     subtotal=sum(seen.values())
-    original_sum=subtotal if not unresolved else None
-    if void_state=="fake_void":
-        final=0;status="fake_void_zero"
-    elif void_state=="true_void":
-        final=-5;status="true_void_extreme_adverse"
-    elif unresolved:
-        final=None;status="incomplete_components"
+    complete=not unresolved
+    raw_sum=subtotal if complete else None
+    # Separate established whole-chart adversity from each palace's empty
+    # status; the historical adverse_shift semantics still exist unchanged.
+    if not complete:
+        final=None;before_void=None;status="incomplete_components"
     else:
-        # Explicit user cutoff: raw +13 -> +5, raw -17 -> -5.
-        # Apply actual adverse level shifts to the 5-grade category, never
-        # discard raw source arithmetic or equate it to the capped output.
-        final=saturate(subtotal)
-        if five_not_encounter:final=adverse_shift(final,2)
-        if door_break:final=adverse_shift(final,2)
-        status="saturated_five_grade" if abs(subtotal)>5 else "calculated"
-    return {"version":VERSION,"status":status,"components":seen,
-            "component_instances":instances,
-            "known_neutral_door":factors.get("door")==0,
-            "unresolved_categories":unresolved,
-            "known_subtotal":subtotal,
-            "raw_sum":original_sum,
-            "five_not_encounter":bool(five_not_encounter),
-            "door_break":bool(door_break),
-            "void_state":void_state,
-            "horse_cleared_void":bool(horse_cleared_void),
-            "score":final,
-            "grade":label(final) if final is not None else None,
-            "raw_sum_exceeds_five":original_sum is not None and abs(original_sum)>5,
-            "saturated_from_raw":original_sum if original_sum is not None
-                                  and abs(original_sum)>5 else None,
-            "score_is_research_only":True}
+        before_void=saturate(subtotal)
+        if five_not_encounter:before_void=adverse_shift(before_void,2)
+        if door_break:before_void=adverse_shift(before_void,2)
+        final=void_shift_three(before_void,void_state=void_state)
+        status=("void_signed_three_shift" if void_state!="not_void" else
+                "saturated_five_grade" if abs(subtotal)>5 else "calculated")
+    return {
+        "version":VERSION,"status":status,"components":seen,
+        "component_instances":instances,"known_neutral_door":factors.get("door")==0,
+        "unresolved_categories":unresolved,"known_subtotal":subtotal,
+        "raw_sum":raw_sum,"score_before_void":before_void,
+        "void_adjustment":(final-before_void if final is not None else None),
+        "void_adjustment_rule":"positive_minus_3_negative_plus_3_zero_unchanged",
+        "five_not_encounter":bool(five_not_encounter),"door_break":bool(door_break),
+        "void_state":void_state,"horse_cleared_void":bool(horse_cleared_void),
+        "timing_can_refill_or_clash":(True if void_state=="fake_void" else
+                                     False if void_state=="true_void" else None),
+        "timing_rules_deferred":True,
+        "score":final,"grade":label(final) if final is not None else None,
+        "raw_sum_exceeds_five":raw_sum is not None and abs(raw_sum)>5,
+        "saturated_from_raw":raw_sum if raw_sum is not None and abs(raw_sum)>5 else None,
+        "score_is_research_only":True,
+    }
 
 
 def multi_palace_tally(*,palaces):
-    """ONE unique real palace, raw arithmetic summed BEFORE ±5 saturation.
+    """Selected distinct physical palaces only; sum POST-VOID palace scores.
 
-    Same physical palace shared by patient/hour/值符/乙 or sex auxiliary
-    counts once. A palace can carry a bounded grade (-5) AND an
-    independently true raw signed subtotal (-17).  Cross-palace netting
-    must use raw contributions (-17+13+...) rather than early-capped -5.
+    Full original source arithmetic is retained independently. A shared
+    illness/chief or medicine/hour or Qian/role palace counts exactly once.
     """
     chosen={};duplicate=[]
     for role,row in palaces.items():
@@ -232,29 +234,31 @@ def multi_palace_tally(*,palaces):
             duplicate.append({"role":role,"palace":pid,
                               "already_counted_role":chosen[pid][0]})
         else:chosen[pid]=(role,row)
-    pending=[str(pid) for pid,(role,row) in chosen.items()
-             if row["score"] is None]
-    raw_known=0
-    for _,row in chosen.values():
-        if row["score"] is None:
-            raw_known+=row.get("known_subtotal",0)
-        else:
-            raw_known+=row.get("raw_sum") if row.get("raw_sum") is not None else row["score"]
-    score=saturate(raw_known) if not pending else None
-    return {"version":VERSION,
-            "status":("unresolved_palaces" if pending else
-                      "saturated_five_grade" if abs(raw_known)>5 else
-                      "calculated"),
-            "raw_known_sum":raw_known,
-            "raw_grade_if_all_known":label(saturate(raw_known))
-                                      if not pending else None,
-            "provisional_known_grade":label(saturate(raw_known)),
-            "provisional_is_not_final":bool(pending),
-            "pending_palaces":pending,
-            "duplicate_physical_roles":duplicate,
-            "unique_palace_count":len(chosen),
-            "score":score,"grade":label(score) if score is not None else None,
-            "needs_final_band_rule":False,
-            "user_extreme_cutoff":5,
-            "raw_components_not_clamped_before_cross_palace_sum":True,
-            "not_a_medical_assessment":True}
+    pending=[str(pid) for pid,(_,row) in chosen.items()
+             if row.get("score") is None]
+    raw_known=sum(row.get("raw_sum") if row.get("raw_sum") is not None else
+                  row.get("known_subtotal",0)
+                  for _,row in chosen.values())
+    actual_known=sum(row["score"] for _,row in chosen.values()
+                     if row.get("score") is not None)
+    score=saturate(actual_known) if not pending else None
+    return {
+        "version":VERSION,
+        "status":"unresolved_palaces" if pending else
+                 "saturated_five_grade" if abs(actual_known)>5 else "calculated",
+        "raw_known_sum":raw_known,
+        "post_void_known_sum":actual_known,
+        "effective_palace_scores":{str(pid):row.get("score")
+                                   for pid,(_,row) in chosen.items()},
+        "raw_grade_if_all_known":label(score) if score is not None else None,
+        "provisional_known_grade":label(saturate(actual_known)),
+        "provisional_is_not_final":bool(pending),
+        "pending_palaces":pending,
+        "duplicate_physical_roles":duplicate,
+        "unique_palace_count":len(chosen),"score":score,
+        "grade":label(score) if score is not None else None,
+        "needs_final_band_rule":False,
+        "user_extreme_cutoff":5,
+        "sum_after_each_palace_void_adjustment":True,
+        "not_a_medical_assessment":True,
+    }
