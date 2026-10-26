@@ -92,9 +92,7 @@ private struct PublicCast:Encodable {
                 catalog:pairs,actor:actor)
             let loc=test.instant+" ["+test.relationship+"] "
             try require(audit.firstMacroFiveNot==test.firstStage,loc+"five-not")
-            try require(audit.score==test.summary.score,loc+
-                "final score Swift "+String(describing:audit.score)+
-                " Python "+String(describing:test.summary.score))
+            try require(audit.score==test.summary.score,loc+"final score Swift "+String(describing:audit.score)+" Python "+String(describing:test.summary.score))
             try require(audit.postVoidKnownSum==test.summary.post_void_known_sum,
                 loc+"real palace dedup + void three")
             for (name,expected) in test.roles {
@@ -120,8 +118,7 @@ private struct PublicCast:Encodable {
                     r.afterVoid==expected.score,loc+name+" qian/kun dedup")
             }
             try require(audit.evidenceDirection==test.evidenceDirection,
-                loc+"qualitative disease evidence priority Swift="+
-                audit.evidenceDirection+" Python="+test.evidenceDirection)
+                loc+"qualitative disease evidence priority Swift="+audit.evidenceDirection+" Python="+test.evidenceDirection)
             for (name,expected) in test.controls {
                 guard let actual=audit.controls.first(where:{$0.role==name}) else{
                     throw WenguaVNextReadingGate.unresolvedRole
@@ -148,8 +145,7 @@ private struct PublicCast:Encodable {
                 pillars:[chart.pillars.year,chart.pillars.month,
                          chart.pillars.day,chart.pillars.hour],
                 solar_term:chart.solarTerm,
-                bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+
-                    String(chart.bureau.ju)+"局",
+                bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+String(chart.bureau.ju)+"局",
                 section_count:reading.sections.count,
                 source_direction:audit.evidenceDirection,
                 evidence_conflict:audit.evidenceConflict,
