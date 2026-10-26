@@ -34,8 +34,6 @@ targets:
         buildPhase: resources
       - path: PrivacyInfo.xcprivacy
         buildPhase: resources
-      - path: FrozenReadingV391.json
-        buildPhase: resources
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.wengua.ios

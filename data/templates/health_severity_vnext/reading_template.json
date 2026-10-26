@@ -82,6 +82,7 @@
     "vnext_title_timing": "时空与应期",
     "vnext_disease_control_effective": "，病宫向本宫施克的实际格为「{outcome}」，本方受制之象较明显",
     "vnext_disease_control_limited": "，病宫施克格为「{outcome}」，克力有限，不可直接断病象尽得其势",
-    "vnext_disease_control_failed": "，病宫名义来克，但实际格为「{outcome}」，不能断已成功制住本方"
+    "vnext_disease_control_failed": "，病宫名义来克，但实际格为「{outcome}」，不能断已成功制住本方",
+    "vnext_role_candidate": "本次患者用神来自原书条件类推，虽已按真实九宫计算相关星门神格及生克，人物身份的独立适用条件尚未核全，因此暂不下确定的吉凶结论。"
   }
 }

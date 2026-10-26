@@ -374,42 +374,27 @@ struct QuestionEntryScreen: View {
     }
 }
 
-// Read-only V3.9.1 sample readings: NOT used to predict or read a newly cast chart.
-struct FrozenReadingSection: Decodable, Identifiable {
-    let id: String
-    let title: String
-    let text: String
-}
-struct FrozenReadingSample: Decodable {
-    let id: String
-    let iso: String
-    let originalReading: String
-    let readingSections: [FrozenReadingSection]
-}
-private struct FrozenReadingEnvelope: Decodable {
-    let samples: [FrozenReadingSample]
-}
-enum FrozenPreview {
-    static let isos = [
-        "2026-11-01T05:00:00-05:00","2026-11-04T05:00:00-05:00",
-        "2026-11-10T21:00:00-05:00","2026-11-21T17:00:00-05:00"
-    ]
-    static let labels = ["11/01 卯时","11/04 卯时","11/10 亥时","11/21 酉时"]
-    static let readings: [FrozenReadingSample] = {
-        guard let url=Bundle.main.url(forResource:"FrozenReadingV391",withExtension:"json"),
-              let data=try? Data(contentsOf:url),
-              let records=try? JSONDecoder().decode(FrozenReadingEnvelope.self,from:data),
-              records.samples.map(\.iso)==isos else {return []}
-        return records.samples
-    }()
-    static func cast(_ index: Int) -> WenguaNativeChart? {
-        guard isos.indices.contains(index) else {return nil}
-        let formatter=ISO8601DateFormatter()
-        formatter.formatOptions=[.withInternetDateTime]
-        guard let date=formatter.date(from:isos[index]) else {return nil}
-        // This is an actual deterministic offline calculation from each FIXED
-        // input instant, not a user query and never a persisted issue receipt.
-        return try? WenguaNativeCore.compute(at:date,timezone:"America/New_York")
+// The frozen V3.9.1 file remains in Git history for QA but is NOT
+// bundled into the customer application and never appears as a reading.
+private struct WenguaVNextInlineReading: View {
+    let reading:WenguaNativeCustomerReading
+    let details:()->Void
+    var body:some View {
+        VStack(alignment:.leading,spacing:12) {
+            HStack {
+                Text("本次 V-next 断案")
+                    .font(.title2.weight(.semibold))
+                Spacer()
+                Text("离线实算").font(.caption).foregroundStyle(QStyle.green)
+            }
+            WenguaNativeCustomerView(reading:reading)
+            Button("查看独立断案详情与九宫事实") {details()}
+                .buttonStyle(.bordered)
+                .frame(maxWidth:.infinity)
+        }
+        .padding(15)
+        .background(.white,in:RoundedRectangle(cornerRadius:16))
+        .padding(12)
     }
 }
 
@@ -454,22 +439,14 @@ struct ProfessionalChartScreen: View {
                         Spacer()
                     }.font(.caption2).foregroundStyle(QStyle.secondary).padding(12)
 
-                    VStack(alignment:.leading,spacing:12) {
-                        Button {showReading=true} label: {
-                            HStack {
-                                Image(systemName:"text.book.closed")
-                                Text("查看本次传统盘象")
-                                Spacer()
-                                Image(systemName:"chevron.right")
-                            }
-                            .font(.headline)
+                    if let reading=nativeReading {
+                        WenguaVNextInlineReading(reading:reading,
+                                                details:{showReading=true})
+                    } else {
+                        Text("本次只有真实九宫事实；V-next 断案尚未完成，不使用历史样本冒充。")
+                            .font(.caption).foregroundStyle(QStyle.red)
                             .padding(14)
-                            .background(Color(red:0.93,green:0.96,blue:1),
-                                        in:RoundedRectangle(cornerRadius:12))
-                        }
-                        Text("本机离线实算九宫，自动依领域和人物关系读取新版模板；最终200格合断仍在逐盘移植与验收。")
-                            .font(.caption).foregroundStyle(QStyle.secondary)
-                    }.padding(14)
+                    }
                 } else {
                     VStack(alignment:.leading,spacing:15) {
                         Text("准备起局").font(.system(size:27,weight:.semibold))
@@ -512,7 +489,8 @@ struct ProfessionalChartScreen: View {
             TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)
         }
         .onAppear {
-            // Initial app path: domain > subquestion > setup > calm > native cast.
+            // Production: domain > subquestion > verified subject > instant > real
+            // native V-next. No FrozenReadingV391 sample path is reachable.
             if nativeChart == nil {showAsk=true}
         }
     }
@@ -1041,6 +1019,10 @@ struct CastSetupScreen: View {
     let onNativeCast: (WenguaNativeChart, String, WenguaNativeCustomerReading) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var subject = "本人"
+    @State private var inquiryContext = "direct_proxy"
+    @State private var patientSex = "unspecified"
+    @State private var birthOrder = "unspecified"
+    @State private var patientBirthGanzhi = ""
     @State private var subjectName = ""
     @State private var birthYear = ""
     @State private var question = ""
@@ -1073,7 +1055,29 @@ struct CastSetupScreen: View {
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)
-                            Text("目前本人、父亲的主用神已接入原生；其他亲属关系待独立验盘后开放。出生年命暂只保存输入，不伪造已移植的年命断法。")
+                            if subject != "本人" {
+                                Picker("问病情境",selection:$inquiryContext) {
+                                    Text("当面代问").tag("direct_proxy")
+                                    Text("闻讯按事件时间起局").tag("event_news")
+                                }
+                                .pickerStyle(.menu)
+                            }
+                            Picker("病人性别（可选）",selection:$patientSex) {
+                                Text("未说明").tag("unspecified")
+                                Text("男").tag("male")
+                                Text("女").tag("female")
+                            }.pickerStyle(.menu)
+                            if ["儿子","女儿","孩子","侄子"].contains(subject) {
+                                Picker("出生排行（可选）",selection:$birthOrder) {
+                                    Text("未说明").tag("unspecified")
+                                    Text("长").tag("eldest")
+                                    Text("中").tag("middle")
+                                    Text("幼").tag("youngest")
+                                }.pickerStyle(.menu)
+                            }
+                            TextField("出生年命干支（选填，如辛酉）",text:$patientBirthGanzhi)
+                                .textInputAutocapitalization(.never)
+                            Text("关系用神取自现有19类原书取用索引。未经作者案例独立核准的同辈、部分亲属仍属条件候选；不能把类推断为确定吉凶。出生公历年份仅作为本机记录，不能直接等同完整年命。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
@@ -1187,8 +1191,17 @@ struct CastSetupScreen: View {
             // A successful chart is not enough: fail before issuing the 15-day
             // receipt unless the selected native domain and role can read its
             // true local evidence from the bundled, user-editable template.
+            let context=WenguaNativeInquiry(
+                relationship:subject,
+                context:subject=="本人" ? "direct_self" : inquiryContext,
+                patientSex:patientSex=="unspecified" ? nil : patientSex,
+                birthOrder:birthOrder=="unspecified" ? nil : birthOrder,
+                patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
+                    in:.whitespacesAndNewlines).isEmpty ? nil :
+                    patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines))
             let reading=try WenguaNativeReadingRouter.compose(
-                chart:result,topicID:topic.id,relationship:subject)
+                chart:result,topicID:topic.id,relationship:subject,
+                inquiry:context)
             // Persistent case receipt is ONLY original board/clock facts and
             // hashed issue ID. User's raw private question is NOT stored here.
             let record=LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
@@ -1220,6 +1233,16 @@ struct CastSetupScreen: View {
                 validationMessage="出生年份需是有效公历年份（1850–2150），或留空。"
                 return
             }
+        }
+        let supplied=patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines)
+        if !supplied.isEmpty && !WenguaNativeActorSource.validatedGanzhi(supplied) {
+            validationMessage="出生年命须填写完整六十甲子干支，例如辛酉；不确定可留空。"
+            return
+        }
+        if (subject=="配偶" || subject=="父母") && patientSex=="unspecified" &&
+           inquiryContext != "event_news" {
+            validationMessage="此人物关系必须先明确病人性别，以决定真正的用神。"
+            return
         }
         let normalized = question.filter { !$0.isWhitespace && !$0.isPunctuation }
         guard normalized.count >= 4 else {
@@ -1273,28 +1296,6 @@ struct TraditionalReadingPreview: View {
                             return a < b
                         })) { palace in
                             NativePalaceEvidenceCard(palace:palace)
-                        }
-                    } else if FrozenPreview.readings.indices.contains(sampleIndex) {
-                        let sample=FrozenPreview.readings[sampleIndex]
-                        Text("研究案例 · " + sample.iso)
-                            .font(.caption).foregroundStyle(QStyle.secondary)
-                        Text(sample.originalReading)
-                            .font(.subheadline)
-                            .textSelection(.enabled)
-                            .fixedSize(horizontal:false,vertical:true)
-                            .padding(14)
-                            .background(.white,in:RoundedRectangle(cornerRadius:12))
-                        ForEach(sample.readingSections) { section in
-                            VStack(alignment:.leading,spacing:9) {
-                                Text(section.title).font(.headline)
-                                Text(section.text).font(.subheadline)
-                                    .foregroundStyle(QStyle.secondary)
-                                    .fixedSize(horizontal:false,vertical:true)
-                                    .textSelection(.enabled)
-                            }
-                            .frame(maxWidth:.infinity,alignment:.leading)
-                            .padding(16)
-                            .background(.white,in:RoundedRectangle(cornerRadius:14))
                         }
                     } else {
                         Text("封存原始断词资源未加载；拒绝以其它测试盘文本替代。")

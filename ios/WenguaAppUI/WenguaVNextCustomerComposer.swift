@@ -37,6 +37,7 @@ enum WenguaVNextCustomerComposer {
             "vnext_disease_control_failed","vnext_void_fake",
             "vnext_void_true","vnext_verdict_good","vnext_verdict_bad",
             "vnext_verdict_neutral","vnext_verdict_conflict",
+            "vnext_role_candidate",
             "vnext_verdict_pending","vnext_timing","vnext_title_palace",
             "vnext_title_role","vnext_title_verdict","vnext_title_timing"
         ]
@@ -103,7 +104,9 @@ enum WenguaVNextCustomerComposer {
             ]))
         }
         let final:String
-        if review.score==nil {final=try phrase("vnext_verdict_pending")}
+        if review.roleStatus != "eligible" {
+            final=try phrase("vnext_role_candidate")
+        } else if review.score==nil {final=try phrase("vnext_verdict_pending")}
         else if review.evidenceConflict {final=try phrase("vnext_verdict_conflict")}
         else if review.score==0 {final=try phrase("vnext_verdict_neutral")}
         else {final=try phrase(review.score!>0 ?
