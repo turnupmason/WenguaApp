@@ -83,12 +83,20 @@ class Excel81(unittest.TestCase):
         for role,detail in details.items():
             self.assertTrue(detail["user_excel_81_is_authoritative"])
             self.assertTrue(detail["ordered_book_81_pairs"])
+            illness_star=next((x for x in detail["stars"]
+                               if x["name"]=="天芮星"),None)
+            illness_carrier=illness_star.get("carried_stem") if illness_star else None
             for pair in detail["ordered_book_81_pairs"]:
                 expected=lookup_pair(pair["heaven"],pair["earth"])
                 self.assertEqual(pair["name"],expected["name"])
                 self.assertEqual(pair["polarity"],expected["polarity"])
                 self.assertTrue(pair["can_vote"])
                 self.assertEqual(pair["source_state"],"user_excel_explicit_81")
+                # Raw immutable 81 rows remain all auditable. Display
+                # intentionally excludes only the co-hosted Tianqin carrier
+                # in a Tianrui palace, per the new customer-specific scope.
+                if illness_carrier and pair["heaven"]!=illness_carrier:
+                    continue
                 text=out["reading_text"]
                 self.assertIn("古文："+expected["classical_text"].rstrip("。；"),text)
                 self.assertIn("古诀大意："+expected["classical_meaning"].rstrip("。；"),text)

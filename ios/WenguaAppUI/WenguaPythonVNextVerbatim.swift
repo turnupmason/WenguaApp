@@ -254,8 +254,7 @@ enum WenguaPythonVNextVerbatim {
             let rel=try WenguaVNextEngine.directed(se,pe)
             let map=["宫生符号":"被宫生","宫克符号":"被宫克",
                      "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
-            return own.symbol+"月令"+stage+"、"+(map[rel] ?? rel)+
-                "，用神力量为"+strength+"。"
+            return own.symbol+"月令"+stage+"、"+(map[rel] ?? rel)+"，用神力量为"+strength+"。"
         }
         let m=try month(chart)
         let col=try monthColumn(own.symbol,m)
@@ -268,8 +267,7 @@ enum WenguaPythonVNextVerbatim {
             }
         }
         let stage=rows.count==1 ? rows[0] : "长生分支待核"
-        return own.symbol+"天干十二长生"+stage+"、"+col+
-            "，用神力量为"+strength+"。"
+        return own.symbol+"天干十二长生"+stage+"、"+col+"，用神力量为"+strength+"。"
     }
 
     private static func roleAgainstIllness(
@@ -287,21 +285,25 @@ enum WenguaPythonVNextVerbatim {
         let rel=relation(aid,pid)
         let note=try powerNote(role,p,own,chart:chart)
         let outcome=edge.cell
-        let eligible=role=="chief" ?
-            (review.palaces[aid]?.void=="not_void" && rel=="克" &&
-             ["strong","limited"].contains(edge.applicability)) :
-            (rel != "克" || ["strong","limited"].contains(edge.applicability))
+        let applicable=["strong","limited"].contains(edge.applicability)
+        let eligible:Bool
+        if role=="chief" {
+            eligible=review.palaces[aid]?.void=="not_void" &&
+                rel=="克" && applicable
+        } else {
+            eligible=rel != "克" || applicable
+        }
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
             return note+"因值符空亡，神兽不在宫内，无法提供帮助；值符护持不参与最终合断。"
         }
         if rel=="克" {
-            let content=eligible ?
-               "疾病得到了"+who+"的压制。施力方与病宫查克制表，结果为"+
-                    (outcome ?? "待核")+"。" :
-               "疾病尚未得到"+who+"的有效压制。克制表结果为"+
-                    (outcome ?? "待核")+"。"
-            return note+who+"宫克天芮病宫，意思为："+content+
-                (role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
+            let content:String
+            if eligible {
+                content="疾病得到了"+who+"的压制。施力方与病宫查克制表，结果为"+(outcome ?? "待核")+"。"
+            } else {
+                content="疾病尚未得到"+who+"的有效压制。克制表结果为"+(outcome ?? "待核")+"。"
+            }
+            return note+who+"宫克天芮病宫，意思为："+content+(role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
         }
         let explanation:String
         switch rel {
@@ -318,8 +320,7 @@ enum WenguaPythonVNextVerbatim {
         default:
             explanation=who+"与病宫的五行关系待核。"
         }
-        return note+explanation+
-            (role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
+        return note+explanation+(role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
     }
 
     static func sections(chart:WenguaNativeChart,review:WenguaVNextAudit,
