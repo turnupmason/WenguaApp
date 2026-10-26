@@ -2,7 +2,7 @@
 import unittest
 from src.wengua.health_five_level_quant_vnext import (
     points,label,downgrade_strength,pattern_grade,adverse_shift,
-    palace_tally,multi_palace_tally)
+    palace_tally,multi_palace_tally,void_shift_three)
 
 class QuantizedCases(unittest.TestCase):
     def test_user_explicit_example_equals_plus_one_small_good(self):
@@ -71,23 +71,29 @@ class QuantizedCases(unittest.TestCase):
             factors={"star":5,"door":1,"deity":-3,"pattern":1},
             door_break=True,five_not_encounter=True)["score"],1)
 
-    def test_void_priority_zero_or_minus_five_even_if_base_good(self):
-        base={"star":4,"door":-5,"deity":-3,"pattern":5}
-        fake=palace_tally(factors=base,void_state="fake_void",
-                          five_not_encounter=True,door_break=True)
-        self.assertEqual((fake["score"],fake["status"]),(0,"fake_void_zero"))
-        self.assertEqual(fake["known_subtotal"],1)  # recovery, later timing
-        true=palace_tally(factors=base,void_state="true_void")
-        self.assertEqual((true["score"],true["grade"]),(-5,"极大凶"))
-        self.assertEqual(palace_tally(
-            factors={"star":5,"door":5,"deity":5,"pattern":5},
-            void_state="true_void")["score"],-5)
-        self.assertEqual(palace_tally(
-            factors={"star":-5,"door":-5,"deity":-5,"pattern":-5},
-            void_state="fake_void")["score"],0)
+    def test_user_exact_void_signed_three_for_fake_and_true(self):
+        for void in ("fake_void","true_void"):
+            for current,expected in ((2,-1),(3,0),(-2,1),(-3,0),
+                                     (0,0),(1,-2),(-1,2),(5,2),(-5,-2)):
+                with self.subTest(kind=void,before=current):
+                    self.assertEqual(void_shift_three(current,void_state=void),expected)
+            self.assertEqual(void_shift_three(3,void_state="not_void"),3)
+            base={"star":3,"door":0,"deity":0,"pattern":0}
+            out=palace_tally(factors=base,void_state=void)
+            self.assertEqual((out["score_before_void"],out["score"]),(3,0))
+            self.assertEqual(out["status"],"void_signed_three_shift")
+            self.assertEqual(out["void_adjustment"],-3)
+            self.assertNotEqual(out["score"],-5)
+        self.assertTrue(palace_tally(
+            factors={"star":3,"door":0,"deity":0,"pattern":0},
+            void_state="fake_void")["timing_can_refill_or_clash"])
+        self.assertFalse(palace_tally(
+            factors={"star":3,"door":0,"deity":0,"pattern":0},
+            void_state="true_void")["timing_can_refill_or_clash"])
         with self.assertRaises(ValueError):
-            palace_tally(factors=base,void_state="fake_void",
-                         horse_cleared_void=True)
+            palace_tally(factors={"star":3,"door":0,"deity":0,"pattern":0},
+                         void_state="fake_void",horse_cleared_void=True)
+
 
     def test_missing_door_second_case_and_god_tier_do_not_auto_fill(self):
         result=palace_tally(
