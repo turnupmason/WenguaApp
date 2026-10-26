@@ -235,8 +235,7 @@ private struct PublicCast:Encodable {
                 pillars:[chart.pillars.year,chart.pillars.month,
                          chart.pillars.day,chart.pillars.hour],
                 solar_term:chart.solarTerm,
-                bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+
-                    String(chart.bureau.ju)+"局",
+                bureau:(chart.bureau.dun=="yin" ? "阴遁":"阳遁")+String(chart.bureau.ju)+"局",
                 section_count:full.count,
                 source_direction:audit.evidenceDirection,
                 evidence_conflict:audit.evidenceConflict,
