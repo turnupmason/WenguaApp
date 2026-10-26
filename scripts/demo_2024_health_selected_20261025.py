@@ -57,6 +57,23 @@ def main():
     if selected!=expected:raise AssertionError("Scored unrelated palace")
     if set(report["nine_palace_condition_facts"])!={str(k) for k in selected}:
         raise AssertionError("Unexpected downstream unrelated palace computation")
+    unique_scores={}
+    for role,item in q["roles"].items():
+        pid=item["palace"]
+        score=item["palace_score"]["score"]
+        if pid in unique_scores and unique_scores[pid]!=score:
+            raise AssertionError("Two different role scores in the same physical palace")
+        unique_scores[pid]=score
+    for _,item in q["auxiliary_qian_kun"].items():
+        pid=item["palace"]
+        score=item["palace_score"]["score"]
+        if pid in unique_scores and unique_scores[pid]!=score:
+            raise AssertionError("Auxiliary score differs from same real palace")
+        unique_scores[pid]=score
+    if q["summary"]["score"] is None or q["summary"]["pending_palaces"]:
+        raise AssertionError("Known 2024 real example must yield a signed conclusion")
+    if q["summary"]["unique_palace_count"]!=len(unique_scores):
+        raise AssertionError("Final aggregation counted same palace more than once")
     OUTPUT.parent.mkdir(parents=True,exist_ok=True)
     OUTPUT.write_text(json.dumps(report,ensure_ascii=False,indent=2,default=str),
                       encoding="utf-8")
