@@ -99,7 +99,8 @@ class Real2024SelectedChart(unittest.TestCase):
         self.assertEqual(scored["summary"]["effective_palace_scores"],
                          {"1":-1,"3":-2,"8":-2,"2":5,"6":-4})
         self.assertEqual(scored["summary"]["pending_palaces"],[])
-        self.assertIn("乾坤辅助",self.report["reading_text"])
+        self.assertIn("乾宫辅助（男）",self.report["reading_text"])
+        self.assertNotIn("坤宫辅助（女）",self.report["reading_text"])
 
 
 if __name__=="__main__":unittest.main()

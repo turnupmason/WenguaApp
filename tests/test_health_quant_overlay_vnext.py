@@ -34,8 +34,7 @@ class CurrentQuantReview(unittest.TestCase):
             self.assertIn(row["palace_score"]["status"],(
                 "incomplete_components","void_signed_three_shift",
                 "calculated","saturated_five_grade"))
-        self.assertFalse(q["auxiliary_qian_kun"]["qian"][
-            "auxiliary_only_not_auto_counted"])
+        self.assertEqual(q["auxiliary_qian_kun"]["qian"]["selected_if_patient_gender_known"], q["selected_gender_palace"]==6)
         self.assertIn("qian",q["auxiliary_qian_kun"])
         self.assertIn("kun",q["auxiliary_qian_kun"])
         self.assertNotIn("宫位五级吉凶净分合断",r["reading_text"])
