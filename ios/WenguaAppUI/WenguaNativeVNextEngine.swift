@@ -67,6 +67,9 @@ struct WenguaVNextAudit {
     // V6 user +/- relationship scoring; never overwrite raw palace grades.
     let controlBonusPalaces:[Int]
     let drainBonusPalaces:[Int]
+    let auspiceBonusNotes:[String]
+    let auspiceBonusScore:Int
+    let controlBonusPoints:[Int:Int]
 }
 enum WenguaVNextEngine {
     static let tiers=["极小","小","中等","大","极大"]
@@ -671,20 +674,106 @@ enum WenguaVNextEngine {
         let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
         let weakDisease=strength["illness"]?.strength=="极小"
         var controlBonus:Set<Int>=[]
+        var controlPoints:[Int:Int]=[:]
         var drainBonus:Set<Int>=[]
-        let controlRole:Set<String>=["doctor","medicine","hour","chief","gender"]
+        let controlRoles:Set<String>=["doctor","medicine","patient","hour",
+                                      "natal","chief","gender"]
+        let illVoid=actualVoid(ill,chart,month:month) != "not_void"
         for (tag,p,_) in personalized where tag != "illness" && p.id != ill.id {
             guard let edge=controls.first(where:{$0.role==tag}) else{continue}
-            let eligibleChief=tag != "chief" ||
-                actualVoid(p,chart,month:month)=="not_void"
-            if eligibleChief && controlRole.contains(tag) && edge.direction=="克" {
+            if controlRoles.contains(tag) && edge.direction=="克",
+               let tier=strength[tag]?.strength, tier != "极小" {
+                // Only star/god source primary 25-table has a palace-column
+                // restriction. Stem 25-table is moon/lifecycle, NOT palace.
+                var controlled=false
+                if ["doctor","gender","chief"].contains(tag),
+                   let symbol=strength[tag]?.symbol {
+                    let e=tag=="chief" ? Self.godElement[symbol] :
+                                             Self.starElement[symbol]
+                    if let e,let pe=elements[p.id] {
+                        controlled=(try directed(e,pe))=="宫克符号"
+                    }
+                }
+                let voidAttacker=actualVoid(p,chart,month:month) != "not_void"
+                let points=voidAttacker || controlled ? 1 : illVoid ? 5 : 3
                 controlBonus.insert(p.id)
+                controlPoints[p.id]=max(controlPoints[p.id] ?? 0,points)
             }
-            if eligibleChief && weakDisease && edge.direction=="被生" {
+            if weakDisease && edge.direction=="被生" &&
+                (tag != "chief" || actualVoid(p,chart,month:month)=="not_void") {
                 drainBonus.insert(p.id)
             }
         }
-        let relationshipBonus=3*(controlBonus.count+drainBonus.count)
+        // Auspicious co-hosts on illness, patient, hour, natal and
+        // older-generation Qian/Kun ONLY. The standalone doctor palace
+        // does NOT automatically receive +3 simply for housing Tianxin.
+        let hosts=Set(["illness","patient","hour","natal","gender"]
+            .compactMap{roles[$0]})
+        var auspices:[String:(Int,String)]=[:]
+        for pid in hosts.sorted() {
+            guard let p=all[pid] else {throw WenguaCastError.invalidChart}
+            let place=["坎一宫","坤二宫","震三宫","巽四宫","中五宫",
+                       "乾六宫","兑七宫","艮八宫","离九宫"][pid-1]
+            let void=actualVoid(p,chart,month:month) != "not_void"
+            var offered:[(String,String?,Bool)]=[]
+            if pid==ill.id {
+                for sky in p.heavenStars where sky.carriedStem=="乙" {
+                    let tier=try factor(kind:"stem",symbol:"乙",palace:pid,
+                        month:month,catalog:energy,stages:sky.stages).strength
+                    let blocked=p.tombs.contains{$0.plane=="天盘" && $0.stem=="乙"} ||
+                        striking["乙"]==pid
+                    offered.append(("乙奇",tier,blocked))
+                }
+            }
+            if p.earthStem=="乙" || p.earthStem=="丁" {
+                let t=try factor(kind:"stem",symbol:p.earthStem,palace:pid,
+                    month:month,catalog:energy,stages:p.earthStages).strength
+                let blocked=p.tombs.contains{$0.plane=="地盘" && $0.stem==p.earthStem} ||
+                    striking[p.earthStem]==pid
+                offered.append((p.earthStem+"奇",t,blocked))
+            }
+            for sky in p.heavenStars where sky.star=="天心星" {
+                let t=try factor(kind:"star",symbol:"天心星",palace:pid,
+                    month:month,catalog:energy).strength
+                offered.append(("天心星",t,false))
+            }
+            if p.deity=="值符" {
+                guard let e=godElement["值符"],let pe=elements[pid] else {
+                    throw WenguaCastError.invalidChart
+                }
+                let relation=try directed(e,pe)
+                offered.append(("值符",godTiers[relation],
+                               relation=="宫克符号"))
+            }
+            for (name,tier,restricted) in offered {
+                guard let tier else{continue}
+                let points:Int
+                let note:String
+                if void {
+                    points=1
+                    note=place+"逢空，"+name+"余气尚存，吉助有限。"
+                } else if restricted && (name=="乙奇" || name=="丁奇") {
+                    points=1
+                    note=place+name+"入墓或击刑，吉助受阻。"
+                } else if tier=="极小" {
+                    points=2
+                    note=place+name+"势极小，吉助有限。"
+                } else if restricted && name=="值符" {
+                    points=2
+                    note=place+"值符受宫克，护持受限。"
+                } else {
+                    points=3
+                    note=place+"得"+name+"吉助。"
+                }
+                let token=String(pid)+":"+name
+                if let original=auspices[token],original.0>=points {continue}
+                auspices[token]=(points,note)
+            }
+        }
+        let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
+        let auspicePoints=auspices.values.reduce(0){$0+$1.0}
+        let relationshipBonus=controlPoints.values.reduce(0,+)+
+                              3*drainBonus.count+auspicePoints
         let result=pending.isEmpty ?
             Optional(saturation(known+relationshipBonus)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
@@ -731,7 +820,9 @@ enum WenguaVNextEngine {
             roleSourceNote:actor?.note ?? "",
             roleEnergy:strength,
             controlBonusPalaces:Array(controlBonus).sorted(),
-            drainBonusPalaces:Array(drainBonus).sorted())
+            drainBonusPalaces:Array(drainBonus).sorted(),
+            auspiceBonusNotes:auspiceNotes,auspiceBonusScore:auspicePoints,
+            controlBonusPoints:controlPoints)
     }
 }
 enum WenguaVNextReadingGate:Error {case unresolvedRole}
