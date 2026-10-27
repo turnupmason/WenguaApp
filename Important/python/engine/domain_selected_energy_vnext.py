@@ -103,7 +103,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     raw["chief"]=(chief_cell,"star" if chief_star else "stem",
                   chief_star or chief_cell["earth_stem"])
 
-    natal_name=inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+    natal_name=(inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+                or inquiry.get("patient_birth_stem"))
     if natal_name and not actor.get("birth_cell"):
         # Jia hiding method or invalid placement has NOT been independently
         # resolved; don't fabricate a visible natal stem.
@@ -606,6 +607,9 @@ def selected_health_sections(result,*,actor,chart):
     if q["drain_bonus_palaces"]:
         desc.append("病星势弱而外泄，病气有耗损之象")
     desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
+    if result["first_stage_macro"]["five_not_encounter_triggered"]:
+        desc.insert(0,"五不遇时成立，合断最终另扣两级")
+    desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
