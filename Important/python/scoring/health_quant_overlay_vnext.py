@@ -344,8 +344,9 @@ def inspect_selected_quantization(*,selected_roles,
             group["stems"].setdefault(own["symbol"],own["score"])
     for pid,group in grouped.items():
         first=group["roles"][0]
-        base=_quantize_one(first,selected_roles[first]["complete_palace"],
-                           five_not_encounter=False,xun_shou=xun_shou)["palace_score"]
+        canonical=_quantize_one(first,selected_roles[first]["complete_palace"],
+                                five_not_encounter=False,xun_shou=xun_shou)
+        base=canonical["palace_score"]
         own=list(group["stems"].values())
         if base["raw_sum"] is None or any(value is None for value in own):
             merged={**base,"raw_sum":None,"score":None,"grade":None}
@@ -358,6 +359,10 @@ def inspect_selected_quantization(*,selected_roles,
                     "score":grade,"grade":grade_label(grade),
                     "unique_stem_scores":dict(group["stems"])}
         for key in group["roles"]:
+            # The first role's resident source facts define the physical
+            # palace, not a second cohost interpretation of the same seat.
+            for factor in ("star","door","deity","pattern"):
+                roles[key][factor]=canonical[factor]
             roles[key]["palace_score"]=merged
             roles[key]["shared_palace_roles"]=group["roles"]
             effective[key]={"palace":pid,"score":merged["score"],
