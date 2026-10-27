@@ -1,6 +1,6 @@
 {
   "schema": "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
-  "comment": "V7.2 病情轻重同宫吉象合断（待用户验收）：天盘乙、地盘乙／丁均属于一组奇助，同一实宫最多取一次，不因年干、时干、患者共宫重复计；值符另作独立大吉神，其受宫克时降档。地盘乙／丁需核实际地盘十二长生的长生/沐浴/冠带/临官/帝旺，墓刑可限定为1，未核时不虚构；同宫值符3+地盘奇3＝6、值符2+地盘奇3＝5、值符3+地盘奇1＝4、值符2+地盘奇1＝3；宫空只将总和除以2向下取整。同宫星、门、神、天地格原始四因子仍独立，跨宫天芮受克条件独立不叠加重复。Python 与 iOS Swift 真生产共规则，客户不显示内部算分。旧V3.9.1及200/81格和历次失败记录不改。 V7.3 客户合断严格两句话：首句由本次选定所有角色的真实宫、宫吉凶、五行制病、值符是否逢空及临宫吉助生成，分号分隔不编造、非长辈不出现乾坤辅助；次句填入本次源程序最终传统吉凶并有文化免责声明。每时辰所有可变字段现算，绝不写死上一张盘的离九/坎一/乙丁等事实。 V7.3.1 两句各自独立成段，真实同宫不同角色只述一次实宫吉凶，保留患者宫及病宫真假空亡区别，绝不在同一宫叠加基础力量或使用固定测试时辰结论。 V7.5纠错：最终只累计每个实际参与实宫已算好星门神格、门迫、空亡的宫分各一次；五不遇时每个独立实宫额外减2分，包括中平宫。保留V7.2补分来源审计与语义但不重复加入总分；伏吟主慢、反吟主快在首段写明。 V7.6用户重新明确三步算分：每个用神角色以原书/200格自带的吉凶和能量为基础，叠加本宫真实星门神天地盘81格、入墓击刑门破空亡等影响，形成角色完整分档；星/值符驻宫因素不重复，天盘干用神作为此前缺失的独立分项。若时干乙与乙奇医药同符号甚至同宫，两个取用角色仍分别完整计分。然后根据真实有效克病及已核同宫吉助/弱病泄耗补分，五不遇时对每个实际选定角色落宫减两分，最后总和按±5断凶吉。伏吟主慢反吟主快进入动态首段。 V7.7最新用户规则覆盖V7.6同符号重复计分：一座真实参与宫仅累计一次，宫内被选中不同天盘干各按原200格加本性力量一次，相同乙同时是时干/医药/年命也只加乙自身一次；九星/八门/八神/81格/刑墓迫空仍按同宫真实事实只算一次。克病额外作用只在原5x5证据有效时独立计；值符乙丁天心同宫已入原宫能量不二次加。五不遇时每个不同参与实宫减2。旧V7.6+2/+14为历史归档，不自动沿用。动态断词同宫角色只说明同在，不重复报等级。",
+  "comment": "V7.2 病情轻重同宫吉象合断（待用户验收）：天盘乙、地盘乙／丁均属于一组奇助，同一实宫最多取一次，不因年干、时干、患者共宫重复计；值符另作独立大吉神，其受宫克时降档。地盘乙／丁需核实际地盘十二长生的长生/沐浴/冠带/临官/帝旺，墓刑可限定为1，未核时不虚构；同宫值符3+地盘奇3＝6、值符2+地盘奇3＝5、值符3+地盘奇1＝4、值符2+地盘奇1＝3；宫空只将总和除以2向下取整。同宫星、门、神、天地格原始四因子仍独立，跨宫天芮受克条件独立不叠加重复。Python 与 iOS Swift 真生产共规则，客户不显示内部算分。旧V3.9.1及200/81格和历次失败记录不改。 V7.3 客户合断严格两句话：首句由本次选定所有角色的真实宫、宫吉凶、五行制病、值符是否逢空及临宫吉助生成，分号分隔不编造、非长辈不出现乾坤辅助；次句填入本次源程序最终传统吉凶并有文化免责声明。每时辰所有可变字段现算，绝不写死上一张盘的离九/坎一/乙丁等事实。 V7.3.1 两句各自独立成段，真实同宫不同角色只述一次实宫吉凶，保留患者宫及病宫真假空亡区别，绝不在同一宫叠加基础力量或使用固定测试时辰结论。 V7.5纠错：最终只累计每个实际参与实宫已算好星门神格、门迫、空亡的宫分各一次；五不遇时每个独立实宫额外减2分，包括中平宫。保留V7.2补分来源审计与语义但不重复加入总分；伏吟主慢、反吟主快在首段写明。 V7.6用户重新明确三步算分：每个用神角色以原书/200格自带的吉凶和能量为基础，叠加本宫真实星门神天地盘81格、入墓击刑门破空亡等影响，形成角色完整分档；星/值符驻宫因素不重复，天盘干用神作为此前缺失的独立分项。若时干乙与乙奇医药同符号甚至同宫，两个取用角色仍分别完整计分。然后根据真实有效克病及已核同宫吉助/弱病泄耗补分，五不遇时对每个实际选定角色落宫减两分，最后总和按±5断凶吉。伏吟主慢反吟主快进入动态首段。 V7.7最新用户规则覆盖V7.6同符号重复计分：一座真实参与宫仅累计一次，宫内被选中不同天盘干各按原200格加本性力量一次，相同乙同时是时干/医药/年命也只加乙自身一次；九星/八门/八神/81格/刑墓迫空仍按同宫真实事实只算一次。克病额外作用只在原5x5证据有效时独立计；值符乙丁天心同宫已入原宫能量不二次加。五不遇时每个不同参与实宫减2。旧V7.6+2/+14为历史归档，不自动沿用。动态断词同宫角色只说明同在，不重复报等级。 V7.8用户覆盖V7.7：真实同宫特殊吉助是额外条件分而不是只作文字；同实宫基础宫分只计一次；每个同宫只计一组乙丁奇、值符独立、天心独立，允许满足值符3+地盘奇3等组合并按整组逢空取整；真实跨宫克病符合强弱与空亡5x5才分别加3/5/1；五不遇时每个不同实宫-2、伏吟慢反吟快。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -202,5 +202,52 @@
     "clamp_total_only": true,
     "tempo": "伏吟主慢、反吟主快，不见不妄断",
     "medical_validity": false
+  },
+  "final_scoring_v78": {
+    "supersedes": [
+      "final_scoring_v77",
+      "final_scoring_v76"
+    ],
+    "stages": [
+      "1. One complete physical palace once; actual selected DISTINCT sky stems once; preserve independent star/door/deity/81 factors + genuine tomb striking door-break and void.",
+      "2. Add actual conditioned illness suppression by independent attacker palace once: non-tiny attacker +3, void illness if controlled +5, weak/void or palace-controlled attacker +1; same-palace special host Yi/Ding chief/Tianxin bonus independently once per unique physical host.",
+      "3. Apply five-not minus two to EACH DISTINCT participating physical palace, only then saturate final combined total to -5..+5."
+    ],
+    "cross_palace_control": {
+      "attacker_unique_physical_palace": true,
+      "attacker_strength_not_tiny": true,
+      "normal": 3,
+      "illness_void_with_valid_control": 5,
+      "attacker_void_or_controlled": 1,
+      "attacker_weak_overrides_illness_void": true
+    },
+    "conditional_auspice": {
+      "hosts": [
+        "illness",
+        "patient",
+        "hour",
+        "natal",
+        "gender_only_if_actual_elder"
+      ],
+      "sky_yi_ding": "actual sky Yi/Ding present in host palace; only ONE family bonus for shared real palace even if hour/natal/medicine are Yi",
+      "earth_yi_ding": "real earth Yi/Ding with actual lifecycle among 长生,沐浴,冠带,临官,帝旺 +3 unless tomb/striking +1; tier 极小 +2",
+      "family_no_repeated_bonus": true,
+      "tianxin": "separate independently eligible star host bonus +3, tier 极小 +2, void +1",
+      "chief": "deity host +3; palace restrains chief +2; chief and one stem family raw totals 6/5/4/3",
+      "void_cohost": "floor((chief + one YiDing family)/2), one physical palace once",
+      "single_void_tianxin": 1,
+      "add_qualified_special_bonus_to_final": true,
+      "not_second_full_palace": true
+    },
+    "five_not_per_distinct_physical_palace": -2,
+    "tempo": "伏吟主慢、反吟主快，若均无则不擅断缓急；缓急不额外计分",
+    "template": "First complete evidence sentence per actual role/palace and dynamic conditional auspice, five-not/伏吟/反吟; blank line; second final tradition grade with disclaimer.",
+    "data_frozen": [
+      "original_200_energy",
+      "81_formation",
+      "V3.9.1",
+      "original_chapter_corpus"
+    ],
+    "health_prediction": "cultural_symbolism_only_no_medical_diagnosis"
   }
 }
