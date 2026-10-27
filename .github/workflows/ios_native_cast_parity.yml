@@ -48,6 +48,8 @@ permissions:
 jobs:
   native_core:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Compile TRUE offline Swift executable (Foundation, no simulator)
@@ -253,6 +255,17 @@ jobs:
           print(doc)
           print("V61_NEW_WIFE_FULL_READING_END")
           PY
+      - name: Commit the exact newly generated V6.1 full wife reading to project history
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v61-wife-new/v61_new_wife_python_swift_full_reading.md docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          printf '\\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\nSource SHA: %s\\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          git commit -m "Archive V6.1 newly randomized wife chart full Python and native Swift reading"
+          git pull --rebase origin main
+          git push origin HEAD:main
       - name: Preserve V6.1 new wife full Python and native Swift readings, even on failure
         if: always()
         uses: actions/upload-artifact@v4
