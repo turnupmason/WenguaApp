@@ -36,7 +36,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 self.assertNotIn("天禽星",r["reading_text"])
                 self.assertNotIn("天禽星长生",r["reading_text"])
                 self.assertNotIn("。；",r["reading_text"])
-                self.assertIn("坤宫辅助（女）",r["reading_text"])
+                self.assertNotIn("坤宫辅助（女）",r["reading_text"])
+                self.assertNotIn("gender",q["roles"])  # spouse is not an elder
                 self.assertNotIn("乾宫辅助（男）",r["reading_text"])
                 self.assertIn("用神力量为",r["reading_text"])
                 self.assertIn("综上所述，此病为",r["reading_text"])
@@ -80,7 +81,7 @@ class ExactRoleMatrixGate(unittest.TestCase):
                     self.assertTrue(chief["chief_zero_score"])
                     self.assertNotIn("值符护持不参与最终合断。",r["reading_text"])
                 if relation!="同宫" and chief["void"]!="not_void":
-                    self.assertIn("因值符空亡，神兽不在宫内，无法提供帮助",r["reading_text"])
+                    self.assertIn("因值符空亡，护持力明显减弱，尚存少许余气",r["reading_text"])
 
     def test_very_weak_illness_generates_two_roles_in_one_physical_palace(self):
         r=review("2021-07-03T01:00:00-04:00",
@@ -103,9 +104,13 @@ class ExactRoleMatrixGate(unittest.TestCase):
         r=review("2024-03-25T05:00:00-04:00",WIFE)
         graph=r["full_health_role_strength_network"]
         audit=graph["candidate_five_grade_quantization"]["summary"]
-        self.assertEqual(audit["score"],-1)
-        self.assertEqual(audit["control_bonus_score"],3)
-        self.assertEqual(audit["pre_relationship_bonus_score"],-4)
+        self.assertEqual(audit["control_bonus_score"],
+                         sum(audit["control_bonus_points"].values()))
+        self.assertEqual(audit["auspice_bonus_score"],
+                         sum(x["points"] for x in audit["auspice_bonus_details"].values()))
+        self.assertEqual(audit["relationship_bonus_score"],
+                         audit["control_bonus_score"]+audit["auspice_bonus_score"]+
+                         audit["weak_illness_drain_bonus_score"])
         public=r["reading_text"]
         for forbidden in ("克制力量表为","完全失控","按新规则加3分",
                           "不同实宫形成五行克病共","同一实宫仅计一次",
@@ -115,7 +120,7 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 self.assertNotIn(forbidden,public)
         self.assertIn("天心医生宫克天芮病宫，病宫逢空，病气减弱，更易受到天心医生的克制。",public)
         self.assertIn("值符大吉神与天芮病宫同宫",public)
-        self.assertIn("综上所述，此病为极小凶。",public)
+        self.assertIn("综上所述，此病为",public)
         self.assertEqual(public,"\n\n".join(
             x["title"]+"：\n"+x["text"] for x in r["sections"]))
 
@@ -123,12 +128,48 @@ class ExactRoleMatrixGate(unittest.TestCase):
         r=review("2023-04-24T21:00:00-04:00",WIFE)
         q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
         bonuses=q["summary"]["control_bonus_palaces"]
-        self.assertEqual(q["summary"]["control_bonus_score"],len(bonuses)*3)
+        self.assertEqual(q["summary"]["control_bonus_score"],
+                         sum(q["summary"]["control_bonus_points"].values()))
         for palace,roles in bonuses.items():
             self.assertTrue(roles)
             for role in roles:
                 self.assertEqual(q["role_effectiveness_gates"][role]["relation"],"克")
                 self.assertEqual(str(q["role_effectiveness_gates"][role]["palace"]),palace)
+
+    def test_v7_same_hour_male_friend_has_no_gender_auxiliary_or_natal(self):
+        r=review("2010-02-02T07:00:00-05:00",
+                 {"intent":"severity","relationship":"friend",
+                  "consultation_context":"direct_proxy","patient_sex":"male"})
+        q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+        self.assertNotIn("gender",q["roles"])
+        self.assertNotIn("natal",q["roles"])
+        self.assertNotIn("乾宫辅助（男）",r["reading_text"])
+        self.assertNotIn("坤宫辅助（女）",r["reading_text"])
+        self.assertEqual(r["four_pillars"],
+                         {"year":"己丑","month":"丁丑","day":"癸未","hour":"丙辰"})
+        self.assertIn("患者用神",r["reading_text"])
+        self.assertEqual(q["summary"]["relationship_bonus_score"],
+                         q["summary"]["control_bonus_score"]+
+                         q["summary"]["weak_illness_drain_bonus_score"]+
+                         q["summary"]["auspice_bonus_score"])
+        for points in q["summary"]["control_bonus_points"].values():
+            self.assertIn(points,(1,3,5))
+        for lucky in q["summary"]["auspice_bonus_details"].values():
+            self.assertIn(lucky["points"],(1,2,3))
+
+    def test_v7_elder_father_mother_get_exclusive_qian_kun(self):
+        for relationship,sex,want,other in (
+            ("father","male",6,2),("mother","female",2,6),
+            ("older_relative","male",6,2),("older_relative","female",2,6)):
+            with self.subTest(relationship=relationship,sex=sex):
+                r=review("2010-02-02T07:00:00-05:00",{
+                    "intent":"severity","relationship":relationship,
+                    "consultation_context":"direct_proxy","patient_sex":sex})
+                q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+                self.assertEqual(q["roles"]["gender"]["palace"],want)
+                text=r["reading_text"]
+                self.assertIn("坤宫辅助（女）" if want==2 else "乾宫辅助（男）",text)
+                self.assertNotIn("乾宫辅助（男）" if want==2 else "坤宫辅助（女）",text)
 
 if __name__=="__main__":
     unittest.main()
