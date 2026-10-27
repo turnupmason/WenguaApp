@@ -1077,7 +1077,7 @@ struct CastSetupScreen: View {
                             }
                             TextField("出生年命干支（选填，如辛酉）",text:$patientBirthGanzhi)
                                 .textInputAutocapitalization(.never)
-                            Text("关系用神取自现有19类原书取用索引。未经作者案例独立核准的同辈、部分亲属仍属条件候选；不能把类推断为确定吉凶。出生公历年份仅作为本机记录，不能直接等同完整年命。")
+                            Text("关系用神取自现有20类人物来源索引。只有父母、祖辈等长辈才依性别参考乾宫或坤宫，并结合年干；普通男性朋友、女性朋友、配偶和其他非长辈不因为性别加入乾坤宫。未提供真实出生年命不补造。部分同辈用神仍属待核条件，出生公历年份不自动等于年命干支。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
