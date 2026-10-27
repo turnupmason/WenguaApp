@@ -230,6 +230,37 @@ jobs:
           path: /tmp/wengua-v6-one/
           retention-days: 90
           if-no-files-found: warn
+      - name: V6.1 fresh independent random wife illness test at latest source (2026-10-27)
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v61-wife-new
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 347058956909 --count 1 --wife-only --output /tmp/wengua-v61-wife-new/python_truth.json
+          /tmp/wengua-vnext-three-native /tmp/wengua-v61-wife-new/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-v61-wife-new/swift_public_readings.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v61-wife-new/python_truth.json /tmp/wengua-v61-wife-new/swift_public_readings.log /tmp/wengua-v61-wife-new/exact_wording_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-v61-wife-new")
+          src=json.loads((p/"python_truth.json").read_text(encoding="utf8"))
+          app=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in (p/"swift_public_readings.log").read_text(encoding="utf8").splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(src["cases"])==len(app)==1
+          a,b=src["cases"][0],app[0]
+          swift="\n\n".join(s["title"]+"：\n"+s["text"] for s in b["sections"])
+          assert a["python_reading_text"]==swift
+          doc="\n".join(["# Wengua V6.1 new independent random wife illness-severity software cast","Seed: 347058956909","Random draw: "+str(a["draw"]),"Local datetime: "+a["instant"],"Four pillars: "+"／".join(b["pillars"]),"Solar term: "+b["solar_term"],"Bureau: "+b["bureau"],"Python:",a["python_reading_text"],"Swift production router:",swift,"Exact full text: True","Rejected draws:",json.dumps(src["rejected"],ensure_ascii=False,indent=2)])+"\n"
+          (p/"v61_new_wife_python_swift_full_reading.md").write_text(doc,encoding="utf8")
+          print("V61_NEW_WIFE_FULL_READING_START")
+          print(doc)
+          print("V61_NEW_WIFE_FULL_READING_END")
+          PY
+      - name: Preserve V6.1 new wife full Python and native Swift readings, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v61-new-wife-python-swift-full-reading-20261027
+          path: /tmp/wengua-v61-wife-new/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
