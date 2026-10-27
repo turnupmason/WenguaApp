@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "5e510b0fda34ed1b78d5abccfb029df163aca9e2"
+      "sha": "d3842eb6e7014daf76aad5aea23aec321f406ef4"
     },
     {
       "platform": "python",
@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "47366aac0b2cb4a4aa9dfdebfc1c557c5b19359b"
+      "sha": "b107ebf67c4caae87cdaa052a4b08eb24fe285c1"
     },
     {
       "platform": "python",
@@ -379,7 +379,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
       "snapshot": "Important/swift/engine/WenguaNativeActorBinding.swift",
-      "sha": "b5cb1c0496b733eefc8663e432aa8a52fc0eaa91"
+      "sha": "e4a5928558970c7b1b71f4b8d16f3caf7e56468b"
     },
     {
       "platform": "swift",
@@ -403,13 +403,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "39e4d5491b07cc8873ca65451dc29e433c51a30c"
+      "sha": "7b36975eff57217c32d91d18972d2865bb7acb28"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "08211112679f02a2927e772174e5bab4cbc9aea6"
+      "sha": "5c8444697f3d508f3c1d934a71f3da049c715960"
     },
     {
       "platform": "swift",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "5b876a9f457a72bc58036f5172048f099a7524b7"
+      "sha": "db5258a6943a4b5031317ae19ef4555e867a888f"
     },
     {
       "platform": "swift",
