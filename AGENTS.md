@@ -1768,3 +1768,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 新增强制回归：原25格数据/值符失效/值符同病宫真实例、极小天芮病宫对天心和时干同宫的生成耗泄只能 +3，原 V5 已有未核盘不隐藏；抽时辰生成器首次允许 `--count 1`，保证真正新时辰抽一次，不择吉凶。GitHub [iOS Native Parity #40427992975](https://github.com/turnupmason/WenguaApp/actions/runs/40427992975) `native_core=success`：原3+9+2、**新增单一真实妻子盘**共 **15/15** Python / Swift 双执行生产全文字符、标点、分段/四柱完全一致；5张独立源计分盘亦逐例 PASS。[Python CI #40427993064](https://github.com/turnupmason/WenguaApp/actions/runs/40427993064) 3.11及3.12 PASS。Simulator macOS CI 须看各运行 job 实际结束状态，不能凭 native_core 单方面宣称真机安装。
 - **独立新增单盘 seed `202610269113`**，首次合法抽到 `2024-03-25T05:00:00-04:00`，甲辰／丁卯／戊子／乙卯，阳遁9局；女／妻子；并非原书故事。该盘值符与天芮落同一艮八宫，在同宫护持按1宫处理；天心巽四克病，5x5 返回“完全失控”仍计1个不同克病宫 +3；其余宫不假加，最终术数象意 **极小凶**。Python + Swift 两份完整生成原文与拒绝抽样记录归档 `docs/HEALTH_V6_ONE_RANDOM_PYTHON_SWIFT_VERBATIM_2026-10-26.md`，用户可自行审句。
 - **失败记录不覆盖**：第一次 [#40427750944](https://github.com/turnupmason/WenguaApp/actions/runs/40427750944) 源审计新回归测试误从错误的 JSON 根目录读取病星，和 [#40427750969](https://github.com/turnupmason/WenguaApp/actions/runs/40427750969) 旧 Swift 原字测试误禁用户要求的新加分文字，修正后全量通过。这两条 GitHub CI 红色历史保留，不能为好看擦除。所有 canonical 运行源码仍留原路径，`Important/python`、`Important/swift` 的匹配镜像与 `Important/MANIFEST.json` 按相同 blob hash 更新，本轮古籍章、真实案例入库均为0；原43章194古籍案例和冻结V3.9.1完整保留。
+
+
+## 2026-10-26 V6.1 · 客户断词精简、后台算分保留
+
+本轮延续已经验收的 V6，不改变古籍、九宫、81格、源25格克制/空亡变体、每宫本体分、按不同实宫克病与弱病星耗泄各 +3 的内部计算。只修改 Python 与原生 Swift 的客户中文：隐藏未核长生候选分支、同宫“只计一次”、+3 数学算式、克制表“完全失控”、原始力量表和后台状态，不再把程序解释写进给读者看的文章。同宫乙奇与值符的文化象意继续显示；弱病星耗泄保留自然一句而不暴露加分。病宫实际逢空且另一宫克病时自然说明病气被空亡削弱，更易受对应宫克制；不改原5x5格计算或疗效判断。
+
+固定妻子测试时辰 2024-03-25T05:00:00-04:00，甲辰丁卯戊子乙卯、阳遁9局，天芮艮八真空、天心巽四克病；新版两端全文相同，传统最终仍极小凶。iOS 真原生 Swift 和 Simulator [#40444248677](https://github.com/turnupmason/WenguaApp/actions/runs/40444248677) 成功，15/15 逐字一致；Python3.11/3.12 [#40444674050](https://github.com/turnupmason/WenguaApp/actions/runs/40444674050) 成功。首次测试 [#40444248572](https://github.com/turnupmason/WenguaApp/actions/runs/40444248572) 因新测试字面换行转义失败，原错误及日志永久保留。同步 Important 两端镜像和 MANIFEST。没有改任何原书和冻结 V3.9.1；未做真实医学预测。
