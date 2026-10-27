@@ -301,7 +301,7 @@ enum WenguaPythonVNextVerbatim {
             return note+"值符大吉神与天芮病宫同宫，表示大吉神在同宫护持，能够发挥作用。"
         }
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
-            return note+"因值符空亡，神兽不在宫内，无法提供帮助。"
+            return note+"因值符空亡，护持力明显减弱，尚存少许余气。"
         }
         if rel=="克" {
             let meaning:String
@@ -435,6 +435,7 @@ enum WenguaPythonVNextVerbatim {
             let names=review.drainBonusPalaces.sorted().compactMap{cells[$0]}.map{label($0)}
             preface="病星本已极弱，反去生助"+names.joined(separator:"、")+"，自身气力进一步耗散，有病势受损之象。"
         }
+        preface+=review.auspiceBonusNotes.joined()
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)
