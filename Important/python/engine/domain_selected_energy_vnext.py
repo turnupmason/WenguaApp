@@ -563,22 +563,52 @@ def selected_health_sections(result,*,actor,chart):
     # Elder-only sex palace was shown/scored as 'gender' if eligible;
     # never infer either palace from the sex of a non-elder.
 
+    # Customer summary v7.3. Exactly two sentences. Every clause is
+    # sourced from THIS chart and source-selected roles, never a fixed example.
     q=quant["summary"]
-    preface=""
+    desc=[]
+    titles={"illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
+            "patient":"患者用神","hour":"时干事体","chief":"值符",
+            "natal":"患者年命","gender":"长辈辅助宫"}
+    for key in ("illness","doctor","medicine","patient","hour","chief","natal","gender"):
+        if key not in roles:continue
+        row=roles[key]
+        pid=row["palace"]
+        palace=row["complete_palace"]["palace_name"]
+        quality=grade(quant["roles"][key]["palace_score"]["score"])
+        head=titles[key]+"落"+palace+"，宫象"+quality
+        if key=="gender":
+            head=("坤宫" if pid==2 else "乾宫")+"辅助落"+palace+"，宫象"+quality
+        if key=="illness":
+            emptiness=row["complete_palace"]["void"]["classification"]
+            if emptiness!="not_void":head+="且逢空"
+        else:
+            edge=quant["role_effectiveness_gates"].get(key,{})
+            direction=edge.get("relation")
+            direction_note={"克":"克病宫","生":"生扶病宫",
+                            "被克":"受病宫克","被生":"受病宫生",
+                            "比和":"与病宫比和","同宫":"与病宫同宫"}
+            if direction in direction_note:head+="，"+direction_note[direction]
+            if key=="chief" and edge.get("void")!="not_void":
+                if direction=="克":
+                    head+="，虽逢空仍有余气克制病宫"
+                else:
+                    head+="，逢空但尚存少许余气"
+            elif direction=="克" and key!="chief":
+                if str(pid) not in q.get("control_bonus_points",{}):
+                    head+="，但施力有限"
+        desc.append(head)
     if q["drain_bonus_palaces"]:
-        palace_names=[]
-        for pid in sorted(int(k) for k in q["drain_bonus_palaces"]):
-            source=next(row for row in roles.values() if row["palace"]==pid)
-            palace_names.append(source["complete_palace"]["palace_name"])
-        preface="病星本已极弱，反去生助"+"、".join(palace_names)+"，自身气力进一步耗散，有病势受损之象。"
-    preface+="".join(q["auspice_bonus_notes"])
+        desc.append("病星势弱而外泄，病气有耗损之象")
+    desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
+    evidence="；".join(desc)
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
                     palace_count=q["unique_palace_count"],
                     post_void_sum=q["post_void_known_sum"],score=q["score"]))
     push("90_review",template_title("verdict"),
-         render_slot("verdict",conclusion=preface+conclusion))
+         render_slot("verdict",evidence=evidence,conclusion=conclusion.rstrip("。")))
     push("91_timing",template_title("timing"),
          render_slot("timing",horse=HORSE[chart["hour_ganzhi"][1]]))
     return sections
