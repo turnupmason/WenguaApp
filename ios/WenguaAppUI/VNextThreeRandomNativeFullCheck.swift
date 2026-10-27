@@ -87,6 +87,14 @@ private struct PublicCast:Encodable {
             guard condition else {throw NSError(domain:"WenguaThreeFreshSourceParity",
                 code:1,userInfo:[NSLocalizedDescriptionKey:problem])}
         }
+        // Exact conditional one-palace scoring: evaluate as one combined
+        // entry; a void palace rounds DOWN the total after summation.
+        for (chief,earth,expected) in [(3,3,6),(2,3,5),(3,1,4),(2,1,3)] {
+            try require(WenguaVNextEngine.cohostPoints(chief:chief,stem:earth,void:false)==expected,
+                "chief/ground cohost normal combination mismatch")
+            try require(WenguaVNextEngine.cohostPoints(chief:chief,stem:earth,void:true)==expected/2,
+                "chief/ground cohost void floor must follow combined subtotal")
+        }
         try require((1...24).contains(fixture.cases.count),"expected 1...24 actual clocks")
         var times:Set<String>=[]
         for (i,test) in fixture.cases.enumerated() {
