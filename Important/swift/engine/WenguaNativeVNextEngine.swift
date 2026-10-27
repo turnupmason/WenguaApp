@@ -770,11 +770,16 @@ enum WenguaVNextEngine {
                 let stemPoints=stemBest?.0 ?? 0
                 let awarded=cohostPoints(chief:chiefPoints,stem:stemPoints,
                                          void:isVoid)
-                let tags=([chiefPoints>0 ? "值符" : nil].compactMap{$0})+
-                    ([stemBest.map{$0.2+$0.1}].compactMap{$0})
-                let note=isVoid ?
-                    place+"逢空，"+tags.joined(separator:"与")+"同宫的吉助减弱，尚有余气。" :
-                    place+"得"+tags.joined(separator:"与")+"同宫扶助。"
+                var tags:[String]=[]
+                if chiefPoints>0 {tags.append("值符")}
+                if let stemBest {tags.append(stemBest.2+stemBest.1)}
+                let joined=tags.joined(separator:"与")
+                let note:String
+                if isVoid {
+                    note=place+"逢空，"+joined+"同宫的吉助减弱，尚有余气。"
+                } else {
+                    note=place+"得"+joined+"同宫扶助。"
+                }
                 auspices[String(pid)+":同宫吉助"]=(awarded,note)
             }
             for sky in p.heavenStars where sky.star=="天心星" {
