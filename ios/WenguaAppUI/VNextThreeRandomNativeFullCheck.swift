@@ -125,7 +125,7 @@ private struct PublicCast:Encodable {
                 "auspices="+String(describing:test.summary.auspice_bonus_score),
                 "drain="+String(describing:test.summary.weak_illness_drain_bonus_score)
             ]
-            print(debugItems.joined(separator:" "))
+            FileHandle.standardError.write(Data((debugItems.joined(separator:" ")+"\n").utf8))
             let star25=try WenguaVNextTianrui25.caseFor(
                 chart:chart,audit:audit)
             try require(star25.category==test.tianrui25.category,
