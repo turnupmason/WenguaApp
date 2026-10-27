@@ -115,8 +115,13 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         missing_natal="not_provided"
 
     sex=inquiry.get("patient_sex")
-    if actor.get("relationship") in ("wife","mother"):sex="female"
-    if actor.get("relationship") in ("husband","father"):sex="male"
+    if actor.get("relationship") in ("father","mother"):
+        expected="male" if actor["relationship"]=="father" else "female"
+        if sex is not None and sex!=expected:
+            raise ValueError("父母人物关系与明确输入性别冲突")
+        sex=expected
+    if actor.get("relationship")=="wife":sex="female"
+    if actor.get("relationship")=="husband":sex="male"
     if sex not in (None,"male","female"):
         raise ValueError("Gender must be male/female or omitted")
     # Only explicitly older-generation patients bind 乾/坤. Sex alone
