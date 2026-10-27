@@ -1,0 +1,60 @@
+name: Health V7.5 Two Fixed Clock Python Native Swift Verbatim
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v75_two_fixed_clocks_parity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  both_original_hours:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source Python V7.5 distinct-palace scoring regression (not a new blind test)
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v75
+          python3 -m unittest discover -s tests -p 'test_health_v75_unique_palace_five_not_20261027.py' -v 2>&1 | tee /tmp/wengua-v75/score_test.log
+          python3 -m unittest discover -s tests -p 'test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py' -v 2>&1 | tee /tmp/wengua-v75/yearstem_test.log
+      - name: Compile original native production Swift renderer
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v75/native 2>&1 | tee /tmp/wengua-v75/swift_compile.log
+      - name: User coworker natal Yi exact source-Python versus genuine native Swift all sections
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v75/colleague_python.json
+          /tmp/wengua-v75/native /tmp/wengua-v75/colleague_python.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-v75/colleague_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v75/colleague_python.json /tmp/wengua-v75/colleague_swift.log /tmp/wengua-v75/colleague_diff.md
+      - name: 1920 woman exact original source-Python versus genuine native Swift all sections
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v75/elder_python.json
+          /tmp/wengua-v75/native /tmp/wengua-v75/elder_python.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-v75/elder_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v75/elder_python.json /tmp/wengua-v75/elder_swift.log /tmp/wengua-v75/elder_diff.md
+      - name: Strict independent fixed-clock scoreboard without editing historical archives
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('/tmp/wengua-v75')
+          colleague=json.loads((base/'colleague_python.json').read_text())['cases'][0]
+          elder=json.loads((base/'elder_python.json').read_text())['cases'][0]
+          assert colleague['summary']['raw_final_before_saturation']==-8
+          assert colleague['summary']['five_not_global_penalty']==10
+          assert colleague['summary']['score']==-5
+          assert elder['summary']['raw_final_before_saturation']==-3
+          assert elder['summary']['five_not_global_penalty']==0
+          assert elder['summary']['score']==-3
+          print('V75 BOTH_FIXED_ORIGINAL_HOURS_PYTHON_SWIFT_VERBATIM_AND_SCORE_PASS')
+          PY
+      - name: Preserve evidence and failure diagnostics without pushing generated historical text
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v75-original-colleague-and-1920-elder-python-swift-diffs
+          path: /tmp/wengua-v75/
+          retention-days: 90
+          if-no-files-found: warn
