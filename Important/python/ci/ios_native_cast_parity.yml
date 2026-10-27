@@ -259,7 +259,7 @@ jobs:
         run: |
           set -euo pipefail
           cp /tmp/wengua-v61-wife-new/v61_new_wife_python_swift_full_reading.md docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
-          printf '\\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\nSource SHA: %s\\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          printf '\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\nSource SHA: %s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
@@ -288,9 +288,9 @@ jobs:
           case=json.loads((p/"python_truth.json").read_text(encoding="utf8"))["cases"][0]
           ios=[json.loads(s.split("VNEXT_IOS_PYEXACT=",1)[1]) for s in (p/"swift_public_readings.log").read_text(encoding="utf8").splitlines() if "VNEXT_IOS_PYEXACT=" in s]
           assert len(ios)==1
-          sw="\\n\\n".join(x["title"]+"：\\n"+x["text"] for x in ios[0]["sections"])
+          sw="\n\n".join(x["title"]+"：\n"+x["text"] for x in ios[0]["sections"])
           assert case["python_reading_text"]==sw
-          doc="\\n".join([
+          doc="\n".join([
              "# 用户指定四柱、1930年生女性：V6.1 Python／Swift 双端真实断案",
              "",
              "- 原始输入：己丑年、丁丑月、癸末〔规范写法癸未〕日、丙辰时；测1930年老太太。",
@@ -309,7 +309,7 @@ jobs:
              "",
              "## 逐字验收",
              "完整中文 / 结构 ID / 标点 / 段落 / 时间 / 关系一致：True",
-          ])+"\\n"
+          ])+"\n"
           (p/"full_1930_manual_python_swift_reading.md").write_text(doc,encoding="utf8")
           print("MANUAL_1930_FULL_READING_START")
           print(doc)
