@@ -609,6 +609,7 @@ def selected_health_sections(result,*,actor,chart):
     desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
     if result["first_stage_macro"]["five_not_encounter_triggered"]:
         desc.insert(0,"五不遇时成立，合断最终另扣两级")
+    desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
