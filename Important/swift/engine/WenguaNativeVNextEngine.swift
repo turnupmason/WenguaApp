@@ -584,7 +584,7 @@ enum WenguaVNextEngine {
             } else {
                 physical[p.id]=try evaluate(p,role:role,chart:chart,
                                             catalog:energy,excel:excel,
-                                            month:month,fiveNot:fiveNot)
+                                            month:month,fiveNot:false)
             }
             if role=="chief" {
                 strength[role]=try primary(role,p,month:month,catalog:energy,
@@ -671,7 +671,10 @@ enum WenguaVNextEngine {
             } else if edge?.direction=="克" {
                 active=working
             } else {active=true}
-            if active {enabled.insert(p.id)}
+            // Every selected physical palace is part of the base verdict;
+            // control eligibility gates only EXTRA cross-palace assistance.
+            _ = active
+            enabled.insert(p.id)
         }
         // One physical palace once, including accepted co-located roles.
         let scoreList=physical.values.filter{enabled.contains($0.id)}
@@ -800,8 +803,9 @@ enum WenguaVNextEngine {
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
         let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count + auspicePoints
+        let finalRaw=known+relationshipBonus-(fiveNot ? 2 : 0)
         let result=pending.isEmpty ?
-            Optional(saturation(known+relationshipBonus)) : nil
+            Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
         var adverse=votes.values.filter{$0=="adverse"}.count
         let tianrui=try tianruiVote(ill,month:month)
