@@ -228,7 +228,7 @@ def inspect_selected_quantization(*,selected_roles,
                       "score_shared_with_role":canonical["role"],
                       "same_real_palace_same_score":True}
             else:
-                item=_quantize_one(key,detail,five_not_encounter=five,
+                item=_quantize_one(key,detail,five_not_encounter=False,
                                    xun_shou=xun_shou)
                 physical_cache[palace]={"role":key,"item":item}
             roles[key]=item
@@ -249,7 +249,7 @@ def inspect_selected_quantization(*,selected_roles,
                           "same_real_palace_same_score":True}
         else:
             qian_kun[k]=_quantize_one(
-                k,row["complete_palace"],five_not_encounter=five,
+                k,row["complete_palace"],five_not_encounter=False,
                 xun_shou=xun_shou)
             physical_cache[palace]={"role":k,"item":qian_kun[k]}
         qian_kun[k]["auxiliary_only_not_auto_counted"]=True
@@ -303,7 +303,9 @@ def inspect_selected_quantization(*,selected_roles,
                     "control_ability":ability,"void":void,
                     "score_eligible":active,"reason":reason,
                     "chief_zero_score":chief and not active}
-        if active:effective[key]=aggregate[key]
+        # All selected real palaces contribute intrinsic state once; only
+        # extra *control assistance* is gated by effective suppression.
+        effective[key]=aggregate[key]
     summary=multi_palace_tally(palaces=effective)
     # V7 USER CONDITIONAL RULES, private-only points. Source 200/81 table
     # scores and every real palace remain unchanged. Distinct physical
@@ -443,6 +445,9 @@ def inspect_selected_quantization(*,selected_roles,
                 "palace":pid,"symbol":"天心星","points":points,"note":note}
     lucky_points=sum(v["points"] for v in auspice.values())
     total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
+    # Apply 五不遇时 ONCE to the aggregate, after role dedup and bonuses.
+    macro_penalty=2 if five else 0
+    final_raw=summary["post_void_known_sum"]+total_bonus-macro_penalty
     original=summary["score"]
     summary.update({
         "pre_relationship_bonus_score":original,
@@ -456,8 +461,11 @@ def inspect_selected_quantization(*,selected_roles,
         "auspice_bonus_notes":[auspice[k]["note"] for k in sorted(auspice)],
         "auspice_bonus_score":lucky_points,
         "relationship_bonus_score":total_bonus,
+        "five_not_global_penalty":macro_penalty,
+        "raw_final_before_saturation":final_raw,
+        "five_not_deducted_once_at_end":True,
         "weak_illness_drain_eligible":weak_disease,
-        "score":(max(-5,min(5,summary["post_void_known_sum"]+total_bonus))
+        "score":(max(-5,min(5,final_raw))
                  if original is not None else None)})
     summary["grade"]=grade_label(summary["score"]) if summary["score"] is not None else None
     return {"version":VERSION,"roles":roles,
