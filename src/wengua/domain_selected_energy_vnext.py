@@ -607,6 +607,8 @@ def selected_health_sections(result,*,actor,chart):
     if q["drain_bonus_palaces"]:
         desc.append("病星势弱而外泄，病气有耗损之象")
     desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
+    if result["first_stage_macro"]["five_not_encounter_triggered"]:
+        desc.insert(0,"五不遇时成立，合断最终另扣两级")
     evidence="；".join(desc)
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
