@@ -391,8 +391,7 @@ def inspect_selected_quantization(*,selected_roles,
             elif all(x in high_ground_stages for x in ground_stages):
                 points=2 if gstrength=="极小" else 3
             else:
-                points=2 if gstrength!="极小" else 2
-                # Off-five life stages cannot claim the new +3 condition.
+                points=0  # Off-five life stages cannot claim an invented partial bonus.
             if points:
                 stem_candidates.append((points,ground_stem+"奇","地盘"))
         # Same actual palace + 乙/丁 family is ONE bonus even if the selected
