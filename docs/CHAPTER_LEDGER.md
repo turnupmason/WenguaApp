@@ -1242,3 +1242,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - **完整真 Python ↔ Swift 相同**：冻结 `scripts/ios_vnext_manual_colleague_20261027.py`，新增 `tests/test_health_v731_colleague_user_pillars_20261027.py` 和独立 `.github/workflows/ios_native_cast_parity.yml:v731_colleague_user_clock`，真实编译 `WenguaNativeVNextEngine` + 生产 `WenguaNativeReadingRouter`，11? 段（按真实 sections）逐字对照全部标题、标点、换行；[CI #40557981083](https://github.com/turnupmason/WenguaApp/actions/runs/40557981083) 的 **v731_colleague_user_clock = success**。完整 Python 和 Swift 双原文已新建 `docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_2026-10-27.md`（严禁覆盖旧档）。
 - **本次规则事实**：天芮病宫**坎一宫极大凶**，天心/乙奇同**震三宫极小吉**，同事月干患者用神戊落**艮八宫极大凶**，艮土克坎水但施力源受限；丁时干**兑七宫中吉**生扶病宫、宫见天盘丁奇；值符**巽四宫小吉**受病宫生。此盘**五不遇时成立**、非伏吟反吟；不许隐去五不遇时这一独立全局不利事实，虽然已批准动态两句 `90_review` 当前本身只列局部人物宫证据，完整 `01_macro` 已明确五不遇时；此处是**客户模板覆盖范围的待用户审核项**，不能擅改计算或假装两句已列尽全局条件。当前程序合断**小吉**（传统文化内部标签，不是医疗事实）；实际病情未知、无反馈、不得借古书词声称病人一定没事或有危险。
 - **CI 边界与旧失败**：同次运行 `v73_elder_1920_independent` 和 `v72_elder_female_independent` 均 success；旧 `v7_friend_independent` 自动归档 push 竞争失败、`native_core` 仍有父亲随机盘 Python/Swift 分差，故 overall workflow 不是 all-green，`real_ios_xcode_build` skipped。保留全部失败与日志。GitHub workflow `Important/python/ci`、`Important/swift/ci` 均同文件 git SHA，并更新 `Important/MANIFEST.json`。此轮不更改 200 格、81 格、冻结 V3.9.1、旧口径、历史案例，新增真实原著案例0、章节0。
+
+
+## 2026-10-27 · V7.5 用户评分校正：五不遇时每个独立参与宫各扣2分、两张固定病情盘重断（非新增章）
+
+- 用户发现V7.4将五不遇时整盘仅扣2分，又把V7.2历史克病/奇助/值符证据补分再次叠入原本已经算好的宫分，导致同事「极大吉」、1920老人「中吉」等结论不合本轮指定的逐宫求和。V7.5现役五级合断只累计各实际参与的独立物理宫完整宫分一次，五不遇时每宫再扣2分（中平也扣），最后按±5限幅；重复身份在同一宫只计一次。旧加分条目的数据、来源与客户象意保持可追溯，但不再重复添加到终分。JSON模板标记新口径，Python Swift同步。全部历史错档、旧CI失败与原书章节、200格81格、V3.9.1冻结记录一律不删除不覆盖。
+- 同事（己丑年戊辰月辛卯日丁酉时，患者用月干戊仍属 research_candidate_only；年命仅乙干、与天心乙奇同震三宫）：独立坎1 -5、震3 +3、艮8 -5、兑7 +5、巽4 +4，合计 +2；五不遇时共五个宫每宫-2，总扣10，净 -8，截断最终**极大凶**。旧版另加8吉助再整盘只减2而得极大吉，原V7.4存档保留供追错。
+- 1920出生女长辈条件性盘（己丑年庚午月丁亥日乙巳时；庚申年命仅1920立春后生日才有效，具体关系未证实）：离9 +5、兑7 -5、震3 0、坤2 -3，四宫 -3；无五不遇时不扣分，最终**中凶**。这两盘均无整盘伏吟或反吟，不凭此断病情缓急；遇伏吟模板写主慢、反吟写主快、两者同见合参。原用户此前通过的V7.3.1旧**文字排版**与本次改档位的新结果是两个版本，不擅自标为新版本已验收。
+- Python health_quant_overlay_vnext.py / 原生 Swift WenguaNativeVNextEngine.swift 评分同式，Python domain_selected_energy_vnext.py / Swift WenguaPythonVNextVerbatim.swift 的两句动态模板均说明「五不遇时成立，参与合断的每个独立实宫均减两分」；Important两语言快照及SHA已在本轮前序提交同步。新增同事/1920回归与更正档，原材料和所有历史失败不改。新增书章0，原著预测案例0。术数分档不具临床医学意义。最新Python/Swift CI以本轮提交Actions核验为准。
