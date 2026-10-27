@@ -48,6 +48,8 @@ permissions:
 jobs:
   native_core:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Compile TRUE offline Swift executable (Foundation, no simulator)
@@ -228,6 +230,108 @@ jobs:
         with:
           name: v6-one-wife-python-swift-verbatim-20261026
           path: /tmp/wengua-v6-one/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: V6.1 fresh independent random wife illness test at latest source (2026-10-27)
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v61-wife-new
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 347058956909 --count 1 --wife-only --output /tmp/wengua-v61-wife-new/python_truth.json
+          /tmp/wengua-vnext-three-native /tmp/wengua-v61-wife-new/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-v61-wife-new/swift_public_readings.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v61-wife-new/python_truth.json /tmp/wengua-v61-wife-new/swift_public_readings.log /tmp/wengua-v61-wife-new/exact_wording_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-v61-wife-new")
+          src=json.loads((p/"python_truth.json").read_text(encoding="utf8"))
+          app=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in (p/"swift_public_readings.log").read_text(encoding="utf8").splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(src["cases"])==len(app)==1
+          a,b=src["cases"][0],app[0]
+          swift="\n\n".join(s["title"]+"：\n"+s["text"] for s in b["sections"])
+          assert a["python_reading_text"]==swift
+          doc="\n".join(["# Wengua V6.1 new independent random wife illness-severity software cast","Seed: 347058956909","Random draw: "+str(a["draw"]),"Local datetime: "+a["instant"],"Four pillars: "+"／".join(b["pillars"]),"Solar term: "+b["solar_term"],"Bureau: "+b["bureau"],"Python:",a["python_reading_text"],"Swift production router:",swift,"Exact full text: True","Rejected draws:",json.dumps(src["rejected"],ensure_ascii=False,indent=2)])+"\n"
+          (p/"v61_new_wife_python_swift_full_reading.md").write_text(doc,encoding="utf8")
+          print("V61_NEW_WIFE_FULL_READING_START")
+          print(doc)
+          print("V61_NEW_WIFE_FULL_READING_END")
+          PY
+      - name: Commit the exact newly generated V6.1 full wife reading to project history
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v61-wife-new/v61_new_wife_python_swift_full_reading.md docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          printf '\\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\nSource SHA: %s\\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          git commit -m "Archive V6.1 newly randomized wife chart full Python and native Swift reading"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve V6.1 new wife full Python and native Swift readings, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v61-new-wife-python-swift-full-reading-20261027
+          path: /tmp/wengua-v61-wife-new/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: User supplied 1930-born female four pillars - native Swift versus Python exact parity
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-1930-manual
+          python3 -m scripts.ios_vnext_manual_birth_20261027 --output /tmp/wengua-1930-manual/python_truth.json
+          /tmp/wengua-vnext-three-native /tmp/wengua-1930-manual/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-1930-manual/swift_public_readings.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-1930-manual/python_truth.json /tmp/wengua-1930-manual/swift_public_readings.log /tmp/wengua-1930-manual/exact_wording_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-1930-manual")
+          case=json.loads((p/"python_truth.json").read_text(encoding="utf8"))["cases"][0]
+          ios=[json.loads(s.split("VNEXT_IOS_PYEXACT=",1)[1]) for s in (p/"swift_public_readings.log").read_text(encoding="utf8").splitlines() if "VNEXT_IOS_PYEXACT=" in s]
+          assert len(ios)==1
+          sw="\\n\\n".join(x["title"]+"：\\n"+x["text"] for x in ios[0]["sections"])
+          assert case["python_reading_text"]==sw
+          doc="\\n".join([
+             "# 用户指定四柱、1930年生女性：V6.1 Python／Swift 双端真实断案",
+             "",
+             "- 原始输入：己丑年、丁丑月、癸末〔规范写法癸未〕日、丙辰时；测1930年老太太。",
+             "- 干支对应本次软件时间：2010-02-02 07:00 America/New_York；不是新的随机时辰。",
+             "- 年命庚午：仅假定1930立春以后出生；更早出生应重新核为己巳。",
+             "- 未提供与求测者关系。借用现有其他长辈 direct_proxy source profile 作为技术性条件候选，不可假定实为亲属、母亲或原书证实用神。",
+             "- 以下为术数规则程序模拟，不涉及真实医疗诊断或疗效、病情预后。",
+             "",
+             "四柱："+"／".join(ios[0]["pillars"])+"；节气："+ios[0]["solar_term"]+"；"+ios[0]["bureau"],
+             "",
+             "## Python 正式全文",
+             case["python_reading_text"],
+             "",
+             "## iOS Swift 生产 Router 正式全文",
+             sw,
+             "",
+             "## 逐字验收",
+             "完整中文 / 结构 ID / 标点 / 段落 / 时间 / 关系一致：True",
+          ])+"\\n"
+          (p/"full_1930_manual_python_swift_reading.md").write_text(doc,encoding="utf8")
+          print("MANUAL_1930_FULL_READING_START")
+          print(doc)
+          print("MANUAL_1930_FULL_READING_END")
+          PY
+      - name: Archive user supplied four pillar 1930 natal production Swift reading in original repository
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-1930-manual/full_1930_manual_python_swift_reading.md docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
+          printf '\\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\nSource SHA: %s\\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
+          git commit -m "Archive user supplied 1930 natal health chart Python native Swift parity"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve exact 1930 user provided four pillars, Python and native Swift, even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-1930-actual-pillars-v61-python-swift-20261027
+          path: /tmp/wengua-1930-manual/
           retention-days: 90
           if-no-files-found: warn
       - name: Parse Swift bridge syntax
