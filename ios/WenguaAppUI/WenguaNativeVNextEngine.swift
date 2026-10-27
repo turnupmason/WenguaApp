@@ -584,7 +584,7 @@ enum WenguaVNextEngine {
             } else {
                 physical[p.id]=try evaluate(p,role:role,chart:chart,
                                             catalog:energy,excel:excel,
-                                            month:month,fiveNot:fiveNot)
+                                            month:month,fiveNot:false)
             }
             if role=="chief" {
                 strength[role]=try primary(role,p,month:month,catalog:energy,
