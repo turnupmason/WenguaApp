@@ -96,6 +96,17 @@ private struct PublicCast:Encodable {
             try require(WenguaVNextEngine.cohostPoints(chief:chief,stem:earth,void:true)==expected/2,
                 "chief/ground cohost void floor must follow combined subtotal")
         }
+        for (attacker,empty,controlled,illEmpty,expected) in [
+            (0,false,false,false,0),(1,false,false,false,0),
+            (2,false,false,false,3),(3,false,false,true,5),
+            (3,true,false,true,1),(3,false,true,true,1),
+            (-5,true,false,false,1)
+        ] {
+            try require(WenguaVNextEngine.conditionalDiseaseControl(
+                attacker:attacker,attackerVoid:empty,
+                attackerControlled:controlled,illnessVoid:illEmpty)==expected,
+                "V7.8 3/5/1 illness control gate mismatch")
+        }
         try require((1...24).contains(fixture.cases.count),"expected 1...24 actual clocks")
         var times:Set<String>=[]
         for (i,test) in fixture.cases.enumerated() {
