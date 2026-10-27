@@ -156,5 +156,6 @@
     "off_five_ground_stages": "no_extra_bonus_unless_book_confirmed_tomb_strike_exception",
     "no_client_internal_score": true,
     "medical_outcome": false
-  }
+  },
+  "summary_format_version": "v7.3_two_sentences_conditional"
 }
