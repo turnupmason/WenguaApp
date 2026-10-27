@@ -464,6 +464,9 @@ def selected_health_sections(result,*,actor,chart):
         if kind=="stem":
             col=power.get("user_cell_col") or "月令关系待核"
             row_name=power.get("user_cell_row") or "长生分支待核"
+            if row_name=="长生分支待核":
+                return (power["symbol"]+"天干与月令关系为"+str(col)+
+                        "，其本宫力量仍待核实。")
             return (power["symbol"]+"天干十二长生"+str(row_name)+
                     "、"+str(col)+"，用神力量为"+strength+"。")
         return "用神力量为"+strength+"。"
