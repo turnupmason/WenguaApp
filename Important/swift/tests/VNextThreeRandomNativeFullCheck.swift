@@ -222,7 +222,8 @@ private struct PublicCast:Encodable {
             let doctorGrade=doctor.contains("全部因素推断后，此宫为") ||
                             doctor.contains("本用神结合宫内诸象后为")
             let medicineGrade=medicine.contains("全部因素推断后，此宫为") ||
-                              medicine.contains("本用神结合宫内诸象后为")
+                              medicine.contains("本用神结合宫内诸象后为") ||
+                              medicine.contains("合看该宫象")
             try require(doctorGrade && medicineGrade,
                 loc+"signed role-specific palace conclusion absent")
             try require(!joined.contains("净分") && !joined.contains("内部原始分"),
