@@ -103,7 +103,8 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     raw["chief"]=(chief_cell,"star" if chief_star else "stem",
                   chief_star or chief_cell["earth_stem"])
 
-    natal_name=inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+    natal_name=(inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+                or inquiry.get("patient_birth_stem"))
     if natal_name and not actor.get("birth_cell"):
         # Jia hiding method or invalid placement has NOT been independently
         # resolved; don't fabricate a visible natal stem.
