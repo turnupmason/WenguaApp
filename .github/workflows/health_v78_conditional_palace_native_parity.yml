@@ -1,0 +1,88 @@
+name: Health V7.8 Conditional Extra Illness Aid Native Python Parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v78_conditional_palace_native_parity.yml'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'Important/MANIFEST.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  both_original_user_clocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independently validate actual per-palace and condition-only rule implementation
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v78
+          python3 -m unittest discover -s tests -p 'test_health_v78_illness_special_cohost_20261027.py' -v 2>&1 | tee /tmp/wengua-v78/python_tests.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v78/mirror_check.log
+      - name: Compile ACTUAL iOS Swift offline engine and original customer renderer
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v78/native 2>&1 | tee /tmp/wengua-v78/swift_compile.log
+      - name: Frozen coworker real hour four pillars with supplied yearstem Yi
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v78/colleague.json | tee /tmp/wengua-v78/colleague_source.log
+          /tmp/wengua-v78/native /tmp/wengua-v78/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v78/colleague_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v78/colleague.json /tmp/wengua-v78/colleague_swift.log /tmp/wengua-v78/colleague_diff.md
+      - name: Frozen elderly woman 1920 original real hour and conditional natal
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v78/elder.json | tee /tmp/wengua-v78/elder_source.log
+          /tmp/wengua-v78/native /tmp/wengua-v78/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v78/elder_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v78/elder.json /tmp/wengua-v78/elder_swift.log /tmp/wengua-v78/elder_diff.md
+      - name: Print exact Python source and native full customer sections plus score audit
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path("/tmp/wengua-v78")
+          doc=["# V7.8 用户两张原始四柱真实Python／Swift同盘逐字核对","","真实原时辰未改变，1930等其它历史断案均未覆盖。传统古籍象意非医学病情或预后事实。"]
+          for name in ("colleague","elder"):
+              c=json.loads((out/(name+".json")).read_text())["cases"][0]
+              q=c["summary"]
+              raw=q["post_void_known_sum"]+q["control_bonus_score"]+q["weak_illness_drain_bonus_score"]+q["auspice_applied_extra_score"]-q["five_not_global_penalty"]
+              assert raw==q["raw_final_before_saturation"]
+              swlog=(out/(name+"_swift.log")).read_text()
+              sw=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in swlog.splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+              assert len(sw)==1
+              swift="\n\n".join(x["title"]+"：\n"+x["text"] for x in sw[0]["sections"])
+              assert swift==c["python_reading_text"]
+              summary=next(x["text"] for x in c["source_sections"] if x["id"]=="90_review")
+              print("V78_"+name.upper()+"_FINAL="+summary.replace("\n\n"," | "))
+              print("V78_"+name.upper()+"_AUDIT="+json.dumps({
+                "pillars":c["four_pillars"],"unique_palaces":q["unique_palace_score_details"],
+                "base":q["post_void_known_sum"],"control":q["control_bonus_points"],
+                "drain":q["weak_illness_drain_bonus_score"],"cohost":q["auspice_bonus_details"],
+                "cohost_applied":q["auspice_applied_extra_score"],
+                "five_not":q["five_not_global_penalty"],"raw":raw,"final":q["score"],
+                "source_confidence":c.get("evidenceDirection")
+              },ensure_ascii=False))
+              doc+=["","## "+("同事（年命乙）" if name=="colleague" else "1920女性长辈（条件年命庚申）"),
+                    "原四柱 "+str(c["four_pillars"])+"；时间 "+c["instant"],
+                    "三个步骤实盘账本：",
+                    "一、各唯一实宫："+json.dumps(q["unique_palace_score_details"],ensure_ascii=False),
+                    "二、额外有效克病："+json.dumps(q["control_bonus_points"],ensure_ascii=False)+"；特殊同宫吉助："+json.dumps(q["auspice_bonus_details"],ensure_ascii=False),
+                    "三、原宫合计"+str(q["post_void_known_sum"])+"；独立吉助"+str(q["auspice_applied_extra_score"])+"；跨宫"+str(q["control_bonus_score"])+"；耗泄"+str(q["weak_illness_drain_bonus_score"])+"；五不遇时扣"+str(q["five_not_global_penalty"])+"；净值"+str(raw)+"；最终"+str(q["score"]),
+                    "### 动态两段结论",summary,"### Python 本次原文",c["python_reading_text"],
+                    "### Native Swift 全文",swift,"全部原文逐字同一：True"]
+          (out/"two_original_clocks.md").write_text("\n".join(doc)+"\n",encoding="utf-8")
+          print("V78_BOTH_FULL_TEXT_TRUE")
+          PY
+      - name: Retain original failure or success compiler sources fixtures and full paragraph artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v78-two-original-user-clocks-with-conditional-cohost
+          path: /tmp/wengua-v78/
+          retention-days: 90
+          if-no-files-found: warn
