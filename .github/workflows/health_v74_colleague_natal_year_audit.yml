@@ -1,0 +1,92 @@
+name: Health V7.4 real colleague natal Yi and macro final-point source audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/**'
+      - 'scripts/ios_vnext_manual_colleague_natal_yi_20261027.py'
+      - 'tests/test_health_v74_colleague_natal_yi_20261027.py'
+      - '.github/workflows/health_v74_colleague_natal_year_audit.yml'
+  workflow_dispatch:
+jobs:
+  python_truth_source:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: User fixed pillars, natal Yi physical cohost, exact signed scoring ledger
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v74-natal
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v74-natal/python_truth.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/wengua-v74-natal')
+          c=json.loads((p/'python_truth.json').read_text())['cases'][0]
+          assert [c['four_pillars'][k] for k in ('year','month','day','hour')]==['己丑','戊辰','辛卯','丁酉']
+          assert c['patient_birth_ganzhi'] is None and c['patient_birth_stem']=='乙'
+          assert 'natal' in c['roles'] and 'gender' not in c['roles']
+          assert c['roles']['natal']['palace']==c['roles']['medicine']['palace']
+          q=c['summary']
+          assert c['firstStage'] and q['five_not_global_penalty']==2
+          assert q['raw_final_before_saturation']==q['post_void_known_sum']+q['relationship_bonus_score']-2
+          assert q['score']==max(-5,min(5,q['raw_final_before_saturation']))
+          sections=c['source_sections']
+          verdict=next(x['text'] for x in sections if x['id']=='90_review')
+          assert len(verdict.split('\n\n'))==2,verdict
+          assert '五不遇时成立' in verdict and '无整盘伏吟反吟' in verdict
+          assert '患者年命' in verdict and '长辈乾宫' not in verdict and '长辈坤宫' not in verdict
+          report=[
+              '# V7.4 natal 乙 colleague original fixed chart Python scoring audit',
+              '',
+              '己丑年 戊辰月 辛卯日 丁酉时，2009-04-16 17:00 America/New_York；同事、性别未知、年命仅乙干无出生支。',
+              '五不遇时在整个合断最后只扣2级。非伏吟反吟只作用于节奏，不另猜吉凶。',
+              '',
+              '## This original signed account, separate real palaces and final adjustments',
+              'distinct real palace grades: '+repr(q['effective_palace_scores']),
+              'base sum AFTER physical dedup and void: '+str(q['post_void_known_sum']),
+              'cross-palace valid control: '+repr(q['control_bonus_points']),
+              'drain score: '+str(q['weak_illness_drain_bonus_score']),
+              'auspice score: '+str(q['auspice_bonus_score']),
+              'all extra adjustments: '+str(q['relationship_bonus_score']),
+              'five-not final only once: -'+str(q['five_not_global_penalty']),
+              'raw total before extreme saturation: '+str(q['raw_final_before_saturation']),
+              'final bounded sign grade: '+str(q['score'])+' / '+str(q['grade']),
+              'actual roles: '+repr({k:v['palace'] for k,v in c['roles'].items()}),
+              'source control directions: '+repr(c['controls']),
+              '',
+              '## Customer conclusion (two paragraphs)',verdict,
+              '',
+              '## Python original whole narrative',c['python_reading_text'],
+              '',
+              'This is traditional symbolic culture, not medical evidence; original Python only. Native Swift parity is NOT asserted.',
+          ]
+          out='\n'.join(report)+'\n'
+          (p/'python_audit.md').write_text(out,encoding='utf-8')
+          print('V74_ORIGINAL_PYTHON_SOURCE_BEGIN')
+          print(out)
+          print('V74_ORIGINAL_PYTHON_SOURCE_END')
+          PY
+      - name: Save full ledger and any failed original records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v74-original-colleague-natal-Yi-python
+          path: /tmp/wengua-v74-natal/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Append-only original source audit file
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v74-natal/python_audit.md docs/HEALTH_V74_COLLEAGUE_NATAL_YI_PYTHON_AUDIT_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V74_COLLEAGUE_NATAL_YI_PYTHON_AUDIT_2026-10-27.md
+          git commit -m "Archive exact natal Yi colleague source scores and five-not global penalty" || true
+          for retry in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
