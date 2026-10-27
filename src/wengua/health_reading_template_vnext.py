@@ -21,7 +21,8 @@ def template():
     if raw.get("schema") not in ("health_severity_user_editable_template_v20261025_v1",
                                  "health_severity_user_editable_template_v20261026_customer_v2",
                                  "health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades",
-                                 "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific"):
+                                 "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
+                                 "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice"):
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
