@@ -533,3 +533,81 @@ jobs:
           git commit -m "Retain V7 original compiler and native text parity diagnostics"
           git pull --rebase origin main
           git push origin HEAD:main
+
+  v72_elder_female_independent:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: V7.2 exact chief ground 6 5 4 3 and elderly/friend role Python tests
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v72-elder
+          python3 -m unittest discover -s tests -p 'test_health_v72_same_palace_chief_earth_20261027.py' 2>&1 | tee /tmp/wengua-v72-elder/python_unit.log
+      - name: Compile actual iOS production Swift engine for V7.2 same-hour elder woman
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v72-elder/native 2>&1 | tee /tmp/wengua-v72-elder/swift_compiler.log
+      - name: User 1930-born older female SAME original four pillars Python vs real native iOS line perfect
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_birth_20261027 --output /tmp/wengua-v72-elder/python_truth.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("/tmp/wengua-v72-elder/python_truth.json").read_text())["cases"][0]
+          assert list(a["four_pillars"].values())==["己丑","丁丑","癸未","丙辰"]
+          assert a["roles"]["gender"]["palace"]==2 and "natal" in a["roles"]
+          assert a["patient_birth_ganzhi"]=="庚午"
+          print("V72_FEMALE_ELDER_REAL_PALACE_AND_NATAL_BOUND")
+          PY
+          /tmp/wengua-v72-elder/native /tmp/wengua-v72-elder/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v72-elder/swift_original.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v72-elder/python_truth.json /tmp/wengua-v72-elder/swift_original.log /tmp/wengua-v72-elder/full_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-v72-elder")
+          x=json.loads((p/"python_truth.json").read_text())["cases"][0]
+          sw=[json.loads(s.split("VNEXT_IOS_PYEXACT=",1)[1]) for s in
+             (p/"swift_original.log").read_text().splitlines() if "VNEXT_IOS_PYEXACT=" in s]
+          assert len(sw)==1
+          text="\n\n".join(q["title"]+"：\n"+q["text"] for q in sw[0]["sections"])
+          assert x["python_reading_text"]==text
+          label="unknown"
+          for s in sw[0]["sections"]:
+             if s["id"]=="90_review":label=s["text"]
+          print("V72_ELDER_FEMALE_FINAL "+label)
+          original="\n".join([
+              "# V7.2 用户同一时辰 1930 年生老年女性｜Python＋真正 iOS Swift 全文",
+              "",
+              "固定己丑／丁丑／癸未／丙辰，大寒阳遁三局；2010-02-02T07:00:00-05:00 America/New_York。",
+              "关系未实际确认，仅用原来的其他长辈（条件性）技术选角；庚午年命假定1930年立春后出生。",
+              "不是现实中的临床诊断、治疗证据或预后。",
+              "",
+              "## Python 原计算断词",x["python_reading_text"],"",
+              "## iOS Swift 正式生产断词",text,"",
+              "完整中文、标点、段落、顺序逐字相同：True",
+              "本轮 GitHub Run: https://github.com/turnupmason/WenguaApp/actions/runs/"+__import__("os").environ.get("GITHUB_RUN_ID",""),
+          ])+"\n"
+          (p/"v72_elder_woman_python_swift.md").write_text(original)
+          print(original)
+          PY
+      - name: Append-only archive of actual V7.2 same-time 1930 woman verified full outputs
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v72-elder/v72_elder_woman_python_swift.md docs/HEALTH_V72_ELDER_WOMAN_SAME_HOUR_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V72_ELDER_WOMAN_SAME_HOUR_2026-10-27.md
+          git commit -m "Archive independently verified V7.2 same-hour elder woman Python Swift original verdict"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Persist V7.2 independent Swift and Python diagnostics even when failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v72-elder-woman-1930-cohost-original-python-swift
+          path: /tmp/wengua-v72-elder/
+          retention-days: 90
+          if-no-files-found: warn
