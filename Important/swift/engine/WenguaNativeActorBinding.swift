@@ -30,6 +30,16 @@ struct WenguaNativeInquiry {
     let patientSex:String? // male, female
     let birthOrder:String? // eldest, middle, youngest
     let patientBirthGanzhi:String? // optional complete Ganzhi, NOT Gregorian year only
+    let patientBirthStem:String? // source-supplied lone natal heavenly stem
+    init(relationship:String,context:String,patientSex:String?,birthOrder:String?,
+         patientBirthGanzhi:String?,patientBirthStem:String?=nil) {
+        self.relationship=relationship
+        self.context=context
+        self.patientSex=patientSex
+        self.birthOrder=birthOrder
+        self.patientBirthGanzhi=patientBirthGanzhi
+        self.patientBirthStem=patientBirthStem
+    }
     static func standard(_ relation:String)->WenguaNativeInquiry {
         WenguaNativeInquiry(relationship:relation,
             context:relation=="本人" ? "direct_self":"direct_proxy",
@@ -174,7 +184,7 @@ enum WenguaNativeActorSource {
         if let natal, !validatedGanzhi(natal) {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
-        let natalStem=natal.map{String($0.prefix(1))}
+        let natalStem=natal.map{String($0.prefix(1))} ?? inquiry.patientBirthStem
         let natalPalace=natalStem.flatMap{actualStem($0,chart:chart)}
         // Only older-generation roles receive Qian/Kun; this is NOT a
         // generic male/female auxiliary for friends, spouses or children.
