@@ -774,7 +774,7 @@ enum WenguaVNextEngine {
         for (tag,p,_) in personalized where tag != "illness" && p.id != ill.id {
             guard let edge=controls.first(where:{$0.role==tag}) else{continue}
             if controlRoles.contains(tag) && edge.direction=="克",
-               let tier=strength[tag]?.strength, tier != "极小" {
+               let attackerScore=physical[p.id]?.afterVoid, abs(attackerScore)>1 {
                 // Only star/god source primary 25-table has a palace-column
                 // restriction. Stem 25-table is moon/lifecycle, NOT palace.
                 var controlled=false
@@ -810,11 +810,6 @@ enum WenguaVNextEngine {
             let isVoid=actualVoid(p,chart,month:month) != "not_void"
             var stemCandidates:[(Int,String,String)]=[]
             for sky in p.heavenStars where sky.carriedStem=="乙" || sky.carriedStem=="丁" {
-                let selectedAtPalace=personalized.contains{
-                    ["illness","patient","hour","natal","gender"].contains($0.0) &&
-                    $0.1.id==pid && $0.2==sky.carriedStem
-                }
-                if pid != ill.id && !selectedAtPalace {continue}
                 let x=try factor(kind:"stem",symbol:sky.carriedStem,palace:pid,
                                  month:month,catalog:energy,stages:sky.stages).strength
                 guard let tier=x else{continue}
@@ -886,11 +881,10 @@ enum WenguaVNextEngine {
         }
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
-        // Auspicious same-palace symbols are already in the resident
-        // star/god and selected unique-stem factors; their notes remain.
-        let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count
-        // V7.5 Python parity: audit historical overlays, but do not add
-        // those symbols twice to complete signed physical-palace scores.
+        // V7.8: user special health cohost effects are CONDITION bonuses,
+        // once per actual host palace; resident factors remain one base.
+        let relationshipBonus=controlPoints.values.reduce(0,+) +
+            3*drainBonus.count+auspicePoints
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
         let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)
         let result=pending.isEmpty ?
