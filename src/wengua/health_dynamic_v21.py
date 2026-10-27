@@ -202,9 +202,14 @@ def bind_patient(chart, inquiry, calendar):
         fixed_palaces.append(8)
     extra_cells = [_cell(chart, p) for p in sorted(set(fixed_palaces))]
     birth = inquiry.get("patient_birth_ganzhi") or inquiry.get("subject_year_ganzhi")
+    birth_stem = inquiry.get("patient_birth_stem")
+    if birth_stem and birth_stem not in "甲乙丙丁戊己庚辛壬癸":
+        raise ValueError("Invalid natal heavenly stem")
+    if birth and birth_stem and birth[0] != birth_stem:
+        raise ValueError("Conflicting natal stem and Ganzhi")
     if birth and birth not in cycle60():
         raise ValueError("Patient birth year Ganzhi must be a full valid 60-cycle pillar")
-    birth_cell = _stem_cell(chart, birth[:1]) if birth else None
+    birth_cell = _stem_cell(chart, birth[0] if birth else birth_stem) if (birth or birth_stem) else None
     # If birth is Jia, hidden stem must be resolved from the actual Jia-xun,
     # NEVER pretend a visible '甲' exists in a nine-ritual chart.
     extras = ["{p}参考宫主{m}".format(
