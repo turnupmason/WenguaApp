@@ -119,7 +119,11 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     if actor.get("relationship")=="husband":sex="male"
     if sex not in (None,"male","female"):
         raise ValueError("Gender must be male/female or omitted")
-    gender_palace={"male":6,"female":2}.get(sex)
+    # Only explicitly older-generation patients bind 乾/坤. Sex alone
+    # must NEVER introduce an additional palace for friends, spouses, peers,
+    # ordinary relatives or children.
+    elder=actor.get("relationship") in {"father","mother","parent","older_relative"}
+    gender_palace={"male":6,"female":2}.get(sex) if elder else None
     if gender_palace is not None:
         cell=_cell(chart,gender_palace)
         if not cell:raise ValueError("Actual gender auxiliary palace absent")
@@ -190,7 +194,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
 
     # User's latest instruction: ALWAYS observe the real 乾、坤 palaces
     # as secondary context and compare their nominal palace relationship
-    # with Tianrui.  This does NOT bind both as the patient, fabricate a
+    # with Tianrui for internal factual research only, never automatic scoring.
     # gender, or duplicate votes if one is already the primary patient.
     auxiliary_palaces={}
     for alias,pid in (("qian",6),("kun",2)):
@@ -416,7 +420,7 @@ def selected_health_sections(result,*,actor,chart):
     """V4 public prose from live scored real palaces, with no repeated evidence.
 
     Previous original books, source 81 rows and full 200-cell audits are untouched.
-    Male -> Qian; female -> Kun; no gender -> neither auxiliary vote.
+    Elders only: male -> Qian, female -> Kun; other actors -> neither.
     """
     from .health_five_level_quant_vnext import label as score_label
 
@@ -475,7 +479,7 @@ def selected_health_sections(result,*,actor,chart):
             return (strength+"值符大吉神与天芮病宫同宫，"
                     "表示大吉神在同宫护持，能够发挥作用。")
         if key=="chief" and gate["void"]!="not_void":
-            return (strength+"因值符空亡，神兽不在宫内，无法提供帮助。"
+            return (strength+"因值符空亡，护持力明显减弱，尚存少许余气。"
                     "")
         if rel=="克":
             bonus=quant["summary"]["control_bonus_palaces"]
@@ -548,8 +552,8 @@ def selected_health_sections(result,*,actor,chart):
             gender_note=""))
 
     # Qian/Kun audit records remain retained for internal investigations.
-    # The chosen patient-sex palace was already shown/scored as 'gender';
-    # displaying Qian+Kun again causes both double-reading and duplication.
+    # Elder-only sex palace was shown/scored as 'gender' if eligible;
+    # never infer either palace from the sex of a non-elder.
 
     q=quant["summary"]
     preface=""
@@ -559,6 +563,7 @@ def selected_health_sections(result,*,actor,chart):
             source=next(row for row in roles.values() if row["palace"]==pid)
             palace_names.append(source["complete_palace"]["palace_name"])
         preface="病星本已极弱，反去生助"+"、".join(palace_names)+"，自身气力进一步耗散，有病势受损之象。"
+    preface+="".join(q["auspice_bonus_notes"])
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
