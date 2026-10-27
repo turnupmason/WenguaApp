@@ -472,9 +472,16 @@ enum WenguaPythonVNextVerbatim {
                         } else {
                             head+="，逢空但尚存少许余气"
                         }
-                    } else if direction=="克" && key != "chief" {
-                        if review.controlBonusPoints[pid]==nil {
-                            head+="，但施力有限"
+                    } else if direction=="克" {
+                        let point=review.controlBonusPoints[pid]
+                        if point==5 {
+                            head+="，病宫又逢空，受制更易"
+                        } else if point==3 {
+                            head+="，本宫有力制病"
+                        } else if point==1 {
+                            head+="，施力受空或宫克限制，尚有少许余气"
+                        } else {
+                            head+="，但实际施力有限"
                         }
                     }
                 }
