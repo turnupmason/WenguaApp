@@ -111,6 +111,10 @@ enum WenguaNativeActorSource {
         guard sex==nil || sex=="male" || sex=="female" else {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
+        if profile.id=="father" && sex != nil && sex != "male" ||
+           profile.id=="mother" && sex != nil && sex != "female" {
+            throw WenguaNativeReadingError.unsupportedRelationship
+        }
         let kind=ctx=="event_news" ? index.event_news_override.role_kind : first.kind
         let confidence=ctx=="event_news" ?
             "source_case_specific_event_time" : first.status
