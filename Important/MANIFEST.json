@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "0f54f746719a4d40511d05c6a91ac240a2315802"
+      "sha": "b06025a4bb5e11b0e6833b844be284fe29ab54ce"
     },
     {
       "platform": "python",
@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "2eb6fdbc86ac887c7cbbdc6aaa26b3db38957982"
+      "sha": "02394f9c906112476c1d77cdad4718654c7ca0e2"
     },
     {
       "platform": "python",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "1e7e701f89ceef3f442c4b2d5a90dec8eb785ec2"
+      "sha": "33a91cdd8f9bc928370fdeefb4eb9375728e21c0"
     },
     {
       "platform": "swift",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "2eb6fdbc86ac887c7cbbdc6aaa26b3db38957982"
+      "sha": "02394f9c906112476c1d77cdad4718654c7ca0e2"
     },
     {
       "platform": "swift",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "d98d2bcc57dcf7a5852c113e59f7a4f48166f856"
+      "sha": "5cd063d8d32c722744e1da80c8f28ac9d182ad7a"
     },
     {
       "platform": "swift",
@@ -512,6 +512,18 @@
       "canonical": "ios/WenguaAppUI/WenguaVNextReasoner.swift",
       "snapshot": "Important/swift/ui/WenguaVNextReasoner.swift",
       "sha": "7aea2748f65fafa412c05dc70cd0fc5ccc8286a5"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
+      "snapshot": "Important/python/ci/health_v78_conditional_palace_native_parity.yml",
+      "sha": "f820d7e0a31d731ba173160f044dad0297eb6d58"
+    },
+    {
+      "platform": "swift",
+      "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
+      "snapshot": "Important/swift/ci/health_v78_conditional_palace_native_parity.yml",
+      "sha": "f820d7e0a31d731ba173160f044dad0297eb6d58"
     }
   ]
 }
