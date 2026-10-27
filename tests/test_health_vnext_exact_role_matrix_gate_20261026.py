@@ -78,7 +78,7 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 else:
                     self.assertFalse(chief["score_eligible"])
                     self.assertTrue(chief["chief_zero_score"])
-                    self.assertIn("值符护持不参与最终合断。",r["reading_text"])
+                    self.assertNotIn("值符护持不参与最终合断。",r["reading_text"])
                 if relation!="同宫" and chief["void"]!="not_void":
                     self.assertIn("因值符空亡，神兽不在宫内，无法提供帮助",r["reading_text"])
 
@@ -94,10 +94,30 @@ class ExactRoleMatrixGate(unittest.TestCase):
         self.assertTrue(recipients)
         self.assertEqual(len(recipients),len(set(recipients)))
         self.assertEqual(q["summary"]["weak_illness_drain_bonus_score"],3*len(recipients))
-        self.assertIn("疾病力量非常小反而要去生助",r["reading_text"])
+        self.assertIn("病星本已极弱，反去生助",r["reading_text"])
         base=q["summary"]["post_void_known_sum"]
         bonuses=q["summary"]["relationship_bonus_score"]
         self.assertEqual(q["summary"]["score"],max(-5,min(5,base+bonuses)))
+
+    def test_v61_customer_prose_keeps_source_score_but_hides_internal_formulae(self):
+        r=review("2024-03-25T05:00:00-04:00",WIFE)
+        graph=r["full_health_role_strength_network"]
+        audit=graph["candidate_five_grade_quantization"]["summary"]
+        self.assertEqual(audit["score"],-1)
+        self.assertEqual(audit["control_bonus_score"],3)
+        self.assertEqual(audit["pre_relationship_bonus_score"],-4)
+        public=r["reading_text"]
+        for forbidden in ("克制力量表为","完全失控","按新规则加3分",
+                          "不同实宫形成五行克病共","同一实宫仅计一次",
+                          "长生分支待核（","每宫加3分","值符护持不参与最终合断",
+                          "此处不再重复","不计独立克病加分"):
+            with self.subTest(forbidden=forbidden):
+                self.assertNotIn(forbidden,public)
+        self.assertIn("天心医生宫克天芮病宫，病宫逢空，病气减弱，更易受到天心医生的克制。",public)
+        self.assertIn("值符大吉神与天芮病宫同宫",public)
+        self.assertIn("综上所述，此病为极小凶。",public)
+        self.assertEqual(public,"\\n\\n".join(
+            x["title"]+"：\\n"+x["text"] for x in r["sections"]))
 
     def test_control_bonus_only_distinct_real_palaces(self):
         r=review("2023-04-24T21:00:00-04:00",WIFE)

@@ -470,22 +470,22 @@ def selected_health_sections(result,*,actor,chart):
         outcome=gate["control_result"]
         if key=="medicine" and rel=="同宫":
             return (strength+"乙奇与天芮病宫同宫，表示正在接受治疗，"
-                    "医药与病象同宫发挥作用；同一实宫仅计一次。")
+                    "医药与病象同宫发挥作用。")
         if key=="chief" and rel=="同宫":
             return (strength+"值符大吉神与天芮病宫同宫，"
-                    "表示大吉神在同宫护持，能够发挥作用；同一实宫仅计一次。")
+                    "表示大吉神在同宫护持，能够发挥作用。")
         if key=="chief" and gate["void"]!="not_void":
-            return (strength+"因值符空亡，神兽不在宫内，无法提供帮助；"
-                    "值符护持不参与最终合断。")
+            return (strength+"因值符空亡，神兽不在宫内，无法提供帮助。"
+                    "")
         if rel=="克":
             bonus=quant["summary"]["control_bonus_palaces"]
             if str(gate["palace"]) in bonus:
-                meaning=("疾病受到"+name+"宫的五行克制，此宫按新规则加3分。"
-                         "克制力量表为"+str(outcome or "待核")+"，仅说明施力强弱。")
+                void=roles["illness"]["complete_palace"]["void"]["classification"]
+                meaning=("病宫逢空，病气减弱，更易受到"+name+"的克制。"
+                         if void!="not_void" else "病象受到"+name+"的克制。")
             else:
-                meaning=("虽有克病方向，但值符空亡或不符合护持条件，"
-                         "不计独立克病加分。")
-            return strength+name+"宫克天芮病宫，意思为："+meaning
+                meaning=name+"虽克病宫，但护持之力难以发挥。"
+            return strength+name+"宫克天芮病宫，"+meaning
         if rel=="生":
             meaning=name+"宫生天芮病宫，意思为：疾病得不到"+name+"的压制，反受其生扶。"
         elif rel=="被克":
@@ -498,8 +498,6 @@ def selected_health_sections(result,*,actor,chart):
             meaning=name+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
         else:
             meaning=name+"与病宫的五行关系待核。"
-        if key=="chief" and not gate["score_eligible"]:
-            meaning+="值符护持不参与最终合断。"
         return strength+meaning
 
     power_seen={}
@@ -555,17 +553,12 @@ def selected_health_sections(result,*,actor,chart):
 
     q=quant["summary"]
     preface=""
-    if q["control_bonus_palaces"]:
-        n=len(q["control_bonus_palaces"])
-        preface+="不同实宫形成五行克病共"+str(n)+"宫，每宫加3分，共加"+str(3*n)+"分。"
     if q["drain_bonus_palaces"]:
         palace_names=[]
         for pid in sorted(int(k) for k in q["drain_bonus_palaces"]):
             source=next(row for row in roles.values() if row["palace"]==pid)
             palace_names.append(source["complete_palace"]["palace_name"])
-        n=len(palace_names)
-        preface+=("疾病力量非常小反而要去生助"+"、".join(palace_names)+
-                  "导致能量耗尽被反噬，此项为吉；每宫加3分，共加"+str(3*n)+"分。")
+        preface="病星本已极弱，反去生助"+"、".join(palace_names)+"，自身气力进一步耗散，有病势受损之象。"
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),

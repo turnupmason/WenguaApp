@@ -257,10 +257,8 @@ def render_complete_selected_palace(detail, *, quantified=None):
             return "无"
         if x["strength_label"] is not None:
             return str(x["symbol"])+"势"+str(x["strength_label"])
-        choices=x.get("stem_life_candidate_cells",())
-        return (str(x["symbol"])+"长生分支待核（"+
-                "／".join(str(y["row"])+"势"+str(y["strength"])
-                         for y in choices)+"）")
+        # Keep alternate lifecycle cells in audit, not customer prose.
+        return str(x["symbol"])
 
     stars="、".join(
         x["name"]+signed(star_score(

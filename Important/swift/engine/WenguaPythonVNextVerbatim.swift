@@ -105,17 +105,8 @@ enum WenguaPythonVNextVerbatim {
             kind:"stem",symbol:symbol,palace:palace,
             month:month,catalog:energy,stages:stages)
         if let x=source.strength{return symbol+"势"+x}
-        let col=try monthColumn(symbol,month)
-        var rows:[String]=[]
-        for st in stages {
-            let row=lifeRow(st.stage)
-            if !rows.contains(row){rows.append(row)}
-        }
-        let options=try rows.map{
-            $0+"势"+(try WenguaNativeEnergyBundle.cell("stem",row:$0,
-                                                   column:col,catalog:energy))
-        }
-        return symbol+"长生分支待核（"+options.joined(separator:"／")+"）"
+        // Keep unresolved lifecycle variants in source audit, not public prose.
+        return symbol
     }
     private static func power(_ kind:String,_ symbol:String,_ palace:Int,
                                _ month:String,_ energy:WenguaNativeEnergyCatalog)
@@ -304,22 +295,26 @@ enum WenguaPythonVNextVerbatim {
             eligible=rel != "克" || applicable
         }
         if role=="medicine" && rel=="同宫" {
-            return note+"乙奇与天芮病宫同宫，表示正在接受治疗，医药与病象同宫发挥作用；同一实宫仅计一次。"
+            return note+"乙奇与天芮病宫同宫，表示正在接受治疗，医药与病象同宫发挥作用。"
         }
         if role=="chief" && rel=="同宫" {
-            return note+"值符大吉神与天芮病宫同宫，表示大吉神在同宫护持，能够发挥作用；同一实宫仅计一次。"
+            return note+"值符大吉神与天芮病宫同宫，表示大吉神在同宫护持，能够发挥作用。"
         }
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
-            return note+"因值符空亡，神兽不在宫内，无法提供帮助；值符护持不参与最终合断。"
+            return note+"因值符空亡，神兽不在宫内，无法提供帮助。"
         }
         if rel=="克" {
             let meaning:String
             if review.controlBonusPalaces.contains(aid) {
-                meaning="疾病受到"+who+"宫的五行克制，此宫按新规则加3分。克制力量表为"+(outcome ?? "待核")+"，仅说明施力强弱。"
+                if review.palaces[pid]?.void != "not_void" {
+                    meaning="病宫逢空，病气减弱，更易受到"+who+"的克制。"
+                } else {
+                    meaning="病象受到"+who+"的克制。"
+                }
             } else {
-                meaning="虽有克病方向，但值符空亡或不符合护持条件，不计独立克病加分。"
+                meaning=who+"虽克病宫，但护持之力难以发挥。"
             }
-            return note+who+"宫克天芮病宫，意思为："+meaning
+            return note+who+"宫克天芮病宫，"+meaning
         }
         let explanation:String
         switch rel {
@@ -336,7 +331,7 @@ enum WenguaPythonVNextVerbatim {
         default:
             explanation=who+"与病宫的五行关系待核。"
         }
-        return note+explanation+(role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
+        return note+explanation
     }
 
     static func sections(chart:WenguaNativeChart,review:WenguaVNextAudit,
@@ -436,14 +431,9 @@ enum WenguaPythonVNextVerbatim {
         // Qian and Kun remain full source facts in internal audit; the
         // patient's selected sex already uses one real gender palace once.
         var preface=""
-        if !review.controlBonusPalaces.isEmpty {
-            let n=review.controlBonusPalaces.count
-            preface+="不同实宫形成五行克病共"+String(n)+"宫，每宫加3分，共加"+String(3*n)+"分。"
-        }
         if !review.drainBonusPalaces.isEmpty {
             let names=review.drainBonusPalaces.sorted().compactMap{cells[$0]}.map{label($0)}
-            let n=names.count
-            preface+="疾病力量非常小反而要去生助"+names.joined(separator:"、")+"导致能量耗尽被反噬，此项为吉；每宫加3分，共加"+String(3*n)+"分。"
+            preface="病星本已极弱，反去生助"+names.joined(separator:"、")+"，自身气力进一步耗散，有病势受损之象。"
         }
         let verdict:String
         if let score=review.score {

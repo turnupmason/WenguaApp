@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "33eb065c32979528af77dbd92ed51ea690214be3"
+      "sha": "8b2459deac010a06858159c64c331c0c109cd10d"
     },
     {
       "platform": "python",
@@ -163,7 +163,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_palace_detailed_vnext.py",
       "snapshot": "Important/python/reading/health_palace_detailed_vnext.py",
-      "sha": "9f23352a9ecbcf333b6d3ed8f2e9d22872af0239"
+      "sha": "ab8d6d4813b7f16724a2b14ff0dbc4253a2b9cf5"
     },
     {
       "platform": "python",
@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "082265258ca5c631cfeee53fb5e8a6b571288143"
+      "sha": "89ba5279187c75aaa6038e356ae5c4ce79c2cac8"
     },
     {
       "platform": "python",
@@ -313,7 +313,7 @@
       "platform": "python",
       "canonical": "tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
       "snapshot": "Important/python/tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
-      "sha": "93a4dc0c03b36a4ec0dd2c3e170a5317bb0bd46a"
+      "sha": "4428403574e4a08dbece8bf05422238ee9ecbc90"
     },
     {
       "platform": "python",
@@ -409,7 +409,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "514cb56fceb85ef8064b6b9cc2f8487442a9d6e1"
+      "sha": "06627c09a8f0527e821cc5a0160c2e595a3eefb7"
     },
     {
       "platform": "swift",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "082265258ca5c631cfeee53fb5e8a6b571288143"
+      "sha": "89ba5279187c75aaa6038e356ae5c4ce79c2cac8"
     },
     {
       "platform": "swift",

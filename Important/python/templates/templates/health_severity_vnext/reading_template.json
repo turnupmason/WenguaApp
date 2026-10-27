@@ -1,6 +1,6 @@
 {
   "schema": "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
-  "comment": "V6现役病情客户模板：星门神格、200格能量、81格、真实空亡；宫与病宫五行克病按去重实宫每宫加3；病星极小且病宫生外宫按不同受生宫每宫加3；乙奇与病星同宫主治疗、值符同宫护持；同宫乙奇用神力量不重复；最终原本体宫评分加关系正向补分后饱和五档。唯一代码为Python及Swift同源，不修改冻结V3.9.1。",
+  "comment": "V6.1客户精简断词：后台依原200格、25格相克/空亡变体、81格、完整五档算分及关系+3；用户只看自然生克与宫位吉凶，不输出+3算式、同宫去重提示、长生分支候选、控制矩阵结论或内部状态。Python和Swift逐字同一模板。冻结V3.9.1及旧数据不动。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -28,7 +28,7 @@
     "gender_note": "",
     "auxiliary": "{palace_detail}此宫与天芮病宫{relation}，仅作辅助参考；同宫不重复判断。",
     "overall_resolved": "综上所述，此病为{grade}。",
-    "overall_pending": "相关实宫尚有未核定的星门神格、十二长生分支或空亡条件，当前不足以给出最终五档吉凶。",
+    "overall_pending": "部分宫位条件未能确认，暂不强断吉凶。",
     "verdict": "{conclusion}以上只作传统古籍象意参考，不能据此判断真实病情。",
     "timing": "时马在{horse}；应期须另有空、墓、冲合及问事情境支持，不能直接断定某一天。"
   },
