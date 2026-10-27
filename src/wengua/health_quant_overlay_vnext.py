@@ -208,6 +208,16 @@ def special_cohost_total(chief_points,stem_points,*,void=False):
     return total//2 if void else total
 
 
+def special_disease_control_points(*,attacker_score,attacker_void=False,
+                                   attacker_controlled=False,illness_void=False):
+    """V7.8 conditional suppression: real attacker grade, never repeated per role."""
+    if attacker_score is None or abs(attacker_score)<=1:
+        return 0
+    if attacker_void or attacker_controlled:
+        return 1
+    return 5 if illness_void else 3
+
+
 def _role_score(item,primary,xun_shou):
     """Per-role signifier (source polarity x 200-cell) plus palace environment."""
     out=dict(item)
@@ -394,14 +404,16 @@ def inspect_selected_quantization(*,selected_roles,
         if pid==illness_pid:continue
         if key in control_roles and gate["relation"]=="克":
             attacker_score=roles[key]["palace_score"]["score"]
-            if attacker_score is not None and abs(attacker_score)>1:
-                # The actor is weakened if it is empty or its OWN resident
-                # primary symbol is克 by its palace, not because a 5×5 text
-                # label says "完全失控". This never reverses real 五行方向.
-                nominal=row["primary_strength_25"].get("user_cell_col")
-                symbol_controlled=nominal in ("宫克符号","被宫克")
-                points=(1 if gate["void"]!="not_void" or symbol_controlled
-                        else 5 if illness_void else 3)
+            # The actor's WHOLE selected physical-palace strength is the
+            # ability gate; use symbol palace-control as a restriction.
+            nominal=row["primary_strength_25"].get("user_cell_col")
+            symbol_controlled=nominal in ("宫克符号","被宫克")
+            points=special_disease_control_points(
+                attacker_score=attacker_score,
+                attacker_void=gate["void"]!="not_void",
+                attacker_controlled=symbol_controlled,
+                illness_void=illness_void)
+            if points:
                 control.setdefault(pid,[]).append(key)
                 control_points[str(pid)]=max(control_points.get(str(pid),0),points)
         # Preserve prior V6 weak illness actively draining into other roles.
