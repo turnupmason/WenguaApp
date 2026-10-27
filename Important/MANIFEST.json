@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "689dc1da08069a8c4055d2c92a13c38fd35a8846"
+      "sha": "9d00d6ae4c025fcd766fe9c788e9ecd3d2d779d5"
     },
     {
       "platform": "swift",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "db5258a6943a4b5031317ae19ef4555e867a888f"
+      "sha": "ae6e88fd4f9b669737006d5810dfd638e23be8a2"
     },
     {
       "platform": "swift",

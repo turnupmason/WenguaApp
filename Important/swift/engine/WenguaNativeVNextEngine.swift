@@ -52,6 +52,7 @@ struct WenguaVNextAudit {
     let palaces:[Int:WenguaVNextPalace]
     let roles:[String:Int]
     let roleScores:[String:Int]
+    let rolePalaces:[String:WenguaVNextPalace]
     let firstMacroFiveNot:Bool
     let postVoidKnownSum:Int
     let score:Int?
@@ -564,6 +565,7 @@ enum WenguaVNextEngine {
         var roles:[String:Int]=[:]
         var strength:[String:WenguaVNextFactor]=[:]
         var roleScores:[String:Int]=[:]
+        var rolePalaces:[String:WenguaVNextPalace]=[:]
         var rolePending:[Int]=[]
         let fiveNot=wholeChartFiveNot(chart)
         // Role binding order must match Python physical_cache. The first
@@ -634,6 +636,8 @@ enum WenguaVNextEngine {
                 let env=try evaluate(p,role:role,chart:chart,
                             catalog:energy,excel:excel,month:month,fiveNot:false)
                 var score=env.afterVoid
+                var scoreRaw=env.raw
+                var scoreBeforeVoid=env.beforeVoid
                 if ["medicine","patient","hour","natal"].contains(role) {
                     let polarity:Int?=symbol=="甲" ?
                         (chart.hiddenStem=="庚" ? -1 : 0) : Self.stemPolarity[symbol]
@@ -641,13 +645,22 @@ enum WenguaVNextEngine {
                         let own=polarity==0 ? Optional(0) :
                             Self.signed(strength[role]?.strength,polarity)
                         if let own {
+                            scoreRaw=raw+own
                             var before=Self.saturation(raw+own)
                             if env.doorBreak {before=Self.adverse(before)}
+                            scoreBeforeVoid=before
                             score=env.void=="not_void" || before==0 ? before :
                                   before>0 ? before-3 : before+3
-                        } else {score=nil}
-                    } else {score=nil}
+                        } else {score=nil;scoreRaw=nil;scoreBeforeVoid=nil}
+                    } else {score=nil;scoreRaw=nil;scoreBeforeVoid=nil}
                 }
+                rolePalaces[role]=WenguaVNextPalace(
+                    id:env.id,roles:[role],star:env.star,door:env.door,
+                    deity:env.deity,pattern:env.pattern,raw:scoreRaw,
+                    beforeVoid:scoreBeforeVoid,afterVoid:score,void:env.void,
+                    doorBreak:env.doorBreak,patterns:env.patterns,
+                    unresolved:env.unresolved,starStrength:env.starStrength,
+                    energyEvidence:env.energyEvidence)
                 if let score {roleScores[role]=score}
                 else {rolePending.append(p.id)}
             }
@@ -869,7 +882,7 @@ enum WenguaVNextEngine {
         return WenguaVNextAudit(
             schema:"wengua_native_vnext_exact_200_81_selected_five_v20261026",
             palaces:physical,roles:roles,roleScores:roleScores,
-            firstMacroFiveNot:fiveNot,
+            rolePalaces:rolePalaces,firstMacroFiveNot:fiveNot,
             postVoidKnownSum:known,score:result,pending:pending,
             controls:controls,evidenceDirection:evidenceDirection,
             evidenceConflict:conflict,traditionalSentence:sentence,

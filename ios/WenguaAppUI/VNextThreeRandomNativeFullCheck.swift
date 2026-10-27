@@ -145,9 +145,12 @@ private struct PublicCast:Encodable {
             try require(audit.firstMacroFiveNot==test.firstStage,loc+"five-not")
             try require(audit.score==test.summary.score,loc+"final score Swift "+String(describing:audit.score)+" Python "+String(describing:test.summary.score))
             try require(audit.postVoidKnownSum==test.summary.post_void_known_sum,
-                loc+"real palace dedup + void three")
+                loc+"selected role signed scores plus void and qualified controls")
+            // V7.6: compare each selected role's own computed star/door/god/
+            // 81 and extra heaven-stem base. Identical 乙 for medicine/hour
+            // MUST NOT inherit the first physical-palace score.
             for (name,expected) in test.roles {
-                guard let p=audit.roles[name],let r=audit.palaces[p] else {
+                guard let p=audit.roles[name],let r=audit.rolePalaces[name] else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
                 try require(p==expected.palace,loc+name+" palace")
@@ -156,7 +159,7 @@ private struct PublicCast:Encodable {
                 try require(r.deity==expected.components.deity,loc+name+" god no month")
                 try require(r.pattern==expected.components.pattern,
                     loc+name+" 81+12stage+tomb+strike")
-                try require(r.raw==expected.raw,loc+name+" four source factors")
+                try require(r.raw==expected.raw,loc+name+" own stem plus four source factors")
                 try require(r.afterVoid==expected.score,
                     loc+name+" door break/five-not/void")
                 try require(r.void==expected.void,loc+name+" true/fake void")
