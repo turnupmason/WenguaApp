@@ -44,14 +44,26 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
             from:Data(contentsOf:URL(fileURLWithPath:CommandLine.arguments[2])))
         let catalog=try String(contentsOfFile:
             "data/knowledge/health_81_excel_20261025/81_pairs.tsv",encoding:.utf8)
+        let actors=try WenguaNativeActorSource.fromData(
+            Data(contentsOf:URL(fileURLWithPath:
+                "data/knowledge/phrase_library/health_v20/actor_profiles.json")))
         let iso=ISO8601DateFormatter()
         iso.formatOptions=[.withInternetDateTime]
         var tested=0
         for fixture in gold.cases {
             guard let d=iso.date(from:fixture.instant) else {throw WenguaCastError.invalidChart}
             let chart=try WenguaNativeCore.compute(at:d,timezone:"America/New_York")
-            let audit=try WenguaVNextEngine.compute(chart:chart,relationship:fixture.relationship,
-                                                    energy:bundle,catalog:catalog)
+            // V7 source-selected persons are mandatory: comparing an actor=nil
+            // fallback against Python's actual father Qian/gender bound roles
+            // is an invalid cross-platform test, not a production engine bug.
+            let request=WenguaNativeInquiry(relationship:fixture.relationship,
+                context:fixture.relationship=="本人" ? "direct_self":"direct_proxy",
+                patientSex:nil,birthOrder:nil,patientBirthGanzhi:nil)
+            let actor=try WenguaNativeActorSource.bind(chart:chart,
+                inquiry:request,index:actors)
+            let audit=try WenguaVNextEngine.compute(
+                chart:chart,relationship:fixture.relationship,
+                energy:bundle,catalog:catalog,actor:actor)
             func require(_ ok:Bool,_ explanation:String) throws {
                 if !ok {throw NSError(domain:"WenguaSourceParity",code:1,
                        userInfo:[NSLocalizedDescriptionKey:fixture.instant+" "+explanation])}
