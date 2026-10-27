@@ -188,7 +188,7 @@ private struct PublicCast:Encodable {
             try require(doctor.contains("全部因素推断后，此宫为") &&
                         medicine.contains("全部因素推断后，此宫为"),
                 loc+"signed palace conclusion absent")
-            try require(!joined.contains("净分") && !joined.contains("加分"),
+            try require(!joined.contains("净分") && !joined.contains("内部原始分"),
                 loc+"private arithmetic leaked into original template")
             try require(reading.sections.contains(where:{$0.id=="91_timing"}),
                 loc+"original GPT timing paragraph missing")

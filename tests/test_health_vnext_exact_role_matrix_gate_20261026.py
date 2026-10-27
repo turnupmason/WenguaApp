@@ -88,8 +88,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                   "consultation_context":"direct_self"})
         q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
         self.assertTrue(q["summary"]["weak_illness_drain_eligible"])
-        illness=r["selected_roles"]["illness"]
-        self.assertEqual(illness["primary_strength_25"]["strength_label"],"极小")
+        illness=r["full_health_role_strength_network"]["nodes"]["illness"]
+        self.assertEqual(illness["strength"],"极小")
         recipients=q["summary"]["drain_bonus_palaces"]
         self.assertTrue(recipients)
         self.assertEqual(len(recipients),len(set(recipients)))

@@ -313,7 +313,7 @@
       "platform": "python",
       "canonical": "tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
       "snapshot": "Important/python/tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
-      "sha": "4a97959b8952e5528c0b6719eacfc9094ed4e121"
+      "sha": "93a4dc0c03b36a4ec0dd2c3e170a5317bb0bd46a"
     },
     {
       "platform": "python",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "46509e354d7c7a7ad0fdf9dc4c092f073b67ffff"
+      "sha": "da64664e632cb25411e31eb4ad0198210bd1e0dd"
     },
     {
       "platform": "swift",
