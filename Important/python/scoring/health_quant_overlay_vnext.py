@@ -200,6 +200,14 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
             "scope":"user_candidate_health_severity_not_clinical"}
 
 
+def special_cohost_total(chief_points,stem_points,*,void=False):
+    """V7.2 real one-palace chief + earth/sky 奇: halve TOTAL, floor once."""
+    if chief_points not in (0,2,3) or stem_points not in (0,1,2,3):
+        raise ValueError("Unknown same-palace auspice tier")
+    total=chief_points+stem_points
+    return total//2 if void else total
+
+
 def inspect_selected_quantization(*,selected_roles,
                                   qian_kun_observations,first_stage_macro,
                                   xun_shou=None,selected_gender_palace=None,directed_edges=None):
@@ -333,64 +341,103 @@ def inspect_selected_quantization(*,selected_roles,
             if key!="chief" or gate["void"]=="not_void":
                 drain.setdefault(pid,[]).append(key)
 
-    # +3 with auspicious 乙/丁 beneath selected real signifier palaces,
-    # 天心 star there, or the real 值符 deity above. Extreme-low power -> +2;
-    # void -> +1; 乙丁 tomb / strike -> +1; 值符受宫克 -> +2.
-    # Never grant an automatic "doctor has 天心" or "medicine has 乙" bonus
-    # absent an actual illness/person/event/elder palace receiving them.
+    # V7.2 co-palace rule: one physical palace once; sky/earth 乙/丁 are ONE
+    # auspicious stem family per palace. A chief-deity and that family are
+    # separate eligible components. Void halves their COMBINED subtotal,
+    # flooring only once (6->3, 5->2, 4->2, 3->1).
+    # Independent sky/door/star/deity/81 factors remain untouched.
     auspice_hosts={"illness","patient","hour","natal","gender"}
     host_palaces={}
+    host_roles={}
     for key,row in selected_roles.items():
         if key in auspice_hosts:
             host_palaces.setdefault(row["palace"],row["complete_palace"])
+            host_roles.setdefault(row["palace"],set()).add(key)
     auspice={}
+    cohost_audit={}
+    high_ground_stages={"长生","沐浴","冠带","临官","帝旺"}
+    from .health_intrinsic_scoring_vnext import GOD_RELATIONS
     for pid,detail in sorted(host_palaces.items()):
         label=detail["palace_name"]
         is_void=detail["void"]["classification"]!="not_void"
-        tombs={x["stem"] for x in detail.get("sky_tombs",())}
+        sky_tombs={x["stem"] for x in detail.get("sky_tombs",())}
         strikes=set(detail.get("striking_stems",()))
-        offerings=[]
-        # Tianrui sharing its physical palace with sky 乙 qualifies;
-        # a sky 乙 elsewhere is not the user's specified 下临乙 condition.
-        if pid==illness_pid:
-            for x in detail["heaven_stems"]:
-                if x["symbol"]=="乙":
-                    offerings.append(("乙奇",x.get("strength_label"),"乙" in tombs or "乙" in strikes))
-        earth=detail.get("earth_stem") or {}
-        if earth.get("symbol") in ("乙","丁"):
-            stem=earth["symbol"]
-            offerings.append((stem+"奇",earth.get("strength_label"),
-                bool(detail.get("earth_tombs")) or stem in strikes))
-        for star in detail["stars"]:
-            if star["name"]=="天心星":
-                offerings.append(("天心星",star["strength"].get("strength_label"),False))
+        # The underlying earth twelve-life facts come from the original
+        # stem atlas at THIS real seat; do not use the sky stem stages.
+        sky_candidates=[]
+        for x in detail["heaven_stems"]:
+            if x["symbol"] in ("乙","丁") and (
+                pid==illness_pid or
+                any(selected_roles[k]["primary_strength_25"].get("symbol")==x["symbol"]
+                    for k in host_roles[pid])):
+                sky_candidates.append((x["symbol"],x.get("strength_label"),
+                                       x["symbol"] in sky_tombs or x["symbol"] in strikes))
+        ground=detail.get("earth_stem") or {}
+        ground_stem=ground.get("symbol")
+        ground_stages=[x.get("stage") for x in
+            ground.get("palace_twelve_life_facts",()) if x.get("stage")]
+        ground_restricted=bool(detail.get("earth_tombs")) or ground_stem in strikes
+        stem_candidates=[]
+        for stem,strength,restricted in sky_candidates:
+            if not strength:continue
+            points=1 if restricted else 2 if strength=="极小" else 3
+            stem_candidates.append((points,stem+"奇","天盘"))
+        if ground_stem in ("乙","丁"):
+            gstrength=ground.get("strength_label")
+            if ground_restricted:
+                points=1
+            elif not ground_stages or not gstrength:
+                points=0  # Do not invent a 200-cell strength for split seats.
+            elif all(x in high_ground_stages for x in ground_stages):
+                points=2 if gstrength=="极小" else 3
+            else:
+                points=0  # Off-five life stages cannot claim an invented partial bonus.
+            if points:
+                stem_candidates.append((points,ground_stem+"奇","地盘"))
+        # Same actual palace + 乙/丁 family is ONE bonus even if the selected
+        # hour/year itself is 乙 and the earth is 丁.
+        stem_best=(max(stem_candidates,key=lambda x:x[0])
+                   if stem_candidates else None)
+        chief_points=None
         if detail["deity"]["name"]=="值符":
             god=detail["deity"]
-            from .health_intrinsic_scoring_vnext import GOD_RELATIONS
-            offerings.append(("值符",GOD_RELATIONS.get(god["nominal_relation"]),
-                              god["nominal_relation"]=="宫克符号"))
-        for name,strength,restricted in offerings:
-            if not strength:continue
+            if GOD_RELATIONS.get(god["nominal_relation"]):
+                chief_points=2 if god["nominal_relation"]=="宫克符号" else 3
+        if stem_best or chief_points:
+            raw_stem=stem_best[0] if stem_best else 0
+            raw_chief=chief_points or 0
+            raw=raw_stem+raw_chief
+            applied=special_cohost_total(raw_chief,raw_stem,void=is_void)
+            tags=(["值符"] if chief_points else [])+(
+                [stem_best[2]+stem_best[1]] if stem_best else [])
             if is_void:
-                points=1
-                note=label+"逢空，"+name+"余气尚存，吉助有限。"
-            elif restricted and name in ("乙奇","丁奇"):
-                points=1
-                note=label+name+"入墓或击刑，吉助受阻。"
-            elif strength=="极小":
-                points=2
-                note=label+name+"势极小，吉助有限。"
-            elif restricted and name=="值符":
-                points=2
-                note=label+"值符受宫克，护持受限。"
+                note=label+"逢空，"+"与".join(tags)+"同宫的吉助减弱，尚有余气。"
             else:
-                points=3
-                note=label+"得"+name+"吉助。"
-            token=str(pid)+":"+name
-            previous=auspice.get(token)
-            if previous is None or points>previous["points"]:
-                auspice[token]={"palace":pid,"symbol":name,
-                                "points":points,"note":note}
+                note=label+"得"+"与".join(tags)+"同宫扶助。"
+            token=str(pid)+":同宫吉助"
+            auspice[token]={"palace":pid,"symbol":"、".join(tags),
+                            "points":applied,"before_void":raw,
+                            "note":note,"cohost":True}
+            cohost_audit[str(pid)]={
+                "roles":sorted(host_roles[pid]),"chief":raw_chief,
+                "stem_family":raw_stem,
+                "stem_candidates":[{"points":q,"stem":stem,"plane":plane}
+                                   for q,stem,plane in stem_candidates],
+                "ground_stages":ground_stages,
+                "ground_restricted":ground_restricted,
+                "empty":is_void,"pre_void":raw,"after_void":applied}
+        # Tianxin is separately a real star signifier: its own auspice is
+        # not a second deity nor another 乙/丁 bonus.
+        for star in detail["stars"]:
+            if star["name"]!="天心星":continue
+            power=star["strength"].get("strength_label")
+            if not power:continue
+            points=1 if is_void else 2 if power=="极小" else 3
+            note=(label+"逢空，天心星吉助余气尚存。" if is_void else
+                  label+"天心星势极小，吉助有限。" if power=="极小" else
+                  label+"得天心星医者吉助。")
+            auspice[str(pid)+":天心星"]={
+                "palace":pid,"symbol":"天心星","points":points,"note":note}
     lucky_points=sum(v["points"] for v in auspice.values())
     total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     original=summary["score"]
@@ -402,6 +449,7 @@ def inspect_selected_quantization(*,selected_roles,
         "control_bonus_score":sum(control_points.values()),
         "weak_illness_drain_bonus_score":3*len(drain),
         "auspice_bonus_details":auspice,
+        "auspice_cohost_audit":cohost_audit,
         "auspice_bonus_notes":[auspice[k]["note"] for k in sorted(auspice)],
         "auspice_bonus_score":lucky_points,
         "relationship_bonus_score":total_bonus,
