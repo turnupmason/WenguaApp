@@ -90,10 +90,12 @@ jobs:
       - name: Append-only archive of actually proven V7.8 source native per-chart verdicts
         run: |
           set -euo pipefail
-          cp /tmp/wengua-v78/two_original_clocks.md docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_2026-10-27.md
+          archive="docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          cp /tmp/wengua-v78/two_original_clocks.md "$archive"
+          printf '\\nGitHub Actions原生原文运行链接：https://github.com/turnupmason/WenguaApp/actions/runs/%s\\n' "$GITHUB_RUN_ID" >> "$archive"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_2026-10-27.md
+          git add "$archive"
           git commit -m "Archive V7.8 actual source Swift Python dual fixed user score evidence"
           for i in 1 2 3 4 5; do
             git pull --rebase origin main
