@@ -513,7 +513,7 @@ def selected_health_sections(result,*,actor,chart):
             meaning=name+"与病宫的五行关系待核。"
         return strength+meaning
 
-    power_seen={}
+    # Same stem may serve two different selected roles and is not hidden.
     push("01_macro",template_title("macro"),
          render_slot("macro",macro_text=render_first_stage_macro(
              result["first_stage_macro"])))
@@ -531,7 +531,7 @@ def selected_health_sections(result,*,actor,chart):
         if pid in seen:
             detail=("与前述"+seen[pid]+"同在"+
                     role["complete_palace"]["palace_name"]+
-                    "。全部因素推断后，此宫为"+strength+"。")
+                    "。本用神结合宫内诸象后为"+strength+"。")
         else:
             detail=render_complete_selected_palace(
                 role["complete_palace"],quantified=qitem)
@@ -546,12 +546,8 @@ def selected_health_sections(result,*,actor,chart):
         else:
             power=role["primary_strength_25"]
             marker=(pid,power["kind"],power["symbol"])
-            if marker in power_seen and key!="chief":
-                relation=""
-            else:
-                relation=render_slot("role_relation",
-                                     relation_text=role_control_note(key,role))
-                power_seen[marker]=key
+            relation=render_slot("role_relation",
+                                 relation_text=role_control_note(key,role))
         title=template_title(title_key)
         if key=="gender":
             title=("坤宫辅助（女）" if pid==2 else
@@ -582,7 +578,7 @@ def selected_health_sections(result,*,actor,chart):
               if key=="gender" else titles[key])
         void=row["complete_palace"]["void"]["classification"]
         if pid in seen_palaces:
-            head=name+"与"+seen_palaces[pid]+"同在"+palace
+            head=name+"与"+seen_palaces[pid]+"同在"+palace+"，本用神综合宫象"+quality
         else:
             head=name+"落"+palace+"，宫象"+quality
             if void!="not_void" and key!="chief":
@@ -608,7 +604,7 @@ def selected_health_sections(result,*,actor,chart):
         desc.append("病星势弱而外泄，病气有耗损之象")
     desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
     if result["first_stage_macro"]["five_not_encounter_triggered"]:
-        desc.insert(0,"五不遇时成立，参与合断的每个独立实宫均减两分")
+        desc.insert(0,"五不遇时成立，各参与用神落宫分别扣两分")
     desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
