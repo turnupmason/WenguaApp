@@ -435,7 +435,7 @@ enum WenguaPythonVNextVerbatim {
         // patient's selected sex already uses one real gender palace once.
         // V7.3: a dynamic two-sentence account of THIS chart, never a
         // hardcoded success case or duplicated real-person/palace score.
-        let titles:[String:String]=[
+        let summaryTitles:[String:String]=[
             "illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
             "patient":"患者用神","hour":"时干事体","chief":"值符",
             "natal":"患者年命","gender":"长辈辅助宫"]
@@ -447,7 +447,7 @@ enum WenguaPythonVNextVerbatim {
                     "hour","chief","natal","gender"] {
             guard let pid=review.roles[key],let p=cells[pid] else{continue}
             let quality=signed(review.palaces[pid]?.afterVoid)
-            var head=(titles[key] ?? key)+"落"+label(p)+"，宫象"+quality
+            var head=(summaryTitles[key] ?? key)+"落"+label(p)+"，宫象"+quality
             if key=="gender" {
                 head=(pid==2 ? "坤宫" : "乾宫")+"辅助落"+label(p)+"，宫象"+quality
             }
