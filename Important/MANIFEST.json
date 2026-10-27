@@ -7,7 +7,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "c15853236310be6962440dec721323e463df217b"
+      "sha": "9a1774e7d89c6b9b4e460b374489d92904a5b45f"
     },
     {
       "platform": "python",
@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "a5f03250a72bef5bfa17a11d496e257a198b6ae6"
+      "sha": "47366aac0b2cb4a4aa9dfdebfc1c557c5b19359b"
     },
     {
       "platform": "python",
@@ -337,7 +337,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "c15853236310be6962440dec721323e463df217b"
+      "sha": "9a1774e7d89c6b9b4e460b374489d92904a5b45f"
     },
     {
       "platform": "swift",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "58701e81844bb546fdcf0129615247aafaa5e9f1"
+      "sha": "39e4d5491b07cc8873ca65451dc29e433c51a30c"
     },
     {
       "platform": "swift",
