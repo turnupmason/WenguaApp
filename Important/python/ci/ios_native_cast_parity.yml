@@ -438,7 +438,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Compile V7 true offline production Swift in fresh standalone job
         run: |
-          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native
+          set -o pipefail
+          mkdir -p /tmp/wengua-male-friend-v7
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-vnext-three-native 2>&1 | tee /tmp/wengua-male-friend-v7/compiler.log
       - name: V7 same supplied hour - male friend Python versus native Swift strict ten-section parity
         run: |
           set -euo pipefail
@@ -505,4 +507,29 @@ jobs:
           retention-days: 90
           if-no-files-found: warn
       - name: V7 Python real-gate and no-Qian friend regressions
-        run: python3 -m unittest discover -s tests -p 'test_health_vnext_exact_role_matrix_gate_20261026.py'
+        run: |
+          set -o pipefail
+          python3 -m unittest discover -s tests -p 'test_health_vnext_exact_role_matrix_gate_20261026.py' 2>&1 | tee /tmp/wengua-male-friend-v7/regression.log
+      - name: Preserve actual standalone V7 compiler and regression diagnostics in GitHub, even if failed
+        if: always()
+        run: |
+          set -eu
+          {
+            echo '# V7 same-clock male friend standalone CI diagnostics'
+            echo
+            echo "Run: https://github.com/turnupmason/WenguaApp/actions/runs/$GITHUB_RUN_ID"
+            echo "Source: $GITHUB_SHA"
+            echo
+            for file in compiler.log diff.md regression.log; do
+              echo "## $file"
+              echo '```text'
+              if [ -f "/tmp/wengua-male-friend-v7/$file" ]; then tail -n 120 "/tmp/wengua-male-friend-v7/$file"; else echo 'No output from this stage'; fi
+              echo '```'
+            done
+          } > docs/HEALTH_V7_FRIEND_CI_DIAGNOSTICS_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V7_FRIEND_CI_DIAGNOSTICS_2026-10-27.md
+          git commit -m "Retain V7 original compiler and native text parity diagnostics"
+          git pull --rebase origin main
+          git push origin HEAD:main
