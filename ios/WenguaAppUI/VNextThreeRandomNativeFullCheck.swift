@@ -21,6 +21,10 @@ private struct FiveControl:Decodable {
 private struct ResultSummary:Decodable {
     let score:Int?
     let post_void_known_sum:Int
+    let control_bonus_score:Int?
+    let control_bonus_points:[String:Int]?
+    let weak_illness_drain_bonus_score:Int?
+    let auspice_bonus_score:Int?
 }
 private struct Auxiliary:Decodable {let palace:Int;let score:Int?}
 private struct TianruiSource25:Decodable {
@@ -100,6 +104,17 @@ private struct PublicCast:Encodable {
             let audit=try WenguaVNextEngine.compute(chart:chart,
                 relationship:test.relationship,energy:energy,
                 catalog:pairs,actor:actor)
+            print("V7_FULL_SOURCE_BONUS_COMPARE "+test.instant+
+                  " Swift base="+String(audit.postVoidKnownSum)+
+                  " result="+String(describing:audit.score)+
+                  " controls="+String(describing:audit.controlBonusPoints)+
+                  " auspices="+String(audit.auspiceBonusScore)+
+                  " drainPalaces="+String(describing:audit.drainBonusPalaces)+
+                  " Python base="+String(test.summary.post_void_known_sum)+
+                  " result="+String(describing:test.summary.score)+
+                  " controls="+String(describing:test.summary.control_bonus_points)+
+                  " auspices="+String(describing:test.summary.auspice_bonus_score)+
+                  " drain="+String(describing:test.summary.weak_illness_drain_bonus_score))
             let star25=try WenguaVNextTianrui25.caseFor(
                 chart:chart,audit:audit)
             try require(star25.category==test.tianrui25.category,
