@@ -217,9 +217,14 @@ private struct PublicCast:Encodable {
                     })
                 }) && joined.contains("八神"),
                 loc+"God no-season source invariant lost")
-            try require(doctor.contains("全部因素推断后，此宫为") &&
-                        medicine.contains("全部因素推断后，此宫为"),
-                loc+"signed palace conclusion absent")
+            // V7.6 co-located independent role uses its own grade label,
+            // while its shared nine-palace factual paragraph stays concise.
+            let doctorGrade=doctor.contains("全部因素推断后，此宫为") ||
+                            doctor.contains("本用神结合宫内诸象后为")
+            let medicineGrade=medicine.contains("全部因素推断后，此宫为") ||
+                              medicine.contains("本用神结合宫内诸象后为")
+            try require(doctorGrade && medicineGrade,
+                loc+"signed role-specific palace conclusion absent")
             try require(!joined.contains("净分") && !joined.contains("内部原始分"),
                 loc+"private arithmetic leaked into original template")
             try require(reading.sections.contains(where:{$0.id=="91_timing"}),
