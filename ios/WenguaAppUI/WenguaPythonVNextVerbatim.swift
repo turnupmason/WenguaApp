@@ -268,6 +268,9 @@ enum WenguaPythonVNextVerbatim {
             }
         }
         let stage=rows.count==1 ? rows[0] : "长生分支待核"
+        if stage=="长生分支待核" {
+            return own.symbol+"天干与月令关系为"+col+"，其本宫力量仍待核实。"
+        }
         return own.symbol+"天干十二长生"+stage+"、"+col+"，用神力量为"+strength+"。"
     }
 
