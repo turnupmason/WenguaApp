@@ -1,6 +1,6 @@
 {
-  "schema": "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
-  "comment": "V6.1客户精简断词：后台依原200格、25格相克/空亡变体、81格、完整五档算分及关系+3；用户只看自然生克与宫位吉凶，不输出+3算式、同宫去重提示、长生分支候选、控制矩阵结论或内部状态。Python和Swift逐字同一模板。冻结V3.9.1及旧数据不动。",
+  "schema": "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
+  "comment": "V7待人工验收：只在父母祖辈等长辈适用乾坤加年干；非长辈按真实选定用神、不因男女附乾坤。病宫受克按施受力与空亡条件分档，乙奇丁奇天心值符临实际用神宫触发特殊吉助，墓刑极小空亡降档；所有后台分数不得暴露在自然客户断词。200格/81格/旧V3.9.1均保留；Python Swift同条件同步。本版本不能代表医学诊断。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -11,7 +11,7 @@
     "hour": "时干事体",
     "chief": "值符护持宫",
     "natal": "患者年命",
-    "gender": "乾坤性别辅助宫",
+    "gender": "长辈乾坤辅助宫",
     "qian": "乾坤辅助：{role}",
     "kun": "乾坤辅助：{role}",
     "quant": "内部研究计算（不提供客户展示）",
