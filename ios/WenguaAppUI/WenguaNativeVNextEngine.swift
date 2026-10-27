@@ -671,7 +671,10 @@ enum WenguaVNextEngine {
             } else if edge?.direction=="克" {
                 active=working
             } else {active=true}
-            if active {enabled.insert(p.id)}
+            // Every selected physical palace is part of the base verdict;
+            // control eligibility gates only EXTRA cross-palace assistance.
+            _ = active
+            enabled.insert(p.id)
         }
         // One physical palace once, including accepted co-located roles.
         let scoreList=physical.values.filter{enabled.contains($0.id)}
