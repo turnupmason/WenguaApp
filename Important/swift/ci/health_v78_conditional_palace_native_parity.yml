@@ -11,7 +11,7 @@ on:
       - 'Important/MANIFEST.json'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   both_original_user_clocks:
     runs-on: ubuntu-latest
@@ -86,3 +86,17 @@ jobs:
           path: /tmp/wengua-v78/
           retention-days: 90
           if-no-files-found: warn
+
+      - name: Append-only archive of actually proven V7.8 source native per-chart verdicts
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v78/two_original_clocks.md docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_2026-10-27.md
+          git commit -m "Archive V7.8 actual source Swift Python dual fixed user score evidence"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
