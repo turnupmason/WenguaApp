@@ -772,7 +772,12 @@ enum WenguaVNextEngine {
                                          void:isVoid)
                 var tags:[String]=[]
                 if chiefPoints>0 {tags.append("值符")}
-                if let stemBest {tags.append(stemBest.2+stemBest.1)}
+                // Display all real cohost Yi/Ding sources, but the
+                // family receives only its single maximum award.
+                for stem in stemCandidates {
+                    let label=stem.2+stem.1
+                    if !tags.contains(label) {tags.append(label)}
+                }
                 let joined=tags.joined(separator:"与")
                 let note:String
                 if isVoid {
