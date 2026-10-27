@@ -1,0 +1,96 @@
+name: Health V7.4 true user natal Yi source-native exact parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/**'
+      - 'ios/WenguaAppUI/**'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'scripts/ios_vnext_manual_colleague_natal_yi_20261027.py'
+      - 'tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py'
+      - '.github/workflows/health_v74_colleague_natal_swift_parity.yml'
+  workflow_dispatch:
+jobs:
+  user_colleague_yi_original_python_and_real_native_swift:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Independent natal Yi and all selected five real palace scoring source tests
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v74-colleague
+          python3 -m unittest discover -s tests -p 'test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py' 2>&1 | tee /tmp/wengua-v74-colleague/python_unit.log
+      - name: Compile actual native Swift production chart and customer source
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v74-colleague/native 2>&1 | tee /tmp/wengua-v74-colleague/compiler.log
+      - name: Fixed supplied clock plus natal Yi actual native Swift versus true Python complete customer text
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v74-colleague/python_truth.json
+          /tmp/wengua-v74-colleague/native /tmp/wengua-v74-colleague/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v74-colleague/native_output.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v74-colleague/python_truth.json /tmp/wengua-v74-colleague/native_output.log /tmp/wengua-v74-colleague/diff.md
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=Path("/tmp/wengua-v74-colleague")
+          a=json.loads((d/"python_truth.json").read_text())["cases"][0]
+          b=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in (d/"native_output.log").read_text().splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(b)==1
+          full="\n\n".join(y["title"]+"：\n"+y["text"] for y in b[0]["sections"])
+          assert full==a["python_reading_text"]
+          q=a["summary"]
+          conclusion=next(s["text"] for s in b[0]["sections"] if s["id"]=="90_review")
+          assert "五不遇时成立" in conclusion and "无整盘伏吟反吟" in conclusion
+          assert "患者年命" in conclusion and "艮八宫，宫象极大凶" in conclusion
+          assert len(conclusion.split("\n\n"))==2 and conclusion.count("。")==2
+          text="\n".join([
+           "# V7.4 natal Yi true fixed coworker source-native full comparison",
+           "",
+           "User original: 己丑／戊辰／辛卯／丁酉; 2009-04-16 17:00 US/Eastern; colleague only; Yi natal stem, no invented branch or sex.",
+           "九宫实盘，清明阳遁7局。 No historical unseen chart added.",
+           "Source effective real palace grades: "+repr(q["effective_palace_scores"]),
+           "After source role dedup: "+str(q["post_void_known_sum"]),
+           "Control bonus "+str(q["control_bonus_score"])+", auspice bonus "+str(q["auspice_bonus_score"]),
+           "WuBuYuShi final global -"+str(q["five_not_global_penalty"]),
+           "Before final clamp: "+str(q["raw_final_before_saturation"]),
+           "Traditional bounded label "+str(q["grade"]),
+           "",
+           "## Two-sentence native verdict",conclusion,
+           "",
+           "## Python original full text",a["python_reading_text"],
+           "",
+           "## Actual native production Swift full text",full,
+           "",
+           "Complete per-character source/native equality: True",
+           "This is traditional symbolic source software, not clinical evidence.",
+           "CI https://github.com/turnupmason/WenguaApp/actions/runs/"+os.environ.get("GITHUB_RUN_ID",""),
+          ])+"\n"
+          (d/"real_full_parity.md").write_text(text)
+          print("V74_ACTUAL_NATIVE_PYTHON_ORIGINAL_BEGIN")
+          print(text)
+          print("V74_ACTUAL_NATIVE_PYTHON_ORIGINAL_END")
+          PY
+      - name: Preserve all source audits errors diffs and compiled output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v74-fixed-colleague-natal-Yi-original-python-native
+          path: /tmp/wengua-v74-colleague/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Archive one new report per run, never replace earlier failure or approval
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v74-colleague/real_full_parity.md "docs/HEALTH_V74_COLLEAGUE_NATAL_YI_REAL_PARITY_RUN_${GITHUB_RUN_ID}.md"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/HEALTH_V74_COLLEAGUE_NATAL_YI_REAL_PARITY_RUN_${GITHUB_RUN_ID}.md"
+          git commit -m "Archive single new V7.4 native and Python original natal Yi equality run" || true
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
