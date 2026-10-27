@@ -1,6 +1,6 @@
 {
   "schema": "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
-  "comment": "V7待人工验收：只在父母祖辈等长辈适用乾坤加年干；非长辈按真实选定用神、不因男女附乾坤。病宫受克按施受力与空亡条件分档，乙奇丁奇天心值符临实际用神宫触发特殊吉助，墓刑极小空亡降档；所有后台分数不得暴露在自然客户断词。200格/81格/旧V3.9.1均保留；Python Swift同条件同步。本版本不能代表医学诊断。",
+  "comment": "V7.2 病情轻重同宫吉象合断（待用户验收）：天盘乙、地盘乙／丁均属于一组奇助，同一实宫最多取一次，不因年干、时干、患者共宫重复计；值符另作独立大吉神，其受宫克时降档。地盘乙／丁需核实际地盘十二长生的长生/沐浴/冠带/临官/帝旺，墓刑可限定为1，未核时不虚构；同宫值符3+地盘奇3＝6、值符2+地盘奇3＝5、值符3+地盘奇1＝4、值符2+地盘奇1＝3；宫空只将总和除以2向下取整。同宫星、门、神、天地格原始四因子仍独立，跨宫天芮受克条件独立不叠加重复。Python 与 iOS Swift 真生产共规则，客户不显示内部算分。旧V3.9.1及200/81格和历次失败记录不改。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",
@@ -115,5 +115,46 @@
     "reason_verdict_resolved": "相关实宫内部合断{inner}，跨宫克制证据{outer}；按已核条件，本次传统象意{result}。",
     "reason_verdict_incomplete": "已核实宫{inner}，跨宫证据{outer}；仍有力量条件不能确认，吉凶暂不定。",
     "reason_tianrui_25": "天芮月令{month}、落宫月令{palace_month}，星宫关系{relation}，对应「{title}」之象：{why}。"
+  },
+  "conditional_rule_overlays_v72": {
+    "domain": "health",
+    "subtopic": "severity",
+    "scope": "selected_patient_hour_natal_elder_palace_and_tianrui",
+    "no_non_elder_qian_kun": true,
+    "same_real_palace_role_dedup": true,
+    "sky_and_earth_yi_ding_one_family": true,
+    "earth_requires_actual_life_stages": [
+      "长生",
+      "沐浴",
+      "冠带",
+      "临官",
+      "帝旺"
+    ],
+    "deity_and_stem_prevoid_cases": [
+      [
+        3,
+        3,
+        6
+      ],
+      [
+        2,
+        3,
+        5
+      ],
+      [
+        3,
+        1,
+        4
+      ],
+      [
+        2,
+        1,
+        3
+      ]
+    ],
+    "void_math": "floor((chief + single_yi_ding_family)/2)",
+    "off_five_ground_stages": "no_extra_bonus_unless_book_confirmed_tomb_strike_exception",
+    "no_client_internal_score": true,
+    "medical_outcome": false
   }
 }
