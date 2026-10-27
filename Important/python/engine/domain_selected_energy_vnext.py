@@ -600,9 +600,16 @@ def selected_health_sections(result,*,actor,chart):
                         head+="，虽逢空仍有余气克制病宫"
                     else:
                         head+="，逢空但尚存少许余气"
-                elif direction=="克" and key!="chief":
-                    if str(pid) not in q.get("control_bonus_points",{}):
-                        head+="，但施力有限"
+                elif direction=="克":
+                    control_point=q.get("control_bonus_points",{}).get(str(pid))
+                    if control_point==5:
+                        head+="，病宫又逢空，受制更易"
+                    elif control_point==3:
+                        head+="，本宫有力制病"
+                    elif control_point==1:
+                        head+="，施力受空或宫克限制，尚有少许余气"
+                    else:
+                        head+="，但实际施力有限"
         desc.append(head)
     if q["drain_bonus_palaces"]:
         desc.append("病星势弱而外泄，病气有耗损之象")
