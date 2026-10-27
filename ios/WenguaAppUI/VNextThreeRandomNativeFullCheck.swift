@@ -35,6 +35,7 @@ private struct TestCast:Decodable {
     let instant:String
     let relationship:String
     let patient_sex:String?
+    let patient_birth_ganzhi:String?
     let context:String
     let firstStage:Bool
     let tianrui25:TianruiSource25
@@ -93,7 +94,7 @@ private struct PublicCast:Encodable {
                 at:d,timezone:"America/New_York")
             let request=WenguaNativeInquiry(relationship:test.relationship,
                 context:test.context,patientSex:test.patient_sex,
-                birthOrder:nil,patientBirthGanzhi:nil)
+                birthOrder:nil,patientBirthGanzhi:test.patient_birth_ganzhi)
             let actor=try WenguaNativeActorSource.bind(chart:chart,
                 inquiry:request,index:actors)
             let audit=try WenguaVNextEngine.compute(chart:chart,
