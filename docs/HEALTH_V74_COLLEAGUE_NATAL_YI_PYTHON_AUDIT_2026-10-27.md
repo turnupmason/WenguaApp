@@ -4,14 +4,14 @@
 五不遇时在整个合断最后只扣2级。非伏吟反吟只作用于节奏，不另猜吉凶。
 
 ## This original signed account, separate real palaces and final adjustments
-distinct real palace grades: {'1': -5, '3': 3, '7': 5}
-base sum AFTER physical dedup and void: 3
+distinct real palace grades: {'1': -5, '3': 3, '8': -5, '7': 5, '4': 4}
+base sum AFTER physical dedup and void: 2
 cross-palace valid control: {}
 drain score: 0
 auspice score: 8
 all extra adjustments: 8
 five-not final only once: -2
-raw total before extreme saturation: 9
+raw total before extreme saturation: 8
 final bounded sign grade: 5 / 极大吉
 actual roles: {'illness': 1, 'doctor': 3, 'medicine': 3, 'patient': 8, 'hour': 7, 'chief': 4, 'natal': 3}
 source control directions: {'doctor': {'direction': '被生', 'cell': None, 'scenario': None}, 'medicine': {'direction': '被生', 'cell': None, 'scenario': None}, 'patient': {'direction': '克', 'cell': None, 'scenario': None}, 'hour': {'direction': '生', 'cell': None, 'scenario': None}, 'chief': {'direction': '被生', 'cell': None, 'scenario': None}, 'natal': {'direction': '被生', 'cell': None, 'scenario': None}}
