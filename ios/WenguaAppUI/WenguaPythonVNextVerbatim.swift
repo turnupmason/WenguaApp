@@ -388,6 +388,7 @@ enum WenguaPythonVNextVerbatim {
         push("01_macro",try title("macro"),try phrase("macro",[
             "macro_text":fullMacro(chart,review)]))
         var viewed:[Int:String]=[:]
+        var powerSeen:Set<String>=[]
         for (role,id,key) in [
             ("illness","02","illness"),("doctor","03","doctor"),
             ("medicine","04","medicine"),("patient","05","patient"),
@@ -399,7 +400,7 @@ enum WenguaPythonVNextVerbatim {
             }
             let full:String
             if let original=viewed[pid] {
-                full="与前述"+original+"同在"+label(p)+"。本用神结合宫内诸象后为"+signed(review.roleScores[role])+"。"
+                full="与前述"+original+"同在"+label(p)+"，合看该宫象。"
             } else {
                 full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup)
@@ -412,8 +413,12 @@ enum WenguaPythonVNextVerbatim {
             }
             let marker=String(pid)+":"+(review.roleEnergy[role]?.symbol ?? "")
             let roleText:String
-            if role=="illness" {roleText=""}
-            else {roleText=try roleAgainstIllness(role,review:review,chart:chart)}
+            if role=="illness" || (powerSeen.contains(marker) && role != "chief") {
+                roleText=""
+            } else {
+                roleText=try roleAgainstIllness(role,review:review,chart:chart)
+                powerSeen.insert(marker)
+            }
             let relationText=role=="illness" ? "" :
                 try phrase("role_relation",["relation_text":roleText])
             let genderNote=role=="gender" ? try phrase("gender_note") : ""
@@ -448,7 +453,7 @@ enum WenguaPythonVNextVerbatim {
             let state=review.palaces[pid]?.void ?? "not_void"
             var head:String
             if let existing=seenPalaces[pid] {
-                head=name+"与"+existing+"同在"+label(p)+"，本用神综合宫象"+quality
+                head=name+"与"+existing+"同在"+label(p)
             } else {
                 head=name+"落"+label(p)+"，宫象"+quality
                 if state != "not_void" && key != "chief" {
@@ -482,7 +487,7 @@ enum WenguaPythonVNextVerbatim {
         desc+=review.auspiceBonusNotes.map{
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
-        if review.firstMacroFiveNot {desc.insert("五不遇时成立，各参与用神落宫分别扣两分",at:0)}
+        if review.firstMacroFiveNot {desc.insert("五不遇时成立，各实际参与实宫均减两分",at:0)}
         let macroProse=try fullMacro(chart,review)
         let pace=macroProse.contains("缓急并列待具体条件核定") ?
             "伏吟反吟并见，缓急合参" :
