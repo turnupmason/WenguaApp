@@ -1,0 +1,70 @@
+name: Health V7.7 Unique Palace Two Original Clocks Native Parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v77_unique_palace_native_parity.yml'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  both_fixed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test independent real role scores and stage totals
+        run: |
+          mkdir -p /tmp/v77
+          python3 -m unittest discover -s tests -p 'test_health_v77_three_stage_20261027.py' -v 2>&1 | tee /tmp/v77/tests.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py'
+      - name: Compile real native Swift router
+        run: |
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/v77/native 2>&1 | tee /tmp/v77/compiler.log
+      - name: Colleague yearstem Yi physical-palace Python native exact paragraph
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/v77/colleague.json
+          /tmp/v77/native /tmp/v77/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/v77/colleague.swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/v77/colleague.json /tmp/v77/colleague.swift.log /tmp/v77/colleague.diff.md
+      - name: 1920 elder Yi medicine and hour merged source-native exact paragraph
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/v77/elder.json
+          /tmp/v77/native /tmp/v77/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/v77/elder.swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/v77/elder.json /tmp/v77/elder.swift.log /tmp/v77/elder.diff.md
+      - name: Print three-stage final ledgers and customer summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for name in ("colleague","elder"):
+              c=json.loads((Path("/tmp/v77")/(name+".json")).read_text())["cases"][0]
+              q=c["summary"]
+              ledger={"roles":{k:{"palace":v["palace"],"score":v["score"]} for k,v in c["roles"].items()},
+                "stage1_unique_palaces":q["unique_palace_score_details"],
+                "role_aliases_only":q["effective_role_scores"],
+                "stage1_distinct_physical_sum":q["post_void_known_sum"],
+                "stage2_control":q["control_bonus_score"],
+                "stage2_drain":q["weak_illness_drain_bonus_score"],
+                "stage2_auspice_display_only_not_added":q["auspice_bonus_score"],
+                "stage2_auspice_applied":q["auspice_applied_extra_score"],
+                "distinct_palaces":q["unique_palace_count"],
+                "five_not_penalty":q["five_not_global_penalty"],
+                "net_unclamped":q["raw_final_before_saturation"],
+                "final":q["score"],
+                "verdict":next(x["text"] for x in c["source_sections"] if x["id"]=="90_review")}
+              data=json.dumps(ledger,ensure_ascii=False,indent=2)
+              print("V77_LEDGER_"+name.upper()+"="+data)
+              (Path("/tmp/v77")/(name+"_ledger.json")).write_text(data,encoding="utf8")
+          PY
+      - name: Keep every source and native trace even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v77-original-colleague-and-1920-python-swift
+          path: /tmp/v77/
+          retention-days: 90
+          if-no-files-found: warn
