@@ -333,6 +333,36 @@ def inspect_selected_quantization(*,selected_roles,
         # All selected real palaces contribute intrinsic state once; only
         # extra *control assistance* is gated by effective suppression.
         effective[key]=aggregate[key]
+    # V7.7: every physical palace and every distinct selected stem ONE time.
+    grouped={}
+    for key,item in roles.items():
+        pid=item["palace"]
+        group=grouped.setdefault(pid,{"roles":[],"stems":{}})
+        group["roles"].append(key)
+        own=item["primary_signifier_score"]
+        if own["kind"]=="stem":
+            group["stems"].setdefault(own["symbol"],own["score"])
+    for pid,group in grouped.items():
+        first=group["roles"][0]
+        base=_quantize_one(first,selected_roles[first]["complete_palace"],
+                           five_not_encounter=False,xun_shou=xun_shou)["palace_score"]
+        own=list(group["stems"].values())
+        if base["raw_sum"] is None or any(value is None for value in own):
+            merged={**base,"raw_sum":None,"score":None,"grade":None}
+        else:
+            raw=base["raw_sum"]+sum(own)
+            before=saturate(raw)
+            if base["door_break"]:before=adverse_shift(before,2)
+            grade=void_shift_three(before,void_state=base["void_state"])
+            merged={**base,"raw_sum":raw,"score_before_void":before,
+                    "score":grade,"grade":grade_label(grade),
+                    "unique_stem_scores":dict(group["stems"])}
+        for key in group["roles"]:
+            roles[key]["palace_score"]=merged
+            roles[key]["shared_palace_roles"]=group["roles"]
+            effective[key]={"palace":pid,"score":merged["score"],
+                            "raw_sum":merged["raw_sum"],
+                            "known_subtotal":merged["known_subtotal"]}
     summary=multi_palace_tally(palaces=effective)
     role_scores={key:record["palace_score"]["score"] for key,record in roles.items()}
     pending_roles=[key for key,value in role_scores.items() if value is None]
