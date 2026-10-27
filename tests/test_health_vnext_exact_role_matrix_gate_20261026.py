@@ -54,7 +54,7 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 selected={g["palace"] for g in gates.values() if g["score_eligible"]}
                 self.assertEqual(q["summary"]["unique_palace_count"],len(selected))
                 chief=gates["chief"]
-                if chief["void"]!="not_void" or chief["relation"]!="克":
+                if chief["relation"]!="同宫" and (chief["void"]!="not_void" or chief["relation"]!="克"):
                     self.assertFalse(chief["score_eligible"])
                     self.assertTrue(chief["chief_zero_score"])
 
@@ -71,11 +71,44 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
                 chief=q["role_effectiveness_gates"]["chief"]
                 self.assertEqual(chief["relation"],relation)
-                self.assertFalse(chief["score_eligible"])
-                self.assertTrue(chief["chief_zero_score"])
-                self.assertIn("值符护持不参与最终合断。",r["reading_text"])
-                if chief["void"]!="not_void":
+                if relation=="同宫":
+                    self.assertTrue(chief["score_eligible"])
+                    self.assertFalse(chief["chief_zero_score"])
+                    self.assertIn("值符大吉神与天芮病宫同宫",r["reading_text"])
+                else:
+                    self.assertFalse(chief["score_eligible"])
+                    self.assertTrue(chief["chief_zero_score"])
+                    self.assertIn("值符护持不参与最终合断。",r["reading_text"])
+                if relation!="同宫" and chief["void"]!="not_void":
                     self.assertIn("因值符空亡，神兽不在宫内，无法提供帮助",r["reading_text"])
+
+    def test_very_weak_illness_generates_two_roles_in_one_physical_palace(self):
+        r=review("2021-07-03T01:00:00-04:00",
+                 {"intent":"severity","relationship":"self",
+                  "consultation_context":"direct_self"})
+        q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+        self.assertTrue(q["summary"]["weak_illness_drain_eligible"])
+        illness=r["selected_roles"]["illness"]
+        self.assertEqual(illness["primary_strength_25"]["strength_label"],"极小")
+        recipients=q["summary"]["drain_bonus_palaces"]
+        self.assertTrue(recipients)
+        self.assertEqual(len(recipients),len(set(recipients)))
+        self.assertEqual(q["summary"]["weak_illness_drain_bonus_score"],3*len(recipients))
+        self.assertIn("疾病力量非常小反而要去生助",r["reading_text"])
+        base=q["summary"]["post_void_known_sum"]
+        bonuses=q["summary"]["relationship_bonus_score"]
+        self.assertEqual(q["summary"]["score"],max(-5,min(5,base+bonuses)))
+
+    def test_control_bonus_only_distinct_real_palaces(self):
+        r=review("2023-04-24T21:00:00-04:00",WIFE)
+        q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+        bonuses=q["summary"]["control_bonus_palaces"]
+        self.assertEqual(q["summary"]["control_bonus_score"],len(bonuses)*3)
+        for palace,roles in bonuses.items():
+            self.assertTrue(roles)
+            for role in roles:
+                self.assertEqual(q["role_effectiveness_gates"][role]["relation"],"克")
+                self.assertEqual(str(q["role_effectiveness_gates"][role]["palace"]),palace)
 
 if __name__=="__main__":
     unittest.main()

@@ -82,7 +82,7 @@ private struct PublicCast:Encodable {
             guard condition else {throw NSError(domain:"WenguaThreeFreshSourceParity",
                 code:1,userInfo:[NSLocalizedDescriptionKey:problem])}
         }
-        try require((2...24).contains(fixture.cases.count),"expected 2...24 actual clocks")
+        try require((1...24).contains(fixture.cases.count),"expected 1...24 actual clocks")
         var times:Set<String>=[]
         for (i,test) in fixture.cases.enumerated() {
             guard let d=time.date(from:test.instant) else {

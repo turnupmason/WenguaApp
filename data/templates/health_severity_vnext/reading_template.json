@@ -1,6 +1,6 @@
 {
   "schema": "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
-  "comment": "客户明示五档吉凶：星门神原有正负属性加真实能量强弱，天干单独述势不冒充吉凶；去重实宫空亡调整后最终±5五档直接合断，未核数值不硬判。Python和Swift严格同模板；冻结V3.9.1不变。",
+  "comment": "V6现役病情客户模板：星门神格、200格能量、81格、真实空亡；宫与病宫五行克病按去重实宫每宫加3；病星极小且病宫生外宫按不同受生宫每宫加3；乙奇与病星同宫主治疗、值符同宫护持；同宫乙奇用神力量不重复；最终原本体宫评分加关系正向补分后饱和五档。唯一代码为Python及Swift同源，不修改冻结V3.9.1。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "起盘总纲：五不遇时、伏吟、反吟",

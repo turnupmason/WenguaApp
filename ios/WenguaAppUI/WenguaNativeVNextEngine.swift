@@ -64,6 +64,9 @@ struct WenguaVNextAudit {
     let roleStatus:String
     let roleSourceNote:String
     let roleEnergy:[String:WenguaVNextFactor]
+    // V6 user +/- relationship scoring; never overwrite raw palace grades.
+    let controlBonusPalaces:[Int]
+    let drainBonusPalaces:[Int]
 }
 enum WenguaVNextEngine {
     static let tiers=["极小","小","中等","大","极大"]
@@ -654,8 +657,9 @@ enum WenguaVNextEngine {
             let working=["strong","limited"].contains(edge?.applicability ?? "")
             let active:Bool
             if tag=="chief" {
-                active=actualVoid(p,chart,month:month)=="not_void" &&
-                       edge?.direction=="克" && working
+                active=p.id==ill.id ||
+                       (actualVoid(p,chart,month:month)=="not_void" &&
+                        edge?.direction=="克" && working)
             } else if edge?.direction=="克" {
                 active=working
             } else {active=true}
@@ -665,7 +669,24 @@ enum WenguaVNextEngine {
         let scoreList=physical.values.filter{enabled.contains($0.id)}
         let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
         let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
-        let result=pending.isEmpty ? Optional(saturation(known)) : nil
+        let weakDisease=strength["illness"]?.strength=="极小"
+        var controlBonus:Set<Int>=[]
+        var drainBonus:Set<Int>=[]
+        let controlRole:Set<String>=["doctor","medicine","hour","chief","gender"]
+        for (tag,p,_) in personalized where tag != "illness" && p.id != ill.id {
+            guard let edge=controls.first(where:{$0.role==tag}) else{continue}
+            let eligibleChief=tag != "chief" ||
+                actualVoid(p,chart,month:month)=="not_void"
+            if eligibleChief && controlRole.contains(tag) && edge.direction=="克" {
+                controlBonus.insert(p.id)
+            }
+            if eligibleChief && weakDisease && edge.direction=="被生" {
+                drainBonus.insert(p.id)
+            }
+        }
+        let relationshipBonus=3*(controlBonus.count+drainBonus.count)
+        let result=pending.isEmpty ?
+            Optional(saturation(known+relationshipBonus)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
         var adverse=votes.values.filter{$0=="adverse"}.count
         let tianrui=try tianruiVote(ill,month:month)
@@ -708,7 +729,9 @@ enum WenguaVNextEngine {
             roleStatus:(actor == nil || actor!.eligibleForFirmTraditionalJudgment)
                  ? "eligible" : "source_conditional_candidate",
             roleSourceNote:actor?.note ?? "",
-            roleEnergy:strength)
+            roleEnergy:strength,
+            controlBonusPalaces:Array(controlBonus).sorted(),
+            drainBonusPalaces:Array(drainBonus).sorted())
     }
 }
 enum WenguaVNextReadingGate:Error {case unresolvedRole}

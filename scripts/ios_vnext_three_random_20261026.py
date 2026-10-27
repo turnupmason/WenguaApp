@@ -17,8 +17,8 @@ RELATIONS=(("self","本人","direct_self",None),
            ("wife","妻子","direct_proxy","female"))
 
 def produce(seed=SEED,count=3,wife_only=False):
-    if not 2 <= count <= 24:
-        raise ValueError('batch count must be 2..24')
+    if not 1 <= count <= 24:
+        raise ValueError('batch count must be 1..24')
     rng=random.Random(seed)
     cases=[]
     rejected=[]

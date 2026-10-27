@@ -103,7 +103,10 @@ class Real2024SelectedChart(unittest.TestCase):
                          {str(k):v for k,v in chosen.items()})
         self.assertEqual(scored["summary"]["post_void_known_sum"],sum(
             v for v in chosen.values() if v is not None))
-        self.assertEqual(scored["summary"]["score"],max(-5,min(5,sum(chosen.values()))))
+        self.assertEqual(scored["summary"]["pre_relationship_bonus_score"],
+                         max(-5,min(5,sum(chosen.values()))))
+        self.assertEqual(scored["summary"]["score"],max(-5,min(5,
+            sum(chosen.values())+scored["summary"]["relationship_bonus_score"])))
         self.assertEqual(scored["summary"]["pending_palaces"],[])
         self.assertIn("乾宫辅助（男）",self.report["reading_text"])
         self.assertNotIn("坤宫辅助（女）",self.report["reading_text"])

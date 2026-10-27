@@ -272,12 +272,15 @@ def inspect_selected_quantization(*,selected_roles,
         outcome=edge.get("control_result") if edge else None
         is_control=rel=="克"
         chief=key=="chief"
-        active=(key=="illness" or
+        chief_cohost=(chief and pid==selected_roles["illness"]["palace"])
+        active=(key=="illness" or chief_cohost or
                 (not chief and not is_control) or
                 (is_control and ability in accepted and
                  (not chief or void=="not_void")))
         reason=("病宫自身"
                 if key=="illness" else
+                "值符与天芮同宫，大吉神护持在同宫起作用"
+                if chief_cohost else
                 "值符空亡，不提供护持" if chief and void!="not_void" else
                 "值符受病宫克，不能压制病宫" if chief and rel=="被克" else
                 "值符没有克病方向，不作为制病护持" if chief and not is_control else
@@ -294,6 +297,42 @@ def inspect_selected_quantization(*,selected_roles,
                     "chief_zero_score":chief and not active}
         if active:effective[key]=aggregate[key]
     summary=multi_palace_tally(palaces=effective)
+    # V6 new independent relationship bonus, separate from the original
+    # physical-palace four-factor score. One real palace = one +3 per type.
+    # Grid failure is still recorded, but never erases the TRUE 克 direction.
+    # The chief exception (empty or controlled by illness) remains in force.
+    eligible_control_roles={"doctor","medicine","hour","chief","gender"}
+    illness_pid=selected_roles["illness"]["palace"]
+    weak_disease=(selected_roles["illness"]["primary_strength_25"]
+                  .get("strength_label")=="极小")
+    control={}
+    drain={}
+    for key,row in selected_roles.items():
+        if key=="illness":continue
+        gate=gates.get(key)
+        if gate is None:continue
+        pid=gate["palace"]
+        if pid==illness_pid:continue
+        if key in eligible_control_roles and gate["relation"]=="克":
+            if key!="chief" or gate["void"]=="not_void":
+                control.setdefault(pid,[]).append(key)
+        # 病宫生用神宫 is the role's 被生, not 生/比和/同宫.
+        if weak_disease and gate["relation"]=="被生":
+            if key!="chief" or gate["void"]=="not_void":
+                drain.setdefault(pid,[]).append(key)
+    total_bonus=3*(len(control)+len(drain))
+    original=summary["score"]
+    summary.update({
+        "pre_relationship_bonus_score":original,
+        "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
+        "drain_bonus_palaces":{str(k):v for k,v in sorted(drain.items())},
+        "control_bonus_score":3*len(control),
+        "weak_illness_drain_bonus_score":3*len(drain),
+        "relationship_bonus_score":total_bonus,
+        "weak_illness_drain_eligible":weak_disease,
+        "score":(max(-5,min(5,summary["post_void_known_sum"]+total_bonus))
+                 if original is not None else None)})
+    summary["grade"]=grade_label(summary["score"]) if summary["score"] is not None else None
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
             "selected_gender_palace":selected_gender_palace,

@@ -468,19 +468,24 @@ def selected_health_sections(result,*,actor,chart):
               "natal":"患者年命"}.get(key,key)
         strength=role_power_note(key,row)
         outcome=gate["control_result"]
+        if key=="medicine" and rel=="同宫":
+            return (strength+"乙奇与天芮病宫同宫，表示正在接受治疗，"
+                    "医药与病象同宫发挥作用；同一实宫仅计一次。")
+        if key=="chief" and rel=="同宫":
+            return (strength+"值符大吉神与天芮病宫同宫，"
+                    "表示大吉神在同宫护持，能够发挥作用；同一实宫仅计一次。")
         if key=="chief" and gate["void"]!="not_void":
             return (strength+"因值符空亡，神兽不在宫内，无法提供帮助；"
                     "值符护持不参与最终合断。")
         if rel=="克":
-            if gate["score_eligible"]:
-                meaning=("疾病得到了"+name+"的压制。"
-                         "施力方与病宫查克制表，结果为"+str(outcome)+"。")
+            bonus=quant["summary"]["control_bonus_palaces"]
+            if str(gate["palace"]) in bonus:
+                meaning=("疾病受到"+name+"宫的五行克制，此宫按新规则加3分。"
+                         "克制力量表为"+str(outcome or "待核")+"，仅说明施力强弱。")
             else:
-                meaning=("疾病尚未得到"+name+"的有效压制。"
-                         "克制表结果为"+str(outcome or "待核")+"。")
-            return (strength+name+"宫克天芮病宫，意思为："+meaning+
-                    ("值符护持不参与最终合断。" if key=="chief" and
-                     not gate["score_eligible"] else ""))
+                meaning=("虽有克病方向，但值符空亡或不符合护持条件，"
+                         "不计独立克病加分。")
+            return strength+name+"宫克天芮病宫，意思为："+meaning
         if rel=="生":
             meaning=name+"宫生天芮病宫，意思为：疾病得不到"+name+"的压制，反受其生扶。"
         elif rel=="被克":
@@ -497,6 +502,7 @@ def selected_health_sections(result,*,actor,chart):
             meaning+="值符护持不参与最终合断。"
         return strength+meaning
 
+    power_seen={}
     push("01_macro",template_title("macro"),
          render_slot("macro",macro_text=render_first_stage_macro(
              result["first_stage_macro"])))
@@ -524,9 +530,17 @@ def selected_health_sections(result,*,actor,chart):
             t25=result["interactions"]["天芮星月令×星宫五行25格"]
             extra=render_slot("illness",name=t25["traditional_title"],
                               explanation=t25["why"])
-        relation=(render_slot("role_relation",
-                 relation_text=role_control_note(key,role))
-                 if key!="illness" else "")
+        if key=="illness":
+            relation=""
+        else:
+            power=role["primary_strength_25"]
+            marker=(pid,power["kind"],power["symbol"])
+            if marker in power_seen and key!="chief":
+                relation=""
+            else:
+                relation=render_slot("role_relation",
+                                     relation_text=role_control_note(key,role))
+                power_seen[marker]=key
         title=template_title(title_key)
         if key=="gender":
             title=("坤宫辅助（女）" if pid==2 else
@@ -540,13 +554,25 @@ def selected_health_sections(result,*,actor,chart):
     # displaying Qian+Kun again causes both double-reading and duplication.
 
     q=quant["summary"]
+    preface=""
+    if q["control_bonus_palaces"]:
+        n=len(q["control_bonus_palaces"])
+        preface+="不同实宫形成五行克病共"+str(n)+"宫，每宫加3分，共加"+str(3*n)+"分。"
+    if q["drain_bonus_palaces"]:
+        palace_names=[]
+        for pid in sorted(int(k) for k in q["drain_bonus_palaces"]):
+            source=next(row for row in roles.values() if row["palace"]==pid)
+            palace_names.append(source["complete_palace"]["palace_name"])
+        n=len(palace_names)
+        preface+=("疾病力量非常小反而要去生助"+"、".join(palace_names)+
+                  "导致能量耗尽被反噬，此项为吉；每宫加3分，共加"+str(3*n)+"分。")
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
                     palace_count=q["unique_palace_count"],
                     post_void_sum=q["post_void_known_sum"],score=q["score"]))
     push("90_review",template_title("verdict"),
-         render_slot("verdict",conclusion=conclusion))
+         render_slot("verdict",conclusion=preface+conclusion))
     push("91_timing",template_title("timing"),
          render_slot("timing",horse=HORSE[chart["hour_ganzhi"][1]]))
     return sections

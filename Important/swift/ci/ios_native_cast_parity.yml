@@ -183,6 +183,53 @@ jobs:
           path: /tmp/wengua-two-wife/
           retention-days: 90
           if-no-files-found: warn
+      - name: V6 one new random wife clock with revised cohost and two independent plus-three rules
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v6-one
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610269113 --count 1 --wife-only --output /tmp/wengua-v6-one/python_truth.json
+          /tmp/wengua-vnext-three-native /tmp/wengua-v6-one/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-v6-one/swift_public_readings.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v6-one/python_truth.json /tmp/wengua-v6-one/swift_public_readings.log /tmp/wengua-v6-one/exact_wording_diff.md
+      - name: Archive verbatim single new Python and actual Swift reading for review
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/wengua-v6-one")
+          data=json.loads((root/"python_truth.json").read_text(encoding="utf8"))
+          lines=(root/"swift_public_readings.log").read_text(encoding="utf8").splitlines()
+          ios=[json.loads(line.split("VNEXT_IOS_PYEXACT=",1)[1]) for line in lines
+               if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(ios)==len(data["cases"])==1
+          a,b=data["cases"][0],ios[0]
+          swift="\n\n".join(x["title"]+"：\n"+x["text"] for x in b["sections"])
+          assert a["python_reading_text"]==swift
+          doc=("\n".join([
+              "# V6 one new actual random wife chart Python and Swift source readings",
+              "seed: 202610269113, no outcome selection",
+              "instant: "+a["instant"],
+              "pillars: "+"／".join(b["pillars"]),
+              "bureau: "+b["bureau"],
+              "### Python",
+              a["python_reading_text"],
+              "### Swift",
+              swift,
+              "全文原字一致: True",
+              "### Technical draws rejected",
+              json.dumps(data["rejected"],ensure_ascii=False,indent=2)]))+"\n"
+          (root/"one_wife_python_swift_verbatim.md").write_text(doc,encoding="utf8")
+          print("V6_ONE_RANDOM_VERBATIM_START")
+          print(doc)
+          print("V6_ONE_RANDOM_VERBATIM_END")
+          PY
+      - name: Preserve V6 one-random-clock real Python Swift evidence on success or failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v6-one-wife-python-swift-verbatim-20261026
+          path: /tmp/wengua-v6-one/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck

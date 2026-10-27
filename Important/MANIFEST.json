@@ -7,7 +7,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "f60f4f00ec60342ae1619a2360944071d807aba5"
+      "sha": "6c1080992e3039abcd0733a8647bf9c0ae02a08d"
     },
     {
       "platform": "python",
@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "93a2f402fd89f364e0fd2e3c15fc5608bbe76663"
+      "sha": "33eb065c32979528af77dbd92ed51ea690214be3"
     },
     {
       "platform": "python",
@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "c917b7048f8f1fb8bb490df98b056dc9fbe2e8f1"
+      "sha": "183d4445e576a9271f6900d04db4d2b20138e242"
     },
     {
       "platform": "python",
@@ -265,7 +265,7 @@
       "platform": "python",
       "canonical": "scripts/ios_vnext_three_random_20261026.py",
       "snapshot": "Important/python/scripts/ios_vnext_three_random_20261026.py",
-      "sha": "ed1a5cb9d5909233b535d721518693e245ceb479"
+      "sha": "e00421ae02236163fe761b25fc70e90b3bcdc4f0"
     },
     {
       "platform": "python",
@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "6a64131c74b60b43bc1220bd8470251d4411aecf"
+      "sha": "082265258ca5c631cfeee53fb5e8a6b571288143"
     },
     {
       "platform": "python",
@@ -313,7 +313,7 @@
       "platform": "python",
       "canonical": "tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
       "snapshot": "Important/python/tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
-      "sha": "5f075d7489a9ffc4d9df7c9b3a2dc0b9855145e5"
+      "sha": "4a97959b8952e5528c0b6719eacfc9094ed4e121"
     },
     {
       "platform": "python",
@@ -337,7 +337,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "f60f4f00ec60342ae1619a2360944071d807aba5"
+      "sha": "6c1080992e3039abcd0733a8647bf9c0ae02a08d"
     },
     {
       "platform": "swift",
@@ -403,13 +403,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "63c257a55d2d70cf483869528aebc5774dd2e2a8"
+      "sha": "391048e75d9fc304628bb789cdd15d9a7059d048"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "d32632231b60a6981a682b64af1ce060716a84af"
+      "sha": "514cb56fceb85ef8064b6b9cc2f8487442a9d6e1"
     },
     {
       "platform": "swift",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "6a64131c74b60b43bc1220bd8470251d4411aecf"
+      "sha": "082265258ca5c631cfeee53fb5e8a6b571288143"
     },
     {
       "platform": "swift",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "43b9b7fb6e591a3d4f7938487206f16f6ee15b57"
+      "sha": "46509e354d7c7a7ad0fdf9dc4c092f073b67ffff"
     },
     {
       "platform": "swift",

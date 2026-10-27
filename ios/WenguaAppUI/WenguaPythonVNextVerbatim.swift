@@ -303,17 +303,23 @@ enum WenguaPythonVNextVerbatim {
         } else {
             eligible=rel != "克" || applicable
         }
+        if role=="medicine" && rel=="同宫" {
+            return note+"乙奇与天芮病宫同宫，表示正在接受治疗，医药与病象同宫发挥作用；同一实宫仅计一次。"
+        }
+        if role=="chief" && rel=="同宫" {
+            return note+"值符大吉神与天芮病宫同宫，表示大吉神在同宫护持，能够发挥作用；同一实宫仅计一次。"
+        }
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
             return note+"因值符空亡，神兽不在宫内，无法提供帮助；值符护持不参与最终合断。"
         }
         if rel=="克" {
-            let content:String
-            if eligible {
-                content="疾病得到了"+who+"的压制。施力方与病宫查克制表，结果为"+(outcome ?? "待核")+"。"
+            let meaning:String
+            if review.controlBonusPalaces.contains(aid) {
+                meaning="疾病受到"+who+"宫的五行克制，此宫按新规则加3分。克制力量表为"+(outcome ?? "待核")+"，仅说明施力强弱。"
             } else {
-                content="疾病尚未得到"+who+"的有效压制。克制表结果为"+(outcome ?? "待核")+"。"
+                meaning="虽有克病方向，但值符空亡或不符合护持条件，不计独立克病加分。"
             }
-            return note+who+"宫克天芮病宫，意思为："+content+(role=="chief" && !eligible ? "值符护持不参与最终合断。" : "")
+            return note+who+"宫克天芮病宫，意思为："+meaning
         }
         let explanation:String
         switch rel {
@@ -384,6 +390,7 @@ enum WenguaPythonVNextVerbatim {
         push("01_macro",try title("macro"),try phrase("macro",[
             "macro_text":fullMacro(chart,review)]))
         var viewed:[Int:String]=[:]
+        var powerSeen:Set<String>=[]
         for (role,id,key) in [
             ("illness","02","illness"),("doctor","03","doctor"),
             ("medicine","04","medicine"),("patient","05","patient"),
@@ -406,7 +413,14 @@ enum WenguaPythonVNextVerbatim {
                 let t25=try WenguaVNextTianrui25.caseFor(chart:chart,audit:review)
                 extra=try phrase("illness",["name":t25.title,"explanation":t25.why])
             }
-            let roleText=try roleAgainstIllness(role,review:review,chart:chart)
+            let marker=String(pid)+":"+(review.roleEnergy[role]?.symbol ?? "")
+            let roleText:String
+            if role=="illness" || (powerSeen.contains(marker) && role != "chief") {
+                roleText=""
+            } else {
+                roleText=try roleAgainstIllness(role,review:review,chart:chart)
+                powerSeen.insert(marker)
+            }
             let relationText=role=="illness" ? "" :
                 try phrase("role_relation",["relation_text":roleText])
             let genderNote=role=="gender" ? try phrase("gender_note") : ""
@@ -421,6 +435,16 @@ enum WenguaPythonVNextVerbatim {
         }
         // Qian and Kun remain full source facts in internal audit; the
         // patient's selected sex already uses one real gender palace once.
+        var preface=""
+        if !review.controlBonusPalaces.isEmpty {
+            let n=review.controlBonusPalaces.count
+            preface+="不同实宫形成五行克病共"+String(n)+"宫，每宫加3分，共加"+String(3*n)+"分。"
+        }
+        if !review.drainBonusPalaces.isEmpty {
+            let names=review.drainBonusPalaces.sorted().compactMap{cells[$0]}.map{label($0)}
+            let n=names.count
+            preface+="疾病力量非常小反而要去生助"+names.joined(separator:"、")+"导致能量耗尽被反噬，此项为吉；每宫加3分，共加"+String(3*n)+"分。"
+        }
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)
@@ -432,7 +456,7 @@ enum WenguaPythonVNextVerbatim {
                 "post_void_sum":String(review.postVoidKnownSum)])
         }
         push("90_review",try title("verdict"),
-             try phrase("verdict",["conclusion":verdict]))
+             try phrase("verdict",["conclusion":preface+verdict]))
         push("91_timing",try title("timing"),try phrase("timing",[
             "horse":chart.hourHorse]))
         return result
