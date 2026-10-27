@@ -14,7 +14,7 @@ from .health_five_level_quant_vnext import (
 from .health_intrinsic_scoring_vnext import (
     star_score,door_score,god_score,resolve_ordered_pair,
     stem_intrinsic_score,catalog_validation,VERSION as INTRINSIC_VERSION)
-from .health_five_level_quant_vnext import label as grade_label
+from .health_five_level_quant_vnext import label as grade_label, saturate, adverse_shift, void_shift_three
 from .health_81_excel_catalog_vnext import (
     authoritative_score_source,catalog,VERSION as EXCEL_VERSION)
 
@@ -208,6 +208,37 @@ def special_cohost_total(chief_points,stem_points,*,void=False):
     return total//2 if void else total
 
 
+def _role_score(item,primary,xun_shou):
+    """Per-role signifier (source polarity x 200-cell) plus palace environment."""
+    out=dict(item)
+    p=item["palace_score"]
+    kind=primary["kind"]
+    info={"symbol":primary["symbol"],"kind":kind,
+          "tier":primary.get("strength_label"),"included_in_resident":kind!="stem"}
+    if kind=="stem":
+        baseline=stem_intrinsic_score(primary["symbol"],xun_shou=xun_shou).get("baseline")
+        tier=primary.get("strength_label")
+        own=(None if baseline is None or (baseline and tier is None)
+             else 0 if baseline==0 else points(tier,"吉" if baseline>0 else "凶"))
+        info.update(score=own,baseline=baseline)
+        if own is None or p["raw_sum"] is None:
+            out["palace_score"]={**p,"raw_sum":None,"score":None,"grade":None}
+        else:
+            raw=p["raw_sum"]+own
+            before=saturate(raw)
+            if p["door_break"]:before=adverse_shift(before,2)
+            value=void_shift_three(before,void_state=p["void_state"])
+            out["palace_score"]={**p,"raw_sum":raw,"score_before_void":before,
+                                 "score":value,"grade":grade_label(value),
+                                 "primary_stem_signed_score":own}
+    else:
+        info["score"]=(item["deity"]["score"] if kind=="deity" else next(
+            (x["score"] for x in item["star"]["per_star"]
+             if x["symbol"]==primary["symbol"]),None))
+    out["primary_signifier_score"]=info
+    return out
+
+
 def inspect_selected_quantization(*,selected_roles,
                                   qian_kun_observations,first_stage_macro,
                                   xun_shou=None,selected_gender_palace=None,directed_edges=None):
@@ -222,14 +253,10 @@ def inspect_selected_quantization(*,selected_roles,
                 "hour","natal","gender","chief"):
             detail=row["complete_palace"]
             palace=detail["palace"]
-            if palace in physical_cache:
-                canonical=physical_cache[palace]
-                item={**canonical["item"],"role":key,
-                      "score_shared_with_role":canonical["role"],
-                      "same_real_palace_same_score":True}
-            else:
-                item=_quantize_one(key,detail,five_not_encounter=False,
-                                   xun_shou=xun_shou)
+            item=_role_score(_quantize_one(
+                key,detail,five_not_encounter=False,xun_shou=xun_shou),
+                row["primary_strength_25"],xun_shou)
+            if palace not in physical_cache:
                 physical_cache[palace]={"role":key,"item":item}
             roles[key]=item
             # User: ONLY the exact selected health roles. No unrelated extra
@@ -307,6 +334,10 @@ def inspect_selected_quantization(*,selected_roles,
         # extra *control assistance* is gated by effective suppression.
         effective[key]=aggregate[key]
     summary=multi_palace_tally(palaces=effective)
+    role_scores={key:record["palace_score"]["score"] for key,record in roles.items()}
+    pending_roles=[key for key,value in role_scores.items() if value is None]
+    role_sum=sum(value for value in role_scores.values() if value is not None)
+    previous_physical=dict(summary)
     # V7 USER CONDITIONAL RULES, private-only points. Source 200/81 table
     # scores and every real palace remain unchanged. Distinct physical
     # control palaces and distinct auspicious symbols are counted once each.
@@ -449,10 +480,15 @@ def inspect_selected_quantization(*,selected_roles,
     # A 五不遇时 deducts TWO from EACH selected physical palace, including
     # neutral palaces. Preserve old bonus audits but do not stack them again
     # on top of already scored star/door/deity/pattern real-palace results.
-    macro_penalty=2*summary["unique_palace_count"] if five else 0
+    macro_penalty=2*len(roles) if five else 0
     historical_stacked_total=summary["post_void_known_sum"]+total_bonus-(2 if five else 0)
-    final_raw=summary["post_void_known_sum"]-macro_penalty
+    final_raw=role_sum+total_bonus-macro_penalty
     original=summary["score"]
+    summary["physical_palace_v75_audit"]=previous_physical
+    summary["effective_role_scores"]=role_scores
+    summary["role_count"]=len(roles)
+    summary["pending_roles"]=pending_roles
+    summary["post_void_known_sum"]=role_sum
     summary.update({
         "pre_relationship_bonus_score":original,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
@@ -468,15 +504,16 @@ def inspect_selected_quantization(*,selected_roles,
         "five_not_global_penalty":macro_penalty,
         "five_not_penalty_per_palace":2 if five else 0,
         "five_not_penalized_unique_palace_count":summary["unique_palace_count"] if five else 0,
-        "five_not_per_distinct_palace":True,
+        "five_not_per_distinct_palace":False,
+        "five_not_per_selected_role_occurrence":True,
+        "five_not_penalized_role_count":len(roles) if five else 0,
         "historical_overlay_total_if_stacked":historical_stacked_total,
-        "relationship_overlays_audit_only":True,
-        "final_scoring_policy":"V7.5_DISTINCT_PALACES_FIVE_NOT_MINUS_TWO_EACH",
+        "relationship_overlays_audit_only":False,
+        "final_scoring_policy":"V7.6_ROLE_BASE_ENVIRONMENT_THEN_CONTROL",
         "raw_final_before_saturation":final_raw,
         "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,
-        "score":(max(-5,min(5,final_raw))
-                 if original is not None else None)})
+        "score":(saturate(final_raw) if not pending_roles else None)})
     summary["grade"]=grade_label(summary["score"]) if summary["score"] is not None else None
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,

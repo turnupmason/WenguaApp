@@ -51,6 +51,7 @@ struct WenguaVNextAudit {
     let schema:String
     let palaces:[Int:WenguaVNextPalace]
     let roles:[String:Int]
+    let roleScores:[String:Int]
     let firstMacroFiveNot:Bool
     let postVoidKnownSum:Int
     let score:Int?
@@ -78,6 +79,8 @@ enum WenguaVNextEngine {
         return void ? total/2 : total
     }
     static let tiers=["极小","小","中等","大","极大"]
+    static let stemPolarity=["乙":1,"丙":1,"丁":1,"戊":0,"己":0,
+                            "庚":-1,"辛":0,"壬":0,"癸":0]
     static let starElement=["天蓬星":"水","天芮星":"土","天冲星":"木",
       "天辅星":"木","天禽星":"土","天心星":"金","天柱星":"金",
       "天任星":"土","天英星":"火"]
@@ -560,6 +563,8 @@ enum WenguaVNextEngine {
         var physical:[Int:WenguaVNextPalace]=[:]
         var roles:[String:Int]=[:]
         var strength:[String:WenguaVNextFactor]=[:]
+        var roleScores:[String:Int]=[:]
+        var rolePending:[Int]=[]
         let fiveNot=wholeChartFiveNot(chart)
         // Role binding order must match Python physical_cache. The first
         // role at a real palace is canonical; later co-palace roles share
@@ -625,6 +630,27 @@ enum WenguaVNextEngine {
                     palace:p.id,month:month,catalog:energy,
                     stages:actualStages)
             }
+            if role != "qian" && role != "kun" {
+                let env=try evaluate(p,role:role,chart:chart,
+                            catalog:energy,excel:excel,month:month,fiveNot:false)
+                var score=env.afterVoid
+                if ["medicine","patient","hour","natal"].contains(role) {
+                    let polarity:Int?=symbol=="甲" ?
+                        (chart.hiddenStem=="庚" ? -1 : 0) : Self.stemPolarity[symbol]
+                    if let polarity,let raw=env.raw {
+                        let own=polarity==0 ? Optional(0) :
+                            Self.signed(strength[role]?.strength,polarity)
+                        if let own {
+                            var before=Self.saturation(raw+own)
+                            if env.doorBreak {before=Self.adverse(before)}
+                            score=env.void=="not_void" || before==0 ? before :
+                                  before>0 ? before-3 : before+3
+                        } else {score=nil}
+                    } else {score=nil}
+                }
+                if let score {roleScores[role]=score}
+                else {rolePending.append(p.id)}
+            }
         }
         var controls:[WenguaVNextControl]=[]
         let diseaseStrength=try must(strength["illness"]?.strength)
@@ -678,8 +704,8 @@ enum WenguaVNextEngine {
         }
         // One physical palace once, including accepted co-located roles.
         let scoreList=physical.values.filter{enabled.contains($0.id)}
-        let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
-        let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
+        let known=roleScores.values.reduce(0,+)
+        let pending=rolePending.sorted()
         let weakDisease=strength["illness"]?.strength=="极小"
         var controlBonus:Set<Int>=[]
         var controlPoints:[Int:Int]=[:]
@@ -806,7 +832,7 @@ enum WenguaVNextEngine {
         // V7.5 Python parity: audit historical overlays, but do not add
         // those symbols twice to complete signed physical-palace scores.
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
-        let finalRaw=known-(fiveNot ? 2*scoreList.count : 0)
+        let finalRaw=known+relationshipBonus-(fiveNot ? 2*personalized.count : 0)
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
@@ -842,7 +868,8 @@ enum WenguaVNextEngine {
         _ = diseaseStrength // Already independently bound via selected factor.
         return WenguaVNextAudit(
             schema:"wengua_native_vnext_exact_200_81_selected_five_v20261026",
-            palaces:physical,roles:roles,firstMacroFiveNot:fiveNot,
+            palaces:physical,roles:roles,roleScores:roleScores,
+            firstMacroFiveNot:fiveNot,
             postVoidKnownSum:known,score:result,pending:pending,
             controls:controls,evidenceDirection:evidenceDirection,
             evidenceConflict:conflict,traditionalSentence:sentence,

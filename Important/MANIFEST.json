@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "d3cdfa0cce5406124297b6049acd96837db9d6c6"
+      "sha": "0cf3fc89e0a6d3bc66d363a66eb95a2a6c6ab4b6"
     },
     {
       "platform": "python",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "b03f18a86248f3f9f3fe6adb6bd0a53e435cfe17"
+      "sha": "689dc1da08069a8c4055d2c92a13c38fd35a8846"
     },
     {
       "platform": "swift",
