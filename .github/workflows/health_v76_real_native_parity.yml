@@ -2,7 +2,11 @@ name: Health V7.6 Three Stage Fixed Original Hours Native Parity
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/health_v76_real_native_parity.yml']
+    paths:
+      - '.github/workflows/health_v76_real_native_parity.yml'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
+      - 'src/wengua/health_quant_overlay_vnext.py'
   workflow_dispatch:
 permissions:
   contents: read
