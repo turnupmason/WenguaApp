@@ -334,6 +334,71 @@ jobs:
           path: /tmp/wengua-1930-manual/
           retention-days: 90
           if-no-files-found: warn
+      - name: V7 same supplied hour - male friend Python versus native Swift strict ten-section parity
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-male-friend-v7
+          python3 -m scripts.ios_vnext_manual_male_friend_20261027 --output /tmp/wengua-male-friend-v7/python_truth.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("/tmp/wengua-male-friend-v7/python_truth.json").read_text())
+          case=d["cases"][0]
+          assert case["relationship"]=="朋友"
+          assert case["patient_sex"]=="male"
+          assert "gender" not in case["roles"], "Male friend MUST NOT gain 乾六宫 simply due to sex"
+          assert "natal" not in case["roles"], "No unprovided friend natal"
+          assert "患者用神" in case["python_reading_text"]
+          assert "乾宫辅助（男）" not in case["python_reading_text"]
+          print("MALE_FRIEND_NO_QIAN_NATAL_ROLE_PASSED")
+          PY
+          /tmp/wengua-vnext-three-native /tmp/wengua-male-friend-v7/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/wengua-male-friend-v7/swift_public_readings.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-male-friend-v7/python_truth.json /tmp/wengua-male-friend-v7/swift_public_readings.log /tmp/wengua-male-friend-v7/diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("/tmp/wengua-male-friend-v7")
+          case=json.loads((p/"python_truth.json").read_text())["cases"][0]
+          rows=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in (p/"swift_public_readings.log").read_text().splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(rows)==1
+          native="\n\n".join(s["title"]+"：\n"+s["text"] for s in rows[0]["sections"])
+          assert native==case["python_reading_text"]
+          doc="\n".join([
+            "# V7 同一四柱：男性朋友测病强弱，Python + iOS Swift 真生产结果",
+            "",
+            "- 己丑／丁丑／癸未／丙辰；软件重建本次核对时间 2010-02-02 07:00 America/New_York。",
+            "- 男性朋友：根据现存 source actor 朋友，取丁丑月干丁为条件性同辈用神；不引乾宫、不引坤宫；无年命输入则不引年命。",
+            "- 源人物档案中朋友月干规则仍标记 research_candidate_only，须由用户验收；传统术数文字不能代表真实病情。",
+            "",
+            "节气："+rows[0]["solar_term"]+"；"+rows[0]["bureau"],
+            "",
+            "## GPT/Python 客户完整断词",case["python_reading_text"],"",
+            "## iOS Swift 正式客户完整断词",native,"",
+            "Python 与 iOS Swift 全文字节 / 字符、标题、分段完全相同：True",
+          ])+"\n"
+          (p/"full_male_friend_python_swift.md").write_text(doc,encoding="utf8")
+          print("V7_MALE_FRIEND_FULL_READING_START")
+          print(doc)
+          print("V7_MALE_FRIEND_FULL_READING_END")
+          PY
+      - name: Archive V7 male friend fixed time Python and Swift verdict in repository
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          git commit -m "Archive V7 male friend exact same hour real Swift Python verdict"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: Preserve male friend strict native parity and any failures for handoff
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v7-male-friend-same-hour-python-swift-20261027
+          path: /tmp/wengua-male-friend-v7/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Parse Swift bridge syntax
         run: swiftc -frontend -parse ios/WenguaAppUI/WenguaHealthTemplateBridge.swift
       - name: Parse SwiftUI source syntax only, not iPhone Xcode typecheck
