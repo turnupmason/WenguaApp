@@ -445,9 +445,13 @@ def inspect_selected_quantization(*,selected_roles,
                 "palace":pid,"symbol":"天心星","points":points,"note":note}
     lucky_points=sum(v["points"] for v in auspice.values())
     total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
-    # Apply 五不遇时 ONCE to the aggregate, after role dedup and bonuses.
-    macro_penalty=2 if five else 0
-    final_raw=summary["post_void_known_sum"]+total_bonus-macro_penalty
+    # V7.5 user-approved final: one signed grade per distinct real palace.
+    # A 五不遇时 deducts TWO from EACH selected physical palace, including
+    # neutral palaces. Preserve old bonus audits but do not stack them again
+    # on top of already scored star/door/deity/pattern real-palace results.
+    macro_penalty=2*summary["unique_palace_count"] if five else 0
+    historical_stacked_total=summary["post_void_known_sum"]+total_bonus-(2 if five else 0)
+    final_raw=summary["post_void_known_sum"]-macro_penalty
     original=summary["score"]
     summary.update({
         "pre_relationship_bonus_score":original,
@@ -462,8 +466,14 @@ def inspect_selected_quantization(*,selected_roles,
         "auspice_bonus_score":lucky_points,
         "relationship_bonus_score":total_bonus,
         "five_not_global_penalty":macro_penalty,
+        "five_not_penalty_per_palace":2 if five else 0,
+        "five_not_penalized_unique_palace_count":summary["unique_palace_count"] if five else 0,
+        "five_not_per_distinct_palace":True,
+        "historical_overlay_total_if_stacked":historical_stacked_total,
+        "relationship_overlays_audit_only":True,
+        "final_scoring_policy":"V7.5_DISTINCT_PALACES_FIVE_NOT_MINUS_TWO_EACH",
         "raw_final_before_saturation":final_raw,
-        "five_not_deducted_once_at_end":True,
+        "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,
         "score":(max(-5,min(5,final_raw))
                  if original is not None else None)})

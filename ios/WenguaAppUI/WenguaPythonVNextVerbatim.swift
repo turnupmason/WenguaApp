@@ -487,7 +487,7 @@ enum WenguaPythonVNextVerbatim {
         desc+=review.auspiceBonusNotes.map{
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
-        if review.firstMacroFiveNot {desc.insert("五不遇时成立，合断最终另扣两级",at:0)}
+        if review.firstMacroFiveNot {desc.insert("五不遇时成立，参与合断的每个独立实宫均减两分",at:0)}
         let macroProse=try fullMacro(chart,review)
         let pace=macroProse.contains("缓急并列待具体条件核定") ?
             "伏吟反吟并见，缓急合参" :

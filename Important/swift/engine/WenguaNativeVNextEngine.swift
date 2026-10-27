@@ -803,7 +803,10 @@ enum WenguaVNextEngine {
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
         let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count + auspicePoints
-        let finalRaw=known+relationshipBonus-(fiveNot ? 2 : 0)
+        // V7.5 Python parity: audit historical overlays, but do not add
+        // those symbols twice to complete signed physical-palace scores.
+        // 五不遇时: minus 2 for EACH selected real palace, even neutral.
+        let finalRaw=known-(fiveNot ? 2*scoreList.count : 0)
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count

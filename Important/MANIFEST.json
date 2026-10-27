@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "d3842eb6e7014daf76aad5aea23aec321f406ef4"
+      "sha": "b3445583fa7483b9acd6c93b8a7be50b27015518"
     },
     {
       "platform": "python",
@@ -223,7 +223,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "b107ebf67c4caae87cdaa052a4b08eb24fe285c1"
+      "sha": "d3cdfa0cce5406124297b6049acd96837db9d6c6"
     },
     {
       "platform": "python",
@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "f5be59ee90150ee8182890a456229ace5a82fec8"
+      "sha": "0ae08660d5c0ef58363acd97680ff4b6344abbda"
     },
     {
       "platform": "python",
@@ -403,13 +403,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "7b36975eff57217c32d91d18972d2865bb7acb28"
+      "sha": "b03f18a86248f3f9f3fe6adb6bd0a53e435cfe17"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "5c8444697f3d508f3c1d934a71f3da049c715960"
+      "sha": "c255678995ec0f56fb6c61d3909b5772f08dbcd2"
     },
     {
       "platform": "swift",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "f5be59ee90150ee8182890a456229ace5a82fec8"
+      "sha": "0ae08660d5c0ef58363acd97680ff4b6344abbda"
     },
     {
       "platform": "swift",
