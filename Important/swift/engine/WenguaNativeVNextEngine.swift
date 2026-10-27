@@ -72,6 +72,11 @@ struct WenguaVNextAudit {
     let controlBonusPoints:[Int:Int]
 }
 enum WenguaVNextEngine {
+    static func cohostPoints(chief:Int,stem:Int,void:Bool)->Int {
+        precondition([0,2,3].contains(chief) && [0,1,2,3].contains(stem))
+        let total=chief+stem
+        return void ? total/2 : total
+    }
     static let tiers=["极小","小","中等","大","极大"]
     static let starElement=["天蓬星":"水","天芮星":"土","天冲星":"木",
       "天辅星":"木","天禽星":"土","天心星":"金","天柱星":"金",
@@ -704,70 +709,82 @@ enum WenguaVNextEngine {
                 drainBonus.insert(p.id)
             }
         }
-        // Auspicious co-hosts on illness, patient, hour, natal and
-        // older-generation Qian/Kun ONLY. The standalone doctor palace
-        // does NOT automatically receive +3 simply for housing Tianxin.
+        // V7.2: real same-palace chief deity + ONE true Yi/Ding stem family.
+        // Actor's own sky 乙 + earth 丁 do not count as two families.
+        // Half the WHOLE cohost sum once, round down, when palace is void.
         let hosts=Set(["illness","patient","hour","natal","gender"]
             .compactMap{roles[$0]})
         var auspices:[String:(Int,String)]=[:]
+        let highGround:Set<String>=["长生","沐浴","冠带","临官","帝旺"]
         for pid in hosts.sorted() {
             guard let p=all[pid] else {throw WenguaCastError.invalidChart}
             let place=["坎一宫","坤二宫","震三宫","巽四宫","中五宫",
                        "乾六宫","兑七宫","艮八宫","离九宫"][pid-1]
-            let void=actualVoid(p,chart,month:month) != "not_void"
-            var offered:[(String,String?,Bool)]=[]
-            if pid==ill.id {
-                for sky in p.heavenStars where sky.carriedStem=="乙" {
-                    let tier=try factor(kind:"stem",symbol:"乙",palace:pid,
-                        month:month,catalog:energy,stages:sky.stages).strength
-                    let blocked=p.tombs.contains{$0.plane=="天盘" && $0.stem=="乙"} ||
-                        striking["乙"]==pid
-                    offered.append(("乙奇",tier,blocked))
+            let isVoid=actualVoid(p,chart,month:month) != "not_void"
+            var stemCandidates:[(Int,String,String)]=[]
+            for sky in p.heavenStars where sky.carriedStem=="乙" || sky.carriedStem=="丁" {
+                let selectedAtPalace=personalized.contains{
+                    ["illness","patient","hour","natal","gender"].contains($0.0) &&
+                    $0.1.id==pid && $0.2==sky.carriedStem
                 }
+                if pid != ill.id && !selectedAtPalace {continue}
+                let x=try factor(kind:"stem",symbol:sky.carriedStem,palace:pid,
+                                 month:month,catalog:energy,stages:sky.stages).strength
+                guard let tier=x else{continue}
+                let restricted=p.tombs.contains{$0.plane=="天盘" && $0.stem==sky.carriedStem} ||
+                               striking[sky.carriedStem]==pid
+                let pts=restricted ? 1 : tier=="极小" ? 2 : 3
+                stemCandidates.append((pts,sky.carriedStem+"奇","天盘"))
             }
             if p.earthStem=="乙" || p.earthStem=="丁" {
-                let t=try factor(kind:"stem",symbol:p.earthStem,palace:pid,
-                    month:month,catalog:energy,stages:p.earthStages).strength
-                let blocked=p.tombs.contains{$0.plane=="地盘" && $0.stem==p.earthStem} ||
-                    striking[p.earthStem]==pid
-                offered.append((p.earthStem+"奇",t,blocked))
+                let x=try factor(kind:"stem",symbol:p.earthStem,palace:pid,
+                                 month:month,catalog:energy,stages:p.earthStages).strength
+                let restricted=p.tombs.contains{$0.plane=="地盘" && $0.stem==p.earthStem} ||
+                               striking[p.earthStem]==pid
+                let stages=p.earthStages.map{$0.stage}
+                let points:Int
+                if restricted {points=1}
+                else if x==nil || stages.isEmpty {points=0}
+                else if stages.allSatisfy({highGround.contains($0)}) {
+                    points=x=="极小" ? 2 : 3
+                } else {points=0} // no top-five lifecycle, no invented credit
+                if points>0 {
+                    stemCandidates.append((points,p.earthStem+"奇","地盘"))
+                }
             }
-            for sky in p.heavenStars where sky.star=="天心星" {
-                let t=try factor(kind:"star",symbol:"天心星",palace:pid,
-                    month:month,catalog:energy).strength
-                offered.append(("天心星",t,false))
+            let stemBest=stemCandidates.reduce(nil as (Int,String,String)?){best,next in
+                if let best, best.0>=next.0{return best}
+                return next
             }
+            var chiefPoints=0
             if p.deity=="值符" {
                 guard let e=godElement["值符"],let pe=elements[pid] else {
                     throw WenguaCastError.invalidChart
                 }
-                let relation=try directed(e,pe)
-                offered.append(("值符",godTiers[relation],
-                               relation=="宫克符号"))
-            }
-            for (name,tier,restricted) in offered {
-                guard let tier else{continue}
-                let points:Int
-                let note:String
-                if void {
-                    points=1
-                    note=place+"逢空，"+name+"余气尚存，吉助有限。"
-                } else if restricted && (name=="乙奇" || name=="丁奇") {
-                    points=1
-                    note=place+name+"入墓或击刑，吉助受阻。"
-                } else if tier=="极小" {
-                    points=2
-                    note=place+name+"势极小，吉助有限。"
-                } else if restricted && name=="值符" {
-                    points=2
-                    note=place+"值符受宫克，护持受限。"
-                } else {
-                    points=3
-                    note=place+"得"+name+"吉助。"
+                let rel=try directed(e,pe)
+                if godTiers[rel] != nil {
+                    chiefPoints=rel=="宫克符号" ? 2 : 3
                 }
-                let token=String(pid)+":"+name
-                if let original=auspices[token],original.0>=points {continue}
-                auspices[token]=(points,note)
+            }
+            if chiefPoints != 0 || stemBest != nil {
+                let stemPoints=stemBest?.0 ?? 0
+                let awarded=cohostPoints(chief:chiefPoints,stem:stemPoints,
+                                         void:isVoid)
+                let tags=([chiefPoints>0 ? "值符" : nil].compactMap{$0})+
+                    ([stemBest.map{$0.2+$0.1}].compactMap{$0})
+                let note=isVoid ?
+                    place+"逢空，"+tags.joined(separator:"与")+"同宫的吉助减弱，尚有余气。" :
+                    place+"得"+tags.joined(separator:"与")+"同宫扶助。"
+                auspices[String(pid)+":同宫吉助"]=(awarded,note)
+            }
+            for sky in p.heavenStars where sky.star=="天心星" {
+                guard let tier=try factor(kind:"star",symbol:"天心星",
+                         palace:pid,month:month,catalog:energy).strength else {continue}
+                let points=isVoid ? 1 : tier=="极小" ? 2 : 3
+                let note=isVoid ? place+"逢空，天心星吉助余气尚存。" :
+                    tier=="极小" ? place+"天心星势极小，吉助有限。" :
+                                 place+"得天心星医者吉助。"
+                auspices[String(pid)+":天心星"]=(points,note)
             }
         }
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
