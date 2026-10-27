@@ -14,6 +14,10 @@ class TestTwoSentenceDynamicSummary(unittest.TestCase):
             summary=next(s["text"] for s in fixture["source_sections"]
                          if s["id"]=="90_review")
             self.assertEqual(summary.count("。"),2,summary)
+            self.assertEqual(summary.count("\n\n"),1,summary)
+            first,second=summary.split("\n\n")
+            self.assertTrue(first.endswith("。"))
+            self.assertTrue(second.endswith("。"))
             self.assertIn("天芮病宫落",summary)
             self.assertIn("天心医生落",summary)
             self.assertIn("乙奇医药落",summary)
@@ -29,6 +33,8 @@ class TestTwoSentenceDynamicSummary(unittest.TestCase):
                 self.assertNotIn(confidential,summary)
             passages.append(summary)
         self.assertNotEqual(passages[0],passages[1])
+        self.assertIn("患者用神落震三宫，宫象中平且逢真空",passages[1])
+        self.assertIn("乙奇医药与天芮病宫同在离九宫",passages[1])
         self.assertIn("虽逢空仍有余气克制病宫",passages[0])
 
     def test_1920_natal_is_conditional_after_lichun(self):
