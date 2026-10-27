@@ -694,3 +694,78 @@ jobs:
             if git push origin HEAD:main; then exit 0; fi
           done
           exit 1
+
+  v731_colleague_user_clock:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify supplied four pillars and colleague-only 2-paragraph summary
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v731-colleague
+          python3 -m unittest discover -s tests -p 'test_health_v731_colleague_user_pillars_20261027.py' 2>&1 | tee /tmp/wengua-v731-colleague/python_regression.log
+          python3 -m scripts.ios_vnext_manual_colleague_20261027 --output /tmp/wengua-v731-colleague/python_truth.json
+      - name: Compile actual native Swift production cast renderer
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v731-colleague/native 2>&1 | tee /tmp/wengua-v731-colleague/compiler.log
+      - name: Verify same coworker true cast in Python and native Swift without family/natal
+        run: |
+          set -euo pipefail
+          /tmp/wengua-v731-colleague/native /tmp/wengua-v731-colleague/python_truth.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v731-colleague/swift_production.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v731-colleague/python_truth.json /tmp/wengua-v731-colleague/swift_production.log /tmp/wengua-v731-colleague/exact_diff.md
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          d=Path("/tmp/wengua-v731-colleague")
+          p=json.loads((d/"python_truth.json").read_text())["cases"][0]
+          assert [p["four_pillars"][k] for k in ("year","month","day","hour")]==["己丑","戊辰","辛卯","丁酉"]
+          assert p["patient_sex"] is None and p["patient_birth_ganzhi"] is None
+          assert "gender" not in p["roles"] and "natal" not in p["roles"]
+          rows=[json.loads(x.split("VNEXT_IOS_PYEXACT=",1)[1]) for x in (d/"swift_production.log").read_text().splitlines() if "VNEXT_IOS_PYEXACT=" in x]
+          assert len(rows)==1
+          sw="\n\n".join(q["title"]+"：\n"+q["text"] for q in rows[0]["sections"])
+          assert p["python_reading_text"]==sw
+          summary=next(q["text"] for q in rows[0]["sections"] if q["id"]=="90_review")
+          assert len(summary.split("\n\n"))==2 and summary.count("。")==2
+          doc="\n".join([
+            "# V7.3.1 同事测病：用户指定己丑／戊辰／辛卯／丁酉 Python + 原生 Swift 真断词",
+            "",
+            "对应核对时钟："+p["instant"]+" America/New_York；"+rows[0]["solar_term"]+"；"+rows[0]["bureau"],
+            "人物：同事，同辈月干仅按既有 source research_candidate_only 测试；绝不加乾坤、不提供性别、不虚构年命。",
+            "本次是固定用户四柱复现，并非原书新案例。传统象意不代表临床病情。",
+            "",
+            "## 两句动态合断",summary,"",
+            "## Python 客户全部原文",p["python_reading_text"],"",
+            "## iOS Swift 客户全部原文",sw,"",
+            "整篇标题、段落、标点、字句同一：True",
+            "Run: https://github.com/turnupmason/WenguaApp/actions/runs/"+os.environ.get("GITHUB_RUN_ID",""),
+          ])+"\n"
+          (d/"full_colleague_python_swift.md").write_text(doc,encoding="utf8")
+          print("V731_COLLEAGUE_VERBATIM_BEGIN")
+          print(doc)
+          print("V731_COLLEAGUE_VERBATIM_END")
+          PY
+      - name: Preserve independent source and native exact-word verification including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v731-colleague-user-fixed-four-pillars
+          path: /tmp/wengua-v731-colleague/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Append-only original coworker full reading to GitHub
+        run: |
+          set -euo pipefail
+          cp /tmp/wengua-v731-colleague/full_colleague_python_swift.md docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_2026-10-27.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_2026-10-27.md
+          git commit -m "Archive fixed original colleague case full true Python Swift parity" || true
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
