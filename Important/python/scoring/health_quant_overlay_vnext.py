@@ -208,6 +208,16 @@ def special_cohost_total(chief_points,stem_points,*,void=False):
     return total//2 if void else total
 
 
+def special_disease_control_points(*,attacker_score,attacker_void=False,
+                                   attacker_controlled=False,illness_void=False):
+    """V7.8 conditional suppression: real attacker grade, never repeated per role."""
+    if attacker_score is None or abs(attacker_score)<=1:
+        return 0
+    if attacker_void or attacker_controlled:
+        return 1
+    return 5 if illness_void else 3
+
+
 def _role_score(item,primary,xun_shou):
     """Per-role signifier (source polarity x 200-cell) plus palace environment."""
     out=dict(item)
@@ -393,15 +403,17 @@ def inspect_selected_quantization(*,selected_roles,
         pid=gate["palace"]
         if pid==illness_pid:continue
         if key in control_roles and gate["relation"]=="克":
-            strength=gate["actor_strength"]
-            if strength and strength!="极小":
-                # The actor is weakened if it is empty or its OWN resident
-                # primary symbol is克 by its palace, not because a 5×5 text
-                # label says "完全失控". This never reverses real 五行方向.
-                nominal=row["primary_strength_25"].get("user_cell_col")
-                symbol_controlled=nominal in ("宫克符号","被宫克")
-                points=(1 if gate["void"]!="not_void" or symbol_controlled
-                        else 5 if illness_void else 3)
+            attacker_score=roles[key]["palace_score"]["score"]
+            # The actor's WHOLE selected physical-palace strength is the
+            # ability gate; use symbol palace-control as a restriction.
+            nominal=row["primary_strength_25"].get("user_cell_col")
+            symbol_controlled=nominal in ("宫克符号","被宫克")
+            points=special_disease_control_points(
+                attacker_score=attacker_score,
+                attacker_void=gate["void"]!="not_void",
+                attacker_controlled=symbol_controlled,
+                illness_void=illness_void)
+            if points:
                 control.setdefault(pid,[]).append(key)
                 control_points[str(pid)]=max(control_points.get(str(pid),0),points)
         # Preserve prior V6 weak illness actively draining into other roles.
@@ -434,20 +446,17 @@ def inspect_selected_quantization(*,selected_roles,
         # stem atlas at THIS real seat; do not use the sky stem stages.
         sky_candidates=[]
         for x in detail["heaven_stems"]:
-            if x["symbol"] in ("乙","丁") and (
-                pid==illness_pid or
-                any(selected_roles[k]["primary_strength_25"].get("symbol")==x["symbol"]
-                    for k in host_roles[pid])):
+            if x["symbol"] in ("乙","丁"):
                 sky_candidates.append((x["symbol"],x.get("strength_label"),
                                        x["symbol"] in sky_tombs or x["symbol"] in strikes))
         ground=detail.get("earth_stem") or {}
         ground_stem=ground.get("symbol")
         ground_stages=[x.get("stage") for x in
             ground.get("palace_twelve_life_facts",()) if x.get("stage")]
-        ground_restricted=bool(detail.get("earth_tombs")) or ground_stem in strikes
+        ground_restricted=_matching_restriction(detail.get("earth_tombs",()),ground_stem) or ground_stem in strikes
         stem_candidates=[]
         for stem,strength,restricted in sky_candidates:
-            if not strength:continue
+            if not strength and not restricted:continue
             points=1 if restricted else 2 if strength=="极小" else 3
             stem_candidates.append((points,stem+"奇","天盘"))
         if ground_stem in ("乙","丁"):
@@ -511,11 +520,11 @@ def inspect_selected_quantization(*,selected_roles,
                 "palace":pid,"symbol":"天心星","points":points,"note":note}
     lucky_points=sum(v["points"] for v in auspice.values())
     total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
-    # V7.5 user-approved final: one signed grade per distinct real palace.
-    # A 五不遇时 deducts TWO from EACH selected physical palace, including
-    # neutral palaces. Preserve old bonus audits but do not stack them again
-    # on top of already scored star/door/deity/pattern real-palace results.
-    qualified_bonus=sum(control_points.values())+3*len(drain)
+    # V7.8: special illness auspice is an independent CONDITION overlay.
+    # The unique physical palace base (stars/door/god/pattern/stems) counts
+    # ONCE; one Yi/Ding family and a separate chief/Tianxin may add once.
+    # Never repeat this extra per role in the same actual palace.
+    qualified_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     macro_penalty=2*summary["unique_palace_count"] if five else 0
     historical_stacked_total=role_sum+total_bonus-(2*len(roles) if five else 0)
     final_raw=summary["post_void_known_sum"]+qualified_bonus-macro_penalty
@@ -536,8 +545,8 @@ def inspect_selected_quantization(*,selected_roles,
         "auspice_cohost_audit":cohost_audit,
         "auspice_bonus_notes":[auspice[k]["note"] for k in sorted(auspice)],
         "auspice_bonus_score":lucky_points,
-        "auspice_applied_extra_score":0,
-        "auspice_merged_into_physical_palace":True,
+        "auspice_applied_extra_score":lucky_points,
+        "auspice_merged_into_physical_palace":False,
         "relationship_bonus_score":qualified_bonus,
         "historical_role_stacked_bonus_score":total_bonus,
         "unique_palace_score_details":{str(pid):roles[g["roles"][0]]["palace_score"] for pid,g in grouped.items()},
@@ -550,7 +559,7 @@ def inspect_selected_quantization(*,selected_roles,
         "five_not_penalized_role_count":len(roles) if five else 0,
         "historical_overlay_total_if_stacked":historical_stacked_total,
         "relationship_overlays_audit_only":False,
-        "final_scoring_policy":"V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE",
+        "final_scoring_policy":"V7.8_UNIQUE_PHYSICAL_PALACE_PLUS_CONDITIONAL_ILLNESS_AUSPICE",
         "raw_final_before_saturation":final_raw,
         "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,
