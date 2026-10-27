@@ -297,15 +297,18 @@ def inspect_selected_quantization(*,selected_roles,
                     "chief_zero_score":chief and not active}
         if active:effective[key]=aggregate[key]
     summary=multi_palace_tally(palaces=effective)
-    # V6 new independent relationship bonus, separate from the original
-    # physical-palace four-factor score. One real palace = one +3 per type.
-    # Grid failure is still recorded, but never erases the TRUE 克 direction.
-    # The chief exception (empty or controlled by illness) remains in force.
-    eligible_control_roles={"doctor","medicine","hour","chief","gender"}
+    # V7 USER CONDITIONAL RULES, private-only points. Source 200/81 table
+    # scores and every real palace remain unchanged. Distinct physical
+    # control palaces and distinct auspicious symbols are counted once each.
+    # A weak/void attacker does not get a normal +3 just for nominal 克.
     illness_pid=selected_roles["illness"]["palace"]
+    illness_detail=selected_roles["illness"]["complete_palace"]
+    illness_void=illness_detail["void"]["classification"]!="not_void"
     weak_disease=(selected_roles["illness"]["primary_strength_25"]
                   .get("strength_label")=="极小")
+    control_roles={"doctor","medicine","patient","hour","natal","chief","gender"}
     control={}
+    control_points={}
     drain={}
     for key,row in selected_roles.items():
         if key=="illness":continue
@@ -313,21 +316,94 @@ def inspect_selected_quantization(*,selected_roles,
         if gate is None:continue
         pid=gate["palace"]
         if pid==illness_pid:continue
-        if key in eligible_control_roles and gate["relation"]=="克":
-            if key!="chief" or gate["void"]=="not_void":
+        if key in control_roles and gate["relation"]=="克":
+            strength=gate["actor_strength"]
+            if strength and strength!="极小":
+                # The actor is weakened if it is empty or its OWN resident
+                # primary symbol is克 by its palace, not because a 5×5 text
+                # label says "完全失控". This never reverses real 五行方向.
+                nominal=row["primary_strength_25"].get("user_cell_col")
+                symbol_controlled=nominal in ("宫克符号","被宫克")
+                points=(1 if gate["void"]!="not_void" or symbol_controlled
+                        else 5 if illness_void else 3)
                 control.setdefault(pid,[]).append(key)
-        # 病宫生用神宫 is the role's 被生, not 生/比和/同宫.
+                control_points[str(pid)]=max(control_points.get(str(pid),0),points)
+        # Preserve prior V6 weak illness actively draining into other roles.
         if weak_disease and gate["relation"]=="被生":
             if key!="chief" or gate["void"]=="not_void":
                 drain.setdefault(pid,[]).append(key)
-    total_bonus=3*(len(control)+len(drain))
+
+    # +3 with auspicious 乙/丁 beneath selected real signifier palaces,
+    # 天心 star there, or the real 值符 deity above. Extreme-low power -> +2;
+    # void -> +1; 乙丁 tomb / strike -> +1; 值符受宫克 -> +2.
+    # Never grant an automatic "doctor has 天心" or "medicine has 乙" bonus
+    # absent an actual illness/person/event/elder palace receiving them.
+    auspice_hosts={"illness","patient","hour","natal","gender"}
+    host_palaces={}
+    for key,row in selected_roles.items():
+        if key in auspice_hosts:
+            host_palaces.setdefault(row["palace"],row["complete_palace"])
+    auspice={}
+    for pid,detail in sorted(host_palaces.items()):
+        label=detail["palace_name"]
+        is_void=detail["void"]["classification"]!="not_void"
+        tombs={x["stem"] for x in detail.get("sky_tombs",())}
+        strikes=set(detail.get("striking_stems",()))
+        offerings=[]
+        # Tianrui sharing its physical palace with sky 乙 qualifies;
+        # a sky 乙 elsewhere is not the user's specified 下临乙 condition.
+        if pid==illness_pid:
+            for x in detail["heaven_stems"]:
+                if x["symbol"]=="乙":
+                    offerings.append(("乙奇",x.get("strength_label"),"乙" in tombs or "乙" in strikes))
+        earth=detail.get("earth_stem") or {}
+        if earth.get("symbol") in ("乙","丁"):
+            stem=earth["symbol"]
+            offerings.append((stem+"奇",earth.get("strength_label"),
+                bool(detail.get("earth_tombs")) or stem in strikes))
+        for star in detail["stars"]:
+            if star["name"]=="天心星":
+                offerings.append(("天心星",star["strength"].get("strength_label"),False))
+        if detail["deity"]["name"]=="值符":
+            god=detail["deity"]
+            from .health_intrinsic_scoring_vnext import GOD_RELATIONS
+            offerings.append(("值符",GOD_RELATIONS.get(god["nominal_relation"]),
+                              god["nominal_relation"]=="宫克符号"))
+        for name,strength,restricted in offerings:
+            if not strength:continue
+            if is_void:
+                points=1
+                note=label+"逢空，"+name+"余气尚存，吉助有限。"
+            elif restricted and name in ("乙奇","丁奇"):
+                points=1
+                note=label+name+"入墓或击刑，吉助受阻。"
+            elif strength=="极小":
+                points=2
+                note=label+name+"势极小，吉助有限。"
+            elif restricted and name=="值符":
+                points=2
+                note=label+"值符受宫克，护持受限。"
+            else:
+                points=3
+                note=label+"得"+name+"吉助。"
+            token=str(pid)+":"+name
+            previous=auspice.get(token)
+            if previous is None or points>previous["points"]:
+                auspice[token]={"palace":pid,"symbol":name,
+                                "points":points,"note":note}
+    lucky_points=sum(v["points"] for v in auspice.values())
+    total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     original=summary["score"]
     summary.update({
         "pre_relationship_bonus_score":original,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
+        "control_bonus_points":control_points,
         "drain_bonus_palaces":{str(k):v for k,v in sorted(drain.items())},
-        "control_bonus_score":3*len(control),
+        "control_bonus_score":sum(control_points.values()),
         "weak_illness_drain_bonus_score":3*len(drain),
+        "auspice_bonus_details":auspice,
+        "auspice_bonus_notes":[auspice[k]["note"] for k in sorted(auspice)],
+        "auspice_bonus_score":lucky_points,
         "relationship_bonus_score":total_bonus,
         "weak_illness_drain_eligible":weak_disease,
         "score":(max(-5,min(5,summary["post_void_known_sum"]+total_bonus))
