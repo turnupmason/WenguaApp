@@ -510,9 +510,10 @@ def inspect_selected_quantization(*,selected_roles,
     # A 五不遇时 deducts TWO from EACH selected physical palace, including
     # neutral palaces. Preserve old bonus audits but do not stack them again
     # on top of already scored star/door/deity/pattern real-palace results.
-    macro_penalty=2*len(roles) if five else 0
-    historical_stacked_total=summary["post_void_known_sum"]+total_bonus-(2 if five else 0)
-    final_raw=role_sum+total_bonus-macro_penalty
+    qualified_bonus=sum(control_points.values())+3*len(drain)
+    macro_penalty=2*summary["unique_palace_count"] if five else 0
+    historical_stacked_total=role_sum+total_bonus-(2*len(roles) if five else 0)
+    final_raw=summary["post_void_known_sum"]+qualified_bonus-macro_penalty
     original=summary["score"]
     summary["physical_palace_v75_audit"]=previous_physical
     summary["effective_role_scores"]=role_scores
@@ -530,20 +531,25 @@ def inspect_selected_quantization(*,selected_roles,
         "auspice_cohost_audit":cohost_audit,
         "auspice_bonus_notes":[auspice[k]["note"] for k in sorted(auspice)],
         "auspice_bonus_score":lucky_points,
-        "relationship_bonus_score":total_bonus,
+        "auspice_applied_extra_score":0,
+        "auspice_merged_into_physical_palace":True,
+        "relationship_bonus_score":qualified_bonus,
+        "historical_role_stacked_bonus_score":total_bonus,
+        "unique_palace_score_details":{str(pid):roles[g["roles"][0]]["palace_score"] for pid,g in grouped.items()},
+        "repeated_signifier_merged":True,
         "five_not_global_penalty":macro_penalty,
         "five_not_penalty_per_palace":2 if five else 0,
         "five_not_penalized_unique_palace_count":summary["unique_palace_count"] if five else 0,
-        "five_not_per_distinct_palace":False,
-        "five_not_per_selected_role_occurrence":True,
+        "five_not_per_distinct_palace":True,
+        "five_not_per_selected_role_occurrence":False,
         "five_not_penalized_role_count":len(roles) if five else 0,
         "historical_overlay_total_if_stacked":historical_stacked_total,
         "relationship_overlays_audit_only":False,
-        "final_scoring_policy":"V7.6_ROLE_BASE_ENVIRONMENT_THEN_CONTROL",
+        "final_scoring_policy":"V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE",
         "raw_final_before_saturation":final_raw,
         "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,
-        "score":(saturate(final_raw) if not pending_roles else None)})
+        "score":(saturate(final_raw) if not summary["pending_palaces"] else None)})
     summary["grade"]=grade_label(summary["score"]) if summary["score"] is not None else None
     return {"version":VERSION,"roles":roles,
             "auxiliary_qian_kun":qian_kun,
