@@ -72,7 +72,7 @@ def produce():
             "instant": INSTANT,
             "relationship": "其他长辈",
             "patient_sex": "female",
-            "patient_birth_ganzhi": "庚午",
+            "patient_birth_ganzhi": "庚申",
             "context": "direct_proxy",
             "four_pillars": pillars,
             "solar_term": r["solar_term"],
