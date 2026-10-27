@@ -7,6 +7,7 @@ on:
       - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
       - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
       - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'Important/MANIFEST.json'
   workflow_dispatch:
 permissions:
   contents: read
