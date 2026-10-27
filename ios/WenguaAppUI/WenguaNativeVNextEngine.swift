@@ -747,7 +747,7 @@ enum WenguaVNextEngine {
                 else if x==nil || stages.isEmpty {points=0}
                 else if stages.allSatisfy({highGround.contains($0)}) {
                     points=x=="极小" ? 2 : 3
-                } else {points=2}
+                } else {points=0} // no top-five lifecycle, no invented credit
                 if points>0 {
                     stemCandidates.append((points,p.earthStem+"奇","地盘"))
                 }
@@ -771,7 +771,7 @@ enum WenguaVNextEngine {
                 let awarded=cohostPoints(chief:chiefPoints,stem:stemPoints,
                                          void:isVoid)
                 let tags=([chiefPoints>0 ? "值符" : nil].compactMap{$0})+
-                    ([stemBest.map{$0.2+$0.1}] .compactMap{$0})
+                    ([stemBest.map{$0.2+$0.1}].compactMap{$0})
                 let note=isVoid ?
                     place+"逢空，"+tags.joined(separator:"与")+"同宫的吉助减弱，尚有余气。" :
                     place+"得"+tags.joined(separator:"与")+"同宫扶助。"
