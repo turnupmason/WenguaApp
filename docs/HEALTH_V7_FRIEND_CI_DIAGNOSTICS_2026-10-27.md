@@ -1,7 +1,7 @@
 # V7 same-clock male friend standalone CI diagnostics
 
-Run: https://github.com/turnupmason/WenguaApp/actions/runs/40533730619
-Source: 9d20ea2f35224aee0e3f1ae421b0c1e6c6ef2172
+Run: https://github.com/turnupmason/WenguaApp/actions/runs/40534217807
+Source: 6f982e78940e8689abd85d2f64ce90728962385f
 
 ## compiler.log
 ```text
@@ -14,21 +14,21 @@ ios/WenguaAppUI/WenguaNativeReadingRouter.swift:208:13: warning: initialization 
 210 |             fill(fuyin && fanyin ? "macro_mixed" :
 
 [#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
-ios/WenguaAppUI/WenguaNativeVNextEngine.swift:775:63: error: '+' is not a postfix unary operator
-773 |         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
-774 |         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
-775 |         let relationshipBonus=controlPoints.values.reduce(0,+)+
-    |                                                               `- error: '+' is not a postfix unary operator
-776 |                               3*drainBonus.count+auspicePoints
-777 |         let result=pending.isEmpty ?
+ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift:288:13: warning: initialization of immutable value 'outcome' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+286 |         let rel=relation(aid,pid)
+287 |         let note=try powerNote(role,p,own,chart:chart)
+288 |         let outcome=edge.cell
+    |             `- warning: initialization of immutable value 'outcome' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]
+289 |         let applicable=["strong","limited"].contains(edge.applicability)
+290 |         let eligible:Bool
 
-ios/WenguaAppUI/WenguaNativeVNextEngine.swift:776:49: warning: result of operator '+' is unused [#NoUsage]
-774 |         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
-775 |         let relationshipBonus=controlPoints.values.reduce(0,+)+
-776 |                               3*drainBonus.count+auspicePoints
-    |                                                 `- warning: result of operator '+' is unused [#NoUsage]
-777 |         let result=pending.isEmpty ?
-778 |             Optional(saturation(known+relationshipBonus)) : nil
+ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift:290:13: warning: immutable value 'eligible' was never used; consider removing it [#NoUsage]
+288 |         let outcome=edge.cell
+289 |         let applicable=["strong","limited"].contains(edge.applicability)
+290 |         let eligible:Bool
+    |             `- warning: immutable value 'eligible' was never used; consider removing it [#NoUsage]
+291 |         if role=="chief" {
+292 |             eligible=review.palaces[aid]?.void=="not_void" &&
 
 [#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
 ```
