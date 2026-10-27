@@ -74,6 +74,12 @@ struct WenguaVNextAudit {
     let controlBonusPoints:[Int:Int]
 }
 enum WenguaVNextEngine {
+    static func conditionalDiseaseControl(attacker:Int?,attackerVoid:Bool,
+                                          attackerControlled:Bool,illnessVoid:Bool)->Int {
+        guard let attacker,abs(attacker)>1 else{return 0}
+        if attackerVoid || attackerControlled{return 1}
+        return illnessVoid ? 5 : 3
+    }
     static func cohostPoints(chief:Int,stem:Int,void:Bool)->Int {
         precondition([0,2,3].contains(chief) && [0,1,2,3].contains(stem))
         let total=chief+stem
@@ -787,9 +793,13 @@ enum WenguaVNextEngine {
                     }
                 }
                 let voidAttacker=actualVoid(p,chart,month:month) != "not_void"
-                let points=voidAttacker || controlled ? 1 : illVoid ? 5 : 3
-                controlBonus.insert(p.id)
-                controlPoints[p.id]=max(controlPoints[p.id] ?? 0,points)
+                let points=conditionalDiseaseControl(
+                    attacker:attackerScore,attackerVoid:voidAttacker,
+                    attackerControlled:controlled,illnessVoid:illVoid)
+                if points>0 {
+                    controlBonus.insert(p.id)
+                    controlPoints[p.id]=max(controlPoints[p.id] ?? 0,points)
+                }
             }
             if weakDisease && edge.direction=="被生" &&
                 (tag != "chief" || actualVoid(p,chart,month:month)=="not_void") {
