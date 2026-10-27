@@ -479,7 +479,7 @@ def selected_health_sections(result,*,actor,chart):
             return (strength+"值符大吉神与天芮病宫同宫，"
                     "表示大吉神在同宫护持，能够发挥作用。")
         if key=="chief" and gate["void"]!="not_void":
-            return (strength+"因值符空亡，神兽不在宫内，无法提供帮助。"
+            return (strength+"因值符空亡，护持力明显减弱，尚存少许余气。"
                     "")
         if rel=="克":
             bonus=quant["summary"]["control_bonus_palaces"]
@@ -563,6 +563,7 @@ def selected_health_sections(result,*,actor,chart):
             source=next(row for row in roles.values() if row["palace"]==pid)
             palace_names.append(source["complete_palace"]["palace_name"])
         preface="病星本已极弱，反去生助"+"、".join(palace_names)+"，自身气力进一步耗散，有病势受损之象。"
+    preface+="".join(q["auspice_bonus_notes"])
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
