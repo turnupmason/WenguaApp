@@ -443,31 +443,39 @@ enum WenguaPythonVNextVerbatim {
         let directions:[String:String]=[
             "克":"克病宫","生":"生扶病宫","被克":"受病宫克",
             "被生":"受病宫生","比和":"与病宫比和","同宫":"与病宫同宫"]
+        var seenPalaces:[Int:String]=[:]
         for key in ["illness","doctor","medicine","patient",
                     "hour","chief","natal","gender"] {
             guard let pid=review.roles[key],let p=cells[pid] else{continue}
             let quality=signed(review.palaces[pid]?.afterVoid)
-            var head=(summaryTitles[key] ?? key)+"落"+label(p)+"，宫象"+quality
-            if key=="gender" {
-                head=(pid==2 ? "坤宫" : "乾宫")+"辅助落"+label(p)+"，宫象"+quality
-            }
-            if key=="illness" {
-                if review.palaces[pid]?.void != "not_void" {head+="且逢空"}
+            let name=key=="gender" ? (pid==2 ? "长辈坤宫":"长辈乾宫") :
+                        (summaryTitles[key] ?? key)
+            let state=review.palaces[pid]?.void ?? "not_void"
+            var head:String
+            if let existing=seenPalaces[pid] {
+                head=name+"与"+existing+"同在"+label(p)
             } else {
-                let edge=review.controls.first(where:{$0.role==key})
-                let direction=edge?.direction
-                if let direction,let note=directions[direction] {
-                    head+="，"+note
+                head=name+"落"+label(p)+"，宫象"+quality
+                if state != "not_void" && key != "chief" {
+                    head+="且逢"+(state=="true_void" ? "真空":"假空")
                 }
-                if key=="chief" && review.palaces[pid]?.void != "not_void" {
-                    if direction=="克" {
-                        head+="，虽逢空仍有余气克制病宫"
-                    } else {
-                        head+="，逢空但尚存少许余气"
+                seenPalaces[pid]=name
+                if key != "illness" {
+                    let edge=review.controls.first(where:{$0.role==key})
+                    let direction=edge?.direction
+                    if let direction,let note=directions[direction] {
+                        head+="，"+note
                     }
-                } else if direction=="克" && key != "chief" {
-                    if review.controlBonusPoints[pid]==nil {
-                        head+="，但施力有限"
+                    if key=="chief" && state != "not_void" {
+                        if direction=="克" {
+                            head+="，虽逢空仍有余气克制病宫"
+                        } else {
+                            head+="，逢空但尚存少许余气"
+                        }
+                    } else if direction=="克" && key != "chief" {
+                        if review.controlBonusPoints[pid]==nil {
+                            head+="，但施力有限"
+                        }
                     }
                 }
             }
