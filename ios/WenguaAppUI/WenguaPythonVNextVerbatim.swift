@@ -433,12 +433,53 @@ enum WenguaPythonVNextVerbatim {
         }
         // Qian and Kun remain full source facts in internal audit; the
         // patient's selected sex already uses one real gender palace once.
-        var preface=""
-        if !review.drainBonusPalaces.isEmpty {
-            let names=review.drainBonusPalaces.sorted().compactMap{cells[$0]}.map{label($0)}
-            preface="病星本已极弱，反去生助"+names.joined(separator:"、")+"，自身气力进一步耗散，有病势受损之象。"
+        // V7.3: a dynamic two-sentence account of THIS chart, never a
+        // hardcoded success case or duplicated real-person/palace score.
+        let titles:[String:String]=[
+            "illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
+            "patient":"患者用神","hour":"时干事体","chief":"值符",
+            "natal":"患者年命","gender":"长辈辅助宫"]
+        var desc:[String]=[]
+        let directions:[String:String]=[
+            "克":"克病宫","生":"生扶病宫","被克":"受病宫克",
+            "被生":"受病宫生","比和":"与病宫比和","同宫":"与病宫同宫"]
+        for key in ["illness","doctor","medicine","patient",
+                    "hour","chief","natal","gender"] {
+            guard let pid=review.roles[key],let p=cells[pid] else{continue}
+            let quality=signed(review.palaces[pid]?.afterVoid)
+            var head=(titles[key] ?? key)+"落"+label(p)+"，宫象"+quality
+            if key=="gender" {
+                head=(pid==2 ? "坤宫" : "乾宫")+"辅助落"+label(p)+"，宫象"+quality
+            }
+            if key=="illness" {
+                if review.palaces[pid]?.void != "not_void" {head+="且逢空"}
+            } else {
+                let edge=review.controls.first(where:{$0.role==key})
+                let direction=edge?.direction
+                if let direction,let note=directions[direction] {
+                    head+="，"+note
+                }
+                if key=="chief" && review.palaces[pid]?.void != "not_void" {
+                    if direction=="克" {
+                        head+="，虽逢空仍有余气克制病宫"
+                    } else {
+                        head+="，逢空但尚存少许余气"
+                    }
+                } else if direction=="克" && key != "chief" {
+                    if review.controlBonusPoints[pid]==nil {
+                        head+="，但施力有限"
+                    }
+                }
+            }
+            desc.append(head)
         }
-        preface+=review.auspiceBonusNotes.joined()
+        if !review.drainBonusPalaces.isEmpty {
+            desc.append("病星势弱而外泄，病气有耗损之象")
+        }
+        desc+=review.auspiceBonusNotes.map{
+            $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
+        }
+        let evidence=desc.joined(separator:"；")
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)
@@ -449,8 +490,9 @@ enum WenguaPythonVNextVerbatim {
             verdict=try phrase("overall_pending",[
                 "post_void_sum":String(review.postVoidKnownSum)])
         }
+        let second=verdict.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         push("90_review",try title("verdict"),
-             try phrase("verdict",["conclusion":preface+verdict]))
+             try phrase("verdict",["evidence":evidence,"conclusion":second]))
         push("91_timing",try title("timing"),try phrase("timing",[
             "horse":chart.hourHorse]))
         return result
