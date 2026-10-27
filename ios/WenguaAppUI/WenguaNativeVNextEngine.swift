@@ -665,6 +665,51 @@ enum WenguaVNextEngine {
                 else {rolePending.append(p.id)}
             }
         }
+        // V7.7: reuse actual nine-palace facts, never add one palace again
+        // for another role. Different selected stems contribute ONCE each
+        // in the same palace; duplicated 乙 in medicine/hour/natal is ONE.
+        var stemsSeen:[Int:Set<String>]=[:]
+        var stemsAdded:[Int:Int]=[:]
+        var missingStem:Set<Int>=[]
+        for (role,cell,symbol) in personalized
+          where ["medicine","patient","hour","natal"].contains(role) {
+            if !stemsSeen[cell.id,default:[]].insert(symbol).inserted {continue}
+            let polarity:Int?=symbol=="甲" ?
+                (chart.hiddenStem=="庚" ? -1 : 0) : Self.stemPolarity[symbol]
+            guard let polarity else {missingStem.insert(cell.id);continue}
+            if polarity==0 {continue}
+            guard let n=Self.signed(strength[role]?.strength,polarity) else {
+                missingStem.insert(cell.id);continue
+            }
+            stemsAdded[cell.id,default:0]+=n
+        }
+        let selectedPalaces=Set(personalized.map{$0.1.id})
+        for pid in selectedPalaces {
+            guard let base=physical[pid] else {throw WenguaCastError.invalidChart}
+            let raw=(base.raw != nil && !missingStem.contains(pid)) ?
+                Optional(base.raw!+(stemsAdded[pid] ?? 0)) : nil
+            var before=raw.map(Self.saturation)
+            if base.doorBreak,let original=before {before=Self.adverse(original)}
+            let after=before.map{ value in
+                (base.void=="not_void" || value==0) ? value :
+                value>0 ? value-3 : value+3
+            }
+            physical[pid]=WenguaVNextPalace(
+                id:pid,roles:base.roles,star:base.star,door:base.door,
+                deity:base.deity,pattern:base.pattern,raw:raw,
+                beforeVoid:before,afterVoid:after,void:base.void,
+                doorBreak:base.doorBreak,patterns:base.patterns,
+                unresolved:base.unresolved,starStrength:base.starStrength,
+                energyEvidence:base.energyEvidence)
+        }
+        roleScores.removeAll()
+        rolePending.removeAll()
+        for (role,cell,_) in personalized {
+            guard let merged=physical[cell.id] else {throw WenguaCastError.invalidChart}
+            rolePalaces[role]=merged
+            if let value=merged.afterVoid {roleScores[role]=value}
+            else {rolePending.append(cell.id)}
+        }
         var controls:[WenguaVNextControl]=[]
         let diseaseStrength=try must(strength["illness"]?.strength)
         var votes=[String:String]()
