@@ -303,7 +303,9 @@ def inspect_selected_quantization(*,selected_roles,
                     "control_ability":ability,"void":void,
                     "score_eligible":active,"reason":reason,
                     "chief_zero_score":chief and not active}
-        if active:effective[key]=aggregate[key]
+        # All selected real palaces contribute intrinsic state once; only
+        # extra *control assistance* is gated by effective suppression.
+        effective[key]=aggregate[key]
     summary=multi_palace_tally(palaces=effective)
     # V7 USER CONDITIONAL RULES, private-only points. Source 200/81 table
     # scores and every real palace remain unchanged. Distinct physical
