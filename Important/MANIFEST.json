@@ -7,7 +7,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "49691483d698e44b443ddbf4d33b7d0ad301affc"
+      "sha": "330800a4c7177d62e0d498bbca7be8d2083e17e1"
     },
     {
       "platform": "python",
@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "41479effab9627c40375d5602115f0dcc5281c94"
+      "sha": "5e510b0fda34ed1b78d5abccfb029df163aca9e2"
     },
     {
       "platform": "python",
@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "dea305be4ec28314f26f9df6565e5fb64df8a338"
+      "sha": "f5be59ee90150ee8182890a456229ace5a82fec8"
     },
     {
       "platform": "python",
@@ -337,7 +337,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "49691483d698e44b443ddbf4d33b7d0ad301affc"
+      "sha": "330800a4c7177d62e0d498bbca7be8d2083e17e1"
     },
     {
       "platform": "swift",
@@ -409,7 +409,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "7fd044d910053dec7b89f8606e82d6317017ca3a"
+      "sha": "08211112679f02a2927e772174e5bab4cbc9aea6"
     },
     {
       "platform": "swift",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "dea305be4ec28314f26f9df6565e5fb64df8a338"
+      "sha": "f5be59ee90150ee8182890a456229ace5a82fec8"
     },
     {
       "platform": "swift",
