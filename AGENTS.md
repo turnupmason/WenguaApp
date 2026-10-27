@@ -1842,3 +1842,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 同事（己丑年戊辰月辛卯日丁酉时，患者用月干戊仍属 research_candidate_only；年命仅乙干、与天心乙奇同震三宫）：独立坎1 -5、震3 +3、艮8 -5、兑7 +5、巽4 +4，合计 +2；五不遇时共五个宫每宫-2，总扣10，净 -8，截断最终**极大凶**。旧版另加8吉助再整盘只减2而得极大吉，原V7.4存档保留供追错。
 - 1920出生女长辈条件性盘（己丑年庚午月丁亥日乙巳时；庚申年命仅1920立春后生日才有效，具体关系未证实）：离9 +5、兑7 -5、震3 0、坤2 -3，四宫 -3；无五不遇时不扣分，最终**中凶**。这两盘均无整盘伏吟或反吟，不凭此断病情缓急；遇伏吟模板写主慢、反吟写主快、两者同见合参。原用户此前通过的V7.3.1旧**文字排版**与本次改档位的新结果是两个版本，不擅自标为新版本已验收。
 - Python health_quant_overlay_vnext.py / 原生 Swift WenguaNativeVNextEngine.swift 评分同式，Python domain_selected_energy_vnext.py / Swift WenguaPythonVNextVerbatim.swift 的两句动态模板均说明「五不遇时成立，参与合断的每个独立实宫均减两分」；Important两语言快照及SHA已在本轮前序提交同步。新增同事/1920回归与更正档，原材料和所有历史失败不改。新增书章0，原著预测案例0。术数分档不具临床医学意义。最新Python/Swift CI以本轮提交Actions核验为准。
+
+
+## 2026-10-27 · V7.5 最终独立同盘原生验收记录（已真实运行，非医学结果）
+
+- 新增仅独立核查、**不回写旧失败档案**的 `.github/workflows/health_v75_two_fixed_clocks_parity.yml`。GitHub Actions [#40571606963](https://github.com/turnupmason/WenguaApp/actions/runs/40571606963) 的 `both_original_hours` **success**：Python 先跑新 V7.5 固定双盘回归+V7.4更新后的年命乙回归，真实编译 `WenguaNativeVNextEngine.swift` + 生产路由，再分别重新算用户原来两张固定盘，整篇 `section.id/title/text` 和完整中文标点顺序 **Python/Swift逐字 PASS**，最后独立断言同事五宫原和+2、五不遇时-10、净-8=>极大凶；1920老人四宫合计-3、无五不遇时=>中凶。原始 fixtures、编译、逐字输出及对照证据由 Actions artifact 保留90天。此前独立同事 [#40570796525](https://github.com/turnupmason/WenguaApp/actions/runs/40570796525) 也 success。
+- 本轮不把**整个旧WenguaApp CI**冒充全绿：新头 `dee093c` 的 [#40570796528](https://github.com/turnupmason/WenguaApp/actions/runs/40570796528) Python3.11 stdlib 614例11项 failure，主要是之前留下的非长辈也添加乾坤、老schema字符串、旧去重比较口径、旧候选分口径断言；Python3.12取消。失败日志照旧保留，本次独立双盘 V7.5 关口确实 success，但不代表所有领域、所有设备或旧全量测试无问题。不能为绿而改掉已经确定的业务取用规则。新V7.5病情轻重仍待用户确认新结论再标整体人工PASS。
+- 两书原43章194真案例未动、历史V7.3.1/V7.4错误档和曾通过的旧版两句都不覆盖。实际医学病情完全未知；本次只验证传统术数评分和跨语言文字一致性。
