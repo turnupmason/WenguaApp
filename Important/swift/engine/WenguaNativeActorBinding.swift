@@ -175,7 +175,10 @@ enum WenguaNativeActorSource {
         // Only older-generation roles receive Qian/Kun; this is NOT a
         // generic male/female auxiliary for friends, spouses or children.
         let elder=["father","mother","parent","older_relative"].contains(profile.id)
-        let gender:Int?=elder ? (sex=="male" ? 6 : sex=="female" ? 2 : nil) : nil
+        let elderSex=profile.id=="father" ? "male" :
+                     profile.id=="mother" ? "female" : sex
+        let gender:Int?=elder ? (elderSex=="male" ? 6 :
+                                elderSex=="female" ? 2 : nil) : nil
         return WenguaNativeActor(profileID:profile.id,label:profile.label,
             mainStem:candidateStem,mainPalace:patient,kind:kind,
             confidence:confidence,source:source,
