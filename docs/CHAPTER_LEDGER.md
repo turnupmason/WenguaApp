@@ -1198,3 +1198,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 新盘八门反吟主快、非五不遇；天芮病宫坎一逢真空且同宫乙奇，天心医生震三、时干乾六、值符离九、女性辅助坤二。病宫本体落小吉、乙奇同宫，坤宫实际克病；天心宫受病宫生、时干宫生病、值符受病宫克。源五级综合术数标签**小凶**，应期无足够条件不得编造确日。这些均**不是**当事人的真实体检、治疗事实或医学预后。
 - 在[新 GitHub iOS CI #40447872364](https://github.com/turnupmason/WenguaApp/actions/runs/40447872364) 针对源码 SHA `2d8d0701d7470810e1c7cd5e0b40f57eed6e2cb8` 的 `native_core` 已**success**：实际运行 Python `auto_cast_health_review_text` 与独立编译的 Swift `WenguaNativeReadingRouter.compose`，完整十个 `section.id/title/text`、四柱、关系、顺序、标点换行及全篇中文**逐字一致**，输出与原抽样及拒盘记录另存 [docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md](HEALTH_V61_RANDOM_WIFE_2026-10-27.md)，artifact `12709455567`。首次抽样不因结果更换。iOS Simulator `real_ios_xcode_build` 的最终结果应以对应 workflow job 状态为准，不能把 Linux 端 success 等同实机安装。
 - 本轮只新增GitHub验收工作流和经实际双端运行自动生成的真实断词归档，**没有**修改现役算法、200格/81格、模板、原两书43章194案例、Important逐字镜像、V3.9.1冻结结果或历史CI失败记录；古籍新增章0、案例0。
+
+## 2026-10-27 固定四柱健康问事软件验收（非原书新章）
+
+- 输入：己丑、丁丑、癸未（用户原写癸末）、丙辰；1930年生女性。按2010-02-02 07:00 America/New_York，大寒、阳遁3局。假设生在1930立春以后，年命庚午；真实生日/与问者关系未提供，“其他长辈”只是临时条件性软件角色，不能视为确认亲属关系。
+- Python与Swift实际生产入口重新起局并逐项核对；11段客户正文、ID、标点、换行完全相同，原样见 docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md。传统象意程序标签中凶，并非医学诊断；无整盘伏吟反吟或五不遇时，未确定应期。
+- 原生Swift验收 https://github.com/turnupmason/WenguaApp/actions/runs/40450181835 native_core success；iOS Simulator job单独按状态核实。添加固定输入脚本和测试入口出生干支透传，Important镜像同步。原43章194案例、冻结V3.9.1、所有失败历史和全部正式评分/81格/200格不更改；新增古籍章0、真实原著案例0。
