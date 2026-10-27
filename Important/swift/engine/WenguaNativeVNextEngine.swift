@@ -665,6 +665,51 @@ enum WenguaVNextEngine {
                 else {rolePending.append(p.id)}
             }
         }
+        // V7.7: reuse actual nine-palace facts, never add one palace again
+        // for another role. Different selected stems contribute ONCE each
+        // in the same palace; duplicated 乙 in medicine/hour/natal is ONE.
+        var stemsSeen:[Int:Set<String>]=[:]
+        var stemsAdded:[Int:Int]=[:]
+        var missingStem:Set<Int>=[]
+        for (role,cell,symbol) in personalized
+          where ["medicine","patient","hour","natal"].contains(role) {
+            if !stemsSeen[cell.id,default:[]].insert(symbol).inserted {continue}
+            let polarity:Int?=symbol=="甲" ?
+                (chart.hiddenStem=="庚" ? -1 : 0) : Self.stemPolarity[symbol]
+            guard let polarity else {missingStem.insert(cell.id);continue}
+            if polarity==0 {continue}
+            guard let n=Self.signed(strength[role]?.strength,polarity) else {
+                missingStem.insert(cell.id);continue
+            }
+            stemsAdded[cell.id,default:0]+=n
+        }
+        let selectedPalaces=Set(personalized.map{$0.1.id})
+        for pid in selectedPalaces {
+            guard let base=physical[pid] else {throw WenguaCastError.invalidChart}
+            let raw=(base.raw != nil && !missingStem.contains(pid)) ?
+                Optional(base.raw!+(stemsAdded[pid] ?? 0)) : nil
+            var before=raw.map(Self.saturation)
+            if base.doorBreak,let original=before {before=Self.adverse(original)}
+            let after=before.map{ value in
+                (base.void=="not_void" || value==0) ? value :
+                value>0 ? value-3 : value+3
+            }
+            physical[pid]=WenguaVNextPalace(
+                id:pid,roles:base.roles,star:base.star,door:base.door,
+                deity:base.deity,pattern:base.pattern,raw:raw,
+                beforeVoid:before,afterVoid:after,void:base.void,
+                doorBreak:base.doorBreak,patterns:base.patterns,
+                unresolved:base.unresolved,starStrength:base.starStrength,
+                energyEvidence:base.energyEvidence)
+        }
+        roleScores.removeAll()
+        rolePending.removeAll()
+        for (role,cell,_) in personalized {
+            guard let merged=physical[cell.id] else {throw WenguaCastError.invalidChart}
+            rolePalaces[role]=merged
+            if let value=merged.afterVoid {roleScores[role]=value}
+            else {rolePending.append(cell.id)}
+        }
         var controls:[WenguaVNextControl]=[]
         let diseaseStrength=try must(strength["illness"]?.strength)
         var votes=[String:String]()
@@ -717,8 +762,8 @@ enum WenguaVNextEngine {
         }
         // One physical palace once, including accepted co-located roles.
         let scoreList=physical.values.filter{enabled.contains($0.id)}
-        let known=roleScores.values.reduce(0,+)
-        let pending=rolePending.sorted()
+        let known=scoreList.compactMap{$0.afterVoid}.reduce(0,+)
+        let pending=scoreList.filter{$0.afterVoid==nil}.map{$0.id}.sorted()
         let weakDisease=strength["illness"]?.strength=="极小"
         var controlBonus:Set<Int>=[]
         var controlPoints:[Int:Int]=[:]
@@ -841,11 +886,13 @@ enum WenguaVNextEngine {
         }
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
-        let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count + auspicePoints
+        // Auspicious same-palace symbols are already in the resident
+        // star/god and selected unique-stem factors; their notes remain.
+        let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count
         // V7.5 Python parity: audit historical overlays, but do not add
         // those symbols twice to complete signed physical-palace scores.
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
-        let finalRaw=known+relationshipBonus-(fiveNot ? 2*personalized.count : 0)
+        let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
