@@ -488,6 +488,13 @@ enum WenguaPythonVNextVerbatim {
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
         if review.firstMacroFiveNot {desc.insert("五不遇时成立，合断最终另扣两级",at:0)}
+        let macroProse=try fullMacro(chart,review)
+        let pace=macroProse.contains("缓急并列待具体条件核定") ?
+            "伏吟反吟并见，缓急合参" :
+            macroProse.contains("伏吟主慢") ? "伏吟主慢" :
+            macroProse.contains("反吟主快") ? "反吟主快" :
+            "无整盘伏吟反吟，缓急另核"
+        desc.insert(pace,at:0)
         let evidence=desc.joined(separator:"；")
         let verdict:String
         if let score=review.score {
