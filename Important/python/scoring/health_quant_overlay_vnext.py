@@ -408,8 +408,11 @@ def inspect_selected_quantization(*,selected_roles,
             raw_chief=chief_points or 0
             raw=raw_stem+raw_chief
             applied=special_cohost_total(raw_chief,raw_stem,void=is_void)
-            tags=(["值符"] if chief_points else [])+(
-                [stem_best[2]+stem_best[1]] if stem_best else [])
+            # Show every real qualifying sky/earth symbol in prose,
+            # although they share ONE stem-family score.
+            stem_names=list(dict.fromkeys(plane+stem
+                for _,stem,plane in stem_candidates))
+            tags=(["值符"] if chief_points else [])+stem_names
             if is_void:
                 note=label+"逢空，"+"与".join(tags)+"同宫的吉助减弱，尚有余气。"
             else:
