@@ -1563,3 +1563,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 已修改现役 `src/wengua/health_quant_overlay_vnext.py`、`src/wengua/domain_selected_energy_vnext.py`、`src/wengua/health_reading_template_vnext.py`、Swift `WenguaNativeVNextEngine.swift`、`WenguaPythonVNextVerbatim.swift`、`WenguaNativeActorBinding.swift`、原生 `WenguaDesignPreviewApp.swift` 和可编辑模板；所有已修改 canonical 均同步 Important 两端对应镜像及 Manifest。
 - 用户固定输入己丑丁丑癸未丙辰、男性朋友，在纽约 `2010-02-02 07:00 EST` 真实四柱核对；独立 Swift/Python 路由完整客户原文逐字相同，真正不选乾坤和年命，丁月干作为原朋友 `research_candidate_only` 用神，传统象意程序为**中吉**。固定归档 `docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md`，自然语句后继版档 `docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md`，原档及红色 CI 永久保留。
 - iOS 真软件此前已接到 `WenguaNativeReadingRouter.compose`，本轮同步了新的特殊吉计算与人物用神 UI 提示；但**除病情轻重以外其它领域未接完整独立模板；疾病轻重需要用户明确批准才能标 PASS**。独立 V7 男朋友双端 [CI #40535050603](https://github.com/turnupmason/WenguaApp/actions/runs/40535050603) success；整体旧回归 #40535860839 抓出父亲盘 Swift 与 Python 总分差一，需继续解决到全绿，不能宣称构建完成/实机 IPA。原 V3.9.1、43章194真实案例、已冻结数据和失败记录未动，原书新增0章0案例。传统文化示例不代表实际疾病风险或治疗效应。
+
+
+## 2026-10-27 · V7.2 患者同宫值符＋地盘乙／丁高势、空亡归半规则（待整体验收）
+
+沿用户新规则更正 V7.1 同宫重计：仅实际选定天芮病宫、患者/时干/出生年命用神及真长辈乾坤适用。天盘乙/丁与下临乙/丁只取**一组**吉奇，年干时干共一宫也仅一份；值符另计1组。同宫值符大吉神不受宫克 +3，受宫克 +2；地盘乙丁按实际十二长生长生、沐浴、冠带、临官、帝旺核后且不入墓刑才 +3，入墓/刑改 +1。典型合计 6/5/4/3；宫逢空**合计后除2向下取整**，得3/2/2/1；非五个指定生旺段或实际地盘强度待核，不凭空补分。天心等独立星义、九星八门八神天地格各原分、跨宫天芮受克有效条件和原八门规则都保留、不二次重复。Python `health_quant_overlay_vnext.py` 与 Swift `WenguaNativeVNextEngine.swift` 同源实施，真 Swift 生产 Router 不改接法；模板 JSON 的 `conditional_rule_overlays_v72` 与 Important 双平台逐字镜像同步。
+
+固定用户**原时辰**己丑丁丑癸未丙辰，`2010-02-02 07:00 -05:00`，同一1930年生老年女性、条件性其他长辈身份、女性坤二＋庚午年命（仅假设1930年立春后出生），不改变钟点/输入/原失败记录。新增纯 Python 回归和真正 Swift 分档4x2断言，独立 `v72_elder_female_independent` CI 实算与 Python/Swift 全字比对，PASS 才新增 `docs/HEALTH_V72_ELDER_WOMAN_SAME_HOUR_2026-10-27.md`；此前 V6.1 及 V7/7.1 归档保留。首轮 #40544980292 Swift 同宫标签跨行编译失败；次轮 #40545357226 发现老测试仪器 Swift 跨行日志编译失败，均原样留记录并逐项修复。整体 native_core 旧抽时辰回归尚未恢复全绿，故**没有**据此宣布 iPhone 构建/疾病强弱 PASS。原书43章194案例、200表、81格、冻版V3.9.1均未删除修改，新增原书章节及案例均0；不用于真实医疗判断。
