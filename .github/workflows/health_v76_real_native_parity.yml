@@ -1,0 +1,63 @@
+name: Health V7.6 Three Stage Fixed Original Hours Native Parity
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/health_v76_real_native_parity.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  both_fixed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test independent real role scores and stage totals
+        run: |
+          mkdir -p /tmp/v76
+          python3 -m unittest discover -s tests -p 'test_health_v76_three_stage_20261027.py' -v 2>&1 | tee /tmp/v76/tests.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py'
+      - name: Compile real native Swift router
+        run: |
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/v76/native 2>&1 | tee /tmp/v76/compiler.log
+      - name: Same colleague natal Yi Python and Swift entire text
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/v76/colleague.json
+          /tmp/v76/native /tmp/v76/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/v76/colleague.swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/v76/colleague.json /tmp/v76/colleague.swift.log /tmp/v76/colleague.diff.md
+      - name: Same 1920 female Python and Swift entire text
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/v76/elder.json
+          /tmp/v76/native /tmp/v76/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json | tee /tmp/v76/elder.swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/v76/elder.json /tmp/v76/elder.swift.log /tmp/v76/elder.diff.md
+      - name: Print three-stage final ledgers and customer summary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for name in ("colleague","elder"):
+              c=json.loads((Path("/tmp/v76")/(name+".json")).read_text())["cases"][0]
+              q=c["summary"]
+              ledger={"roles":{k:{"palace":v["palace"],"score":v["score"]} for k,v in c["roles"].items()},
+                "stage1_role_scores":q["effective_role_scores"],
+                "stage1_total":q["post_void_known_sum"],
+                "stage2_control":q["control_bonus_score"],
+                "stage2_drain":q["weak_illness_drain_bonus_score"],
+                "stage2_auspice":q["auspice_bonus_score"],
+                "five_not_penalty":q["five_not_global_penalty"],
+                "net_unclamped":q["raw_final_before_saturation"],
+                "final":q["score"],
+                "verdict":next(x["text"] for x in c["source_sections"] if x["id"]=="90_review")}
+              data=json.dumps(ledger,ensure_ascii=False,indent=2)
+              print("V76_LEDGER_"+name.upper()+"="+data)
+              (Path("/tmp/v76")/(name+"_ledger.json")).write_text(data,encoding="utf8")
+          PY
+      - name: Keep every source and native trace even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v76-original-colleague-and-1920-python-swift
+          path: /tmp/v76/
+          retention-days: 90
+          if-no-files-found: warn
