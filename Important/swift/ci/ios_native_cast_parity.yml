@@ -384,11 +384,11 @@ jobs:
       - name: Archive V7 male friend fixed time Python and Swift verdict in repository
         run: |
           set -euo pipefail
-          cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
-          git commit -m "Archive V7 male friend exact same hour real Swift Python verdict"
+          git add docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          git commit -m "Archive V7.1 male friend natural text exact same-hour Swift Python verdict"
           git pull --rebase origin main
           git push origin HEAD:main
       - name: Preserve male friend strict native parity and any failures for handoff
@@ -491,11 +491,11 @@ jobs:
       - name: Archive V7 male friend fixed time Python and Swift verdict in repository
         run: |
           set -euo pipefail
-          cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V7_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
-          git commit -m "Archive V7 male friend exact same hour real Swift Python verdict"
+          git add docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
+          git commit -m "Archive V7.1 male friend natural text exact same-hour Swift Python verdict"
           git pull --rebase origin main
           git push origin HEAD:main
       - name: Preserve male friend strict native parity and any failures for handoff
