@@ -384,6 +384,7 @@ jobs:
       - name: Archive V7 male friend fixed time Python and Swift verdict in repository
         run: |
           set -euo pipefail
+          if [ -e docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md ]; then echo "Preserving the existing immutable earlier-run file"; exit 0; fi
           cp /tmp/wengua-male-friend-v7/full_male_friend_python_swift.md docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -596,6 +597,7 @@ jobs:
       - name: Append-only archive of actual V7.2 same-time 1930 woman verified full outputs
         run: |
           set -euo pipefail
+          if [ -e docs/HEALTH_V721_ELDER_WOMAN_SAME_HOUR_2026-10-27.md ]; then echo "Preserving the existing immutable earlier-run file"; exit 0; fi
           cp /tmp/wengua-v72-elder/v72_elder_woman_python_swift.md docs/HEALTH_V721_ELDER_WOMAN_SAME_HOUR_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -649,7 +651,7 @@ jobs:
           assert conclusion.count("。")==2,repr(conclusion)
           assert "天芮病宫落" in conclusion and "值符落" in conclusion
           doc="\n".join([
-              "# V7.3 1920年生老年女性同一时辰｜Python／Swift 当前真实完整断案",
+              "# V7.3.1 1920年生老年女性同一时辰｜Python／Swift 当前真实完整断案",
               "",
               "原四柱：己丑年、庚午月、丁亥日、乙巳时",
               "核算候选时钟："+x["instant"]+" America/New_York；节气："+rows[0]["solar_term"]+"；"+rows[0]["bureau"],
@@ -682,10 +684,10 @@ jobs:
       - name: Append-only validated 1920 case to GitHub history
         run: |
           set -euo pipefail
-          cp /tmp/wengua-v73-1920/full_verbatim_1920.md docs/HEALTH_V73_ELDER_1920_FOUR_PILLARS_2026-10-27.md
+          cp /tmp/wengua-v73-1920/full_verbatim_1920.md docs/HEALTH_V731_ELDER_1920_FOUR_PILLARS_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V73_ELDER_1920_FOUR_PILLARS_2026-10-27.md
+          git add docs/HEALTH_V731_ELDER_1920_FOUR_PILLARS_2026-10-27.md
           git commit -m "Archive source-exact V7.3 true 1920 elder female Python native Swift test" || true
           for n in 1 2 3 4 5; do
             git pull --rebase origin main
