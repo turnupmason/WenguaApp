@@ -519,7 +519,7 @@ def inspect_selected_quantization(*,selected_roles,
     summary["effective_role_scores"]=role_scores
     summary["role_count"]=len(roles)
     summary["pending_roles"]=pending_roles
-    summary["post_void_known_sum"]=role_sum
+    summary["v76_role_score_sum_if_repeated"]=role_sum
     summary.update({
         "pre_relationship_bonus_score":original,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
