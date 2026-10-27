@@ -772,8 +772,7 @@ enum WenguaVNextEngine {
         }
         let auspiceNotes=auspices.keys.sorted().compactMap{auspices[$0]?.1}
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
-        let relationshipBonus=controlPoints.values.reduce(0,+)+
-                              3*drainBonus.count+auspicePoints
+        let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count + auspicePoints
         let result=pending.isEmpty ?
             Optional(saturation(known+relationshipBonus)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
