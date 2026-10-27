@@ -487,6 +487,7 @@ enum WenguaPythonVNextVerbatim {
         desc+=review.auspiceBonusNotes.map{
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
+        if review.firstMacroFiveNot {desc.insert("五不遇时成立，合断最终另扣两级",at:0)}
         let evidence=desc.joined(separator:"；")
         let verdict:String
         if let score=review.score {
