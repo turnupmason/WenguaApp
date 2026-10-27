@@ -40,6 +40,7 @@ private struct TestCast:Decodable {
     let relationship:String
     let patient_sex:String?
     let patient_birth_ganzhi:String?
+    let patient_birth_stem:String?
     let context:String
     let firstStage:Bool
     let tianrui25:TianruiSource25
