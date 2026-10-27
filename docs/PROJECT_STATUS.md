@@ -1544,3 +1544,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 ## 2026-10-26 V6.1 · 健康客户断词去除后台术语
 
 已核双端现役代码改为只向读者讲宫、五行、空亡、可核力量及断语，不展示未定长生候选枝、+3算式、源25格“完全失控”、同宫去重和开发过程。天芮病宫逢空而受天心宫克，描述为“病宫逢空，病气减弱，更易受到天心医生的克制”。源数据、能量表、克病/耗泄补分、冻结V3.9.1完全不改。真实新盘 2024-03-25T05:00:00-04:00 妻子、阳遁九局；最终极小凶。 [iOS parity #40444248677](https://github.com/turnupmason/WenguaApp/actions/runs/40444248677) Swift 生产路由与Python 15/15全文相同，iOS Simulator构建成功；[Python #40444674050](https://github.com/turnupmason/WenguaApp/actions/runs/40444674050) 3.11/3.12通过。首次失败 [#40444248572](https://github.com/turnupmason/WenguaApp/actions/runs/40444248572) 为新回归测试换行字符串转义错误，保留。Important镜像与MANIFEST同步，未动43章194原著案例、原V3.9.1、旧失败结果。本项目传统吉凶不属于医学判断。
+
+## 2026-10-27 · V6.1 独立新随机妻子测病全链验收（非原书新增案例）
+
+- 用户要求用**现役 Swift V6.1**随机生成**一**个新的妻子病情轻重测试时辰，而不是重放昨日V6旧盘。首次随机 seed `347058956909`，第1抽 `2022-06-19T09:00:00-04:00`（America/New_York），壬寅／丙午／癸卯／丁巳，芒种、阳遁三局；妻子 `direct_proxy/female`，未提供真实年命；**拒盘0、未按吉凶重抽**。
+- 新盘八门反吟主快、非五不遇；天芮病宫坎一逢真空且同宫乙奇，天心医生震三、时干乾六、值符离九、女性辅助坤二。病宫本体落小吉、乙奇同宫，坤宫实际克病；天心宫受病宫生、时干宫生病、值符受病宫克。源五级综合术数标签**小凶**，应期无足够条件不得编造确日。这些均**不是**当事人的真实体检、治疗事实或医学预后。
+- 在[新 GitHub iOS CI #40447872364](https://github.com/turnupmason/WenguaApp/actions/runs/40447872364) 针对源码 SHA `2d8d0701d7470810e1c7cd5e0b40f57eed6e2cb8` 的 `native_core` 已**success**：实际运行 Python `auto_cast_health_review_text` 与独立编译的 Swift `WenguaNativeReadingRouter.compose`，完整十个 `section.id/title/text`、四柱、关系、顺序、标点换行及全篇中文**逐字一致**，输出与原抽样及拒盘记录另存 [docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md](HEALTH_V61_RANDOM_WIFE_2026-10-27.md)，artifact `12709455567`。首次抽样不因结果更换。iOS Simulator `real_ios_xcode_build` 的最终结果应以对应 workflow job 状态为准，不能把 Linux 端 success 等同实机安装。
+- 本轮只新增GitHub验收工作流和经实际双端运行自动生成的真实断词归档，**没有**修改现役算法、200格/81格、模板、原两书43章194案例、Important逐字镜像、V3.9.1冻结结果或历史CI失败记录；古籍新增章0、案例0。
