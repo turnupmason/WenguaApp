@@ -313,7 +313,7 @@
       "platform": "python",
       "canonical": "tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
       "snapshot": "Important/python/tests/test_health_vnext_exact_role_matrix_gate_20261026.py",
-      "sha": "4428403574e4a08dbece8bf05422238ee9ecbc90"
+      "sha": "a46a0889fe994e1b574d9762c3f7381bd366a5ad"
     },
     {
       "platform": "python",

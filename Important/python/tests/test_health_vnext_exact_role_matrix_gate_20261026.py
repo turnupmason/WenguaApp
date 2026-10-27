@@ -116,8 +116,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
         self.assertIn("天心医生宫克天芮病宫，病宫逢空，病气减弱，更易受到天心医生的克制。",public)
         self.assertIn("值符大吉神与天芮病宫同宫",public)
         self.assertIn("综上所述，此病为极小凶。",public)
-        self.assertEqual(public,"\\n\\n".join(
-            x["title"]+"：\\n"+x["text"] for x in r["sections"]))
+        self.assertEqual(public,"\n\n".join(
+            x["title"]+"：\n"+x["text"] for x in r["sections"]))
 
     def test_control_bonus_only_distinct_real_palaces(self):
         r=review("2023-04-24T21:00:00-04:00",WIFE)
