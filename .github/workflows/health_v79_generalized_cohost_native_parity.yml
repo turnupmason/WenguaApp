@@ -1,14 +1,6 @@
 name: Health V7.9 generalized independent cohost Python Swift parity
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/health_v79_generalized_cohost_native_parity.yml'
-      - 'src/wengua/health_quant_overlay_vnext.py'
-      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
-      - 'tests/test_health_v79_independent_cohost_matrix_20261027.py'
-      - 'data/templates/health_severity_vnext/reading_template.json'
-      - 'Important/MANIFEST.json'
+  # Frozen V7.9 release gate: manual only after V8.0 all-relations change.
   workflow_dispatch:
 permissions:
   contents: read
