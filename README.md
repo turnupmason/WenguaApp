@@ -84,3 +84,10 @@ python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_2026
 
 
 > **2026-10-28 最新 UI 定点修复已构建**：九宫宫名大字带「宫」、双星天盘干固定行、底部“继续”按钮安全区固定；V8.0 模板与计分完全未改。[实际 Xcode Simulator PASS #40751967636](https://github.com/turnupmason/WenguaApp/actions/runs/40751967636)；本机运行 `./scripts/打开问卦模拟器.command`。
+
+
+### 2026-10-28 · 九宫新手布局与天显时（当前已验收）
+
+现在中五宫在九宫图上留空，天禽寄宫的原中五地盘干与宿主地盘干并排显示，匹配各自真实天盘干的独立81格（例如伏吟盘戊+戊、丁+丁）。外宫标题居中并保留五行颜色；「神、星、门」可在宫位详情看到简明象意和原200表力量。天显时按甲己日甲子/甲戌、乙庚日甲申、丙辛日甲午、丁壬日甲辰、戊癸日甲寅严格触发，并仅在整盘总分加4一次，**不是每宫加4**。未修改原版200/81源数据和V8中文模板；见 `docs/V80_TIANXIAN_AND_TIANQIN_HOST_20261028.md`。
+
+最新真实验收：[V8主CI PASS #40768182662](https://github.com/turnupmason/WenguaApp/actions/runs/40768182662) · [Swift/Python全文 PASS #40768182456](https://github.com/turnupmason/WenguaApp/actions/runs/40768182456) · [macOS Xcode Simulator PASS #40768182645](https://github.com/turnupmason/WenguaApp/actions/runs/40768182645)。构建Artifact是未签名Simulator App，不能直接在普通Mac Finder运行或当成签名真机安装包。
