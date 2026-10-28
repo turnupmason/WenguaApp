@@ -239,12 +239,11 @@ class SelectedSignifierGraph:
             p: palace_grades[p] for p in sorted({b.palace_id for b in bindings})
         }
         self.environments = dict(environments or {})
-        if self.environments:
-            if set(self.environments) != set(self.palace_grades):
-                raise ValueError("Every selected palace needs its COMPLETE environment")
-            for pid, env in self.environments.items():
-                if env.palace_id != pid or env.auspicious_grade != self.palace_grades[pid]:
-                    raise ValueError("Real environment grade and palace location mismatch")
+        if not self.environments or set(self.environments) != set(self.palace_grades):
+            raise ValueError("Every selected use-god MUST inspect all complete real palace factors")
+        for pid, env in self.environments.items():
+            if env.palace_id != pid or env.auspicious_grade != self.palace_grades[pid]:
+                raise ValueError("Real environment grade and palace location mismatch")
 
     @property
     def base_palace_total(self) -> int:
@@ -391,7 +390,7 @@ class SelectedSignifierGraph:
             "domain_id": self.domain_id,
             "nodes": self.nodes(),
             "palace_environments": [self.environments[p].report() for p in sorted(self.environments)],
-            "palace_environment_completeness": "complete" if self.environments else "awaiting_fact_binding",
+            "palace_environment_completeness": "complete",
             "edges": self.edges(),
             "cohost_evidence": self.independent_cohost_evidence(conditions),
             "all_role_resident_evidence": self.resident_evidence(),
