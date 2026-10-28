@@ -532,8 +532,12 @@ def inspect_selected_quantization(*,selected_roles,
         # Void acts ONCE on the SUM of every different qualified blessing,
         # including Tianxin, not separately on chief/stem and doctor-star.
         applied=raw//2 if is_void else raw
-        stem_names=list(dict.fromkeys(plane+stem
-            for _,stem,plane in stem_candidates))
+        # One actual Yi or Ding only gets ONE label even when both sky and
+        # earth candidates carry that same character; preserve source order.
+        stem_name_by_identity={}
+        for _,stem,plane in stem_candidates:
+            stem_name_by_identity.setdefault(stem,plane+stem)
+        stem_names=list(stem_name_by_identity.values())
         tags=([ "值符" ] if chief_points else [])+stem_names
         if tianxin_points:tags.append("天心星")
         if is_void:
