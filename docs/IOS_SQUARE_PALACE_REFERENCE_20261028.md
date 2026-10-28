@@ -21,3 +21,7 @@
 ## 明暗对比与过期入口最终清理
 
 深朱砂身份竖排在日间使用RGB(0.53,0.28,0.23)，在夜间自动切换为亮暖金RGB(0.96,0.78,0.52)，不伪装五行水蓝并确保暗色卡片上仍可读。原未引用的`QuestionEntryScreen`旧直接选领域页面从现行Swift源码删掉，历史Git提交保留；现在唯一用户入口为静态云欢迎→领域页→细项。对应Important镜像与manifest、当前静态契约再核对。
+
+## Xcode 实际失败及修复记录（不删旧失败）
+
+本轮macOS Xcode Simulator #40725801556 实测失败：`WenguaDesignPreviewApp.swift:724-725` SwiftUI `.padding(.horizontal:max(...))`、`.padding(.vertical:max(...))` 写错参数逗号，应改为`.padding(.horizontal,max(...))`和`.padding(.vertical,max(...))`；已只修这两行UI语法，镜像SHA同步，重新跑Xcode。失败run和`docs/IOS_V80_XCODE_FAIL_RUN_40725801556_ATTEMPT_1.md`原样保留，不能拿旧PASS冒充本轮。

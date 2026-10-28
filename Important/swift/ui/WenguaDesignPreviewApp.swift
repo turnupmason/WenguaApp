@@ -721,8 +721,8 @@ struct ProfessionalPalaceTile: View {
                     .frame(maxHeight:.infinity,alignment:.top)
                 }
             }
-            .padding(.horizontal:max(4,5*scale))
-            .padding(.vertical:max(4,5*scale))
+            .padding(.horizontal,max(4,5*scale))
+            .padding(.vertical,max(4,5*scale))
             .frame(width:geo.size.width,height:geo.size.height,alignment:.topLeading)
         }
         .aspectRatio(1,contentMode:.fit)
