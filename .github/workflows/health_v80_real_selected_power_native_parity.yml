@@ -1,0 +1,100 @@
+name: Health V8.0 all-palace relations selected use-god Python native parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v80_real_selected_power_native_parity.yml'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'src/wengua/health_role_majority_vnext.py'
+      - 'src/wengua/domain_selected_energy_vnext.py'
+      - 'src/wengua/health_reading_template_vnext.py'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'tests/test_health_v79_independent_cohost_matrix_20261027.py'
+      - 'Important/MANIFEST.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  power_pair_full_text_parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original user matrix all 25 cases and 72 cohost arithmetic + source SHA
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v80
+          python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v 2>&1 | tee /tmp/wengua-v80/matrix_tests.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v80/mirror_tests.log
+      - name: Compile actual native Swift engine and original Python text port
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v80/native 2>&1 | tee /tmp/wengua-v80/compile.log
+      - name: Original coworker EXACT pillars; do not resample
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v80/colleague.json
+          /tmp/wengua-v80/native /tmp/wengua-v80/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/colleague_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/colleague.json /tmp/wengua-v80/colleague_swift.log /tmp/wengua-v80/colleague_diff.md
+      - name: Original 1920 elderly woman EXACT pillars; do not resample
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v80/elder.json
+          /tmp/wengua-v80/native /tmp/wengua-v80/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/elder_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/elder.json /tmp/wengua-v80/elder_swift.log /tmp/wengua-v80/elder_diff.md
+      - name: New unbiased actual timestamps for self father wife and old relative
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279901 --count 12 --output /tmp/wengua-v80/twelve.json | tee /tmp/wengua-v80/twelve_draws.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/twelve.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/twelve_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/twelve.json /tmp/wengua-v80/twelve_swift.log /tmp/wengua-v80/twelve_diff.md
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279902 --count 8 --wife-only --output /tmp/wengua-v80/eight.json | tee /tmp/wengua-v80/eight_draws.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/eight.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/eight_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/eight.json /tmp/wengua-v80/eight_swift.log /tmp/wengua-v80/eight_diff.md
+      - name: Build full source-and-native user-visible real scoring archive
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path('/tmp/wengua-v80')
+          out=['# V8.0 双原时辰实算、独立用神强度及原生Swift逐字核验','','每一实宫吉凶数字只计一次；所有克/生/被克等从双方各自选中用神查源200格；不作临床判断。']
+          for name in ('colleague','elder'):
+              case=json.loads((root/(name+'.json')).read_text())['cases'][0]
+              s=case['summary']
+              raw=s['post_void_known_sum']+s['control_bonus_score']+s['weak_illness_drain_bonus_score']+s['auspice_applied_extra_score']-s['five_not_global_penalty']
+              assert raw==s['raw_final_before_saturation']
+              out+=['','## '+name,'原时辰：'+case['instant'],'四柱：'+json.dumps(case['four_pillars'],ensure_ascii=False),
+                    '一宫一次基础分：'+json.dumps(s['unique_palace_score_details'],ensure_ascii=False),
+                    '各宫额外克病：'+json.dumps(s['control_bonus_points'],ensure_ascii=False),
+                    '独立特殊同宫吉助：'+json.dumps(s['auspice_cohost_audit'],ensure_ascii=False),
+                    '各宫基础和 '+str(s['post_void_known_sum'])+'；跨宫克病 '+str(s['control_bonus_score'])+'；弱病泄耗 '+str(s['weak_illness_drain_bonus_score'])+'；特殊 '+str(s['auspice_applied_extra_score'])+'；五不遇时 -'+str(s['five_not_global_penalty'])+'；原合 '+str(raw)+'；最终 '+str(s['score']),
+                    '方案：'+s['final_scoring_policy'],
+                    '### Python本次断词全文',case['python_reading_text'],
+                    '### Native Swift 逐字一致证据','见本CI每例 _diff.md 与完整 Swift 日志；原生全文逐字比较成功才进入本阶段。']
+          (root/'two_fixed_clocks_v80.md').write_text('\n'.join(out)+'\n')
+          PY
+      - name: Preserve all logs and attempted outputs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-selected-role-200-matrix-all-directions-actual-Swift-python
+          path: /tmp/wengua-v80/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Append only successful actual test output; never overwrite old V7/V8
+        run: |
+          set -euo pipefail
+          archive="docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          cp /tmp/wengua-v80/two_fixed_clocks_v80.md "$archive"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$archive"
+          git commit -m "Archive verified V8.0 original clocks per-role source 5x5 and native parity"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
