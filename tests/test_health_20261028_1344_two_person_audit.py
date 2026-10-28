@@ -72,6 +72,9 @@ class TwoPersonExactClockAudit(unittest.TestCase):
                     self.assertEqual({x["star"] for x in cell["heaven_stars"]},
                                      {"天芮星","天禽星"})
                     self.assertEqual(len({x["carried_stem"] for x in cell["heaven_stars"]}),2)
+                    star_carrier={x["star"]:x["carried_stem"] for x in cell["heaven_stars"]}
+                    self.assertEqual(star_carrier["天禽星"],"丁")
+                    self.assertNotIn("乙",star_carrier.values())
                 else:
                     self.assertEqual(count,1,f"Non-illness palace {key} cannot gain a 2nd star")
         self.assertEqual(results["self"]["four_pillars"],
@@ -97,9 +100,8 @@ class TwoPersonExactClockAudit(unittest.TestCase):
         self.assertEqual(results["self"]["four_pillars"]["hour"],"癸未")
         self.assertEqual(results["self"]["bureau"]["ju"],2)
 
-    def test_zero_conflict_cannot_be_assessed_as_stable(self):
-        # Re-use exactly the real-time cases above and assert customer
-        # 90_review texts do NOT contain a definitive zero-grade phrase.
+    def test_resolved_zero_maps_to_neutral_copy(self):
+        # Two independently selected real persons retain numeric zero and neutral V8 prose.
         for relation,context in [
             ("self","direct_self"),("colleague","direct_proxy")]:
             output=auto_cast_health_review_text(
@@ -111,8 +113,8 @@ class TwoPersonExactClockAudit(unittest.TestCase):
             self.assertEqual(summary["score"],0)
             verdict=next(s["text"] for s in output["sections"]
                          if s["id"]=="90_review")
-            self.assertNotIn("此病为不凶不吉",verdict)
-            self.assertIn("暂不强断吉凶",verdict)
+            self.assertIn("此病为不凶不吉",verdict)
+            self.assertNotIn("暂不强断吉凶",verdict)
 
 if __name__=="__main__":
     unittest.main()

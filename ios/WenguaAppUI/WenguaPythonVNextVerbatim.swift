@@ -533,7 +533,7 @@ enum WenguaPythonVNextVerbatim {
         desc.insert(pace,at:0)
         let evidence=desc.joined(separator:"；")
         let verdict:String
-        if let score=review.score, !(score==0 && review.evidenceConflict) {
+        if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)
             verdict=try phrase("overall_resolved",["grade":grade,
                 "score":String(score),"post_void_sum":String(review.postVoidKnownSum),

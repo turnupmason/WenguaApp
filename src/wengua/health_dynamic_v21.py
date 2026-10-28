@@ -191,6 +191,10 @@ def bind_patient(chart, inquiry, calendar):
         candidate = ORDER_PALACES.get((sex,birth_order))
         if candidate and candidate not in fixed_palaces:
             fixed_palaces.append(candidate)
+    if relation in ("grandfather","grandmother"):
+        expected="male" if relation=="grandfather" else "female"
+        if inquiry.get("patient_sex") not in (None,expected):
+            raise ValueError("爷爷奶奶关系与所填性别冲突")
     if relation == "parent":
         if inquiry.get("patient_sex") == "male":
             fixed_palaces.append(6)
@@ -213,8 +217,8 @@ def bind_patient(chart, inquiry, calendar):
     # If birth is Jia, hidden stem must be resolved from the actual Jia-xun,
     # NEVER pretend a visible '甲' exists in a nine-ritual chart.
     extras = ["{p}参考宫主{m}".format(
-        p=_p(c), m=("父辈/乾" if c["palace"]==6 and relation in ("father","parent")
-                    else "母辈/坤" if c["palace"]==2 and relation in ("mother","parent")
+        p=_p(c), m=("父辈/乾" if c["palace"]==6 and relation in ("father","parent","grandfather")
+                    else "母辈/坤" if c["palace"]==2 and relation in ("mother","parent","grandmother")
                     else "年龄排行辅助象")) for c in extra_cells if c]
     role_name = ("妻子乙奇并参日干五合"+str(harmony_stem)
                  if via=="spouse_gender_harmony" and stem=="乙" else

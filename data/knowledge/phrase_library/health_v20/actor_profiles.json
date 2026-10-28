@@ -65,6 +65,24 @@
       "note": "母亲参坤二宫，年干仅为长辈取用候选，不能强称原书有母亲一律年干的病例"
     },
     {
+      "id": "grandfather",
+      "label": "爷爷",
+      "references": [{"kind":"casting_year_stem",
+        "source":"shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
+        "status":"conditional_older_generation_analogy_not_exact_case"}],
+      "palaces": [6],
+      "note": "男性长辈问时年干候选兼参乾六；原书爷爷专案未核，未给出生年命不补造"
+    },
+    {
+      "id": "grandmother",
+      "label": "奶奶",
+      "references": [{"kind":"casting_year_stem",
+        "source":"shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
+        "status":"conditional_older_generation_analogy_not_exact_case"}],
+      "palaces": [2],
+      "note": "女性长辈问时年干候选兼参坤二；原书奶奶专案未核，未给出生年命不补造"
+    },
+    {
       "id": "parent",
       "label": "父母",
       "references": [
@@ -295,6 +313,8 @@
       "child",
       "father",
       "mother",
+      "grandfather",
+      "grandmother",
       "older_relative",
       "older_sibling",
       "younger_sibling",

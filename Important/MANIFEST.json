@@ -25,7 +25,7 @@
       "platform": "python",
       "canonical": "data/knowledge/phrase_library/health_v20/actor_profiles.json",
       "snapshot": "Important/python/data/knowledge/phrase_library/health_v20/actor_profiles.json",
-      "sha": "db7e0dc37ac09debe9cde2c87d4f98eb0da1d315"
+      "sha": "177c2d0fee18ab99e80938bc0e9f5c012445ba8f"
     },
     {
       "platform": "python",
@@ -91,7 +91,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "77f770a283932a238c48612856986fd35a8c97b1"
+      "sha": "9da400ea2094f61253f3fb640e12c87fb2283bab"
     },
     {
       "platform": "python",
@@ -373,7 +373,7 @@
       "platform": "swift",
       "canonical": "data/knowledge/phrase_library/health_v20/actor_profiles.json",
       "snapshot": "Important/swift/data/knowledge/phrase_library/health_v20/actor_profiles.json",
-      "sha": "db7e0dc37ac09debe9cde2c87d4f98eb0da1d315"
+      "sha": "177c2d0fee18ab99e80938bc0e9f5c012445ba8f"
     },
     {
       "platform": "swift",
@@ -475,7 +475,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
       "snapshot": "Important/swift/engine/WenguaNativeActorBinding.swift",
-      "sha": "e4a5928558970c7b1b71f4b8d16f3caf7e56468b"
+      "sha": "4a55f3128cf7d369a28df32cf3cd75ea016ddf35"
     },
     {
       "platform": "swift",
@@ -499,19 +499,19 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "647dd96df2eff7c69d3f1f4cb037f13add0b1334"
+      "sha": "061fe6e66f06a13d857411ab67acdfa4f5902c1f"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "6d14da2747b7e275b3779d6adedba737fd65220c"
+      "sha": "97ec658a025a71adad4cc941e92a47d64d08f2c9"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "a1f847948ccefc76fb8d98b773c0bb4cc18b3ce4"
+      "sha": "02a35a7486c7760a1c55bd45147b54a6132e6d9e"
     },
     {
       "platform": "swift",

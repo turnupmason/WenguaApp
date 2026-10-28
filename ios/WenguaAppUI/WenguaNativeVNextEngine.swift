@@ -924,13 +924,9 @@ enum WenguaVNextEngine {
         let evidenceDirection=confident && (favorable+adverse)>0 ?
              (favorable>adverse ? "favorable" :
               adverse>favorable ? "adverse" : "unresolved") : "unresolved"
-        // Explicit zero-conflict gate: no benign "中性" verdict merely
-        // because different REAL selected palace totals cancel to zero.
-        // Preserve the numeric score for source audit and Python parity.
-        let neutralConflict=(result==0 &&
-            (!confident || evidenceDirection=="favorable" ||
-                          evidenceDirection=="adverse"))
-        let conflict = neutralConflict || (result != nil && result != 0 &&
+        // Resolved zero uses the user's neutral V8 copy; preserve the
+        // separate independent evidence graph without changing the score.
+        let conflict = (result != nil && result != 0 &&
                   (evidenceDirection=="unresolved" ||
                    (result!>0 && evidenceDirection=="adverse") ||
                    (result!<0 && evidenceDirection=="favorable")))

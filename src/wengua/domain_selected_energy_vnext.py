@@ -128,7 +128,12 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
     # Only explicitly older-generation patients bind 乾/坤. Sex alone
     # must NEVER introduce an additional palace for friends, spouses, peers,
     # ordinary relatives or children.
-    elder=actor.get("relationship") in {"father","mother","parent","older_relative"}
+    if actor.get("relationship") in ("grandfather","grandmother"):
+        expected="male" if actor["relationship"]=="grandfather" else "female"
+        if sex is not None and sex!=expected:
+            raise ValueError("爷爷奶奶关系与所填性别冲突")
+        sex=expected
+    elder=actor.get("relationship") in {"father","mother","parent","older_relative","grandfather","grandmother"}
     gender_palace={"male":6,"female":2}.get(sex) if elder else None
     if gender_palace is not None:
         cell=_cell(chart,gender_palace)
@@ -650,15 +655,9 @@ def selected_health_sections(result,*,actor,chart):
         desc.insert(0,"五不遇时成立，各实际参与实宫均减两分")
     desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
-    # A numeric zero is NOT proof of benign illness. A disputed peer
-    # signifier or adverse/favorable independently qualified evidence means
-    # raw cancellation is neutral arithmetic ONLY, not a stable prognosis.
-    neutral_conflict=(q["score"] == 0 and (
-        actor.get("confidence") not in
-        ("source_case_specific","user_explicit_direction_verified_by_actual_chart")
-        or result["verdict"]["state"] in ("favorable","adverse")))
+    # User-confirmed V8: resolved 0 is neutral; only missing score is pending.
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
-                if q["score"] is None or neutral_conflict else
+                if q["score"] is None else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
                     palace_count=q["unique_palace_count"],
                     post_void_sum=q["post_void_known_sum"],score=q["score"]))

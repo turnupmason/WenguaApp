@@ -78,7 +78,7 @@ enum WenguaNativeActorSource {
         let decoded=try JSONDecoder().decode(WenguaActorSourceIndex.self,from:data)
         let ids=decoded.profiles.map(\.id)
         let labels=decoded.profiles.map(\.label)
-        guard ids.count==20,Set(ids).count==20,Set(labels).count==20,
+        guard ids.count==22,Set(ids).count==22,Set(labels).count==22,
               decoded.profiles.allSatisfy({ !$0.references.isEmpty }) else {
             throw WenguaNativeReadingError.invalidPhrase
         }
@@ -121,8 +121,8 @@ enum WenguaNativeActorSource {
         guard sex==nil || sex=="male" || sex=="female" else {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
-        if profile.id=="father" && sex != nil && sex != "male" ||
-           profile.id=="mother" && sex != nil && sex != "female" {
+        if ["father","grandfather"].contains(profile.id) && sex != nil && sex != "male" ||
+           ["mother","grandmother"].contains(profile.id) && sex != nil && sex != "female" {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
         let kind=ctx=="event_news" ? index.event_news_override.role_kind : first.kind
@@ -188,9 +188,10 @@ enum WenguaNativeActorSource {
         let natalPalace=natalStem.flatMap{actualStem($0,chart:chart)}
         // Only older-generation roles receive Qian/Kun; this is NOT a
         // generic male/female auxiliary for friends, spouses or children.
-        let elder=["father","mother","parent","older_relative"].contains(profile.id)
-        let elderSex=profile.id=="father" ? "male" :
-                     profile.id=="mother" ? "female" : sex
+        let elder=["father","mother","parent","older_relative",
+                   "grandfather","grandmother"].contains(profile.id)
+        let elderSex=["father","grandfather"].contains(profile.id) ? "male" :
+                     ["mother","grandmother"].contains(profile.id) ? "female" : sex
         let gender:Int?=elder ? (elderSex=="male" ? 6 :
                                 elderSex=="female" ? 2 : nil) : nil
         return WenguaNativeActor(profileID:profile.id,label:profile.label,
