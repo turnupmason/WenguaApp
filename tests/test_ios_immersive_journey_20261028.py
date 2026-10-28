@@ -66,11 +66,11 @@ class ImmersiveJourney(unittest.TestCase):
     def test_reference_board_first_viewport_square_and_vertical_roles(self):
         self.assertIn("GeometryReader { viewport in",self.main)
         self.assertIn("private func chartHeaderCompact(",self.main)
-        self.assertIn("palaceBoard(tileSide:max(76,min(",self.main)
+        self.assertIn("palaceBoard(tileSide:max(80,min(",self.main)
         self.assertIn("GridItem(.fixed(tileSide),spacing:3)",self.main)
         self.assertIn(".frame(width:tileSide,height:tileSide)",self.main)
         self.assertIn(".aspectRatio(1,contentMode:.fit)",self.main)
-        self.assertIn('Text(rightText.map { String($0) }.joined(separator:"\\n"))',self.main)
+        self.assertIn("ForEach(Array(identityLabels.enumerated())",self.main)
         self.assertIn("colorScheme == .dark",self.main)
         self.assertIn("Color(red:0.96,green:0.78,blue:0.52)",self.main)
         self.assertIn("Color(red:0.53,green:0.28,blue:0.23)",self.main)
