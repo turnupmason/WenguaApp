@@ -39,3 +39,7 @@ Python 只在`src/wengua/domain_selected_energy_vnext.py::selected_health_sectio
 用户重复强调，**只在病宫真实天芮＋天禽携不同星干时**，两条真实天盘对同一地盘的81格各查原格计分；真实两星各携有合资格乙／丁奇才能按原规则分别得到同宫条件奖励；天禽**本星**并不作为另一份天芮病星基础分。同一病宫的基础计分仍仅一次，其它八宫星、天盘干和格局仍按原来的一星一干规则。该例恰好病宫天芮局总体偏凶，**不能因为客观分数0而向公众断病已平稳**。这些传统象意不构成医疗判断。
 
 失败日志、历次已见案例原分数和来源版本完整保留；这些是用户已反馈的开发问题，**不是科学或未见盲测**。本轮最新CI和Xcode的具体 run ID 在源推送后追记，不拿上一版测试充当本轮成功。
+
+## 4. 完全相同时刻的原生 Swift／Python 逐字一致性追加测试
+
+为了消除“相同实时时辰、不同人物”的原生测试覆盖盲区，新增`scripts/ios_v80_same_clock_neutral_parity_20261028.py`固定原实盘分两次生成**互不覆盖**的一例输入，分别`本人`与`同事`，均保持同一`2026-10-28T13:44:00-04:00`。修改`.github/workflows/health_v80_real_selected_power_native_parity.yml`，通过现有正式`VNextThreeRandomNativeFullCheck.swift`使用相同两例的`WenguaNativeCore.compute`、实在人物绑定、V8真实200/81源数据和Python中文模板，各自逐段逐字比较。之所以分为两份输入，是原随机驱动单批次拒绝重复`instant`，但本审计必须严格保持相同时辰而不能为了测试随意篡改到不同分钟；两份输入通过两次完全相同命令独立核算。两固定已揭晓案、原20随机抽样测试仍继续独立运行；每次包括stdout、diff、Swift全文及stderr均保留在Artifacts。
