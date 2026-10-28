@@ -486,30 +486,33 @@ enum WenguaPythonVNextVerbatim {
                     head+="且逢"+(state=="true_void" ? "真空":"假空")
                 }
                 seenPalaces[pid]=name
-                if key != "illness" {
-                    let edge=review.controls.first(where:{$0.role==key})
-                    let direction=edge?.direction
-                    if let direction,let note=directions[direction] {
-                        head+="，"+note
+            }
+            // Same physical palace is described only once, while every
+            // different selected cohost keeps its OWN real source strength
+            // and control result in the two-sentence customer template.
+            if key != "illness" {
+                let edge=review.controls.first(where:{$0.role==key})
+                let direction=edge?.direction
+                if let direction,let note=directions[direction] {
+                    head+="，"+note
+                }
+                if direction=="克" {
+                    let qualified=["strong","limited"].contains(
+                        edge?.applicability ?? "")
+                    let point=qualified ? review.controlBonusPoints[pid] : nil
+                    if point==5 {
+                        head+="，病宫又逢空，受制更易"
+                    } else if point==3 {
+                        head+="，该用神有力制病"
+                    } else if point==1 {
+                        head+="，该用神施力受空或宫克限制，仅存余气"
+                    } else if edge?.applicability=="failed" {
+                        head+="，该用神实际克制未成"
+                    } else {
+                        head+="，该用神克病力量或限制待核"
                     }
-                    if key=="chief" && state != "not_void" {
-                        if direction=="克" {
-                            head+="，虽逢空仍有余气克制病宫"
-                        } else {
-                            head+="，逢空但尚存少许余气"
-                        }
-                    } else if direction=="克" {
-                        let point=review.controlBonusPoints[pid]
-                        if point==5 {
-                            head+="，病宫又逢空，受制更易"
-                        } else if point==3 {
-                            head+="，本宫有力制病"
-                        } else if point==1 {
-                            head+="，施力受空或宫克限制，尚有少许余气"
-                        } else {
-                            head+="，但实际施力有限"
-                        }
-                    }
+                } else if key=="chief" && state != "not_void" {
+                    head+="，逢空护持减弱，不能据此断已经制病"
                 }
             }
             desc.append(head)
