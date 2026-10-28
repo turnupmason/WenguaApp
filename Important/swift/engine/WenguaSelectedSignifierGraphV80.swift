@@ -60,6 +60,8 @@ struct WenguaGraphPalace {
         let categories: Set<String> = ["star","door","deity",
             "heaven_stem","earth_stem","ordered_81_pattern"]
         let tiers: Set<String> = ["极小","小","中等","大","极大"]
+        let allowedResidentRestrictions: Set<String> = [
+            "真空","假空","入墓","击刑","被宫克","门迫"]
         guard (1...9).contains(palaceID) && (-5...5).contains(auspiciousGrade),
               flags.isSubset(of: allowedFlags) else {
             throw WenguaGraphError.invalid("Invalid real palace and conditions")
@@ -69,7 +71,8 @@ struct WenguaGraphPalace {
                   !f.energyFactID.isEmpty,
                   f.strength == nil || tiers.contains(f.strength!),
                   f.signedContribution == nil ||
-                    (-5...5).contains(f.signedContribution!) else {
+                    (-5...5).contains(f.signedContribution!),
+                  f.restrictions.isSubset(of:allowedResidentRestrictions) else {
                 throw WenguaGraphError.invalid("Original strength and source required")
             }
         }
@@ -110,6 +113,18 @@ struct WenguaGraphRelation {
     let scoredPoints: Int? = nil
 }
 
+struct WenguaGraphResidentEvidence {
+    let roleKey: String
+    let selectedSymbol: WenguaGraphIdentity
+    let selectedStrength: String?
+    let resident: WenguaGraphResident
+    let signedPalaceGradeOnce: Int
+    let isSelectedSymbolItself: Bool
+    let independentCohostCandidate: Bool
+    // Source fact is not a new health / other-domain conditional score.
+    let scoredPoints: Int? = nil
+}
+
 struct WenguaGraphCohostCondition {
     let conditionID: String
     let domainID: String
@@ -142,6 +157,8 @@ struct WenguaReadOnlySignifierGraphV80 {
         }
         let tiers: Set<String> = ["极小","小","中等","大","极大"]
         let validKinds: Set<String> = ["star","door","deity","stem","palace","other"]
+        let allowedRestrictions: Set<String> = [
+            "真空","假空","入墓","击刑","被宫克","门迫"]
         var roleIndex: [String: WenguaGraphUseGod] = [:]
         var unique: [WenguaGraphIdentity: WenguaGraphUseGod] = [:]
         for entry in roles {
@@ -149,6 +166,7 @@ struct WenguaReadOnlySignifierGraphV80 {
                   !entry.energyFactID.isEmpty, validKinds.contains(entry.kind),
                   (1...9).contains(entry.palaceID),
                   entry.strength == nil || tiers.contains(entry.strength!),
+                  entry.restrictions.isSubset(of: allowedRestrictions),
                   roleIndex[entry.roleKey] == nil else {
                 throw WenguaGraphError.invalid("Invalid or duplicate use-god binding")
             }
@@ -237,16 +255,24 @@ struct WenguaReadOnlySignifierGraphV80 {
         return out
     }
 
-    func allRoleResidentFacts() -> [(role:String,selectedStrength:String?,
-                                     factor:WenguaGraphResident,
-                                     signedPalaceGrade:Int)] {
-        var result: [(role:String,selectedStrength:String?,
-                      factor:WenguaGraphResident,signedPalaceGrade:Int)] = []
+    func allRoleResidentFacts() -> [WenguaGraphResidentEvidence] {
+        var result: [WenguaGraphResidentEvidence] = []
         for role in byRole.keys.sorted() {
             let person = byRole[role]!
             let palace = palaces[person.palaceID]!
             for resident in palace.residents {
-                result.append((role,person.strength,resident,palace.auspiciousGrade))
+                let nominalKind = (resident.category=="heaven_stem" ||
+                                   resident.category=="earth_stem")
+                                  ? "stem" : resident.category
+                let selfRef = nominalKind==person.kind &&
+                              resident.symbolID==person.symbolID
+                result.append(WenguaGraphResidentEvidence(
+                    roleKey:role,selectedSymbol:person.identity,
+                    selectedStrength:person.strength,resident:resident,
+                    signedPalaceGradeOnce:palace.auspiciousGrade,
+                    isSelectedSymbolItself:selfRef,
+                    independentCohostCandidate:!selfRef &&
+                        resident.category != "ordered_81_pattern"))
             }
         }
         return result
