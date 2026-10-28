@@ -1,0 +1,31 @@
+name: V8.0 general selected role complete palace environment graph invariants
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/selected_signifier_graph_v80.py'
+      - 'tests/test_selected_signifier_graph_v80_20261027.py'
+      - '.github/workflows/v80_signifier_graph_combinations.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  all_role_combinations:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11','3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Actual role/palace source fact and environment permutation tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+      - name: Current V8.0 production scoring remains unchanged
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
+          python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
