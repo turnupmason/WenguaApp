@@ -53,7 +53,17 @@ struct V80GraphNativeSmoke {
         precondition(graph.uniqueSignifiers.count==7)
         precondition(graph.signedBaseTotalOnce==4)
         precondition(graph.edges().count==42)
-        precondition(graph.allRoleResidentFacts().count==8*env.residents.count)
+        let observations=graph.allRoleResidentFacts()
+        precondition(observations.count==8*env.residents.count)
+        precondition(observations.contains{$0.roleKey=="doctor" &&
+                     $0.resident.symbolID=="天心星" &&
+                     $0.isSelectedSymbolItself &&
+                     !$0.independentCohostCandidate})
+        precondition(observations.contains{$0.roleKey=="doctor" &&
+                     $0.resident.symbolID=="乙" &&
+                     !$0.isSelectedSymbolItself &&
+                     $0.independentCohostCandidate})
+        precondition(observations.allSatisfy{$0.scoredPoints==nil})
         precondition(env.residents.map{$0.category}.contains("ordered_81_pattern"))
         let rule=WenguaGraphCohostCondition(
             conditionID:"health:independentYi",domainID:"health.severity",
