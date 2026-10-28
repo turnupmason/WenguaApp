@@ -272,20 +272,11 @@ def render_complete_selected_palace(detail, *, quantified=None):
     door=detail["door"]
     door_text=(door["symbol"]+signed(quantified["door"].get("score"))
                if door and quantified is not None else "门势待核")
-    # In the real Tianrui + Tianqin co-hosted palace, Tianqin and the
-    # carried stem/order-81 pair belonging to Tianqin are not illness evidence.
-    disease_star=next((x for x in detail["stars"]
-                       if x["name"]=="天芮星"),None)
-    disease_stem=(disease_star.get("carried_stem")
-                  if disease_star else None)
-    kept_stems=([x for x in detail["heaven_stems"]
-                 if x["symbol"]==disease_stem]
-                if disease_stem else detail["heaven_stems"])
-    top="、".join(stem_strength(x) for x in kept_stems) or "无"
+    # Tianrui star remains the only intrinsic disease signifier, while
+    # Tianrui + Tianqin each carries an independent sky/earth 81 pattern.
+    top="、".join(stem_strength(x) for x in detail["heaven_stems"]) or "无"
     bottom=stem_strength(detail["earth_stem"])
     book=detail["ordered_book_81_pairs"]
-    if disease_stem:
-        book=[p for p in book if p["heaven"]==disease_stem]
     from .health_reading_template_vnext import formation_sentence
     booktext=("；天地格："+ "；".join(formation_sentence(pair)
         for pair in book) if book else "；本宫没有实际天地盘有序格")

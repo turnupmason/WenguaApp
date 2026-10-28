@@ -73,6 +73,9 @@ struct WenguaHealthGradeCaption {
         case "极大凶":
             return .init(category:"凶局",epithet:"命悬一线",
                          interpretation:"运势陷入至暗绝境，急需寻求破局生机")
+        case "不凶不吉":
+            return .init(category:"微恙",epithet:"病势平缓",
+                         interpretation:"病情稳定不凶不急，调理即可")
         default: return nil // An unknown V8 outcome must never be guessed.
         }
     }
@@ -177,7 +180,7 @@ struct WenguaPremiumVerdictCard: View {
                         .tracking(3)
                         .foregroundStyle(muted)
                         .accessibilityAddTraits(.isHeader)
-                    Text(grade + "：" + caption.epithet)
+                    Text((grade=="不凶不吉" ? "" : grade+"：") + caption.epithet)
                         .font(.system(size:29,weight:.semibold,design:.serif))
                         .foregroundStyle(gold)
                         .minimumScaleFactor(0.72)
@@ -190,7 +193,7 @@ struct WenguaPremiumVerdictCard: View {
                         .fixedSize(horizontal:false,vertical:true)
                 } else {
                     // Unknown, pending or unsupported grades remain fail-closed.
-                    Text("断词待核")
+                    Text("尚未定局")
                         .font(.system(size:23,weight:.semibold,design:.serif))
                         .foregroundStyle(gold)
                     Text(verdict.conclusion)

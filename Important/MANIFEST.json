@@ -151,7 +151,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_palace_detailed_vnext.py",
       "snapshot": "Important/python/reading/health_palace_detailed_vnext.py",
-      "sha": "ab8d6d4813b7f16724a2b14ff0dbc4253a2b9cf5"
+      "sha": "889e340b06e31c2e7e4fe0f6f8cc7ec598ecd149"
     },
     {
       "platform": "python",
@@ -163,7 +163,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "f2d0dfdad5dd39e15345f98eaee9971c86f38b85"
+      "sha": "18f2f449f47f060dbbed1960561fed15453b64f6"
     },
     {
       "platform": "python",
@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "4ca38b01350cd84ce7a4167acdd32e1b6589bed2"
+      "sha": "5cb90715481c4fe65968d218e3d4d75bf8dd5734"
     },
     {
       "platform": "swift",
@@ -505,13 +505,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "5078b43f6ad2ef126aa8ae727b8a05dd40fb0129"
+      "sha": "5ccf4c3eb74f2999356de93cdf7f7e7aa1463e45"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "58f58e1ab69c801cfa687de62105473632ee25af"
+      "sha": "02a35a7486c7760a1c55bd45147b54a6132e6d9e"
     },
     {
       "platform": "swift",
@@ -547,13 +547,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "c814fa88d57ab8b103391afb23380518d7e2a5a4"
+      "sha": "c8eea57174ab48dd80d43e7bf153f08ceb2c56d0"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCloudWelcome.swift",
       "snapshot": "Important/swift/ui/WenguaCloudWelcome.swift",
-      "sha": "83db2681c87d13e7dcc1a49759e727783b36dae1"
+      "sha": "bb90fe7312af0301df5f09c08db6233010e8de71"
     },
     {
       "platform": "swift",

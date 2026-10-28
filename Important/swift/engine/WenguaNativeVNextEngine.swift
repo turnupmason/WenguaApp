@@ -93,8 +93,10 @@ enum WenguaVNextEngine {
         if attackerVoid || attackerControlled{return 1}
         return illnessVoid ? 5 : 3
     }
-    static func cohostPoints(chief:Int,stem:Int,tianxin:Int=0,void:Bool)->Int {
-        precondition([0,2,3].contains(chief) && [0,1,2,3].contains(stem)
+    static func cohostPoints(chief:Int,stem:Int,tianxin:Int=0,void:Bool,
+                             diseaseDualSky:Bool=false)->Int {
+        let stemTiers=diseaseDualSky ? [0,1,2,3,4,5,6] : [0,1,2,3]
+        precondition([0,2,3].contains(chief) && stemTiers.contains(stem)
                      && [0,2,3].contains(tianxin))
         let total=chief+stem+tianxin
         return void ? total/2 : total
@@ -350,7 +352,8 @@ enum WenguaVNextEngine {
         var patternPoints:[Int]=[]
         var patternNames:[String]=[]
         for star in p.heavenStars {
-            if role=="illness" && star.star != "天芮星" {continue}
+            // Disease-only dual carrier: count each real sky/earth pair;
+            // Tianqin remains excluded as a second illness STAR score.
             let key=star.carriedStem+"|"+p.earthStem
             guard let fields=excel[key],fields.count==7 else {
                 throw WenguaHealthTemplateError.invalidCatalog
@@ -838,6 +841,22 @@ enum WenguaVNextEngine {
                 if let best, best.0>=next.0{return best}
                 return next
             }
+            let skySources=Dictionary(uniqueKeysWithValues:p.heavenStars.map{
+                ($0.carriedStem,$0.star)
+            })
+            let distinctSky=stemCandidates.filter{
+                $0.2=="天盘" && skySources[$0.1.replacingOccurrences(of:"奇",with:"")] != nil
+            }
+            let independentStars=Set(distinctSky.compactMap{
+                skySources[$0.1.replacingOccurrences(of:"奇",with:"")]
+            })
+            // Two qualified 乙/丁 sky carriers attached to distinct real
+            // stars may stack ONLY in Tianrui disease palace, once each.
+            let diseaseDualSky=(hostSources.contains(where:{
+                $0.0=="star" && $0.1=="天芮星"
+            }) && independentStars.count>=2)
+            let independentSkyPoints=diseaseDualSky ?
+                distinctSky.reduce(0){$0+$1.0} : nil
             var chiefPoints=0
             if p.deity=="值符" &&
                independentSpecialHost(hostSources,kind:"deity",symbol:"值符") {
@@ -859,11 +878,12 @@ enum WenguaVNextEngine {
                     }
                 }
             }
-            let stemPoints=stemBest?.0 ?? 0
+            let stemPoints=independentSkyPoints ?? (stemBest?.0 ?? 0)
             let total=chiefPoints+stemPoints+tianxinPoints
             if total==0 {continue}
             let awarded=cohostPoints(chief:chiefPoints,stem:stemPoints,
-                                     tianxin:tianxinPoints,void:isVoid)
+                                     tianxin:tianxinPoints,void:isVoid,
+                                     diseaseDualSky:diseaseDualSky)
             var tags:[String]=[]
             if chiefPoints>0 {tags.append("值符")}
             var seenStemFamilies:Set<String>=[]

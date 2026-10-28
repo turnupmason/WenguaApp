@@ -128,10 +128,7 @@ struct WenguaCloudWelcomeScreen: View {
                             .padding(.top,13)
 
                         Spacer(minLength:geo.size.height*0.11)
-                        LazyVGrid(
-                            columns:Array(repeating:GridItem(.flexible(),spacing:6),count:3),
-                            alignment:.leading,spacing:8
-                        ) {
+                        HStack(spacing:5) {
                             welcomeTag("古籍为本")
                             welcomeTag("规则推演")
                             welcomeTag("东方智慧")
@@ -175,10 +172,12 @@ struct WenguaCloudWelcomeScreen: View {
 
     private func welcomeTag(_ title:String)->some View {
         Text(title)
-            .font(.system(size:11,weight:.medium))
-            .tracking(1)
+            .font(.system(size:10,weight:.medium))
+            .tracking(0)
+            .lineLimit(1)
+            .minimumScaleFactor(0.72)
             .foregroundStyle(Color.white.opacity(0.82))
-            .padding(.horizontal,7)
+            .padding(.horizontal,4)
             .padding(.vertical,8)
             .frame(maxWidth:.infinity)
             .background(Color.white.opacity(0.09),in:Capsule())

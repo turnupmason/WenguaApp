@@ -21,3 +21,5 @@
 - [2026-10-28 截图式九宫方格、静态云、旧工作流归档](../../docs/IOS_SQUARE_PALACE_REFERENCE_20261028.md)
 
 - [专业解卦品牌用语、四柱五行、十档吉凶象意及医学免责声明](../../docs/IOS_HEALTH_GRADE_BRAND_UI_20261028.md)
+
+- [病宫双天盘独立81格、乙／丁奇限定条件奖励与中性「微恙」](../../docs/V80_DISEASE_DUAL_SKY_USER_AUTHORIZED_20261028.md)

@@ -42,9 +42,9 @@ class HealthCaptionUserUX(unittest.TestCase):
         self.assertIn(".aspectRatio(1,contentMode:.fit)",self.main)
         self.assertIn(".frame(maxWidth:.infinity,alignment:.center)",self.main)
         self.assertIn('identityLabels.joined(separator:"／") + "宫"',self.main)
-        self.assertIn('kind=="star" && part.offset>0',self.main)
-        self.assertIn('String(part.element.dropFirst())',self.main)
-        self.assertIn('QFive.shade(kind,part.element)',self.main)
+        self.assertIn('real.heavenStars.map',self.main)
+        self.assertIn('String(star.0.dropFirst())',self.main)
+        self.assertIn('QFive.shade(kind,value)',self.main)
         self.assertIn("WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id)",self.main)
         self.assertIn("if palace.id == 5",self.main)
 
@@ -81,6 +81,10 @@ class HealthCaptionUserUX(unittest.TestCase):
         self.assertIn('Text("专 业 解 卦")',self.premium)
         self.assertIn('相关结论仅作为传统文化研究与决策视角参考',self.premium)
         self.assertIn('身体不适请务必及时前往医院就医',self.premium)
+        self.assertIn('case "不凶不吉"',self.premium)
+        self.assertIn('category:"微恙"',self.premium)
+        self.assertIn('epithet:"病势平缓"',self.premium)
+        self.assertIn('interpretation:"病情稳定不凶不急，调理即可"',self.premium)
         self.assertIn('综上所述，此病为{grade}。',self.template['macros']['overall_resolved'])
 
     def test_no_second_engine_and_full_original_reading_untouched(self):

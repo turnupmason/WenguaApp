@@ -91,9 +91,11 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
     earth=detail["earth_stem"]
     bottom=earth["symbol"] if earth else None
     heaven={x["symbol"]:x for x in detail["heaven_stems"]}
+    # Explicitly approved disease-only Tianrui+Tianqin exception:
+    # Tianqin star itself is NOT a second illness source, but EACH distinct
+    # real carrier forms its own ordered heaven/earth 81 pattern.
     illness_top_stems={
-        e["carried_stem"] for e in detail["stars"]
-        if e["name"]=="天芮星" and e.get("carried_stem")}
+        e["carried_stem"] for e in detail["stars"] if e.get("carried_stem")}
     skipped_health_cohosts=[]
     origin={(p["heaven"],p["earth"]):p
             for p in detail["ordered_book_81_pairs"]}
@@ -171,7 +173,8 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         "default_tier":"中等","base_per_user_pattern":3,
         "preserve_book_source_conditions":"historical_archive_only",
         "latest_user_excel_is_authoritative":True,
-        "only_tianrui_carried_stem_if_illness":role=="illness",
+        "disease_dual_carrier_81_exception":role=="illness",
+        "only_tianrui_carried_stem_if_illness":False,
         "skipped_cohost_heaven_stems":skipped_health_cohosts}
     summary=palace_tally(
         factors={"star":star_values,
@@ -211,9 +214,38 @@ def independent_special_host(hosts,auspice_kind,auspice_symbol):
                (auspice_kind,auspice_symbol) for host in hosts)
 
 
-def special_cohost_total(chief_points,stem_points,*,tianxin_points=0,void=False):
+def disease_dual_sky_bonus(star_carriers,stem_candidates,illness_host):
+    """Only an ACTUAL Tianrui illness palace with two distinct qualifying
+    sky-star carriers may sum two independently powered 乙/丁 auspice effects.
+    A single symbol repeated through roles, or a sky+earth copy, cannot.
+    Input carriers: [(star_name, carried_stem)], candidates:
+    [(source_points, '<stem>奇', '天盘'|'地盘')].
+    This is NOT a second physical-palace baseline or an 81 formation score.
+    """
+    if not illness_host:
+        return None
+    source_by_stem={}
+    for star,stem in star_carriers:
+        if star and stem:
+            source_by_stem[stem]=star
+    eligible={}
+    for points,name,plane in stem_candidates:
+        stem=name.removesuffix("奇")
+        if plane!="天盘" or stem not in ("乙","丁"):
+            continue
+        star=source_by_stem.get(stem)
+        if star:
+            eligible[(star,stem)]=points
+    if len({star for star,stem in eligible})<2:
+        return None
+    return sum(eligible.values())
+
+
+def special_cohost_total(chief_points,stem_points,*,tianxin_points=0,
+                         void=False,disease_dual_sky=False):
     """V7.2 real one-palace chief + earth/sky 奇: halve TOTAL, floor once."""
-    if chief_points not in (0,2,3) or stem_points not in (0,1,2,3):
+    stem_tiers=(0,1,2,3,4,5,6) if disease_dual_sky else (0,1,2,3)
+    if chief_points not in (0,2,3) or stem_points not in stem_tiers:
         raise ValueError("Unknown same-palace auspice tier")
     if tianxin_points not in (0,2,3):
         raise ValueError("Unknown independent Tianxin bonus")
@@ -511,6 +543,14 @@ def inspect_selected_quantization(*,selected_roles,
                 stem_candidates.append((tier,ground_stem+"奇","地盘"))
         stem_best=(max(stem_candidates,key=lambda x:x[0])
                    if stem_candidates else None)
+        # Only physical illness Tianrui+Tianqin can have TWO independently
+        # eligible 乙/丁 carriers. Ordinary palaces still take best ONE
+        # special-stem family. Same Yi/Ding on earth is not a second carrier.
+        independent_stem_sum=disease_dual_sky_bonus(
+            [(x["name"],x.get("carried_stem")) for x in detail["stars"]],
+            stem_candidates,
+            illness_host=any(h["role"]=="illness" for h in hosts))
+        separate_sky=independent_stem_sum is not None
         chief_points=0
         if (detail["deity"]["name"]=="值符" and
                 independent_special_host(hosts,"deity","值符")):
@@ -526,7 +566,8 @@ def inspect_selected_quantization(*,selected_roles,
             if power:
                 tianxin_points=2 if power=="极小" else 3
                 break
-        raw_stem=stem_best[0] if stem_best else 0
+        raw_stem=(independent_stem_sum if independent_stem_sum is not None
+                  else stem_best[0] if stem_best else 0)
         raw=raw_stem+chief_points+tianxin_points
         if not raw:continue
         # Void acts ONCE on the SUM of every different qualified blessing,
@@ -555,6 +596,8 @@ def inspect_selected_quantization(*,selected_roles,
                                for q,stem,plane in stem_candidates],
             "ground_stages":ground_stages,
             "ground_restricted":ground_restricted,
+            "disease_two_independent_sky_stars":separate_sky,
+            "independent_sky_bonus":independent_stem_sum,
             "empty":is_void,"pre_void":raw,"after_void":applied,
             "self_signifier_excluded":True,
             "void_after_all_bonuses":True}
@@ -562,7 +605,8 @@ def inspect_selected_quantization(*,selected_roles,
     total_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     # V7.8: special illness auspice is an independent CONDITION overlay.
     # The unique physical palace base (stars/door/god/pattern/stems) counts
-    # ONCE; one Yi/Ding family and a separate chief/Tianxin may add once.
+    # ONCE; two distinct eligible Tianrui/Tianqin sky carriers are
+    # the ONLY disease exception to the one-stem-family bonus cap.
     # Never repeat this extra per role in the same actual palace.
     qualified_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     macro_penalty=2*summary["unique_palace_count"] if five else 0

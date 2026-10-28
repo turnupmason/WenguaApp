@@ -672,6 +672,20 @@ struct ProfessionalPalaceTile: View {
     private var rightText:String {
         identityLabels.isEmpty ? "" : identityLabels.joined(separator:"／") + "宫"
     }
+    // Keep each actual native star attached to its own sky carrier.
+    // Every star contributes its own ordered 81 cell with the same earth stem.
+    private var starCarriers:[(String,String)] {
+        if let real=palace.computed {
+            return real.heavenStars.map{
+                ($0.star.replacingOccurrences(of:"星",with:""),$0.carriedStem)
+            }
+        }
+        let starNames=palace.stars.components(separatedBy:"·")
+        let stems=palace.sky.components(separatedBy:"·")
+        return starNames.enumerated().map { index,name in
+            (name,index<stems.count ? stems[index] : "")
+        }
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -699,13 +713,19 @@ struct ProfessionalPalaceTile: View {
                 } else {
                     HStack(alignment:.center,spacing:3) {
                         VStack(alignment:.leading,spacing:1) {
-                            symbolRow(palace.deity,kind:"deity",stem:palace.sky,
+                            symbolRow(palace.deity,kind:"deity",stem:"",
                                       primary:primary,secondary:secondary)
                             Spacer(minLength:0)
-                            symbolRow(palace.stars,kind:"star",stem:palace.ground,
-                                      primary:primary,secondary:secondary)
+                            ForEach(0..<starCarriers.count,id:\.self) { index in
+                                let star=starCarriers[index]
+                                symbolRow(star.0,kind:"star",stem:star.1,
+                                          primary:primary,secondary:secondary,
+                                          display:index==0 ? nil :
+                                              "／"+(star.0.hasPrefix("天")
+                                                   ? String(star.0.dropFirst()):star.0))
+                            }
                             Spacer(minLength:0)
-                            symbolRow(palace.door,kind:"door",stem:"",
+                            symbolRow(palace.door,kind:"door",stem:palace.ground,
                                       primary:primary,secondary:secondary)
                         }
                         .frame(maxWidth:.infinity,alignment:.leading)
@@ -773,19 +793,12 @@ struct ProfessionalPalaceTile: View {
     }
 
     private func symbolRow(_ value:String,kind:String,stem:String,
-                           primary:CGFloat,secondary:CGFloat)->some View {
+                           primary:CGFloat,secondary:CGFloat,
+                           display:String?=nil)->some View {
         HStack(alignment:.firstTextBaseline,spacing:2) {
-            HStack(spacing:0) {
-                ForEach(Array(value.components(separatedBy:"·").enumerated()),
-                        id:\.offset) { part in
-                    Text(kind=="star" && part.offset>0
-                         ? "／" + (part.element.hasPrefix("天")
-                                   ? String(part.element.dropFirst()) : part.element)
-                         : part.element)
-                        .foregroundStyle(QFive.shade(kind,part.element))
-                }
-            }
-            .font(.system(size:primary,weight:.semibold,design:.serif))
+            Text(display ?? value)
+                .foregroundStyle(QFive.shade(kind,value))
+                .font(.system(size:primary,weight:.semibold,design:.serif))
             .lineLimit(1)
             .minimumScaleFactor(0.68)
             Spacer(minLength:0)
@@ -1087,7 +1100,7 @@ struct CastSetupScreen: View {
                             }
                             TextField("出生年命干支（选填，如辛酉）",text:$patientBirthGanzhi)
                                 .textInputAutocapitalization(.never)
-                            Text("关系用神取自现有20类人物来源索引。只有父母、祖辈等长辈才依性别参考乾宫或坤宫，并结合年干；普通男性朋友、女性朋友、配偶和其他非长辈不因为性别加入乾坤宫。未提供真实出生年命不补造。部分同辈用神仍属待核条件，出生公历年份不自动等于年命干支。")
+                            Text("请务必准确选择与测算人的关系。本模型严格遵循古籍用神规则，关系的错位将直接影响推演结果的准确性。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }

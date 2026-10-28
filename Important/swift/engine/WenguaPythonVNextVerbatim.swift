@@ -204,16 +204,16 @@ enum WenguaPythonVNextVerbatim {
         let doorPart=try signedSymbol("door",door,palace:p.id,
                                       month:month,energy:energy)
         let hasIllness=p.heavenStars.contains{$0.star=="天芮星"}
-        let accepted=p.heavenStars.filter{!hasIllness || $0.star=="天芮星"}
+        // Each actual sky carrier has a distinct 81 pattern; do not
+        // mis-attribute Tianqin's carried stem to Tianrui.
+        let accepted=p.heavenStars
         let heaven=try accepted.map{
             try powerStem($0.carriedStem,stages:$0.stages,
                           palace:p.id,month:month,energy:energy)
         }.joined(separator:"、")
         let earth=try powerStem(p.earthStem,stages:p.earthStages,
                                 palace:p.id,month:month,energy:energy)
-        let chosen=zip(p.heavenStars,formation.sentences).filter{
-            !hasIllness || $0.0.star=="天芮星"
-        }.map{$0.1}
+        let chosen=formation.sentences
         let book=chosen.isEmpty ? "；本宫没有实际天地盘有序格" :
             "；天地格："+chosen.joined(separator:"；")
         let klass=row.void=="not_void" ? "不空" :
