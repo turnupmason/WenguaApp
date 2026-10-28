@@ -43,7 +43,7 @@ jobs:
           from scripts import ios_vnext_three_random_20261026 as generator
           generator.RELATIONS=(("friend","朋友","direct_proxy",None),)
           case=generator.produce(seed=343710187,count=1)
-          case["selection"]="first technically valid random timestamp, friend direct_proxy month-stem candidate, no result filtering"
+          case["selection"]="first technically valid random timestamp, friend direct_proxy confirmed month-stem, no result filtering"
           assert len(case["cases"])==1 and case["cases"][0]["relationship"]=="朋友"
           assert case["cases"][0]["patient_sex"] is None
           assert "natal" not in case["cases"][0]["roles"]
@@ -126,7 +126,7 @@ jobs:
           assert len(app)==1 and app[0]['sections']==friend['source_sections']
           out+=['','## 真实随机一时辰 · 朋友（原生Swift+Python严格逐字）',
                 '随机种子 343710187，首次技术有效盘；没有筛选吉凶，拒绝时辰记录见同Run artifact。',
-                '朋友代问：同辈月干候选尚待书源充分核验；绝不冒充已核确定用神。',
+                '朋友直接代问：按用户确认的同辈月干取本盘真实患者用神；不提供年命不补造，不取长辈乾坤辅助。',
                 '真实时辰：'+friend['instant'],
                 '四柱：'+json.dumps(friend['four_pillars'],ensure_ascii=False),
                 '阳阴遁局：'+json.dumps(friend['bureau'],ensure_ascii=False),

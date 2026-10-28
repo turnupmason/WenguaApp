@@ -2132,3 +2132,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 ### 2026-10-28 · V10第一次CI/Swift对照真实失败，独立修复记录
 首轮主CI #40783200978 的 tests/test_health_v80_disease_dual_sky_20261028.py 静态契约仍断言旧客户原文实现`let chosen=formation.sentences`，实际现已在`let names=formation.sentences.map`只截取真实有序81格名、极性，原81分数和source pair不变；已据真实代码改旧静态断言，原失败日志照留。
 首轮V8原生逐字专项 #40783200831 真实Swift可编译、200格/原分与Python一致，朋友同一2025-12-28 17:00仍双方score=-5，但Swift customer由于先以`phrase("palace_compact")`解析含占位符的**原始模板**，在实际字段尚未填入时触发`WenguaNativeReadingError.invalidPhrase`；修复是先从macros取raw字串并在palaceText绑定完整九宫源事实再检查占位符，不能放宽最终严格校验。失败原始Swift stderr和日志见docs/HEALTH_V80_FAILURE_RUN_40783200831_ATTEMPT_1.md。首轮真实macOS Xcode iOS simulator/四源资源验收 #40783200973 PASS，但对源码修复后的提交需重新验收。此次故障绝不以虚构汉字断词填补，完整Swift结果必须在后续CI真PASS后才交付。
+
+### 2026-10-28 V10简明断词原生验收
+本次真正Swift/Python逐字验收 #40783640943 PASS、Python3.11/3.12 CI #40783640857 PASS、macOS Xcode模拟器编译和200/81/22人物/V10模板资源校验 #40783640929 PASS。修复前失败 #40783200831（Swift提前展开原模板占位符）和 #40783200978（旧81源文案静态测试）均留历史。本轮补改成功归档中错误的朋友“候选”标记为用户确认月干，并把综合断词生硬“力量或限制待核”改成“制病能否成势未明”；只改文字不改冻结V8计算，仍用同一2025-12-28 17:00已见盘重跑。

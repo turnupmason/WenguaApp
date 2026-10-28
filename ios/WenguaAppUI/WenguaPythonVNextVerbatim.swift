@@ -444,7 +444,7 @@ enum WenguaPythonVNextVerbatim {
                     } else if edge?.applicability=="failed" {
                         head+="，该用神实际克制未成"
                     } else {
-                        head+="，该用神克病力量或限制待核"
+                        head+="，制病能否成势未明"
                     }
                 } else if key=="chief" && state != "not_void" {
                     head+="，逢空护持减弱，不能据此断已经制病"
