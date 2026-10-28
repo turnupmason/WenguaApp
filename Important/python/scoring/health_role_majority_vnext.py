@@ -32,6 +32,7 @@ def assess_disease_relationships(*,roles,edges,role_confidence):
     reviews={}
     evidence={"favorable":[],"adverse":[],"pending":[]}
     votes={}
+    candidates={}
     for key in roles:
         if key=="illness":continue
         if not (key in GROUP_ROLES or key.startswith("extra_")):continue
@@ -98,23 +99,34 @@ def assess_disease_relationships(*,roles,edges,role_confidence):
             "counts_once_per_physical_pair":True,
             "not_clinically_valid":True}
         reviews[key]=review
-        # Sharing exact physical source+target is ONE evidence item. Preserve
-        # each role review, but record only the first group in the majority.
-        if phy in votes:
-            review["counted_in_majority"]=False
-            review["dedup_of"]=votes[phy]
-            continue
-        votes[phy]=key
-        review["counted_in_majority"]=True
-        if decided in ("favorable","adverse","pending"):
-            evidence[decided].append({
-                "id":"relationship_group:"+phy,
-                "edge_id":key+"->illness",
-                "direction":decided,
-                "roles":[item["role"]],
-                "why":why,
-                "source":"user_200_cell_domain_selected_research_only",
-                "group_dedup":True})
+        # Evaluate ALL different selected symbols in a shared physical
+        # palace independently. Merge only their evidence vote afterward:
+        # a weak Tianxin cannot hide the independently successful Yi there.
+        candidates.setdefault(phy,[]).append(key)
+    for phy,keys in candidates.items():
+        # An actually verified signifier takes precedence over the first
+        # pending role alias. Different physical palaces still vote once.
+        rank={"favorable":2,"adverse":2,"pending":0}
+        chosen=max(keys,key=lambda k:rank.get(reviews[k]["direction"],0))
+        votes[phy]=chosen
+        for key in keys:
+            reviews[key]["counted_in_majority"]=key==chosen
+            if key!=chosen:reviews[key]["dedup_of"]=chosen
+        selected=reviews[chosen]
+        direction=selected["direction"]
+        evidence[direction].append({
+            "id":"relationship_group:"+phy,
+            "edge_id":chosen+"->illness",
+            "direction":direction,
+            "roles":[reviews[k]["role"] for k in keys],
+            "independent_role_reviews":[
+                {"role":k,"strength":reviews[k]["energy"],
+                 "direction":reviews[k]["direction"],
+                 "control_result":reviews[k]["control_result"]}
+                for k in keys],
+            "why":selected["why"],
+            "source":"user_200_cell_domain_selected_research_only",
+            "group_dedup":True})
     qualified=role_confidence in ELIGIBLE_CONFIDENCE
     n_good=len(evidence["favorable"])
     n_bad=len(evidence["adverse"])
