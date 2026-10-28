@@ -89,7 +89,11 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         "month_stage_is_not_used":True,
         "intrinsic_polarity_is_user_explicit":True})
     earth=detail["earth_stem"]
-    bottom=earth["symbol"] if earth else None
+    ordinary_bottom=earth["symbol"] if earth else None
+    hosted_bottom=detail.get("hosted_centre_earth_stem")
+    top_to_earth={entry["carried_stem"]:
+                      (hosted_bottom if entry["name"]=="天禽星" else ordinary_bottom)
+                  for entry in detail["stars"]}
     heaven={x["symbol"]:x for x in detail["heaven_stems"]}
     # Explicitly approved disease-only Tianrui+Tianqin exception:
     # Tianqin star itself is NOT a second illness source, but EACH distinct
@@ -104,6 +108,7 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         if role=="illness" and top not in illness_top_stems:
             skipped_health_cohosts.append(top)
             continue
+        bottom=top_to_earth.get(top,ordinary_bottom)
         if not bottom:continue
         # Current 81 classification is user Excel, NOT the older 82-record
         # condition-gated book/health conflict corpus. Old records remain

@@ -175,7 +175,11 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
     # 81-pair 吉凶 and FOUR requested interpretations for each real pair.
     # Keep the historical review pairs in a separate audit field, never
     # overwrite source history or let its old gates silence the Excel result.
-    pairs=for_real_palace(cell)
+    centre=chart["palaces"]["5"]
+    hosted_centre=(centre["earth_stem"] if
+                   any(s["star"]=="天禽星" for s in cell["heaven_stars"]) else None)
+    paired_cell=dict(cell,hosted_centre_earth_stem=hosted_centre)
+    pairs=for_real_palace(paired_cell)
     historical_pairs=[
         {"fact_id":pair["fact_id"],"name":pair["book_title"],
          "heaven":pair["heaven"],"earth":pair["earth"],
@@ -187,7 +191,8 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
         if pair["palace"]==palace and
            any(entry["star"]==pair["star"] and
                entry["carried_stem"]==pair["heaven"] and
-               cell["earth_stem"]==pair["earth"]
+               (hosted_centre if entry["star"]=="天禽星"
+                else cell["earth_stem"])==pair["earth"]
                for entry in cell["heaven_stars"])
     ]
     historical_by_pair={(x["heaven"],x["earth"]):x
@@ -213,6 +218,7 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
         "stars":star_factors,"deity":god,"door":door_factor,
         "door_break_penalty_policy":door_break,
         "heaven_stems":heaven,"earth_stem":earth,
+        "hosted_centre_earth_stem":hosted_centre,
         "primary_strength":primary_factor,
         "ordered_book_81_pairs":pairs,
         "historical_book_81_audit":historical_pairs,

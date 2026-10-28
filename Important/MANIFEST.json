@@ -91,7 +91,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "38a39e7c470baa935ee102285c7d5de5295739b0"
+      "sha": "8d1e56af1755245c80decfe0d37f3a48ef8ad565"
     },
     {
       "platform": "python",
@@ -115,7 +115,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_81_excel_catalog_vnext.py",
       "snapshot": "Important/python/scoring/health_81_excel_catalog_vnext.py",
-      "sha": "68a8b953d2aeef65cef933065757fffe47681ef3"
+      "sha": "ffebfe3f58f25c5f6fa22ba94babca6db92bfd42"
     },
     {
       "platform": "python",
@@ -145,13 +145,13 @@
       "platform": "python",
       "canonical": "src/wengua/health_macro_facts_vnext.py",
       "snapshot": "Important/python/reading/health_macro_facts_vnext.py",
-      "sha": "574e1d329fc5e52e733c2b4fa5a6210b897a9341"
+      "sha": "01b753726588c6eea8046d1d8c29004575dbc54c"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_palace_detailed_vnext.py",
       "snapshot": "Important/python/reading/health_palace_detailed_vnext.py",
-      "sha": "889e340b06e31c2e7e4fe0f6f8cc7ec598ecd149"
+      "sha": "5de6c5e36f2ea70940a050677ebf7225c45ed0f7"
     },
     {
       "platform": "python",
@@ -163,7 +163,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_quant_overlay_vnext.py",
       "snapshot": "Important/python/scoring/health_quant_overlay_vnext.py",
-      "sha": "18f2f449f47f060dbbed1960561fed15453b64f6"
+      "sha": "b11e6cb4d210192d8e9f80338ff667084d2ea375"
     },
     {
       "platform": "python",
@@ -457,13 +457,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "9bc0ca69311b18779f7c637b60ed39ea3bf25d77"
+      "sha": "ce551fa75c7786cc554539a0b2d95f1b6d1747cd"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaHealthTemplateBridge.swift",
       "snapshot": "Important/swift/engine/WenguaHealthTemplateBridge.swift",
-      "sha": "5c5fc7b87a7f206ce50a07112e65040cf7e3716c"
+      "sha": "b9635021638e4b99806168239fc002d8f69a83de"
     },
     {
       "platform": "swift",
@@ -505,13 +505,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "a9965669637eda51d6094b64e509c371f65c6d74"
+      "sha": "224880cdce2eea30fe2d59786b5b08f9e0b706af"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "02a35a7486c7760a1c55bd45147b54a6132e6d9e"
+      "sha": "c6a71f513f659586cdc55137cd4cc5a836b42946"
     },
     {
       "platform": "swift",
@@ -565,7 +565,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
       "snapshot": "Important/swift/ui/WenguaPalacePowerDetail.swift",
-      "sha": "c1f099b7e3fd090fb1bc4d13b24ede65a4851280"
+      "sha": "ce2af7abb7fc78c82adc950cc3264bef394cf621"
     },
     {
       "platform": "python",
@@ -584,6 +584,12 @@
       "canonical": "tests/test_ios_first_viewport_palace_layout_20261028.py",
       "snapshot": "Important/python/tests/test_ios_first_viewport_palace_layout_20261028.py",
       "sha": "b0835284d395eaaa8d474310aad49c7d7b0e32c9"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_tianxian_tianqin_host_20261028.py",
+      "snapshot": "Important/python/tests/test_tianxian_tianqin_host_20261028.py",
+      "sha": "758a4de9fe131bb934018e9af2eec4d8c07481e9"
     }
   ]
 }

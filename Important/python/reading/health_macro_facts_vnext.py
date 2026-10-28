@@ -9,6 +9,21 @@ from __future__ import annotations
 from .health_severity_v27 import five_not_encounter
 from .health_severity_v25 import fuyin_fanyin_facts
 
+# User-approved 天显时: exact DAY STEM × SIX-JIA HOUR, +4 at the
+# WHOLE-CHART FINAL TOTAL only. This is NOT a palace or five-not penalty.
+TIANXIAN_HOURS={
+    "甲":("甲子","甲戌"),"己":("甲子","甲戌"),
+    "乙":("甲申",),"庚":("甲申",),
+    "丙":("甲午",),"辛":("甲午",),
+    "丁":("甲辰",),"壬":("甲辰",),
+    "戊":("甲寅",),"癸":("甲寅",),
+}
+def tianxian_hour(day_ganzhi, hour_ganzhi):
+    """Exact 六甲时 mapping, rejecting partial branches or guessed stems."""
+    if len(day_ganzhi)!=2 or len(hour_ganzhi)!=2:
+        return False
+    return hour_ganzhi in TIANXIAN_HOURS.get(day_ganzhi[0], ())
+
 
 def first_stage_macro(*,chart,calendar):
     """Always calculate these three before inspecting any selected palace.
@@ -20,6 +35,7 @@ def first_stage_macro(*,chart,calendar):
     if calendar["day_ganzhi"][:1]=="":
         raise ValueError("Valid day pillar required")
     five=five_not_encounter(calendar["day_ganzhi"],chart["hour_ganzhi"])
+    tianxian=tianxian_hour(calendar["day_ganzhi"],chart["hour_ganzhi"])
     fy=fuyin_fanyin_facts(chart)
     fuyin=fy["star"]=="伏吟" or fy["door"]=="伏吟"
     fanyin=fy["star"]=="反吟" or fy["door"]=="反吟"
@@ -30,6 +46,9 @@ def first_stage_macro(*,chart,calendar):
         "version":"user_health_macro_first_20261023_v1",
         "five_not_encounter":five,
         "five_not_encounter_triggered":five["triggered"],
+        "tianxian_hour_triggered":tianxian,
+        "tianxian_final_bonus":4 if tianxian else 0,
+        "tianxian_scope":"whole_chart_once_after_selected_physical_palaces",
         "five_not_encounter_tendency":"general_adverse" if five["triggered"] else "not_present",
         "fuyin_fanyin":fy,
         "star_fuyin":fy["star"]=="伏吟",
@@ -60,4 +79,6 @@ def render_first_stage_macro(facts):
           "伏吟主慢。" if t=="slow" else
           "反吟主快。" if t=="fast" else
           "本盘无整盘伏吟反吟，不凭此三项擅断缓急。")
-    return first+" "+prefix+pace+" 缓急不自动等于吉凶。"
+    return (first+" "+
+            ("天显时成立，全局得吉时之助。" if facts.get("tianxian_hour_triggered")
+             else "")+prefix+pace+" 缓急不自动等于吉凶。")

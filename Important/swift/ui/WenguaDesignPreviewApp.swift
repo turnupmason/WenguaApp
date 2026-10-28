@@ -123,6 +123,7 @@ struct QPalace: Identifiable {
     let stages: String
     let roles: [String]
     var computed: WenguaNativePalace? = nil
+    var hostedCentreEarthStem: String? = nil // Only used for on-screen Tianqin host.
 
     static let actualSourceFixture: [QPalace] = [
         .init(id: 4, name: "巽四", element: "木", branches: "辰巳",
@@ -191,7 +192,10 @@ extension QPalace {
                        element:e,branches:cell.branches.joined(),
                        deity:cell.deity ?? "",stars:names.joined(separator:"·"),
                        door:cell.door ?? "",sky:sky,ground:cell.earthStem,
-                       stages:life,roles:tags,computed:cell)
+                       stages:life,roles:tags,computed:cell,
+                       hostedCentreEarthStem:
+                         cell.heavenStars.contains{$0.star=="天禽星"}
+                         ? chart.palaces.first(where:{$0.id==5})?.earthStem : nil)
     }
 }
 
@@ -451,7 +455,7 @@ struct ProfessionalChartScreen: View {
         LazyVGrid(columns:Array(repeating:GridItem(.fixed(tileSide),spacing:3),count:3),
                   spacing:3) {
             ForEach(palaces) { palace in
-                Button {chosenPalace=palace} label:{
+                Button {if palace.id != 5 {chosenPalace=palace}} label:{
                     ProfessionalPalaceTile(palace:palace,
                         identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                         .frame(width:tileSide,height:tileSide)
@@ -699,17 +703,10 @@ struct ProfessionalPalaceTile: View {
             let roleWidth:CGFloat = identityLabels.isEmpty ? 0 :
                 max(27,min(33,geo.size.width*0.28))
             VStack(alignment:.leading,spacing:0) {
-                palaceHeading.frame(height:25*scale,alignment:.top)
                 if palace.id == 5 {
-                    Spacer(minLength:0)
-                    VStack(spacing:5) {
-                        Text("中五").font(.system(size:22*scale,weight:.semibold,design:.serif))
-                            .foregroundStyle(QStyle.secondary)
-                        Text(palace.ground).font(.system(size:secondary+3,weight:.semibold))
-                            .foregroundStyle(QFive.shade("stem",palace.ground))
-                    }.frame(maxWidth:.infinity)
-                    Spacer(minLength:0)
+                    Color.clear.frame(maxWidth:.infinity,maxHeight:.infinity)
                 } else {
+                    palaceHeading.frame(height:25*scale,alignment:.top)
                     HStack(alignment:.center,spacing:2) {
                         glyphColumn(primary:primary,secondary:secondary)
                             .frame(maxWidth:.infinity,maxHeight:.infinity)
@@ -725,9 +722,11 @@ struct ProfessionalPalaceTile: View {
             .frame(width:geo.size.width,height:geo.size.height,alignment:.topLeading)
         }
         .aspectRatio(1,contentMode:.fit)
-        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:4))
+         .background(palace.id==5 ? Color.clear : QStyle.surface,
+                    in:RoundedRectangle(cornerRadius:4))
         .overlay(RoundedRectangle(cornerRadius:4)
-            .stroke(QStyle.line.opacity(0.75),lineWidth:0.8))
+            .stroke(palace.id==5 ? Color.clear : QStyle.line.opacity(0.75),
+                    lineWidth:0.8))
         .contentShape(Rectangle())
         .accessibilityLabel(accessibleText)
     }
@@ -783,8 +782,14 @@ struct ProfessionalPalaceTile: View {
     private func earthStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
             Text("地").font(.system(size:10)).foregroundStyle(QStyle.secondary)
-            Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
-                .frame(width:38,alignment:.center)
+            HStack(spacing:0) {
+                if let centre=palace.hostedCentreEarthStem {
+                    Text(centre).foregroundStyle(QFive.shade("stem",centre))
+                        .frame(maxWidth:.infinity)
+                }
+                Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
+                    .frame(maxWidth:.infinity)
+            }.frame(width:38)
         }
         .font(.system(size:size,weight:.semibold,design:.monospaced))
         .frame(maxWidth:.infinity,alignment:.center)
@@ -806,7 +811,7 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var accessibleText:String {
-        if palace.id == 5 {return "中五宫，仅地盘干："+palace.ground}
+        if palace.id == 5 {return "中五宫画面留空，地盘干随天禽寄宫展示"}
         let facts=[palace.name,"八神"+palace.deity,"九星"+palace.stars,
                    "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground]
         return (facts + (identityLabels.isEmpty ? [] : ["用神："+rightText]) +
@@ -816,23 +821,25 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var palaceHeading:some View {
-        HStack(alignment:.center,spacing:2) {
+        ZStack {
             Text(palace.name+"宫")
                 .font(.system(size:16,weight:.bold,design:.serif))
                 .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
                 .lineLimit(1).minimumScaleFactor(0.82)
-                .layoutPriority(1)
-            Spacer(minLength:0)
-            if !QFive.void(palace).isEmpty {
-                Circle().stroke(identityInk,lineWidth:1.5)
-                    .frame(width:9,height:9)
-                    .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
+                .frame(maxWidth:.infinity,alignment:.center)
+            HStack(spacing:2) {
+                Spacer(minLength:0)
+                if !QFive.void(palace).isEmpty {
+                    Circle().stroke(identityInk,lineWidth:1.5)
+                        .frame(width:9,height:9)
+                        .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
+                }
+                if let horse=QFive.horse(palace) {
+                    Text("🐎").font(.system(size:12))
+                        .accessibilityLabel("驿马："+horse)
+                }
             }
-            if let horse=QFive.horse(palace) {
-                Text("🐎").font(.system(size:12))
-                    .accessibilityLabel("驿马："+horse)
-            }
-        }.frame(maxWidth:.infinity,alignment:.leading)
+        }.frame(maxWidth:.infinity)
     }
 
     private func symbolRow(_ value:String,kind:String,stem:String,
@@ -1319,7 +1326,7 @@ struct TraditionalReadingPreview: View {
                             LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:3),count:3),
                                       spacing:3) {
                                 ForEach(board) { palace in
-                                    Button {chosenPalace=palace} label:{
+                                    Button {if palace.id != 5 {chosenPalace=palace}} label:{
                                         ProfessionalPalaceTile(palace:palace,
                                             identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                                     }

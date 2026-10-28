@@ -67,9 +67,38 @@ struct WenguaPalacePowerDetail: View {
         }
     }
 
+    // Concise reader-facing symbol meanings. These are explanatory UI
+    // labels only; they never participate in V8.0 scoring or verdicts.
+    private static let godMeanings:[String:String]=[
+        "值符":"统领、掌控与护持","螣蛇":"疑虑、反复与缠绕",
+        "腾蛇":"疑虑、反复与缠绕","太阴":"隐情、谨慎与筹划",
+        "六合":"合作、协调与关系","白虎":"激烈、损伤与决断",
+        "玄武":"秘密、迂回与迷惑","九地":"稳守、积蓄与缓慢",
+        "九天":"发展、视野与行动"]
+    private static let starMeanings:[String:String]=[
+        "天蓬星":"谋略、风险与流动","天芮星":"疾病、负担与问题",
+        "天冲星":"行动、冲劲与速度","天辅星":"学习、文书与辅助",
+        "天禽星":"中宫寄星，随天芮同宫","天心星":"医药、治理与谋划",
+        "天柱星":"言语、阻力与冲突","天任星":"负责、稳定与守成",
+        "天英星":"表现、名望与显露"]
+    private static let doorMeanings:[String:String]=[
+        "休门":"休养、交流与调息","生门":"生机、财源与发展",
+        "伤门":"竞争、损伤与行动","杜门":"遮蔽、阻隔与封闭",
+        "景门":"表现、形象与名声","死门":"停滞、结束与收藏",
+        "惊门":"惊动、口舌与变化","开门":"开放、机会与事业"]
+    private func meaning(_ symbol:String,kind:String)->String {
+        if kind=="deity" {return Self.godMeanings[symbol] ?? "环境与人事"}
+        if kind=="star" {return Self.starMeanings[symbol] ?? "事态动势"}
+        return Self.doorMeanings[symbol] ?? "事情进退"
+    }
+    private func explain(_ symbol:String,kind:String)->some View {
+        Text("象意："+meaning(symbol,kind:kind))
+            .font(.caption).foregroundStyle(QStyle.secondary)
+    }
     private func doorCard(_ p:WenguaNativePalace) -> some View {
         powerCard("八门") {
             symbolText(p.door ?? "待核",kind:"door")
+            explain(p.door ?? "",kind:"door")
             Text("月令："+doorMonth(p.door ?? ""))
             Text("力量："+sourcePower("door",p.door ?? ""))
                 .fontWeight(.semibold)
@@ -79,6 +108,7 @@ struct WenguaPalacePowerDetail: View {
     private func deityCard(_ p:WenguaNativePalace) -> some View {
         powerCard("八神") {
             symbolText(p.deity ?? "待核",kind:"deity")
+            explain(p.deity ?? "",kind:"deity")
             Text("八神不以月令取旺衰")
             Text("力量："+deityPower(p.deity ?? ""))
                 .fontWeight(.semibold)
@@ -99,6 +129,7 @@ struct WenguaPalacePowerDetail: View {
     private func starFact(_ star:WenguaNativeStar) -> some View {
         VStack(spacing:6) {
             symbolText(star.star,kind:"star")
+            explain(star.star,kind:"star")
             Text("月令："+starMonth(star.star))
             Text("力量："+sourcePower("star",star.star))
                 .fontWeight(.semibold)
@@ -135,6 +166,19 @@ struct WenguaPalacePowerDetail: View {
             Text(life)
             Text("力量："+stemPower(p.earthStem,p.earthStages))
                 .fontWeight(.semibold)
+            if let centre=palace.hostedCentreEarthStem {
+                let stages=p.branches.compactMap { branch -> WenguaNativeStage? in
+                    guard let stage=WenguaNativeCore.stages[centre]?[branch]
+                    else {return nil}
+                    return WenguaNativeStage(branch:branch,stage:stage)
+                }
+                Divider().padding(.vertical,4)
+                Text("天禽寄宫地盘干").font(.caption)
+                    .foregroundStyle(QStyle.secondary)
+                symbolText(centre,kind:"stem")
+                Text(stages.map{$0.branch+$0.stage}.joined(separator:"、"))
+                Text("力量："+stemPower(centre,stages)).fontWeight(.semibold)
+            }
         }
     }
     private func symbolText(_ symbol:String,kind:String)->some View {

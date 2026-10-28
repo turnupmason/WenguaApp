@@ -75,7 +75,8 @@ enum WenguaPythonVNextVerbatim {
             ? "伏吟主慢，反吟主快；本盘星门分别命中，缓急并列待具体条件核定。"
             : slow ? "伏吟主慢。" : fast ? "反吟主快。"
             : "本盘无整盘伏吟反吟，不凭此三项擅断缓急。"
-        return first+" 九星"+ss+"、八门"+ds+"。"+pace+" 缓急不自动等于吉凶。"
+        let good=a.tianxianHour ? "天显时成立，全局得吉时之助。" : ""
+        return first+" "+good+"九星"+ss+"、八门"+ds+"。"+pace+" 缓急不自动等于吉凶。"
     }
     private static func monthColumn(_ stem:String,_ month:String)throws->String {
         guard let e=WenguaNativeReadingRouter.stemElements[stem] else{

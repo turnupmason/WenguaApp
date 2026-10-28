@@ -87,7 +87,11 @@ enum WenguaHealthTemplateBridge {
             }
             var sentences:[String]=[]
             for item in palace.heavenStars {
-                guard let cols=pairs[item.carriedStem+"|"+palace.earthStem] else {
+                // Tianqin carries the REAL centre earth beside its host.
+                // All ordinary stars continue to use the host earth stem.
+                let bottom=item.star=="天禽星" ?
+                    (byID[5]?.earthStem ?? "") : palace.earthStem
+                guard let cols=pairs[item.carriedStem+"|"+bottom] else {
                     throw WenguaHealthTemplateError.unsupportedRealPair
                 }
                 let values=[cols[0],cols[1],cols[2],cols[3],cols[4],cols[5],cols[6]]

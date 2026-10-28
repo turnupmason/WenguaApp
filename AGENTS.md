@@ -2062,3 +2062,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 真实用户反馈：金色「继续 · 填写问事信息」处在ScrollView末尾被遮半；九宫标题11pt看不清且无「宫」，病宫双星丁/戊令行位不齐。只修 `WenguaDomainJourneyScreen.swift` 与 `WenguaDesignPreviewApp.swift`：按钮用 `safeAreaInset(edge:.bottom)` 固定54pt完整露出，选领域后头图减至152pt；九宫每格16pt粗体「巽四宫／离九宫…」，五个固定行槽神→单行星→同宽天盘一/二真干→同宽地盘真干→门，右侧横排短身份标签。乾坤/天芮与天禽事实仍从真实Native传入；只有视觉排布改变，不改任何V8模板、起盘、200/81、计分、Swift/Python业务引擎。
 - 首修源码commit `37ef6699a1385cf29d53bbfa010ca6f1479cfdd5`，旧 `test_ios_immersive_journey_20261028.py` 仍强求以前 `max(76)` 和逐字竖排，首次主CI `#40751967365` FAIL；静态布局旧断言已更新commit `3794a3b009cc23146674641c1c135f87b1c0f9cc`，**现行V8主CI #40752136755 PASS**（Python3.11/3.12、视觉边界、Important SHA）。原V8 Python/Swift逐字专项 `#40751967463` PASS；旧非现行V7通用 workflow `#40751967827` FAIL 与原日志保留，不为UI改V8规则。
 - **新源码真实 macOS XcodeGen + iOS Simulator xcodebuild + package资源验收 #40751967636 PASS**，源码SHA `37ef6699`。四个资源真实在App包内：`health_energy_200.json`、`81_pairs.tsv`、`reading_template.json`、`actor_profiles.json`（22角色），有真正未签名 `问卦.app`。模拟器 App Artifact `12843124943`，编译日志 Artifact `12844936601`；正式验收归档 `docs/IOS_V80_XCODE_PASS_RUN_40751967636_ATTEMPT_1.md`。这证明iOS Simulator能构建打包，**不代表已在用户真机操作/可直接双击在macOS运行**；视觉硬件实机试用仍需用户确认。
+
+
+## 2026-10-28 · 用户新批准规则：天显时整盘+4、天禽中宫地干寄宿与UI空中宫
+
+- 规则变化须**明示与旧V8原始同地干配两天盘的历史差异**：实际天禽寄宫时，正常星原宿地干保持，天禽配中五原地干（真盘伏吟例如戊+戊/丁+丁）；中五九宫只在视觉留空，真实center earth不能删。原200/81源格、九宫起局干支不造新对象，是真实81搭配指向改正；病宫基础仍只一次，星本体天禽不伪装第二天芮。
+- 天显时：甲己日甲子或甲戌，乙庚日甲申，丙辛日甲午，丁壬日甲辰，戊癸日甲寅；日干＋完整甲时干支实际吻合才在**整盘最终合计只加+4一次**，不重复到宫、不改变五不遇时每实宫-2、源200强弱或固定V8模板。Python `tianxian_hour` / Swift `tianxianHour`、全局总分与自然断词分别同源验收。
+- 外宫标题真正居中，天盘两携干及宿宫/中宫地盘两干固定行对齐，中五画面无文字；点宫八门、八神、九星添加简洁「象意」帮助新读者。正式变更审计 `docs/V80_TIANXIAN_AND_TIANQIN_HOST_20261028.md`，现行新测试 `tests/test_tianxian_tianqin_host_20261028.py`。两个已揭晓历史病例及旧失败永久保留；本提交新版本实际 CI/Xcode 结果需单独核查，不沿用旧构建通过。

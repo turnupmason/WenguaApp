@@ -268,7 +268,7 @@ enum WenguaVNextEngine {
                                  value:polarity.flatMap{signed(lookup,$0)})
     }
     private static func pattern(_ star:WenguaNativeStar,_ cell:WenguaNativePalace,
-                                polarity:Int)->Int? {
+                                polarity:Int,earthStem:String)->Int? {
         let levels=Set(star.stages.map{ topStages.contains($0.stage) ? 5 :
                   middleStages.contains($0.stage) ? 4 : 3 })
         guard levels.count==1,let initial=levels.first else {return nil}
@@ -280,7 +280,7 @@ enum WenguaVNextEngine {
         }
         let striker=striking[star.carriedStem]==cell.id
         let earthStriker=cell.heavenStars.contains{
-            $0.carriedStem==cell.earthStem && striking[$0.carriedStem]==cell.id
+            $0.carriedStem==earthStem && striking[$0.carriedStem]==cell.id
         }
         let grade=max(1,initial-(heavenTomb ? 1:0) -
             (striker ? 1:0) - (earthStriker ? 1:0))
@@ -360,7 +360,7 @@ enum WenguaVNextEngine {
             }
             patternNames.append(fields[2])
             let polarity=fields[3]=="吉" ? 1 : -1
-            let score=pattern(star,p,polarity:polarity)
+            let score=pattern(star,p,polarity:polarity,earthStem:actualEarth)
             if let score {patternPoints.append(score)}
             let relevantTombs=p.tombs.filter{$0.plane=="天盘" &&
                                              $0.stem==star.carriedStem}

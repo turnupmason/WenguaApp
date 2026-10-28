@@ -59,10 +59,21 @@ def lookup_pair(heaven,earth):
 
 
 def for_real_palace(cell):
-    """All existing real sky carried stems vs the ONE real earth stem."""
+    """Real carrier-specific pairs: ordinary host earth, Tianqin centre earth.
+
+    The centre remains an original immutable chart fact. Its earth stem is
+    hosted alongside Tianqin only for the latter's 81 directed pair; this
+    does not replace the host earth or create a ninth outer palace.
+    """
     earth=cell.get("earth_stem")
     if not earth or cell["palace"]==5:return []
-    return [dict(lookup_pair(s["carried_stem"],earth),
+    def paired_earth(star):
+        if star["star"]=="天禽星":
+            centre=cell.get("hosted_centre_earth_stem")
+            if not centre:raise ValueError("Tianqin lacks real centre-earth host")
+            return centre
+        return earth
+    return [dict(lookup_pair(s["carried_stem"],paired_earth(s)),
                  star=s["star"],palace=cell["palace"],
                  can_vote=True,
                  source_state="user_excel_explicit_81",
@@ -70,7 +81,7 @@ def for_real_palace(cell):
                  source_conditions=(),
                  explanation="用户Excel该天盘、地盘组合吉凶已明确",
                  fact_id="user_excel81:"+str(cell["palace"])+":"+
-                         s["carried_stem"]+"/"+earth)
+                         s["carried_stem"]+"/"+paired_earth(s))
             for s in cell["heaven_stars"]
             if s.get("carried_stem") in STEMS]
 
