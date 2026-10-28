@@ -52,7 +52,7 @@ class DiseaseDualSkySource(unittest.TestCase):
         self.assertIn('"disease_dual_carrier_81_exception":role=="illness"',py)
         self.assertIn('diseaseDualSky:diseaseDualSky',swift)
         self.assertIn('let accepted=p.heavenStars',narration)
-        self.assertIn('let chosen=formation.sentences',narration)
+        self.assertIn('let names=formation.sentences.map',narration)
         self.assertIn('book=detail["ordered_book_81_pairs"]',detailed)
         self.assertNotIn('if disease_stem:',detailed)
         self.assertIn('if role=="illness" and entry["name"]!="天芮星"',py)

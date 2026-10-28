@@ -206,7 +206,6 @@ enum WenguaPythonVNextVerbatim {
         }.joined(separator:"、")
         let doorPart=try signedSymbol("door",door,palace:p.id,
                                       month:month,energy:energy)
-        let hasIllness=p.heavenStars.contains{$0.star=="天芮星"}
         // Each actual sky carrier has a distinct 81 pattern; do not
         // mis-attribute Tianqin's carried stem to Tianrui.
         let accepted=p.heavenStars
@@ -321,6 +320,11 @@ enum WenguaPythonVNextVerbatim {
             chart:chart,template:template,catalog:catalog)
         let lookup=Dictionary(uniqueKeysWithValues:formations.map{($0.id,$0)})
         let cells=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
+        // Carry the RAW template until every factual placeholder is bound.
+        // phrase() is intentionally strict and cannot be called yet here.
+        guard let palacePattern=macros["palace_compact"] else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
         var result:[WenguaNativeCustomerSection]=[]
         func push(_ id:String,_ heading:String,_ body:String) {
             var text=body
@@ -355,7 +359,7 @@ enum WenguaPythonVNextVerbatim {
                 full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup,
                                     kunHostNote:kunNote,
-                                    palaceTemplate:try phrase("palace_compact"))
+                                    palaceTemplate:palacePattern)
                 viewed[pid]=try title(key)
             }
             var extra=""
