@@ -37,10 +37,10 @@ class FirstViewportAndGrid(unittest.TestCase):
                      'starCarriers.reversed().enumerated()',
                      'Text(index==0 ? pair.0 :',
                      '(pair.0=="天禽" ? "禽" : pair.0)',
-                     '.frame(width:38)',
+                     '.frame(width:52)',
                      'roleColumn.frame(width:roleWidth',
                      'accessibilityLabel("天盘星干："',
-                     'Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))'):
+                     'markedStem(pair.element.1,plane:"地盘",size:size)'):
             self.assertIn(name,self.chart)
         self.assertNotIn("symbolRow(star.0,kind:",self.chart)
         self.assertIn("Text(entry.element)",self.chart)

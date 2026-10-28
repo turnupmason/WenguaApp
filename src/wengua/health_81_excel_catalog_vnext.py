@@ -59,31 +59,28 @@ def lookup_pair(heaven,earth):
 
 
 def for_real_palace(cell):
-    """Real carrier-specific pairs: ordinary host earth, Tianqin centre earth.
-
-    The centre remains an original immutable chart fact. Its earth stem is
-    hosted alongside Tianqin only for the latter's 81 directed pair; this
-    does not replace the host earth or create a ninth outer palace.
-    """
+    """Centre earth permanently hosted at Kun-2; never invent a sky star."""
     earth=cell.get("earth_stem")
     if not earth or cell["palace"]==5:return []
-    def paired_earth(star):
-        if star["star"]=="天禽星":
-            centre=cell.get("hosted_centre_earth_stem")
-            if not centre:raise ValueError("Tianqin lacks real centre-earth host")
-            return centre
-        return earth
-    return [dict(lookup_pair(s["carried_stem"],paired_earth(s)),
-                 star=s["star"],palace=cell["palace"],
-                 can_vote=True,
+    stars=[s for s in cell["heaven_stars"] if s.get("carried_stem") in STEMS]
+    if not stars:return []
+    if cell["palace"]==2:
+        centre=cell.get("hosted_centre_earth_stem")
+        if centre not in STEMS:raise ValueError("Kun 2 lacks real centre-earth host")
+        if len(stars)==1:
+            real=[(stars[0],earth),(stars[0],centre)]
+        elif len(stars)==2 and {s["star"] for s in stars}=={"天芮星","天禽星"}:
+            real=[(s,centre if s["star"]=="天禽星" else earth) for s in stars]
+        else:raise ValueError("Unverified Kun sky carriers")
+    else:
+        real=[(s,earth) for s in stars]
+    return [dict(lookup_pair(s["carried_stem"],bottom),
+                 star=s["star"],palace=cell["palace"],can_vote=True,
                  source_state="user_excel_explicit_81",
-                 applicability="user_excel_heaven_earth_pair",
-                 source_conditions=(),
-                 explanation="用户Excel该天盘、地盘组合吉凶已明确",
-                 fact_id="user_excel81:"+str(cell["palace"])+":"+
-                         s["carried_stem"]+"/"+paired_earth(s))
-            for s in cell["heaven_stars"]
-            if s.get("carried_stem") in STEMS]
+                 applicability="user_excel_heaven_earth_pair",source_conditions=(),
+                 explanation="真实天盘干与固定宫地盘干对应原81格",
+                 fact_id="user_excel81:"+str(cell["palace"])+":"+s["carried_stem"]+"/"+bottom)
+            for s,bottom in real]
 
 
 def authoritative_score_source(heaven,earth):

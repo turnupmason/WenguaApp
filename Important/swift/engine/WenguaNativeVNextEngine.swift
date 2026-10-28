@@ -298,6 +298,22 @@ enum WenguaVNextEngine {
         default:return false
         }
     }
+    private static func wholeChartFuyin(_ chart:WenguaNativeChart)->Bool {
+        let homes=["天蓬星":1,"天芮星":2,"天冲星":3,"天辅星":4,
+                   "天心星":6,"天柱星":7,"天任星":8,"天英星":9]
+        let doors=["休门":1,"生门":8,"伤门":3,"杜门":4,
+                   "景门":9,"死门":2,"惊门":7,"开门":6]
+        let starAt=chart.palaces.flatMap{p in p.heavenStars.compactMap{s -> (String,Int)? in
+            homes[s.star] != nil ? (s.star,p.id) : nil
+        }}
+        let doorAt=chart.palaces.compactMap{p -> (String,Int)? in
+            guard let door=p.door,doors[door] != nil else{return nil}
+            return (door,p.id)
+        }
+        guard starAt.count==8,doorAt.count==8 else{return false}
+        return starAt.allSatisfy{$0.1==homes[$0.0]} ||
+               doorAt.allSatisfy{$0.1==doors[$0.0]}
+    }
     private static func wholeChartFiveNot(_ chart:WenguaNativeChart)->Bool {
         let hour=String(chart.pillars.hour.prefix(1))
         let day=String(chart.pillars.day.prefix(1))
@@ -363,11 +379,14 @@ enum WenguaVNextEngine {
             lifeStages:[],restrictions:[]))
         var patternPoints:[Int]=[]
         var patternNames:[String]=[]
-        for star in p.heavenStars {
-            // Disease-only dual carrier: count each real sky/earth pair;
-            // Tianqin remains excluded as a second illness STAR score.
-            let centreEarth=chart.palaces.first{$0.id==5}?.earthStem ?? ""
-            let actualEarth=star.star=="天禽星" ? centreEarth : p.earthStem
+        // Fixed centre-earth host at Kun-2, never with Tianqin elsewhere.
+        let centreEarth=chart.palaces.first{$0.id==5}?.earthStem ?? ""
+        var realPairs=p.heavenStars.map{($0,p.id==2 && $0.star=="天禽星"
+                                         ? centreEarth : p.earthStem)}
+        if p.id==2 && p.heavenStars.count==1 {
+            realPairs.append((p.heavenStars[0],centreEarth))
+        }
+        for (star,actualEarth) in realPairs {
             let key=star.carriedStem+"|"+actualEarth
             guard let fields=excel[key],fields.count==7 else {
                 throw WenguaHealthTemplateError.invalidCatalog
@@ -612,6 +631,7 @@ enum WenguaVNextEngine {
         var rolePending:[Int]=[]
         let fiveNot=wholeChartFiveNot(chart)
         let tianxian=tianxianHour(chart.pillars.day,chart.pillars.hour)
+        let tianxianFuyin=wholeChartFuyin(chart)
         // Role binding order must match Python physical_cache. The first
         // role at a real palace is canonical; later co-palace roles share
         // its already evaluated score even if their signifier is different.
@@ -920,10 +940,10 @@ enum WenguaVNextEngine {
         // V7.8: user special health cohost effects are CONDITION bonuses,
         // once per actual host palace; resident factors remain one base.
         let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count+auspicePoints
-        // 五不遇时: minus 2 for EACH selected real palace, even neutral.
-        // Important: a leading '+' on a NEW Swift line is unary (+4)
-        // and the unused result gets silently ignored. Do not split this sum.
-        let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)+(tianxian ? 4 : 0)
+        // +2 per unique real palace, or +1.5 if star/door 伏吟.
+        // Sum integer half-units FIRST and floor once. Do not split '+'.
+        let tianxianBonus=tianxian ? (selectedPalaces.count*(tianxianFuyin ? 3 : 4))/2 : 0
+        let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)+tianxianBonus
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count

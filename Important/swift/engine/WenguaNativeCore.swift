@@ -335,6 +335,13 @@ enum WenguaNativeCore {
                 tombs.append(WenguaNativeTomb(plane:"地盘",stem:earthStem,
                                              branch:stage.branch,star:nil))
             }
+            // Centre-earth eternally remains in Kun-2; read its real branch tomb.
+            if p==2,let centreEarth=earth[5] {
+                for branch in bs where stages[centreEarth]?[branch]=="墓" {
+                    tombs.append(WenguaNativeTomb(plane:"地盘",stem:centreEarth,
+                                                 branch:branch,star:nil))
+                }
+            }
             palaceRows.append(WenguaNativePalace(id:p,gua:name,earthStem:earthStem,
               earthStages:earthStages,heavenStars:heavenly,
               door:doorAt[p],deity:deityAt[p],branches:bs,

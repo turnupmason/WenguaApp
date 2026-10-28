@@ -60,6 +60,19 @@ enum QFive {
     static let voidBranches=["戌","亥"]
     static let tombBranches=["甲":"未","乙":"戌","丙":"戌","丁":"丑",
                              "戊":"戌","己":"丑","庚":"丑","辛":"辰","壬":"辰","癸":"未"]
+    static let strikingPalaces=["戊":3,"己":2,"庚":8,"辛":9,"壬":4,"癸":4]
+    static func stemMarks(_ p:QPalace,stem:String,plane:String)->[String] {
+        let tomb:Bool
+        if let c=p.computed {
+            tomb=c.tombs.contains{$0.plane==plane && $0.stem==stem}
+        } else {
+            tomb=tombBranches[stem].map{localBranches(p).contains($0)} ?? false
+        }
+        var marks:[String]=[]
+        if tomb {marks.append("墓")}
+        if plane=="天盘" && strikingPalaces[stem]==p.id {marks.append("刑")}
+        return marks
+    }
     static let horseByHourBranch=["申":"寅","子":"寅","辰":"寅","寅":"申",
                                   "午":"申","戌":"申","巳":"亥","酉":"亥",
                                   "丑":"亥","亥":"巳","卯":"巳","未":"巳"]
@@ -194,7 +207,7 @@ extension QPalace {
                        door:cell.door ?? "",sky:sky,ground:cell.earthStem,
                        stages:life,roles:tags,computed:cell,
                        hostedCentreEarthStem:
-                         cell.heavenStars.contains{$0.star=="天禽星"}
+                         p==2
                          ? chart.palaces.first(where:{$0.id==5})?.earthStem : nil)
     }
 }
@@ -684,7 +697,7 @@ struct ProfessionalPalaceTile: View {
         identityLabels.isEmpty ? "" : identityLabels.joined(separator:"／") + "宫"
     }
     // Keep each actual native star attached to its own sky carrier.
-    // Every star contributes its own ordered 81 cell with the same earth stem.
+    // Kun-2 permanently holds its own earth and original centre earth.
     private var starCarriers:[(String,String)] {
         if let real=palace.computed {
             return real.heavenStars.map{
@@ -698,7 +711,18 @@ struct ProfessionalPalaceTile: View {
         }
     }
 
-    // Presentation-only: identical fixed tracks for one or two actual stars.
+    private var stemPairColumns:[(String,String)] {
+        let reversed=Array(starCarriers.reversed().enumerated()).map{$0.element}
+        guard palace.id==2,let centre=palace.hostedCentreEarthStem else {
+            return reversed.map{($0.1,palace.ground)}
+        }
+        if reversed.count==1 {
+            return [(reversed[0].1,centre),(reversed[0].1,palace.ground)]
+        }
+        return reversed.map{($0.1,$0.0=="天禽" ? centre : palace.ground)}
+    }
+
+    // Presentation-only: source scores stay in Python/native engines.
     // No V8 source, source-power, score or 81 calculation in this view.
     var body: some View {
         GeometryReader { geo in
@@ -727,11 +751,9 @@ struct ProfessionalPalaceTile: View {
             .frame(width:geo.size.width,height:geo.size.height,alignment:.topLeading)
         }
         .aspectRatio(1,contentMode:.fit)
-         .background(palace.id==5 ? Color.clear : QStyle.surface,
-                    in:RoundedRectangle(cornerRadius:4))
+         .background(QStyle.surface,in:RoundedRectangle(cornerRadius:4))
         .overlay(RoundedRectangle(cornerRadius:4)
-            .stroke(palace.id==5 ? Color.clear : QStyle.line.opacity(0.75),
-                    lineWidth:0.8))
+            .stroke(QStyle.line.opacity(0.75),lineWidth:0.8))
         .contentShape(Rectangle())
         .accessibilityLabel(accessibleText)
     }
@@ -765,39 +787,38 @@ struct ProfessionalPalaceTile: View {
         .frame(maxWidth:.infinity,alignment:.leading)
     }
 
+    private func markedStem(_ stem:String,plane:String,size:CGFloat)->some View {
+        HStack(spacing:0) {
+            Text(stem).foregroundStyle(QFive.shade("stem",stem))
+                .font(.system(size:size,weight:.semibold,design:.monospaced))
+            ForEach(QFive.stemMarks(palace,stem:stem,plane:plane),id:\.self) { mark in
+                Text(mark).font(.system(size:8,weight:.bold,design:.serif))
+                    .foregroundStyle(mark=="刑" ? QStyle.red : QStyle.orange)
+            }
+        }
+        .lineLimit(1).minimumScaleFactor(0.75)
+        .frame(maxWidth:.infinity,alignment:.center)
+    }
     private func skyStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
             Text("天").font(.system(size:10)).foregroundStyle(QStyle.secondary)
-            // A fixed-width carrier track: 丁 and 戊 share ONE row. 81 source
-            // ownership still follows the real native star->stem mapping.
             HStack(spacing:0) {
-                ForEach(Array(starCarriers.reversed().enumerated()),id:\.offset) { pair in
-                    Text(pair.element.1)
-                        .foregroundStyle(QFive.shade("stem",pair.element.1))
-                        .frame(maxWidth:.infinity)
+                ForEach(Array(stemPairColumns.enumerated()),id:\.offset) { pair in
+                    markedStem(pair.element.0,plane:"天盘",size:size)
                 }
-            }.frame(width:38)
-        }
-        .font(.system(size:size,weight:.semibold,design:.monospaced))
-        .lineLimit(1)
-        .frame(maxWidth:.infinity,alignment:.center)
+            }.frame(width:52)
+        }.frame(maxWidth:.infinity,alignment:.center)
         .accessibilityLabel("天盘星干："+starCarriers.map{$0.0+"携"+$0.1}.joined(separator:"、"))
     }
-
     private func earthStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
             Text("地").font(.system(size:10)).foregroundStyle(QStyle.secondary)
             HStack(spacing:0) {
-                if let centre=palace.hostedCentreEarthStem {
-                    Text(centre).foregroundStyle(QFive.shade("stem",centre))
-                        .frame(maxWidth:.infinity)
+                ForEach(Array(stemPairColumns.enumerated()),id:\.offset) { pair in
+                    markedStem(pair.element.1,plane:"地盘",size:size)
                 }
-                Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
-                    .frame(maxWidth:.infinity)
-            }.frame(width:38)
-        }
-        .font(.system(size:size,weight:.semibold,design:.monospaced))
-        .frame(maxWidth:.infinity,alignment:.center)
+            }.frame(width:52)
+        }.frame(maxWidth:.infinity,alignment:.center)
     }
 
     private var roleColumn:some View {
@@ -840,7 +861,12 @@ struct ProfessionalPalaceTile: View {
                         .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
                 }
                 if let horse=QFive.horse(palace) {
-                    Text("🐎").font(.system(size:12))
+                    Text("驿")
+                        .font(.system(size:9,weight:.bold,design:.serif))
+                        .foregroundStyle(QFive.palette["金"] ?? QStyle.orange)
+                        .frame(width:17,height:17)
+                        .background(Circle().fill(QStyle.orange.opacity(0.10)))
+                        .overlay(Circle().stroke(QStyle.orange.opacity(0.8),lineWidth:1))
                         .accessibilityLabel("驿马："+horse)
                 }
             }

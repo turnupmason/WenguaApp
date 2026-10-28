@@ -176,8 +176,7 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
     # Keep the historical review pairs in a separate audit field, never
     # overwrite source history or let its old gates silence the Excel result.
     centre=chart["palaces"]["5"]
-    hosted_centre=(centre["earth_stem"] if
-                   any(s["star"]=="天禽星" for s in cell["heaven_stars"]) else None)
+    hosted_centre=centre["earth_stem"] if palace==2 else None
     paired_cell=dict(cell,hosted_centre_earth_stem=hosted_centre)
     pairs=for_real_palace(paired_cell)
     historical_pairs=[
@@ -189,11 +188,9 @@ def inspect_complete_selected_palace(*,chart,cell,record,month_branch,
          "source_sha256_internal":pair.get("source_sha256_internal")}
         for pair in matched_pairs
         if pair["palace"]==palace and
-           any(entry["star"]==pair["star"] and
-               entry["carried_stem"]==pair["heaven"] and
-               (hosted_centre if entry["star"]=="天禽星"
-                else cell["earth_stem"])==pair["earth"]
-               for entry in cell["heaven_stars"])
+           any(p["star"]==pair["star"] and
+               p["heaven"]==pair["heaven"] and p["earth"]==pair["earth"]
+               for p in pairs)
     ]
     historical_by_pair={(x["heaven"],x["earth"]):x
                         for x in historical_pairs}

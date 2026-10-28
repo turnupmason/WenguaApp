@@ -9,8 +9,8 @@ from __future__ import annotations
 from .health_severity_v27 import five_not_encounter
 from .health_severity_v25 import fuyin_fanyin_facts
 
-# User-approved 天显时: exact DAY STEM × SIX-JIA HOUR, +4 at the
-# WHOLE-CHART FINAL TOTAL only. This is NOT a palace or five-not penalty.
+# 天显时 +2 per distinct participating outer palace, or +1.5 if 伏吟.
+# Sum half units first, then floor ONCE. No 200/81 source changes.
 TIANXIAN_HOURS={
     "甲":("甲子","甲戌"),"己":("甲子","甲戌"),
     "乙":("甲申",),"庚":("甲申",),
@@ -23,6 +23,13 @@ def tianxian_hour(day_ganzhi, hour_ganzhi):
     if len(day_ganzhi)!=2 or len(hour_ganzhi)!=2:
         return False
     return hour_ganzhi in TIANXIAN_HOURS.get(day_ganzhi[0], ())
+
+
+def tianxian_palace_bonus(palace_count, *, triggered, fuyin):
+    """Sum integer half-units over UNIQUE active exterior palaces, floor once."""
+    if type(palace_count) is not int or not 0<=palace_count<=8:
+        raise ValueError("Expected 0..8 distinct participating outer palaces")
+    return palace_count*(3 if fuyin else 4)//2 if triggered else 0
 
 
 def first_stage_macro(*,chart,calendar):
@@ -47,8 +54,8 @@ def first_stage_macro(*,chart,calendar):
         "five_not_encounter":five,
         "five_not_encounter_triggered":five["triggered"],
         "tianxian_hour_triggered":tianxian,
-        "tianxian_final_bonus":4 if tianxian else 0,
-        "tianxian_scope":"whole_chart_once_after_selected_physical_palaces",
+        "tianxian_per_palace_half_units":(3 if fuyin else 4) if tianxian else 0,
+        "tianxian_scope":"distinct_selected_outer_palaces_floor_once",
         "five_not_encounter_tendency":"general_adverse" if five["triggered"] else "not_present",
         "fuyin_fanyin":fy,
         "star_fuyin":fy["star"]=="伏吟",

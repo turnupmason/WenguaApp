@@ -86,11 +86,14 @@ enum WenguaHealthTemplateBridge {
                 throw WenguaCastError.invalidChart
             }
             var sentences:[String]=[]
-            for item in palace.heavenStars {
-                // Tianqin carries the REAL centre earth beside its host.
-                // All ordinary stars continue to use the host earth stem.
-                let bottom=item.star=="天禽星" ?
-                    (byID[5]?.earthStem ?? "") : palace.earthStem
+            let centreEarth=byID[5]?.earthStem ?? ""
+            var realPairs=palace.heavenStars.map{
+                ($0,id==2 && $0.star=="天禽星" ? centreEarth : palace.earthStem)
+            }
+            if id==2 && palace.heavenStars.count==1 {
+                realPairs.append((palace.heavenStars[0],centreEarth))
+            }
+            for (item,bottom) in realPairs {
                 guard let cols=pairs[item.carriedStem+"|"+bottom] else {
                     throw WenguaHealthTemplateError.unsupportedRealPair
                 }

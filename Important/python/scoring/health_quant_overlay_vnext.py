@@ -91,9 +91,6 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
     earth=detail["earth_stem"]
     ordinary_bottom=earth["symbol"] if earth else None
     hosted_bottom=detail.get("hosted_centre_earth_stem")
-    top_to_earth={entry["carried_stem"]:
-                      (hosted_bottom if entry["name"]=="天禽星" else ordinary_bottom)
-                  for entry in detail["stars"]}
     heaven={x["symbol"]:x for x in detail["heaven_stems"]}
     # Explicitly approved disease-only Tianrui+Tianqin exception:
     # Tianqin star itself is NOT a second illness source, but EACH distinct
@@ -104,11 +101,15 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
     origin={(p["heaven"],p["earth"]):p
             for p in detail["ordered_book_81_pairs"]}
     pairs=[]
-    for top,stem_fact in heaven.items():
+    # Kun-2 may have two real source-81 pairs for one real sky stem.
+    # Never collapse by a dict keyed only on the heavenly stem.
+    for source_pair in detail["ordered_book_81_pairs"]:
+        top,bottom=source_pair["heaven"],source_pair["earth"]
+        stem_fact=heaven.get(top)
+        if stem_fact is None:continue
         if role=="illness" and top not in illness_top_stems:
             skipped_health_cohosts.append(top)
             continue
-        bottom=top_to_earth.get(top,ordinary_bottom)
         if not bottom:continue
         # Current 81 classification is user Excel, NOT the older 82-record
         # condition-gated book/health conflict corpus. Old records remain
@@ -616,9 +617,11 @@ def inspect_selected_quantization(*,selected_roles,
     qualified_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     macro_penalty=2*summary["unique_palace_count"] if five else 0
     historical_stacked_total=role_sum+total_bonus-(2*len(roles) if five else 0)
-    # User-approved 天显时: exactly one whole-chart +4 AFTER all
-    # physical palace scores and the original five-not palace penalties.
-    tianxian_bonus=4 if first_stage_macro.get("tianxian_hour_triggered") else 0
+    from .health_macro_facts_vnext import tianxian_palace_bonus
+    tianxian_bonus=tianxian_palace_bonus(
+        summary["unique_palace_count"],
+        triggered=bool(first_stage_macro.get("tianxian_hour_triggered")),
+        fuyin=bool(first_stage_macro.get("star_fuyin") or first_stage_macro.get("door_fuyin")))
     final_raw=summary["post_void_known_sum"]+qualified_bonus-macro_penalty+tianxian_bonus
     original=summary["score"]
     summary["physical_palace_v75_audit"]=previous_physical
@@ -657,7 +660,9 @@ def inspect_selected_quantization(*,selected_roles,
         "repeated_signifier_merged":True,
         "five_not_global_penalty":macro_penalty,
         "tianxian_global_final_bonus":tianxian_bonus,
-        "tianxian_applied_once_after_all_palaces":True,
+        "tianxian_applied_once_after_all_palaces":False,
+        "tianxian_total_floor_once":True,
+        "tianxian_selected_unique_palaces":summary["unique_palace_count"],
         "five_not_penalty_per_palace":2 if five else 0,
         "five_not_penalized_unique_palace_count":summary["unique_palace_count"] if five else 0,
         "five_not_per_distinct_palace":True,

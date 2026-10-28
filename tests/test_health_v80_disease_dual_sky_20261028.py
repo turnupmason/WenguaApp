@@ -43,11 +43,11 @@ class DiseaseDualSkySource(unittest.TestCase):
         swift=(ROOT/"ios/WenguaAppUI/WenguaNativeVNextEngine.swift").read_text()
         narration=(ROOT/"ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift").read_text()
         detailed=(ROOT/"src/wengua/health_palace_detailed_vnext.py").read_text()
-        self.assertIn('for top,stem_fact in heaven.items():',py)
-        self.assertIn('for star in p.heavenStars {\n            // Disease-only dual carrier',swift)
+        self.assertIn('for source_pair in detail["ordered_book_81_pairs"]:',py)
+        self.assertIn('for (star,actualEarth) in realPairs {',swift)
         # Original V8 paired both sky carriers against host earth. User
         # explicitly corrected Tianqin to use the real centre-earth host.
-        self.assertIn('let actualEarth=star.star=="天禽星" ? centreEarth : p.earthStem',swift)
+        self.assertIn('if p.id==2 && p.heavenStars.count==1',swift)
         self.assertIn('let key=star.carriedStem+"|"+actualEarth',swift)
         self.assertIn('"disease_dual_carrier_81_exception":role=="illness"',py)
         self.assertIn('diseaseDualSky:diseaseDualSky',swift)
@@ -67,7 +67,7 @@ class DiseaseDualSkySource(unittest.TestCase):
         self.assertIn('ForEach(0..<starCarriers.count',ui)
         self.assertIn('starCarriers.reversed().enumerated()',ui)
         self.assertIn('accessibilityLabel("天盘星干："',ui)
-        self.assertIn('Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))',ui)
+        self.assertIn('markedStem(pair.element.1,plane:"地盘",size:size)',ui)
         self.assertIn('symbolRow(palace.door,kind:"door",stem:""',ui)
         self.assertNotIn('symbolRow(palace.deity,kind:"deity",stem:palace.sky',ui)
 

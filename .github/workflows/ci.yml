@@ -38,7 +38,7 @@ jobs:
         run: bash -n scripts/打开问卦模拟器.command
       - name: Device viewport and fixed nine-palace source UI layout
         run: python -m unittest discover -s tests -p 'test_ios_first_viewport_palace_layout_20261028.py' -v
-      - name: Tianxian six-Jia exact clock +4 and Tianqin independent centre-earth host
+      - name: Tianxian per-unique-palace floor-once and permanent Kun-2 centre-earth host
         run: python -m unittest discover -s tests -p 'test_tianxian_tianqin_host_20261028.py' -v
       - name: Real source/snapshot Important byte integrity
         run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
