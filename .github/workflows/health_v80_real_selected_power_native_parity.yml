@@ -84,6 +84,30 @@ jobs:
           path: /tmp/wengua-v80/
           retention-days: 90
           if-no-files-found: warn
+      - name: Preserve new-version failed validation, append-only without hiding it
+        if: failure()
+        run: |
+          set -euo pipefail
+          archive="docs/HEALTH_V80_FAILURE_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            printf '# V8.0 实际 CI 未通过，保留全部失败现场\\n\\nRun: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\n\\n' "$GITHUB_RUN_ID"
+            for f in /tmp/wengua-v80/*.log /tmp/wengua-v80/*_diff.md; do
+              if [ -f "$f" ]; then
+                printf '\\n## %s\\n\\n\`\`\`text\\n' "$(basename "$f")"
+                tail -n 180 "$f" || true
+                printf '\\n\`\`\`\\n'
+              fi
+            done
+          } > "$archive"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$archive"
+          git commit -m "Archive failed V8.0 native Python source strength validation"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
       - name: Append only successful actual test output; never overwrite old V7/V8
         run: |
           set -euo pipefail
