@@ -342,6 +342,11 @@ struct ProfessionalChartScreen: View {
                                     .foregroundStyle(QStyle.secondary)
                             }
                             .padding(.horizontal,13)
+                            Text("神看环境 · 星看趋势 · 门看行动 · 天地干看格局；点宫看含义与力量")
+                                .font(.system(size:11))
+                                .foregroundStyle(QStyle.secondary)
+                                .fixedSize(horizontal:false,vertical:true)
+                                .padding(.horizontal,13)
                             palaceBoard(tileSide:max(80,min(
                                 (viewport.size.width-30)/3,
                                 (viewport.size.height-274)/3)))
@@ -1323,6 +1328,9 @@ struct TraditionalReadingPreview: View {
                         if !board.isEmpty {
                             Text("本盘九宫")
                                 .font(.title3.weight(.semibold))
+                            Text("神看环境 · 星看趋势 · 门看行动 · 天地干看格局；点宫可查看解释")
+                                .font(.caption)
+                                .foregroundStyle(QStyle.secondary)
                             LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:3),count:3),
                                       spacing:3) {
                                 ForEach(board) { palace in
