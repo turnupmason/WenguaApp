@@ -58,8 +58,14 @@ class DiseaseDualSkySource(unittest.TestCase):
         ui=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text()
         self.assertIn('real.heavenStars.map',ui)
         self.assertIn('$0.carriedStem',ui)
-        self.assertIn('symbolRow(star.0,kind:"star",stem:star.1',ui)
-        self.assertIn('symbolRow(palace.door,kind:"door",stem:palace.ground',ui)
+        # Updated UI renders one star row, independent sky above earth.
+        # Real star-carried-stem identity is retained in accessibility and
+        # the detailed source table rather than forced into two star rows.
+        self.assertIn('ForEach(0..<starCarriers.count',ui)
+        self.assertIn('starCarriers.reversed().enumerated()',ui)
+        self.assertIn('accessibilityLabel("天盘星干："',ui)
+        self.assertIn('Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))',ui)
+        self.assertIn('symbolRow(palace.door,kind:"door",stem:""',ui)
         self.assertNotIn('symbolRow(palace.deity,kind:"deity",stem:palace.sky',ui)
 
 if __name__=="__main__":
