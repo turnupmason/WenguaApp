@@ -9,3 +9,8 @@
 - [Xcode 16.4 全真实 App 构建成功档](../../docs/IOS_V80_XCODE_PASS_RUN_40622696702_ATTEMPT_1.md)
 
 从仓库根目录 `cd ios/WenguaAppUI && xcodegen generate --spec project.yml`；再打开现有 WenguaApp.xcodeproj。不要重建新工程或误认已可提交 App Store。正式版本是 V8，用户下一阶段继续 UI。
+
+
+## 2026-10-28 · 接卦优先 UI
+
+[双标签与真实马空角标交付说明](../../docs/IOS_PREMIUM_READING_UX_20261028.md)。现有SwiftUI工程上新增独立纯展示文件；真实V8断词/人物/盘面算法不变。新Xcode编译与资源检查以本轮最新Action为准。

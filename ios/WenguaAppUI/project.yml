@@ -15,6 +15,7 @@ targets:
     platform: iOS
     sources:
       - path: WenguaDesignPreviewApp.swift
+      - path: WenguaPremiumReadingView.swift
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift

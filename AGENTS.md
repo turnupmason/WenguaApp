@@ -1944,3 +1944,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 此通用事实图已在 **Python和原生Swift两端**编写：`src/wengua/selected_signifier_graph_v80.py`、`ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift`；严格要求完整`PalaceEnvironment`，包括星门神天地干与81格，强度按各原始符号唯一来源；相同符号兼职别名不复制权重，所有`DomainCondition`和独立受助者只产生**待领域核准证据**而非擅加新+3；关系图目前是 V8.next **只读实验模型**，正式V8.0健康客户计分与模板原样保持。Swift 新文件已加入当前`ios/WenguaAppUI/project.yml` XcodeGen真实目标；`Important`两语言源快照与Manifest SHA新增/同步；`tests/test_selected_signifier_graph_v80_20261027.py`和`tests/v80_graph_native_smoke.swift`覆盖8类角色所有宫内因子与自我别名排重、双宫三符号、空墓刑迫、源力量独立。
 - **真实成功CI**：`#40627211810` Python3.11/3.12＋原生Swift独立编译/运行全成功；`#40627211822` 唯一现役V8主CI（原始源矩阵、现行健康回归、全宫组合、Important字节镜像与数据库smoke）成功；新增图文件随现有项目已通过macOS Xcode16.4真实完整iOS Simulator构建和数据包校验 `#40627172105`。用户在UI下一步前可正常从现有`project.yml`生成并打开Xcode，而不是另起项目。**通过编译不等于已把关系图作为新正式积分器接入，也不等于真机签名**。
 - 主`README.md`已彻底替换旧V3.9/PWA文案，单独介绍现行V8、双语源符号关系图与真实验收；中文`项目导航/01_现行版本、02_基础数据与起盘、03_疾病专题、04_其它领域、05_iOS界面、06_测试与验收、07_历史与失败`真实分类目录已创建。仅真实删除SwiftUI中**未引用的假断案`TraditionalChapter.demo`**及同步镜像，绝不清理用户强调保留的原始古籍/SQLite历史、失败记录、V7旧版源、Important镜像或破坏Python/Xcode固定路径。旧全量CI原YAML另存中文历史目录并保留手动工作流，现行根CI只跑V8，历史V7专项自动workflow仍可能报告历史口径失败。无新原书入库及新已核计分规则。
+
+
+## 2026-10-28 · 用户正式解冻UI：高端简约「接卦 / 专业解盘」分层
+
+- **只改iOS展示，不动冻结V8.0疾病算法。** 本次新增真实结果页面双标签：默认「接卦」先展示真实九宫和盘下醒目结论，另一「专业解盘」完整保留所有原生V8用神、宫位、限制和应期原文；本机历史记录也可在两标签中切换。读数来自正式Swift `90_review`已有总结及`91_timing`已有应期字段，展示层不再评分，不可虚构结论。
+- 宫位更紧凑简洁，金黄、木绿、水蓝、火红、土棕逐符色不变，右上角🐎标本宫真实时马，空心圆标本宫真实旬空，双条件同宫两标同时出现；宫位可打开原有详查，中心五宫不伪造普通神星门。静心30秒/一事项15日约束不变；其他领域仍开发中。
+- 文件：`ios/WenguaAppUI/WenguaDesignPreviewApp.swift`，`ios/WenguaAppUI/WenguaPremiumReadingView.swift`，`ios/WenguaAppUI/project.yml`，`tests/test_ios_premium_result_ui_20261028.py`，`docs/IOS_PREMIUM_READING_UX_20261028.md`；同步`Important/swift/ui`双源镜像和`Important/MANIFEST.json`SHA，当前V8主CI加入源结构门槛。**是否真实通过macOS Xcode/资源检查必须对本次push核对最新Actions**，不得引用2026-10-27旧构建替代。没有新增书章案例/评分/词库；保留历史审计和失败记录。

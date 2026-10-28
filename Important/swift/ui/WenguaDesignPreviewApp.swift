@@ -18,8 +18,8 @@ enum QStyle {
     static let green = Color(red: 0.14, green: 0.68, blue: 0.39)
     static let text = Color(red: 0.20, green: 0.20, blue: 0.21)
     static let secondary = Color(red: 0.57, green: 0.58, blue: 0.60)
-    static let backing = Color(red: 0.965, green: 0.965, blue: 0.968)
-    static let line = Color(red: 0.86, green: 0.87, blue: 0.88)
+    static let backing = Color(red: 0.968, green: 0.962, blue: 0.945)
+    static let line = Color(red: 0.88, green: 0.86, blue: 0.83)
 }
 
 // Consistent per-symbol five-element palette, never a per-layer color.
@@ -317,7 +317,7 @@ struct QuestionEntryScreen: View {
                                         .foregroundStyle(QStyle.blue)
                                     VStack(alignment:.leading,spacing:3) {
                                         Text(item.title).foregroundStyle(QStyle.text)
-                                        Text(item.enabled ? "九宫离线实算已接入 · 完整断词仍在移植" :
+                                        Text(item.enabled ? "已接入本机实算 · 接卦与专业解盘" :
                                                 "本专题的独立断案规则尚未移植")
                                             .font(.caption).foregroundStyle(QStyle.secondary)
                                     }
@@ -336,7 +336,7 @@ struct QuestionEntryScreen: View {
                             .disabled(!selected.enabled)
                             .frame(maxWidth:.infinity)
                             Text(selected.enabled ?
-                                 "自动起盘与文字断案是独立阶段；当前上线前仍须完成新盘全文断词模块。" :
+                                 "本专题已接入离线九宫与完整接卦；其他领域仍在逐项核验。" :
                                  "不调用疾病轻重模板代替其它问事。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
@@ -374,39 +374,15 @@ struct QuestionEntryScreen: View {
     }
 }
 
-// The frozen V3.9.1 file remains in Git history for QA but is NOT
-// bundled into the customer application and never appears as a reading.
-private struct WenguaVNextInlineReading: View {
-    let reading:WenguaNativeCustomerReading
-    let details:()->Void
-    var body:some View {
-        VStack(alignment:.leading,spacing:12) {
-            HStack {
-                Text("本次问事解读")
-                    .font(.title2.weight(.semibold))
-                Spacer()
-                Text("离线实算").font(.caption).foregroundStyle(QStyle.green)
-            }
-            WenguaNativeCustomerView(reading:reading)
-            Button("查看独立断案详情与九宫事实") {details()}
-                .buttonStyle(.bordered)
-                .frame(maxWidth:.infinity)
-        }
-        .padding(15)
-        .background(.white,in:RoundedRectangle(cornerRadius:16))
-        .padding(12)
-    }
-}
-
 struct ProfessionalChartScreen: View {
     let topic: QuestionTopic
     let changeTopic: () -> Void
     @State private var chosenPalace: QPalace?
     @State private var showAsk = false
-    @State private var showReading = false
     @State private var nativeChart: WenguaNativeChart?
     @State private var castRelation = "本人"
     @State private var nativeReading: WenguaNativeCustomerReading?
+    @State private var selectedReadingTab = 0
 
     private var palaces: [QPalace] {
         guard let chart=nativeChart else {return []}
@@ -433,19 +409,72 @@ struct ProfessionalChartScreen: View {
 
                 if let chart=nativeChart {
                     chartHeader(chart)
-                    palaceBoard
-                    HStack {
-                        Text("点击九宫查看五行、十二长生、空马墓与出处条件")
-                        Spacer()
-                    }.font(.caption2).foregroundStyle(QStyle.secondary).padding(12)
-
-                    if let reading=nativeReading {
-                        WenguaVNextInlineReading(reading:reading,
-                                                details:{showReading=true})
+                    WenguaReadingTabStrip(selection:$selectedReadingTab)
+                        .padding(.horizontal,14)
+                        .padding(.vertical,12)
+                    if selectedReadingTab == 0 {
+                        VStack(alignment:.leading,spacing:13) {
+                            HStack {
+                                Text("本盘九宫")
+                                    .font(.system(size:19,weight:.semibold,design:.serif))
+                                Spacer()
+                                Text("轻触宫位查看详情")
+                                    .font(.system(size:11))
+                                    .foregroundStyle(QStyle.secondary)
+                            }
+                            .padding(.horizontal,17)
+                            palaceBoard
+                            if let reading=nativeReading {
+                                WenguaPremiumVerdictCard(reading:reading)
+                                    .padding(.horizontal,14)
+                                Button {
+                                    selectedReadingTab=1
+                                } label: {
+                                    HStack {
+                                        Text("查看专业解盘与完整依据")
+                                        Spacer()
+                                        Image(systemName:"arrow.right")
+                                    }
+                                    .font(.system(size:14,weight:.medium))
+                                    .foregroundStyle(QStyle.text)
+                                    .padding(18)
+                                    .background(.white,
+                                                in:RoundedRectangle(cornerRadius:15))
+                                }
+                                .buttonStyle(.plain)
+                                .padding(.horizontal,14)
+                            } else {
+                                Text("本次仅有真实九宫，断词未通过原生核验，不能生成接卦结论。")
+                                    .font(.subheadline).foregroundStyle(QStyle.red)
+                                    .padding(16)
+                            }
+                        }
+                        .padding(.bottom,24)
                     } else {
-                        Text("本次仅能显示真实九宫；当前问事的完整断词尚无可用依据。")
-                            .font(.caption).foregroundStyle(QStyle.red)
-                            .padding(14)
+                        VStack(alignment:.leading,spacing:15) {
+                            Text("专业解盘")
+                                .font(.system(size:26,weight:.semibold,design:.serif))
+                            Text("依据本次真实时辰，逐项查看用神、各宫格局、条件限制与应期。")
+                                .font(.subheadline).foregroundStyle(QStyle.secondary)
+                            if let reading=nativeReading {
+                                WenguaNativeCustomerView(reading:reading)
+                            } else {
+                                Text("本次专业断词校验未完成。")
+                                    .foregroundStyle(QStyle.red)
+                            }
+                            Text("完整九宫事实")
+                                .font(.title3.weight(.semibold))
+                                .padding(.top,8)
+                            ForEach(chart.palaces.sorted(by:{
+                                let a=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$0.id) ?? 9
+                                let b=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$1.id) ?? 9
+                                return a < b
+                            })) { palace in
+                                NativePalaceEvidenceCard(palace:palace)
+                            }
+                        }
+                        .padding(.horizontal,16)
+                        .padding(.bottom,24)
                     }
                 } else {
                     VStack(alignment:.leading,spacing:15) {
@@ -482,11 +511,9 @@ struct ProfessionalChartScreen: View {
                 nativeChart=computed
                 castRelation=relation
                 nativeReading=reading
+                selectedReadingTab=0
                 showAsk=false
             }
-        }
-        .sheet(isPresented:$showReading) {
-            TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)
         }
         .onAppear {
             // Production: domain > subquestion > verified subject > instant > real
@@ -495,14 +522,14 @@ struct ProfessionalChartScreen: View {
         }
     }
     private var palaceBoard: some View {
-        LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:1),count:3),spacing:1) {
+        LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:3),
+                  spacing:7) {
             ForEach(palaces) { palace in
                 Button {chosenPalace=palace} label:{ProfessionalPalaceTile(palace:palace)}
                     .buttonStyle(.plain)
             }
         }
-        .padding(.vertical,1)
-        .background(QStyle.line)
+        .padding(.horizontal,12)
     }
     private func chartHeader(_ chart: WenguaNativeChart) -> some View {
         VStack(alignment:.leading,spacing:15) {
@@ -559,7 +586,9 @@ struct ProfessionalChartScreen: View {
             .padding(.horizontal,3)
         }
         .padding(16)
-        .background(.white)
+        .background(.white,in:RoundedRectangle(cornerRadius:20))
+        .padding(.horizontal,12)
+        .padding(.top,6)
     }
 
     private func pillarDisplay(_ title: String, _ value: String) -> some View {
@@ -647,12 +676,14 @@ struct PalaceLifeRow: View {
 
 // The board keeps high-contrast 神/星/门 glyphs and independently computed
 // 天盘/地盘, 空亡/时马/分层入墓 and exact branch life states.
+// Compact factual nine-palace typography. Corner icons reflect only facts
+// attached to THIS computed physical palace; no style-level divination.
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
-    private let labelColor = Color(red:0.49,green:0.56,blue:0.63)
+    private let labelColor = Color(red:0.49,green:0.54,blue:0.56)
 
     var body: some View {
-        VStack(alignment:.leading,spacing:7) {
+        VStack(alignment:.leading,spacing:9) {
             palaceHeading
             if palace.id == 5 {
                 centralPalace
@@ -660,130 +691,130 @@ struct ProfessionalPalaceTile: View {
                 symbolsSection
                 stemsSection
                 statusSection
-                Spacer(minLength:3)
-                lifecycleSection
+                Spacer(minLength:0)
             }
-            Text("宫位详解 ›")
-                .font(.system(size:10))
-                .foregroundStyle(QStyle.blue)
-                .frame(maxWidth:.infinity,alignment:.trailing)
         }
-        .padding(.horizontal,6)
+        .padding(.horizontal,9)
         .padding(.vertical,11)
-        .frame(maxWidth:.infinity,minHeight:274,alignment:.topLeading)
-        .background(.white)
-        .contentShape(Rectangle())
+        .frame(maxWidth:.infinity,minHeight:198,alignment:.topLeading)
+        .background(.white,in:RoundedRectangle(cornerRadius:13))
+        .overlay(RoundedRectangle(cornerRadius:13)
+            .stroke(QStyle.line.opacity(0.8),lineWidth:0.7))
+        .contentShape(RoundedRectangle(cornerRadius:13))
         .accessibilityLabel(accessibleText)
     }
 
     private var accessibleText: String {
-        if palace.id == 5 {return "中五宫，按原书独立处理"}
-        return [palace.name,"八神" + palace.deity,"九星" + palace.stars,
-                "八门" + palace.door,"天盘" + palace.sky,"地盘" + palace.ground,
-                palace.stages].joined(separator:"，")
+        if palace.id == 5 { return "中五宫，不设普通星门神" }
+        return ([palace.name,"八神"+palace.deity,"九星"+palace.stars,
+            "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground] +
+            QFive.void(palace).map{$0+"空"} +
+            (QFive.horse(palace).map{["驿马"+$0]} ?? [])).joined(separator:"，")
     }
+
     private var palaceHeading: some View {
-        HStack(alignment:.firstTextBaseline,spacing:3) {
-            Text(palace.name).font(.system(size:13,weight:.bold))
-                .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
-            Spacer(minLength:0)
-            HStack(spacing:1) {
-                ForEach(Array(palace.branches.map{String($0)}.enumerated()),id: \.offset) { part in
-                    Text(part.element).foregroundStyle(QFive.shade("branch",part.element))
+        VStack(alignment:.leading,spacing:4) {
+            HStack(alignment:.center,spacing:4) {
+                Text(palace.name)
+                    .font(.system(size:14,weight:.bold,design:.serif))
+                    .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
+                    .lineLimit(1).minimumScaleFactor(0.8)
+                Spacer(minLength:0)
+                // A thin, unfilled circle: 旬空. It is not a filled button or
+                // an inferred score, and two simultaneous markers both appear.
+                if !QFive.void(palace).isEmpty {
+                    Circle()
+                        .stroke(QStyle.red.opacity(0.84),lineWidth:1.8)
+                        .frame(width:15,height:15)
+                        .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
+                }
+                if let horse=QFive.horse(palace) {
+                    Text("🐎")
+                        .font(.system(size:15))
+                        .accessibilityLabel("驿马："+horse)
+                }
+            }
+            HStack(spacing:2) {
+                ForEach(Array(palace.branches.map{String($0)}.enumerated()),id:\.offset) { item in
+                    Text(item.element).foregroundStyle(QFive.shade("branch",item.element))
                 }
             }
             .font(.system(size:10))
+            .frame(height:12,alignment:.leading)
         }
     }
+
     private var centralPalace: some View {
-        VStack(alignment:.center,spacing:10) {
-            Spacer(minLength:24)
-            Text("中五").font(.system(size:29,weight:.medium))
-                .foregroundStyle(QStyle.secondary)
+        VStack(spacing:8) {
+            Spacer(minLength:15)
+            Text("中五")
+                .font(.system(size:25,weight:.medium,design:.serif))
+                .foregroundStyle(labelColor)
             if !palace.ground.isEmpty {
-                Text("地盘　" + palace.ground)
-                    .font(.system(size:14))
+                Text("地盘 "+palace.ground)
+                    .font(.system(size:13))
                     .foregroundStyle(QFive.shade("stem",palace.ground))
             }
-            Text("神、门、星另论").font(.system(size:11)).foregroundStyle(labelColor)
-            Spacer(minLength:18)
+            Text("星门神另论").font(.system(size:10)).foregroundStyle(labelColor)
+            Spacer(minLength:12)
         }
         .frame(maxWidth:.infinity)
     }
+
     private var symbolsSection: some View {
-        VStack(alignment:.leading,spacing:7) {
+        VStack(alignment:.leading,spacing:6) {
             namedSymbol("神",palace.deity,kind:"deity")
-            multiSymbol("星",palace.stars,kind:"star")
+            namedSymbol("星",palace.stars,kind:"star")
             namedSymbol("门",palace.door,kind:"door")
         }
     }
     private var stemsSection: some View {
         VStack(spacing:5) {
-            Rectangle().fill(QStyle.line.opacity(0.65)).frame(height:1)
-            HStack(alignment:.firstTextBaseline,spacing:3) {
+            Rectangle().fill(QStyle.line.opacity(0.7)).frame(height:1)
+            HStack(alignment:.firstTextBaseline,spacing:2) {
                 stemLine("天",palace.sky)
-                Spacer(minLength:0)
+                Spacer(minLength:1)
                 stemLine("地",palace.ground)
             }
         }
     }
     private var statusSection: some View {
-        VStack(alignment:.leading,spacing:3) {
-            ForEach(palace.roles,id: \.self) { role in
+        VStack(alignment:.leading,spacing:2) {
+            ForEach(palace.roles.prefix(2),id:\.self) { role in
                 Text(role).foregroundStyle(QStyle.blue)
             }
-            ForEach(QFive.void(palace),id: \.self) { branch in
-                Text(branch + "空").foregroundStyle(QFive.shade("branch",branch))
-            }
-            if let horse=QFive.horse(palace) {
-                Text("马" + horse).foregroundStyle(QFive.shade("branch",horse))
-            }
-            ForEach(QFive.heavenTombs(palace) + QFive.earthTombs(palace),id: \.self) { label in
-                Text(label).foregroundStyle(
-                    QFive.shade("stem",String(label.dropFirst().prefix(1))))
+            ForEach(QFive.heavenTombs(palace)+QFive.earthTombs(palace),id:\.self) { tag in
+                Text(tag)
+                    .foregroundStyle(QFive.shade("stem",String(tag.dropFirst().prefix(1))))
             }
         }
-        .font(.system(size:10,weight:.medium))
-        .fixedSize(horizontal:false,vertical:true)
-    }
-    private var lifecycleSection: some View {
-        VStack(alignment:.leading,spacing:4) {
-            Rectangle().fill(QStyle.line.opacity(0.55)).frame(height:1)
-            ForEach(palace.lifeRows) { line in PalaceLifeRow(line:line) }
-        }
-        .frame(maxWidth:.infinity,alignment:.leading)
+        .font(.system(size:9,weight:.medium))
+        .lineLimit(1)
     }
     private func namedSymbol(_ label:String,_ value:String,kind:String) -> some View {
-        HStack(alignment:.firstTextBaseline,spacing:4) {
-            Text(label).font(.system(size:10)).foregroundStyle(labelColor)
-                .frame(width:11,alignment:.leading)
-            Text(value).font(.system(size:17,weight:.semibold))
-                .foregroundStyle(QFive.shade(kind,value))
-                .fixedSize(horizontal:false,vertical:true)
-        }
-    }
-    private func multiSymbol(_ label:String,_ value:String,kind:String) -> some View {
         HStack(alignment:.firstTextBaseline,spacing:3) {
             Text(label).font(.system(size:10)).foregroundStyle(labelColor)
                 .frame(width:11,alignment:.leading)
-            ForEach(Array(value.components(separatedBy:"·").enumerated()),id: \.offset) { part in
-                Text(part.element)
-                    .font(.system(size:16,weight:.semibold))
-                    .foregroundStyle(QFive.shade(kind,part.element))
+            HStack(spacing:1) {
+                ForEach(Array(value.components(separatedBy:"·").enumerated()),id:\.offset) { part in
+                    Text(part.element).foregroundStyle(QFive.shade(kind,part.element))
+                }
             }
+            .font(.system(size:16,weight:.semibold))
+            .lineLimit(1)
+            .minimumScaleFactor(0.66)
         }
     }
     private func stemLine(_ plane:String,_ values:String) -> some View {
         HStack(spacing:1) {
             Text(plane).font(.system(size:9)).foregroundStyle(labelColor)
-            ForEach(Array(values.components(separatedBy:"·").enumerated()),id: \.offset) { part in
-                Text(part.element)
-                    .font(.system(size:15,weight:.semibold))
-                    .foregroundStyle(QFive.shade("stem",part.element))
+            ForEach(Array(values.components(separatedBy:"·").enumerated()),id:\.offset) { part in
+                Text(part.element).foregroundStyle(QFive.shade("stem",part.element))
             }
         }
+        .font(.system(size:14,weight:.semibold))
         .lineLimit(1)
-        .minimumScaleFactor(0.85)
+        .minimumScaleFactor(0.75)
     }
 }
 
@@ -836,7 +867,7 @@ struct ProfessionalPalaceDetail: View {
                 headerBlock
                 tagBlock
                 factsBlock
-                Text("传统文化与古籍象意展示。新盘完整断词尚待 V3.9.1 原生移植。")
+                Text("传统古籍宫象展示。完整专题判断请查看「专业解盘」，不以宫位外观代替断案依据。")
                     .font(.footnote)
                     .foregroundStyle(QStyle.secondary)
             }
@@ -1149,7 +1180,7 @@ struct CastSetupScreen: View {
                             Text(validationMessage)
                                 .font(.footnote).foregroundStyle(QStyle.red)
                         }
-                        Text("九宫由本机离线计算；本次断案内容尚未完成前，不会以历史样例替代。")
+                        Text("九宫由本机离线计算；只有完整断案通过本机核验后才会保存本次结果，绝不以旧盘代替。")
                             .font(.footnote).foregroundStyle(QStyle.secondary)
                     }
                 }
@@ -1267,51 +1298,91 @@ struct TraditionalReadingPreview: View {
     let sampleIndex: Int
     let nativeReading: WenguaNativeCustomerReading?
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedTab = 0
+    @State private var chosenPalace: QPalace?
 
+    private var board: [QPalace] {
+        guard let chart=nativeChart else {return []}
+        let byId=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
+        return WenguaNativeCore.branchOrderPalaces.compactMap {
+            guard let cell=byId[$0] else{return nil}
+            return QPalace.fromNative(cell,chart:chart,
+                                     relation:nativeReading?.relationship ?? "")
+        }
+    }
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("完整解读")
-                        .font(.system(size: 28, weight: .medium))
-                    if let chart=nativeChart {
-                        Text("本次九宫已在本机离线生成。")
-                            .font(.caption).foregroundStyle(QStyle.secondary)
-                        let actualPillars = [chart.pillars.year,chart.pillars.month,
-                                             chart.pillars.day,chart.pillars.hour]
-                        Text(actualPillars.joined(separator:" ") + " · " + chart.solarTerm)
-                            .font(.headline)
+                VStack(alignment:.leading,spacing:16) {
+                    HStack {
+                        WenguaMark(size:40)
+                        VStack(alignment:.leading,spacing:3) {
+                            Text("问卦 · 本次记录")
+                                .font(.system(size:23,weight:.semibold,design:.serif))
+                            if let chart=nativeChart {
+                                Text([chart.pillars.year,chart.pillars.month,
+                                      chart.pillars.day,chart.pillars.hour]
+                                        .joined(separator:"  ")+" · "+chart.solarTerm)
+                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                            }
+                        }
+                    }
+                    WenguaReadingTabStrip(selection:$selectedTab)
+                    if selectedTab == 0 {
+                        if !board.isEmpty {
+                            Text("本盘九宫")
+                                .font(.title3.weight(.semibold))
+                            LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:3),
+                                      spacing:7) {
+                                ForEach(board) { palace in
+                                    Button {chosenPalace=palace} label:{
+                                        ProfessionalPalaceTile(palace:palace)
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                        }
+                        if let reading=nativeReading {
+                            WenguaPremiumVerdictCard(reading:reading)
+                        } else {
+                            Text("历史盘的断词未能核验；不使用其它时辰代替。")
+                                .foregroundStyle(QStyle.red)
+                        }
+                    } else {
                         if let reading=nativeReading {
                             WenguaNativeCustomerView(reading:reading)
                         } else {
-                            Text("此九宫只有真实盘面事实，未能完成本次专题的原生断案依据校验。")
-                                .foregroundStyle(QStyle.red)
+                            Text("本盘无可用专业断词。").foregroundStyle(QStyle.red)
                         }
-                        Text("本盘九宫事实")
-                            .font(.title3.weight(.semibold))
-                            .padding(.top,10)
-                        ForEach(chart.palaces.sorted(by:{
-                            let a=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$0.id) ?? 9
-                            let b=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$1.id) ?? 9
-                            return a < b
-                        })) { palace in
-                            NativePalaceEvidenceCard(palace:palace)
+                        if let chart=nativeChart {
+                            Text("完整九宫事实").font(.title3.weight(.semibold))
+                            ForEach(chart.palaces.sorted(by:{
+                                let a=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$0.id) ?? 9
+                                let b=WenguaNativeCore.branchOrderPalaces.firstIndex(of:$1.id) ?? 9
+                                return a < b
+                            })) { palace in
+                                NativePalaceEvidenceCard(palace:palace)
+                            }
                         }
-                    } else {
-                        Text("封存原始断词资源未加载；拒绝以其它测试盘文本替代。")
-                            .foregroundStyle(QStyle.red)
                     }
-                    Text("本软件仅用于传统文化研究及古籍象意展示，不提供医学诊断、预后或治疗建议。")
+                    Text("仅供传统文化与古籍象意研究，不提供医学诊断、预后或治疗建议。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
-                .padding()
+                .padding(16)
             }
             .background(QStyle.backing)
-            .navigationTitle("断词")
+            .navigationTitle("接卦")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("关闭") { dismiss() }
+                ToolbarItem(placement:.topBarTrailing) {
+                    Button("关闭") {dismiss()}
                 }
+            }
+            .sheet(item:$chosenPalace) { palace in
+                ProfessionalPalaceDetail(palace:palace,
+                     hourHorse:nativeChart?.hourHorse ?? "",
+                     hourHorsePalace:nativeChart?.hourHorsePalace ?? 0)
+                    .presentationDetents([.medium,.large])
             }
         }
     }

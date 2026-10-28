@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "a08b3288beb066fe90e0c37ba01e5e38af06a205"
+      "sha": "fb0584483a35f08fbad4409db9eb934f823d78c4"
     },
     {
       "platform": "swift",
@@ -542,6 +542,12 @@
       "canonical": "tests/compare_gpt_ios_exact_wording_20261026.py",
       "snapshot": "Important/swift/tests/compare_gpt_ios_exact_wording_20261026.py",
       "sha": "e884e6cc874d3a42174a6eac4848d52795bf38bf"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
+      "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
+      "sha": "3d27696bde91edabf9200cc279bade083632d95d"
     }
   ]
 }
