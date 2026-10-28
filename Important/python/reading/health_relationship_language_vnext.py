@@ -33,8 +33,8 @@ def explain_role_against_illness(*,role,role_factor,disease_factor,
         "辅助用神","辅助力量","辅助能制病","辅助制病作用不明"))
     strength=role_factor.get("strength_label")
     disease_strength=disease_factor.get("strength_label")
-    cond=("本宫用神力量"+str(strength or "待核")+
-          "，天芮病星力量"+str(disease_strength or "待核"))
+    cond=("本宫独立用神力量"+str(strength or "待核")+
+          "，天芮病星独立用神力量"+str(disease_strength or "待核"))
     if relation=="克":
         edge=actual_edge
         if edge is None:raise ValueError("Actual control edge required")
@@ -71,17 +71,13 @@ def explain_role_against_illness(*,role,role_factor,disease_factor,
         return (who+"宫受天芮病宫克；"+cond+"；病宫施克结果"+
                 str(out or "条件待核")+"，"+interpretation+"。")
     if relation=="生":
-        return (who+"宫生天芮病宫；"+cond+"。此时"+source+
-                "在五行上反而生扶病宫，不能仅凭用神吉性便认为已压制病象。")
+        return (who+"宫生天芮病宫；"+cond+"。五行方向为生病，实际生扶程度按两枚用神各自力量及限制判断，不凭宫位吉凶数字推算作用强弱。")
     if relation=="被生":
-        return (who+"宫得病宫生扶；"+cond+"。本方有受生之象，"+
-                "但这不是主动克病，是否转为有利仍看宫内吉凶及人物条件。")
+        return (who+"宫得病宫生扶；"+cond+"。实际受生程度依两枚用神力量判定，不等于主动克病；两宫吉凶分另行计入。")
     if relation=="比和":
-        return (who+"宫与病宫比和；"+cond+"。双方同气相持，"+
-                "并非本方已经克住病宫，应结合本宫吉凶力量合断。")
+        return (who+"宫与病宫比和；"+cond+"。同五行不等于两枚用神等力，亦非已经克住病宫。")
     if relation=="同宫":
-        return (who+"与天芮同宫；"+cond+"。病象与"+source+
-                "在同一宫交织，不能虚构两宫的相克，需要看本宫神星门干格局。")
+        return (who+"与天芮同宫；"+cond+"。本宫吉凶只算一次，但两枚不同用神仍各保留独立力量，不能虚构跨宫相克。")
     return who+"与病宫的作用方向仍未核。"
 
 
