@@ -54,6 +54,87 @@ class SelectedSignifier:
             raise ValueError("Unregistered restrictions must be source-reviewed")
 
 
+# A chosen use-god obliges us to inspect ALL real residents of its palace.
+ENVIRONMENT_KINDS = frozenset(("star", "door", "deity", "heaven_stem", "earth_stem", "ordered_81_pattern"))
+PALACE_FLAGS = frozenset(("真空", "假空", "驿马", "天盘入墓", "地盘入墓", "六仪击刑", "门迫", "伏吟", "反吟"))
+
+@dataclass(frozen=True)
+class PalaceFactor:
+    category: str
+    symbol_id: str
+    energy_fact_id: str
+    strength: str | None = None
+    signed_contribution: int | None = None
+    restrictions: frozenset[str] = frozenset()
+
+    def __post_init__(self) -> None:
+        if self.category not in ENVIRONMENT_KINDS or not self.symbol_id or not self.energy_fact_id:
+            raise ValueError("Original symbol and kind-specific source required")
+        if self.strength is not None and self.strength not in TIERS:
+            raise ValueError("Source strength cannot be a signed palace grade")
+        if (self.signed_contribution is not None and
+                (type(self.signed_contribution) is not int or not -5 <= self.signed_contribution <= 5)):
+            raise ValueError("Invalid auspiciousness contribution")
+        if not self.restrictions.issubset(RESTRICTIONS):
+            raise ValueError("Unreviewed resident restrictions")
+
+@dataclass(frozen=True)
+class PalaceEnvironment:
+    palace_id: int
+    stars: tuple[PalaceFactor, ...]
+    door: PalaceFactor | None
+    deity: PalaceFactor | None
+    heaven_stems: tuple[PalaceFactor, ...]
+    earth_stem: PalaceFactor | None
+    ordered_81_patterns: tuple[PalaceFactor, ...]
+    flags: frozenset[str]
+    auspicious_grade: int
+
+    def __post_init__(self) -> None:
+        if self.palace_id not in ELEMENTS or type(self.auspicious_grade) is not int or not -5 <= self.auspicious_grade <= 5:
+            raise ValueError("Real palace and signed V8 auspiciousness required")
+        if not self.flags.issubset(PALACE_FLAGS):
+            raise ValueError("Unreviewed real palace special condition")
+        sets = ((self.stars, "star"), (self.heaven_stems, "heaven_stem"),
+                (self.ordered_81_patterns, "ordered_81_pattern"))
+        if any(x.category != category for items,category in sets for x in items):
+            raise ValueError("Mixed sky/earth/81/star source category")
+        for item,category in ((self.door,"door"),(self.deity,"deity"),(self.earth_stem,"earth_stem")):
+            if item is not None and item.category != category:
+                raise ValueError("Wrong source table or symbol plane")
+        if self.palace_id != 5 and not (
+            self.stars and self.door and self.deity and
+            self.heaven_stems and self.earth_stem and self.ordered_81_patterns
+        ):
+            raise ValueError("Selected real palace must inspect ALL components")
+        if self.palace_id == 5 and (
+            self.stars or self.door or self.deity or self.heaven_stems or self.ordered_81_patterns
+        ):
+            raise ValueError("Middle five cannot be given invented ordinary doors/stars/deity")
+
+    @property
+    def residents(self) -> tuple[PalaceFactor, ...]:
+        return (self.stars + ((self.door,) if self.door else ()) +
+                ((self.deity,) if self.deity else ()) + self.heaven_stems +
+                ((self.earth_stem,) if self.earth_stem else ()) +
+                self.ordered_81_patterns)
+
+    def report(self) -> dict:
+        return {
+            "palace_id": self.palace_id, "palace_element": ELEMENTS[self.palace_id],
+            "auspicious_grade_once": self.auspicious_grade,
+            "flags": sorted(self.flags), "source_complete": True,
+            "factors": [
+                {"category": f.category, "symbol_id": f.symbol_id,
+                 "energy_fact_id": f.energy_fact_id, "strength": f.strength,
+                 "signed_contribution_audit_only": f.signed_contribution,
+                 "restrictions": sorted(f.restrictions)}
+                for f in self.residents
+            ],
+            "no_extra_intrinsic_stem_vote": True,
+        }
+
+
 @dataclass(frozen=True)
 class DomainCondition:
     condition_id: str
@@ -97,6 +178,7 @@ class SelectedSignifierGraph:
         self, *, domain_id: str,
         roles: Iterable[SelectedSignifier],
         palace_grades: Mapping[int, int],
+        environments: Mapping[int, PalaceEnvironment] | None = None,
     ) -> None:
         if not domain_id:
             raise ValueError("A domain profile must explicitly opt in")
@@ -136,6 +218,13 @@ class SelectedSignifierGraph:
         self.palace_grades = {
             p: palace_grades[p] for p in sorted({b.palace_id for b in bindings})
         }
+        self.environments = dict(environments or {})
+        if self.environments:
+            if set(self.environments) != set(self.palace_grades):
+                raise ValueError("Every selected palace needs its COMPLETE environment")
+            for pid, env in self.environments.items():
+                if env.palace_id != pid or env.auspicious_grade != self.palace_grades[pid]:
+                    raise ValueError("Real environment grade and palace location mismatch")
 
     @property
     def base_palace_total(self) -> int:
@@ -189,6 +278,39 @@ class SelectedSignifierGraph:
                     "effect": None,
                     "bonus_points": None,
                     "source_and_target_independent": True,
+                })
+        return out
+
+    def resident_evidence(self) -> list[dict]:
+        """Check every symbol and real condition for every selected use-god.
+
+        No generic bonus is inferred. The user-approved V8 base remains
+        one signed grade per physical palace; each selected role independently
+        keeps its own source strength.
+        """
+        out = []
+        for role, chosen in sorted(self.roles.items()):
+            env = self.environments.get(chosen.palace_id)
+            if env is None:
+                continue
+            for factor in env.residents:
+                kind = "stem" if factor.category in ("heaven_stem","earth_stem") else factor.category
+                self_ref = chosen.kind == kind and chosen.symbol_id == factor.symbol_id
+                out.append({
+                    "role_key": role, "palace_id": chosen.palace_id,
+                    "selected_symbol": list(chosen.identity),
+                    "selected_source_strength": chosen.strength,
+                    "resident_category": factor.category,
+                    "resident_symbol": factor.symbol_id,
+                    "resident_energy_fact_id": factor.energy_fact_id,
+                    "resident_strength": factor.strength,
+                    "resident_restrictions": sorted(factor.restrictions),
+                    "palace_flags": sorted(env.flags),
+                    "is_selected_symbol_itself": self_ref,
+                    "independent_cohost_candidate": not self_ref and factor.category != "ordered_81_pattern",
+                    "signed_palace_grade_once": env.auspicious_grade,
+                    "result_requires_domain_rule": True,
+                    "awarded_points": None,
                 })
         return out
 
@@ -246,8 +368,11 @@ class SelectedSignifierGraph:
             "version": "v8_0_observation_v8_next_candidate_no_new_score",
             "domain_id": self.domain_id,
             "nodes": self.nodes(),
+            "palace_environments": [self.environments[p].report() for p in sorted(self.environments)],
+            "palace_environment_completeness": "complete" if self.environments else "awaiting_fact_binding",
             "edges": self.edges(),
             "cohost_evidence": self.independent_cohost_evidence(conditions),
+            "all_role_resident_evidence": self.resident_evidence(),
             "palace_grades_once": self.palace_grades,
             "base_palace_total_once": self.base_palace_total,
             "changes_authorized_v80_score": False,
