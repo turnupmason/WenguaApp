@@ -2112,3 +2112,11 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-28 · 真实Xcode第二轮资源检查失败：inline Python多一格缩进
 #40779534953 App源代码SwiftUI编译再次成功；真实bundle校验新增加模板键时由于workflow YAML字面脚本for语句比其它Python顶层行多一个空格，运行时抛出 `IndentationError: unexpected indent`，这不是V8模型分数或用户断词内容错误。已逐行核对修正上述脚本（for缩到同列10空格、循环断言12空格、后续顶层assert同列10空格），保留完整失败Actions日志与App build日志；新提交实际XcodeGen/macOS Simulator/bundle四资源验收必须重新执行，未通过前不宣称正式包成功。
+
+## 2026-10-28 · 天显/坤二新模板最终实测（本轮可复核）
+- 正式源码模板及Python/Swift客户断词由commit `24c5bbbdf7f1970279897bb35650a47d8912d7ea` 同步；当前模板版本 `health_severity_user_editable_template_v20261028_tianxian_kun_v9`。新模板区分普通天显/天显逢伏吟和对应终论语句，并由坤二真实参与时输出中五寄干两格说明；无客户分数泄露。
+- 新独立V8 Python3.11及3.12 主CI **#40779886724 PASS**，含 25类原始克病矩阵、72组同宫特例、现行8角色宫图、3/5宫伏吟最后统一取整、新真实模板键路由、Important双镜像SHA与Xcode UI守卫。
+- 真正 Python→原生 Swift V8 全文逐字专项 **#40779088908 PASS**（源码commit 24c5bbb 同一Python/Swift模板；25类矩阵/72同宫+两原盘+13:44四人物，通过，所见病例全部已揭晓非盲测）。
+- 真正 macOS XcodeGen→Xcode16.4 iOS Simulator完整编译、在实际未签名`问卦.app`内核对200格JSON、81格TSV、22人物profiles、20261028新模板schema及五个新文案key及元信息 **#40779886908 PASS**（正式工作流修订commit cf05b666deef3c58b6f8b7d1ebdba96894479cf2）。构建、包内检查、artifact归档及自动PASS日志均实际完成。
+- 旧版模板schema导致 #40779088950 的旧UI版本断言FAIL、#40779088892 的旧Xcode资源校验FAIL；第一次修复又因inline Python多一空格使 #40779534953 FAIL。这些失败均保留，不能删除或冒称从未发生。以前旧原生全库部分工作流另有 `invalidChart` 和V7断言错误，不属于本次现行V8模板验收成功范围，也不宣称全库全部通过。
+- 本轮没有真机签名、TestFlight/App Store或用户手工界面验收；本次Xcode成功只确认真实Simulator编译和bundle资源。
