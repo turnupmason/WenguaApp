@@ -1291,3 +1291,12 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 - GitHub Actions **[#40603882731](https://github.com/turnupmason/WenguaApp/actions/runs/40603882731)** 的独立 `both_original_user_clocks` **completed/success**：对新 `test_health_v78_illness_special_cohost_20261027.py` 的真实条件、两个固定原时辰、Important字节SHA执行核验，编译最新iOS Swift 引擎，逐案生成Python源JSON与原生Swift每节中文标题、标点及全文，`compare_gpt_ios_exact_wording_20261026.py` 全部逐字 **True**。同事5实宫 +2 +特殊吉助8 +有效独立克病3 -五不遇时10 = **+3中吉**；1920长辈女4实宫 -3 +同宫特殊吉助6 +克病0 -五不遇时0 = **+3中吉**。两盘均无整盘伏吟或反吟。正式本次独立成功全文及宫分**新档追加、不覆盖历史**：[`docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md)，原第一份V7.8档、V7.7及更早历史成功失败均保留。
 - **验收边界**：本轮仅实际两固定盘两语言逻辑一致，并非全部iOS模拟器构建或古籍领域测试PASS；同事月干戊取用仍是研究候选，1920女性真实长辈身份与生辰干支条件仍待核。两张新V7.8传统软件标签等待用户审定，绝非真实医学病情判断。
+
+
+## 2026-10-27 · V7.9 全盘通用「独立用神临吉助／自身不临自己」规则实现与历史版本隔离
+
+- 用户进一步确认：**任何实际时辰**均按同一套规则，不是为了修两张已知盘而硬编码。例如时干戊临天心→天心特殊+3（极小+2），时干戊临值符→值符+3（受宫克+2），同时临天心和值符→二种独立吉助都算；同宫乙、丁只属于一组奇助；宫内多个用神别名或同符号乙兼任时干/年命**不能自己临自己**。乙丁通常+3、极小+2、墓/刑优先+1；该真实宫逢空时把天心+值符+一组乙丁等**全部合格独立吉助先总计再整除2向下取整**，不是一项项折半。适用宿主为天芮、患者/关系用神、时干、已知年命和真实长辈乾坤，无关乾坤不加。用神自身不能产生自己的“临吉助”；若同宫另有一个不同的真实用神才能让该吉助符号触发。每一独立符号在每一物理宫仅计一次。
+- 基础分规则纠正：源81天地格的强弱等级已考虑真实天盘干力量；旧V7.7/V7.8再次单独叠加 `+4` 等天盘乙/丁/庚自身能量属于重复。现在 Python `src/wengua/health_quant_overlay_vnext.py` 与原生Swift `ios/WenguaAppUI/WenguaNativeVNextEngine.swift` 同步不再重复把天干分加到格局之上，保留原200格作为**资料与独立条件**（并不删除）；基础星/门/神/81格、门破/空亡计算一次，每宫最多一份基础分。条件加分与跨宫克病、五不遇时扣分分层。现役评分标记 `V7.9_NO_SELF_COHOST_NO_DUPLICATE_STEM_POINTS`。
+- 新可复现组合测试：`tests/test_health_v79_independent_cohost_matrix_20261027.py` 通过全组合生成值符(0/2/3)×乙丁一组(0/1/2/3)×天心(0/2/3)×空亡(有/无) **72组**数学期望，以及不同身份/同一符号正反例；原两固定时辰仍作为实盘输入但不再以V7.8结论为真。新原生编译与Python/Swift全字比较CI：`.github/workflows/health_v79_generalized_cohost_native_parity.yml`（push触发）；旧V7.8 workflow改为仅手动触发，避免自动把新规则输出归入旧V7.8成功档。原V7.7/V7.8测试保留旧断言但以对应 `final_scoring_policy` 为前提，否则跳过。Important 两语言原代码快照与Manifest Git Blob SHA、JSON模板双镜像已同步。
+- **全局不是只靠这两张盘证明。** 原版V7.8 `+3/+3` 原文、失败CI、旧200格81格、冻结V3.9.1、两书43章194案例均保留。详细逻辑、未来通用组合、临宫否决例及尚待核的跨宫能力问题写入 `docs/HEALTH_V79_GENERALIZED_INDEPENDENT_COHOST_RULES_2026-10-27.md`。**本轮 GitHub push 已真实执行，但由于可用GitHub状态API没有返回 Actions 运行详情，尚未取得最新V7.9整套Python CI/Swift实编译成功凭据，不得声称全部测试通过。** 另已用本地swiftc隔离验证跨行`for ... where`与多行三元表达式句法可编译，**不等于整个Swift项目验收**。
+- **仍需单独解决的评分风险**：跨宫克病继续可能用 `abs(施力宫最终吉凶分)>1` 把负极大凶误看作有力、绕过原5×5资格门槛；此处没有用户明确新口径，因此保留旧V7.8实现并标待审，**不能宣布真实预测正确或完整领域PASS**。本章新增古籍源0、原著新事件0。后续须对全部不同宿主符号/墓刑/空/隐藏旬首、真盘独立随机时辰与完整Py/Swift文本做回归，不能只测已知两个案例。
