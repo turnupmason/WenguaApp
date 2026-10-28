@@ -36,22 +36,22 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v80/colleague.json
-          /tmp/wengua-v80/native /tmp/wengua-v80/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/colleague_swift.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/colleague_swift.log 2> /tmp/wengua-v80/colleague_swift_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/colleague.json /tmp/wengua-v80/colleague_swift.log /tmp/wengua-v80/colleague_diff.md
       - name: Original 1920 elderly woman EXACT pillars; do not resample
         run: |
           set -euo pipefail
           python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v80/elder.json
-          /tmp/wengua-v80/native /tmp/wengua-v80/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/elder_swift.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/elder_swift.log 2> /tmp/wengua-v80/elder_swift_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/elder.json /tmp/wengua-v80/elder_swift.log /tmp/wengua-v80/elder_diff.md
       - name: New unbiased actual timestamps for self father wife and old relative
         run: |
           set -euo pipefail
           python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279901 --count 12 --output /tmp/wengua-v80/twelve.json | tee /tmp/wengua-v80/twelve_draws.log
-          /tmp/wengua-v80/native /tmp/wengua-v80/twelve.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/twelve_swift.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/twelve.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/twelve_swift.log 2> /tmp/wengua-v80/twelve_swift_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/twelve.json /tmp/wengua-v80/twelve_swift.log /tmp/wengua-v80/twelve_diff.md
           python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279902 --count 8 --wife-only --output /tmp/wengua-v80/eight.json | tee /tmp/wengua-v80/eight_draws.log
-          /tmp/wengua-v80/native /tmp/wengua-v80/eight.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v80/eight_swift.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/eight.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/eight_swift.log 2> /tmp/wengua-v80/eight_swift_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/eight.json /tmp/wengua-v80/eight_swift.log /tmp/wengua-v80/eight_diff.md
       - name: Build full source-and-native user-visible real scoring archive
         run: |
