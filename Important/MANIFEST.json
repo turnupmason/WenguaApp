@@ -277,7 +277,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "98bf513b2619b0ba26643829d8e94d00cfd2b305"
+      "sha": "5e51fb2c7e6e81de6d3d92bd791b8d8732847213"
     },
     {
       "platform": "python",
@@ -433,7 +433,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "98bf513b2619b0ba26643829d8e94d00cfd2b305"
+      "sha": "5e51fb2c7e6e81de6d3d92bd791b8d8732847213"
     },
     {
       "platform": "swift",
