@@ -12,7 +12,9 @@ from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review
 ISO="2026-10-28T13:44:00-04:00"
 ZONE="America/New_York"
 ROLES={"self":("self","本人","direct_self"),
-       "colleague":("colleague","同事","direct_proxy")}
+       "colleague":("colleague","同事","direct_proxy"),
+       "grandfather":("grandfather","爷爷","direct_proxy"),
+       "grandmother":("grandmother","奶奶","direct_proxy")}
 
 def produce(role):
     relation,label,context=ROLES[role]
@@ -24,15 +26,23 @@ def produce(role):
         "year":"丙午","month":"戊戌","day":"乙亥","hour":"癸未"}
     q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
     s=q["summary"]
-    assert s["raw_final_before_saturation"]==0
-    assert s["score"]==0
-    # User-approved V8 wording: a computed 0 is 不凶不吉 regardless of
-    # separately retained source-confidence or directional research flags.
-    # This is a traditional grade label, not a clinical prognosis.
-    last=next(section["text"] for section in r["sections"]
-              if section["id"]=="90_review")
-    assert "此病为不凶不吉" in last
-    assert "暂不强断吉凶" not in last
+    # Self and colleague were the exact zero-score user screenshot reports.
+    # Grandparents may have OTHER totals because a real gender palace is used.
+    if role in ("self","colleague"):
+        assert s["raw_final_before_saturation"]==0
+        assert s["score"]==0
+        # User-approved V8 wording for an actually computed zero.
+        last=next(section["text"] for section in r["sections"]
+                  if section["id"]=="90_review")
+        assert "此病为不凶不吉" in last
+        assert "暂不强断吉凶" not in last
+    else:
+        patient=q["summary"]["actual_role_strengths"]["patient"]
+        gender=q["summary"]["actual_role_strengths"]["gender"]
+        assert patient["symbol"]==r["four_pillars"]["year"][0]
+        assert gender["palace"]==(6 if role=="grandfather" else 2)
+        assert "natal" not in q["roles"]
+        assert r["audit"]["role_confidence"]=="conditional_older_generation_analogy_not_exact_case"
     roles={k:{"palace":v["palace"],
               "components":{"star":v["star"]["score"],
                             "door":v["door"]["score"],
