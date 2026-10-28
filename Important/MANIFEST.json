@@ -572,6 +572,12 @@
       "canonical": "tests/test_ios_palace_source_power_20261028.py",
       "snapshot": "Important/python/tests/test_ios_palace_source_power_20261028.py",
       "sha": "1b2d0b39c78dbc0b4709bce2d7291e47a9a50777"
+    },
+    {
+      "platform": "swift",
+      "canonical": "scripts/打开问卦模拟器.command",
+      "snapshot": "Important/swift/scripts/打开问卦模拟器.command",
+      "sha": "e315a8067edbec9dd76ed6a7cc125ef3ad0ccefe"
     }
   ]
 }

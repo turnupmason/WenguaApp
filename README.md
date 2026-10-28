@@ -70,3 +70,14 @@ python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_2026
 
 
 > **2026-10-28 13:44 真盘对照**：本人日干乙艮8与同事月干戊离9虽然用神不同，却巧合覆盖相同四物理宫，原分均0；若0与实际凶象冲突或人物源尚未核，则不能推断「微恙」，改为未定论但保留原分。完整复现：[中性冲突审计](docs/HEALTH_V80_ZERO_CONFLICT_20261028_1344_AUDIT.md)。
+
+
+## Mac 一键打开当前 iPhone Simulator 版（2026-10-28 已编译验收）
+
+本机须已安装 Xcode、iOS Simulator Runtime 和 XcodeGen（如未安装，运行 `brew install xcodegen`）。克隆本仓库后在根目录执行：
+
+```sh
+./scripts/打开问卦模拟器.command
+```
+
+脚本自动生成现有 `WenguaApp.xcodeproj`、编译真实 `问卦.app`、检验四项资源并在 iPhone Simulator 安装打开。**这不是可在macOS Finder直接运行的Mac应用，也不是真机签名App。** GitHub [Xcode Simulator #40749467216](https://github.com/turnupmason/WenguaApp/actions/runs/40749467216) 已PASS，页面的 Artifacts 可取未签名模拟器 App。仅UI显示层修补，V8.0 固定模板与起盘计分逻辑完全不动。

@@ -2041,3 +2041,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 本次新规则真 Python/Swift 原始两历史盘、13:44多人物与20真实时刻完整全文逐字一致：GitHub V8专项 `#40747800929` **PASS**；两侧源计分/中文模板保持一致，Python/Swift没有新分数表。旧历史V7专项若报告失败不得伪称V8正式验证失败或删除旧记录。
 - 最初V8主CI `#40747800957` **FAIL**：旧UI结构静态测试 `tests/test_ios_health_grade_copy_20261028.py`仍要求`String(star.0.dropFirst())`逐星第二行，已按用户新「天芮／禽单行」修改该测试（commit `ed88fe6`）。下一轮 `#40747944601` 仍 **FAIL**：另一旧`tests/test_health_v80_disease_dual_sky_20261028.py`硬要求`symbolRow(star.0,kind:"star",stem:star.1)`，亦是旧行布局断言而非81格错；按真实新UI的「同星行、独立天盘行、独立地盘行且逐星归属」重新设静态合约（commit `19f58c6`）。两个失败Actions与代码历史都保留；不得通过回滚合法双星排列令假旧测通过。
 - 现行新UI含真实13:44人物门槛、25/72组合/双天盘及全源200力量渲染结构、Important所有镜像、数据smoke：V8主CI `#40748081165` Python3.11/3.12 **PASS**。真实 macOS XcodeGen iOS Simulator 与 bundle 资源工作流 `#40747800998` 已因本轮SwiftUI源变更触发，但查看时处于**queued**，未返回真实编译、包验收，故暂不能给此次源码标记Xcode PASS；之前的 `#40745274121` 是改前版本，仅作历史成功证据。实际状态以本轮 run 页面和新日志为准。
+
+
+## 2026-10-28 · UI-only Xcode真实PASS（与冻结V8彻底分离）
+
+- 用户明确重申：「软件UI显示及调用是UI工作；V8.0正式模板、200/81源库、起盘规则、计分算法冻结，不因调界面去改」。以后宫位详情必须**只读正式已算出的宫内数据**，不得加入额外打分器或重新生成断词。
+- 本次真Xcode失败 `#40747800998` 保留历史原始日志，确切错误为 `WenguaPalacePowerDetail.swift:84` Swift字符串拼接及51行SwiftUI复杂视图类型检查。仅显示层拆子卡修复 `a8dead6c`，没改V8引擎/模板/200/81原表。macOS iPhone Simulator XcodeGen→xcodebuild→bundle四资源 **实测PASS #40749467216**；真iOS Simulator未签名.app Artifact `12843257658`、日志 Artifact `12843402352`、PASS归档保留。
+- 新增Mac一键启动脚本 `scripts/打开问卦模拟器.command`，仅本地XcodeGen构建、资源核查、simctl install/launch，无任何V8业务文件写入。详细文件 `docs/IOS_V80_UI_ONLY_XCODE_REPAIR_20261028.md`。Mac上是否完成实际用户设备启动仍须用户在本地执行；macOS Actions不能代替签名真机验收。
