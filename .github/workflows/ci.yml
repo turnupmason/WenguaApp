@@ -22,6 +22,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
       - name: Premium iOS result screen source contract
         run: python -m unittest discover -s tests -p 'test_ios_premium_result_ui_20261028.py' -v
+      - name: Immersive offline iPhone journey, frozen V8 and role UI contract
+        run: python -m unittest discover -s tests -p 'test_ios_immersive_journey_20261028.py' -v
       - name: Real source/snapshot Important byte integrity
         run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
       - name: Existing database schema and 1080 index smoke

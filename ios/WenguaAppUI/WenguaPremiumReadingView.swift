@@ -33,6 +33,45 @@ struct WenguaVerdictPresentation {
     }
 }
 
+// UI-only labels, projected from the exact V8 role binding that produced
+// the customer's reading. Independent roles sharing one actual palace are
+// composed with ／. No role is reverse-engineered from a pretty chart tile.
+enum WenguaPalaceIdentity {
+    static let displayOrder:[(String,String)]=[
+        ("illness","病"),("doctor","西医"),("medicine","中医"),
+        ("chief","大吉神"),("hour","病事"),("patient","被测人"),
+        ("natal","年命"),("gender","长辈辅助")
+    ]
+    static func labels(_ reading:WenguaNativeCustomerReading?,
+                       palaceID:Int)->[String] {
+        guard let roles=reading?.rolePalaces else { return [] }
+        var labels:[String]=[]
+        for (key,text) in displayOrder where roles[key]==palaceID {
+            if !labels.contains(text) { labels.append(text) }
+        }
+        return labels
+    }
+}
+
+struct WenguaReturnToTop: View {
+    let action:()->Void
+    var body:some View {
+        Button(action:action) {
+            Label("回到顶部",systemImage:"arrow.up.to.line")
+                .font(.system(size:14,weight:.semibold))
+                .frame(maxWidth:.infinity)
+                .padding(16)
+                .foregroundStyle(QStyle.text)
+                .background(QStyle.surface,
+                            in:RoundedRectangle(cornerRadius:15))
+                .overlay(RoundedRectangle(cornerRadius:15)
+                    .stroke(QStyle.line.opacity(0.7),lineWidth:0.7))
+        }
+        .buttonStyle(.plain)
+        .accessibilityHint("滚动到本次解盘的最上方")
+    }
+}
+
 struct WenguaReadingTabStrip: View {
     @Binding var selection: Int
     private let labels = ["接卦", "专业解盘"]
@@ -60,7 +99,7 @@ struct WenguaReadingTabStrip: View {
             }
         }
         .padding(4)
-        .background(.white, in: RoundedRectangle(cornerRadius: 15))
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
     }
 }
 

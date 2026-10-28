@@ -16,6 +16,9 @@ struct WenguaNativeCustomerReading: Codable {
     let iso: String
     let evidenceStatus: String
     let sections: [WenguaNativeCustomerSection]
+    // UI-only actual V8 selected role -> physical palace. Optional for old
+    // saved readings; never a customer score or a second interpretation.
+    var rolePalaces: [String:Int]? = nil
 }
 
 enum WenguaNativeReadingError: Error, LocalizedError {
@@ -253,7 +256,7 @@ enum WenguaNativeReadingRouter {
                 version:"gpt_python_original_vnext_literal_customer_20261026",
                 topicID:topicID,relationship:relationship,iso:chart.iso,
                 evidenceStatus:"real_native_score_private_python_full_text_parity",
-                sections:exact)
+                sections:exact,rolePalaces:review.roles)
         }
         // Original injectable stage-one entry used by legacy tests only.
         // The production fromBundle path ALWAYS supplies 200 original cells.

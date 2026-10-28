@@ -16,10 +16,11 @@ enum QStyle {
     static let red = Color(red: 0.90, green: 0.28, blue: 0.23)
     static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)
     static let green = Color(red: 0.14, green: 0.68, blue: 0.39)
-    static let text = Color(red: 0.20, green: 0.20, blue: 0.21)
-    static let secondary = Color(red: 0.57, green: 0.58, blue: 0.60)
-    static let backing = Color(red: 0.968, green: 0.962, blue: 0.945)
-    static let line = Color(red: 0.88, green: 0.86, blue: 0.83)
+    static let text = Color(uiColor: .label)
+    static let secondary = Color(uiColor: .secondaryLabel)
+    static let backing = Color(uiColor: .systemGroupedBackground)
+    static let surface = Color(uiColor: .secondarySystemGroupedBackground)
+    static let line = Color(uiColor: .separator)
 }
 
 // Consistent per-symbol five-element palette, never a per-layer color.
@@ -261,14 +262,28 @@ struct WenguaMark: View {
 
 struct WenguaRootView: View {
     @State private var topic: QuestionTopic?
+    @State private var entered = false
+    @AppStorage("wengua:appearance") private var appearance = "system"
+
+    private var chosenScheme: ColorScheme? {
+        appearance=="dark" ? .dark : appearance=="light" ? .light : nil
+    }
     var body: some View {
-        if let topic {
-            NavigationStack {
-                ProfessionalChartScreen(topic:topic,changeTopic:{self.topic=nil})
+        Group {
+            if let topic {
+                NavigationStack {
+                    ProfessionalChartScreen(topic:topic,changeTopic:{self.topic=nil})
+                }
+            } else if entered {
+                WenguaDomainJourneyScreen(select:{next in topic=next},
+                                          goHome:{withAnimation { entered=false }})
+            } else {
+                WenguaCloudWelcomeScreen {
+                    withAnimation(.easeInOut(duration:0.3)) { entered=true }
+                }
             }
-        } else {
-            QuestionEntryScreen { next in topic=next }
         }
+        .preferredColorScheme(chosenScheme)
     }
 }
 struct QuestionEntryScreen: View {
@@ -324,7 +339,7 @@ struct QuestionEntryScreen: View {
                                     Spacer()
                                 }
                                 .padding(14)
-                                .background(.white,in:RoundedRectangle(cornerRadius:14))
+                                .background(QStyle.surface,in:RoundedRectangle(cornerRadius:14))
                             }
                             .buttonStyle(.plain)
                         }
@@ -358,7 +373,7 @@ struct QuestionEntryScreen: View {
                                     }
                                     .frame(maxWidth:.infinity,minHeight:110,alignment:.leading)
                                     .padding(13)
-                                    .background(.white,in:RoundedRectangle(cornerRadius:15))
+                                    .background(QStyle.surface,in:RoundedRectangle(cornerRadius:15))
                                 }
                                 .buttonStyle(.plain)
                             }
@@ -393,6 +408,7 @@ struct ProfessionalChartScreen: View {
         }
     }
     var body: some View {
+        ScrollViewReader { reader in
         ScrollView {
             VStack(alignment:.leading,spacing:0) {
                 HStack(spacing:12) {
@@ -403,9 +419,10 @@ struct ProfessionalChartScreen: View {
                             .font(.caption).foregroundStyle(QStyle.secondary)
                     }
                     Spacer()
+                    WenguaAppearanceMenu()
                     Button("更换领域",action:changeTopic)
                         .font(.caption).buttonStyle(.bordered)
-                }.padding(14)
+                }.padding(14).id("readingTop")
 
                 if let chart=nativeChart {
                     chartHeader(chart)
@@ -438,7 +455,7 @@ struct ProfessionalChartScreen: View {
                                     .font(.system(size:14,weight:.medium))
                                     .foregroundStyle(QStyle.text)
                                     .padding(18)
-                                    .background(.white,
+                                    .background(QStyle.surface,
                                                 in:RoundedRectangle(cornerRadius:15))
                                 }
                                 .buttonStyle(.plain)
@@ -472,6 +489,11 @@ struct ProfessionalChartScreen: View {
                             })) { palace in
                                 NativePalaceEvidenceCard(palace:palace)
                             }
+                            WenguaReturnToTop {
+                                withAnimation(.easeInOut(duration:0.38)) {
+                                    reader.scrollTo("readingTop",anchor:.top)
+                                }
+                            }
                         }
                         .padding(.horizontal,16)
                         .padding(.bottom,24)
@@ -481,9 +503,9 @@ struct ProfessionalChartScreen: View {
                         Text("准备起局").font(.system(size:27,weight:.semibold))
                         Text("事项已选："+topic.domainTitle+" / "+topic.title)
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Text("你可以选择按确认时刻起局，或者手动指定年月日时分。两种模式都由同一套本机离线算法计算九宫。")
+                        Text("不需挑选时辰。确认静心结束后，取手机真实时刻与本地时区离线起盘。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Button("设置问事与时间") {showAsk=true}
+                        Button("填写问事人与事项") {showAsk=true}
                             .buttonStyle(.borderedProminent)
                             .frame(maxWidth:.infinity)
                         Text("之后需完整静心30秒。仅在成功起盘、保存记录后登记同一事项15天限制。")
@@ -491,13 +513,13 @@ struct ProfessionalChartScreen: View {
                     }
                     .frame(maxWidth:.infinity,alignment:.leading)
                     .padding(22)
-                    .background(.white,in:RoundedRectangle(cornerRadius:18))
+                    .background(QStyle.surface,in:RoundedRectangle(cornerRadius:18))
                     .padding(14)
                 }
             }
         }
         .background(QStyle.backing)
-        .navigationTitle("局式")
+        .navigationTitle("问卦 · 本局")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(item:$chosenPalace) { palace in
             ProfessionalPalaceDetail(palace:palace,
@@ -520,12 +542,16 @@ struct ProfessionalChartScreen: View {
             // native V-next. No FrozenReadingV391 sample path is reachable.
             if nativeChart == nil {showAsk=true}
         }
+        }
     }
     private var palaceBoard: some View {
         LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:3),
                   spacing:7) {
             ForEach(palaces) { palace in
-                Button {chosenPalace=palace} label:{ProfessionalPalaceTile(palace:palace)}
+                Button {chosenPalace=palace} label:{
+                    ProfessionalPalaceTile(palace:palace,
+                        identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
+                }
                     .buttonStyle(.plain)
             }
         }
@@ -543,7 +569,7 @@ struct ProfessionalChartScreen: View {
                         .foregroundStyle(QStyle.text)
                 }
                 Spacer(minLength:5)
-                Button("选择时间") { showAsk=true }
+                Button("再次问事") { showAsk=true }
                     .font(.system(size:13,weight:.medium))
                     .buttonStyle(.bordered)
             }
@@ -586,7 +612,7 @@ struct ProfessionalChartScreen: View {
             .padding(.horizontal,3)
         }
         .padding(16)
-        .background(.white,in:RoundedRectangle(cornerRadius:20))
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:20))
         .padding(.horizontal,12)
         .padding(.top,6)
     }
@@ -680,24 +706,40 @@ struct PalaceLifeRow: View {
 // attached to THIS computed physical palace; no style-level divination.
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
-    private let labelColor = Color(red:0.49,green:0.54,blue:0.56)
+    var identityLabels:[String] = []
+    private let labelColor = Color(uiColor:.tertiaryLabel)
 
     var body: some View {
-        VStack(alignment:.leading,spacing:9) {
-            palaceHeading
-            if palace.id == 5 {
-                centralPalace
-            } else {
-                symbolsSection
-                stemsSection
-                statusSection
-                Spacer(minLength:0)
+        ZStack {
+            if !identityLabels.isEmpty && palace.id != 5 {
+                Text(identityLabels.joined(separator:"／"))
+                    .font(.system(size:identityLabels.count>1 ? 16:29,
+                                  weight:.semibold,design:.serif))
+                    .foregroundStyle(QStyle.text.opacity(0.085))
+                    .lineLimit(3)
+                    .minimumScaleFactor(0.58)
+                    .multilineTextAlignment(.center)
+                    .rotationEffect(.degrees(-14))
+                    .padding(.horizontal,4)
+                    .accessibilityHidden(true)
             }
+            VStack(alignment:.leading,spacing:9) {
+                palaceHeading
+                if palace.id == 5 {
+                    centralPalace
+                } else {
+                    symbolsSection
+                    stemsSection
+                    statusSection
+                    Spacer(minLength:0)
+                }
+            }
+            .frame(maxWidth:.infinity,alignment:.topLeading)
         }
         .padding(.horizontal,9)
         .padding(.vertical,11)
         .frame(maxWidth:.infinity,minHeight:198,alignment:.topLeading)
-        .background(.white,in:RoundedRectangle(cornerRadius:13))
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:13))
         .overlay(RoundedRectangle(cornerRadius:13)
             .stroke(QStyle.line.opacity(0.8),lineWidth:0.7))
         .contentShape(RoundedRectangle(cornerRadius:13))
@@ -769,8 +811,8 @@ struct ProfessionalPalaceTile: View {
         }
     }
     private var stemsSection: some View {
-        VStack(spacing:5) {
-            Rectangle().fill(QStyle.line.opacity(0.7)).frame(height:1)
+        VStack(spacing:8) {
+            // No divider between the door and heaven stem.
             HStack(alignment:.firstTextBaseline,spacing:2) {
                 stemLine("天",palace.sky)
                 Spacer(minLength:1)
@@ -935,7 +977,7 @@ struct ProfessionalPalaceDetail: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(15)
-        .background(.white, in: RoundedRectangle(cornerRadius:15))
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius:15))
     }
     private func multiValueCard(_ label:String,value:String,kind:String) -> some View {
         VStack(alignment:.leading,spacing:10) {
@@ -950,7 +992,7 @@ struct ProfessionalPalaceDetail: View {
         }
         .frame(maxWidth:.infinity,minHeight:90,alignment:.leading)
         .padding(13)
-        .background(.white,in:RoundedRectangle(cornerRadius:15))
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:15))
     }
     private func detailTag(_ label: String) -> some View {
         Text(label)
@@ -968,7 +1010,7 @@ struct ProfessionalPalaceDetail: View {
         }
         .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
         .padding(13)
-        .background(.white, in: RoundedRectangle(cornerRadius: 15))
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
     }
 
     private func stemCard(_ label: String, sky: String, ground: String) -> some View {
@@ -987,7 +1029,7 @@ struct ProfessionalPalaceDetail: View {
         }
         .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
         .padding(13)
-        .background(.white, in: RoundedRectangle(cornerRadius: 15))
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
     }
 
     private func factCard(_ title: String, text: String) -> some View {
@@ -998,7 +1040,7 @@ struct ProfessionalPalaceDetail: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(15)
-        .background(.white, in: RoundedRectangle(cornerRadius: 15))
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
     }
 }
 
@@ -1058,8 +1100,6 @@ struct CastSetupScreen: View {
     @State private var birthYear = ""
     @State private var question = ""
     @State private var duration = "未说明"
-    @State private var chosenTime = Date()
-    @State private var useCurrentInstant = true
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
@@ -1086,13 +1126,6 @@ struct CastSetupScreen: View {
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)
-                            if subject != "本人" {
-                                Picker("问病情境",selection:$inquiryContext) {
-                                    Text("当面代问").tag("direct_proxy")
-                                    Text("闻讯按事件时间起局").tag("event_news")
-                                }
-                                .pickerStyle(.menu)
-                            }
                             Picker("病人性别（可选）",selection:$patientSex) {
                                 Text("未说明").tag("unspecified")
                                 Text("男").tag("male")
@@ -1113,29 +1146,18 @@ struct CastSetupScreen: View {
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
-                            Toggle("按当前时间起局",isOn:$useCurrentInstant)
-                                .tint(QStyle.blue)
-                            if !useCurrentInstant {
-                                DatePicker("手动选择年月日时分",selection:$chosenTime,
-                                           displayedComponents:[.date,.hourAndMinute])
-                                    .datePickerStyle(.wheel)
-                                    .labelsHidden()
-                                    .frame(maxWidth:.infinity)
-                            }
-                            Text(useCurrentInstant ?
-                                 "30秒结束后按确认起局时，采集本机真实时刻与 IANA 时区。" :
-                                 "当前选择指定时刻复盘，按你明确指定的时间起盘，仍须通过30秒静心。")
+                            Text("不提供手选时辰。完成30秒静心后点击确认起局，现场采集手机真实时刻及 IANA 时区。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
                         .padding(12)
-                        .background(.white, in: RoundedRectangle(cornerRadius: 14))
+                        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 14))
                         VStack(alignment: .leading, spacing: 8) {
                             Text("一事一占 · 尊重事实").font(.headline)
                             Text("静下心想这件事30秒。心诚则灵，尊重事实。同一件事15天内只完成一次真实起局。仅凭本机记录无法彻底识别换说法或换设备的同一件事。")
                                 .font(.subheadline)
                         }
                         .padding(15)
-                        .background(Color(red: 1.0, green: 0.98, blue: 0.92),
+                        .background(QStyle.surface,
                                     in: RoundedRectangle(cornerRadius: 14))
                         if !validationMessage.isEmpty {
                             Text(validationMessage)
@@ -1187,7 +1209,7 @@ struct CastSetupScreen: View {
                 .padding(18)
             }
             .background(QStyle.backing)
-            .navigationTitle(phase == 0 ? "问事与起局时间" : "静心三十秒")
+            .navigationTitle(phase == 0 ? "问事与人物" : "静心三十秒")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -1216,7 +1238,7 @@ struct CastSetupScreen: View {
             return
         }
         do {
-            let finalInstant=useCurrentInstant ? Date() : chosenTime
+            let finalInstant=Date()
             let localZone=TimeZone.current.identifier
             let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
             // A successful chart is not enough: fail before issuing the 15-day
@@ -1312,6 +1334,7 @@ struct TraditionalReadingPreview: View {
     }
     var body: some View {
         NavigationStack {
+            ScrollViewReader { reader in
             ScrollView {
                 VStack(alignment:.leading,spacing:16) {
                     HStack {
@@ -1328,6 +1351,7 @@ struct TraditionalReadingPreview: View {
                         }
                     }
                     WenguaReadingTabStrip(selection:$selectedTab)
+                        .id("readingTop")
                     if selectedTab == 0 {
                         if !board.isEmpty {
                             Text("本盘九宫")
@@ -1336,7 +1360,8 @@ struct TraditionalReadingPreview: View {
                                       spacing:7) {
                                 ForEach(board) { palace in
                                     Button {chosenPalace=palace} label:{
-                                        ProfessionalPalaceTile(palace:palace)
+                                        ProfessionalPalaceTile(palace:palace,
+                                            identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                                     }
                                     .buttonStyle(.plain)
                                 }
@@ -1364,6 +1389,11 @@ struct TraditionalReadingPreview: View {
                                 NativePalaceEvidenceCard(palace:palace)
                             }
                         }
+                        WenguaReturnToTop {
+                            withAnimation(.easeInOut(duration:0.38)) {
+                                reader.scrollTo("readingTop",anchor:.top)
+                            }
+                        }
                     }
                     Text("仅供传统文化与古籍象意研究，不提供医学诊断、预后或治疗建议。")
                         .font(.caption).foregroundStyle(QStyle.secondary)
@@ -1383,6 +1413,7 @@ struct TraditionalReadingPreview: View {
                      hourHorse:nativeChart?.hourHorse ?? "",
                      hourHorsePalace:nativeChart?.hourHorsePalace ?? 0)
                     .presentationDetents([.medium,.large])
+            }
             }
         }
     }
@@ -1429,7 +1460,7 @@ private struct WenguaHealthFormationSection: View {
         }
         .padding(14)
         .frame(maxWidth:.infinity,alignment:.leading)
-        .background(.white,in:RoundedRectangle(cornerRadius:12))
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:12))
     }
 }
 
@@ -1483,7 +1514,7 @@ struct NativePalaceEvidenceCard: View {
         }
         .frame(maxWidth:.infinity,alignment:.leading)
         .padding(16)
-        .background(.white,in:RoundedRectangle(cornerRadius:14))
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:14))
     }
 }
 

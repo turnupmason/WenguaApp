@@ -1,0 +1,186 @@
+import SwiftUI
+
+// Offline, asset-free atmospheric entrance. This is visual only: clouds are
+// native gradients and blurs, not a network service or a model response.
+struct WenguaCloudAtmosphere: View {
+    @State private var floating = false
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                LinearGradient(
+                    colors: [Color(red:0.025,green:0.08,blue:0.16),
+                             Color(red:0.045,green:0.17,blue:0.28),
+                             Color(red:0.09,green:0.24,blue:0.31)],
+                    startPoint:.topLeading,endPoint:.bottomTrailing)
+                RadialGradient(colors:[Color(red:0.54,green:0.78,blue:0.91).opacity(0.38),
+                                       .clear],center:.init(x:0.72,y:0.35),
+                               startRadius:12,endRadius:geo.size.width*0.75)
+                Ellipse()
+                    .fill(Color(red:0.63,green:0.82,blue:0.94).opacity(0.24))
+                    .frame(width:geo.size.width*1.35,height:geo.size.height*0.23)
+                    .blur(radius:48)
+                    .offset(x:floating ? -40:36,y:geo.size.height*0.27)
+                Ellipse()
+                    .fill(Color(red:0.80,green:0.91,blue:0.97).opacity(0.19))
+                    .frame(width:geo.size.width*1.6,height:geo.size.height*0.20)
+                    .blur(radius:52)
+                    .offset(x:floating ? 35:-22,y:geo.size.height*0.37)
+                Ellipse()
+                    .fill(Color(red:0.44,green:0.72,blue:0.92).opacity(0.19))
+                    .frame(width:geo.size.width*1.3,height:geo.size.height*0.22)
+                    .blur(radius:50)
+                    .offset(x:floating ? 12:-45,y:-geo.size.height*0.26)
+                Circle()
+                    .stroke(Color.white.opacity(0.16),lineWidth:0.6)
+                    .frame(width:min(geo.size.width*0.82,350))
+                    .overlay {
+                        Circle().stroke(Color.white.opacity(0.08),lineWidth:0.7)
+                            .padding(25)
+                    }
+                    .offset(y:-geo.size.height*0.10)
+                ForEach(0..<20,id:\.self) { i in
+                    Circle()
+                        .fill(Color.white.opacity(i.isMultiple(of:3) ? 0.46:0.17))
+                        .frame(width:i.isMultiple(of:4) ? 2.6:1.2)
+                        .position(
+                            x:geo.size.width*CGFloat((i*37+19)%100)/100,
+                            y:geo.size.height*CGFloat((i*61+13)%100)/100)
+                }
+            }
+            .frame(width:geo.size.width,height:geo.size.height)
+            .clipped()
+            .animation(.easeInOut(duration:9).repeatForever(autoreverses:true),
+                       value:floating)
+            .onAppear { floating=true }
+        }
+        .accessibilityHidden(true)
+        .allowsHitTesting(false)
+    }
+}
+
+struct WenguaAppearanceMenu: View {
+    @AppStorage("wengua:appearance") private var mode = "system"
+    private let options:[(String,String,String)] = [
+        ("system","跟随系统","circle.lefthalf.filled"),
+        ("light","日间模式","sun.max"),
+        ("dark","夜间模式","moon.stars")
+    ]
+
+    var body: some View {
+        Menu {
+            ForEach(0..<options.count,id:\.self) { index in
+                let option=options[index]
+                Button {
+                    mode=option.0
+                } label: {
+                    Label(option.1,systemImage:mode==option.0 ?
+                          "checkmark.circle.fill":option.2)
+                }
+            }
+        } label: {
+            Image(systemName:mode=="dark" ? "moon.stars.fill" :
+                             mode=="light" ? "sun.max.fill" : "circle.lefthalf.filled")
+                .font(.system(size:17,weight:.medium))
+                .frame(width:38,height:38)
+                .background(.thinMaterial,in:Circle())
+                .accessibilityLabel("切换日间夜间模式")
+        }
+    }
+}
+
+struct WenguaCloudWelcomeScreen: View {
+    let begin: () -> Void
+
+    var body: some View {
+        GeometryReader { geo in
+            ZStack {
+                WenguaCloudAtmosphere().ignoresSafeArea()
+                ScrollView {
+                    VStack(alignment:.leading,spacing:0) {
+                        HStack {
+                            WenguaMark(size:46)
+                            Text("W E N G U A")
+                                .font(.system(size:12,weight:.semibold,design:.rounded))
+                                .tracking(2.5)
+                                .foregroundStyle(Color.white.opacity(0.78))
+                            Spacer()
+                            WenguaAppearanceMenu().tint(.white)
+                        }
+                        .padding(.top,20)
+
+                        Spacer(minLength:geo.size.height*0.14)
+                        Text("东方智慧 · 离线解盘")
+                            .font(.system(size:12,weight:.medium))
+                            .tracking(4)
+                            .foregroundStyle(Color(red:0.87,green:0.75,blue:0.54))
+                        Text("欢迎来到\n问卦")
+                            .font(.system(size:52,weight:.medium,design:.serif))
+                            .tracking(3)
+                            .foregroundStyle(.white)
+                            .lineSpacing(11)
+                            .padding(.top,20)
+                            .accessibilityAddTraits(.isHeader)
+                        Text("以古籍为据，以规则为尺")
+                            .font(.system(size:20,weight:.medium,design:.serif))
+                            .foregroundStyle(Color.white.opacity(0.92))
+                            .padding(.top,21)
+                        Text("根植《神奇之门》《开悟之门》的易学解读体系。\n依真实时辰起局，逐宫推演，察时势、明进退。")
+                            .font(.system(size:15))
+                            .lineSpacing(7)
+                            .foregroundStyle(Color.white.opacity(0.72))
+                            .fixedSize(horizontal:false,vertical:true)
+                            .padding(.top,13)
+
+                        Spacer(minLength:geo.size.height*0.11)
+                        HStack(spacing:9) {
+                            welcomeTag("古籍为本")
+                            welcomeTag("规则推演")
+                            welcomeTag("本机离线")
+                        }
+                        .padding(.bottom,19)
+                        Button(action:begin) {
+                            HStack {
+                                Spacer()
+                                Text("开始问卦")
+                                    .font(.system(size:18,weight:.semibold))
+                                    .tracking(2)
+                                Spacer()
+                                Image(systemName:"arrow.up.right")
+                                    .font(.system(size:15,weight:.bold))
+                            }
+                            .foregroundStyle(Color(red:0.09,green:0.17,blue:0.24))
+                            .padding(.horizontal,23)
+                            .frame(height:59)
+                            .background(Color(red:0.92,green:0.82,blue:0.63),
+                                        in:RoundedRectangle(cornerRadius:17))
+                        }
+                        .buttonStyle(.plain)
+                        Text("30秒静心 · 实时起局 · 一事一占")
+                            .font(.system(size:12))
+                            .tracking(1)
+                            .foregroundStyle(Color.white.opacity(0.74))
+                            .frame(maxWidth:.infinity)
+                            .padding(.top,16)
+                            .padding(.bottom,23)
+                    }
+                    .padding(.horizontal,29)
+                    .frame(minHeight:geo.size.height,alignment:.topLeading)
+                }
+                .scrollIndicators(.hidden)
+            }
+        }
+        .preferredColorScheme(.dark) // The welcome cloud artwork is deliberately midnight.
+    }
+
+    private func welcomeTag(_ title:String)->some View {
+        Text(title)
+            .font(.system(size:11,weight:.medium))
+            .tracking(1)
+            .foregroundStyle(Color.white.opacity(0.82))
+            .padding(.horizontal,12)
+            .padding(.vertical,8)
+            .background(Color.white.opacity(0.09),in:Capsule())
+            .overlay(Capsule().stroke(Color.white.opacity(0.13),lineWidth:0.6))
+    }
+}
