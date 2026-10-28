@@ -43,7 +43,10 @@ class HealthCaptionUserUX(unittest.TestCase):
         self.assertIn(".frame(maxWidth:.infinity,alignment:.center)",self.main)
         self.assertIn('identityLabels.joined(separator:"／") + "宫"',self.main)
         self.assertIn('real.heavenStars.map',self.main)
-        self.assertIn('String(star.0.dropFirst())',self.main)
+        # Approved Oct 28 single-line 天芮／禽; do not demand the old
+        # per-star vertical row generator.
+        self.assertIn('(pair.0=="天禽" ? "禽" : pair.0)',self.main)
+        self.assertIn('starCarriers.reversed().enumerated()',self.main)
         self.assertIn('QFive.shade(kind,value)',self.main)
         self.assertIn("WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id)",self.main)
         self.assertIn("if palace.id == 5",self.main)
