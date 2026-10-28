@@ -96,17 +96,36 @@ private struct PublicCast:Encodable {
             try require(WenguaVNextEngine.cohostPoints(chief:chief,stem:earth,void:true)==expected/2,
                 "chief/ground cohost void floor must follow combined subtotal")
         }
-        for (attacker,empty,controlled,illEmpty,expected) in [
-            (0,false,false,false,0),(1,false,false,false,0),
-            (2,false,false,false,3),(3,false,false,true,5),
-            (3,true,false,true,1),(3,false,true,true,1),
-            (-5,true,false,false,1)
-        ] {
+        // V8.0: signed palace auspiciousness is deliberately NOT passed.
+        // Every actual directed 克 uses separate selected signifier powers
+        // and the one authoritative source 5x5 cell.
+        for (attacker,target,result,ability,empty,controlled,illEmpty,expected)
+           in [
+            ("极大","中等","有效克制","strong",false,false,false,3),
+            ("极大","中等","有效克制","strong",false,false,true,5),
+            ("极小","极大","完全失控","failed",false,false,false,0),
+            ("大","中等","微弱克制","limited",false,false,false,3),
+            ("极大","中等","有效克制","strong",true,false,false,1),
+            ("极大","中等","有效克制","strong",false,true,false,1),
+            ("极大","中等","有效克制","pending",false,false,false,0)
+           ] as [(String,String,String,String,Bool,Bool,Bool,Int)] {
             try require(WenguaVNextEngine.conditionalDiseaseControl(
-                attacker:attacker,attackerVoid:empty,
-                attackerControlled:controlled,illnessVoid:illEmpty)==expected,
-                "V7.8 3/5/1 illness control gate mismatch")
+                attackerPower:attacker,targetPower:target,
+                actualCell:result,applicability:ability,
+                attackerVoid:empty,attackerControlled:controlled,
+                illnessVoid:illEmpty)==expected,
+                "V8.0 actual selected use-god power / original matrix mismatch")
         }
+        try require(WenguaVNextEngine.conditionalDiseaseControl(
+           attackerPower:nil,targetPower:"中等",actualCell:"有效克制",
+           applicability:"strong",attackerVoid:false,attackerControlled:false,
+           illnessVoid:false)==0,"unresolved actor cannot gain +3")
+        try require(WenguaVNextEngine.independentSpecialHost(
+            [("stem","戊")],kind:"stem",symbol:"乙"),
+            "one different selected stem must co-host Yi")
+        try require(!WenguaVNextEngine.independentSpecialHost(
+            [("stem","乙"),("stem","乙")],kind:"stem",symbol:"乙"),
+            "same Yi role aliases cannot host self")
         try require((1...24).contains(fixture.cases.count),"expected 1...24 actual clocks")
         var times:Set<String>=[]
         for (i,test) in fixture.cases.enumerated() {
