@@ -45,7 +45,11 @@ jobs:
           test -f "$APP/reading_template.json"
           test -f "$APP/81_pairs.tsv"
           test -f "$APP/actor_profiles.json"
-          test -f "$APP/WenguaApp"
+          # PRODUCT_NAME is 问卦; read the actual executable
+          # name from Info.plist instead of assuming the Xcode target name.
+          EXE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Info.plist")
+          test -n "$EXE"
+          test -f "$APP/$EXE"
           python3 - "$APP" <<'PY'
           from pathlib import Path
           import json,sys,csv
