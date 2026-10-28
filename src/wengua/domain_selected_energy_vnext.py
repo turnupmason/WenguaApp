@@ -480,6 +480,10 @@ def selected_health_sections(result,*,actor,chart):
               "chief":"值符大吉神","gender":"性别辅助宫",
               "natal":"患者年命"}.get(key,key)
         strength=role_power_note(key,row)
+        # Every relationship is between this specific signifier and Tianrui;
+        # the target is NEVER substituted by the net signed palace grade.
+        illness_power=roles["illness"]["primary_strength_25"].get("strength_label")
+        strength+="天芮病星用神力量为"+str(illness_power or "待核")+"。"
         outcome=gate["control_result"]
         if key=="medicine" and rel=="同宫":
             return (strength+"乙奇与天芮病宫同宫，表示正在接受治疗，"
@@ -492,21 +496,39 @@ def selected_health_sections(result,*,actor,chart):
                     "")
         if rel=="克":
             bonus=quant["summary"]["control_bonus_palaces"]
-            if str(gate["palace"]) in bonus:
+            if key in bonus.get(str(gate["palace"]),[]):
                 void=roles["illness"]["complete_palace"]["void"]["classification"]
                 meaning=("病宫逢空，病气减弱，更易受到"+name+"的克制。"
                          if void!="not_void" else "病象受到"+name+"的克制。")
+            elif gate["control_ability"]=="不能":
+                meaning=name+"虽然在五行上克病宫，但双方实际力量比较未能成功克制。"
             else:
-                meaning=name+"虽克病宫，但护持之力难以发挥。"
+                meaning=name+"虽有克病方向，具体用神力量或矩阵限制未能支持确定的克病加分。"
             return strength+name+"宫克天芮病宫，"+meaning
         if rel=="生":
-            meaning=name+"宫生天芮病宫，意思为：疾病得不到"+name+"的压制，反受其生扶。"
+            meaning=name+"宫生天芮病宫，方向上生扶病宫，实际助病强弱须根据双方各自用神力量判断。"
         elif rel=="被克":
-            meaning=name+"宫受天芮病宫克，意思为："+name+"受病宫压制，无法制病。"
+            # Reverse real attacker/target: illness Tianrui attacks THIS
+            # independently selected role signifier, never signed palaces.
+            reverse=matchup(roles["illness"]["primary_strength_25"],
+                            row["primary_strength_25"],
+                            actor_role="illness",target_role=key,
+                            **void_kwargs(roles["illness"]["complete_palace"],
+                                          row["complete_palace"]))
+            r_ability=reverse.get("ability")
+            if r_ability=="能":
+                effect="病宫用神有力压制本方，制约较明显。"
+            elif r_ability=="艰难":
+                effect="病宫有克向但施力受限，不能直接断本方完全失力。"
+            elif r_ability=="不能":
+                effect="病宫虽有克向，但用神力量比较不能形成有效压制。"
+            else:
+                effect="病宫虽有克向，双方力量或空墓条件待核，不能直接断已受制。"
+            meaning=name+"宫受天芮病宫克，"+effect
         elif rel=="被生":
-            meaning=name+"宫受天芮病宫生，意思为：本宫受病宫生扶，未形成对病宫的克制。"
+            meaning=name+"宫受天芮病宫生，方向上受病宫生扶，实际承受力量按双方用神判断，非主动克病。"
         elif rel=="比和":
-            meaning=name+"宫与天芮病宫比和，意思为：双方同气，未形成对病宫的克制。"
+            meaning=name+"宫与天芮病宫比和，同气但不等于双方力量相同，也不是主动克病。"
         elif rel=="同宫":
             meaning=name+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
         else:
@@ -581,10 +603,14 @@ def selected_health_sections(result,*,actor,chart):
         name=(("长辈坤宫" if pid==2 else "长辈乾宫")
               if key=="gender" else titles[key])
         void=row["complete_palace"]["void"]["classification"]
+        symbol=row["primary_strength_25"]["symbol"]
+        signifier_power=row["primary_strength_25"].get("strength_label") or "待核"
         if pid in seen_palaces:
-            head=name+"与"+seen_palaces[pid]+"同在"+palace
+            head=(name+"与"+seen_palaces[pid]+"同在"+palace+
+                  "，其中"+symbol+"用神力量"+signifier_power)
         else:
-            head=name+"落"+palace+"，宫象"+quality
+            head=(name+"落"+palace+"，宫象"+quality+
+                  "，其中"+symbol+"用神力量"+signifier_power)
             if void!="not_void" and key!="chief":
                 head+="且逢"+("真空" if void=="true_void" else "假空")
             seen_palaces[pid]=name
