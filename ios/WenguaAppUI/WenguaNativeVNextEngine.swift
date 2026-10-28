@@ -866,9 +866,13 @@ enum WenguaVNextEngine {
                                      tianxin:tianxinPoints,void:isVoid)
             var tags:[String]=[]
             if chiefPoints>0 {tags.append("值符")}
+            var seenStemFamilies:Set<String>=[]
             for stem in stemCandidates {
-                let label=stem.2+stem.1
-                if !tags.contains(label) {tags.append(label)}
+                // 天盘乙与地盘乙 are the SAME Yi symbol for narration;
+                // only distinct Yi vs Ding may both be named, one bonus.
+                if seenStemFamilies.insert(stem.1).inserted {
+                    tags.append(stem.2+stem.1)
+                }
             }
             if tianxinPoints>0 {tags.append("天心星")}
             let joined=tags.joined(separator:"与")
