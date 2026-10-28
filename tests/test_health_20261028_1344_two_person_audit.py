@@ -116,7 +116,7 @@ class TwoPersonExactClockAudit(unittest.TestCase):
             self.assertEqual(summary["tianxian_global_final_bonus"],0)
             verdict=next(s["text"] for s in output["sections"]
                          if s["id"]=="90_review")
-            self.assertIn("此病为微恙",verdict)
+            self.assertIn("此病为不凶不吉",verdict)
             self.assertNotIn("暂不强断吉凶",verdict)
 
 if __name__=="__main__":

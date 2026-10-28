@@ -36,7 +36,7 @@ def produce(role):
         # The current fixed Kun-2 host restores neutral scoring at this clock.
         last=next(section["text"] for section in r["sections"]
                   if section["id"]=="90_review")
-        assert "此病为微恙" in last
+        assert "此病为不凶不吉" in last
         assert "暂不强断吉凶" not in last
     else:
         patient=q["summary"]["actual_role_strengths"]["patient"]
