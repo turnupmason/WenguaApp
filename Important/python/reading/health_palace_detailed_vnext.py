@@ -279,10 +279,18 @@ def render_complete_selected_palace(detail, *, quantified=None):
     # Tianrui + Tianqin each carries an independent sky/earth 81 pattern.
     top="、".join(stem_strength(x) for x in detail["heaven_stems"]) or "无"
     bottom=stem_strength(detail["earth_stem"])
+    if detail["palace"]==2:
+        hosted=detail.get("hosted_centre_earth_stem")
+        if not hosted:
+            raise ValueError("Kun palace is missing actual centre-earth stem")
+        bottom+="、中五寄干"+hosted
     book=detail["ordered_book_81_pairs"]
     from .health_reading_template_vnext import formation_sentence
     booktext=("；天地格："+ "；".join(formation_sentence(pair)
         for pair in book) if book else "；本宫没有实际天地盘有序格")
+    if detail["palace"]==2:
+        from .health_reading_template_vnext import render
+        booktext+="；"+render("kun_host_note")
     v=detail["void"]
     vt=("不空" if v["classification"]=="not_void" else
         "假空" if v["classification"]=="fake_void" else "真空")

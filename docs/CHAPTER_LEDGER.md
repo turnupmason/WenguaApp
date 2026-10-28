@@ -1404,3 +1404,10 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 
 ### 2026-10-28 · 零分断词实际观测 / 旧测试措辞契约修订
 正式本轮主CI #40776500317 的现场 text 以真实13:44 0分输出「综上所述，此病为不凶不吉；以上只作传统古籍象意参考，不能据此判断真实病情。」旧测试误硬断定「此病为微恙」导致失败。用户UI零分等级可显示「微恙／病势平缓」，但内部保留的V8完整自然书风断词此版仍按原模板“不凶不吉”；因此只将脚本和冻结回归对当前实际文字的断言纠正，不偷改模板、计分或用户端十档映射。将来若明确要改完整断词，必须 Python/Swift 同源一起审核。旧Actions与+3历史版本照留。
+
+## 2026-10-28 · 天显/伏吟、坤二双格局：正式 Python+Swift 计算与同源中文模板核对
+
+本轮用户明确要求不止 UI 口头规则，还要在离线模型脚本真实计分和客户模板生效。实查 Python src/wengua/health_macro_facts_vnext.py 的 tianxian_palace_bonus 与 src/wengua/health_quant_overlay_vnext.py 选中物理去重宫总分：天显时每唯一实宫+2；星伏吟或门伏吟任一命中，每宫三个半分单位(+1.5)，所有实宫合计后整除2统一向下取整；中五不计；五不遇时原每宫-2互不覆盖。Swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift 依据真实星门落宫计算伏吟，selectedPalaces.count*(3或4)//2 与 Python 保持同义，全文对照必须真跑而非静态推断。所有±5原宫吉凶/200格符号强度/控制矩阵没有更改。
+第二条源81在 src/wengua/health_81_excel_catalog_vnext.py、src/wengua/health_palace_detailed_vnext.py、src/wengua/health_quant_overlay_vnext.py 与 Swift 81 bridge/evaluate 都已使用固定坤二中宫地干：坤二始终两组真实有序天地格（一颗真实天星携干分别配本地和中五寄地；若真实天芮、天禽在坤，则两独立天星各配对应实干）。其他宫按本地干，不捏造中五普通神/星/门，两个角色同宫只累计一次基础宫分。
+审计发现旧版公众断词仍硬编码“天显时成立，全局得吉时之助”及“天显时格成立，整盘得吉时扶助”，且坤二原读法只显示一地盘干而未说明中五永久寄存。已把日常天显/伏吟天显及两类终论证据句、固定坤二寄干句统一放在 data/templates/health_severity_vnext/reading_template.json 的 macros，并更新 schema 到 v20261028_tianxian_kun_v9。Python health_macro_facts_vnext.render_first_stage_macro 和 domain_selected_energy_vnext.selected_health_sections，以及 Swift WenguaPythonVNextVerbatim.fullMacro/最终合断/坤二详断，全部从相同可编辑JSON读句。天显句只在实际命中时出现；遇伏吟文字表达吉助减缓，伏吟主慢保持，客户不显示分数、矩阵或运算过程；坤二提及两重天地格而非把中五另起一宫。原81数据文字、200源格不改。
+新回归 tests/test_tianxian_kun_template_narration_20261028.py 检查正常/伏吟/无天显真实模板路由、3宫+4及5宫+7算法、Python/Swift 共享模板键和坤二详情、原书81文本未改，增入当前V8主CI。旧 2026-10-28 13:44 本人/同事先0、天禽跟随暂版3、坤固定后0三个已揭晓版本及所有历史失败继续保留，禁止称新盲测。新提交的 Python单测、native parity、Xcode macOS 构建和App资源必须各自读取最新Actions成败；没有实测不得先报PASS。

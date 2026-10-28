@@ -42,8 +42,8 @@ enum WenguaPythonVNextVerbatim {
         if generating[y]==x{return "被生"}
         return "待核"
     }
-    private static func fullMacro(_ c:WenguaNativeChart,_ a:WenguaVNextAudit)
-      throws->String {
+    private static func fullMacro(_ c:WenguaNativeChart,_ a:WenguaVNextAudit,
+                                  macros:[String:String]) throws->String {
         let day=String(c.pillars.day.prefix(1))
         let hour=String(c.pillars.hour.prefix(1))
         let first=a.firstMacroFiveNot
@@ -75,7 +75,16 @@ enum WenguaPythonVNextVerbatim {
             ? "伏吟主慢，反吟主快；本盘星门分别命中，缓急并列待具体条件核定。"
             : slow ? "伏吟主慢。" : fast ? "反吟主快。"
             : "本盘无整盘伏吟反吟，不凭此三项擅断缓急。"
-        let good=a.tianxianHour ? "天显时成立，全局得吉时之助。" : ""
+        let good:String
+        if a.tianxianHour {
+            // The actual 伏吟 condition reduces Tianxian's participation.
+            // Customer text comes from the SAME bundled editable template.
+            let key=slow ? "tianxian_fuyin" : "tianxian_regular"
+            guard let line=macros[key] else {
+                throw WenguaNativeReadingError.missingPhrases
+            }
+            good=line
+        } else {good=""}
         return first+" "+good+"九星"+ss+"、八门"+ds+"。"+pace+" 缓急不自动等于吉凶。"
     }
     private static func monthColumn(_ stem:String,_ month:String)throws->String {
@@ -190,7 +199,8 @@ enum WenguaPythonVNextVerbatim {
                                    chart:WenguaNativeChart,
                                    review:WenguaVNextAudit,
                                    energy:WenguaNativeEnergyCatalog,
-                                   formations:[Int:WenguaHealthFormationBlock])
+                                   formations:[Int:WenguaHealthFormationBlock],
+                                   kunHostNote:String)
        throws ->String {
         let month=try month(chart)
         guard let row=review.palaces[p.id],let pe=elements[p.id],
@@ -214,15 +224,24 @@ enum WenguaPythonVNextVerbatim {
         }.joined(separator:"、")
         let earth=try powerStem(p.earthStem,stages:p.earthStages,
                                 palace:p.id,month:month,energy:energy)
+        var earthDesc=earth
+        if p.id==2 {
+            guard let hosted=chart.palaces.first(where:{$0.id==5})?.earthStem,
+                  !hosted.isEmpty else {
+                throw WenguaCastError.invalidChart
+            }
+            earthDesc+="、中五寄干"+hosted
+        }
         let chosen=formation.sentences
         let book=chosen.isEmpty ? "；本宫没有实际天地盘有序格" :
             "；天地格："+chosen.joined(separator:"；")
+        let kunNote=p.id==2 ? "；"+kunHostNote : ""
         let klass=row.void=="not_void" ? "不空" :
                   row.void=="fake_void" ? "假空" : "真空"
         let special=try conditions(p,chart)
         let broken=special.components(separatedBy:"、").contains("门破")
         let brokenNote=broken ? "。八门压制宫力量，吉事不吉，凶事更凶" : ""
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earth+book+"；空亡"+klass+"；"+special+brokenNote+"。全部因素推断后，此宫为"+signed(review.roleScores[role])+"。"
+        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earthDesc+book+kunNote+"；空亡"+klass+"；"+special+brokenNote+"。全部因素推断后，此宫为"+signed(review.roleScores[role])+"。"
     }
 
     private static func powerNote(_ role:String,_ p:WenguaNativePalace,
@@ -403,7 +422,7 @@ enum WenguaPythonVNextVerbatim {
                                                        text:text.trimmingCharacters(in:.whitespacesAndNewlines)))
         }
         push("01_macro",try title("macro"),try phrase("macro",[
-            "macro_text":fullMacro(chart,review)]))
+            "macro_text":fullMacro(chart,review,macros:macros)]))
         var viewed:[Int:String]=[:]
         var powerSeen:Set<String>=[]
         for (role,id,key) in [
@@ -419,8 +438,11 @@ enum WenguaPythonVNextVerbatim {
             if let original=viewed[pid] {
                 full="与前述"+original+"同在"+label(p)+"，合看该宫象。"
             } else {
+                var kunNote=""
+                if p.id==2 {kunNote=try phrase("kun_host_note")}
                 full=try palaceText(p,role:role,chart:chart,review:review,
-                                    energy:energy,formations:lookup)
+                                    energy:energy,formations:lookup,
+                                    kunHostNote:kunNote)
                 viewed[pid]=try title(key)
             }
             var extra=""
@@ -525,8 +547,12 @@ enum WenguaPythonVNextVerbatim {
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
         if review.firstMacroFiveNot {desc.insert("五不遇时成立，各实际参与实宫均减两分",at:0)}
-        if review.tianxianHour {desc.insert("天显时格成立，整盘得吉时扶助",at:0)}
-        let macroProse=try fullMacro(chart,review)
+        let macroProse=try fullMacro(chart,review,macros:macros)
+        if review.tianxianHour {
+            let key=macroProse.contains("伏吟主慢")
+                ? "tianxian_evidence_fuyin" : "tianxian_evidence_regular"
+            desc.insert(try phrase(key),at:0)
+        }
         let pace=macroProse.contains("缓急并列待具体条件核定") ?
             "伏吟反吟并见，缓急合参" :
             macroProse.contains("伏吟主慢") ? "伏吟主慢" :

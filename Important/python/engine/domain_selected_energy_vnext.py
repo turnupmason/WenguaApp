@@ -652,7 +652,11 @@ def selected_health_sections(result,*,actor,chart):
     if result["first_stage_macro"]["five_not_encounter_triggered"]:
         desc.insert(0,"五不遇时成立，各实际参与实宫均减两分")
     if result["first_stage_macro"].get("tianxian_hour_triggered"):
-        desc.insert(0,"天显时格成立，整盘得吉时扶助")
+        macros=result["first_stage_macro"]
+        desc.insert(0,render_slot(
+            "tianxian_evidence_fuyin"
+            if macros.get("star_fuyin") or macros.get("door_fuyin")
+            else "tianxian_evidence_regular"))
     desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
     # User-confirmed V8: resolved 0 is neutral; only missing score is pending.

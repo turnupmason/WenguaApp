@@ -86,6 +86,12 @@ def render_first_stage_macro(facts):
           "伏吟主慢。" if t=="slow" else
           "反吟主快。" if t=="fast" else
           "本盘无整盘伏吟反吟，不凭此三项擅断缓急。")
-    return (first+" "+
-            ("天显时成立，全局得吉时之助。" if facts.get("tianxian_hour_triggered")
-             else "")+prefix+pace+" 缓急不自动等于吉凶。")
+    # Read the approved editable template, not an unversioned hardcoded
+    # sentence. Whether 伏吟 reduces 天显 comes from the ACTUAL macro facts.
+    from .health_reading_template_vnext import render
+    if facts.get("tianxian_hour_triggered"):
+        good=render("tianxian_fuyin" if facts.get("star_fuyin") or
+                    facts.get("door_fuyin") else "tianxian_regular")
+    else:
+        good=""
+    return first+" "+good+prefix+pace+" 缓急不自动等于吉凶。"
