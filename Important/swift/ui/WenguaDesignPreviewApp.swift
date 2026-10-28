@@ -286,109 +286,6 @@ struct WenguaRootView: View {
         .preferredColorScheme(chosenScheme)
     }
 }
-struct QuestionEntryScreen: View {
-    let select: (QuestionTopic) -> Void
-    @State private var chosenDomain: String?
-    @State private var chosenTopic: String?
-    private var domain: QuestionDomain? {
-        QuestionCatalog.domains.first(where:{$0.id==chosenDomain})
-    }
-    private var selected: QuestionTopic? {
-        domain?.topics.first(where:{$0.id==chosenTopic})
-    }
-    var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment:.leading,spacing:17) {
-                    HStack(spacing:14) {
-                        WenguaMark(size:62)
-                        VStack(alignment:.leading,spacing:3) {
-                            Text("问卦").font(.system(size:32,weight:.semibold,design:.serif))
-                            Text("心诚则灵 · 尊重事实")
-                                .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        }
-                        Spacer(minLength:0)
-                        NavigationLink {
-                            WenguaLocalHistoryView()
-                        } label: {
-                            Label("记录",systemImage:"clock.arrow.circlepath")
-                                .font(.subheadline)
-                        }
-                    }
-                    .padding(.vertical,24)
-                    Text(chosenDomain==nil ? "先选择问事领域" : "再选择具体事项")
-                        .font(.system(size:24,weight:.semibold))
-                    Text("选定领域和细分事项后，才会调用对应的离线排盘与断案模板。未完成的模板不会冒充可用。")
-                        .font(.subheadline).foregroundStyle(QStyle.secondary)
-                    if let domain {
-                        Button("〈 返回领域") {chosenDomain=nil;chosenTopic=nil}
-                            .font(.subheadline).foregroundStyle(QStyle.blue)
-                        Text(domain.title).font(.headline)
-                        ForEach(domain.topics) { item in
-                            Button {chosenTopic=item.id} label: {
-                                HStack {
-                                    Image(systemName:chosenTopic==item.id ?
-                                          "largecircle.fill.circle":"circle")
-                                        .foregroundStyle(QStyle.blue)
-                                    VStack(alignment:.leading,spacing:3) {
-                                        Text(item.title).foregroundStyle(QStyle.text)
-                                        Text(item.enabled ? "已接入本机实算 · 接卦与专业解盘" :
-                                                "本专题的独立断案规则尚未移植")
-                                            .font(.caption).foregroundStyle(QStyle.secondary)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(14)
-                                .background(QStyle.surface,in:RoundedRectangle(cornerRadius:14))
-                            }
-                            .buttonStyle(.plain)
-                        }
-                        if let selected {
-                            Button(selected.enabled ? "继续设置时间与当事人" : "此项规则开发中") {
-                                if selected.enabled {select(selected)}
-                            }
-                            .buttonStyle(.borderedProminent)
-                            .disabled(!selected.enabled)
-                            .frame(maxWidth:.infinity)
-                            Text(selected.enabled ?
-                                 "本专题已接入离线九宫与完整接卦；其他领域仍在逐项核验。" :
-                                 "不调用疾病轻重模板代替其它问事。")
-                                .font(.caption).foregroundStyle(QStyle.secondary)
-                        }
-                    } else {
-                        LazyVGrid(columns:[GridItem(.flexible()),GridItem(.flexible())],spacing:11) {
-                            ForEach(QuestionCatalog.domains) { item in
-                                Button {
-                                    chosenDomain=item.id
-                                    chosenTopic=nil
-                                } label: {
-                                    VStack(alignment:.leading,spacing:11) {
-                                        Image(systemName:item.symbol)
-                                            .font(.system(size:24))
-                                            .foregroundStyle(QStyle.blue)
-                                        Text(item.title).font(.headline)
-                                            .foregroundStyle(QStyle.text)
-                                        Text(item.id=="health" ? "已接入起盘" : "规划中")
-                                            .font(.caption).foregroundStyle(QStyle.secondary)
-                                    }
-                                    .frame(maxWidth:.infinity,minHeight:110,alignment:.leading)
-                                    .padding(13)
-                                    .background(QStyle.surface,in:RoundedRectangle(cornerRadius:15))
-                                }
-                                .buttonStyle(.plain)
-                            }
-                        }
-                    }
-                }
-                .padding(18)
-            }
-            .background(QStyle.backing)
-            .navigationTitle("问卦")
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
-
 struct ProfessionalChartScreen: View {
     let topic: QuestionTopic
     let changeTopic: () -> Void
@@ -760,7 +657,12 @@ struct PalaceLifeRow: View {
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
     var identityLabels:[String] = []
-    private let identityInk = Color(red:0.53,green:0.28,blue:0.23)
+    @Environment(\.colorScheme) private var colorScheme
+    private var identityInk:Color {
+        colorScheme == .dark
+            ? Color(red:0.96,green:0.78,blue:0.52)
+            : Color(red:0.53,green:0.28,blue:0.23)
+    }
 
     private var rightText:String {
         identityLabels.joined(separator:"／")
