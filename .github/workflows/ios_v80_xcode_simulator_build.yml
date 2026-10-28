@@ -1,0 +1,116 @@
+name: Wengua V8.0 production Xcode iOS Simulator actual build
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ios_v80_xcode_simulator_build.yml'
+      - 'ios/WenguaAppUI/**'
+      - 'data/mobile/health_vnext/health_energy_200.json'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
+      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build_and_validate_real_app_bundle:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen and generate actual SwiftUI app project
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+          (cd ios/WenguaAppUI && xcodegen generate --spec project.yml)
+          xcodebuild -project ios/WenguaAppUI/WenguaApp.xcodeproj -list
+      - name: Build real V8.0 SwiftUI iPhone target for simulator with all source Swift files
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v80-xcode
+          xcodebuild -project ios/WenguaAppUI/WenguaApp.xcodeproj \
+            -scheme WenguaApp -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath /tmp/wengua-v80-xcode/derived \
+            CODE_SIGNING_ALLOWED=NO build > /tmp/wengua-v80-xcode/build.log 2>&1 || {
+              tail -n 160 /tmp/wengua-v80-xcode/build.log
+              exit 1
+            }
+      - name: Verify bundled 200 cells 81 formations native templates and actors in actual app binary
+        run: |
+          set -euo pipefail
+          APP="/tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app"
+          test -d "$APP"
+          test -f "$APP/health_energy_200.json"
+          test -f "$APP/reading_template.json"
+          test -f "$APP/81_pairs.tsv"
+          test -f "$APP/actor_profiles.json"
+          test -f "$APP/WenguaApp"
+          python3 - "$APP" <<'PY'
+          from pathlib import Path
+          import json,sys,csv
+          p=Path(sys.argv[1])
+          template=json.loads((p/'reading_template.json').read_text())
+          assert template['schema']=='health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations'
+          energy=json.loads((p/'health_energy_200.json').read_text())
+          assert len(energy['tables'])==8 and set(energy['tables'])=={
+            'star','door','stem','normal','fake_void_attacker',
+            'fake_void_target','true_void_attacker','true_void_target'}
+          assert len((p/'81_pairs.tsv').read_text().strip().splitlines())==82
+          assert len(json.loads((p/'actor_profiles.json').read_text())['profiles'])==20
+          (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
+             'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 20 roles, V8 editable template.\n')
+          PY
+      - name: Keep all build logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-full-iPhone-xcode-simulator-build-logs
+          path: /tmp/wengua-v80-xcode/*.log
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Archive actual unsigned simulator app for future UI design
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-unsigned-ios-simulator-app
+          path: /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app
+          retention-days: 30
+      - name: Append actual Xcode build pass or failure; preserve previous versions
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p docs
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ]; then
+            RESULT=PASS
+            MESSAGE="Actual SwiftUI iOS Simulator xcodebuild and V8 source resources passed"
+          else
+            RESULT=FAIL
+            MESSAGE="Native Xcode SwiftUI build or resource checks failed; see preserved logs"
+          fi
+          FILE="docs/IOS_V80_XCODE_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            echo "# iOS V8.0 Xcode simulator ${RESULT}"
+            echo
+            echo "Run: https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
+            echo "Source SHA: ${GITHUB_SHA}"
+            echo "Result: ${MESSAGE}"
+            echo
+            echo "Unsigned simulator build is NOT a signed iPhone installation, not an App Store shipment, and not proof of forecast validity."
+            if [ -f /tmp/wengua-v80-xcode/build.log ]; then
+              echo
+              echo '## Build tail (append-only)'
+              echo '~~~text'
+              tail -n 90 /tmp/wengua-v80-xcode/build.log
+              echo '~~~'
+            fi
+          } > "$FILE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git commit -m "Archive V8 Xcode ${RESULT} actual iOS simulator build and bundled resources"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
