@@ -39,6 +39,18 @@ jobs:
           python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v79/elder.json
           /tmp/wengua-v79/native /tmp/wengua-v79/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v79/elder_swift.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v79/elder.json /tmp/wengua-v79/elder_swift.log /tmp/wengua-v79/elder_diff.md
+      - name: Twelve new seeded valid casts across self father wife (no score filtering)
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279901 --count 12 --output /tmp/wengua-v79/twelve_unseen_clocks.json | tee /tmp/wengua-v79/twelve_draws_and_rejections.log
+          /tmp/wengua-v79/native /tmp/wengua-v79/twelve_unseen_clocks.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v79/twelve_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v79/twelve_unseen_clocks.json /tmp/wengua-v79/twelve_swift.log /tmp/wengua-v79/twelve_diff.md
+      - name: Eight additional seeded wife/relationship casts with no outcomes screened
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279902 --count 8 --wife-only --output /tmp/wengua-v79/eight_wife_clocks.json | tee /tmp/wengua-v79/eight_draws_and_rejections.log
+          /tmp/wengua-v79/native /tmp/wengua-v79/eight_wife_clocks.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v79/eight_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v79/eight_wife_clocks.json /tmp/wengua-v79/eight_swift.log /tmp/wengua-v79/eight_diff.md
       - name: Print both actual three-stage V7.9 score breakdowns
         run: |
           python3 - <<'PY'
