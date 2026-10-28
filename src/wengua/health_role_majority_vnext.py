@@ -67,20 +67,17 @@ def assess_disease_relationships(*,roles,edges,role_confidence):
                 why="本宫名义相克但实际克制难落实："+str(outcome)
             else:
                 why="克制原格未归类，保留候选："+str(outcome)
-        elif relation=="生":
-            # This is a directional factual adverse relation in this specific
-            # severity source role family, but no 5x5 克制 grid applies.
-            strength=item["primary_strength_25"]["strength_label"]
-            if strength in ("极大","大","中等") and not edge["restrictions"]:
-                decided="adverse";why="本方生扶病宫且选中用神力量"+strength
-            else:
-                why="本方生病但自身力量弱或附带条件未核，尚不能认作实助病"
-        elif relation=="被生":
-            why="病宫生本方，是否转为保护须原书角色条件共同决定"
-        elif relation=="同宫":
-            why="本方与病宫同宫，不能将同宫硬判成克或生"
-        elif relation=="比和":
-            why="双方宫同五行但不同宫，只有同气，不能当成制病已经成立"
+        elif relation in ("生","被生","同宫","比和"):
+            # These directions are actual physical facts, not a second
+            # strength duel and not an invented +3 or a certainty of harm.
+            # Both real role symbols retain their own original 200-cell
+            # strengths, even if doctor and medicine share a palace.
+            ap=item["primary_strength_25"].get("strength_label") or "待核"
+            bp=roles["illness"]["primary_strength_25"].get("strength_label") or "待核"
+            why=("真实关系"+relation+"；本方用神力量"+ap+
+                 "，天芮病星力量"+bp+
+                 "；没有单独验证的本关系结果积分矩阵，不把方向当作已经成功施力")
+        
         else:
             why="来源关系未核"
         phy=edge["physical_relation_id"]
@@ -89,6 +86,7 @@ def assess_disease_relationships(*,roles,edges,role_confidence):
             "illness_palace":roles["illness"]["palace"],"relation":relation,
             "direction":decided,"why":why,
             "energy":item["primary_strength_25"]["strength_label"],
+            "target_energy":roles["illness"]["primary_strength_25"]["strength_label"],
             "god_tendency":item["complete_palace"]["deity"]["polarity"],
             "void":item["void_classification"],
             "control_status":actual["control_status"],
