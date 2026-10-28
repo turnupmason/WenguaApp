@@ -1,14 +1,6 @@
 name: Health V7.8 Conditional Extra Illness Aid Native Python Parity
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/health_v78_conditional_palace_native_parity.yml'
-      - 'src/wengua/health_quant_overlay_vnext.py'
-      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
-      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
-      - 'data/templates/health_severity_vnext/reading_template.json'
-      - 'Important/MANIFEST.json'
+  # Historical V7.8 reference workflow: manual only; never auto-archive later scoring versions.
   workflow_dispatch:
 permissions:
   contents: write
