@@ -74,7 +74,7 @@ jobs:
           for name in ('colleague','elder'):
               case=json.loads((root/(name+'.json')).read_text())['cases'][0]
               s=case['summary']
-              raw=s['post_void_known_sum']+s['control_bonus_score']+s['weak_illness_drain_bonus_score']+s['auspice_applied_extra_score']-s['five_not_global_penalty']
+              raw=s['post_void_known_sum']+s['control_bonus_score']+s['weak_illness_drain_bonus_score']+s['auspice_applied_extra_score']-s['five_not_global_penalty']+s.get('tianxian_global_final_bonus',0)
               assert raw==s['raw_final_before_saturation']
               out+=['','## '+name,'原时辰：'+case['instant'],'四柱：'+json.dumps(case['four_pillars'],ensure_ascii=False),
                     '一宫一次基础分：'+json.dumps(s['unique_palace_score_details'],ensure_ascii=False),
