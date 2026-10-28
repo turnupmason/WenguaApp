@@ -34,12 +34,16 @@
 
 打开 iOS App **先选领域，再选具体事项**。当前只有 `health.severity`（疾病健康→病情轻重）允许进入起局；其余领域作为规划展示并禁用对外专业断词，绝不错误套用疾病轻重脚本。正式用户不会看到四张封存样例作默认九宫。这四张测试盘仍在 `FrozenReadingV391.json` / `chart-facts-v3.js` 作为版本保护及真实计算测试基线，不可删除。
 
-九宫与双宫十二长生、星门神五行色、空马墓已在原生 SwiftUI；读取研究样例时完整文字连续排版、不需逐项点开。**实时新盘 V3.9.1 文字断案引擎尚待 Swift/离线 SQLite 完整移植与原书独立回归**，当前不得假造吉凶、应期、评分。15天限制是本机 SHA-256 具体事项锁，换设备/改写问题不能确保识别，发布前需加强事务性与隐私保护。
+九宫与双宫十二长生、星门神五行色、空马墓已在原生 SwiftUI；读取研究样例时完整文字连续排版、不需逐项点开。**最新健康·病情轻重 V8.0 已真实移植至 Swift 离线原生代码、已作为完整 SwiftUI App 编译，bundle 包含200格/81格/20人物规则与可编辑模板**；该领域可调用真实盘面的全文断词。2026-10-27 GitHub Actions [V8.0 Python/Swift 22盘逐字验收](https://github.com/turnupmason/WenguaApp/actions/runs/40621011300) 与 [Xcode 16.4 iOS Simulator 全工程编译及资源核验](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702) 均实际通过。原V3.9.1历史版本仍保留作冻结对照，不是当前正式运行模板。**其他领域没有完成本专题验收就不能借病情模板冒充结果；机上真机签名安装、UI人工实测和原书未见案例准确率尚未验证。**15天限制是本机 SHA-256 具体事项锁，换设备/改写问题不能确保识别，发布前需加强事务性与隐私保护。
 
 ## 开发和测试命令
 
 ```sh
 # 在仓库根目录
+# V8 当前专用验收：
+python3 -m unittest discover -s tests -p test_health_v79_independent_cohost_matrix_20261027.py -v
+python3 -m unittest discover -s tests -p test_important_mirror_integrity_20261026.py -v
+# 全库历史+新版本检查（截至本轮仍有冻结旧断案分数断言不兼容，详见专项审计）：
 python3 -m unittest discover -s tests -v
 node --test tests/ios_issue_policy_v2.test.cjs tests/ios_five_element_board_v3.test.cjs
 
