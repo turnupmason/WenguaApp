@@ -287,7 +287,11 @@ enum WenguaPythonVNextVerbatim {
         }
         let who=names[0]
         let rel=relation(aid,pid)
-        let note=try powerNote(role,p,own,chart:chart)
+        let baseNote=try powerNote(role,p,own,chart:chart)
+        // Each edge compares THIS selected signifier with Tianrui, not the
+        // net +/- score of either resident physical palace.
+        let note=baseNote+"天芮病星用神力量为"+
+            (review.roleEnergy["illness"]?.strength ?? "待核")+"。"
         let outcome=edge.cell
         let applicable=["strong","limited"].contains(edge.applicability)
         let eligible:Bool
@@ -308,27 +312,40 @@ enum WenguaPythonVNextVerbatim {
         }
         if rel=="克" {
             let meaning:String
-            if review.controlBonusPalaces.contains(aid) {
+            if review.controlBonusPalaces.contains(aid) &&
+               ["strong","limited"].contains(edge.applicability) {
                 if review.palaces[pid]?.void != "not_void" {
                     meaning="病宫逢空，病气减弱，更易受到"+who+"的克制。"
                 } else {
                     meaning="病象受到"+who+"的克制。"
                 }
+            } else if edge.applicability=="failed" {
+                meaning=who+"虽然在五行上克病宫，但双方实际力量比较未能成功克制。"
             } else {
-                meaning=who+"虽克病宫，但护持之力难以发挥。"
+                meaning=who+"虽有克病方向，具体用神力量或矩阵限制未能支持确定的克病加分。"
             }
             return note+who+"宫克天芮病宫，"+meaning
         }
         let explanation:String
         switch rel {
         case "生":
-            explanation=who+"宫生天芮病宫，意思为：疾病得不到"+who+"的压制，反受其生扶。"
+            explanation=who+"宫生天芮病宫，方向上生扶病宫，实际助病强弱须根据双方各自用神力量判断。"
         case "被克":
-            explanation=who+"宫受天芮病宫克，意思为："+who+"受病宫压制，无法制病。"
+            let effect:String
+            if edge.applicability=="strong" {
+                effect="病宫用神有力压制本方，制约较明显。"
+            } else if edge.applicability=="limited" {
+                effect="病宫有克向但施力受限，不能直接断本方完全失力。"
+            } else if edge.applicability=="failed" {
+                effect="病宫虽有克向，但用神力量比较不能形成有效压制。"
+            } else {
+                effect="病宫虽有克向，双方力量或空墓条件待核，不能直接断已受制。"
+            }
+            explanation=who+"宫受天芮病宫克，"+effect
         case "被生":
-            explanation=who+"宫受天芮病宫生，意思为：本宫受病宫生扶，未形成对病宫的克制。"
+            explanation=who+"宫受天芮病宫生，方向上受病宫生扶，实际承受力量按双方用神判断，非主动克病。"
         case "比和":
-            explanation=who+"宫与天芮病宫比和，意思为：双方同气，未形成对病宫的克制。"
+            explanation=who+"宫与天芮病宫比和，同气但不等于双方力量相同，也不是主动克病。"
         case "同宫":
             explanation=who+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
         default:
@@ -452,10 +469,14 @@ enum WenguaPythonVNextVerbatim {
                         (summaryTitles[key] ?? key)
             let state=review.palaces[pid]?.void ?? "not_void"
             var head:String
+            let symbol=review.roleEnergy[key]?.symbol ?? "未核"
+            let power=review.roleEnergy[key]?.strength ?? "待核"
             if let existing=seenPalaces[pid] {
-                head=name+"与"+existing+"同在"+label(p)
+                head=name+"与"+existing+"同在"+label(p)+
+                    "，其中"+symbol+"用神力量"+power
             } else {
-                head=name+"落"+label(p)+"，宫象"+quality
+                head=name+"落"+label(p)+"，宫象"+quality+
+                    "，其中"+symbol+"用神力量"+power
                 if state != "not_void" && key != "chief" {
                     head+="且逢"+(state=="true_void" ? "真空":"假空")
                 }
