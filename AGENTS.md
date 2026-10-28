@@ -2109,3 +2109,6 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 
 ### 2026-10-28 · 新同源模板首轮Xcode bundle旧schema验收失败
 macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构建 #40779088892 后续 bundle 校验把 schema 固定写成20261027旧值触发 AssertionError。四类文件存在，非Swift编译失败。本轮修订 ios_v80_xcode_simulator_build.yml：核实新版20261028天显坤二JSON schema、四类真实天显/终论句及坤二寄干模板key、逐实宫最后取整元信息；保留200/81/22人物原校验。旧FAIL原状保留，新SHA真实结果另核。
+
+### 2026-10-28 · 真实Xcode第二轮资源检查失败：inline Python多一格缩进
+#40779534953 App源代码SwiftUI编译再次成功；真实bundle校验新增加模板键时由于workflow YAML字面脚本for语句比其它Python顶层行多一个空格，运行时抛出 `IndentationError: unexpected indent`，这不是V8模型分数或用户断词内容错误。已逐行核对修正上述脚本（for缩到同列10空格、循环断言12空格、后续顶层assert同列10空格），保留完整失败Actions日志与App build日志；新提交实际XcodeGen/macOS Simulator/bundle四资源验收必须重新执行，未通过前不宣称正式包成功。
