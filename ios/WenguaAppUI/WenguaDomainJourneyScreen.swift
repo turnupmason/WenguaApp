@@ -29,10 +29,8 @@ struct WenguaDomainJourneyScreen: View {
                                 .font(.system(size:11,weight:.medium))
                                 .tracking(2.8)
                                 .foregroundStyle(Color(red:0.9,green:0.78,blue:0.57))
-                            Text(domain == nil ? "请问你有什么\n疑惑？" :
-                                 "这一次，\n想问什么？")
-                                .font(.system(size:33,weight:.medium,design:.serif))
-                                .lineSpacing(4)
+                            Text(domain == nil ? "请问有什么疑惑？" : "这一次想问什么？")
+                                .font(.system(size:27,weight:.medium,design:.serif))
                                 .foregroundStyle(.white)
                             Text(domain == nil ?
                                  "选择一个方向，让古籍规则为你逐层解读。" :

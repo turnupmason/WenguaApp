@@ -408,6 +408,7 @@ struct ProfessionalChartScreen: View {
         }
     }
     var body: some View {
+        GeometryReader { viewport in
         ScrollViewReader { reader in
         ScrollView {
             VStack(alignment:.leading,spacing:0) {
@@ -422,25 +423,27 @@ struct ProfessionalChartScreen: View {
                     WenguaAppearanceMenu()
                     Button("更换领域",action:changeTopic)
                         .font(.caption).buttonStyle(.bordered)
-                }.padding(14).id("readingTop")
+                }.padding(.horizontal,11).padding(.vertical,7).id("readingTop")
 
                 if let chart=nativeChart {
-                    chartHeader(chart)
+                    chartHeaderCompact(chart)
                     WenguaReadingTabStrip(selection:$selectedReadingTab)
                         .padding(.horizontal,14)
-                        .padding(.vertical,12)
+                        .padding(.vertical,5)
                     if selectedReadingTab == 0 {
-                        VStack(alignment:.leading,spacing:13) {
+                        VStack(alignment:.leading,spacing:6) {
                             HStack {
                                 Text("本盘九宫")
-                                    .font(.system(size:19,weight:.semibold,design:.serif))
+                                    .font(.system(size:16,weight:.semibold,design:.serif))
                                 Spacer()
-                                Text("轻触宫位查看详情")
+                                Text("点击宫位 · 看完整依据")
                                     .font(.system(size:11))
                                     .foregroundStyle(QStyle.secondary)
                             }
-                            .padding(.horizontal,17)
-                            palaceBoard
+                            .padding(.horizontal,13)
+                            palaceBoard(tileSide:max(76,min(
+                                (viewport.size.width-30)/3,
+                                (viewport.size.height-246)/3)))
                             if let reading=nativeReading {
                                 WenguaPremiumVerdictCard(reading:reading)
                                     .padding(.horizontal,14)
@@ -543,19 +546,65 @@ struct ProfessionalChartScreen: View {
             if nativeChart == nil {showAsk=true}
         }
         }
+        }
     }
-    private var palaceBoard: some View {
-        LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:3),
-                  spacing:7) {
+    private func palaceBoard(tileSide:CGFloat) -> some View {
+        LazyVGrid(columns:Array(repeating:GridItem(.fixed(tileSide),spacing:3),count:3),
+                  spacing:3) {
             ForEach(palaces) { palace in
                 Button {chosenPalace=palace} label:{
                     ProfessionalPalaceTile(palace:palace,
                         identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
+                        .frame(width:tileSide,height:tileSide)
                 }
                     .buttonStyle(.plain)
             }
         }
-        .padding(.horizontal,12)
+        .frame(maxWidth:.infinity)
+        .padding(.horizontal,9)
+    }
+
+    // The first viewport is for the complete 3×3 board, not an oversized
+    // header. Full clock, calendar, palace conditions remain in specialist UI.
+    private func chartHeaderCompact(_ chart: WenguaNativeChart) -> some View {
+        VStack(spacing:7) {
+            HStack(spacing:4) {
+                Text((chart.bureau.dun=="yang" ? "阳遁 " : "阴遁 ") +
+                     String(chart.bureau.ju)+"局")
+                    .font(.system(size:13,weight:.semibold,design:.serif))
+                Text("· "+chart.solarTerm)
+                    .font(.system(size:11))
+                    .foregroundStyle(QStyle.secondary)
+                Spacer(minLength:0)
+                Text(String(chart.iso.replacingOccurrences(of:"T",with:" ").prefix(16)))
+                    .font(.system(size:10,weight:.medium,design:.monospaced))
+                    .foregroundStyle(QStyle.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.76)
+            }
+            HStack(spacing:4) {
+                pillarMini("年",chart.pillars.year)
+                pillarMini("月",chart.pillars.month)
+                pillarMini("日",chart.pillars.day)
+                pillarMini("时",chart.pillars.hour)
+            }
+        }
+        .padding(.horizontal,11)
+        .padding(.vertical,9)
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:10))
+        .padding(.horizontal,11)
+    }
+
+    private func pillarMini(_ label:String,_ stem:String) -> some View {
+        HStack(spacing:3) {
+            Text(label).foregroundStyle(QStyle.secondary)
+            Text(stem).foregroundStyle(QStyle.text)
+                .fontDesign(.monospaced)
+        }
+        .font(.system(size:12,weight:.medium))
+        .frame(maxWidth:.infinity)
+        .lineLimit(1)
+        .minimumScaleFactor(0.75)
     }
     private func chartHeader(_ chart: WenguaNativeChart) -> some View {
         VStack(alignment:.leading,spacing:15) {
@@ -704,159 +753,143 @@ struct PalaceLifeRow: View {
 // 天盘/地盘, 空亡/时马/分层入墓 and exact branch life states.
 // Compact factual nine-palace typography. Corner icons reflect only facts
 // attached to THIS computed physical palace; no style-level divination.
+// Nine compact equal-size tiles modelled on the supplied traditional board:
+// name/true void/horse, deity+heaven stem, star+earth stem and door.
+// Reserved burgundy right rail is ONLY for selected V8 roles, not an
+// additional symbol or scoring signal. Detailed restrictions are in the sheet.
 struct ProfessionalPalaceTile: View {
     let palace: QPalace
     var identityLabels:[String] = []
-    private let labelColor = Color(uiColor:.tertiaryLabel)
+    private let identityInk = Color(red:0.53,green:0.28,blue:0.23)
+
+    private var rightText:String {
+        identityLabels.joined(separator:"／")
+    }
 
     var body: some View {
-        ZStack {
-            if !identityLabels.isEmpty && palace.id != 5 {
-                Text(identityLabels.joined(separator:"／"))
-                    .font(.system(size:identityLabels.count>1 ? 16:29,
-                                  weight:.semibold,design:.serif))
-                    .foregroundStyle(QStyle.text.opacity(0.085))
-                    .lineLimit(3)
-                    .minimumScaleFactor(0.58)
-                    .multilineTextAlignment(.center)
-                    .rotationEffect(.degrees(-14))
-                    .padding(.horizontal,4)
-                    .accessibilityHidden(true)
-            }
-            VStack(alignment:.leading,spacing:9) {
+        GeometryReader { geo in
+            let scale = geo.size.width / 114
+            let primary = min(17,max(11,16 * scale))
+            let secondary = min(14,max(10,13 * scale))
+            VStack(alignment:.leading,spacing:0) {
                 palaceHeading
+                    .frame(height:22 * scale,alignment:.top)
                 if palace.id == 5 {
-                    centralPalace
-                } else {
-                    symbolsSection
-                    stemsSection
-                    statusSection
                     Spacer(minLength:0)
+                    HStack {
+                        Spacer(minLength:0)
+                        VStack(spacing:7) {
+                            Text("中五")
+                                .font(.system(size:min(22,19 * scale),weight:.medium,design:.serif))
+                                .foregroundStyle(QStyle.secondary)
+                            Text(palace.ground)
+                                .font(.system(size:secondary,weight:.semibold))
+                                .foregroundStyle(QFive.shade("stem",palace.ground))
+                        }
+                        Spacer(minLength:0)
+                    }
+                    Spacer(minLength:0)
+                } else {
+                    HStack(alignment:.center,spacing:3) {
+                        VStack(alignment:.leading,spacing:1) {
+                            symbolRow(palace.deity,kind:"deity",stem:palace.sky,
+                                      primary:primary,secondary:secondary)
+                            Spacer(minLength:0)
+                            symbolRow(palace.stars,kind:"star",stem:palace.ground,
+                                      primary:primary,secondary:secondary)
+                            Spacer(minLength:0)
+                            symbolRow(palace.door,kind:"door",stem:"",
+                                      primary:primary,secondary:secondary)
+                        }
+                        .frame(maxWidth:.infinity,alignment:.leading)
+                        if !identityLabels.isEmpty {
+                            Text(rightText.map { String($0) }.joined(separator:"\n"))
+                                .font(.system(size:min(10,max(7,9.3*scale)),
+                                      weight:.semibold,design:.serif))
+                                .lineSpacing(-1)
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(identityInk)
+                                .lineLimit(rightText.count)
+                                .minimumScaleFactor(0.73)
+                                .frame(width:14 * scale)
+                                .frame(maxHeight:.infinity,alignment:.center)
+                                .accessibilityLabel("本宫用神："+rightText)
+                        }
+                    }
+                    .frame(maxHeight:.infinity,alignment:.top)
                 }
             }
-            .frame(maxWidth:.infinity,alignment:.topLeading)
+            .padding(.horizontal:max(4,5*scale))
+            .padding(.vertical:max(4,5*scale))
+            .frame(width:geo.size.width,height:geo.size.height,alignment:.topLeading)
         }
-        .padding(.horizontal,9)
-        .padding(.vertical,11)
-        .frame(maxWidth:.infinity,minHeight:198,alignment:.topLeading)
-        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:13))
-        .overlay(RoundedRectangle(cornerRadius:13)
-            .stroke(QStyle.line.opacity(0.8),lineWidth:0.7))
-        .contentShape(RoundedRectangle(cornerRadius:13))
+        .aspectRatio(1,contentMode:.fit)
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:3))
+        .overlay(RoundedRectangle(cornerRadius:3)
+            .stroke(QStyle.line.opacity(0.75),lineWidth:0.8))
+        .contentShape(Rectangle())
         .accessibilityLabel(accessibleText)
     }
 
-    private var accessibleText: String {
-        if palace.id == 5 { return "中五宫，不设普通星门神" }
-        return ([palace.name,"八神"+palace.deity,"九星"+palace.stars,
-            "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground] +
-            QFive.void(palace).map{$0+"空"} +
-            (QFive.horse(palace).map{["驿马"+$0]} ?? [])).joined(separator:"，")
+    private var accessibleText:String {
+        if palace.id == 5 {return "中五宫，仅地盘干："+palace.ground}
+        let facts=[palace.name,"八神"+palace.deity,"九星"+palace.stars,
+                   "八门"+palace.door,"天盘"+palace.sky,"地盘"+palace.ground]
+        return (facts + (identityLabels.isEmpty ? [] : ["用神："+rightText]) +
+                QFive.void(palace).map{$0+"空"} +
+                (QFive.horse(palace).map{["驿马"+$0]} ?? []))
+                .joined(separator:"，")
     }
 
-    private var palaceHeading: some View {
-        VStack(alignment:.leading,spacing:4) {
-            HStack(alignment:.center,spacing:4) {
-                Text(palace.name)
-                    .font(.system(size:14,weight:.bold,design:.serif))
-                    .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
-                    .lineLimit(1).minimumScaleFactor(0.8)
-                Spacer(minLength:0)
-                // A thin, unfilled circle: 旬空. It is not a filled button or
-                // an inferred score, and two simultaneous markers both appear.
-                if !QFive.void(palace).isEmpty {
-                    Circle()
-                        .stroke(QStyle.red.opacity(0.84),lineWidth:1.8)
-                        .frame(width:15,height:15)
-                        .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
-                }
-                if let horse=QFive.horse(palace) {
-                    Text("🐎")
-                        .font(.system(size:15))
-                        .accessibilityLabel("驿马："+horse)
-                }
+    private var palaceHeading:some View {
+        HStack(alignment:.center,spacing:3) {
+            Text(palace.name)
+                .font(.system(size:11,weight:.semibold,design:.serif))
+                .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
+                .lineLimit(1)
+                .minimumScaleFactor(0.68)
+            Spacer(minLength:0)
+            if !QFive.void(palace).isEmpty {
+                Circle().stroke(identityInk,lineWidth:1.5)
+                    .frame(width:10,height:10)
+                    .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
             }
-            HStack(spacing:2) {
-                ForEach(Array(palace.branches.map{String($0)}.enumerated()),id:\.offset) { item in
-                    Text(item.element).foregroundStyle(QFive.shade("branch",item.element))
-                }
-            }
-            .font(.system(size:10))
-            .frame(height:12,alignment:.leading)
-        }
-    }
-
-    private var centralPalace: some View {
-        VStack(spacing:8) {
-            Spacer(minLength:15)
-            Text("中五")
-                .font(.system(size:25,weight:.medium,design:.serif))
-                .foregroundStyle(labelColor)
-            if !palace.ground.isEmpty {
-                Text("地盘 "+palace.ground)
+            if let horse=QFive.horse(palace) {
+                Text("🐎")
                     .font(.system(size:13))
-                    .foregroundStyle(QFive.shade("stem",palace.ground))
+                    .accessibilityLabel("驿马："+horse)
             }
-            Text("星门神另论").font(.system(size:10)).foregroundStyle(labelColor)
-            Spacer(minLength:12)
         }
-        .frame(maxWidth:.infinity)
     }
 
-    private var symbolsSection: some View {
-        VStack(alignment:.leading,spacing:6) {
-            namedSymbol("神",palace.deity,kind:"deity")
-            namedSymbol("星",palace.stars,kind:"star")
-            namedSymbol("门",palace.door,kind:"door")
-        }
-    }
-    private var stemsSection: some View {
-        VStack(spacing:8) {
-            // No divider between the door and heaven stem.
-            HStack(alignment:.firstTextBaseline,spacing:2) {
-                stemLine("天",palace.sky)
-                Spacer(minLength:1)
-                stemLine("地",palace.ground)
-            }
-        }
-    }
-    private var statusSection: some View {
-        VStack(alignment:.leading,spacing:2) {
-            ForEach(palace.roles.prefix(2),id:\.self) { role in
-                Text(role).foregroundStyle(QStyle.blue)
-            }
-            ForEach(QFive.heavenTombs(palace)+QFive.earthTombs(palace),id:\.self) { tag in
-                Text(tag)
-                    .foregroundStyle(QFive.shade("stem",String(tag.dropFirst().prefix(1))))
-            }
-        }
-        .font(.system(size:9,weight:.medium))
-        .lineLimit(1)
-    }
-    private func namedSymbol(_ label:String,_ value:String,kind:String) -> some View {
-        HStack(alignment:.firstTextBaseline,spacing:3) {
-            Text(label).font(.system(size:10)).foregroundStyle(labelColor)
-                .frame(width:11,alignment:.leading)
-            HStack(spacing:1) {
-                ForEach(Array(value.components(separatedBy:"·").enumerated()),id:\.offset) { part in
-                    Text(part.element).foregroundStyle(QFive.shade(kind,part.element))
+    private func symbolRow(_ value:String,kind:String,stem:String,
+                           primary:CGFloat,secondary:CGFloat)->some View {
+        HStack(alignment:.firstTextBaseline,spacing:2) {
+            HStack(spacing:0) {
+                ForEach(Array(value.components(separatedBy:"·").enumerated()),
+                        id:\.offset) { part in
+                    Text(part.element)
+                        .foregroundStyle(QFive.shade(kind,part.element))
                 }
             }
-            .font(.system(size:16,weight:.semibold))
+            .font(.system(size:primary,weight:.semibold,design:.serif))
             .lineLimit(1)
-            .minimumScaleFactor(0.66)
-        }
-    }
-    private func stemLine(_ plane:String,_ values:String) -> some View {
-        HStack(spacing:1) {
-            Text(plane).font(.system(size:9)).foregroundStyle(labelColor)
-            ForEach(Array(values.components(separatedBy:"·").enumerated()),id:\.offset) { part in
-                Text(part.element).foregroundStyle(QFive.shade("stem",part.element))
+            .minimumScaleFactor(0.68)
+            Spacer(minLength:0)
+            if !stem.isEmpty {
+                HStack(spacing:0) {
+                    ForEach(Array(stem.components(separatedBy:"·").enumerated()),
+                            id:\.offset) { part in
+                        Text(part.element)
+                            .foregroundStyle(QFive.shade("stem",part.element))
+                    }
+                }
+                .font(.system(size:secondary,weight:.medium))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
             }
         }
-        .font(.system(size:14,weight:.semibold))
-        .lineLimit(1)
-        .minimumScaleFactor(0.75)
+        .frame(maxWidth:.infinity,alignment:.leading)
     }
 }
 
@@ -1356,8 +1389,8 @@ struct TraditionalReadingPreview: View {
                         if !board.isEmpty {
                             Text("本盘九宫")
                                 .font(.title3.weight(.semibold))
-                            LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:7),count:3),
-                                      spacing:7) {
+                            LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:3),count:3),
+                                      spacing:3) {
                                 ForEach(board) { palace in
                                     Button {chosenPalace=palace} label:{
                                         ProfessionalPalaceTile(palace:palace,

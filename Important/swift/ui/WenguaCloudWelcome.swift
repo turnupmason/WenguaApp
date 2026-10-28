@@ -3,7 +3,6 @@ import SwiftUI
 // Offline, asset-free atmospheric entrance. This is visual only: clouds are
 // native gradients and blurs, not a network service or a model response.
 struct WenguaCloudAtmosphere: View {
-    @State private var floating = false
 
     var body: some View {
         GeometryReader { geo in
@@ -20,17 +19,17 @@ struct WenguaCloudAtmosphere: View {
                     .fill(Color(red:0.63,green:0.82,blue:0.94).opacity(0.24))
                     .frame(width:geo.size.width*1.35,height:geo.size.height*0.23)
                     .blur(radius:48)
-                    .offset(x:floating ? -40:36,y:geo.size.height*0.27)
+                    .offset(x:36,y:geo.size.height*0.27)
                 Ellipse()
                     .fill(Color(red:0.80,green:0.91,blue:0.97).opacity(0.19))
                     .frame(width:geo.size.width*1.6,height:geo.size.height*0.20)
                     .blur(radius:52)
-                    .offset(x:floating ? 35:-22,y:geo.size.height*0.37)
+                    .offset(x:-22,y:geo.size.height*0.37)
                 Ellipse()
                     .fill(Color(red:0.44,green:0.72,blue:0.92).opacity(0.19))
                     .frame(width:geo.size.width*1.3,height:geo.size.height*0.22)
                     .blur(radius:50)
-                    .offset(x:floating ? 12:-45,y:-geo.size.height*0.26)
+                    .offset(x:-45,y:-geo.size.height*0.26)
                 Circle()
                     .stroke(Color.white.opacity(0.16),lineWidth:0.6)
                     .frame(width:min(geo.size.width*0.82,350))
@@ -50,9 +49,6 @@ struct WenguaCloudAtmosphere: View {
             }
             .frame(width:geo.size.width,height:geo.size.height)
             .clipped()
-            .animation(.easeInOut(duration:9).repeatForever(autoreverses:true),
-                       value:floating)
-            .onAppear { floating=true }
         }
         .accessibilityHidden(true)
         .allowsHitTesting(false)
@@ -114,8 +110,8 @@ struct WenguaCloudWelcomeScreen: View {
                             .font(.system(size:12,weight:.medium))
                             .tracking(4)
                             .foregroundStyle(Color(red:0.87,green:0.75,blue:0.54))
-                        Text("欢迎来到\n问卦")
-                            .font(.system(size:52,weight:.medium,design:.serif))
+                        Text("欢迎来到问卦")
+                            .font(.system(size:39,weight:.medium,design:.serif))
                             .tracking(3)
                             .foregroundStyle(.white)
                             .lineSpacing(11)
@@ -125,7 +121,7 @@ struct WenguaCloudWelcomeScreen: View {
                             .font(.system(size:20,weight:.medium,design:.serif))
                             .foregroundStyle(Color.white.opacity(0.92))
                             .padding(.top,21)
-                        Text("根植《神奇之门》《开悟之门》的易学解读体系。\n依真实时辰起局，逐宫推演，察时势、明进退。")
+                        Text("根植《神奇之门》《开悟之门》的易学解读体系，以古籍规则逐宫推演。按真实时辰离线起局，知进退、察时势。")
                             .font(.system(size:15))
                             .lineSpacing(7)
                             .foregroundStyle(Color.white.opacity(0.72))

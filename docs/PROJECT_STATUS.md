@@ -1719,3 +1719,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - V8.0 `WenguaNativeReadingRouter`只向客户DTO增加可选`rolePalaces`显示元数据，原生V8`review.roles`决定宫位；每个九宫格用透明字「病（天芮）、西医（天心）、中医（乙奇）、大吉神（值符）、病事（时干）、被测人（人物主用神）」按**真实宫位**映射，年命与长辈乾坤有实际被选才额外显示。多角色同实宫「／」连接，不重复评分或将一个真实符号当两个能量源；没有旧存档元数据就不猜。八门与天盘之间分隔线移除，既有马星🐎、旬空○保留。
 - 两个结果标签与历史解盘继续显示完全相同的正式V8文字，专业解盘升级章节排版和滑到底部「回到顶部」按钮；用户可在欢迎、领域、结果页选日间、夜间、系统外观，主要表面动态响应。其它领域均开发中，严格一领域一套独立用神规则/判断条件/应期模板，不继承疾病独有克制补分。未提供现实结果准确率统计，营销不得保证避凶趋吉或自称科学精准。
 - 入口文件 `ios/WenguaAppUI/WenguaCloudWelcome.swift`、`WenguaDomainJourneyScreen.swift`、`WenguaDesignPreviewApp.swift`、`WenguaNativeReadingRouter.swift`、`WenguaPremiumReadingView.swift`、`WenguaNativeCustomerView.swift`；新源进`project.yml`、Important各双镜像/MANIFEST、`tests/test_ios_immersive_journey_20261028.py`进当前CI；详细证据与测试状态见`docs/IOS_IMMERSIVE_UI_FLOW_20261028.md`。无新增原书章及来源案。**真实macOS Xcode构建、Python/Swift parity与包资源实测结果需按本轮新提交检查，旧success不得替代。**
+
+
+## 2026-10-28 · 用户截图定稿第二轮：九宫方格/静态云/旧工作流退出
+
+- 用户给出完整参考九宫图，要求**3×3正方形一次露出**：本轮将旧每宫198pt纵高重排为屏幕自适应等宽等高格子，压缩四柱和界面标题。格内彩色神星门及天盘地盘干为主，保留真实空心○和时马🐎；所有非常小的墓/刑/关系分数提示从总览格内撤走、详查继续存在。V8已选用神宫位身份从原中央透明大字改为每宫**右侧竖排暗朱砂色**，同宫多标签“／”分隔，不再使用会混淆水行的蓝色。不能把参考截图九宫伪装成当下真实盘。
+- 欢迎页和疑惑页云背景完全静止、无周期动画；「欢迎来到问卦」「请问有什么疑惑？」不手动换行，正文一段写完。领域入口仅首次渐显一次。30秒静心、手机确认当刻起局、15天锁、接卦与专业解盘及回顶仍保持原规定。
+- 用户明确不再运行已失效的V1网页Mock UI和V7.4旧数值专项：**先将这两个workflow原版逐字搬入**`docs/历史与失败/retired_workflows/`，仅从`.github/workflows/`移除对应两个自动工作流，不删旧Actions失败、源码、历史测试/报告。现行V8主CI、原生Swift/Python parity和Xcode Simulator实际构建依旧是必须。若新一轮CI真实失败须原样报告。
+- 核心仅动`ios/WenguaAppUI/WenguaDesignPreviewApp.swift`、`WenguaCloudWelcome.swift`、`WenguaDomainJourneyScreen.swift`及对应Important双镜像、SHA MANIFEST；测试`tests/test_ios_immersive_journey_20261028.py`更新，审计`docs/IOS_SQUARE_PALACE_REFERENCE_20261028.md`。**正式疾病V8.0源数值、两个参考结果、离线资源、主模板全文、古籍、其它领域均原样未改。**
