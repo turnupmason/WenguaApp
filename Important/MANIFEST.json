@@ -511,19 +511,19 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaVNextReasoner.swift",
       "snapshot": "Important/swift/ui/WenguaVNextReasoner.swift",
-      "sha": "7aea2748f65fafa412c05dc70cd0fc5ccc8286a5"
+      "sha": "ff419603d31f41d25d136de4658308ee04e5c1eb"
     },
     {
       "platform": "python",
       "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
       "snapshot": "Important/python/ci/health_v78_conditional_palace_native_parity.yml",
-      "sha": "fe24a9f94a42d81d439b98b7be05282b63a6d916"
+      "sha": "07ee94c5885dc34146b6bfedca435c7cbf3afd7d"
     },
     {
       "platform": "swift",
       "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
       "snapshot": "Important/swift/ci/health_v78_conditional_palace_native_parity.yml",
-      "sha": "fe24a9f94a42d81d439b98b7be05282b63a6d916"
+      "sha": "07ee94c5885dc34146b6bfedca435c7cbf3afd7d"
     }
   ]
 }
