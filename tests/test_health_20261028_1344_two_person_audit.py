@@ -24,12 +24,12 @@ class TwoPersonExactClockAudit(unittest.TestCase):
             network=result["full_health_role_strength_network"]
             quant=network["candidate_five_grade_quantization"]
             summary=quant["summary"]
-            patient=network["nodes"]["patient"]
+            patient=quant["summary"]["actual_role_strengths"]["patient"]
             results[person]={
                 "four_pillars":result["four_pillars"],
                 "bureau":result["bureau"],
                 "relationship":relation,
-                "patient_symbol":patient["primary_strength_25"]["symbol"],
+                "patient_symbol":patient["symbol"],
                 "patient_palace":patient["palace"],
                 "patient_role_confidence":result["audit"]["role_confidence"],
                 "patient_role_via":result["audit"]["role_via"],
