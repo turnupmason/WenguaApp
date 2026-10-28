@@ -48,11 +48,23 @@ class TwoPersonExactClockAudit(unittest.TestCase):
                 "score":summary["score"],
                 "grade":summary["grade"],
                 "evidence_state":result["verdict"]["state"],
+                "cohost_bonus_details":summary["auspice_bonus_details"],
             }
         print("TWO_PERSON_SAME_CLOCK_AUDIT="+json.dumps(
             results,ensure_ascii=False,sort_keys=True),flush=True)
         self.assertEqual(results["self"]["four_pillars"],
                          results["colleague"]["four_pillars"])
+        # These were the exact previously false-benign outcomes: the raw
+        # ledger remains 0 for BOTH (do not silently tune scores).
+        self.assertEqual(results["self"]["raw_final"],0)
+        self.assertEqual(results["colleague"]["raw_final"],0)
+        self.assertEqual(results["self"]["evidence_state"],"adverse")
+        self.assertEqual(results["colleague"]["patient_role_confidence"],
+                         "research_candidate_only")
+        self.assertNotEqual(results["self"]["patient_palace"],
+                            results["colleague"]["patient_palace"])
+        self.assertEqual(set(results["self"]["physical_palaces"]),
+                         set(results["colleague"]["physical_palaces"]))
         # Day and month are distinct real carriers on this exact local time.
         self.assertEqual(
             results["self"]["patient_symbol"],
@@ -62,6 +74,23 @@ class TwoPersonExactClockAudit(unittest.TestCase):
             results["colleague"]["four_pillars"]["month"][0])
         self.assertEqual(results["self"]["four_pillars"]["hour"],"癸未")
         self.assertEqual(results["self"]["bureau"]["ju"],2)
+
+    def test_zero_conflict_cannot_be_assessed_as_stable(self):
+        # Re-use exactly the real-time cases above and assert customer
+        # 90_review texts do NOT contain a definitive zero-grade phrase.
+        for relation,context in [
+            ("self","direct_self"),("colleague","direct_proxy")]:
+            output=auto_cast_health_review_text(
+                iso=ISO,timezone_name=ZONE,inquiry={
+                    "intent":"severity","relationship":relation,
+                    "consultation_context":context})
+            summary=output["full_health_role_strength_network"][
+                "candidate_five_grade_quantization"]["summary"]
+            self.assertEqual(summary["score"],0)
+            verdict=next(s["text"] for s in output["sections"]
+                         if s["id"]=="90_review")
+            self.assertNotIn("此病为不凶不吉",verdict)
+            self.assertIn("暂不强断吉凶",verdict)
 
 if __name__=="__main__":
     unittest.main()

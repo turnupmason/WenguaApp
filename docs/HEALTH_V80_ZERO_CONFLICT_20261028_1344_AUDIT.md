@@ -1,0 +1,41 @@
+# 2026-10-28 13:44 实时同盘本人／同事「中性0分」反例与慎断修复
+
+## 1. 实际复现范围
+
+用户提供的iOS截图显示`2026-10-28 13:44`、霜降、阴遁2局、四柱丙午年/戊戌月/乙亥日/癸未时。用完整生产 Python `auto_cast_health_review_text(iso="2026-10-28T13:44:00-04:00",timezone_name="America/New_York")`，分别用`{"relationship":"self","consultation_context":"direct_self"}`与`{"relationship":"colleague","consultation_context":"direct_proxy"}`做严格**同一实际时辰**对比。不使用截图库盘或示例静态盘冒充真实起局。复现测试在`tests/test_health_20261028_1344_two_person_audit.py`，GitHub Actions #40739720539 3.11/3.12 已证明独立实测打印。
+
+| 字段 | 本人 | 同事 |
+|---|---:|---:|
+| 真实人物主用神 | 日干乙，艮八宫 | 月干戊，离九宫 |
+| 人物角色来源信度 | `source_case_specific` | `research_candidate_only` |
+| 天芮病宫 | 离九宫 -5 | 离九宫 -5 |
+| 天心医生（及同宫时干） | 兑七宫 -2 | 兑七宫 -2 |
+| 乙奇 | 艮八宫 +3 | 艮八宫 +3 |
+| 值符 | 乾六宫 0 | 乾六宫 0 |
+| 实际选中物理宫唯一集合 | 9/7/8/6 | 9/7/8/6 |
+| 四物理宫基础分合计 | -4 | -4 |
+| 克病专用奖励／弱病泄耗 | 0／0 | 0／0 |
+| 同宫吉助奖励 | +4 | +4 |
+| 五不遇时罚分 | 0 | 0 |
+| 全局未封顶原始分 | 0 | 0 |
+| 其它独立证据方向 | `adverse` | `unresolved` |
+
+**为什么两案数学上同零：** 先依据真实人物关系找到不同的干和宫；恰好本人乙已经是入选的乙医药宫（艮8），同事戊已经是入选的天芮病宫（离9），所以按用户批准「一个真实物理宫基础只算一次」的 V8，角色变化没有增加新的物理宫；四宫唯一分和一致。同宫加分也没有改变。不能为了强行给两人不同数值重复计宫或假造第二组克病奖励。
+
+**真正缺陷是逻辑合断，不是运算器把人物同一身份复用：** 两例都把`raw_final=0`直接翻译为「不凶不吉」及 UI 「微恙／病势平缓」。但本人有效证据方向为 adverse，同分值互相冲突，绝非「已经稳定」；同事月干只是未获原著条件审定的 `research_candidate_only`，不能以0分作确定判断。原 Swift `WenguaNativeVNextEngine.compute` `conflict`显式排除`result==0`；即使`traditionalSentence`发现冲突，`WenguaPythonVNextVerbatim.sections`对任何`review.score==0`仍直接发`overall_resolved`。Python `selected_health_sections`亦相同。
+
+## 2. 定点修复：源数学不变，只收紧0分断言
+
+保留原 V8 `post_void_known_sum`／source 200/81／角色绑定／物理去重／真实克病条件／空亡／五不遇时／全部典籍模板和原始两历史案数字不动。仅当**实际核定的原始0分**有下列之一时阻止「微恙／病势平缓」：
+1. 当前独立源证据`favorable`或`adverse`，数学0与证据方向不一致；
+2. 所选人物来源信度不在`source_case_specific`或`user_explicit_direction_verified_by_actual_chart`中（例如`research_candidate_only`）。
+
+Python 只在`src/wengua/domain_selected_energy_vnext.py::selected_health_sections`的最终话术上判定`neutral_conflict`，改用已有 `overall_pending` 模板；Swift 在`WenguaNativeVNextEngine.compute`新增同义`neutralConflict`和`evidenceConflict`，`WenguaPythonVNextVerbatim.sections`仅对 score==0 且 conflict 为真改用**同一**已有模板。没有增改新评分矩阵、+/-原始数字、非零断词和任何具体治疗建议；不是把0硬改成-1、-5或别的讨好答案。证据中性且来源充分的真正0分仍可按用户定义显示「微恙」。
+
+`tests/test_health_20261028_1344_two_person_audit.py`同时断言两个真盘的四柱、日/月人物干、物理宫集合、原始0和各自证据信度，并且新的`90_review`不再把此二者写成`此病为不凶不吉`；用户能在「专业解盘」中读完整不删减源事实。
+
+## 3. 双星边界与风险
+
+用户重复强调，**只在病宫真实天芮＋天禽携不同星干时**，两条真实天盘对同一地盘的81格各查原格计分；真实两星各携有合资格乙／丁奇才能按原规则分别得到同宫条件奖励；天禽**本星**并不作为另一份天芮病星基础分。同一病宫的基础计分仍仅一次，其它八宫星、天盘干和格局仍按原来的一星一干规则。该例恰好病宫天芮局总体偏凶，**不能因为客观分数0而向公众断病已平稳**。这些传统象意不构成医疗判断。
+
+失败日志、历次已见案例原分数和来源版本完整保留；这些是用户已反馈的开发问题，**不是科学或未见盲测**。本轮最新CI和Xcode的具体 run ID 在源推送后追记，不拿上一版测试充当本轮成功。

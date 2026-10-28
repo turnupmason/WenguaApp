@@ -650,8 +650,15 @@ def selected_health_sections(result,*,actor,chart):
         desc.insert(0,"五不遇时成立，各实际参与实宫均减两分")
     desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
     evidence="；".join(desc)
+    # A numeric zero is NOT proof of benign illness. A disputed peer
+    # signifier or adverse/favorable independently qualified evidence means
+    # raw cancellation is neutral arithmetic ONLY, not a stable prognosis.
+    neutral_conflict=(q["score"] == 0 and (
+        actor.get("confidence") not in
+        ("source_case_specific","user_explicit_direction_verified_by_actual_chart")
+        or result["verdict"]["state"] in ("favorable","adverse")))
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
-                if q["score"] is None else
+                if q["score"] is None or neutral_conflict else
                 render_slot("overall_resolved",grade=("不凶不吉" if q["score"]==0 else grade(q["score"])),
                     palace_count=q["unique_palace_count"],
                     post_void_sum=q["post_void_known_sum"],score=q["score"]))
