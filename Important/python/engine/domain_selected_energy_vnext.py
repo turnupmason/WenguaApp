@@ -483,7 +483,7 @@ def selected_health_sections(result,*,actor,chart):
         # Every relationship is between this specific signifier and Tianrui;
         # the target is NEVER substituted by the net signed palace grade.
         illness_power=roles["illness"]["primary_strength_25"].get("strength_label")
-        strength+="天芮病星用神力量为"+str(illness_power or "待核")+"。"
+        strength+=render_slot("selected_target_power",strength=str(illness_power or "待核"))
         outcome=gate["control_result"]
         if key=="medicine" and rel=="同宫":
             return (strength+"乙奇与天芮病宫同宫，表示正在接受治疗，"
@@ -605,12 +605,12 @@ def selected_health_sections(result,*,actor,chart):
         void=row["complete_palace"]["void"]["classification"]
         symbol=row["primary_strength_25"]["symbol"]
         signifier_power=row["primary_strength_25"].get("strength_label") or "待核"
+        strength_suffix=render_slot("selected_role_summary",
+                                    symbol=symbol,strength=signifier_power)
         if pid in seen_palaces:
-            head=(name+"与"+seen_palaces[pid]+"同在"+palace+
-                  "，其中"+symbol+"用神力量"+signifier_power)
+            head=name+"与"+seen_palaces[pid]+"同在"+palace+strength_suffix
         else:
-            head=(name+"落"+palace+"，宫象"+quality+
-                  "，其中"+symbol+"用神力量"+signifier_power)
+            head=name+"落"+palace+"，宫象"+quality+strength_suffix
             if void!="not_void" and key!="chief":
                 head+="且逢"+("真空" if void=="true_void" else "假空")
             seen_palaces[pid]=name
