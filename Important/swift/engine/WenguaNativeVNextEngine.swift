@@ -74,9 +74,22 @@ struct WenguaVNextAudit {
     let controlBonusPoints:[Int:Int]
 }
 enum WenguaVNextEngine {
-    static func conditionalDiseaseControl(attacker:Int?,attackerVoid:Bool,
-                                          attackerControlled:Bool,illnessVoid:Bool)->Int {
-        guard let attacker,abs(attacker)>1 else{return 0}
+    static let qualifiedControlCells:Set<String>=[
+        "有效克制","高效克制","强力主克","绝对主克",
+        "极限压制","有效主克","完全清除",
+        "微弱克制","减力克制","断续克制","效力递减"
+    ]
+    static func conditionalDiseaseControl(
+         attackerPower:String?,targetPower:String?,
+         actualCell:String?,applicability:String,
+         attackerVoid:Bool,attackerControlled:Bool,illnessVoid:Bool)->Int {
+        // Both ACTUAL SELECTED signifiers provide their own 200-cell power.
+        // No net palace auspice grade, and no abs(signed score), ever.
+        guard tierIndex(attackerPower) != nil,
+              tierIndex(targetPower) != nil,
+              ["strong","limited"].contains(applicability),
+              let actualCell,qualifiedControlCells.contains(actualCell)
+        else{return 0}
         if attackerVoid || attackerControlled{return 1}
         return illnessVoid ? 5 : 3
     }
@@ -731,8 +744,7 @@ enum WenguaVNextEngine {
         let illVoid=actualVoid(ill,chart,month:month) != "not_void"
         for (tag,p,_) in personalized where tag != "illness" && p.id != ill.id {
             guard let edge=controls.first(where:{$0.role==tag}) else{continue}
-            if controlRoles.contains(tag) && edge.direction=="克",
-               let attackerScore=physical[p.id]?.afterVoid, abs(attackerScore)>1 {
+            if controlRoles.contains(tag) && edge.direction=="克" {
                 // Only star/god source primary 25-table has a palace-column
                 // restriction. Stem 25-table is moon/lifecycle, NOT palace.
                 var controlled=false
@@ -746,7 +758,10 @@ enum WenguaVNextEngine {
                 }
                 let voidAttacker=actualVoid(p,chart,month:month) != "not_void"
                 let points=conditionalDiseaseControl(
-                    attacker:attackerScore,attackerVoid:voidAttacker,
+                    attackerPower:strength[tag]?.strength,
+                    targetPower:strength["illness"]?.strength,
+                    actualCell:edge.cell,applicability:edge.applicability,
+                    attackerVoid:voidAttacker,
                     attackerControlled:controlled,illnessVoid:illVoid)
                 if points>0 {
                     controlBonus.insert(p.id)
