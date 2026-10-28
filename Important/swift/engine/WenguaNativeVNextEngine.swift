@@ -698,12 +698,12 @@ enum WenguaVNextEngine {
             } else if rel=="被克" &&
                    ["strong","limited"].contains(comparison.applicability) {
                 direction="adverse"
-            } else if rel=="生" {
-                let obstacles=try doorRelation(try must(doorElement[try must(p.door)]),
-                                              try must(elements[p.id]))
-                if (tierIndex(a.strength) ?? 0)>=3 && danger(p,doorRelation:obstacles).isEmpty {
-                    direction="adverse"
-                }
+            } else if rel=="生" || rel=="被生" ||
+                      rel=="比和" || rel=="同宫" {
+                // No user-authored effectiveness matrix for these relations.
+                // Both selected source powers are kept, but a direction alone
+                // is not a proven adverse/favorable independent action.
+                direction="pending"
             }
             let pair=[p.id,ill.id].sorted().map(String.init).joined(separator:":")
             // One source->target physical relation gets one vote across
@@ -776,6 +776,8 @@ enum WenguaVNextEngine {
                 }
             }
             if weakDisease && edge.direction=="被生" &&
+                strength[tag]?.strength != nil &&
+                strength["illness"]?.strength != nil &&
                 (tag != "chief" || actualVoid(p,chart,month:month)=="not_void") {
                 drainBonus.insert(p.id)
             }
