@@ -338,9 +338,9 @@ struct ProfessionalChartScreen: View {
                                     .foregroundStyle(QStyle.secondary)
                             }
                             .padding(.horizontal,13)
-                            palaceBoard(tileSide:max(76,min(
+                            palaceBoard(tileSide:max(80,min(
                                 (viewport.size.width-30)/3,
-                                (viewport.size.height-246)/3)))
+                                (viewport.size.height-274)/3)))
                             if let reading=nativeReading {
                                 WenguaPremiumVerdictCard(reading:reading)
                                     .padding(.horizontal,14)
@@ -689,96 +689,120 @@ struct ProfessionalPalaceTile: View {
         }
     }
 
+    // Presentation-only: identical fixed tracks for one or two actual stars.
+    // No V8 source, source-power, score or 81 calculation in this view.
     var body: some View {
         GeometryReader { geo in
-            let scale = geo.size.width / 114
-            let primary = min(17,max(11,16 * scale))
-            let secondary = min(14,max(10,13 * scale))
+            let scale = max(CGFloat(0.80),min(CGFloat(1.12),geo.size.width/114))
+            let primary = CGFloat(15) * scale
+            let secondary = CGFloat(13) * scale
+            let roleWidth:CGFloat = identityLabels.isEmpty ? 0 :
+                max(27,min(33,geo.size.width*0.28))
             VStack(alignment:.leading,spacing:0) {
-                palaceHeading
-                    .frame(height:22 * scale,alignment:.top)
+                palaceHeading.frame(height:25*scale,alignment:.top)
                 if palace.id == 5 {
                     Spacer(minLength:0)
-                    HStack {
-                        Spacer(minLength:0)
-                        VStack(spacing:7) {
-                            Text("中五")
-                                .font(.system(size:min(22,19 * scale),weight:.medium,design:.serif))
-                                .foregroundStyle(QStyle.secondary)
-                            Text(palace.ground)
-                                .font(.system(size:secondary,weight:.semibold))
-                                .foregroundStyle(QFive.shade("stem",palace.ground))
-                        }
-                        Spacer(minLength:0)
-                    }
+                    VStack(spacing:5) {
+                        Text("中五").font(.system(size:22*scale,weight:.semibold,design:.serif))
+                            .foregroundStyle(QStyle.secondary)
+                        Text(palace.ground).font(.system(size:secondary+3,weight:.semibold))
+                            .foregroundStyle(QFive.shade("stem",palace.ground))
+                    }.frame(maxWidth:.infinity)
                     Spacer(minLength:0)
                 } else {
-                    HStack(alignment:.center,spacing:3) {
-                        VStack(alignment:.leading,spacing:1) {
-                            symbolRow(palace.deity,kind:"deity",stem:"",
-                                      primary:primary,secondary:secondary)
-                            Spacer(minLength:0)
-                            // The double stars must appear on ONE row.
-                            HStack(spacing:0) {
-                                ForEach(0..<starCarriers.count,id:\.self) { index in
-                                    let pair=starCarriers[index]
-                                    if index>0 { Text("／").foregroundStyle(QStyle.secondary) }
-                                    Text(index==0 ? pair.0 :
-                                         (pair.0=="天禽" ? "禽" : pair.0))
-                                        .foregroundStyle(QFive.shade("star",pair.0))
-                                }
-                            }
-                            .font(.system(size:primary,weight:.semibold,design:.serif))
-                            .lineLimit(1).minimumScaleFactor(0.55)
-                            Spacer(minLength:0)
-                            HStack(spacing:4) {
-                                Text("天").font(.system(size:9)).foregroundStyle(QStyle.secondary)
-                                ForEach(Array(starCarriers.reversed().enumerated()),id:\.offset) { pair in
-                                    Text(pair.element.1)
-                                        .foregroundStyle(QFive.shade("stem",pair.element.1))
-                                }
-                            }
-                            .font(.system(size:secondary,weight:.semibold))
-                            .frame(maxWidth:.infinity,alignment:.center)
-                            .accessibilityLabel("天盘星干："+starCarriers.map{$0.0+"携"+$0.1}.joined(separator:"、"))
-                            HStack(spacing:4) {
-                                Text("地").font(.system(size:9)).foregroundStyle(QStyle.secondary)
-                                Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
-                            }
-                            .font(.system(size:secondary,weight:.semibold))
-                            .frame(maxWidth:.infinity,alignment:.center)
-                            Spacer(minLength:0)
-                            symbolRow(palace.door,kind:"door",stem:"",
-                                      primary:primary,secondary:secondary)
-                        }
-                        .frame(maxWidth:.infinity,alignment:.leading)
+                    HStack(alignment:.center,spacing:2) {
+                        glyphColumn(primary:primary,secondary:secondary)
+                            .frame(maxWidth:.infinity,maxHeight:.infinity)
                         if !identityLabels.isEmpty {
-                            Text(rightText.map { String($0) }.joined(separator:"\n"))
-                                .font(.system(size:min(10,max(7,9.3*scale)),
-                                      weight:.semibold,design:.serif))
-                                .lineSpacing(-1)
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(identityInk)
-                                .lineLimit(rightText.count)
-                                .minimumScaleFactor(0.73)
-                                .frame(width:14 * scale)
-                                .frame(maxHeight:.infinity,alignment:.center)
-                                .accessibilityLabel("本宫用神："+rightText)
+                            roleColumn.frame(width:roleWidth)
+                                .frame(maxHeight:.infinity)
                         }
-                    }
-                    .frame(maxHeight:.infinity,alignment:.top)
+                    }.frame(maxWidth:.infinity,maxHeight:.infinity)
                 }
             }
-            .padding(.horizontal,max(4,5*scale))
-            .padding(.vertical,max(4,5*scale))
+            .padding(.horizontal,4*scale)
+            .padding(.vertical,3*scale)
             .frame(width:geo.size.width,height:geo.size.height,alignment:.topLeading)
         }
         .aspectRatio(1,contentMode:.fit)
-        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:3))
-        .overlay(RoundedRectangle(cornerRadius:3)
+        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:4))
+        .overlay(RoundedRectangle(cornerRadius:4)
             .stroke(QStyle.line.opacity(0.75),lineWidth:0.8))
         .contentShape(Rectangle())
         .accessibilityLabel(accessibleText)
+    }
+
+    private func glyphColumn(primary:CGFloat,secondary:CGFloat)->some View {
+        VStack(alignment:.leading,spacing:0) {
+            symbolRow(palace.deity,kind:"deity",stem:"",
+                      primary:primary,secondary:secondary)
+            Spacer(minLength:0)
+            starLine(primary:primary)
+            Spacer(minLength:0)
+            skyStemLine(size:secondary)
+            earthStemLine(size:secondary)
+            Spacer(minLength:0)
+            symbolRow(palace.door,kind:"door",stem:"",
+                      primary:primary,secondary:secondary)
+        }.frame(maxWidth:.infinity,maxHeight:.infinity,alignment:.leading)
+    }
+
+    private func starLine(primary:CGFloat)->some View {
+        HStack(spacing:0) {
+            ForEach(0..<starCarriers.count,id:\.self) { index in
+                let pair=starCarriers[index]
+                if index>0 {Text("／").foregroundStyle(QStyle.secondary)}
+                Text(index==0 ? pair.0 : (pair.0=="天禽" ? "禽" : pair.0))
+                    .foregroundStyle(QFive.shade("star",pair.0))
+            }
+        }
+        .font(.system(size:primary,weight:.semibold,design:.serif))
+        .lineLimit(1).minimumScaleFactor(0.75)
+        .frame(maxWidth:.infinity,alignment:.leading)
+    }
+
+    private func skyStemLine(size:CGFloat)->some View {
+        HStack(spacing:2) {
+            Text("天").font(.system(size:10)).foregroundStyle(QStyle.secondary)
+            // A fixed-width carrier track: 丁 and 戊 share ONE row. 81 source
+            // ownership still follows the real native star->stem mapping.
+            HStack(spacing:0) {
+                ForEach(Array(starCarriers.reversed().enumerated()),id:\.offset) { pair in
+                    Text(pair.element.1)
+                        .foregroundStyle(QFive.shade("stem",pair.element.1))
+                        .frame(maxWidth:.infinity)
+                }
+            }.frame(width:38)
+        }
+        .font(.system(size:size,weight:.semibold,design:.monospaced))
+        .lineLimit(1)
+        .frame(maxWidth:.infinity,alignment:.center)
+        .accessibilityLabel("天盘星干："+starCarriers.map{$0.0+"携"+$0.1}.joined(separator:"、"))
+    }
+
+    private func earthStemLine(size:CGFloat)->some View {
+        HStack(spacing:2) {
+            Text("地").font(.system(size:10)).foregroundStyle(QStyle.secondary)
+            Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
+                .frame(width:38,alignment:.center)
+        }
+        .font(.system(size:size,weight:.semibold,design:.monospaced))
+        .frame(maxWidth:.infinity,alignment:.center)
+    }
+
+    private var roleColumn:some View {
+        VStack(spacing:4) {
+            ForEach(Array(identityLabels.enumerated()),id:\.offset) { entry in
+                Text(entry.element)
+                    .font(.system(size:9,weight:.semibold,design:.serif))
+                    .foregroundStyle(identityInk)
+                    .lineLimit(2).minimumScaleFactor(0.74)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth:.infinity)
+            }
+        }
+        .frame(maxHeight:.infinity,alignment:.center)
+        .accessibilityLabel("本宫用神："+rightText)
     }
 
     private var accessibleText:String {
@@ -792,27 +816,23 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var palaceHeading:some View {
-        ZStack {
-            Text(palace.name)
-                .font(.system(size:11,weight:.semibold,design:.serif))
+        HStack(alignment:.center,spacing:2) {
+            Text(palace.name+"宫")
+                .font(.system(size:16,weight:.bold,design:.serif))
                 .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
-                .lineLimit(1)
-                .minimumScaleFactor(0.68)
-                .frame(maxWidth:.infinity,alignment:.center)
-            HStack(spacing:3) {
-                Spacer(minLength:0)
-                if !QFive.void(palace).isEmpty {
-                    Circle().stroke(identityInk,lineWidth:1.5)
-                        .frame(width:10,height:10)
-                        .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
-                }
-                if let horse=QFive.horse(palace) {
-                    Text("🐎")
-                        .font(.system(size:13))
-                        .accessibilityLabel("驿马："+horse)
-                }
+                .lineLimit(1).minimumScaleFactor(0.82)
+                .layoutPriority(1)
+            Spacer(minLength:0)
+            if !QFive.void(palace).isEmpty {
+                Circle().stroke(identityInk,lineWidth:1.5)
+                    .frame(width:9,height:9)
+                    .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
             }
-        }
+            if let horse=QFive.horse(palace) {
+                Text("🐎").font(.system(size:12))
+                    .accessibilityLabel("驿马："+horse)
+            }
+        }.frame(maxWidth:.infinity,alignment:.leading)
     }
 
     private func symbolRow(_ value:String,kind:String,stem:String,

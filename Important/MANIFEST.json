@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "597f9cee16df226f07bd599f74eac1726bc81085"
+      "sha": "9bc0ca69311b18779f7c637b60ed39ea3bf25d77"
     },
     {
       "platform": "swift",
@@ -559,7 +559,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "snapshot": "Important/swift/ui/WenguaDomainJourneyScreen.swift",
-      "sha": "a36a3104c0b83ded6b8766a6e939c99a08ff50bd"
+      "sha": "c019e4f27f335857eccc3aca8ef16e1f68dccdf4"
     },
     {
       "platform": "swift",
@@ -578,6 +578,12 @@
       "canonical": "scripts/打开问卦模拟器.command",
       "snapshot": "Important/swift/scripts/打开问卦模拟器.command",
       "sha": "e315a8067edbec9dd76ed6a7cc125ef3ad0ccefe"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "snapshot": "Important/python/tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "sha": "b0835284d395eaaa8d474310aad49c7d7b0e32c9"
     }
   ]
 }

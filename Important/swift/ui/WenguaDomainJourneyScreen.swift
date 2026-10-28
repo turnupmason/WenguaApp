@@ -21,7 +21,7 @@ struct WenguaDomainJourneyScreen: View {
     var body:some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment:.leading,spacing:22) {
+                VStack(alignment:.leading,spacing:14) {
                     ZStack(alignment:.bottomLeading) {
                         WenguaCloudAtmosphere()
                         VStack(alignment:.leading,spacing:11) {
@@ -40,7 +40,7 @@ struct WenguaDomainJourneyScreen: View {
                         }
                         .padding(23)
                     }
-                    .frame(height:222)
+                    .frame(height:domain == nil ? 222 : 152)
                     .clipShape(RoundedRectangle(cornerRadius:22))
 
                     if let domain {
@@ -55,7 +55,7 @@ struct WenguaDomainJourneyScreen: View {
                                 .foregroundStyle(QStyle.secondary)
                         }
                         .buttonStyle(.plain)
-                        VStack(alignment:.leading,spacing:14) {
+                        VStack(alignment:.leading,spacing:10) {
                             Text(domain.title)
                                 .font(.system(size:24,weight:.semibold,design:.serif))
                                 .foregroundStyle(QStyle.text)
@@ -66,24 +66,6 @@ struct WenguaDomainJourneyScreen: View {
                             }
                         }
                         if let selected {
-                            Button {
-                                if selected.enabled { select(selected) }
-                            } label: {
-                                HStack {
-                                    Text(selected.enabled ? "继续 · 填写问事信息" : "此专题开发中")
-                                    Spacer()
-                                    Image(systemName:selected.enabled ?
-                                          "arrow.right":"lock")
-                                }
-                                .font(.system(size:16,weight:.semibold))
-                                .padding(18)
-                                .foregroundStyle(Color(red:0.11,green:0.19,blue:0.24))
-                                .background(Color(red:0.91,green:0.79,blue:0.57),
-                                            in:RoundedRectangle(cornerRadius:16))
-                            }
-                            .disabled(!selected.enabled)
-                            .opacity(selected.enabled ? 1 : 0.48)
-                            .buttonStyle(.plain)
                             Text(selected.enabled ?
                                  "之后填写人物信息，静心30秒，按手机确认时刻起局。" :
                                  "每个领域使用独立用神与断案模板；未验收时不套用疾病规则。")
@@ -144,7 +126,36 @@ struct WenguaDomainJourneyScreen: View {
                 }
                 .padding(.horizontal,18)
                 .padding(.top,16)
-                .padding(.bottom,40)
+                .padding(.bottom,16)
+            }
+            // The call-to-action is a real safe-area footer, never the last
+            // clipped item inside a long ScrollView.
+            .safeAreaInset(edge:.bottom,spacing:0) {
+                if let selected {
+                    Button {
+                        if selected.enabled { select(selected) }
+                    } label: {
+                        HStack {
+                            Text(selected.enabled ? "继续 · 填写问事信息" : "此专题开发中")
+                            Spacer()
+                            Image(systemName:selected.enabled ? "arrow.right":"lock")
+                        }
+                        .font(.system(size:16,weight:.semibold))
+                        .padding(.horizontal,19)
+                        .frame(height:54)
+                        .foregroundStyle(Color(red:0.11,green:0.19,blue:0.24))
+                        .background(Color(red:0.91,green:0.79,blue:0.57),
+                                    in:RoundedRectangle(cornerRadius:16))
+                    }
+                    .disabled(!selected.enabled)
+                    .opacity(selected.enabled ? 1 : 0.48)
+                    .buttonStyle(.plain)
+                    .padding(.horizontal,18)
+                    .padding(.top,8)
+                    .padding(.bottom,5)
+                    .frame(maxWidth:.infinity)
+                    .background(QStyle.backing)
+                }
             }
             .background(QStyle.backing)
             .navigationTitle("问卦")
@@ -194,7 +205,8 @@ struct WenguaDomainJourneyScreen: View {
                         .foregroundStyle(QStyle.secondary)
                 }
             }
-            .padding(17)
+            .padding(.horizontal,17)
+            .padding(.vertical,12)
             .background(chosen ? Color(red:0.76,green:0.63,blue:0.38).opacity(0.10)
                                : QStyle.surface,
                         in:RoundedRectangle(cornerRadius:16))

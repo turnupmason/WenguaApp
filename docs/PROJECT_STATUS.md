@@ -1808,3 +1808,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 用户明确重申：「软件UI显示及调用是UI工作；V8.0正式模板、200/81源库、起盘规则、计分算法冻结，不因调界面去改」。以后宫位详情必须**只读正式已算出的宫内数据**，不得加入额外打分器或重新生成断词。
 - 本次真Xcode失败 `#40747800998` 保留历史原始日志，确切错误为 `WenguaPalacePowerDetail.swift:84` Swift字符串拼接及51行SwiftUI复杂视图类型检查。仅显示层拆子卡修复 `a8dead6c`，没改V8引擎/模板/200/81原表。macOS iPhone Simulator XcodeGen→xcodebuild→bundle四资源 **实测PASS #40749467216**；真iOS Simulator未签名.app Artifact `12843257658`、日志 Artifact `12843402352`、PASS归档保留。
 - 新增Mac一键启动脚本 `scripts/打开问卦模拟器.command`，仅本地XcodeGen构建、资源核查、simctl install/launch，无任何V8业务文件写入。详细文件 `docs/IOS_V80_UI_ONLY_XCODE_REPAIR_20261028.md`。Mac上是否完成实际用户设备启动仍须用户在本地执行；macOS Actions不能代替签名真机验收。
+
+
+## 2026-10-28 · 首屏不截断＋九宫大宫名固定行 UI-only 修复
+
+- 根据实际上传的两张真机截屏，领域选中后的金色「继续·填写问事信息」固定于 SwiftUI `safeAreaInset(edge:.bottom)`，不再放ScrollView内容尾部被遮半；已选领域云头和各专题行缩紧，可见内容更多，未选领域首页保留原造型。
+- 九宫正式 `ProfessionalPalaceTile` 每宫标题16pt粗体且显示「宫」，方格每宫各一组固定槽位：神、单行九星、同宽天盘一或两真实携干、同宽地盘一干、门；双星仍为真天芮+天禽，丁/戊按真实携干反序仅**视觉**置左/右，不改每星81格真实配对及V8分数。原右侧文字竖拉过长改紧凑多角色标签，保留旬空、马、五行配色。
+- 本轮**仅UI可视布局**，未触碰Python/Swift计分、排盘、V8定稿模板、200/81源数据。新测试 `tests/test_ios_first_viewport_palace_layout_20261028.py`，源代码只动两份SwiftUI及Important镜像、MANIFEST SHA。验收以本次新Actions真实结果为准。审计 `docs/IOS_FIRST_SCREEN_NINE_PALACE_GRID_20261028.md`。
