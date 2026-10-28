@@ -221,10 +221,26 @@ def special_cohost_total(chief_points,stem_points,*,tianxin_points=0,void=False)
     return total//2 if void else total
 
 
-def special_disease_control_points(*,attacker_score,attacker_void=False,
-                                   attacker_controlled=False,illness_void=False):
-    """V7.8 conditional suppression: real attacker grade, never repeated per role."""
-    if attacker_score is None or abs(attacker_score)<=1:
+# All inter-palace relations use the actually selected signifier's power;
+# palace signed auspiciousness is never an actor or target strength.
+from .selected_duel_table_vnext import CONTROL_CONFIDENT, CONTROL_LIMITED
+_REAL_CONTROL_RESULTS=CONTROL_CONFIDENT | CONTROL_LIMITED
+
+def special_disease_control_points(*,attacker_strength=None,target_strength=None,
+                                   control_result=None,control_status=None,
+                                   control_ability=None,attacker_void=False,
+                                   attacker_controlled=False,illness_void=False,
+                                   attacker_score=None):
+    """Verified real user 5x5 strengths determine a qualified directed 克.
+
+    The historical attacker_score argument is intentionally ignored; legacy
+    callers cannot authorize credit by using abs(signed_palace_grade).
+    """
+    from .factor_energy_25_rules import TIERS
+    if (attacker_strength not in TIERS or target_strength not in TIERS
+            or control_status!="matched"
+            or control_ability not in ("能","艰难")
+            or control_result not in _REAL_CONTROL_RESULTS):
         return 0
     if attacker_void or attacker_controlled:
         return 1
@@ -325,10 +341,10 @@ def inspect_selected_quantization(*,selected_roles,
         is_control=rel=="克"
         chief=key=="chief"
         chief_cohost=(chief and pid==selected_roles["illness"]["palace"])
-        active=(key=="illness" or chief_cohost or
-                (not chief and not is_control) or
-                (is_control and ability in accepted and
-                 (not chief or void=="not_void")))
+        # Every role keeps its OWN selected power and original source edge.
+        active=(key=="illness" or chief_cohost or not is_control or
+                (edge is not None and edge.get("control_status")=="matched"
+                 and ability in accepted and outcome in _REAL_CONTROL_RESULTS))
         reason=("病宫自身"
                 if key=="illness" else
                 "值符与天芮同宫，大吉神护持在同宫起作用"
@@ -405,13 +421,16 @@ def inspect_selected_quantization(*,selected_roles,
         pid=gate["palace"]
         if pid==illness_pid:continue
         if key in control_roles and gate["relation"]=="克":
-            attacker_score=roles[key]["palace_score"]["score"]
-            # The actor's WHOLE selected physical-palace strength is the
-            # ability gate; use symbol palace-control as a restriction.
+            # Actual primary factor per role, not the signed palace grade.
             nominal=row["primary_strength_25"].get("user_cell_col")
             symbol_controlled=nominal in ("宫克符号","被宫克")
+            edge=(directed_edges or {}).get(key+"->illness") or {}
             points=special_disease_control_points(
-                attacker_score=attacker_score,
+                attacker_strength=gate["actor_strength"],
+                target_strength=gate["disease_strength"],
+                control_result=edge.get("control_result"),
+                control_status=edge.get("control_status"),
+                control_ability=gate["control_ability"],
                 attacker_void=gate["void"]!="not_void",
                 attacker_controlled=symbol_controlled,
                 illness_void=illness_void)
@@ -548,6 +567,7 @@ def inspect_selected_quantization(*,selected_roles,
         "pre_relationship_bonus_score":original,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
         "control_bonus_points":control_points,
+        "control_power_provenance":"selected_primary_200x200_5x5_source_never_abs_palace_score",
         "drain_bonus_palaces":{str(k):v for k,v in sorted(drain.items())},
         "control_bonus_score":sum(control_points.values()),
         "weak_illness_drain_bonus_score":3*len(drain),
@@ -569,7 +589,7 @@ def inspect_selected_quantization(*,selected_roles,
         "five_not_penalized_role_count":len(roles) if five else 0,
         "historical_overlay_total_if_stacked":historical_stacked_total,
         "relationship_overlays_audit_only":False,
-        "final_scoring_policy":"V7.9_NO_SELF_COHOST_NO_DUPLICATE_STEM_POINTS",
+        "final_scoring_policy":"V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
         "raw_final_before_saturation":final_raw,
         "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,
