@@ -192,8 +192,7 @@ enum WenguaVNextReasoner {
             // Same physical environment is once, but Tianxin and Yi
             // in that environment have DIFFERENT selected powers.
             let symbol=audit.roleEnergy[role]?.symbol ?? role
-            let pair=[id,illID].sorted().map(String.init).joined(separator:":")+
-                      ":"+symbol
+            let pair=[id,illID].sorted().map(String.init).joined(separator:":") + ":" + symbol
             if !usedPairs.insert(pair).inserted {
                 relations.append(try fill("reason_shared",[
                     "role":roleTitles[role] ?? role,"palace":name(id)]))
@@ -201,8 +200,8 @@ enum WenguaVNextReasoner {
             }
             let control=audit.controls.first{$0.role==role}
             let direction=control?.direction ?? relation(id,illID)
-            let strength=(audit.roleEnergy[role]?.strength ?? "待核")+
-                "；天芮病星"+(audit.roleEnergy["illness"]?.strength ?? "待核")
+            let strength=(audit.roleEnergy[role]?.strength ?? "待核") + "；天芮病星" +
+                (audit.roleEnergy["illness"]?.strength ?? "待核")
             let effect:String
             if let control, direction=="克" || direction=="被克" {
                 if let text=control.cell {
