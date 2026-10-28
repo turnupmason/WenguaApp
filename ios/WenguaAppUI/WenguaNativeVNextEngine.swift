@@ -921,8 +921,9 @@ enum WenguaVNextEngine {
         // once per actual host palace; resident factors remain one base.
         let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count+auspicePoints
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
-        let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)
-            +(tianxian ? 4 : 0)
+        // Important: a leading '+' on a NEW Swift line is unary (+4)
+        // and the unused result gets silently ignored. Do not split this sum.
+        let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)+(tianxian ? 4 : 0)
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
