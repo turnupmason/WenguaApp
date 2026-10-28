@@ -52,6 +52,28 @@ class TwoPersonExactClockAudit(unittest.TestCase):
             }
         print("TWO_PERSON_SAME_CLOCK_AUDIT="+json.dumps(
             results,ensure_ascii=False,sort_keys=True),flush=True)
+        # Real physical chart invariant: ONLY the Tianrui illness palace
+        # carries Tianrui+Tianqin and therefore TWO ordered 81 pairs.
+        for relationship,context in [
+            ("self","direct_self"),("colleague","direct_proxy")]:
+            chart=auto_cast_health_review_text(
+                iso=ISO,timezone_name=ZONE,inquiry={
+                    "intent":"severity","relationship":relationship,
+                    "consultation_context":context})
+            ill_pid=chart["full_health_role_strength_network"][
+                "candidate_five_grade_quantization"]["summary"][
+                "actual_role_strengths"]["illness"]["palace"]
+            for key,cell in chart["nine_palaces"].items():
+                count=len(cell["heaven_stars"])
+                if int(key)==5:
+                    self.assertEqual(count,0)
+                elif int(key)==ill_pid:
+                    self.assertEqual(count,2)
+                    self.assertEqual({x["star"] for x in cell["heaven_stars"]},
+                                     {"天芮星","天禽星"})
+                    self.assertEqual(len({x["carried_stem"] for x in cell["heaven_stars"]}),2)
+                else:
+                    self.assertEqual(count,1,f"Non-illness palace {key} cannot gain a 2nd star")
         self.assertEqual(results["self"]["four_pillars"],
                          results["colleague"]["four_pillars"])
         # These were the exact previously false-benign outcomes: the raw
