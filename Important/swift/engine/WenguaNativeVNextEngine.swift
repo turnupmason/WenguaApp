@@ -881,8 +881,7 @@ enum WenguaVNextEngine {
         let auspicePoints=auspices.values.reduce(0){$0+$1.0}
         // V7.8: user special health cohost effects are CONDITION bonuses,
         // once per actual host palace; resident factors remain one base.
-        let relationshipBonus=controlPoints.values.reduce(0,+) +
-            3*drainBonus.count+auspicePoints
+        let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count+auspicePoints
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
         let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)
         let result=pending.isEmpty ?
