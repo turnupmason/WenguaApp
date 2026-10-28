@@ -616,7 +616,10 @@ def inspect_selected_quantization(*,selected_roles,
     qualified_bonus=sum(control_points.values())+3*len(drain)+lucky_points
     macro_penalty=2*summary["unique_palace_count"] if five else 0
     historical_stacked_total=role_sum+total_bonus-(2*len(roles) if five else 0)
-    final_raw=summary["post_void_known_sum"]+qualified_bonus-macro_penalty
+    # User-approved 天显时: exactly one whole-chart +4 AFTER all
+    # physical palace scores and the original five-not palace penalties.
+    tianxian_bonus=4 if first_stage_macro.get("tianxian_hour_triggered") else 0
+    final_raw=summary["post_void_known_sum"]+qualified_bonus-macro_penalty+tianxian_bonus
     original=summary["score"]
     summary["physical_palace_v75_audit"]=previous_physical
     summary["effective_role_scores"]=role_scores
@@ -653,6 +656,8 @@ def inspect_selected_quantization(*,selected_roles,
         "unique_palace_score_details":{str(pid):roles[g["roles"][0]]["palace_score"] for pid,g in grouped.items()},
         "repeated_signifier_merged":True,
         "five_not_global_penalty":macro_penalty,
+        "tianxian_global_final_bonus":tianxian_bonus,
+        "tianxian_applied_once_after_all_palaces":True,
         "five_not_penalty_per_palace":2 if five else 0,
         "five_not_penalized_unique_palace_count":summary["unique_palace_count"] if five else 0,
         "five_not_per_distinct_palace":True,

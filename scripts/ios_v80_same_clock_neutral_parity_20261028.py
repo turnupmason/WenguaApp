@@ -26,15 +26,16 @@ def produce(role):
         "year":"丙午","month":"戊戌","day":"乙亥","hour":"癸未"}
     q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
     s=q["summary"]
-    # Self and colleague were the exact zero-score user screenshot reports.
-    # Grandparents may have OTHER totals because a real gender palace is used.
+    # Historical first version was 0 for both. The independently approved
+    # Tianqin centre-earth 81-pair correction now gives +3 for both.
+    # Grandparents may have OTHER totals because real gender palaces differ.
     if role in ("self","colleague"):
-        assert s["raw_final_before_saturation"]==0
-        assert s["score"]==0
-        # User-approved V8 wording for an actually computed zero.
+        assert s["raw_final_before_saturation"]==3
+        assert s["score"]==3
+        # Current user-authorized 81 pairing replaces the old zero result.
         last=next(section["text"] for section in r["sections"]
                   if section["id"]=="90_review")
-        assert "此病为不凶不吉" in last
+        assert "此病为中吉" in last
         assert "暂不强断吉凶" not in last
     else:
         patient=q["summary"]["actual_role_strengths"]["patient"]

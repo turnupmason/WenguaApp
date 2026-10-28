@@ -525,6 +525,7 @@ enum WenguaPythonVNextVerbatim {
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
         if review.firstMacroFiveNot {desc.insert("五不遇时成立，各实际参与实宫均减两分",at:0)}
+        if review.tianxianHour {desc.insert("天显时格成立，整盘得吉时扶助",at:0)}
         let macroProse=try fullMacro(chart,review)
         let pace=macroProse.contains("缓急并列待具体条件核定") ?
             "伏吟反吟并见，缓急合参" :

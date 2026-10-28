@@ -54,6 +54,7 @@ struct WenguaVNextAudit {
     let roleScores:[String:Int]
     let rolePalaces:[String:WenguaVNextPalace]
     let firstMacroFiveNot:Bool
+    let tianxianHour:Bool
     let postVoidKnownSum:Int
     let score:Int?
     let pending:[Int]
@@ -286,6 +287,17 @@ enum WenguaVNextEngine {
             (striker ? 1:0) - (earthStriker ? 1:0))
         return grade*polarity
     }
+    static func tianxianHour(_ day:String,_ hour:String)->Bool {
+        guard day.count==2,hour.count==2 else{return false}
+        switch String(day.prefix(1)) {
+        case "甲","己":return hour=="甲子" || hour=="甲戌"
+        case "乙","庚":return hour=="甲申"
+        case "丙","辛":return hour=="甲午"
+        case "丁","壬":return hour=="甲辰"
+        case "戊","癸":return hour=="甲寅"
+        default:return false
+        }
+    }
     private static func wholeChartFiveNot(_ chart:WenguaNativeChart)->Bool {
         let hour=String(chart.pillars.hour.prefix(1))
         let day=String(chart.pillars.day.prefix(1))
@@ -354,7 +366,9 @@ enum WenguaVNextEngine {
         for star in p.heavenStars {
             // Disease-only dual carrier: count each real sky/earth pair;
             // Tianqin remains excluded as a second illness STAR score.
-            let key=star.carriedStem+"|"+p.earthStem
+            let centreEarth=chart.palaces.first{$0.id==5}?.earthStem ?? ""
+            let actualEarth=star.star=="天禽星" ? centreEarth : p.earthStem
+            let key=star.carriedStem+"|"+actualEarth
             guard let fields=excel[key],fields.count==7 else {
                 throw WenguaHealthTemplateError.invalidCatalog
             }
@@ -597,6 +611,7 @@ enum WenguaVNextEngine {
         var rolePalaces:[String:WenguaVNextPalace]=[:]
         var rolePending:[Int]=[]
         let fiveNot=wholeChartFiveNot(chart)
+        let tianxian=tianxianHour(chart.pillars.day,chart.pillars.hour)
         // Role binding order must match Python physical_cache. The first
         // role at a real palace is canonical; later co-palace roles share
         // its already evaluated score even if their signifier is different.
@@ -907,6 +922,7 @@ enum WenguaVNextEngine {
         let relationshipBonus=controlPoints.values.reduce(0,+) + 3*drainBonus.count+auspicePoints
         // 五不遇时: minus 2 for EACH selected real palace, even neutral.
         let finalRaw=known+relationshipBonus-(fiveNot ? 2*selectedPalaces.count : 0)
+            +(tianxian ? 4 : 0)
         let result=pending.isEmpty ?
             Optional(saturation(finalRaw)) : nil
         var favorable=votes.values.filter{$0=="favorable"}.count
@@ -946,6 +962,7 @@ enum WenguaVNextEngine {
             schema:"wengua_native_vnext_exact_200_81_selected_five_v20261026",
             palaces:physical,roles:roles,roleScores:roleScores,
             rolePalaces:rolePalaces,firstMacroFiveNot:fiveNot,
+            tianxianHour:tianxian,
             postVoidKnownSum:known,score:result,pending:pending,
             controls:controls,evidenceDirection:evidenceDirection,
             evidenceConflict:conflict,traditionalSentence:sentence,
