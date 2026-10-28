@@ -276,7 +276,7 @@ enum WenguaPythonVNextVerbatim {
 
     private static func roleAgainstIllness(
         _ role:String,review:WenguaVNextAudit,
-        chart:WenguaNativeChart)throws->String {
+        chart:WenguaNativeChart,targetPowerSentence:String)throws->String {
         guard let aid=review.roles[role],
               let pid=review.roles["illness"],
               let p=chart.palaces.first(where:{$0.id==aid}),
@@ -290,8 +290,7 @@ enum WenguaPythonVNextVerbatim {
         let baseNote=try powerNote(role,p,own,chart:chart)
         // Each edge compares THIS selected signifier with Tianrui, not the
         // net +/- score of either resident physical palace.
-        let note=baseNote+"天芮病星用神力量为"+
-            (review.roleEnergy["illness"]?.strength ?? "待核")+"。"
+        let note=baseNote+targetPowerSentence
         let outcome=edge.cell
         let applicable=["strong","limited"].contains(edge.applicability)
         let eligible:Bool
@@ -433,7 +432,12 @@ enum WenguaPythonVNextVerbatim {
             if role=="illness" || (powerSeen.contains(marker) && role != "chief") {
                 roleText=""
             } else {
-                roleText=try roleAgainstIllness(role,review:review,chart:chart)
+                let targetPower=try phrase("selected_target_power",[
+                    "strength":review.roleEnergy["illness"]?.strength ?? "待核"
+                ])
+                roleText=try roleAgainstIllness(
+                    role,review:review,chart:chart,
+                    targetPowerSentence:targetPower)
                 powerSeen.insert(marker)
             }
             let relationText=role=="illness" ? "" :
@@ -471,12 +475,13 @@ enum WenguaPythonVNextVerbatim {
             var head:String
             let symbol=review.roleEnergy[key]?.symbol ?? "未核"
             let power=review.roleEnergy[key]?.strength ?? "待核"
+            let suffix=try phrase("selected_role_summary",[
+                "symbol":symbol,"strength":power
+            ])
             if let existing=seenPalaces[pid] {
-                head=name+"与"+existing+"同在"+label(p)+
-                    "，其中"+symbol+"用神力量"+power
+                head=name+"与"+existing+"同在"+label(p)+suffix
             } else {
-                head=name+"落"+label(p)+"，宫象"+quality+
-                    "，其中"+symbol+"用神力量"+power
+                head=name+"落"+label(p)+"，宫象"+quality+suffix
                 if state != "not_void" && key != "chief" {
                     head+="且逢"+(state=="true_void" ? "真空":"假空")
                 }
