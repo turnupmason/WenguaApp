@@ -708,7 +708,14 @@ enum WenguaVNextEngine {
             let pair=[p.id,ill.id].sorted().map(String.init).joined(separator:":")
             // One source->target physical relation gets one vote across
             // co-palace roles, just like health_role_majority_vnext.
-            if votes[pair]==nil {votes[pair]=direction}
+            // One physical pair votes ONCE, but all actual distinct
+            // selected star/stem/deity strengths are inspected first.
+            // A pending doctor's strength cannot hide a verified Yi on
+            // that same palace. Never multiply a shared physical score.
+            if votes[pair]==nil || (votes[pair]=="pending" &&
+                  ["favorable","adverse"].contains(direction)) {
+                votes[pair]=direction
+            }
         }
         // Source-aligned selected role activation. Only a real 克 relation
         // looks up the second 5x5 matrix. Chief without an effective 克
