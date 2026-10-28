@@ -12,7 +12,7 @@
 4. 所有宫对宫（克、被克、生、被生、比和）分别识别**施力用神与受力用神**，两边各读独立力量；五行关系由真实宫确定。克须查来源有向5×5及空亡/刑墓门迫等限制，非克无源规定不得杜撰新作用分。同宫吉助是否成立依**本领域适用条件与真实独立宿主**，不能只看到吉神就泛加分；空亡统一按已核规则处理。
 5. 用神证据、吉凶汇总、格局优先级、有效应期只按本专题来源成立时出具；正式离线客户断词采用 [V8.0 模板](data/templates/health_severity_vnext/reading_template.json)，Python/Swift 同时辰应严格一致。面向客户不显示内部计算分数、矩阵名、调试信息。
 
-**完整宫位图关系候选层**：[`selected_signifier_graph_v80.py`](src/wengua/selected_signifier_graph_v80.py) 以 `role_key/kind/symbol_id/palace_id/energy_fact_id` 标识角色；还记录每个已选宫里的**全部星、门、八神、天/地干、81格及空墓刑迫**、每枚实际符号的源强度和同宫/相邻/跨宫证据。它**只做事实图和证据图，不改V8.0分数**。新领域的用神与条件另定义，任何 V8.next 加分都须独立审查后才能晋升。
+**完整宫位图关系候选层**：[`selected_signifier_graph_v80.py`](src/wengua/selected_signifier_graph_v80.py) · [原生 Swift 对应事实图](ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift) 以 `role_key/kind/symbol_id/palace_id/energy_fact_id` 标识角色；还记录每个已选宫里的**全部星、门、八神、天/地干、81格及空墓刑迫**、每枚实际符号的源强度和同宫/相邻/跨宫证据。两端目前**只做事实图和证据图，不改V8.0分数或客户断词**。新领域的用神与条件另定义，任何 V8.next 加分都须独立审查后才能晋升。
 
 ## 二、V8.0 真正通过的工程验收
 
