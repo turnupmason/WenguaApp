@@ -1,0 +1,67 @@
+name: Health V7.9 generalized independent cohost Python Swift parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v79_generalized_cohost_native_parity.yml'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'tests/test_health_v79_independent_cohost_matrix_20261027.py'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'Important/MANIFEST.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  combinations_and_real_user_clocks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Preserve all synthetic combinations and run actual Python regression
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v79
+          python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v 2>&1 | tee /tmp/wengua-v79/python_synthetic_real.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v79/mirror.log
+      - name: Compile current iOS native Python-matched engine
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v79/native 2>&1 | tee /tmp/wengua-v79/swift_compile.log
+      - name: Same frozen colleague clock and real Swift customer sections
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v79/colleague.json
+          /tmp/wengua-v79/native /tmp/wengua-v79/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v79/colleague_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v79/colleague.json /tmp/wengua-v79/colleague_swift.log /tmp/wengua-v79/colleague_diff.md
+      - name: Same frozen 1920 elder clock and real Swift customer sections
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v79/elder.json
+          /tmp/wengua-v79/native /tmp/wengua-v79/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json 2>&1 | tee /tmp/wengua-v79/elder_swift.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v79/elder.json /tmp/wengua-v79/elder_swift.log /tmp/wengua-v79/elder_diff.md
+      - name: Print both actual three-stage V7.9 score breakdowns
+        run: |
+          python3 - <<'PY'
+          import json
+          for name in ('colleague','elder'):
+              case=json.load(open('/tmp/wengua-v79/'+name+'.json'))['cases'][0]
+              s=case['summary']
+              audit={'pillars':case['four_pillars'],
+                     'palaces':s['unique_palace_score_details'],
+                     'conditional':s['auspice_bonus_details'],
+                     'control':s['control_bonus_points'],
+                     'base':s['post_void_known_sum'],
+                     'auspice':s['auspice_applied_extra_score'],
+                     'five_not':s['five_not_global_penalty'],
+                     'raw':s['raw_final_before_saturation'],
+                     'final':s['score'],
+                     'policy':s['final_scoring_policy']}
+              print(name+': '+json.dumps(audit,ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: health-v79-generalized-cohost-synthetic-python-swift-parity
+          path: /tmp/wengua-v79/
+          retention-days: 90
+          if-no-files-found: warn
