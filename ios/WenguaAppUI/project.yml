@@ -22,6 +22,7 @@ targets:
       - path: ../../data/knowledge/phrase_library/health_v20/actor_profiles.json
         buildPhase: resources
       - path: WenguaNativeVNextEngine.swift
+      - path: WenguaSelectedSignifierGraphV80.swift
       - path: WenguaVNextCustomerComposer.swift
       - path: WenguaVNextReasoner.swift
       - path: WenguaPythonVNextVerbatim.swift
