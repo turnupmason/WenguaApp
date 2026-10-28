@@ -382,7 +382,7 @@ private struct WenguaVNextInlineReading: View {
     var body:some View {
         VStack(alignment:.leading,spacing:12) {
             HStack {
-                Text("本次 V-next 断案")
+                Text("本次问事解读")
                     .font(.title2.weight(.semibold))
                 Spacer()
                 Text("离线实算").font(.caption).foregroundStyle(QStyle.green)
@@ -443,7 +443,7 @@ struct ProfessionalChartScreen: View {
                         WenguaVNextInlineReading(reading:reading,
                                                 details:{showReading=true})
                     } else {
-                        Text("本次只有真实九宫事实；V-next 断案尚未完成，不使用历史样本冒充。")
+                        Text("本次仅能显示真实九宫；当前问事的完整断词尚无可用依据。")
                             .font(.caption).foregroundStyle(QStyle.red)
                             .padding(14)
                     }
@@ -1336,9 +1336,9 @@ private struct WenguaHealthFormationSection: View {
 
     private func formationList(_ blocks: [WenguaHealthFormationBlock]) -> some View {
         VStack(alignment:.leading,spacing:12) {
-            Text("本盘81格原文与模板实时替换 · 基础事实，尚非完整断案")
+            Text("本盘81天地格 · 原文依据")
                 .font(.title3.weight(.semibold))
-            Text("各条古文和取象对应本盘真实天盘携干与地盘干；200格能量、人物关系及最后吉凶尚未原生移植。")
+            Text("本节仅列本盘真实81天地格出处；完整用神、能量及吉凶结论请查看本次问事解读。")
                 .font(.caption).foregroundStyle(QStyle.secondary)
             ForEach(blocks) { block in
                 formationCard(block)
