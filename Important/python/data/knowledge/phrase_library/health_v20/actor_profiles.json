@@ -67,19 +67,31 @@
     {
       "id": "grandfather",
       "label": "爷爷",
-      "references": [{"kind":"casting_year_stem",
-        "source":"shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
-        "status":"conditional_older_generation_analogy_not_exact_case"}],
-      "palaces": [6],
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
+          "status": "conditional_older_generation_analogy_not_exact_case"
+        }
+      ],
+      "palaces": [
+        6
+      ],
       "note": "男性长辈问时年干候选兼参乾六；原书爷爷专案未核，未给出生年命不补造"
     },
     {
       "id": "grandmother",
       "label": "奶奶",
-      "references": [{"kind":"casting_year_stem",
-        "source":"shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
-        "status":"conditional_older_generation_analogy_not_exact_case"}],
-      "palaces": [2],
+      "references": [
+        {
+          "kind": "casting_year_stem",
+          "source": "shenqi.health lines 105/192 older-generation analogy; user 2026-10-28",
+          "status": "conditional_older_generation_analogy_not_exact_case"
+        }
+      ],
+      "palaces": [
+        2
+      ],
       "note": "女性长辈问时年干候选兼参坤二；原书奶奶专案未核，未给出生年命不补造"
     },
     {
@@ -101,12 +113,12 @@
       "references": [
         {
           "kind": "casting_month_stem",
-          "source": "peer-generation symbolic role requires chapter-level confirmation",
-          "status": "research_candidate_only"
+          "source": "用户2026-10-28确认：直接代问朋友按同辈月干取用；问已发生事件仍按event_news另走日干；实际月干落宫须逐盘核对",
+          "status": "user_explicit_direction_verified_by_actual_chart"
         }
       ],
       "palaces": [],
-      "note": "直接朋友代测以月干作同辈候选；闻讯按事件占测改走event_news日干，不可混用"
+      "note": "直接代问朋友以本盘真实月干为患者用神；闻讯事件另走已核事件日干，不混用；年命仅在真实提供时纳入"
     },
     {
       "id": "colleague",

@@ -44,11 +44,7 @@ enum WenguaPythonVNextVerbatim {
     }
     private static func fullMacro(_ c:WenguaNativeChart,_ a:WenguaVNextAudit,
                                   macros:[String:String]) throws->String {
-        let day=String(c.pillars.day.prefix(1))
-        let hour=String(c.pillars.hour.prefix(1))
-        let first=a.firstMacroFiveNot
-            ? "五不遇时成立（时干"+hour+"克日干"+day+"且阴阳相同）；按用户规则，五不遇时主诸事凶，为全局一项不利象，不能单凭此象断病亡。"
-            : "不构成五不遇时（已按日干、时干五行克制及阴阳同类核对）。"
+        let firstKey=a.firstMacroFiveNot ? "macro_five_customer":"macro_clear_customer"
         let byID=c.palaces
         let stars=byID.flatMap{p in p.heavenStars.compactMap{x->(String,Int)? in
             starOrigins[x.star] != nil ? (x.star,p.id) : nil
@@ -57,35 +53,31 @@ enum WenguaPythonVNextVerbatim {
             guard let x=p.door,doorOrigins[x] != nil else {return nil}
             return (x,p.id)
         }
-        guard stars.count==8,doors.count==8 else {
-            throw WenguaCastError.invalidChart
-        }
-        func status(_ items:[(String,Int)],_ originals:[String:Int])->String {
-            let ordered=items.allSatisfy{$0.1==originals[$0.0]}
-            let reverse=items.allSatisfy{
-                guard let native=originals[$0.0] else{return false}
-                return $0.1==WenguaNativeReadingRouter.opposites[native]
+        guard stars.count==8,doors.count==8 else {throw WenguaCastError.invalidChart}
+        func status(_ items:[(String,Int)],_ homes:[String:Int],_ inverse:Bool)->Bool {
+            items.allSatisfy{row in
+                guard let origin=homes[row.0] else{return false}
+                return row.1 == (inverse
+                    ? WenguaNativeReadingRouter.opposites[origin] : origin)
             }
-            return ordered ? "伏吟" : reverse ? "反吟" : "非伏吟反吟"
         }
-        let ss=status(stars,starOrigins),ds=status(doors,doorOrigins)
-        let slow=ss=="伏吟" || ds=="伏吟"
-        let fast=ss=="反吟" || ds=="反吟"
-        let pace=slow && fast
-            ? "伏吟主慢，反吟主快；本盘星门分别命中，缓急并列待具体条件核定。"
-            : slow ? "伏吟主慢。" : fast ? "反吟主快。"
-            : "本盘无整盘伏吟反吟，不凭此三项擅断缓急。"
+        let slow=status(stars,starOrigins,false) || status(doors,doorOrigins,false)
+        let fast=status(stars,starOrigins,true) || status(doors,doorOrigins,true)
+        let paceKey=slow && fast ? "macro_pace_mixed" :
+                    slow ? "macro_pace_slow" :
+                    fast ? "macro_pace_fast" : "macro_pace_unset"
+        let goodKey=a.tianxianHour ?
+            (slow ? "tianxian_fuyin" : "tianxian_regular") : nil
+        guard let first=macros[firstKey],let pace=macros[paceKey] else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
         let good:String
-        if a.tianxianHour {
-            // The actual 伏吟 condition reduces Tianxian's participation.
-            // Customer text comes from the SAME bundled editable template.
-            let key=slow ? "tianxian_fuyin" : "tianxian_regular"
-            guard let line=macros[key] else {
-                throw WenguaNativeReadingError.missingPhrases
-            }
-            good=line
+        if let key=goodKey {
+            guard let word=macros[key] else {throw WenguaNativeReadingError.missingPhrases}
+            good=word
         } else {good=""}
-        return first+" "+good+"九星"+ss+"、八门"+ds+"。"+pace+" 缓急不自动等于吉凶。"
+        return [first,good,pace].filter{ !$0.isEmpty }.joined(separator:" ")
+
     }
     private static func monthColumn(_ stem:String,_ month:String)throws->String {
         guard let e=WenguaNativeReadingRouter.stemElements[stem] else{
@@ -200,7 +192,7 @@ enum WenguaPythonVNextVerbatim {
                                    review:WenguaVNextAudit,
                                    energy:WenguaNativeEnergyCatalog,
                                    formations:[Int:WenguaHealthFormationBlock],
-                                   kunHostNote:String)
+                                   kunHostNote:String,palaceTemplate:String)
        throws ->String {
         let month=try month(chart)
         guard let row=review.palaces[p.id],let pe=elements[p.id],
@@ -232,145 +224,65 @@ enum WenguaPythonVNextVerbatim {
             }
             earthDesc+="、中五寄干"+hosted
         }
-        let chosen=formation.sentences
-        let book=chosen.isEmpty ? "；本宫没有实际天地盘有序格" :
-            "；天地格："+chosen.joined(separator:"；")
-        let kunNote=p.id==2 ? "；"+kunHostNote : ""
+        let names=formation.sentences.map{
+            String($0.components(separatedBy:"。古文").first ?? $0)
+        }.joined(separator:"、")
         let klass=row.void=="not_void" ? "不空" :
                   row.void=="fake_void" ? "假空" : "真空"
-        let special=try conditions(p,chart)
-        let broken=special.components(separatedBy:"、").contains("门破")
-        let brokenNote=broken ? "。八门压制宫力量，吉事不吉，凶事更凶" : ""
-        return "落"+label(p)+"；九星"+(stars.isEmpty ? "无已核星":stars)+"；八神"+(try god(deity,pe))+"；八门"+doorPart+"；天盘干"+(heaven.isEmpty ? "无":heaven)+"、地盘干"+earthDesc+book+kunNote+"；空亡"+klass+"；"+special+brokenNote+"。全部因素推断后，此宫为"+signed(review.roleScores[role])+"。"
-    }
+        let special=try conditions(p,chart).replacingOccurrences(
+            of:"无已核特殊刑墓迫",with:"无特别刑墓迫")
+        var text=palaceTemplate
+        let values:[String:String]=[
+            "palace":label(p),"stars":(stars.isEmpty ? "无已核星":stars),
+            "door":doorPart,"deity":try god(deity,pe),
+            "heaven":(heaven.isEmpty ? "无":heaven),
+            "earth":earthDesc,"patterns":(names.isEmpty ? "无已核天地格":names),
+            "void":klass,"conditions":special,
+            "grade":signed(review.roleScores[role])]
+        for (key,value) in values {
+            text=text.replacingOccurrences(of:"{"+key+"}",with:value)
+        }
+        if p.id==2 {text+=" "+kunHostNote}
+        if text.contains("{") || text.contains("}") {
+            throw WenguaNativeReadingError.invalidPhrase
+        }
+        return text
 
-    private static func powerNote(_ role:String,_ p:WenguaNativePalace,
-        _ own:WenguaVNextFactor,chart:WenguaNativeChart)throws->String {
-        let strength=own.strength ?? "待核"
-        guard let pe=elements[p.id] else{throw WenguaCastError.invalidChart}
-        if role=="chief" {
-            guard let deity=p.deity,let ge=WenguaVNextEngine.godElement[deity]
-                else {throw WenguaCastError.invalidChart}
-            let r=try WenguaVNextEngine.directed(ge,pe)
-            let map=["宫生符号":"被宫生","宫克符号":"被宫克",
-                     "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
-            return "值符按神宫"+(map[r] ?? r)+"，用神力量为"+strength+"。"
-        }
-        if role=="doctor" || role=="gender" {
-            guard let se=WenguaVNextEngine.starElement[own.symbol] else {
-                throw WenguaCastError.invalidChart
-            }
-            let month=try month(chart)
-            let stage=try WenguaVNextEngine.starMonth(se,month)
-            let rel=try WenguaVNextEngine.directed(se,pe)
-            let map=["宫生符号":"被宫生","宫克符号":"被宫克",
-                     "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"]
-            return own.symbol+"月令"+stage+"、"+(map[rel] ?? rel)+"，用神力量为"+strength+"。"
-        }
-        let m=try month(chart)
-        let col=try monthColumn(own.symbol,m)
-        let carried=p.heavenStars.first{$0.carriedStem==own.symbol}
-        var rows:[String]=[]
-        if let carried {
-            for st in carried.stages {
-                let row=lifeRow(st.stage)
-                if !rows.contains(row){rows.append(row)}
-            }
-        } else if own.symbol=="甲",let stages=WenguaNativeCore.stages["甲"] {
-            // Hidden Xunshou 甲 never appears as a visible sky carrier,
-            // but its independently verified natal/hour life stage MUST use
-            // actual branch seats, not an invented unresolved fallback.
-            for branch in p.branches {
-                if let actual=stages[branch] {
-                    let row=lifeRow(actual)
-                    if !rows.contains(row){rows.append(row)}
-                }
-            }
-        }
-        let stage=rows.count==1 ? rows[0] : "长生分支待核"
-        if stage=="长生分支待核" {
-            return own.symbol+"天干与月令关系为"+col+"，其本宫力量仍待核实。"
-        }
-        return own.symbol+"天干十二长生"+stage+"、"+col+"，用神力量为"+strength+"。"
     }
 
     private static func roleAgainstIllness(
-        _ role:String,review:WenguaVNextAudit,
-        chart:WenguaNativeChart,targetPowerSentence:String)throws->String {
+        _ role:String,review:WenguaVNextAudit,chart:WenguaNativeChart)throws->String {
         guard let aid=review.roles[role],
-              let pid=review.roles["illness"],
-              let p=chart.palaces.first(where:{$0.id==aid}),
-              let own=review.roleEnergy[role],
-              let names=roleLabels[role],
-              let edge=review.controls.first(where:{$0.role==role}) else{
+              let disease=review.roles["illness"],
+              let energy=review.roleEnergy[role],
+              let edge=review.controls.first(where:{$0.role==role}) else {
             return ""
         }
-        let who=names[0]
-        let rel=relation(aid,pid)
-        let baseNote=try powerNote(role,p,own,chart:chart)
-        // Each edge compares THIS selected signifier with Tianrui, not the
-        // net +/- score of either resident physical palace.
-        let note=baseNote+targetPowerSentence
-        let outcome=edge.cell
-        let applicable=["strong","limited"].contains(edge.applicability)
-        let eligible:Bool
-        if role=="chief" {
-            eligible=review.palaces[aid]?.void=="not_void" &&
-                rel=="克" && applicable
-        } else {
-            eligible=rel != "克" || applicable
-        }
-        if role=="medicine" && rel=="同宫" {
-            return note+"乙奇与天芮病宫同宫，表示正在接受治疗，医药与病象同宫发挥作用。"
-        }
-        if role=="chief" && rel=="同宫" {
-            return note+"值符大吉神与天芮病宫同宫，表示大吉神在同宫护持，能够发挥作用。"
-        }
+        let lead=energy.symbol+"势"+(energy.strength ?? "待核")
+        let rel=relation(aid,disease)
+        let note:String
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
-            return note+"因值符空亡，护持力明显减弱，尚存少许余气。"
-        }
-        if rel=="克" {
-            let meaning:String
+            note="逢空，护持受限"
+        } else if rel=="克" {
             if review.controlBonusPalaces.contains(aid) &&
                ["strong","limited"].contains(edge.applicability) {
-                if review.palaces[pid]?.void != "not_void" {
-                    meaning="病宫逢空，病气减弱，更易受到"+who+"的克制。"
-                } else {
-                    meaning="病象受到"+who+"的克制。"
-                }
+                note=(review.palaces[disease]?.void != "not_void"
+                    ? "病宫逢空，制病有象" : "制病有象")
             } else if edge.applicability=="failed" {
-                meaning=who+"虽然在五行上克病宫，但双方实际力量比较未能成功克制。"
-            } else {
-                meaning=who+"虽有克病方向，具体用神力量或矩阵限制未能支持确定的克病加分。"
-            }
-            return note+who+"宫克天芮病宫，"+meaning
-        }
-        let explanation:String
-        switch rel {
-        case "生":
-            explanation=who+"宫生天芮病宫，方向上生扶病宫，实际助病强弱须根据双方各自用神力量判断。"
-        case "被克":
-            let effect:String
-            if edge.applicability=="strong" {
-                effect="病宫用神有力压制本方，制约较明显。"
-            } else if edge.applicability=="limited" {
-                effect="病宫有克向但施力受限，不能直接断本方完全失力。"
-            } else if edge.applicability=="failed" {
-                effect="病宫虽有克向，但用神力量比较不能形成有效压制。"
-            } else {
-                effect="病宫虽有克向，双方力量或空墓条件待核，不能直接断已受制。"
-            }
-            explanation=who+"宫受天芮病宫克，"+effect
-        case "被生":
-            explanation=who+"宫受天芮病宫生，方向上受病宫生扶，实际承受力量按双方用神判断，非主动克病。"
-        case "比和":
-            explanation=who+"宫与天芮病宫比和，同气但不等于双方力量相同，也不是主动克病。"
-        case "同宫":
-            explanation=who+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
-        default:
-            explanation=who+"与病宫的五行关系待核。"
-        }
-        return note+explanation
+                note="有克向而难成制"
+            } else {note="虽有克向，效力未定"}
+        } else if rel=="被克" {
+            note="受病宫克，制约轻重依双方实际力量"
+        } else if rel=="生" {
+            note="生扶病宫，不作制病"
+        } else if rel=="被生" {
+            note="受病宫生，非主动制病"
+        } else if rel=="比和" {
+            note="与病宫比和，不等于等力"
+        } else if rel=="同宫" {
+            note="与病宫同宫，不另作跨宫克制"
+        } else {note="与病宫关系待核"}
+        return lead+"；"+note+"。"
     }
 
     static func sections(chart:WenguaNativeChart,review:WenguaVNextAudit,
@@ -442,7 +354,8 @@ enum WenguaPythonVNextVerbatim {
                 if p.id==2 {kunNote=try phrase("kun_host_note")}
                 full=try palaceText(p,role:role,chart:chart,review:review,
                                     energy:energy,formations:lookup,
-                                    kunHostNote:kunNote)
+                                    kunHostNote:kunNote,
+                                    palaceTemplate:try phrase("palace_compact"))
                 viewed[pid]=try title(key)
             }
             var extra=""
@@ -455,12 +368,7 @@ enum WenguaPythonVNextVerbatim {
             if role=="illness" || (powerSeen.contains(marker) && role != "chief") {
                 roleText=""
             } else {
-                let targetPower=try phrase("selected_target_power",[
-                    "strength":review.roleEnergy["illness"]?.strength ?? "待核"
-                ])
-                roleText=try roleAgainstIllness(
-                    role,review:review,chart:chart,
-                    targetPowerSentence:targetPower)
+                roleText=try roleAgainstIllness(role,review:review,chart:chart)
                 powerSeen.insert(marker)
             }
             let relationText=role=="illness" ? "" :
@@ -546,14 +454,14 @@ enum WenguaPythonVNextVerbatim {
         desc+=review.auspiceBonusNotes.map{
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
-        if review.firstMacroFiveNot {desc.insert("五不遇时成立，各实际参与实宫均减两分",at:0)}
+        if review.firstMacroFiveNot {desc.insert(try phrase("summary_five_customer"),at:0)}
         let macroProse=try fullMacro(chart,review,macros:macros)
         if review.tianxianHour {
             let key=macroProse.contains("伏吟主慢")
                 ? "tianxian_evidence_fuyin" : "tianxian_evidence_regular"
             desc.insert(try phrase(key),at:0)
         }
-        let pace=macroProse.contains("缓急并列待具体条件核定") ?
+        let pace=macroProse.contains("缓急须看用神") ?
             "伏吟反吟并见，缓急合参" :
             macroProse.contains("伏吟主慢") ? "伏吟主慢" :
             macroProse.contains("反吟主快") ? "反吟主快" :

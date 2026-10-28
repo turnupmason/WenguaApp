@@ -30,7 +30,7 @@ def macro_facts(*,tianxian,fuyin=False,fanyin=False):
 class TianxianTemplateActualRoute(unittest.TestCase):
     def test_customer_phrase_is_selected_from_editable_template(self):
         j=template()
-        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_tianxian_kun_v9")
+        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend")
         normal=render_first_stage_macro(macro_facts(tianxian=True))
         slow=render_first_stage_macro(macro_facts(tianxian=True,fuyin=True))
         absent=render_first_stage_macro(macro_facts(tianxian=False,fuyin=True))
@@ -68,7 +68,7 @@ class TianxianTemplateActualRoute(unittest.TestCase):
         self.assertIn('earthDesc+="、中五寄干"+hosted',swift)
         self.assertIn('kunNote=try phrase("kun_host_note")',swift)
         self.assertIn('kunHostNote:kunNote',swift)
-        self.assertIn('book+kunNote+"；空亡"',swift)
+        self.assertIn('if p.id==2 {text+=" "+kunHostNote}',swift)
         self.assertIn('两重天地格',render("kun_host_note"))
         self.assertNotIn("+2",render("kun_host_note"))
 

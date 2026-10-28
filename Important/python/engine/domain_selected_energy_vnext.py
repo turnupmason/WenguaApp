@@ -455,91 +455,36 @@ def selected_health_sections(result,*,actor,chart):
 
     # This is the display of EXISTING exact table-one (month x 5 relations)
     # and table-two (attacker x target) results. No power is invented here.
-    def role_power_note(key,row):
-        power=row["primary_strength_25"]
-        kind=power["kind"]
-        strength=str(power.get("strength_label") or "待核")
-        if kind=="deity":
-            god=row["complete_palace"]["deity"]
-            return ("值符按神宫"+god["relation"]+"，用神力量为"+strength+"。")
-        if kind=="star":
-            rel={"宫生符号":"被宫生","宫克符号":"被宫克",
-                 "符号克宫":"克宫","符号生宫":"生宫","比和":"比和"}
-            col=power.get("user_cell_col") or power.get("nominal_relation_from_symbol")
-            return (power["symbol"]+"月令"+str(power.get("symbol_month_stage") or "待核")+
-                    "、"+rel.get(col,str(col))+"，用神力量为"+strength+"。")
-        if kind=="stem":
-            col=power.get("user_cell_col") or "月令关系待核"
-            row_name=power.get("user_cell_row") or "长生分支待核"
-            if row_name=="长生分支待核":
-                return (power["symbol"]+"天干与月令关系为"+str(col)+
-                        "，其本宫力量仍待核实。")
-            return (power["symbol"]+"天干十二长生"+str(row_name)+
-                    "、"+str(col)+"，用神力量为"+strength+"。")
-        return "用神力量为"+strength+"。"
-
     def role_control_note(key,row):
+        """One actual role's 200-cell energy, directed relationship only."""
         gate=quant["role_effectiveness_gates"][key]
+        power=row["primary_strength_25"]
+        lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核")
         rel=gate["relation"]
-        name={"doctor":"天心医生","medicine":"乙奇医药",
-              "patient":"患者用神","hour":"时干事体",
-              "chief":"值符大吉神","gender":"性别辅助宫",
-              "natal":"患者年命"}.get(key,key)
-        strength=role_power_note(key,row)
-        # Every relationship is between this specific signifier and Tianrui;
-        # the target is NEVER substituted by the net signed palace grade.
-        illness_power=roles["illness"]["primary_strength_25"].get("strength_label")
-        strength+=render_slot("selected_target_power",strength=str(illness_power or "待核"))
-        outcome=gate["control_result"]
-        if key=="medicine" and rel=="同宫":
-            return (strength+"乙奇与天芮病宫同宫，表示正在接受治疗，"
-                    "医药与病象同宫发挥作用。")
-        if key=="chief" and rel=="同宫":
-            return (strength+"值符大吉神与天芮病宫同宫，"
-                    "表示大吉神在同宫护持，能够发挥作用。")
         if key=="chief" and gate["void"]!="not_void":
-            return (strength+"因值符空亡，护持力明显减弱，尚存少许余气。"
-                    "")
-        if rel=="克":
+            note="逢空，护持受限"
+        elif rel=="克":
             bonus=quant["summary"]["control_bonus_palaces"]
             if key in bonus.get(str(gate["palace"]),[]):
-                void=roles["illness"]["complete_palace"]["void"]["classification"]
-                meaning=("病宫逢空，病气减弱，更易受到"+name+"的克制。"
-                         if void!="not_void" else "病象受到"+name+"的克制。")
-            elif gate["control_ability"]=="不能":
-                meaning=name+"虽然在五行上克病宫，但双方实际力量比较未能成功克制。"
+                ill_void=roles["illness"]["complete_palace"]["void"]["classification"]
+                note="病宫逢空，制病有象" if ill_void!="not_void" else "制病有象"
+            elif gate.get("control_ability")=="不能":
+                note="有克向而难成制"
             else:
-                meaning=name+"虽有克病方向，具体用神力量或矩阵限制未能支持确定的克病加分。"
-            return strength+name+"宫克天芮病宫，"+meaning
-        if rel=="生":
-            meaning=name+"宫生天芮病宫，方向上生扶病宫，实际助病强弱须根据双方各自用神力量判断。"
+                note="虽有克向，效力未定"
         elif rel=="被克":
-            # Reverse real attacker/target: illness Tianrui attacks THIS
-            # independently selected role signifier, never signed palaces.
-            reverse=matchup(roles["illness"]["primary_strength_25"],
-                            row["primary_strength_25"],
-                            actor_role="illness",target_role=key,
-                            **void_kwargs(roles["illness"]["complete_palace"],
-                                          row["complete_palace"]))
-            r_ability=reverse.get("ability")
-            if r_ability=="能":
-                effect="病宫用神有力压制本方，制约较明显。"
-            elif r_ability=="艰难":
-                effect="病宫有克向但施力受限，不能直接断本方完全失力。"
-            elif r_ability=="不能":
-                effect="病宫虽有克向，但用神力量比较不能形成有效压制。"
-            else:
-                effect="病宫虽有克向，双方力量或空墓条件待核，不能直接断已受制。"
-            meaning=name+"宫受天芮病宫克，"+effect
+            note="受病宫克，制约轻重依双方实际力量"
+        elif rel=="生":
+            note="生扶病宫，不作制病"
         elif rel=="被生":
-            meaning=name+"宫受天芮病宫生，方向上受病宫生扶，实际承受力量按双方用神判断，非主动克病。"
+            note="受病宫生，非主动制病"
         elif rel=="比和":
-            meaning=name+"宫与天芮病宫比和，同气但不等于双方力量相同，也不是主动克病。"
+            note="与病宫比和，不等于等力"
         elif rel=="同宫":
-            meaning=name+"与天芮病宫同宫，意思为：双方同宫，不另论跨宫克制。"
+            note="与病宫同宫，不另作跨宫克制"
         else:
-            meaning=name+"与病宫的五行关系待核。"
-        return strength+meaning
+            note="与病宫关系待核"
+        return lead+"；"+note+"。"
 
     # Same physical palace and repeated symbol are ONE scored source.
     power_seen={}
@@ -562,7 +507,7 @@ def selected_health_sections(result,*,actor,chart):
                     role["complete_palace"]["palace_name"]+"，合看该宫象。")
         else:
             detail=render_complete_selected_palace(
-                role["complete_palace"],quantified=qitem)
+                role["complete_palace"],quantified=qitem,compact=True)
             seen[pid]=template_title(title_key)
         extra=""
         if key=="illness":
@@ -650,7 +595,7 @@ def selected_health_sections(result,*,actor,chart):
         desc.append("病星势弱而外泄，病气有耗损之象")
     desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
     if result["first_stage_macro"]["five_not_encounter_triggered"]:
-        desc.insert(0,"五不遇时成立，各实际参与实宫均减两分")
+        desc.insert(0,render_slot("summary_five_customer"))
     if result["first_stage_macro"].get("tianxian_hour_triggered"):
         macros=result["first_stage_macro"]
         desc.insert(0,render_slot(

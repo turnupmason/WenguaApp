@@ -1,9 +1,9 @@
 {
-  "schema": "health_severity_user_editable_template_v20261028_tianxian_kun_v9",
+  "schema": "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend",
   "comment": "V7.2 病情轻重同宫吉象合断（待用户验收）：天盘乙、地盘乙／丁均属于一组奇助，同一实宫最多取一次，不因年干、时干、患者共宫重复计；值符另作独立大吉神，其受宫克时降档。地盘乙／丁需核实际地盘十二长生的长生/沐浴/冠带/临官/帝旺，墓刑可限定为1，未核时不虚构；同宫值符3+地盘奇3＝6、值符2+地盘奇3＝5、值符3+地盘奇1＝4、值符2+地盘奇1＝3；宫空只将总和除以2向下取整。同宫星、门、神、天地格原始四因子仍独立，跨宫天芮受克条件独立不叠加重复。Python 与 iOS Swift 真生产共规则，客户不显示内部算分。旧V3.9.1及200/81格和历次失败记录不改。 V7.3 客户合断严格两句话：首句由本次选定所有角色的真实宫、宫吉凶、五行制病、值符是否逢空及临宫吉助生成，分号分隔不编造、非长辈不出现乾坤辅助；次句填入本次源程序最终传统吉凶并有文化免责声明。每时辰所有可变字段现算，绝不写死上一张盘的离九/坎一/乙丁等事实。 V7.3.1 两句各自独立成段，真实同宫不同角色只述一次实宫吉凶，保留患者宫及病宫真假空亡区别，绝不在同一宫叠加基础力量或使用固定测试时辰结论。 V7.5纠错：最终只累计每个实际参与实宫已算好星门神格、门迫、空亡的宫分各一次；五不遇时每个独立实宫额外减2分，包括中平宫。保留V7.2补分来源审计与语义但不重复加入总分；伏吟主慢、反吟主快在首段写明。 V7.6用户重新明确三步算分：每个用神角色以原书/200格自带的吉凶和能量为基础，叠加本宫真实星门神天地盘81格、入墓击刑门破空亡等影响，形成角色完整分档；星/值符驻宫因素不重复，天盘干用神作为此前缺失的独立分项。若时干乙与乙奇医药同符号甚至同宫，两个取用角色仍分别完整计分。然后根据真实有效克病及已核同宫吉助/弱病泄耗补分，五不遇时对每个实际选定角色落宫减两分，最后总和按±5断凶吉。伏吟主慢反吟主快进入动态首段。 V7.7最新用户规则覆盖V7.6同符号重复计分：一座真实参与宫仅累计一次，宫内被选中不同天盘干各按原200格加本性力量一次，相同乙同时是时干/医药/年命也只加乙自身一次；九星/八门/八神/81格/刑墓迫空仍按同宫真实事实只算一次。克病额外作用只在原5x5证据有效时独立计；值符乙丁天心同宫已入原宫能量不二次加。五不遇时每个不同参与实宫减2。旧V7.6+2/+14为历史归档，不自动沿用。动态断词同宫角色只说明同在，不重复报等级。 V7.8用户覆盖V7.7：真实同宫特殊吉助是额外条件分而不是只作文字；同实宫基础宫分只计一次；每个同宫只计一组乙丁奇、值符独立、天心独立，允许满足值符3+地盘奇3等组合并按整组逢空取整；真实跨宫克病符合强弱与空亡5x5才分别加3/5/1；五不遇时每个不同实宫-2、伏吟慢反吟快。 V8.0用户最新口径：每一宫吉凶有符号分只用于凶吉程度；所有宫对宫关系必须分别采用各实际选定用神自身月令+落宫200格能量（天心与乙同宫仍分别查力量），五行方向由真实两宫确定，克须查看两用神源5x5矩阵，不能取abs(宫分)当强度；生/被生/比和/被克同样分别记录两枚用神力量。病宫被克+3或空病宫+5、有力但施力受限+1须有原始矩阵合格证据，否则不给/待核。基础宫分同宫一次，真实特殊同宫吉助仅独立符号触发、总后逢空折半；所有模板面向公众严禁显示内部数字/表名/矩阵票。",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
-    "macro": "时辰总纲",
+    "macro": "时局总纲",
     "illness": "天芮病宫",
     "doctor": "天心医生",
     "medicine": "乙奇医药",
@@ -15,29 +15,39 @@
     "qian": "乾坤辅助：{role}",
     "kun": "乾坤辅助：{role}",
     "quant": "内部研究计算（不提供客户展示）",
-    "verdict": "全部证据合断",
+    "verdict": "综合断语",
     "timing": "时空及应期"
   },
   "macros": {
     "macro": "{macro_text}",
     "role": "{palace_detail}{extra_illness}{role_relation}{gender_note}",
     "no_natal": "患者未提供真实年命，不纳入本次计算。",
-    "illness": " 传统病星格局「{name}」。",
+    "illness": " 病星格局「{name}」。",
     "role_score": "",
     "role_relation": " {relation_text}",
     "gender_note": "",
     "auxiliary": "{palace_detail}此宫与天芮病宫{relation}，仅作辅助参考；同宫不重复判断。",
     "overall_resolved": "综上所述，此病为{grade}。",
     "overall_pending": "部分宫位条件未能确认，暂不强断吉凶。",
-    "verdict": "{evidence}。\n\n{conclusion}；以上只作传统古籍象意参考，不能据此判断真实病情。",
-    "timing": "时马在{horse}；应期须另有空、墓、冲合及问事情境支持，不能直接断定某一天。",
+    "verdict": "{evidence}。\n\n{conclusion}；以上仅作传统古籍象意参考，不作现实病情判断。",
+    "timing": "驿马在{horse}；应期仍须参空、墓、冲合，证据不足不定日。",
     "selected_target_power": "天芮病星用神力量为{strength}。",
-    "selected_role_summary": "，其中{symbol}用神力量{strength}",
+    "selected_role_summary": "，{symbol}势{strength}",
     "tianxian_regular": "天显时至，所取实宫皆得吉时之助。",
     "tianxian_fuyin": "天显时逢伏吟，吉时仍扶所取实宫，然助势有所收敛。",
     "tianxian_evidence_regular": "天显时至，诸用神实宫得时",
     "tianxian_evidence_fuyin": "天显时逢伏吟，诸用神实宫虽得时助，助势却减",
-    "kun_host_note": "坤二承中五寄干，两重天地格并参，中五不另起宫象。"
+    "kun_host_note": "坤二承中五寄干，两重天地格并参，中五不另起宫象。",
+    "palace_compact": "落{palace}；九星{stars}，八门{door}，八神{deity}；天盘干{heaven}，地盘干{earth}；天地格：{patterns}；空亡{void}、{conditions}。全部因素推断后，此宫为{grade}。",
+    "macro_five_customer": "五不遇时，问事多阻，宜审慎而行。",
+    "macro_clear_customer": "本时不犯五不遇。",
+    "macro_pace_slow": "伏吟主慢。",
+    "macro_pace_fast": "反吟主快。",
+    "macro_pace_mixed": "伏吟、反吟并见，缓急须看用神。",
+    "macro_pace_unset": "星门无整盘伏吟反吟，应期须另参。",
+    "summary_five_customer": "五不遇时，诸事多阻",
+    "auspice_customer": "吉助同宫，仍须看空墓刑迫",
+    "no_extra_conditions": "无特别刑墓迫"
   },
   "data_paths": {
     "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
@@ -323,7 +333,8 @@
     "tianxian_scope": "day-hour six Jia exact match; +2 per DISTINCT selected real outer palace, +1.5 when either star or door Fuyin; aggregate all half-unit increments then FLOOR ONCE; centre excluded",
     "tianxian_half_unit_implementation": "(distinct_selected_outer_count * (fuyin ? 3 : 4)) // 2, only if tianxian triggered",
     "kun_centre_earth": "real centre-earth always housed in Kun-2; one real sky pair with each of Kun earth/centre earth if one sky, two independently corresponding real pairs if Tianrui+Tianqin in Kun; never invent centre ordinary star/door/god",
-    "public_words": "normal and Fuyin Tianxian are distinct classical clauses from macros; no score or intermediate counts in customer prose; Kun host sentence appears only on truly inspected Kun palace"
+    "public_words": "normal and Fuyin Tianxian are distinct classical clauses from macros; no score or intermediate counts in customer prose; Kun host sentence appears only on truly inspected Kun palace",
+    "customer_compact": "Only display 81 ordered grid titles/polarities in public; all original classical quotes, source rows, stages remain in internal full facts and the expandable chart details; no numerical scoring or developer notes in customer text; one role-one actual 200 strength"
   },
   "rule_revision_20261028": {
     "source": "2026-10-28 explicit user revision, supersedes earlier whole-chart +4 and moving-Tianqin centre-earth 81 semantics",

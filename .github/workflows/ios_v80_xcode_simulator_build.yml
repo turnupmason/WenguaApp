@@ -55,10 +55,11 @@ jobs:
           import json,sys,csv
           p=Path(sys.argv[1])
           template=json.loads((p/'reading_template.json').read_text())
-          assert template['schema']=='health_severity_user_editable_template_v20261028_tianxian_kun_v9'
+          assert template['schema']=='health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend'
           for key in ('tianxian_regular','tianxian_fuyin',
                        'tianxian_evidence_regular','tianxian_evidence_fuyin',
-                       'kun_host_note'):
+                       'kun_host_note','palace_compact','macro_five_customer',
+                       'macro_pace_slow','summary_five_customer'):
             assert template['macros'].get(key), key
           assert 'FLOOR ONCE' in template['final_scoring_v80']['tianxian_scope']
           assert 'Kun-2' in template['final_scoring_v80']['kun_centre_earth']

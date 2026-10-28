@@ -241,7 +241,7 @@ def void_kwargs(actor_detail,target_detail):
             "target_true_void":b=="true_void"}
 
 
-def render_complete_selected_palace(detail, *, quantified=None):
+def render_complete_selected_palace(detail, *, quantified=None, compact=False):
     """Output signed current star/door/god/palace tiers from real scoring audit.
 
     Heavenly and earthly stem 200-cell grades express strength, not automatically
@@ -307,6 +307,24 @@ def render_complete_selected_palace(detail, *, quantified=None):
     palace=quantified["palace_score"] if quantified is not None else None
     final=("全部因素推断后，此宫为"+signed(palace.get("score"))+"。"
            if palace is not None else "")
+    if compact:
+        # Consumer sees real pairs and polarity, NOT the entire book chapter.
+        # Original 81 grid quotations and full 12-stage branch facts remain
+        # unchanged in the source catalog and structured complete_palace.
+        from .health_reading_template_vnext import render
+        labels="、".join(formation_sentence(pair).split("。古文",1)[0]
+                        for pair in book) or "无已核天地格"
+        short_conditions=conditions.replace("无已核特殊刑墓迫",
+                                            "无特别刑墓迫")
+        compact_text=render("palace_compact",palace=detail["palace_name"],
+                      stars=stars,door=door_text,deity=deity,
+                      heaven=top,earth=bottom,patterns=labels,
+                      void=vt,conditions=short_conditions,
+                      grade=signed(palace.get("score")) if palace is not None
+                      else "吉凶待核")
+        if detail["palace"]==2:
+            compact_text+=" "+render("kun_host_note")
+        return compact_text
     if door_break and door_break.get("has_door_break"):
         conditions+="。八门压制宫力量，吉事不吉，凶事更凶"
     return ("落"+detail["palace_name"]+"；九星"+stars+"；八神"+deity+

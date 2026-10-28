@@ -24,7 +24,8 @@ def template():
                                  "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
                                  "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
                                  "health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations",
-                                 "health_severity_user_editable_template_v20261028_tianxian_kun_v9"):
+                                 "health_severity_user_editable_template_v20261028_tianxian_kun_v9",
+                                 "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend"):
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
@@ -35,7 +36,11 @@ def template():
                 "selected_target_power","selected_role_summary",
                 "tianxian_regular","tianxian_fuyin",
                 "tianxian_evidence_regular","tianxian_evidence_fuyin",
-                "kun_host_note"):
+                "kun_host_note","palace_compact",
+                "macro_five_customer","macro_clear_customer",
+                "macro_pace_slow","macro_pace_fast",
+                "macro_pace_mixed","macro_pace_unset",
+                "summary_five_customer"):
         if not isinstance(raw["macros"].get(key),str):
             raise ValueError("Missing template macro: "+key)
     if not isinstance(raw.get("formation"),str):

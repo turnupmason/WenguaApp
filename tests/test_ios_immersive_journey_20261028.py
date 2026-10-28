@@ -94,7 +94,7 @@ class ImmersiveJourney(unittest.TestCase):
                      "WenguaPremiumReadingView.swift"]:
             self.assertIn(name,self.project)
         self.assertEqual(self.template["schema"],
-                         "health_severity_user_editable_template_v20261028_tianxian_kun_v9")
+                         "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend")
         self.assertIn("综上所述，此病为{grade}。",self.template["macros"]["overall_resolved"])
 
 if __name__=="__main__":

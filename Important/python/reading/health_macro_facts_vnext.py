@@ -70,28 +70,17 @@ def first_stage_macro(*,chart,calendar):
 
 
 def render_first_stage_macro(facts):
-    five=facts["five_not_encounter"]
-    if five["triggered"]:
-        first=("五不遇时成立（时干"+five["hour_stem"]+
-               "克日干"+five["day_stem"]+"且阴阳相同）；"+
-               "按用户规则，五不遇时主诸事凶，为全局一项不利象，"+
-               "不能单凭此象断病亡。")
-    else:
-        first=("不构成五不遇时（已按日干、时干五行克制及阴阳同类核对）。")
-    fy=facts["fuyin_fanyin"]
-    prefix="九星"+fy["star"]+"、八门"+fy["door"]+"。"
-    t=facts["tempo"]
-    pace=("伏吟主慢，反吟主快；本盘星门分别命中，缓急并列待具体条件核定。"
-          if t=="mixed" else
-          "伏吟主慢。" if t=="slow" else
-          "反吟主快。" if t=="fast" else
-          "本盘无整盘伏吟反吟，不凭此三项擅断缓急。")
-    # Read the approved editable template, not an unversioned hardcoded
-    # sentence. Whether 伏吟 reduces 天显 comes from the ACTUAL macro facts.
+    """Classical customer prose from original global conditions; no math."""
     from .health_reading_template_vnext import render
-    if facts.get("tianxian_hour_triggered"):
-        good=render("tianxian_fuyin" if facts.get("star_fuyin") or
-                    facts.get("door_fuyin") else "tianxian_regular")
-    else:
-        good=""
-    return first+" "+good+prefix+pace+" 缓急不自动等于吉凶。"
+    first=render("macro_five_customer" if facts["five_not_encounter"]["triggered"]
+                 else "macro_clear_customer")
+    t=facts["tempo"]
+    pacing={"slow":"macro_pace_slow","fast":"macro_pace_fast",
+            "mixed":"macro_pace_mixed",
+            "not_assessed_from_fuyin":"macro_pace_unset"}
+    if t not in pacing:
+        raise ValueError("Unresolved authentic star/door pace")
+    good=render(("tianxian_fuyin" if
+                facts.get("star_fuyin") or facts.get("door_fuyin")
+                else "tianxian_regular")) if facts.get("tianxian_hour_triggered") else ""
+    return " ".join(v for v in (first,good,render(pacing[t])) if v)
