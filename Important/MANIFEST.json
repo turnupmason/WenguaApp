@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "12684a676cd11a62b911aa9f1223f8d2a3127cf7"
+      "sha": "a5028cb0a347961423db5f510311ee6d6f4e359e"
     },
     {
       "platform": "swift",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCore.swift",
       "snapshot": "Important/swift/engine/WenguaNativeCore.swift",
-      "sha": "528f26a1425939f508b65f174d5483b18842b4a3"
+      "sha": "6b5f991ff22907af3666df430d5591b7d8c1fe17"
     },
     {
       "platform": "swift",
@@ -589,7 +589,7 @@
       "platform": "python",
       "canonical": "tests/test_tianxian_tianqin_host_20261028.py",
       "snapshot": "Important/python/tests/test_tianxian_tianqin_host_20261028.py",
-      "sha": "24cc516947abe36141d39a0ff068ccd1a0101638"
+      "sha": "cdfcf61443d1f3e91c50f3629e8aafa41bc18566"
     }
   ]
 }

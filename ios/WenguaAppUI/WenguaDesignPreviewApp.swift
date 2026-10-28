@@ -64,7 +64,13 @@ enum QFive {
     static func stemMarks(_ p:QPalace,stem:String,plane:String)->[String] {
         let tomb:Bool
         if let c=p.computed {
-            tomb=c.tombs.contains{$0.plane==plane && $0.stem==stem}
+            let original=c.tombs.contains{$0.plane==plane && $0.stem==stem}
+            // Kun's borrowed centre earth has REAL Kun branch stages, but
+            // must NOT be injected into the original Python/native cast.
+            let borrowed=(p.id==2 && plane=="地盘" &&
+                p.hostedCentreEarthStem==stem &&
+                c.branches.contains{WenguaNativeCore.stages[stem]?[$0]=="墓"})
+            tomb=original || borrowed
         } else {
             tomb=tombBranches[stem].map{localBranches(p).contains($0)} ?? false
         }
@@ -116,7 +122,15 @@ enum QFive {
     }
     static func earthTombs(_ p: QPalace) -> [String] {
         if let c=p.computed {
-            return c.tombs.filter{$0.plane=="地盘"}.map{"地"+$0.stem+$0.branch+"墓"}
+            let original=c.tombs.filter{$0.plane=="地盘"}.map{"地"+$0.stem+$0.branch+"墓"}
+            let hosted:[String]
+            if p.id==2,let stem=p.hostedCentreEarthStem {
+                hosted=c.branches.compactMap{branch in
+                    WenguaNativeCore.stages[stem]?[branch]=="墓" ?
+                    "地"+stem+branch+"墓" : nil
+                }
+            } else {hosted=[]}
+            return original+hosted
         }
         guard let tomb=tombBranches[p.ground],localBranches(p).contains(tomb) else {return []}
         return ["地\(p.ground)\(tomb)墓"]

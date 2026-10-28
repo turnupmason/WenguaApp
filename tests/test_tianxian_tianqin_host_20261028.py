@@ -57,5 +57,6 @@ class UserTianxianKunContract(unittest.TestCase):
         self.assertIn('QFive.stemMarks(palace,stem:stem,plane:plane)',u)
         self.assertIn('.background(QStyle.surface,in:RoundedRectangle(cornerRadius:4))',u)
         self.assertNotIn('Text("🐎")',u)
-        self.assertIn('if p==2,let centreEarth=earth[5]',n)
+        self.assertNotIn('if p==2,let centreEarth=earth[5]',n)
+        self.assertIn('WenguaNativeCore.stages[stem]',u)
 if __name__=="__main__": unittest.main()
