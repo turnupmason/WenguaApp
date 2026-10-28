@@ -5,6 +5,8 @@ on:
     paths:
       - 'src/wengua/selected_signifier_graph_v80.py'
       - 'tests/test_selected_signifier_graph_v80_20261027.py'
+      - 'ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift'
+      - 'tests/v80_graph_native_smoke.swift'
       - '.github/workflows/v80_signifier_graph_combinations.yml'
   workflow_dispatch:
 permissions:
@@ -29,3 +31,13 @@ jobs:
           set -euo pipefail
           python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
           python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+  swift_native_read_only_graph:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile native Swift without AppKit UIKit or Xcode assumptions
+        run: |
+          set -euo pipefail
+          swift --version
+          swiftc ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift tests/v80_graph_native_smoke.swift -o /tmp/v80_selected_source_graph
+          /tmp/v80_selected_source_graph
