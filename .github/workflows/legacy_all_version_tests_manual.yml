@@ -1,0 +1,34 @@
+name: Historical V1-V7 full suite (manual audit only, not V8 release)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  historical_full_suite:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11","3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run every preserved historical test (known old expectations)
+        shell: bash
+        run: |
+          set -uo pipefail
+          python -m unittest discover -s tests -v > historical_all_unittest.log 2>&1
+          result=$?
+          tail -n 180 historical_all_unittest.log
+          echo "result_code=$result" >> "$GITHUB_OUTPUT"
+          exit "$result"
+      - name: Save every failure or success as audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-all-revisions-test-log-${{ matrix.python-version }}
+          path: historical_all_unittest.log
+          retention-days: 90
+          if-no-files-found: warn
