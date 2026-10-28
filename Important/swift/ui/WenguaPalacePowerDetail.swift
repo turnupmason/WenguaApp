@@ -48,60 +48,93 @@ struct WenguaPalacePowerDetail: View {
         return direction.flatMap{WenguaVNextEngine.godTiers[$0]} ?? "待核"
     }
 
+    // Small independent view builders avoid SwiftUI's expensive type-check
+    // of the former five-card monolithic body; source calls are unchanged.
     var body: some View {
         VStack(spacing:10) {
             if let p=real,p.id != 5,catalog != nil,monthElement != nil {
-                powerCard("八门") {
-                    symbolText(p.door ?? "待核",kind:"door")
-                    Text("月令："+doorMonth(p.door ?? ""))
-                    Text("力量："+sourcePower("door",p.door ?? ""))
-                        .fontWeight(.semibold)
-                }
-                powerCard("八神") {
-                    symbolText(p.deity ?? "待核",kind:"deity")
-                    Text("八神不以月令取旺衰")
-                    Text("力量："+deityPower(p.deity ?? ""))
-                        .fontWeight(.semibold)
-                }
-                powerCard("九星") {
-                    ForEach(Array(p.heavenStars.enumerated()),id:\.offset) { entry in
-                        let star=entry.element
-                        symbolText(star.star,kind:"star")
-                        Text("月令："+starMonth(star.star))
-                        Text("力量："+sourcePower("star",star.star))
-                            .fontWeight(.semibold)
-                        if entry.offset != p.heavenStars.count-1 {
-                            Divider().padding(.vertical,4)
-                        }
-                    }
-                }
-                powerCard("天盘干") {
-                    // Preserve star->carrier identity even when the visual
-                    // order puts Tianqin 丁 to the left of Tianrui 戊.
-                    ForEach(Array(p.heavenStars.reversed().enumerated()),id:\.offset) { entry in
-                        let star=entry.element
-                        symbolText(star.carriedStem,kind:"stem")
-                        Text(star.star+"携干 · "+
-                             star.stages.map{$0.branch+$0.stage}.joined(separator:"、"))
-                        Text("力量："+stemPower(star.carriedStem,star.stages))
-                            .fontWeight(.semibold)
-                        if entry.offset != p.heavenStars.count-1 {
-                            Divider().padding(.vertical,4)
-                        }
-                    }
-                }
-                powerCard("地盘干") {
-                    symbolText(p.earthStem,kind:"stem")
-                    Text(p.earthStages.map{$0.branch+$0.stage}.joined(separator:"、"))
-                    Text("力量："+stemPower(p.earthStem,p.earthStages))
-                        .fontWeight(.semibold)
-                }
+                doorCard(p)
+                deityCard(p)
+                starsCard(p)
+                heavenStemsCard(p)
+                earthStemCard(p)
             } else {
                 Text("真实九宫或源200格未核定，不能推定星门神干力量。")
                     .font(.subheadline)
                     .foregroundStyle(QStyle.secondary)
                     .frame(maxWidth:.infinity)
             }
+        }
+    }
+
+    private func doorCard(_ p:WenguaNativePalace) -> some View {
+        powerCard("八门") {
+            symbolText(p.door ?? "待核",kind:"door")
+            Text("月令："+doorMonth(p.door ?? ""))
+            Text("力量："+sourcePower("door",p.door ?? ""))
+                .fontWeight(.semibold)
+        }
+    }
+
+    private func deityCard(_ p:WenguaNativePalace) -> some View {
+        powerCard("八神") {
+            symbolText(p.deity ?? "待核",kind:"deity")
+            Text("八神不以月令取旺衰")
+            Text("力量："+deityPower(p.deity ?? ""))
+                .fontWeight(.semibold)
+        }
+    }
+
+    private func starsCard(_ p:WenguaNativePalace) -> some View {
+        powerCard("九星") {
+            ForEach(Array(p.heavenStars.enumerated()),id:\.offset) { entry in
+                starFact(entry.element)
+                if entry.offset < p.heavenStars.count-1 {
+                    Divider().padding(.vertical,4)
+                }
+            }
+        }
+    }
+
+    private func starFact(_ star:WenguaNativeStar) -> some View {
+        VStack(spacing:6) {
+            symbolText(star.star,kind:"star")
+            Text("月令："+starMonth(star.star))
+            Text("力量："+sourcePower("star",star.star))
+                .fontWeight(.semibold)
+        }
+    }
+
+    private func heavenStemsCard(_ p:WenguaNativePalace) -> some View {
+        powerCard("天盘干") {
+            // Two distinct sky carriers, shown individually in original
+            // source order reversed solely for the left/right UI layout.
+            ForEach(Array(p.heavenStars.reversed().enumerated()),id:\.offset) { entry in
+                heavenStemFact(entry.element)
+                if entry.offset < p.heavenStars.count-1 {
+                    Divider().padding(.vertical,4)
+                }
+            }
+        }
+    }
+
+    private func heavenStemFact(_ star:WenguaNativeStar) -> some View {
+        let life = star.stages.map { $0.branch + $0.stage }.joined(separator:"、")
+        return VStack(spacing:6) {
+            symbolText(star.carriedStem,kind:"stem")
+            Text(star.star+"携干 · "+life)
+            Text("力量："+stemPower(star.carriedStem,star.stages))
+                .fontWeight(.semibold)
+        }
+    }
+
+    private func earthStemCard(_ p:WenguaNativePalace) -> some View {
+        let life = p.earthStages.map { $0.branch + $0.stage }.joined(separator:"、")
+        return powerCard("地盘干") {
+            symbolText(p.earthStem,kind:"stem")
+            Text(life)
+            Text("力量："+stemPower(p.earthStem,p.earthStages))
+                .fontWeight(.semibold)
         }
     }
     private func symbolText(_ symbol:String,kind:String)->some View {
