@@ -438,7 +438,12 @@ def inspect_selected_quantization(*,selected_roles,
                 control.setdefault(pid,[]).append(key)
                 control_points[str(pid)]=max(control_points.get(str(pid),0),points)
         # Preserve prior V6 weak illness actively draining into other roles.
-        if weak_disease and gate["relation"]=="被生":
+        if (weak_disease and gate["relation"]=="被生"
+                and gate["actor_strength"] in ("极小","小","中等","大","极大")
+                and gate["disease_strength"] in ("极小","小","中等","大","极大")):
+            # Previously recorded weak-Tianrui drain condition; require BOTH
+            # independently selected 200-cell strengths to be resolved.
+            # Do not invent a 生 matrix or use signed palace auspiciousness.
             if key!="chief" or gate["void"]=="not_void":
                 drain.setdefault(pid,[]).append(key)
 
@@ -568,6 +573,7 @@ def inspect_selected_quantization(*,selected_roles,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
         "control_bonus_points":control_points,
         "control_power_provenance":"selected_primary_200x200_5x5_source_never_abs_palace_score",
+        "non_control_pair_policy":"all_selected_role_and_target_200_strengths_independent_no_invented_matrix",
         "drain_bonus_palaces":{str(k):v for k,v in sorted(drain.items())},
         "control_bonus_score":sum(control_points.values()),
         "weak_illness_drain_bonus_score":3*len(drain),
