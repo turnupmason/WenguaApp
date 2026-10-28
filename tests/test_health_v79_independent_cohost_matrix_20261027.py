@@ -140,6 +140,22 @@ class IndependentCohostMatrix(unittest.TestCase):
             self.assertEqual(expected,s["raw_final_before_saturation"])
             self.assertEqual(s["score"],saturate(expected))
 
+    def test_same_physical_doctor_and_medicine_have_separate_energies(self):
+        q=self.clock_colleague["summary"]
+        doctor=q["actual_role_strengths"]["doctor"]
+        medicine=q["actual_role_strengths"]["medicine"]
+        self.assertEqual(doctor["palace"],medicine["palace"])
+        self.assertNotEqual((doctor["kind"],doctor["symbol"]),
+                            (medicine["kind"],medicine["symbol"]))
+        self.assertNotEqual(doctor["tier"],medicine["tier"])
+        self.assertEqual(doctor["relation"],medicine["relation"])
+        # Neither a real Tianxin weakness nor a real Yi strength can be
+        # replaced by the shared palace's once-only signed score.
+        self.assertTrue(q["signed_palace_grades_never_actor_strength"])
+        self.assertIsNone(q["actual_role_strengths"]["patient"]["tier"])
+        self.assertNotIn("8",q["control_bonus_points"],
+                         "unknown Wu source power must NOT get +3 from |-5|")
+
     def test_yearstem_yi_is_not_yi_own_auspice(self):
         s=self.clock_colleague["summary"]
         # Natal Yi has no other allowed host in the same palace.
