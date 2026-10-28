@@ -66,7 +66,8 @@ def for_real_palace(cell):
     if not stars:return []
     if cell["palace"]==2:
         centre=cell.get("hosted_centre_earth_stem")
-        if centre not in STEMS:raise ValueError("Kun 2 lacks real centre-earth host")
+        if not isinstance(centre,str) or centre not in STEMS:
+            raise ValueError("Kun 2 lacks real centre-earth host")
         if len(stars)==1:
             real=[(stars[0],earth),(stars[0],centre)]
         elif len(stars)==2 and {s["star"] for s in stars}=={"天芮星","天禽星"}:
