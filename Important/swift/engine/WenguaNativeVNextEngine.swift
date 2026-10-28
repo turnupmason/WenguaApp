@@ -153,7 +153,7 @@ enum WenguaVNextEngine {
         if polarity==0 {return 0}
         return tierIndex(tier).map{$0*polarity}
     }
-    private static func normalMonth(_ element:String,_ month:String) throws -> String {
+    static func normalMonth(_ element:String,_ month:String) throws -> String {
         if element==month {return "旺"}
         if generates[month]==element {return "相"}
         if generates[element]==month {return "休"}
@@ -600,11 +600,10 @@ enum WenguaVNextEngine {
         // Role binding order must match Python physical_cache. The first
         // role at a real palace is canonical; later co-palace roles share
         // its already evaluated score even if their signifier is different.
-        var allSelected=personalized
-        for (tag,id) in [("qian",6),("kun",2)] {
-            guard let cell=all[id] else {throw WenguaCastError.invalidChart}
-            allSelected.append((tag,cell,cell.heavenStars.first?.star ?? ""))
-        }
+        // Only a genuinely selected elder may bind the sex-matched
+        // Qian/Kun auxiliary as "gender", already in personalized.
+        // No hidden elder observation for younger, peer or self relations.
+        let allSelected=personalized
         for (role,p,symbol) in allSelected {
             roles[role]=p.id
             if var prior=physical[p.id] {

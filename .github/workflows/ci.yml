@@ -32,6 +32,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_health_20261028_1344_two_person_audit.py' -v
       - name: V8 grandparent real roles and 0 verdict
         run: python -m unittest discover -s tests -p 'test_health_v80_grandparents_neutral_20261028.py' -v
+      - name: Real 200-grid centered palace and elder-only Qian Kun source contract
+        run: python -m unittest discover -s tests -p 'test_ios_palace_source_power_20261028.py' -v
       - name: Real source/snapshot Important byte integrity
         run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
       - name: Existing database schema and 1080 index smoke

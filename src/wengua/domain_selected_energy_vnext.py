@@ -206,12 +206,11 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
             view["complete_palace"]["primary_strength"]=value_strength
         inspected[key]=view
 
-    # User's latest instruction: ALWAYS observe the real 乾、坤 palaces
-    # as secondary context and compare their nominal palace relationship
-    # with Tianrui for internal factual research only, never automatic scoring.
-    # gender, or duplicate votes if one is already the primary patient.
+    # Only a source-selected elder relation receives its actual sex-matched
+    # Qian/Kun auxiliary. Younger people, peers and self never add either.
     auxiliary_palaces={}
-    for alias,pid in (("qian",6),("kun",2)):
+    for alias,pid in ((("qian",6),) if gender_palace==6 else
+                      (("kun",2),) if gender_palace==2 else ()):
         palace_cell=_cell(chart,pid)
         if palace_cell is None:raise ValueError("Real Qian/Kun palace missing")
         resident=palace_cell["heaven_stars"]
@@ -386,8 +385,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "first_stage_macro":macro_facts,
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
-        "unselected_gender_palace":(2 if gender_palace==6 else
-                                    6 if gender_palace==2 else None),
+        "unselected_gender_palace":None,
         "table_one_queries":len(one_cache),"table_two_queries":len(edges),
         "inspected_palace_ids":sorted(physical_inspections),
         "precomputed_cartesian_pairs_materialized":False,

@@ -91,7 +91,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "9da400ea2094f61253f3fb640e12c87fb2283bab"
+      "sha": "38a39e7c470baa935ee102285c7d5de5295739b0"
     },
     {
       "platform": "python",
@@ -235,7 +235,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_text_pipeline_vnext_review.py",
       "snapshot": "Important/python/engine/health_text_pipeline_vnext_review.py",
-      "sha": "4c2088daf11e9a16f5ea0428ff80707c264ee6b9"
+      "sha": "409783140355fca54cb8e6f7d606355619c69c60"
     },
     {
       "platform": "python",
@@ -439,7 +439,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/project.yml",
       "snapshot": "Important/swift/project/project.yml",
-      "sha": "bc1749aff3ee0f443a1fa4eeb9c8080e17012e99"
+      "sha": "32f8651e729aa476bf603c36fadd9dc84583a49d"
     },
     {
       "platform": "swift",
@@ -451,13 +451,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "1d2e87a72daecc4f00a09a142d0a37c4118cf89f"
+      "sha": "31ad53f77b9eeb1e2e20065dcd2fa81792104926"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "5cb90715481c4fe65968d218e3d4d75bf8dd5734"
+      "sha": "597f9cee16df226f07bd599f74eac1726bc81085"
     },
     {
       "platform": "swift",
@@ -505,7 +505,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "97ec658a025a71adad4cc941e92a47d64d08f2c9"
+      "sha": "a9965669637eda51d6094b64e509c371f65c6d74"
     },
     {
       "platform": "swift",
@@ -560,6 +560,18 @@
       "canonical": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "snapshot": "Important/swift/ui/WenguaDomainJourneyScreen.swift",
       "sha": "a36a3104c0b83ded6b8766a6e939c99a08ff50bd"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
+      "snapshot": "Important/swift/ui/WenguaPalacePowerDetail.swift",
+      "sha": "2f0c60581e045f29d39397c06d6f62d9588cc707"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_palace_source_power_20261028.py",
+      "snapshot": "Important/python/tests/test_ios_palace_source_power_20261028.py",
+      "sha": "1b2d0b39c78dbc0b4709bce2d7291e47a9a50777"
     }
   ]
 }

@@ -15,6 +15,7 @@ targets:
     platform: iOS
     sources:
       - path: WenguaDesignPreviewApp.swift
+      - path: WenguaPalacePowerDetail.swift
       - path: WenguaCloudWelcome.swift
       - path: WenguaDomainJourneyScreen.swift
       - path: WenguaPremiumReadingView.swift

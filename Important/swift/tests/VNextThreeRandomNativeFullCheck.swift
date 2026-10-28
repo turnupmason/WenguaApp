@@ -195,11 +195,17 @@ private struct PublicCast:Encodable {
                 try require(r.void==expected.void,loc+name+" true/fake void")
             }
             for (name,expected) in test.auxiliaries {
-                guard let p=audit.roles[name],let r=audit.palaces[p] else {
+                // Only the actual elder sex-matched auxiliary is selected.
+                guard (name=="qian" || name=="kun"),
+                      let p=audit.roles["gender"],let r=audit.palaces[p] else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
                 try require(p==expected.palace &&
-                    r.afterVoid==expected.score,loc+name+" qian/kun dedup")
+                    r.afterVoid==expected.score,loc+name+" elder-only auxiliary")
+            }
+            if test.auxiliaries.isEmpty {
+                try require(audit.roles["gender"]==nil,
+                    loc+" non-elder must not select Qian or Kun")
             }
             try require(audit.evidenceDirection==test.evidenceDirection,
                 loc+"qualitative disease evidence priority Swift="+audit.evidenceDirection+" Python="+test.evidenceDirection)

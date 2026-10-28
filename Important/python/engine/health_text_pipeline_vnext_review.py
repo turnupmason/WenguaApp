@@ -29,12 +29,12 @@ def auto_cast_health_review_text(*,iso,timezone_name,inquiry,db_path=None):
     from .selected_duel_table_vnext import table_one
     from .health_five_level_quant_vnext import door_break_penalty_policy
     # Casting still returns the complete nine REAL palaces. Follow-up
-    # score/condition computation is restricted to exactly the selected
-    # health role palaces and both user-requested Qian/Kun auxiliaries.
+    # Domain-selected health roles only; unselected Qian/Kun remain
+    # visible in the complete original nine-palace chart, not in scoring.
     net=review["full_health_role_strength_network"]
     if net.get("mode")=="selective":
         relevant_palaces={v["palace"] for v in net["nodes"].values()}
-        relevant_palaces.update((2,6))
+        # Never attach unselected Qian/Kun as health auxiliaries.
     else:
         # Explicit opt-in historical research graph has a distinct node
         # schema; preserve its original all-nine fact audit instead of

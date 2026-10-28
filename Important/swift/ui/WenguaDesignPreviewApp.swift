@@ -424,7 +424,9 @@ struct ProfessionalChartScreen: View {
         .sheet(item:$chosenPalace) { palace in
             ProfessionalPalaceDetail(palace:palace,
                 hourHorse:nativeChart?.hourHorse ?? "",
-                hourHorsePalace:nativeChart?.hourHorsePalace ?? 0)
+                hourHorsePalace:nativeChart?.hourHorsePalace ?? 0,
+                     monthBranch:String(nativeChart?.pillars.month.suffix(1) ?? ""),
+                     identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                 .presentationDetents([.medium,.large])
                 .presentationDragIndicator(.visible)
         }
@@ -716,16 +718,37 @@ struct ProfessionalPalaceTile: View {
                             symbolRow(palace.deity,kind:"deity",stem:"",
                                       primary:primary,secondary:secondary)
                             Spacer(minLength:0)
-                            ForEach(0..<starCarriers.count,id:\.self) { index in
-                                let star=starCarriers[index]
-                                symbolRow(star.0,kind:"star",stem:star.1,
-                                          primary:primary,secondary:secondary,
-                                          display:index==0 ? nil :
-                                              "／"+(star.0.hasPrefix("天")
-                                                   ? String(star.0.dropFirst()):star.0))
+                            // The double stars must appear on ONE row.
+                            HStack(spacing:0) {
+                                ForEach(0..<starCarriers.count,id:\.self) { index in
+                                    let pair=starCarriers[index]
+                                    if index>0 { Text("／").foregroundStyle(QStyle.secondary) }
+                                    Text(index==0 ? pair.0 :
+                                         (pair.0=="天禽" ? "禽" : pair.0))
+                                        .foregroundStyle(QFive.shade("star",pair.0))
+                                }
                             }
+                            .font(.system(size:primary,weight:.semibold,design:.serif))
+                            .lineLimit(1).minimumScaleFactor(0.55)
                             Spacer(minLength:0)
-                            symbolRow(palace.door,kind:"door",stem:palace.ground,
+                            HStack(spacing:4) {
+                                Text("天").font(.system(size:9)).foregroundStyle(QStyle.secondary)
+                                ForEach(Array(starCarriers.reversed().enumerated()),id:\.offset) { pair in
+                                    Text(pair.element.1)
+                                        .foregroundStyle(QFive.shade("stem",pair.element.1))
+                                }
+                            }
+                            .font(.system(size:secondary,weight:.semibold))
+                            .frame(maxWidth:.infinity,alignment:.center)
+                            .accessibilityLabel("天盘星干："+starCarriers.map{$0.0+"携"+$0.1}.joined(separator:"、"))
+                            HStack(spacing:4) {
+                                Text("地").font(.system(size:9)).foregroundStyle(QStyle.secondary)
+                                Text(palace.ground).foregroundStyle(QFive.shade("stem",palace.ground))
+                            }
+                            .font(.system(size:secondary,weight:.semibold))
+                            .frame(maxWidth:.infinity,alignment:.center)
+                            Spacer(minLength:0)
+                            symbolRow(palace.door,kind:"door",stem:"",
                                       primary:primary,secondary:secondary)
                         }
                         .frame(maxWidth:.infinity,alignment:.leading)
@@ -823,6 +846,8 @@ struct ProfessionalPalaceDetail: View {
     let palace: QPalace
     let hourHorse: String
     let hourHorsePalace: Int
+    var monthBranch: String = ""
+    var identityLabels: [String] = []
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
 
     private var conditionDescription: String {
@@ -849,16 +874,16 @@ struct ProfessionalPalaceDetail: View {
                   conflictNotes.joined(separator:"；"))].joined(separator:"；")
     }
     private var roleDescription: String {
-        let identity = palace.roles.isEmpty
-            ? "本宫未被选为此问主要角色"
-            : "本宫角色：" + palace.roles.joined(separator:"、")
+        let identity = identityLabels.isEmpty
+            ? "本宫未担当本次问事用神"
+            : "本宫担当：" + identityLabels.joined(separator:"／") + "宫"
         let emptiness = QFive.void(palace).isEmpty
             ? "" : "；旬空：" + QFive.void(palace).joined(separator:"、")
-        return palace.name + "属" + palace.element + "，辖" + palace.branches +
-            "支。" + identity + emptiness + "。同宫同事实不得当作两个独立证据。"
+        return palace.name + "宫，五行属" + palace.element + "，宫支" + palace.branches +
+            "。" + identity + emptiness + "。"
     }
     private var statusTags: [String] {
-        palace.roles + QFive.void(palace).map{$0 + "空"} +
+        identityLabels + QFive.void(palace).map{$0 + "空"} +
             (palace.computed == nil ? ["测试盘"] : ["本机实算"])
     }
 
@@ -877,7 +902,7 @@ struct ProfessionalPalaceDetail: View {
         .background(QStyle.backing)
     }
     private var headerBlock: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .center, spacing: 4) {
             Text(palace.name + " · " + palace.element + "行")
                 .font(.system(size:27,weight:.semibold))
                 .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
@@ -896,31 +921,19 @@ struct ProfessionalPalaceDetail: View {
             factCard("中五宫特殊规则",
                      text:"中五不套普通八门、九星与八神；中五地盘实测干："+palace.ground)
         } else {
-            factsGrid
+            factCard("宫位属性 · 用神角色",text:roleDescription)
+            WenguaPalacePowerDetail(palace:palace,monthBranch:monthBranch)
             lifeDetailCard
             factCard("空亡 · 驿马 · 入墓",text:conditionDescription)
-            factCard("宫位与角色",text:roleDescription)
-            factCard("旺相休囚废 · 击刑 · 门迫",
-                     text:"目前原生结构尚无上述状态经书源校对的独立触发字段；不得伪造或将未计算当作未发生。")
         }
     }
-    private var factsGrid: some View {
-        LazyVGrid(columns: columns, spacing: 10) {
-            valueCard("八神",value:palace.deity,
-                      color:QFive.shade("deity",palace.deity))
-            multiValueCard("九星",value:palace.stars,kind:"star")
-            valueCard("八门",value:palace.door,
-                      color:QFive.shade("door",palace.door))
-            stemCard("天 / 地盘干",sky:palace.sky,ground:palace.ground)
-        }
-    }
-
     private var lifeDetailCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("十二长生 · 天盘／地盘分别实算").font(.headline)
+        VStack(alignment: .center, spacing: 10) {
+            Text("十二长生 · 天盘干／地盘干分别实算")
+                .font(.headline).frame(maxWidth:.infinity,alignment:.center)
             ForEach(palace.lifeRows) { line in
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(line.plane + "盘干 " + line.stem)
+                VStack(alignment: .center, spacing: 4) {
+                    Text(line.plane + "盘干：" + line.stem)
                         .foregroundStyle(QFive.shade("stem",line.stem))
                     HStack(spacing: 7) {
                         ForEach(line.stages,id: \.branch) { stage in
@@ -934,24 +947,9 @@ struct ProfessionalPalaceDetail: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
         .padding(15)
         .background(QStyle.surface, in: RoundedRectangle(cornerRadius:15))
-    }
-    private func multiValueCard(_ label:String,value:String,kind:String) -> some View {
-        VStack(alignment:.leading,spacing:10) {
-            Text(label).font(.caption).foregroundStyle(QStyle.secondary)
-            HStack(spacing:2) {
-                ForEach(Array(value.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
-                    Text(entry.element).foregroundStyle(QFive.shade(kind,entry.element))
-                }
-            }
-            .font(.system(size:20,weight:.medium))
-            .lineLimit(1).minimumScaleFactor(0.65)
-        }
-        .frame(maxWidth:.infinity,minHeight:90,alignment:.leading)
-        .padding(13)
-        .background(QStyle.surface,in:RoundedRectangle(cornerRadius:15))
     }
     private func detailTag(_ label: String) -> some View {
         Text(label)
@@ -961,43 +959,14 @@ struct ProfessionalPalaceDetail: View {
             .background(Color(red: 0.91, green: 0.95, blue: 1.0), in: Capsule())
     }
 
-    private func valueCard(_ label: String, value: String, color: Color) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(label).font(.caption).foregroundStyle(QStyle.secondary)
-            Text(value).font(.system(size: 21, weight: .medium))
-                .foregroundStyle(color).minimumScaleFactor(0.7).lineLimit(1)
-        }
-        .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
-        .padding(13)
-        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
-    }
-
-    private func stemCard(_ label: String, sky: String, ground: String) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text(label).font(.caption).foregroundStyle(QStyle.secondary)
-            HStack(spacing: 2) {
-                ForEach(Array(sky.components(separatedBy:"·").enumerated()),id: \.offset) { entry in
-                    if entry.offset>0 { Text("·").foregroundStyle(QStyle.secondary) }
-                    Text(entry.element).foregroundStyle(QFive.shade("stem",entry.element))
-                }
-                Text(" / ").foregroundStyle(QStyle.secondary)
-                Text(ground).foregroundStyle(QFive.shade("stem",ground))
-            }
-            .font(.system(size: 20,weight: .medium))
-            .lineLimit(1).minimumScaleFactor(0.55)
-        }
-        .frame(maxWidth: .infinity, minHeight: 90, alignment: .leading)
-        .padding(13)
-        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
-    }
-
     private func factCard(_ title: String, text: String) -> some View {
-        VStack(alignment: .leading, spacing: 9) {
+        VStack(alignment: .center, spacing: 9) {
             Text(title).font(.headline)
             Text(text).font(.subheadline)
+                .multilineTextAlignment(.center)
                 .foregroundStyle(QStyle.secondary).fixedSize(horizontal: false, vertical: true)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, alignment: .center)
         .padding(15)
         .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 15))
     }
@@ -1382,7 +1351,9 @@ struct TraditionalReadingPreview: View {
             .sheet(item:$chosenPalace) { palace in
                 ProfessionalPalaceDetail(palace:palace,
                      hourHorse:nativeChart?.hourHorse ?? "",
-                     hourHorsePalace:nativeChart?.hourHorsePalace ?? 0)
+                     hourHorsePalace:nativeChart?.hourHorsePalace ?? 0,
+                     monthBranch:String(nativeChart?.pillars.month.suffix(1) ?? ""),
+                     identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                     .presentationDetents([.medium,.large])
             }
             }
@@ -1469,15 +1440,15 @@ struct NativePalaceEvidenceCard: View {
                     .font(.caption).foregroundStyle(QStyle.secondary)
             }
             if palace.id == 5 {
-                Text("地盘：" + palace.earthStem + "。中五不伪造普通星、门、神。")
+                Text("地盘干：" + palace.earthStem + "。中五不伪造普通星、门、神。")
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
             } else {
                 Text("神：" + (palace.deity ?? "未核定") +
                      "　门：" + (palace.door ?? "未核定"))
                     .font(.subheadline)
-                Text("天盘：" + stageText)
+                Text("天盘干：" + stageText)
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
-                Text("地盘：" + groundStages)
+                Text("地盘干：" + groundStages)
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
                 Text(conditions)
                     .font(.caption).foregroundStyle(QStyle.blue)
