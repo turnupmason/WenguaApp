@@ -22,14 +22,16 @@ def template():
                                  "health_severity_user_editable_template_v20261026_customer_v2",
                                  "health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades",
                                  "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
-                                 "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice"):
+                                 "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
+                                 "health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations"):
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
         raise ValueError("Template must include titles and macros objects")
     for key in ("macro","role","no_natal","illness","role_score",
                 "role_relation","gender_note","auxiliary",
-                "overall_resolved","overall_pending","verdict","timing"):
+                "overall_resolved","overall_pending","verdict","timing",
+                "selected_target_power","selected_role_summary"):
         if not isinstance(raw["macros"].get(key),str):
             raise ValueError("Missing template macro: "+key)
     if not isinstance(raw.get("formation"),str):
