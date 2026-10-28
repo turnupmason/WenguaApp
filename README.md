@@ -81,3 +81,6 @@ python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_2026
 ```
 
 脚本自动生成现有 `WenguaApp.xcodeproj`、编译真实 `问卦.app`、检验四项资源并在 iPhone Simulator 安装打开。**这不是可在macOS Finder直接运行的Mac应用，也不是真机签名App。** GitHub [Xcode Simulator #40749467216](https://github.com/turnupmason/WenguaApp/actions/runs/40749467216) 已PASS，页面的 Artifacts 可取未签名模拟器 App。仅UI显示层修补，V8.0 固定模板与起盘计分逻辑完全不动。
+
+
+> **2026-10-28 最新 UI 定点修复已构建**：九宫宫名大字带「宫」、双星天盘干固定行、底部“继续”按钮安全区固定；V8.0 模板与计分完全未改。[实际 Xcode Simulator PASS #40751967636](https://github.com/turnupmason/WenguaApp/actions/runs/40751967636)；本机运行 `./scripts/打开问卦模拟器.command`。

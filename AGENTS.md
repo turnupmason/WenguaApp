@@ -2055,3 +2055,10 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 根据实际上传的两张真机截屏，领域选中后的金色「继续·填写问事信息」固定于 SwiftUI `safeAreaInset(edge:.bottom)`，不再放ScrollView内容尾部被遮半；已选领域云头和各专题行缩紧，可见内容更多，未选领域首页保留原造型。
 - 九宫正式 `ProfessionalPalaceTile` 每宫标题16pt粗体且显示「宫」，方格每宫各一组固定槽位：神、单行九星、同宽天盘一或两真实携干、同宽地盘一干、门；双星仍为真天芮+天禽，丁/戊按真实携干反序仅**视觉**置左/右，不改每星81格真实配对及V8分数。原右侧文字竖拉过长改紧凑多角色标签，保留旬空、马、五行配色。
 - 本轮**仅UI可视布局**，未触碰Python/Swift计分、排盘、V8定稿模板、200/81源数据。新测试 `tests/test_ios_first_viewport_palace_layout_20261028.py`，源代码只动两份SwiftUI及Important镜像、MANIFEST SHA。验收以本次新Actions真实结果为准。审计 `docs/IOS_FIRST_SCREEN_NINE_PALACE_GRID_20261028.md`。
+
+
+## 2026-10-28 实机截图UI定点修复 · macOS真实构建验收
+
+- 真实用户反馈：金色「继续 · 填写问事信息」处在ScrollView末尾被遮半；九宫标题11pt看不清且无「宫」，病宫双星丁/戊令行位不齐。只修 `WenguaDomainJourneyScreen.swift` 与 `WenguaDesignPreviewApp.swift`：按钮用 `safeAreaInset(edge:.bottom)` 固定54pt完整露出，选领域后头图减至152pt；九宫每格16pt粗体「巽四宫／离九宫…」，五个固定行槽神→单行星→同宽天盘一/二真干→同宽地盘真干→门，右侧横排短身份标签。乾坤/天芮与天禽事实仍从真实Native传入；只有视觉排布改变，不改任何V8模板、起盘、200/81、计分、Swift/Python业务引擎。
+- 首修源码commit `37ef6699a1385cf29d53bbfa010ca6f1479cfdd5`，旧 `test_ios_immersive_journey_20261028.py` 仍强求以前 `max(76)` 和逐字竖排，首次主CI `#40751967365` FAIL；静态布局旧断言已更新commit `3794a3b009cc23146674641c1c135f87b1c0f9cc`，**现行V8主CI #40752136755 PASS**（Python3.11/3.12、视觉边界、Important SHA）。原V8 Python/Swift逐字专项 `#40751967463` PASS；旧非现行V7通用 workflow `#40751967827` FAIL 与原日志保留，不为UI改V8规则。
+- **新源码真实 macOS XcodeGen + iOS Simulator xcodebuild + package资源验收 #40751967636 PASS**，源码SHA `37ef6699`。四个资源真实在App包内：`health_energy_200.json`、`81_pairs.tsv`、`reading_template.json`、`actor_profiles.json`（22角色），有真正未签名 `问卦.app`。模拟器 App Artifact `12843124943`，编译日志 Artifact `12844936601`；正式验收归档 `docs/IOS_V80_XCODE_PASS_RUN_40751967636_ATTEMPT_1.md`。这证明iOS Simulator能构建打包，**不代表已在用户真机操作/可直接双击在macOS运行**；视觉硬件实机试用仍需用户确认。
