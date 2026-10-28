@@ -9,6 +9,7 @@ from scripts.ios_vnext_manual_colleague_natal_yi_20261027 import produce as coll
 from scripts.ios_vnext_manual_1920_female_20261027 import produce as elder
 from src.wengua.health_quant_overlay_vnext import (
     independent_special_host, special_cohost_total,
+    special_disease_control_points,
 )
 from src.wengua.health_five_level_quant_vnext import saturate
 
@@ -60,6 +61,49 @@ class IndependentCohostMatrix(unittest.TestCase):
         self.assertEqual(special_cohost_total(
             2, 1, tianxin_points=2, void=True), 2)
 
+    def test_all_25_power_pairs_never_infer_strength_from_signed_grade(self):
+        from src.wengua.user_domain_matrices_20261023 import inspect_control
+        tiers=("极小","小","中等","大","极大")
+        for a,b in itertools.product(tiers,repeat=2):
+            source=inspect_control(actor_power=a,target_power=b,
+                                   palace_relation="克")
+            ability=("能" if source["result"] in {
+                "有效克制","高效克制","强力主克","绝对主克",
+                "极限压制","有效主克","完全清除"}
+                else "艰难" if source["result"] in {
+                    "微弱克制","减力克制","断续克制","效力递减"}
+                else "不能")
+            points=special_disease_control_points(
+                attacker_strength=a,target_strength=b,
+                control_status=source["status"],
+                control_result=source["result"],control_ability=ability)
+            self.assertEqual(points,3 if ability!="不能" else 0,
+                             (a,b,source))
+            for palace_grade in (-5,-3,0,3,5):
+                self.assertEqual(
+                    special_disease_control_points(
+                        attacker_score=palace_grade,attacker_strength=a,
+                        target_strength=b,control_status=source["status"],
+                        control_result=source["result"],
+                        control_ability=ability),
+                    points,("the signed grade cannot affect control",a,b))
+        self.assertEqual(special_disease_control_points(
+            attacker_score=-5,attacker_strength=None,
+            target_strength="中等",control_result="有效克制",
+            control_status="matched",control_ability="能"),0)
+        self.assertEqual(special_disease_control_points(
+            attacker_score=5,attacker_strength="极大",
+            target_strength=None,control_result="有效克制",
+            control_status="matched",control_ability="能"),0)
+        self.assertEqual(special_disease_control_points(
+            attacker_strength="极大",target_strength="中等",
+            control_result="有效克制",control_status="matched",
+            control_ability="能",attacker_void=True),1)
+        self.assertEqual(special_disease_control_points(
+            attacker_strength="极大",target_strength="中等",
+            control_result="有效克制",control_status="matched",
+            control_ability="能",illness_void=True),5)
+
     @classmethod
     def setUpClass(cls):
         cls.clock_colleague=colleague()["cases"][0]
@@ -70,7 +114,7 @@ class IndependentCohostMatrix(unittest.TestCase):
             s=case["summary"]
             self.assertEqual(
                 s["final_scoring_policy"],
-                "V7.9_NO_SELF_COHOST_NO_DUPLICATE_STEM_POINTS"
+                "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE"
             )
             physical=s["unique_palace_score_details"]
             self.assertEqual(
