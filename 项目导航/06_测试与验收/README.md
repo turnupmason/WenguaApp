@@ -2,7 +2,7 @@
 
 - [V8 原生 Python/Swift 22盘逐字核对成功](https://github.com/turnupmason/WenguaApp/actions/runs/40621011300)
 - [macOS Xcode iOS Simulator 真正完整工程与所有数据资源成功](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702)
-- [8类角色、所有星门神干格、2/3符号同宫邻宫及空墓刑迫组合图测试](../../tests/test_selected_signifier_graph_v80_20261027.py)
+- [8类角色、星门神干格、2/3符号同宫邻宫、空墓刑迫组合图 Python 测试](../../tests/test_selected_signifier_graph_v80_20261027.py) · [Swift 原生编译与实际结构检验](../../tests/v80_graph_native_smoke.swift)
 - [V8 原病情评分组合回归](../../tests/test_health_v79_independent_cohost_matrix_20261027.py)
 - [当前八角色通用图 Actions](../../.github/workflows/v80_signifier_graph_combinations.yml)
 - [V8 Python↔Swift 专项 Actions](../../.github/workflows/health_v80_real_selected_power_native_parity.yml)
