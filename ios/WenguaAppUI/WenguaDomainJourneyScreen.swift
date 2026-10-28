@@ -85,7 +85,7 @@ struct WenguaDomainJourneyScreen: View {
                             .opacity(selected.enabled ? 1 : 0.48)
                             .buttonStyle(.plain)
                             Text(selected.enabled ?
-                                 "之后填写人物信息，静心30秒，按手机确认时刻离线起盘。" :
+                                 "之后填写人物信息，静心30秒，按手机确认时刻起局。" :
                                  "每个领域使用独立用神与断案模板；未验收时不套用疾病规则。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
@@ -137,7 +137,7 @@ struct WenguaDomainJourneyScreen: View {
                                     .delay(Double(index)*0.045),value:revealed)
                             }
                         }
-                        Text("只有已完成独立规则与离线验收的专题可以正式问卦。")
+                        Text("只有完成独立规则与正式验收的专题才可问卦。")
                             .font(.system(size:12))
                             .foregroundStyle(QStyle.secondary)
                     }
@@ -184,7 +184,7 @@ struct WenguaDomainJourneyScreen: View {
                     Text(item.title)
                         .font(.system(size:16,weight:.semibold))
                         .foregroundStyle(QStyle.text)
-                    Text(item.enabled ? "已接入本机离线规则解盘" : "独立模板校验中")
+                    Text(item.enabled ? "已接入独立规则解盘" : "独立模板校验中")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
                 Spacer()

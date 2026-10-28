@@ -38,7 +38,7 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertIn('WenguaPremiumVerdictCard(reading:reading)', self.chart)
         self.assertIn('WenguaNativeCustomerView(reading:reading)', self.chart)
         self.assertIn('NativePalaceEvidenceCard(palace:palace)', self.chart)
-        self.assertIn('["接卦", "专业解盘"]', self.presentation)
+        self.assertIn('["专业解卦", "专业解盘"]', self.presentation)
         self.assertIn('WenguaPremiumReadingView.swift', (UI / "project.yml").read_text())
         self.assertIn('try WenguaNativeReadingRouter.compose(', self.chart)
 

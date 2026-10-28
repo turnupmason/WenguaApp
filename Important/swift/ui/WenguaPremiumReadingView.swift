@@ -33,6 +33,51 @@ struct WenguaVerdictPresentation {
     }
 }
 
+// Health-only literary captions for a V8 grade already decided by the engine.
+// Not clinical diagnoses, treatment instructions or a second scoring model.
+// The same grade always renders exactly the same copy, with no user inputs.
+struct WenguaHealthGradeCaption {
+    let category: String
+    let epithet: String
+    let interpretation: String
+
+    static func forGrade(_ grade: String) -> WenguaHealthGradeCaption? {
+        switch grade {
+        case "极大吉":
+            return .init(category:"吉局",epithet:"沉疴顿愈",
+                         interpretation:"沉重顽疾迎刃而解，元气彻底恢复")
+        case "大吉":
+            return .init(category:"吉局",epithet:"邪退正复",
+                         interpretation:"治疗手段极为对症，病情迅速好转")
+        case "中吉":
+            return .init(category:"吉局",epithet:"身心渐安",
+                         interpretation:"病情发展得到控制，正逐步走向康复")
+        case "小吉":
+            return .init(category:"吉局",epithet:"转危为安",
+                         interpretation:"虽有波折但无大碍，危险期已经过去")
+        case "极小吉":
+            return .init(category:"吉局",epithet:"正邪相持",
+                         interpretation:"虽未根治但病情稳定，需长期精细调养")
+        case "极小凶":
+            return .init(category:"凶局",epithet:"风寒微染",
+                         interpretation:"只是皮毛表证小疾，日常多加注意即可")
+        case "小凶":
+            return .init(category:"凶局",epithet:"沉疴隐现",
+                         interpretation:"体内已有小病变，切勿拖延需及时就医")
+        case "中凶":
+            return .init(category:"凶局",epithet:"病势缠绵",
+                         interpretation:"病情较为顽固反复，治疗过程面临阻力")
+        case "大凶":
+            return .init(category:"凶局",epithet:"元气大伤",
+                         interpretation:"病情极其危重凶险，必须全力介入救治")
+        case "极大凶":
+            return .init(category:"凶局",epithet:"命悬一线",
+                         interpretation:"运势陷入至暗绝境，急需寻求破局生机")
+        default: return nil // An unknown V8 outcome must never be guessed.
+        }
+    }
+}
+
 // UI-only labels, projected from the exact V8 role binding that produced
 // the customer's reading. Independent roles sharing one actual palace are
 // composed with ／. No role is reverse-engineered from a pretty chart tile.
@@ -74,7 +119,7 @@ struct WenguaReturnToTop: View {
 
 struct WenguaReadingTabStrip: View {
     @Binding var selection: Int
-    private let labels = ["接卦", "专业解盘"]
+    private let labels = ["专业解卦", "专业解盘"]
 
     var body: some View {
         HStack(spacing: 4) {
@@ -105,68 +150,70 @@ struct WenguaReadingTabStrip: View {
 
 struct WenguaPremiumVerdictCard: View {
     let reading: WenguaNativeCustomerReading
-    private let ink = Color(red: 0.94, green: 0.94, blue: 0.89)
-    private let muted = Color(red: 0.68, green: 0.76, blue: 0.76)
-    private let gold = Color(red: 0.88, green: 0.73, blue: 0.45)
+    private let ink = Color(red:0.94,green:0.94,blue:0.89)
+    private let muted = Color(red:0.78,green:0.83,blue:0.81)
+    private let gold = Color(red:0.88,green:0.73,blue:0.45)
+    private let notice = "本模型基于古籍规则算法进行时空走向推演，相关结论仅作为传统文化研究与决策视角参考，不构成任何医疗诊断或医学建议。身体不适请务必及时前往医院就医。"
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 18) {
-            HStack(alignment: .center) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text("接 卦 语")
-                        .font(.system(size: 12, weight: .medium, design: .serif))
-                        .tracking(4)
-                        .foregroundStyle(gold)
-                    Text("此刻之问 · 本卦之象")
-                        .font(.system(size: 13))
-                        .foregroundStyle(muted)
-                }
+        VStack(alignment:.leading,spacing:17) {
+            HStack {
+                Text("专 业 解 卦")
+                    .font(.system(size:13,weight:.medium,design:.serif))
+                    .tracking(3)
+                    .foregroundStyle(gold)
                 Spacer()
-                Image(systemName: "seal")
-                    .font(.system(size: 24, weight: .ultraLight))
+                Image(systemName:"seal")
+                    .font(.system(size:23,weight:.ultraLight))
                     .foregroundStyle(gold)
             }
-            Rectangle().fill(gold.opacity(0.32)).frame(height: 1)
+            Rectangle().fill(gold.opacity(0.32)).frame(height:1)
 
-            if let verdict = WenguaVerdictPresentation.from(reading) {
-                if let grade = verdict.grade {
-                    Text(grade)
-                        .font(.system(size: 36, weight: .semibold, design: .serif))
-                        .foregroundStyle(gold)
-                        .accessibilityLabel("传统盘象结论：" + grade)
-                } else {
-                    Text("结论待核")
-                        .font(.system(size: 28, weight: .semibold, design: .serif))
-                        .foregroundStyle(ink)
-                }
-                Text(verdict.conclusion)
-                    .font(.system(size: 17, weight: .regular, design: .serif))
-                    .foregroundStyle(ink)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .textSelection(.enabled)
-                if let timing = verdict.timing, !timing.isEmpty {
-                    Rectangle().fill(gold.opacity(0.22)).frame(height: 1)
-                    Text("应期提示")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundStyle(gold)
-                    Text(timing)
-                        .font(.system(size: 13))
+            if let verdict=WenguaVerdictPresentation.from(reading) {
+                if let grade=verdict.grade,
+                   let caption=WenguaHealthGradeCaption.forGrade(grade) {
+                    Text(caption.category)
+                        .font(.system(size:16,weight:.semibold,design:.serif))
+                        .tracking(3)
                         .foregroundStyle(muted)
-                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityAddTraits(.isHeader)
+                    Text(grade + "：" + caption.epithet)
+                        .font(.system(size:29,weight:.semibold,design:.serif))
+                        .foregroundStyle(gold)
+                        .minimumScaleFactor(0.72)
+                        .lineLimit(2)
+                        .accessibilityLabel("传统古籍等级：" + grade)
+                    Text(caption.interpretation)
+                        .font(.system(size:17,weight:.regular,design:.serif))
+                        .lineSpacing(6)
+                        .foregroundStyle(ink)
+                        .fixedSize(horizontal:false,vertical:true)
+                } else {
+                    // Unknown, pending or unsupported grades remain fail-closed.
+                    Text("断词待核")
+                        .font(.system(size:23,weight:.semibold,design:.serif))
+                        .foregroundStyle(gold)
+                    Text(verdict.conclusion)
+                        .font(.system(size:15,design:.serif))
+                        .foregroundStyle(ink)
+                        .fixedSize(horizontal:false,vertical:true)
                 }
             } else {
-                Text("本次接卦结论尚无完整的原生核验依据。")
-                    .font(.subheadline)
-                    .foregroundStyle(ink)
+                Text("本次解卦结论尚无完整的原生核验依据。")
+                    .font(.subheadline).foregroundStyle(ink)
             }
-            Text("传统古籍象意参考 · 不作医学诊断或现实预后")
-                .font(.system(size: 11))
+
+            Rectangle().fill(gold.opacity(0.22)).frame(height:1)
+            Text(notice)
+                .font(.system(size:11))
+                .lineSpacing(4)
                 .foregroundStyle(muted)
+                .fixedSize(horizontal:false,vertical:true)
         }
-        .padding(22)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(red: 0.11, green: 0.19, blue: 0.24),
-                    in: RoundedRectangle(cornerRadius: 22))
-        .accessibilityElement(children: .contain)
+        .padding(21)
+        .frame(maxWidth:.infinity,alignment:.leading)
+        .background(Color(red:0.11,green:0.19,blue:0.24),
+                    in:RoundedRectangle(cornerRadius:22))
+        .accessibilityElement(children:.contain)
     }
 }

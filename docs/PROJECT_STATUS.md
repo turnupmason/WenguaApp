@@ -1727,3 +1727,11 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 欢迎页和疑惑页云背景完全静止、无周期动画；「欢迎来到问卦」「请问有什么疑惑？」不手动换行，正文一段写完。领域入口仅首次渐显一次。30秒静心、手机确认当刻起局、15天锁、接卦与专业解盘及回顶仍保持原规定。
 - 用户明确不再运行已失效的V1网页Mock UI和V7.4旧数值专项：**先将这两个workflow原版逐字搬入**`docs/历史与失败/retired_workflows/`，仅从`.github/workflows/`移除对应两个自动工作流，不删旧Actions失败、源码、历史测试/报告。现行V8主CI、原生Swift/Python parity和Xcode Simulator实际构建依旧是必须。若新一轮CI真实失败须原样报告。
 - 核心仅动`ios/WenguaAppUI/WenguaDesignPreviewApp.swift`、`WenguaCloudWelcome.swift`、`WenguaDomainJourneyScreen.swift`及对应Important双镜像、SHA MANIFEST；测试`tests/test_ios_immersive_journey_20261028.py`更新，审计`docs/IOS_SQUARE_PALACE_REFERENCE_20261028.md`。**正式疾病V8.0源数值、两个参考结果、离线资源、主模板全文、古籍、其它领域均原样未改。**
+
+
+## 2026-10-28 · 最新用户定稿：专业解卦品牌、V8十档象意与九宫字体
+
+- **UI品牌**：用户要求首页标语「借天地之势，成自己之事」，以整段「依托二十余部易学古籍的解图体系，历时数年人工搭建核心模型。严格以古籍规则助攻推演，深度还原事情发展趋势。助你洞察时局先机，破局当下迷茫。让千年的时间局密码，如今触手可及。」替换旧两书点名；五标签「古籍为本、规则推演、东方智慧、决策指引、破局迷茫」。**源证据区分：二十余部与历时数年只属于用户指定品牌描述，当前仓库事实仍以已核对两书为准；不可将广告文案记作真实入库或科学有效的事实。** 普通用户页面不再显露「离线XX」内部技术用语，但生产底层继续本机真实起盘、真实当前时刻、30秒静心和15天锁。
+- **九宫**：宫名在方宫正中，真实选择的疾病角色右侧竖写「病宫、西医宫、中医宫、大吉神宫、病事宫、被测人宫」；同宫合并只在末尾写一个宫，如「中医／被测人宫」。真实天芮·天禽可缩写成天芮／禽（其它复星依真实符号逐一缩写，绝不造星），详细盘保留全符；结果页与历史页的年、月、日、时四柱天干地支都按原五行金木水火土逐字着色。
+- **分层结论**：旧「接卦」标签换「专业解卦」，旁边仍是「专业解盘」。第一栏只读取正式V8原文`90_review`已经验收的吉凶等级，显示「吉局／凶局」及十档一一对应的用户指定文学标题（极大吉=沉疴顿愈...极大凶=命悬一线）与描述；未知等级不推定；不在显示层创造新分数和应期。尾部小字为用户指定的完整传统文化/非医学建议说明；**严格禁止把这些文学标题说成经临床验证的康复/死亡预测。** 专业解盘保留全部V8原始逐段断词及应期。静心按钮「确认起局 · 逻辑推演」，提示「本模型基于古籍规则算法进行推演计算，无人工主观干预，严密还原事情发展之底层逻辑。」。
+- **文件与约束**：SwiftUI `WenguaCloudWelcome.swift`、`WenguaDomainJourneyScreen.swift`、`WenguaDesignPreviewApp.swift`、`WenguaPremiumReadingView.swift`、`WenguaLocalHistoryView.swift`。对应`Important/swift/ui`镜像和`Important/MANIFEST.json`SHA同步；`tests/test_ios_health_grade_copy_20261028.py`、现有premium contract和当前V8主CI同步校验。详见`docs/IOS_HEALTH_GRADE_BRAND_UI_20261028.md`。**完全没有改任何Python/Swift V8源计分、200/81源格、疾病模板、2已知历史案原始数据和完整中文断词。** 本轮真实CI/Swift parity/Xcode Simulator资源构建必须以本轮提交为准；未实测不可标通过。

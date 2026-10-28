@@ -361,7 +361,7 @@ struct ProfessionalChartScreen: View {
                                 .buttonStyle(.plain)
                                 .padding(.horizontal,14)
                             } else {
-                                Text("本次仅有真实九宫，断词未通过原生核验，不能生成接卦结论。")
+                                Text("本次仅有真实九宫，断词未通过原生核验，不能生成专业解卦结论。")
                                     .font(.subheadline).foregroundStyle(QStyle.red)
                                     .padding(16)
                             }
@@ -403,7 +403,7 @@ struct ProfessionalChartScreen: View {
                         Text("准备起局").font(.system(size:27,weight:.semibold))
                         Text("事项已选："+topic.domainTitle+" / "+topic.title)
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Text("不需挑选时辰。确认静心结束后，取手机真实时刻与本地时区离线起盘。")
+                        Text("无需选择时辰。静心结束后按手机确认时刻起局推演。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                         Button("填写问事人与事项") {showAsk=true}
                             .buttonStyle(.borderedProminent)
@@ -495,8 +495,13 @@ struct ProfessionalChartScreen: View {
     private func pillarMini(_ label:String,_ stem:String) -> some View {
         HStack(spacing:3) {
             Text(label).foregroundStyle(QStyle.secondary)
-            Text(stem).foregroundStyle(QStyle.text)
-                .fontDesign(.monospaced)
+            HStack(spacing:0) {
+                Text(String(stem.prefix(1)))
+                    .foregroundStyle(QFive.shade("stem",String(stem.prefix(1))))
+                Text(String(stem.suffix(1)))
+                    .foregroundStyle(QFive.shade("branch",String(stem.suffix(1))))
+            }
+            .fontDesign(.monospaced)
         }
         .font(.system(size:12,weight:.medium))
         .frame(maxWidth:.infinity)
@@ -665,7 +670,7 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var rightText:String {
-        identityLabels.joined(separator:"／")
+        identityLabels.isEmpty ? "" : identityLabels.joined(separator:"／") + "宫"
     }
 
     var body: some View {
@@ -744,22 +749,25 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var palaceHeading:some View {
-        HStack(alignment:.center,spacing:3) {
+        ZStack {
             Text(palace.name)
                 .font(.system(size:11,weight:.semibold,design:.serif))
                 .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
                 .lineLimit(1)
                 .minimumScaleFactor(0.68)
-            Spacer(minLength:0)
-            if !QFive.void(palace).isEmpty {
-                Circle().stroke(identityInk,lineWidth:1.5)
-                    .frame(width:10,height:10)
-                    .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
-            }
-            if let horse=QFive.horse(palace) {
-                Text("🐎")
-                    .font(.system(size:13))
-                    .accessibilityLabel("驿马："+horse)
+                .frame(maxWidth:.infinity,alignment:.center)
+            HStack(spacing:3) {
+                Spacer(minLength:0)
+                if !QFive.void(palace).isEmpty {
+                    Circle().stroke(identityInk,lineWidth:1.5)
+                        .frame(width:10,height:10)
+                        .accessibilityLabel("逢空："+QFive.void(palace).joined(separator:"、"))
+                }
+                if let horse=QFive.horse(palace) {
+                    Text("🐎")
+                        .font(.system(size:13))
+                        .accessibilityLabel("驿马："+horse)
+                }
             }
         }
     }
@@ -770,7 +778,10 @@ struct ProfessionalPalaceTile: View {
             HStack(spacing:0) {
                 ForEach(Array(value.components(separatedBy:"·").enumerated()),
                         id:\.offset) { part in
-                    Text(part.element)
+                    Text(kind=="star" && part.offset>0
+                         ? "／" + (part.element.hasPrefix("天")
+                                   ? String(part.element.dropFirst()) : part.element)
+                         : part.element)
                         .foregroundStyle(QFive.shade(kind,part.element))
                 }
             }
@@ -1122,7 +1133,7 @@ struct CastSetupScreen: View {
                                     Button("开始静心30秒") { calmEnds = Date().addingTimeInterval(30) }
                                         .buttonStyle(.borderedProminent)
                                 } else if remaining == 0 {
-                                    Button("确认起局 · 离线实算九宫") { completeNativeCast() }
+                                    Button("确认起局 · 逻辑推演") { completeNativeCast() }
                                         .disabled(!validationMessage.isEmpty)
                                         .buttonStyle(.borderedProminent)
                                 } else {
@@ -1137,7 +1148,7 @@ struct CastSetupScreen: View {
                             Text(validationMessage)
                                 .font(.footnote).foregroundStyle(QStyle.red)
                         }
-                        Text("九宫由本机离线计算；只有完整断案通过本机核验后才会保存本次结果，绝不以旧盘代替。")
+                        Text("本模型基于古籍规则算法进行推演计算，无人工主观干预，严密还原事情发展之底层逻辑。")
                             .font(.footnote).foregroundStyle(QStyle.secondary)
                     }
                 }
@@ -1278,10 +1289,22 @@ struct TraditionalReadingPreview: View {
                             Text("问卦 · 本次记录")
                                 .font(.system(size:23,weight:.semibold,design:.serif))
                             if let chart=nativeChart {
-                                Text([chart.pillars.year,chart.pillars.month,
-                                      chart.pillars.day,chart.pillars.hour]
-                                        .joined(separator:"  ")+" · "+chart.solarTerm)
-                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                                HStack(spacing:6) {
+                                    ForEach(0..<4,id:\.self) { index in
+                                        let pillars=[chart.pillars.year,chart.pillars.month,
+                                                     chart.pillars.day,chart.pillars.hour]
+                                        let value=pillars[index]
+                                        HStack(spacing:0) {
+                                            Text(String(value.prefix(1)))
+                                                .foregroundStyle(QFive.shade("stem",String(value.prefix(1))))
+                                            Text(String(value.suffix(1)))
+                                                .foregroundStyle(QFive.shade("branch",String(value.suffix(1))))
+                                        }
+                                        .font(.system(size:14,weight:.semibold,design:.monospaced))
+                                    }
+                                    Text(chart.solarTerm)
+                                        .font(.caption).foregroundStyle(QStyle.secondary)
+                                }
                             }
                         }
                     }
@@ -1336,7 +1359,7 @@ struct TraditionalReadingPreview: View {
                 .padding(16)
             }
             .background(QStyle.backing)
-            .navigationTitle("接卦")
+            .navigationTitle("专业解卦")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement:.topBarTrailing) {

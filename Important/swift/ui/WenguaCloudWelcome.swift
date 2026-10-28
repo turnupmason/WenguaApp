@@ -1,7 +1,6 @@
 import SwiftUI
 
-// Offline, asset-free atmospheric entrance. This is visual only: clouds are
-// native gradients and blurs, not a network service or a model response.
+// Static native-gradient atmosphere; no loading, motion, or remote media.
 struct WenguaCloudAtmosphere: View {
 
     var body: some View {
@@ -106,7 +105,7 @@ struct WenguaCloudWelcomeScreen: View {
                         .padding(.top,20)
 
                         Spacer(minLength:geo.size.height*0.14)
-                        Text("东方智慧 · 离线解盘")
+                        Text("借天地之势，成自己之事")
                             .font(.system(size:12,weight:.medium))
                             .tracking(4)
                             .foregroundStyle(Color(red:0.87,green:0.75,blue:0.54))
@@ -117,11 +116,11 @@ struct WenguaCloudWelcomeScreen: View {
                             .lineSpacing(11)
                             .padding(.top,20)
                             .accessibilityAddTraits(.isHeader)
-                        Text("以古籍为据，以规则为尺")
+                        Text("古籍为鉴 · 时势为引")
                             .font(.system(size:20,weight:.medium,design:.serif))
                             .foregroundStyle(Color.white.opacity(0.92))
                             .padding(.top,21)
-                        Text("根植《神奇之门》《开悟之门》的易学解读体系，以古籍规则逐宫推演。按真实时辰离线起局，知进退、察时势。")
+                        Text("依托二十余部易学古籍的解图体系，历时数年人工搭建核心模型。严格以古籍规则助攻推演，深度还原事情发展趋势。助你洞察时局先机，破局当下迷茫。让千年的时间局密码，如今触手可及。")
                             .font(.system(size:15))
                             .lineSpacing(7)
                             .foregroundStyle(Color.white.opacity(0.72))
@@ -129,10 +128,15 @@ struct WenguaCloudWelcomeScreen: View {
                             .padding(.top,13)
 
                         Spacer(minLength:geo.size.height*0.11)
-                        HStack(spacing:9) {
+                        LazyVGrid(
+                            columns:Array(repeating:GridItem(.flexible(),spacing:6),count:3),
+                            alignment:.leading,spacing:8
+                        ) {
                             welcomeTag("古籍为本")
                             welcomeTag("规则推演")
-                            welcomeTag("本机离线")
+                            welcomeTag("东方智慧")
+                            welcomeTag("决策指引")
+                            welcomeTag("破局迷茫")
                         }
                         .padding(.bottom,19)
                         Button(action:begin) {
@@ -174,8 +178,9 @@ struct WenguaCloudWelcomeScreen: View {
             .font(.system(size:11,weight:.medium))
             .tracking(1)
             .foregroundStyle(Color.white.opacity(0.82))
-            .padding(.horizontal,12)
+            .padding(.horizontal,7)
             .padding(.vertical,8)
+            .frame(maxWidth:.infinity)
             .background(Color.white.opacity(0.09),in:Capsule())
             .overlay(Capsule().stroke(Color.white.opacity(0.13),lineWidth:0.6))
     }

@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "80850cc04cf882ade0bf3cfc8b45f763e97ddbff"
+      "sha": "4ca38b01350cd84ce7a4167acdd32e1b6589bed2"
     },
     {
       "platform": "swift",
@@ -469,7 +469,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
       "snapshot": "Important/swift/ui/WenguaLocalHistoryView.swift",
-      "sha": "e518c08f525b4db0b64cca6237613a8aba519eaa"
+      "sha": "4a701693ed6a6d972a36ff6100a46ec43e8bb995"
     },
     {
       "platform": "swift",
@@ -547,19 +547,19 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "bbe4bb16cbeef8f468c94724e583ad9dd89855c5"
+      "sha": "c814fa88d57ab8b103391afb23380518d7e2a5a4"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCloudWelcome.swift",
       "snapshot": "Important/swift/ui/WenguaCloudWelcome.swift",
-      "sha": "a72c24f24670b122bb595de76643e1a373238391"
+      "sha": "83db2681c87d13e7dcc1a49759e727783b36dae1"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "snapshot": "Important/swift/ui/WenguaDomainJourneyScreen.swift",
-      "sha": "6c4bce3d0204bd83d80d25febbc5bf7e9a4e2f78"
+      "sha": "a36a3104c0b83ded6b8766a6e939c99a08ff50bd"
     }
   ]
 }
