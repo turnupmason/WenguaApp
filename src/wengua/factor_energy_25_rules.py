@@ -104,24 +104,39 @@ def compare_role_strength(actor,target,*,actor_name="施力方",target_name="受
             raise ValueError("Fully inspected factor required")
     relation=("同宫" if actor["palace"]==target["palace"]
               else _palace_relation(actor["palace_element"],target["palace_element"]))
-    if relation!="克":
-        outcome="不适用";reason="本方宫没有克对方宫，不能套用克制效果"
-    elif actor["restrictions"] or target["restrictions"]:
-        outcome="条件待核";reason="空墓刑迫候选需核定，名义相克不代表作用已经发生"
-    elif (RANK[actor["strength_label"]]>=3 and RANK[actor["palace_strength_label"]]>=3
-          and RANK[target["strength_label"]]<=1 and RANK[target["palace_strength_label"]]<=1):
-        outcome="能";reason="施力方符号和宫均旺、受力方符号和宫均弱，传统作用条件较充分"
-    elif (RANK[actor["strength_label"]]<=1 and RANK[actor["palace_strength_label"]]<=1
-          and RANK[target["strength_label"]]>=3 and RANK[target["palace_strength_label"]]>=3):
-        outcome="不能";reason="施力方符号和宫均弱、受力方均旺，名义相克难以落实"
+    # V8.0: the two selected signifiers are the ONLY power representatives
+    # of their actual palaces, including 生/被生/比和/克/被克. Preserve landing
+    # month labels as context but never compare them as an extra combatant.
+    a_power=actor["strength_label"]
+    b_power=target["strength_label"]
+    power_comparison=("施力用神较强" if RANK[a_power]>RANK[b_power] else
+                      "受力用神较强" if RANK[a_power]<RANK[b_power] else
+                      "双方用神同档")
+    if relation in ("克","被克"):
+        # Reuse the authoritative user 5x5 source, not the discarded
+        # independent strong+palace 3x3 guess. 被克 reverses the direction.
+        from .selected_duel_table_vnext import matchup
+        a,b=(actor,target) if relation=="克" else (target,actor)
+        e=matchup(a,b,actor_role=actor_name if relation=="克" else target_name,
+                  target_role=target_name if relation=="克" else actor_name)
+        outcome=e["ability"]
+        reason=("逐取用神强度"+str(a["strength_label"])+"/"+
+                str(b["strength_label"])+"；原始克制表"+
+                str(e.get("control_result") or "条件待核")+"；"+
+                str(e.get("control_status"))+"；"+power_comparison)
     else:
-        outcome="艰难";reason="符号与宫旺衰有冲突或强弱未明显悬殊，仍需其他原书证据"
+        outcome="不适用"
+        reason=("关系为"+relation+"，不能当作相克；分别以"+
+                actor_name+"用神"+a_power+"和"+target_name+"用神"+
+                b_power+"判断作用强弱；"+power_comparison)
     return {"actor":actor_name,"target":target_name,"relation":relation,
             "ability_to_control":outcome,"why":reason,
             "actor_strength":actor["strength_label"],
             "target_strength":target["strength_label"],
             "actor_palace_strength":actor["palace_strength_label"],
             "target_palace_strength":target["palace_strength_label"],
+            "palace_strength_is_context_only":True,
+            "all_interpalace_relations_use_selected_signifier_strength":True,
             "actor_fact_id":actor["fact_id"],"target_fact_id":target["fact_id"],
             "is_final_verdict":False,"additional_evidence_vote":False}
 
