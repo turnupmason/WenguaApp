@@ -82,4 +82,4 @@
 
 ## 逐字验收
 完整中文 / 结构 ID / 标点 / 段落 / 时间 / 关系一致：True
-\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/40713998539\nSource SHA: a10884754f4c25312ed3842adf1f7bbccb4c7fb6\n
+\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/40721609326\nSource SHA: baa7b2b11fdb70d044e60a40698db44a624a45cf\n
