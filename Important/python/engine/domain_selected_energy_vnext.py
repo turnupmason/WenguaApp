@@ -617,28 +617,31 @@ def selected_health_sections(result,*,actor,chart):
             if void!="not_void" and key!="chief":
                 head+="且逢"+("真空" if void=="true_void" else "假空")
             seen_palaces[pid]=name
-            if key!="illness":
-                edge=quant["role_effectiveness_gates"].get(key,{})
-                direction=edge.get("relation")
-                direction_note={"克":"克病宫","生":"生扶病宫",
-                                "被克":"受病宫克","被生":"受病宫生",
-                                "比和":"与病宫比和","同宫":"与病宫同宫"}
-                if direction in direction_note:head+="，"+direction_note[direction]
-                if key=="chief" and edge.get("void")!="not_void":
-                    if direction=="克":
-                        head+="，虽逢空仍有余气克制病宫"
-                    else:
-                        head+="，逢空但尚存少许余气"
-                elif direction=="克":
-                    control_point=q.get("control_bonus_points",{}).get(str(pid))
-                    if control_point==5:
-                        head+="，病宫又逢空，受制更易"
-                    elif control_point==3:
-                        head+="，本宫有力制病"
-                    elif control_point==1:
-                        head+="，施力受空或宫克限制，尚有少许余气"
-                    else:
-                        head+="，但实际施力有限"
+        # Environment is narrated ONCE, but EVERY distinct selected
+        # signifier gets its own true source-target palace direction and
+        # its own real 200x200 control eligibility, even when co-located.
+        if key!="illness":
+            edge=quant["role_effectiveness_gates"].get(key,{})
+            direction=edge.get("relation")
+            direction_note={"克":"克病宫","生":"生扶病宫",
+                            "被克":"受病宫克","被生":"受病宫生",
+                            "比和":"与病宫比和","同宫":"与病宫同宫"}
+            if direction in direction_note:head+="，"+direction_note[direction]
+            if direction=="克":
+                applied=key in q.get("control_bonus_palaces",{}).get(str(pid),[])
+                point=q.get("control_bonus_points",{}).get(str(pid)) if applied else 0
+                if point==5:
+                    head+="，病宫又逢空，受制更易"
+                elif point==3:
+                    head+="，该用神有力制病"
+                elif point==1:
+                    head+="，该用神施力受空或宫克限制，仅存余气"
+                elif edge.get("control_ability")=="不能":
+                    head+="，该用神实际克制未成"
+                else:
+                    head+="，该用神克病力量或限制待核"
+            elif key=="chief" and edge.get("void")!="not_void":
+                head+="，逢空护持减弱，不能据此断已经制病"
         desc.append(head)
     if q["drain_bonus_palaces"]:
         desc.append("病星势弱而外泄，病气有耗损之象")
