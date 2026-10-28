@@ -1643,3 +1643,9 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 - GitHub Actions **[#40603882731](https://github.com/turnupmason/WenguaApp/actions/runs/40603882731)** 的独立 `both_original_user_clocks` **completed/success**：对新 `test_health_v78_illness_special_cohost_20261027.py` 的真实条件、两个固定原时辰、Important字节SHA执行核验，编译最新iOS Swift 引擎，逐案生成Python源JSON与原生Swift每节中文标题、标点及全文，`compare_gpt_ios_exact_wording_20261026.py` 全部逐字 **True**。同事5实宫 +2 +特殊吉助8 +有效独立克病3 -五不遇时10 = **+3中吉**；1920长辈女4实宫 -3 +同宫特殊吉助6 +克病0 -五不遇时0 = **+3中吉**。两盘均无整盘伏吟或反吟。正式本次独立成功全文及宫分**新档追加、不覆盖历史**：[`docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md)，原第一份V7.8档、V7.7及更早历史成功失败均保留。
 - **验收边界**：本轮仅实际两固定盘两语言逻辑一致，并非全部iOS模拟器构建或古籍领域测试PASS；同事月干戊取用仍是研究候选，1920女性真实长辈身份与生辰干支条件仍待核。两张新V7.8传统软件标签等待用户审定，绝非真实医学病情判断。
+
+
+## 2026-10-27 · V7.8 双固定盘评分取证审计（不改算法，不覆写旧结论）
+
+- 用户要求逐项解释 V7.8 两盘的每一分，并指出可能仍有计分问题。已按远端已通过的 Run #40603882731 完整账本追溯，新增独立只读审计 `docs/HEALTH_V78_SCORING_FORENSIC_AUDIT_2026-10-27.md`（来源提交 `977c55bd208ffc5c40932269b39506a2ad5814b0`）。同事盘：五实宫 -5/+3/-5/+5/+4 合+2；同宫特殊+8；艮八克坎一+3；五不遇时-10，保留原历史 +3 中吉。1920女长辈：四实宫 +5/-5/0/-3 合-3；离九天乙地丁一组+3、坤二值符+3，克病与五不遇时均0，保留原历史 +3 中吉。
+- **复核确实发现门槛风险，尚未得到用户批准修复，不得声称本轮评分已正确验收**：跨宫克病以 `abs(施力宫最终吉凶分)>1` 判断“力量”，使同事艮八 `-5极大凶` 直接获得+3克病；V7.8克病循环还可能旁路既有 `role_effectiveness_gates.score_eligible`/来源5×5能力判定。必须区分用神真实施力强弱与符号净吉凶，先明确五行方向、空亡/本宫克制优先级，再同步 Python/Swift 两端及测试。另需审核 `auspice_hosts` 是否确实覆盖所有合法的选中宿宫，以及病宫净吉分与天芮本身凶象的不同解释。**这次只添加审计文档和交接，未更改计分算法、模板、200格/81格、古籍库、冻结V3.9.1，也没有新的代码/CI测试通过声明。**原版本输出、失败记录不删除。下轮先做强弱分离的带正反例规则验证，再升级版本，不反向篡改 V7.8。
