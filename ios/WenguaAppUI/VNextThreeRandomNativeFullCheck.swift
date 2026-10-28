@@ -26,6 +26,9 @@ private struct ResultSummary:Decodable {
     let weak_illness_drain_bonus_score:Int?
     let auspice_bonus_score:Int?
 }
+private struct MacroClock:Decodable {
+    let tianxian_hour_triggered:Bool
+}
 private struct Auxiliary:Decodable {let palace:Int;let score:Int?}
 private struct TianruiSource25:Decodable {
     let category:String
@@ -45,6 +48,7 @@ private struct TestCast:Decodable {
     let firstStage:Bool
     let tianrui25:TianruiSource25
     let summary:ResultSummary
+    let macro:MacroClock
     let roles:[String:RoleScore]
     let auxiliaries:[String:Auxiliary]
     let controls:[String:FiveControl]
@@ -151,6 +155,10 @@ private struct PublicCast:Encodable {
                 "controls="+String(describing:audit.controlBonusPoints),
                 "auspices="+String(audit.auspiceBonusScore),
                 "drainPalaces="+String(describing:audit.drainBonusPalaces),
+                "real_day="+chart.pillars.day,
+                "real_hour="+chart.pillars.hour,
+                "Swift_tianxian="+String(audit.tianxianHour),
+                "Python_tianxian="+String(test.macro.tianxian_hour_triggered),
                 "Python base="+String(test.summary.post_void_known_sum),
                 "result="+String(describing:test.summary.score),
                 "controls="+String(describing:test.summary.control_bonus_points),
@@ -172,6 +180,8 @@ private struct PublicCast:Encodable {
             try require(star25.eligibleDirection==test.tianrui25.eligible_evidence_direction,
                 test.instant+" original 25-case eligible symbol only")
             let loc=test.instant+" ["+test.relationship+"] "
+            try require(audit.tianxianHour==test.macro.tianxian_hour_triggered,
+                loc+" 天显时实际日时干支与Python条件不一致")
             try require(audit.firstMacroFiveNot==test.firstStage,loc+"five-not")
             try require(audit.score==test.summary.score,loc+"final score Swift "+String(describing:audit.score)+" Python "+String(describing:test.summary.score))
             try require(audit.postVoidKnownSum==test.summary.post_void_known_sum,
