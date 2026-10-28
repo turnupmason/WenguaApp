@@ -26,16 +26,17 @@ def produce(role):
         "year":"丙午","month":"戊戌","day":"乙亥","hour":"癸未"}
     q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
     s=q["summary"]
-    # Historical first version was 0 for both. The independently approved
-    # Tianqin centre-earth 81-pair correction now gives +3 for both.
-    # Grandparents may have OTHER totals because real gender palaces differ.
+    # Preserved version ledger at this exact already-seen clock:
+    # original=0; moving-Tianqin-centre version=3; permanent-Kun host=0.
+    # This is a regression, NOT an unseen historical test or clinical evidence.
     if role in ("self","colleague"):
-        assert s["raw_final_before_saturation"]==3
-        assert s["score"]==3
-        # Current user-authorized 81 pairing replaces the old zero result.
+        assert s["raw_final_before_saturation"]==0
+        assert s["score"]==0
+        assert s["tianxian_global_final_bonus"]==0
+        # The current fixed Kun-2 host restores neutral scoring at this clock.
         last=next(section["text"] for section in r["sections"]
                   if section["id"]=="90_review")
-        assert "此病为中吉" in last
+        assert "此病为微恙" in last
         assert "暂不强断吉凶" not in last
     else:
         patient=q["summary"]["actual_role_strengths"]["patient"]

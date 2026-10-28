@@ -1849,3 +1849,7 @@ UI中宫内部全空但背景与宫框同其余宫，坤宫两组天地格对应
 - 首次变更提交 e1e54a57542711a3d6e703baa45671a9a6fe9862 触发现行主CI #40776026494 FAIL：tests/test_ios_premium_result_ui_20261028.py 仍强行断言旧🐎，新产品明确取消。该测试合法更新为「驿」圆印事实标，旧失败永久留于Actions。
 - iOS Offline Native Casting Parity #40776026581 中的 native_core 子作业故障：2027-01-20T19:00:00-05:00 新随机盘坤二新增地盘癸未墓，Swift新引入原生 chart.tombs，Python基准没有，真实对照 actual=[(地盘,癸,未),(天盘,癸,未)] vs original=[(天盘,癸,未)]。修复撤回对原生起盘源的这次额外tombs注入，回到上一通过SHA；坤中五寄地干的墓改在SwiftUI只读按 WenguaNativeCore.stages[stem] 对实际坤支显示。该显示层策略不会篡改完整九宫事实，不以旧Native测试结果冒充新主规则完整对照。
 - 同次旧来源独立工作流可能因版本旧假设继续失败；新HEAD真实完整Python/Swift parity/Xcode运行必须分别重新验收。此前此次UI构建 #40776026680 PASS 是e1e54a5的真macOS simulator结果，但不是后续修复commit的构建验收。
+
+### 2026-10-28 · 13:44 已揭晓固定回归的规则版本核对
+GitHub Actions #40776296073 现行V8主CI实报失败：旧 tests/test_health_20261028_1344_two_person_audit.py 明写新版本仍为+3，但日志 TWO_PERSON_SAME_CLOCK_AUDIT 真实输出本人/同事均 raw_final=0 / score=0，前关系总和-4、共4个实宫9/7/8/6、已核实同宫帮助+4；星/门/格局、人物用神真实信息按新规则计算。13:44为癸未时，天显不触发，天显全局奖励=0；此处差异只因用户最新修订“中五地干固定坤二，不再随天禽”。历史版本原始0→前版天禽跟随+3→本次固定坤2变0，三个快照全部保留，无新盲测结论。
+V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文逐字检查，之后被 scripts/ios_v80_same_clock_neutral_parity_20261028.py 的旧写死+3拦下。已更新该脚本与同源精确固定测试为新0，并要求零分自然语言显示微恙；不改变实盘引擎来迎合历史分数。下一次全量Native和新Xcode必须单独取Actions确切结果。

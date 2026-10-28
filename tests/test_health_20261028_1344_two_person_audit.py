@@ -2,7 +2,7 @@
 
 The test is deliberately read-only. Historical V8.0 before Tianqin
 centre-earth hosting was 0 for both. The NEW explicitly authorized 81 source
-pairing changes these same real charts to +3; both records are preserved.
+pairing once changed both to +3; the later fixed Kun host returns both to 0.
 Any recurrence retains its exact score ledger.
 """
 import json
@@ -80,10 +80,10 @@ class TwoPersonExactClockAudit(unittest.TestCase):
                     self.assertEqual(count,1,f"Non-illness palace {key} cannot gain a 2nd star")
         self.assertEqual(results["self"]["four_pillars"],
                          results["colleague"]["four_pillars"])
-        # Historical pre-correction: 0/0. Newly user-authorized Tianqin
-        # centre-earth 81 pair makes +3/+3. Never call this a blind test.
-        self.assertEqual(results["self"]["raw_final"],3)
-        self.assertEqual(results["colleague"]["raw_final"],3)
+        # Three distinct USER-authorized versions on this seen clock:
+        # original 0/0, Tianqin-following-centre 3/3, permanent Kun host 0/0.
+        self.assertEqual(results["self"]["raw_final"],0)
+        self.assertEqual(results["colleague"]["raw_final"],0)
         self.assertEqual(results["self"]["evidence_state"],"adverse")
         self.assertEqual(results["colleague"]["patient_role_confidence"],
                          "research_candidate_only")
@@ -101,9 +101,9 @@ class TwoPersonExactClockAudit(unittest.TestCase):
         self.assertEqual(results["self"]["four_pillars"]["hour"],"癸未")
         self.assertEqual(results["self"]["bureau"]["ju"],2)
 
-    def test_new_centre_host_three_uses_current_grade(self):
-        # The old zero remains in the previous audit; this rule revision
-        # updates the source 81 component, NOT the zero-grade UI contract.
+    def test_permanent_kun_host_zero_uses_neutral_copy(self):
+        # Original 0, moving-centre-host 3, and permanent-Kun host 0 are
+        # three explicit versions, never hidden tuning on a blind case.
         for relation,context in [
             ("self","direct_self"),("colleague","direct_proxy")]:
             output=auto_cast_health_review_text(
@@ -112,11 +112,11 @@ class TwoPersonExactClockAudit(unittest.TestCase):
                     "consultation_context":context})
             summary=output["full_health_role_strength_network"][
                 "candidate_five_grade_quantization"]["summary"]
-            self.assertEqual(summary["score"],3)
+            self.assertEqual(summary["score"],0)
             self.assertEqual(summary["tianxian_global_final_bonus"],0)
             verdict=next(s["text"] for s in output["sections"]
                          if s["id"]=="90_review")
-            self.assertIn("此病为中吉",verdict)
+            self.assertIn("此病为微恙",verdict)
             self.assertNotIn("暂不强断吉凶",verdict)
 
 if __name__=="__main__":
