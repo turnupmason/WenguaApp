@@ -61,9 +61,13 @@ jobs:
             'star','door','stem','normal','fake_void_attacker',
             'fake_void_target','true_void_attacker','true_void_target'}
           assert len((p/'81_pairs.tsv').read_text().strip().splitlines())==82
-          assert len(json.loads((p/'actor_profiles.json').read_text())['profiles'])==20
+          profiles=json.loads((p/'actor_profiles.json').read_text())['profiles']
+          byid={x['id']:x for x in profiles}
+          assert len(profiles)==22 and len(byid)==22
+          assert byid['grandfather']['palaces']==[6]
+          assert byid['grandmother']['palaces']==[2]
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
-             'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 20 roles, V8 editable template.\n')
+             'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
       - name: Keep all build logs even on failure
         if: always()
