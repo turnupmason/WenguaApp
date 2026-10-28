@@ -2,7 +2,7 @@
 
 共享：真实时家转盘、九宫原始事实、符号本身源强度、200格/81格基础表、来源归档。**不共享疾病专有宿主名单、病星克制加分、凶吉结果模板。**
 
-- [婚姻与关系规则研究](../../docs/HEALTH_FULL_ROLE_NETWORK_VNEXT_2026-10-23.md)（此为健康旧网络对照，**不是婚姻正式模板**）
+- [婚姻领域原书方法](../../docs/MARRIAGE_CASE_REASONING_PROTOCOL.md) · [婚姻22场景研究记录](../../docs/MARRIAGE_22_SCENARIO_PROTOCOL_V1_3.md)（现仅为研究，不是 V8 健康模板）
 - [工作就业原书方法](../../docs/EMPLOYMENT_CASE_REASONING_PROTOCOL.md)
 - [经营求财原书方法](../../docs/BUSINESS_CASE_REASONING_PROTOCOL.md)
 - [求学考试原书方法](../../docs/EDUCATION_CASE_REASONING_PROTOCOL.md)
