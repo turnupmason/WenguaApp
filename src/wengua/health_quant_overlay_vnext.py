@@ -574,6 +574,7 @@ def inspect_selected_quantization(*,selected_roles,
         "pre_relationship_bonus_score":original,
         "control_bonus_palaces":{str(k):v for k,v in sorted(control.items())},
         "control_bonus_points":control_points,
+        "signed_palace_grades_never_actor_strength":True,
         "actual_role_strengths":{
             role:{"palace":record["palace"],
                   "kind":record["primary_strength_25"]["kind"],
