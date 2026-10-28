@@ -22,6 +22,26 @@ ELEMENTS = {
 }
 GENERATES = {"木": "火", "火": "土", "土": "金", "金": "水", "水": "木"}
 CONTROLS = {"木": "土", "土": "水", "水": "火", "火": "金", "金": "木"}
+# Traditional Jiugong grid, coordinates only: no "neighbor means good" rule.
+GRID_COORDS = {
+    4: (0, 0), 9: (0, 1), 2: (0, 2),
+    3: (1, 0), 5: (1, 1), 7: (1, 2),
+    8: (2, 0), 1: (2, 1), 6: (2, 2),
+}
+
+def palace_spatial_relation(a: int, b: int) -> str:
+    if a not in GRID_COORDS or b not in GRID_COORDS:
+        raise ValueError("Only actual Jiugong geometry is supported")
+    if a == b:
+        return "同宫"
+    dr = abs(GRID_COORDS[a][0] - GRID_COORDS[b][0])
+    dc = abs(GRID_COORDS[a][1] - GRID_COORDS[b][1])
+    if dr + dc == 1:
+        return "九宫正邻位"
+    if dr == 1 and dc == 1:
+        return "九宫斜邻位"
+    return "九宫非邻位"
+
 RESTRICTIONS = frozenset(("真空", "假空", "入墓", "击刑", "被宫克", "门迫"))
 KINDS = frozenset(("star", "door", "deity", "stem", "palace", "other"))
 
@@ -268,6 +288,8 @@ class SelectedSignifierGraph:
                     "actor_strength": first.strength,
                     "target_strength": second.strength,
                     "relation": rel,
+                    "spatial_relation_factual_only": palace_spatial_relation(first.palace_id,second.palace_id),
+                    "spatial_adjacency_is_not_a_bonus": True,
                     "actor_restrictions": sorted(first.restrictions),
                     "target_restrictions": sorted(second.restrictions),
                     "evidence_status": (
