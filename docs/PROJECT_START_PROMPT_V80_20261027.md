@@ -12,7 +12,7 @@
 
 **继续检查全部规则，不只疾病。** 每次主动排查选用神与人物条件、200格行列、81格极性和条件名、八神有无误加月令、星门神干格重复、同宫重复/漏算、克与被克方向、空亡真假与填冲、墓刑迫、门迫及五不遇时双扣、符号力量与宫位分数混淆、伏吟反吟、应期凭据和断词内外一致。发现疑点先写实际代码位置、复现盘、预期/实际、来源证据和回归测试；未经用户批准不能为迎合答案偷偷修改V8。特别审查特殊同宫宿主固定名单、弱天芮被生泄耗加分依据、同宫多用神不同克病结果的正确归因，以及旧全库测试与新规则冲突。审计见 docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md。
 
-**Swift/Xcode 必须是正式交付**：现有 ios/WenguaAppUI/project.yml 经 XcodeGen 生成 WenguaApp.xcodeproj。App 入口 WenguaDesignPreviewApp.swift → WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView。200格 JSON、81格 TSV、人物规则 JSON、V8 模板必须随 App 打包。Python 与 Swift 相同输入必须盘面、用神、加减分及完整中文断词逐字一致。已通过 V8 专项 CI #40621011300（2固定+20随机盘）及真实 macOS Xcode Simulator 构建、包内资源验收 #40622696702；**不是签名真机或 App Store 验收**。后续直接在现有UI做五行金黄木绿水蓝火红土棕、等宽四柱、大九宫字、空马墓刑、详情、问卦Logo、选领域与人物、30秒静心及同事15天只起一次的交互，不推翻工程；其它领域未验收就标开发中。
+**Swift/Xcode 必须是正式交付**：现有 ios/WenguaAppUI/project.yml 经 XcodeGen 生成 WenguaApp.xcodeproj。App 入口 WenguaDesignPreviewApp.swift → WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView。200格 JSON、81格 TSV、人物规则 JSON、V8 模板必须随 App 打包。Python 与 Swift 相同输入必须盘面、用神、加减分及完整中文断词逐字一致。已通过 V8 专项 CI #40621011300（2固定+20随机盘）及真实 macOS Xcode Simulator 构建、包内资源验收 #40622696702；**不是签名真机或 App Store 验收**。后续直接在现有UI做五行金黄木绿水蓝火红土棕、等宽四柱、大九宫字、空马墓刑、详情、问卦Logo、选领域与人物、30秒静心及同一事项15天只起一次的交互，不推翻工程；其它领域未验收就标开发中。
 
 **领域扩展**：婚姻、工作、求财、出行、升学、刑事、失物等要根据原著各自建立主辅用神、证据冲突优先级和应期条件；婚姻重乙庚、六合、值使、月日太岁、刑墓、伏吟反吟。保留原书断语、版本、章节行号/hash及未解决歧义，不能把领域不同误当同一病情规则，也不允许用已见测试冒充秘密盲测。
 
