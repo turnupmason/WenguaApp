@@ -26,12 +26,13 @@ def produce(role):
     s=q["summary"]
     assert s["raw_final_before_saturation"]==0
     assert s["score"]==0
-    # The source-qualified stronger adverse relation for self, or unapproved
-    # candidate relative for colleague, forbids a claimed benign prognosis.
+    # User-approved V8 wording: a computed 0 is 不凶不吉 regardless of
+    # separately retained source-confidence or directional research flags.
+    # This is a traditional grade label, not a clinical prognosis.
     last=next(section["text"] for section in r["sections"]
               if section["id"]=="90_review")
-    assert "此病为不凶不吉" not in last
-    assert "暂不强断吉凶" in last
+    assert "此病为不凶不吉" in last
+    assert "暂不强断吉凶" not in last
     roles={k:{"palace":v["palace"],
               "components":{"star":v["star"]["score"],
                             "door":v["door"]["score"],
