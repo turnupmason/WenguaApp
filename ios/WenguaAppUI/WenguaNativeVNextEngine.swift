@@ -783,11 +783,13 @@ enum WenguaVNextEngine {
             for sky in p.heavenStars where
               (sky.carriedStem=="乙" || sky.carriedStem=="丁") &&
               independentSpecialHost(hostSources,kind:"stem",symbol:sky.carriedStem) {
-                let x=try factor(kind:"stem",symbol:sky.carriedStem,palace:pid,
-                                 month:month,catalog:energy,stages:sky.stages).strength
-                guard let tier=x else{continue}
+                let tier=try factor(kind:"stem",symbol:sky.carriedStem,palace:pid,
+                                    month:month,catalog:energy,stages:sky.stages).strength
                 let restricted=p.tombs.contains{$0.plane=="天盘" && $0.stem==sky.carriedStem} ||
                                striking[sky.carriedStem]==pid
+                // Actual stem-targeted tomb/striking itself proves the
+                // restricted +1 even if a 200-cell strength is unresolved.
+                if tier==nil && !restricted {continue}
                 let pts=restricted ? 1 : tier=="极小" ? 2 : 3
                 stemCandidates.append((pts,sky.carriedStem+"奇","天盘"))
             }
