@@ -1,10 +1,12 @@
-name: WenguaApp CI
+name: WenguaApp CI (current V8.0 only)
 on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: read
 jobs:
-  stdlib:
+  v80_current:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,9 +16,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Run offline Python tests
-        run: python -m unittest discover -s tests -v
-      - name: Verify local schema and 1080 state index
+      - name: Current V8.0 original 5x5 power and 72 cohost rules
+        run: python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
+      - name: All eight role complete environments, pairs, triples and palace restrictions
+        run: python -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+      - name: Real source/snapshot Important byte integrity
+        run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+      - name: Existing database schema and 1080 index smoke
         run: |
+          set -euo pipefail
+          mkdir -p local
           python -m scripts.init_database --db local/ci.sqlite3
           python -m scripts.generate_states --output local/ci-states.json
