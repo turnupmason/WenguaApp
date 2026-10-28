@@ -34,6 +34,41 @@ jobs:
         run: |
           set -euo pipefail
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v80/native 2>&1 | tee /tmp/wengua-v80/compile.log
+      - name: One genuinely random friend hour, production Swift source and full text check
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          generator.RELATIONS=(("friend","朋友","direct_proxy",None),)
+          case=generator.produce(seed=343710187,count=1)
+          case["selection"]="first technically valid random timestamp, friend direct_proxy month-stem candidate, no result filtering"
+          assert len(case["cases"])==1 and case["cases"][0]["relationship"]=="朋友"
+          assert case["cases"][0]["patient_sex"] is None
+          assert "natal" not in case["cases"][0]["roles"]
+          assert not case["cases"][0]["auxiliaries"]
+          Path("/tmp/wengua-v80/friend_random.json").write_text(json.dumps(case,ensure_ascii=False,indent=2)+"\n")
+          print("RANDOM_FRIEND_DRAW="+json.dumps({
+              "seed":case["seed"],"instant":case["cases"][0]["instant"],
+              "pillars":case["cases"][0]["four_pillars"],
+              "rejected_technical":case["rejected"]
+          },ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/friend_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/friend_swift.log 2> /tmp/wengua-v80/friend_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/friend_random.json /tmp/wengua-v80/friend_swift.log /tmp/wengua-v80/friend_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("/tmp/wengua-v80")
+          found=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (base/"friend_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(found)==1
+          for section in found[0]["sections"]:
+              print("FRIEND_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
+          print("RANDOM_FRIEND_SWIFT_EXACT_PASS",found[0]["instant"])
+          PY
       - name: Original coworker EXACT pillars; do not resample
         run: |
           set -euo pipefail
@@ -84,6 +119,21 @@ jobs:
                     '方案：'+s['final_scoring_policy'],
                     '### Python本次断词全文',case['python_reading_text'],
                     '### Native Swift 逐字一致证据','见本CI每例 _diff.md 与完整 Swift 日志；原生全文逐字比较成功才进入本阶段。']
+          friend=json.loads((root/'friend_random.json').read_text())['cases'][0]
+          app=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+               for line in (root/'friend_swift.log').read_text().splitlines()
+               if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(app)==1 and app[0]['sections']==friend['source_sections']
+          out+=['','## 真实随机一时辰 · 朋友（原生Swift+Python严格逐字）',
+                '随机种子 343710187，首次技术有效盘；没有筛选吉凶，拒绝时辰记录见同Run artifact。',
+                '朋友代问：同辈月干候选尚待书源充分核验；绝不冒充已核确定用神。',
+                '真实时辰：'+friend['instant'],
+                '四柱：'+json.dumps(friend['four_pillars'],ensure_ascii=False),
+                '阳阴遁局：'+json.dumps(friend['bureau'],ensure_ascii=False),
+                '### 原生Swift完整用户断词（无任何编辑）']
+          for item in app[0]['sections']:
+              out+=['','#### '+item['title'],item['text']]
+          out+=['','### Python↔Swift逐字原样结论', (root/'friend_exact_diff.md').read_text()]
           (root/'two_fixed_clocks_v80.md').write_text('\n'.join(out)+'\n')
           PY
       - name: Preserve all logs and attempted outputs even on failure

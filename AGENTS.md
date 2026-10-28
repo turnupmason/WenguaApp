@@ -2120,3 +2120,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 - 真正 macOS XcodeGen→Xcode16.4 iOS Simulator完整编译、在实际未签名`问卦.app`内核对200格JSON、81格TSV、22人物profiles、20261028新模板schema及五个新文案key及元信息 **#40779886908 PASS**（正式工作流修订commit cf05b666deef3c58b6f8b7d1ebdba96894479cf2）。构建、包内检查、artifact归档及自动PASS日志均实际完成。
 - 旧版模板schema导致 #40779088950 的旧UI版本断言FAIL、#40779088892 的旧Xcode资源校验FAIL；第一次修复又因inline Python多一空格使 #40779534953 FAIL。这些失败均保留，不能删除或冒称从未发生。以前旧原生全库部分工作流另有 `invalidChart` 和V7断言错误，不属于本次现行V8模板验收成功范围，也不宣称全库全部通过。
 - 本轮没有真机签名、TestFlight/App Store或用户手工界面验收；本次Xcode成功只确认真实Simulator编译和bundle资源。
+
+## 2026-10-28 · 用户要求：随机真实时辰断朋友，直接看Swift当前V8模板
+本轮不改V8疾病计分及任何古籍源数据。读取现有`scripts/ios_vnext_three_random_20261026.py` 真随机生成器和`ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift` 当前原生校验器，新增至正式 `.github/workflows/health_v80_real_selected_power_native_parity.yml`：随机种子343710187，固定只测一例朋友`direct_proxy`、未知年命/性别；按时家起局的首次**技术有效**时辰取样（无法起盘原始拒绝信息保留），绝不按吉凶筛盘或改答案；以Python原生200/81和人物规则生成真盘fixture，由Swift `WenguaNativeCore.compute` + `WenguaVNextEngine.compute` + `WenguaPythonVNextVerbatim.sections` 重新计算，严格核对全部源用神、分项、星门神及原文逐字断词。真实输出放本轮Actions stdout`FRIEND_SWIFT_SECTION`并自动**追加**到原有本Run V8正式归档。朋友当前`actor_profiles.json`为`casting_month_stem`候选、`research_candidate_only`，不允许把它冒充书源完全验收的预后；缺年命不补造、非长辈不借乾坤。Run的实际结果/失败需要后续按Actions实查，不能凭此文档宣称PASS。
