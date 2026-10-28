@@ -1,50 +1,57 @@
 # 问卦 · WenguaApp
 
-> **最新状态（2026-10-22）**：用户决定开始 **iOS 软件界面设计**。疾病轻重的 V3.9.1 自然断词与完整十二长生继续作为第一版引擎基线，V4.0–V4.2 评分已停用。现在已新增独立的原生 SwiftUI 与 HTML 可点击设计预览，现有旧 PWA 不作为新产品正式界面。请先阅读 **[AGENTS.md](AGENTS.md)**，然后阅读 **[项目实时状态](docs/PROJECT_STATUS.md)**、**[逐章处理流程](docs/CHAPTER_WORKFLOW.md)** 与 **[章节账本](docs/CHAPTER_LEDGER.md)**。任何新对话从这四个文件接续，不靠旧聊天记忆。
+**当前唯一现行疾病引擎：V8.0。** 本项目是持续开发的原生离线奇门遁甲 iPhone 应用，不是重新起盘或新建项目。当前正式投入开发与验收的专题是 **健康 → 病情轻重**；婚姻、工作、求财、出行等以后依其古籍用神规则分别开发，**绝不把疾病的加分模板套进其他领域**。
 
+[开始阅读项目规范](AGENTS.md) · [最新项目状态](docs/PROJECT_STATUS.md) · [新窗口交接指令](docs/PROJECT_START_PROMPT_V80_20261027.md) · [中文分类导航](项目导航/README.md) · [完整规则审计](docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md)
 
-## 当前 iOS 视觉设计（2026-10-22 新增）
+## 一、现行 V8.0 计算规则
 
-- **[点按式手机页面预览](ios/design-v1/preview.html)**：无需外部依赖的单文件 HTML，包含首页、问事、固定真实历史示例九宫、宫位详情、V3.9.1 断词/依据/记录/更多；结果清楚标记演示，**不调用真实实时引擎**。
-- **[SwiftUI 原生 iPhone UI 骨架](ios/WenguaAppUI/WenguaDesignPreviewApp.swift)**：可用于新 Xcode SwiftUI 工程的独立页面源码；**不是已编译的 .ipa**。
-- **[设计规格/上架风险/引擎接口门槛](docs/IOS_V1_PRODUCT_UX_DESIGN_2026-10-22.md)** 与 **[本地浏览器/SwiftUI 预览方法](ios/design-v1/README.md)**。
-- Python 权威引擎仍为 `src/wengua/health_text_pipeline.py:auto_cast_health_v39_text`，原 V3.9.1 文本不变，移动端真实本地计算尚需移植并通过逐宫对照测试；现阶段只在原生页面上展示固定示例盘，**不允许演示假盘冒充预测**。
+1. 根据领域、子题、问测人物关系，**先确定本题真正需要的用神**。再按真实时辰自动起盘，九宫真实星、门、八神、天盘干/地盘干、81有序天地格及空亡、马、墓、刑、迫、五不遇时、伏吟反吟均是可追溯原盘事实；中五不造普通神星门。
+2. **只因用神落入一个实宫才对该宫计分**。该宫的九星、八门、八神、有序81格和成立的限制条件都必须完整审查，生成一个 **带正负号的宫位吉凶等级**；同宫再出现几个角色，这份**宫位基础分只算一次**。81格已涉及真实天盘干能量，不再叠加同一干的第二份基本票。
+3. **宫位吉凶分绝对不是力量**。当同宫有天心、乙、值符、时干、年命，或任何其他真正的用神，每一枚**不同的物理符号**都独立查自己在月令与落宫的源200格强弱；八神按本神与宫五行关系，不凭星或任意宫位数字代替。同一个符号兼任两种角色仍只是一枚，不许自己临自己产生独立加分。
+4. 所有宫对宫（克、被克、生、被生、比和）分别识别**施力用神与受力用神**，两边各读独立力量；五行关系由真实宫确定。克须查来源有向5×5及空亡/刑墓门迫等限制，非克无源规定不得杜撰新作用分。同宫吉助是否成立依**本领域适用条件与真实独立宿主**，不能只看到吉神就泛加分；空亡统一按已核规则处理。
+5. 用神证据、吉凶汇总、格局优先级、有效应期只按本专题来源成立时出具；正式离线客户断词采用 [V8.0 模板](data/templates/health_severity_vnext/reading_template.json)，Python/Swift 同时辰应严格一致。面向客户不显示内部计算分数、矩阵名、调试信息。
 
-## 首次/跨对话接续
+**完整宫位图关系候选层**：[`selected_signifier_graph_v80.py`](src/wengua/selected_signifier_graph_v80.py) 以 `role_key/kind/symbol_id/palace_id/energy_fact_id` 标识角色；还记录每个已选宫里的**全部星、门、八神、天/地干、81格及空墓刑迫**、每枚实际符号的源强度和同宫/相邻/跨宫证据。它**只做事实图和证据图，不改V8.0分数**。新领域的用神与条件另定义，任何 V8.next 加分都须独立审查后才能晋升。
 
-复制本仓库 URL，让代理读取根目录 `AGENTS.md` 及上述三个进度文件接续。**当前可以继续软件 UI 设计，但还不能声称 iOS 已接通真实离线排盘引擎。** 现有 `app/` 是早期不满意的旧 PWA，保留历史代码，不改造成现在的 iOS 主版本。
+## 二、V8.0 真正通过的工程验收
 
-离线优先的奇门遁甲手机 App（V1 工程起点，非已验收断案产品）。
+- [V8.0 Python/Swift 源算法、2张已见固定案例+20张新时辰全文对照](https://github.com/turnupmason/WenguaApp/actions/runs/40621011300) — 已成功。
+- [Xcode 16.4 原生 SwiftUI iOS Simulator 全工程编译、200格/81格/人物/模板打包校验](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702) — 已成功。
+- [八类用神及星门神干格完整宫环境组合图测试](https://github.com/turnupmason/WenguaApp/actions/workflows/v80_signifier_graph_combinations.yml) — 单独门槛；模拟排列是**逻辑测试**，不得当原书真实盘。
+- 已知两例 V8.0 固定回归：同事`己丑 戊辰 辛卯 丁酉` 的传统吉凶模型结果 `-5`；1920年女性长辈`己丑 庚午 丁亥 乙巳`结果`+3`。用户已提供后来反馈，**不是未见盲测，更不是医疗诊断/预后能力的验证**。
+- 所有旧历史版本与失败记录保留在 Git 历史和独立归档；**不作为现役疾病引擎或V8 release验收预期答案**。现阶段 Xcode 是未签名 Simulator 包，尚不等于真机安装或上架。
 
-**第一流派**：时家转盘（计算与规则尚待逐项核实）。**第一版文献**：《神奇之门》及《开悟之门》，由项目所有者逐章提供；第二版再增加其他古籍与对应的规则/表述版本。
+## 三、在 Mac 上打开现有 iOS 工程
 
-## 产品流程
-初次进入云雾引导 → 选择问事领域 → 选择问者与当事人的关系 → 一分钟静心 → 倒计时结束记录本地起盘时刻 → 九宫盘 → 有出处的解读证据 → 一句话总结。
-
-## 项目原则
-- **离线优先**：运行时不必调用云端 GPT；GPT 用于研发期间的候选规则/解词整理，不自动进入正式规则库。
-- **不能伪造**：尚未验证的起盘、1080 局数据、各领域断词都必须显示「待验证」，不能用演示假盘冒充真实结果。
-- **来源与版本**：每个适用规则和断词都有书、章节、原文范围和审核状态。V2 增加书籍时保留原文与 V1 版本，不能覆盖历史来源。
-- **版权与隐私**：公开仓库只保存代码、空白结构、授权公开的资料；你提供的书籍正文和私人的问事/案例默认仅保存在本地忽略目录。避免不必要地公开整本版权书。
-- **1080**：先作为阴阳十八局 × 60 甲子状态的索引假设，**不是已经验证的1080张完整盘**；不同节气、日干支、起局方法和流派差异仍需验证。不得用此索引直接给人断卦。
-
-## 本地预览
 ```bash
-python3 -m http.server 8000 --directory app
-```
-打开 http://localhost:8000，首次访问可安装 PWA；纯前端无外部 API。**尚未验证起盘引擎与正式断词前，结果界面会明确提示不可出具解卦结论。**
-
-## 开发与测试
-```bash
-python3 -m unittest discover -s tests -v
-python3 -m scripts.init_database --db local/wengua.sqlite3
-python3 -m scripts.generate_states --output local/state-index.json
+git clone https://github.com/turnupmason/WenguaApp.git
+cd WenguaApp/ios/WenguaAppUI
+brew install xcodegen   # 若尚未安装
+xcodegen generate --spec project.yml
+open WenguaApp.xcodeproj
 ```
 
-## 目录
-- `app/`：第一版移动优先 UI/PWA（云雾、新手引导、问事、关系、60秒倒计时、结果占位；不得假装已经能断案）。
-- `src/wengua/`：状态索引、结构校验与规则组合接口，默认不对未核实盘断卦。
-- `schema/`：SQLite 原书、案例、规则与解词数据库。
-- `scripts/`：本地数据库初始化和 1080 状态索引生成。
-- `docs/`：领域、来源审核、V1/V2 契约与技术路线。
-- `local/`：本地书籍原文、SQLite、审核草稿等，Git 忽略。
+在 Xcode 选择 `WenguaApp` Scheme 与 iPhone Simulator，直接运行 **问卦**。工程入口是 `WenguaDesignPreviewApp.swift`，实际调用 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；不存在第二套网络端的正式疾病引擎。完整设备准备参见 [Mac Xcode 使用说明](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
+
+## 四、开发与验收
+
+```bash
+# 当前 V8.0 疾病引擎的数值、源表、镜像完整性
+python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
+python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+# 新版跨领域、全部宫内因素与排列关系只读测试
+python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+# 历史全量开发测试留作历史审计；部分 V7 预期不能当 V8 现行断词断言
+```
+
+开发每次提交必须读 `AGENTS.md`、状态和章节账本；同步 `Important/` 两语言镜像和 `MANIFEST.json`；保留失败 CI、原书出处、所有历史事件及修订；不可用两个已知结局反复调参。新增领域按本领域古籍原文建立用神、格局、反证、应期和模板。
+
+## 五、中文导航与目录
+
+- [项目导航/](项目导航/README.md)：现行版本、基础表与排盘、疾病、后续领域、iOS、测试、历史及失败分类入口。
+- `src/wengua/`：**Python 正式源路径**（不能直接改中文破坏导入）。
+- `ios/WenguaAppUI/`：**Xcode 正式源码与资源引用**（不能直接搬动破坏 App）。
+- `data/`：原始来源表与专业模板；`tests/`：通用和现役回归。
+- `Important/`：按项目既定规范保留的源码**字节镜像**，不可视为多余复本删掉。
+- `docs/`、`archives/`、`schema/`、`sources/`：来源、规则、历史案例、版本与失败证据。历史资料保留可追溯，并由中文导航分类而非作为现行入口。
