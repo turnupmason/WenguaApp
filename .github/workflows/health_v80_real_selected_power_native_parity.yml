@@ -46,10 +46,10 @@ jobs:
           python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v80/elder.json
           /tmp/wengua-v80/native /tmp/wengua-v80/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/elder_swift.log 2> /tmp/wengua-v80/elder_swift_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/elder.json /tmp/wengua-v80/elder_swift.log /tmp/wengua-v80/elder_diff.md
-      - name: Screenshot exact 13:44 self/colleague same-hour current V8 full text parity
+      - name: Exact 13:44 self colleague grandfather grandmother native V8 full text parity
         run: |
           set -euo pipefail
-          for role in self colleague; do
+          for role in self colleague grandfather grandmother; do
             python3 -m scripts.ios_v80_same_clock_neutral_parity_20261028 --role "$role" --output "/tmp/wengua-v80/1344_${role}.json"
             /tmp/wengua-v80/native "/tmp/wengua-v80/1344_${role}.json" data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > "/tmp/wengua-v80/1344_${role}_swift.log" 2> "/tmp/wengua-v80/1344_${role}_stderr.log"
             python3 tests/compare_gpt_ios_exact_wording_20261026.py "/tmp/wengua-v80/1344_${role}.json" "/tmp/wengua-v80/1344_${role}_swift.log" "/tmp/wengua-v80/1344_${role}_diff.md"
