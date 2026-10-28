@@ -45,7 +45,10 @@ class DiseaseDualSkySource(unittest.TestCase):
         detailed=(ROOT/"src/wengua/health_palace_detailed_vnext.py").read_text()
         self.assertIn('for top,stem_fact in heaven.items():',py)
         self.assertIn('for star in p.heavenStars {\n            // Disease-only dual carrier',swift)
-        self.assertIn('let key=star.carriedStem+"|"+p.earthStem',swift)
+        # Original V8 paired both sky carriers against host earth. User
+        # explicitly corrected Tianqin to use the real centre-earth host.
+        self.assertIn('let actualEarth=star.star=="天禽星" ? centreEarth : p.earthStem',swift)
+        self.assertIn('let key=star.carriedStem+"|"+actualEarth',swift)
         self.assertIn('"disease_dual_carrier_81_exception":role=="illness"',py)
         self.assertIn('diseaseDualSky:diseaseDualSky',swift)
         self.assertIn('let accepted=p.heavenStars',narration)
