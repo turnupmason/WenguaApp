@@ -13,6 +13,10 @@ class V78SpecialConditionalHealth(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.both=(colleague()["cases"][0],elder()["cases"][0])
+        # Historical V7.8 arithmetic remains documented, never used as an
+        # oracle after the user confirmed a general non-self-host policy.
+        if cls.both[0]["summary"]["final_scoring_policy"]!="V7.8_UNIQUE_PHYSICAL_PALACE_PLUS_CONDITIONAL_ILLNESS_AUSPICE":
+            raise unittest.SkipTest("V7.8 historical fixture; active V7.9 tested independently")
 
     def test_cross_palace_control_triage_with_weak_attacker_precedence(self):
         cases=[(0,False,False,False,0),
