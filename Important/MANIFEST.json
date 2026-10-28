@@ -439,7 +439,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/project.yml",
       "snapshot": "Important/swift/project/project.yml",
-      "sha": "98e957c3a2d8877675b704451a709fc3bb943893"
+      "sha": "861e95efa9c3be800f4c94b18649cf24cb7df3b2"
     },
     {
       "platform": "swift",
@@ -512,6 +512,12 @@
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
       "sha": "58f58e1ab69c801cfa687de62105473632ee25af"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift",
+      "snapshot": "Important/swift/engine/WenguaSelectedSignifierGraphV80.swift",
+      "sha": "912d123682233dd5c98a30ba86767089794a2228"
     },
     {
       "platform": "swift",
