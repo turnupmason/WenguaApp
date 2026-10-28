@@ -2106,3 +2106,6 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 
 ### 2026-10-28 · 新模板第一轮CI旧schema断言失败，保留现场
 当本轮客户文本模板更新至 `health_severity_user_editable_template_v20261028_tianxian_kun_v9`，真实主CI #40779088950 在 `tests/test_ios_immersive_journey_20261028.py:test_xcodegen_and_frozen_templates` FAIL：旧UI源码契约仍硬断言20261027 V8 schema（完整日志原样保留）。新版schema明确对应用户已授权的新天显逐宫折半及坤二寄干规则，不回退到旧模板；只更新这个精确版本断言，保留“综上所述，此病为{grade}。”及Xcode工程、资源原有验证，不改任何引擎分数。
+
+### 2026-10-28 · 新同源模板首轮Xcode bundle旧schema验收失败
+macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构建 #40779088892 后续 bundle 校验把 schema 固定写成20261027旧值触发 AssertionError。四类文件存在，非Swift编译失败。本轮修订 ios_v80_xcode_simulator_build.yml：核实新版20261028天显坤二JSON schema、四类真实天显/终论句及坤二寄干模板key、逐实宫最后取整元信息；保留200/81/22人物原校验。旧FAIL原状保留，新SHA真实结果另核。
