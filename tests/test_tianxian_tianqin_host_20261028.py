@@ -35,6 +35,10 @@ class TianxianAndTianqinV80(unittest.TestCase):
         self.assertIn('"tianxian_global_final_bonus":tianxian_bonus',py)
         self.assertIn('let finalRaw=known+relationshipBonus-',swift)
         self.assertIn('+(tianxian ? 4 : 0)',swift)
+        # Swift parses a leading '+' after a newline as a standalone unary
+        # expression, silently losing +4. The operator MUST stay attached
+        # to the preceding finalRaw assignment expression.
+        self.assertNotIn('0)\n            +(tianxian ? 4 : 0)',swift)
         self.assertIn('tianxianHour(chart.pillars.day,chart.pillars.hour)',swift)
         self.assertNotIn('tianxian ? 4',swift.split('private static func evaluate(')[1].split('private static func')[0])
     def test_tianqin_has_own_source_earth_not_host_duplicate(self):
