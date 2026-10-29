@@ -1,0 +1,56 @@
+name: Health V8 twelve two-hour prewritten prose research
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/preview_20261028_twoclocks_six_relatives_v80.py'
+      - '.github/workflows/health_v80_twoclocks_six_relatives_preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  produce_12_real_readings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate all 12 full source-reading paragraphs from real 2026-10-28 clocks
+        run: |
+          set -euo pipefail
+          python -m scripts.preview_20261028_twoclocks_six_relatives_v80 --json /tmp/wengua12.json --markdown /tmp/wengua12.md | tee /tmp/wengua12.stdout
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path("/tmp/wengua12.json").read_text())
+          assert len(q["readings"])==12
+          assert len({x["instant"] for x in q["readings"]})==2
+          assert all(x["no_birth_ganzhi_fabricated"] and not x["is_medical_diagnosis"] for x in q["readings"])
+          for c in q["readings"]:
+              assert c["template_verbatim"] and len(c["sections"])>=5
+          print("TWELVE_REAL_TEMPLATE_SOURCES_PASS")
+          PY
+      - name: Archive all twelve original reports for transparent prose review
+        uses: actions/upload-artifact@v4
+        with:
+          name: twelve-health-verbatim-20261028
+          path: |
+            /tmp/wengua12.json
+            /tmp/wengua12.md
+            /tmp/wengua12.stdout
+          retention-days: 90
+      - name: Commit original 12-source baseline (not an approved polished narrative)
+        run: |
+          set -euo pipefail
+          target=docs/HEALTH_V80_20261028_06_10_TWELVE_VERBATIM_SOURCE.md
+          cp /tmp/wengua12.md "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$target"
+          if git diff --cached --quiet; then
+            echo "No source differences"
+          else
+            git commit -m "Archive 12 user-requested V8 original reading source drafts for manual review"
+            git push
+          fi
