@@ -20,3 +20,7 @@ Mac替换本仓脚本后可暂设 `RELATIONSHIP='father'`, `MAX_NEW_ROWS=20`, `P
 
 ## CI/审核
 新 `tests/test_bigfish_1100_father_jia_preflight_20261029.py` 逐1100场景预判、小时甲正常继续、非连续续跑导出且旧文件原封保留、无年命四项。专项 workflow 运行真实结果以后附记，不可先称PASS。
+
+## 扩展真实集成CI质量门槛（独立于模拟单测）
+
+新增 `scripts/verify_bigfish_first_supported_20_20261029.py`，沿用现有 `scripts/verify_bigfish_actor_natal_real_20261029.load_adapter`，在GitHub Actions中实际下载固定上游BigFish原TS/编译后对**乙丑年第一20个抽象场景（原全局idx=8640..8659）的立春/雨水两分支共40份**逐一跑真实V8/V10.2。必须断词非空、父亲主源年干乙、乾6、无年命、V8角色宫一致；任何失败立即真实 FAIL 而不是把Mock当Pass。此测试不把无真实公历的条件组合称为现实起盘，也不覆盖用户现有1100旧档。结果要等实际CI真实日志后才可称PASS。
