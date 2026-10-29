@@ -1,0 +1,51 @@
+name: Apply natural first-page wording and keep V8 detailed source intact
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/apply_health_firstpage_language_20261029.py'
+      - '.github/workflows/health_natural_firstpage_sync_20261029.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  natural_and_mirrors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply first page natural language and Important mirror in one transaction
+        run: |
+          set -euo pipefail
+          python scripts/apply_health_firstpage_language_20261029.py
+          python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+          python -m unittest discover -s tests -p 'test_ios_health_grade_copy_20261028.py' -v
+          python -m unittest discover -s tests -p 'test_ios_premium_result_ui_20261028.py' -v
+          python - <<'PY'
+          from pathlib import Path
+          ui=Path('ios/WenguaAppUI/WenguaPremiumReadingView.swift').read_text()
+          assert 'WenguaNaturalSeveritySummary.text(grade)' in ui
+          assert 'Text((grade=="不凶不吉"' not in ui
+          detail=Path('ios/WenguaAppUI/WenguaNativeCustomerView.swift').read_text()
+          assert 'ForEach(reading.sections.indices' in detail
+          assert 'customerParagraph(section.text)' in detail
+          print('NATURAL_UI_COMPLETE_DETAILED_SOURCE_PRESERVED')
+          PY
+      - name: Commit synchronized current UI, Important and status records
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add ios/WenguaAppUI/WenguaPremiumReadingView.swift ios/WenguaAppUI/WenguaNativeCustomerView.swift Important/swift/ui/WenguaPremiumReadingView.swift Important/swift/ui/WenguaNativeCustomerView.swift Important/MANIFEST.json AGENTS.md docs/PROJECT_STATUS.md docs/CHAPTER_LEDGER.md
+          if git diff --cached --quiet; then
+            echo 'No changes'
+          else
+            git commit -m 'Use natural professional wording on first page while retaining complete V8 detailed readings'
+            for n in 1 2 3 4 5; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            exit 1
+          fi
