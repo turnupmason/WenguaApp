@@ -11,3 +11,7 @@
 
 ## 质量门槛
 新增 `tests/test_bigfish_node_runtime_pycharm_20261029.py`：已有安装也做Node初始化、worker使用绝对可执行文件、缺Node先明确提示、默认无年命四项；已纳入 BigFish batch 专项 Actions。只有 GitHub 真实运行后才可标 PASS。本环境无用户 Mac 文件系统，**不能声称已经在用户 PyCharm 或518400条上成功运行**。此补丁不改冻结 V8/V10.2、200/81源、Swift/iOS、Important双镜像/MANIFEST、不清历史失败。
+
+## 新增真实CI失败及原因（保留而非掩盖）
+
+首次专项 `#40944733685` 在现有BigFish/人物原测试与Python py_compile全部PASS之后，新4项 Node回归 **4 ERROR**：测试夹具 `local_batch` 少提供上游 `BIGFISH_SHA`/Wengua SHA；异常发生于被测脚本模块载入行416，**不是应用代码 Node路径修复的失败，也不表示Mac已通过**。已按仓库现成 fixture 的真实常量补齐，重跑专项 Actions，旧失败历史不删除。链接：https://github.com/turnupmason/WenguaApp/actions/runs/40944733685 。
