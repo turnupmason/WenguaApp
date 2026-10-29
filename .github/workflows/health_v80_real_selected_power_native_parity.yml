@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/health_v80_real_selected_power_native_parity.yml'
+      - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
+      - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'src/wengua/health_quant_overlay_vnext.py'
       - 'src/wengua/health_role_majority_vnext.py'
       - 'src/wengua/domain_selected_energy_vnext.py'
