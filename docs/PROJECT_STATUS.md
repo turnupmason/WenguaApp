@@ -1898,3 +1898,9 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-28 · V10最终同一时辰真Swift验收
 最新commit 498cc54d 的 Python3.11/3.12正式V8 CI #40784209740 PASS，V8全源200/81真正原生Swift逐字核对 #40784209983 PASS，macOS XcodeGen真实iOS Simulator编译与完整App四资源/20261028 V10模板bundle验收 #40784209785 PASS。固定已见朋友盘2025-12-28 17:00 EST，四柱乙巳、戊子、辛未、丁酉，冬至阳遁七局；人物规则是已确认朋友用月干戊，艮八宫，年命未给不补，最终原V8 -5 极大凶不变。现在公众九宫只报星门神、真实天盘地盘、81有序格名吉凶与关键墓刑迫，去掉全部古文引号堆叠、多个十二长生并写、开发者口吻和每宫内部扣分；古书原文本/完整多支事实未改。原生Swift全文及对照归档docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40784209983_ATTEMPT_1.md，1/1 EXACT MATCH，无差异。此前失败#40783200831/#40783200978的真实现场保留。不代表医疗有效性、签名真机或App Store上架。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
