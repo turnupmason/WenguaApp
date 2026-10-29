@@ -2060,3 +2060,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · 父亲前20条五鼠遁校验：20/20正常，720/720日时组合正常，但跨柱甲角色失败仍在
 用户提出20条失败可能因为甲子日乙亥时跨夜子时：纠正为当天21–23时亥时合法，乙亥之后才是下一日乙丑的丙子时（假设23点换日规则）。实际`father_000001-000020.xlsx`逐行日柱/时柱都符合五鼠遁，已下载本地Python脚本`scenario`纯函数实际首20顺序一致，60日×12时为720/720合法，独立仓库回归tests/test_five_rat_father_20_separate_from_signifier_20261029.py及新专门工作流.verify_five_rat_father_20_20261029.yml。**这不能解释18行×2节气失败，也不证明冻结断案取用无误**：`health_dynamic_v21._stem_cell`年甲只有时干甲才会读取小时旬遁干，导致甲子年甲戌小时第11行错误赋己，需原书源证与独立年角色核验。没有修改V8核心、200/81/V10.2/Swift/Important双镜像/MANIFEST，无需改Excel或覆盖失败SQLite。独立审计docs/BIGFISH_FATHER_20_FIVERAT_IS_VALID_20261029.md；Mac Xcode未跑。
+
+
+### 2026-10-29 · 用户最终明确当前首要工作：V8.0已定，批量预生成供GPT/人工改善断词
+无需修改起盘和病情轻重判定：目标是先父亲再母亲/弟弟，以正式已验证Wengua Python/Swift同源V8.0模板取完整证据链（起盘→人物用神→源强→实际宫/例外→判级/应期→原断词），存本机SQLite+CSV/XLSX、JSONL事实包、全文文本，随后保留每条原稿，单独GPT润色去机械重复、人工逐篇审校再离线打包。**内容润色不能改事实/结论/应期，没有原始证据的语句不能补造**。已有`scripts/health_editorial_batch_v1.py`与固定审稿Prompt应复用，批量脚本需先与**正式V8入口**核对，不可简单把`health_severity_vnext_review`的预览分支当正式冻结V8；旧爸爸20条报错先审批量适配器，而非未经对照直接断言正式V8算法缺陷。已知失败和错绑嫌疑记录保留，人物源JSON实际22 profile ID与用户正式20类关系有合并/候选差别。提交交接文档`docs/WENGUA_PREGENERATED_READINGS_EDITORIAL_ONLY_CONTRACT_20261029.md`，本次无冻结源/Swift/Important/MANIFEST变更、无新Mac Python parity/Xcode运行；此前主V8 PASS仍只能代表对应历史CI。
