@@ -2044,3 +2044,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · PyCharm 独立518400 Python缺安装已修复（会话交付，尚待用户Mac实测）
 运行PyCharm现象原始 `local_batch.check_install()` 在缺少 `vendor/bigfish` 报 `首次先双击 install.command`，未进入循环。重新生成原文件名可替换的 `Wengua_BigFish_518400.py` SHA256 `7e134f10184611fe4aba2d7784ef3e3fdca9d6bc6de2d5a68ff9d3376065bf55`，PYTHON自动一次性GitHub固定commit/npm TypeScript编译与V8资源SHA验收，无.command；保留原 `local_batch.py`。另外修复 BigFish direct TS `shiJiaGenerate` 的 `chart.yuan` 缺三元（从原 `chaiBuJuByGanZhi` 真实bureau中传递），内嵌研究源校验、第一行双失败即停止；不碰冻结数学与本机历史结果。9 Python隔离单测、py_compile、Node桥语法、ZIP CRC真PASS；**未在此环境完成Mac联网安装/真实518400循环/Swift native或Xcode**。Github本次只更新审计交接文档，未把大Python源推上GitHub，代码通过本次会话附件交付；详情 docs/BIGFISH_518400_PYCHARM_AUTOINSTALL_FIX_20261029.md。
+
+
+### 2026-10-29 · PyCharm Node 缺失已产生可下载Python修复，未做macOS实装
+用户直接执行Wengua_BigFish_518400.py报 `RuntimeError: 缺少 node`，只卡在首次源码/TS依赖安装之前。当前单.py会话交付SHA256 `0ad19eeb969564f134cda29fda61591f2e4c7ca362d4fa088122f88fadb4dd0f`，`AUTO_INSTALL_NODE=True` 时优先复用已有Node/npm，再下载官方macOS LTS、按官网SHASUMS256校验、无sudo安全安装本项目toolchain/node_runtime，并按原固定commit校验BigFish/Wengua与V8资源，不删已有输出。单测13/13、py_compile、ZIP CRC实测PASS；官方版本索引和tar安装为Mock fixture，**未在此容器或用户Mac完成官网真实安装或真实518400计算、Swift/Xcode原生验收**。源码通过聊天附件交付，仓库只提交相应审计交接，不误称已将整份 Python 大文件提交。详见 `docs/BIGFISH_PYCHARM_NODE_LTS_BOOTSTRAP_20261029.md`。
