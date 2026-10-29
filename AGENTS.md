@@ -2261,3 +2261,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-29 · BigFish 518400条件四柱 Python 单人物挂机（覆盖旧按日多人物批量入口建议）
 用户新方案：一个Python文件对一个关系运行完全枚举60年干支×12月支×60日干支×12时支=518400逻辑组合，父亲跑完改mother再改younger_sibling。月干/时干由五虎/五鼠遁实际派生，**每月支两个不同可能24节气分支各单独以BigFish起局/冻结V8计算**，产出518400条带两份条件断词的场景，不凭无公历时刻的标签造唯一真实节气。当前22个源关系profile动态加载而非固定20/旧11；未提供年命、性别排行不补造。新会话文件 `wengua_518400.py` SHA256 b761a0705007e2275fa24781788f7271fe4b195b0c7ab3497b7949c3cef99a52，与已安装本地BigFish工具的 local_batch.py 同级；顶部 RELATIONSHIP切换。原上游TypeScript实调用并缓存1080物理九宫，**每个场景两节气分支仍各运行冻结V8/V10.2**，SQLite断点续跑，5000行一组输出CSV与真正XLSX，保存文本/原盘指针/错误、留人工GPT修订栏且不覆盖已导出的文件。局部单测枚举/转换/两记录导出/SpreadsheetFile再读 XLSX PASS，尚未在此容器运行真1,036,800跨引擎断词。详细审计 docs/BIGFISH_518400_LOCAL_PYTHON_LOOP_20261029.md。冻结V8/Swift/Important双镜像/原著及历史失败完全不变。
+
+
+### 2026-10-29 · PyCharm 518400 首次初始化报错已制作Python-only修复候选
+用户实际PyCharm `Wengua_BigFish_518400.py` 在 `local_batch.check_install()` 抛 `首次先双击install.command`；确认并非518400已开算或算法结果失败。本轮会话交付替换同名Python `Wengua_BigFish_518400.py` SHA256 `7e134f10184611fe4aba2d7784ef3e3fdca9d6bc6de2d5a68ff9d3376065bf55`，单文件自动安装BigFish固定SHA、Wengua冻结SHA、TS5.8.3及四冻结资源，无需.command；原 `local_batch.py` 需同级、首次联网需Git/Node/npm；以后离线。内嵌独立BigFish物理盘门控，修复TS九宫从真实 bureau 补 yuan 供 base.normalize_bigfish；首条双节气失败自动停并留证，避免518400假断词。测试9 Python单测、py_compile、node --check、ZIP CRC PASS，未真实Mac联网安装及518400真实计算，不得称成功。旧结果/Important/MANIFEST/Swift/V8/V10/200/81未动。完整复现与限制见 `docs/BIGFISH_518400_PYCHARM_AUTOINSTALL_FIX_20261029.md`。新Python只作为本轮下载文件，未提交大源码至仓库，不可误报。
