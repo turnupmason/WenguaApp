@@ -2265,3 +2265,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-29 · PyCharm 518400 首次初始化报错已制作Python-only修复候选
 用户实际PyCharm `Wengua_BigFish_518400.py` 在 `local_batch.check_install()` 抛 `首次先双击install.command`；确认并非518400已开算或算法结果失败。本轮会话交付替换同名Python `Wengua_BigFish_518400.py` SHA256 `7e134f10184611fe4aba2d7784ef3e3fdca9d6bc6de2d5a68ff9d3376065bf55`，单文件自动安装BigFish固定SHA、Wengua冻结SHA、TS5.8.3及四冻结资源，无需.command；原 `local_batch.py` 需同级、首次联网需Git/Node/npm；以后离线。内嵌独立BigFish物理盘门控，修复TS九宫从真实 bureau 补 yuan 供 base.normalize_bigfish；首条双节气失败自动停并留证，避免518400假断词。测试9 Python单测、py_compile、node --check、ZIP CRC PASS，未真实Mac联网安装及518400真实计算，不得称成功。旧结果/Important/MANIFEST/Swift/V8/V10/200/81未动。完整复现与限制见 `docs/BIGFISH_518400_PYCHARM_AUTOINSTALL_FIX_20261029.md`。新Python只作为本轮下载文件，未提交大源码至仓库，不可误报。
+
+
+### 2026-10-29 · PyCharm 首次缺Node：官方SHA256验证的本地Node LTS自动安装（最新）
+用户真实日志显示 `ensure_install()` 报 `缺少 node`，尚未开始BigFish或518400组合。更新单文件会话附件 `Wengua_BigFish_518400.py` SHA256 `0ad19eeb969564f134cda29fda61591f2e4c7ca362d4fa088122f88fadb4dd0f`、备用ZIP SHA256 `79c87b6c2da06bfe04439514807ea104bb416b112f94de873012e8ed52464c5c`。新增 `AUTO_INSTALL_NODE=True`：自动发现Mac Homebrew/nvm/volta/fnm/mise/asdf工具链；无Node则 Python urllib 查nodejs.org/dist官方LTS索引，mac arm64/x64 tar.gz与官方SHASUMS256.txt双向校验，安全解压仅Node/npm、验真运行并原子装 `toolchain/node_runtime`，无sudo/.command，不覆盖旧运行/SQL输出；再按旧固定SHA安装BigFish/Wengua/TS。Python 13/13隔离单测、编译、ZIP CRC PASS，含模拟官网归档及故意SHA错误拒绝；**没有**在用户Mac真实联网安装或实际518400全量跑过。旧规则、Swift、Important双镜像和MANIFEST不动，历史失败不删。源码本轮通过对话可下载，GitHub新增审计 `docs/BIGFISH_PYCHARM_NODE_LTS_BOOTSTRAP_20261029.md`，不要假称48KB完整会话附件源码已同步仓库。
