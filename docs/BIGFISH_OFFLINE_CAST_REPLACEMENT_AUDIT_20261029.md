@@ -24,3 +24,17 @@
 2. 按实际新盘列举现有 Wengua 原始200/81/真假空/马墓刑迫/同宫双星/值使寄坤、伏反吟、天显五不遇、人物年命入口所有欠缺，逐条映射，绝不按宫净分替代独立用神力量。
 3. 正式将新九宫数据进 Swift 之前，做全字段100%对照并对两冻结旧案严格标注新旧起盘变体。未经用户同意不追求旧病况分数结果而偷改 V8。
 4. 用户所说的四柱直积518400为标签组合上限形式，不全是可达真实公历四柱；月干受年干、时干受日干约束。只对可实现的真时辰、真月令、人物条件批量生成并标明未审状态。
+
+
+## 2026-10-29 实测失败与修复追记（保留全部原始证据）
+
+**首次真实跨仓断词复核暴露旧来源保护门槛，不能把工作流绿灯当成真正的模板成功。** 在 #40920875955，1080个原始 TS 物理结构全部 PASS，但 Python 跨仓步骤失败：`health_severity_template.py:_validate_chart` 的真实策略首先要求 `status` 为旧 Shanqi 状态，并**重新调用** `layout_from_explicit_bureau` 对星门神和携干逐字段比较；BigFish 不同起盘来源不可能不经许可直接穿透它。该工作流最初使用 `python ... | tee`，没有 `pipefail`，造成该步骤 Python traceback 而 workflow 错报 success。#40921332503 改 `set -o pipefail`，**正确 FAIL** 并保存了原始失败；不删记录。
+
+为真正让**BigFish 新盘**进入冻结规则而不把旧 Shenqi 盘偷偷喂给 V8，新建 `src/wengua/bigfish_source_gate_research.py`：
+- 仅 Mac/CI **单线程研究候选**，具有 `source_key=perfhelf/bigfishmarquis-qimen@6112b393...`、`casting_variant=bigfish_shijia_chaibu_pilot`、状态 `bigfish_unapproved_candidate` 的实体盘才允许临时验证。
+- 全宫独立检验 9真地干、天芮天禽双星携干、八星/八门/八神唯一、中心五不伪造门/神/天星、旬首六仪、局数/时干等。上下文作用域只临时替换 `health_severity_v22._validate_chart` 的**旧Shenqi来源身份核查**，退出后恢复原函数。它不修改正式冻结的原版脚本、V8计分公式、200/81、V10.2模板、Swift及Important镜像；不能作为并发 App 发布路径或对完整古籍来源准确性的批准。
+- 正式真实 GitHub Action **#40921478524 PASS**：原上游TypeScript 1080结构逐个0 errors；将实际美东 `2026-10-28T06:00:00-04:00`（丙午戊戌乙亥己卯）和 `2026-10-28T10:00:00-04:00`（丙午戊戌乙亥辛巳）用 BigFish **原始实际九宫**传到**未修改计分 V8 Python**，双盘均阴遁2局、对照旧九宫星门神携干差异列表为 `[]`，输出内部传统符号等级 -5/-5，客户文案 SHA256 分别 `9eba5f30331013c50e9da5b454aa81b267a5c5c6b04f15b816591d16bea43a42`、`b187047c6895f691986c5b19f74c1c42b82cb9b2ad96bac8f4791c627d9ff568`。不以同分宣称医学预测有效性。
+- 现行正式 V8 CI 同一 commit #40921478534 PASS；历史独立 V7.4 仍有 #40921438290 FAIL（保留，非V8变更引起）。Xcode macOS完整编译与新Swift原生 BigFish 重构**未跑**，不能宣称 App 真正换盘完成。
+- 最新本轮 Mac 可下载 ZIP 更新版 SHA256 `f7cbe0156494e26873e526c139518f455881f3c7a0b487afa7cc3a88baebdfbe`；替代上方最初首稿 SHA `22e238...` 的下载建议（两份历史哈希都保留）。新增 `candidate_source_gate.py` 同源研究安全路径，并将 TypeScript 编译器固定为5.8.3。Mac 完整源码 clone/多日期跑批仍需真实本机测试，不能以 GitHub 的2时辰代替。
+
+**结论**：现已可实证原 BigFish TS 时家拆补排盘与现有 V8 Python 独立来源门槛共同工作，但正式 iOS 原生并未切换，独立未知盘中可能出现新旧流派差异；应继续带真实边界条件逐例审核。用户今后本地首次安装只用更新版 BigFish ZIP，勿再用 qfdk 首稿。
