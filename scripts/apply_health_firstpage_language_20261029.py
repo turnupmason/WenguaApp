@@ -60,7 +60,7 @@ for file in (P,D):
     item=[i for i in data["entries"] if i["canonical"]=="ios/WenguaAppUI/"+file.name]
     assert len(item)==1
     b=file.read_bytes()
-    item[0]["sha"]=hashlib.sha1(b"blob "+str(len(b)).encode()+b"\\0"+b).hexdigest()
+    item[0]["sha"]=hashlib.sha1(b"blob "+str(len(b)).encode()+bytes([0])+b).hexdigest()
 catalog.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
 for dest in ("AGENTS.md","docs/PROJECT_STATUS.md","docs/CHAPTER_LEDGER.md"):
     file=ROOT/dest
