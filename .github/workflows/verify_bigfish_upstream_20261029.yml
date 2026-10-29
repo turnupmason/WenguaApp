@@ -1,0 +1,34 @@
+name: BigFish upstream 1080 structural audit (no frozen V8 change)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - scripts/verify_bigfish_upstream_1080_20261029.cjs
+      - .github/workflows/verify_bigfish_upstream_20261029.yml
+jobs:
+  compile-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pin actual upstream original TypeScript
+        run: |
+          git clone https://github.com/perfhelf/bigfishmarquis-qimen.git /tmp/bigfish
+          git -C /tmp/bigfish checkout --detach 6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c
+          test "$(git -C /tmp/bigfish rev-parse HEAD)" = 6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c
+      - name: Compile TypeScript source without rewriting it
+        run: |
+          mkdir -p /tmp/bigfish-toolchain /tmp/bigfish-dist
+          npm --prefix /tmp/bigfish-toolchain install --no-save --save-exact typescript@5.8.3
+          /tmp/bigfish-toolchain/node_modules/.bin/tsc --module commonjs --target es2020 --moduleResolution node --lib es2020,dom --skipLibCheck --rootDir /tmp/bigfish/src --outDir /tmp/bigfish-dist /tmp/bigfish/src/engines/shijia.ts /tmp/bigfish/src/engines/chaibuquju.ts /tmp/bigfish/src/engines/maoshan.ts /tmp/bigfish/src/engines/zhirun.ts
+      - name: Real 1080 generated charts structural checks
+        run: |
+          node scripts/verify_bigfish_upstream_1080_20261029.cjs /tmp/bigfish-dist | tee /tmp/bigfish-1080.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bigfish-original-ts-1080-structural-results
+          path: /tmp/bigfish-1080.json
+          if-no-files-found: ignore
