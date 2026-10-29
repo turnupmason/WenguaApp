@@ -1,0 +1,87 @@
+name: Actual production Swift vs Python 1080 real-calendar nine-palace parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/physical_1080_native_real_clock_parity.yml'
+      - 'scripts/verify_1080_real_clocks_native_parity_20261029.py'
+      - 'tests/swift/Physical1080NativeMain.swift'
+      - 'ios/WenguaAppUI/WenguaNativeCore.swift'
+      - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  all_real_atlas_against_native_core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Select one actual valid civil clock per canonical atlas board
+        id: source
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-native-1080
+          python3 -m scripts.verify_1080_real_clocks_native_parity_20261029 --mode select --output /tmp/wengua-native-1080/selected_clocks.json | tee /tmp/wengua-native-1080/select.log
+      - name: Compile and run real production Swift WenguaNativeCore for the selected 1080 times
+        id: native
+        if: steps.source.outcome == 'success'
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          swiftc -parse-as-library ios/WenguaAppUI/WenguaNativeCore.swift tests/swift/Physical1080NativeMain.swift -o /tmp/wengua-native-1080/native
+          /tmp/wengua-native-1080/native /tmp/wengua-native-1080/selected_clocks.json > /tmp/wengua-native-1080/native_out.jsonl
+          wc -l /tmp/wengua-native-1080/native_out.jsonl
+      - name: Verify all nine source-versus-Swift palace fields across all 1080 real clocks
+        id: compare
+        if: steps.source.outcome == 'success' && steps.native.outcome == 'success'
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          python3 -m scripts.verify_1080_real_clocks_native_parity_20261029 --mode verify --input /tmp/wengua-native-1080/selected_clocks.json --swift /tmp/wengua-native-1080/native_out.jsonl --output /tmp/wengua-native-1080/native_parity_report.json | tee /tmp/wengua-native-1080/compare.log
+      - name: Archive full actual native-parity audit, including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wengua-all1080-real-clock-swift-source-parity-audit
+          path: /tmp/wengua-native-1080/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Append actual PASS or FAIL result without rewriting old runs
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.source.outcome }}" = "success" ] && [ "${{ steps.native.outcome }}" = "success" ] && [ "${{ steps.compare.outcome }}" = "success" ]; then
+            RESULT=PASS
+          else
+            RESULT=FAIL
+          fi
+          FILE="docs/PHYSICAL_1080_SWIFT_PARITY_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            echo "# Complete 1080 real-clock Swift versus Python physical source: ${RESULT}"
+            echo
+            echo "https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
+            echo "Source ${GITHUB_SHA}"
+            echo "Stages: python selection ${{ steps.source.outcome }}, actual native compile ${{ steps.native.outcome }}, exact all board compare ${{ steps.compare.outcome }}"
+            if [ -f /tmp/wengua-native-1080/native_parity_report.json ]; then
+              echo '~~~json'
+              cat /tmp/wengua-native-1080/native_parity_report.json
+              echo '~~~'
+            fi
+            echo 'This does not establish every original book chart is authenticated or validate medical prognosis.'
+          } > "$FILE"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$FILE"
+          git commit -m "Preserve genuine 1080 production Swift versus Python board parity ${RESULT} evidence"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then break; fi
+            if [ "$n" = 5 ]; then exit 1; fi
+          done
+      - name: Reject false claims of complete parity
+        if: steps.source.outcome != 'success' || steps.native.outcome != 'success' || steps.compare.outcome != 'success'
+        run: exit 1
