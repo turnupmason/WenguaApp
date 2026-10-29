@@ -2052,3 +2052,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · macOS python.org 3.11 HTTPS 证书链失败安全修复
 用户再发真实Traceback：PyCharm venv在首次无Node自动下载官方index.json前 TLS 证书链报 `unable to get local issuer certificate`，未运行计算循环。立即操作 `open "/Applications/Python 3.11/Install Certificates.command"`，或下载替换同名完整Python：SHA256 `00033472598f2b5f49e54823c9acc95b817e0e6b6bd5f0a2e45f30694895ece8`；新版自动优先用certifi可信CA与系统keychain根CA安全构建context，严禁关闭SSL。20/20本地隔离测试通过，xlsx/SQLite/Node模拟SHA/TLS校验均有覆盖；ZIP `Wengua_BigFish_518400_SSL证书修复_20261029.zip` CRC正常，SHA256 `27e9549175cb3568c310ae8f7f57335ec076148854aeb2df87252576ac16b480`。**不是用户本机安装或真实518400通过**；此轮没有改Swift/冻结V8源/Important双镜像/MANIFEST。详细审计 docs/BIGFISH_MAC_PYCHARM_SSL_CERT_VERIFY_20261029.md。
+
+
+### 2026-10-29 · 父亲20条实际Mac结果：十八空白、一道“成功”隐藏错绑
+用户Excel `father_000001-000020.xlsx`（SHA256 0aa7118e856970b3ba5f617ce679ae5c52f2fca6113f281cb891eda99ca71857）经本地artifact_tool逐行验收：20行均年甲子月丙寅、每行立春/雨水，40/40有原始BigFish盘式与局数；第2–10、12–20行共18行×2节气失败（非起盘失败），Excel断词/等级空是脚本捕捉 `Patient signifier unresolved; do not force birth-year`。第1行甲子时与第11行甲戌时各两个显示“条件候选”但第11行把父亲年甲子用神借了甲戌小时旬首己，独立取用错误，不能采信。根因 `health_dynamic_v21.py:_stem_cell` 对年甲仅甲时定位，再调用 `health_severity_template.py:_find_heaven_stem` 甲时转本小时遁干；不是父亲出生年命缺失，更不是BigFish排不出局。新增真实失败审计 docs/BIGFISH_FATHER_20_JIA_YEAR_SIGNIFIER_FAILURE_AUDIT_20261029.md 和源回归tests/test_father_jia_year_binding_known_gap_20261029.py（已知两项 expectedFailure），Excel原料未公开上库；导出对照 xlsx在本次对话文件。现有旧20条SQLite会跳过，不得删库或假称简单重跑修复。当前暂停全量挂机，先核准跨柱甲身份书源，用户批准后在研究版保留历史重算；冻结V8/Swift/Important/MANIFEST未变，没跑Mac Xcode。
