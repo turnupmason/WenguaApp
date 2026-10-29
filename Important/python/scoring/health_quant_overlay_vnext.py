@@ -527,8 +527,15 @@ def inspect_selected_quantization(*,selected_roles,
         ground_stem=ground.get("symbol")
         ground_stages=[x.get("stage") for x in
             ground.get("palace_twelve_life_facts",()) if x.get("stage")]
-        ground_restricted=_matching_restriction(
-            detail.get("earth_tombs",()),ground_stem) or ground_stem in strikes
+        # earth_tombs from inspect_palace is BRANCHES (e.g. 戌), whereas
+        # _matching_restriction requires an explicit STEM label. The actual
+        # earth-stem full12 lifecycle already records 墓 at this palace.
+        # Match that real fact rather than treating a branch as a stem.
+        # Swift p.tombs has plane='地盘', stem='乙' for the same event.
+        ground_restricted=("墓" in ground_stages or
+                           _matching_restriction(
+                               detail.get("earth_tombs",()),ground_stem) or
+                           ground_stem in strikes)
         stem_candidates=[]
         for stem,strength,restricted in sky_candidates:
             if not strength and not restricted:continue
