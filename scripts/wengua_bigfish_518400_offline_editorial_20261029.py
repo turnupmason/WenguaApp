@@ -34,7 +34,7 @@ PATIENT_SEX = None           # 弟弟可设 'male'；姐妹或妈妈已知女可
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 没给真实出生年干支，绝不补造
-MAX_NEW_ROWS = 20            # 首次试跑20行；正式挂机改0=剩余全部518400
+MAX_NEW_ROWS = 0             # 0 = 剩余全部518400行；想小试时改20
 ROWS_PER_EXCEL = 5000        # 104 numbered CSV / XLSX workbooks per person
 COMMIT_EVERY = 10            # committed records surviving power loss
 PRINT_EVERY = 100            # print progress every 100 newly completed rows
