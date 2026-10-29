@@ -1904,3 +1904,8 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/40793239030 ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-10-28 · V10.1 本轮最终真实 Actions 状态（源测试后核验）
+- 首次 V10.1 原生测试 #40793025806 FAIL：旧 Swift 专项测试还硬断言废弃的「全部因素推断后，此宫为」，非分数变化；失败完整日志 docs/HEALTH_V80_FAILURE_RUN_40793025806_ATTEMPT_1.md 永久保留。只更新源码 ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift 与 Important 镜像/MANIFEST 旧文字断言，未放宽盘面、用神、81或评分验证。
+- 修复后的正式 Python 3.11/3.12 主CI #40793239027 PASS；原生 Swift 独立实盘全文V8评分+V10.1模板 #40793239030 PASS，含严格按预定人物顺序生成的五张新盘，五张无文字差异（5/5 EXACT MATCH）；真实 macOS XcodeGen/Xcode Simulator 编译和 V10.1 四类App包内数据 #40793239020 PASS。完整五盘实际原文档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md；原著/200/81未变。
+- 另有旧版通用 iOS Offline Native Casting Parity #40793239166 仍 FAIL，不能笼统称「所有工作流通过」；这是不同的旧专项校验，保留待逐条追查，正式当前V8.0和V10.1严格双端客户断词专项上面实报PASS。无真机签名或医疗有效性证明。
