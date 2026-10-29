@@ -155,11 +155,8 @@ private struct PublicCast:Encodable {
                 let stages=q.earthStages.map{$0.branch+":"+$0.stage}.joined(separator:",")
                 let tombs=q.tombs.map{$0.plane+":"+$0.stem}.joined(separator:",")
                 let extras=audit.auspiceBonusNotes.joined(separator:"|")
-                FileHandle.standardError.write(Data(
-                  ("SIXJIA_2014_QIAN_NATIVE earth="+q.earthStem+
-                   " stages="+stages+" tombs="+tombs+
-                   " god="+String(describing:q.deity)+
-                   " auspice="+extras+"\n").utf8))
+                let debugLine="SIXJIA_2014_QIAN_NATIVE earth=\(q.earthStem) stages=\(stages) tombs=\(tombs) god=\(String(describing:q.deity)) auspice=\(extras)\n"
+                FileHandle.standardError.write(Data(debugLine.utf8))
             }
             let debugItems:[String]=[
                 "V7_FULL_SOURCE_BONUS_COMPARE",test.instant,
