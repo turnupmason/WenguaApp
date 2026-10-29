@@ -1,0 +1,27 @@
+name: Father Jia-Year Binding Known-Gap Audit (expected failures retained)
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit_father_jia_year_known_gap_20261029.yml'
+      - 'tests/test_father_jia_year_binding_known_gap_20261029.py'
+      - 'src/wengua/health_dynamic_v21.py'
+      - 'src/wengua/health_severity_template.py'
+      - 'src/wengua/casting_shenqi.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute actual source-signifier regressions and show unresolved cases
+        run: |
+          python -m unittest discover -s tests -p 'test_father_jia_year_binding_known_gap_20261029.py' -v
