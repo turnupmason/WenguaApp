@@ -173,14 +173,7 @@ def build_one(dun,ju,hour,*,life):
     # Fingerprint only real physical star/door/god/stem placements; do
     # NOT let source line, month variants or actor identity create "new plates".
     physical["physical_fingerprint"]=sha({
-        "dun":dun,
         "palaces":places,
-        "xun_shou":chart["xun_shou"],
-        "hidden_stem":chart["hidden_stem"],
-        "value_star":chart["value_star"],
-        "value_star_palace":chart["value_star_palace"],
-        "value_door":chart["value_door"],
-        "value_door_palace":chart["value_door_palace"],
     })
     return physical
 
