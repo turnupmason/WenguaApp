@@ -24,9 +24,8 @@ class FriendConfirmedConciseV80(unittest.TestCase):
         self.assertIn("古文：{classical_text}",j["formation"])
         self.assertIn("天地格：{patterns}",j["macros"]["palace_compact"])
         self.assertNotIn("古文",j["macros"]["palace_compact"])
-        self.assertIn("五不遇",j["macros"]["summary_five_customer"])
+        self.assertIn("五不遇",j["macros"]["macro_five_customer"])
         for x in ("每宫","两分","扣2","+2","矩阵","按用户规则"):
-            self.assertNotIn(x,j["macros"]["summary_five_customer"])
             self.assertNotIn(x,j["macros"]["macro_five_customer"])
         self.assertEqual(tianxian_palace_bonus(5,triggered=True,fuyin=True),7)
     def test_same_clock_friend_python_live_customer_reading(self):

@@ -55,7 +55,7 @@
       "platform": "python",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "33f844566b8ac10e47aee69f7ea8c05909779c5d"
+      "sha": "f27aec394eb8c3fd3a952be763bee6fc0f9061e7"
     },
     {
       "platform": "python",
