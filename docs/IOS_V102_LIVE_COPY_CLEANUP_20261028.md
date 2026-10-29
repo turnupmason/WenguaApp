@@ -17,3 +17,7 @@
 - 修复提交 `29509f71ef039d9c49e10bcb33b40604a2042ee5`：真实检查 MANIFEST 相同canonical有 **两份镜像记录**（Python与Swift），把两份资源均指向清理后的同一个Git blob SHA `f27aec394eb8c3fd3a952be763bee6fc0f9061e7`，更新 MANIFEST；将旧朋友测试仅改为验证当前真实 `macro_five_customer`。原冻结200/81/V8算分/有实际调用的V10.2断词宏未变。
 - 修复后同一代码源 SHA `29509f71`：Python3.11/3.12正式主CI #40811025113 **PASS**（包括本轮新旧文字清库测试和 Important双镜像字节）；V8完整原生Swift ↔ Python 200格/五方向/同宫及全文 #40811024846 **PASS**；V7.7已见旧钟原生比对 #40811024502 **PASS**。首次提交 `01a5de34` 真macOS XcodeGen/Xcode iOS Simulator完整编译、包内200/81/人物/V10.2模板资源 #40810874316 **PASS**；该测试源码和App资源之后未再变，只修复 Important Python漏镜像与旧断言，故该实测构建与最终运行代码同版（但无需假称修复SHA另跑过Xcode）。
 - 清理后核验的仍是冻结V8数值与V10.2实际生成断词逐字一致，不是签名真机或医学有效性。用户端此前安装的App需要重新编译更新才会看见旧标题及假未验收文案被清理。
+
+## 最后一次旧用语扫尾与逐项真测
+在清理后重新扫正式源代码时，另外找到 `src/wengua/health_palace_detailed_vnext.py:render_complete_selected_palace` 的**非compact历史路径**仍可能拼「全部因素推断后，此宫为」；按用户“不要留旧文字”将该唯一旧表达换成现行「宫象」，没有改变 score 或实际V10.2 customer macro。源码及 `Important/python/reading/health_palace_detailed_vnext.py` 同步，更新MANIFEST，提交 `245daf8caef5a6d478ae838958235dc9606a2ece`；新主CI增加严格无旧字样回归。
+对这个最新实际源SHA的真实Python3.11/3.12主CI #40811469690 PASS、V8核心原生Swift和Python严格数据/中文比对 #40811469615 PASS、固定V7.7旧盘原生比对 #40811469635 PASS。另有非现行V7.4旧工作流 #40811469688 FAIL（历史期望旧阶段断词结构）和V-next旧preview #40811469642 FAIL（硬编码旧标题「起盘总纲：五不遇时、伏吟、反吟」，现行标题「时局总纲」），不为通过旧测试恢复废弃文字或改V8数值。两条失败按Actions保存。对应正式App源在前一提交实际Xcode Simulator #40810874316 PASS；这一步只变Python非compact历史句，未变iOS源码/包内App资源。
