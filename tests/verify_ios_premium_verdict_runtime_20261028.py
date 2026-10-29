@@ -73,8 +73,8 @@ func checkReading(_ text:String,_ expected:String?) {
             guard let caption=WenguaHealthGradeCaption.forGrade(expected) else {
                 fatalError("known ten-level grade not represented")
             }
-            guard caption.category == (expected.hasSuffix("吉") ? "吉局" :
-                                      expected.hasSuffix("凶") ? "凶局" : "微恙") else {
+            guard caption.category == (expected == "不凶不吉" ? "微恙" :
+                                      expected.hasSuffix("吉") ? "吉局" : "凶局") else {
                 fatalError("wrong category")
             }
         }
