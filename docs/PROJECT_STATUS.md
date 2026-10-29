@@ -2048,3 +2048,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · PyCharm Node 缺失已产生可下载Python修复，未做macOS实装
 用户直接执行Wengua_BigFish_518400.py报 `RuntimeError: 缺少 node`，只卡在首次源码/TS依赖安装之前。当前单.py会话交付SHA256 `0ad19eeb969564f134cda29fda61591f2e4c7ca362d4fa088122f88fadb4dd0f`，`AUTO_INSTALL_NODE=True` 时优先复用已有Node/npm，再下载官方macOS LTS、按官网SHASUMS256校验、无sudo安全安装本项目toolchain/node_runtime，并按原固定commit校验BigFish/Wengua与V8资源，不删已有输出。单测13/13、py_compile、ZIP CRC实测PASS；官方版本索引和tar安装为Mock fixture，**未在此容器或用户Mac完成官网真实安装或真实518400计算、Swift/Xcode原生验收**。源码通过聊天附件交付，仓库只提交相应审计交接，不误称已将整份 Python 大文件提交。详见 `docs/BIGFISH_PYCHARM_NODE_LTS_BOOTSTRAP_20261029.md`。
+
+
+### 2026-10-29 · macOS python.org 3.11 HTTPS 证书链失败安全修复
+用户再发真实Traceback：PyCharm venv在首次无Node自动下载官方index.json前 TLS 证书链报 `unable to get local issuer certificate`，未运行计算循环。立即操作 `open "/Applications/Python 3.11/Install Certificates.command"`，或下载替换同名完整Python：SHA256 `00033472598f2b5f49e54823c9acc95b817e0e6b6bd5f0a2e45f30694895ece8`；新版自动优先用certifi可信CA与系统keychain根CA安全构建context，严禁关闭SSL。20/20本地隔离测试通过，xlsx/SQLite/Node模拟SHA/TLS校验均有覆盖；ZIP `Wengua_BigFish_518400_SSL证书修复_20261029.zip` CRC正常，SHA256 `27e9549175cb3568c310ae8f7f57335ec076148854aeb2df87252576ac16b480`。**不是用户本机安装或真实518400通过**；此轮没有改Swift/冻结V8源/Important双镜像/MANIFEST。详细审计 docs/BIGFISH_MAC_PYCHARM_SSL_CERT_VERIFY_20261029.md。
