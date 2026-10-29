@@ -1,0 +1,96 @@
+name: Verify all 1080 distinct physical Zhuanpan boards and 81/void/horse/formation facts
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify_1080_physical_atlas_20261029.yml'
+      - 'scripts/verify_full_physical_atlas_1080_20261029.py'
+      - 'src/wengua/casting_shenqi.py'
+      - 'src/wengua/health_81_excel_catalog_vnext.py'
+      - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  all_1080_actual_plates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Generate and independently check 1080 actual full placements plus month-dependent flags
+        id: enumerate
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-1080
+          python -m scripts.verify_full_physical_atlas_1080_20261029 --output /tmp/wengua-1080/atlas.jsonl --report /tmp/wengua-1080/report.json | tee /tmp/wengua-1080/stdout.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/wengua-1080')
+          rows=[json.loads(z) for z in (p/'atlas.jsonl').read_text().splitlines()]
+          report=json.loads((p/'report.json').read_text())
+          assert len(rows)==1080 and report["generated_rows"]==1080
+          assert report["distinct_physical_fingerprints"]==1080
+          assert len({r["base_id"] for r in rows})==1080
+          assert all(len(r["palaces"])==9 and r["palaces"][4]["palace"]==5 for r in rows)
+          assert all(r["physical_only"] and len(r["day_stem_variants"])==2 for r in rows)
+          assert all(len(r["palaces"][0]["void_by_real_month_branch"])==12 for r in rows)
+          print('PHYSICAL_ATLAS_REAL_1080_DISTINCT_PASS')
+          PY
+      - name: Preserve actual atlas and any failure findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wengua-complete-1080-physical-atlas-real-source-audit
+          path: /tmp/wengua-1080/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Preserve immutable PASS or FAIL report in repository
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ "${{ steps.enumerate.outcome }}" = "success" ]; then
+            RESULT=PASS
+          else
+            RESULT=FAIL
+          fi
+          DEST="docs/PHYSICAL_1080_AUDIT_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            echo "# 1080 physical Zhuanpan audit: ${RESULT}"
+            echo
+            echo "Run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
+            echo "Commit: ${GITHUB_SHA}"
+            echo "Separate material facts and month/year/day/role conditions."
+            if [ -f /tmp/wengua-1080/report.json ]; then
+              echo
+              echo '~~~json'
+              cat /tmp/wengua-1080/report.json
+              echo '~~~'
+            fi
+            if [ -f /tmp/wengua-1080/stdout.txt ]; then
+              echo
+              echo '~~~text'
+              tail -n 20 /tmp/wengua-1080/stdout.txt
+              echo '~~~'
+            fi
+          } > "$DEST"
+          if [ "$RESULT" = "PASS" ]; then
+            mkdir -p data/atlas
+            cp /tmp/wengua-1080/atlas.jsonl data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl
+            cp /tmp/wengua-1080/report.json data/atlas/shijia_zhuanpan_physical_1080_audit_v1.json
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$DEST" data/atlas/ 2>/dev/null || git add "$DEST"
+          git commit -m "Archive 1080 physical atlas ${RESULT} and preserve real audit evidence"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then break; fi
+            if [ "$n" = 5 ]; then exit 1; fi
+          done
+      - name: Fail workflow when real enumerator failed
+        if: steps.enumerate.outcome != 'success'
+        run: exit 1
