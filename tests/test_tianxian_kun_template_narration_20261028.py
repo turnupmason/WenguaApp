@@ -30,7 +30,7 @@ def macro_facts(*,tianxian,fuyin=False,fanyin=False):
 class TianxianTemplateActualRoute(unittest.TestCase):
     def test_customer_phrase_is_selected_from_editable_template(self):
         j=template()
-        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup")
+        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_v10_2_evidence_first")
         normal=render_first_stage_macro(macro_facts(tianxian=True))
         slow=render_first_stage_macro(macro_facts(tianxian=True,fuyin=True))
         absent=render_first_stage_macro(macro_facts(tianxian=False,fuyin=True))
@@ -50,9 +50,13 @@ class TianxianTemplateActualRoute(unittest.TestCase):
         for slot in ("tianxian_regular","tianxian_fuyin",
                      "tianxian_evidence_regular","tianxian_evidence_fuyin"):
             self.assertTrue(render(slot))
-            self.assertIn('"'+slot+'"',swift)
-            self.assertIn('"'+slot+'"',py if "evidence" in slot else
-                          (ROOT/"src/wengua/health_macro_facts_vnext.py").read_text())
+            if "evidence" not in slot:
+                self.assertIn('"'+slot+'"',swift)
+                self.assertIn('"'+slot+'"',(ROOT/"src/wengua/health_macro_facts_vnext.py").read_text())
+            else:
+                # Historical second-copy text retained but not shown twice.
+                self.assertNotIn('render_slot("'+slot+'")',py)
+                self.assertNotIn('phrase("'+slot+'")',swift)
             self.assertNotRegex(render(slot),r"\+2|\+4|1\.5|半分|源格|矩阵")
         self.assertIn('fullMacro(chart,review,macros:macros)',swift)
         self.assertNotIn("整盘得吉时扶助",py)

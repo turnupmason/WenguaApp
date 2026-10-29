@@ -42,6 +42,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_tianxian_tianqin_host_20261028.py' -v
       - name: Confirm friend direct proxy and concise actual V8 same-clock customer text
         run: python -m unittest discover -s tests -p 'test_health_v80_concise_friend_20261028.py' -v
+      - name: V10.2 decisive facts concise verdict regression
+        run: python -m unittest discover -s tests -p 'test_health_v102_summary_20261028.py' -v
       - name: V10.1 true-symbol prose dedup regression
         run: python -m unittest discover -s tests -p 'test_health_v101_cohost_customer_20261028.py' -v
       - name: User-approved Tianxian/Fuyin and permanent Kun narrated from one editable template

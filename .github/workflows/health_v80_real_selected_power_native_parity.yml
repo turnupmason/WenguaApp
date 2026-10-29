@@ -14,6 +14,7 @@ on:
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'tests/test_health_v79_independent_cohost_matrix_20261027.py'
       - 'tests/test_health_20261028_1344_two_person_audit.py'
+      - 'tests/test_health_v102_summary_20261028.py'
       - 'scripts/ios_v80_same_clock_neutral_parity_20261028.py'
       - 'Important/MANIFEST.json'
   workflow_dispatch:
@@ -115,7 +116,7 @@ jobs:
           for section in native["sections"]:
               print("WIFE_V10_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
           PY
-      - name: Five genuinely NEW V10.1 random father self self daughter friend native strict parity
+      - name: V10.2 same-clock father self self daughter friend full-text parity
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -248,8 +249,8 @@ jobs:
               for line in (root/'v101_five_swift.log').read_text().splitlines()
               if 'VNEXT_IOS_PYEXACT=' in line]
           assert len(five_native)==5
-          out+=['','## V10.1 五份全新随机时辰：父亲、本人、本人、女儿、朋友',
-                '种子202610282259，只取首次技术有效时辰，不按吉凶筛选。']
+          out+=['','## V10.2 已见五个真实时辰的新版客户全文回归：父亲、本人、本人、女儿、朋友',
+                '种子202610282259，原V10.1盘用于同钟软件回归，不能冒充新的未见案例；V10.2词模板重新实算。']
           for i,(c,s) in enumerate(zip(five['cases'],five_native),1):
               assert c['source_sections']==s['sections']
               out+=['',f'### 新盘{i} · '+c['relationship'],'实际时辰：'+c['instant'],

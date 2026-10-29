@@ -387,101 +387,75 @@ enum WenguaPythonVNextVerbatim {
                 "extra_illness":extra,"role_relation":relationText,
                 "gender_note":genderNote]))
         }
-        // Qian and Kun remain full source facts in internal audit; the
-        // patient's selected sex already uses one real gender palace once.
-        // V7.3: a dynamic two-sentence account of THIS chart, never a
-        // hardcoded success case or duplicated real-person/palace score.
-        let summaryTitles:[String:String]=[
-            "illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
-            "patient":"患者用神","hour":"时干事体","chief":"值符",
-            "natal":"患者年命","gender":"长辈辅助宫"]
-        var desc:[String]=[]
-        let directions:[String:String]=[
-            "克":"克病宫","生":"生扶病宫","被克":"受病宫克",
-            "被生":"受病宫生","比和":"与病宫比和","同宫":"与病宫同宫"]
-        var seenPalaces:[Int:String]=[:]
-        // Real symbol aliases retain role identities but share one strength/direction narration.
-        var seenSignifiers:Set<String>=[]
-        for key in ["illness","doctor","medicine","patient",
-                    "hour","chief","natal","gender"] {
-            guard let pid=review.roles[key],let p=cells[pid] else{continue}
-            let quality=signed(review.roleScores[key])
-            let name=key=="gender" ? (pid==2 ? "长辈坤宫":"长辈乾宫") :
-                        (summaryTitles[key] ?? key)
-            let state=review.palaces[pid]?.void ?? "not_void"
-            var head:String
-            let symbol=review.roleEnergy[key]?.symbol ?? "未核"
-            let power=review.roleEnergy[key]?.strength ?? "待核"
-            let suffix=try phrase("selected_role_summary",[
-                "symbol":symbol,"strength":power
-            ])
-            let signifier=String(pid)+":"+symbol
-            let repeatedSignifier=seenSignifiers.contains(signifier)
-            if let existing=seenPalaces[pid] {
-                head=name+"与"+existing+"同在"+label(p)
-                if !repeatedSignifier {head+=suffix}
-            } else {
-                head=name+"落"+label(p)+"，宫象"+quality+suffix
-                if state != "not_void" && key != "chief" {
-                    head+="且逢"+(state=="true_void" ? "真空":"假空")
-                }
-                seenPalaces[pid]=name
+        // V10.2: condensed actual evidence, no per-role palace ledger repeated.
+        func conciseRelation(_ key:String)->String {
+            guard let edge=review.controls.first(where:{$0.role==key}) else {
+                return "关系待核"
             }
-            if repeatedSignifier {
-                desc.append(head)
-                continue
+            if edge.direction=="克" {
+                let pid=review.roles[key] ?? -1
+                let eligible=["strong","limited"].contains(edge.applicability)
+                let points=eligible ? review.controlBonusPoints[pid] : nil
+                if points==5 {return "制病有象，病宫逢空"}
+                if points==3 {return "有力制病"}
+                if points==1 {return "克病力受限"}
+                if edge.applicability=="failed" {return "克病未成"}
+                return "虽克病，效力未明"
             }
-            seenSignifiers.insert(signifier)
-            // Same physical palace is described only once, while every
-            // different selected cohost keeps its OWN real source strength
-            // and control result in the two-sentence customer template.
-            if key != "illness" {
-                let edge=review.controls.first(where:{$0.role==key})
-                let direction=edge?.direction
-                if let direction,let note=directions[direction] {
-                    head+="，"+note
-                }
-                if direction=="克" {
-                    let qualified=["strong","limited"].contains(
-                        edge?.applicability ?? "")
-                    let point=qualified ? review.controlBonusPoints[pid] : nil
-                    if point==5 {
-                        head+="，病宫又逢空，受制更易"
-                    } else if point==3 {
-                        head+="，该用神有力制病"
-                    } else if point==1 {
-                        head+="，该用神施力受空或宫克限制，仅存余气"
-                    } else if edge?.applicability=="failed" {
-                        head+="，该用神实际克制未成"
-                    } else {
-                        head+="，制病能否成势未明"
-                    }
-                } else if key=="chief" && state != "not_void" {
-                    head+="，逢空护持减弱，不能据此断已经制病"
-                }
-            }
-            desc.append(head)
+            return ["被克":"受病宫克","生":"生扶病宫",
+                    "被生":"受病宫生","比和":"与病宫比和",
+                    "同宫":"与病宫同宫"][edge.direction] ?? "关系待核"
         }
+        guard let illID=review.roles["illness"],
+              let patientID=review.roles["patient"],
+              let medicineID=review.roles["medicine"],
+              let illnessCell=cells[illID],
+              let patientCell=cells[patientID] else {
+            throw WenguaNativeReadingError.missingRole
+        }
+        var illnessText="在"+label(illnessCell)+
+            "，势"+(review.roleEnergy["illness"]?.strength ?? "待核")+
+            "，宫象"+signed(review.roleScores["illness"])
+        let illVoid=review.palaces[illID]?.void ?? "not_void"
+        if illVoid != "not_void" {
+            illnessText+="，逢"+(illVoid=="true_void" ? "真空":"假空")
+        }
+        let patientSymbol=review.roleEnergy["patient"]?.symbol ?? "未核"
+        var patientText=patientSymbol+"在"+label(patientCell)+
+            "，宫象"+signed(review.roleScores["patient"])
+        let patientVoid=review.palaces[patientID]?.void ?? "not_void"
+        if patientVoid != "not_void" {
+            patientText+="，逢"+(patientVoid=="true_void" ? "真空":"假空")
+        }
+        if !(patientID==medicineID &&
+             patientSymbol==(review.roleEnergy["medicine"]?.symbol ?? "")) {
+            patientText+="，"+conciseRelation("patient")
+        }
+        var medicine:[String]=[]
+        for (key,name) in [("doctor","天心"),("medicine","乙奇")] {
+            medicine.append(name+"势"+
+                (review.roleEnergy[key]?.strength ?? "待核")+
+                "，"+conciseRelation(key))
+        }
+        var extra:[String]=[]
         if !review.drainBonusPalaces.isEmpty {
-            desc.append("病星势弱而外泄，病气有耗损之象")
+            extra.append("病星外泄，病气受耗")
         }
-        desc+=review.auspiceBonusNotes.map{
+        extra+=review.auspiceBonusNotes.map{
             $0.trimmingCharacters(in:CharacterSet(charactersIn:"。"))
         }
-        if review.firstMacroFiveNot {desc.insert(try phrase("summary_five_customer"),at:0)}
-        let macroProse=try fullMacro(chart,review,macros:macros)
-        if review.tianxianHour {
-            let key=macroProse.contains("伏吟主慢")
-                ? "tianxian_evidence_fuyin" : "tianxian_evidence_regular"
-            desc.insert(try phrase(key),at:0)
+        if let chiefID=review.roles["chief"],
+           review.palaces[chiefID]?.void != "not_void" {
+            extra.append("值符逢空，护持受限")
         }
-        let pace=macroProse.contains("缓急须看用神") ?
-            "伏吟反吟并见，缓急合参" :
-            macroProse.contains("伏吟主慢") ? "伏吟主慢" :
-            macroProse.contains("反吟主快") ? "反吟主快" :
-            "无整盘伏吟反吟，缓急另核"
-        desc.insert(pace,at:0)
-        let evidence=desc.joined(separator:"；")
+        var uniqueExtra:[String]=[]
+        for item in extra where !uniqueExtra.contains(item) {
+            uniqueExtra.append(item)
+        }
+        let suffix=uniqueExtra.isEmpty ? "" : "；"+uniqueExtra.joined(separator:"；")
+        let evidence=try phrase("summary_concise",[
+            "illness":illnessText,"patient":patientText,
+            "medical":medicine.joined(separator:"，"),"extra":suffix])
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)

@@ -537,83 +537,56 @@ def selected_health_sections(result,*,actor,chart):
     # Elder-only sex palace was shown/scored as 'gender' if eligible;
     # never infer either palace from the sex of a non-elder.
 
-    # Customer summary v7.3. Exactly two sentences. Every clause is
-    # sourced from THIS chart and source-selected roles, never a fixed example.
+    # V10.2: audience conclusion selects only decisive real facts.
+    # All independent 200/81 evidence stays in the existing role paragraphs.
     q=quant["summary"]
-    desc=[]
-    titles={"illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
-            "patient":"患者用神","hour":"时干事体","chief":"值符",
-            "natal":"患者年命","gender":"长辈辅助宫"}
-    seen_palaces={}
-    # One real symbol can occupy several roles; only its first role narrates its power and direction.
-    seen_signifiers=set()
-    for key in ("illness","doctor","medicine","patient","hour","chief","natal","gender"):
-        if key not in roles:continue
-        row=roles[key]
-        pid=row["palace"]
-        palace=row["complete_palace"]["palace_name"]
-        quality=grade(quant["roles"][key]["palace_score"]["score"])
-        name=(("长辈坤宫" if pid==2 else "长辈乾宫")
-              if key=="gender" else titles[key])
-        void=row["complete_palace"]["void"]["classification"]
-        symbol=row["primary_strength_25"]["symbol"]
-        signifier_power=row["primary_strength_25"].get("strength_label") or "待核"
-        strength_suffix=render_slot("selected_role_summary",
-                                    symbol=symbol,strength=signifier_power)
-        signifier=(pid,symbol)
-        repeated_signifier=signifier in seen_signifiers
-        if pid in seen_palaces:
-            head=name+"与"+seen_palaces[pid]+"同在"+palace
-            if not repeated_signifier:
-                head+=strength_suffix
-        else:
-            head=name+"落"+palace+"，宫象"+quality+strength_suffix
-            if void!="not_void" and key!="chief":
-                head+="且逢"+("真空" if void=="true_void" else "假空")
-            seen_palaces[pid]=name
-        if repeated_signifier:
-            desc.append(head)
-            continue
-        seen_signifiers.add(signifier)
-        # Environment is narrated ONCE, but EVERY distinct selected
-        # signifier gets its own true source-target palace direction and
-        # its own real 200x200 control eligibility, even when co-located.
-        if key!="illness":
-            edge=quant["role_effectiveness_gates"].get(key,{})
-            direction=edge.get("relation")
-            direction_note={"克":"克病宫","生":"生扶病宫",
-                            "被克":"受病宫克","被生":"受病宫生",
-                            "比和":"与病宫比和","同宫":"与病宫同宫"}
-            if direction in direction_note:head+="，"+direction_note[direction]
-            if direction=="克":
-                applied=key in q.get("control_bonus_palaces",{}).get(str(pid),[])
-                point=q.get("control_bonus_points",{}).get(str(pid)) if applied else 0
-                if point==5:
-                    head+="，病宫又逢空，受制更易"
-                elif point==3:
-                    head+="，该用神有力制病"
-                elif point==1:
-                    head+="，该用神施力受空或宫克限制，仅存余气"
-                elif edge.get("control_ability")=="不能":
-                    head+="，该用神实际克制未成"
-                else:
-                    head+="，制病能否成势未明"
-            elif key=="chief" and edge.get("void")!="not_void":
-                head+="，逢空护持减弱，不能据此断已经制病"
-        desc.append(head)
-    if q["drain_bonus_palaces"]:
-        desc.append("病星势弱而外泄，病气有耗损之象")
-    desc.extend(note.rstrip("。") for note in q["auspice_bonus_notes"])
-    if result["first_stage_macro"]["five_not_encounter_triggered"]:
-        desc.insert(0,render_slot("summary_five_customer"))
-    if result["first_stage_macro"].get("tianxian_hour_triggered"):
-        macros=result["first_stage_macro"]
-        desc.insert(0,render_slot(
-            "tianxian_evidence_fuyin"
-            if macros.get("star_fuyin") or macros.get("door_fuyin")
-            else "tianxian_evidence_regular"))
-    desc.insert(0,{"slow":"伏吟主慢","fast":"反吟主快","mixed":"伏吟反吟并见，缓急合参","not_assessed_from_fuyin":"无整盘伏吟反吟，缓急另核"}[result["first_stage_macro"]["tempo"]])
-    evidence="；".join(desc)
+    def concise_relation(key):
+        gate=quant["role_effectiveness_gates"].get(key,{})
+        rel=gate.get("relation")
+        if rel=="克":
+            pid=roles[key]["palace"]
+            applied=key in q.get("control_bonus_palaces",{}).get(str(pid),[])
+            points=q.get("control_bonus_points",{}).get(str(pid)) if applied else None
+            if points==5:return "制病有象，病宫逢空"
+            if points==3:return "有力制病"
+            if points==1:return "克病力受限"
+            if gate.get("control_ability")=="不能":return "克病未成"
+            return "虽克病，效力未明"
+        return {"被克":"受病宫克","生":"生扶病宫",
+                "被生":"受病宫生","比和":"与病宫比和",
+                "同宫":"与病宫同宫"}.get(rel,"关系待核")
+    ill=roles["illness"]
+    ill_text=("在"+ill["complete_palace"]["palace_name"]+
+              "，势"+str(ill["primary_strength_25"].get("strength_label") or "待核")+
+              "，宫象"+grade(quant["roles"]["illness"]["palace_score"]["score"]))
+    ill_void=ill["complete_palace"]["void"]["classification"]
+    if ill_void!="not_void":
+        ill_text+="，逢"+("真空" if ill_void=="true_void" else "假空")
+    patient=roles["patient"]
+    symbol=patient["primary_strength_25"]["symbol"]
+    patient_text=(symbol+"在"+patient["complete_palace"]["palace_name"]+
+                  "，宫象"+grade(quant["roles"]["patient"]["palace_score"]["score"]))
+    patient_void=patient["complete_palace"]["void"]["classification"]
+    if patient_void!="not_void":
+        patient_text+="，逢"+("真空" if patient_void=="true_void" else "假空")
+    med=roles["medicine"]
+    if not (patient["palace"]==med["palace"] and
+            symbol==med["primary_strength_25"]["symbol"]):
+        patient_text+="，"+concise_relation("patient")
+    medicine=[]
+    for key,name in (("doctor","天心"),("medicine","乙奇")):
+        power=roles[key]["primary_strength_25"].get("strength_label") or "待核"
+        medicine.append(name+"势"+str(power)+"，"+concise_relation(key))
+    extra=[]
+    if q.get("drain_bonus_palaces"):extra.append("病星外泄，病气受耗")
+    extra.extend(x.rstrip("。") for x in q.get("auspice_bonus_notes",[]))
+    chief=roles.get("chief")
+    if chief and chief["complete_palace"]["void"]["classification"]!="not_void":
+        extra.append("值符逢空，护持受限")
+    extra_text=("；"+"；".join(dict.fromkeys(extra))) if extra else ""
+    evidence=render_slot("summary_concise",illness=ill_text,
+                         patient=patient_text,medical="，".join(medicine),
+                         extra=extra_text)
     # User-confirmed V8: resolved 0 is neutral; only missing score is pending.
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
