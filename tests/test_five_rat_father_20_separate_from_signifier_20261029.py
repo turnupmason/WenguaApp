@@ -65,7 +65,7 @@ class UploadedFather20FiveRatRegression(unittest.TestCase):
         # 21:00–23:00 is still 甲子日的乙亥时. Boundary happens AFTER 亥时.
         self.assertEqual(hour_ganzhi_from_day("甲", "亥"), "乙亥")
         self.assertEqual(hour_ganzhi_from_day("乙", "子"), "丙子")
-        self.assertEqual(cycle60()[:2], ["甲子", "乙丑"])
+        self.assertEqual(cycle60()[:2], ("甲子", "乙丑"))
 
     def test_jiazi_hour_and_jiaxu_hour_do_not_prove_jia_year_patient(self):
         # This fact guards against confusing 甲时遁干 and 父亲问测年干甲.
