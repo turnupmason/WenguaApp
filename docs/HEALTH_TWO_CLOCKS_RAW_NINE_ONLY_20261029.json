@@ -1,0 +1,280 @@
+{
+  "no_scores": true,
+  "no_template": true,
+  "charts": [
+    {
+      "instant": "2026-10-28T06:00:00-04:00",
+      "solar_term": "霜降",
+      "four_pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "乙亥",
+        "hour": "己卯"
+      },
+      "bureau": {
+        "dun": "yin",
+        "ju": 2,
+        "yuan": "lower",
+        "futou": "甲戌",
+        "solar_term": "霜降",
+        "calendar_status": "supplied_solar_term_not_independently_checked"
+      },
+      "palaces": {
+        "1": {
+          "palace": 1,
+          "gua": "坎",
+          "earth_stem": "己",
+          "heaven_stars": [
+            {
+              "star": "天蓬星",
+              "carried_stem": "己"
+            }
+          ],
+          "door": "杜门",
+          "deity": "值符"
+        },
+        "2": {
+          "palace": 2,
+          "gua": "坤",
+          "earth_stem": "戊",
+          "heaven_stars": [
+            {
+              "star": "天芮星",
+              "carried_stem": "戊"
+            },
+            {
+              "star": "天禽星",
+              "carried_stem": "丁"
+            }
+          ],
+          "door": "休门",
+          "deity": "六合"
+        },
+        "3": {
+          "palace": 3,
+          "gua": "震",
+          "earth_stem": "乙",
+          "heaven_stars": [
+            {
+              "star": "天冲星",
+              "carried_stem": "乙"
+            }
+          ],
+          "door": "死门",
+          "deity": "九地"
+        },
+        "4": {
+          "palace": 4,
+          "gua": "巽",
+          "earth_stem": "丙",
+          "heaven_stars": [
+            {
+              "star": "天辅星",
+              "carried_stem": "丙"
+            }
+          ],
+          "door": "惊门",
+          "deity": "玄武"
+        },
+        "5": {
+          "palace": 5,
+          "gua": "中",
+          "earth_stem": "丁",
+          "heaven_stars": [],
+          "door": null,
+          "deity": null
+        },
+        "6": {
+          "palace": 6,
+          "gua": "乾",
+          "earth_stem": "癸",
+          "heaven_stars": [
+            {
+              "star": "天心星",
+              "carried_stem": "癸"
+            }
+          ],
+          "door": "伤门",
+          "deity": "螣蛇"
+        },
+        "7": {
+          "palace": 7,
+          "gua": "兑",
+          "earth_stem": "壬",
+          "heaven_stars": [
+            {
+              "star": "天柱星",
+              "carried_stem": "壬"
+            }
+          ],
+          "door": "生门",
+          "deity": "太阴"
+        },
+        "8": {
+          "palace": 8,
+          "gua": "艮",
+          "earth_stem": "辛",
+          "heaven_stars": [
+            {
+              "star": "天任星",
+              "carried_stem": "辛"
+            }
+          ],
+          "door": "景门",
+          "deity": "九天"
+        },
+        "9": {
+          "palace": 9,
+          "gua": "离",
+          "earth_stem": "庚",
+          "heaven_stars": [
+            {
+              "star": "天英星",
+              "carried_stem": "庚"
+            }
+          ],
+          "door": "开门",
+          "deity": "白虎"
+        }
+      },
+      "xun_shou": "甲戌"
+    },
+    {
+      "instant": "2026-10-28T10:00:00-04:00",
+      "solar_term": "霜降",
+      "four_pillars": {
+        "year": "丙午",
+        "month": "戊戌",
+        "day": "乙亥",
+        "hour": "辛巳"
+      },
+      "bureau": {
+        "dun": "yin",
+        "ju": 2,
+        "yuan": "lower",
+        "futou": "甲戌",
+        "solar_term": "霜降",
+        "calendar_status": "supplied_solar_term_not_independently_checked"
+      },
+      "palaces": {
+        "1": {
+          "palace": 1,
+          "gua": "坎",
+          "earth_stem": "己",
+          "heaven_stars": [
+            {
+              "star": "天心星",
+              "carried_stem": "癸"
+            }
+          ],
+          "door": "惊门",
+          "deity": "螣蛇"
+        },
+        "2": {
+          "palace": 2,
+          "gua": "坤",
+          "earth_stem": "戊",
+          "heaven_stars": [
+            {
+              "star": "天英星",
+              "carried_stem": "庚"
+            }
+          ],
+          "door": "杜门",
+          "deity": "白虎"
+        },
+        "3": {
+          "palace": 3,
+          "gua": "震",
+          "earth_stem": "乙",
+          "heaven_stars": [
+            {
+              "star": "天任星",
+              "carried_stem": "辛"
+            }
+          ],
+          "door": "休门",
+          "deity": "九天"
+        },
+        "4": {
+          "palace": 4,
+          "gua": "巽",
+          "earth_stem": "丙",
+          "heaven_stars": [
+            {
+              "star": "天冲星",
+              "carried_stem": "乙"
+            }
+          ],
+          "door": "生门",
+          "deity": "九地"
+        },
+        "5": {
+          "palace": 5,
+          "gua": "中",
+          "earth_stem": "丁",
+          "heaven_stars": [],
+          "door": null,
+          "deity": null
+        },
+        "6": {
+          "palace": 6,
+          "gua": "乾",
+          "earth_stem": "癸",
+          "heaven_stars": [
+            {
+              "star": "天柱星",
+              "carried_stem": "壬"
+            }
+          ],
+          "door": "死门",
+          "deity": "太阴"
+        },
+        "7": {
+          "palace": 7,
+          "gua": "兑",
+          "earth_stem": "壬",
+          "heaven_stars": [
+            {
+              "star": "天芮星",
+              "carried_stem": "戊"
+            },
+            {
+              "star": "天禽星",
+              "carried_stem": "丁"
+            }
+          ],
+          "door": "景门",
+          "deity": "六合"
+        },
+        "8": {
+          "palace": 8,
+          "gua": "艮",
+          "earth_stem": "辛",
+          "heaven_stars": [
+            {
+              "star": "天蓬星",
+              "carried_stem": "己"
+            }
+          ],
+          "door": "开门",
+          "deity": "值符"
+        },
+        "9": {
+          "palace": 9,
+          "gua": "离",
+          "earth_stem": "庚",
+          "heaven_stars": [
+            {
+              "star": "天辅星",
+              "carried_stem": "丙"
+            }
+          ],
+          "door": "伤门",
+          "deity": "玄武"
+        }
+      },
+      "xun_shou": "甲戌"
+    }
+  ]
+}
