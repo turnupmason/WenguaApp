@@ -90,6 +90,18 @@ jobs:
               "rejected":rejected,"cases":cases},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
           assert len(cases)==9
           PY
+          python3 - <<'PY'
+          from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+          r=auto_cast_health_review_text(
+              iso="2014-12-06T05:00:00-05:00",timezone_name="America/New_York",
+              inquiry={"intent":"severity","relationship":"father",
+                       "consultation_context":"direct_proxy"})
+          q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+          print("SIXJIA_2014_QIAN_PY_AUSPICE",q["summary"]["auspice_cohost_audit"],q["summary"]["auspice_bonus_notes"],flush=True)
+          sel=r["full_health_role_strength_network"]["nodes"]
+          print("SIXJIA_2014_QIAN_PY_ROLES",{k:{"palace":v["palace"],"symbol":v.get("symbol")}
+                   for k,v in sel.items()},flush=True)
+          PY
           /tmp/wengua-v80/native /tmp/wengua-v80/all_real_six_jia.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/all_real_six_jia_swift.log 2> /tmp/wengua-v80/all_real_six_jia_stderr.log
           python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/all_real_six_jia.json /tmp/wengua-v80/all_real_six_jia_swift.log /tmp/wengua-v80/all_real_six_jia_parity.md
           grep 'VERDICT: PASS' /tmp/wengua-v80/all_real_six_jia_parity.md
