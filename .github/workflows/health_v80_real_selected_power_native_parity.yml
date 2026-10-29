@@ -69,6 +69,52 @@ jobs:
               print("FRIEND_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
           print("RANDOM_FRIEND_SWIFT_EXACT_PASS",found[0]["instant"])
           PY
+      - name: One NEW seeded random wife hour, V10 source and native strict parity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          batch=generator.produce(seed=202610282003,count=1,wife_only=True)
+          assert len(batch["cases"])==1
+          c=batch["cases"][0]
+          assert c["relationship"]=="妻子" and c["patient_sex"]=="female"
+          assert c["context"]=="direct_proxy"
+          assert c["roles"]["patient"]["palace"]==c["roles"]["medicine"]["palace"], "wife must bind real Yi, not asker day stem"
+          assert "natal" not in c["roles"] and c["auxiliaries"]=={}, "no invented natal/Kun auxiliary"
+          assert c["source_sections"] and c["python_reading_text"]
+          for banned in ("古文：","古诀大意：","天地盘取象：","各实际参与实宫均减两分","按用户规则","矩阵限制"):
+              assert banned not in c["python_reading_text"], "V10 customer text leak: "+banned
+          Path("/tmp/wengua-v80/wife_v10_new_random.json").write_text(
+              json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          print("RANDOM_WIFE_V10_DRAW="+json.dumps({
+              "seed":batch["seed"],"instant":c["instant"],
+              "four_pillars":c["four_pillars"],"bureau":c["bureau"],
+              "patient_main":"乙","patient_palace":c["roles"]["patient"]["palace"],
+              "medicine_palace":c["roles"]["medicine"]["palace"],
+              "score":c["summary"]["score"],
+              "technical_rejections":batch["rejected"]
+          },ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/wife_v10_new_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/wife_v10_swift.log 2> /tmp/wengua-v80/wife_v10_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/wife_v10_new_random.json /tmp/wengua-v80/wife_v10_swift.log /tmp/wengua-v80/wife_v10_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/wengua-v80")
+          source=json.loads((root/"wife_v10_new_random.json").read_text())["cases"][0]
+          outputs=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (root/"wife_v10_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(outputs)==1
+          native=outputs[0]
+          assert native["instant"]==source["instant"]
+          assert native["sections"]==source["source_sections"], "V10 Python/Swift full text differs"
+          print("WIFE_V10_SWIFT_PYTHON_EXACT_PASS",source["instant"])
+          for section in native["sections"]:
+              print("WIFE_V10_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
+          PY
       - name: Original coworker EXACT pillars; do not resample
         run: |
           set -euo pipefail
@@ -134,6 +180,24 @@ jobs:
           for item in app[0]['sections']:
               out+=['','#### '+item['title'],item['text']]
           out+=['','### Python↔Swift逐字原样结论', (root/'friend_exact_diff.md').read_text()]
+          wife=json.loads((root/'wife_v10_new_random.json').read_text())['cases'][0]
+          wife_native=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+              for line in (root/'wife_v10_swift.log').read_text().splitlines()
+              if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(wife_native)==1 and wife_native[0]['sections']==wife['source_sections']
+          out+=['','## 新随机一时辰 · 妻子（V10原生Swift+Python严格逐字）',
+                '随机种子 202610282003；首次技术有效盘，无吉凶筛选。',
+                '关系妻子，直接代问，真实乙奇为患者主用神；日干五合另参，不补年命、不因女性身份增加坤宫。',
+                '真实时辰：'+wife['instant'],
+                '四柱：'+json.dumps(wife['four_pillars'],ensure_ascii=False),
+                '阳阴遁局：'+json.dumps(wife['bureau'],ensure_ascii=False),
+                '人物与医药主符号共宫：'+str(wife['roles']['patient']['palace']==wife['roles']['medicine']['palace']),
+                '原V8冻结最终档：'+str(wife['summary']['score']),
+                '### 原生Swift完整用户V10断词（无任何编辑）']
+          for item in wife_native[0]['sections']:
+              out+=['','#### '+item['title'],item['text']]
+          out+=['','### 妻子Python↔Swift逐字结论', (root/'wife_v10_exact_diff.md').read_text()]
+
           (root/'two_fixed_clocks_v80.md').write_text('\n'.join(out)+'\n')
           PY
       - name: Preserve all logs and attempted outputs even on failure
