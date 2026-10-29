@@ -2040,3 +2040,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · 518400组合独立Python离线生成器（本轮新优先）
 用户不再需要任何`.command`：下载对话附件 `wengua_518400.py`（SHA256 b761a0705007e2275fa24781788f7271fe4b195b0c7ab3497b7949c3cef99a52），放在 BigFishLocal 已安装 `local_batch.py` 旁，设置 `RELATIONSHIP='father'`，后改 `mother`、`younger_sibling`，运行 `python3 wengua_518400.py` 即单人挂机。总量每人518400年柱60×月支12×日柱60×时支12合法推干**逻辑**组合，不等于每项均真实公历时刻。12个月支各有两个可能实际节气，程序每行做两次BigFish原始TS拆补起盘＋冻结V8/V10.2不同人物证据全文，保留双分支，不能任选一个而假称真盘。BigFish源真实物理1080种缓存、月令/年干/日干/时干逐条重算；按每5000条分CSV和真正Excel XLSX，SQLite断点恢复，失败记录不删，审核候选不自动发布App。源人物JSON目前共22 IDs，实际未知患者年命/生日/性别排行不虚构；修改顶部RELATIONSHIP即可分库存储。代码未提交仓库原文字节（在会话可下载），本仓增加docs/BIGFISH_518400_LOCAL_PYTHON_LOOP_20261029.md交接+源sha。实际Python语法/干支/节气/小规模SQLite+CSV/XLSX、artifact_tool读回PASS；此环境不可Git clone原TS，未做完整跨仓518400实测与Swift Xcode。代码无网络API；初次工具安装另需联网。冻结V8评分、V10.2模版/200/81及Swift/Important MANIFEST均没有修改。
+
+
+### 2026-10-29 · PyCharm 独立518400 Python缺安装已修复（会话交付，尚待用户Mac实测）
+运行PyCharm现象原始 `local_batch.check_install()` 在缺少 `vendor/bigfish` 报 `首次先双击 install.command`，未进入循环。重新生成原文件名可替换的 `Wengua_BigFish_518400.py` SHA256 `7e134f10184611fe4aba2d7784ef3e3fdca9d6bc6de2d5a68ff9d3376065bf55`，PYTHON自动一次性GitHub固定commit/npm TypeScript编译与V8资源SHA验收，无.command；保留原 `local_batch.py`。另外修复 BigFish direct TS `shiJiaGenerate` 的 `chart.yuan` 缺三元（从原 `chaiBuJuByGanZhi` 真实bureau中传递），内嵌研究源校验、第一行双失败即停止；不碰冻结数学与本机历史结果。9 Python隔离单测、py_compile、Node桥语法、ZIP CRC真PASS；**未在此环境完成Mac联网安装/真实518400循环/Swift native或Xcode**。Github本次只更新审计交接文档，未把大Python源推上GitHub，代码通过本次会话附件交付；详情 docs/BIGFISH_518400_PYCHARM_AUTOINSTALL_FIX_20261029.md。
