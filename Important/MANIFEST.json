@@ -13,7 +13,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "8665f8da1549d3c4386a305345af1410496244cd"
+      "sha": "5ba75f9e78bf877cd0da593ceae2cad2a62be494"
     },
     {
       "platform": "python",
@@ -361,7 +361,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "8665f8da1549d3c4386a305345af1410496244cd"
+      "sha": "5ba75f9e78bf877cd0da593ceae2cad2a62be494"
     },
     {
       "platform": "swift",

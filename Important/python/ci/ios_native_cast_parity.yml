@@ -40,6 +40,9 @@ on:
       - 'ios/WenguaAppUI/WenguaDesignPreviewApp.swift'
       - 'ios/WenguaAppUI/project.yml'
       - 'tests/test_ios_native_cast_against_python.py'
+      - 'src/wengua/casting_shenqi.py'
+      - 'tests/test_casting_centre_door_20261029.py'
+      - 'tests/test_ios_centre_value_door_parity_20261029.py'
       - 'tests/test_ios_five_random_live_casts.py'
       - '.github/workflows/ios_native_cast_parity.yml'
   workflow_dispatch:
@@ -61,6 +64,19 @@ jobs:
         run: |
           /tmp/wengua-native ios/WenguaAppUI/GoldenNativeCastCases.json > /tmp/wengua-native-results.json
           python3 tests/test_ios_native_cast_against_python.py /tmp/wengua-native-results.json
+      - name: Real center-valued door counted at 5 -> hosted Kun-2; six actual Yin/Yang hours compare complete Python vs Swift
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-centre-door
+          python3 tests/test_ios_centre_value_door_parity_20261029.py /tmp/wengua-native /tmp/wengua-centre-door
+      - name: Keep real center host source and compiled native output even if failing
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: centre-value-door-kun2-real-six-hours
+          path: /tmp/wengua-centre-door/
+          retention-days: 90
+          if-no-files-found: warn
       - name: Five fresh reproducible random hours - independent source-Python versus offline-Swift complete plate
         run: |
           mkdir -p /tmp/wengua-five
