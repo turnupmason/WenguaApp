@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_offline_editorial_20261029.py'
+      - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - '.github/workflows/bigfish_518400_offline_editorial_20261029.yml'
   workflow_dispatch:
 
@@ -25,3 +26,6 @@ jobs:
         run: python -m py_compile scripts/wengua_bigfish_518400_offline_editorial_20261029.py
       - name: Real SQLite CSV XLSX JSONL no-overwrite/failure tests
         run: python -m unittest discover -s tests -p 'test_bigfish_518400_offline_editorial_20261029.py' -v
+
+      - name: Live pinned Wengua actor source/real chart person and natal verification
+        run: python -m unittest discover -s tests -p 'test_bigfish_518400_role_and_natal_20261029.py' -v
