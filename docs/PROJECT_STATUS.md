@@ -2074,3 +2074,8 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-29 · 本地 BigFish518400角色/年命配置已加强并经真实原TS四案实算
+Mac PyCharm下载 `Wengua_BigFish_518400.py` 最新 SHA256 20c1cd0dd12a59d1a50d157872f50f6117bf6950ce41e90526b7e85937582693，包 `Wengua_BigFish_518400_关系用神与年命校验版.zip` SHA 7303892141d18da9bff78c6fa39279e4c5739d7134984d88c7a90f4ba74e66b9。顶部填真实RELATIONSHIP，按需性别/排行/年龄，有真实患者出生日并核立春后的 **完整出生年干支** 才填PATIENT_BIRTH_GANZHI，否则None。与问测年干独立，已给出生年必须真实落宫且V8调用natal角色，否则只保留失败，不给假完整断词。当前固定profile共22 ID（包括合称/动物），启动从原SHA验源选择，Excel新增10列/JSONL原文锁和第一批打印role_via、符号干、实际患者宫、乾坤辅助与年命宫。不同已知年命/关系条件另建子文件夹而不覆盖旧父亲20条/人工润色。保留暂未核准独立甲干用神的失败记录，不改封存V8。
+Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #40941942424 PASS，原TS BigFish 1080结构＋2时钟＋父亲无/有乙丑年命、母亲乙丑年命、弟弟无年命共4案真实V8/V10.2运行 #40942647716 PASS。首集成CI #40942273256 FAIL为夹具漏原normalize_bigfish，原失败留档、修复夹具后PASS；用户原Mac `local_batch.py` 原版源保存在 `scripts/bigfish_local_batch_reference_20261029.py`。原生Swift实际V8 parity #40942904973 PASS；macOS Xcode项目生成已成功，最新CI #40942917483仍在编译（不能提前称通过）。Xcode完整资源验收及当前主CI待核。详细 docs/BIGFISH_ACTOR_AND_NATAL_PARAMETER_AUDIT_20261029.md。原V8/200/81/V10.2/Swift/Important镜像/MANIFEST均未修改，不声称518400全量实跑或iPhone签名App。
