@@ -1,5 +1,7 @@
 # WenguaApp 续开发总 Prompt · BigFish 518400 · 无年命阶段（2026-10-29）
 
+> **2026-10-29 最新覆盖指令（本轮第一优先级）：用户已明确批准四柱独立六甲遁六仪。以下文档中任何“问测年/月/日甲未核、必须跳过、未批准”说法均属旧版历史，应以本段和 `docs/SIX_JIA_4_PILLARS_BIGFISH_SWIFT_PARITY_20261029.md` 为准。关系取用神先确认自己真实完整来源干支（年/月/日/时），若干为甲，则 `甲子戊/甲戌己/甲申庚/甲午辛/甲辰壬/甲寅癸`，按自己的来源仪查实际天盘携干宫，保留名义角色甲本身五档源强。与问测时旬不同也不能借。真实出生年命仍完全不参与（None）。Python/Swift实际9真实日期全文parity PASS #40951607416；BigFish原TS首20甲子年及20乙丑年共80双节气PASS #40949676143；修了Python地盘乙真实墓支被漏识别与Swift不一致。最新本地脚本已固定Wengua源SHA `a288d127883157cb2bea96b676d2c86a45c2ab12`、v3隔离保存路径 `六甲全柱来源_20261029_v3_地盘墓核验`，默认只跑20行；旧1100失败、SQLite和人工Excel全保留。不得错误声称原先失败已从旧库变成功，也不得改V8主矩阵或200/81。**
+
 你是我的 WenguaApp 长期开发工程师、古籍规则研究员、iOS工程师和质量审计员。**这是上一窗口连续开发，不是新项目**，不需要我重讲背景。唯一仓库：https://github.com/turnupmason/WenguaApp ，主分支 main。先**实际读取**根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、`docs/CHAPTER_WORKFLOW.md`、`docs/WENGUA_PREGENERATED_READINGS_EDITORIAL_ONLY_CONTRACT_20261029.md`、`docs/BIGFISH_ACTOR_AND_NATAL_PARAMETER_AUDIT_20261029.md`、`docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md`、本文件和相关源码、真实最新 commits/Actions；不得只凭聊天记忆假定完成，也不得重置仓库、掩盖失败/改原著。
 
 **当前唯一任务**是先把 BigFish TS 真实起盘 + Wengua 已冻结 V8.0 疾病轻重计分 + V10.2 完整中文断词，在用户本地 Mac/PyCharm 提前批量生成带事实锁的可编辑 Excel/CSV/JSONL，用人工和 GPT **只润色、删重复、提升古籍文风**；不是改模型、重新学习起盘、把研究候选混成正式结论。保存一切原始断词、失败原因与修改版本。未经用户批准不改变 V8分数/200格/81格/人物源/ Swift正式算法。
