@@ -24,3 +24,9 @@ Mac替换本仓脚本后可暂设 `RELATIONSHIP='father'`, `MAX_NEW_ROWS=20`, `P
 ## 扩展真实集成CI质量门槛（独立于模拟单测）
 
 新增 `scripts/verify_bigfish_first_supported_20_20261029.py`，沿用现有 `scripts/verify_bigfish_actor_natal_real_20261029.load_adapter`，在GitHub Actions中实际下载固定上游BigFish原TS/编译后对**乙丑年第一20个抽象场景（原全局idx=8640..8659）的立春/雨水两分支共40份**逐一跑真实V8/V10.2。必须断词非空、父亲主源年干乙、乾6、无年命、V8角色宫一致；任何失败立即真实 FAIL 而不是把Mock当Pass。此测试不把无真实公历的条件组合称为现实起盘，也不覆盖用户现有1100旧档。结果要等实际CI真实日志后才可称PASS。
+
+## 真实BigFish TS × 冻结V8/V10.2 二节气首20案例正式验收（后续实测，不覆盖前述“待跑”历史）
+
+GitHub Actions **#40946953850 PASS**：https://github.com/turnupmason/WenguaApp/actions/runs/40946953850 ，真实固定上游 `6112b393...` clone+原TS5.8.3编译；真实1080物理盘结构、2真实时钟、历史4人物/年命专项全部PASS，并新增**全球序号8641..8660（乙丑年/戊寅月）、立春/雨水20×2=40个原TS盘→V8.0原始评分→V10.2完整中文**真正执行成功。日志40次 `REAL_BIGFISH_20_FATHER_NO_NATAL_PASS` 和 `TOTAL_REAL_BIGFISH_FIRST_SUPPORTED=40`，每条检查父亲取问测年干乙、真选宫/乾6、无年命、文本非空、完整章节及原文SHA。测试不把抽象条件组合认作已核真实公历时刻，不代表对旧年甲的修复，也不替代用户Mac首次运行与本地完整518400。
+
+同轮新批量CSV/XLSX/JSONL回归+1100已知甲前置防护 **#40946686491 PASS**，主V8 CI **#40946686530 PASS**，Python/Swift native parity **#40946686586 PASS**；最后Xcode #40946686565实际终态应独立查询，未决不冒称PASS。新变更只在研究批量调度/导出、测试和交接文档，无冻结数学/正式iOS改动。
