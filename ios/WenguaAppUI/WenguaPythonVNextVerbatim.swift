@@ -413,16 +413,13 @@ enum WenguaPythonVNextVerbatim {
               let patientCell=cells[patientID] else {
             throw WenguaNativeReadingError.missingRole
         }
-        var illnessText="在"+label(illnessCell)+
-            "，势"+(review.roleEnergy["illness"]?.strength ?? "待核")+
-            "，宫象"+signed(review.roleScores["illness"])
+        var illnessText="在"+label(illnessCell)+"，势"+(review.roleEnergy["illness"]?.strength ?? "待核")+"，宫象"+signed(review.roleScores["illness"])
         let illVoid=review.palaces[illID]?.void ?? "not_void"
         if illVoid != "not_void" {
             illnessText+="，逢"+(illVoid=="true_void" ? "真空":"假空")
         }
         let patientSymbol=review.roleEnergy["patient"]?.symbol ?? "未核"
-        var patientText=patientSymbol+"在"+label(patientCell)+
-            "，宫象"+signed(review.roleScores["patient"])
+        var patientText=patientSymbol+"在"+label(patientCell)+"，宫象"+signed(review.roleScores["patient"])
         let patientVoid=review.palaces[patientID]?.void ?? "not_void"
         if patientVoid != "not_void" {
             patientText+="，逢"+(patientVoid=="true_void" ? "真空":"假空")
@@ -433,9 +430,7 @@ enum WenguaPythonVNextVerbatim {
         }
         var medicine:[String]=[]
         for (key,name) in [("doctor","天心"),("medicine","乙奇")] {
-            medicine.append(name+"势"+
-                (review.roleEnergy[key]?.strength ?? "待核")+
-                "，"+conciseRelation(key))
+            medicine.append(name+"势"+(review.roleEnergy[key]?.strength ?? "待核")+"，"+conciseRelation(key))
         }
         var extra:[String]=[]
         if !review.drainBonusPalaces.isEmpty {
