@@ -60,6 +60,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
       - name: Twelve manually pending prewritten prose candidates obey frozen score map
         run: python -m unittest discover -s tests -p 'test_health_v80_twelve_prewrite_guard_20261029.py' -v
+      - name: GPT editorial V1 1080-index and 12 real-fact immutability guard
+        run: python -m unittest discover -s tests -p 'test_health_editorial_batch_v1_20261029.py' -v
       - name: Existing database schema and 1080 index smoke
         run: |
           set -euo pipefail
