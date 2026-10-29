@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Complete Yin/Yang 9 bureaus x 60 hours center-door host source invariants
+        run: python -m unittest discover -s tests -p 'test_casting_centre_door_20261029.py' -v
       - name: Current V8.0 original 5x5 power and 72 cohost rules
         run: python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
       - name: All eight role complete environments, pairs, triples and palace restrictions

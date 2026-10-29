@@ -116,11 +116,16 @@ class OriginalChapterTests(unittest.TestCase):
             layout_from_explicit_bureau(dun="yin",ju=8,hour_ganzhi="fake")
         with self.assertRaises(ValueError):
             hour_branch_from_wall_clock(24)
-    def test_middle_door_placement_is_blocked_until_method_resolved(self):
-        # At 戊辰 hour, 甲子旬's value door reaches palace 5 for 阳1.
-        # Avoid assuming that a door may sit in the unhosted centre.
-        with self.assertRaisesRegex(ValueError,"centre 5"):
-            layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
+    def test_middle_door_counts_to_five_then_hosts_kun_two(self):
+        # 阳1,甲子旬,戊辰: 一宫顺走四时数到五，门寄坤二。
+        for dun,ju,hour in (("yang",1,"戊辰"),
+                            ("yin",1,"己巳"),
+                            ("yang",2,"丁卯")):
+            actual=layout_from_explicit_bureau(dun=dun,ju=ju,hour_ganzhi=hour)
+            self.assertEqual(actual["value_door"],"休门" if ju==1 else "死门")
+            self.assertEqual(actual["value_door_palace"],2)
+            self.assertEqual(actual["palaces"]["2"]["door"],actual["value_door"])
+            self.assertIsNone(actual["palaces"]["5"]["door"])
 
 if __name__=="__main__":
     unittest.main()

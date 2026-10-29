@@ -218,11 +218,13 @@
       "precondition": "xun-head palace and hours since Jia",
       "operation": "From xun-head palace, count hourly 1..9 forward in Yang or backward in Yin.",
       "implemented": true,
-      "exception": "target palace 5 currently blocked instead of assuming center host",
+      "exception": "If the timed value door counts into middle 5, place it at Kun-2 host; leave center free of ordinary door",
       "kind": "casting_procedure",
       "source_book": "shenqi",
       "source_section": "shijia_qiju",
-      "status": "source_extracted_not_final_professional_approved"
+      "status": "source_extracted_not_final_professional_approved",
+      "implementation_revision": "2026-10-29 verified Zhuanpan variant continuation; ancient chapter source lines retained, variant scope audited separately",
+      "implementation_reference": "docs/CASTING_CENTRE_VALUE_DOOR_KUN2_FIX_20261029.md"
     },
     {
       "id": "P14",
@@ -237,11 +239,13 @@
       "precondition": "value door target and original door host",
       "operation": "Rotate remaining seven doors preserving clockwise ring order.",
       "implemented": true,
-      "exception": "target 5 blocked",
+      "exception": "If the timed value door counts into middle 5, place it at Kun-2 host; leave center free of ordinary door",
       "kind": "casting_procedure",
       "source_book": "shenqi",
       "source_section": "shijia_qiju",
-      "status": "source_extracted_not_final_professional_approved"
+      "status": "source_extracted_not_final_professional_approved",
+      "implementation_revision": "2026-10-29 verified Zhuanpan variant continuation; ancient chapter source lines retained, variant scope audited separately",
+      "implementation_reference": "docs/CASTING_CENTRE_VALUE_DOOR_KUN2_FIX_20261029.md"
     },
     {
       "id": "P15",

@@ -4,11 +4,11 @@ import Foundation
 // Reference: src/wengua/astro_calendar.py (Meeus/NOAA approximation) and
 //            src/wengua/casting_shenqi.py (original Shenqi zhuanpan).
 // The model rejects uncertain Jie boundaries (<0.05 degree), 23:00 boundary,
-// unproven centre-door hosting and outside 1850...2150. Never "best guess".
+// outside 1850...2150. Never "best guess".
 // No patient prognosis, model V4 scores, cloud calls or fabricated symbols.
 
 enum WenguaCastError: Error, LocalizedError {
-    case invalidTimezone, outOfRange, lateZi, termBoundary, noBureau, centreDoor, invalidChart
+    case invalidTimezone, outOfRange, lateZi, termBoundary, noBureau, invalidChart
     var errorDescription: String? {
         switch self {
         case .invalidTimezone: return "需要有效的 IANA 时区"
@@ -16,7 +16,6 @@ enum WenguaCastError: Error, LocalizedError {
         case .lateZi: return "23点子初换日流派未校定，拒绝直接起盘"
         case .termBoundary: return "距节气交界过近，本地近似历算精度不足，请勿硬排"
         case .noBureau: return "节气／符头／遁局无法按原书规则确定"
-        case .centreDoor: return "值使门行至中五，除已校验例外外尚无可靠寄宫规则"
         case .invalidChart: return "实际九宫结构内部计算不完整"
         }
     }
@@ -266,11 +265,12 @@ enum WenguaNativeCore {
             throw WenguaCastError.invalidChart
         }
         let starTarget = timeEarth==5 ? 2 : timeEarth
-        var doorTarget=mod(src-1+steps*dir,9)+1
-        if doorTarget==5 {
-            if src==5 && steps==0 && timeEarth==5 {doorTarget=host}
-            else {throw WenguaCastError.centreDoor}
-        }
+        // 时家转盘值使随时辰过九宫：当数到中五，门盘寄坤二。
+        // Count the actual nine-palace progression FIRST, then place
+        // the door in its Kun-2 host; all eight outer doors rotate once.
+        // Middle five retains no ordinary door, star or deity.
+        let countedDoorTarget=mod(src-1+steps*dir,9)+1
+        let doorTarget=countedDoorTarget==5 ? 2 : countedDoorTarget
         func rotate(from: Int,to:Int) throws -> [Int:Int] {
             guard let sourceIndex=ring.firstIndex(of:from),
                   let destIndex=ring.firstIndex(of:to) else {

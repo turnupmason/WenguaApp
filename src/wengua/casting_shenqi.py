@@ -127,16 +127,12 @@ def layout_from_explicit_bureau(*,dun:str,ju:int,hour_ganzhi:str)->dict:
     # Xun-start palace counts one step per hour over numerals 1..9.
     value_door_target=_wrap(source_palace+steps*(1 if dun=="yang" else -1))
     if value_door_target==5:
-        # Narrow, original-case-confirmed centre hosting ONLY on 旬首 itself:
-        # 神奇之门疾病案例 1996-07-27, 阴遁7局、甲申时，甲申庚
-        # 落中五, 值符天禽、值使死门，原书明言星门伏吟。The timed
-        # door has travelled ZERO steps and therefore stays with its original
-        # earth-plate host 坤二, NOT in the centre (no centre door exists).
-        # For any NON-ZERO route ending in centre, hosting remains unresolved.
-        if source_palace==5 and steps==0 and dest_earth==5:
-            value_door_target=source_host
-        else:
-            raise ValueError("Timed value door falls into centre 5; hosting rule not yet confirmed")
+        # 时家转盘：旬首宫数九宫逐时行，阴逆阳顺。
+        # When timed progress counts into 中五, place the door at Kun-2;
+        # rotate the same eight outer doors from their real source host.
+        # Never manufacture an ordinary centre door. Applies whether
+        # elapsed == 0 or > 0, unlike the obsolete blocked fallback.
+        value_door_target=2
     door_map=_rotate_to(source_host,value_door_target)
     heavens={p:[] for p in range(1,10)}
     for p in RING:
@@ -164,5 +160,5 @@ def layout_from_explicit_bureau(*,dun:str,ju:int,hour_ganzhi:str)->dict:
         } for p in range(1,10)},
         "limitations":["Calendar/solar-term method not verified",
                        "Original printed source charts not independently inspected",
-                       "Middle-palace timed value-door policy not established"],
+                       "Timed centre-door uses Kun-2 host in this Zhuanpan variant; other schools may differ"],
     }

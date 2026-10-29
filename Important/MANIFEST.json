@@ -85,7 +85,7 @@
       "platform": "python",
       "canonical": "src/wengua/casting_shenqi.py",
       "snapshot": "Important/python/engine/casting_shenqi.py",
-      "sha": "0e46a334484e33d56b2082a0bbbdf6273d439bea"
+      "sha": "e2993f5ecf2c2a89f9f1a3f40a4eb61f8d2b8efb"
     },
     {
       "platform": "python",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCore.swift",
       "snapshot": "Important/swift/engine/WenguaNativeCore.swift",
-      "sha": "6b5f991ff22907af3666df430d5591b7d8c1fe17"
+      "sha": "51d7f8ad6b7b4f87540718a7103589f6f963109b"
     },
     {
       "platform": "swift",
