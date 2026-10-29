@@ -25,7 +25,8 @@ def template():
                                  "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
                                  "health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations",
                                  "health_severity_user_editable_template_v20261028_tianxian_kun_v9",
-                                 "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend"):
+                                 "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend",
+                                 "health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup"):
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):

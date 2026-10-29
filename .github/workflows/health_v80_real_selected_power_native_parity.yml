@@ -115,6 +115,51 @@ jobs:
           for section in native["sections"]:
               print("WIFE_V10_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
           PY
+      - name: Five genuinely NEW V10.1 random father self self daughter friend native strict parity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          generator.RELATIONS=(
+              ("father","父亲","direct_proxy","male"),
+              ("self","本人","direct_self",None),
+              ("self","本人","direct_self",None),
+              ("daughter","女儿","direct_proxy","female"),
+              ("friend","朋友","direct_proxy",None))
+          batch=generator.produce(seed=202610282259,count=5)
+          assert [x["relationship"] for x in batch["cases"]]==["父亲","本人","本人","女儿","朋友"]
+          assert len({x["instant"] for x in batch["cases"]})==5
+          for i,c in enumerate(batch["cases"]):
+              assert "natal" not in c["roles"]
+              if i>0:assert c["auxiliaries"]=={}, "Non-elder Qian/Kun is forbidden"
+              for bad in ("全部因素推断后","按用户规则","各实际参与实宫均减两分"):
+                  assert bad not in c["python_reading_text"],(c["relationship"],bad)
+          Path("/tmp/wengua-v80/v101_five_random.json").write_text(
+              json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          print("FIVE_V101_DRAW="+json.dumps({
+              "seed":batch["seed"],"accepted":[{
+                  "relation":c["relationship"],"instant":c["instant"],
+                  "pillars":c["four_pillars"],"bureau":c["bureau"],
+                  "score":c["summary"]["score"]} for c in batch["cases"]],
+              "technical_rejections":batch["rejected"]},ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/v101_five_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/v101_five_swift.log 2> /tmp/wengua-v80/v101_five_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/v101_five_random.json /tmp/wengua-v80/v101_five_swift.log /tmp/wengua-v80/v101_five_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/wengua-v80")
+          batch=json.loads((root/"v101_five_random.json").read_text())["cases"]
+          app=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (root/"v101_five_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(app)==len(batch)==5
+          for i,(p,s) in enumerate(zip(batch,app),1):
+              assert p["instant"]==s["instant"] and p["source_sections"]==s["sections"]
+              print("V101_FRESH_SWIFT_EXACT_PASS",i,p["relationship"],p["instant"])
+          PY
       - name: Original coworker EXACT pillars; do not resample
         run: |
           set -euo pipefail
@@ -198,6 +243,24 @@ jobs:
               out+=['','#### '+item['title'],item['text']]
           out+=['','### 妻子Python↔Swift逐字结论', (root/'wife_v10_exact_diff.md').read_text()]
 
+          five=json.loads((root/'v101_five_random.json').read_text())
+          five_native=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+              for line in (root/'v101_five_swift.log').read_text().splitlines()
+              if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(five_native)==5
+          out+=['','## V10.1 五份全新随机时辰：父亲、本人、本人、女儿、朋友',
+                '种子202610282259，只取首次技术有效时辰，不按吉凶筛选。']
+          for i,(c,s) in enumerate(zip(five['cases'],five_native),1):
+              assert c['source_sections']==s['sections']
+              out+=['',f'### 新盘{i} · '+c['relationship'],'实际时辰：'+c['instant'],
+                    '四柱：'+json.dumps(c['four_pillars'],ensure_ascii=False),
+                    '真实局：'+json.dumps(c['bureau'],ensure_ascii=False),
+                    '参与用神实宫：'+json.dumps({k:v['palace'] for k,v in c['roles'].items()},ensure_ascii=False),
+                    'V8冻结原分：'+str(c['summary']['score'])]
+              for item in s['sections']:
+                  out+=['','#### '+item['title'],item['text']]
+          out+=['','### 五份Python↔Swift全章节逐字差异报告',
+                (root/'v101_five_exact_diff.md').read_text()]
           (root/'two_fixed_clocks_v80.md').write_text('\n'.join(out)+'\n')
           PY
       - name: Preserve all logs and attempted outputs even on failure
@@ -240,7 +303,22 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$archive"
-          git commit -m "Archive verified V8.0 original clocks per-role source 5x5 and native parity"
+          cat >> AGENTS.md <<'END_V101_AGENTS'
+          
+          ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
+          本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
+          模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+          END_V101_AGENTS
+          cat >> docs/PROJECT_STATUS.md <<'END_V101_STATUS'
+          
+          ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+          - 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+          - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+          - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+          - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+          END_V101_STATUS
+          git add AGENTS.md docs/PROJECT_STATUS.md
+          git commit -m "Archive V10.1 five real native readings and handoff update"
           for i in 1 2 3 4 5; do
             git pull --rebase origin main
             if git push origin HEAD:main; then exit 0; fi

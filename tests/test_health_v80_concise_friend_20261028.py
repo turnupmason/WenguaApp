@@ -51,4 +51,5 @@ class FriendConfirmedConciseV80(unittest.TestCase):
         self.assertIn("「螣蛇相缠」",text)
         self.assertIn("综上所述，此病为极大凶",text)
         self.assertLess(len(text),2100)
+        self.assertNotIn("全部因素推断后",text)
 if __name__=="__main__":unittest.main()

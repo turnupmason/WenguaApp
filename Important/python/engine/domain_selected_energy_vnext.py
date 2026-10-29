@@ -545,6 +545,8 @@ def selected_health_sections(result,*,actor,chart):
             "patient":"患者用神","hour":"时干事体","chief":"值符",
             "natal":"患者年命","gender":"长辈辅助宫"}
     seen_palaces={}
+    # One real symbol can occupy several roles; only its first role narrates its power and direction.
+    seen_signifiers=set()
     for key in ("illness","doctor","medicine","patient","hour","chief","natal","gender"):
         if key not in roles:continue
         row=roles[key]
@@ -558,13 +560,21 @@ def selected_health_sections(result,*,actor,chart):
         signifier_power=row["primary_strength_25"].get("strength_label") or "待核"
         strength_suffix=render_slot("selected_role_summary",
                                     symbol=symbol,strength=signifier_power)
+        signifier=(pid,symbol)
+        repeated_signifier=signifier in seen_signifiers
         if pid in seen_palaces:
-            head=name+"与"+seen_palaces[pid]+"同在"+palace+strength_suffix
+            head=name+"与"+seen_palaces[pid]+"同在"+palace
+            if not repeated_signifier:
+                head+=strength_suffix
         else:
             head=name+"落"+palace+"，宫象"+quality+strength_suffix
             if void!="not_void" and key!="chief":
                 head+="且逢"+("真空" if void=="true_void" else "假空")
             seen_palaces[pid]=name
+        if repeated_signifier:
+            desc.append(head)
+            continue
+        seen_signifiers.add(signifier)
         # Environment is narrated ONCE, but EVERY distinct selected
         # signifier gets its own true source-target palace direction and
         # its own real 200x200 control eligibility, even when co-located.

@@ -400,6 +400,8 @@ enum WenguaPythonVNextVerbatim {
             "克":"克病宫","生":"生扶病宫","被克":"受病宫克",
             "被生":"受病宫生","比和":"与病宫比和","同宫":"与病宫同宫"]
         var seenPalaces:[Int:String]=[:]
+        // Real symbol aliases retain role identities but share one strength/direction narration.
+        var seenSignifiers:Set<String>=[]
         for key in ["illness","doctor","medicine","patient",
                     "hour","chief","natal","gender"] {
             guard let pid=review.roles[key],let p=cells[pid] else{continue}
@@ -413,8 +415,11 @@ enum WenguaPythonVNextVerbatim {
             let suffix=try phrase("selected_role_summary",[
                 "symbol":symbol,"strength":power
             ])
+            let signifier=String(pid)+":"+symbol
+            let repeatedSignifier=seenSignifiers.contains(signifier)
             if let existing=seenPalaces[pid] {
-                head=name+"与"+existing+"同在"+label(p)+suffix
+                head=name+"与"+existing+"同在"+label(p)
+                if !repeatedSignifier {head+=suffix}
             } else {
                 head=name+"落"+label(p)+"，宫象"+quality+suffix
                 if state != "not_void" && key != "chief" {
@@ -422,6 +427,11 @@ enum WenguaPythonVNextVerbatim {
                 }
                 seenPalaces[pid]=name
             }
+            if repeatedSignifier {
+                desc.append(head)
+                continue
+            }
+            seenSignifiers.insert(signifier)
             // Same physical palace is described only once, while every
             // different selected cohost keeps its OWN real source strength
             // and control result in the two-sentence customer template.

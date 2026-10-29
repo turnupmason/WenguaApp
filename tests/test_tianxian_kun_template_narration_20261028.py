@@ -30,7 +30,7 @@ def macro_facts(*,tianxian,fuyin=False,fanyin=False):
 class TianxianTemplateActualRoute(unittest.TestCase):
     def test_customer_phrase_is_selected_from_editable_template(self):
         j=template()
-        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend")
+        self.assertEqual(j["schema"],"health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup")
         normal=render_first_stage_macro(macro_facts(tianxian=True))
         slow=render_first_stage_macro(macro_facts(tianxian=True,fuyin=True))
         absent=render_first_stage_macro(macro_facts(tianxian=False,fuyin=True))
