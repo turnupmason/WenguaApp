@@ -1,0 +1,50 @@
+name: Two 2026-10-28 raw nine palaces only, independent of V8 scores
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/export_20261028_raw_nine_for_comparison.py'
+      - '.github/workflows/health_20261028_raw_nine_only.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  raw_palaces:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Cast two nine-palace facts without reading V8 or templates
+        run: |
+          set -euo pipefail
+          python -m scripts.export_20261028_raw_nine_for_comparison --output /tmp/raw_20261028.json | tee /tmp/raw_20261028.log
+          python - <<'PY'
+          import json
+          j=json.load(open('/tmp/raw_20261028.json'))
+          assert j['no_scores'] and j['no_template'] and len(j['charts'])==2
+          assert all(len(c['palaces'])==9 and c['palaces']['5']['door'] is None for c in j['charts'])
+          print('RAW_NINE_ONLY_PASSED')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: original-20261028-nine-palace-only
+          path: |
+            /tmp/raw_20261028.json
+            /tmp/raw_20261028.log
+      - name: Preserve two source charts in repository
+        run: |
+          set -euo pipefail
+          cp /tmp/raw_20261028.json docs/HEALTH_TWO_CLOCKS_RAW_NINE_ONLY_20261029.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/HEALTH_TWO_CLOCKS_RAW_NINE_ONLY_20261029.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive factual nine palaces for two Oct 28 human analysis comparisons"
+            for i in 1 2 3; do
+              git pull --rebase origin main
+              if git push origin HEAD:main; then exit 0; fi
+            done
+            exit 1
+          fi
