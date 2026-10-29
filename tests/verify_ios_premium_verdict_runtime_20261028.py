@@ -88,10 +88,8 @@ let actualGrades=["极大吉","大吉","中吉","小吉","极小吉",
                   "极小凶","小凶","中凶","大凶","极大凶","不凶不吉"]
 for word in actualGrades {
     // Native V10.2 current wording, predecessor wording, and period-delimited.
-    checkReading("天芮宫真实依据。\n\n综上所述，此病为"+word+
-                 "；以上仅作传统古籍象意参考，不作现实病情判断。",word)
-    checkReading("天芮宫真实依据。\n\n综上所述，此病为"+word+
-                 "；以上只作传统古籍象意参考。",word)
+    checkReading("天芮宫真实依据。\n\n综上所述，此病为"+word+"；以上仅作传统古籍象意参考，不作现实病情判断。",word)
+    checkReading("天芮宫真实依据。\n\n综上所述，此病为"+word+"；以上只作传统古籍象意参考。",word)
     checkReading("综上所述，此病为"+word+"。",word)
 }
 checkReading("说明。\n\n部分宫位条件未能确认，暂不强断吉凶；以上仅作参考。",nil)
