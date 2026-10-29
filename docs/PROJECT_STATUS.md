@@ -2098,3 +2098,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 
 ### 2026-10-29 · BigFish PyCharm Node首轮专项CI失败存档
 首次新回归专项 Actions #40944733685 **FAIL**：原有批量CSV/XLSX/人物真实源测试PASS，新增4项Python夹具导入时缺 `local_batch.BIGFISH_SHA` 导致4 ERROR；不是Node修复运行失败。补齐测试夹具现有原源常量后另行提交并重跑；保留首次失败档 https://github.com/turnupmason/WenguaApp/actions/runs/40944733685 。用户Mac 518400尚未复验。
+
+
+### 2026-10-29 · PyCharm Node fast-path专项最终GitHub CI结果
+
+原应用修复 `32cd185ff137`：源码每次装载先解析PyCharm PATH/安全确认Node，worker用绝对node路径。新测试夹具两轮首FAIL `#40944733685`（缺BIGFISH_SHA）、`#40944904961`（缺COMPILED）**全部历史保留，不代表生产脚本失败**。按原Mac安装常量补齐后最终源码py_compile+批量旧测试+人物源校验+4项新Node测试 **PASS #40944991588**、当前V8主CI **PASS #40944991638**；原本同轮Swift/Python parity **PASS #40944733652**、macOS Xcode iOS Simulator资源包 **PASS #40944733651**、BigFish1080结构 **PASS #40944733539**。只是GitHub测试，不等于Mac上Node官方自动安装或518400×2真正跑完。用户明确先全部关系用神、无年命，后加出生年命为新版本额外用神。参见 `docs/BIGFISH_PYCHARM_NODE_FASTPATH_NO_NATAL_20261029.md` 与跨对话Prompt。

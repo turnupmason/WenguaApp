@@ -15,3 +15,12 @@
 ## 新增真实CI失败及原因（保留而非掩盖）
 
 首次专项 `#40944733685` 在现有BigFish/人物原测试与Python py_compile全部PASS之后，新4项 Node回归 **4 ERROR**：测试夹具 `local_batch` 少提供上游 `BIGFISH_SHA`/Wengua SHA；异常发生于被测脚本模块载入行416，**不是应用代码 Node路径修复的失败，也不表示Mac已通过**。已按仓库现成 fixture 的真实常量补齐，重跑专项 Actions，旧失败历史不删除。链接：https://github.com/turnupmason/WenguaApp/actions/runs/40944733685 。
+
+## 修复后最终专项CI / native / Xcode实测（保留两次首次测试失败）
+
+- **#40944733685 FAIL**：新独立测试夹具漏 `BIGFISH_SHA`，4例在模块导入前失败。原冻结源测试PASS；未更改应用Node修复。
+- **#40944904961 FAIL**：补上源SHA后已有3例PASS、worker绝对路径1例因测试夹具漏 `COMPILED` 失败；仍属**测试夹具配置问题**。详细日志保留：https://github.com/turnupmason/WenguaApp/actions/runs/40944904961
+- 最终增加 `COMPILED` 真实目录fixture，**#40944991588 PASS**：Python脚本编译、原SQLite/CSV/XLSX/JSONL不可覆盖测试、已接线人物真源/年命选择测试、4项PyCharm路径/worker可执行文件/报错/默认无年命测试全部成功：https://github.com/turnupmason/WenguaApp/actions/runs/40944991588
+- 主CI **#40944991638 PASS**：https://github.com/turnupmason/WenguaApp/actions/runs/40944991638
+- 同轮代码提交 `32cd185ff` 原生Swift/Python V8 parity **#40944733652 PASS**，正式macOS XcodeGen iOS Simulator bundle **#40944733651 PASS**，BigFish上游1080结构合同 **#40944733539 PASS**。这两者仍不等于BigFish已经移植到Swift，更不等于用户Mac真实518400批量执行完成。
+- 最终用于用户Mac的 Node代码补丁始终是 `32cd185ff...`，后续 `fdc0c0be` / `fc1d9750` 只修**新增测试夹具**，未再修改业务Python。用户本机需真正替换入口脚本并跑20行验证；旧SQLite含失败索引不可被新代码自动覆盖。
