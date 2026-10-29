@@ -1985,3 +1985,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-10-29 · 难受部位首轮真实CI结果
+源码提交19f95b6：当前Python3.11/3.12主CI 40886848712 PASS、新研究三时辰测试通过；V8旧Python↔Swift真实全文 parity 40886848622 PASS；V7.7 40886848887 PASS；XcodeGen真实macOS iOS Simulator编译、11档及bundle资源验收40886848727 PASS。旧V7.4 40886848564 FAIL、iOS Offline Native Casting Parity 40886848616 FAIL（旧20人/旧断词契约），原失败保留。新「难受部位」是外部未校验笔记的源候选研究，不具Swift独立病位断词、未进行全历史库Python unittest或独立病位准确性验收，不对客启用。审计见 docs/HEALTH_DISCOMFORT_EXTERNAL_NOTES_ACTIONS_20261029.md。
