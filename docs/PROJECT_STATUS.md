@@ -1924,3 +1924,9 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 ### 2026-10-28 · 用户最终封存两套现行疾病基线（冻结后只读详细计分审查）
 用户明确「现在目前封存这两个，以后就使用了。不变了。如果以后再需要修改再说」。两个正式冻结对象为：（1）V8.0 疾病轻重全流程、人物用神、八张200格源表与81天地格、原真/假空、门迫入墓击刑、五不遇时、天显逐实宫伏吟半分合后取整、跨宫克病原五张5×5、同宫独立医药吉助及最终±5计分；（2）V10.2 公众客户断词完整同源JSON和Python/Swift逐字输出，schema health_severity_user_editable_template_v20261028_v10_2_evidence_first。未经用户再次明确批准不可改其中任何规则或模板，审查疑点不等于修改授权；以后用户批准改版需另记版本，保留当前冻结基线、原历史/失败与回归。实际完整canonical Git blob SHA快照和疑点清单见 docs/V80_V102_FROZEN_BASELINE_AND_SCORING_READONLY_20261028.md。
 封存只是增加只读交接/快照文档，不改计分、文案、81古籍原文、Important镜像、MANIFEST，不重置历史。源码快照来自此前真验收 V8主CI#40794999872、原生Swift/Python全段5/5#40794999535及真正macOS XcodeSimulator与四资源bundle#40794999563，三者均PASS；旧通用iOS Native Parity#40794999554 FAIL照录，医疗预后/签名真机未验。下一步用户要详细审阅所有能量和加减分规则，先列代码位置/条件/疑点，不得暗调V8。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
