@@ -36,7 +36,7 @@ def collect():
             summary=quant["summary"]
             confidence=result["audit"]["role_confidence"]
             roles=quant["roles"]
-            selected=result["full_health_role_strength_network"]["selected_roles"]
+            selected={k:{"primary_strength_25":{"strength_label":v["strength"],"symbol":v["symbol"],"kind":v["kind"],"fact_id":v["fact_id"],"symbol_month_stage":v["month_stage"]}} for k,v in result["full_health_role_strength_network"]["nodes"].items()}
             patient=roles["patient"]
             illness=roles["illness"]
             four=result["four_pillars"]
