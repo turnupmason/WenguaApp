@@ -252,7 +252,7 @@ enum QuestionCatalog {
         QuestionDomain(id:"health",title:"疾病健康",symbol:"cross.case",
           topics:[
             QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
-            QuestionTopic(id:"health.trend",title:"病势发展",domainTitle:"疾病健康",enabled:false),
+            QuestionTopic(id:"health.discomfort",title:"身体哪里不舒服",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
         domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),

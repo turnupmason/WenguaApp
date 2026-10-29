@@ -1,0 +1,47 @@
+{
+  "schema": "wengua_health_discomfort_research_profile_v0_20261029",
+  "topic_id": "health.discomfort",
+  "public_title": "身体哪里不舒服",
+  "replaces_disabled_topic": "health.trend",
+  "release_status": "research_draft_not_enabled",
+  "distinct_from": "health.severity",
+  "approved_customer_template": null,
+  "iOS_enabled": false,
+  "intent": "从实际天芮病宫、内外盘、实际伤门和时干、人物用神与星门神干格局推断多项传统身体部位象意，需有独立条件证据才能取舍",
+  "source_links": [
+    {
+      "book": "shenqi",
+      "source": "data/knowledge/shenqi/health_prediction_ch01/method_index.json",
+      "sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "palace_lines": [
+        5,
+        7
+      ],
+      "illness_stem_line": 9,
+      "status": "draft"
+    },
+    {
+      "book": "kaiwu",
+      "source": "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json",
+      "source_chapter_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+      "example": "wang_craniotomy",
+      "example_original_lines": [
+        161,
+        211
+      ],
+      "status": "historical_case_needs_separate_rule_review"
+    }
+  ],
+  "required_order": [
+    "bind_the_actual_patient_to_actual_subject_identity",
+    "get_one_real_nine_palace_chart_and_tianrui_position",
+    "collect_both_surface_and_internal_source_candidate_groups_without_choosing_one",
+    "verify_inner_outer_by_source_approved_yin_yang_and_ring_policy",
+    "check_actual_door_injury_and_time_stem_roles_at_their_independent_palaces",
+    "inspect_all_real_tianrui_palace_door_deity_sky_earth_stems_and_ordered81",
+    "resolve_complementary_or_conflicting_signatures_without_medical_diagnosis",
+    "give_only_evidence_supported_traditional_anatomical_symbol_text"
+  ],
+  "guarded": "Do not copy V8 severity score, infer cancer/organ injury from one trigram, choose either surface/internal without source-backed conditions, or claim clinical diagnostic accuracy",
+  "no_15_day_lock_until_verified": true
+}
