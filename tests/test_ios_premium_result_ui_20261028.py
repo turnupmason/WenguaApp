@@ -22,6 +22,10 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertIn("综上所述，此病为{grade}。", self.template["macros"]["overall_resolved"])
         self.assertNotIn("review.score", self.presentation)
         self.assertNotIn("compute(", self.presentation)
+        # Do not parse a frozen V10.2 conclusion using an old disclaimer.
+        self.assertIn('let resolvedPrefix = "综上所述，此病为"',self.presentation)
+        self.assertIn('maxSplits: 1, omittingEmptySubsequences: false',self.presentation)
+        self.assertNotIn('components(separatedBy: "；以上只作")',self.presentation)
 
     def test_real_corner_markers(self):
         self.assertIn('if !QFive.void(palace).isEmpty', self.chart)

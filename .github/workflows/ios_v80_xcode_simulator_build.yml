@@ -36,6 +36,10 @@ jobs:
               tail -n 160 /tmp/wengua-v80-xcode/build.log
               exit 1
             }
+      - name: Run REAL Swift result UI grade parser on all 11 grades and five archived V10.2 native verdicts
+        run: |
+          set -euo pipefail
+          python3 tests/verify_ios_premium_verdict_runtime_20261028.py
       - name: Verify bundled 200 cells 81 formations native templates and actors in actual app binary
         run: |
           set -euo pipefail

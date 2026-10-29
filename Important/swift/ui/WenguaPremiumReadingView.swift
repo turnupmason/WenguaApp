@@ -13,16 +13,22 @@ struct WenguaVerdictPresentation {
               let finalParagraph = original.components(separatedBy: "\n\n").last else {
             return nil
         }
-        // Remove the *existing* cultural disclaimer from the prominent line;
-        // the full original text remains intact on the professional tab.
-        let conclusion = String(finalParagraph.components(separatedBy: "；以上只作").first ?? "")
+        // V10.2 ends the resolved sentence with "；以上仅作...", while
+        // older saved readings used "；以上只作...". Treat the *Chinese
+        // clause boundary*, not a changeable disclaimer, as the separator.
+        // The exact source paragraph is retained in 专业解盘; no scores,
+        // signifiers or outcomes are recomputed by this view.
+        let conclusion = String(finalParagraph.split(separator: "；",
+                              maxSplits: 1, omittingEmptySubsequences: false).first ?? "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
         guard !conclusion.isEmpty else { return nil }
         let grade: String?
-        if let range = conclusion.range(of: "此病为") {
-            let tail = conclusion[range.upperBound...]
-            let word = String(tail.split(separator: "。", maxSplits: 1,
-                                         omittingEmptySubsequences: true).first ?? "")
+        let resolvedPrefix = "综上所述，此病为"
+        if conclusion.hasPrefix(resolvedPrefix) {
+            let tail = String(conclusion.dropFirst(resolvedPrefix.count))
+            let word = String(tail.split(whereSeparator: {
+                $0 == "。" || $0 == "；" || $0 == "\n" || $0 == "\r"
+            }).first ?? "")
             grade = word.isEmpty ? nil : word
         } else {
             grade = nil
