@@ -49,7 +49,8 @@ struct WenguaNativeInquiry {
 struct WenguaNativeActor {
     let profileID:String
     let label:String
-    let mainStem:String
+    let mainStem:String // selected symbolic identity, e.g. 甲
+    let sourceGanzhi:String? // original role-specific 年/月/日/时 complete pillar
     let mainPalace:Int
     let kind:String
     let confidence:String
@@ -59,6 +60,7 @@ struct WenguaNativeActor {
     let harmonyPalace:Int?
     let genderPalace:Int?
     let natalStem:String?
+    let natalSourceGanzhi:String?
     let natalPalace:Int?
     let note:String
     var eligibleForFirmTraditionalJudgment:Bool {
@@ -84,10 +86,24 @@ enum WenguaNativeActorSource {
         }
         return decoded
     }
+    static let sixJia:[String:String] = [
+        "甲子":"戊","甲戌":"己","甲申":"庚",
+        "甲午":"辛","甲辰":"壬","甲寅":"癸"
+    ]
+    static func jiaCarrier(_ sourceGanzhi:String)->String? {
+        sixJia[sourceGanzhi]
+    }
     static func actualStem(_ stem:String, chart:WenguaNativeChart,
-                           allowJiaHour:Bool=false)->Int? {
-        let carrier = (stem=="甲" && allowJiaHour && chart.pillars.hour.hasPrefix("甲"))
-                    ? chart.hiddenStem : stem
+                           sourceGanzhi:String?=nil)->Int? {
+        let carrier:String
+        if stem=="甲" {
+            guard let sourceGanzhi,
+                  validatedGanzhi(sourceGanzhi),
+                  let mapped=jiaCarrier(sourceGanzhi) else {return nil}
+            carrier=mapped
+        } else {
+            carrier=stem
+        }
         let found=chart.palaces.filter{
             $0.id != 5 && $0.heavenStars.contains(where:{$0.carriedStem==carrier})
         }
@@ -131,6 +147,7 @@ enum WenguaNativeActorSource {
         let source=ctx=="event_news" ?
             index.event_news_override.source : first.source
         let candidateStem:String
+        var roleSourceGanzhi:String?=nil
         var harmony:String?=nil
         if kind=="spouse_gender_harmony" {
             let decidedSex = profile.id=="wife" ? "female" :
@@ -154,13 +171,12 @@ enum WenguaNativeActorSource {
             default:throw WenguaNativeReadingError.unsupportedRelationship
             }
             candidateStem=String(pillar.prefix(1))
+            roleSourceGanzhi=pillar
         }
-        // Exactly the Python _stem_cell rule: 甲 is NOT a visible stem, except
-        // the independently identified genuine Jia HOUR hidden instrument.
-        let allowJiaHour=kind=="casting_hour_stem" ||
-            (kind=="day_stem" && ctx=="event_news" && chart.pillars.hour.hasPrefix("甲"))
+        // Every independent Jia role uses its OWN complete source pillar,
+        // never the hour-xun for a casting year/month/day.
         guard let patient=actualStem(candidateStem,chart:chart,
-                                    allowJiaHour:allowJiaHour) else {
+                                    sourceGanzhi:roleSourceGanzhi) else {
             throw WenguaNativeReadingError.missingRole
         }
         var extra=profile.palaces
@@ -185,7 +201,8 @@ enum WenguaNativeActorSource {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
         let natalStem=natal.map{String($0.prefix(1))} ?? inquiry.patientBirthStem
-        let natalPalace=natalStem.flatMap{actualStem($0,chart:chart)}
+        let natalPalace=natalStem.flatMap{actualStem($0,chart:chart,
+                                                   sourceGanzhi:natal)}
         // Only older-generation roles receive Qian/Kun; this is NOT a
         // generic male/female auxiliary for friends, spouses or children.
         let elder=["father","mother","parent","older_relative",
@@ -195,11 +212,12 @@ enum WenguaNativeActorSource {
         let gender:Int?=elder ? (elderSex=="male" ? 6 :
                                 elderSex=="female" ? 2 : nil) : nil
         return WenguaNativeActor(profileID:profile.id,label:profile.label,
-            mainStem:candidateStem,mainPalace:patient,kind:kind,
+            mainStem:candidateStem,sourceGanzhi:roleSourceGanzhi,
+            mainPalace:patient,kind:kind,
             confidence:confidence,source:source,
             extraPalaces:Array(Set(extra)).sorted(),
             harmonyStem:harmony,harmonyPalace:genuineHarmony,
             genderPalace:gender,natalStem:natalStem,
-            natalPalace:natalPalace,note:profile.note)
+            natalSourceGanzhi:natal,natalPalace:natalPalace,note:profile.note)
     }
 }
