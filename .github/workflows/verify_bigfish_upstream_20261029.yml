@@ -6,6 +6,8 @@ on:
       - scripts/verify_bigfish_upstream_1080_20261029.cjs
       - scripts/bigfish_shijia_cast_bridge_20261029.cjs
       - scripts/verify_bigfish_frozen_v8_samples_20261029.py
+      - scripts/verify_bigfish_actor_natal_real_20261029.py
+      - scripts/wengua_bigfish_518400_offline_editorial_20261029.py
       - .github/workflows/verify_bigfish_upstream_20261029.yml
 jobs:
   compile-and-verify:
@@ -35,6 +37,10 @@ jobs:
         run: |
           set -o pipefail
           python -m scripts.verify_bigfish_frozen_v8_samples_20261029 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-real-v8.jsonl
+      - name: Real BigFish four actor + natal branches through frozen V8/V10.2
+        run: |
+          set -o pipefail
+          python -m scripts.verify_bigfish_actor_natal_real_20261029 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-actor-natal-real.jsonl
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -42,4 +48,5 @@ jobs:
           path: |
             /tmp/bigfish-1080.json
             /tmp/bigfish-real-v8.jsonl
+            /tmp/bigfish-actor-natal-real.jsonl
           if-no-files-found: ignore
