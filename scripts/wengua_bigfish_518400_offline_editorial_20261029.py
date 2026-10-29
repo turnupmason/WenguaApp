@@ -44,7 +44,7 @@ AUTO_INSTALL = True        # 首次运行自动安装 GitHub 固定源码与 Typ
 AUTO_INSTALL_NODE = True   # Mac 缺 Node 时自动下载官方 LTS 到本项目 toolchain，无 sudo / .command
 INSTALL_ONLY = False       # 改 True 时仅安装/校验，不开始 518400 批量
 STOP_IF_FIRST_ROW_FAILS = False # 缺人物用神时仅保留失败，继续生成可断的其它场景
-DEFER_UNRESOLVED_JIA = True # 已知非时柱甲用神不能核定；显式暂缓，禁止重复制造数千空断词
+DEFER_UNRESOLVED_JIA = False # 2026-10-29用户核准完整来源柱六甲遁仪；不再跳过甲年/月/日
 MAX_CONSECUTIVE_UNEXPECTED_FAILURES = 3 # 未预先识别的双节气失败到门槛就停止并保留所有失败
 # ==========================================================
 
@@ -93,7 +93,11 @@ MONTH_START = {'甲':'丙','己':'丙','乙':'戊','庚':'戊','丙':'庚','辛'
 HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':'戊',
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
-PIPELINE_VERSION = 'bigfish_518400_two_real_term_branches_v1'  # 保留原版设置指纹，已有SQLite可续跑
+PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v2'
+SIX_JIA_APPROVED_WENGUA_SHA = 'b6011a1f7dc42f01d179203a7b4658d0228f67ea' # frozen V8 math unchanged; role-source binder explicitly updated
+SIX_JIA_BATCH_SUBDIR = '六甲全柱来源_20261029_v2'
+SIX_JIA_SOURCES_ACTIVATED = False
+# Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
 
 # == One-time, Python-only pinned local installation (does not touch App/V8 code) ==
 BIGFISH_REPO = 'https://github.com/perfhelf/bigfishmarquis-qimen.git'
@@ -336,6 +340,21 @@ def ensure_node_available():
     _install_node_official_lts()
     if not shutil.which('node') or not shutil.which('npm'):
         raise RuntimeError('Node下载完成但PATH仍不可用；请检查toolchain/node_runtime/bin')
+
+
+def activate_six_jia_sources():
+    """Side-by-side pin the new user-approved role binding source.
+
+    The Mac package's original pinned Wengua SHA and local_batch.py remain
+    physically unchanged; only this running adapter points at a new checkout.
+    """
+    global SIX_JIA_SOURCES_ACTIVATED
+    if SIX_JIA_SOURCES_ACTIVATED:
+        return
+    base.WENGUA_SHA = SIX_JIA_APPROVED_WENGUA_SHA
+    base.SOURCE = HERE / 'vendor' / 'WenguaApp_sixjia_source_v2'
+    base.FROZEN = HERE / 'frozen_sixjia_source_v2'
+    SIX_JIA_SOURCES_ACTIVATED = True
 
 
 def ensure_install():
@@ -942,6 +961,8 @@ def build_inquiry(validation:dict)->dict:
 def actor_output_folder() -> Path:
     """Keep no-option old 20 rows resumable; never mix natal or sex variants."""
     root=base.OUTPUT/'full_518400'/RELATIONSHIP
+    if SIX_JIA_SOURCES_ACTIVATED:
+        root=root/SIX_JIA_BATCH_SUBDIR
     extra={'birth':PATIENT_BIRTH_GANZHI,'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
            'order':BIRTH_ORDER,'context':CONSULTATION_CONTEXT}
     if any(v is not None for v in extra.values()):
@@ -972,20 +993,28 @@ def verify_actual_role(chart:dict, inquiry:dict, calendar:dict, source_reference
         if inquiry['relationship']=='husband':sex='male'
         if role['stem']!=('乙' if sex=='female' else '庚'):
             raise ValueError('配偶乙/庚取用未按实际性别绑定')
-    if kind in ('day_stem','casting_day_stem','casting_year_stem','casting_month_stem') and role['stem']=='甲':
-        # Existing research binder borrows hour-甲 xun. Separate year/month/day Jia
-        # is not independently verified; never mark the false positive 'success'.
-        raise ValueError('用神甲独立寻址待核：'+kind+'不能借用当前小时甲旬首六仪')
+    if role['stem']=='甲' and kind in (
+        'day_stem','casting_day_stem','casting_year_stem',
+        'casting_month_stem','casting_hour_stem'):
+        from src.wengua.casting_shenqi import SIX_JIA
+        source_col={
+            'day_stem':'day_ganzhi','casting_day_stem':'day_ganzhi',
+            'casting_year_stem':'year_ganzhi',
+            'casting_month_stem':'month_ganzhi',
+            'casting_hour_stem':'hour_ganzhi'}[kind]
+        own=calendar[source_col]
+        expected_carrier=SIX_JIA.get(own)
+        if not expected_carrier or role.get('source_ganzhi')!=own or role.get('carrier_stem')!=expected_carrier:
+            raise ValueError('六甲用神没有按自己的完整来源柱定位：'+str(
+                (kind,own,role.get('source_ganzhi'),role.get('carrier_stem'))))
     patient=role.get('main_cell')
     if patient is None:
         raise ValueError('实际患者主用神未落宫：'+str(role['role_name']))
     if patient['palace'] not in (1,2,3,4,6,7,8,9):
         raise ValueError('患者主用神不可被伪造在无普通星门神的中五宫')
     natal=inquiry.get('patient_birth_ganzhi')
-    if natal and natal[0]=='甲':
-        # The frozen legacy helper can borrow the HOUR 甲旬首; that is not
-        # independent proof of the PERSON'S birth-year 甲 identity.
-        raise ValueError('真实年命为甲年，原研究用神绑定器尚未独立核准该年命遁干；不得借时旬冒充年命')
+    # Optional true birth-Ganzhi, if ever activated later, resolves by its
+    # OWN full pillar. Current batch always leaves PATIENT_BIRTH_GANZHI=None.
     natal_cell=role.get('birth_cell')
     if natal and natal_cell is None:
         raise ValueError('已提供真实年命'+natal+'，但独立年命符号实际落宫未核定；不得假称年命已参与')
@@ -997,6 +1026,8 @@ def verify_actual_role(chart:dict, inquiry:dict, calendar:dict, source_reference
         'role_via':kind,'role_source':role['source_rule'],
         'role_status':role['status'],'role_confidence':role['confidence'],
         'stem':role['stem'],'palace':patient['palace'],
+        'source_ganzhi':role.get('source_ganzhi'),
+        'carrier_stem':role.get('carrier_stem'),
         'role_name':role['role_name'],
         'auxiliary_palaces':[c['palace'] for c in role.get('extra_cells',[])],
         'natal_year':natal,'natal_active':bool(natal_cell) if natal else False,
@@ -1074,6 +1105,15 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
             raise ValueError('冻结V8未按原人物条件选正确的长辈乾/坤辅助宫')
         if not expected_aux and inquiry['relationship'] not in ('parent','older_relative') and 'gender' in roles:
             raise ValueError('非符合条件的长辈被误套乾坤辅助宫')
+        if person_audit['stem']=='甲':
+            from src.wengua.casting_shenqi import SIX_JIA
+            carrier=person_audit['carrier_stem']
+            expected=SIX_JIA[person_audit['source_ganzhi']]
+            cell=board['palaces'][str(person_audit['palace'])]
+            if carrier != expected or not any(
+                sky['carried_stem']==carrier for sky in cell['heaven_stars']
+            ):
+                raise ValueError('真正天盘未含该角色六甲所遁六仪，拒绝假成绩')
         summary=quant['summary']
         score=summary['score']
         if score not in base.GRADE:
@@ -1114,7 +1154,9 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
 
 
 def deferred_source_jia(pillars:dict, validation:dict) -> str | None:
-    """Reject only the KNOWN unsupported Jia source; don't mark it as cast FAIL.
+    """Historical v1-only switch; disabled for the approved six-Jia v2.
+
+    The source-kind independent resolution is verified per variant downstream.
 
     This is a scheduler decision, NOT a fabricated 六甲 carrier or score.
     A real Jia HOUR is handled by the existing frozen binder; independent
@@ -1175,6 +1217,9 @@ def export_new_batch(db, root:Path, labels:dict, indices:list[int]) -> str | Non
 def run():
     if ROWS_PER_EXCEL<1 or ROWS_PER_EXCEL>30000:raise ValueError('ROWS_PER_EXCEL must be 1..30000')
     if COMMIT_EVERY<1 or PRINT_EVERY<1:raise ValueError('commit/report cadence must be positive')
+    # The previous father/ output had 1100 retained FAILS; NEVER reuse it.
+    # Switch only the CURRENT Python process to a new verified rule checkout.
+    activate_six_jia_sources()
     # Verify both source Git HEADs and frozen template/data hash BEFORE looping.
     manifest=ensure_install()
     if INSTALL_ONLY:
@@ -1231,8 +1276,10 @@ def run():
     deferred=0; consecutive_failures=0
     newly_added=[]; newest_export=None
     if DEFER_UNRESOLVED_JIA:
-        print("已知风险防护：非时柱甲来源暂缓；不占本次新增额度，不制造假用神。",flush=True)
-        print("原有失败及人工Excel不修改；新生成记录写入独立本轮批次文件。",flush=True)
+        print("仅旧版本模式：独立甲来源暂缓",flush=True)
+    else:
+        print("现行六甲全柱规则：甲子戊/甲戌己/甲申庚/甲午辛/甲辰壬/甲寅癸",flush=True)
+        print("按来源年/月/日/时干支独立找真实天盘宫；旧失败与人工稿另目录保留。",flush=True)
     try:
         # Reuse the EXACT preflight inquiry for every per-term cast.
         for idx in range(N_CASES):
@@ -1254,7 +1301,9 @@ def run():
                     binding=term_result.get('source_fact_lock',{}).get('person_binding',{})
                     print('[首条用神复核]',idx+1,term_result['term'],
                           '问测',pillars,'主取',binding.get('role_via','未核定'),
-                          binding.get('stem',''), '宫',binding.get('palace',''),
+                          binding.get('stem',''), '来源',binding.get('source_ganzhi',''),
+                          '遁仪',binding.get('carrier_stem',''),
+                          '宫',binding.get('palace',''),
                           '年命', ('参与'+str(binding.get('natal_palace'))+'宫'
                                      if binding.get('natal_active') else '未参与'),
                           '状态',term_result['status'],
@@ -1317,7 +1366,8 @@ def run():
             print('全人物循环结束，518400行均已有状态和结果。',flush=True)
         print('文件目录:',root/'Excel_CSV_可直接打开',flush=True)
         print('原始断词、失败与人工编辑栏见CSV/XLSX；按节气分别供GPT润色的事实包见同目录 *_待审事实包.jsonl。',flush=True)
-        print('严格保留旧失败；尚未验收的独立甲年/月/日用神不能假称518400条全部可断。',flush=True)
+        print('2026-10-29现规则：六甲全柱独立遁仪定位，保留旧v1所有失败和人工稿。',flush=True)
+        print('未跑完的组合不称成功；条件四柱不等同真实公历时刻。',flush=True)
         db.close()
         worker.close()
 
