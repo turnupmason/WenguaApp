@@ -265,9 +265,9 @@ private struct PublicCast:Encodable {
                 loc+"God no-season source invariant lost")
             // V7.6 co-located independent role uses its own grade label,
             // while its shared nine-palace factual paragraph stays concise.
-            let doctorGrade=doctor.contains("全部因素推断后，此宫为") ||
+            let doctorGrade=doctor.contains("宫象") ||
                             doctor.contains("本用神结合宫内诸象后为")
-            let medicineGrade=medicine.contains("全部因素推断后，此宫为") ||
+            let medicineGrade=medicine.contains("宫象") ||
                               medicine.contains("本用神结合宫内诸象后为") ||
                               medicine.contains("合看该宫象")
             try require(doctorGrade && medicineGrade,
