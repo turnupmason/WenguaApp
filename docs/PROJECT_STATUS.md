@@ -2056,3 +2056,7 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · 父亲20条实际Mac结果：十八空白、一道“成功”隐藏错绑
 用户Excel `father_000001-000020.xlsx`（SHA256 0aa7118e856970b3ba5f617ce679ae5c52f2fca6113f281cb891eda99ca71857）经本地artifact_tool逐行验收：20行均年甲子月丙寅、每行立春/雨水，40/40有原始BigFish盘式与局数；第2–10、12–20行共18行×2节气失败（非起盘失败），Excel断词/等级空是脚本捕捉 `Patient signifier unresolved; do not force birth-year`。第1行甲子时与第11行甲戌时各两个显示“条件候选”但第11行把父亲年甲子用神借了甲戌小时旬首己，独立取用错误，不能采信。根因 `health_dynamic_v21.py:_stem_cell` 对年甲仅甲时定位，再调用 `health_severity_template.py:_find_heaven_stem` 甲时转本小时遁干；不是父亲出生年命缺失，更不是BigFish排不出局。新增真实失败审计 docs/BIGFISH_FATHER_20_JIA_YEAR_SIGNIFIER_FAILURE_AUDIT_20261029.md 和源回归tests/test_father_jia_year_binding_known_gap_20261029.py（已知两项 expectedFailure），Excel原料未公开上库；导出对照 xlsx在本次对话文件。现有旧20条SQLite会跳过，不得删库或假称简单重跑修复。当前暂停全量挂机，先核准跨柱甲身份书源，用户批准后在研究版保留历史重算；冻结V8/Swift/Important/MANIFEST未变，没跑Mac Xcode。
+
+
+### 2026-10-29 · 父亲前20条五鼠遁校验：20/20正常，720/720日时组合正常，但跨柱甲角色失败仍在
+用户提出20条失败可能因为甲子日乙亥时跨夜子时：纠正为当天21–23时亥时合法，乙亥之后才是下一日乙丑的丙子时（假设23点换日规则）。实际`father_000001-000020.xlsx`逐行日柱/时柱都符合五鼠遁，已下载本地Python脚本`scenario`纯函数实际首20顺序一致，60日×12时为720/720合法，独立仓库回归tests/test_five_rat_father_20_separate_from_signifier_20261029.py及新专门工作流.verify_five_rat_father_20_20261029.yml。**这不能解释18行×2节气失败，也不证明冻结断案取用无误**：`health_dynamic_v21._stem_cell`年甲只有时干甲才会读取小时旬遁干，导致甲子年甲戌小时第11行错误赋己，需原书源证与独立年角色核验。没有修改V8核心、200/81/V10.2/Swift/Important双镜像/MANIFEST，无需改Excel或覆盖失败SQLite。独立审计docs/BIGFISH_FATHER_20_FIVERAT_IS_VALID_20261029.md；Mac Xcode未跑。
