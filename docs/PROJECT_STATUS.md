@@ -2013,3 +2013,12 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ## 2026-10-29 · 核实1080张完整盘式、Prompt V2及后续父亲专题（最新优先）
 用户明确先保证1080张物理转盘（阳阴18局×六十时柱）完整正确，再对每张分别研究父亲看病用神并GPT专业润色首页约200字和所有用神宫详细解盘；随后母亲等，仍可离线按本盘+人物+真实条件命中。跨会话必须读 `prompts/WENGUA_1080_PHYSICAL_FIRST_CONTINUATION_V2_20261029.md`。本轮实际导出 `data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl`（1080行，约8.86MB）与全量质量报告 `data/atlas/shijia_zhuanpan_physical_1080_audit_v1.json`，含九宫真正星门神/有序81格/真实旬首旬空马星/固定墓刑迫/伏吟反吟及12月支真假空条件分支；**不改现有V8评分、200/81表与正式iOS断词**。首次全量#40903414611 FAIL发现只有1032种不重复的可见九宫排列；保留FAIL。修复测试定义：完整盘位指纹再加入真实旬首/空马而非编造人工ID，#40903687920 PASS，1080个真实完整盘式指纹不重复、可见布局1032、可见碰撞42组。新固定数据单测 `tests/test_physical_1080_atlas_dataset_20261029.py` 接入CI，#40904222299 Python3.11/3.12 PASS。审计报告 `docs/PHYSICAL_1080_VERIFICATION_FATHER_STAGING_20261029.md`。现在仅称Python内部规则全量核对通过，不能称所有1080与独立原书图逐个复核且Swift全字段逐盘100%通过；已启动新原生Swift/Python样本parity和实际macOS Xcode Simulator构建，需查真实Actions再结案。后续在atlas基础做父亲1080个**有条件**解语主底稿，真实年月日月令、人物年干及靠谱年命条件由实例层覆盖，不能一盘一篇就无条件泛用所有时空。AI只能审核与润色，错误建议先证据日志与回归、经用户批准才可调整冻结V8。
+
+
+## 2026-10-29 · qfdk 本地冻结 V8/V10.2 批量准备：第一阶段工具交付，正式跨仓验收仍未通过
+
+新用户明确要求不再借 ChatGPT 逐盘在线生成：以 https://github.com/qfdk/qimen 为未来起盘法，将本仓 V8.0 疾病轻重真实计分、V10.2 正式断词、200源格、81有序天地格、22人物规则本地化到 Mac，逐真实时辰逐亲属角色批量生成并保存；连续运行慢一点也可，但必须按原始盘/每次月令真实条件，不拿1080物理盘省略人物和日期。首阶段会话 ZIP `WenguaLocalBatch_20261029.zip` 已实际建成，SHA256 `c0fa1ea5a0e56acb0c3b10a2198270422e19b0dadc104daeafe126974616e8bc`，内含首次固定版本 Git clone/npm ci 安装器、qfdk Node 真函数包装、Python 独立读盘/九宫差异门控、SQLite进度库、逐时辰真实公历枚举、保留FAIL和模板详细README。固定 qfdk 1d0d1c5 / Wengua 0eae7d2，首次联网下载冻结四资源并生成 SHA256，之后离线。ZIP只有启动脚本，**首次未联网之前不是完整脱网压缩全部原始数据库**。
+
+qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若不同，直接隔离失败而不是强塞旧 Wengua 盘结论。现行冻结的 V8/V10.2/200/81/人物、iOS 和 Important 双镜像/MANIFEST 本轮**零改动**；此时不称真实 qfdk→V8 完整一致，也不宣称518400有效断词已生成。理论 60×12×60×12 不代表每个四柱可达真日期：月柱/时柱依年、日和真实节气。仅按合法公历时刻+时区逐实例生成，同时区分1080规范物理键。
+
+实测：隔离 Python unittest 3/3 PASS、Node语法/Python py_compile/bash -n PASS、ZIP unzip -t PASS。本环境 DNS 无法连接 GitHub，Node npm ci、原 Wengua 全量 Python 单测、qfdk真实整盘和 Swift原生/Xcode/macOS 模拟器**未执行**；这几项只能在用户 Mac 或后续相应 GitHub Actions 真跑后报告。最新既有1080真实生产 Swift/Python完整板对照 #40905670829 FAIL，主CI #40905671173 PASS，失败没有删除。交接和验收门槛见 docs/QFDK_LOCAL_FROZEN_BATCH_AUDIT_20261029.md。下一步先 Mac 跑20+含中宫/阴阳/节气边界真实时辰，列出两算法真正的所有差异；获得用户批准后方可决定是否为新的 qfdk 盘源开发专属完整接线，不偷偷改用户冻结规则。
