@@ -2225,3 +2225,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 用户候选展示稿将V8/写作过程类自指移至研发元数据，纯文本正文只保留真实宫象、原评分级别、角色、冲突和应期限制；正式V8及V10.2资源不变，文章仍待人工审定，未集成iOS。
 
 2026-10-29 首屏语言研究：冻结V8等级仍作内部匹配，不直接面向用户展示「极大凶」字样。SwiftUI改用无医学预后承诺的自然文字；第二页完整V10.2原始细断一字不删。Important两镜像及MANIFEST哈希同步。纯九宫对照只读取 docs/HEALTH_TWO_CLOCKS_RAW_NINE_ONLY_20261029.json；不算独立盲测，详见 docs/HEALTH_FIRSTPAGE_STYLE_GUIDE_20261029.md。
+
+## 2026-10-29 · GPT健康断词固定Prompt V1与1080索引首批真实任务
+用户正式选择方案1：V8.0实算冻结吉凶与V10.2完整断词为只读事实；GPT进行在线古籍审稿候选、首页约200汉字明确吉凶自然断词和各用神宫逐章细致润色；人工审核后才能入离线iOS。冻结Prompt `prompts/health_severity_gpt_editorial_v1_20261029.md` 与独立联网审稿 `prompts/health_severity_online_rule_audit_v1_20261029.md`，文件变化需升版/hash，不得覆盖历史；GPT发现问题只能提交复现盘/原书来源/建议测试，未经用户许可不得改V8表、分数或古籍。脚本 `scripts/health_editorial_batch_v1.py` 真实枚举阴阳18局×60时=1080**基础索引**，**不等于1080个有月令/四柱/人物/年命的完整断案**；另生成12真实已见时辰/关系冻结V8事实编辑任务。`tests/test_health_editorial_batch_v1_20261029.py` 严格锁定得分与详细章节及第5宫事实；`health_editorial_prebatch_v1.yml` CI #40901654390 PASS，任务artifact已归档，0次GPT API调用、0人工审核、0发布稿。出于权限/费用不能把待审队列描述成已GPT批量生成。出处/异说/人物条件疑点与门槛见 `docs/HEALTH_GPT_EDITORIAL_BATCH_AUDIT_20261029.md`；网络转录《神奇之门》第六章提及“大姐还参巽、小弟还参艮”，当前程序姐姐不主动加巽、弟弟只有young/male才可能加艮，没给排行/年龄不得妄加，需核原著并审议后回归，不改现行V8。当前主Python CI新增专门回归；Swift/Xcode之前正式版验收仍是先前SHA，新增后台脚本本次未再次做Swift原生对照或Xcode签名真机验收。
