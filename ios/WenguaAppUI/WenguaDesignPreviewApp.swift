@@ -188,8 +188,7 @@ struct QPalace: Identifiable {
 
 extension QPalace {
     // Maps newly computed Swift chart directly into the exact original UI.
-    // No hand-filled nine palace rows, and no false subject-specific day use
-    // for persons whose V3.9 relationship binder is not yet ported.
+    // Nine-palace board uses current chart facts and real actor binding.
     static func fromNative(_ cell: WenguaNativePalace,
                            chart: WenguaNativeChart,
                            relation: String) -> QPalace {
@@ -1482,7 +1481,7 @@ private struct WenguaHealthFormationSection: View {
 }
 
 // Separate fact report: fully expanded authentic offline nine-palace facts,
-// NOT a substitute for V3.9.1 domain reasoning or a clinical prognosis.
+// Exact native nine-palace evidence, separate from the verdict.
 struct NativePalaceEvidenceCard: View {
     let palace: WenguaNativePalace
     private var stageText: String {

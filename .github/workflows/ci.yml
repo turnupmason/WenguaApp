@@ -20,6 +20,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
       - name: All eight role complete environments, pairs, triples and palace restrictions
         run: python -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+      - name: No deprecated customer wording or obsolete source metadata in live iPhone app
+        run: python -m unittest discover -s tests -p 'test_ios_live_copy_cleanup_20261028.py' -v
       - name: Premium iOS result screen source contract
         run: python -m unittest discover -s tests -p 'test_ios_premium_result_ui_20261028.py' -v
       - name: Immersive offline iPhone journey, frozen V8 and role UI contract

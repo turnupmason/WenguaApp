@@ -13,11 +13,8 @@ struct WenguaVerdictPresentation {
               let finalParagraph = original.components(separatedBy: "\n\n").last else {
             return nil
         }
-        // V10.2 ends the resolved sentence with "；以上仅作...", while
-        // older saved readings used "；以上只作...". Treat the *Chinese
-        // clause boundary*, not a changeable disclaimer, as the separator.
-        // The exact source paragraph is retained in 专业解盘; no scores,
-        // signifiers or outcomes are recomputed by this view.
+        // Extract the resolved first clause without depending on disclaimer
+        // wording. The complete original remains visible in 专业解盘.
         let conclusion = String(finalParagraph.split(separator: "；",
                               maxSplits: 1, omittingEmptySubsequences: false).first ?? "")
             .trimmingCharacters(in: .whitespacesAndNewlines)
@@ -199,7 +196,7 @@ struct WenguaPremiumVerdictCard: View {
                         .fixedSize(horizontal:false,vertical:true)
                 } else {
                     // Unknown, pending or unsupported grades remain fail-closed.
-                    Text("尚未定局")
+                    Text("结论依据待核")
                         .font(.system(size:23,weight:.semibold,design:.serif))
                         .foregroundStyle(gold)
                     Text(verdict.conclusion)

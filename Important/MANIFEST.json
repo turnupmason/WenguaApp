@@ -169,7 +169,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_reading_template_vnext.py",
       "snapshot": "Important/python/reading/health_reading_template_vnext.py",
-      "sha": "ac6620dc3660f46c4973b0b59d361a300b5194d8"
+      "sha": "4e6d70c35630be343d7c7029bf46f263e95457fe"
     },
     {
       "platform": "python",
@@ -403,7 +403,7 @@
       "platform": "swift",
       "canonical": "data/templates/health_severity_vnext/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_severity_vnext/reading_template.json",
-      "sha": "33f844566b8ac10e47aee69f7ea8c05909779c5d"
+      "sha": "f27aec394eb8c3fd3a952be763bee6fc0f9061e7"
     },
     {
       "platform": "swift",
@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "a5028cb0a347961423db5f510311ee6d6f4e359e"
+      "sha": "6f3ec40f408358b6c4579c37a9108ff0182ab8b0"
     },
     {
       "platform": "swift",
@@ -499,7 +499,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "061fe6e66f06a13d857411ab67acdfa4f5902c1f"
+      "sha": "819aba92991e43a114a3a00a239906cab0962473"
     },
     {
       "platform": "swift",
@@ -547,7 +547,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "2869a4704dff5cac17f0c6d7eb40e3794871f2d5"
+      "sha": "3033f84f4688577df9e6064648549041ac7ebe6b"
     },
     {
       "platform": "swift",

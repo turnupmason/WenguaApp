@@ -2,7 +2,7 @@
 
 The row texts live ONLY in the imported Excel -> TSV source. The template
 controls phrasing and section titles, never hand-maintains 81 case values.
-The public v3.9.1 pipeline is not changed.
+Only current V10.2 wording is accepted; frozen V8 arithmetic is unchanged.
 """
 from __future__ import annotations
 from functools import lru_cache
@@ -18,16 +18,7 @@ FIELDS=("heaven","earth","name","polarity",
 @lru_cache(maxsize=1)
 def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
-    if raw.get("schema") not in ("health_severity_user_editable_template_v20261025_v1",
-                                 "health_severity_user_editable_template_v20261026_customer_v2",
-                                 "health_severity_user_editable_template_v20261026_customer_v3_explicit_signed_grades",
-                                 "health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific",
-                                 "health_severity_user_editable_template_v20261027_v7_elder_only_conditional_auspice",
-                                 "health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations",
-                                 "health_severity_user_editable_template_v20261028_tianxian_kun_v9",
-                                 "health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend",
-                                 "health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup",
-                                 "health_severity_user_editable_template_v20261028_v10_2_evidence_first"):
+    if raw.get("schema") != "health_severity_user_editable_template_v20261028_v10_2_evidence_first":
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
@@ -42,7 +33,7 @@ def template():
                 "macro_five_customer","macro_clear_customer",
                 "macro_pace_slow","macro_pace_fast",
                 "macro_pace_mixed","macro_pace_unset",
-                "summary_five_customer","summary_concise"):
+                "summary_concise"):
         if not isinstance(raw["macros"].get(key),str):
             raise ValueError("Missing template macro: "+key)
     if not isinstance(raw.get("formation"),str):

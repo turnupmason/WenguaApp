@@ -26,6 +26,11 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertIn('let resolvedPrefix = "综上所述，此病为"',self.presentation)
         self.assertIn('maxSplits: 1, omittingEmptySubsequences: false',self.presentation)
         self.assertNotIn('components(separatedBy: "；以上只作")',self.presentation)
+        self.assertNotIn('Text("尚未定局")',self.presentation)
+        self.assertIn('Text("结论依据待核")',self.presentation)
+        self.assertNotIn("summary_five_customer",self.template["macros"])
+        self.assertNotIn("final_scoring_v76",self.template)
+        self.assertIn("final_scoring_v80",self.template)
 
     def test_real_corner_markers(self):
         self.assertIn('if !QFive.void(palace).isEmpty', self.chart)

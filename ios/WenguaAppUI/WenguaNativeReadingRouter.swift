@@ -22,13 +22,14 @@ struct WenguaNativeCustomerReading: Codable {
 }
 
 enum WenguaNativeReadingError: Error, LocalizedError {
-    case unsupportedTopic, unsupportedRelationship, missingRole, missingPhrases, invalidPhrase
+    case unsupportedTopic, unsupportedRelationship, missingRole, missingPhrases, missingEnergy, invalidPhrase
     var errorDescription: String? {
         switch self {
         case .unsupportedTopic: return "这个细分领域的断案规则还没有通过原生一致性验收"
         case .unsupportedRelationship: return "当前人物关系尚缺经核的原生用神规则"
         case .missingRole: return "真实九宫中无法唯一确定本次选定的人物或病象用神"
         case .missingPhrases: return "本地最新断案话术模板缺失"
+        case .missingEnergy: return "本机能量规则数据缺失，无法生成本次专业断词"
         case .invalidPhrase: return "断词模板有未定义的占位符"
         }
     }
@@ -98,7 +99,7 @@ enum WenguaNativeReadingRouter {
         }
         let required=["macro_five","macro_clear","macro_slow","macro_fast",
                       "macro_mixed","macro_unset","illness","doctor","medicine",
-                      "patient","hour","chief","details","pending","disclaimer"]
+                      "patient","hour","chief","details","disclaimer"]
         guard required.allSatisfy({ !(phrases[$0] ?? "").isEmpty }) else {
             throw WenguaNativeReadingError.missingPhrases
         }
@@ -258,15 +259,8 @@ enum WenguaNativeReadingRouter {
                 evidenceStatus:"real_native_score_private_python_full_text_parity",
                 sections:exact,rolePalaces:review.roles)
         }
-        // Original injectable stage-one entry used by legacy tests only.
-        // The production fromBundle path ALWAYS supplies 200 original cells.
-        return WenguaNativeCustomerReading(
-            version:"legacy_stage_one_factual_source_only",
-            topicID:topicID,relationship:relationship,iso:chart.iso,
-            evidenceStatus:"no_signed_source_energy_fail_closed",
-            sections:[WenguaNativeCustomerSection(
-                id:"04",title:"专业合断尚未接通",
-                text:try fill("pending"))])
-
+        // Missing 200-cell sources are fatal; never render an obsolete,
+        // half-wired customer result when the current engine is unavailable.
+        throw WenguaNativeReadingError.missingEnergy
     }
 }
