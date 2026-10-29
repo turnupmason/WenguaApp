@@ -2242,3 +2242,14 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 用户要求以后以 `qfdk/qimen` 为新起盘来源，将本仓已冻结疾病 V8.0 规则 + V10.2 完整中文模板 + 200格 + 81格 + 人物规则在其 Mac 上本地逐真实时辰、逐人物批量执行，落盘 JSON/TXT/SQLite 并可中断续跑。已核对 `qfdk/qimen` 是茅山派转盘（Node.js），并非现有《神奇之门》起盘版本的无条件同义词。物理1080键不能替代真实年/月/日/时（月令、合法日干、旬空真假、天显五不遇、人物年命条件）；`60×12×60×12=518400` 是理论直积，不等于518400种合法真实公历干支时刻，也不等于每个用神已验证断词。
 
 本轮提供会话可下载 `WenguaLocalBatch_20261029.zip` Mac 安装/跑批试验包：钉住本仓 `0eae7d2` + qfdk `1d0d1c5`，首次联网拉源码并复制冻结数据、SHA256 检验，之后离线 qfdk 起盘；若九宫、四柱、节气、旬空等未与现有规则所需事实一致，则不出正式词，只记录失败；仅在全字段通过且客户文字逐字一致时存 `reading.txt`。Python 隔离单测3/3、JS/Python/bash语法和ZIP完整性本地实跑 PASS，**未在本环境完成 qfdk Node 实盘安装测试 / Mac Xcode 构建 / 518400条遍历，绝不可称通过**。详见 `docs/QFDK_LOCAL_FROZEN_BATCH_AUDIT_20261029.md`。本轮模板源、计分、Important 双镜像/MANIFEST 均未修改；不删旧失败，保持 #40905670829 Swift/Python 1080真实对照 FAIL 与 #40905671173 主CI PASS 的真实区别。下次须先审 Mac 实际差异，再在用户明确同意后决定新盘源如何接正式模板。
+
+
+## 2026-10-29 · 用户撤换 qfdk 方案，改用 BigFish 原始 TypeScript 起盘（V8评分冻结）
+
+**这条覆盖上方同日 qfdk 试验关于“未来生产起盘源”的旧表述**，但不可删除原历史。用户明确指定 https://github.com/perfhelf/bigfishmarquis-qimen/tree/main/src/engines 作今后排盘方法，不再使用先前 qfdk；本次先接**时家转盘拆补法**，茅山/置闰/日家/月家/年家虽均存在于上游仓库，不等于当前一键切换即可生成正确局数九宫，必须独立实现和验证。上游 pinned commit `6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c`，MIT。用户 Mac 本地 ZIP 最新 `WenguaBigFishLocal_20261029.zip` SHA256 `f7cbe0156494e26873e526c139518f455881f3c7a0b487afa7cc3a88baebdfbe`；首装联网 clone 原 TS+旧冻结 Wengua，TS5.8.3 编译与四源资源 SHA 校验，然后本地单时辰/批量 SQLite 续跑，不访问 GPT API。
+
+严格注意上游 `shijia.ts` 实际字段历史语义反置：`skyStem` 是地盘干、`earthStem` 是天盘干；天芮与天禽两枚携干必须分别保留，且中五宫不造普通星门神。上游 `engine.ts` 茅山/置闰如仅改旧盘 metadata 不等于重新排宫，须直接调用 `shiJiaGenerate` 真排新盘。真实四柱/交节由独立历法输入，不可把518400笛卡尔直积当518400合法公历四柱。
+
+原 V8 health validator 强制 **旧 Shenqi 原算法重排全盘作来源保护**。新 BigFish 候选不可能仅靠改 `status` 通过，不能把旧盘冒充新盘。只在单线程独立研究适配中 `src/wengua/bigfish_source_gate_research.py` 对新真实九宫进行全字段硬门控并**仅临时替换原 V22 的旧源身份核查**，之后完全恢复旧校验；冻结 V8 计分、200源格、81格、V10.2 中文、人物、Important 双镜像/MANIFEST 与Swift源均未修改。研究成果不自动发布App、不保证所有真实流派特殊条件。
+
+真 GitHub Actions 原上游 TS `18×60=1080`结构检测 #40920402953 PASS；首次真实新盘送入旧V8报错 `_validate_chart`，工作流管道无 `pipefail` 假绿 #40920875955，修后真正 FAIL #40921332503（全部保留），后加明确研究源门槛 #40921478524 真 PASS：10/28美东06:00和10:00 两次同钟 BigFish TypeScript 真实9宫给V8 Python产生中文与内部分数，旧新物理差异为零。仅两真实样本，非1080真实四柱完全一致、非医疗预后验证。原V8主CI #40921478534 PASS；Swift原生/Xcode本轮未构建，也未把 iPhone 生产入口真正替换为 BigFish，**对用户必须如实说清**。详见 `docs/BIGFISH_OFFLINE_CAST_REPLACEMENT_AUDIT_20261029.md`。旧 #40905670829 Swift/Python 1080失败仍保留。
