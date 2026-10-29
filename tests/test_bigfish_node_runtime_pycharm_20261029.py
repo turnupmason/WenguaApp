@@ -24,6 +24,7 @@ def load_batch():
     stub.BIGFISH_SHA = "6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c"
     stub.WENGUA_SHA = "0eae7d2b94742939e885938f8603e85c9452d1c3"
     stub.GRADE = {i: str(i) for i in range(-5, 6)}
+    stub.COMPILED = ROOT / "build" / "bigfish_compiled_test_fixture"
     with patch.dict(sys.modules, {"local_batch": stub}):
         spec = importlib.util.spec_from_file_location("wengua_518400_node_test", SOURCE)
         module = importlib.util.module_from_spec(spec)
