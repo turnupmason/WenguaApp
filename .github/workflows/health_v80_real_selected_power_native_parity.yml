@@ -17,6 +17,8 @@ on:
       - 'tests/test_health_v102_summary_20261028.py'
       - 'scripts/ios_v80_same_clock_neutral_parity_20261028.py'
       - 'Important/MANIFEST.json'
+      - 'tests/test_physical_1080_atlas_dataset_20261029.py'
+      - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
   workflow_dispatch:
 permissions:
   contents: write
@@ -31,6 +33,9 @@ jobs:
           mkdir -p /tmp/wengua-v80
           python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v 2>&1 | tee /tmp/wengua-v80/matrix_tests.log
           python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v80/mirror_tests.log
+      - name: Verify all 1080 persisted real source physical boards before native parity samples
+        run: |
+          python3 -m unittest discover -s tests -p 'test_physical_1080_atlas_dataset_20261029.py' -v
       - name: Compile actual native Swift engine and original Python text port
         run: |
           set -euo pipefail
