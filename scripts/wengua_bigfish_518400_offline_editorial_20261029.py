@@ -35,7 +35,7 @@ PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则�
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
 CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
-MAX_NEW_ROWS = 0             # 0 = 剩余全部518400行；想小试时改20
+MAX_NEW_ROWS = 20            # v3先核对20行及40双节气；经人工检查后改0继续518400
 ROWS_PER_EXCEL = 5000        # 104 numbered CSV / XLSX workbooks per person
 COMMIT_EVERY = 10            # committed records surviving power loss
 PRINT_EVERY = 100            # print progress every 100 newly completed rows
