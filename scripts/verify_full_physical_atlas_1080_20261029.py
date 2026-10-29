@@ -172,8 +172,16 @@ def build_one(dun,ju,hour,*,life):
     }
     # Fingerprint only real physical star/door/god/stem placements; do
     # NOT let source line, month variants or actor identity create "new plates".
+    # Visible star/door/god/stem placements may coincide; the complete
+    # actual board additionally has Xun-void, horse and Xun-shou.
+    # Neither fingerprint includes an artificial bureau ID or hour label.
+    physical["visible_layout_fingerprint"]=sha({"palaces":places})
     physical["physical_fingerprint"]=sha({
         "palaces":places,
+        "xun_shou":chart["xun_shou"],
+        "hidden_stem":chart["hidden_stem"],
+        "void_branches":sorted(blanks),
+        "horse_branch":horse,
     })
     return physical
 
@@ -189,7 +197,16 @@ def all1080():
     hashes=[r["physical_fingerprint"] for r in rows]
     duplicates=Counter(hashes)
     duplicated={k:v for k,v in duplicates.items() if v>1}
-    return rows,duplicated
+    visible_counts=Counter(r["visible_layout_fingerprint"] for r in rows)
+    visible_collisions={
+        h:[r["base_id"] for r in rows if r["visible_layout_fingerprint"]==h]
+        for h,num in visible_counts.items() if num>1
+    }
+    full_collisions={
+        h:[r["base_id"] for r in rows if r["physical_fingerprint"]==h]
+        for h in duplicated
+    }
+    return rows,full_collisions,visible_collisions
 
 
 def main():
@@ -197,7 +214,7 @@ def main():
     p.add_argument("--output",required=True)
     p.add_argument("--report",required=True)
     a=p.parse_args()
-    rows,duplicates=all1080()
+    rows,duplicates,visible_collisions=all1080()
     dest=Path(a.output);dest.parent.mkdir(parents=True,exist_ok=True)
     dest.write_text("".join(canonical(x)+"\n" for x in rows),encoding="utf8")
     report={
@@ -206,6 +223,10 @@ def main():
       "distinct_physical_fingerprints":len({x["physical_fingerprint"] for x in rows}),
       "duplicate_physical_hash_count":len(duplicates),
       "duplicate_hash_examples":list(duplicates.items())[:12],
+      "distinct_visible_layout_fingerprints":len({x["visible_layout_fingerprint"] for x in rows}),
+      "duplicate_visible_layout_hash_count":len(visible_collisions),
+      "visible_layout_duplicate_examples":list(visible_collisions.items())[:12],
+      "full_board_definition":"physical palaces + xun_shou + hidden stem + real void branches + real horse branch, without bureau/hour identity",
       "all_81_formations_verified":True,
       "all_8_doors_8_gods_9_stars_unique_per_plate":True,
       "no_ordinary_centre_symbols":True,
@@ -218,7 +239,7 @@ def main():
     Path(a.report).write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n")
     print("PHYSICAL_1080_REPORT "+canonical(report))
     if duplicates:
-        raise RuntimeError("1080 IDs do not produce 1080 distinct physical placement fingerprints")
+        raise RuntimeError("1080 IDs collide even after authentic Xun-void/horse/Xun-shou facts; investigate source")
 
 
 if __name__=="__main__":
