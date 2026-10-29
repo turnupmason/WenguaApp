@@ -2143,3 +2143,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-29 · 新阶段实际公历样本生成范围固定1930—2040（仅范围决定，非宣布全部生成）
+
+用户确认今后真实公历日期的问卦断词预生成只取1930-01-01至2040-12-31，结合时区、节气交节、合法四柱及真实人物用神；不再为无实用性的更古老公历年代进行成规模新文本生产。当前 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 的518400仍为60年干支×12月支×60日干支×12时支的**抽象条件组合**，每项并无“公历年份”可裁切；用户的新范围不意味着该脚本已切换为1930–2040历日迭代。1080完整物理盘和六甲独立年/月/日/时绑符、V8/200/81、原著与旧历史案例/失败SQLite均保留；1920长辈旧已揭晓回归不属于新实历生成样本。年命继续默认None，在所有人物主辅用神完成前不额外加。决定与未来实现要求详 `docs/REAL_CALENDAR_WINDOW_1930_2040_20261029.md`；已同步 `docs/WENGUA_CONTINUITY_PROMPT_BIGFISH_NO_NATAL_20261029.md`，未来应另建真实datetime起盘新版本和测试、先小样本校对，不能凭文档称已经批量真实起盘。
