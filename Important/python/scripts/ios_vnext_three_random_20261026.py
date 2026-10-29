@@ -16,7 +16,7 @@ RELATIONS=(("self","本人","direct_self",None),
            ("father","父亲","direct_proxy",None),
            ("wife","妻子","direct_proxy","female"))
 
-def produce(seed=SEED,count=3,wife_only=False):
+def produce(seed=SEED,count=3,wife_only=False,*,years=None,required_jia_source=None):
     if not 1 <= count <= 24:
         raise ValueError('batch count must be 1..24')
     rng=random.Random(seed)
@@ -25,7 +25,8 @@ def produce(seed=SEED,count=3,wife_only=False):
     accepted_instants=set()
     for draw in range(1,max(81,count*40)+1):
         if len(cases)==count:break
-        instant=datetime(rng.randint(2020,2025),rng.randint(1,12),
+        selected_year=(rng.randint(2020,2025) if years is None else rng.choice(years))
+        instant=datetime(selected_year,rng.randint(1,12),
             rng.randint(1,28),rng.choice([1,3,5,7,9,11,13,15,17,19,21]),
             tzinfo=ZoneInfo("America/New_York")).isoformat()
         rel,label,context,sex=RELATIONS[2 if wife_only else len(cases)%len(RELATIONS)]
@@ -43,6 +44,14 @@ def produce(seed=SEED,count=3,wife_only=False):
             rejected.append({"draw":draw,"instant":instant,
                              "relationship":label,"reason":str(e)})
             continue
+        if required_jia_source:
+            if required_jia_source not in ("year","month","day","hour"):
+                raise ValueError("required_jia_source must be one four-pillar key")
+            if not r["four_pillars"][required_jia_source].startswith("甲"):
+                rejected.append({"draw":draw,"instant":instant,
+                                 "relationship":label,
+                                 "reason":"technical_source_not_jia_"+required_jia_source})
+                continue
         accepted_instants.add(instant)
         q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
         roles={
