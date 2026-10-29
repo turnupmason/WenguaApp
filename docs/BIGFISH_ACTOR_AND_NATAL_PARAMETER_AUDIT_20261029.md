@@ -39,3 +39,9 @@ MAX_NEW_ROWS = 20 # 小试；回0继续全部未记录条
 
 ## 下一步
 可本地爸爸 MAX_NEW_ROWS=20 核对启动打印及Excel新来源列，确认后改0跑剩余；后来真实年命出现单独新条件树重新跑。注意518400是组合索引、每行两节气候选不能冒充真实公历起盘事件。批量GPT/人工只润色、保留原结果/事实sha，审核放行后才可打包离线iOS。
+
+## 同轮最终真实 iOS/Swift 验收（以上“待核”状态的后续事实，不覆盖旧历史）
+- 完整原生 Swift 编译、Python↔Swift V8/V10.2多真实时辰逐章节全文对照的正式 Actions **#40942904973 PASS**：https://github.com/turnupmason/WenguaApp/actions/runs/40942904973 。这是已有本体生产引擎 parity，并不证明本轮将BigFish TS安装到iPhone。
+- 真实macOS-15 XcodeGen生成 `ios/WenguaAppUI/WenguaApp.xcodeproj` + iOS Simulator正式app编译、11档UI结论与V10.2断词验收、iOS bundle 中200能量JSON/81格TSV/原人物JSON/中文模板真实资源逐项验收、1080规范盘仓库检查 **#40942917483 PASS**：https://github.com/turnupmason/WenguaApp/actions/runs/40942917483 。是无签名模拟器构建，并非签名真机或AppStore。
+- 新Python人物字段/年命真实BigFish四案 CI **#40942647716 PASS**；专项Python角色绑定 **#40941942424 PASS**；旧CI #40942273256 FAIL仅因夹具缺normalize_bigfish，已保留。最新可用主CI **#40943271594 PASS**。
+- 本次只修改独立Mac批量适配器和测试/审计，不改冻结数学、数据文件、Swift生产代码；未在用户Mac跑满每人物518400抽象组合的双节气全部候选。
