@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - scripts/verify_bigfish_upstream_1080_20261029.cjs
+      - scripts/bigfish_shijia_cast_bridge_20261029.cjs
+      - scripts/verify_bigfish_frozen_v8_samples_20261029.py
       - .github/workflows/verify_bigfish_upstream_20261029.yml
 jobs:
   compile-and-verify:
@@ -26,9 +28,17 @@ jobs:
       - name: Real 1080 generated charts structural checks
         run: |
           node scripts/verify_bigfish_upstream_1080_20261029.cjs /tmp/bigfish-dist | tee /tmp/bigfish-1080.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Two real-clock BigFish casting to frozen V8/V10.2 (separate audit)
+        run: |
+          python -m scripts.verify_bigfish_frozen_v8_samples_20261029 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-real-v8.jsonl
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: bigfish-original-ts-1080-structural-results
-          path: /tmp/bigfish-1080.json
+          path: |
+            /tmp/bigfish-1080.json
+            /tmp/bigfish-real-v8.jsonl
           if-no-files-found: ignore
