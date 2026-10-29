@@ -10,3 +10,10 @@
 - 新 test_ios_live_copy_cleanup_20261028.py 进入当前主CI，检查无旧标题、虚假未验收提示、V7旧配置和伪结果分支，且十档与当前断词存在。Xcode bundle现改验 current summary_concise，必须跑macOS实际SwiftUI iOS Simulator与bundle200/81/人物资源；原生Python↔Swift全字验收须实际确认。本提交不宣称未执行的结果。
 
 历史记录一律只追加。因用户显式本次批准清理旧文字，此次 live JSON 文件blob SHA变动是冻结V10.2模板的一次“**仅清理死字段，不改实际输出字面**”例外；原始冻结源SHA及断词全文仍长期留存，恢复须新获用户批准。
+
+## 实际Actions全量交付、镜像双副本失败与修复（绝不删日志）
+- 本轮首提交 `01a5de34ada8af166bc95680845f7b0da17c64fa`：Python当前主CI #40810874530 FAIL，是旧测试 `tests/test_health_v80_concise_friend_20261028.py` 还访问已删除死宏 `summary_five_customer`；不能为过旧测试把该宏偷偷重新加入App。
+- 同一首提交的V8实际native #40810874359 FAIL、V7.7 native #40810874473 FAIL、旧V7.4回归 #40810874404 FAIL，根因是双镜像中遗漏 `Important/python/templates/templates/health_severity_vnext/reading_template.json`，它仍含旧comment且字节不同；旧V-next preview #40810874546 也曾FAIL。各真实失败均保留于Actions及自动生成的追加失败报告；旧iOS Offline Native Casting Parity #40810874334 FAIL亦不声称全库无失败。
+- 修复提交 `29509f71ef039d9c49e10bcb33b40604a2042ee5`：真实检查 MANIFEST 相同canonical有 **两份镜像记录**（Python与Swift），把两份资源均指向清理后的同一个Git blob SHA `f27aec394eb8c3fd3a952be763bee6fc0f9061e7`，更新 MANIFEST；将旧朋友测试仅改为验证当前真实 `macro_five_customer`。原冻结200/81/V8算分/有实际调用的V10.2断词宏未变。
+- 修复后同一代码源 SHA `29509f71`：Python3.11/3.12正式主CI #40811025113 **PASS**（包括本轮新旧文字清库测试和 Important双镜像字节）；V8完整原生Swift ↔ Python 200格/五方向/同宫及全文 #40811024846 **PASS**；V7.7已见旧钟原生比对 #40811024502 **PASS**。首次提交 `01a5de34` 真macOS XcodeGen/Xcode iOS Simulator完整编译、包内200/81/人物/V10.2模板资源 #40810874316 **PASS**；该测试源码和App资源之后未再变，只修复 Important Python漏镜像与旧断言，故该实测构建与最终运行代码同版（但无需假称修复SHA另跑过Xcode）。
+- 清理后核验的仍是冻结V8数值与V10.2实际生成断词逐字一致，不是签名真机或医学有效性。用户端此前安装的App需要重新编译更新才会看见旧标题及假未验收文案被清理。
