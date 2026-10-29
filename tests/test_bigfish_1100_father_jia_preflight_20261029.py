@@ -75,7 +75,8 @@ class Failure1100Regression(unittest.TestCase):
             db.close()
     def test_no_rule_or_natal_change(self):
         self.assertIsNone(M.PATIENT_BIRTH_GANZHI)
-        self.assertTrue(M.DEFER_UNRESOLVED_JIA)
+        self.assertFalse(M.DEFER_UNRESOLVED_JIA)
+        self.assertIn("sixjia",M.PIPELINE_VERSION)
         self.assertEqual(M.N_CASES,518400)
         self.assertEqual(len([x for x in M.CYCLE60 if x[0]=="甲"]),6)
 

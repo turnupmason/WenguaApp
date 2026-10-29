@@ -133,18 +133,23 @@ class RoleNatalRealSourceTests(unittest.TestCase):
                 self.profile_input('father',birth=fake)
 
     @unittest.skipUnless((ROOT/'src/wengua/health_dynamic_v21.py').exists(),'Real source not available here')
-    def test_known_jia_cross_pillar_unsafe_is_not_false_success(self):
+    def test_year_jia_uses_year_not_hour_xun(self):
         from src.wengua.casting_shenqi import layout_from_explicit_bureau
         c=layout_from_explicit_bureau(dun='yang',ju=8,hour_ganzhi='甲戌')
         cal={**self.calendar,'year_ganzhi':'甲子','hour_ganzhi':'甲戌'}
         inquiry,ref,_=self.profile_input('father')
-        with self.assertRaisesRegex(ValueError,'甲独立寻址'):
-            M.verify_actual_role(c,inquiry,cal,ref)
+        facts=M.verify_actual_role(c,inquiry,cal,ref)
+        self.assertEqual(facts['source_ganzhi'],'甲子')
+        self.assertEqual(facts['stem'],'甲')
+        self.assertEqual(facts['carrier_stem'],'戊')
+        self.assertNotEqual(facts['carrier_stem'],c['hidden_stem'])
 
     @unittest.skipUnless((ROOT/'src/wengua/health_dynamic_v21.py').exists(),'Real source not available here')
-    def test_real_甲_natal_must_not_borrow_hour_xun(self):
+    def test_full_explicit_birth_jia_is_independent_optional(self):
         inquiry,ref,_=self.profile_input('father',birth='甲子')
-        with self.assertRaisesRegex(ValueError,'年命为甲'):
-            M.verify_actual_role(self.board,inquiry,self.calendar,ref)
+        facts=M.verify_actual_role(self.board,inquiry,self.calendar,ref)
+        self.assertEqual(facts['natal_year'],'甲子')
+        self.assertTrue(facts['natal_active'])
+        self.assertIsNotNone(facts['natal_palace'])
 
 if __name__=='__main__':unittest.main(verbosity=2)

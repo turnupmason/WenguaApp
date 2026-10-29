@@ -14,7 +14,10 @@ class ConciseV102(unittest.TestCase):
                                  ("friend","朋友","direct_proxy",None))
             batch=generator.produce(seed=202610282259,count=5)
         finally:generator.RELATIONS=original
-        self.assertEqual([x["summary"]["score"] for x in batch["cases"]],[5,0,5,-1,-5])
+        # Frozen pre-six-Jia historical snapshot: [5,0,5,-1,-5].
+        # Approved 2026-10-29 source-pillar Jia role correction moves some
+        # selected palaces; keep old result in source audit, not as new expected.
+        self.assertEqual([x["summary"]["score"] for x in batch["cases"]],[5,-5,0,5,-3])
         for c in batch["cases"]:
             s=next(x["text"] for x in c["source_sections"] if x["id"]=="90_review")
             self.assertIn("天芮在",s)
