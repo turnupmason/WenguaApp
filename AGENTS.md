@@ -2345,3 +2345,10 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+## 2026-10-29 · 用户批准的四柱独立六甲遁仪 · 正式接线与源事实回归
+
+此前“甲年/月/日只能待核不算”的策略已被用户明确覆盖。问测人物用神如取年干、月干、日干、时干，**先选自己的完整来源干支**，遇甲依原 `SIX_JIA`：甲子→戊、甲戌→己、甲申→庚、甲午→辛、甲辰→壬、甲寅→癸，查该六仪真实**天盘携干所在宫**。不许把取甲的角色身份改成戊的能量，源200格仍核“甲”本身月令、落宫的强弱；不许借当前甲时的旬首替代年/月/日甲。出生年命独立于问测年柱，当前BigFish批量 `PATIENT_BIRTH_GANZHI=None`，无年命宫与得分。具体代码、失败及全档验证参 `docs/SIX_JIA_4_PILLARS_BIGFISH_SWIFT_PARITY_20261029.md`。
+
+Python `health_dynamic_v21.bind_patient` 与 `health_severity_template._find_heaven_stem`、Swift `WenguaNativeActorBinding/WenguaNativeReadingRouter/WenguaNativeVNextEngine` 已按自身来源柱统一；历史旧甲柱阻断案例和测试已版本化回归（不是悄改旧文件）。BigFish Mac批量 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` pin新规则源码 `a288d127883157cb2bea96b676d2c86a45c2ab12`，v3独立目录 `六甲全柱来源_20261029_v3_地盘墓核验`，默认MAX_NEW_ROWS=20，20行核验后才改0跑全量；旧1100失败/SQLite/人工稿不覆盖。地盘乙入墓有实际全12墓支，Python旧对照干名漏判，已按现冻结入墓+1条件修正，与Swift实证一致。用户原始父亲甲子前20×2和乙丑后20×2真实BigFish 80/80 PASS #40949676143；9个真实公历日期跨六种甲年+月日时甲全断词 Python↔Swift逐字一致 #40951607416 PASS，后续 #40951701897 PASS。此前失败 #40950149606、#40951317117 以及旧父亲1100均留历史，不删、不将已见回顾冒盲测。原200、81、V8的5x5和数学加减系数保持。没有在用户Mac真跑全518400×2，Xcode Simulator成功不代表真机签名。
