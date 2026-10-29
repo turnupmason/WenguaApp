@@ -2001,3 +2001,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 用户候选展示稿将V8/写作过程类自指移至研发元数据，纯文本正文只保留真实宫象、原评分级别、角色、冲突和应期限制；正式V8及V10.2资源不变，文章仍待人工审定，未集成iOS。
 
 2026-10-29 首屏语言研究：冻结V8等级仍作内部匹配，不直接面向用户展示「极大凶」字样。SwiftUI改用无医学预后承诺的自然文字；第二页完整V10.2原始细断一字不删。Important两镜像及MANIFEST哈希同步。纯九宫对照只读取 docs/HEALTH_TWO_CLOCKS_RAW_NINE_ONLY_20261029.json；不算独立盲测，详见 docs/HEALTH_FIRSTPAGE_STYLE_GUIDE_20261029.md。
+
+## 2026-10-29 · V8病情轻重GPT文章工厂准备与真实首批数量
+已固定专业润色 Prompt prompts/health_severity_gpt_editorial_v1_20261029.md 和独立在线原书核查 Prompt prompts/health_severity_online_rule_audit_v1_20261029.md。用户选择页面1明确传统结论、自然中文约200字；页面2保留V8/V10.2真实详细用神宫完整证据，各宫之后可分别GPT专业润色；输入人物/完整九宫/天心乙奇值符/时干/独立200/81力量和克病条件为只读，人工审批和版本归档后才是本机可匹配资源。遇证据疑点记录待审，不自动更改V8冻结评分。脚本 scripts/health_editorial_batch_v1.py 已生成1080个阴阳18局×60时的基础排盘索引（都标不完整，缺年日月令等），与10月28日06:00/10:00父母爷奶姐弟共12真实完整冻结V8事实输入。专门Actions #40901654390 PASS，归档docs/HEALTH_EDITORIAL_PREBATCH_RUN_40901654390_ATTEMPT_1.md、artifact；该工作流不调用GPT接口/未联网自动审核，正式已GPT润色稿=0、人工批准=0。OpenAI Batch requests generator需真API模型ID和授权，不将占位模型/假密钥当作已执行。本次额外核查待核：长姐巽4、小弟艮8须按原著及排行/年龄条件，不默加。文档 docs/HEALTH_GPT_EDITORIAL_BATCH_AUDIT_20261029.md；主CI新测试后查实际GitHub Run，不等于全部历史测试/新Swift parity或新Xcode通过。
