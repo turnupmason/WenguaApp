@@ -19,7 +19,13 @@ ARCHIVE = ROOT / "docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_4079499953
 
 def native_sections() -> list[dict[str,str]]:
     original=ARCHIVE.read_text(encoding="utf-8")
-    readings=re.findall(r"#### 综合断语\n(.*?)\n\n#### 时空及应期",original,re.S)
+    # This archive also contains many OLDER fixed cases; select only the
+    # dedicated five V10.2 repeat-clock readings, never all 90_review sections.
+    marker="## V10.2 已见五个真实时辰"
+    assert original.count(marker)==1,"V10.2 actual five-case archive section missing"
+    same_clock=original.split(marker,1)[1].split(
+        "### 五份Python↔Swift全章节逐字差异报告",1)[0]
+    readings=re.findall(r"#### 综合断语\n(.*?)\n\n#### 时空及应期",same_clock,re.S)
     assert len(readings)==5, "Five known V10.2 real Swift archive readings required"
     return [{"text":content,"grade":grade} for content,grade in
         zip(readings,["极大吉","不凶不吉","极大吉","极小凶","极大凶"])]
