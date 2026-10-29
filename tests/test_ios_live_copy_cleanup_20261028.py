@@ -13,6 +13,7 @@ class LiveCopyCleanup(unittest.TestCase):
         self.assertNotIn("专业合断尚未接通",router)
         self.assertNotIn("legacy_stage_one_factual_source_only",router)
         self.assertNotIn("V3.9",board)
+        self.assertNotIn("全部因素推断后", (ROOT/"src/wengua/health_palace_detailed_vnext.py").read_text())
         self.assertNotIn("当前原生端已核定时辰、九宫、人物宫",str(template))
         self.assertNotIn("待用户验收",str(template))
         for key in ("comment","conditional_rule_overlays_v72","summary_format_version",

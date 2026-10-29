@@ -305,7 +305,7 @@ def render_complete_selected_palace(detail, *, quantified=None, compact=False):
                            ("本宫驿马",detail["horse_in_this_palace"]))
         if active) or "无已核特殊刑墓迫"
     palace=quantified["palace_score"] if quantified is not None else None
-    final=("全部因素推断后，此宫为"+signed(palace.get("score"))+"。"
+    final=("宫象"+signed(palace.get("score"))+"。"
            if palace is not None else "")
     if compact:
         # Consumer sees real pairs and polarity, NOT the entire book chapter.
