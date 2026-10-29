@@ -2103,3 +2103,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 ### 2026-10-29 · PyCharm Node fast-path专项最终GitHub CI结果
 
 原应用修复 `32cd185ff137`：源码每次装载先解析PyCharm PATH/安全确认Node，worker用绝对node路径。新测试夹具两轮首FAIL `#40944733685`（缺BIGFISH_SHA）、`#40944904961`（缺COMPILED）**全部历史保留，不代表生产脚本失败**。按原Mac安装常量补齐后最终源码py_compile+批量旧测试+人物源校验+4项新Node测试 **PASS #40944991588**、当前V8主CI **PASS #40944991638**；原本同轮Swift/Python parity **PASS #40944733652**、macOS Xcode iOS Simulator资源包 **PASS #40944733651**、BigFish1080结构 **PASS #40944733539**。只是GitHub测试，不等于Mac上Node官方自动安装或518400×2真正跑完。用户明确先全部关系用神、无年命，后加出生年命为新版本额外用神。参见 `docs/BIGFISH_PYCHARM_NODE_FASTPATH_NO_NATAL_20261029.md` 与跨对话Prompt。
+
+
+### 2026-10-29 · 上传父亲真实1100行Excel：2200/2200失败的批量工程定位
+
+实际 `father_000001-001100.xlsx` A1:AQ1101：1100行全为问测年甲子、2节气2200份全部错误 `casting_year_stem不能借用当前小时甲旬首六仪`，原盘编号存在但断词0份、用神宫0份；前8640行按年柱枚举均是甲子，所以旧脚本造成大量重复无意义失败并已存SQLite。不是Excel导出丢失，也不意味着正式Swift支持独立年甲（Swift现有actualStem同样只认真实甲时），独立年甲候选未经原著核准不可硬绑定为戊。加批量预检暂缓已知甲，按原idx保留旧失败，非甲继续真实BigFish+V8/V10.2；新增独立非连续本轮Excel/CSV/JSONL输出，连续3个新未知双失败立即停止，冻结V8/200/81/Swift/Important不改，年命仍None。审计 `docs/BIGFISH_FATHER_1100_JIA_QUEUE_EXPORT_AUDIT_20261029.md`；专项测试4项（尚待真实Actions终态），用户Mac仍需换脚本试20行。

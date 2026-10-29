@@ -44,6 +44,8 @@ AUTO_INSTALL = True        # 首次运行自动安装 GitHub 固定源码与 Typ
 AUTO_INSTALL_NODE = True   # Mac 缺 Node 时自动下载官方 LTS 到本项目 toolchain，无 sudo / .command
 INSTALL_ONLY = False       # 改 True 时仅安装/校验，不开始 518400 批量
 STOP_IF_FIRST_ROW_FAILS = False # 缺人物用神时仅保留失败，继续生成可断的其它场景
+DEFER_UNRESOLVED_JIA = True # 已知非时柱甲用神不能核定；显式暂缓，禁止重复制造数千空断词
+MAX_CONSECUTIVE_UNEXPECTED_FAILURES = 3 # 未预先识别的双节气失败到门槛就停止并保留所有失败
 # ==========================================================
 
 import csv
@@ -1110,6 +1112,66 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
     return result
 
 
+
+def deferred_source_jia(pillars:dict, validation:dict) -> str | None:
+    """Reject only the KNOWN unsupported Jia source; don't mark it as cast FAIL.
+
+    This is a scheduler decision, NOT a fabricated 六甲 carrier or score.
+    A real Jia HOUR is handled by the existing frozen binder; independent
+    year/month/day Jia source pillars require a separately verified rule.
+    """
+    kind=(validation["reference"]["kind"] if validation["context"]!="event_news"
+          else "day_stem")
+    key={"day_stem":"day","casting_day_stem":"day",
+         "casting_year_stem":"year","casting_month_stem":"month"}
+    column=key.get(kind)
+    if column and pillars[column][0]=="甲":
+        return (f"独立来源甲待核：{kind}={pillars[column]}；"
+                "不能借用本次小时旬首。保留已有旧失败，等待独立书证/新版本重算")
+    return None
+
+
+def export_new_batch(db, root:Path, labels:dict, indices:list[int]) -> str | None:
+    """Always deliver NEW noncontiguous results as a separate snapshot.
+
+    Previously exported Excel / reviewer edits are immutable. Older output
+    exporter requires contiguous 0..N-1 and cannot export a resumed range
+    after deferred Jia indexes; this path never pretends a gap is completed.
+    """
+    if not indices:
+        return None
+    indices=sorted(set(indices))
+    first,last=indices[0]+1,indices[-1]+1
+    version=sha_text(canonical((PIPELINE_VERSION, RELATIONSHIP, indices)))[:12]
+    name=f"{RELATIONSHIP}_本轮新增_{first:06d}-{last:06d}_{version}"
+    outputs=root/"Excel_CSV_可直接打开"
+    outputs.mkdir(parents=True,exist_ok=True)
+    csv_path=outputs/(name+".csv")
+    xlsx_path=outputs/(name+".xlsx")
+    jsonl_path=outputs/(name+"_待审事实包.jsonl")
+    originals=[]
+    for idx in indices:
+        item=db.execute(
+            "SELECT idx,pillars_json,result_jie_json,result_qi_json FROM cases WHERE idx=?",
+            (idx,)).fetchone()
+        if item is None:
+            raise RuntimeError(f"Export missing committed result idx={idx}")
+        originals.append(item)
+    data=[make_row(i,json.loads(p),json.loads(j),json.loads(q),labels)
+          for i,p,j,q in originals]
+    if not csv_path.exists():
+        temp=csv_path.with_suffix(".csv.incomplete")
+        with temp.open("w",encoding="utf-8-sig",newline="") as f:
+            writer=csv.writer(f)
+            writer.writerow(HEADERS)
+            writer.writerows([[literal_excel(v) for v in row] for row in data])
+        os.replace(temp,csv_path)
+    if GENERATE_XLSX and not xlsx_path.exists():
+        write_xlsx(xlsx_path,data)
+    export_editorial_jsonl(jsonl_path,originals,relationship=RELATIONSHIP)
+    return str(xlsx_path if GENERATE_XLSX else csv_path)
+
+
 def run():
     if ROWS_PER_EXCEL<1 or ROWS_PER_EXCEL>30000:raise ValueError('ROWS_PER_EXCEL must be 1..30000')
     if COMMIT_EVERY<1 or PRINT_EVERY<1:raise ValueError('commit/report cadence must be positive')
@@ -1166,6 +1228,11 @@ def run():
     sys.path.insert(0,str(base.SOURCE))
     worker=BigFishWorker(root)
     current=0;pending=0;failed=0
+    deferred=0; consecutive_failures=0
+    newly_added=[]; newest_export=None
+    if DEFER_UNRESOLVED_JIA:
+        print("已知风险防护：非时柱甲来源暂缓；不占本次新增额度，不制造假用神。",flush=True)
+        print("原有失败及人工Excel不修改；新生成记录写入独立本轮批次文件。",flush=True)
     try:
         # Reuse the EXACT preflight inquiry for every per-term cast.
         for idx in range(N_CASES):
@@ -1173,6 +1240,12 @@ def run():
             if db.execute('SELECT 1 FROM cases WHERE idx=?',(idx,)).fetchone():
                 continue
             pillars=scenario(idx)
+            why=deferred_source_jia(pillars,validation) if DEFER_UNRESOLVED_JIA else None
+            if why:
+                deferred+=1
+                if deferred==1:
+                    print("[暂缓而非失败] 第一个待核组合",idx+1,pillars,why,flush=True)
+                continue
             term1,term2=TERM_BY_MONTH[pillars['month'][1]]
             r1=compute_variant(worker,pillars,term1,inquiry)
             r2=compute_variant(worker,pillars,term2,inquiry)
@@ -1192,6 +1265,16 @@ def run():
                 (idx,case_id,canonical(pillars),canonical(r1),canonical(r2),
                  datetime.now(timezone.utc).isoformat()))
             current+=1;pending+=1
+            newly_added.append(idx)
+            if r1['status'].startswith('失败') and r2['status'].startswith('失败'):
+                consecutive_failures+=1
+            else:
+                consecutive_failures=0
+            if consecutive_failures>=MAX_CONSECUTIVE_UNEXPECTED_FAILURES:
+                db.commit();pending=0
+                raise RuntimeError(
+                    "非甲来源连续三行两节气均失败，已保存错误并停止以免再产生成千空白："
+                    +r1.get('error','')[:250]+" / "+r2.get('error','')[:250])
             # Early source/data failures are never silently recast or amplified
             # into hundreds of thousands of bogus "successful" outputs.
             if STOP_IF_FIRST_ROW_FAILS and current==1 and (
@@ -1208,14 +1291,23 @@ def run():
                       f'新增失败分支 {failed:,}；已生成原盘 {len(worker.physical)}，'
                       f'缓存节气局数 {len(worker.bureaus)}',flush=True)
             # Export full CSV/XLSX chunks, not partial/existing edited files.
+            if len(newly_added)>=ROWS_PER_EXCEL:
+                db.commit();pending=0
+                newest_export=export_new_batch(db,root,labels,newly_added)
+                print("真实新增数据已导出",newest_export,flush=True)
+                newly_added.clear()
             if (idx+1)%ROWS_PER_EXCEL==0:
                 db.commit();pending=0
                 count=export_completed_chunks(db,root,labels)
-                if count:print('导出新Excel/CSV分卷',count,flush=True)
+                if count:print('导出完整连续分卷',count,flush=True)
     except KeyboardInterrupt:
         print('手动停止：正在保存全部已计算记录，重新运行自动续接。',flush=True)
     finally:
         db.commit()
+        if newly_added:
+            newest_export=export_new_batch(db,root,labels,newly_added)
+            print("本轮新增可打开的Excel/CSV",newest_export,flush=True)
+        print("独立甲用神未核候选（本次遍历跳过）",deferred,flush=True)
         # Export the last incomplete chunk too: first 20 test cases stay visible.
         # Filenames include ending index; previously edited exports remain untouched.
         exported=export_completed_chunks(db,root,labels,completed_only=False)
@@ -1225,6 +1317,7 @@ def run():
             print('全人物循环结束，518400行均已有状态和结果。',flush=True)
         print('文件目录:',root/'Excel_CSV_可直接打开',flush=True)
         print('原始断词、失败与人工编辑栏见CSV/XLSX；按节气分别供GPT润色的事实包见同目录 *_待审事实包.jsonl。',flush=True)
+        print('严格保留旧失败；尚未验收的独立甲年/月/日用神不能假称518400条全部可断。',flush=True)
         db.close()
         worker.close()
 

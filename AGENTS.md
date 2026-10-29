@@ -2315,3 +2315,8 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 ### 2026-10-29 · BigFish Node PyCharm修复CI最终补记
 
 真实代码 commit `32cd185ff`，后续fixture修 `fc1d9750`。历史专项两轮测试夹具 FAIL #40944733685/#40944904961 已保留；**#40944991588 BigFish batch+新Node回归 PASS**、**#40944991638 主V8 CI PASS**、**#40944733652 native parity PASS**、**#40944733651 macOS Xcode Simulator PASS**。仍未验用户Mac真实20行/518400×2，BigFish尚未换入Swift生产起盘；所有关系先无年命。见新增审计与跨窗口总Prompt，不得因CI成功声称用户本地已完成。
+
+
+### 2026-10-29 父亲前1100双节气全部失败：完整真实Excel追责（批量排程修复）
+
+用户实际Excel 1100行/2200分支全部同类 `casting_year_stem 甲` 不支持，主用神与断词缺，局号和物理ID有；前8640条同年甲子，原批量机械全跑是工程问题。新脚本仅**暂缓未核问测年/月/日甲来源**，非甲源照原冻结V8/V10.2实际计算，不篡改`SIX_JIA`真义和原书；连续3个新未知错误立停保留日志，非连续索引另导出新Excel/CSV/JSONL不覆盖任何旧文件。本轮仍无年命。详见 `docs/BIGFISH_FATHER_1100_JIA_QUEUE_EXPORT_AUDIT_20261029.md`，不能因Swift以前专项PASS声称已验父亲甲子年。
