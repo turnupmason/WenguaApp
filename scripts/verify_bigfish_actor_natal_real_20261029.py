@@ -18,6 +18,8 @@ SOURCE=ROOT/'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
 
 def load_adapter(compiled:Path):
     base=types.ModuleType('local_batch')
+    from scripts.bigfish_local_batch_reference_20261029 import normalize_bigfish
+    base.normalize_bigfish=normalize_bigfish
     base.COMPILED=compiled
     base.OUTPUT=Path(tempfile.gettempdir())/'wengua-bigfish-actor-natal-smoke'
     base.FROZEN=ROOT/'data/knowledge/phrase_library/health_v20'
