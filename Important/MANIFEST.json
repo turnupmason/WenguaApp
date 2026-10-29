@@ -187,7 +187,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_severity_template.py",
       "snapshot": "Important/python/engine/health_severity_template.py",
-      "sha": "3360a7e655e4664a9a3334ced17b2fc13142bd29"
+      "sha": "2057fba20a0b56748cd9e5dd0a2419759726319e"
     },
     {
       "platform": "python",
@@ -475,7 +475,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
       "snapshot": "Important/swift/engine/WenguaNativeActorBinding.swift",
-      "sha": "4a55f3128cf7d369a28df32cf3cd75ea016ddf35"
+      "sha": "ecdcb3472bfb0c4e4dd0f4942b609bf9b9f5b737"
     },
     {
       "platform": "swift",
@@ -499,13 +499,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "819aba92991e43a114a3a00a239906cab0962473"
+      "sha": "81eba5d09e8ef86acd72d25f04f945dfb6f3bd81"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "5f7f7925606c7f3dc755cd947f841c7720093a13"
+      "sha": "5e2813f6851d8529b48306bec2f1283f2e1d5449"
     },
     {
       "platform": "swift",
