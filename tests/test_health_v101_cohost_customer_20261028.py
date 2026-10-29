@@ -23,7 +23,13 @@ class V101CopyTests(unittest.TestCase):
         self.assertNotIn("全部因素推断后",case["python_reading_text"])
     def test_both_source_engines_deduplicate_without_mutating_scores(self):
         root=Path(__file__).resolve().parents[1]
-        self.assertIn("seenSignifiers.insert(signifier)",(root/"ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift").read_text())
-        self.assertIn("seen_signifiers.add(signifier)",(root/"src/wengua/domain_selected_energy_vnext.py").read_text())
+        swift=(root/"ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift").read_text()
+        python=(root/"src/wengua/domain_selected_energy_vnext.py").read_text()
+        # V10.1's original behavior remains in the per-role DETAIL sections;
+        # V10.2 intentionally replaces only the repetitive verdict loop.
+        self.assertIn("var powerSeen:Set<String>",swift)
+        self.assertIn("power_seen={}",python)
+        self.assertIn('phrase("summary_concise"',swift)
+        self.assertIn('render_slot("summary_concise"',python)
 
 if __name__=="__main__":unittest.main()
