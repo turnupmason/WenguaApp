@@ -2257,3 +2257,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-29 本地批量用户操作与SQL无关阅读接口
 用户明确不想看SQLite。新增会话可下载的BigFish可视化本地包：`WenguaBigFishLocal_20261029_可视化批量版.zip`（SHA256 `2bf7e5b1c7fe2140e1fda99918d3c2c03278303ee49f5b6e89071dd55e8ff3f3`），旧安装免丢资料补丁 `WenguaBigFishLocal_结果查看补丁_20261029.zip`。Mac首次install后，双击RUN_BATCH每次最多新增24条，双击`批量生成240条.command`可最多新增240条；SQLite只内部断点续跑，用户直接看本地交互HTML/Excel-CSV/TXT全文（自动导出并打开）。`导出并查看结果.command`不重算已生成内容、不更改进度库；失败仍保留。临时SQLite单测2＋原BigFish适配器5共7/7 PASS，未做用户Mac实盘验收；不许说518400已生成。旧冻结V8评分、V10.2模板、Swift源及Important双镜像/MANIFEST不变。详见`docs/BIGFISH_MAC_BATCH_VIEWER_HANDOFF_20261029.md`。
+
+
+### 2026-10-29 · BigFish 518400条件四柱 Python 单人物挂机（覆盖旧按日多人物批量入口建议）
+用户新方案：一个Python文件对一个关系运行完全枚举60年干支×12月支×60日干支×12时支=518400逻辑组合，父亲跑完改mother再改younger_sibling。月干/时干由五虎/五鼠遁实际派生，**每月支两个不同可能24节气分支各单独以BigFish起局/冻结V8计算**，产出518400条带两份条件断词的场景，不凭无公历时刻的标签造唯一真实节气。当前22个源关系profile动态加载而非固定20/旧11；未提供年命、性别排行不补造。新会话文件 `wengua_518400.py` SHA256 b761a0705007e2275fa24781788f7271fe4b195b0c7ab3497b7949c3cef99a52，与已安装本地BigFish工具的 local_batch.py 同级；顶部 RELATIONSHIP切换。原上游TypeScript实调用并缓存1080物理九宫，**每个场景两节气分支仍各运行冻结V8/V10.2**，SQLite断点续跑，5000行一组输出CSV与真正XLSX，保存文本/原盘指针/错误、留人工GPT修订栏且不覆盖已导出的文件。局部单测枚举/转换/两记录导出/SpreadsheetFile再读 XLSX PASS，尚未在此容器运行真1,036,800跨引擎断词。详细审计 docs/BIGFISH_518400_LOCAL_PYTHON_LOOP_20261029.md。冻结V8/Swift/Important双镜像/原著及历史失败完全不变。
