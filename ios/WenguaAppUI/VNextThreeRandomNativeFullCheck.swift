@@ -148,6 +148,19 @@ private struct PublicCast:Encodable {
             let audit=try WenguaVNextEngine.compute(chart:chart,
                 relationship:test.relationship,energy:energy,
                 catalog:pairs,actor:actor)
+            // Developer-only reproducible source comparison for a 甲午 father
+            // co-host conflict. Never shown in the production customer view.
+            if chart.pillars.year=="甲午" && test.relationship=="父亲",
+               let q=chart.palaces.first(where:{$0.id==6}) {
+                let stages=q.earthStages.map{$0.branch+":"+$0.stage}.joined(separator:",")
+                let tombs=q.tombs.map{$0.plane+":"+$0.stem}.joined(separator:",")
+                let extras=audit.auspiceBonusNotes.joined(separator:"|")
+                FileHandle.standardError.write(Data(
+                  ("SIXJIA_2014_QIAN_NATIVE earth="+q.earthStem+
+                   " stages="+stages+" tombs="+tombs+
+                   " god="+String(describing:q.deity)+
+                   " auspice="+extras+"\n").utf8))
+            }
             let debugItems:[String]=[
                 "V7_FULL_SOURCE_BONUS_COMPARE",test.instant,
                 "Swift base="+String(audit.postVoidKnownSum),
