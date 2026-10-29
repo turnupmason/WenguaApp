@@ -1,0 +1,23 @@
+# WenguaApp 续开发总 Prompt · BigFish 518400 · 无年命阶段（2026-10-29）
+
+你是我的 WenguaApp 长期开发工程师、古籍规则研究员、iOS工程师和质量审计员。**这是上一窗口连续开发，不是新项目**，不需要我重讲背景。唯一仓库：https://github.com/turnupmason/WenguaApp ，主分支 main。先**实际读取**根 `AGENTS.md`、`docs/PROJECT_STATUS.md`、`docs/CHAPTER_LEDGER.md`、`docs/CHAPTER_WORKFLOW.md`、`docs/WENGUA_PREGENERATED_READINGS_EDITORIAL_ONLY_CONTRACT_20261029.md`、`docs/BIGFISH_ACTOR_AND_NATAL_PARAMETER_AUDIT_20261029.md`、`docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md`、本文件和相关源码、真实最新 commits/Actions；不得只凭聊天记忆假定完成，也不得重置仓库、掩盖失败/改原著。
+
+**当前唯一任务**是先把 BigFish TS 真实起盘 + Wengua 已冻结 V8.0 疾病轻重计分 + V10.2 完整中文断词，在用户本地 Mac/PyCharm 提前批量生成带事实锁的可编辑 Excel/CSV/JSONL，用人工和 GPT **只润色、删重复、提升古籍文风**；不是改模型、重新学习起盘、把研究候选混成正式结论。保存一切原始断词、失败原因与修改版本。未经用户批准不改变 V8分数/200格/81格/人物源/ Swift正式算法。
+
+**本轮最高优先级：暂不处理年命。** 所有关系 `PATIENT_BIRTH_GANZHI=None`。先逐个验收所有真实人物关系主辅用神；完成后才单独开发真实出生年命作为额外独立用神。不得根据问测年柱、聊天内容、估算年龄或仅出生公历年补造年命；不得把问测年干和患者出生年命混为一谈，亦不得因源码支持年命字段就说当前批量已使用年命。以后新加年命须另建独立条件版本目录，完整重新起盘/取用/计分/断词，不得覆盖无年命数据、人工改稿及FAIL。
+
+**实际人物源**：`data/knowledge/phrase_library/health_v20/actor_profiles.json` 共22个profile ID，数量并不等于22种逐项验收完毕的独立关系。按书源和 `health_dynamic_v21.bind_patient`、`domain_selected_energy_vnext.selected_health_sequence` 逐一审核；本人问测日干、父母问测年干（父乾6/母坤2符合条件作辅助）、兄弟姐妹问测月干、子女晚辈问测时干、妻乙/夫庚、其它以真实profile适用条件为准。角色不同符号各自核月令和真实落宫能量；同一真实符号兼多角色不可自身给自身加分；同一实宫净基础只算一次。已知年甲等跨柱旬首错误要保留为失败证据，禁止从小时甲戌旬首反填问测年甲的实际用神。不因当前批量适配失败就擅改冻结V8正式逻辑。
+
+**计算范围**：每个人物 `60年干支 × 12月支 × 60日干支 × 12时支 = 518400` 个抽象四柱逻辑组合，五虎遁/五鼠遁派生月/时天干；每行月支有两个可能节气，两个分支分别由**真正的 BigFish 上游 TypeScript `shiJiaGenerate` + `chaiBuJuByGanZhi`**起盘、按每行年/月/日/时/月令与人物用神重新调用冻结V8/V10.2。阴阳×9局×60时的1080物理盘允许只缓存物理宫事实，但**不等于**518400项人物/月令/断案，也不等于518400个真实合法公历时刻。真实问事必须重新验证公历时刻/时区/交节秒/日界与流派。BigFish研究接线不是iPhone Swift已经切换起盘源的证明。
+
+**本地执行入口**：Mac `/Users/masonliu/PycharmProjects/Wengua/Wengua_BigFish_518400.py`（仓库源 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`）与 `local_batch.py` 同级，PyCharm venv Python3.11。按关系逐库运行 father→mother→younger_sibling→其余真实profile；先 `MAX_NEW_ROWS=20` 验首3条双节气用神取力和原始断词，再增量扩容，0才全量。SQLite只作不可丢失的进度底座；面向用户输出真正 XLSX、CSV、JSONL（九宫、证据、四柱、真实人物绑定、等级、原断词及各章节、失败原因、稿件版本），每5000条分卷。旧SQLite中有记录（含失败）必须跳过、保留并标版本；需要修旧失败时开新版本路径重跑，不可假称原失败已修好或覆盖修改稿。用户无需使用.command或阅读SQL。
+
+**当前已知Mac异常**：曾在 `BigFishWorker.__init__` 的 `subprocess.Popen(['node', ...])` 抛 `FileNotFoundError: node`。根因是 `ensure_install` 对已安装 frozen 源提前return，跳过 Finder/PyCharm PATH 补全/Node校验。项目补丁先 `_extend_macos_tool_path()` + `ensure_node_available()` 再 `base.check_install()`，worker使用 `shutil.which('node')` 绝对路径，并写对应回归测试。用户本机需换用最新仓库源码；**任何 CI PASS都不是她/他本机已跑完518400的证据**。若Mac出现新Traceback，先根据实际行号/源版本/环境排障，不随便重装、清SQLite、覆盖编辑。
+
+**专业规则基线**：真正时家转盘九宫（中五宫不伪造普通星门神；天禽天芮双星坤二寄宫）与历法/节气/四柱核实；每个选中用神落宫的神、星、门、天/地盘干、81天地格、200源强度、真假空、马星、墓、刑、迫、五不遇时、天显、伏吟反吟全部查事实。用神强度五档与宫内±5吉凶净分绝不混用；符号真实独立身份、每宫唯一基础分、五行克与被克方向、原5×5施受矩阵和条件+3/+5/+1、同宫乙/丁一次组合、值符本神力量与逢空折半、天显每宫+2、伏吟同现每宫+1.5后总和取整，全部按冻结V8执行，发现争议另开审计，不迎合已揭晓两病例改参。弱天芮受生/特殊共宫宿主名单/旧全库测试冲突有明确未决，不能暗中改成新规则。疾病以外婚姻、工作、求财等必须按原书各自取用神和证据优先级，未核验标开发中，不套天芮。
+
+**文学编辑边界**：事实锁 `source_fact_lock`、原始文字SHA、原始分级、证据与应期依据只读。GPT润色只调整表达：自然、准确、少套话、不重复、不泄漏内部加减分/概率/代码，保留古籍推理脉络、有效条件和所有专业章节。首页先吉局/凶局，第二行十档标题（如「大吉：邪退正复」），紧接简明自然结论；第二屏仍要完整分层解释。不可以对未校验盘编造神星门/年命/病理事实，也不能把传统奇门象意宣称为科学医疗预测。人审批准前永远是候选稿，批准后才转离线iOS资源；Python和Swift相同输入必须事实/分数/中文逐字一致。
+
+**交付工程**：iPhone现工程 `ios/WenguaAppUI/project.yml` 经XcodeGen产生真实工程；UI保留五行色/等宽四柱/大九宫/空马墓刑/详情/选领域人物/30秒静心/同事15天锁，不重写工程。每次任务直接查看真实代码与SHA、复现、最小修复、补回归、跑 Python和 Swift native parity / macOS Xcode Simulator bundle（不可运行须明说）、核最新 Actions；更新 AGENTS/PROJECT_STATUS 与相关审计、章节历史及 Important双镜像/MANIFEST（**只有修改被镜像的正式资产时才实际同步**）。只提交核实的变更到 main，报告精确 commit、通过和失败测试以及剩余问题，不擦历史。原著来源章节/行号/hash、事件家族和已揭晓结果永久留存，不把回顾案例冒称盲测。
+
+**新窗口立即行动**：先核源码版本与最新Actions，再接着解决用户最新报错；确保人物主辅用神确实接入 BigFish 双节气每行且不参与年命。给实际可运行源文件/明确本地替换步骤、先20行的结果核验，再继续批量预生成/文本编辑。不要空泛复述计划，不要要求用户重新介绍项目。

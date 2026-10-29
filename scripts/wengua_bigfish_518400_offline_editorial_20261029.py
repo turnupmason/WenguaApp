@@ -342,6 +342,12 @@ def ensure_install():
     Network is confined to this bootstrap stage. Dataset and scoring sources
     are byte-for-byte the original pinned versions; existing output is untouched.
     """
+    # PyCharm/Finder often omits Homebrew/nvm paths. This MUST run even when
+    # frozen sources are already installed: the Node worker starts afterwards.
+    # The former fast-path returned before Node was put on PATH, causing Popen
+    # FileNotFoundError despite successful source/resource checks.
+    _extend_macos_tool_path()
+    ensure_node_available()
     try:
         return base.check_install()
     except (RuntimeError, FileNotFoundError, OSError, ValueError, KeyError) as why:
@@ -549,8 +555,13 @@ class BigFishWorker:
         # This generated source is static and cannot modify original TS.
         if not js_file.exists() or js_file.read_text('utf-8') != BRIDGE:
             js_file.write_text(BRIDGE, encoding='utf-8')
+        node_executable = shutil.which('node')
+        if not node_executable:
+            raise RuntimeError('BigFish启动需要Node.js：未找到node可执行文件。'
+                               '请先安装Node.js 20+（含npm），或检查PyCharm运行环境PATH；'
+                               '本脚本的ensure_install应自动准备Node。')
         self.error_file=(out_dir / '_bigfish_node_errors.log').open('a',encoding='utf-8')
-        self.p = subprocess.Popen(['node', str(js_file), str(base.COMPILED)],
+        self.p = subprocess.Popen([node_executable, str(js_file), str(base.COMPILED)],
                                   stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                                   stderr=self.error_file, text=True, bufsize=1)
         self.bureaus = {}                 # (actual 24 solar term, real day GZ)

@@ -2301,3 +2301,8 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-29 · BigFish人物/年命交付的实际Swift/Xcode最终结果（补记）
 此前记录为“构建中”的 macOS XcodeGen真实iOS Simulator完整构建、11档V10.2 UI验收及bundle内200格/81格/人物JSON/模板资源检查现已**实际完成PASS #40942917483**；正式native Swift↔Python完整V8断词 parity **PASS #40942904973**。另 BigFish原TS1080结构+人物/年命4实算 #40942647716 PASS、原始本地批量用神输入测试 #40941942424 PASS；主CI #40943271594 PASS。历史首次集成夹具失败 #40942273256 留档。本轮无Swift/iOS正式源改动、未跑签名真机、未全量跑完518400×2。完整交接 docs/BIGFISH_ACTOR_AND_NATAL_PARAMETER_AUDIT_20261029.md。
+
+
+## 2026-10-29 · BigFish PyCharm Node快路径与无年命优先
+
+用户 Mac 实际 `BigFishWorker` `Popen('node')` `FileNotFoundError`；源 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 的已有依赖 fast-path 曾跳过 PATH/Node 启动检查。现先补 `_extend_macos_tool_path` 与 `ensure_node_available`，worker使用已解析 Node 绝对路径，新增 `tests/test_bigfish_node_runtime_pycharm_20261029.py`；详见 `docs/BIGFISH_PYCHARM_NODE_FASTPATH_NO_NATAL_20261029.md`。这只修 Mac adapter 启动，不动 V8/V10.2/200/81、Swift 和 Important。用户明确现阶段**暂不启用任何年命**，`PATIENT_BIRTH_GANZHI=None`，全部人物关系用神逐一验收完才以新条件版本作为额外用神另参；不得覆盖旧断词/失败。新窗口可直接复用 `docs/WENGUA_CONTINUITY_PROMPT_BIGFISH_NO_NATAL_20261029.md`，必须先核仓库最新SHA及CI。此补丁后CI和用户本机运行须分别验收，不能报518400已完成。

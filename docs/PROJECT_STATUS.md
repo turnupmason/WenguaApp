@@ -2083,3 +2083,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 
 ### 2026-10-29 · 本轮BigFish人物主用神/真实年命全链最后验收已完成
 已确认 #40942647716 真正BigFish原TypeScript→V8/V10.2 父亲无年命/父亲测试乙丑年命/母亲测试乙丑年命/弟弟共4案实算PASS；#40941942424 真实22 profile配置+独立姓名、性别、出生年命/选宫回归PASS；**正式Swift native逐字parity #40942904973 PASS**；**macOS XcodeGen + 真iOS Simulator app编译 + 200格/81格/人物/模板bundle实查 #40942917483 PASS**；主CI #40943271594 PASS。失败 #40942273256 初集成夹具漏真实BigFish normalize_bigfish保留证据，非偷偷删FAIL。这些不是每人518400全量通过、不是BigFish已切Swift生产起盘，也不代表疾病预测科学有效。冻结V8计分、V10.2模板、200/81、人物源原JSON、Swift、Important双镜像/MANIFEST及全部历史仍未变。代码和说明参考 docs/BIGFISH_ACTOR_AND_NATAL_PARAMETER_AUDIT_20261029.md。
+
+
+## 2026-10-29 · 用户最新PyCharm缺Node fast-path与先不接年命（增量修复）
+
+用户运行 `/Users/masonliu/PycharmProjects/Wengua/Wengua_BigFish_518400.py`：人物 father/year stem/乾6/direct_proxy/no natal/0 rows 打印后，`BigFishWorker.__init__` Popen node FileNotFoundError；根因已安装分支 `ensure_install()` 提前return绕过PyCharm Finder PATH准备。修 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`：每次提前验证/准备 Node，worker解析绝对可执行路径，错误可操作；新增独立4项回归及BigFish专项Actions。完整审计 `docs/BIGFISH_PYCHARM_NODE_FASTPATH_NO_NATAL_20261029.md`。**用户当下明确禁止加入真实出生年命**：`PATIENT_BIRTH_GANZHI=None`，所有主辅关系用神验收完成后另设数据版本作为额外用神重算，不修改原进度库和人工稿。新对话交接prompt已存 `docs/WENGUA_CONTINUITY_PROMPT_BIGFISH_NO_NATAL_20261029.md`。本次只修本地Python adapter（非冻结V8/Swift源变更），真实Mac用户重新下载替换后再实测，CI状态须另查；未在本会话 Mac 或全518400×2 完整运行。
