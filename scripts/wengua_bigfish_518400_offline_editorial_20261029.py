@@ -93,9 +93,9 @@ MONTH_START = {'甲':'丙','己':'丙','乙':'戊','庚':'戊','丙':'庚','辛'
 HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':'戊',
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
-PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v2'
-SIX_JIA_APPROVED_WENGUA_SHA = 'b6011a1f7dc42f01d179203a7b4658d0228f67ea' # frozen V8 math unchanged; role-source binder explicitly updated
-SIX_JIA_BATCH_SUBDIR = '六甲全柱来源_20261029_v2'
+PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v3_earth_tomb_parity'
+SIX_JIA_APPROVED_WENGUA_SHA = 'a288d127883157cb2bea96b676d2c86a45c2ab12' # user-approved Jia and earth-tomb parity; V8 math and 200/81 unchanged
+SIX_JIA_BATCH_SUBDIR = '六甲全柱来源_20261029_v3_地盘墓核验'
 SIX_JIA_SOURCES_ACTIVATED = False
 # Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
 
