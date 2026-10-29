@@ -36,6 +36,7 @@ def collect():
             summary=quant["summary"]
             confidence=result["audit"]["role_confidence"]
             roles=quant["roles"]
+            selected=result["full_health_role_strength_network"]["selected_roles"]
             patient=roles["patient"]
             illness=roles["illness"]
             four=result["four_pillars"]
@@ -57,13 +58,13 @@ def collect():
                 "selected_palaces":result["scored_relevant_palaces"],
                 "patient": {
                     "palace":patient["palace"],
-                    "source_strength":patient["primary_strength_25"],
+                    "source_strength":selected["patient"]["primary_strength_25"],
                     "palace_net":patient["palace_score"]["score"],
                     "void":patient["palace_score"]["void_state"],
                 },
                 "illness": {
                     "palace":illness["palace"],
-                    "source_strength":illness["primary_strength_25"],
+                    "source_strength":selected["illness"]["primary_strength_25"],
                     "palace_net":illness["palace_score"]["score"],
                     "void":illness["palace_score"]["void_state"],
                 },
