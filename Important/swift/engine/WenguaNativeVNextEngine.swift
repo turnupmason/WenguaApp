@@ -668,15 +668,18 @@ enum WenguaVNextEngine {
                                           month:month,catalog:energy)
             } else {
                 let actualStages:[WenguaNativeStage]
-                if symbol=="甲" && chart.pillars.hour.hasPrefix("甲") &&
-                   (role=="hour" || actor?.kind=="casting_hour_stem" ||
-                    actor?.kind=="day_stem") {
-                    // Only 甲时 is bound through xunShou hiddenStem to an
-                    // ACTUAL palace; its factor stays 甲 and its 12 life is
-                    // independently the stem 甲, never a forged visible 甲.
-                    guard p.heavenStars.contains(where:{
-                        $0.carriedStem==chart.hiddenStem
-                    }),let jiaStages=WenguaNativeCore.stages["甲"] else {
+                if symbol=="甲" {
+                    // The selected role stays symbol 甲 (wood, its own 200-grid
+                    // power), but its true palace is occupied by the 六甲 instrument
+                    // from THAT role's full year/month/day/hour/natal Ganzhi.
+                    let source:String? = role=="hour" ? chart.pillars.hour :
+                        role=="patient" ? (actor?.sourceGanzhi ??
+                            (relationship=="父亲" ? chart.pillars.year:chart.pillars.day)) :
+                        role=="natal" ? actor?.natalSourceGanzhi : nil
+                    guard let source,
+                          let carrier=WenguaNativeActorSource.jiaCarrier(source),
+                          p.heavenStars.contains(where:{$0.carriedStem==carrier}),
+                          let jiaStages=WenguaNativeCore.stages["甲"] else {
                         throw WenguaVNextReadingGate.unresolvedRole
                     }
                     actualStages=try p.branches.map{ branch in
