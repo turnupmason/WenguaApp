@@ -18,6 +18,7 @@ on:
       - 'tests/test_health_20261028_1344_two_person_audit.py'
       - 'tests/test_health_v102_summary_20261028.py'
       - 'scripts/ios_v80_same_clock_neutral_parity_20261028.py'
+      - 'scripts/ios_vnext_three_random_20261026.py'
       - 'Important/MANIFEST.json'
       - 'tests/test_physical_1080_atlas_dataset_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
@@ -42,6 +43,57 @@ jobs:
         run: |
           set -euo pipefail
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v80/native 2>&1 | tee /tmp/wengua-v80/compile.log
+      - name: All six real 甲 years and 甲 month/day/hour sources Python versus native Swift
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from scripts import ios_vnext_three_random_20261026 as gen
+          from src.wengua.casting_shenqi import SIX_JIA
+          conditions=[
+              (1984,"father","父亲","direct_proxy","year"),
+              (1994,"father","父亲","direct_proxy","year"),
+              (2004,"father","父亲","direct_proxy","year"),
+              (2014,"father","父亲","direct_proxy","year"),
+              (2024,"father","父亲","direct_proxy","year"),
+              (2034,"father","父亲","direct_proxy","year"),
+              (2024,"older_sibling","哥哥姐姐","direct_proxy","month"),
+              (2024,"self","本人","direct_self","day"),
+              (2024,"son","儿子","direct_proxy","hour")]
+          original=gen.RELATIONS
+          cases=[];rejected=[]
+          try:
+              for i,(year,relation,label,context,column) in enumerate(conditions):
+                  # Original actor label must come from approved actor_profiles.json,
+                  # not a guessed translation.
+                  profiles=json.loads(Path("data/knowledge/phrase_library/health_v20/actor_profiles.json").read_text())["profiles"]
+                  matched=next(x for x in profiles if x["id"]==relation)
+                  gen.RELATIONS=((relation,matched["label"],context,None),)
+                  pack=gen.produce(seed=20261029*100+i+3,count=1,
+                                   years=(year,),required_jia_source=column)
+                  case=pack["cases"][0]
+                  pillar=case["four_pillars"][column]
+                  assert pillar in SIX_JIA,(relation,column,pillar)
+                  assert "natal" not in case["roles"]
+                  assert case["roles"]["patient"]["palace"] in (1,2,3,4,6,7,8,9)
+                  print("REAL_JIA_NATIVE_INPUT",column,pillar,SIX_JIA[pillar],
+                        case["instant"],case["relationship"],flush=True)
+                  cases.append(case)
+                  rejected.extend(pack["rejected"])
+          finally:
+              gen.RELATIONS=original
+          Path("/tmp/wengua-v80/all_real_six_jia.json").write_text(json.dumps({
+              "schema":"wengua_ios_random_batch_vnext_20261026_v2",
+              "seed":20261029,"timezone":"America/New_York",
+              "selection":"nine first technically valid real dates for six Jia years and month/day/hour Jia source; no score filter",
+              "rejected":rejected,"cases":cases},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          assert len(cases)==9
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/all_real_six_jia.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/all_real_six_jia_swift.log 2> /tmp/wengua-v80/all_real_six_jia_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/all_real_six_jia.json /tmp/wengua-v80/all_real_six_jia_swift.log /tmp/wengua-v80/all_real_six_jia_parity.md
+          grep 'VERDICT: PASS' /tmp/wengua-v80/all_real_six_jia_parity.md
+          echo "NINE_REAL_DATE_SIX_JIA_SWIFT_PYTHON_EXACT_PASS"
       - name: One genuinely random friend hour, production Swift source and full text check
         run: |
           set -euo pipefail
