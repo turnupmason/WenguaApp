@@ -2253,3 +2253,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 原 V8 health validator 强制 **旧 Shenqi 原算法重排全盘作来源保护**。新 BigFish 候选不可能仅靠改 `status` 通过，不能把旧盘冒充新盘。只在单线程独立研究适配中 `src/wengua/bigfish_source_gate_research.py` 对新真实九宫进行全字段硬门控并**仅临时替换原 V22 的旧源身份核查**，之后完全恢复旧校验；冻结 V8 计分、200源格、81格、V10.2 中文、人物、Important 双镜像/MANIFEST 与Swift源均未修改。研究成果不自动发布App、不保证所有真实流派特殊条件。
 
 真 GitHub Actions 原上游 TS `18×60=1080`结构检测 #40920402953 PASS；首次真实新盘送入旧V8报错 `_validate_chart`，工作流管道无 `pipefail` 假绿 #40920875955，修后真正 FAIL #40921332503（全部保留），后加明确研究源门槛 #40921478524 真 PASS：10/28美东06:00和10:00 两次同钟 BigFish TypeScript 真实9宫给V8 Python产生中文与内部分数，旧新物理差异为零。仅两真实样本，非1080真实四柱完全一致、非医疗预后验证。原V8主CI #40921478534 PASS；Swift原生/Xcode本轮未构建，也未把 iPhone 生产入口真正替换为 BigFish，**对用户必须如实说清**。详见 `docs/BIGFISH_OFFLINE_CAST_REPLACEMENT_AUDIT_20261029.md`。旧 #40905670829 Swift/Python 1080失败仍保留。
+
+
+### 2026-10-29 本地批量用户操作与SQL无关阅读接口
+用户明确不想看SQLite。新增会话可下载的BigFish可视化本地包：`WenguaBigFishLocal_20261029_可视化批量版.zip`（SHA256 `2bf7e5b1c7fe2140e1fda99918d3c2c03278303ee49f5b6e89071dd55e8ff3f3`），旧安装免丢资料补丁 `WenguaBigFishLocal_结果查看补丁_20261029.zip`。Mac首次install后，双击RUN_BATCH每次最多新增24条，双击`批量生成240条.command`可最多新增240条；SQLite只内部断点续跑，用户直接看本地交互HTML/Excel-CSV/TXT全文（自动导出并打开）。`导出并查看结果.command`不重算已生成内容、不更改进度库；失败仍保留。临时SQLite单测2＋原BigFish适配器5共7/7 PASS，未做用户Mac实盘验收；不许说518400已生成。旧冻结V8评分、V10.2模板、Swift源及Important双镜像/MANIFEST不变。详见`docs/BIGFISH_MAC_BATCH_VIEWER_HANDOFF_20261029.md`。
