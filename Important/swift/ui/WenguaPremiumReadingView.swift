@@ -84,6 +84,26 @@ struct WenguaHealthGradeCaption {
     }
 }
 
+// Audience language only. V8 grade and score remain frozen private inputs.
+struct WenguaNaturalSeveritySummary {
+    static func text(_ grade:String)->(String,String)? {
+        switch grade {
+        case "极大吉": return ("有利线索较集中","有利条件较多，但不代表现实已经康复。")
+        case "大吉": return ("可见较明显的转机","盘中的帮助较为相合，仍须核实条件。")
+        case "中吉": return ("有改善的线索","吉象与牵制并见，还需观察。")
+        case "小吉": return ("有些值得留意的转机","仍有未解的阻碍，不能视为万事已定。")
+        case "极小吉": return ("吉象初显，尚有牵绊","有利线索尚浅，不宜过早断定。")
+        case "极小凶": return ("局部仍见阻滞","传统象意不能用于判定现实只是小病。")
+        case "小凶": return ("已有一些需要留意的阻力","不利条件显现，扶助是否奏效尚待核实。")
+        case "中凶": return ("阻力较明显，转机尚未稳固","诸宫相互牵制，不能凭单一吉象断言见效。")
+        case "大凶": return ("不利线索较多，宜审慎看待","阻碍较集中，已有的扶助未必足以解局。")
+        case "极大凶": return ("不利迹象集中，尚难言转机","有制约与帮助的线索，但多项条件受限，不宜轻断局势已经转好。")
+        case "不凶不吉": return ("吉凶线索互有牵制","传统盘象尚不能明确判断趋向，不代表现实健康无忧。")
+        default: return nil
+        }
+    }
+}
+
 // UI-only labels, projected from the exact V8 role binding that produced
 // the customer's reading. Independent roles sharing one actual palace are
 // composed with ／. No role is reverse-engineered from a pretty chart tile.
@@ -178,18 +198,18 @@ struct WenguaPremiumVerdictCard: View {
             if let verdict=WenguaVerdictPresentation.from(reading) {
                 if let grade=verdict.grade,
                    let caption=WenguaHealthGradeCaption.forGrade(grade) {
-                    Text(caption.category)
+                    Text("传统盘象解读")
                         .font(.system(size:16,weight:.semibold,design:.serif))
                         .tracking(3)
                         .foregroundStyle(muted)
                         .accessibilityAddTraits(.isHeader)
-                    Text((grade=="不凶不吉" ? "" : grade+"：") + caption.epithet)
+                    Text(WenguaNaturalSeveritySummary.text(grade)?.0 ?? caption.epithet)
                         .font(.system(size:29,weight:.semibold,design:.serif))
                         .foregroundStyle(gold)
                         .minimumScaleFactor(0.72)
                         .lineLimit(2)
-                        .accessibilityLabel("传统古籍等级：" + grade)
-                    Text(caption.interpretation)
+                        
+                    Text(WenguaNaturalSeveritySummary.text(grade)?.1 ?? caption.interpretation)
                         .font(.system(size:17,weight:.regular,design:.serif))
                         .lineSpacing(6)
                         .foregroundStyle(ink)

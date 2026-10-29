@@ -18,7 +18,7 @@ struct WenguaNativeCustomerView: View {
                         .font(.system(size:23,weight:.semibold,design:.serif))
                         .foregroundStyle(QStyle.text)
                 }
-                Text("据本次真实九宫，逐层呈现古籍条件、用神落宫、吉凶及应期依据。")
+                Text("逐项保留九宫、人物用神、星门神干、天地格、空墓刑迫与应期依据；首页摘要不代替详细原文。")
                     .font(.system(size:13))
                     .foregroundStyle(QStyle.secondary)
                     .fixedSize(horizontal:false,vertical:true)

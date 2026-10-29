@@ -487,7 +487,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "snapshot": "Important/swift/ui/WenguaNativeCustomerView.swift",
-      "sha": "4a387cea12e1b4773e31bf5bb5580e897ab367da"
+      "sha": "5eb5a1cba65db9766ea78aa647ab866aedc19ffd"
     },
     {
       "platform": "swift",
@@ -547,7 +547,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "3033f84f4688577df9e6064648549041ac7ebe6b"
+      "sha": "3ed1189ac841c9126f66d918f86c1afa611c7324"
     },
     {
       "platform": "swift",
