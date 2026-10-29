@@ -17,6 +17,25 @@ ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/knowledge/shenqi/health_prediction_ch01/method_index.json"
 REVIEW_SCHEMA = "wengua_shenqi_health_method_v1"
 
+TRADITIONAL_NOTES = ROOT / "data/knowledge/health_discomfort/traditional_body_clue_candidates_20261029.json"
+
+
+def load_traditional_location_candidates(path: Path | None = None) -> dict[str, Any]:
+    """External user compilation: structured draft, not source-approved book rules."""
+    raw = json.loads((path or TRADITIONAL_NOTES).read_text(encoding="utf8"))
+    if (raw.get("schema") != "wengua_health_discomfort_user_notes_candidates_v1"
+            or raw.get("status") != "draft_unverified_external_notes"
+            or raw.get("release_approved") is not False
+            or raw.get("medical_diagnosis_allowed") is not False
+            or set(raw.get("palace", {})) != {str(i) for i in RING}
+            or set(raw.get("stems", {})) != set("甲乙丙丁戊己庚辛壬癸")
+            or set(raw.get("doors", {})) !=
+            {"开门", "休门", "生门", "伤门", "杜门", "景门", "死门", "惊门"}
+            or set(raw.get("deities", {})) !=
+            {"值符", "螣蛇", "太阴", "六合", "白虎", "玄武", "九地", "九天"}):
+        raise ValueError("External health-body candidates must remain source-gated and complete")
+    return raw
+
 
 def load_body_source(path: Path | None = None) -> dict[int, dict[str, Any]]:
     raw = json.loads((path or SOURCE).read_text(encoding="utf8"))
@@ -85,7 +104,31 @@ def inspect_traditional_body_clues(
     rows = load_body_source(source)
     spot = positions[0]
     pair = rows[spot]
+    external = load_traditional_location_candidates()
+    illness = cells[str(spot)]
+    sky = next(s["carried_stem"] for s in illness["heaven_stars"]
+               if s["star"] == "天芮星")
+    companion = next((s["carried_stem"] for s in illness["heaven_stars"]
+                      if s["star"] == "天禽星"), None)
+    if sky not in external["stems"] or (
+            companion is not None and companion not in external["stems"]):
+        raise ValueError("Unrecognized actual sky carrier")
+    door, deity = illness["door"], illness["deity"]
+    if door not in external["doors"] or deity not in external["deities"]:
+        raise ValueError("Missing true illness door or deity")
     return {
+        "external_notes_status": external["status"],
+        "external_palace_candidates": external["palace"][str(spot)],
+        "tianrui_stem_main_clues": external["stems"][sky],
+        "tianqin_stem_secondary_clues": (
+            external["stems"][companion] if companion else None),
+        "illness_door_clues": external["doors"][door]["illness"],
+        "illness_deity_clues": external["deities"][deity]["illness"],
+        "patient_door_clues": None,
+        "inner_outer_decision": None,
+        "new_old_decision": None,
+        "cancer_or_other_diagnosis": None,
+        "customer_template_approved": False,
         "topic_id": "health.discomfort",
         "release_status": "source_research_only_not_approved_or_public",
         "source_book": "神奇之门",

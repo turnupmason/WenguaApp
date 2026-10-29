@@ -1416,3 +1416,6 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 用户实机截图红字「本次未起局成功，也不会登记15天限制：值使门行至中五，除已校验例外外尚无可靠寄宫规则」。源位点 `src/wengua/casting_shenqi.py:layout_from_explicit_bureau` 与 `ios/WenguaAppUI/WenguaNativeCore.swift:compute`：旧代码只允许原书已见 src5/steps0 中五值使死门寄坤二，其他实际按旬首宫+经过时辰数×阴阳遁方向数到中五都误拒绝。按当前《神奇之门》时家转盘固定寄坤口径和外部转盘文献交叉依据，先保留真实九宫计数，数到5才让值使八门实际落坤2；其余外宫不变，旋转全部八门一次，中五无普通门/星/神，天禽仍随天芮携独立干。其它流派异说未混入此转盘。
 原书流程源P10/P13/P14在 `data/knowledge/shenqi/shijia_qiju/casting_rules.json` 只更新**实施例外字段**与本轮审计索引，源书 SHA、行号、逐盘案例没有修改。完整来源、与《奇门法窍》其它寄宫传统之区分及两个已见旧书盘旁证见 `docs/CASTING_CENTRE_VALUE_DOOR_KUN2_FIX_20261029.md`。阳1戊辰、阴1己巳、阳2丁卯新接受；原阳5甲子零步例外保持。
 本轮 Python 2×9×60 =1080枚举，其中120次计数到中五，全部PASS，8门不重复、中五不假造符。实际2026年阴遁三盘+阳遁三盘由独立Python起盘再与编译本地Swift NinePalace全部字段(含空马墓)严格对照，Actions #40817182311 native_core 中五专项步骤PASS，不能把整个旧版多作业workflow说PASS：该workflow仍因 NativeActorProfileCheck写死20而当前已经22人物等旧测试红。Python3.11/3.12主CI #40817182166 PASS，V8真实完整原生Swift↔Python专题算分与中文 #40817100066 PASS，真实macOS Xcode iOS Simulator完整App编译/资源 #40816857151 PASS。首提交Important ci.yml漏双镜像导致 #40816857169、#40816857083 失败、Swift对照脚本未考虑nil马星/墓星导致初轮失败，全部在Actions保留并通过后续提交修好，不得擦去。Python与Swift核算规则分数、200/81源、V10.2断词JSON及用户已经冻结的吉凶十档一点未改；30秒静心、未成功不登记15天的逻辑保持。
+
+### 2026-10-29 · 非原书章节：难受部位外部资料新增
+外部用户综合笔记，来源版次待核，不增章/案例/已核规则计数；8宫、10干、72细分、8门双义、8神、8条件收录为draft并新建Python研究门禁测试。正式V8封存不变。详见docs/HEALTH_DISCOMFORT_SITE_RESEARCH_20261029.md。

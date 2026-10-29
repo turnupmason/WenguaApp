@@ -56,7 +56,7 @@ class TraditionalBodySite(unittest.TestCase):
         router=(ROOT/"ios/WenguaAppUI/WenguaNativeReadingRouter.swift").read_text()
         manifest=json.loads((ROOT/"data/knowledge/health_discomfort/body_location_profile_20261029.json").read_text())
         self.assertIn('QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true)',ui)
-        self.assertIn('QuestionTopic(id:"health.discomfort",title:"身体哪里不舒服",domainTitle:"疾病健康",enabled:false)',ui)
+        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:false)',ui)
         self.assertNotIn('QuestionTopic(id:"health.trend"',ui)
         self.assertEqual(manifest["release_status"],"research_draft_not_enabled")
         self.assertIsNone(manifest["approved_customer_template"])

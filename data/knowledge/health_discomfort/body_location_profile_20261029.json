@@ -1,7 +1,7 @@
 {
   "schema": "wengua_health_discomfort_research_profile_v0_20261029",
   "topic_id": "health.discomfort",
-  "public_title": "身体哪里不舒服",
+  "public_title": "难受部位",
   "replaces_disabled_topic": "health.trend",
   "release_status": "research_draft_not_enabled",
   "distinct_from": "health.severity",
@@ -43,5 +43,7 @@
     "give_only_evidence_supported_traditional_anatomical_symbol_text"
   ],
   "guarded": "Do not copy V8 severity score, infer cancer/organ injury from one trigram, choose either surface/internal without source-backed conditions, or claim clinical diagnostic accuracy",
-  "no_15_day_lock_until_verified": true
+  "no_15_day_lock_until_verified": true,
+  "previous_public_title": "身体哪里不舒服",
+  "unapproved_external_clues": "data/knowledge/health_discomfort/traditional_body_clue_candidates_20261029.json"
 }
