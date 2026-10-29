@@ -65,7 +65,7 @@ def run(binary,outdir):
                 value=p.get(key) if key in ("door","deity","horseBranch") else p[key]
                 assert value==e[key],(i,p["id"],key,value,e[key])
             norm=lambda arr:sorted((v["plane"],v["stem"],v["branch"],
-                                    v["star"] or "") for v in arr)
+                                    v.get("star") or "") for v in arr)
             assert norm(p["tombs"])==norm(e["tombs"]),(i,p["id"],"tombs")
         print(f"{i}: {a['iso']} {a['bureau']['dun']} {a['bureau']['ju']} "
               f"origin={origin} elapsed={elapsed}: {a['valueDoor']} at Kun2 "
