@@ -2068,3 +2068,9 @@ qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若
 
 ### 2026-10-29 · BigFish 518400单人离线 V8/V10.2 批量已交付源码（当前）
 完成一份真实本地Mac Python脚本，已将全部源码提交 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`，会话单文件名 `Wengua_BigFish_518400.py` SHA256 4108e479ee1194f6b5da9bf03eac7f12aabdcbcf67d64d95cae81f3f530f5ea8，ZIP SHA256 a77cd48f3119fe78e38a0337b6dbb04775890de66a91401e4348e845d21b82f6。默认father、MAX_NEW_ROWS=0，继续剩余的518400个60×12×60×12抽象四柱条件，每种月支两个节气分别由BigFish真实原始TS起盘/原Wengua `analyze_health_severity_review` 量化+中文完整分节断词，不改V8冻结判断；真实缓存最多1080盘。SQLite存进度和失败、每5000行CSV/XLSX/供GPT审核的 JSONL（原文/章节/锁定事实SHA/编辑空栏），已有20旧记录不删除也不覆盖已修改Excel；源用神 unresolved 仍失败，跳过当前分支而继续合法输入（不伪造答案）。先父亲后只改relationship为mother、younger_sibling等。Python本地 syntax、真实2条临时SQLite/CSV XLSX JSONL导出+保留失败+不覆盖通过；Github 专项真实#40938996134 PASS（4 tests + 代码编译），当前V8主CI最新成功取决Actions。没有跑完整518400×2真实盘断词，也未做本轮Swift native parity或Mac Xcode。详细 `docs/BIGFISH_518400_V80_V102_OFFLINE_EDITORIAL_BATCH_DELIVERY_20261029.md`。原规则/星门神、200/81、模板、Swift、Important镜像和MANIFEST均不变；这只是离线审稿原文预生成，不是已审稿App资源。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
