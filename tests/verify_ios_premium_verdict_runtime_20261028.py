@@ -59,12 +59,18 @@ func checkReading(_ text:String,_ expected:String?) {
     }
     guard rendered.timing=="原文应期" else {fatalError("timing not retained")}
     if let expected {
-        guard let caption=WenguaHealthGradeCaption.forGrade(expected) else {
-            fatalError("known ten-level grade not represented")
-        }
-        guard caption.category == (expected.hasSuffix("吉") ? "吉局" :
-                                  expected.hasSuffix("凶") ? "凶局" : "微恙") else {
-            fatalError("wrong category")
+        if expected == "未知" {
+            guard WenguaHealthGradeCaption.forGrade(expected)==nil else {
+                fatalError("unexpected unknown grade UI caption")
+            }
+        } else {
+            guard let caption=WenguaHealthGradeCaption.forGrade(expected) else {
+                fatalError("known ten-level grade not represented")
+            }
+            guard caption.category == (expected.hasSuffix("吉") ? "吉局" :
+                                      expected.hasSuffix("凶") ? "凶局" : "微恙") else {
+                fatalError("wrong category")
+            }
         }
     }
 }
