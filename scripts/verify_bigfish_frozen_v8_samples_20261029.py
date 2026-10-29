@@ -9,6 +9,7 @@ from pathlib import Path
 from src.wengua.astro_calendar import solar_chart_clock
 from src.wengua.casting_shenqi import bureau_for_term,layout_from_explicit_bureau,xun_shou
 from src.wengua.health_severity_vnext_review import analyze_health_severity_review
+from src.wengua.bigfish_source_gate_research import bigfish_candidate_only
 from src.wengua.health_text_pipeline import DEFAULT_DB
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -54,8 +55,10 @@ def cast_bigfish(compiled,iso,zone):
         cells[str(i)]={"palace":i,"gua":GUA[i],"earth_stem":earth,
                        "heaven_stars":heavens,"door":door,"deity":deity}
     xun,elapsed,hidden=xun_shou(pillars["hour"])
-    chart={"source_key":"bigfish_pinned","school_id":"shijia_zhuanpan",
-           "status":"new_cast_needs_author_review","dun":orig["dun"],
+    chart={"source_key":"perfhelf/bigfishmarquis-qimen@6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c",
+           "school_id":"shijia_zhuanpan",
+           "casting_variant":"bigfish_shijia_chaibu_pilot",
+           "status":"bigfish_unapproved_candidate","dun":orig["dun"],
            "ju":orig["juNumber"],"hour_ganzhi":pillars["hour"],
            "xun_shou":xun,"hidden_stem":hidden,
            "value_star":orig["zhiFuStar"]+"星",
@@ -76,9 +79,12 @@ def cast_bigfish(compiled,iso,zone):
     calendar={"year_ganzhi":pillars["year"],"month_ganzhi":pillars["month"],
               "day_ganzhi":pillars["day"],"hour_ganzhi":pillars["hour"],
               "month_branch":pillars["month"][1]}
-    reading=analyze_health_severity_review(chart=chart,calendar=calendar,
-                     inquiry={"intent":"severity","relationship":"father",
-                              "consultation_context":"direct_proxy"},db_path=DEFAULT_DB)
+    # Deliberately scoped single-process pilot: V8 numbers and templates are
+    # unmodified; its old Shenqi-only recast precondition is separately gated.
+    with bigfish_candidate_only(chart):
+        reading=analyze_health_severity_review(chart=chart,calendar=calendar,
+                         inquiry={"intent":"severity","relationship":"father",
+                                  "consultation_context":"direct_proxy"},db_path=DEFAULT_DB)
     summary=reading["full_health_role_strength_network"]["candidate_five_grade_quantization"]["summary"]
     assert isinstance(summary["score"],int) and -5<=summary["score"]<=5
     assert reading["reading_text"] and reading["sections"]
