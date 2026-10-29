@@ -2022,3 +2022,12 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 qfdk README 明确茅山派转盘，不等同现有 Shenqi 实现；新旧盘若不同，直接隔离失败而不是强塞旧 Wengua 盘结论。现行冻结的 V8/V10.2/200/81/人物、iOS 和 Important 双镜像/MANIFEST 本轮**零改动**；此时不称真实 qfdk→V8 完整一致，也不宣称518400有效断词已生成。理论 60×12×60×12 不代表每个四柱可达真日期：月柱/时柱依年、日和真实节气。仅按合法公历时刻+时区逐实例生成，同时区分1080规范物理键。
 
 实测：隔离 Python unittest 3/3 PASS、Node语法/Python py_compile/bash -n PASS、ZIP unzip -t PASS。本环境 DNS 无法连接 GitHub，Node npm ci、原 Wengua 全量 Python 单测、qfdk真实整盘和 Swift原生/Xcode/macOS 模拟器**未执行**；这几项只能在用户 Mac 或后续相应 GitHub Actions 真跑后报告。最新既有1080真实生产 Swift/Python完整板对照 #40905670829 FAIL，主CI #40905671173 PASS，失败没有删除。交接和验收门槛见 docs/QFDK_LOCAL_FROZEN_BATCH_AUDIT_20261029.md。下一步先 Mac 跑20+含中宫/阴阳/节气边界真实时辰，列出两算法真正的所有差异；获得用户批准后方可决定是否为新的 qfdk 盘源开发专属完整接线，不偷偷改用户冻结规则。
+
+
+## 2026-10-29 最新优先 · 用户将新起盘来源从 qfdk 正式撤换为 BigFish TS 本地工厂
+
+**这是对同日较早 qfdk 实验计划的用户明确覆盖，而非删除历史记录。** 新上游 perfhelf/bigfishmarquis-qimen `6112b3937d7fcaa2ab0a34aec2a52f74e2effe6c`，范围先时家拆补，调用真正 `src/engines/shijia.ts:shiJiaGenerate` 和 `chaibuquju.ts`，保留其 MIT；其它时家茅山/置闰与年/月/日家暂不声称已接通。Mac 最新 ZIP `WenguaBigFishLocal_20261029.zip` SHA256 `f7cbe0156494e26873e526c139518f455881f3c7a0b487afa7cc3a88baebdfbe` 已作为**本轮聊天下载产物**生成，含首次联网固定 SHA clone + TS5.8.3本机编译、原冻结四数据SHA校验、BigFish真实九宫转换和独立 Python研究 V8断词、SQLite中断续跑、原盘/失败/候选断词持久化。Node语法/Python5合同测试/bash校验/ZIP完整性本容器 PASS；用户 Mac 真批量还未执行，不能宣称518400份完成。
+
+**实际跨仓CI新门槛与失败**：`scripts/verify_bigfish_upstream_1080_20261029.cjs` 在GitHub真实编译原BigFish TS并遍历阴阳×9局×60时 `base_states=1080, errors=[]`，#40920402953 PASS；不是1080张真实跨历法古籍/Swift核验。首次输入旧V8出现旧 `health_severity_template._validate_chart` Shenqi 重起盘来源门槛拒绝；初始流水线 `|tee` 没开 `pipefail` 导致 #40920875955 错报 success（日志其实 Python traceback），修复后 #40921332503 **真实 FAIL**，全部保留。新增单线程**未批准研究**源门槛 `src/wengua/bigfish_source_gate_research.py`，只对完全可观测的新BigFish九宫替代旧V22的来源验证调用，不改冻结V8算分、200/81、V10.2中文、Swift和Important镜像。**#40921478524 真 PASS**：2026-10-28 06:00 (丙午/戊戌/乙亥/己卯)、10:00 (丙午/戊戌/乙亥/辛巳)，实际原始TS新盘真实作为V8 Python唯一宫位输入，两盘阴遁2局、0条旧新盘差异、内部分数 -5/-5、客户断词哈希有据可查；原V8主CI #40921478534 PASS。两样本不是全面真实牌局独立证明或医学预后，暂不给App自动上线。详细出处/真实失败/准确最新版ZIP哈希见 `docs/BIGFISH_OFFLINE_CAST_REPLACEMENT_AUDIT_20261029.md`。
+
+**明确未完成**：Swift原生 `ios/WenguaAppUI/WenguaNativeCore.swift` 仍使用原 `Shenqi` 排盘，未把BigFish全算法移植或切换，不曾本轮完成Mac Xcode / Simulator 资源/构建 / Swift原生新盘逐字校验，更未真机签名验收。下一步先按新源码做各条件真实盘跨度、交节零时差、晚子时、坤2双格、空/马/墓/刑/迫与未通过的旧 Swift 对照，才考虑以新 TS port Swift 并切正式iPhone route；V8/V10.2封存事实在用户进一步批准前保持不变。
