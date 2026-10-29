@@ -2185,3 +2185,6 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 #### 2026-10-28 · 清理旧字最后非compact支路与现行实际复测
 扫描发现 src/wengua/health_palace_detailed_vnext.py 的非compact展示支路仍留过时「全部因素推断后，此宫为」，按用户清除旧字授权改为「宫象」，不改病宫分数、事实及V10.2正式 compact 字符串；Important/python/reading 同步 MANIFEST，源码commit 245daf8caef5a6d478ae838958235dc9606a2ece。本提交正式Python3.11/3.12主CI #40811469690 PASS、V8原生Swift-Python完整源/中文 #40811469615 PASS、V7.7原盘原生 #40811469635 PASS；真实Xcode Simulator #40810874316 PASS 对应此前相同正式SwiftUI及bundle源，此支路Python源文本清理未修改iOS App包资源。另旧V7.4 #40811469688 以及 V-next preview #40811469642 仍因历史契约过时 FAIL，保留日志，不恢复旧标题。完整移除表与失败审计 docs/IOS_V102_LIVE_COPY_CLEANUP_20261028.md。
+### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
+本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
+模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
