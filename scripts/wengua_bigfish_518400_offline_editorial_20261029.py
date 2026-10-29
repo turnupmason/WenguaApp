@@ -33,7 +33,8 @@ RELATIONSHIP = 'father'       # father -> mother -> younger_sibling -> ...
 PATIENT_SEX = None           # 弟弟可设 'male'；姐妹或妈妈已知女可设 'female'
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
-PATIENT_BIRTH_GANZHI = None  # 没给真实出生年干支，绝不补造
+PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
+CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
 MAX_NEW_ROWS = 0             # 0 = 剩余全部518400行；想小试时改20
 ROWS_PER_EXCEL = 5000        # 104 numbered CSV / XLSX workbooks per person
 COMMIT_EVERY = 10            # committed records surviving power loss
@@ -627,6 +628,8 @@ HEADERS = [
  '节气甲','起局甲','等级甲','V8原始分甲(内部)','状态甲','断词甲','盘式编号甲','证据SHA甲','失败原因甲',
  '节气乙','起局乙','等级乙','V8原始分乙(内部)','状态乙','断词乙','盘式编号乙','证据SHA乙','失败原因乙',
  '校验状态','真实公历日期','人工修改甲','人工修改乙','GPT修订甲','GPT修订乙','人工审核状态','数据来源',
+ '主用神来源甲','主用神干甲','主用神宫甲','年命是否参与甲','年命宫甲',
+ '主用神来源乙','主用神干乙','主用神宫乙','年命是否参与乙','年命宫乙',
 ]
 
 
@@ -768,7 +771,14 @@ def make_row(idx, pillars, jie, qi, labels):
              pillars['year'],pillars['month'],pillars['day'],pillars['hour']]
             +format_part(jie)+format_part(qi)
             +['抽象四柱条件候选 / 未绑定真实公历时刻','', '', '', '', '',
-              '待人工审核','BigFish原TS起盘 + Wengua V8.0/V10.2现有Python断案链(未核实公历时刻)'])
+              '待人工审核','BigFish原TS起盘 + Wengua V8.0/V10.2现有Python断案链(未核实公历时刻)']
+            + [value for result in (jie,qi) for value in (
+                result.get('source_fact_lock',{}).get('person_binding',{}).get('role_via',''),
+                result.get('source_fact_lock',{}).get('person_binding',{}).get('stem',''),
+                result.get('source_fact_lock',{}).get('person_binding',{}).get('palace',''),
+                result.get('source_fact_lock',{}).get('person_binding',{}).get('natal_active',False),
+                result.get('source_fact_lock',{}).get('person_binding',{}).get('natal_palace',''),
+              )])
 
 
 def export_completed_chunks(db, folder, labels, *, completed_only=True):
@@ -854,10 +864,133 @@ def export_editorial_jsonl(path: Path, originals, *, relationship: str):
     return True
 
 
-def catalog_relation_labels() -> dict:
+def actor_catalog() -> dict:
+    """Use the actual SHA-verified actor profile JSON; no copied signifier rules."""
     path=base.FROZEN/'actor_profiles.json'
-    all_profiles=json.loads(path.read_text('utf-8'))['profiles']
-    return {p['id']:p['label'] for p in all_profiles}
+    data=json.loads(path.read_text('utf-8'))
+    return data
+
+
+def catalog_relation_labels() -> dict:
+    return {p['id']:p['label'] for p in actor_catalog()['profiles']}
+
+
+def validate_actor_settings(profiles: dict) -> dict:
+    """Fail before 518400 rows if the user wrote an unsupported/ignored role parameter."""
+    mapping={p['id']:p for p in profiles['profiles']}
+    if RELATIONSHIP not in mapping:
+        raise ValueError('未知人物ID '+repr(RELATIONSHIP)+'；有效人物: '+', '.join(mapping))
+    role=mapping[RELATIONSHIP]
+    if not role.get('references'):
+        raise ValueError('此人物没有经源确认的专用取用引用，不作完整成功断词: '+RELATIONSHIP)
+    if PATIENT_SEX is not None and PATIENT_SEX not in ('male','female'):
+        raise ValueError("PATIENT_SEX只能是None、'male'、'female'")
+    fixed={'father':'male','mother':'female','grandfather':'male','grandmother':'female',
+           'wife':'female','husband':'male','son':'male','daughter':'female',
+           'animal_hen':'female','animal_rooster':'male'}
+    expected=fixed.get(RELATIONSHIP)
+    if expected and PATIENT_SEX not in (None,expected):
+        raise ValueError(f'人物 {RELATIONSHIP} 的已知性别 {expected} 与PATIENT_SEX={PATIENT_SEX}冲突')
+    if RELATIONSHIP in ('spouse','parent') and PATIENT_SEX is None:
+        raise ValueError('配偶或父母合称必须先明确PATIENT_SEX；建议明确选 wife/husband 或 father/mother')
+    if PATIENT_AGE_BAND is not None and PATIENT_AGE_BAND not in ('young',):
+        raise ValueError("年龄条件目前仅有源规则 'young'，否则保持 None，勿添加未审年龄分支")
+    if PATIENT_AGE_BAND is not None and RELATIONSHIP!='younger_sibling':
+        raise ValueError('当前冻结版仅 younger_sibling 使用 PATIENT_AGE_BAND=young，别的角色不要填无效条件')
+    if BIRTH_ORDER is not None and BIRTH_ORDER not in ('eldest','middle','youngest'):
+        raise ValueError("BIRTH_ORDER只能是'eldest'、'middle'、'youngest'或None")
+    if BIRTH_ORDER is not None and RELATIONSHIP not in ('child','son','daughter','nephew'):
+        raise ValueError('冻结人物选择目前仅对孩子/儿子/女儿/侄子使用出生排行；兄弟姐妹勿误填该字段')
+    if BIRTH_ORDER is not None and PATIENT_SEX is None and not expected:
+        raise ValueError('需同时知道患者性别，才能依据排行选择真实辅助宫')
+    if PATIENT_BIRTH_GANZHI is not None and PATIENT_BIRTH_GANZHI not in CYCLE60:
+        raise ValueError('PATIENT_BIRTH_GANZHI必须是患者真实出生年六十甲子，如"乙丑"；不能只写出生公历年或甲一个字')
+    context=CONSULTATION_CONTEXT or ('direct_self' if RELATIONSHIP=='self' else 'direct_proxy')
+    if context not in ('direct_self','direct_proxy','event_news'):
+        raise ValueError('CONSULTATION_CONTEXT只可为 None/direct_self/direct_proxy/event_news')
+    if RELATIONSHIP=='self' and context!='direct_self':
+        raise ValueError('本人问自己必须用 direct_self')
+    if RELATIONSHIP!='self' and context=='direct_self':
+        raise ValueError('代问其他人不能用 direct_self')
+    if context=='event_news' and RELATIONSHIP not in profiles.get('event_news_override',{}).get('eligible',[]):
+        raise ValueError('此人物未在原著 event_news 来源适用名单中，不能强行用闻讯事件日干')
+    return {'profile':role,'context':context,'reference':role['references'][0]}
+
+
+def build_inquiry(validation:dict)->dict:
+    inquiry={'intent':'severity','relationship':RELATIONSHIP,
+             'consultation_context':validation['context']}
+    for key,value in (('patient_sex',PATIENT_SEX),('patient_age_band',PATIENT_AGE_BAND),
+                      ('birth_order',BIRTH_ORDER),('patient_birth_ganzhi',PATIENT_BIRTH_GANZHI)):
+        if value is not None:inquiry[key]=value
+    return inquiry
+
+
+def actor_output_folder() -> Path:
+    """Keep no-option old 20 rows resumable; never mix natal or sex variants."""
+    root=base.OUTPUT/'full_518400'/RELATIONSHIP
+    extra={'birth':PATIENT_BIRTH_GANZHI,'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
+           'order':BIRTH_ORDER,'context':CONSULTATION_CONTEXT}
+    if any(v is not None for v in extra.values()):
+        # Changing any input uses its OWN checkpoint, not a misleading overwritten Excel.
+        suffix=sha_text(canonical(extra))[:10]
+        label=('年命_'+PATIENT_BIRTH_GANZHI) if PATIENT_BIRTH_GANZHI else '人物条件'
+        return root/(label+'_'+suffix)
+    return root
+
+
+def verify_actual_role(chart:dict, inquiry:dict, calendar:dict, source_reference:dict)->dict:
+    """Double-check the REAL Wengua role binder, not a copied actor selection."""
+    from src.wengua.health_dynamic_v21 import bind_patient
+    role=bind_patient(chart,inquiry,calendar)
+    kind=role['role_via']
+    if inquiry['consultation_context']!='event_news' and kind!=source_reference['kind']:
+        raise ValueError('人物取用种类与actor_profiles原表不符：'+str((kind,source_reference['kind'])))
+    expected={'day_stem':calendar['day_ganzhi'][0],
+              'casting_day_stem':calendar['day_ganzhi'][0],
+              'casting_year_stem':calendar['year_ganzhi'][0],
+              'casting_month_stem':calendar['month_ganzhi'][0],
+              'casting_hour_stem':calendar['hour_ganzhi'][0]}
+    if kind in expected and role['stem']!=expected[kind]:
+        raise ValueError('人物取用来源柱与最终天干不同，拒绝错误稿：'+str((kind,role['stem'],expected[kind])))
+    if kind=='spouse_gender_harmony':
+        sex=inquiry.get('patient_sex')
+        if inquiry['relationship']=='wife':sex='female'
+        if inquiry['relationship']=='husband':sex='male'
+        if role['stem']!=('乙' if sex=='female' else '庚'):
+            raise ValueError('配偶乙/庚取用未按实际性别绑定')
+    if kind in ('day_stem','casting_day_stem','casting_year_stem','casting_month_stem') and role['stem']=='甲':
+        # Existing research binder borrows hour-甲 xun. Separate year/month/day Jia
+        # is not independently verified; never mark the false positive 'success'.
+        raise ValueError('用神甲独立寻址待核：'+kind+'不能借用当前小时甲旬首六仪')
+    patient=role.get('main_cell')
+    if patient is None:
+        raise ValueError('实际患者主用神未落宫：'+str(role['role_name']))
+    if patient['palace'] not in (1,2,3,4,6,7,8,9):
+        raise ValueError('患者主用神不可被伪造在无普通星门神的中五宫')
+    natal=inquiry.get('patient_birth_ganzhi')
+    if natal and natal[0]=='甲':
+        # The frozen legacy helper can borrow the HOUR 甲旬首; that is not
+        # independent proof of the PERSON'S birth-year 甲 identity.
+        raise ValueError('真实年命为甲年，原研究用神绑定器尚未独立核准该年命遁干；不得借时旬冒充年命')
+    natal_cell=role.get('birth_cell')
+    if natal and natal_cell is None:
+        raise ValueError('已提供真实年命'+natal+'，但独立年命符号实际落宫未核定；不得假称年命已参与')
+    if natal and natal_cell['palace'] not in (1,2,3,4,6,7,8,9):
+        raise ValueError('年命实际落宫不能伪造为普通中五宫')
+    return {
+        'relationship':role['relationship'],'label':role['label'],
+        'consultation_context':role['context'],
+        'role_via':kind,'role_source':role['source_rule'],
+        'role_status':role['status'],'role_confidence':role['confidence'],
+        'stem':role['stem'],'palace':patient['palace'],
+        'role_name':role['role_name'],
+        'auxiliary_palaces':[c['palace'] for c in role.get('extra_cells',[])],
+        'natal_year':natal,'natal_active':bool(natal_cell) if natal else False,
+        'natal_stem':natal[0] if natal else None,
+        'natal_palace':natal_cell['palace'] if natal_cell else None,
+        'natal_note':role['birth_note'],
+    }
 
 
 def source_chart_from_base(src: dict, pillars: dict, term: str, bureau: dict):
@@ -907,9 +1040,27 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
              'day_ganzhi':pillars['day'],'hour_ganzhi':pillars['hour'],
              'month_branch':pillars['month'][1]}
         with bigfish_candidate_only(board):
+            profiles=actor_catalog()
+            lookup={p['id']:p for p in profiles['profiles']}
+            source_reference=lookup[inquiry['relationship']]['references'][0]
+            person_audit=verify_actual_role(board,inquiry,cal,source_reference)
             report=analyze_health_severity_review(chart=board,inquiry=inquiry,
                          calendar=cal,db_path=DEFAULT_DB)
         quant=report['full_health_role_strength_network']['candidate_five_grade_quantization']
+        roles=quant.get('roles',{})
+        if roles.get('patient',{}).get('palace')!=person_audit['palace']:
+            raise ValueError('封存V8评分的患者宫与人物绑定主宫不一致')
+        if person_audit['natal_year']:
+            if roles.get('natal',{}).get('palace')!=person_audit['natal_palace']:
+                raise ValueError('患者真实年命已给出但冻结V8未按独立年命宫参与，不能输出伪完整判断')
+        elif 'natal' in roles:
+            raise ValueError('用户未提供年命，却生成了年命评分宫')
+        elder_aux={'father':6,'grandfather':6,'mother':2,'grandmother':2}
+        expected_aux=elder_aux.get(inquiry['relationship'])
+        if expected_aux and roles.get('gender',{}).get('palace')!=expected_aux:
+            raise ValueError('冻结V8未按原人物条件选正确的长辈乾/坤辅助宫')
+        if not expected_aux and inquiry['relationship'] not in ('parent','older_relative') and 'gender' in roles:
+            raise ValueError('非符合条件的长辈被误套乾坤辅助宫')
         summary=quant['summary']
         score=summary['score']
         if score not in base.GRADE:
@@ -920,6 +1071,9 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
             raise ValueError('封存V10.2中文原文或章节缺失')
         lock={
             'four_pillars':pillars,'source_term':term,
+            'person_binding':person_audit,
+            'birth_year_was_explicit':bool(inquiry.get('patient_birth_ganzhi')),
+            'consultation_context':inquiry['consultation_context'],
             'bigfish_source_sha':base.BIGFISH_SHA,'wengua_source_sha':base.WENGUA_SHA,
             'original_physical_board_id':physical['physical_id'],
             'selected_roles':{
@@ -953,10 +1107,11 @@ def run():
     if INSTALL_ONLY:
         print("仅安装模式完成：下次把 INSTALL_ONLY=False 即开始计算。", flush=True)
         return
+    profiles=actor_catalog()
+    validation=validate_actor_settings(profiles)
     labels=catalog_relation_labels()
-    if RELATIONSHIP not in labels:
-        raise ValueError(f'No relation {RELATIONSHIP!r}; source contains {len(labels)} IDs: {sorted(labels)}')
-    root=base.OUTPUT/'full_518400'/RELATIONSHIP
+    inquiry=build_inquiry(validation)
+    root=actor_output_folder()
     root.mkdir(parents=True,exist_ok=True)
     info={
         'version':PIPELINE_VERSION,'relationship':RELATIONSHIP,
@@ -971,11 +1126,29 @@ def run():
         'person_natal':'optional_explicit_only_no_inference','source_method':'BigFish original shiJiaGenerate/ChaiBu',
         'score_method':'frozen Wengua V8.0 and V10.2 text, single-thread research gate',
     }
+    if CONSULTATION_CONTEXT is not None:
+        info['consultation_context']=validation['context']
     db=initialize_db(root/f'{RELATIONSHIP}_断点进度.sqlite3',info)
     (root/'源版本与条件说明.json').write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
     done=int(db.execute('SELECT COUNT(*) FROM cases').fetchone()[0])
     if MAX_NEW_ROWS<0:raise ValueError('MAX_NEW_ROWS must be >=0')
     print('人物:',RELATIONSHIP,labels[RELATIONSHIP],flush=True)
+    print('封存用神来源:',validation['reference']['kind'],
+          '原始来源:',validation['reference']['source'],
+          '人物辅助宫:',validation['profile'].get('palaces',[]),flush=True)
+    print('本次问事方式:',validation['context'],'问测年月日时按本次每行四柱计算，绝不替换成患者出生年',flush=True)
+    print('真实出生年命:',PATIENT_BIRTH_GANZHI or '未提供：不参与',
+          '；已知年命将另列独立宫与能量',flush=True)
+    print('当前独立存储目录:',root,flush=True)
+    (root/'人物用神与年命配置核对.json').write_text(
+        json.dumps({'relationship_id':RELATIONSHIP,'profile':validation['profile'],
+                    'consultation_context':validation['context'],
+                    'real_birth_year_ganzhi_if_known':PATIENT_BIRTH_GANZHI,
+                    'sex':PATIENT_SEX,'age_band':PATIENT_AGE_BAND,
+                    'birth_order':BIRTH_ORDER,
+                    'main_signifier_source_column':validation['reference']['kind'],
+                    'note':'按每行真实四柱选主用神；年命是额外身份，只在真实提供并能实际落宫时加入。'},
+                    ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('现有SQLite内已处理（含失败）会按原状跳过，绝不会用新版覆盖旧断词/人工改稿。',flush=True)
     print('理论组合:',N_CASES,'每行两个可能节气；已完成:',done,flush=True)
     print('注意：这是条件组合研究库，非518400个已核实的真实公历时刻。',flush=True)
@@ -983,11 +1156,7 @@ def run():
     worker=BigFishWorker(root)
     current=0;pending=0;failed=0
     try:
-        inquiry={'intent':'severity','relationship':RELATIONSHIP,
-                 'consultation_context':'direct_self' if RELATIONSHIP=='self' else 'direct_proxy'}
-        for k,v in (('patient_sex',PATIENT_SEX),('patient_age_band',PATIENT_AGE_BAND),
-                    ('birth_order',BIRTH_ORDER),('patient_birth_ganzhi',PATIENT_BIRTH_GANZHI)):
-            if v is not None:inquiry[k]=v
+        # Reuse the EXACT preflight inquiry for every per-term cast.
         for idx in range(N_CASES):
             if MAX_NEW_ROWS and current>=MAX_NEW_ROWS:break
             if db.execute('SELECT 1 FROM cases WHERE idx=?',(idx,)).fetchone():
@@ -996,6 +1165,16 @@ def run():
             term1,term2=TERM_BY_MONTH[pillars['month'][1]]
             r1=compute_variant(worker,pillars,term1,inquiry)
             r2=compute_variant(worker,pillars,term2,inquiry)
+            if current<3:
+                for term_result in (r1,r2):
+                    binding=term_result.get('source_fact_lock',{}).get('person_binding',{})
+                    print('[首条用神复核]',idx+1,term_result['term'],
+                          '问测',pillars,'主取',binding.get('role_via','未核定'),
+                          binding.get('stem',''), '宫',binding.get('palace',''),
+                          '年命', ('参与'+str(binding.get('natal_palace'))+'宫'
+                                     if binding.get('natal_active') else '未参与'),
+                          '状态',term_result['status'],
+                          ('错误='+term_result['error'][:140] if term_result.get('error') else ''),flush=True)
             failed+=int(r1['status'].startswith('失败'))+int(r2['status'].startswith('失败'))
             case_id=sha_text(canonical((RELATIONSHIP,idx,base.BIGFISH_SHA,base.WENGUA_SHA)))[:28]
             db.execute('INSERT INTO cases VALUES (?,?,?,?,?,?)',
