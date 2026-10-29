@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/ios_v80_xcode_simulator_build.yml'
       - 'ios/WenguaAppUI/**'
+      - 'tests/verify_ios_premium_verdict_runtime_20261028.py'
       - 'data/mobile/health_vnext/health_energy_200.json'
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
