@@ -7,6 +7,7 @@ on:
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'tests/test_six_jia_earth_tomb_cohost_parity_20261029.py'
       - 'src/wengua/health_role_majority_vnext.py'
       - 'src/wengua/domain_selected_energy_vnext.py'
       - 'src/wengua/health_reading_template_vnext.py'
@@ -36,6 +37,8 @@ jobs:
           mkdir -p /tmp/wengua-v80
           python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v 2>&1 | tee /tmp/wengua-v80/matrix_tests.log
           python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v80/mirror_tests.log
+      - name: Real Qian ground-Yi tomb and user-approved six-Jia conditioning regression
+        run: python3 -m unittest discover -s tests -p 'test_six_jia_earth_tomb_cohost_parity_20261029.py' -v
       - name: Verify all 1080 persisted real source physical boards before native parity samples
         run: |
           python3 -m unittest discover -s tests -p 'test_physical_1080_atlas_dataset_20261029.py' -v
