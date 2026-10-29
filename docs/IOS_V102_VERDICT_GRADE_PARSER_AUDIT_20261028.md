@@ -22,3 +22,14 @@
 
 ## 不靠静态检查的质量门槛
 新测试 `tests/verify_ios_premium_verdict_runtime_20261028.py` 实际提取本仓库的两段 Swift 源（DTO与结果解析/十档映射），使用macOS `swiftc` 编译并执行：读取此前真原生Swift五盘的**冻结已见** V10.2 原始输出 `docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40794999535_ATTEMPT_1.md`，查标题等级+时空原文，逐档核 11级（±1..±5,0）×3种真实结尾，以及未核及未知值不得假造。真正XcodeGen iOS Simulator完整编译和资源验收原workflow同步执行。不提供新真实医学预后。
+
+## 本次真实验证与失败留痕
+- UI源码修复所在首提交 `8930e270efcd8623c60475214edab8abb038746f`：新增真正Swift运行取样以防只有静态代码而无实用值。
+- 首次macOS Xcode #40807625244 FAIL：工程SwiftUI已成功编译，新增测试误把归档中旧案例计入V10.2五案；失败日志永久保留。
+- 第二次macOS #40807729493 FAIL：测试归档截取仍在旧范围，原UI源仍已编译。
+- 第三次macOS #40807843812 FAIL：五案范围修正后测试开始编译，测试Swift样本文本拼接跨行语法错误；失败日志永久保留。
+- 第四次macOS #40808110927 FAIL：测试现已真正执行，发现**测试脚本**误把0分「不凶不吉」按字尾「吉」归类；原已有UI映射为微恙正确。修测试契约保留中平独立分支，无UI/V8分数变更。
+- 最终固定后工作源码 SHA `69888e0338b5a43228bedef7351f79589c47bbb2`，正式 Python3.11/3.12 main CI #40808162214 PASS、**真实 macOS XcodeGen+unsigned iOS Simulator全App构建、App包200/81/人物/V10.2源资源、实际 swiftc 编译执行十一档×三结尾+5已见V10.2原生实案与缺证据退路** #40808162307 PASS。
+- 另外V8原生Swift ↔ Python冻结全文对照 #40807625262 PASS 对应UI修复最初源码 `8930e270`，之后只改UI测试源码及Xcode测试触发路径，不改V8/V10.2。
+- GitHub真实macOS验收： https://github.com/turnupmason/WenguaApp/actions/runs/40808162307 ；完整历史失败记录仍可从各失败Actions及自动追加docs/IOS_V80_XCODE_FAIL_RUN_*对应运行号查阅。
+- 仍不是签名真机、App Store交付或临床医学有效性；已安装旧Simulator/旧iPhone副本不会自行更换程序，须用最新main重新构建安装。
