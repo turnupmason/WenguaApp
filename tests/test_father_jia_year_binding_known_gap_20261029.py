@@ -1,8 +1,7 @@
-"""2026-10-29 KNOWN-FAILURE audit: father casting-year 甲 versus hour 甲 hidden carrier.
-
-The desired independent role identity is NOT implemented in frozen code.
-Tests for the desired behavior are explicitly expected failures, not false PASS.
-Do not repair V8 formulas by adapting a known-answer sample.
+"""Historical father 甲 binding failure retained as a regression (fixed by
+explicit user authorization 2026-10-29: source pillar 六甲遁六仪).
+Previous failure/audit logs remain preserved; never source hidden stem from
+a different column's hour xun. This is not a scored-answer retune.
 """
 import unittest
 
@@ -34,15 +33,13 @@ class FatherJiaYearIdentityAudit(unittest.TestCase):
         self.assertEqual(role["stem"], "甲")
         self.assertIn("戊", self._carried(role["main_cell"]))
 
-    @unittest.expectedFailure
-    def test_desired_year_jiazi_role_remains_locatable_when_hour_yichou(self):
+    def test_year_jiazi_role_locatable_when_hour_yichou(self):
         # Workbook row 2: source currently returns None (explicit guard).
         role = self._role("乙丑")
         self.assertIsNotNone(role["main_cell"],
                              "casting-year 甲子 identity must be independently established")
 
-    @unittest.expectedFailure
-    def test_desired_year_jiazi_identity_not_changed_to_hour_jiaxu_ji(self):
+    def test_year_jiazi_identity_not_changed_to_hour_jiaxu_ji(self):
         # Workbook row 11: current code wrongly chooses hour-xun 己 as dad's
         # casting-year 甲; a properly year-sourced identity cannot do that.
         role = self._role("甲戌")

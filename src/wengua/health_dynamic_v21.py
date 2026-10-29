@@ -83,15 +83,11 @@ def _cell(chart, palace):
     return chart["palaces"].get(str(palace)) if palace else None
 
 
-def _stem_cell(chart, stem):
+def _stem_cell(chart, stem, *, source_ganzhi=None):
+    """Use true role-source 六甲, never the current hour for another pillar."""
     if not stem:
         return None
-    if stem == "甲":
-        # Only actual Jia-HOUR has a verified hidden six-instrument carrier.
-        if chart.get("hour_ganzhi","").startswith("甲"):
-            return _find_heaven_stem(chart,"甲")
-        return None
-    return _find_heaven_stem(chart, stem)
+    return _find_heaven_stem(chart, stem, source_ganzhi=source_ganzhi)
 
 
 def _source_text(x):
@@ -147,6 +143,7 @@ def bind_patient(chart, inquiry, calendar):
         source_rule = "no fixed personal signifier in indexed chapter"
         confidence = "unknown"
     harmony_stem = None
+    source_ganzhi = None
     if via == "spouse_gender_harmony":
         sex = inquiry.get("patient_sex")
         if relation == "wife":sex="female"
@@ -178,7 +175,8 @@ def bind_patient(chart, inquiry, calendar):
         if ganzhi is not None and (ganzhi not in cycle60()):
             raise ValueError("Reference ganzhi must be an actual sexagenary pillar")
         stem = ganzhi[:1] if ganzhi else None
-    primary = _stem_cell(chart, stem)
+        source_ganzhi = ganzhi
+    primary = _stem_cell(chart, stem, source_ganzhi=source_ganzhi)
     fixed_palaces = list(profile["palaces"])
     if harmony_stem:
         secondary=_stem_cell(chart,harmony_stem)
@@ -213,9 +211,11 @@ def bind_patient(chart, inquiry, calendar):
         raise ValueError("Conflicting natal stem and Ganzhi")
     if birth and birth not in cycle60():
         raise ValueError("Patient birth year Ganzhi must be a full valid 60-cycle pillar")
-    birth_cell = _stem_cell(chart, birth[0] if birth else birth_stem) if (birth or birth_stem) else None
-    # If birth is Jia, hidden stem must be resolved from the actual Jia-xun,
-    # NEVER pretend a visible '甲' exists in a nine-ritual chart.
+    birth_cell = (_stem_cell(chart, birth[0] if birth else birth_stem,
+                             source_ganzhi=birth)
+                  if (birth or birth_stem) else None)
+    # Natal is OPTIONAL. A complete actual Jia natal pillar can be mapped
+    # only if it was truly supplied; do not infer birth year from casting year.
     extras = ["{p}参考宫主{m}".format(
         p=_p(c), m=("父辈/乾" if c["palace"]==6 and relation in ("father","parent","grandfather")
                     else "母辈/坤" if c["palace"]==2 and relation in ("mother","parent","grandmother")
@@ -244,6 +244,12 @@ def bind_patient(chart, inquiry, calendar):
         "relationship": relation,"label":label,"context":mode,
         "consultation_label":profiles["contexts"][mode],
         "role_name":role_name,"role_via":via,"stem":stem,
+        "source_ganzhi":source_ganzhi,
+        "carrier_stem":(primary["heaven_stars"][0]["carried_stem"]
+                        if primary and stem=="甲" and len(primary["heaven_stars"])==1
+                        else ({"甲子":"戊","甲戌":"己","甲申":"庚",
+                               "甲午":"辛","甲辰":"壬","甲寅":"癸"}.get(source_ganzhi)
+                              if stem=="甲" else stem)),
         "main_cell":primary,"extra_cells":extra_cells,
         "birth_cell":birth_cell,"birth_note":birth_note,
         "source_rule":source_rule,"confidence":confidence,"status":status,

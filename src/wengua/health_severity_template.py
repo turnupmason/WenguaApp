@@ -79,17 +79,28 @@ def _find_star(chart, name):
     return hits[0]
 
 
-def _find_heaven_stem(chart, stem):
-    # 甲旬首时六甲遁于六仪，天盘没有普通的“甲”携干。
-    # Only resolve an actual 甲-HOUR to its internally verified 旬首遁干;
-    # other 甲 uses are not implicitly converted into a patient stem.
-    if stem == "甲" and chart.get("hour_ganzhi", "")[:1] == "甲":
+def _find_heaven_stem(chart, stem, *, source_ganzhi=None):
+    """Locate a real sky carrier; 甲 uses ITS OWN complete role-source pillar.
+
+    Casting year/month/day/hour 甲子 -> 戊 etc., NOT chart.hour_xun for
+    unrelated role sources. Original symbolic identity remains 甲.
+    Historical no-source hour lookup stays compatible for actual 甲-hours.
+    """
+    if stem == "甲":
         from .casting_shenqi import SIX_JIA
-        xun = chart.get("xun_shou")
-        hidden = SIX_JIA.get(xun)
-        if not hidden or hidden != chart.get("hidden_stem"):
-            raise ValueError("Actual Jia-hour hidden stem contradicts the xun head")
-        stem = hidden
+        from .core import cycle60
+        if source_ganzhi is not None:
+            if source_ganzhi not in cycle60() or not source_ganzhi.startswith("甲"):
+                raise ValueError("A Jia role requires its own valid Jia Ganzhi pillar")
+            stem = SIX_JIA[source_ganzhi]
+        elif chart.get("hour_ganzhi", "").startswith("甲"):
+            xun = chart.get("xun_shou")
+            hidden = SIX_JIA.get(xun)
+            if not hidden or hidden != chart.get("hidden_stem"):
+                raise ValueError("Actual Jia-hour hidden stem contradicts the xun head")
+            stem = hidden
+        else:
+            return None
     hits = [(c, s) for c in chart["palaces"].values()
             for s in c["heaven_stars"] if s["carried_stem"] == stem]
     return hits[0][0] if len(hits) == 1 else None
@@ -140,11 +151,11 @@ def _role(chart, inquiry, calendar):
         stem, why = year_of_cast[0], "长辈案例兼年干与坤宫（神奇健康章192行）；不可普适化"
     else:
         stem, why = None, "该关系缺原书可执行的具体个人取用方法，仍可分析天芮与医药"
-    if stem == "甲":
-        # Birth years must NOT be guessed. A calendrical Jia stem alone
-        # does not identify its hidden Jia-xun instrument.
-        return None, why + "；甲遁干未由完整甲子旬判定", optional
-    return _find_heaven_stem(chart, stem) if stem else None, why, optional
+    source = (day if relation == "self" else
+              year_of_cast if relation in ("father", "older_relative") else
+              chart.get("hour_ganzhi") if relation == "nephew" else None)
+    return (_find_heaven_stem(chart, stem, source_ganzhi=source)
+            if stem else None), why, optional
 
 
 def _semantic_pair(pair, db_path):

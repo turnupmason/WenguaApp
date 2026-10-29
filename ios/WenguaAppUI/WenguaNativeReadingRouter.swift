@@ -112,14 +112,17 @@ enum WenguaNativeReadingRouter {
             }
             return list[0]
         }
-        func atStem(_ name:String) throws -> WenguaNativePalace {
-            // The original verified _find_heaven_stem method maps ONLY a
-            // genuine 甲-HOUR to its own six-Jia hidden instrument. Do not
-            // create an ordinary visible 甲 or remap patient/father 甲.
-            let carried=(name=="甲" && chart.pillars.hour.hasPrefix("甲"))
-                      ? chart.hiddenStem : name
+        func atStem(_ name:String, sourceGanzhi:String?=nil) throws -> WenguaNativePalace {
+            let carrier:String
+            if name=="甲" {
+                guard let sourceGanzhi,
+                      let mapped=WenguaNativeActorSource.jiaCarrier(sourceGanzhi) else {
+                    throw WenguaNativeReadingError.missingRole
+                }
+                carrier=mapped
+            } else {carrier=name}
             return try unique {
-                $0.heavenStars.contains(where:{$0.carriedStem==carried})
+                $0.heavenStars.contains(where:{$0.carriedStem==carrier})
             }
         }
         let illness=try unique {$0.heavenStars.contains(where:{$0.star=="天芮星"})}
@@ -132,10 +135,11 @@ enum WenguaNativeReadingRouter {
         if let actor {
             patient=try unique{$0.id==actor.mainPalace}
         } else {
-            patient=try atStem(patientStem)
+            patient=try atStem(patientStem,sourceGanzhi:
+                relationship=="父亲" ? chart.pillars.year:chart.pillars.day)
         }
         let hourStem=String(chart.pillars.hour.prefix(1))
-        let hour=try atStem(hourStem)
+        let hour=try atStem(hourStem,sourceGanzhi:chart.pillars.hour)
         let chief=try unique {$0.deity=="值符"}
         func palaceName(_ p:WenguaNativePalace)->String {
             p.gua+String(p.id)+"宫"
