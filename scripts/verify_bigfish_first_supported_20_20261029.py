@@ -14,14 +14,16 @@ def main(compiled):
     script.PATIENT_BIRTH_GANZHI=None
     validation=script.validate_actor_settings(script.actor_catalog())
     inquiry=script.build_inquiry(validation)
-    start=8640 # year乙丑; 0..8639 are 甲子 year with unverified independent year Jia
+    # Now verify the exact formerly failed father 甲子 first20, as well as
+    # the pre-existing second-year 乙丑 success regression. No natal.
     worker=script.BigFishWorker(script.base.OUTPUT)
     total=0
     try:
-        for idx in range(start,start+20):
+        for start in (0,8640):
+          for idx in range(start,start+20):
             pillars=script.scenario(idx)
-            assert pillars["year"]=="乙丑", (idx,pillars)
-            assert script.deferred_source_jia(pillars,validation) is None
+            assert pillars["year"]==("甲子" if start==0 else "乙丑"),(idx,pillars)
+            assert not script.DEFER_UNRESOLVED_JIA
             for term in script.TERM_BY_MONTH[pillars["month"][1]]:
                 result=script.compute_variant(worker,pillars,term,inquiry)
                 if not result["status"].startswith("原始断词") or not result["text"]:
@@ -31,6 +33,9 @@ def main(compiled):
                 roles=result["source_fact_lock"]["selected_roles"]
                 assert binding["role_via"]=="casting_year_stem",binding
                 assert binding["stem"]==pillars["year"][0],binding
+                if start==0:
+                    assert binding["source_ganzhi"]=="甲子",binding
+                    assert binding["carrier_stem"]=="戊",binding
                 assert binding["natal_active"] is False
                 assert binding["auxiliary_palaces"]==[6],binding
                 assert "natal" not in roles
@@ -47,8 +52,8 @@ def main(compiled):
                 total+=1
     finally:
         worker.close()
-    assert total==40,total
-    print("TOTAL_REAL_BIGFISH_FIRST_SUPPORTED=40; NO_NATAL; PRESERVED_JIA_DEFERRED",
+    assert total==80,total
+    print("TOTAL_REAL_BIGFISH_FIRST_20_JIA_FIXED=40 PLUS_YICHOU_40; NO_NATAL",
           flush=True)
 
 if __name__=="__main__":
