@@ -2281,3 +2281,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 
 ### 2026-10-29 · 五鼠遁不是父亲20条失败根因（用户纠正建议逐行核对之后，优先保留事实）
 用户提出以五鼠遁/23:00换日解释前20行甲子日乙亥时「不存在」，但真实用户Excel序号12的**甲子日乙亥时21:00–23:00完全合法**；序号13是次日**乙丑日丙子时**，恰好由五鼠遁顺推。研究环境真实导入用户运行过的本地`Wengua_BigFish_518400.py`：20/20日时对合法、全60日×12时共720/720符合五鼠遁，年甲子→月丙寅也符合五虎遁；并不是违法小时而跳过。产生36失败分支的源路径仍为`health_dynamic_v21._stem_cell`对非甲时年甲返回None，甲时借时旬遁干`health_severity_template._find_heaven_stem`，第11行甲戌时误把年干甲取己。本轮新tests/test_five_rat_father_20_separate_from_signifier_20261029.py和专门Github Actions核合法性；独立审计docs/BIGFISH_FATHER_20_FIVERAT_IS_VALID_20261029.md。年干甲用神跨柱错绑未修复，不能宣布模型整体正确，更不能更改封存V8迁就样例；旧库错算/失败记录必须保留。518400乃抽象组合，真实交节和23:00换日流派应单独测试。Swift/Important/MANIFEST未动。
+
+
+### 2026-10-29 · 用户重申：前置批量不是研究/改模，是冻结V8断词的文学编辑工厂（最新最高优先级）
+**真实目标**：已验收Wengua V8.0的真实起盘、20类人物条件与源200/81、V10.2完整中文断案保持原样；本地Python预跑父亲→母亲→弟弟等场景保存九宫/人物用神/真强度/吉凶/应期证据/原始完整中文，再由用户和GPT仅润色去重复、去过度模板腔、压缩首页且不删第二屏专业章节，最后人工审校进入离线Swift资源。**不要把用户的文学质量要求误解成需要重新发明人物用神、调冻结分数或重写排盘**。已有`scripts/health_editorial_batch_v1.py`、固定Prompt与事实锁/候选审校逻辑先复用。先检视此前Mac `Wengua_BigFish_518400.py` 是否误调用`health_severity_vnext_review`研究预览而非真实正式V8入口，以同一输入正式Python/Swift为准；旧20例报错先分类是否“研究批量适配器错接”，不能未比对就称正式V8模型有错。维持已知甲绑定历史FAIL和原Excel，**不删/不改冻结源**。源人物JSON真实22 profile IDs不等于每个均属独立已审20关系。批量先20份全链校验再分段，原判断事实包只读且HASH，稿件原文/多轮编辑/批准独立版本；前端不泄露内分。518400抽象组合不冒充518400可核公历时辰。完整交接`docs/WENGUA_PREGENERATED_READINGS_EDITORIAL_ONLY_CONTRACT_20261029.md`。本轮只追加审计记录，不声称跑了新的Mac/Swift/Xcode。
