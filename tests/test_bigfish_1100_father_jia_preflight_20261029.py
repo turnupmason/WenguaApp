@@ -73,6 +73,33 @@ class Failure1100Regression(unittest.TestCase):
             self.assertEqual(len(files),1)
             self.assertEqual(len(files[0].read_text(encoding="utf8").splitlines()),2)
             db.close()
+    def test_v3_wengua_source_pin_and_independent_output_folder(self):
+        self.assertEqual(M.SIX_JIA_APPROVED_WENGUA_SHA,
+                         "a288d127883157cb2bea96b676d2c86a45c2ab12")
+        self.assertEqual(M.SIX_JIA_BATCH_SUBDIR,
+                         "六甲全柱来源_20261029_v3_地盘墓核验")
+        original_activated=M.SIX_JIA_SOURCES_ACTIVATED
+        old_source=getattr(M.base,"SOURCE",None)
+        old_frozen=getattr(M.base,"FROZEN",None)
+        old_sha=M.base.WENGUA_SHA
+        old_output=getattr(M.base,"OUTPUT",None)
+        with tempfile.TemporaryDirectory() as temp:
+            try:
+                M.SIX_JIA_SOURCES_ACTIVATED=False
+                M.base.OUTPUT=Path(temp)
+                M.activate_six_jia_sources()
+                self.assertEqual(M.base.WENGUA_SHA,M.SIX_JIA_APPROVED_WENGUA_SHA)
+                self.assertTrue(str(M.base.SOURCE).endswith("WenguaApp_sixjia_source_v2"))
+                self.assertTrue(str(M.base.FROZEN).endswith("frozen_sixjia_source_v2"))
+                folder=M.actor_output_folder()
+                self.assertIn(M.SIX_JIA_BATCH_SUBDIR,str(folder))
+                self.assertNotEqual(folder,Path(temp)/"full_518400"/"father")
+            finally:
+                M.SIX_JIA_SOURCES_ACTIVATED=original_activated
+                M.base.WENGUA_SHA=old_sha
+                if old_source is not None: M.base.SOURCE=old_source
+                if old_frozen is not None: M.base.FROZEN=old_frozen
+                if old_output is not None: M.base.OUTPUT=old_output
     def test_no_rule_or_natal_change(self):
         self.assertIsNone(M.PATIENT_BIRTH_GANZHI)
         self.assertFalse(M.DEFER_UNRESOLVED_JIA)
