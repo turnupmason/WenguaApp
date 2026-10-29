@@ -33,6 +33,7 @@ jobs:
           python-version: '3.11'
       - name: Two real-clock BigFish casting to frozen V8/V10.2 (separate audit)
         run: |
+          set -o pipefail
           python -m scripts.verify_bigfish_frozen_v8_samples_20261029 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-real-v8.jsonl
       - uses: actions/upload-artifact@v4
         if: always()
