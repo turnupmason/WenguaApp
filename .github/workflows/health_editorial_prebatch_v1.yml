@@ -1,0 +1,74 @@
+name: Health V8 editorial preproduction batches - 1080 index and 12 factual cases
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_editorial_prebatch_v1.yml'
+      - 'scripts/health_editorial_batch_v1.py'
+      - 'prompts/health_severity_gpt_editorial_v1_20261029.md'
+      - 'prompts/health_severity_online_rule_audit_v1_20261029.md'
+      - 'tests/test_health_editorial_batch_v1_20261029.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  safe_prebatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate exact base index, twelve real source clocks, and immutable grades
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tests -p 'test_health_editorial_batch_v1_20261029.py' -v
+      - name: Build all 1080 base indices and twelve locked real editorial source cases
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-editorial
+          python3 -m scripts.health_editorial_batch_v1 --mode topology1080 --output /tmp/wengua-editorial/base-1080-index.jsonl | tee /tmp/wengua-editorial/topology.log
+          python3 -m scripts.health_editorial_batch_v1 --mode seed12 --output /tmp/wengua-editorial/first-12-actual-V8-facts.jsonl | tee /tmp/wengua-editorial/first12.log
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('/tmp/wengua-editorial')
+          base=[json.loads(s) for s in (p/'base-1080-index.jsonl').read_text().splitlines()]
+          cases=[json.loads(s) for s in (p/'first-12-actual-V8-facts.jsonl').read_text().splitlines()]
+          assert len(base)==1080 and all(not x['complete_severity_reading'] for x in base)
+          assert len(cases)==12 and all(not x['approved_for_app'] for x in cases)
+          assert all(x['freeze']['score'] is not None for x in cases)
+          print('BASE_1080_INDEX_PASS_REAL_GPT_CASES_12_PREPARED_NO_API_CALLS_NO_PUBLISH')
+          PY
+      - name: Archive replayable factual batch inputs and exact first-run tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-v80-editorial-v1-topology1080-and-12-real-source-jobs
+          path: /tmp/wengua-editorial/
+          retention-days: 90
+      - name: Preserve verified batch counts and keep all unapproved
+        run: |
+          set -euo pipefail
+          FILE="docs/HEALTH_EDITORIAL_PREBATCH_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            echo "# Health V8 editorial prebatch - actual CI report"
+            echo
+            echo "Run: https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
+            echo "Source: ${GITHUB_SHA}"
+            echo "Topology: 1080 base layouts enumerated, NOT 1080 complete health readings"
+            echo "Editor jobs: 12 fully computed existing clock/person input cases (source only)"
+            echo "GPT calls: 0; network research: not performed inside this workflow"
+            echo "Customer release: 0; human approvals: 0"
+            echo "All statuses: queued_needs_gpt_and_manual_review"
+            echo "Artifact: health-v80-editorial-v1-topology1080-and-12-real-source-jobs"
+            echo "Next gated steps: approved model and API authorization; source audit; candidate validation; human approval; native UI source-locked loader parity"
+          } > "$FILE"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$FILE"
+          git commit -m "Record actual 1080 index and 12 V8 editorial jobs (not a GPT run or release)"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
