@@ -2168,3 +2168,7 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 由于用户反馈原7篇及后续5993篇仍“对小白太专业”，本轮将首页+十章全部调整为 **先说为什么判断，再举1-2项当前盘的真实证据、解释与患者/医药的因果及相反证据，最后说明条件和时局**。禁止朗读后台源力量五档与复杂格名。父亲甲子遁戊、乾六、无年命、节气甲原规则不变。
 真实GitHub Push: Wengua_Prediction main via SHA locked transfer commit f584c2cb24d9e42ac38f027758ee3a342f0adc1f -> GitHub Actions #40986671804 PASS -> 本体解包提交 0535fb45c0e682ad04c24fb2fdda9b20205bda6d；GitHub tree API 未截断且 **6000个v5.json** 真实存在，900个本卷盘目录。同盘其它年/月/日条件独立。原V8分数、等级、证据SHA、原始物理盘SHA全部保留，十章及零批准 CI 校验通过。
 用户不亲自人工看稿。**这只完成入GitHub的自动批量候选和技术校验，不能冒称6000篇独立真人润色已经达标。** 第五版虽更小白，仍有首屏高频重复开头和技术解释，后续文学质量回归应以自然因果讲述、减少重复为第一标准；旧v1-v3及失败都保留。全部6000 status=draft、human_approved=false，尚未独立重跑V8的200格与5×5；未获另行明确允许不可入iOS正式SQLite。详见新仓 root AGENTS、README、审核规则与长期handoff；WenguaApp冻结V8/Swift未改。
+
+
+### 2026-10-29 · 父亲全6000篇v5被用户否决，错误文风已隔离
+用户再次明确否决全部v5文案，原因是开头「此局偏吉，并非病宫处处顺利」、设问、累赘、过量“专业”术语和相似句。真实GitHub Actions #40990230441 PASS，把6,000个v5文件保留但状态全部更为 **rejected**，证据SHA/物理盘/V8分数/归档位置不变。新Wengua_Prediction 的 `tools/check_reader_style.py` 防止类似的固定句和疑问句继续出现在新稿，CI继续保护批准流程。已有7篇实写的v6短篇首屏及完整第二屏十章节（1/2/20/42/3000/4201/6000）存入真实原盘目录且全是draft；其它5993篇**尚未完成合格重写**。自动快速试改全6000虽然去掉疑问句，但仅1065种首页、最高同前缀245次，另有90篇原评分需与宫象矛盾条件核查，故**没有把这轮程序短稿当成合格v6批量推送**。冻结 V8/200/81/Swift/Important/MANIFEST 未触动；用户不逐篇签字，但未授权绕开iOS的批准门槛。未来新窗口优先读 Wengua_Prediction AGENTS/editorial_policy/handoff 最新准则。
