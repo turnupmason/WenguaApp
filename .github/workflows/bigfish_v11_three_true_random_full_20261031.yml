@@ -38,7 +38,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: BigFish-V11-three-real-random-full-original-sources
+          name: BigFish-V11-2-three-real-random-full-original-sources
           path: /tmp/bigfish_v11_three_random_full.txt
           retention-days: 90
           if-no-files-found: warn
@@ -46,7 +46,7 @@ jobs:
         if: success()
         run: |
           set -euo pipefail
-          target=docs/BIGFISH_V11_THREE_REAL_RANDOM_COMPLETE_20261031.txt
+          target=docs/BIGFISH_V11_2_THREE_REAL_RANDOM_COMPLETE_20261031.txt
           if [ -e "$target" ]; then
             cmp -s /tmp/bigfish_v11_three_random_full.txt "$target" || {
               echo "Earlier immutable preview differs; preserve without overwrite"; exit 1;
@@ -57,7 +57,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$target"
-          git commit -m "Archive BigFish V11 three genuine clocks and complete first/second page readings"
+          git commit -m "Archive BigFish V11.2 three genuine clocks and complete first/second page readings"
           for attempt in 1 2 3 4 5; do
             git pull --rebase origin main
             if git push origin HEAD:main; then exit 0; fi
