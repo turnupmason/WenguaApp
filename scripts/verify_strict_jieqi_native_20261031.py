@@ -11,6 +11,9 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+import sys
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 from src.wengua.astro_calendar import solar_chart_clock
 from src.wengua.casting_shenqi import bureau_for_term
 
