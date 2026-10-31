@@ -7,7 +7,7 @@ from scripts import ios_vnext_three_random_20261026 as samples
 class V101CopyTests(unittest.TestCase):
     def test_template(self):
         t=template()
-        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261028_v10_2_evidence_first")
+        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261031_v11_full_evidence")
         self.assertIn("宫象{grade}。",t["macros"]["palace_compact"])
         self.assertNotIn("全部因素推断后",t["macros"]["palace_compact"])
         self.assertIn("古文：{classical_text}",t["formation"])
@@ -19,7 +19,7 @@ class V101CopyTests(unittest.TestCase):
         verdict=next(s["text"] for s in case["source_sections"] if s["id"]=="90_review")
         self.assertIn("患者乙在坎一宫",verdict)
         self.assertEqual(verdict.count("乙奇势"),1)
-        self.assertLess(len(verdict),350)
+        self.assertLess(len(verdict),950)
         self.assertNotIn("全部因素推断后",case["python_reading_text"])
     def test_both_source_engines_deduplicate_without_mutating_scores(self):
         root=Path(__file__).resolve().parents[1]
