@@ -1,5 +1,5 @@
 {
-  "schema": "wengua_health_actor_profiles_v90_friends_20261031",
+  "schema": "wengua_health_actor_profiles_v91_friend_month_only_20261031",
   "domain": "health",
   "basis": "依据古籍",
   "selection_required": [
@@ -118,27 +118,7 @@
         }
       ],
       "palaces": [],
-      "note": "朋友属同辈，以真实月干为患者主用；必须先定男/女、相对求测人年长/年幼，分别兼震/巽/艮/兑；不按朋友性别默认长辈乾坤；年命仅真实提供再用",
-      "friend_conditions": {
-        "patient_sex_required": [
-          "male",
-          "female"
-        ],
-        "relative_age_required": [
-          "older",
-          "younger"
-        ],
-        "relative_to": "asker",
-        "main_kind": "casting_month_stem",
-        "secondary_trigrams": {
-          "male:older": 3,
-          "female:older": 4,
-          "male:younger": 8,
-          "female:younger": 7
-        },
-        "user_approved": "2026-10-31 V9",
-        "provenance": "User-defined conditional projection of peer trigrams; direct book eldest sister Xun and 23yo younger brother Gen; brother Zhen/sister Dui analogical"
-      }
+      "note": "朋友不是亲属：按本次真实月干选患者主用神；不因性别、比求测人年长或年幼增选震巽艮兑或乾坤等亲属辅助宫。实际出生年命有证据才另看。"
     },
     {
       "id": "colleague",
