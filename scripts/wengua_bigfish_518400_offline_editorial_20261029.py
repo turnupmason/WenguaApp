@@ -1487,8 +1487,8 @@ def real_case_from_slot(worker, slot, inquiry):
         output.update(result)
         output.update(instant=slot['instant'],utc=slot['utc'],
                       timezone=slot['timezone'],branch=slot['branch'],
-                      'not_a_two_hour_interval_certification'=True,
-                      'approved_for_app'=False)
+                      not_a_two_hour_interval_certification=True,
+                      approved_for_app=False)
         output['calendar_receipt']=calendar
         if not result['status'].startswith('原始断词'):
             output['status']='失败_保留原样'
