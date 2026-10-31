@@ -1396,13 +1396,13 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v2_strict_jieqi'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v3_strict_jieqi_2040'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
 _STRICT_FIRST_UTC_MS=1736044366945
-_STRICT_DELTAS_BASE36="l1ku06.l3448j.l6w468.lbcd2a.lhjhjp.lnpsly.luvhkk.m12w33.m7dkvx.mbtm33.mfj6it.mguqfq.mgwz4a.meoskx.mb4ea6.m5yxof.lzvgbg.lt8ua0.lmds59.lg2nh1.laauqk.l5x9w3.l2ovth.l1bgqb.l1dnlk.l3cxw5.l6o0gh.lbkjoy.lha6ot.lnyqp6.lukrpu.m1dqu2.m71fsl.mc650j.mf6tuj.mh78ln.mgm8rx.meyhfh.mawei4.m64m0q.lzqzyy.ltbpla.lmcd98.lg3yjc.laaig0.l5xiey.l2nuxq.l1b0nb.l1b886.l3byxq.l6knoq.lbj8ay.lh7vgw.lnx5c7.lum2uj.m1b3jj.m77xh3.mc0x0t.mfi91m.mgz8pl.mh104s.meorsm.mbb5zk.m5tutw.m030jq.lt0hjb.lmlkow.lft3lw.laiqeo.l5nk1k.l2wkud.l11pkl.l1kqq8.l32scm.l6ufiw.lb9wld.lhh3d8.lnod0b.luu49v.m14uns.m7dsyo.mbz4uo.mfjijo.mh1wa5.mgvymt.mevaqw.mb15wt.m62zs8.lzq03x.ltak30.lm7imi.lg3ms9.la56fg.l5yxbo.l2kdzn"
-_STRICT_JIEQI_VERSION="strict_utc_moshier_2025_2028_v1"
+_STRICT_DELTAS_BASE36= "l1ku06.l3448j.l6w468.lbcd2a.lhjhjp.lnpsly.luvhkk.m12w33.m7dkvx.mbtm33.mfj6it.mguqfq.mgwz4a.meoskx.mb4ea6.m5yxof.lzvgbg.lt8ua0.lmds59.lg2nh1.laauqk.l5x9w3.l2ovth.l1bgqb.l1dnlk.l3cxw5.l6o0gh.lbkjoy.lha6ot.lnyqp6.lukrpu.m1dqu2.m71fsl.mc650j.mf6tuj.mh78ln.mgm8rx.meyhfh.mawei4.m64m0q.lzqzyy.ltbpla.lmcd98.lg3yjc.laaig0.l5xiey.l2nuxq.l1b0nb.l1b886.l3byxq.l6knoq.lbj8ay.lh7vgw.lnx5c7.lum2uj.m1b3jj.m77xh3.mc0x0t.mfi91m.mgz8pl.mh104s.meorsm.mbb5zk.m5tutw.m030jq.lt0hjb.lmlkow.lft3lw.laiqeo.l5nk1k.l2wkud.l11pkl.l1kqq8.l32scm.l6ufiw.lb9wld.lhh3d8.lnod0b.luu49v.m14uns.m7dsyo.mbz4uo.mfjijo.mh1wa5.mgvymt.mevaqw.mb15wt.m62zs8.lzq03x.ltak30.lm7imi.lg3ms9.la56fg.l5yxbo.l2kdzn.l1e95t.l1a1wj.l3gdqd.l6kmmr.lbnw0h.lh6v29.lo1rqk.luihga.m1gvlc.m71kwe.mc9bbt.mf9mr9.mh9dcn.mgqtr4.meyh87.mb1aht.m61sju.lzufmw.lt5z2j.lme46a.lfwvkk.lac992.l5rd6r.l2r8an.l16t8d.l1g9zx.l38xap.l6q6do.lbfsh0.lhcixz.lns603.lup7j8.m14vh3.m7a5ef.mbvko2.mfkjtr.mgwl63.mh3c06.mep73a.mbd4ia.m5wttl.m040lu.lt4def.lmkxhh.lfw9zk.lagfkw.l5pkwb.l2teb2.l130wa.l1hl1u.l343vn.l6rmrd.lbbljw.lhe0gn.lnq81k.lupl98.m16gpd.m77j5y.mc16d2.mfdmsf.mh69xu.mgtat9.mf23np.mb1yjm.m6a8pa.lzsk90.ltgaoh.lm9li0.lg6mgj.la4yey.l5ywct.l2hdz2.l1c2lc.l157b5.l3dioc.l6fm68.lblqwl.lh3dfw.lo0w91.luhg9x.m1gh6z.m72vsz.mc7wlh.mfcs11.mh6umy.mgw55g.mewaze.mb8o9v.m60uxb.m02n7s.lt5u3y.lmln0e.lfw4a8.lahs9o.l5ofrd.l2u68k.l11baj.l1hdlf.l324sd.l6r497.lb9kmc.lhek68.lnnn2y.lusccf.m127ue.m7da2p.mbuctl.mfloyv.mgw4iw.mh1c9w.meptyg.mb9bgi.m5zhtq.m00hyg.lt9cr7.lmiug8.lg33hi.laff7a.l5wyw4.l2s6n5.l19gz4.l1exie.l38nhy.l6n189.lbea3p.lh7s52.lnry0n.luinyh.m18der.m713ll.mc3s7z.mf8ldy.mh8ii7.mgpke5.mf2gha.mazqe7.m69fmy.lzt4ac.ltg6oo.lmd9b4.lg7wxb.laajap.l60xre.l2n6fd.l1dkk6.l19iz5.l3d28c.l6hc7b.lbihk5.lh2mfu.lnv05c.lufmyt.m191cb.m723l7.mc0oqb.mfeqyk.mh1jxe.mh0whh.metcao.mbe3ag.m5za4j.m0732u.lt4uev.lmp117.lfvnl0.lakxbf.l5onek.l2xp4f.l11w6e.l1l239.l328tt.l6tvy8.lb8at1.lhfdw6.lnl40b.lurbqr.m0zylt.m7b2lp.mbtwl6.mfiisu.mgy1ye.mgxtwe.meu2we.mb5y33.m64qfj.lzwoai.ltdq4k.lmdy8s.lg63w0.la9pk7.l5zh87.l2ms0t.l1cvxq.l1azaf.l3dt7e.l6ksxk.lbkt2z.lh6gh9.lnyemg.luh41e.m1d57c.m6yum6.mc5tju.mf644a.mh7kxd.mgnydv.mezih5.mb056q.m65zs0.lzvl22.ltckd2.lmgr35.lg41wn.laefff.l5x5i5.l2rdrp.l1a56s.l1dzxy.l3a1ft.l6m56u.lbfsi1.lh7tye.lns24h.lukp00.m14sul.m75xmx.mbuyl5.mfgm9u.mgv8y7.mh0pxc.menvch.mbctx2.m5wgnz.m06i7b.lt5kqa.lmpu4c.lfyuoa.lamc1l.l5s7nu.l2yg7r.l1436i.l1kdt5.l32oze.l6rx2i.lb7zh1.lhcscd.lnlj32.luoh0u.m11u6c.m77iyy.mbx3eu.mfe9l7.mh2g5y.mgttcl.meyujr.mb26o2.m68cwp.lzt35m.ltgc8u.lmb9bp.lg8qdn.la7yzi.l62a4y.l2l13h.l1f8ir.l18345.l3f0yb.l6ggy4.lbkzjy.lh1t78.lnyh7b.lue8m9.m1dzle.m6zc9k.mc70o6.mf9o1k.mh7qyw.mgt9h2.mexxb5.mb5og6.m62fji.lzzufb.lt78kb.lmjjdr.lfy2o6.lagv2q.l5rjgp.l2uevz.l15b9y"
+_STRICT_JIEQI_VERSION="strict_utc_moshier_2025_2040_v2"
 def strict_real_calendar_clock(instant,zone):
     from bisect import bisect_right
     from src.wengua import astro_calendar as cal
@@ -1413,7 +1413,7 @@ def strict_real_calendar_clock(instant,zone):
         t=[_STRICT_FIRST_UTC_MS]
         for diff in _STRICT_DELTAS_BASE36.split("."):
             t.append(t[-1]+int(diff,36))
-        if len(t)!=96 or any(a>=b for a,b in zip(t,t[1:])):
+        if len(t)!=385 or any(a>=b for a,b in zip(t,t[1:])):
             raise RuntimeError("Strict JieQi timestamp table corrupted")
         strict_real_calendar_clock._times=t
     t=strict_real_calendar_clock._times
@@ -1445,7 +1445,7 @@ def strict_real_calendar_clock(instant,zone):
          "day_cycle_book_anchor":{"civil_date":"1995-06-11","day_ganzhi":"癸酉",
           "second_original_book_fixture":"1995-08-13 丙子",
           "third_original_book_fixture":"2001-08-20 乙卯"},
-         "note":"Strict UTC JieQi offline 2025-2028; no old/new mixed casting"}
+         "note":"Strict UTC JieQi offline 2025-2040; no old/new mixed casting"}
     out["sha256"]=hashlib.sha256(canonical(out).encode("utf-8")).hexdigest()
     return out
 
@@ -1729,7 +1729,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v2_strict_jieqi')
+          RELATIONSHIP/zone_path/'source_v3_strict_jieqi_2040')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,

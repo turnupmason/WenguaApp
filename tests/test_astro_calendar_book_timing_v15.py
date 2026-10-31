@@ -77,6 +77,40 @@ class ActualSolarTermAndBookTimingTests(unittest.TestCase):
   self.assertEqual(results[1]["branch"],"子")
   self.assertEqual(results[1]["start_iso"],results[0]["end_iso"])
 
+ def test_strict_extended_2029_2040_year_month_and_last_december(self):
+  from datetime import datetime,timedelta,timezone
+  from src.wengua.astro_calendar import _strict_crossing_times,STRICT_JIEQI_VERSION
+  ts=_strict_crossing_times()
+  self.assertEqual(len(ts),385)
+  self.assertEqual(ts[383],2239684370770)
+  self.assertEqual(ts[384],2240956087976)
+  cases=[
+    ("2029-01-05T01:41:54.830+00:00","冬至"),
+    ("2029-01-05T01:41:54.831+00:00","小寒"),
+    ("2040-02-04T05:39:52.575+00:00","大寒"),
+    ("2040-02-04T05:39:52.576+00:00","立春"),
+    ("2040-12-21T06:32:50.769+00:00","大雪"),
+    ("2040-12-21T06:32:50.770+00:00","冬至"),
+    ("2040-12-31T23:59:59+00:00","冬至"),
+    ("2041-01-04T23:48:07.975+00:00","冬至"),
+    ("2041-01-04T23:48:07.976+00:00","小寒")]
+  for civil,expect in cases:
+   with self.subTest(civil=civil):
+    r=solar_chart_clock(civil,"UTC")
+    self.assertEqual(r["active_solar_term"],expect)
+    self.assertEqual(r["method"],STRICT_JIEQI_VERSION)
+  just_before=solar_chart_clock("2040-02-04T05:39:52.575+00:00","UTC")
+  just_after=solar_chart_clock("2040-02-04T05:39:52.576+00:00","UTC")
+  self.assertNotEqual(just_before["four_pillars"]["month"],just_after["four_pillars"]["month"])
+  self.assertNotEqual(just_before["four_pillars"]["year"],just_after["four_pillars"]["year"])
+  periods=branch_periods("2040-11-20T12:00:00+00:00","UTC",
+                         granularity="month",days_ahead=40)
+  self.assertGreaterEqual(len(periods),2)
+  self.assertEqual(periods[0]["branch"],"亥")
+  self.assertEqual(periods[1]["branch"],"子")
+  self.assertEqual(periods[1]["calendar_method_version"],STRICT_JIEQI_VERSION)
+  self.assertEqual(periods[1]["end_iso"],"2041-01-04T23:48:07.976000+00:00")
+
  def test_optional_swiss_software_reference_agrees_with_offline_formula(self):
   # Core CI never downloads a sky library. If available, independently
   # compare two astronomical algorithms in one process.

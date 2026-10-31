@@ -31,10 +31,20 @@ MOMENTS=(
     "2026-12-21T20:30:00.000Z", # pre 冬至
     "2026-12-21T20:50:14.539Z", # crossing at 冬至
     "2027-03-14T07:30:00.000Z", # DST offset -4
+    "2029-01-05T01:41:54.830Z", # before 2029 Xiaohan
+    "2029-01-05T01:41:54.831Z", # new Xiaohan inclusive
+    "2035-06-10T12:00:00.000Z", # future midyear
+    "2040-02-04T05:39:52.575Z", # 1ms before 2040 Lichun
+    "2040-02-04T05:39:52.576Z", # 2040 Lichun exact, year/month change
+    "2040-12-21T06:32:50.769Z", # 1ms before Dongzhi
+    "2040-12-21T06:32:50.770Z", # new Dongzhi inclusive
+    "2040-12-31T23:59:59.000Z", # complete Dec 2040 must be covered
+    "2041-01-04T23:48:07.975Z", # sentinel minus 1ms
+    "2041-01-04T23:48:07.976Z", # last included endpoint Xiaohan
 )
 
 def verify_source_constants():
-    table=json.loads((ROOT/"data/calendar/strict_jieqi_moshier_2025_2028.json").read_text("utf8"))
+    table=json.loads((ROOT/"data/calendar/strict_jieqi_moshier_2025_2040.json").read_text("utf8"))
     packed=table["delta_base36"]
     for source in (ROOT/"src/wengua/astro_calendar.py",
                    ROOT/"scripts/wengua_bigfish_518400_offline_editorial_20261029.py",
@@ -45,7 +55,14 @@ def verify_source_constants():
     times=[table["first_utc_ms"]]
     for delta in packed.split("."):
         times.append(times[-1]+int(delta,36))
-    if len(times)!=96 or times!=sorted(set(times)):
+    previous=json.loads((ROOT/"data/calendar/strict_jieqi_moshier_2025_2028.json").read_text("utf8"))
+    if times[:96] != [previous["first_utc_ms"]] + [
+        previous["first_utc_ms"] + sum(int(x,36) for x in previous["delta_base36"].split(".")[:i])
+        for i in range(1,96)
+    ]:
+        raise AssertionError("Old 2025-2028 crossing timestamps must remain byte-exact")
+    if (len(times)!=385 or times!=sorted(set(times)) or
+        times[383]!=2239684370770 or times[-1]!=2240956087976):
         raise AssertionError("Strict table length/order invalid")
     return times
 
@@ -100,7 +117,7 @@ def run():
         raise AssertionError("Native/Python strict JieQi real board parity failed: "+
                              json.dumps(pairs,ensure_ascii=False))
     print("STRICT_JIEQI_NATIVE_PYTHON_REAL_CAST_PARITY_PASS",
-          len(actual),"actual UTC clocks with verified 2025-2028 crossings")
+          len(actual),"actual UTC clocks with verified 2025-2040 crossings")
     for iso,row in zip(MOMENTS,actual):
         print(iso,row[0],row[-2],row[-1])
 

@@ -118,6 +118,25 @@ class RealClockWindow(unittest.TestCase):
         self.assertEqual(actual["last_solar_crossing_utc_ms"],
                          ref["last_solar_crossing_utc_ms"])
 
+    def test_bigfish_original_script_extended_2040_utc_boundary_and_no_overwrite(self):
+        from src.wengua.astro_calendar import solar_chart_clock
+        for instant in ("2029-01-05T01:41:54.831+00:00",
+                        "2035-06-10T12:00:00+00:00",
+                        "2040-02-04T05:39:52.576+00:00",
+                        "2040-12-21T06:32:50.770+00:00",
+                        "2040-12-31T23:59:59+00:00"):
+            actual=M.strict_real_calendar_clock(instant,"UTC")
+            reference=solar_chart_clock(instant,"UTC")
+            self.assertEqual(actual["four_pillars"],reference["four_pillars"])
+            self.assertEqual(actual["active_solar_term"],reference["active_solar_term"])
+        self.assertEqual(M._STRICT_JIEQI_VERSION,
+                         "strict_utc_moshier_2025_2040_v2")
+        self.assertEqual(M.REAL_PIPELINE_VERSION,
+                         "bigfish_real_gregorian_nov2026_mar2027_v3_strict_jieqi_2040")
+        self.assertIn("source_v3_strict_jieqi_2040",TARGET.read_text("utf8"))
+        self.assertIn("source_v2_strict_jieqi",
+                      (ROOT/"docs/STRICT_CHAIBU_INSTANT_BOUNDARY_20261031.md").read_text("utf8"))
+
     def test_real_spring_dST_has_real_offsets_both_sides(self):
         day={x["instant"][11:16]:x for x in M.real_calendar_slots()
              if x["date"]=="2027-03-14"}

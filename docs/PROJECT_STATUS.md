@@ -2268,3 +2268,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-31 · 严格拆补离线太阳交节表覆盖至2040年底
+
+按用户要求，延长原2025—2028离线Swiss/Moshier交节96时刻至2025—2040严格UTC分界共384个节气点，并加2041-01-04 23:48:07.976 UTC小寒为第385个上界哨兵；确保2040-12-31仍能真实起局、不错误越界。旧96时间戳与历史记录字节不变。新增表`data/calendar/strict_jieqi_moshier_2025_2040.json`，原 Mac `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`、`src/wengua/astro_calendar.py`、`ios/WenguaAppUI/WenguaNativeCore.swift` 和Important两镜像/MANIFEST严格同步；2029、2035、2040交节前后毫秒、立春四柱、冬至及最后一天、节月边界和BigFish/Wengua独立对照纳入回归。冻结V8疾病数学、原BigFish TypeScript、200/81/关系用神、模板与iOS现有工程不改。独立新版本source_v3_strict_jieqi_2040保护v1/v2失败SQLite与已编辑Excel。交节前旧、含交节时刻新，不采用同时辰提前换气；高精度覆盖以2025小寒至2041小寒哨兵为界，其它年份/23点并非完整验收。详 `docs/STRICT_JIEQI_2040_EXTENSION_20261031.md`。具体Python单测、Swift native parity、macOS Xcode真构建和资源检查必须跟踪新HEAD Actions；未跑不得称通过，用户Mac也没有在本次代跑所有角色或全部年份。本轮新增原书章节0例案0，CHAPTER_LEDGER既有历史不更改。

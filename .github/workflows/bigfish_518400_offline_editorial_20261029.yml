@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'src/wengua/astro_calendar.py'
+      - 'data/calendar/strict_jieqi_moshier_2025_2040.json'
       - 'tests/test_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'tests/test_bigfish_node_runtime_pycharm_20261029.py'
