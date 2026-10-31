@@ -38,3 +38,10 @@ V9 friend 四分支、V10.1、V10.2 原叙述及相应失败测试仍留在 Git 
 - [BigFish #41222377667](https://github.com/turnupmason/WenguaApp/actions/runs/41222377667)：**成功**，原始 BigFish 24种身份源 / 26种实际条件配置；旧合称关系记录不被冒充当前实际人物。
 - [真实 macOS Xcode Simulator #41222223461](https://github.com/turnupmason/WenguaApp/actions/runs/41222223461)：**成功**，Xcode 模拟器构建及应用包内 200格、81格、V11 模板与人物 JSON 资源验收；未做签名真机或 App Store 上架。
 - [此前 Python/Swift 全文对照 #41222331008](https://github.com/turnupmason/WenguaApp/actions/runs/41222331008)：**失败留档**；该流程发现 2024-10-09 15:00 EDT 哥哥实盘辅助宫关系原字「受克」与 Swift「被克」不同。现已在 Swift 把辅助来源关系独立映射为原书用语「受克/受生/比和」，不改变五行克向、不改 V8 分数；纠正后须等新 Actions 真正通过再标完整一致。
+
+## V11 最新复核追加
+
+- [九盘真实甲干 Python/Swift 全文逐字一致 #41222507007](https://github.com/turnupmason/WenguaApp/actions/runs/41222507007)：**成功**。前次失败「受克」/「被克」原字已按原始 element_relation 统一；本次同时实测原始 25格施受力、同宫组合、Swift native 编译和 Important SHA。原失败报告仍保留。
+- [新的 Swift 代码真实 Xcode Simulator #41222479925](https://github.com/turnupmason/WenguaApp/actions/runs/41222479925)：**成功**，包含最终关系名称修复。
+- [六个 V11 完整实时时辰预览 #41222635966](https://github.com/turnupmason/WenguaApp/actions/runs/41222635966)：**成功**，新完整正文存于 `docs/HEALTH_V11_SIX_REAL_COMPLETE_PREVIEW_20261031.txt`。旧预览的错误是只筛选过期的 `02_illness/05_patient/09a_sibling` 标识，实际上章节编号为 `02/05/09a`，无意中丢弃病宫、天心、乙奇、患者、时干、值符、家属辅助的详细文字；已改为打印全部章节。
+- 真实六盘第六例依然出现己干源强 `None`，新断词诚实地显为「待核」；该数据缺口未获源200格核准，不允许靠绝对宫分伪造五档力量。仍需专项追查（病宫自己宫天芮源强并不等于患者己干源强）。
