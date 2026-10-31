@@ -1101,7 +1101,7 @@ def source_chart_from_base(src: dict, pillars: dict, term: str, bureau: dict):
 # All dynamic clauses come exclusively from real V11 90_review/01_macro/91_timing.
 # No fresh scoring or GPT interpretation is performed in the BigFish exporter.
 V11_FRONT_CAPTIONS = {
-    '极大吉':('吉局','沉疴顿愈','沉重顽疾迎刃解，元气彻底恢复'),
+    '极大吉':('吉局','沉疴顿愈','沉重顽疾迎刃而解，元气彻底恢复'),
     '大吉':('吉局','邪退正复','治疗手段极为对症，病情迅速好转'),
     '中吉':('吉局','身心渐安','病情发展得到控制，正逐步走向康复'),
     '小吉':('吉局','转危为安','虽有波折但无大碍，危险期已经过去'),
@@ -1121,6 +1121,8 @@ def v11_front_page_from_real_sections(sections,grade):
     A grade/section mismatch is a retained failure, never patched wording.
     """
     byid={x['id']:x['text'] for x in sections if x.get('id') and x.get('text')}
+    # Historical Excel uses 微恙 for zero; native V11 original writes 不凶不吉.
+    if grade=='微恙':grade='不凶不吉'
     if '90_review' not in byid or grade not in V11_FRONT_CAPTIONS:
         raise ValueError('V11首页缺综合断语或十档等级，拒绝伪造')
     parts=byid['90_review'].split('\n\n')
