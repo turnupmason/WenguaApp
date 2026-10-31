@@ -3,7 +3,8 @@ import Foundation
 // Wengua Native Cast v0.1: full deterministic, offline, Foundation-only port.
 // Reference: src/wengua/astro_calendar.py (Meeus/NOAA approximation) and
 //            src/wengua/casting_shenqi.py (original Shenqi zhuanpan).
-// The model rejects uncertain Jie boundaries (<0.05 degree), 23:00 boundary,
+// Strict UTC terms within 2025-2028; outside coverage conservatively reject
+// 0.05-degree uncertainty and unsupported 23h day rollover,
 // outside 1850...2150. Never "best guess".
 // No patient prognosis, model V4 scores, cloud calls or fabricated symbols.
 
@@ -14,7 +15,7 @@ enum WenguaCastError: Error, LocalizedError {
         case .invalidTimezone: return "需要有效的 IANA 时区"
         case .outOfRange: return "超出已测试的 1850–2150 年范围"
         case .lateZi: return "23点子初换日流派未校定，拒绝直接起盘"
-        case .termBoundary: return "距节气交界过近，本地近似历算精度不足，请勿硬排"
+        case .termBoundary: return "此年份距节气交界过近但缺少核准交节时间，拒绝猜盘"
         case .noBureau: return "节气／符头／遁局无法按原书规则确定"
         case .invalidChart: return "实际九宫结构内部计算不完整"
         }
@@ -189,6 +190,32 @@ enum WenguaNativeCore {
         return mod360(l0 + corr - 0.00569 - 0.00478 * sin(radians(omega)))
     }
 
+
+    // Swiss/Moshier crossing instants (UTC ms) 2025--2028. NEW term at instant.
+    private static let strictFirstUTCms: Int64 = 1736044366945
+    private static let strictDeltasBase36 = "l1ku06.l3448j.l6w468.lbcd2a.lhjhjp.lnpsly.luvhkk.m12w33.m7dkvx.mbtm33.mfj6it.mguqfq.mgwz4a.meoskx.mb4ea6.m5yxof.lzvgbg.lt8ua0.lmds59.lg2nh1.laauqk.l5x9w3.l2ovth.l1bgqb.l1dnlk.l3cxw5.l6o0gh.lbkjoy.lha6ot.lnyqp6.lukrpu.m1dqu2.m71fsl.mc650j.mf6tuj.mh78ln.mgm8rx.meyhfh.mawei4.m64m0q.lzqzyy.ltbpla.lmcd98.lg3yjc.laaig0.l5xiey.l2nuxq.l1b0nb.l1b886.l3byxq.l6knoq.lbj8ay.lh7vgw.lnx5c7.lum2uj.m1b3jj.m77xh3.mc0x0t.mfi91m.mgz8pl.mh104s.meorsm.mbb5zk.m5tutw.m030jq.lt0hjb.lmlkow.lft3lw.laiqeo.l5nk1k.l2wkud.l11pkl.l1kqq8.l32scm.l6ufiw.lb9wld.lhh3d8.lnod0b.luu49v.m14uns.m7dsyo.mbz4uo.mfjijo.mh1wa5.mgvymt.mevaqw.mb15wt.m62zs8.lzq03x.ltak30.lm7imi.lg3ms9.la56fg.l5yxbo.l2kdzn"
+    private static let strictCrossings: [Int64] = {
+        var items: [Int64] = [strictFirstUTCms]
+        for token in strictDeltasBase36.split(separator: ".") {
+            guard let diff=Int64(String(token),radix:36),
+                  diff>0, let previous=items.last else {return []}
+            items.append(previous+diff)
+        }
+        return items.count == 96 ? items : []
+    }()
+    private static func strictSolarIndex(_ date: Date) -> Int? {
+        let times=strictCrossings
+        guard let first=times.first, let last=times.last else {return nil}
+        let ms=date.timeIntervalSince1970*1000
+        guard ms>=Double(first) && ms<=Double(last) else {return nil}
+        var lo=0,hi=times.count
+        while lo<hi {
+            let mid=(lo+hi)/2
+            if Double(times[mid])<=ms {lo=mid+1} else {hi=mid}
+        }
+        return (1+lo-1)%24
+    }
+
     static func compute(at instant: Date, timezone identifier: String) throws -> WenguaNativeChart {
         guard let zone = TimeZone(identifier: identifier) else { throw WenguaCastError.invalidTimezone }
         let local = dateParts(instant,zone)
@@ -199,18 +226,21 @@ enum WenguaNativeCore {
         guard hour != 23 else { throw WenguaCastError.lateZi }
         let longitude = solarLongitude(instant)
         let angle = longitude.truncatingRemainder(dividingBy: 15)
-        guard min(angle,15-angle) >= 0.05 else { throw WenguaCastError.termBoundary }
-        let solarIndex = Int(floor(mod360(longitude-270)/15))
+        let preciseIndex = strictSolarIndex(instant)
+        if preciseIndex == nil && min(angle,15-angle) < 0.05 {
+            throw WenguaCastError.termBoundary
+        }
+        let solarIndex = preciseIndex ?? Int(floor(mod360(longitude-270)/15))
         let solarTerm = solarTerms[solarIndex]
         let cycle = ganzhiCycle()
         let offset = try daysFromAnchor(local)
         // day-cycle anchor 癸酉 1995-06-11 is book verified.
         guard let anchorIndex = cycle.firstIndex(of:"癸酉") else { throw WenguaCastError.invalidChart }
         let day = cycle[mod(anchorIndex+offset,60)]
-        let priorSolarYear = (month <= 2 && longitude >= 270 && longitude < 315) ? 1 : 0
+        let priorSolarYear = (month <= 2 && [0,1,2].contains(solarIndex)) ? 1 : 0
         let solarYear = year - priorSolarYear
         let yearPillar = cycle[mod(solarYear-1984,60)]
-        let monthIndex = Int(floor(mod360(longitude-315)/30))
+        let monthIndex = ((solarIndex - 3 + 24) % 24) / 2
         let firstStem = String(yearPillar.prefix(1))
         guard let monthStart = yearMonthStart[firstStem],
               let monthBase=stems.firstIndex(of:monthStart) else {

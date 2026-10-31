@@ -1396,7 +1396,60 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v1'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v2_strict_jieqi'
+
+# Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
+# Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
+_STRICT_FIRST_UTC_MS=1736044366945
+_STRICT_DELTAS_BASE36="l1ku06.l3448j.l6w468.lbcd2a.lhjhjp.lnpsly.luvhkk.m12w33.m7dkvx.mbtm33.mfj6it.mguqfq.mgwz4a.meoskx.mb4ea6.m5yxof.lzvgbg.lt8ua0.lmds59.lg2nh1.laauqk.l5x9w3.l2ovth.l1bgqb.l1dnlk.l3cxw5.l6o0gh.lbkjoy.lha6ot.lnyqp6.lukrpu.m1dqu2.m71fsl.mc650j.mf6tuj.mh78ln.mgm8rx.meyhfh.mawei4.m64m0q.lzqzyy.ltbpla.lmcd98.lg3yjc.laaig0.l5xiey.l2nuxq.l1b0nb.l1b886.l3byxq.l6knoq.lbj8ay.lh7vgw.lnx5c7.lum2uj.m1b3jj.m77xh3.mc0x0t.mfi91m.mgz8pl.mh104s.meorsm.mbb5zk.m5tutw.m030jq.lt0hjb.lmlkow.lft3lw.laiqeo.l5nk1k.l2wkud.l11pkl.l1kqq8.l32scm.l6ufiw.lb9wld.lhh3d8.lnod0b.luu49v.m14uns.m7dsyo.mbz4uo.mfjijo.mh1wa5.mgvymt.mevaqw.mb15wt.m62zs8.lzq03x.ltak30.lm7imi.lg3ms9.la56fg.l5yxbo.l2kdzn"
+_STRICT_JIEQI_VERSION="strict_utc_moshier_2025_2028_v1"
+def strict_real_calendar_clock(instant,zone):
+    from bisect import bisect_right
+    from src.wengua import astro_calendar as cal
+    local=cal._at(instant,zone)
+    if local.hour==23:
+        raise ValueError("Late-Zi 23h boundary unresolved")
+    if not hasattr(strict_real_calendar_clock,"_times"):
+        t=[_STRICT_FIRST_UTC_MS]
+        for diff in _STRICT_DELTAS_BASE36.split("."):
+            t.append(t[-1]+int(diff,36))
+        if len(t)!=96 or any(a>=b for a,b in zip(t,t[1:])):
+            raise RuntimeError("Strict JieQi timestamp table corrupted")
+        strict_real_calendar_clock._times=t
+    t=strict_real_calendar_clock._times
+    ms=local.timestamp()*1000
+    if ms<t[0] or ms>t[-1]:
+        return cal.solar_chart_clock(instant,zone)
+    k=bisect_right(t,ms)-1
+    index=(1+k)%24
+    term=cal.SOLAR_TERMS[index]
+    cy=cal.cycle60()
+    daygz=cy[(cy.index(cal.DAY_ANCHOR_GANZHI)+(local.date()-cal.DAY_ANCHOR).days)%60]
+    sy=local.year-(1 if local.month<=2 and index in (0,1,2) else 0)
+    yg=cy[(sy-1984)%60]
+    mi=((index-3)%24)//2
+    ss={"甲":"丙","己":"丙","乙":"戊","庚":"戊","丙":"庚","辛":"庚",
+        "丁":"壬","壬":"壬","戊":"甲","癸":"甲"}[yg[0]]
+    mg=cal.STEMS[(cal.STEMS.index(ss)+mi)%10]+cal.BRANCHES[(2+mi)%12]
+    hb=cal.hour_branch_from_wall_clock(local.hour)
+    hg=cal.hour_ganzhi_from_day(daygz[0],hb)
+    out={"method":_STRICT_JIEQI_VERSION,
+         "ephemeris_flag":"offline_swiss_moshier_crossing",
+         "solar_term_boundary_policy":"strict_instant_new_inclusive",
+         "last_solar_crossing_utc_ms":t[k],
+         "reference_civil_local":local.isoformat(),"iana_zone":zone,
+         "day_boundary":"civil_midnight_no_23h",
+         "sun_ecliptic_longitude_deg":round(cal._sun_longitude(cal._jd(local)),9),
+         "active_solar_term":term,
+         "four_pillars":{"year":yg,"month":mg,"day":daygz,"hour":hg},
+         "day_cycle_book_anchor":{"civil_date":"1995-06-11","day_ganzhi":"癸酉",
+          "second_original_book_fixture":"1995-08-13 丙子",
+          "third_original_book_fixture":"2001-08-20 乙卯"},
+         "note":"Strict UTC JieQi offline 2025-2028; no old/new mixed casting"}
+    out["sha256"]=hashlib.sha256(canonical(out).encode("utf-8")).hexdigest()
+    return out
+
+
 REAL_BRANCH_HOURS = (0,1,3,5,7,9,11,13,15,17,19,21)
 REAL_HEADERS = (
     '序号','真实公历时刻（含时区偏移）','IANA时区','时辰地支','人物ID',
@@ -1481,9 +1534,8 @@ def real_case_from_slot(worker, slot, inquiry):
             'patient_natal_was_supplied':bool(inquiry.get('patient_birth_ganzhi')),
             'approved_for_app':False}
     try:
-        from src.wengua.astro_calendar import solar_chart_clock
         from src.wengua.casting_shenqi import bureau_for_term
-        calendar=solar_chart_clock(slot['instant'],slot['timezone'])
+        calendar=strict_real_calendar_clock(slot['instant'],slot['timezone'])
         pillars=calendar['four_pillars']
         term=calendar['active_solar_term']
         if len(pillars)!=4 or any(
@@ -1677,7 +1729,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v1')
+          RELATIONSHIP/zone_path/'source_v2_strict_jieqi')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
@@ -1694,6 +1746,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         'real_local_sample_count':len(slots),
         'hour_samples':REAL_BRANCH_HOURS,
         'one_real_solar_term_only':True,
+        'strict_jieqi_boundary_version':_STRICT_JIEQI_VERSION,
         'sample_does_not_certify_whole_branch':True,
         'device_still_casts_current_instant':True,
         'no_23_late_zi_or_ambiguous_jie_fallback':True,

@@ -18,7 +18,7 @@ except ImportError:
 from .core import STEMS,BRANCHES,cycle60
 from .casting_shenqi import hour_branch_from_wall_clock,hour_ganzhi_from_day
 
-EPHEMERIS_VERSION="wen-gua-local-meeus-solar-longitude-v1"
+EPHEMERIS_VERSION="wen-gua-strict-jieqi-utc-moshier-2025-2028-v1"
 SOLAR_TERMS=("冬至","小寒","大寒","立春","雨水","惊蛰","春分","清明",
              "谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋",
              "处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪")
@@ -95,6 +95,28 @@ def _crossing(lo,hi,angle):
  return (lo+hi)/2
 def _jd_aware(jd,zone):
  return datetime.fromtimestamp((jd-JULIAN_UNIX_EPOCH)*86400,timezone.utc).astimezone(ZoneInfo(zone))
+
+# UTC Swiss/Moshier offline crossings 2025-2028, new term inclusive.
+STRICT_JIEQI_VERSION="strict_utc_moshier_2025_2028_v1"
+_STRICT_FIRST_UTC_MS=1736044366945
+_STRICT_DELTAS_BASE36="l1ku06.l3448j.l6w468.lbcd2a.lhjhjp.lnpsly.luvhkk.m12w33.m7dkvx.mbtm33.mfj6it.mguqfq.mgwz4a.meoskx.mb4ea6.m5yxof.lzvgbg.lt8ua0.lmds59.lg2nh1.laauqk.l5x9w3.l2ovth.l1bgqb.l1dnlk.l3cxw5.l6o0gh.lbkjoy.lha6ot.lnyqp6.lukrpu.m1dqu2.m71fsl.mc650j.mf6tuj.mh78ln.mgm8rx.meyhfh.mawei4.m64m0q.lzqzyy.ltbpla.lmcd98.lg3yjc.laaig0.l5xiey.l2nuxq.l1b0nb.l1b886.l3byxq.l6knoq.lbj8ay.lh7vgw.lnx5c7.lum2uj.m1b3jj.m77xh3.mc0x0t.mfi91m.mgz8pl.mh104s.meorsm.mbb5zk.m5tutw.m030jq.lt0hjb.lmlkow.lft3lw.laiqeo.l5nk1k.l2wkud.l11pkl.l1kqq8.l32scm.l6ufiw.lb9wld.lhh3d8.lnod0b.luu49v.m14uns.m7dsyo.mbz4uo.mfjijo.mh1wa5.mgvymt.mevaqw.mb15wt.m62zs8.lzq03x.ltak30.lm7imi.lg3ms9.la56fg.l5yxbo.l2kdzn"
+from functools import lru_cache
+from bisect import bisect_right
+@lru_cache(maxsize=1)
+def _strict_crossing_times():
+ t=[_STRICT_FIRST_UTC_MS]
+ for diff in _STRICT_DELTAS_BASE36.split("."):
+  t.append(t[-1]+int(diff,36))
+ if len(t)!=96 or any(a>=b for a,b in zip(t,t[1:])):
+  raise RuntimeError("Strict JieQi timestamp table corrupted")
+ return t
+def _strict_jieqi_index(utc_seconds):
+ t=_strict_crossing_times()
+ ms=utc_seconds*1000
+ if ms<t[0] or ms>t[-1]:return None
+ index=bisect_right(t,ms)-1
+ return ((1+index)%24,t[index])
+
 def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
  """Return independently CALCULATED solar term+Ganzhi, not approved forecast."""
  _need_ephemeris()
@@ -106,16 +128,20 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
  jd=_jd(local)
  longitude=_sun_longitude(jd)
  distance_to_nearest_jie=min(longitude%15,15-(longitude%15))
- if distance_to_nearest_jie<0.05:
-  raise ValueError("Astronomical solar-term boundary within ~1.2-hour uncertainty; do not invent month/term. Require higher precision local ephemeris")
- solar_index=math.floor(((longitude-270)%360)/15)
+ precise=_strict_jieqi_index(local.timestamp())
+ if precise is None:
+  if distance_to_nearest_jie<0.05:
+   raise ValueError("Astronomical solar-term boundary within ~1.2-hour uncertainty; outside verified UTC crossing window")
+  solar_index=math.floor(((longitude-270)%360)/15)
+ else:
+  solar_index=precise[0]
  term=SOLAR_TERMS[solar_index]
  cy=cycle60()
  day_gz=cy[(cy.index(DAY_ANCHOR_GANZHI)+(local.date()-DAY_ANCHOR).days)%60]
  # 立春 marks year boundary; Jan/early Feb before LiChun belongs previous year.
- solar_year=local.year-(local.month<=2 and 270<=longitude<315)
+ solar_year=local.year-(local.month<=2 and solar_index in (0,1,2))
  year_gz=cy[(solar_year-1984)%60]
- solar_month_index=int(((longitude-315)%360)//30)
+ solar_month_index=((solar_index-3)%24)//2
  start_stem={"甲":"丙","己":"丙","乙":"戊","庚":"戊",
              "丙":"庚","辛":"庚","丁":"壬","壬":"壬","戊":"甲","癸":"甲"}[year_gz[0]]
  start_i=STEMS.index(start_stem)
@@ -125,6 +151,8 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
  receipt={
   "method":EPHEMERIS_VERSION,"ephemeris_flag":"offline_Meeus_NOAA_apparent_longitude",
   "solar_term_border_ambiguity_rejected_below_degrees":0.05,
+  "solar_term_boundary_policy":"strict_instant_new_inclusive" if precise else "approximate_guarded_outside_window",
+  "last_solar_crossing_utc_ms":precise[1] if precise else None,
   "reference_civil_local":local.isoformat(),"iana_zone":timezone_name,
   "day_boundary":"civil_midnight_no_23h","sun_ecliptic_longitude_deg":round(longitude,9),
   "active_solar_term":term,
@@ -134,7 +162,7 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
    "third_original_book_fixture":"2001-08-20 乙卯"}}
  receipt["sha256"]=sha256(json.dumps(receipt,ensure_ascii=False,
                 sort_keys=True,separators=(",",":")).encode()).hexdigest()
- receipt["note"]="Offline computed astronomical approximation; near-term border uncertainty blocked; this does not certify prediction or historical method variant"
+ receipt["note"]="Strict Swiss Moshier UTC times 2025-2028; NOAA only display longitude" if precise else "Other years use conservative approximate calendar boundary guard"
  return receipt
 
 def branch_periods(reference_iso,timezone_name,*,granularity="month",days_ahead=180):
