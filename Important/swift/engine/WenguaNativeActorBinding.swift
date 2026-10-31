@@ -163,12 +163,9 @@ enum WenguaNativeActorSource {
            knownFemale.contains(profile.id) && sex != nil && sex != "female" {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
-        if profile.id=="friend" {
-            guard (sex=="male" || sex=="female"),
-                  (inquiry.relativeAge=="older" || inquiry.relativeAge=="younger") else {
-                throw WenguaNativeReadingError.unsupportedRelationship
-            }
-        } else if inquiry.relativeAge != nil {
+        // Friends always use the true casting month stem, independent
+        // of optional demographic inputs. No sibling or elder palace.
+        if profile.id != "friend" && inquiry.relativeAge != nil {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
         let kind=ctx=="event_news" ? index.event_news_override.role_kind : first.kind
@@ -230,12 +227,10 @@ enum WenguaNativeActorSource {
         if let sibling=profile.sibling_auxiliary {
             extra.append(sibling.palace)
         }
-        let friendSelection:Int? = profile.id=="friend" ?
-            (["male:older":3,"female:older":4,
-              "male:younger":8,"female:younger":7][
-                 (sex ?? "")+":"+(inquiry.relativeAge ?? "")]) : nil
-        if let friendSelection { extra.append(friendSelection) }
-        let siblingSelected=profile.sibling_auxiliary?.palace ?? friendSelection
+        // Only a true brother/sister relationship selects排行辅助.
+        // A friend has no trigram auxiliary even if age/sex were supplied.
+        let siblingSelected=profile.id=="friend" ? nil :
+            profile.sibling_auxiliary?.palace
         let genuineHarmony=harmony.flatMap{actualStem($0,chart:chart)}
         if let genuineHarmony {extra.append(genuineHarmony)}
         let natal=inquiry.patientBirthGanzhi
@@ -263,6 +258,6 @@ enum WenguaNativeActorSource {
             natalSourceGanzhi:natal,natalPalace:natalPalace,note:profile.note,
             siblingAuxiliaryPalace:siblingSelected,
             siblingAuxiliarySource:siblingSelected == nil ? nil :
-                (profile.sibling_auxiliary?.source ?? "V9友人性别和长幼条件已提供，八卦类象辅助"))
+                profile.sibling_auxiliary?.source)
     }
 }
