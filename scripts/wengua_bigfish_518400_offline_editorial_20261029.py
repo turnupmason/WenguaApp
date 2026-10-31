@@ -371,8 +371,8 @@ def activate_six_jia_sources():
     if SIX_JIA_SOURCES_ACTIVATED:
         return
     base.WENGUA_SHA = SIX_JIA_APPROVED_WENGUA_SHA
-    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V11_source_20261031'
-    base.FROZEN = HERE / 'frozen_V11_source_20261031'
+    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V11_1_source_20261031'
+    base.FROZEN = HERE / 'frozen_V11_1_source_20261031'
     SIX_JIA_SOURCES_ACTIVATED = True
 
 
