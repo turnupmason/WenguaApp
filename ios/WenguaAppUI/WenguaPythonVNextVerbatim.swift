@@ -346,7 +346,8 @@ enum WenguaPythonVNextVerbatim {
             ("illness","02","illness"),("doctor","03","doctor"),
             ("medicine","04","medicine"),("patient","05","patient"),
             ("hour","06","hour"),("chief","07","chief"),
-            ("natal","08","natal"),("gender","09","gender")
+            ("natal","08","natal"),("gender","09","gender"),
+            ("sibling","09a","sibling")
         ] {
             guard let pid=review.roles[role],let p=cells[pid] else {
                 continue
@@ -368,6 +369,13 @@ enum WenguaPythonVNextVerbatim {
                 let t25=try WenguaVNextTianrui25.caseFor(chart:chart,audit:review)
                 extra=try phrase("illness",["name":t25.title,"explanation":t25.why])
             }
+            if role=="sibling" {
+                let illID=review.roles["illness"] ?? pid
+                let known=actor?.label ?? "家属"
+                extra+=try phrase("sibling_note",[
+                    "name":known,"palace":label(p),
+                    "relation":relation(pid,illID)])
+            }
             let marker=String(pid)+":"+(review.roleEnergy[role]?.symbol ?? "")
             let roleText:String
             if role=="illness" || (powerSeen.contains(marker) && role != "chief") {
@@ -388,7 +396,7 @@ enum WenguaPythonVNextVerbatim {
                 "extra_illness":extra,"role_relation":relationText,
                 "gender_note":genderNote]))
         }
-        // V10.2: condensed actual evidence, no per-role palace ledger repeated.
+        // V11: source-specific evidence including selected family auxiliary.
         func conciseRelation(_ key:String)->String {
             guard let edge=review.controls.first(where:{$0.role==key}) else {
                 return "关系待核"
@@ -448,10 +456,33 @@ enum WenguaPythonVNextVerbatim {
         for item in extra where !uniqueExtra.contains(item) {
             uniqueExtra.append(item)
         }
+        // V11: detailed independent auxiliary/年命/时干 and chief evidence.
+        // The same true source symbol in one physical palace appears once.
+        var support:[String]=[]
+        var documented:Set<String>=[]
+        for k in ["illness","patient","doctor","medicine"] {
+            if let id=review.roles[k],let f=review.roleEnergy[k] {
+                documented.insert(String(id)+":"+f.kind+":"+f.symbol)
+            }
+        }
+        for (key,name) in [("hour","时干事体"),("natal","年命"),
+                           ("gender","长辈乾坤辅助"),("sibling","兄弟姐妹辅助"),
+                           ("chief","值符")] {
+            guard let id=review.roles[key],let f=review.roleEnergy[key],
+                  let p=cells[id] else {continue}
+            let identity=String(id)+":"+f.kind+":"+f.symbol
+            if documented.contains(identity){continue}
+            documented.insert(identity)
+            support.append(name+f.symbol+"在"+label(p)+"，势"+
+                (f.strength ?? "待核")+"，"+conciseRelation(key))
+        }
+        let supportText="另参"+(support.isEmpty ? "无独立附加用神" :
+            support.joined(separator:"；"))
         let suffix=uniqueExtra.isEmpty ? "" : "；"+uniqueExtra.joined(separator:"；")
         let evidence=try phrase("summary_concise",[
             "illness":illnessText,"patient":patientText,
-            "medical":medicine.joined(separator:"，"),"extra":suffix])
+            "medical":medicine.joined(separator:"，"),
+            "support":supportText,"extra":suffix])
         let verdict:String
         if let score=review.score {
             let grade=score==0 ? "不凶不吉" : signed(score)
