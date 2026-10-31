@@ -16,6 +16,26 @@ ROOT = Path(__file__).resolve().parents[1]
 PREMIUM = ROOT / "ios/WenguaAppUI/WenguaPremiumReadingView.swift"
 ROUTER = ROOT / "ios/WenguaAppUI/WenguaNativeReadingRouter.swift"
 ARCHIVE = ROOT / "docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40794999535_ATTEMPT_1.md"
+V11_SIX = ROOT / "docs/HEALTH_V11_SIX_REAL_COMPLETE_PREVIEW_20261031.txt"
+
+def v11_actual_sections() -> list[dict[str,str]]:
+    """Parse six published real-clock source sections, not fabricated UI text."""
+    source=V11_SIX.read_text(encoding="utf-8")
+    samples=[]
+    for part in source.split("="*64):
+        if not re.search(r"V11 [1-6]/6",part):
+            continue
+        assert "综合断语：" in part and "时空及应期：" in part
+        review=part.split("综合断语：",1)[1].split("时空及应期：",1)[0].strip()
+        macro=part.split("时局总纲：",1)[1].split("\n",1)[0].strip()
+        timing=part.split("时空及应期：",1)[1].split("\n",1)[0].strip()
+        match=re.search(r"综上所述，此病为([^；。\\s]+)",review)
+        assert match, "Real V11 grade must be explicitly resolvable"
+        samples.append({"text":review,"grade":match.group(1),
+                        "macro":macro,"timing":timing})
+    assert len(samples)==6,"six complete real V11 source readings required"
+    return samples
+
 
 def native_sections() -> list[dict[str,str]]:
     original=ARCHIVE.read_text(encoding="utf-8")
@@ -53,6 +73,12 @@ def check():
 struct ActualReading: Decodable {
     let text:String
     let grade:String
+}
+struct V11ActualReading: Decodable {
+    let text:String
+    let grade:String
+    let macro:String
+    let timing:String
 }
 func checkReading(_ text:String,_ expected:String?) {
     let reading=WenguaNativeCustomerReading(
@@ -103,7 +129,35 @@ checkReading("说明。\n\n综上所述，此病为未知；以上仅作参考�
 guard WenguaHealthGradeCaption.forGrade("未知")==nil else {
     fatalError("unknown value must fail closed")
 }
-print("PASS: 5 real V10.2 source verdicts + 11 grades x 3 endings + pending/unknown; no score recomputation")
+// The REAL first-screen composition must be more than the single caption
+// sentence. Existing full V11 specialist paragraphs remain immutable.
+let sixData=try Data(contentsOf:URL(fileURLWithPath:CommandLine.arguments[2]))
+let six=try JSONDecoder().decode([V11ActualReading].self,from:sixData)
+guard six.count==6 else {fatalError("missing real V11 six cases")}
+for item in six {
+    let reading=WenguaNativeCustomerReading(
+        version:"v11",topicID:"health.severity",relationship:"实时",
+        iso:"",evidenceStatus:"verified",sections:[
+            .init(id:"01_macro",title:"时局总纲",text:item.macro),
+            .init(id:"90_review",title:"综合断语",text:item.text),
+            .init(id:"91_timing",title:"时空及应期",text:item.timing)])
+    guard let resolved=WenguaVerdictPresentation.from(reading),
+          resolved.grade==item.grade,
+          let caption=WenguaHealthGradeCaption.forGrade(item.grade) else {
+        fatalError("wrong current V11 grade and caption binding")
+    }
+    let front=resolved.frontNarrative(caption)
+    let count=front.filter{ !$0.isWhitespace }.count
+    guard (140...215).contains(count) else {
+        fatalError("real V11 first-tab summary should be ~150–200 Chinese characters, got \\(count)")
+    }
+    guard front.contains("病星天芮"), front.contains("医药两端分别看"),
+          front.contains("患者"), !front.contains("以上仅作传统古籍象意参考") else {
+        fatalError("first tab lost real patient/medical evidence or leaked footer")
+    }
+    print("PASS_V11_FRONT_REAL_GRADE \\(item.grade) \\(count)")
+}
+print("PASS: five archived real verdicts, all 11 grades, and six actual V11 ~150–200-char source summaries; no scoring change")
 '''
     with tempfile.TemporaryDirectory(prefix="wengua-verdict-") as tmp:
         base=Path(tmp)
@@ -111,7 +165,9 @@ print("PASS: 5 real V10.2 source verdicts + 11 grades x 3 endings + pending/unkn
         source.write_text("\n".join(parts)+"\n"+main,encoding="utf-8")
         fixtures=base/"real_v102_cases.json"
         fixtures.write_text(json.dumps(native_sections(),ensure_ascii=False),encoding="utf-8")
+        v11_fixtures=base/"real_v11_six_cases.json"
+        v11_fixtures.write_text(json.dumps(v11_actual_sections(),ensure_ascii=False),encoding="utf-8")
         binary=base/"grade_ui_check"
         subprocess.run(["swiftc",str(source),"-o",str(binary)],check=True)
-        subprocess.run([str(binary),str(fixtures)],check=True)
+        subprocess.run([str(binary),str(fixtures),str(v11_fixtures)],check=True)
 if __name__=="__main__":check()
