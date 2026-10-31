@@ -35,7 +35,7 @@ class BigFishV11TwoTab(unittest.TestCase):
         self.assertEqual(B.SIX_JIA_APPROVED_WENGUA_SHA,
                          '46382694a418300ac4660a1c22bcf227857c9a52')
         self.assertIn('v6_V11_full_two_tab',B.REAL_PIPELINE_VERSION)
-        self.assertIn('V11_full',B.PIPELINE_VERSION)
+        self.assertIn('V11_complete',B.PIPELINE_VERSION)
         self.assertIn('V11_20261031',B.SIX_JIA_BATCH_SUBDIR)
         script=SOURCE.read_text(encoding='utf8')
         self.assertIn("WenguaApp_V11_source_20261031",script)
