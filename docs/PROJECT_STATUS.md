@@ -2196,3 +2196,12 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-31 · 用户改原 BigFish 源代码为未来四个月真实公历时辰默认批量（前旧版仍留存）
+
+**最高最新用户指令**：改原Mac入口 `Wengua_BigFish_518400.py` 的仓库对应 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`，不新起一个替代工具；只预备 **2026-11-15—2027-03-15（含）** 的实际手机当前时间解盘样本/文字审稿。问卦是离线依据设备真实时辰、IANA时区和用户领域人物起盘、运行已核V8/V10.2完整专业断案，绝不是以预生成有限图文替代手机现算。早前1930–2040及每人物518400篇都是历史计划，不能再当当前上线工作量。
+
+同一BigFish代码当前默认 `BATCH_MODE='real_clock'`，本地区间每一日12个真实时刻（00:30/01:30/03:30/.../21:30）共121×12=1452个**代表样本**/人物/指定IANA时区，实时 `astro_calendar.solar_chart_clock` 验真四柱/唯一当前节气，对照 `bureau_for_term` 及真正原BigFish TypeScript `chaiBuJuByGanZhi` 局数，再原 `shiJiaGenerate` 九宫→现实用神六甲→原V8计分/V10.2正文。未在样本上的实际手机秒数、时辰内交节、23点流派歧义、其它时区仍须现场重算，不能拿相邻文章补充。新SQLite/Excel/CSV/JSONL独立在 `output/real_calendar_20261115_20270315/<relation>/<zone>/source_v1/` 严格不覆盖；`MAX_NEW_ROWS=20` 小样本后人工确认改0续跑。旧518400理论库只在显式 `BATCH_MODE='abstract_518400_legacy'` 才运行，其原失败/审稿Excel/资料不删。患者出生年命未提供None，后做额外用神。
+
+真实BigFish TS跨6个Gregorian实际时辰的全部用神/原文hash **PASS #41205792872**；默认模式/DST/1452日历样本/唯一节气/Excel无覆盖与旧批量测试 **PASS #41205752755**。初改语法失败 #41205636586/#41205718837 保留；真实Mac四个月完整运行尚未验收。独立完整交接 `docs/BIGFISH_REAL_DATE_LAUNCH_WINDOW_20261031.md` 和跨窗口 `docs/WENGUA_CONTINUITY_PROMPT_BIGFISH_NO_NATAL_20261029.md`，修改的是批量入口而不是冻结数学/Swift工程，Important镜像未受影响。
