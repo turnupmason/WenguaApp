@@ -11,7 +11,7 @@ import tempfile
 import types
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 ROOT=Path(__file__).resolve().parents[1]
 SCRIPT=ROOT/"scripts/wengua_bigfish_518400_offline_editorial_20261029.py"
@@ -118,7 +118,7 @@ class ActorLoop(unittest.TestCase):
              patch.object(M,"activate_six_jia_sources"),\
              patch.object(M,"ensure_install",return_value={"sha":"frozen"}) as installer,\
              patch.object(M,"actor_catalog",return_value=PROFILES),\
-             patch.object(M,"BigFishWorker",Worker) as worker,\
+             patch.object(M,"BigFishWorker",Mock(side_effect=Worker)) as worker,\
              patch.object(M,"run_real_calendar",side_effect=actual):
             M.run_all_real_calendar()
             installer.assert_called_once()
