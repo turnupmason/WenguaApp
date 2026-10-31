@@ -372,9 +372,15 @@ enum WenguaPythonVNextVerbatim {
             if role=="sibling" {
                 let illID=review.roles["illness"] ?? pid
                 let known=actor?.label ?? "家属"
+                // Ancient source labels: 受克/受生 and same-element 比和.
+                // The generic native directional helper names these 被克/被生.
+                let rawRelation=relation(pid,illID)
+                let sourcedRelation=[
+                    "被克":"受克","被生":"受生","同宫":"比和"
+                ][rawRelation] ?? rawRelation
                 extra+=try phrase("sibling_note",[
                     "name":known,"palace":label(p),
-                    "relation":relation(pid,illID)])
+                    "relation":sourcedRelation])
             }
             let marker=String(pid)+":"+(review.roleEnergy[role]?.symbol ?? "")
             let roleText:String
