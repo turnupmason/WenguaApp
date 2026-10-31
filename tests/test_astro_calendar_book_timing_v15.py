@@ -94,9 +94,11 @@ class ActualSolarTermAndBookTimingTests(unittest.TestCase):
     ("2040-12-31T23:59:59+00:00","冬至"),
     ("2041-01-04T23:48:07.975+00:00","冬至"),
     ("2041-01-04T23:48:07.976+00:00","小寒")]
+  from zoneinfo import ZoneInfo
   for civil,expect in cases:
    with self.subTest(civil=civil):
-    r=solar_chart_clock(civil,"UTC")
+    local=datetime.fromisoformat(civil).astimezone(ZoneInfo("America/New_York"))
+    r=solar_chart_clock(local.isoformat(),"America/New_York")
     self.assertEqual(r["active_solar_term"],expect)
     self.assertEqual(r["method"],STRICT_JIEQI_VERSION)
   just_before=solar_chart_clock("2040-02-04T05:39:52.575+00:00","UTC")
