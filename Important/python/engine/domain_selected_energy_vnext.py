@@ -562,7 +562,7 @@ def selected_health_sections(result,*,actor,chart):
     # Elder-only sex palace was shown/scored as 'gender' if eligible;
     # never infer either palace from the sex of a non-elder.
 
-    # V10.2: audience conclusion selects only decisive real facts.
+    # V11: preserve V10.1 evidence depth, clarify separate family auxiliary.
     # All independent 200/81 evidence stays in the existing role paragraphs.
     q=quant["summary"]
     def concise_relation(key):
@@ -590,6 +590,7 @@ def selected_health_sections(result,*,actor,chart):
     patient=roles["patient"]
     symbol=patient["primary_strength_25"]["symbol"]
     patient_text=(symbol+"在"+patient["complete_palace"]["palace_name"]+
+                  "，势"+str(patient["primary_strength_25"].get("strength_label") or "待核")+
                   "，宫象"+grade(quant["roles"]["patient"]["palace_score"]["score"]))
     patient_void=patient["complete_palace"]["void"]["classification"]
     if patient_void!="not_void":
@@ -608,10 +609,30 @@ def selected_health_sections(result,*,actor,chart):
     chief=roles.get("chief")
     if chief and chief["complete_palace"]["void"]["classification"]!="not_void":
         extra.append("值符逢空，护持受限")
+    # V11 includes every independent selected auxiliary/事体/年命 identity,
+    # never another unsigned palace score or a duplicated physical vote.
+    support=[]
+    documented={(roles[k]["palace"],
+                 roles[k]["primary_strength_25"]["kind"],
+                 roles[k]["primary_strength_25"]["symbol"])
+                for k in ("illness","patient","doctor","medicine")}
+    for k,name in (("hour","时干事体"),("natal","年命"),
+                   ("gender","长辈乾坤辅助"),("sibling","兄弟姐妹辅助"),
+                   ("chief","值符")):
+        if k not in roles:continue
+        r=roles[k]
+        p=r["primary_strength_25"]
+        identity=(r["palace"],p["kind"],p["symbol"])
+        if identity in documented:continue
+        documented.add(identity)
+        support.append(name+p["symbol"]+"在"+r["complete_palace"]["palace_name"]+
+            "，势"+str(p.get("strength_label") or "待核")+
+            "，"+concise_relation(k))
+    support_text="另参"+("；".join(support) if support else "无独立附加用神")
     extra_text=("；"+"；".join(dict.fromkeys(extra))) if extra else ""
     evidence=render_slot("summary_concise",illness=ill_text,
                          patient=patient_text,medical="，".join(medicine),
-                         extra=extra_text)
+                         support=support_text,extra=extra_text)
     # User-confirmed V8: resolved 0 is neutral; only missing score is pending.
     conclusion=(render_slot("overall_pending",post_void_sum=q["post_void_known_sum"])
                 if q["score"] is None else
