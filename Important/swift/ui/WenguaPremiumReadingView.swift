@@ -16,8 +16,7 @@ struct WenguaVerdictPresentation {
         // About 150–200 Chinese characters on ordinary real clocks.
         // Never guess a score, fabricate a control relation or pull the
         // specialist palace descriptions into a second summary engine.
-        var body=caption.interpretation+"。"
-        if !evidence.isEmpty { body+="\n\n"+evidence }
+        var body=evidence
         let meaningful=(macro ?? "").components(separatedBy:"。")
             .map{$0.trimmingCharacters(in:.whitespacesAndNewlines)}
             .filter{ $0.hasPrefix("五不遇时") || $0.hasPrefix("伏吟主慢") ||
@@ -31,7 +30,20 @@ struct WenguaVerdictPresentation {
            body.count+timing.count+2 <= 215 {
             body+="\n\n"+timing
         }
-        return body
+        // The final two sentences are mandatory; NEVER trim off the grade.
+        let first=evidence.components(separatedBy:"\n\n").first ?? ""
+        let clauses=first.components(separatedBy:"；")
+        func quality(_ text:String)->String {
+            let after=text.components(separatedBy:"宫象").last ?? ""
+            return String(after.split(whereSeparator:{
+                $0=="，" || $0=="。" || $0=="；"
+            }).first ?? "待核")
+        }
+        let ill=quality(clauses.first ?? "")
+        let patient=quality(clauses.count>1 ? clauses[1] : "")
+        let gradeWord=grade ?? "待核"
+        let ending="综上所述，病宫\(ill)，患者宫\(patient)，医药与辅助还须合参。全盘判为\(gradeWord)：\(caption.epithet)，\(caption.interpretation)。"
+        return body+"\n\n"+ending
     }
 
     static func from(_ reading: WenguaNativeCustomerReading) -> WenguaVerdictPresentation? {
