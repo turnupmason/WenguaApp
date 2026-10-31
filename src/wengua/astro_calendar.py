@@ -190,6 +190,28 @@ def branch_periods(reference_iso,timezone_name,*,granularity="month",days_ahead=
     "calendar_method_version":EPHEMERIS_VERSION})
    current=following
  else:
+  precise=_strict_jieqi_index(local.timestamp())
+  if precise is not None:
+   # 月柱按每30°的节定界，节内每15°的中气不另换月柱。
+   all_crossings=_strict_crossing_times()
+   jie=[(ms,(1+k)%24) for k,ms in enumerate(all_crossings)
+        if ((1+k)%24)%2==1]
+   starts=[item[0] for item in jie]
+   k=bisect_right(starts,local.timestamp()*1000)-1
+   if k<0 or k+1>=len(jie) or jie[-1][0]<end.timestamp()*1000:
+    raise ValueError("Strict 30-degree Jie month horizon outside verified UTC crossing table")
+   for i in range(k,len(jie)-1):
+    first_ms,term_index=jie[i]
+    second_ms=jie[i+1][0]
+    if first_ms>=end.timestamp()*1000:break
+    month_index=((term_index-3)%24)//2
+    begin=datetime.fromtimestamp(first_ms/1000,timezone.utc).astimezone(ZoneInfo(timezone_name))
+    finish=datetime.fromtimestamp(second_ms/1000,timezone.utc).astimezone(ZoneInfo(timezone_name))
+    rows.append({"start_iso":begin.isoformat(),"end_iso":finish.isoformat(),
+     "branch":SOLAR_MONTH_BRANCHES[month_index],"granularity":"month",
+     "calendar_method_version":STRICT_JIEQI_VERSION,
+     "solar_longitude_boundary_start":(315+month_index*30)%360})
+   return rows
   jd=_jd(local)
   longitude=_sun_longitude(jd)
   index=int(((longitude-315)%360)//30)

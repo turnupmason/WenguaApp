@@ -65,6 +65,18 @@ class ActualSolarTermAndBookTimingTests(unittest.TestCase):
   self.assertTrue(data["first_judgment_does_not_read_book_line45"])
   self.assertTrue(data["not_a_computed_single_legal_registration_day"])
   self.assertTrue(data["historical_book_feedback_is_not_empirical_independent_verification"])
+ def test_strict_utc_jie_month_boundaries_match_strict_clock(self):
+  from src.wengua.astro_calendar import STRICT_JIEQI_VERSION
+  results=branch_periods("2026-11-20T12:00:00-05:00","America/New_York",
+                         granularity="month",days_ahead=35)
+  self.assertGreaterEqual(len(results),2)
+  self.assertTrue(all(x["calendar_method_version"]==STRICT_JIEQI_VERSION
+                      for x in results))
+  self.assertEqual(results[0]["branch"],"亥")
+  self.assertEqual(results[0]["end_iso"],"2026-12-06T21:52:32.429000-05:00")
+  self.assertEqual(results[1]["branch"],"子")
+  self.assertEqual(results[1]["start_iso"],results[0]["end_iso"])
+
  def test_optional_swiss_software_reference_agrees_with_offline_formula(self):
   # Core CI never downloads a sky library. If available, independently
   # compare two astronomical algorithms in one process.
