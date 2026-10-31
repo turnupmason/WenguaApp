@@ -24,8 +24,8 @@ groups=[
  ("姐姐","older_sister",None,None),
  ("弟弟","younger_brother",None,None),
  ("妹妹","younger_sister",None,None),
- ("女性比自己年长的朋友","friend","female","older"),
- ("男性比自己年幼的朋友","friend","male","younger"),
+ ("朋友（不提供性别与年龄）","friend",None,None),
+ ("朋友（多余人口条件不得增宫）","friend","male","younger"),
 ]
 for ordinal,(label,role,sex,relative) in enumerate(groups,1):
  inquiry={"intent":"severity","relationship":role,"consultation_context":"direct_proxy"}
@@ -50,7 +50,7 @@ for ordinal,(label,role,sex,relative) in enumerate(groups,1):
       "role":role,"failures":failures},ensure_ascii=False))
   raise RuntimeError("No cast accepted for "+role)
  print("\n"+("="*64))
- print("V9.0 "+str(ordinal)+"/6 "+label+" 真实时刻 "+iso)
+ print("V11 "+str(ordinal)+"/6 "+label+" 真实时刻 "+iso)
  print("实际四柱 "+" ".join(result["four_pillars"][k] for k in ("year","month","day","hour")))
  print("实时节气 "+result["solar_term"]+" | 实际局 "+str(result["bureau"]))
  audit=result["full_health_role_strength_network"]
