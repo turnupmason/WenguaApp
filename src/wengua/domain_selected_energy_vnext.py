@@ -479,6 +479,8 @@ def selected_health_sections(result,*,actor,chart):
         gate=quant["role_effectiveness_gates"][key]
         power=row["primary_strength_25"]
         lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核") + ("" if power.get("strength_label") else "（十二长生分支待辨）")
+        if power.get("stem_life_priority_source")=="user_explicit_20261031_geng_xun_only":
+            lead+="（巳长生主断，辰养并存）"
         rel=gate["relation"]
         if key=="chief" and gate["void"]!="not_void":
             note="逢空，护持受限"
@@ -593,8 +595,8 @@ def selected_health_sections(result,*,actor,chart):
     patient_text=(symbol+"在"+patient["complete_palace"]["palace_name"]+
                   "，势"+str(patient["primary_strength_25"].get("strength_label") or "待核")+
                   "，宫象"+grade(quant["roles"]["patient"]["palace_score"]["score"]))
-    if symbol=="庚" and patient["palace"]==4 and patient["primary_strength_25"].get("stem_life_strength_pending"):
-        patient_text+="，辰养与巳长生并见，双支原始力量不同"
+    if patient["primary_strength_25"].get("stem_life_priority_source")=="user_explicit_20261031_geng_xun_only":
+        patient_text+="，以巳长生主断，辰养备查"
     patient_void=patient["complete_palace"]["void"]["classification"]
     if patient_void!="not_void":
         patient_text+="，逢"+("真空" if patient_void=="true_void" else "假空")
@@ -628,8 +630,10 @@ def selected_health_sections(result,*,actor,chart):
         identity=(r["palace"],p["kind"],p["symbol"])
         if identity in documented:continue
         documented.add(identity)
+        stage_note=("，以巳长生主断，辰养备查"
+                    if p.get("stem_life_priority_source")=="user_explicit_20261031_geng_xun_only" else "")
         support.append(name+p["symbol"]+"在"+r["complete_palace"]["palace_name"]+
-            "，势"+str(p.get("strength_label") or "待核")+
+            "，势"+str(p.get("strength_label") or "待核")+stage_note+
             "，"+concise_relation(k))
     support_text="另参"+("；".join(support) if support else "无独立附加用神")
     extra_text=("；"+"；".join(dict.fromkeys(extra))) if extra else ""

@@ -160,13 +160,24 @@ def lookup_selected_factor(kind,symbol,month_branch,palace,*,plane="heaven",
     options=tuple({ "row":g, "strength":raw_cell(STEM_POWER,g,rel,col_order=STEM_COLUMNS)}
                   for g in groups)
     labels=tuple(dict.fromkeys(x["strength"] for x in options))
-    stage_ambiguous=len(labels)!=1
+    # User-approved dual branch: 庚在巽四 retains 辰养 and 巳长生.
+    # Only 巳长生 is the leading 200-grid stage, never a global max rule.
+    geng_xun=(symbol=="庚" and palace==4 and
+              {(x["branch"],x["stage"]) for x in source_facts}
+              =={("辰","养"),("巳","长生")})
+    selected_row=STEM_STAGE_ROWS["长生"] if geng_xun else None
+    selected_strength=(raw_cell(STEM_POWER,selected_row,rel,col_order=STEM_COLUMNS)
+                       if geng_xun else None)
+    stage_ambiguous=len(labels)!=1 and not geng_xun
     return {
         **source,
-        "strength_label":labels[0] if not stage_ambiguous else None,
+        "strength_label":selected_strength if geng_xun else (labels[0] if not stage_ambiguous else None),
         "table_version":STEM_POWER_VERSION,
         "user_cell_col":rel,
-        "user_cell_row":groups[0] if len(groups)==1 else None,
+        "user_cell_row":selected_row if geng_xun else (groups[0] if len(groups)==1 else None),
+        "stem_life_primary_branch":"巳" if geng_xun else None,
+        "stem_life_primary_stage":"长生" if geng_xun else None,
+        "stem_life_priority_source":"user_explicit_20261031_geng_xun_only" if geng_xun else None,
         "stem_life_rows_at_real_palace":list(groups),
         "stem_life_source_facts":source_facts,
         "stem_life_candidate_cells":list(options),
@@ -175,8 +186,9 @@ def lookup_selected_factor(kind,symbol,month_branch,palace,*,plane="heaven",
         "legacy_stem_month_x_palace_strength":source["strength_label"],
         # Two branch stages producing DIFFERENT powers are genuinely
         # unresolved mapping, not a second opponent duel or a fabricated win.
-        "effective_status":"ambiguous_two_palace_branches_wait_source_rule"
-                           if stage_ambiguous else source["effective_status"],
+        "effective_status":("user_approved_geng_xun_primary_changsheng" if geng_xun else
+                            "ambiguous_two_palace_branches_wait_source_rule"
+                            if stage_ambiguous else source["effective_status"]),
     }
 
 

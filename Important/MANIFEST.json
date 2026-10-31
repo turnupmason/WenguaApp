@@ -91,7 +91,7 @@
       "platform": "python",
       "canonical": "src/wengua/domain_selected_energy_vnext.py",
       "snapshot": "Important/python/engine/domain_selected_energy_vnext.py",
-      "sha": "893bd4b0324cd79360c76a20cee0577bbc31e047"
+      "sha": "b50af183bcf086b2c9033ac06ed4fa28473f1cfd"
     },
     {
       "platform": "python",
@@ -289,7 +289,7 @@
       "platform": "python",
       "canonical": "src/wengua/user_domain_matrices_20261023.py",
       "snapshot": "Important/python/scoring/user_domain_matrices_20261023.py",
-      "sha": "b99b28562ac87c3e8210232255db97b6e79b9453"
+      "sha": "3a3ca5b613f51b67d54d7c3e0f2ceb9af652f16e"
     },
     {
       "platform": "python",
@@ -505,13 +505,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
       "snapshot": "Important/swift/engine/WenguaNativeVNextEngine.swift",
-      "sha": "8998208db1ec562a917eb3a6fb43d33555e32235"
+      "sha": "88e2153e6f979bba78a5e365337be28a2d53f80c"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
       "snapshot": "Important/swift/engine/WenguaPythonVNextVerbatim.swift",
-      "sha": "203171790ae331532eb6bf98ba72667d3cd8e539"
+      "sha": "241e9ffb68f82e0721dc42cb4f4f77777ddd824e"
     },
     {
       "platform": "swift",

@@ -258,7 +258,10 @@ enum WenguaPythonVNextVerbatim {
               let edge=review.controls.first(where:{$0.role==role}) else {
             return ""
         }
-        let lead=energy.symbol+"势"+(energy.strength ?? "待核")+(energy.strength==nil ? "（十二长生分支待辨）" : "")
+        var lead=energy.symbol+"势"+(energy.strength ?? "待核")+(energy.strength==nil ? "（十二长生分支待辨）" : "")
+        if energy.symbol=="庚" && review.roles[role]==4 {
+            lead+="（巳长生主断，辰养并存）"
+        }
         let rel=relation(aid,disease)
         let note:String
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
@@ -435,8 +438,8 @@ enum WenguaPythonVNextVerbatim {
         }
         let patientSymbol=review.roleEnergy["patient"]?.symbol ?? "未核"
         var patientText=patientSymbol+"在"+label(patientCell)+"，势"+(review.roleEnergy["patient"]?.strength ?? "待核")+"，宫象"+signed(review.roleScores["patient"])
-        if patientSymbol=="庚" && patientID==4 && review.roleEnergy["patient"]?.strength==nil {
-            patientText+="，辰养与巳长生并见，双支原始力量不同"
+        if patientSymbol=="庚" && patientID==4 {
+            patientText+="，以巳长生主断，辰养备查"
         }
         let patientVoid=review.palaces[patientID]?.void ?? "not_void"
         if patientVoid != "not_void" {
@@ -483,7 +486,8 @@ enum WenguaPythonVNextVerbatim {
             if documented.contains(identity){continue}
             documented.insert(identity)
             let sourceStrength=f.strength ?? "待核"
-            let supportLine=name+f.symbol+"在"+label(p)+"，势"+sourceStrength+"，"+conciseRelation(key)
+            let lifeNote=(f.symbol=="庚" && id==4) ? "，以巳长生主断，辰养备查" : ""
+            let supportLine=name+f.symbol+"在"+label(p)+"，势"+sourceStrength+lifeNote+"，"+conciseRelation(key)
             support.append(supportLine)
         }
         let supportText="另参"+(support.isEmpty ? "无独立附加用神" :

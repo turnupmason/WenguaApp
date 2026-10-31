@@ -259,7 +259,17 @@ enum WenguaVNextEngine {
                 try WenguaNativeEnergyBundle.cell("stem",row:$0,
                   column:column,catalog:catalog)
             })
-            lookup=possible.count==1 ? possible.first : nil
+            // Source facts retain 辰养 and 巳长生. Only this explicitly
+            // approved Geng-Xun combination uses the 巳长生 strength row.
+            let gengXun=symbol=="庚" && palace==4 && stages.count==2 &&
+                Set(stages.map { $0.branch+":"+$0.stage })==Set(["辰:养","巳:长生"])
+            if gengXun {
+                lookup=try WenguaNativeEnergyBundle.cell("stem",
+                    row:"长生/冠带/临官/帝旺/沐浴",
+                    column:column,catalog:catalog)
+            } else {
+                lookup=possible.count==1 ? possible.first : nil
+            }
         } else {
             throw WenguaHealthTemplateError.invalidCatalog
         }
