@@ -1,0 +1,27 @@
+name: Strict UTC JieQi Native Swift vs Python real cast parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/WenguaAppUI/WenguaNativeCore.swift'
+      - 'src/wengua/astro_calendar.py'
+      - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
+      - 'data/calendar/strict_jieqi_moshier_2025_2028.json'
+      - 'scripts/verify_strict_jieqi_native_20261031.py'
+      - '.github/workflows/strict_jieqi_native_calendar_parity_20261031.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-strict-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Require native Swift compiler (no source-string-only pass)
+        run: swiftc --version
+      - name: Recast 10 real UTC instants on Swift native and Python
+        run: python scripts/verify_strict_jieqi_native_20261031.py
