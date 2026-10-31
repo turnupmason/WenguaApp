@@ -618,7 +618,7 @@ def selected_health_sections(result,*,actor,chart):
                 for k in ("illness","patient","doctor","medicine")}
     for k,name in (("hour","时干事体"),("natal","年命"),
                    ("gender","长辈乾坤辅助"),("sibling","兄弟姐妹辅助"),
-                   ("chief","值符")):
+                   ("chief","大吉神")):
         if k not in roles:continue
         r=roles[k]
         p=r["primary_strength_25"]
