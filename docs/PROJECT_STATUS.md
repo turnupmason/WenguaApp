@@ -2178,3 +2178,9 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 用户纠正两件事：(1) 用“病宫在某宫”起笔正确；理论1080物理盘本来会有自然重复，同盘不需要硬编不同病象；(2) 病宫、父亲主用神两个局部宫的吉凶与最终等级相反并非自动错误，因为最终吉凶是**冻结V8.0所有参与宫与加减项求和**。此前90条“疑似异常”应撤销误标，而非重新算分或为解释强造新事实。
 本轮依完整正式1080原盘+原始父亲6000源证据SHA，重新生成更短、更直白、无设问铺垫、10专业章节的6,000条v7文学候选，全部保留原V8结果/四柱/用神/宫位/原盘SHA，按实际阴阳遁×局×时干支900个出现的组归档到 Wengua_Prediction main。GitHub Actions [#40993002914](https://github.com/turnupmason/Wengua_Prediction/actions/runs/40993002914) 源锁/旧v5保留/6000完整/离线SQLite零草稿检查PASS，实际提交 `2cc1ec90f0cb640cf16eedfddbdcee03e18bf06c`，远程树精确统计6000条v7 JSON、6000旧v5 rejected。首次导入曾因v7正则字面错误FAIL [#40992890385](https://github.com/turnupmason/Wengua_Prediction/actions/runs/40992890385) 并保留，修复后通过。用户已得到10条完整断案示例、本地完整ZIP，归档SHA与确切边界新仓首卷v7索引已存。
 质量边界：6000是经源事实约束的**程序辅助审稿候选**，总分/200/5×5数学本轮未独立重算，未逐篇完成真正真人级文学精校；相同事实可自然重复，不以每篇唯一SHA为门槛。全部draft，approved=0；当前没有改 WenguaApp 冻结V8规则或 Swift，人工放行前不进入iOS正式离线SQLite。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
