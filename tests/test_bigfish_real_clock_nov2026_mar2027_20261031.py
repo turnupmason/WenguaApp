@@ -43,7 +43,7 @@ class RealClockWindow(unittest.TestCase):
         self.assertEqual(M.BATCH_MODE,"real_clock")
         self.assertEqual((M.REAL_DATE_START,M.REAL_DATE_END),
                          ("2026-11-15","2027-03-15"))
-        self.assertEqual(M.MAX_NEW_ROWS,20)
+        self.assertEqual(M.MAX_NEW_ROWS,0) # Direct full window, not a trial
         self.assertEqual(M.N_CASES,518400) # old study preserved
         self.assertEqual(M.ROWS_PER_EXCEL,5000)
         self.assertIsNone(M.PATIENT_BIRTH_GANZHI)
@@ -112,6 +112,61 @@ class RealClockWindow(unittest.TestCase):
         self.assertTrue(result["status"].startswith("失败"))
         self.assertIn("冲突",result["error"])
         calc.assert_not_called()
+    def test_one_full_1452_row_excel_per_actor_then_no_rerun_overwrite(self):
+        slots=list(M.real_calendar_slots())
+        self.assertEqual(len(slots),1452)
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            config={"range":[M.REAL_DATE_START,M.REAL_DATE_END],
+                    "actor":"father","source":"current"}
+            db=M.initialize_real_db(root/"real.sqlite3",config)
+            for slot in slots:
+                i=slot["idx"]
+                record={"idx":i,"instant":slot["instant"],"utc":slot["utc"],
+                        "timezone":slot["timezone"],"branch":slot["branch"],
+                        "case_id":"case-"+str(i),
+                        "four_pillars":{"year":"丙午","month":"己亥",
+                                        "day":"乙丑","hour":"丙子"},
+                        "result":{"status":"原始断词_待润色和人工审核",
+                                  "score":1,"grade":"极小吉",
+                                  "text":"独立来源断词",
+                                  "source_fact_lock":{"person_binding":{"stem":"丙"}},
+                                  "original_text_sha256":"sourcehash"}}
+                db.execute("INSERT INTO real_cases VALUES (?,?,?,?,?)",
+                           (i,record["case_id"],slot["instant"],
+                            M.canonical(record),"now"))
+                if i==19:
+                    db.commit()
+                    self.assertIsNone(M.export_real_complete(
+                        db,root,{"father":"父亲"},slots))
+                    self.assertFalse(
+                        (root/"Excel_CSV_可直接打开").exists())
+            db.commit()
+            out=M.export_real_complete(db,root,{"father":"父亲"},slots)
+            self.assertTrue(out.is_file())
+            directory=root/"Excel_CSV_可直接打开"
+            self.assertEqual(len(list(directory.glob("*.xlsx"))),1)
+            self.assertEqual(len(list(directory.glob("*.csv"))),1)
+            self.assertEqual(len(list(directory.glob("*.jsonl"))),1)
+            with zipfile.ZipFile(out) as book:
+                sheet=book.read("xl/worksheets/sheet1.xml").decode("utf8")
+                self.assertEqual(sheet.count("<row r="),1453) # heading+all
+                self.assertIn(slots[0]["instant"],sheet)
+                self.assertIn(slots[-1]["instant"],sheet)
+            # User makes edits to the formal Excel: rerun must not overwrite.
+            before=out.read_bytes()
+            self.assertEqual(M.export_real_complete(
+                db,root,{"father":"父亲"},slots),out)
+            self.assertEqual(out.read_bytes(),before)
+            # Human old 200-row snapshot is not our canonical workbook:
+            # It remains in this folder but must never be removed.
+            historic=directory/"father_真实时辰_0001-0200_旧稿.xlsx"
+            historic.write_bytes(b"human-edited-history")
+            self.assertEqual(M.export_real_complete(
+                db,root,{"father":"父亲"},slots),out)
+            self.assertEqual(historic.read_bytes(),b"human-edited-history")
+            db.close()
+
     def test_immutable_database_and_real_xlsx_with_unique_real_clock(self):
         slots=list(M.real_calendar_slots())
         with tempfile.TemporaryDirectory() as d:
