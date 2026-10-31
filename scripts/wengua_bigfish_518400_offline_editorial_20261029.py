@@ -113,7 +113,7 @@ HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
 PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v4_V11_complete'
-SIX_JIA_APPROVED_WENGUA_SHA = '46382694a418300ac4660a1c22bcf227857c9a52' # V11 complete source; frozen V8 arithmetic and 200/81 retained
+SIX_JIA_APPROVED_WENGUA_SHA = '2a5a4dc4ddbf8497560e35ad00c4c8866d5d1f72' # V11 complete source; frozen V8 arithmetic and 200/81 retained
 SIX_JIA_BATCH_SUBDIR = 'V11_20261031_人物独立_月干六甲_完整双页'
 SIX_JIA_SOURCES_ACTIVATED = False
 # Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
