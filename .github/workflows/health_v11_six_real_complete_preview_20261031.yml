@@ -1,0 +1,51 @@
+name: Health V11 six real complete-source previews
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/preview_health_v90_six_real_random_20261031.py'
+      - '.github/workflows/health_v11_six_real_complete_preview_20261031.yml'
+      - 'src/wengua/health_dynamic_v21.py'
+      - 'src/wengua/domain_selected_energy_vnext.py'
+      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  six_real:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Cast genuine Gregorian time with all V11 source paragraphs
+        run: |
+          set -euo pipefail
+          python3 scripts/preview_health_v90_six_real_random_20261031.py | tee /tmp/v11_six_complete.txt
+          test "$(grep -c '真实时刻' /tmp/v11_six_complete.txt)" -eq 6
+          test "$(grep -c 'V11_REJECTED_REAL_INSTANTS' /tmp/v11_six_complete.txt)" -eq 6
+          grep -q '天芮病宫：' /tmp/v11_six_complete.txt
+          grep -q '兄弟姐妹排行辅助宫：' /tmp/v11_six_complete.txt
+      - name: Store all original source sections for traceability
+        uses: actions/upload-artifact@v4
+        with:
+          name: V11-six-actual-clocks-complete-original-text
+          path: /tmp/v11_six_complete.txt
+          retention-days: 90
+      - name: Commit reproducible true-clock previews without editing older V9 history
+        run: |
+          set -euo pipefail
+          target=docs/HEALTH_V11_SIX_REAL_COMPLETE_PREVIEW_20261031.txt
+          cp /tmp/v11_six_complete.txt "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$target"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Archive six V11 real-clock complete selected-role Chinese original previews"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
