@@ -45,13 +45,13 @@ BATCH_MODE = 'real_clock'   # 默认只生成真实2026-11-15~2027-03-15；旧�
 REAL_DATE_START = '2026-11-15' # 含当日
 REAL_DATE_END = '2027-03-15'   # 含当日
 REAL_TIMEZONE = 'America/New_York' # 只供该IANA时区预审；App仍依据手机实际时区和当前秒数实时计算
-RELATIONSHIP = 'father'       # father -> mother -> younger_sibling -> ...
+RELATIONSHIP = 'all'          # 'all' = 循环完整22个人物源ID；单人测试改 'father'、'self' 等
 PATIENT_SEX = None           # 弟弟可设 'male'；姐妹或妈妈已知女可设 'female'
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
 CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
-MAX_NEW_ROWS = 20            # 先20个真实时辰验证，确认后改0覆盖本窗口；非518400条
+MAX_NEW_ROWS = 20            # 'all'模式每个关系/条件各20条；验收后0=每种配置全部1452条
 ROWS_PER_EXCEL = 5000        # 旧518400抽象模式保持历史5000行/卷
 REAL_ROWS_PER_EXCEL = 200     # 新2026-11~2027-03真实时辰审核卷
 COMMIT_EVERY = 10            # committed records surviving power loss
@@ -1593,20 +1593,20 @@ def export_real_new(db,root,labels,indices):
         if jsontmp.exists():jsontmp.unlink()
     return xlsxfile if GENERATE_XLSX else csvfile
 
-def run_real_calendar():
-    """Default launch scope; old 518400 study is never resumed or overwritten."""
+def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=None):
+    """One exact real-civil actor context; all-mode calls this once per profile."""
     if MAX_NEW_ROWS<0:
         raise ValueError('MAX_NEW_ROWS必须>=0；0表示本窗口全部而非全历史')
     if ROWS_PER_EXCEL<1 or COMMIT_EVERY<1 or PRINT_EVERY<1:
         raise ValueError('提交/导出参数必须为正整数')
     activate_six_jia_sources()
-    manifest=ensure_install()
+    manifest=installed_manifest if installed_manifest is not None else ensure_install()
     if INSTALL_ONLY:
         print('安装/冻结资源校验完成。实际四个月生成尚未启动。',flush=True)
-        return
-    profiles=actor_catalog()
+        return {'status':'install_only'}
+    profiles=catalog if catalog is not None else actor_catalog()
     validation=validate_actor_settings(profiles)
-    labels=catalog_relation_labels()
+    labels={p['id']:p['label'] for p in profiles['profiles']}
     inquiry=build_inquiry(validation)
     # Explicit natal-year-only-if-user-provided policy. Default None.
     zone=REAL_TIMEZONE
@@ -1616,6 +1616,14 @@ def run_real_calendar():
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
           RELATIONSHIP/zone_path/'source_v1')
+    # Distinguish parent male/female and spouse male/female in their own
+    # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
+    condition={'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
+               'order':BIRTH_ORDER,'natal':PATIENT_BIRTH_GANZHI,
+               'context':CONSULTATION_CONTEXT}
+    if any(v is not None for v in condition.values()):
+        label='性别_'+PATIENT_SEX if PATIENT_SEX else '特定人物条件'
+        root=root/(label+'_'+sha_text(canonical(condition))[:10])
     root.mkdir(parents=True,exist_ok=True)
     info={
         'version':REAL_PIPELINE_VERSION,
@@ -1645,11 +1653,14 @@ def run_real_calendar():
     print('iPhone正式实时起盘不受此缓存窗口限制；节气边界/23时不使用邻盘替代。',flush=True)
     print('旧518400研究SQLite/失败Excel/人工修订一概不修改。',flush=True)
     sys.path.insert(0,str(base.SOURCE))
-    worker=None
+    own_worker=shared_worker is None
+    worker=shared_worker
     current=0;failures=0;pending=0;unknown_consecutive=0
+    interrupted=False
     newly=[]
     try:
-        worker=BigFishWorker(root)
+        if worker is None:
+            worker=BigFishWorker(root)
         for slot in slots:
             if MAX_NEW_ROWS and current>=MAX_NEW_ROWS:
                 break
@@ -1701,7 +1712,8 @@ def run_real_calendar():
                 raise RuntimeError('真实日期连续多次断案失败，已留原始失败与输出；'+
                                    '最后失败：'+result.get('error',''))
     except KeyboardInterrupt:
-        print('用户手动中止：已记录保持不可变，重新运行从真实日期断点继续。',flush=True)
+        interrupted=True
+        print('用户手动中止：已保存真实日期断点，所有角色循环也将立即停止。',flush=True)
     finally:
         db.commit()
         if newly:
@@ -1711,10 +1723,125 @@ def run_real_calendar():
         print(f'已保留真实时辰{total}/{len(slots)}；本轮新增{current}，失败{failures}。',flush=True)
         print('文件目录：',root/'Excel_CSV_可直接打开',flush=True)
         db.close()
-        if worker is not None:
+        if own_worker and worker is not None:
             worker.close()
+    return {'status':'interrupted' if interrupted else 'completed',
+            'relationship':RELATIONSHIP,'sex':PATIENT_SEX,
+            'new_rows':current,'failures':failures,'total_rows':total,
+            'possible_rows':len(slots),'output':str(root),
+            'source_status':validation['reference'].get('status','unknown')}
+
+
+def all_signifier_configs(catalog):
+    """All 22 real profile IDs in source order, with two genuine sex variants
+    for each composite 'parent'/'spouse'. This is 24 configurations, never
+    24 approved independent author rules. No natal/age/order is inferred.
+    """
+    profiles=catalog.get('profiles')
+    if not isinstance(profiles,list) or not profiles:
+        raise ValueError('原始人物用神源表为空，禁止生成伪人物列表')
+    ids=[p.get('id') for p in profiles]
+    if len(ids)!=len(set(ids)) or any(not p.get('references') for p in profiles):
+        raise ValueError('人物ID重复或缺主用神引用，禁止跳过继续')
+    plan=[]
+    for profile in profiles:
+        role_id=profile['id']
+        variants=(('male','female') if role_id in ('parent','spouse')
+                  else (None,))
+        for sex in variants:
+            plan.append({'relationship':role_id,'patient_sex':sex,
+                         'label':profile['label'],
+                         'source_kind':profile['references'][0]['kind'],
+                         'source_status':profile['references'][0].get('status'),
+                         'context':'direct_self' if role_id=='self'
+                                  else 'direct_proxy',
+                         'needs_human_review':True})
+    return plan
+
+
+def run_all_real_calendar():
+    """Sequentially run every real actor category with one compiled TS worker.
+
+    No global patient parameters leaked between actors; source JSON is the
+    ONLY profile catalog. Parents/spouses use separate sex-specific folders.
+    Failure of one role is archived and cannot suppress testing all others;
+    Ctrl-C stops whole loop. 'all' is illegal for the abstract 518400 mode.
+    """
+    global RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,BIRTH_ORDER
+    global PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT
+    if any(x is not None for x in
+           (PATIENT_SEX,PATIENT_AGE_BAND,BIRTH_ORDER,
+            PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)):
+        raise ValueError("'all'模式不接受单个人物性别/年龄/排行/年命/闻讯预设；"
+                         "每个独立人物必须保持真实条件，未知信息不能补造。")
+    activate_six_jia_sources()
+    manifest=ensure_install()
+    if INSTALL_ONLY:
+        print('全部人物源安装和资源SHA校验成功，未开始批量。',flush=True)
+        return
+    catalog=actor_catalog()
+    plan=all_signifier_configs(catalog)
+    folder=base.OUTPUT/'real_calendar_20261115_20270315'/'_all_profiles_audit'
+    folder.mkdir(parents=True,exist_ok=True)
+    # Run summaries are append-only. Re-running never overwrites history.
+    summary=folder/'每次运行人物用神结果.jsonl'
+    original=(RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,
+              BIRTH_ORDER,PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)
+    worker=BigFishWorker(folder)
+    failures=0;finished=0;interrupted=False
+    try:
+        for index,configuration in enumerate(plan,1):
+            RELATIONSHIP=configuration['relationship']
+            PATIENT_SEX=configuration['patient_sex']
+            PATIENT_AGE_BAND=None
+            BIRTH_ORDER=None
+            PATIENT_BIRTH_GANZHI=None
+            CONSULTATION_CONTEXT=None
+            print(f"\n[所有人物用神 {index}/{len(plan)}] {configuration['label']}"
+                  f" / {RELATIONSHIP} / sex={PATIENT_SEX or '源角色默认'}"
+                  f" / 来源={configuration['source_kind']}"
+                  f" / 核验状态={configuration['source_status']}",flush=True)
+            try:
+                result=run_real_calendar(shared_worker=worker,
+                                         installed_manifest=manifest,
+                                         catalog=catalog)
+                record={**configuration,**result,'ordinal':index,
+                        'logged_at':datetime.now(timezone.utc).isoformat(),
+                        'candidate_not_published':True}
+                finished+=1
+            except KeyboardInterrupt:
+                interrupted=True
+                break
+            except Exception as err:
+                failures+=1
+                record={**configuration,'status':'FAILED_RETAINED',
+                        'error':str(err)[:2000],'ordinal':index,
+                        'logged_at':datetime.now(timezone.utc).isoformat(),
+                        'candidate_not_published':True}
+                print('当前人物计算/导出失败，保留原有SQLite与审稿并继续下一个：',
+                      str(err)[:400],flush=True)
+            with summary.open('a',encoding='utf8') as f:
+                f.write(canonical(record)+'\n')
+            if record.get('status')=='interrupted':
+                interrupted=True
+                break
+    finally:
+        (RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,
+         BIRTH_ORDER,PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)=original
+        worker.close()
+    print(f'全部人物配置共{len(plan)}；完成{finished}，配置错误{failures}，'
+          f'人工中止={interrupted}；审计日志={summary}',flush=True)
+    if failures:
+        raise RuntimeError(f'{failures}种人物配置遇到真实错误，日志已留在 {summary}；'
+                           '不能把全部人物标记为通过')
+
 
 def run():
+    if RELATIONSHIP=='all':
+        if BATCH_MODE!='real_clock':
+            raise ValueError("'all'仅支持真实2026-11~2027-03窗口；"
+                             "禁止一次性对所有人物运行518400抽象组合")
+        return run_all_real_calendar()
     if BATCH_MODE=='real_clock':
         return run_real_calendar()
     if BATCH_MODE=='abstract_518400_legacy':
