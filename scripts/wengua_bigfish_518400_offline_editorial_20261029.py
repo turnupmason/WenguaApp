@@ -112,9 +112,9 @@ MONTH_START = {'甲':'丙','己':'丙','乙':'戊','庚':'戊','丙':'庚','辛'
 HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':'戊',
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
-PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v4_V11_complete'
-SIX_JIA_APPROVED_WENGUA_SHA = '2a5a4dc4ddbf8497560e35ad00c4c8866d5d1f72' # V11 complete source; frozen V8 arithmetic and 200/81 retained
-SIX_JIA_BATCH_SUBDIR = 'V11_20261031_人物独立_月干六甲_完整双页'
+PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v5_V11_complete_geng_xun'
+SIX_JIA_APPROVED_WENGUA_SHA = '1da1e5035061ade8fbdb54ecd0451c6eaef7c1b8' # V11 complete source; frozen V8 arithmetic and 200/81 retained
+SIX_JIA_BATCH_SUBDIR = 'V11_20261031_人物独立_月干六甲_完整双页_巳长生优先_v2'
 SIX_JIA_SOURCES_ACTIVATED = False
 # Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
 
@@ -371,8 +371,8 @@ def activate_six_jia_sources():
     if SIX_JIA_SOURCES_ACTIVATED:
         return
     base.WENGUA_SHA = SIX_JIA_APPROVED_WENGUA_SHA
-    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V11_1_source_20261031'
-    base.FROZEN = HERE / 'frozen_V11_1_source_20261031'
+    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V11_2_geng_xun_source_20261031'
+    base.FROZEN = HERE / 'frozen_V11_2_geng_xun_source_20261031'
     SIX_JIA_SOURCES_ACTIVATED = True
 
 
@@ -1215,6 +1215,36 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
                 sky['carried_stem']==carrier for sky in cell['heaven_stars']
             ):
                 raise ValueError('真正天盘未含该角色六甲所遁六仪，拒绝假成绩')
+        # Geng at Xun-4: user-approved primary 巳长生, preserve 辰养
+        # and both raw 200-cell candidates. Refuse stale-source bulk output.
+        from src.wengua.user_domain_matrices_20261023 import lookup_selected_factor
+        geng_xun_source_audit=None
+        selected_nodes=report['full_health_role_strength_network']['nodes']
+        geng_roles=[(name,role) for name,role in selected_nodes.items()
+                    if role.get('kind')=='stem' and role.get('symbol')=='庚'
+                    and role.get('palace')==4]
+        if geng_roles:
+            primary=lookup_selected_factor('stem','庚',pillars['month'][1],4)
+            expected=primary['strength_label']
+            if (not expected or primary.get('stem_life_primary_stage')!='长生'
+                    or primary.get('stem_life_primary_branch')!='巳'
+                    or len(primary['stem_life_source_facts'])!=2
+                    or len(primary['stem_life_candidate_cells'])!=2):
+                raise ValueError('庚巽四辰养/巳长生和200格主断源不齐，拒绝批量假成绩')
+            for name,role in geng_roles:
+                if role.get('strength')!=expected:
+                    raise ValueError('庚巽四V8真实用神未按巳长生取力：'+name)
+            geng_xun_source_audit={
+                'roles':[name for name,_ in geng_roles],
+                'primary_branch':primary['stem_life_primary_branch'],
+                'primary_stage':primary['stem_life_primary_stage'],
+                'source_policy':primary['stem_life_priority_source'],
+                'source_200_column':primary['user_cell_col'],
+                'selected_strength':expected,
+                'original_two_branches':primary['stem_life_source_facts'],
+                'two_source_200_cells':primary['stem_life_candidate_cells'],
+                'not_palace_net_score':True,
+            }
         summary=quant['summary']
         score=summary['score']
         if score not in base.GRADE:
@@ -1230,6 +1260,7 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
             raise ValueError('BigFish冻结源模板非现行V11，拒绝旧模板继续批量运行：'+str(template.get('schema')))
         first_page=v11_front_page_from_real_sections(sections,base.GRADE[score])
         lock={
+            'geng_xun_source_200_audit':geng_xun_source_audit,
             'reading_template_schema':schema,
             'reading_template_sha256':hashlib.sha256(template_path.read_bytes()).hexdigest(),
             'first_page_sha256':sha_text(first_page['display_text']),
@@ -1487,7 +1518,7 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v7_V11_1_final_lifecycle'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v8_V11_2_geng_xun'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
@@ -1822,7 +1853,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v7_v11_1_final_lifecycle')
+          RELATIONSHIP/zone_path/'source_v8_v11_2_geng_xun')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
