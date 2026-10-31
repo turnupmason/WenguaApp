@@ -1549,7 +1549,7 @@ def real_review_row(record,labels):
         '','','待人工审核',canonical(result.get('source_fact_lock',{}))
     ]
 
-def export_real_new(db,root,labels,indices,*,name_override=None):
+def export_real_new(db,root,labels,indices,*,name_override=None,output_dir=None):
     """Append-only independent snapshots. NEVER overwrite human/GPT edits."""
     if not indices:
         return None
@@ -1564,7 +1564,8 @@ def export_real_new(db,root,labels,indices,*,name_override=None):
         [items[0]['case_id'],items[-1]['case_id'],len(items)]))[:12]
     name=(name_override or
           f'{RELATIONSHIP}_真实时辰_{items[0]["idx"]+1:04d}-{items[-1]["idx"]+1:04d}_{tag}')
-    out=root/'Excel_CSV_可直接打开'
+    out=(output_dir if output_dir is not None
+         else root/'Excel_CSV_可直接打开')
     out.mkdir(parents=True,exist_ok=True)
     csvfile=out/(name+'.csv')
     xlsxfile=out/(name+'.xlsx')
@@ -1619,7 +1620,10 @@ def export_real_complete(db,root,labels,slots):
          [x[1] for x in rows])))[:12]
     name=(f'{RELATIONSHIP}_真实时辰_{REAL_DATE_START}_至_{REAL_DATE_END}'
           f'_{expected}条_{signature}')
-    out=root/'Excel_CSV_可直接打开'
+    # Current one-file workbook has its OWN directory so that older
+    # 200-row trial snapshots and hand-edited historical workbooks remain
+    # available without appearing as duplicate current actor deliverables.
+    out=root/'每个用神一个完整Excel'
     targets=(out/(name+'.csv'),out/(name+'.xlsx'),
              out/(name+'_原始事实与章节.jsonl'))
     required=(targets if GENERATE_XLSX else
@@ -1634,7 +1638,8 @@ def export_real_complete(db,root,labels,slots):
     if any(existing):
         raise RuntimeError('此前导出只有部分文件，保护人工改稿不覆盖；请先人工核实：'+name)
     return export_real_new(db,root,labels,
-                           [x[0] for x in rows],name_override=name)
+                           [x[0] for x in rows],name_override=name,
+                           output_dir=out)
 
 
 def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=None):
@@ -1763,7 +1768,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
             print('本人物还没全部完成，仅保留SQLite断点；暂不拆分导出Excel：',
                   f'{total}/{len(slots)}',flush=True)
         print(f'已保留真实时辰{total}/{len(slots)}；本轮新增{current}，失败{failures}。',flush=True)
-        print('文件目录：',root/'Excel_CSV_可直接打开',flush=True)
+        print('旧历史分卷保留；本人物完整Excel目录：',root/'每个用神一个完整Excel',flush=True)
         db.close()
         if own_worker and worker is not None:
             worker.close()
