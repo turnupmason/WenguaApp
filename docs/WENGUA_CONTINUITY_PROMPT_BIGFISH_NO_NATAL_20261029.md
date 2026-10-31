@@ -1,5 +1,10 @@
 # WenguaApp 续开发总 Prompt · BigFish 518400 · 无年命阶段（2026-10-29）
 
+### 2026-10-31 · 用户再次确认全部用神立即全跑、一用神一整本Excel（覆盖先20条/200分卷旧计划）
+
+**现行最新要求：“不用，直接全跑，东西很少”。** 已实际更新原Wengua BigFish Mac Python源码 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`：`BATCH_MODE='real_clock'`、`RELATIONSHIP='all'`、`MAX_NEW_ROWS=0`。22源人物ID对应24种性别条件/用神配置，未来2026-11-15至2027-03-15每种是121日×12时=**1452条**，不是假定1300。旧 `ROWS_PER_EXCEL=5000` **仅**旧518400组合库使用，移除 `REAL_ROWS_PER_EXCEL=200`。新版每个人物/性别配置必须在独立SQLite中确实凑齐0..1451全部真实时间后，**只**导出一份1452行正式Excel，配套各一份完整CSV与源JSONL，位置其配置目录下 `每个用神一个完整Excel/`。中断时只保留SQLite不拆分生成Excel，下次断点续跑；已有该全本保留不覆写人工稿。之前按200行生成的旧人工Excel不删，原 `Excel_CSV_可直接打开/` 历史目录保留，但不与新正式单本混放。真实节气交界等拒绝伪造，未知错误连续三条停止该角色并保留失败总记，后续关系按既定错误保留逻辑继续。无出生年命继续None，所有Python Swift V8冻结原分和书源不变。详 `docs/BIGFISH_SINGLE_XLSX_ALL_1452_PER_SIGNIFIER_20261031.md`。真实专项 test 1452行仅一xlsx + CSV/JSONL + no overwrite + 中途20条不导出 [#41209416239](https://github.com/turnupmason/WenguaApp/actions/runs/41209416239) PASS，原已有22角色24分支真实TS [#41208505466](https://github.com/turnupmason/WenguaApp/actions/runs/41208505466) PASS；**不能据此宣称用户Mac全量34848都运行完成**。此前“先20条”“200行一卷”已是明确废止的历史方案，保留记录不得据旧段落运行。
+
+
 ## 2026-10-31 最新：原 BigFish 已内置全部人物用神循环
 
 ### 2026-10-31 · 用户要求 BigFish 一键loop全部人物用神：22源ID，24条件配置，实跑通过
