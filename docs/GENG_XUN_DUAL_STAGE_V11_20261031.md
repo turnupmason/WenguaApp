@@ -18,3 +18,11 @@
 
 ## 已保留且不能篡改的失败
 此前 BigFish 用户盘庚巽四「待核」是实际缺陷而非古诀待定，已据此设新回归。历史此前脚本固定旧SHA不能当新版本发布；修复前 CI、临时预览归档失败链接、已见2个病案都保留。新运行结果一律以本次 Action 完成状态为准，不能先标成功。
+
+
+## 2026-10-31 V11.2 本轮真实交付验收（后续追加，不覆盖早期失败）
+- 主CI [#41247581024](https://github.com/turnupmason/WenguaApp/actions/runs/41247581024) PASS；包含单独的庚巽四双支十二个月回归及原V8现行测试。
+- BigFish完整预审工作流 [#41247574228](https://github.com/turnupmason/WenguaApp/actions/runs/41247574228) PASS：200源格、旧1100父亲源冻结与不覆盖、121真实日×12代表时辰=1452槽、24人物源ID×26种条件配置、双页模板检查均成功。这是预审/回归，不等于已经在Mac批量生成26×1452条作品。
+- BigFish真实原始TS起盘+原Wengua V8/V11.2 断词三随机真实时辰 [#41247580945](https://github.com/turnupmason/WenguaApp/actions/runs/41247580945) PASS；全稿另存 docs/BIGFISH_V11_2_THREE_REAL_RANDOM_COMPLETE_20261031.txt，旧 V11 已封存 TXT 不覆盖。三盘：2026-12-14哥哥极小凶、2027-02-01姐姐不凶不吉、2026-12-12朋友小凶；朋友实际庚在巽四，势大，证据明确「以巳长生主断，辰养备查」，末尾写完整小凶结论。
+- 2026-10-31 底层 Swift 现行源码在真正 macOS iOS Xcode Simulator [#41247218548](https://github.com/turnupmason/WenguaApp/actions/runs/41247218548) PASS（含bundle资源验收）；Python/Swift native V8两套全文对照 [#41247218530](https://github.com/turnupmason/WenguaApp/actions/runs/41247218530) PASS。BigFish批量单独版本更新没有修改 Swift 层，正式签名真机/App Store未验。
+- 历史失败仍保留：BigFish Pin 切换中间几次 CI FAIL，源旧测试SHA已同步；此前 V7.4 故事原始断词/历史独立1080及旧预览归档冲突失败不可擦除或当作本轮已通过。新旧结果不能按用户事后获悉结局做拟合；整套规则仍属古籍象意，不属医学诊断预测。
