@@ -155,7 +155,7 @@ for item in six {
           front.contains("患者"), !front.contains("以上仅作传统古籍象意参考") else {
         fatalError("first tab lost real patient/medical evidence or leaked footer")
     }
-    print("PASS_V11_FRONT_REAL_GRADE \\(item.grade) \\(count)")
+    print("PASS_V11_FRONT_REAL_GRADE \(item.grade) \(count)")
 }
 print("PASS: five archived real verdicts, all 11 grades, and six actual V11 ~150–200-char source summaries; no scoring change")
 '''
