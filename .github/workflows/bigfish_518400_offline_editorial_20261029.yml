@@ -1,4 +1,4 @@
-name: BigFish 518400 Offline Editorial Batch Contract
+name: BigFish actual Nov2026-Mar2027 clock and 518400 legacy contract
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'tests/test_bigfish_node_runtime_pycharm_20261029.py'
       - 'tests/test_bigfish_1100_father_jia_preflight_20261029.py'
+      - 'tests/test_bigfish_real_clock_nov2026_mar2027_20261031.py'
       - '.github/workflows/bigfish_518400_offline_editorial_20261029.yml'
   workflow_dispatch:
 
@@ -37,3 +38,6 @@ jobs:
 
       - name: Uploaded 1100 father Jia-years safe scheduling, resume and no-overwrite regression
         run: python -m unittest discover -s tests -p 'test_bigfish_1100_father_jia_preflight_20261029.py' -v
+
+      - name: Actual 121-day clock 1452 slots DST exact Jie and immutable real XLSX
+        run: python -m unittest discover -s tests -p 'test_bigfish_real_clock_nov2026_mar2027_20261031.py' -v
