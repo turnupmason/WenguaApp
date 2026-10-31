@@ -462,7 +462,7 @@ enum WenguaPythonVNextVerbatim {
         var documented:Set<String>=[]
         for k in ["illness","patient","doctor","medicine"] {
             if let id=review.roles[k],let f=review.roleEnergy[k] {
-                documented.insert(String(id)+":"+f.kind+":"+f.symbol)
+                documented.insert(String(id)+":"+((["illness","doctor","gender","sibling"].contains(k)) ? "star" : k=="chief" ? "deity" : "stem")+":"+f.symbol)
             }
         }
         for (key,name) in [("hour","时干事体"),("natal","年命"),
@@ -470,7 +470,7 @@ enum WenguaPythonVNextVerbatim {
                            ("chief","值符")] {
             guard let id=review.roles[key],let f=review.roleEnergy[key],
                   let p=cells[id] else {continue}
-            let identity=String(id)+":"+f.kind+":"+f.symbol
+            let identity=String(id)+":"+((["illness","doctor","gender","sibling"].contains(key)) ? "star" : key=="chief" ? "deity" : "stem")+":"+f.symbol
             if documented.contains(identity){continue}
             documented.insert(identity)
             support.append(name+f.symbol+"在"+label(p)+"，势"+
