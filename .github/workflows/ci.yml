@@ -50,6 +50,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_tianxian_tianqin_host_20261028.py' -v
       - name: Confirm friend direct proxy and concise actual V8 same-clock customer text
         run: python -m unittest discover -s tests -p 'test_health_v80_concise_friend_20261028.py' -v
+      - name: V11 friend-month-only versus four real family sibling auxiliary palaces
+        run: python -m unittest discover -s tests -p 'test_health_v11_friend_family_aux_20261031.py' -v
       - name: Six-Jia all four columns source-identity regression
         run: python -m unittest discover -s tests -p 'test_independent_six_jia_role_columns_20261029.py' -v
       - name: Historical father Jia failures converted to approved rule regressions
