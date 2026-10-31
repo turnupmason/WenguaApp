@@ -478,7 +478,7 @@ def selected_health_sections(result,*,actor,chart):
         """One actual role's 200-cell energy, directed relationship only."""
         gate=quant["role_effectiveness_gates"][key]
         power=row["primary_strength_25"]
-        lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核")
+        lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核") + ("" if power.get("strength_label") else "（十二长生分支待辨）")
         rel=gate["relation"]
         if key=="chief" and gate["void"]!="not_void":
             note="逢空，护持受限"
