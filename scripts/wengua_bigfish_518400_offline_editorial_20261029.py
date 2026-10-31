@@ -1455,6 +1455,19 @@ def real_case_identity(slot, inquiry):
         'bigfish_sha':base.BIGFISH_SHA,'wengua_sha':base.WENGUA_SHA,
     }))
 
+def real_failure_category(result):
+    """Separate independently proven calendar-precision refusals from errors.
+
+    Kept as failed immutable records for historical audit, not relabeled PASS.
+    """
+    if not result.get('status','').startswith('失败'):
+        return None
+    reason=str(result.get('error',''))
+    if 'Astronomical solar-term boundary within' in reason:
+        return '节气交界精度保护_需高精度交节核算'
+    return '其它失败_需查看原始错误并复现'
+
+
 def real_case_from_slot(worker, slot, inquiry):
     """Actual civil instant -> independently calendared four pillars/term
     -> ORIGINAL BigFish TypeScript -> Wengua frozen V8/V10.2.
@@ -1737,6 +1750,14 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
             current+=1;pending+=1
             if result['status'].startswith('失败'):
                 failures+=1;unknown_consecutive+=1
+                category=real_failure_category(result)
+                print('[真实时辰拒算或失败]',
+                      f"序号={idx+1}/{len(slots)}",
+                      f"时刻={slot['instant']}",
+                      f"类别={category}",
+                      f"原始原因={result.get('error','未返回原因')}",
+                      '该行保留在SQLite与最终完整Excel，禁止改成假成功',
+                      flush=True)
             else:
                 unknown_consecutive=0
             if current<=3:
