@@ -2341,3 +2341,9 @@ V11 用户断词保留 V10.1 每个真实用神详细宫环境，替代 V10.2 �
 
 ## 2026-10-31 · V11.1 首页有头有尾与巽四庚干分支复核
 用户发现iOS/BigFish首页只截取90_review证据而遗漏结论。已在 iOS WenguaPremiumReadingView.frontNarrative 与 BigFish v11_front_page_from_real_sections 强制末尾两句话：真实病宫/患者宫等级并参，最后列本次原V8吉凶等级、固定文学标题与释义。第二页原90_review完整未删，V8冻结分不改。庚在巽四：辰养、巳长生，源200格子月金生水分别中等、大，源力量不能凭宫分推断唯一档；当前双支事实显式进入综合段，单一强度仍审计待核。新真实BigFish三时辰 #41245816648 均实际生成结尾（朋友首页208字），归档旧TXT保护导致整项工作流 FAIL，历史不覆盖；初次Swift语法编译FAIL #41245714916，修复后 Xcode #41245989163 PASS。主CI #41246073364 PASS、Swift parity #41246073294 PASS、旧独立1080 CI失败仍在。未签名真机、未在用户Mac跑完全量。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
