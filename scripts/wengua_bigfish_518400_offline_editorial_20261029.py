@@ -982,7 +982,8 @@ def validate_actor_settings(profiles: dict) -> dict:
 def build_inquiry(validation:dict)->dict:
     inquiry={'intent':'severity','relationship':RELATIONSHIP,
              'consultation_context':validation['context']}
-    for key,value in (('patient_sex',PATIENT_SEX),('relative_age',PATIENT_RELATIVE_AGE),
+    for key,value in (('patient_sex',PATIENT_SEX if RELATIONSHIP!='friend' else None),
+                      ('relative_age',None),
                       ('patient_age_band',PATIENT_AGE_BAND),
                       ('birth_order',BIRTH_ORDER),('patient_birth_ganzhi',PATIENT_BIRTH_GANZHI)):
         if value is not None:inquiry[key]=value
@@ -994,8 +995,10 @@ def actor_output_folder() -> Path:
     root=base.OUTPUT/'full_518400'/RELATIONSHIP
     if SIX_JIA_SOURCES_ACTIVATED:
         root=root/SIX_JIA_BATCH_SUBDIR
-    extra={'birth':PATIENT_BIRTH_GANZHI,'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
-           'order':BIRTH_ORDER,'relative_age':PATIENT_RELATIVE_AGE,'context':CONSULTATION_CONTEXT}
+    extra={'birth':PATIENT_BIRTH_GANZHI,
+           'sex':None if RELATIONSHIP=='friend' else PATIENT_SEX,
+           'age':PATIENT_AGE_BAND,'order':BIRTH_ORDER,
+           'relative_age':None,'context':CONSULTATION_CONTEXT}
     if any(v is not None for v in extra.values()):
         # Changing any input uses its OWN checkpoint, not a misleading overwritten Excel.
         suffix=sha_text(canonical(extra))[:10]
