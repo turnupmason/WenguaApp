@@ -12,6 +12,7 @@ on:
       - 'tests/test_bigfish_node_runtime_pycharm_20261029.py'
       - 'tests/test_bigfish_1100_father_jia_preflight_20261029.py'
       - 'tests/test_bigfish_real_clock_nov2026_mar2027_20261031.py'
+      - 'tests/test_strict_jieqi_all_385_crossings_20261031.py'
       - 'tests/test_bigfish_all_22_signifiers_loop_20261031.py'
       - '.github/workflows/bigfish_518400_offline_editorial_20261029.yml'
   workflow_dispatch:
@@ -47,5 +48,7 @@ jobs:
       - name: Actual 121-day clock 1452 slots DST exact Jie and immutable real XLSX
         run: python -m unittest discover -s tests -p 'test_bigfish_real_clock_nov2026_mar2027_20261031.py' -v
 
+      - name: Every 2025-2040 UTC JieQi transition and 2041 sentinel (385)
+        run: python -m unittest discover -s tests -p 'test_strict_jieqi_all_385_crossings_20261031.py' -v
       - name: All 22 real actor identities and 24 sex-condition sequential loops
         run: python -m unittest discover -s tests -p 'test_bigfish_all_22_signifiers_loop_20261031.py' -v
