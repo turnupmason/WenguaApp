@@ -2347,3 +2347,8 @@ V11 用户断词保留 V10.1 每个真实用神详细宫环境，替代 V10.2 �
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+## 2026-10-31 · V11.2 庚巽四主断巳长生与 BigFish 批量源修正（非原著新章）
+已复核 source200 原格、真实十二长生与原 BigFish 庚落巽四的待核错误：辰养和巳长生均保留，但本用户明确授权仅庚巽四以巳长生为主断。子月200格辰养中等、巳长生大。不得用宫净分假装力量，也不得把取旺选择推广到所有天干和宫；不是书作者原句。Python/Swift、Important镜像 SHA 同步，原V8计分矩阵/81格/真实盘/旧章/已见案例不改；独立200格现在有值，条件成立时实际总分可能变化，须跑历史回归。
+BigFish Mac指定脚本现钉真实 Python/Swift 同步源 commit 1da1e5035061ade8fbdb54ecd0451c6eaef7c1b8，独立 V11.2 frozen 以及 source_v8_v11_2_geng_xun 输出，保留 v7及以前全部旧SQLite/Excel/失败。每条庚巽四选中用神多行对照真实源200格，未对齐直接记录失败。新专项测试十二个月、两原格、同源Swift与真正 CI；原首屏两句结论、全部十档、完整第二页原文不删。详细来源与复现 docs/GENG_XUN_DUAL_STAGE_V11_20261031.md。新原著章节0、历史家族0。Mac 1452×全部人物未实际执行、签名真机未验，不得宣称已完成。
