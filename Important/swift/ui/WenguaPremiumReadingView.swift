@@ -7,12 +7,42 @@ struct WenguaVerdictPresentation {
     let conclusion: String
     let grade: String?
     let timing: String?
+    // The first tab reuses V11 source evidence; the second tab retains
+    // each unabridged professional paragraph and exact source section.
+    let evidence: String
+    let macro: String?
+
+    func frontNarrative(_ caption:WenguaHealthGradeCaption) -> String {
+        // About 150–200 Chinese characters on ordinary real clocks.
+        // Never guess a score, fabricate a control relation or pull the
+        // specialist palace descriptions into a second summary engine.
+        var body=caption.interpretation+"。"
+        if !evidence.isEmpty { body+="\n\n"+evidence }
+        let meaningful=(macro ?? "").components(separatedBy:"。")
+            .map{$0.trimmingCharacters(in:.whitespacesAndNewlines)}
+            .filter{ $0.hasPrefix("五不遇时") || $0.hasPrefix("伏吟主慢") ||
+                     $0.hasPrefix("反吟主快") || $0.hasPrefix("天显时") }
+        for note in meaningful {
+            if body.count+note.count+3 <= 200 {
+                body+="\n\n"+note+"。"
+            }
+        }
+        if body.count < 150, let timing, !timing.isEmpty,
+           body.count+timing.count+2 <= 215 {
+            body+="\n\n"+timing
+        }
+        return body
+    }
 
     static func from(_ reading: WenguaNativeCustomerReading) -> WenguaVerdictPresentation? {
         guard let original = reading.sections.first(where: { $0.id == "90_review" })?.text,
               let finalParagraph = original.components(separatedBy: "\n\n").last else {
             return nil
         }
+        let parts=original.components(separatedBy:"\n\n")
+        let evidence=parts.dropLast().joined(separator:"\n\n")
+            .trimmingCharacters(in:.whitespacesAndNewlines)
+        let macro=reading.sections.first(where: { $0.id == "01_macro" })?.text
         // Extract the resolved first clause without depending on disclaimer
         // wording. The complete original remains visible in 专业解盘.
         let conclusion = String(finalParagraph.split(separator: "；",
@@ -32,7 +62,7 @@ struct WenguaVerdictPresentation {
         }
         let timing = reading.sections.first(where: { $0.id == "91_timing" })?.text
         return WenguaVerdictPresentation(conclusion: conclusion, grade: grade,
-                                         timing: timing)
+                                         timing: timing,evidence:evidence,macro:macro)
     }
 }
 
@@ -80,26 +110,6 @@ struct WenguaHealthGradeCaption {
             return .init(category:"微恙",epithet:"病势平缓",
                          interpretation:"病情稳定不凶不急，调理即可")
         default: return nil // An unknown V8 outcome must never be guessed.
-        }
-    }
-}
-
-// Audience language only. V8 grade and score remain frozen private inputs.
-struct WenguaNaturalSeveritySummary {
-    static func text(_ grade:String)->(String,String)? {
-        switch grade {
-        case "极大吉": return ("有利线索较集中","有利条件较多，但不代表现实已经康复。")
-        case "大吉": return ("可见较明显的转机","盘中的帮助较为相合，仍须核实条件。")
-        case "中吉": return ("有改善的线索","吉象与牵制并见，还需观察。")
-        case "小吉": return ("有些值得留意的转机","仍有未解的阻碍，不能视为万事已定。")
-        case "极小吉": return ("吉象初显，尚有牵绊","有利线索尚浅，不宜过早断定。")
-        case "极小凶": return ("局部仍见阻滞","传统象意不能用于判定现实只是小病。")
-        case "小凶": return ("已有一些需要留意的阻力","不利条件显现，扶助是否奏效尚待核实。")
-        case "中凶": return ("阻力较明显，转机尚未稳固","诸宫相互牵制，不能凭单一吉象断言见效。")
-        case "大凶": return ("不利线索较多，宜审慎看待","阻碍较集中，已有的扶助未必足以解局。")
-        case "极大凶": return ("不利迹象集中，尚难言转机","有制约与帮助的线索，但多项条件受限，不宜轻断局势已经转好。")
-        case "不凶不吉": return ("吉凶线索互有牵制","传统盘象尚不能明确判断趋向，不代表现实健康无忧。")
-        default: return nil
         }
     }
 }
@@ -198,18 +208,23 @@ struct WenguaPremiumVerdictCard: View {
             if let verdict=WenguaVerdictPresentation.from(reading) {
                 if let grade=verdict.grade,
                    let caption=WenguaHealthGradeCaption.forGrade(grade) {
-                    Text("传统盘象解读")
-                        .font(.system(size:16,weight:.semibold,design:.serif))
+                    // First tab: ten-grade header and ~150–200 characters
+                    // of real V11 evidence. Tab two: full role-by-role original.
+                    // Both read the same V8 score / parity-checked V11 sections.
+                    Text(caption.category)
+                        .font(.system(size:18,weight:.semibold,design:.serif))
                         .tracking(3)
                         .foregroundStyle(muted)
                         .accessibilityAddTraits(.isHeader)
-                    Text(WenguaNaturalSeveritySummary.text(grade)?.0 ?? caption.epithet)
+                    Text(grade+"："+caption.epithet)
                         .font(.system(size:29,weight:.semibold,design:.serif))
                         .foregroundStyle(gold)
                         .minimumScaleFactor(0.72)
                         .lineLimit(2)
-                        
-                    Text(WenguaNaturalSeveritySummary.text(grade)?.1 ?? caption.interpretation)
+                    // 150–200-character source-grounded V11 synthesis,
+                    // rather than one generic sentence or a second full
+                    // specialist ledger; actual detail stays in tab two.
+                    Text(verdict.frontNarrative(caption))
                         .font(.system(size:17,weight:.regular,design:.serif))
                         .lineSpacing(6)
                         .foregroundStyle(ink)
