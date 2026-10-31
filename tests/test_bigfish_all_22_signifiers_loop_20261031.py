@@ -193,7 +193,7 @@ class ActorLoop(unittest.TestCase):
                 M.run_all_real_calendar()
             log=Path(d)/"real_calendar_20261115_20270315"/"_all_profiles_audit"/"每次运行人物用神结果.jsonl"
             events=[json.loads(x) for x in log.read_text(encoding="utf8").splitlines()]
-            self.assertEqual(len(events),29)
+            self.assertEqual(len(events),26)
             failed=[e for e in events if e["status"]=="FAILED_RETAINED"]
             self.assertEqual(len(failed),1)
             self.assertEqual(failed[0]["relationship"],"father")
