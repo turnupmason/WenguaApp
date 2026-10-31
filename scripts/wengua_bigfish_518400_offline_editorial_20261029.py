@@ -51,9 +51,9 @@ PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则�
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
 CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
-MAX_NEW_ROWS = 20            # 'all'模式每个关系/条件各20条；验收后0=每种配置全部1452条
-ROWS_PER_EXCEL = 5000        # 旧518400抽象模式保持历史5000行/卷
-REAL_ROWS_PER_EXCEL = 200     # 新2026-11~2027-03真实时辰审核卷
+MAX_NEW_ROWS = 0             # 直接全跑！每个用神/人物条件完整1452条；0=不设本轮新增上限
+ROWS_PER_EXCEL = 5000        # 仅旧518400抽象研究模式使用；真实四个月模式忽略此数
+# 真实模式每种用神/人物条件只导出一个完整Excel，不设拆卷行数
 COMMIT_EVERY = 10            # committed records surviving power loss
 PRINT_EVERY = 100            # print progress every 100 newly completed rows
 GENERATE_XLSX = True        # actual .xlsx (uses Python standard library only)
@@ -1549,7 +1549,7 @@ def real_review_row(record,labels):
         '','','待人工审核',canonical(result.get('source_fact_lock',{}))
     ]
 
-def export_real_new(db,root,labels,indices):
+def export_real_new(db,root,labels,indices,*,name_override=None):
     """Append-only independent snapshots. NEVER overwrite human/GPT edits."""
     if not indices:
         return None
@@ -1562,7 +1562,8 @@ def export_real_new(db,root,labels,indices):
         items.append(json.loads(data[0]))
     tag=sha_text(canonical(
         [items[0]['case_id'],items[-1]['case_id'],len(items)]))[:12]
-    name=f'{RELATIONSHIP}_真实时辰_{items[0]["idx"]+1:04d}-{items[-1]["idx"]+1:04d}_{tag}'
+    name=(name_override or
+          f'{RELATIONSHIP}_真实时辰_{items[0]["idx"]+1:04d}-{items[-1]["idx"]+1:04d}_{tag}')
     out=root/'Excel_CSV_可直接打开'
     out.mkdir(parents=True,exist_ok=True)
     csvfile=out/(name+'.csv')
@@ -1593,12 +1594,55 @@ def export_real_new(db,root,labels,indices):
         if jsontmp.exists():jsontmp.unlink()
     return xlsxfile if GENERATE_XLSX else csvfile
 
+def export_real_complete(db,root,labels,slots):
+    """Export exactly ONE workbook after ALL real hours of one actor exist.
+
+    Checkpoint is SQLite, not incremental Excel. A previously user-edited
+    workbook is never touched; rerun resumes/returns the completed artifact.
+    Older 200-row snapshots (if any) remain as historical files, unmodified.
+    """
+    expected=len(slots)
+    if not expected:
+        raise ValueError('没有真实时辰可导出')
+    rows=db.execute(
+        'SELECT idx,case_id,instant FROM real_cases ORDER BY idx').fetchall()
+    if len(rows)<expected:
+        return None
+    if len(rows)!=expected:
+        raise RuntimeError('现有SQLite多于当前真实时间窗口，禁止混库导出')
+    for index,(idx,case_id,instant) in enumerate(rows):
+        if idx!=index or instant!=slots[index]['instant'] or not case_id:
+            raise RuntimeError('真实公历SQLite存在缺行/跨时区/错位，禁止冒称完整Excel')
+    signature=sha_text(canonical(
+        (REAL_PIPELINE_VERSION,RELATIONSHIP,PATIENT_SEX,
+         REAL_DATE_START,REAL_DATE_END,
+         [x[1] for x in rows])))[:12]
+    name=(f'{RELATIONSHIP}_真实时辰_{REAL_DATE_START}_至_{REAL_DATE_END}'
+          f'_{expected}条_{signature}')
+    out=root/'Excel_CSV_可直接打开'
+    targets=(out/(name+'.csv'),out/(name+'.xlsx'),
+             out/(name+'_原始事实与章节.jsonl'))
+    required=(targets if GENERATE_XLSX else
+              (targets[0],targets[2]))
+    existing=[f.exists() for f in required]
+    if all(existing):
+        if not all(f.stat().st_size>0 for f in required):
+            raise RuntimeError('已有Excel/CSV/JSONL空文件，拒绝覆盖，请核对旧输出：'+name)
+        print('人物完整Excel已存在：保留所有人工修改，跳过覆盖',required[1] if GENERATE_XLSX else required[0],
+              flush=True)
+        return required[1] if GENERATE_XLSX else required[0]
+    if any(existing):
+        raise RuntimeError('此前导出只有部分文件，保护人工改稿不覆盖；请先人工核实：'+name)
+    return export_real_new(db,root,labels,
+                           [x[0] for x in rows],name_override=name)
+
+
 def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=None):
     """One exact real-civil actor context; all-mode calls this once per profile."""
     if MAX_NEW_ROWS<0:
         raise ValueError('MAX_NEW_ROWS必须>=0；0表示本窗口全部而非全历史')
-    if ROWS_PER_EXCEL<1 or COMMIT_EVERY<1 or PRINT_EVERY<1:
-        raise ValueError('提交/导出参数必须为正整数')
+    if COMMIT_EVERY<1 or PRINT_EVERY<1:
+        raise ValueError('提交/进度参数必须为正整数')
     activate_six_jia_sources()
     manifest=installed_manifest if installed_manifest is not None else ensure_install()
     if INSTALL_ONLY:
@@ -1657,7 +1701,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
     worker=shared_worker
     current=0;failures=0;pending=0;unknown_consecutive=0
     interrupted=False
-    newly=[]
+    finished_excel=None
     try:
         if worker is None:
             worker=BigFishWorker(root)
@@ -1685,7 +1729,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
             db.execute('INSERT INTO real_cases VALUES(?,?,?,?,?)',(
                 idx,record['case_id'],slot['instant'],canonical(record),
                 datetime.now(timezone.utc).isoformat()))
-            newly.append(idx);current+=1;pending+=1
+            current+=1;pending+=1
             if result['status'].startswith('失败'):
                 failures+=1;unknown_consecutive+=1
             else:
@@ -1698,11 +1742,6 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
                       '状态',result['status'],'错误',result.get('error','')[:140],flush=True)
             if pending>=COMMIT_EVERY:
                 db.commit();pending=0
-            if len(newly)>=REAL_ROWS_PER_EXCEL:
-                db.commit();pending=0
-                file=export_real_new(db,root,labels,newly)
-                print('导出真实日期Excel/CSV/原始JSONL',file,flush=True)
-                newly.clear()
             if current%PRINT_EVERY==0:
                 db.commit();pending=0
                 print(f'本轮新增{current}；实际失败{failures}；窗口进度{idx+1}/{len(slots)}',
@@ -1716,10 +1755,13 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         print('用户手动中止：已保存真实日期断点，所有角色循环也将立即停止。',flush=True)
     finally:
         db.commit()
-        if newly:
-            file=export_real_new(db,root,labels,newly)
-            print('本轮新Excel/CSV/JSONL：',file,flush=True)
         total=db.execute('SELECT COUNT(*) FROM real_cases').fetchone()[0]
+        if total==len(slots) and not interrupted:
+            finished_excel=export_real_complete(db,root,labels,slots)
+            print('该人物一个完整Excel/CSV/JSONL：',finished_excel,flush=True)
+        else:
+            print('本人物还没全部完成，仅保留SQLite断点；暂不拆分导出Excel：',
+                  f'{total}/{len(slots)}',flush=True)
         print(f'已保留真实时辰{total}/{len(slots)}；本轮新增{current}，失败{failures}。',flush=True)
         print('文件目录：',root/'Excel_CSV_可直接打开',flush=True)
         db.close()
@@ -1729,6 +1771,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
             'relationship':RELATIONSHIP,'sex':PATIENT_SEX,
             'new_rows':current,'failures':failures,'total_rows':total,
             'possible_rows':len(slots),'output':str(root),
+            'one_complete_excel':str(finished_excel) if finished_excel else None,
             'source_status':validation['reference'].get('status','unknown')}
 
 
@@ -1762,6 +1805,7 @@ def all_signifier_configs(catalog):
 def run_all_real_calendar():
     """Sequentially run every real actor category with one compiled TS worker.
 
+    Each actor gets ONE full workbook after all 1452 rows are committed.
     No global patient parameters leaked between actors; source JSON is the
     ONLY profile catalog. Parents/spouses use separate sex-specific folders.
     Failure of one role is archived and cannot suppress testing all others;
