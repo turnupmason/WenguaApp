@@ -15,3 +15,11 @@
 旧0.05°规则在该1452样本窗口曾产生12条拒算，留作历史失败的只读断言，不重新标为旧版PASS。提交7ca81b26c03bff1fbd9ce793bcde475fb47de695补充交节毫秒及原BigFish/Python严格判定测试，保留旧Meeus历法方法版本供历史归档。
 
 实测：当前 V8 主CI #41212456846 PASS；BigFish 全窗口回归 #41212456902 PASS；Book Astronomy #41212456877 PASS；较前Xcode Simulator #41212201619 PASS。其它历史任务不一律PASS：旧婚姻归档 #41212456827 因已有归档目标拒绝覆盖，独立1080 Swift全实盘 #41212201702 KeyError horseBranch，旧Native端到端 #41212201662 invalidChart。须对上述失败和签名真机单独验收。用户Mac全24×1452未在本次会话实际运行，不能冒充完成。V8疾病计分与原著未更改。
+
+## 最终追加：月度应期边界与真 Swift 实盘专项
+
+提交 `97315316918fcfb63c49084d794a47a7c6abc46e` 进一步将 `src/wengua/astro_calendar.py::branch_periods(granularity='month')` 的2025—2028年每30°节月边界改为同一份真实UTC交节表，不再让应期月份区间另走旧Meeus秒数；历史1998等窗口仍保留原来源方法。Python镜像与Important/MANIFEST blob SHA同步。2026年11月亥月→子月严格换界为纽约2026-12-06 21:52:32.429。
+
+**真实新提交回归**：BigFish全窗口专项 [#41213021533](https://github.com/turnupmason/WenguaApp/actions/runs/41213021533) PASS；Book Astronomy [#41213021592](https://github.com/turnupmason/WenguaApp/actions/runs/41213021592) PASS；V8现行主CI [#41213021575](https://github.com/turnupmason/WenguaApp/actions/runs/41213021575) PASS。**真实 Swift 编译与Python 10个UTC小雪/大雪/冬至/DST时刻全盘节气/四柱/局数逐项对照 [#41213021562](https://github.com/turnupmason/WenguaApp/actions/runs/41213021562) PASS。** 之前 Swift 专项第一次仅因Python脚本导入路径失败，已在第二次提交修正并真实复测，失败历史保留。Xcode iOS Simulator真实build对应源码修改SHA的旧run #41212201619 PASS，后续只改Python、测试、文档；仍未做iPhone签名真机手工验收。
+
+历史独立失败工作流没有隐藏或改标为成功，旧V7.4/婚姻历史归档仍须另行审计。
