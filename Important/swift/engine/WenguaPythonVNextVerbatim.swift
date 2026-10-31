@@ -435,6 +435,9 @@ enum WenguaPythonVNextVerbatim {
         }
         let patientSymbol=review.roleEnergy["patient"]?.symbol ?? "未核"
         var patientText=patientSymbol+"在"+label(patientCell)+"，势"+(review.roleEnergy["patient"]?.strength ?? "待核")+"，宫象"+signed(review.roleScores["patient"])
+        if patientSymbol=="庚" && patientID==4 && review.roleEnergy["patient"]?.strength==nil {
+            patientText+="，辰养与巳长生并见，双支原始力量不同"
+        }
         let patientVoid=review.palaces[patientID]?.void ?? "not_void"
         if patientVoid != "not_void" {
             patientText+="，逢"+(patientVoid=="true_void" ? "真空":"假空")
