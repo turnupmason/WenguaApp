@@ -145,14 +145,11 @@ def bind_patient(chart, inquiry, calendar):
     else:
         source_rule = "no fixed personal signifier in indexed chapter"
         confidence = "unknown"
-    # V9: 朋友本人必须确定性别+相对长幼，均是研究时的明确选择。
-    # friend doesn't imply any birth order, physical youth or elder generation.
-    relative_age=inquiry.get("relative_age")
-    if relation=="friend":
-        if inquiry.get("patient_sex") not in ("male","female") or relative_age not in ("older","younger"):
-            raise ValueError("V9朋友必须明确男/女和比求测人年长/年幼")
-    elif relative_age is not None:
-        raise ValueError("relative_age仅供朋友分类；亲属已由称谓确定长幼")
+    # V11: friend is a peer, not a family sibling. Month-stem only,
+    # irrespective of sex and age; old supplied friend fields are ignored.
+    relative_age=None if relation=="friend" else inquiry.get("relative_age")
+    if relation!="friend" and relative_age is not None:
+        raise ValueError("relative_age不能决定亲属用神；亲属关系由称谓确定")
     harmony_stem = None
     source_ganzhi = None
     if via == "spouse_gender_harmony":
@@ -209,19 +206,8 @@ def bind_patient(chart, inquiry, calendar):
     # relative to the asker. These are secondary trigrams, not birth order or
     # absolute medical age; source-case vs trigram-analogy remains auditable.
     sibling_aux=profile.get("sibling_auxiliary")
-    if relation=="friend":
-        key=inquiry["patient_sex"]+":"+relative_age
-        palace=profile["friend_conditions"]["secondary_trigrams"].get(key)
-        if palace not in (3,4,7,8):
-            raise ValueError("朋友性别/长幼无法对应真实辅助宫")
-        sibling_aux={
-            "palace":palace,"role_sex":inquiry["patient_sex"],
-            "requires":"explicit_friend_sex_plus_relative_age",
-            "source":profile["friend_conditions"]["provenance"],
-            "kind":"v90_friend_trigram","scoring_policy":"true_physical_palace_once"
-        }
     if sibling_aux:
-        expected=known_sibling_sex.get(relation) if relation!="friend" else inquiry["patient_sex"]
+        expected=known_sibling_sex.get(relation)
         if expected is None or sibling_aux["role_sex"]!=expected:
             raise ValueError("V9 source-profile sibling sex/trigram mismatch")
         fixed_palaces.append(sibling_aux["palace"])
@@ -270,10 +256,6 @@ def bind_patient(chart, inquiry, calendar):
     birth_note = (("患者生年" + birth + "已提供，作为额外参考；落" + _p(birth_cell)
                    if birth_cell else "患者生年" + birth + "已提供，但年命干落宫未核定，不强行填充")
                   if birth else "患者年命未提供，本次不使用年命")
-    # V9 user-approved friend-specific evidence selects a source-verified
-    # role condition; its book citation remains labelled as ANALOGY.
-    if relation=="friend" and sibling_aux:
-        confidence="user_explicit_direction_verified_by_actual_chart"
     status = "matched_source_condition" if primary and (confidence.startswith("source_") or confidence.startswith("user_explicit_")) else (
         "conditional_candidate" if primary else "no_personal_palace_verified")
     return {
