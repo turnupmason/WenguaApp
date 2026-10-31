@@ -2,7 +2,7 @@
 
 The row texts live ONLY in the imported Excel -> TSV source. The template
 controls phrasing and section titles, never hand-maintains 81 case values.
-Only current V10.2 wording is accepted; frozen V8 arithmetic is unchanged.
+V11 detailed role evidence; frozen V8 source arithmetic and matrices unchanged.
 """
 from __future__ import annotations
 from functools import lru_cache
@@ -18,7 +18,7 @@ FIELDS=("heaven","earth","name","polarity",
 @lru_cache(maxsize=1)
 def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
-    if raw.get("schema") != "health_severity_user_editable_template_v20261028_v10_2_evidence_first":
+    if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_full_evidence":
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
