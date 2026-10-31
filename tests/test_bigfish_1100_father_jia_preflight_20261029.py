@@ -75,9 +75,9 @@ class Failure1100Regression(unittest.TestCase):
             db.close()
     def test_v90_wengua_source_pin_and_independent_output_folder(self):
         self.assertEqual(M.SIX_JIA_APPROVED_WENGUA_SHA,
-                         "2a5a4dc4ddbf8497560e35ad00c4c8866d5d1f72")
+                         "1da1e5035061ade8fbdb54ecd0451c6eaef7c1b8")
         self.assertEqual(M.SIX_JIA_BATCH_SUBDIR,
-                         "V11_20261031_人物独立_月干六甲_完整双页")
+                         "V11_20261031_人物独立_月干六甲_完整双页_巳长生优先_v2")
         original_activated=M.SIX_JIA_SOURCES_ACTIVATED
         old_source=getattr(M.base,"SOURCE",None)
         old_frozen=getattr(M.base,"FROZEN",None)
@@ -89,8 +89,8 @@ class Failure1100Regression(unittest.TestCase):
                 M.base.OUTPUT=Path(temp)
                 M.activate_six_jia_sources()
                 self.assertEqual(M.base.WENGUA_SHA,M.SIX_JIA_APPROVED_WENGUA_SHA)
-                self.assertTrue(str(M.base.SOURCE).endswith("WenguaApp_V11_1_source_20261031"))
-                self.assertTrue(str(M.base.FROZEN).endswith("frozen_V11_1_source_20261031"))
+                self.assertTrue(str(M.base.SOURCE).endswith("WenguaApp_V11_2_geng_xun_source_20261031"))
+                self.assertTrue(str(M.base.FROZEN).endswith("frozen_V11_2_geng_xun_source_20261031"))
                 folder=M.actor_output_folder()
                 self.assertIn(M.SIX_JIA_BATCH_SUBDIR,str(folder))
                 self.assertNotEqual(folder,Path(temp)/"full_518400"/"father")
