@@ -473,8 +473,9 @@ enum WenguaPythonVNextVerbatim {
             let identity=String(id)+":"+((["illness","doctor","gender","sibling"].contains(key)) ? "star" : key=="chief" ? "deity" : "stem")+":"+f.symbol
             if documented.contains(identity){continue}
             documented.insert(identity)
-            support.append(name+f.symbol+"在"+label(p)+"，势"+
-                (f.strength ?? "待核")+"，"+conciseRelation(key))
+            let sourceStrength=f.strength ?? "待核"
+            let supportLine=name+f.symbol+"在"+label(p)+"，势"+sourceStrength+"，"+conciseRelation(key)
+            support.append(supportLine)
         }
         let supportText="另参"+(support.isEmpty ? "无独立附加用神" :
             support.joined(separator:"；"))
