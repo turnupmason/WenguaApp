@@ -22,6 +22,9 @@ def main():
     rng=random.Random(SEED)
     b.activate_six_jia_sources()
     manifest=b.ensure_install()
+    # Standalone entry runs from scripts/; Python does not automatically import repo-root src.
+    # Resolve the EXACT pinned Wengua source that BigFish just SHA-verified.
+    sys.path.insert(0,str(b.base.SOURCE))
     assert manifest['wengua_sha']==b.SIX_JIA_APPROVED_WENGUA_SHA
     assert b.REAL_PIPELINE_VERSION.endswith('v6_V11_full_two_tab_friend_month_only')
     source=b.base.FROZEN/'reading_template.json'
