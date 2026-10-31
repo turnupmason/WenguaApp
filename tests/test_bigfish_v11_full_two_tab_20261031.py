@@ -33,14 +33,14 @@ B=load()
 class BigFishV11TwoTab(unittest.TestCase):
     def test_pin_is_v11_and_v6_wont_replace_historic_databases(self):
         self.assertEqual(B.SIX_JIA_APPROVED_WENGUA_SHA,
-                         '2a5a4dc4ddbf8497560e35ad00c4c8866d5d1f72')
-        self.assertIn('v7_V11_1_final_lifecycle',B.REAL_PIPELINE_VERSION)
+                         '1da1e5035061ade8fbdb54ecd0451c6eaef7c1b8')
+        self.assertIn('v8_V11_2_geng_xun',B.REAL_PIPELINE_VERSION)
         self.assertIn('V11_complete',B.PIPELINE_VERSION)
         self.assertIn('V11_20261031',B.SIX_JIA_BATCH_SUBDIR)
         script=SOURCE.read_text(encoding='utf8')
-        self.assertIn("WenguaApp_V11_1_source_20261031",script)
-        self.assertIn("frozen_V11_1_source_20261031",script)
-        self.assertIn("source_v7_v11_1_final_lifecycle",script)
+        self.assertIn("WenguaApp_V11_2_geng_xun_source_20261031",script)
+        self.assertIn("frozen_V11_2_geng_xun_source_20261031",script)
+        self.assertIn("source_v8_v11_2_geng_xun",script)
         self.assertEqual(len(B.V11_FRONT_CAPTIONS),11)
         self.assertEqual(json.loads((ROOT/'data/templates/health_severity_vnext/reading_template.json').read_text(encoding='utf8'))['schema'],
                          'health_severity_user_editable_template_v20261031_v11_full_evidence')
