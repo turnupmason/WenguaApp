@@ -100,3 +100,8 @@ python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_2026
 疾病轻重的**第一页「专业解卦」必须同时显示**：原 V8.0 已决分类「吉局／凶局」（0 为微恙）、十档等级与文学标题（例如「极大吉：沉疴顿愈」）、本次 V11 真盘约 150–200 字的综合短断语；不是一行泛化好坏描述。短断语直接复用真实 `90_review`、成立的时局和应期原事实，不另改评分或依赖网络。
 
 **第二页「专业解盘」**逐项展示 V11 原样完整的病星、患者、医药、真实辅助、格局与应期，二者层次不同，第一页不可替代第二页。UI 修复审计：[IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md](docs/IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md)。
+
+
+### 2026-10-31 BigFish 真正切换 V11 双页断词源（Mac 本地批量）
+
+指定脚本 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 已从固定 V9/Wengua 旧源升级为固定 `46382694a418300ac4660a1c22bcf227857c9a52` 的 V11 原始 Python 模板与冻结 V8.0 计分源。原始 BigFish TS SHA 不变。每条真实盘可输出首页「吉凶分类＋十档标题＋150–200字实际证据综合断语」及不删节的全部专业章节，真时辰只取真用神；旧 output/SQL/人工润色档全部留存、V11 源/资源/输出另起 v6 目录。使用新随机种子 `202610311729` 的实际 BigFish 哥哥、姐姐、朋友全套文章已归档：[三盘原文](docs/BIGFISH_V11_THREE_REAL_RANDOM_COMPLETE_20261031.txt) · [专用审计](docs/BIGFISH_V11_THREE_REAL_RANDOM_AUDIT_20261031.md)。朋友的庚干原始源力量待核继续显示待核，不造力量。测试源未修改 iPhone V8 数值算法。
