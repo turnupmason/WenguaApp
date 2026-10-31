@@ -140,11 +140,11 @@ class RealClockWindow(unittest.TestCase):
                     self.assertIsNone(M.export_real_complete(
                         db,root,{"father":"父亲"},slots))
                     self.assertFalse(
-                        (root/"Excel_CSV_可直接打开").exists())
+                        (root/"每个用神一个完整Excel").exists())
             db.commit()
             out=M.export_real_complete(db,root,{"father":"父亲"},slots)
             self.assertTrue(out.is_file())
-            directory=root/"Excel_CSV_可直接打开"
+            directory=root/"每个用神一个完整Excel"
             self.assertEqual(len(list(directory.glob("*.xlsx"))),1)
             self.assertEqual(len(list(directory.glob("*.csv"))),1)
             self.assertEqual(len(list(directory.glob("*.jsonl"))),1)
@@ -160,7 +160,9 @@ class RealClockWindow(unittest.TestCase):
             self.assertEqual(out.read_bytes(),before)
             # Human old 200-row snapshot is not our canonical workbook:
             # It remains in this folder but must never be removed.
-            historic=directory/"father_真实时辰_0001-0200_旧稿.xlsx"
+            old_directory=root/"Excel_CSV_可直接打开"
+            old_directory.mkdir(exist_ok=True)
+            historic=old_directory/"father_真实时辰_0001-0200_旧稿.xlsx"
             historic.write_bytes(b"human-edited-history")
             self.assertEqual(M.export_real_complete(
                 db,root,{"father":"父亲"},slots),out)
