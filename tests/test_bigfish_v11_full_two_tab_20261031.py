@@ -41,7 +41,6 @@ class BigFishV11TwoTab(unittest.TestCase):
         self.assertIn("WenguaApp_V11_source_20261031",script)
         self.assertIn("frozen_V11_source_20261031",script)
         self.assertIn("source_v6_v11_full_two_tab_friend_month_only",script)
-        self.assertIn("'阅读模板'","'阅读模板'")  # No new scoring fixture.
         self.assertEqual(len(B.V11_FRONT_CAPTIONS),11)
         self.assertEqual(json.loads((ROOT/'data/templates/health_severity_vnext/reading_template.json').read_text(encoding='utf8'))['schema'],
                          'health_severity_user_editable_template_v20261031_v11_full_evidence')
