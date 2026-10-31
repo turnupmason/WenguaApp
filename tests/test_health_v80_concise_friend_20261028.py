@@ -16,7 +16,7 @@ class FriendConfirmedConciseV80(unittest.TestCase):
         self.assertEqual(friend["references"][0]["status"],
                          "user_explicit_direction_verified_by_actual_chart")
         self.assertEqual(friend["palaces"],[])
-        self.assertIn("闻讯事件",friend["note"])
+        self.assertIn("不因性别",friend["note"])
         self.assertNotIn("research_candidate_only",str(friend))
         self.assertIn("friend",j["event_news_override"]["eligible"])
     def test_original_book_81_preserved_and_internal_scoring_hidden(self):
