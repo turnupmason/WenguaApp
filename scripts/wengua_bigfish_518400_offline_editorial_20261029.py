@@ -4,7 +4,7 @@
 
 Default mode produces independent verified real Gregorian instants, one
 representative local clock per traditional two-hour branch/date, using the
-existing actual BigFish TypeScript physical-cast and frozen V8/V10.2 pipeline.
+existing actual BigFish TypeScript physical-cast and frozen V8/V11 pipeline.
 Every distinct calendar clock is checked with Wengua's offline astronomical
 calendar; never take two invented candidate terms or substitute an old chart.
 Physical arrangements alone do NOT supply a full customer reading.
@@ -22,7 +22,7 @@ x day(60) x hour branch(12), deriving the permitted month/hour STEMS via
 Five-Tiger/Five-Rat rules. It DOES NOT invent a Gregorian instant: each month
 branch has two alternative solar terms. Both are separately cast, calculated,
 and retained in one row. A real date/time is needed before one variant can be
-used as a real-world actual cast. V8/V10.2 and data resources stay untouched.
+used as a real-world actual cast. V8/V11 and data resources stay untouched.
 
 Actual BigFish original compiled TypeScript builds each distinct physical base
 board. It is cached by (yin/yang, ju 1..9, actual hour Ganzhi), never rebuilt
@@ -823,7 +823,7 @@ def make_row(idx, pillars, jie, qi, labels):
              pillars['year'],pillars['month'],pillars['day'],pillars['hour']]
             +format_part(jie)+format_part(qi)
             +['抽象四柱条件候选 / 未绑定真实公历时刻','', '', '', '', '',
-              '待人工审核','BigFish原TS起盘 + Wengua V8.0/V10.2现有Python断案链(未核实公历时刻)']
+              '待人工审核','BigFish原TS起盘 + Wengua V8.0/V11现有Python断案链(未核实公历时刻)']
             + [value for result in (jie,qi) for value in (
                 result.get('source_fact_lock',{}).get('person_binding',{}).get('role_via',''),
                 result.get('source_fact_lock',{}).get('person_binding',{}).get('stem',''),
@@ -885,7 +885,7 @@ def export_editorial_jsonl(path: Path, originals, *, relationship: str):
                           'source_version':PIPELINE_VERSION,
                           'wengua_sha':base.WENGUA_SHA,'bigfish_sha':base.BIGFISH_SHA}
                 payload={
-                    'schema':'wengua_v80_v102_bigfish_editorial_precompute_v1',
+                    'schema':'wengua_v80_v11_bigfish_editorial_precompute_v2',
                     'case_id':sha_text(canonical(identity))[:32],
                     'immutable_identity':identity,
                     'branch':source_variant,
@@ -1608,7 +1608,7 @@ def real_failure_category(result):
 
 def real_case_from_slot(worker, slot, inquiry):
     """Actual civil instant -> independently calendared four pillars/term
-    -> ORIGINAL BigFish TypeScript -> Wengua frozen V8/V10.2.
+    -> ORIGINAL BigFish TypeScript -> Wengua frozen V8/V11.
     A failed calendar boundary never falls back to a guessed term/chart.
     """
     output={'instant':slot['instant'],'utc':slot['utc'],
