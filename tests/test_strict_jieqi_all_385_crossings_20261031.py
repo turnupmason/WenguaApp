@@ -62,14 +62,17 @@ class CompleteStrictSolarTermTimeline(unittest.TestCase):
             # Keep strict 23-hour rollover refusal intact. A crossing instant
             # can itself happen at 23:xx in a particular timezone; select the
             # separately verified UTC instant but do not fabricate a day pillar.
-            civil=[q.astimezone(zone) for q in (pre,utc,post)]
+            # The 2041 Xiaohan crossing is an UPPER sentinel: the instant
+            # itself is included, but +1ms is deliberately outside coverage.
+            moments=(pre,utc) if i==384 else (pre,utc,post)
+            civil=[q.astimezone(zone) for q in moments]
             if i==0 or 23 in [q.hour for q in civil]:
                 continue
             results=[solar_chart_clock(q.isoformat(),"America/New_York")
                      for q in civil]
             self.assertEqual(
                 [r["active_solar_term"] for r in results],
-                [old_term,new_term,new_term],
+                [old_term,new_term] if i==384 else [old_term,new_term,new_term],
                 "UTC crossing "+utc.isoformat())
             self.assertTrue(all(r["method"]==STRICT_JIEQI_VERSION
                                 for r in results))
