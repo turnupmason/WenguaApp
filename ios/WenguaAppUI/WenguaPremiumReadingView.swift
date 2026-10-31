@@ -7,12 +7,42 @@ struct WenguaVerdictPresentation {
     let conclusion: String
     let grade: String?
     let timing: String?
+    // The first tab reuses V11 source evidence; the second tab retains
+    // each unabridged professional paragraph and exact source section.
+    let evidence: String
+    let macro: String?
+
+    func frontNarrative(_ caption:WenguaHealthGradeCaption) -> String {
+        // About 150–200 Chinese characters on ordinary real clocks.
+        // Never guess a score, fabricate a control relation or pull the
+        // specialist palace descriptions into a second summary engine.
+        var body=caption.interpretation+"。"
+        if !evidence.isEmpty { body+="\n\n"+evidence }
+        let meaningful=(macro ?? "").components(separatedBy:"。")
+            .map{$0.trimmingCharacters(in:.whitespacesAndNewlines)}
+            .filter{ $0.hasPrefix("五不遇时") || $0.hasPrefix("伏吟主慢") ||
+                     $0.hasPrefix("反吟主快") || $0.hasPrefix("天显时") }
+        for note in meaningful {
+            if body.count+note.count+3 <= 200 {
+                body+="\n\n"+note+"。"
+            }
+        }
+        if body.count < 150, let timing, !timing.isEmpty,
+           body.count+timing.count+2 <= 215 {
+            body+="\n\n"+timing
+        }
+        return body
+    }
 
     static func from(_ reading: WenguaNativeCustomerReading) -> WenguaVerdictPresentation? {
         guard let original = reading.sections.first(where: { $0.id == "90_review" })?.text,
               let finalParagraph = original.components(separatedBy: "\n\n").last else {
             return nil
         }
+        let parts=original.components(separatedBy:"\n\n")
+        let evidence=parts.dropLast().joined(separator:"\n\n")
+            .trimmingCharacters(in:.whitespacesAndNewlines)
+        let macro=reading.sections.first(where: { $0.id == "01_macro" })?.text
         // Extract the resolved first clause without depending on disclaimer
         // wording. The complete original remains visible in 专业解盘.
         let conclusion = String(finalParagraph.split(separator: "；",
@@ -32,7 +62,7 @@ struct WenguaVerdictPresentation {
         }
         let timing = reading.sections.first(where: { $0.id == "91_timing" })?.text
         return WenguaVerdictPresentation(conclusion: conclusion, grade: grade,
-                                         timing: timing)
+                                         timing: timing,evidence:evidence,macro:macro)
     }
 }
 
@@ -178,9 +208,9 @@ struct WenguaPremiumVerdictCard: View {
             if let verdict=WenguaVerdictPresentation.from(reading) {
                 if let grade=verdict.grade,
                    let caption=WenguaHealthGradeCaption.forGrade(grade) {
-                    // First tab is a SHORT verdict, not the professional
-                    // role-by-role explanation. Its grade is parsed only from
-                    // the exact native 90_review conclusion (V8 score, V11 prose).
+                    // First tab: ten-grade header and ~150–200 characters
+                    // of real V11 evidence. Tab two: full role-by-role original.
+                    // Both read the same V8 score / parity-checked V11 sections.
                     Text(caption.category)
                         .font(.system(size:18,weight:.semibold,design:.serif))
                         .tracking(3)
@@ -191,7 +221,10 @@ struct WenguaPremiumVerdictCard: View {
                         .foregroundStyle(gold)
                         .minimumScaleFactor(0.72)
                         .lineLimit(2)
-                    Text(caption.interpretation)
+                    // 150–200-character source-grounded V11 synthesis,
+                    // rather than one generic sentence or a second full
+                    // specialist ledger; actual detail stays in tab two.
+                    Text(verdict.frontNarrative(caption))
                         .font(.system(size:17,weight:.regular,design:.serif))
                         .lineSpacing(6)
                         .foregroundStyle(ink)
