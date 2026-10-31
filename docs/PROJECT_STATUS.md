@@ -2285,3 +2285,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-31 · 2025—2040交节扩展最终验收与浮点错误记录
+
+Python/BigFish/Swift 385个UTC交节点已统一以**整数微秒**对比，不再在个别2038年交节毫秒误判旧气，且第一96点不改。专项BigFish 385边界、真实窗口、所有人物配置 PASS #41214646076；真实Swift原生vs Python20个交节样本 PASS #41214583490；最新V8主CI PASS #41214646017；真实macOS Xcode Simulator编译与bundle200/81/模板资源 PASS #41214583497。首轮全385发现的浮点失败 #41214428371、子初23点测试误用及末端哨兵界外测试错误均独立保留，不删除失败记录；历史婚姻归档与旧Swift跨盘 workflow 尚有独立失败，不能称全仓所有版本PASS。Xcode成功不代表真机签名与用户Mac全量生产完成。所有路径和原著不重置；完整审计 `docs/STRICT_JIEQI_2040_EXTENSION_20261031.md`。

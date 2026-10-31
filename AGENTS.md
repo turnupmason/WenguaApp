@@ -2472,3 +2472,8 @@ Wengua_Prediction 首批父亲甲节气6000已按正式1080原盘、900个本批
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+## 2026-10-31 · 严格交节至2040最终验收补记（整数微秒修复）
+
+385个交节时刻及2029—2040年共12年新增表全量回归 **PASS #41214646076**；Swift实际原生和Python 20个真实时刻四柱/局数parity **PASS #41214583490**；Xcode macOS实际iOS Simulator编译/资源 **PASS #41214583497**；V8主CI **PASS #41214646017**。2038年曾实际发现交节当刻浮点数偏小一毫秒误判，已同改Python/原BigFish/Swift为整数微秒边界比较，旧失败 #41214428371 保留。2041年小寒哨兵仅用于覆盖2040年末，不承诺2041全年。高精度时间表、原96保留、新source_v3目录、剩余旧CI失败详 `docs/STRICT_JIEQI_2040_EXTENSION_20261031.md`。**不得把代码通过等同用户Mac全角色/真机/预测效果通过。**
