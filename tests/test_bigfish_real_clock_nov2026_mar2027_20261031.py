@@ -132,8 +132,8 @@ class RealClockWindow(unittest.TestCase):
         self.assertEqual(M._STRICT_JIEQI_VERSION,
                          "strict_utc_moshier_2025_2040_v2")
         self.assertEqual(M.REAL_PIPELINE_VERSION,
-                         "bigfish_real_gregorian_nov2026_mar2027_v5_V11_friend_month_only")
-        self.assertIn("source_v5_v11_friend_month_only",TARGET.read_text("utf8"))
+                         "bigfish_real_gregorian_nov2026_mar2027_v6_V11_full_two_tab_friend_month_only")
+        self.assertIn("source_v6_v11_full_two_tab_friend_month_only",TARGET.read_text("utf8"))
         self.assertIn("source_v3_strict_jieqi_2040",
                       (ROOT/"docs/STRICT_JIEQI_2040_EXTENSION_20261031.md").read_text("utf8"))
         self.assertIn("source_v2_strict_jieqi",
@@ -278,7 +278,7 @@ class RealClockWindow(unittest.TestCase):
             with zipfile.ZipFile(file) as archive:
                 text=archive.read("xl/worksheets/sheet1.xml").decode("utf8")
             self.assertIn("2026-11-15T00:30:00-05:00",text)
-            self.assertIn("完整V10.2原断词",text)
+            self.assertIn("完整V11专业解盘原断词",text)
             self.assertNotIn("节气乙",text)
             self.assertEqual(len(list((root/"Excel_CSV_可直接打开").glob("*.jsonl"))),1)
             with self.assertRaises(FileExistsError):
