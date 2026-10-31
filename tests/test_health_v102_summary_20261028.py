@@ -1,4 +1,4 @@
-"""Concise V10.2 audience verdict: source checked and original V8 score frozen."""
+"""V11 descriptive regression on original V10.2 clocks; frozen V8 scores."""
 import unittest
 from scripts import ios_vnext_three_random_20261026 as generator
 from src.wengua.health_reading_template_vnext import template
@@ -24,7 +24,7 @@ class ConciseV102(unittest.TestCase):
             self.assertIn("患者",s)
             self.assertIn("天心势",s)
             self.assertIn("乙奇势",s)
-            self.assertLess(len(s),350)
+            self.assertLess(len(s),950)
             for banned in ("矩阵","加分","每宫","总分","五不遇时","伏吟主慢","反吟主快"):
                 self.assertNotIn(banned,s)
             self.assertIn("综上所述，此病为",s)
@@ -36,7 +36,7 @@ class ConciseV102(unittest.TestCase):
         self.assertEqual(s.count("乙奇势"),1)
     def test_real_editable_template(self):
         t=template()
-        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261028_v10_2_evidence_first")
+        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261031_v11_full_evidence")
         self.assertIn("天芮{illness}",t["macros"]["summary_concise"])
         self.assertIn("古文：{classical_text}",t["formation"])
 
