@@ -1,4 +1,4 @@
-"""V9 real-clock six-case preview; deterministic seed, no fabricated chart.
+"""V11 complete real-clock six-case source sections; deterministic seed, no fabricated chart.
 
 Each successful real Gregorian instant is independently cast with the current
 offline Python engine, actual month JieQi and original BigFish-independent
@@ -46,7 +46,7 @@ for ordinal,(label,role,sex,relative) in enumerate(groups,1):
    continue
   break
  else:
-  print("V90_PREVIEW_UNAVAILABLE "+json.dumps({
+  print("V11_PREVIEW_UNAVAILABLE "+json.dumps({
       "role":role,"failures":failures},ensure_ascii=False))
   raise RuntimeError("No cast accepted for "+role)
  print("\n"+("="*64))
@@ -59,6 +59,7 @@ for ordinal,(label,role,sex,relative) in enumerate(groups,1):
   row=nodes.get(kind)
   if row: print("用神事实 "+kind+" "+str({k:row.get(k) for k in ("palace","kind","symbol","strength")}))
  for sec in result["sections"]:
-  if sec["id"] in ("01_macro","02_illness","05_patient","09a_sibling","90_review","91_timing"):
-   print(sec["title"]+"："+sec["text"])
- print("V90_REJECTED_REAL_INSTANTS "+json.dumps(failures,ensure_ascii=False))
+  # V10.1's full source palace-detail paragraphs must NOT be silently
+  # hidden by obsolete suffixed section-id filtering.
+  print(sec["title"]+"："+sec["text"])
+ print("V11_REJECTED_REAL_INSTANTS "+json.dumps(failures,ensure_ascii=False))
