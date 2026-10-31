@@ -18,7 +18,7 @@ FIELDS=("heaven","earth","name","polarity",
 @lru_cache(maxsize=1)
 def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
-    if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_1_conclusion_lifecycle":
+    if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_full_evidence":
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
