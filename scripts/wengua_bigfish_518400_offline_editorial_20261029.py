@@ -1137,9 +1137,7 @@ def v11_front_page_from_real_sections(sections,grade):
     if not evidence or '病星天芮' not in evidence or '医药两端分别看' not in evidence:
         raise ValueError('V11综合证据不完整，不能用一句话充数')
     category,epithet,interpretation=V11_FRONT_CAPTIONS[grade]
-    body=interpretation+'。'
-    if evidence:
-        body+='\n\n'+evidence
+    body=evidence
     for raw in byid.get('01_macro','').split('。'):
         note=raw.strip()
         if (note.startswith(('五不遇时','伏吟主慢','反吟主快','天显时'))
