@@ -258,7 +258,7 @@ enum WenguaPythonVNextVerbatim {
               let edge=review.controls.first(where:{$0.role==role}) else {
             return ""
         }
-        let lead=energy.symbol+"势"+(energy.strength ?? "待核")
+        let lead=energy.symbol+"势"+(energy.strength ?? "待核")+(energy.strength==nil ? "（十二长生分支待辨）" : "")
         let rel=relation(aid,disease)
         let note:String
         if role=="chief" && review.palaces[aid]?.void != "not_void" {
