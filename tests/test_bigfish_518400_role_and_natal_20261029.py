@@ -59,13 +59,14 @@ class RoleNatalRealSourceTests(unittest.TestCase):
             validation=M.validate_actor_settings(profiles)
             return M.build_inquiry(validation),validation['reference'],validation['profile']
 
-    def test_22_profiles_loaded_from_frozen_original_json(self):
+    def test_24_profiles_v90_four_sibling_and_legacy_profiles(self):
         if not (ROOT/'data/knowledge/phrase_library/health_v20/actor_profiles.json').exists():self.skipTest('No repository checkout')
         catalog=M.actor_catalog()
-        self.assertEqual(len(catalog['profiles']),22)
-        self.assertEqual(len({p['id'] for p in catalog['profiles']}),22)
+        self.assertEqual(len(catalog['profiles']),24)
+        self.assertEqual(len({p['id'] for p in catalog['profiles']}),24)
         expectations={'father':'casting_year_stem','mother':'casting_year_stem',
-                      'younger_sibling':'casting_month_stem','older_sibling':'casting_month_stem',
+                      'older_brother':'casting_month_stem','older_sister':'casting_month_stem',
+                      'younger_brother':'casting_month_stem','younger_sister':'casting_month_stem',
                       'self':'day_stem','son':'casting_hour_stem','wife':'spouse_gender_harmony'}
         for relation,kind in expectations.items():
             inquiry,ref,_=self.profile_input(relation)
@@ -76,7 +77,7 @@ class RoleNatalRealSourceTests(unittest.TestCase):
     def test_real_father_mother_younger_sibling_palaces(self):
         for relation,source_stem,kind in (
             ('father','丙','casting_year_stem'),('mother','丙','casting_year_stem'),
-            ('younger_sibling','戊','casting_month_stem')):
+            ('younger_brother','戊','casting_month_stem')):
             inquiry,reference,profile=self.profile_input(relation)
             person=M.verify_actual_role(self.board,inquiry,self.calendar,reference)
             self.assertEqual(person['role_via'],kind)
@@ -123,9 +124,9 @@ class RoleNatalRealSourceTests(unittest.TestCase):
     def test_prevent_sibling_incorrect_birth_order_shortcut(self):
         with self.assertRaisesRegex(ValueError,'排行'):
             self.profile_input('younger_sibling',sex='male',order='youngest')
-        inquiry,ref,_=self.profile_input('younger_sibling',sex='male',age='young')
+        inquiry,ref,_=self.profile_input('younger_brother')
         self.assertEqual(ref['kind'],'casting_month_stem')
-        self.assertEqual(inquiry['patient_age_band'],'young')
+        self.assertNotIn('patient_age_band',inquiry)
 
     def test_valid_birth_only_full_60_cycle(self):
         for fake in ('2020','甲','甲丑','庚庚'):

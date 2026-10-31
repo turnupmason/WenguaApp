@@ -14,6 +14,14 @@ on:
       - 'tests/test_bigfish_real_clock_nov2026_mar2027_20261031.py'
       - 'tests/test_strict_jieqi_all_385_crossings_20261031.py'
       - 'tests/test_bigfish_all_22_signifiers_loop_20261031.py'
+      - 'tests/test_health_v90_four_sibling_relation_source_20261031.py'
+      - 'tests/test_health_v90_four_friend_sex_age_source_20261031.py'
+      - 'scripts/preview_health_v90_six_real_random_20261031.py'
+      - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
+      - 'src/wengua/health_dynamic_v21.py'
+      - 'src/wengua/domain_selected_energy_vnext.py'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
       - '.github/workflows/bigfish_518400_offline_editorial_20261029.yml'
   workflow_dispatch:
 
@@ -50,5 +58,23 @@ jobs:
 
       - name: Every 2025-2040 UTC JieQi transition and 2041 sentinel (385)
         run: python -m unittest discover -s tests -p 'test_strict_jieqi_all_385_crossings_20261031.py' -v
-      - name: All 22 real actor identities and 24 sex-condition sequential loops
+      - name: V9.0 four siblings actual relation source and palace strengths
+        run: python -m unittest discover -s tests -p 'test_health_v90_four_sibling_relation_source_20261031.py' -v
+      - name: V9.0 four friends complete sex by relative age conditional palace routing
+        run: python -m unittest discover -s tests -p 'test_health_v90_four_friend_sex_age_source_20261031.py' -v
+
+      - name: Six deterministic random real calendar V9.0 Chinese readings
+        run: |
+          python scripts/preview_health_v90_six_real_random_20261031.py | tee v90_six_real_cast_previews.txt
+          test "$(grep -c 'V9.0 [1-6]/6' v90_six_real_cast_previews.txt)" = "6"
+      - name: Preserve six full real cast previews and retained failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v90-six-real-random-sibling-friend-readings
+          path: v90_six_real_cast_previews.txt
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: All 24 real actor identities and 29 sex-condition sequential loops
         run: python -m unittest discover -s tests -p 'test_bigfish_all_22_signifiers_loop_20261031.py' -v

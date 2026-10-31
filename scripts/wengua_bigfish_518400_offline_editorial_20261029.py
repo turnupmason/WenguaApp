@@ -45,8 +45,9 @@ BATCH_MODE = 'real_clock'   # 默认只生成真实2026-11-15~2027-03-15；旧�
 REAL_DATE_START = '2026-11-15' # 含当日
 REAL_DATE_END = '2027-03-15'   # 含当日
 REAL_TIMEZONE = 'America/New_York' # 只供该IANA时区预审；App仍依据手机实际时区和当前秒数实时计算
-RELATIONSHIP = 'all'          # 'all' = 循环完整22个人物源ID；单人测试改 'father'、'self' 等
-PATIENT_SEX = None           # 弟弟可设 'male'；姐妹或妈妈已知女可设 'female'
+RELATIONSHIP = 'all'          # 'all' = 循环完整24个人物源ID；单人测试改 'father'、'self' 等
+PATIENT_SEX = None           # 'friend' 单人必须给male/female；all自动遍历4个朋友配置
+PATIENT_RELATIVE_AGE = None  # friend单人必须older/younger（相对求测人）；all自动遍历
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
@@ -112,8 +113,8 @@ HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
 PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v3_earth_tomb_parity'
-SIX_JIA_APPROVED_WENGUA_SHA = 'a288d127883157cb2bea96b676d2c86a45c2ab12' # user-approved Jia and earth-tomb parity; V8 math and 200/81 unchanged
-SIX_JIA_BATCH_SUBDIR = '六甲全柱来源_20261029_v3_地盘墓核验'
+SIX_JIA_APPROVED_WENGUA_SHA = '4dd3edf17d33e2071f7f407e0312e22ae4ea8e26' # user-approved Jia and earth-tomb parity; V8 math and 200/81 unchanged
+SIX_JIA_BATCH_SUBDIR = 'V90_20261031_人物独立_月干六甲'
 SIX_JIA_SOURCES_ACTIVATED = False
 # Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
 
@@ -370,8 +371,8 @@ def activate_six_jia_sources():
     if SIX_JIA_SOURCES_ACTIVATED:
         return
     base.WENGUA_SHA = SIX_JIA_APPROVED_WENGUA_SHA
-    base.SOURCE = HERE / 'vendor' / 'WenguaApp_sixjia_source_v2'
-    base.FROZEN = HERE / 'frozen_sixjia_source_v2'
+    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V90_source_20261031'
+    base.FROZEN = HERE / 'frozen_V90_source_20261031'
     SIX_JIA_SOURCES_ACTIVATED = True
 
 
@@ -929,6 +930,8 @@ def catalog_relation_labels() -> dict:
 def validate_actor_settings(profiles: dict) -> dict:
     """Fail before 518400 rows if the user wrote an unsupported/ignored role parameter."""
     mapping={p['id']:p for p in profiles['profiles']}
+    # Historical composite identities remain read-only/replayable, not in 'all'.
+    mapping.update({p['id']:p for p in profiles.get('legacy_composite_profiles',[])})
     if RELATIONSHIP not in mapping:
         raise ValueError('未知人物ID '+repr(RELATIONSHIP)+'；有效人物: '+', '.join(mapping))
     role=mapping[RELATIONSHIP]
@@ -938,20 +941,27 @@ def validate_actor_settings(profiles: dict) -> dict:
         raise ValueError("PATIENT_SEX只能是None、'male'、'female'")
     fixed={'father':'male','mother':'female','grandfather':'male','grandmother':'female',
            'wife':'female','husband':'male','son':'male','daughter':'female',
-           'animal_hen':'female','animal_rooster':'male'}
+           'animal_hen':'female','animal_rooster':'male',
+           'older_brother':'male','older_sister':'female',
+           'younger_brother':'male','younger_sister':'female'}
     expected=fixed.get(RELATIONSHIP)
     if expected and PATIENT_SEX not in (None,expected):
         raise ValueError(f'人物 {RELATIONSHIP} 的已知性别 {expected} 与PATIENT_SEX={PATIENT_SEX}冲突')
+    if RELATIONSHIP=='friend':
+        if PATIENT_SEX not in ('male','female') or PATIENT_RELATIVE_AGE not in ('older','younger'):
+            raise ValueError('V9朋友必须选择性别male/female和相对长幼older/younger')
+    elif PATIENT_RELATIVE_AGE is not None:
+        raise ValueError('PATIENT_RELATIVE_AGE仅供朋友使用；兄姐弟妹已有关系身份')
     if RELATIONSHIP in ('spouse','parent') and PATIENT_SEX is None:
         raise ValueError('配偶或父母合称必须先明确PATIENT_SEX；建议明确选 wife/husband 或 father/mother')
     if PATIENT_AGE_BAND is not None and PATIENT_AGE_BAND not in ('young',):
         raise ValueError("年龄条件目前仅有源规则 'young'，否则保持 None，勿添加未审年龄分支")
-    if PATIENT_AGE_BAND is not None and RELATIONSHIP!='younger_sibling':
-        raise ValueError('当前冻结版仅 younger_sibling 使用 PATIENT_AGE_BAND=young，别的角色不要填无效条件')
+    if PATIENT_AGE_BAND is not None and RELATIONSHIP not in ('younger_sibling','younger_brother','younger_sister'):
+        raise ValueError('当前冻结版仅年轻弟妹使用 PATIENT_AGE_BAND=young，别的角色不要填无效条件')
     if BIRTH_ORDER is not None and BIRTH_ORDER not in ('eldest','middle','youngest'):
         raise ValueError("BIRTH_ORDER只能是'eldest'、'middle'、'youngest'或None")
-    if BIRTH_ORDER is not None and RELATIONSHIP not in ('child','son','daughter','nephew'):
-        raise ValueError('冻结人物选择目前仅对孩子/儿子/女儿/侄子使用出生排行；兄弟姐妹勿误填该字段')
+    if BIRTH_ORDER is not None and RELATIONSHIP not in ('child','son','daughter','nephew','older_brother','older_sister','younger_brother','younger_sister'):
+        raise ValueError('出生排行仅适用孩子、侄子或已拆分兄姐弟妹；未提供不能假定为长子少男')
     if BIRTH_ORDER is not None and PATIENT_SEX is None and not expected:
         raise ValueError('需同时知道患者性别，才能依据排行选择真实辅助宫')
     if PATIENT_BIRTH_GANZHI is not None and PATIENT_BIRTH_GANZHI not in CYCLE60:
@@ -971,7 +981,8 @@ def validate_actor_settings(profiles: dict) -> dict:
 def build_inquiry(validation:dict)->dict:
     inquiry={'intent':'severity','relationship':RELATIONSHIP,
              'consultation_context':validation['context']}
-    for key,value in (('patient_sex',PATIENT_SEX),('patient_age_band',PATIENT_AGE_BAND),
+    for key,value in (('patient_sex',PATIENT_SEX),('relative_age',PATIENT_RELATIVE_AGE),
+                      ('patient_age_band',PATIENT_AGE_BAND),
                       ('birth_order',BIRTH_ORDER),('patient_birth_ganzhi',PATIENT_BIRTH_GANZHI)):
         if value is not None:inquiry[key]=value
     return inquiry
@@ -983,7 +994,7 @@ def actor_output_folder() -> Path:
     if SIX_JIA_SOURCES_ACTIVATED:
         root=root/SIX_JIA_BATCH_SUBDIR
     extra={'birth':PATIENT_BIRTH_GANZHI,'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
-           'order':BIRTH_ORDER,'context':CONSULTATION_CONTEXT}
+           'order':BIRTH_ORDER,'relative_age':PATIENT_RELATIVE_AGE,'context':CONSULTATION_CONTEXT}
     if any(v is not None for v in extra.values()):
         # Changing any input uses its OWN checkpoint, not a misleading overwritten Excel.
         suffix=sha_text(canonical(extra))[:10]
@@ -1259,7 +1270,7 @@ def run_abstract_legacy():
         'freeze_file_sha256':{k:v['sha256'] for k,v in manifest['files'].items()},
         'rows':N_CASES,'term_selection':'both_real_possible_term_names_per_month_branch',
         'calendar_binding':'none; abstract four-pillar matrix; do not assert actual instant',
-        'patient_sex':PATIENT_SEX, 'patient_age_band':PATIENT_AGE_BAND,
+        'patient_sex':PATIENT_SEX, 'relative_age':PATIENT_RELATIVE_AGE, 'patient_age_band':PATIENT_AGE_BAND,
         'birth_order':BIRTH_ORDER, 'patient_birth_ganzhi':PATIENT_BIRTH_GANZHI,
         'person_natal':'optional_explicit_only_no_inference','source_method':'BigFish original shiJiaGenerate/ChaiBu',
         'score_method':'frozen Wengua V8.0 and V10.2 text, single-thread research gate',
@@ -1282,7 +1293,7 @@ def run_abstract_legacy():
         json.dumps({'relationship_id':RELATIONSHIP,'profile':validation['profile'],
                     'consultation_context':validation['context'],
                     'real_birth_year_ganzhi_if_known':PATIENT_BIRTH_GANZHI,
-                    'sex':PATIENT_SEX,'age_band':PATIENT_AGE_BAND,
+                    'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,'age_band':PATIENT_AGE_BAND,
                     'birth_order':BIRTH_ORDER,
                     'main_signifier_source_column':validation['reference']['kind'],
                     'note':'按每行真实四柱选主用神；年命是额外身份，只在真实提供并能实际落宫时加入。'},
@@ -1396,7 +1407,7 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v3_strict_jieqi_2040'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v4_V90_friend_four'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
@@ -1504,6 +1515,7 @@ def real_case_identity(slot, inquiry):
         'context':inquiry['consultation_context'],
         'sex':inquiry.get('patient_sex'),
         'age':inquiry.get('patient_age_band'),
+        'relative_age':inquiry.get('relative_age'),
         'birth_order':inquiry.get('birth_order'),
         'natal':inquiry.get('patient_birth_ganzhi'),
         'bigfish_sha':base.BIGFISH_SHA,'wengua_sha':base.WENGUA_SHA,
@@ -1681,7 +1693,7 @@ def export_real_complete(db,root,labels,slots):
         if idx!=index or instant!=slots[index]['instant'] or not case_id:
             raise RuntimeError('真实公历SQLite存在缺行/跨时区/错位，禁止冒称完整Excel')
     signature=sha_text(canonical(
-        (REAL_PIPELINE_VERSION,RELATIONSHIP,PATIENT_SEX,
+        (REAL_PIPELINE_VERSION,RELATIONSHIP,PATIENT_SEX,PATIENT_RELATIVE_AGE,
          REAL_DATE_START,REAL_DATE_END,
          [x[1] for x in rows])))[:12]
     name=(f'{RELATIONSHIP}_真实时辰_{REAL_DATE_START}_至_{REAL_DATE_END}'
@@ -1730,11 +1742,11 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v3_strict_jieqi_2040')
+          RELATIONSHIP/zone_path/'source_v4_v90_friend_four')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
-    condition={'sex':PATIENT_SEX,'age':PATIENT_AGE_BAND,
-               'order':BIRTH_ORDER,'natal':PATIENT_BIRTH_GANZHI,
+    condition={'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
+               'age':PATIENT_AGE_BAND,'order':BIRTH_ORDER,'natal':PATIENT_BIRTH_GANZHI,
                'context':CONSULTATION_CONTEXT}
     if any(v is not None for v in condition.values()):
         label='性别_'+PATIENT_SEX if PATIENT_SEX else '特定人物条件'
@@ -1752,7 +1764,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         'device_still_casts_current_instant':True,
         'no_23_late_zi_or_ambiguous_jie_fallback':True,
         'relationship':RELATIONSHIP,'context':validation['context'],
-        'patient_sex':PATIENT_SEX,'age_band':PATIENT_AGE_BAND,
+        'patient_sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,'age_band':PATIENT_AGE_BAND,
         'birth_order':BIRTH_ORDER,'natal':PATIENT_BIRTH_GANZHI,
         'bigfish_sha':base.BIGFISH_SHA,'wengua_sha':base.WENGUA_SHA,
         'freeze_sha256':{k:v['sha256'] for k,v in manifest['files'].items()},
@@ -1848,7 +1860,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         if own_worker and worker is not None:
             worker.close()
     return {'status':'interrupted' if interrupted else 'completed',
-            'relationship':RELATIONSHIP,'sex':PATIENT_SEX,
+            'relationship':RELATIONSHIP,'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
             'new_rows':current,'failures':failures,'total_rows':total,
             'possible_rows':len(slots),'output':str(root),
             'one_complete_excel':str(finished_excel) if finished_excel else None,
@@ -1856,9 +1868,11 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
 
 
 def all_signifier_configs(catalog):
-    """All 22 real profile IDs in source order, with two genuine sex variants
-    for each composite 'parent'/'spouse'. This is 24 configurations, never
-    24 approved independent author rules. No natal/age/order is inferred.
+    """24 distinct role IDs, 29 source profiles with exact friend x4.
+
+    Old 22 profile IDs and composite sibling audit records remain in legacy
+    source; never silently relabel them into one of four new distinct patients.
+    Age/actual birth rank/natal are NOT guessed from relative age alone.
     """
     profiles=catalog.get('profiles')
     if not isinstance(profiles,list) or not profiles:
@@ -1869,10 +1883,11 @@ def all_signifier_configs(catalog):
     plan=[]
     for profile in profiles:
         role_id=profile['id']
-        variants=(('male','female') if role_id in ('parent','spouse')
-                  else (None,))
-        for sex in variants:
-            plan.append({'relationship':role_id,'patient_sex':sex,
+        variants=((('male','older'),('male','younger'),('female','older'),('female','younger'))
+                  if role_id=='friend' else ((('male',None),('female',None))
+                  if role_id in ('parent','spouse') else ((None,None),)))
+        for sex,relative_age in variants:
+            plan.append({'relationship':role_id,'patient_sex':sex,'relative_age':relative_age,
                          'label':profile['label'],
                          'source_kind':profile['references'][0]['kind'],
                          'source_status':profile['references'][0].get('status'),
@@ -1891,10 +1906,10 @@ def run_all_real_calendar():
     Failure of one role is archived and cannot suppress testing all others;
     Ctrl-C stops whole loop. 'all' is illegal for the abstract 518400 mode.
     """
-    global RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,BIRTH_ORDER
+    global RELATIONSHIP,PATIENT_SEX,PATIENT_RELATIVE_AGE,PATIENT_AGE_BAND,BIRTH_ORDER
     global PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT
     if any(x is not None for x in
-           (PATIENT_SEX,PATIENT_AGE_BAND,BIRTH_ORDER,
+           (PATIENT_SEX,PATIENT_RELATIVE_AGE,PATIENT_AGE_BAND,BIRTH_ORDER,
             PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)):
         raise ValueError("'all'模式不接受单个人物性别/年龄/排行/年命/闻讯预设；"
                          "每个独立人物必须保持真实条件，未知信息不能补造。")
@@ -1909,7 +1924,7 @@ def run_all_real_calendar():
     folder.mkdir(parents=True,exist_ok=True)
     # Run summaries are append-only. Re-running never overwrites history.
     summary=folder/'每次运行人物用神结果.jsonl'
-    original=(RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,
+    original=(RELATIONSHIP,PATIENT_SEX,PATIENT_RELATIVE_AGE,PATIENT_AGE_BAND,
               BIRTH_ORDER,PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)
     worker=BigFishWorker(folder)
     failures=0;finished=0;interrupted=False
@@ -1917,12 +1932,13 @@ def run_all_real_calendar():
         for index,configuration in enumerate(plan,1):
             RELATIONSHIP=configuration['relationship']
             PATIENT_SEX=configuration['patient_sex']
+            PATIENT_RELATIVE_AGE=configuration['relative_age']
             PATIENT_AGE_BAND=None
             BIRTH_ORDER=None
             PATIENT_BIRTH_GANZHI=None
             CONSULTATION_CONTEXT=None
             print(f"\n[所有人物用神 {index}/{len(plan)}] {configuration['label']}"
-                  f" / {RELATIONSHIP} / sex={PATIENT_SEX or '源角色默认'}"
+                  f" / {RELATIONSHIP} / sex={PATIENT_SEX or '源角色默认'} / relative_age={PATIENT_RELATIVE_AGE or '源关系默认'}"
                   f" / 来源={configuration['source_kind']}"
                   f" / 核验状态={configuration['source_status']}",flush=True)
             try:
@@ -1950,7 +1966,7 @@ def run_all_real_calendar():
                 interrupted=True
                 break
     finally:
-        (RELATIONSHIP,PATIENT_SEX,PATIENT_AGE_BAND,
+        (RELATIONSHIP,PATIENT_SEX,PATIENT_RELATIVE_AGE,PATIENT_AGE_BAND,
          BIRTH_ORDER,PATIENT_BIRTH_GANZHI,CONSULTATION_CONTEXT)=original
         worker.close()
     print(f'全部人物配置共{len(plan)}；完成{finished}，配置错误{failures}，'
