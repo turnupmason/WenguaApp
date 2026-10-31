@@ -478,7 +478,7 @@ def selected_health_sections(result,*,actor,chart):
         """One actual role's 200-cell energy, directed relationship only."""
         gate=quant["role_effectiveness_gates"][key]
         power=row["primary_strength_25"]
-        lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核")
+        lead=power["symbol"]+"势"+str(power.get("strength_label") or "待核") + ("" if power.get("strength_label") else "（十二长生分支待辨）")
         rel=gate["relation"]
         if key=="chief" and gate["void"]!="not_void":
             note="逢空，护持受限"
@@ -562,6 +562,7 @@ def selected_health_sections(result,*,actor,chart):
     # Elder-only sex palace was shown/scored as 'gender' if eligible;
     # never infer either palace from the sex of a non-elder.
 
+    # V11.1: distinguish documented dual-branch lifecycle from unresolved single strength.
     # V11: preserve V10.1 evidence depth, clarify separate family auxiliary.
     # All independent 200/81 evidence stays in the existing role paragraphs.
     q=quant["summary"]
@@ -592,6 +593,8 @@ def selected_health_sections(result,*,actor,chart):
     patient_text=(symbol+"在"+patient["complete_palace"]["palace_name"]+
                   "，势"+str(patient["primary_strength_25"].get("strength_label") or "待核")+
                   "，宫象"+grade(quant["roles"]["patient"]["palace_score"]["score"]))
+    if symbol=="庚" and patient["palace"]==4 and patient["primary_strength_25"].get("stem_life_strength_pending"):
+        patient_text+="，辰养与巳长生并见，双支原始力量不同"
     patient_void=patient["complete_palace"]["void"]["classification"]
     if patient_void!="not_void":
         patient_text+="，逢"+("真空" if patient_void=="true_void" else "假空")
