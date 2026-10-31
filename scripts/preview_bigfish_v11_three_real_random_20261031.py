@@ -26,7 +26,7 @@ def main():
     # Resolve the EXACT pinned Wengua source that BigFish just SHA-verified.
     sys.path.insert(0,str(b.base.SOURCE))
     assert manifest['wengua_sha']==b.SIX_JIA_APPROVED_WENGUA_SHA
-    assert b.REAL_PIPELINE_VERSION.endswith('v7_V11_1_final_lifecycle')
+    assert b.REAL_PIPELINE_VERSION.endswith('v8_V11_2_geng_xun')
     source=b.base.FROZEN/'reading_template.json'
     template=json.loads(source.read_text(encoding='utf8'))
     assert template['schema']=='health_severity_user_editable_template_v20261031_v11_full_evidence'
