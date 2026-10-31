@@ -63,7 +63,7 @@ jobs:
           import json,sys,csv
           p=Path(sys.argv[1])
           template=json.loads((p/'reading_template.json').read_text())
-          assert template['schema']=='health_severity_user_editable_template_v20261028_v10_2_evidence_first'
+          assert template['schema']=='health_severity_user_editable_template_v20261031_v11_full_evidence'
           for key in ('tianxian_regular','tianxian_fuyin',
                        'tianxian_evidence_regular','tianxian_evidence_fuyin',
                        'kun_host_note','palace_compact','macro_five_customer',
