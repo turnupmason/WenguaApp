@@ -149,7 +149,7 @@ for item in six {
     let front=resolved.frontNarrative(caption)
     let count=front.filter{ !$0.isWhitespace }.count
     guard (140...215).contains(count) else {
-        fatalError("real V11 first-tab summary should be ~150–200 Chinese characters, got \\(count)")
+        fatalError("real V11 first-tab summary should be ~150–200 Chinese characters, got \(count)")
     }
     guard front.contains("病星天芮"), front.contains("医药两端分别看"),
           front.contains("患者"), !front.contains("以上仅作传统古籍象意参考") else {
