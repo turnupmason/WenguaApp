@@ -1417,7 +1417,8 @@ def strict_real_calendar_clock(instant,zone):
             raise RuntimeError("Strict JieQi timestamp table corrupted")
         strict_real_calendar_clock._times=t
     t=strict_real_calendar_clock._times
-    ms=local.timestamp()*1000
+    # Integer microsecond rounding eliminates binary-float boundary underflow.
+    ms=int(round(local.timestamp()*1_000_000))//1000
     if ms<t[0] or ms>t[-1]:
         return cal.solar_chart_clock(instant,zone)
     k=bisect_right(t,ms)-1

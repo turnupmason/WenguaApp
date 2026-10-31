@@ -112,7 +112,9 @@ def _strict_crossing_times():
  return t
 def _strict_jieqi_index(utc_seconds):
  t=_strict_crossing_times()
- ms=utc_seconds*1000
+ # Compare integer milliseconds; Float seconds * 1000 can fall just below
+ # a crossing even when the civil instant is exactly at its UTC millisecond.
+ ms=int(round(utc_seconds*1_000_000))//1000
  if ms<t[0] or ms>t[-1]:return None
  index=bisect_right(t,ms)-1
  return ((1+index)%24,t[index])

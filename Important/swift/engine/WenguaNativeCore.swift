@@ -206,12 +206,14 @@ enum WenguaNativeCore {
     private static func strictSolarIndex(_ date: Date) -> Int? {
         let times=strictCrossings
         guard let first=times.first, let last=times.last else {return nil}
-        let ms=date.timeIntervalSince1970*1000
-        guard ms>=Double(first) && ms<=Double(last) else {return nil}
+        // Int64 microseconds avoid Double milliseconds rounding the exact UTC
+        // crossing backwards. Keep the inclusive NEW term at the instant.
+        let micros=Int64((date.timeIntervalSince1970*1_000_000).rounded())
+        guard micros>=first*1000 && micros<=last*1000 else {return nil}
         var lo=0,hi=times.count
         while lo<hi {
             let mid=(lo+hi)/2
-            if Double(times[mid])<=ms {lo=mid+1} else {hi=mid}
+            if times[mid]*1000<=micros {lo=mid+1} else {hi=mid}
         }
         return (1+lo-1)%24
     }

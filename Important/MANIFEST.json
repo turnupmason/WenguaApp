@@ -79,7 +79,7 @@
       "platform": "python",
       "canonical": "src/wengua/astro_calendar.py",
       "snapshot": "Important/python/engine/astro_calendar.py",
-      "sha": "23a291e8e764be8dfcafb34190d28c59f3e08ced"
+      "sha": "5fea26770accfa03537bd5bf089846e30f19b10c"
     },
     {
       "platform": "python",
@@ -481,7 +481,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCore.swift",
       "snapshot": "Important/swift/engine/WenguaNativeCore.swift",
-      "sha": "bec4d9b18332b2059fd53ee0dc4eefd178a6a064"
+      "sha": "bbed63a7dfdc828d7d55446b3f820cf9e397d689"
     },
     {
       "platform": "swift",
