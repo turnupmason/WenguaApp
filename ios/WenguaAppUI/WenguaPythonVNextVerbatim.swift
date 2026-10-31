@@ -467,7 +467,7 @@ enum WenguaPythonVNextVerbatim {
         }
         for (key,name) in [("hour","时干事体"),("natal","年命"),
                            ("gender","长辈乾坤辅助"),("sibling","兄弟姐妹辅助"),
-                           ("chief","值符")] {
+                           ("chief","大吉神")] {
             guard let id=review.roles[key],let f=review.roleEnergy[key],
                   let p=cells[id] else {continue}
             let identity=String(id)+":"+((["illness","doctor","gender","sibling"].contains(key)) ? "star" : key=="chief" ? "deity" : "stem")+":"+f.symbol
