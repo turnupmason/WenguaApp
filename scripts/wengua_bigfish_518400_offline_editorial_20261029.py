@@ -46,8 +46,8 @@ REAL_DATE_START = '2026-11-15' # 含当日
 REAL_DATE_END = '2027-03-15'   # 含当日
 REAL_TIMEZONE = 'America/New_York' # 只供该IANA时区预审；App仍依据手机实际时区和当前秒数实时计算
 RELATIONSHIP = 'all'          # 'all' = 循环完整24个人物源ID；单人测试改 'father'、'self' 等
-PATIENT_SEX = None           # 'friend' 单人必须给male/female；all自动遍历4个朋友配置
-PATIENT_RELATIVE_AGE = None  # friend单人必须older/younger（相对求测人）；all自动遍历
+PATIENT_SEX = None           # 朋友不按性别拆分；父母/配偶仍按真实条件拆分
+PATIENT_RELATIVE_AGE = None  # 朋友长幼不参与取用；保留旧历史入口字段兼容
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
@@ -947,9 +947,10 @@ def validate_actor_settings(profiles: dict) -> dict:
     expected=fixed.get(RELATIONSHIP)
     if expected and PATIENT_SEX not in (None,expected):
         raise ValueError(f'人物 {RELATIONSHIP} 的已知性别 {expected} 与PATIENT_SEX={PATIENT_SEX}冲突')
-    if RELATIONSHIP=='friend':
-        if PATIENT_SEX not in ('male','female') or PATIENT_RELATIVE_AGE not in ('older','younger'):
-            raise ValueError('V9朋友必须选择性别male/female和相对长幼older/younger')
+    # Friend has ONE month-stem signifier regardless of sex or relative age.
+    # Clear obsolete fields to prevent distinct batch identities for one role.
+    if RELATIONSHIP=='friend' and PATIENT_RELATIVE_AGE not in (None,'older','younger'):
+        raise ValueError('朋友相对年龄字段不合法（但不参与取用）')
     elif PATIENT_RELATIVE_AGE is not None:
         raise ValueError('PATIENT_RELATIVE_AGE仅供朋友使用；兄姐弟妹已有关系身份')
     if RELATIONSHIP in ('spouse','parent') and PATIENT_SEX is None:
@@ -1407,7 +1408,7 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v4_V90_friend_four'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v5_V11_friend_month_only'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
@@ -1742,7 +1743,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v4_v90_friend_four')
+          RELATIONSHIP/zone_path/'source_v5_v11_friend_month_only')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
@@ -1868,7 +1869,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
 
 
 def all_signifier_configs(catalog):
-    """24 distinct role IDs, 29 source profiles with exact friend x4.
+    """24 distinct role IDs; friend has exactly one month-stem configuration.
 
     Old 22 profile IDs and composite sibling audit records remain in legacy
     source; never silently relabel them into one of four new distinct patients.
@@ -1883,9 +1884,8 @@ def all_signifier_configs(catalog):
     plan=[]
     for profile in profiles:
         role_id=profile['id']
-        variants=((('male','older'),('male','younger'),('female','older'),('female','younger'))
-                  if role_id=='friend' else ((('male',None),('female',None))
-                  if role_id in ('parent','spouse') else ((None,None),)))
+        variants=((('male',None),('female',None))
+                  if role_id in ('parent','spouse') else ((None,None),))
         for sex,relative_age in variants:
             plan.append({'relationship':role_id,'patient_sex':sex,'relative_age':relative_age,
                          'label':profile['label'],
