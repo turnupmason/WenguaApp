@@ -590,6 +590,7 @@ def selected_health_sections(result,*,actor,chart):
     patient=roles["patient"]
     symbol=patient["primary_strength_25"]["symbol"]
     patient_text=(symbol+"在"+patient["complete_palace"]["palace_name"]+
+                  "，势"+str(patient["primary_strength_25"].get("strength_label") or "待核")+
                   "，宫象"+grade(quant["roles"]["patient"]["palace_score"]["score"]))
     patient_void=patient["complete_palace"]["void"]["classification"]
     if patient_void!="not_void":
