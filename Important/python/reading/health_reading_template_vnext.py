@@ -33,7 +33,7 @@ def template():
                 "macro_five_customer","macro_clear_customer",
                 "macro_pace_slow","macro_pace_fast",
                 "macro_pace_mixed","macro_pace_unset",
-                "summary_concise"):
+                "summary_concise","front_final","stem_dual_lifecycle"):
         if not isinstance(raw["macros"].get(key),str):
             raise ValueError("Missing template macro: "+key)
     if not isinstance(raw.get("formation"),str):
