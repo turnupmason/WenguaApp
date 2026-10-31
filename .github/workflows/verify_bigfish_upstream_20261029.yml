@@ -8,6 +8,7 @@ on:
       - scripts/verify_bigfish_frozen_v8_samples_20261029.py
       - scripts/verify_bigfish_actor_natal_real_20261029.py
       - scripts/verify_bigfish_first_supported_20_20261029.py
+      - scripts/verify_bigfish_real_calendar_window_20261031.py
       - scripts/wengua_bigfish_518400_offline_editorial_20261029.py
       - .github/workflows/verify_bigfish_upstream_20261029.yml
 jobs:
@@ -46,6 +47,10 @@ jobs:
         run: |
           set -o pipefail
           python -m scripts.verify_bigfish_first_supported_20_20261029 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-first-supported-20.jsonl
+      - name: REAL Gregorian Nov15-Mar15 six source casts BigFish TS through V8/V10.2
+        run: |
+          set -o pipefail
+          python -m scripts.verify_bigfish_real_calendar_window_20261031 --compiled /tmp/bigfish-dist | tee /tmp/bigfish-true-calendar-2026-2027.jsonl
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -55,4 +60,5 @@ jobs:
             /tmp/bigfish-real-v8.jsonl
             /tmp/bigfish-actor-natal-real.jsonl
             /tmp/bigfish-first-supported-20.jsonl
+            /tmp/bigfish-true-calendar-2026-2027.jsonl
           if-no-files-found: ignore
