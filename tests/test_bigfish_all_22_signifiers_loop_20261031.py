@@ -1,4 +1,4 @@
-"""24 V9 actor IDs, 29 configs: 4 friends + 2 parent + 2 spouse.
+"""24 actor IDs, 26 V11 configurations: one friend + parent/spouse gender split.
 
 Each actor has own exact role source, four-month date slots, Excel and checkpoint.
 No birth Ganzhi, age/sex guesses, alternate event news, V8 retune, or posthoc
@@ -38,17 +38,17 @@ M=load()
 PROFILES=json.loads((ROOT/"data/knowledge/phrase_library/health_v20/actor_profiles.json").read_text())
 
 class ActorLoop(unittest.TestCase):
-    def test_default_all_24_source_profiles_29_sex_age_configs(self):
+    def test_default_all_24_source_profiles_26_configs(self):
         self.assertEqual(M.RELATIONSHIP,"all")
         self.assertEqual(M.BATCH_MODE,"real_clock")
         self.assertIsNone(M.PATIENT_BIRTH_GANZHI)
         catalog=M.all_signifier_configs(PROFILES)
         self.assertEqual(len(PROFILES["profiles"]),24)
-        self.assertEqual(len(catalog),29)
+        self.assertEqual(len(catalog),26)
         self.assertEqual({x["relationship"] for x in catalog},
                          {p["id"] for p in PROFILES["profiles"]})
         self.assertEqual(len({(x["relationship"],x["patient_sex"],x["relative_age"])
-                               for x in catalog}),29)
+                               for x in catalog}),26)
         self.assertEqual({(x["patient_sex"],x["relative_age"])
                           for x in catalog if x["relationship"]=="friend"},
                          {("male","older"),("male","younger"),
@@ -93,7 +93,7 @@ class ActorLoop(unittest.TestCase):
                         {"profiles":[{"id":"invented","references":[]}]}):
             with self.assertRaises(ValueError):
                 M.all_signifier_configs(catalog)
-    def test_29_separate_expected_bound_role_sources_validate_without_natal(self):
+    def test_26_separate_expected_bound_role_sources_validate_without_natal(self):
         for config in M.all_signifier_configs(PROFILES):
             with patch.object(M,"RELATIONSHIP",config["relationship"]),\
                  patch.object(M,"PATIENT_SEX",config["patient_sex"]),\
@@ -164,15 +164,15 @@ class ActorLoop(unittest.TestCase):
                              [(x["relationship"],x["patient_sex"],x["relative_age"],None,None)
                               for x in plan])
         self.assertEqual((M.RELATIONSHIP,M.PATIENT_SEX),originals)
-    def test_friend_missing_gender_or_relative_age_fails_closed(self):
-        for sex,age in ((None,None),("female",None),(None,"younger"),
-                        ("female","invalid")):
-            with self.subTest(sex=sex,age=age),\
-                 patch.object(M,"RELATIONSHIP","friend"),\
-                 patch.object(M,"PATIENT_SEX",sex),\
-                 patch.object(M,"PATIENT_RELATIVE_AGE",age):
-                with self.assertRaisesRegex(ValueError,"V9朋友必须"):
-                    M.validate_actor_settings(PROFILES)
+    def test_friend_no_demographic_requirement_and_one_config(self):
+        with patch.object(M,"RELATIONSHIP","friend"),\
+             patch.object(M,"PATIENT_SEX",None),\
+             patch.object(M,"PATIENT_RELATIVE_AGE",None):
+            result=M.validate_actor_settings(PROFILES)
+            self.assertEqual(result["reference"]["kind"],"casting_month_stem")
+            inquiry=M.build_inquiry(result)
+            self.assertNotIn("patient_sex",inquiry)
+            self.assertNotIn("relative_age",inquiry)
 
     def test_one_failure_recorded_all_others_continue_and_final_not_false_pass(self):
         observed=[]
