@@ -2492,3 +2492,8 @@ V11 用户断词保留 V10.1 每个真实用神详细宫环境，替代 V10.2 �
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+## 2026-10-31 · 首屏与专业断语强制分层的用户修正
+
+**用户明确：iPhone 第一页不是一句泛化短语。** 必须显示 V8 最终吉局/凶局（零为微恙）、十档等级及副标题，然后是 V10.1 深度的约150–200字综合短断语，均依据真实 V11 本盘计算/角色/环境。专业解盘第二页完整逐项展示所有真实宫位、关系、格局、应期；短断语不能覆盖/代替专业章。不要重新用 `WenguaNaturalSeveritySummary` 覆盖十档吉凶，也不得只显示 `caption.interpretation` 一行。当前纯 Swift 展示层从真实 `90_review`、必要 `01_macro/91_timing` 提取，未改动 V8 计分及模板源。审计路径 `docs/IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md`；Python与Swift底层全章节逐字一致、真实 Simulator 与打包校验均须本次实际 CI 通过才可称交付。
