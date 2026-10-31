@@ -2257,3 +2257,8 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-31 · BigFish指定原脚本严格交节瞬时拆补（正式用户口径）
+
+用户明确最后决策：交节前一瞬仍旧节气，交节瞬间及以后改新节气；同一时辰也不提前换，不双局互参。已实际修改指定 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`，以及src的Python历法、iOS Swift和Important镜像；以Swiss/Moshier计算的离线2025-2028 UTC毫秒表判边界，旧冻结V8/200/81/TS/人物关系不改。原旧源码固定SHA仍在，BigFish自身新严格历法适配避免加载旧0.05°近界拒算。新版本只写 source_v2_strict_jieqi；source_v1的失败、旧Excel和人工改稿保留。首600四旧拒算 (#86/87/264/441)在新规则分别取立冬、小雪、小雪、大雪；旧窗口12个历史拒算完整保留。Python严格交节及BigFish测试 #41212456902 PASS，V8当前主CI #41212456846 PASS，iOS Xcode Simulator原修改提交 #41212201619 PASS；旧婚姻归档 #41212456827 既有文件保护失败，旧Native端到端 #41212201662 invalidChart，独立1080 Native物理盘 #41212201702 horseBranch KeyError仍须单独调查，不能称全CI通过。表覆盖范围外严格精度未解、23点跨日未解，用户Mac全24×1452、签名真机都未跑。独立审计 `docs/STRICT_CHAIBU_INSTANT_BOUNDARY_20261031.md`，当前最终业务规则不是借历史失败强行调V8分数。本轮不是新增古籍章节，CHAPTER_LEDGER原著章节计数不动。
