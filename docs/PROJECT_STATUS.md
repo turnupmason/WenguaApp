@@ -2211,3 +2211,11 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-10-31 · 用户要求 BigFish 一键loop全部人物用神：22源ID，24条件配置，实跑通过
+
+用户说“给我写个loop，loop所有用神”，明确延续已直接修改的 Mac `Wengua_BigFish_518400.py`；不是另一个工具、不是同一时辰只给一种用神结果。原仓 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 顶部现默认 `RELATIONSHIP='all'` 和 `BATCH_MODE='real_clock'`。每次按原唯一 `actor_profiles.json` 的22真实ID逐一读取各自 `references[0].kind`；仅合称父母、配偶必须依据**实际病人性别**各建立男、女两种合法研究情境（不把未知个体硬定性别），总计24个分目录、分SQLite、分Excel/CSV/JSONL独立候选，单人可仍改成father/self等。时长2026-11-15至2027-03-15，默认每种条件前20个本地时辰（最多480条），设置 `MAX_NEW_ROWS=0` 才尝试每配置1452条、全24最多34848真实时刻代表样本。每个时辰真实公历→唯一有效节气→原BigFish TypeScript真实起盘→年/月/日/时/配偶乙庚各自用神与六甲→V8/V10.2，患者出生年命/年龄/排行缺失不补。共用原TS worker只缓存物理盘，不缓存其他人的断案结论。旧518400研究库留作显式 `RELATIONSHIP='father'`、`BATCH_MODE='abstract_518400_legacy'`；`all`+518400直接拒绝。已有文件一律不覆盖，所有关系总审计 `output/real_calendar_20261115_20270315/_all_profiles_audit/每次运行人物用神结果.jsonl` 只追加；单关系失败如实落盘并继续，末尾非零失败不假称全PASS；Ctrl-C停止全部。研究候选状态不会因技术生成成功升格原书审核或自动发布。
+
+**实测**：原始TS真正编译，选同一个真实日期、24独立人物/男女条件经真实V8/V10.2原文hash **24/24 PASS [#41208505466](https://github.com/turnupmason/WenguaApp/actions/runs/41208505466)**；Python纯调度8项、旧BigFish合同、真实窗口DST/Excel不覆盖 **PASS [#41208459608](https://github.com/turnupmason/WenguaApp/actions/runs/41208459608)**。首轮测试夹具错误 **FAIL #41208404262** 保留，后修；不能据此称整个24×1452实际生产/用户Mac已跑。细节 `docs/BIGFISH_ALL_22_YONGSHEN_REAL_LOOP_20261031.md`，V8数学/Swift/原著/Important均未改。
+

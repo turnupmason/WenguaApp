@@ -2414,3 +2414,11 @@ Wengua_Prediction 首批父亲甲节气6000已按正式1080原盘、900个本批
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+### 2026-10-31 · 用户要求 BigFish 一键loop全部人物用神：22源ID，24条件配置，实跑通过
+
+用户说“给我写个loop，loop所有用神”，明确延续已直接修改的 Mac `Wengua_BigFish_518400.py`；不是另一个工具、不是同一时辰只给一种用神结果。原仓 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 顶部现默认 `RELATIONSHIP='all'` 和 `BATCH_MODE='real_clock'`。每次按原唯一 `actor_profiles.json` 的22真实ID逐一读取各自 `references[0].kind`；仅合称父母、配偶必须依据**实际病人性别**各建立男、女两种合法研究情境（不把未知个体硬定性别），总计24个分目录、分SQLite、分Excel/CSV/JSONL独立候选，单人可仍改成father/self等。时长2026-11-15至2027-03-15，默认每种条件前20个本地时辰（最多480条），设置 `MAX_NEW_ROWS=0` 才尝试每配置1452条、全24最多34848真实时刻代表样本。每个时辰真实公历→唯一有效节气→原BigFish TypeScript真实起盘→年/月/日/时/配偶乙庚各自用神与六甲→V8/V10.2，患者出生年命/年龄/排行缺失不补。共用原TS worker只缓存物理盘，不缓存其他人的断案结论。旧518400研究库留作显式 `RELATIONSHIP='father'`、`BATCH_MODE='abstract_518400_legacy'`；`all`+518400直接拒绝。已有文件一律不覆盖，所有关系总审计 `output/real_calendar_20261115_20270315/_all_profiles_audit/每次运行人物用神结果.jsonl` 只追加；单关系失败如实落盘并继续，末尾非零失败不假称全PASS；Ctrl-C停止全部。研究候选状态不会因技术生成成功升格原书审核或自动发布。
+
+**实测**：原始TS真正编译，选同一个真实日期、24独立人物/男女条件经真实V8/V10.2原文hash **24/24 PASS [#41208505466](https://github.com/turnupmason/WenguaApp/actions/runs/41208505466)**；Python纯调度8项、旧BigFish合同、真实窗口DST/Excel不覆盖 **PASS [#41208459608](https://github.com/turnupmason/WenguaApp/actions/runs/41208459608)**。首轮测试夹具错误 **FAIL #41208404262** 保留，后修；不能据此称整个24×1452实际生产/用户Mac已跑。细节 `docs/BIGFISH_ALL_22_YONGSHEN_REAL_LOOP_20261031.md`，V8数学/Swift/原著/Important均未改。
+

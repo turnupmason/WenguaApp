@@ -1,5 +1,14 @@
 # WenguaApp 续开发总 Prompt · BigFish 518400 · 无年命阶段（2026-10-29）
 
+## 2026-10-31 最新：原 BigFish 已内置全部人物用神循环
+
+### 2026-10-31 · 用户要求 BigFish 一键loop全部人物用神：22源ID，24条件配置，实跑通过
+
+用户说“给我写个loop，loop所有用神”，明确延续已直接修改的 Mac `Wengua_BigFish_518400.py`；不是另一个工具、不是同一时辰只给一种用神结果。原仓 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 顶部现默认 `RELATIONSHIP='all'` 和 `BATCH_MODE='real_clock'`。每次按原唯一 `actor_profiles.json` 的22真实ID逐一读取各自 `references[0].kind`；仅合称父母、配偶必须依据**实际病人性别**各建立男、女两种合法研究情境（不把未知个体硬定性别），总计24个分目录、分SQLite、分Excel/CSV/JSONL独立候选，单人可仍改成father/self等。时长2026-11-15至2027-03-15，默认每种条件前20个本地时辰（最多480条），设置 `MAX_NEW_ROWS=0` 才尝试每配置1452条、全24最多34848真实时刻代表样本。每个时辰真实公历→唯一有效节气→原BigFish TypeScript真实起盘→年/月/日/时/配偶乙庚各自用神与六甲→V8/V10.2，患者出生年命/年龄/排行缺失不补。共用原TS worker只缓存物理盘，不缓存其他人的断案结论。旧518400研究库留作显式 `RELATIONSHIP='father'`、`BATCH_MODE='abstract_518400_legacy'`；`all`+518400直接拒绝。已有文件一律不覆盖，所有关系总审计 `output/real_calendar_20261115_20270315/_all_profiles_audit/每次运行人物用神结果.jsonl` 只追加；单关系失败如实落盘并继续，末尾非零失败不假称全PASS；Ctrl-C停止全部。研究候选状态不会因技术生成成功升格原书审核或自动发布。
+
+**实测**：原始TS真正编译，选同一个真实日期、24独立人物/男女条件经真实V8/V10.2原文hash **24/24 PASS [#41208505466](https://github.com/turnupmason/WenguaApp/actions/runs/41208505466)**；Python纯调度8项、旧BigFish合同、真实窗口DST/Excel不覆盖 **PASS [#41208459608](https://github.com/turnupmason/WenguaApp/actions/runs/41208459608)**。首轮测试夹具错误 **FAIL #41208404262** 保留，后修；不能据此称整个24×1452实际生产/用户Mac已跑。细节 `docs/BIGFISH_ALL_22_YONGSHEN_REAL_LOOP_20261031.md`，V8数学/Swift/原著/Important均未改。
+
+
 ## 2026-10-31 最新最高优先级：直接更新现有 Wengua_BigFish_518400.py，预生成仅未来四个月
 
 用户纠正：**不要另建BigFish软件/程序，而要修改同一个 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`（Mac上 `Wengua_BigFish_518400.py`）**。问卦定位是手机当前真实时间下像真人大师一样专业解盘，不是让人选择预存卦盘。最新上线前待审文字准备时段仅 **2026-11-15至2027-03-15（含末日）**，之前1930–2040仅是已被缩小的历史预生成计划。最新事实/测试/剩余风险见 [docs/BIGFISH_REAL_DATE_LAUNCH_WINDOW_20261031.md](BIGFISH_REAL_DATE_LAUNCH_WINDOW_20261031.md)。
