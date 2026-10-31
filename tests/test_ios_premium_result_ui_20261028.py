@@ -20,7 +20,7 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertIn('Text(caption.category)',self.presentation)
         self.assertIn('Text(grade+"："+caption.epithet)',self.presentation)
         self.assertIn('Text(verdict.frontNarrative(caption))',self.presentation)
-        self.assertIn('body+="\\n\\n"+evidence',self.presentation)
+        self.assertIn('var body=evidence',self.presentation)
         self.assertNotIn('WenguaNaturalSeveritySummary',self.presentation)
         detailed=(UI / "WenguaNativeCustomerView.swift").read_text()
         self.assertIn('ForEach(reading.sections.indices,id:',detailed)
