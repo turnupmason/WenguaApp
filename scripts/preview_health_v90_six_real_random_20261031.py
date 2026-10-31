@@ -10,6 +10,9 @@ import json
 import random
 from datetime import datetime,timedelta
 from zoneinfo import ZoneInfo
+import sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
 from src.wengua.astro_calendar import solar_chart_clock
