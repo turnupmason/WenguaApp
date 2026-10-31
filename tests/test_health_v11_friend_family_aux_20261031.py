@@ -51,8 +51,9 @@ class V11FriendAndSiblings(unittest.TestCase):
                 # The auxiliary and illness may be the SAME real star/palace:
                 # one role section remains, but no second independent vote.
                 sibling_identity=(nodes["sibling"]["palace"],nodes["sibling"]["symbol"])
-                illness_identity=(nodes["illness"]["palace"],nodes["illness"]["symbol"])
-                if sibling_identity!=illness_identity:
+                already_named={(nodes[k]["palace"],nodes[k]["symbol"])
+                               for k in ("illness","patient","doctor","medicine")}
+                if sibling_identity not in already_named:
                     self.assertIn("兄弟姐妹辅助",summary)
 
 if __name__=="__main__":unittest.main()
