@@ -78,6 +78,13 @@ class HealthCaptionUserUX(unittest.TestCase):
                 self.assertIn('interpretation:"'+interpretation+'"',self.premium)
         self.assertIn('default: return nil',self.premium)
         self.assertIn('let caption=WenguaHealthGradeCaption.forGrade(grade)',self.premium)
+        # The first screen must not collapse to just a grade + one sentence.
+        self.assertIn('Text(caption.category)',self.premium)
+        self.assertIn('Text(grade+"："+caption.epithet)',self.premium)
+        self.assertIn('Text(verdict.frontNarrative(caption))',self.premium)
+        self.assertIn('let evidence: String',self.premium)
+        self.assertIn('parts.dropLast().joined(separator:',self.premium)
+        self.assertNotIn('WenguaNaturalSeveritySummary',self.premium)
         self.assertIn('id == "90_review"',self.premium)
         self.assertIn('id == "91_timing"',self.premium)
         self.assertIn('private let labels = ["专业解卦", "专业解盘"]',self.premium)
