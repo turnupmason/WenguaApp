@@ -2455,3 +2455,7 @@ Wengua_Prediction 首批父亲甲节气6000已按正式1080原盘、900个本批
 ## 2026-10-31 用户最终严格交节瞬时拆补法（已落地）
 
 **正式唯一口径**：交节前旧节气；交节瞬间（含）以后新节气，哪怕仍处于同一两小时辰；不采用同时辰提前换新节气和双局互参替代正式起盘。用户指定原 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 已直接修复固定旧Wengua SHA对0.05°近界拒算的依赖，与src/wengua/astro_calendar.py和iOS原生Swift同一2025—2028离线高精度交节表。旧原BigFish/V8/200/81/模板/人物规则冻结。新输出source_v2_strict_jieqi与旧v1 SQLite失败、人工Excel分离，全部历史失败保留；超出高精度表的临界年份仍保守拒算。实际测试与剩余失败见 `docs/STRICT_CHAIBU_INSTANT_BOUNDARY_20261031.md`。不得宣称新版全24×1452已在用户Mac跑完或真机验收。
+
+### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
+本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
+模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
