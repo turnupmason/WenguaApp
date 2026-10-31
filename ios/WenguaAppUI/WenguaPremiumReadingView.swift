@@ -42,9 +42,7 @@ struct WenguaVerdictPresentation {
         let ill=quality(clauses.first ?? "")
         let patient=quality(clauses.count>1 ? clauses[1] : "")
         let gradeWord=grade ?? "待核"
-        let ending="综上所述，病宫"+ill+"，患者宫"+patient+
-            "，医药与辅助还须合参。全盘判为"+gradeWord+"："+caption.epithet+
-            "，"+caption.interpretation+"。"
+        let ending="综上所述，病宫\(ill)，患者宫\(patient)，医药与辅助还须合参。全盘判为\(gradeWord)：\(caption.epithet)，\(caption.interpretation)。"
         return body+"\n\n"+ending
     }
 
