@@ -2527,3 +2527,11 @@ V11 用户断词保留 V10.1 每个真实用神详细宫环境，替代 V10.2 �
 ## 2026-10-31 · V11.2 庚巽四主断巳长生与 BigFish 批量源修正（非原著新章）
 已复核 source200 原格、真实十二长生与原 BigFish 庚落巽四的待核错误：辰养和巳长生均保留，但本用户明确授权仅庚巽四以巳长生为主断。子月200格辰养中等、巳长生大。不得用宫净分假装力量，也不得把取旺选择推广到所有天干和宫；不是书作者原句。Python/Swift、Important镜像 SHA 同步，原V8计分矩阵/81格/真实盘/旧章/已见案例不改；独立200格现在有值，条件成立时实际总分可能变化，须跑历史回归。
 BigFish Mac指定脚本现钉真实 Python/Swift 同步源 commit 1da1e5035061ade8fbdb54ecd0451c6eaef7c1b8，独立 V11.2 frozen 以及 source_v8_v11_2_geng_xun 输出，保留 v7及以前全部旧SQLite/Excel/失败。每条庚巽四选中用神多行对照真实源200格，未对齐直接记录失败。新专项测试十二个月、两原格、同源Swift与真正 CI；原首屏两句结论、全部十档、完整第二页原文不删。详细来源与复现 docs/GENG_XUN_DUAL_STAGE_V11_20261031.md。新原著章节0、历史家族0。Mac 1452×全部人物未实际执行、签名真机未验，不得宣称已完成。
+
+
+## 2026-10-31 V11.2 本轮真实交付验收（后续追加，不覆盖早期失败）
+- 主CI [#41247581024](https://github.com/turnupmason/WenguaApp/actions/runs/41247581024) PASS；包含单独的庚巽四双支十二个月回归及原V8现行测试。
+- BigFish完整预审工作流 [#41247574228](https://github.com/turnupmason/WenguaApp/actions/runs/41247574228) PASS：200源格、旧1100父亲源冻结与不覆盖、121真实日×12代表时辰=1452槽、24人物源ID×26种条件配置、双页模板检查均成功。这是预审/回归，不等于已经在Mac批量生成26×1452条作品。
+- BigFish真实原始TS起盘+原Wengua V8/V11.2 断词三随机真实时辰 [#41247580945](https://github.com/turnupmason/WenguaApp/actions/runs/41247580945) PASS；全稿另存 docs/BIGFISH_V11_2_THREE_REAL_RANDOM_COMPLETE_20261031.txt，旧 V11 已封存 TXT 不覆盖。三盘：2026-12-14哥哥极小凶、2027-02-01姐姐不凶不吉、2026-12-12朋友小凶；朋友实际庚在巽四，势大，证据明确「以巳长生主断，辰养备查」，末尾写完整小凶结论。
+- 2026-10-31 底层 Swift 现行源码在真正 macOS iOS Xcode Simulator [#41247218548](https://github.com/turnupmason/WenguaApp/actions/runs/41247218548) PASS（含bundle资源验收）；Python/Swift native V8两套全文对照 [#41247218530](https://github.com/turnupmason/WenguaApp/actions/runs/41247218530) PASS。BigFish批量单独版本更新没有修改 Swift 层，正式签名真机/App Store未验。
+- 历史失败仍保留：BigFish Pin 切换中间几次 CI FAIL，源旧测试SHA已同步；此前 V7.4 故事原始断词/历史独立1080及旧预览归档冲突失败不可擦除或当作本轮已通过。新旧结果不能按用户事后获悉结局做拟合；整套规则仍属古籍象意，不属医学诊断预测。
