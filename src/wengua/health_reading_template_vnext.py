@@ -18,7 +18,7 @@ FIELDS=("heaven","earth","name","polarity",
 @lru_cache(maxsize=1)
 def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
-    if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_full_evidence":
+    if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_1_conclusion_lifecycle":
         raise ValueError("Unknown user health reading template version")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
@@ -33,7 +33,7 @@ def template():
                 "macro_five_customer","macro_clear_customer",
                 "macro_pace_slow","macro_pace_fast",
                 "macro_pace_mixed","macro_pace_unset",
-                "summary_concise"):
+                "summary_concise","front_final","stem_dual_lifecycle"):
         if not isinstance(raw["macros"].get(key),str):
             raise ValueError("Missing template macro: "+key)
     if not isinstance(raw.get("formation"),str):
