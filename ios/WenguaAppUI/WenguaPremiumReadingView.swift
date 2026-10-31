@@ -16,8 +16,7 @@ struct WenguaVerdictPresentation {
         // About 150–200 Chinese characters on ordinary real clocks.
         // Never guess a score, fabricate a control relation or pull the
         // specialist palace descriptions into a second summary engine.
-        var body=caption.interpretation+"。"
-        if !evidence.isEmpty { body+="\n\n"+evidence }
+        var body=evidence
         let meaningful=(macro ?? "").components(separatedBy:"。")
             .map{$0.trimmingCharacters(in:.whitespacesAndNewlines)}
             .filter{ $0.hasPrefix("五不遇时") || $0.hasPrefix("伏吟主慢") ||
