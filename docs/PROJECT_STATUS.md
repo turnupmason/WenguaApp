@@ -2309,3 +2309,8 @@ V11 用户断词保留 V10.1 每个真实用神详细宫环境，替代 V10.2 �
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+## 2026-10-31 · V11 iOS 两页叙述修复（本次主线）
+
+用户纠正上一轮 Swift 首页只显示泛化「有利线索」且缺失吉凶等级；临时恢复一条十档标题+一句文学解释亦不合格。现将首页定为「吉局/凶局 → 十档等级：文学标题 → 来源真实、约150–200字的综合短断语」，第二页仍完整逐项显示 V11 真盘所有 `reading.sections`；算法、200格、81格、V8评分与 V11 底层断词模板未修改。详见 `docs/IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md`。真实六盘文本预核摘要约145–187字，并新增 macOS Swift 原编译执行级回归。所有实际验收应使用最新 commit Actions 而非上一轮通过记录；保留中间失败提交，若有失败不得宣称完整通过。
