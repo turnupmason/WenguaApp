@@ -48,7 +48,9 @@
     "auspice_customer": "吉助同宫，仍须看空墓刑迫",
     "no_extra_conditions": "无特别刑墓迫",
     "summary_concise": "病星天芮{illness}；患者{patient}。\n\n医药两端分别看：{medical}。\n\n{support}{extra}",
-    "sibling_note": " 家属{name}的排行辅助见{palace}，与病宫{relation}；此为单独参照，主用仍取月干。"
+    "sibling_note": " 家属{name}的排行辅助见{palace}，与病宫{relation}；此为单独参照，主用仍取月干。",
+    "front_final": "综上所述，病宫{illness_grade}，患者宫{patient_grade}，医药与辅助还须合参。全盘判为{grade}：{epithet}，{interpretation}。",
+    "stem_dual_lifecycle": "，{symbol}临{stages}，源表力量分列{tiers}，未核定单一落支"
   },
   "data_paths": {
     "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
@@ -200,5 +202,13 @@
       "extra"
     ],
     "score_baseline": "V8 original arithmetic retained; new family auxiliary contributes by real selected physical palace once"
+  },
+  "first_screen_policy": {
+    "evidence_from": "90_review paragraphs excluding last source verdict",
+    "final": "front_final always last, two sentences, grade resolved only from exact original V8 conclusion",
+    "pace": "supported 01_macro only, before front_final",
+    "length": "approximately 150-220 CJK characters, never drop ending to fit length",
+    "same_for": "offline native iPhone and BigFish actual TS + Python",
+    "pending": "never infer V8 grade from unknown source strength"
   }
 }
