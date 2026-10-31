@@ -132,8 +132,8 @@ class RealClockWindow(unittest.TestCase):
         self.assertEqual(M._STRICT_JIEQI_VERSION,
                          "strict_utc_moshier_2025_2040_v2")
         self.assertEqual(M.REAL_PIPELINE_VERSION,
-                         "bigfish_real_gregorian_nov2026_mar2027_v4_V90_friend_four")
-        self.assertIn("source_v4_v90_friend_four",TARGET.read_text("utf8"))
+                         "bigfish_real_gregorian_nov2026_mar2027_v5_V11_friend_month_only")
+        self.assertIn("source_v5_v11_friend_month_only",TARGET.read_text("utf8"))
         self.assertIn("source_v3_strict_jieqi_2040",
                       (ROOT/"docs/STRICT_JIEQI_2040_EXTENSION_20261031.md").read_text("utf8"))
         self.assertIn("source_v2_strict_jieqi",
