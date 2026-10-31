@@ -1146,6 +1146,16 @@ def v11_front_page_from_real_sections(sections,grade):
     timing=byid.get('91_timing')
     if len(body)<150 and timing and len(body)+len(timing)+2<=215:
         body+='\n\n'+timing
+    first=evidence.split("\n\n",1)[0].split("；")
+    def palace_grade(clause):
+        raw=clause.split("宫象")[-1] if "宫象" in clause else "待核"
+        return re.split("[，。；]",raw,1)[0]
+    illness_grade=palace_grade(first[0])
+    patient_grade=palace_grade(first[1]) if len(first)>1 else "待核"
+    ending=("综上所述，病宫"+illness_grade+"，患者宫"+patient_grade+
+            "，医药与辅助还须合参。全盘判为"+grade+"："+epithet+
+            "，"+interpretation+"。")
+    body+="\n\n"+ending
     return {'category':category,'grade':grade,'epithet':epithet,
             'body':body,'character_count':len(''.join(body.split())),
             'display_text':category+'\n'+grade+'：'+epithet+'\n\n'+body,
