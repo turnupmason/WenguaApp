@@ -1,6 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Wengua x BigFish -- one relationship, 518400 four-pillar scenario rows.
+"""Wengua x BigFish -- REAL 2026-11-15..2027-03-15 local-time launch batch.
+
+Default mode produces independent verified real Gregorian instants, one
+representative local clock per traditional two-hour branch/date, using the
+existing actual BigFish TypeScript physical-cast and frozen V8/V10.2 pipeline.
+Every distinct calendar clock is checked with Wengua's offline astronomical
+calendar; never take two invented candidate terms or substitute an old chart.
+Physical arrangements alone do NOT supply a full customer reading.
+
+LEGACY MODE (explicit opt-in) remains the 518400 abstract four-pillar study;
+its old SQLite, failed readings, hand-edited workbooks remain untouched.
+
+Historical implementation notes for the legacy mode follow:
 
 Put this file beside local_batch.py inside the INSTALLED WenguaBigFishLocal folder.
 Run `python3 wengua_518400.py`; edit RELATIONSHIP below to run the next actor.
@@ -29,20 +41,24 @@ requires internet. Subsequent bulk computation has no GPT API/network calls.
 from __future__ import annotations
 
 # ===== THESE ARE THE ONLY SETTINGS YOU NORMALLY CHANGE =====
+BATCH_MODE = 'real_clock'   # 默认只生成真实2026-11-15~2027-03-15；旧研究请显式填 'abstract_518400_legacy'
+REAL_DATE_START = '2026-11-15' # 含当日
+REAL_DATE_END = '2027-03-15'   # 含当日
+REAL_TIMEZONE = 'America/New_York' # 只供该IANA时区预审；App仍依据手机实际时区和当前秒数实时计算
 RELATIONSHIP = 'father'       # father -> mother -> younger_sibling -> ...
 PATIENT_SEX = None           # 弟弟可设 'male'；姐妹或妈妈已知女可设 'female'
 PATIENT_AGE_BAND = None      # 只有确定为年轻人时填 'young'；否则保持None
 BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youngest
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
 CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
-MAX_NEW_ROWS = 20            # v3先核对20行及40双节气；经人工检查后改0继续518400
-ROWS_PER_EXCEL = 5000        # 104 numbered CSV / XLSX workbooks per person
+MAX_NEW_ROWS = 20            # 先20个真实时辰验证，确认后改0覆盖本窗口；非518400条
+ROWS_PER_EXCEL = 500         # 真实时辰分卷；旧抽象研究模式同样适用
 COMMIT_EVERY = 10            # committed records surviving power loss
 PRINT_EVERY = 100            # print progress every 100 newly completed rows
 GENERATE_XLSX = True        # actual .xlsx (uses Python standard library only)
 AUTO_INSTALL = True        # 首次运行自动安装 GitHub 固定源码与 TypeScript；只需联网一次
 AUTO_INSTALL_NODE = True   # Mac 缺 Node 时自动下载官方 LTS 到本项目 toolchain，无 sudo / .command
-INSTALL_ONLY = False       # 改 True 时仅安装/校验，不开始 518400 批量
+INSTALL_ONLY = False       # True只检查固定BigFish/Wengua/Node，不起盘
 STOP_IF_FIRST_ROW_FAILS = False # 缺人物用神时仅保留失败，继续生成可断的其它场景
 DEFER_UNRESOLVED_JIA = False # 2026-10-29用户核准完整来源柱六甲遁仪；不再跳过甲年/月/日
 MAX_CONSECUTIVE_UNEXPECTED_FAILURES = 3 # 未预先识别的双节气失败到门槛就停止并保留所有失败
@@ -64,9 +80,10 @@ import tempfile
 import urllib.error
 import urllib.request
 import zipfile
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date, time, timedelta
 from contextlib import contextmanager
 from pathlib import Path
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from xml.sax.saxutils import escape as xml_escape
 
 HERE = Path(__file__).resolve().parent
@@ -710,12 +727,13 @@ def clean_xml(s):
     return xml_escape(text, {'"':'&quot;'})
 
 
-def write_xlsx(path: Path, rows):
+def write_xlsx(path: Path, rows, *, headers=None):
     """Write an Excel-compatible .xlsx ZIP in bounded memory, no pip deps.
 
     Inline strings prevent formula execution and avoid costly shared-string
     tables for millions of distinct classical Chinese reading cells.
     """
+    headers=HEADERS if headers is None else headers
     path.parent.mkdir(parents=True,exist_ok=True)
     temp = path.with_suffix('.xlsx.incomplete')
     with zipfile.ZipFile(temp, 'w', zipfile.ZIP_DEFLATED, compresslevel=6,
@@ -762,13 +780,13 @@ def write_xlsx(path: Path, rows):
           '</styleSheet>')
         with z.open('xl/worksheets/sheet1.xml', 'w') as f:
             def write(text):f.write(text.encode('utf-8'))
-            max_col=excel_ref(len(HEADERS))
+            max_col=excel_ref(len(headers))
             write('<?xml version="1.0" encoding="UTF-8"?>'
                   '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
                   '<sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'
                   '<sheetFormatPr defaultRowHeight="22"/>'
                   '<cols>')
-            for k in range(1,len(HEADERS)+1):
+            for k in range(1,len(headers)+1):
                 width=60 if k in (13,22) else 22 if k in (16,25,27,28,29,30) else 16
                 write(f'<col min="{k}" max="{k}" width="{width}" customWidth="1"/>')
             write('</cols><sheetData>')
@@ -782,7 +800,7 @@ def write_xlsx(path: Path, rows):
                     v=clean_xml(str(val)[:32767])
                     write(f'<c r="{cell}" s="{style}" t="inlineStr"><is><t xml:space="preserve">{v}</t></is></c>')
                 write('</row>')
-            row_xml(1,HEADERS)
+            row_xml(1,headers)
             count=1
             for count, values in enumerate(rows,2):
                 row_xml(count, values)
@@ -1214,7 +1232,8 @@ def export_new_batch(db, root:Path, labels:dict, indices:list[int]) -> str | Non
     return str(xlsx_path if GENERATE_XLSX else csv_path)
 
 
-def run():
+def run_abstract_legacy():
+    """Historical 518400 combinations: explicit opt-in ONLY, old paths preserved."""
     if ROWS_PER_EXCEL<1 or ROWS_PER_EXCEL>30000:raise ValueError('ROWS_PER_EXCEL must be 1..30000')
     if COMMIT_EVERY<1 or PRINT_EVERY<1:raise ValueError('commit/report cadence must be positive')
     # The previous father/ output had 1100 retained FAILS; NEVER reuse it.
@@ -1370,6 +1389,336 @@ def run():
         print('未跑完的组合不称成功；条件四柱不等同真实公历时刻。',flush=True)
         db.close()
         worker.close()
+
+
+
+# =================== REAL-CALENDAR LAUNCH WINDOW =====================
+# This is a replacement DEFAULT path inside the original BigFish script,
+# not a new casting engine or a duplicated copy of the V8 source formulas.
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v1'
+REAL_BRANCH_HOURS = (0,1,3,5,7,9,11,13,15,17,19,21)
+REAL_HEADERS = (
+    '序号','真实公历时刻（含时区偏移）','IANA时区','时辰地支','人物ID',
+    '年柱','月柱','日柱','时柱','实际节气','真实局数','盘式编号',
+    '主用神源柱','原始用神符号','六甲遁仪（若有）','用神落宫','辅助宫',
+    '原始十档','V8内部净分（仅审计）','断词状态','完整V10.2原断词',
+    '事实SHA256','原文SHA256','失败原因','人工修订','GPT润色候选',
+    '审核状态','不可变源事实JSON'
+)
+
+def real_calendar_slots(start=REAL_DATE_START,end=REAL_DATE_END,
+                        timezone_name=REAL_TIMEZONE):
+    """One REAL local representative instant for each branch/day.
+
+    00:30 is the civil-midnight 子 sample; 01:30,03:30,...21:30 sample the
+    other 11 branches. No 23:xx late-zi resolution is fabricated.
+    DST nonexistent or ambiguous local instants fail closed.
+    Sampled 12 per day != certifying all instants of 12 complete branches.
+    """
+    first=date.fromisoformat(start)
+    last=date.fromisoformat(end)
+    if first>last:
+        raise ValueError('真实日期范围开始日晚于结束日')
+    try:
+        tz=ZoneInfo(timezone_name)
+    except (ZoneInfoNotFoundError,ValueError,TypeError) as ex:
+        raise ValueError('请提供真实IANA时区，例如 America/New_York') from ex
+    current=first
+    idx=0
+    while current<=last:
+        for h in REAL_BRANCH_HOURS:
+            local=datetime.combine(current,time(h,30),tzinfo=tz)
+            utc=local.astimezone(timezone.utc)
+            check=utc.astimezone(tz)
+            if (check.replace(tzinfo=None)!=local.replace(tzinfo=None) or
+                local.replace(fold=1).utcoffset()!=local.utcoffset()):
+                raise ValueError('本次真实时辰遇DST缺失/重复时刻；必须单独按真实UTC定位，不能盲排：'+local.isoformat())
+            branch=BRANCHES[0 if h==0 else (h+1)//2]
+            yield {'idx':idx,'instant':local.isoformat(),
+                   'utc':utc.isoformat(),'timezone':timezone_name,
+                   'date':current.isoformat(),'branch':branch,
+                   'representative_only':True,
+                   'late_zi_23_not_included':True}
+            idx+=1
+        current+=timedelta(days=1)
+
+def real_case_identity(slot, inquiry):
+    return sha_text(canonical({
+        'version':REAL_PIPELINE_VERSION,'instant':slot['instant'],
+        'timezone':slot['timezone'],'relationship':inquiry['relationship'],
+        'context':inquiry['consultation_context'],
+        'sex':inquiry.get('patient_sex'),
+        'age':inquiry.get('patient_age_band'),
+        'birth_order':inquiry.get('birth_order'),
+        'natal':inquiry.get('patient_birth_ganzhi'),
+        'bigfish_sha':base.BIGFISH_SHA,'wengua_sha':base.WENGUA_SHA,
+    }))
+
+def real_case_from_slot(worker, slot, inquiry):
+    """Actual civil instant -> independently calendared four pillars/term
+    -> ORIGINAL BigFish TypeScript -> Wengua frozen V8/V10.2.
+    A failed calendar boundary never falls back to a guessed term/chart.
+    """
+    output={'instant':slot['instant'],'utc':slot['utc'],
+            'timezone':slot['timezone'],'branch':slot['branch'],
+            'status':'失败_保留原样','error':'',
+            'not_a_two_hour_interval_certification':True,
+            'not_a_clinical_diagnosis':True,
+            'patient_natal_was_supplied':bool(inquiry.get('patient_birth_ganzhi')),
+            'approved_for_app':False}
+    try:
+        from src.wengua.astro_calendar import solar_chart_clock
+        from src.wengua.casting_shenqi import bureau_for_term
+        calendar=solar_chart_clock(slot['instant'],slot['timezone'])
+        pillars=calendar['four_pillars']
+        term=calendar['active_solar_term']
+        if len(pillars)!=4 or any(
+            pillars[k] not in CYCLE60 for k in ('year','month','day','hour')):
+            raise ValueError('实际公历时刻未获得合法真实四柱')
+        if pillars['hour'][1]!=slot['branch']:
+            raise ValueError('真实手机时辰地支与本次独立历算不一致')
+        original=worker.bureau(term,pillars['day'])
+        independent=bureau_for_term(pillars['day'],term)
+        if (('yang' if original['isYangDun'] else 'yin')!=independent['dun'] or
+            original['juNumber']!=independent['ju']):
+            raise ValueError('真实节气/符头局数的BigFish源与原Wengua有冲突；不得猜盘')
+        result=compute_variant(worker,pillars,term,inquiry)
+        output.update(result)
+        output.update(instant=slot['instant'],utc=slot['utc'],
+                      timezone=slot['timezone'],branch=slot['branch'],
+                      'not_a_two_hour_interval_certification'=True,
+                      'approved_for_app'=False)
+        output['calendar_receipt']=calendar
+        if not result['status'].startswith('原始断词'):
+            output['status']='失败_保留原样'
+        else:
+            lock=dict(result['source_fact_lock'])
+            lock['real_calendar_receipt_sha256']=calendar['sha256']
+            lock['exact_real_instant']=slot['instant']
+            lock['iana_timezone']=slot['timezone']
+            lock['sample_only_not_whole_two_hour_branch']=True
+            output['source_fact_lock']=lock
+            output['evidence_sha']=sha_text(canonical(
+                {'facts':lock,'sections':result['sections']}))
+    except Exception as ex:
+        output['status']='失败_保留原样'
+        output['error']=str(ex)[:1500]
+        # Never invent term/grade/chart on calendrical ambiguity.
+    return output
+
+def initialize_real_db(path,config):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    db=sqlite3.connect(path)
+    db.execute('PRAGMA journal_mode=WAL')
+    db.execute('PRAGMA synchronous=FULL')
+    db.execute('CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY,value TEXT NOT NULL)')
+    db.execute('''CREATE TABLE IF NOT EXISTS real_cases(
+        idx INTEGER PRIMARY KEY,
+        case_id TEXT UNIQUE NOT NULL,
+        instant TEXT UNIQUE NOT NULL,
+        payload_json TEXT NOT NULL,
+        created_at TEXT NOT NULL
+    )''')
+    cfg=canonical(config)
+    existing=db.execute("SELECT value FROM settings WHERE name='config'").fetchone()
+    if existing and existing[0]!=cfg:
+        db.close()
+        raise RuntimeError('真实公历输出目录所属源版本/时区/人物变更；请另建版本目录，禁止改写原断词')
+    if not existing:
+        db.execute("INSERT INTO settings VALUES('config',?)",(cfg,))
+        db.commit()
+    return db
+
+def real_review_row(record,labels):
+    result=record['result']
+    pillars=record.get('four_pillars') or {}
+    binding=result.get('source_fact_lock',{}).get('person_binding') or {}
+    cal=result.get('calendar_receipt') or {}
+    return [
+        record['idx']+1,record['instant'],record['timezone'],record['branch'],
+        labels.get(RELATIONSHIP,RELATIONSHIP),
+        *[pillars.get(k,'') for k in ('year','month','day','hour')],
+        cal.get('active_solar_term',''),result.get('bureau',''),
+        result.get('base_id',''),binding.get('source_ganzhi',''),
+        binding.get('stem',''),binding.get('carrier_stem',''),
+        binding.get('palace',''),','.join(map(str,binding.get('auxiliary_palaces',()))),
+        result.get('grade',''),result.get('score',''),result.get('status',''),
+        result.get('text',''),result.get('evidence_sha',''),
+        result.get('original_text_sha256',''),result.get('error',''),
+        '','','待人工审核',canonical(result.get('source_fact_lock',{}))
+    ]
+
+def export_real_new(db,root,labels,indices):
+    """Append-only independent snapshots. NEVER overwrite human/GPT edits."""
+    if not indices:
+        return None
+    indices=sorted(set(indices))
+    items=[]
+    for idx in indices:
+        data=db.execute('SELECT payload_json FROM real_cases WHERE idx=?',(idx,)).fetchone()
+        if not data:
+            raise RuntimeError('真实序号丢失，拒绝伪造Excel：'+str(idx))
+        items.append(json.loads(data[0]))
+    tag=sha_text(canonical(
+        [items[0]['case_id'],items[-1]['case_id'],len(items)]))[:12]
+    name=f'{RELATIONSHIP}_真实时辰_{items[0]["idx"]+1:04d}-{items[-1]["idx"]+1:04d}_{tag}'
+    out=root/'Excel_CSV_可直接打开'
+    out.mkdir(parents=True,exist_ok=True)
+    csvfile=out/(name+'.csv')
+    xlsxfile=out/(name+'.xlsx')
+    jsonlfile=out/(name+'_原始事实与章节.jsonl')
+    for target in (csvfile,jsonlfile):
+        if target.exists():
+            raise FileExistsError('原始导出和人工稿不允许覆盖：'+str(target))
+    records=[real_review_row(x,labels) for x in items]
+    csvtmp=csvfile.with_suffix('.csv.incomplete')
+    jsontmp=jsonlfile.with_suffix('.jsonl.incomplete')
+    try:
+        with csvtmp.open('x',encoding='utf-8-sig',newline='') as f:
+            writer=csv.writer(f)
+            writer.writerow(REAL_HEADERS)
+            writer.writerows([[literal_excel(x) for x in row] for row in records])
+        with jsontmp.open('x',encoding='utf-8') as f:
+            for row in items:
+                f.write(canonical(row)+'\n')
+        if GENERATE_XLSX:
+            if xlsxfile.exists():
+                raise FileExistsError('保留已有人工Excel：'+str(xlsxfile))
+            write_xlsx(xlsxfile,records,headers=REAL_HEADERS)
+        os.replace(csvtmp,csvfile)
+        os.replace(jsontmp,jsonlfile)
+    finally:
+        if csvtmp.exists():csvtmp.unlink()
+        if jsontmp.exists():jsontmp.unlink()
+    return xlsxfile if GENERATE_XLSX else csvfile
+
+def run_real_calendar():
+    """Default launch scope; old 518400 study is never resumed or overwritten."""
+    if MAX_NEW_ROWS<0:
+        raise ValueError('MAX_NEW_ROWS必须>=0；0表示本窗口全部而非全历史')
+    if ROWS_PER_EXCEL<1 or COMMIT_EVERY<1 or PRINT_EVERY<1:
+        raise ValueError('提交/导出参数必须为正整数')
+    activate_six_jia_sources()
+    manifest=ensure_install()
+    if INSTALL_ONLY:
+        print('安装/冻结资源校验完成。实际四个月生成尚未启动。',flush=True)
+        return
+    profiles=actor_catalog()
+    validation=validate_actor_settings(profiles)
+    labels=catalog_relation_labels()
+    inquiry=build_inquiry(validation)
+    # Explicit natal-year-only-if-user-provided policy. Default None.
+    zone=REAL_TIMEZONE
+    slots=tuple(real_calendar_slots(timezone_name=zone))
+    if not slots or slots[0]['date']!=REAL_DATE_START or slots[-1]['date']!=REAL_DATE_END:
+        raise ValueError('真实公历完整窗口枚举错误')
+    zone_path=zone.replace('/','_')
+    root=(base.OUTPUT/'real_calendar_20261115_20270315'/
+          RELATIONSHIP/zone_path/'source_v1')
+    root.mkdir(parents=True,exist_ok=True)
+    info={
+        'version':REAL_PIPELINE_VERSION,
+        'window':{'start':REAL_DATE_START,'end':REAL_DATE_END,
+                  'inclusive':True,'tz':REAL_TIMEZONE},
+        'real_local_sample_count':len(slots),
+        'hour_samples':REAL_BRANCH_HOURS,
+        'one_real_solar_term_only':True,
+        'sample_does_not_certify_whole_branch':True,
+        'device_still_casts_current_instant':True,
+        'no_23_late_zi_or_ambiguous_jie_fallback':True,
+        'relationship':RELATIONSHIP,'context':validation['context'],
+        'patient_sex':PATIENT_SEX,'age_band':PATIENT_AGE_BAND,
+        'birth_order':BIRTH_ORDER,'natal':PATIENT_BIRTH_GANZHI,
+        'bigfish_sha':base.BIGFISH_SHA,'wengua_sha':base.WENGUA_SHA,
+        'freeze_sha256':{k:v['sha256'] for k,v in manifest['files'].items()},
+    }
+    db=initialize_real_db(root/f'{RELATIONSHIP}_真实时辰进度.sqlite3',info)
+    existing=db.execute('SELECT COUNT(*) FROM real_cases').fetchone()[0]
+    config_file=root/'源版本与实际公历范围.json'
+    if not config_file.exists():
+        config_file.write_text(json.dumps(info,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+    print(f'真实起盘预审窗口：{REAL_DATE_START} 至 {REAL_DATE_END}（含端点），{zone}',flush=True)
+    print(f'人物：{RELATIONSHIP} {labels[RELATIONSHIP]}；主用神：{validation["reference"]["kind"]}',flush=True)
+    print('患者出生年命：'+(PATIENT_BIRTH_GANZHI or '未提供，不参与'),flush=True)
+    print(f'每个真实日期12个独立代表时刻，总候选{len(slots)}；已记录{existing}。',flush=True)
+    print('iPhone正式实时起盘不受此缓存窗口限制；节气边界/23时不使用邻盘替代。',flush=True)
+    print('旧518400研究SQLite/失败Excel/人工修订一概不修改。',flush=True)
+    sys.path.insert(0,str(base.SOURCE))
+    worker=None
+    current=0;failures=0;pending=0;unknown_consecutive=0
+    newly=[]
+    try:
+        worker=BigFishWorker(root)
+        for slot in slots:
+            if MAX_NEW_ROWS and current>=MAX_NEW_ROWS:
+                break
+            idx=slot['idx']
+            if db.execute('SELECT 1 FROM real_cases WHERE idx=?',(idx,)).fetchone():
+                continue
+            result=real_case_from_slot(worker,slot,inquiry)
+            calendar=result.get('calendar_receipt') or {}
+            record={
+                'schema':REAL_PIPELINE_VERSION,
+                'idx':idx,'case_id':real_case_identity(slot,inquiry),
+                'instant':slot['instant'],'timezone':slot['timezone'],
+                'utc':slot['utc'],'branch':slot['branch'],
+                'four_pillars':calendar.get('four_pillars'),
+                'active_solar_term':calendar.get('active_solar_term'),
+                'result':result,
+                'state':'原文待审' if result['status'].startswith('原始断词') else '失败_保留原样',
+                'approved_for_app':False,
+                'reference_clock_only':True,
+                'no_inferred_birth_year':not bool(PATIENT_BIRTH_GANZHI),
+            }
+            db.execute('INSERT INTO real_cases VALUES(?,?,?,?,?)',(
+                idx,record['case_id'],slot['instant'],canonical(record),
+                datetime.now(timezone.utc).isoformat()))
+            newly.append(idx);current+=1;pending+=1
+            if result['status'].startswith('失败'):
+                failures+=1;unknown_consecutive+=1
+            else:
+                unknown_consecutive=0
+            if current<=3:
+                b=result.get('source_fact_lock',{}).get('person_binding') or {}
+                print('[真实时辰/用神]',slot['instant'],'四柱',record['four_pillars'],
+                      '节气',record['active_solar_term'],'宫',b.get('palace'),
+                      '原符号',b.get('stem'),'遁仪',b.get('carrier_stem'),
+                      '状态',result['status'],'错误',result.get('error','')[:140],flush=True)
+            if pending>=COMMIT_EVERY:
+                db.commit();pending=0
+            if len(newly)>=ROWS_PER_EXCEL:
+                db.commit();pending=0
+                file=export_real_new(db,root,labels,newly)
+                print('导出真实日期Excel/CSV/原始JSONL',file,flush=True)
+                newly.clear()
+            if current%PRINT_EVERY==0:
+                db.commit();pending=0
+                print(f'本轮新增{current}；实际失败{failures}；窗口进度{idx+1}/{len(slots)}',
+                      flush=True)
+            if unknown_consecutive>=MAX_CONSECUTIVE_UNEXPECTED_FAILURES:
+                db.commit();pending=0
+                raise RuntimeError('真实日期连续多次断案失败，已留原始失败与输出；'+
+                                   '最后失败：'+result.get('error',''))
+    except KeyboardInterrupt:
+        print('用户手动中止：已记录保持不可变，重新运行从真实日期断点继续。',flush=True)
+    finally:
+        db.commit()
+        if newly:
+            file=export_real_new(db,root,labels,newly)
+            print('本轮新Excel/CSV/JSONL：',file,flush=True)
+        total=db.execute('SELECT COUNT(*) FROM real_cases').fetchone()[0]
+        print(f'已保留真实时辰{total}/{len(slots)}；本轮新增{current}，失败{failures}。',flush=True)
+        print('文件目录：',root/'Excel_CSV_可直接打开',flush=True)
+        db.close()
+        if worker is not None:
+            worker.close()
+
+def run():
+    if BATCH_MODE=='real_clock':
+        return run_real_calendar()
+    if BATCH_MODE=='abstract_518400_legacy':
+        return run_abstract_legacy()
+    raise ValueError('BATCH_MODE must be real_clock or abstract_518400_legacy')
 
 
 if __name__=='__main__':
