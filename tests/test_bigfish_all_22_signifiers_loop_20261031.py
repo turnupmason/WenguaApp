@@ -51,8 +51,7 @@ class ActorLoop(unittest.TestCase):
                                for x in catalog}),26)
         self.assertEqual({(x["patient_sex"],x["relative_age"])
                           for x in catalog if x["relationship"]=="friend"},
-                         {("male","older"),("male","younger"),
-                          ("female","older"),("female","younger")})
+                         {(None,None)})
         self.assertEqual([x["patient_sex"] for x in catalog
                           if x["relationship"]=="spouse"],["male","female"])
         self.assertEqual([x["patient_sex"] for x in catalog
