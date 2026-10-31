@@ -31,3 +31,10 @@
 ## 历史兼容
 
 V9 friend 四分支、V10.1、V10.2 原叙述及相应失败测试仍留在 Git 提交历史；当前回归更新为 V11 目标是版本升级，不把历史运行结果涂改为当次通过。若新版 CI 失败，需保留失败链接与具体错误，再补独立修复记录。
+
+## 2026-10-31 实际 CI 追加记录（禁止覆盖旧失败）
+
+- [主 Python CI #41222377904](https://github.com/turnupmason/WenguaApp/actions/runs/41222377904)：**成功**，包含 3.11/3.12 V11 朋友无性别/年龄、四类真实兄姐弟妹辅助、V8 25对源强及 Important 镜像回归。
+- [BigFish #41222377667](https://github.com/turnupmason/WenguaApp/actions/runs/41222377667)：**成功**，原始 BigFish 24种身份源 / 26种实际条件配置；旧合称关系记录不被冒充当前实际人物。
+- [真实 macOS Xcode Simulator #41222223461](https://github.com/turnupmason/WenguaApp/actions/runs/41222223461)：**成功**，Xcode 模拟器构建及应用包内 200格、81格、V11 模板与人物 JSON 资源验收；未做签名真机或 App Store 上架。
+- [此前 Python/Swift 全文对照 #41222331008](https://github.com/turnupmason/WenguaApp/actions/runs/41222331008)：**失败留档**；该流程发现 2024-10-09 15:00 EDT 哥哥实盘辅助宫关系原字「受克」与 Swift「被克」不同。现已在 Swift 把辅助来源关系独立映射为原书用语「受克/受生/比和」，不改变五行克向、不改 V8 分数；纠正后须等新 Actions 真正通过再标完整一致。
