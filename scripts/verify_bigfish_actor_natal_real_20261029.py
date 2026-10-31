@@ -41,7 +41,7 @@ def main(compiled:Path):
     try:
         profiles=script.actor_catalog()
         for relationship,natal in (('father',None),('father','乙丑'),
-                                   ('mother','乙丑'),('younger_sibling',None)):
+                                   ('mother','乙丑'),('younger_brother',None)):
             with_name={p['id']:p for p in profiles['profiles']}
             profile=with_name[relationship]
             inquiry={'intent':'severity','relationship':relationship,
@@ -55,8 +55,8 @@ def main(compiled:Path):
             binding=lock['person_binding']
             kind=profile['references'][0]['kind']
             assert binding['role_via']==kind,(relationship,kind,binding)
-            assert binding['stem']==('戊' if relationship=='younger_sibling' else '丙')
-            expected_aux=6 if relationship=='father' else 2 if relationship=='mother' else None
+            assert binding['stem']==('戊' if relationship=='younger_brother' else '丙')
+            expected_aux=6 if relationship=='father' else 2 if relationship=='mother' else 8 if relationship=='younger_brother' else None
             roles=result['source_fact_lock']['selected_roles']
             assert roles['patient']['palace']==binding['palace']
             assert ('gender' in roles)==(expected_aux is not None)
