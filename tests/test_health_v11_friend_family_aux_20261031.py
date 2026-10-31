@@ -48,6 +48,11 @@ class V11FriendAndSiblings(unittest.TestCase):
                                  len(set(r["scored_relevant_palaces"])))
                 summary=next(s["text"] for s in r["sections"]
                              if s["id"]=="90_review")
-                self.assertIn("兄弟姐妹辅助",summary)
+                # The auxiliary and illness may be the SAME real star/palace:
+                # one role section remains, but no second independent vote.
+                sibling_identity=(nodes["sibling"]["palace"],nodes["sibling"]["symbol"])
+                illness_identity=(nodes["illness"]["palace"],nodes["illness"]["symbol"])
+                if sibling_identity!=illness_identity:
+                    self.assertIn("兄弟姐妹辅助",summary)
 
 if __name__=="__main__":unittest.main()
