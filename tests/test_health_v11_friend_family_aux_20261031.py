@@ -43,7 +43,7 @@ class V11FriendAndSiblings(unittest.TestCase):
                 self.assertEqual(nodes["patient"]["symbol"],"己")
                 self.assertEqual(nodes["sibling"]["palace"],expected)
                 self.assertIn(expected,r["scored_relevant_palaces"])
-                self.assertIn("09a_sibling",{x["id"] for x in r["sections"]})
+                self.assertIn("09a",{x["id"] for x in r["sections"]})
                 self.assertEqual(len(r["scored_relevant_palaces"]),
                                  len(set(r["scored_relevant_palaces"])))
                 summary=next(s["text"] for s in r["sections"]
