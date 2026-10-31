@@ -37,6 +37,12 @@ def source_fragment(text:str,start:str,end:str) -> str:
 
 def check():
     ui=PREMIUM.read_text(encoding="utf-8")
+    # Check the ACTUAL first-tab Swift UI composition, not only its grade
+    # caption lookup. A generic one-line override used to pass the old test.
+    assert 'Text(caption.category)' in ui
+    assert 'Text(grade+"："+caption.epithet)' in ui
+    assert 'Text(verdict.frontNarrative(caption))' in ui
+    assert 'WenguaNaturalSeveritySummary' not in ui
     native=ROUTER.read_text(encoding="utf-8")
     parts=[
         "import Foundation\n",
