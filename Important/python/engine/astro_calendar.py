@@ -18,7 +18,7 @@ except ImportError:
 from .core import STEMS,BRANCHES,cycle60
 from .casting_shenqi import hour_branch_from_wall_clock,hour_ganzhi_from_day
 
-EPHEMERIS_VERSION="wen-gua-strict-jieqi-utc-moshier-2025-2028-v1"
+EPHEMERIS_VERSION="wen-gua-local-meeus-solar-longitude-v1"
 SOLAR_TERMS=("冬至","小寒","大寒","立春","雨水","惊蛰","春分","清明",
              "谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋",
              "处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪")
@@ -149,7 +149,8 @@ def solar_chart_clock(iso,timezone_name,*,zi_hour_rollover="civil_midnight"):
  hour_branch=hour_branch_from_wall_clock(local.hour)
  hour_gz=hour_ganzhi_from_day(day_gz[0],hour_branch)
  receipt={
-  "method":EPHEMERIS_VERSION,"ephemeris_flag":"offline_Meeus_NOAA_apparent_longitude",
+  "method":STRICT_JIEQI_VERSION if precise else EPHEMERIS_VERSION,
+  "ephemeris_flag":"offline_swiss_moshier_crossing" if precise else "offline_Meeus_NOAA_apparent_longitude",
   "solar_term_border_ambiguity_rejected_below_degrees":0.05,
   "solar_term_boundary_policy":"strict_instant_new_inclusive" if precise else "approximate_guarded_outside_window",
   "last_solar_crossing_utc_ms":precise[1] if precise else None,

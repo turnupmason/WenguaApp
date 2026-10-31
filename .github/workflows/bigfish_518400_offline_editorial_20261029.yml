@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
+      - 'src/wengua/astro_calendar.py'
       - 'tests/test_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'tests/test_bigfish_node_runtime_pycharm_20261029.py'
@@ -28,6 +29,8 @@ jobs:
           python-version: '3.11'
       - name: Compile complete standalone Python source
         run: python -m py_compile scripts/wengua_bigfish_518400_offline_editorial_20261029.py
+      - name: Historical book calendar plus strict JieQi policy test
+        run: python -m unittest discover -s tests -p 'test_astro_calendar_book_timing_v15.py' -v
       - name: Real SQLite CSV XLSX JSONL no-overwrite/failure tests
         run: python -m unittest discover -s tests -p 'test_bigfish_518400_offline_editorial_20261029.py' -v
 

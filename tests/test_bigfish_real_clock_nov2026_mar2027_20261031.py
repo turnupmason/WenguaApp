@@ -60,43 +60,63 @@ class RealClockWindow(unittest.TestCase):
         self.assertFalse(any("T23:" in x["instant"] for x in rows))
         for start in range(0,len(rows),12):
             self.assertEqual(len({r["branch"] for r in rows[start:start+12]}),12)
-    def test_exact_first_600_failure_counts_are_solar_term_precision_guard(self):
-        """User Mac 100:2, 200:2, 300:3, 400:3, 500:4, 600:4.
-
-        Derive from the ACTUAL repository astro_calendar, not chat estimates.
-        Source Meeus 0.05 degree guard must reject without guessing the Jie.
-        """
-        from src.wengua.astro_calendar import solar_chart_clock
-        rejects=[]
+    def test_old_refusals_preserved_and_strict_current_term_resolves(self):
+        from src.wengua.astro_calendar import (
+            solar_chart_clock, _sun_longitude, _jd, _at)
+        prior=[]
         for slot in M.real_calendar_slots():
-            try:
-                solar_chart_clock(slot["instant"],slot["timezone"])
-            except ValueError as ex:
-                if "Astronomical solar-term boundary within" not in str(ex):
-                    raise
-                rejects.append((slot["idx"]+1,slot["instant"],str(ex)))
-        expected_first=(
+            loc=_at(slot["instant"],slot["timezone"])
+            lon=_sun_longitude(_jd(loc))
+            if min(lon%15,15-lon%15)<0.05:
+                prior.append((slot["idx"]+1,slot["instant"]))
+            current=solar_chart_clock(slot["instant"],slot["timezone"])
+            self.assertEqual(current["solar_term_boundary_policy"],
+                             "strict_instant_new_inclusive")
+        self.assertEqual(len(prior),12)  # old 12 rejects remain in historical audit
+        self.assertEqual([x for x in prior if x[0]<=600],[
             (86,"2026-11-22T01:30:00-05:00"),
             (87,"2026-11-22T03:30:00-05:00"),
             (264,"2026-12-06T21:30:00-05:00"),
-            (441,"2026-12-21T15:30:00-05:00"),
-        )
-        self.assertEqual(tuple((i,iso) for i,iso,_ in rejects if i<=600),
-                         expected_first)
-        for checkpoint,expected in ((100,2),(200,2),(300,3),
-                                    (400,3),(500,4),(600,4)):
-            self.assertEqual(sum(i<=checkpoint for i,_,_ in rejects),
-                             expected)
-        # Future refusals from the same 0.05-degree guard in this window;
-        # technical failures beyond this model remain separately auditable.
-        self.assertEqual(len(rejects),12)
+            (441,"2026-12-21T15:30:00-05:00")])
+        self.assertEqual([solar_chart_clock(t,"America/New_York")["active_solar_term"]
+                          for _,t in prior[:4]],
+                         ["立冬","小雪","小雪","大雪"])
         self.assertEqual(M.real_failure_category({
-            "status":"失败_保留原样","error":rejects[0][2]
-        }),"节气交界精度保护_需高精度交节核算")
-        self.assertEqual(M.real_failure_category({
-            "status":"失败_保留原样","error":"Patient signifier unresolved"
-        }),"其它失败_需查看原始错误并复现")
+            "status":"失败_保留原样",
+            "error":"Astronomical solar-term boundary within"}),
+            "节气交界精度保护_需高精度交节核算")
 
+    def test_exact_boundary_millisecond_and_same_hour(self):
+        from datetime import datetime,timedelta,timezone
+        from src.wengua.astro_calendar import solar_chart_clock
+        from src.wengua.casting_shenqi import bureau_for_term
+        crossing=datetime.fromisoformat("2026-11-22T07:23:21.139+00:00")
+        def clock(t):
+            return solar_chart_clock(
+                t.astimezone(timezone(timedelta(hours=-5))).isoformat(),
+                "America/New_York")
+        before=clock(crossing-timedelta(milliseconds=1))
+        exact=clock(crossing)
+        after=clock(crossing+timedelta(milliseconds=1))
+        self.assertEqual([x["active_solar_term"] for x in (before,exact,after)],
+                         ["立冬","小雪","小雪"])
+        self.assertEqual(len({x["four_pillars"]["hour"] for x in
+                              (before,exact,after)}),1)
+        self.assertEqual(len({x["four_pillars"]["month"] for x in
+                              (before,exact,after)}),1)
+        self.assertNotEqual(
+            bureau_for_term(before["four_pillars"]["day"],"立冬")["ju"],
+            bureau_for_term(exact["four_pillars"]["day"],"小雪")["ju"])
+
+    def test_original_one_file_bigfish_strict_calendar_matches_new_python(self):
+        from src.wengua.astro_calendar import solar_chart_clock
+        slot=next(v for v in M.real_calendar_slots() if v["idx"]==85)
+        actual=M.strict_real_calendar_clock(slot["instant"],slot["timezone"])
+        ref=solar_chart_clock(slot["instant"],slot["timezone"])
+        self.assertEqual(actual["active_solar_term"],"立冬")
+        self.assertEqual(actual["four_pillars"],ref["four_pillars"])
+        self.assertEqual(actual["last_solar_crossing_utc_ms"],
+                         ref["last_solar_crossing_utc_ms"])
 
     def test_real_spring_dST_has_real_offsets_both_sides(self):
         day={x["instant"][11:16]:x for x in M.real_calendar_slots()
