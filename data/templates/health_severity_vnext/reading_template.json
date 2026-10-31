@@ -1,5 +1,5 @@
 {
-  "schema": "health_severity_user_editable_template_v20261028_v10_2_evidence_first",
+  "schema": "health_severity_user_editable_template_v20261031_v11_full_evidence",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "时局总纲",
@@ -47,8 +47,8 @@
     "macro_pace_unset": "星门无整盘伏吟反吟，应期须另参。",
     "auspice_customer": "吉助同宫，仍须看空墓刑迫",
     "no_extra_conditions": "无特别刑墓迫",
-    "summary_concise": "天芮{illness}；患者{patient}；{medical}{extra}。",
-    "sibling_note": " 依据本次已明确的排行或实际年轻条件，另参{name}的{palace}，与病宫{relation}；月干仍为患者主用神。"
+    "summary_concise": "病星天芮{illness}；患者{patient}。\n\n医药两端分别看：{medical}。\n\n{support}{extra}",
+    "sibling_note": " 家属{name}的排行辅助见{palace}，与病宫{relation}；此为单独参照，主用仍取月干。"
   },
   "data_paths": {
     "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
@@ -186,5 +186,19 @@
     "younger_sister": "兑七少女已证时参，八卦类象推演",
     "one_physical_palace_once": true,
     "source_200_81_unchanged": true
+  },
+  "v11_customer_summary_policy": {
+    "replaces": "V10.2 summary truncation; retains V10.1 full real-palace sections",
+    "friend": "friend month stem only; no sex, age, sibling or elder auxiliary",
+    "family": "sibling optional named trigram role; elder Qian/Kun conditional; one physical palace score",
+    "strength": "distinct signifier power only, never absolute grade; no unverified medical outcome",
+    "slots": [
+      "illness",
+      "patient",
+      "medical",
+      "support",
+      "extra"
+    ],
+    "score_baseline": "V8 original arithmetic retained; new family auxiliary contributes by real selected physical palace once"
   }
 }
