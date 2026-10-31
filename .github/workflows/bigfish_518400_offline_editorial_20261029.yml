@@ -13,6 +13,7 @@ on:
       - 'tests/test_bigfish_1100_father_jia_preflight_20261029.py'
       - 'tests/test_bigfish_real_clock_nov2026_mar2027_20261031.py'
       - 'tests/test_bigfish_v11_full_two_tab_20261031.py'
+      - 'tests/test_geng_xun_primary_changsheng_20261031.py'
       - 'tests/test_strict_jieqi_all_385_crossings_20261031.py'
       - 'tests/test_bigfish_all_22_signifiers_loop_20261031.py'
       - 'tests/test_health_v90_four_sibling_relation_source_20261031.py'
@@ -44,6 +45,9 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_astro_calendar_book_timing_v15.py' -v
       - name: Real SQLite CSV XLSX JSONL no-overwrite/failure tests
         run: python -m unittest discover -s tests -p 'test_bigfish_518400_offline_editorial_20261029.py' -v
+
+      - name: Geng Xun Changsheng actual two-branch 200-grid source regression
+        run: python -m unittest discover -s tests -p 'test_geng_xun_primary_changsheng_20261031.py' -v
 
       - name: Pinned BigFish V11 11-grade two-tab and immutable full source contract
         run: python -m unittest discover -s tests -p 'test_bigfish_v11_full_two_tab_20261031.py' -v
