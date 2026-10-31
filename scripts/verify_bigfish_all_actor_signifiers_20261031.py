@@ -1,8 +1,8 @@
-"""Real original BigFish compiled TS + 22 actor sources / 24 real categories.
+"""Real original BigFish compiled TS + 24 actor sources / 26 real configurations.
 
-At SAME genuine clock; all 22 actors must bind their own source kind without
+At SAME genuine clock; all 24 actors must bind their own source kind without
 guessing birth Ganzhi or sex/age/rank. Composite spouse/parent have sex-specific
-inputs. Frozen V8 score and V10.2 text must be present or the test fails.
+inputs. Frozen V8 score and V11 text must be present or the test fails.
 """
 from __future__ import annotations
 import argparse,json
@@ -13,7 +13,7 @@ def main(compiled:Path):
     script=load_adapter(compiled)
     catalog=script.actor_catalog()
     configurations=script.all_signifier_configs(catalog)
-    assert len(configurations)==24,len(configurations)
+    assert len(configurations)==26,len(configurations)
     slot=next(script.real_calendar_slots())
     worker=script.BigFishWorker(script.base.OUTPUT)
     passed=0
@@ -57,8 +57,8 @@ def main(compiled:Path):
     finally:
         script.RELATIONSHIP,script.PATIENT_SEX=previous
         worker.close()
-    assert passed==24
-    print("TOTAL_REAL_BIGFISH_ALL_ACTORS=24/24; SOURCE_PROFILE_IDS=22; NATAL_NOT_USED",flush=True)
+    assert passed==26
+    print("TOTAL_REAL_BIGFISH_ALL_ACTORS=26/26; SOURCE_PROFILE_IDS=24; NATAL_NOT_USED",flush=True)
 
 if __name__=="__main__":
     ap=argparse.ArgumentParser()
