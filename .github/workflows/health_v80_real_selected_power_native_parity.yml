@@ -61,7 +61,7 @@ jobs:
               (2014,"father","父亲","direct_proxy","year"),
               (2024,"father","父亲","direct_proxy","year"),
               (2034,"father","父亲","direct_proxy","year"),
-              (2024,"older_sibling","哥哥姐姐","direct_proxy","month"),
+              (2024,"older_brother","哥哥","direct_proxy","month"),
               (2024,"self","本人","direct_self","day"),
               (2024,"son","儿子","direct_proxy","hour")]
           original=gen.RELATIONS
