@@ -1,5 +1,5 @@
 {
-  "schema": "health_severity_user_editable_template_v20261031_v11_1_conclusion_lifecycle",
+  "schema": "health_severity_user_editable_template_v20261031_v11_full_evidence",
   "formation": "{heaven}加{earth}「{name}」（{polarity}）。古文：{classical_text}；古诀大意：{classical_meaning}；天地盘取象：{imagery}",
   "section_titles": {
     "macro": "时局总纲",
