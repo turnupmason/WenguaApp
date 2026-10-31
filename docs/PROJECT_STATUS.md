@@ -2236,3 +2236,9 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 ### 2026-10-31 · 用户再次确认全部用神立即全跑、一用神一整本Excel（覆盖先20条/200分卷旧计划）
 
 **现行最新要求：“不用，直接全跑，东西很少”。** 已实际更新原Wengua BigFish Mac Python源码 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py`：`BATCH_MODE='real_clock'`、`RELATIONSHIP='all'`、`MAX_NEW_ROWS=0`。22源人物ID对应24种性别条件/用神配置，未来2026-11-15至2027-03-15每种是121日×12时=**1452条**，不是假定1300。旧 `ROWS_PER_EXCEL=5000` **仅**旧518400组合库使用，移除 `REAL_ROWS_PER_EXCEL=200`。新版每个人物/性别配置必须在独立SQLite中确实凑齐0..1451全部真实时间后，**只**导出一份1452行正式Excel，配套各一份完整CSV与源JSONL，位置其配置目录下 `每个用神一个完整Excel/`。中断时只保留SQLite不拆分生成Excel，下次断点续跑；已有该全本保留不覆写人工稿。之前按200行生成的旧人工Excel不删，原 `Excel_CSV_可直接打开/` 历史目录保留，但不与新正式单本混放。真实节气交界等拒绝伪造，未知错误连续三条停止该角色并保留失败总记，后续关系按既定错误保留逻辑继续。无出生年命继续None，所有Python Swift V8冻结原分和书源不变。详 `docs/BIGFISH_SINGLE_XLSX_ALL_1452_PER_SIGNIFIER_20261031.md`。真实专项 test 1452行仅一xlsx + CSV/JSONL + no overwrite + 中途20条不导出 [#41209416239](https://github.com/turnupmason/WenguaApp/actions/runs/41209416239) PASS，原已有22角色24分支真实TS [#41208505466](https://github.com/turnupmason/WenguaApp/actions/runs/41208505466) PASS；**不能据此宣称用户Mac全量34848都运行完成**。此前“先20条”“200行一卷”已是明确废止的历史方案，保留记录不得据旧段落运行。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
