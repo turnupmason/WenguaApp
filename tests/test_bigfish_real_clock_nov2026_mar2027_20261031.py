@@ -60,6 +60,44 @@ class RealClockWindow(unittest.TestCase):
         self.assertFalse(any("T23:" in x["instant"] for x in rows))
         for start in range(0,len(rows),12):
             self.assertEqual(len({r["branch"] for r in rows[start:start+12]}),12)
+    def test_exact_first_600_failure_counts_are_solar_term_precision_guard(self):
+        """User Mac 100:2, 200:2, 300:3, 400:3, 500:4, 600:4.
+
+        Derive from the ACTUAL repository astro_calendar, not chat estimates.
+        Source Meeus 0.05 degree guard must reject without guessing the Jie.
+        """
+        from src.wengua.astro_calendar import solar_chart_clock
+        rejects=[]
+        for slot in M.real_calendar_slots():
+            try:
+                solar_chart_clock(slot["instant"],slot["timezone"])
+            except ValueError as ex:
+                if "Astronomical solar-term boundary within" not in str(ex):
+                    raise
+                rejects.append((slot["idx"]+1,slot["instant"],str(ex)))
+        expected_first=(
+            (86,"2026-11-22T01:30:00-05:00"),
+            (87,"2026-11-22T03:30:00-05:00"),
+            (264,"2026-12-06T21:30:00-05:00"),
+            (441,"2026-12-21T15:30:00-05:00"),
+        )
+        self.assertEqual(tuple((i,iso) for i,iso,_ in rejects if i<=600),
+                         expected_first)
+        for checkpoint,expected in ((100,2),(200,2),(300,3),
+                                    (400,3),(500,4),(600,4)):
+            self.assertEqual(sum(i<=checkpoint for i,_,_ in rejects),
+                             expected)
+        # Future refusals from the same 0.05-degree guard in this window;
+        # technical failures beyond this model remain separately auditable.
+        self.assertEqual(len(rejects),12)
+        self.assertEqual(M.real_failure_category({
+            "status":"失败_保留原样","error":rejects[0][2]
+        }),"节气交界精度保护_需高精度交节核算")
+        self.assertEqual(M.real_failure_category({
+            "status":"失败_保留原样","error":"Patient signifier unresolved"
+        }),"其它失败_需查看原始错误并复现")
+
+
     def test_real_spring_dST_has_real_offsets_both_sides(self):
         day={x["instant"][11:16]:x for x in M.real_calendar_slots()
              if x["date"]=="2027-03-14"}
