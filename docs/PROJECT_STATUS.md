@@ -2245,3 +2245,9 @@ Python本地7项参数+导出合同PASS，GitHub真实源role测试9项 #4094194
 
 ### 2026-10-31 · 前600真实时辰4个BigFish「失败」：太阳黄经节气交界精度拒算，非不能起盘
 用户Mac实际失败累计100:2、200:2、300:3、400:3、500:4、600:4。仓库独立真实历算复现：#86 2026-11-22 01:30小雪、#87 03:30小雪、#264 2026-12-06 21:30大雪、#441 2026-12-21 15:30冬至，均因astro_calendar.solar_chart_clock距节气黄经15°交界不足0.05°主动抛异常，逐段累计数量完全吻合。不能声称已读取用户Mac真实SQLite error；若另有技术失败须逐条对原错误。原BigFish脚本只新增单行真实时辰/分类/错误控制台显示，来源异常继续标FAIL且保持旧SQLite/Excel不覆写，冻结V8、TS、Swift、200/81和Important不变。完整1452个纽约采样在该阈值下有12个历法精度拒算候选，但不保证无额外失败；1452记录不是1452成功。已加实历全样本回归测试，BigFish专项 #41210480446 PASS。用户本机现有运行脚本不会自动收到最新日志显示，须下次用新源码；高精度节气另版本核后才可补算，禁止简单调低0.05。详细 docs/BIGFISH_REAL_TERM_GUARD_FIRST_600_DIAGNOSIS_20261031.md。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
