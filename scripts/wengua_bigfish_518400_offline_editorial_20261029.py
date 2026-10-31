@@ -112,9 +112,9 @@ MONTH_START = {'甲':'丙','己':'丙','乙':'戊','庚':'戊','丙':'庚','辛'
 HOUR_START = {'甲':'甲','己':'甲','乙':'丙','庚':'丙','丙':'戊','辛':'戊',
               '丁':'庚','壬':'庚','戊':'壬','癸':'壬'}
 N_CASES = 60 * 12 * 60 * 12  # 518400 ABSTRACT scenarios, not real timestamps
-PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v3_earth_tomb_parity'
-SIX_JIA_APPROVED_WENGUA_SHA = '4dd3edf17d33e2071f7f407e0312e22ae4ea8e26' # user-approved Jia and earth-tomb parity; V8 math and 200/81 unchanged
-SIX_JIA_BATCH_SUBDIR = 'V90_20261031_人物独立_月干六甲'
+PIPELINE_VERSION = 'bigfish_518400_two_terms_sixjia_all_source_pillars_v4_V11_complete'
+SIX_JIA_APPROVED_WENGUA_SHA = '46382694a418300ac4660a1c22bcf227857c9a52' # V11 complete source; frozen V8 arithmetic and 200/81 retained
+SIX_JIA_BATCH_SUBDIR = 'V11_20261031_人物独立_月干六甲_完整双页'
 SIX_JIA_SOURCES_ACTIVATED = False
 # Old v1 vendor/, frozen/, father SQLite and manually edited Excel remain read-only.
 
@@ -371,8 +371,8 @@ def activate_six_jia_sources():
     if SIX_JIA_SOURCES_ACTIVATED:
         return
     base.WENGUA_SHA = SIX_JIA_APPROVED_WENGUA_SHA
-    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V90_source_20261031'
-    base.FROZEN = HERE / 'frozen_V90_source_20261031'
+    base.SOURCE = HERE / 'vendor' / 'WenguaApp_V11_source_20261031'
+    base.FROZEN = HERE / 'frozen_V11_source_20261031'
     SIX_JIA_SOURCES_ACTIVATED = True
 
 
@@ -423,7 +423,7 @@ def ensure_install():
                  *[str(base.UPSTREAM/'src/engines'/f) for f in files]],
                 desc='编译 BigFish 原始 TypeScript 引擎（不改源码）')
     manifest = {
-        'scope':'V8.0 frozen scoring / V10.2 reading, do not modify',
+        'scope':'V8.0 frozen scoring / V11 full professional sections with graded first tab',
         'bigfish_sha':base.BIGFISH_SHA,
         'wengua_sha':base.WENGUA_SHA,
         'files':{},
@@ -898,6 +898,7 @@ def export_editorial_jsonl(path: Path, originals, *, relationship: str):
                         'original_text':item.get('text',''),
                         'original_text_sha256':item.get('original_text_sha256',''),
                         'sections':item.get('sections',[]),
+                        'first_page_source':item.get('first_page',{}),
                         'frozen_fact_lock':item.get('source_fact_lock',{}),
                         'source_evidence_sha256':item.get('evidence_sha',''),
                         'failure_reason':item.get('error',''),
@@ -1095,8 +1096,64 @@ def source_chart_from_base(src: dict, pillars: dict, term: str, bureau: dict):
     return chart
 
 
+
+# Literal grade captions mirror the iOS V11 WenguaHealthGradeCaption.
+# All dynamic clauses come exclusively from real V11 90_review/01_macro/91_timing.
+# No fresh scoring or GPT interpretation is performed in the BigFish exporter.
+V11_FRONT_CAPTIONS = {
+    '极大吉':('吉局','沉疴顿愈','沉重顽疾迎刃解，元气彻底恢复'),
+    '大吉':('吉局','邪退正复','治疗手段极为对症，病情迅速好转'),
+    '中吉':('吉局','身心渐安','病情发展得到控制，正逐步走向康复'),
+    '小吉':('吉局','转危为安','虽有波折但无大碍，危险期已经过去'),
+    '极小吉':('吉局','正邪相持','虽未根治但病情稳定，需长期精细调养'),
+    '极小凶':('凶局','风寒微染','只是皮毛表证小疾，日常多加注意即可'),
+    '小凶':('凶局','沉疴隐现','体内已有小病变，切勿拖延需及时就医'),
+    '中凶':('凶局','病势缠绵','病情较为顽固反复，治疗过程面临阻力'),
+    '大凶':('凶局','元气大伤','病情极其危重凶险，必须全力介入救治'),
+    '极大凶':('凶局','命悬一线','运势陷入至暗绝境，急需寻求破局生机'),
+    '不凶不吉':('微恙','病势平缓','病情稳定不凶不急，调理即可'),
+}
+
+def v11_front_page_from_real_sections(sections,grade):
+    """V11 display-only mirror of Swift frontNarrative, no new score.
+
+    Keep the unabridged source sections for detailed professional tab.
+    A grade/section mismatch is a retained failure, never patched wording.
+    """
+    byid={x['id']:x['text'] for x in sections if x.get('id') and x.get('text')}
+    if '90_review' not in byid or grade not in V11_FRONT_CAPTIONS:
+        raise ValueError('V11首页缺综合断语或十档等级，拒绝伪造')
+    parts=byid['90_review'].split('\n\n')
+    final=parts[-1].split('；',1)[0].strip()
+    prefix='综上所述，此病为'
+    if not final.startswith(prefix):
+        raise ValueError('V11原结论不是已决等级，不可显示虚构吉凶')
+    resolved=re.split('[。；\n\r]',final[len(prefix):],1)[0]
+    if resolved!=grade:
+        raise ValueError(f'BigFish V8等级与V11原结论矛盾：{grade}/{resolved}')
+    evidence='\n\n'.join(parts[:-1]).strip()
+    if not evidence or '病星天芮' not in evidence or '医药两端分别看' not in evidence:
+        raise ValueError('V11综合证据不完整，不能用一句话充数')
+    category,epithet,interpretation=V11_FRONT_CAPTIONS[grade]
+    body=interpretation+'。'
+    if evidence:
+        body+='\n\n'+evidence
+    for raw in byid.get('01_macro','').split('。'):
+        note=raw.strip()
+        if (note.startswith(('五不遇时','伏吟主慢','反吟主快','天显时'))
+                and len(body)+len(note)+3<=200):
+            body+='\n\n'+note+'。'
+    timing=byid.get('91_timing')
+    if len(body)<150 and timing and len(body)+len(timing)+2<=215:
+        body+='\n\n'+timing
+    return {'category':category,'grade':grade,'epithet':epithet,
+            'body':body,'character_count':len(''.join(body.split())),
+            'display_text':category+'\n'+grade+'：'+epithet+'\n\n'+body,
+            'source_review_sha256':sha_text(byid['90_review']),
+            'two_tab_contract':'V11 source-grounded summary and complete unchanged detailed sections'}
+
 def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
-    """Use ORIGINAL BigFish board and EXACT repository V8/V10.2 report route.
+    """Use ORIGINAL BigFish board and EXACT repository V8/V11 report route.
 
     Same analyze_health_severity_review entry used by the repo's own
     scripts/preview_20261028_twoclocks_six_relatives_v80.py. No second score
@@ -1105,7 +1162,7 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
     """
     result={'term':term,'status':'pending','grade':'','score':'','text':'',
             'base_id':'','evidence_sha':'','bureau':'','error':'',
-            'sections':[], 'source_fact_lock':{},'original_text_sha256':''}
+            'sections':[], 'first_page':{}, 'source_fact_lock':{},'original_text_sha256':''}
     try:
         bureau=worker.bureau(term,pillars['day'])
         physical=worker.chart(bureau,pillars['hour'],term)
@@ -1155,8 +1212,17 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
         text=report['reading_text']
         sections=report['sections']
         if not text or not sections or not all(isinstance(s,dict) and s.get('id') and s.get('text') for s in sections):
-            raise ValueError('封存V10.2中文原文或章节缺失')
+            raise ValueError('V11专业断词章节缺失')
+        template_path=base.FROZEN/'reading_template.json'
+        template=json.loads(template_path.read_text('utf8'))
+        schema='health_severity_user_editable_template_v20261031_v11_full_evidence'
+        if template.get('schema')!=schema:
+            raise ValueError('BigFish冻结源模板非现行V11，拒绝旧模板继续批量运行：'+str(template.get('schema')))
+        first_page=v11_front_page_from_real_sections(sections,base.GRADE[score])
         lock={
+            'reading_template_schema':schema,
+            'reading_template_sha256':hashlib.sha256(template_path.read_bytes()).hexdigest(),
+            'first_page_sha256':sha_text(first_page['display_text']),
             'four_pillars':pillars,'source_term':term,
             'person_binding':person_audit,
             'birth_year_was_explicit':bool(inquiry.get('patient_birth_ganzhi')),
@@ -1176,7 +1242,7 @@ def compute_variant(worker, pillars, term, inquiry, *, include_evidence=True):
             'source_confidence':report.get('audit',{}).get('role_confidence'),
         }
         result.update(status='原始断词_待润色和人工审核',grade=base.GRADE[score],score=score,
-                      text=text,sections=sections,source_fact_lock=lock,
+                      text=text,sections=sections,first_page=first_page,source_fact_lock=lock,
                       original_text_sha256=sha_text(text),
                       evidence_sha=sha_text(canonical({'facts':lock,'sections':sections})))
     except Exception as ex:
@@ -1277,7 +1343,7 @@ def run_abstract_legacy():
         'patient_sex':PATIENT_SEX, 'relative_age':PATIENT_RELATIVE_AGE, 'patient_age_band':PATIENT_AGE_BAND,
         'birth_order':BIRTH_ORDER, 'patient_birth_ganzhi':PATIENT_BIRTH_GANZHI,
         'person_natal':'optional_explicit_only_no_inference','source_method':'BigFish original shiJiaGenerate/ChaiBu',
-        'score_method':'frozen Wengua V8.0 and V10.2 text, single-thread research gate',
+        'score_method':'source-pinned Wengua V8.0 score and V11 complete professional sections',
     }
     if CONSULTATION_CONTEXT is not None:
         info['consultation_context']=validation['context']
@@ -1411,7 +1477,7 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v5_V11_friend_month_only'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v6_V11_full_two_tab_friend_month_only'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
@@ -1471,7 +1537,7 @@ REAL_HEADERS = (
     '序号','真实公历时刻（含时区偏移）','IANA时区','时辰地支','人物ID',
     '年柱','月柱','日柱','时柱','实际节气','真实局数','盘式编号',
     '主用神源柱','原始用神符号','六甲遁仪（若有）','用神落宫','辅助宫',
-    '原始十档','V8内部净分（仅审计）','断词状态','完整V10.2原断词',
+    '原始十档','V8内部净分（仅审计）','断词状态','完整V11专业解盘原断词','首页吉凶与综合短断语（V11原盘）',
     '事实SHA256','原文SHA256','失败原因','人工修订','GPT润色候选',
     '审核状态','不可变源事实JSON'
 )
@@ -1626,7 +1692,7 @@ def real_review_row(record,labels):
         binding.get('stem',''),binding.get('carrier_stem',''),
         binding.get('palace',''),','.join(map(str,binding.get('auxiliary_palaces',()))),
         result.get('grade',''),result.get('score',''),result.get('status',''),
-        result.get('text',''),result.get('evidence_sha',''),
+        result.get('text',''),result.get('first_page',{}).get('display_text',''),result.get('evidence_sha',''),
         result.get('original_text_sha256',''),result.get('error',''),
         '','','待人工审核',canonical(result.get('source_fact_lock',{}))
     ]
@@ -1746,7 +1812,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v5_v11_friend_month_only')
+          RELATIONSHIP/zone_path/'source_v6_v11_full_two_tab_friend_month_only')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
