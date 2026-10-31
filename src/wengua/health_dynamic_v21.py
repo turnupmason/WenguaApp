@@ -122,6 +122,9 @@ def bind_patient(chart, inquiry, calendar):
     """
     profiles = _read(PROFILES)
     by_id = {x["id"]: x for x in profiles["profiles"]}
+    # Old imported records keep their former composite role and calculations;
+    # new fresh inquiries must use the four distinct sibling identities.
+    by_id.update({x["id"]:x for x in profiles.get("legacy_composite_profiles",[])})
     relation = inquiry.get("relationship")
     if relation not in by_id:
         raise ValueError("Patient relationship not in source profile")
@@ -142,6 +145,14 @@ def bind_patient(chart, inquiry, calendar):
     else:
         source_rule = "no fixed personal signifier in indexed chapter"
         confidence = "unknown"
+    # V9: 朋友本人必须确定性别+相对长幼，均是研究时的明确选择。
+    # friend doesn't imply any birth order, physical youth or elder generation.
+    relative_age=inquiry.get("relative_age")
+    if relation=="friend":
+        if inquiry.get("patient_sex") not in ("male","female") or relative_age not in ("older","younger"):
+            raise ValueError("V9朋友必须明确男/女和比求测人年长/年幼")
+    elif relative_age is not None:
+        raise ValueError("relative_age仅供朋友分类；亲属已由称谓确定长幼")
     harmony_stem = None
     source_ganzhi = None
     if via == "spouse_gender_harmony":
@@ -189,10 +200,31 @@ def bind_patient(chart, inquiry, calendar):
         candidate = ORDER_PALACES.get((sex,birth_order))
         if candidate and candidate not in fixed_palaces:
             fixed_palaces.append(candidate)
-    if relation in ("grandfather","grandmother"):
-        expected="male" if relation=="grandfather" else "female"
-        if inquiry.get("patient_sex") not in (None,expected):
-            raise ValueError("爷爷奶奶关系与所填性别冲突")
+    known_sibling_sex={"older_brother":"male","older_sister":"female",
+                       "younger_brother":"male","younger_sister":"female"}
+    known_sex={"grandfather":"male","grandmother":"female",**known_sibling_sex}
+    if relation in known_sex and inquiry.get("patient_sex") not in (None,known_sex[relation]):
+        raise ValueError("明确人物关系与所填性别冲突")
+    # V9 user rule: the explicit relationship already proves OLDER/YOUNGER
+    # relative to the asker. These are secondary trigrams, not birth order or
+    # absolute medical age; source-case vs trigram-analogy remains auditable.
+    sibling_aux=profile.get("sibling_auxiliary")
+    if relation=="friend":
+        key=inquiry["patient_sex"]+":"+relative_age
+        palace=profile["friend_conditions"]["secondary_trigrams"].get(key)
+        if palace not in (3,4,7,8):
+            raise ValueError("朋友性别/长幼无法对应真实辅助宫")
+        sibling_aux={
+            "palace":palace,"role_sex":inquiry["patient_sex"],
+            "requires":"explicit_friend_sex_plus_relative_age",
+            "source":profile["friend_conditions"]["provenance"],
+            "kind":"v90_friend_trigram","scoring_policy":"true_physical_palace_once"
+        }
+    if sibling_aux:
+        expected=known_sibling_sex.get(relation) if relation!="friend" else inquiry["patient_sex"]
+        if expected is None or sibling_aux["role_sex"]!=expected:
+            raise ValueError("V9 source-profile sibling sex/trigram mismatch")
+        fixed_palaces.append(sibling_aux["palace"])
     if relation == "parent":
         if inquiry.get("patient_sex") == "male":
             fixed_palaces.append(6)
@@ -238,10 +270,19 @@ def bind_patient(chart, inquiry, calendar):
     birth_note = (("患者生年" + birth + "已提供，作为额外参考；落" + _p(birth_cell)
                    if birth_cell else "患者生年" + birth + "已提供，但年命干落宫未核定，不强行填充")
                   if birth else "患者年命未提供，本次不使用年命")
-    status = "matched_source_condition" if primary and confidence.startswith("source_") else (
+    # V9 user-approved friend-specific evidence selects a source-verified
+    # role condition; its book citation remains labelled as ANALOGY.
+    if relation=="friend" and sibling_aux:
+        confidence="user_explicit_direction_verified_by_actual_chart"
+    status = "matched_source_condition" if primary and (confidence.startswith("source_") or confidence.startswith("user_explicit_")) else (
         "conditional_candidate" if primary else "no_personal_palace_verified")
     return {
         "relationship": relation,"label":label,"context":mode,
+        "resolved_sex":known_sex.get(relation,inquiry.get("patient_sex")),
+        "resolved_relative_age":relative_age if relation=="friend" else ("older" if relation.startswith("older_") else "younger" if relation.startswith("younger_") else None),
+        "sibling_auxiliary_candidate":sibling_aux,
+        "sibling_auxiliary_selected":bool(sibling_aux and
+              sibling_aux["palace"] in [c["palace"] for c in extra_cells if c]),
         "consultation_label":profiles["contexts"][mode],
         "role_name":role_name,"role_via":via,"stem":stem,
         "source_ganzhi":source_ganzhi,

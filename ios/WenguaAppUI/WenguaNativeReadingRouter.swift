@@ -40,8 +40,8 @@ enum WenguaNativeReadingRouter {
     // stem for father. Other relatives retain their original book candidates
     // in actor_profiles.json, but CANNOT silently reuse self in a native app.
     static let supportedRelations = ["本人","父亲","母亲","爷爷","奶奶","父母","朋友","同事",
-        "儿子","女儿","孩子","侄子","配偶","其他长辈","哥哥或姐姐",
-        "弟弟或妹妹","妻子","丈夫","动物","母鸡","公鸡","女婿"]
+        "儿子","女儿","孩子","侄子","配偶","其他长辈",
+        "哥哥","姐姐","弟弟","妹妹","哥哥或姐姐","弟弟或妹妹","妻子","丈夫","动物","母鸡","公鸡","女婿"]
     static let supportedTopics = ["health.severity"]
     static let palaceOrder = [4,9,2,3,7,8,1,6]
     static let homeStars = ["天蓬星":1,"天芮星":2,"天冲星":3,"天辅星":4,

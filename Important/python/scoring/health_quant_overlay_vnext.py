@@ -321,7 +321,7 @@ def inspect_selected_quantization(*,selected_roles,
     for key,row in selected_roles.items():
         if key in (
                 "illness","doctor","medicine","patient",
-                "hour","natal","gender","chief"):
+                "hour","natal","gender","chief","sibling"):
             detail=row["complete_palace"]
             palace=detail["palace"]
             item=_role_score(_quantize_one(
@@ -450,7 +450,7 @@ def inspect_selected_quantization(*,selected_roles,
     illness_void=illness_detail["void"]["classification"]!="not_void"
     weak_disease=(selected_roles["illness"]["primary_strength_25"]
                   .get("strength_label")=="极小")
-    control_roles={"doctor","medicine","patient","hour","natal","chief","gender"}
+    control_roles={"doctor","medicine","patient","hour","natal","chief","gender","sibling"}
     control={}
     control_points={}
     drain={}
@@ -495,7 +495,7 @@ def inspect_selected_quantization(*,selected_roles,
     # V7.9: a selected physical host must be a DIFFERENT actual symbol
     # from the source of the auspice. Same 乙 used as time/natal/medicine
     # is only one symbol, not an independent host that meets itself.
-    auspice_hosts={"illness","patient","hour","natal","gender"}
+    auspice_hosts={"illness","patient","hour","natal","gender","sibling"}
     host_palaces={}
     host_signifiers={}
     for key,row in selected_roles.items():
@@ -677,7 +677,8 @@ def inspect_selected_quantization(*,selected_roles,
         "five_not_penalized_role_count":len(roles) if five else 0,
         "historical_overlay_total_if_stacked":historical_stacked_total,
         "relationship_overlays_audit_only":False,
-        "final_scoring_policy":"V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
+        "final_scoring_policy":("V9.0_SOURCE_CONDITIONED_SIBLING_AUXILIARY"
+            if "sibling" in selected_roles else "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE"),
         "raw_final_before_saturation":final_raw,
         "five_not_deducted_once_at_end":False,
         "weak_illness_drain_eligible":weak_disease,

@@ -1093,6 +1093,7 @@ struct CastSetupScreen: View {
     @State private var subject = "本人"
     @State private var inquiryContext = "direct_proxy"
     @State private var patientSex = "unspecified"
+    @State private var friendRelativeAge = "unspecified"
     @State private var birthOrder = "unspecified"
     @State private var patientBirthGanzhi = ""
     @State private var subjectName = ""
@@ -1125,11 +1126,25 @@ struct CastSetupScreen: View {
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)
-                            Picker("病人性别（可选）",selection:$patientSex) {
-                                Text("未说明").tag("unspecified")
-                                Text("男").tag("male")
-                                Text("女").tag("female")
-                            }.pickerStyle(.menu)
+                            if subject=="朋友" || subject=="父母" ||
+                               subject=="配偶" || subject=="同事" ||
+                               subject=="其他长辈" || subject=="孩子" {
+                                Picker(subject=="朋友" ? "朋友性别（必选）" :
+                                       "病人性别（请按实际选择）",selection:$patientSex) {
+                                    Text("未说明").tag("unspecified")
+                                    Text("男").tag("male")
+                                    Text("女").tag("female")
+                                }.pickerStyle(.menu)
+                            }
+                            if subject=="朋友" {
+                                Picker("朋友相对年龄（必选）",selection:$friendRelativeAge) {
+                                    Text("请选择").tag("unspecified")
+                                    Text("比我年长").tag("older")
+                                    Text("比我年幼").tag("younger")
+                                }.pickerStyle(.menu)
+                                Text("朋友以月干为主用；按性别和相对长幼兼参震、巽、艮、兑之一。")
+                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                            }
                             if ["儿子","女儿","孩子","侄子"].contains(subject) {
                                 Picker("出生排行（可选）",selection:$birthOrder) {
                                     Text("未说明").tag("unspecified")
@@ -1250,7 +1265,8 @@ struct CastSetupScreen: View {
                 birthOrder:birthOrder=="unspecified" ? nil : birthOrder,
                 patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
                     in:.whitespacesAndNewlines).isEmpty ? nil :
-                    patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines))
+                    patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines),
+                relativeAge:subject=="朋友" ? (friendRelativeAge=="unspecified" ? nil : friendRelativeAge) : nil)
             let reading=try WenguaNativeReadingRouter.compose(
                 chart:result,topicID:topic.id,relationship:subject,
                 inquiry:context)
@@ -1289,6 +1305,11 @@ struct CastSetupScreen: View {
         let supplied=patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines)
         if !supplied.isEmpty && !WenguaNativeActorSource.validatedGanzhi(supplied) {
             validationMessage="出生年命须填写完整六十甲子干支，例如辛酉；不确定可留空。"
+            return
+        }
+        if subject=="朋友" &&
+           (patientSex=="unspecified" || friendRelativeAge=="unspecified") {
+            validationMessage="问朋友病情必须先选择男或女，以及比自己年长或年幼，才能正确取用月干与辅助宫。"
             return
         }
         if (subject=="配偶" || subject=="父母") && patientSex=="unspecified" &&

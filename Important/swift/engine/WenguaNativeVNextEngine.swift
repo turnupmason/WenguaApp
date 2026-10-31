@@ -621,6 +621,13 @@ enum WenguaVNextEngine {
                 let resident=auxiliary.heavenStars.first?.star ?? ""
                 personalized.append(("gender",auxiliary,resident))
             }
+            if let pid=actor.siblingAuxiliaryPalace {
+                let auxiliary=try only{$0.id==pid}
+                guard let resident=auxiliary.heavenStars.first(where:{
+                    $0.star != "天禽星"
+                })?.star else {throw WenguaVNextReadingGate.unresolvedRole}
+                personalized.append(("sibling",auxiliary,resident))
+            }
         }
         guard let ill=selected.first?.1 else {throw WenguaVNextReadingGate.unresolvedRole}
         var physical:[Int:WenguaVNextPalace]=[:]
@@ -660,7 +667,7 @@ enum WenguaVNextEngine {
                 strength[role]=try primary(role,p,month:month,catalog:energy,
                                            illness:false)
             } else if role=="illness" || role=="doctor" ||
-                       role=="gender" || role=="qian" || role=="kun" {
+                       role=="gender" || role=="sibling" || role=="qian" || role=="kun" {
                 guard let st=p.heavenStars.first(where:{$0.star==symbol}) else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
@@ -787,7 +794,7 @@ enum WenguaVNextEngine {
         var controlPoints:[Int:Int]=[:]
         var drainBonus:Set<Int>=[]
         let controlRoles:Set<String>=["doctor","medicine","patient","hour",
-                                      "natal","chief","gender"]
+                                      "natal","chief","gender","sibling"]
         let illVoid=actualVoid(ill,chart,month:month) != "not_void"
         for (tag,p,_) in personalized where tag != "illness" && p.id != ill.id {
             guard let edge=controls.first(where:{$0.role==tag}) else{continue}
@@ -795,7 +802,7 @@ enum WenguaVNextEngine {
                 // Only star/god source primary 25-table has a palace-column
                 // restriction. Stem 25-table is moon/lifecycle, NOT palace.
                 var controlled=false
-                if ["doctor","gender","chief"].contains(tag),
+                if ["doctor","gender","sibling","chief"].contains(tag),
                    let symbol=strength[tag]?.symbol {
                     let e=tag=="chief" ? Self.godElement[symbol] :
                                              Self.starElement[symbol]
@@ -828,10 +835,10 @@ enum WenguaVNextEngine {
         // V7.9: selected real host and blessed symbol must be DISTINCT.
         // Group *all* independent chief, Yi/Ding family and Tianxin bonus
         // first; when palace is void, halve their sum once, floor.
-        let hostTags:Set<String>=["illness","patient","hour","natal","gender"]
+        let hostTags:Set<String>=["illness","patient","hour","natal","gender","sibling"]
         var hostSignifiers:[Int:[(String,String)]] = [:]
         for (tag,p,symbol) in personalized where hostTags.contains(tag) {
-            let kind=(tag=="illness" || tag=="gender") ? "star" : "stem"
+            let kind=(tag=="illness" || tag=="gender" || tag=="sibling") ? "star" : "stem"
             hostSignifiers[p.id,default:[]].append((kind,symbol))
         }
         let hosts=Set(hostSignifiers.keys)

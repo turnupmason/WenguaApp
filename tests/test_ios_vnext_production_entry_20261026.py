@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class NativeVNextAppContract(unittest.TestCase):
     def test_source_index_and_roles(self):
         actors=json.loads((ROOT/"data/knowledge/phrase_library/health_v20/actor_profiles.json").read_text("utf8"))
-        self.assertEqual(len(actors["profiles"]),20)
+        self.assertEqual(len(actors["profiles"]),24)
         self.assertTrue(all(a["references"] for a in actors["profiles"]))
         binder=(ROOT/"ios/WenguaAppUI/WenguaNativeActorBinding.swift").read_text("utf8")
         self.assertIn("eligibleForFirmTraditionalJudgment",binder)

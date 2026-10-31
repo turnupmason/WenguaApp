@@ -14,6 +14,15 @@ struct WenguaActorSourceProfile:Decodable {
     let palaces:[Int]
     let references:[WenguaActorSourceRef]
     let note:String
+    let sibling_auxiliary:WenguaSiblingAuxiliary? 
+}
+struct WenguaSiblingAuxiliary:Decodable {
+    let palace:Int
+    let role_sex:String
+    let kind:String
+    let source:String
+    let requires:String
+    let scoring_policy:String
 }
 struct WenguaActorEventOverride:Decodable {
     let eligible:[String]
@@ -22,6 +31,7 @@ struct WenguaActorEventOverride:Decodable {
 }
 struct WenguaActorSourceIndex:Decodable {
     let profiles:[WenguaActorSourceProfile]
+    let legacy_composite_profiles:[WenguaActorSourceProfile]?
     let event_news_override:WenguaActorEventOverride
 }
 struct WenguaNativeInquiry {
@@ -31,14 +41,19 @@ struct WenguaNativeInquiry {
     let birthOrder:String? // eldest, middle, youngest
     let patientBirthGanzhi:String? // optional complete Ganzhi, NOT Gregorian year only
     let patientBirthStem:String? // source-supplied lone natal heavenly stem
+    let patientAgeBand:String? // explicit real youth; never guessed from younger
+    let relativeAge:String? // friend only: older/younger than asker
     init(relationship:String,context:String,patientSex:String?,birthOrder:String?,
-         patientBirthGanzhi:String?,patientBirthStem:String?=nil) {
+         patientBirthGanzhi:String?,patientBirthStem:String?=nil,
+         patientAgeBand:String?=nil,relativeAge:String?=nil) {
         self.relationship=relationship
         self.context=context
         self.patientSex=patientSex
         self.birthOrder=birthOrder
         self.patientBirthGanzhi=patientBirthGanzhi
         self.patientBirthStem=patientBirthStem
+        self.patientAgeBand=patientAgeBand
+        self.relativeAge=relativeAge
     }
     static func standard(_ relation:String)->WenguaNativeInquiry {
         WenguaNativeInquiry(relationship:relation,
@@ -63,6 +78,8 @@ struct WenguaNativeActor {
     let natalSourceGanzhi:String?
     let natalPalace:Int?
     let note:String
+    let siblingAuxiliaryPalace:Int?
+    let siblingAuxiliarySource:String?
     var eligibleForFirmTraditionalJudgment:Bool {
         ["source_case_specific",
          "user_explicit_direction_verified_by_actual_chart"].contains(confidence)
@@ -80,7 +97,7 @@ enum WenguaNativeActorSource {
         let decoded=try JSONDecoder().decode(WenguaActorSourceIndex.self,from:data)
         let ids=decoded.profiles.map(\.id)
         let labels=decoded.profiles.map(\.label)
-        guard ids.count==22,Set(ids).count==22,Set(labels).count==22,
+        guard ids.count==24,Set(ids).count==24,Set(labels).count==24,
               decoded.profiles.allSatisfy({ !$0.references.isEmpty }) else {
             throw WenguaNativeReadingError.invalidPhrase
         }
@@ -120,7 +137,8 @@ enum WenguaNativeActorSource {
     static func bind(chart:WenguaNativeChart,
                      inquiry:WenguaNativeInquiry,
                      index:WenguaActorSourceIndex)throws->WenguaNativeActor {
-        guard let profile=index.profiles.first(where:{$0.label==inquiry.relationship}),
+        guard let profile=(index.profiles+((index.legacy_composite_profiles) ?? []))
+                    .first(where:{$0.label==inquiry.relationship}),
               let first=profile.references.first else {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
@@ -137,13 +155,26 @@ enum WenguaNativeActorSource {
         guard sex==nil || sex=="male" || sex=="female" else {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
-        if ["father","grandfather"].contains(profile.id) && sex != nil && sex != "male" ||
-           ["mother","grandmother"].contains(profile.id) && sex != nil && sex != "female" {
+        let knownMale=["father","grandfather","older_brother","younger_brother",
+                       "son","husband","animal_rooster"]
+        let knownFemale=["mother","grandmother","older_sister","younger_sister",
+                         "daughter","wife","animal_hen"]
+        if knownMale.contains(profile.id) && sex != nil && sex != "male" ||
+           knownFemale.contains(profile.id) && sex != nil && sex != "female" {
+            throw WenguaNativeReadingError.unsupportedRelationship
+        }
+        if profile.id=="friend" {
+            guard (sex=="male" || sex=="female"),
+                  (inquiry.relativeAge=="older" || inquiry.relativeAge=="younger") else {
+                throw WenguaNativeReadingError.unsupportedRelationship
+            }
+        } else if inquiry.relativeAge != nil {
             throw WenguaNativeReadingError.unsupportedRelationship
         }
         let kind=ctx=="event_news" ? index.event_news_override.role_kind : first.kind
-        let confidence=ctx=="event_news" ?
-            "source_case_specific_event_time" : first.status
+        let confidence=profile.id=="friend" ?
+            "user_explicit_direction_verified_by_actual_chart" :
+            ctx=="event_news" ? "source_case_specific_event_time" : first.status
         let source=ctx=="event_news" ?
             index.event_news_override.source : first.source
         let candidateStem:String
@@ -194,6 +225,17 @@ enum WenguaNativeActorSource {
               "female:eldest":4,"female:middle":9,"female:youngest":7]
             if let p=table[sex+":"+rank] {extra.append(p)}
         }
+        // V9: 哥/姐/弟/妹 relation implies relative age and biological sex.
+        // Source examples and analogy statuses remain explicitly in JSON.
+        if let sibling=profile.sibling_auxiliary {
+            extra.append(sibling.palace)
+        }
+        let friendSelection:Int? = profile.id=="friend" ?
+            (["male:older":3,"female:older":4,
+              "male:younger":8,"female:younger":7][
+                 (sex ?? "")+":"+(inquiry.relativeAge ?? "")]) : nil
+        if let friendSelection { extra.append(friendSelection) }
+        let siblingSelected=profile.sibling_auxiliary?.palace ?? friendSelection
         let genuineHarmony=harmony.flatMap{actualStem($0,chart:chart)}
         if let genuineHarmony {extra.append(genuineHarmony)}
         let natal=inquiry.patientBirthGanzhi
@@ -218,6 +260,9 @@ enum WenguaNativeActorSource {
             extraPalaces:Array(Set(extra)).sorted(),
             harmonyStem:harmony,harmonyPalace:genuineHarmony,
             genderPalace:gender,natalStem:natalStem,
-            natalSourceGanzhi:natal,natalPalace:natalPalace,note:profile.note)
+            natalSourceGanzhi:natal,natalPalace:natalPalace,note:profile.note,
+            siblingAuxiliaryPalace:siblingSelected,
+            siblingAuxiliarySource:siblingSelected == nil ? nil :
+                (profile.sibling_auxiliary?.source ?? "V9友人性别和长幼条件已提供，八卦类象辅助"))
     }
 }

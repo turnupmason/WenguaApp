@@ -15,7 +15,8 @@
     "kun": "乾坤辅助：{role}",
     "quant": "内部研究计算（不提供客户展示）",
     "verdict": "综合断语",
-    "timing": "时空及应期"
+    "timing": "时空及应期",
+    "sibling": "兄弟姐妹排行辅助宫"
   },
   "macros": {
     "macro": "{macro_text}",
@@ -46,7 +47,8 @@
     "macro_pace_unset": "星门无整盘伏吟反吟，应期须另参。",
     "auspice_customer": "吉助同宫，仍须看空墓刑迫",
     "no_extra_conditions": "无特别刑墓迫",
-    "summary_concise": "天芮{illness}；患者{patient}；{medical}{extra}。"
+    "summary_concise": "天芮{illness}；患者{patient}；{medical}{extra}。",
+    "sibling_note": " 依据本次已明确的排行或实际年轻条件，另参{name}的{palace}，与病宫{relation}；月干仍为患者主用神。"
   },
   "data_paths": {
     "heaven_earth_81": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
@@ -129,7 +131,8 @@
     "reason_verdict_conflict": "相关实宫内部合断{inner}，跨宫制病证据却{outer}；两层依据不一致，暂不能强断吉凶。",
     "reason_verdict_resolved": "相关实宫内部合断{inner}，跨宫克制证据{outer}；按已核条件，本次传统象意{result}。",
     "reason_verdict_incomplete": "已核实宫{inner}，跨宫证据{outer}；仍有力量条件不能确认，吉凶暂不定。",
-    "reason_tianrui_25": "天芮月令{month}、落宫月令{palace_month}，星宫关系{relation}，对应「{title}」之象：{why}。"
+    "reason_tianrui_25": "天芮月令{month}、落宫月令{palace_month}，星宫关系{relation}，对应「{title}」之象：{why}。",
+    "v90_sibling_note": "依据已知排行或年龄条件，另参{palace}之宫象，与病宫{relation}；月干仍为主用神。"
   },
   "final_scoring_v80": {
     "version": "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
@@ -172,5 +175,16 @@
     "macro_once": "Five-not Tianxian Fuyin/Fanyin already stated in 01_macro",
     "no_score_changes": true,
     "medical_validity_claims": false
+  },
+  "version": "V9.0_source_conditioned_sibling_20261031",
+  "v90_sibling_source_conditions": {
+    "revision": "V9.0",
+    "main": "兄弟姐妹同辈均取月干，弟妹不改时干",
+    "older_sister": "大姐确知排行可兼巽四；不是任意姐姐自动加",
+    "younger_brother": "确实少男或小弟排行兼艮八；仅较自己小并不足以推定",
+    "older_brother": "震三长男排行已证时参，八卦类象推演",
+    "younger_sister": "兑七少女已证时参，八卦类象推演",
+    "one_physical_palace_once": true,
+    "source_200_81_unchanged": true
   }
 }

@@ -40,7 +40,7 @@ HEALTH_EDGES = (
     ("doctor","illness"),("medicine","illness"),
     ("patient","illness"),("hour","illness"),
     ("chief","illness"),("natal","illness"),
-    ("gender","illness"),
+    ("gender","illness"),("sibling","illness"),
 )
 # Interpret strong, domain-eligible edges only; neither the table nor
 # the Qian/Kun sex correspondence automatically becomes a verdict vote.
@@ -59,7 +59,7 @@ HEALTH_POLARITY = {
 ROLE_TITLES={"illness":"天芮病宫","doctor":"天心医生","medicine":"乙奇医药",
              "patient":"患者用神","natal":"患者年命","hour":"时干事体",
              "gender":"乾坤性别辅助宫",
-             "chief":"值符护持宫"}
+             "chief":"值符护持宫","sibling":"兄弟姐妹排行辅助宫"}
 
 
 def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
@@ -145,9 +145,26 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         raw["gender"]=(cell,"star" if resident else "stem",
                        resident or cell["earth_stem"])
 
-    # Strict user-specified illness scope: no generic actor.extra_cells.
-    # All nine raw chart cells remain cast and available for inspection,
-    # but only source-selected roles and 乾/坤 auxiliaries get scored.
+    # V9.0: selected sibling secondary palace requires an ACTUAL age/birth-rank
+    # source predicate. It is NOT a second patient's person-stem, and never
+    # automatically added to younger/older sibling just for relative age.
+    selected_sibling=None
+    if actor.get("sibling_auxiliary_selected"):
+        candidate=actor.get("sibling_auxiliary_candidate") or {}
+        pid=candidate.get("palace")
+        c=_cell(chart,pid)
+        if c is None or pid==5:raise ValueError("V9 sibling auxiliary lacks real palace")
+        resident=next((star["star"] for star in c["heaven_stars"]
+                       if star.get("star")!="天禽星"),None)
+        if resident is None:raise ValueError("V9 sibling auxiliary lacks resident star")
+        raw["sibling"]=(c,"star",resident)
+        selected_sibling={
+            "palace":pid,"resident_star":resident,"role":actor["relationship"],
+            "source":candidate.get("source"),"condition":candidate.get("requires"),
+            "relation_to_illness":element_relation(ELEMENTS[pid],ELEMENTS[ill["palace"]]),
+            "not_second_patient":True,"not_generic_elders_qian_kun":True}
+    # No condition -> no additional sibling palace included in V9 total.
+
 
     inspected={}
     one_cache={}
@@ -386,6 +403,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "year_role_status":missing_natal or "bound_from_supplied_real_year",
         "selected_gender_palace":gender_palace,
         "unselected_gender_palace":None,
+        "v90_sibling_auxiliary":selected_sibling,
         "table_one_queries":len(one_cache),"table_two_queries":len(edges),
         "inspected_palace_ids":sorted(physical_inspections),
         "precomputed_cartesian_pairs_materialized":False,
@@ -420,6 +438,7 @@ def selected_health_sequence(*,chart,calendar,actor,inquiry,matched_pairs=()):
         "missing_natal":missing_natal,
         "gender_palace":gender_palace,
         "qian_kun_auxiliary_observations":auxiliary_palaces,
+        "v90_sibling_auxiliary":selected_sibling,
         "book_pair_source_hits":len(matched_pairs),
         "role_group_majority":groups,
         "candidate_five_grade_quantization":new_quant,
@@ -495,7 +514,8 @@ def selected_health_sections(result,*,actor,chart):
         ("illness","02","illness"),("doctor","03","doctor"),
         ("medicine","04","medicine"),("patient","05","patient"),
         ("hour","06","hour"),("chief","07","chief"),
-        ("natal","08","natal"),("gender","09","gender")):
+        ("natal","08","natal"),("gender","09","gender"),
+        ("sibling","09a","sibling")):
         if key not in roles:
             continue
         role=roles[key]
@@ -529,6 +549,11 @@ def selected_health_sections(result,*,actor,chart):
         if key=="gender":
             title=("坤宫辅助（女）" if pid==2 else
                    "乾宫辅助（男）" if pid==6 else title)
+        if key=="sibling":
+            selected=result.get("v90_sibling_auxiliary") or {}
+            extra+=render_slot("sibling_note",name=actor["label"],
+                palace=role["complete_palace"]["palace_name"],
+                relation=selected.get("relation_to_illness","待核"))
         push(serial,title,render_slot("role",palace_detail=detail,
             palace_score="",extra_illness=extra,role_relation=relation,
             gender_note=""))

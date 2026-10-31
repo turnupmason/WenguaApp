@@ -1,5 +1,5 @@
 {
-  "schema": "wengua_health_actor_profiles_v20",
+  "schema": "wengua_health_actor_profiles_v90_friends_20261031",
   "domain": "health",
   "basis": "依据古籍",
   "selection_required": [
@@ -118,7 +118,27 @@
         }
       ],
       "palaces": [],
-      "note": "直接代问朋友以本盘真实月干为患者用神；闻讯事件另走已核事件日干，不混用；年命仅在真实提供时纳入"
+      "note": "朋友属同辈，以真实月干为患者主用；必须先定男/女、相对求测人年长/年幼，分别兼震/巽/艮/兑；不按朋友性别默认长辈乾坤；年命仅真实提供再用",
+      "friend_conditions": {
+        "patient_sex_required": [
+          "male",
+          "female"
+        ],
+        "relative_age_required": [
+          "older",
+          "younger"
+        ],
+        "relative_to": "asker",
+        "main_kind": "casting_month_stem",
+        "secondary_trigrams": {
+          "male:older": 3,
+          "female:older": 4,
+          "male:younger": 8,
+          "female:younger": 7
+        },
+        "user_approved": "2026-10-31 V9",
+        "provenance": "User-defined conditional projection of peer trigrams; direct book eldest sister Xun and 23yo younger brother Gen; brother Zhen/sister Dui analogical"
+      }
     },
     {
       "id": "colleague",
@@ -212,30 +232,88 @@
       "note": "年干作辅助；如关系明确为姨母可兼坤宫，但不泛化所有长辈"
     },
     {
-      "id": "older_sibling",
-      "label": "哥哥或姐姐",
+      "id": "older_brother",
+      "label": "哥哥",
       "references": [
         {
           "kind": "casting_month_stem",
-          "source": "peer-generation general symbolism",
-          "status": "research_candidate_only"
+          "source": "shenqi middle.ch06 time pillars 月干 peers; 震长男 by trigram analogy, eldest-ranking evidence not established",
+          "status": "user_explicit_direction_verified_by_actual_chart"
         }
       ],
       "palaces": [],
-      "note": "同辈月干仅候选，不能凭其自动认定长兄长姐"
+      "sibling_auxiliary": {
+        "palace": 3,
+        "role_sex": "male",
+        "kind": "v90_user_authorized_relative_age_trigram",
+        "source": "shenqi middle.ch06 time pillars 月干 peers; 震长男 by trigram analogy, eldest-ranking evidence not established",
+        "requires": "relationship_name_itself_defines_older_younger_relative_to_asker",
+        "scoring_policy": "v90_source_200_81_once_for_true_real_auxiliary_palace"
+      },
+      "note": "同辈主用真实月干；震三属长男类象，仅作哥哥专题参考（并不等于已证其为家中长子），不套父亲乾宫；月干同辈取用为通则，独立哥哥病例未核"
     },
     {
-      "id": "younger_sibling",
-      "label": "弟弟或妹妹",
+      "id": "older_sister",
+      "label": "姐姐",
       "references": [
         {
           "kind": "casting_month_stem",
-          "source": "peer-generation general symbolism",
-          "status": "research_candidate_only"
+          "source": "shenqi middle.ch06 siblings 月干; shenqi specific 大姐可兼巽宫（长女）；普通姐姐不等于一定是大姐",
+          "status": "user_explicit_direction_verified_by_actual_chart"
         }
       ],
       "palaces": [],
-      "note": "同辈月干候选；原书另有年轻男性兼艮宫的案例，只有年龄信息匹配才参照"
+      "sibling_auxiliary": {
+        "palace": 4,
+        "role_sex": "female",
+        "kind": "v90_user_authorized_relative_age_trigram",
+        "source": "shenqi middle.ch06 siblings 月干; shenqi specific 大姐可兼巽宫（长女）；普通姐姐不等于一定是大姐",
+        "requires": "relationship_name_itself_defines_older_younger_relative_to_asker",
+        "scoring_policy": "v90_source_200_81_once_for_true_real_auxiliary_palace"
+      },
+      "note": "同辈主用真实月干；巽四为长女类象，书中明确大姐可兼看，普通姐姐仅作有条件参考，未核出生排行不得强称大姐"
+    },
+    {
+      "id": "younger_brother",
+      "label": "弟弟",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "kaiwu.health section01 method_index line 87: 23岁少男看艮；shenqi middle.ch06: 小弟可兼艮；非所有弟弟均年少",
+          "status": "user_explicit_direction_verified_by_actual_chart"
+        }
+      ],
+      "palaces": [],
+      "sibling_auxiliary": {
+        "palace": 8,
+        "role_sex": "male",
+        "kind": "v90_user_authorized_relative_age_trigram",
+        "source": "kaiwu.health section01 method_index line 87: 23岁少男看艮；shenqi middle.ch06: 小弟可兼艮；非所有弟弟均年少",
+        "requires": "relationship_name_itself_defines_older_younger_relative_to_asker",
+        "scoring_policy": "v90_source_200_81_once_for_true_real_auxiliary_palace"
+      },
+      "note": "同辈主用真实月干；少男艮八宫为独立辅助类象，原书有23岁弟弟与小弟实例；只有确属少男或合适年幼条件才可作确认辅助，弟弟仅表示比求测者小，不能凭此推定实际年龄"
+    },
+    {
+      "id": "younger_sister",
+      "label": "妹妹",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "shenqi middle.ch06: 月干为兄弟姐妹；兑少女卦象；kaiwu.health line87只直接举少男艮宫，妹妹兑宫属类象推演而非原书单人实证",
+          "status": "user_explicit_direction_verified_by_actual_chart"
+        }
+      ],
+      "palaces": [],
+      "sibling_auxiliary": {
+        "palace": 7,
+        "role_sex": "female",
+        "kind": "v90_user_authorized_relative_age_trigram",
+        "source": "shenqi middle.ch06: 月干为兄弟姐妹；兑少女卦象；kaiwu.health line87只直接举少男艮宫，妹妹兑宫属类象推演而非原书单人实证",
+        "requires": "relationship_name_itself_defines_older_younger_relative_to_asker",
+        "scoring_policy": "v90_source_200_81_once_for_true_real_auxiliary_palace"
+      },
+      "note": "同辈主用真实月干；少女兑七属类象辅助，没有已核妹妹原书实盘可证明无条件选兑，只有明确少女/年幼事实才可正式参照"
     },
     {
       "id": "wife",
@@ -328,8 +406,10 @@
       "grandfather",
       "grandmother",
       "older_relative",
-      "older_sibling",
-      "younger_sibling",
+      "older_brother",
+      "older_sister",
+      "younger_brother",
+      "younger_sister",
       "spouse"
     ],
     "role_kind": "day_stem",
@@ -338,10 +418,10 @@
   },
   "never_infer": [
     "个人出生年命",
-    "实际患者性别",
     "亲属排行",
     "原书未给定的个人天盘干",
-    "从年龄推断实际患病概率"
+    "从年龄推断实际患病概率",
+    "非明确关系时的患者性别"
   ],
   "unverified_rule_policy": "具体人物取用没有书源证实，标候选或未知，不可替换成已证主用神；但天芮、天心、乙奇和实际九宫继续分析",
   "role_routing_20261022": {
@@ -350,5 +430,75 @@
     "son_in_law": "Kaiwu final chapter expressly says 岳父问女婿以时干为用神",
     "multi_person": "Each person separately bind, never reuse same patient cell as common Tianrui",
     "staff": "Brother/sister month stem, parent year stem + Qian6/Kun2, younger generation hour stem"
+  },
+  "legacy_composite_profiles": [
+    {
+      "id": "older_sibling",
+      "label": "哥哥或姐姐",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation general symbolism",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "同辈月干仅候选，不能凭其自动认定长兄长姐",
+      "historical_id_only": true,
+      "do_not_auto_generate": true,
+      "reason": "2026-10-31 user requires individual sibling sex and age distinctions; old composite persisted for audit/replay"
+    },
+    {
+      "id": "younger_sibling",
+      "label": "弟弟或妹妹",
+      "references": [
+        {
+          "kind": "casting_month_stem",
+          "source": "peer-generation general symbolism",
+          "status": "research_candidate_only"
+        }
+      ],
+      "palaces": [],
+      "note": "同辈月干候选；原书另有年轻男性兼艮宫的案例，只有年龄信息匹配才参照",
+      "historical_id_only": true,
+      "do_not_auto_generate": true,
+      "reason": "2026-10-31 user requires individual sibling sex and age distinctions; old composite persisted for audit/replay"
+    }
+  ],
+  "sibling_identity_policy": {
+    "strict_main_signifier": "casting_month_stem (year=parents, month=peers, day=self, hour=children; younger siblings are still peers, not children)",
+    "role_sex_from_relation": {
+      "older_brother": "male",
+      "older_sister": "female",
+      "younger_brother": "male",
+      "younger_sister": "female"
+    },
+    "conditional_auxiliary_trigrams": {
+      "older_brother": "震三长男；排行须合条件",
+      "older_sister": "巽四长女；原书大姐例，普通姐姐仍须条件",
+      "younger_brother": "艮八少男；原书23岁少男例，仅年幼/少男条件",
+      "younger_sister": "兑七少女；八卦类象推演，非已核原书妹妹案例"
+    },
+    "do_not_conflate_relative_younger_with_young_age": true,
+    "do_not_apply_trigram_powers_without_explicit_condition": false,
+    "frozen_v80_scoring_untouched": false,
+    "automatic_on_named_relationship": true,
+    "provenance": "User explicitly authorizes automatic relative-age categories; shenqi elder sister Xun and Kaiwu 23yo younger brother Gen directly attested, older brother Zhen and younger sister Dui analogical; relationship only establishes relative age, not absolute youth or eldest-family order.",
+    "v90_uses_original_200_81_without_new_matrix": true,
+    "condition": "The explicit role ID alone triggers its auxiliary trigram by V9 user rule; do not require separate age band or family birth rank."
+  },
+  "friend_identity_policy": {
+    "require_both": "patient_sex and relative_age",
+    "no_default_gender": true,
+    "no_default_age": true,
+    "no_birth_order_confusion": true,
+    "four_combinations": [
+      "male:older",
+      "female:older",
+      "male:younger",
+      "female:younger"
+    ],
+    "month_stem_source_unchanged": true,
+    "score_each_unique_physical_palace_once": true
   }
 }
