@@ -1,0 +1,65 @@
+name: BigFish V11 three real random original TS full professional previews
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/preview_bigfish_v11_three_real_random_20261031.py'
+      - '.github/workflows/bigfish_v11_three_true_random_full_20261031.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  cast_three_genuine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare standalone original BigFish reference runner without changing archived installations
+        run: |
+          cp scripts/bigfish_local_batch_reference_20261029.py scripts/local_batch.py
+          python -m py_compile scripts/wengua_bigfish_518400_offline_editorial_20261029.py scripts/preview_bigfish_v11_three_real_random_20261031.py
+      - name: Genuine pinned BigFish original TS + Wengua V11 three seeded real clocks
+        run: |
+          set -euo pipefail
+          python -u scripts/preview_bigfish_v11_three_real_random_20261031.py | tee /tmp/bigfish_v11_three_random_full.txt
+          test "$(grep -c 'V11 BigFish [1-3]/3' /tmp/bigfish_v11_three_random_full.txt)" -eq 3
+          test "$(grep -c '【第一页' /tmp/bigfish_v11_three_random_full.txt)" -eq 3
+          test "$(grep -c '【第二页' /tmp/bigfish_v11_three_random_full.txt)" -eq 3
+          grep -q '天芮病宫' /tmp/bigfish_v11_three_random_full.txt
+          grep -q '综合断语' /tmp/bigfish_v11_three_random_full.txt
+          grep -q '兄弟姐妹排行辅助宫' /tmp/bigfish_v11_three_random_full.txt
+      - name: Retain source and failure reports whether pass or fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BigFish-V11-three-real-random-full-original-sources
+          path: /tmp/bigfish_v11_three_random_full.txt
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Append reproducible result to repository without replacing earlier previews
+        if: success()
+        run: |
+          set -euo pipefail
+          target=docs/BIGFISH_V11_THREE_REAL_RANDOM_COMPLETE_20261031.txt
+          if [ -e "$target" ]; then
+            cmp -s /tmp/bigfish_v11_three_random_full.txt "$target" || {
+              echo "Earlier immutable preview differs; preserve without overwrite"; exit 1;
+            }
+            exit 0
+          fi
+          cp /tmp/bigfish_v11_three_random_full.txt "$target"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$target"
+          git commit -m "Archive BigFish V11 three genuine clocks and complete first/second page readings"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
