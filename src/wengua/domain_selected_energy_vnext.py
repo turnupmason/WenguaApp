@@ -562,6 +562,7 @@ def selected_health_sections(result,*,actor,chart):
     # Elder-only sex palace was shown/scored as 'gender' if eligible;
     # never infer either palace from the sex of a non-elder.
 
+    # V11.1: distinguish documented dual-branch lifecycle from unresolved single strength.
     # V11: preserve V10.1 evidence depth, clarify separate family auxiliary.
     # All independent 200/81 evidence stays in the existing role paragraphs.
     q=quant["summary"]
