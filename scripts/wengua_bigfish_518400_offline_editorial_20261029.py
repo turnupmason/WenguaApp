@@ -1487,7 +1487,7 @@ def run_abstract_legacy():
 # =================== REAL-CALENDAR LAUNCH WINDOW =====================
 # This is a replacement DEFAULT path inside the original BigFish script,
 # not a new casting engine or a duplicated copy of the V8 source formulas.
-REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v6_V11_full_two_tab_friend_month_only'
+REAL_PIPELINE_VERSION = 'bigfish_real_gregorian_nov2026_mar2027_v7_V11_1_final_lifecycle'
 
 # Original Mac single-file runner must not use its pinned old Wengua 0.05° guard.
 # Strict Jie/Qi source is offline Moshier UTC crossings, V8 scoring unchanged.
@@ -1822,7 +1822,7 @@ def run_real_calendar(*, shared_worker=None, installed_manifest=None, catalog=No
         raise ValueError('真实公历完整窗口枚举错误')
     zone_path=zone.replace('/','_')
     root=(base.OUTPUT/'real_calendar_20261115_20270315'/
-          RELATIONSHIP/zone_path/'source_v6_v11_full_two_tab_friend_month_only')
+          RELATIONSHIP/zone_path/'source_v7_v11_1_final_lifecycle')
     # Distinguish parent male/female and spouse male/female in their own
     # immutable SQL/Excel folders; user-provided variants cannot cross-mix.
     condition={'sex':PATIENT_SEX,'relative_age':PATIENT_RELATIVE_AGE,
