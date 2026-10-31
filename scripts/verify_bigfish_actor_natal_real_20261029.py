@@ -59,8 +59,12 @@ def main(compiled:Path):
             expected_aux=6 if relationship=='father' else 2 if relationship=='mother' else 8 if relationship=='younger_brother' else None
             roles=result['source_fact_lock']['selected_roles']
             assert roles['patient']['palace']==binding['palace']
-            assert ('gender' in roles)==(expected_aux is not None)
-            if expected_aux:assert roles['gender']['palace']==expected_aux
+            if relationship=='younger_brother':
+                assert 'gender' not in roles
+                assert roles['sibling']['palace']==expected_aux
+            else:
+                assert ('gender' in roles)==(expected_aux is not None)
+                if expected_aux:assert roles['gender']['palace']==expected_aux
             assert binding['natal_active']==bool(natal)
             assert ('natal' in roles)==bool(natal)
             if natal:assert roles['natal']['palace']==binding['natal_palace']
