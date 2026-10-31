@@ -52,7 +52,8 @@ BIRTH_ORDER = None           # 只有真正知道排行时填 eldest/middle/youn
 PATIENT_BIRTH_GANZHI = None  # 后来知道真实出生年干支才填完整六十甲子，如'乙丑'；与问测年柱不同
 CONSULTATION_CONTEXT = None   # None=本人direct_self/别人direct_proxy；仅确实为闻讯事件可按原书设置'event_news'
 MAX_NEW_ROWS = 20            # 先20个真实时辰验证，确认后改0覆盖本窗口；非518400条
-ROWS_PER_EXCEL = 500         # 真实时辰分卷；旧抽象研究模式同样适用
+ROWS_PER_EXCEL = 5000        # 旧518400抽象模式保持历史5000行/卷
+REAL_ROWS_PER_EXCEL = 200     # 新2026-11~2027-03真实时辰审核卷
 COMMIT_EVERY = 10            # committed records surviving power loss
 PRINT_EVERY = 100            # print progress every 100 newly completed rows
 GENERATE_XLSX = True        # actual .xlsx (uses Python standard library only)
@@ -1686,7 +1687,7 @@ def run_real_calendar():
                       '状态',result['status'],'错误',result.get('error','')[:140],flush=True)
             if pending>=COMMIT_EVERY:
                 db.commit();pending=0
-            if len(newly)>=ROWS_PER_EXCEL:
+            if len(newly)>=REAL_ROWS_PER_EXCEL:
                 db.commit();pending=0
                 file=export_real_new(db,root,labels,newly)
                 print('导出真实日期Excel/CSV/原始JSONL',file,flush=True)
