@@ -13,6 +13,8 @@ on:
       - 'data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json'
       - 'data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json'
       - 'data/templates/health_discomfort_v11/native_discomfort_v15.json'
+      - 'src/wengua/health_discomfort_v19_parity.py'
+      - 'ios/WenguaAppUI/NativeDiscomfortV19Parity.swift'
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
