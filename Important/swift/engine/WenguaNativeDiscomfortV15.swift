@@ -396,11 +396,10 @@ enum WenguaNativeDiscomfortV15 {
             for site in originalSites where !matched(site,candidateSites) {
                 candidateSites.append(site)
             }
-        } else if useInjury {
-            for site in injurySites where !matched(site,candidateSites) {
-                candidateSites.append(site)
-            }
         }
+        // Severe pain / surgery: 伤门 is a required conditional witness,
+        // but ONLY explicit trauma / bone damage / bleeding can promote
+        // the independent injury palace ahead of the real Tianrui site.
         // V21: patient, hour and auxiliary palaces are witnesses, NOT new
         // body-site origins. Even a strong striking symbol cannot overwrite
         // the Tianrui/explicit-injury primary location with a remote organ.
@@ -514,9 +513,9 @@ enum WenguaNativeDiscomfortV15 {
             "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
             "surgery":"已做或拟做手术"
         ]
-        let selectedInjurySites=ranked.map{$0.0}.filter{
-            matched($0,injurySites)
-        }.prefix(1).map{$0}
+        let selectedInjurySites=(trauma ?
+            ranked.map{$0.0}.filter{matched($0,injurySites)} :
+            injurySites).prefix(1).map{$0}
         let injurySiteNames=selectedInjurySites.joined(separator:"、")
         let injuryScope=(chart.bureau.dun=="yang" ? innerYang:innerYin)
             .contains(injury.id) ? "体内" : "体表"
@@ -677,7 +676,7 @@ enum WenguaNativeDiscomfortV15 {
                     // cannot be presented as if they were disease names.
                     let reading:String
                     if name.contains("伏吟") {reading="同干重叠，取缠滞反复之象"}
-                    else if ["网","狱","牢","罗","困","地户"].contains(where:{name.contains($0)}) {
+                    else if ["网","狱","牢","罗","困","地户","墓"].contains(where:{name.contains($0)}) {
                         reading="受困闭滞，取不畅之象"
                     } else if ["蛇","缠","夭矫"].contains(where:{name.contains($0)}) {
                         reading="纠缠牵扯，取反复之象"
