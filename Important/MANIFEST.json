@@ -752,6 +752,18 @@
       "canonical": "tests/test_health_discomfort_full255_native_v15_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_full255_native_v15_20261101.py",
       "sha": "ddc1de704269a7763db193f5a965848ceea4fdb5"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
+      "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
+      "sha": "6a0a94fed7443ac8c2aa5355e83751b79ecbe778"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
+      "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
+      "sha": "7c97967ce27a2e4e719bbd059dc2deb67f181130"
     }
   ]
 }
