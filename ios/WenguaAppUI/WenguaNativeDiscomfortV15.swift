@@ -177,8 +177,9 @@ enum WenguaNativeDiscomfortV15 {
         let actorCarrier=actor.mainStem=="甲"
             ? (actor.sourceGanzhi.flatMap{WenguaNativeActorSource.jiaCarrier($0)} ?? "")
             : actor.mainStem
-        let patientPower=actorCarrier.isEmpty ? "待核"
-            : try stemPower(actorCarrier,patientPalace)
+        let patientPower:String
+        if actorCarrier.isEmpty { patientPower="待核" }
+        else { patientPower=try stemPower(actorCarrier,patientPalace) }
         let injuryPower=try sourceStrength("door","伤门",injury)
         let hourPower=try stemPower(hourStem,hourPalace)
         let deityElement=WenguaVNextEngine.godElement[deity]
