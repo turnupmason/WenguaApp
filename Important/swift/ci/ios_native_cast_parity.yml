@@ -708,10 +708,11 @@ jobs:
       - name: Append-only validated 1920 case to GitHub history
         run: |
           set -euo pipefail
-          cp /tmp/wengua-v73-1920/full_verbatim_1920.md docs/HEALTH_V731_ELDER_1920_FOUR_PILLARS_2026-10-27.md
+          ARCHIVE="docs/HEALTH_V731_ELDER_1920_FOUR_PILLARS_RUN_${GITHUB_RUN_ID}_${GITHUB_JOB}.md"
+          cp /tmp/wengua-v73-1920/full_verbatim_1920.md "$ARCHIVE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V731_ELDER_1920_FOUR_PILLARS_2026-10-27.md
+          git add "$ARCHIVE"
           git commit -m "Archive source-exact V7.3 true 1920 elder female Python native Swift test" || true
           for n in 1 2 3 4 5; do
             git pull --rebase origin main
@@ -783,10 +784,11 @@ jobs:
       - name: Append-only original coworker full reading to GitHub
         run: |
           set -euo pipefail
-          cp /tmp/wengua-v731-colleague/full_colleague_python_swift.md docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_2026-10-27.md
+          ARCHIVE="docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_RUN_${GITHUB_RUN_ID}_${GITHUB_JOB}.md"
+          cp /tmp/wengua-v731-colleague/full_colleague_python_swift.md "$ARCHIVE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V731_COLLEAGUE_FIXED_USER_PILLARS_2026-10-27.md
+          git add "$ARCHIVE"
           git commit -m "Archive fixed original colleague case full true Python Swift parity" || true
           for n in 1 2 3 4 5; do
             git pull --rebase origin main
