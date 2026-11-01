@@ -669,7 +669,11 @@ enum WenguaNativeDiscomfortV15 {
             for line in pairText.split(separator:"\n").dropFirst() {
                 let cells=line.split(separator:"|",omittingEmptySubsequences:false)
                 if cells.count>=6 && cells[0]==top && cells[1]==ground {
-                    let name=String(cells[2])
+                    // Keep the exact ancient title in immutable source TSV;
+                    // a nonmedical sexually charged historical idiom must
+                    // not become a disease label for an ordinary user.
+                    let rawName=String(cells[2])
+                    let name=rawName=="幼女奸淫" ? "壬加癸旧格" : rawName
                     let nature=String(cells[3])
                     // The literal historical 81-grid gist is preserved in
                     // the source TSV, but unrelated business/marriage words
