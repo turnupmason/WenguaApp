@@ -447,15 +447,10 @@ enum WenguaNativeDiscomfortV15 {
         let doorCross=doorsConfirming.prefix(2).map{entry in
             entry.1+"在"+label(entry.0)+"宫，所指部位与"+lead+"相接"
         }.joined(separator:"；")
-        let doorsFull="病宫临"+door+"，人物宫临"+patientDoor+"。"+
-            (doorCross.isEmpty ? "其余门象不另增加主位。" : doorCross+"。")
+        let doorsFull="病宫临"+door+"，人物宫临"+patientDoor+"。"+(doorCross.isEmpty ? "其余门象不另增加主位。" : doorCross+"。")
         let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
-        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，与病宫"+
-            palaceRelation(hourPalace)+"；"+
-            (hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
-        let personFull=relationship+"取用神"+actor.mainStem+"在"+
-            label(patientPalace)+"宫，与病宫"+palaceRelation(patientPalace)+"；"+
-            (actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
+        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，与病宫"+palaceRelation(hourPalace)+"；"+(hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
+        let personFull=relationship+"取用神"+actor.mainStem+"在"+label(patientPalace)+"宫，与病宫"+palaceRelation(patientPalace)+"；"+(actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
         let auxTexts=auxiliaries.map{entry in
             let p=entry.0
             let name=p.id==actor.siblingAuxiliaryPalace ? "亲属排行辅助" :
@@ -465,24 +460,20 @@ enum WenguaNativeDiscomfortV15 {
         }
         let auxFull=auxTexts.isEmpty ? "没有符合条件的额外人物辅宫。" :
             auxTexts.joined(separator:"；")+"。"
-        let formsFull="天芮携"+sky+"加地盘"+illness.earthStem+
-            "，见"+formationNames.joined(separator:"、")+
-            "格；合参本宫门神，以"+lead+"为主线。"
+        let formsFull="天芮携"+sky+"加地盘"+illness.earthStem+"，见"+formationNames.joined(separator:"、")+"格；合参本宫门神，以"+lead+"为主线。"
         var danger:[String]=[]
         for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
             let signs=badSigns(stem,illness)
             if !signs.isEmpty,
                let site=sites.first(where:{matched($0,leadSites)}) {
-                danger.append(stem+signs.joined(separator:"、")+
-                    "，传统不利象集中在"+site+"一带")
+                danger.append(stem+signs.joined(separator:"、")+"，传统不利象集中在"+site+"一带")
             }
         }
         if let bird {
             let signs=badSigns(bird,illness)
             if !signs.isEmpty,
                let site=birdSites.first(where:{matched($0,leadSites)}) {
-                danger.append("天禽携"+bird+signs.joined(separator:"、")+
-                    "，亦指"+site)
+                danger.append("天禽携"+bird+signs.joined(separator:"、")+"，亦指"+site)
             }
         }
         if illnessVoid=="true_void" {danger.append("病宫真空，本宫候选减看")}

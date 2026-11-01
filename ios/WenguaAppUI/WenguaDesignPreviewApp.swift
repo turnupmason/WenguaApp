@@ -1128,6 +1128,12 @@ struct CastSetupScreen: View {
                                 }
                             }
                             .pickerStyle(.menu)
+                            .onChange(of:subject) { _ in
+                                familyRelativeConfirmed=false
+                                patientSex="unspecified"
+                                friendRelativeAge="unspecified"
+                                birthOrder="unspecified"
+                            }
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)

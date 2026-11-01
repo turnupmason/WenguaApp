@@ -451,13 +451,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift",
       "snapshot": "Important/swift/tests/VNextThreeRandomNativeFullCheck.swift",
-      "sha": "90e9464474cb1e92535213c716bf48fa7bd32ebb"
+      "sha": "36f13fdd5d6e942413d785b2b47c443b4870134f"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "7494bed0e3f5c6ce9117a76365a2e33c12bdb2ee"
+      "sha": "92ecf5e01ed29c6ab830b206912fd9a155e79197"
     },
     {
       "platform": "swift",
@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "88a6d278c0b7e2a5837229f6221d9b16a594597b"
+      "sha": "ff4f9144f0f4c70e92ae49f5165ea64ca359c623"
     },
     {
       "platform": "python",
