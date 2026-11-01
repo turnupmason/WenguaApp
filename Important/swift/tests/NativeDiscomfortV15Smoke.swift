@@ -103,14 +103,17 @@ import Foundation
                 !reading.sections.joinedDescription.contains("门力"),
                 !reading.sections.joinedDescription.contains("断定骨折"),
                 !reading.sections.joinedDescription.contains("吉凶"),
-                !reading.sections.joinedDescription.contains("极小")
+                reading.sections.joinedDescription.contains("天地格")
             else {
                 let debug="V21_FAIL_GUARD role="+relationship+" ctx="+injuryContext+" ids="+ids.joined(separator:",")+" last="+(reading.sections.last?.text ?? "")+" all="+reading.sections.joinedDescription
                 FileHandle.standardError.write(Data(debug.utf8))
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
             }
-            if injuryContext=="none" && reading.sections.joinedDescription.contains("伤门") {
+            // A co-located 伤门 is still a real eight-door fact even when
+            // independent injury casting is OFF. Only the independent
+            // injury section must remain absent for none.
+            if injuryContext=="none" && reading.sections.contains(where:{$0.id=="02_injury"}) {
                 throw NSError(domain:"UnexpectedInjuryEvidence",code:8)
             }
             let fields = [
