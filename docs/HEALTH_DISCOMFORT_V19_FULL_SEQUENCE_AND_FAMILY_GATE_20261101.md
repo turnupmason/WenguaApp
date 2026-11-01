@@ -51,3 +51,13 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
 
 历史 Xcode失败 #41341934448 因独立Python读取中五宫 p['door'] 错误：中五无普通门，已改为 get() 后 #41342466896 PASS，记录保留。旧综合 iOS Offline Native Casting Parity 仍有 V7过时文案断言及 unresolvedRole，不能冒称全库通过；继续逐案审查。未签名真机/App Store 验收。
+
+
+## 2026-11-01 本轮后续：旧综合原生回归真正审查（保留失败）
+
+1. 用户要求家里的四种亲属必须逐一明确。Swift UI `WenguaDesignPreviewApp.swift` Picker + 每项确认分别为「哥哥（家里的哥哥）」「姐姐（家里的大姐）」「弟弟（家里的弟弟）」「妹妹（家里的妹妹）」，四者均必选亲属确认；历史 `哥哥或姐姐` / `弟弟或妹妹` 复合档案仍存但已经从面向用户的 Picker 隐去。真正朋友仍走独立朋友性别/相对长幼，绝不借亲属排行辅助宫。4种未经确认拒绝真实 Swift actor binding 的 `NativeActorProfileCheck.swift` 及 Python 源静态回归已加。
+2. 旧 `iOS Offline Native Casting Parity` V5/V7回归和现行V8的冲突：旧测试把 `chief.score_eligible` 当作物理宫是否计数，错把不克病或逢空的值符所在实宫完全剔除。现行 V8 源 `src/wengua/health_quant_overlay_vnext.py` 360–406节说明独立物理宫基础事实只计一次，克病**条件奖励**另外门控。修正旧 `tests/test_health_vnext_exact_role_matrix_gate_20261026.py`，断言按真正 `unique_palace_count` 去重，逢空优先反证，原生产打分一行未改。旧【原先预写断词】只测试真实用神/方向/四段结果和保密，不再强制已废弃的V5句子。
+3. 原生 `VNextNativeParityCheck.swift` 旧 `qian` / `kun` 与 V8 `gender` 其实共用一个物理乾六/坤二宫。只在实际性别辅助宫吻合时把旧测试名映射至一个真实宫，不新造克病条件/奖励；错误日时、用神及首个不一致角色打印日志。旧流程 #41343697589 的五盘 native_core Swift/Python 实际计算、原生朋友真盘和长辈/同事专项已经运行通过。
+4. 多个历史测试工作流会同时在 main 修改同名固定归档，导致旧 #41342824942、#41343697589、#41343840162 出现 `git pull --rebase` 文件冲突，并不等于 Python Swift 模型错。为了防止覆盖原著及长期失败，新归档改成 `RUN_${GITHUB_RUN_ID}` 唯一文件，旧归档原样保留；同时修复相同文件无需commit时误报失败。并未隐藏旧失败记录。
+5. 原 V19 独立 Python/Swift 九节逐字一致、源200/81和六甲时干落宫已由 #41342466896 真 macOS 编译、随机弟弟/妻子两盘 PASS；四亲属 Picker、病位九段资源也经 #41343697671 Xcode PASS。本轮最新归档防冲突改动需要**新的 Actions 自身结果**，不能挪用旧版PASS。
+6. 当前仍需持续跟踪旧综合流程最终归档成功与 iOS 真实签名设备/App Store。真实古籍文化部位不构成医学病灶、疼痛强度、预后验证；V8疾病轻重原始规则矩阵/源数据、10档分层以及已见结局历史家族没有变动。
