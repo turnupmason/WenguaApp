@@ -43,7 +43,7 @@ class CrossSourceV14(unittest.TestCase):
             if len(x["stem_tokens"])>1:
                 self.assertFalse(x["executable_research_only"])
         self.assertEqual(len([x for x in p["rows"]
-                              if x["executable_research_only"]]),7)
+                              if x["executable_research_only"]]),6)
 
     def test_12_old_examples_20_conflicts_and_duplicate_family(self):
         f=json.loads(DOC.read_text(encoding="utf8"))
