@@ -601,19 +601,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "4417d0fdc8760ae9782f98207d943fe4a8378469"
+      "sha": "98097e07aaf4f9b9ef4674c5cad75316526710b0"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "4417d0fdc8760ae9782f98207d943fe4a8378469"
+      "sha": "98097e07aaf4f9b9ef4674c5cad75316526710b0"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "4030bd389e2c7ac67e5a06e654c743a6cb0fcc43"
+      "sha": "d5610d4cf2b2249bb29743e309036dfd6ced68c4"
     },
     {
       "platform": "python",
@@ -637,7 +637,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_inner_outer_v12_20261031.py",
       "snapshot": "Important/python/tests/test_health_discomfort_inner_outer_v12_20261031.py",
-      "sha": "015438b5be6daf0382de2b7b6f44679d3d2e7277"
+      "sha": "7308e9ca97d01853ca33bf9ec179f206972c45c7"
     }
   ]
 }

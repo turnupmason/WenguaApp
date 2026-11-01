@@ -84,18 +84,28 @@ def _readable(items: list[str], count: int = 3) -> str:
     return "、".join(items[:count])
 
 
-def _stem_hint(chart_evidence: Mapping[str, Any], sex: str | None) -> str:
-    candidates = chart_evidence["tianrui_stem_main_clues"]
-    palace = str(chart_evidence["tianrui_palace"])
-    vals = candidates.get("by_palace", {}).get(palace, [])
-    safe = [word for word in vals if not any(bad in word for bad in UNSAFE_HINTS)
-            and _sex_compatible(word, sex)]
-    if not safe:
-        safe = [word for word in candidates.get("surface", []) + candidates.get("organ", [])
-                if not any(bad in word for bad in UNSAFE_HINTS)
-                and _sex_compatible(word, sex)]
-    return (_readable(safe, 2) + "等尚待来源复核的干宫象意"
-            if safe else "尚待来源复核的干宫象意")
+def _stem_hint(chart_evidence: Mapping[str, Any], sex: str | None,
+               sector: str) -> str:
+    """Only align source-uncertain sky-stem hints with the chosen body side.
+
+    A generic surface feature of a stem must not displace a source-backed
+    internal branch (or vice versa), nor invent a diagnosis or patient sex.
+    """
+    if sector not in ("inner","outer"):
+        raise ValueError("An actual selected traditional sector is required")
+    candidates=chart_evidence["tianrui_stem_main_clues"]
+    palace=str(chart_evidence["tianrui_palace"])
+    body=(chart_evidence["internal_symbol_candidates"] if sector=="inner"
+          else chart_evidence["surface_symbol_candidates"])
+    raw=candidates.get("by_palace",{}).get(palace,[])
+    filtered=[s for s in raw if _sex_compatible(s,sex)
+              and not any(bad in s for bad in UNSAFE_HINTS)]
+    # Literal overlap avoids importing unverified aliases, hidden anatomy,
+    # or a generic organ/surface unrelated to this physical palace branch.
+    matching=[s for s in filtered if any(s in x or x in s for x in body)]
+    if matching:
+        return _readable(matching,2)+"等与本宫表里对应的待核细部象"
+    return "尚无与本宫所取表里位置一致的已核干宫细部象"
 
 
 def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
@@ -168,7 +178,8 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         {"id":"02_tianrui", "title":template()["titles"]["02_tianrui"],
          "text":_say("illness",door=door,deity=deity,door_clue=door_clue,
                      deity_clue=deity_clue,sky=evidence["tianrui_carried_stem"],
-                     stem_clues=_stem_hint(evidence, actor.get('resolved_sex')),companion=companion,
+                     stem_clues=_stem_hint(evidence, actor.get('resolved_sex'),
+                                            location["sector"]),companion=companion,
                      earth=location["actual_earth_stem"],
                      patterns=names)},
         {"id":"03_comparison", "title":template()["titles"]["03_comparison"],
