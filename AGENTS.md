@@ -2641,3 +2641,10 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+### 2026-11-01 · V14 三套十干来源与真实 Actions 验收结果
+- 在候选 HLT-0240～0255 的基础上补充 `data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json`：秘笈大全卷十三（用户Excel整理待核）、三命通会卷七脏腑（原章网页已核）、三命通会卷七体表（与前者是**同一文本家族**）。十干甲乙丙丁戊己庚辛壬癸每干保留三套独立文本候选，例庚在一套肺/筋、在另一套大肠、另一套脐；不能让同个文本中的两条歌诀制造两次证据票。代码 `stem_source_variants()` 只在实际天芮携干下输出文化研究 audit，不改六段用户断词和V8。
+- 最终源码提交 a60a81c203c19c28fa8211dcdc150e3b42b1d993：主CI [#41321257243](https://github.com/turnupmason/WenguaApp/actions/runs/41321257243) Python3.11/3.12 PASS，含本轮V14 1080真实局态、255表指纹、16待核组合、12已见案例/20异文、跨书11独立事件家族和十干三源分离；原V8 Python/Swift native parity [#41321257207](https://github.com/turnupmason/WenguaApp/actions/runs/41321257207) PASS。新专题Swift并未实现、不能借现有V8 parity冒称新专题逐字一致。
+- 本轮已有 iOS UI安全门源提交 5e950c2bef875f8b24d39bf16cfffafd7de0c2e8 的真 Xcode Simulator构建＋bundle 200/81/人物/原V8模板检查 [#41321018148](https://github.com/turnupmason/WenguaApp/actions/runs/41321018148) PASS。随后新增V14三源只是研究Python/JSON未加入iOS project.yml，不代表新病位功能随bundle交付。旧iOS Offline Native Casting Parity [#41321018242](https://github.com/turnupmason/WenguaApp/actions/runs/41321018242) FAIL，保留旧V7工作流历史失败。
+- 用户完整255/62/12/20原字段已另导出为本次对话可下载JSONL ZIP，GitHub暂以SHA256 19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c 锚定原工作簿，**没有宣称已经在GitHub逐条导入255主行**。本次测试成功只证明来源隔离逻辑可重复，并不证明病例定位的临床正确或古籍所有版本逐页批准。

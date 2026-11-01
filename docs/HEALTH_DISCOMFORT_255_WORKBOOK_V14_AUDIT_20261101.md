@@ -51,3 +51,10 @@
 初次主CI有 V12、V11 Python源镜像未同步及早期 V14 研究测试变更阶段的失败，历史run不删；所有文件与重要双镜像修复后须以相同commit的真实Actions结果为准。旧综合V7离线原生Parity尚有历史失败，不同于此次V14对客验收。
 
 下一步按照用户Excel本身的来源链接，分批逐条核原书的逐版原文段、成立/反条件、方向事实（必须确认天地顺序及天芮/天禽身份）、来源家族重复关系；跨体系命理不自动移植到起盘领域。来源和病例未核时保留多候选，不追求每张盘唯一器官。未添加新原书章节或可用秘密盲测例，任何古籍历史断语不能作临床医学证据。
+
+
+### 2026-11-01 · V14 三套十干来源与真实 Actions 验收结果
+- 在候选 HLT-0240～0255 的基础上补充 `data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json`：秘笈大全卷十三（用户Excel整理待核）、三命通会卷七脏腑（原章网页已核）、三命通会卷七体表（与前者是**同一文本家族**）。十干甲乙丙丁戊己庚辛壬癸每干保留三套独立文本候选，例庚在一套肺/筋、在另一套大肠、另一套脐；不能让同个文本中的两条歌诀制造两次证据票。代码 `stem_source_variants()` 只在实际天芮携干下输出文化研究 audit，不改六段用户断词和V8。
+- 最终源码提交 a60a81c203c19c28fa8211dcdc150e3b42b1d993：主CI [#41321257243](https://github.com/turnupmason/WenguaApp/actions/runs/41321257243) Python3.11/3.12 PASS，含本轮V14 1080真实局态、255表指纹、16待核组合、12已见案例/20异文、跨书11独立事件家族和十干三源分离；原V8 Python/Swift native parity [#41321257207](https://github.com/turnupmason/WenguaApp/actions/runs/41321257207) PASS。新专题Swift并未实现、不能借现有V8 parity冒称新专题逐字一致。
+- 本轮已有 iOS UI安全门源提交 5e950c2bef875f8b24d39bf16cfffafd7de0c2e8 的真 Xcode Simulator构建＋bundle 200/81/人物/原V8模板检查 [#41321018148](https://github.com/turnupmason/WenguaApp/actions/runs/41321018148) PASS。随后新增V14三源只是研究Python/JSON未加入iOS project.yml，不代表新病位功能随bundle交付。旧iOS Offline Native Casting Parity [#41321018242](https://github.com/turnupmason/WenguaApp/actions/runs/41321018242) FAIL，保留旧V7工作流历史失败。
+- 用户完整255/62/12/20原字段已另导出为本次对话可下载JSONL ZIP，GitHub暂以SHA256 19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c 锚定原工作簿，**没有宣称已经在GitHub逐条导入255主行**。本次测试成功只证明来源隔离逻辑可重复，并不证明病例定位的临床正确或古籍所有版本逐页批准。

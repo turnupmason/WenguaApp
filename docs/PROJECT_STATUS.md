@@ -2496,3 +2496,10 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-11-01 · V14 三套十干来源与真实 Actions 验收结果
+- 在候选 HLT-0240～0255 的基础上补充 `data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json`：秘笈大全卷十三（用户Excel整理待核）、三命通会卷七脏腑（原章网页已核）、三命通会卷七体表（与前者是**同一文本家族**）。十干甲乙丙丁戊己庚辛壬癸每干保留三套独立文本候选，例庚在一套肺/筋、在另一套大肠、另一套脐；不能让同个文本中的两条歌诀制造两次证据票。代码 `stem_source_variants()` 只在实际天芮携干下输出文化研究 audit，不改六段用户断词和V8。
+- 最终源码提交 a60a81c203c19c28fa8211dcdc150e3b42b1d993：主CI [#41321257243](https://github.com/turnupmason/WenguaApp/actions/runs/41321257243) Python3.11/3.12 PASS，含本轮V14 1080真实局态、255表指纹、16待核组合、12已见案例/20异文、跨书11独立事件家族和十干三源分离；原V8 Python/Swift native parity [#41321257207](https://github.com/turnupmason/WenguaApp/actions/runs/41321257207) PASS。新专题Swift并未实现、不能借现有V8 parity冒称新专题逐字一致。
+- 本轮已有 iOS UI安全门源提交 5e950c2bef875f8b24d39bf16cfffafd7de0c2e8 的真 Xcode Simulator构建＋bundle 200/81/人物/原V8模板检查 [#41321018148](https://github.com/turnupmason/WenguaApp/actions/runs/41321018148) PASS。随后新增V14三源只是研究Python/JSON未加入iOS project.yml，不代表新病位功能随bundle交付。旧iOS Offline Native Casting Parity [#41321018242](https://github.com/turnupmason/WenguaApp/actions/runs/41321018242) FAIL，保留旧V7工作流历史失败。
+- 用户完整255/62/12/20原字段已另导出为本次对话可下载JSONL ZIP，GitHub暂以SHA256 19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c 锚定原工作簿，**没有宣称已经在GitHub逐条导入255主行**。本次测试成功只证明来源隔离逻辑可重复，并不证明病例定位的临床正确或古籍所有版本逐页批准。
