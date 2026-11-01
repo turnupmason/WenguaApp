@@ -1,7 +1,7 @@
 {
   "schema": "wengua_health_discomfort_native_v18_site_rank_20261101",
   "topic_id": "health.discomfort",
-  "status": "location_only_distinct_physical_evidence_no_severity_prose",
+  "status": "v18_location_only_optional_evidence_sections",
   "sections": [
     {
       "id": "01_location",
@@ -11,22 +11,22 @@
     {
       "id": "02_tianrui",
       "title": "宫位细分",
-      "text": "同宫部位再作细分：{site_secondary}。"
+      "text": "{site_secondary}"
     },
     {
       "id": "03_comparison",
       "title": "天干合参",
-      "text": "{site_detail}。"
+      "text": "{site_detail}"
     },
     {
       "id": "04_person",
       "title": "人物宫复核",
-      "text": "{actor_site}。"
+      "text": "{actor_site}"
     },
     {
       "id": "05_review",
       "title": "伤门旁证",
-      "text": "{injury_site}。"
+      "text": "{injury_site}"
     },
     {
       "id": "06_conclusion",
