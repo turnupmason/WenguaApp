@@ -342,10 +342,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             if _tier(starPower)>=2 and _tier(carrierPower)>=2 and site:
                 injuryRoomEvidence.append(
                     f"宫中{star['star']}携{carrier}的部位干象也取{site}，故这处有星与干的同宫互证。")
-        earthPower=source_strength("stem",inj["earthStem"],inj,inj["earthStages"])
-        earthSites=_parts("/".join(stems[inj["earthStem"]]["qimen_secret_vol13"]))
-        earthSite=next((x for x in earthSites if _matched(x,selectedInjurySites)),None)
-        if _tier(earthPower)>=2 and earthSite:
+        injuryEarthPower=source_strength("stem",inj["earthStem"],inj,inj["earthStages"])
+        injuryEarthSites=_parts("/".join(stems[inj["earthStem"]]["qimen_secret_vol13"]))
+        earthSite=next((x for x in injuryEarthSites if _matched(x,selectedInjurySites)),None)
+        if _tier(injuryEarthPower)>=2 and earthSite:
             injuryRoomEvidence.append(
                 f"地盘{inj['earthStem']}的独立干象也指{earthSite}，再收窄到这一带。")
         if inj["deity"]=="白虎":
