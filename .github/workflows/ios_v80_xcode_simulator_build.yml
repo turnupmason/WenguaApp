@@ -136,8 +136,10 @@ jobs:
           grep -q 'V18_NATIVE_SITE_PASS 姐姐 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V18_NATIVE_SITE_PASS 弟弟 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V18_NATIVE_SITE_PASS 妻子 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 妹妹 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 哥哥 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          echo "PASS V19 four random native clocks including younger brother and wife, 200/81 source" > /tmp/wengua-v80-xcode/native_site_validation.txt
+          echo "PASS V20 six selected scenarios: accident, pain, ordinary, surgery, bone, bleeding" > /tmp/wengua-v80-xcode/native_site_validation.txt
       - name: Independent Python vs Swift V19 nine-section exact parity on two fresh real clocks (brother / wife)
         run: |
           set -euo pipefail

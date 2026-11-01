@@ -23,7 +23,9 @@ import Foundation
             ("yin","父亲",2026,11,Int.random(in:9...23),slots.randomElement()!),
             ("yang","姐姐",2027,2,Int.random(in:7...20),slots.randomElement()!),
             ("yin","弟弟",2026,11,Int.random(in:9...23),slots.randomElement()!),
-            ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!)
+            ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!),
+            ("yin","妹妹",2026,11,Int.random(in:9...23),slots.randomElement()!),
+            ("yang","哥哥",2027,2,Int.random(in:7...20),slots.randomElement()!)
         ]
         for (label,relationship,year,month,day,hour) in selected {
             let instant=String(format:"%04d-%02d-%02dT%02d:00:00-05:00",
@@ -42,15 +44,17 @@ import Foundation
                      relationship:relationship,context:"direct_proxy",
                      patientSex:nil,birthOrder:relationship=="姐姐" ? "eldest" : nil,
                      patientBirthGanzhi:nil,
-                     familyRelativeConfirmed:["姐姐","弟弟"].contains(relationship) ? true : nil),index:index)
+                     familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(relationship) ? true : nil),index:index)
             let injuryContext=[
                 "父亲":"accident","姐姐":"severe_pain",
-                "弟弟":"none","妻子":"surgery"][relationship]!
+                "弟弟":"none","妻子":"surgery",
+                "妹妹":"bone","哥哥":"bleeding"][relationship]!
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,
                 injuryContext:injuryContext,rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
-            guard actor.profileID==(["父亲":"father","姐姐":"older_sister","弟弟":"younger_brother","妻子":"wife"][relationship] ?? ""),
+            guard actor.profileID==(["父亲":"father","姐姐":"older_sister","弟弟":"younger_brother","妻子":"wife",
+                 "妹妹":"younger_sister","哥哥":"older_brother"][relationship] ?? ""),
                 actor.natalStem==nil,
                 relationship != "父亲" || actor.genderPalace==6,
                 relationship != "姐姐" || actor.siblingAuxiliaryPalace==4,
