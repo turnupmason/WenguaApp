@@ -19,6 +19,8 @@ class HealthSiteDetailsV13(unittest.TestCase):
         data=detail_policy()
         mapping={}
         for name,group in data["body_axis"].items():
+            if not isinstance(group,dict):
+                continue  # textual caveat is metadata, not a physical group
             for p in group["palaces"]:
                 self.assertNotIn(p,mapping)
                 mapping[p]=name
