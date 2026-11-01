@@ -2503,3 +2503,11 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最终源码提交 a60a81c203c19c28fa8211dcdc150e3b42b1d993：主CI [#41321257243](https://github.com/turnupmason/WenguaApp/actions/runs/41321257243) Python3.11/3.12 PASS，含本轮V14 1080真实局态、255表指纹、16待核组合、12已见案例/20异文、跨书11独立事件家族和十干三源分离；原V8 Python/Swift native parity [#41321257207](https://github.com/turnupmason/WenguaApp/actions/runs/41321257207) PASS。新专题Swift并未实现、不能借现有V8 parity冒称新专题逐字一致。
 - 本轮已有 iOS UI安全门源提交 5e950c2bef875f8b24d39bf16cfffafd7de0c2e8 的真 Xcode Simulator构建＋bundle 200/81/人物/原V8模板检查 [#41321018148](https://github.com/turnupmason/WenguaApp/actions/runs/41321018148) PASS。随后新增V14三源只是研究Python/JSON未加入iOS project.yml，不代表新病位功能随bundle交付。旧iOS Offline Native Casting Parity [#41321018242](https://github.com/turnupmason/WenguaApp/actions/runs/41321018242) FAIL，保留旧V7工作流历史失败。
 - 用户完整255/62/12/20原字段已另导出为本次对话可下载JSONL ZIP，GitHub暂以SHA256 19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c 锚定原工作簿，**没有宣称已经在GitHub逐条导入255主行**。本次测试成功只证明来源隔离逻辑可重复，并不证明病例定位的临床正确或古籍所有版本逐页批准。
+
+## 2026-11-01 · V15 “难受部位”独立专题（病情轻重V8冻结）
+- 病情轻重 health.severity 的 V8.0 测分、200格、81格、分数十档模板、独立角色力量与既有回归全部保持不变；任何病位研究资料不得重算V8结果。
+- 用户完整255条病位规则、12例已见原书案例、20个版本/来源冲突已经真实存入 data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json。A142/B16/C16/D69/E12分级不混合；全部255条的上下干方向字段原本为空，不能猜天地干正反；跨书同事件不重复当验证。
+- 新增独立 src/wengua/health_discomfort_255_v15.py 按实际天芮实宫/阴阳遁/携干/门神条件筛证据；原V11六段候选模板在病星细察中加入三套十干异文。《三命通会》脏腑与体表属同一来源家族，不制造重复独立证明。
+- 新建 iOS 原生独立 WenguaNativeDiscomfortV15.swift、native_discomfort_v15.json，通过 WenguaNativeReadingRouter 分流，project.yml 打包255原始来源、三套十干和六段模板；UI “难受部位”暂设 enabled:true，真实运行缺少源数据/人物/病宫则拒绝，无成功断词不扣15天记录。绝不可回退到V8严重程度模板。
+- 新 iOS 六段与原研究 Python V11 六段仍非逐字相同；新专题Python↔Swift 完整断词 parity 尚待单独验收，不得借用原V8 parity宣称新专题通过。实测 Xcode、资源、最新CI必须按对应SHA标注。原有历史失败全部留存。
+- 古籍部位类象不是医学确诊、严重程度或治疗意见；B已见案例、C多干未核候选、D跨命理体系、E工程约束只能保留为不同证据用途，不能直接作为单一真实病灶结论。

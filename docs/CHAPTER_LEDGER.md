@@ -1463,3 +1463,6 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 - 最终源码提交 a60a81c203c19c28fa8211dcdc150e3b42b1d993：主CI [#41321257243](https://github.com/turnupmason/WenguaApp/actions/runs/41321257243) Python3.11/3.12 PASS，含本轮V14 1080真实局态、255表指纹、16待核组合、12已见案例/20异文、跨书11独立事件家族和十干三源分离；原V8 Python/Swift native parity [#41321257207](https://github.com/turnupmason/WenguaApp/actions/runs/41321257207) PASS。新专题Swift并未实现、不能借现有V8 parity冒称新专题逐字一致。
 - 本轮已有 iOS UI安全门源提交 5e950c2bef875f8b24d39bf16cfffafd7de0c2e8 的真 Xcode Simulator构建＋bundle 200/81/人物/原V8模板检查 [#41321018148](https://github.com/turnupmason/WenguaApp/actions/runs/41321018148) PASS。随后新增V14三源只是研究Python/JSON未加入iOS project.yml，不代表新病位功能随bundle交付。旧iOS Offline Native Casting Parity [#41321018242](https://github.com/turnupmason/WenguaApp/actions/runs/41321018242) FAIL，保留旧V7工作流历史失败。
 - 用户完整255/62/12/20原字段已另导出为本次对话可下载JSONL ZIP，GitHub暂以SHA256 19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c 锚定原工作簿，**没有宣称已经在GitHub逐条导入255主行**。本次测试成功只证明来源隔离逻辑可重复，并不证明病例定位的临床正确或古籍所有版本逐页批准。
+
+### 2026-11-01 · V15 病位规则库接入（非新增原书章）
+完整255行来源及12已见案例/20异文保存；独立六段模板与Swift UI入口接入，V8轻重冻结。正式新古籍章0、新未见历史事件0，不能将12已见书案称为盲测。相关审计 docs/HEALTH_DISCOMFORT_V15_255_IOS_INTEGRATION_20261101.md。
