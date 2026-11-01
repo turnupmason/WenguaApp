@@ -159,7 +159,8 @@ enum WenguaNativeDiscomfortV15 {
             "stage_clue":"天芮携"+sky+"的十二长生为"+phaseText,
             "void_clue":voidText,"horse_clue":horseText,"tomb_clue":tombText,
             "earth_hint":skyOther.joined(separator:"、"),
-            "stem_scope":"天盘与地盘按实际上下位置分别参看"
+            "stem_scope":"天盘与地盘按实际上下位置分别参看",
+            "patient_stem":actor.mainStem
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
