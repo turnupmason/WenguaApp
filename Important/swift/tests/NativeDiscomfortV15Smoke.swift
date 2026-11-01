@@ -41,13 +41,24 @@ import Foundation
                 chart:chart,relationship:"本人",actor:actor,
                 rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
+            // Print every actual source sentence before validation, so a
+            // failed random branch remains auditable rather than disappearing.
+            for section in reading.sections {
+                print("V17_DIAGNOSTIC_"+section.id+" "+section.text)
+            }
+            if !reading.sections.last!.text.contains("不等于实际疼痛强度") {
+                print("V17_GUARD_FAILURE ending")
+            }
+            if reading.sections.joinedDescription.contains("原书") {
+                print("V17_GUARD_FAILURE source_name")
+            }
             guard reading.topicID=="health.discomfort",
                 reading.sections.map({$0.id})==[
                     "01_location","02_tianrui","03_comparison",
                     "04_person","05_review","06_conclusion"],
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
-                reading.sections.last!.text.contains("不是病情轻重评分"),
+                reading.sections.last!.text.contains("不等于实际疼痛强度"),
                 !reading.sections.joinedDescription.contains("极大吉"),
                 !reading.sections.joinedDescription.contains("极大凶"),
                 !reading.sections.joinedDescription.contains("《"),

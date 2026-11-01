@@ -129,7 +129,7 @@ jobs:
             data/templates/health_discomfort_v11/native_discomfort_v15.json \
             data/mobile/health_vnext/health_energy_200.json \
             data/knowledge/health_81_excel_20261025/81_pairs.tsv \
-            > /tmp/wengua-v80-xcode/native_site_two_clocks.log
+            | tee /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V15_REAL_NATIVE_SITE_PASS yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V15_REAL_NATIVE_SITE_PASS yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
