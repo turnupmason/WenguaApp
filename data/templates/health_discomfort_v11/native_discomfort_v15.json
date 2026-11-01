@@ -1,37 +1,37 @@
 {
-  "schema": "wengua_health_discomfort_native_v15_source_separated_20261101",
+  "schema": "wengua_health_discomfort_native_v16_full_fact_narrative_20261101",
   "topic_id": "health.discomfort",
-  "status": "source_conditioned_traditional_body_site",
+  "status": "source_conditions_checked_full_customer_no_provenance_labels",
   "sections": [
     {
       "id": "01_location",
-      "title": "病位初象",
-      "text": "天芮病星在{palace}，此为{dun}遁{sector}，按古籍人体九宫类象属身体{region}。依《神奇之门》先参看{primary}；《秘笈大全》另记{external}，不将异说直接合成唯一器官。"
+      "title": "病位总览",
+      "text": "天芮病星落{palace}，本局{dun}遁取{sector}，先将不适范围放在{primary}。九宫另有{external}一组相邻象意；两组重叠处为本次首先留意的范围，分叉处则分别保留，不把头、胸、腹或左右两侧硬说成同一个地方。{palace_position}"
     },
     {
       "id": "02_tianrui",
-      "title": "病星细察",
-      "text": "本宫临{door}、{deity}，天芮实际携{sky}，地盘见{earth}。{companion} 另据十干异文，《秘笈大全》卷十三取{secret}；《三命通会》脏腑歌取{viscera}，体表歌取{surface}。后两者属于同一命理文献家族，不算两条独立印证。"
+      "title": "病宫星门神与条件",
+      "text": "病宫有{star_group}，临{door}、{deity}。{door}提示{door_clue}；{deity}提示{deity_clue}。{palace_clue}。{stage_clue}。{void_clue}；{horse_clue}；{tomb_clue}。这些说的是不适可能呈现的部位和表现，不因单个门神便改断另一处身体器官。"
     },
     {
       "id": "03_comparison",
-      "title": "伤门与时干",
-      "text": "伤门实际在{injury}，时干{hour_stem}落{hour_palace}；二者仅按真实宫位提供旁证，不因伤门出现就认定受伤，也不从地盘干猜测上下格病因。"
+      "title": "天干与细部",
+      "text": "天芮实际携{sky}，相关部位可细看{secret}；同干另有内在脏腑{viscera}、外在体表{surface}两组取象。地盘为{earth}，另提示{earth_hint}，但它不是天芮所携的天盘干，不能两者当同一处相加。{companion}。{stem_scope}"
     },
     {
       "id": "04_person",
-      "title": "问事人及关系",
-      "text": "本次问{person}，患者所选用神实落{patient_palace}，与天芮病宫分开看。人物用神不等于病位，亦不补造未提供的年命。"
+      "title": "人物与病事",
+      "text": "这次问{person}，本人实际用神为{patient_stem}，落{patient_palace}，宫内见{patient_door}、{patient_deity}。{patient_relation}。病宫是看不适位置的主线，患者宫看被问之人的处境；{patient_coincidence}。{natal_scope}"
     },
     {
       "id": "05_review",
-      "title": "诸象合参",
-      "text": "本局优先采用真实天芮宫及内外盘的{primary}一组；另一古籍保留{external}等并列象意。门、神、天干相合可以作传统提示，来源有分歧时仍保留多个候选；未核上下干方向、跨体系和原书事后案例均不用于缩小部位。"
+      "title": "伤门与其他宫位",
+      "text": "伤门在{injury}，宫内见{injury_deity}，与天芮病宫{injury_relation}；{injury_scope}。时干{hour_stem}落{hour_palace}，临{hour_door}，与病宫{hour_relation}；{hour_scope}。这里把伤门、时干当独立线索核对，只有实际同宫或明确五行关系才提合参，不把疼痛、外伤或病名凭空添加。"
     },
     {
       "id": "06_conclusion",
       "title": "综合断语",
-      "text": "综上，传统病位象意主要关注{primary}一带，并参看{external}。此为古籍文化取象，不能由此判断实际不适、病名、严重程度或诊疗方式；现实症状仍须经医学检查判断。"
+      "text": "综上，本局不适部位首看{primary}，具体再沿{secret}及{surface}去分辨；{external}和{viscera}为仍需兼看的另一组。{conclusion_scope}。本次所断是传统盘象中的身体部位范围，不是病情轻重结论，也不代替真实症状与医学检查。"
     }
   ]
 }
