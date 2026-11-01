@@ -541,6 +541,47 @@ enum WenguaNativeDiscomfortV15 {
         if surgicalControl,let opening=openPalace {
             surgicalClue="开门所在\(label(opening))宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。"
         } else {surgicalClue=""}
+        // Inspect the activated 伤门 palace, not the meaning of the
+        // character 伤: its stars, carried stems, ground stem, deity,
+        // door-palace relation, tomb/striking and real 81 formation.
+        // Each 200-grid factor is evaluated for its OWN physical symbol.
+        var injuryRoomEvidence:[String]=[]
+        if useInjury {
+            for star in injury.heavenStars {
+                let starPower=try sourceStrength("star",star.star,injury)
+                let carrierPower=try stemPower(star.carriedStem,injury)
+                let candidates=parts((mapping[star.carriedStem]?["qimen_secret_vol13"] ?? [])
+                    .joined(separator:"/"))
+                if tier(starPower)>=2 && tier(carrierPower)>=2,
+                   let site=candidates.first(where:{matched($0,injurySites)}) {
+                    injuryRoomEvidence.append(
+                        "宫中\(star.star)携\(star.carriedStem)的部位干象也取\(site)，故这处有星与干的同宫互证。")
+                }
+            }
+            let earthPower=try sourceStrength("stem",injury.earthStem,
+                                               injury,injury.earthStages)
+            let earthSites=parts((mapping[injury.earthStem]?["qimen_secret_vol13"] ?? [])
+                .joined(separator:"/"))
+            if tier(earthPower)>=2,
+               let site=earthSites.first(where:{matched($0,injurySites)}) {
+                injuryRoomEvidence.append(
+                    "地盘\(injury.earthStem)的独立干象也指\(site)，再收窄到这一带。")
+            }
+            if injury.deity=="白虎" {
+                injuryRoomEvidence.append(
+                    "该宫同时临白虎，仅构成传统伤损同宫条件，不足以确认出血、骨折或手术必要性。")
+            }
+            if let injDoor=WenguaVNextEngine.doorElement["伤门"],
+               let pe=WenguaVNextEngine.elements[injury.id],
+               (try? WenguaVNextEngine.directed(injDoor,pe))=="宫克符号" {
+                injuryRoomEvidence.append("伤门受本宫所迫，此宫部位证据须减看。")
+            }
+            let activeSigns=Set(injury.tombs.map{$0.stem})
+            if injury.heavenStars.contains(where:{ activeSigns.contains($0.carriedStem) }) ||
+               activeSigns.contains(injury.earthStem) {
+                injuryRoomEvidence.append("此宫实见携干或地盘干入墓，相关部位暂不单凭一条线索定死。")
+            }
+        }
         let injuryLimit:String
         if voidState(injury)=="true_void" {
             injuryLimit="伤门宫真空，须减看这一处的部位依据。"
@@ -551,7 +592,7 @@ enum WenguaNativeDiscomfortV15 {
         if useInjury {
             let reason=injuryReason[injuryContext] ?? "特殊情况"
             let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
-            injuryFull="因已选择\(reason)，才以伤门取象。伤门实际在\(label(injury))宫，按\(dn)遁\(injuryScope)取\(injurySiteNames)；\(injuryRelation)\(injuryLimit)\(surgicalClue)"
+            injuryFull="因已选择\(reason)，才以伤门取象。伤门实际在\(label(injury))宫，按\(dn)遁\(injuryScope)取\(injurySiteNames)；\(injuryRelation)\(injuryRoomEvidence.joined())\(injuryLimit)\(surgicalClue)"
         } else {injuryFull=""}
         let doorsConfirming=otherDoors.filter { entry in
             tier(entry.2)>=2 && sourceLocation(entry.0).contains(where:{

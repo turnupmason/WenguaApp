@@ -332,13 +332,39 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         CONTROLS[ELEMENTS[openPalace["id"]]]==ELEMENTS[inj["id"]])
     surgicalClue=(f"开门所在{label(openPalace)}宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。"
                  if surgicalControl else "")
+    injuryRoomEvidence=[]
+    if use_injury:
+        for star in inj["heavenStars"]:
+            starPower=source_strength("star",star["star"],inj)
+            carrier=star["carriedStem"]
+            carrierPower=stem_power(carrier,inj)
+            candidates=_parts("/".join(stems[carrier]["qimen_secret_vol13"]))
+            site=next((x for x in candidates if _matched(x,injurySites)),None)
+            if _tier(starPower)>=2 and _tier(carrierPower)>=2 and site:
+                injuryRoomEvidence.append(
+                    f"宫中{star['star']}携{carrier}的部位干象也取{site}，故这处有星与干的同宫互证。")
+        earthPower=source_strength("stem",inj["earthStem"],inj,inj["earthStages"])
+        earthSites=_parts("/".join(stems[inj["earthStem"]]["qimen_secret_vol13"]))
+        earthSite=next((x for x in earthSites if _matched(x,injurySites)),None)
+        if _tier(earthPower)>=2 and earthSite:
+            injuryRoomEvidence.append(
+                f"地盘{inj['earthStem']}的独立干象也指{earthSite}，再收窄到这一带。")
+        if inj["deity"]=="白虎":
+            injuryRoomEvidence.append(
+                "该宫同时临白虎，仅构成传统伤损同宫条件，不足以确认出血、骨折或手术必要性。")
+        if _directed(DOOR_ELEMENTS["伤门"],ELEMENTS[inj["id"]])=="宫克符号":
+            injuryRoomEvidence.append("伤门受本宫所迫，此宫部位证据须减看。")
+        activeSigns={t["stem"] for t in inj["tombs"]}
+        if (any(x["carriedStem"] in activeSigns for x in inj["heavenStars"])
+            or inj["earthStem"] in activeSigns):
+            injuryRoomEvidence.append("此宫实见携干或地盘干入墓，相关部位暂不单凭一条线索定死。")
     injuryLimit=("伤门宫真空，须减看这一处的部位依据。"
           if void_state(inj)=="true_void" else
           "伤门自身取力偏弱，这处仍须其他符号印证。"
           if _tier(injuryPower)<=2 else "")
     injuryFull=(f"因已选择{injuryReason[injury_context]}，才以伤门取象。伤门实际在{label(inj)}宫，"
         f"按{'阴' if yin else '阳'}遁{injuryScope}取{injurySiteNames}；"
-        +injuryRelation+injuryLimit+surgicalClue if use_injury else "")
+        +injuryRelation+"".join(injuryRoomEvidence)+injuryLimit+surgicalClue if use_injury else "")
     matchingDoors=sorted((x for x in otherDoors if _tier(x[2])>=2 and
                          any(_matched(s,leadSites) for s in source_location(x[0]))),
                          key=lambda x:-_tier(x[2]))
