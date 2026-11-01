@@ -1447,3 +1447,7 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 
 ## 2026-10-31 · 难受部位 V12 内外盘与冲突来源审计（独立候选，不动V8）
 用户明确的传统内外盘：阳遁天芮1/8/3/4为内、9/2/7/6为外，阴遁反向；交叉对照《开悟之门》疾病原章索引第85行阳坤外/阴坤内和第31行阴离内的真实已见案例。新增 data/knowledge/health_discomfort/inner_outer_priority_policy_20261031.json、src/wengua/health_discomfort_inner_outer_v12_draft.py、tests/test_health_discomfort_inner_outer_v12_20261031.py。真实九宫选传统表里主象，保留双源表、天芮/天禽携干、地盘另格与门神反向冲突；不能以伤门/白虎或死门/玄武单条绝对改变内外，不能由天地干推临床病因或由医药克病、患者入墓推必死必愈。原V8病情轻重全部不变，iOS新专题依然disabled；旧书源/历史失败不删。专项包含全部16阴阳宫分支与1080实盘、Important双模板镜像及SHA；当次真实CI以独立run结果为准。完整已核书章行号、SHA与待核条件见 docs/HEALTH_DISCOMFORT_INNER_OUTER_PRIORITY_V12_20261031.md。非新增原书章节/事件家族，未完成新专题Swift parity/签名真机。
+
+
+## 2026-11-01 · 疾病「难受部位」V13 三层携干、上中下部及人物门语义审计
+用户新补充十干72干宫、八宫、八门、八神细节：前一20261029候选库已涵盖大部分具体象意，此次不重复覆盖原著或旧候选。真正新增 data/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json 上(离巽坤)、中(震兑，5仅象意)、下(艮坎乾)区，主天芮携干、辅天禽携干、地盘仅获核准真实月令休囚条件时可参；源八门严格分患者patient与病神illness，不可把患者伤门直接说成病人骨折。内新/外旧、乾宫长幼、兑临壬癸性别、震前兑后只能作未审核用户汇编候选；未提供患者年命/年龄/性别不猜；「王→壬」「自虎→白虎」仅OCR备选，不改原文。疾病恶性、生死、鬼神作祟等保留文化原著语境，不当临床医学结论。新V13独立Python+现行V11六段模板、专项1080局态，Important双方模板和MANIFEST SHA同步；V8计分/故事/旧失败保持原样，iOS专题仍禁用。审计 docs/HEALTH_DISCOMFORT_V13_BODY_DETAIL_AUDIT_20261101.md。首次V13 CI #41316769156 FAIL因测试迭代字串caveat，及中间镜像SHA不同步，故障如实保留；修复并镜像同步后的源SHA aa3f1fe16 主CI #41317140608 PASS (Python3.11/3.12)，现行V8 native parity #41317140587 PASS，V7.7 native #41317140592 PASS。不是新专题iOS Swift parity或科学病位验证；原著新章0、独立历史案例0。
