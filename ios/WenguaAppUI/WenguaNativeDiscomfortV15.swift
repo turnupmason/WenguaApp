@@ -45,7 +45,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v17_power_and_81_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v18_site_rank_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==6,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -255,6 +255,120 @@ enum WenguaNativeDiscomfortV15 {
             ? "门受宫迫，相关门象须减看" :
             doorRel=="符号克宫" ? "门克本宫，门象另有破局限制" :
             "门宫无迫克限制"
+        // V18: choose *where*, not how badly. Raw five-tier source power
+        // ranks distinct physical symbol evidence without exposing a severity.
+        let bodyAnchors=["肩","耳","臂","手","头","眼","鼻","面","颈","喉",
+                         "胸","心","肺","脾","肝","胆","胃","肠","肾","腹",
+                         "腰","腿","足","脚","膝","股","背","筋","骨","皮",
+                         "肤","膀胱","阴","胰","血管","食道","经络","脑"]
+        func parts(_ raw:String)->[String] {
+            let bits=raw.replacingOccurrences(of:"／",with:"/")
+                .replacingOccurrences(of:"、",with:"/")
+                .replacingOccurrences(of:"，",with:"/")
+                .split(separator:"/").map(String.init)
+            var unique:[String]=[]
+            for bit in bits {
+                let word=bit.trimmingCharacters(in:.whitespacesAndNewlines)
+                if !word.isEmpty && !unique.contains(word) &&
+                   !["病","疾","风","寒","症","虚","咳","疝"].contains(where:{word.contains($0)}) {
+                    unique.append(word)
+                }
+            }
+            return unique
+        }
+        func sameSite(_ a:String,_ b:String)->Bool {
+            a==b || a.contains(b) || b.contains(a) ||
+                bodyAnchors.contains(where:{ a.contains($0) && b.contains($0) })
+        }
+        func tier(_ value:String)->Int {
+            ["极小","小","中等","大","极大"].firstIndex(of:value).map{$0+1} ?? 0
+        }
+        let originalSites=parts(primary)
+        guard !originalSites.isEmpty else {throw WenguaNativeReadingError.missingRole}
+        let alternateSites=parts(external)
+        let skySites=parts((secret+viscera+surface).joined(separator:"/"))
+        let earthSites=parts(skyOther.joined(separator:"/"))
+        let birdSites=parts(birdOther.joined(separator:"/"))
+        // Identical sky glyph from one physical symbol and its three textual
+        // source families count once. Sky, earth and Tianqin are independent.
+        func matched(_ candidate:String,_ sites:[String])->Bool {
+            sites.contains(where:{sameSite(candidate,$0)})
+        }
+        let ranked=originalSites.enumerated().map{ index,site -> (String,Int,Int) in
+            var rank=tier(illnessPower)
+            if illnessVoid=="true_void" {rank=0}
+            if illnessVoid=="fake_void" {rank=max(0,rank-1)}
+            if matched(site,alternateSites){rank+=2}
+            if matched(site,skySites){rank+=tier(skyPower)}
+            if matched(site,earthSites){rank+=tier(earthPower)}
+            if matched(site,birdSites){rank+=tier(birdStemPower)}
+            return (site,rank,index)
+        }.sorted{ $0.1==$1.1 ? $0.2<$1.2 : $0.1>$1.1 }
+        let leadSites=ranked.prefix(2).map{$0.0}
+        let lead=leadSites.joined(separator:"、")
+        let remaining=ranked.dropFirst(2).map{$0.0}
+        let supportedAlt=alternateSites.filter{ site in
+            !leadSites.contains(where:{sameSite(site,$0)}) &&
+            (matched(site,skySites) || matched(site,earthSites) ||
+             matched(site,birdSites))
+        }
+        let secondary=(remaining+supportedAlt).reduce(into:[String]()){items,part in
+            if !items.contains(where:{sameSite($0,part)}) {items.append(part)}
+        }
+        let secondSite=secondary.prefix(2).joined(separator:"、")
+        let focusedDetails=[("天芮携"+sky,skySites,skyPower),
+                            ("地盘"+illness.earthStem,earthSites,earthPower),
+                            ("天禽携"+(bird ?? ""),birdSites,birdStemPower)]
+            .compactMap{ tag,sites,power ->String? in
+                guard tier(power)>0,
+                      let site=sites.first(where:{matched($0,leadSites)})
+                else{return nil}
+                return tag+"亦见"+site
+            }
+        let detailLine=focusedDetails.isEmpty
+            ? "同宫符号尚无进一步重合的细部线索"
+            : focusedDetails.joined(separator:"，")+"，部位指向相互呼应"
+        let otherLine=secondSite.isEmpty
+            ? "同宫其余干象与此处未形成更明确的部位重合"
+            : "同一宫位还可兼看"+secondSite
+        // The casting actor is *not* another Tianrui disease site.
+        // A father has Qian auxiliary; an older sister does not acquire
+        // eldest-daughter status without verified birth order.
+        func sourceLocation(_ p:WenguaNativePalace)->[String] {
+            let code=label(p)
+            let scope=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id)
+                ? "体内" : "体表"
+            let rows=allRules.filter{
+                ($0["类别"] as? String)=="九宫定位" &&
+                ($0["子类"] as? String)=="神奇之门-"+scope &&
+                ($0["符号组合"] as? String)==code+"·"+scope
+            }
+            return rows.count==1 ? parts(rows[0]["古籍象意或候选"] as? String ?? "") : []
+        }
+        let actorOverlap=sourceLocation(patientPalace).first{
+            matched($0,leadSites)
+        }
+        var actorLine="问"+relationship+"，用神"+actor.mainStem+"落"+label(patientPalace)+"宫"
+        if let actorOverlap {
+            actorLine+="，该宫也见"+actorOverlap+"的相同部位象"
+        } else {
+            actorLine+="，只作问事人物的旁证"
+        }
+        if relationship=="父亲",let qian=chart.palaces.first(where:{$0.id==6}) {
+            let corroboration=sourceLocation(qian).first{matched($0,leadSites)}
+            if let corroboration {
+                actorLine+="；父亲乾六宫也见"+corroboration
+            } else {actorLine+="；乾六宫未增加更明确的同部位线索"}
+        } else if relationship=="姐姐" {
+            actorLine+="；巽四长女象需核排行，不能据此另断病位"
+        }
+        let injuryCorroborates=injury.id==illness.id
+        let injuryLine=injuryCorroborates
+            ? "伤门同落"+label(illness)+"宫，可补充此处筋骨肢体类象"
+            : "伤门在"+label(injury)+"宫，未与主病位同宫，不改动定位"
+        let conclusion="综上，"+relationship+"本次病位首先看"+lead+
+            (secondSite.isEmpty ? "。" : "；另参"+secondSite+"。")+
+            "这是传统部位取象，不等于医学诊断。"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -291,7 +405,10 @@ enum WenguaNativeDiscomfortV15 {
             "hour_focus":hourFocus,"secondary_focus":secondaryFocus,
             "location_focus":locationFocus,
             "injury_relation":palaceRelation(injury),
-            "hour_relation":palaceRelation(hourPalace)
+            "hour_relation":palaceRelation(hourPalace),
+            "focus_site":lead,"site_detail":detailLine,
+            "site_secondary":otherLine,"actor_site":actorLine,
+            "injury_site":injuryLine,"final_site":conclusion
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
@@ -311,7 +428,7 @@ enum WenguaNativeDiscomfortV15 {
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v17_200_power_81_formation_20261101",
+            version:"discomfort_v18_location_only_rank_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:["illness":illness.id,"patient":actor.mainPalace,
