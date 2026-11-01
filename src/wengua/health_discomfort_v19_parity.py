@@ -250,7 +250,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if trauma:
         for site in originalSites:
             if not _matched(site,candidates):candidates.append(site)
-    elif use_injury and _tier(injuryPower)>=3:
+    elif use_injury:
         for site in injurySites:
             if not _matched(site,candidates):candidates.append(site)
     added=0
@@ -310,15 +310,19 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     supported=[site for site in alternateSites if
                not _matched(site,leadSites) and
                (_matched(site,skySites) or _matched(site,earthSites) or _matched(site,birdSites))]
+    injurySecondary=([site for site,score,idx in ranked if
+                      _matched(site,injurySites) and not _matched(site,leadSites)][:1]
+                     if use_injury and not trauma else [])
     secondary=[]
-    for site in remain+supported:
+    for site in injurySecondary+remain+supported:
         if not _matched(site,secondary):secondary.append(site)
     secondSite="、".join(secondary[:2])
     injuryReason={
         "accident":"意外受伤","bone":"骨肉受损",
         "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
         "surgery":"已做或拟做手术"}
-    injurySiteNames="、".join(injurySites[:2])
+    injurySiteNames="、".join(
+        [site for site,score,idx in ranked if _matched(site,injurySites)][:2])
     injuryScope="体内" if inj["id"] in inner else "体表"
     injuryOverlap=next((s for s in injurySites if _matched(s,originalSites)),None)
     injuryRelation=("伤门与天芮同宫，两条线索落在同一处。"

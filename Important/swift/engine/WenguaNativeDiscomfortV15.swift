@@ -390,7 +390,7 @@ enum WenguaNativeDiscomfortV15 {
             for site in originalSites where !matched(site,candidateSites) {
                 candidateSites.append(site)
             }
-        } else if useInjury && tier(injuryPower)>=3 {
+        } else if useInjury {
             for site in injurySites where !matched(site,candidateSites) {
                 candidateSites.append(site)
             }
@@ -474,7 +474,11 @@ enum WenguaNativeDiscomfortV15 {
             (matched(site,skySites) || matched(site,earthSites) ||
              matched(site,birdSites))
         }
-        let secondary=(remaining+supportedAlt).reduce(into:[String]()){items,part in
+        let injurySecondary=useInjury && !trauma ?
+            ranked.map{$0.0}.filter{matched($0,injurySites) &&
+                !matched($0,leadSites)}.prefix(1).map{$0} : []
+        let secondary=(injurySecondary+remaining+supportedAlt)
+            .reduce(into:[String]()){items,part in
             if !items.contains(where:{sameSite($0,part)}) {items.append(part)}
         }
         let secondSite=secondary.prefix(2).joined(separator:"、")
@@ -518,7 +522,9 @@ enum WenguaNativeDiscomfortV15 {
             "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
             "surgery":"已做或拟做手术"
         ]
-        let injurySiteNames=injurySites.prefix(2).joined(separator:"、")
+        let injurySiteNames=ranked.map{$0.0}.filter{
+            matched($0,injurySites)
+        }.prefix(2).joined(separator:"、")
         let injuryScope=(chart.bureau.dun=="yang" ? innerYang:innerYin)
             .contains(injury.id) ? "体内" : "体表"
         let injuryOverlap=injurySites.first(where:{matched($0,originalSites)})
