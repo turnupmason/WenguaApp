@@ -252,10 +252,9 @@ enum QuestionCatalog {
         QuestionDomain(id:"health",title:"疾病健康",symbol:"cross.case",
           topics:[
             QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
-            // V14 body-site cross-text rule candidates are audited Python-only;
-            // 255 workbook entries are not source-approved or Swift-native parity.
-            // Keep disabled; 15-day lock remains on verified severity only.
-            QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:false),
+            // Independent V15 body-location rules use offline original-source candidates;
+            // no disease score, no medical diagnosis and no V8 template inheritance.
+            QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:true),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
         domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),
@@ -1235,7 +1234,7 @@ struct CastSetupScreen: View {
     // The only UI path that calls actual native astronomical chart creation.
     // Past 'fixed demo' never comes here and cannot consume the 15day lock.
     private func completeNativeCast() {
-        guard topic.enabled && topic.id == "health.severity" else {
+        guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id) else {
             validationMessage="该领域的断案模板尚未接入，不能套用其它领域模板。"
             return
         }
@@ -1289,7 +1288,7 @@ struct CastSetupScreen: View {
     }
 
     private func tryStartRitual() {
-        guard topic.enabled && topic.id == "health.severity" else {
+        guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id) else {
             validationMessage="请选择有实际计算支持的细分事项。"
             return
         }
