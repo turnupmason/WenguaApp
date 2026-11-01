@@ -58,7 +58,7 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('["小","极小"].contains(injuryPower)',native)
         self.assertIn('["极大","大"]',native)
         self.assertIn('candidateSites.enumerated().map',native)
-        self.assertIn('let leadSites=ranked.prefix(2)',native)
+        self.assertIn('let leadSites=ranked.prefix(1)',native)
         self.assertIn('if illnessVoid=="true_void"',native)
         self.assertIn('let actorSiteHit=sourceLocation(patientPalace)',native)
         self.assertIn('let auxIDs=Set([actor.siblingAuxiliaryPalace',native)
