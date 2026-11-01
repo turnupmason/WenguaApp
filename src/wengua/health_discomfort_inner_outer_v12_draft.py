@@ -82,6 +82,7 @@ def inspect_priority(*,chart:Mapping[str,Any],body:Mapping[str,Any],
     return {**sector,"tianrui_palace":ill,"focus_candidates":chosen,
             "alternative_candidates":alternate,
             "actual_sky_stem":real[0]["carried_stem"],"actual_earth_stem":cell["earth_stem"],
+            "illness_door":cell["door"],"illness_deity":cell["deity"],
             "companion_stem":next((s["carried_stem"] for s in cell["heaven_stars"]
                                   if s["star"]=="天禽星"),None),
             "modal_evidence":candidates,
