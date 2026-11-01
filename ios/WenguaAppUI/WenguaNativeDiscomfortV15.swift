@@ -400,25 +400,9 @@ enum WenguaNativeDiscomfortV15 {
                 candidateSites.append(site)
             }
         }
-        var newSites=0
-        for (p,symbol,power) in witnesses
-                where p.id != illness.id && tier(power)>=4 {
-            for site in sourceLocation(p) {
-                if matched(site,candidateSites) {continue}
-                let directRisk=symbol != "伤门" && !badSigns(symbol,p).isEmpty
-                let independent=witnesses.contains{other in
-                    other.0.id != p.id && other.0.id != illness.id &&
-                    tier(other.2)>=3 &&
-                    matched(site,sourceLocation(other.0))
-                }
-                if directRisk || independent {
-                    candidateSites.append(site)
-                    newSites+=1
-                }
-                if newSites>=4 {break}
-            }
-            if newSites>=4 {break}
-        }
+        // V21: patient, hour and auxiliary palaces are witnesses, NOT new
+        // body-site origins. Even a strong striking symbol cannot overwrite
+        // the Tianrui/explicit-injury primary location with a remote organ.
         let ranked:[(String,Int,Int)]=candidateSites.enumerated().map{ entry in
             let site=entry.element
             var rank=matched(site,originalSites) ? tier(illnessPower) : 0
@@ -671,7 +655,7 @@ enum WenguaNativeDiscomfortV15 {
                 formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)、地盘\(illness.earthStem)各有其象，天地格\(formationNames.joined(separator:"、"))。"
             }
         } else {
-            formsFull="病宫见\(doorWord)、\(deity)，天芮携\(sky)、地盘\(illness.earthStem)各按本宫取象，不另扩大部位。"
+            formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)下临\(illness.earthStem)，天地格\(formationNames.joined(separator:"、"))。"
         }
         var danger:[String]=[]
         for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
