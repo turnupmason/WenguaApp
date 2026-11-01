@@ -44,6 +44,16 @@ class V21FocusedDoorPressure(unittest.TestCase):
         self.assertIn('elif lead=="右耳":focusRegion="右耳周围"',PYTHON)
         self.assertNotIn('左侧耳肩一带',SWIFT)
         self.assertNotIn('右侧耳肩一带',PYTHON)
+    def test_original_symbol_symptoms_and_81_formed_full_prose(self):
+        for token in ('selectedStemImage','formationMeaning','orderedFormations',
+                      'let starDoorGodFull=','let doorPower=try sourceStrength',
+                      'deityClue','badSigns(stem,illness)'):
+            self.assertIn(token,SWIFT)
+        for token in ('selected_stem_image','formation_meaning','orderedFormations',
+                      'starDoorGodFull','GOD_TIERS','original_clue','flags(stem,illness)'):
+            self.assertIn(token,PYTHON)
+        self.assertIn('doorRel=="符号克宫"',SWIFT)
+        self.assertIn('doorRel=="符号克宫"',PYTHON)
     def test_no_unconditional_injury_or_natal(self):
         self.assertIn('if useInjury',SWIFT)
         self.assertIn('if use_injury',PYTHON)
