@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "1efdcd32f7e212cad1f41887b044a0530554c630"
+      "sha": "c8afcb54cd7246c03c92f2eaf40c103bde030c2f"
     },
     {
       "platform": "python",
@@ -775,7 +775,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "4c7fb6c54b748fc2a65894800489eb93a5e148e8"
+      "sha": "ae380022aef98e7a38f1cb30042c9e791d67e61f"
     },
     {
       "platform": "swift",
@@ -787,7 +787,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
-      "sha": "19a6457c9b47ac7aead948c469c9137d48359a8c"
+      "sha": "556770e9de30d8de4dea5b4bb558042385fb617c"
     },
     {
       "platform": "python",
