@@ -1305,12 +1305,12 @@ struct CastSetupScreen: View {
                 relationship:subject,
                 context:subject=="本人" ? "direct_self" : inquiryContext,
                 patientSex:patientSex=="unspecified" ? nil : patientSex,
-                injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
                 birthOrder:subject=="姐姐" ? "eldest" :
                      (birthOrder=="unspecified" ? nil : birthOrder),
                 patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
                     in:.whitespacesAndNewlines).isEmpty ? nil :
                     patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines),
+                injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
                 relativeAge:subject=="朋友" && friendRelativeAge != "unspecified" ? friendRelativeAge : nil,
                  familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(subject) ? familyRelativeConfirmed : nil)
             let reading=try WenguaNativeReadingRouter.compose(
