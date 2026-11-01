@@ -1106,7 +1106,10 @@ struct CastSetupScreen: View {
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
-    private let relations = WenguaNativeReadingRouter.supportedRelations
+    // Keep old composite roles for historical replay, not customer choice.
+    private let relations = WenguaNativeReadingRouter.supportedRelations.filter {
+        !["哥哥或姐姐","弟弟或妹妹"].contains($0)
+    }
 
     var body: some View {
         NavigationStack {

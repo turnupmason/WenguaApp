@@ -37,6 +37,7 @@ class V19LocationFamily(unittest.TestCase):
                         '确认是家里的哥哥','确认是家里的大姐',
                         '确认是家里的弟弟','确认是家里的妹妹'):
             self.assertIn(literal,ui)
+        self.assertIn('!["哥哥或姐姐","弟弟或妹妹"].contains($0)',ui)
         for tag in ('friendRelativeAge','familyRelativeConfirmed',
                     '朋友必须选性别及比自己大或小','亲属辅助宫须确认真实家庭关系'):
             self.assertIn(tag,ui)
