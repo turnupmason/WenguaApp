@@ -56,7 +56,12 @@ enum WenguaNativeDiscomfortV15 {
         }
         let sector=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(illness.id)
             ? "体内":"体表"
-        let code=illness.gua+String(illness.id)
+        let chineseDigits:[Int:String]=[1:"一",2:"二",3:"三",4:"四",
+                                        6:"六",7:"七",8:"八",9:"九"]
+        func label(_ p:WenguaNativePalace)->String {
+            p.gua+(chineseDigits[p.id] ?? String(p.id))
+        }
+        let code=label(illness)
         let side=sector=="体内" ? "体内":"体表"
         let book=allRules.filter{ row in
             row["类别"] as? String=="九宫定位" &&
@@ -91,7 +96,7 @@ enum WenguaNativeDiscomfortV15 {
             "本宫无另行天禽携干；"
         let region=([9,4,2].contains(illness.id) ? "上部" :
                      [3,7].contains(illness.id) ? "中部":"下部")
-        let palaceName:String=(illness.gua+String(illness.id)+"宫")
+        let palaceName:String=code+"宫"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -100,9 +105,9 @@ enum WenguaNativeDiscomfortV15 {
             "secret":secret.joined(separator:"、"),
             "viscera":viscera.joined(separator:"、"),
             "surface":surface.joined(separator:"、"),
-            "injury":injury.gua+String(injury.id)+"宫",
-            "hour_stem":hourStem,"hour_palace":hourPalace.gua+String(hourPalace.id)+"宫",
-            "person":relationship,"patient_palace":patientPalace.gua+String(patientPalace.id)+"宫"
+            "injury":label(injury)+"宫",
+            "hour_stem":hourStem,"hour_palace":label(hourPalace)+"宫",
+            "person":relationship,"patient_palace":label(patientPalace)+"宫"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
