@@ -20,3 +20,11 @@
 ## 当前工程门槛
 - 首轮 macOS Xcode `#41361412371` 发现真实 Swift 多行 `+` 尾行编译错误，修复于 `b4a3b6922d1569853c9387e975e97e761b8208ab`。保留 CI 原失败。
 - 必须单独验：Python 全单测、新八门方向回归、Swift 独立 6 人物/多条件真盘、同盘 Python↔Swift 逐段原样、XcodeGen iOS Simulator 编译、App bundle 200/81/255/人物/V22 模板SHA。每次 PASS 只归其真实源码 SHA；尚无完整日志时**不得写「已验收」**，签名真机/临床效果仍未验收。
+
+
+## 实测后纠错 · V22
+- 真实 macOS/iOS Action [#41361706120](https://github.com/turnupmason/WenguaApp/actions/runs/41361706120) 的 Swift 编译成功，但独立 Python↔Swift parity 失败。妻子手术盘同为地盘丁，Swift 原200源力为「大」而 Python 被伤门宫的 `earthPower` 中途覆盖为「中等」；实际失败行保留。改名 `injuryEarthPower` 后，真实 Action [#41361946750](https://github.com/turnupmason/WenguaApp/actions/runs/41361946750)，源码 `bb8e67bf0a825d878582a99de8a7807ca3964779`，macOS Simulator build + bundle资源+四个人物新随机时辰完整输出 + 另两张随机盘独立Python/Swift全段严格一致 **PASS**。不是客观病灶或签名真机检验。
+- 原生 #41361946750 女儿盘天芮坎一肾，真天盘癸源势大/地盘壬源势大，螣蛇/伏吟旧格说明与九天原神象分别解释；父亲普通病宫坤二，V22同时写出天丙/地丙真实源格、天禽壬寄宫另一格，末只说脾胃；不再把无关器官拼在末尾。
+- 人工审阅真输出发现新的真实问题：女儿坤二若天盘乙和地盘等强度令主选「右肩」，开头旧 `originalSites.first` 仍写「右耳」；现改主位句与真实排名 `lead` 对齐，但只有 `lead` 来自主天芮宫时适用。纯伤损用伤门主位仍保留天芮的原宫真实读法。
+- 旧81格表原古诀如「公务不利、愿望顺遂」属于其他领域，虽原格名和源保存，不能在**疾病观众输出**无条件原文朗读后充当病名。新 `formationMeaning` 根据真实格名中的「伏吟、网、狱、困、蛇、刑、伤、生、合」与真实吉凶只取受制、牵缠、反复或相助的传统象意，完整原81 TSV依然不动，不虚造专用加减分或现实病情。
+- #41362275714 对源码 `6d38ea8cd1251599dbcc8615306f5bc72a6d367f` 真正 Xcode Simulator、bundle、原生四人随机全文、另两盘 Python↔Swift 原字 parity **PASS**。原生2027-02-14妻子「手术」盘却让另一宫伤门兑七口舌从天芮艮八肠胃夺主，这与已确定的 V20 条件优先级冲突。现明确 **accident/bone/bleeding** 才以伤门实宫优先；**surgery/severe_pain** 必看伤门宫内星干空墓等但只作条件证据，不将不交集的另一宫器官改写为病宫主病位；新的实盘、双平台、Xcode 验收见后续单独 run。
