@@ -168,6 +168,8 @@ enum WenguaNativeDiscomfortV15 {
             }
             return "待核"
         }
+        let birdPower=try bird.map{ _ in try sourceStrength("star","天禽星",illness)} ?? "待核"
+        let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
         let doorPower=try sourceStrength("door",door,illness)
         let skyPower=try stemPower(sky,illness)
@@ -202,7 +204,24 @@ enum WenguaNativeDiscomfortV15 {
         func isProminent(_ tier:String)->Bool {
             ["极大","大"].contains(tier)
         }
-        let illnessFocus=isProminent(illnessPower)
+        func voidState(_ p:WenguaNativePalace)->String {
+            if p.voidBranches.isEmpty {return "not_void"}
+            if p.id==chart.hourHorsePalace {return "fake_void"}
+            if p.voidBranches.contains(where:{
+                WenguaVNextEngine.clash[$0]==chart.hourHorse
+            }) {return "not_void"}
+            guard let pe=WenguaVNextEngine.elements[p.id] else {
+                return "true_void"
+            }
+            return (month==pe || WenguaVNextEngine.generates[month]==pe)
+                ? "fake_void" : "true_void"
+        }
+        let illnessVoid=voidState(illness)
+        let illnessFocus=illnessVoid=="true_void"
+            ? "病星逢真空，即使原力较大，此处病位显象也受限"
+            : illnessVoid=="fake_void"
+                ? "病宫假空，原始力量须结合空亡条件看"
+                : isProminent(illnessPower)
             ? "病星自身力量较足，这一宫的病位线索较突出"
             : illnessPower=="中等" ? "病星力量居中，此处取作主要病位"
             : ["小","极小"].contains(illnessPower)
@@ -224,11 +243,18 @@ enum WenguaNativeDiscomfortV15 {
             : ["小","极小"].contains(skyPower)
                 ? "携干力量较弱，其对应部位只作次线"
                 : "携干所示部位作为分辨线索"
+        let doorElem=WenguaVNextEngine.doorElement[door] ?? ""
+        let palaceElem=WenguaVNextEngine.elements[illness.id] ?? ""
+        let doorRel=try? WenguaVNextEngine.directed(doorElem,palaceElem)
+        let restrictionFocus=doorRel=="宫克符号"
+            ? "门受宫迫，相关门象须减看" :
+            doorRel=="符号克宫" ? "门克本宫，门象另有破局限制" :
+            "门宫无迫克限制"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
             "door":door,"deity":deity,"sky":sky,"earth":illness.earthStem,
-            "companion":bird.map{"同宫天禽另携"+$0+"，干象还可参看"+birdOther.joined(separator:"、")+"，与天芮各自独立"} ?? "本宫没有另一组天禽携干",
+            "companion":bird.map{"同宫天禽星力"+birdPower+"，其携"+$0+"之干力"+birdStemPower+"，另见"+birdOther.joined(separator:"、")} ?? "本宫没有独立的天禽携干",
             "secret":secret.joined(separator:"、"),
             "viscera":viscera.joined(separator:"、"),
             "surface":surface.joined(separator:"、"),
@@ -255,6 +281,7 @@ enum WenguaNativeDiscomfortV15 {
             "earth_power":earthPower,"patient_power":patientPower,
             "injury_power":injuryPower,"hour_power":hourPower,
             "formation":formationNames.joined(separator:"、"),
+            "restriction_focus":restrictionFocus,
             "illness_focus":illnessFocus,"injury_focus":injuryFocus,
             "hour_focus":hourFocus,"secondary_focus":secondaryFocus,
             "location_focus":locationFocus,
