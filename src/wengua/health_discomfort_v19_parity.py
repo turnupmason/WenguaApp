@@ -445,8 +445,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                   f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}。")
     # Never convert a left lung into a right-sided organ to sound concise.
     if lead=="肝胆":focusRegion="右上腹肝胆一带"
-    elif lead in ("左肩","左耳","左臂"):focusRegion="左侧耳肩一带"
-    elif lead in ("右肩","右耳","右臂"):focusRegion="右侧耳肩一带"
+    elif lead=="左肩":focusRegion="左肩一带"
+    elif lead=="左耳":focusRegion="左耳周围"
+    elif lead=="左臂":focusRegion="左臂一带"
+    elif lead=="右肩":focusRegion="右肩一带"
+    elif lead=="右耳":focusRegion="右耳周围"
+    elif lead=="右臂":focusRegion="右臂一带"
     elif lead in ("右肋","右腰"):focusRegion="右侧肋腰一带"
     elif lead in ("外阴","下部"):focusRegion="下身会阴一带"
     elif lead=="左肺":focusRegion="左侧胸部"
