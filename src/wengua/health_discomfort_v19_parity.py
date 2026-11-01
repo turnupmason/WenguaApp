@@ -411,11 +411,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     auxFull="".join(auxTexts)
     skySupport=next((s for s in skySites if _matched(s,leadSites)),None)
     earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
-    formsFull=(f"病宫{door}、{deity}同临；天芮携{sky}与地盘{illness['earthStem']}"
+    doorWord="本宫门象不取" if not use_injury and door=="伤门" else door
+    formsFull=(f"病宫{doorWord}、{deity}同临；天芮携{sky}与地盘{illness['earthStem']}"
                f"分别指{skySupport}、{earthSupport}，天地格"
                + "、".join(formation)+"可与主位同参。"
                if skySupport is not None and earthSupport is not None else
-               f"病宫见{door}、{deity}，天芮携{sky}、地盘{illness['earthStem']}各按本宫取象，不另扩大部位。")
+               f"病宫见{doorWord}、{deity}，天芮携{sky}、地盘{illness['earthStem']}各按本宫取象，不另扩大部位。")
     danger=[]
     for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
         signs=flags(stem,illness)
