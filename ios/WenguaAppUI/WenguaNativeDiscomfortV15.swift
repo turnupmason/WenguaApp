@@ -449,8 +449,23 @@ enum WenguaNativeDiscomfortV15 {
         }.joined(separator:"；")
         let doorsFull="病宫临"+door+"，人物宫临"+patientDoor+"。"+(doorCross.isEmpty ? "其余门象不另增加主位。" : doorCross+"。")
         let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
-        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，与病宫"+palaceRelation(hourPalace)+"；"+(hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
-        let personFull=relationship+"取用神"+actor.mainStem+"在"+label(patientPalace)+"宫，与病宫"+palaceRelation(patientPalace)+"；"+(actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
+        func naturalRelation(_ p:WenguaNativePalace)->String {
+            switch palaceRelation(p) {
+            case "病宫克此宫":return "此宫受病宫所克"
+            case "此宫克病宫":return "此宫克病宫"
+            case "病宫生此宫":return "此宫得病宫相生"
+            case "此宫生病宫":return "此宫生扶病宫"
+            case "比和":return "两宫比和"
+            case "同宫":return "两者同宫"
+            default:return "宫间关系尚须合参"
+            }
+        }
+        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，"+
+            naturalRelation(hourPalace)+"；"+
+            (hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
+        let personFull=relationship+"取用神"+actor.mainStem+"在"+
+            label(patientPalace)+"宫，"+naturalRelation(patientPalace)+"；"+
+            (actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
         let auxTexts=auxiliaries.map{entry in
             let p=entry.0
             let name=p.id==actor.siblingAuxiliaryPalace ? "亲属排行辅助" :
