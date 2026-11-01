@@ -22,7 +22,7 @@ class SitePowerV17Test(unittest.TestCase):
 
     def test_render_placeholders_are_bound(self):
         t=json.loads(TEMPLATE.read_text(encoding="utf8"))
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v17_power_and_81_20261101")
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v18_site_rank_20261101")
         self.assertEqual(len(t["sections"]),6)
         native=NATIVE.read_text(encoding="utf8")
         match=re.search(r'let values:\[String:String\]=\[(.*?)\]\s*let required=',native,re.S)
@@ -44,6 +44,8 @@ class SitePowerV17Test(unittest.TestCase):
         j=json.loads(TEMPLATE.read_text(encoding="utf8"))
         text="\n".join(s["text"] for s in j["sections"])
         for banned in ("涉及不同身体区域的分别列明","不把每个器官都说成同一个位置",
+                       "illness_power","door_power","deity_power","sky_power",
+                       "illness_focus","injury_focus","hour_focus","疼痛","强弱","凶",
                        "依《神奇之门》","《三命通会》","格分+","内部计分"):
             self.assertNotIn(banned,text)
 
@@ -55,6 +57,8 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('["极大","大"].contains(tier)',native)
         self.assertIn('["小","极小"].contains(injuryPower)',native)
         self.assertIn('["极大","大"]',native)
+        self.assertIn('let ranked=originalSites.enumerated()',native)
+        self.assertIn('let leadSites=ranked.prefix(2)',native)
         self.assertIn('let birdPower=',native)
         self.assertIn('let birdStemPower=',native)
         self.assertIn('let deityPower=',native)
@@ -64,6 +68,10 @@ class SitePowerV17Test(unittest.TestCase):
         workflow=WORKFLOW.read_text()
         self.assertIn('energy:energy,pairs:pairs)',smoke)
         self.assertIn('Int.random(in:',smoke)
+        self.assertIn('"父亲"',smoke)
+        self.assertIn('"姐姐"',smoke)
+        self.assertIn('actor.genderPalace==6',smoke)
+        self.assertIn('actor.siblingAuxiliaryPalace==4',smoke)
         self.assertIn('data/mobile/health_vnext/health_energy_200.json',workflow)
         self.assertIn('data/knowledge/health_81_excel_20261025/81_pairs.tsv',workflow)
         self.assertIn("native_site_validation.txt",workflow)
