@@ -53,7 +53,7 @@ import Foundation
                 !reading.sections.joinedDescription.contains("《"),
                 !reading.sections.joinedDescription.contains("原书"),
                 !reading.sections.joinedDescription.contains("异文"),
-                reading.sections.joinedDescription.contains("病星自身力量"),
+                reading.sections.joinedDescription.contains("病星本身"),
                 reading.sections.joinedDescription.contains("天地格为")
             else {
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
