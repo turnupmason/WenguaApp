@@ -1,7 +1,7 @@
 {
-  "schema": "wengua_health_discomfort_native_v20_conditional_injury_20261101",
+  "schema": "wengua_health_discomfort_native_v21_focused_site_20261101",
   "topic_id": "health.discomfort",
-  "status": "traditional_site_symbol_only",
+  "status": "v21_internal_review_pending_user_approval",
   "sections": [
     {
       "id": "01_location",
