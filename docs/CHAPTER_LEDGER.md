@@ -1443,3 +1443,7 @@ V8原生对照 #40776026621 曾先通过同事/1920两个已见实案的全文�
 
 ### 2026-10-31 · 非新书章：难受部位独立 V11 研究断词轨
 复用已登记《神奇之门》疾病章源sha 3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a、现有《开悟之门》例案与外部待核身体候选，不增加原书章节、事件家族或原印盘。新独立模板、真实九宫与V11人物绑定、候选断词和失败关闭测试详见 docs/HEALTH_DISCOMFORT_V11_TEMPLATE_DRAFT_20261031.md。V8冻结分不动，新模块draft，iOS禁用。
+
+
+## 2026-10-31 · 难受部位 V12 内外盘与冲突来源审计（独立候选，不动V8）
+用户明确的传统内外盘：阳遁天芮1/8/3/4为内、9/2/7/6为外，阴遁反向；交叉对照《开悟之门》疾病原章索引第85行阳坤外/阴坤内和第31行阴离内的真实已见案例。新增 data/knowledge/health_discomfort/inner_outer_priority_policy_20261031.json、src/wengua/health_discomfort_inner_outer_v12_draft.py、tests/test_health_discomfort_inner_outer_v12_20261031.py。真实九宫选传统表里主象，保留双源表、天芮/天禽携干、地盘另格与门神反向冲突；不能以伤门/白虎或死门/玄武单条绝对改变内外，不能由天地干推临床病因或由医药克病、患者入墓推必死必愈。原V8病情轻重全部不变，iOS新专题依然disabled；旧书源/历史失败不删。专项包含全部16阴阳宫分支与1080实盘、Important双模板镜像及SHA；当次真实CI以独立run结果为准。完整已核书章行号、SHA与待核条件见 docs/HEALTH_DISCOMFORT_INNER_OUTER_PRIORITY_V12_20261031.md。非新增原书章节/事件家族，未完成新专题Swift parity/签名真机。
