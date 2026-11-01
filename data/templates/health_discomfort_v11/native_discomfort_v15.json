@@ -26,12 +26,12 @@
     {
       "id": "05_review",
       "title": "伤门与其他宫位",
-      "text": "伤门在{injury}，宫内见{injury_deity}，与天芮病宫{injury_relation}；{injury_scope}。时干{hour_stem}落{hour_palace}，临{hour_door}，与病宫{hour_relation}；{hour_scope}。这里把伤门、时干当独立线索核对，只有实际同宫或明确五行关系才提合参，不把疼痛、外伤或病名凭空添加。"
+      "text": "伤门实际落{injury}，临{injury_deity}，此宫与天芮病宫分别观察：伤门提示筋骨、牵扯、活动部位，若两宫不同则不把伤门所指当成病星所在。时干{hour_stem}落{hour_palace}，另参病事发生位置。这里以真实宫位核对，不因单见伤门就断已有外伤，也不凭时干补造新的身体器官。"
     },
     {
       "id": "06_conclusion",
       "title": "综合断语",
-      "text": "综上，本局不适部位首看{primary}，具体再沿{secret}及{surface}去分辨；{external}和{viscera}为仍需兼看的另一组。{conclusion_scope}。本次所断是传统盘象中的身体部位范围，不是病情轻重结论，也不代替真实症状与医学检查。"
+      "text": "综上，传统病位首看{primary}，细部再沿天芮携{sky}所指的{secret}、{surface}分辨；{external}与{viscera}是仍要留意的并列位置。若宫位与天干指向不同部位，先抓共同身体区域，不能硬合成一个器官。此处只断传统身体部位象意，不是病情轻重判定，真实不适仍以实际症状与医学检查为准。"
     }
   ]
 }
