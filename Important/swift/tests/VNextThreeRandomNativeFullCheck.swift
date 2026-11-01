@@ -140,10 +140,14 @@ private struct PublicCast:Encodable {
             let chart=try WenguaNativeCore.compute(
                 at:d,timezone:"America/New_York")
             let request=WenguaNativeInquiry(relationship:test.relationship,
-                context:test.context,patientSex:test.patient_sex,
+                context:test.context,
+                // Synthetic friend parity fixtures have an explicit peer sex and
+                // relative age; no production friend defaults are permitted.
+                patientSex:test.relationship=="朋友" ? (test.patient_sex ?? "male") : test.patient_sex,
                 birthOrder:test.relationship=="姐姐" ? "eldest" : nil,
                 patientBirthGanzhi:test.patient_birth_ganzhi,
                 patientBirthStem:test.patient_birth_stem,
+                relativeAge:test.relationship=="朋友" ? "older" : nil,
                 familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(test.relationship) ? true : nil)
             let actor=try WenguaNativeActorSource.bind(chart:chart,
                 inquiry:request,index:actors)
