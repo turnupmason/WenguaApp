@@ -686,8 +686,7 @@ enum WenguaNativeDiscomfortV15 {
         if let bird {
             birdText="；同宫天禽星势\(birdPower)，独立携\(bird)取\(selectedStemImage(bird,birdStemPower))"
         } else {birdText=""}
-        let formsFull=skyText+"；"+earthText+birdText+
-            "。天地格："+orderedFormations.joined(separator:"；")+"。"
+        let formsFull=[skyText,"；",earthText,birdText,"。天地格：",orderedFormations.joined(separator:"；"),"。"].joined()
         var danger:[String]=[]
         var recorded:Set<String>=[]
         // Grave and striking are real facts on the symbol, NOT a feature
@@ -723,9 +722,11 @@ enum WenguaNativeDiscomfortV15 {
         } else {doorText=""}
         let doorClue=sourceClue("八门病象",door)
         let deityText=(deityClue=="其他传统象意" ? "传统神象待核" : deityClue)
-        let starDoorGodFull="天芮星势\(illnessPower)，病象以本宫为主；"+
-            "\(door)势\(doorPower)，古门象见\(doorClue)；"+
+        let starDoorGodFull=[
+            "天芮星势\(illnessPower)，病象以本宫为主；",
+            "\(door)势\(doorPower)，古门象见\(doorClue)；",
             "\(deity)势\(deityPower)，古神象见\(deityText)。"
+        ].joined()
         if !doorText.isEmpty {danger.append(doorText)}
         let dangerFull=starDoorGodFull+(danger.isEmpty ? "" :
             "本宫条件："+danger.joined(separator:"；")+"。")
