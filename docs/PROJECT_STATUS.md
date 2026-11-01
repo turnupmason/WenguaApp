@@ -2920,3 +2920,11 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-11-01 · V22 最终单独实测（恢复V16实宫病象+双源格）
+- 真正 macOS Xcode Simulator 原生构建、离线包内资源与随机 Swift 八场景，以及独立 Python↔Swift 同盘客户全词逐字一致，全部来自 [#41362808893](https://github.com/turnupmason/WenguaApp/actions/runs/41362808893) **PASS**，绑定源码SHA `869388609c743ee5db49b81553855117f953a54d`，原始逐字全文 `docs/IOS_V80_XCODE_PASS_RUN_41362808893_ATTEMPT_1.md`。源码包含正式 `wengua_health_discomfort_native_v22_v16_evidence_restored_20261101` 模板，源200格/81格/255来源+关系源、九宫，V8疾病轻重冻结未动；不是签名真机/App Store或真实医疗有效性。
+- 该run四份全新的真历法随机预览：父亲意外2026-11-15 21:00 -05，丙午己亥癸巳癸亥，天芮坤二体内脾胃，伤门震三体表足并临白虎，真实己己/丙丙双格，己势大而击刑，最后伤损取足；妻子手术2027-02-11 07:00 -05，丁未壬寅辛酉壬辰，天芮与伤门同艮八、肠胃，戊丁吉格与天禽辛辛凶格并存，伤门木迫土宫、丁入墓，末肠胃；父亲普通2026-11-12 09:00 -05，丙午己亥庚寅辛巳，天芮离九体内心，己辛凶格与天禽丙丙凶格，惊门被离宫克（非门迫），没有独立伤门段，末心脏；女儿普通2027-02-07 11:00 -05，丁未壬寅丁巳丙午，天芮巽四体内肝胆，地盘乙势极大、丁乙与天禽戊戊双格，病宫实临伤门且伤门势极大可说明宫门病象但不额外另立独立伤门宫，末右上腹肝胆。
+- 本次 Swift/Python 严格全文比对**另两张独立随机**弟弟2026-11-10 01:00 -05（7段）、妻子2027-02-18 17:00 -05（7段）通过。不能拿这两张冒充四份本身也都做了跨语言逐字比对；四份都由原生Swift新真时辰生成。真正用户自然中文质量依然待审。
+- 此前本轮实际 #41361412371 Swift多行拼接、#41361706120 Python伤门地干覆写、#41362485436 Python/Switch新伤门优先分支不一致，均已定位修复且原 CI FAIL 文档保留；不能擦除。此次修复后已同步 Important/python、Important/swift 源镜像及 MANIFEST Git blob SHA。Python 3.11/3.12 **全库测试未在此run单列验收**，不误称全部通过。
+- 特别：旧81 TSV历史恶俗而与问病无关的格名“幼女奸淫”在源码TSV与审计中原样保留，**仅客户断词**显示其真实天加地为“壬加癸旧格”，绝不作为对女儿或健康的实指；全部未变动古籍来源。患者真实年命未提供不补造。
