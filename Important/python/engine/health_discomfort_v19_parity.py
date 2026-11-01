@@ -421,6 +421,9 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         detail=pfull.get((top,ground))
         if detail is None:return None
         name,nature,gist=detail
+        # Preserve original label in 81 TSV but do not say sexually charged
+        # non-disease idioms to someone asking about a family member illness.
+        name="壬加癸旧格" if name=="幼女奸淫" else name
         if "伏吟" in name:reading="同干重叠，取缠滞反复之象"
         elif any(x in name for x in ("网","狱","牢","罗","困","地户","墓")):
             reading="受困闭滞，取不畅之象"
