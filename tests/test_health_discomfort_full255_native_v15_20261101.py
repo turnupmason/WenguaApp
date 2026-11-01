@@ -4,8 +4,8 @@ import json
 import unittest
 from pathlib import Path
 
-from wengua.health_discomfort_255_v15 import full_rules, match_location_inventory, stem_variants
-from wengua.health_discomfort_template_v11_draft import template
+from src.wengua.health_discomfort_255_v15 import full_rules, match_location_inventory, stem_variants
+from src.wengua.health_discomfort_template_v11_draft import template
 
 ROOT=Path(__file__).resolve().parents[1]
 
