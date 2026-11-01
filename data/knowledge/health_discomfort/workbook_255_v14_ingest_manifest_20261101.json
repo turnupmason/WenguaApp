@@ -1,0 +1,31 @@
+{
+  "schema": "wengua_health_discomfort_workbook_255_source_registry_v14_20261101",
+  "status": "staged_unverified",
+  "file": "奇门古籍测病规则证据总库_255条_20261101.xlsx",
+  "sha256": "19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c",
+  "bytes": 54678,
+  "sheets": {
+    "古籍规则总库": 255,
+    "组合精选": 62,
+    "实战与反例": 12,
+    "异文与冲突": 20
+  },
+  "evidence_counts": {
+    "A原书明确": 142,
+    "B原书案例": 16,
+    "C跨条文推导": 16,
+    "D跨体系引用": 69,
+    "E整理推论": 12
+  },
+  "missing_urls": 43,
+  "explicit_direction_cells": 0,
+  "review_note": "Source workbook headings and author labels do not establish independent original-page verification. This is a staged manifest, not a full transcription of all 255 rows.",
+  "duplicate_case_family": [
+    [
+      "S02",
+      "K02B"
+    ]
+  ],
+  "target_domain": "health.discomfort",
+  "release": false
+}
