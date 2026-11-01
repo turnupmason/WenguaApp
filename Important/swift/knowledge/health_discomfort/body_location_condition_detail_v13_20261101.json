@@ -1,0 +1,210 @@
+{
+  "schema": "wengua_health_discomfort_v13_condition_detail_20261101",
+  "topic_id": "health.discomfort",
+  "status": "research_draft_not_public",
+  "source": {
+    "type": "user_supplied_compilation",
+    "date": "2026-11-01",
+    "book_id": null,
+    "chapter_sha256": null,
+    "related_existing": "data/knowledge/health_discomfort/traditional_body_clue_candidates_20261029.json",
+    "original_not_republished": true
+  },
+  "body_axis": {
+    "upper": {
+      "palaces": [
+        9,
+        4,
+        2
+      ],
+      "symbols": [
+        "头",
+        "肩",
+        "双耳",
+        "上肢"
+      ]
+    },
+    "middle": {
+      "palaces": [
+        3,
+        7
+      ],
+      "symbolic_centre": 5,
+      "symbols": [
+        "胸",
+        "背",
+        "腰",
+        "腹",
+        "肋"
+      ]
+    },
+    "lower": {
+      "palaces": [
+        8,
+        1,
+        6
+      ],
+      "symbols": [
+        "腿",
+        "脚",
+        "生殖器",
+        "下腹"
+      ]
+    },
+    "caveat": "区域是传统宽泛类象，可一宫多部位；中五仅分类，不可赋普通门星神"
+  },
+  "disease_duration": {
+    "inner": {
+      "candidate": "new_or_recent",
+      "status": "unverified_user_generalization"
+    },
+    "outer": {
+      "candidate": "old_or_chronic",
+      "status": "unverified_user_generalization"
+    },
+    "must_not_equate_to": "kaiwu_inner_near_fast_outer_far_slow",
+    "adjudication": "not_evaluable_without_distinct_author_source_and_case_conditions",
+    "emit_to_customer": false
+  },
+  "carrier_precedence": [
+    {
+      "role": "tianrui_sky",
+      "rank": 1,
+      "conditions": [
+        "actual_tianrui_carried_stem"
+      ],
+      "meaning": "主症候传统象意"
+    },
+    {
+      "role": "tianqin_sky",
+      "rank": 2,
+      "conditions": [
+        "actual_tianqin_carried_stem",
+        "same_host_palace"
+      ],
+      "meaning": "独立辅助象，不覆盖天芮"
+    },
+    {
+      "role": "illness_earth",
+      "rank": 3,
+      "conditions": [
+        "actual_earth_stem",
+        "source_verified_earth_rest_or_prison",
+        "calendar_month_validated"
+      ],
+      "meaning": "源中有休囚的条件才考虑，未核不可猜病根"
+    }
+  ],
+  "paired_stem_conditions": [
+    {
+      "id": "sky_sky_combination",
+      "required": [
+        "both_real_carriers",
+        "verified_combination_rule"
+      ],
+      "status": "needs_source_specific_conditions"
+    },
+    {
+      "id": "sky_earth_combination",
+      "required": [
+        "real_ordered_heaven_earth_pair",
+        "verified_combination_rule"
+      ],
+      "status": "needs_source_specific_conditions"
+    }
+  ],
+  "symbol_semantics": {
+    "illness_door": "use_doors_illness_not_patient",
+    "patient_door": "use_doors_patient_not_illness",
+    "illness_deity": "use_deities_illness",
+    "patient_deity": "only_if_verified_nonnull_patient_profile",
+    "patient_signifier": "v11_selected_real_patient_not_day_stem_for_every_relation"
+  },
+  "contextual_conditions": [
+    {
+      "id": "gender_ren_gui_dui",
+      "when": [
+        "patient_sex_known",
+        "actual_ren_or_gui_carrier",
+        "palace_7"
+      ],
+      "meaning": "性别相关部位为用户资料候选，不作为唯一器官",
+      "approved": false
+    },
+    {
+      "id": "male_tianrui_kan",
+      "when": [
+        "patient_sex_male",
+        "actual_tianrui_palace_1"
+      ],
+      "meaning": "男患者坎宫的生殖泌尿类象待核",
+      "approved": false
+    },
+    {
+      "id": "qian_age_subtypes",
+      "when": [
+        "age_group_known",
+        "actual_tianrui_palace_6"
+      ],
+      "meaning": "年少腿足/年长头胸肺为用户候选，未经原书逐条核",
+      "approved": false
+    },
+    {
+      "id": "zhen_dui_front_back",
+      "when": [
+        "actual_palace_3_or_7"
+      ],
+      "meaning": "震偏左前/兑偏右后是用户细化候选，不能直接排除同宫其它来源类象",
+      "approved": false
+    },
+    {
+      "id": "tianrui_shangmen_injury",
+      "when": [
+        "actual_tianrui",
+        "actual_shangmen"
+      ],
+      "meaning": "只核实际同宫或独立位置，不能强行当骨折",
+      "approved": false
+    }
+  ],
+  "ocr_aliases": [
+    {
+      "raw": "王癸",
+      "candidate": "壬癸",
+      "status": "likely_ocr_requires_original_review"
+    },
+    {
+      "raw": "王",
+      "candidate": "壬",
+      "status": "likely_ocr_requires_original_review"
+    },
+    {
+      "raw": "自虎",
+      "candidate": "白虎",
+      "status": "likely_ocr_requires_original_review"
+    },
+    {
+      "raw": "成肚",
+      "candidate": "戊肚",
+      "status": "ambiguous_not_autocorrect"
+    }
+  ],
+  "source_conflicts": [
+    "旧研究候选图表坎表面仅外阴部，新用户笔记加下腹、生殖器；两组都保留、不无条件替换",
+    "阴阳遁新旧病说法不应从仅说明内近外远的古书案例外推",
+    "太阴、玄武、死门等隐性倾向与内外盘可相反；保留冲突",
+    "天芮与患者同门、不同角色不能合成同一断词",
+    "天禽入坤时读取两个真实携干及中五寄地盘证据，但中宫不放普通神门星",
+    "庚+伤门/死门的癌症、入墓的死亡等象意不可当病名、预后或建议治疗",
+    "螣蛇的怪异和灵异解释只能归文化原文，不作真实病因"
+  ],
+  "public_gate": {
+    "medical_diagnosis": false,
+    "life_death_prediction": false,
+    "spirit_cause_assertion": false,
+    "v80_scoring_reuse": false,
+    "ios_enabled": false,
+    "need_native_swift_parity": true,
+    "need_independent_book_case_review": true
+  }
+}

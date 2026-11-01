@@ -601,19 +601,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "98097e07aaf4f9b9ef4674c5cad75316526710b0"
+      "sha": "b5f602763097dd48ceba23f7b56f22676d82a06c"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "98097e07aaf4f9b9ef4674c5cad75316526710b0"
+      "sha": "b5f602763097dd48ceba23f7b56f22676d82a06c"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "d5610d4cf2b2249bb29743e309036dfd6ced68c4"
+      "sha": "e488e81a8b9dfe4c1b46a3efae37cc5466f4fd1f"
     },
     {
       "platform": "python",
@@ -638,6 +638,30 @@
       "canonical": "tests/test_health_discomfort_inner_outer_v12_20261031.py",
       "snapshot": "Important/python/tests/test_health_discomfort_inner_outer_v12_20261031.py",
       "sha": "7308e9ca97d01853ca33bf9ec179f206972c45c7"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json",
+      "sha": "7d8608d701d01925a1921d8e9542ae9b2f2bdf60"
+    },
+    {
+      "platform": "swift",
+      "canonical": "data/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json",
+      "snapshot": "Important/swift/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json",
+      "sha": "7d8608d701d01925a1921d8e9542ae9b2f2bdf60"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_discomfort_detail_v13_draft.py",
+      "snapshot": "Important/python/engine/health_discomfort_detail_v13_draft.py",
+      "sha": "8f9db840944b65c4d66545133859a6d3b3ab38e0"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v13_detail_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v13_detail_20261101.py",
+      "sha": "f2c826022d40ab8fb8c7a7e45428160680fa0ba5"
     }
   ]
 }
