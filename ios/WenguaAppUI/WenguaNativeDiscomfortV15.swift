@@ -348,15 +348,15 @@ enum WenguaNativeDiscomfortV15 {
             }
             return rows.count==1 ? parts(rows[0]["古籍象意或候选"] as? String ?? "") : []
         }
-        let actorOverlap=sourceLocation(patientPalace).first{
-            matched($0,leadSites)
-        }
+        let actorOverlap=patientPalace.id==illness.id ? nil :
+            sourceLocation(patientPalace).first{matched($0,leadSites)}
         var actorLine=""
         if let actorOverlap {
             actorLine=relationship+"用神"+actor.mainStem+"在"+label(patientPalace)+
                 "宫，该宫亦见"+actorOverlap+"。"
         }
-        if relationship=="父亲",let qian=chart.palaces.first(where:{$0.id==6}) {
+        if relationship=="父亲",let qian=chart.palaces.first(where:{$0.id==6}),
+           qian.id != illness.id,qian.id != patientPalace.id {
             let corroboration=sourceLocation(qian).first{matched($0,leadSites)}
             if let corroboration {
                 actorLine+="父亲乾六宫另见"+corroboration+"。"
