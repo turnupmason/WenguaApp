@@ -2383,3 +2383,6 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-10-31 · 1080 实际物理星盘回归扩展
+难受部位专项新增阴/阳18局×60时干支＝1080真实独立排布的自动模板遍历：每盘必须正确读取天芮/天禽、伤门、时干、现行V11患者用神及真实有序81格，全面覆盖8个病芮落宫与坤二双携干，不偷取V8净分或擅选体内/体表。CI另输出两份源局独立问事研究草稿全文供人工审词，不等于实际医学定位。测试同步Important快照+MANIFEST SHA；本SHA完成结果需查真实Actions，不提前称PASS。

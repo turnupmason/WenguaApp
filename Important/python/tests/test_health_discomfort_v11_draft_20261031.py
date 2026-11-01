@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
+from src.wengua.core import cycle60
 from src.wengua.health_discomfort_template_v11_draft import (
     compose_draft, template, SCHEMA,
 )
@@ -63,6 +64,37 @@ class DiscomfortV11Draft(unittest.TestCase):
             compose_draft(chart=bad,inquiry=FRIEND,calendar=CAL)
         with self.assertRaises(ValueError):
             compose_draft(chart=chart,inquiry={**FRIEND,"relationship":"unknown"},calendar=CAL)
+
+    def test_1080_real_layouts_all_eight_sites_and_kun_dual_carriers(self):
+        sites=set()
+        kun_dual=0
+        for dun in ("yang","yin"):
+            for ju in range(1,10):
+                for hour in cycle60():
+                    chart=layout_from_explicit_bureau(dun=dun,ju=ju,hour_ganzhi=hour)
+                    r=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
+                    pid=r["audit"]["tianrui_palace"]
+                    sites.add(pid)
+                    self.assertFalse(r["audit"]["inner_outer_selected"])
+                    self.assertEqual(r["audit"]["v80_severity_score"],None)
+                    self.assertEqual(len(r["sections"]),6)
+                    pair_rows=r["audit"]["81_pairs"]
+                    self.assertTrue(pair_rows)
+                    self.assertIn("天芮星",{x["star"] for x in pair_rows})
+                    if pid==2:
+                        kun_dual+=1
+                        self.assertEqual({x["star"] for x in pair_rows},
+                                         {"天芮星","天禽星"})
+                        self.assertEqual(len(pair_rows),2)
+        self.assertEqual(sites,{1,2,3,4,6,7,8,9})
+        self.assertGreater(kun_dual,0)
+
+    def test_customer_style_preview_from_two_source_only_clocks(self):
+        for dun,ju,hour in (("yang",3,"丁巳"),("yin",8,"戊戌")):
+            chart=layout_from_explicit_bureau(dun=dun,ju=ju,hour_ganzhi=hour)
+            result=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
+            print("\nBODY_V11_DRAFT_REAL_CAST %s%d %s\n%s\n" %
+                  (dun,ju,hour,result["reading_text"]))
 
     def test_no_dangerous_diagnosis_or_score_in_all_real_states(self):
         for dun,ju,hour in (("yang",1,"甲子"),("yang",3,"丁巳"),

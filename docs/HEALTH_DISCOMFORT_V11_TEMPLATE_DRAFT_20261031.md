@@ -28,3 +28,6 @@
 
 ### 2026-10-31 · 新病位专题iOS安全门与构建核验
 iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注释：定位模板仅draft、尚未Swift逐字以及源条件审核，不能消耗15天锁。Important Swift UI同字节镜像和MANIFEST SHA同步。本次仅更新UI的发布门说明，无新Swift病位断词引擎；本提交真实macOS Xcode模拟器CI结果须后验验证。#41265540427 主CI Python3.11/3.12 PASS；#41265540502 原V7.7 native PASS；V8 Native仍依本SHA实际结果。
+
+### 2026-10-31 · 1080 实际物理星盘回归扩展
+难受部位专项新增阴/阳18局×60时干支＝1080真实独立排布的自动模板遍历：每盘必须正确读取天芮/天禽、伤门、时干、现行V11患者用神及真实有序81格，全面覆盖8个病芮落宫与坤二双携干，不偷取V8净分或擅选体内/体表。CI另输出两份源局独立问事研究草稿全文供人工审词，不等于实际医学定位。测试同步Important快照+MANIFEST SHA；本SHA完成结果需查真实Actions，不提前称PASS。
