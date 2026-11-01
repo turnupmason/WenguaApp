@@ -656,11 +656,12 @@ enum WenguaNativeDiscomfortV15 {
         }.joined()
         let skySupport=skySites.first(where:{matched($0,leadSites)})
         let earthSupport=earthSites.first(where:{matched($0,leadSites)})
+        let doorWord=(!useInjury && door=="伤门") ? "本宫门象不取" : door
         let formsFull:String
         if let first=skySupport,let second=earthSupport {
-            formsFull="病宫\(door)、\(deity)同临；天芮携\(sky)与地盘\(illness.earthStem)分别指\(first)、\(second)，天地格\(formationNames.joined(separator:"、"))可与主位同参。"
+            formsFull="病宫\(doorWord)、\(deity)同临；天芮携\(sky)与地盘\(illness.earthStem)分别指\(first)、\(second)，天地格\(formationNames.joined(separator:"、"))可与主位同参。"
         } else {
-            formsFull="病宫见\(door)、\(deity)，天芮携\(sky)、地盘\(illness.earthStem)各按本宫取象，不另扩大部位。"
+            formsFull="病宫见\(doorWord)、\(deity)，天芮携\(sky)、地盘\(illness.earthStem)各按本宫取象，不另扩大部位。"
         }
         var danger:[String]=[]
         for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
