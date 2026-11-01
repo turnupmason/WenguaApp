@@ -2360,3 +2360,6 @@ BigFish Mac指定脚本现钉真实 Python/Swift 同步源 commit 1da1e5035061ad
 - BigFish真实原始TS起盘+原Wengua V8/V11.2 断词三随机真实时辰 [#41247580945](https://github.com/turnupmason/WenguaApp/actions/runs/41247580945) PASS；全稿另存 docs/BIGFISH_V11_2_THREE_REAL_RANDOM_COMPLETE_20261031.txt，旧 V11 已封存 TXT 不覆盖。三盘：2026-12-14哥哥极小凶、2027-02-01姐姐不凶不吉、2026-12-12朋友小凶；朋友实际庚在巽四，势大，证据明确「以巳长生主断，辰养备查」，末尾写完整小凶结论。
 - 2026-10-31 底层 Swift 现行源码在真正 macOS iOS Xcode Simulator [#41247218548](https://github.com/turnupmason/WenguaApp/actions/runs/41247218548) PASS（含bundle资源验收）；Python/Swift native V8两套全文对照 [#41247218530](https://github.com/turnupmason/WenguaApp/actions/runs/41247218530) PASS。BigFish批量单独版本更新没有修改 Swift 层，正式签名真机/App Store未验。
 - 历史失败仍保留：BigFish Pin 切换中间几次 CI FAIL，源旧测试SHA已同步；此前 V7.4 故事原始断词/历史独立1080及旧预览归档冲突失败不可擦除或当作本轮已通过。新旧结果不能按用户事后获悉结局做拟合；整套规则仍属古籍象意，不属医学诊断预测。
+
+## 2026-10-31 · 疾病难受部位 V11 独立候选模板（非正式发布）
+建立 data/templates/health_discomfort_v11/reading_template.json 与 src/wengua/health_discomfort_template_v11_draft.py，源为《神奇之门》疾病第5–7、9行的八宫表里映射和现有未核外部10干72宫/八门八神类象；沿用当前V11.2人物绑定并读取真实九宫、天芮携干和天禽、伤门/时干及实际81格。六段以两句合断收尾，条件未核的体表/体内并存，不造唯一病名。冻结V8病情轻重200/81算分和全部原版断词未改；未接Swift，入口health.discomfort保持disabled，不消耗15天锁。新增专用Python测试加入主CI；真实运行结果以本SHA Actions为准，不能以既有绿灯替代。完整证据、来源SHA及欠缺见 docs/HEALTH_DISCOMFORT_V11_TEMPLATE_DRAFT_20261031.md。新章0、新历史案例0。
