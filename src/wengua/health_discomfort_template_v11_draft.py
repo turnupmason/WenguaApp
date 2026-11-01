@@ -32,6 +32,22 @@ PALACE_NAMES = {1:"坎一宫", 2:"坤二宫", 3:"震三宫", 4:"巽四宫",
                 6:"乾六宫", 7:"兑七宫", 8:"艮八宫", 9:"离九宫"}
 UNSAFE_HINTS = ("癌", "肿瘤", "炎症", "恶性", "死亡", "死症", "手术",
                 "化疗", "病变", "增生", "囊肿", "出血", "压迫")
+FEMALE_ONLY = ("输卵管","阴道","子宫","卵巢","女性")
+MALE_ONLY = ("输精管","前列腺","睾丸","阴茎","男性")
+
+
+def _sex_compatible(word: str, sex: str | None) -> bool:
+    return (sex == "female" or not any(x in word for x in FEMALE_ONLY)) and (
+            sex == "male" or not any(x in word for x in MALE_ONLY))
+
+
+def _symbol_note(note: str) -> str:
+    """Only symbolic, non-diagnostic short clues; preserve raw notes in source."""
+    phrases = note.split("；",1)[0].replace("，","、").split("、")
+    safe = [p.replace("候选","").strip() for p in phrases
+            if p and not any(bad in p for bad in UNSAFE_HINTS)]
+    return ("、".join(safe[:2]) if safe else "一般变化") + "之象"
+
 
 
 @lru_cache(maxsize=1)
@@ -67,14 +83,16 @@ def _readable(items: list[str], count: int = 3) -> str:
     return "、".join(items[:count])
 
 
-def _stem_hint(chart_evidence: Mapping[str, Any]) -> str:
+def _stem_hint(chart_evidence: Mapping[str, Any], sex: str | None) -> str:
     candidates = chart_evidence["tianrui_stem_main_clues"]
     palace = str(chart_evidence["tianrui_palace"])
     vals = candidates.get("by_palace", {}).get(palace, [])
-    safe = [word for word in vals if not any(bad in word for bad in UNSAFE_HINTS)]
+    safe = [word for word in vals if not any(bad in word for bad in UNSAFE_HINTS)
+            and _sex_compatible(word, sex)]
     if not safe:
         safe = [word for word in candidates.get("surface", []) + candidates.get("organ", [])
-                if not any(bad in word for bad in UNSAFE_HINTS)]
+                if not any(bad in word for bad in UNSAFE_HINTS)
+                and _sex_compatible(word, sex)]
     return (_readable(safe, 2) + "等尚待来源复核的干宫象意"
             if safe else "尚待来源复核的干宫象意")
 
@@ -124,8 +142,8 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         raise ValueError("Missing real 81 formation for illness palace")
     names = "、".join(p["name"] for p in patterns)
     door, deity = ill["door"], ill["deity"]
-    door_clue = notes["doors"][door]["illness"]
-    deity_clue = notes["deities"][deity]["illness"]
+    door_clue = _symbol_note(notes["doors"][door]["illness"])
+    deity_clue = _symbol_note(notes["deities"][deity]["illness"])
     extra = sorted({c["palace"] for c in actor.get("extra_cells", [])
                     if c and c["palace"] in PALACE_NAMES
                     and c["palace"] != patient["palace"]})
@@ -138,7 +156,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         {"id":"02_tianrui", "title":template()["titles"]["02_tianrui"],
          "text":_say("illness",door=door,deity=deity,door_clue=door_clue,
                      deity_clue=deity_clue,sky=evidence["tianrui_carried_stem"],
-                     stem_clues=_stem_hint(evidence),companion=companion,
+                     stem_clues=_stem_hint(evidence, actor.get('resolved_sex')),companion=companion,
                      patterns=names)},
         {"id":"03_comparison", "title":template()["titles"]["03_comparison"],
          "text":_say("secondary",injury_palace=PALACE_NAMES[injury_id],

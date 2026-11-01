@@ -46,12 +46,26 @@ class DiscomfortV11Draft(unittest.TestCase):
                 self.assertFalse(result["locks_15_days"])
                 self.assertFalse(result["released"])
 
+    def test_gender_specific_draft_hints_are_only_shown_with_matching_sex(self):
+        chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
+        unknown=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)["reading_text"]
+        man=compose_draft(chart=chart,inquiry={**FRIEND,"patient_sex":"male"},calendar=CAL)["reading_text"]
+        woman=compose_draft(chart=chart,inquiry={**FRIEND,"patient_sex":"female"},calendar=CAL)["reading_text"]
+        for phrase in ("输精管","输卵管","阴道","前列腺"):
+            self.assertNotIn(phrase,unknown)
+        self.assertNotIn("输卵管",man)
+        self.assertNotIn("阴道",man)
+        self.assertNotIn("输精管",woman)
+        self.assertNotIn("癌症",unknown)
+        self.assertNotIn("死亡",unknown)
+
     def test_friend_sex_and_age_do_not_change_v11_main_signifier(self):
         chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
         baseline=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
         other=compose_draft(chart=chart,inquiry={**FRIEND,"patient_sex":"female",
                    "relative_age":"older"},calendar=CAL)
-        self.assertEqual(baseline["reading_text"],other["reading_text"])
+        self.assertEqual(baseline["audit"]["patient_palace"],other["audit"]["patient_palace"])
+        self.assertEqual(baseline["audit"]["patient_role"],other["audit"]["patient_role"])
         self.assertEqual(other["audit"]["patient_role"],"casting_month_stem")
 
     def test_wrong_intent_and_missing_center_fail_without_fake_chart(self):

@@ -3,33 +3,47 @@
   "topic_id": "health.discomfort",
   "status": "research_draft_not_customer_approved",
   "reference_style": "V11.2真实人物与九宫证据，V8只读盘面事实；不继承V8病情轻重计分、十档结论或应期",
-  "sections": ["01_location","02_tianrui","03_comparison","04_person","05_review","06_conclusion"],
+  "sections": [
+    "01_location",
+    "02_tianrui",
+    "03_comparison",
+    "04_person",
+    "05_review",
+    "06_conclusion"
+  ],
   "titles": {
-    "01_location":"病位初象","02_tianrui":"病星细察",
-    "03_comparison":"伤门与时干","04_person":"问事人及关系",
-    "05_review":"诸象合参","06_conclusion":"综合断语"
+    "01_location": "病位初象",
+    "02_tianrui": "病星细察",
+    "03_comparison": "伤门与时干",
+    "04_person": "问事人及关系",
+    "05_review": "诸象合参",
+    "06_conclusion": "综合断语"
   },
   "macros": {
-    "opening":"天芮病星落{illness_palace}。依八宫身体类象，体表可参{surface}；体内可参{internal}。此处内外盘取舍条件尚未核准，两路暂须分看。",
-    "illness":"本宫临{door}、{deity}，按传统象意分别提示{door_clue}及{deity_clue}。天芮实际携{sky}，与本宫组合可另参{stem_clues}；{companion}。天地盘真实格局见{patterns}，格名不直接等于病名。",
-    "companion_found":"同宫天禽携{stem}另为一条独立辅象，不能覆盖天芮主干",
-    "companion_absent":"本宫无另行天禽携干",
-    "secondary":"伤门实际在{injury_palace}，{injury_note}。时干{hour_stem}{hour_note}。这两条须与病宫的内外及人物关系另行核对，不能直接当作身体受伤或疾病已经发生。",
-    "injury_same":"与天芮同宫，只记一处真实宫事实",
-    "injury_other":"只作为另一处可能相关的象意线索",
-    "hour_known":"落{palace}，为本次问事事体符号",
-    "hour_missing":"的真实落宫尚待核对，不造一宫",
-    "patient":"本次询问{person}，依现行人物规则取{role}，实际在{patient_palace}；其宫临{patient_door}，仅表示患者一侧的状态，不能拿此门替换病宫的八门。{auxiliary}。",
-    "auxiliary_none":"未有符合条件的附加人物宫",
-    "auxiliary_found":"实际可参人物辅宫{palaces}，不重复计算同一物理宫",
-    "review":"诸象合参时，天芮宫的体表、体内两路仍有分歧；携干、伤门、时干及患者宫可提供不同线索，但未经原书条件逐项印证，不宜凭单一格局指定器官，也不据此判断疾病轻重、病势新旧或具体日期。",
-    "ending":"综上，此局的病位象意首先落在{illness_palace}，可参{surface_short}等体表线索，也可参{internal_short}等体内线索，现有依据尚不足以定出唯一难受部位。此为古籍象意，不等于真实症状或疾病诊断；实际不适的位置与原因须结合本人症状及医学检查判断。"
+    "opening": "天芮病星落{illness_palace}。依八宫身体类象，体表关联{surface}，体内关联{internal}。本局尚无足够依据选定表里，故先分路查看。",
+    "illness": "本宫临{door}、{deity}，各有{door_clue}与{deity_clue}。天芮携{sky}，另见{stem_clues}；{companion}。实际天地格为{patterns}，格名不能直接当作病名。",
+    "companion_found": "同宫天禽携{stem}另为一条独立辅象，不能覆盖天芮主干",
+    "companion_absent": "本宫无另行天禽携干",
+    "secondary": "伤门实际在{injury_palace}，{injury_note}。时干{hour_stem}{hour_note}。这两条须与病宫的内外及人物关系另行核对，不能直接当作身体受伤或疾病已经发生。",
+    "injury_same": "与天芮同宫，只记一处真实宫事实",
+    "injury_other": "只作为另一处可能相关的象意线索",
+    "hour_known": "落{palace}，为本次问事事体符号",
+    "hour_missing": "的真实落宫尚待核对，不造一宫",
+    "patient": "本次询问{person}，依现行人物规则取{role}，实际在{patient_palace}；其宫临{patient_door}，仅表示患者一侧的状态，不能拿此门替换病宫的八门。{auxiliary}。",
+    "auxiliary_none": "未有符合条件的附加人物宫",
+    "auxiliary_found": "实际可参人物辅宫{palaces}，不重复计算同一物理宫",
+    "review": "病宫、携干、伤门、时干和患者宫已有各自的真实位置。体表或体内取舍仍须有对应来源条件及相互印证，不能只凭一个宫、一个门或一个天干认定不适器官；本问亦不另推轻重及日期。",
+    "ending": "综上，{illness_palace}是本盘首先参考的传统病位，体表可看{surface_short}一带，体内可看{internal_short}一带，目前还不能确定哪处真实不适。古籍取象不能代替症状询问和医学检查，如有持续或加重的不适，应及时就医。"
   },
   "guards": {
-    "needs_real_nine_palaces":true,"needs_actual_patient_and_real_hour_stem":true,
-    "no_invented_centre_symbols":true,"preserve_both_surface_and_internal":true,
-    "external_stem_door_deity_clues_are_unverified":true,
-    "do_not_diagnose_or_advise_treatment":true,"do_not_copy_v8_score_grade_or_timing":true,
-    "do_not_enable_ios_or_15_day_lock":true,"no_medical_validity_claims":true
+    "needs_real_nine_palaces": true,
+    "needs_actual_patient_and_real_hour_stem": true,
+    "no_invented_centre_symbols": true,
+    "preserve_both_surface_and_internal": true,
+    "external_stem_door_deity_clues_are_unverified": true,
+    "do_not_diagnose_or_advise_treatment": true,
+    "do_not_copy_v8_score_grade_or_timing": true,
+    "do_not_enable_ios_or_15_day_lock": true,
+    "no_medical_validity_claims": true
   }
 }
