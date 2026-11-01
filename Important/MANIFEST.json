@@ -691,13 +691,25 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_cross_text_v14_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_cross_text_v14_draft.py",
-      "sha": "5c286841dc84a630d349ac2059d5370b3c39b160"
+      "sha": "2da792991b45b05f800ea3911629e7a6b9a37844"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_cross_text_v14_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_cross_text_v14_20261101.py",
-      "sha": "51ca99ea5975b90aec6777e6ba4abbd6e8aa9038"
+      "sha": "7a41b14ea619cf61be46b4cc5c4587c7de693b53"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json",
+      "sha": "0904c989dd45d06d4a4eeb68c1c6ae1df76e4f99"
+    },
+    {
+      "platform": "swift",
+      "canonical": "data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json",
+      "snapshot": "Important/swift/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json",
+      "sha": "0904c989dd45d06d4a4eeb68c1c6ae1df76e4f99"
     }
   ]
 }

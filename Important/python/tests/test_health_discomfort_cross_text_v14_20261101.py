@@ -9,7 +9,7 @@ from pathlib import Path
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.core import cycle60
 from src.wengua.health_discomfort_cross_text_v14_draft import (
-    rules, inspect_cross_text_candidates)
+    rules, inspect_cross_text_candidates, stem_source_variants)
 from src.wengua.health_discomfort_template_v11_draft import compose_draft
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -45,6 +45,17 @@ class CrossSourceV14(unittest.TestCase):
         self.assertEqual(len([x for x in p["rows"]
                               if x["executable_research_only"]]),6)
 
+    def test_three_school_stem_mappings_never_self_confirm(self):
+        variants=stem_source_variants()
+        self.assertEqual(len(variants["mapping"]),10)
+        geng=variants["mapping"]["庚"]
+        self.assertIn("肺",geng["qimen_secret_vol13"])
+        self.assertIn("大肠",geng["sanming_viscera"])
+        self.assertIn("脐",geng["sanming_body_surface"])
+        self.assertTrue(all(variants["guard"].values()))
+        self.assertNotEqual(variants["provenance"][0]["verified"],
+                            variants["provenance"][1]["verified"])
+
     def test_12_old_examples_20_conflicts_and_duplicate_family(self):
         f=json.loads(DOC.read_text(encoding="utf8"))
         self.assertEqual(len(f["cases"]),12)
@@ -74,6 +85,8 @@ class CrossSourceV14(unittest.TestCase):
                                      "wengua_health_discomfort_v14_16_combinations_20261101")
                     self.assertEqual(x["distinct_independent_confirmations"],0)
                     self.assertEqual(x["directly_deduced_medical_organ"],None)
+                    self.assertEqual(len(x["source_scheme_variants_for_actual_sky_stem"]),3)
+                    self.assertEqual(sum(x["source_scheme_independent_counts"].values()),0)
                     self.assertFalse(x["released"])
                     self.assertFalse(result["ios_enabled"])
                     self.assertIsNone(result["audit"]["v80_severity_score"])

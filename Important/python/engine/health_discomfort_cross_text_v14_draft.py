@@ -15,6 +15,23 @@ ROOT=Path(__file__).resolve().parents[2]
 SOURCE=ROOT/"data/knowledge/health_discomfort/cross_text_16_location_candidates_v14_20261101.json"
 SCHEMA="wengua_health_discomfort_v14_16_combinations_20261101"
 EXPECTED={f"HLT-{i:04d}" for i in range(240,256)}
+STEM_SOURCE=ROOT/"data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json"
+
+@lru_cache(maxsize=1)
+def stem_source_variants() -> dict[str,Any]:
+    """Retain parallel textual families; sharing a stem is NOT independent proof."""
+    j=json.loads(STEM_SOURCE.read_text(encoding="utf8"))
+    expected=set("甲乙丙丁戊己庚辛壬癸")
+    families={"qimen_secret_vol13","sanming_viscera","sanming_body_surface"}
+    if (j.get("schema")!="wengua_health_discomfort_stem_three_family_variants_v14_20261101"
+        or j.get("status")!="research_only_not_public"
+        or set(j.get("mapping",{}))!=expected
+        or any(set(v)!=families for v in j["mapping"].values())
+        or len(j.get("provenance",[]))!=3
+        or not all(j.get("guard",{}).values())):
+        raise ValueError("Source-specific ten-stem mapping is incomplete")
+    return j
+
 
 @lru_cache(maxsize=1)
 def rules() -> dict[str,Any]:
@@ -87,6 +104,10 @@ def inspect_cross_text_candidates(*, chart:Mapping[str,Any],
             "stem_role":f"tianrui_sky:{ill}:{tianrui[0]['carried_stem']}",
             "door_role":f"illness_door:{ill}:{site['door']}",
         },
+        "source_scheme_variants_for_actual_sky_stem":
+            stem_source_variants()["mapping"][tianrui[0]["carried_stem"]],
+        "source_scheme_independent_counts":{
+            "qimen_secret_vol13":0,"sanming_mingli_cross_system":0},
         "distinct_independent_confirmations":0,
         "directly_deduced_medical_organ":None,
         "historical_case_not_blind_test":True,
