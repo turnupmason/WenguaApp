@@ -168,7 +168,7 @@ enum WenguaNativeDiscomfortV15 {
             }
             return "待核"
         }
-        let birdPower=try bird.map{try sourceStrength("star","天禽星",illness)} ?? "待核"
+        let birdPower=try bird.map{ _ in try sourceStrength("star","天禽星",illness)} ?? "待核"
         let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
         let doorPower=try sourceStrength("door",door,illness)
