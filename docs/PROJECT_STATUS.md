@@ -2839,3 +2839,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 随机妻子 surgery：2027-02-12 05:00 -05，丁未/壬寅/壬戌/癸卯，阳遁；天芮兑七，伤门震三兼白虎，开门乾六克伤门宫，杜门巽四辅助肝胆；主肝胆、左肺；次右肋、右腰。
 - 随机女儿 none：2027-02-10 05:00 -05，丁未/壬寅/庚申/己卯，阳遁；天芮坤二真空，女儿真实时干己在震三；主肝胆、右耳；次右肩、肌肤；完全不输出伤门。
 - **断词质量疑点（只记录不擅自改 V20）**：父亲意外「外阴、下部」与心血管备选跨度大、用户可能难以理解；妻子「肝胆、左肺」双候选仍散；女儿右耳与肝胆跨部位混合，且杜门、景门、时干、女儿用神重复说肝胆，建议后续对同一独立符号及物理宫进一步收束观众表达，确认同宫和跨宫证据的计票。保持原文供用户审评，尚无医学外证。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
