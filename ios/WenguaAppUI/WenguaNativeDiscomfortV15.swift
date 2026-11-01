@@ -102,8 +102,7 @@ enum WenguaNativeDiscomfortV15 {
             "surface":surface.joined(separator:"、"),
             "injury":injury.gua+String(injury.id)+"宫",
             "hour_stem":hourStem,"hour_palace":hourPalace.gua+String(hourPalace.id)+"宫",
-            "person":relationship,"patient_palace":patientPalace.gua+
-                   String(patientPalace.id)+"宫"
+            "person":relationship,"patient_palace":patientPalace.gua+String(patientPalace.id)+"宫"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
