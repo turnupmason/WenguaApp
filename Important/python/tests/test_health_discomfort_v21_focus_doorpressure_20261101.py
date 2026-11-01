@@ -37,6 +37,13 @@ class V21FocusedDoorPressure(unittest.TestCase):
         self.assertIn('leadSites=[x[0] for x in ranked[:1]]',PYTHON)
         self.assertIn('V20_PREVIEW_BEGIN',SMOKE)
         self.assertIn('需以实际检查核实',SMOKE)
+    def test_no_adjacent_anatomy_invented_by_summary(self):
+        self.assertIn('lead=="左肩" {focusRegion="左肩一带"}',SWIFT)
+        self.assertIn('lead=="右耳" {focusRegion="右耳周围"}',SWIFT)
+        self.assertIn('elif lead=="左肩":focusRegion="左肩一带"',PYTHON)
+        self.assertIn('elif lead=="右耳":focusRegion="右耳周围"',PYTHON)
+        self.assertNotIn('左侧耳肩一带',SWIFT)
+        self.assertNotIn('右侧耳肩一带',PYTHON)
     def test_no_unconditional_injury_or_natal(self):
         self.assertIn('if useInjury',SWIFT)
         self.assertIn('if use_injury',PYTHON)
