@@ -2902,3 +2902,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 修改 `ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift`、`src/wengua/health_discomfort_v19_parity.py`、模板与相应 source tests：天芮宫真实天盘、地盘分别取200表五档力、真十干旧籍病象，天禽/天禽携干独立取源力；81格按真上加下顺序读名称、原吉凶和「古诀大意」，天禽寄坤时另读第二格，中五不填普通神门星。天芮星力、八门200力、八神本神关系力及其真正255古病象都加入客户解释。入墓与六仪击刑只看真实符号条件而不因未同最后一个病位词漏说；同字同符同条件仅文案合并，绝不串用其它宫力量。
 - **任何**病宫实门都参与门迫（门克宫）与宫克门受制；未选事故也须看病宫临门的门迫。只有「独立去伤门宫」的主用神资格仍取决于病伤、骨肉、出血、剧痛、手术显式条件。病位不跨全身乱推，区别身体位置和疾病轻重，八神不附月令，宫分绝不冒充符号能量，V8冻结未动。
 - 单独审计及复现、真实 CI 失败见 `docs/HEALTH_DISCOMFORT_V22_FULL_V16_TEN_STEMS_81_GODS_DOORS_RESTORATION_AUDIT_20261101.md`。真正 macOS Xcode 首轮 `#41361412371` Swift 多行字符串拼接失败，已修复；随后 `#41361706120` 用户妻子手术盘 Python 先核伤门地盘，覆盖外层病宫 `earthPower`，使 Swift 地盘丁「大」/Python「中等」不同，已在 `bb8e67bf` 改为 `injuryEarthPower` 独立变量，保留失败日志不删。正式 PASS/四盘/独立 parity、PythonCI 必须按各自新 SHA 真日志填，未通过不能提前声称。无临床预后与签名真机验收。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
