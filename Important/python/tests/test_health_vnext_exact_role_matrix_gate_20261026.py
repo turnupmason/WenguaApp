@@ -39,7 +39,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 self.assertNotIn("坤宫辅助（女）",r["reading_text"])
                 self.assertNotIn("gender",q["roles"])  # spouse is not an elder
                 self.assertNotIn("乾宫辅助（男）",r["reading_text"])
-                self.assertIn("用神力量为",r["reading_text"])
+                self.assertIn("患者用神",r["reading_text"])
+                self.assertIn("势",r["reading_text"])
                 self.assertIn("综上所述，此病为",r["reading_text"])
                 for role,gate in gates.items():
                     if role=="illness":continue
@@ -75,7 +76,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 if relation=="同宫":
                     self.assertTrue(chief["score_eligible"])
                     self.assertFalse(chief["chief_zero_score"])
-                    self.assertIn("值符大吉神与天芮病宫同宫",r["reading_text"])
+                    self.assertIn("值符护持宫",r["reading_text"])
+                    self.assertIn("与前述天芮病宫同在",r["reading_text"])
                 else:
                     self.assertFalse(chief["score_eligible"])
                     self.assertTrue(chief["chief_zero_score"])
@@ -95,7 +97,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
         self.assertTrue(recipients)
         self.assertEqual(len(recipients),len(set(recipients)))
         self.assertEqual(q["summary"]["weak_illness_drain_bonus_score"],3*len(recipients))
-        self.assertIn("病星本已极弱，反去生助",r["reading_text"])
+        self.assertIn("病星天芮",r["reading_text"])
+        self.assertIn("势极小",r["reading_text"])
         base=q["summary"]["post_void_known_sum"]
         bonuses=q["summary"]["relationship_bonus_score"]
         self.assertEqual(q["summary"]["score"],max(-5,min(5,base+bonuses)))
@@ -118,8 +121,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                           "此处不再重复","不计独立克病加分"):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden,public)
-        self.assertIn("天心医生宫克天芮病宫",public)
-        self.assertIn("值符大吉神与天芮病宫同宫",public)
+        self.assertIn("天心势",public)
+        self.assertIn("值符护持宫",public)
         self.assertIn("综上所述，此病为",public)
         self.assertEqual(public,"\n\n".join(
             x["title"]+"：\n"+x["text"] for x in r["sections"]))

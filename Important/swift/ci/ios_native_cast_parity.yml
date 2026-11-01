@@ -672,8 +672,8 @@ jobs:
           swift="\n\n".join(s["title"]+"：\n"+s["text"] for s in rows[0]["sections"])
           assert x["python_reading_text"]==swift
           conclusion=next(s["text"] for s in rows[0]["sections"] if s["id"]=="90_review")
-          assert conclusion.count("。")==2,repr(conclusion)
-          assert "天芮病宫落" in conclusion and "值符落" in conclusion
+          assert conclusion.count("。")==4 and len(conclusion.split("\n\n"))==4,repr(conclusion)
+          assert "病星天芮在" in conclusion and "值符" in conclusion
           doc="\n".join([
               "# V7.3.1 1920年生老年女性同一时辰｜Python／Swift 当前真实完整断案",
               "",
