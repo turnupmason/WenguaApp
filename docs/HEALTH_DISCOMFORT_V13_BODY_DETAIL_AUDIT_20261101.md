@@ -32,3 +32,9 @@
 专项早期CI首次失败，定位为新测试遍历 `body_axis` 时错误把 `caveat` 字符串当成 `palaces` 数据对象；实际8宫来源与运行选择没有异常。测试修改为仅遍历真实字典宫区，保持反例、错误 Actions 和测试源码历史不删。中间版本因 Important 镜像未同步也出现CI失败；在已复现原因后同步 canonical+snapshot blob SHA，后续运行应按**实际最终SHA和GitHub Actions结果**判断，不将失败说成PASS。旧 V7 综合原生归档测试存在已知历史不一致，独立保留。
 
 未结项：原版书逐页核对年纪/性别病位特例、地盘休囚与准确月令源200格、干合病象的真实且方向明确的条件、选择唯一器官的可靠证据优先级及新专题原生Swift逐字全文验证。原书新章0，独立历史家庭0。
+
+
+### 2026-11-01 · V13 最终 macOS / Python / 原生门禁实测
+- 源提交 bd3a758217fb19c8ec97b95527111c303e1f36d6：主 CI [#41317341939](https://github.com/turnupmason/WenguaApp/actions/runs/41317341939) Python3.11/3.12 PASS；V13 专项5测试覆盖实际1080局/上下区/疾病与人物八门/坤二携干/年纪明确条件/新旧未决/中宫禁造。V8 Python-Swift native 逐字 parity [#41317342093](https://github.com/turnupmason/WenguaApp/actions/runs/41317342093) PASS，V7.7 legacy fixed two clocks [#41317341835](https://github.com/turnupmason/WenguaApp/actions/runs/41317341835) PASS。
+- 真 macOS Xcode Simulator 构建以及App现有资源bundle验收 [#41317341932](https://github.com/turnupmason/WenguaApp/actions/runs/41317341932) PASS。这里验证仍为现有 V8 发布App，不是把V13研究文案打包发布，V13仍Python draft且 Swift未实现新专题parity，iOS入口enabled:false。
+- 旧历史综合原生工作流 [#41317341843](https://github.com/turnupmason/WenguaApp/actions/runs/41317341843) FAIL（包含旧V7测试合同），历史失败如实保留，不拿新版成功偷换旧版结果。未经过签名真机或科学医学定位有效性测试。V8冻结打分不修改，原章/事件+0。
