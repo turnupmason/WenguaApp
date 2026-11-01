@@ -2609,3 +2609,8 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 真实 macOS Xcode unsigned Simulator + bundled 200/81/255/三干资源 + 两随机 Swift 盘 [#41337326595](https://github.com/turnupmason/WenguaApp/actions/runs/41337326595) SUCCESS，source SHA ae2b3d0d812578b01cc6e70c00375ee4ee0b6b66。随机父亲 2026-11-16 19:00 -05（丙午年干用神艮八、天芮坤二，脾胃/食道为主）；姐姐 2027-02-18 01:00 -05（壬寅月干用神巽四、天芮兑七，口舌/牙齿为主）。原生逐节原文 docs/HEALTH_DISCOMFORT_V18_REAL_FATHER_SISTER_41337326595.md。
 - 主 CI [#41337412628](https://github.com/turnupmason/WenguaApp/actions/runs/41337412628) SUCCESS；原 V8 Python↔Swift parity [#41337412577](https://github.com/turnupmason/WenguaApp/actions/runs/41337412577) SUCCESS；V7.7 [#41337412617](https://github.com/turnupmason/WenguaApp/actions/runs/41337412617) SUCCESS，源 SHA81a067f2e158bc31a5c32b07b575c5da6009cb67。
 - 失败历史 #41336727533/#41336915310/#41337105769/#41337240572 保留，原较长 V18 PASS #41336936539不当作最终客户文字验收。审计 docs/HEALTH_DISCOMFORT_V18_SITE_EVIDENCE_RANK_AUDIT_20261101.md。新专题 Python V11 与 Swift V18 全文同盘逐字 parity 仍未单独验收；非签名真机或医学诊断有效性验证。
+
+
+## 2026-11-01 V19 病位全证据与真实家族身份门槛（增量）
+
+单独审计 `docs/HEALTH_DISCOMFORT_V19_FULL_SEQUENCE_AND_FAMILY_GATE_20261101.md`。独立病位专题扩为天芮定位→伤门→八门→时干→人物主用神→符合条件的亲属/年命辅宫→81天地格→每符号墓刑空迫→综合病位九节。每个真实符号独立用200格源强，墓刑仅调整该真实部位候选排序而非V8轻重计分。Swift人物关系必须真家族亲属确认，姐姐在此UI是家中大姐；朋友强制性别与相对年龄，只用月干，不能借用亲属宫。V8算法及冻结回归不改。旧失败 Xcode #41339353432、V8 native #41339353399 均保留；后续结果以最新来源commit真实运行验证，未通过不宣称通过。没有新古籍正文和新事件家族。
