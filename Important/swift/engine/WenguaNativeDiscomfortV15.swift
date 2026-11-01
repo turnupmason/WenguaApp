@@ -35,7 +35,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v15_source_separated_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v16_full_fact_narrative_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==6,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -97,6 +97,49 @@ enum WenguaNativeDiscomfortV15 {
         let region=([9,4,2].contains(illness.id) ? "上部" :
                      [3,7].contains(illness.id) ? "中部":"下部")
         let palaceName:String=code+"宫"
+        func sourceClue(_ category:String,_ symbol:String)->String {
+            let rows=allRules.filter {
+                ($0["类别"] as? String)==category &&
+                ($0["符号组合"] as? String)==symbol &&
+                ($0["证据级别"] as? String)?.hasPrefix("A")==true
+            }
+            guard rows.count==1,
+                  let raw=rows[0]["古籍象意或候选"] as? String
+            else {return "暂无可独立定位的细项"}
+            return raw.components(separatedBy:"；")[0]
+                .components(separatedBy:"（")[0]
+        }
+        let matchingDeity=allRules.filter {
+            ($0["类别"] as? String)=="八神病象" &&
+            ($0["符号组合"] as? String)?
+                .components(separatedBy:"／").contains(deity)==true
+        }
+        let deityClue=(matchingDeity.first?["古籍象意或候选"] as? String ?? "其他传统象意")
+            .components(separatedBy:"；")[0].components(separatedBy:"（")[0]
+        let illnessStar=illness.heavenStars.first{$0.star=="天芮星"}!
+        let phaseText=illnessStar.stages.map{$0.branch+$0.stage}.joined(separator:"、")
+        let voidText=illness.voidBranches.isEmpty ? "本宫无空亡支标记" :
+            "本宫临"+illness.voidBranches.joined(separator:"、")+"空"
+        let horseText=illness.horseBranch.map{"本宫见"+$0+"马"} ?? "本宫无驿马标记"
+        let tombText=illness.tombs.isEmpty ? "本宫无入墓标记" :
+            illness.tombs.map{$0.plane+$0.stem+$0.branch+"墓"}.joined(separator:"、")
+        let five:[Int:String]=[1:"水",2:"土",3:"木",4:"木",6:"金",7:"金",8:"土",9:"火"]
+        let control=["木":"土","土":"水","水":"火","火":"金","金":"木"]
+        let generate=["木":"火","火":"土","土":"金","金":"水","水":"木"]
+        func palaceRelation(_ p:WenguaNativePalace)->String {
+            if p.id==illness.id {return "同宫"}
+            guard let a=five[illness.id],let b=five[p.id] else {return "另宫"}
+            if a==b{return "比和"}
+            if control[a]==b{return "病宫克此宫"}
+            if control[b]==a{return "此宫克病宫"}
+            if generate[a]==b{return "病宫生此宫"}
+            if generate[b]==a{return "此宫生病宫"}
+            return "关系待辨"
+        }
+        let patientDoor=patientPalace.door ?? "无门"
+        let patientDeity=patientPalace.deity ?? "无神"
+        let skyOther=mapping[illness.earthStem]?["qimen_secret_vol13"] ?? []
+        let birdOther=bird.flatMap{mapping[$0]?["qimen_secret_vol13"]} ?? []
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -107,7 +150,22 @@ enum WenguaNativeDiscomfortV15 {
             "surface":surface.joined(separator:"、"),
             "injury":label(injury)+"宫",
             "hour_stem":hourStem,"hour_palace":label(hourPalace)+"宫",
-            "person":relationship,"patient_palace":label(patientPalace)+"宫"
+            "person":relationship,"patient_palace":label(patientPalace)+"宫",
+            "palace_position":"以这一实宫的具体部位为先",
+            "star_group":illness.heavenStars.map{$0.star}.joined(separator:"、"),
+            "door_clue":sourceClue("八门病象",door),
+            "deity_clue":deityClue,
+            "palace_clue":sourceClue("九宫病象",code),
+            "stage_clue":"天芮携"+sky+"的十二长生为"+phaseText,
+            "void_clue":voidText,"horse_clue":horseText,"tomb_clue":tombText,
+            "earth_hint":skyOther.joined(separator:"、"),
+            "stem_scope":"天盘与地盘按实际上下位置分别参看",
+            "patient_stem":actor.mainStem,
+            "patient_door":patientDoor,"patient_deity":patientDeity,
+            "patient_relation":palaceRelation(patientPalace),
+            "patient_coincidence":patientPalace.id==illness.id ? "同宫" : "不同宫",
+            "natal_scope":actor.natalStem ?? "未提供",
+            "injury_deity":injury.deity ?? "无神"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
@@ -127,7 +185,7 @@ enum WenguaNativeDiscomfortV15 {
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v15_full_255_source_guard_20261101",
+            version:"discomfort_v16_full_facts_no_customer_sources_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:["illness":illness.id,"patient":actor.mainPalace,

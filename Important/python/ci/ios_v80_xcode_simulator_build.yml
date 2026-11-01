@@ -106,7 +106,7 @@ jobs:
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
-      - name: Two actual Yin/Yang hours from complete source V15 real offline Swift customer sections
+      - name: Two random Yin/Yang real hours from complete V16 native Swift customer sections
         run: |
           set -euo pipefail
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
@@ -130,8 +130,8 @@ jobs:
             > /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V15_REAL_NATIVE_SITE_PASS yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V15_REAL_NATIVE_SITE_PASS yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          head -c 2800 /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          echo "PASS V15 actual yin/yang offline Swift reading against full 255 historical source" > /tmp/wengua-v80-xcode/native_site_validation.txt
+          cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          echo "PASS V16 two random real offline Swift body-site readings" > /tmp/wengua-v80-xcode/native_site_validation.txt
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -172,6 +172,13 @@ jobs:
             echo "Result: ${MESSAGE}"
             echo
             echo "Unsigned simulator build is NOT a signed iPhone installation, not an App Store shipment, and not proof of forecast validity."
+            if [ -f /tmp/wengua-v80-xcode/native_site_two_clocks.log ]; then
+              echo
+              echo '## Two original random Swift V16 full readings'
+              echo '~~~text'
+              cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
+              echo '~~~'
+            fi
             if [ -f /tmp/wengua-v80-xcode/build.log ]; then
               echo
               echo '## Build tail (append-only)'

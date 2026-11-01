@@ -14,10 +14,17 @@ import Foundation
         let stems=try Data(contentsOf:URL(fileURLWithPath:args[3]))
         let template=try Data(contentsOf:URL(fileURLWithPath:args[4]))
         let parser=ISO8601DateFormatter()
-        for (label,instant) in [
-            ("yin","2026-10-27T13:00:00-04:00"),
-            ("yang","2026-12-27T13:00:00-05:00")
-        ] {
+        // Randomly draw the calendar day and true two-hour slot, not a
+        // handpicked historic clock. Both seasons are deliberately sampled.
+        let slots=[1,3,5,7,9,11,13,15,17,19,21]
+        let selected:[(String,Int,Int,Int,Int)]=[
+            ("yin",2026,11,Int.random(in:9...23),slots.randomElement()!),
+            ("yang",2027,2,Int.random(in:7...20),slots.randomElement()!)
+        ]
+        for (label,year,month,day,hour) in selected {
+            let instant=String(format:"%04d-%02d-%02dT%02d:00:00-05:00",
+                               year,month,day,hour)
+            print("V16_RANDOM_SELECTED "+label+" "+instant)
             guard let date=parser.date(from:instant) else {
                 throw NSError(domain:"BodySiteV15",code:2)
             }
@@ -37,9 +44,12 @@ import Foundation
                     "04_person","05_review","06_conclusion"],
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
-                reading.sections.last!.text.contains("不能由此判断实际不适"),
+                reading.sections.last!.text.contains("只断传统身体部位象意"),
                 !reading.sections.joinedDescription.contains("极大吉"),
-                !reading.sections.joinedDescription.contains("极大凶")
+                !reading.sections.joinedDescription.contains("极大凶"),
+                !reading.sections.joinedDescription.contains("《"),
+                !reading.sections.joinedDescription.contains("原书"),
+                !reading.sections.joinedDescription.contains("异文")
             else {
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
