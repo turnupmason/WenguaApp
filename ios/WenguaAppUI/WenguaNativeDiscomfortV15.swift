@@ -150,7 +150,16 @@ enum WenguaNativeDiscomfortV15 {
             "surface":surface.joined(separator:"、"),
             "injury":label(injury)+"宫",
             "hour_stem":hourStem,"hour_palace":label(hourPalace)+"宫",
-            "person":relationship,"patient_palace":label(patientPalace)+"宫"
+            "person":relationship,"patient_palace":label(patientPalace)+"宫",
+            "palace_position":"以这一实宫的具体部位为先",
+            "star_group":illness.heavenStars.map{$0.star}.joined(separator:"、"),
+            "door_clue":sourceClue("八门病象",door),
+            "deity_clue":deityClue,
+            "palace_clue":sourceClue("九宫病象",code),
+            "stage_clue":"天芮携"+sky+"的十二长生为"+phaseText,
+            "void_clue":voidText,"horse_clue":horseText,"tomb_clue":tombText,
+            "earth_hint":skyOther.joined(separator:"、"),
+            "stem_scope":"天盘与地盘按实际上下位置分别参看"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
