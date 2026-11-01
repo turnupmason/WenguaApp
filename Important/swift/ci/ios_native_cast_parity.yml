@@ -516,7 +516,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/HEALTH_V71_MALE_FRIEND_SAME_PILLARS_2026-10-27.md
-          git commit -m "Archive V7.1 male friend natural text exact same-hour Swift Python verdict"
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive V7.1 male friend natural text exact same-hour Swift Python verdict"
+          else
+            echo "The archived exact friend reading already matches; no new commit necessary"
+          fi
           git pull --rebase origin main
           git push origin HEAD:main
       - name: Preserve male friend strict native parity and any failures for handoff
@@ -679,7 +683,7 @@ jobs:
               "年命庚申仅在1920年立春以后出生的前提下成立，日期未经确认。",
               "传统象意内容不是医学判断、治疗事实或真实病情预后。",
               "",
-              "## 本次两句完整合断",conclusion,
+              "## 当前完整条件合断",conclusion,
               "",
               "## Python 全部断词",x["python_reading_text"],
               "",
@@ -749,7 +753,7 @@ jobs:
           sw="\n\n".join(q["title"]+"：\n"+q["text"] for q in rows[0]["sections"])
           assert p["python_reading_text"]==sw
           summary=next(q["text"] for q in rows[0]["sections"] if q["id"]=="90_review")
-          assert len(summary.split("\n\n"))==2 and summary.count("。")==2
+          assert len(summary.split("\n\n"))==4 and summary.count("。")==4
           doc="\n".join([
             "# V7.3.1 同事测病：用户指定己丑／戊辰／辛卯／丁酉 Python + 原生 Swift 真断词",
             "",
@@ -757,7 +761,7 @@ jobs:
             "人物：同事，同辈月干仅按既有 source research_candidate_only 测试；绝不加乾坤、不提供性别、不虚构年命。",
             "本次是固定用户四柱复现，并非原书新案例。传统象意不代表临床病情。",
             "",
-            "## 两句动态合断",summary,"",
+            "## 最新四段条件合断",summary,"",
             "## Python 客户全部原文",p["python_reading_text"],"",
             "## iOS Swift 客户全部原文",sw,"",
             "整篇标题、段落、标点、字句同一：True",
