@@ -20,7 +20,7 @@
     "06_conclusion": "综合断语"
   },
   "macros": {
-    "opening": "天芮病星落{illness_palace}，按本局内外盘属{sector}。传统部位首先参看{chosen}；{other}是另一侧的对照象，不能混成同一病名。",
+    "opening": "天芮病星落{illness_palace}，按本局内外盘属{sector}。传统部位首先参看{chosen}；{other}是{opposite}一侧的对照象，不能混成同一病名。",
     "illness": "本宫临{door}、{deity}，见{door_clue}与{deity_clue}。天芮所携天盘干{sky}，可参{stem_clues}；地盘{earth}另作底层格局资料，不凭一干推断病因。{companion}。实际天地格为{patterns}，不据格名确诊疾病。",
     "companion_found": "同宫天禽携{stem}另为一条独立辅象，不能覆盖天芮主干",
     "companion_absent": "本宫无另行天禽携干",
