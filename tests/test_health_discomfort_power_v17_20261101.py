@@ -57,8 +57,12 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('["极大","大"].contains(tier)',native)
         self.assertIn('["小","极小"].contains(injuryPower)',native)
         self.assertIn('["极大","大"]',native)
-        self.assertIn('let ranked=originalSites.enumerated()',native)
+        self.assertIn('originalSites.enumerated().map',native)
         self.assertIn('let leadSites=ranked.prefix(2)',native)
+        self.assertIn('if illnessVoid=="true_void"',native)
+        self.assertIn('let actorOverlap=patientPalace.id==illness.id ? nil',native)
+        self.assertIn('qian.id != illness.id,qian.id != patientPalace.id',native)
+        self.assertIn('if output.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty',native)
         self.assertIn('let birdPower=',native)
         self.assertIn('let birdStemPower=',native)
         self.assertIn('let deityPower=',native)
@@ -75,6 +79,8 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('data/mobile/health_vnext/health_energy_200.json',workflow)
         self.assertIn('data/knowledge/health_81_excel_20261025/81_pairs.tsv',workflow)
         self.assertIn("native_site_validation.txt",workflow)
+        self.assertIn("V18_NATIVE_SITE_PASS 父亲 yin",workflow)
+        self.assertIn("V18_NATIVE_SITE_PASS 姐姐 yang",workflow)
 
 if __name__=="__main__":
     unittest.main()
