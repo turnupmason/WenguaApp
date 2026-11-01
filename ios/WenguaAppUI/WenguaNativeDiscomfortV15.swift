@@ -330,12 +330,10 @@ enum WenguaNativeDiscomfortV15 {
                 else{return nil}
                 return tag+"亦见"+site
             }
-        let detailLine=focusedDetails.isEmpty
-            ? "同宫没有更集中的天干部位象"
-            : focusedDetails.joined(separator:"，")+"，部位指向相互呼应"
-        let otherLine=secondSite.isEmpty
-            ? "部位仍以病宫所指为准"
-            : "同一宫位还可兼看"+secondSite
+        let detailLine=focusedDetails.isEmpty ? "" :
+            focusedDetails.joined(separator:"，")+"。"
+        let otherLine=secondSite.isEmpty ? "" :
+            "同宫另一处可兼看"+secondSite+"。"
         // The casting actor is *not* another Tianrui disease site.
         // A father has Qian auxiliary; an older sister does not acquire
         // eldest-daughter status without verified birth order.
@@ -353,22 +351,32 @@ enum WenguaNativeDiscomfortV15 {
         let actorOverlap=sourceLocation(patientPalace).first{
             matched($0,leadSites)
         }
-        var actorLine="问"+relationship+"，用神"+actor.mainStem+"落"+label(patientPalace)+"宫"
+        var actorLine=""
         if let actorOverlap {
-            actorLine+="，该宫也见"+actorOverlap+"的相同部位象"
-        } else {
-            actorLine+="，只作问事人物的旁证"
+            actorLine=relationship+"用神"+actor.mainStem+"在"+label(patientPalace)+
+                "宫，该宫亦见"+actorOverlap+"。"
         }
         if relationship=="父亲",let qian=chart.palaces.first(where:{$0.id==6}) {
             let corroboration=sourceLocation(qian).first{matched($0,leadSites)}
             if let corroboration {
-                actorLine+="；父亲乾六宫也见"+corroboration
+                actorLine+="父亲乾六宫另见"+corroboration+"。"
             }
         }
+        let limbSites=["肩","臂","手","足","腿","背","膝","筋","骨","腰","股"]
         let injuryCorroborates=injury.id==illness.id
-        let injuryLine=injuryCorroborates
-            ? "伤门同落"+label(illness)+"宫，可补充此处筋骨肢体类象"
-            : "伤门在"+label(injury)+"宫，未与主病位同宫，不改动定位"
+        let injuryMatching=leadSites.contains{site in
+            limbSites.contains(where:{site.contains($0)})
+        }
+        let injuryCross=sourceLocation(injury).first{matched($0,leadSites)}
+        let injuryLine:String
+        if injuryCorroborates && injuryMatching {
+            injuryLine="伤门也在"+label(illness)+"宫，与肢体部位相接。"
+        } else if !injuryCorroborates,tier(injuryPower)>=3,
+                  let overlap=injuryCross {
+            injuryLine="另看"+label(injury)+"宫的伤门，亦指"+overlap+"。"
+        } else {
+            injuryLine=""
+        }
         let ending=secondSite.isEmpty ? "。" : "；另参"+secondSite+"。"
         let conclusion=String(format:"综上，%@本次病位首先看%@%@这是传统部位取象，不等于医学诊断。",
                               relationship,lead,ending)
@@ -428,7 +436,14 @@ enum WenguaNativeDiscomfortV15 {
             guard !output.contains("{"),!output.contains("}") else {
                 throw WenguaNativeReadingError.invalidPhrase
             }
+            if output.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty {
+                continue
+            }
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
+        }
+        guard sections.first?.id=="01_location",
+              sections.last?.id=="06_conclusion",sections.count>=2 else {
+            throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
             version:"discomfort_v18_location_only_rank_20261101",
