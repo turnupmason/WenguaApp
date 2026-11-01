@@ -274,11 +274,12 @@ jobs:
       - name: Commit the exact newly generated V6.1 full wife reading to project history
         run: |
           set -euo pipefail
-          cp /tmp/wengua-v61-wife-new/v61_new_wife_python_swift_full_reading.md docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
-          printf '\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\nSource SHA: %s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          ARCHIVE="docs/HEALTH_V61_RANDOM_WIFE_RUN_${GITHUB_RUN_ID}.md"
+          cp /tmp/wengua-v61-wife-new/v61_new_wife_python_swift_full_reading.md "$ARCHIVE"
+          printf '\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\nSource SHA: %s\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> "$ARCHIVE"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V61_RANDOM_WIFE_2026-10-27.md
+          git add "$ARCHIVE"
           git commit -m "Archive V6.1 newly randomized wife chart full Python and native Swift reading"
           git pull --rebase origin main
           git push origin HEAD:main
@@ -334,11 +335,12 @@ jobs:
       - name: Archive user supplied four pillar 1930 natal production Swift reading in original repository
         run: |
           set -euo pipefail
-          cp /tmp/wengua-1930-manual/full_1930_manual_python_swift_reading.md docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
+          ARCHIVE="docs/HEALTH_V61_MANUAL_FEMALE_1930_RUN_${GITHUB_RUN_ID}.md"
+          cp /tmp/wengua-1930-manual/full_1930_manual_python_swift_reading.md "$ARCHIVE"
           printf '\\nGitHub Action: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\nSource SHA: %s\\n' "$GITHUB_RUN_ID" "$GITHUB_SHA" >> docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/HEALTH_V61_MANUAL_FEMALE_BORN_1930_2026-10-27.md
+          git add "$ARCHIVE"
           git commit -m "Archive user supplied 1930 natal health chart Python native Swift parity"
           git pull --rebase origin main
           git push origin HEAD:main
