@@ -6,32 +6,32 @@
     {
       "id": "01_location",
       "title": "病位总览",
-      "text": "天芮病星落{palace}，本局{dun}遁取{sector}，先将不适范围放在{primary}。九宫另有{external}一组相邻象意；两组重叠处为本次首先留意的范围，分叉处则分别保留，不把头、胸、腹或左右两侧硬说成同一个地方。{palace_position}"
+      "text": "天芮病星落{palace}，本局为{dun}遁，病位先按{sector}取象。重点放在{primary}这一带，{external}为同宫可参看的另一组部位。两组确有交集的先合看，涉及不同身体区域的分别列明；不把每个器官都说成同一个位置。"
     },
     {
       "id": "02_tianrui",
       "title": "病宫星门神与条件",
-      "text": "病宫有{star_group}，临{door}、{deity}。{door}提示{door_clue}；{deity}提示{deity_clue}。{palace_clue}。{stage_clue}。{void_clue}；{horse_clue}；{tomb_clue}。这些说的是不适可能呈现的部位和表现，不因单个门神便改断另一处身体器官。"
+      "text": "病宫同时见{star_group}，门为{door}，神为{deity}。{door}带出{door_clue}一类表现，{deity}另见{deity_clue}，二者侧重症候形态，不直接取代宫位定位。本宫补充象意：{palace_clue}。{stage_clue}；{void_clue}；{horse_clue}；{tomb_clue}。这些条件说明为什么要兼顾虚实、活动及闭滞，不凭一个字就判病名。"
     },
     {
       "id": "03_comparison",
       "title": "天干与细部",
-      "text": "天芮实际携{sky}，相关部位可细看{secret}；同干另有内在脏腑{viscera}、外在体表{surface}两组取象。地盘为{earth}，另提示{earth_hint}，但它不是天芮所携的天盘干，不能两者当同一处相加。{companion}。{stem_scope}"
+      "text": "病星天芮携{sky}，其干象另指{secret}；同一个干还可分辨内在的{viscera}以及外在的{surface}。地盘是{earth}，提示{earth_hint}，但地盘干与天芮所携的天盘干并非同一个符号。{companion}。本次严格把各个天干放回真实位置，候选互相补充时才缩小范围，指向不同系统时不强行归为一处。"
     },
     {
       "id": "04_person",
-      "title": "人物与病事",
-      "text": "这次问{person}，本人实际用神为{patient_stem}，落{patient_palace}，宫内见{patient_door}、{patient_deity}。{patient_relation}。病宫是看不适位置的主线，患者宫看被问之人的处境；{patient_coincidence}。{natal_scope}"
+      "title": "患者落宫",
+      "text": "本次问的是{person}，选定的患者用神为{patient_stem}，实际在{patient_palace}，临{patient_door}、{patient_deity}。{patient_relation}。天芮宫用于判断不适部位，患者宫用于分辨问事人的实际盘面处境；{patient_coincidence}。{natal_scope}。"
     },
     {
       "id": "05_review",
-      "title": "伤门与其他宫位",
-      "text": "伤门实际落{injury}，临{injury_deity}，此宫与天芮病宫分别观察：伤门提示筋骨、牵扯、活动部位，若两宫不同则不把伤门所指当成病星所在。时干{hour_stem}落{hour_palace}，另参病事发生位置。这里以真实宫位核对，不因单见伤门就断已有外伤，也不凭时干补造新的身体器官。"
+      "title": "伤门与病事旁线",
+      "text": "伤门在{injury}，同宫为{injury_deity}，这是另一条关于筋骨、牵扯、碰撞或肢体不适的象意线索，不能看到伤门就当作一定受伤。时干{hour_stem}实际落{hour_palace}，说明本次病事还有独立的落宫参照。判断部位时，先确认伤门、时干与病星是否同宫，异宫只作辅证；不把它们各自对应的候选全部算进病星所在宫。"
     },
     {
       "id": "06_conclusion",
       "title": "综合断语",
-      "text": "综上，传统病位首看{primary}，细部再沿天芮携{sky}所指的{secret}、{surface}分辨；{external}与{viscera}是仍要留意的并列位置。若宫位与天干指向不同部位，先抓共同身体区域，不能硬合成一个器官。此处只断传统身体部位象意，不是病情轻重判定，真实不适仍以实际症状与医学检查为准。"
+      "text": "综上，这张盘的身体不适首看{primary}，可结合{external}进一步分辨具体区域；天芮所携{sky}又提示{secret}，内外分别兼看{viscera}、{surface}，其中与主病位不同的部分只留作第二候选。最终以天芮真实落宫为主，不让门神、地盘干或其他人物宫喧宾夺主；这是部位取象，不是病情轻重评分，实际症状需要医学检查确认。"
     }
   ]
 }
