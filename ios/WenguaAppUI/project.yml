@@ -22,6 +22,13 @@ targets:
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift
+      - path: WenguaNativeDiscomfortV15.swift
+      - path: ../../data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json
+        buildPhase: resources
+      - path: ../../data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json
+        buildPhase: resources
+      - path: ../../data/templates/health_discomfort_v11/native_discomfort_v15.json
+        buildPhase: resources
       - path: WenguaNativeActorBinding.swift
       - path: ../../data/knowledge/phrase_library/health_v20/actor_profiles.json
         buildPhase: resources
