@@ -1543,3 +1543,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 纠正特殊门迫：**门克宫**才叫门迫，宫克门不误称门迫，八门实际五行落宫全覆盖定向回归；一般身体不适严格不显示伤门。对应源码测试 `tests/test_health_discomfort_v21_focus_doorpressure_20261101.py`。古籍文献异名与用户网页推断分离；死门、手术等不构成医疗诊断/预后。
 - 具体复现、真实源位置和留存失败见 `docs/HEALTH_DISCOMFORT_V21_FOCUSED_V16_RESTORE_AND_DOOR_PRESSURE_AUDIT_20261101.md`。V8冻结疾病轻重、200/81/255原始资料、原书版本/历史全部未改变。Important 源镜像、模板镜像和 MANIFEST 同步。
 - 真实 Xcode PASS [#41359468860](https://github.com/turnupmason/WenguaApp/actions/runs/41359468860) 绑定源码 `88e8e36830e38b1cc5c65238f2334e1a4e8e7714`：macOS unsigned iOS Simulator、bundle、六种随机 Swift 包括四指定人物、独立 Python↔Swift 另外两盘全文 PASS；旧 #41358729088/41358977993 等失败不删除。更后的左/右区域措辞小修 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0` 需用**本 SHA 新 Actions**确认，不能拿上一版 PASS 冒充。无签名真机/App Store/客观医学有效性主张。
+
+
+### 2026-11-01 · V21 左右部位精准小修后正式原生验证
+- 真实运行 [#41359689564](https://github.com/turnupmason/WenguaApp/actions/runs/41359689564) **PASS**，源码 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0`，实际 macOS XcodeGen/unsigned iOS Simulator build、200格/81格/255及V21模板 bundle字节核对、全六条件 Swift 原生自动真盘、用户指定父亲普通/父亲意外/妻子手术/女儿普通四个新随机时辰全文，以及**另外两张随机弟弟/妻子**独立 Python↔Swift 逐段严格一致。完整原始全文 `docs/IOS_V80_XCODE_PASS_RUN_41359689564_ATTEMPT_1.md`。
+- 本轮四盘：①父亲意外 2026-11-13 21:00 -05，丙午己亥辛卯己亥，病宫兑七、伤门艮八，伤门木迫土宫，最终左足；②妻子手术 2027-02-16 19:00 -05，丁未壬寅丙寅戊戌，天芮艮八、伤门离九，最终肠胃；③父亲普通 2026-11-10 21:00 -05，丙午己亥戊子癸亥，天芮坤二，最终脾胃，没有伤门段；④女儿普通 2027-02-15 15:00 -05，丁未壬寅乙丑甲申，天芮坤二，最终右耳周围，女儿甲与时干同符同宫且未补年命、无伤门段。
+- 同源码 Python/Swift 独立 V21 全段严格比对另两张弟弟2026-11-13 17:00 -05（7段）/妻子2027-02-18 11:00 -05（7段）通过；**不能说本次四份各自都做了 Python 跨语言比对**。这属于程序真实性验收，**用户的新文案尚未审批，绝非临床病灶或实际预后有效性证明**。历史旧失败永久保留；同一源 SHA 的主全量 Python3.11/3.12 CI 最终结果应另查，不挪用 Xcode 工作流。
