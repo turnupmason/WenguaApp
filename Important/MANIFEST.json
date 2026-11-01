@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "6ca69565fba9d0c0bff7cc39442539ce681c4387"
+      "sha": "c57835f7dcfb69ac7219897954c13a935bd500f7"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "6ca69565fba9d0c0bff7cc39442539ce681c4387"
+      "sha": "c57835f7dcfb69ac7219897954c13a935bd500f7"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "2f56743c73e9af53a9bdec9ebff6a5eaa228e6ae"
+      "sha": "88a6d278c0b7e2a5837229f6221d9b16a594597b"
     },
     {
       "platform": "python",
@@ -757,19 +757,19 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "83520b1c6714082e2b008790931497453b76ed7b"
+      "sha": "fbe22ec0537a8a3ff3b3d7a481f7f4faa187e8fc"
     },
     {
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "b5f1048aa882b78da47b39bf20ba31cd371e5366"
+      "sha": "68d9e572f9020b061638ecbeff7284f157ece09f"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "7b32d472140c6cc08187efc44b00be6a9062fae8"
+      "sha": "5adb2bef2c87d1655ef24e6cea345507cc5fc853"
     }
   ]
 }

@@ -22,8 +22,8 @@ class SitePowerV17Test(unittest.TestCase):
 
     def test_render_placeholders_are_bound(self):
         t=json.loads(TEMPLATE.read_text(encoding="utf8"))
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v18_site_rank_20261101")
-        self.assertEqual(len(t["sections"]),6)
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v19_full_source_sequence_20261101")
+        self.assertEqual(len(t["sections"]),9)
         native=NATIVE.read_text(encoding="utf8")
         match=re.search(r'let values:\[String:String\]=\[(.*?)\]\s*let required=',native,re.S)
         self.assertIsNotNone(match)

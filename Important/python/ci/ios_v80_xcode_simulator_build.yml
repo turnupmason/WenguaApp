@@ -102,7 +102,7 @@ jobs:
           assert set(families)==set('甲乙丙丁戊己庚辛壬癸')
           assert all(set(y)=={'qimen_secret_vol13','sanming_viscera','sanming_body_surface'} for y in families.values())
           native=json.loads((p/'native_discomfort_v15.json').read_text())
-          assert native['topic_id']=='health.discomfort' and len(native['sections'])==6
+          assert native['topic_id']=='health.discomfort' and len(native['sections'])==9
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY

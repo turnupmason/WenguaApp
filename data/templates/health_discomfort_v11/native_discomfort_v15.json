@@ -1,36 +1,51 @@
 {
-  "schema": "wengua_health_discomfort_native_v18_site_rank_20261101",
+  "schema": "wengua_health_discomfort_native_v19_full_source_sequence_20261101",
   "topic_id": "health.discomfort",
-  "status": "v18_location_only_optional_evidence_sections",
+  "status": "traditional_site_symbol_only",
   "sections": [
     {
       "id": "01_location",
       "title": "病位主象",
-      "text": "本次问{person}，天芮在{palace}，{dun}遁取{sector}，病位首先看{focus_site}。"
+      "text": "本次问{person}，天芮在{palace}，{dun}遁取{sector}，首先看{focus_site}。"
     },
     {
-      "id": "02_tianrui",
-      "title": "宫位细分",
-      "text": "{site_secondary}"
+      "id": "02_injury",
+      "title": "伤门取象",
+      "text": "{injury_full}"
     },
     {
-      "id": "03_comparison",
-      "title": "天干合参",
-      "text": "{site_detail}"
+      "id": "03_assist_doors",
+      "title": "八门辅证",
+      "text": "{other_doors}"
     },
     {
-      "id": "04_person",
-      "title": "人物宫复核",
-      "text": "{actor_site}"
+      "id": "04_hour",
+      "title": "时干事体",
+      "text": "{hour_site}"
     },
     {
-      "id": "05_review",
-      "title": "伤门旁证",
-      "text": "{injury_site}"
+      "id": "05_person",
+      "title": "人物用神",
+      "text": "{actor_full}"
     },
     {
-      "id": "06_conclusion",
-      "title": "综合断语",
+      "id": "06_auxiliary",
+      "title": "人物辅助宫",
+      "text": "{auxiliary_full}"
+    },
+    {
+      "id": "07_formation",
+      "title": "天地格局",
+      "text": "{formation_full}"
+    },
+    {
+      "id": "08_constraints",
+      "title": "墓刑空迫",
+      "text": "{danger_full}"
+    },
+    {
+      "id": "09_conclusion",
+      "title": "综合病位",
       "text": "{final_site}"
     }
   ]

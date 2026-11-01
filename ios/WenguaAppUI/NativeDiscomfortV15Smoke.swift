@@ -62,11 +62,12 @@ import Foundation
                 print("V18_GUARD_FAILURE source_name")
             }
             let ids=reading.sections.map{ $0.id }
-            let allowed=["01_location","02_tianrui","03_comparison",
-                         "04_person","05_review","06_conclusion"]
+            let allowed=["01_location","02_injury","03_assist_doors",
+                          "04_hour","05_person","06_auxiliary",
+                          "07_formation","08_constraints","09_conclusion"]
             guard reading.topicID=="health.discomfort",
-                ids.count>=2, ids.count<=6,
-                ids.first=="01_location",ids.last=="06_conclusion",
+                ids.count==9,
+                ids.first=="01_location",ids.last=="09_conclusion",
                 Set(ids).count==ids.count,
                 ids==allowed.filter{ids.contains($0)},
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&

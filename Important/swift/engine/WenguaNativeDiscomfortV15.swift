@@ -45,8 +45,8 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v18_site_rank_20261101",
-              let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==6,
+              words["schema"] as? String=="wengua_health_discomfort_native_v19_full_source_sequence_20261101",
+              let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
         }
@@ -283,6 +283,18 @@ enum WenguaNativeDiscomfortV15 {
         func tier(_ value:String)->Int {
             ["极小","小","中等","大","极大"].firstIndex(of:value).map{$0+1} ?? 0
         }
+        func sourceLocation(_ p:WenguaNativePalace)->[String] {
+            let code=label(p)
+            let scope=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id)
+                ? "体内" : "体表"
+            let rows=allRules.filter{
+                ($0["类别"] as? String)=="九宫定位" &&
+                ($0["子类"] as? String)=="神奇之门-"+scope &&
+                ($0["符号组合"] as? String)==code+"·"+scope &&
+                ($0["证据级别"] as? String)?.hasPrefix("A")==true
+            }
+            return rows.count==1 ? parts(rows[0]["古籍象意或候选"] as? String ?? "") : []
+        }
         let originalSites=parts(primary)
         guard !originalSites.isEmpty else {throw WenguaNativeReadingError.missingRole}
         let alternateSites=parts(external)
@@ -294,17 +306,75 @@ enum WenguaNativeDiscomfortV15 {
         func matched(_ candidate:String,_ sites:[String])->Bool {
             sites.contains(where:{sameSite(candidate,$0)})
         }
+
+        // Source energy 200 determines symbol salience. 墓/刑 raise a
+        // matching site's traditional concern, never V8 severity or source power.
+        func badSigns(_ stem:String,_ p:WenguaNativePalace)->[String] {
+            var result:[String]=[]
+            if p.tombs.contains(where:{$0.stem==stem}) {result.append("入墓")}
+            if p.heavenStars.contains(where:{$0.carriedStem==stem}) &&
+               WenguaVNextEngine.striking[stem]==p.id {result.append("六仪击刑")}
+            return result
+        }
+        var auxiliaries:[(WenguaNativePalace,String,String)]=[]
+        let auxIDs=Set([actor.siblingAuxiliaryPalace,actor.genderPalace,
+                        actor.natalPalace].compactMap{$0})
+        for id in auxIDs.sorted() where physical.contains(id) {
+            if let p=chart.palaces.first(where:{$0.id==id}),
+               let star=p.heavenStars.first {
+                auxiliaries.append((p,star.star,try sourceStrength("star",star.star,p)))
+            }
+        }
+        var otherDoors:[(WenguaNativePalace,String,String)]=[]
+        for p in chart.palaces where physical.contains(p.id) &&
+             p.id != illness.id && p.id != injury.id {
+            if let d=p.door {
+                otherDoors.append((p,d,try sourceStrength("door",d,p)))
+            }
+        }
         let ranked:[(String,Int,Int)]=originalSites.enumerated().map{ entry in
-            let index=entry.offset
             let site=entry.element
             var rank=tier(illnessPower)
             if illnessVoid=="true_void" {rank=0}
             if illnessVoid=="fake_void" {rank=max(0,rank-1)}
             if matched(site,alternateSites){rank+=2}
-            if matched(site,skySites){rank+=tier(skyPower)}
-            if matched(site,earthSites){rank+=tier(earthPower)}
-            if matched(site,birdSites){rank+=tier(birdStemPower)}
-            return (site,rank,index)
+            if matched(site,skySites) {
+                rank+=tier(skyPower)
+                if !badSigns(sky,illness).isEmpty {rank+=5}
+            }
+            if matched(site,earthSites) {
+                rank+=tier(earthPower)
+                if !badSigns(illness.earthStem,illness).isEmpty {rank+=5}
+            }
+            if let bird,matched(site,birdSites) {
+                rank+=tier(birdStemPower)
+                if !badSigns(bird,illness).isEmpty {rank+=5}
+            }
+            var counted:Set<String>=[]
+            for (p,stem,power) in [(patientPalace,actorCarrier,patientPower),
+                                   (hourPalace,hourStem,hourPower)]
+                    where p.id != illness.id {
+                let key=String(p.id)+"/"+stem
+                if matched(site,sourceLocation(p)) && counted.insert(key).inserted {
+                    rank+=tier(power)
+                    if !badSigns(stem,p).isEmpty {rank+=5}
+                }
+            }
+            if injury.id != illness.id && matched(site,sourceLocation(injury)) {
+                rank+=tier(injuryPower)
+            }
+            for (p,star,power) in auxiliaries where p.id != illness.id {
+                let key=String(p.id)+"/"+star
+                if matched(site,sourceLocation(p)) && counted.insert(key).inserted {
+                    rank+=tier(power)
+                }
+            }
+            for (p,doorName,power) in otherDoors
+                    where matched(site,sourceLocation(p)) {
+                let key=String(p.id)+"/door/"+doorName
+                if counted.insert(key).inserted {rank+=tier(power)}
+            }
+            return (site,rank,entry.offset)
         }.sorted{ $0.1==$1.1 ? $0.2<$1.2 : $0.1>$1.1 }
         let leadSites=ranked.prefix(2).map{$0.0}
         let lead=leadSites.joined(separator:"、")
@@ -337,17 +407,6 @@ enum WenguaNativeDiscomfortV15 {
         // The casting actor is *not* another Tianrui disease site.
         // A father has Qian auxiliary; an older sister does not acquire
         // eldest-daughter status without verified birth order.
-        func sourceLocation(_ p:WenguaNativePalace)->[String] {
-            let code=label(p)
-            let scope=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id)
-                ? "体内" : "体表"
-            let rows=allRules.filter{
-                ($0["类别"] as? String)=="九宫定位" &&
-                ($0["子类"] as? String)=="神奇之门-"+scope &&
-                ($0["符号组合"] as? String)==code+"·"+scope
-            }
-            return rows.count==1 ? parts(rows[0]["古籍象意或候选"] as? String ?? "") : []
-        }
         let actorOverlap=patientPalace.id==illness.id ? nil :
             sourceLocation(patientPalace).first{matched($0,leadSites)}
         var actorLine=""
@@ -377,6 +436,60 @@ enum WenguaNativeDiscomfortV15 {
         } else {
             injuryLine=""
         }
+
+        let injuryFull=injuryLine.isEmpty ?
+            "伤门在"+label(injury)+"宫，主筋骨牵扯之象，仅作旁线。" : injuryLine
+        let doorsConfirming=otherDoors.filter{entry in
+            tier(entry.2)>=2 && sourceLocation(entry.0).contains(where:{
+                matched($0,leadSites)
+            })
+        }.sorted{tier($0.2)>tier($1.2)}
+        let doorCross=doorsConfirming.prefix(2).map{entry in
+            entry.1+"在"+label(entry.0)+"宫，所指部位与"+lead+"相接"
+        }.joined(separator:"；")
+        let doorsFull="病宫临"+door+"，人物宫临"+patientDoor+"。"+
+            (doorCross.isEmpty ? "其余门象不另增加主位。" : doorCross+"。")
+        let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
+        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，与病宫"+
+            palaceRelation(hourPalace)+"；"+
+            (hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
+        let personFull=relationship+"取用神"+actor.mainStem+"在"+
+            label(patientPalace)+"宫，与病宫"+palaceRelation(patientPalace)+"；"+
+            (actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
+        let auxTexts=auxiliaries.map{entry in
+            let p=entry.0
+            let name=p.id==actor.siblingAuxiliaryPalace ? "亲属排行辅助" :
+                     p.id==actor.genderPalace ? "长辈乾坤辅助" : "真实年命辅助"
+            let overlap=sourceLocation(p).first(where:{matched($0,leadSites)})
+            return name+label(p)+"宫"+(overlap.map{"，亦见"+$0} ?? "，另作参考")
+        }
+        let auxFull=auxTexts.isEmpty ? "没有符合条件的额外人物辅宫。" :
+            auxTexts.joined(separator:"；")+"。"
+        let formsFull="天芮携"+sky+"加地盘"+illness.earthStem+
+            "，见"+formationNames.joined(separator:"、")+
+            "格；合参本宫门神，以"+lead+"为主线。"
+        var danger:[String]=[]
+        for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
+            let signs=badSigns(stem,illness)
+            if !signs.isEmpty,
+               let site=sites.first(where:{matched($0,leadSites)}) {
+                danger.append(stem+signs.joined(separator:"、")+
+                    "，传统不利象集中在"+site+"一带")
+            }
+        }
+        if let bird {
+            let signs=badSigns(bird,illness)
+            if !signs.isEmpty,
+               let site=birdSites.first(where:{matched($0,leadSites)}) {
+                danger.append("天禽携"+bird+signs.joined(separator:"、")+
+                    "，亦指"+site)
+            }
+        }
+        if illnessVoid=="true_void" {danger.append("病宫真空，本宫候选减看")}
+        else if illnessVoid=="fake_void" {danger.append("病宫假空，本宫线索仍留")}
+        if doorRel=="宫克符号" {danger.append(door+"门迫，门象受制")}
+        let dangerFull=danger.isEmpty ? "本宫未见重合主部位的墓刑空迫象。" :
+            danger.joined(separator:"；")+"。"
         let ending=secondSite.isEmpty ? "。" : "；另参"+secondSite+"。"
         let conclusion=String(format:"综上，%@本次病位首先看%@%@这是传统部位取象，不等于医学诊断。",
                               relationship,lead,ending)
@@ -419,10 +532,15 @@ enum WenguaNativeDiscomfortV15 {
             "hour_relation":palaceRelation(hourPalace),
             "focus_site":lead,"site_detail":detailLine,
             "site_secondary":otherLine,"actor_site":actorLine,
-            "injury_site":injuryLine,"final_site":conclusion
+            "injury_site":injuryLine,"injury_full":injuryFull,
+             "other_doors":doorsFull,"hour_site":hourFull,
+             "actor_full":personFull,"auxiliary_full":auxFull,
+             "formation_full":formsFull,"danger_full":dangerFull,
+             "final_site":conclusion
         ]
-        let required=["01_location","02_tianrui","03_comparison",
-                      "04_person","05_review","06_conclusion"]
+        let required=["01_location","02_injury","03_assist_doors",
+                       "04_hour","05_person","06_auxiliary",
+                       "07_formation","08_constraints","09_conclusion"]
         var sections:[WenguaNativeCustomerSection]=[]
         for (i,entry) in paragraphs.enumerated(){
             guard entry["id"]==required[i],let title=entry["title"],
@@ -442,11 +560,11 @@ enum WenguaNativeDiscomfortV15 {
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
         }
         guard sections.first?.id=="01_location",
-              sections.last?.id=="06_conclusion",sections.count>=2 else {
+              sections.last?.id=="09_conclusion",sections.count==9 else {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v18_location_only_rank_20261101",
+            version:"discomfort_v19_full_evidence_rank_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:["illness":illness.id,"patient":actor.mainPalace,
