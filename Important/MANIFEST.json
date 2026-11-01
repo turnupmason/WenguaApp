@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "9021b5e849063297a6860b5f3178dd8ba16d1ec1"
+      "sha": "62ca5f825687eac10158ba7e12dc1d61df92da61"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "9021b5e849063297a6860b5f3178dd8ba16d1ec1"
+      "sha": "62ca5f825687eac10158ba7e12dc1d61df92da61"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "ca5c6e3b0a0b5fa6fec776bb4078452e37750d88"
+      "sha": "65fd93bd8b3d7d5731dc0a9e9e0d94dc550e61f2"
     },
     {
       "platform": "python",
@@ -769,19 +769,31 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "0c4aaef22d5a1763273496b97a24817dba21315e"
+      "sha": "bc89dc0272a5d97561563cc82bacf795da7dd140"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "512bf312dccf553524a8fc323d9b29fef4a2ef80"
+      "sha": "5b38fb916b975004d646da7f747f460293bbdb9a"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV19Parity.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV19Parity.swift",
       "sha": "dc71efed74ae40b1e4cd5e27663557611ce3dd09"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
+      "sha": "f433c5a6ab88ddfd467c42cc57ef151978c9f488"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
+      "sha": "b3d3cd0806fda85ffe713acb25781127958cd7f5"
     }
   ]
 }
