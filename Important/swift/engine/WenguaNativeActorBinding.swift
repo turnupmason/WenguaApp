@@ -43,9 +43,11 @@ struct WenguaNativeInquiry {
     let patientBirthStem:String? // source-supplied lone natal heavenly stem
     let patientAgeBand:String? // explicit real youth; never guessed from younger
     let relativeAge:String? // friend only: older/younger than asker
+    let familyRelativeConfirmed:Bool? // genuine sibling kinship proof
     init(relationship:String,context:String,patientSex:String?,birthOrder:String?,
          patientBirthGanzhi:String?,patientBirthStem:String?=nil,
-         patientAgeBand:String?=nil,relativeAge:String?=nil) {
+         patientAgeBand:String?=nil,relativeAge:String?=nil,
+          familyRelativeConfirmed:Bool?=nil) {
         self.relationship=relationship
         self.context=context
         self.patientSex=patientSex
@@ -54,6 +56,7 @@ struct WenguaNativeInquiry {
         self.patientBirthStem=patientBirthStem
         self.patientAgeBand=patientAgeBand
         self.relativeAge=relativeAge
+         self.familyRelativeConfirmed=familyRelativeConfirmed
     }
     static func standard(_ relation:String)->WenguaNativeInquiry {
         WenguaNativeInquiry(relationship:relation,
@@ -162,6 +165,22 @@ enum WenguaNativeActorSource {
         if knownMale.contains(profile.id) && sex != nil && sex != "male" ||
            knownFemale.contains(profile.id) && sex != nil && sex != "female" {
             throw WenguaNativeReadingError.unsupportedRelationship
+        }
+        let siblingIDs:Set<String>=["older_brother","older_sister",
+                                    "younger_brother","younger_sister"]
+        if siblingIDs.contains(profile.id) {
+            guard inquiry.familyRelativeConfirmed==true else {
+                throw WenguaNativeReadingError.unsupportedRelationship
+            }
+            if profile.id=="older_sister" && inquiry.birthOrder != "eldest" {
+                throw WenguaNativeReadingError.unsupportedRelationship
+            }
+        }
+        if profile.id=="friend" {
+            guard sex != nil,let age=inquiry.relativeAge,
+                  ["older","younger"].contains(age) else {
+                throw WenguaNativeReadingError.unsupportedRelationship
+            }
         }
         // Friends always use the true casting month stem, independent
         // of optional demographic inputs. No sibling or elder palace.

@@ -1096,6 +1096,7 @@ struct CastSetupScreen: View {
     @State private var inquiryContext = "direct_proxy"
     @State private var patientSex = "unspecified"
     @State private var friendRelativeAge = "unspecified"
+    @State private var familyRelativeConfirmed = false
     @State private var birthOrder = "unspecified"
     @State private var patientBirthGanzhi = ""
     @State private var subjectName = ""
@@ -1122,14 +1123,16 @@ struct CastSetupScreen: View {
                                 .lineLimit(2...4)
                             Text("当事人").font(.headline)
                             Picker("你为谁问事", selection: $subject) {
-                                ForEach(relations, id: \.self) { Text($0).tag($0) }
+                                ForEach(relations, id: \.self) { relation in
+                                    Text(relation=="姐姐" ? "姐姐（家中大姐）" : relation).tag(relation)
+                                }
                             }
                             .pickerStyle(.menu)
                             TextField("当事人称呼 · 可选", text: $subjectName)
                             TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
                                 .keyboardType(.numberPad)
                             if subject=="父母" ||
-                               subject=="配偶" || subject=="同事" ||
+                               subject=="配偶" || subject=="同事" || subject=="朋友" ||
                                subject=="其他长辈" || subject=="孩子" {
                                 Picker(subject=="朋友" ? "朋友性别（必选）" :
                                        "病人性别（请按实际选择）",selection:$patientSex) {
@@ -1139,10 +1142,21 @@ struct CastSetupScreen: View {
                                 }.pickerStyle(.menu)
                             }
                             if subject=="朋友" {
-                                Text("朋友以真实月干为用神，不取亲属辅助宫；无需填写性别和年龄。")
+                                Picker("朋友比你年长还是年幼（必选）",selection:$friendRelativeAge) {
+                                     Text("未说明").tag("unspecified")
+                                     Text("比我大").tag("older")
+                                     Text("比我小").tag("younger")
+                                 }.pickerStyle(.menu)
+                                 Text("朋友仍取真实月干，不借亲属辅助宫。")
                                     .font(.caption).foregroundStyle(QStyle.secondary)
                             }
-                            if ["儿子","女儿","孩子","侄子"].contains(subject) {
+                            if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) {
+                                 Toggle(subject=="姐姐" ?
+                                        "确认是家中的亲大姐（不是朋友）" :
+                                        "确认是家中的亲兄弟姐妹（不是朋友）",
+                                        isOn:$familyRelativeConfirmed)
+                             }
+                             if ["儿子","女儿","孩子","侄子"].contains(subject) {
                                 Picker("出生排行（可选）",selection:$birthOrder) {
                                     Text("未说明").tag("unspecified")
                                     Text("长").tag("eldest")
@@ -1259,11 +1273,13 @@ struct CastSetupScreen: View {
                 relationship:subject,
                 context:subject=="本人" ? "direct_self" : inquiryContext,
                 patientSex:patientSex=="unspecified" ? nil : patientSex,
-                birthOrder:birthOrder=="unspecified" ? nil : birthOrder,
+                birthOrder:subject=="姐姐" ? "eldest" :
+                     (birthOrder=="unspecified" ? nil : birthOrder),
                 patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
                     in:.whitespacesAndNewlines).isEmpty ? nil :
                     patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines),
-                relativeAge:nil)
+                relativeAge:subject=="朋友" && friendRelativeAge != "unspecified" ? friendRelativeAge : nil,
+                 familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(subject) ? familyRelativeConfirmed : nil)
             let reading=try WenguaNativeReadingRouter.compose(
                 chart:result,topicID:topic.id,relationship:subject,
                 inquiry:context)
@@ -1309,7 +1325,15 @@ struct CastSetupScreen: View {
             validationMessage="此人物关系必须先明确病人性别，以决定真正的用神。"
             return
         }
-        let normalized = question.filter { !$0.isWhitespace && !$0.isPunctuation }
+        if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) && !familyRelativeConfirmed {
+             validationMessage="亲属辅助宫须确认真实家庭关系；朋友请选择朋友。"
+             return
+         }
+         if subject=="朋友" && (patientSex=="unspecified" || friendRelativeAge=="unspecified") {
+             validationMessage="朋友必须选性别及比自己大或小，但不借亲属辅助宫。"
+             return
+         }
+         let normalized = question.filter { !$0.isWhitespace && !$0.isPunctuation }
         guard normalized.count >= 4 else {
             validationMessage = "请先明确至少四个字的一件具体事情。"
             return

@@ -36,7 +36,11 @@ import Foundation
                     NSLocalizedDescriptionKey:"Unexpected actual yin/yang branch: "+chart.bureau.dun])
             }
             let actor=try WenguaNativeActorSource.bind(
-                chart:chart,inquiry:.standard(relationship),index:index)
+                chart:chart,inquiry:WenguaNativeInquiry(
+                     relationship:relationship,context:"direct_proxy",
+                     patientSex:nil,birthOrder:relationship=="姐姐" ? "eldest" : nil,
+                     patientBirthGanzhi:nil,
+                     familyRelativeConfirmed:relationship=="姐姐" ? true : nil),index:index)
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,
                 rules:rules,stems:stems,template:template,

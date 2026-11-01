@@ -15,8 +15,9 @@ import Foundation
       throws -> WenguaNativeActor {
       try WenguaNativeActorSource.bind(chart:chart,
         inquiry:WenguaNativeInquiry(relationship:label,context:context,
-          patientSex:sex,birthOrder:nil,patientBirthGanzhi:nil,
-          relativeAge:relativeAge),index:idx)
+          patientSex:sex,birthOrder:label=="姐姐" ? "eldest" : nil,
+           patientBirthGanzhi:nil,relativeAge:relativeAge,
+           familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(label) ? true : nil),index:idx)
     }
     let myself=try make("本人",context:"direct_self")
     guard myself.mainStem=="戊",myself.eligibleForFirmTraditionalJudgment else {
@@ -45,7 +46,8 @@ import Foundation
     }
     func conditioned(_ who:String,_ rank:String?,_ youth:String?,_ palace:Int)throws {
       let req=WenguaNativeInquiry(relationship:who,context:"direct_proxy",
-        patientSex:nil,birthOrder:rank,patientBirthGanzhi:nil,patientAgeBand:youth)
+        patientSex:nil,birthOrder:rank,patientBirthGanzhi:nil,patientAgeBand:youth,
+           familyRelativeConfirmed:true)
       let a=try WenguaNativeActorSource.bind(chart:chart,inquiry:req,index:idx)
       guard a.mainStem==String(chart.pillars.month.prefix(1)),
             a.siblingAuxiliaryPalace==palace,a.extraPalaces.contains(palace),
@@ -57,14 +59,21 @@ import Foundation
     try conditioned("妹妹",nil,"young",7)
     let friend=try make("朋友",sex:"female",relativeAge:"older")
     let event=try make("朋友",sex:"male",context:"event_news",relativeAge:"younger")
-    guard friend.siblingAuxiliaryPalace==4,
-          event.siblingAuxiliaryPalace==8,friend.extraPalaces.contains(4),
-          event.extraPalaces.contains(8) else {throw WenguaCastError.invalidChart}
+    guard friend.siblingAuxiliaryPalace==nil,
+           event.siblingAuxiliaryPalace==nil,
+           !friend.extraPalaces.contains(4),
+           !event.extraPalaces.contains(8) else {throw WenguaCastError.invalidChart}
     do { _=try make("朋友");throw WenguaCastError.invalidChart }
     catch WenguaNativeReadingError.unsupportedRelationship {}
     do { _=try make("朋友",sex:"male");throw WenguaCastError.invalidChart }
     catch WenguaNativeReadingError.unsupportedRelationship {}
-    let nephew=try make("侄子")
+    do {
+       _=try WenguaNativeActorSource.bind(chart:chart,
+         inquiry:WenguaNativeInquiry(relationship:"姐姐",context:"direct_proxy",
+           patientSex:"female",birthOrder:"eldest",patientBirthGanzhi:nil),index:idx)
+       throw WenguaCastError.invalidChart
+     } catch WenguaNativeReadingError.unsupportedRelationship {}
+     let nephew=try make("侄子")
     guard friend.mainStem=="癸",friend.eligibleForFirmTraditionalJudgment,
       event.mainStem=="戊",nephew.mainStem=="甲",
       nephew.mainPalace != 5 else {throw WenguaCastError.invalidChart}
