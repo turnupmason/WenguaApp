@@ -763,13 +763,25 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "5b7573354d67bca1b71d9a06454323cb040fb6f8"
+      "sha": "cee3cdeac2e48100c557f15b2ef25a1b6bc92079"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
       "sha": "80610011bc92015d0a7c59a56f196d1efa1af371"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_discomfort_v19_parity.py",
+      "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
+      "sha": "eb526a22ae51cba68e135b6832e910803549381a"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/NativeDiscomfortV19Parity.swift",
+      "snapshot": "Important/swift/tests/NativeDiscomfortV19Parity.swift",
+      "sha": "d4e1a08f640a6c9739a7c92bfb97c46e1b4ba543"
     }
   ]
 }
