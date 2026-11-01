@@ -352,8 +352,8 @@ enum WenguaNativeDiscomfortV15 {
             sourceLocation(patientPalace).first{matched($0,leadSites)}
         var actorLine=""
         if let actorOverlap {
-            actorLine=relationship+"用神"+actor.mainStem+"在"+label(patientPalace)+
-                "宫，该宫亦见"+actorOverlap+"。"
+            actorLine=String(format:"%@用神%@在%@宫，该宫亦见%@。",
+                             relationship,actor.mainStem,label(patientPalace),actorOverlap)
         }
         if relationship=="父亲",let qian=chart.palaces.first(where:{$0.id==6}),
            qian.id != illness.id,qian.id != patientPalace.id {
