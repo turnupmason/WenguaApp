@@ -151,6 +151,79 @@ enum WenguaNativeDiscomfortV15 {
         let patientDeity=patientPalace.deity ?? "无神"
         let skyOther=mapping[illness.earthStem]?["qimen_secret_vol13"] ?? []
         let birdOther=bird.flatMap{mapping[$0]?["qimen_secret_vol13"]} ?? []
+        // Source-backed 200 powers (NOT V8 net +/-5 or any clinical scale).
+        let month=try WenguaVNextEngine.monthly(String(chart.pillars.month.suffix(1)))
+        func sourceStrength(_ kind:String,_ symbol:String,
+                            _ p:WenguaNativePalace,
+                            _ stages:[WenguaNativeStage]=[]) throws ->String {
+            try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
+                    month:month,catalog:powerCatalog,stages:stages).strength ?? "待核"
+        }
+        func stemPower(_ stem:String,_ p:WenguaNativePalace) throws ->String {
+            if let carrier=p.heavenStars.first(where:{$0.carriedStem==stem}) {
+                return try sourceStrength("stem",stem,p,carrier.stages)
+            }
+            if p.earthStem==stem {
+                return try sourceStrength("stem",stem,p,p.earthStages)
+            }
+            return "待核"
+        }
+        let illnessPower=try sourceStrength("star","天芮星",illness)
+        let doorPower=try sourceStrength("door",door,illness)
+        let skyPower=try stemPower(sky,illness)
+        let earthPower=try stemPower(illness.earthStem,illness)
+        let patientPower=try stemPower(actor.mainStem,patientPalace)
+        let injuryPower=try sourceStrength("door","伤门",injury)
+        let hourPower=try stemPower(hourStem,hourPalace)
+        let deityElement=WenguaVNextEngine.godElement[deity]
+        guard let godElement=deityElement,
+              let palaceElement=WenguaVNextEngine.elements[illness.id],
+              let godRelation=try? WenguaVNextEngine.directed(godElement,palaceElement),
+              let deityPower=WenguaVNextEngine.godTiers[godRelation] else {
+            throw WenguaNativeReadingError.missingRole
+        }
+        func formation(_ top:String,_ bottom:String)->String? {
+            for line in pairText.split(separator:"\n").dropFirst() {
+                let cells=line.split(separator:"|",omittingEmptySubsequences:false)
+                if cells.count>=4 && cells[0]==top && cells[1]==bottom {
+                    return String(cells[2])
+                }
+            }
+            return nil
+        }
+        guard let mainFormation=formation(sky,illness.earthStem) else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
+        var formationNames=[mainFormation]
+        if let bird,let centre=chart.palaces.first(where:{$0.id==5}),
+           let hostedFormation=formation(bird,centre.earthStem) {
+            formationNames.append(hostedFormation)
+        }
+        func isProminent(_ tier:String)->Bool {
+            ["极大","大"].contains(tier)
+        }
+        let illnessFocus=isProminent(illnessPower)
+            ? "病星自身力量较足，这一宫的病位线索较突出"
+            : illnessPower=="中等" ? "病星力量居中，此处取作主要病位"
+            : ["小","极小"].contains(illnessPower)
+                ? "病星力量偏弱，这里的不适象不宜夸大"
+                : "病星力量未能定档，病位轻重不作强断"
+        let injuryFocus=isProminent(injuryPower)
+            ? "伤门自身力量较足，筋骨牵扯的旁象较显"
+            : ["小","极小"].contains(injuryPower)
+                ? "伤门力量偏弱，筋骨牵扯只作轻微旁象"
+                : "伤门仅作独立的筋骨与动作线索"
+        let hourFocus=isProminent(hourPower)
+            ? "时干作用较显，病事宫可进一步核对"
+            : "时干力量不强，不把其余宫位扩大为主病位"
+        let secondaryFocus=injury.id==illness.id
+            ? "伤门也在病星宫，门象与病位同处一宫"
+            : "另宫伤门在"+label(injury)+"宫，"+injuryFocus
+        let locationFocus=isProminent(skyPower)
+            ? "天芮携干之势较足，可优先细查相应部位"
+            : ["小","极小"].contains(skyPower)
+                ? "携干力量较弱，其对应部位只作次线"
+                : "携干所示部位作为分辨线索"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
