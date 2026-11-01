@@ -60,7 +60,7 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('candidateSites.enumerated().map',native)
         self.assertIn('let leadSites=ranked.prefix(2)',native)
         self.assertIn('if illnessVoid=="true_void"',native)
-        self.assertIn('let actorOverlap=sourceLocation(patientPalace)',native)
+        self.assertIn('let actorSiteHit=sourceLocation(patientPalace)',native)
         self.assertIn('let auxIDs=Set([actor.siblingAuxiliaryPalace',native)
         self.assertIn('output.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty',native)
         self.assertIn('let birdPower=',native)
