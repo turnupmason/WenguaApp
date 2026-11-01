@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "62ca5f825687eac10158ba7e12dc1d61df92da61"
+      "sha": "c390f48fe49326f089a8da9f8f56852a6bef9f7e"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "62ca5f825687eac10158ba7e12dc1d61df92da61"
+      "sha": "c390f48fe49326f089a8da9f8f56852a6bef9f7e"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "f1110f6d6df27b0e0e494d658f2ea07a74ac62b8"
+      "sha": "ea2b7b0af8f8361175952ea7bd97c4a96a36626e"
     },
     {
       "platform": "python",
@@ -757,7 +757,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "255fb57efaf0761261d9879c5d43b49230f2a380"
+      "sha": "c80edfeb44c1d24d8480bcf34d1916f204822be9"
     },
     {
       "platform": "python",
@@ -769,13 +769,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "bc89dc0272a5d97561563cc82bacf795da7dd140"
+      "sha": "1f064f4f1ccd614a87dd7f34b092ce57f13cc73f"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "52dddd477a263d40616ff078c093d6fa15032dd3"
+      "sha": "1f2ae017d3a75b40f2b1d4916bdd8b59eccf40c4"
     },
     {
       "platform": "swift",
@@ -787,13 +787,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v21_focus_doorpressure_20261101.py",
-      "sha": "159b6ece93fa3270b94266d5e14912f75d45616c"
+      "sha": "19a6457c9b47ac7aead948c469c9137d48359a8c"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
-      "sha": "b3d3cd0806fda85ffe713acb25781127958cd7f5"
+      "sha": "861364a197038c11decac15ec3e089fccdafdd89"
     }
   ]
 }
