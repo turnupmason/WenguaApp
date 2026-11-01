@@ -117,7 +117,7 @@ class DiscomfortV11Draft(unittest.TestCase):
             r=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
             for word in ("确诊","患癌","不治之症","判为极大凶","总分"):
                 self.assertNotIn(word,r["reading_text"])
-            self.assertIn("可参"+r["audit"]["surface_all"][0],
+            self.assertIn("可看"+r["audit"]["surface_all"][0],
                           r["sections"][-1]["text"])
 
 
