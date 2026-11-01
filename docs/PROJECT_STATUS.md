@@ -2416,3 +2416,7 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+## 2026-10-31 · 难受部位 V12 内外盘与冲突来源审计（独立候选，不动V8）
+用户明确的传统内外盘：阳遁天芮1/8/3/4为内、9/2/7/6为外，阴遁反向；交叉对照《开悟之门》疾病原章索引第85行阳坤外/阴坤内和第31行阴离内的真实已见案例。新增 data/knowledge/health_discomfort/inner_outer_priority_policy_20261031.json、src/wengua/health_discomfort_inner_outer_v12_draft.py、tests/test_health_discomfort_inner_outer_v12_20261031.py。真实九宫选传统表里主象，保留双源表、天芮/天禽携干、地盘另格与门神反向冲突；不能以伤门/白虎或死门/玄武单条绝对改变内外，不能由天地干推临床病因或由医药克病、患者入墓推必死必愈。原V8病情轻重全部不变，iOS新专题依然disabled；旧书源/历史失败不删。专项包含全部16阴阳宫分支与1080实盘、Important双模板镜像及SHA；当次真实CI以独立run结果为准。完整已核书章行号、SHA与待核条件见 docs/HEALTH_DISCOMFORT_INNER_OUTER_PRIORITY_V12_20261031.md。非新增原书章节/事件家族，未完成新专题Swift parity/签名真机。
