@@ -2589,3 +2589,9 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 
 ## 2026-11-01 · V17 病位五档源力/81格已接 iOS 并实测随机阴阳两盘
 源码：ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift；模板：data/templates/health_discomfort_v11/native_discomfort_v15.json（V17 schema）。八神本神不加月令，星门干五档按原200表逐个取力，中五寄天禽另看真实81格，同字天地干力量不混，病位原力与原V8严重程度吉凶净分绝不混。门迫与真假空独立影响传统线索显现，不能据此声称实际疼痛剧烈。删除客户无用解释句，书名仅留来源审计。真正 Xcode unsigned Simulator build + V17两张随机阴阳盘 Swift全文 PASS #41335088599（SHA e3677dfee0）；Python主CI #41335191945、冻结V8 Python⇄Swift parity #41335191951 成功（SHA8c300b7）。两张原文存 docs/HEALTH_DISCOMFORT_V17_REAL_SWIFT_TWO_RANDOM_41335088599.md。历史早期失败保持记录。新专题Python↔Swift逐字 parity/真实临床定位与签名真机验收仍未完成。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
