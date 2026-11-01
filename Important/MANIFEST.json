@@ -596,6 +596,30 @@
       "canonical": "src/wengua/health_dynamic_v21.py",
       "snapshot": "Important/python/engine/health_dynamic_v21.py",
       "sha": "ff19cfc172ae1a6a59d201169925f99a6c541430"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/templates/health_discomfort_v11/reading_template.json",
+      "snapshot": "Important/python/templates/templates/health_discomfort_v11/reading_template.json",
+      "sha": "144132dc53a9df1723dc415eebd2fe6dc405c5b4"
+    },
+    {
+      "platform": "swift",
+      "canonical": "data/templates/health_discomfort_v11/reading_template.json",
+      "snapshot": "Important/swift/templates/templates/health_discomfort_v11/reading_template.json",
+      "sha": "144132dc53a9df1723dc415eebd2fe6dc405c5b4"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
+      "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
+      "sha": "005df192d8b5e93e972dfc8db31736edbf723752"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v11_draft_20261031.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v11_draft_20261031.py",
+      "sha": "2d12a10dcb02ee1505217389e5b5f29ab61d6f9c"
     }
   ]
 }

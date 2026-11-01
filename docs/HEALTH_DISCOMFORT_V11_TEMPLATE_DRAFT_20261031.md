@@ -20,3 +20,8 @@
 `tests/test_health_discomfort_v11_draft_20261031.py` 检查双来源示例实盘（阳三丁巳天芮坎、阴八戊戌天芮艮）、朋友性别/年龄不影响月干、意图严格隔离、中心伪门拒绝、六段及双组、V8分数空、禁医学诊断和App关闭。以当前 main 最新提交 Actions 的真实运行结果为准；缺少 macOS 的执行环境不能宣称本轮已实际运行 Xcode。
 
 下一步对两书定位规则逐条件和不同历史事件家族核查内外主客及天芮/伤门/时干多线索的优先级，明确可定/不可定门槛，再打包Swift逐字测试。本阶段新增原著章节0、历史事件0。
+
+## 2026-10-31 · V11 难受部位模板 CI 与 Important 镜像验收
+- 首轮主CI #41265404538 FAIL：新增字段校验将 Formatter.parse 的普通文字片段 None 误判为非法占位符，5项测试报错。保留历史失败，修复提交 d7a4cef6c4481e8d39c8ab860c09112fce7a9cf4 将检测改为仅判断真实字段名。
+- 修复后的同一 V8 主CI #41265445681：Python 3.11、3.12 均 PASS（含新6段真实盘、双阴阳、朋友月干、缺中心拒绝、禁自动诊断）。这验证研究草稿可运行，不代表独立病位准确或正式 iOS/Swift parity。
+- 新模板已加 Important 的 Python 和 Swift 双镜像，Python研究引擎与专项测试也留同字节快照，MANIFEST 的 Git blob SHA 同步。本模块仍 research_draft、iOS disabled，Xcode/macos 和手机对该新专题尚未实测，不冒称通过。

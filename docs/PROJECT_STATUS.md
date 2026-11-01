@@ -2363,3 +2363,8 @@ BigFish Mac指定脚本现钉真实 Python/Swift 同步源 commit 1da1e5035061ad
 
 ## 2026-10-31 · 疾病难受部位 V11 独立候选模板（非正式发布）
 建立 data/templates/health_discomfort_v11/reading_template.json 与 src/wengua/health_discomfort_template_v11_draft.py，源为《神奇之门》疾病第5–7、9行的八宫表里映射和现有未核外部10干72宫/八门八神类象；沿用当前V11.2人物绑定并读取真实九宫、天芮携干和天禽、伤门/时干及实际81格。六段以两句合断收尾，条件未核的体表/体内并存，不造唯一病名。冻结V8病情轻重200/81算分和全部原版断词未改；未接Swift，入口health.discomfort保持disabled，不消耗15天锁。新增专用Python测试加入主CI；真实运行结果以本SHA Actions为准，不能以既有绿灯替代。完整证据、来源SHA及欠缺见 docs/HEALTH_DISCOMFORT_V11_TEMPLATE_DRAFT_20261031.md。新章0、新历史案例0。
+
+## 2026-10-31 · V11 难受部位模板 CI 与 Important 镜像验收
+- 首轮主CI #41265404538 FAIL：新增字段校验将 Formatter.parse 的普通文字片段 None 误判为非法占位符，5项测试报错。保留历史失败，修复提交 d7a4cef6c4481e8d39c8ab860c09112fce7a9cf4 将检测改为仅判断真实字段名。
+- 修复后的同一 V8 主CI #41265445681：Python 3.11、3.12 均 PASS（含新6段真实盘、双阴阳、朋友月干、缺中心拒绝、禁自动诊断）。这验证研究草稿可运行，不代表独立病位准确或正式 iOS/Swift parity。
+- 新模板已加 Important 的 Python 和 Swift 双镜像，Python研究引擎与专项测试也留同字节快照，MANIFEST 的 Git blob SHA 同步。本模块仍 research_draft、iOS disabled，Xcode/macos 和手机对该新专题尚未实测，不冒称通过。
