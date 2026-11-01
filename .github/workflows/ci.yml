@@ -20,6 +20,10 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_casting_centre_door_20261029.py' -v
       - name: Health site/discomfort independent research rules and explicit disabled iOS UI
         run: python -m unittest discover -s tests -p 'test_health_discomfort_source_draft_20261029.py' -v
+      - name: V19 native site/source rank, full nine-stage evidence and real family gate (Python 3.11/3.12)
+        run: |
+          python -m unittest discover -s tests -p 'test_health_discomfort_power_v17_20261101.py' -v
+          python -m unittest discover -s tests -p 'test_health_discomfort_v19_full_sequence_20261101.py' -v
       - name: V11 body-discomfort standalone draft real chart and actor contract
         run: python -m unittest discover -s tests -p 'test_health_discomfort_v11_draft_20261031.py' -v
       - name: Body location inner outer yin yang source candidate real chart regression

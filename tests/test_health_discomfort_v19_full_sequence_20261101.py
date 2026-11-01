@@ -15,9 +15,10 @@ class V19LocationFamily(unittest.TestCase):
         refs=set(re.findall(r'\{([a-z_]+)\}'," ".join(x["text"] for x in t["sections"])))
         self.assertFalse(refs-keys)
         for required in ('sourceStrength("door",d,p)','sourceStrength("star",star.star,p)',
-                         'tier(patientPower)','tier(hourPower)','tier(injuryPower)',
+                         '(patientPalace,actorCarrier,patientPower)','(hourPalace,hourStem,hourPower)','tier(injuryPower)',
                          'WenguaVNextEngine.striking[stem]','p.tombs.contains',
-                         'formationNames.joined','if illnessVoid=="true_void"'):
+                         'formationNames.joined','if illnessVoid=="true_void"',
+                         'var candidateSites=originalSites','other.0.id != p.id'):
             self.assertIn(required,swift)
         self.assertNotIn("WenguaVNextEngine.compute(",swift)
         self.assertNotIn("abs(",swift)
