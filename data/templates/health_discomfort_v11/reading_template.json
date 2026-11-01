@@ -2,7 +2,7 @@
   "schema": "wengua_health_discomfort_v11_candidate_template_20261031",
   "topic_id": "health.discomfort",
   "status": "research_draft_not_customer_approved",
-  "reference_style": "V11.2真实人物与九宫证据，V8只读盘面事实；不继承V8病情轻重计分、十档结论或应期；按阴阳遁＋病星实宫选择传统体表/体内主象，门神仅作条件印证",
+  "reference_style": "V11.2真实人物与九宫证据，V8只读盘面事实；不继承V8病情轻重计分、十档结论或应期；按阴阳遁＋病星实宫选择传统体表/体内主象，门神仅作条件印证；V13附加上中下部、独立病/人八门和病芮/天禽/地盘三层携干；新旧病仅候选",
   "sections": [
     "01_location",
     "02_tianrui",
@@ -20,7 +20,7 @@
     "06_conclusion": "综合断语"
   },
   "macros": {
-    "opening": "天芮病星落{illness_palace}，按本局内外盘属{sector}。传统部位首先参看{chosen}；{other}是{opposite}一侧的对照象，不能混成同一病名。",
+    "opening": "天芮病星落{illness_palace}，宫属身体{region}，按本局内外盘又属{sector}。传统部位先参看{chosen}；{other}是{opposite}一侧的对照象，不能混成同一病名。",
     "illness": "本宫临{door}、{deity}，见{door_clue}与{deity_clue}。天芮所携天盘干{sky}，{stem_clues}；地盘{earth}另作底层格局资料，不凭一干推断病因。{companion}。实际天地格为{patterns}，格名不等于真实疾病。",
     "companion_found": "同宫天禽携{stem}另为一条独立辅象，不能覆盖天芮主干",
     "companion_absent": "本宫无另行天禽携干",
@@ -29,7 +29,7 @@
     "injury_other": "只作为另一处可能相关的象意线索",
     "hour_known": "落{palace}，为本次问事事体符号",
     "hour_missing": "的真实落宫尚待核对，不造一宫",
-    "patient": "本次询问{person}，依现行人物规则取{role}，实际在{patient_palace}；其宫临{patient_door}，仅表示患者一侧的状态，不能拿此门替换病宫的八门。{auxiliary}。",
+    "patient": "本次询问{person}，按现行人物规则取{role}，实际在{patient_palace}；患者临{patient_door}，在患者一侧可参{patient_door_note}，不能用此门替换病宫的门，也不能把人物行为当作病因。{auxiliary}。",
     "auxiliary_none": "未有符合条件的附加人物宫",
     "auxiliary_found": "实际可参人物辅宫{palaces}，不重复计算同一物理宫",
     "review": "病宫按{sector}为主；{counter_note}时干、伤门、患者用神各据实际落宫参照，不能把代测者日干直接当病人，也不能据医药克病确定器官或生死。",
