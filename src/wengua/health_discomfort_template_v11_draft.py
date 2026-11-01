@@ -141,7 +141,8 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                                 hour_palace=hour["palace"],injury_palace=injury_id)
     details = inspect_detail(chart=chart,illness_palace=ill_id,
                              patient_cell=patient,location=location,
-                             patient_sex=actor.get('resolved_sex'))
+                             patient_sex=actor.get('resolved_sex'),
+                             patient_age_group=inquiry.get('patient_age_group'))
     notes = load_traditional_location_candidates()
     surface, internal = (evidence["surface_symbol_candidates"],
                          evidence["internal_symbol_candidates"])
