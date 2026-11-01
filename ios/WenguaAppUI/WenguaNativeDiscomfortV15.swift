@@ -12,20 +12,30 @@ enum WenguaNativeDiscomfortV15 {
                         -> WenguaNativeCustomerReading {
         guard let rulesURL=bundle.url(forResource:"complete_255_rules_v15_20261101",withExtension:"json"),
               let stemsURL=bundle.url(forResource:"three_source_stem_variants_v14_20261101",withExtension:"json"),
-              let templateURL=bundle.url(forResource:"native_discomfort_v15",withExtension:"json") else {
+              let templateURL=bundle.url(forResource:"native_discomfort_v15",withExtension:"json"),
+              let energyURL=bundle.url(forResource:"health_energy_200",withExtension:"json"),
+              let pairsURL=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
         }
         return try compose(chart:chart,relationship:relationship,actor:actor,
                            rules:Data(contentsOf:rulesURL),
                            stems:Data(contentsOf:stemsURL),
-                           template:Data(contentsOf:templateURL))
+                           template:Data(contentsOf:templateURL),
+                           energy:Data(contentsOf:energyURL),
+                           pairs:Data(contentsOf:pairsURL))
     }
 
     // Exposed as a pure data-in function for parity fixtures and fail-closed tests.
     static func compose(chart:WenguaNativeChart, relationship:String,
                         actor:WenguaNativeActor,
-                        rules:Data, stems:Data, template:Data) throws
+                        rules:Data, stems:Data, template:Data,
+                        energy:Data, pairs:Data) throws
                         -> WenguaNativeCustomerReading {
+        let powerCatalog=try WenguaNativeEnergyBundle.fromData(energy)
+        guard let pairText=String(data:pairs,encoding:.utf8),
+              pairText.split(separator:"\n",omittingEmptySubsequences:true).count==82 else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
         guard let ruleDoc=try JSONSerialization.jsonObject(with:rules) as? [String:Any],
               let allRules=ruleDoc["rules"] as? [[String:Any]], allRules.count==255,
               let cases=ruleDoc["cases"] as? [Any],cases.count==12,
@@ -35,7 +45,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v16_full_fact_narrative_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v17_power_and_81_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==6,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
