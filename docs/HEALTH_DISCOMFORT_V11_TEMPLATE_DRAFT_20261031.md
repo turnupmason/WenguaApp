@@ -25,3 +25,6 @@
 - 首轮主CI #41265404538 FAIL：新增字段校验将 Formatter.parse 的普通文字片段 None 误判为非法占位符，5项测试报错。保留历史失败，修复提交 d7a4cef6c4481e8d39c8ab860c09112fce7a9cf4 将检测改为仅判断真实字段名。
 - 修复后的同一 V8 主CI #41265445681：Python 3.11、3.12 均 PASS（含新6段真实盘、双阴阳、朋友月干、缺中心拒绝、禁自动诊断）。这验证研究草稿可运行，不代表独立病位准确或正式 iOS/Swift parity。
 - 新模板已加 Important 的 Python 和 Swift 双镜像，Python研究引擎与专项测试也留同字节快照，MANIFEST 的 Git blob SHA 同步。本模块仍 research_draft、iOS disabled，Xcode/macos 和手机对该新专题尚未实测，不冒称通过。
+
+### 2026-10-31 · 新病位专题iOS安全门与构建核验
+iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注释：定位模板仅draft、尚未Swift逐字以及源条件审核，不能消耗15天锁。Important Swift UI同字节镜像和MANIFEST SHA同步。本次仅更新UI的发布门说明，无新Swift病位断词引擎；本提交真实macOS Xcode模拟器CI结果须后验验证。#41265540427 主CI Python3.11/3.12 PASS；#41265540502 原V7.7 native PASS；V8 Native仍依本SHA实际结果。
