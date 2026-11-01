@@ -252,8 +252,9 @@ enum QuestionCatalog {
         QuestionDomain(id:"health",title:"疾病健康",symbol:"cross.case",
           topics:[
             QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
-            // V11 body-location remains a research draft; do not expose or consume
-            // the 15-day reading until source precedence and native parity are approved.
+            // V12 body location: research-only traditional inner/outer evidence, NOT
+            // a clinical finding. Remain disabled until this domain has native parity.
+            // The 15-day lock applies only to the already-verified severity flow.
             QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
