@@ -2919,3 +2919,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+### 2026-11-01 · V21 左右部位精准小修后正式原生验证
+- 真实运行 [#41359689564](https://github.com/turnupmason/WenguaApp/actions/runs/41359689564) **PASS**，源码 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0`，实际 macOS XcodeGen/unsigned iOS Simulator build、200格/81格/255及V21模板 bundle字节核对、全六条件 Swift 原生自动真盘、用户指定父亲普通/父亲意外/妻子手术/女儿普通四个新随机时辰全文，以及**另外两张随机弟弟/妻子**独立 Python↔Swift 逐段严格一致。完整原始全文 `docs/IOS_V80_XCODE_PASS_RUN_41359689564_ATTEMPT_1.md`。
+- 本轮四盘：①父亲意外 2026-11-13 21:00 -05，丙午己亥辛卯己亥，病宫兑七、伤门艮八，伤门木迫土宫，最终左足；②妻子手术 2027-02-16 19:00 -05，丁未壬寅丙寅戊戌，天芮艮八、伤门离九，最终肠胃；③父亲普通 2026-11-10 21:00 -05，丙午己亥戊子癸亥，天芮坤二，最终脾胃，没有伤门段；④女儿普通 2027-02-15 15:00 -05，丁未壬寅乙丑甲申，天芮坤二，最终右耳周围，女儿甲与时干同符同宫且未补年命、无伤门段。
+- 同源码 Python/Swift 独立 V21 全段严格比对另两张弟弟2026-11-13 17:00 -05（7段）/妻子2027-02-18 11:00 -05（7段）通过；**不能说本次四份各自都做了 Python 跨语言比对**。这属于程序真实性验收，**用户的新文案尚未审批，绝非临床病灶或实际预后有效性证明**。历史旧失败永久保留；同一源 SHA 的主全量 Python3.11/3.12 CI 最终结果应另查，不挪用 Xcode 工作流。
