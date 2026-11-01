@@ -2614,3 +2614,9 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 ## 2026-11-01 V19 病位全证据与真实家族身份门槛（增量）
 
 单独审计 `docs/HEALTH_DISCOMFORT_V19_FULL_SEQUENCE_AND_FAMILY_GATE_20261101.md`。独立病位专题扩为天芮定位→伤门→八门→时干→人物主用神→符合条件的亲属/年命辅宫→81天地格→每符号墓刑空迫→综合病位九节。每个真实符号独立用200格源强，墓刑仅调整该真实部位候选排序而非V8轻重计分。Swift人物关系必须真家族亲属确认，姐姐在此UI是家中大姐；朋友强制性别与相对年龄，只用月干，不能借用亲属宫。V8算法及冻结回归不改。旧失败 Xcode #41339353432、V8 native #41339353399 均保留；后续结果以最新来源commit真实运行验证，未通过不宣称通过。没有新古籍正文和新事件家族。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
