@@ -4,15 +4,17 @@ import Foundation
 // source-exact 255 rules, native chosen patient and yin/yang branch. CLI-only.
 @main struct NativeDiscomfortV15Smoke {
     static func main() throws {
-        guard CommandLine.arguments.count==5 else {
+        guard CommandLine.arguments.count==7 else {
             throw NSError(domain:"BodySiteV15",code:1,userInfo:[
-                NSLocalizedDescriptionKey:"Usage: binary actors.json 255.json three.json template.json"])
+                NSLocalizedDescriptionKey:"Usage: binary actors.json 255.json three.json template.json 200.json 81.tsv"])
         }
         let args=CommandLine.arguments
         let index=try WenguaNativeActorSource.fromData(Data(contentsOf:URL(fileURLWithPath:args[1])))
         let rules=try Data(contentsOf:URL(fileURLWithPath:args[2]))
         let stems=try Data(contentsOf:URL(fileURLWithPath:args[3]))
         let template=try Data(contentsOf:URL(fileURLWithPath:args[4]))
+        let energy=try Data(contentsOf:URL(fileURLWithPath:args[5]))
+        let pairs=try Data(contentsOf:URL(fileURLWithPath:args[6]))
         let parser=ISO8601DateFormatter()
         // Randomly draw the calendar day and true two-hour slot, not a
         // handpicked historic clock. Both seasons are deliberately sampled.
@@ -37,7 +39,8 @@ import Foundation
                 chart:chart,inquiry:.standard("本人"),index:index)
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:"本人",actor:actor,
-                rules:rules,stems:stems,template:template)
+                rules:rules,stems:stems,template:template,
+                energy:energy,pairs:pairs)
             guard reading.topicID=="health.discomfort",
                 reading.sections.map({$0.id})==[
                     "01_location","02_tianrui","03_comparison",
@@ -49,7 +52,9 @@ import Foundation
                 !reading.sections.joinedDescription.contains("极大凶"),
                 !reading.sections.joinedDescription.contains("《"),
                 !reading.sections.joinedDescription.contains("原书"),
-                !reading.sections.joinedDescription.contains("异文")
+                !reading.sections.joinedDescription.contains("异文"),
+                reading.sections.joinedDescription.contains("病星自身力量"),
+                reading.sections.joinedDescription.contains("天地格为")
             else {
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
