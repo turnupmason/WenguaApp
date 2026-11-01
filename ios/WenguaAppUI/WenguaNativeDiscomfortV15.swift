@@ -370,8 +370,8 @@ enum WenguaNativeDiscomfortV15 {
             ? "伤门同落"+label(illness)+"宫，可补充此处筋骨肢体类象"
             : "伤门在"+label(injury)+"宫，未与主病位同宫，不改动定位"
         let ending=secondSite.isEmpty ? "。" : "；另参"+secondSite+"。"
-        let conclusion="综上，"+relationship+"本次病位首先看"+lead+ending+
-            "这是传统部位取象，不等于医学诊断。"
+        let conclusion=String(format:"综上，%@本次病位首先看%@%@这是传统部位取象，不等于医学诊断。",
+                              relationship,lead,ending)
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
