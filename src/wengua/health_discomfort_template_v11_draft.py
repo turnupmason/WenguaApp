@@ -18,6 +18,7 @@ from .health_discomfort_location_draft import (
 )
 from .health_dynamic_v21 import bind_patient, _stem_cell
 from .health_81_excel_catalog_vnext import for_real_palace
+from .health_discomfort_inner_outer_v12_draft import inspect_priority
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/templates/health_discomfort_v11/reading_template.json"
@@ -124,11 +125,21 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
     hour = _stem_cell(chart, hour_stem, source_ganzhi=chart["hour_ganzhi"])
     if hour is None or hour["palace"] not in PALACE_NAMES:
         raise ValueError("Actual hour-stem carrier palace is mandatory")
+    location = inspect_priority(chart=chart,body=evidence,
+                                patient_palace=patient["palace"],
+                                hour_palace=hour["palace"],injury_palace=injury_id)
     notes = load_traditional_location_candidates()
     surface, internal = (evidence["surface_symbol_candidates"],
                          evidence["internal_symbol_candidates"])
     if not surface or not internal:
         raise ValueError("Both real book body groups are required")
+    chosen=location["focus_candidates"]
+    other=location["alternative_candidates"]
+    label=location["label"]
+    conflicts=location["counterevidence"]
+    counter_note=("同宫另见"+ "、".join(x["symbol"] for x in conflicts)
+                  +"等不同表里倾向，属于待核反证，不能推翻首层内外盘。"
+                  if conflicts else "本宫未见相反的门神携干表里候选。")
     palace_name = PALACE_NAMES[ill_id]
     stars = ill["heaven_stars"]
     actual_companion = next((s["carried_stem"] for s in stars
@@ -152,11 +163,12 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
     sections = [
         {"id":"01_location", "title":template()["titles"]["01_location"],
          "text":_say("opening", illness_palace=palace_name,
-                     surface=_readable(surface), internal=_readable(internal))},
+                     chosen=_readable(chosen),other=_readable(other),sector=label)},
         {"id":"02_tianrui", "title":template()["titles"]["02_tianrui"],
          "text":_say("illness",door=door,deity=deity,door_clue=door_clue,
                      deity_clue=deity_clue,sky=evidence["tianrui_carried_stem"],
                      stem_clues=_stem_hint(evidence, actor.get('resolved_sex')),companion=companion,
+                     earth=location["actual_earth_stem"],
                      patterns=names)},
         {"id":"03_comparison", "title":template()["titles"]["03_comparison"],
          "text":_say("secondary",injury_palace=PALACE_NAMES[injury_id],
@@ -168,10 +180,12 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                      patient_palace=PALACE_NAMES[patient["palace"]],
                      patient_door=patient["door"],auxiliary=aux)},
         {"id":"05_review", "title":template()["titles"]["05_review"],
-         "text":_say("review")},
+         "text":_say("review",sector=label,counter_note=counter_note)},
         {"id":"06_conclusion", "title":template()["titles"]["06_conclusion"],
          "text":_say("ending",illness_palace=palace_name,
-                     surface_short=surface[0],internal_short=internal[0])},
+                     sector=label,focus_short=chosen[0],
+                     caveat=("门神提示另有方向，但不能据此确诊实病"
+                             if conflicts else "本宫仍有多个部位类象，不能认定唯一器官"))},
     ]
     return {
         "schema":SCHEMA,"topic_id":"health.discomfort",
@@ -192,7 +206,11 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
             "birth_year_used_only_if_provided":bool(inquiry.get("patient_birth_ganzhi") or
                                                     inquiry.get("subject_year_ganzhi") or
                                                     inquiry.get("patient_birth_stem")),
-            "inner_outer_selected":False,
+            "location_priority":location,
+            "selected_body_candidates":chosen,
+            "other_body_candidates":other,
+            "inner_outer_selected":True,
+            "symbolic_not_clinical":True,
             "v80_severity_score":None,"grade":None,"timing":None,
             "medical_diagnosis":None},
         "released":False,"ios_enabled":False,"locks_15_days":False,
