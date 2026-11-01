@@ -19,14 +19,15 @@ class V19LocationFamily(unittest.TestCase):
                          'WenguaVNextEngine.striking[stem]','p.tombs.contains',
                          'formationNames.joined','if illnessVoid=="true_void"',
                          'var candidateSites=trauma ? injurySites : originalSites','actualRolePower(hourStem,hourCarrier',
-                         'WenguaNativeCore.stages["甲"]','other.0.id != p.id'):
+                         'WenguaNativeCore.stages["甲"]','selectedStemImage','formationMeaning','orderedFormations'):
             self.assertIn(required,swift)
         self.assertNotIn("WenguaVNextEngine.compute(",swift)
         self.assertNotIn("abs(",swift)
         self.assertIn('allowedContexts:Set<String>',swift)
         self.assertIn('if (required[i]=="02_injury" && !useInjury)',swift)
         self.assertIn('if useInjury && injury.id != illness.id',swift)
-        self.assertIn('(useInjury || door != "伤门")',swift)
+        self.assertIn('let doorPower=try sourceStrength("door",door,illness)',swift)
+        self.assertIn('if doorRel=="符号克宫"',swift)
         self.assertIn('rank+=25+tier(injuryPower)',swift)
     def test_real_family_and_friend_guards(self):
         src=(ROOT/"ios/WenguaAppUI/WenguaNativeActorBinding.swift").read_text()
