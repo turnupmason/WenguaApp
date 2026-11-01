@@ -226,6 +226,13 @@ enum WenguaNativeDiscomfortV15 {
             : ["小","极小"].contains(skyPower)
                 ? "携干力量较弱，其对应部位只作次线"
                 : "携干所示部位作为分辨线索"
+        let doorElem=WenguaVNextEngine.doorElement[door] ?? ""
+        let palaceElem=WenguaVNextEngine.elements[illness.id] ?? ""
+        let doorRel=try? WenguaVNextEngine.directed(doorElem,palaceElem)
+        let restrictionFocus=doorRel=="宫克符号"
+            ? "门受宫迫，相关门象须减看" :
+            doorRel=="符号克宫" ? "门克本宫，门象另有破局限制" :
+            "门宫无迫克限制"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -257,6 +264,7 @@ enum WenguaNativeDiscomfortV15 {
             "earth_power":earthPower,"patient_power":patientPower,
             "injury_power":injuryPower,"hour_power":hourPower,
             "formation":formationNames.joined(separator:"、"),
+            "restriction_focus":restrictionFocus,
             "illness_focus":illnessFocus,"injury_focus":injuryFocus,
             "hour_focus":hourFocus,"secondary_focus":secondaryFocus,
             "location_focus":locationFocus,
