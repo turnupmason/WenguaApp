@@ -61,7 +61,8 @@ class ExactRoleMatrixGate(unittest.TestCase):
                 chief=gates["chief"]
                 self.assertEqual(chief["chief_zero_score"],not chief["score_eligible"])
                 if chief["relation"]=="被克":
-                    self.assertIn("不能压制病宫",chief["reason"])
+                    self.assertIn("值符空亡，不提供护持" if chief["void"]!="not_void"
+                                  else "值符受病宫克，不能压制病宫",chief["reason"])
 
     def test_real_chief_under_illness_control_and_void_do_not_vote(self):
         cases=(("2022-07-19T11:00:00-04:00",

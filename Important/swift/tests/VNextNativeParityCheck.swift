@@ -114,9 +114,7 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
             }
             for (role,r) in fixture.roles {
                 guard let p=actualRolePalace(role),let x=audit.palaces[p] else {
-                    let miss=["V80_LEGACY_MISSING_ROLE",fixture.instant,
-                              "role="+role,
-                              "Swift="+String(describing:audit.roles))].joined(separator:" ")+"\n"
+                    let miss="V80_LEGACY_MISSING_ROLE "+fixture.instant+" role="+role+" Swift="+String(describing:audit.roles)+"\n"
                     FileHandle.standardError.write(Data(miss.utf8))
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
