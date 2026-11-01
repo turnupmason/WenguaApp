@@ -1521,3 +1521,8 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 用户要求全文审看四问：父亲普通不适 none、父亲意外 accident、妻子已做/拟做手术 surgery、女儿普通不适 none。不能把“病在哪”混入病情轻重、病势进展或 V8 净分。普通不适禁止读取伤门，两个伤门激活案只按真实实宫、独立能量及空墓刑迫有条件出词。
 - 在原有 `ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift` 六情境不删的基础上新增两次**另抽真实时辰**：父亲 none（阴遁季）和女儿 none（阳遁季），并为原父亲 accident、妻子 surgery 输出 `V20_PREVIEW_BEGIN/META/END` 可核验逐段客户中文、实际四柱、人物主干与病宫/人物宫。4例均随机选实际日和两小时辰，不用旧样本代替，不因症状挑盘。
 - 只扩增真实运行测试与纯文本记录，不修改 `WenguaNativeDiscomfortV15.compose`、200源格、81格、255规则、V8疾病轻重或原古籍。同步 `Important/swift/tests/NativeDiscomfortV15Smoke.swift` 和 `Important/MANIFEST.json`。macOS真实编译及四例全文需以本次新 Actions `docs/IOS_V80_XCODE_PASS_RUN_<runid>_ATTEMPT_<attempt>.md` 为准；未看到结果前不得写 PASS。
+
+
+### 2026-11-01 · 四预览第一轮真实失败不得删
+- 新测试源码 `654968ceee9ce85ccc9d07c3b8f3eacf01bc8f8c` 的实际 macOS/Xcode Action [#41355230355](https://github.com/turnupmason/WenguaApp/actions/runs/41355230355) **FAIL**；Xcode iOS Simulator 主 App `BUILD SUCCEEDED`，但 CLI `NativeDiscomfortV15Smoke.swift:134-135` 多行字符串拼接以 `+` 结尾被 Swift 解析为后缀运算符，导致 `expected ',' separator`，四例未生成。原日志 `docs/IOS_V80_XCODE_FAIL_RUN_41355230355_ATTEMPT_1.md` 原样保留。
+- 仅测试文案日志的构造改成 `metaFields.joined(separator:" ")`，新源码 `a49297c98f7f6b707a3814ce3fda7d5700254f5b`，镜像和 MANIFEST 随后同步；不修改健康业务引擎，不擅称后续 PASS。
