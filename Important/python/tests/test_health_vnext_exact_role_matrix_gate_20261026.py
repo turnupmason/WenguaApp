@@ -53,12 +53,15 @@ class ExactRoleMatrixGate(unittest.TestCase):
                         self.assertEqual(gate["control_ability"],edge["ability"])
                     else:
                         self.assertIsNone(gate["control_result"])
-                selected={g["palace"] for g in gates.values() if g["score_eligible"]}
-                self.assertEqual(q["summary"]["unique_palace_count"],len(selected))
+                # Original V8: all SELECTED real physical palaces contribute
+                # their intrinsic environment once; score_eligible gates only
+                # determine conditional cross-palace assistance.
+                physical={g["palace"] for g in gates.values()}
+                self.assertEqual(q["summary"]["unique_palace_count"],len(physical))
                 chief=gates["chief"]
-                if chief["relation"]!="同宫" and (chief["void"]!="not_void" or chief["relation"]!="克"):
-                    self.assertFalse(chief["score_eligible"])
-                    self.assertTrue(chief["chief_zero_score"])
+                self.assertEqual(chief["chief_zero_score"],not chief["score_eligible"])
+                if chief["relation"]=="被克":
+                    self.assertIn("不能压制病宫",chief["reason"])
 
     def test_real_chief_under_illness_control_and_void_do_not_vote(self):
         cases=(("2022-07-19T11:00:00-04:00",
@@ -79,8 +82,11 @@ class ExactRoleMatrixGate(unittest.TestCase):
                     self.assertIn("值符护持宫",r["reading_text"])
                     self.assertIn("与前述天芮病宫同在",r["reading_text"])
                 else:
-                    self.assertFalse(chief["score_eligible"])
-                    self.assertTrue(chief["chief_zero_score"])
+                    # Chief remains a selected physical palace, but a chief
+                    # being controlled by illness has NO added control bonus.
+                    self.assertTrue(chief["score_eligible"])
+                    self.assertFalse(chief["chief_zero_score"])
+                    self.assertIn("值符受病宫克，不能压制病宫",chief["reason"])
                     self.assertNotIn("值符护持不参与最终合断。",r["reading_text"])
                 if relation!="同宫" and chief["void"]!="not_void":
                     self.assertIn("因值符空亡，护持力明显减弱，尚存少许余气",r["reading_text"])
