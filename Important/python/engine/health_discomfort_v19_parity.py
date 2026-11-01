@@ -321,11 +321,11 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     injurySiteNames="、".join(injurySites[:2])
     injuryScope="体内" if inj["id"] in inner else "体表"
     injuryOverlap=next((s for s in injurySites if _matched(s,originalSites)),None)
-    injuryRelation=("伤门与天芮在同一实宫，两种身份只合看这一处。"
+    injuryRelation=("伤门与天芮同宫，两条线索落在同一处。"
         if inj["id"]==ip else
-        f"伤门与天芮两宫都指向{injuryOverlap}，这才构成部位互证。"
+        f"两宫同指{injuryOverlap}，因此这处有交叉印证。"
         if injuryOverlap else
-        "与天芮宫所指区域不同，暂保留两个位置，不把两个宫硬拼为一处。")
+        "天芮另指"+"、".join(originalSites[:2])+"，两处暂无同一区域交集。")
     openPalace=next((p for p in palaces.values() if p.get("door")=="开门"),None)
     surgicalControl=(injury_context=="surgery" and openPalace is not None
         and openPalace["id"]!=inj["id"] and
@@ -397,8 +397,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     skySupport=next((s for s in skySites if _matched(s,leadSites)),None)
     earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
     formsFull=(f"天芮携{sky}与地盘{illness['earthStem']}同宫，上下干分别取"
-               f"{skySupport}和{earthSupport}，两条部位线索相接；其真实天地格为"
-               + "、".join(formation)+"，格名本身不另生病位。"
+               f"{skySupport}和{earthSupport}，两条部位线索相合；本宫天地格为"
+               + "、".join(formation)+"。"
                if skySupport is not None and earthSupport is not None else "")
     danger=[]
     for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
@@ -414,10 +414,11 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if doorRel=="宫克符号":danger.append(door+"门迫，此门的旁证减看")
     dangerFull="；".join(danger)+"。" if danger else ""
     ending="。" if not secondSite else "；次看"+secondSite+"。"
-    locationFull=(f"天芮实际落{label(illness)}宫，{'阴' if yin else '阳'}遁取{sector}，"
-                  "该宫传统位置对应"+"、".join(originalSites[:2])+"；"+
-                  ("本次已有明确伤损条件，因此把伤门的实际落宫排在前面。"
-                   if trauma else "这条线索来自病星真实落宫，并非把门名直接当作器官。"))
+    originalFocus="、".join(originalSites[:2])
+    locationFull=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}；"
+                  "此次明确涉及伤损，另从伤门实宫优先取位。"
+                  if trauma else
+                  f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}。")
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
            lead+ending+"这是传统位置取象，不等于医学诊断。")

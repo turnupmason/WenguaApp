@@ -523,11 +523,11 @@ enum WenguaNativeDiscomfortV15 {
         let injuryOverlap=injurySites.first(where:{matched($0,originalSites)})
         let injuryRelation:String
         if injury.id==illness.id {
-            injuryRelation="伤门与天芮在同一实宫，两种身份只合看这一处。"
+            injuryRelation="伤门与天芮同宫，两条线索落在同一处。"
         } else if let match=injuryOverlap {
-            injuryRelation="伤门与天芮两宫都指向\(match)，这才构成部位互证。"
+            injuryRelation="两宫同指\(match)，因此这处有交叉印证。"
         } else {
-            injuryRelation="与天芮宫所指区域不同，暂保留两个位置，不把两个宫硬拼为一处。"
+            injuryRelation="天芮另指\(originalSites.prefix(2).joined(separator:"、"))，两处暂无同一区域交集。"
         }
         let openPalace=chart.palaces.first(where:{$0.door=="开门"})
         let surgicalControl=injuryContext=="surgery" &&
@@ -632,7 +632,7 @@ enum WenguaNativeDiscomfortV15 {
         let formsFull:String
         if let first=skySupport,let second=earthSupport {
             let pairNames=formationNames.joined(separator:"、")
-            formsFull="天芮携\(sky)与地盘\(illness.earthStem)同宫，上下干分别取\(first)和\(second)，两条部位线索相接；其真实天地格为\(pairNames)，格名本身不另生病位。"
+            formsFull="天芮携\(sky)与地盘\(illness.earthStem)同宫，上下干分别取\(first)和\(second)，两条部位线索相合；本宫天地格为\(pairNames)。"
         } else {formsFull=""}
         var danger:[String]=[]
         for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
@@ -655,10 +655,10 @@ enum WenguaNativeDiscomfortV15 {
         let dangerFull=danger.isEmpty ? "" : danger.joined(separator:"；")+"。"
         let ending=secondSite.isEmpty ? "。" : "；次看\(secondSite)。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
-        let locationReason=trauma ?
-            "本次已有明确伤损条件，因此把伤门的实际落宫排在前面。" :
-            "这条线索来自病星真实落宫，并非把门名直接当作器官。"
-        let locationFull="天芮实际落\(palaceName)，\(dn)遁取\(sector)，该宫传统位置对应\(originalSites.prefix(2).joined(separator:"、"))；\(locationReason)"
+        let originalFocus=originalSites.prefix(2).joined(separator:"、")
+        let locationFull=trauma ?
+            "天芮在\(palaceName)，\(dn)遁\(sector)象指\(originalFocus)；此次明确涉及伤损，另从伤门实宫优先取位。" :
+            "天芮在\(palaceName)，\(dn)遁\(sector)象指\(originalFocus)。"
         let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" : "病位先看"
         let conclusion="综上，\(relationship)本次\(conclusionFocus)\(lead)\(ending)这是传统位置取象，不等于医学诊断。"
         let values:[String:String]=[
