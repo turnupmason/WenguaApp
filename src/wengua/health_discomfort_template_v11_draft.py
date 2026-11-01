@@ -19,6 +19,7 @@ from .health_discomfort_location_draft import (
 from .health_dynamic_v21 import bind_patient, _stem_cell
 from .health_81_excel_catalog_vnext import for_real_palace
 from .health_discomfort_inner_outer_v12_draft import inspect_priority
+from .health_discomfort_detail_v13_draft import inspect_detail
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/templates/health_discomfort_v11/reading_template.json"
@@ -138,6 +139,9 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
     location = inspect_priority(chart=chart,body=evidence,
                                 patient_palace=patient["palace"],
                                 hour_palace=hour["palace"],injury_palace=injury_id)
+    details = inspect_detail(chart=chart,illness_palace=ill_id,
+                             patient_cell=patient,location=location,
+                             patient_sex=actor.get('resolved_sex'))
     notes = load_traditional_location_candidates()
     surface, internal = (evidence["surface_symbol_candidates"],
                          evidence["internal_symbol_candidates"])
@@ -174,6 +178,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         {"id":"01_location", "title":template()["titles"]["01_location"],
          "text":_say("opening", illness_palace=palace_name,
                      chosen=_readable(chosen),other=_readable(other),sector=label,
+                     region=details['anatomical_region_zh'],
                      opposite=location["opposite"])},
         {"id":"02_tianrui", "title":template()["titles"]["02_tianrui"],
          "text":_say("illness",door=door,deity=deity,door_clue=door_clue,
@@ -190,7 +195,8 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         {"id":"04_person", "title":template()["titles"]["04_person"],
          "text":_say("patient",person=actor["label"],role=actor["role_name"],
                      patient_palace=PALACE_NAMES[patient["palace"]],
-                     patient_door=patient["door"],auxiliary=aux)},
+                     patient_door=patient["door"],auxiliary=aux,
+                     patient_door_note=_symbol_note(details['patient_door_meaning']))},
         {"id":"05_review", "title":template()["titles"]["05_review"],
          "text":_say("review",sector=label,counter_note=counter_note)},
         {"id":"06_conclusion", "title":template()["titles"]["06_conclusion"],
@@ -218,6 +224,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
             "birth_year_used_only_if_provided":bool(inquiry.get("patient_birth_ganzhi") or
                                                     inquiry.get("subject_year_ganzhi") or
                                                     inquiry.get("patient_birth_stem")),
+            "body_v13_detail":details,
             "location_priority":location,
             "selected_body_candidates":chosen,
             "other_body_candidates":other,
