@@ -2871,3 +2871,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 纠正特殊门迫：**门克宫**才叫门迫，宫克门不误称门迫，八门实际五行落宫全覆盖定向回归；一般身体不适严格不显示伤门。对应源码测试 `tests/test_health_discomfort_v21_focus_doorpressure_20261101.py`。古籍文献异名与用户网页推断分离；死门、手术等不构成医疗诊断/预后。
 - 具体复现、真实源位置和留存失败见 `docs/HEALTH_DISCOMFORT_V21_FOCUSED_V16_RESTORE_AND_DOOR_PRESSURE_AUDIT_20261101.md`。V8冻结疾病轻重、200/81/255原始资料、原书版本/历史全部未改变。Important 源镜像、模板镜像和 MANIFEST 同步。
 - 真实 Xcode PASS [#41359468860](https://github.com/turnupmason/WenguaApp/actions/runs/41359468860) 绑定源码 `88e8e36830e38b1cc5c65238f2334e1a4e8e7714`：macOS unsigned iOS Simulator、bundle、六种随机 Swift 包括四指定人物、独立 Python↔Swift 另外两盘全文 PASS；旧 #41358729088/41358977993 等失败不删除。更后的左/右区域措辞小修 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0` 需用**本 SHA 新 Actions**确认，不能拿上一版 PASS 冒充。无签名真机/App Store/客观医学有效性主张。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
