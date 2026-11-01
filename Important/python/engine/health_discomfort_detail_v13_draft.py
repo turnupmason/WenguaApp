@@ -48,7 +48,8 @@ def detail_policy() -> dict[str,Any]:
 
 def inspect_detail(*,chart:Mapping[str,Any],illness_palace:int,
                    patient_cell:Mapping[str,Any],location:Mapping[str,Any],
-                   patient_sex:str|None=None) -> dict[str,Any]:
+                   patient_sex:str|None=None,
+                   patient_age_group:str|None=None) -> dict[str,Any]:
     """Only evidence with an actual symbol, actual role and source provenance."""
     doc=detail_policy()
     palaces=chart.get("palaces")
@@ -57,7 +58,8 @@ def inspect_detail(*,chart:Mapping[str,Any],illness_palace:int,
         or type(illness_palace) is not int or illness_palace not in PALACES
         or location.get("tianrui_palace")!=illness_palace
         or patient_cell.get("palace") not in PALACES
-        or patient_sex not in (None,"male","female")):
+        or patient_sex not in (None,"male","female")
+        or patient_age_group not in (None,"young","adult","elder")):
         raise ValueError("Real patient, actual Tianrui and nine palaces required")
     site=palaces[str(illness_palace)]
     if (site["palace"]!=illness_palace
@@ -97,6 +99,28 @@ def inspect_detail(*,chart:Mapping[str,Any],illness_palace:int,
     # Kun two may host the centre earth stem for the second 81 pair.
     # The physical centre is not a place with ordinary stars/door/deity.
     host_earth=(palaces["5"]["earth_stem"] if illness_palace==2 else None)
+    # Additional sex/age refinements remain named, unapproved *candidates*.
+    # Never silently infer a sex or age, and never map a candidate to a disease.
+    conditional=[]
+    if illness_palace==6 and patient_age_group in ("young","elder"):
+        conditional.append({"id":"qian_age_subtypes",
+                            "observed":patient_age_group,
+                            "status":"unverified_candidate"})
+    if illness_palace==1 and patient_sex=="male":
+        conditional.append({"id":"male_tianrui_kan","observed":"male",
+                            "status":"unverified_candidate"})
+    if illness_palace==7 and sky[0] in ("壬","癸") and patient_sex:
+        conditional.append({"id":"gender_ren_gui_dui",
+                            "observed":patient_sex,"status":"unverified_candidate"})
+    if illness_palace in (3,7):
+        conditional.append({"id":"zhen_dui_front_back",
+                            "observed":"candidate_front" if illness_palace==3
+                                       else "candidate_back",
+                            "status":"unverified_candidate"})
+    if illness_door=="伤门":
+        conditional.append({"id":"tianrui_shangmen_injury",
+                            "observed":"actual_same_palace",
+                            "status":"unverified_candidate"})
     return {
         "schema":SCHEMA,"source_status":doc["status"],
         "anatomical_region":region,
@@ -112,6 +136,8 @@ def inspect_detail(*,chart:Mapping[str,Any],illness_palace:int,
         "illness_deity_meaning":notes["deities"][illness_deity]["illness"],
         "different_door_roles":True,
         "patient_sex_resolved":patient_sex,
+        "conditional_signals":conditional,
+        "patient_age_group_explicit":patient_age_group,
         "user_age_specific_location_selected":False,
         "illness_duration": {
             "candidate_from_sector":doc["disease_duration"][location["sector"]]["candidate"],

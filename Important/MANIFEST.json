@@ -613,7 +613,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "e488e81a8b9dfe4c1b46a3efae37cc5466f4fd1f"
+      "sha": "3edd657a61c9a275bc2786c45b7c744b70d1ea16"
     },
     {
       "platform": "python",
@@ -655,13 +655,13 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_detail_v13_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_detail_v13_draft.py",
-      "sha": "8f9db840944b65c4d66545133859a6d3b3ab38e0"
+      "sha": "68c28ef3ba141a6c1313a8332942ab7ef60ba294"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v13_detail_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v13_detail_20261101.py",
-      "sha": "7654047fdd6830c410156fc4b122be55082d0559"
+      "sha": "5aa9c00acee6ab182b6bb4704ec1d4f89a30a9e8"
     }
   ]
 }

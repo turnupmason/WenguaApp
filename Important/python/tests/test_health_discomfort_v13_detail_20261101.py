@@ -94,6 +94,36 @@ class HealthSiteDetailsV13(unittest.TestCase):
         self.assertEqual(detail_policy()["disease_duration"]["inner"]["status"],
                          "unverified_user_generalization")
 
+    def test_age_gender_conditions_never_guess_without_explicit_input(self):
+        found_qian=False
+        for dun in ("yang","yin"):
+            if found_qian:break
+            for ju in range(1,10):
+                if found_qian:break
+                for hour in cycle60():
+                    c=layout_from_explicit_bureau(dun=dun,ju=ju,hour_ganzhi=hour)
+                    base=compose_draft(chart=c,inquiry=INQUIRY,calendar=CAL)
+                    if base["audit"]["tianrui_palace"]!=6:
+                        continue
+                    found_qian=True
+                    raw=base["audit"]["body_v13_detail"]
+                    self.assertFalse(any(x["id"]=="qian_age_subtypes"
+                                         for x in raw["conditional_signals"]))
+                    older=compose_draft(chart=c,
+                        inquiry={**INQUIRY,"patient_age_group":"elder"},
+                        calendar=CAL)["audit"]["body_v13_detail"]
+                    self.assertTrue(any(x["id"]=="qian_age_subtypes"
+                                        and x["observed"]=="elder"
+                                        for x in older["conditional_signals"]))
+                    self.assertFalse(older["user_age_specific_location_selected"])
+                    self.assertFalse(older["illness_duration"]["new_or_old_determined"])
+                    with self.assertRaises(ValueError):
+                        compose_draft(chart=c,
+                            inquiry={**INQUIRY,"patient_age_group":"guessed"},
+                            calendar=CAL)
+                    break
+        self.assertTrue(found_qian)
+
     def test_fabricated_centre_and_invalid_actual_patient_fail(self):
         c=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
         r=compose_draft(chart=c,inquiry=INQUIRY,calendar=CAL)
