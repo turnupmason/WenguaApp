@@ -51,17 +51,18 @@ class TraditionalBodySite(unittest.TestCase):
         with self.assertRaises(ValueError):
             inspect_traditional_body_clues(chart)
 
-    def test_ui_topic_changes_only_label_and_remains_gated(self):
+    def test_v15_ui_routes_independently_and_prior_research_stays_preserved(self):
         ui=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text()
         router=(ROOT/"ios/WenguaAppUI/WenguaNativeReadingRouter.swift").read_text()
         manifest=json.loads((ROOT/"data/knowledge/health_discomfort/body_location_profile_20261029.json").read_text())
         self.assertIn('QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true)',ui)
-        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:false)',ui)
+        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:true)',ui)
         self.assertNotIn('QuestionTopic(id:"health.trend"',ui)
         self.assertEqual(manifest["release_status"],"research_draft_not_enabled")
         self.assertIsNone(manifest["approved_customer_template"])
         self.assertIn('static let supportedTopics = ["health.severity"]',router)
-        self.assertIn('guard topic.enabled && topic.id == "health.severity"',ui)
+        self.assertIn('guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id)',ui)
+        self.assertIn('if topicID=="health.discomfort"',router)
         self.assertTrue(manifest["no_15_day_lock_until_verified"])
 
 if __name__=="__main__":
