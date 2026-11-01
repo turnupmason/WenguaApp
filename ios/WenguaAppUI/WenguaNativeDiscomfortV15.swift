@@ -652,12 +652,15 @@ enum WenguaNativeDiscomfortV15 {
         func selectedStemImage(_ stem:String,_ power:String)->String {
             let candidates=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
                 .joined(separator:"/"))
-            let selected=candidates.first(where:{matched($0,leadSites)}) ??
+            let original=candidates.first(where:{matched($0,leadSites)}) ??
                          candidates.first ?? "无已核实的细部候选"
+            let selected=original=="脏（笼统）" ? "脏腑泛象" : original
             let strength=tier(power)>=4 ? "此象突出" :
                          tier(power)==3 ? "可作为本宫病象旁证" :
-                         tier(power)>0 ? "此象偏弱，不单独定病" : "力量待核"
-            return "\(selected)（势\(power)，\(strength)）"
+                         tier(power)>0 ? "此象偏弱，不单独定病" : "源力待核，不作突出判断"
+            return tier(power)>0 ?
+                "\(selected)（势\(power)，\(strength)）" :
+                "\(selected)（\(strength)）"
         }
         // 81 grid is ordered sky + ground. Preserve the actual source name,
         // luck and gist; generic commercial idioms MUST NOT be turned into
@@ -667,7 +670,25 @@ enum WenguaNativeDiscomfortV15 {
             for line in pairText.split(separator:"\n").dropFirst() {
                 let cells=line.split(separator:"|",omittingEmptySubsequences:false)
                 if cells.count>=6 && cells[0]==top && cells[1]==ground {
-                    return "\(cells[2])（\(cells[3])格，古意：\(cells[5])）"
+                    let name=String(cells[2])
+                    let nature=String(cells[3])
+                    // The literal historical 81-grid gist is preserved in
+                    // the source TSV, but unrelated business/marriage words
+                    // cannot be presented as if they were disease names.
+                    let reading:String
+                    if name.contains("伏吟") {reading="同干重叠，取缠滞反复之象"}
+                    else if ["网","狱","牢","罗","困","地户"].contains(where:{name.contains($0)}) {
+                        reading="受困闭滞，取不畅之象"
+                    } else if ["蛇","缠","夭矫"].contains(where:{name.contains($0)}) {
+                        reading="纠缠牵扯，取反复之象"
+                    } else if ["刑","伤","折","破","克"].contains(where:{name.contains($0)}) {
+                        reading="上下干相制，取受损牵制之象"
+                    } else if ["合","生","佐","返首","耀明"].contains(where:{name.contains($0)}) {
+                        reading="两干相助，取有缓解条件之象"
+                    } else {
+                        reading=nature=="吉" ? "两干有相助之象" : "两干有牵制之象"
+                    }
+                    return "\(name)（\(nature)格，\(reading)）"
                 }
             }
             return nil
@@ -732,7 +753,8 @@ enum WenguaNativeDiscomfortV15 {
             "本宫条件："+danger.joined(separator:"；")+"。")
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
-        let originalFocus=originalSites.prefix(1).joined(separator:"、")
+        let originalFocus=(!trauma && matched(lead,originalSites)) ?
+            lead : originalSites.prefix(1).joined(separator:"、")
         let locationFull=trauma ?
             "天芮在\(palaceName)，\(dn)遁\(sector)象指\(originalFocus)；此次明确涉及伤损，另从伤门实宫优先取位。" :
             "天芮在\(palaceName)，\(dn)遁\(sector)象指\(originalFocus)。"
