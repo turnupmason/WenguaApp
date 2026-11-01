@@ -106,8 +106,9 @@ enum WenguaNativeDiscomfortV15 {
             guard rows.count==1,
                   let raw=rows[0]["古籍象意或候选"] as? String
             else {return "暂无可独立定位的细项"}
-            return raw.components(separatedBy:"；")[0]
+            let phrase=raw.components(separatedBy:"；")[0]
                 .components(separatedBy:"（")[0]
+            return phrase.contains("原文") || phrase.contains("不是") || phrase.contains("节气群") ? "无可用于细分身体部位的额外信息" : phrase
         }
         let matchingDeity=allRules.filter {
             ($0["类别"] as? String)=="八神病象" &&
@@ -144,7 +145,7 @@ enum WenguaNativeDiscomfortV15 {
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
             "door":door,"deity":deity,"sky":sky,"earth":illness.earthStem,
-            "companion":companion,
+            "companion":bird.map{"同宫天禽另携"+$0+"，干象还可参看"+birdOther.joined(separator:"、")+"，与天芮各自独立"} ?? "本宫没有另一组天禽携干",
             "secret":secret.joined(separator:"、"),
             "viscera":viscera.joined(separator:"、"),
             "surface":surface.joined(separator:"、"),
@@ -162,9 +163,9 @@ enum WenguaNativeDiscomfortV15 {
             "stem_scope":"天盘与地盘按实际上下位置分别参看",
             "patient_stem":actor.mainStem,
             "patient_door":patientDoor,"patient_deity":patientDeity,
-            "patient_relation":palaceRelation(patientPalace),
-            "patient_coincidence":patientPalace.id==illness.id ? "同宫" : "不同宫",
-            "natal_scope":actor.natalStem ?? "未提供",
+            "patient_relation":"患者宫和病宫"+palaceRelation(patientPalace),
+            "patient_coincidence":patientPalace.id==illness.id ? "两个用神在同一实宫，应合看但不重复计位" : "患者宫另有宫象，不能据此改写天芮所定部位",
+            "natal_scope":actor.natalStem.map{"另知年命"+$0+"，须按真实年命位置另看"} ?? "出生年命未提供，因此不额外指定年命宫",
             "injury_deity":injury.deity ?? "无神"
         ]
         let required=["01_location","02_tianrui","03_comparison",

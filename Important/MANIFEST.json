@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "2bce59a2e967c33559c948cd0fadc065574dc516"
+      "sha": "5ab820e3da7e56900815ffc6a836cdd14c9935f4"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "2bce59a2e967c33559c948cd0fadc065574dc516"
+      "sha": "5ab820e3da7e56900815ffc6a836cdd14c9935f4"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "d8badb92b087f3c8c72a8cbad6559b2c3d032044"
+      "sha": "03cc8b84fc1129485e14ff8d54d1b2e4997cc2de"
     },
     {
       "platform": "python",
