@@ -21,6 +21,7 @@ from .health_81_excel_catalog_vnext import for_real_palace
 from .health_discomfort_inner_outer_v12_draft import inspect_priority
 from .health_discomfort_detail_v13_draft import inspect_detail
 from .health_discomfort_cross_text_v14_draft import inspect_cross_text_candidates
+from .health_discomfort_255_v15 import match_location_inventory
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/templates/health_discomfort_v11/reading_template.json"
@@ -30,7 +31,7 @@ SECTION_IDS = ("01_location", "02_tianrui", "03_comparison", "04_person",
 SLOTS = ("opening", "illness", "companion_found", "companion_absent",
          "secondary", "injury_same", "injury_other", "hour_known",
          "hour_missing", "patient", "auxiliary_none", "auxiliary_found",
-         "review", "ending")
+         "review", "ending", "source_comparison")
 PALACE_NAMES = {1:"坎一宫", 2:"坤二宫", 3:"震三宫", 4:"巽四宫",
                 6:"乾六宫", 7:"兑七宫", 8:"艮八宫", 9:"离九宫"}
 UNSAFE_HINTS = ("癌", "肿瘤", "炎症", "恶性", "死亡", "死症", "手术",
@@ -146,6 +147,8 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                              patient_age_group=inquiry.get('patient_age_group'))
     cross_text = inspect_cross_text_candidates(chart=chart,location=location)
     notes = load_traditional_location_candidates()
+    inventory = match_location_inventory(illness_palace=ill_id, sector=location["sector"],
+        sky_stem=evidence["tianrui_carried_stem"], door=ill["door"], deity=ill["deity"])
     surface, internal = (evidence["surface_symbol_candidates"],
                          evidence["internal_symbol_candidates"])
     if not surface or not internal:
@@ -208,6 +211,12 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                      caveat=("门神提示另有方向，仍不作为实病判断"
                              if conflicts else "本宫仍有多个部位类象，不能认定唯一器官"))},
     ]
+    families = inventory["three_stem_families"]
+    sections[1]["text"] += " " + _say("source_comparison",
+        sky=evidence["tianrui_carried_stem"],
+        qimen="、".join(families["qimen_secret_vol13"]),
+        viscera="、".join(families["sanming_viscera"]),
+        surface="、".join(families["sanming_body_surface"]))
     return {
         "schema":SCHEMA,"topic_id":"health.discomfort",
         "status":"research_draft_not_customer_approved",
@@ -229,6 +238,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                                                     inquiry.get("patient_birth_stem")),
             "body_v13_detail":details,
             "v14_cross_text_research":cross_text,
+            "v15_full_255_rule_inventory":inventory,
             "location_priority":location,
             "selected_body_candidates":chosen,
             "other_body_candidates":other,
