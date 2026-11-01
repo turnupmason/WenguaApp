@@ -1506,3 +1506,12 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 新UI `CastSetupScreen` 选择 **必填**：普通不适 none、意外 accident、骨肉 bone、出血 bleeding、剧痛 severe_pain、已做/拟做手术 surgery；unselected 拒绝进入静心，复核遗漏不签15天凭证。选择普通不适不读取/呈现伤门，病位角色元数据也不含 injury；具伤损者伤门实宫取传统阴阳部位优先，不把“伤门”文字本义冒充“全身筋骨”，仍按200源独立力量及实宫空墓约束。剧痛/手术只有条件确认后才把伤门作为附加实宫，开门宫克伤门仅解释传统制约，不承诺手术必要性。
 - V20客户稿：只呈现相关位置的因果印证（源宫的具体身体候选、同/异宫实际对应、伤门条件、时干/人物/辅助条件、实际天地干互证与墓刑空迫），缺少部位交集时省去无效句和无关章节。九个模板栏位按实际证据可省略，非选中状态不输出“伤门旁证”。保留200/81/255原始值、A/B/C/D/E源等级及冻结V8轻重评分。
 - 用户提供三类触发属于新的用户核准业务选择，尚无逐页原著行号/hash逐一证实，不冒称各古籍均原文认可或临床医学依据。非真实病灶、疼痛强度或手术决定；不能据古籍预测替代医学检查。旧 V19 原生测试与已见病例作为历史回归保留；V20 Python/Swift重新严格逐字比较，测试结论以后续 Actions 实际输出为准。
+
+
+## 2026-11-01 · V20 实际 Xcode/Swift/Python 最终验收与真实独立失败保留
+
+- 原因缺陷：旧 V19 客户稿对普通不适仍无条件说“伤门在某宫，筋骨旁证”；现在 health.discomfort 必须选 none/accident/bone/bleeding/severe_pain/surgery，未选不进入 30 秒静心或写入 15 天限制。仅五种伤痛/手术情况读取伤门实际物理宫及宫中星、携干、地干、白虎、开门实宫相克、真假空、墓刑迫；none 的天芮若碰巧临伤门亦不得借门迫文字泄露伤门。创伤类别伤门实宫部位优先，伤痛/手术须与天芮和人物真实宫位独立比较。
+- 客户文案是具象证据因果：出于具体宫位、实宫阴阳体表内外、真正独立携干与地盘干及匹配的器官部位才输出，宫与宫的相同部位是互证；不同部位不假装同一病灶，体例允许省略无证据段落。不再套用所有人的“筋骨旁证”。源码 `ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift`、`src/wengua/health_discomfort_v19_parity.py`、iOS UI 和模板，Important 镜像/MANIFEST 已同步。
+- **实际最新来源 SHA `67a23b23ea9af90839a6c87c9cbae23caa6fa0d5`**：macOS XcodeGen + unsigned iOS Simulator 真实构建、bundle 200/81/255/模板、六种条件各新抽的真实时辰 Swift 及独立 Python vs Swift 两新时辰客户中文逐字比较 [#41349563076](https://github.com/turnupmason/WenguaApp/actions/runs/41349563076) **PASS**。源全文在 `docs/IOS_V80_XCODE_PASS_RUN_41349563076_ATTEMPT_1.md`。弟弟 none 2026-11-11 03:00 -05 共四节无伤门；妻子 surgery 2027-02-14 17:00 -05，伤门震三，额外宫中天蓬携庚实取肺部线索，并辨开门乾六克伤门震三；妹妹 bone 2026-11-23 05:00 -05，伤门离九且真空减看；哥哥 bleeding 2027-02-14 19:00 -05，震三伤门与哥哥真实月干/排行宫证据交集。两份独立逐字测试：弟弟 2026-11-19 01:00 -05 四节 PASS；妻子 2027-02-14 19:00 -05 五节 PASS。病位盘文全都来自 Swift 实时自动起盘，不得视为现实病史、医生诊断或古籍原著中的未见盲测。
+- 相同源 SHA 的主 Python3.11/3.12 CI [#41349563077](https://github.com/turnupmason/WenguaApp/actions/runs/41349563077) PASS；冻结 V8 选用神与原生 Python/Swift parity [#41349563147](https://github.com/turnupmason/WenguaApp/actions/runs/41349563147) PASS；V7.7专项 [#41349563172](https://github.com/turnupmason/WenguaApp/actions/runs/41349563172) PASS。**旧独立 V7.4 colleague/natal historical audit [#41349563095](https://github.com/turnupmason/WenguaApp/actions/runs/41349563095) FAIL**，失败保留，不能冒充全套旧工作流通过。非签名真机/App Store验收。
+- 残余审计：用户三种伤门应用场景只是本次得到授权的用户业务规则，尚未逐条找到原著版本/章节/行号/hash和独立反例；不得称古籍全部直接认可或对真实外伤/痛点/手术有医学预测效力。保留冻结 V8 病情轻重算法，外伤和位置只做传统符号位置排序，绝不以五档力量推断疼痛程度、死亡或疾病轻重。
