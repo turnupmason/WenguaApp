@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "ac1dbc32d354df0a9d344b607730765eeb5ae125"
+      "sha": "5f488b8e8babde11ef7b679aa29e3364203b7839"
     },
     {
       "platform": "python",

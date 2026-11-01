@@ -488,12 +488,8 @@ enum WenguaNativeDiscomfortV15 {
             default:return "宫间关系尚须合参"
             }
         }
-        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，"+
-            naturalRelation(hourPalace)+"；"+
-            (hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
-        let personFull=relationship+"取用神"+actor.mainStem+"在"+
-            label(patientPalace)+"宫，"+naturalRelation(patientPalace)+"；"+
-            (actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
+        let hourFull="时干"+hourStem+"在"+label(hourPalace)+"宫，"+naturalRelation(hourPalace)+"；"+(hourMatch.map{"其宫亦指"+$0+"。"} ?? "作为事体旁证。")
+        let personFull=relationship+"取用神"+actor.mainStem+"在"+label(patientPalace)+"宫，"+naturalRelation(patientPalace)+"；"+(actorLine.isEmpty ? "病位仍以天芮所示部位为先。" : actorLine)
         let auxTexts=auxiliaries.map{entry in
             let p=entry.0
             let name=p.id==actor.siblingAuxiliaryPalace ? "亲属排行辅助" :
