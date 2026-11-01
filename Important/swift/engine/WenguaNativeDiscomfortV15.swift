@@ -54,7 +54,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v21_focused_site_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v22_v16_evidence_restored_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -201,8 +201,9 @@ enum WenguaNativeDiscomfortV15 {
         let birdPower=try bird.map{ _ in try sourceStrength("star","天禽星",illness)} ?? "待核"
         let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
-        let doorPower=(!useInjury && door=="伤门") ? "待核" :
-            (try sourceStrength("door",door,illness))
+        // The physically co-located door is always read, including its
+        // true 门克宫 pressure; selecting independent 伤门 is a separate gate.
+        let doorPower=try sourceStrength("door",door,illness)
         let skyPower=try stemPower(sky,illness)
         let earthPower=try sourceStrength("stem",illness.earthStem,illness,illness.earthStages)
         let actorCarrier=actor.mainStem=="甲"
@@ -644,50 +645,90 @@ enum WenguaNativeDiscomfortV15 {
             }
             return "\(name)在\(label(p))宫，与主位分开参看。"
         }.joined()
-        let skySupport=skySites.first(where:{matched($0,leadSites)})
-        let earthSupport=earthSites.first(where:{matched($0,leadSites)})
-        let doorWord=(!useInjury && door=="伤门") ? "本宫门象不取" : door
-        let formsFull:String
-        if let first=skySupport,let second=earthSupport {
-            if sameSite(first,second) {
-                formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)与地盘\(illness.earthStem)同指\(first)，天地格\(formationNames.joined(separator:"、"))。"
-            } else {
-                formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)、地盘\(illness.earthStem)各有其象，天地格\(formationNames.joined(separator:"、"))。"
-            }
-        } else {
-            formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)下临\(illness.earthStem)，天地格\(formationNames.joined(separator:"、"))。"
+        // A real sky symbol, earth symbol and (if physically hosted)
+        // Tianqin carrier each retain independent original source power.
+        // This is disease *imagery* attached to this palace, not a new
+        // anatomical location or a clinical claim about pain intensity.
+        func selectedStemImage(_ stem:String,_ power:String)->String {
+            let candidates=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
+                .joined(separator:"/"))
+            let selected=candidates.first(where:{matched($0,leadSites)}) ??
+                         candidates.first ?? "无已核实的细部候选"
+            let strength=tier(power)>=4 ? "此象突出" :
+                         tier(power)==3 ? "可作为本宫病象旁证" :
+                         tier(power)>0 ? "此象偏弱，不单独定病" : "力量待核"
+            return "\(selected)（势\(power)，\(strength)）"
         }
-        var danger:[String]=[]
-        for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
-            let signs=badSigns(stem,illness)
-            if !signs.isEmpty,
-               let site=sites.first(where:{matched($0,leadSites)}) {
-                let term="\(stem)\(signs.joined(separator:"、"))，限看\(site)一带"
-                if !danger.contains(term) {danger.append(term)}
+        // 81 grid is ordered sky + ground. Preserve the actual source name,
+        // luck and gist; generic commercial idioms MUST NOT be turned into
+        // an invented diagnosis. Tianqin's second pair takes the real centre
+        // earth carrier, not the illness's ground stem a second time.
+        func formationMeaning(_ top:String,_ ground:String)->String? {
+            for line in pairText.split(separator:"\n").dropFirst() {
+                let cells=line.split(separator:"|",omittingEmptySubsequences:false)
+                if cells.count>=6 && cells[0]==top && cells[1]==ground {
+                    return "\(cells[2])（\(cells[3])格，古意：\(cells[5])）"
+                }
             }
+            return nil
         }
+        var orderedFormations:[String]=[]
+        if let meaning=formationMeaning(sky,illness.earthStem) {
+            orderedFormations.append("天盘\(sky)加地盘\(illness.earthStem)为"+meaning)
+        }
+        if let bird,let centre=chart.palaces.first(where:{$0.id==5}),
+           let meaning=formationMeaning(bird,centre.earthStem) {
+            orderedFormations.append("天禽携\(bird)加寄宫地干\(centre.earthStem)为"+meaning)
+        }
+        let skyText="天盘\(sky)取\(selectedStemImage(sky,skyPower))"
+        let earthText="地盘\(illness.earthStem)取\(selectedStemImage(illness.earthStem,earthPower))"
+        let birdText:String
         if let bird {
-            let signs=badSigns(bird,illness)
-            if !signs.isEmpty,
-               let site=birdSites.first(where:{matched($0,leadSites)}) {
-                danger.append("天禽携\(bird)\(signs.joined(separator:"、"))，另指\(site)")
+            birdText="；同宫天禽星势\(birdPower)，独立携\(bird)取\(selectedStemImage(bird,birdStemPower))"
+        } else {birdText=""}
+        let formsFull=skyText+"；"+earthText+birdText+
+            "。天地格："+orderedFormations.joined(separator:"；")+"。"
+        var danger:[String]=[]
+        var recorded:Set<String>=[]
+        // Grave and striking are real facts on the symbol, NOT a feature
+        // limited to matching the single top-ranked anatomical candidate.
+        for stem in [sky,illness.earthStem]+(bird.map{[$0]} ?? []) {
+            let signs=badSigns(stem,illness)
+            if !signs.isEmpty {
+                let key=stem+"/"+signs.joined(separator:"、")
+                if recorded.insert(key).inserted {
+                    danger.append("\(stem)实见\(signs.joined(separator:"、"))，传统取其受制、受伤之象，须细察本宫相应干象")
+                }
             }
         }
-        if illnessVoid=="true_void" {danger.append("天芮宫真空，本宫主位候选减看")}
-        else if illnessVoid=="fake_void" {danger.append("天芮宫假空，保留宫位候选")}
-        if doorRel=="符号克宫" && (useInjury || door != "伤门") {
-            let terms:[String:String]=[
-                "开门":"行医施治有阻",
-                "休门":"水火相争、休养受阻",
-                "生门":"生机受制",
-                "伤门":"伤损之象受迫",
-                "杜门":"闭塞不通之象加重",
-                "景门":"火金相争、热象受扰",
-                "死门":"闭滞之象加重",
-                "惊门":"惊悸不宁之象加重"]
-            danger.append("\(door)落\(palaceName)，本门五行克宫而成门迫；\(terms[door] ?? "本宫受迫")，仅作为这一宫的条件")
+        if illnessVoid=="true_void" {
+            danger.append("天芮宫真空，病位显象减看")
+        } else if illnessVoid=="fake_void" {
+            danger.append("天芮宫假空，不作全无")
         }
-        let dangerFull=danger.isEmpty ? "" : danger.joined(separator:"；")+"。"
+        let doorText:String
+        if doorRel=="符号克宫" {
+            let terms:[String:String]=[
+                "开门":"金门迫木宫，传统指施治有阻",
+                "休门":"水门迫火宫，传统指休养反复",
+                "生门":"土门迫水宫，传统指生机受阻",
+                "伤门":"木门迫土宫，传统指筋骨牵扯",
+                "杜门":"木门迫土宫，传统指闭滞不畅",
+                "景门":"火门迫金宫，传统指热象与肺系受扰",
+                "死门":"土门迫水宫，传统指闭塞积滞",
+                "惊门":"金门迫木宫，传统指惊扰、抽掣"]
+            doorText="\(door)落\(palaceName)形成门迫，\(terms[door] ?? "门克落宫")"
+        } else if doorRel=="宫克符号" {
+            doorText="\(door)受\(palaceName)所克，门象受制，但不是门迫"
+        } else {doorText=""}
+        let doorClue=sourceClue("八门病象",door)
+        let deityText=(deityClue=="其他传统象意" ? "传统神象待核" : deityClue)
+        let starDoorGodFull="天芮星势\(illnessPower)，病象以本宫为主；"+
+            "\(door)势\(doorPower)，古门象见\(doorClue)；"+
+            "\(deity)势\(deityPower)，古神象见\(deityText)。"
+        if !doorText.isEmpty {danger.append(doorText)}
+        let dangerFull=starDoorGodFull+(danger.isEmpty ? "" :
+            "本宫条件："+danger.joined(separator:"；")+"。")
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=originalSites.prefix(1).joined(separator:"、")
@@ -786,7 +827,7 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v20_conditional_injury_reasoned_20261101",
+            version:"discomfort_v22_v16_evidence_restored_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(
