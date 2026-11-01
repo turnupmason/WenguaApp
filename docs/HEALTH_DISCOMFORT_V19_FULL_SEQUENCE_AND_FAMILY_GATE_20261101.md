@@ -27,3 +27,10 @@ Swift: `ios/WenguaAppUI/{WenguaNativeActorBinding,WenguaNativeDiscomfortV15,Weng
 ## V19 补充：独立多宫候选阈值
 
 新九节原本只排序天芮本宫的原始位置，对旁宫的完全不同位置仍然排除。进一步增加额外候选准入：旁宫实际用神／时干／伤门／亲属辅宫／真实八门源200强度必须达大或极大，且符号自身有真实入墓或击刑，或至少另一**不同物理宫**中等及以上的独立证据支持该同一部位，才可加入异宫候选（最多4项，最终显示主次仍控制篇幅）。同一宫的患者与伤门不得冒充两个物理宫交叉。此为传统部位类象候选的审慎排序，不是新增来源规则，也不代表医学上的疼痛或病灶。
+
+## 真实验收补充（2026-11-01）
+
+- `c0b10d67`：真正macOS XcodeGen/iOS Simulator unsigned build、包内200格/81格/255源表/三系干象/9段模板验收、随机父亲和家中大姐真实双盘 Swift 离线全文输出，GitHub Actions [#41340149493](https://github.com/turnupmason/WenguaApp/actions/runs/41340149493) **PASS**。这不是签名真机或App Store验收。
+- 同版原V8 Python与Swift人物源力专项 parity [#41340149539](https://github.com/turnupmason/WenguaApp/actions/runs/41340149539) **PASS**；V7.7 独立两时辰 [#41340149586](https://github.com/turnupmason/WenguaApp/actions/runs/41340149586) **PASS**。
+- 最新 V19 新增九段顺序/身份校验测试正式进入 Python 3.11/3.12 主 CI，`4d61b3a5` 的 [#41340256039](https://github.com/turnupmason/WenguaApp/actions/runs/41340256039) **PASS**。本轮曾有 Xcode [#41339915786](https://github.com/turnupmason/WenguaApp/actions/runs/41339915786) 拼接语法失败，随后已修复，失败源码记录继续保留。
+- 独立病位专题 Python V11 与 Swift V19 同盘逐字 parity **仍未通过单独验收**；较旧 `iOS Offline Native Casting Parity` 总工作流还存在原版言词断言冲突与其他失败，不借本次两个专项PASS冒充全库通过。传统身体取象不是医疗验证。
