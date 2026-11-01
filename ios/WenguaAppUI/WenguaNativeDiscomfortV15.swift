@@ -204,7 +204,24 @@ enum WenguaNativeDiscomfortV15 {
         func isProminent(_ tier:String)->Bool {
             ["极大","大"].contains(tier)
         }
-        let illnessFocus=isProminent(illnessPower)
+        func voidState(_ p:WenguaNativePalace)->String {
+            if p.voidBranches.isEmpty {return "not_void"}
+            if p.id==chart.hourHorsePalace {return "fake_void"}
+            if p.voidBranches.contains(where:{
+                WenguaVNextEngine.clash[$0]==chart.hourHorse
+            }) {return "not_void"}
+            guard let pe=WenguaVNextEngine.elements[p.id] else {
+                return "true_void"
+            }
+            return (month==pe || WenguaVNextEngine.generates[month]==pe)
+                ? "fake_void" : "true_void"
+        }
+        let illnessVoid=voidState(illness)
+        let illnessFocus=illnessVoid=="true_void"
+            ? "病星逢真空，即使原力较大，此处病位显象也受限"
+            : illnessVoid=="fake_void"
+                ? "病宫假空，原始力量须结合空亡条件看"
+                : isProminent(illnessPower)
             ? "病星自身力量较足，这一宫的病位线索较突出"
             : illnessPower=="中等" ? "病星力量居中，此处取作主要病位"
             : ["小","极小"].contains(illnessPower)
