@@ -22,7 +22,7 @@ class SitePowerV17Test(unittest.TestCase):
 
     def test_render_placeholders_are_bound(self):
         t=json.loads(TEMPLATE.read_text(encoding="utf8"))
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v19_full_source_sequence_20261101")
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v20_conditional_injury_20261101")
         self.assertEqual(len(t["sections"]),9)
         native=NATIVE.read_text(encoding="utf8")
         match=re.search(r'let values:\[String:String\]=\[(.*?)\]\s*let required=',native,re.S)
@@ -60,9 +60,9 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('candidateSites.enumerated().map',native)
         self.assertIn('let leadSites=ranked.prefix(2)',native)
         self.assertIn('if illnessVoid=="true_void"',native)
-        self.assertIn('let actorOverlap=patientPalace.id==illness.id ? nil',native)
-        self.assertIn('qian.id != illness.id,qian.id != patientPalace.id',native)
-        self.assertIn('if output.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty',native)
+        self.assertIn('let actorOverlap=sourceLocation(patientPalace)',native)
+        self.assertIn('let auxIDs=Set([actor.siblingAuxiliaryPalace',native)
+        self.assertIn('output.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty',native)
         self.assertIn('let birdPower=',native)
         self.assertIn('let birdStemPower=',native)
         self.assertIn('let deityPower=',native)

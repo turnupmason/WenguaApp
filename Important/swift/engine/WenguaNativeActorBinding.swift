@@ -38,6 +38,7 @@ struct WenguaNativeInquiry {
     let relationship:String
     let context:String // direct_self, direct_proxy, event_news
     let patientSex:String? // male, female
+    let injuryContext:String? // body-site only: explicit selected cause, never inferred
     let birthOrder:String? // eldest, middle, youngest
     let patientBirthGanzhi:String? // optional complete Ganzhi, NOT Gregorian year only
     let patientBirthStem:String? // source-supplied lone natal heavenly stem
@@ -46,11 +47,13 @@ struct WenguaNativeInquiry {
     let familyRelativeConfirmed:Bool? // genuine sibling kinship proof
     init(relationship:String,context:String,patientSex:String?,birthOrder:String?,
          patientBirthGanzhi:String?,patientBirthStem:String?=nil,
+         injuryContext:String?=nil,
          patientAgeBand:String?=nil,relativeAge:String?=nil,
           familyRelativeConfirmed:Bool?=nil) {
         self.relationship=relationship
         self.context=context
         self.patientSex=patientSex
+        self.injuryContext=injuryContext
         self.birthOrder=birthOrder
         self.patientBirthGanzhi=patientBirthGanzhi
         self.patientBirthStem=patientBirthStem

@@ -48,11 +48,13 @@ import Foundation
                   (person=="妻子" && actor.profileID=="wife" &&
                    actor.mainStem=="乙" && actor.siblingAuxiliaryPalace==nil)
             else {throw NSError(domain:"V19ParityActor",code:4)}
+            let injuryContext=person=="弟弟" ? "none" : "surgery"
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:person,actor:actor,
-                rules:rules,stems:stems,template:template,
+                injuryContext:injuryContext,rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
-            guard reading.sections.count==9 else {
+            guard reading.sections.count>=2,
+                  reading.sections.contains(where:{$0.id=="02_injury"})==(injuryContext != "none") else {
                 throw NSError(domain:"V19ParitySections",code:5)
             }
             var actorJSON:[String:Any]=[
@@ -67,6 +69,7 @@ import Foundation
             if let v=actor.natalPalace {actorJSON["natalPalace"]=v}
             let doc:[String:Any]=[
                 "chart":try JSONSerialization.jsonObject(with:encoder.encode(chart)),
+                "injuryContext":injuryContext,
                 "actor":actorJSON,
                 "reading":try JSONSerialization.jsonObject(with:encoder.encode(reading))
             ]

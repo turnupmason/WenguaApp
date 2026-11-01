@@ -1,21 +1,21 @@
 {
-  "schema": "wengua_health_discomfort_native_v19_full_source_sequence_20261101",
+  "schema": "wengua_health_discomfort_native_v20_conditional_injury_20261101",
   "topic_id": "health.discomfort",
   "status": "traditional_site_symbol_only",
   "sections": [
     {
       "id": "01_location",
       "title": "病位主象",
-      "text": "本次问{person}，天芮在{palace}，{dun}遁取{sector}，首先看{focus_site}。"
+      "text": "{location_full}"
     },
     {
       "id": "02_injury",
-      "title": "伤门取象",
+      "title": "伤门条件取象",
       "text": "{injury_full}"
     },
     {
       "id": "03_assist_doors",
-      "title": "八门辅证",
+      "title": "其它门宫互证",
       "text": "{other_doors}"
     },
     {
@@ -25,22 +25,22 @@
     },
     {
       "id": "05_person",
-      "title": "人物用神",
+      "title": "人物宫互证",
       "text": "{actor_full}"
     },
     {
       "id": "06_auxiliary",
-      "title": "人物辅助宫",
+      "title": "有条件的家族辅助",
       "text": "{auxiliary_full}"
     },
     {
       "id": "07_formation",
-      "title": "天地格局",
+      "title": "独立天地干互证",
       "text": "{formation_full}"
     },
     {
       "id": "08_constraints",
-      "title": "墓刑空迫",
+      "title": "空墓刑迫条件",
       "text": "{danger_full}"
     },
     {
@@ -48,5 +48,14 @@
       "title": "综合病位",
       "text": "{final_site}"
     }
-  ]
+  ],
+  "injury_contexts": [
+    "none",
+    "accident",
+    "bone",
+    "bleeding",
+    "severe_pain",
+    "surgery"
+  ],
+  "injury_context_note": "只有用户实际选中伤损/剧痛/手术才读伤门落宫；none绝不使用伤门；伤门证据不意味着已医学确认损伤。用户提出的传统解释仍待古籍逐版本条件核对。"
 }

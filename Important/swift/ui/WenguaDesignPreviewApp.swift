@@ -1103,6 +1103,7 @@ struct CastSetupScreen: View {
     @State private var birthYear = ""
     @State private var question = ""
     @State private var duration = "未说明"
+    @State private var injuryContext = "unspecified"
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
@@ -1181,6 +1182,19 @@ struct CastSetupScreen: View {
                                 .textInputAutocapitalization(.never)
                             Text("请务必准确选择与测算人的关系。本模型严格遵循古籍用神规则，关系的错位将直接影响推演结果的准确性。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
+                            if topic.id=="health.discomfort" {
+                                Picker("病位问题属于哪一种情况（必选）",selection:$injuryContext) {
+                                    Text("请先选择").tag("unspecified")
+                                    Text("普通身体不适（无以下特殊情况）").tag("none")
+                                    Text("意外受伤（车祸、跌倒、砸伤等）").tag("accident")
+                                    Text("骨肉受损（骨折、拉伤、脱臼等）").tag("bone")
+                                    Text("伤口或流血").tag("bleeding")
+                                    Text("明显剧烈疼痛").tag("severe_pain")
+                                    Text("已经手术或准备手术").tag("surgery")
+                                }.pickerStyle(.menu)
+                                Text("只有确认伤损、剧痛或手术时，才结合伤门的实际落宫、宫中星神干与条件。普通不适不取伤门。")
+                                   .font(.caption).foregroundStyle(QStyle.secondary)
+                            }
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
@@ -1269,6 +1283,11 @@ struct CastSetupScreen: View {
             validationMessage="必须完成完整30秒静心后才能起局。"
             return
         }
+        if topic.id=="health.discomfort" &&
+           !WenguaNativeDiscomfortV15.allowedContexts.contains(injuryContext) {
+            validationMessage="病位问题必须先选择伤损情况；普通不适请选择「普通身体不适」。"
+            return
+        }
         let key=QIssuePolicy.signature(topic:topic.id,relation:subject,
                                        subject:subjectName,question:question)
         if let next=QIssuePolicy.nextPermitted(key) {
@@ -1286,6 +1305,7 @@ struct CastSetupScreen: View {
                 relationship:subject,
                 context:subject=="本人" ? "direct_self" : inquiryContext,
                 patientSex:patientSex=="unspecified" ? nil : patientSex,
+                injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
                 birthOrder:subject=="姐姐" ? "eldest" :
                      (birthOrder=="unspecified" ? nil : birthOrder),
                 patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
@@ -1317,6 +1337,11 @@ struct CastSetupScreen: View {
     }
 
     private func tryStartRitual() {
+        if topic.id=="health.discomfort" &&
+           !WenguaNativeDiscomfortV15.allowedContexts.contains(injuryContext) {
+            validationMessage="请先选择普通不适、意外受伤、骨肉受损、出血、剧痛或手术。"
+            return
+        }
         guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id) else {
             validationMessage="请选择有实际计算支持的细分事项。"
             return

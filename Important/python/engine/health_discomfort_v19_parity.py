@@ -124,7 +124,12 @@ def _lookup(tables,kind,row,col):
     table=tables[kind]
     return table["rows"][row][table["columns"].index(col)]
 
-def compose(chart,actor,relationship,sources=None):
+def compose(chart,actor,relationship,injury_context,sources=None):
+    valid={"none","accident","bone","bleeding","severe_pain","surgery"}
+    if injury_context not in valid:
+        raise ValueError("Missing explicit body-site injury condition")
+    use_injury=injury_context!="none"
+    trauma=injury_context in {"accident","bone","bleeding"}
     doc,stemdoc,template,energy,pairtxt=sources or load_sources()
     rules=doc["rules"]
     assert len(rules)==255 and len(doc["cases"])==12 and len(doc["conflicts"])==20
@@ -197,7 +202,7 @@ def compose(chart,actor,relationship,sources=None):
     actorCarrier=real_carrier(actor["mainStem"],actor.get("sourceGanzhi"))
     patientPower=role_power(actor["mainStem"],actorCarrier,patient,actor.get("sourceGanzhi")) if actorCarrier else "待核"
     hourPower=role_power(hourStem,hourCarrier,hour,hourPillar)
-    injuryPower=source_strength("door","伤门",inj)
+    injuryPower=source_strength("door","伤门",inj) if use_injury else "待核"
     doorRel=_directed(DOOR_ELEMENTS[door],ELEMENTS[ip])
     def void_state(p):
         if not p["voidBranches"]:return "not_void"
@@ -237,9 +242,17 @@ def compose(chart,actor,relationship,sources=None):
     otherDoors=[(p,p["door"],source_strength("door",p["door"],p))
                 for p in chart["palaces"] if p["id"] in PHYSICAL and
                 p["id"]!=ip and p["id"]!=inj["id"]]
-    witness=[(patient,actorCarrier,patientPower),(hour,hourCarrier,hourPower),
-             (inj,"伤门",injuryPower)]+aux+otherDoors
-    candidates=list(originalSites)
+    injurySites=source_location(inj) if use_injury else []
+    if use_injury and not injurySites:raise ValueError("No source mapped injury palace")
+    witness=[(patient,actorCarrier,patientPower),(hour,hourCarrier,hourPower)]+(
+        [(inj,"伤门",injuryPower)] if use_injury else [])+aux+otherDoors
+    candidates=list(injurySites if trauma else originalSites)
+    if trauma:
+        for site in originalSites:
+            if not _matched(site,candidates):candidates.append(site)
+    elif use_injury and _tier(injuryPower)>=3:
+        for site in injurySites:
+            if not _matched(site,candidates):candidates.append(site)
     added=0
     for p,symbol,power in witness:
         if p["id"]==ip or _tier(power)<4:continue
@@ -256,6 +269,8 @@ def compose(chart,actor,relationship,sources=None):
     scores=[]
     for idx,site in enumerate(candidates):
         val=_tier(illnessPower) if _matched(site,originalSites) else 0
+        if trauma and _matched(site,injurySites):
+            val+=25+_tier(injuryPower)
         if _matched(site,originalSites):
             if illnessVoid=="true_void":val=0
             if illnessVoid=="fake_void":val=max(0,val-1)
@@ -276,7 +291,8 @@ def compose(chart,actor,relationship,sources=None):
             if _matched(site,source_location(p)) and key not in counted:
                 counted.add(key);val+=_tier(power)
                 if flags(stem,p):val+=5
-        if inj["id"]!=ip and _matched(site,source_location(inj)):val+=_tier(injuryPower)
+        if use_injury and inj["id"]!=ip and _matched(site,injurySites):
+            val+=_tier(injuryPower)
         for p,star,power in aux:
             if p["id"]==ip:continue
             key=(p["id"],star)
@@ -298,68 +314,107 @@ def compose(chart,actor,relationship,sources=None):
     for site in remain+supported:
         if not _matched(site,secondary):secondary.append(site)
     secondSite="、".join(secondary[:2])
-    actorOverlap=next((s for s in source_location(patient) if _matched(s,leadSites)),None) if patient["id"]!=ip else None
-    actorLine=(f"{relationship}用神{actor['mainStem']}在{label(patient)}宫，该宫亦见{actorOverlap}。"
-              if actorOverlap else "")
-    if relationship=="父亲":
-        qian=palaces[6]
-        if qian["id"] not in (ip,patient["id"]):
-            hit=next((s for s in source_location(qian) if _matched(s,leadSites)),None)
-            if hit:actorLine+=f"父亲乾六宫另见{hit}。"
-    injuryMatching=any(any(k in s for k in LIMBS) for s in leadSites)
-    injuryCross=next((s for s in source_location(inj) if _matched(s,leadSites)),None)
-    injuryLine=(f"伤门也在{label(illness)}宫，与肢体部位相接。"
-                if inj["id"]==ip and injuryMatching else
-                f"另看{label(inj)}宫的伤门，亦指{injuryCross}。"
-                if inj["id"]!=ip and _tier(injuryPower)>=3 and injuryCross else "")
-    injuryFull=injuryLine or f"伤门在{label(inj)}宫，主筋骨牵扯之象，仅作旁线。"
+    injuryReason={
+        "accident":"意外受伤","bone":"骨肉受损",
+        "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
+        "surgery":"已做或拟做手术"}
+    injurySiteNames="、".join(injurySites[:2])
+    injuryScope="体内" if inj["id"] in inner else "体表"
+    injuryOverlap=next((s for s in injurySites if _matched(s,originalSites)),None)
+    injuryRelation=("伤门与天芮在同一实宫，两种身份只合看这一处。"
+        if inj["id"]==ip else
+        f"伤门与天芮两宫都指向{injuryOverlap}，这才构成部位互证。"
+        if injuryOverlap else
+        "与天芮宫所指区域不同，暂保留两个位置，不把两个宫硬拼为一处。")
+    openPalace=next((p for p in palaces.values() if p.get("door")=="开门"),None)
+    surgicalControl=(injury_context=="surgery" and openPalace is not None
+        and openPalace["id"]!=inj["id"] and
+        CONTROLS[ELEMENTS[openPalace["id"]]]==ELEMENTS[inj["id"]])
+    surgicalClue=(f"开门所在{label(openPalace)}宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。"
+                 if surgicalControl else "")
+    injuryLimit=("伤门宫真空，须减看这一处的部位依据。"
+          if void_state(inj)=="true_void" else
+          "伤门自身取力偏弱，这处仍须其他符号印证。"
+          if _tier(injuryPower)<=2 else "")
+    injuryFull=(f"因已选择{injuryReason[injury_context]}，才以伤门取象。伤门实际在{label(inj)}宫，"
+        f"按{'阴' if yin else '阳'}遁{injuryScope}取{injurySiteNames}；"
+        +injuryRelation+injuryLimit+surgicalClue if use_injury else "")
     matchingDoors=sorted((x for x in otherDoors if _tier(x[2])>=2 and
                          any(_matched(s,leadSites) for s in source_location(x[0]))),
                          key=lambda x:-_tier(x[2]))
-    doorCross="；".join(f"{d}在{label(p)}宫，所指部位与{lead}相接" for p,d,_ in matchingDoors[:2])
-    doorsFull=f"病宫临{door}，人物宫临{patient['door']}。"+(doorCross+"。" if doorCross else "其余门象不另增加主位。")
+    doorSentences=[]
+    for p,d,power in matchingDoors[:2]:
+        hit=next((s for s in source_location(p) if _matched(s,leadSites)),None)
+        if hit:doorSentences.append(
+            f"{d}在{label(p)}宫，该宫也取{hit}，与已选病位重合，故可作为另一宫的交叉印证。")
+    doorsFull="".join(doorSentences)
     hourMatch=next((s for s in source_location(hour) if _matched(s,leadSites)),None)
-    hourFull=f"时干{hourStem}在{label(hour)}宫，{natural(hour)}；"+(f"其宫亦指{hourMatch}。" if hourMatch else "作为事体旁证。")
-    personFull=f"{relationship}取用神{actor['mainStem']}在{label(patient)}宫，{natural(patient)}；"+(actorLine or "病位仍以天芮所示部位为先。")
+    hourFull=(f"时干{hourStem}实落{label(hour)}宫，另取{hourMatch}；"
+             "与病位所指相合，故作为事体印证，而不是仅凭时干另立病处。"
+             if hourMatch else "")
+    actorOverlap=next((s for s in source_location(patient)
+                       if _matched(s,leadSites)),None)
+    if patient["id"]==ip:
+        personFull=f"{relationship}用神{actor['mainStem']}与天芮同在{label(illness)}宫，人物与病位落点相合，不重复认作两处。"
+    elif actorOverlap:
+        personFull=(f"{relationship}用神{actor['mainStem']}落{label(patient)}宫，"
+                    f"该宫也取{actorOverlap}；两宫部位相交，所以可用来收窄主位。")
+    else:personFull=""
     auxTexts=[]
     for p,star,power in aux:
-        name=("亲属排行辅助" if p["id"]==actor.get("siblingAuxiliaryPalace") else
-              "长辈乾坤辅助" if p["id"]==actor.get("genderPalace") else "真实年命辅助")
         hit=next((s for s in source_location(p) if _matched(s,leadSites)),None)
-        auxTexts.append(name+label(p)+"宫"+(f"，亦见{hit}" if hit else "，另作参考"))
-    auxFull="；".join(auxTexts)+"。" if auxTexts else "没有符合条件的额外人物辅宫。"
-    formsFull=f"天芮携{sky}加地盘{illness['earthStem']}，见"+"、".join(formation)+f"格；合参本宫门神，以{lead}为主线。"
+        if hit:
+            name=("已确认亲属排行" if p["id"]==actor.get("siblingAuxiliaryPalace") else
+                  "长辈乾坤" if p["id"]==actor.get("genderPalace") else "真实年命")
+            auxTexts.append(name+f"在{label(p)}宫，同样指{hit}；因此只增加这一处的互证，不另立病位。")
+    auxFull="".join(auxTexts)
+    skySupport=next((s for s in skySites if _matched(s,leadSites)),None)
+    earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
+    formsFull=(f"天芮携{sky}与地盘{illness['earthStem']}同宫，上下干分别取"
+               f"{skySupport}和{earthSupport}，两条部位线索相接；其真实天地格为"
+               + "、".join(formation)+"，格名本身不另生病位。"
+               if skySupport is not None and earthSupport is not None else "")
     danger=[]
     for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
         signs=flags(stem,illness)
         site=next((s for s in sites if _matched(s,leadSites)),None)
-        if signs and site:danger.append(stem+"、".join(signs)+f"，传统不利象集中在{site}一带")
+        if signs and site:danger.append(stem+"、".join(signs)+f"，限看{site}一带")
     if bird:
         signs=flags(bird,illness)
         site=next((s for s in birdSites if _matched(s,leadSites)),None)
-        if signs and site:danger.append("天禽携"+bird+"、".join(signs)+f"，亦指{site}")
-    if illnessVoid=="true_void":danger.append("病宫真空，本宫候选减看")
-    elif illnessVoid=="fake_void":danger.append("病宫假空，本宫线索仍留")
-    if doorRel=="宫克符号":danger.append(door+"门迫，门象受制")
-    dangerFull="；".join(danger)+"。" if danger else "本宫未见重合主部位的墓刑空迫象。"
-    ending="。" if not secondSite else "；另参"+secondSite+"。"
-    final=f"综上，{relationship}本次病位首先看{lead}{ending}这是传统部位取象，不等于医学诊断。"
+        if signs and site:danger.append("天禽携"+bird+"、".join(signs)+f"，另指{site}")
+    if illnessVoid=="true_void":danger.append("天芮宫真空，本宫主位候选减看")
+    elif illnessVoid=="fake_void":danger.append("天芮宫假空，保留宫位候选")
+    if doorRel=="宫克符号":danger.append(door+"门迫，此门的旁证减看")
+    dangerFull="；".join(danger)+"。" if danger else ""
+    ending="。" if not secondSite else "；次看"+secondSite+"。"
+    locationFull=(f"天芮实际落{label(illness)}宫，{'阴' if yin else '阳'}遁取{sector}，"
+                  "该宫传统位置对应"+"、".join(originalSites[:2])+"；"+
+                  ("本次已有明确伤损条件，因此把伤门的实际落宫排在前面。"
+                   if trauma else "这条线索来自病星真实落宫，并非把门名直接当作器官。"))
+    final=(f"综上，{relationship}本次"+
+           ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
+           lead+ending+"这是传统位置取象，不等于医学诊断。")
     values={
        "person":relationship,"palace":label(illness)+"宫","dun":"阴" if yin else "阳",
-       "sector":sector,"focus_site":lead,"injury_full":injuryFull,
+       "sector":sector,"focus_site":lead,"location_full":locationFull,"injury_full":injuryFull,
        "other_doors":doorsFull,"hour_site":hourFull,"actor_full":personFull,
        "auxiliary_full":auxFull,"formation_full":formsFull,"danger_full":dangerFull,
        "final_site":final
     }
     sections=[]
     for x in template["sections"]:
+        if x["id"]=="02_injury" and not use_injury:continue
         rendered=x["text"]
         for name,val in values.items():rendered=rendered.replace("{"+name+"}",val)
         if "{" in rendered or "}" in rendered:raise ValueError("Unbound customer template")
-        sections.append({"id":x["id"],"title":x["title"],"text":rendered})
+        if rendered.strip():
+            sections.append({"id":x["id"],"title":x["title"],"text":rendered})
     return {"sections":sections,
-            "rolePalaces":{"illness":ip,"patient":patient["id"],"injury":inj["id"],"hour":hour["id"]},
-            "version":"discomfort_v19_full_evidence_rank_20261101","topicID":"health.discomfort"}
+            "rolePalaces":dict({"illness":ip,"patient":patient["id"],
+                                "hour":hour["id"]},
+                               **({"injury":inj["id"]} if use_injury else {})),
+            "version":"discomfort_v20_conditional_injury_reasoned_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
@@ -371,7 +426,7 @@ def compare_jsonl(path):
         board=case["chart"];actor=case["actor"];relationship=case["reading"]["relationship"]
         if board["iso"] in seen:raise AssertionError("Duplicate real instant")
         seen.add(board["iso"])
-        actual=compose(board,actor,relationship,sources)
+        actual=compose(board,actor,relationship,case["injuryContext"],sources)
         expected=case["reading"]
         for key in ("version","topicID","sections","rolePalaces"):
             if actual[key]!=expected[key]:

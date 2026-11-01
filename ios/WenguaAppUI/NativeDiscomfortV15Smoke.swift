@@ -43,9 +43,12 @@ import Foundation
                      patientSex:nil,birthOrder:relationship=="姐姐" ? "eldest" : nil,
                      patientBirthGanzhi:nil,
                      familyRelativeConfirmed:["姐姐","弟弟"].contains(relationship) ? true : nil),index:index)
+            let injuryContext=[
+                "父亲":"accident","姐姐":"severe_pain",
+                "弟弟":"none","妻子":"surgery"][relationship]!
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,
-                rules:rules,stems:stems,template:template,
+                injuryContext:injuryContext,rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
             guard actor.profileID==(["父亲":"father","姐姐":"older_sister","弟弟":"younger_brother","妻子":"wife"][relationship] ?? ""),
                 actor.natalStem==nil,
@@ -70,8 +73,10 @@ import Foundation
                           "04_hour","05_person","06_auxiliary",
                           "07_formation","08_constraints","09_conclusion"]
             guard reading.topicID=="health.discomfort",
-                ids.count==9,
+                ids.count>=2,
                 ids.first=="01_location",ids.last=="09_conclusion",
+                ids.contains("02_injury")==(injuryContext != "none"),
+                (reading.rolePalaces?["injury"] != nil)==(injuryContext != "none"),
                 Set(ids).count==ids.count,
                 ids==allowed.filter{ids.contains($0)},
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
@@ -82,17 +87,20 @@ import Foundation
                 !reading.sections.joinedDescription.contains("《"),
                 !reading.sections.joinedDescription.contains("原书"),
                 !reading.sections.joinedDescription.contains("异文"),
-                reading.sections.joinedDescription.contains("病位首先看"),
+                reading.sections.joinedDescription.contains("病位先看") || reading.sections.joinedDescription.contains("伤门落宫"),
                 reading.sections.joinedDescription.contains("综上"),
                 !reading.sections.joinedDescription.contains("干力"),
                 !reading.sections.joinedDescription.contains("病星力量"),
                 !reading.sections.joinedDescription.contains("门力"),
-                !reading.sections.joinedDescription.contains("疼痛"),
+                !reading.sections.joinedDescription.contains("断定骨折"),
                 !reading.sections.joinedDescription.contains("吉凶"),
                 !reading.sections.joinedDescription.contains("极小")
             else {
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
+            }
+            if injuryContext=="none" && reading.sections.joinedDescription.contains("伤门") {
+                throw NSError(domain:"UnexpectedInjuryEvidence",code:8)
             }
             let fields = [
                 "V18_NATIVE_SITE_PASS", relationship, label, chart.iso,

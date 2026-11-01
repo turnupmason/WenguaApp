@@ -73,8 +73,13 @@ enum WenguaNativeReadingRouter {
             let profile=try WenguaNativeActorSource.fromBundle(bundle)
             let actor=try WenguaNativeActorSource.bind(
                 chart:chart,inquiry:request,index:profile)
+            guard let injuryContext=request.injuryContext,
+                  WenguaNativeDiscomfortV15.allowedContexts.contains(injuryContext) else {
+                throw WenguaNativeReadingError.unsupportedTopic
+            }
             return try WenguaNativeDiscomfortV15.compose(
-                chart:chart,relationship:relationship,actor:actor,bundle:bundle)
+                chart:chart,relationship:relationship,actor:actor,
+                injuryContext:injuryContext,bundle:bundle)
         }
         #endif
         guard let t=bundle.url(forResource:"reading_template",withExtension:"json"),
