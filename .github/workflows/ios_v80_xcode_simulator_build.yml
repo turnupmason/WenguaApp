@@ -131,6 +131,7 @@ jobs:
           grep -q 'V15_REAL_NATIVE_SITE_PASS yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           grep -q 'V15_REAL_NATIVE_SITE_PASS yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           head -c 2800 /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          echo "PASS V15 actual yin/yang offline Swift reading against full 255 historical source" > /tmp/wengua-v80-xcode/native_site_validation.txt
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -155,12 +156,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs
-          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ]; then
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ]; then
             RESULT=PASS
-            MESSAGE="Actual SwiftUI iOS Simulator xcodebuild and V8 source resources passed"
+            MESSAGE="Actual iOS Simulator Xcode build, byte-exact V8/V15 bundle, and two true V15 Swift clocks passed"
           else
             RESULT=FAIL
-            MESSAGE="Native Xcode SwiftUI build or resource checks failed; see preserved logs"
+            MESSAGE="Xcode/resources/new independent V15 two-clock Swift runtime failed; see preserved logs"
           fi
           FILE="docs/IOS_V80_XCODE_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
           {
