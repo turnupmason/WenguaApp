@@ -173,7 +173,7 @@ enum WenguaNativeDiscomfortV15 {
         let illnessPower=try sourceStrength("star","天芮星",illness)
         let doorPower=try sourceStrength("door",door,illness)
         let skyPower=try stemPower(sky,illness)
-        let earthPower=try stemPower(illness.earthStem,illness)
+        let earthPower=try sourceStrength("stem",illness.earthStem,illness,illness.earthStages)
         let patientPower=try stemPower(actor.mainStem,patientPalace)
         let injuryPower=try sourceStrength("door","伤门",injury)
         let hourPower=try stemPower(hourStem,hourPalace)
