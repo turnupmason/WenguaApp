@@ -1,0 +1,161 @@
+{
+  "schema": "wengua_health_discomfort_stem_three_family_variants_v14_20261101",
+  "status": "research_only_not_public",
+  "provenance": [
+    {
+      "id": "qimen_secret_vol13",
+      "type": "separate_qimen_book",
+      "book": "奇门遁甲秘笈大全",
+      "chapter": "卷十三·疾病占十干",
+      "verified": "user_workbook_only_pending_direct_line_and_edition",
+      "counts_as_independent_current_qimen": true
+    },
+    {
+      "id": "sanming_viscera",
+      "type": "cross_system_mingli",
+      "book": "三命通会",
+      "chapter": "卷七·论疾病先知五脏六腑所属干支",
+      "verified": "web_chapter_text_checked",
+      "url": "https://ctext.org/wiki.pl?chapter=548506&if=gb&remap=gb",
+      "counts_as_independent_current_qimen": false
+    },
+    {
+      "id": "sanming_body_surface",
+      "type": "same_text_family_as_sanming_viscera",
+      "book": "三命通会",
+      "chapter": "卷七·论疾病先知五脏六腑所属干支",
+      "verified": "web_chapter_text_checked",
+      "url": "https://ctext.org/wiki.pl?chapter=548506&if=gb&remap=gb",
+      "counts_as_independent_current_qimen": false
+    }
+  ],
+  "mapping": {
+    "甲": {
+      "qimen_secret_vol13": [
+        "头面",
+        "肝"
+      ],
+      "sanming_viscera": [
+        "胆"
+      ],
+      "sanming_body_surface": [
+        "头"
+      ]
+    },
+    "乙": {
+      "qimen_secret_vol13": [
+        "肩背",
+        "胆"
+      ],
+      "sanming_viscera": [
+        "肝"
+      ],
+      "sanming_body_surface": [
+        "顶"
+      ]
+    },
+    "丙": {
+      "qimen_secret_vol13": [
+        "额",
+        "鼻",
+        "心",
+        "肋"
+      ],
+      "sanming_viscera": [
+        "小肠"
+      ],
+      "sanming_body_surface": [
+        "肩"
+      ]
+    },
+    "丁": {
+      "qimen_secret_vol13": [
+        "齿",
+        "舌",
+        "小肠"
+      ],
+      "sanming_viscera": [
+        "心"
+      ],
+      "sanming_body_surface": [
+        "心"
+      ]
+    },
+    "戊": {
+      "qimen_secret_vol13": [
+        "脾"
+      ],
+      "sanming_viscera": [
+        "胃"
+      ],
+      "sanming_body_surface": [
+        "胁"
+      ]
+    },
+    "己": {
+      "qimen_secret_vol13": [
+        "胃"
+      ],
+      "sanming_viscera": [
+        "脾"
+      ],
+      "sanming_body_surface": [
+        "腹"
+      ]
+    },
+    "庚": {
+      "qimen_secret_vol13": [
+        "肺",
+        "筋"
+      ],
+      "sanming_viscera": [
+        "大肠"
+      ],
+      "sanming_body_surface": [
+        "脐"
+      ]
+    },
+    "辛": {
+      "qimen_secret_vol13": [
+        "胸"
+      ],
+      "sanming_viscera": [
+        "肺"
+      ],
+      "sanming_body_surface": [
+        "股"
+      ]
+    },
+    "壬": {
+      "qimen_secret_vol13": [
+        "肾"
+      ],
+      "sanming_viscera": [
+        "膀胱",
+        "三焦"
+      ],
+      "sanming_body_surface": [
+        "胫"
+      ]
+    },
+    "癸": {
+      "qimen_secret_vol13": [
+        "脏（笼统）"
+      ],
+      "sanming_viscera": [
+        "肾",
+        "包络"
+      ],
+      "sanming_body_surface": [
+        "足"
+      ]
+    }
+  },
+  "guard": {
+    "do_not_equate_cross_system_to_second_independent_confirmation": true,
+    "do_not_merge_surface_with_viscera": true,
+    "do_not_assign_current_disease": true,
+    "do_not_modify_v80": true,
+    "not_source_approved": true
+  }
+}
