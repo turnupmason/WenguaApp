@@ -757,7 +757,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "5a1623adfb201dfc561bde7e201106f1e140399e"
+      "sha": "0d9c1f70c30761356dd6e2c1093b2eeb8eca9263"
     },
     {
       "platform": "python",
