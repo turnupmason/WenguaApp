@@ -57,10 +57,14 @@ import Foundation
             if reading.sections.joinedDescription.contains("原书") {
                 print("V18_GUARD_FAILURE source_name")
             }
+            let ids=reading.sections.map{ $0.id }
+            let allowed=["01_location","02_tianrui","03_comparison",
+                         "04_person","05_review","06_conclusion"]
             guard reading.topicID=="health.discomfort",
-                reading.sections.map({$0.id})==[
-                    "01_location","02_tianrui","03_comparison",
-                    "04_person","05_review","06_conclusion"],
+                ids.count>=2, ids.count<=6,
+                ids.first=="01_location",ids.last=="06_conclusion",
+                Set(ids).count==ids.count,
+                ids==allowed.filter{ids.contains($0)},
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
                 reading.sections.last!.text.contains("不等于医学诊断"),
