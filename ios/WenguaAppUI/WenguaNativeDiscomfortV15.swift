@@ -319,17 +319,20 @@ enum WenguaNativeDiscomfortV15 {
         let focusedDetails=[("天芮携"+sky,skySites,skyPower),
                             ("地盘"+illness.earthStem,earthSites,earthPower),
                             ("天禽携"+(bird ?? ""),birdSites,birdStemPower)]
-            .compactMap{ tag,sites,power ->String? in
+            .compactMap{ evidence ->String? in
+                let tag=evidence.0
+                let sites=evidence.1
+                let power=evidence.2
                 guard tier(power)>0,
                       let site=sites.first(where:{matched($0,leadSites)})
                 else{return nil}
                 return tag+"亦见"+site
             }
         let detailLine=focusedDetails.isEmpty
-            ? "同宫符号尚无进一步重合的细部线索"
+            ? "同宫没有更集中的天干部位象"
             : focusedDetails.joined(separator:"，")+"，部位指向相互呼应"
         let otherLine=secondSite.isEmpty
-            ? "同宫其余干象与此处未形成更明确的部位重合"
+            ? "部位仍以病宫所指为准"
             : "同一宫位还可兼看"+secondSite
         // The casting actor is *not* another Tianrui disease site.
         // A father has Qian auxiliary; an older sister does not acquire
@@ -358,9 +361,7 @@ enum WenguaNativeDiscomfortV15 {
             let corroboration=sourceLocation(qian).first{matched($0,leadSites)}
             if let corroboration {
                 actorLine+="；父亲乾六宫也见"+corroboration
-            } else {actorLine+="；乾六宫未增加更明确的同部位线索"}
-        } else if relationship=="姐姐" {
-            actorLine+="；巽四长女象需核排行，不能据此另断病位"
+            }
         }
         let injuryCorroborates=injury.id==illness.id
         let injuryLine=injuryCorroborates
