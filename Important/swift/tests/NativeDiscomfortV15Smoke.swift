@@ -25,9 +25,14 @@ import Foundation
             ("yin","弟弟",2026,11,Int.random(in:9...23),slots.randomElement()!),
             ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!),
             ("yin","妹妹",2026,11,Int.random(in:9...23),slots.randomElement()!),
-            ("yang","哥哥",2027,2,Int.random(in:7...20),slots.randomElement()!)
+            ("yang","哥哥",2027,2,Int.random(in:7...20),slots.randomElement()!),
+            // Four user-requested V20 independent clocks: original father
+            // accident and wife surgery above, plus two ordinary branches.
+            ("yin","父亲",2026,11,Int.random(in:9...23),slots.randomElement()!),
+            ("yang","女儿",2027,2,Int.random(in:7...20),slots.randomElement()!)
         ]
-        for (label,relationship,year,month,day,hour) in selected {
+        for (position, entry) in selected.enumerated() {
+            let (label,relationship,year,month,day,hour)=entry
             let instant=String(format:"%04d-%02d-%02dT%02d:00:00-05:00",
                                year,month,day,hour)
             print("V18_RANDOM_SELECTED "+relationship+" "+label+" "+instant)
@@ -45,7 +50,7 @@ import Foundation
                      patientSex:nil,birthOrder:relationship=="姐姐" ? "eldest" : nil,
                      patientBirthGanzhi:nil,
                      familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(relationship) ? true : nil),index:index)
-            let injuryContext=[
+            let injuryContext=position>=6 ? "none" : [
                 "父亲":"accident","姐姐":"severe_pain",
                 "弟弟":"none","妻子":"surgery",
                 "妹妹":"bone","哥哥":"bleeding"][relationship]!
@@ -54,7 +59,7 @@ import Foundation
                 injuryContext:injuryContext,rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
             guard actor.profileID==(["父亲":"father","姐姐":"older_sister","弟弟":"younger_brother","妻子":"wife",
-                 "妹妹":"younger_sister","哥哥":"older_brother"][relationship] ?? ""),
+                 "妹妹":"younger_sister","哥哥":"older_brother","女儿":"daughter"][relationship] ?? ""),
                 actor.natalStem==nil,
                 relationship != "父亲" || actor.genderPalace==6,
                 relationship != "姐姐" || actor.siblingAuxiliaryPalace==4,
@@ -118,6 +123,24 @@ import Foundation
             print(fields.joined(separator:" "))
             for section in reading.sections {
                 print(section.title+"："+section.text)
+            }
+            // User-facing V20 preview: four distinct physical casts,
+            // never fabricate a site from a preceding case.
+            let previewIDs:[Int:String]=[
+                0:"father_accident",3:"wife_surgery",
+                6:"father_ordinary",7:"daughter_ordinary"]
+            if let previewID=previewIDs[position] {
+                print("V20_PREVIEW_BEGIN "+previewID)
+                print("V20_PREVIEW_META "+relationship+" "+injuryContext+" "+chart.iso+
+                    " "+chart.pillars.year+" "+chart.pillars.month+" "+chart.pillars.day+
+                    " "+chart.pillars.hour+" "+label+
+                    " illness="+String(reading.rolePalaces?["illness"] ?? -1)+
+                    " patient="+String(reading.rolePalaces?["patient"] ?? -1)+
+                    " person_stem="+actor.mainStem)
+                for section in reading.sections {
+                    print(section.title+"："+section.text)
+                }
+                print("V20_PREVIEW_END "+previewID)
             }
         }
     }
