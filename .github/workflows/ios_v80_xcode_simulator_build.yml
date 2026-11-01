@@ -106,6 +106,31 @@ jobs:
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
+      - name: Two actual Yin/Yang hours from complete source V15 real offline Swift customer sections
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift \
+            -o /tmp/wengua-v80-xcode/native_site_v15 2>&1 | tee /tmp/wengua-v80-xcode/native_site_compile.log
+          /tmp/wengua-v80-xcode/native_site_v15 \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            > /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V15_REAL_NATIVE_SITE_PASS yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V15_REAL_NATIVE_SITE_PASS yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          head -c 2800 /tmp/wengua-v80-xcode/native_site_two_clocks.log
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
