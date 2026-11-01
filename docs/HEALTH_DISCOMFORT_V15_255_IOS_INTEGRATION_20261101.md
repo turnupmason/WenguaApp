@@ -21,3 +21,9 @@
 - Python V11+V15和Swift V15使用不同详略的六段辞，**不能宣称该专题逐字 parity**；先做独立同盘对照再验收。
 - 原文多干方向/异文/原书反例条件继续待核；不能将255行直接全部作为已核客户规则。
 - 还需最新macOS Xcode Simulator和包内资源实测结果、UI真机手工验收；CI失败时必须如实记录。无临床医学验证。
+
+### 2026-11-01 V15 病位原生阴阳双时辰实际验收
+- macOS GitHub Actions [#41327899200](https://github.com/turnupmason/WenguaApp/actions/runs/41327899200) 对 d9632f7d54ec84c4c3c55ba348eb67ba425491d4 完成：XcodeGen、真实 unsigned iOS Simulator app build、原V8模板/200格/81格/24人物，以及 App 包内新增255规则/三套十干/native六段模板**逐字节源一致性**，并在独立 Swift runner 真实算阴遁 2026-10-27 13:00 -04（艮八天芮、离九本人）与阳遁 2026-12-27 13:00 -05（离九天芮、艮八本人），均输出6段病位中文通过。新增的严格运行步骤成功，非仅 Swift 语法检查或静态源测试。不是签名真机或医学定位验收。
+- 早前 [#41327564087](https://github.com/turnupmason/WenguaApp/actions/runs/41327564087) 曾出现 CLI 测试拼接语法失败，且存档只凭旧V8 bundle flag错记PASS；修为同时核实 native_site_validation.txt 后才可归档PASS。随后 [#41327734679](https://github.com/turnupmason/WenguaApp/actions/runs/41327734679) 发现 Swift 拼出“艮8”而原书数据用“艮八”，导致运行 missingRole，已固定全八宫中文宫名。旧失败和不严谨归档保留不改。
+- 最近的主 Python 专项 [#41327928247](https://github.com/turnupmason/WenguaApp/actions/runs/41327928247) PASS，原V8 Python/Swift全文 native parity [#41327785507](https://github.com/turnupmason/WenguaApp/actions/runs/41327785507) PASS，旧V7.7固定盘 [#41327785563](https://github.com/turnupmason/WenguaApp/actions/runs/41327785563) PASS。V8.0冻结计分源/断词未改。
+- **未完成**：病位专题目前 Python V11 六段与 Swift V15 六段非逐字同模板，尚未新专题 Python/Swift 相同真实时辰全文 parity；255完整归档不代表全部适用/核定，古籍严重病名类象不可作为医学诊断；无签名真机、无公众病位医学准确率测试。
