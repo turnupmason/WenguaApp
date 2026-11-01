@@ -67,12 +67,15 @@ import Foundation
     catch WenguaNativeReadingError.unsupportedRelationship {}
     do { _=try make("朋友",sex:"male");throw WenguaCastError.invalidChart }
     catch WenguaNativeReadingError.unsupportedRelationship {}
-    do {
-       _=try WenguaNativeActorSource.bind(chart:chart,
-         inquiry:WenguaNativeInquiry(relationship:"姐姐",context:"direct_proxy",
-           patientSex:"female",birthOrder:"eldest",patientBirthGanzhi:nil),index:idx)
-       throw WenguaCastError.invalidChart
-     } catch WenguaNativeReadingError.unsupportedRelationship {}
+    for person in ["哥哥","姐姐","弟弟","妹妹"] {
+      do {
+        _=try WenguaNativeActorSource.bind(chart:chart,
+          inquiry:WenguaNativeInquiry(relationship:person,context:"direct_proxy",
+            patientSex:nil,birthOrder:person=="姐姐" ? "eldest" : nil,
+            patientBirthGanzhi:nil,familyRelativeConfirmed:false),index:idx)
+        throw WenguaCastError.invalidChart
+      } catch WenguaNativeReadingError.unsupportedRelationship {}
+    }
      let nephew=try make("侄子")
     guard friend.mainStem=="癸",friend.eligibleForFirmTraditionalJudgment,
       event.mainStem=="戊",nephew.mainStem=="甲",

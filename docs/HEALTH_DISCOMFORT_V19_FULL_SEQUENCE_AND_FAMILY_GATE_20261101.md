@@ -42,3 +42,12 @@ Swift: `ios/WenguaAppUI/{WenguaNativeActorBinding,WenguaNativeDiscomfortV15,Weng
 ## 家中四种关系 UI 与双新角色原生随机盘
 
 Picker 四个直接写：哥哥（家里的哥哥）、姐姐（家里的大姐）、弟弟（家里的弟弟）、妹妹（家里的妹妹）。四个对应不同文本的确认 Toggle，非家庭朋友必须改走朋友。新原生 smoke 添加随机弟弟、妻子各一时辰（保留原父亲、大姐两时辰），验证弟弟月干与艮八、妻子乙奇无兄妹辅助，九段客户原句逐节输出，V8评分不动。
+
+
+## 2026-11-01 V19 真家属四类及病位 Python/Swift 同盘逐字验收
+
+iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」「弟弟（家里的弟弟）」「妹妹（家里的妹妹）」逐项明确；每一关系拥有独立真实家庭亲属确认文字，Swift fail-closed；姐姐=家中大姐（需长女条件），朋友永不借家族辅助宫。NativeActorProfileCheck 新增四类未确认不得绑定回归。V8评分冻结不改。
+
+真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
+
+历史 Xcode失败 #41341934448 因独立Python读取中五宫 p['door'] 错误：中五无普通门，已改为 get() 后 #41342466896 PASS，记录保留。旧综合 iOS Offline Native Casting Parity 仍有 V7过时文案断言及 unresolvedRole，不能冒称全库通过；继续逐案审查。未签名真机/App Store 验收。

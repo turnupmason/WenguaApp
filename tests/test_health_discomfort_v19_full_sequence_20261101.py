@@ -30,6 +30,13 @@ class V19LocationFamily(unittest.TestCase):
                     'profile.id=="older_sister" && inquiry.birthOrder != "eldest"',
                     'profile.id=="friend"'):
             self.assertIn(tag,src)
+        for literal in ('"哥哥":"哥哥（家里的哥哥）"',
+                        '"姐姐":"姐姐（家里的大姐）"',
+                        '"弟弟":"弟弟（家里的弟弟）"',
+                        '"妹妹":"妹妹（家里的妹妹）"',
+                        '确认是家里的哥哥','确认是家里的大姐',
+                        '确认是家里的弟弟','确认是家里的妹妹'):
+            self.assertIn(literal,ui)
         for tag in ('friendRelativeAge','familyRelativeConfirmed',
                     '朋友必须选性别及比自己大或小','亲属辅助宫须确认真实家庭关系'):
             self.assertIn(tag,ui)

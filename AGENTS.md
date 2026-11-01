@@ -2776,3 +2776,12 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+## 2026-11-01 V19 真家属四类及病位 Python/Swift 同盘逐字验收
+
+iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」「弟弟（家里的弟弟）」「妹妹（家里的妹妹）」逐项明确；每一关系拥有独立真实家庭亲属确认文字，Swift fail-closed；姐姐=家中大姐（需长女条件），朋友永不借家族辅助宫。NativeActorProfileCheck 新增四类未确认不得绑定回归。V8评分冻结不改。
+
+真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
+
+历史 Xcode失败 #41341934448 因独立Python读取中五宫 p['door'] 错误：中五无普通门，已改为 get() 后 #41342466896 PASS，记录保留。旧综合 iOS Offline Native Casting Parity 仍有 V7过时文案断言及 unresolvedRole，不能冒称全库通过；继续逐案审查。未签名真机/App Store 验收。
