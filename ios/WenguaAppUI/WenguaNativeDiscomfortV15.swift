@@ -163,7 +163,8 @@ enum WenguaNativeDiscomfortV15 {
             "patient_stem":actor.mainStem,
             "patient_door":patientDoor,"patient_deity":patientDeity,
             "patient_relation":palaceRelation(patientPalace),
-            "patient_coincidence":patientPalace.id==illness.id ? "同宫" : "不同宫"
+            "patient_coincidence":patientPalace.id==illness.id ? "同宫" : "不同宫",
+            "natal_scope":actor.natalStem ?? "未提供"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
