@@ -76,6 +76,16 @@ class SourceLinkedBodySite(unittest.TestCase):
         self.assertEqual(len(seen),16)
         self.assertGreater(conflicting,0)
 
+    def test_sky_stem_hints_cannot_override_chosen_body_side(self):
+        chart=layout_from_explicit_bureau(dun="yang",ju=3,hour_ganzhi="丁巳")
+        report=compose_draft(chart=chart,inquiry=INQUIRY,calendar=CAL)
+        self.assertEqual(report["audit"]["location_priority"]["sector"],"inner")
+        self.assertEqual(report["audit"]["selected_body_candidates"][0],"肾")
+        # The old draft displayed generic 乙 surface notes (neck/shoulder)
+        # while concluding that the source body branch was internal.
+        self.assertNotIn("颈、肩",report["sections"][1]["text"])
+        self.assertIn("尚无与本宫所取表里位置一致",report["sections"][1]["text"])
+
     def test_no_middle_palace_role_or_unverified_release(self):
         chart=layout_from_explicit_bureau(dun="yin",ju=8,hour_ganzhi="戊戌")
         source=inspect_traditional_body_clues(chart)
