@@ -47,12 +47,13 @@ class HealthDiscomfortExternalNotes(unittest.TestCase):
                     self.assertIsNone(r[key])
                 self.assertFalse(r["customer_template_approved"])
 
-    def test_ui_only_label_updated_and_router_still_blocked(self):
+    def test_v15_native_ui_and_prior_note_scope_remains_draft(self):
         ui=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text()
         router=(ROOT/"ios/WenguaAppUI/WenguaNativeReadingRouter.swift").read_text()
         profile=json.loads((ROOT/"data/knowledge/health_discomfort/body_location_profile_20261029.json").read_text())
-        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:false)',ui)
+        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:true)',ui)
         self.assertIn('static let supportedTopics = ["health.severity"]',router)
+        self.assertIn('if topicID=="health.discomfort"',router)
         self.assertIsNone(profile["approved_customer_template"])
         self.assertFalse(profile["iOS_enabled"])
 
