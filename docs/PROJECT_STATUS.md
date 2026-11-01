@@ -2640,3 +2640,9 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 同版原V8 Python与Swift人物源力专项 parity [#41340149539](https://github.com/turnupmason/WenguaApp/actions/runs/41340149539) **PASS**；V7.7 独立两时辰 [#41340149586](https://github.com/turnupmason/WenguaApp/actions/runs/41340149586) **PASS**。
 - 最新 V19 新增九段顺序/身份校验测试正式进入 Python 3.11/3.12 主 CI，`4d61b3a5` 的 [#41340256039](https://github.com/turnupmason/WenguaApp/actions/runs/41340256039) **PASS**。本轮曾有 Xcode [#41339915786](https://github.com/turnupmason/WenguaApp/actions/runs/41339915786) 拼接语法失败，随后已修复，失败源码记录继续保留。
 - 独立病位专题 Python V11 与 Swift V19 同盘逐字 parity **仍未通过单独验收**；较旧 `iOS Offline Native Casting Parity` 总工作流还存在原版言词断言冲突与其他失败，不借本次两个专项PASS冒充全库通过。传统身体取象不是医疗验证。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
