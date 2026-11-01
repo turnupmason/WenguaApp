@@ -131,12 +131,14 @@ import Foundation
                 6:"father_ordinary",7:"daughter_ordinary"]
             if let previewID=previewIDs[position] {
                 print("V20_PREVIEW_BEGIN "+previewID)
-                print("V20_PREVIEW_META "+relationship+" "+injuryContext+" "+chart.iso+
-                    " "+chart.pillars.year+" "+chart.pillars.month+" "+chart.pillars.day+
-                    " "+chart.pillars.hour+" "+label+
-                    " illness="+String(reading.rolePalaces?["illness"] ?? -1)+
-                    " patient="+String(reading.rolePalaces?["patient"] ?? -1)+
-                    " person_stem="+actor.mainStem)
+                let metaFields=[
+                    relationship,injuryContext,chart.iso,
+                    chart.pillars.year,chart.pillars.month,
+                    chart.pillars.day,chart.pillars.hour,label,
+                    "illness="+String(reading.rolePalaces?["illness"] ?? -1),
+                    "patient="+String(reading.rolePalaces?["patient"] ?? -1),
+                    "person_stem="+actor.mainStem]
+                print("V20_PREVIEW_META "+metaFields.joined(separator:" "))
                 for section in reading.sections {
                     print(section.title+"："+section.text)
                 }
