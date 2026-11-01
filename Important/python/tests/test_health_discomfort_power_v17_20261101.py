@@ -33,7 +33,7 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertFalse(placeholders-keys,placeholders-keys)
         self.assertIn("sourceStrength(\"star\",\"天芮星\"",native)
         self.assertIn("sourceStrength(\"door\",\"伤门\"",native)
-        self.assertIn("stemPower(actorCarrier,patientPalace)",native)
+        self.assertIn("actualRolePower(actor.mainStem,actorCarrier",native)
         self.assertIn("WenguaNativeActorSource.jiaCarrier",native)
         self.assertIn("WenguaVNextEngine.godTiers",native)
         self.assertIn("formationNames.joined",native)
