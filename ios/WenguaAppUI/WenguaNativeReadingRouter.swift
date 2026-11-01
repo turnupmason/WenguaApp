@@ -61,6 +61,9 @@ enum WenguaNativeReadingRouter {
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
                         inquiry:WenguaNativeInquiry? = nil,
                         bundle:Bundle = .main) throws -> WenguaNativeCustomerReading {
+        // iOS native-only body-site module: Linux Swift V8 CLI parity deliberately
+        // compiles the frozen V8 subset without this independent SwiftUI source.
+        #if canImport(UIKit)
         // Independent body-site topic; never enter V8 severity scoring.
         if topicID=="health.discomfort" {
             let request=inquiry ?? WenguaNativeInquiry.standard(relationship)
@@ -73,6 +76,7 @@ enum WenguaNativeReadingRouter {
             return try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,bundle:bundle)
         }
+        #endif
         guard let t=bundle.url(forResource:"reading_template",withExtension:"json"),
               let p=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
