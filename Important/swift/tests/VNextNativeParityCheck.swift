@@ -98,8 +98,25 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
             try require(audit.score==fixture.summary.score,
                 "summary signed score mismatch: \(String(describing:audit.score)) / \(String(describing:fixture.summary.score)) | roles "+palaceSummary+" | controls "+controlsSummary)
             try require(audit.postVoidKnownSum==fixture.summary.post_void_known_sum,"post-void sum mismatch \(audit.postVoidKnownSum) / \(fixture.summary.post_void_known_sum)")
+            // Python legacy fixtures call a gender-qualified Qian/Kun
+            // auxiliary by its palace alias; current Swift canonicalizes
+            // it as "gender". This is ONE true physical palace, not
+            // a second signifier or extra V8 score.
+            func actualRolePalace(_ role:String)->Int? {
+                if let p=audit.roles[role] {return p}
+                if role=="qian" && actor.genderPalace==6 {
+                    return audit.roles["gender"]
+                }
+                if role=="kun" && actor.genderPalace==2 {
+                    return audit.roles["gender"]
+                }
+                return nil
+            }
             for (role,r) in fixture.roles {
-                guard let p=audit.roles[role],let x=audit.palaces[p] else {
+                guard let p=actualRolePalace(role),let x=audit.palaces[p] else {
+                    let miss="V80_LEGACY_MISSING_ROLE "+fixture.instant+
+                        " role="+role+" Swift="+String(describing:audit.roles)+"\n"
+                    FileHandle.standardError.write(Data(miss.utf8))
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
                 try require(p==r.palace,"role "+role+" palace mismatch")
@@ -112,7 +129,7 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                 try require(x.void==r.void,"role "+role+" void mismatch")
             }
             for (k,r) in fixture.auxiliaries {
-                guard let pid=audit.roles[k],let p=audit.palaces[pid] else {
+                guard let pid=actualRolePalace(k),let p=audit.palaces[pid] else {
                     throw WenguaVNextReadingGate.unresolvedRole
                 }
                 try require(pid==r.palace,"auxiliary palace "+k+" mismatch")
