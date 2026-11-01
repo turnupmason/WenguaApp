@@ -255,19 +255,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif use_injury:
         for site in injurySites:
             if not _matched(site,candidates):candidates.append(site)
-    added=0
-    for p,symbol,power in witness:
-        if p["id"]==ip or _tier(power)<4:continue
-        for site in source_location(p):
-            if _matched(site,candidates):continue
-            direct=symbol!="伤门" and bool(flags(symbol,p))
-            corroboration=any(other["id"] not in (p["id"],ip) and _tier(power2)>=3 and
-                              _matched(site,source_location(other))
-                              for other,_,power2 in witness)
-            if direct or corroboration:
-                candidates.append(site);added+=1
-            if added>=4:break
-        if added>=4:break
+    # V21: independent role palaces can corroborate the main site, never
+    # replace a real Tianrui or activated injury site with an unrelated organ.
     scores=[]
     for idx,site in enumerate(candidates):
         val=_tier(illnessPower) if _matched(site,originalSites) else 0
@@ -426,7 +415,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             formsFull=(f"病宫临{doorWord}、{deity}；天芮携{sky}、地盘{illness['earthStem']}"
                        f"各有其象，天地格"+"、".join(formation)+"。")
     else:
-        formsFull=f"病宫见{doorWord}、{deity}，天芮携{sky}、地盘{illness['earthStem']}各按本宫取象，不另扩大部位。"
+        formsFull=f"病宫临{doorWord}、{deity}；天芮携{sky}下临{illness['earthStem']}，天地格"+"、".join(formation)+"。"
     danger=[]
     for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
         signs=flags(stem,illness)
