@@ -382,14 +382,19 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             f"{d}在{label(p)}宫，该宫也取{hit}，与已选病位重合，故可作为另一宫的交叉印证。")
     doorsFull="".join(doorSentences)
     hourMatch=next((s for s in source_location(hour) if _matched(s,leadSites)),None)
-    if hour["id"]==ip:
+    if hour["id"]==ip and patient["id"]==ip and actorCarrier==hourCarrier:
+        hourFull=""
+    elif hour["id"]==ip:
         hourFull=f"时干{hourStem}也落{label(hour)}宫，与病星同宫参看。"
     elif hourMatch:
         hourFull=f"时干{hourStem}落{label(hour)}宫，亦指{hourMatch}，与主位相互印证。"
     else:
         hourFull=f"时干{hourStem}落{label(hour)}宫，另宫只作病事参照。"
     actorOverlap=next((s for s in source_location(patient) if _matched(s,leadSites)),None)
-    if patient["id"]==ip:
+    if patient["id"]==ip and hour["id"]==ip and actorCarrier==hourCarrier:
+        personFull=(f"{relationship}用神{actor['mainStem']}就是时干，二者同符同落"
+                    f"{label(illness)}宫，与天芮合看，不重复计位。")
+    elif patient["id"]==ip:
         personFull=f"{relationship}用神{actor['mainStem']}在{label(illness)}宫，与天芮同宫。"
     elif patient["id"]==hour["id"] and actorCarrier==hourCarrier:
         personFull=f"{relationship}用神{actor['mainStem']}与时干同符同在{label(patient)}宫，只作一次位置证据。"
@@ -413,16 +418,22 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
     deity=illness["deity"]
     doorWord="本宫门象不取" if not use_injury and door=="伤门" else door
-    formsFull=(f"病宫{doorWord}、{deity}同临；天芮携{sky}与地盘{illness['earthStem']}"
-               f"分别指{skySupport}、{earthSupport}，天地格"
-               + "、".join(formation)+"可与主位同参。"
-               if skySupport is not None and earthSupport is not None else
-               f"病宫见{doorWord}、{deity}，天芮携{sky}、地盘{illness['earthStem']}各按本宫取象，不另扩大部位。")
+    if skySupport is not None and earthSupport is not None:
+        if _same(skySupport,earthSupport):
+            formsFull=(f"病宫临{doorWord}、{deity}；天芮携{sky}与地盘{illness['earthStem']}"
+                       f"同指{skySupport}，天地格"+"、".join(formation)+"。")
+        else:
+            formsFull=(f"病宫临{doorWord}、{deity}；天芮携{sky}、地盘{illness['earthStem']}"
+                       f"各有其象，天地格"+"、".join(formation)+"。")
+    else:
+        formsFull=f"病宫见{doorWord}、{deity}，天芮携{sky}、地盘{illness['earthStem']}各按本宫取象，不另扩大部位。"
     danger=[]
     for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
         signs=flags(stem,illness)
         site=next((s for s in sites if _matched(s,leadSites)),None)
-        if signs and site:danger.append(stem+"、".join(signs)+f"，限看{site}一带")
+        if signs and site:
+            term=stem+"、".join(signs)+f"，限看{site}一带"
+            if term not in danger:danger.append(term)
     if bird:
         signs=flags(bird,illness)
         site=next((s for s in birdSites if _matched(s,leadSites)),None)
