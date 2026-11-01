@@ -1,0 +1,104 @@
+{
+  "schema": "health_discomfort_inner_outer_v12_source_linked_20261031",
+  "topic_id": "health.discomfort",
+  "status": "research_draft_not_enabled",
+  "inner_by_dun": {
+    "yang": [
+      1,
+      8,
+      3,
+      4
+    ],
+    "yin": [
+      9,
+      2,
+      7,
+      6
+    ]
+  },
+  "outer_by_dun": {
+    "yang": [
+      9,
+      2,
+      7,
+      6
+    ],
+    "yin": [
+      1,
+      8,
+      3,
+      4
+    ]
+  },
+  "modality": {
+    "outer_door": [
+      "伤门"
+    ],
+    "inner_door": [
+      "死门",
+      "杜门"
+    ],
+    "outer_deity": [
+      "白虎"
+    ],
+    "inner_deity": [
+      "玄武",
+      "螣蛇"
+    ],
+    "outer_stem": [
+      "戊",
+      "己"
+    ],
+    "inner_stem": [
+      "壬",
+      "癸"
+    ]
+  },
+  "priority": [
+    "actual_tianrui_palace_sector",
+    "independent_tianrui_carried_stem",
+    "same_palace_door_deity_modality",
+    "true_hour_injury_patient_as_secondary",
+    "separate_v80_severity_not_body_site"
+  ],
+  "source": [
+    {
+      "book": "kaiwu",
+      "chapter_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+      "index": "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json",
+      "line": 85,
+      "source_sha": "c0ec0f318792a740ab74bfe2562991d6501267d7059428aa0ca0b40e7fdaf365",
+      "note": "阳遁坤二外、阴遁坤二内，原书同时参时干和伤门"
+    },
+    {
+      "book": "kaiwu",
+      "chapter_sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",
+      "index": "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json",
+      "line": 31,
+      "source_sha": "7bd61f25f76160a6a1048bed8312c3226122875a5fa88713e65bd06258b97fb0",
+      "note": "阴遁离九内盘的原书例"
+    },
+    {
+      "book": "shenqi",
+      "chapter_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "index": "data/knowledge/shenqi/health_prediction_ch01/method_index.json",
+      "lines": [
+        5,
+        7,
+        9
+      ],
+      "note": "八宫身体表里映射"
+    }
+  ],
+  "exceptions": {
+    "source_example_is_not_general_medical_validation": true,
+    "door_or_deity_cannot_overwrite_sector": true,
+    "sky_and_earth_are_distinct_no_causal_inference": true,
+    "patient_uses_actual_v11_role_not_forced_day_stem": true,
+    "no_revival_or_death_certain_from_medical_actor": true,
+    "external_cancer_organ_clues_unverified": true,
+    "keep_original_two_candidates": true,
+    "do_not_change_v8_or_enable_ios": true
+  },
+  "maturity": "user_rule_with_book_case_crosscheck_not_independent_case_blind_test"
+}

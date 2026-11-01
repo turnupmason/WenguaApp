@@ -89,7 +89,7 @@ class DiscomfortV11Draft(unittest.TestCase):
                     r=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
                     pid=r["audit"]["tianrui_palace"]
                     sites.add(pid)
-                    self.assertFalse(r["audit"]["inner_outer_selected"])
+                    self.assertTrue(r["audit"]["inner_outer_selected"])
                     self.assertEqual(r["audit"]["v80_severity_score"],None)
                     self.assertEqual(len(r["sections"]),6)
                     pair_rows=r["audit"]["81_pairs"]
@@ -117,7 +117,7 @@ class DiscomfortV11Draft(unittest.TestCase):
             r=compose_draft(chart=chart,inquiry=FRIEND,calendar=CAL)
             for word in ("确诊","患癌","不治之症","判为极大凶","总分"):
                 self.assertNotIn(word,r["reading_text"])
-            self.assertIn("可看"+r["audit"]["surface_all"][0],
+            self.assertIn("参看"+r["audit"]["selected_body_candidates"][0],
                           r["sections"][-1]["text"])
 
 

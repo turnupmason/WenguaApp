@@ -601,25 +601,43 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "e778a859f444c61fd0bea89e5d399ef86b0974be"
+      "sha": "c5dbfbdbe2395845f1b2209199e6905489d2a5fd"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "e778a859f444c61fd0bea89e5d399ef86b0974be"
+      "sha": "c5dbfbdbe2395845f1b2209199e6905489d2a5fd"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "9b27215657daa58814b36f401cd635053d4aca84"
+      "sha": "726c68b3c6ce94b2315492eb71ff99a8ca541b12"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v11_draft_20261031.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v11_draft_20261031.py",
-      "sha": "430da9eb2a31e1804e281f4ed68531870af551ec"
+      "sha": "a98a61c2eefd4c5f81a357734658eae0daca8a29"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/inner_outer_priority_policy_20261031.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/inner_outer_priority_policy_20261031.json",
+      "sha": "f3e52789540b62f83ac7489075c59a4777ebcbcb"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_discomfort_inner_outer_v12_draft.py",
+      "snapshot": "Important/python/engine/health_discomfort_inner_outer_v12_draft.py",
+      "sha": "09d4e2c471278e2721d37c7265ac559cd83f3be5"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_inner_outer_v12_20261031.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_inner_outer_v12_20261031.py",
+      "sha": "015438b5be6daf0382de2b7b6f44679d3d2e7277"
     }
   ]
 }
