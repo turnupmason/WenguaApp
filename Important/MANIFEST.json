@@ -613,7 +613,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "3edd657a61c9a275bc2786c45b7c744b70d1ea16"
+      "sha": "381e855e19d8131ccbf414f045e5b0b9d96c6c7d"
     },
     {
       "platform": "python",
@@ -631,7 +631,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_inner_outer_v12_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_inner_outer_v12_draft.py",
-      "sha": "09d4e2c471278e2721d37c7265ac559cd83f3be5"
+      "sha": "65ac4bffc740f9d97f69a49296ed9bd938cfe508"
     },
     {
       "platform": "python",
@@ -662,6 +662,42 @@
       "canonical": "tests/test_health_discomfort_v13_detail_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v13_detail_20261101.py",
       "sha": "5aa9c00acee6ab182b6bb4704ec1d4f89a30a9e8"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/workbook_255_v14_ingest_manifest_20261101.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/workbook_255_v14_ingest_manifest_20261101.json",
+      "sha": "5c494dff2f8c76ca213add06d8650283ecc0381b"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/cross_text_16_location_candidates_v14_20261101.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/cross_text_16_location_candidates_v14_20261101.json",
+      "sha": "2ad54f4b974e5935e89077b3314ddf318356e208"
+    },
+    {
+      "platform": "swift",
+      "canonical": "data/knowledge/health_discomfort/cross_text_16_location_candidates_v14_20261101.json",
+      "snapshot": "Important/swift/knowledge/health_discomfort/cross_text_16_location_candidates_v14_20261101.json",
+      "sha": "2ad54f4b974e5935e89077b3314ddf318356e208"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_discomfort/book_cases_12_conflicts_20_v14_20261101.json",
+      "snapshot": "Important/python/knowledge/health_discomfort/book_cases_12_conflicts_20_v14_20261101.json",
+      "sha": "7911bd265fe82d6e682f266c09f039c32f1aaaaf"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_discomfort_cross_text_v14_draft.py",
+      "snapshot": "Important/python/engine/health_discomfort_cross_text_v14_draft.py",
+      "sha": "5c286841dc84a630d349ac2059d5370b3c39b160"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_cross_text_v14_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_cross_text_v14_20261101.py",
+      "sha": "51ca99ea5975b90aec6777e6ba4abbd6e8aa9038"
     }
   ]
 }

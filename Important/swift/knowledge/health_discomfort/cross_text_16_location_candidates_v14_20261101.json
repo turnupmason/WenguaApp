@@ -1,0 +1,288 @@
+{
+  "schema": "wengua_health_discomfort_v14_16_combinations_20261101",
+  "status": "separate_cross_text_candidate_not_approved",
+  "source_workbook_sha256": "19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c",
+  "cases_source_ids": [
+    "HLT-0190",
+    "HLT-0202",
+    "HLT-0203",
+    "HLT-0204"
+  ],
+  "rows": [
+    {
+      "id": "HLT-0240",
+      "palace": 2,
+      "stem_tokens": [
+        "己"
+      ],
+      "door_symbols": [
+        "杜门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "上腹、脾胃和食道多个传统候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0241",
+      "palace": 8,
+      "stem_tokens": [
+        "庚"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "左腹肠道与筋骨候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0242",
+      "palace": 7,
+      "stem_tokens": [
+        "辛"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "胸廓、呼吸与外伤候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0243",
+      "palace": 7,
+      "stem_tokens": [
+        "辛"
+      ],
+      "door_symbols": [
+        "杜门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "胸膈与咽部候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0244",
+      "palace": 6,
+      "stem_tokens": [
+        "庚"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "右侧筋骨与头部候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0245",
+      "palace": 9,
+      "stem_tokens": [
+        "丙",
+        "丁"
+      ],
+      "door_symbols": [
+        "景门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "头面、眼目与心血管多个候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0246",
+      "palace": 9,
+      "stem_tokens": [
+        "庚",
+        "辛"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "头眼和胸部互相冲突的候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0247",
+      "palace": 1,
+      "stem_tokens": [
+        "壬",
+        "癸"
+      ],
+      "door_symbols": [
+        "杜门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "下部水道候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0248",
+      "palace": 1,
+      "stem_tokens": [
+        "壬",
+        "癸"
+      ],
+      "door_symbols": [
+        "休门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "下部泌尿候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0249",
+      "palace": 3,
+      "stem_tokens": [
+        "乙"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "左侧腰肋和筋脉候选",
+      "executable_research_only": true,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0250",
+      "palace": 4,
+      "stem_tokens": [
+        "乙",
+        "辛"
+      ],
+      "door_symbols": [
+        "伤门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "左肩、筋脉与肝胆候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0251",
+      "palace": 2,
+      "stem_tokens": [
+        "壬",
+        "癸"
+      ],
+      "door_symbols": [
+        "死门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "腹部和水道多组候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0252",
+      "palace": 2,
+      "stem_tokens": [
+        "丙",
+        "壬"
+      ],
+      "door_symbols": [
+        "六合"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "上腹与其他系统候选",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0253",
+      "palace": 9,
+      "stem_tokens": [
+        "庚"
+      ],
+      "door_symbols": [
+        "死门",
+        "白虎"
+      ],
+      "symbol_operator": "tianrui_carried_stem_only",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "头面传统病象，不提供真实诊断",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0254",
+      "palace": 2,
+      "stem_tokens": [
+        "庚",
+        "癸"
+      ],
+      "door_symbols": [
+        "死门",
+        "值符"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "内外盘与有序干格需要分别核对",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    },
+    {
+      "id": "HLT-0255",
+      "palace": 3,
+      "stem_tokens": [
+        "丁",
+        "癸"
+      ],
+      "door_symbols": [
+        "死门"
+      ],
+      "symbol_operator": "unresolved_ordered_two_stems",
+      "verified_school": "unverified_cross_text_inference",
+      "status": "candidate_not_authorized",
+      "body_candidates": "胸部心象与肝胆并列",
+      "executable_research_only": false,
+      "cannot_choose_unique_organ": true
+    }
+  ],
+  "global_prohibitions": [
+    "do_not_swap_heaven_earth",
+    "do_not_treat_two_stem_ambiguous_as_or",
+    "do_not_override_tianrui_body_ring",
+    "do_not_count_multi_system_as_clinical",
+    "no_score_strength_from_81_net",
+    "no_patient_vs_illness_door_swap"
+  ]
+}
