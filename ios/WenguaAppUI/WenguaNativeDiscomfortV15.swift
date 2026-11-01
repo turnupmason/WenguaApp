@@ -249,7 +249,17 @@ enum WenguaNativeDiscomfortV15 {
             "patient_relation":"患者宫和病宫"+palaceRelation(patientPalace),
             "patient_coincidence":patientPalace.id==illness.id ? "两个用神在同一实宫，应合看但不重复计位" : "患者宫另有宫象，不能据此改写天芮所定部位",
             "natal_scope":actor.natalStem.map{"另知年命"+$0+"，须按真实年命位置另看"} ?? "出生年命未提供，因此不额外指定年命宫",
-            "injury_deity":injury.deity ?? "无神"
+            "injury_deity":injury.deity ?? "无神",
+            "illness_power":illnessPower,"door_power":doorPower,
+            "deity_power":deityPower,"sky_power":skyPower,
+            "earth_power":earthPower,"patient_power":patientPower,
+            "injury_power":injuryPower,"hour_power":hourPower,
+            "formation":formationNames.joined(separator:"、"),
+            "illness_focus":illnessFocus,"injury_focus":injuryFocus,
+            "hour_focus":hourFocus,"secondary_focus":secondaryFocus,
+            "location_focus":locationFocus,
+            "injury_relation":palaceRelation(injury),
+            "hour_relation":palaceRelation(hourPalace)
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
@@ -269,7 +279,7 @@ enum WenguaNativeDiscomfortV15 {
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v16_full_facts_no_customer_sources_20261101",
+            version:"discomfort_v17_200_power_81_formation_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:["illness":illness.id,"patient":actor.mainPalace,
