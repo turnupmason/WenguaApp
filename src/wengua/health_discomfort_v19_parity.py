@@ -321,8 +321,9 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         "accident":"意外受伤","bone":"骨肉受损",
         "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
         "surgery":"已做或拟做手术"}
-    injurySiteNames="、".join(
-        [site for site,score,idx in ranked if _matched(site,injurySites)][:2])
+    selectedInjurySites=[site for site,score,idx in ranked
+                         if _matched(site,injurySites)][:2]
+    injurySiteNames="、".join(selectedInjurySites)
     injuryScope="体内" if inj["id"] in inner else "体表"
     injuryOverlap=next((s for s in injurySites if _matched(s,originalSites)),None)
     injuryRelation=("伤门与天芮同宫，两条线索落在同一处。"
@@ -343,13 +344,13 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             carrier=star["carriedStem"]
             carrierPower=stem_power(carrier,inj)
             candidates=_parts("/".join(stems[carrier]["qimen_secret_vol13"]))
-            site=next((x for x in candidates if _matched(x,injurySites)),None)
+            site=next((x for x in candidates if _matched(x,selectedInjurySites)),None)
             if _tier(starPower)>=2 and _tier(carrierPower)>=2 and site:
                 injuryRoomEvidence.append(
                     f"宫中{star['star']}携{carrier}的部位干象也取{site}，故这处有星与干的同宫互证。")
         earthPower=source_strength("stem",inj["earthStem"],inj,inj["earthStages"])
         earthSites=_parts("/".join(stems[inj["earthStem"]]["qimen_secret_vol13"]))
-        earthSite=next((x for x in earthSites if _matched(x,injurySites)),None)
+        earthSite=next((x for x in earthSites if _matched(x,selectedInjurySites)),None)
         if _tier(earthPower)>=2 and earthSite:
             injuryRoomEvidence.append(
                 f"地盘{inj['earthStem']}的独立干象也指{earthSite}，再收窄到这一带。")

@@ -522,9 +522,10 @@ enum WenguaNativeDiscomfortV15 {
             "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
             "surgery":"已做或拟做手术"
         ]
-        let injurySiteNames=ranked.map{$0.0}.filter{
+        let selectedInjurySites=ranked.map{$0.0}.filter{
             matched($0,injurySites)
-        }.prefix(2).joined(separator:"、")
+        }.prefix(2).map{$0}
+        let injurySiteNames=selectedInjurySites.joined(separator:"、")
         let injuryScope=(chart.bureau.dun=="yang" ? innerYang:innerYin)
             .contains(injury.id) ? "体内" : "体表"
         let injuryOverlap=injurySites.first(where:{matched($0,originalSites)})
@@ -560,7 +561,7 @@ enum WenguaNativeDiscomfortV15 {
                 let candidates=parts((mapping[star.carriedStem]?["qimen_secret_vol13"] ?? [])
                     .joined(separator:"/"))
                 if tier(starPower)>=2 && tier(carrierPower)>=2,
-                   let site=candidates.first(where:{matched($0,injurySites)}) {
+                   let site=candidates.first(where:{matched($0,selectedInjurySites)}) {
                     injuryRoomEvidence.append(
                         "宫中\(star.star)携\(star.carriedStem)的部位干象也取\(site)，故这处有星与干的同宫互证。")
                 }
@@ -570,7 +571,7 @@ enum WenguaNativeDiscomfortV15 {
             let earthSites=parts((mapping[injury.earthStem]?["qimen_secret_vol13"] ?? [])
                 .joined(separator:"/"))
             if tier(earthPower)>=2,
-               let site=earthSites.first(where:{matched($0,injurySites)}) {
+               let site=earthSites.first(where:{matched($0,selectedInjurySites)}) {
                 injuryRoomEvidence.append(
                     "地盘\(injury.earthStem)的独立干象也指\(site)，再收窄到这一带。")
             }
