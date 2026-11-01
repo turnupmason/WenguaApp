@@ -2457,3 +2457,7 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+## 2026-11-01 · 疾病「难受部位」V13 三层携干、上中下部及人物门语义审计
+用户新补充十干72干宫、八宫、八门、八神细节：前一20261029候选库已涵盖大部分具体象意，此次不重复覆盖原著或旧候选。真正新增 data/knowledge/health_discomfort/body_location_condition_detail_v13_20261101.json 上(离巽坤)、中(震兑，5仅象意)、下(艮坎乾)区，主天芮携干、辅天禽携干、地盘仅获核准真实月令休囚条件时可参；源八门严格分患者patient与病神illness，不可把患者伤门直接说成病人骨折。内新/外旧、乾宫长幼、兑临壬癸性别、震前兑后只能作未审核用户汇编候选；未提供患者年命/年龄/性别不猜；「王→壬」「自虎→白虎」仅OCR备选，不改原文。疾病恶性、生死、鬼神作祟等保留文化原著语境，不当临床医学结论。新V13独立Python+现行V11六段模板、专项1080局态，Important双方模板和MANIFEST SHA同步；V8计分/故事/旧失败保持原样，iOS专题仍禁用。审计 docs/HEALTH_DISCOMFORT_V13_BODY_DETAIL_AUDIT_20261101.md。首次V13 CI #41316769156 FAIL因测试迭代字串caveat，及中间镜像SHA不同步，故障如实保留；修复并镜像同步后的源SHA aa3f1fe16 主CI #41317140608 PASS (Python3.11/3.12)，现行V8 native parity #41317140587 PASS，V7.7 native #41317140592 PASS。不是新专题iOS Swift parity或科学病位验证；原著新章0、独立历史案例0。
