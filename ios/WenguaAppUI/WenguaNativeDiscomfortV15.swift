@@ -160,7 +160,10 @@ enum WenguaNativeDiscomfortV15 {
             "void_clue":voidText,"horse_clue":horseText,"tomb_clue":tombText,
             "earth_hint":skyOther.joined(separator:"、"),
             "stem_scope":"天盘与地盘按实际上下位置分别参看",
-            "patient_stem":actor.mainStem
+            "patient_stem":actor.mainStem,
+            "patient_door":patientDoor,"patient_deity":patientDeity,
+            "patient_relation":palaceRelation(patientPalace),
+            "patient_coincidence":patientPalace.id==illness.id ? "同宫" : "不同宫"
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
