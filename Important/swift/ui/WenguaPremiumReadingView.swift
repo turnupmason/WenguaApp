@@ -217,7 +217,21 @@ struct WenguaPremiumVerdictCard: View {
             }
             Rectangle().fill(gold.opacity(0.32)).frame(height:1)
 
-            if let verdict=WenguaVerdictPresentation.from(reading) {
+            if reading.topicID=="health.discomfort" {
+                // A body-site is NOT a V8 ten-grade illness-severity verdict.
+                Text("难受部位 · 古籍类象")
+                    .font(.system(size:18,weight:.semibold,design:.serif))
+                    .foregroundStyle(muted)
+                Text("可能关注的身体区域")
+                    .font(.system(size:27,weight:.semibold,design:.serif))
+                    .foregroundStyle(gold)
+                Text(reading.sections.first(where:{$0.id=="06_conclusion"})?.text ??
+                     "当前无足够实际盘面依据来确定传统部位候选。")
+                    .font(.system(size:17,design:.serif))
+                    .lineSpacing(6)
+                    .foregroundStyle(ink)
+                    .fixedSize(horizontal:false,vertical:true)
+            } else if let verdict=WenguaVerdictPresentation.from(reading) {
                 if let grade=verdict.grade,
                    let caption=WenguaHealthGradeCaption.forGrade(grade) {
                     // First tab: ten-grade header and ~150–200 characters
