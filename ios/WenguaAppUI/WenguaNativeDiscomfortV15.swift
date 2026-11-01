@@ -622,7 +622,10 @@ enum WenguaNativeDiscomfortV15 {
         }.joined()
         let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
         let hourFull:String
-        if hourPalace.id==illness.id {
+        if hourPalace.id==illness.id && patientPalace.id==illness.id &&
+           actorCarrier==hourCarrier {
+            hourFull=""
+        } else if hourPalace.id==illness.id {
             hourFull="时干\(hourStem)也落\(label(hourPalace))宫，与病星同宫参看。"
         } else if let hit=hourMatch {
             hourFull="时干\(hourStem)落\(label(hourPalace))宫，亦指\(hit)，与主位相互印证。"
@@ -633,7 +636,10 @@ enum WenguaNativeDiscomfortV15 {
             matched($0,leadSites)
         })
         let personFull:String
-        if patientPalace.id==illness.id {
+        if patientPalace.id==illness.id && hourPalace.id==illness.id &&
+           actorCarrier==hourCarrier {
+            personFull="\(relationship)用神\(actor.mainStem)就是时干，二者同符同落\(label(illness))宫，与天芮合看，不重复计位。"
+        } else if patientPalace.id==illness.id {
             personFull="\(relationship)用神\(actor.mainStem)在\(label(illness))宫，与天芮同宫。"
         } else if patientPalace.id==hourPalace.id && actorCarrier==hourCarrier {
             personFull="\(relationship)用神\(actor.mainStem)与时干同符同在\(label(patientPalace))宫，只作一次位置证据。"
@@ -659,7 +665,11 @@ enum WenguaNativeDiscomfortV15 {
         let doorWord=(!useInjury && door=="伤门") ? "本宫门象不取" : door
         let formsFull:String
         if let first=skySupport,let second=earthSupport {
-            formsFull="病宫\(doorWord)、\(deity)同临；天芮携\(sky)与地盘\(illness.earthStem)分别指\(first)、\(second)，天地格\(formationNames.joined(separator:"、"))可与主位同参。"
+            if sameSite(first,second) {
+                formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)与地盘\(illness.earthStem)同指\(first)，天地格\(formationNames.joined(separator:"、"))。"
+            } else {
+                formsFull="病宫临\(doorWord)、\(deity)；天芮携\(sky)、地盘\(illness.earthStem)各有其象，天地格\(formationNames.joined(separator:"、"))。"
+            }
         } else {
             formsFull="病宫见\(doorWord)、\(deity)，天芮携\(sky)、地盘\(illness.earthStem)各按本宫取象，不另扩大部位。"
         }
@@ -668,7 +678,8 @@ enum WenguaNativeDiscomfortV15 {
             let signs=badSigns(stem,illness)
             if !signs.isEmpty,
                let site=sites.first(where:{matched($0,leadSites)}) {
-                danger.append("\(stem)\(signs.joined(separator:"、"))，限看\(site)一带")
+                let term="\(stem)\(signs.joined(separator:"、"))，限看\(site)一带"
+                if !danger.contains(term) {danger.append(term)}
             }
         }
         if let bird {
