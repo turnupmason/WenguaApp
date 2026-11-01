@@ -2,7 +2,7 @@
   "schema": "wengua_health_discomfort_v11_candidate_template_20261031",
   "topic_id": "health.discomfort",
   "status": "research_draft_not_customer_approved",
-  "reference_style": "V11.2真实人物与九宫证据，V8只读盘面事实；不继承V8病情轻重计分、十档结论或应期；按阴阳遁＋病星实宫选择传统体表/体内主象，门神仅作条件印证；V13附加上中下部、独立病/人八门和病芮/天禽/地盘三层携干；新旧病仅候选",
+  "reference_style": "V11.2真实人物与九宫证据，V8只读盘面事实；不继承V8病情轻重计分、十档结论或应期；按阴阳遁＋病星实宫选择传统体表/体内主象，门神仅作条件印证；V13附加上中下部、独立病/人八门和病芮/天禽/地盘三层携干；新旧病仅候选；V15完整255源规则逐行记录、三套十干不同来源仅在真实天芮携干条件下显示；未核双干绝不自定天加地",
   "sections": [
     "01_location",
     "02_tianrui",
@@ -33,7 +33,8 @@
     "auxiliary_none": "未有符合条件的附加人物宫",
     "auxiliary_found": "实际可参人物辅宫{palaces}，不重复计算同一物理宫",
     "review": "病宫按{sector}为主；{counter_note}时干、伤门、患者用神各据实际落宫参照，不能把代测者日干直接当病人，也不能据医药克病确定器官或生死。",
-    "ending": "综上，天芮落{illness_palace}，按{sector}主象先参看{focus_short}一带；{caveat}。这是古籍部位类象，不等于实际症状、病名或病因，仍须依据本人症状及医学检查辨明。"
+    "ending": "综上，天芮落{illness_palace}，按{sector}主象先参看{focus_short}一带；{caveat}。这是古籍部位类象，不等于实际症状、病名或病因，仍须依据本人症状及医学检查辨明。",
+    "source_comparison": "另据古籍十干异文，天芮携{sky}：《奇门遁甲秘笈大全》卷十三取{qimen}；《三命通会》脏腑歌取{viscera}，体表歌取{surface}。后二说同属一本文献的不同歌诀，不可充作两项独立印证，也不据此确定真实病灶。"
   },
   "guards": {
     "needs_real_nine_palaces": true,
@@ -44,6 +45,9 @@
     "do_not_diagnose_or_advise_treatment": true,
     "do_not_copy_v8_score_grade_or_timing": true,
     "do_not_enable_ios_or_15_day_lock": true,
-    "no_medical_validity_claims": true
+    "no_medical_validity_claims": true,
+    "all_255_rows_required_and_source_tiers_kept_separate": true,
+    "separate_cross_system_stem_families": true,
+    "no_direction_guess_when_sky_earth_unknown": true
   }
 }
