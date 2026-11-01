@@ -1,51 +1,51 @@
 {
-  "schema": "wengua_health_discomfort_native_v21_focused_site_20261101",
+  "schema": "wengua_health_discomfort_native_v22_v16_evidence_restored_20261101",
   "topic_id": "health.discomfort",
-  "status": "v21_internal_review_pending_user_approval",
+  "status": "v22_internal_review_pending_user_approval",
   "sections": [
     {
       "id": "01_location",
-      "title": "病位主象",
+      "title": "病宫与位置",
       "text": "{location_full}"
     },
     {
       "id": "02_injury",
-      "title": "伤门条件取象",
+      "title": "特定伤损与伤门",
       "text": "{injury_full}"
     },
     {
       "id": "03_assist_doors",
-      "title": "其它门宫互证",
+      "title": "同部位的旁宫印证",
       "text": "{other_doors}"
     },
     {
       "id": "04_hour",
-      "title": "时干事体",
+      "title": "时干与病事",
       "text": "{hour_site}"
     },
     {
       "id": "05_person",
-      "title": "人物宫互证",
+      "title": "问事人与病宫",
       "text": "{actor_full}"
     },
     {
       "id": "06_auxiliary",
-      "title": "有条件的家族辅助",
+      "title": "家族辅助宫",
       "text": "{auxiliary_full}"
     },
     {
       "id": "07_formation",
-      "title": "独立天地干互证",
+      "title": "天盘地盘病象与81格局",
       "text": "{formation_full}"
     },
     {
       "id": "08_constraints",
-      "title": "空墓刑迫条件",
+      "title": "星门八神与墓刑空迫",
       "text": "{danger_full}"
     },
     {
       "id": "09_conclusion",
-      "title": "综合病位",
+      "title": "病位结论",
       "text": "{final_site}"
     }
   ],
@@ -57,5 +57,5 @@
     "severe_pain",
     "surgery"
   ],
-  "injury_context_note": "只有用户实际选中伤损/剧痛/手术才读伤门落宫；none绝不使用伤门；伤门证据不意味着已医学确认损伤。用户提出的传统解释仍待古籍逐版本条件核对。"
+  "injury_context_note": "伤门作为独立主用神限于已确认的伤损、骨肉、出血、剧痛或手术选项；但天芮病宫实际所临的八门（含伤门）及其门克宫、宫克门方向始终必须查，不能因未启用伤门独立主用神而省略门迫。门星神及十干力量是文化象意，不是实际疾病和医学疼痛强度诊断。"
 }
