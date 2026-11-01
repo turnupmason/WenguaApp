@@ -26,6 +26,7 @@ class V19LocationFamily(unittest.TestCase):
         self.assertIn('allowedContexts:Set<String>',swift)
         self.assertIn('if (required[i]=="02_injury" && !useInjury)',swift)
         self.assertIn('if useInjury && injury.id != illness.id',swift)
+        self.assertIn('(useInjury || door != "伤门")',swift)
         self.assertIn('rank+=25+tier(injuryPower)',swift)
     def test_real_family_and_friend_guards(self):
         src=(ROOT/"ios/WenguaAppUI/WenguaNativeActorBinding.swift").read_text()

@@ -201,7 +201,8 @@ enum WenguaNativeDiscomfortV15 {
         let birdPower=try bird.map{ _ in try sourceStrength("star","天禽星",illness)} ?? "待核"
         let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
-        let doorPower=try sourceStrength("door",door,illness)
+        let doorPower=(!useInjury && door=="伤门") ? "待核" :
+            (try sourceStrength("door",door,illness))
         let skyPower=try stemPower(sky,illness)
         let earthPower=try sourceStrength("stem",illness.earthStem,illness,illness.earthStages)
         let actorCarrier=actor.mainStem=="甲"
@@ -651,7 +652,9 @@ enum WenguaNativeDiscomfortV15 {
         }
         if illnessVoid=="true_void" {danger.append("天芮宫真空，本宫主位候选减看")}
         else if illnessVoid=="fake_void" {danger.append("天芮宫假空，保留宫位候选")}
-        if doorRel=="宫克符号" {danger.append("\(door)门迫，此门的旁证减看")}
+        if doorRel=="宫克符号" && (useInjury || door != "伤门") {
+            danger.append("\(door)门迫，此门的旁证减看")
+        }
         let dangerFull=danger.isEmpty ? "" : danger.joined(separator:"；")+"。"
         let ending=secondSite.isEmpty ? "。" : "；次看\(secondSite)。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"

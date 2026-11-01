@@ -411,7 +411,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         if signs and site:danger.append("天禽携"+bird+"、".join(signs)+f"，另指{site}")
     if illnessVoid=="true_void":danger.append("天芮宫真空，本宫主位候选减看")
     elif illnessVoid=="fake_void":danger.append("天芮宫假空，保留宫位候选")
-    if doorRel=="宫克符号":danger.append(door+"门迫，此门的旁证减看")
+    if doorRel=="宫克符号" and (use_injury or door!="伤门"):
+        danger.append(door+"门迫，此门的旁证减看")
     dangerFull="；".join(danger)+"。" if danger else ""
     ending="。" if not secondSite else "；次看"+secondSite+"。"
     originalFocus="、".join(originalSites[:2])
