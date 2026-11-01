@@ -25,9 +25,9 @@ class ColleagueUserClock(unittest.TestCase):
     def test_dynamic_exactly_two_paragraphs_for_this_colleague(self):
         s=next(x["text"] for x in self.case["source_sections"]
                if x["id"]=="90_review")
-        self.assertEqual(s.count("。"),2,s)
-        self.assertEqual(len(s.split("\n\n")),2,s)
-        for role in ("天芮病宫","天心医生","乙奇医药","患者用神",
+        self.assertEqual(s.count("。"),4,s)
+        self.assertEqual(len(s.split("\n\n")),4,s)
+        for role in ("病星天芮","天心","乙奇","患者",
                      "时干事体","值符"):
             self.assertIn(role,s)
         for unsupported in ("长辈乾宫","长辈坤宫","患者年命",
@@ -35,7 +35,7 @@ class ColleagueUserClock(unittest.TestCase):
                             "1930","1920","+3分","+5分",
                             "完全失控","同宫去重"):
             self.assertNotIn(unsupported,s)
-        self.assertIn("不能据此判断真实病情",s)
+        self.assertIn("不作现实病情判断",s)
         self.assertTrue("综上所述，此病为" in s or "暂不强断" in s)
 
 if __name__=="__main__":

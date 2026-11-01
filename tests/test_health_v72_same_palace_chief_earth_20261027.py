@@ -41,7 +41,7 @@ class ElderCohostV72(unittest.TestCase):
         for forbidden in ("按新规则加3分","同宫去重","每宫加3分",
                           "完全失控","长生分支待核（"):
             self.assertNotIn(forbidden,r["reading_text"])
-        self.assertIn("以上只作传统古籍象意参考",r["reading_text"])
+        self.assertIn("以上仅作传统古籍象意参考，不作现实病情判断",r["reading_text"])
 
     def test_second_real_person_cannot_duplicate_qian_kun(self):
         r=auto_cast_health_review_text(

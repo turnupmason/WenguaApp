@@ -61,9 +61,19 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                 patientSex:nil,birthOrder:nil,patientBirthGanzhi:nil)
             let actor=try WenguaNativeActorSource.bind(chart:chart,
                 inquiry:request,index:actors)
-            let audit=try WenguaVNextEngine.compute(
-                chart:chart,relationship:fixture.relationship,
-                energy:bundle,catalog:catalog,actor:actor)
+            print("V80_LEGACY_PARITY_START",fixture.instant,
+                  fixture.relationship,"patient",actor.mainStem,
+                  "palace",actor.mainPalace)
+            let audit:WenguaVNextAudit
+            do {
+                audit=try WenguaVNextEngine.compute(
+                    chart:chart,relationship:fixture.relationship,
+                    energy:bundle,catalog:catalog,actor:actor)
+            } catch {
+                print("V80_LEGACY_PARITY_SOURCE_FAILURE",fixture.instant,
+                      fixture.relationship,String(describing:error))
+                throw error
+            }
             func require(_ ok:Bool,_ explanation:String) throws {
                 if !ok {throw NSError(domain:"WenguaSourceParity",code:1,
                        userInfo:[NSLocalizedDescriptionKey:fixture.instant+" "+explanation])}

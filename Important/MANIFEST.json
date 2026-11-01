@@ -13,7 +13,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "5ba75f9e78bf877cd0da593ceae2cad2a62be494"
+      "sha": "6b3fbfbcfa9c1e752f8ee9b35d07b0706b211cff"
     },
     {
       "platform": "python",
@@ -361,7 +361,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "5ba75f9e78bf877cd0da593ceae2cad2a62be494"
+      "sha": "6b3fbfbcfa9c1e752f8ee9b35d07b0706b211cff"
     },
     {
       "platform": "swift",
@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/VNextNativeParityCheck.swift",
       "snapshot": "Important/swift/tests/VNextNativeParityCheck.swift",
-      "sha": "90c8a51cbc3386d0bc539c8e6d9e02df602766bb"
+      "sha": "b571bfe8b7802a965756703f7d8d19c52a9ed9a3"
     },
     {
       "platform": "swift",
