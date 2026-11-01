@@ -10,6 +10,9 @@ on:
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
       - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
+      - 'data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json'
+      - 'data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json'
+      - 'data/templates/health_discomfort_v11/native_discomfort_v15.json'
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
@@ -53,6 +56,9 @@ jobs:
           test -f "$APP/reading_template.json"
           test -f "$APP/81_pairs.tsv"
           test -f "$APP/actor_profiles.json"
+          test -f "$APP/complete_255_rules_v15_20261101.json"
+          test -f "$APP/three_source_stem_variants_v14_20261101.json"
+          test -f "$APP/native_discomfort_v15.json"
           # PRODUCT_NAME is 问卦; read the actual executable
           # name from Info.plist instead of assuming the Xcode target name.
           EXE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Info.plist")
@@ -81,6 +87,22 @@ jobs:
           assert len(profiles)==24 and len(byid)==24  # V9 four siblings distinct, no old composites
           assert byid['grandfather']['palaces']==[6]
           assert byid['grandmother']['palaces']==[2]
+          # Source-exact bundled V15 site records; V8 grade/resources unchanged.
+          v15_sources={
+            'complete_255_rules_v15_20261101.json':'data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json',
+            'three_source_stem_variants_v14_20261101.json':'data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json',
+            'native_discomfort_v15.json':'data/templates/health_discomfort_v11/native_discomfort_v15.json'
+          }
+          for packaged,source in v15_sources.items():
+            assert (p/packaged).read_bytes()==Path(source).read_bytes(), packaged
+          full=json.loads((p/'complete_255_rules_v15_20261101.json').read_text())
+          assert len(full['rules'])==255 and len({x['ID'] for x in full['rules']})==255
+          assert len(full['cases'])==12 and len(full['conflicts'])==20
+          families=json.loads((p/'three_source_stem_variants_v14_20261101.json').read_text())['mapping']
+          assert set(families)==set('甲乙丙丁戊己庚辛壬癸')
+          assert all(set(y)=={'qimen_secret_vol13','sanming_viscera','sanming_body_surface'} for y in families.values())
+          native=json.loads((p/'native_discomfort_v15.json').read_text())
+          assert native['topic_id']=='health.discomfort' and len(native['sections'])==6
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
