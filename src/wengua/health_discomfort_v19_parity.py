@@ -408,16 +408,31 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     auxFull="".join(auxTexts)
     def selected_stem_image(stem,power):
         candidates=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
-        selected=next((x for x in candidates if _matched(x,leadSites)),
+        original=next((x for x in candidates if _matched(x,leadSites)),
                       candidates[0] if candidates else "无已核实的细部候选")
+        selected="脏腑泛象" if original=="脏（笼统）" else original
         strength=("此象突出" if _tier(power)>=4 else
                   "可作为本宫病象旁证" if _tier(power)==3 else
-                  "此象偏弱，不单独定病" if _tier(power)>0 else "力量待核")
-        return f"{selected}（势{power}，{strength}）"
+                  "此象偏弱，不单独定病" if _tier(power)>0 else
+                  "源力待核，不作突出判断")
+        return (f"{selected}（势{power}，{strength}）" if _tier(power)>0
+                else f"{selected}（{strength}）")
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
-        return f"{detail[0]}（{detail[1]}格，古意：{detail[2]}）"
+        name,nature,gist=detail
+        if "伏吟" in name:reading="同干重叠，取缠滞反复之象"
+        elif any(x in name for x in ("网","狱","牢","罗","困","地户")):
+            reading="受困闭滞，取不畅之象"
+        elif any(x in name for x in ("蛇","缠","夭矫")):
+            reading="纠缠牵扯，取反复之象"
+        elif any(x in name for x in ("刑","伤","折","破","克")):
+            reading="上下干相制，取受损牵制之象"
+        elif any(x in name for x in ("合","生","佐","返首","耀明")):
+            reading="两干相助，取有缓解条件之象"
+        else:
+            reading="两干有相助之象" if nature=="吉" else "两干有牵制之象"
+        return f"{name}（{nature}格，{reading}）"
     orderedFormations=[]
     mainMeaning=formation_meaning(sky,illness["earthStem"])
     if mainMeaning:orderedFormations.append(
@@ -485,7 +500,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     dangerFull=starDoorGodFull+(
         "本宫条件："+"；".join(danger)+"。" if danger else "")
     ending="。"
-    originalFocus="、".join(originalSites[:1])
+    originalFocus=(lead if not trauma and _matched(lead,originalSites)
+                   else "、".join(originalSites[:1]))
     locationFull=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}；"
                   "此次明确涉及伤损，另从伤门实宫优先取位。"
                   if trauma else
