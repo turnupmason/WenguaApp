@@ -1124,7 +1124,10 @@ struct CastSetupScreen: View {
                             Text("当事人").font(.headline)
                             Picker("你为谁问事", selection: $subject) {
                                 ForEach(relations, id: \.self) { relation in
-                                    Text(relation=="姐姐" ? "姐姐（家中大姐）" : relation).tag(relation)
+                                    Text(["哥哥":"哥哥（家里的哥哥）",
+                                          "姐姐":"姐姐（家里的大姐）",
+                                          "弟弟":"弟弟（家里的弟弟）",
+                                          "妹妹":"妹妹（家里的妹妹）"][relation] ?? relation).tag(relation)
                                 }
                             }
                             .pickerStyle(.menu)
@@ -1157,10 +1160,11 @@ struct CastSetupScreen: View {
                                     .font(.caption).foregroundStyle(QStyle.secondary)
                             }
                             if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) {
-                                 Toggle(subject=="姐姐" ?
-                                        "确认是家中的亲大姐（不是朋友）" :
-                                        "确认是家中的亲兄弟姐妹（不是朋友）",
-                                        isOn:$familyRelativeConfirmed)
+                                 Toggle(["哥哥":"确认是家里的哥哥（不是男性朋友）",
+                                         "姐姐":"确认是家里的大姐（不是女性朋友）",
+                                         "弟弟":"确认是家里的弟弟（不是男性朋友）",
+                                         "妹妹":"确认是家里的妹妹（不是女性朋友）"][subject] ??
+                                        "确认是本人家庭亲属",isOn:$familyRelativeConfirmed)
                              }
                              if ["儿子","女儿","孩子","侄子"].contains(subject) {
                                 Picker("出生排行（可选）",selection:$birthOrder) {

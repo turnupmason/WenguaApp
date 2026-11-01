@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "92ecf5e01ed29c6ab830b206912fd9a155e79197"
+      "sha": "c1bce3fdfbab5de6a733170fb34e80a4a7c72862"
     },
     {
       "platform": "swift",
@@ -757,13 +757,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "fbe22ec0537a8a3ff3b3d7a481f7f4faa187e8fc"
+      "sha": "dc184a9fe977ab36fd563117c563246e2ca4dc6b"
     },
     {
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "68d9e572f9020b061638ecbeff7284f157ece09f"
+      "sha": "5b7573354d67bca1b71d9a06454323cb040fb6f8"
     },
     {
       "platform": "python",

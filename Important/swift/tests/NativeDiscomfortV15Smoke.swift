@@ -21,7 +21,9 @@ import Foundation
         let slots=[1,3,5,7,9,11,13,15,17,19,21]
         let selected:[(String,String,Int,Int,Int,Int)]=[
             ("yin","父亲",2026,11,Int.random(in:9...23),slots.randomElement()!),
-            ("yang","姐姐",2027,2,Int.random(in:7...20),slots.randomElement()!)
+            ("yang","姐姐",2027,2,Int.random(in:7...20),slots.randomElement()!),
+            ("yin","弟弟",2026,11,Int.random(in:9...23),slots.randomElement()!),
+            ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!)
         ]
         for (label,relationship,year,month,day,hour) in selected {
             let instant=String(format:"%04d-%02d-%02dT%02d:00:00-05:00",
@@ -40,15 +42,17 @@ import Foundation
                      relationship:relationship,context:"direct_proxy",
                      patientSex:nil,birthOrder:relationship=="姐姐" ? "eldest" : nil,
                      patientBirthGanzhi:nil,
-                     familyRelativeConfirmed:relationship=="姐姐" ? true : nil),index:index)
+                     familyRelativeConfirmed:["姐姐","弟弟"].contains(relationship) ? true : nil),index:index)
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,
                 rules:rules,stems:stems,template:template,
                 energy:energy,pairs:pairs)
-            guard actor.profileID==(relationship=="父亲" ? "father":"older_sister"),
+            guard actor.profileID==(["父亲":"father","姐姐":"older_sister","弟弟":"younger_brother","妻子":"wife"][relationship] ?? ""),
                 actor.natalStem==nil,
                 relationship != "父亲" || actor.genderPalace==6,
-                relationship != "姐姐" || actor.siblingAuxiliaryPalace==4
+                relationship != "姐姐" || actor.siblingAuxiliaryPalace==4,
+                relationship != "弟弟" || actor.siblingAuxiliaryPalace==8,
+                relationship != "妻子" || (actor.mainStem=="乙" && actor.siblingAuxiliaryPalace==nil)
             else { throw NSError(domain:"SiteV18Binding",code:5) }
             // Print every actual source sentence before validation, so a
             // failed random branch remains auditable rather than disappearing.
