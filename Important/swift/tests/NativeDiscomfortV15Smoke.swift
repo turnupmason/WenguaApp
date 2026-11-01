@@ -44,10 +44,13 @@ import Foundation
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
             }
-            print("V15_REAL_NATIVE_SITE_PASS "+label+" "+chart.iso+
-                  " "+chart.pillars.day+" "+chart.pillars.hour+
-                  " illness="+String(reading.rolePalaces?["illness"] ?? -1)+
-                  " patient="+String(reading.rolePalaces?["patient"] ?? -1))
+            let fields = [
+                "V15_REAL_NATIVE_SITE_PASS", label, chart.iso,
+                chart.pillars.day, chart.pillars.hour,
+                "illness="+String(reading.rolePalaces?["illness"] ?? -1),
+                "patient="+String(reading.rolePalaces?["patient"] ?? -1)
+            ]
+            print(fields.joined(separator:" "))
             for section in reading.sections {
                 print(section.title+"："+section.text)
             }

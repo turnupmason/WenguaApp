@@ -757,13 +757,13 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "6a0a94fed7443ac8c2aa5355e83751b79ecbe778"
+      "sha": "9363ed825531976099890f898fb9942d73d8a44b"
     },
     {
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "7c97967ce27a2e4e719bbd059dc2deb67f181130"
+      "sha": "b987917624867190e81e1a28338cb5345d2c24c0"
     }
   ]
 }
