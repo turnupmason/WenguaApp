@@ -34,3 +34,7 @@ Swift: `ios/WenguaAppUI/{WenguaNativeActorBinding,WenguaNativeDiscomfortV15,Weng
 - 同版原V8 Python与Swift人物源力专项 parity [#41340149539](https://github.com/turnupmason/WenguaApp/actions/runs/41340149539) **PASS**；V7.7 独立两时辰 [#41340149586](https://github.com/turnupmason/WenguaApp/actions/runs/41340149586) **PASS**。
 - 最新 V19 新增九段顺序/身份校验测试正式进入 Python 3.11/3.12 主 CI，`4d61b3a5` 的 [#41340256039](https://github.com/turnupmason/WenguaApp/actions/runs/41340256039) **PASS**。本轮曾有 Xcode [#41339915786](https://github.com/turnupmason/WenguaApp/actions/runs/41339915786) 拼接语法失败，随后已修复，失败源码记录继续保留。
 - 独立病位专题 Python V11 与 Swift V19 同盘逐字 parity **仍未通过单独验收**；较旧 `iOS Offline Native Casting Parity` 总工作流还存在原版言词断言冲突与其他失败，不借本次两个专项PASS冒充全库通过。传统身体取象不是医疗验证。
+
+## 六甲载干与时干本力修正
+
+实际V19随机姐姐盘出现甲时干，旧 `stemPower(hourStem,hourPalace)` 用甲字面寻找携干（盘中甲实际遁六仪）会落入待核；本轮在病位独立专题补 `actualRolePower`，先用完整甲干支确认六仪载干真实物理宫，再从现有 `WenguaNativeCore.stages["甲"]` 及源200天干表按甲本身实际宫支/月令取力；主用神为甲同理。入墓/六仪击刑仍针对真实物理携干身份，不对同宫两个角色重复算宫位净分。不能直接把六仪戊己庚辛壬癸自身的源力假冒甲的源力，未有有效完整干支则保留待核。原V8计分不变。

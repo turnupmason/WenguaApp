@@ -18,7 +18,8 @@ class V19LocationFamily(unittest.TestCase):
                          '(patientPalace,actorCarrier,patientPower)','(hourPalace,hourStem,hourPower)','tier(injuryPower)',
                          'WenguaVNextEngine.striking[stem]','p.tombs.contains',
                          'formationNames.joined','if illnessVoid=="true_void"',
-                         'var candidateSites=originalSites','other.0.id != p.id'):
+                         'var candidateSites=originalSites','actualRolePower(hourStem,hourCarrier',
+                         'WenguaNativeCore.stages["甲"]','other.0.id != p.id'):
             self.assertIn(required,swift)
         self.assertNotIn("WenguaVNextEngine.compute(",swift)
         self.assertNotIn("abs(",swift)

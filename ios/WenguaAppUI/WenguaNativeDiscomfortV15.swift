@@ -168,6 +168,27 @@ enum WenguaNativeDiscomfortV15 {
             }
             return "待核"
         }
+        // Six-Jia's true identity is 甲 (wood); its carrier only locates the
+        // physical cell. Read 甲's own stages and original stem 200 grid.
+        func actualRolePower(_ stem:String,_ carrier:String,
+                             _ p:WenguaNativePalace,
+                             _ sourceGanzhi:String?) throws ->String {
+            if stem=="甲" {
+                guard let sourceGanzhi,
+                      WenguaNativeActorSource.validatedGanzhi(sourceGanzhi),
+                      WenguaNativeActorSource.jiaCarrier(sourceGanzhi)==carrier,
+                      let originalStages=WenguaNativeCore.stages["甲"] else {
+                    return "待核"
+                }
+                let liveStages=p.branches.compactMap { branch -> WenguaNativeStage? in
+                    guard let name=originalStages[branch] else {return nil}
+                    return WenguaNativeStage(branch:branch,stage:name)
+                }
+                guard liveStages.count==p.branches.count else {return "待核"}
+                return try sourceStrength("stem","甲",p,liveStages)
+            }
+            return try stemPower(carrier,p)
+        }
         let birdPower=try bird.map{ _ in try sourceStrength("star","天禽星",illness)} ?? "待核"
         let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
@@ -179,9 +200,15 @@ enum WenguaNativeDiscomfortV15 {
             : actor.mainStem
         let patientPower:String
         if actorCarrier.isEmpty { patientPower="待核" }
-        else { patientPower=try stemPower(actorCarrier,patientPalace) }
+        else {
+            patientPower=try actualRolePower(actor.mainStem,actorCarrier,
+                                            patientPalace,actor.sourceGanzhi)
+        }
         let injuryPower=try sourceStrength("door","伤门",injury)
-        let hourPower=try stemPower(hourStem,hourPalace)
+        let hourCarrier=hourStem=="甲" ?
+            (WenguaNativeActorSource.jiaCarrier(chart.pillars.hour) ?? "") : hourStem
+        let hourPower=try actualRolePower(hourStem,hourCarrier,
+                                         hourPalace,chart.pillars.hour)
         let deityElement=WenguaVNextEngine.godElement[deity]
         guard let godElement=deityElement,
               let palaceElement=WenguaVNextEngine.elements[illness.id],
@@ -338,7 +365,7 @@ enum WenguaNativeDiscomfortV15 {
         // Thus a single attractive door does not invent extra organs.
         let witnesses:[(WenguaNativePalace,String,String)]=[
             (patientPalace,actorCarrier,patientPower),
-            (hourPalace,hourStem,hourPower),
+            (hourPalace,hourCarrier,hourPower),
             (injury,"伤门",injuryPower)] + auxiliaries + otherDoors
         var candidateSites=originalSites
         var newSites=0
