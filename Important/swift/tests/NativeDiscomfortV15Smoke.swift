@@ -90,7 +90,7 @@ import Foundation
                 ids==allowed.filter{ids.contains($0)},
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
-                reading.sections.last!.text.contains("不等于医学诊断"),
+                reading.sections.last!.text.contains("需以实际检查核实"),
                 !reading.sections.joinedDescription.contains("极大吉"),
                 !reading.sections.joinedDescription.contains("极大凶"),
                 !reading.sections.joinedDescription.contains("《"),
