@@ -20,6 +20,7 @@ from .health_dynamic_v21 import bind_patient, _stem_cell
 from .health_81_excel_catalog_vnext import for_real_palace
 from .health_discomfort_inner_outer_v12_draft import inspect_priority
 from .health_discomfort_detail_v13_draft import inspect_detail
+from .health_discomfort_cross_text_v14_draft import inspect_cross_text_candidates
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / "data/templates/health_discomfort_v11/reading_template.json"
@@ -143,6 +144,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                              patient_cell=patient,location=location,
                              patient_sex=actor.get('resolved_sex'),
                              patient_age_group=inquiry.get('patient_age_group'))
+    cross_text = inspect_cross_text_candidates(chart=chart,location=location)
     notes = load_traditional_location_candidates()
     surface, internal = (evidence["surface_symbol_candidates"],
                          evidence["internal_symbol_candidates"])
@@ -226,6 +228,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
                                                     inquiry.get("subject_year_ganzhi") or
                                                     inquiry.get("patient_birth_stem")),
             "body_v13_detail":details,
+            "v14_cross_text_research":cross_text,
             "location_priority":location,
             "selected_body_candidates":chosen,
             "other_body_candidates":other,
