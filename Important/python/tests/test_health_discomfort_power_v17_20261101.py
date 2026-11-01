@@ -22,7 +22,7 @@ class SitePowerV17Test(unittest.TestCase):
 
     def test_render_placeholders_are_bound(self):
         t=json.loads(TEMPLATE.read_text(encoding="utf8"))
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v21_focused_site_20261101")
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v22_v16_evidence_restored_20261101")
         self.assertEqual(len(t["sections"]),9)
         native=NATIVE.read_text(encoding="utf8")
         match=re.search(r'let values:\[String:String\]=\[(.*?)\]\s*let required=',native,re.S)
@@ -36,7 +36,10 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn("actualRolePower(actor.mainStem,actorCarrier",native)
         self.assertIn("WenguaNativeActorSource.jiaCarrier",native)
         self.assertIn("WenguaVNextEngine.godTiers",native)
-        self.assertIn("formationNames.joined",native)
+        self.assertIn("formationMeaning",native)
+        self.assertIn("orderedFormations.joined",native)
+        self.assertIn('sourceClue("八门病象",door)',native)
+        self.assertIn('let doorPower=try sourceStrength("door",door,illness)',native)
         self.assertIn("WenguaNativeEnergyBundle.fromData(energy)",native)
         self.assertIn('sourceStrength("stem",illness.earthStem,illness,illness.earthStages)',native)
 
