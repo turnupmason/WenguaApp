@@ -255,9 +255,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if trauma:
         for site in originalSites:
             if not _matched(site,candidates):candidates.append(site)
-    elif use_injury:
-        for site in injurySites:
-            if not _matched(site,candidates):candidates.append(site)
+    # For surgery and severe pain, 伤门 remains a conditional witness.
+    # Only explicit accident, bone injury or bleeding can make it the main site.
     # V21: independent role palaces can corroborate the main site, never
     # replace a real Tianrui or activated injury site with an unrelated organ.
     scores=[]
@@ -315,8 +314,9 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         "accident":"意外受伤","bone":"骨肉受损",
         "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
         "surgery":"已做或拟做手术"}
-    selectedInjurySites=[site for site,score,idx in ranked
-                         if _matched(site,injurySites)][:1]
+    selectedInjurySites=([site for site,score,idx in ranked
+                          if _matched(site,injurySites)][:1]
+                         if trauma else injurySites[:1])
     injurySiteNames="、".join(selectedInjurySites)
     injuryScope="体内" if inj["id"] in inner else "体表"
     injuryOverlap=next((s for s in injurySites if _matched(s,originalSites)),None)
@@ -422,7 +422,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         if detail is None:return None
         name,nature,gist=detail
         if "伏吟" in name:reading="同干重叠，取缠滞反复之象"
-        elif any(x in name for x in ("网","狱","牢","罗","困","地户")):
+        elif any(x in name for x in ("网","狱","牢","罗","困","地户","墓")):
             reading="受困闭滞，取不畅之象"
         elif any(x in name for x in ("蛇","缠","夭矫")):
             reading="纠缠牵扯，取反复之象"
