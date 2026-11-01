@@ -294,7 +294,9 @@ enum WenguaNativeDiscomfortV15 {
         func matched(_ candidate:String,_ sites:[String])->Bool {
             sites.contains(where:{sameSite(candidate,$0)})
         }
-        let ranked=originalSites.enumerated().map{ index,site -> (String,Int,Int) in
+        let ranked:[(String,Int,Int)]=originalSites.enumerated().map{ entry in
+            let index=entry.offset
+            let site=entry.element
             var rank=tier(illnessPower)
             if illnessVoid=="true_void" {rank=0}
             if illnessVoid=="fake_void" {rank=max(0,rank-1)}
@@ -367,8 +369,8 @@ enum WenguaNativeDiscomfortV15 {
         let injuryLine=injuryCorroborates
             ? "伤门同落"+label(illness)+"宫，可补充此处筋骨肢体类象"
             : "伤门在"+label(injury)+"宫，未与主病位同宫，不改动定位"
-        let conclusion="综上，"+relationship+"本次病位首先看"+lead+
-            (secondSite.isEmpty ? "。" : "；另参"+secondSite+"。")+
+        let ending=secondSite.isEmpty ? "。" : "；另参"+secondSite+"。"
+        let conclusion="综上，"+relationship+"本次病位首先看"+lead+ending+
             "这是传统部位取象，不等于医学诊断。"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
