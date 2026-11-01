@@ -37,6 +37,7 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn("WenguaVNextEngine.godTiers",native)
         self.assertIn("formationNames.joined",native)
         self.assertIn("WenguaNativeEnergyBundle.fromData(energy)",native)
+        self.assertIn('sourceStrength("stem",illness.earthStem,illness,illness.earthStages)',native)
 
     def test_exclude_internal_or_unhelpful_comments_from_customer_words(self):
         j=json.loads(TEMPLATE.read_text(encoding="utf8"))
