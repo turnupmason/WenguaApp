@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "ea2b7b0af8f8361175952ea7bd97c4a96a36626e"
+      "sha": "57d6ed27979909b25730022881be12c29b9641be"
     },
     {
       "platform": "python",
@@ -775,7 +775,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "1f2ae017d3a75b40f2b1d4916bdd8b59eccf40c4"
+      "sha": "1376e5e4420f15bf3bb3f66a61f865e1f1ef01d4"
     },
     {
       "platform": "swift",
@@ -793,7 +793,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
-      "sha": "861364a197038c11decac15ec3e089fccdafdd89"
+      "sha": "9f62c0660067253153beb43ae3f2c283b12c6b05"
     }
   ]
 }
