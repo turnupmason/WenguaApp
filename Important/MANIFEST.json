@@ -601,19 +601,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "c5dbfbdbe2395845f1b2209199e6905489d2a5fd"
+      "sha": "4417d0fdc8760ae9782f98207d943fe4a8378469"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/reading_template.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/reading_template.json",
-      "sha": "c5dbfbdbe2395845f1b2209199e6905489d2a5fd"
+      "sha": "4417d0fdc8760ae9782f98207d943fe4a8378469"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_template_v11_draft.py",
       "snapshot": "Important/python/engine/health_discomfort_template_v11_draft.py",
-      "sha": "726c68b3c6ce94b2315492eb71ff99a8ca541b12"
+      "sha": "4030bd389e2c7ac67e5a06e654c743a6cb0fcc43"
     },
     {
       "platform": "python",

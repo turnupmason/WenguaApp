@@ -185,7 +185,7 @@ def compose_draft(*, chart: Mapping[str, Any], inquiry: Mapping[str, Any],
         {"id":"06_conclusion", "title":template()["titles"]["06_conclusion"],
          "text":_say("ending",illness_palace=palace_name,
                      sector=label,focus_short=chosen[0],
-                     caveat=("门神提示另有方向，但不能据此确诊实病"
+                     caveat=("门神提示另有方向，仍不作为实病判断"
                              if conflicts else "本宫仍有多个部位类象，不能认定唯一器官"))},
     ]
     return {
