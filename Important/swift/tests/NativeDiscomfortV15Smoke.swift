@@ -105,6 +105,8 @@ import Foundation
                 !reading.sections.joinedDescription.contains("吉凶"),
                 !reading.sections.joinedDescription.contains("极小")
             else {
+                let debug="V21_FAIL_GUARD role="+relationship+" ctx="+injuryContext+" ids="+ids.joined(separator:",")+" last="+(reading.sections.last?.text ?? "")+" all="+reading.sections.joinedDescription
+                FileHandle.standardError.write(Data(debug.utf8))
                 throw NSError(domain:"BodySiteV15",code:4,userInfo:[
                     NSLocalizedDescriptionKey:"Body-site customer sections broke the domain and source contract"])
             }
