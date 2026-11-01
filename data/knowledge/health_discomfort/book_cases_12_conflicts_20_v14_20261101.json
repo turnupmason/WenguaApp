@@ -1,0 +1,248 @@
+{
+  "schema": "wengua_health_discomfort_12_cases_20_conflicts_v14_20261101",
+  "status": "user_workbook_historical_case_review_not_blind",
+  "source_workbook_sha256": "19d199a42f306d2855709a8f19979bea22e24443053e2d79e75fe89fddb6d00c",
+  "cases": [
+    {
+      "workbook_id": "S01",
+      "book_id": "shenqi",
+      "claimed_time": "1996-03-16 申时",
+      "event_family": "sun_colon_1996",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "S02",
+      "book_id": "shenqi",
+      "claimed_time": "1996-07-27 申时",
+      "event_family": "father_19960727",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "S03",
+      "book_id": "shenqi",
+      "claimed_time": "1996-05-09 申时",
+      "event_family": "nephew_injury_19960509",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "S04",
+      "book_id": "shenqi",
+      "claimed_time": "1996-05-23 戌时",
+      "event_family": "aunt_19960523",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "S05",
+      "book_id": "shenqi",
+      "claimed_time": "time_not_confirmed",
+      "event_family": "ruan_multisystem",
+      "has_named_time": false,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "S06",
+      "book_id": "shenqi",
+      "claimed_time": "1997-12-27 亥时",
+      "event_family": "tian_spouse_19971227",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K01",
+      "book_id": "kaiwu",
+      "claimed_time": "1996-09-23 酉时",
+      "event_family": "liu_nose_19960923",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K02A",
+      "book_id": "kaiwu",
+      "claimed_time": "1995-02-19 巳时",
+      "event_family": "brother_19950219",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K02B",
+      "book_id": "kaiwu",
+      "claimed_time": "1996-07-27 申时",
+      "event_family": "father_19960727",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K03A",
+      "book_id": "kaiwu",
+      "claimed_time": "1998-06-16 巳时",
+      "event_family": "hen_19980616",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K03B",
+      "book_id": "kaiwu",
+      "claimed_time": "1998-06-21 辰时",
+      "event_family": "rooster_19980621",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    },
+    {
+      "workbook_id": "K04",
+      "book_id": "kaiwu",
+      "claimed_time": "1999-10-20 申时",
+      "event_family": "wang_eye_19991020",
+      "has_named_time": true,
+      "source_level": "case_report_workbook_not_new_independent_case",
+      "observed_later_must_not_feed_initial_location": true
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "K02A",
+      "event_family": "brother_19950219",
+      "dun": "yang",
+      "ju": 9,
+      "illness_palace": 2,
+      "ordered_heaven_earth": {
+        "heaven": "癸",
+        "earth": "庚"
+      },
+      "tianrui_carried_stem": "庚",
+      "source_kaiwu_line": 85,
+      "known_prior": "question about brother health",
+      "source_book_feedback_is_retrospective": true
+    },
+    {
+      "id": "K02B",
+      "event_family": "father_19960727",
+      "dun": "yin",
+      "ju": 7,
+      "illness_palace": 2,
+      "ordered_heaven_earth": {
+        "heaven": "庚",
+        "earth": "癸"
+      },
+      "tianrui_carried_stem": "癸",
+      "source_kaiwu_line": 85,
+      "known_prior": "father illness before casting",
+      "source_book_feedback_is_retrospective": true
+    }
+  ],
+  "comparison_factors": [
+    "dun",
+    "illness_carried_stem",
+    "ordered_heaven_earth",
+    "month_branch",
+    "patient_role",
+    "actual_natal_if_supplied",
+    "conditional_qian_gen_support"
+  ],
+  "do_not_infer_from_feedback": [
+    "cancer",
+    "paralysis",
+    "mortality"
+  ],
+  "duplicate_same_event_workbook_ids": [
+    "S02",
+    "K02B"
+  ],
+  "source_conflict_ids": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20"
+  ],
+  "unresolved": [
+    {
+      "id": "C01-C04",
+      "type": "variant_text",
+      "resolution": "parallel_editions"
+    },
+    {
+      "id": "C05-C09",
+      "type": "body_symbol_school",
+      "resolution": "parallel_sources_not_independent_voting"
+    },
+    {
+      "id": "C10",
+      "type": "subject_signifier",
+      "resolution": "V11_actor_current_topic_only"
+    },
+    {
+      "id": "C11",
+      "type": "similar_palace_different_original_examples",
+      "resolution": "do_not_pool"
+    },
+    {
+      "id": "C12",
+      "type": "same_father_event_in_two_books",
+      "resolution": "one_event_family"
+    },
+    {
+      "id": "C13",
+      "type": "internal_contradiction_same_conditions",
+      "resolution": "blocked_pending_print_edition"
+    },
+    {
+      "id": "C14",
+      "type": "natal_vs_hour_cast",
+      "resolution": "different_school"
+    },
+    {
+      "id": "C15",
+      "type": "disease_severity_versus_location",
+      "resolution": "not_a_diagnosis"
+    },
+    {
+      "id": "C16",
+      "type": "new_and_old_void_conditions",
+      "resolution": "onset_must_be_independent"
+    },
+    {
+      "id": "C17",
+      "type": "interior_as_anatomy_vs_temporal",
+      "resolution": "separate_axes"
+    },
+    {
+      "id": "C18-C20",
+      "type": "treatment_folklore_school",
+      "resolution": "research_not_real_care"
+    }
+  ],
+  "source_urls": [
+    "https://ctext.org/wiki.pl?chapter=548506&if=gb&remap=gb",
+    "https://shuyuan.zhiming.life/read/奇门法窍/10"
+  ]
+}
