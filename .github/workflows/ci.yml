@@ -24,6 +24,8 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_health_discomfort_v11_draft_20261031.py' -v
       - name: Body location inner outer yin yang source candidate real chart regression
         run: python -m unittest discover -s tests -p 'test_health_discomfort_inner_outer_v12_20261031.py' -v
+      - name: V13 body-region, illness-versus-patient door and three carriers 1080 actual charts
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_v13_detail_20261101.py' -v
       - name: External body-location note draft integrity and no medical conclusions
         run: python -m unittest discover -s tests -p 'test_health_discomfort_traditional_notes_20261029.py' -v
       - name: Current V8.0 original 5x5 power and 72 cohost rules
