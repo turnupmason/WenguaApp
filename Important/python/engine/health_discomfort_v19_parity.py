@@ -134,7 +134,7 @@ def compose(chart,actor,relationship,sources=None):
     palaces={p["id"]:p for p in chart["palaces"]}
     assert set(palaces)==set(range(1,10))
     illness,= [p for p in palaces.values() if any(s["star"]=="天芮星" for s in p["heavenStars"])]
-    inj,=[p for p in palaces.values() if p["door"]=="伤门"]
+    inj,=[p for p in palaces.values() if p.get("door")=="伤门"]
     ip=illness["id"]
     sky=next(s["carriedStem"] for s in illness["heavenStars"] if s["star"]=="天芮星")
     door=illness["door"]
