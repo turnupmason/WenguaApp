@@ -54,7 +54,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v20_conditional_injury_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v21_focused_site_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
