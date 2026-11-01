@@ -213,9 +213,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         return "fake_void" if month==pe or GENERATES[month]==pe else "true_void"
     illnessVoid=void_state(illness)
     pmap={}
+    pfull={}
     for line in pairtxt.splitlines()[1:]:
         c=line.split("|")
-        if len(c)>=4:pmap[(c[0],c[1])]=c[2]
+        if len(c)>=6:
+            pmap[(c[0],c[1])]=c[2]
+            pfull[(c[0],c[1])]=(c[2],c[3],c[5])
     formation=[pmap[(sky,illness["earthStem"])]]
     if bird and (bird,palaces[5]["earthStem"]) in pmap:
         formation.append(pmap[(bird,palaces[5]["earthStem"])])
@@ -403,40 +406,84 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             if hit:auxTexts.append(f"{name}在{label(p)}宫，也见{hit}，作为旁证。")
             else:auxTexts.append(f"{name}在{label(p)}宫，与主位分开参看。")
     auxFull="".join(auxTexts)
-    skySupport=next((s for s in skySites if _matched(s,leadSites)),None)
-    earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
-    deity=illness["deity"]
-    doorWord="本宫门象不取" if not use_injury and door=="伤门" else door
-    if skySupport is not None and earthSupport is not None:
-        if _same(skySupport,earthSupport):
-            formsFull=(f"病宫临{doorWord}、{deity}；天芮携{sky}与地盘{illness['earthStem']}"
-                       f"同指{skySupport}，天地格"+"、".join(formation)+"。")
-        else:
-            formsFull=(f"病宫临{doorWord}、{deity}；天芮携{sky}、地盘{illness['earthStem']}"
-                       f"各有其象，天地格"+"、".join(formation)+"。")
-    else:
-        formsFull=f"病宫临{doorWord}、{deity}；天芮携{sky}下临{illness['earthStem']}，天地格"+"、".join(formation)+"。"
-    danger=[]
-    for stem,sites in ((sky,skySites),(illness["earthStem"],earthSites)):
-        signs=flags(stem,illness)
-        site=next((s for s in sites if _matched(s,leadSites)),None)
-        if signs and site:
-            term=stem+"、".join(signs)+f"，限看{site}一带"
-            if term not in danger:danger.append(term)
+    def selected_stem_image(stem,power):
+        candidates=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
+        selected=next((x for x in candidates if _matched(x,leadSites)),
+                      candidates[0] if candidates else "无已核实的细部候选")
+        strength=("此象突出" if _tier(power)>=4 else
+                  "可作为本宫病象旁证" if _tier(power)==3 else
+                  "此象偏弱，不单独定病" if _tier(power)>0 else "力量待核")
+        return f"{selected}（势{power}，{strength}）"
+    def formation_meaning(top,ground):
+        detail=pfull.get((top,ground))
+        if detail is None:return None
+        return f"{detail[0]}（{detail[1]}格，古意：{detail[2]}）"
+    orderedFormations=[]
+    mainMeaning=formation_meaning(sky,illness["earthStem"])
+    if mainMeaning:orderedFormations.append(
+        f"天盘{sky}加地盘{illness['earthStem']}为"+mainMeaning)
     if bird:
-        signs=flags(bird,illness)
-        site=next((s for s in birdSites if _matched(s,leadSites)),None)
-        if signs and site:danger.append("天禽携"+bird+"、".join(signs)+f"，另指{site}")
-    if illnessVoid=="true_void":danger.append("天芮宫真空，本宫主位候选减看")
-    elif illnessVoid=="fake_void":danger.append("天芮宫假空，保留宫位候选")
-    if doorRel=="符号克宫" and (use_injury or door!="伤门"):
-        door_terms={"开门":"行医施治有阻","休门":"水火相争、休养受阻",
-                    "生门":"生机受制","伤门":"伤损之象受迫",
-                    "杜门":"闭塞不通之象加重","景门":"火金相争、热象受扰",
-                    "死门":"闭滞之象加重","惊门":"惊悸不宁之象加重"}
-        danger.append(f"{door}落{label(illness)}宫，本门五行克宫而成门迫；"
-                      +door_terms.get(door,"本宫受迫")+"，仅作为这一宫的条件")
-    dangerFull="；".join(danger)+"。" if danger else ""
+        centre=palaces[5]
+        hostedMeaning=formation_meaning(bird,centre["earthStem"])
+        if hostedMeaning:orderedFormations.append(
+            f"天禽携{bird}加寄宫地干{centre['earthStem']}为"+hostedMeaning)
+    skyText=f"天盘{sky}取{selected_stem_image(sky,skyPower)}"
+    earthText=f"地盘{illness['earthStem']}取{selected_stem_image(illness['earthStem'],earthPower)}"
+    birdText=(f"；同宫天禽星势{source_strength('star','天禽星',illness)}，"
+              f"独立携{bird}取{selected_stem_image(bird,birdStemPower)}"
+              if bird else "")
+    formsFull=skyText+"；"+earthText+birdText+"。天地格："+"；".join(orderedFormations)+"。"
+    danger=[]
+    recorded=set()
+    for stem in [sky,illness["earthStem"]]+([bird] if bird else []):
+        signs=flags(stem,illness)
+        if signs:
+            key=stem+"/"+"、".join(signs)
+            if key not in recorded:
+                recorded.add(key)
+                danger.append(f"{stem}实见{'、'.join(signs)}，传统取其受制、受伤之象，须细察本宫相应干象")
+    if illnessVoid=="true_void":
+        danger.append("天芮宫真空，病位显象减看")
+    elif illnessVoid=="fake_void":
+        danger.append("天芮宫假空，不作全无")
+    doorPower=source_strength("door",door,illness)
+    deity=illness["deity"]
+    GOD_ELEMENTS={"值符":"土","螣蛇":"火","太阴":"金","六合":"木",
+                  "白虎":"金","玄武":"水","九地":"土","九天":"金"}
+    GOD_TIERS={"符号生宫":"中等","符号克宫":"中等",
+               "比和":"大","宫克符号":"小","宫生符号":"极大"}
+    deityPower=GOD_TIERS[_directed(GOD_ELEMENTS[deity],ELEMENTS[ip])]
+    def original_clue(kind,symbol):
+        rows=[r for r in rules if r["类别"]==kind and
+              r["符号组合"]==symbol and r["证据级别"].startswith("A")]
+        if len(rows)!=1:return "暂无可独立定位的细项"
+        phrase=rows[0]["古籍象意或候选"].split("；")[0].split("（")[0]
+        return ("无可用于细分身体部位的额外信息"
+                if any(x in phrase for x in ("原文","不是","节气群")) else phrase)
+    matchingDeity=[r for r in rules if r["类别"]=="八神病象" and
+                   deity in r["符号组合"].split("／")]
+    deityClue=(matchingDeity[0]["古籍象意或候选"] if matchingDeity else "其他传统象意")
+    deityClue=deityClue.split("；")[0].split("（")[0]
+    deityText="传统神象待核" if deityClue=="其他传统象意" else deityClue
+    if doorRel=="符号克宫":
+        terms={"开门":"金门迫木宫，传统指施治有阻",
+               "休门":"水门迫火宫，传统指休养反复",
+               "生门":"土门迫水宫，传统指生机受阻",
+               "伤门":"木门迫土宫，传统指筋骨牵扯",
+               "杜门":"木门迫土宫，传统指闭滞不畅",
+               "景门":"火门迫金宫，传统指热象与肺系受扰",
+               "死门":"土门迫水宫，传统指闭塞积滞",
+               "惊门":"金门迫木宫，传统指惊扰、抽掣"}
+        doorText=f"{door}落{label(illness)}宫形成门迫，"+terms.get(door,"门克落宫")
+    elif doorRel=="宫克符号":
+        doorText=f"{door}受{label(illness)}宫所克，门象受制，但不是门迫"
+    else:doorText=""
+    starDoorGodFull=(f"天芮星势{illnessPower}，病象以本宫为主；"
+                     f"{door}势{doorPower}，古门象见{original_clue('八门病象',door)}；"
+                     f"{deity}势{deityPower}，古神象见{deityText}。")
+    if doorText:danger.append(doorText)
+    dangerFull=starDoorGodFull+(
+        "本宫条件："+"；".join(danger)+"。" if danger else "")
     ending="。"
     originalFocus="、".join(originalSites[:1])
     locationFull=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}；"
@@ -477,7 +524,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v20_conditional_injury_reasoned_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v22_v16_evidence_restored_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
