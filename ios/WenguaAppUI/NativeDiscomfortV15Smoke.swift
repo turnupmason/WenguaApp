@@ -44,7 +44,7 @@ import Foundation
                     "04_person","05_review","06_conclusion"],
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
-                reading.sections.last!.text.contains("只断传统身体部位象意"),
+                reading.sections.last!.text.contains("不是病情轻重评分"),
                 !reading.sections.joinedDescription.contains("极大吉"),
                 !reading.sections.joinedDescription.contains("极大凶"),
                 !reading.sections.joinedDescription.contains("《"),
