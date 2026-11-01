@@ -698,8 +698,12 @@ enum WenguaNativeDiscomfortV15 {
         // Do not invent anatomic laterality: 左肺 cannot be renamed 右侧内脏.
         let focusRegion:String
         if lead=="肝胆" {focusRegion="右上腹肝胆一带"}
-        else if lead=="左肩" || lead=="左耳" || lead=="左臂" {focusRegion="左侧耳肩一带"}
-        else if lead=="右肩" || lead=="右耳" || lead=="右臂" {focusRegion="右侧耳肩一带"}
+        else if lead=="左肩" {focusRegion="左肩一带"}
+        else if lead=="左耳" {focusRegion="左耳周围"}
+        else if lead=="左臂" {focusRegion="左臂一带"}
+        else if lead=="右肩" {focusRegion="右肩一带"}
+        else if lead=="右耳" {focusRegion="右耳周围"}
+        else if lead=="右臂" {focusRegion="右臂一带"}
         else if lead=="右肋" || lead=="右腰" {focusRegion="右侧肋腰一带"}
         else if lead=="外阴" || lead=="下部" {focusRegion="下身会阴一带"}
         else if lead=="左肺" {focusRegion="左侧胸部"}
