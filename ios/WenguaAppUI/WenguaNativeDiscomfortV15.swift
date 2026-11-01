@@ -168,6 +168,8 @@ enum WenguaNativeDiscomfortV15 {
             }
             return "待核"
         }
+        let birdPower=try bird.map{try sourceStrength("star","天禽星",illness)} ?? "待核"
+        let birdStemPower=try bird.map{try stemPower($0,illness)} ?? "待核"
         let illnessPower=try sourceStrength("star","天芮星",illness)
         let doorPower=try sourceStrength("door",door,illness)
         let skyPower=try stemPower(sky,illness)
@@ -228,7 +230,7 @@ enum WenguaNativeDiscomfortV15 {
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
             "door":door,"deity":deity,"sky":sky,"earth":illness.earthStem,
-            "companion":bird.map{"同宫天禽另携"+$0+"，干象还可参看"+birdOther.joined(separator:"、")+"，与天芮各自独立"} ?? "本宫没有另一组天禽携干",
+            "companion":bird.map{"同宫天禽星力"+birdPower+"，其携"+$0+"之干力"+birdStemPower+"，另见"+birdOther.joined(separator:"、")} ?? "本宫没有独立的天禽携干",
             "secret":secret.joined(separator:"、"),
             "viscera":viscera.joined(separator:"、"),
             "surface":surface.joined(separator:"、"),
