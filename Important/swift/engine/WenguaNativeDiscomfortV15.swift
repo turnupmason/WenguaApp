@@ -521,106 +521,105 @@ enum WenguaNativeDiscomfortV15 {
         let injuryScope=(chart.bureau.dun=="yang" ? innerYang:innerYin)
             .contains(injury.id) ? "体内" : "体表"
         let injuryOverlap=injurySites.first(where:{matched($0,originalSites)})
-        let injuryRelation=injury.id==illness.id ?
-            "伤门与天芮在同一实宫，两种身份只合看这一处。" :
-            injuryOverlap.map{"伤门与天芮两宫都指向"+$0+"，这才构成部位互证。"} ??
-            "与天芮宫所指区域不同，暂保留两个位置，不把两个宫硬拼为一处。"
+        let injuryRelation:String
+        if injury.id==illness.id {
+            injuryRelation="伤门与天芮在同一实宫，两种身份只合看这一处。"
+        } else if let match=injuryOverlap {
+            injuryRelation="伤门与天芮两宫都指向\(match)，这才构成部位互证。"
+        } else {
+            injuryRelation="与天芮宫所指区域不同，暂保留两个位置，不把两个宫硬拼为一处。"
+        }
         let openPalace=chart.palaces.first(where:{$0.door=="开门"})
         let surgicalControl=injuryContext=="surgery" &&
-            openPalace.map{p in
+            openPalace.map { p in
                 p.id != injury.id &&
                 WenguaVNextEngine.controls[
                     WenguaVNextEngine.elements[p.id] ?? ""] ==
                     WenguaVNextEngine.elements[injury.id]
             } == true
-        let surgicalClue=surgicalControl && openPalace != nil ?
-            "开门所在"+label(openPalace!)+"宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。" : ""
-        let injuryLimit=voidState(injury)=="true_void" ?
-            "伤门宫真空，须减看这一处的部位依据。" :
-            tier(injuryPower)<=2 ?
-            "伤门自身取力偏弱，这处仍须其他符号印证。" : ""
-        let injuryFull=useInjury ?
-            ("因已选择"+(injuryReason[injuryContext] ?? "特殊情况")+
-             "，才以伤门取象。伤门实际在"+label(injury)+"宫，"+
-             "按"+(chart.bureau.dun=="yang" ? "阳" : "阴")+"遁"+injuryScope+
-             "取"+injurySiteNames+"；"+injuryRelation+injuryLimit+surgicalClue) : ""
-        let doorsConfirming=otherDoors.filter{entry in
+        let surgicalClue:String
+        if surgicalControl,let opening=openPalace {
+            surgicalClue="开门所在\(label(opening))宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。"
+        } else {surgicalClue=""}
+        let injuryLimit:String
+        if voidState(injury)=="true_void" {
+            injuryLimit="伤门宫真空，须减看这一处的部位依据。"
+        } else if tier(injuryPower)<=2 {
+            injuryLimit="伤门自身取力偏弱，这处仍须其他符号印证。"
+        } else {injuryLimit=""}
+        let injuryFull:String
+        if useInjury {
+            let reason=injuryReason[injuryContext] ?? "特殊情况"
+            let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
+            injuryFull="因已选择\(reason)，才以伤门取象。伤门实际在\(label(injury))宫，按\(dn)遁\(injuryScope)取\(injurySiteNames)；\(injuryRelation)\(injuryLimit)\(surgicalClue)"
+        } else {injuryFull=""}
+        let doorsConfirming=otherDoors.filter { entry in
             tier(entry.2)>=2 && sourceLocation(entry.0).contains(where:{
                 matched($0,leadSites)
             })
         }.sorted{tier($0.2)>tier($1.2)}
-        let doorsFull=doorsConfirming.prefix(2).compactMap{entry ->String? in
+        let doorsFull=doorsConfirming.prefix(2).compactMap { entry ->String? in
             guard let hit=sourceLocation(entry.0).first(where:{
                 matched($0,leadSites)
-            }) else{return nil}
-            return entry.1+"在"+label(entry.0)+"宫，该宫也取"+hit+
-                "，与已选病位重合，故可作为另一宫的交叉印证。"
+            }) else {return nil}
+            return "\(entry.1)在\(label(entry.0))宫，该宫也取\(hit)，与已选病位重合，故可作为另一宫的交叉印证。"
         }.joined()
         let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
-        let hourFull=hourMatch.map{
-            "时干"+hourStem+"实落"+label(hourPalace)+"宫，另取"+$0+
-            "；与病位所指相合，故作为事体印证，而不是仅凭时干另立病处。"
+        let hourFull=hourMatch.map {
+            "时干\(hourStem)实落\(label(hourPalace))宫，另取\($0)；与病位所指相合，故作为事体印证，而不是仅凭时干另立病处。"
         } ?? ""
-        let actorOverlap=sourceLocation(patientPalace).first(where:{
+        let actorSiteHit=sourceLocation(patientPalace).first(where:{
             matched($0,leadSites)
         })
         let personFull:String
         if patientPalace.id==illness.id {
-            personFull=relationship+"用神"+actor.mainStem+"与天芮同在"+
-                label(illness)+"宫，人物与病位落点相合，不重复认作两处。"
-        } else if let actorOverlap {
-            personFull=relationship+"用神"+actor.mainStem+"落"+
-                label(patientPalace)+"宫，该宫也取"+actorOverlap+
-                "；两宫部位相交，所以可用来收窄主位。"
-        } else {
-            personFull=""
-        }
-        let auxFull=auxiliaries.compactMap{entry ->String? in
+            personFull="\(relationship)用神\(actor.mainStem)与天芮同在\(label(illness))宫，人物与病位落点相合，不重复认作两处。"
+        } else if let hit=actorSiteHit {
+            personFull="\(relationship)用神\(actor.mainStem)落\(label(patientPalace))宫，该宫也取\(hit)；两宫部位相交，所以可用来收窄主位。"
+        } else {personFull=""}
+        let auxFull=auxiliaries.compactMap { entry ->String? in
             let p=entry.0
             guard let overlap=sourceLocation(p).first(where:{
                 matched($0,leadSites)
-            }) else{return nil}
+            }) else {return nil}
             let name=p.id==actor.siblingAuxiliaryPalace ? "已确认亲属排行" :
                      p.id==actor.genderPalace ? "长辈乾坤" : "真实年命"
-            return name+"在"+label(p)+"宫，同样指"+overlap+
-                "；因此只增加这一处的互证，不另立病位。"
+            return "\(name)在\(label(p))宫，同样指\(overlap)；因此只增加这一处的互证，不另立病位。"
         }.joined()
         let skySupport=skySites.first(where:{matched($0,leadSites)})
         let earthSupport=earthSites.first(where:{matched($0,leadSites)})
-        let formsFull=(skySupport != nil && earthSupport != nil) ?
-            "天芮携"+sky+"与地盘"+illness.earthStem+
-            "同宫，上下干分别取"+skySupport!+"和"+earthSupport!+
-            "，两条部位线索相接；其真实天地格为"+
-            formationNames.joined(separator:"、")+"，格名本身不另生病位。" : ""
+        let formsFull:String
+        if let first=skySupport,let second=earthSupport {
+            let pairNames=formationNames.joined(separator:"、")
+            formsFull="天芮携\(sky)与地盘\(illness.earthStem)同宫，上下干分别取\(first)和\(second)，两条部位线索相接；其真实天地格为\(pairNames)，格名本身不另生病位。"
+        } else {formsFull=""}
         var danger:[String]=[]
         for (stem,sites) in [(sky,skySites),(illness.earthStem,earthSites)] {
             let signs=badSigns(stem,illness)
             if !signs.isEmpty,
                let site=sites.first(where:{matched($0,leadSites)}) {
-                danger.append(stem+signs.joined(separator:"、")+"，限看"+site+"一带")
+                danger.append("\(stem)\(signs.joined(separator:"、"))，限看\(site)一带")
             }
         }
         if let bird {
             let signs=badSigns(bird,illness)
             if !signs.isEmpty,
                let site=birdSites.first(where:{matched($0,leadSites)}) {
-                danger.append("天禽携"+bird+signs.joined(separator:"、")+"，另指"+site)
+                danger.append("天禽携\(bird)\(signs.joined(separator:"、"))，另指\(site)")
             }
         }
         if illnessVoid=="true_void" {danger.append("天芮宫真空，本宫主位候选减看")}
         else if illnessVoid=="fake_void" {danger.append("天芮宫假空，保留宫位候选")}
-        if doorRel=="宫克符号" {danger.append(door+"门迫，此门的旁证减看")}
+        if doorRel=="宫克符号" {danger.append("\(door)门迫，此门的旁证减看")}
         let dangerFull=danger.isEmpty ? "" : danger.joined(separator:"；")+"。"
-        let ending=secondSite.isEmpty ? "。" : "；次看"+secondSite+"。"
-        let locationFull="天芮实际落"+palaceName+"，"+
-            (chart.bureau.dun=="yang" ? "阳" : "阴")+"遁取"+sector+
-            "，该宫传统位置对应"+originalSites.prefix(2).joined(separator:"、")+
-            "；"+(trauma ?
-                  "本次已有明确伤损条件，因此把伤门的实际落宫排在前面。" :
-                  "这条线索来自病星真实落宫，并非把门名直接当作器官。")
-        let conclusion="综上，"+relationship+"本次"+
-            (trauma ? "因属伤损，先从伤门落宫看" : "病位先看")+
-            lead+ending+"这是传统位置取象，不等于医学诊断。"
+        let ending=secondSite.isEmpty ? "。" : "；次看\(secondSite)。"
+        let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
+        let locationReason=trauma ?
+            "本次已有明确伤损条件，因此把伤门的实际落宫排在前面。" :
+            "这条线索来自病星真实落宫，并非把门名直接当作器官。"
+        let locationFull="天芮实际落\(palaceName)，\(dn)遁取\(sector)，该宫传统位置对应\(originalSites.prefix(2).joined(separator:"、"))；\(locationReason)"
+        let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" : "病位先看"
+        let conclusion="综上，\(relationship)本次\(conclusionFocus)\(lead)\(ending)这是传统位置取象，不等于医学诊断。"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
