@@ -61,9 +61,8 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                 patientSex:nil,birthOrder:nil,patientBirthGanzhi:nil)
             let actor=try WenguaNativeActorSource.bind(chart:chart,
                 inquiry:request,index:actors)
-            let entry="V80_LEGACY_PARITY_START "+fixture.instant+" "+
-                fixture.relationship+" patient="+actor.mainStem+
-                " palace="+String(actor.mainPalace)+"\n"
+            let entry=["V80_LEGACY_PARITY_START",fixture.instant,fixture.relationship,
+                       "patient="+actor.mainStem,"palace="+String(actor.mainPalace)].joined(separator:" ")+"\n"
             FileHandle.standardError.write(Data(entry.utf8))
             let audit:WenguaVNextAudit
             do {
@@ -71,9 +70,8 @@ private struct ExpectedCases:Decodable {let cases:[ExpectedCast]}
                     chart:chart,relationship:fixture.relationship,
                     energy:bundle,catalog:catalog,actor:actor)
             } catch {
-                let detail="V80_LEGACY_PARITY_SOURCE_FAILURE "+
-                    fixture.instant+" "+fixture.relationship+" "+
-                    String(describing:error)+"\n"
+                let detail=["V80_LEGACY_PARITY_SOURCE_FAILURE",fixture.instant,
+                            fixture.relationship,String(describing:error)].joined(separator:" ")+"\n"
                 FileHandle.standardError.write(Data(detail.utf8))
                 throw error
             }
