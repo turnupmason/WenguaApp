@@ -411,6 +411,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     auxFull="".join(auxTexts)
     skySupport=next((s for s in skySites if _matched(s,leadSites)),None)
     earthSupport=next((s for s in earthSites if _matched(s,leadSites)),None)
+    deity=illness["deity"]
     doorWord="本宫门象不取" if not use_injury and door=="伤门" else door
     formsFull=(f"病宫{doorWord}、{deity}同临；天芮携{sky}与地盘{illness['earthStem']}"
                f"分别指{skySupport}、{earthSupport}，天地格"
