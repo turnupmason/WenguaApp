@@ -12,3 +12,6 @@ ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift 独立生成 V17 六段正文，
 tests/test_health_discomfort_power_v17_20261101.py 覆盖全部源表、实际符号独立取力、模板占位符、随机双时辰 Swift 接线，重要镜像与 MANIFEST SHA 跟 main。
 ## 实际失败与门槛
 历史 #41334177828 与 #41334249669 的真实Xcode编译失败：天禽 Swift map 闭包参数未显式接收；#41334023109 模板限制字段遗漏；#41334436400 旧结语 smoke 断言不适配；全部保留、逐项修正。任何新版 PASS 只能引用当前版本真正macOS构建、随机两盘原生断词和包内资源校验；不能复用 V16 PASS。原研究 Python V11 与 Swift V17 全词还没有完成独立同盘逐字验收，不谎称已通过。
+
+## 实际构建补充（2026-11-01）
+真正macOS GitHub Actions #41335088599 对 e3677dfee04251093aa4f407d15957a134df75b8 完成 XcodeGen/unsigned iOS Simulator build、200源表及81格 bundle核对、两个系统随机阴阳遁时辰 V17 Swift离线六段全文 PASS；测试并非复用原旧固定盘。2026-11-23 09:00 -05:00 辛丑日癸巳时：天芮坎一体表势小、伤门震三门力大。2027-02-11 03:00 -05:00 辛酉日庚寅时：天芮坤二体表势小、病宫假空、休门极小、太阴极大、伤门乾六中等。具体原生逐段原文见 docs/HEALTH_DISCOMFORT_V17_REAL_SWIFT_TWO_RANDOM_41335088599.md。主CI #41335191945 和V8 native parity #41335191951 属SHA8c300b7，PASS，轻重冻结仍未更动；Python V11 和 Swift V17 新专题逐字 parity 尚未通过。之前所有失败 #41334023109、#41334249669、#41334436400 等留历史不删除。
