@@ -174,7 +174,11 @@ enum WenguaNativeDiscomfortV15 {
         let doorPower=try sourceStrength("door",door,illness)
         let skyPower=try stemPower(sky,illness)
         let earthPower=try sourceStrength("stem",illness.earthStem,illness,illness.earthStages)
-        let patientPower=try stemPower(actor.mainStem,patientPalace)
+        let actorCarrier=actor.mainStem=="甲"
+            ? (actor.sourceGanzhi.flatMap{WenguaNativeActorSource.jiaCarrier($0)} ?? "")
+            : actor.mainStem
+        let patientPower=actorCarrier.isEmpty ? "待核"
+            : try stemPower(actorCarrier,patientPalace)
         let injuryPower=try sourceStrength("door","伤门",injury)
         let hourPower=try stemPower(hourStem,hourPalace)
         let deityElement=WenguaVNextEngine.godElement[deity]
@@ -272,7 +276,7 @@ enum WenguaNativeDiscomfortV15 {
             "stem_scope":"天盘与地盘按实际上下位置分别参看",
             "patient_stem":actor.mainStem,
             "patient_door":patientDoor,"patient_deity":patientDeity,
-            "patient_relation":"患者宫和病宫"+palaceRelation(patientPalace),
+            "patient_relation":"患者宫与病宫的关系为"+palaceRelation(patientPalace),
             "patient_coincidence":patientPalace.id==illness.id ? "两个用神在同一实宫，应合看但不重复计位" : "患者宫另有宫象，不能据此改写天芮所定部位",
             "natal_scope":actor.natalStem.map{"另知年命"+$0+"，须按真实年命位置另看"} ?? "出生年命未提供，因此不额外指定年命宫",
             "injury_deity":injury.deity ?? "无神",
