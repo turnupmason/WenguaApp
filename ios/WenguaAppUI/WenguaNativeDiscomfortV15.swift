@@ -332,11 +332,39 @@ enum WenguaNativeDiscomfortV15 {
                 otherDoors.append((p,d,try sourceStrength("door",d,p)))
             }
         }
-        let ranked:[(String,Int,Int)]=originalSites.enumerated().map{ entry in
+        // A genuinely separate location may enter only when (a) a strong
+        // source sign is in true stem-specific tomb/striking, OR (b) a second,
+        // distinct physical palace independently corroborates the same site.
+        // Thus a single attractive door does not invent extra organs.
+        let witnesses:[(WenguaNativePalace,String,String)]=[
+            (patientPalace,actorCarrier,patientPower),
+            (hourPalace,hourStem,hourPower),
+            (injury,"伤门",injuryPower)] + auxiliaries + otherDoors
+        var candidateSites=originalSites
+        var newSites=0
+        for (p,symbol,power) in witnesses
+                where p.id != illness.id && tier(power)>=4 {
+            for site in sourceLocation(p) {
+                if matched(site,candidateSites) {continue}
+                let directRisk=symbol != "伤门" && !badSigns(symbol,p).isEmpty
+                let independent=witnesses.contains{other in
+                    other.0.id != p.id && other.0.id != illness.id &&
+                    tier(other.2)>=3 &&
+                    matched(site,sourceLocation(other.0))
+                }
+                if directRisk || independent {
+                    candidateSites.append(site)
+                    newSites+=1
+                }
+                if newSites>=4 {break}
+            }
+            if newSites>=4 {break}
+        }
+        let ranked:[(String,Int,Int)]=candidateSites.enumerated().map{ entry in
             let site=entry.element
-            var rank=tier(illnessPower)
-            if illnessVoid=="true_void" {rank=0}
-            if illnessVoid=="fake_void" {rank=max(0,rank-1)}
+            var rank=matched(site,originalSites) ? tier(illnessPower) : 0
+            if matched(site,originalSites) && illnessVoid=="true_void" {rank=0}
+            if matched(site,originalSites) && illnessVoid=="fake_void" {rank=max(0,rank-1)}
             if matched(site,alternateSites){rank+=2}
             if matched(site,skySites) {
                 rank+=tier(skyPower)
@@ -403,7 +431,7 @@ enum WenguaNativeDiscomfortV15 {
         let detailLine=focusedDetails.isEmpty ? "" :
             focusedDetails.joined(separator:"，")+"。"
         let otherLine=secondSite.isEmpty ? "" :
-            "同宫另一处可兼看"+secondSite+"。"
+"另有部位线索可兼看"+secondSite+"。"
         // The casting actor is *not* another Tianrui disease site.
         // A father has Qian auxiliary; an older sister does not acquire
         // eldest-daughter status without verified birth order.

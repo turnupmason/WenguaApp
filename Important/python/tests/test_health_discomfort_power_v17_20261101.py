@@ -57,7 +57,7 @@ class SitePowerV17Test(unittest.TestCase):
         self.assertIn('["极大","大"].contains(tier)',native)
         self.assertIn('["小","极小"].contains(injuryPower)',native)
         self.assertIn('["极大","大"]',native)
-        self.assertIn('originalSites.enumerated().map',native)
+        self.assertIn('candidateSites.enumerated().map',native)
         self.assertIn('let leadSites=ranked.prefix(2)',native)
         self.assertIn('if illnessVoid=="true_void"',native)
         self.assertIn('let actorOverlap=patientPalace.id==illness.id ? nil',native)

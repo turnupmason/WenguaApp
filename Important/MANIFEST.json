@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "703d4b2299eb5d853f810862b6ab31a872cca419"
+      "sha": "ac1dbc32d354df0a9d344b607730765eeb5ae125"
     },
     {
       "platform": "python",
@@ -769,7 +769,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "5adb2bef2c87d1655ef24e6cea345507cc5fc853"
+      "sha": "b242f926b4ff7f1a5a4866dbfb8aac6e329a93a0"
     }
   ]
 }

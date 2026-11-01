@@ -23,3 +23,7 @@ V18 已复现的真实缺陷：`ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift`
 Swift: `ios/WenguaAppUI/{WenguaNativeActorBinding,WenguaNativeDiscomfortV15,WenguaDesignPreviewApp,VNextThreeRandomNativeFullCheck,NativeDiscomfortV15Smoke,NativeActorProfileCheck}.swift`。
 模板及索引: `data/templates/health_discomfort_v11/native_discomfort_v15.json`, `data/knowledge/phrase_library/health_v20/actor_profiles.json`。
 测试: `tests/test_health_discomfort_power_v17_20261101.py` (延续原有断言), `tests/test_health_discomfort_v19_full_sequence_20261101.py` (本轮严格九节及身份门槛)。Xcode Actions `.github/workflows/ios_v80_xcode_simulator_build.yml` 仍要求真实 simulator build，bundle 200/81/255 资源和随机父亲/大姐双盘。 `Important/python`、`Important/swift` 与 `Important/MANIFEST.json` 每次改代码同步镜像及 Git blob SHA。
+
+## V19 补充：独立多宫候选阈值
+
+新九节原本只排序天芮本宫的原始位置，对旁宫的完全不同位置仍然排除。进一步增加额外候选准入：旁宫实际用神／时干／伤门／亲属辅宫／真实八门源200强度必须达大或极大，且符号自身有真实入墓或击刑，或至少另一**不同物理宫**中等及以上的独立证据支持该同一部位，才可加入异宫候选（最多4项，最终显示主次仍控制篇幅）。同一宫的患者与伤门不得冒充两个物理宫交叉。此为传统部位类象候选的审慎排序，不是新增来源规则，也不代表医学上的疼痛或病灶。
