@@ -21,3 +21,6 @@ ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift 是V18原生证据排序；data/
 #41336727533、#41336915310、#41337105769、#41337240572 中出现真实Swift编译错误（元组closure推断、多行字符串拼接），逐项修复，原失败记录保留。#41336936539是较长六段旧稿已跑成功、但客户文字太多非病位旁话，不能当最终可交付版本验收。
 
 原新专题 Python V11 与本次 Swift V18 同盘全文逐字 parity 仍未验收；V8原生parity通过不等于V18已验收。真实古籍人体部位属于文化象意，绝不是临床器官诊断；没有签名真机或App Store验收。
+
+## 最终实际运行验收补充
+原生 macOS Xcode/unsigned Simulator/包内200、81、255、三套干象及随机双用户 [#41337326595](https://github.com/turnupmason/WenguaApp/actions/runs/41337326595) 全部 PASS，源 ae2b3d0d812578b01cc6e70c00375ee4ee0b6b66。2026-11-16 19:00 测父亲，天芮坤二体内，主脾胃食道；2027-02-18 01:00 测姐姐，天芮兑七体表，主口舌牙齿；两次未经润色客户原文 docs/HEALTH_DISCOMFORT_V18_REAL_FATHER_SISTER_41337326595.md。主 CI #41337412628、V8 native parity #41337412577、V7.7 #41337412617 PASS，源码81a067f。非临床验证；新病位专题Python/Swift逐字 parity 尚未通过。旧失败全部保留。

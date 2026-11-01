@@ -2601,3 +2601,11 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+## 2026-11-01 V18 难受部位多宫多符号只断位置：
+### 2026-11-01 · V18 难受部位只断位置 · 父亲/姐姐真实原生随机验收
+- 本轮仅修改 health.discomfort 客户部位断词。V8.0 病情轻重全部计分、200源8×25格、81有序格、原始模型与模版**保持冻结**。源五档只作多宫、多真实符号的内部部位证据排序；观众不显示力量、疼痛、吉凶、评分或书名。
+- 原生 Swift V18 多候选按真实天芮宫、阴阳体内外、天芮携干、天禽携干、地盘干的独立源强和真人关系筛选，只选有关的身体区域；同宫角色不重复作为独立线索，不同宫的干象或伤门无明确部位交集则从客户稿省略，空段不输出。父亲主用真实年干、条件乾六；姐姐主用真实月干，巽四仅条件长女辅助，不按普通姐姐推定大姐；真实年命未给不造。
+- 真实 macOS Xcode unsigned Simulator + bundled 200/81/255/三干资源 + 两随机 Swift 盘 [#41337326595](https://github.com/turnupmason/WenguaApp/actions/runs/41337326595) SUCCESS，source SHA ae2b3d0d812578b01cc6e70c00375ee4ee0b6b66。随机父亲 2026-11-16 19:00 -05（丙午年干用神艮八、天芮坤二，脾胃/食道为主）；姐姐 2027-02-18 01:00 -05（壬寅月干用神巽四、天芮兑七，口舌/牙齿为主）。原生逐节原文 docs/HEALTH_DISCOMFORT_V18_REAL_FATHER_SISTER_41337326595.md。
+- 主 CI [#41337412628](https://github.com/turnupmason/WenguaApp/actions/runs/41337412628) SUCCESS；原 V8 Python↔Swift parity [#41337412577](https://github.com/turnupmason/WenguaApp/actions/runs/41337412577) SUCCESS；V7.7 [#41337412617](https://github.com/turnupmason/WenguaApp/actions/runs/41337412617) SUCCESS，源 SHA81a067f2e158bc31a5c32b07b575c5da6009cb67。
+- 失败历史 #41336727533/#41336915310/#41337105769/#41337240572 保留，原较长 V18 PASS #41336936539不当作最终客户文字验收。审计 docs/HEALTH_DISCOMFORT_V18_SITE_EVIDENCE_RANK_AUDIT_20261101.md。新专题 Python V11 与 Swift V18 全文同盘逐字 parity 仍未单独验收；非签名真机或医学诊断有效性验证。
