@@ -47,7 +47,7 @@ def template() -> dict[str, Any]:
     for slot, phrase in raw["macros"].items():
         if not isinstance(phrase, str) or not phrase.strip():
             raise ValueError("Missing discomfort template phrase: " + slot)
-        if any(field == "" or field is None or "." in field or "[" in field
+        if any(field is not None and (not field or "." in field or "[" in field)
                for _, field, _, _ in Formatter().parse(phrase)):
             raise ValueError("Unsafe format placeholder: " + slot)
     return raw
