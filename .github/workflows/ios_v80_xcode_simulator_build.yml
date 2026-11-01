@@ -106,7 +106,7 @@ jobs:
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
-      - name: Two random Yin/Yang real hours from complete V16 native Swift customer sections
+      - name: Random father and older sister real hours from V18 site-only Swift
         run: |
           set -euo pipefail
           swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
@@ -130,10 +130,10 @@ jobs:
             data/mobile/health_vnext/health_energy_200.json \
             data/knowledge/health_81_excel_20261025/81_pairs.tsv \
             | tee /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          grep -q 'V15_REAL_NATIVE_SITE_PASS yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          grep -q 'V15_REAL_NATIVE_SITE_PASS yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 父亲 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 姐姐 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
           cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
-          echo "PASS V17 random source power and real 81 formation reading" > /tmp/wengua-v80-xcode/native_site_validation.txt
+          echo "PASS V18 father and older sister site-only original 200/81 physical symbol ranking" > /tmp/wengua-v80-xcode/native_site_validation.txt
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -160,7 +160,7 @@ jobs:
           mkdir -p docs
           if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ]; then
             RESULT=PASS
-            MESSAGE="Actual iOS Simulator Xcode build, byte-exact V8/V15 bundle, and two true V15 Swift clocks passed"
+            MESSAGE="Actual iOS Simulator Xcode build, byte-exact V8/V15 bundle, and two V18 father and sister true random source-checked Swift clocks passed"
           else
             RESULT=FAIL
             MESSAGE="Xcode/resources/new independent V15 two-clock Swift runtime failed; see preserved logs"
@@ -176,7 +176,7 @@ jobs:
             echo "Unsigned simulator build is NOT a signed iPhone installation, not an App Store shipment, and not proof of forecast validity."
             if [ -f /tmp/wengua-v80-xcode/native_site_two_clocks.log ]; then
               echo
-              echo '## Two original random Swift V16 full readings'
+              echo '## Two random Swift V18 father/older sister full site-only readings'
               echo '~~~text'
               cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
               echo '~~~'
