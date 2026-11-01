@@ -12,20 +12,30 @@ enum WenguaNativeDiscomfortV15 {
                         -> WenguaNativeCustomerReading {
         guard let rulesURL=bundle.url(forResource:"complete_255_rules_v15_20261101",withExtension:"json"),
               let stemsURL=bundle.url(forResource:"three_source_stem_variants_v14_20261101",withExtension:"json"),
-              let templateURL=bundle.url(forResource:"native_discomfort_v15",withExtension:"json") else {
+              let templateURL=bundle.url(forResource:"native_discomfort_v15",withExtension:"json"),
+              let energyURL=bundle.url(forResource:"health_energy_200",withExtension:"json"),
+              let pairsURL=bundle.url(forResource:"81_pairs",withExtension:"tsv") else {
             throw WenguaNativeReadingError.missingPhrases
         }
         return try compose(chart:chart,relationship:relationship,actor:actor,
                            rules:Data(contentsOf:rulesURL),
                            stems:Data(contentsOf:stemsURL),
-                           template:Data(contentsOf:templateURL))
+                           template:Data(contentsOf:templateURL),
+                           energy:Data(contentsOf:energyURL),
+                           pairs:Data(contentsOf:pairsURL))
     }
 
     // Exposed as a pure data-in function for parity fixtures and fail-closed tests.
     static func compose(chart:WenguaNativeChart, relationship:String,
                         actor:WenguaNativeActor,
-                        rules:Data, stems:Data, template:Data) throws
+                        rules:Data, stems:Data, template:Data,
+                        energy:Data, pairs:Data) throws
                         -> WenguaNativeCustomerReading {
+        let powerCatalog=try WenguaNativeEnergyBundle.fromData(energy)
+        guard let pairText=String(data:pairs,encoding:.utf8),
+              pairText.split(separator:"\n",omittingEmptySubsequences:true).count==82 else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
         guard let ruleDoc=try JSONSerialization.jsonObject(with:rules) as? [String:Any],
               let allRules=ruleDoc["rules"] as? [[String:Any]], allRules.count==255,
               let cases=ruleDoc["cases"] as? [Any],cases.count==12,
@@ -35,7 +45,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v16_full_fact_narrative_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v17_power_and_81_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==6,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -141,6 +151,79 @@ enum WenguaNativeDiscomfortV15 {
         let patientDeity=patientPalace.deity ?? "无神"
         let skyOther=mapping[illness.earthStem]?["qimen_secret_vol13"] ?? []
         let birdOther=bird.flatMap{mapping[$0]?["qimen_secret_vol13"]} ?? []
+        // Source-backed 200 powers (NOT V8 net +/-5 or any clinical scale).
+        let month=try WenguaVNextEngine.monthly(String(chart.pillars.month.suffix(1)))
+        func sourceStrength(_ kind:String,_ symbol:String,
+                            _ p:WenguaNativePalace,
+                            _ stages:[WenguaNativeStage]=[]) throws ->String {
+            try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
+                    month:month,catalog:powerCatalog,stages:stages).strength ?? "待核"
+        }
+        func stemPower(_ stem:String,_ p:WenguaNativePalace) throws ->String {
+            if let carrier=p.heavenStars.first(where:{$0.carriedStem==stem}) {
+                return try sourceStrength("stem",stem,p,carrier.stages)
+            }
+            if p.earthStem==stem {
+                return try sourceStrength("stem",stem,p,p.earthStages)
+            }
+            return "待核"
+        }
+        let illnessPower=try sourceStrength("star","天芮星",illness)
+        let doorPower=try sourceStrength("door",door,illness)
+        let skyPower=try stemPower(sky,illness)
+        let earthPower=try stemPower(illness.earthStem,illness)
+        let patientPower=try stemPower(actor.mainStem,patientPalace)
+        let injuryPower=try sourceStrength("door","伤门",injury)
+        let hourPower=try stemPower(hourStem,hourPalace)
+        let deityElement=WenguaVNextEngine.godElement[deity]
+        guard let godElement=deityElement,
+              let palaceElement=WenguaVNextEngine.elements[illness.id],
+              let godRelation=try? WenguaVNextEngine.directed(godElement,palaceElement),
+              let deityPower=WenguaVNextEngine.godTiers[godRelation] else {
+            throw WenguaNativeReadingError.missingRole
+        }
+        func formation(_ top:String,_ bottom:String)->String? {
+            for line in pairText.split(separator:"\n").dropFirst() {
+                let cells=line.split(separator:"|",omittingEmptySubsequences:false)
+                if cells.count>=4 && cells[0]==top && cells[1]==bottom {
+                    return String(cells[2])
+                }
+            }
+            return nil
+        }
+        guard let mainFormation=formation(sky,illness.earthStem) else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
+        var formationNames=[mainFormation]
+        if let bird,let centre=chart.palaces.first(where:{$0.id==5}),
+           let hostedFormation=formation(bird,centre.earthStem) {
+            formationNames.append(hostedFormation)
+        }
+        func isProminent(_ tier:String)->Bool {
+            ["极大","大"].contains(tier)
+        }
+        let illnessFocus=isProminent(illnessPower)
+            ? "病星自身力量较足，这一宫的病位线索较突出"
+            : illnessPower=="中等" ? "病星力量居中，此处取作主要病位"
+            : ["小","极小"].contains(illnessPower)
+                ? "病星力量偏弱，这里的不适象不宜夸大"
+                : "病星力量未能定档，病位轻重不作强断"
+        let injuryFocus=isProminent(injuryPower)
+            ? "伤门自身力量较足，筋骨牵扯的旁象较显"
+            : ["小","极小"].contains(injuryPower)
+                ? "伤门力量偏弱，筋骨牵扯只作轻微旁象"
+                : "伤门仅作独立的筋骨与动作线索"
+        let hourFocus=isProminent(hourPower)
+            ? "时干作用较显，病事宫可进一步核对"
+            : "时干力量不强，不把其余宫位扩大为主病位"
+        let secondaryFocus=injury.id==illness.id
+            ? "伤门也在病星宫，门象与病位同处一宫"
+            : "另宫伤门在"+label(injury)+"宫，"+injuryFocus
+        let locationFocus=isProminent(skyPower)
+            ? "天芮携干之势较足，可优先细查相应部位"
+            : ["小","极小"].contains(skyPower)
+                ? "携干力量较弱，其对应部位只作次线"
+                : "携干所示部位作为分辨线索"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -166,7 +249,17 @@ enum WenguaNativeDiscomfortV15 {
             "patient_relation":"患者宫和病宫"+palaceRelation(patientPalace),
             "patient_coincidence":patientPalace.id==illness.id ? "两个用神在同一实宫，应合看但不重复计位" : "患者宫另有宫象，不能据此改写天芮所定部位",
             "natal_scope":actor.natalStem.map{"另知年命"+$0+"，须按真实年命位置另看"} ?? "出生年命未提供，因此不额外指定年命宫",
-            "injury_deity":injury.deity ?? "无神"
+            "injury_deity":injury.deity ?? "无神",
+            "illness_power":illnessPower,"door_power":doorPower,
+            "deity_power":deityPower,"sky_power":skyPower,
+            "earth_power":earthPower,"patient_power":patientPower,
+            "injury_power":injuryPower,"hour_power":hourPower,
+            "formation":formationNames.joined(separator:"、"),
+            "illness_focus":illnessFocus,"injury_focus":injuryFocus,
+            "hour_focus":hourFocus,"secondary_focus":secondaryFocus,
+            "location_focus":locationFocus,
+            "injury_relation":palaceRelation(injury),
+            "hour_relation":palaceRelation(hourPalace)
         ]
         let required=["01_location","02_tianrui","03_comparison",
                       "04_person","05_review","06_conclusion"]
@@ -186,7 +279,7 @@ enum WenguaNativeDiscomfortV15 {
             sections.append(WenguaNativeCustomerSection(id:required[i],title:title,text:output))
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v16_full_facts_no_customer_sources_20261101",
+            version:"discomfort_v17_200_power_81_formation_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:["illness":illness.id,"patient":actor.mainPalace,

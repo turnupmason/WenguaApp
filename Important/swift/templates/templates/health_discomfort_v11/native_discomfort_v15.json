@@ -1,37 +1,37 @@
 {
-  "schema": "wengua_health_discomfort_native_v16_full_fact_narrative_20261101",
+  "schema": "wengua_health_discomfort_native_v17_power_and_81_20261101",
   "topic_id": "health.discomfort",
-  "status": "source_conditions_checked_full_customer_no_provenance_labels",
+  "status": "independent_site_source_fact_and_power_ranking",
   "sections": [
     {
       "id": "01_location",
       "title": "病位总览",
-      "text": "天芮病星落{palace}，本局为{dun}遁，病位先按{sector}取象。重点放在{primary}这一带，{external}为同宫可参看的另一组部位。两组确有交集的先合看，涉及不同身体区域的分别列明；不把每个器官都说成同一个位置。"
+      "text": "天芮落{palace}，本局{dun}遁，按{sector}先看{primary}。病星本身{illness_power}，{illness_focus}。{external}亦为此宫相应部位，其中{location_focus}。"
     },
     {
       "id": "02_tianrui",
       "title": "病宫星门神与条件",
-      "text": "病宫同时见{star_group}，门为{door}，神为{deity}。{door}带出{door_clue}一类表现，{deity}另见{deity_clue}，二者侧重症候形态，不直接取代宫位定位。本宫补充象意：{palace_clue}。{stage_clue}；{void_clue}；{horse_clue}；{tomb_clue}。这些条件说明为什么要兼顾虚实、活动及闭滞，不凭一个字就判病名。"
+      "text": "病宫见{star_group}，临{door}、{deity}。天芮{illness_power}，{door}之势{door_power}，其象为{door_clue}；{deity}本神{deity_power}，另见{deity_clue}。本宫天地格为{formation}。{void_clue}，{tomb_clue}，{horse_clue}；{restriction_focus}。"
     },
     {
       "id": "03_comparison",
       "title": "天干与细部",
-      "text": "病星天芮携{sky}，其干象另指{secret}；同一个干还可分辨内在的{viscera}以及外在的{surface}。地盘是{earth}，提示{earth_hint}，但地盘干与天芮所携的天盘干并非同一个符号。{companion}。本次严格把各个天干放回真实位置，候选互相补充时才缩小范围，指向不同系统时不强行归为一处。"
+      "text": "病星携{sky}，干力{sky_power}，相应部位另见{secret}；其内在象为{viscera}，外在象为{surface}。地盘{earth}力为{earth_power}，另见{earth_hint}。{companion}。各干分看自身强弱，不以一个符号的力量代替另一符号。"
     },
     {
       "id": "04_person",
       "title": "患者落宫",
-      "text": "本次问的是{person}，选定的患者用神为{patient_stem}，实际在{patient_palace}，临{patient_door}、{patient_deity}。{patient_relation}。天芮宫用于判断不适部位，患者宫用于分辨问事人的实际盘面处境；{patient_coincidence}。{natal_scope}。"
+      "text": "本次问{person}，患者用神{patient_stem}在{patient_palace}，本身{patient_power}，临{patient_door}、{patient_deity}；{patient_relation}。{patient_coincidence}。{natal_scope}。"
     },
     {
       "id": "05_review",
       "title": "伤门与病事旁线",
-      "text": "伤门在{injury}，同宫为{injury_deity}，这是另一条关于筋骨、牵扯、碰撞或肢体不适的象意线索，不能看到伤门就当作一定受伤。时干{hour_stem}实际落{hour_palace}，说明本次病事还有独立的落宫参照。判断部位时，先确认伤门、时干与病星是否同宫，异宫只作辅证；不把它们各自对应的候选全部算进病星所在宫。"
+      "text": "伤门落{injury}，临{injury_deity}，门力{injury_power}，{injury_focus}。时干{hour_stem}在{hour_palace}，力为{hour_power}，{hour_focus}。伤门、时干与天芮之间的真实宫位关系分别为{injury_relation}、{hour_relation}。"
     },
     {
       "id": "06_conclusion",
       "title": "综合断语",
-      "text": "综上，这张盘的身体不适首看{primary}，可结合{external}进一步分辨具体区域；天芮所携{sky}又提示{secret}，内外分别兼看{viscera}、{surface}，其中与主病位不同的部分只留作第二候选。最终以天芮真实落宫为主，不让门神、地盘干或其他人物宫喧宾夺主；这是部位取象，不是病情轻重评分，实际症状需要医学检查确认。"
+      "text": "综上，本局主要关注{primary}，{illness_focus}。{secondary_focus}。{external}、{secret}、{viscera}与{surface}中，{location_focus}。这是传统盘象对身体部位的侧重判断，不等于实际疼痛强度或疾病诊断。"
     }
   ]
 }
