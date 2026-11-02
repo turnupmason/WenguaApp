@@ -1,0 +1,196 @@
+{
+  "schema": "wengua_health_recovery_reading_template_v1_draft_20261102",
+  "topic_id": "health.recovery",
+  "status": "draft_not_app_enabled",
+  "template_version": "V1-draft",
+  "scope": "传统病情好转／缓解／出院应期的条件化表达；不是临床治愈日期保证。",
+  "release_contract": {
+    "app_enabled": false,
+    "disease_rule_selection_implemented": false,
+    "python_swift_parity_passed": false,
+    "approved_recovery_rule_count": 0,
+    "frozen_severity_and_location_unchanged": true
+  },
+  "targets": [
+    {
+      "id": "improvement",
+      "label": "病情好转",
+      "meaning": "与起局时相比出现明确改善，不等于症状全消。"
+    },
+    {
+      "id": "symptom_relief",
+      "label": "症状缓解",
+      "meaning": "所问症状有所减轻，不能自动等同完全康复。"
+    },
+    {
+      "id": "discharge",
+      "label": "出院",
+      "meaning": "住院结束这一事件，不自动等同治愈。"
+    },
+    {
+      "id": "clinical_recovery",
+      "label": "临床治愈",
+      "meaning": "须有明确医学标准；盘象不能独立确认已经治愈。"
+    }
+  ],
+  "input_contract": {
+    "same_cast_required": true,
+    "target_requires_explicit_definition": true,
+    "same_patient_required": true,
+    "optional_duration_default": "unknown",
+    "calendar_producer_supported_resolutions": [
+      "day",
+      "month"
+    ],
+    "unsupported_until_implemented": [
+      "hour",
+      "year"
+    ],
+    "window_required_fields": [
+      "role_binding",
+      "applicable_recovery_rule_ref",
+      "chart_trigger",
+      "calendar_receipt",
+      "calendar_method_version",
+      "window_start_iso",
+      "window_end_iso",
+      "precision",
+      "selection_basis",
+      "counterevidence",
+      "invalidating_conditions"
+    ],
+    "forbidden_prediction_inputs": [
+      "book_outcome",
+      "reported_feedback",
+      "observed_recovery_date",
+      "actual_discharge_date",
+      "posterior_diagnosis"
+    ],
+    "no_score_to_days_mapping": true,
+    "no_global_void_as_patient_void": true,
+    "current_forms_unchanged": true
+  },
+  "placeholders": {
+    "target_label": "所问的明确事件",
+    "patient_label": "本次真实患者关系",
+    "illness_evidence": "天芮本宫真实事实与源力",
+    "patient_evidence": "患者用神真实事实与源力",
+    "medicine_evidence": "天心、乙奇各自的实际条件",
+    "development_assessment": "基于当前证据的变化方向，不等同净分等级",
+    "pace_facts": "内外、伏反吟等已核事实",
+    "pace_assessment": "仅有依据的缓急说明，不直接换算天数",
+    "window_human": "经真实历法计算并明确精度的候选区间",
+    "method_label": "本次确有疾病适用依据的方法",
+    "trigger_role": "方法实际作用的患者／病星等对象",
+    "trigger_condition": "该对象真正触发的填冲、出墓等条件",
+    "selection_basis": "为何选这一窗而非其它候选",
+    "counterevidence": "不利或相反条件，未核完不得写不存在",
+    "invalidating_conditions": "候选期成立的实际条件与失效条件",
+    "missing_evidence": "缺失的决定性依据",
+    "conflicting_evidence": "互不相容的方法或方向",
+    "requested_precision": "原书或请求所需但历法未支持的粒度"
+  },
+  "sections": [
+    {
+      "id": "01_target",
+      "title": "本次应期目标",
+      "paragraphs": [
+        "本次为{patient_label}看{target_label}的应期。好转、症状缓解、出院与完全治愈分别判断，不混作同一件事。"
+      ]
+    },
+    {
+      "id": "02_development",
+      "title": "病情变化与转机",
+      "paragraphs": [
+        "病宫依据：{illness_evidence}。",
+        "患者依据：{patient_evidence}。",
+        "医药依据：{medicine_evidence}。",
+        "合参上述条件，{development_assessment}。"
+      ]
+    },
+    {
+      "id": "03_pace",
+      "title": "应期缓急",
+      "paragraphs": [
+        "本盘{pace_facts}。{pace_assessment}。",
+        "缓急只用于辨别先后与节奏，不能据此把某一吉凶等级直接换成固定天数。"
+      ]
+    },
+    {
+      "id": "04_window",
+      "title": "候选应期",
+      "branch": "window_state"
+    },
+    {
+      "id": "05_conditions",
+      "title": "相反依据与成立条件",
+      "paragraphs": [
+        "仍须合参：{counterevidence}。",
+        "上述候选期的成立条件为：{invalidating_conditions}。"
+      ]
+    },
+    {
+      "id": "06_summary",
+      "title": "综合断语",
+      "branch": "summary_state"
+    }
+  ],
+  "window_state": {
+    "conditional_window": [
+      "本次可据以观察{target_label}的候选期为{window_human}。",
+      "所取方法为{method_label}，作用于{trigger_role}；该对象实见{trigger_condition}。",
+      "选择这一候选期的依据是：{selection_basis}。"
+    ],
+    "needs_target": [
+      "本次尚未明确所问是好转、症状缓解、出院还是临床治愈，暂不混用这些事件的日期。"
+    ],
+    "insufficient_evidence": [
+      "目前缺少{missing_evidence}，尚不能确定{target_label}的具体日期。"
+    ],
+    "direction_unresolved": [
+      "当前证据还不足以判断明确的好转方向，本次不强定{target_label}的日期。"
+    ],
+    "conflicting_rules": [
+      "目前存在{conflicting_evidence}，尚不能合理选定单一候选期；不任意采用最早日期。"
+    ],
+    "unsupported_precision": [
+      "本次所需{requested_precision}精度尚无已核实现，暂不输出超出依据的精确时点。"
+    ]
+  },
+  "summary_state": {
+    "conditional_window": [
+      "综合来看，{window_human}较值得观察{target_label}，以{invalidating_conditions}为成立条件。"
+    ],
+    "needs_target": [
+      "先明确所问事件，再判断相应的候选期。"
+    ],
+    "insufficient_evidence": [
+      "目前依据不足，本次不强定{target_label}日期。"
+    ],
+    "direction_unresolved": [
+      "目前看不到足以确定好转期的完整依据，不把吉凶等级直接换成康复天数。"
+    ],
+    "conflicting_rules": [
+      "本次应期依据存在冲突，暂不取定单一日期。"
+    ],
+    "unsupported_precision": [
+      "现有依据尚不足以支持所要求的时间精度。"
+    ]
+  },
+  "assembly_policy": {
+    "conditional_window_requires_all_window_fields": true,
+    "nonwindow_states_hide_sections": [
+      "05_conditions"
+    ],
+    "needs_target_hides_sections": [
+      "02_development",
+      "03_pace",
+      "05_conditions"
+    ],
+    "unknown_fact_not_replaced_with_auspicious_claim": true,
+    "missing_counterevidence_is_not_no_counterevidence": true,
+    "book_feedback_used_for_selection": false
+  },
+  "footer": "以上为传统应期参考，需以实际病情变化和诊疗检查核实。",
+  "not_released_reason": "疾病专属择法、同盘窗口与Python／Swift逐字验收尚未完成；本文件只供模板审阅。"
+}

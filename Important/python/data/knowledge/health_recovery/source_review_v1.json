@@ -1,0 +1,241 @@
+{
+  "schema": "wengua_health_recovery_source_review_v1_20261102",
+  "status": "draft_source_audit_not_live_forecast",
+  "source_files": [
+    {
+      "path": "data/knowledge/kaiwu/analysis_judgment_ch04/timing_methods.json",
+      "sha256": "113fa93b9fb6481620504c3caaaeecacbb11f7721007589139845848a75c05b0"
+    },
+    {
+      "path": "data/knowledge/shenqi/health_prediction_ch01/method_index.json",
+      "sha256": "6d403a53d46e5f4ec53e47a16c1d3c7fde2b92545fbbae96be0b1b189217a82e"
+    },
+    {
+      "path": "data/knowledge/shenqi/health_prediction_ch01/case_index.json",
+      "sha256": "4bf790f8d59efa3666745fd5d85faff5b49ed452e8fdaa130be17d4f2ad72b31"
+    },
+    {
+      "path": "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json",
+      "sha256": "e29bad3351621083696e5818eb803de50541fc099d236e625648ab800affa007"
+    },
+    {
+      "path": "data/knowledge/kaiwu/health_prediction_ch02_section01/case_index.json",
+      "sha256": "52871d8f90f2c23b48a59a54a6feeeb2f3ff989a573035298a6e80901176db64"
+    },
+    {
+      "path": "data/knowledge/phrase_library/health_v30/user_20261022_disease_curriculum.json",
+      "sha256": "9068a40936fb08999661b270c8492172b8a9d08d0f90438005e8fd0ff06d4330"
+    },
+    {
+      "path": "sources/kaiwu/开悟之门_人体疾病预测.txt",
+      "sha256": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d"
+    }
+  ],
+  "case_inventory": {
+    "source_entries": 12,
+    "unique_event_families": 11,
+    "cross_book_repeated_event": "shenqi.health.19960727.father_illness",
+    "do_not_count_as_independent_clinical_successes": true
+  },
+  "generic_candidates": [
+    {
+      "id": "recovery_candidate_01",
+      "label": "用神得令候选期",
+      "source_method_key": "successful_outcome:1",
+      "source_line": 181,
+      "excerpt_sha256": "1f6e311b76f9ceca5676799f4ac2689ceb534e48b386f1ceff76d8baf09c0c27",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "先核疾病转机方向、所需对象及其独立源力，不套用全盘净分",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_02",
+      "label": "用神所需生扶候选期",
+      "source_method_key": "successful_outcome:2",
+      "source_line": 182,
+      "excerpt_sha256": "e2ee1336142f5c22bd95d1cbc84bcbc770027ba144bdcd1ddb5e0916b7428fb1",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "必须证实哪个对象确需生扶；不能将生病宫一律写为康复",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_03",
+      "label": "用神所需制约候选期",
+      "source_method_key": "successful_outcome:3",
+      "source_line": 183,
+      "excerpt_sha256": "4e361912cea35fb820c24e38372a2fa68edc015ea6a07ac7c3139a096708c23e",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "先说明被制的是病象还是患者，以及疾病目标上的方向",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_04",
+      "label": "旬空填实／冲实候选期",
+      "source_method_key": "successful_outcome:4",
+      "source_line": 184,
+      "excerpt_sha256": "69bd93c276b6391e33121d36d82c3507bce045fa51d6327932d74476c742a091",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "仅检验所选实际对象的真空及支，不把全盘旬空无条件当患者空",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_05",
+      "label": "冲库候选期",
+      "source_method_key": "successful_outcome:5",
+      "source_line": 185,
+      "excerpt_sha256": "43840a7d229e2ac4b018e3528725710b47f2249c1b71461a240b2fa491a9f736",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "先辨库与墓、实际对象和需解的条件；当前没有疾病专属完整择法",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_06",
+      "label": "刑冲逢合候选期",
+      "source_method_key": "successful_outcome:6",
+      "source_line": 186,
+      "excerpt_sha256": "f532ea101ef53363665f4e25b573486981fd9c8df1eb8a559cba3e8e209bd37a",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "先证明实际刑冲对象与本次目标的适用性",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_07",
+      "label": "驿马触发候选期",
+      "source_method_key": "successful_outcome:7",
+      "source_line": 187,
+      "excerpt_sha256": "498aa2f725b397dcece267af2122cae07e899856e0602a556060ff81e7c43333",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "必须是真实对象相关的马星与事件，不见马就写康复",
+      "live_rule_enabled": false
+    },
+    {
+      "id": "recovery_candidate_08",
+      "label": "宫数／干候选期",
+      "source_method_key": "successful_outcome:8",
+      "source_line": 188,
+      "excerpt_sha256": "a04de02126a0f87f657895ea9bab43c8d43ff6811e3f915245fa14994c14acb2",
+      "source_evidence_level": "source_explicit_generic_not_disease_specific",
+      "disease_applicability": "unverified",
+      "review_status": "draft",
+      "gate": "时间单位和取数方法尚未确定时，不按宫数直换天数",
+      "live_rule_enabled": false
+    }
+  ],
+  "historical_timing_checks": [
+    {
+      "event_family_id": "kaiwu.health.19991020.wang_craniotomy",
+      "source_path": "sources/kaiwu/开悟之门_人体疾病预测.txt",
+      "pre_feedback_reasoning_lines": [
+        185,
+        187,
+        189,
+        191,
+        193,
+        195,
+        197
+      ],
+      "forecast_line": 201,
+      "forecast_line_sha256": "e6214994324e25e6319ee1f1c242eead3c62f577bdfb54f9eb7657eed73b5f46",
+      "target": "discharge",
+      "short_duration_phrase": "十天半月就会出院",
+      "status": "source_explicit_case_specific_duration_not_general_rule",
+      "recovery_direction_line": 195,
+      "feedback_lines": [
+        209
+      ],
+      "feedback_content_scope": "次日会诊报告，无明确实际出院日期",
+      "actual_discharge_date_reported": false,
+      "clinical_recovery_date_reported": false,
+      "book_outcome_label": "author_book_success_default",
+      "can_promote_10_to_15_days_to_default": false,
+      "calendar_window_generated_for_new_patient": false
+    },
+    {
+      "event_family_id": "shenqi.health.19960509.nephew_discharge",
+      "source_path": "data/knowledge/shenqi/health_prediction_ch01/case_index.json",
+      "source_scope": "available_case_index_only",
+      "source_original_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "step_lines": [
+        145,
+        146,
+        150,
+        153
+      ],
+      "feedback_lines": [
+        148,
+        154
+      ],
+      "target": "discharge",
+      "status": "original_timing_excerpt_and_chart_verification_pending",
+      "full_chapter_original_available_in_this_workspace": false,
+      "inferred_original_timing_method": null,
+      "later_injury_disclosure_lines": [
+        148
+      ],
+      "no_reconstruction_of_missing_author_words": true
+    }
+  ],
+  "excluded_from_recovery_window_selection": [
+    {
+      "source": "kaiwu/health_prediction_ch02_section01",
+      "lines": [
+        31,
+        41,
+        117,
+        145,
+        157
+      ],
+      "reason": "不利／死亡应期或动物个案论断，不能倒转成患者康复日期；原记录仍保留。"
+    },
+    {
+      "method_keys": [
+        "interception_recovery:1",
+        "interception_recovery:2",
+        "interception_recovery:3"
+      ],
+      "reason": "recovery是寻找／截获，不是病愈；不能按英文名称跨领域移植。"
+    }
+  ],
+  "user_supplement_refs": [
+    {
+      "path": "data/knowledge/phrase_library/health_v30/user_20261022_disease_curriculum.json",
+      "json_pointer": "/role_order/7",
+      "evidence_level": "user_provided_method_not_fabricated_book_quote",
+      "scope": "内外、伏反吟、空墓冲合与马星的条件线索，具体择法仍待核"
+    },
+    {
+      "path": "data/knowledge/phrase_library/health_v30/user_20261022_disease_curriculum.json",
+      "json_pointer": "/role_order/8",
+      "evidence_level": "user_provided_method_not_fabricated_book_quote",
+      "scope": "新病久病未知时不触发依赖该事实的规则；本轮不重加病程UI"
+    }
+  ],
+  "implementation_limits": {
+    "calendar_producer": [
+      "day",
+      "month"
+    ],
+    "existing_generic_methods": [
+      "fill_empty",
+      "clash_empty"
+    ],
+    "disease_rule_selector": false,
+    "recovery_swift_parity": false,
+    "app_enabled": false
+  },
+  "next_gate": "核实疾病目标与疾病专属择法后，再复用同盘历法生成窗口；不能仅凭现有通用规则发布康复日期。"
+}

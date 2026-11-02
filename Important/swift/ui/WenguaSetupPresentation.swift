@@ -3,6 +3,7 @@ import SwiftUI
 struct WenguaPreparationCard: View {
     let topic: QuestionTopic
     let start: () -> Void
+    private let guidanceGap:CGFloat=16
     var body: some View {
         VStack(spacing:24) {
             Image(systemName:"seal").font(.system(size:32,weight:.light))
@@ -16,7 +17,7 @@ struct WenguaPreparationCard: View {
                     .multilineTextAlignment(.center)
             }
             Divider()
-            VStack(alignment:.leading,spacing:16) {
+            VStack(alignment:.leading,spacing:guidanceGap) {
                 guidance("普通问事", "直接使用当前时辰起局。")
                 guidance("预定事项", "若属于已知、已预定的特定事件，请从本领域「选吉日」进入，按该事项实际发生／约定的时刻起局。")
             }
@@ -32,7 +33,7 @@ struct WenguaPreparationCard: View {
         .background(QStyle.surface,in:RoundedRectangle(cornerRadius:24))
     }
     private func guidance(_ title:String,_ text:String) -> some View {
-        VStack(alignment:.leading,spacing:5) {
+        VStack(alignment:.leading,spacing:guidanceGap) {
             Text(title+"：").wenguaHeading()
             Text(text).font(.system(size:17)).foregroundStyle(QStyle.secondary).lineSpacing(5)
                 .lineLimit(nil).fixedSize(horizontal:false,vertical:true)

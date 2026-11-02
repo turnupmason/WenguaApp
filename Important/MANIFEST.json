@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "2b8f814554017dc994941deb98a79d9b05df6c35"
+      "sha": "453dd4c41467a887b323c7933c45d72f7d3689f0"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "75ead2fb12754a29f23a7454978fe56ce30991a9"
+      "sha": "0da0b6124aa2a794b2e889167cd201ac6930144a"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "75ead2fb12754a29f23a7454978fe56ce30991a9"
+      "sha": "0da0b6124aa2a794b2e889167cd201ac6930144a"
     },
     {
       "platform": "python",
@@ -931,7 +931,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
       "snapshot": "Important/swift/ui/WenguaSetupPresentation.swift",
-      "sha": "cf75b9cdf28a0e17e728bf2ba4173e4e766dc05a"
+      "sha": "bcd0b46f7cc30d704a2d72c008db45abdb6b6f7c"
     },
     {
       "platform": "python",
@@ -949,7 +949,25 @@
       "platform": "python",
       "canonical": "tests/test_ios_inputs_hitarea_p8_20261102.py",
       "snapshot": "Important/python/tests/test_ios_inputs_hitarea_p8_20261102.py",
-      "sha": "a21c4b39c198173db29fb74d4c859541f6e11e4d"
+      "sha": "9791978bc222629263d59405b5516e04ca6dab02"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_recovery_template_v1_20261102.py",
+      "snapshot": "Important/python/tests/test_health_recovery_template_v1_20261102.py",
+      "sha": "aaeb6a7f987f6552f14ee6f9f1989b066c1ea504"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/reading_template_v1_draft.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/reading_template_v1_draft.json",
+      "sha": "e77c1d1b238a51e0454fdc4d20a5828f7f582b41"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/source_review_v1.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/source_review_v1.json",
+      "sha": "ac4200569de54bf402520fa24559aa4abce456b0"
     }
   ]
 }

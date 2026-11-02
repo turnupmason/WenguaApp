@@ -130,6 +130,8 @@ cd WenguaApp
 
 ## 下一开发重点：病愈应期
 
+已建立[疾病应期模板V1审阅稿](docs/HEALTH_RECOVERY_TEMPLATE_V1_20261102.md)和[结构化草稿](data/knowledge/health_recovery/reading_template_v1_draft.json)，包含6段断词与6类状态；[来源审计](data/knowledge/health_recovery/source_review_v1.json)保留12来源条目／11事件家族、8通用候选方法与排除条件。疾病专属择法／同盘候选窗口及Swift接线尚待验证，当前不是已开放手机模板。准备页说明上下间距已按用户纠正改为相等（p9），其余界面保持。
+
 用户已指定下一重点为“根据病情判断传统病愈应期”。继续保留轻重V9／V11、病位V27的封存版本，独立开发 `health.recovery`，通过来源与原生验收前不开放。先区分好转、康复、出院等目标，核对原书适用条件，再由真实历法计算有凭据的候选窗口；不能把吉凶分直接换成康复天数，也不能承诺现实医疗康复日期。现状与开发顺序见 [病愈应期启动审计](docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md)。
 
 ## 开发检查

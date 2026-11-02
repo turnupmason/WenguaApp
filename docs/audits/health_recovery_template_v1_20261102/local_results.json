@@ -1,0 +1,19 @@
+{
+  "tests": 864,
+  "failures": 0,
+  "errors": 0,
+  "existing_skips": 3,
+  "new_skips": 0,
+  "targeted": 7,
+  "recovery_feature_status": "draft_not_enabled",
+  "logs": [
+    {
+      "path": "docs/audits/health_recovery_template_v1_20261102/python_full_864.log.gz",
+      "sha256": "c9900e4671cc7569f6a0ba3626b4a6a1595cffceff755657fa69509327623e0c"
+    },
+    {
+      "path": "docs/audits/health_recovery_template_v1_20261102/targeted_7.log.gz",
+      "sha256": "41012e6368a668232fdaa2aee8b977015810c3440fc72dddf24dd6a30ee2a826"
+    }
+  ]
+}
