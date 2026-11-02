@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p2",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p3",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "ba80923e90ef203d3a40abcd944ad6f41c82145dfb4558af6f22316e8149b10d"
+      "sha256": "93c3175af98dccda866fb7529a5c4991077dbe9e8473a90a91a5e99a62cc3059"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "9cfb056a0dcf51169e309729f2faefb74725caf69a02f344f88b6a927c542845"
+      "sha256": "2f5374334eb58a02b49b6a82343079378d2cef4f87be84535ffca1fb58945546"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -91,12 +91,12 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "kind": "source",
-      "sha256": "c6bda590053537b6e868bae9531f873de52c5c73d4c8e3a8aea347904bacbeea"
+      "sha256": "86e57101707faba6534353e7e150b98555696ffbff2c3291bbb960dd7abc5cdc"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "kind": "source",
-      "sha256": "dadf9f9fb7a086392218e098f72c8b2714a13340ffa0e0e8074c479365dfd9d9"
+      "sha256": "8e74ea3ed1096c4d05b7189141f00808b45756bff50c3f647565642ba683f094"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
@@ -176,13 +176,18 @@
     {
       "path": "ios/WenguaAppUI/project.yml",
       "kind": "source",
-      "sha256": "3612f1bdfcd015d2d2deb2ef9157ef1a053ca2af621f1c4b8159750a2df6fad3"
+      "sha256": "1cd3ae042d343daa4c0ac9be48edeabe18e99421e6aed17ab6dbaffbf2062bd0"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaMeditationView.swift",
+      "kind": "source",
+      "sha256": "88734a8c18c5715316144f48319d498736cd0283b378af9669cc6c5c5dc36211"
     }
   ],
   "engineering_patch": {
-    "id": "p2_discomfort_frontpage_and_title",
-    "prior_manifest_sha256": "8e305b7f3c7bf88cce7cbea56f246d7459ceb263566b098a211a472d61ff41b6",
-    "scope": "UI consumes the existing V27 09_conclusion; display title 奇门论疾, historical topic IDs unchanged. Scoring, templates and reading sections unchanged.",
-    "authorization": "User 2026-11-02 explicitly requests real first-page summary and title 奇门论疾"
+    "id": "p3_concise_summary_meditation_and_warning_cleanup",
+    "prior_manifest_sha256": "d9e58c09a1a08f796d5179a7355aace2cc48dcd0eb287fe6cb8da0e66ea1821a",
+    "scope": "First card renders only actual V27 lead sentence with direct injury-region wording; original detailed narration, scoring and resources unchanged. Native 30-second meditation animation. Swift compiler warnings fixed without changing rule results; warnings-as-errors enabled.",
+    "authorization": "User 2026-11-02 explicitly requests concise injury summary, details only on professional tab, monk wooden-fish meditation animation and Xcode issues cleanup."
   }
 }

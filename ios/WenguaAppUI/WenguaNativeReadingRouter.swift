@@ -238,7 +238,8 @@ enum WenguaNativeReadingRouter {
                    entire(actualDoors,homeDoors,false)
         let fanyin=entire(actualStars,homeStars,true) ||
                     entire(actualDoors,homeDoors,true)
-        let macro=try [
+        // Retain phrase validation even though this legacy text is not displayed.
+        _ = try [
             fill(fiveNot ? "macro_five" : "macro_clear"),
             fill(fuyin && fanyin ? "macro_mixed" :
                  fuyin ? "macro_slow" : fanyin ? "macro_fast" : "macro_unset")

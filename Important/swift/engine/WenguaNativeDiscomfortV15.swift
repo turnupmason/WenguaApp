@@ -125,8 +125,6 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.missingRole
         }
         let bird=illness.heavenStars.first(where:{$0.star=="天禽星"})?.carriedStem
-        let companion=bird.map{"同宫天禽另携"+$0+"，仅作独立辅象；"} ??
-            "本宫无另行天禽携干；"
         let region=([9,4,2].contains(illness.id) ? "上部" :
                      [3,7].contains(illness.id) ? "中部":"下部")
         let palaceName:String=code+"宫"
@@ -432,11 +430,6 @@ enum WenguaNativeDiscomfortV15 {
         guard !useInjury || !injurySites.isEmpty else {
             throw WenguaNativeReadingError.missingRole
         }
-        let witnesses:[(WenguaNativePalace,String,String)]=[
-            (patientPalace,actorCarrier,patientPower),
-            (hourPalace,hourCarrier,hourPower)] +
-            (useInjury ? [(injury,"伤门",injuryPower)] : []) +
-            auxiliaries
         // Other doors may corroborate the chosen site, but must not
         // manufacture new distant organs by agreeing with one another.
         // An actual reported injury/bone damage/bleeding selects the true
@@ -511,19 +504,6 @@ enum WenguaNativeDiscomfortV15 {
         // strength is small: low force limits emphasis, not anatomy evidence.
         let leadSites=ranked.prefix(1).map{$0.0}
         let lead=leadSites.joined(separator:"、")
-        let remaining=ranked.dropFirst(2).map{$0.0}
-        let supportedAlt=alternateSites.filter{ site in
-            !leadSites.contains(where:{sameSite(site,$0)}) &&
-            (matched(site,skySites) || matched(site,earthSites) ||
-             matched(site,birdSites))
-        }
-        let injurySecondary=useInjury && !trauma ?
-            ranked.map{$0.0}.filter{matched($0,injurySites) &&
-                !matched($0,leadSites)}.prefix(1).map{$0} : []
-        let secondary=(injurySecondary+remaining+supportedAlt)
-            .reduce(into:[String]()){items,part in
-            if !items.contains(where:{sameSite($0,part)}) {items.append(part)}
-        }
         // Keep secondary evidence for audit, never append a different
         // anatomical region merely to fill a customer-facing second clause.
         let secondSite=""
@@ -863,7 +843,6 @@ enum WenguaNativeDiscomfortV15 {
             for stem in realStems.sorted() {
                 let conditions=badSigns(stem,p)
                 if conditions.isEmpty {continue}
-                let sourceSites=stemSites(stem)
                 let rawSite=stemFocus(stem)
                 let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
                 let power=try stemPower(stem,p)
@@ -908,7 +887,6 @@ enum WenguaNativeDiscomfortV15 {
         }
         let crossFull=crossEvents.isEmpty ? "" :
             "另宫刑墓："+crossEvents.map{$0.3}.joined(separator:"；")+"。"
-        let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
             lead : originalSites.prefix(1).joined(separator:"、")
@@ -1050,9 +1028,9 @@ enum WenguaNativeDiscomfortV15 {
         }
         guard sections.first?.id=="01_location",
               sections.last?.id=="09_conclusion",sections.count>=2,
-              sections.map{$0.id}==required.filter{wanted in
+              sections.map({$0.id})==required.filter({wanted in
                   sections.contains(where:{$0.id==wanted})
-              },
+              }),
               sections.contains(where:{$0.id=="02_injury"})==useInjury else {
             throw WenguaNativeReadingError.invalidPhrase
         }

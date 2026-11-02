@@ -1136,7 +1136,7 @@ struct CastSetupScreen: View {
                                 }
                             }
                             .pickerStyle(.menu)
-                            .onChange(of:subject) { _ in
+                            .onChange(of:subject) { _, _ in
                                 familyRelativeConfirmed=false
                                 patientSex="unspecified"
                                 friendRelativeAge="unspecified"
@@ -1228,12 +1228,20 @@ struct CastSetupScreen: View {
                             .frame(maxWidth: .infinity)
                         TimelineView(.periodic(from: .now, by: 0.25)) { context in
                             let remaining = calmEnds.map { max(0, Int(ceil($0.timeIntervalSince(context.date)))) } ?? 30
-                            VStack(spacing: 25) {
-                                Text(String(format: "%02d", remaining))
-                                    .font(.system(size: 70, weight: .ultraLight, design: .rounded))
-                                    .foregroundStyle(QStyle.blue)
-                                    .frame(width: 210, height: 210)
-                                    .overlay(Circle().stroke(QStyle.blue.opacity(0.45), lineWidth: 2))
+                            VStack(spacing: 20) {
+                                WenguaMeditationScene(
+                                    startedAt: calmEnds?.addingTimeInterval(-30),
+                                    isActive: calmEnds != nil && remaining > 0)
+                                HStack(alignment: .firstTextBaseline, spacing: 7) {
+                                    Text(String(format: "%02d", remaining))
+                                        .font(.system(size: 38, weight: .light, design: .rounded))
+                                        .monospacedDigit()
+                                        .contentTransition(.numericText())
+                                    Text("秒").font(.subheadline)
+                                }
+                                .foregroundStyle(QStyle.text)
+                                .accessibilityElement(children: .ignore)
+                                .accessibilityLabel("静心剩余\(remaining)秒")
                                 ProgressView(value: Double(30 - remaining), total: 30)
                                     .tint(QStyle.blue)
                                 if calmEnds == nil {

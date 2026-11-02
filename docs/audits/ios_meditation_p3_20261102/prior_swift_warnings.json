@@ -1,0 +1,20 @@
+{
+  "source_runs": [
+    41469280778,
+    41468305381
+  ],
+  "warnings": [
+    "WenguaAppUI/NativeDiscomfortV15Smoke.swift:88:36: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning",
+    "WenguaAppUI/WenguaDesignPreviewApp.swift:1139:30: warning: 'onChange(of:perform:)' was deprecated in iOS 17.0: Use `onChange` with a two or zero parameter action closure instead.",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:1053:27: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:1053:51: warning: trailing closure in this context is confusable with the body of the statement; pass as a parenthesized argument to silence this warning",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:128:13: warning: initialization of immutable value 'companion' was never used; consider replacing with assignment to '_' or removing it",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:435:13: warning: immutable value 'witnesses' was never used; consider replacing with '_' or removing it",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:523:13: warning: initialization of immutable value 'secondary' was never used; consider replacing with assignment to '_' or removing it",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:866:21: warning: initialization of immutable value 'sourceSites' was never used; consider replacing with assignment to '_' or removing it",
+    "WenguaAppUI/WenguaNativeDiscomfortV15.swift:911:13: warning: initialization of immutable value 'ending' was never used; consider replacing with assignment to '_' or removing it",
+    "WenguaAppUI/WenguaNativeReadingRouter.swift:241:13: warning: initialization of immutable value 'macro' was never used; consider replacing with assignment to '_' or removing it",
+    "WenguaAppUI/WenguaNativeReadingRouter.swift:241:13: warning: initialization of immutable value 'macro' was never used; consider replacing with assignment to '_' or removing it [#NoUsage]"
+  ],
+  "note": "Original real compiler diagnostics; incremental Xcode issue navigator can show a subset. No warning suppression. AppIntents metadata tooling message is not a Swift source diagnostic."
+}

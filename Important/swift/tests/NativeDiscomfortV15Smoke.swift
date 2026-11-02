@@ -85,7 +85,7 @@ import Foundation
                 ids.contains("02_injury")==(injuryContext != "none"),
                 (reading.rolePalaces?["injury"] != nil)==(injuryContext != "none"),
                 Set(ids).count==ids.count,
-                ids==allowed.filter{ids.contains($0)},
+                ids==allowed.filter({ids.contains($0)}),
                 reading.sections.allSatisfy({ !$0.text.contains("{") &&
                                              !$0.text.contains("}") }),
                 reading.sections.last!.text.contains("需以实际检查核实"),

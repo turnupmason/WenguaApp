@@ -8,7 +8,6 @@ import SwiftUI
 struct WenguaDiscomfortVerdictPresentation {
     let conclusion: String
     let headline: String
-    let details: String
 
     static func from(_ reading: WenguaNativeCustomerReading) -> WenguaDiscomfortVerdictPresentation? {
         guard reading.topicID == "health.discomfort",
@@ -19,17 +18,18 @@ struct WenguaDiscomfortVerdictPresentation {
         guard !conclusion.isEmpty else { return nil }
         let stop = conclusion.firstIndex(of: "。")
         var headline = stop.map { String(conclusion[..<$0]) } ?? conclusion
-        let details = stop.map { String(conclusion[conclusion.index(after: $0)...]) }
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) } ?? ""
         // Drop only the known introductory words; do not reinterpret evidence
         // or promote a separate clue into a second ranked diagnosis.
         let intro = "综上，" + reading.relationship
         if headline.hasPrefix(intro) {
             headline = String(headline.dropFirst(intro.count))
         }
+        // The first card states the resolved region directly. Source methods
+        // and all corroboration remain verbatim on the professional detail tab.
+        headline = headline.replacingOccurrences(of: "先从伤门落宫看", with: "先看")
         headline = headline.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !headline.isEmpty else { return nil }
-        return .init(conclusion: conclusion, headline: headline, details: details)
+        return .init(conclusion: conclusion, headline: headline)
     }
 }
 
@@ -257,13 +257,6 @@ struct WenguaPremiumVerdictCard: View {
                         .foregroundStyle(gold)
                         .fixedSize(horizontal:false,vertical:true)
                         .accessibilityAddTraits(.isHeader)
-                    if !verdict.details.isEmpty {
-                        Text(verdict.details)
-                            .font(.system(size:17,design:.serif))
-                            .lineSpacing(6)
-                            .foregroundStyle(ink)
-                            .fixedSize(horizontal:false,vertical:true)
-                    }
                 } else {
                     Text("奇门论疾结论未完整生成，请查看专业解盘。")
                         .font(.system(size:17,design:.serif))

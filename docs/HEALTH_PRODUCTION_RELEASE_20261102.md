@@ -110,3 +110,9 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
 早期 #41468305370 顶层failure、job cancelled、无任何执行步骤，GitHub原注释为“The job was not acquired by Runner of type hosted even after multiple attempts”，另报macOS arm64容量限制；不是代码编译失败，原记录保留。#41470986648/#41470987628为正式运行启动后取消的重复排队，不称通过。
 本地841 tests仍2 failures/0 errors/3原有skip，保留手动真实时辰入口缺口；专项25项、封存SHA和Important镜像通过。此次仅改首页真实09结论展示及产品名“奇门论疾”，两模板/计分/详细断词不变；旧V27记录兼容。未作签名真机或全套XCUITest验收。更新代码后重新⌘R才能看到新UI；病愈应期仍待后续独立研究。
+
+
+### 2026-11-02 · 用户要求简明病位、静心木鱼动画与Swift警告清理（p3）
+奇门论疾首页只保留真实09结论的首句；“先从伤门落宫看”展示为“先看”，例如“本次因属伤损，先看右侧肋腰一带”。天禽伏吟、胃刑墓及检查核实等后续段落留在专业解盘；原始V27全文、人物、强度、分数和模板字节不变。新WenguaMeditationView以原生Canvas/Timeline绘制小和尚闭目敲木鱼、槌臂、声纹与诵念文字，无联网/外部素材或自动声音；尊重减少动态效果及后台暂停，倒计时和确认时刻起局/15天限制原守门不变。
+按截图及前轮实际编译日志清理未用companion/witnesses/secondary/sourceSites/ending，macro仍保留try验证仅不绑定无用值；map/filter闭包显式括号、iOS17双参数onChange，正式Target启用SWIFT_TREAT_WARNINGS_AS_ERRORS=YES，CI增加实际生产Swift零警告验收，不关闭警告。原警告、封存p2清单、全库日志无损保留；现行manifest明确p3，所有7份规则/模板资源SHA及Python/评分源码不变，Important双镜像/MANIFEST同步。
+本地专项8项通过；完整843 tests仅原2个手动真实时辰入口失败、0错误、3原skip，原日志 docs/audits/ios_meditation_p3_20261102/python_unittest_full.log.gz。实际Swift运行、macOS Xcode及bundle验收等待本提交Actions，不提前称通过。详见 docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md；病愈应期继续待后续研究，未开放。

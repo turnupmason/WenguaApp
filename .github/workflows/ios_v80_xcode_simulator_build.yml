@@ -10,6 +10,8 @@ on:
       - 'tests/test_health_discomfort_v21_focus_doorpressure_20261101.py'
       - 'tests/test_health_discomfort_v26_precise_site_prose_20261101.py'
       - 'tests/verify_ios_premium_verdict_runtime_20261028.py'
+      - 'tests/verify_ios_discomfort_frontpage_runtime_20261102.py'
+      - 'tests/test_ios_qimen_lunji_release_20261102.py'
       - 'data/mobile/health_vnext/health_energy_200.json'
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
@@ -74,6 +76,19 @@ jobs:
               tail -n 160 /tmp/wengua-v80-xcode/build.log
               exit 1
             }
+      - name: Require zero production Swift compiler warnings
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          log=Path('/tmp/wengua-v80-xcode/build.log').read_text()
+          warnings=re.findall(r'^.*\.swift:\d+:\d+: warning:.*$',log,re.M)
+          assert not warnings, '\n'.join(warnings)
+          report='PASS SWIFT_PRODUCTION_WARNINGS_ZERO; SWIFT_TREAT_WARNINGS_AS_ERRORS=YES\n'
+          Path('/tmp/wengua-v80-xcode/swift_warnings.txt').write_text(report)
+          print(report,end='')
+          PY
       - name: Run REAL Swift result UI grade parser on all 11 grades and five archived V10.2 native verdicts
         run: |
           set -euo pipefail
@@ -361,6 +376,11 @@ jobs:
               echo
               echo '## Sealed V9 scoring V11 template and V27 actual app bundle router'
               cat /tmp/wengua-v80-xcode/frozen_bundle_router.log
+            fi
+            if [ -f /tmp/wengua-v80-xcode/swift_warnings.txt ]; then
+              echo
+              echo '## Production Swift compiler warnings'
+              cat /tmp/wengua-v80-xcode/swift_warnings.txt
             fi
             if [ -f /tmp/wengua-v80-xcode/build.log ]; then
               echo
