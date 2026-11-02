@@ -3186,3 +3186,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1：主CI #41460321192（Python3.11/3.12）、轻重原生逐字 #41460320478、独立iOS编译/原生回归 #41460320720、正式macOS Xcode/实际包资源SHA/四次Bundle路由/V27逐字/六伤损条件/1080数据 #41460320838 均success。新Xcode原始全文 docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md，未用旧run替代。
 完整本地839 tests的2 failures/0 errors/3 skipped单独保留，不能声称全库全绿：两失败均为手动真实时辰入口缺失；三skip原已存在（可选Moshier软件交叉参考未安装，V7.7/V7.8两历史class版本门槛），本轮未增加skip或xfail。原52条逐项账、修改前测试原件/SHA和完整失败日志均可复现。四原时辰分数、完整中文SHA及两个模板/200/81/人物/Swift源码pin未变，唯一冻结源位改动是ordinary_bottom地盘审计字段，manifest明确engineering_p1并保留前版原件。
 顺序进度：1）50条已验证解决，另2条功能缺口按第4步保留；2）360真时辰及1080物理组合复核完成，弱病泄耗/特殊宿主来源未核定不改分；3）真实iPhone无连接/签名/用户实测，验收清单已备、仍全部未执行；4）手动入口尚未实现，不越过真机条件伪报已交付。
+
+
+### 2026-11-02 · Command＋R说明入README，下一重点病愈应期
+README已写从已有仓库终端进入、pull、XcodeGen生成工程、选择WenguaApp/iPhone Simulator、⌘R运行、Runtime缺失排查及逐项手动UI测试；明确⌘U尚无整套XCUITest、手动时辰未实现。用户另指定下一重点health.recovery，看传统病愈应期；已建立 docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md 和来源SHA清单。核对既有20条通用方法、日/月候选基础设施及两书疾病来源索引；婚姻通用计算不当病愈验证，病愈UI仍disabled。先核事件目标/病程/真实用神和原书前提，再择应期、计算真实历法窗口；不得把吉凶分兑换康复天数或用后来结局筛窗口。V9/V11、V27与p1工程封存不改，既有缺口/失败保留；本轮通用历法应期测试8项0失败/错误、原有可选参考skip1，SHA检查通过；未重跑Swift/Xcode、未声称病愈模块已实现。

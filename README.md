@@ -52,26 +52,72 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 **全库历史测试仍未全绿：**最新工程清账运行 839 项，2 failures、0 errors、3 skipped。原52条失败/错误中50条已修复或完成有证据的契约迁移，原断言与失败日志仍保留；剩2条明确指向手动真实时辰入口缺失。[逐项清账](docs/audits/health_cleanup_20261102/README.md)。正式封存门槛通过不等于全库通过，不能删除失败或改冻结规则迎合旧断言。迁移失败、配置失败与归档失败及其修复见[封存审计记录](docs/HEALTH_PRODUCTION_RELEASE_20261102.md)。已揭晓案例仅作回归，不能冒充秘密盲测。
 
-## 在 Mac 上运行
+## 在 Mac 用 Command＋R 打开并测试 UI
 
-需安装 Xcode、iOS Simulator Runtime 和 XcodeGen。首次获取仓库：
+先安装完整 Xcode、一个 iOS Simulator Runtime 和 XcodeGen。这里使用现有工程，不需要新建 Xcode 项目。
 
-```bash
-git clone https://github.com/turnupmason/WenguaApp.git
-cd WenguaApp
-brew install xcodegen  # 已安装可跳过
-./scripts/打开问卦模拟器.command
-```
+### 1. 打开仓库并生成工程
 
-已有仓库请先确认本地修改，再同步 `main`。也可在现有工程中手动运行：
+**已经下载过仓库：**打开“终端”，输入 `cd `（后面有一个空格），把 Finder 中的 `WenguaApp` 文件夹拖进终端，再按回车。确认现在位于仓库根目录，然后运行：
 
 ```bash
+git pull --ff-only origin main
 cd ios/WenguaAppUI
 xcodegen generate --spec project.yml
 open WenguaApp.xcodeproj
 ```
 
-选择 `WenguaApp` Scheme 与 iPhone Simulator。模拟器 App 不是可直接在普通 Mac Finder 打开的 Mac 应用，也不是真机 IPA。更多说明见 [Mac Xcode 本地开发](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
+若 `git pull` 提示本地修改或分支冲突，先保留现场处理，不要 reset 或覆盖文件。若提示 `xcodegen: command not found`，先运行 `brew install xcodegen`；这需要 Mac 已安装 Homebrew。
+
+**第一次下载：**先在终端运行下面两行，再接上面的生成工程步骤：
+
+```bash
+git clone https://github.com/turnupmason/WenguaApp.git
+cd WenguaApp
+```
+
+### 2. 在 Xcode 选择运行目标
+
+工程打开后，在 Xcode 顶部选择：
+
+- Scheme：**WenguaApp**。
+- 设备：一个已经安装的 **iPhone 模拟器**，例如 iPhone 16；不要选择 My Mac。
+- 若没有 iPhone 模拟器，在 **Xcode → Settings → Components／Platforms**（随 Xcode 版本不同）下载 iOS Simulator Runtime，再回来选设备。
+
+### 3. 按 Command＋R
+
+点击 Xcode 窗口，再按 **⌘R（Command＋R）**，或点击左上角 ▶。首次编译可能需要几分钟；完成后模拟器会启动“问卦”。修改 UI 后也在这里按 ⌘R 重新构建运行。
+
+若构建失败，打开左侧错误列表或 Report Navigator，保留第一条实际错误及日志；不要把工程删掉重建。更多本机准备见 [Mac Xcode 本地开发](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
+
+### 4. 本次手动 UI 测试顺序
+
+使用“UI测试001”等明确的技术测试事项，不填私人病情或身份信息。
+
+| 顺序 | 操作 | 检查内容 |
+|---|---|---|
+| 1 | 首页 → 领域 → 细项 | 页面完整、按钮可点；未验收领域仍标开发中 |
+| 2 | 病情轻重 → 人物与事项 → 静心30秒 → 确认 | 未完成静心不能起局；确认后生成真实四柱、九宫和断词 |
+| 3 | 点九宫与切换专业解卦／专业解盘 | 字是否清楚、详情能打开、完整断词可滚动阅读，无按钮遮挡 |
+| 4 | 伤病在哪里 | 未选伤损情况应阻断；普通不适与其它五种情况按实际分支显示 |
+| 5 | 关闭再打开 App，再查看相同测试事项 | 本地记录保留；已完成的同一事项受15天限制 |
+| 6 | 换小屏／大屏、深浅色和大字体，断网再运行 | 布局不截断，两个已验收健康主题能离线起盘和读取资源 |
+
+**当前边界：**手动真实时辰入口尚未补齐，当前按确认瞬间的真实时间起局；“病愈应期”仍开发中。⌘R 用于启动 App 后手动测试界面。⌘U 用于已配置测试 Target 的自动化测试，当前工程尚未接入整套 XCUITest，不能把编译成功当作全部按钮已测试。
+
+### 可选：终端一键启动模拟器
+
+在仓库根目录也可以运行：
+
+```bash
+./scripts/打开问卦模拟器.command
+```
+
+模拟器 App 不是真机 IPA，也不是可直接在普通 Mac Finder 打开的 Mac 应用。真正 iPhone 的签名安装与实测另见 [真机验收准备](docs/IOS_TRUE_DEVICE_ACCEPTANCE_PENDING_20261102.md)。
+
+## 下一开发重点：病愈应期
+
+用户已指定下一重点为“根据病情判断传统病愈应期”。继续保留轻重V9／V11、病位V27的封存版本，独立开发 `health.recovery`，通过来源与原生验收前不开放。先区分好转、康复、出院等目标，核对原书适用条件，再由真实历法计算有凭据的候选窗口；不能把吉凶分直接换成康复天数，也不能承诺现实医疗康复日期。现状与开发顺序见 [病愈应期启动审计](docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md)。
 
 ## 开发检查
 
