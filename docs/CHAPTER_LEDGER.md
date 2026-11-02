@@ -1746,3 +1746,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 p4正式最终Xcode #41479754723（源4ee16bca）及手动时辰/两健康主题实测通过，完整源日志已入docs。独立iOS的macos-15 App任务长时间等待容量，独立App构建改用已被本轮正式完整验证的macos-latest；步骤、真实编译、原生断词与资源守门全保留，正式封存workflow仍保留macos-15及手动备选。仅CI宿主配置变化，生产源码和pin不变；独立新run须实测后另报。
+
+
+### 当前封存轻重回归实测 · run 41481223986
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7403dbbea15ac7fff4b3720163ece5d5351de535。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41481223986_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
