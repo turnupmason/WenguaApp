@@ -3079,3 +3079,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 真正独立 Python↔Swift 客户整段逐字对照三张 PASS：弟弟 `2026-11-18T09:00:00-05:00`（6段）、妻子 `2027-02-16T19:00:00-05:00`（5段）、已揭晓女儿 `2027-02-07T11:00:00-05:00`（4段；不是盲测）。同时主 Python CI [#41381718877](https://github.com/turnupmason/WenguaApp/actions/runs/41381718877)、V8宫位关系 [#41381718856](https://github.com/turnupmason/WenguaApp/actions/runs/41381718856)、V7.7 [#41381718810](https://github.com/turnupmason/WenguaApp/actions/runs/41381718810) 均 **success**。
 - 失败仍永久保留：本轮 #41380198099、#41380423349、#41380922874、#41381249170 的实际错误分别为旧schema断言、随机盘原书占位未净化、V21旧文案断言、V23女儿已揭晓案例旧文案守门。V7.4旧年命单案任务 #41380923004 单独断言失败尚未修，不可宣称全库所有历史工作流PASS。
 - 剩余非阻断文案提示：随机真Swift日志会打印 `V18_GUARD_FAILURE ending`（旧警告要求“不是/不等于”字面；正文已给医疗检查说明），需另审其必要性，不能冒充真正失败或掩盖。V26病位文案仍供用户审稿，不是科学预后证据；无签名iPhone真机和App Store验收，用户已装旧App不会因仓库更新自动变新。
+
+### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
+本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
+模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
