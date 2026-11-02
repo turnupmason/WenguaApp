@@ -781,7 +781,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV19Parity.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV19Parity.swift",
-      "sha": "a3796328e944d1b3111181a668af1e3cf48fcb39"
+      "sha": "a31d0ebfa8ad8ae000c3da5398cfb4b71c5891a9"
     },
     {
       "platform": "python",

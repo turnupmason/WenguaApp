@@ -83,6 +83,9 @@ import Foundation
                       !wholeCustomer.contains("待核"),
                       !wholeCustomer.contains("（"),
                       !wholeCustomer.contains("）") else {
+                    let diag="V27_DAUGHTER_ACTUAL\n"+wholeCustomer+"\n"+
+                        "V27_HOUR="+(reading.sections.first(where:{$0.id=="04_hour"})?.text ?? "NO_HOUR")+"\n"
+                    FileHandle.standardError.write(Data(diag.utf8))
                     throw NSError(domain:"V23ExposedDaughterEvidence",code:23)
                 }
             }
