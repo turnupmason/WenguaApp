@@ -1739,3 +1739,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 p4补齐独立iOS原生/Xcode workflow的5份现役UI与时辰源触发路径，避免仅修改新手动时辰helper时漏触发该工作流；正式V9/V11/V27 Xcode已有ios目录通配触发。此次只有CI/MANIFEST镜像变化，生产源码与封存pin保持4ee16bca状态。
+
+
+### 当前封存轻重回归实测 · run 41479969343
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4cb3b0d0747887564a7b95efe55f1515844d45f6。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479969343_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
