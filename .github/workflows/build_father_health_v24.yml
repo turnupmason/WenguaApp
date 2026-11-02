@@ -1,6 +1,7 @@
 name: V2.4 Corrected Father Health and Grouped Palace Acceptance
 on:
   workflow_dispatch:
+
 permissions:
   contents: write
 jobs:
