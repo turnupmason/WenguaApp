@@ -178,6 +178,7 @@ jobs:
             | tee /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 弟弟' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 女儿' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
