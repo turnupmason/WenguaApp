@@ -54,7 +54,7 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 | 正式 macOS Xcode Simulator 编译、零Swift源警告、包内资源SHA／白名单、两主题4次Bundle路由、Python／Swift逐字、六伤损及1080源盘、新五列时间与分组验收 | [#41506181795 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41506181795) |
 | 独立iOS原生历法、断词回归及真实App编译（全部6 jobs） | [#41506160061 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41506160061) |
 | 封存轻重Python／Swift逐字回归与奇门论疾首屏实际运行 | [#41506159875 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41506159875) |
-| 工程补丁p6的Python 3.11／3.12主CI | [#41506159979 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41506159979) |
+| 工程补丁p7的Python 3.11／3.12主CI | [#41506159979 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41506159979) |
 
 [本轮Xcode原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41506181795_ATTEMPT_1.md)对应p7生产源`077a7b5e`。完整本地857项0失败／0错误／3既有skip；实际6份V11首页仅两句摘要、全11等级解析、原文重组和包资源均通过。[结果总表](docs/audits/ios_polish_p7_20261102/final_ci_results.json)保留新run及SHA。旧失败、旧原文与旧版本验收继续归档保留。
 
