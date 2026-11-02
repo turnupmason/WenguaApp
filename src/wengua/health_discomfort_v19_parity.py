@@ -125,6 +125,17 @@ def _lookup(tables,kind,row,col):
     table=tables[kind]
     return table["rows"][row][table["columns"].index(col)]
 
+def _discomfort_power(kind,symbol,p,month,tables,stages=()):
+    """V24 only: prefer the higher original source tier for double-branch stems.
+    Preserve both original branch facts; do not modify frozen V8 factor.
+    """
+    if kind=="stem" and len(stages)>1:
+        values=[_power(kind,symbol,p,month,tables,[stage]) for stage in stages]
+        if not all(_tier(v)>0 for v in values):
+            raise ValueError("Unmapped actual stem 200 cell")
+        return max(values,key=_tier)
+    return _power(kind,symbol,p,month,tables,stages)
+
 def compose(chart,actor,relationship,injury_context,sources=None):
     valid={"none","accident","bone","bleeding","severe_pain","surgery"}
     if injury_context not in valid:
@@ -184,14 +195,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
          "此宫生病宫":"此宫生扶病宫"}[relation(p)]
     month=_monthly(chart["pillars"]["month"][-1])
     def source_strength(kind,symbol,p,stages=()):
-        # V24 only: both original 200 rows are real; choose higher tier
-        # for site interpretation, never rewrite V8 scoring or source cells.
-        if kind=="stem" and len(stages)>1:
-            values=[_power(kind,symbol,p,month,tables,[x]) for x in stages]
-            if not all(_tier(v)>0 for v in values):
-                raise ValueError("Unmapped actual stem 200 cell")
-            return max(values,key=_tier)
-        return _power(kind,symbol,p,month,tables,stages)
+        return _discomfort_power(kind,symbol,p,month,tables,stages)
     def stem_power(stem,p):
         star=next((s for s in p["heavenStars"] if s["carriedStem"]==stem),None)
         if star:return source_strength("stem",stem,p,star["stages"])
