@@ -242,8 +242,9 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     def stem_sites(stem,full=False):
         if stem in overrides:return list(overrides[stem]["sites"])
         v=stems[stem]
-        return _parts("/".join(v["qimen_secret_vol13"]+
+        sites=_parts("/".join(v["qimen_secret_vol13"]+
                  (v["sanming_viscera"]+v["sanming_body_surface"] if full else [])))
+        return ["脏腑泛象" if site=="脏（笼统）" else site for site in sites]
     def stem_focus(stem):
         names=stem_sites(stem)
         return "、".join(names[:2]) if names else "相应部位"

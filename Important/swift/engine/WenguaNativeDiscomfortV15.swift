@@ -350,7 +350,9 @@ enum WenguaNativeDiscomfortV15 {
                 all.append(contentsOf:v["sanming_viscera"] ?? [])
                 all.append(contentsOf:v["sanming_body_surface"] ?? [])
             }
-            return parts(all.joined(separator:"/"))
+            return parts(all.joined(separator:"/")).map {
+                $0=="脏（笼统）" ? "脏腑泛象" : $0
+            }
         }
         func stemFocus(_ stem:String)->String {
             let names=stemSites(stem)

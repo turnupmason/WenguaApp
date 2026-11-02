@@ -15,6 +15,7 @@ class V27(unittest.TestCase):
             for token in ("内盘","外盘","时干","力量","deity_disease_images","customer_stem_overrides"):
                 self.assertIn(token,code)
             self.assertNotIn("丁主齿",code)
+            self.assertIn("脏腑泛象",code)
         table=json.loads((R/"data/mobile/health_vnext/health_energy_200.json").read_text())["tables"]
         self.assertEqual(_discomfort_power("stem","丁",{"id":4},"木",table,[{"branch":"辰","stage":"衰"},{"branch":"巳","stage":"帝旺"}]),"极大")
 if __name__=="__main__":unittest.main()
