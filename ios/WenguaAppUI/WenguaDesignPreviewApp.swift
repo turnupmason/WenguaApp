@@ -823,17 +823,17 @@ struct ProfessionalPalaceTile: View {
         Text(stem)
             .foregroundStyle(QFive.shade("stem",stem))
             .font(.system(size:size,weight:.semibold,design:.monospaced))
-            .frame(maxWidth:.infinity)
+            .frame(width:18)
             .frame(height:size*1.55)
-            .overlay(alignment:.topTrailing) {
-                HStack(spacing:0) {
+            .overlay(alignment:.trailing) {
+                VStack(spacing:0) {
                     ForEach(QFive.stemMarks(palace,stem:stem,plane:plane),id:\.self) { mark in
                         Text(mark).foregroundStyle(mark=="刑" ? QStyle.red : QStyle.orange)
+                            .font(.system(size:7,weight:.bold,design:.serif))
                     }
-                }
-                .font(.system(size:8,weight:.bold,design:.serif))
-                .lineLimit(1).offset(x:4,y:-1)
+                }.frame(width:8).offset(x:7)
             }
+            .frame(maxWidth:.infinity)
     }
     private func skyStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
@@ -1140,13 +1140,10 @@ struct CastSetupScreen: View {
     @State private var subject = "本人"
     @State private var inquiryContext = "direct_proxy"
     @State private var patientSex = "unspecified"
-    @State private var friendRelativeAge = "unspecified"
     @State private var familyRelativeConfirmed = false
     @State private var birthOrder = "unspecified"
-    @State private var patientBirthGanzhi = ""
     @State private var subjectName = ""
     @State private var birthYear = ""
-    @State private var duration = "未说明"
     @State private var injuryContext = "unspecified"
     private var castMode:WenguaCastClockMode {topic.isElective ? .plannedEvent : .currentInquiry}
     @State private var timeCandidates = [WenguaTimeCandidate(date:Date().addingTimeInterval(24*60*60))]
@@ -1180,20 +1177,11 @@ struct CastSetupScreen: View {
                             Text("盘面由时刻决定；人物和实际条件影响专题取用与解读。")
                                 .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             Text("问事人与自己的关系").wenguaHeading()
-                            Picker("问事人与自己的关系", selection: $subject) {
-                                ForEach(relations, id: \.self) { relation in
-                                    Text(["哥哥":"哥哥（家里的哥哥）",
-                                          "姐姐":"姐姐（家里的大姐）",
-                                          "弟弟":"弟弟（家里的弟弟）",
-                                          "妹妹":"妹妹（家里的妹妹）"][relation] ?? relation).tag(relation)
-                                }
-                            }
-                            .pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
+                            WenguaSelectionMenu(title:"问事人与自己的关系",selection:$subject,
+                                options:relations.map {(["哥哥":"哥哥（家里的哥哥）","姐姐":"姐姐（家里的大姐）","弟弟":"弟弟（家里的弟弟）","妹妹":"妹妹（家里的妹妹）"][$0] ?? $0,$0)})
                             .onChange(of:subject) { _, _ in
                                 familyRelativeConfirmed=false
                                 patientSex="unspecified"
-                                friendRelativeAge="unspecified"
                                 birthOrder="unspecified"
                             }
                             TextField("问事人称呼（可选）", text: $subjectName)
@@ -1205,24 +1193,8 @@ struct CastSetupScreen: View {
                                subject=="配偶" || subject=="同事" || subject=="朋友" ||
                                subject=="其他长辈" || subject=="孩子" {
                                 Text("问事人性别").wenguaHeading()
-                                Picker(subject=="朋友" ? "朋友性别（必选）" :
-                                       "病人性别（请按实际选择）",selection:$patientSex) {
-                                    Text("未说明").tag("unspecified")
-                                    Text("男").tag("male")
-                                    Text("女").tag("female")
-                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
-                            }
-                            if subject=="朋友" {
-                                Text("朋友与自己的年龄关系（必选）").wenguaHeading()
-                                Picker("朋友比你年长还是年幼（必选）",selection:$friendRelativeAge) {
-                                     Text("未说明").tag("unspecified")
-                                     Text("比我大").tag("older")
-                                     Text("比我小").tag("younger")
-                                 }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
-                                 Text("朋友仍取真实月干，不借亲属辅助宫。")
-                                    .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
+                                WenguaSelectionMenu(title:"性别",selection:$patientSex,
+                                    options:[("未说明","unspecified"),("男","male"),("女","female")])
                             }
                             if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) {
                                  Toggle(["哥哥":"确认是家里的哥哥（不是男性朋友）",
@@ -1233,39 +1205,17 @@ struct CastSetupScreen: View {
                              }
                              if ["儿子","女儿","孩子","侄子"].contains(subject) {
                                 Text("出生排行（可选）").wenguaHeading()
-                                Picker("出生排行（可选）",selection:$birthOrder) {
-                                    Text("未说明").tag("unspecified")
-                                    Text("长").tag("eldest")
-                                    Text("中").tag("middle")
-                                    Text("幼").tag("youngest")
-                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
+                                WenguaSelectionMenu(title:"出生排行",selection:$birthOrder,
+                                    options:[("未说明","unspecified"),("长","eldest"),("中","middle"),("幼","youngest")])
                             }
-                            Text("出生年命干支（已知再填）").wenguaHeading()
-                            TextField("例如辛酉；不确定请留空",text:$patientBirthGanzhi)
-                                .textInputAutocapitalization(.never)
-                            Text("请按实际关系填写，人物关系决定专题取用；出生年份不会自动补作年命。")
-                                .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             if topic.id=="health.discomfort" {
                                 Text("伤损情况（必选）").wenguaHeading()
-                                Picker("病位问题属于哪一种情况（必选）",selection:$injuryContext) {
-                                    Text("请先选择").tag("unspecified")
-                                    Text("普通身体不适（无以下特殊情况）").tag("none")
-                                    Text("意外受伤：车祸、跌倒、砸伤、运动或机器损伤").tag("accident")
-                                    Text("骨肉受损：骨折、骨裂、脱臼、肌肉或韧带损伤").tag("bone")
-                                    Text("出血：刀伤、开放性伤口或急性大量出血").tag("bleeding")
-                                    Text("明显剧烈疼痛").tag("severe_pain")
-                                    Text("已经手术或准备手术").tag("surgery")
-                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
+                                WenguaSelectionMenu(title:"伤损情况",selection:$injuryContext,
+                                    options:[("请先选择","unspecified"),("普通身体不适（无以下特殊情况）","none"),("意外受伤：车祸、跌倒、砸伤、运动或机器损伤","accident"),("骨肉受损：骨折、骨裂、脱臼、肌肉或韧带损伤","bone"),("出血：刀伤、开放性伤口或急性大量出血","bleeding"),("明显剧烈疼痛","severe_pain"),("已经手术或准备手术","surgery")])
                                 Text("伤损、出血或剧痛，优先看伤门落宫；手术另看伤门所示部位。普通不适不启用独立伤门判断。未选择不能起局。")
                                    .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             }
-                            Text("病程（记录用，可选）").wenguaHeading()
-                            Picker("病程（仅记录，可选）", selection: $duration) {
-                                ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
-                            }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                                .frame(maxWidth:.infinity,alignment:.leading)
+
                             }
                         }
                         .textFieldStyle(.roundedBorder)
@@ -1317,6 +1267,8 @@ struct CastSetupScreen: View {
                                 .foregroundStyle(QStyle.text)
                                 .accessibilityElement(children: .ignore)
                                 .accessibilityLabel("静心剩余\(remaining)秒")
+                                WenguaSnakeProgress(progress:Double(30-remaining)/30,
+                                    tick:context.date.timeIntervalSinceReferenceDate)
                                 ProgressView(value: Double(30 - remaining), total: 30)
                                     .tint(QStyle.blue)
                                 if calmEnds == nil {
@@ -1391,11 +1343,9 @@ struct CastSetupScreen: View {
                 patientSex:patientSex=="unspecified" ? nil : patientSex,
                 birthOrder:subject=="姐姐" ? "eldest" :
                      (birthOrder=="unspecified" ? nil : birthOrder),
-                patientBirthGanzhi:patientBirthGanzhi.trimmingCharacters(
-                    in:.whitespacesAndNewlines).isEmpty ? nil :
-                    patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines),
+                patientBirthGanzhi:nil,
                 injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
-                relativeAge:subject=="朋友" && friendRelativeAge != "unspecified" ? friendRelativeAge : nil,
+                relativeAge:nil,
                 familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(subject) ? familyRelativeConfirmed : nil)
             let groupID=UUID().uuidString
             var records:[LocalNativeCase]=[]
@@ -1421,7 +1371,7 @@ struct CastSetupScreen: View {
                     eventKind:topic.title,healthReference:gradeReference)
                 reading.topicTitle=topic.title
                 records.append(LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
-                    optionalBirthYear:Int(birthYear),course:duration=="未说明" ? nil : duration,
+                    optionalBirthYear:Int(birthYear),course:nil,
                     completedAt:confirmedAt,chart:result,reading:reading,
                     injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
                     issueKeyVersion:"structured_v1"))
@@ -1463,11 +1413,6 @@ struct CastSetupScreen: View {
                 return
             }
         }
-        let supplied=patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines)
-        if !supplied.isEmpty && !WenguaNativeActorSource.validatedGanzhi(supplied) {
-            validationMessage="出生年命须填写完整六十甲子干支，例如辛酉；不确定可留空。"
-            return
-        }
         if topic.enabled && (subject=="配偶" || subject=="父母") && patientSex=="unspecified" &&
            inquiryContext != "event_news" {
             validationMessage="此人物关系必须先明确病人性别，以决定真正的用神。"
@@ -1477,8 +1422,8 @@ struct CastSetupScreen: View {
              validationMessage="亲属辅助宫须确认真实家庭关系；朋友请选择朋友。"
              return
          }
-         if topic.enabled && subject=="朋友" && (patientSex=="unspecified" || friendRelativeAge=="unspecified") {
-             validationMessage="朋友必须选性别及比自己大或小，但不借亲属辅助宫。"
+         if topic.enabled && subject=="朋友" && patientSex=="unspecified" {
+             validationMessage="朋友请选择性别；朋友一律取月干，不借亲属辅助宫。"
              return
          }
         let key = QIssuePolicy.structuredSignature(topic:topic.id,relation:subject,subject:subjectName)

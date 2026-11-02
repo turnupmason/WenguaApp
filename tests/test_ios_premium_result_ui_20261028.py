@@ -18,7 +18,7 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertIn('id == "91_timing"', self.presentation)
         self.assertIn('WenguaVerdictPresentation.from(reading)', self.presentation)
         self.assertNotIn('Text(caption.category)',self.presentation)
-        self.assertNotIn('Text(grade+"："+caption.epithet)',self.presentation)
+        self.assertIn('Text(grade+"："+caption.epithet)',self.presentation)
         self.assertIn('Text(verdict.frontNarrative(caption))',self.presentation)
         self.assertIn('return ending',self.presentation)
         self.assertNotIn('WenguaNaturalSeveritySummary',self.presentation)

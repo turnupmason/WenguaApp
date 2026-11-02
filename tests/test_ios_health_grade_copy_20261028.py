@@ -80,7 +80,7 @@ class HealthCaptionUserUX(unittest.TestCase):
         self.assertIn('let caption=WenguaHealthGradeCaption.forGrade(grade)',self.premium)
         # The first screen must not collapse to just a grade + one sentence.
         self.assertNotIn('Text(caption.category)',self.premium)
-        self.assertNotIn('Text(grade+"："+caption.epithet)',self.premium)
+        self.assertIn('Text(grade+"："+caption.epithet)',self.premium)
         self.assertIn('Text(verdict.frontNarrative(caption))',self.premium)
         self.assertIn('let evidence: String',self.premium)
         self.assertIn('parts.dropLast().joined(separator:',self.premium)

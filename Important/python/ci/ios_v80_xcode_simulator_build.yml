@@ -61,6 +61,7 @@ jobs:
             tests.test_ios_domain_interfaces_layout_20261102 \
             tests.test_ios_setup_palace_ui_20261102 \
             tests.test_ios_polish_p7_20261102 \
+            tests.test_ios_inputs_hitarea_p8_20261102 \
             tests.test_discomfort_v27_hour_parity_regression_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \

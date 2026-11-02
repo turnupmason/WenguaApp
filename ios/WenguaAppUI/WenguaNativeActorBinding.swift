@@ -180,8 +180,7 @@ enum WenguaNativeActorSource {
             }
         }
         if profile.id=="friend" {
-            guard sex != nil,let age=inquiry.relativeAge,
-                  ["older","younger"].contains(age) else {
+            guard sex != nil else {
                 throw WenguaNativeReadingError.unsupportedRelationship
             }
         }

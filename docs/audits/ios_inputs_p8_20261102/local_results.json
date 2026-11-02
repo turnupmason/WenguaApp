@@ -1,0 +1,29 @@
+{
+  "tests": 859,
+  "failures": 0,
+  "errors": 0,
+  "existing_skips": 3,
+  "new_skips": 0,
+  "logs": [
+    {
+      "path": "docs/audits/ios_inputs_p8_20261102/p8final.log.gz",
+      "sha256": "6e066be4db49778d7318d473f71d2c8b23c0270a4f9869cb69a4183b5d591302"
+    },
+    {
+      "path": "docs/audits/ios_inputs_p8_20261102/p8first.log.gz",
+      "sha256": "1dc9131d75094303cef3241ab5722a2024290a146bd55acdde86fe1433234d8a"
+    },
+    {
+      "path": "docs/audits/ios_inputs_p8_20261102/p8second.log.gz",
+      "sha256": "600761665ee43c6a43251f35b6909cbb3365dce0811a368f39c3662640a16604"
+    },
+    {
+      "path": "docs/audits/ios_inputs_p8_20261102/p8target.log.gz",
+      "sha256": "ea6dd99452b7d23b48542413ca961789a948c52e31861be088a06a7ff22b74ac"
+    },
+    {
+      "path": "docs/audits/ios_inputs_p8_20261102/p8third.log.gz",
+      "sha256": "aa301abdbd3d109d3d5e1f59d477b263867c1b1b6f8f95c5fdc2b8b72204f295"
+    }
+  ]
+}

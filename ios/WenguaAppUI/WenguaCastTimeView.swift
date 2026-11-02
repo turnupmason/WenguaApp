@@ -20,12 +20,8 @@ struct WenguaCastTimePicker: View {
                 Text("请选择事项实际发生／约定的未来时刻。吉日专用评级仍在开发中，当前提供真实排盘。")
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
                 Text("事项发生地时区").wenguaHeading()
-                Picker("事项发生地时区", selection: $timezone) {
-                    ForEach(Array(Set(TimeZone.knownTimeZoneIdentifiers + [timezone])).sorted(), id: \.self) { zone in
-                        Text(zone).tag(zone)
-                    }
-                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
-                    .frame(maxWidth:.infinity,alignment:.leading)
+                WenguaSelectionMenu(title:"事项发生地时区",selection:$timezone,
+                    options:Array(Set(TimeZone.knownTimeZoneIdentifiers+[timezone])).sorted().map {($0,$0)})
                 Button {
                     draftClock=WenguaScheduledClock(date:candidates.first?.date ?? Date(),timezone:timezone)
                     occurrence=0
@@ -89,7 +85,8 @@ struct WenguaTimeSourceBanner: View {
         Text(QuestionCatalog.directionTitle(reading.topicID))
             .font(.system(size:17,weight:.semibold,design:.serif))
             .frame(maxWidth:.infinity,alignment:.center)
-            .padding(.horizontal,16).padding(.vertical,10)
+            .padding(.horizontal,16).frame(minHeight:58,alignment:.center)
+            .background(QStyle.surface,in:RoundedRectangle(cornerRadius:14))
     }
 }
 

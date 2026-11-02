@@ -266,6 +266,10 @@ struct WenguaPremiumVerdictCard: View {
                     // First tab: ten-grade header and ~150–200 characters
                     // of real V11 evidence. Tab two: full role-by-role original.
                     // Both read the same V8 score / parity-checked V11 sections.
+                    Text(grade+"："+caption.epithet)
+                        .font(.system(size:29,weight:.semibold,design:.serif))
+                        .foregroundStyle(gold).frame(maxWidth:.infinity,alignment:.center)
+                        .fixedSize(horizontal:false,vertical:true)
                     Text(verdict.frontNarrative(caption))
                         .font(.system(size:17,weight:.regular,design:.serif))
                         .lineSpacing(6)

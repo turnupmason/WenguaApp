@@ -39,7 +39,7 @@ class SetupPalaceUI(unittest.TestCase):
         self.assertNotIn('NavigationStack {', setup)
         self.assertIn('VStack(alignment:.leading,spacing:18)', setup)
         self.assertIn('Text("问事人与自己的关系")', setup)
-        for heading, binding in [('伤损情况（必选）', '$injuryContext'), ('病程（记录用，可选）', '$duration')]:
+        for heading, binding in [('伤损情况（必选）', '$injuryContext')]:
             self.assertLess(setup.index('Text("' + heading + '")'), setup.index('selection: ' + binding) if 'selection: ' + binding in setup else setup.index('selection:' + binding))
 
     def test_clock_mode_is_derived_from_topic_and_five_columns_are_labeled(self):
@@ -60,7 +60,7 @@ class SetupPalaceUI(unittest.TestCase):
     def test_stem_marks_do_not_change_pair_width_and_pillars_label_below(self):
         app = (UI / 'WenguaDesignPreviewApp.swift').read_text()
         marker = app.split('private func markedStem(')[1].split('private func skyStemLine(')[0]
-        self.assertIn('.overlay(alignment:.topTrailing)', marker)
+        self.assertIn('.overlay(alignment:.trailing)', marker)
         self.assertNotIn('HStack', marker.split('.overlay(')[0])
         self.assertLess(marker.index('.frame(height:'), marker.index('.overlay('))
         pillar = app.split('private func pillarMini(')[1].split('private func clockFactsLine(')[0]

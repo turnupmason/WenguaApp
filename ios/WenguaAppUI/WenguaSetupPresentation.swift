@@ -119,3 +119,54 @@ struct WenguaCivilDateRow: View {
         }.padding(.vertical,8)
     }
 }
+
+// The full rounded label belongs to Menu, so padding is an active hit region.
+struct WenguaSelectionMenu: View {
+    let title:String
+    @Binding var selection:String
+    let options:[(String,String)]
+    var body: some View {
+        Menu {
+            ForEach(options.indices,id:\.self) { i in
+                Button {selection=options[i].1} label: {
+                    if selection==options[i].1 {Label(options[i].0,systemImage:"checkmark")}
+                    else {Text(options[i].0)}
+                }
+            }
+        } label: {
+            HStack {
+                Text(options.first(where:{$0.1==selection})?.0 ?? "请选择")
+                    .multilineTextAlignment(.leading)
+                Spacer(minLength:10)
+                Image(systemName:"chevron.up.chevron.down").font(.system(size:13,weight:.semibold))
+            }
+            .font(.system(size:18,weight:.medium)).foregroundStyle(QStyle.text)
+            .padding(14).frame(maxWidth:.infinity,minHeight:52,alignment:.leading)
+            .background(QStyle.blue.opacity(0.10),in:RoundedRectangle(cornerRadius:12))
+            .overlay(RoundedRectangle(cornerRadius:12).stroke(QStyle.blue.opacity(0.40),lineWidth:1))
+            .contentShape(Rectangle())
+        }.buttonStyle(.plain).accessibilityLabel(title)
+    }
+}
+struct WenguaSnakeProgress: View {
+    let progress:Double
+    let tick:Double
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    var body: some View {
+        Canvas { context,size in
+            let x=12+(size.width-48)*CGFloat(min(1,max(0,progress)))
+            let bob=reduceMotion ? 0 : sin(tick*5)*2
+            for i in (0..<6).reversed() {
+                let radius:CGFloat=i==0 ? 7 : 5
+                let y=size.height/2+CGFloat(bob)*CGFloat(i%2==0 ? 1 : -1)
+                let point=CGPoint(x:max(7,x-CGFloat(i)*8),y:y)
+                let circle=Path(ellipseIn:CGRect(x:point.x-radius,y:point.y-radius,width:radius*2,height:radius*2))
+                context.fill(circle,with:.color(i==0 ? .green : .green.opacity(0.75)))
+            }
+            let food=Path(ellipseIn:CGRect(x:min(size.width-10,x+20),y:size.height/2-3,width:6,height:6))
+            context.fill(food,with:.color(.orange))
+            let eye=Path(ellipseIn:CGRect(x:x+2,y:size.height/2+CGFloat(bob)-3,width:2,height:2))
+            context.fill(eye,with:.color(.white))
+        }.frame(height:26).accessibilityHidden(true)
+    }
+}

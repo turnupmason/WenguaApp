@@ -189,7 +189,7 @@ class V3SourceUI(unittest.TestCase):
         self.assertIn('id="birth-year"',self.html)
         self.assertIn('text:$birthYear',self.swift)
         self.assertIn('optionalBirthYear:Int(birthYear)',self.swift)
-        self.assertIn('course:duration=="未说明" ? nil : duration',self.swift)
+        self.assertIn('course:nil',self.swift)
     def test_all_screen_elements_and_no_fake_live_cast(self):
         parser=Tags();parser.feed(self.html)
         for id in ("board","setup","ritual","reading","palaces","overlay",

@@ -65,8 +65,10 @@ import Foundation
            !event.extraPalaces.contains(8) else {throw WenguaCastError.invalidChart}
     do { _=try make("朋友");throw WenguaCastError.invalidChart }
     catch WenguaNativeReadingError.unsupportedRelationship {}
-    do { _=try make("朋友",sex:"male");throw WenguaCastError.invalidChart }
-    catch WenguaNativeReadingError.unsupportedRelationship {}
+    let noAgeFriend=try make("朋友",sex:"male")
+    guard noAgeFriend.mainStem==friend.mainStem,
+          noAgeFriend.mainPalace==friend.mainPalace,
+          noAgeFriend.siblingAuxiliaryPalace==nil else {throw WenguaCastError.invalidChart}
     for person in ["哥哥","姐姐","弟弟","妹妹"] {
       do {
         _=try WenguaNativeActorSource.bind(chart:chart,

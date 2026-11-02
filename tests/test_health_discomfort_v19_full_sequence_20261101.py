@@ -44,11 +44,11 @@ class V19LocationFamily(unittest.TestCase):
                         '确认是家里的弟弟','确认是家里的妹妹'):
             self.assertIn(literal,ui)
         self.assertIn('!["哥哥或姐姐","弟弟或妹妹"].contains($0)',ui)
-        for tag in ('injuryContext','病位问题属于哪一种情况（必选）',
+        for tag in ('injuryContext','伤损情况',
                     '"none"','"accident"','"bone"','"bleeding"',
                     '"severe_pain"','"surgery"',
-                    'friendRelativeAge','familyRelativeConfirmed',
-                    '朋友必须选性别及比自己大或小','亲属辅助宫须确认真实家庭关系'):
+                    'relativeAge:nil','familyRelativeConfirmed',
+                    '朋友请选择性别','亲属辅助宫须确认真实家庭关系'):
             self.assertIn(tag,ui)
         catalog=json.loads((ROOT/"data/knowledge/phrase_library/health_v20/actor_profiles.json").read_text())
         self.assertTrue(catalog["sibling_identity_policy"]["family_kinship_required"])

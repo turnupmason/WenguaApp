@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p7",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p8",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "c1d1ed7617373b8096294e41dbd8bd68a988ce31d11ce74e6283876c92286bd6"
+      "sha256": "72f1073c4db669ce7027faff7762e72497c05d99afe0049cc00c77bc6ad45a19"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "b55f9a42aa7d34bdcd0ab27a1a5e22ed55890604bb7e080ba4a6972ddc7360fd"
+      "sha256": "81726acf222e6e7ddc50f8be92e09aefc66d5cfcc54401e349961ec3e40b1dd0"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -101,7 +101,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
       "kind": "source",
-      "sha256": "e0e1935ed3ee369b7779160ed6a6c4ed9c9d1d6181673be354d8f6b245e47e15"
+      "sha256": "53ff47d12ba2aa29b6f9b3654594a234c9a18d87f4fa0e68f8cc72374882aa0e"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
@@ -191,7 +191,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "kind": "source",
-      "sha256": "dd5e5232b9fb5fa8ba0bf50312951102d44e051117462ac9842ebfdc7be17e8e"
+      "sha256": "5be624105ff4b5ac5d9bb948089faefcfbceea227914664ac5fbf454731b4db9"
     },
     {
       "path": "ios/WenguaAppUI/WenguaReadingLayout.swift",
@@ -201,13 +201,13 @@
     {
       "path": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
       "kind": "source",
-      "sha256": "65f614e19a7087de604853d78919962b6eaaf52beb9ab698a0354678fedf0822"
+      "sha256": "48d6b16e4002018c2f356d052315dac184646b3329073e8ae8acc44dd6cff723"
     }
   ],
   "engineering_patch": {
-    "id": "p7_complete_text_centered_headings_visible_controls_and_concise_verdict",
-    "scope": "User screenshot corrections: complete wrapping, equal-width cards, colon time heading, visible menu fields, centered titles, civil date values below labels, concise first-tab verdict, full grouped detail, uniform vertical role glyphs. No frozen math/template changes.",
-    "authorization": "User 2026-11-02 explicitly requests all screenshot typography fixes and only the two-sentence source-based severity summary on the first tab.",
-    "prior_manifest_sha256": "7a5fc3cdeac2448a0c32f3742affbf0e2cce5dcd9c799ae6b91046782e1e920b"
+    "id": "p8_full_menu_targets_effective_inputs_restored_grade_and_animation",
+    "authorization": "User explicitly requests full menu hit areas, removal of natal Ganzhi/course/friend age input, restored grade caption, snake animation, tomb and banner alignment.",
+    "scope": "Presentation and native friend input gate only. Month-stem binding, frozen arithmetic, original template sections and all seven resources unchanged.",
+    "prior_manifest_sha256": "5120d8ecdc7a47e4dd70a57eefdf0b6c1172ada120ff6f6ad1e6860672fbedef"
   }
 }
