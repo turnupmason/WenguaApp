@@ -108,6 +108,9 @@ import Foundation
                 reading.sections.first!.text.contains("天盘"),
                 !reading.sections.contains(where:{$0.id=="07_formation" || $0.id=="08_constraints"}),
                 !reading.sections.joinedDescription.contains("断定骨折"),
+                !reading.sections.joinedDescription.contains("绝对受损"),
+                !reading.sections.joinedDescription.contains("医学确认的潜伏疾病"),
+                !reading.sections.joinedDescription.contains("确诊病因"),
                 !reading.sections.joinedDescription.contains("吉凶"),
                 reading.sections.joinedDescription.contains("天地格")
             else {
