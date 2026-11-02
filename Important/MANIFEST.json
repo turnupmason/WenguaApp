@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "cc1943df16cf29845a90a8b8b890b0cab5db2710"
+      "sha": "3bf427b778f5149bc9e43daa12755d77608efa49"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "cc1943df16cf29845a90a8b8b890b0cab5db2710"
+      "sha": "3bf427b778f5149bc9e43daa12755d77608efa49"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "06e37a2ff224f83de8b6cc99f908e77c9b747b15"
+      "sha": "271ab38e6bf86ebb2667c693799646697b614e34"
     },
     {
       "platform": "python",
@@ -769,13 +769,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "a33486aa57ac216a810c5a0d623b8200f8e22476"
+      "sha": "5451b625ab08f6b3d23629bd531d36ff0c29646c"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "4c2cc6f2d0d9874e928194df32a17d74e20c3997"
+      "sha": "5a6b5429079927903db4cafc90160e200a2e70aa"
     },
     {
       "platform": "swift",
@@ -799,7 +799,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
-      "sha": "fbc10c6fa24e2bd83c3f756defcd2f7c39e3a64d"
+      "sha": "4c3ca0643f39fa002e53647762d12d111d522c39"
     }
   ]
 }

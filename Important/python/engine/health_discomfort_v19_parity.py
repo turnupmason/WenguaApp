@@ -432,14 +432,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         original=next((x for x in candidates if _matched(x,leadSites)),
                       candidates[0] if candidates else "无已核实的细部候选")
         selected="脏腑泛象" if original=="脏（笼统）" else original
-        facts=stem_branch_facts(stem,illness,stages)
-        distinct={v for _,v in facts}
-        branchText="，"+"、".join(branch+"为"+v for branch,v in facts) if len(facts)>1 else ""
-        powerWords=(branchText+"，按较高一档取"+power if len(distinct)>1
-                    else "，力量"+power)
-        effect=("这一干象较突出" if _tier(power)>=4 else
-                "可作本宫病象旁证" if _tier(power)>=3 else "此象偏弱")
-        return selected+powerWords+"，"+effect
+        stem_branch_facts(stem,illness,stages)
+        return selected+"，力量"+power
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
@@ -482,7 +476,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             key=stem+"/"+"、".join(signs)
             if key not in recorded:
                 recorded.add(key)
-                danger.append(f"{stem}实见{'、'.join(signs)}，传统取其受制、受伤之象，须细察本宫相应干象")
+                sites=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
+                site=sites[0] if sites else "相应部位"
+                meaning=("伤痛损伤兼有隐伏之象" if len(signs)==2 else
+                         "伤痛或损伤之象" if "六仪击刑" in signs else
+                         "受压闭藏、不易显露之象")
+                danger.append(f"{stem}主{site}，见{'、'.join(signs)}，{site}有{meaning}")
     if illnessVoid=="true_void":
         danger.append("天芮宫真空，病位显象减看")
     elif illnessVoid=="fake_void":
@@ -520,12 +519,9 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         doorText=f"{door}受{label(illness)}宫所克，门象受制，但不是门迫"
     else:doorText=""
     doorClue=original_clue("八门病象",door)
-    starDoorGodFull=(f"天芮星力量{illnessPower}，以它的实际落宫定主要位置；"
-                     f"{door}力量{doorPower}，旧籍取{doorClue}，"
-                     +("门象较突出" if _tier(doorPower)>=4 else "门象只作旁证")
-                     +f"；{deity}力量{deityPower}，旧籍取{deityText}，"
-                     +("神象也较明显。" if _tier(deityPower)>=4
-                       else "神象须配合其它证据。"))
+    starDoorGodFull=(f"天芮星力量{illnessPower}，主位依{label(illness)}宫确定；"
+                     f"{door}力量{doorPower}，古籍记{doorClue}；"
+                     f"{deity}力量{deityPower}，古籍记{deityText}。")
     if doorText:danger.append(doorText)
     dangerFull="本宫条件："+"；".join(danger)+"。" if danger else ""
     # V24: every physical real palace, not merely Tianrui's selected palace.
@@ -547,28 +543,26 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             rel=relation(p)
             if rel=="此宫克病宫":
                 priority=0
-                relationText="此宫克病宫，传统上可能牵制主病位，但不能据此认定病因"
+                relationText=f"{label(p)}宫{ELEMENTS[p['id']]}克{label(illness)}宫{ELEMENTS[ip]}"
             elif rel=="此宫生病宫":
                 priority=1
-                relationText="此宫生扶病宫，属于关联旁证，不能反推为病源"
+                relationText=f"{label(p)}宫{ELEMENTS[p['id']]}生{label(illness)}宫{ELEMENTS[ip]}"
             elif rel=="病宫克此宫":
                 priority=2
-                relationText="病宫克此宫，可考虑此处受到病事牵连的象意"
+                relationText=f"{label(illness)}宫{ELEMENTS[ip]}克{label(p)}宫{ELEMENTS[p['id']]}"
             elif rel=="病宫生此宫":
                 priority=3
-                relationText="病宫生此宫，可考虑向外耗泄的象意"
+                relationText=f"{label(illness)}宫{ELEMENTS[ip]}生{label(p)}宫{ELEMENTS[p['id']]}"
             else:
                 priority=4
-                relationText="两宫比和，仅表示同类宫象"
-            conditionText=("刑墓并见，古法主受制、疼痛与潜伏难显的象意"
-                           if "六仪击刑" in conditions and "入墓" in conditions else
-                           "击刑主牵扯、疼痛或损伤之象" if "六仪击刑" in conditions
-                           else "入墓主闭藏、受压、不易显露之象")
-            message=(f"{label(p)}宫{stem}所指{site}，原力{power}，实见"
-                     +"、".join(conditions)+f"，{conditionText}；{relationText}")
+                relationText=f"{label(p)}宫与{label(illness)}宫同属{ELEMENTS[ip]}"
+            conditionText=("刑墓并见，"+site+"有伤痛损伤兼隐伏之象" if len(conditions)==2 else
+                           "六仪击刑，"+site+"有伤痛或损伤之象" if "六仪击刑" in conditions else
+                           "入墓，"+site+"有受压闭藏、不易显露之象")
+            message=f"{label(p)}宫{stem}主{site}，力量{power}，{conditionText}；{relationText}"
             crossEvents.append((priority,p["id"],stem,message,rel))
     crossEvents.sort(key=lambda item:item[:3])
-    crossFull=("全盘墓刑互证："+"；".join(x[3] for x in crossEvents)+"。"
+    crossFull=("另宫刑墓："+"；".join(x[3] for x in crossEvents)+"。"
                if crossEvents else "")
     ending="。"
     originalFocus=(lead if not trauma and _matched(lead,originalSites)
@@ -599,10 +593,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     skySite=next((x for x in skySites if _matched(x,leadSites)),None)
     if earthSite and earthStrong:
         energyText=f"力量{earthPower}" if _tier(earthPower)>0 else "两支原格力量均至少为大"
-        bodyEvidence.append(f"地盘{illness['earthStem']}所指{earthSite}{energyText}，与主病位同向，这一处更值得留意")
+        bodyEvidence.append(f"地盘{illness['earthStem']}主{earthSite}，{energyText}，与天芮同宫，定位更偏向{earthSite}一带")
     elif skySite and skyStrong:
         energyText=f"力量{skyPower}" if _tier(skyPower)>0 else "两支原格力量均至少为大"
-        bodyEvidence.append(f"天盘{sky}所指{skySite}{energyText}，与主病位相合")
+        bodyEvidence.append(f"天盘{sky}主{skySite}，{energyText}，与天芮同宫")
     if _tier(doorPower)>=4 and not trauma:
         bodyEvidence.append(f"{door}力量{doorPower}，旧籍{doorClue}所指的"+
                             ("筋脉牵扯" if door=="伤门" else "伴随征象")+"更显")
@@ -618,8 +612,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if crossEvents:
         first=crossEvents[0]
         p=palaces[first[1]]
-        signs="、".join(flags(first[2],p))
-        bodyEvidence.append(f"另外{label(p)}宫{first[2]}出现{signs}，{first[4]}，传统上提示另宫牵连，不足以证明病因")
+        sites=_parts("/".join(stems[first[2]]["qimen_secret_vol13"]))
+        site=sites[0] if sites else "相应部位"
+        signs=flags(first[2],p)
+        summary=("伤痛损伤兼隐伏" if len(signs)==2 else
+                 "伤痛或损伤" if "六仪击刑" in signs else "闭藏不显")
+        bodyEvidence.append(f"另见{label(p)}宫{first[2]}主{site}，有{summary}之象，与主病位分开核对")
     closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
@@ -643,7 +641,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v24_upper_branch_full_chart_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v26_precise_injury_speech_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()

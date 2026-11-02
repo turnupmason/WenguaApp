@@ -54,7 +54,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v26_precise_injury_speech_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -686,16 +686,8 @@ enum WenguaNativeDiscomfortV15 {
             let original=candidates.first(where:{matched($0,leadSites)}) ??
                          candidates.first ?? "无已核实的细部候选"
             let selected=original=="脏（笼统）" ? "脏腑泛象" : original
-            let facts=try stemBranchFacts(stem,illness,stages)
-            let distinct=Set(facts.map{$0.1})
-            let branchText=facts.count>1 ?
-                "，"+facts.map{$0.0+"为"+$0.1}.joined(separator:"、") : ""
-            let powerWords=distinct.count>1 ?
-                branchText+"，按较高一档取"+power :
-                "，力量"+power
-            let effect=tier(power)>=4 ? "这一干象较突出" :
-                       tier(power)>=3 ? "可作本宫病象旁证" : "此象偏弱"
-            return selected+powerWords+"，"+effect
+            _ = try stemBranchFacts(stem,illness,stages)
+            return selected+"，力量"+power
         }
         // 81 grid is ordered sky + ground. Preserve the actual source name,
         // luck and gist; generic commercial idioms MUST NOT be turned into
@@ -759,7 +751,12 @@ enum WenguaNativeDiscomfortV15 {
             if !signs.isEmpty {
                 let key=stem+"/"+signs.joined(separator:"、")
                 if recorded.insert(key).inserted {
-                    danger.append("\(stem)实见\(signs.joined(separator:"、"))，传统取其受制、受伤之象，须细察本宫相应干象")
+                    let site=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
+                        .joined(separator:"/")).first ?? "相应部位"
+                    let meaning=signs.count==2 ? "伤痛损伤兼有隐伏之象" :
+                        signs.contains("六仪击刑") ? "伤痛或损伤之象" :
+                        "受压闭藏、不易显露之象"
+                    danger.append("\(stem)主\(site)，见\(signs.joined(separator:"、"))，\(site)有\(meaning)")
                 }
             }
         }
@@ -786,9 +783,9 @@ enum WenguaNativeDiscomfortV15 {
         let doorClue=sourceClue("八门病象",door)
         let deityText=(deityClue=="其他传统象意" ? "传统神象待核" : deityClue)
         let starDoorGodFull=[
-            "天芮星力量\(illnessPower)，以它的实际落宫定主要位置；",
-            "\(door)力量\(doorPower)，旧籍取\(doorClue)，"+(tier(doorPower)>=4 ? "门象较突出" : "门象只作旁证")+"；",
-            "\(deity)力量\(deityPower)，旧籍取\(deityText)，"+(tier(deityPower)>=4 ? "神象也较明显。" : "神象须配合其它证据。")
+            "天芮星力量\(illnessPower)，主位依\(label(illness))宫确定；",
+            "\(door)力量\(doorPower)，古籍记\(doorClue)；",
+            "\(deity)力量\(deityPower)，古籍记\(deityText)。"
         ].joined()
         if !doorText.isEmpty {danger.append(doorText)}
         let dangerFull=danger.isEmpty ? "" :
@@ -820,27 +817,26 @@ enum WenguaNativeDiscomfortV15 {
                 switch rel {
                 case "此宫克病宫":
                     priority=0
-                    relationText="此宫克病宫，传统上可能牵制主病位，但不能据此认定病因"
+                    relationText="\(label(p))宫\(five[p.id]!)克\(label(illness))宫\(five[illness.id]!)"
                 case "此宫生病宫":
                     priority=1
-                    relationText="此宫生扶病宫，属于关联旁证，不能反推为病源"
+                    relationText="\(label(p))宫\(five[p.id]!)生\(label(illness))宫\(five[illness.id]!)"
                 case "病宫克此宫":
                     priority=2
-                    relationText="病宫克此宫，可考虑此处受到病事牵连的象意"
+                    relationText="\(label(illness))宫\(five[illness.id]!)克\(label(p))宫\(five[p.id]!)"
                 case "病宫生此宫":
                     priority=3
-                    relationText="病宫生此宫，可考虑向外耗泄的象意"
+                    relationText="\(label(illness))宫\(five[illness.id]!)生\(label(p))宫\(five[p.id]!)"
                 default:
                     priority=4
-                    relationText="两宫比和，仅表示同类宫象"
+                    relationText="\(label(p))宫与\(label(illness))宫同属\(five[illness.id]!)"
                 }
-                let conditionText=conditions.contains("六仪击刑") &&
-                    conditions.contains("入墓") ?
-                    "刑墓并见，古法主受制、疼痛与潜伏难显的象意" :
+                let conditionText=conditions.count==2 ?
+                    "刑墓并见，"+site+"有伤痛损伤兼隐伏之象" :
                     conditions.contains("六仪击刑") ?
-                    "击刑主牵扯、疼痛或损伤之象" :
-                    "入墓主闭藏、受压、不易显露之象"
-                let message="\(label(p))宫\(stem)所指\(site)，原力\(power)，实见\(conditions.joined(separator:"、"))，\(conditionText)；\(relationText)"
+                    "六仪击刑，"+site+"有伤痛或损伤之象" :
+                    "入墓，"+site+"有受压闭藏、不易显露之象"
+                let message="\(label(p))宫\(stem)主\(site)，力量\(power)，\(conditionText)；\(relationText)"
                 crossEvents.append((priority,p.id,stem,message,rel))
             }
         }
@@ -850,7 +846,7 @@ enum WenguaNativeDiscomfortV15 {
             return $0.2<$1.2
         }
         let crossFull=crossEvents.isEmpty ? "" :
-            "全盘墓刑互证："+crossEvents.map{$0.3}.joined(separator:"；")+"。"
+            "另宫刑墓："+crossEvents.map{$0.3}.joined(separator:"；")+"。"
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
@@ -890,11 +886,11 @@ enum WenguaNativeDiscomfortV15 {
         if let earthSite=earthSites.first(where:{matched($0,leadSites)}),
            earthStrong {
             let energyText=tier(earthPower)>0 ? "力量\(earthPower)" : "两支原格力量均至少为大"
-            bodyEvidence.append("地盘\(illness.earthStem)所指\(earthSite)\(energyText)，与主病位同向，这一处更值得留意")
+            bodyEvidence.append("地盘\(illness.earthStem)主\(earthSite)，\(energyText)，与天芮同宫，定位更偏向\(earthSite)一带")
         } else if let skySite=skySites.first(where:{matched($0,leadSites)}),
                   skyStrong {
             let energyText=tier(skyPower)>0 ? "力量\(skyPower)" : "两支原格力量均至少为大"
-            bodyEvidence.append("天盘\(sky)所指\(skySite)\(energyText)，与主病位相合")
+            bodyEvidence.append("天盘\(sky)主\(skySite)，\(energyText)，与天芮同宫")
         }
         if tier(doorPower)>=4 && !trauma {
             bodyEvidence.append("\(door)力量\(doorPower)，旧籍\(doorClue)所指的\(door=="伤门" ? "筋脉牵扯" : "伴随征象")更显")
@@ -911,8 +907,12 @@ enum WenguaNativeDiscomfortV15 {
         }
         if let first=crossEvents.first,
            let p=chart.palaces.first(where:{$0.id==first.1}) {
-            let signs=badSigns(first.2,p).joined(separator:"、")
-            bodyEvidence.append("另外\(label(p))宫\(first.2)出现\(signs)，\(first.4)，传统上提示另宫牵连，不足以证明病因")
+            let site=parts((mapping[first.2]?["qimen_secret_vol13"] ?? [])
+                .joined(separator:"/")).first ?? "相应部位"
+            let signs=badSigns(first.2,p)
+            let summary=signs.count==2 ? "伤痛损伤兼隐伏" :
+                signs.contains("六仪击刑") ? "伤痛或损伤" : "闭藏不显"
+            bodyEvidence.append("另见\(label(p))宫\(first.2)主\(site)，有\(summary)之象，与主病位分开核对")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
@@ -997,7 +997,7 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v24_upper_branch_full_chart_20261101",
+            version:"discomfort_v26_precise_injury_speech_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(

@@ -3029,3 +3029,6 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 ### 2026-11-01 · V24 精简跨宫收束后真实校验
 - V24 全八实宫真墓刑仍全量报告，但综合段不再整段重复首条墓刑，只摘要其真实实宫、干、墓刑和对病宫五行方向。此改动在真实 macOS Xcode [#41377678550](https://github.com/turnupmason/WenguaApp/actions/runs/41377678550) **PASS**，源码 SHA `1b265fd7115f17eec3b36016ba7fd669ea18c5b8`，原文记录 `docs/IOS_V80_XCODE_PASS_RUN_41377678550_ATTEMPT_1.md`，包括Python400/45专项、原生Simulator与离线bundle、四新随机人时真盘、另外三张Python/Swift整段严格parity（女儿已见固定案仅冻结回归）。前一新摘要过渡提交Swift/Python不同步导致 #41377648150 失败，档案永存，非临床、非签名真机、未获用户文案批准。专题详细审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
+
+### 2026-11-01 · V26 病位文案针对V25审稿修正
+- 删除“按较高一档取”“这一干象较突出”“可考虑此处受到病事牵连的象意”；真实十干按源200双支较高档不变，刑及墓须写具体实际天干对应部位与不同古籍象意（己坤二击刑→胃的伤痛损伤象）。用户已见女儿盘属回归不属盲测。Python/Swift V26及 Important 镜像同提交；V8轻重冻结，旧失败和原著不动；详见 `docs/HEALTH_DISCOMFORT_V26_PRECISE_SITE_PROSE_AUDIT_20261101.md`。文案待用户审批，新提交Actions必须重新实际检查。

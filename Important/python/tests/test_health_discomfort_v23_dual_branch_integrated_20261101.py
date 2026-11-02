@@ -72,7 +72,7 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         py=PYTHON.read_text(encoding="utf8")
         tmpl=json.loads(TEMPLATE.read_text(encoding="utf8"))
         self.assertEqual(tmpl["schema"],
-            "wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101")
+            "wengua_health_discomfort_native_v26_precise_injury_speech_20261101")
         self.assertIn("stemBranchFacts",swift)
         self.assertIn("stem_branch_facts",py)
         self.assertIn("sourceStrength(\"stem\",stem,p,[stage])",swift)
@@ -89,8 +89,8 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         self.assertIn('_discomfort_power(kind,symbol,p,month,tables,stages)',py)
         self.assertIn('for p in chart.palaces.filter',swift)
         self.assertIn('for p in sorted((p for p in chart["palaces"]',py)
-        self.assertIn('全盘墓刑互证：',swift)
-        self.assertIn('全盘墓刑互证：',py)
+        self.assertIn('另宫刑墓：',swift)
+        self.assertIn('另宫刑墓：',py)
     def test_real_native_random_case_guards_no_brackets_or_waiting(self):
         smoke=(ROOT/"ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift").read_text()
         self.assertIn('!reading.sections.joinedDescription.contains("待核")',smoke)
