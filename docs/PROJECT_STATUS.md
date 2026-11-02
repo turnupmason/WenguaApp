@@ -3076,3 +3076,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-11-01 · V26最终真实构建与双语言逐字验收 PASS（保留所有失败）
+- 最终真正签名前的macOS Xcode Simulator CI [#41381718805](https://github.com/turnupmason/WenguaApp/actions/runs/41381718805) **success**，对应冻结验收源 SHA `1fdf854e644a9d8032df0a59e28161da395abcfd`；GitHub自动原样归档 `docs/IOS_V80_XCODE_PASS_RUN_41381718805_ATTEMPT_1.md`。XcodeGen、原生 SwiftUI iPhone Simulator 真编译、包内200格/81格/24人物及V26模板逐字源资源、8张真实Swift随机时辰、1080盘完整数据集核查均跑过。
+- 真正独立 Python↔Swift 客户整段逐字对照三张 PASS：弟弟 `2026-11-18T09:00:00-05:00`（6段）、妻子 `2027-02-16T19:00:00-05:00`（5段）、已揭晓女儿 `2027-02-07T11:00:00-05:00`（4段；不是盲测）。同时主 Python CI [#41381718877](https://github.com/turnupmason/WenguaApp/actions/runs/41381718877)、V8宫位关系 [#41381718856](https://github.com/turnupmason/WenguaApp/actions/runs/41381718856)、V7.7 [#41381718810](https://github.com/turnupmason/WenguaApp/actions/runs/41381718810) 均 **success**。
+- 失败仍永久保留：本轮 #41380198099、#41380423349、#41380922874、#41381249170 的实际错误分别为旧schema断言、随机盘原书占位未净化、V21旧文案断言、V23女儿已揭晓案例旧文案守门。V7.4旧年命单案任务 #41380923004 单独断言失败尚未修，不可宣称全库所有历史工作流PASS。
+- 剩余非阻断文案提示：随机真Swift日志会打印 `V18_GUARD_FAILURE ending`（旧警告要求“不是/不等于”字面；正文已给医疗检查说明），需另审其必要性，不能冒充真正失败或掩盖。V26病位文案仍供用户审稿，不是科学预后证据；无签名iPhone真机和App Store验收，用户已装旧App不会因仓库更新自动变新。
