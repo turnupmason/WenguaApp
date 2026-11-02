@@ -3025,3 +3025,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
 本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
 模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
+
+
+### 2026-11-01 · V24 精简跨宫收束后真实校验
+- V24 全八实宫真墓刑仍全量报告，但综合段不再整段重复首条墓刑，只摘要其真实实宫、干、墓刑和对病宫五行方向。此改动在真实 macOS Xcode [#41377678550](https://github.com/turnupmason/WenguaApp/actions/runs/41377678550) **PASS**，源码 SHA `1b265fd7115f17eec3b36016ba7fd669ea18c5b8`，原文记录 `docs/IOS_V80_XCODE_PASS_RUN_41377678550_ATTEMPT_1.md`，包括Python400/45专项、原生Simulator与离线bundle、四新随机人时真盘、另外三张Python/Swift整段严格parity（女儿已见固定案仅冻结回归）。前一新摘要过渡提交Swift/Python不同步导致 #41377648150 失败，档案永存，非临床、非签名真机、未获用户文案批准。专题详细审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
