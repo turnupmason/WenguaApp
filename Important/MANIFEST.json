@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "42d984875077bd6b7233f94a05109ff4bfe4e14f"
+      "sha": "afe01b8581be28432c864a6e34b488b1532f9c19"
     },
     {
       "platform": "python",
@@ -775,7 +775,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "3db316babc59e367c7c8c3797b7aaebc8a71b781"
+      "sha": "0bf3c027c9ee4b29766334cea28eddf0b989bec6"
     },
     {
       "platform": "swift",
