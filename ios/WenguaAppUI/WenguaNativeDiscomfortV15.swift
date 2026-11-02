@@ -828,8 +828,11 @@ enum WenguaNativeDiscomfortV15 {
             bodyEvidence.append("同宫天禽寄格见伏吟，传统取反复迟滞为旁象，仍按天禽实际力量衡量")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
-        let conclusion="综上，\(relationship)本次\(conclusionFocus)\(focusRegion)。"+closing+
+        let conclusion=[
+            "综上，\(relationship)本次\(conclusionFocus)\(focusRegion)。",
+            closing,
             "以上为传统病位和症候象意，需以实际检查核实。"
+        ].joined()
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
