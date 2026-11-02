@@ -1,0 +1,40 @@
+{
+  "reason": "Latest user explicitly replaces modal setup, separates ordinary/current and elective/future-only flows, adds labeled civil wheels and professional palace layout.",
+  "entries": [
+    {
+      "source": "tests/test_ios_design_v1_contract.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_design_v1_contract.py",
+      "sha256": "b169b4b6e2da7eebf4a5d319f2a3eaac3ec42bdba3e23d6e89a1a8fe73f8e6ac"
+    },
+    {
+      "source": "tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "sha256": "17b4b91f1aa3146086b8ceeb73000f08f83a29051e8d6b541b11557b89b1c805"
+    },
+    {
+      "source": "tests/test_ios_immersive_journey_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_immersive_journey_20261028.py",
+      "sha256": "a9d6e0089c7b14ab8ab7bd13650268d7caa9202d639f0c13001ffc79b94e0dba"
+    },
+    {
+      "source": "tests/test_ios_manual_event_time_20261102.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_manual_event_time_20261102.py",
+      "sha256": "a86d8f3528d15e1437052d8de72344b2d10932e9bed88ae36074badd1051bb0e"
+    },
+    {
+      "source": "tests/test_ios_domain_interfaces_layout_20261102.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_domain_interfaces_layout_20261102.py",
+      "sha256": "3b9346eb9d9e45933672a2d6b367fedc3d69fdd7e284932b886f66778ea58899"
+    },
+    {
+      "source": "tests/verify_ios_manual_event_time_runtime_20261102.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/verify_ios_manual_event_time_runtime_20261102.py",
+      "sha256": "7b7049425349f473e4c304c44d726bfedb655bef6893e01babc46d01b76ce2f5"
+    },
+    {
+      "source": "tests/test_ios_premium_result_ui_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_setup_ui_tests/test_ios_premium_result_ui_20261028.py",
+      "sha256": "081be65ed10bedf21bdc480e73049f5b53eed6ba4acd34ffac0f9bc702fc23d5"
+    }
+  ]
+}

@@ -13,14 +13,54 @@ struct WenguaTimeCandidate: Identifiable {
 }
 
 enum WenguaCastTimeError: Error, LocalizedError {
-    case invalidZone, invalidCandidates, pastCandidate, duplicateCandidate
+    case invalidZone, invalidCandidates, pastCandidate, duplicateCandidate, invalidCivilTime, invalidClockMode
     var errorDescription: String? {
         switch self {
+        case .invalidCivilTime: return "所选年月日时分在该时区不存在，请重新选择。"
+        case .invalidClockMode: return "普通问事使用当前时辰；选吉日仅使用未来预定时辰。"
         case .invalidZone: return "请选择事项发生地的有效时区。"
         case .invalidCandidates: return "请提供1至6个1850至2150年范围内的候选时辰。"
         case .pastCandidate: return "择时用于尚未发生的事项，请选择确认时刻之后的候选时间。"
         case .duplicateCandidate: return "候选时间重复，请保留不同的事项时间。"
         }
+    }
+}
+
+struct WenguaScheduledClock {
+    var year:Int
+    var month:Int
+    var day:Int
+    var hour:Int
+    var minute:Int
+    init(date:Date,timezone:String) {
+        var calendar=Calendar(identifier:.gregorian)
+        calendar.timeZone=TimeZone(identifier:timezone) ?? .current
+        let parts=calendar.dateComponents([.year,.month,.day,.hour,.minute],from:date)
+        year=parts.year!;month=parts.month!;day=parts.day!;hour=parts.hour!;minute=parts.minute!
+    }
+    func daysInMonth(timezone:String) -> Int {
+        var calendar=Calendar(identifier:.gregorian)
+        calendar.timeZone=TimeZone(identifier:timezone) ?? .current
+        guard let first=calendar.date(from:DateComponents(year:year,month:month,day:1)) else {return 28}
+        return calendar.range(of:.day,in:.month,for:first)?.count ?? 28
+    }
+    func instants(timezone:String) throws -> [Date] {
+        guard let zone=TimeZone(identifier:timezone) else {throw WenguaCastTimeError.invalidZone}
+        var calendar=Calendar(identifier:.gregorian);calendar.timeZone=zone
+        let expected=DateComponents(year:year,month:month,day:day,hour:hour,minute:minute,second:0)
+        guard let seed=calendar.date(from:expected) else {throw WenguaCastTimeError.invalidCivilTime}
+        func matches(_ date:Date) -> Bool {
+            let c=calendar.dateComponents([.year,.month,.day,.hour,.minute],from:date)
+            return c.year==year && c.month==month && c.day==day && c.hour==hour && c.minute==minute
+        }
+        guard matches(seed) else {throw WenguaCastTimeError.invalidCivilTime}
+        let before=calendar.startOfDay(for:seed).addingTimeInterval(-1)
+        let clock=DateComponents(hour:hour,minute:minute,second:0)
+        let choices:[Calendar.RepeatedTimePolicy]=[.first,.last]
+        let found=choices.compactMap { policy in
+            calendar.nextDate(after:before,matching:clock,matchingPolicy:.strict,repeatedTimePolicy:policy)
+        }.filter(matches)
+        return Array(Set(found+[seed])).sorted()
     }
 }
 
@@ -30,6 +70,15 @@ enum WenguaCastTimePlan {
 
     static func supports(_ topic: String) -> Bool {
         WenguaDomainContract.lookup(topic)?.canCast == true
+    }
+
+    static func resolveForTopic(_ topic:String,mode:WenguaCastClockMode,candidates:[Date],
+                                confirmedAt:Date,timezone:String) throws -> [Date] {
+        guard let contract=WenguaDomainContract.lookup(topic),contract.canCast,
+              (mode == .plannedEvent ? contract.acceptsPlannedTime : contract.acceptsCurrentTime) else {
+            throw WenguaCastTimeError.invalidClockMode
+        }
+        return try resolve(mode:mode,candidates:candidates,confirmedAt:confirmedAt,timezone:timezone)
     }
 
     static func resolve(mode: WenguaCastClockMode, candidates: [Date],

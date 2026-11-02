@@ -24,6 +24,7 @@ targets:
       - path: WenguaCastTimePlan.swift
       - path: WenguaCastTimeView.swift
       - path: WenguaReadingLayout.swift
+      - path: WenguaSetupPresentation.swift
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift

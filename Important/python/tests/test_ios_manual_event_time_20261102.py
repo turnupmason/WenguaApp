@@ -32,10 +32,11 @@ class EventTimeEntry(unittest.TestCase):
     def test_actual_choice_reaches_engine_and_single_group_commit(self):
         app=(UI/'WenguaDesignPreviewApp.swift').read_text()
         picker=(UI/'WenguaCastTimeView.swift').read_text()
-        self.assertIn('DatePicker("手动选择年月日时分"',picker)
-        self.assertIn('.datePickerStyle(.wheel)',picker)
-        self.assertIn(r'.environment(\.timeZone, calendar.timeZone)',picker)
-        self.assertIn('WenguaCastTimePlan.resolve(mode:castMode',app)
+        self.assertIn('WenguaCivilClockWheel(clock:$draftClock',picker)
+        wheel=(UI/'WenguaSetupPresentation.swift').read_text()
+        self.assertIn('.pickerStyle(.wheel)',wheel)
+        self.assertIn('draftClock.instants(timezone:timezone)',picker)
+        self.assertIn('WenguaCastTimePlan.resolveForTopic(topic.id,mode:castMode',app)
         self.assertIn('WenguaNativeCore.compute(at:instant,timezone:localZone)',app)
         method=app.split('private func completeNativeCast()',1)[1].split('private func tryStartRitual()',1)[0]
         self.assertEqual(method.count('QIssuePolicy.commitRealCompletedCast('),1)

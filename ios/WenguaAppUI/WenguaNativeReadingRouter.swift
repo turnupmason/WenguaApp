@@ -75,9 +75,10 @@ struct WenguaDomainContract {
     let domainID: String
     let topicID: String
     let capability: Capability
-    var canCast: Bool { capability != .electiveReserved && capability != .legacyOnly }
+    var canCast: Bool { capability != .legacyOnly }
     var interpretationReady: Bool { capability == .healthSeverity || capability == .healthLocation }
-    var acceptsPlannedTime: Bool { canCast }
+    var acceptsPlannedTime: Bool { capability == .electiveReserved }
+    var acceptsCurrentTime: Bool { canCast && capability != .electiveReserved }
     var gradeScope: String? { interpretationReady ? "health.severity.V9/V11" : nil }
     var selectedRoleIDs: [String] {
         switch capability {

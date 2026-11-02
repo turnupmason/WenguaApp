@@ -40,6 +40,8 @@ on:
       - 'ios/WenguaAppUI/WenguaDesignPreviewApp.swift'
       - 'ios/WenguaAppUI/WenguaCastTimePlan.swift'
       - 'ios/WenguaAppUI/WenguaCastTimeView.swift'
+      - 'ios/WenguaAppUI/WenguaSetupPresentation.swift'
+      - 'ios/WenguaAppUI/WenguaReadingLayout.swift'
       - 'ios/WenguaAppUI/WenguaMeditationView.swift'
       - 'ios/WenguaAppUI/WenguaPremiumReadingView.swift'
       - 'ios/WenguaAppUI/WenguaDomainJourneyScreen.swift'

@@ -10,7 +10,7 @@ UI=ROOT/'ios/WenguaAppUI'
 class DomainInterfaceLayout(unittest.TestCase):
     def test_patch_does_not_change_health_math_templates_or_resources(self):
         old=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_domain_ui.json').read_text())
-        new=json.loads((ROOT/'data/releases/health_frozen_20261102.json').read_text())
+        new=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_setup_ui.json').read_text())
         a={x['path']:x['sha256'] for x in old['files']}
         b={x['path']:x['sha256'] for x in new['files']}
         self.assertEqual(old['topics'],new['topics'])
@@ -50,6 +50,6 @@ class DomainInterfaceLayout(unittest.TestCase):
         self.assertIn('Label("选择时辰"',picker)
         self.assertNotIn('WenguaCastTimePlan.display(',picker.split('struct WenguaTimeSourceBanner')[0])
         self.assertNotIn('再加一个候选时间',picker)
-        self.assertIn('selection: $draftDate',picker)
-        self.assertIn('WenguaReadingLayout.blocks(text)',customer)
-        self.assertIn('block.runs',customer)
+        self.assertIn('clock:$draftClock',picker)
+        self.assertIn('WenguaReadingLayout.blocks(text,sectionID:sectionID)',customer)
+        self.assertIn('WenguaReadingLayout.paragraphs(block)',customer)

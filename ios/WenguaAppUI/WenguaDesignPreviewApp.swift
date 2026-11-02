@@ -279,6 +279,11 @@ enum QuestionCatalog {
         guard let kinds=WenguaDomainContract.electiveTitles[id] else {return []}
         return [QuestionTopic(id:id+".elective",title:"选吉日 · "+kinds,domainTitle:title,enabled:false)]
     }
+    static func directionTitle(_ id:String) -> String {
+        let domain=WenguaDomainContract.lookup(id)?.domainID
+        let title=domains.first(where:{$0.id==domain})?.title ?? "历史事项"
+        return title+"／"+topicTitle(id)
+    }
     static func topicTitle(_ id:String) -> String {
         domains.flatMap(\.topics).first(where:{$0.id==id})?.title ?? "历史事项"
     }
@@ -349,6 +354,25 @@ struct ProfessionalChartScreen: View {
         }
     }
     var body: some View {
+        if showAsk { setupFlow } else { chartContent }
+    }
+
+    private var setupFlow: some View {
+        CastSetupScreen(topic:topic,onClose:{showAsk=false}) { computed,relation,reading in
+            nativeChart=computed
+            castRelation=relation
+            nativeReading=reading
+            if let groupID=reading.comparisonGroupID {
+                completedCandidates=WenguaRecordStore.load().map(\.record)
+                    .filter {$0.reading?.comparisonGroupID==groupID}
+                    .sorted {($0.reading?.candidateIndex ?? 0)<($1.reading?.candidateIndex ?? 0)}
+            } else {completedCandidates=[]}
+            selectedReadingTab=0
+            showAsk=false
+        }
+    }
+
+    private var chartContent: some View {
         GeometryReader { viewport in
         ScrollViewReader { reader in
         ScrollView {
@@ -357,7 +381,7 @@ struct ProfessionalChartScreen: View {
                     WenguaMark(size:43)
                     VStack(alignment:.leading,spacing:3) {
                         Text("问卦").font(.system(size:22,weight:.semibold,design:.serif))
-                        Text(topic.domainTitle + " · " + topic.title)
+                        Text(topic.domainTitle + "／" + topic.title)
                             .font(.caption).foregroundStyle(QStyle.secondary)
                     }
                     Spacer()
@@ -459,22 +483,9 @@ struct ProfessionalChartScreen: View {
                         .padding(.bottom,24)
                     }
                 } else {
-                    VStack(alignment:.leading,spacing:15) {
-                        Text("准备起局").font(.system(size:27,weight:.semibold))
-                        Text("事项已选："+topic.domainTitle+" / "+topic.title)
-                            .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Text("普通问事可用当前时辰，也可按已有预定事项的发生时刻起局。")
-                            .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Button("填写问事人与事项") {showAsk=true}
-                            .buttonStyle(.borderedProminent)
-                            .frame(maxWidth:.infinity)
-                        Text("之后需完整静心30秒。仅在成功起盘、保存记录后登记同一事项15天限制。")
-                            .font(.caption).foregroundStyle(QStyle.secondary)
-                    }
-                    .frame(maxWidth:.infinity,alignment:.leading)
-                    .padding(22)
-                    .background(QStyle.surface,in:RoundedRectangle(cornerRadius:18))
-                    .padding(14)
+                    WenguaPreparationCard(topic:topic) {showAsk=true}
+                        .padding(18)
+                        .frame(minHeight:max(0,viewport.size.height-90),alignment:.center)
                 }
             }
         }
@@ -489,25 +500,6 @@ struct ProfessionalChartScreen: View {
                      identityLabels:WenguaPalaceIdentity.labels(nativeReading,palaceID:palace.id))
                 .presentationDetents([.medium,.large])
                 .presentationDragIndicator(.visible)
-        }
-        .sheet(isPresented:$showAsk) {
-            CastSetupScreen(topic:topic) { computed,relation,reading in
-                nativeChart=computed
-                castRelation=relation
-                nativeReading=reading
-                if let groupID=reading.comparisonGroupID {
-                    completedCandidates=WenguaRecordStore.load().map(\.record)
-                        .filter { $0.reading?.comparisonGroupID == groupID }
-                        .sorted { ($0.reading?.candidateIndex ?? 0) < ($1.reading?.candidateIndex ?? 0) }
-                } else { completedCandidates=[] }
-                selectedReadingTab=0
-                showAsk=false
-            }
-        }
-        .onAppear {
-            // Production: domain > subquestion > verified subject > instant > real
-            // native V-next. No FrozenReadingV391 sample path is reachable.
-            if nativeChart == nil {showAsk=true}
         }
         }
         }
@@ -540,11 +532,6 @@ struct ProfessionalChartScreen: View {
                     .font(.system(size:11))
                     .foregroundStyle(QStyle.secondary)
                 Spacer(minLength:0)
-                Text(String(chart.iso.replacingOccurrences(of:"T",with:" ").prefix(16)))
-                    .font(.system(size:10,weight:.medium,design:.monospaced))
-                    .foregroundStyle(QStyle.secondary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.76)
             }
             HStack(spacing:4) {
                 pillarMini("年",chart.pillars.year)
@@ -560,20 +547,17 @@ struct ProfessionalChartScreen: View {
     }
 
     private func pillarMini(_ label:String,_ stem:String) -> some View {
-        HStack(spacing:3) {
-            Text(label).foregroundStyle(QStyle.secondary)
-            HStack(spacing:0) {
-                Text(String(stem.prefix(1)))
-                    .foregroundStyle(QFive.shade("stem",String(stem.prefix(1))))
-                Text(String(stem.suffix(1)))
-                    .foregroundStyle(QFive.shade("branch",String(stem.suffix(1))))
+        VStack(spacing:5) {
+            HStack(spacing:1) {
+                Text(String(stem.prefix(1))).foregroundStyle(QFive.shade("stem",String(stem.prefix(1))))
+                Text(String(stem.suffix(1))).foregroundStyle(QFive.shade("branch",String(stem.suffix(1))))
             }
-            .fontDesign(.monospaced)
+            .font(.system(size:24,weight:.semibold,design:.monospaced))
+            Text(label).font(.system(size:12,weight:.medium)).foregroundStyle(QStyle.secondary)
         }
-        .font(.system(size:12,weight:.medium))
         .frame(maxWidth:.infinity)
         .lineLimit(1)
-        .minimumScaleFactor(0.75)
+        .minimumScaleFactor(0.85)
     }
     private func clockFactsLine(_ chart: WenguaNativeChart) -> String {
         let voidText=chart.voidBranches.joined(separator:"、")
@@ -777,7 +761,7 @@ struct ProfessionalPalaceTile: View {
             let primary = CGFloat(15) * scale
             let secondary = CGFloat(13) * scale
             let roleWidth:CGFloat = identityLabels.isEmpty ? 0 :
-                max(27,min(33,geo.size.width*0.28))
+                max(32,min(42,geo.size.width*0.32))
             VStack(alignment:.leading,spacing:0) {
                 if palace.id == 5 {
                     Color.clear.frame(maxWidth:.infinity,maxHeight:.infinity)
@@ -835,20 +819,24 @@ struct ProfessionalPalaceTile: View {
     }
 
     private func markedStem(_ stem:String,plane:String,size:CGFloat)->some View {
-        HStack(spacing:0) {
-            Text(stem).foregroundStyle(QFive.shade("stem",stem))
-                .font(.system(size:size,weight:.semibold,design:.monospaced))
-            ForEach(QFive.stemMarks(palace,stem:stem,plane:plane),id:\.self) { mark in
-                Text(mark).font(.system(size:8,weight:.bold,design:.serif))
-                    .foregroundStyle(mark=="刑" ? QStyle.red : QStyle.orange)
+        Text(stem)
+            .foregroundStyle(QFive.shade("stem",stem))
+            .font(.system(size:size,weight:.semibold,design:.monospaced))
+            .frame(maxWidth:.infinity)
+            .frame(height:size*1.55)
+            .overlay(alignment:.topTrailing) {
+                HStack(spacing:0) {
+                    ForEach(QFive.stemMarks(palace,stem:stem,plane:plane),id:\.self) { mark in
+                        Text(mark).foregroundStyle(mark=="刑" ? QStyle.red : QStyle.orange)
+                    }
+                }
+                .font(.system(size:8,weight:.bold,design:.serif))
+                .lineLimit(1).offset(x:4,y:-1)
             }
-        }
-        .lineLimit(1).minimumScaleFactor(0.75)
-        .frame(maxWidth:.infinity,alignment:.center)
     }
     private func skyStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
-            Text("天").font(.system(size:10)).foregroundStyle(QStyle.secondary)
+            Text("天").font(.system(size:10)).foregroundStyle(QStyle.secondary).frame(width:12)
             HStack(spacing:0) {
                 ForEach(Array(stemPairColumns.enumerated()),id:\.offset) { pair in
                     markedStem(pair.element.0,plane:"天盘",size:size)
@@ -859,7 +847,7 @@ struct ProfessionalPalaceTile: View {
     }
     private func earthStemLine(size:CGFloat)->some View {
         HStack(spacing:2) {
-            Text("地").font(.system(size:10)).foregroundStyle(QStyle.secondary)
+            Text("地").font(.system(size:10)).foregroundStyle(QStyle.secondary).frame(width:12)
             HStack(spacing:0) {
                 ForEach(Array(stemPairColumns.enumerated()),id:\.offset) { pair in
                     markedStem(pair.element.1,plane:"地盘",size:size)
@@ -872,9 +860,9 @@ struct ProfessionalPalaceTile: View {
         VStack(spacing:4) {
             ForEach(Array(identityLabels.enumerated()),id:\.offset) { entry in
                 Text(entry.element)
-                    .font(.system(size:9,weight:.semibold,design:.serif))
+                    .font(.system(size:12,weight:.semibold,design:.serif))
                     .foregroundStyle(identityInk)
-                    .lineLimit(2).minimumScaleFactor(0.74)
+                    .lineLimit(3).minimumScaleFactor(0.9)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth:.infinity)
             }
@@ -988,8 +976,7 @@ struct ProfessionalPalaceDetail: View {
             "。" + identity + emptiness + "。"
     }
     private var statusTags: [String] {
-        identityLabels + QFive.void(palace).map{$0 + "空"} +
-            (palace.computed == nil ? ["测试盘"] : ["本机实算"])
+        identityLabels + QFive.void(palace).map{$0 + "空"}
     }
 
     var body: some View {
@@ -1011,10 +998,7 @@ struct ProfessionalPalaceDetail: View {
             Text(palace.name + " · " + palace.element + "行")
                 .font(.system(size:27,weight:.semibold))
                 .foregroundStyle(QFive.palette[palace.element] ?? QStyle.text)
-            Text(palace.computed == nil ? "已计算测试盘 · 古籍研究" :
-                  "本机 Swift 实算九宫 · 不是现实疾病诊断")
-                .font(.caption).foregroundStyle(QStyle.secondary)
-        }
+        }.frame(maxWidth:.infinity,alignment:.center)
     }
     private var tagBlock: some View {
         HStack(spacing:7) {
@@ -1058,8 +1042,8 @@ struct ProfessionalPalaceDetail: View {
     }
     private func detailTag(_ label: String) -> some View {
         Text(label)
-            .font(.caption2)
-            .padding(.horizontal, 10).padding(.vertical, 7)
+            .font(.system(size:16,weight:.semibold))
+            .padding(.horizontal, 12).padding(.vertical, 8)
             .foregroundStyle(QStyle.blue)
             .background(Color(red: 0.91, green: 0.95, blue: 1.0), in: Capsule())
     }
@@ -1150,7 +1134,7 @@ struct LocalNativeCase: Codable {
 struct CastSetupScreen: View {
     let topic: QuestionTopic
     let onNativeCast: (WenguaNativeChart, String, WenguaNativeCustomerReading) -> Void
-    @Environment(\.dismiss) private var dismiss
+    let onClose: () -> Void
     @State private var subject = "本人"
     @State private var inquiryContext = "direct_proxy"
     @State private var patientSex = "unspecified"
@@ -1162,7 +1146,7 @@ struct CastSetupScreen: View {
     @State private var birthYear = ""
     @State private var duration = "未说明"
     @State private var injuryContext = "unspecified"
-    @State private var castMode: WenguaCastClockMode
+    private var castMode:WenguaCastClockMode {topic.isElective ? .plannedEvent : .currentInquiry}
     @State private var timeCandidates = [WenguaTimeCandidate(date:Date().addingTimeInterval(24*60*60))]
     @State private var eventTimeZone = TimeZone.current.identifier
     @State private var phase = 0
@@ -1173,29 +1157,27 @@ struct CastSetupScreen: View {
         !["哥哥或姐姐","弟弟或妹妹"].contains($0)
     }
 
-    init(topic: QuestionTopic,
+    init(topic: QuestionTopic,onClose:@escaping () -> Void = {},
          onNativeCast: @escaping (WenguaNativeChart, String, WenguaNativeCustomerReading) -> Void) {
         self.topic=topic
         self.onNativeCast=onNativeCast
-        _castMode=State(initialValue:.currentInquiry)
+        self.onClose=onClose
     }
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
+        ScrollView {
                 VStack(alignment: .leading, spacing: 17) {
                     if phase == 0 {
-                        Text(topic.domainTitle + " · " + topic.title)
+                        Text(topic.domainTitle + "／" + topic.title)
                             .font(.system(size: 28, weight: .medium))
                         Text("同一件具体事情，15天内只起一次。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Group {
+                        VStack(alignment:.leading,spacing:18) {
                             Text("本次事项："+topic.title).font(.headline)
                             Text("盘面由时刻决定；人物和实际条件影响专题取用与解读。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
-                            if topic.enabled {
-                            Text("当事人").font(.headline)
-                            Picker("你为谁问事", selection: $subject) {
+                            Text("问事人与自己的关系").font(.headline)
+                            Picker("问事人与自己的关系", selection: $subject) {
                                 ForEach(relations, id: \.self) { relation in
                                     Text(["哥哥":"哥哥（家里的哥哥）",
                                           "姐姐":"姐姐（家里的大姐）",
@@ -1210,12 +1192,15 @@ struct CastSetupScreen: View {
                                 friendRelativeAge="unspecified"
                                 birthOrder="unspecified"
                             }
-                            TextField("当事人称呼（区分本机事项，可选）", text: $subjectName)
-                            TextField("出生公历年份（选填，例如 1988）",text:$birthYear)
+                            TextField("问事人称呼（可选）", text: $subjectName)
+                            if topic.enabled {
+                            Text("出生年份（记录用，可选）").font(.subheadline.weight(.semibold))
+                            TextField("例如1988；不作为出生年命推断",text:$birthYear)
                                 .keyboardType(.numberPad)
                             if subject=="父母" ||
                                subject=="配偶" || subject=="同事" || subject=="朋友" ||
                                subject=="其他长辈" || subject=="孩子" {
+                                Text("问事人性别").font(.subheadline.weight(.semibold))
                                 Picker(subject=="朋友" ? "朋友性别（必选）" :
                                        "病人性别（请按实际选择）",selection:$patientSex) {
                                     Text("未说明").tag("unspecified")
@@ -1224,6 +1209,7 @@ struct CastSetupScreen: View {
                                 }.pickerStyle(.menu)
                             }
                             if subject=="朋友" {
+                                Text("朋友与自己的年龄关系（必选）").font(.subheadline.weight(.semibold))
                                 Picker("朋友比你年长还是年幼（必选）",selection:$friendRelativeAge) {
                                      Text("未说明").tag("unspecified")
                                      Text("比我大").tag("older")
@@ -1240,6 +1226,7 @@ struct CastSetupScreen: View {
                                         "确认是本人家庭亲属",isOn:$familyRelativeConfirmed)
                              }
                              if ["儿子","女儿","孩子","侄子"].contains(subject) {
+                                Text("出生排行（可选）").font(.subheadline.weight(.semibold))
                                 Picker("出生排行（可选）",selection:$birthOrder) {
                                     Text("未说明").tag("unspecified")
                                     Text("长").tag("eldest")
@@ -1247,11 +1234,13 @@ struct CastSetupScreen: View {
                                     Text("幼").tag("youngest")
                                 }.pickerStyle(.menu)
                             }
-                            TextField("出生年命干支（选填，如辛酉）",text:$patientBirthGanzhi)
+                            Text("出生年命干支（已知再填）").font(.subheadline.weight(.semibold))
+                            TextField("例如辛酉；不确定请留空",text:$patientBirthGanzhi)
                                 .textInputAutocapitalization(.never)
-                            Text("请务必准确选择与测算人的关系。本模型严格遵循古籍用神规则，关系的错位将直接影响推演结果的准确性。")
+                            Text("请按实际关系填写，人物关系决定专题取用；出生年份不会自动补作年命。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                             if topic.id=="health.discomfort" {
+                                Text("伤损情况（必选）").font(.headline)
                                 Picker("病位问题属于哪一种情况（必选）",selection:$injuryContext) {
                                     Text("请先选择").tag("unspecified")
                                     Text("普通身体不适（无以下特殊情况）").tag("none")
@@ -1264,17 +1253,20 @@ struct CastSetupScreen: View {
                                 Text("伤损、出血或剧痛，优先看伤门落宫；手术另看伤门所示部位。普通不适不启用独立伤门判断。未选择不能起局。")
                                    .font(.caption).foregroundStyle(QStyle.secondary)
                             }
+                            Text("病程（记录用，可选）").font(.headline)
                             Picker("病程（仅记录，可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
                             }
                         }
-                        .padding(12)
-                        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 14))
-                        WenguaCastTimePicker(mode:$castMode,candidates:$timeCandidates,timezone:$eventTimeZone)
+                        .textFieldStyle(.roundedBorder)
+                        .padding(20)
+                        .frame(maxWidth:.infinity,alignment:.leading)
+                        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 18))
+                        WenguaCastTimePicker(mode:castMode,candidates:$timeCandidates,timezone:$eventTimeZone)
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("一事一占 · 尊重事实").font(.headline)
-                            Text("静下心想这件事30秒。心诚则灵，尊重事实。同一当事人同一专题15天内只完成一次起局；选吉日将作为领域内独立功能开发。仅凭本机记录无法彻底识别换说法或换设备的同一件事。")
+                            Text("静心起局").font(.headline)
+                            Text("信息填写完毕后，请闭目、端坐，完整静心30秒。确保心平气和、意念集中于所问之事，方可动手起局（无事勿惊，不诚不占）。")
                                 .font(.subheadline)
                         }
                         .padding(15)
@@ -1345,10 +1337,9 @@ struct CastSetupScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("关闭") { dismiss() }
+                    Button("返回") { onClose() }
                 }
             }
-        }
     }
 
 
@@ -1380,7 +1371,7 @@ struct CastSetupScreen: View {
         do {
             let confirmedAt=Date()
             let localZone=castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone
-            let instants=try WenguaCastTimePlan.resolve(mode:castMode,
+            let instants=try WenguaCastTimePlan.resolveForTopic(topic.id,mode:castMode,
                 candidates:timeCandidates.map(\.date),confirmedAt:confirmedAt,timezone:localZone)
             let context=WenguaNativeInquiry(
                 relationship:subject,
@@ -1429,7 +1420,7 @@ struct CastSetupScreen: View {
             QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)
             guard let first=records.first,let reading=first.reading else { throw WenguaCastError.invalidChart }
             onNativeCast(first.chart,subject,reading)
-            dismiss()
+            onClose()
         } catch {
             validationMessage="本次未起局成功，也不会登记15天限制："+error.localizedDescription
         }
@@ -1450,7 +1441,7 @@ struct CastSetupScreen: View {
             return
         }
         do {
-            _ = try WenguaCastTimePlan.resolve(mode:castMode,candidates:timeCandidates.map(\.date),
+            _ = try WenguaCastTimePlan.resolveForTopic(topic.id,mode:castMode,candidates:timeCandidates.map(\.date),
                 confirmedAt:Date(),timezone:castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone)
         } catch { validationMessage=error.localizedDescription; return }
         let cleanedYear=birthYear.trimmingCharacters(in:.whitespacesAndNewlines)
@@ -1465,16 +1456,16 @@ struct CastSetupScreen: View {
             validationMessage="出生年命须填写完整六十甲子干支，例如辛酉；不确定可留空。"
             return
         }
-        if (subject=="配偶" || subject=="父母") && patientSex=="unspecified" &&
+        if topic.enabled && (subject=="配偶" || subject=="父母") && patientSex=="unspecified" &&
            inquiryContext != "event_news" {
             validationMessage="此人物关系必须先明确病人性别，以决定真正的用神。"
             return
         }
-        if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) && !familyRelativeConfirmed {
+        if topic.enabled && ["哥哥","姐姐","弟弟","妹妹"].contains(subject) && !familyRelativeConfirmed {
              validationMessage="亲属辅助宫须确认真实家庭关系；朋友请选择朋友。"
              return
          }
-         if subject=="朋友" && (patientSex=="unspecified" || friendRelativeAge=="unspecified") {
+         if topic.enabled && subject=="朋友" && (patientSex=="unspecified" || friendRelativeAge=="unspecified") {
              validationMessage="朋友必须选性别及比自己大或小，但不借亲属辅助宫。"
              return
          }

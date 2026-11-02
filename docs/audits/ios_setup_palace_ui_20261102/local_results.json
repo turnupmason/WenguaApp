@@ -1,0 +1,30 @@
+{
+  "suite": "python3 -m unittest discover -s tests -v",
+  "tests": 855,
+  "failures": 0,
+  "errors": 0,
+  "skips": 3,
+  "new_skips": 0,
+  "targeted_tests": 33,
+  "first_full": {
+    "tests": 855,
+    "failures": 1,
+    "errors": 0,
+    "skips": 3,
+    "reason": "Old customerParagraph call-format contract; original test archived before migration."
+  },
+  "logs": [
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/python_full_final.log.gz",
+      "sha256": "366524e24af137b338af2d64b88a6c9a2750ab32b77f98a64b5973a575b933c0"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/python_full_first_failure.log.gz",
+      "sha256": "fd2bd02d003e761e800a524cbb79b90e8d8be412198f4c731023165cba908928"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/targeted_33_pass.log.gz",
+      "sha256": "d941df6071d3febd602a22e570b99c723c92aa307a1d2552e38b9c1ae00aca25"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p5",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p6",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "cc2061edb9dffb8488ca1f644c71a7ddee9478b55463ee740315dc939a6646ea"
+      "sha256": "1c589d49c03c8d0a91a966e4b808c15c9ba4126dd9cbc44253582f8a65f6bbab"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -71,7 +71,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "kind": "source",
-      "sha256": "4fe1ee273870d454802d427fbebe640138c7f59dfa83fe02e27a2155e1269660"
+      "sha256": "ce10318a26257bb1ab7f6355c58a69864e740c6a9e98ea1af6db819d2e942781"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
@@ -91,7 +91,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "kind": "source",
-      "sha256": "46ee55a030b829754dbda55562b0ee9c4e59065956383e26cede702b21308943"
+      "sha256": "57c2c93169b06156d38e59b8c944a8ec656dd961bfc119afc968b1f2167bb795"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
@@ -136,7 +136,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "kind": "source",
-      "sha256": "85578a3af084dcefd65b4a3439586009d1731a9136214db183d9b72edd784a1b"
+      "sha256": "6495fe9705b60a17fdc3b50dbb73154d56ecf87c3928777945e9b725281c1d7b"
     },
     {
       "path": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
@@ -176,7 +176,7 @@
     {
       "path": "ios/WenguaAppUI/project.yml",
       "kind": "source",
-      "sha256": "be3cef79cc1465f0992740280660646c4b061d1941f0db3c23ae5b7a00388efc"
+      "sha256": "48b0f3f2e679d8ab1fdfd84e122039f597132c45dfa765c5026277790d5f6a67"
     },
     {
       "path": "ios/WenguaAppUI/WenguaMeditationView.swift",
@@ -186,23 +186,28 @@
     {
       "path": "ios/WenguaAppUI/WenguaCastTimePlan.swift",
       "kind": "source",
-      "sha256": "27baeb583a1653d985992d093c850fd9313e665f883b14f9bb55615e4d5e09dd"
+      "sha256": "4e84ccbfbedf5655eedaab4c5b36843dd9dc99ecac5532ddfd46ed9754291223"
     },
     {
       "path": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "kind": "source",
-      "sha256": "e7609def2a4d5d215d3d761e0b36e7f626223d4b5b65772ab5400bb9bcf30d62"
+      "sha256": "949d2cf24b41c926e2aa8a0827d63df42aaa06f17cd757520ef11e046e7f0aba"
     },
     {
       "path": "ios/WenguaAppUI/WenguaReadingLayout.swift",
       "kind": "source",
-      "sha256": "70e0dec295fc2cdce3fb56210f2314d08e974e6d9f1af3c036bc60eed9f9fc8a"
+      "sha256": "77d143bf51d68d0c900616c78b40bfe6c06e415f1253657ba0dd0a82ea967e95"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
+      "kind": "source",
+      "sha256": "0df23fe9a30b08c0205a63676805acf174fb719ad13c05f1348b724b0acb82dc"
     }
   ],
   "engineering_patch": {
-    "id": "p5_domain_local_intents_lossless_layout_and_honest_inputs",
-    "prior_manifest_sha256": "3adee831bb838b123c386b04e514c2f19d4aefcff5acfc33145feeec2dcc2e7f",
-    "scope": "Lossless reading layout; per-domain ordinary scheduled-time and reserved elective intent contracts; shared final net grade vocabulary with unchanged frozen health scorer adapter. Remove mandatory inert question text, require explicit manual-time confirmation, preserve legacy locks and history. No new domain scoring rules.",
-    "authorization": "User 2026-11-02 explicitly requests separated readable paragraphs, per-domain future elective hooks rather than standalone picker, scheduled clock support across domains, shared grading foundation, no offset/default-time line, and removing ineffective description input."
+    "id": "p6_inline_setup_exclusive_clock_modes_and_palace_readability",
+    "prior_manifest_sha256": "bfb8770d7ea3e389d95d466099608a7e1d7e056271ee5ac97ff77c27fc34cd55",
+    "scope": "Inline preparation and grouped form; ordinary topics current-only, domain elective future-only with explicit civil year/month/day/hour/minute wheels and native mode enforcement; fixed stem overlays, centered palace titles, larger roles, grouped lossless injury/conclusion display. Sealed engines, templates and all seven resources unchanged; elective grading remains pending.",
+    "authorization": "User 2026-11-02 requests the screenshot UI fixes, removes automatic setup modal and ordinary scheduled toggle, reserves future time entry for each domain elective route, and explicitly requires five labeled time columns."
   }
 }

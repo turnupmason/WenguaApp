@@ -67,8 +67,8 @@ struct WenguaDomainJourneyScreen: View {
                         }
                         if let selected {
                             Text(selected.isElective ?
-                                 "选吉日将使用独立的日子比较流程，接口已预留，后续接入。" :
-                                 "可用当前或预定时辰排盘；专题取用、吉凶和解读按本领域模板逐步接入。")
+                                 "选择未来年月日时分排盘，专用吉日评级逐步接入。" :
+                                 "普通问事使用当前时辰；专题取用、吉凶和解读按本领域模板逐步接入。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
                     } else {
@@ -136,7 +136,7 @@ struct WenguaDomainJourneyScreen: View {
                         if selected.canCast { select(selected) }
                     } label: {
                         HStack {
-                            Text(selected.isElective ? "选吉日 · 后续开发" :
+                            Text(selected.isElective ? "继续 · 选择预定时辰" :
                                  selected.enabled ? "继续 · 填写问事信息" : "继续 · 按时刻排盘")
                             Spacer()
                             Image(systemName:selected.canCast ? "arrow.right":"lock")
@@ -196,16 +196,12 @@ struct WenguaDomainJourneyScreen: View {
                     Text(item.title)
                         .font(.system(size:16,weight:.semibold))
                         .foregroundStyle(QStyle.text)
-                    Text(item.isElective ? "接口预留 · 后续开发" :
+                    Text(item.isElective ? "未来时辰排盘 · 吉日评级开发中" :
                          item.enabled ? "已接入独立规则解盘" : "排盘可用 · 专题解读开发中")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
                 Spacer()
-                if item.isElective {
-                    Image(systemName:"lock")
-                        .font(.caption)
-                        .foregroundStyle(QStyle.secondary)
-                }
+                Image(systemName:"chevron.right").font(.caption).foregroundStyle(QStyle.secondary)
             }
             .padding(.horizontal,17)
             .padding(.vertical,12)

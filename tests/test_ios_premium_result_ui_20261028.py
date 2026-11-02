@@ -24,7 +24,7 @@ class PremiumResultSourceContract(unittest.TestCase):
         self.assertNotIn('WenguaNaturalSeveritySummary',self.presentation)
         detailed=(UI / "WenguaNativeCustomerView.swift").read_text()
         self.assertIn('ForEach(reading.sections.indices,id:',detailed)
-        self.assertIn('customerParagraph(section.text)',detailed)
+        self.assertIn('customerParagraph(section.text,sectionID:section.id)',detailed)
         self.assertIn('{evidence}', self.template["macros"]["verdict"])
         self.assertIn('{conclusion}', self.template["macros"]["verdict"])
         self.assertIn("综上所述，此病为{grade}。", self.template["macros"]["overall_resolved"])

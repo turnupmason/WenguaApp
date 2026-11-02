@@ -116,18 +116,54 @@ rejects {
 guard defaults.dictionaryRepresentation().filter({$0.key.hasPrefix("wengua:nativecase:")}).count==1 else {
     fatalError("Failed choice left a partial group")
 }
-// p5: real catalogs, shared grading contract and lossless reading layout.
+// p6: enforce the selected topic's clock mode at the native boundary.
+var civil=WenguaScheduledClock(date:confirmed,timezone:zone)
+civil.year=2028;civil.month=2;civil.day=29;civil.hour=12;civil.minute=34
+guard civil.daysInMonth(timezone:zone)==29,
+      try civil.instants(timezone:zone).count==1 else {fatalError("Leap day selection invalid")}
+civil.day=30
+rejects {_ = try civil.instants(timezone:zone)}
+civil.year=2026;civil.month=3;civil.day=8;civil.hour=2;civil.minute=30
+rejects {_ = try civil.instants(timezone:zone)}
+civil.month=11;civil.day=1;civil.hour=1
+let fold=try civil.instants(timezone:zone)
+guard fold==repeated else {fatalError("Five-column civil wheel lost DST repeated choices")}
+rejects {_ = try civil.instants(timezone:"Invalid/Zone")}
+// Catalog gates retain all 15 ordinary routes and their separate elective routes.
 guard QuestionCatalog.domains.count==15 else {fatalError("Domain catalog lost a domain")}
 for domain in QuestionCatalog.domains {
     let elective=domain.topics.filter(\.isElective)
-    guard elective.count==1,!elective[0].canCast,elective[0].contract?.gradeScope==nil else {
-        fatalError("Elective day choice must be reserved inside every domain")
+    guard elective.count==1,elective[0].canCast,
+          elective[0].contract?.acceptsPlannedTime==true,
+          elective[0].contract?.acceptsCurrentTime==false,
+          elective[0].contract?.gradeScope==nil else {
+        fatalError("Each domain needs an independent future-only elective route")
+    }
+    let future=try WenguaCastTimePlan.resolveForTopic(elective[0].id,mode:.plannedEvent,
+        candidates:[dates[0]],confirmedAt:confirmed,timezone:zone)
+    guard future==[dates[0]] else {fatalError("Elective event clock replaced by now")}
+    rejects {_ = try WenguaCastTimePlan.resolveForTopic(elective[0].id,mode:.currentInquiry,
+        candidates:[],confirmedAt:confirmed,timezone:zone)}
+    rejects {_ = try WenguaCastTimePlan.resolveForTopic(elective[0].id,mode:.plannedEvent,
+        candidates:[confirmed],confirmedAt:confirmed,timezone:zone)}
+    let electiveReading=WenguaCastTimePlan.chartOnlyReading(chart:inputs[0].chart,
+        eventKind:elective[0].title,topicID:elective[0].id)
+    let electiveResult=WenguaCastTimePlan.annotate(electiveReading,mode:.plannedEvent,
+        timezone:zone,confirmedAt:confirmed,groupID:"ELECTIVE",index:0,eventKind:elective[0].title)
+    guard electiveResult.timingGrade==nil,electiveResult.rolePalaces==nil else {
+        fatalError("Unfinished elective grading inherited medical scoring")
     }
     for topic in domain.topics where !topic.isElective {
-        guard topic.canCast,topic.contract?.acceptsPlannedTime==true else {fatalError("Scheduled clock interface missing")}
+        guard topic.canCast,topic.contract?.acceptsCurrentTime==true,
+              topic.contract?.acceptsPlannedTime==false else {fatalError("Ordinary route is not current-only")}
+        let now=try WenguaCastTimePlan.resolveForTopic(topic.id,mode:.currentInquiry,
+            candidates:[dates[0]],confirmedAt:confirmed,timezone:zone)
+        guard now==[confirmed] else {fatalError("Ordinary question did not use confirmation instant")}
+        rejects {_ = try WenguaCastTimePlan.resolveForTopic(topic.id,mode:.plannedEvent,
+            candidates:[dates[0]],confirmedAt:confirmed,timezone:zone)}
         if topic.contract?.interpretationReady != true {
             let reading=WenguaCastTimePlan.chartOnlyReading(chart:inputs[0].chart,eventKind:topic.title,topicID:topic.id)
-            let projected=WenguaCastTimePlan.annotate(reading,mode:.plannedEvent,timezone:zone,
+            let projected=WenguaCastTimePlan.annotate(reading,mode:.currentInquiry,timezone:zone,
                 confirmedAt:confirmed,groupID:"DOMAIN",index:0,eventKind:topic.title)
             guard projected.topicID==topic.id,projected.timingGrade==nil,
                   projected.rolePalaces==nil else {fatalError("Unready domain inherited medical rules")}
@@ -140,13 +176,45 @@ guard WenguaGradeScale.label(forFinalNetScore:5)=="极大吉",
       WenguaGradeScale.label(forFinalNetScore:6)==nil else {fatalError("Common final net scale invalid")}
 for input in inputs {
     for section in input.reading.sections {
-        let layout=WenguaReadingLayout.blocks(section.text)
+        let layout=WenguaReadingLayout.blocks(section.text,sectionID:section.id)
         guard layout.flatMap(\.runs).joined()==section.text else {fatalError("Reading layout altered source characters")}
         if section.id=="01_location" {
             guard layout.count>1,layout.flatMap(\.runs).count>5 else {fatalError("Still a single wall of text")}
         }
     }
 }
+// Execute every real injury branch, preserving every character while grouping
+// short clauses into readable paragraphs with explicit section headings.
+var injuryChecks=0
+for input in inputs {
+    let person=input.reading.relationship
+    for injury in ["none","accident","bone","bleeding","severe_pain","surgery"] {
+        let inquiry=WenguaNativeInquiry(relationship:person,context:"direct_proxy",
+            patientSex:nil,birthOrder:nil,patientBirthGanzhi:nil,injuryContext:injury,
+            familyRelativeConfirmed:person=="哥哥" ? true : nil)
+        let actual=try WenguaNativeReadingRouter.compose(chart:input.chart,topicID:"health.discomfort",
+            relationship:person,inquiry:inquiry,bundle:bundle)
+        for section in actual.sections {
+            let layout=WenguaReadingLayout.blocks(section.text,sectionID:section.id)
+            guard layout.flatMap(\.runs).joined()==section.text else {fatalError("Grouped injury source changed")}
+            for block in layout {
+                guard WenguaReadingLayout.paragraphs(block).joined()==block.runs.joined() else {
+                    fatalError("Paragraph joining removed evidence")
+                }
+            }
+            if section.id=="02_injury" {
+                guard injury != "none",layout.count>=3,layout.first?.heading=="伤损部位" else {
+                    fatalError("Injury evidence still ungrouped")
+                }
+            }
+            if section.id=="09_conclusion" {
+                guard layout.count>=2,layout.first?.heading=="主要结论" else {fatalError("Conclusion not grouped")}
+            }
+        }
+        injuryChecks += 1
+    }
+}
+print("PASS SETUP_UI 15 current-only ordinary domains; 15 future-only elective routes; year/month/day/hour/minute leap/gap/fold validation; \(injuryChecks) real injury/layout branches; exact source preserved")
 let legacyNow=confirmed.addingTimeInterval(60)
 let legacyKey=records[0].issueFingerprint
 let encodedOld=try JSONEncoder().encode(records[0])
@@ -162,7 +230,7 @@ guard QIssuePolicy.nextPermittedIssue(structuredKey,topic:records[0].topicID,
     relation:records[0].relation,asOf:legacyNow,defaults:defaults) != nil else {fatalError("Orphan old receipt silently unlocked")}
 let cleanDisplay=WenguaCastTimePlan.display(inputs[0].chart.iso,timezone:zone)
 guard !cleanDisplay.contains("-05:00") else {fatalError("Picker offset leaked into human date display")}
-print("PASS DOMAIN_UI 15 domain schedules; 15 reserved elective routes; common grade scale; exact reading source roundtrip; old receipt locks")
+print("PASS DOMAIN_UI 15 ordinary current routes; 15 separate elective future routes; common grade scale; exact reading source roundtrip; old receipt locks")
 print("PASS MANUAL_EVENT_TIME current vs chosen minute; actual two-clock calendar/9-palace/grade; DST; invalid choices; one atomic group; legacy history; no cross-domain grade")
 '''
     names=['WenguaNativeCore','WenguaHealthTemplateBridge','WenguaNativeEnergyBundle',

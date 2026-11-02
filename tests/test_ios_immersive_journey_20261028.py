@@ -43,9 +43,9 @@ class ImmersiveJourney(unittest.TestCase):
         self.assertIn("QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)",self.main)
         self.assertIn("try WenguaNativeReadingRouter.compose(",self.main)
         picker=(ROOT/"ios/WenguaAppUI/WenguaCastTimeView.swift").read_text()
-        self.assertIn('DatePicker("手动选择年月日时分"',picker)
+        self.assertIn('WenguaCivilClockWheel(clock:$draftClock',picker)
         self.assertIn('castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone',self.main)
-        self.assertIn('WenguaCastTimePlan.resolve(mode:castMode',self.main)
+        self.assertIn('WenguaCastTimePlan.resolveForTopic(topic.id,mode:castMode',self.main)
     def test_role_watermarks_are_exact_native_role_palaces_and_overlap(self):
         self.assertIn("rolePalaces:review.roles",self.router)
         self.assertIn("var rolePalaces: [String:Int]? = nil",self.router)

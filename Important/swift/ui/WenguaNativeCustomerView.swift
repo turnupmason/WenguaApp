@@ -44,13 +44,13 @@ struct WenguaNativeCustomerView: View {
                     }
                     if ["03classical","88subject","87vnext"].contains(section.id) {
                         DisclosureGroup("展开原文依据") {
-                            customerParagraph(section.text)
+                            customerParagraph(section.text,sectionID:section.id)
                                 .padding(.top,9)
                         }
                         .font(.system(size:13))
                         .tint(gold)
                     } else {
-                        customerParagraph(section.text)
+                        customerParagraph(section.text,sectionID:section.id)
                     }
                 }
                 .padding(18)
@@ -65,7 +65,7 @@ struct WenguaNativeCustomerView: View {
                     ForEach(reference) { section in
                         VStack(alignment:.leading,spacing:8) {
                             Text(section.title).font(.headline)
-                            customerParagraph(section.text)
+                            customerParagraph(section.text,sectionID:section.id)
                         }.padding(.vertical,8)
                     }
                 }
@@ -75,8 +75,8 @@ struct WenguaNativeCustomerView: View {
         }
     }
 
-    private func customerParagraph(_ text:String)->some View {
-        let blocks=WenguaReadingLayout.blocks(text)
+    private func customerParagraph(_ text:String,sectionID:String)->some View {
+        let blocks=WenguaReadingLayout.blocks(text,sectionID:sectionID)
         return VStack(alignment:.leading,spacing:18) {
             ForEach(blocks.indices,id:\.self) { index in
                 let block=blocks[index]
@@ -84,8 +84,9 @@ struct WenguaNativeCustomerView: View {
                     if let heading=block.heading {
                         Text(heading).font(.subheadline.weight(.semibold)).foregroundStyle(gold)
                     }
-                    ForEach(block.runs.indices,id:\.self) { row in
-                        let raw=block.runs[row]
+                    let paragraphs=WenguaReadingLayout.paragraphs(block)
+                    ForEach(paragraphs.indices,id:\.self) { row in
+                        let raw=paragraphs[row]
                         let prefix=(block.heading ?? "")+"："
                         let visible=(row==0 && block.heading != nil && raw.hasPrefix(prefix)) ?
                             String(raw.dropFirst(prefix.count)) : raw

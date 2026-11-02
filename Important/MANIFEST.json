@@ -13,7 +13,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/python/ci/ios_native_cast_parity.yml",
-      "sha": "0a938c60c9a4ba538d302fc9c675d8bf408133a2"
+      "sha": "bb5b5d5d53ae2e80840f4c70852a6223097d68f6"
     },
     {
       "platform": "python",
@@ -355,7 +355,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/ios_native_cast_parity.yml",
       "snapshot": "Important/swift/ci/ios_native_cast_parity.yml",
-      "sha": "0a938c60c9a4ba538d302fc9c675d8bf408133a2"
+      "sha": "bb5b5d5d53ae2e80840f4c70852a6223097d68f6"
     },
     {
       "platform": "swift",
@@ -427,7 +427,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/project.yml",
       "snapshot": "Important/swift/project/project.yml",
-      "sha": "71fccce55c34f0c2e5a4d360a6354271c42535ff"
+      "sha": "28364c61ba92089a1978d4303169aa2c070f612e"
     },
     {
       "platform": "swift",
@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "90178a69b88fc39b5efef7d104820b6c95debdfe"
+      "sha": "80f09453481fe91fa98d6c4e07c32b4e9994dee6"
     },
     {
       "platform": "swift",
@@ -475,7 +475,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "snapshot": "Important/swift/ui/WenguaNativeCustomerView.swift",
-      "sha": "a86ef685fb503c249254910ce3240edfb1db21eb"
+      "sha": "7a57e97008b34e00c45050a021afd7316406e323"
     },
     {
       "platform": "swift",
@@ -487,7 +487,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "cb95f098e7359de5e20bb565007ea34e90e5aab4"
+      "sha": "9b3efb57649a9ace9f192bed96c39a14673a7dc2"
     },
     {
       "platform": "swift",
@@ -547,7 +547,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "snapshot": "Important/swift/ui/WenguaDomainJourneyScreen.swift",
-      "sha": "88059d767b97f13a5c540977ae6865110bb81646"
+      "sha": "20e1a9107db94e5f3685a7ed2c4c9c1984b34603"
     },
     {
       "platform": "swift",
@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "94d25a21d2664f21948f55355645892ce5563bbb"
+      "sha": "bd31b9d36feeff68b7ef38e93900484d46fc7fc8"
     },
     {
       "platform": "python",
@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "444440899f5aa2a2650ce098ee2a50a8c181075c"
+      "sha": "0b47d21446f1e239b29d6e6328ed1719a2c30e65"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "4e0c0beab922b4dd7721e29fc4b80af4d497f162"
+      "sha": "99fdae1312af74ffb76bc29d5a4c046395f5959e"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "4e0c0beab922b4dd7721e29fc4b80af4d497f162"
+      "sha": "99fdae1312af74ffb76bc29d5a4c046395f5959e"
     },
     {
       "platform": "python",
@@ -895,37 +895,49 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimePlan.swift",
       "snapshot": "Important/swift/engine/WenguaCastTimePlan.swift",
-      "sha": "c6f75e8eb3ca0a04ad97052d08ac21f74fb55c24"
+      "sha": "0bcc75849c0dfe4c6bc5e22cdd157744e4e9937d"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "snapshot": "Important/swift/ui/WenguaCastTimeView.swift",
-      "sha": "9b5e11f9fbf7230a0f9cf82848385ac28b9358dc"
+      "sha": "42b7d3bb75f625352e804cded6634a9d2cfec4a5"
     },
     {
       "platform": "python",
       "canonical": "tests/test_ios_manual_event_time_20261102.py",
       "snapshot": "Important/python/tests/test_ios_manual_event_time_20261102.py",
-      "sha": "3ca51a85e2b9c4b72426aa350e5739f5d5f4fbf7"
+      "sha": "73e2d3e7cdb437bcd0500228d71ec9d175974f7b"
     },
     {
       "platform": "python",
       "canonical": "tests/verify_ios_manual_event_time_runtime_20261102.py",
       "snapshot": "Important/python/tests/verify_ios_manual_event_time_runtime_20261102.py",
-      "sha": "9d854400710bb57096ef66b56aabe7d5f250b02f"
+      "sha": "0e61a64ea385164e5f71248fea6f1ead50c58362"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaReadingLayout.swift",
       "snapshot": "Important/swift/ui/WenguaReadingLayout.swift",
-      "sha": "201d6ae499802a32ff164782db087961bb86578b"
+      "sha": "bc2d1f0428f83cada5fffea102f39f35c9d83bc3"
     },
     {
       "platform": "python",
       "canonical": "tests/test_ios_domain_interfaces_layout_20261102.py",
       "snapshot": "Important/python/tests/test_ios_domain_interfaces_layout_20261102.py",
-      "sha": "2a96c0303b8cdfde83ff13d2708fd6824e86076c"
+      "sha": "36094e70616567044641649e529889e02c949f3f"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
+      "snapshot": "Important/swift/ui/WenguaSetupPresentation.swift",
+      "sha": "062af8cee76feb6739d22c421fdf7db5da005a5b"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_setup_palace_ui_20261102.py",
+      "snapshot": "Important/python/tests/test_ios_setup_palace_ui_20261102.py",
+      "sha": "5ef1574bb6b498d714a4350d78036dffbcf01eeb"
     }
   ]
 }
