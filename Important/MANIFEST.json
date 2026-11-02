@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "e6b0e0704d7e50a2332d57afef6646a1da540e85"
+      "sha": "cc1943df16cf29845a90a8b8b890b0cab5db2710"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "e6b0e0704d7e50a2332d57afef6646a1da540e85"
+      "sha": "cc1943df16cf29845a90a8b8b890b0cab5db2710"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "a1a9b4b0ced7e2a0a7685abbdec9f0b9213ff06b"
+      "sha": "6581a67f9c45b8d756d4b4ec1fc8e1c73f56c9df"
     },
     {
       "platform": "python",
@@ -769,13 +769,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "8b02e5da0bba28a1b07f66ef46d9ff2b59f04500"
+      "sha": "a33486aa57ac216a810c5a0d623b8200f8e22476"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "f3b91b05101ff7084ba877daf6e3acbf65e3aadb"
+      "sha": "364bd0cbccdfcb8b7e006791daec11e6a5f98c9b"
     },
     {
       "platform": "swift",
@@ -793,13 +793,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
-      "sha": "fe64057284098e3ca1941c800358c25f13a60aa3"
+      "sha": "b1fd936878f750483754902a0d446034bf9acfb9"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
-      "sha": "2d87a366e3a4b4d97844659c41ea3c67d9cbe39f"
+      "sha": "fbc10c6fa24e2bd83c3f756defcd2f7c39e3a64d"
     }
   ]
 }
