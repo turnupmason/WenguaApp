@@ -406,17 +406,31 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             if hit:auxTexts.append(f"{name}在{label(p)}宫，也见{hit}，作为旁证。")
             else:auxTexts.append(f"{name}在{label(p)}宫，与主位分开参看。")
     auxFull="".join(auxTexts)
-    def selected_stem_image(stem,power):
+    # Two actual branches may map to different 200-grid stages.
+    # Never fabricate a single consolidated source tier.
+    def stem_branch_facts(stem,p,stages):
+        if not stages:raise ValueError("Missing original branch-stage facts")
+        facts=[]
+        for stage in stages:
+            strength=source_strength("stem",stem,p,[stage])
+            if _tier(strength)==0:raise ValueError("Unmapped real 200-grid stem row")
+            facts.append((stage["branch"]+stage["stage"],strength))
+        return facts
+    def selected_stem_image(stem,power,stages):
         candidates=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
         original=next((x for x in candidates if _matched(x,leadSites)),
                       candidates[0] if candidates else "无已核实的细部候选")
         selected="脏腑泛象" if original=="脏（笼统）" else original
-        strength=("此象突出" if _tier(power)>=4 else
-                  "可作为本宫病象旁证" if _tier(power)==3 else
-                  "此象偏弱，不单独定病" if _tier(power)>0 else
-                  "源力待核，不作突出判断")
-        return (f"{selected}（势{power}，{strength}）" if _tier(power)>0
-                else f"{selected}（{strength}）")
+        facts=stem_branch_facts(stem,illness,stages)
+        distinct={v for _,v in facts}
+        if _tier(power)>0:powerWords="力量"+power
+        elif len(distinct)==1:powerWords="两支同为"+facts[0][1]
+        else:powerWords="分支力量"+"、".join(branch+"为"+v for branch,v in facts)
+        effect=("这一干象较为突出" if
+                _tier(power)>=4 or all(_tier(v)>=4 for _,v in facts) else
+                "此干象偏弱" if all(_tier(v)<=2 for _,v in facts) else
+                "此干象仍须与病宫其他符号互证")
+        return selected+"，"+powerWords+"，"+effect
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
@@ -435,7 +449,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             reading="两干相助，取有缓解条件之象"
         else:
             reading="两干有相助之象" if nature=="吉" else "两干有牵制之象"
-        return f"{name}（{nature}格，{reading}）"
+        return f"{name}，{nature}格，{reading}"
     orderedFormations=[]
     mainMeaning=formation_meaning(sky,illness["earthStem"])
     if mainMeaning:orderedFormations.append(
@@ -445,10 +459,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         hostedMeaning=formation_meaning(bird,centre["earthStem"])
         if hostedMeaning:orderedFormations.append(
             f"天禽携{bird}加寄宫地干{centre['earthStem']}为"+hostedMeaning)
-    skyText=f"天盘{sky}取{selected_stem_image(sky,skyPower)}"
-    earthText=f"地盘{illness['earthStem']}取{selected_stem_image(illness['earthStem'],earthPower)}"
-    birdText=(f"；同宫天禽星势{source_strength('star','天禽星',illness)}，"
-              f"独立携{bird}取{selected_stem_image(bird,birdStemPower)}"
+    skyText=f"天盘{sky}主{selected_stem_image(sky,skyPower,next(x['stages'] for x in illness['heavenStars'] if x['star']=='天芮星'))}"
+    earthText=f"地盘{illness['earthStem']}主{selected_stem_image(illness['earthStem'],earthPower,illness['earthStages'])}"
+    birdText=(f"；同宫天禽星力量{source_strength('star','天禽星',illness)}，"
+              f"所携{bird}主{selected_stem_image(bird,birdStemPower,next(x['stages'] for x in illness['heavenStars'] if x['star']=='天禽星'))}"
               if bird else "")
     formsFull=skyText+"；"+earthText+birdText+"。天地格："+"；".join(orderedFormations)+"。"
     danger=[]
@@ -496,19 +510,24 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif doorRel=="宫克符号":
         doorText=f"{door}受{label(illness)}宫所克，门象受制，但不是门迫"
     else:doorText=""
-    starDoorGodFull=(f"天芮星势{illnessPower}，病象以本宫为主；"
-                     f"{door}势{doorPower}，古门象见{original_clue('八门病象',door)}；"
-                     f"{deity}势{deityPower}，古神象见{deityText}。")
+    doorClue=original_clue("八门病象",door)
+    starDoorGodFull=(f"天芮星力量{illnessPower}，以它的实际落宫定主要位置；"
+                     f"{door}力量{doorPower}，旧籍取{doorClue}，"
+                     +("门象较突出" if _tier(doorPower)>=4 else "门象只作旁证")
+                     +f"；{deity}力量{deityPower}，旧籍取{deityText}，"
+                     +("神象也较明显。" if _tier(deityPower)>=4
+                       else "神象须配合其它证据。"))
     if doorText:danger.append(doorText)
     dangerFull=starDoorGodFull+(
         "本宫条件："+"；".join(danger)+"。" if danger else "")
     ending="。"
     originalFocus=(lead if not trauma and _matched(lead,originalSites)
                    else "、".join(originalSites[:1]))
-    locationFull=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}；"
-                  "此次明确涉及伤损，另从伤门实宫优先取位。"
-                  if trauma else
-                  f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象指{originalFocus}。")
+    originalLocation=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象先指{originalFocus}；"
+                      "此次确有伤损，另从伤门实际落宫优先核位。"
+                      if trauma else
+                      f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象先指{originalFocus}。")
+    locationFull="\n".join(x for x in (originalLocation,starDoorGodFull,formsFull,dangerFull) if x)
     # Never convert a left lung into a right-sided organ to sound concise.
     if lead=="肝胆":focusRegion="右上腹肝胆一带"
     elif lead=="左肩":focusRegion="左肩一带"
@@ -521,14 +540,31 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif lead in ("外阴","下部"):focusRegion="下身会阴一带"
     elif lead=="左肺":focusRegion="左侧胸部"
     else:focusRegion=lead
+    bodyEvidence=[]
+    earthSite=next((x for x in earthSites if _matched(x,leadSites)),None)
+    skySite=next((x for x in skySites if _matched(x,leadSites)),None)
+    if earthSite and _tier(earthPower)>=4:
+        bodyEvidence.append(f"地盘{illness['earthStem']}所指{earthSite}力量{earthPower}，与主病位同向，这一处更值得留意")
+    elif skySite and _tier(skyPower)>=4:
+        bodyEvidence.append(f"天盘{sky}所指{skySite}力量{skyPower}，与主病位相合")
+    if _tier(doorPower)>=4 and not trauma:
+        bodyEvidence.append(f"{door}力量{doorPower}，旧籍{doorClue}所指的"+
+                            ("筋脉牵扯" if door=="伤门" else "伴随征象")+"更显")
+    if _tier(deityPower)>=4 and not trauma:
+        bodyEvidence.append(f"{deity}力量{deityPower}，旧籍所指{deityText}可作伴随线索")
+    if "伏吟" in formation[0]:
+        bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
+    elif any("伏吟" in x for x in formation[1:]):
+        bodyEvidence.append("同宫天禽寄格见伏吟，传统取反复迟滞为旁象，仍按天禽实际力量衡量")
+    closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
-           focusRegion+ending+"这只是传统部位象意，需以实际检查核实。")
+           focusRegion+"。"+closing+"以上只是传统病位和症候象意，不能代替检查诊断。")
     values={
        "person":relationship,"palace":label(illness)+"宫","dun":"阴" if yin else "阳",
        "sector":sector,"focus_site":lead,"location_full":locationFull,"injury_full":injuryFull,
        "other_doors":doorsFull,"hour_site":hourFull,"actor_full":personFull,
-       "auxiliary_full":auxFull,"formation_full":formsFull,"danger_full":dangerFull,
+       "auxiliary_full":auxFull,"formation_full":"","danger_full":"",
        "final_site":final
     }
     sections=[]
@@ -543,7 +579,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v22_v16_evidence_restored_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v23_integrated_palace_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
