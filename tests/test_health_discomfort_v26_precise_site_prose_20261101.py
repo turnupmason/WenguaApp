@@ -12,4 +12,7 @@ class V26Wording(unittest.TestCase):
                 self.assertNotIn(invalid,code)
             for needed in ("另宫刑墓：","有伤痛或损伤之象","受压闭藏、不易显露之象","与主病位分开核对"):
                 self.assertIn(needed,code)
+            self.assertNotIn("只作一次位置证据",code)
+            self.assertNotIn("另宫只作病事参照",code)
+            self.assertIn('脏腑泛象',code)
 if __name__=="__main__":unittest.main()

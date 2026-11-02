@@ -392,7 +392,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif hourMatch:
         hourFull=f"时干{hourStem}落{label(hour)}宫，亦指{hourMatch}，与主位相互印证。"
     else:
-        hourFull=f"时干{hourStem}落{label(hour)}宫，另宫只作病事参照。"
+        hourFull=f"时干{hourStem}落{label(hour)}宫，与天芮分宫。"
     actorOverlap=next((s for s in source_location(patient) if _matched(s,leadSites)),None)
     if patient["id"]==ip and hour["id"]==ip and actorCarrier==hourCarrier:
         personFull=(f"{relationship}用神{actor['mainStem']}就是时干，二者同符同落"
@@ -400,7 +400,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif patient["id"]==ip:
         personFull=f"{relationship}用神{actor['mainStem']}在{label(illness)}宫，与天芮同宫。"
     elif patient["id"]==hour["id"] and actorCarrier==hourCarrier:
-        personFull=f"{relationship}用神{actor['mainStem']}与时干同符同在{label(patient)}宫，只作一次位置证据。"
+        personFull=f"{relationship}用神{actor['mainStem']}与时干同属一干，落{label(patient)}宫。"
     elif actorOverlap:
         personFull=(f"{relationship}用神{actor['mainStem']}在{label(patient)}宫，"
                     f"另见{actorOverlap}，与主位相合。")
@@ -477,7 +477,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             if key not in recorded:
                 recorded.add(key)
                 sites=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
-                site=sites[0] if sites else "相应部位"
+                site=("脏腑泛象" if sites and sites[0]=="脏（笼统）" else
+                      sites[0] if sites else "相应部位")
                 meaning=("伤痛损伤兼有隐伏之象" if len(signs)==2 else
                          "伤痛或损伤之象" if "六仪击刑" in signs else
                          "受压闭藏、不易显露之象")
@@ -613,7 +614,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         first=crossEvents[0]
         p=palaces[first[1]]
         sites=_parts("/".join(stems[first[2]]["qimen_secret_vol13"]))
-        site=sites[0] if sites else "相应部位"
+        site=("脏腑泛象" if sites and sites[0]=="脏（笼统）" else
+                      sites[0] if sites else "相应部位")
         signs=flags(first[2],p)
         summary=("伤痛损伤兼隐伏" if len(signs)==2 else
                  "伤痛或损伤" if "六仪击刑" in signs else "闭藏不显")

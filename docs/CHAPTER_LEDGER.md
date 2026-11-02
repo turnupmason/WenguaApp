@@ -1601,3 +1601,6 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 ### 2026-11-01 · V26 新提交测试门槛修复与失败留档
 - V26源码SHA c425bc345e6a85cea21f132c89bb5228fb478ef8 的 CI #41380198105、Xcode #41380198099 在实际编译前失败：`tests/test_health_discomfort_v19_full_sequence_20261101.py:8` 仍断言V24 schema，与实际发布候选V26 schema不相等；对该测试及 Important 镜像只更新版本断言，不改源200/81、V8和失败案。两次失败真实链接保留，不算Xcode运行过。
 - 同SHA V8关系图专项 #41380198072 成功，V7.7独立宫位专项 #41380198145 成功；旧V7.4案例审计 #41380198149 因独立断言失败，尚未归因为V26，不能伪称全绿。新提交后重新核实真正Xcode/Swift Python-parity/bundle。
+
+### 2026-11-01 · V26 真Swift随机盘失败复现、双语言文本修复
+- #41380423349 真Xcode编译及bundle通过，但随机父亲盘结论出现原书「脏（笼统）」导致guard失败，失败留档；改Python与Swift本宫、跨宫占位文本为“脏腑泛象”，同时删除“只作一次位置证据”“另宫只作病事参照”。仅成文出口调整，原200、81、V8冻结、原书不改，待新SHA真正Xcode与parity验收。见 `docs/HEALTH_DISCOMFORT_V26_PRECISE_SITE_PROSE_AUDIT_20261101.md`。

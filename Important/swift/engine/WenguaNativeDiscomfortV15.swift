@@ -634,7 +634,7 @@ enum WenguaNativeDiscomfortV15 {
         } else if let hit=hourMatch {
             hourFull="时干\(hourStem)落\(label(hourPalace))宫，亦指\(hit)，与主位相互印证。"
         } else {
-            hourFull="时干\(hourStem)落\(label(hourPalace))宫，另宫只作病事参照。"
+            hourFull="时干\(hourStem)落\(label(hourPalace))宫，与天芮分宫。"
         }
         let actorSiteHit=sourceLocation(patientPalace).first(where:{
             matched($0,leadSites)
@@ -646,7 +646,7 @@ enum WenguaNativeDiscomfortV15 {
         } else if patientPalace.id==illness.id {
             personFull="\(relationship)用神\(actor.mainStem)在\(label(illness))宫，与天芮同宫。"
         } else if patientPalace.id==hourPalace.id && actorCarrier==hourCarrier {
-            personFull="\(relationship)用神\(actor.mainStem)与时干同符同在\(label(patientPalace))宫，只作一次位置证据。"
+            personFull="\(relationship)用神\(actor.mainStem)与时干同属一干，落\(label(patientPalace))宫。"
         } else if let hit=actorSiteHit {
             personFull="\(relationship)用神\(actor.mainStem)在\(label(patientPalace))宫，另见\(hit)，与主位相合。"
         } else {
@@ -751,8 +751,9 @@ enum WenguaNativeDiscomfortV15 {
             if !signs.isEmpty {
                 let key=stem+"/"+signs.joined(separator:"、")
                 if recorded.insert(key).inserted {
-                    let site=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
+                    let rawSite=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
                         .joined(separator:"/")).first ?? "相应部位"
+                    let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
                     let meaning=signs.count==2 ? "伤痛损伤兼有隐伏之象" :
                         signs.contains("六仪击刑") ? "伤痛或损伤之象" :
                         "受压闭藏、不易显露之象"
@@ -907,8 +908,9 @@ enum WenguaNativeDiscomfortV15 {
         }
         if let first=crossEvents.first,
            let p=chart.palaces.first(where:{$0.id==first.1}) {
-            let site=parts((mapping[first.2]?["qimen_secret_vol13"] ?? [])
+            let rawSite=parts((mapping[first.2]?["qimen_secret_vol13"] ?? [])
                 .joined(separator:"/")).first ?? "相应部位"
+            let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
             let signs=badSigns(first.2,p)
             let summary=signs.count==2 ? "伤痛损伤兼隐伏" :
                 signs.contains("六仪击刑") ? "伤痛或损伤" : "闭藏不显"

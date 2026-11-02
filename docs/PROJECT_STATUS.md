@@ -3043,3 +3043,6 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-11-01 · V26 真Swift随机盘失败复现、双语言文本修复
+- #41380423349 真Xcode编译及bundle通过，但随机父亲盘结论出现原书「脏（笼统）」导致guard失败，失败留档；改Python与Swift本宫、跨宫占位文本为“脏腑泛象”，同时删除“只作一次位置证据”“另宫只作病事参照”。仅成文出口调整，原200、81、V8冻结、原书不改，待新SHA真正Xcode与parity验收。见 `docs/HEALTH_DISCOMFORT_V26_PRECISE_SITE_PROSE_AUDIT_20261101.md`。

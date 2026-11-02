@@ -8,3 +8,7 @@ V26分别修复 Python `src/wengua/health_discomfort_v19_parity.py` 和离线 Sw
 ### 2026-11-01 · V26 新提交测试门槛修复与失败留档
 - V26源码SHA c425bc345e6a85cea21f132c89bb5228fb478ef8 的 CI #41380198105、Xcode #41380198099 在实际编译前失败：`tests/test_health_discomfort_v19_full_sequence_20261101.py:8` 仍断言V24 schema，与实际发布候选V26 schema不相等；对该测试及 Important 镜像只更新版本断言，不改源200/81、V8和失败案。两次失败真实链接保留，不算Xcode运行过。
 - 同SHA V8关系图专项 #41380198072 成功，V7.7独立宫位专项 #41380198145 成功；旧V7.4案例审计 #41380198149 因独立断言失败，尚未归因为V26，不能伪称全绿。新提交后重新核实真正Xcode/Swift Python-parity/bundle。
+
+### V26 真机模拟构建后随机盘回归修复（2026-11-01）
+- SHA 3287450 的 macOS Xcode Action #41380423349：XcodeGen、实际iOS Simulator编译与离线资源检查通过，但其真实随机Swift盘发现“癸主脏（笼统）”通过跨宫最终结论漏出，导致禁括号 guard 崩溃；Xcode整体标FAIL，必须保留。
+- Python/Swift 客户本宫刑墓与最终跨宫摘要均规范化此原书笼统占位为“脏腑泛象”，不修改源资料；同时去掉时干和同符角色的内部“只作一次位置证据”“另宫只作病事参照”，不改变本宫主次、真实源200、81格与冻结V8轻重。真实新CI/Xcode/Swift parity 必须新SHA另验。
