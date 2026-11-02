@@ -809,7 +809,11 @@ enum WenguaNativeDiscomfortV15 {
                 let rawSite=sourceSites.first ?? "身体相应部位"
                 let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
                 let power=try stemPower(stem,p)
-                guard tier(power)>0 else {throw WenguaNativeReadingError.missingPhrases}
+                if tier(power)==0 {
+                    let diagnostic="V24_SOURCE_UNRESOLVED stem=\(stem) palace=\(p.id) sky=\(p.heavenStars.map{$0.carriedStem}.joined(separator:",")) earth=\(p.earthStem) stages=\(p.heavenStars.first(where:{$0.carriedStem==stem})?.stages.map{$0.branch+$0.stage}.joined(separator:",") ?? p.earthStages.map{$0.branch+$0.stage}.joined(separator:","))\n"
+                    FileHandle.standardError.write(Data(diagnostic.utf8))
+                    throw WenguaNativeReadingError.missingPhrases
+                }
                 let rel=palaceRelation(p)
                 let relationText:String
                 let priority:Int
