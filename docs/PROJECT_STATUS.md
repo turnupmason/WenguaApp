@@ -3245,3 +3245,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
+
+
+### 当前封存轻重回归实测 · run 41479119926
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f8bae8bc58e9166eeb4ae5d460feb24761d537c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479119926_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
