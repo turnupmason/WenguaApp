@@ -1,13 +1,5 @@
 name: V27 Seal Two Historical Health Readings
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v27.py'
-      - 'scripts/run_two_historical_health_v27.py'
-      - 'tests/test_health_severity_five_not_encounter_v27.py'
-      - 'scripts/build_health_v27_full_archive.py'
-      - '.github/workflows/build_health_severity_v27.yml'
   workflow_dispatch:
 permissions:
   contents: write

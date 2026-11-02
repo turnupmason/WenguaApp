@@ -74,3 +74,5 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 - .github/workflows/health_v29.yml
 
 本地最终完整测试：835 tests，41 failures、11 errors、3 skipped，与清退前相同52条历史失败/错误标识，新增封存4项均通过。迁移中曾有一份Important镜像尚未同步导致42 failures，已同步并复跑恢复41；历史算法断言不改、不隐藏。修复后旧V20/V21路径回归通过。当前CI名称也明确显示V9/V11与V27，现役parity不再向交接文件反复追加过时V10.1模板标识或未展开的run变量。
+
+旧任务退役续审：共38项统一为单一workflow_dispatch。首提交旧V4.2工作流发生重复workflow_dispatch键的GitHub配置失败 #41452840714，现已修复并用拒绝重复键的YAML loader核查全目录；补退役V3.9.1及历史V2.7自动归档。该失败保留，不涉及封存模板或规则改变。

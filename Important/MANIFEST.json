@@ -7,7 +7,7 @@
       "platform": "python",
       "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
       "snapshot": "Important/python/ci/health_v78_conditional_palace_native_parity.yml",
-      "sha": "07ee94c5885dc34146b6bfedca435c7cbf3afd7d"
+      "sha": "53ad39c3f1f5fa8b83271503fe666e737ac82573"
     },
     {
       "platform": "python",
@@ -349,7 +349,7 @@
       "platform": "swift",
       "canonical": ".github/workflows/health_v78_conditional_palace_native_parity.yml",
       "snapshot": "Important/swift/ci/health_v78_conditional_palace_native_parity.yml",
-      "sha": "07ee94c5885dc34146b6bfedca435c7cbf3afd7d"
+      "sha": "53ad39c3f1f5fa8b83271503fe666e737ac82573"
     },
     {
       "platform": "swift",

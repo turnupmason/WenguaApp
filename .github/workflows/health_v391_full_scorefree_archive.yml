@@ -1,11 +1,5 @@
 name: V3.9.1 Full Score-Free Research Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_health_v391_full_scorefree_archive.py'
-      - 'schema/migrations/071_health_v391_active_source12_without_scores.sql'
-      - '.github/workflows/health_v391_full_scorefree_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

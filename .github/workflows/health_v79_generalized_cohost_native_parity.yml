@@ -1,6 +1,5 @@
 name: Health V7.9 generalized independent cohost Python Swift parity
 on:
-  # Frozen V7.9 release gate: manual only after V8.0 all-relations change.
   workflow_dispatch:
 permissions:
   contents: read

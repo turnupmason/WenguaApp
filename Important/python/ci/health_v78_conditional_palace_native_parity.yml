@@ -1,6 +1,5 @@
 name: Health V7.8 Conditional Extra Illness Aid Native Python Parity
 on:
-  # Historical V7.8 reference workflow: manual only; never auto-archive later scoring versions.
   workflow_dispatch:
 permissions:
   contents: write

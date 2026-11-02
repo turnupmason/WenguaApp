@@ -1,11 +1,5 @@
 name: V3.9.1 Public Auto-Cast No Scores
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_text_pipeline.py'
-      - 'tests/test_health_v391_public_auto_cast.py'
-      - '.github/workflows/health_v391_public_api_no_scores.yml'
   workflow_dispatch:
 jobs:
   public_api_regression:
