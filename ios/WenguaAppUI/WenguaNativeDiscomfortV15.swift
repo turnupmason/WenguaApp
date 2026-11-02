@@ -777,8 +777,8 @@ enum WenguaNativeDiscomfortV15 {
             "\(deity)力量\(deityPower)，旧籍取\(deityText)，"+(tier(deityPower)>=4 ? "神象也较明显。" : "神象须配合其它证据。")
         ].joined()
         if !doorText.isEmpty {danger.append(doorText)}
-        let dangerFull=starDoorGodFull+(danger.isEmpty ? "" :
-            "本宫条件："+danger.joined(separator:"；")+"。")
+        let dangerFull=danger.isEmpty ? "" :
+            "本宫条件："+danger.joined(separator:"；")+"。"
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
