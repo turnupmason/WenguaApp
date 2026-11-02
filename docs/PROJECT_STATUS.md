@@ -3199,3 +3199,7 @@ README已写从已有仓库终端进入、pull、XcodeGen生成工程、选择We
 
 ### 当前封存轻重回归实测 · run 41468305325
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码251d977f32821f16448a287b9dc5ad55d5c88d51。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41468305325_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41470201781
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e8e52ad56635ccaea392ec1552d55dc1230169d0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41470201781_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
