@@ -20,7 +20,7 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 - **当前模板目录只保留两份正式模板。** 23 份旧模板、草稿及固定样例已清出原位，带原始 SHA [归档保留](archives/retired_health_templates_20261102/INDEX.json)，不参与手机打包或运行回退；38 项旧版自动构建/预览改为手动审计。
 - 婚姻、工作、求财、出行、升学、刑事、失物等领域尚未完成正式验收，仍标开发中，不能套用疾病模板。
 
-工程补丁 **p6** 修正准备页、页内填写、普通／选吉日时间边界、五列日期滚轮、宫位对齐与解读分组，详见[本轮界面与验收记录](docs/IOS_SETUP_PALACE_UI_20261102.md)。本轮完整原生与Xcode验收结果待实际完成后追加。此前 **p5** 整理领域内普通预定时刻／选吉日接口、共用等级基础、专业解盘分项排版和有效输入，详见[本轮接口与排版记录](docs/IOS_DOMAIN_LAYOUT_INPUTS_20261102.md)（本轮真实原生、Xcode零警告及App包资源验收通过）。此前p4记录见[手动事项时辰](docs/IOS_MANUAL_EVENT_TIME_20261102.md)。此前 **p1** 纠正地盘审计字段；**p2** 接入奇门论疾首页及统一名称；**p3** 将首页收为直接病位一句话、增加30秒小和尚敲木鱼与诵念文字动画，并清理Swift警告。两份模板和数值规则未变，旧封存清单已原样保留。[首页修复记录](docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md) · [简明摘要、动画与警告清理](docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md)（正式Xcode与Swift零警告实测通过）。规则疑点和真机待验项见[本轮规则复核](docs/HEALTH_RULE_QUESTIONS_AUDIT_20261102.md)。
+工程补丁 **p6** 修正准备页、页内填写、普通／选吉日时间边界、五列日期滚轮、宫位对齐与解读分组，详见[本轮界面与验收记录](docs/IOS_SETUP_PALACE_UI_20261102.md)。本轮855项完整测试、真实原生、Xcode零Swift警告及App包验收均通过。此前 **p5** 整理领域内普通预定时刻／选吉日接口、共用等级基础、专业解盘分项排版和有效输入，详见[本轮接口与排版记录](docs/IOS_DOMAIN_LAYOUT_INPUTS_20261102.md)（本轮真实原生、Xcode零警告及App包资源验收通过）。此前p4记录见[手动事项时辰](docs/IOS_MANUAL_EVENT_TIME_20261102.md)。此前 **p1** 纠正地盘审计字段；**p2** 接入奇门论疾首页及统一名称；**p3** 将首页收为直接病位一句话、增加30秒小和尚敲木鱼与诵念文字动画，并清理Swift警告。两份模板和数值规则未变，旧封存清单已原样保留。[首页修复记录](docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md) · [简明摘要、动画与警告清理](docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md)（正式Xcode与Swift零警告实测通过）。规则疑点和真机待验项见[本轮规则复核](docs/HEALTH_RULE_QUESTIONS_AUDIT_20261102.md)。
 
 ## 手机流程与正式接线
 
@@ -51,16 +51,18 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 | 验收 | 实测结果 |
 |---|---|
-| 正式 macOS Xcode Simulator 编译、Swift源码零警告、实际包内资源 SHA/白名单、两个 Bundle 路由 4 次调用、Python/Swift 完整中文逐字、六伤损条件、15领域接口/原文分项排版/同盘等级及 1080 数据检查 | [#41494696931 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494696931) |
-| 独立 iOS 原生历法、断词回归及真实 App 编译 | [#41494641926 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641926) |
-| 封存轻重 Python/Swift 逐字回归、奇门论疾真实输出的首页摘要运行检查 | [#41494641874 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641874) |
-| 工程补丁 p5 的 Python 3.11/3.12 主 CI | [#41494641830 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641830) |
+| 正式 macOS Xcode Simulator 编译、零Swift源警告、包内资源SHA／白名单、两主题4次Bundle路由、Python／Swift逐字、六伤损及1080源盘、新五列时间与分组验收 | [#41502545254 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41502545254) |
+| 独立iOS原生历法、断词回归及真实App编译（全部6 jobs） | [#41502545252 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41502545252) |
+| 封存轻重Python／Swift逐字回归与奇门论疾首屏实际运行 | [#41503297213 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41503297213) |
+| 工程补丁p6的Python 3.11／3.12主CI | [#41502544972 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41502544972) |
 
-[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。上述均为p5生产源码 `0c8a668d` 的实际验收；独立iOS构建为该run第2次尝试。后续只补充记录，生产源pin保持相同。最新分支状态见页首 CI。实测包含15领域时刻/预留选吉日边界、共用净分等级、原文分项重组、真实两盘Python/Swift全文、DST、旧回执和历史兼容。动画已随App编译通过，滚轮与动画的人工视觉UI验收仍须在模拟器/真机操作。
+[本轮Xcode原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md)对应生产源`d594d5d6`；独立原生复验起点`5be81c80`只增加历史文档，生产源／资源pin完全相同。[结果与SHA总表](docs/audits/ios_setup_palace_ui_20261102/final_ci_results.json)记录855项本地完整回归（0失败／0错误／3原有skip）、真实时间模式双向拒绝、闰日／DST、12组伤损分项原文重组、旧回执／历史兼容。中途自动归档Git冲突的两次失败日志保留，独立复跑计算与归档均通过；未用旧结果替代新版验收。此前p5验收与原始日志见[历史记录](docs/IOS_DOMAIN_LAYOUT_INPUTS_20261102.md)。
+
+本轮完成编译和接口验收，五列滚轮、动画与排版仍须在模拟器／真机操作查看，未声称已完成人工像素视觉或全套XCUITest验收。
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 
-**最新全库Python测试：**849项，0 failures、0 errors、3项原有skip。原52条失败/错误已按证据逐项清账；最后2项手动时辰入口现已实现并通过，未删测试或增加skip。[本轮实际日志与SHA](docs/audits/ios_domain_ui_p5_20261102/local_results.json) · [旧失败逐项清账](docs/audits/health_cleanup_20261102/README.md)。全库程序通过不代表各领域择时规则已验收或现实预测有效；旧规则/配置/迁移/归档失败记录均保留。
+**最新全库Python测试：**855项，0 failures、0 errors、3项原有skip。原52条失败/错误已按证据逐项清账；最后2项手动时辰入口现已实现并通过，未删测试或增加skip。[本轮实际日志与SHA](docs/audits/ios_setup_palace_ui_20261102/local_results.json) · [旧失败逐项清账](docs/audits/health_cleanup_20261102/README.md)。全库程序通过不代表各领域择时规则已验收或现实预测有效；旧规则/配置/迁移/归档失败记录均保留。
 
 ## 在 Mac 用 Command＋R 打开并测试 UI
 
@@ -106,14 +108,15 @@ cd WenguaApp
 
 | 顺序 | 操作 | 检查内容 |
 |---|---|---|
-| 1 | 首页 → 领域 → 细项 | 页面完整、按钮可点；未验收领域仍标开发中 |
-| 2 | 病情轻重 → 人物与实际条件 → 静心30秒 → 确认 | 小和尚敲木鱼与诵念文字随静心播放；未满30秒不能起局；确认后生成真实四柱、九宫和断词 |
+| 1 | 首页 → 领域 → 细项 → 准备页 | 方向与静心说明清楚；不自动弹表单，点击填写才进入 |
+| 2 | 病情轻重 → 填写人物与实际条件 → 静心30秒 → 确认 | 小和尚敲木鱼与诵念文字随静心播放；未满30秒不能起局；确认后生成真实四柱、九宫和断词 |
 | 3 | 点九宫与切换专业解卦／专业解盘 | 字是否清楚、详情能打开、完整断词可滚动阅读，无按钮遮挡 |
 | 4 | 奇门论疾 | 未选伤损情况应阻断；首页只显示真实主位一句话，伤损直接说“先看某处”，完整旁证留专业解盘 |
-| 5 | 关闭再打开 App，再查看相同测试事项 | 本地记录保留；已完成的同一事项受15天限制 |
-| 6 | 换小屏／大屏、深浅色和大字体，断网再运行 | 布局不截断，两个已验收健康主题能离线起盘和读取资源 |
+| 5 | 领域内选吉日 → 选择时辰 | 只选未来时间，五列年／月／日／时／分；确认提交、返回不提交草稿，真实排盘且评级开发中 |
+| 6 | 关闭再打开 App，再查看相同测试事项 | 本地记录保留；已完成的同一事项受15天限制 |
+| 7 | 换小屏／大屏、深浅色和大字体，断网再运行 | 布局不截断，两个已验收健康主题能离线起盘和读取资源 |
 
-**当前边界：**已加入当前／预定时刻、中文滚轮和领域内选吉日预留项；“病愈应期”及旅游、婚礼、手术等专项择时吉凶评级仍开发中。⌘R 用于启动 App 后手动测试界面。⌘U 用于已配置测试 Target 的自动化测试，当前工程尚未接入整套 XCUITest，不能把编译成功当作全部按钮已测试。
+**当前边界：**普通问事仅当前时刻，领域内选吉日仅未来时刻，滚轮明确五列年月日时分；“病愈应期”及旅游、婚礼、手术等专项择时吉凶评级仍开发中。⌘R 用于启动 App 后手动测试界面。⌘U 用于已配置测试 Target 的自动化测试，当前工程尚未接入整套 XCUITest，不能把编译成功当作全部按钮已测试。
 
 ### 可选：终端一键启动模拟器
 
@@ -141,7 +144,7 @@ python3 -m unittest tests.test_frozen_health_release_20261102 -v
 python3 -m unittest tests.test_important_mirror_integrity_20261026 -v
 # 真实病位及六种伤损条件
 python3 -m unittest tests.test_health_discomfort_v27_ding_gods_hour_20261101 tests.test_health_discomfort_injury_gate_20261102 -v
-# 完整单测：最新849项0失败、0错误、3项原有skip，保留历史失败日志
+# 完整单测：最新855项0失败、0错误、3项原有skip，保留历史失败日志
 python3 -m unittest discover -s tests -v
 ```
 

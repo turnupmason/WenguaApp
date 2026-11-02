@@ -155,3 +155,10 @@ p4清单与6份测试原件/SHA归档，现行manifest明确p5：9个既有展�
 p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／时间／工程pin和新增准备页源，V9/V11、V27、Python数值与7份资源保持字节相同，Important镜像同步。完整回归首轮855项1条旧段落格式契约失败保留后迁移；最终全量及实际Swift／Xcode／bundle待执行结果追加，不拿p5旧通过充数。无删除原测试方法／新skip；无新增章节病例、签名真机或像素视觉验收。详见 docs/IOS_SETUP_PALACE_UI_20261102.md。
 
 本地最终完整回归855 tests：0 failures、0 errors、3既有skip；专项33项通过。原失败和最终原日志／SHA已存docs/audits/ios_setup_palace_ui_20261102/，未删除旧测试或新加skip。实际Swift与Xcode仍待本提交Actions执行。
+
+
+### 2026-11-02 · p6截图界面与独立时间模式最终验收完成
+生产源d594d5d6a0423b04bbafe11318357018286b80cc：正式Xcode #41502545254 success，完整iPhone Simulator App、零Swift源警告、实际包SHA／资源白名单、两主题4次Bundle路由、V27逐字／六伤损／1080源盘通过。PASS SETUP_UI实际执行15领域普通仅当前、15领域选吉日仅未来的双向拒绝、五列公历对应的闰日／DST缺口／重复时刻、两张真盘×六伤损分支的逐节原文／段落重组；同盘同人物健康Python／Swift全文逐字相等，旧分组、孤立回执及15天限制保留。原日志 docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md。
+同源独立iOS #41502545252 全部6 jobs success；主CI #41502544972 Python3.11／3.12 success。原生轻重／病位首页最终独立 #41503297213 success（5be81c80，仅历史文档后续变化，生产源码、资源、manifest与d594d5d6全部一致）。完整本地855 tests 0失败／0错误／3既有skip，专项33通过；旧测试与失败原日志／SHA保留，无删除测试或新增skip。结果总表 docs/audits/ios_setup_palace_ui_20261102/final_ci_results.json。
+中途原生 #41502544938 attempt1／2的全部计算与逐字步骤成功，但自动审计文档尾部rebase冲突使workflow实际failure；两次完整原日志保留。由最新main独立dispatch #41503297213后完整计算及归档均success，未覆盖旧失败。旧源／冗余正式 #41502335031／#41502344251／#41502555446、旧独立iOS #41502334854在确认剩余App任务尚queued后取消，按实际cancelled保留，不称通过。
+准备页先显示，按按钮进入页内表单；普通只当前、选吉日只未来；五列年／月／日／时／分，表单标题上置无重复；坤二刑墓overlay、四柱下置标签、方向栏、伤门／结论分组、宫位标题居中及角色放大均已编译接入。V9/V11、V27数学与模板及7份资源逐字未变。选吉日的专用吉凶评级／多候选筛选继续开发；当前只真实排盘。README及Important镜像同步。本轮无新原书章节／病例、签名真机、像素视觉手测或全套XCUITest；Mac须重新XcodeGen后⌘R查看实际界面。

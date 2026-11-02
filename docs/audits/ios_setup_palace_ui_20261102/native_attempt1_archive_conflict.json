@@ -1,0 +1,30 @@
+{
+  "run": 41502544938,
+  "attempt": 1,
+  "source": "d594d5d6a0423b04bbafe11318357018286b80cc",
+  "validation": "All calculation, Swift compilation and exact Python/Swift comparison steps succeeded.",
+  "workflow_failure": "Append-only documentation push failed when simultaneous workflow append commits caused a rebase conflict in AGENTS.md, PROJECT_STATUS.md and CHAPTER_LEDGER.md.",
+  "rerun": "Only failed power_pair_full_text_parity job requested; successful qimen_lunji_frontpage_runtime retained.",
+  "artifact_id": 13169032410,
+  "artifact_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41502544938/artifacts/13169032410",
+  "logs": [
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt1_archive_conflict.log.gz",
+      "sha256": "3b73ba2614370644d4d097e88c829c49450f50c358b16ff47f8e769a7387eaf2"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt1_full.log.gz",
+      "sha256": "becdc0a8bfac3a2b142b77aedf51d93a48354cbcc9f5e6f325afdd9b0881ffd4"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt2_archive_conflict.log.gz",
+      "sha256": "ba8ab4f50df61c6936a51f21eee0aab73c02ccf0017201ca01ed31e18375fcff"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt2_full.log.gz",
+      "sha256": "36849952df21711ac246dfbd0c5c3cbef9fbcda7936ca8c81e110731658bf569"
+    }
+  ],
+  "retry_attempt2": "Same validation passed; same append-only archive rebase conflict recurred against new documentation. Failed attempts retained; new standalone validation dispatched at current main 5be81c80.",
+  "final_standalone_run": 41503297213
+}

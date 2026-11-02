@@ -1,0 +1,71 @@
+{
+  "formal_xcode": {
+    "id": 41502545254,
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41502545254",
+    "head_sha": "d594d5d6a0423b04bbafe11318357018286b80cc",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "independent_ios": {
+    "id": 41502545252,
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41502545252",
+    "head_sha": "d594d5d6a0423b04bbafe11318357018286b80cc",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "native_parity": {
+    "id": 41503297213,
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41503297213",
+    "head_sha": "5be81c807d1d15a5d1a9485ed4d8b5176323cea3",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "source_main_ci": {
+    "id": 41502544972,
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41502544972",
+    "head_sha": "d594d5d6a0423b04bbafe11318357018286b80cc",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "production_source": "d594d5d6a0423b04bbafe11318357018286b80cc",
+  "frozen_manifest_sha256": "7a5fc3cdeac2448a0c32f3742affbf0e2cce5dcd9c799ae6b91046782e1e920b",
+  "resource_hashes_unchanged": 7,
+  "python_complete_suite": {
+    "tests": 855,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3,
+    "new_skips": 0
+  },
+  "formal_log_sha256": "b18e3e049d2bdfccca16e903e3b88189bfbf76e5a8b1837001bd370a3cd1a224",
+  "superseded_queued_runs": [
+    {
+      "id": 41502335031,
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 41502344251,
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 41502555446,
+      "status": "completed",
+      "conclusion": "cancelled"
+    },
+    {
+      "id": 41502334854,
+      "status": "completed",
+      "conclusion": "cancelled"
+    }
+  ],
+  "complete_tree_final_log": {
+    "path": "docs/audits/ios_setup_palace_ui_20261102/python_complete_tree_final.log.gz",
+    "sha256": "397cc9f78273000cd5bfc7607273484eeb2dab2218506d0b5cb8190d45ace3f9"
+  }
+}

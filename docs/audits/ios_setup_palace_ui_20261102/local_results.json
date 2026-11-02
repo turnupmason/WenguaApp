@@ -15,6 +15,30 @@
   },
   "logs": [
     {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/formal_xcode_complete.log.gz",
+      "sha256": "b18e3e049d2bdfccca16e903e3b88189bfbf76e5a8b1837001bd370a3cd1a224"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt1_archive_conflict.log.gz",
+      "sha256": "3b73ba2614370644d4d097e88c829c49450f50c358b16ff47f8e769a7387eaf2"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt1_full.log.gz",
+      "sha256": "becdc0a8bfac3a2b142b77aedf51d93a48354cbcc9f5e6f325afdd9b0881ffd4"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt2_archive_conflict.log.gz",
+      "sha256": "ba8ab4f50df61c6936a51f21eee0aab73c02ccf0017201ca01ed31e18375fcff"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/native_attempt2_full.log.gz",
+      "sha256": "36849952df21711ac246dfbd0c5c3cbef9fbcda7936ca8c81e110731658bf569"
+    },
+    {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/python_complete_tree_final.log.gz",
+      "sha256": "397cc9f78273000cd5bfc7607273484eeb2dab2218506d0b5cb8190d45ace3f9"
+    },
+    {
       "path": "docs/audits/ios_setup_palace_ui_20261102/python_full_final.log.gz",
       "sha256": "366524e24af137b338af2d64b88a6c9a2750ab32b77f98a64b5973a575b933c0"
     },
@@ -31,5 +55,12 @@
       "sha256": "d941df6071d3febd602a22e570b99c723c92aa307a1d2552e38b9c1ae00aca25"
     }
   ],
-  "final_clock_and_picker_titles_tests": 855
+  "final_clock_and_picker_titles_tests": 855,
+  "complete_tree_final": {
+    "tests": 855,
+    "failures": 0,
+    "errors": 0,
+    "skips": 3,
+    "log": "docs/audits/ios_setup_palace_ui_20261102/python_complete_tree_final.log.gz"
+  }
 }
