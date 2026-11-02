@@ -26,6 +26,14 @@ jobs:
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
+      - name: Run V23 exhaustive Python stem branch and full site rule regressions
+        run: |
+          set -euo pipefail
+          python3 -m unittest \
+            tests.test_health_discomfort_v23_dual_branch_integrated_20261101 \
+            tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
+            tests.test_health_discomfort_power_v17_20261101 \
+            tests.test_health_discomfort_v19_full_sequence_20261101
       - name: Install XcodeGen and generate actual SwiftUI app project
         run: |
           set -euo pipefail
