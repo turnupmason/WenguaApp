@@ -4,6 +4,8 @@ Runs on macOS against the just-built actual App bundle. No replacement rules
 or hand-selected good charts: both input clocks are the retained V27 regressions.
 """
 import argparse
+import json
+import sys
 from pathlib import Path
 import subprocess
 import tempfile
@@ -76,6 +78,7 @@ for (index,input) in inputs.enumerated() {
     records.append(LocalNativeCase(topicID:original.topicID,issueFingerprint:"HASHED_GROUP_NO_RAW_QUESTION",
         relation:person,optionalBirthYear:nil,course:nil,completedAt:confirmed,chart:chart,reading:selected))
     print("EVENT_TIME_SAME_CHART_GRADE_PASS \(person) \(chart.iso) \(grade)")
+    print("EVENT_TIME_HEALTH_JSON="+String(data:try JSONEncoder().encode(health),encoding:.utf8)!)
 }
 let suite="WenguaTimeAcceptance-"+UUID().uuidString
 let defaults=UserDefaults(suiteName:suite)!
@@ -112,7 +115,25 @@ print("PASS MANUAL_EVENT_TIME current vs chosen minute; actual two-clock calenda
         binary=folder/'event_time'
         subprocess.run(['swiftc','-warnings-as-errors','-D','WENGUA_BODY_SITE',
             *[str(UI/(name+'.swift')) for name in names],str(main),'-o',str(binary)],check=True)
-        subprocess.run([str(binary),str(native_jsonl),str(bundle)],check=True)
+        executed=subprocess.run([str(binary),str(native_jsonl),str(bundle)],check=True,capture_output=True,text=True)
+        sys.path.insert(0,str(ROOT))
+        from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+        profiles=json.loads((ROOT/'data/knowledge/phrase_library/health_v20/actor_profiles.json').read_text())['profiles']
+        native=[]
+        for line in executed.stdout.splitlines():
+            if line.startswith('EVENT_TIME_HEALTH_JSON='):
+                native.append(json.loads(line.split('=',1)[1]))
+            else:
+                print(line)
+        assert len(native)>=2
+        for reading in native:
+            person=reading['relationship']
+            relation=next(row['id'] for row in profiles if row['label']==person)
+            expected=auto_cast_health_review_text(iso=reading['iso'],timezone_name='America/New_York',
+                inquiry={'intent':'severity','relationship':relation,'consultation_context':'direct_proxy'})
+            assert expected['sections']==reading['sections'], (person,reading['iso'],'manual same-chart health full wording mismatch')
+            assert {key:value['palace'] for key,value in expected['full_health_role_strength_network']['nodes'].items()}==reading['rolePalaces']
+            print('PASS MANUAL_EVENT_TIME_PYTHON_SWIFT_BYTE_EXACT',person,reading['iso'])
 
 if __name__=='__main__':
     p=argparse.ArgumentParser()

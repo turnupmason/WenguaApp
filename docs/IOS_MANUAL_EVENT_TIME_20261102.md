@@ -35,3 +35,6 @@
 
 
 p4本地完整复核：846 tests，0 failures、0 errors、3原有skip；专项32项全部通过。原来2个手动入口失败现已由真正时间入口接入解决，不删除它们，旧失败记录及修改前测试保留。原日志 docs/audits/ios_manual_event_time_20261102/python_unittest_full.log.gz 与local_results.json可核SHA；新Swift/Xcode仍待实际Actions结果，不预报通过。
+
+
+p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。

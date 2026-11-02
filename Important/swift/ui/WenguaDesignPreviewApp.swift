@@ -566,6 +566,12 @@ struct ProfessionalChartScreen: View {
         .lineLimit(1)
         .minimumScaleFactor(0.75)
     }
+    private func clockFactsLine(_ chart: WenguaNativeChart) -> String {
+        let voidText=chart.voidBranches.joined(separator:"、")
+        let horseText="\(chart.hourHorse)（\(chart.hourHorsePalace)宫）"
+        return "时家转盘 · \(chart.timezone) · 旬空：\(voidText) · 时马：\(horseText)"
+    }
+
     private func chartHeader(_ chart: WenguaNativeChart) -> some View {
         VStack(alignment:.leading,spacing:15) {
             HStack {
@@ -611,9 +617,7 @@ struct ProfessionalChartScreen: View {
                     factLabel("值符",chart.valueStar,kind:"star")
                     factLabel("值使",chart.valueDoor,kind:"door")
                 }
-                Text("时家转盘 · " + chart.timezone + " · 旬空：" +
-                     chart.voidBranches.joined(separator:"、") + " · 时马：" +
-                     chart.hourHorse + "（" + String(chart.hourHorsePalace) + "宫）")
+                Text(clockFactsLine(chart))
                     .font(.system(size:12))
                     .foregroundStyle(QStyle.secondary)
                     .fixedSize(horizontal:false,vertical:true)
