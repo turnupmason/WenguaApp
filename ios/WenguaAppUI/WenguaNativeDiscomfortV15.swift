@@ -909,8 +909,10 @@ enum WenguaNativeDiscomfortV15 {
                 "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证" :
                 "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
         }
-        if let first=crossEvents.first {
-            bodyEvidence.append("另有\(first.3)，只是跨宫需要核实的传统线索，不能据此断言对应器官已经受损")
+        if let first=crossEvents.first,
+           let p=chart.palaces.first(where:{$0.id==first.1}) {
+            let signs=badSigns(first.2,p).joined(separator:"、")
+            bodyEvidence.append("另外\(label(p))宫\(first.2)出现\(signs)，\(first.4)，传统上提示另宫牵连，不足以证明病因")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
