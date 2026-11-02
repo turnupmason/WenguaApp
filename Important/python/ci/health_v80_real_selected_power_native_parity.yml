@@ -1,0 +1,449 @@
+name: Sealed health V9 scoring V11 template Python native parity
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/health_v80_real_selected_power_native_parity.yml'
+      - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
+      - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
+      - 'src/wengua/health_quant_overlay_vnext.py'
+      - 'tests/test_six_jia_earth_tomb_cohost_parity_20261029.py'
+      - 'src/wengua/health_role_majority_vnext.py'
+      - 'src/wengua/domain_selected_energy_vnext.py'
+      - 'src/wengua/health_reading_template_vnext.py'
+      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
+      - 'ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift'
+      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'tests/test_health_v79_independent_cohost_matrix_20261027.py'
+      - 'tests/test_health_20261028_1344_two_person_audit.py'
+      - 'tests/test_health_v102_summary_20261028.py'
+      - 'scripts/ios_v80_same_clock_neutral_parity_20261028.py'
+      - 'scripts/ios_vnext_three_random_20261026.py'
+      - 'Important/MANIFEST.json'
+      - 'ios/WenguaAppUI/WenguaPremiumReadingView.swift'
+      - 'tests/verify_ios_discomfort_frontpage_runtime_20261102.py'
+      - 'tests/test_physical_1080_atlas_dataset_20261029.py'
+      - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  power_pair_full_text_parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original user matrix all 25 cases and 72 cohost arithmetic + source SHA
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v80
+          python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v 2>&1 | tee /tmp/wengua-v80/matrix_tests.log
+          python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v 2>&1 | tee /tmp/wengua-v80/mirror_tests.log
+      - name: Real Qian ground-Yi tomb and user-approved six-Jia conditioning regression
+        run: python3 -m unittest discover -s tests -p 'test_six_jia_earth_tomb_cohost_parity_20261029.py' -v
+      - name: Verify all 1080 persisted real source physical boards before native parity samples
+        run: |
+          python3 -m unittest discover -s tests -p 'test_physical_1080_atlas_dataset_20261029.py' -v
+      - name: Compile actual native Swift engine and original Python text port
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift ios/WenguaAppUI/WenguaHealthTemplateBridge.swift ios/WenguaAppUI/WenguaNativeEnergyBundle.swift ios/WenguaAppUI/WenguaNativeActorBinding.swift ios/WenguaAppUI/WenguaNativeReadingRouter.swift ios/WenguaAppUI/WenguaNativeVNextEngine.swift ios/WenguaAppUI/WenguaVNextCustomerComposer.swift ios/WenguaAppUI/WenguaVNextReasoner.swift ios/WenguaAppUI/WenguaVNextTianrui25.swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift -o /tmp/wengua-v80/native 2>&1 | tee /tmp/wengua-v80/compile.log
+      - name: All six real 甲 years and 甲 month/day/hour sources Python versus native Swift
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from scripts import ios_vnext_three_random_20261026 as gen
+          from src.wengua.casting_shenqi import SIX_JIA
+          conditions=[
+              (1984,"father","父亲","direct_proxy","year"),
+              (1994,"father","父亲","direct_proxy","year"),
+              (2004,"father","父亲","direct_proxy","year"),
+              (2014,"father","父亲","direct_proxy","year"),
+              (2024,"father","父亲","direct_proxy","year"),
+              (2034,"father","父亲","direct_proxy","year"),
+              (2024,"older_brother","哥哥","direct_proxy","month"),
+              (2024,"self","本人","direct_self","day"),
+              (2024,"son","儿子","direct_proxy","hour")]
+          original=gen.RELATIONS
+          cases=[];rejected=[]
+          try:
+              for i,(year,relation,label,context,column) in enumerate(conditions):
+                  # Original actor label must come from approved actor_profiles.json,
+                  # not a guessed translation.
+                  profiles=json.loads(Path("data/knowledge/phrase_library/health_v20/actor_profiles.json").read_text())["profiles"]
+                  matched=next(x for x in profiles if x["id"]==relation)
+                  gen.RELATIONS=((relation,matched["label"],context,None),)
+                  pack=gen.produce(seed=20261029*100+i+3,count=1,
+                                   years=(year,),required_jia_source=column)
+                  case=pack["cases"][0]
+                  pillar=case["four_pillars"][column]
+                  assert pillar in SIX_JIA,(relation,column,pillar)
+                  assert "natal" not in case["roles"]
+                  assert case["roles"]["patient"]["palace"] in (1,2,3,4,6,7,8,9)
+                  print("REAL_JIA_NATIVE_INPUT",column,pillar,SIX_JIA[pillar],
+                        case["instant"],case["relationship"],flush=True)
+                  cases.append(case)
+                  rejected.extend(pack["rejected"])
+          finally:
+              gen.RELATIONS=original
+          Path("/tmp/wengua-v80/all_real_six_jia.json").write_text(json.dumps({
+              "schema":"wengua_ios_random_batch_vnext_20261026_v2",
+              "seed":20261029,"timezone":"America/New_York",
+              "selection":"nine first technically valid real dates for six Jia years and month/day/hour Jia source; no score filter",
+              "rejected":rejected,"cases":cases},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          assert len(cases)==9
+          PY
+          python3 - <<'PY'
+          from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
+          r=auto_cast_health_review_text(
+              iso="2014-12-06T05:00:00-05:00",timezone_name="America/New_York",
+              inquiry={"intent":"severity","relationship":"father",
+                       "consultation_context":"direct_proxy"})
+          q=r["full_health_role_strength_network"]["candidate_five_grade_quantization"]
+          print("SIXJIA_2014_QIAN_PY_AUSPICE",q["summary"]["auspice_cohost_audit"],q["summary"]["auspice_bonus_notes"],flush=True)
+          sel=r["full_health_role_strength_network"]["nodes"]
+          print("SIXJIA_2014_QIAN_PY_ROLES",{k:{"palace":v["palace"],"symbol":v.get("symbol")}
+                   for k,v in sel.items()},flush=True)
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/all_real_six_jia.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/all_real_six_jia_swift.log 2> /tmp/wengua-v80/all_real_six_jia_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/all_real_six_jia.json /tmp/wengua-v80/all_real_six_jia_swift.log /tmp/wengua-v80/all_real_six_jia_parity.md
+          grep 'VERDICT: PASS' /tmp/wengua-v80/all_real_six_jia_parity.md
+          echo "NINE_REAL_DATE_SIX_JIA_SWIFT_PYTHON_EXACT_PASS"
+      - name: One genuinely random friend hour, production Swift source and full text check
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          generator.RELATIONS=(("friend","朋友","direct_proxy",None),)
+          case=generator.produce(seed=343710187,count=1)
+          case["selection"]="first technically valid random timestamp, friend direct_proxy confirmed month-stem, no result filtering"
+          assert len(case["cases"])==1 and case["cases"][0]["relationship"]=="朋友"
+          assert case["cases"][0]["patient_sex"] is None
+          assert "natal" not in case["cases"][0]["roles"]
+          assert not case["cases"][0]["auxiliaries"]
+          Path("/tmp/wengua-v80/friend_random.json").write_text(json.dumps(case,ensure_ascii=False,indent=2)+"\n")
+          print("RANDOM_FRIEND_DRAW="+json.dumps({
+              "seed":case["seed"],"instant":case["cases"][0]["instant"],
+              "pillars":case["cases"][0]["four_pillars"],
+              "rejected_technical":case["rejected"]
+          },ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/friend_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/friend_swift.log 2> /tmp/wengua-v80/friend_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/friend_random.json /tmp/wengua-v80/friend_swift.log /tmp/wengua-v80/friend_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path("/tmp/wengua-v80")
+          found=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (base/"friend_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(found)==1
+          for section in found[0]["sections"]:
+              print("FRIEND_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
+          print("RANDOM_FRIEND_SWIFT_EXACT_PASS",found[0]["instant"])
+          PY
+      - name: One NEW seeded random wife hour, V10 source and native strict parity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          batch=generator.produce(seed=202610282003,count=1,wife_only=True)
+          assert len(batch["cases"])==1
+          c=batch["cases"][0]
+          assert c["relationship"]=="妻子" and c["patient_sex"]=="female"
+          assert c["context"]=="direct_proxy"
+          assert c["roles"]["patient"]["palace"]==c["roles"]["medicine"]["palace"], "wife must bind real Yi, not asker day stem"
+          assert "natal" not in c["roles"] and c["auxiliaries"]=={}, "no invented natal/Kun auxiliary"
+          assert c["source_sections"] and c["python_reading_text"]
+          for banned in ("古文：","古诀大意：","天地盘取象：","各实际参与实宫均减两分","按用户规则","矩阵限制"):
+              assert banned not in c["python_reading_text"], "V10 customer text leak: "+banned
+          Path("/tmp/wengua-v80/wife_v10_new_random.json").write_text(
+              json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          print("RANDOM_WIFE_V10_DRAW="+json.dumps({
+              "seed":batch["seed"],"instant":c["instant"],
+              "four_pillars":c["four_pillars"],"bureau":c["bureau"],
+              "patient_main":"乙","patient_palace":c["roles"]["patient"]["palace"],
+              "medicine_palace":c["roles"]["medicine"]["palace"],
+              "score":c["summary"]["score"],
+              "technical_rejections":batch["rejected"]
+          },ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/wife_v10_new_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/wife_v10_swift.log 2> /tmp/wengua-v80/wife_v10_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/wife_v10_new_random.json /tmp/wengua-v80/wife_v10_swift.log /tmp/wengua-v80/wife_v10_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/wengua-v80")
+          source=json.loads((root/"wife_v10_new_random.json").read_text())["cases"][0]
+          outputs=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (root/"wife_v10_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(outputs)==1
+          native=outputs[0]
+          assert native["instant"]==source["instant"]
+          assert native["sections"]==source["source_sections"], "V10 Python/Swift full text differs"
+          print("WIFE_V10_SWIFT_PYTHON_EXACT_PASS",source["instant"])
+          for section in native["sections"]:
+              print("WIFE_V10_SWIFT_SECTION="+section["id"]+" "+section["title"]+"："+section["text"])
+          PY
+      - name: V10.2 same-clock father self self daughter friend full-text parity
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from scripts import ios_vnext_three_random_20261026 as generator
+          generator.RELATIONS=(
+              ("father","父亲","direct_proxy","male"),
+              ("self","本人","direct_self",None),
+              ("self","本人","direct_self",None),
+              ("daughter","女儿","direct_proxy","female"),
+              ("friend","朋友","direct_proxy",None))
+          batch=generator.produce(seed=202610282259,count=5)
+          assert [x["relationship"] for x in batch["cases"]]==["父亲","本人","本人","女儿","朋友"]
+          assert len({x["instant"] for x in batch["cases"]})==5
+          for i,c in enumerate(batch["cases"]):
+              assert "natal" not in c["roles"]
+              if i>0:assert c["auxiliaries"]=={}, "Non-elder Qian/Kun is forbidden"
+              for bad in ("全部因素推断后","按用户规则","各实际参与实宫均减两分"):
+                  assert bad not in c["python_reading_text"],(c["relationship"],bad)
+          Path("/tmp/wengua-v80/v101_five_random.json").write_text(
+              json.dumps(batch,ensure_ascii=False,indent=2)+"\n",encoding="utf8")
+          print("FIVE_V101_DRAW="+json.dumps({
+              "seed":batch["seed"],"accepted":[{
+                  "relation":c["relationship"],"instant":c["instant"],
+                  "pillars":c["four_pillars"],"bureau":c["bureau"],
+                  "score":c["summary"]["score"]} for c in batch["cases"]],
+              "technical_rejections":batch["rejected"]},ensure_ascii=False))
+          PY
+          /tmp/wengua-v80/native /tmp/wengua-v80/v101_five_random.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/v101_five_swift.log 2> /tmp/wengua-v80/v101_five_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/v101_five_random.json /tmp/wengua-v80/v101_five_swift.log /tmp/wengua-v80/v101_five_exact_diff.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("/tmp/wengua-v80")
+          batch=json.loads((root/"v101_five_random.json").read_text())["cases"]
+          app=[json.loads(line.partition("VNEXT_IOS_PYEXACT=")[2])
+              for line in (root/"v101_five_swift.log").read_text().splitlines()
+              if "VNEXT_IOS_PYEXACT=" in line]
+          assert len(app)==len(batch)==5
+          for i,(p,s) in enumerate(zip(batch,app),1):
+              assert p["instant"]==s["instant"] and p["source_sections"]==s["sections"]
+              print("V101_FRESH_SWIFT_EXACT_PASS",i,p["relationship"],p["instant"])
+          PY
+      - name: Original coworker EXACT pillars; do not resample
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_colleague_natal_yi_20261027 --output /tmp/wengua-v80/colleague.json
+          /tmp/wengua-v80/native /tmp/wengua-v80/colleague.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/colleague_swift.log 2> /tmp/wengua-v80/colleague_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/colleague.json /tmp/wengua-v80/colleague_swift.log /tmp/wengua-v80/colleague_diff.md
+      - name: Original 1920 elderly woman EXACT pillars; do not resample
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_manual_1920_female_20261027 --output /tmp/wengua-v80/elder.json
+          /tmp/wengua-v80/native /tmp/wengua-v80/elder.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/elder_swift.log 2> /tmp/wengua-v80/elder_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/elder.json /tmp/wengua-v80/elder_swift.log /tmp/wengua-v80/elder_diff.md
+      - name: Exact 13:44 self colleague grandfather grandmother native V8 full text parity
+        run: |
+          set -euo pipefail
+          for role in self colleague grandfather grandmother; do
+            python3 -m scripts.ios_v80_same_clock_neutral_parity_20261028 --role "$role" --output "/tmp/wengua-v80/1344_${role}.json"
+            /tmp/wengua-v80/native "/tmp/wengua-v80/1344_${role}.json" data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > "/tmp/wengua-v80/1344_${role}_swift.log" 2> "/tmp/wengua-v80/1344_${role}_stderr.log"
+            python3 tests/compare_gpt_ios_exact_wording_20261026.py "/tmp/wengua-v80/1344_${role}.json" "/tmp/wengua-v80/1344_${role}_swift.log" "/tmp/wengua-v80/1344_${role}_diff.md"
+          done
+      - name: New unbiased actual timestamps for self father wife and old relative
+        run: |
+          set -euo pipefail
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279901 --count 12 --output /tmp/wengua-v80/twelve.json | tee /tmp/wengua-v80/twelve_draws.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/twelve.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/twelve_swift.log 2> /tmp/wengua-v80/twelve_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/twelve.json /tmp/wengua-v80/twelve_swift.log /tmp/wengua-v80/twelve_diff.md
+          python3 -m scripts.ios_vnext_three_random_20261026 --seed 202610279902 --count 8 --wife-only --output /tmp/wengua-v80/eight.json | tee /tmp/wengua-v80/eight_draws.log
+          /tmp/wengua-v80/native /tmp/wengua-v80/eight.json data/knowledge/health_81_excel_20261025/81_pairs.tsv data/mobile/health_vnext/health_energy_200.json data/templates/health_severity_vnext/reading_template.json > /tmp/wengua-v80/eight_swift.log 2> /tmp/wengua-v80/eight_swift_stderr.log
+          python3 tests/compare_gpt_ios_exact_wording_20261026.py /tmp/wengua-v80/eight.json /tmp/wengua-v80/eight_swift.log /tmp/wengua-v80/eight_diff.md
+      - name: Build full source-and-native user-visible real scoring archive
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          root=Path('/tmp/wengua-v80')
+          out=['# V8.0 双原时辰实算、独立用神强度及原生Swift逐字核验','','每一实宫吉凶数字只计一次；所有克/生/被克等从双方各自选中用神查源200格；不作临床判断。']
+          for name in ('colleague','elder'):
+              case=json.loads((root/(name+'.json')).read_text())['cases'][0]
+              s=case['summary']
+              raw=s['post_void_known_sum']+s['control_bonus_score']+s['weak_illness_drain_bonus_score']+s['auspice_applied_extra_score']-s['five_not_global_penalty']+s.get('tianxian_global_final_bonus',0)
+              assert raw==s['raw_final_before_saturation']
+              out+=['','## '+name,'原时辰：'+case['instant'],'四柱：'+json.dumps(case['four_pillars'],ensure_ascii=False),
+                    '一宫一次基础分：'+json.dumps(s['unique_palace_score_details'],ensure_ascii=False),
+                    '各宫额外克病：'+json.dumps(s['control_bonus_points'],ensure_ascii=False),
+                    '独立特殊同宫吉助：'+json.dumps(s['auspice_cohost_audit'],ensure_ascii=False),
+                    '各宫基础和 '+str(s['post_void_known_sum'])+'；跨宫克病 '+str(s['control_bonus_score'])+'；弱病泄耗 '+str(s['weak_illness_drain_bonus_score'])+'；特殊 '+str(s['auspice_applied_extra_score'])+'；五不遇时 -'+str(s['five_not_global_penalty'])+'；原合 '+str(raw)+'；最终 '+str(s['score']),
+                    '方案：'+s['final_scoring_policy'],
+                    '### Python本次断词全文',case['python_reading_text'],
+                    '### Native Swift 逐字一致证据','见本CI每例 _diff.md 与完整 Swift 日志；原生全文逐字比较成功才进入本阶段。']
+          friend=json.loads((root/'friend_random.json').read_text())['cases'][0]
+          app=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+               for line in (root/'friend_swift.log').read_text().splitlines()
+               if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(app)==1 and app[0]['sections']==friend['source_sections']
+          out+=['','## 真实随机一时辰 · 朋友（原生Swift+Python严格逐字）',
+                '随机种子 343710187，首次技术有效盘；没有筛选吉凶，拒绝时辰记录见同Run artifact。',
+                '朋友直接代问：按用户确认的同辈月干取本盘真实患者用神；不提供年命不补造，不取长辈乾坤辅助。',
+                '真实时辰：'+friend['instant'],
+                '四柱：'+json.dumps(friend['four_pillars'],ensure_ascii=False),
+                '阳阴遁局：'+json.dumps(friend['bureau'],ensure_ascii=False),
+                '### 原生Swift完整用户断词（无任何编辑）']
+          for item in app[0]['sections']:
+              out+=['','#### '+item['title'],item['text']]
+          out+=['','### Python↔Swift逐字原样结论', (root/'friend_exact_diff.md').read_text()]
+          wife=json.loads((root/'wife_v10_new_random.json').read_text())['cases'][0]
+          wife_native=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+              for line in (root/'wife_v10_swift.log').read_text().splitlines()
+              if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(wife_native)==1 and wife_native[0]['sections']==wife['source_sections']
+          out+=['','## 新随机一时辰 · 妻子（V10原生Swift+Python严格逐字）',
+                '随机种子 202610282003；首次技术有效盘，无吉凶筛选。',
+                '关系妻子，直接代问，真实乙奇为患者主用神；日干五合另参，不补年命、不因女性身份增加坤宫。',
+                '真实时辰：'+wife['instant'],
+                '四柱：'+json.dumps(wife['four_pillars'],ensure_ascii=False),
+                '阳阴遁局：'+json.dumps(wife['bureau'],ensure_ascii=False),
+                '人物与医药主符号共宫：'+str(wife['roles']['patient']['palace']==wife['roles']['medicine']['palace']),
+                '原V8冻结最终档：'+str(wife['summary']['score']),
+                '### 原生Swift完整用户V10断词（无任何编辑）']
+          for item in wife_native[0]['sections']:
+              out+=['','#### '+item['title'],item['text']]
+          out+=['','### 妻子Python↔Swift逐字结论', (root/'wife_v10_exact_diff.md').read_text()]
+
+          five=json.loads((root/'v101_five_random.json').read_text())
+          five_native=[json.loads(line.partition('VNEXT_IOS_PYEXACT=')[2])
+              for line in (root/'v101_five_swift.log').read_text().splitlines()
+              if 'VNEXT_IOS_PYEXACT=' in line]
+          assert len(five_native)==5
+          out+=['','## V10.2 已见五个真实时辰的新版客户全文回归：父亲、本人、本人、女儿、朋友',
+                '种子202610282259，原V10.1盘用于同钟软件回归，不能冒充新的未见案例；封存V11词模板重新实算。']
+          for i,(c,s) in enumerate(zip(five['cases'],five_native),1):
+              assert c['source_sections']==s['sections']
+              out+=['',f'### 固定回归盘{i} · '+c['relationship'],'实际时辰：'+c['instant'],
+                    '四柱：'+json.dumps(c['four_pillars'],ensure_ascii=False),
+                    '真实局：'+json.dumps(c['bureau'],ensure_ascii=False),
+                    '参与用神实宫：'+json.dumps({k:v['palace'] for k,v in c['roles'].items()},ensure_ascii=False),
+                    'V8冻结原分：'+str(c['summary']['score'])]
+              for item in s['sections']:
+                  out+=['','#### '+item['title'],item['text']]
+          out+=['','### 五份Python↔Swift全章节逐字差异报告',
+                (root/'v101_five_exact_diff.md').read_text()]
+          (root/'two_fixed_clocks_v80.md').write_text('\n'.join(out)+'\n')
+          PY
+      - name: Preserve all logs and attempted outputs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-selected-role-200-matrix-all-directions-actual-Swift-python
+          path: /tmp/wengua-v80/
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Preserve new-version failed validation, append-only without hiding it
+        if: failure()
+        run: |
+          set -euo pipefail
+          archive="docs/HEALTH_V80_FAILURE_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            printf '# V8.0 实际 CI 未通过，保留全部失败现场\\n\\nRun: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\n\\n' "$GITHUB_RUN_ID"
+            for f in /tmp/wengua-v80/*.log /tmp/wengua-v80/*_diff.md; do
+              if [ -f "$f" ]; then
+                printf '\\n## %s\\n\\n\`\`\`text\\n' "$(basename "$f")"
+                tail -n 180 "$f" || true
+                printf '\\n\`\`\`\\n'
+              fi
+            done
+          } > "$archive"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$archive"
+          git commit -m "Archive failed V8.0 native Python source strength validation"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
+      - name: Append only successful actual test output; never overwrite old V7/V8
+        run: |
+          set -euo pipefail
+          archive="docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          cp /tmp/wengua-v80/two_fixed_clocks_v80.md "$archive"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$archive"
+          python3 - <<'PY_NOTE'
+          import json,os
+          from pathlib import Path
+          release=json.loads(Path('data/releases/health_frozen_20261102.json').read_text())
+          assert release['status']=='user_accepted_frozen'
+          run=os.environ['GITHUB_RUN_ID']; sha=os.environ['GITHUB_SHA']
+          note=(f"\n\n### 当前封存轻重回归实测 · run {run}\n"
+                f"V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码{sha}。"
+                f"全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_{run}_ATTEMPT_{os.environ['GITHUB_RUN_ATTEMPT']}.md。"
+                "既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。\n")
+          for name in ('AGENTS.md','docs/PROJECT_STATUS.md','docs/CHAPTER_LEDGER.md'):
+              with Path(name).open('a') as f:f.write(note)
+          PY_NOTE
+          git add AGENTS.md docs/PROJECT_STATUS.md docs/CHAPTER_LEDGER.md
+          git commit -m "Archive sealed V9 scoring V11 template native regression and actual handoff"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
+
+  qimen_lunji_frontpage_runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Actual V27 native readings and first-page adapter on portable Swift
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-qimen-front
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeDiscomfortV27Requested.swift \
+            -o /tmp/wengua-qimen-front/native_site_v27_requested \
+            2>&1 | tee /tmp/wengua-qimen-front/v27_requested_compile.log
+          /tmp/wengua-qimen-front/native_site_v27_requested \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            > /tmp/wengua-qimen-front/v27_requested.jsonl
+          python3 -m src.wengua.health_discomfort_v19_parity \
+            /tmp/wengua-qimen-front/v27_requested.jsonl \
+            | tee /tmp/wengua-qimen-front/v27_requested_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 哥哥' /tmp/wengua-qimen-front/v27_requested_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-qimen-front/v27_requested_parity.log
+          python3 -m scripts.report_v27_requested_20261102 /tmp/wengua-qimen-front/v27_requested.jsonl > /tmp/wengua-qimen-front/v27_requested_readings.md
+          python3 tests/verify_ios_discomfort_frontpage_runtime_20261102.py \
+            --native-jsonl /tmp/wengua-qimen-front/v27_requested.jsonl \
+            | tee /tmp/wengua-qimen-front/qimen_lunji_frontpage.log
+      - name: Preserve first-page source adapter and real native readings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qimen-lunji-frontpage-real-native-runtime
+          path: /tmp/wengua-qimen-front/
+          retention-days: 90

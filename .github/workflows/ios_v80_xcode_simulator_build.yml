@@ -25,11 +25,19 @@ on:
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
   workflow_dispatch:
+    inputs:
+      runner:
+        description: Hosted macOS runner (fallback when macos-15 is queued)
+        type: choice
+        options:
+          - macos-15
+          - macos-latest
+        default: macos-15
 permissions:
   contents: write
 jobs:
   build_and_validate_real_app_bundle:
-    runs-on: macos-15
+    runs-on: ${{ inputs.runner || 'macos-15' }}
     steps:
       - uses: actions/checkout@v4
       - name: Run V23 exhaustive Python stem branch and full site rule regressions

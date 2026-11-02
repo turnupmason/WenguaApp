@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "6234893d56b1ab318b1be8b5edeafb005421289e"
+      "sha": "06ad5ac11f767ed46082b2554954569880fc6bee"
     },
     {
       "platform": "python",
@@ -872,6 +872,18 @@
       "canonical": "tests/test_ios_qimen_lunji_release_20261102.py",
       "snapshot": "Important/python/tests/test_ios_qimen_lunji_release_20261102.py",
       "sha": "29a4b99f5fa9f36557f00686b8d305c9c1044c6d"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/health_v80_real_selected_power_native_parity.yml",
+      "snapshot": "Important/python/ci/health_v80_real_selected_power_native_parity.yml",
+      "sha": "f498ae0d55e892b906c877de5ac4f76f5205c40f"
+    },
+    {
+      "platform": "swift",
+      "canonical": ".github/workflows/health_v80_real_selected_power_native_parity.yml",
+      "snapshot": "Important/swift/ci/health_v80_real_selected_power_native_parity.yml",
+      "sha": "f498ae0d55e892b906c877de5ac4f76f5205c40f"
     }
   ]
 }

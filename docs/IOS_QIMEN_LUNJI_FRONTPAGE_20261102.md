@@ -27,3 +27,5 @@
 病愈应期仍是下一研发重点，health.recovery未开放；本展示修复不添加应期规则或康复承诺。
 
 补充：同一实际源码摘要适配器与两份真实V27 native输出也接入Ubuntu Swift快速回归，并保存完整artifact。它补足旧检查只验轻重首页而漏验病位首页的覆盖缺口，不依赖macOS排队；实际App的Apple编译/资源验收仍由正式Xcode完成。
+
+快速Swift实际运行 #41470201781 已success，截图与两张实际V27 native摘要均通过；独立App真Xcode编译 #41468305381 success。专用macos-15队列长时间未分配runner，增加手动可选macos-latest备用，仍完整执行相同验收，不改变或跳过步骤；App/资源pin不变。共享原生工作流补齐Important双镜像。
