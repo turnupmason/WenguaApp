@@ -102,7 +102,8 @@ enum WenguaCastTimePlan {
         result.timingReferenceVersion = nil
         let reference = healthReference ?? reading
         if mode == .plannedEvent && ["health.severity", "health.discomfort"].contains(reading.topicID),
-           reference.iso == reading.iso, let grade = reference.resolvedHealthGrade {
+           reference.iso == reading.iso, reference.relationship == reading.relationship,
+           let grade = reference.resolvedHealthGrade {
             result.timingGrade = grade
             result.timingGradeScope = "health.severity.V9/V11"
             if reading.topicID == "health.discomfort" {

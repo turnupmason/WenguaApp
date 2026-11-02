@@ -68,6 +68,15 @@ for (index,input) in inputs.enumerated() {
     let rejected=WenguaCastTimePlan.annotate(original,mode:.plannedEvent,timezone:zone,
         confirmedAt:confirmed,groupID:"WRONG_CLOCK",index:index,eventKind:"",healthReference:foreignHealth)
     guard rejected.timingGrade==nil else {fatalError("Unrelated clock or body-location reading donated a grade")}
+    let otherPerson=inputs[(index+1)%inputs.count].reading.relationship
+    let otherInquiry=WenguaNativeInquiry(relationship:otherPerson,context:"direct_proxy",
+        patientSex:nil,birthOrder:nil,patientBirthGanzhi:nil,
+        familyRelativeConfirmed:otherPerson=="哥哥" ? true : nil)
+    let otherHealth=try WenguaNativeReadingRouter.compose(chart:chart,topicID:"health.severity",
+        relationship:otherPerson,inquiry:otherInquiry,bundle:bundle)
+    let wrongPerson=WenguaCastTimePlan.annotate(original,mode:.plannedEvent,timezone:zone,
+        confirmedAt:confirmed,groupID:"WRONG_PERSON",index:index,eventKind:"",healthReference:otherHealth)
+    guard wrongPerson.timingGrade==nil else {fatalError("Different person's grade copied onto this patient")}
     for kind in WenguaCastTimePlan.eventKinds {
         let factual=WenguaCastTimePlan.chartOnlyReading(chart:chart,eventKind:kind)
         let ungraded=WenguaCastTimePlan.annotate(factual,mode:.plannedEvent,timezone:zone,
@@ -115,7 +124,11 @@ print("PASS MANUAL_EVENT_TIME current vs chosen minute; actual two-clock calenda
         binary=folder/'event_time'
         subprocess.run(['swiftc','-warnings-as-errors','-D','WENGUA_BODY_SITE',
             *[str(UI/(name+'.swift')) for name in names],str(main),'-o',str(binary)],check=True)
-        executed=subprocess.run([str(binary),str(native_jsonl),str(bundle)],check=True,capture_output=True,text=True)
+        executed=subprocess.run([str(binary),str(native_jsonl),str(bundle)],capture_output=True,text=True)
+        if executed.returncode:
+            print(executed.stdout)
+            print(executed.stderr,file=sys.stderr)
+            executed.check_returncode()
         sys.path.insert(0,str(ROOT))
         from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
         profiles=json.loads((ROOT/'data/knowledge/phrase_library/health_v20/actor_profiles.json').read_text())['profiles']

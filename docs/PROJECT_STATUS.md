@@ -3249,3 +3249,6 @@ p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有Wengua
 
 ### 当前封存轻重回归实测 · run 41479119926
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f8bae8bc58e9166eeb4ae5d460feb24761d537c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479119926_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致；新实测脚本对同一实际时辰的另一个人等级明确拒绝，并对两张原时辰的健康全文/用神宫位做独立Python逐字比对。此处只约束引用身份，不改原生或Python评分。完整846 tests再次0失败/0错误/3原skip。一次同步镜像前的专项预检出现1条字节不一致，已同步并复跑7项全通过；原预检日志无损保存 docs/audits/ios_manual_event_time_20261102/pre_mirror_sync_targeted.log.gz，不冒称该次预检通过。等待本最终源码的新Xcode/真实bundle执行结果。

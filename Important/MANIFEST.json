@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "24e7ca09c7fa5d56ae897b552ddf76802ed10ff0"
+      "sha": "e10e37b4e1ad25142bc366950d51f6f6b32aa2bf"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "24e7ca09c7fa5d56ae897b552ddf76802ed10ff0"
+      "sha": "e10e37b4e1ad25142bc366950d51f6f6b32aa2bf"
     },
     {
       "platform": "python",
@@ -895,7 +895,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimePlan.swift",
       "snapshot": "Important/swift/engine/WenguaCastTimePlan.swift",
-      "sha": "5e2c81d72a49ea28781652fdf52622d1022a50c5"
+      "sha": "4be0fa63a077bd86984b2de0312274121c58bb06"
     },
     {
       "platform": "swift",
@@ -913,7 +913,7 @@
       "platform": "python",
       "canonical": "tests/verify_ios_manual_event_time_runtime_20261102.py",
       "snapshot": "Important/python/tests/verify_ios_manual_event_time_runtime_20261102.py",
-      "sha": "80a38bf21cc6f3690bc4409a97c83b2bab07f120"
+      "sha": "ded5d8d5dcdcdd4af64796246be017c833f9235c"
     }
   ]
 }

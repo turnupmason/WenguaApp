@@ -38,3 +38,6 @@ p4本地完整复核：846 tests，0 failures、0 errors、3原有skip；专项3
 
 
 p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
+
+
+p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致；新实测脚本对同一实际时辰的另一个人等级明确拒绝，并对两张原时辰的健康全文/用神宫位做独立Python逐字比对。此处只约束引用身份，不改原生或Python评分。完整846 tests再次0失败/0错误/3原skip。一次同步镜像前的专项预检出现1条字节不一致，已同步并复跑7项全通过；原预检日志无损保存 docs/audits/ios_manual_event_time_20261102/pre_mirror_sync_targeted.log.gz，不冒称该次预检通过。等待本最终源码的新Xcode/真实bundle执行结果。
