@@ -745,7 +745,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "6581a67f9c45b8d756d4b4ec1fc8e1c73f56c9df"
+      "sha": "6182b1810033ef5aff627ba5ab6944217fc34d3b"
     },
     {
       "platform": "python",
@@ -757,7 +757,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "63e3e5839a4cce7f75a1b468eaa0b14ab1032053"
+      "sha": "6c63081c0afdeb17faaee67127df6e1750b2a7f2"
     },
     {
       "platform": "python",
