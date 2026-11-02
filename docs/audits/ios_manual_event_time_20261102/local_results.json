@@ -4,8 +4,8 @@
     "failures": 0,
     "errors": 0,
     "skipped": 3,
-    "log": "python_unittest_full.log.gz",
-    "sha256": "c9c192e561ee52205f5d80a6a7b79c744693013a246fa2697b2a22d4c648f377"
+    "log": "python_unittest_same_person_guard.log.gz",
+    "sha256": "d565d5acc8e75a1ea3a79dba3630ae1edcd3c7cfc9727a26ec54be9ff417f2b6"
   },
   "targeted_python": {
     "tests": 32,
@@ -14,5 +14,34 @@
   },
   "skips": "Existing optional Moshier comparison and two historical V7.7/V7.8 class gates; none newly added",
   "manual_ui_gap": "Two former failures now pass because actual selectable event-time entry is implemented",
-  "native_and_xcode": "Await actual p4 Actions; no local Swift/Xcode"
+  "native_and_xcode": {
+    "production_source": "4ee16bca3334b4203551218215fea2fee32a1c63",
+    "workflow_only_source": "7403dbbe",
+    "formal_xcode": {
+      "run": 41479754723,
+      "conclusion": "success",
+      "swift_warnings": 0,
+      "manual_time_runtime": "PASS",
+      "same_input_health_python_swift_full_text": "PASS"
+    },
+    "independent_ios": {
+      "run": 41481224006,
+      "conclusion": "success"
+    },
+    "native_parity": {
+      "run": 41481223986,
+      "conclusion": "success"
+    },
+    "main_python_ci": {
+      "run": 41481223879,
+      "conclusion": "success"
+    },
+    "original_failed_xcode_preserved": 41478402093,
+    "not_executed": [
+      "signed iPhone",
+      "full XCUITest",
+      "wheel/animation visual manual QA"
+    ]
+  },
+  "prior_full_log": "python_unittest_full.log.gz"
 }
