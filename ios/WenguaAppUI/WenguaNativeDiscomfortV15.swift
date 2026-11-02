@@ -54,7 +54,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v23_integrated_palace_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -165,7 +165,27 @@ enum WenguaNativeDiscomfortV15 {
         func sourceStrength(_ kind:String,_ symbol:String,
                             _ p:WenguaNativePalace,
                             _ stages:[WenguaNativeStage]=[]) throws ->String {
-            try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
+            // V24 health.discomfort only. Two real branch stages are each
+            // looked up from the immutable original 200 cells, with the
+            // user-approved upper tier chosen for interpretation.
+            // DO NOT change the frozen V8 shared factor/scoring engine.
+            if kind=="stem" && stages.count>1 {
+                let levels=["极小","小","中等","大","极大"]
+                let powers=try stages.map { stage ->String in
+                    guard let tier=try WenguaVNextEngine.factor(
+                        kind:"stem",symbol:symbol,palace:p.id,
+                        month:month,catalog:powerCatalog,
+                        stages:[stage]).strength,
+                          levels.contains(tier) else {
+                        throw WenguaNativeReadingError.missingPhrases
+                    }
+                    return tier
+                }
+                return powers.max { left,right in
+                    levels.firstIndex(of:left)!<levels.firstIndex(of:right)!
+                }!
+            }
+            return try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
                     month:month,catalog:powerCatalog,stages:stages).strength ?? "待核"
         }
         func stemPower(_ stem:String,_ p:WenguaNativePalace) throws ->String {
@@ -648,9 +668,8 @@ enum WenguaNativeDiscomfortV15 {
         // Tianqin carrier each retain independent original source power.
         // This is disease *imagery* attached to this palace, not a new
         // anatomical location or a clinical claim about pain intensity.
-        // An ambiguous double-branch palace is NOT an empty power cell.
-        // Keep both genuine 200-grid rows instead of inventing a new
-        // strongest/weakest consolidation rule. Every listed branch is real.
+        // V24 original 200 source audit: two branch cells are both read,
+        // and the higher ORIGINAL tier is selected for this one topic only. Every listed branch is real.
         func stemBranchFacts(_ stem:String,_ p:WenguaNativePalace,
                              _ stages:[WenguaNativeStage]) throws ->[(String,String)] {
             guard !stages.isEmpty else {throw WenguaNativeReadingError.missingPhrases}
@@ -669,19 +688,14 @@ enum WenguaNativeDiscomfortV15 {
             let selected=original=="脏（笼统）" ? "脏腑泛象" : original
             let facts=try stemBranchFacts(stem,illness,stages)
             let distinct=Set(facts.map{$0.1})
-            let powerWords:String
-            if tier(power)>0 {
-                powerWords="力量"+power
-            } else if distinct.count==1,let value=facts.first?.1 {
-                powerWords="两支同为"+value
-            } else {
-                powerWords="分支力量"+facts.map{$0.0+"为"+$0.1}.joined(separator:"、")
-            }
-            let effect=(tier(power)>=4 || (facts.allSatisfy{tier($0.1)>=4})) ?
-                "这一干象较为突出" :
-                (facts.allSatisfy{tier($0.1)<=2} ? "此干象偏弱" :
-                 "此干象仍须与病宫其他符号互证")
-            return selected+"，"+powerWords+"，"+effect
+            let branchText=facts.count>1 ?
+                "，"+facts.map{$0.0+"为"+$0.1}.joined(separator:"、") : ""
+            let powerWords=distinct.count>1 ?
+                branchText+"，按较高一档取"+power :
+                "，力量"+power
+            let effect=tier(power)>=4 ? "这一干象较突出" :
+                       tier(power)>=3 ? "可作本宫病象旁证" : "此象偏弱"
+            return selected+powerWords+"，"+effect
         }
         // 81 grid is ordered sky + ground. Preserve the actual source name,
         // luck and gist; generic commercial idioms MUST NOT be turned into
@@ -920,7 +934,7 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v23_integrated_palace_20261101",
+            version:"discomfort_v24_upper_branch_full_chart_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(
