@@ -1718,3 +1718,7 @@ p3清单/原5份测试逐字归档；现manifest明确p4，7份已有展示/DTO/
 
 
 p4本地完整复核：846 tests，0 failures、0 errors、3原有skip；专项32项全部通过。原来2个手动入口失败现已由真正时间入口接入解决，不删除它们，旧失败记录及修改前测试保留。原日志 docs/audits/ios_manual_event_time_20261102/python_unittest_full.log.gz 与local_results.json可核SHA；新Swift/Xcode仍待实际Actions结果，不预报通过。
+
+
+### 当前封存轻重回归实测 · run 41478154050
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6015ad82c542d6b9af371589a646849dfcebe163。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41478154050_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
