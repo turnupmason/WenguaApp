@@ -28,3 +28,11 @@
 - 同轮主Python CI [#41368783135](https://github.com/turnupmason/WenguaApp/actions/runs/41368783135) V8评分专项通过，但 Important工作流源/镜像不一致 FAILED，未掩盖；将 `.github/workflows/ios_v80_xcode_simulator_build.yml` 与 `Important/python/ci/ios_v80_xcode_simulator_build.yml` 逐字同步，MANIFEST SHA同步。
 - 下一轮 [#41368843949](https://github.com/turnupmason/WenguaApp/actions/runs/41368843949) Xcode真正编译通过，原生Swift烟测发现：星门神被合并两次；任意「本宫」词面检查错误导致报告内容实际完整仍被 guard 拒收。已精确修复拼接与校验，不删除失败日志。
 - 最终实测须单独核 V23当前 SHA 的专项Python、macOS XcodeGen、实际 bundle 资源、真实 Swift 随机全文、独立另一批Python-Swift原字parity、重要镜像同步。即便程序PASS也仍待用户对文字质量验收；不是签名真机/App Store或现代医学预测有效性证明。
+
+
+## 最新真正通过的 Xcode 与真实见过女儿盘独立跨语言校验
+- 真正 Action #41370186316 PASS: https://github.com/turnupmason/WenguaApp/actions/runs/41370186316 ，原生业务源码 SHA d39dc050c9ce50336ec0437f12e3a32a219223dc。真实 macOS XcodeGen Simulator unsigned 构建、离线bundle 200格/81格/255/模板/人物源验收，Python四专项含400格逐支查全，全部通过。
+- 独立 Python-Swift 全文逐字 PASS 三张互异真盘：弟弟 2026-11-12 15:00 -05、妻子 2027-02-12 21:00 -05，以及用户已见女儿原时辰 2027-02-07 11:00 -05。固定女儿盘在真 Swift 验证了巽四天芮携丁、丁辰衰大/巳帝旺极大、地盘乙胆、伤门螣蛇真实宫内、最终地盘乙所指胆强象及伏吟弱副证，无观众括号或「待核」。该盘是已揭晓回归不是盲测。
+- 另外由 Swift 真引擎随机生成用户原四种情景：父亲意外 2026-11-10 09:00 -05、妻子手术 2027-02-07 21:00 -05、父亲普通 2026-11-20 17:00 -05、女儿普通 2027-02-10 01:00 -05，全部原文存档 docs/IOS_V80_XCODE_PASS_RUN_41370186316_ATTEMPT_1.md。四份没有一一做 Python 全文独立比对，不能冒称；上述三张不同盘实际做了严格 parity。
+- 新 fixture 首轮 #41369802592 / #41369876564 的 Swift 独立校验错把仅旧烟测可见的 joinedDescription 用在不同文件，按失败编译日志修改为真实 sections.map text joined。旧 CI fail 原文件保留，新 run d39 源通过。随后 Important 双镜像、MANIFEST和AGENTS/状态/ledger追加记录，不覆盖历史。真正源200/81/255和V8冻结未变。
+- 本阶段新 V23 只可视作工程上通过、用户中文质量仍 pending；不能当医学疾病诊断，也不是签名真机/App Store 验收。
