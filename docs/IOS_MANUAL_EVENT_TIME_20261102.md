@@ -41,3 +41,6 @@ p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有Wengua
 
 
 p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致；新实测脚本对同一实际时辰的另一个人等级明确拒绝，并对两张原时辰的健康全文/用神宫位做独立Python逐字比对。此处只约束引用身份，不改原生或Python评分。完整846 tests再次0失败/0错误/3原skip。一次同步镜像前的专项预检出现1条字节不一致，已同步并复跑7项全通过；原预检日志无损保存 docs/audits/ios_manual_event_time_20261102/pre_mirror_sync_targeted.log.gz，不冒称该次预检通过。等待本最终源码的新Xcode/真实bundle执行结果。
+
+
+p4补齐独立iOS原生/Xcode workflow的5份现役UI与时辰源触发路径，避免仅修改新手动时辰helper时漏触发该工作流；正式V9/V11/V27 Xcode已有ios目录通配触发。此次只有CI/MANIFEST镜像变化，生产源码与封存pin保持4ee16bca状态。
