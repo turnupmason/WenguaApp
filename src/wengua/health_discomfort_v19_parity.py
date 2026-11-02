@@ -539,13 +539,19 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif lead in ("外阴","下部"):focusRegion="下身会阴一带"
     elif lead=="左肺":focusRegion="左侧胸部"
     else:focusRegion=lead
+    earthFacts=stem_branch_facts(illness["earthStem"],illness,illness["earthStages"])
+    skyFacts=stem_branch_facts(sky,illness,next(x["stages"] for x in illness["heavenStars"] if x["star"]=="天芮星"))
+    earthStrong=_tier(earthPower)>=4 or all(_tier(v)>=4 for _,v in earthFacts)
+    skyStrong=_tier(skyPower)>=4 or all(_tier(v)>=4 for _,v in skyFacts)
     bodyEvidence=[]
     earthSite=next((x for x in earthSites if _matched(x,leadSites)),None)
     skySite=next((x for x in skySites if _matched(x,leadSites)),None)
-    if earthSite and _tier(earthPower)>=4:
-        bodyEvidence.append(f"地盘{illness['earthStem']}所指{earthSite}力量{earthPower}，与主病位同向，这一处更值得留意")
-    elif skySite and _tier(skyPower)>=4:
-        bodyEvidence.append(f"天盘{sky}所指{skySite}力量{skyPower}，与主病位相合")
+    if earthSite and earthStrong:
+        energyText=f"力量{earthPower}" if _tier(earthPower)>0 else "两支原格力量均至少为大"
+        bodyEvidence.append(f"地盘{illness['earthStem']}所指{earthSite}{energyText}，与主病位同向，这一处更值得留意")
+    elif skySite and skyStrong:
+        energyText=f"力量{skyPower}" if _tier(skyPower)>0 else "两支原格力量均至少为大"
+        bodyEvidence.append(f"天盘{sky}所指{skySite}{energyText}，与主病位相合")
     if _tier(doorPower)>=4 and not trauma:
         bodyEvidence.append(f"{door}力量{doorPower}，旧籍{doorClue}所指的"+
                             ("筋脉牵扯" if door=="伤门" else "伴随征象")+"更显")
