@@ -1,0 +1,114 @@
+# 问卦 · WenguaApp
+
+> **2026-11-02 · 伤病在哪里 · V27伤门条件接线**：iOS「疾病健康 → 伤病在哪里」已开放，必须先选普通不适、意外受伤、骨肉受损、出血、剧烈疼痛或已做/拟做手术。未选禁止静心起局和模板调用；普通不适不启用独立伤门角色。伤损/出血/剧痛以伤门真实落宫优先定位，手术另列伤门所示部位并核对开门宫克伤门宫、伤门临白虎。启用时先显示伤门完整宫象，再看天芮、旁宫、时干、患者及结论。病宫恰好临伤门仍保留其本宫八门事实。Python/Swift与离线模板同步；V8病情轻重计分保持冻结。真实验收与历史失败见[伤门专项审计](docs/HEALTH_DISCOMFORT_INJURY_GATE_AUDIT_20261102.md)。
+
+> **2026-10-31 · 疾病规则与断词 V11（现行修订，验收状态以本次 Actions 为准）**：以 V8.0 已核准的 200格、81格及克病矩阵为计分基线，家属的哥哥/姐姐/弟弟/妹妹按实际关系选月干并按 V9 已建立的震三/巽四/艮八/兑七独立辅助宫；**朋友不是亲属，仅取本次月干，不问性别、不问相对年龄，也不取震巽艮兑、乾坤等亲属辅助宫**。无出生年命不补造。一个物理宫计一次基础分、每枚不同用神读取自身源力量，已授权的克病/同宫等条件分别核算，不将净宫分当源强。**V11 客户描述**在原 V10.1 完整宫位及古籍格局的基础上，补回独立病星、患者、天心、乙奇、时干、值符、实际亲属辅助、年命（若真实提供）、空墓刑迫和应期；严禁为了压缩文字遗失有效证据，且不显示内部评分。旧V10.1/V10.2及V9失败历史不删除。[本次审计](docs/HEALTH_V11_FRIEND_FAMILY_AND_DESCRIPTION_20261031.md)。
+
+> **2026-10-28 专业解卦最新展示**：云境首页采用「借天地之势，成自己之事」；九宫右侧用神标「病宫／被测人宫」等真实落宫，复星紧凑缩写、四柱逐干支五行着色；「专业解卦」先用已核准V8级别匹配十档文学象意和严格健康免责声明，另一「专业解盘」保留全部原始证据。详情：[品牌与十档UI变更](docs/IOS_HEALTH_GRADE_BRAND_UI_20261028.md)。
+
+> **2026-10-28 九宫新版**：参照用户原盘图，九宫正方形、适配首屏、用神身份右侧竖排朱砂红；入口云境静止、引导语单行。旧V1网页UI和旧V7.4不再触发当前自动CI，但历史失败及原规则保留。[详细交付说明](docs/IOS_SQUARE_PALACE_REFERENCE_20261028.md)。
+
+> **iOS 阅读方式（2026-10-28）**：结果页默认「接卦」，先看九宫及盘下简短接卦语；切到「专业解盘」阅读完整 V8 用神、宫位、限制与应期。🐎 表真实马星，宫角空心圆表旬空，均由本机实盘产生；不改变 V8 分数或原始断词。详见 [UI交付说明](docs/IOS_PREMIUM_READING_UX_20261028.md)。
+
+
+**最新原生 UI**：云境欢迎页 → 疑惑/领域/细项渐显 → 人物与具体事项 → 30秒静心 → **点击确认瞬间按手机真实时间离线起局** → 九宫与接卦语／专业解盘。可选日间、夜间或跟随系统；真V8用神对应各宫透明身份字，多角色「／」并列。详情：[新UI交付](docs/IOS_IMMERSIVE_UI_FLOW_20261028.md)。
+
+**当前疾病基础计分源：V8.0；人物辅助条件：V9 家属修订；正式用户文字模板：V11（验收中）。** 本项目是持续开发的原生离线奇门遁甲 iPhone 应用，不是重新起盘或新建项目。当前已接入的专题为 **健康 → 病情轻重** 与独立的 **伤病在哪里**；婚姻、工作、求财、出行等以后依其古籍用神规则分别开发，**绝不把疾病的加分模板套进其他领域**。
+
+[开始阅读项目规范](AGENTS.md) · [最新项目状态](docs/PROJECT_STATUS.md) · [新窗口交接指令](docs/PROJECT_START_PROMPT_V80_20261027.md) · [中文分类导航](项目导航/README.md) · [完整规则审计](docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md)
+
+## 一、现行 V8.0 计算规则
+
+1. 根据领域、子题、问测人物关系，**先确定本题真正需要的用神**。再按真实时辰自动起盘，九宫真实星、门、八神、天盘干/地盘干、81有序天地格及空亡、马、墓、刑、迫、五不遇时、伏吟反吟均是可追溯原盘事实；中五不造普通神星门。
+2. **只因用神落入一个实宫才对该宫计分**。该宫的九星、八门、八神、有序81格和成立的限制条件都必须完整审查，生成一个 **带正负号的宫位吉凶等级**；同宫再出现几个角色，这份**宫位基础分只算一次**。81格已涉及真实天盘干能量，不再叠加同一干的第二份基本票。
+3. **宫位吉凶分绝对不是力量**。当同宫有天心、乙、值符、时干、年命，或任何其他真正的用神，每一枚**不同的物理符号**都独立查自己在月令与落宫的源200格强弱；八神按本神与宫五行关系，不凭星或任意宫位数字代替。同一个符号兼任两种角色仍只是一枚，不许自己临自己产生独立加分。
+4. 所有宫对宫（克、被克、生、被生、比和）分别识别**施力用神与受力用神**，两边各读独立力量；五行关系由真实宫确定。克须查来源有向5×5及空亡/刑墓门迫等限制，非克无源规定不得杜撰新作用分。同宫吉助是否成立依**本领域适用条件与真实独立宿主**，不能只看到吉神就泛加分；空亡统一按已核规则处理。
+5. 用神证据、吉凶汇总、格局优先级、有效应期只按本专题来源成立时出具；正式离线客户断词采用 [V8.0 模板](data/templates/health_severity_vnext/reading_template.json)，Python/Swift 同时辰应严格一致。面向客户不显示内部计算分数、矩阵名、调试信息。
+
+**完整宫位图关系候选层**：[`selected_signifier_graph_v80.py`](src/wengua/selected_signifier_graph_v80.py) · [原生 Swift 对应事实图](ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift) 以 `role_key/kind/symbol_id/palace_id/energy_fact_id` 标识角色；还记录每个已选宫里的**全部星、门、八神、天/地干、81格及空墓刑迫**、每枚实际符号的源强度和同宫/相邻/跨宫证据。两端目前**只做事实图和证据图，不改V8.0分数或客户断词**。新领域的用神与条件另定义，任何 V8.next 加分都须独立审查后才能晋升。
+
+## 二、V8.0 真正通过的工程验收
+
+- [V8.0 Python/Swift 源算法、2张已见固定案例+20张新时辰全文对照](https://github.com/turnupmason/WenguaApp/actions/runs/40621011300) — 已成功。
+- [Xcode 16.4 原生 SwiftUI iOS Simulator 全工程编译、200格/81格/人物/模板打包校验](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702) — 已成功。
+- [八类用神及星门神干格完整宫环境组合图测试](https://github.com/turnupmason/WenguaApp/actions/workflows/v80_signifier_graph_combinations.yml) — 单独门槛；模拟排列是**逻辑测试**，不得当原书真实盘。
+- 已知两例 V8.0 固定回归：同事`己丑 戊辰 辛卯 丁酉` 的传统吉凶模型结果 `-5`；1920年女性长辈`己丑 庚午 丁亥 乙巳`结果`+3`。用户已提供后来反馈，**不是未见盲测，更不是医疗诊断/预后能力的验证**。
+- 所有旧历史版本与失败记录保留在 Git 历史和独立归档；**不作为现役疾病引擎或V8 release验收预期答案**。现阶段 Xcode 是未签名 Simulator 包，尚不等于真机安装或上架。
+
+## 三、在 Mac 上打开现有 iOS 工程
+
+```bash
+git clone https://github.com/turnupmason/WenguaApp.git
+cd WenguaApp/ios/WenguaAppUI
+brew install xcodegen   # 若尚未安装
+xcodegen generate --spec project.yml
+open WenguaApp.xcodeproj
+```
+
+在 Xcode 选择 `WenguaApp` Scheme 与 iPhone Simulator，直接运行 **问卦**。工程入口是 `WenguaDesignPreviewApp.swift`；病位走 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeDiscomfortV15`，轻重实际调用 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；不存在第二套网络端的正式疾病引擎。完整设备准备参见 [Mac Xcode 使用说明](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
+
+## 四、开发与验收
+
+```bash
+# 当前 V8.0 疾病引擎的数值、源表、镜像完整性
+python3 -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
+python3 -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+# 新版跨领域、全部宫内因素与排列关系只读测试
+python3 -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+# 历史全量开发测试留作历史审计；部分 V7 预期不能当 V8 现行断词断言
+```
+
+开发每次提交必须读 `AGENTS.md`、状态和章节账本；同步 `Important/` 两语言镜像和 `MANIFEST.json`；保留失败 CI、原书出处、所有历史事件及修订；不可用两个已知结局反复调参。新增领域按本领域古籍原文建立用神、格局、反证、应期和模板。
+
+## 五、中文导航与目录
+
+- [项目导航/](项目导航/README.md)：现行版本、基础表与排盘、疾病、后续领域、iOS、测试、历史及失败分类入口。
+- `src/wengua/`：**Python 正式源路径**（不能直接改中文破坏导入）。
+- `ios/WenguaAppUI/`：**Xcode 正式源码与资源引用**（不能直接搬动破坏 App）。
+- `data/`：原始来源表与专业模板；`tests/`：通用和现役回归。
+- `Important/`：按项目既定规范保留的源码**字节镜像**，不可视为多余复本删掉。
+- `docs/`、`archives/`、`schema/`、`sources/`：来源、规则、历史案例、版本与失败证据。历史资料保留可追溯，并由中文导航分类而非作为现行入口。
+
+
+> **2026-10-28 实盘核验增量**：天芮＋天禽同宫的**每颗星与自己的天盘携干一一对应**，分别参加其真实有序81格；只有病宫的两颗不同星分别携符合条件的乙／丁奇才允许各自触发同宫条件奖励（普通宫仍单组，物理宫基础仍只计一次）。本轮用户授权，不把原V8固定案当未见盲测。[规则与回归证据](docs/V80_DISEASE_DUAL_SKY_USER_AUTHORIZED_20261028.md)。
+
+
+> **2026-10-28 13:44 真盘对照**：本人日干乙艮8与同事月干戊离9虽然用神不同，却巧合覆盖相同四物理宫，原分均0；若0与实际凶象冲突或人物源尚未核，则不能推断「微恙」，改为未定论但保留原分。完整复现：[中性冲突审计](docs/HEALTH_V80_ZERO_CONFLICT_20261028_1344_AUDIT.md)。
+
+
+## Mac 一键打开当前 iPhone Simulator 版（2026-10-28 已编译验收）
+
+本机须已安装 Xcode、iOS Simulator Runtime 和 XcodeGen（如未安装，运行 `brew install xcodegen`）。克隆本仓库后在根目录执行：
+
+```sh
+./scripts/打开问卦模拟器.command
+```
+
+脚本自动生成现有 `WenguaApp.xcodeproj`、编译真实 `问卦.app`、检验四项资源并在 iPhone Simulator 安装打开。**这不是可在macOS Finder直接运行的Mac应用，也不是真机签名App。** GitHub [Xcode Simulator #40749467216](https://github.com/turnupmason/WenguaApp/actions/runs/40749467216) 已PASS，页面的 Artifacts 可取未签名模拟器 App。仅UI显示层修补，V8.0 固定模板与起盘计分逻辑完全不动。
+
+
+> **2026-10-28 最新 UI 定点修复已构建**：九宫宫名大字带「宫」、双星天盘干固定行、底部“继续”按钮安全区固定；V8.0 模板与计分完全未改。[实际 Xcode Simulator PASS #40751967636](https://github.com/turnupmason/WenguaApp/actions/runs/40751967636)；本机运行 `./scripts/打开问卦模拟器.command`。
+
+
+### 2026-10-28 · 九宫新手布局与天显时（当前已验收）
+
+现在中五宫在九宫图上留空，天禽寄宫的原中五地盘干与宿主地盘干并排显示，匹配各自真实天盘干的独立81格（例如伏吟盘戊+戊、丁+丁）。外宫标题居中并保留五行颜色；「神、星、门」可在宫位详情看到简明象意和原200表力量。天显时按甲己日甲子/甲戌、乙庚日甲申、丙辛日甲午、丁壬日甲辰、戊癸日甲寅严格触发，并仅在整盘总分加4一次，**不是每宫加4**。未修改原版200/81源数据和V8中文模板；见 `docs/V80_TIANXIAN_AND_TIANQIN_HOST_20261028.md`。
+
+最新真实验收：[V8主CI PASS #40768182662](https://github.com/turnupmason/WenguaApp/actions/runs/40768182662) · [Swift/Python全文 PASS #40768182456](https://github.com/turnupmason/WenguaApp/actions/runs/40768182456) · [macOS Xcode Simulator PASS #40768182645](https://github.com/turnupmason/WenguaApp/actions/runs/40768182645)。构建Artifact是未签名Simulator App，不能直接在普通Mac Finder运行或当成签名真机安装包。
+
+
+### 2026-10-31 · iPhone 双页断词展示修订
+
+疾病轻重的**第一页「专业解卦」必须同时显示**：原 V8.0 已决分类「吉局／凶局」（0 为微恙）、十档等级与文学标题（例如「极大吉：沉疴顿愈」）、本次 V11 真盘约 150–200 字的综合短断语；不是一行泛化好坏描述。短断语直接复用真实 `90_review`、成立的时局和应期原事实，不另改评分或依赖网络。
+
+**第二页「专业解盘」**逐项展示 V11 原样完整的病星、患者、医药、真实辅助、格局与应期，二者层次不同，第一页不可替代第二页。UI 修复审计：[IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md](docs/IOS_V11_FIRST_PAGE_150_200_SHORT_VERDICT_AND_FULL_DETAIL_20261031.md)。
+
+
+### 2026-10-31 BigFish 真正切换 V11 双页断词源（Mac 本地批量）
+
+指定脚本 `scripts/wengua_bigfish_518400_offline_editorial_20261029.py` 已从固定 V9/Wengua 旧源升级为固定 `46382694a418300ac4660a1c22bcf227857c9a52` 的 V11 原始 Python 模板与冻结 V8.0 计分源。原始 BigFish TS SHA 不变。每条真实盘可输出首页「吉凶分类＋十档标题＋150–200字实际证据综合断语」及不删节的全部专业章节，真时辰只取真用神；旧 output/SQL/人工润色档全部留存、V11 源/资源/输出另起 v6 目录。使用新随机种子 `202610311729` 的实际 BigFish 哥哥、姐姐、朋友全套文章已归档：[三盘原文](docs/BIGFISH_V11_THREE_REAL_RANDOM_COMPLETE_20261031.txt) · [专用审计](docs/BIGFISH_V11_THREE_REAL_RANDOM_AUDIT_20261031.md)。朋友的庚干原始源力量待核继续显示待核，不造力量。测试源未修改 iPhone V8 数值算法。
+
+
+### 2026-10-31 · 首页不能有头无尾（V11.1）
+
+用户明确：专业解卦第一页在盘面证据、医药及辅助说明后必须用**两句**有实盘来源的综合结论收尾，末句点明原 V8 十档（含零档不凶不吉）及古籍风格释义。旧版首页只用了 `90_review` 的前几段，导致漏掉结论；现 Swift 与 BigFish 展示层补尾，完整 `90_review` 保留在专业解盘。不得为压缩到150–200字而删尾。庚落巽四的辰养、巳长生在原12长生表中属真实两支；庚金生子水，源200格分别中等、大，不能拿宫象得分假装唯一强弱。当前 V8 计分、源码、原书及旧测试历史不改。真实 BigFish 新预览 #41245816648 三张盘均成功生成结尾，但归档因保护旧文件失败；Swift 最初语法失败 #41245714916 已保留，修复后 Xcode #41245989163 通过；Python主CI #41246073364、Swift原生用神 parity #41246073294 通过。旧大盘整库失败不称全通过，未签名真机也未代跑用户Mac全量。
