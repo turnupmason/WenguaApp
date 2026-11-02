@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "c390f48fe49326f089a8da9f8f56852a6bef9f7e"
+      "sha": "e6b0e0704d7e50a2332d57afef6646a1da540e85"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "c390f48fe49326f089a8da9f8f56852a6bef9f7e"
+      "sha": "e6b0e0704d7e50a2332d57afef6646a1da540e85"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "5debc99e437e7039eca0aa3c07a048a65c633a24"
+      "sha": "e7c16c266bc335bfceca0d78d0a7879373b8c066"
     },
     {
       "platform": "python",
@@ -757,7 +757,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV15Smoke.swift",
-      "sha": "c80edfeb44c1d24d8480bcf34d1916f204822be9"
+      "sha": "35931a53ec1590a625c528ba67ac7ac654537768"
     },
     {
       "platform": "python",
@@ -769,13 +769,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "1f064f4f1ccd614a87dd7f34b092ce57f13cc73f"
+      "sha": "8b02e5da0bba28a1b07f66ef46d9ff2b59f04500"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "062bad5f768db167f0aebfb14a8330f0107402ce"
+      "sha": "284180f04484a4631dd049c3734ca42e31e8716b"
     },
     {
       "platform": "swift",
@@ -793,7 +793,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
-      "sha": "9f62c0660067253153beb43ae3f2c283b12c6b05"
+      "sha": "fe64057284098e3ca1941c800358c25f13a60aa3"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
+      "sha": "2d87a366e3a4b4d97844659c41ea3c67d9cbe39f"
     }
   ]
 }
