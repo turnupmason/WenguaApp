@@ -645,8 +645,11 @@ enum WenguaNativeDiscomfortV15 {
         let natural:[String:String]=["同宫":"与天芮同宫","比和":"与病宫比和",
             "病宫克此宫":"受病宫所克","此宫克病宫":"此宫克病宫",
             "病宫生此宫":"得病宫相生","此宫生病宫":"此宫生扶病宫"]
-        let hourFull="时干\(hourStem)落\(label(hourPalace))宫，属\(chart.bureau.dun=="yang" ? "阳" : "阴")遁\(panel(hourPalace))，力量\(hourPower)，此干主\(stemFocus(hourStem))；\(natural[rel] ?? rel)"+
-            (hourMatch.map{"，同指"+$0} ?? "")+"。"
+        let hourFull=[
+            "时干\(hourStem)落\(label(hourPalace))宫，属\(chart.bureau.dun=="yang" ? "阳" : "阴")遁\(panel(hourPalace))，力量\(hourPower)，此干主\(stemFocus(hourStem))；\(natural[rel] ?? rel)",
+            hourMatch.map{"，同指"+$0} ?? "",
+            "。"
+        ].joined()
         let actorSiteHit=sourceLocation(patientPalace).first(where:{
             matched($0,leadSites)
         })
