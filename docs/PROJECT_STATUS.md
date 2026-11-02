@@ -3301,3 +3301,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／时间／工程pin和新增准备页源，V9/V11、V27、Python数值与7份资源保持字节相同，Important镜像同步。完整回归首轮855项1条旧段落格式契约失败保留后迁移；最终全量及实际Swift／Xcode／bundle待执行结果追加，不拿p5旧通过充数。无删除原测试方法／新skip；无新增章节病例、签名真机或像素视觉验收。详见 docs/IOS_SETUP_PALACE_UI_20261102.md。
 
 本地最终完整回归855 tests：0 failures、0 errors、3既有skip；专项33项通过。原失败和最终原日志／SHA已存docs/audits/ios_setup_palace_ui_20261102/，未删除旧测试或新加skip。实际Swift与Xcode仍待本提交Actions执行。
+
+
+### 当前封存轻重回归实测 · run 41502334812
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码879f8500be1626da4a2fbd5e1c49643bcbbcfa42。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41502334812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
