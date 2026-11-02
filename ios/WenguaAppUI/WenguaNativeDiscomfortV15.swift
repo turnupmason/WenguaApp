@@ -345,8 +345,11 @@ enum WenguaNativeDiscomfortV15 {
         func stemSites(_ stem:String,_ full:Bool=false)->[String] {
             if let selected=stemOverrides[stem]?["sites"] as? [String] {return selected}
             let v=mapping[stem] ?? [:]
-            let all=(v["qimen_secret_vol13"] ?? [])+
-                (full ? (v["sanming_viscera"] ?? [])+(v["sanming_body_surface"] ?? []) : [])
+            var all=v["qimen_secret_vol13"] ?? []
+            if full {
+                all.append(contentsOf:v["sanming_viscera"] ?? [])
+                all.append(contentsOf:v["sanming_body_surface"] ?? [])
+            }
             return parts(all.joined(separator:"/"))
         }
         func stemFocus(_ stem:String)->String {
