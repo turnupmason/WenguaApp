@@ -1,0 +1,1820 @@
+{
+  "schema": "wengua_user_timing_source_units_v1",
+  "offset_unit": "Unicode code points, start inclusive/end exclusive; line text excludes newline",
+  "source_id": "user_timing_notes_20261102",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "units": [
+    {
+      "line": 1,
+      "char_start": 0,
+      "char_end": 13,
+      "line_end": 14,
+      "text_sha256": "83f9316f6a27ff4d9e5b102a4087fc5453d0b399ba64d933b913c93c2297c5a1",
+      "kind": "heading",
+      "rule_ids": [],
+      "illustration_ids": [],
+      "section_id": "intro"
+    },
+    {
+      "line": 2,
+      "char_start": 14,
+      "char_end": 132,
+      "line_end": 133,
+      "text_sha256": "c4d573e0caabb435546d91d2d749e7983e612c1e0be1af30cb943afd0acf4b06",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T002",
+        "T003",
+        "T004"
+      ],
+      "illustration_ids": [],
+      "section_id": "intro"
+    },
+    {
+      "line": 3,
+      "char_start": 133,
+      "char_end": 174,
+      "line_end": 175,
+      "text_sha256": "fe7790d2187bd2c73cd77de58b48542ef3d9ee9b4db86f78ada0a1ad2d585f45",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005"
+      ],
+      "illustration_ids": [],
+      "section_id": "intro"
+    },
+    {
+      "line": 4,
+      "char_start": 175,
+      "char_end": 217,
+      "line_end": 218,
+      "text_sha256": "ae7310858e85ff4b9d2da95bed000ffe3d2e558b2ff873e65263a0dcf92f93cf",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T006"
+      ],
+      "illustration_ids": [],
+      "section_id": "intro"
+    },
+    {
+      "line": 5,
+      "char_start": 218,
+      "char_end": 263,
+      "line_end": 264,
+      "text_sha256": "04b69d13e4ad6b6ad852b33eaa7d68fb35e45814143a789a9cb4e020c27f173f",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T007"
+      ],
+      "illustration_ids": [],
+      "section_id": "intro"
+    },
+    {
+      "line": 6,
+      "char_start": 264,
+      "char_end": 294,
+      "line_end": 295,
+      "text_sha256": "a7b865c2a4d06275df878d22cd6287228884dc3e61b00f8f8d260adfe2296708",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001"
+      ],
+      "illustration_ids": [],
+      "section_id": "clock"
+    },
+    {
+      "line": 7,
+      "char_start": 295,
+      "char_end": 315,
+      "line_end": 316,
+      "text_sha256": "bdc23b08c0a7736e93687b74b8fbd29d1232bb310520c2929f1d021967d6ece2",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001"
+      ],
+      "illustration_ids": [],
+      "section_id": "clock"
+    },
+    {
+      "line": 8,
+      "char_start": 316,
+      "char_end": 401,
+      "line_end": 402,
+      "text_sha256": "99d5a070a5d40b28d692af70d5e20c39e0fa5bc7c0c70dc705b5023efd75ae1e",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T002"
+      ],
+      "illustration_ids": [],
+      "section_id": "clock"
+    },
+    {
+      "line": 9,
+      "char_start": 402,
+      "char_end": 493,
+      "line_end": 494,
+      "text_sha256": "2858623e75c7abc8aa1a9839b681ffd625ac1725b5a7ebf81fdb9f805803989a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T009"
+      ],
+      "illustration_ids": [],
+      "section_id": "clock"
+    },
+    {
+      "line": 10,
+      "char_start": 494,
+      "char_end": 585,
+      "line_end": 586,
+      "text_sha256": "73764c070c45ff06849931055aeb82527cc699a81f0835df3b546297ac2ea007",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T008",
+        "T009"
+      ],
+      "illustration_ids": [
+        "E01",
+        "E02"
+      ],
+      "section_id": "clock"
+    },
+    {
+      "line": 11,
+      "char_start": 586,
+      "char_end": 700,
+      "line_end": 701,
+      "text_sha256": "63d34877e20860181cee6db87cb31a6ff296d204932480a1019a394485e2b9da",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T008",
+        "T009"
+      ],
+      "illustration_ids": [
+        "E01",
+        "E02"
+      ],
+      "section_id": "clock"
+    },
+    {
+      "line": 12,
+      "char_start": 701,
+      "char_end": 747,
+      "line_end": 748,
+      "text_sha256": "7ae1f8688130ddf8fab461e4811df7aaf0230874bda16b7be39b680a42bede62",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 13,
+      "char_start": 748,
+      "char_end": 749,
+      "line_end": 750,
+      "text_sha256": "c0ccb452d3bc73071be2fcc72b194cfd8c69da06fdbd410bf129169c3b2f0e30",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 14,
+      "char_start": 750,
+      "char_end": 904,
+      "line_end": 905,
+      "text_sha256": "f2610c4bc41c57a4518cf34948c568521ba291d6af2bcede24b883a33e8670b5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "illustration_ids": [
+        "E03"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 15,
+      "char_start": 905,
+      "char_end": 972,
+      "line_end": 973,
+      "text_sha256": "f01ced6cd807b93680caa4aa2f1712abe96f9578e6e69edadc4c60c29f6e5d4d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T011",
+        "T012"
+      ],
+      "illustration_ids": [
+        "E03"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 16,
+      "char_start": 973,
+      "char_end": 995,
+      "line_end": 996,
+      "text_sha256": "165cb23e911eba33a61808d1f703b73d4188b6f08ab89fa279dcc98b019810b5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T013"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 17,
+      "char_start": 996,
+      "char_end": 1064,
+      "line_end": 1065,
+      "text_sha256": "baaf1af1cceed589c9599d945ffd35f86bfd60b6b67895c786fc5178d0b295a4",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T013"
+      ],
+      "illustration_ids": [
+        "E04"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 18,
+      "char_start": 1065,
+      "char_end": 1205,
+      "line_end": 1206,
+      "text_sha256": "78b9c06aae37c9ca17966abbc8210aab02fb7d63ea41fb5314f614f62b83c31a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T013"
+      ],
+      "illustration_ids": [
+        "E04",
+        "E05"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 19,
+      "char_start": 1206,
+      "char_end": 1252,
+      "line_end": 1253,
+      "text_sha256": "1c59ef6883e3f2da39994273d35d78b4f8692f2eb97b19eba516affee6afd902",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T013"
+      ],
+      "illustration_ids": [
+        "E04",
+        "E05"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 20,
+      "char_start": 1253,
+      "char_end": 1316,
+      "line_end": 1317,
+      "text_sha256": "46920bc98fe7ca6036d8795d1d9402442a3ab81ff8be9da9e7bf6b93098c4ecc",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T011",
+        "T012",
+        "T013"
+      ],
+      "illustration_ids": [
+        "E06"
+      ],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 21,
+      "char_start": 1317,
+      "char_end": 1385,
+      "line_end": 1386,
+      "text_sha256": "b7d4d72620dc1683dde45bac526e09435c6b2543025d4ff4d84b769eceb165e7",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T011",
+        "T014"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 22,
+      "char_start": 1386,
+      "char_end": 1409,
+      "line_end": 1410,
+      "text_sha256": "4f3e593528c752a8cc9e958da891a147eb31d6518a7b3908cc5a74a8c5e1ad3c",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T011",
+        "T014"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 23,
+      "char_start": 1410,
+      "char_end": 1471,
+      "line_end": 1472,
+      "text_sha256": "440b88e1fcaf52d714209c9e2cb5c8ebe5a68b3cd08f351367f62f31f02ea647",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T011",
+        "T014"
+      ],
+      "illustration_ids": [],
+      "section_id": "executor_numbers"
+    },
+    {
+      "line": 24,
+      "char_start": 1472,
+      "char_end": 1519,
+      "line_end": 1520,
+      "text_sha256": "da61349009332759f97adbab82723608ebf3e5c2af64bc32f63b876fdb3f1c4d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T015"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 25,
+      "char_start": 1520,
+      "char_end": 1521,
+      "line_end": 1522,
+      "text_sha256": "c0ccb452d3bc73071be2fcc72b194cfd8c69da06fdbd410bf129169c3b2f0e30",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T015"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 26,
+      "char_start": 1522,
+      "char_end": 1552,
+      "line_end": 1553,
+      "text_sha256": "f62e8bc8257e284241d8db229299bbbad7854b1888b1f21505b66fc634436f6b",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T015"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 27,
+      "char_start": 1553,
+      "char_end": 1719,
+      "line_end": 1720,
+      "text_sha256": "25b6eb61c8a9b1f89fcfa0a9dfc9f12ed7d290b341636aa0e778ba461f81e825",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T015",
+        "T016"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 28,
+      "char_start": 1720,
+      "char_end": 1807,
+      "line_end": 1808,
+      "text_sha256": "542c9aca20e1a501a02b076be19ec0bc45bca2d935fb8bfefeefba160b2545fb",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T018"
+      ],
+      "illustration_ids": [
+        "E07"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 29,
+      "char_start": 1808,
+      "char_end": 1831,
+      "line_end": 1832,
+      "text_sha256": "c7c22d3c15917941d95a1df32066ff5231b521727ae5029dd89062e5390b5a22",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T018"
+      ],
+      "illustration_ids": [
+        "E07"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 30,
+      "char_start": 1832,
+      "char_end": 1921,
+      "line_end": 1922,
+      "text_sha256": "b8076c4897de0bb8b469b23e139bfe8d517b888921c9474d241854ddc884a7a5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T018"
+      ],
+      "illustration_ids": [
+        "E07"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 31,
+      "char_start": 1922,
+      "char_end": 2008,
+      "line_end": 2009,
+      "text_sha256": "6ac718819f58b9e33b9dd51541d00beb343bf0070a9727d698e6fad49ca60d65",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T018"
+      ],
+      "illustration_ids": [
+        "E07"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 32,
+      "char_start": 2009,
+      "char_end": 2102,
+      "line_end": 2103,
+      "text_sha256": "a05852ef2b14b37bd627cdb545fbf0157dc8bb501c8219d1a63e54e6adf2e980",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T019"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 33,
+      "char_start": 2103,
+      "char_end": 2145,
+      "line_end": 2146,
+      "text_sha256": "5ca1ea04e03050e0c0ef82cb6d6122c81d991fa8dffc9bb68c58d20f340a11e9",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 34,
+      "char_start": 2146,
+      "char_end": 2338,
+      "line_end": 2339,
+      "text_sha256": "3ea22c36a0347550219527e51e5bbc0a698930056827093bb1c825207ee29e72",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 35,
+      "char_start": 2339,
+      "char_end": 2406,
+      "line_end": 2407,
+      "text_sha256": "6d218276080afbe51cbd854bb63b4d6051bc9c900b562fd463580ed36610788c",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "illustration_ids": [
+        "E08"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 36,
+      "char_start": 2407,
+      "char_end": 2441,
+      "line_end": 2442,
+      "text_sha256": "21b604574071df2e84742717a9a8415ea6e3129dc54fa5c364199458980f2c82",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "illustration_ids": [
+        "E08"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 37,
+      "char_start": 2442,
+      "char_end": 2590,
+      "line_end": 2591,
+      "text_sha256": "3b3a3eae57067bc2c4aa69368c90954fcbc134d3ba53706585308e4aa2160196",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "illustration_ids": [
+        "E09",
+        "E10"
+      ],
+      "section_id": "roles"
+    },
+    {
+      "line": 38,
+      "char_start": 2591,
+      "char_end": 2643,
+      "line_end": 2644,
+      "text_sha256": "c456208225c3f008d4103b183bfadc22dc2a74f4c3c56accd139f299af0441d6",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "illustration_ids": [],
+      "section_id": "roles"
+    },
+    {
+      "line": 39,
+      "char_start": 2644,
+      "char_end": 2682,
+      "line_end": 2683,
+      "text_sha256": "111af593d354109f8cae7d865c578a265891b38e7aee94fc46346a0de3e14e24",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 40,
+      "char_start": 2683,
+      "char_end": 2826,
+      "line_end": 2827,
+      "text_sha256": "a8d8a011c84899a1fcc73c1d5309f402f335cf81a59f02d1c8bb17b492a6b57d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002",
+        "T022",
+        "T023"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 41,
+      "char_start": 2827,
+      "char_end": 2896,
+      "line_end": 2897,
+      "text_sha256": "7c0a3177be12957db1297fd29ea8489cd1bc861c9e7473317b44206b6a9f27b1",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002",
+        "T024",
+        "T025"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 42,
+      "char_start": 2897,
+      "char_end": 2964,
+      "line_end": 2965,
+      "text_sha256": "4d0bb24416b66225e0b783bc08adddc08c1dca38425eda7f24b54aec7b4664bd",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002",
+        "T026"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 43,
+      "char_start": 2965,
+      "char_end": 2988,
+      "line_end": 2989,
+      "text_sha256": "097b0d1dd7670592ef77fa5fdeb918d6258f00e1faab7097107bfd19230bd950",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002",
+        "T026"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 44,
+      "char_start": 2989,
+      "char_end": 2994,
+      "line_end": 2995,
+      "text_sha256": "3c7ac45dd97a5159441252e63085415d2218aeaaee5259ed39c034cc5075bb94",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T002",
+        "T026"
+      ],
+      "illustration_ids": [],
+      "section_id": "pace"
+    },
+    {
+      "line": 45,
+      "char_start": 2995,
+      "char_end": 3046,
+      "line_end": 3047,
+      "text_sha256": "9c947232dae793207efd06cb8398153796903b71253ad5df1ebcedfb50f365ac",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T027"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 46,
+      "char_start": 3047,
+      "char_end": 3085,
+      "line_end": 3086,
+      "text_sha256": "bf43abc8d3284ee70a68d68d6bfbc9690e345944a38da42793604f082ee3a7f7",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T027"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 47,
+      "char_start": 3086,
+      "char_end": 3099,
+      "line_end": 3100,
+      "text_sha256": "cd1ff34c3d8a281a426077a38a27587ad472232be287c60d5c08289838cf901e",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T027"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 48,
+      "char_start": 3100,
+      "char_end": 3212,
+      "line_end": 3213,
+      "text_sha256": "d02bda7388adb51fbf48ac14be70a4457039d1b8566283b6bb1db12ccd1b27d2",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T027"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 49,
+      "char_start": 3213,
+      "char_end": 3231,
+      "line_end": 3232,
+      "text_sha256": "2989484ff6ef1e569b59f074ea2974a989d4ccb88efe1ff3b5860795131a0c05",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T028"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 50,
+      "char_start": 3232,
+      "char_end": 3250,
+      "line_end": 3251,
+      "text_sha256": "4acd49beeee5f6a90cd827eb3f6172228c961ba1c3cbaac6c1fc9d2c7b0d7b27",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T029"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 51,
+      "char_start": 3251,
+      "char_end": 3270,
+      "line_end": 3271,
+      "text_sha256": "c6e62c57e49acab12ee18d1b3fb1f052fd2e757175012ff9a8fc9dced1523ff5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T030"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 52,
+      "char_start": 3271,
+      "char_end": 3291,
+      "line_end": 3292,
+      "text_sha256": "10b5d392e9c8a72c975bf8208455c66a7cfe1b54ef00b3f1b18030901ee5bea8",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T031"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 53,
+      "char_start": 3292,
+      "char_end": 3310,
+      "line_end": 3311,
+      "text_sha256": "e6b056cb1ed548ff57088312fc1645acf9e691f65b57cc6cd3f4d80664379385",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T032"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 54,
+      "char_start": 3311,
+      "char_end": 3330,
+      "line_end": 3331,
+      "text_sha256": "f8998bcb0ba4b5fcdb58565cf3c8d538fe046625f618b1e054d20f7ca4782892",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T033"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 55,
+      "char_start": 3331,
+      "char_end": 3347,
+      "line_end": 3348,
+      "text_sha256": "06e7f1f395092b786912357d2705d569d428e4ce07ba5d948b11a7fc33f15515",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T034"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 56,
+      "char_start": 3348,
+      "char_end": 3423,
+      "line_end": 3424,
+      "text_sha256": "e58794a01f1c1cac9798b50bca83c14ab769b8ca4d63bc070a34f05393417d57",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T035"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 57,
+      "char_start": 3424,
+      "char_end": 3437,
+      "line_end": 3438,
+      "text_sha256": "978b1ecf75620a48ac3a00133e59210f7d497f87a88d2c6acf903f04d3eb4290",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T036"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 58,
+      "char_start": 3438,
+      "char_end": 3552,
+      "line_end": 3553,
+      "text_sha256": "b13e4c0944fb9f1436f9f2a02ad87578cadcc72854b87ea452138d3126d26c44",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T036"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 59,
+      "char_start": 3553,
+      "char_end": 3576,
+      "line_end": 3577,
+      "text_sha256": "fa59e011848f5d54770bb70c7ed910a0b412444d9cfa79a55fbedc83522aa745",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T037"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 60,
+      "char_start": 3577,
+      "char_end": 3598,
+      "line_end": 3599,
+      "text_sha256": "3653e29e340fe404342b99b885448a33a6d452444e2e62cfaa48d4388d58660e",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T038"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 61,
+      "char_start": 3599,
+      "char_end": 3620,
+      "line_end": 3621,
+      "text_sha256": "d09bc97a56a3d8bed95fa50e9180e9a9c5b284018b2a88d634bda9fcdcd142c8",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T039"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 62,
+      "char_start": 3621,
+      "char_end": 3654,
+      "line_end": 3655,
+      "text_sha256": "cdf7b2a0c500a2670972fe7c28d58eea302bbceab27f6ad029ab529510e03081",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T040"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 63,
+      "char_start": 3655,
+      "char_end": 3671,
+      "line_end": 3672,
+      "text_sha256": "ec892f959645996a4e129536bb0b07922422379816d7462cb698fc03b1fda8ab",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T041"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 64,
+      "char_start": 3672,
+      "char_end": 3743,
+      "line_end": 3744,
+      "text_sha256": "154fbdb355db2ca66f6e2bb9dd8e3c0387fa7872e2561b07f5e92aec63655134",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T042"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 65,
+      "char_start": 3744,
+      "char_end": 3923,
+      "line_end": 3924,
+      "text_sha256": "2709839611db64aa256440b3af051b1c1f8f888291bad24ef768408c8232eb2a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T043"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 66,
+      "char_start": 3924,
+      "char_end": 4096,
+      "line_end": 4097,
+      "text_sha256": "c8c268e6aba0a61a4a70d80c75554d18f947f9462292e5b8cb841551a08a579a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T043"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 67,
+      "char_start": 4097,
+      "char_end": 4111,
+      "line_end": 4112,
+      "text_sha256": "d98669f6889fee48cb3d33b9847bcd0110d17b17338e6afadad44f2d2c8a9187",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T043"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 68,
+      "char_start": 4112,
+      "char_end": 4205,
+      "line_end": 4206,
+      "text_sha256": "a9db64b75c16ebd8cb3690e010572bc5901b20f140cb73c71b5623a5241e56c5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T044"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 69,
+      "char_start": 4206,
+      "char_end": 4232,
+      "line_end": 4233,
+      "text_sha256": "80bbec530e09e2c19f13c875189b35523cda79e05115d0e1d6f7f167fff1081b",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T044"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 70,
+      "char_start": 4233,
+      "char_end": 4404,
+      "line_end": 4405,
+      "text_sha256": "8a18dcf0954eaff1e0a499a62c7c4726aa64a25897385fff089039323e7a369a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T045",
+        "T046"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 71,
+      "char_start": 4405,
+      "char_end": 4481,
+      "line_end": 4482,
+      "text_sha256": "1898e729c8bd39fa7966b7dfe1f895c354f38bfc4c8074a25036fce26bb0c29e",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T047",
+        "T048"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 72,
+      "char_start": 4482,
+      "char_end": 4622,
+      "line_end": 4623,
+      "text_sha256": "8e1191643978cc2287eac4b3a352f2ba9e356dfcee66cd71cde8e64cf2b3823a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T049",
+        "T050"
+      ],
+      "illustration_ids": [],
+      "section_id": "classes"
+    },
+    {
+      "line": 73,
+      "char_start": 4623,
+      "char_end": 4803,
+      "line_end": 4804,
+      "text_sha256": "17c8456d16f4aa048e9c5e2715361599e952488906a3b74ba45482249e3e0143",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T051",
+        "T052"
+      ],
+      "illustration_ids": [
+        "E11"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 74,
+      "char_start": 4804,
+      "char_end": 5131,
+      "line_end": 5132,
+      "text_sha256": "16e9ea344ce9f54f336e2a7976885f9809d26fc9889be338e71ef33317ae7eb6",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T051",
+        "T052",
+        "T053",
+        "T054"
+      ],
+      "illustration_ids": [
+        "E11",
+        "E12"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 75,
+      "char_start": 5132,
+      "char_end": 5268,
+      "line_end": 5269,
+      "text_sha256": "41d9f833f996a6ff130d4eb96ffc36a6fe91f9e79fe201c2c19585a211cf8ad4",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T055"
+      ],
+      "illustration_ids": [
+        "E13"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 76,
+      "char_start": 5269,
+      "char_end": 5433,
+      "line_end": 5434,
+      "text_sha256": "d7aca5468589e478fb9a4921014c3b995d163e12146b82554174214b1957499c",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T055"
+      ],
+      "illustration_ids": [
+        "E13"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 77,
+      "char_start": 5434,
+      "char_end": 5610,
+      "line_end": 5611,
+      "text_sha256": "16709b6e2e369ffbbe1e2bdb6bf7bd2275579b77bd4dae595ba7fd92aaf213aa",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T052",
+        "T053",
+        "T056"
+      ],
+      "illustration_ids": [
+        "E14"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 78,
+      "char_start": 5611,
+      "char_end": 5648,
+      "line_end": 5649,
+      "text_sha256": "defd7fd3705b7f1fc92f49b3902fd191aa29bb7c721d13f1f8eba7966771342b",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T057"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 79,
+      "char_start": 5649,
+      "char_end": 5970,
+      "line_end": 5971,
+      "text_sha256": "837453133161294bf100f7cd9b6ab635d708a26ce402cd98e88e6ff16d7804e2",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T057",
+        "T058",
+        "T059"
+      ],
+      "illustration_ids": [
+        "E15",
+        "E16",
+        "E17"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 80,
+      "char_start": 5971,
+      "char_end": 6014,
+      "line_end": 6015,
+      "text_sha256": "5d4ec30645c1ec64fe92ba5fc0acdb9bfd770d126a097cf2ae1448fcba68f340",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T060"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 81,
+      "char_start": 6015,
+      "char_end": 6061,
+      "line_end": 6062,
+      "text_sha256": "0f611239f996c98ca47c9dc92153d026005b3491d1e61b7986e998d9e33527cc",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T061"
+      ],
+      "illustration_ids": [
+        "E18"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 82,
+      "char_start": 6062,
+      "char_end": 6113,
+      "line_end": 6114,
+      "text_sha256": "37c4e092aff80cfbf2b1d7264d17e316f7ed6d751a1e83ccea07d6cca84d4262",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T061"
+      ],
+      "illustration_ids": [
+        "E18"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 83,
+      "char_start": 6114,
+      "char_end": 6168,
+      "line_end": 6169,
+      "text_sha256": "5bb5b39b135d02143e5485bf67cbf78506b6ecc3a00dacd6d8c4a86abcafbd55",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T062"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 84,
+      "char_start": 6169,
+      "char_end": 6267,
+      "line_end": 6268,
+      "text_sha256": "21b34f9297804fbfa23db156c2c73e1a7502955436b55b158e0288587a6ceaf4",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T062",
+        "T063"
+      ],
+      "illustration_ids": [
+        "E19"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 85,
+      "char_start": 6268,
+      "char_end": 6346,
+      "line_end": 6347,
+      "text_sha256": "19af7e78d5943d49cafbe2abb6d2312bc92aaf5334c2d8fa3b28727fdb57c5da",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T062",
+        "T064"
+      ],
+      "illustration_ids": [
+        "E19"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 86,
+      "char_start": 6347,
+      "char_end": 6597,
+      "line_end": 6598,
+      "text_sha256": "7e87da20306cc9df7cf8478e22025f38cfc5c026202f5d5fb0478440e6e9495a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T062",
+        "T065",
+        "T066"
+      ],
+      "illustration_ids": [
+        "E19"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 87,
+      "char_start": 6598,
+      "char_end": 6635,
+      "line_end": 6636,
+      "text_sha256": "d58187bcae6a8ddcdee21db7aeccceb77d7f914f50a4406d6c1c362a9982d2c4",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T062",
+        "T067"
+      ],
+      "illustration_ids": [
+        "E19"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 88,
+      "char_start": 6636,
+      "char_end": 6726,
+      "line_end": 6727,
+      "text_sha256": "fcbfb8c9fb06bcf2b5c0057d8406c46cd5d25e6b710a8263b246bfc19b7a89da",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T068",
+        "T069"
+      ],
+      "illustration_ids": [
+        "E20"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 89,
+      "char_start": 6727,
+      "char_end": 6865,
+      "line_end": 6866,
+      "text_sha256": "5af56e9d45d9457b81de58fd23c727a28ca2336f7f41271d8df385a11cf12783",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T052",
+        "T068",
+        "T069",
+        "T070"
+      ],
+      "illustration_ids": [
+        "E20",
+        "E21"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 90,
+      "char_start": 6866,
+      "char_end": 7023,
+      "line_end": 7024,
+      "text_sha256": "e121b6a4a16ad95d08b434f84404b518d633853a022a458d3820bc591e045466",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T066",
+        "T071",
+        "T072"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 91,
+      "char_start": 7024,
+      "char_end": 7138,
+      "line_end": 7139,
+      "text_sha256": "218ff8c2ef172f021cca9be6ad51bb93da55f6df2cff89760b53c9dc59de89ee",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T052",
+        "T071",
+        "T073"
+      ],
+      "illustration_ids": [
+        "E22"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 92,
+      "char_start": 7139,
+      "char_end": 7199,
+      "line_end": 7200,
+      "text_sha256": "1dd428afab91a9b5b4c731acd6480774ce7654d2da58f5af3a5461f75b9848a3",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T052",
+        "T071",
+        "T073"
+      ],
+      "illustration_ids": [
+        "E22"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 93,
+      "char_start": 7200,
+      "char_end": 7233,
+      "line_end": 7234,
+      "text_sha256": "eb1986fa800126b79e43814bf86f64673edaf0eaaaa303cb3303b9387851b44d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T074"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 94,
+      "char_start": 7234,
+      "char_end": 7258,
+      "line_end": 7259,
+      "text_sha256": "ccc60f5044eae6a9f924da97d81527b631f9b97ffa43cdceaf9b12e00694abc9",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T075"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 95,
+      "char_start": 7259,
+      "char_end": 7424,
+      "line_end": 7425,
+      "text_sha256": "476812541413e69684761b160391e325e44389c6f03479a97dbd1fec9f554675",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T052",
+        "T075",
+        "T076",
+        "T077"
+      ],
+      "illustration_ids": [
+        "E23"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 96,
+      "char_start": 7425,
+      "char_end": 7740,
+      "line_end": 7741,
+      "text_sha256": "bb357b5822ac49e8070058d79bc32480ead7e5bf016f8f77c07a7710b01e522f",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T077",
+        "T078"
+      ],
+      "illustration_ids": [
+        "E24"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 97,
+      "char_start": 7741,
+      "char_end": 7802,
+      "line_end": 7803,
+      "text_sha256": "e1a391384978925ef4a26c8c43b97a677c666ace4ac25403ad7d60f9115c449d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T079"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 98,
+      "char_start": 7803,
+      "char_end": 7825,
+      "line_end": 7826,
+      "text_sha256": "94dfd99c7c160be36d9496e6544e3be5e7a1e136cd26ba08d0b02881075b5136",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T080",
+        "T081"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 99,
+      "char_start": 7826,
+      "char_end": 7871,
+      "line_end": 7872,
+      "text_sha256": "610070103de37e1164ff372766cd7ffdf4b8c5e83fc06c76260b735536e9079a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T082"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 100,
+      "char_start": 7872,
+      "char_end": 7894,
+      "line_end": 7895,
+      "text_sha256": "caee736881c9ab3302c247ca24b0aad709136d1e79fdf093481b75e3ea8992f0",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T043",
+        "T083"
+      ],
+      "illustration_ids": [],
+      "section_id": "state_order"
+    },
+    {
+      "line": 101,
+      "char_start": 7895,
+      "char_end": 8005,
+      "line_end": 8006,
+      "text_sha256": "1c8e15a28dd3d2c0b37af9d2c891ae3ac0303ab9f91ff7e6e9e8edd4fdcf8d82",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T043",
+        "T083"
+      ],
+      "illustration_ids": [
+        "E25"
+      ],
+      "section_id": "state_order"
+    },
+    {
+      "line": 102,
+      "char_start": 8006,
+      "char_end": 8076,
+      "line_end": 8077,
+      "text_sha256": "d9ae45c88cda4bafceebc7d38100e6abbada908eaff7a13ebb87a6415176b67f",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 103,
+      "char_start": 8077,
+      "char_end": 8172,
+      "line_end": 8173,
+      "text_sha256": "6b1ae7fdc66f974d606641c8f12a03b9de8e2e8653d650cafe9d53e7d8fbf67f",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T003",
+        "T005"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 104,
+      "char_start": 8173,
+      "char_end": 8402,
+      "line_end": 8403,
+      "text_sha256": "ffc61babfb2e430834e19551c613f7ced3f82263829e4c9ec63254420bf6c32c",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005",
+        "T084"
+      ],
+      "illustration_ids": [
+        "E26"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 105,
+      "char_start": 8403,
+      "char_end": 8516,
+      "line_end": 8517,
+      "text_sha256": "a0a811048b342ac49569f1cfe4807fcaecdb6c2b594d3f0e15015da9c44d806d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005",
+        "T085"
+      ],
+      "illustration_ids": [
+        "E26"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 106,
+      "char_start": 8517,
+      "char_end": 8590,
+      "line_end": 8591,
+      "text_sha256": "127f81b9205db41c3e2dd177d76430d8229cc2f5096f2e7591ef4530afe35b8d",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005",
+        "T086"
+      ],
+      "illustration_ids": [
+        "E27"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 107,
+      "char_start": 8591,
+      "char_end": 8613,
+      "line_end": 8614,
+      "text_sha256": "cf53f4896eb1e15cc6353fcc6f00952b4823dc209c3cde01fee8c0f63975b9cb",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005",
+        "T006",
+        "T007",
+        "T087"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 108,
+      "char_start": 8614,
+      "char_end": 8683,
+      "line_end": 8684,
+      "text_sha256": "2f079b93f7d739f567642f5116d48cbf8455ebf34225595a524889f16e52872b",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T005",
+        "T006",
+        "T007",
+        "T087"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 109,
+      "char_start": 8684,
+      "char_end": 8703,
+      "line_end": 8704,
+      "text_sha256": "2a3473d36b6f46fd9c4332568e695ed763ff03a714a0f7f6f2af0a0bd40ce25b",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T004"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 110,
+      "char_start": 8704,
+      "char_end": 8883,
+      "line_end": 8884,
+      "text_sha256": "1fa5364e1deb26be89a5b6ffa800e3bf72d7d4e5c7badf985fc48b5863577cb1",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T004",
+        "T005",
+        "T088"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 111,
+      "char_start": 8884,
+      "char_end": 9002,
+      "line_end": 9003,
+      "text_sha256": "6163939d8899e6197f6d1127fc518a9a586f8d855a87c6f8192ced9e31088dc5",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T089"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 112,
+      "char_start": 9003,
+      "char_end": 9070,
+      "line_end": 9071,
+      "text_sha256": "ae25d42e76840ff38147bb1744da276ae808de7d2ca0ab960b1b7d17264bfda1",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T090"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 113,
+      "char_start": 9071,
+      "char_end": 9101,
+      "line_end": 9102,
+      "text_sha256": "62b8a1e5e6dd87fe3c00fe5c906296a58ac3e30ce15dc9619c7935f1e652361a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T090"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 114,
+      "char_start": 9102,
+      "char_end": 9199,
+      "line_end": 9200,
+      "text_sha256": "7b1f74a822ad0b600af85f2fc3bf8cd371d31f8b03edd83049b7215ad08af7ac",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T021",
+        "T090"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 115,
+      "char_start": 9200,
+      "char_end": 9476,
+      "line_end": 9477,
+      "text_sha256": "b1f7f2c371593f55474df1c5cd3ebdbd8d95f85b2d104249617e65412e856ff4",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T009",
+        "T090"
+      ],
+      "illustration_ids": [
+        "E28"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 116,
+      "char_start": 9477,
+      "char_end": 9559,
+      "line_end": 9560,
+      "text_sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T090",
+        "T091"
+      ],
+      "illustration_ids": [
+        "E29"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 117,
+      "char_start": 9560,
+      "char_end": 9611,
+      "line_end": 9612,
+      "text_sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T090",
+        "T091"
+      ],
+      "illustration_ids": [
+        "E29"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 118,
+      "char_start": 9612,
+      "char_end": 9700,
+      "line_end": 9701,
+      "text_sha256": "3edb90ee852c61ffc0e6cc35828083fe972c84470089f95fe01ba426c8316f32",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T090",
+        "T092"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 119,
+      "char_start": 9701,
+      "char_end": 9754,
+      "line_end": 9755,
+      "text_sha256": "86fc9d5e65a32ef8086568041d7eefc30cadcdf8c5077e94ca90ccfa2183b8a7",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T017",
+        "T090",
+        "T092"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 120,
+      "char_start": 9755,
+      "char_end": 10028,
+      "line_end": 10029,
+      "text_sha256": "0039c5668dab90c126ff3c3a781a0bc9754bf590c4c7ae8151761807be81e35c",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T001",
+        "T009",
+        "T090",
+        "T092"
+      ],
+      "illustration_ids": [
+        "E28"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 121,
+      "char_start": 10029,
+      "char_end": 10032,
+      "line_end": 10033,
+      "text_sha256": "444bc789c6d967f9e8c69fe3ff7fdb50c2dfd9680f904dee107d70e88223be60",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T090",
+        "T092"
+      ],
+      "illustration_ids": [
+        "E28"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 122,
+      "char_start": 10033,
+      "char_end": 10115,
+      "line_end": 10116,
+      "text_sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T090",
+        "T091",
+        "T092"
+      ],
+      "illustration_ids": [
+        "E29"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 123,
+      "char_start": 10116,
+      "char_end": 10167,
+      "line_end": 10168,
+      "text_sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T010",
+        "T090",
+        "T091",
+        "T092"
+      ],
+      "illustration_ids": [
+        "E29"
+      ],
+      "section_id": "chief_validity"
+    },
+    {
+      "line": 124,
+      "char_start": 10168,
+      "char_end": 10294,
+      "line_end": 10294,
+      "text_sha256": "f27a37eaa81c3c37f4efea323be1315139d2f7f90136197dfff4b9fe1480efbd",
+      "kind": "covered_source_text",
+      "rule_ids": [
+        "T090",
+        "T092"
+      ],
+      "illustration_ids": [],
+      "section_id": "chief_validity"
+    }
+  ]
+}

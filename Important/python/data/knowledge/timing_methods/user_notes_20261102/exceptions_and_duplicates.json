@@ -1,0 +1,355 @@
+{
+  "schema": "wengua_user_timing_qualifications_v1",
+  "source_id": "user_timing_notes_20261102",
+  "conflicts": [
+    {
+      "id": "C01",
+      "source_lines": [
+        3,
+        52,
+        61,
+        73,
+        75,
+        76,
+        106
+      ],
+      "related_rule_ids": [
+        "T031",
+        "T039",
+        "T051",
+        "T055",
+        "T086"
+      ],
+      "title": "旬空并非一条无条件填冲规则",
+      "detail": "失败类仅列填实，普通宫空列填冲先遇，逆转反跳另有天盘干，值符又论出旬；先分事件类别、对象与盘态。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C02",
+      "source_lines": [
+        85,
+        104,
+        105
+      ],
+      "related_rule_ids": [
+        "T064",
+        "T084",
+        "T085"
+      ],
+      "title": "甲子戊震的普通／值符情境不同",
+      "detail": "普通用神例多合宫支卯取戌或取午，值符例合外来子取丑；不能无条件并为一个答案。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C03",
+      "source_lines": [
+        86,
+        104
+      ],
+      "related_rule_ids": [
+        "T066",
+        "T084"
+      ],
+      "title": "甲申庚艮的取巳与少应巳并存",
+      "detail": "值符例取巳，普通庚艮例强调墓刑马多条件而少应巳；须核符使参与及墓马定义。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C04",
+      "source_lines": [
+        2,
+        3,
+        109,
+        110
+      ],
+      "related_rule_ids": [
+        "T004",
+        "T005",
+        "T088"
+      ],
+      "title": "一般符先使后需后文适用限定",
+      "detail": "不能把开头一般原则解成所有事都先看值符，后文要求事件确需其作用。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C05",
+      "source_lines": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        89,
+        91,
+        92,
+        95
+      ],
+      "related_rule_ids": [
+        "T052",
+        "T053",
+        "T055"
+      ],
+      "title": "先遇受同气与盘态约束",
+      "detail": "先遇不是任意枚举全部支取最早，更不跨越已知时限；同气时间层未定义时不硬配。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C06",
+      "source_lines": [
+        14,
+        15,
+        20,
+        21,
+        22,
+        23,
+        116,
+        117,
+        122,
+        123
+      ],
+      "related_rule_ids": [
+        "T010",
+        "T011",
+        "T012",
+        "T014",
+        "T091"
+      ],
+      "title": "宫数的单位及调整未给唯一算法",
+      "detail": "保留先后天与举例数，不把示例拼成通用加减倍数；期限范围不是发生日期。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C07",
+      "source_lines": [
+        75,
+        76
+      ],
+      "related_rule_ids": [
+        "T055"
+      ],
+      "title": "顺转逆转反跳只有模式例",
+      "detail": "未给完整可执行识别定义；不能只看阴遁／阳遁或改用不同排盘法来代替此盘态。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C08",
+      "source_lines": [
+        79,
+        84,
+        86,
+        87,
+        90
+      ],
+      "related_rule_ids": [
+        "T057",
+        "T058",
+        "T063",
+        "T066",
+        "T067",
+        "T072"
+      ],
+      "title": "暗支／寄干墓库层次待核",
+      "detail": "同文癸巽、癸坤等均按墓论，须分清六甲暗支、寄干长生或事件墓库，不替换既有正式墓表。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    },
+    {
+      "id": "C09",
+      "source_lines": [
+        80,
+        93,
+        97
+      ],
+      "related_rule_ids": [
+        "T060",
+        "T074",
+        "T079"
+      ],
+      "title": "刑冲与合同时出现的互斥条件不完备",
+      "detail": "原段分四／五但未完整定义多重符号共存，不能把排列顺序冒充已验证的全局单选算法。",
+      "resolution": "preserve_context_and_require_applicability_check",
+      "auto_resolved": false
+    }
+  ],
+  "normalization_candidates": [
+    {
+      "id": "N01",
+      "raw_token": "优吟",
+      "candidate": "伏吟",
+      "source_lines": [
+        2,
+        14,
+        20
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "字形疑误，与同文伏吟用法参校；原字不动。",
+      "apply_globally": false
+    },
+    {
+      "id": "N02",
+      "raw_token": "卵",
+      "candidate": "卯",
+      "source_lines": [
+        74,
+        105
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "限定四正／子卯刑等语境，不对全文任意替换。",
+      "apply_globally": false
+    },
+    {
+      "id": "N03",
+      "raw_token": "已",
+      "candidate": "巳",
+      "source_lines": [
+        10,
+        11,
+        37,
+        74,
+        86,
+        91,
+        96,
+        104,
+        105
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "巳申合、辰巳等明确地支语境；不把所有已字替为巳。",
+      "apply_globally": false
+    },
+    {
+      "id": "N04",
+      "raw_token": "王",
+      "candidate": "壬",
+      "source_lines": [
+        82,
+        87,
+        88,
+        89,
+        90,
+        95,
+        96
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "六仪甲辰及壬己／壬丁语境的候选；不修改既有原典数据。",
+      "apply_globally": false
+    },
+    {
+      "id": "N05",
+      "raw_token": "成",
+      "candidate": "戌",
+      "source_lines": [
+        74,
+        79,
+        88,
+        89,
+        90,
+        96
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "辰戌冲、卯戌合语境较明确，其他土月日时句仍需逐处核定。 只限辰成／卯成及特定土期字样，不替换“形成”“成功”等正常词。",
+      "apply_globally": false
+    },
+    {
+      "id": "N06",
+      "raw_token": "末",
+      "candidate": "未",
+      "source_lines": [
+        77,
+        82,
+        96,
+        104
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "辰戌丑未、午未合等支语境；不全局修改月末等正常词。",
+      "apply_globally": false
+    },
+    {
+      "id": "N07",
+      "raw_token": "体",
+      "candidate": "休",
+      "source_lines": [
+        59
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "用神休囚死墓绝，与既存开悟方法条目对照，保留原体字。",
+      "apply_globally": false
+    },
+    {
+      "id": "N08",
+      "raw_token": "年临",
+      "candidate": "所临",
+      "source_lines": [
+        56,
+        64
+      ],
+      "review_status": "candidate_not_applied_to_original",
+      "note": "断句或OCR候选，只作阅读提示，非已核原书改字。",
+      "apply_globally": false
+    }
+  ],
+  "duplicate_groups": [
+    {
+      "id": "D01",
+      "earlier_lines": [
+        114
+      ],
+      "later_lines": [
+        119
+      ],
+      "kind": "repeated_fragment",
+      "policy": "保留后段原样，并与前段同概念链接；不当新增独立依据。"
+    },
+    {
+      "id": "D02",
+      "earlier_lines": [
+        115
+      ],
+      "later_lines": [
+        120,
+        121
+      ],
+      "kind": "near_duplicate_with_wrap",
+      "policy": "保留文字差异及断行，不合并掉原始字节。"
+    },
+    {
+      "id": "D03",
+      "earlier_lines": [
+        116
+      ],
+      "later_lines": [
+        122
+      ],
+      "kind": "exact_duplicate",
+      "policy": "单一概念多次来源出现，不重复加票。"
+    },
+    {
+      "id": "D04",
+      "earlier_lines": [
+        117
+      ],
+      "later_lines": [
+        123
+      ],
+      "kind": "exact_duplicate",
+      "policy": "单一概念多次来源出现，不重复加票。"
+    },
+    {
+      "id": "D05",
+      "earlier_lines": [
+        118
+      ],
+      "later_lines": [
+        124
+      ],
+      "kind": "later_expansion_of_truncated_sentence",
+      "policy": "原断句与后段完整说法都保留，后段补足不可抹掉。"
+    }
+  ]
+}

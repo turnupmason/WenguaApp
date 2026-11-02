@@ -1,0 +1,144 @@
+{
+  "schema": "wengua_user_timing_source_manifest_v1",
+  "source_id": "user_timing_notes_20261102",
+  "title": "用户提供：奇门预测断应期的主要方法",
+  "received_date": "2026-11-02",
+  "source_kind": "user_supplied_compilation_with_attributed_excerpts",
+  "source_author": "not_independently_identified",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "utf8_bytes": 30306,
+  "unicode_characters": 10294,
+  "source_lines": 124,
+  "original_in_public_git": false,
+  "private_original_path": "local/user_timing_notes/20261102/original.txt",
+  "private_numbered_reading_path": "local/user_timing_notes/20261102/numbered_reading.txt",
+  "all_source_lines_covered": true,
+  "covered_line_count": 124,
+  "rule_records": 92,
+  "illustrations": 29,
+  "domain_contracts": 12,
+  "conflict_groups": 9,
+  "normalization_candidates": 8,
+  "duplicate_groups": 5,
+  "new_book_chapters": 0,
+  "new_complete_historical_cases": 0,
+  "runtime_enabled": false,
+  "attributions": [
+    {
+      "lines": [
+        17,
+        18
+      ],
+      "claim": "幺老师讲解及轶事",
+      "verification": "as_attributed_by_user_source_only"
+    },
+    {
+      "lines": [
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "claim": "资料自称摘录开悟之门",
+      "verification": "semantic_crossrefs_to_existing_book_records; exact_user_text_preserved_not_rewritten_as_book_original"
+    },
+    {
+      "lines": [
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111
+      ],
+      "claim": "资料自称奇门法窍论述大意",
+      "verification": "paraphrase_attribution_only_not_source_book_original_verified"
+    }
+  ],
+  "sections": [
+    {
+      "id": "intro",
+      "start_line": 1,
+      "end_line": 5,
+      "label": "原则及三种起手方法"
+    },
+    {
+      "id": "clock",
+      "start_line": 6,
+      "end_line": 11,
+      "label": "事情节奏与当前起点"
+    },
+    {
+      "id": "executor_numbers",
+      "start_line": 12,
+      "end_line": 23,
+      "label": "值使宫数、单位与近事"
+    },
+    {
+      "id": "roles",
+      "start_line": 24,
+      "end_line": 38,
+      "label": "领域、人与事和多重用神"
+    },
+    {
+      "id": "pace",
+      "start_line": 39,
+      "end_line": 44,
+      "label": "内外盘及伏反吟缓急"
+    },
+    {
+      "id": "classes",
+      "start_line": 45,
+      "end_line": 72,
+      "label": "成功、失败与庚格三类方法"
+    },
+    {
+      "id": "state_order",
+      "start_line": 73,
+      "end_line": 101,
+      "label": "用神状态顺序及细节例外"
+    },
+    {
+      "id": "chief_validity",
+      "start_line": 102,
+      "end_line": 124,
+      "label": "符使、时限与重复段落"
+    }
+  ],
+  "assets_sha256": {
+    "domain_contracts.json": "9acb3493b87d4c88806025a87d951316a790477dbf5f5cebb628362ae44994d1",
+    "exceptions_and_duplicates.json": "e864bce81d155f7f989e031da6b5dfb5f4e79284cdc8d6aedc8c0c615b3bb1a6",
+    "illustrations.json": "4e65de90f2a910ea4f4aa2cc5c6facea8dd6ef1917759d95b15e31d117d35d17",
+    "method_tracks.json": "8a335f5a0727e02b9339415eeb53a78a9dddb2db56c842058fd7853ffa5543d5",
+    "rules.json": "eb0f581b1278477d01ed8da95f3f4b2a2c90272f67ad08c4daa096eb74be1dc5",
+    "source_units.json": "89348ee3ff6575ac6cf28130885de4e2b5a235e38e5e118d77af4e7b8c1f0844"
+  },
+  "existing_book_method_concept_links": 17
+}

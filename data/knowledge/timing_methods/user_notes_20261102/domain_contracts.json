@@ -1,0 +1,188 @@
+{
+  "schema": "wengua_shared_timing_domain_contracts_v1",
+  "source_id": "user_timing_notes_20261102",
+  "domains": [
+    {
+      "id": "health",
+      "event": "病什么时候好",
+      "person_role": "沿用已封存疾病模块的真实患者用神",
+      "event_role": "由既有疾病判断确定恢复所需的实际作用对象，不能无条件只看某一宫",
+      "source_lines": [
+        24,
+        26,
+        28,
+        48,
+        79,
+        114
+      ],
+      "adapter_status": "health_specific_binding_requires_existing_assessment_not_new_score",
+      "excluded": [
+        "病位复算",
+        "病情强弱复算",
+        "把病危入墓期写成病愈期"
+      ]
+    },
+    {
+      "id": "career",
+      "event": "何时找到工作／调动／上岗",
+      "person_role": "本人与代测对象按既有关系取用；朋友月干",
+      "event_role": "开门岗位与求职者准备状态联合，另参值使时效",
+      "source_lines": [
+        27,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        73,
+        101,
+        115,
+        116,
+        117
+      ],
+      "adapter_status": "source_explicit_role_distinction",
+      "excluded": [
+        "所有就业只看开门",
+        "所有就业只看朋友宫",
+        "机会范围等于已入职"
+      ]
+    },
+    {
+      "id": "weather",
+      "event": "天气变化",
+      "person_role": null,
+      "event_role": "按本资料参值符九星，区分分钟场面与大事件",
+      "source_lines": [
+        17,
+        18,
+        19,
+        27
+      ],
+      "adapter_status": "source_entry_not_full_weather_selector"
+    },
+    {
+      "id": "geography",
+      "event": "地理风水事件",
+      "person_role": "按具体人事另绑",
+      "event_role": "地理所涉宫支",
+      "source_lines": [
+        27
+      ],
+      "adapter_status": "source_entry_not_full_geography_selector"
+    },
+    {
+      "id": "business",
+      "event": "得财／回款／破财",
+      "person_role": "求测者或代测对象",
+      "event_role": "作用来源、事体用神及资金受阻条件",
+      "source_lines": [
+        28,
+        29,
+        30,
+        31,
+        79,
+        91,
+        92,
+        96
+      ],
+      "adapter_status": "source_illustrations_not_complete_business_engine"
+    },
+    {
+      "id": "lawsuit",
+      "event": "争执／官司解决",
+      "person_role": "按主客实绑",
+      "event_role": "发生冲格的实际双方及可合解的对象",
+      "source_lines": [
+        89
+      ],
+      "adapter_status": "source_illustration_only"
+    },
+    {
+      "id": "crime",
+      "event": "破案／抓捕",
+      "person_role": "按案件实绑",
+      "event_role": "需发挥阻截作用时的庚格",
+      "source_lines": [
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "adapter_status": "geng_scope_defined_not_complete_case_selector"
+    },
+    {
+      "id": "missing",
+      "event": "找回行人",
+      "person_role": "所找行人真实用神",
+      "event_role": "按阻截／找寻语境检查庚格资格",
+      "source_lines": [
+        66,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "adapter_status": "geng_scope_defined_not_complete_missing_selector"
+    },
+    {
+      "id": "property",
+      "event": "寻回失物",
+      "person_role": "人、物分绑",
+      "event_role": "找寻语境的庚格资格与时干等条件",
+      "source_lines": [
+        66,
+        68,
+        69,
+        70,
+        71,
+        72
+      ],
+      "adapter_status": "geng_scope_defined_not_complete_property_selector"
+    },
+    {
+      "id": "life",
+      "event": "终身／一年／月内／日内事情",
+      "person_role": "被测人",
+      "event_role": "按明确时间层次，再参值使阶段性时限",
+      "source_lines": [
+        27,
+        113,
+        115,
+        118,
+        120,
+        124
+      ],
+      "adapter_status": "time_scale_only_not_life_prediction_engine"
+    },
+    {
+      "id": "marriage",
+      "event": "婚事成败及成事期",
+      "person_role": "相关双方",
+      "event_role": "事体符号与实际办事人综合",
+      "source_lines": [
+        48,
+        114,
+        119
+      ],
+      "adapter_status": "shared_success_methods_not_new_marriage_rules"
+    },
+    {
+      "id": "education",
+      "event": "升学／考试成事期",
+      "person_role": "考生",
+      "event_role": "先判断具体所问事件可成，再用成功类方法",
+      "source_lines": [
+        48,
+        58
+      ],
+      "adapter_status": "shared_class_gate_only"
+    }
+  ],
+  "not_an_automatic_domain_rule_release": true
+}

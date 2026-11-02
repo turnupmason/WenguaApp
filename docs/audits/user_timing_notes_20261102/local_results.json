@@ -1,0 +1,33 @@
+{
+  "tests": 880,
+  "failures": 0,
+  "errors": 0,
+  "existing_skips": 3,
+  "new_skips": 0,
+  "targeted_tests": 16,
+  "actual_original_import_receipt": {
+    "source_id": "user_timing_notes_20261102",
+    "sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+    "utf8_bytes": 30306,
+    "line_count": 124,
+    "original_preserved_byte_for_byte": true,
+    "normalization_applied_to_original": false,
+    "note": "Numbered reading is a copy. Candidate corrections remain separate."
+  },
+  "initial_run": "execution session unavailable; partial log has no completion summary and is not counted as a pass; cause unconfirmed",
+  "scope": "Source archive, line coverage, normalized rules, typed eligibility and template generation; not a new recovery forecast or iOS feature acceptance.",
+  "logs": [
+    {
+      "path": "docs/audits/user_timing_notes_20261102/full_880_pass.log.gz",
+      "sha256": "dad24e9a7844bd4d99c3b743d63c9a17bdfb86f5e27592adbcb29524f179ace9"
+    },
+    {
+      "path": "docs/audits/user_timing_notes_20261102/initial_incomplete_run.log.gz",
+      "sha256": "e3787ec58307ed488d48845c34786f2bf42baa6c2a8ac6ca508ec074f4c27e5f"
+    },
+    {
+      "path": "docs/audits/user_timing_notes_20261102/targeted_16_pass.log.gz",
+      "sha256": "d87cea4ba3957fa54f1048307f640eb1cc73774cf1c009562ce2b803022c8f4d"
+    }
+  ]
+}

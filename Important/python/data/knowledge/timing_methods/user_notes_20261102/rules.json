@@ -1,0 +1,4135 @@
+{
+  "schema": "wengua_user_timing_rules_v1",
+  "source_id": "user_timing_notes_20261102",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "provenance": "user_supplied_notes_not_verified_original_book_quotation",
+  "rules": [
+    {
+      "id": "T001",
+      "title": "先定事体时间节奏",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        2,
+        6,
+        7,
+        8,
+        9,
+        112,
+        113,
+        115,
+        120
+      ],
+      "source_anchors": [
+        {
+          "line": 2,
+          "sha256": "c4d573e0caabb435546d91d2d749e7983e612c1e0be1af30cb943afd0acf4b06"
+        },
+        {
+          "line": 6,
+          "sha256": "a7b865c2a4d06275df878d22cd6287228884dc3e61b00f8f8d260adfe2296708"
+        },
+        {
+          "line": 7,
+          "sha256": "bdc23b08c0a7736e93687b74b8fbd29d1232bb310520c2929f1d021967d6ece2"
+        },
+        {
+          "line": 8,
+          "sha256": "99d5a070a5d40b28d692af70d5e20c39e0fa5bc7c0c70dc705b5023efd75ae1e"
+        },
+        {
+          "line": 9,
+          "sha256": "2858623e75c7abc8aa1a9839b681ffd625ac1725b5a7ebf81fdb9f805803989a"
+        },
+        {
+          "line": 112,
+          "sha256": "ae25d42e76840ff38147bb1744da276ae808de7d2ca0ab960b1b7d17264bfda1"
+        },
+        {
+          "line": 113,
+          "sha256": "62b8a1e5e6dd87fe3c00fe5c906296a58ac3e30ce15dc9619c7935f1e652361a"
+        },
+        {
+          "line": 115,
+          "sha256": "b1f7f2c371593f55474df1c5cd3ebdbd8d95f85b2d104249617e65412e856ff4"
+        },
+        {
+          "line": 120,
+          "sha256": "0039c5668dab90c126ff3c3a781a0bc9754bf590c4c7ae8151761807be81e35c"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "time_scale",
+      "domains": [
+        "shared"
+      ],
+      "summary": "先确定事件以年、月、日还是时运作及其已知期限；不能只凭宫数猜单位。",
+      "conditions": {
+        "const": true
+      },
+      "limits": [
+        "未知年份／月份可能导致干支重复周期错位；无可靠时间表则保留不确定。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T002",
+      "title": "缓急决定粗细范围",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        2,
+        8,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "source_anchors": [
+        {
+          "line": 2,
+          "sha256": "c4d573e0caabb435546d91d2d749e7983e612c1e0be1af30cb943afd0acf4b06"
+        },
+        {
+          "line": 8,
+          "sha256": "99d5a070a5d40b28d692af70d5e20c39e0fa5bc7c0c70dc705b5023efd75ae1e"
+        },
+        {
+          "line": 39,
+          "sha256": "111af593d354109f8cae7d865c578a265891b38e7aee94fc46346a0de3e14e24"
+        },
+        {
+          "line": 40,
+          "sha256": "a8d8a011c84899a1fcc73c1d5309f402f335cf81a59f02d1c8bb17b492a6b57d"
+        },
+        {
+          "line": 41,
+          "sha256": "7c0a3177be12957db1297fd29ea8489cd1bc861c9e7473317b44206b6a9f27b1"
+        },
+        {
+          "line": 42,
+          "sha256": "4d0bb24416b66225e0b783bc08adddc08c1dca38425eda7f24b54aec7b4664bd"
+        },
+        {
+          "line": 43,
+          "sha256": "097b0d1dd7670592ef77fa5fdeb918d6258f00e1faab7097107bfd19230bd950"
+        },
+        {
+          "line": 44,
+          "sha256": "3c7ac45dd97a5159441252e63085415d2218aeaaee5259ed39c034cc5075bb94"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "远慢倾向年／月，近快倾向日／时；仍须服从事件已知时间表。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "缓急不是固定天数换算，也不能绕过已知截止时间。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T003",
+      "title": "先支后干",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        2,
+        103
+      ],
+      "source_anchors": [
+        {
+          "line": 2,
+          "sha256": "c4d573e0caabb435546d91d2d749e7983e612c1e0be1af30cb943afd0acf4b06"
+        },
+        {
+          "line": 103,
+          "sha256": "6b1ae7fdc66f974d606641c8f12a03b9de8e2e8653d650cafe9d53e7d8fbf67f"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "branch_stem",
+      "domains": [
+        "shared"
+      ],
+      "summary": "先确定地支应期，再兼看天干，不把仅有天干候选误作完整干支日期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T004",
+      "title": "符先使后的相对顺序",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        2,
+        109,
+        110
+      ],
+      "source_anchors": [
+        {
+          "line": 2,
+          "sha256": "c4d573e0caabb435546d91d2d749e7983e612c1e0be1af30cb943afd0acf4b06"
+        },
+        {
+          "line": 109,
+          "sha256": "2a3473d36b6f46fd9c4332568e695ed763ff03a714a0f7f6f2af0a0bd40ce25b"
+        },
+        {
+          "line": 110,
+          "sha256": "1fa5364e1deb26be89a5b6ffa800e3bf72d7d4e5c7badf985fc48b5863577cb1"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "符应在先、使应在后，需结合确须符／使参与的事件，不能等同一律先取最近值符日期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fushi_involved",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T005",
+      "title": "六甲值符刑冲空的取期",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        3,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110
+      ],
+      "source_anchors": [
+        {
+          "line": 3,
+          "sha256": "fe7790d2187bd2c73cd77de58b48542ef3d9ee9b4db86f78ada0a1ad2d585f45"
+        },
+        {
+          "line": 102,
+          "sha256": "d9ae45c88cda4bafceebc7d38100e6abbada908eaff7a13ebb87a6415176b67f"
+        },
+        {
+          "line": 103,
+          "sha256": "6b1ae7fdc66f974d606641c8f12a03b9de8e2e8653d650cafe9d53e7d8fbf67f"
+        },
+        {
+          "line": 104,
+          "sha256": "ffc61babfb2e430834e19551c613f7ced3f82263829e4c9ec63254420bf6c32c"
+        },
+        {
+          "line": 105,
+          "sha256": "a0a811048b342ac49569f1cfe4807fcaecdb6c2b594d3f0e15015da9c44d806d"
+        },
+        {
+          "line": 106,
+          "sha256": "127f81b9205db41c3e2dd177d76430d8229cc2f5096f2e7591ef4530afe35b8d"
+        },
+        {
+          "line": 107,
+          "sha256": "cf53f4896eb1e15cc6353fcc6f00952b4823dc209c3cde01fee8c0f63975b9cb"
+        },
+        {
+          "line": 108,
+          "sha256": "2f079b93f7d739f567642f5116d48cbf8455ebf34225595a524889f16e52872b"
+        },
+        {
+          "line": 110,
+          "sha256": "1fa5364e1deb26be89a5b6ffa800e3bf72d7d4e5c7badf985fc48b5863577cb1"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "值符相关的刑冲参合、空亡参填实／出旬；适用前提是用神与符使确有关联。",
+      "conditions": {
+        "all": [
+          {
+            "field": "chief_required",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C02",
+        "C03",
+        "C04"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T006",
+      "title": "天盘六仪暗支冲合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        4,
+        107,
+        108
+      ],
+      "source_anchors": [
+        {
+          "line": 4,
+          "sha256": "ae7310858e85ff4b9d2da95bed000ffe3d2e558b2ff873e65263a0dcf92f93cf"
+        },
+        {
+          "line": 107,
+          "sha256": "cf53f4896eb1e15cc6353fcc6f00952b4823dc209c3cde01fee8c0f63975b9cb"
+        },
+        {
+          "line": 108,
+          "sha256": "2f079b93f7d739f567642f5116d48cbf8455ebf34225595a524889f16e52872b"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "hidden_branch",
+      "domains": [
+        "shared"
+      ],
+      "summary": "对天盘六仪所带六甲地支检查冲合，合取冲、冲取合；区分暗支与宫支。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_bound",
+            "eq": true
+          },
+          {
+            "field": "hidden_branch_identified",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T007",
+      "title": "无冲无合再看星门生克",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        5,
+        107,
+        108
+      ],
+      "source_anchors": [
+        {
+          "line": 5,
+          "sha256": "04b69d13e4ad6b6ad852b33eaa7d68fb35e45814143a789a9cb4e020c27f173f"
+        },
+        {
+          "line": 107,
+          "sha256": "cf53f4896eb1e15cc6353fcc6f00952b4823dc209c3cde01fee8c0f63975b9cb"
+        },
+        {
+          "line": 108,
+          "sha256": "2f079b93f7d739f567642f5116d48cbf8455ebf34225595a524889f16e52872b"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "growth_control",
+      "domains": [
+        "shared"
+      ],
+      "summary": "天盘暗支既无冲又无合时，再按星门生克找生／克的触发时间。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_clash",
+            "eq": false
+          },
+          {
+            "field": "hidden_join",
+            "eq": false
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T008",
+      "title": "落宫对应时间须带当前时间",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        10,
+        11
+      ],
+      "source_anchors": [
+        {
+          "line": 10,
+          "sha256": "73764c070c45ff06849931055aeb82527cc699a81f0835df3b546297ac2ea007"
+        },
+        {
+          "line": 11,
+          "sha256": "63d34877e20860181cee6db87cb31a6ff296d204932480a1019a394485e2b9da"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "palace_clock",
+      "domains": [
+        "shared"
+      ],
+      "summary": "坤未申、巽辰巳等是候选；何时填、何时冲须结合预测起点和期限。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_bound",
+            "eq": true
+          },
+          {
+            "field": "reference_time_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T009",
+      "title": "不能跨越已知事件期限",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        9,
+        10,
+        11,
+        115,
+        120
+      ],
+      "source_anchors": [
+        {
+          "line": 9,
+          "sha256": "2858623e75c7abc8aa1a9839b681ffd625ac1725b5a7ebf81fdb9f805803989a"
+        },
+        {
+          "line": 10,
+          "sha256": "73764c070c45ff06849931055aeb82527cc699a81f0835df3b546297ac2ea007"
+        },
+        {
+          "line": 11,
+          "sha256": "63d34877e20860181cee6db87cb31a6ff296d204932480a1019a394485e2b9da"
+        },
+        {
+          "line": 115,
+          "sha256": "b1f7f2c371593f55474df1c5cd3ebdbd8d95f85b2d104249617e65412e856ff4"
+        },
+        {
+          "line": 120,
+          "sha256": "0039c5668dab90c126ff3c3a781a0bc9754bf590c4c7ae8151761807be81e35c"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "validity",
+      "domains": [
+        "shared"
+      ],
+      "summary": "事件限定当年或当月时，不能选到下一年／月同一支；需要在当前期限内查候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "deadline_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T010",
+      "title": "值使宫数表示时长范围",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        20,
+        23,
+        56,
+        64,
+        117,
+        123
+      ],
+      "source_anchors": [
+        {
+          "line": 12,
+          "sha256": "7ae1f8688130ddf8fab461e4811df7aaf0230874bda16b7be39b680a42bede62"
+        },
+        {
+          "line": 13,
+          "sha256": "c0ccb452d3bc73071be2fcc72b194cfd8c69da06fdbd410bf129169c3b2f0e30"
+        },
+        {
+          "line": 14,
+          "sha256": "f2610c4bc41c57a4518cf34948c568521ba291d6af2bcede24b883a33e8670b5"
+        },
+        {
+          "line": 15,
+          "sha256": "f01ced6cd807b93680caa4aa2f1712abe96f9578e6e69edadc4c60c29f6e5d4d"
+        },
+        {
+          "line": 16,
+          "sha256": "165cb23e911eba33a61808d1f703b73d4188b6f08ab89fa279dcc98b019810b5"
+        },
+        {
+          "line": 20,
+          "sha256": "46920bc98fe7ca6036d8795d1d9402442a3ab81ff8be9da9e7bf6b93098c4ecc"
+        },
+        {
+          "line": 23,
+          "sha256": "440b88e1fcaf52d714209c9e2cb5c8ebe5a68b3cd08f351367f62f31f02ea647"
+        },
+        {
+          "line": 56,
+          "sha256": "e58794a01f1c1cac9798b50bca83c14ab769b8ca4d63bc070a34f05393417d57"
+        },
+        {
+          "line": 64,
+          "sha256": "154fbdb355db2ca66f6e2bb9dd8e3c0387fa7872e2561b07f5e92aec63655134"
+        },
+        {
+          "line": 117,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        },
+        {
+          "line": 123,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "number",
+      "domains": [
+        "shared"
+      ],
+      "summary": "值使所在宫数可提示时长与范围，不能直接把数当成确定日历日期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "executor_number_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "单位、起算点、先后天取数方式须明确。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T011",
+      "title": "时间单位已知时以后天数为主",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        14,
+        15,
+        20,
+        21,
+        22,
+        23
+      ],
+      "source_anchors": [
+        {
+          "line": 14,
+          "sha256": "f2610c4bc41c57a4518cf34948c568521ba291d6af2bcede24b883a33e8670b5"
+        },
+        {
+          "line": 15,
+          "sha256": "f01ced6cd807b93680caa4aa2f1712abe96f9578e6e69edadc4c60c29f6e5d4d"
+        },
+        {
+          "line": 20,
+          "sha256": "46920bc98fe7ca6036d8795d1d9402442a3ab81ff8be9da9e7bf6b93098c4ecc"
+        },
+        {
+          "line": 21,
+          "sha256": "b7d4d72620dc1683dde45bac526e09435c6b2543025d4ff4d84b769eceb165e7"
+        },
+        {
+          "line": 22,
+          "sha256": "4f3e593528c752a8cc9e958da891a147eb31d6518a7b3908cc5a74a8c5e1ad3c"
+        },
+        {
+          "line": 23,
+          "sha256": "440b88e1fcaf52d714209c9e2cb5c8ebe5a68b3cd08f351367f62f31f02ea647"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "number",
+      "domains": [
+        "shared"
+      ],
+      "summary": "有明确事情节奏时以洛书后天宫数为主；不另用五行数替代。",
+      "conditions": {
+        "all": [
+          {
+            "field": "unit_known",
+            "eq": true
+          },
+          {
+            "field": "executor_number_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T012",
+      "title": "伏反吟取数需情境校准",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        14,
+        15,
+        20
+      ],
+      "source_anchors": [
+        {
+          "line": 14,
+          "sha256": "f2610c4bc41c57a4518cf34948c568521ba291d6af2bcede24b883a33e8670b5"
+        },
+        {
+          "line": 15,
+          "sha256": "f01ced6cd807b93680caa4aa2f1712abe96f9578e6e69edadc4c60c29f6e5d4d"
+        },
+        {
+          "line": 20,
+          "sha256": "46920bc98fe7ca6036d8795d1d9402442a3ab81ff8be9da9e7bf6b93098c4ecc"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "number",
+      "domains": [
+        "shared"
+      ],
+      "summary": "伏吟可延、反吟可提前；兑、坎的举例不是可任意推广的乘除公式。",
+      "conditions": {
+        "all": [
+          {
+            "field": "executor_number_applicable",
+            "eq": true
+          },
+          {
+            "field": "pace_context_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "8年、3.5至4年、7至8个月、17／27天等仅为讲义举例。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T013",
+      "title": "值使对当下场面的限用",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "source_anchors": [
+        {
+          "line": 16,
+          "sha256": "165cb23e911eba33a61808d1f703b73d4188b6f08ab89fa279dcc98b019810b5"
+        },
+        {
+          "line": 17,
+          "sha256": "baaf1af1cceed589c9599d945ffd35f86bfd60b6b67895c786fc5178d0b295a4"
+        },
+        {
+          "line": 18,
+          "sha256": "78b9c06aae37c9ca17966abbc8210aab02fb7d63ea41fb5314f614f62b83c31a"
+        },
+        {
+          "line": 19,
+          "sha256": "1c59ef6883e3f2da39994273d35d78b4f8692f2eb97b19eba516affee6afd902"
+        },
+        {
+          "line": 20,
+          "sha256": "46920bc98fe7ca6036d8795d1d9402442a3ab81ff8be9da9e7bf6b93098c4ecc"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "number",
+      "domains": [
+        "shared"
+      ],
+      "summary": "已知分钟级前提、当前时辰内的场面可参值使数；大事件不照搬。",
+      "conditions": {
+        "all": [
+          {
+            "field": "instant_scene",
+            "eq": true
+          },
+          {
+            "field": "scene_context_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T014",
+      "title": "不知时程时先后天参用",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        21,
+        22,
+        23
+      ],
+      "source_anchors": [
+        {
+          "line": 21,
+          "sha256": "b7d4d72620dc1683dde45bac526e09435c6b2543025d4ff4d84b769eceb165e7"
+        },
+        {
+          "line": 22,
+          "sha256": "4f3e593528c752a8cc9e958da891a147eb31d6518a7b3908cc5a74a8c5e1ad3c"
+        },
+        {
+          "line": 23,
+          "sha256": "440b88e1fcaf52d714209c9e2cb5c8ebe5a68b3cd08f351367f62f31f02ea647"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "number",
+      "domains": [
+        "shared"
+      ],
+      "summary": "不知道何年何月的事可参先后天数作约量范围，资料没有给出唯一合数算法。",
+      "conditions": {
+        "all": [
+          {
+            "field": "unit_known",
+            "eq": false
+          }
+        ]
+      },
+      "limits": [
+        "不能自行拼接、相加或任选一个数输出确定日期。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T015",
+      "title": "先明确所测事及应期对象",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "source_anchors": [
+        {
+          "line": 24,
+          "sha256": "da61349009332759f97adbab82723608ebf3e5c2af64bc32f63b876fdb3f1c4d"
+        },
+        {
+          "line": 25,
+          "sha256": "c0ccb452d3bc73071be2fcc72b194cfd8c69da06fdbd410bf129169c3b2f0e30"
+        },
+        {
+          "line": 26,
+          "sha256": "f62e8bc8257e284241d8db229299bbbad7854b1888b1f21505b66fc634436f6b"
+        },
+        {
+          "line": 27,
+          "sha256": "25b6eb61c8a9b1f89fcfa0a9dfc9f12ed7d290b341636aa0e778ba461f81e825"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "shared"
+      ],
+      "summary": "先辨领域和具体事件，再绑定应期宫；不能所有领域都只看同一种符号。",
+      "conditions": {
+        "all": [
+          {
+            "field": "event_defined",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T016",
+      "title": "不同领域的应期入口",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        27
+      ],
+      "source_anchors": [
+        {
+          "line": 27,
+          "sha256": "25b6eb61c8a9b1f89fcfa0a9dfc9f12ed7d290b341636aa0e778ba461f81e825"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "weather",
+        "geography",
+        "career",
+        "shared"
+      ],
+      "summary": "天气参值符九星，地理风水参宫支，人事工作参八门和值使；这些是入口，不能代替具体事件取用。",
+      "conditions": {
+        "all": [
+          {
+            "field": "event_defined",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T017",
+      "title": "人用神与事用神分开",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        114,
+        119
+      ],
+      "source_anchors": [
+        {
+          "line": 28,
+          "sha256": "542c9aca20e1a501a02b076be19ec0bc45bca2d935fb8bfefeefba160b2545fb"
+        },
+        {
+          "line": 29,
+          "sha256": "c7c22d3c15917941d95a1df32066ff5231b521727ae5029dd89062e5390b5a22"
+        },
+        {
+          "line": 30,
+          "sha256": "b8076c4897de0bb8b469b23e139bfe8d517b888921c9474d241854ddc884a7a5"
+        },
+        {
+          "line": 31,
+          "sha256": "6ac718819f58b9e33b9dd51541d00beb343bf0070a9727d698e6fad49ca60d65"
+        },
+        {
+          "line": 32,
+          "sha256": "a05852ef2b14b37bd627cdb545fbf0157dc8bb501c8219d1a63e54e6adf2e980"
+        },
+        {
+          "line": 114,
+          "sha256": "7b1f74a822ad0b600af85f2fc3bf8cd371d31f8b03edd83049b7215ad08af7ac"
+        },
+        {
+          "line": 119,
+          "sha256": "86fc9d5e65a32ef8086568041d7eefc30cadcdf8c5077e94ca90ccfa2183b8a7"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "shared"
+      ],
+      "summary": "先绑定被测人和事件，按相关宫之间的作用判断哪个状态才是本次应期点。",
+      "conditions": {
+        "all": [
+          {
+            "field": "person_bound",
+            "eq": true
+          },
+          {
+            "field": "event_role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T018",
+      "title": "应事宫而非本人宫自动作期",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "source_anchors": [
+        {
+          "line": 28,
+          "sha256": "542c9aca20e1a501a02b076be19ec0bc45bca2d935fb8bfefeefba160b2545fb"
+        },
+        {
+          "line": 29,
+          "sha256": "c7c22d3c15917941d95a1df32066ff5231b521727ae5029dd89062e5390b5a22"
+        },
+        {
+          "line": 30,
+          "sha256": "b8076c4897de0bb8b469b23e139bfe8d517b888921c9474d241854ddc884a7a5"
+        },
+        {
+          "line": 31,
+          "sha256": "6ac718819f58b9e33b9dd51541d00beb343bf0070a9727d698e6fad49ca60d65"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "business",
+        "health",
+        "shared"
+      ],
+      "summary": "示例中伤灾参冲克来源兑宫，得财参生助来源坎宫，不能都按日干震宫断卯期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "event_effect_palace_identified",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T019",
+      "title": "无明确专用符号时参时干",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        32
+      ],
+      "source_anchors": [
+        {
+          "line": 32,
+          "sha256": "a05852ef2b14b37bd627cdb545fbf0157dc8bb501c8219d1a63e54e6adf2e980"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "shared"
+      ],
+      "summary": "事体难以另取专用符号时可参时干；时干数／干仍需事例与时程检验。",
+      "conditions": {
+        "all": [
+          {
+            "field": "specific_event_role_available",
+            "eq": false
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T020",
+      "title": "就业人与开门的不同作用",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "source_anchors": [
+        {
+          "line": 33,
+          "sha256": "5ca1ea04e03050e0c0ef82cb6d6122c81d991fa8dffc9bb68c58d20f340a11e9"
+        },
+        {
+          "line": 34,
+          "sha256": "3ea22c36a0347550219527e51e5bbc0a698930056827093bb1c825207ee29e72"
+        },
+        {
+          "line": 35,
+          "sha256": "6d218276080afbe51cbd854bb63b4d6051bc9c900b562fd463580ed36610788c"
+        },
+        {
+          "line": 36,
+          "sha256": "21b604574071df2e84742717a9a8415ea6e3129dc54fa5c364199458980f2c82"
+        },
+        {
+          "line": 37,
+          "sha256": "3b3a3eae57067bc2c4aa69368c90954fcbc134d3ba53706585308e4aa2160196"
+        },
+        {
+          "line": 38,
+          "sha256": "c456208225c3f008d4103b183bfadc22dc2a74f4c3c56accd139f299af0441d6"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "career"
+      ],
+      "summary": "找工作须分求职者准备状态与工作机会；朋友取月干，开门表示岗位状况及标准，二者共同限定时机。",
+      "conditions": {
+        "all": [
+          {
+            "field": "domain",
+            "eq": "career"
+          },
+          {
+            "field": "person_bound",
+            "eq": true
+          },
+          {
+            "field": "event_role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "不能据“开门无用”一句删掉后文岗位空亡／机会条件。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T021",
+      "title": "多重用神需联合准备状态",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        35,
+        36,
+        37,
+        38,
+        114
+      ],
+      "source_anchors": [
+        {
+          "line": 35,
+          "sha256": "6d218276080afbe51cbd854bb63b4d6051bc9c900b562fd463580ed36610788c"
+        },
+        {
+          "line": 36,
+          "sha256": "21b604574071df2e84742717a9a8415ea6e3129dc54fa5c364199458980f2c82"
+        },
+        {
+          "line": 37,
+          "sha256": "3b3a3eae57067bc2c4aa69368c90954fcbc134d3ba53706585308e4aa2160196"
+        },
+        {
+          "line": 38,
+          "sha256": "c456208225c3f008d4103b183bfadc22dc2a74f4c3c56accd139f299af0441d6"
+        },
+        {
+          "line": 114,
+          "sha256": "7b1f74a822ad0b600af85f2fc3bf8cd371d31f8b03edd83049b7215ad08af7ac"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_selection",
+      "domains": [
+        "shared"
+      ],
+      "summary": "岗位或求职者任一尚受空等限制，机会期不自动等于人已能落实；分清哪个条件须先解除。",
+      "conditions": {
+        "all": [
+          {
+            "field": "multiple_roles",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T022",
+      "title": "阳遁内外盘",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        40
+      ],
+      "source_anchors": [
+        {
+          "line": 40,
+          "sha256": "a8d8a011c84899a1fcc73c1d5309f402f335cf81a59f02d1c8bb17b492a6b57d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "阳遁一八三四为内，九二七六为外；内近快、外远慢。",
+      "conditions": {
+        "all": [
+          {
+            "field": "dun",
+            "eq": "yang"
+          },
+          {
+            "field": "role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T023",
+      "title": "阴遁内外盘",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        40
+      ],
+      "source_anchors": [
+        {
+          "line": 40,
+          "sha256": "a8d8a011c84899a1fcc73c1d5309f402f335cf81a59f02d1c8bb17b492a6b57d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "阴遁九二七六为内，一八三四为外；不沿用阳遁分组。",
+      "conditions": {
+        "all": [
+          {
+            "field": "dun",
+            "eq": "yin"
+          },
+          {
+            "field": "role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T024",
+      "title": "伏吟的空间与时间分轴",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        41
+      ],
+      "source_anchors": [
+        {
+          "line": 41,
+          "sha256": "7c0a3177be12957db1297fd29ea8489cd1bc861c9e7473317b44206b6a9f27b1"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "星门伏吟空间可近、时间可慢；不能把近与快视作同义。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fuyin",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T025",
+      "title": "反吟的空间与时间分轴",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        41
+      ],
+      "source_anchors": [
+        {
+          "line": 41,
+          "sha256": "7c0a3177be12957db1297fd29ea8489cd1bc861c9e7473317b44206b6a9f27b1"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "反吟空间可远、时间可快；不因空间远就改成慢。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fanyin",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T026",
+      "title": "日时内外组合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        42,
+        43,
+        44
+      ],
+      "source_anchors": [
+        {
+          "line": 42,
+          "sha256": "4d0bb24416b66225e0b783bc08adddc08c1dca38425eda7f24b54aec7b4664bd"
+        },
+        {
+          "line": 43,
+          "sha256": "097b0d1dd7670592ef77fa5fdeb918d6258f00e1faab7097107bfd19230bd950"
+        },
+        {
+          "line": 44,
+          "sha256": "3c7ac45dd97a5159441252e63085415d2218aeaaee5259ed39c034cc5075bb94"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "pace",
+      "domains": [
+        "shared"
+      ],
+      "summary": "日干、时干均内偏近快；均外偏远慢；一内一外讲义仍偏远慢。",
+      "conditions": {
+        "all": [
+          {
+            "field": "day_hour_roles_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T027",
+      "title": "先判可成再取成功期",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "source_anchors": [
+        {
+          "line": 45,
+          "sha256": "9c947232dae793207efd06cb8398153796903b71253ad5df1ebcedfb50f365ac"
+        },
+        {
+          "line": 46,
+          "sha256": "bf43abc8d3284ee70a68d68d6bfbc9690e345944a38da42793604f082ee3a7f7"
+        },
+        {
+          "line": 47,
+          "sha256": "cd1ff34c3d8a281a426077a38a27587ad472232be287c60d5c08289838cf901e"
+        },
+        {
+          "line": 48,
+          "sha256": "d02bda7388adb51fbf48ac14be70a4457039d1b8566283b6bb1db12ccd1b27d2"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "class_gate",
+      "domains": [
+        "shared"
+      ],
+      "summary": "先按已完成的事实判断此事件可成；疾病能愈才转入病愈成功类取期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T028",
+      "title": "成功类：用神得令",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        49
+      ],
+      "source_anchors": [
+        {
+          "line": 49,
+          "sha256": "2989484ff6ef1e569b59f074ea2974a989d4ccb88efe1ff3b5860795131a0c05"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "以所选实际用神旺相或当令时段作候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "role_bound",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:1"
+    },
+    {
+      "id": "T029",
+      "title": "成功类：用神需生",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        50
+      ],
+      "source_anchors": [
+        {
+          "line": 50,
+          "sha256": "4acd49beeee5f6a90cd827eb3f6172228c961ba1c3cbaac6c1fc9d2c7b0d7b27"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "确需生扶的对象，以能生扶它的时间作候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "needs_generation",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:2"
+    },
+    {
+      "id": "T030",
+      "title": "成功类：用神需克",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        51
+      ],
+      "source_anchors": [
+        {
+          "line": 51,
+          "sha256": "c6e62c57e49acab12ee18d1b3fb1f052fd2e757175012ff9a8fc9dced1523ff5"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "确需被制的对象，以能制住它的时间作候选；不能混淆患者与病神。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "needs_control",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:3"
+    },
+    {
+      "id": "T031",
+      "title": "成功类：旬空填冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        52
+      ],
+      "source_anchors": [
+        {
+          "line": 52,
+          "sha256": "10b5d392e9c8a72c975bf8208455c66a7cfe1b54ef00b3f1b18030901ee5bea8"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "所选用神旬空，以填实或冲实作候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "void",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:4"
+    },
+    {
+      "id": "T032",
+      "title": "成功类：入库冲库",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        53
+      ],
+      "source_anchors": [
+        {
+          "line": 53,
+          "sha256": "e6b056cb1ed548ff57088312fc1645acf9e691f65b57cc6cd3f4d80664379385"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "用神确属入库，以冲库作候选；先辨墓库。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "in_store",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:5"
+    },
+    {
+      "id": "T033",
+      "title": "成功类：刑冲逢合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        54
+      ],
+      "source_anchors": [
+        {
+          "line": 54,
+          "sha256": "f8998bcb0ba4b5fcdb58565cf3c8d538fe046625f618b1e054d20f7ca4782892"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "用神确逢刑冲，参能合解该对象的时间。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "punishment_or_clash",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:6"
+    },
+    {
+      "id": "T034",
+      "title": "成功类：马星当令或被冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        55
+      ],
+      "source_anchors": [
+        {
+          "line": 55,
+          "sha256": "06e7f1f395092b786912357d2705d569d428e4ce07ba5d948b11a7fc33f15515"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "相关马星当令或被冲作候选，不等于任意四马支都是该盘马星。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "horse_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:7"
+    },
+    {
+      "id": "T035",
+      "title": "成功类：值使时干数干",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        56
+      ],
+      "source_anchors": [
+        {
+          "line": 56,
+          "sha256": "e58794a01f1c1cac9798b50bca83c14ab769b8ca4d63bc070a34f05393417d57"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "success",
+      "domains": [
+        "shared"
+      ],
+      "summary": "数与干提供范围／触发线索，时间单位仍需另定。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "success"
+          },
+          {
+            "field": "number_or_stem_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "successful_outcome:8"
+    },
+    {
+      "id": "T036",
+      "title": "失败类与成功类分开",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        57,
+        58
+      ],
+      "source_anchors": [
+        {
+          "line": 57,
+          "sha256": "978b1ecf75620a48ac3a00133e59210f7d497f87a88d2c6acf903f04d3eb4290"
+        },
+        {
+          "line": 58,
+          "sha256": "b13e4c0944fb9f1436f9f2a02ad87578cadcc72854b87ea452138d3126d26c44"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "class_gate",
+      "domains": [
+        "shared"
+      ],
+      "summary": "已判不能成的事件另取失败期，不把不利应期倒转成病愈期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T037",
+      "title": "失败类：用神衰败期",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        59
+      ],
+      "source_anchors": [
+        {
+          "line": 59,
+          "sha256": "fa59e011848f5d54770bb70c7ed910a0b412444d9cfa79a55fbedc83522aa745"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "用神休囚死墓绝时段为该失败目标的候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "weakening_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:1"
+    },
+    {
+      "id": "T038",
+      "title": "失败类：忌旺受克期",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        60
+      ],
+      "source_anchors": [
+        {
+          "line": 60,
+          "sha256": "3653e29e340fe404342b99b885448a33a6d452444e2e62cfaa48d4388d58660e"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "忌神旺且用神受克的时间作失败候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "adverse_role_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:2"
+    },
+    {
+      "id": "T039",
+      "title": "失败类：空亡填实应空",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        61
+      ],
+      "source_anchors": [
+        {
+          "line": 61,
+          "sha256": "d09bc97a56a3d8bed95fa50e9180e9a9c5b284018b2a88d634bda9fcdcd142c8"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "此失败类原段仅列填实；与后文一般填冲并存，不能擅自加冲实。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "void",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:3"
+    },
+    {
+      "id": "T040",
+      "title": "失败类：合取刑冲、刑冲取合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        62
+      ],
+      "source_anchors": [
+        {
+          "line": 62,
+          "sha256": "cdf7b2a0c500a2670972fe7c28d58eea302bbceab27f6ad029ab529510e03081"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "按失败目标下的合、刑冲条件取触发。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "join_or_clash_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:4"
+    },
+    {
+      "id": "T041",
+      "title": "失败类：马星当令或受冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        63
+      ],
+      "source_anchors": [
+        {
+          "line": 63,
+          "sha256": "ec892f959645996a4e129536bb0b07922422379816d7462cb698fc03b1fda8ab"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "按失败目标查相关马星触发。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "horse_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:5"
+    },
+    {
+      "id": "T042",
+      "title": "失败类：值使时干数干",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        64
+      ],
+      "source_anchors": [
+        {
+          "line": 64,
+          "sha256": "154fbdb355db2ca66f6e2bb9dd8e3c0387fa7872e2561b07f5e92aec63655134"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "failure",
+      "domains": [
+        "shared"
+      ],
+      "summary": "作为失败事件期限／触发参考，不能改作病愈时间。",
+      "conditions": {
+        "all": [
+          {
+            "field": "outcome_classified",
+            "eq": true
+          },
+          {
+            "field": "event_class",
+            "eq": "failure"
+          },
+          {
+            "field": "number_or_stem_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "failed_outcome:6"
+    },
+    {
+      "id": "T043",
+      "title": "庚格用于阻截所需事件",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        65,
+        66,
+        67,
+        100,
+        101
+      ],
+      "source_anchors": [
+        {
+          "line": 65,
+          "sha256": "2709839611db64aa256440b3af051b1c1f8f888291bad24ef768408c8232eb2a"
+        },
+        {
+          "line": 66,
+          "sha256": "c8c268e6aba0a61a4a70d80c75554d18f947f9462292e5b8cb841551a08a579a"
+        },
+        {
+          "line": 67,
+          "sha256": "d98669f6889fee48cb3d33b9847bcd0110d17b17338e6afadad44f2d2c8a9187"
+        },
+        {
+          "line": 100,
+          "sha256": "caee736881c9ab3302c247ca24b0aad709136d1e79fdf093481b75e3ea8992f0"
+        },
+        {
+          "line": 101,
+          "sha256": "1c8e15a28dd3d2c0b37af9d2c891ae3ac0303ab9f91ff7e6e9e8edd4fdcf8d82"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "crime",
+        "missing",
+        "property",
+        "shared"
+      ],
+      "summary": "破获、找寻、阻止以庚的阻隔作用定期；好坏随事件，不把庚一律判凶。",
+      "conditions": {
+        "all": [
+          {
+            "field": "interception_needed",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T044",
+      "title": "直接年月日时庚格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        68,
+        69
+      ],
+      "source_anchors": [
+        {
+          "line": 68,
+          "sha256": "a9db64b75c16ebd8cb3690e010572bc5901b20f140cb73c71b5623a5241e56c5"
+        },
+        {
+          "line": 69,
+          "sha256": "80bbec530e09e2c19f13c875189b35523cda79e05115d0e1d6f7f167fff1081b"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "shared"
+      ],
+      "summary": "天盘庚加对应地盘年／月／日／时干，分别指该年／月／日／时内的范围。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_track_applicable",
+            "eq": true
+          },
+          {
+            "field": "interception_needed",
+            "eq": true
+          },
+          {
+            "field": "direct_geng_pattern",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "interception_recovery:1"
+    },
+    {
+      "id": "T045",
+      "title": "无直接格时日干阴取庚上",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        70
+      ],
+      "source_anchors": [
+        {
+          "line": 70,
+          "sha256": "8a18dcf0954eaff1e0a499a62c7c4726aa64a25897385fff089039323e7a369a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "shared"
+      ],
+      "summary": "日干为用、无直接庚格，阴干查地盘庚上的天干。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_track_applicable",
+            "eq": true
+          },
+          {
+            "field": "direct_geng_pattern",
+            "eq": false
+          },
+          {
+            "field": "timing_role",
+            "eq": "day"
+          },
+          {
+            "field": "day_polarity",
+            "eq": "yin"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "interception_recovery:2"
+    },
+    {
+      "id": "T046",
+      "title": "无直接格时日干阳取庚下",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        70
+      ],
+      "source_anchors": [
+        {
+          "line": 70,
+          "sha256": "8a18dcf0954eaff1e0a499a62c7c4726aa64a25897385fff089039323e7a369a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "shared"
+      ],
+      "summary": "日干为用、无直接庚格，阳干查天盘庚下的地盘干。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_track_applicable",
+            "eq": true
+          },
+          {
+            "field": "direct_geng_pattern",
+            "eq": false
+          },
+          {
+            "field": "timing_role",
+            "eq": "day"
+          },
+          {
+            "field": "day_polarity",
+            "eq": "yang"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "interception_recovery:2"
+    },
+    {
+      "id": "T047",
+      "title": "时干临阴星取庚上",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        71
+      ],
+      "source_anchors": [
+        {
+          "line": 71,
+          "sha256": "1898e729c8bd39fa7966b7dfe1f895c354f38bfc4c8074a25036fce26bb0c29e"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "shared"
+      ],
+      "summary": "时干为用且无直接格，阴星查庚上；阴阳星分类须有另行来源。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_track_applicable",
+            "eq": true
+          },
+          {
+            "field": "direct_geng_pattern",
+            "eq": false
+          },
+          {
+            "field": "timing_role",
+            "eq": "hour"
+          },
+          {
+            "field": "hour_star_polarity",
+            "eq": "yin"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "interception_recovery:3"
+    },
+    {
+      "id": "T048",
+      "title": "时干临阳星取庚下",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        71
+      ],
+      "source_anchors": [
+        {
+          "line": 71,
+          "sha256": "1898e729c8bd39fa7966b7dfe1f895c354f38bfc4c8074a25036fce26bb0c29e"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng",
+      "domains": [
+        "shared"
+      ],
+      "summary": "时干为用且无直接格，阳星查庚下；不把取干直接变作已知日期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_track_applicable",
+            "eq": true
+          },
+          {
+            "field": "direct_geng_pattern",
+            "eq": false
+          },
+          {
+            "field": "timing_role",
+            "eq": "hour"
+          },
+          {
+            "field": "hour_star_polarity",
+            "eq": "yang"
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": "interception_recovery:3"
+    },
+    {
+      "id": "T049",
+      "title": "庚格宫空不成格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        72
+      ],
+      "source_anchors": [
+        {
+          "line": 72,
+          "sha256": "8e1191643978cc2287eac4b3a352f2ba9e356dfcee66cd71cde8e64cf2b3823a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng_disqualifier",
+      "domains": [
+        "shared"
+      ],
+      "summary": "庚格所在实际宫逢空，则该庚格不成立。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_palace_void",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T050",
+      "title": "庚乙同层合不成格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        72
+      ],
+      "source_anchors": [
+        {
+          "line": 72,
+          "sha256": "8e1191643978cc2287eac4b3a352f2ba9e356dfcee66cd71cde8e64cf2b3823a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng_disqualifier",
+      "domains": [
+        "shared"
+      ],
+      "summary": "庚与乙在同一层同现而合，削弱阻隔而不成该格；不能跨层拼成。",
+      "conditions": {
+        "all": [
+          {
+            "field": "geng_yi_same_plane",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T051",
+      "title": "用神宫空亡优先检查",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        73,
+        74
+      ],
+      "source_anchors": [
+        {
+          "line": 73,
+          "sha256": "17c8456d16f4aa048e9c5e2715361599e952488906a3b74ba45482249e3e0143"
+        },
+        {
+          "line": 74,
+          "sha256": "16e9ea344ce9f54f336e2a7976885f9809d26fc9889be338e71ef33317ae7eb6"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "本段先查用神宫空亡，填或冲按先遇；有其他状态也先处理空。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_bound",
+            "eq": true
+          },
+          {
+            "field": "void",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "T055",
+        "C01",
+        "C03"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T052",
+      "title": "先遇须从真实起点向未来查",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        73,
+        74,
+        77,
+        89,
+        91,
+        92,
+        95
+      ],
+      "source_anchors": [
+        {
+          "line": 73,
+          "sha256": "17c8456d16f4aa048e9c5e2715361599e952488906a3b74ba45482249e3e0143"
+        },
+        {
+          "line": 74,
+          "sha256": "16e9ea344ce9f54f336e2a7976885f9809d26fc9889be338e71ef33317ae7eb6"
+        },
+        {
+          "line": 77,
+          "sha256": "16709b6e2e369ffbbe1e2bdb6bf7bd2275579b77bd4dae595ba7fd92aaf213aa"
+        },
+        {
+          "line": 89,
+          "sha256": "5af56e9d45d9457b81de58fd23c727a28ca2336f7f41271d8df385a11cf12783"
+        },
+        {
+          "line": 91,
+          "sha256": "218ff8c2ef172f021cca9be6ad51bb93da55f6df2cff89760b53c9dc59de89ee"
+        },
+        {
+          "line": 92,
+          "sha256": "1dd428afab91a9b5b4c731acd6480774ce7654d2da58f5af3a5461f75b9848a3"
+        },
+        {
+          "line": 95,
+          "sha256": "476812541413e69684761b160391e325e44389c6f03479a97dbd1fec9f554675"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chronology",
+      "domains": [
+        "shared"
+      ],
+      "summary": "在同一事件期限和同一单位下，按真实预测时间向前找符合条件的先遇，不循环选已过去的月份。",
+      "conditions": {
+        "all": [
+          {
+            "field": "reference_time_known",
+            "eq": true
+          },
+          {
+            "field": "unit_known",
+            "eq": true
+          },
+          {
+            "field": "deadline_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T053",
+      "title": "同气三组细分候选",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        74,
+        77
+      ],
+      "source_anchors": [
+        {
+          "line": 74,
+          "sha256": "16e9ea344ce9f54f336e2a7976885f9809d26fc9889be338e71ef33317ae7eb6"
+        },
+        {
+          "line": 77,
+          "sha256": "16709b6e2e369ffbbe1e2bdb6bf7bd2275579b77bd4dae595ba7fd92aaf213aa"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "same_qi",
+      "domains": [
+        "shared"
+      ],
+      "summary": "四正、四马、四库的用事时间可细分丑／寅或交接段，需先明确“用事时间”取哪一时间层。",
+      "conditions": {
+        "all": [
+          {
+            "field": "context_branch_basis_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "L74起局用事的时上句具有时支语境；后续推广仍须保留所用时间层次。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T054",
+      "title": "单支宫的月初月末交接",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        74
+      ],
+      "source_anchors": [
+        {
+          "line": 74,
+          "sha256": "16e9ea344ce9f54f336e2a7976885f9809d26fc9889be338e71ef33317ae7eb6"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "same_qi",
+      "domains": [
+        "shared"
+      ],
+      "summary": "坎子例随用事三组有子期、亥子交接或子丑交接的前后差异，不强缩成单日。",
+      "conditions": {
+        "all": [
+          {
+            "field": "context_branch_basis_known",
+            "eq": true
+          },
+          {
+            "field": "role_palace",
+            "eq": 1
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T055",
+      "title": "逆转反跳的空亡例外",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        75,
+        76
+      ],
+      "source_anchors": [
+        {
+          "line": 75,
+          "sha256": "41d9f833f996a6ff130d4eb96ffc36a6fe91f9e79fe201c2c19585a211cf8ad4"
+        },
+        {
+          "line": 76,
+          "sha256": "d7aca5468589e478fb9a4921014c3b995d163e12146b82554174214b1957499c"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "flow_exception",
+      "domains": [
+        "shared"
+      ],
+      "summary": "顺转填冲与逆转／反跳有别，后两类另有空宫天盘干再现候选；原文只称不少情况，不能当必然替代。",
+      "conditions": {
+        "all": [
+          {
+            "field": "void",
+            "eq": true
+          },
+          {
+            "field": "flow_exception",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "顺逆跳图样目前只有示意例，不据此改动正式排盘旋转算法。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T056",
+      "title": "不空才查相关马星",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        77
+      ],
+      "source_anchors": [
+        {
+          "line": 77,
+          "sha256": "16709b6e2e369ffbbe1e2bdb6bf7bd2275579b77bd4dae595ba7fd92aaf213aa"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "明确不空而临相关马星，查冲马或马动的先遇；同气可影响候选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "void",
+            "eq": false
+          },
+          {
+            "field": "moving_horse",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T057",
+      "title": "不空无马再查墓库",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        78,
+        79
+      ],
+      "source_anchors": [
+        {
+          "line": 78,
+          "sha256": "defd7fd3705b7f1fc92f49b3902fd191aa29bb7c721d13f1f8eba7966771342b"
+        },
+        {
+          "line": 79,
+          "sha256": "837453133161294bf100f7cd9b6ab635d708a26ce402cd98e88e6ff16d7804e2"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "不空、不临马时，实际墓库条件可参冲墓或入墓，方向须看事体。",
+      "conditions": {
+        "all": [
+          {
+            "field": "void",
+            "eq": false
+          },
+          {
+            "field": "moving_horse",
+            "eq": false
+          },
+          {
+            "field": "tomb_or_store",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T058",
+      "title": "冲墓与入墓不能互换",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        79
+      ],
+      "source_anchors": [
+        {
+          "line": 79,
+          "sha256": "837453133161294bf100f7cd9b6ab635d708a26ce402cd98e88e6ff16d7804e2"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "tomb_direction",
+      "domains": [
+        "shared"
+      ],
+      "summary": "回款示例取开墓，老年病危示例另取入墓的不利期；病危不直接转成病愈。",
+      "conditions": {
+        "all": [
+          {
+            "field": "tomb_or_store",
+            "eq": true
+          },
+          {
+            "field": "event_direction_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T059",
+      "title": "四库交替的精度限制",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        79
+      ],
+      "source_anchors": [
+        {
+          "line": 79,
+          "sha256": "837453133161294bf100f7cd9b6ab635d708a26ce402cd98e88e6ff16d7804e2"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "precision",
+      "domains": [
+        "shared"
+      ],
+      "summary": "辰戌丑未月日时可能交杂，同气和季节交接使精确层次待核；须呈现不确定。",
+      "conditions": {
+        "all": [
+          {
+            "field": "earth_transition_relevant",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T060",
+      "title": "不空无马无墓的刑冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        80
+      ],
+      "source_anchors": [
+        {
+          "line": 80,
+          "sha256": "5d4ec30645c1ec64fe92ba5fc0acdb9bfd770d126a097cf2ae1448fcba68f340"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "已排除空、马、墓后，实际刑冲参合解；不是只见六仪名称就取合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "void",
+            "eq": false
+          },
+          {
+            "field": "moving_horse",
+            "eq": false
+          },
+          {
+            "field": "tomb_or_store",
+            "eq": false
+          },
+          {
+            "field": "punishment_or_clash",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T061",
+      "title": "同层隐支自刑",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        81,
+        82
+      ],
+      "source_anchors": [
+        {
+          "line": 81,
+          "sha256": "0f611239f996c98ca47c9dc92153d026005b3491d1e61b7986e998d9e33527cc"
+        },
+        {
+          "line": 82,
+          "sha256": "37c4e092aff80cfbf2b1d7264d17e316f7ed6d751a1e83ccea07d6cca84d4262"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "午午、辰辰等暗支自刑举例参合解，记录辛、壬的寄干背景与疑字。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_self_punishment",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T062",
+      "title": "六仪暗支与宫支刑",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "source_anchors": [
+        {
+          "line": 83,
+          "sha256": "5bb5b39b135d02143e5485bf67cbf78506b6ecc3a00dacd6d8c4a86abcafbd55"
+        },
+        {
+          "line": 84,
+          "sha256": "21b34f9297804fbfa23db156c2c73e1a7502955436b55b158e0288587a6ceaf4"
+        },
+        {
+          "line": 85,
+          "sha256": "19af7e78d5943d49cafbe2abb6d2312bc92aaf5334c2d8fa3b28727fdb57c5da"
+        },
+        {
+          "line": 86,
+          "sha256": "7e87da20306cc9df7cf8478e22025f38cfc5c026202f5d5fb0478440e6e9495a"
+        },
+        {
+          "line": 87,
+          "sha256": "d58187bcae6a8ddcdee21db7aeccceb77d7f914f50a4406d6c1c362a9982d2c4"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "分清外来六甲暗支和本宫支，逐个保留击刑例外，不统一套六合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_palace_punishment",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T063",
+      "title": "刑墓并见先辨墓",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        84
+      ],
+      "source_anchors": [
+        {
+          "line": 84,
+          "sha256": "21b34f9297804fbfa23db156c2c73e1a7502955436b55b158e0288587a6ceaf4"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "tomb_direction",
+      "domains": [
+        "shared"
+      ],
+      "summary": "甲寅癸巽例以墓重于刑，不能先套寅亥合；墓的层次和定义需核。",
+      "conditions": {
+        "all": [
+          {
+            "field": "punishment_or_clash",
+            "eq": true
+          },
+          {
+            "field": "tomb_or_store",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C08"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T064",
+      "title": "戊震击刑的普通用神例外",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        85
+      ],
+      "source_anchors": [
+        {
+          "line": 85,
+          "sha256": "19af7e78d5943d49cafbe2abb6d2312bc92aaf5334c2d8fa3b28727fdb57c5da"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "普通用神甲子戊震例常参卯戌合，也列子午冲，并非一概子丑合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "jia_carrier",
+            "eq": "戊"
+          },
+          {
+            "field": "role_palace",
+            "eq": 3
+          },
+          {
+            "field": "chief_required",
+            "eq": false
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C02"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T065",
+      "title": "己坤击刑的特殊冲例",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        86
+      ],
+      "source_anchors": [
+        {
+          "line": 86,
+          "sha256": "7e87da20306cc9df7cf8478e22025f38cfc5c026202f5d5fb0478440e6e9495a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "甲戌己坤例列辰期与沐浴类比，不能凭一句话改墓表或所有己土规则。",
+      "conditions": {
+        "all": [
+          {
+            "field": "jia_carrier",
+            "eq": "己"
+          },
+          {
+            "field": "role_palace",
+            "eq": 2
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T066",
+      "title": "庚艮击刑多条件",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        86,
+        90
+      ],
+      "source_anchors": [
+        {
+          "line": 86,
+          "sha256": "7e87da20306cc9df7cf8478e22025f38cfc5c026202f5d5fb0478440e6e9495a"
+        },
+        {
+          "line": 90,
+          "sha256": "e121b6a4a16ad95d08b434f84404b518d633853a022a458d3820bc591e045466"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "庚艮例并有墓、刑、马之地，需事体与当前时间合参申／丑／寅等，不能仅取巳。",
+      "conditions": {
+        "all": [
+          {
+            "field": "jia_carrier",
+            "eq": "庚"
+          },
+          {
+            "field": "role_palace",
+            "eq": 8
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C03",
+        "C08"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T067",
+      "title": "壬巽刑墓并见",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        87
+      ],
+      "source_anchors": [
+        {
+          "line": 87,
+          "sha256": "d58187bcae6a8ddcdee21db7aeccceb77d7f914f50a4406d6c1c362a9982d2c4"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "punishment",
+      "domains": [
+        "shared"
+      ],
+      "summary": "甲辰壬巽例可能入墓为应，不能无条件等到辰酉合；保留原文疑字。",
+      "conditions": {
+        "all": [
+          {
+            "field": "jia_carrier",
+            "eq": "壬"
+          },
+          {
+            "field": "role_palace",
+            "eq": 4
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C08"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T068",
+      "title": "三组六仪暗支冲格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        88,
+        89
+      ],
+      "source_anchors": [
+        {
+          "line": 88,
+          "sha256": "fcbfb8c9fb06bcf2b5c0057d8406c46cd5d25e6b710a8263b246bfc19b7a89da"
+        },
+        {
+          "line": 89,
+          "sha256": "5af56e9d45d9457b81de58fd23c727a28ca2336f7f41271d8df385a11cf12783"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "clash",
+      "domains": [
+        "shared"
+      ],
+      "summary": "戊辛子午、壬己辰戌、庚癸寅申冲分组保留，不与一般十干相冲混同。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_pair_clash",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T069",
+      "title": "冲格可取天干合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        88,
+        89
+      ],
+      "source_anchors": [
+        {
+          "line": 88,
+          "sha256": "fcbfb8c9fb06bcf2b5c0057d8406c46cd5d25e6b710a8263b246bfc19b7a89da"
+        },
+        {
+          "line": 89,
+          "sha256": "5af56e9d45d9457b81de58fd23c727a28ca2336f7f41271d8df385a11cf12783"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "clash",
+      "domains": [
+        "shared"
+      ],
+      "summary": "辛与地盘戊所成冲格例可取丙辛合的干期，不只枚举地支六合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_pair_clash",
+            "eq": true
+          },
+          {
+            "field": "stem_join_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T070",
+      "title": "冲格可合其中一方",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        89
+      ],
+      "source_anchors": [
+        {
+          "line": 89,
+          "sha256": "5af56e9d45d9457b81de58fd23c727a28ca2336f7f41271d8df385a11cf12783"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "clash",
+      "domains": [
+        "lawsuit",
+        "shared"
+      ],
+      "summary": "辰戌争执例可参合走其中一方，按当前时间看哪一方能先被合解。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_pair_clash",
+            "eq": true
+          },
+          {
+            "field": "branch_join_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T071",
+      "title": "六仪暗支与宫支冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        90,
+        91,
+        92
+      ],
+      "source_anchors": [
+        {
+          "line": 90,
+          "sha256": "e121b6a4a16ad95d08b434f84404b518d633853a022a458d3820bc591e045466"
+        },
+        {
+          "line": 91,
+          "sha256": "218ff8c2ef172f021cca9be6ad51bb93da55f6df2cff89760b53c9dc59de89ee"
+        },
+        {
+          "line": 92,
+          "sha256": "1dd428afab91a9b5b4c731acd6480774ce7654d2da58f5af3a5461f75b9848a3"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "clash",
+      "domains": [
+        "shared"
+      ],
+      "summary": "六个寄干落宫冲例分别检查，不把所有候选合支一并当确定期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_palace_clash",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T072",
+      "title": "暗支宫冲例遇墓另查",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        90
+      ],
+      "source_anchors": [
+        {
+          "line": 90,
+          "sha256": "e121b6a4a16ad95d08b434f84404b518d633853a022a458d3820bc591e045466"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "tomb_direction",
+      "domains": [
+        "shared"
+      ],
+      "summary": "庚艮、癸坤在该段转按墓／冲墓，不先套普通冲合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_palace_clash",
+            "eq": true
+          },
+          {
+            "field": "tomb_or_store",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C08"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T073",
+      "title": "两种合解候选按未来先遇",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        91,
+        92
+      ],
+      "source_anchors": [
+        {
+          "line": 91,
+          "sha256": "218ff8c2ef172f021cca9be6ad51bb93da55f6df2cff89760b53c9dc59de89ee"
+        },
+        {
+          "line": 92,
+          "sha256": "1dd428afab91a9b5b4c731acd6480774ce7654d2da58f5af3a5461f75b9848a3"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chronology",
+      "domains": [
+        "shared"
+      ],
+      "summary": "甲子戊离例的丑／未依当前巳／酉等时间筛选，已过去的合期不得倒用。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_palace_clash",
+            "eq": true
+          },
+          {
+            "field": "reference_time_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T074",
+      "title": "不空无马无墓的合格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        93
+      ],
+      "source_anchors": [
+        {
+          "line": 93,
+          "sha256": "eb1986fa800126b79e43814bf86f64673edaf0eaaaa303cb3303b9387851b44d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "在该段适用前提下，逢合可参冲开；若另有刑冲同现，资料未给完整互斥表。",
+      "conditions": {
+        "all": [
+          {
+            "field": "void",
+            "eq": false
+          },
+          {
+            "field": "moving_horse",
+            "eq": false
+          },
+          {
+            "field": "tomb_or_store",
+            "eq": false
+          },
+          {
+            "field": "combination",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C09"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T075",
+      "title": "五组天干合格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        94,
+        95
+      ],
+      "source_anchors": [
+        {
+          "line": 94,
+          "sha256": "ccc60f5044eae6a9f924da97d81527b631f9b97ffa43cdceaf9b12e00694abc9"
+        },
+        {
+          "line": 95,
+          "sha256": "476812541413e69684761b160391e325e44389c6f03479a97dbd1fec9f554675"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "combination",
+      "domains": [
+        "shared"
+      ],
+      "summary": "戊癸、庚乙、辛丙、壬丁及逆序组作为合格线索，须保留层序与实际用神。",
+      "conditions": {
+        "all": [
+          {
+            "field": "heaven_earth_stem_join",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T076",
+      "title": "用对宫当令冲合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        95
+      ],
+      "source_anchors": [
+        {
+          "line": 95,
+          "sha256": "476812541413e69684761b160391e325e44389c6f03479a97dbd1fec9f554675"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "combination",
+      "domains": [
+        "shared"
+      ],
+      "summary": "丁壬震例参兑宫时段的冲，不等于任意干合都直接取宫数。",
+      "conditions": {
+        "all": [
+          {
+            "field": "heaven_earth_stem_join",
+            "eq": true
+          },
+          {
+            "field": "opposite_palace_trigger_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T077",
+      "title": "合格也可取暗支冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        95,
+        96
+      ],
+      "source_anchors": [
+        {
+          "line": 95,
+          "sha256": "476812541413e69684761b160391e325e44389c6f03479a97dbd1fec9f554675"
+        },
+        {
+          "line": 96,
+          "sha256": "bb357b5822ac49e8070058d79bc32480ead7e5bf016f8f77c07a7710b01e522f"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "combination",
+      "domains": [
+        "shared"
+      ],
+      "summary": "天干合或暗支合的冲候选有多方，按上下文与先遇筛选。",
+      "conditions": {
+        "all": [
+          {
+            "field": "combination",
+            "eq": true
+          },
+          {
+            "field": "hidden_branch_identified",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T078",
+      "title": "普通合局勿随意冲本宫支",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        96
+      ],
+      "source_anchors": [
+        {
+          "line": 96,
+          "sha256": "bb357b5822ac49e8070058d79bc32480ead7e5bf016f8f77c07a7710b01e522f"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "combination",
+      "domains": [
+        "shared"
+      ],
+      "summary": "六甲暗支与宫支合时，讲义强调外来暗支的冲较常应、本宫支不易冲走；不把所有对冲平权。",
+      "conditions": {
+        "all": [
+          {
+            "field": "hidden_palace_join",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T079",
+      "title": "未中前述状态再看生旺墓绝",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        97
+      ],
+      "source_anchors": [
+        {
+          "line": 97,
+          "sha256": "e1a391384978925ef4a26c8c43b97a677c666ace4ac25403ad7d60f9115c449d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "role_state",
+      "domains": [
+        "shared"
+      ],
+      "summary": "无前述限制时，依事件方向和用神需要查生旺墓绝、生逢生、克逢克。",
+      "conditions": {
+        "all": [
+          {
+            "field": "prior_state_present",
+            "eq": false
+          },
+          {
+            "field": "event_direction_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T080",
+      "title": "伏吟参冲",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        98
+      ],
+      "source_anchors": [
+        {
+          "line": 98,
+          "sha256": "94dfd99c7c160be36d9496e6544e3be5e7a1e136cd26ba08d0b02881075b5136"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "global_pattern",
+      "domains": [
+        "shared"
+      ],
+      "summary": "伏吟局可参冲期，仍合参具体应事用神与上位条件，不能只按局名定日。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fuyin",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T081",
+      "title": "反吟参合",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        98
+      ],
+      "source_anchors": [
+        {
+          "line": 98,
+          "sha256": "94dfd99c7c160be36d9496e6544e3be5e7a1e136cd26ba08d0b02881075b5136"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "global_pattern",
+      "domains": [
+        "shared"
+      ],
+      "summary": "反吟局可参合期，不能无视空、马、墓及符使适用背景。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fanyin",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T082",
+      "title": "日时三合六合等作参考",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        99
+      ],
+      "source_anchors": [
+        {
+          "line": 99,
+          "sha256": "610070103de37e1164ff372766cd7ffdf4b8c5e83fc06c76260b735536e9079a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "supporting",
+      "domains": [
+        "shared"
+      ],
+      "summary": "日支、时支的合刑冲克害仅列参考，不能自动提为主应期。",
+      "conditions": {
+        "all": [
+          {
+            "field": "day_hour_branch_relation_known",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T083",
+      "title": "其它领域须用神正临庚格",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        100,
+        101
+      ],
+      "source_anchors": [
+        {
+          "line": 100,
+          "sha256": "caee736881c9ab3302c247ca24b0aad709136d1e79fdf093481b75e3ea8992f0"
+        },
+        {
+          "line": 101,
+          "sha256": "1c8e15a28dd3d2c0b37af9d2c891ae3ac0303ab9f91ff7e6e9e8edd4fdcf8d82"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "geng_extension",
+      "domains": [
+        "career",
+        "shared"
+      ],
+      "summary": "非阻截领域只有应事用神恰临相应庚格时才作特殊候选；找工作庚加月干例保留为条件例。",
+      "conditions": {
+        "all": [
+          {
+            "field": "interception_needed",
+            "eq": false
+          },
+          {
+            "field": "event_role_on_geng_pattern",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T084",
+      "title": "值符相冲法合外来支",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        104
+      ],
+      "source_anchors": [
+        {
+          "line": 104,
+          "sha256": "ffc61babfb2e430834e19551c613f7ced3f82263829e4c9ec63254420bf6c32c"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "六甲值符落对冲宫的例子，按值符外来支之合定期，不混普通用神的另一段例外。",
+      "conditions": {
+        "all": [
+          {
+            "field": "chief_required",
+            "eq": true
+          },
+          {
+            "field": "chief_clash",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C02",
+        "C03"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T085",
+      "title": "值符相刑法合外来支",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        105
+      ],
+      "source_anchors": [
+        {
+          "line": 105,
+          "sha256": "a0a811048b342ac49569f1cfe4807fcaecdb6c2b594d3f0e15015da9c44d806d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "甲戌坤、甲子震、甲寅巽的值符刑例按外来支参合。",
+      "conditions": {
+        "all": [
+          {
+            "field": "chief_required",
+            "eq": true
+          },
+          {
+            "field": "chief_punishment",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C02"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T086",
+      "title": "值符旬空出旬与填实",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        106
+      ],
+      "source_anchors": [
+        {
+          "line": 106,
+          "sha256": "127f81b9205db41c3e2dd177d76430d8229cc2f5096f2e7591ef4530afe35b8d"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "值符落旬空按出旬、空支填实及阴阳比的原段说明；不是普通宫空任意冲填的完全同义。",
+      "conditions": {
+        "all": [
+          {
+            "field": "chief_required",
+            "eq": true
+          },
+          {
+            "field": "chief_void",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [
+        "C01"
+      ],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T087",
+      "title": "值符无冲刑空后的六仪法",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        107,
+        108
+      ],
+      "source_anchors": [
+        {
+          "line": 107,
+          "sha256": "cf53f4896eb1e15cc6353fcc6f00952b4823dc209c3cde01fee8c0f63975b9cb"
+        },
+        {
+          "line": 108,
+          "sha256": "2f079b93f7d739f567642f5116d48cbf8455ebf34225595a524889f16e52872b"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "在已排除值符冲、刑、空后查天盘六仪暗支冲合，再无冲合才查星门生克。",
+      "conditions": {
+        "all": [
+          {
+            "field": "chief_required",
+            "eq": true
+          },
+          {
+            "field": "chief_clash",
+            "eq": false
+          },
+          {
+            "field": "chief_punishment",
+            "eq": false
+          },
+          {
+            "field": "chief_void",
+            "eq": false
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T088",
+      "title": "符使必须与所办事件有关",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        110
+      ],
+      "source_anchors": [
+        {
+          "line": 110,
+          "sha256": "1fa5364e1deb26be89a5b6ffa800e3bf72d7d4e5c7badf985fc48b5863577cb1"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "chief_executor",
+      "domains": [
+        "shared"
+      ],
+      "summary": "确需值符／值使办的事才提升相应落宫；这不是值使宫数定时长的同一个方法。",
+      "conditions": {
+        "all": [
+          {
+            "field": "fushi_involved",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T089",
+      "title": "临值使的已启动例外",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        111
+      ],
+      "source_anchors": [
+        {
+          "line": 111,
+          "sha256": "6163939d8899e6197f6d1127fc518a9a586f8d855a87c6f8192ced9e31088dc5"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "event_phase",
+      "domains": [
+        "shared"
+      ],
+      "summary": "用神和值使同宫可有已启动／宜执行之象，但值使空或墓则不能据此认定已经发生。",
+      "conditions": {
+        "all": [
+          {
+            "field": "role_with_executor",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [
+        "是否真实已开始仍须事件事实核对，不倒填预测起点。"
+      ],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T090",
+      "title": "值使控制有效期限",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "source_anchors": [
+        {
+          "line": 112,
+          "sha256": "ae25d42e76840ff38147bb1744da276ae808de7d2ca0ab960b1b7d17264bfda1"
+        },
+        {
+          "line": 113,
+          "sha256": "62b8a1e5e6dd87fe3c00fe5c906296a58ac3e30ce15dc9619c7935f1e652361a"
+        },
+        {
+          "line": 114,
+          "sha256": "7b1f74a822ad0b600af85f2fc3bf8cd371d31f8b03edd83049b7215ad08af7ac"
+        },
+        {
+          "line": 115,
+          "sha256": "b1f7f2c371593f55474df1c5cd3ebdbd8d95f85b2d104249617e65412e856ff4"
+        },
+        {
+          "line": 116,
+          "sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147"
+        },
+        {
+          "line": 117,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        },
+        {
+          "line": 118,
+          "sha256": "3edb90ee852c61ffc0e6cc35828083fe972c84470089f95fe01ba426c8316f32"
+        },
+        {
+          "line": 119,
+          "sha256": "86fc9d5e65a32ef8086568041d7eefc30cadcdf8c5077e94ca90ccfa2183b8a7"
+        },
+        {
+          "line": 120,
+          "sha256": "0039c5668dab90c126ff3c3a781a0bc9754bf590c4c7ae8151761807be81e35c"
+        },
+        {
+          "line": 121,
+          "sha256": "444bc789c6d967f9e8c69fe3ff7fdb50c2dfd9680f904dee107d70e88223be60"
+        },
+        {
+          "line": 122,
+          "sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147"
+        },
+        {
+          "line": 123,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        },
+        {
+          "line": 124,
+          "sha256": "f27a37eaa81c3c37f4efea323be1315139d2f7f90136197dfff4b9fe1480efbd"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "validity",
+      "domains": [
+        "shared"
+      ],
+      "summary": "判断只在对应事件阶段和时限内有效；过期不能沿用原局推到无限未来。",
+      "conditions": {
+        "all": [
+          {
+            "field": "event_defined",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T091",
+      "title": "时长范围不等于发生时点",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        116,
+        117,
+        122,
+        123
+      ],
+      "source_anchors": [
+        {
+          "line": 116,
+          "sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147"
+        },
+        {
+          "line": 117,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        },
+        {
+          "line": 122,
+          "sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147"
+        },
+        {
+          "line": 123,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "validity",
+      "domains": [
+        "shared"
+      ],
+      "summary": "九天内的机会范围不等于第九天必发生；区分有效期限与选定的候选时间。",
+      "conditions": {
+        "all": [
+          {
+            "field": "executor_number_applicable",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    },
+    {
+      "id": "T092",
+      "title": "重复问事的阶段性区别",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "source_anchors": [
+        {
+          "line": 118,
+          "sha256": "3edb90ee852c61ffc0e6cc35828083fe972c84470089f95fe01ba426c8316f32"
+        },
+        {
+          "line": 119,
+          "sha256": "86fc9d5e65a32ef8086568041d7eefc30cadcdf8c5077e94ca90ccfa2183b8a7"
+        },
+        {
+          "line": 120,
+          "sha256": "0039c5668dab90c126ff3c3a781a0bc9754bf590c4c7ae8151761807be81e35c"
+        },
+        {
+          "line": 121,
+          "sha256": "444bc789c6d967f9e8c69fe3ff7fdb50c2dfd9680f904dee107d70e88223be60"
+        },
+        {
+          "line": 122,
+          "sha256": "cae9d952ff61e973acb4a77c422eea20af12f38226cf73f33f83c47306cce147"
+        },
+        {
+          "line": 123,
+          "sha256": "d063f5287d51cc26720d341ee174603f98726cc59b56362f0b612e8521592d8a"
+        },
+        {
+          "line": 124,
+          "sha256": "f27a37eaa81c3c37f4efea323be1315139d2f7f90136197dfff4b9fe1480efbd"
+        }
+      ],
+      "evidence_level": "user_supplied_explicit_or_contextual_statement",
+      "review_status": "draft",
+      "runtime_enabled": false,
+      "scope": "event_phase",
+      "domains": [
+        "shared"
+      ],
+      "summary": "同一事反复起局容易混乱；整体与现阶段意义要分开，不改既有15天产品限制。",
+      "conditions": {
+        "all": [
+          {
+            "field": "recast_of_same_event",
+            "eq": true
+          }
+        ]
+      },
+      "limits": [],
+      "exceptions": [],
+      "existing_book_method_ref": null
+    }
+  ]
+}

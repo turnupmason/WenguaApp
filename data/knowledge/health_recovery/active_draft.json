@@ -1,0 +1,13 @@
+{
+  "schema": "wengua_health_recovery_active_draft_v1",
+  "active_draft": "reading_template_v2_user_timing.json",
+  "template_sha256": "4c38c467ab76f5970067ef791c62865296dc7d1fa822065ffd6d690c6f418c8f",
+  "source_id": "user_timing_notes_20261102",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "user_scope": "只看病什么时候好；沿用已完成轻重与病位结果",
+  "prior_drafts_preserved": [
+    "reading_template_v1_draft.json",
+    "source_review_v1.json"
+  ],
+  "app_enabled": false
+}

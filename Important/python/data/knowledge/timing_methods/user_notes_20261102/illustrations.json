@@ -1,0 +1,605 @@
+{
+  "schema": "wengua_user_timing_illustrations_v1",
+  "source_id": "user_timing_notes_20261102",
+  "illustrations": [
+    {
+      "id": "E01",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        10,
+        11
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "巽宫空，当前申月且事件必须当年办。",
+      "source_forecast_or_illustration": "以戌亥冲期作当年内候选，不等来年辰巳。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T008",
+        "T009"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E02",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        10,
+        11
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "巽宫空，当前寅月，辰巳尚未到。",
+      "source_forecast_or_illustration": "可参辰巳填实。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T008",
+        "T051"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E03",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        14,
+        15
+      ],
+      "domain": "shared",
+      "kind": "numeric_illustration",
+      "known_context": "值使兑宫，事体可能按年／月／日计，且月内须完成。",
+      "source_forecast_or_illustration": "按伏反吟给不同约数；月内事不取70天，17／27天也只是举例。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T010",
+        "T012"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E04",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        17,
+        18,
+        19
+      ],
+      "domain": "weather",
+      "kind": "reported_anecdote",
+      "known_context": "2003年10月课堂，反吟、值使震三，正在雷响问下雨。",
+      "source_forecast_or_illustration": "半小时内。",
+      "reported_result": "讲义称29分钟下雨；无完整年月日时或九宫。",
+      "related_rule_ids": [
+        "T013"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E05",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        18,
+        19
+      ],
+      "domain": "shared",
+      "kind": "reported_anecdote",
+      "known_context": "出租车先承诺30分钟，已等约50分钟，反吟、值使坎一。",
+      "source_forecast_or_illustration": "约1分钟内。",
+      "reported_result": "讲义称话音刚落即到，未给真实起止时间及全盘。",
+      "related_rule_ids": [
+        "T013"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E06",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        20
+      ],
+      "domain": "shared",
+      "kind": "numeric_illustration",
+      "known_context": "伏吟、值使坎，已知事体按年。",
+      "source_forecast_or_illustration": "1年或1年半为例，不是所有坎宫均取该时长。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T012"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E07",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "domain": "business",
+      "kind": "hypothetical",
+      "known_context": "日干震宫，未月；兑宫伤灾因素，坎宫生门财象。",
+      "source_forecast_or_illustration": "伤灾候选看兑酉，财候选看坎子；不都看日干卯。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T017",
+        "T018"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E08",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        35,
+        36
+      ],
+      "domain": "career",
+      "kind": "hypothetical",
+      "known_context": "朋友月干丙巽、丙戊生门，辰月；岗位开门艮空。",
+      "source_forecast_or_illustration": "岗位限制解除的未申期作候选。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E09",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        37
+      ],
+      "domain": "career",
+      "kind": "hypothetical",
+      "known_context": "朋友用神巽空、岗位开门坤，卯月问。",
+      "source_forecast_or_illustration": "辰巳填实期可参。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E10",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        37
+      ],
+      "domain": "career",
+      "kind": "hypothetical",
+      "known_context": "同一朋友巽空，当前午未，岗位未申虽有机会。",
+      "source_forecast_or_illustration": "仍待戌亥冲实求职者限制，不以岗位机会代替人已准备好。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T020",
+        "T021"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E11",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        73,
+        74
+      ],
+      "domain": "career",
+      "kind": "hypothetical",
+      "known_context": "工作调动开门艮空、庚癸，子月。",
+      "source_forecast_or_illustration": "丑寅填期再依四马／四库／四正用事点细分寅、丑、交接。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T051",
+        "T053"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E12",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        74
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "用神坎单子支，指定四正／四马／四库的用事点。",
+      "source_forecast_or_illustration": "子期、亥子交接或子丑交接的前后差异。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T054"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E13",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        75,
+        76
+      ],
+      "domain": "shared",
+      "kind": "pattern_illustration",
+      "known_context": "给出顺时针串联、逆向串联、不规则反跳的局部干对。",
+      "source_forecast_or_illustration": "逆转反跳空亡可能另参天盘干再现；没有完整盘态分类算法。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T055"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E14",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        77
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "用神艮宫无空而临马，宫内丑寅。",
+      "source_forecast_or_illustration": "随用事气组参丑、寅或丑寅交接，不把宫内两支同认马。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T056",
+        "T053"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E15",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        79
+      ],
+      "domain": "business",
+      "kind": "hypothetical",
+      "known_context": "戊丙，时干或用神乾，问回款且已判有返还条件。",
+      "source_forecast_or_illustration": "参辰冲墓的返还候选。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T057",
+        "T058"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E16",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        79
+      ],
+      "domain": "health",
+      "kind": "adverse_hypothetical",
+      "known_context": "2006丙戌，老年人病危前提，年干丙乾墓，未月问。",
+      "source_forecast_or_illustration": "原段谈戌入墓的不利时间，不改为病愈日。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T058",
+        "T059"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E17",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        79
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "开门为用落艮，按原段入墓前提。",
+      "source_forecast_or_illustration": "丑或冲丑之未作候选，须另定事件方向。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T057",
+        "T058"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E18",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        81,
+        82
+      ],
+      "domain": "shared",
+      "kind": "symbolic_illustration",
+      "known_context": "辛辛隐午自刑；壬壬隐辰自刑（原文有疑字）。",
+      "source_forecast_or_illustration": "分别参午未合、辰酉合。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T061"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E19",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        84,
+        85,
+        86,
+        87
+      ],
+      "domain": "shared",
+      "kind": "symbolic_illustration",
+      "known_context": "癸巽、戊震、己坤、庚艮、壬巽的不同刑墓马组合。",
+      "source_forecast_or_illustration": "分别保留合、冲、入墓或出墓等例外，不统一六仪击刑取六合。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T062",
+        "T063",
+        "T064",
+        "T065",
+        "T066",
+        "T067"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E20",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        88,
+        89
+      ],
+      "domain": "shared",
+      "kind": "symbolic_illustration",
+      "known_context": "坤宫辛与地盘甲子戊形成子午冲。",
+      "source_forecast_or_illustration": "该例可参丙干丙辛合，并非只看地支。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T068",
+        "T069"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E21",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        89
+      ],
+      "domain": "lawsuit",
+      "kind": "hypothetical",
+      "known_context": "壬己辰戌冲，问争执何时解决。",
+      "source_forecast_or_illustration": "卯或酉的合解候选须看当前时间；午月例参酉。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T070"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E22",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        91,
+        92
+      ],
+      "domain": "business",
+      "kind": "hypothetical",
+      "known_context": "戊离子午冲，问破财，当前巳月或酉月／酉日。",
+      "source_forecast_or_illustration": "巳后先未；酉后才丑，不能倒回已过的未。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T071",
+        "T073"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E23",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        95
+      ],
+      "domain": "shared",
+      "kind": "hypothetical",
+      "known_context": "丁壬震合局；另有付费求人办事的先遇午／申例。",
+      "source_forecast_or_illustration": "可参兑宫对冲；另一例须在合适候选中看午／申哪个先到。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T075",
+        "T076",
+        "T077"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E24",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        96
+      ],
+      "domain": "business",
+      "kind": "hypothetical",
+      "known_context": "戊丙艮，外财待返，甲子戊暗子与艮丑合。",
+      "source_forecast_or_illustration": "原例参午冲子，而非一律未冲丑。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T078"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E25",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        101
+      ],
+      "domain": "career",
+      "kind": "hypothetical",
+      "known_context": "开门正临庚加癸，癸恰为月干。",
+      "source_forecast_or_illustration": "特定角色临庚格的当月候选，不外推为所有工作只看庚。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T083"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E26",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        104,
+        105
+      ],
+      "domain": "shared",
+      "kind": "symbolic_illustration",
+      "known_context": "六甲值符分别临暗支冲／刑之宫。",
+      "source_forecast_or_illustration": "合去外来支的值符例，与普通用神例分别保存。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T084",
+        "T085"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E27",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        106
+      ],
+      "domain": "shared",
+      "kind": "symbolic_illustration",
+      "known_context": "甲子旬戌亥空，值符临乾。",
+      "source_forecast_or_illustration": "原文出旬、填实戌亥的例，不生成缺时区／单位的公历日。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T086"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E28",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        115,
+        120,
+        121
+      ],
+      "domain": "life",
+      "kind": "numeric_illustration",
+      "known_context": "问全年运势，死门值使坤；另有凶门门迫的策划例。",
+      "source_forecast_or_illustration": "只在相应阶段讨论不利，不把2个月之类数值扩为全年。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T090"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    },
+    {
+      "id": "E29",
+      "source_id": "user_timing_notes_20261102",
+      "source_lines": [
+        116,
+        117,
+        122,
+        123
+      ],
+      "domain": "career",
+      "kind": "numeric_illustration",
+      "known_context": "生门值使离，找工作且明确短期时程；另有值使3宫时长例。",
+      "source_forecast_or_illustration": "9天／9个月等为受单位限定的有效范围，不等于第9天必上岗。",
+      "reported_result": null,
+      "related_rule_ids": [
+        "T090",
+        "T091"
+      ],
+      "complete_chart_available": false,
+      "calendar_recomputed": false,
+      "independent_accuracy_sample": false,
+      "added_to_historical_case_database": false
+    }
+  ],
+  "new_complete_historical_cases": 0
+}

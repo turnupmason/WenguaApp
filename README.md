@@ -62,7 +62,7 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 
-**最新全库Python测试：**864项，0 failures、0 errors、3项原有skip。原52条失败/错误已按证据逐项清账；最后2项手动时辰入口现已实现并通过，未删测试或增加skip。[本轮实际日志与SHA](docs/audits/health_recovery_template_v1_20261102/local_results.json) · [旧失败逐项清账](docs/audits/health_cleanup_20261102/README.md)。全库程序通过不代表各领域择时规则已验收或现实预测有效；旧规则/配置/迁移/归档失败记录均保留。
+**最新全库Python测试：**880项，0 failures、0 errors、3项原有skip。原52条失败/错误已按证据逐项清账；最后2项手动时辰入口现已实现并通过，未删测试或增加skip。[本轮实际日志与SHA](docs/audits/user_timing_notes_20261102/local_results.json) · [旧失败逐项清账](docs/audits/health_cleanup_20261102/README.md)。全库程序通过不代表各领域择时规则已验收或现实预测有效；旧规则/配置/迁移/归档失败记录均保留。
 
 ## 在 Mac 用 Command＋R 打开并测试 UI
 
@@ -130,7 +130,11 @@ cd WenguaApp
 
 ## 下一开发重点：病愈应期
 
-已建立[疾病应期模板V1审阅稿](docs/HEALTH_RECOVERY_TEMPLATE_V1_20261102.md)和[结构化草稿](data/knowledge/health_recovery/reading_template_v1_draft.json)，包含6段断词与6类状态；[来源审计](data/knowledge/health_recovery/source_review_v1.json)保留12来源条目／11事件家族、8通用候选方法与排除条件。疾病专属择法／同盘候选窗口及Swift接线尚待验证，当前不是已开放手机模板。准备页说明上下间距已按用户纠正改为相等（p9），其余界面保持。
+当前以用户最新资料生成的[病愈应期V2](docs/HEALTH_RECOVERY_TEMPLATE_V2_20261102.md)为活动草稿：固定只问“病什么时候好”，复用已完成的轻重和病位，不再要求选择好转／出院／临床治愈目标。[共用应期详稿](docs/TIMING_METHODS_USER_NOTES_20261102.md)记录全文124行、92条结构化记录、29组讲义示例及9组情境分歧，供后续工作、求财等领域复用。[结构化规则库](data/knowledge/timing_methods/user_notes_20261102/source_manifest.json)与[活动草稿索引](data/knowledge/health_recovery/active_draft.json)可核对SHA与版本。原文完整保存在本地Git忽略目录，公开库保存原创整理和来源收据。
+
+本轮完成资料／模板更新，尚未开启手机病愈日期计算；不重复修改轻重／病位或UI。日月历法区间已有，年／时及新增取期法须分别实现和验证。
+
+此前已建立[疾病应期模板V1审阅稿](docs/HEALTH_RECOVERY_TEMPLATE_V1_20261102.md)和[结构化草稿](data/knowledge/health_recovery/reading_template_v1_draft.json)，包含6段断词与6类状态；[来源审计](data/knowledge/health_recovery/source_review_v1.json)保留12来源条目／11事件家族、8通用候选方法与排除条件。疾病专属择法／同盘候选窗口及Swift接线尚待验证，当前不是已开放手机模板。准备页说明上下间距已按用户纠正改为相等（p9），其余界面保持。
 
 用户已指定下一重点为“根据病情判断传统病愈应期”。继续保留轻重V9／V11、病位V27的封存版本，独立开发 `health.recovery`，通过来源与原生验收前不开放。先区分好转、康复、出院等目标，核对原书适用条件，再由真实历法计算有凭据的候选窗口；不能把吉凶分直接换成康复天数，也不能承诺现实医疗康复日期。现状与开发顺序见 [病愈应期启动审计](docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md)。
 
@@ -146,7 +150,7 @@ python3 -m unittest tests.test_frozen_health_release_20261102 -v
 python3 -m unittest tests.test_important_mirror_integrity_20261026 -v
 # 真实病位及六种伤损条件
 python3 -m unittest tests.test_health_discomfort_v27_ding_gods_hour_20261101 tests.test_health_discomfort_injury_gate_20261102 -v
-# 完整单测：最新864项0失败、0错误、3项原有skip，保留历史失败日志
+# 完整单测：最新880项0失败、0错误、3项原有skip，保留历史失败日志
 python3 -m unittest discover -s tests -v
 ```
 

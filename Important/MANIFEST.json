@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "453dd4c41467a887b323c7933c45d72f7d3689f0"
+      "sha": "1e3f968d406126c944f0da82866d7ce4d3fbacf4"
     },
     {
       "platform": "python",
@@ -968,6 +968,84 @@
       "canonical": "data/knowledge/health_recovery/source_review_v1.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/source_review_v1.json",
       "sha": "ac4200569de54bf402520fa24559aa4abce456b0"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/user_timing_notes_20261102.py",
+      "snapshot": "Important/python/engine/user_timing_notes_20261102.py",
+      "sha": "43d1aadd6dc0e692ce3762f00a7df4c270f9d2e7"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/import_user_timing_notes_20261102.py",
+      "snapshot": "Important/python/scripts/import_user_timing_notes_20261102.py",
+      "sha": "4e0aff536a48a539e35a86d914f0b85a4bf945b2"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/render_user_timing_material_20261102.py",
+      "snapshot": "Important/python/scripts/render_user_timing_material_20261102.py",
+      "sha": "6feb9f4aab971a42349027087783453edc616c93"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_user_timing_material_20261102.py",
+      "snapshot": "Important/python/tests/test_user_timing_material_20261102.py",
+      "sha": "f451d60f2b66a101f6e1a277d505b27b026aeda4"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/illustrations.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/illustrations.json",
+      "sha": "0688136fcb2891f411a4e27a621766d3089bba37"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/exceptions_and_duplicates.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/exceptions_and_duplicates.json",
+      "sha": "efd2c014ebd3951b1b5209140e2a6489aac553d3"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/source_units.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/source_units.json",
+      "sha": "fe9a354608c510db7234a926127354209bf09135"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/source_manifest.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/source_manifest.json",
+      "sha": "fe340b0bdd5cd867748575b52e36e12f3927f292"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/method_tracks.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/method_tracks.json",
+      "sha": "e41948e4d79988b5f05a26db2219e4f5c920147c"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/domain_contracts.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/domain_contracts.json",
+      "sha": "1aa83e045989c435408d18701dd9767c2fa2a389"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/timing_methods/user_notes_20261102/rules.json",
+      "snapshot": "Important/python/data/knowledge/timing_methods/user_notes_20261102/rules.json",
+      "sha": "db06e6a22facbb82e9a7f33c12dfc237006b9a62"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/active_draft.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/active_draft.json",
+      "sha": "29e4f7bad92b613ba01a47e47bd2d0bbff36d4ba"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/reading_template_v2_user_timing.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/reading_template_v2_user_timing.json",
+      "sha": "344f0f95492e229441053f107bf0706ad6052206"
     }
   ]
 }
