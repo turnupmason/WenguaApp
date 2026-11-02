@@ -1,0 +1,39 @@
+{
+  "formal_xcode": {
+    "id": 41531666138,
+    "head_sha": "76d3d83a76df67d32a11ef2948d77319ea504119",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41531666138"
+  },
+  "independent_ios": {
+    "id": 41531553414,
+    "head_sha": "ca5b997d040fb14c672c4c128e69e349ecf9bc48",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41531553414"
+  },
+  "native_health_regression": {
+    "id": 41531553317,
+    "head_sha": "ca5b997d040fb14c672c4c128e69e349ecf9bc48",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41531553317"
+  },
+  "main_ci": {
+    "id": 41531553383,
+    "head_sha": "ca5b997d040fb14c672c4c128e69e349ecf9bc48",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41531553383"
+  },
+  "p8_independent_late_completion": {
+    "id": 41527891786,
+    "head_sha": "aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41527891786"
+  },
+  "log_sha256": "ecef54533df72d9b275d3477ed5b997864857b5211e5bb876c516bc99f490f80",
+  "recovery_feature": "V1 draft schema/source validation only; recovery selector and Swift module not implemented or enabled"
+}
