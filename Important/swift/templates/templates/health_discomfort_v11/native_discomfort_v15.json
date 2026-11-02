@@ -1,7 +1,7 @@
 {
-  "schema": "wengua_health_discomfort_native_v23_integrated_palace_20261101",
+  "schema": "wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101",
   "topic_id": "health.discomfort",
-  "status": "v23_internal_review_pending_user_approval",
+  "status": "v24_internal_review_pending_user_approval",
   "sections": [
     {
       "id": "01_location",
@@ -58,5 +58,6 @@
     "surgery"
   ],
   "injury_context_note": "伤门作为独立主用神限于已确认的伤损、骨肉、出血、剧痛或手术选项；但天芮病宫实际所临的八门（含伤门）及其门克宫、宫克门方向始终必须查，不能因未启用伤门独立主用神而省略门迫。门星神及十干力量是文化象意，不是实际疾病和医学疼痛强度诊断。",
-  "unified_palace_rule": "首段完整合并天芮星、宫中八门、八神、十干独立源力、81格及墓刑空迫；旧07/08仍保留模板schema占位以审计，但运行时为空不额外展示。所有双支实宫十干力量逐支读原200格，不发明合成档；绝不在观众断词中显示括号；结论结合真实有效强干象、强门、强神与伏吟副证，只取相符部位，不作为医学确诊或轻重评分。"
+  "unified_palace_rule": "病宫首段合断真实天芮星、门神、每一天盘地盘干与天禽寄格、81天地格和本宫空墓刑迫。十干双支各取原200格力量，按五档中的较高者用于本专题位置与象意，原始两支与较低档都保留，不改V8轻重计分。逐宫检查全部八实宫真实天地干的入墓与六仪击刑，逐个列出对应古籍部位、原格强度及实际宫对病宫生克方向；跨宫异常是传统候选而非医学确认的受伤、潜伏疾病或确定病因。客户无中英括号。",
+  "full_chart_relation_rule": "跨宫只取真实实干和实墓/刑；区分本宫/其它宫，克/被克、生/被生、比和，不能看见墓刑就断定有真实疾病，也不能编造因果或医学结局。不可漏入墓、六仪击刑；同物理宫同符不重复计票。"
 }
