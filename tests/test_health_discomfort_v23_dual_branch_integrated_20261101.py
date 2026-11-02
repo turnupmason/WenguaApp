@@ -78,7 +78,7 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         self.assertIn("sourceStrength(\"stem\",stem,p,[stage])",swift)
         self.assertIn('source_strength("stem",stem,p,[stage])',py)
         self.assertIn('starDoorGodFull,formsFull,dangerFull',swift)
-        self.assertIn('(originalLocation,starDoorGodFull,formsFull,dangerFull)',py)
+        self.assertIn('(originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull)',py)
         self.assertIn('"formation_full":"","danger_full":""',py)
         self.assertIn('"formation_full":"","danger_full":""',swift)
         self.assertIn('bodyEvidence.append',swift)
