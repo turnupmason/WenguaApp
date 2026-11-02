@@ -104,3 +104,9 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 ### 2026-11-02 · 用户要求奇门论疾首页实际摘要与统一名称（p2）
 实际根因：Premium卡仍读旧06_conclusion，V27真实结论是09_conclusion。现首页直接读取同一V27结论，首句金色突出主位，余下症候/旁证完整接入；不独立算分、不虚造次病位排序。产品入口、结果卡、历史统一“奇门论疾”，内部health.discomfort/存储/15天键不变，完整原始断词及已保存V27快照不改。用户截图仅UI回归文字，无时辰不补盘。详见 docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md。
 工程manifest明确p2，原p1清单归档；只有3份生产UI源pin变化，V9/V11与V27模板/200/81/人物/规则源码逐字不变。专项25通过，全库841 tests仅原2个手动时辰失败/0错误/3原skip；新增真正Swift摘要适配器与两张native JSONL运行验证接入正式Xcode。Important镜像/SHA同步。实际新CI/Swift/Xcode结果待本提交完成后另记，不提前称通过；病愈应期仍后续重点，不因UI修复改变或开放未验收应期。
+
+
+### 2026-11-02 · 奇门论疾p2首页接线正式验收完成
+正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
+早期 #41468305370 顶层failure、job cancelled、无任何执行步骤，GitHub原注释为“The job was not acquired by Runner of type hosted even after multiple attempts”，另报macOS arm64容量限制；不是代码编译失败，原记录保留。#41470986648/#41470987628为正式运行启动后取消的重复排队，不称通过。
+本地841 tests仍2 failures/0 errors/3原有skip，保留手动真实时辰入口缺口；专项25项、封存SHA和Important镜像通过。此次仅改首页真实09结论展示及产品名“奇门论疾”，两模板/计分/详细断词不变；旧V27记录兼容。未作签名真机或全套XCUITest验收。更新代码后重新⌘R才能看到新UI；病愈应期仍待后续独立研究。

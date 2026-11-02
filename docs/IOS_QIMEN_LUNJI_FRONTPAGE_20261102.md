@@ -29,3 +29,9 @@
 补充：同一实际源码摘要适配器与两份真实V27 native输出也接入Ubuntu Swift快速回归，并保存完整artifact。它补足旧检查只验轻重首页而漏验病位首页的覆盖缺口，不依赖macOS排队；实际App的Apple编译/资源验收仍由正式Xcode完成。
 
 快速Swift实际运行 #41470201781 已success，截图与两张实际V27 native摘要均通过；独立App真Xcode编译 #41468305381 success。专用macos-15队列长时间未分配runner，增加手动可选macos-latest备用，仍完整执行相同验收，不改变或跳过步骤；App/资源pin不变。共享原生工作流补齐Important双镜像。
+
+
+### 2026-11-02 · 奇门论疾p2首页接线正式验收完成
+正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
+早期 #41468305370 顶层failure、job cancelled、无任何执行步骤，GitHub原注释为“The job was not acquired by Runner of type hosted even after multiple attempts”，另报macOS arm64容量限制；不是代码编译失败，原记录保留。#41470986648/#41470987628为正式运行启动后取消的重复排队，不称通过。
+本地841 tests仍2 failures/0 errors/3原有skip，保留手动真实时辰入口缺口；专项25项、封存SHA和Important镜像通过。此次仅改首页真实09结论展示及产品名“奇门论疾”，两模板/计分/详细断词不变；旧V27记录兼容。未作签名真机或全套XCUITest验收。更新代码后重新⌘R才能看到新UI；病愈应期仍待后续独立研究。
