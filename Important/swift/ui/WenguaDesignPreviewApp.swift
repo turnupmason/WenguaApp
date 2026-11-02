@@ -191,7 +191,7 @@ extension QPalace {
     // Nine-palace board uses current chart facts and real actor binding.
     static func fromNative(_ cell: WenguaNativePalace,
                            chart: WenguaNativeChart,
-                           relation: String) -> QPalace {
+                           relation: String, healthRoles: Bool = true) -> QPalace {
         let p=cell.id
         let e=["坎":"水","坤":"土","震":"木","巽":"木","中":"土",
                "乾":"金","兑":"金","艮":"土","离":"火"][cell.gua] ?? "土"
@@ -203,13 +203,13 @@ extension QPalace {
             return starName + "携" + star.carriedStem + "：" + stagesText
         }.joined(separator:"；")
         var tags=[String]()
-        if cell.heavenStars.contains(where:{$0.star=="天芮星"}) {tags.append("病宫")}
+        if healthRoles && cell.heavenStars.contains(where:{$0.star=="天芮星"}) {tags.append("病宫")}
         if cell.heavenStars.contains(where:{$0.star=="天心星"}) {tags.append("天心")}
         if cell.heavenStars.contains(where:{$0.carriedStem=="乙"}) {tags.append("乙奇")}
         if cell.heavenStars.contains(where:{$0.carriedStem==String(chart.pillars.hour.prefix(1))}) {
             tags.append("时干")
         }
-        if relation=="本人" &&
+        if healthRoles && relation=="本人" &&
            cell.heavenStars.contains(where:{$0.carriedStem==String(chart.pillars.day.prefix(1))}) {
             tags.append("患者")
         }
@@ -272,6 +272,7 @@ enum QuestionCatalog {
         domain("life","人生命运","person.crop.circle",["人生机遇"]),
         domain("other","其他杂项","square.grid.2x2",["其它具体事项"])
     ]
+    static let plannedTimingTopic = QuestionTopic(id:"timing.planned",title:"择时排盘",domainTitle:"事项择时",enabled:true)
     static let defaultTopic = domains[0].topics[0]
 }
 
@@ -327,13 +328,15 @@ struct ProfessionalChartScreen: View {
     @State private var castRelation = "本人"
     @State private var nativeReading: WenguaNativeCustomerReading?
     @State private var selectedReadingTab = 0
+    @State private var completedCandidates: [LocalNativeCase] = []
 
     private var palaces: [QPalace] {
         guard let chart=nativeChart else {return []}
         let byId=Dictionary(uniqueKeysWithValues:chart.palaces.map{($0.id,$0)})
         return WenguaNativeCore.branchOrderPalaces.compactMap {
             guard let cell=byId[$0] else {return nil}
-            return QPalace.fromNative(cell,chart:chart,relation:castRelation)
+            return QPalace.fromNative(cell,chart:chart,relation:castRelation,
+                                     healthRoles:nativeReading?.topicID != "timing.planned")
         }
     }
     var body: some View {
@@ -356,6 +359,17 @@ struct ProfessionalChartScreen: View {
 
                 if let chart=nativeChart {
                     chartHeaderCompact(chart)
+                    if let reading=nativeReading {
+                        WenguaTimeSourceBanner(reading:reading)
+                    }
+                    if completedCandidates.count > 1 {
+                        WenguaCandidateComparison(cases:completedCandidates, selectedISO:chart.iso) { item in
+                            nativeChart=item.chart
+                            nativeReading=item.reading
+                            castRelation=item.relation
+                            selectedReadingTab=0
+                        }
+                    }
                     WenguaReadingTabStrip(selection:$selectedReadingTab)
                         .padding(.horizontal,14)
                         .padding(.vertical,5)
@@ -440,7 +454,7 @@ struct ProfessionalChartScreen: View {
                         Text("准备起局").font(.system(size:27,weight:.semibold))
                         Text("事项已选："+topic.domainTitle+" / "+topic.title)
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
-                        Text("无需选择时辰。静心结束后按手机确认时刻起局推演。")
+                        Text("普通问事用当前时辰；已有计划或挑选日期，可改用事项发生时辰。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                         Button("填写问事人与事项") {showAsk=true}
                             .buttonStyle(.borderedProminent)
@@ -472,6 +486,11 @@ struct ProfessionalChartScreen: View {
                 nativeChart=computed
                 castRelation=relation
                 nativeReading=reading
+                if let groupID=reading.comparisonGroupID {
+                    completedCandidates=WenguaRecordStore.load().map(\.record)
+                        .filter { $0.reading?.comparisonGroupID == groupID }
+                        .sorted { ($0.reading?.candidateIndex ?? 0) < ($1.reading?.candidateIndex ?? 0) }
+                } else { completedCandidates=[] }
                 selectedReadingTab=0
                 showAsk=false
             }
@@ -1105,12 +1124,23 @@ struct CastSetupScreen: View {
     @State private var question = ""
     @State private var duration = "未说明"
     @State private var injuryContext = "unspecified"
+    @State private var castMode: WenguaCastClockMode
+    @State private var timeCandidates = [WenguaTimeCandidate(date:Date().addingTimeInterval(24*60*60))]
+    @State private var eventTimeZone = TimeZone.current.identifier
+    @State private var eventKind = "旅游出发"
     @State private var phase = 0
     @State private var calmEnds: Date?
     @State private var validationMessage = ""
     // Keep old composite roles for historical replay, not customer choice.
     private let relations = WenguaNativeReadingRouter.supportedRelations.filter {
         !["哥哥或姐姐","弟弟或妹妹"].contains($0)
+    }
+
+    init(topic: QuestionTopic,
+         onNativeCast: @escaping (WenguaNativeChart, String, WenguaNativeCustomerReading) -> Void) {
+        self.topic=topic
+        self.onNativeCast=onNativeCast
+        _castMode=State(initialValue:topic.id=="timing.planned" ? .plannedEvent : .currentInquiry)
     }
 
     var body: some View {
@@ -1126,6 +1156,13 @@ struct CastSetupScreen: View {
                             Text("具体事项（必填）").font(.headline)
                             TextField("描述一件具体的事，至少四个字", text: $question, axis: .vertical)
                                 .lineLimit(2...4)
+                            if topic.id=="timing.planned" {
+                                Picker("计划事项",selection:$eventKind) {
+                                    ForEach(WenguaCastTimePlan.eventKinds,id:\.self) { Text($0) }
+                                }.pickerStyle(.menu)
+                                Text("候选时间可以真实排盘；旅游、约会、婚礼和手术择时的专项吉凶评级仍在开发中。")
+                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                            } else {
                             Text("当事人").font(.headline)
                             Picker("你为谁问事", selection: $subject) {
                                 ForEach(relations, id: \.self) { relation in
@@ -1199,14 +1236,14 @@ struct CastSetupScreen: View {
                             Picker("病程（可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
                             }
-                            Text("不提供手选时辰。完成30秒静心后点击确认起局，现场采集手机真实时刻及 IANA 时区。")
-                                .font(.caption).foregroundStyle(QStyle.secondary)
+                            }
                         }
                         .padding(12)
                         .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 14))
+                        WenguaCastTimePicker(mode:$castMode,candidates:$timeCandidates,timezone:$eventTimeZone)
                         VStack(alignment: .leading, spacing: 8) {
                             Text("一事一占 · 尊重事实").font(.headline)
-                            Text("静下心想这件事30秒。心诚则灵，尊重事实。同一件事15天内只完成一次真实起局。仅凭本机记录无法彻底识别换说法或换设备的同一件事。")
+                            Text("静下心想这件事30秒。心诚则灵，尊重事实。同一件事15天内只完成一组起局；择时的多个候选统一在本组比较。仅凭本机记录无法彻底识别换说法或换设备的同一件事。")
                                 .font(.subheadline)
                         }
                         .padding(15)
@@ -1226,6 +1263,9 @@ struct CastSetupScreen: View {
                         Text("心诚则灵，尊重事实")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                             .frame(maxWidth: .infinity)
+                        Text(castMode == .plannedEvent ? "事项时辰择时 · 本组\(timeCandidates.count)个候选" : "确认起局时采集当下时辰")
+                            .font(.caption).foregroundStyle(QStyle.secondary)
+                            .frame(maxWidth:.infinity)
                         TimelineView(.periodic(from: .now, by: 0.25)) { context in
                             let remaining = calmEnds.map { max(0, Int(ceil($0.timeIntervalSince(context.date)))) } ?? 30
                             VStack(spacing: 20) {
@@ -1284,7 +1324,7 @@ struct CastSetupScreen: View {
     // The only UI path that calls actual native astronomical chart creation.
     // Past 'fixed demo' never comes here and cannot consume the 15day lock.
     private func completeNativeCast() {
-        guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id) else {
+        guard topic.enabled && WenguaCastTimePlan.supports(topic.id) else {
             validationMessage="该领域的断案模板尚未接入，不能套用其它领域模板。"
             return
         }
@@ -1304,12 +1344,10 @@ struct CastSetupScreen: View {
             return
         }
         do {
-            let finalInstant=Date()
-            let localZone=TimeZone.current.identifier
-            let result=try WenguaNativeCore.compute(at:finalInstant,timezone:localZone)
-            // A successful chart is not enough: fail before issuing the 15-day
-            // receipt unless the selected native domain and role can read its
-            // true local evidence from the bundled, user-editable template.
+            let confirmedAt=Date()
+            let localZone=castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone
+            let instants=try WenguaCastTimePlan.resolve(mode:castMode,
+                candidates:timeCandidates.map(\.date),confirmedAt:confirmedAt,timezone:localZone)
             let context=WenguaNativeInquiry(
                 relationship:subject,
                 context:subject=="本人" ? "direct_self" : inquiryContext,
@@ -1321,25 +1359,39 @@ struct CastSetupScreen: View {
                     patientBirthGanzhi.trimmingCharacters(in:.whitespacesAndNewlines),
                 injuryContext:topic.id=="health.discomfort" ? injuryContext : nil,
                 relativeAge:subject=="朋友" && friendRelativeAge != "unspecified" ? friendRelativeAge : nil,
-                 familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(subject) ? familyRelativeConfirmed : nil)
-            let reading=try WenguaNativeReadingRouter.compose(
-                chart:result,topicID:topic.id,relationship:subject,
-                inquiry:context)
-            // Persistent case receipt is ONLY original board/clock facts and
-            // hashed issue ID. User's raw private question is NOT stored here.
-            let record=LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
-                                       optionalBirthYear:Int(birthYear),
-                                       course:duration=="未说明" ? nil : duration,
-                                       completedAt:Date(),chart:result,reading:reading,
-                                       injuryContext:topic.id=="health.discomfort" ? injuryContext : nil)
-            let encoded=try JSONEncoder().encode(record)
-            let recordId="wengua:nativecase:"+UUID().uuidString
-            UserDefaults.standard.set(encoded,forKey:recordId)
-            guard UserDefaults.standard.data(forKey:recordId)==encoded else {
-                throw WenguaCastError.invalidChart
+                familyRelativeConfirmed:["哥哥","姐姐","弟弟","妹妹"].contains(subject) ? familyRelativeConfirmed : nil)
+            let groupID=UUID().uuidString
+            var records:[LocalNativeCase]=[]
+            for (index,instant) in instants.enumerated() {
+                let result=try WenguaNativeCore.compute(at:instant,timezone:localZone)
+                let original:WenguaNativeCustomerReading
+                if topic.id=="timing.planned" {
+                    original=WenguaCastTimePlan.chartOnlyReading(chart:result,eventKind:eventKind)
+                } else {
+                    original=try WenguaNativeReadingRouter.compose(
+                        chart:result,topicID:topic.id,relationship:subject,inquiry:context)
+                }
+                var gradeReference:WenguaNativeCustomerReading? = nil
+                if castMode == .plannedEvent && topic.id=="health.discomfort" {
+                    // Independent health-grade reference on THIS SAME chart.
+                    // V27's body-location output and all its sections stay exact.
+                    gradeReference=try WenguaNativeReadingRouter.compose(
+                        chart:result,topicID:"health.severity",relationship:subject,inquiry:context)
+                }
+                let reading=WenguaCastTimePlan.annotate(original,mode:castMode,
+                    timezone:localZone,confirmedAt:confirmedAt,groupID:groupID,index:index,
+                    eventKind:topic.id=="timing.planned" ? eventKind : "健康事项",healthReference:gradeReference)
+                records.append(LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
+                    optionalBirthYear:Int(birthYear),course:duration=="未说明" ? nil : duration,
+                    completedAt:confirmedAt,chart:result,reading:reading,
+                    injuryContext:topic.id=="health.discomfort" ? injuryContext : nil))
             }
+            // One atomic encoded group, then ONE actual confirmation-time lock.
+            // A failing candidate saves nothing and never consumes the receipt.
+            try WenguaCaseBatchStore.save(records)
             QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)
-            onNativeCast(result,subject,reading)
+            guard let first=records.first,let reading=first.reading else { throw WenguaCastError.invalidChart }
+            onNativeCast(first.chart,subject,reading)
             dismiss()
         } catch {
             validationMessage="本次未起局成功，也不会登记15天限制："+error.localizedDescription
@@ -1352,10 +1404,14 @@ struct CastSetupScreen: View {
             validationMessage="请先选择普通不适、意外受伤、骨肉受损、出血、剧痛或手术。"
             return
         }
-        guard topic.enabled && ["health.severity","health.discomfort"].contains(topic.id) else {
+        guard topic.enabled && WenguaCastTimePlan.supports(topic.id) else {
             validationMessage="请选择有实际计算支持的细分事项。"
             return
         }
+        do {
+            _ = try WenguaCastTimePlan.resolve(mode:castMode,candidates:timeCandidates.map(\.date),
+                confirmedAt:Date(),timezone:castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone)
+        } catch { validationMessage=error.localizedDescription; return }
         let cleanedYear=birthYear.trimmingCharacters(in:.whitespacesAndNewlines)
         if !cleanedYear.isEmpty {
             guard let year=Int(cleanedYear), (1850...2150).contains(year) else {
@@ -1400,9 +1456,22 @@ struct CastSetupScreen: View {
 }
 
 struct TraditionalReadingPreview: View {
-    let nativeChart: WenguaNativeChart?
+    @State private var nativeChart: WenguaNativeChart?
     let sampleIndex: Int
-    let nativeReading: WenguaNativeCustomerReading?
+    @State private var nativeReading: WenguaNativeCustomerReading?
+
+    init(nativeChart: WenguaNativeChart?, sampleIndex: Int, nativeReading: WenguaNativeCustomerReading?) {
+        _nativeChart=State(initialValue:nativeChart)
+        self.sampleIndex=sampleIndex
+        _nativeReading=State(initialValue:nativeReading)
+    }
+
+    private var groupCases: [LocalNativeCase] {
+        guard let group=nativeReading?.comparisonGroupID else {return []}
+        return WenguaRecordStore.load().map(\.record)
+            .filter {$0.reading?.comparisonGroupID==group}
+            .sorted {($0.reading?.candidateIndex ?? 0) < ($1.reading?.candidateIndex ?? 0)}
+    }
     @Environment(\.dismiss) private var dismiss
     @State private var selectedTab = 0
     @State private var chosenPalace: QPalace?
@@ -1413,7 +1482,8 @@ struct TraditionalReadingPreview: View {
         return WenguaNativeCore.branchOrderPalaces.compactMap {
             guard let cell=byId[$0] else{return nil}
             return QPalace.fromNative(cell,chart:chart,
-                                     relation:nativeReading?.relationship ?? "")
+                                     relation:nativeReading?.relationship ?? "",
+                                     healthRoles:nativeReading?.topicID != "timing.planned")
         }
     }
     var body: some View {
@@ -1444,6 +1514,14 @@ struct TraditionalReadingPreview: View {
                                         .font(.caption).foregroundStyle(QStyle.secondary)
                                 }
                             }
+                        }
+                    }
+                    if let reading=nativeReading { WenguaTimeSourceBanner(reading:reading) }
+                    if groupCases.count > 1 {
+                        WenguaCandidateComparison(cases:groupCases,selectedISO:nativeChart?.iso ?? "") { item in
+                            nativeChart=item.chart
+                            nativeReading=item.reading
+                            selectedTab=0
                         }
                     }
                     WenguaReadingTabStrip(selection:$selectedTab)

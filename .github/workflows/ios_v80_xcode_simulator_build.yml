@@ -12,6 +12,8 @@ on:
       - 'tests/verify_ios_premium_verdict_runtime_20261028.py'
       - 'tests/verify_ios_discomfort_frontpage_runtime_20261102.py'
       - 'tests/test_ios_qimen_lunji_release_20261102.py'
+      - 'tests/test_ios_manual_event_time_20261102.py'
+      - 'tests/verify_ios_manual_event_time_runtime_20261102.py'
       - 'data/mobile/health_vnext/health_energy_200.json'
       - 'data/templates/health_severity_vnext/reading_template.json'
       - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
@@ -53,6 +55,7 @@ jobs:
             tests.test_frozen_health_release_20261102 \
             tests.test_health_earth_stem_audit_patch_20261102 \
             tests.test_ios_qimen_lunji_release_20261102 \
+            tests.test_ios_manual_event_time_20261102 \
             tests.test_discomfort_v27_hour_parity_regression_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \
@@ -273,6 +276,13 @@ jobs:
             /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
             | tee /tmp/wengua-v80-xcode/frozen_bundle_router.log
           test "$(grep -c '^SEALED_BUNDLE_ROUTER_PASS' /tmp/wengua-v80-xcode/frozen_bundle_router.log)" -eq 4
+      - name: Execute real manual event-time choices grouped history and same-chart grades against built App
+        run: |
+          set -euo pipefail
+          python3 tests/verify_ios_manual_event_time_runtime_20261102.py \
+            --native-jsonl /tmp/wengua-v80-xcode/v27_requested.jsonl \
+            --bundle /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
+            | tee /tmp/wengua-v80-xcode/manual_event_time.log
       - name: Verify all six injury choices on four real clocks and strict Python Swift text parity
         run: |
           set -euo pipefail
@@ -329,7 +339,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs
-          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ] && [ -s /tmp/wengua-v80-xcode/manual_event_time.log ]; then
             RESULT=PASS
             MESSAGE="Actual Simulator build, sealed V9/V11 and V27 exact resources, two-topic bundle router and native text parity passed"
           else
@@ -364,7 +374,7 @@ jobs:
               echo "## Four clocks times six explicit injury choices"
               cat /tmp/wengua-v80-xcode/injury_py_swift_parity.log
             fi
-            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
+            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ] && [ -s /tmp/wengua-v80-xcode/manual_event_time.log ]; then
               cat /tmp/wengua-v80-xcode/v27_requested_readings.md
             fi
             if [ -f /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
@@ -376,6 +386,11 @@ jobs:
               echo
               echo '## Sealed V9 scoring V11 template and V27 actual app bundle router'
               cat /tmp/wengua-v80-xcode/frozen_bundle_router.log
+            fi
+            if [ -f /tmp/wengua-v80-xcode/manual_event_time.log ]; then
+              echo
+              echo '## Manual event time grouped real-router acceptance'
+              cat /tmp/wengua-v80-xcode/manual_event_time.log
             fi
             if [ -f /tmp/wengua-v80-xcode/swift_warnings.txt ]; then
               echo

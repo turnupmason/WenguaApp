@@ -19,6 +19,42 @@ struct WenguaNativeCustomerReading: Codable {
     // UI-only actual V8 selected role -> physical palace. Optional for old
     // saved readings; never a customer score or a second interpretation.
     var rolePalaces: [String:Int]? = nil
+    // Optional time provenance keeps old saved readings decodable. It does
+    // not change any frozen narration section or engine score.
+    var castMode: String? = nil
+    var castTimeZone: String? = nil
+    var confirmedISO: String? = nil
+    var comparisonGroupID: String? = nil
+    var candidateIndex: Int? = nil
+    var plannedEventKind: String? = nil
+    var timingGrade: String? = nil
+    var timingGradeScope: String? = nil
+    var timingReferenceSections: [WenguaNativeCustomerSection]? = nil
+    var timingReferenceVersion: String? = nil
+
+    var resolvedHealthGrade: String? {
+        guard topicID == "health.severity",
+              let review = sections.first(where: { $0.id == "90_review" })?.text,
+              let last = review.components(separatedBy: "\n\n").last else { return nil }
+        let prefix = "综上所述，此病为"
+        guard last.hasPrefix(prefix) else { return nil }
+        let grade = String(last.dropFirst(prefix.count).prefix(while: {
+            $0 != "。" && $0 != "；" && $0 != "\n" && $0 != "\r"
+        })).trimmingCharacters(in: .whitespacesAndNewlines)
+        return ["极大吉", "大吉", "中吉", "小吉", "极小吉", "不凶不吉",
+                "极小凶", "小凶", "中凶", "大凶", "极大凶"].contains(grade) ? grade : nil
+    }
+
+    var timingHeadline: String? {
+        guard castMode == "planned_event" else { return nil }
+        if ["health.severity", "health.discomfort"].contains(topicID),
+           timingGradeScope == "health.severity.V9/V11", let grade = timingGrade,
+           ["极大吉", "大吉", "中吉", "小吉", "极小吉", "不凶不吉",
+            "极小凶", "小凶", "中凶", "大凶", "极大凶"].contains(grade) {
+            return "此时辰：" + grade
+        }
+        return "此时辰：吉凶待核"
+    }
 }
 
 enum WenguaNativeReadingError: Error, LocalizedError {

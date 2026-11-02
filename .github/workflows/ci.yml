@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Verify sealed V9 scoring V11 wording and V27 site release
-        run: python -m unittest tests.test_frozen_health_release_20261102 tests.test_health_earth_stem_audit_patch_20261102 tests.test_health_door_break_exception_vnext tests.test_ios_qimen_lunji_release_20261102 -v
+        run: python -m unittest tests.test_frozen_health_release_20261102 tests.test_health_earth_stem_audit_patch_20261102 tests.test_health_door_break_exception_vnext tests.test_ios_qimen_lunji_release_20261102 tests.test_ios_manual_event_time_20261102 -v
       - name: Complete Yin/Yang 9 bureaus x 60 hours center-door host source invariants
         run: python -m unittest discover -s tests -p 'test_casting_centre_door_20261029.py' -v
       - name: Health site/discomfort independent research rules and explicit disabled iOS UI

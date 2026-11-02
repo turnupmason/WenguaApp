@@ -1,0 +1,30 @@
+{
+  "reason": "User explicitly authorizes current-time vs future event-time modes and grouped comparisons; prior no-manual-only UI contracts retained unchanged.",
+  "entries": [
+    {
+      "source": "tests/test_ios_design_v1_contract.py",
+      "archive": "archives/engineering_patch_20261102/before_manual_time_tests/test_ios_design_v1_contract.py",
+      "sha256": "44f4ff4639c07e6574c8a53bce24040fee3d6d6603bfeb28e0016d9e470fe3f8"
+    },
+    {
+      "source": "tests/test_ios_immersive_journey_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_manual_time_tests/test_ios_immersive_journey_20261028.py",
+      "sha256": "0e39674e2ce876e6b51961d0ae27a02b5a1877a1aee4466581e6c39e4537fccf"
+    },
+    {
+      "source": "tests/test_ios_health_grade_copy_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_manual_time_tests/test_ios_health_grade_copy_20261028.py",
+      "sha256": "c67edcfb893b39febed62902b70627157b71255e630d74546c88cb487de93bfe"
+    },
+    {
+      "source": "tests/test_health_discomfort_source_draft_20261029.py",
+      "archive": "archives/engineering_patch_20261102/before_manual_time_tests/test_health_discomfort_source_draft_20261029.py",
+      "sha256": "fdcc8de4c7f6446541ef26362426e7973b3fc112e0c8ad8362899496daee2d2a"
+    },
+    {
+      "source": "tests/test_ios_qimen_lunji_release_20261102.py",
+      "archive": "archives/engineering_patch_20261102/before_manual_time_tests/test_ios_qimen_lunji_release_20261102.py",
+      "sha256": "acef29eb77da19a767a117b73c230b41f4353ad378a575e8144d5abbf7382800"
+    }
+  ]
+}

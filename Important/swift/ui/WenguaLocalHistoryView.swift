@@ -13,19 +13,25 @@ enum WenguaRecordStore {
     static let issuePrefix="wengua:completed:"
 
     static func load() -> [WenguaStoredCase] {
-        UserDefaults.standard.dictionaryRepresentation().compactMap { key, value in
-            guard key.hasPrefix(recordPrefix),
-                  let data=value as? Data,
-                  let record=try? JSONDecoder().decode(LocalNativeCase.self,from:data)
-            else {return nil}
-            return WenguaStoredCase(id:key,record:record)
+        UserDefaults.standard.dictionaryRepresentation().flatMap { key, value -> [WenguaStoredCase] in
+            guard key.hasPrefix(recordPrefix),let data=value as? Data else {return []}
+            return WenguaCaseBatchStore.decode(data).enumerated().map { index,record in
+                WenguaStoredCase(id:key+"#"+String(index),record:record)
+            }
         }
         .sorted { $0.record.completedAt > $1.record.completedAt }
     }
 
     static func deleteRecord(_ id:String) {
-        guard id.hasPrefix(recordPrefix) else {return}
-        UserDefaults.standard.removeObject(forKey:id)
+        let parts=id.split(separator:"#",maxSplits:1).map(String.init)
+        guard let key=parts.first,key.hasPrefix(recordPrefix) else {return}
+        if parts.count==1 { UserDefaults.standard.removeObject(forKey:key); return }
+        guard let index=Int(parts[1]),let data=UserDefaults.standard.data(forKey:key) else {return}
+        var records=WenguaCaseBatchStore.decode(data)
+        guard records.indices.contains(index) else {return}
+        records.remove(at:index)
+        if records.isEmpty { UserDefaults.standard.removeObject(forKey:key) }
+        else if let updated=try? JSONEncoder().encode(records) {UserDefaults.standard.set(updated,forKey:key)}
         // An individual record deletion does NOT silently reset the
         // user-requested once-per-specific-issue / 15-day commitment.
     }
@@ -47,11 +53,17 @@ private struct WenguaStoredCaseRow: View {
     var body: some View {
         VStack(alignment:.leading,spacing:5) {
             Text(record.topicID=="health.severity" ? "健康 · 病情轻重" :
-                 record.topicID=="health.discomfort" ? "健康 · 奇门论疾" : record.topicID)
+                 record.topicID=="health.discomfort" ? "健康 · 奇门论疾" :
+                 record.topicID=="timing.planned" ? "择时排盘" : record.topicID)
                 .font(.headline)
-            Text(record.relation + " · " +
+            Text(record.relation + " · 记录于 " +
                  record.completedAt.formatted(date:.abbreviated,time:.shortened))
                 .font(.caption).foregroundStyle(.secondary)
+            Text(record.reading?.castMode=="planned_event" ?
+                 "事项时辰 · " + WenguaCastTimePlan.display(record.chart.iso,timezone:record.reading?.castTimeZone) :
+                 "当下问事 · " + WenguaCastTimePlan.display(record.chart.iso,timezone:record.reading?.castTimeZone))
+                .font(.caption).foregroundStyle(.secondary)
+            if let grade=record.reading?.timingHeadline {Text(grade).font(.caption.weight(.medium))}
             Text("真实本地盘 · " + [
                 record.chart.pillars.year,record.chart.pillars.month,
                 record.chart.pillars.day,record.chart.pillars.hour
@@ -83,7 +95,11 @@ struct WenguaLocalHistoryView: View {
                         }
                     }
                     .onDelete { indices in
-                        let ids=indices.map{entries[$0].id}
+                        let ids=indices.map{entries[$0].id}.sorted { a,b in
+                            let x=a.split(separator:"#"),y=b.split(separator:"#")
+                            if x.first==y.first {return (Int(x.last ?? "") ?? 0) > (Int(y.last ?? "") ?? 0)}
+                            return a>b
+                        }
                         ids.forEach(WenguaRecordStore.deleteRecord)
                         refresh()
                     }
@@ -120,8 +136,8 @@ struct WenguaPrivacyScreen: View {
     var body: some View {
         List {
             Section("数据如何使用") {
-                Text("问卦依据确认时刻计算传统时家奇门九宫及对应解读。记录仅保存在当前设备；无需创建账号。")
-                Text("成功起局时仅在本机保存问事领域、关系、可选出生公历年份、时间、真实九宫和当次话术快照，以及该事项的本地SHA256摘要；不将具体问题原文写入保存记录。")
+                Text("普通问事依据确认时刻起局；择时依据所选事项时刻及发生地时区排盘。记录仅保存在当前设备；无需创建账号。")
+                Text("成功起局时仅在本机保存问事领域、关系、可选出生公历年份、实际确认时间、事项时刻与时区、候选组、真实九宫和当次话术快照，以及该事项的本地SHA256摘要；不将具体问题原文写入保存记录。")
             }
             Section("本地记录与删除") {
                 Text("历史记录可在「本地记录」查看及逐条删除。15天本机事项限制默认保留；选择「清空全部问事记录与本机限制」可同时清除此设备存储的相应内容。删除不可恢复。")

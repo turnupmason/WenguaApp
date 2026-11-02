@@ -247,7 +247,23 @@ struct WenguaPremiumVerdictCard: View {
             }
             Rectangle().fill(gold.opacity(0.32)).frame(height:1)
 
-            if reading.topicID=="health.discomfort" {
+            if let timing=reading.timingHeadline {
+                Text(timing)
+                    .font(.system(size:24,weight:.semibold,design:.serif))
+                    .foregroundStyle(gold)
+                Text(WenguaCastTimePlan.display(reading.iso,timezone:reading.castTimeZone))
+                    .font(.system(size:14,design:.monospaced)).foregroundStyle(muted)
+                Text(reading.timingGradeScope == "health.severity.V9/V11" ?
+                     "仅为本次健康事项的传统盘象参考，不作手术安全评级。" :
+                     "此事项的择时评级仍在开发中。")
+                    .font(.system(size:13)).foregroundStyle(muted)
+            }
+            if reading.topicID=="timing.planned" {
+                Text("择时排盘 · " + (reading.plannedEventKind ?? "计划事项"))
+                    .font(.system(size:18,weight:.semibold,design:.serif)).foregroundStyle(muted)
+                Text("已按所选时刻排出真实九宫")
+                    .font(.system(size:24,weight:.semibold,design:.serif)).foregroundStyle(gold)
+            } else if reading.topicID=="health.discomfort" {
                 Text("奇门论疾 · 古籍类象")
                     .font(.system(size:18,weight:.semibold,design:.serif))
                     .foregroundStyle(muted)
@@ -302,7 +318,8 @@ struct WenguaPremiumVerdictCard: View {
             }
 
             Rectangle().fill(gold.opacity(0.22)).frame(height:1)
-            Text(notice)
+            Text(reading.topicID=="timing.planned" ?
+                 "传统排盘用于古籍文化研究；各事项吉凶规则未完成前，不据此推荐最优日期。" : notice)
                 .font(.system(size:11))
                 .lineSpacing(4)
                 .foregroundStyle(muted)

@@ -58,6 +58,18 @@ struct WenguaNativeCustomerView: View {
                 .overlay(RoundedRectangle(cornerRadius:18)
                     .stroke(QStyle.line.opacity(0.65),lineWidth:0.6))
             }
+            if let reference=reading.timingReferenceSections,!reference.isEmpty {
+                DisclosureGroup("所选时辰 · 健康盘象等级依据") {
+                    ForEach(reference) { section in
+                        VStack(alignment:.leading,spacing:8) {
+                            Text(section.title).font(.headline)
+                            customerParagraph(section.text)
+                        }.padding(.vertical,8)
+                    }
+                }
+                .padding(18)
+                .background(QStyle.surface,in:RoundedRectangle(cornerRadius:18))
+            }
         }
     }
 

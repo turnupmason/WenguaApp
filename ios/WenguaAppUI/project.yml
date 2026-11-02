@@ -21,6 +21,8 @@ targets:
       - path: WenguaDomainJourneyScreen.swift
       - path: WenguaPremiumReadingView.swift
       - path: WenguaMeditationView.swift
+      - path: WenguaCastTimePlan.swift
+      - path: WenguaCastTimeView.swift
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift

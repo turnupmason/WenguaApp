@@ -37,7 +37,7 @@ class QimenLunjiRelease(unittest.TestCase):
 
     def test_concise_meditation_patch_keeps_frozen_templates_and_explicit_scope(self):
         old=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_meditation.json').read_text())
-        new=json.loads((ROOT/'data/releases/health_frozen_20261102.json').read_text())
+        new=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_manual_time.json').read_text())
         previous={x['path']:x['sha256'] for x in old['files']}
         current={x['path']:x['sha256'] for x in new['files']}
         self.assertEqual(set(current)-set(previous), {'ios/WenguaAppUI/WenguaMeditationView.swift'})

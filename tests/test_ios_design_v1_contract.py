@@ -36,7 +36,7 @@ class V3SourceUI(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.html=HTML.read_text("utf8")
-        cls.swift=SWIFT.read_text("utf8")
+        cls.swift=SWIFT.read_text("utf8") + (ROOT/"ios/WenguaAppUI/WenguaCastTimeView.swift").read_text("utf8")
         cls.journey=(ROOT/"ios/WenguaAppUI/WenguaDomainJourneyScreen.swift").read_text("utf8")
         cls.colors=COLORS.read_text("utf8")
         cls.fixture=load_js_json(FIXTURE,"WenguaVerifiedCharts")
@@ -137,7 +137,7 @@ class V3SourceUI(unittest.TestCase):
         for text in ['struct WenguaRootView',
                      'WenguaDomainJourneyScreen',
                      'QuestionTopic(id:"health.severity"',
-                     'WenguaNativeCore.compute(at:finalInstant,timezone:localZone)',
+                     'WenguaNativeCore.compute(at:instant,timezone:localZone)',
                      'ProfessionalChartScreen(topic:topic,changeTopic:',
                      'WenguaNativeCustomerView(reading:reading)',
                      'palace.lifeRows',
@@ -157,8 +157,8 @@ class V3SourceUI(unittest.TestCase):
     def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):
         self.assertEqual(len(re.findall(r'^\s*domain\("',self.swift,re.M)),14)
         self.assertIn('QuestionDomain(id:"health"',self.swift)
-        self.assertEqual(self.swift.count('enabled:true'),2)
-        self.assertIn('topic.enabled && ["health.severity","health.discomfort"].contains(topic.id)',self.swift)
+        self.assertEqual(self.swift.count('enabled:true'),3)
+        self.assertIn('topic.enabled && WenguaCastTimePlan.supports(topic.id)',self.swift)
         self.assertIn('self.topic=nil',self.swift)
         self.assertIn('WenguaCloudWelcomeScreen',self.swift)
         self.assertIn('chosenTopic',self.journey)

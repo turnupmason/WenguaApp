@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p3",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p4",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "93c3175af98dccda866fb7529a5c4991077dbe9e8473a90a91a5e99a62cc3059"
+      "sha256": "714cf1f958ae908e620598a3bc78c455eaff15095e4ef91734e1b04be0decc82"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -71,12 +71,12 @@
     {
       "path": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "kind": "source",
-      "sha256": "adb1abab2fe00859a8ffca877571415add6b1278037c02d5c8a4493f6130f906"
+      "sha256": "87a504171e669913234daa9c35e265e0aa1098abdfe4434a4372b674bb49fcf2"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "2f5374334eb58a02b49b6a82343079378d2cef4f87be84535ffca1fb58945546"
+      "sha256": "3dcc0313bb649fb044e2415475ea62fcf947d8f8323590d98771ffd333921013"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -91,7 +91,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "kind": "source",
-      "sha256": "86e57101707faba6534353e7e150b98555696ffbff2c3291bbb960dd7abc5cdc"
+      "sha256": "2b7c98032e9fa8fd16fafab2d1dc0f301497d689eb26cd4904e7f328d27782e9"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
@@ -136,12 +136,12 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "kind": "source",
-      "sha256": "b782e2f18fd9827c376ce5b490b835579ad94e7ba75e54ce05b81ba4ee0ca62d"
+      "sha256": "1f6f6a5c4cc718baec86a06464af30a53a15ffe85035b2594c87d38aad6b7e71"
     },
     {
       "path": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
       "kind": "source",
-      "sha256": "6d837edea538ac5c4442ff72056ee86f4f85b781fc730e8773f66983cf930c2e"
+      "sha256": "40e1664833a42b1261a93bd7c65b7fd84b6690028797f5dd0c7b13f7496b4bc9"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeEnergyBundle.swift",
@@ -176,18 +176,28 @@
     {
       "path": "ios/WenguaAppUI/project.yml",
       "kind": "source",
-      "sha256": "1cd3ae042d343daa4c0ac9be48edeabe18e99421e6aed17ab6dbaffbf2062bd0"
+      "sha256": "2f0e4faaf66b5077b38bce1d7db613d2f3eb74680095cdf348501c562320a4cd"
     },
     {
       "path": "ios/WenguaAppUI/WenguaMeditationView.swift",
       "kind": "source",
       "sha256": "88734a8c18c5715316144f48319d498736cd0283b378af9669cc6c5c5dc36211"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaCastTimePlan.swift",
+      "kind": "source",
+      "sha256": "bc2fdc7397c7f2f58ef8ec314dc28541ba19c2eee213111013e0d2a3a8e2cf07"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaCastTimeView.swift",
+      "kind": "source",
+      "sha256": "ec3011f50f1ec2deb277b73539f7945f2c76b98e09292aa639c1c385c83b966d"
     }
   ],
   "engineering_patch": {
-    "id": "p3_concise_summary_meditation_and_warning_cleanup",
-    "prior_manifest_sha256": "d9e58c09a1a08f796d5179a7355aace2cc48dcd0eb287fe6cb8da0e66ea1821a",
-    "scope": "First card renders only actual V27 lead sentence with direct injury-region wording; original detailed narration, scoring and resources unchanged. Native 30-second meditation animation. Swift compiler warnings fixed without changing rule results; warnings-as-errors enabled.",
-    "authorization": "User 2026-11-02 explicitly requests concise injury summary, details only on professional tab, monk wooden-fish meditation animation and Xcode issues cleanup."
+    "id": "p4_current_vs_planned_event_time_and_grouped_comparison",
+    "prior_manifest_sha256": "8cf984a99d7bf7e6100e238454b04d7d58cc6574b6cf79f03a67db407a6116c2",
+    "scope": "User-authorized time-source UI, future candidate groups, explicit provenance and same-chart sealed health grade reference; atomic grouped local history. Generic planned events expose real charts with domain grade pending; no disease grading for travel/weddings/surgery safety. Frozen scores, templates and narrative sections unchanged.",
+    "authorization": "User 2026-11-02 requests current vs event-time wheels and timing heading; explicitly confirms multiple candidates as one calm session and one 15-day group."
   }
 }

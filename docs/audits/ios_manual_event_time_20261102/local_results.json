@@ -1,0 +1,18 @@
+{
+  "full_python": {
+    "tests": 846,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "log": "python_unittest_full.log.gz",
+    "sha256": "c9c192e561ee52205f5d80a6a7b79c744693013a246fa2697b2a22d4c648f377"
+  },
+  "targeted_python": {
+    "tests": 32,
+    "failures": 0,
+    "errors": 0
+  },
+  "skips": "Existing optional Moshier comparison and two historical V7.7/V7.8 class gates; none newly added",
+  "manual_ui_gap": "Two former failures now pass because actual selectable event-time entry is implemented",
+  "native_and_xcode": "Await actual p4 Actions; no local Swift/Xcode"
+}

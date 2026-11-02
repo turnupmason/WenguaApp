@@ -36,15 +36,16 @@ class ImmersiveJourney(unittest.TestCase):
         self.assertIn("chosenTopic=item.id",self.journey)
         self.assertIn(".delay(Double(index)*0.045)",self.journey)
         self.assertIn("if selected.enabled { select(selected) }",self.journey)
-    def test_real_confirm_time_only_and_30sec_invariant(self):
-        self.assertIn("let finalInstant=Date()",self.main)
+    def test_current_or_event_time_and_30sec_invariant(self):
+        self.assertIn("let confirmedAt=Date()",self.main)
         self.assertIn("guard let calmEnds, Date() >= calmEnds",self.main)
         self.assertIn("Date().addingTimeInterval(30)",self.main)
         self.assertIn("QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)",self.main)
         self.assertIn("try WenguaNativeReadingRouter.compose(",self.main)
-        self.assertNotIn("DatePicker(\"手动选择年月日时分\"",self.main)
-        self.assertNotIn("useCurrentInstant",self.main)
-        self.assertNotIn("chosenTime",self.main)
+        picker=(ROOT/"ios/WenguaAppUI/WenguaCastTimeView.swift").read_text()
+        self.assertIn('DatePicker("手动选择年月日时分"',picker)
+        self.assertIn('castMode == .currentInquiry ? TimeZone.current.identifier : eventTimeZone',self.main)
+        self.assertIn('WenguaCastTimePlan.resolve(mode:castMode',self.main)
     def test_role_watermarks_are_exact_native_role_palaces_and_overlap(self):
         self.assertIn("rolePalaces:review.roles",self.router)
         self.assertIn("var rolePalaces: [String:Int]? = nil",self.router)

@@ -67,7 +67,7 @@ struct WenguaDomainJourneyScreen: View {
                         }
                         if let selected {
                             Text(selected.enabled ?
-                                 "之后填写人物信息，静心30秒，按手机确认时刻起局。" :
+                                 "之后填写人物信息，选择当前问事或事项时辰，静心30秒后确认起局。" :
                                  "每个领域使用独立用神与断案模板；未验收时不套用疾病规则。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
@@ -78,6 +78,16 @@ struct WenguaDomainJourneyScreen: View {
                             Text("从疑惑开始，逐层明晰。")
                                 .font(.subheadline).foregroundStyle(QStyle.secondary)
                         }
+                        Button { select(QuestionCatalog.plannedTimingTopic) } label: {
+                            VStack(alignment:.leading,spacing:6) {
+                                Label("挑日子 · 按事项时间排盘",systemImage:"calendar.badge.clock")
+                                    .font(.headline)
+                                Text("旅游、约会、婚礼、手术等候选时辰可并列排盘；专项吉凶评级开发中。")
+                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                            }
+                            .frame(maxWidth:.infinity,alignment:.leading).padding(16)
+                            .background(QStyle.surface,in:RoundedRectangle(cornerRadius:16))
+                        }.buttonStyle(.plain)
                         LazyVGrid(columns:columns,spacing:12) {
                             ForEach(QuestionCatalog.domains.indices,id:\.self) { index in
                                 let item=QuestionCatalog.domains[index]

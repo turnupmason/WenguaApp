@@ -35,7 +35,7 @@ class HealthCaptionUserUX(unittest.TestCase):
         self.assertIn('Button("确认起局 · 逻辑推演")',self.main)
         self.assertIn("本模型基于古籍规则算法进行推演计算，无人工主观干预，严密还原事情发展之底层逻辑。",self.main)
         self.assertIn("Date().addingTimeInterval(30)",self.main)
-        self.assertIn("let finalInstant=Date()",self.main)
+        self.assertIn("let confirmedAt=Date()",self.main)
         self.assertIn("QIssuePolicy.commitRealCompletedCast(key,validated:true,stored:true)",self.main)
 
     def test_real_square_palace_and_short_cohost_display(self):
