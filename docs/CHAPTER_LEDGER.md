@@ -1577,3 +1577,10 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - [GitHub Actions #41370186316](https://github.com/turnupmason/WenguaApp/actions/runs/41370186316) **PASS**，实际源码 SHA d39dc050c9ce50336ec0437f12e3a32a219223dc，Python4专项含400种200格逐支真核、真实XcodeGen+unsigned Simulator、离线bundle资源、四组用户指定随机Swift真时辰顾客完整文字均跑通。
 - [实际全文与报告](docs/IOS_V80_XCODE_PASS_RUN_41370186316_ATTEMPT_1.md)：独立跨语言Python↔Swift原字严格PASS三张：弟弟2026-11-12 15:00 -05，妻子2027-02-12 21:00 -05，用户早已见过的女儿2027-02-07 11:00 -05；第三张是冻结回归非秘密盲测。四份另外新随机 Swift 预览不是全部做了独立Python对照。固定女儿盘确有天芮巽四丁辰衰大/巳帝旺极大，乙胆极大，宫临伤门螣蛇和副星戊戊伏吟，按源真实力区分，断词无括号、无待核。
 - 在先前原生 fixture 校验错误 #41369802592/#41369876564 的实际失败之后修复Swift局部拼接，失败日志保留。V23实际审计docs/HEALTH_DISCOMFORT_V23_INTEGRATED_PALACE_AND_TWO_BRANCH_ENERGY_AUDIT_20261101.md，Important双源镜像及MANIFEST源SHA均已同步；V8冻结未动，文本尚未获用户批准，不是签名真机或医疗结论验证。
+
+
+## 2026-11-01 · V24 病位专题更新：45组双支取高档与全盘墓刑关联
+- 用户新指示覆盖 V23 暂行的双支不合并限制：十干×八实宫×五个月令=400原格组合，其中45组两支不同档。**仅 health.discomfort** 逐支读取原200格后按「极小＜小＜中等＜大＜极大」取更高的原档位使用；保留每支原格与较低力量、代码源位置和所有反例。例「丁巽四辰衰大、巳帝旺极大 → 本专题取极大」「小、中等 → 中等」。不得把此变化偷偷引入冻结 V8 疾病轻重或修改原始200表。Swift `WenguaNativeDiscomfortV15.swift/sourceStrength` 局部选取，独立 Python `health_discomfort_v19_parity.py/_discomfort_power`，测试在 `test_health_discomfort_v23_dual_branch_integrated_20261101.py` 逐一验400/45。
+- 此前V23只查天芮宫携干/地盘干的墓刑；现在对整个盘八真实实宫及每宫不同的天盘携干和地盘干核对源盘`tombs`及`striking`，在本宫合断中增「全盘墓刑互证」，逐个说明对应传统身体候选、原干五档强弱、入墓/六仪击刑及对天芮病宫五行方向；相同物理宫同符不重复计，非病宫的真实异常也不因与最终主位不交集而删除，中五不伪造星门神。排序先实宫克病宫再生扶、反向克生、比和，不混淆施克方向。真正相关的跨宫证据可在最后结论只点一条重点，但严禁把「传统受伤/潜伏/底层诱因」写成真实医学确认的器质性损伤、潜伏疾病、确定因果或强制治疗结论。
+- V24 schema=`wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101`，`v24_internal_review_pending_user_approval`，无需回退至旧V21；用户此刻看不到新App版本不等于未提交，尚未签名真机分发。观众仍无括号且星门神、天地干、81格与墓刑在一个病宫段。原 `V8` 轻重、九宫、原81/200/255、用神/年命条件、旧失败回归保留。
+- 完整独立审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。实际 Xcode 最初在全盘扫描触发`missingPhrases`，此后另轮 Python gate 仍按V23旧4项tuple拒绝V24新增`crossFull`，均如实保留失败归档，新真实CI及Swift/Python parity须按源码SHA验收；即使CI过，用户文案也尚未审批。
