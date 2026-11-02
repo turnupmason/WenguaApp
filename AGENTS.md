@@ -2996,3 +2996,8 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 将用户此前已见女儿真盘2027-02-07 11:00 -05, 丁未壬寅丁巳丙午纳入固定回归（绝不声称秘密盲测），验真实巽四宫丁辰衰大/巳帝旺极大、乙胆极大、伤门螣蛇极大、弱天禽附伏吟；另两张随机弟弟/妻子由独立Python↔Swift客户全文逐字核验。完整独立审计docs/HEALTH_DISCOMFORT_V23_INTEGRATED_PALACE_AND_TWO_BRANCH_ENERGY_AUDIT_20261101.md。
 - 真实失败均留存：Xcode #41368524138 Swift换行+语法，Python主全库 #41368783135 工作流Important镜像缺失，Xcode #41368843949 病宫重复星门神/过严措辞guard，#41369104890 旧禁止门力文本误杀真实伤门力量，#41369802592/#41369876564 新固定案独立parity烟测误用局部joinedDescription扩展，分别已按真实日志修复。
 - 早期本轮真实macOS unsigned Xcode Simulator+离线bundle与两真随机Python-Swift全文PASS #41369404510、#41369592751/#41369605433（各自源码SHA见原存档）；新增固定女儿案严格逐字验证必须查后续对应SHA独立Actions，不能借前一版PASS宣称通过。用户文案仍待审批，未签名真机、无临床验证。
+
+### 2026-11-01 · V23固定女儿真实回归和 macOS 最终通过
+- [GitHub Actions #41370186316](https://github.com/turnupmason/WenguaApp/actions/runs/41370186316) **PASS**，实际源码 SHA d39dc050c9ce50336ec0437f12e3a32a219223dc，Python4专项含400种200格逐支真核、真实XcodeGen+unsigned Simulator、离线bundle资源、四组用户指定随机Swift真时辰顾客完整文字均跑通。
+- [实际全文与报告](docs/IOS_V80_XCODE_PASS_RUN_41370186316_ATTEMPT_1.md)：独立跨语言Python↔Swift原字严格PASS三张：弟弟2026-11-12 15:00 -05，妻子2027-02-12 21:00 -05，用户早已见过的女儿2027-02-07 11:00 -05；第三张是冻结回归非秘密盲测。四份另外新随机 Swift 预览不是全部做了独立Python对照。固定女儿盘确有天芮巽四丁辰衰大/巳帝旺极大，乙胆极大，宫临伤门螣蛇和副星戊戊伏吟，按源真实力区分，断词无括号、无待核。
+- 在先前原生 fixture 校验错误 #41369802592/#41369876564 的实际失败之后修复Swift局部拼接，失败日志保留。V23实际审计docs/HEALTH_DISCOMFORT_V23_INTEGRATED_PALACE_AND_TWO_BRANCH_ENERGY_AUDIT_20261101.md，Important双源镜像及MANIFEST源SHA均已同步；V8冻结未动，文本尚未获用户批准，不是签名真机或医疗结论验证。
