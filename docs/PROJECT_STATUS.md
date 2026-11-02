@@ -3118,3 +3118,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 用户明确再次要求必选伤门调用条件。原UI已具备六选项与未选阻断，发现剧痛仍仅作旁证、伤门段缺少完整本宫源力量、手术白虎条件未明确成文。现Python/Swift同步：伤损/出血/剧痛优先真实伤门宫，手术单列手术候选部位及开门宫克伤门宫/伤门同宫白虎；启用时伤门段先行，none无独立伤门角色。伤损骨肉采用同一实宫体表部位候选，保留实际内外盘；不把内盘心脏当骨折部位。
 - iOS入口「伤病在哪里」enabled=true，必选内容细化并保存injuryContext；静心前、起盘前及路由/模板均阻断无选择。普通不适仍读取天芮本宫真实八门，不额外调用远宫伤门。V8计分、200/81源、原著/案例不改。
 - 修复真实失败 #41386393773：NativeDiscomfortV19Parity.swift 诊断拼句的跨行+编译错误；固定女儿守门不再硬填时干外盘，按真实时干实际宫判内外盘。旧失败留存；四真实时辰×六条件新增Swift原生导出与Python独立逐字校验，构建结果待本提交Actions实际确认。详见 docs/HEALTH_DISCOMFORT_INJURY_GATE_AUDIT_20261102.md；不以源码测试冒充签名真机或上架。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
