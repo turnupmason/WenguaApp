@@ -833,7 +833,9 @@ enum WenguaNativeDiscomfortV15 {
         if mainFormation.contains("伏吟") {
             bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
         } else if formationNames.dropFirst().contains(where:{$0.contains("伏吟")}) {
-            bodyEvidence.append("同宫天禽寄格见伏吟，传统取反复迟滞为旁象，仍按天禽实际力量衡量")
+            bodyEvidence.append(tier(birdPower)>=3 ?
+                "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证" :
+                "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
