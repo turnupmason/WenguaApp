@@ -3027,3 +3027,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+### 2026-11-01 · V26 新提交测试门槛修复与失败留档
+- V26源码SHA c425bc345e6a85cea21f132c89bb5228fb478ef8 的 CI #41380198105、Xcode #41380198099 在实际编译前失败：`tests/test_health_discomfort_v19_full_sequence_20261101.py:8` 仍断言V24 schema，与实际发布候选V26 schema不相等；对该测试及 Important 镜像只更新版本断言，不改源200/81、V8和失败案。两次失败真实链接保留，不算Xcode运行过。
+- 同SHA V8关系图专项 #41380198072 成功，V7.7独立宫位专项 #41380198145 成功；旧V7.4案例审计 #41380198149 因独立断言失败，尚未归因为V26，不能伪称全绿。新提交后重新核实真正Xcode/Swift Python-parity/bundle。
