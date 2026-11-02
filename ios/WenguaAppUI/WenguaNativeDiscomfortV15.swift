@@ -808,13 +808,21 @@ enum WenguaNativeDiscomfortV15 {
         // Only truly matching, independent physical symbols can sharpen
         // the chosen anatomy; the star's low energy does not erase an
         // independently strong earth stem on the same real palace.
+        // Conservative corroboration: if both original branch rows are
+        // at least 大, the image is salient without inventing ONE tier.
+        let earthFacts=try stemBranchFacts(illness.earthStem,illness,illness.earthStages)
+        let skyFacts=try stemBranchFacts(sky,illness,illnessStar.stages)
+        let earthStrong=tier(earthPower)>=4 || earthFacts.allSatisfy{tier($0.1)>=4}
+        let skyStrong=tier(skyPower)>=4 || skyFacts.allSatisfy{tier($0.1)>=4}
         var bodyEvidence:[String]=[]
         if let earthSite=earthSites.first(where:{matched($0,leadSites)}),
-           tier(earthPower)>=4 {
-            bodyEvidence.append("地盘\(illness.earthStem)所指\(earthSite)力量\(earthPower)，与主病位同向，这一处更值得留意")
+           earthStrong {
+            let energyText=tier(earthPower)>0 ? "力量\(earthPower)" : "两支原格力量均至少为大"
+            bodyEvidence.append("地盘\(illness.earthStem)所指\(earthSite)\(energyText)，与主病位同向，这一处更值得留意")
         } else if let skySite=skySites.first(where:{matched($0,leadSites)}),
-                  tier(skyPower)>=4 {
-            bodyEvidence.append("天盘\(sky)所指\(skySite)力量\(skyPower)，与主病位相合")
+                  skyStrong {
+            let energyText=tier(skyPower)>0 ? "力量\(skyPower)" : "两支原格力量均至少为大"
+            bodyEvidence.append("天盘\(sky)所指\(skySite)\(energyText)，与主病位相合")
         }
         if tier(doorPower)>=4 && !trauma {
             bodyEvidence.append("\(door)力量\(doorPower)，旧籍\(doorClue)所指的\(door=="伤门" ? "筋脉牵扯" : "伴随征象")更显")
