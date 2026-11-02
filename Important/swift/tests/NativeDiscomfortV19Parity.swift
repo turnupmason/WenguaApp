@@ -63,6 +63,7 @@ import Foundation
                 throw NSError(domain:"V19ParitySections",code:5)
             }
             if person=="女儿" {
+                let wholeCustomer=reading.sections.map{$0.text}.joined(separator:"\n")
                 guard let illness=chart.palaces.first(where:{
                           $0.heavenStars.contains(where:{$0.star=="天芮星"})
                       }),illness.id==4,illness.earthStem=="乙",
@@ -74,9 +75,9 @@ import Foundation
                       reading.sections.last!.text.contains("地盘乙所指胆"),
                       reading.sections.last!.text.contains("伤门力量极大"),
                       reading.sections.last!.text.contains("伏吟"),
-                      !reading.sections.joinedDescription.contains("待核"),
-                      !reading.sections.joinedDescription.contains("（"),
-                      !reading.sections.joinedDescription.contains("）") else {
+                      !wholeCustomer.contains("待核"),
+                      !wholeCustomer.contains("（"),
+                      !wholeCustomer.contains("）") else {
                     throw NSError(domain:"V23ExposedDaughterEvidence",code:23)
                 }
             }
