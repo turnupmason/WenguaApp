@@ -559,7 +559,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
-           focusRegion+"。"+closing+"以上只是传统病位和症候象意，不能代替检查诊断。")
+           focusRegion+"。"+closing+"以上为传统病位和症候象意，需以实际检查核实。")
     values={
        "person":relationship,"palace":label(illness)+"宫","dun":"阴" if yin else "阳",
        "sector":sector,"focus_site":lead,"location_full":locationFull,"injury_full":injuryFull,
