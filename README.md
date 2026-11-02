@@ -62,6 +62,8 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 
+本次用户应期资料与病愈V2模板：[主CI #41538806572](https://github.com/turnupmason/WenguaApp/actions/runs/41538806572)及[既有健康原生兼容回归 #41538806575](https://github.com/turnupmason/WenguaApp/actions/runs/41538806575)均通过。[本轮新验收范围](docs/audits/user_timing_notes_20261102/final_ci_results.json)是资料、条件与模板生成；App及原有正式资源未改，没有将旧Xcode通过冒称为新病愈计算已接入。
+
 **最新全库Python测试：**880项，0 failures、0 errors、3项原有skip。原52条失败/错误已按证据逐项清账；最后2项手动时辰入口现已实现并通过，未删测试或增加skip。[本轮实际日志与SHA](docs/audits/user_timing_notes_20261102/local_results.json) · [旧失败逐项清账](docs/audits/health_cleanup_20261102/README.md)。全库程序通过不代表各领域择时规则已验收或现实预测有效；旧规则/配置/迁移/归档失败记录均保留。
 
 ## 在 Mac 用 Command＋R 打开并测试 UI

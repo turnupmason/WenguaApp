@@ -1,0 +1,20 @@
+{
+  "main_ci": {
+    "id": 41538806572,
+    "head_sha": "f879453c789cd55cdf27f9d84b29d4e870d86665",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41538806572"
+  },
+  "existing_health_native_regression": {
+    "id": 41538806575,
+    "head_sha": "f879453c789cd55cdf27f9d84b29d4e870d86665",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41538806575"
+  },
+  "acceptance_scope": "User-source derivative records, typed eligibility, source-preserving importer and fixed-goal recovery template. Native run checks existing health compatibility, not a new recovery selector or App integration.",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "frozen_app_manifest_sha256": "e08ba7bdb48116c6a64589a5709579ba83c650362e5b9fff78c33c3fb8288364",
+  "source_catalog_manifest_sha256": "a99c42ea2ca260638606136be45dd43c2f399d9f7158b3a2de86163d2796c20a"
+}
