@@ -3195,3 +3195,7 @@ README已写从已有仓库终端进入、pull、XcodeGen生成工程、选择We
 ### 2026-11-02 · 用户要求奇门论疾首页实际摘要与统一名称（p2）
 实际根因：Premium卡仍读旧06_conclusion，V27真实结论是09_conclusion。现首页直接读取同一V27结论，首句金色突出主位，余下症候/旁证完整接入；不独立算分、不虚造次病位排序。产品入口、结果卡、历史统一“奇门论疾”，内部health.discomfort/存储/15天键不变，完整原始断词及已保存V27快照不改。用户截图仅UI回归文字，无时辰不补盘。详见 docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md。
 工程manifest明确p2，原p1清单归档；只有3份生产UI源pin变化，V9/V11与V27模板/200/81/人物/规则源码逐字不变。专项25通过，全库841 tests仅原2个手动时辰失败/0错误/3原skip；新增真正Swift摘要适配器与两张native JSONL运行验证接入正式Xcode。Important镜像/SHA同步。实际新CI/Swift/Xcode结果待本提交完成后另记，不提前称通过；病愈应期仍后续重点，不因UI修复改变或开放未验收应期。
+
+
+### 当前封存轻重回归实测 · run 41468305325
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码251d977f32821f16448a287b9dc5ad55d5c88d51。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41468305325_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
