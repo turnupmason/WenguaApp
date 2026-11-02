@@ -560,7 +560,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if "伏吟" in formation[0]:
         bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
     elif any("伏吟" in x for x in formation[1:]):
-        bodyEvidence.append("同宫天禽寄格见伏吟，传统取反复迟滞为旁象，仍按天禽实际力量衡量")
+        bodyEvidence.append(
+            "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证"
+            if _tier(source_strength("star","天禽星",illness))>=3 else
+            "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
     closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
