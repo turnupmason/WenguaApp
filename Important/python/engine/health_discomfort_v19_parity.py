@@ -518,8 +518,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                      +("神象也较明显。" if _tier(deityPower)>=4
                        else "神象须配合其它证据。"))
     if doorText:danger.append(doorText)
-    dangerFull=starDoorGodFull+(
-        "本宫条件："+"；".join(danger)+"。" if danger else "")
+    dangerFull="本宫条件："+"；".join(danger)+"。" if danger else ""
     ending="。"
     originalFocus=(lead if not trauma and _matched(lead,originalSites)
                    else "、".join(originalSites[:1]))
