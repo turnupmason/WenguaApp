@@ -20,6 +20,8 @@ def template():
     raw=json.loads(SOURCE.read_text(encoding="utf-8"))
     if raw.get("schema") != "health_severity_user_editable_template_v20261031_v11_full_evidence":
         raise ValueError("Unknown user health reading template version")
+    if raw.get("version") != "V9.0_source_conditioned_sibling_20261031" or raw.get("release_status") != "user_accepted_frozen_20261102":
+        raise ValueError("Only sealed V9 scoring / V11 template may be used")
     if any(not isinstance(raw.get(key),dict) for key in
            ("section_titles","macros")):
         raise ValueError("Template must include titles and macros objects")

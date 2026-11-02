@@ -1,14 +1,5 @@
 name: Health V11 six real complete-source previews
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/preview_health_v90_six_real_random_20261031.py'
-      - '.github/workflows/health_v11_six_real_complete_preview_20261031.yml'
-      - 'src/wengua/health_dynamic_v21.py'
-      - 'src/wengua/domain_selected_energy_vnext.py'
-      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
-      - 'data/templates/health_severity_vnext/reading_template.json'
   workflow_dispatch:
 permissions:
   contents: write

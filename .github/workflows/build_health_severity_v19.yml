@@ -1,14 +1,5 @@
 name: Archive V1.9 Health Severity Dynamic Template
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_template.py'
-      - 'data/knowledge/phrase_library/health_severity_v1/template.json'
-      - 'tests/test_health_severity_template_v19.py'
-      - 'scripts/build_health_severity_template_v19.py'
-      - 'schema/migrations/047_health_severity_dynamic_template_v19.sql'
-      - '.github/workflows/build_health_severity_v19.yml'
   workflow_dispatch:
 permissions:
   contents: write

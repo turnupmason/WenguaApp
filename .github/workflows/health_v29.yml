@@ -1,15 +1,5 @@
 name: V29 Concise Medical Month Timing and Immutable Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v29.py'
-      - 'data/knowledge/phrase_library/health_v29/**'
-      - 'tests/test_health_timing_clean_v29.py'
-      - 'scripts/run_two_historical_health_v29.py'
-      - 'scripts/build_health_v29_archive.py'
-      - 'schema/migrations/057_health_medical_no_duplicate_v29.sql'
-      - '.github/workflows/health_v29.yml'
   workflow_dispatch:
 permissions:
   contents: write

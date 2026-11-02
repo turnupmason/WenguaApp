@@ -18,7 +18,7 @@ from .marriage_runtime import ELEMENTS, element_relation
 from .health_severity_template import STEM_ELEMENTS
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v26/severity_customer_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v26/severity_customer_template.json"
 EL_PRODUCES={"木":"火","火":"土","土":"金","金":"水","水":"木"}
 EL_CONTROLS={"木":"土","土":"水","水":"火","火":"金","金":"木"}
 

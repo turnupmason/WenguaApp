@@ -210,5 +210,7 @@
     "length": "approximately 150-220 CJK characters, never drop ending to fit length",
     "same_for": "offline native iPhone and BigFish actual TS + Python",
     "pending": "never infer V8 grade from unknown source strength"
-  }
+  },
+  "release_status": "user_accepted_frozen_20261102",
+  "accepted_on": "2026-11-02"
 }

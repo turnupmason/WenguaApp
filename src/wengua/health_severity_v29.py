@@ -10,7 +10,7 @@ from .health_severity_v28 import analyze_health_severity_v28
 from .health_severity_v22 import _find_star,_find_heaven_stem,_palace,FORBIDDEN_CUSTOMER
 from .health_severity_v27 import _directed
 
-TEMPLATE=Path(__file__).resolve().parents[2]/"data/knowledge/phrase_library/health_v29/severity_fixed_template.json"
+TEMPLATE=Path(__file__).resolve().parents[2]/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v29/severity_fixed_template.json"
 
 def analyze_health_severity_v29(*,chart,inquiry,calendar=None,db_path=None):
     old=analyze_health_severity_v28(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)

@@ -1,15 +1,5 @@
 name: V3.7 Genuine Full 81 Pair Double Risk Noon Research
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v37.py'
-      - 'data/knowledge/phrase_library/health_v37/severity_fixed_template.json'
-      - 'scripts/run_health_v37_user_20261022_noon.py'
-      - 'tests/test_health_v37_double_risk_full81_noon.py'
-      - 'schema/migrations/065_health_full_81_pair_double_adverse_v37.sql'
-      - 'scripts/build_health_v37_full_archive.py'
-      - '.github/workflows/health_v37_all81_double_risk_noon.yml'
   workflow_dispatch:
 permissions:
   contents: write

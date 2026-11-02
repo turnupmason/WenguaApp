@@ -1,0 +1,121 @@
+{
+  "status": "retired_not_for_app",
+  "purpose": "Historical reproducibility only; no runtime fallback",
+  "entries": [
+    {
+      "original": "data/knowledge/phrase_library/health_severity_v1/template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_severity_v1/template.json",
+      "sha256": "0240edccd3b86abd715da6e595a43bf43a0df80ba9ecf0d075073343a177bff7"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v20/other_intent_templates.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v20/other_intent_templates.json",
+      "sha256": "04b60c831133964e2d9226917eef2312d64ab0a69384ffdf1d8818bede5f7bdb"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v20/severity_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v20/severity_template.json",
+      "sha256": "0f642866abd1feb4ac64f0e9b499e78daccbc7a17232b04672fd360742b9c192"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v22/severity_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v22/severity_template.json",
+      "sha256": "ad86dd0e914bec28ed64c0dfce2a5dca5d671317ef457332f988cd846e150c93"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v23/severity_grouped_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v23/severity_grouped_template.json",
+      "sha256": "43d806015aa1b4ffafe794995b0d0ea775acc6f1ba779a91ed9514494ba03c64"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v24/severity_father_corrected_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v24/severity_father_corrected_template.json",
+      "sha256": "ee0a7b777602b0d6b1c266136565288b2c6690757f4e7278964ae8b2eb5a5e3c"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v25/severity_11_concise_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v25/severity_11_concise_template.json",
+      "sha256": "64913f2e56038a0d5b2746f23c98f483c4bba0b626dfd6294f190334571aff3f"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v26/severity_11_concise_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v26/severity_11_concise_template.json",
+      "sha256": "6c1b8f35ef7c5370e685e2f298abf7f4886baad1e70f11504099f2f606001019"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v26/severity_customer_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v26/severity_customer_template.json",
+      "sha256": "b58cb3a8a3e91a4ee87227e008ae4fdce0908d3f4379291be03da4deaa9cdaab"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v27/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v27/severity_fixed_template.json",
+      "sha256": "b6c6dab0246d318c1a1325ca0e9b33475660aa2188ac5845953e2efc1787b4a8"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v28/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v28/severity_fixed_template.json",
+      "sha256": "885fbc7105afafd4b5211cf628ac4c046ce589c0288a55c28ccec7cf3dd41bba"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v29/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v29/severity_fixed_template.json",
+      "sha256": "9c76160ad787d083a0399c3d664d4329b33aa2ca2fa9b88879d3b5a9258a88f8"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v30/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v30/severity_fixed_template.json",
+      "sha256": "43e013b6678b44d70cb884472c98d2bafbce46010b1c8bd682f3e1187db460d1"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v31/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v31/severity_fixed_template.json",
+      "sha256": "c3290d6b1ea215068bb5bfc1af591c6dea47a35772e569df4e0a09b4fc673ce4"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v33/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v33/severity_fixed_template.json",
+      "sha256": "fdbc8a0703b547c42031a20c79a2360fdc8344cf2fa851ae248bfd03ecc873a2"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json",
+      "sha256": "ad28c2954062b86259704a8f1797108fb6b1a66804cf672cd5b966de72b7eec3"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v37/severity_fixed_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v37/severity_fixed_template.json",
+      "sha256": "28f81515fa2aee11f1460e9fcbc2d8b460c34ac599d966fa0805f211dc845088"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v38/severity_customer_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v38/severity_customer_template.json",
+      "sha256": "fbbe19241a71a8ab1f1e0931c366c38ba35f062721d82dac651846be3a8cdc57"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v39/severity_customer_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v39/severity_customer_template.json",
+      "sha256": "701cfe468e2ee39add3d1863016e480126645665975a32788297be54cd2b9eba"
+    },
+    {
+      "original": "data/knowledge/phrase_library/health_v391/severity_text_full12_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v391/severity_text_full12_template.json",
+      "sha256": "faddc677e90385a7410bffb00dcc2a30d3619cf17e95ab9db55aaeeb246b25c0"
+    },
+    {
+      "original": "data/templates/health_discomfort_v11/reading_template.json",
+      "archive": "archives/retired_health_templates_20261102/data/templates/health_discomfort_v11/reading_template.json",
+      "sha256": "ea9c0640d8dd4496c50a45f2d8e81ff937b991df87231627f11d969488317b5c"
+    },
+    {
+      "original": "data/templates/health_severity_vnext/internal_audit_template_20261025.json",
+      "archive": "archives/retired_health_templates_20261102/data/templates/health_severity_vnext/internal_audit_template_20261025.json",
+      "sha256": "999446e3158c6896170bbd8c7e435cffba37b4a150f961979d2c0b1a0c849820"
+    },
+    {
+      "original": "ios/WenguaAppUI/FrozenReadingV391.json",
+      "archive": "archives/retired_health_templates_20261102/ios/WenguaAppUI/FrozenReadingV391.json",
+      "sha256": "629d56271c71c854ddd8a31abc0c42f5d09310d88959f3c15a02dac5e4c7f269"
+    }
+  ]
+}

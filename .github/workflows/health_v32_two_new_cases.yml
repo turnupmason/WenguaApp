@@ -1,13 +1,5 @@
 name: V3.2 Two New Original Health Case Replays and UI Handoff
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/replay_two_new_historical_health_v32.py'
-      - 'tests/test_health_v32_fresh_two_families.py'
-      - 'scripts/build_health_v32_replay_archive.py'
-      - 'schema/migrations/060_health_v31_real_cases_ui_handoff_v32.sql'
-      - '.github/workflows/health_v32_two_new_cases.yml'
   workflow_dispatch:
 permissions:
   contents: write

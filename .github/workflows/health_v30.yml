@@ -1,15 +1,5 @@
 name: V3.0 Health User Curriculum Append-Only and Two Historical Regression Cases
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v30.py'
-      - 'data/knowledge/phrase_library/health_v30/**'
-      - 'scripts/run_two_historical_health_v30.py'
-      - 'tests/test_health_supplement_v30.py'
-      - 'scripts/build_health_v30_archive.py'
-      - 'schema/migrations/058_health_user_disease_supplement_v30.sql'
-      - '.github/workflows/health_v30.yml'
   workflow_dispatch:
 permissions:
   contents: write

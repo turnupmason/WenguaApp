@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PARENT_SHA = "fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536"
 PARENT_NAME = "WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3"
 NEW_NAME = "WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3"
-TEMPLATE = ROOT / "data/knowledge/phrase_library/health_severity_v1/template.json"
+TEMPLATE = ROOT / "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_severity_v1/template.json"
 MIGRATION = ROOT / "schema/migrations/047_health_severity_dynamic_template_v19.sql"
 PROTOCOL = "health.severity.dynamic_slots.v1.9"
 

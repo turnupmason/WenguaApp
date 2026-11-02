@@ -18,7 +18,7 @@ from .health_dynamic_v21 import bind_patient
 from .marriage_runtime import ELEMENTS,element_relation
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v24/severity_father_corrected_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v24/severity_father_corrected_template.json"
 SKIPPED={"04_illness_star","05_body_part","08_stem_pair","09_formations","10_deity","11_door"}
 DIRECTIONS={
     "克":"病星受落宫克制",

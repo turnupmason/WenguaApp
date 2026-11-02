@@ -16,7 +16,7 @@ from .health_severity_v27 import _clinical_role_sign
 from .marriage_runtime import ELEMENTS,element_relation
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v31/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v31/severity_fixed_template.json"
 
 def patient_vs_disease_hour_relation(chart,person):
     event=_find_heaven_stem(chart,chart["hour_ganzhi"][0])

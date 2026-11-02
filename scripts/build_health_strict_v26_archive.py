@@ -6,7 +6,7 @@ from scripts.build_health_v21_archive import preserve
 
 ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf"
-TPL=ROOT/"data/knowledge/phrase_library/health_v26/severity_customer_template.json"
+TPL=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v26/severity_customer_template.json"
 MIG=ROOT/"schema/migrations/054_health_severity_strict_customer_template_v26.sql"
 
 def sha(p):

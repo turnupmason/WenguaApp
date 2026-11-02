@@ -10,7 +10,7 @@ from scripts.build_health_v21_archive import preserve
 from scripts.replay_all_historical_health_v31_v33 import evaluate, PARENT_SHA
 ROOT=Path(__file__).resolve().parents[1]
 MIG=ROOT/"schema/migrations/061_health_all_original_case_replay_v33.sql"
-COVERAGE=ROOT/"data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json"
+COVERAGE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json"
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -56,7 +56,7 @@ def build(*,parent,output,seal,manifest):
             db.execute("""INSERT INTO health_v33_user_disease_curriculum_appendix
               VALUES('health_20261022_followup','direct_user_message',
                      'partially_executable_not_full_rule_approval',?,42,17,11,1,4,1)""",
-                     ("data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json",))
+                     ("archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json",))
         preserve(old,db)
         if db.execute("PRAGMA integrity_check").fetchone()[0]!="ok":
             raise ValueError("SQLite integrity not ok")

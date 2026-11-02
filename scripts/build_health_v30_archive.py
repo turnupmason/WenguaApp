@@ -13,7 +13,7 @@ PARENT_SHA="511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19"
 MIG=ROOT/"schema/migrations/058_health_user_disease_supplement_v30.sql"
 CUR=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_disease_curriculum.json"
 BANK=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v30/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v30/severity_fixed_template.json"
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def build(parent,out,sealed,manifest):
     parent,out,sealed,manifest=map(Path,(parent,out,sealed,manifest))

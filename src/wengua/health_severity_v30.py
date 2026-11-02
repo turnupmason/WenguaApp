@@ -16,7 +16,7 @@ from .health_severity_v28 import related_special_facts
 from .marriage_runtime import ELEMENTS,element_relation
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v30/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v30/severity_fixed_template.json"
 CURRICULUM=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_disease_curriculum.json"
 PAIRS=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json"
 FORMAT_EXTENSIONS=("03_illness","05_patient","08_hour","09_hazards","10_pace","11_final")

@@ -1,15 +1,5 @@
 name: Verify and Archive V2.2 Offline Health Severity Only
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v22.py'
-      - 'data/knowledge/phrase_library/health_v22/**'
-      - 'scripts/run_health_severity_v22.py'
-      - 'tests/test_offline_health_severity_v22.py'
-      - 'scripts/build_health_severity_v22_archive.py'
-      - 'schema/migrations/050_health_severity_offline_customer_language_v22.sql'
-      - '.github/workflows/build_health_severity_v22.yml'
   workflow_dispatch:
 permissions:
   contents: write

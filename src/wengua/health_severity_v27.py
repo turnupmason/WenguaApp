@@ -22,7 +22,7 @@ from .marriage_runtime import ELEMENTS, element_relation, CONTROLS
 from .core import STEMS
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v27/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v27/severity_fixed_template.json"
 STEM_EL={"甲":"木","乙":"木","丙":"火","丁":"火","戊":"土","己":"土",
          "庚":"金","辛":"金","壬":"水","癸":"水"}
 YANG_STEMS=set("甲丙戊庚壬")

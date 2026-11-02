@@ -1,14 +1,5 @@
 name: V3.5 Patient-First Disease Severity and Source Rules
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v35.py'
-      - 'scripts/replay_all_historical_health_v35.py'
-      - 'tests/test_health_v35_patient_priority.py'
-      - 'schema/migrations/063_health_patient_first_priority_v35.sql'
-      - 'scripts/build_health_v35_full_archive.py'
-      - '.github/workflows/health_v35_patient_priority.yml'
   workflow_dispatch:
 permissions:
   contents: write

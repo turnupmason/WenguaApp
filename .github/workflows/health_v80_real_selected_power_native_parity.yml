@@ -1,4 +1,4 @@
-name: Health V8.0 all-palace relations selected use-god Python native parity
+name: Sealed health V9 scoring V11 template Python native parity
 on:
   push:
     branches: [main]
@@ -324,10 +324,10 @@ jobs:
               if 'VNEXT_IOS_PYEXACT=' in line]
           assert len(five_native)==5
           out+=['','## V10.2 已见五个真实时辰的新版客户全文回归：父亲、本人、本人、女儿、朋友',
-                '种子202610282259，原V10.1盘用于同钟软件回归，不能冒充新的未见案例；V10.2词模板重新实算。']
+                '种子202610282259，原V10.1盘用于同钟软件回归，不能冒充新的未见案例；封存V11词模板重新实算。']
           for i,(c,s) in enumerate(zip(five['cases'],five_native),1):
               assert c['source_sections']==s['sections']
-              out+=['',f'### 新盘{i} · '+c['relationship'],'实际时辰：'+c['instant'],
+              out+=['',f'### 固定回归盘{i} · '+c['relationship'],'实际时辰：'+c['instant'],
                     '四柱：'+json.dumps(c['four_pillars'],ensure_ascii=False),
                     '真实局：'+json.dumps(c['bureau'],ensure_ascii=False),
                     '参与用神实宫：'+json.dumps({k:v['palace'] for k,v in c['roles'].items()},ensure_ascii=False),
@@ -378,22 +378,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$archive"
-          cat >> AGENTS.md <<'END_V101_AGENTS'
-          
-          ### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
-          本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
-          模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
-          END_V101_AGENTS
-          cat >> docs/PROJECT_STATUS.md <<'END_V101_STATUS'
-          
-          ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
-          - 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
-          - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
-          - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
-          - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
-          END_V101_STATUS
-          git add AGENTS.md docs/PROJECT_STATUS.md
-          git commit -m "Archive V10.1 five real native readings and handoff update"
+          python3 - <<'PY_NOTE'
+          import json,os
+          from pathlib import Path
+          release=json.loads(Path('data/releases/health_frozen_20261102.json').read_text())
+          assert release['status']=='user_accepted_frozen'
+          run=os.environ['GITHUB_RUN_ID']; sha=os.environ['GITHUB_SHA']
+          note=(f"\n\n### 当前封存轻重回归实测 · run {run}\n"
+                f"V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码{sha}。"
+                f"全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_{run}_ATTEMPT_{os.environ['GITHUB_RUN_ATTEMPT']}.md。"
+                "既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。\n")
+          for name in ('AGENTS.md','docs/PROJECT_STATUS.md','docs/CHAPTER_LEDGER.md'):
+              with Path(name).open('a') as f:f.write(note)
+          PY_NOTE
+          git add AGENTS.md docs/PROJECT_STATUS.md docs/CHAPTER_LEDGER.md
+          git commit -m "Archive sealed V9 scoring V11 template native regression and actual handoff"
           for i in 1 2 3 4 5; do
             git pull --rebase origin main
             if git push origin HEAD:main; then exit 0; fi

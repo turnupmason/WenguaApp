@@ -1,14 +1,6 @@
 name: Health V7.7 Unique Palace Two Original Clocks Native Parity
 # V7.7 canonical co-palace factor parity plus Important SHA checked.
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/health_v77_unique_palace_native_parity.yml'
-      - 'ios/WenguaAppUI/WenguaNativeVNextEngine.swift'
-      - 'ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift'
-      - 'src/wengua/health_quant_overlay_vnext.py'
-      - 'Important/MANIFEST.json'
   workflow_dispatch:
 permissions:
   contents: read

@@ -1,12 +1,5 @@
 name: Health V7.4 real colleague natal Yi and macro final-point source audit
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/**'
-      - 'scripts/ios_vnext_manual_colleague_natal_yi_20261027.py'
-      - 'tests/test_health_v74_colleague_natal_yi_20261027.py'
-      - '.github/workflows/health_v74_colleague_natal_year_audit.yml'
   workflow_dispatch:
 jobs:
   python_truth_source:

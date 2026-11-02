@@ -1,9 +1,5 @@
 name: Health V7.5 Two Fixed Clock Python Native Swift Verbatim
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/health_v75_two_fixed_clocks_parity.yml'
   workflow_dispatch:
 permissions:
   contents: read

@@ -5,7 +5,7 @@ from pathlib import Path
 from scripts.build_health_v21_archive import preserve
 ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="9b5e574543bf7fc298412ac98ededf09445dc3c555312ad7b525f92f22aa41e0"
-TPL=ROOT/"data/knowledge/phrase_library/health_v25/severity_11_concise_template.json"
+TPL=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v25/severity_11_concise_template.json"
 MIG=ROOT/"schema/migrations/053_health_severity_11_fuyin_verdict_v25.sql"
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def build(parent,output,index_dir):

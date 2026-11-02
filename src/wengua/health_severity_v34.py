@@ -18,7 +18,7 @@ from .health_severity_v26 import _direction
 
 ROOT=Path(__file__).resolve().parents[2]
 CATALOG=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json"
-SLOTS=ROOT/"data/knowledge/phrase_library/health_v33/severity_fixed_template.json"
+SLOTS=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v33/severity_fixed_template.json"
 DOORS_FAVORABLE=("开门","休门","生门")
 DEATH_WORDS=("必死","死亡","癌症","确诊","停药","放弃治疗")
 HORSE={"申":"寅","子":"寅","辰":"寅",

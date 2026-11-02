@@ -1,14 +1,5 @@
 name: V3.6 Original Hour Horse and Value-Door Rules
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v36.py'
-      - 'scripts/replay_all_historical_health_v36.py'
-      - 'tests/test_health_v36_hour_horse_value_door.py'
-      - 'schema/migrations/064_health_hour_horse_value_door_v36.sql'
-      - 'scripts/build_health_v36_full_archive.py'
-      - '.github/workflows/health_v36_actual_source_rules.yml'
   workflow_dispatch:
 permissions:
   contents: write

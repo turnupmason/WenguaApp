@@ -14,7 +14,7 @@ from .semantic_lookup import nine_star_month_status
 from .symbol_relations import stem_stage
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v28/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v28/severity_fixed_template.json"
 GENERATES={"木":"火","火":"土","土":"金","金":"水","水":"木"}
 STEM_ELEMENTS={"甲":"木","乙":"木","丙":"火","丁":"火","戊":"土","己":"土",
                "庚":"金","辛":"金","壬":"水","癸":"水"}

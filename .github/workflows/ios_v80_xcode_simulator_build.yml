@@ -1,10 +1,12 @@
-name: Wengua V8.0 production Xcode iOS Simulator actual build
+name: Sealed V9 V11 and V27 production Xcode iOS Simulator build
 on:
   push:
     branches: [main]
     paths:
       - '.github/workflows/ios_v80_xcode_simulator_build.yml'
       - 'ios/WenguaAppUI/**'
+      - 'data/releases/health_frozen_20261102.json'
+      - 'scripts/verify_frozen_health_release_20261102.py'
       - 'tests/test_health_discomfort_v21_focus_doorpressure_20261101.py'
       - 'tests/test_health_discomfort_v26_precise_site_prose_20261101.py'
       - 'tests/verify_ios_premium_verdict_runtime_20261028.py'
@@ -38,6 +40,7 @@ jobs:
             tests.test_health_discomfort_v26_precise_site_prose_20261101 \
             tests.test_health_discomfort_v27_ding_gods_hour_20261101 \
             tests.test_health_discomfort_injury_gate_20261102 \
+            tests.test_frozen_health_release_20261102 \
             tests.test_discomfort_v27_hour_parity_regression_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \
@@ -70,6 +73,7 @@ jobs:
           set -euo pipefail
           APP="/tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app"
           test -d "$APP"
+          python3 -m scripts.verify_frozen_health_release_20261102 --bundle "$APP"
           test -f "$APP/health_energy_200.json"
           test -f "$APP/reading_template.json"
           test -f "$APP/81_pairs.tsv"
@@ -220,6 +224,27 @@ jobs:
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 哥哥' /tmp/wengua-v80-xcode/v27_requested_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v27_requested_parity.log
           python3 -m scripts.report_v27_requested_20261102 /tmp/wengua-v80-xcode/v27_requested.jsonl > /tmp/wengua-v80-xcode/v27_requested_readings.md
+      - name: Exercise both sealed production router APIs using actual Xcode app resources
+        run: |
+          set -euo pipefail
+          swiftc -D WENGUA_BODY_SITE ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeFrozenHealthBundleCheck.swift \
+            -o /tmp/wengua-v80-xcode/native_frozen_bundle_check \
+            2>&1 | tee /tmp/wengua-v80-xcode/frozen_bundle_compile.log
+          /tmp/wengua-v80-xcode/native_frozen_bundle_check \
+            /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
+            | tee /tmp/wengua-v80-xcode/frozen_bundle_router.log
+          test "$(grep -c '^SEALED_BUNDLE_ROUTER_PASS' /tmp/wengua-v80-xcode/frozen_bundle_router.log)" -eq 4
       - name: Verify all six injury choices on four real clocks and strict Python Swift text parity
         run: |
           set -euo pipefail
@@ -276,16 +301,16 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs
-          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ]; then
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
             RESULT=PASS
-            MESSAGE="Actual iOS Simulator Xcode build, byte-exact V8/V15 bundle, and two V18 father and sister true random source-checked Swift clocks passed"
+            MESSAGE="Actual Simulator build, sealed V9/V11 and V27 exact resources, two-topic bundle router and native text parity passed"
           else
             RESULT=FAIL
             MESSAGE="Xcode/resources/new independent V15 two-clock Swift runtime failed; see preserved logs"
           fi
           FILE="docs/IOS_V80_XCODE_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
           {
-            echo "# iOS V8.0 Xcode simulator ${RESULT}"
+            echo "# iOS sealed V9/V11 + V27 Xcode simulator ${RESULT}"
             echo
             echo "Run: https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
             echo "Source SHA: ${GITHUB_SHA}"
@@ -311,8 +336,13 @@ jobs:
               echo "## Four clocks times six explicit injury choices"
               cat /tmp/wengua-v80-xcode/injury_py_swift_parity.log
             fi
-            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ]; then
+            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
               cat /tmp/wengua-v80-xcode/v27_requested_readings.md
+            fi
+            if [ -f /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
+              echo
+              echo '## Sealed V9 scoring V11 template and V27 actual app bundle router'
+              cat /tmp/wengua-v80-xcode/frozen_bundle_router.log
             fi
             if [ -f /tmp/wengua-v80-xcode/build.log ]; then
               echo

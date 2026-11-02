@@ -1,14 +1,5 @@
 name: Archive V2.0 Five Health Dynamic Intents
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_dynamic_v20.py'
-      - 'data/knowledge/phrase_library/health_v20/**'
-      - 'tests/test_health_dynamic_v20.py'
-      - 'scripts/build_health_five_intents_v20.py'
-      - 'schema/migrations/048_health_five_intents_actor_roles_v20.sql'
-      - '.github/workflows/build_health_v20.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -56,6 +56,7 @@ enum WenguaNativeDiscomfortV15 {
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
               words["schema"] as? String=="wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+              words["release_status"] as? String=="user_accepted_frozen_20261102",
               let injuryPolicy=words["injury_policy"] as? [String:Any],
               let activeContexts=injuryPolicy["active_contexts"] as? [String],
               Set(activeContexts)==allowedContexts.subtracting(["none"]),

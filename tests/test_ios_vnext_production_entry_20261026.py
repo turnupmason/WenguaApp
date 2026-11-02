@@ -12,7 +12,7 @@ class NativeVNextAppContract(unittest.TestCase):
         self.assertIn("eligibleForFirmTraditionalJudgment",binder)
         self.assertIn("event_news",binder)
     def test_main_is_not_frozen_v391_and_book_sqlite_is_not_bundled(self):
-        self.assertTrue((ROOT/"ios/WenguaAppUI/FrozenReadingV391.json").is_file())
+        self.assertTrue((ROOT/"archives/retired_health_templates_20261102/ios/WenguaAppUI/FrozenReadingV391.json").is_file())
         proj=(ROOT/"ios/WenguaAppUI/project.yml").read_text("utf8")
         main=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text("utf8")
         self.assertNotIn("FrozenReadingV391.json",proj)

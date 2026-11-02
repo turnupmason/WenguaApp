@@ -1,15 +1,5 @@
 name: V2.6 Strict Gengshen Self Health Template and Acceptance
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v26.py'
-      - 'data/knowledge/phrase_library/health_v26/**'
-      - 'scripts/run_self_gengshen_v26.py'
-      - 'tests/test_health_severity_strict_v26.py'
-      - 'scripts/build_health_strict_v26_archive.py'
-      - 'schema/migrations/054_health_severity_strict_customer_template_v26.sql'
-      - '.github/workflows/build_self_gengshen_v26.yml'
   workflow_dispatch:
 permissions:
   contents: write

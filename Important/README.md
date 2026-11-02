@@ -9,3 +9,6 @@
 **极其重要：这些文件是对当前仓库现役文件的字节级镜像，不是第二套各自修改的逻辑。** 原 `src/wengua/`、`ios/WenguaAppUI/`、`data/`、`scripts/`、`tests/` 及 GitHub workflow 仍然是真实运行/编译路径；绝不通过移动源文件破坏导入或 Xcode 打包。每次修改源文件必须在同一次提交同步更新这里的镜像，CI 内 `tests/test_important_mirror_integrity_20261026.py` 会逐个字节检查。必要时依照 MANIFEST 的 `canonical` 字段找到原位。
 
 范围：当前健康·病情轻重 V-next Python/Swift 共同实现，保留健康旧 V3.9.1 关联依赖。**其它未移植专题、全部古籍库、失败试验、历史行为版本不迁入本目录，也不被删除或重置。** 完整源仓仍是最终审计事实。
+
+
+2026-11-02：正式手机版本与清退模板以 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md` 为准；疾病轻重V9.0计分/V11模板、病位V27已由用户确认封存。旧固定样例仅留archives历史复现，不接生产。

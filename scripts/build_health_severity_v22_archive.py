@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3"
 PARENT_NAME="WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3"
 NEW_NAME="WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v22/severity_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v22/severity_template.json"
 MIG=ROOT/"schema/migrations/050_health_severity_offline_customer_language_v22.sql"
 
 

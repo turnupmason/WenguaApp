@@ -1,15 +1,5 @@
 name: V2.4 Corrected Father Health and Grouped Palace Acceptance
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v24.py'
-      - 'data/knowledge/phrase_library/health_v24/**'
-      - 'scripts/run_father_health_20261021_v24.py'
-      - 'tests/test_father_health_20261021_v24.py'
-      - 'schema/migrations/052_health_severity_father_corrected_v24.sql'
-      - 'scripts/build_father_health_corrected_v24_archive.py'
-      - '.github/workflows/build_father_health_v24.yml'
   workflow_dispatch:
 permissions:
   contents: write

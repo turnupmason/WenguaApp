@@ -14,7 +14,7 @@ from .marriage_runtime import ELEMENTS,element_relation
 from .health_severity_v27 import five_not_encounter
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v39/severity_customer_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v39/severity_customer_template.json"
 
 def _names(pairs):
     return "、".join(z["top"]+"加"+z["bottom"]+"「"+z["title"]+"」" for z in pairs)

@@ -16,7 +16,7 @@ from .health_dynamic_v21 import bind_patient
 from .health_severity_v22 import _find_star,_find_heaven_stem,_palace
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v391/severity_text_full12_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v391/severity_text_full12_template.json"
 EXTENDED=("03_illness","05_patient","07_medicine","08_hour")
 
 def analyze_health_severity_v391(*,chart,inquiry,calendar,db_path):

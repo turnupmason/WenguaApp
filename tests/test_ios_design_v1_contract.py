@@ -14,7 +14,7 @@ COLORS=ROOT/"ios/design-v1/five-element-colors.js"
 FIXTURE=ROOT/"ios/design-v1/chart-facts-v3.js"
 SWIFT=ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift"
 POLICY=ROOT/"ios/design-v1/issue-policy.js"
-FROZEN=ROOT/"ios/WenguaAppUI/FrozenReadingV391.json"
+FROZEN=ROOT/"archives/retired_health_templates_20261102/ios/WenguaAppUI/FrozenReadingV391.json"
 AUDIT=ROOT/"data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOURCE_AUDIT.json"
 class Tags(HTMLParser):
     def __init__(self):

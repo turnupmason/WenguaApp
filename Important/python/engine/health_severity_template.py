@@ -22,7 +22,7 @@ from .phrase_pipeline import FACTOR_IDS
 from .formation_candidates import evaluate_candidates
 
 ROOT = Path(__file__).resolve().parents[2]
-TEMPLATE = ROOT / "data/knowledge/phrase_library/health_severity_v1/template.json"
+TEMPLATE = ROOT / "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_severity_v1/template.json"
 SHENQI = ROOT / "data/knowledge/shenqi/health_prediction_ch01/method_index.json"
 KAIWU = ROOT / "data/knowledge/kaiwu/health_prediction_ch02_section01/method_index.json"
 CONCEPTS = ROOT / "data/knowledge/shenqi/shijia_judgments_ch05/concept_index.json"

@@ -144,6 +144,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     trauma=injury_context in {"accident","bone","bleeding"}
     injury_primary=trauma or injury_context=="severe_pain"
     doc,stemdoc,template,energy,pairtxt=sources or load_sources()
+    if template.get("schema") != "wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101" or template.get("release_status") != "user_accepted_frozen_20261102":
+        raise ValueError("Only sealed V27 body-site template may be used")
     rules=doc["rules"]
     assert len(rules)==255 and len(doc["cases"])==12 and len(doc["conflicts"])==20
     assert len(pairtxt.strip().splitlines())==82

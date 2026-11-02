@@ -1,15 +1,5 @@
 name: V2.3 Offline Father Health and Grouped Palace Acceptance
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v23.py'
-      - 'data/knowledge/phrase_library/health_v23/**'
-      - 'scripts/run_father_health_20261021_v23.py'
-      - 'tests/test_father_health_20261021_v23.py'
-      - 'schema/migrations/051_health_severity_father_grouped_v23.sql'
-      - 'scripts/build_father_health_grouped_v23_archive.py'
-      - '.github/workflows/build_father_health_v23.yml'
   workflow_dispatch:
 permissions:
   contents: write

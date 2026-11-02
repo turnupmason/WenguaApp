@@ -1,15 +1,5 @@
 name: V3.1 Patient-Hour Disease Direction Correction and Immutable Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v31.py'
-      - 'data/knowledge/phrase_library/health_v31/**'
-      - 'scripts/run_two_historical_health_v31.py'
-      - 'tests/test_health_hour_patient_v31.py'
-      - 'scripts/build_health_v31_archive.py'
-      - 'schema/migrations/059_health_patient_hour_direction_v31.sql'
-      - '.github/workflows/health_v31.yml'
   workflow_dispatch:
 permissions:
   contents: write

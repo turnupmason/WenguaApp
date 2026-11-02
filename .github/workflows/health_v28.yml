@@ -1,15 +1,5 @@
 name: V28 Health Medicine Timing Tomb and Striking Regression
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v28.py'
-      - 'data/knowledge/phrase_library/health_v28/**'
-      - 'tests/test_medical_timing_tomb_v28.py'
-      - 'scripts/run_two_historical_health_v28.py'
-      - 'scripts/build_health_medical_timing_v28_archive.py'
-      - 'schema/migrations/056_health_medical_timing_tomb_v28.sql'
-      - '.github/workflows/health_v28.yml'
   workflow_dispatch:
 permissions:
   contents: write

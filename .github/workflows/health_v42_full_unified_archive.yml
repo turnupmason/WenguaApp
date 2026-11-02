@@ -1,12 +1,7 @@
 name: V4.2 Unified Archive
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_health_v42_complete_integrated_archive.py'
-      - 'schema/migrations/070_health_v42_unified_v39_full12_sixmodule.sql'
-      - '.github/workflows/health_v42_full_unified_archive.yml'
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:

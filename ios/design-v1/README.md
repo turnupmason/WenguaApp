@@ -124,3 +124,6 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 - 验证程序：`tests/test_ios_five_random_live_casts.py`；Workflow `.github/workflows/ios_native_cast_parity.yml`；运行成功（**包含真正的 Xcode iOS Simulator 编译**）：https://github.com/turnupmason/WenguaApp/actions/runs/39886204311 。五盘完整原 Python/Swift 数据报告： https://github.com/turnupmason/WenguaApp/actions/runs/39886204311/artifacts/12472846851 。
 - 严格保留从首次测试环境 `ModuleNotFoundError`、JSON 中五可选 `null` 与 Swift Codable 省略可选字段，到最终成功的所有失败 Actions；不删除失败实验、不重写起盘规则，不改变原书194例/43章/81天地干/42疾病补充/17复合格局。
 - 完整记录：`docs/IOS_NINE_PALACE_TEMPLATE_FIVE_HOUR_ACCEPTANCE_2026-10-22.md`。基础九宫模板进入**可复用冻结状态**，后续大批量领域细分模板均复用；**下一阶段**开发领域→子领域独立取用神、书源正反证据、条件推理、应期、V3.9.1离线中文完整断词的批量编排和测试，绝不能把九宫测试成功说成疾病/其它领域自然断案模型移植已完成。用户 Mac/iPhone 真机视觉测试、正式发布仍是独立验收阶段。
+
+
+2026-11-02：正式手机版本与清退模板以 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md` 为准；疾病轻重V9.0计分/V11模板、病位V27已由用户确认封存。旧固定样例仅留archives历史复现，不接生产。

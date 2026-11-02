@@ -24,7 +24,7 @@ from .health_discomfort_cross_text_v14_draft import inspect_cross_text_candidate
 from .health_discomfort_255_v15 import match_location_inventory
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "data/templates/health_discomfort_v11/reading_template.json"
+SOURCE = ROOT / "archives/retired_health_templates_20261102/data/templates/health_discomfort_v11/reading_template.json"
 SCHEMA = "wengua_health_discomfort_v11_candidate_template_20261031"
 SECTION_IDS = ("01_location", "02_tianrui", "03_comparison", "04_person",
                "05_review", "06_conclusion")

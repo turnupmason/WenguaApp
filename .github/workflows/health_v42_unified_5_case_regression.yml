@@ -1,13 +1,5 @@
 name: V4.2 Unified V3.9 and Full12 Six-Budget Tests
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/knowledge/score_models/health_severity_v42/**'
-      - 'src/wengua/health_severity_v42_integrated.py'
-      - 'scripts/replay_health_v42_unified_five_actual_casts.py'
-      - 'tests/test_health_v42_unified_full12_5cases.py'
-      - '.github/workflows/health_v42_unified_5_case_regression.yml'
   workflow_dispatch:
 jobs:
   integration:

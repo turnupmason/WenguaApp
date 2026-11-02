@@ -1,14 +1,5 @@
 name: V3.3 Entire Historical Health Case Replay and Full Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/replay_all_historical_health_v31_v33.py'
-      - 'tests/test_health_all_historical_v33.py'
-      - 'data/knowledge/phrase_library/health_v33/user_disease_supplement_template_coverage.json'
-      - 'schema/migrations/061_health_all_original_case_replay_v33.sql'
-      - 'scripts/build_health_v33_all_case_archive.py'
-      - '.github/workflows/health_v33_all_cases.yml'
   workflow_dispatch:
 permissions:
   contents: write

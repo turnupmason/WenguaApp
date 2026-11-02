@@ -1,11 +1,5 @@
 name: V4 Append-only Score Database
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_health_v40_full_score_archive.py'
-      - 'schema/migrations/068_health_v40_symbolic_score_prototype.sql'
-      - '.github/workflows/health_v40_score_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

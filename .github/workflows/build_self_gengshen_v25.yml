@@ -1,15 +1,5 @@
 name: V2.5 Gengshen Self Health - Offline 11-Section Test and Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v25.py'
-      - 'data/knowledge/phrase_library/health_v25/**'
-      - 'scripts/run_self_health_20261021_gengshen_v25.py'
-      - 'tests/test_self_gengshen_health_v25.py'
-      - 'scripts/build_self_gengshen_v25_archive.py'
-      - 'schema/migrations/053_health_severity_11_fuyin_verdict_v25.sql'
-      - '.github/workflows/build_self_gengshen_v25.yml'
   workflow_dispatch:
 permissions:
   contents: write

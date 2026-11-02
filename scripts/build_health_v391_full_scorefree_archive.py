@@ -12,7 +12,7 @@ from scripts.replay_health_v391_four_seeded_real_times import evaluate,PARENT_SH
 from src.wengua.health_lifecycle_v391 import source_full12
 ROOT=Path(__file__).resolve().parents[1]
 MIG=ROOT/"schema/migrations/071_health_v391_active_source12_without_scores.sql"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v391/severity_text_full12_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v391/severity_text_full12_template.json"
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def write_report(payload):
     text=["# V3.9.1｜疾病轻重：V3.9完整断词＋十二长生（无分数）","",

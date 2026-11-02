@@ -18,7 +18,7 @@ from .health_severity_v26 import _star_relation
 ROOT=Path(__file__).resolve().parents[2]
 ALL_BOOK_PAIRS=ROOT/"data/knowledge/kaiwu/analysis_judgment_ch04/ordered_stem_pairs.json"
 HEALTH_PAIRS=ROOT/"data/knowledge/phrase_library/health_v30/user_20261022_pair_catalog.json"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v37/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v37/severity_fixed_template.json"
 PALETTES={1:"坎",2:"坤",3:"震",4:"巽",5:"中",6:"乾",7:"兑",8:"艮",9:"离"}
 
 def _title_from_source(text,top,bottom):

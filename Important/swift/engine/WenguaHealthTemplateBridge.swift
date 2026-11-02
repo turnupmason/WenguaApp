@@ -45,6 +45,9 @@ enum WenguaHealthTemplateBridge {
     static func fromText(chart:WenguaNativeChart,template:Data,catalog:String) throws
       -> [WenguaHealthFormationBlock] {
         guard let json = try JSONSerialization.jsonObject(with:template) as? [String:Any],
+              json["schema"] as? String == "health_severity_user_editable_template_v20261031_v11_full_evidence",
+              json["version"] as? String == "V9.0_source_conditioned_sibling_20261031",
+              json["release_status"] as? String == "user_accepted_frozen_20261102",
               let format = json["formation"] as? String,
               fields.allSatisfy({format.contains("{"+$0+"}")}),
               let titles=json["section_titles"] as? [String:String],

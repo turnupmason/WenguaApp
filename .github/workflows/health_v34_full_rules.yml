@@ -1,16 +1,5 @@
 name: V3.4 Full Person Roles and Disease Rule Conditions
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_dynamic_v21.py'
-      - 'src/wengua/health_severity_v34.py'
-      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
-      - 'scripts/replay_all_historical_health_v34.py'
-      - 'tests/test_health_v34_user_full_rules.py'
-      - 'schema/migrations/062_health_full_actor_and_source_predicates_v34.sql'
-      - 'scripts/build_health_v34_full_archive.py'
-      - '.github/workflows/health_v34_full_rules.yml'
   workflow_dispatch:
 permissions:
   contents: write

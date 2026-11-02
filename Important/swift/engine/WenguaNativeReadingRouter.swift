@@ -62,9 +62,12 @@ enum WenguaNativeReadingRouter {
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
                         inquiry:WenguaNativeInquiry? = nil,
                         bundle:Bundle = .main) throws -> WenguaNativeCustomerReading {
+        guard ["health.severity","health.discomfort"].contains(topicID) else {
+            throw WenguaNativeReadingError.unsupportedTopic
+        }
         // iOS native-only body-site module: Linux Swift V8 CLI parity deliberately
         // compiles the frozen V8 subset without this independent SwiftUI source.
-        #if canImport(UIKit)
+        #if canImport(UIKit) || WENGUA_BODY_SITE
         // Independent body-site topic; never enter V8 severity scoring.
         if topicID=="health.discomfort" {
             let request=inquiry ?? WenguaNativeInquiry.standard(relationship)
@@ -280,7 +283,7 @@ enum WenguaNativeReadingRouter {
                 chart:chart,review:review,actor:actor,template:template,
                 catalog:catalog,energy:energy)
             return WenguaNativeCustomerReading(
-                version:"gpt_python_original_vnext_literal_customer_20261026",
+                version:"health_severity_v9_scoring_v11_template_frozen_20261102",
                 topicID:topicID,relationship:relationship,iso:chart.iso,
                 evidenceStatus:"real_native_score_private_python_full_text_parity",
                 sections:exact,rolePalaces:review.roles)

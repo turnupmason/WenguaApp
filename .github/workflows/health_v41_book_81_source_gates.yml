@@ -1,13 +1,5 @@
 name: V4.1 Original 81 Source-Pair Gates
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/knowledge/score_models/health_severity_v41/ordered81_user_weight_candidates.json'
-      - 'src/wengua/health_symbolic_score_v41.py'
-      - 'scripts/run_health_v41_source_gated_3_cases.py'
-      - 'tests/test_health_v41_all81_original_book_gates.py'
-      - '.github/workflows/health_v41_book_81_source_gates.yml'
   workflow_dispatch:
 jobs:
   tests:

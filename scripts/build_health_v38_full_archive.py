@@ -97,7 +97,7 @@ def build(parent,output,seal,manifest,readout):
        "client_does_not_see_book_line_ids":True,
        "actual_medical_predictiveness_claim":False,
        "further_professional_acceptance_before_ui_or_release":"pending",
-       "template_file":"data/knowledge/phrase_library/health_v38/severity_customer_template.json"}
+       "template_file":"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v38/severity_customer_template.json"}
     manifest.parent.mkdir(parents=True,exist_ok=True)
     manifest.write_text(json.dumps(m,ensure_ascii=False,indent=2)+"\n","utf8")
     return m

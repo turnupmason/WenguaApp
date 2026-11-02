@@ -15,7 +15,7 @@ from .symbol_relations import stem_stage
 from .marriage_runtime import PALACE_BRANCHES,hourly_void_branches,ELEMENTS,element_relation
 
 ROOT=Path(__file__).resolve().parents[2]
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v38/severity_customer_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v38/severity_customer_template.json"
 FORBIDDEN=(r"原书第[0-9０-９]+行",r"(?i)sha(?:256)?",r"(?i)sqlite",
            r"(?i)GPT",r"(?i)数据库",r"(?i)回归测试",r"(?i)规则库",
            r"(?i)代码",r"(?i)模型版本")

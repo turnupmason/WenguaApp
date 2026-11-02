@@ -8,7 +8,7 @@ PARENT_SHA="db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6"
 PARENT_NAME="WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3"
 NEW_NAME="WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3"
 MIG=ROOT/"schema/migrations/051_health_severity_father_grouped_v23.sql"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v23/severity_grouped_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v23/severity_grouped_template.json"
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()

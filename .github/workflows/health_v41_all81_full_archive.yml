@@ -1,11 +1,5 @@
 name: V4.1 Append Full 81 Book Source Gate Archive
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_health_v41_complete_archive.py'
-      - 'schema/migrations/069_health_v41_original_book_81_user_weights_source_gated.sql'
-      - '.github/workflows/health_v41_all81_full_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

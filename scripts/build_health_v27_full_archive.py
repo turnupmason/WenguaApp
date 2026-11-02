@@ -10,7 +10,7 @@ from scripts.build_health_v21_archive import preserve
 from scripts.run_two_historical_health_v27 import evaluate,SEED
 ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v27/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v27/severity_fixed_template.json"
 MIG=ROOT/"schema/migrations/055_health_severity_five_not_encounter_v27.sql"
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 

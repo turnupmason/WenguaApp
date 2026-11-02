@@ -7,7 +7,7 @@ from scripts.run_two_historical_health_v28 import evaluate
 ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7"
 MIG=ROOT/"schema/migrations/056_health_medical_timing_tomb_v28.sql"
-TPL=ROOT/"data/knowledge/phrase_library/health_v28/severity_fixed_template.json"
+TPL=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v28/severity_fixed_template.json"
 def sha(f):return hashlib.sha256(Path(f).read_bytes()).hexdigest()
 def build(parent,output,sealed,ledger):
     parent,output,sealed,ledger=map(Path,(parent,output,sealed,ledger))

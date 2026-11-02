@@ -19,7 +19,7 @@ from .marriage_runtime import ELEMENTS, element_relation
 from .semantic_lookup import door_palace_relation
 from .health_severity_template import STEM_ELEMENTS
 
-TEMPLATE=Path(__file__).resolve().parents[2]/"data/knowledge/phrase_library/health_v25/severity_11_concise_template.json"
+TEMPLATE=Path(__file__).resolve().parents[2]/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v25/severity_11_concise_template.json"
 OPPOSITE={1:9,9:1,2:8,8:2,3:7,7:3,4:6,6:4}
 INNER={"yin":{9,2,7,6},"yang":{1,8,3,4}}
 

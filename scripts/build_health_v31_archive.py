@@ -6,7 +6,7 @@ from scripts.build_health_v21_archive import preserve
 from scripts.run_two_historical_health_v31 import evaluate
 ROOT=Path(__file__).resolve().parents[1]
 PARENT_SHA="713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b"
-TEMPLATE=ROOT/"data/knowledge/phrase_library/health_v31/severity_fixed_template.json"
+TEMPLATE=ROOT/"archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v31/severity_fixed_template.json"
 MIG=ROOT/"schema/migrations/059_health_patient_hour_direction_v31.sql"
 def sha(x):return hashlib.sha256(Path(x).read_bytes()).hexdigest()
 def build(parent,out,sealed,manifest):

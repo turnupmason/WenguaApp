@@ -30,7 +30,7 @@ from .semantic_lookup import door_palace_relation, nine_star_month_status
 from .phrase_pipeline import FACTOR_IDS
 
 ROOT = Path(__file__).resolve().parents[2]
-TEMPLATE = ROOT / "data/knowledge/phrase_library/health_v22/severity_template.json"
+TEMPLATE = ROOT / "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v22/severity_template.json"
 SOURCE_SHA = {
     "shenqi": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
     "kaiwu": "49809656b765f4ac858ce68187d911335dd416a2b809bfdfdbf3a3a26ef7303d",

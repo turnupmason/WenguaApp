@@ -23,8 +23,8 @@ from .phrase_pipeline import FACTOR_IDS
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data/knowledge/phrase_library/health_v20"
-SEVERITY = DATA / "severity_template.json"
-OTHER = DATA / "other_intent_templates.json"
+SEVERITY = ROOT / "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v20/severity_template.json"
+OTHER = ROOT / "archives/retired_health_templates_20261102/data/knowledge/phrase_library/health_v20/other_intent_templates.json"
 PROFILES = DATA / "actor_profiles.json"
 
 STAR_MEANINGS = {

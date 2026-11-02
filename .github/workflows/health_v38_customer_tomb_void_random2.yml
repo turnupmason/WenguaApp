@@ -1,15 +1,5 @@
 name: V3.8 Client Tomb Extinction Void and Two Seeded Book Cases
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/health_severity_v38.py'
-      - 'data/knowledge/phrase_library/health_v38/severity_customer_template.json'
-      - 'scripts/replay_health_v38_user_and_two_seeded_cases.py'
-      - 'tests/test_health_v38_user_noon_random2_customer.py'
-      - 'schema/migrations/066_health_customer_tomb_void_seal_random2_v38.sql'
-      - 'scripts/build_health_v38_full_archive.py'
-      - '.github/workflows/health_v38_customer_tomb_void_random2.yml'
   workflow_dispatch:
 permissions:
   contents: write
