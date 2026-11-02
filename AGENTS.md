@@ -3128,3 +3128,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 ### 2026-11-02 · 用户正式封存两主题与清退旧模板
 用户确认疾病轻重=V9.0计分＋V11模板，病位=V27并接受封存。当前唯一发布入口 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md` 与 `data/releases/health_frozen_20261102.json`，其内保存SHA256、正式版本、手机路由和资源白名单。23份旧模板/草稿/固定样例清出原位，移入只读历史归档并保留原SHA；生产无旧版fallback，历史测试仍可显式复现。Python/Swift封存版本守门、真正Xcode App包两个路由4次原生调用已加入验收。Important现役镜像/MANIFEST同步，V8基础与V9条件扩展的任何算法和200/81原源均未改。本轮真实CI完成后另追加结果；不称临床/签名真机/App Store验收。
+
+
+### 当前封存轻重回归实测 · run 41452844672
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码43b49a2d5ec6adc05af1bba84b4f904868d630f8。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41452844672_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
