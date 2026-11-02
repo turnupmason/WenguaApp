@@ -1785,3 +1785,7 @@ p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／�
 
 ### 当前封存轻重回归实测 · run 41502334812
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码879f8500be1626da4a2fbd5e1c49643bcbbcfa42。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41502334812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41503297213
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5be81c807d1d15a5d1a9485ed4d8b5176323cea3。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41503297213_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
