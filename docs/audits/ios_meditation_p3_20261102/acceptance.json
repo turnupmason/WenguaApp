@@ -1,0 +1,36 @@
+{
+  "source_sha": "f7c0ab453f3d295abf6db4cd1f946d93a09b4211",
+  "production_swift_warning_count": 0,
+  "actions": {
+    "41474512486": {
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41474512486",
+      "conclusion": "success"
+    },
+    "41474512713": {
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41474512713",
+      "conclusion": "success"
+    },
+    "41474512568": {
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41474512568",
+      "conclusion": "success"
+    },
+    "41474512484": {
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41474512484",
+      "conclusion": "success"
+    }
+  },
+  "xcode_verbatim_log": "docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md",
+  "local_full_python": {
+    "tests": 843,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 3,
+    "log": "python_unittest_full.log.gz",
+    "sha256": "a95d94189ce21a0a28df3595d9f82dde15563dacb76b4b623f5ce9e94a1f2c98"
+  },
+  "limitations": [
+    "No signed iPhone acceptance",
+    "No screenshot or XCUITest visual acceptance",
+    "Two preexisting missing manual-clock UI failures remain"
+  ]
+}

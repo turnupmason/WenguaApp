@@ -116,3 +116,9 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 奇门论疾首页只保留真实09结论的首句；“先从伤门落宫看”展示为“先看”，例如“本次因属伤损，先看右侧肋腰一带”。天禽伏吟、胃刑墓及检查核实等后续段落留在专业解盘；原始V27全文、人物、强度、分数和模板字节不变。新WenguaMeditationView以原生Canvas/Timeline绘制小和尚闭目敲木鱼、槌臂、声纹与诵念文字，无联网/外部素材或自动声音；尊重减少动态效果及后台暂停，倒计时和确认时刻起局/15天限制原守门不变。
 按截图及前轮实际编译日志清理未用companion/witnesses/secondary/sourceSites/ending，macro仍保留try验证仅不绑定无用值；map/filter闭包显式括号、iOS17双参数onChange，正式Target启用SWIFT_TREAT_WARNINGS_AS_ERRORS=YES，CI增加实际生产Swift零警告验收，不关闭警告。原警告、封存p2清单、全库日志无损保留；现行manifest明确p3，所有7份规则/模板资源SHA及Python/评分源码不变，Important双镜像/MANIFEST同步。
 本地专项8项通过；完整843 tests仅原2个手动真实时辰入口失败、0错误、3原skip，原日志 docs/audits/ios_meditation_p3_20261102/python_unittest_full.log.gz。实际Swift运行、macOS Xcode及bundle验收等待本提交Actions，不提前称通过。详见 docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md；病愈应期继续待后续研究，未开放。
+
+
+### 2026-11-02 · p3简明首页、静心动画及Swift零警告实测完成
+生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
+共享原生 #41474512713 success：首页普通/伤损/剧痛简明文案、真实两张V27输出、保留完整原reading、木鱼周期/停止状态实际Swift运行通过；主CI #41474512568（Python3.11/3.12）与独立iOS真实App Xcode/全部原生回归 #41474512484 success。本轮这四个Actions均无失败；全库843 tests原2个手动时辰入口失败与3个原skip另行原样保留，不称全库全绿。
+README、Important字节镜像/Git blob SHA及封存p3清单已同步。两个模板/7份规则资源/Python/评分源pin不变。没有进行真机签名、动画截图或整套XCUITest像素/按钮验收；动画为本地矢量与诵念文字，默认静音。Mac须按README pull后重新xcodegen generate并⌘R，将新增动画文件加入现有工程；历史V27结论直接使用新首页展示。病愈应期尚未开放。
