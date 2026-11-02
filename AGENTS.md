@@ -2960,3 +2960,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 本次 Swift/Python 严格全文比对**另两张独立随机**弟弟2026-11-10 01:00 -05（7段）、妻子2027-02-18 17:00 -05（7段）通过。不能拿这两张冒充四份本身也都做了跨语言逐字比对；四份都由原生Swift新真时辰生成。真正用户自然中文质量依然待审。
 - 此前本轮实际 #41361412371 Swift多行拼接、#41361706120 Python伤门地干覆写、#41362485436 Python/Switch新伤门优先分支不一致，均已定位修复且原 CI FAIL 文档保留；不能擦除。此次修复后已同步 Important/python、Important/swift 源镜像及 MANIFEST Git blob SHA。Python 3.11/3.12 **全库测试未在此run单列验收**，不误称全部通过。
 - 特别：旧81 TSV历史恶俗而与问病无关的格名“幼女奸淫”在源码TSV与审计中原样保留，**仅客户断词**显示其真实天加地为“壬加癸旧格”，绝不作为对女儿或健康的实指；全部未变动古籍来源。患者真实年命未提供不补造。
+
+### 2026-10-28 V10.1客户句去机械化与同真符号跨角色断词去重
+本次只改V10.1客户短句「全部因素推断后，此宫为」→「宫象」；Python/原生Swift在合断时按真实物理宫+实际符号去重，乙奇兼任医药/妻子患者或任何同一符号多角色，第二角色仍写其身份及同宫但不再重复该真符号力量和对天芮方向。不同独立符号同宫仍各查200格力量及方向。V8冻结评分、克病5x5、81原古文、天显逐宫半分最终取整、中五坤二寄干、真假空及特殊同宫吉助未动。
+模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup，Python+Swift+Important双镜像+MANIFEST Git blob SHA+正式Xcode资源校验同步。真正随机新seed 202610282259，五个首次技术有效时辰：父亲、本人、本人、女儿、朋友；未给出生年命不补，非长辈不取乾坤辅助。原生Swift与Python逐章节标题和中文全词严格比较成功，真实run https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} 的全文存档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。该交接只在上述步骤全部实际成功后自动追加；Xcode真macOS构建和原全库历史失败另行实际报告，不作医疗或真机有效性声称。
