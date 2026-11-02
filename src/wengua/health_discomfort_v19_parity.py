@@ -184,6 +184,13 @@ def compose(chart,actor,relationship,injury_context,sources=None):
          "此宫生病宫":"此宫生扶病宫"}[relation(p)]
     month=_monthly(chart["pillars"]["month"][-1])
     def source_strength(kind,symbol,p,stages=()):
+        # V24 only: both original 200 rows are real; choose higher tier
+        # for site interpretation, never rewrite V8 scoring or source cells.
+        if kind=="stem" and len(stages)>1:
+            values=[_power(kind,symbol,p,month,tables,[x]) for x in stages]
+            if not all(_tier(v)>0 for v in values):
+                raise ValueError("Unmapped actual stem 200 cell")
+            return max(values,key=_tier)
         return _power(kind,symbol,p,month,tables,stages)
     def stem_power(stem,p):
         star=next((s for s in p["heavenStars"] if s["carriedStem"]==stem),None)
@@ -423,14 +430,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         selected="脏腑泛象" if original=="脏（笼统）" else original
         facts=stem_branch_facts(stem,illness,stages)
         distinct={v for _,v in facts}
-        if _tier(power)>0:powerWords="力量"+power
-        elif len(distinct)==1:powerWords="两支同为"+facts[0][1]
-        else:powerWords="分支力量"+"、".join(branch+"为"+v for branch,v in facts)
-        effect=("这一干象较为突出" if
-                _tier(power)>=4 or all(_tier(v)>=4 for _,v in facts) else
-                "此干象偏弱" if all(_tier(v)<=2 for _,v in facts) else
-                "此干象仍须与病宫其他符号互证")
-        return selected+"，"+powerWords+"，"+effect
+        branchText="，"+"、".join(branch+"为"+v for branch,v in facts) if len(facts)>1 else ""
+        powerWords=(branchText+"，按较高一档取"+power if len(distinct)>1
+                    else "，力量"+power)
+        effect=("这一干象较突出" if _tier(power)>=4 else
+                "可作本宫病象旁证" if _tier(power)>=3 else "此象偏弱")
+        return selected+powerWords+"，"+effect
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
@@ -587,7 +592,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v23_integrated_palace_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v24_upper_branch_full_chart_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
