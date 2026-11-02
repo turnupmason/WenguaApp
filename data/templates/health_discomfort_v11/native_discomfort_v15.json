@@ -1,11 +1,11 @@
 {
-  "schema": "wengua_health_discomfort_native_v22_v16_evidence_restored_20261101",
+  "schema": "wengua_health_discomfort_native_v23_integrated_palace_20261101",
   "topic_id": "health.discomfort",
-  "status": "v22_internal_review_pending_user_approval",
+  "status": "v23_internal_review_pending_user_approval",
   "sections": [
     {
       "id": "01_location",
-      "title": "病宫与位置",
+      "title": "病宫完整解读",
       "text": "{location_full}"
     },
     {
@@ -35,12 +35,12 @@
     },
     {
       "id": "07_formation",
-      "title": "天盘地盘病象与81格局",
+      "title": "病宫原证归并",
       "text": "{formation_full}"
     },
     {
       "id": "08_constraints",
-      "title": "星门八神与墓刑空迫",
+      "title": "病宫条件归并",
       "text": "{danger_full}"
     },
     {
@@ -57,5 +57,6 @@
     "severe_pain",
     "surgery"
   ],
-  "injury_context_note": "伤门作为独立主用神限于已确认的伤损、骨肉、出血、剧痛或手术选项；但天芮病宫实际所临的八门（含伤门）及其门克宫、宫克门方向始终必须查，不能因未启用伤门独立主用神而省略门迫。门星神及十干力量是文化象意，不是实际疾病和医学疼痛强度诊断。"
+  "injury_context_note": "伤门作为独立主用神限于已确认的伤损、骨肉、出血、剧痛或手术选项；但天芮病宫实际所临的八门（含伤门）及其门克宫、宫克门方向始终必须查，不能因未启用伤门独立主用神而省略门迫。门星神及十干力量是文化象意，不是实际疾病和医学疼痛强度诊断。",
+  "unified_palace_rule": "首段完整合并天芮星、宫中八门、八神、十干独立源力、81格及墓刑空迫；旧07/08仍保留模板schema占位以审计，但运行时为空不额外展示。所有双支实宫十干力量逐支读原200格，不发明合成档；绝不在观众断词中显示括号；结论结合真实有效强干象、强门、强神与伏吟副证，只取相符部位，不作为医学确诊或轻重评分。"
 }
