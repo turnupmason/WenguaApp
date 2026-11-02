@@ -54,7 +54,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v23_integrated_palace_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101",
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -165,7 +165,27 @@ enum WenguaNativeDiscomfortV15 {
         func sourceStrength(_ kind:String,_ symbol:String,
                             _ p:WenguaNativePalace,
                             _ stages:[WenguaNativeStage]=[]) throws ->String {
-            try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
+            // V24 health.discomfort only. Two real branch stages are each
+            // looked up from the immutable original 200 cells, with the
+            // user-approved upper tier chosen for interpretation.
+            // DO NOT change the frozen V8 shared factor/scoring engine.
+            if kind=="stem" && stages.count>1 {
+                let levels=["极小","小","中等","大","极大"]
+                let powers=try stages.map { stage ->String in
+                    guard let tier=try WenguaVNextEngine.factor(
+                        kind:"stem",symbol:symbol,palace:p.id,
+                        month:month,catalog:powerCatalog,
+                        stages:[stage]).strength,
+                          levels.contains(tier) else {
+                        throw WenguaNativeReadingError.missingPhrases
+                    }
+                    return tier
+                }
+                return powers.max { left,right in
+                    levels.firstIndex(of:left)!<levels.firstIndex(of:right)!
+                }!
+            }
+            return try WenguaVNextEngine.factor(kind:kind,symbol:symbol,palace:p.id,
                     month:month,catalog:powerCatalog,stages:stages).strength ?? "待核"
         }
         func stemPower(_ stem:String,_ p:WenguaNativePalace) throws ->String {
@@ -648,9 +668,8 @@ enum WenguaNativeDiscomfortV15 {
         // Tianqin carrier each retain independent original source power.
         // This is disease *imagery* attached to this palace, not a new
         // anatomical location or a clinical claim about pain intensity.
-        // An ambiguous double-branch palace is NOT an empty power cell.
-        // Keep both genuine 200-grid rows instead of inventing a new
-        // strongest/weakest consolidation rule. Every listed branch is real.
+        // V24 original 200 source audit: two branch cells are both read,
+        // and the higher ORIGINAL tier is selected for this one topic only. Every listed branch is real.
         func stemBranchFacts(_ stem:String,_ p:WenguaNativePalace,
                              _ stages:[WenguaNativeStage]) throws ->[(String,String)] {
             guard !stages.isEmpty else {throw WenguaNativeReadingError.missingPhrases}
@@ -669,19 +688,14 @@ enum WenguaNativeDiscomfortV15 {
             let selected=original=="脏（笼统）" ? "脏腑泛象" : original
             let facts=try stemBranchFacts(stem,illness,stages)
             let distinct=Set(facts.map{$0.1})
-            let powerWords:String
-            if tier(power)>0 {
-                powerWords="力量"+power
-            } else if distinct.count==1,let value=facts.first?.1 {
-                powerWords="两支同为"+value
-            } else {
-                powerWords="分支力量"+facts.map{$0.0+"为"+$0.1}.joined(separator:"、")
-            }
-            let effect=(tier(power)>=4 || (facts.allSatisfy{tier($0.1)>=4})) ?
-                "这一干象较为突出" :
-                (facts.allSatisfy{tier($0.1)<=2} ? "此干象偏弱" :
-                 "此干象仍须与病宫其他符号互证")
-            return selected+"，"+powerWords+"，"+effect
+            let branchText=facts.count>1 ?
+                "，"+facts.map{$0.0+"为"+$0.1}.joined(separator:"、") : ""
+            let powerWords=distinct.count>1 ?
+                branchText+"，按较高一档取"+power :
+                "，力量"+power
+            let effect=tier(power)>=4 ? "这一干象较突出" :
+                       tier(power)>=3 ? "可作本宫病象旁证" : "此象偏弱"
+            return selected+powerWords+"，"+effect
         }
         // 81 grid is ordered sky + ground. Preserve the actual source name,
         // luck and gist; generic commercial idioms MUST NOT be turned into
@@ -779,6 +793,60 @@ enum WenguaNativeDiscomfortV15 {
         if !doorText.isEmpty {danger.append(doorText)}
         let dangerFull=danger.isEmpty ? "" :
             "本宫条件："+danger.joined(separator:"；")+"。"
+        // V24 complete board: independently audit actual physical stem
+        // identities and true tomb/striking, including unrelated palaces.
+        // This evidence is a traditional warning, never a proven damaged
+        // organ or proven cause. Do not fabricate a marker in mid-five.
+        var crossEvents:[(Int,Int,String,String,String)]=[]
+        for p in chart.palaces.filter({physical.contains($0.id) &&
+                                     $0.id != illness.id}).sorted(by:{$0.id<$1.id}) {
+            let realStems=Set(p.heavenStars.map{$0.carriedStem}+[p.earthStem])
+            for stem in realStems.sorted() {
+                let conditions=badSigns(stem,p)
+                if conditions.isEmpty {continue}
+                let sourceSites=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
+                    .joined(separator:"/"))
+                let rawSite=sourceSites.first ?? "身体相应部位"
+                let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
+                let power=try stemPower(stem,p)
+                guard tier(power)>0 else {throw WenguaNativeReadingError.missingPhrases}
+                let rel=palaceRelation(p)
+                let relationText:String
+                let priority:Int
+                switch rel {
+                case "此宫克病宫":
+                    priority=0
+                    relationText="此宫克病宫，传统上可能牵制主病位，但不能据此认定病因"
+                case "此宫生病宫":
+                    priority=1
+                    relationText="此宫生扶病宫，属于关联旁证，不能反推为病源"
+                case "病宫克此宫":
+                    priority=2
+                    relationText="病宫克此宫，可考虑此处受到病事牵连的象意"
+                case "病宫生此宫":
+                    priority=3
+                    relationText="病宫生此宫，可考虑向外耗泄的象意"
+                default:
+                    priority=4
+                    relationText="两宫比和，仅表示同类宫象"
+                }
+                let conditionText=conditions.contains("六仪击刑") &&
+                    conditions.contains("入墓") ?
+                    "刑墓并见，古法主受制、疼痛与潜伏难显的象意" :
+                    conditions.contains("六仪击刑") ?
+                    "击刑主牵扯、疼痛或损伤之象" :
+                    "入墓主闭藏、受压、不易显露之象"
+                let message="\(label(p))宫\(stem)所指\(site)，原力\(power)，实见\(conditions.joined(separator:"、"))，\(conditionText)；\(relationText)"
+                crossEvents.append((priority,p.id,stem,message,rel))
+            }
+        }
+        crossEvents.sort{
+            if $0.0 != $1.0 {return $0.0<$1.0}
+            if $0.1 != $1.1 {return $0.1<$1.1}
+            return $0.2<$1.2
+        }
+        let crossFull=crossEvents.isEmpty ? "" :
+            "全盘墓刑互证："+crossEvents.map{$0.3}.joined(separator:"；")+"。"
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
@@ -789,7 +857,7 @@ enum WenguaNativeDiscomfortV15 {
         // V23: A single disease-palace account contains star, door,
         // deity, distinct sky/earth, hosted Tianqin, formations and all
         // real tomb/striking/void/pressure. No second disconnected heading.
-        let locationFull=[originalLocation,starDoorGodFull,formsFull,dangerFull]
+        let locationFull=[originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull]
             .filter{ !$0.isEmpty }.joined(separator:"\n")
         let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" : "病位先看"
         // Do not invent anatomic laterality: 左肺 cannot be renamed 右侧内脏.
@@ -836,6 +904,9 @@ enum WenguaNativeDiscomfortV15 {
             bodyEvidence.append(tier(birdPower)>=3 ?
                 "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证" :
                 "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
+        }
+        if let first=crossEvents.first {
+            bodyEvidence.append("另有\(first.3)，只是跨宫需要核实的传统线索，不能据此断言对应器官已经受损")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
@@ -920,7 +991,7 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v23_integrated_palace_20261101",
+            version:"discomfort_v24_upper_branch_full_chart_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(
