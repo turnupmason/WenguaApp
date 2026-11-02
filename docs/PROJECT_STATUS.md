@@ -3176,3 +3176,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 重新完整复现835项的41失败/11错误，原日志和每项断言/代码行/来源/复现命令写入 docs/audits/health_cleanup_20261102/；当前839项仅剩2个手动真实时辰功能失败，0错误、3原有skip，50条基线问题已验证处理，未删测试方法或增加skip/xfail。所有迁移测试原文件按SHA无损保存，不拿旧V7规则要求改当前评分。
 真实缺陷：_quantize_one地盘本征审计误用循环末尾bottom，坤二戊地盘误记中五丁、空pairs崩溃；只改为ordinary_bottom，四张原时辰分数和完整中文SHA不变。两模板/200/81/人物/Swift与计分策略未改，原封存manifest归档，现行manifest明确engineering_p1。
 第二阶段360真实时辰/1368物理关系组只读复核及1080物理组合清单已留证；同宫不同力量和实际奖励归因可正确区别，弱天芮泄耗/特殊宿主名单仍待来源核定，不自造量化表或改分。第三阶段真机清单 docs/IOS_TRUE_DEVICE_ACCEPTANCE_PENDING_20261102.md 均标未执行：当前无实际iPhone连接或Apple签名，已询问用户设备条件。手动入口缺口仍真实失败保留，按原顺序后续处理。新Swift/Xcode/包内资源CI待本提交实际结果，不拿旧run代替。
+
+
+### 当前封存轻重回归实测 · run 41460320478
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41460320478_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
