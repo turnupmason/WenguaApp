@@ -3306,3 +3306,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 封存清单明确p7，旧p6清单及相关原测试／原生脚本带SHA归档before_polish_p7；仅六份展示源变化，两引擎、数值源码、7份资源／模板不变。旧首页150–200字与旧标签契约按用户本次授权迁移，原失败日志保留，无新增skip或删测试。Important镜像同步；全量回归与本提交实际Swift／Xcode结果完成后追加。
 
 本地全量857 tests，0 failures／0 errors／3既有skip；旧显示契约两条失败原日志已保留后迁移，无新增skip。实际Swift与完整Xcode等待本提交Actions，未预报通过。
+
+
+### 当前封存轻重回归实测 · run 41506159875
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码077a7b5e48a1394c62626b5c0d74c0f74bab3e89。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41506159875_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
