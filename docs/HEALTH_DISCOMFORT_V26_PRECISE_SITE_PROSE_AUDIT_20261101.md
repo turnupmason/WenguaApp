@@ -12,3 +12,6 @@ V26分别修复 Python `src/wengua/health_discomfort_v19_parity.py` 和离线 Sw
 ### V26 真机模拟构建后随机盘回归修复（2026-11-01）
 - SHA 3287450 的 macOS Xcode Action #41380423349：XcodeGen、实际iOS Simulator编译与离线资源检查通过，但其真实随机Swift盘发现“癸主脏（笼统）”通过跨宫最终结论漏出，导致禁括号 guard 崩溃；Xcode整体标FAIL，必须保留。
 - Python/Swift 客户本宫刑墓与最终跨宫摘要均规范化此原书笼统占位为“脏腑泛象”，不修改源资料；同时去掉时干和同符角色的内部“只作一次位置证据”“另宫只作病事参照”，不改变本宫主次、真实源200、81格与冻结V8轻重。真实新CI/Xcode/Swift parity 必须新SHA另验。
+
+### 2026-11-01 · V26 女儿固定案 parity 守门字面修复
+- #41381249170 中真实macOS Xcode Simulator编译、bundle、八张随机Swift真盘通过，但其独立Swift JSON导出在 `NativeDiscomfortV19Parity.swift` 对已知女儿案强制要求V23旧句“辰衰为大/巳帝旺为极大/地盘乙所指胆”而 abort，尚未实际完成独立Python↔Swift逐字比较。保留该失败，改守门为真实丁齿极大、乙胆极大、伤门实际力量与伏吟以及不泄露取档自语等事实，无改变算法或为了答案调V8。回归固定案是已揭晓案例，非秘密盲测。
