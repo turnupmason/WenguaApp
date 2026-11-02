@@ -3128,3 +3128,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 ### 2026-11-02 · V27 哥哥/妻子两张新随机病位与 Xcode 重验
 本轮保持 V8 冻结；病位仍 V27，修复 Python natural() 四类关系文案与现 Swift 不一致（旧失败 #41392726907 原盘回归），将 Swift smoke 旧词面警告改为现行医学核实说明的真实阻断。新增哥哥/妻子两张一次抽样持久化时辰，无年命、普通不适，不按结论筛盘。Xcode 工作流增加同两张盘的独立历法/完整九宫与中文逐字比对、全文归档；Important 双镜像与 Git blob SHA 同步。源规则/原著/冻结计分不改。全库实跑831 tests：41 failures、11 errors、3 skipped，清单保留 docs/V27_BROTHER_WIFE_XCODE_AUDIT_20261102.md；当前专项与 macOS 结果待本提交 Actions 实测，不称全库全绿。未新增原书章节/案例；非临床诊断或签名真机验收。
+
+## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
+- 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
+- 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
