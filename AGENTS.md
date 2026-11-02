@@ -3015,3 +3015,9 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 用户明确改变V23双支取力：十干×八实宫×月令五行400组，45组真实两支原格强度不同，按五档最高实际格选取用于 health.discomfort 专题；如丁落巽四辰衰大、巳帝旺极大取极大。两支原始档仍保留和可审计，不改变V8冻结疾病轻重计分和原200表；Python `_discomfort_power`、Swift原生 `sourceStrength`、真测试400/45。
 - 全盘八实宫遍历真实天盘携干/地盘干的真实源 `tombs` 与 `striking`，逐个说明干候选部位、真实原200力量、墓刑与对病宫真实五行方向。重实符不重复取力、伏吟和中宫不造假，病宫原星门神、天地双格及新跨宫分析同段合断，最后有主次。墓刑是传统象意提示，不等于实质医疗损伤或确认潜伏疾病、病因。细节 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
 - 当前 V24 `wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101` 待用户审稿，Important双镜像和MANIFEST SHA同步，老CI失败保留；真Python/Swift parity、macOS Xcode和资源检验按实际新SHA报告，未签名真机。
+
+
+### 2026-11-01 · V24 双支取高档和整盘墓刑真实验收
+- 用户本次定稿的新病位专题规则：原200格十干×8实宫×五行月令400组合，其中45组双支来源档不同，**每支源力真实计算、取高档**用于本专题象意；原格/次高档保留。不修改已冻结V8病情轻重/其`factor`共享评分。例丁巽辰衰大/巳帝旺极大取极大，己巽辰衰小/巳帝旺大取大。Swift源 `ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift` 本地`sourceStrength`，Python `src/wengua/health_discomfort_v19_parity.py` `_discomfort_power` 全独立运行，V24 schema=`wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101`，客户不要括号。
+- 全盘八实宫每个真实天盘携干/地盘干的`tombs`/六仪击刑逐符号核对，不把中宫伪造普通神门星；输出所指传统部位、实际高档源力、真刑墓、相对病宫的克/被克、生/被生/比和方向。若其它宫克病宫，可写成「古籍所视的牵连/底层线索」，不能说这就证明临床器官损坏、潜伏疾病或确切病因。入墓受压、击刑伤痛都作为传统象意重点审视而非医学结论。整段归于病宫完整解读，结尾最多点一个真实跨宫重点，保持聚焦。V8冻结、两书、81/255/200真实源、年命条件、失败记录不动。
+- **真实 macOS XcodeGen + unsigned iOS Simulator + App离线资源 / 本轮4个Python专项400/45核算 + 四份新Swift随机盘+三盘独立Python-Swift全文逐字通过**：[Actions #41377054256](https://github.com/turnupmason/WenguaApp/actions/runs/41377054256)，源码SHA `c4b8cb0060dc242da75531d89171316162cbe530`，原始四盘和全部成功记录 `docs/IOS_V80_XCODE_PASS_RUN_41377054256_ATTEMPT_1.md`，审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。另外3盘严格 parity 中包括已见女儿冻回归，不当秘密盲测；四新随机盘本身不是全部独立Python对照。历史失败 #41376069338、#41376216509、#41376794003 留档。未验证签名真机、App Store 或医学预测能力，用户手机装的旧版不会因提交GitHub而自动升级；模板待用户文案批准。
