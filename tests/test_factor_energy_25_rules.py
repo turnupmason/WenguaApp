@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Deterministic strength tables must cover every symbol without false certainty."""
 import unittest
 
@@ -78,7 +79,7 @@ class UniversalTwentyFive(unittest.TestCase):
         self.assertFalse(result["additional_evidence_vote"])
         self.assertIn("符号力量",format_duel_template(result))
         inverse=compare_role_strength(target,actor)
-        self.assertEqual((inverse["relation"],inverse["ability_to_control"]),("被克","不适用"))
+        self.assertEqual((inverse["relation"],inverse["ability_to_control"]),("被克",result["ability_to_control"]))
         blocked=inspect_strength_25("star","天心星","申",6,restrictions=("空亡待辨",))
         self.assertEqual(compare_role_strength(blocked,target)["ability_to_control"],"条件待核")
         same=inspect_strength_25("star","天心星","申",3)

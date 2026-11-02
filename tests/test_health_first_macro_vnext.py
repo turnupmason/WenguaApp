@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """First step after TRUE chart cast: 五不遇时 general adverse, 伏吟慢, 反吟快.
 
 Use unchanged original methods (V2.7 five-not-encounter and V2.5 full
@@ -44,10 +45,10 @@ class FirstStageMacroFacts(unittest.TestCase):
                       ("fast","slow","mixed","not_assessed_from_fuyin"))
         self.assertTrue(macro["tempo_is_not_auspiciousness"])
         self.assertEqual(out["sections"][0]["id"],"01_macro")
-        self.assertIn("五不遇时",out["sections"][0]["text"])
+        self.assertIn("不犯五不遇",out["sections"][0]["text"])
         self.assertIn("伏吟",out["sections"][0]["text"])
         self.assertIn("反吟",out["sections"][0]["text"])
-        self.assertTrue(out["reading_text"].startswith("起盘总纲"))
+        self.assertTrue(out["reading_text"].startswith("时局总纲"))
         # Latest signed-energy conclusion demotes old count-only text.
         self.assertNotIn("宫位五级吉凶净分合断",out["reading_text"])
         self.assertIn("candidate_five_grade_quantization",
@@ -77,7 +78,7 @@ class FirstStageMacroFacts(unittest.TestCase):
                      "consultation_context":"direct_proxy"})
         macro=out["first_stage_macro"]
         self.assertTrue(macro["five_not_encounter_triggered"])
-        self.assertIn("主诸事凶",out["sections"][0]["text"])
+        self.assertIn("五不遇时，问事多阻",out["sections"][0]["text"])
         evidence=out["evidence_ledger"]
         hits=[e for e in evidence["adverse"]
               if e["id"].startswith("macro:five_not_encounter:")]
@@ -97,9 +98,7 @@ class FirstStageMacroFacts(unittest.TestCase):
                 "star":"伏吟","door":"反吟","pace":"混合"},
             "tempo":"mixed"}
         txt=render_first_stage_macro(macro)
-        self.assertIn("伏吟主慢",txt)
-        self.assertIn("反吟主快",txt)
-        self.assertIn("缓急不自动等于吉凶",txt)
+        self.assertIn("伏吟、反吟并见，缓急须看用神",txt)
         for state,label,expected in (
             ("slow","伏吟","伏吟主慢"),
             ("fast","反吟","反吟主快")):

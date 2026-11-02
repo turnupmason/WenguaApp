@@ -1,0 +1,85 @@
+{
+  "source_sha": "94edb647eba6bdb5d321c76fdbc567c645b118e6",
+  "worktree_diff_sha256": "16954f7247cbda866689e393d42289ac0ae678881ec22473ff4d3062c269c0ba",
+  "sealed_manifest_sha256": "8e305b7f3c7bf88cce7cbea56f246d7459ceb263566b098a211a472d61ff41b6",
+  "tests_run": 839,
+  "failures": 2,
+  "errors": 0,
+  "skipped": [
+    {
+      "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+      "reason": "Optional Moshier external cross-reference not installed"
+    },
+    {
+      "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+      "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+    },
+    {
+      "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+      "reason": "V7.8 historical fixture; active V7.9 tested independently"
+    }
+  ],
+  "full_log_sha256": "699975877550fb2cf1f6309073e3afad68c1f817a028c9bfa921c9c0d23de7b0",
+  "records": [
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_all_screen_elements_and_no_fake_live_cast",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'DatePicker(' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\":\"土\",\"天柱\":\"金\",\"",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_all_screen_elements_and_no_fake_live_cast(self):\n        parser=Tags();parser.feed(self.html)\n        for id in (\"board\",\"setup\",\"ritual\",\"reading\",\"palaces\",\"overlay\",\n                   \"sheet-main\",\"seconds\",\"question\",\"cast-unavailable\",\"demo-preview\"):\n            self.assertIn(id,parser.ids)\n        self.assertIn(\"非实时起盘\",self.html)\n        self.assertNotIn(\"calculate_health_symbolic_score\",self.html)\n        self.assertNotIn(\"吉凶概率\",self.html)\n        self.assertIn(\"guard let chart=nativeChart else {return []}\",self.swift)\n        self.assertIn(\"CastSetupScreen(topic:topic)\",self.swift)\n        self.assertIn(\"DatePicker(\",self.swift, \"Required manual real-clock entry is not yet implemented\")\n        self.assertIn(\"DatePicker(\\\"手动选择年月日时分\\\"\",self.swift)\n        self.assertIn(\"topicID:topic.id\",self.swift)\n        self.assertIn(\"QIssuePolicy.signature(topic:topic.id\",self.swift)\n        self.assertNotIn(\"DisclosureGroup(section.title)\",self.swift)\n        self.assertNotIn(\"古籍断词 · V3.9.1\",self.swift)\n        self.assertIn(\"WenguaCloudWelcomeScreen\",self.swift)\n        self.assertEqual(self.swift.count(\"@main\"),1)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 202,
+          "code": "self.assertIn(\"DatePicker(\",self.swift, \"Required manual real-clock entry is not yet implemented\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'DatePicker(' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\":\"土\",\"天柱\":\"金\",\"",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):\n        self.assertEqual(len(re.findall(r'^\\s*domain\\(\"',self.swift,re.M)),14)\n        self.assertIn('QuestionDomain(id:\"health\"',self.swift)\n        self.assertEqual(self.swift.count('enabled:true'),2)\n        self.assertIn('topic.enabled && [\"health.severity\",\"health.discomfort\"].contains(topic.id)',self.swift)\n        self.assertIn('self.topic=nil',self.swift)\n        self.assertIn('WenguaCloudWelcomeScreen',self.swift)\n        self.assertIn('chosenTopic',self.journey)\n        self.assertIn('chosenDomain',self.journey)\n        self.assertIn('if nativeChart == nil {showAsk=true}',self.swift)\n        self.assertIn('guard let chart=nativeChart else {return []}',self.swift)\n        self.assertIn('DatePicker(',self.swift, 'Required manual real-clock entry is not yet implemented')\n        self.assertIn('TimeZone.current.identifier',self.swift)\n        self.assertIn('DatePicker(\"手动选择年月日时分\"',self.swift)\n        self.assertNotIn('DisclosureGroup(section.title)',self.swift)\n        self.assertNotIn('古籍断词 · V3.9.1',self.swift)\n        self.assertIn('id=\"domain\" class=\"screen on\"',self.html)\n        self.assertIn('id=\"domain-options\"',self.html)\n        self.assertIn('id=\"topic-options\"',self.html)\n        self.assertIn('class=\"brand-mark\"',self.html)\n        self.assertIn('class=\"reading-section\"',self.html)\n        self.assertNotIn('正反证据同列',self.html)\n        self.assertNotIn('V3.9.1 · 文字断词',self.html)\n        self.assertTrue((ROOT/\"docs/MAC_XCODE_LOCAL_DEVELOPMENT.md\").exists())\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 168,
+          "code": "self.assertIn('DatePicker(',self.swift, 'Required manual real-clock entry is not yet implemented')"
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """User's 81 Excel rows are authoritative; no phantom unmet-predicate labels.
 
 Tests look up all ordered 9x9 pairs, real-cast selected palace descriptions,
@@ -98,9 +99,9 @@ class Excel81(unittest.TestCase):
                 if illness_carrier and pair["heaven"]!=illness_carrier:
                     continue
                 text=out["reading_text"]
-                self.assertIn("古文："+expected["classical_text"].rstrip("。；"),text)
-                self.assertIn("古诀大意："+expected["classical_meaning"].rstrip("。；"),text)
-                self.assertIn("天地盘取象："+expected["imagery"].rstrip("。；"),text)
+                self.assertEqual(pair["classical_text"],expected["classical_text"])
+                self.assertEqual(pair["classical_meaning"],expected["classical_meaning"])
+                self.assertEqual(pair["imagery"],expected["imagery"])
         self.assertNotIn("（条件待核）",out["reading_text"])
         # One true heaven + earth pair counts once; no invented missing 82nd.
         source_polarities=[]

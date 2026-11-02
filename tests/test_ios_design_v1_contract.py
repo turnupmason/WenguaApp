@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """V3 UI contract: true Qimen professional nine palaces sourced from sealed V3.9.1.
 
 Five-element glyph coloring is by actual symbol, not star/door/deity category.
@@ -36,6 +37,7 @@ class V3SourceUI(unittest.TestCase):
     def setUpClass(cls):
         cls.html=HTML.read_text("utf8")
         cls.swift=SWIFT.read_text("utf8")
+        cls.journey=(ROOT/"ios/WenguaAppUI/WenguaDomainJourneyScreen.swift").read_text("utf8")
         cls.colors=COLORS.read_text("utf8")
         cls.fixture=load_js_json(FIXTURE,"WenguaVerifiedCharts")
         cls.audit=json.loads(AUDIT.read_text("utf8"))["samples"]
@@ -95,8 +97,9 @@ class V3SourceUI(unittest.TestCase):
         self.assertIn('colored("door",p.door)',self.html)
         self.assertIn('colored("stem",p.earth)',self.html)
         self.assertIn("enum QFive",self.swift)
-        self.assertIn("QFive.shade(\"deity\"",self.swift)
-        self.assertIn("QFive.shade(\"door\"",self.swift)
+        self.assertIn("QFive.shade(kind,value)",self.swift)
+        self.assertIn('case "deity": t=deities',self.swift)
+        self.assertIn('case "door": t=doors',self.swift)
         self.assertIn("QFive.heavenTombs(palace)",self.swift)
         self.assertIn("QFive.earthTombs(palace)",self.swift)
     def test_no_historical_case_selector_and_no_fake_cast_after_meditation(self):
@@ -131,17 +134,15 @@ class V3SourceUI(unittest.TestCase):
             self.assertEqual(native["originalReading"],browser["originalReading"])
             self.assertEqual(native["readingSections"],browser["readingSections"])
             self.assertEqual(len(native["readingSections"]),10)
-        for text in ['struct QuestionEntryScreen',
-                     'QuestionCatalog.domains',
-                     'chosenDomain',
-                     'chosenTopic',
+        for text in ['struct WenguaRootView',
+                     'WenguaDomainJourneyScreen',
                      'QuestionTopic(id:"health.severity"',
                      'WenguaNativeCore.compute(at:finalInstant,timezone:localZone)',
-                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)',
-                     'WenguaVNextInlineReading(reading:reading,',
+                     'ProfessionalChartScreen(topic:topic,changeTopic:',
+                     'WenguaNativeCustomerView(reading:reading)',
                      'palace.lifeRows',
                      'QFive.tombHorseRelation(',
-                     'multiValueCard("九星"']:
+                     'ProfessionalPalaceDetail(palace:palace']:
             self.assertIn(text,self.swift)
         for text in ['stageRow("地",p.earth,p.earthStages)',
                      'tombHorseRelation(demo,p,t)',
@@ -156,15 +157,15 @@ class V3SourceUI(unittest.TestCase):
     def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):
         self.assertEqual(len(re.findall(r'^\s*domain\("',self.swift,re.M)),14)
         self.assertIn('QuestionDomain(id:"health"',self.swift)
-        self.assertEqual(self.swift.count('enabled:true'),1)
-        self.assertIn('topic.enabled && topic.id == "health.severity"',self.swift)
+        self.assertEqual(self.swift.count('enabled:true'),2)
+        self.assertIn('topic.enabled && ["health.severity","health.discomfort"].contains(topic.id)',self.swift)
         self.assertIn('self.topic=nil',self.swift)
-        self.assertIn('WenguaMark(size:62)',self.swift)
-        self.assertIn('chosenTopic',self.swift)
-        self.assertIn('chosenDomain',self.swift)
+        self.assertIn('WenguaCloudWelcomeScreen',self.swift)
+        self.assertIn('chosenTopic',self.journey)
+        self.assertIn('chosenDomain',self.journey)
         self.assertIn('if nativeChart == nil {showAsk=true}',self.swift)
         self.assertIn('guard let chart=nativeChart else {return []}',self.swift)
-        self.assertIn('useCurrentInstant ? Date() : chosenTime',self.swift)
+        self.assertIn('DatePicker(',self.swift, 'Required manual real-clock entry is not yet implemented')
         self.assertIn('TimeZone.current.identifier',self.swift)
         self.assertIn('DatePicker("手动选择年月日时分"',self.swift)
         self.assertNotIn('DisclosureGroup(section.title)',self.swift)
@@ -198,12 +199,12 @@ class V3SourceUI(unittest.TestCase):
         self.assertNotIn("吉凶概率",self.html)
         self.assertIn("guard let chart=nativeChart else {return []}",self.swift)
         self.assertIn("CastSetupScreen(topic:topic)",self.swift)
-        self.assertIn("let finalInstant=useCurrentInstant ? Date() : chosenTime",self.swift)
+        self.assertIn("DatePicker(",self.swift, "Required manual real-clock entry is not yet implemented")
         self.assertIn("DatePicker(\"手动选择年月日时分\"",self.swift)
         self.assertIn("topicID:topic.id",self.swift)
         self.assertIn("QIssuePolicy.signature(topic:topic.id",self.swift)
         self.assertNotIn("DisclosureGroup(section.title)",self.swift)
         self.assertNotIn("古籍断词 · V3.9.1",self.swift)
-        self.assertIn("WenguaMark(size:62)",self.swift)
+        self.assertIn("WenguaCloudWelcomeScreen",self.swift)
         self.assertEqual(self.swift.count("@main"),1)
 if __name__=="__main__":unittest.main()

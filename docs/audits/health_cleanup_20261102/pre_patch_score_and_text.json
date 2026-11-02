@@ -1,0 +1,1614 @@
+[
+  {
+    "iso": "2025-07-18T03:00:00-04:00",
+    "reading_sha256": "f2d0bfd528e932a2a9c79abd7046515be9b3dd1dc2f0a34f27c09ecea19c4705",
+    "summary": {
+      "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+      "status": "calculated",
+      "raw_known_sum": -1,
+      "post_void_known_sum": -2,
+      "effective_palace_scores": {
+        "2": -2,
+        "6": 5,
+        "3": -5
+      },
+      "raw_grade_if_all_known": "小凶",
+      "provisional_known_grade": "小凶",
+      "provisional_is_not_final": false,
+      "pending_palaces": [],
+      "duplicate_physical_roles": [
+        {
+          "role": "patient",
+          "palace": 2,
+          "already_counted_role": "illness"
+        },
+        {
+          "role": "hour",
+          "palace": 6,
+          "already_counted_role": "doctor"
+        },
+        {
+          "role": "chief",
+          "palace": 6,
+          "already_counted_role": "doctor"
+        }
+      ],
+      "unique_palace_count": 3,
+      "score": 5,
+      "grade": "极大吉",
+      "needs_final_band_rule": false,
+      "user_extreme_cutoff": 5,
+      "sum_after_each_palace_void_adjustment": true,
+      "not_a_medical_assessment": true,
+      "physical_palace_v75_audit": {
+        "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+        "status": "calculated",
+        "raw_known_sum": -1,
+        "post_void_known_sum": -2,
+        "effective_palace_scores": {
+          "2": -2,
+          "6": 5,
+          "3": -5
+        },
+        "raw_grade_if_all_known": "小凶",
+        "provisional_known_grade": "小凶",
+        "provisional_is_not_final": false,
+        "pending_palaces": [],
+        "duplicate_physical_roles": [
+          {
+            "role": "patient",
+            "palace": 2,
+            "already_counted_role": "illness"
+          },
+          {
+            "role": "hour",
+            "palace": 6,
+            "already_counted_role": "doctor"
+          },
+          {
+            "role": "chief",
+            "palace": 6,
+            "already_counted_role": "doctor"
+          }
+        ],
+        "unique_palace_count": 3,
+        "score": -2,
+        "grade": "小凶",
+        "needs_final_band_rule": false,
+        "user_extreme_cutoff": 5,
+        "sum_after_each_palace_void_adjustment": true,
+        "not_a_medical_assessment": true
+      },
+      "effective_role_scores": {
+        "illness": -2,
+        "doctor": 5,
+        "medicine": -5,
+        "patient": -2,
+        "hour": 5,
+        "chief": 5
+      },
+      "role_count": 6,
+      "pending_roles": [],
+      "v76_role_score_sum_if_repeated": 6,
+      "pre_relationship_bonus_score": -2,
+      "control_bonus_palaces": {
+        "3": [
+          "medicine"
+        ]
+      },
+      "control_bonus_points": {
+        "3": 3
+      },
+      "signed_palace_grades_never_actor_strength": true,
+      "actual_role_strengths": {
+        "illness": {
+          "palace": 2,
+          "kind": "star",
+          "symbol": "天芮星",
+          "tier": "大",
+          "relation": "病宫本体",
+          "control_cell": null,
+          "control_status": null
+        },
+        "doctor": {
+          "palace": 6,
+          "kind": "star",
+          "symbol": "天心星",
+          "tier": "极小",
+          "relation": "被生",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "medicine": {
+          "palace": 3,
+          "kind": "stem",
+          "symbol": "乙",
+          "tier": "大",
+          "relation": "克",
+          "control_cell": "有效克制",
+          "control_status": "matched"
+        },
+        "patient": {
+          "palace": 2,
+          "kind": "stem",
+          "symbol": "戊",
+          "tier": "中等",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "hour": {
+          "palace": 6,
+          "kind": "stem",
+          "symbol": "甲",
+          "tier": null,
+          "relation": "被生",
+          "control_cell": null,
+          "control_status": "factor_power_pending"
+        },
+        "chief": {
+          "palace": 6,
+          "kind": "deity",
+          "symbol": "值符",
+          "tier": "中等",
+          "relation": "被生",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        }
+      },
+      "control_power_provenance": "selected_primary_200x200_5x5_source_never_abs_palace_score",
+      "non_control_pair_policy": "all_selected_role_and_target_200_strengths_independent_no_invented_matrix",
+      "drain_bonus_palaces": {},
+      "control_bonus_score": 3,
+      "weak_illness_drain_bonus_score": 0,
+      "auspice_bonus_details": {
+        "2:同宫吉助": {
+          "palace": 2,
+          "symbol": "天盘丁奇",
+          "points": 3,
+          "before_void": 3,
+          "note": "坤二宫得天盘丁奇同宫扶助。",
+          "cohost": true
+        },
+        "6:同宫吉助": {
+          "palace": 6,
+          "symbol": "值符、天心星",
+          "points": 5,
+          "before_void": 5,
+          "note": "乾六宫得值符与天心星同宫扶助。",
+          "cohost": true
+        }
+      },
+      "auspice_cohost_audit": {
+        "2": {
+          "hosts": [
+            {
+              "role": "illness",
+              "kind": "star",
+              "symbol": "天芮星"
+            },
+            {
+              "role": "patient",
+              "kind": "stem",
+              "symbol": "戊"
+            }
+          ],
+          "chief": 0,
+          "stem_family": 3,
+          "tianxin": 0,
+          "stem_candidates": [
+            {
+              "points": 3,
+              "stem": "丁奇",
+              "plane": "天盘"
+            }
+          ],
+          "ground_stages": [
+            "衰",
+            "病"
+          ],
+          "ground_restricted": false,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": false,
+          "pre_void": 3,
+          "after_void": 3,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        },
+        "6": {
+          "hosts": [
+            {
+              "role": "hour",
+              "kind": "stem",
+              "symbol": "甲"
+            }
+          ],
+          "chief": 3,
+          "stem_family": 0,
+          "tianxin": 2,
+          "stem_candidates": [],
+          "ground_stages": [
+            "衰",
+            "帝旺"
+          ],
+          "ground_restricted": false,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": false,
+          "pre_void": 5,
+          "after_void": 5,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        }
+      },
+      "auspice_bonus_notes": [
+        "坤二宫得天盘丁奇同宫扶助。",
+        "乾六宫得值符与天心星同宫扶助。"
+      ],
+      "auspice_bonus_score": 8,
+      "auspice_applied_extra_score": 8,
+      "auspice_merged_into_physical_palace": false,
+      "relationship_bonus_score": 11,
+      "historical_role_stacked_bonus_score": 11,
+      "unique_palace_score_details": {
+        "2": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "calculated",
+          "components": {
+            "star": -4,
+            "door": -5,
+            "deity": 5,
+            "pattern": 2
+          },
+          "component_instances": {
+            "star": [
+              -4
+            ],
+            "door": [
+              -5
+            ],
+            "deity": [
+              5
+            ],
+            "pattern": [
+              -3,
+              5
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -2,
+          "raw_sum": -2,
+          "score_before_void": -2,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -2,
+          "grade": "小凶",
+          "raw_sum_exceeds_five": false,
+          "saturated_from_raw": null,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "戊": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "戊": 0
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "6": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "saturated_five_grade",
+          "components": {
+            "star": 1,
+            "door": 4,
+            "deity": 3,
+            "pattern": 0
+          },
+          "component_instances": {
+            "star": [
+              1
+            ],
+            "door": [
+              4
+            ],
+            "deity": [
+              3
+            ],
+            "pattern": [
+              0
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": 8,
+          "raw_sum": 8,
+          "score_before_void": 5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": 5,
+          "grade": "极大吉",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": 8,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "甲": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "甲": 0
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "3": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "saturated_five_grade",
+          "components": {
+            "star": 3,
+            "door": -2,
+            "deity": -3,
+            "pattern": -5
+          },
+          "component_instances": {
+            "star": [
+              3
+            ],
+            "door": [
+              -2
+            ],
+            "deity": [
+              -3
+            ],
+            "pattern": [
+              -5
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -7,
+          "raw_sum": -7,
+          "score_before_void": -5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -5,
+          "grade": "极大凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -7,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "乙": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "乙": 4
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        }
+      },
+      "repeated_signifier_merged": true,
+      "five_not_global_penalty": 6,
+      "tianxian_global_final_bonus": 4,
+      "tianxian_applied_once_after_all_palaces": false,
+      "tianxian_total_floor_once": true,
+      "tianxian_selected_unique_palaces": 3,
+      "five_not_penalty_per_palace": 2,
+      "five_not_penalized_unique_palace_count": 3,
+      "five_not_per_distinct_palace": true,
+      "five_not_per_selected_role_occurrence": false,
+      "five_not_penalized_role_count": 6,
+      "historical_overlay_total_if_stacked": 5,
+      "relationship_overlays_audit_only": false,
+      "final_scoring_policy": "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
+      "raw_final_before_saturation": 7,
+      "five_not_deducted_once_at_end": false,
+      "weak_illness_drain_eligible": false
+    }
+  },
+  {
+    "iso": "2022-07-19T11:00:00-04:00",
+    "reading_sha256": "9b28a5f1883c8be332e4a3010c7fccf3236b6695c01453daeccd207f71b7eba5",
+    "summary": {
+      "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+      "status": "saturated_five_grade",
+      "raw_known_sum": 8,
+      "post_void_known_sum": 6,
+      "effective_palace_scores": {
+        "4": 3,
+        "2": 5,
+        "1": -2
+      },
+      "raw_grade_if_all_known": "极大吉",
+      "provisional_known_grade": "极大吉",
+      "provisional_is_not_final": false,
+      "pending_palaces": [],
+      "duplicate_physical_roles": [
+        {
+          "role": "patient",
+          "palace": 2,
+          "already_counted_role": "doctor"
+        },
+        {
+          "role": "hour",
+          "palace": 4,
+          "already_counted_role": "illness"
+        },
+        {
+          "role": "chief",
+          "palace": 2,
+          "already_counted_role": "doctor"
+        }
+      ],
+      "unique_palace_count": 3,
+      "score": 5,
+      "grade": "极大吉",
+      "needs_final_band_rule": false,
+      "user_extreme_cutoff": 5,
+      "sum_after_each_palace_void_adjustment": true,
+      "not_a_medical_assessment": true,
+      "physical_palace_v75_audit": {
+        "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+        "status": "saturated_five_grade",
+        "raw_known_sum": 8,
+        "post_void_known_sum": 6,
+        "effective_palace_scores": {
+          "4": 3,
+          "2": 5,
+          "1": -2
+        },
+        "raw_grade_if_all_known": "极大吉",
+        "provisional_known_grade": "极大吉",
+        "provisional_is_not_final": false,
+        "pending_palaces": [],
+        "duplicate_physical_roles": [
+          {
+            "role": "patient",
+            "palace": 2,
+            "already_counted_role": "doctor"
+          },
+          {
+            "role": "hour",
+            "palace": 4,
+            "already_counted_role": "illness"
+          },
+          {
+            "role": "chief",
+            "palace": 2,
+            "already_counted_role": "doctor"
+          }
+        ],
+        "unique_palace_count": 3,
+        "score": 5,
+        "grade": "极大吉",
+        "needs_final_band_rule": false,
+        "user_extreme_cutoff": 5,
+        "sum_after_each_palace_void_adjustment": true,
+        "not_a_medical_assessment": true
+      },
+      "effective_role_scores": {
+        "illness": 3,
+        "doctor": 5,
+        "medicine": -2,
+        "patient": 5,
+        "hour": 3,
+        "chief": 5
+      },
+      "role_count": 6,
+      "pending_roles": [],
+      "v76_role_score_sum_if_repeated": 19,
+      "pre_relationship_bonus_score": 5,
+      "control_bonus_palaces": {},
+      "control_bonus_points": {},
+      "signed_palace_grades_never_actor_strength": true,
+      "actual_role_strengths": {
+        "illness": {
+          "palace": 4,
+          "kind": "star",
+          "symbol": "天芮星",
+          "tier": "小",
+          "relation": "病宫本体",
+          "control_cell": null,
+          "control_status": null
+        },
+        "doctor": {
+          "palace": 2,
+          "kind": "star",
+          "symbol": "天心星",
+          "tier": "小",
+          "relation": "被克",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "medicine": {
+          "palace": 1,
+          "kind": "stem",
+          "symbol": "乙",
+          "tier": "小",
+          "relation": "生",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "patient": {
+          "palace": 2,
+          "kind": "stem",
+          "symbol": "癸",
+          "tier": "极小",
+          "relation": "被克",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "hour": {
+          "palace": 4,
+          "kind": "stem",
+          "symbol": "戊",
+          "tier": "极大",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "chief": {
+          "palace": 2,
+          "kind": "deity",
+          "symbol": "值符",
+          "tier": "大",
+          "relation": "被克",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        }
+      },
+      "control_power_provenance": "selected_primary_200x200_5x5_source_never_abs_palace_score",
+      "non_control_pair_policy": "all_selected_role_and_target_200_strengths_independent_no_invented_matrix",
+      "drain_bonus_palaces": {},
+      "control_bonus_score": 0,
+      "weak_illness_drain_bonus_score": 0,
+      "auspice_bonus_details": {
+        "2:同宫吉助": {
+          "palace": 2,
+          "symbol": "值符、天心星",
+          "points": 6,
+          "before_void": 6,
+          "note": "坤二宫得值符与天心星同宫扶助。",
+          "cohost": true
+        }
+      },
+      "auspice_cohost_audit": {
+        "2": {
+          "hosts": [
+            {
+              "role": "patient",
+              "kind": "stem",
+              "symbol": "癸"
+            }
+          ],
+          "chief": 3,
+          "stem_family": 0,
+          "tianxin": 3,
+          "stem_candidates": [],
+          "ground_stages": [
+            "衰",
+            "病"
+          ],
+          "ground_restricted": false,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": false,
+          "pre_void": 6,
+          "after_void": 6,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        }
+      },
+      "auspice_bonus_notes": [
+        "坤二宫得值符与天心星同宫扶助。"
+      ],
+      "auspice_bonus_score": 6,
+      "auspice_applied_extra_score": 6,
+      "auspice_merged_into_physical_palace": false,
+      "relationship_bonus_score": 6,
+      "historical_role_stacked_bonus_score": 6,
+      "unique_palace_score_details": {
+        "4": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "calculated",
+          "components": {
+            "star": -2,
+            "door": -3,
+            "deity": 3,
+            "pattern": 5
+          },
+          "component_instances": {
+            "star": [
+              -2
+            ],
+            "door": [
+              -3
+            ],
+            "deity": [
+              3
+            ],
+            "pattern": [
+              5
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": 3,
+          "raw_sum": 3,
+          "score_before_void": 3,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": 3,
+          "grade": "中等吉",
+          "raw_sum_exceeds_five": false,
+          "saturated_from_raw": null,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "戊": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "戊": 0
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "2": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "saturated_five_grade",
+          "components": {
+            "star": 2,
+            "door": 5,
+            "deity": 4,
+            "pattern": 0
+          },
+          "component_instances": {
+            "star": [
+              2
+            ],
+            "door": [
+              5
+            ],
+            "deity": [
+              4
+            ],
+            "pattern": [
+              2,
+              -2
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": 11,
+          "raw_sum": 11,
+          "score_before_void": 5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": 5,
+          "grade": "极大吉",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": 11,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "癸": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "癸": 0
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "1": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "void_signed_three_shift",
+          "components": {
+            "star": 4,
+            "door": -3,
+            "deity": -4,
+            "pattern": -3
+          },
+          "component_instances": {
+            "star": [
+              4
+            ],
+            "door": [
+              -3
+            ],
+            "deity": [
+              -4
+            ],
+            "pattern": [
+              -3
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -6,
+          "raw_sum": -6,
+          "score_before_void": -5,
+          "void_adjustment": 3,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "true_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": false,
+          "timing_rules_deferred": true,
+          "score": -2,
+          "grade": "小凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -6,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "乙": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "乙": 2
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        }
+      },
+      "repeated_signifier_merged": true,
+      "five_not_global_penalty": 0,
+      "tianxian_global_final_bonus": 0,
+      "tianxian_applied_once_after_all_palaces": false,
+      "tianxian_total_floor_once": true,
+      "tianxian_selected_unique_palaces": 3,
+      "five_not_penalty_per_palace": 0,
+      "five_not_penalized_unique_palace_count": 0,
+      "five_not_per_distinct_palace": true,
+      "five_not_per_selected_role_occurrence": false,
+      "five_not_penalized_role_count": 0,
+      "historical_overlay_total_if_stacked": 25,
+      "relationship_overlays_audit_only": false,
+      "final_scoring_policy": "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
+      "raw_final_before_saturation": 12,
+      "five_not_deducted_once_at_end": false,
+      "weak_illness_drain_eligible": false
+    }
+  },
+  {
+    "iso": "2026-11-19T11:00:00-05:00",
+    "reading_sha256": "260a5d8dd4f393fa142d2172252a3866a6913a97effab62f03134679b39e0672",
+    "summary": {
+      "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+      "status": "saturated_five_grade",
+      "raw_known_sum": -33,
+      "post_void_known_sum": -20,
+      "effective_palace_scores": {
+        "8": -5,
+        "4": -3,
+        "3": -2,
+        "1": -5,
+        "2": -5
+      },
+      "raw_grade_if_all_known": "极大凶",
+      "provisional_known_grade": "极大凶",
+      "provisional_is_not_final": false,
+      "pending_palaces": [],
+      "duplicate_physical_roles": [
+        {
+          "role": "chief",
+          "palace": 8,
+          "already_counted_role": "illness"
+        }
+      ],
+      "unique_palace_count": 5,
+      "score": -5,
+      "grade": "极大凶",
+      "needs_final_band_rule": false,
+      "user_extreme_cutoff": 5,
+      "sum_after_each_palace_void_adjustment": true,
+      "not_a_medical_assessment": true,
+      "physical_palace_v75_audit": {
+        "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+        "status": "saturated_five_grade",
+        "raw_known_sum": -33,
+        "post_void_known_sum": -20,
+        "effective_palace_scores": {
+          "8": -5,
+          "4": -3,
+          "3": -2,
+          "1": -5,
+          "2": -5
+        },
+        "raw_grade_if_all_known": "极大凶",
+        "provisional_known_grade": "极大凶",
+        "provisional_is_not_final": false,
+        "pending_palaces": [],
+        "duplicate_physical_roles": [
+          {
+            "role": "chief",
+            "palace": 8,
+            "already_counted_role": "illness"
+          }
+        ],
+        "unique_palace_count": 5,
+        "score": -5,
+        "grade": "极大凶",
+        "needs_final_band_rule": false,
+        "user_extreme_cutoff": 5,
+        "sum_after_each_palace_void_adjustment": true,
+        "not_a_medical_assessment": true
+      },
+      "effective_role_scores": {
+        "illness": -5,
+        "doctor": -3,
+        "medicine": -2,
+        "patient": -5,
+        "hour": -5,
+        "chief": -5
+      },
+      "role_count": 6,
+      "pending_roles": [],
+      "v76_role_score_sum_if_repeated": -25,
+      "pre_relationship_bonus_score": -5,
+      "control_bonus_palaces": {},
+      "control_bonus_points": {},
+      "signed_palace_grades_never_actor_strength": true,
+      "actual_role_strengths": {
+        "illness": {
+          "palace": 8,
+          "kind": "star",
+          "symbol": "天芮星",
+          "tier": "中等",
+          "relation": "病宫本体",
+          "control_cell": null,
+          "control_status": null
+        },
+        "doctor": {
+          "palace": 4,
+          "kind": "star",
+          "symbol": "天心星",
+          "tier": "大",
+          "relation": "克",
+          "control_cell": null,
+          "control_status": "void_type_pending"
+        },
+        "medicine": {
+          "palace": 3,
+          "kind": "stem",
+          "symbol": "乙",
+          "tier": "极大",
+          "relation": "克",
+          "control_cell": null,
+          "control_status": "void_type_pending"
+        },
+        "patient": {
+          "palace": 1,
+          "kind": "stem",
+          "symbol": "丁",
+          "tier": "极小",
+          "relation": "被克",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "hour": {
+          "palace": 2,
+          "kind": "stem",
+          "symbol": "丙",
+          "tier": "极小",
+          "relation": "比和",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "chief": {
+          "palace": 8,
+          "kind": "deity",
+          "symbol": "值符",
+          "tier": "大",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        }
+      },
+      "control_power_provenance": "selected_primary_200x200_5x5_source_never_abs_palace_score",
+      "non_control_pair_policy": "all_selected_role_and_target_200_strengths_independent_no_invented_matrix",
+      "drain_bonus_palaces": {},
+      "control_bonus_score": 0,
+      "weak_illness_drain_bonus_score": 0,
+      "auspice_bonus_details": {
+        "8:同宫吉助": {
+          "palace": 8,
+          "symbol": "值符",
+          "points": 3,
+          "before_void": 3,
+          "note": "艮八宫得值符同宫扶助。",
+          "cohost": true
+        }
+      },
+      "auspice_cohost_audit": {
+        "8": {
+          "hosts": [
+            {
+              "role": "illness",
+              "kind": "star",
+              "symbol": "天芮星"
+            }
+          ],
+          "chief": 3,
+          "stem_family": 0,
+          "tianxin": 0,
+          "stem_candidates": [],
+          "ground_stages": [
+            "养",
+            "长生"
+          ],
+          "ground_restricted": false,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": false,
+          "pre_void": 3,
+          "after_void": 3,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        }
+      },
+      "auspice_bonus_notes": [
+        "艮八宫得值符同宫扶助。"
+      ],
+      "auspice_bonus_score": 3,
+      "auspice_applied_extra_score": 3,
+      "auspice_merged_into_physical_palace": false,
+      "relationship_bonus_score": 3,
+      "historical_role_stacked_bonus_score": 3,
+      "unique_palace_score_details": {
+        "8": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "saturated_five_grade",
+          "components": {
+            "star": -3,
+            "door": -3,
+            "deity": 4,
+            "pattern": -5
+          },
+          "component_instances": {
+            "star": [
+              -3
+            ],
+            "door": [
+              -3
+            ],
+            "deity": [
+              4
+            ],
+            "pattern": [
+              -3,
+              -2
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -7,
+          "raw_sum": -7,
+          "score_before_void": -5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": true,
+          "void_state": "not_void",
+          "horse_cleared_void": true,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -5,
+          "grade": "极大凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -7,
+          "score_is_research_only": true,
+          "unique_stem_scores": {},
+          "excluded_duplicate_stem_audit": {},
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "4": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "calculated",
+          "components": {
+            "star": 4,
+            "door": 0,
+            "deity": -2,
+            "pattern": -5
+          },
+          "component_instances": {
+            "star": [
+              4
+            ],
+            "door": [
+              0
+            ],
+            "deity": [
+              -2
+            ],
+            "pattern": [
+              -5
+            ]
+          },
+          "known_neutral_door": true,
+          "unresolved_categories": [],
+          "known_subtotal": -3,
+          "raw_sum": -3,
+          "score_before_void": -3,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -3,
+          "grade": "中等凶",
+          "raw_sum_exceeds_five": false,
+          "saturated_from_raw": null,
+          "score_is_research_only": true,
+          "unique_stem_scores": {},
+          "excluded_duplicate_stem_audit": {},
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "3": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "void_signed_three_shift",
+          "components": {
+            "star": -4,
+            "door": 0,
+            "deity": 3,
+            "pattern": -5
+          },
+          "component_instances": {
+            "star": [
+              -4
+            ],
+            "door": [
+              0
+            ],
+            "deity": [
+              3
+            ],
+            "pattern": [
+              -5
+            ]
+          },
+          "known_neutral_door": true,
+          "unresolved_categories": [],
+          "known_subtotal": -6,
+          "raw_sum": -6,
+          "score_before_void": -5,
+          "void_adjustment": 3,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "fake_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": true,
+          "timing_rules_deferred": true,
+          "score": -2,
+          "grade": "小凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -6,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "乙": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "乙": 5
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "1": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "calculated",
+          "components": {
+            "star": -1,
+            "door": 1,
+            "deity": -2,
+            "pattern": -3
+          },
+          "component_instances": {
+            "star": [
+              -1
+            ],
+            "door": [
+              1
+            ],
+            "deity": [
+              -2
+            ],
+            "pattern": [
+              -3
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -5,
+          "raw_sum": -5,
+          "score_before_void": -5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -5,
+          "grade": "极大凶",
+          "raw_sum_exceeds_five": false,
+          "saturated_from_raw": null,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "丁": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "丁": 1
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "2": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "saturated_five_grade",
+          "components": {
+            "star": 3,
+            "door": -4,
+            "deity": -5,
+            "pattern": -6
+          },
+          "component_instances": {
+            "star": [
+              3
+            ],
+            "door": [
+              -4
+            ],
+            "deity": [
+              -5
+            ],
+            "pattern": [
+              -3,
+              -3
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -12,
+          "raw_sum": -12,
+          "score_before_void": -5,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": -5,
+          "grade": "极大凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -12,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "丙": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "丙": 1
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        }
+      },
+      "repeated_signifier_merged": true,
+      "five_not_global_penalty": 0,
+      "tianxian_global_final_bonus": 0,
+      "tianxian_applied_once_after_all_palaces": false,
+      "tianxian_total_floor_once": true,
+      "tianxian_selected_unique_palaces": 5,
+      "five_not_penalty_per_palace": 0,
+      "five_not_penalized_unique_palace_count": 0,
+      "five_not_per_distinct_palace": true,
+      "five_not_per_selected_role_occurrence": false,
+      "five_not_penalized_role_count": 0,
+      "historical_overlay_total_if_stacked": -22,
+      "relationship_overlays_audit_only": false,
+      "final_scoring_policy": "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
+      "raw_final_before_saturation": -17,
+      "five_not_deducted_once_at_end": false,
+      "weak_illness_drain_eligible": false
+    }
+  },
+  {
+    "iso": "2026-12-18T03:00:00-05:00",
+    "reading_sha256": "b6c32515420c4e4895a32e8d7b417b8f8df64e457f76d559376f07c64e2a590c",
+    "summary": {
+      "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+      "status": "calculated",
+      "raw_known_sum": -7,
+      "post_void_known_sum": 1,
+      "effective_palace_scores": {
+        "2": -2,
+        "6": 3
+      },
+      "raw_grade_if_all_known": "极小吉",
+      "provisional_known_grade": "极小吉",
+      "provisional_is_not_final": false,
+      "pending_palaces": [],
+      "duplicate_physical_roles": [
+        {
+          "role": "medicine",
+          "palace": 2,
+          "already_counted_role": "illness"
+        },
+        {
+          "role": "patient",
+          "palace": 6,
+          "already_counted_role": "doctor"
+        },
+        {
+          "role": "hour",
+          "palace": 2,
+          "already_counted_role": "illness"
+        },
+        {
+          "role": "chief",
+          "palace": 2,
+          "already_counted_role": "illness"
+        }
+      ],
+      "unique_palace_count": 2,
+      "score": 5,
+      "grade": "极大吉",
+      "needs_final_band_rule": false,
+      "user_extreme_cutoff": 5,
+      "sum_after_each_palace_void_adjustment": true,
+      "not_a_medical_assessment": true,
+      "physical_palace_v75_audit": {
+        "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+        "status": "calculated",
+        "raw_known_sum": -7,
+        "post_void_known_sum": 1,
+        "effective_palace_scores": {
+          "2": -2,
+          "6": 3
+        },
+        "raw_grade_if_all_known": "极小吉",
+        "provisional_known_grade": "极小吉",
+        "provisional_is_not_final": false,
+        "pending_palaces": [],
+        "duplicate_physical_roles": [
+          {
+            "role": "medicine",
+            "palace": 2,
+            "already_counted_role": "illness"
+          },
+          {
+            "role": "patient",
+            "palace": 6,
+            "already_counted_role": "doctor"
+          },
+          {
+            "role": "hour",
+            "palace": 2,
+            "already_counted_role": "illness"
+          },
+          {
+            "role": "chief",
+            "palace": 2,
+            "already_counted_role": "illness"
+          }
+        ],
+        "unique_palace_count": 2,
+        "score": 1,
+        "grade": "极小吉",
+        "needs_final_band_rule": false,
+        "user_extreme_cutoff": 5,
+        "sum_after_each_palace_void_adjustment": true,
+        "not_a_medical_assessment": true
+      },
+      "effective_role_scores": {
+        "illness": -2,
+        "doctor": 3,
+        "medicine": -2,
+        "patient": 3,
+        "hour": -2,
+        "chief": -2
+      },
+      "role_count": 6,
+      "pending_roles": [],
+      "v76_role_score_sum_if_repeated": -2,
+      "pre_relationship_bonus_score": 1,
+      "control_bonus_palaces": {},
+      "control_bonus_points": {},
+      "signed_palace_grades_never_actor_strength": true,
+      "actual_role_strengths": {
+        "illness": {
+          "palace": 2,
+          "kind": "star",
+          "symbol": "天芮星",
+          "tier": "中等",
+          "relation": "病宫本体",
+          "control_cell": null,
+          "control_status": null
+        },
+        "doctor": {
+          "palace": 6,
+          "kind": "star",
+          "symbol": "天心星",
+          "tier": "极大",
+          "relation": "被生",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "medicine": {
+          "palace": 2,
+          "kind": "stem",
+          "symbol": "乙",
+          "tier": "极大",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "patient": {
+          "palace": 6,
+          "kind": "stem",
+          "symbol": "丙",
+          "tier": "极小",
+          "relation": "被生",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "hour": {
+          "palace": 2,
+          "kind": "stem",
+          "symbol": "庚",
+          "tier": "大",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        },
+        "chief": {
+          "palace": 2,
+          "kind": "deity",
+          "symbol": "值符",
+          "tier": "大",
+          "relation": "同宫",
+          "control_cell": null,
+          "control_status": "not_control_relation"
+        }
+      },
+      "control_power_provenance": "selected_primary_200x200_5x5_source_never_abs_palace_score",
+      "non_control_pair_policy": "all_selected_role_and_target_200_strengths_independent_no_invented_matrix",
+      "drain_bonus_palaces": {},
+      "control_bonus_score": 0,
+      "weak_illness_drain_bonus_score": 0,
+      "auspice_bonus_details": {
+        "2:同宫吉助": {
+          "palace": 2,
+          "symbol": "值符、天盘乙奇",
+          "points": 3,
+          "before_void": 6,
+          "note": "坤二宫逢空，值符与天盘乙奇同宫的吉助减弱，尚有余气。",
+          "cohost": true
+        },
+        "6:同宫吉助": {
+          "palace": 6,
+          "symbol": "天心星",
+          "points": 3,
+          "before_void": 3,
+          "note": "乾六宫得天心星同宫扶助。",
+          "cohost": true
+        }
+      },
+      "auspice_cohost_audit": {
+        "2": {
+          "hosts": [
+            {
+              "role": "illness",
+              "kind": "star",
+              "symbol": "天芮星"
+            },
+            {
+              "role": "hour",
+              "kind": "stem",
+              "symbol": "庚"
+            }
+          ],
+          "chief": 3,
+          "stem_family": 3,
+          "tianxin": 0,
+          "stem_candidates": [
+            {
+              "points": 3,
+              "stem": "乙奇",
+              "plane": "天盘"
+            }
+          ],
+          "ground_stages": [
+            "冠带",
+            "临官"
+          ],
+          "ground_restricted": false,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": true,
+          "pre_void": 6,
+          "after_void": 3,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        },
+        "6": {
+          "hosts": [
+            {
+              "role": "patient",
+              "kind": "stem",
+              "symbol": "丙"
+            }
+          ],
+          "chief": 0,
+          "stem_family": 0,
+          "tianxin": 3,
+          "stem_candidates": [],
+          "ground_stages": [
+            "墓",
+            "绝"
+          ],
+          "ground_restricted": true,
+          "disease_two_independent_sky_stars": false,
+          "independent_sky_bonus": null,
+          "empty": false,
+          "pre_void": 3,
+          "after_void": 3,
+          "self_signifier_excluded": true,
+          "void_after_all_bonuses": true
+        }
+      },
+      "auspice_bonus_notes": [
+        "坤二宫逢空，值符与天盘乙奇同宫的吉助减弱，尚有余气。",
+        "乾六宫得天心星同宫扶助。"
+      ],
+      "auspice_bonus_score": 6,
+      "auspice_applied_extra_score": 6,
+      "auspice_merged_into_physical_palace": false,
+      "relationship_bonus_score": 6,
+      "historical_role_stacked_bonus_score": 6,
+      "unique_palace_score_details": {
+        "2": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "void_signed_three_shift",
+          "components": {
+            "star": -3,
+            "door": -2,
+            "deity": 4,
+            "pattern": -9
+          },
+          "component_instances": {
+            "star": [
+              -3
+            ],
+            "door": [
+              -2
+            ],
+            "deity": [
+              4
+            ],
+            "pattern": [
+              -5,
+              -4
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": -10,
+          "raw_sum": -10,
+          "score_before_void": -5,
+          "void_adjustment": 3,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "fake_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": true,
+          "timing_rules_deferred": true,
+          "score": -2,
+          "grade": "小凶",
+          "raw_sum_exceeds_five": true,
+          "saturated_from_raw": -10,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "乙": 0,
+            "庚": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "乙": 5,
+            "庚": -4
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        },
+        "6": {
+          "version": "user_health_five_grade_signed_20261025_v3_void_mitigates_and_restores",
+          "status": "calculated",
+          "components": {
+            "star": 5,
+            "door": 3,
+            "deity": -3,
+            "pattern": -2
+          },
+          "component_instances": {
+            "star": [
+              5
+            ],
+            "door": [
+              3
+            ],
+            "deity": [
+              -3
+            ],
+            "pattern": [
+              -2
+            ]
+          },
+          "known_neutral_door": false,
+          "unresolved_categories": [],
+          "known_subtotal": 3,
+          "raw_sum": 3,
+          "score_before_void": 3,
+          "void_adjustment": 0,
+          "void_adjustment_rule": "positive_minus_3_negative_plus_3_zero_unchanged",
+          "five_not_encounter": false,
+          "door_break": false,
+          "void_state": "not_void",
+          "horse_cleared_void": false,
+          "timing_can_refill_or_clash": null,
+          "timing_rules_deferred": true,
+          "score": 3,
+          "grade": "中等吉",
+          "raw_sum_exceeds_five": false,
+          "saturated_from_raw": null,
+          "score_is_research_only": true,
+          "unique_stem_scores": {
+            "丙": 0
+          },
+          "excluded_duplicate_stem_audit": {
+            "丙": 1
+          },
+          "heaven_stem_strength_applied_in_81_only": true
+        }
+      },
+      "repeated_signifier_merged": true,
+      "five_not_global_penalty": 0,
+      "tianxian_global_final_bonus": 0,
+      "tianxian_applied_once_after_all_palaces": false,
+      "tianxian_total_floor_once": true,
+      "tianxian_selected_unique_palaces": 2,
+      "five_not_penalty_per_palace": 0,
+      "five_not_penalized_unique_palace_count": 0,
+      "five_not_per_distinct_palace": true,
+      "five_not_per_selected_role_occurrence": false,
+      "five_not_penalized_role_count": 0,
+      "historical_overlay_total_if_stacked": 4,
+      "relationship_overlays_audit_only": false,
+      "final_scoring_policy": "V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE",
+      "raw_final_before_saturation": 7,
+      "five_not_deducted_once_at_end": false,
+      "weak_illness_drain_eligible": false
+    }
+  }
+]

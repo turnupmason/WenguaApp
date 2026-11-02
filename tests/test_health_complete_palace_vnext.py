@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """User's full palace-by-palace illness severity template, on real charts.
 
 No new casting method and no invented medical prognosis. Explicitly verifies
@@ -98,36 +99,28 @@ class RealSelectedPalacePipeline(unittest.TestCase):
         self.assertIn("地盘干",self.self_reading["reading_text"])
 
     def test_role_bindings_no_fabricated_year_or_both_gender_palaces(self):
-        graph=self.self_reading["full_health_role_strength_network"]
-        self.assertNotIn("natal",graph["complete_selected_palace_audits"])
-        self.assertNotIn("gender",graph["complete_selected_palace_audits"])
-        g=self.male["full_health_role_strength_network"]
-        self.assertEqual(g["selected_gender_palace"],6)
-        self.assertEqual(g["complete_selected_palace_audits"]["gender"]["palace"],6)
-        self.assertEqual(g["role_group_reviews"]["gender"]["role_key"],"gender")
-        self.assertNotIn("natal",g["role_group_reviews"])
-
-    def test_qian_and_kun_are_always_real_auxiliaries_not_two_patients(self):
         for report in (self.self_reading,self.male):
             graph=report["full_health_role_strength_network"]
-            qk=graph["qian_kun_auxiliary_observations"]
-            self.assertEqual({qk["qian"]["palace"],qk["kun"]["palace"]},{6,2})
-            for name in ("qian","kun"):
-                ob=qk[name]
-                self.assertTrue(ob["used_only_as_auxiliary"])
-                self.assertTrue(ob["patient_identity_not_implied"])
-                self.assertTrue(ob["cannot_vote_without_role_source"])
-                self.assertTrue(ob["complete_palace"]["stars"])
-                self.assertIsNotNone(ob["complete_palace"]["door"])
-                self.assertIn(ob["relation_to_illness"],
-                              ("生","克","受生","受克","比和"))
-            self.assertNotIn("乾坤辅助：",report["reading_text"])
-            if graph["selected_gender_palace"] == 6:
-                self.assertIn("乾宫辅助（男）",report["reading_text"])
-                self.assertNotIn("坤宫辅助（女）",report["reading_text"])
-        unknown=self.self_reading["full_health_role_strength_network"]
-        self.assertIsNone(unknown["selected_gender_palace"])
-        self.assertNotIn("gender",unknown["nodes"])
+            self.assertNotIn("natal",graph["complete_selected_palace_audits"])
+            self.assertNotIn("gender",graph["complete_selected_palace_audits"])
+            self.assertIsNone(graph["selected_gender_palace"])
+            self.assertEqual(graph["qian_kun_auxiliary_observations"],{})
+
+    def test_qian_and_kun_are_always_real_auxiliaries_not_two_patients(self):
+        # Historical method name retained; V9 only selects the qualified elder auxiliary.
+        for who,key,palace in (("father","qian",6),("mother","kun",2)):
+            report=auto_cast_health_review_text(iso=WHEN,timezone_name=ZONE,inquiry={"intent":"severity","relationship":who,"consultation_context":"direct_proxy"})
+            graph=report["full_health_role_strength_network"]
+            self.assertEqual(set(graph["qian_kun_auxiliary_observations"]),{key})
+            ob=graph["qian_kun_auxiliary_observations"][key]
+            self.assertEqual(ob["palace"],palace)
+            self.assertTrue(ob["used_only_as_auxiliary"])
+            self.assertTrue(ob["patient_identity_not_implied"])
+            self.assertTrue(ob["cannot_vote_without_role_source"])
+            self.assertTrue(ob["complete_palace"]["stars"])
+            self.assertEqual(graph["selected_gender_palace"],palace)
+        for report in (self.self_reading,self.male):
+            self.assertEqual(report["full_health_role_strength_network"]["qian_kun_auxiliary_observations"],{})
 
     def test_avoids_double_voting_multiple_symbols_of_same_palace(self):
         net=self.self_reading["full_health_role_strength_network"]
@@ -146,7 +139,7 @@ class RealSelectedPalacePipeline(unittest.TestCase):
         ledger=self.self_reading["evidence_ledger"]
         self.assertEqual(counted["qualified_favorable"],len(ledger["favorable"]))
         self.assertEqual(counted["qualified_adverse"],len(ledger["adverse"]))
-        self.assertIn("全部证据合断",self.self_reading["reading_text"])
+        self.assertIn("综合断语",self.self_reading["reading_text"])
 
 
 if __name__=="__main__":

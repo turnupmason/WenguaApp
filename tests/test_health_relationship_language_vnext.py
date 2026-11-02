@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Truth-conditional patient-facing interpretations of REAL 200-cell controls."""
 import unittest
 from src.wengua.health_relationship_language_vnext import (
@@ -43,10 +44,10 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         partial=source("medicine","被克","减力克制")
         self.assertIn("病宫有力克制本方",forced)
         self.assertIn("病宫虽来克本方，但克力有限",partial)
-        self.assertIn("生扶病宫",source("doctor","生",None))
-        self.assertIn("不是主动克病",source("doctor","被生",None))
-        self.assertIn("同气相持",source("patient","比和",None))
-        self.assertIn("不能虚构两宫的相克",source("hour","同宫",None))
+        self.assertIn("宫生天芮病宫",source("doctor","生",None))
+        self.assertIn("不等于主动克病",source("doctor","被生",None))
+        self.assertIn("同五行不等于两枚用神等力",source("patient","比和",None))
+        self.assertIn("不能虚构跨宫相克",source("hour","同宫",None))
         self.assertIn("尚未形成唯一有效结论",source("chief","克",None,status="factor_power_pending"))
 
     def test_real_caster_selected_roles_have_grounded_prose(self):
@@ -60,7 +61,7 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
             self.assertIn(key,net["nodes"])
             term={"doctor":"天心医生","medicine":"乙奇医药",
                   "patient":"患者用神","hour":"时干事体",
-                  "chief":"值符大吉神"}[key]
+                  "chief":"值符"}[key]
             self.assertIn(term,report["reading_text"])
         chief=net["nodes"]["chief"]
         details=net["complete_selected_palace_audits"]["chief"]
@@ -73,7 +74,8 @@ class NaturalDiseaseRoleInterpretation(unittest.TestCase):
         # Public preview exports full palace facts, not internal role cache.
         self.assertEqual(details["primary_strength"]["kind"],"deity")
         self.assertTrue(details["stars"])  # original co-host star still shown
-        self.assertIn("克制",report["reading_text"])
+        self.assertIn("虽有克向，效力未定",report["reading_text"])
+        self.assertNotIn("克制表为",report["reading_text"])
         self.assertNotIn("宫内吉凶能量",report["reading_text"])
 
 

@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 import unittest
 from scripts.ios_vnext_manual_colleague_natal_yi_20261027 import produce as colleague
 from scripts.ios_vnext_manual_1920_female_20261027 import produce as elder
@@ -10,15 +11,15 @@ class V76ThreeStage(unittest.TestCase):
   self.assertEqual(set(roles),set(record["roles"]))
   self.assertEqual(q["role_count"],len(roles))
   self.assertEqual(q["pending_roles"],[])
-  self.assertEqual(q["post_void_known_sum"],sum(roles.values()))
-  self.assertEqual(q["five_not_global_penalty"],2*len(roles) if record["firstStage"] else 0)
-  self.assertEqual(q["raw_final_before_saturation"],sum(roles.values())+q["relationship_bonus_score"]-q["five_not_global_penalty"])
+  self.assertEqual(q["post_void_known_sum"],sum(q["effective_palace_scores"].values()))
+  self.assertEqual(q["five_not_global_penalty"],2*q["unique_palace_count"] if record["firstStage"] else 0)
+  self.assertEqual(q["raw_final_before_saturation"],sum(q["effective_palace_scores"].values())+q["relationship_bonus_score"]-q["five_not_global_penalty"])
   self.assertEqual(q["score"],saturate(q["raw_final_before_saturation"]))
-  self.assertEqual(q["final_scoring_policy"],"V7.6_ROLE_BASE_ENVIRONMENT_THEN_CONTROL")
+  self.assertEqual(q["final_scoring_policy"],"V8.0_SELECTED_SIGNIFIER_STRENGTH_ALL_INTERPALACE")
  def test_colleague(self):
   self.audit(self.c)
   self.assertEqual(self.c["summary"]["role_count"],7)
-  self.assertIn("各参与用神落宫分别扣两分",next(x["text"] for x in self.c["source_sections"] if x["id"]=="90_review"))
+  self.assertIn("五不遇时","\n".join(x["text"] for x in self.c["source_sections"]))
  def test_1920_same_yi_twice(self):
   self.audit(self.e)
   self.assertEqual(self.e["summary"]["role_count"],8)

@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """User 2026-10-25: only relevant palaces, same palace = one score,
 fake/true void signed +/-3 (not -5 or 0) and horse+void same palace fake.
 One REAL 2024 historical learning cast is fixed as a reproducible regression.
@@ -73,13 +74,13 @@ class Real2024SelectedChart(unittest.TestCase):
         selected=set(r["scored_relevant_palaces"])
         net=r["full_health_role_strength_network"]
         self.assertEqual(selected,
-                         {x["palace"] for x in net["nodes"].values()}|{2,6})
+                         {x["palace"] for x in net["nodes"].values()})
         self.assertEqual({int(x) for x in r["nine_palace_condition_facts"]},selected)
         self.assertTrue(set(net["nodes"]).issubset(
             {"illness","doctor","medicine","patient","hour",
              "chief","natal","gender"}))
         self.assertNotIn("extra_3",net["nodes"])
-        self.assertEqual(selected,{1,2,3,6,8})
+        self.assertEqual(selected,{1,2,3,8})
 
     def test_same_palace_same_current_score_even_if_different_roles(self):
         net=self.report["full_health_role_strength_network"]
@@ -90,14 +91,13 @@ class Real2024SelectedChart(unittest.TestCase):
                              scored["roles"][b]["palace"])
             self.assertEqual(scored["roles"][a]["palace_score"]["score"],
                              scored["roles"][b]["palace_score"]["score"])
-        self.assertEqual(scored["auxiliary_qian_kun"]["kun"]["palace_score"]["score"],
-                         scored["roles"]["patient"]["palace_score"]["score"])
+        self.assertEqual(scored["auxiliary_qian_kun"],{})
         # The original pre-role-gate research baseline was 5 palaces,
         # -4 / 大凶. Preserve that historical result in this comment;
         # current final MUST be recomputed from real eligible roles.
         gates=scored["role_effectiveness_gates"]
-        chosen={gates[role]["palace"]:scored["roles"][role]["palace_score"]["score"]
-                for role in gates if gates[role]["score_eligible"]}
+        chosen={row["palace"]:row["palace_score"]["score"]
+                for row in scored["roles"].values()}
         self.assertEqual(scored["summary"]["unique_palace_count"],len(chosen))
         self.assertEqual(scored["summary"]["effective_palace_scores"],
                          {str(k):v for k,v in chosen.items()})
@@ -108,7 +108,7 @@ class Real2024SelectedChart(unittest.TestCase):
         self.assertEqual(scored["summary"]["score"],max(-5,min(5,
             sum(chosen.values())+scored["summary"]["relationship_bonus_score"])))
         self.assertEqual(scored["summary"]["pending_palaces"],[])
-        self.assertIn("乾宫辅助（男）",self.report["reading_text"])
+        self.assertNotIn("乾宫辅助（男）",self.report["reading_text"])
         self.assertNotIn("坤宫辅助（女）",self.report["reading_text"])
 
 

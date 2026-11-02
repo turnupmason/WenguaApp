@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Two NEW unbiased times on current 2026-10-25 editable V-next health template.
 These are software demonstrations, not book cases or real patients.
 Fail on failed technical casting rather than silently cherry-picking auspices.
@@ -61,7 +62,7 @@ class TwoUnbiasedLiveTemplateCases(unittest.TestCase):
             self.assertEqual(len(report["nine_palaces"]),9)
             self.assertIn("天芮",report["reading_text"])
             self.assertIn("天心",report["reading_text"])
-            self.assertIn("古文",report["reading_text"])
+            self.assertIn("天地格",report["reading_text"])
             self.assertTrue(report["sections"])
             self.assertFalse(report["medical_validity_claimed"])
             print("WENGUA_20261026_TWO_RANDOM="+json.dumps({

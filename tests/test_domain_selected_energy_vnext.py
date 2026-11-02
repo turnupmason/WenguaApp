@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Selection first -> hard-coded TABLE ONE -> hard-coded TABLE TWO -> topic verdict.
 
 Verifies the default route does NOT perform the old all-palace Cartesian graph.
@@ -61,7 +62,7 @@ class CompactTables(unittest.TestCase):
 
     def test_only_registered_subtype_is_eligible(self):
         self.assertEqual(set(DOMAIN_CASE_TEMPLATES),{("health","severity")})
-        self.assertEqual(len(HEALTH_EDGES),7)  # latest user only role->Tianrui
+        self.assertEqual(len(HEALTH_EDGES),8)  # latest user only role->Tianrui
         self.assertTrue(all(target=="illness" for _,target in HEALTH_EDGES))
 
 
@@ -94,19 +95,16 @@ class SelectedRealCases(unittest.TestCase):
         self.assertNotIn("坤二宫观察",self.unspecified["reading_text"])
 
     def test_gender_selection_male_qian_female_kun(self):
-        male=self.male["full_health_role_strength_network"]
-        female=self.female["full_health_role_strength_network"]
-        self.assertEqual(male["selected_gender_palace"],6)
-        self.assertEqual(male["unselected_gender_palace"],2)
-        self.assertEqual(female["selected_gender_palace"],2)
-        self.assertEqual(female["unselected_gender_palace"],6)
-        self.assertEqual(male["nodes"]["gender"]["palace"],6)
-        self.assertEqual(female["nodes"]["gender"]["palace"],2)
-        self.assertNotIn(2,male["inspected_palace_ids"]
-                         if 2 not in {x["palace"] for k,x in male["nodes"].items() if k!="gender"}
-                         else [])
-        self.assertTrue(all("all_cross_layer_factor_pairs" not in value
-                            for value in male["directed_edges"].values()))
+        for report in (self.male,self.female):
+            graph=report["full_health_role_strength_network"]
+            self.assertIsNone(graph["selected_gender_palace"])
+            self.assertNotIn("gender",graph["nodes"])
+        for who,palace in (("father",6),("mother",2)):
+            out=auto_cast_health_review_text(iso="2026-10-22T12:00:00-04:00",timezone_name="America/New_York",inquiry={"intent":"severity","relationship":who,"consultation_context":"direct_proxy"})
+            graph=out["full_health_role_strength_network"]
+            self.assertEqual(graph["selected_gender_palace"],palace)
+            self.assertEqual(graph["nodes"]["gender"]["palace"],palace)
+            self.assertNotIn("natal",graph["nodes"])
 
     def test_natal_only_if_real_birth_ganzhi(self):
         graph=self.birth["full_health_role_strength_network"]
@@ -135,9 +133,9 @@ class SelectedRealCases(unittest.TestCase):
         for out in (self.unspecified,self.male,self.birth):
             names=[s["title"] for s in out["sections"]]
             self.assertEqual(names[:5],[
-                "起盘总纲：五不遇时、伏吟、反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
+                "时局总纲","天芮病宫","天心医生","乙奇医药","患者用神"])
             self.assertEqual(names[-1],"时空及应期")
-            self.assertEqual(names[-2],"全部证据合断")
+            self.assertEqual(names[-2],"综合断语")
             evidence=[x for v in out["evidence_ledger"].values() for x in v]
             self.assertEqual(sum(x["id"].startswith("illness:tianrui_25:")
                                  for x in evidence),1)
@@ -145,7 +143,7 @@ class SelectedRealCases(unittest.TestCase):
                              len(out["evidence_ledger"]["favorable"]))
             self.assertEqual(out["evidence_counts"]["qualified_adverse"],
                              len(out["evidence_ledger"]["adverse"]))
-            self.assertIn("全部因素推断后，此宫为",out["reading_text"])
+            self.assertIn("宫象",out["reading_text"])
             self.assertNotIn("加大药量",out["reading_text"])
             self.assertNotIn("康复保证",out["reading_text"])
 

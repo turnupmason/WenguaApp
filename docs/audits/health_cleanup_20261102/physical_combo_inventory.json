@@ -1,0 +1,65 @@
+{
+  "scope": "1080 canonical physical states only; NOT calendar clocks or clinical outcomes",
+  "atlas_sha256": "eebb6e22e0367d5282dc7a870d73c3b4a911fddfea420b9782d96ba331d600a3",
+  "counts": {
+    "tianxin_chief": 120,
+    "tianxin_ground_yi_chief": 13,
+    "sky_yi_chief": 40,
+    "tianxin_sky_yi": 120,
+    "tianxin_sky_yi_chief": 0
+  },
+  "first_examples": {
+    "tianxin_chief": {
+      "base_id": "yang-01-甲寅",
+      "palace": 6,
+      "stars": [
+        {
+          "carried_stem": "癸",
+          "star": "天心星"
+        }
+      ],
+      "earth_stem": "癸",
+      "deity": "值符"
+    },
+    "tianxin_ground_yi_chief": {
+      "base_id": "yang-01-乙卯",
+      "palace": 9,
+      "stars": [
+        {
+          "carried_stem": "癸",
+          "star": "天心星"
+        }
+      ],
+      "earth_stem": "乙",
+      "deity": "值符"
+    },
+    "sky_yi_chief": {
+      "base_id": "yang-03-甲申",
+      "palace": 2,
+      "stars": [
+        {
+          "carried_stem": "乙",
+          "star": "天芮星"
+        },
+        {
+          "carried_stem": "庚",
+          "star": "天禽星"
+        }
+      ],
+      "earth_stem": "乙",
+      "deity": "值符"
+    },
+    "tianxin_sky_yi": {
+      "base_id": "yang-07-甲子",
+      "palace": 6,
+      "stars": [
+        {
+          "carried_stem": "乙",
+          "star": "天心星"
+        }
+      ],
+      "earth_stem": "乙",
+      "deity": "螣蛇"
+    }
+  }
+}

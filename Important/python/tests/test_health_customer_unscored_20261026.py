@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Customer speech never exposes internal scoring; researcher DTO stays available."""
 import unittest
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
@@ -6,7 +7,7 @@ from src.wengua.health_reading_template_vnext import template
 class CustomerOnlyUnscored(unittest.TestCase):
     def test_template_has_no_visible_score_words(self):
         t=template()
-        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific")
+        self.assertEqual(t["schema"],"health_severity_user_editable_template_v20261031_v11_full_evidence")
         user_slots=("role","auxiliary","overall_resolved","overall_pending","verdict","timing")
         for slot in user_slots:
             text=t["macros"][slot]
@@ -25,7 +26,7 @@ class CustomerOnlyUnscored(unittest.TestCase):
                          "consultation_context":"direct_self"})
             text=report["reading_text"]
             self.assertIn("天芮",text)
-            self.assertIn("全部证据合断",text)
+            self.assertIn("综合断语",text)
             self.assertNotIn("宫内吉凶能量：",text)
             self.assertNotIn("五级吉凶净分",text)
             self.assertNotIn("原始净分",text)

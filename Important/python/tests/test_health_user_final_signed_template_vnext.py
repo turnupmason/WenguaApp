@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Latest user-confirmed score contract, Tianrui-only, value protection.
 
 The score is a traditional-symbolic research classification only. It is
@@ -76,9 +77,10 @@ class UserSignedFinalScore(unittest.TestCase):
                               if x.get("score") is not None]),1)
         self.assertEqual(illness["star"]["per_star"][0]["symbol"],"天芮星")
         self.assertTrue(illness["star"]["illness_tianrui_only"])
-        self.assertTrue(illness["pattern"]["only_tianrui_carried_stem_if_illness"])
+        self.assertFalse(illness["pattern"]["only_tianrui_carried_stem_if_illness"])
+        self.assertTrue(illness["pattern"]["disease_dual_carrier_81_exception"])
         real_top={x["carried_stem"] for x in audit["stars"]
-                  if x["name"]=="天芮星"}
+                  if x["name"] in {"天芮星","天禽星"}}
         self.assertTrue(real_top)
         self.assertTrue(all(
             x["key"].split("/")[0] in real_top
@@ -90,28 +92,21 @@ class UserSignedFinalScore(unittest.TestCase):
             if c["deity"]=="值符"))
         self.assertIn("值符护持宫",out["reading_text"])
         self.assertIn("时干事体",out["reading_text"])
-        self.assertIn("全部因素推断后，此宫为",out["reading_text"])
+        self.assertIn("宫象",out["reading_text"])
 
     def test_user_requires_both_real_qian_and_kun_auxiliary_palaces(self):
+        # Current V9: sex alone never creates a Qian/Kun patient identity.
         for sex in ("male","female"):
-            with self.subTest(sex=sex):
-                r=auto_cast_health_review_text(
-                    iso=DATE,timezone_name=ZONE,
-                    inquiry={**INQUIRY,"patient_sex":sex})
-                titles=[x["title"] for x in r["sections"]]
-                self.assertFalse(any(x.startswith("乾坤辅助：") for x in titles))
-                self.assertIn("乾宫辅助（男）" if sex=="male" else "坤宫辅助（女）",titles)
-                self.assertNotIn("坤宫辅助（女）" if sex=="male" else "乾宫辅助（男）",titles)
-                q=r["full_health_role_strength_network"][
-                    "candidate_five_grade_quantization"]
-                self.assertIn("qian",q["auxiliary_qian_kun"])
-                self.assertIn("kun",q["auxiliary_qian_kun"])
-        none=auto_cast_health_review_text(
-            iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)
-        self.assertFalse(any(x["title"].startswith("乾坤辅助：") for x in none["sections"]))
-        # Unprovided sex is not the same as guessing two patient identities.
-        self.assertIsNone(none["full_health_role_strength_network"][
-            "selected_gender_palace"])
+            report=auto_cast_health_review_text(iso=DATE,timezone_name=ZONE,inquiry={**INQUIRY,"patient_sex":sex})
+            graph=report["full_health_role_strength_network"]
+            self.assertIsNone(graph["selected_gender_palace"])
+            self.assertEqual(graph["candidate_five_grade_quantization"]["auxiliary_qian_kun"],{})
+            self.assertNotIn("natal",graph["nodes"])
+        for who,key,palace in (("father","qian",6),("mother","kun",2)):
+            report=auto_cast_health_review_text(iso=DATE,timezone_name=ZONE,inquiry={"intent":"severity","relationship":who,"consultation_context":"direct_proxy"})
+            graph=report["full_health_role_strength_network"]
+            self.assertEqual(graph["selected_gender_palace"],palace)
+            self.assertEqual(set(graph["candidate_five_grade_quantization"]["auxiliary_qian_kun"]),{key})
 
 
 if __name__=="__main__":

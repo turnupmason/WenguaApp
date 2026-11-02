@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Independent V-next disease evidence logic acceptance; DO NOT tune to outcomes.
 
 Pins old 4 V3.9.1 SHA facts, plus separately tests new conditional review
@@ -175,8 +176,8 @@ class FullRealChartPreview(unittest.TestCase):
             self.assertEqual(review["four_pillars"],row["four_pillars"])
             names=[part["title"] for part in review["sections"]]
             self.assertGreaterEqual(len(names),8)
-            self.assertEqual(names[:5],["起盘总纲：五不遇时、伏吟、反吟","天芮病宫","天心医生","乙奇医药","患者用神"])
-            self.assertIn("全部证据合断",names)
+            self.assertEqual(names[:5],["时局总纲","天芮病宫","天心医生","乙奇医药","患者用神"])
+            self.assertIn("综合断语",names)
             self.assertEqual(names[-1],"时空及应期")
             self.assertEqual(review["evidence_counts"]["qualified_favorable"],
                              len(review["evidence_ledger"]["favorable"]))
@@ -207,7 +208,7 @@ class FullRealChartPreview(unittest.TestCase):
             print("BASELINE",old["reading_text"].split("最后断词：")[-1][:250].strip())
             print("MACRO",review["sections"][0]["text"])
             print("REVIEW",next(x["text"] for x in review["sections"]
-                                if x["title"]=="全部证据合断"))
+                                if x["title"]=="综合断语"))
             print("GATES",review["audit"]["missing_source_predicates"],
                   "LIFECYCLE_UNIQUE",len(review["audit"]["actual_stage_facts_unique"]))
 
@@ -252,7 +253,7 @@ class OldBookQuestionOnlySmoke(unittest.TestCase):
             self.assertEqual(answer["audit"]["composites_preserved"],17)
             self.assertTrue(answer["audit"]["actual_original_author_outcomes_not_used"])
             self.assertGreaterEqual(len(answer["sections"]),8)
-            self.assertEqual(answer["sections"][0]["title"],"起盘总纲：五不遇时、伏吟、反吟")
+            self.assertEqual(answer["sections"][0]["title"],"时局总纲")
             self.assertTrue(answer["no_scores"])
             seen.append((spec["id"],answer["verdict"]["label"],
                          answer["audit"]["role_confidence"]))

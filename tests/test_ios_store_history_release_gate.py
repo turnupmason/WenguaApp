@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Local-first review capability contract, score privacy and no fake records."""
 import unittest
 from pathlib import Path
@@ -7,7 +8,8 @@ class LocalHistoryAndPrivacy(unittest.TestCase):
         ui=(root/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text()
         history=(root/"ios/WenguaAppUI/WenguaLocalHistoryView.swift").read_text()
         project=(root/"ios/WenguaAppUI/project.yml").read_text()
-        self.assertIn("NavigationLink {\n                            WenguaLocalHistoryView()",ui)
+        journey=(root/"ios/WenguaAppUI/WenguaDomainJourneyScreen.swift").read_text()
+        self.assertRegex(journey,r"NavigationLink\s*\{\s*WenguaLocalHistoryView\(\)")
         self.assertIn("WenguaNativeReadingRouter.compose",ui)
         self.assertIn("reading:reading",ui)
         self.assertIn('recordPrefix="wengua:nativecase:"',history)

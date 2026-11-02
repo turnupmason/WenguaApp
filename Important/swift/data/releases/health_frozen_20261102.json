@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p1",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -151,7 +151,7 @@
     {
       "path": "src/wengua/health_quant_overlay_vnext.py",
       "kind": "source",
-      "sha256": "7cee0b1944a2813fcdad63e92dd7f82c42cd866cb167f1ac79cbc53d17b748cf"
+      "sha256": "0ed3c0a61fa3e43a880da1bf69fce4f87b45838dd79ad8605d21c5fbe865d9b9"
     },
     {
       "path": "src/wengua/domain_selected_energy_vnext.py",
@@ -178,5 +178,11 @@
       "kind": "source",
       "sha256": "3612f1bdfcd015d2d2deb2ef9157ef1a053ca2af621f1c4b8159750a2df6fad3"
     }
-  ]
+  ],
+  "engineering_patch": {
+    "id": "p1_earth_stem_audit",
+    "prior_manifest_sha256": "07c00c0347c6d1e335a56202c6f23847678a25258d9d6b3bad7c2de5b4cd4827",
+    "scope": "Diagnostic earth-stem provenance and empty-pair crash only; scoring rules and customer templates unchanged",
+    "authorization": "User 2026-11-02: proceed with failure cleanup in stated order"
+  }
 }

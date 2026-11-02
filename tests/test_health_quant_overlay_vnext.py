@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Guard current real-chart numeric candidate, never invent missing auspices."""
 import unittest
 from src.wengua.health_text_pipeline_vnext_review import auto_cast_health_review_text
@@ -34,9 +35,9 @@ class CurrentQuantReview(unittest.TestCase):
             self.assertIn(row["palace_score"]["status"],(
                 "incomplete_components","void_signed_three_shift",
                 "calculated","saturated_five_grade"))
-        self.assertEqual(q["auxiliary_qian_kun"]["qian"]["selected_if_patient_gender_known"], q["selected_gender_palace"]==6)
-        self.assertIn("qian",q["auxiliary_qian_kun"])
-        self.assertIn("kun",q["auxiliary_qian_kun"])
+        self.assertIsNone(q["selected_gender_palace"])
+        self.assertEqual(q["auxiliary_qian_kun"],{})
+        self.assertNotIn("gender",q["roles"])
         self.assertNotIn("宫位五级吉凶净分合断",r["reading_text"])
         self.assertIn("±5",render_quant_review(q))
 

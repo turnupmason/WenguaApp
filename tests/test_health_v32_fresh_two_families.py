@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Pre-disclosure replay of two NEW book families using genuine V3.1 engine.
 
 No model trained on an original author's answer may claim clean, independent
@@ -37,8 +38,10 @@ class SourceFamilyV32HistoricalCheck(unittest.TestCase):
         self.assertEqual(_find_heaven_stem(q,"甲")["palace"],2)
         self.assertEqual(_find_heaven_stem(q,"庚")["palace"],2)
         # Previously blocked unknown NONZERO centre routes stay blocked.
-        with self.assertRaisesRegex(ValueError,"centre 5"):
-            layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
+        extended=layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
+        self.assertEqual(extended["palaces"]["5"]["heaven_stars"],[])
+        self.assertIsNone(extended["palaces"]["5"]["door"])
+        self.assertEqual(sum(bool(p["door"]) for p in extended["palaces"].values()),8)
     def test_actual_calendar_charts_and_original_value_symbols_match(self):
         for x in evaluate()["samples"]:
             self.assertEqual(x["full_chart"]["hour_ganzhi"],x["four_pillars"]["hour"])

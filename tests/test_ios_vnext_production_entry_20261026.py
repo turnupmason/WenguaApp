@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """App Store binary uses only source-indexed rules, not book SQLite."""
 import json
 import unittest
@@ -17,7 +18,7 @@ class NativeVNextAppContract(unittest.TestCase):
         main=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text("utf8")
         self.assertNotIn("FrozenReadingV391.json",proj)
         self.assertNotIn("FrozenPreview",main)
-        self.assertIn("WenguaVNextInlineReading",main)
+        self.assertIn("WenguaNativeCustomerView(reading:reading)",main)
         self.assertIn("WenguaNativeReadingRouter.compose(",main)
         self.assertIn("actor_profiles.json",proj)
         self.assertNotIn(".sqlite",proj)

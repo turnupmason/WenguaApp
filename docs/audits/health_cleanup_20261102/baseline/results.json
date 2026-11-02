@@ -1,0 +1,1578 @@
+{
+  "source_sha": "94edb647eba6bdb5d321c76fdbc567c645b118e6",
+  "tests_run": 835,
+  "failures": 41,
+  "errors": 11,
+  "skipped": [
+    {
+      "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+      "reason": "Optional Moshier external cross-reference not installed"
+    },
+    {
+      "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+      "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+    },
+    {
+      "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+      "reason": "V7.8 historical fixture; active V7.9 tested independently"
+    }
+  ],
+  "full_log_sha256": "99300306a26d94f9d90edd158d76c9674a87d32bc661fa4e671cd07d0f8227fc",
+  "records": [
+    {
+      "test_id": "test_casting_chai_bu_user_process_vnext.CastingUserFlow.test_centre_door_zero_step_only_original_confirmed",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "ValueError not raised",
+      "test_source": "tests/test_casting_chai_bu_user_process_vnext.py",
+      "method_source": "    def test_centre_door_zero_step_only_original_confirmed(self):\n        with self.assertRaisesRegex(ValueError,\"centre 5\"):\n            layout_from_explicit_bureau(dun=\"yang\",ju=1,hour_ganzhi=\"戊辰\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_casting_chai_bu_user_process_vnext.py",
+          "line": 62,
+          "code": "with self.assertRaisesRegex(ValueError,\"centre 5\"):"
+        }
+      ]
+    },
+    {
+      "test_id": "test_domain_selected_energy_vnext.CompactTables.test_only_registered_subtype_is_eligible",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "8 != 7",
+      "test_source": "tests/test_domain_selected_energy_vnext.py",
+      "method_source": "    def test_only_registered_subtype_is_eligible(self):\n        self.assertEqual(set(DOMAIN_CASE_TEMPLATES),{(\"health\",\"severity\")})\n        self.assertEqual(len(HEALTH_EDGES),7)  # latest user only role->Tianrui\n        self.assertTrue(all(target==\"illness\" for _,target in HEALTH_EDGES))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_domain_selected_energy_vnext.py",
+          "line": 64,
+          "code": "self.assertEqual(len(HEALTH_EDGES),7)  # latest user only role->Tianrui"
+        }
+      ]
+    },
+    {
+      "test_id": "test_domain_selected_energy_vnext.SelectedRealCases.test_gender_selection_male_qian_female_kun",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "None != 6",
+      "test_source": "tests/test_domain_selected_energy_vnext.py",
+      "method_source": "    def test_gender_selection_male_qian_female_kun(self):\n        male=self.male[\"full_health_role_strength_network\"]\n        female=self.female[\"full_health_role_strength_network\"]\n        self.assertEqual(male[\"selected_gender_palace\"],6)\n        self.assertEqual(male[\"unselected_gender_palace\"],2)\n        self.assertEqual(female[\"selected_gender_palace\"],2)\n        self.assertEqual(female[\"unselected_gender_palace\"],6)\n        self.assertEqual(male[\"nodes\"][\"gender\"][\"palace\"],6)\n        self.assertEqual(female[\"nodes\"][\"gender\"][\"palace\"],2)\n        self.assertNotIn(2,male[\"inspected_palace_ids\"]\n                         if 2 not in {x[\"palace\"] for k,x in male[\"nodes\"].items() if k!=\"gender\"}\n                         else [])\n        self.assertTrue(all(\"all_cross_layer_factor_pairs\" not in value\n                            for value in male[\"directed_edges\"].values()))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_domain_selected_energy_vnext.py",
+          "line": 99,
+          "code": "self.assertEqual(male[\"selected_gender_palace\"],6)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_domain_selected_energy_vnext.SelectedRealCases.test_template_order_and_one_disease_matrix_evidence",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "Lists differ: ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神'] != ['起盘总纲：五不遇时、伏吟、反吟', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n\nFirst differing element 0:\n'时局总纲'\n'起盘总纲：五不遇时、伏吟、反吟'\n\n- ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n?   ^^\n\n+ ['起盘总纲：五不遇时、伏吟、反吟', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n?   ^^  +++++++++++\n",
+      "test_source": "tests/test_domain_selected_energy_vnext.py",
+      "method_source": "    def test_template_order_and_one_disease_matrix_evidence(self):\n        for out in (self.unspecified,self.male,self.birth):\n            names=[s[\"title\"] for s in out[\"sections\"]]\n            self.assertEqual(names[:5],[\n                \"起盘总纲：五不遇时、伏吟、反吟\",\"天芮病宫\",\"天心医生\",\"乙奇医药\",\"患者用神\"])\n            self.assertEqual(names[-1],\"时空及应期\")\n            self.assertEqual(names[-2],\"全部证据合断\")\n            evidence=[x for v in out[\"evidence_ledger\"].values() for x in v]\n            self.assertEqual(sum(x[\"id\"].startswith(\"illness:tianrui_25:\")\n                                 for x in evidence),1)\n            self.assertEqual(out[\"evidence_counts\"][\"qualified_favorable\"],\n                             len(out[\"evidence_ledger\"][\"favorable\"]))\n            self.assertEqual(out[\"evidence_counts\"][\"qualified_adverse\"],\n                             len(out[\"evidence_ledger\"][\"adverse\"]))\n            self.assertIn(\"全部因素推断后，此宫为\",out[\"reading_text\"])\n            self.assertNotIn(\"加大药量\",out[\"reading_text\"])\n            self.assertNotIn(\"康复保证\",out[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_domain_selected_energy_vnext.py",
+          "line": 137,
+          "code": "self.assertEqual(names[:5],["
+        }
+      ]
+    },
+    {
+      "test_id": "test_factor_energy_25_rules.UniversalTwentyFive.test_actual_control_vs_inverse_vs_blocker",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "Tuples differ: ('被克', '能') != ('被克', '不适用')\n\nFirst differing element 1:\n'能'\n'不适用'\n\n- ('被克', '能')\n?         ^\n\n+ ('被克', '不适用')\n?         ^^^\n",
+      "test_source": "tests/test_factor_energy_25_rules.py",
+      "method_source": "    def test_actual_control_vs_inverse_vs_blocker(self):\n        actor=inspect_strength_25(\"star\",\"天心星\",\"申\",6)\n        target=inspect_strength_25(\"star\",\"天冲星\",\"申\",3)\n        result=compare_role_strength(actor,target,actor_name=\"天心\",target_name=\"天冲\")\n        self.assertEqual(result[\"relation\"],\"克\")\n        self.assertEqual(result[\"ability_to_control\"],\"能\")\n        self.assertFalse(result[\"additional_evidence_vote\"])\n        self.assertIn(\"符号力量\",format_duel_template(result))\n        inverse=compare_role_strength(target,actor)\n        self.assertEqual((inverse[\"relation\"],inverse[\"ability_to_control\"]),(\"被克\",\"不适用\"))\n        blocked=inspect_strength_25(\"star\",\"天心星\",\"申\",6,restrictions=(\"空亡待辨\",))\n        self.assertEqual(compare_role_strength(blocked,target)[\"ability_to_control\"],\"条件待核\")\n        same=inspect_strength_25(\"star\",\"天心星\",\"申\",3)\n        self.assertEqual(compare_role_strength(same,target)[\"relation\"],\"同宫\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_factor_energy_25_rules.py",
+          "line": 81,
+          "code": "self.assertEqual((inverse[\"relation\"],inverse[\"ability_to_control\"]),(\"被克\",\"不适用\"))"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_81_excel_live_template_20261025.Excel81.test_real_chart_displays_all_four_excel_fields_every_selected_palace",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'古文：宜退让，强进血溅衣衫' not found in '时局总纲：\\n本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。\\n\\n天芮病宫：\\n落坎一宫；九星天芮星极小凶，八门杜门中平，八神六合被宫生、极大吉；天盘干辛势中等、丁势极小，地盘干庚势极小；天地格：辛加庚「白虎出力」（凶）、丁加庚「年月日时格」（凶）；空亡不空、无特别刑墓迫。宫象大凶。 病星格局「蚍蜉撼树」。\\n\\n天心医生：\\n落震三宫；九星天心星极小吉，八门死门小凶，八神玄武生宫、中凶；天盘干丙势极大，地盘干壬势极小；天地格：丙加壬「火入天罗」（凶）；空亡真空、门迫。宫象小凶。 天心星势极小；受病宫生，非主动制病。\\n\\n乙奇医药：\\n落艮八宫；九星天柱星中凶，八门景门中平，八神白虎被宫生、极大凶；天盘干乙，地盘干戊势极大；天地格：乙加戊「利阴害阳」（凶）；空亡假空、无特别刑墓迫。宫象小凶。 乙势待核（十二长生分支待辨）；虽有克向，效力未定。\\n\\n患者用神：\\n落坤二宫；九星天冲星大吉，八门休门极小吉，八神值符比和、大吉；天盘干壬，地盘干辛、中五寄干丁；天地格：壬加辛「螣蛇相缠」（凶）、壬加丁「干合蛇刑」（吉）；空亡不空、门迫。宫象极大吉。 坤二承中五寄干，两重天地格并参，中五不另起宫象。 壬势待核（十二长生分支待辨）；虽有克向，效力未定。\\n\\n时干事体：\\n与前述天芮病宫同在坎一宫，合看该宫象。 丁势极小；与病宫同宫，不另作跨宫克制。\\n\\n值符护持宫：\\n与前述患者用神同在坤二宫，合看该宫象。 值符势大；虽有克向，效力未定。\\n\\n综合断语：\\n病星天芮在坎一宫，势极小，宫象大凶；患者壬在坤二宫，势待核，宫象极大吉，虽克病，效力未明。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势待核，虽克病，效力未明。\\n\\n另参时干事体丁在坎一宫，势极小，与病宫同宫；大吉神值符在坤二宫，势大，虽克病，效力未明；病星外泄，病气受耗；坎一宫得天盘丁奇同宫扶助；坤二宫得值符同宫扶助。\\n\\n综上所述，此病为极大吉；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在巳；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_81_excel_live_template_20261025.py",
+      "method_source": "    def test_real_chart_displays_all_four_excel_fields_every_selected_palace(self):\n        out=auto_cast_health_review_text(\n            iso=\"2024-05-28T13:00:00-04:00\",\n            timezone_name=\"America/New_York\",\n            inquiry={\"intent\":\"severity\",\"relationship\":\"self\",\n                     \"consultation_context\":\"direct_self\"})\n        net=out[\"full_health_role_strength_network\"]\n        details=net[\"complete_selected_palace_audits\"]\n        sections=out[\"sections\"]\n        self.assertTrue(details)\n        by_title={s[\"title\"]:s[\"text\"] for s in sections}\n        for role,detail in details.items():\n            self.assertTrue(detail[\"user_excel_81_is_authoritative\"])\n            self.assertTrue(detail[\"ordered_book_81_pairs\"])\n            illness_star=next((x for x in detail[\"stars\"]\n                               if x[\"name\"]==\"天芮星\"),None)\n            illness_carrier=illness_star.get(\"carried_stem\") if illness_star else None\n            for pair in detail[\"ordered_book_81_pairs\"]:\n                expected=lookup_pair(pair[\"heaven\"],pair[\"earth\"])\n                self.assertEqual(pair[\"name\"],expected[\"name\"])\n                self.assertEqual(pair[\"polarity\"],expected[\"polarity\"])\n                self.assertTrue(pair[\"can_vote\"])\n                self.assertEqual(pair[\"source_state\"],\"user_excel_explicit_81\")\n                # Raw immutable 81 rows remain all auditable. Display\n                # intentionally excludes only the co-hosted Tianqin carrier\n                # in a Tianrui palace, per the new customer-specific scope.\n                if illness_carrier and pair[\"heaven\"]!=illness_carrier:\n                    continue\n                text=out[\"reading_text\"]\n                self.assertIn(\"古文：\"+expected[\"classical_text\"].rstrip(\"。；\"),text)\n                self.assertIn(\"古诀大意：\"+expected[\"classical_meaning\"].rstrip(\"。；\"),text)\n                self.assertIn(\"天地盘取象：\"+expected[\"imagery\"].rstrip(\"。；\"),text)\n        self.assertNotIn(\"（条件待核）\",out[\"reading_text\"])\n        # One true heaven + earth pair counts once; no invented missing 82nd.\n        source_polarities=[]\n        for score in net[\"complete_selected_palace_audits\"].values():\n            source_polarities += [x[\"polarity\"] for x in\n                                  score[\"ordered_book_81_pairs\"]]\n        self.assertTrue(set(source_polarities).issubset({\"吉\",\"凶\"}))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_81_excel_live_template_20261025.py",
+          "line": 101,
+          "code": "self.assertIn(\"古文：\"+expected[\"classical_text\"].rstrip(\"。；\"),text)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_complete_palace_vnext.RealSelectedPalacePipeline.test_avoids_double_voting_multiple_symbols_of_same_palace",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'全部证据合断' not found in '时局总纲：\\n本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。\\n\\n天芮病宫：\\n落乾六宫；九星天芮星中凶，八门生门大吉，八神九天比和、大吉；天盘干丙势极小、壬势中等，地盘干辛势极大；天地格：丙加辛「奇神相合」（吉）、壬加辛「螣蛇相缠」（凶）；空亡假空、天盘入墓。宫象极小凶。 病星格局「排毒宣泄」。\\n\\n天心医生：\\n落艮八宫；九星天心星小吉，八门杜门中平，八神玄武被宫克、小凶；天盘干辛势极大，地盘干己势极小；天地格：辛加己「入狱自刑」（凶）；空亡不空、门破、地盘入墓。宫象极大凶。 天心星势小；生扶病宫，不作制病。\\n\\n乙奇医药：\\n落震三宫；九星天蓬星极小凶，八门景门中平，八神白虎克宫、中凶；天盘干乙势大，地盘干丁势小；天地格：乙加丁「奇仪相佐」（吉）；空亡不空、无特别刑墓迫。宫象极小吉。 乙势大；受病宫克，制约轻重依双方实际力量。\\n\\n患者用神：\\n落巽四宫；九星天任星小吉，八门死门中凶，八神六合比和、大吉；天盘干己，地盘干癸势小；天地格：己加癸「地刑玄武」（凶）；空亡不空、门迫。宫象中吉。 己势待核（十二长生分支待辨）；受病宫克，制约轻重依双方实际力量。\\n\\n时干事体：\\n落坎一宫；九星天柱星极小凶，八门伤门中凶，八神九地克宫、中凶；天盘干庚势小，地盘干乙势小；天地格：庚加乙「太白蓬星」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 庚势小；受病宫生，非主动制病。\\n\\n值符护持宫：\\n落兑七宫；九星天英星大凶，八门休门小吉，八神值符生宫、中吉；天盘干戊势极小，地盘干庚势极大；天地格：戊加庚「值符飞宫」（凶）；空亡不空、无特别刑墓迫。宫象小凶。 值符势中等；与病宫比和，不等于等力。\\n\\n综合断语：\\n病星天芮在乾六宫，势中等，宫象极小凶，逢假空；患者己在巽四宫，势待核，宫象中吉，受病宫克。\\n\\n医药两端分别看：天心势小，生扶病宫，乙奇势大，受病宫克。\\n\\n另参时干事体庚在坎一宫，势小，受病宫生；大吉神值符在兑七宫，势中等，与病宫比和。\\n\\n综上所述，此病为极大凶；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在申；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_complete_palace_vnext.py",
+      "method_source": "    def test_avoids_double_voting_multiple_symbols_of_same_palace(self):\n        net=self.self_reading[\"full_health_role_strength_network\"]\n        reviews=net[\"role_group_reviews\"]\n        # Exactly one role->illness review for each requested fact group.\n        for r in (\"doctor\",\"medicine\",\"patient\",\"hour\"):\n            self.assertIn(r,reviews)\n            self.assertIn(reviews[r][\"direction\"],\n                          (\"favorable\",\"adverse\",\"pending\"))\n        receipts=[v for v in reviews.values() if v[\"counted_in_majority\"]]\n        self.assertEqual(len({v[\"physical_relation_id\"] for v in receipts}),\n                         len(receipts))\n        for v in reviews.values():\n            self.assertFalse(v[\"not_clinically_valid\"]==False)\n        counted=self.self_reading[\"evidence_counts\"]\n        ledger=self.self_reading[\"evidence_ledger\"]\n        self.assertEqual(counted[\"qualified_favorable\"],len(ledger[\"favorable\"]))\n        self.assertEqual(counted[\"qualified_adverse\"],len(ledger[\"adverse\"]))\n        self.assertIn(\"全部证据合断\",self.self_reading[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_complete_palace_vnext.py",
+          "line": 149,
+          "code": "self.assertIn(\"全部证据合断\",self.self_reading[\"reading_text\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_complete_palace_vnext.RealSelectedPalacePipeline.test_qian_and_kun_are_always_real_auxiliaries_not_two_patients",
+      "outcome": "error",
+      "exception_type": "KeyError",
+      "message": "'qian'",
+      "test_source": "tests/test_health_complete_palace_vnext.py",
+      "method_source": "    def test_qian_and_kun_are_always_real_auxiliaries_not_two_patients(self):\n        for report in (self.self_reading,self.male):\n            graph=report[\"full_health_role_strength_network\"]\n            qk=graph[\"qian_kun_auxiliary_observations\"]\n            self.assertEqual({qk[\"qian\"][\"palace\"],qk[\"kun\"][\"palace\"]},{6,2})\n            for name in (\"qian\",\"kun\"):\n                ob=qk[name]\n                self.assertTrue(ob[\"used_only_as_auxiliary\"])\n                self.assertTrue(ob[\"patient_identity_not_implied\"])\n                self.assertTrue(ob[\"cannot_vote_without_role_source\"])\n                self.assertTrue(ob[\"complete_palace\"][\"stars\"])\n                self.assertIsNotNone(ob[\"complete_palace\"][\"door\"])\n                self.assertIn(ob[\"relation_to_illness\"],\n                              (\"生\",\"克\",\"受生\",\"受克\",\"比和\"))\n            self.assertNotIn(\"乾坤辅助：\",report[\"reading_text\"])\n            if graph[\"selected_gender_palace\"] == 6:\n                self.assertIn(\"乾宫辅助（男）\",report[\"reading_text\"])\n                self.assertNotIn(\"坤宫辅助（女）\",report[\"reading_text\"])\n        unknown=self.self_reading[\"full_health_role_strength_network\"]\n        self.assertIsNone(unknown[\"selected_gender_palace\"])\n        self.assertNotIn(\"gender\",unknown[\"nodes\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_complete_palace_vnext.py",
+          "line": 114,
+          "code": "self.assertEqual({qk[\"qian\"][\"palace\"],qk[\"kun\"][\"palace\"]},{6,2})"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_complete_palace_vnext.RealSelectedPalacePipeline.test_role_bindings_no_fabricated_year_or_both_gender_palaces",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "None != 6",
+      "test_source": "tests/test_health_complete_palace_vnext.py",
+      "method_source": "    def test_role_bindings_no_fabricated_year_or_both_gender_palaces(self):\n        graph=self.self_reading[\"full_health_role_strength_network\"]\n        self.assertNotIn(\"natal\",graph[\"complete_selected_palace_audits\"])\n        self.assertNotIn(\"gender\",graph[\"complete_selected_palace_audits\"])\n        g=self.male[\"full_health_role_strength_network\"]\n        self.assertEqual(g[\"selected_gender_palace\"],6)\n        self.assertEqual(g[\"complete_selected_palace_audits\"][\"gender\"][\"palace\"],6)\n        self.assertEqual(g[\"role_group_reviews\"][\"gender\"][\"role_key\"],\"gender\")\n        self.assertNotIn(\"natal\",g[\"role_group_reviews\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_complete_palace_vnext.py",
+          "line": 105,
+          "code": "self.assertEqual(g[\"selected_gender_palace\"],6)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_customer_unscored_20261026.CustomerOnlyUnscored.test_template_has_no_visible_score_words",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'heal[20 chars]table_template_v20261031_v11_full_evidence' != 'heal[20 chars]table_template_v20261026_customer_v4_clean_signed_sex_specific'\n- health_severity_user_editable_template_v20261031_v11_full_evidence\n+ health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific\n",
+      "test_source": "tests/test_health_customer_unscored_20261026.py",
+      "method_source": "    def test_template_has_no_visible_score_words(self):\n        t=template()\n        self.assertEqual(t[\"schema\"],\"health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific\")\n        user_slots=(\"role\",\"auxiliary\",\"overall_resolved\",\"overall_pending\",\"verdict\",\"timing\")\n        for slot in user_slots:\n            text=t[\"macros\"][slot]\n            self.assertNotIn(\"{palace_score}\",text)\n            self.assertNotIn(\"{score}\",text)\n            self.assertNotIn(\"{post_void_sum}\",text)\n            self.assertNotIn(\"净分\",text)\n        self.assertEqual(t[\"macros\"][\"role_score\"],\"\")\n        self.assertIn(\"native_customer\",t)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_customer_unscored_20261026.py",
+          "line": 9,
+          "code": "self.assertEqual(t[\"schema\"],\"health_severity_user_editable_template_v20261026_customer_v4_clean_signed_sex_specific\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_customer_unscored_20261026.CustomerOnlyUnscored.test_two_actual_casts_keep_private_quant_but_customer_unscored",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'全部证据合断' not found in '时局总纲：\\n五不遇时，问事多阻，宜审慎而行。 天显时逢伏吟，吉时仍扶所取实宫，然助势有所收敛。 伏吟主慢。\\n\\n天芮病宫：\\n落坤二宫；九星天芮星大凶，八门死门极大凶，八神太阴被宫生、极大吉；天盘干戊势中等、丁势大，地盘干戊势中等、中五寄干丁；天地格：戊加戊「伏吟」（凶）、丁加丁「奇入太阴」（吉）；空亡不空、本宫驿马。宫象小凶。 坤二承中五寄干，两重天地格并参，中五不另起宫象。 病星格局「结党营私」。\\n\\n天心医生：\\n落乾六宫；九星天心星极小吉，八门开门大吉，八神值符生宫、中吉；天盘干癸，地盘干癸；天地格：癸加癸「天网四张」（凶）；空亡不空、无特别刑墓迫。宫象极大吉。 天心星势极小；受病宫生，非主动制病。\\n\\n乙奇医药：\\n落震三宫；九星天冲星中吉，八门伤门小凶，八神玄武生宫、中凶；天盘干乙势大，地盘干乙势大；天地格：乙加乙「日奇伏吟」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 乙势大；制病有象。\\n\\n患者用神：\\n与前述天芮病宫同在坤二宫，合看该宫象。 戊势中等；与病宫同宫，不另作跨宫克制。\\n\\n时干事体：\\n与前述天心医生同在乾六宫，合看该宫象。 甲势待核（十二长生分支待辨）；受病宫生，非主动制病。\\n\\n值符护持宫：\\n与前述天心医生同在乾六宫，合看该宫象。 值符势中等；受病宫生，非主动制病。\\n\\n综合断语：\\n病星天芮在坤二宫，势大，宫象小凶；患者戊在坤二宫，势中等，宫象小凶，与病宫同宫。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势大，有力制病。\\n\\n另参时干事体甲在乾六宫，势待核，受病宫生；大吉神值符在乾六宫，势中等，受病宫生；坤二宫得天盘丁奇同宫扶助；乾六宫得值符与天心星同宫扶助。\\n\\n综上所述，此病为极大吉；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在申；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_customer_unscored_20261026.py",
+      "method_source": "    def test_two_actual_casts_keep_private_quant_but_customer_unscored(self):\n        for iso in (\"2025-07-18T03:00:00-04:00\",\"2022-07-19T11:00:00-04:00\"):\n            report=auto_cast_health_review_text(\n                iso=iso,timezone_name=\"America/New_York\",\n                inquiry={\"intent\":\"severity\",\"relationship\":\"self\",\n                         \"consultation_context\":\"direct_self\"})\n            text=report[\"reading_text\"]\n            self.assertIn(\"天芮\",text)\n            self.assertIn(\"全部证据合断\",text)\n            self.assertNotIn(\"宫内吉凶能量：\",text)\n            self.assertNotIn(\"五级吉凶净分\",text)\n            self.assertNotIn(\"原始净分\",text)\n            self.assertNotIn(\"天干仅列强弱\",text)\n            self.assertNotIn(\"合计-7分\",text)\n            self.assertNotIn(\"最后按±5\",text)\n            self.assertFalse(any(s[\"id\"]==\"89_quant\" for s in report[\"sections\"]))\n            self.assertIsNotNone(report[\"full_health_role_strength_network\"]\n                                  [\"candidate_five_grade_quantization\"][\"summary\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_customer_unscored_20261026.py",
+          "line": 28,
+          "code": "self.assertIn(\"全部证据合断\",text)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_actual_other_door_break_uses_two_level_shift (door='景门', palace=7)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_actual_other_door_break_uses_two_level_shift(self):\n        for name,palace in ((\"景门\",7),(\"死门\",1),(\"休门\",9),(\"开门\",3)):\n            with self.subTest(door=name,palace=palace):\n                d=detail(name,palace)\n                self.assertEqual(d[\"door\"][\"user_cell_col\"],\"门破\")\n                p=door_break_penalty_policy(\n                    door_name=name,palace=palace,door_relation=\"门破\")\n                self.assertTrue(p[\"apply_extra_two_level_shift\"])\n                self.assertEqual(p[\"two_level_shift\"],2)\n                self.assertTrue(_quantize_one(\n                    \"medicine\",d,five_not_encounter=False)[\n                        \"palace_score\"][\"door_break\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 57,
+          "code": "self.assertTrue(_quantize_one("
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_actual_other_door_break_uses_two_level_shift (door='死门', palace=1)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_actual_other_door_break_uses_two_level_shift(self):\n        for name,palace in ((\"景门\",7),(\"死门\",1),(\"休门\",9),(\"开门\",3)):\n            with self.subTest(door=name,palace=palace):\n                d=detail(name,palace)\n                self.assertEqual(d[\"door\"][\"user_cell_col\"],\"门破\")\n                p=door_break_penalty_policy(\n                    door_name=name,palace=palace,door_relation=\"门破\")\n                self.assertTrue(p[\"apply_extra_two_level_shift\"])\n                self.assertEqual(p[\"two_level_shift\"],2)\n                self.assertTrue(_quantize_one(\n                    \"medicine\",d,five_not_encounter=False)[\n                        \"palace_score\"][\"door_break\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 57,
+          "code": "self.assertTrue(_quantize_one("
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_actual_other_door_break_uses_two_level_shift (door='休门', palace=9)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_actual_other_door_break_uses_two_level_shift(self):\n        for name,palace in ((\"景门\",7),(\"死门\",1),(\"休门\",9),(\"开门\",3)):\n            with self.subTest(door=name,palace=palace):\n                d=detail(name,palace)\n                self.assertEqual(d[\"door\"][\"user_cell_col\"],\"门破\")\n                p=door_break_penalty_policy(\n                    door_name=name,palace=palace,door_relation=\"门破\")\n                self.assertTrue(p[\"apply_extra_two_level_shift\"])\n                self.assertEqual(p[\"two_level_shift\"],2)\n                self.assertTrue(_quantize_one(\n                    \"medicine\",d,five_not_encounter=False)[\n                        \"palace_score\"][\"door_break\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 57,
+          "code": "self.assertTrue(_quantize_one("
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_actual_other_door_break_uses_two_level_shift (door='开门', palace=3)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_actual_other_door_break_uses_two_level_shift(self):\n        for name,palace in ((\"景门\",7),(\"死门\",1),(\"休门\",9),(\"开门\",3)):\n            with self.subTest(door=name,palace=palace):\n                d=detail(name,palace)\n                self.assertEqual(d[\"door\"][\"user_cell_col\"],\"门破\")\n                p=door_break_penalty_policy(\n                    door_name=name,palace=palace,door_relation=\"门破\")\n                self.assertTrue(p[\"apply_extra_two_level_shift\"])\n                self.assertEqual(p[\"two_level_shift\"],2)\n                self.assertTrue(_quantize_one(\n                    \"medicine\",d,five_not_encounter=False)[\n                        \"palace_score\"][\"door_break\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 57,
+          "code": "self.assertTrue(_quantize_one("
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_exact_two_are_still_door_break_but_skip_shift (door='生门', palace=1)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_exact_two_are_still_door_break_but_skip_shift(self):\n        for name,palace in ((\"生门\",1),(\"景门\",6)):\n            with self.subTest(door=name,palace=palace):\n                x=detail(name,palace)\n                self.assertEqual(x[\"door\"][\"user_cell_col\"],\"门破\")\n                strength=x[\"door\"][\"strength_label\"]\n                policy=door_break_penalty_policy(\n                    door_name=name,palace=palace,\n                    door_relation=x[\"door\"][\"user_cell_col\"])\n                self.assertTrue(policy[\"has_door_break\"])\n                self.assertTrue(policy[\"no_extra_two_level_shift\"])\n                self.assertFalse(policy[\"apply_extra_two_level_shift\"])\n                self.assertEqual(policy[\"two_level_shift\"],0)\n                self.assertEqual(x[\"door\"][\"strength_label\"],strength)\n                audited=_quantize_one(\"medicine\",x,five_not_encounter=False)\n                self.assertEqual(audited[\"door\"][\"strength\"],strength)\n                self.assertIn(audited[\"door\"][\"status\"],(\"calculated\",\"neutral\"))\n                self.assertIsNotNone(audited[\"door\"][\"score\"])\n                self.assertFalse(audited[\"palace_score\"][\"door_break\"])\n                self.assertEqual(audited[\"door\"][\"applied_door_break_shift\"],0)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 41,
+          "code": "audited=_quantize_one(\"medicine\",x,five_not_encounter=False)"
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_exact_two_are_still_door_break_but_skip_shift (door='景门', palace=6)",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_exact_two_are_still_door_break_but_skip_shift(self):\n        for name,palace in ((\"生门\",1),(\"景门\",6)):\n            with self.subTest(door=name,palace=palace):\n                x=detail(name,palace)\n                self.assertEqual(x[\"door\"][\"user_cell_col\"],\"门破\")\n                strength=x[\"door\"][\"strength_label\"]\n                policy=door_break_penalty_policy(\n                    door_name=name,palace=palace,\n                    door_relation=x[\"door\"][\"user_cell_col\"])\n                self.assertTrue(policy[\"has_door_break\"])\n                self.assertTrue(policy[\"no_extra_two_level_shift\"])\n                self.assertFalse(policy[\"apply_extra_two_level_shift\"])\n                self.assertEqual(policy[\"two_level_shift\"],0)\n                self.assertEqual(x[\"door\"][\"strength_label\"],strength)\n                audited=_quantize_one(\"medicine\",x,five_not_encounter=False)\n                self.assertEqual(audited[\"door\"][\"strength\"],strength)\n                self.assertIn(audited[\"door\"][\"status\"],(\"calculated\",\"neutral\"))\n                self.assertIsNotNone(audited[\"door\"][\"score\"])\n                self.assertFalse(audited[\"palace_score\"][\"door_break\"])\n                self.assertEqual(audited[\"door\"][\"applied_door_break_shift\"],0)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 41,
+          "code": "audited=_quantize_one(\"medicine\",x,five_not_encounter=False)"
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_door_break_exception_vnext.DoorBreakNoExtraPenalty.test_user_now_defines_door_intrinsic_polarity",
+      "outcome": "error",
+      "exception_type": "UnboundLocalError",
+      "message": "cannot access local variable 'bottom' where it is not associated with a value",
+      "test_source": "tests/test_health_door_break_exception_vnext.py",
+      "method_source": "    def test_user_now_defines_door_intrinsic_polarity(self):\n        x=_quantize_one(\"illness\",detail(\"生门\",1),five_not_encounter=False)\n        self.assertIsNotNone(x[\"door\"][\"score\"])\n        self.assertEqual(x[\"door\"][\"baseline\"],3)\n        self.assertNotIn(\"door\",x[\"palace_score\"][\"unresolved_categories\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_door_break_exception_vnext.py",
+          "line": 158,
+          "code": "x=_quantize_one(\"illness\",detail(\"生门\",1),five_not_encounter=False)"
+        },
+        {
+          "path": "src/wengua/health_quant_overlay_vnext.py",
+          "line": 196,
+          "code": "\"earth\":stem_intrinsic_score(bottom) if bottom else None,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_first_macro_vnext.FirstStageMacroFacts.test_fuyin_and_fanyin_tempo_do_not_cast_good_or_bad_vote",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'伏吟主慢' not found in '本时不犯五不遇。 伏吟、反吟并见，缓急须看用神。'",
+      "test_source": "tests/test_health_first_macro_vnext.py",
+      "method_source": "    def test_fuyin_and_fanyin_tempo_do_not_cast_good_or_bad_vote(self):\n        macro={\n            \"five_not_encounter\":{\n                \"triggered\":False,\"hour_stem\":\"辛\",\"day_stem\":\"甲\"},\n            \"fuyin_fanyin\":{\n                \"star\":\"伏吟\",\"door\":\"反吟\",\"pace\":\"混合\"},\n            \"tempo\":\"mixed\"}\n        txt=render_first_stage_macro(macro)\n        self.assertIn(\"伏吟主慢\",txt)\n        self.assertIn(\"反吟主快\",txt)\n        self.assertIn(\"缓急不自动等于吉凶\",txt)\n        for state,label,expected in (\n            (\"slow\",\"伏吟\",\"伏吟主慢\"),\n            (\"fast\",\"反吟\",\"反吟主快\")):\n            macro[\"tempo\"]=state\n            macro[\"fuyin_fanyin\"]={\"star\":label,\"door\":label}\n            self.assertIn(expected,render_first_stage_macro(macro))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_first_macro_vnext.py",
+          "line": 100,
+          "code": "self.assertIn(\"伏吟主慢\",txt)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_first_macro_vnext.FirstStageMacroFacts.test_live_cast_macro_before_selected_palace_sections",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'五不遇时' not found in '本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。'",
+      "test_source": "tests/test_health_first_macro_vnext.py",
+      "method_source": "    def test_live_cast_macro_before_selected_palace_sections(self):\n        out=auto_cast_health_review_text(\n            iso=\"2026-10-22T12:00:00-04:00\",\n            timezone_name=\"America/New_York\",inquiry=QUERY)\n        macro=out[\"first_stage_macro\"]\n        self.assertEqual(macro[\"version\"],\"user_health_macro_first_20261023_v1\")\n        chart={\"palaces\":out[\"nine_palaces\"],\n               \"hour_ganzhi\":out[\"four_pillars\"][\"hour\"]}\n        self.assertEqual(macro[\"fuyin_fanyin\"],fuyin_fanyin_facts(chart))\n        self.assertIn(macro[\"tempo\"],\n                      (\"fast\",\"slow\",\"mixed\",\"not_assessed_from_fuyin\"))\n        self.assertTrue(macro[\"tempo_is_not_auspiciousness\"])\n        self.assertEqual(out[\"sections\"][0][\"id\"],\"01_macro\")\n        self.assertIn(\"五不遇时\",out[\"sections\"][0][\"text\"])\n        self.assertIn(\"伏吟\",out[\"sections\"][0][\"text\"])\n        self.assertIn(\"反吟\",out[\"sections\"][0][\"text\"])\n        self.assertTrue(out[\"reading_text\"].startswith(\"起盘总纲\"))\n        # Latest signed-energy conclusion demotes old count-only text.\n        self.assertNotIn(\"宫位五级吉凶净分合断\",out[\"reading_text\"])\n        self.assertIn(\"candidate_five_grade_quantization\",\n                      out[\"full_health_role_strength_network\"])\n        self.assertIn(\"天芮病宫\",out[\"reading_text\"])\n        self.assertIn(\"八神\",out[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_first_macro_vnext.py",
+          "line": 47,
+          "code": "self.assertIn(\"五不遇时\",out[\"sections\"][0][\"text\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_first_macro_vnext.FirstStageMacroFacts.test_real_not_encounter_hour_counts_exactly_one_global_bad_fact",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'主诸事凶' not found in '五不遇时，问事多阻，宜审慎而行。 星门无整盘伏吟反吟，应期须另参。'",
+      "test_source": "tests/test_health_first_macro_vnext.py",
+      "method_source": "    def test_real_not_encounter_hour_counts_exactly_one_global_bad_fact(self):\n        # Find a REAL future-free ordinary dated chart, never invent a\n        # day/hour stem pair inconsistent with the actual casting calendar.\n        day=datetime.fromisoformat(\"2026-10-01T12:00:00-04:00\")\n        found=None\n        for n in range(12):\n            iso=(day+timedelta(days=n)).isoformat()\n            clock=solar_chart_clock(iso,\"America/New_York\")\n            p=clock[\"four_pillars\"]\n            if five_not_encounter(p[\"day\"],p[\"hour\"])[\"triggered\"]:\n                found=iso\n                break\n        self.assertIsNotNone(found,\"Expected at least one five-not-encounter date\")\n        # At a 五不遇时 instant the original self-day stem can be 甲 and\n        # hide; do NOT fake its placement to force a self reading. Instead\n        # use an explicitly bound real 乾六 father as a proxy patient.\n        out=auto_cast_health_review_text(\n            iso=found,timezone_name=\"America/New_York\",\n            inquiry={\"intent\":\"severity\",\"relationship\":\"father\",\n                     \"consultation_context\":\"direct_proxy\"})\n        macro=out[\"first_stage_macro\"]\n        self.assertTrue(macro[\"five_not_encounter_triggered\"])\n        self.assertIn(\"主诸事凶\",out[\"sections\"][0][\"text\"])\n        evidence=out[\"evidence_ledger\"]\n        hits=[e for e in evidence[\"adverse\"]\n              if e[\"id\"].startswith(\"macro:five_not_encounter:\")]\n        self.assertEqual(len(hits),1)\n        self.assertEqual(\n            out[\"evidence_counts\"][\"qualified_adverse\"],\n            len(out[\"evidence_ledger\"][\"adverse\"]))\n        self.assertNotIn(\n            \"macro:five_not_encounter\",str(out[\"evidence_ledger\"][\"favorable\"]))\n        self.assertTrue(out[\"no_scoring\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_first_macro_vnext.py",
+          "line": 80,
+          "code": "self.assertIn(\"主诸事凶\",out[\"sections\"][0][\"text\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_quant_overlay_vnext.CurrentQuantReview.test_selected_roles_real_tier_not_imaginary_god_door_case",
+      "outcome": "error",
+      "exception_type": "KeyError",
+      "message": "'qian'",
+      "test_source": "tests/test_health_quant_overlay_vnext.py",
+      "method_source": "    def test_selected_roles_real_tier_not_imaginary_god_door_case(self):\n        r=self.report\n        net=r[\"full_health_role_strength_network\"]\n        q=net[\"candidate_five_grade_quantization\"]\n        self.assertIn(q[\"summary\"][\"status\"],(\"unresolved_palaces\",\"saturated_five_grade\",\"calculated\"))\n        self.assertEqual(q[\"summary\"][\"score\"],None if q[\"summary\"][\"pending_palaces\"] else q[\"summary\"][\"score\"])\n        self.assertEqual(q[\"roles\"][\"illness\"][\"star\"][\"polarity\"],\"凶\")\n        self.assertEqual(q[\"roles\"][\"doctor\"][\"star\"][\"polarity\"],\"吉\")\n        for role in (\"illness\",\"doctor\",\"patient\",\"medicine\",\"hour\"):\n            row=q[\"roles\"][role]\n            self.assertIn(row[\"door\"][\"status\"],(\"calculated\",\"neutral\"))\n            self.assertIsNotNone(row[\"door\"][\"score\"])\n            self.assertIn(row[\"door\"][\"applied_door_break_shift\"],(0,2))\n            self.assertTrue(row[\"door\"][\"strength_lookup_unchanged\"])\n            self.assertEqual(row[\"deity\"][\"status\"],\"calculated\")\n            self.assertIn(row[\"deity\"][\"score\"],range(-5,6))\n            self.assertIn(row[\"pattern\"][\"status\"],\n                             (\"calculated\",\"nontriggered_patterns_excluded_from_current_score\"))\n            self.assertIn(row[\"palace_score\"][\"status\"],(\n                \"incomplete_components\",\"void_signed_three_shift\",\n                \"calculated\",\"saturated_five_grade\"))\n        self.assertEqual(q[\"auxiliary_qian_kun\"][\"qian\"][\"selected_if_patient_gender_known\"], q[\"selected_gender_palace\"]==6)\n        self.assertIn(\"qian\",q[\"auxiliary_qian_kun\"])\n        self.assertIn(\"kun\",q[\"auxiliary_qian_kun\"])\n        self.assertNotIn(\"宫位五级吉凶净分合断\",r[\"reading_text\"])\n        self.assertIn(\"±5\",render_quant_review(q))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_quant_overlay_vnext.py",
+          "line": 37,
+          "code": "self.assertEqual(q[\"auxiliary_qian_kun\"][\"qian\"][\"selected_if_patient_gender_known\"], q[\"selected_gender_palace\"]==6)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_relationship_language_vnext.NaturalDiseaseRoleInterpretation.test_illness_attacks_others_must_not_be_reversed",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'生扶病宫' not found in '天心医生宫生天芮病宫；本宫独立用神力量大，天芮病星独立用神力量小。五行方向为生病，实际生扶程度按两枚用神各自力量及限制判断，不凭宫位吉凶数字推算作用强弱。'",
+      "test_source": "tests/test_health_relationship_language_vnext.py",
+      "method_source": "    def test_illness_attacks_others_must_not_be_reversed(self):\n        forced=source(\"medicine\",\"被克\",\"绝对主克\")\n        partial=source(\"medicine\",\"被克\",\"减力克制\")\n        self.assertIn(\"病宫有力克制本方\",forced)\n        self.assertIn(\"病宫虽来克本方，但克力有限\",partial)\n        self.assertIn(\"生扶病宫\",source(\"doctor\",\"生\",None))\n        self.assertIn(\"不是主动克病\",source(\"doctor\",\"被生\",None))\n        self.assertIn(\"同气相持\",source(\"patient\",\"比和\",None))\n        self.assertIn(\"不能虚构两宫的相克\",source(\"hour\",\"同宫\",None))\n        self.assertIn(\"尚未形成唯一有效结论\",source(\"chief\",\"克\",None,status=\"factor_power_pending\"))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_relationship_language_vnext.py",
+          "line": 46,
+          "code": "self.assertIn(\"生扶病宫\",source(\"doctor\",\"生\",None))"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_relationship_language_vnext.NaturalDiseaseRoleInterpretation.test_real_caster_selected_roles_have_grounded_prose",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'值符大吉神' not found in '时局总纲：\\n本时不犯五不遇。 天显时逢伏吟，吉时仍扶所取实宫，然助势有所收敛。 伏吟主慢。\\n\\n天芮病宫：\\n落坤二宫；九星天芮星大凶，八门死门极大凶，八神螣蛇生宫、中凶；天盘干己势极大、丙势小，地盘干己势极大、中五寄干丙；天地格：己加己「地户逢鬼」（凶）、丙加丙「月奇孛师」（凶）；空亡不空、六仪击刑、本宫驿马。宫象极大凶。 坤二承中五寄干，两重天地格并参，中五不另起宫象。 病星格局「结党营私」。\\n\\n天心医生：\\n落乾六宫；九星天心星极小吉，八门开门大吉，八神九天比和、大吉；天盘干丁势中等，地盘干丁势中等；天地格：丁加丁「奇入太阴」（吉）；空亡不空、无特别刑墓迫。宫象极大吉。 天心星势极小；受病宫生，非主动制病。\\n\\n乙奇医药：\\n落巽四宫；九星天辅星中吉，八门杜门中平，八神六合比和、大吉；天盘干乙势大，地盘干乙势大；天地格：乙加乙「日奇伏吟」（凶）；空亡不空、无特别刑墓迫。宫象小吉。 乙势大；虽有克向，效力未定。\\n\\n患者用神：\\n落兑七宫；九星天柱星极小凶，八门惊门大凶，八神值符生宫、中吉；天盘干癸势极小，地盘干癸势极小；天地格：癸加癸「天网四张」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 癸势极小；受病宫生，非主动制病。\\n\\n时干事体：\\n与前述患者用神同在兑七宫，合看该宫象。 甲势中等；受病宫生，非主动制病。\\n\\n值符护持宫：\\n与前述患者用神同在兑七宫，合看该宫象。 值符势中等；受病宫生，非主动制病。\\n\\n综合断语：\\n病星天芮在坤二宫，势大，宫象极大凶；患者癸在兑七宫，势极小，宫象极大凶，受病宫生。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势大，虽克病，效力未明。\\n\\n另参时干事体甲在兑七宫，势中等，受病宫生；大吉神值符在兑七宫，势中等，受病宫生；兑七宫得值符同宫扶助。\\n\\n综上所述，此病为极大吉；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在申；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_relationship_language_vnext.py",
+      "method_source": "    def test_real_caster_selected_roles_have_grounded_prose(self):\n        report=auto_cast_health_review_text(\n            iso=\"2025-10-21T03:00:00-04:00\",\n            timezone_name=\"America/New_York\",\n            inquiry={\"intent\":\"severity\",\"relationship\":\"self\",\n                     \"consultation_context\":\"direct_self\"})\n        net=report[\"full_health_role_strength_network\"]\n        for key in (\"doctor\",\"medicine\",\"patient\",\"hour\",\"chief\"):\n            self.assertIn(key,net[\"nodes\"])\n            term={\"doctor\":\"天心医生\",\"medicine\":\"乙奇医药\",\n                  \"patient\":\"患者用神\",\"hour\":\"时干事体\",\n                  \"chief\":\"值符大吉神\"}[key]\n            self.assertIn(term,report[\"reading_text\"])\n        chief=net[\"nodes\"][\"chief\"]\n        details=net[\"complete_selected_palace_audits\"][\"chief\"]\n        from src.wengua.health_intrinsic_scoring_vnext import GOD_RELATIONS\n        self.assertEqual(chief[\"symbol\"],\"值符\")\n        self.assertEqual(chief[\"kind\"],\"deity\")\n        self.assertIsNone(chief[\"month_stage\"])\n        self.assertEqual(chief[\"strength\"],GOD_RELATIONS[\n            details[\"deity\"][\"nominal_relation\"]])\n        # Public preview exports full palace facts, not internal role cache.\n        self.assertEqual(details[\"primary_strength\"][\"kind\"],\"deity\")\n        self.assertTrue(details[\"stars\"])  # original co-host star still shown\n        self.assertIn(\"克制\",report[\"reading_text\"])\n        self.assertNotIn(\"宫内吉凶能量\",report[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_relationship_language_vnext.py",
+          "line": 64,
+          "code": "self.assertIn(term,report[\"reading_text\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_two_random_template_20261026.TwoUnbiasedLiveTemplateCases.test_two_new_real_hour_customer_readings",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'古文' not found in '时局总纲：\\n本时不犯五不遇。 伏吟主慢。\\n\\n天芮病宫：\\n落坤二宫；九星天芮星大凶，八门景门中平，八神螣蛇生宫、中凶；天盘干辛、丁势大，地盘干辛、中五寄干丁；天地格：辛加辛「伏吟天庭」（凶）、丁加丁「奇入太阴」（吉）；空亡假空、无特别刑墓迫。宫象极小吉。 坤二承中五寄干，两重天地格并参，中五不另起宫象。 病星格局「结党营私」。\\n\\n天心医生：\\n落乾六宫；九星天心星极小吉，八门惊门大凶，八神六合被宫克、小吉；天盘干丙势极小，地盘干丙势极小；天地格：丙加丙「月奇孛师」（凶）；空亡不空、天盘入墓、地盘入墓。宫象中凶。 天心星势极小；受病宫生，非主动制病。\\n\\n乙奇医药：\\n落兑七宫；九星天柱星极小凶，八门死门大凶，八神太阴比和、大吉；天盘干乙势极小，地盘干乙势极小；天地格：乙加乙「日奇伏吟」（凶）；空亡假空、无特别刑墓迫。宫象极小凶。 乙势极小；受病宫生，非主动制病。\\n\\n患者用神：\\n与前述乙奇医药同在兑七宫，合看该宫象。\\n\\n时干事体：\\n落离九宫；九星天英星极大凶，八门杜门中平，八神值符被宫生、极大吉；天盘干己势极大，地盘干己势极大；天地格：己加己「地户逢鬼」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 己势极大；生扶病宫，不作制病。\\n\\n值符护持宫：\\n与前述时干事体同在离九宫，合看该宫象。 值符势极大；生扶病宫，不作制病。\\n\\n综合断语：\\n病星天芮在坤二宫，势大，宫象极小吉，逢假空；患者乙在兑七宫，势极小，宫象极小凶，逢假空。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势极小，受病宫生。\\n\\n另参时干事体己在离九宫，势极大，生扶病宫；大吉神值符在离九宫，势极大，生扶病宫；坤二宫逢空，天盘丁奇同宫的吉助减弱，尚有余气；离九宫得值符同宫扶助。\\n\\n综上所述，此病为大凶；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在巳；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_two_random_template_20261026.py",
+      "method_source": "    def test_two_new_real_hour_customer_readings(self):\n        outputs = random_two_new_charts()\n        self.assertEqual(len(outputs),2)\n        for case in outputs:\n            report=case[\"report\"]\n            self.assertEqual(len(report[\"nine_palaces\"]),9)\n            self.assertIn(\"天芮\",report[\"reading_text\"])\n            self.assertIn(\"天心\",report[\"reading_text\"])\n            self.assertIn(\"古文\",report[\"reading_text\"])\n            self.assertTrue(report[\"sections\"])\n            self.assertFalse(report[\"medical_validity_claimed\"])\n            print(\"WENGUA_20261026_TWO_RANDOM=\"+json.dumps({\n                \"seed\":SEED,\"draw\":case[\"draw\"],\"instant\":case[\"instant\"],\n                \"rejected_before\":case[\"rejected_before\"],\n                \"four_pillars\":report[\"four_pillars\"],\n                \"solar_term\":report[\"solar_term\"],\n                \"bureau\":report[\"bureau\"],\n                \"first_stage_macro\":report[\"first_stage_macro\"],\n                \"role_palaces\":report[\"full_health_role_strength_network\"].get(\"nodes\"),\n                \"quant\":report[\"full_health_role_strength_network\"].get(\"candidate_five_grade_quantization\"),\n                \"verdict\":report[\"verdict\"],\n                \"sections\":report[\"sections\"],\n                \"reading_text\":report[\"reading_text\"]\n            },ensure_ascii=False,separators=(\",\",\":\"),default=str))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_two_random_template_20261026.py",
+          "line": 64,
+          "code": "self.assertIn(\"古文\",report[\"reading_text\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_user_final_signed_template_vnext.UserSignedFinalScore.test_real_2025_chart_tianqin_fact_not_second_illness_star",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "False is not true",
+      "test_source": "tests/test_health_user_final_signed_template_vnext.py",
+      "method_source": "    def test_real_2025_chart_tianqin_fact_not_second_illness_star(self):\n        out=auto_cast_health_review_text(\n            iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)\n        net=out[\"full_health_role_strength_network\"]\n        illness=net[\"candidate_five_grade_quantization\"][\"roles\"][\"illness\"]\n        audit=net[\"complete_selected_palace_audits\"][\"illness\"]\n        self.assertIn(\"天芮星\",[x[\"name\"] for x in audit[\"stars\"]])\n        self.assertEqual(len([x for x in illness[\"star\"][\"per_star\"]\n                              if x.get(\"score\") is not None]),1)\n        self.assertEqual(illness[\"star\"][\"per_star\"][0][\"symbol\"],\"天芮星\")\n        self.assertTrue(illness[\"star\"][\"illness_tianrui_only\"])\n        self.assertTrue(illness[\"pattern\"][\"only_tianrui_carried_stem_if_illness\"])\n        real_top={x[\"carried_stem\"] for x in audit[\"stars\"]\n                  if x[\"name\"]==\"天芮星\"}\n        self.assertTrue(real_top)\n        self.assertTrue(all(\n            x[\"key\"].split(\"/\")[0] in real_top\n            for x in illness[\"pattern\"][\"matches\"]))\n        self.assertIn(\"chief\",net[\"nodes\"])\n        self.assertIn(\"hour\",net[\"nodes\"])\n        self.assertEqual(net[\"nodes\"][\"chief\"][\"palace\"],next(\n            int(p) for p,c in out[\"nine_palaces\"].items()\n            if c[\"deity\"]==\"值符\"))\n        self.assertIn(\"值符护持宫\",out[\"reading_text\"])\n        self.assertIn(\"时干事体\",out[\"reading_text\"])\n        self.assertIn(\"全部因素推断后，此宫为\",out[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_user_final_signed_template_vnext.py",
+          "line": 79,
+          "code": "self.assertTrue(illness[\"pattern\"][\"only_tianrui_carried_stem_if_illness\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_user_final_signed_template_vnext.UserSignedFinalScore.test_user_requires_both_real_qian_and_kun_auxiliary_palaces (sex='male')",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'乾宫辅助（男）' not found in ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神', '时干事体', '值符护持宫', '综合断语', '时空及应期']",
+      "test_source": "tests/test_health_user_final_signed_template_vnext.py",
+      "method_source": "    def test_user_requires_both_real_qian_and_kun_auxiliary_palaces(self):\n        for sex in (\"male\",\"female\"):\n            with self.subTest(sex=sex):\n                r=auto_cast_health_review_text(\n                    iso=DATE,timezone_name=ZONE,\n                    inquiry={**INQUIRY,\"patient_sex\":sex})\n                titles=[x[\"title\"] for x in r[\"sections\"]]\n                self.assertFalse(any(x.startswith(\"乾坤辅助：\") for x in titles))\n                self.assertIn(\"乾宫辅助（男）\" if sex==\"male\" else \"坤宫辅助（女）\",titles)\n                self.assertNotIn(\"坤宫辅助（女）\" if sex==\"male\" else \"乾宫辅助（男）\",titles)\n                q=r[\"full_health_role_strength_network\"][\n                    \"candidate_five_grade_quantization\"]\n                self.assertIn(\"qian\",q[\"auxiliary_qian_kun\"])\n                self.assertIn(\"kun\",q[\"auxiliary_qian_kun\"])\n        none=auto_cast_health_review_text(\n            iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)\n        self.assertFalse(any(x[\"title\"].startswith(\"乾坤辅助：\") for x in none[\"sections\"]))\n        # Unprovided sex is not the same as guessing two patient identities.\n        self.assertIsNone(none[\"full_health_role_strength_network\"][\n            \"selected_gender_palace\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_user_final_signed_template_vnext.py",
+          "line": 103,
+          "code": "self.assertIn(\"乾宫辅助（男）\" if sex==\"male\" else \"坤宫辅助（女）\",titles)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_user_final_signed_template_vnext.UserSignedFinalScore.test_user_requires_both_real_qian_and_kun_auxiliary_palaces (sex='female')",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'坤宫辅助（女）' not found in ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神', '时干事体', '值符护持宫', '综合断语', '时空及应期']",
+      "test_source": "tests/test_health_user_final_signed_template_vnext.py",
+      "method_source": "    def test_user_requires_both_real_qian_and_kun_auxiliary_palaces(self):\n        for sex in (\"male\",\"female\"):\n            with self.subTest(sex=sex):\n                r=auto_cast_health_review_text(\n                    iso=DATE,timezone_name=ZONE,\n                    inquiry={**INQUIRY,\"patient_sex\":sex})\n                titles=[x[\"title\"] for x in r[\"sections\"]]\n                self.assertFalse(any(x.startswith(\"乾坤辅助：\") for x in titles))\n                self.assertIn(\"乾宫辅助（男）\" if sex==\"male\" else \"坤宫辅助（女）\",titles)\n                self.assertNotIn(\"坤宫辅助（女）\" if sex==\"male\" else \"乾宫辅助（男）\",titles)\n                q=r[\"full_health_role_strength_network\"][\n                    \"candidate_five_grade_quantization\"]\n                self.assertIn(\"qian\",q[\"auxiliary_qian_kun\"])\n                self.assertIn(\"kun\",q[\"auxiliary_qian_kun\"])\n        none=auto_cast_health_review_text(\n            iso=DATE,timezone_name=ZONE,inquiry=INQUIRY)\n        self.assertFalse(any(x[\"title\"].startswith(\"乾坤辅助：\") for x in none[\"sections\"]))\n        # Unprovided sex is not the same as guessing two patient identities.\n        self.assertIsNone(none[\"full_health_role_strength_network\"][\n            \"selected_gender_palace\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_user_final_signed_template_vnext.py",
+          "line": 103,
+          "code": "self.assertIn(\"乾宫辅助（男）\" if sex==\"male\" else \"坤宫辅助（女）\",titles)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_original_centre_5_head_hour_uses_only_source_attested_kun_host",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "ValueError not raised",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_original_centre_5_head_hour_uses_only_source_attested_kun_host(self):\n        from src.wengua.casting_shenqi import layout_from_explicit_bureau\n        from src.wengua.health_severity_v25 import fuyin_fanyin_facts\n        q=layout_from_explicit_bureau(dun=\"yin\",ju=7,hour_ganzhi=\"甲申\")\n        self.assertEqual(q[\"xun_shou\"],\"甲申\")\n        self.assertEqual(q[\"xun_start_palace\"],5)\n        self.assertEqual(q[\"value_star\"],\"天禽星\")\n        self.assertEqual(q[\"value_star_palace\"],2)\n        self.assertEqual(q[\"value_door\"],\"死门\")\n        self.assertEqual(q[\"value_door_palace\"],2)\n        self.assertTrue(fuyin_fanyin_facts(q)[\"both_fuyin\"])\n        from src.wengua.health_severity_template import _find_heaven_stem\n        # This is 甲申 itself: the hour event is hidden under 六仪庚,\n        # carried by 天禽 at 坤2, never a manufactured 天盘甲.\n        self.assertEqual(q[\"hidden_stem\"],\"庚\")\n        self.assertEqual(_find_heaven_stem(q,\"甲\")[\"palace\"],2)\n        self.assertEqual(_find_heaven_stem(q,\"庚\")[\"palace\"],2)\n        # Previously blocked unknown NONZERO centre routes stay blocked.\n        with self.assertRaisesRegex(ValueError,\"centre 5\"):\n            layout_from_explicit_bureau(dun=\"yang\",ju=1,hour_ganzhi=\"戊辰\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 40,
+          "code": "with self.assertRaisesRegex(ValueError,\"centre 5\"):"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.FixedColleagueNatalYi.test_all_adverse_and_good_actual_palaces_counted_once",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "False is not true",
+      "test_source": "tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+      "method_source": "    def test_all_adverse_and_good_actual_palaces_counted_once(self):\n        q=self.one[\"summary\"]\n        actual=q[\"effective_palace_scores\"]\n        self.assertEqual({int(k) for k in actual},{1,3,4,7,8})\n        self.assertEqual(actual[\"1\"],-5)\n        self.assertEqual(actual[\"8\"],-5)\n        self.assertEqual(q[\"post_void_known_sum\"],sum(actual.values()))\n        self.assertEqual(q[\"five_not_global_penalty\"],10)\n        self.assertEqual(q[\"five_not_penalty_per_palace\"],2)\n        self.assertEqual(q[\"five_not_penalized_unique_palace_count\"],5)\n        self.assertTrue(q[\"relationship_overlays_audit_only\"])\n        self.assertEqual(q[\"raw_final_before_saturation\"],sum(actual.values())-10)\n        self.assertEqual(q[\"raw_final_before_saturation\"],-8)\n        self.assertEqual(q[\"score\"],-5)\n        self.assertEqual(q[\"score\"],max(-5,min(5,q[\"raw_final_before_saturation\"])))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+          "line": 34,
+          "code": "self.assertTrue(q[\"relationship_overlays_audit_only\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.FixedColleagueNatalYi.test_two_paragraphs_include_both_global_conditions",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "4 != 2",
+      "test_source": "tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+      "method_source": "    def test_two_paragraphs_include_both_global_conditions(self):\n        verdict=next(s[\"text\"] for s in self.one[\"source_sections\"]\n                     if s[\"id\"]==\"90_review\")\n        self.assertEqual(len(verdict.split(\"\\n\\n\")),2)\n        self.assertEqual(verdict.count(\"。\"),2)\n        self.assertIn(\"五不遇时成立，参与合断的每个独立实宫均减两分\",verdict)\n        self.assertIn(\"无整盘伏吟反吟\",verdict)\n        self.assertIn(\"患者年命\",verdict)\n        self.assertIn(\"艮八宫，宫象极大凶\",verdict)\n        self.assertNotIn(\"长辈坤宫\",verdict)\n        self.assertNotIn(\"长辈乾宫\",verdict)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+          "line": 43,
+          "code": "self.assertEqual(len(verdict.split(\"\\n\\n\")),2)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v75_unique_palace_five_not_20261027.FinalUniquePalaceV75.test_1920_elder_without_five_not",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "3 != -3",
+      "test_source": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+      "method_source": "    def test_1920_elder_without_five_not(self):\n        c=self.e;q=c[\"summary\"]\n        self.assertFalse(c[\"firstStage\"])\n        self.assertEqual(q[\"effective_palace_scores\"],{\"9\":5,\"7\":-5,\"3\":0,\"2\":-3})\n        self.assertEqual(q[\"unique_palace_count\"],4)\n        self.assertEqual(q[\"five_not_global_penalty\"],0)\n        self.assertEqual(q[\"raw_final_before_saturation\"],-3)\n        self.assertEqual(q[\"score\"],-3)\n        s=next(x[\"text\"] for x in c[\"source_sections\"] if x[\"id\"]==\"90_review\")\n        self.assertIn(\"此病为中凶\",s)\n        self.assertIn(\"无整盘伏吟反吟\",s)\n        self.assertNotIn(\"每个独立实宫均减两分\",s)\n        self.assertEqual(len(s.split(\"\\n\\n\")),2)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+          "line": 33,
+          "code": "self.assertEqual(q[\"raw_final_before_saturation\"],-3)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v75_unique_palace_five_not_20261027.FinalUniquePalaceV75.test_colleague_five_not_each_real_palace",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "-6 != -8",
+      "test_source": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+      "method_source": "    def test_colleague_five_not_each_real_palace(self):\n        c=self.c;q=c[\"summary\"]\n        self.assertTrue(c[\"firstStage\"])\n        self.assertEqual(q[\"effective_palace_scores\"],{\"1\":-5,\"3\":3,\"8\":-5,\"7\":5,\"4\":4})\n        self.assertEqual(q[\"unique_palace_count\"],5)\n        self.assertEqual(q[\"post_void_known_sum\"],2)\n        self.assertEqual(q[\"five_not_global_penalty\"],10)\n        self.assertEqual(q[\"raw_final_before_saturation\"],-8)\n        self.assertEqual(q[\"score\"],-5)\n        self.assertEqual(c[\"roles\"][\"natal\"][\"palace\"],c[\"roles\"][\"medicine\"][\"palace\"])\n        self.assertTrue(q[\"relationship_overlays_audit_only\"])\n        self.assertEqual(q[\"historical_overlay_total_if_stacked\"],2+q[\"relationship_bonus_score\"]-2)\n        s=next(x[\"text\"] for x in c[\"source_sections\"] if x[\"id\"]==\"90_review\")\n        self.assertIn(\"五不遇时成立，参与合断的每个独立实宫均减两分\",s)\n        self.assertIn(\"此病为极大凶\",s)\n        self.assertEqual(len(s.split(\"\\n\\n\")),2)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+          "line": 18,
+          "code": "self.assertEqual(q[\"raw_final_before_saturation\"],-8)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v75_unique_palace_five_not_20261027.FinalUniquePalaceV75.test_cultural_not_clinical",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'以上只作传统古籍象意参考' not found in '病星天芮在坎一宫，势中等，宫象极大凶；患者戊在艮八宫，势待核，宫象极大凶，虽克病，效力未明。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势大，受病宫生。\\n\\n另参时干事体丁在兑七宫，势大，生扶病宫；大吉神值符在巽四宫，势小，受病宫生；震三宫得天心星同宫扶助。\\n\\n综上所述，此病为极大凶；以上仅作传统古籍象意参考，不作现实病情判断。'",
+      "test_source": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+      "method_source": "    def test_cultural_not_clinical(self):\n        for c in (self.c,self.e):\n            s=next(x[\"text\"] for x in c[\"source_sections\"] if x[\"id\"]==\"90_review\")\n            self.assertIn(\"以上只作传统古籍象意参考\",s)\n            self.assertIn(\"不能据此判断真实病情\",s)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+          "line": 43,
+          "code": "self.assertIn(\"以上只作传统古籍象意参考\",s)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v76_three_stage_20261027.V76ThreeStage.test_1920_same_yi_twice",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "-3 != 9",
+      "test_source": "tests/test_health_v76_three_stage_20261027.py",
+      "method_source": " def test_1920_same_yi_twice(self):\n  self.audit(self.e)\n  self.assertEqual(self.e[\"summary\"][\"role_count\"],8)\n  self.assertEqual(self.e[\"roles\"][\"medicine\"][\"palace\"],self.e[\"roles\"][\"hour\"][\"palace\"])\n  grades=self.e[\"summary\"][\"effective_role_scores\"]\n  self.assertIn(\"medicine\",grades);self.assertIn(\"hour\",grades)\n  self.assertEqual(grades[\"medicine\"],grades[\"hour\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v76_three_stage_20261027.py",
+          "line": 23,
+          "code": "self.audit(self.e)"
+        },
+        {
+          "path": "tests/test_health_v76_three_stage_20261027.py",
+          "line": 13,
+          "code": "self.assertEqual(q[\"post_void_known_sum\"],sum(roles.values()))"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v76_three_stage_20261027.V76ThreeStage.test_colleague",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "2 != 8",
+      "test_source": "tests/test_health_v76_three_stage_20261027.py",
+      "method_source": " def test_colleague(self):\n  self.audit(self.c)\n  self.assertEqual(self.c[\"summary\"][\"role_count\"],7)\n  self.assertIn(\"各参与用神落宫分别扣两分\",next(x[\"text\"] for x in self.c[\"source_sections\"] if x[\"id\"]==\"90_review\"))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v76_three_stage_20261027.py",
+          "line": 19,
+          "code": "self.audit(self.c)"
+        },
+        {
+          "path": "tests/test_health_v76_three_stage_20261027.py",
+          "line": 13,
+          "code": "self.assertEqual(q[\"post_void_known_sum\"],sum(roles.values()))"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_conditional_review.FullRealChartPreview.test_different_logic_is_preview_only_not_clinically_validated",
+      "outcome": "error",
+      "exception_type": "StopIteration",
+      "message": "",
+      "test_source": "tests/test_health_vnext_conditional_review.py",
+      "method_source": "    def test_different_logic_is_preview_only_not_clinically_validated(self):\n        for row,old,review in self.results:\n            self.assertEqual(review[\"status\"],\"review_not_public\")\n            self.assertEqual(review[\"audit\"][\"actual_original_author_outcomes_not_used\"],True)\n        print(\"\\n=== Four independent source-calculated review examples (not blind outcomes) ===\")\n        for n,(row,old,review) in enumerate(self.results,1):\n            print(\"CASE\",n,row[\"local_datetime\"])\n            print(\"BASELINE\",old[\"reading_text\"].split(\"最后断词：\")[-1][:250].strip())\n            print(\"MACRO\",review[\"sections\"][0][\"text\"])\n            print(\"REVIEW\",next(x[\"text\"] for x in review[\"sections\"]\n                                if x[\"title\"]==\"全部证据合断\"))\n            print(\"GATES\",review[\"audit\"][\"missing_source_predicates\"],\n                  \"LIFECYCLE_UNIQUE\",len(review[\"audit\"][\"actual_stage_facts_unique\"]))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_vnext_conditional_review.py",
+          "line": 209,
+          "code": "print(\"REVIEW\",next(x[\"text\"] for x in review[\"sections\"]"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_conditional_review.FullRealChartPreview.test_new_readings_complete_and_no_scores_or_unverified_claims",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "Lists differ: ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神'] != ['起盘总纲：五不遇时、伏吟、反吟', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n\nFirst differing element 0:\n'时局总纲'\n'起盘总纲：五不遇时、伏吟、反吟'\n\n- ['时局总纲', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n?   ^^\n\n+ ['起盘总纲：五不遇时、伏吟、反吟', '天芮病宫', '天心医生', '乙奇医药', '患者用神']\n?   ^^  +++++++++++\n",
+      "test_source": "tests/test_health_vnext_conditional_review.py",
+      "method_source": "    def test_new_readings_complete_and_no_scores_or_unverified_claims(self):\n        for row,old,review in self.results:\n            self.assertEqual(review[\"four_pillars\"],row[\"four_pillars\"])\n            names=[part[\"title\"] for part in review[\"sections\"]]\n            self.assertGreaterEqual(len(names),8)\n            self.assertEqual(names[:5],[\"起盘总纲：五不遇时、伏吟、反吟\",\"天芮病宫\",\"天心医生\",\"乙奇医药\",\"患者用神\"])\n            self.assertIn(\"全部证据合断\",names)\n            self.assertEqual(names[-1],\"时空及应期\")\n            self.assertEqual(review[\"evidence_counts\"][\"qualified_favorable\"],\n                             len(review[\"evidence_ledger\"][\"favorable\"]))\n            self.assertEqual(review[\"evidence_counts\"][\"qualified_adverse\"],\n                             len(review[\"evidence_ledger\"][\"adverse\"]))\n            self.assertTrue(review[\"verdict\"][\"state\"] in\n                            {\"favorable\",\"adverse\",\"conflicted\",\"unresolved\"})\n            self.assertEqual(review[\"audit\"][\"matched_real_star_pairs\"],9)\n            self.assertEqual(review[\"audit\"][\"book_81_catalog_size\"],81)\n            self.assertEqual(review[\"audit\"][\"supplement_rules_preserved\"],42)\n            self.assertEqual(review[\"audit\"][\"composites_preserved\"],17)\n            self.assertTrue(review[\"no_scoring\"])\n            self.assertFalse(review[\"medical_validity_claimed\"])\n            self.assertNotIn(\"健康指数\",review[\"reading_text\"])\n            self.assertNotIn(\"吉凶概率\",review[\"reading_text\"])\n            self.assertNotIn(\"原书第\",review[\"reading_text\"])\n            self.assertNotIn(\"数据库\",review[\"reading_text\"])\n            keys=[t[\"fact_id\"] for t in review[\"audit\"][\"actual_stage_facts_unique\"]]\n            self.assertEqual(len(keys),len(set(keys)))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_vnext_conditional_review.py",
+          "line": 178,
+          "code": "self.assertEqual(names[:5],[\"起盘总纲：五不遇时、伏吟、反吟\",\"天芮病宫\",\"天心医生\",\"乙奇医药\",\"患者用神\"])"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_conditional_review.OldBookQuestionOnlySmoke.test_two_source_historical_roles_are_not_forced_to_self",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'时局总纲' != '起盘总纲：五不遇时、伏吟、反吟'\n- 时局总纲\n+ 起盘总纲：五不遇时、伏吟、反吟\n",
+      "test_source": "tests/test_health_vnext_conditional_review.py",
+      "method_source": "    def test_two_source_historical_roles_are_not_forced_to_self(self):\n        from scripts.replay_health_v39_fixed_cases import (\n            CASES,RANDOM_INDICES,PARENT)\n        from src.wengua.astro_calendar import solar_chart_clock\n        from src.wengua.casting_shenqi import layout_from_explicit_bureau\n        from src.wengua.health_severity_vnext_review import analyze_health_severity_review\n        seen=[]\n        for index in RANDOM_INDICES:\n            spec=CASES[index]\n            iso=spec[\"date\"]+\"T\"+spec[\"clock\"]+\":00+08:00\"\n            clock=solar_chart_clock(iso,\"Asia/Shanghai\")\n            p=clock[\"four_pillars\"]\n            self.assertEqual(p[\"day\"],spec[\"day\"])\n            self.assertEqual(p[\"hour\"],spec[\"hour\"])\n            chart=layout_from_explicit_bureau(\n                 dun=spec[\"dun\"],ju=spec[\"ju\"],hour_ganzhi=p[\"hour\"])\n            self.assertEqual(chart[\"value_star\"],spec[\"star\"])\n            self.assertEqual(chart[\"value_door\"],spec[\"door\"])\n            q={\"intent\":\"severity\",\"relationship\":spec[\"relation\"],\n               \"consultation_context\":spec.get(\"context\",\"direct_proxy\")}\n            if spec.get(\"sex\"):q[\"patient_sex\"]=spec[\"sex\"]\n            if spec.get(\"relative_specific\"):q[\"relative_specific\"]=spec[\"relative_specific\"]\n            if spec.get(\"birth_ganzhi\"):q[\"patient_birth_ganzhi\"]=spec[\"birth_ganzhi\"]\n            calendar={\"year_ganzhi\":p[\"year\"],\"month_ganzhi\":p[\"month\"],\n                      \"day_ganzhi\":p[\"day\"],\"hour_ganzhi\":p[\"hour\"],\n                      \"month_branch\":p[\"month\"][1]}\n            answer=analyze_health_severity_review(\n                chart=chart,inquiry=q,calendar=calendar,db_path=PARENT)\n            self.assertEqual(answer[\"audit\"][\"matched_real_star_pairs\"],9)\n            self.assertEqual(answer[\"audit\"][\"book_81_catalog_size\"],81)\n            self.assertEqual(answer[\"audit\"][\"supplement_rules_preserved\"],42)\n            self.assertEqual(answer[\"audit\"][\"composites_preserved\"],17)\n            self.assertTrue(answer[\"audit\"][\"actual_original_author_outcomes_not_used\"])\n            self.assertGreaterEqual(len(answer[\"sections\"]),8)\n            self.assertEqual(answer[\"sections\"][0][\"title\"],\"起盘总纲：五不遇时、伏吟、反吟\")\n            self.assertTrue(answer[\"no_scores\"])\n            seen.append((spec[\"id\"],answer[\"verdict\"][\"label\"],\n                         answer[\"audit\"][\"role_confidence\"]))\n        self.assertEqual(len({k for k,*_ in seen}),2)\n        print(\"KNOWN HISTORICAL QUESTION-ONLY SMOKE; NOT SECRET BLIND:\",seen)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_vnext_conditional_review.py",
+          "line": 255,
+          "code": "self.assertEqual(answer[\"sections\"][0][\"title\"],\"起盘总纲：五不遇时、伏吟、反吟\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_signed_customer_20261026.SignedHealthCustomerVerbatim.test_five_band_grade_wording_and_no_veto_for_completed_total (instant='2021-10-03T03:00:00-04:00')",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'全部因素推断后，此宫为' not found in '时局总纲：\\n本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。\\n\\n天芮病宫：\\n落乾六宫；九星天芮星大凶，八门惊门极大凶，八神六合被宫克、小吉；天盘干乙势极小、癸，地盘干壬势极大；天地格：乙加壬「日奇入地」（凶）、癸加壬「复见螣蛇」（凶）；空亡假空、天盘入墓。宫象小凶。 病星格局「疯狂消耗」。\\n\\n天心医生：\\n落艮八宫；九星天心星极大吉，八门休门小吉，八神螣蛇生宫、中凶；天盘干壬势大，地盘干庚势极小；天地格：壬加庚「太白擒蛇」（吉）；空亡不空、地盘入墓、门迫。宫象极大吉。 天心星势极大；生扶病宫，不作制病。\\n\\n乙奇医药：\\n与前述天芮病宫同在乾六宫，合看该宫象。 乙势极小；与病宫同宫，不另作跨宫克制。\\n\\n患者用神：\\n与前述天芮病宫同在乾六宫，合看该宫象。\\n\\n时干事体：\\n落离九宫；九星天冲星极小吉，八门杜门中平，八神九地被宫生、极大凶；天盘干丙势大，地盘干己势大；天地格：丙加己「火孛入刑」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 丙势大；虽有克向，效力未定。\\n\\n值符护持宫：\\n落震三宫；九星天蓬星极小凶，八门生门极小吉，八神值符被宫克、小吉；天盘干戊势大，地盘干丙势大；天地格：戊加丙「青龙返首」（吉）；空亡不空、六仪击刑、门迫。宫象极大吉。 值符势小；受病宫克，制约轻重依双方实际力量。\\n\\n综合断语：\\n病星天芮在乾六宫，势大，宫象小凶，逢假空；患者乙在乾六宫，势极小，宫象小凶，逢假空。\\n\\n医药两端分别看：天心势极大，生扶病宫，乙奇势极小，与病宫同宫。\\n\\n另参时干事体丙在离九宫，势大，虽克病，效力未明；大吉神值符在震三宫，势小，受病宫克；乾六宫逢空，天盘乙奇同宫的吉助减弱，尚有余气。\\n\\n综上所述，此病为中吉；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在申；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_vnext_signed_customer_20261026.py",
+      "method_source": "    def test_five_band_grade_wording_and_no_veto_for_completed_total(self):\n        self.assertIn(\"{grade}\", template()[\"macros\"][\"overall_resolved\"])\n        for iso in NEW_CLOCKS:\n            with self.subTest(instant=iso):\n                r = auto_cast_health_review_text(\n                    iso=iso, timezone_name=ZONE, inquiry=WIFE)\n                full = r[\"reading_text\"]\n                q = r[\"full_health_role_strength_network\"][\n                    \"candidate_five_grade_quantization\"]\n                self.assertNotIn(\"（天干仅列强弱）\", full)\n                self.assertIn(\"全部因素推断后，此宫为\", full)\n                self.assertNotIn(\"患者年命：\", full)\n                self.assertNotIn(\"天禽星\", full)\n                # The source's own original score is decisive only if all\n                # actually selected, de-duplicated real palaces are known.\n                score = q[\"summary\"][\"score\"]\n                if score is None:\n                    self.assertIn(\"当前不足以给出最终五档吉凶\", full)\n                else:\n                    grade = \"不凶不吉\" if score == 0 else label(score)\n                    self.assertIn(\"综上所述，此病为\" + grade.replace(\"中等吉\",\"中吉\").replace(\"中等凶\",\"中凶\") + \"。\", full)\n                    self.assertNotIn(\"宫位本体与人物关系的判断尚有分歧\", full)\n                self.assertNotIn(\"健康指数\", full)\n                self.assertEqual(\n                    full, \"\\n\\n\".join(\n                        s[\"title\"] + \"：\\n\" + s[\"text\"]\n                        for s in r[\"sections\"]))\n                self.assertNotIn(\"乾宫辅助（男）\", full)\n                self.assertIn(\"坤宫辅助（女）\", full)\n                self.assertNotIn(\"。；\", full)\n                self.assertNotIn(\"门破（另降两级）\", full)\n                self.assertFalse(any(x[\"id\"].startswith(\"09_\") for x in r[\"sections\"]))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_vnext_signed_customer_20261026.py",
+          "line": 30,
+          "code": "self.assertIn(\"全部因素推断后，此宫为\", full)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_signed_customer_20261026.SignedHealthCustomerVerbatim.test_five_band_grade_wording_and_no_veto_for_completed_total (instant='2023-04-24T21:00:00-04:00')",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'全部因素推断后，此宫为' not found in '时局总纲：\\n本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。\\n\\n天芮病宫：\\n落震三宫；九星天芮星小凶，八门休门极小吉，八神螣蛇被宫生、极大凶；天盘干丁势小、戊势极大，地盘干丙势大；天地格：丁加丙「星随月转」（吉）、戊加丙「青龙返首」（吉）；空亡真空、六仪击刑。宫象小凶。 病星格局「萌芽被扼」。\\n\\n天心医生：\\n落离九宫；九星天心星极小吉，八门伤门极小凶，八神六合生宫、中吉；天盘干己势极大，地盘干壬势小；天地格：己加壬「地网高张」（凶）；空亡不空、无特别刑墓迫。宫象小凶。 天心星势极小；受病宫生，非主动制病。\\n\\n乙奇医药：\\n落坎一宫；九星天辅星大吉，八门惊门中凶，八神九天生宫、中吉；天盘干乙势小，地盘干癸势中等；天地格：乙加癸「华盖青龙」（吉）；空亡不空、无特别刑墓迫。宫象极大吉。 乙势小；生扶病宫，不作制病。\\n\\n患者用神：\\n与前述乙奇医药同在坎一宫，合看该宫象。\\n\\n时干事体：\\n落兑七宫；九星天任星中吉，八门景门中平，八神玄武被宫生、极大凶；天盘干辛势极大，地盘干庚势极大；天地格：辛加庚「白虎出力」（凶）；空亡不空、门破。宫象极大凶。 辛势极大；虽有克向，效力未定。\\n\\n值符护持宫：\\n落艮八宫；九星天英星大凶，八门开门极大吉，八神值符比和、大吉；天盘干壬势极小，地盘干辛势极大；天地格：壬加辛「螣蛇相缠」（凶）；空亡假空、无特别刑墓迫。宫象极小凶。 值符势大；逢空，护持受限。\\n\\n综合断语：\\n病星天芮在震三宫，势小，宫象小凶，逢真空；患者乙在坎一宫，势小，宫象极大吉。\\n\\n医药两端分别看：天心势极小，受病宫生，乙奇势小，生扶病宫。\\n\\n另参时干事体辛在兑七宫，势极大，虽克病，效力未明；大吉神值符在艮八宫，势大，受病宫克；震三宫逢空，天盘丁奇同宫的吉助减弱，尚有余气；值符逢空，护持受限。\\n\\n综上所述，此病为大凶；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在巳；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_health_vnext_signed_customer_20261026.py",
+      "method_source": "    def test_five_band_grade_wording_and_no_veto_for_completed_total(self):\n        self.assertIn(\"{grade}\", template()[\"macros\"][\"overall_resolved\"])\n        for iso in NEW_CLOCKS:\n            with self.subTest(instant=iso):\n                r = auto_cast_health_review_text(\n                    iso=iso, timezone_name=ZONE, inquiry=WIFE)\n                full = r[\"reading_text\"]\n                q = r[\"full_health_role_strength_network\"][\n                    \"candidate_five_grade_quantization\"]\n                self.assertNotIn(\"（天干仅列强弱）\", full)\n                self.assertIn(\"全部因素推断后，此宫为\", full)\n                self.assertNotIn(\"患者年命：\", full)\n                self.assertNotIn(\"天禽星\", full)\n                # The source's own original score is decisive only if all\n                # actually selected, de-duplicated real palaces are known.\n                score = q[\"summary\"][\"score\"]\n                if score is None:\n                    self.assertIn(\"当前不足以给出最终五档吉凶\", full)\n                else:\n                    grade = \"不凶不吉\" if score == 0 else label(score)\n                    self.assertIn(\"综上所述，此病为\" + grade.replace(\"中等吉\",\"中吉\").replace(\"中等凶\",\"中凶\") + \"。\", full)\n                    self.assertNotIn(\"宫位本体与人物关系的判断尚有分歧\", full)\n                self.assertNotIn(\"健康指数\", full)\n                self.assertEqual(\n                    full, \"\\n\\n\".join(\n                        s[\"title\"] + \"：\\n\" + s[\"text\"]\n                        for s in r[\"sections\"]))\n                self.assertNotIn(\"乾宫辅助（男）\", full)\n                self.assertIn(\"坤宫辅助（女）\", full)\n                self.assertNotIn(\"。；\", full)\n                self.assertNotIn(\"门破（另降两级）\", full)\n                self.assertFalse(any(x[\"id\"].startswith(\"09_\") for x in r[\"sections\"]))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 539,
+          "code": "yield"
+        },
+        {
+          "path": "tests/test_health_vnext_signed_customer_20261026.py",
+          "line": 30,
+          "code": "self.assertIn(\"全部因素推断后，此宫为\", full)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_void_signed_scope_20261025.Real2024SelectedChart.test_real_2024_chart_and_only_selected_relevance_closure",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "Items in the second set but not the first:\n6",
+      "test_source": "tests/test_health_void_signed_scope_20261025.py",
+      "method_source": "    def test_real_2024_chart_and_only_selected_relevance_closure(self):\n        r=self.report\n        self.assertEqual(r[\"instant\"],DATE)\n        self.assertEqual(r[\"four_pillars\"],{\n            \"year\":\"甲辰\",\"month\":\"己巳\",\"day\":\"壬辰\",\"hour\":\"丁未\"})\n        self.assertEqual(len(r[\"nine_palaces\"]),9)\n        selected=set(r[\"scored_relevant_palaces\"])\n        net=r[\"full_health_role_strength_network\"]\n        self.assertEqual(selected,\n                         {x[\"palace\"] for x in net[\"nodes\"].values()}|{2,6})\n        self.assertEqual({int(x) for x in r[\"nine_palace_condition_facts\"]},selected)\n        self.assertTrue(set(net[\"nodes\"]).issubset(\n            {\"illness\",\"doctor\",\"medicine\",\"patient\",\"hour\",\n             \"chief\",\"natal\",\"gender\"}))\n        self.assertNotIn(\"extra_3\",net[\"nodes\"])\n        self.assertEqual(selected,{1,2,3,6,8})\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_void_signed_scope_20261025.py",
+          "line": 75,
+          "code": "self.assertEqual(selected,"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_void_signed_scope_20261025.Real2024SelectedChart.test_same_palace_same_current_score_even_if_different_roles",
+      "outcome": "error",
+      "exception_type": "KeyError",
+      "message": "'kun'",
+      "test_source": "tests/test_health_void_signed_scope_20261025.py",
+      "method_source": "    def test_same_palace_same_current_score_even_if_different_roles(self):\n        net=self.report[\"full_health_role_strength_network\"]\n        scored=net[\"candidate_five_grade_quantization\"]\n        pairs=((\"illness\",\"hour\"),(\"patient\",\"chief\"))\n        for a,b in pairs:\n            self.assertEqual(scored[\"roles\"][a][\"palace\"],\n                             scored[\"roles\"][b][\"palace\"])\n            self.assertEqual(scored[\"roles\"][a][\"palace_score\"][\"score\"],\n                             scored[\"roles\"][b][\"palace_score\"][\"score\"])\n        self.assertEqual(scored[\"auxiliary_qian_kun\"][\"kun\"][\"palace_score\"][\"score\"],\n                         scored[\"roles\"][\"patient\"][\"palace_score\"][\"score\"])\n        # The original pre-role-gate research baseline was 5 palaces,\n        # -4 / 大凶. Preserve that historical result in this comment;\n        # current final MUST be recomputed from real eligible roles.\n        gates=scored[\"role_effectiveness_gates\"]\n        chosen={gates[role][\"palace\"]:scored[\"roles\"][role][\"palace_score\"][\"score\"]\n                for role in gates if gates[role][\"score_eligible\"]}\n        self.assertEqual(scored[\"summary\"][\"unique_palace_count\"],len(chosen))\n        self.assertEqual(scored[\"summary\"][\"effective_palace_scores\"],\n                         {str(k):v for k,v in chosen.items()})\n        self.assertEqual(scored[\"summary\"][\"post_void_known_sum\"],sum(\n            v for v in chosen.values() if v is not None))\n        self.assertEqual(scored[\"summary\"][\"pre_relationship_bonus_score\"],\n                         max(-5,min(5,sum(chosen.values()))))\n        self.assertEqual(scored[\"summary\"][\"score\"],max(-5,min(5,\n            sum(chosen.values())+scored[\"summary\"][\"relationship_bonus_score\"])))\n        self.assertEqual(scored[\"summary\"][\"pending_palaces\"],[])\n        self.assertIn(\"乾宫辅助（男）\",self.report[\"reading_text\"])\n        self.assertNotIn(\"坤宫辅助（女）\",self.report[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_void_signed_scope_20261025.py",
+          "line": 93,
+          "code": "self.assertEqual(scored[\"auxiliary_qian_kun\"][\"kun\"][\"palace_score\"][\"score\"],"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_all_screen_elements_and_no_fake_live_cast",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'let finalInstant=useCurrentInstant ? Date() : chosenTime' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n       ",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_all_screen_elements_and_no_fake_live_cast(self):\n        parser=Tags();parser.feed(self.html)\n        for id in (\"board\",\"setup\",\"ritual\",\"reading\",\"palaces\",\"overlay\",\n                   \"sheet-main\",\"seconds\",\"question\",\"cast-unavailable\",\"demo-preview\"):\n            self.assertIn(id,parser.ids)\n        self.assertIn(\"非实时起盘\",self.html)\n        self.assertNotIn(\"calculate_health_symbolic_score\",self.html)\n        self.assertNotIn(\"吉凶概率\",self.html)\n        self.assertIn(\"guard let chart=nativeChart else {return []}\",self.swift)\n        self.assertIn(\"CastSetupScreen(topic:topic)\",self.swift)\n        self.assertIn(\"let finalInstant=useCurrentInstant ? Date() : chosenTime\",self.swift)\n        self.assertIn(\"DatePicker(\\\"手动选择年月日时分\\\"\",self.swift)\n        self.assertIn(\"topicID:topic.id\",self.swift)\n        self.assertIn(\"QIssuePolicy.signature(topic:topic.id\",self.swift)\n        self.assertNotIn(\"DisclosureGroup(section.title)\",self.swift)\n        self.assertNotIn(\"古籍断词 · V3.9.1\",self.swift)\n        self.assertIn(\"WenguaMark(size:62)\",self.swift)\n        self.assertEqual(self.swift.count(\"@main\"),1)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 201,
+          "code": "self.assertIn(\"let finalInstant=useCurrentInstant ? Date() : chosenTime\",self.swift)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "2 != 1",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):\n        self.assertEqual(len(re.findall(r'^\\s*domain\\(\"',self.swift,re.M)),14)\n        self.assertIn('QuestionDomain(id:\"health\"',self.swift)\n        self.assertEqual(self.swift.count('enabled:true'),1)\n        self.assertIn('topic.enabled && topic.id == \"health.severity\"',self.swift)\n        self.assertIn('self.topic=nil',self.swift)\n        self.assertIn('WenguaMark(size:62)',self.swift)\n        self.assertIn('chosenTopic',self.swift)\n        self.assertIn('chosenDomain',self.swift)\n        self.assertIn('if nativeChart == nil {showAsk=true}',self.swift)\n        self.assertIn('guard let chart=nativeChart else {return []}',self.swift)\n        self.assertIn('useCurrentInstant ? Date() : chosenTime',self.swift)\n        self.assertIn('TimeZone.current.identifier',self.swift)\n        self.assertIn('DatePicker(\"手动选择年月日时分\"',self.swift)\n        self.assertNotIn('DisclosureGroup(section.title)',self.swift)\n        self.assertNotIn('古籍断词 · V3.9.1',self.swift)\n        self.assertIn('id=\"domain\" class=\"screen on\"',self.html)\n        self.assertIn('id=\"domain-options\"',self.html)\n        self.assertIn('id=\"topic-options\"',self.html)\n        self.assertIn('class=\"brand-mark\"',self.html)\n        self.assertIn('class=\"reading-section\"',self.html)\n        self.assertNotIn('正反证据同列',self.html)\n        self.assertNotIn('V3.9.1 · 文字断词',self.html)\n        self.assertTrue((ROOT/\"docs/MAC_XCODE_LOCAL_DEVELOPMENT.md\").exists())\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 159,
+          "code": "self.assertEqual(self.swift.count('enabled:true'),1)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_native_launch_uses_domain_route_and_preserves_frozen_source_audit_offline",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'struct QuestionEntryScreen' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\"",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_native_launch_uses_domain_route_and_preserves_frozen_source_audit_offline(self):\n        bundled=json.loads(FROZEN.read_text(\"utf8\"))[\"samples\"]\n        self.assertEqual(len(bundled),4)\n        for i, (native, browser) in enumerate(zip(bundled,self.fixture[\"samples\"])):\n            self.assertEqual(native[\"iso\"],browser[\"iso\"])\n            self.assertEqual(native[\"pillars\"],browser[\"pillars\"])\n            self.assertEqual(native[\"originalReading\"],browser[\"originalReading\"])\n            self.assertEqual(native[\"readingSections\"],browser[\"readingSections\"])\n            self.assertEqual(len(native[\"readingSections\"]),10)\n        for text in ['struct QuestionEntryScreen',\n                     'QuestionCatalog.domains',\n                     'chosenDomain',\n                     'chosenTopic',\n                     'QuestionTopic(id:\"health.severity\"',\n                     'WenguaNativeCore.compute(at:finalInstant,timezone:localZone)',\n                     'TraditionalReadingPreview(nativeChart:nativeChart,sampleIndex:-1,nativeReading:nativeReading)',\n                     'WenguaVNextInlineReading(reading:reading,',\n                     'palace.lifeRows',\n                     'QFive.tombHorseRelation(',\n                     'multiValueCard(\"九星\"']:\n            self.assertIn(text,self.swift)\n        for text in ['stageRow(\"地\",p.earth,p.earthStages)',\n                     'tombHorseRelation(demo,p,t)',\n                     'sixClash[t.branch]===chart.hourHorse',\n                     'p.branches.map(b=>colored(\"branch\",b))']:\n            self.assertIn(text,self.html)\n        project=(ROOT/\"ios/WenguaAppUI/project.yml\").read_text(\"utf8\")\n        self.assertNotIn(\"FrozenReadingV391.json\",project)\n        self.assertIn(\"actor_profiles.json\",project)\n        self.assertNotIn(\"FrozenPreview\",self.swift)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 145,
+          "code": "self.assertIn(text,self.swift)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_design_v1_contract.V3SourceUI.test_true_five_element_color_map_not_category_colors",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'QFive.shade(\"deity\"' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\":\"土\",\"天",
+      "test_source": "tests/test_ios_design_v1_contract.py",
+      "method_source": "    def test_true_five_element_color_map_not_category_colors(self):\n        c=self.colors\n        for text in [\"ELEMENT_COLORS\",\"const STEM=\",\"const STAR=\",\"const DOOR=\",\n                     \"const DEITY=\",\"玄武:\\\"水\\\"\",\"白虎:\\\"金\\\"\",\"九地:\\\"土\\\"\",\n                     \"九天:\\\"金\\\"\",\"杜门:\\\"木\\\"\",\"天心:\\\"金\\\"\"]:\n            self.assertIn(text,c)\n        self.assertIn('colored(\"deity\",p.deity)',self.html)\n        self.assertIn('colored(\"star\",z.star)',self.html)\n        self.assertIn('colored(\"door\",p.door)',self.html)\n        self.assertIn('colored(\"stem\",p.earth)',self.html)\n        self.assertIn(\"enum QFive\",self.swift)\n        self.assertIn(\"QFive.shade(\\\"deity\\\"\",self.swift)\n        self.assertIn(\"QFive.shade(\\\"door\\\"\",self.swift)\n        self.assertIn(\"QFive.heavenTombs(palace)\",self.swift)\n        self.assertIn(\"QFive.earthTombs(palace)\",self.swift)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_design_v1_contract.py",
+          "line": 98,
+          "code": "self.assertIn(\"QFive.shade(\\\"deity\\\"\",self.swift)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_health_template_bridge_20261026.NativeTemplateBundleContract.test_exact_live_sources_are_bundled_and_looked_up_in_real_chart",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'item.carriedStem+\"|\"+palace.earthStem' not found in 'import Foundation\\n\\n// Stage 1 native iOS bridge: exact user-editable template + 81 ordered stem pairs.\\n// ONLY real chart facts and original table text. It does NOT infer patient roles,\\n// apply 200-cell strengths, decide void scores, or manufacture a final prognosis.\\n// The SAME two repo resources are bundled by project.yml; no network or frozen case.\\nstruct WenguaHealthFormationBlock: Identifiable {\\n    let id: Int\\n    let palace: String\\n    let sentences: [String]\\n}\\n\\nenum WenguaHealthTemplateError: Error, LocalizedError {\\n    case invalidTemplate, invalidCatalog, unavailableResource, unsupportedRealPair\\n    var errorDescription: String? {\\n        switch self {\\n        case .invalidTemplate: return \"疾病断词JSON模板不完整或变量被改坏\"\\n        case .invalidCatalog: return \"81天地格目录必须恰有81个有序坐标与七个完整字段\"\\n        case .unavailableResource: return \"本机离线模板或81格资源未打包\"\\n        case .unsupportedRealPair: return \"本盘真实天盘/地盘组合缺少已核81格记录\"\\n        }\\n    }\\n}\\n\\nenum WenguaHealthTemplateBridge {\\n    static let stems = [\"戊\",\"己\",\"庚\",\"辛\",\"壬\",\"癸\",\"丁\",\"丙\",\"乙\"]\\n    static let fields = [\"heaven\",\"earth\",\"name\",\"polarity\",\\n                         \"classical_text\",\"classical_meaning\",\"imagery\"]\\n    static let header = \"天盘干|地盘干|格局名称|吉凶|古文（摘句）|古诀大意|天地盘取象\"\\n    static let palaceOrder = [4,9,2,3,7,8,1,6]\\n\\n    static func fromBundle(chart: WenguaNativeChart, bundle: Bundle = .main) throws\\n      -> [WenguaHealthFormationBlock] {\\n        guard let t = bundle.url(forResource:\"reading_template\",withExtension:\"json\"),\\n              let p = b",
+      "test_source": "tests/test_ios_health_template_bridge_20261026.py",
+      "method_source": "    def test_exact_live_sources_are_bundled_and_looked_up_in_real_chart(self):\n        source=SRC.read_text(\"utf8\")\n        project=PROJECT.read_text(\"utf8\")\n        view=MAIN.read_text(\"utf8\")\n        for part in [\"WenguaHealthTemplateBridge.swift\",\n                     \"../../data/templates/health_severity_vnext/reading_template.json\",\n                     \"../../data/knowledge/health_81_excel_20261025/81_pairs.tsv\"]:\n            self.assertIn(part,project)\n        for word in ['fromBundle(chart:','fromText(chart:',\n                     'item.carriedStem+\"|\"+palace.earthStem',\n                     'WenguaHealthTemplateError.invalidCatalog']:\n            self.assertIn(word,source)\n        self.assertIn(\"WenguaHealthTemplateBridge.fromBundle(chart:chart)\",view)\n        data=json.loads(TEMPLATE.read_text(\"utf8\"))\n        for key in [\"heaven\",\"earth\",\"name\",\"polarity\",\n                    \"classical_text\",\"classical_meaning\",\"imagery\"]:\n            self.assertIn(\"{\"+key+\"}\",data[\"formation\"])\n        lines=PAIRS.read_text(\"utf8\").splitlines()\n        self.assertEqual(len(lines),82)\n        self.assertEqual(len({(r.split(\"|\")[0],r.split(\"|\")[1]) for r in lines[1:]}),81)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_health_template_bridge_20261026.py",
+          "line": 27,
+          "code": "self.assertIn(word,source)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_health_template_bridge_20261026.NativeTemplateBundleContract.test_full_clinical_or_vnext_score_is_not_claimed_on_phone",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'尚非完整断案' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\":\"土\",\"天柱\":\"金\",\"天心\":\"",
+      "test_source": "tests/test_ios_health_template_bridge_20261026.py",
+      "method_source": "    def test_full_clinical_or_vnext_score_is_not_claimed_on_phone(self):\n        swift=SRC.read_text(\"utf8\")\n        view=MAIN.read_text(\"utf8\")\n        self.assertIn(\"尚非完整断案\",view)\n        self.assertNotIn(\"auto_cast_health_review_text(\",swift)\n        self.assertIn(\"WenguaVNextInlineReading\",view)\n        self.assertIn(\"WenguaNativeCustomerView(reading:reading)\",view)\n        self.assertNotIn(\"FrozenPreview\",view)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_health_template_bridge_20261026.py",
+          "line": 39,
+          "code": "self.assertIn(\"尚非完整断案\",view)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_store_history_release_gate.LocalHistoryAndPrivacy.test_history_and_user_initiated_full_delete",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'NavigationLink {\\n                            WenguaLocalHistoryView()' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\"",
+      "test_source": "tests/test_ios_store_history_release_gate.py",
+      "method_source": "    def test_history_and_user_initiated_full_delete(self):\n        ui=(root/\"ios/WenguaAppUI/WenguaDesignPreviewApp.swift\").read_text()\n        history=(root/\"ios/WenguaAppUI/WenguaLocalHistoryView.swift\").read_text()\n        project=(root/\"ios/WenguaAppUI/project.yml\").read_text()\n        self.assertIn(\"NavigationLink {\\n                            WenguaLocalHistoryView()\",ui)\n        self.assertIn(\"WenguaNativeReadingRouter.compose\",ui)\n        self.assertIn(\"reading:reading\",ui)\n        self.assertIn('recordPrefix=\"wengua:nativecase:\"',history)\n        self.assertIn('issuePrefix=\"wengua:completed:\"',history)\n        self.assertIn(\"eraseAllLocalIssueData\",history)\n        self.assertIn(\"UserDefaults.standard.removeObject\",history)\n        self.assertIn(\"清空全部问事记录与本机限制\",history)\n        self.assertIn(\"WenguaLocalHistoryView.swift\",project)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_store_history_release_gate.py",
+          "line": 10,
+          "code": "self.assertIn(\"NavigationLink {\\n                            WenguaLocalHistoryView()\",ui)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_ios_vnext_production_entry_20261026.NativeVNextAppContract.test_main_is_not_frozen_v391_and_book_sqlite_is_not_bundled",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'WenguaVNextInlineReading' not found in 'import SwiftUI\\nimport CryptoKit\\n\\n// Wengua native iOS app: source-checked deterministic chart plus separate\\n// domain-gated offline narration. No numeric scores or fabricated new readings.\\n\\n@main\\nstruct WenguaDesignPreviewApp: App {\\n    var body: some Scene {\\n        WindowGroup { WenguaRootView() }\\n    }\\n}\\n\\nenum QStyle {\\n    static let blue = Color(red: 0.16, green: 0.49, blue: 1.0)\\n    static let red = Color(red: 0.90, green: 0.28, blue: 0.23)\\n    static let orange = Color(red: 0.89, green: 0.57, blue: 0.12)\\n    static let green = Color(red: 0.14, green: 0.68, blue: 0.39)\\n    static let text = Color(uiColor: .label)\\n    static let secondary = Color(uiColor: .secondaryLabel)\\n    static let backing = Color(uiColor: .systemGroupedBackground)\\n    static let surface = Color(uiColor: .secondarySystemGroupedBackground)\\n    static let line = Color(uiColor: .separator)\\n}\\n\\n// Consistent per-symbol five-element palette, never a per-layer color.\\nenum QFive {\\n    static let palette: [String: Color] = [\\n        \"金\": Color(red: 0.83, green: 0.60, blue: 0.10),\\n        \"木\": Color(red: 0.09, green: 0.65, blue: 0.34),\\n        \"水\": Color(red: 0.15, green: 0.47, blue: 0.91),\\n        \"火\": Color(red: 0.89, green: 0.29, blue: 0.25),\\n        \"土\": Color(red: 0.61, green: 0.46, blue: 0.28)\\n    ]\\n    static let stems = [\"甲\":\"木\",\"乙\":\"木\",\"丙\":\"火\",\"丁\":\"火\",\"戊\":\"土\",\\n                        \"己\":\"土\",\"庚\":\"金\",\"辛\":\"金\",\"壬\":\"水\",\"癸\":\"水\"]\\n    static let stars = [\"天蓬\":\"水\",\"天任\":\"土\",\"天冲\":\"木\",\"天辅\":\"木\",\\n                        \"天英\":\"火\",\"天芮\":\"",
+      "test_source": "tests/test_ios_vnext_production_entry_20261026.py",
+      "method_source": "    def test_main_is_not_frozen_v391_and_book_sqlite_is_not_bundled(self):\n        self.assertTrue((ROOT/\"archives/retired_health_templates_20261102/ios/WenguaAppUI/FrozenReadingV391.json\").is_file())\n        proj=(ROOT/\"ios/WenguaAppUI/project.yml\").read_text(\"utf8\")\n        main=(ROOT/\"ios/WenguaAppUI/WenguaDesignPreviewApp.swift\").read_text(\"utf8\")\n        self.assertNotIn(\"FrozenReadingV391.json\",proj)\n        self.assertNotIn(\"FrozenPreview\",main)\n        self.assertIn(\"WenguaVNextInlineReading\",main)\n        self.assertIn(\"WenguaNativeReadingRouter.compose(\",main)\n        self.assertIn(\"actor_profiles.json\",proj)\n        self.assertNotIn(\".sqlite\",proj)\n        self.assertNotIn(\"/archives/\",proj)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_ios_vnext_production_entry_20261026.py",
+          "line": 20,
+          "code": "self.assertIn(\"WenguaVNextInlineReading\",main)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_user_exact_energy_duel_grids_vnext.UserAuthoredCells.test_raw_user_labels_flow_into_real_selected_health_reading",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "'天心医生宫' not found in '时局总纲：\\n本时不犯五不遇。 星门无整盘伏吟反吟，应期须另参。\\n\\n天芮病宫：\\n落乾六宫；九星天芮星中凶，八门生门大吉，八神九天比和、大吉；天盘干丙势极小、壬势中等，地盘干辛势极大；天地格：丙加辛「奇神相合」（吉）、壬加辛「螣蛇相缠」（凶）；空亡假空、天盘入墓。宫象极小凶。 病星格局「排毒宣泄」。\\n\\n天心医生：\\n落艮八宫；九星天心星小吉，八门杜门中平，八神玄武被宫克、小凶；天盘干辛势极大，地盘干己势极小；天地格：辛加己「入狱自刑」（凶）；空亡不空、门破、地盘入墓。宫象极大凶。 天心星势小；生扶病宫，不作制病。\\n\\n乙奇医药：\\n落震三宫；九星天蓬星极小凶，八门景门中平，八神白虎克宫、中凶；天盘干乙势大，地盘干丁势小；天地格：乙加丁「奇仪相佐」（吉）；空亡不空、无特别刑墓迫。宫象极小吉。 乙势大；受病宫克，制约轻重依双方实际力量。\\n\\n患者用神：\\n落巽四宫；九星天任星小吉，八门死门中凶，八神六合比和、大吉；天盘干己，地盘干癸势小；天地格：己加癸「地刑玄武」（凶）；空亡不空、门迫。宫象中吉。 己势待核（十二长生分支待辨）；受病宫克，制约轻重依双方实际力量。\\n\\n时干事体：\\n落坎一宫；九星天柱星极小凶，八门伤门中凶，八神九地克宫、中凶；天盘干庚势小，地盘干乙势小；天地格：庚加乙「太白蓬星」（凶）；空亡不空、无特别刑墓迫。宫象极大凶。 庚势小；受病宫生，非主动制病。\\n\\n值符护持宫：\\n落兑七宫；九星天英星大凶，八门休门小吉，八神值符生宫、中吉；天盘干戊势极小，地盘干庚势极大；天地格：戊加庚「值符飞宫」（凶）；空亡不空、无特别刑墓迫。宫象小凶。 值符势中等；与病宫比和，不等于等力。\\n\\n综合断语：\\n病星天芮在乾六宫，势中等，宫象极小凶，逢假空；患者己在巽四宫，势待核，宫象中吉，受病宫克。\\n\\n医药两端分别看：天心势小，生扶病宫，乙奇势大，受病宫克。\\n\\n另参时干事体庚在坎一宫，势小，受病宫生；大吉神值符在兑七宫，势中等，与病宫比和。\\n\\n综上所述，此病为极大凶；以上仅作传统古籍象意参考，不作现实病情判断。\\n\\n时空及应期：\\n驿马在申；应期仍须参空、墓、冲合，证据不足不定日。'",
+      "test_source": "tests/test_user_exact_energy_duel_grids_vnext.py",
+      "method_source": "    def test_raw_user_labels_flow_into_real_selected_health_reading(self):\n        result=auto_cast_health_review_text(\n            iso=\"2026-10-22T12:00:00-04:00\",\n            timezone_name=\"America/New_York\",\n            inquiry={\"intent\":\"severity\",\"relationship\":\"self\",\n                     \"consultation_context\":\"direct_self\"})\n        net=result[\"full_health_role_strength_network\"]\n        self.assertEqual(net[\"mode\"],\"selective\")\n        self.assertEqual(net[\"factor_two_duel_table\"],CONTROL_GRID_VERSION)\n        self.assertEqual(net[\"factor_one_nine_star_table\"],\n                         \"user_exact_nine_star_5x5_20261023\")\n        self.assertLessEqual(net[\"table_two_queries\"],10)\n        for edge in net[\"directed_edges\"].values():\n            if edge[\"relation\"]==\"克\" and edge[\"control_status\"]==\"matched\":\n                self.assertEqual(edge[\"control_result\"],raw_cell(\n                    CONTROL_NORMAL,edge[\"actor_strength\"],edge[\"target_strength\"]))\n                self.assertEqual(edge[\"table_two_lookups_for_pair\"],1)\n            else:\n                self.assertIsNone(edge[\"control_result\"])\n                self.assertIn(edge[\"control_status\"],(\n                    \"void_type_pending\",\"factor_power_pending\",\n                    \"not_control_relation\",\"duplicate_attacker_label_pending\"))\n            self.assertTrue(edge[\"palace_strength_is_context_only\"])\n            self.assertNotIn(\"palace_duel_result\",edge)\n        # Revised complete-palace narrative only cites a control matrix when\n        # an actually selected role has a real eligible 克 direction; the\n        # fixed live chart can have no such usable edge.\n        self.assertIn(\"天芮病宫\",result[\"reading_text\"])\n        self.assertIn(\"天心医生宫\",result[\"reading_text\"])\n        self.assertIn(\"八神\",result[\"reading_text\"])\n        self.assertIn(\"八门\",result[\"reading_text\"])\n        self.assertNotIn(\"宫位对抗「\",result[\"reading_text\"])\n        self.assertTrue(result[\"no_scoring\"])\n        self.assertFalse(result[\"medical_validity_claimed\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_user_exact_energy_duel_grids_vnext.py",
+          "line": 137,
+          "code": "self.assertIn(\"天心医生宫\",result[\"reading_text\"])"
+        }
+      ]
+    }
+  ]
+}

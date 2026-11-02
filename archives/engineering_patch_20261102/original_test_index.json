@@ -1,0 +1,122 @@
+[
+  {
+    "original": "tests/test_ios_design_v1_contract.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_ios_design_v1_contract.py",
+    "sha256": "6d6664f30528c701a272680e3e6a575c341b0767f6403c950f1e78aa5d83aa4c"
+  },
+  {
+    "original": "tests/test_ios_health_template_bridge_20261026.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_ios_health_template_bridge_20261026.py",
+    "sha256": "9374328e4c6c652eee263bdfe64411b9beac0c82291abb04236cb790c0d48752"
+  },
+  {
+    "original": "tests/test_ios_store_history_release_gate.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_ios_store_history_release_gate.py",
+    "sha256": "b8ffae6f1f4625e4644805f0b624704ea693ff67a40e584806d9097953d97920"
+  },
+  {
+    "original": "tests/test_ios_vnext_production_entry_20261026.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_ios_vnext_production_entry_20261026.py",
+    "sha256": "5c68e522b44b8e0c8aa92f07ad1df87e21733dbed4548c8dd8949e10d4ffb8d4"
+  },
+  {
+    "original": "tests/test_casting_chai_bu_user_process_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_casting_chai_bu_user_process_vnext.py",
+    "sha256": "6d8a1dd2d1c60311274cbf233f0747417c662603dd55e894c926d98a816e7c7c"
+  },
+  {
+    "original": "tests/test_domain_selected_energy_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_domain_selected_energy_vnext.py",
+    "sha256": "5785b83c15ab3954bdc2cf245363489c1ec10614ce5be674d3d952b7b1c571b4"
+  },
+  {
+    "original": "tests/test_factor_energy_25_rules.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_factor_energy_25_rules.py",
+    "sha256": "65b8e8995d455dcae1c6e4b002872df4ad02a8ad9788b2cb48560b5bc6ef1de7"
+  },
+  {
+    "original": "tests/test_health_81_excel_live_template_20261025.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_81_excel_live_template_20261025.py",
+    "sha256": "c97b0bf695e6c048b19c42ece8bd2736ab9e52fc7d17e86b3405e768a7335c2e"
+  },
+  {
+    "original": "tests/test_health_complete_palace_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_complete_palace_vnext.py",
+    "sha256": "ce4b48310d211c4184c7bfc0c3db0786edb721742b0fba332620071d24a908b7"
+  },
+  {
+    "original": "tests/test_health_customer_unscored_20261026.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_customer_unscored_20261026.py",
+    "sha256": "6cbd444b11a0041b873824d822c1a8206e7f44341f9a381b1256bfd9e1cd4593"
+  },
+  {
+    "original": "tests/test_health_door_break_exception_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_door_break_exception_vnext.py",
+    "sha256": "eb24a4c0a9f7e7170936e9bf22074b5ef0026d23a5b8f9e3fdb909cd091b2679"
+  },
+  {
+    "original": "tests/test_health_first_macro_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_first_macro_vnext.py",
+    "sha256": "142f7dab3231a6893d26a5c427da581ce7f623be19ea9bf017ca1dc0e27b5181"
+  },
+  {
+    "original": "tests/test_health_quant_overlay_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_quant_overlay_vnext.py",
+    "sha256": "361c6aeb7ccb07b1e3b998b03d36c92b0b041786dbaf59ce915c2a8d57c9f974"
+  },
+  {
+    "original": "tests/test_health_relationship_language_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_relationship_language_vnext.py",
+    "sha256": "90b85ca429816aa526b347bfef6e063ea084ec5f3b5839c6a201b8b4a631d063"
+  },
+  {
+    "original": "tests/test_health_two_random_template_20261026.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_two_random_template_20261026.py",
+    "sha256": "28908d2b7ed89b8562f2379c05231a59381f7f25e90dd4372ac1b4f33b72a60a"
+  },
+  {
+    "original": "tests/test_health_user_final_signed_template_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_user_final_signed_template_vnext.py",
+    "sha256": "206c2b37f1b117b96489bfbadb009f56c8b6ced2ec57d229fa12d725ddd995de"
+  },
+  {
+    "original": "tests/test_health_v32_fresh_two_families.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_v32_fresh_two_families.py",
+    "sha256": "f9ef363fbb52642462449a334bfc86ecf9e620d5ea026bb2ff668197baf2588e"
+  },
+  {
+    "original": "tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_v74_colleague_natal_yi_and_macro_penalty_20261027.py",
+    "sha256": "ce2d726279af7aae2d4503105861bf08280ad15b3c43741e4a1f0d5dd6938c42"
+  },
+  {
+    "original": "tests/test_health_v75_unique_palace_five_not_20261027.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_v75_unique_palace_five_not_20261027.py",
+    "sha256": "702dd58cf831b86138a7cfbac4f68edfbedb9ab094b08fef8c10e35a375063da"
+  },
+  {
+    "original": "tests/test_health_v76_three_stage_20261027.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_v76_three_stage_20261027.py",
+    "sha256": "da1510873b34fda0057ca59636a194e712f9383327e82ad9c826fd225e50d6c8"
+  },
+  {
+    "original": "tests/test_health_vnext_conditional_review.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_vnext_conditional_review.py",
+    "sha256": "6675af68048a73088efd6a970835d7f5c18a3acd9ee92b3518676be8d03983b8"
+  },
+  {
+    "original": "tests/test_health_vnext_signed_customer_20261026.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_vnext_signed_customer_20261026.py",
+    "sha256": "5676cc3d2c15aaeb1698154569e79b20f8b1b61d9f95e22ee4ad8cfc74239d53"
+  },
+  {
+    "original": "tests/test_health_void_signed_scope_20261025.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_health_void_signed_scope_20261025.py",
+    "sha256": "c0644db42a9fc6bc694cc8ffee38f5e8046f3d0922dd4f5eb2ed0ee9c9dca82d"
+  },
+  {
+    "original": "tests/test_user_exact_energy_duel_grids_vnext.py",
+    "preserved": "archives/engineering_patch_20261102/original_tests/test_user_exact_energy_duel_grids_vnext.py",
+    "sha256": "c60d7aca27338a735f7fa8a1c8c646206f9d1275752da7066c88f45e8c40db1c"
+  }
+]

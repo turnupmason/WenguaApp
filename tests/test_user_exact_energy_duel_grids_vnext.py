@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """User-authored 2026-10-23 two grids: pin all 25+25 literal cells.
 
 No screenshot/OCR, interpolation, numeric score, coarse win/lose remapping,
@@ -134,7 +135,7 @@ class UserAuthoredCells(unittest.TestCase):
         # an actually selected role has a real eligible 克 direction; the
         # fixed live chart can have no such usable edge.
         self.assertIn("天芮病宫",result["reading_text"])
-        self.assertIn("天心医生宫",result["reading_text"])
+        self.assertIn("天心医生",result["reading_text"])
         self.assertIn("八神",result["reading_text"])
         self.assertIn("八门",result["reading_text"])
         self.assertNotIn("宫位对抗「",result["reading_text"])

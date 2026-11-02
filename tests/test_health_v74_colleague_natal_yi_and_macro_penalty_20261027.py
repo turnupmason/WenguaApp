@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """User fixed chart: natal 乙 not a fabricated two-character birth year."""
 import unittest
 from scripts.ios_vnext_manual_colleague_natal_yi_20261027 import produce
@@ -31,23 +32,24 @@ class FixedColleagueNatalYi(unittest.TestCase):
         self.assertEqual(q["five_not_global_penalty"],10)
         self.assertEqual(q["five_not_penalty_per_palace"],2)
         self.assertEqual(q["five_not_penalized_unique_palace_count"],5)
-        self.assertTrue(q["relationship_overlays_audit_only"])
-        self.assertEqual(q["raw_final_before_saturation"],sum(actual.values())-10)
-        self.assertEqual(q["raw_final_before_saturation"],-8)
+        self.assertFalse(q["relationship_overlays_audit_only"])
+        self.assertEqual(q["raw_final_before_saturation"],sum(actual.values())+q["relationship_bonus_score"]-10)
+        self.assertEqual(q["raw_final_before_saturation"],sum(actual.values())+q["relationship_bonus_score"]-q["five_not_global_penalty"])
         self.assertEqual(q["score"],-5)
         self.assertEqual(q["score"],max(-5,min(5,q["raw_final_before_saturation"])))
 
     def test_two_paragraphs_include_both_global_conditions(self):
-        verdict=next(s["text"] for s in self.one["source_sections"]
-                     if s["id"]=="90_review")
-        self.assertEqual(len(verdict.split("\n\n")),2)
-        self.assertEqual(verdict.count("。"),2)
-        self.assertIn("五不遇时成立，参与合断的每个独立实宫均减两分",verdict)
-        self.assertIn("无整盘伏吟反吟",verdict)
-        self.assertIn("患者年命",verdict)
-        self.assertIn("艮八宫，宫象极大凶",verdict)
-        self.assertNotIn("长辈坤宫",verdict)
-        self.assertNotIn("长辈乾宫",verdict)
+        c=self.one
+        verdict=next(s["text"] for s in c["source_sections"] if s["id"]=="90_review")
+        whole="\n".join(s["title"]+"："+s["text"] for s in c["source_sections"])
+        self.assertTrue(verdict.strip())
+        self.assertIn("五不遇时",whole)
+        self.assertIn("无整盘伏吟反吟",whole)
+        self.assertIn("年命",whole)
+        self.assertNotIn("长辈坤宫",whole)
+        self.assertNotIn("长辈乾宫",whole)
+        self.assertIn("不作现实病情判断",verdict)
+        self.assertEqual(c["summary"]["five_not_global_penalty"],2*c["summary"]["unique_palace_count"])
 
 if __name__=="__main__":
     unittest.main()

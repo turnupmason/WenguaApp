@@ -1,0 +1,22 @@
+[
+  {
+    "file": "wengua-cleanup-migration1.log.gz",
+    "uncompressed_sha256": "bf5e46241b7d927c8228ed44480c9aef0754376a1f487b9647616b5cfc3e644c",
+    "scope": "working-tree migration attempts, not release acceptance"
+  },
+  {
+    "file": "wengua-cleanup-migration2.log.gz",
+    "uncompressed_sha256": "f07a1eb933219c997c9956a081ddc200fb11b6e364ffbeec0fc39d0060a7e67f",
+    "scope": "working-tree migration attempts, not release acceptance"
+  },
+  {
+    "file": "wengua-phase1-targeted.log.gz",
+    "uncompressed_sha256": "2c5029f7cd7d61845a3555a7ce0cc4da492132e1ff235915288f0dc7fda66418",
+    "scope": "working-tree migration attempts, not release acceptance"
+  },
+  {
+    "file": "wengua-phase1-targeted2.log.gz",
+    "uncompressed_sha256": "c6cc15867b6d3db62efe74a207681c64ef52499fefd0bdf82e1064573c6c36d5",
+    "scope": "working-tree migration attempts, not release acceptance"
+  }
+]

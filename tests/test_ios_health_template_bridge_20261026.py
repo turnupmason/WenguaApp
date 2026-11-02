@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Stage-1 bridge contract: app bundles the EXACT checked-in JSON and 81 pairs.
 No dynamic GitHub fetch and no invented severity verdict in Swift.
 """
@@ -22,7 +23,7 @@ class NativeTemplateBundleContract(unittest.TestCase):
                      "../../data/knowledge/health_81_excel_20261025/81_pairs.tsv"]:
             self.assertIn(part,project)
         for word in ['fromBundle(chart:','fromText(chart:',
-                     'item.carriedStem+"|"+palace.earthStem',
+                     'item.carriedStem+"|"+bottom',
                      'WenguaHealthTemplateError.invalidCatalog']:
             self.assertIn(word,source)
         self.assertIn("WenguaHealthTemplateBridge.fromBundle(chart:chart)",view)
@@ -36,9 +37,9 @@ class NativeTemplateBundleContract(unittest.TestCase):
     def test_full_clinical_or_vnext_score_is_not_claimed_on_phone(self):
         swift=SRC.read_text("utf8")
         view=MAIN.read_text("utf8")
-        self.assertIn("尚非完整断案",view)
+        self.assertIn("本次专业断词校验未完成",view)
         self.assertNotIn("auto_cast_health_review_text(",swift)
-        self.assertIn("WenguaVNextInlineReading",view)
+        self.assertIn("WenguaNativeCustomerView",view)
         self.assertIn("WenguaNativeCustomerView(reading:reading)",view)
         self.assertNotIn("FrozenPreview",view)
 if __name__=="__main__":

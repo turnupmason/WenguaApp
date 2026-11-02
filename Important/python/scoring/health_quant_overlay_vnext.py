@@ -193,7 +193,7 @@ def _quantize_one(role,detail,*,five_not_encounter,xun_shou=None):
         horse_cleared_void=bool(detail["void"].get("horse_cleared_void")))
     stem_audit={
         "heaven":[stem_intrinsic_score(x["symbol"]) for x in detail["heaven_stems"]],
-        "earth":stem_intrinsic_score(bottom) if bottom else None,
+        "earth":stem_intrinsic_score(ordinary_bottom) if ordinary_bottom else None,
         "jia_hidden_cycle":stem_intrinsic_score("甲",xun_shou=xun_shou)
                             if xun_shou else None,
         "not_doubled_on_four_categories":True}

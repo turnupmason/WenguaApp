@@ -1,3 +1,4 @@
+# Current V9/V11/V27 contract; exact pre-migration source is retained in archives/engineering_patch_20261102/original_tests/.
 """Verification of current caster against user-stated 拆补 step contract.
 
 Original 1995 book diagrams MUST retain all nine cells; intentionally do
@@ -59,8 +60,13 @@ class CastingUserFlow(unittest.TestCase):
                 timezone_name="UTC")
 
     def test_centre_door_zero_step_only_original_confirmed(self):
-        with self.assertRaisesRegex(ValueError,"centre 5"):
-            layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
+        chart=layout_from_explicit_bureau(dun="yang",ju=1,hour_ganzhi="戊辰")
+        self.assertEqual(set(map(int,chart["palaces"])),set(range(1,10)))
+        center=chart["palaces"]["5"]
+        self.assertEqual(center["heaven_stars"],[])
+        self.assertIsNone(center["door"])
+        self.assertIsNone(center["deity"])
+        self.assertEqual(sum(bool(p["door"]) for p in chart["palaces"].values()),8)
 
 if __name__=="__main__":
     unittest.main()
