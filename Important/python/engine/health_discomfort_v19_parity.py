@@ -125,6 +125,17 @@ def _lookup(tables,kind,row,col):
     table=tables[kind]
     return table["rows"][row][table["columns"].index(col)]
 
+def _discomfort_power(kind,symbol,p,month,tables,stages=()):
+    """V24 only: prefer the higher original source tier for double-branch stems.
+    Preserve both original branch facts; do not modify frozen V8 factor.
+    """
+    if kind=="stem" and len(stages)>1:
+        values=[_power(kind,symbol,p,month,tables,[stage]) for stage in stages]
+        if not all(_tier(v)>0 for v in values):
+            raise ValueError("Unmapped actual stem 200 cell")
+        return max(values,key=_tier)
+    return _power(kind,symbol,p,month,tables,stages)
+
 def compose(chart,actor,relationship,injury_context,sources=None):
     valid={"none","accident","bone","bleeding","severe_pain","surgery"}
     if injury_context not in valid:
@@ -184,7 +195,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
          "此宫生病宫":"此宫生扶病宫"}[relation(p)]
     month=_monthly(chart["pillars"]["month"][-1])
     def source_strength(kind,symbol,p,stages=()):
-        return _power(kind,symbol,p,month,tables,stages)
+        return _discomfort_power(kind,symbol,p,month,tables,stages)
     def stem_power(stem,p):
         star=next((s for s in p["heavenStars"] if s["carriedStem"]==stem),None)
         if star:return source_strength("stem",stem,p,star["stages"])
@@ -423,14 +434,12 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         selected="脏腑泛象" if original=="脏（笼统）" else original
         facts=stem_branch_facts(stem,illness,stages)
         distinct={v for _,v in facts}
-        if _tier(power)>0:powerWords="力量"+power
-        elif len(distinct)==1:powerWords="两支同为"+facts[0][1]
-        else:powerWords="分支力量"+"、".join(branch+"为"+v for branch,v in facts)
-        effect=("这一干象较为突出" if
-                _tier(power)>=4 or all(_tier(v)>=4 for _,v in facts) else
-                "此干象偏弱" if all(_tier(v)<=2 for _,v in facts) else
-                "此干象仍须与病宫其他符号互证")
-        return selected+"，"+powerWords+"，"+effect
+        branchText="，"+"、".join(branch+"为"+v for branch,v in facts) if len(facts)>1 else ""
+        powerWords=(branchText+"，按较高一档取"+power if len(distinct)>1
+                    else "，力量"+power)
+        effect=("这一干象较突出" if _tier(power)>=4 else
+                "可作本宫病象旁证" if _tier(power)>=3 else "此象偏弱")
+        return selected+powerWords+"，"+effect
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
@@ -519,6 +528,48 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                        else "神象须配合其它证据。"))
     if doorText:danger.append(doorText)
     dangerFull="本宫条件："+"；".join(danger)+"。" if danger else ""
+    # V24: every physical real palace, not merely Tianrui's selected palace.
+    # The markers establish traditional textual candidates, never medically
+    # confirmed injury, latent disease or causation.
+    crossEvents=[]
+    for p in sorted((p for p in chart["palaces"]
+                     if p["id"] in PHYSICAL and p["id"]!=ip),
+                    key=lambda p:p["id"]):
+        realStems=sorted({x["carriedStem"] for x in p["heavenStars"]}|{p["earthStem"]})
+        for stem in realStems:
+            conditions=flags(stem,p)
+            if not conditions:continue
+            sourceSites=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
+            rawSite=sourceSites[0] if sourceSites else "身体相应部位"
+            site="脏腑泛象" if rawSite=="脏（笼统）" else rawSite
+            power=stem_power(stem,p)
+            if _tier(power)==0:raise ValueError("Unmapped actual cross palace stem 200 cell")
+            rel=relation(p)
+            if rel=="此宫克病宫":
+                priority=0
+                relationText="此宫克病宫，传统上可能牵制主病位，但不能据此认定病因"
+            elif rel=="此宫生病宫":
+                priority=1
+                relationText="此宫生扶病宫，属于关联旁证，不能反推为病源"
+            elif rel=="病宫克此宫":
+                priority=2
+                relationText="病宫克此宫，可考虑此处受到病事牵连的象意"
+            elif rel=="病宫生此宫":
+                priority=3
+                relationText="病宫生此宫，可考虑向外耗泄的象意"
+            else:
+                priority=4
+                relationText="两宫比和，仅表示同类宫象"
+            conditionText=("刑墓并见，古法主受制、疼痛与潜伏难显的象意"
+                           if "六仪击刑" in conditions and "入墓" in conditions else
+                           "击刑主牵扯、疼痛或损伤之象" if "六仪击刑" in conditions
+                           else "入墓主闭藏、受压、不易显露之象")
+            message=(f"{label(p)}宫{stem}所指{site}，原力{power}，实见"
+                     +"、".join(conditions)+f"，{conditionText}；{relationText}")
+            crossEvents.append((priority,p["id"],stem,message,rel))
+    crossEvents.sort(key=lambda item:item[:3])
+    crossFull=("全盘墓刑互证："+"；".join(x[3] for x in crossEvents)+"。"
+               if crossEvents else "")
     ending="。"
     originalFocus=(lead if not trauma and _matched(lead,originalSites)
                    else "、".join(originalSites[:1]))
@@ -526,7 +577,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                       "此次确有伤损，另从伤门实际落宫优先核位。"
                       if trauma else
                       f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象先指{originalFocus}。")
-    locationFull="\n".join(x for x in (originalLocation,starDoorGodFull,formsFull,dangerFull) if x)
+    locationFull="\n".join(x for x in (originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull) if x)
     # Never convert a left lung into a right-sided organ to sound concise.
     if lead=="肝胆":focusRegion="右上腹肝胆一带"
     elif lead=="左肩":focusRegion="左肩一带"
@@ -564,6 +615,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证"
             if _tier(source_strength("star","天禽星",illness))>=3 else
             "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
+    if crossEvents:
+        bodyEvidence.append(f"另有{crossEvents[0][3]}，只是跨宫需要核实的传统线索，不能据此断言对应器官已经受损")
     closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
@@ -587,7 +640,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v23_integrated_palace_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v24_upper_branch_full_chart_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
