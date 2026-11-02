@@ -829,7 +829,7 @@ enum WenguaNativeDiscomfortV15 {
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion="综上，\(relationship)本次\(conclusionFocus)\(focusRegion)。"+closing+
-            "以上只是传统病位和症候象意，不能代替检查诊断。"
+            "以上为传统病位和症候象意，需以实际检查核实。"
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
