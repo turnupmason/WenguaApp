@@ -72,7 +72,7 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         py=PYTHON.read_text(encoding="utf8")
         tmpl=json.loads(TEMPLATE.read_text(encoding="utf8"))
         self.assertEqual(tmpl["schema"],
-            "wengua_health_discomfort_native_v26_precise_injury_speech_20261101")
+            "wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101")
         self.assertIn("stemBranchFacts",swift)
         self.assertIn("stem_branch_facts",py)
         self.assertIn("sourceStrength(\"stem\",stem,p,[stage])",swift)

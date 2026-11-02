@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class V19LocationFamily(unittest.TestCase):
     def test_nine_source_sections_complete(self):
         t=json.loads((ROOT/"data/templates/health_discomfort_v11/native_discomfort_v15.json").read_text())
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v26_precise_injury_speech_20261101")
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101")
         self.assertEqual([s["id"] for s in t["sections"]],[
             "01_location","02_injury","03_assist_doors","04_hour","05_person",
             "06_auxiliary","07_formation","08_constraints","09_conclusion"])

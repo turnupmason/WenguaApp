@@ -54,7 +54,11 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v26_precise_injury_speech_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+              let stemOverrides=words["customer_stem_overrides"] as? [String:[String:Any]],
+              let dingSites=stemOverrides["丁"]?["sites"] as? [String],dingSites==["心脏","眼睛"],
+              let godImages=words["deity_disease_images"] as? [String:[String:String]],
+              Set(godImages.keys)==Set(["值符","螣蛇","六合","太阴","白虎","玄武","九地","九天"]),
               let paragraphs=words["sections"] as? [[String:String]], paragraphs.count==9,
               chart.palaces.count==9, physical.contains(actor.mainPalace) else {
             throw WenguaNativeReadingError.missingPhrases
@@ -72,6 +76,9 @@ enum WenguaNativeDiscomfortV15 {
         }
         guard chart.bureau.dun=="yang" || chart.bureau.dun=="yin" else {
             throw WenguaNativeReadingError.missingRole
+        }
+        func panel(_ p:WenguaNativePalace)->String {
+            return (chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id) ? "内盘" : "外盘"
         }
         let sector=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(illness.id)
             ? "体内":"体表"
@@ -335,6 +342,17 @@ enum WenguaNativeDiscomfortV15 {
             }
             return unique
         }
+        func stemSites(_ stem:String,_ full:Bool=false)->[String] {
+            if let selected=stemOverrides[stem]?["sites"] as? [String] {return selected}
+            let v=mapping[stem] ?? [:]
+            let all=(v["qimen_secret_vol13"] ?? [])+
+                (full ? (v["sanming_viscera"] ?? [])+(v["sanming_body_surface"] ?? []) : [])
+            return parts(all.joined(separator:"/"))
+        }
+        func stemFocus(_ stem:String)->String {
+            let names=stemSites(stem)
+            return names.isEmpty ? "相应部位" : names.prefix(2).joined(separator:"、")
+        }
         func sameSite(_ a:String,_ b:String)->Bool {
             // Opposite laterality is not the same body site.
             if (a.contains("左") && b.contains("右")) ||
@@ -360,9 +378,9 @@ enum WenguaNativeDiscomfortV15 {
         let originalSites=parts(primary)
         guard !originalSites.isEmpty else {throw WenguaNativeReadingError.missingRole}
         let alternateSites=parts(external)
-        let skySites=parts((secret+viscera+surface).joined(separator:"/"))
-        let earthSites=parts(skyOther.joined(separator:"/"))
-        let birdSites=parts(birdOther.joined(separator:"/"))
+        let skySites=stemSites(sky,true)
+        let earthSites=stemSites(illness.earthStem)
+        let birdSites=bird.map{stemSites($0)} ?? []
         // Identical sky glyph from one physical symbol and its three textual
         // source families count once. Sky, earth and Tianqin are independent.
         func matched(_ candidate:String,_ sites:[String])->Bool {
@@ -569,8 +587,7 @@ enum WenguaNativeDiscomfortV15 {
             for star in injury.heavenStars {
                 let starPower=try sourceStrength("star",star.star,injury)
                 let carrierPower=try stemPower(star.carriedStem,injury)
-                let candidates=parts((mapping[star.carriedStem]?["qimen_secret_vol13"] ?? [])
-                    .joined(separator:"/"))
+                let candidates=stemSites(star.carriedStem)
                 if tier(starPower)>=2 && tier(carrierPower)>=2,
                    let site=candidates.first(where:{matched($0,selectedInjurySites)}) {
                     injuryRoomEvidence.append(
@@ -579,8 +596,7 @@ enum WenguaNativeDiscomfortV15 {
             }
             let earthPower=try sourceStrength("stem",injury.earthStem,
                                                injury,injury.earthStages)
-            let earthSites=parts((mapping[injury.earthStem]?["qimen_secret_vol13"] ?? [])
-                .joined(separator:"/"))
+            let earthSites=stemSites(injury.earthStem)
             if tier(earthPower)>=2,
                let site=earthSites.first(where:{matched($0,selectedInjurySites)}) {
                 injuryRoomEvidence.append(
@@ -611,7 +627,7 @@ enum WenguaNativeDiscomfortV15 {
         if useInjury {
             let reason=injuryReason[injuryContext] ?? "特殊情况"
             let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
-            injuryFull="此次\(reason)，伤门落\(label(injury))宫，\(dn)遁\(injuryScope)取\(injurySiteNames)；\(injuryRelation)\(injuryRoomEvidence.joined())\(injuryLimit)\(surgicalClue)"
+            injuryFull="此次\(reason)，伤门落\(label(injury))宫，\(dn)遁\(panel(injury))，\(injuryScope)取\(injurySiteNames)；\(injuryRelation)\(injuryRoomEvidence.joined())\(injuryLimit)\(surgicalClue)"
         } else {injuryFull=""}
         let doorsConfirming=otherDoors.filter { entry in
             tier(entry.2)>=2 && sourceLocation(entry.0).contains(where:{
@@ -625,17 +641,12 @@ enum WenguaNativeDiscomfortV15 {
             return "\(entry.1)在\(label(entry.0))宫，该宫也取\(hit)，与已选病位重合，故可作为另一宫的交叉印证。"
         }.joined()
         let hourMatch=sourceLocation(hourPalace).first(where:{matched($0,leadSites)})
-        let hourFull:String
-        if hourPalace.id==illness.id && patientPalace.id==illness.id &&
-           actorCarrier==hourCarrier {
-            hourFull=""
-        } else if hourPalace.id==illness.id {
-            hourFull="时干\(hourStem)也落\(label(hourPalace))宫，与病星同宫参看。"
-        } else if let hit=hourMatch {
-            hourFull="时干\(hourStem)落\(label(hourPalace))宫，亦指\(hit)，与主位相互印证。"
-        } else {
-            hourFull="时干\(hourStem)落\(label(hourPalace))宫，与天芮分宫。"
-        }
+        let rel=palaceRelation(hourPalace)
+        let natural:[String:String]=["同宫":"与天芮同宫","比和":"与病宫比和",
+            "病宫克此宫":"受病宫所克","此宫克病宫":"此宫克病宫",
+            "病宫生此宫":"得病宫相生","此宫生病宫":"此宫生扶病宫"]
+        let hourFull="时干\(hourStem)落\(label(hourPalace))宫，属\(chart.bureau.dun=="yang" ? "阳" : "阴")遁\(panel(hourPalace))，力量\(hourPower)，此干主\(stemFocus(hourStem))；\(natural[rel] ?? rel)"+
+            (hourMatch.map{"，同指"+$0} ?? "")+"。"
         let actorSiteHit=sourceLocation(patientPalace).first(where:{
             matched($0,leadSites)
         })
@@ -681,13 +692,14 @@ enum WenguaNativeDiscomfortV15 {
         }
         func selectedStemImage(_ stem:String,_ power:String,
                                _ stages:[WenguaNativeStage]) throws ->String {
-            let candidates=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
-                .joined(separator:"/"))
+            let candidates=stemSites(stem)
             let original=candidates.first(where:{matched($0,leadSites)}) ??
                          candidates.first ?? "无已核实的细部候选"
             let selected=original=="脏（笼统）" ? "脏腑泛象" : original
             _ = try stemBranchFacts(stem,illness,stages)
-            return selected+"，力量"+power
+            let body=stemOverrides[stem] == nil ? selected : candidates.prefix(2).joined(separator:"、")
+            let extra=(stemOverrides[stem]?["symptom"] as? String).map{"，另见"+$0} ?? ""
+            return body+"，力量"+power+extra
         }
         // 81 grid is ordered sky + ground. Preserve the actual source name,
         // luck and gist; generic commercial idioms MUST NOT be turned into
@@ -751,8 +763,7 @@ enum WenguaNativeDiscomfortV15 {
             if !signs.isEmpty {
                 let key=stem+"/"+signs.joined(separator:"、")
                 if recorded.insert(key).inserted {
-                    let rawSite=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
-                        .joined(separator:"/")).first ?? "相应部位"
+                    let rawSite=stemSites(stem).first ?? "相应部位"
                     let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
                     let meaning=signs.count==2 ? "伤痛损伤兼有隐伏之象" :
                         signs.contains("六仪击刑") ? "伤痛或损伤之象" :
@@ -782,11 +793,14 @@ enum WenguaNativeDiscomfortV15 {
             doorText="\(door)受\(palaceName)所克，门象受制，但不是门迫"
         } else {doorText=""}
         let doorClue=sourceClue("八门病象",door)
-        let deityText=(deityClue=="其他传统象意" ? "传统神象待核" : deityClue)
+        guard let image=godImages[deity],
+                  let deityText=image[tier(deityPower)>=3 ? "strong" : "subtle"] else {
+            throw WenguaNativeReadingError.missingPhrases
+        }
         let starDoorGodFull=[
             "天芮星力量\(illnessPower)，主位依\(label(illness))宫确定；",
             "\(door)力量\(doorPower)，古籍记\(doorClue)；",
-            "\(deity)力量\(deityPower)，古籍记\(deityText)。"
+            "\(deity)力量\(deityPower)，传统有\(deityText)。"
         ].joined()
         if !doorText.isEmpty {danger.append(doorText)}
         let dangerFull=danger.isEmpty ? "" :
@@ -802,9 +816,8 @@ enum WenguaNativeDiscomfortV15 {
             for stem in realStems.sorted() {
                 let conditions=badSigns(stem,p)
                 if conditions.isEmpty {continue}
-                let sourceSites=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
-                    .joined(separator:"/"))
-                let rawSite=sourceSites.first ?? "身体相应部位"
+                let sourceSites=stemSites(stem)
+                let rawSite=stemFocus(stem)
                 let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
                 let power=try stemPower(stem,p)
                 if tier(power)==0 {
@@ -853,8 +866,8 @@ enum WenguaNativeDiscomfortV15 {
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
             lead : originalSites.prefix(1).joined(separator:"、")
         let originalLocation=trauma ?
-            "天芮在\(palaceName)，\(dn)遁\(sector)象先指\(originalFocus)；此次确有伤损，另从伤门实际落宫优先核位。" :
-            "天芮在\(palaceName)，\(dn)遁\(sector)象先指\(originalFocus)。"
+            "天芮在\(palaceName)，\(dn)遁\(panel(illness))，\(sector)象先指\(originalFocus)；此次确有伤损，另从伤门实际落宫优先核位。" :
+            "天芮在\(palaceName)，\(dn)遁\(panel(illness))，\(sector)象先指\(originalFocus)。"
         // V23: A single disease-palace account contains star, door,
         // deity, distinct sky/earth, hosted Tianqin, formations and all
         // real tomb/striking/void/pressure. No second disconnected heading.
@@ -896,9 +909,6 @@ enum WenguaNativeDiscomfortV15 {
         if tier(doorPower)>=4 && !trauma {
             bodyEvidence.append("\(door)力量\(doorPower)，旧籍\(doorClue)所指的\(door=="伤门" ? "筋脉牵扯" : "伴随征象")更显")
         }
-        if tier(deityPower)>=4 && !trauma {
-            bodyEvidence.append("\(deity)力量\(deityPower)，旧籍所指\(deityText)可作伴随线索")
-        }
         if mainFormation.contains("伏吟") {
             bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
         } else if formationNames.dropFirst().contains(where:{$0.contains("伏吟")}) {
@@ -908,8 +918,7 @@ enum WenguaNativeDiscomfortV15 {
         }
         if let first=crossEvents.first,
            let p=chart.palaces.first(where:{$0.id==first.1}) {
-            let rawSite=parts((mapping[first.2]?["qimen_secret_vol13"] ?? [])
-                .joined(separator:"/")).first ?? "相应部位"
+            let rawSite=stemSites(first.2).first ?? "相应部位"
             let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
             let signs=badSigns(first.2,p)
             let summary=signs.count==2 ? "伤痛损伤兼隐伏" :
@@ -999,7 +1008,7 @@ enum WenguaNativeDiscomfortV15 {
             throw WenguaNativeReadingError.invalidPhrase
         }
         return WenguaNativeCustomerReading(
-            version:"discomfort_v26_precise_injury_speech_20261101",
+            version:"discomfort_v27_ding_gods_inner_outer_hour_20261101",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(

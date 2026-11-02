@@ -147,6 +147,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     assert len(rules)==255 and len(doc["cases"])==12 and len(doc["conflicts"])==20
     assert len(pairtxt.strip().splitlines())==82
     assert len(template["sections"])==9
+    overrides=template["customer_stem_overrides"]
+    god_images=template["deity_disease_images"]
+    if set(overrides)!={"丁"} or set(god_images)!={"值符","螣蛇","六合","太阴","白虎","玄武","九地","九天"}:
+        raise ValueError("V27 customer policy incomplete")
     tables=energy["tables"]
     palaces={p["id"]:p for p in chart["palaces"]}
     assert set(palaces)==set(range(1,10))
@@ -160,6 +164,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     inner=INNER_YIN if yin else INNER_YANG
     sector="体内" if ip in inner else "体表"
     def label(p):return p["gua"]+DIGITS[p["id"]]
+    def panel(p):return "内盘" if p["id"] in inner else "外盘"
     def find_rule(p,subtype):
         matches=[row for row in rules if row["类别"]=="九宫定位" and
                  row["子类"]==subtype and row["符号组合"]==label(p)+"·"+subtype.split("-")[-1] and
@@ -234,10 +239,18 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if bird and (bird,palaces[5]["earthStem"]) in pmap:
         formation.append(pmap[(bird,palaces[5]["earthStem"])])
     stems=stemdoc["mapping"]
+    def stem_sites(stem,full=False):
+        if stem in overrides:return list(overrides[stem]["sites"])
+        v=stems[stem]
+        return _parts("/".join(v["qimen_secret_vol13"]+
+                 (v["sanming_viscera"]+v["sanming_body_surface"] if full else [])))
+    def stem_focus(stem):
+        names=stem_sites(stem)
+        return "、".join(names[:2]) if names else "相应部位"
     variant=stems[sky]
-    skySites=_parts("/".join(variant["qimen_secret_vol13"]+variant["sanming_viscera"]+variant["sanming_body_surface"]))
-    earthSites=_parts("/".join(stems[illness["earthStem"]]["qimen_secret_vol13"]))
-    birdSites=_parts("/".join(stems[bird]["qimen_secret_vol13"])) if bird else []
+    skySites=stem_sites(sky,True)
+    earthSites=stem_sites(illness["earthStem"])
+    birdSites=stem_sites(bird) if bird else []
     originalSites=_parts(primary)
     alternateSites=_parts(alternate)
     def source_location(p):
@@ -348,13 +361,13 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             starPower=source_strength("star",star["star"],inj)
             carrier=star["carriedStem"]
             carrierPower=stem_power(carrier,inj)
-            candidates=_parts("/".join(stems[carrier]["qimen_secret_vol13"]))
+            candidates=stem_sites(carrier)
             site=next((x for x in candidates if _matched(x,selectedInjurySites)),None)
             if _tier(starPower)>=2 and _tier(carrierPower)>=2 and site:
                 injuryRoomEvidence.append(
                     f"宫中{star['star']}携{carrier}的部位干象也取{site}，故这处有星与干的同宫互证。")
         injuryEarthPower=source_strength("stem",inj["earthStem"],inj,inj["earthStages"])
-        injuryEarthSites=_parts("/".join(stems[inj["earthStem"]]["qimen_secret_vol13"]))
+        injuryEarthSites=stem_sites(inj["earthStem"])
         earthSite=next((x for x in injuryEarthSites if _matched(x,selectedInjurySites)),None)
         if _tier(injuryEarthPower)>=2 and earthSite:
             injuryRoomEvidence.append(
@@ -373,7 +386,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
           "伤门自身取力偏弱，这处仍须其他符号印证。"
           if _tier(injuryPower)<=2 else "")
     injuryFull=(f"此次{injuryReason[injury_context]}，伤门落{label(inj)}宫，"
-        f"{'阴' if yin else '阳'}遁{injuryScope}取{injurySiteNames}；"
+        f"{'阴' if yin else '阳'}遁{panel(inj)}，{injuryScope}取{injurySiteNames}；"
         +injuryRelation+"".join(injuryRoomEvidence)+injuryLimit+surgicalClue if use_injury else "")
     matchingDoors=sorted((x for x in otherDoors if _tier(x[2])>=2 and
                          any(_matched(s,leadSites) for s in source_location(x[0]))),
@@ -385,14 +398,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             f"{d}在{label(p)}宫，该宫也取{hit}，与已选病位重合，故可作为另一宫的交叉印证。")
     doorsFull="".join(doorSentences)
     hourMatch=next((s for s in source_location(hour) if _matched(s,leadSites)),None)
-    if hour["id"]==ip and patient["id"]==ip and actorCarrier==hourCarrier:
-        hourFull=""
-    elif hour["id"]==ip:
-        hourFull=f"时干{hourStem}也落{label(hour)}宫，与病星同宫参看。"
-    elif hourMatch:
-        hourFull=f"时干{hourStem}落{label(hour)}宫，亦指{hourMatch}，与主位相互印证。"
-    else:
-        hourFull=f"时干{hourStem}落{label(hour)}宫，与天芮分宫。"
+    hourHit=next((x for x in source_location(hour) if _matched(x,leadSites)),None)
+    hourFull=(f"时干{hourStem}落{label(hour)}宫，属{'阴' if yin else '阳'}遁{panel(hour)}，"
+              f"力量{hourPower}，此干主{stem_focus(hourStem)}；{natural(hour)}"
+              +(f"，同指{hourHit}" if hourHit else "")+"。")
     actorOverlap=next((s for s in source_location(patient) if _matched(s,leadSites)),None)
     if patient["id"]==ip and hour["id"]==ip and actorCarrier==hourCarrier:
         personFull=(f"{relationship}用神{actor['mainStem']}就是时干，二者同符同落"
@@ -428,12 +437,14 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             facts.append((stage["branch"]+stage["stage"],strength))
         return facts
     def selected_stem_image(stem,power,stages):
-        candidates=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
+        candidates=stem_sites(stem)
         original=next((x for x in candidates if _matched(x,leadSites)),
                       candidates[0] if candidates else "无已核实的细部候选")
         selected="脏腑泛象" if original=="脏（笼统）" else original
         stem_branch_facts(stem,illness,stages)
-        return selected+"，力量"+power
+        name="、".join(candidates[:2]) if stem in overrides else selected
+        extra=("，另见"+overrides[stem]["symptom"] if stem in overrides else "")
+        return name+"，力量"+power+extra
     def formation_meaning(top,ground):
         detail=pfull.get((top,ground))
         if detail is None:return None
@@ -476,7 +487,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             key=stem+"/"+"、".join(signs)
             if key not in recorded:
                 recorded.add(key)
-                sites=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
+                sites=stem_sites(stem)
                 site=("脏腑泛象" if sites and sites[0]=="脏（笼统）" else
                       sites[0] if sites else "相应部位")
                 meaning=("伤痛损伤兼有隐伏之象" if len(signs)==2 else
@@ -505,7 +516,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                    deity in r["符号组合"].split("／")]
     deityClue=(matchingDeity[0]["古籍象意或候选"] if matchingDeity else "其他传统象意")
     deityClue=deityClue.split("；")[0].split("（")[0]
-    deityText="传统神象待核" if deityClue=="其他传统象意" else deityClue
+    image=god_images[deity]
+    deityText=image["strong"] if _tier(deityPower)>=3 else image["subtle"]
     if doorRel=="符号克宫":
         terms={"开门":"金门迫木宫，传统指施治有阻",
                "休门":"水门迫火宫，传统指休养反复",
@@ -522,7 +534,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     doorClue=original_clue("八门病象",door)
     starDoorGodFull=(f"天芮星力量{illnessPower}，主位依{label(illness)}宫确定；"
                      f"{door}力量{doorPower}，古籍记{doorClue}；"
-                     f"{deity}力量{deityPower}，古籍记{deityText}。")
+                     f"{deity}力量{deityPower}，传统有{deityText}。")
     if doorText:danger.append(doorText)
     dangerFull="本宫条件："+"；".join(danger)+"。" if danger else ""
     # V24: every physical real palace, not merely Tianrui's selected palace.
@@ -536,8 +548,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         for stem in realStems:
             conditions=flags(stem,p)
             if not conditions:continue
-            sourceSites=_parts("/".join(stems[stem]["qimen_secret_vol13"]))
-            rawSite=sourceSites[0] if sourceSites else "身体相应部位"
+            sourceSites=stem_sites(stem)
+            rawSite=stem_focus(stem)
             site="脏腑泛象" if rawSite=="脏（笼统）" else rawSite
             power=stem_power(stem,p)
             if _tier(power)==0:raise ValueError("Unmapped actual cross palace stem 200 cell")
@@ -568,10 +580,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     ending="。"
     originalFocus=(lead if not trauma and _matched(lead,originalSites)
                    else "、".join(originalSites[:1]))
-    originalLocation=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象先指{originalFocus}；"
+    originalLocation=(f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{panel(illness)}，{sector}象先指{originalFocus}；"
                       "此次确有伤损，另从伤门实际落宫优先核位。"
                       if trauma else
-                      f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{sector}象先指{originalFocus}。")
+                      f"天芮在{label(illness)}宫，{'阴' if yin else '阳'}遁{panel(illness)}，{sector}象先指{originalFocus}。")
     locationFull="\n".join(x for x in (originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull) if x)
     # Never convert a left lung into a right-sided organ to sound concise.
     if lead=="肝胆":focusRegion="右上腹肝胆一带"
@@ -601,8 +613,6 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if _tier(doorPower)>=4 and not trauma:
         bodyEvidence.append(f"{door}力量{doorPower}，旧籍{doorClue}所指的"+
                             ("筋脉牵扯" if door=="伤门" else "伴随征象")+"更显")
-    if _tier(deityPower)>=4 and not trauma:
-        bodyEvidence.append(f"{deity}力量{deityPower}，旧籍所指{deityText}可作伴随线索")
     if "伏吟" in formation[0]:
         bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
     elif any("伏吟" in x for x in formation[1:]):
@@ -613,7 +623,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if crossEvents:
         first=crossEvents[0]
         p=palaces[first[1]]
-        sites=_parts("/".join(stems[first[2]]["qimen_secret_vol13"]))
+        sites=stem_sites(first[2])
         site=("脏腑泛象" if sites and sites[0]=="脏（笼统）" else
                       sites[0] if sites else "相应部位")
         signs=flags(first[2],p)
@@ -643,7 +653,7 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v26_precise_injury_speech_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v27_ding_gods_inner_outer_hour_20261101","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()

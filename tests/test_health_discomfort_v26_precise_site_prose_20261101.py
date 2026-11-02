@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class V26Wording(unittest.TestCase):
     def test_template_and_both_composers(self):
         t=json.loads((ROOT/"data/templates/health_discomfort_v11/native_discomfort_v15.json").read_text())
-        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v26_precise_injury_speech_20261101")
+        self.assertEqual(t["schema"],"wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101")
         for name in ("src/wengua/health_discomfort_v19_parity.py","ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift"):
             code=(ROOT/name).read_text()
             for invalid in ("按较高一档取","这一干象较突出","可考虑此处受到病事牵连的象意"):
