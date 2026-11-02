@@ -17,7 +17,7 @@ struct WenguaNativeCustomerView: View {
                     Text("专业解盘")
                         .font(.system(size:23,weight:.semibold,design:.serif))
                         .foregroundStyle(QStyle.text)
-                }
+                }.frame(maxWidth:.infinity,alignment:.center)
                 Text(WenguaDomainContract.lookup(reading.topicID)?.interpretationReady == true ?
                      "分项查看盘面、人物用神与条件依据。" :
                      "真实历法与九宫事实；专题取用与断词仍在开发中。")
@@ -38,10 +38,10 @@ struct WenguaNativeCustomerView: View {
                             .fill(gold.opacity(0.5))
                             .frame(width:2,height:19)
                         Text(section.title)
-                            .font(.system(size:17,weight:.semibold,design:.serif))
+                            .font(.system(size:21,weight:.semibold,design:.serif))
                             .foregroundStyle(QStyle.text)
-                        Spacer(minLength:0)
                     }
+                    .frame(maxWidth:.infinity,alignment:.center)
                     if ["03classical","88subject","87vnext"].contains(section.id) {
                         DisclosureGroup("展开原文依据") {
                             customerParagraph(section.text,sectionID:section.id)
@@ -82,7 +82,7 @@ struct WenguaNativeCustomerView: View {
                 let block=blocks[index]
                 VStack(alignment:.leading,spacing:10) {
                     if let heading=block.heading {
-                        Text(heading).font(.subheadline.weight(.semibold)).foregroundStyle(gold)
+                        Text(heading).wenguaHeading().foregroundStyle(gold)
                     }
                     let paragraphs=WenguaReadingLayout.paragraphs(block)
                     ForEach(paragraphs.indices,id:\.self) { row in

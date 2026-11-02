@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "6c99e5e200a8c6bf62d93e7acd332c223eac059e"
+      "sha": "b5d3c8ebea65201329d5f9d3e5795094ce33f32b"
     },
     {
       "platform": "swift",
@@ -475,7 +475,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "snapshot": "Important/swift/ui/WenguaNativeCustomerView.swift",
-      "sha": "7a57e97008b34e00c45050a021afd7316406e323"
+      "sha": "62bb5bf0b543e0e871ba55ec0794dfb139bbdd86"
     },
     {
       "platform": "swift",
@@ -535,7 +535,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "8930d5d592f41d9a463553e7b48e1c3f0ff2f9e0"
+      "sha": "27c9432733b2c23a978450850378596a0a2745db"
     },
     {
       "platform": "swift",
@@ -571,7 +571,7 @@
       "platform": "python",
       "canonical": "tests/test_ios_first_viewport_palace_layout_20261028.py",
       "snapshot": "Important/python/tests/test_ios_first_viewport_palace_layout_20261028.py",
-      "sha": "a8528b2a346d1b608d96090611b5f1c21eb5fd2b"
+      "sha": "0618380170786ffa1d47e1becb5d071decce7c50"
     },
     {
       "platform": "python",
@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "bd31b9d36feeff68b7ef38e93900484d46fc7fc8"
+      "sha": "98d10cbc031c4479ac595207ef229524c71a8973"
     },
     {
       "platform": "python",
@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "0b47d21446f1e239b29d6e6328ed1719a2c30e65"
+      "sha": "c2b98e228827693f86cfd6691b487e9413ba00d2"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "8b71a2f7fd90e90bb181e405ff5f4cc50dfebc54"
+      "sha": "f1d7e13de1e449a492faf31946cbdf6a3f500711"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "8b71a2f7fd90e90bb181e405ff5f4cc50dfebc54"
+      "sha": "f1d7e13de1e449a492faf31946cbdf6a3f500711"
     },
     {
       "platform": "python",
@@ -901,7 +901,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "snapshot": "Important/swift/ui/WenguaCastTimeView.swift",
-      "sha": "910c5cd0a6715adf77b3cb0497ca39c561dd8e27"
+      "sha": "056170dd939d1be5f41c45a8a0bf39792fd5eebe"
     },
     {
       "platform": "python",
@@ -919,7 +919,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaReadingLayout.swift",
       "snapshot": "Important/swift/ui/WenguaReadingLayout.swift",
-      "sha": "bc2d1f0428f83cada5fffea102f39f35c9d83bc3"
+      "sha": "5cb1e546af0b2be3280af3b875fd2f62e81a08d0"
     },
     {
       "platform": "python",
@@ -931,13 +931,19 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
       "snapshot": "Important/swift/ui/WenguaSetupPresentation.swift",
-      "sha": "062af8cee76feb6739d22c421fdf7db5da005a5b"
+      "sha": "540bc66ce7e416d4fd8196426f32817d7c0168c8"
     },
     {
       "platform": "python",
       "canonical": "tests/test_ios_setup_palace_ui_20261102.py",
       "snapshot": "Important/python/tests/test_ios_setup_palace_ui_20261102.py",
-      "sha": "5ef1574bb6b498d714a4350d78036dffbcf01eeb"
+      "sha": "d73251e69a60dad33012f96be475c9b2d59284d4"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_polish_p7_20261102.py",
+      "snapshot": "Important/python/tests/test_ios_polish_p7_20261102.py",
+      "sha": "b49a04fdf6ab90951c29db84f84283b5b96b63fe"
     }
   ]
 }

@@ -43,7 +43,7 @@ class FirstViewportAndGrid(unittest.TestCase):
                      'markedStem(pair.element.1,plane:"地盘",size:size)'):
             self.assertIn(name,self.chart)
         self.assertNotIn("symbolRow(star.0,kind:",self.chart)
-        self.assertIn("Text(entry.element)",self.chart)
+        self.assertIn('Text(entry.element.map(String.init).joined(separator:"\\n"))',self.chart)
     def test_three_by_three_board_budget_on_small_and_large_viewports(self):
         for width,height in [(320,550),(375,660),(393,760),(430,850)]:
             side=max(80,min((width-30)/3,(height-274)/3))

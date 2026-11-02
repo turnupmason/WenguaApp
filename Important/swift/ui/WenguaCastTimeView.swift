@@ -11,21 +11,20 @@ struct WenguaCastTimePicker: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("起局时间").font(.headline)
             if mode == .currentInquiry {
-                Text("当前时辰问事").font(.headline)
+                Text("起局时间：当前时辰问事").wenguaHeading()
                 Text("直接使用确认起局时的当前时辰。")
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
             } else {
-                Text("预定时辰起局").font(.headline)
+                Text("起局时间：预定时辰起局").wenguaHeading()
                 Text("请选择事项实际发生／约定的未来时刻。吉日专用评级仍在开发中，当前提供真实排盘。")
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
-                Text("事项发生地时区").font(.subheadline.weight(.semibold))
+                Text("事项发生地时区").wenguaHeading()
                 Picker("事项发生地时区", selection: $timezone) {
                     ForEach(Array(Set(TimeZone.knownTimeZoneIdentifiers + [timezone])).sorted(), id: \.self) { zone in
                         Text(zone).tag(zone)
                     }
-                }.pickerStyle(.menu).labelsHidden()
+                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                     .frame(maxWidth:.infinity,alignment:.leading)
                 Button {
                     draftClock=WenguaScheduledClock(date:candidates.first?.date ?? Date(),timezone:timezone)
@@ -43,14 +42,16 @@ struct WenguaCastTimePicker: View {
                 .accessibilityValue(candidates.first?.isConfirmed == true ? "已选择" : "尚未选择")
             }
         }
-        .padding(14)
-        .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 14))
+        .padding(20)
+        .frame(maxWidth:.infinity,alignment:.leading)
+        .fixedSize(horizontal:false,vertical:true)
+        .background(QStyle.surface, in: RoundedRectangle(cornerRadius:18))
         .onChange(of:timezone) { _, _ in
             for index in candidates.indices {candidates[index].isConfirmed=false}
         }
         .navigationDestination(isPresented:$choosingTime) {
             VStack(spacing:20) {
-                Text("选择事项发生的年月日与时间").font(.headline)
+                Text("选择事项发生的年月日与时间").wenguaHeading()
                 WenguaCivilClockWheel(clock:$draftClock,timezone:timezone)
                 if let choices=try? draftClock.instants(timezone:timezone),choices.count>1 {
                     Picker("该时间出现两次，请选择",selection:$occurrence) {

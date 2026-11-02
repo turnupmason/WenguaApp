@@ -59,8 +59,8 @@ def check():
     ui=PREMIUM.read_text(encoding="utf-8")
     # Check the ACTUAL first-tab Swift UI composition, not only its grade
     # caption lookup. A generic one-line override used to pass the old test.
-    assert 'Text(caption.category)' in ui
-    assert 'Text(grade+"："+caption.epithet)' in ui
+    assert 'Text(caption.category)' not in ui
+    assert 'Text(grade+"："+caption.epithet)' not in ui
     assert 'Text(verdict.frontNarrative(caption))' in ui
     assert 'WenguaNaturalSeveritySummary' not in ui
     native=ROUTER.read_text(encoding="utf-8")
@@ -148,17 +148,17 @@ for item in six {
     }
     let front=resolved.frontNarrative(caption)
     let count=front.filter{ !$0.isWhitespace }.count
-    guard (145...280).contains(count) else {
-        fatalError("real V11 first-tab summary should be ~150–200 Chinese characters, got \(count)")
+    guard (25...120).contains(count) else {
+        fatalError("real V11 first-tab summary should be only the source-based final two sentences, got \(count)")
     }
-    guard front.contains("病星天芮"), front.contains("医药两端分别看"),
-          front.contains("综上所述"), front.contains("全盘判为"),
+    guard !front.contains("病星天芮"), !front.contains("医药两端分别看"),
+          front.hasPrefix("病宫"), front.contains("全盘判为"),
           front.contains("患者"), !front.contains("以上仅作传统古籍象意参考") else {
         fatalError("first tab lost real patient/medical evidence or leaked footer")
     }
     print("PASS_V11_FRONT_REAL_GRADE \(item.grade) \(count)")
 }
-print("PASS: five archived real verdicts, all 11 grades, and six actual V11 ~150–200-char source summaries; no scoring change")
+print("PASS: five archived real verdicts, all 11 grades, and six actual V11 concise source summaries; no scoring change")
 '''
     with tempfile.TemporaryDirectory(prefix="wengua-verdict-") as tmp:
         base=Path(tmp)

@@ -43,24 +43,6 @@ struct WenguaVerdictPresentation {
     let macro: String?
 
     func frontNarrative(_ caption:WenguaHealthGradeCaption) -> String {
-        // About 150–200 Chinese characters on ordinary real clocks.
-        // Never guess a score, fabricate a control relation or pull the
-        // specialist palace descriptions into a second summary engine.
-        var body=evidence
-        let meaningful=(macro ?? "").components(separatedBy:"。")
-            .map{$0.trimmingCharacters(in:.whitespacesAndNewlines)}
-            .filter{ $0.hasPrefix("五不遇时") || $0.hasPrefix("伏吟主慢") ||
-                     $0.hasPrefix("反吟主快") || $0.hasPrefix("天显时") }
-        for note in meaningful {
-            if body.count+note.count+3 <= 200 {
-                body+="\n\n"+note+"。"
-            }
-        }
-        if body.count < 150, let timing, !timing.isEmpty,
-           body.count+timing.count+2 <= 215 {
-            body+="\n\n"+timing
-        }
-        // The final two sentences are mandatory; NEVER trim off the grade.
         let first=evidence.components(separatedBy:"\n\n").first ?? ""
         let clauses=first.components(separatedBy:"；")
         func quality(_ text:String)->String {
@@ -72,8 +54,8 @@ struct WenguaVerdictPresentation {
         let ill=quality(clauses.first ?? "")
         let patient=quality(clauses.count>1 ? clauses[1] : "")
         let gradeWord=grade ?? "待核"
-        let ending="综上所述，病宫\(ill)，患者宫\(patient)，医药与辅助还须合参。全盘判为\(gradeWord)：\(caption.epithet)，\(caption.interpretation)。"
-        return body+"\n\n"+ending
+        let ending="病宫\(ill)，患者宫\(patient)，医药与辅助还须合参。全盘判为\(gradeWord)：\(caption.epithet)，\(caption.interpretation)。"
+        return ending
     }
 
     static func from(_ reading: WenguaNativeCustomerReading) -> WenguaVerdictPresentation? {
@@ -237,14 +219,14 @@ struct WenguaPremiumVerdictCard: View {
         VStack(alignment:.leading,spacing:17) {
             HStack {
                 Text("专 业 解 卦")
-                    .font(.system(size:13,weight:.medium,design:.serif))
+                    .font(.system(size:21,weight:.semibold,design:.serif))
                     .tracking(3)
                     .foregroundStyle(gold)
-                Spacer()
                 Image(systemName:"seal")
                     .font(.system(size:23,weight:.ultraLight))
                     .foregroundStyle(gold)
             }
+            .frame(maxWidth:.infinity,alignment:.center)
             Rectangle().fill(gold.opacity(0.32)).frame(height:1)
 
             if let timing=reading.timingHeadline {
@@ -284,19 +266,6 @@ struct WenguaPremiumVerdictCard: View {
                     // First tab: ten-grade header and ~150–200 characters
                     // of real V11 evidence. Tab two: full role-by-role original.
                     // Both read the same V8 score / parity-checked V11 sections.
-                    Text(caption.category)
-                        .font(.system(size:18,weight:.semibold,design:.serif))
-                        .tracking(3)
-                        .foregroundStyle(muted)
-                        .accessibilityAddTraits(.isHeader)
-                    Text(grade+"："+caption.epithet)
-                        .font(.system(size:29,weight:.semibold,design:.serif))
-                        .foregroundStyle(gold)
-                        .minimumScaleFactor(0.72)
-                        .lineLimit(2)
-                    // 150–200-character source-grounded V11 synthesis,
-                    // rather than one generic sentence or a second full
-                    // specialist ledger; actual detail stays in tab two.
                     Text(verdict.frontNarrative(caption))
                         .font(.system(size:17,weight:.regular,design:.serif))
                         .lineSpacing(6)

@@ -26,14 +26,16 @@ struct WenguaPreparationCard: View {
             }.buttonStyle(.borderedProminent).tint(Color(red:0.12,green:0.30,blue:0.31))
             Text("信息填写完毕后，请闭目、端坐，完整静心30秒。确保心平气和、意念集中于所问之事，方可动手起局（无事勿惊，不诚不占）。")
                 .font(.subheadline).foregroundStyle(QStyle.secondary).lineSpacing(6)
+                .fixedSize(horizontal:false,vertical:true)
         }
         .padding(26).frame(maxWidth:.infinity)
         .background(QStyle.surface,in:RoundedRectangle(cornerRadius:24))
     }
     private func guidance(_ title:String,_ text:String) -> some View {
         VStack(alignment:.leading,spacing:5) {
-            Text(title+"：").font(.headline)
-            Text(text).font(.subheadline).foregroundStyle(QStyle.secondary).lineSpacing(4)
+            Text(title+"：").wenguaHeading()
+            Text(text).font(.system(size:17)).foregroundStyle(QStyle.secondary).lineSpacing(5)
+                .lineLimit(nil).fixedSize(horizontal:false,vertical:true)
         }.frame(maxWidth:.infinity,alignment:.leading)
     }
 }
@@ -77,5 +79,43 @@ struct WenguaCivilClockWheel: View {
             .frame(maxWidth:.infinity).frame(height:155).clipped()
             .accessibilityLabel(title)
         }.frame(maxWidth:.infinity)
+    }
+}
+
+struct WenguaCenteredHeading: ViewModifier {
+    func body(content:Content) -> some View {
+        content.font(.system(size:21,weight:.semibold,design:.serif))
+            .multilineTextAlignment(.center).frame(maxWidth:.infinity,alignment:.center)
+            .fixedSize(horizontal:false,vertical:true)
+    }
+}
+struct WenguaChoiceField: ViewModifier {
+    func body(content:Content) -> some View {
+        content.font(.system(size:18,weight:.medium)).tint(QStyle.text)
+            .padding(14).frame(maxWidth:.infinity,minHeight:52,alignment:.leading)
+            .background(QStyle.blue.opacity(0.10),in:RoundedRectangle(cornerRadius:12))
+            .overlay(RoundedRectangle(cornerRadius:12).stroke(QStyle.blue.opacity(0.40),lineWidth:1))
+    }
+}
+extension View {
+    func wenguaHeading() -> some View {modifier(WenguaCenteredHeading())}
+    func wenguaChoice() -> some View {modifier(WenguaChoiceField())}
+}
+struct WenguaCivilDateRow: View {
+    let iso:String
+    let timezone:String
+    var body: some View {
+        let date=ISO8601DateFormatter().date(from:iso) ?? Date(timeIntervalSince1970:0)
+        let clock=WenguaScheduledClock(date:date,timezone:timezone)
+        let values=[String(clock.year),String(clock.month),String(clock.day),String(format:"%02d:%02d",clock.hour,clock.minute)]
+        HStack(spacing:0) {
+            ForEach(0..<4,id:\.self) { i in
+                VStack(spacing:6) {
+                    Text(["年","月","日","时"][i]).font(.system(size:15,weight:.medium)).foregroundStyle(QStyle.secondary)
+                    Text(values[i]).font(.system(size:19,weight:.semibold,design:.monospaced))
+                        .foregroundStyle(QStyle.text).lineLimit(1).minimumScaleFactor(0.8)
+                }.frame(maxWidth:.infinity)
+            }
+        }.padding(.vertical,8)
     }
 }

@@ -14,14 +14,16 @@ enum WenguaReadingLayout {
             ("另宫刑墓：", "另宫刑墓")]
         var result: [WenguaReadingBlock] = []
         var start = source.startIndex
-        var heading: String? = sectionID=="02_injury" ? "伤损部位" : sectionID=="09_conclusion" ? "主要结论" : nil
+        var heading: String? = sectionID=="90_review" ? "病宫与患者" : sectionID=="02_injury" ? "伤损部位" : sectionID=="09_conclusion" ? "主要结论" : nil
         var cursor = start
         while cursor < source.endIndex {
             let atLineStart = cursor == source.startIndex || source[source.index(before:cursor)] == "\n"
             let lineMarkers: [(String,String)] = atLineStart ? [
                 ("天芮在","病位"),("天芮星力量","星门神"),("天盘","天干")] : []
             var scoped:[(String,String)]=[]
-            if sectionID=="02_injury" {
+            if sectionID=="90_review" {
+                scoped=[("医药两端分别看","医药依据"),("另参","病事与辅助"),("长辈乾坤辅助","长辈辅助"),("大吉神","大吉神依据"),("综上所述","全盘结论")]
+            } else if sectionID=="02_injury" {
                 scoped=[("伤门力量","星门神"),("宫中","星干信息"),
                         ("伤门自身取力","取象限制"),("伤门木克","条件限制")]
                 if source[cursor...].hasPrefix("天盘"),
@@ -52,7 +54,7 @@ enum WenguaReadingLayout {
             current += run
             // Keep related short clauses together; separate on original line
             // boundaries or a complete, comfortably sized sentence.
-            if run.hasSuffix("\n") || (current.count>=70 && run.hasSuffix("。")) {
+            if run.hasSuffix("\n") || (current.count>=38 && (run.hasSuffix("。") || run.hasSuffix("；"))) {
                 result.append(current);current=""
             }
         }

@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p6",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p7",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "4629afd491028bc6edf52221b649ceed39ad41a248b6eb96bd176ed145d09e40"
+      "sha256": "c1d1ed7617373b8096294e41dbd8bd68a988ce31d11ce74e6283876c92286bd6"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "51d1a3c7b8d10b5cb54a1f107e62b84c159f2b173921d510273905a5e51b897b"
+      "sha256": "b55f9a42aa7d34bdcd0ab27a1a5e22ed55890604bb7e080ba4a6972ddc7360fd"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -136,7 +136,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "kind": "source",
-      "sha256": "6495fe9705b60a17fdc3b50dbb73154d56ecf87c3928777945e9b725281c1d7b"
+      "sha256": "4af24c0a9f671b156496bbe2a40dd2d46a3623b9a626e19642bded6b3d62a775"
     },
     {
       "path": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
@@ -191,23 +191,23 @@
     {
       "path": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "kind": "source",
-      "sha256": "af74fc6c9513adbafb15c1ca8a0ea2c36f691a70352bea2916f91a87ff802b74"
+      "sha256": "dd5e5232b9fb5fa8ba0bf50312951102d44e051117462ac9842ebfdc7be17e8e"
     },
     {
       "path": "ios/WenguaAppUI/WenguaReadingLayout.swift",
       "kind": "source",
-      "sha256": "77d143bf51d68d0c900616c78b40bfe6c06e415f1253657ba0dd0a82ea967e95"
+      "sha256": "ccb026fbc8637aeea34cd9658d1c009eb6aa34e50f8359e4f63e3143be52a3a6"
     },
     {
       "path": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
       "kind": "source",
-      "sha256": "0df23fe9a30b08c0205a63676805acf174fb719ad13c05f1348b724b0acb82dc"
+      "sha256": "65f614e19a7087de604853d78919962b6eaaf52beb9ab698a0354678fedf0822"
     }
   ],
   "engineering_patch": {
-    "id": "p6_inline_setup_exclusive_clock_modes_and_palace_readability",
-    "prior_manifest_sha256": "bfb8770d7ea3e389d95d466099608a7e1d7e056271ee5ac97ff77c27fc34cd55",
-    "scope": "Inline preparation and grouped form; ordinary topics current-only, domain elective future-only with explicit civil year/month/day/hour/minute wheels and native mode enforcement; fixed stem overlays, centered palace titles, larger roles, grouped lossless injury/conclusion display. Sealed engines, templates and all seven resources unchanged; elective grading remains pending.",
-    "authorization": "User 2026-11-02 requests the screenshot UI fixes, removes automatic setup modal and ordinary scheduled toggle, reserves future time entry for each domain elective route, and explicitly requires five labeled time columns."
+    "id": "p7_complete_text_centered_headings_visible_controls_and_concise_verdict",
+    "scope": "User screenshot corrections: complete wrapping, equal-width cards, colon time heading, visible menu fields, centered titles, civil date values below labels, concise first-tab verdict, full grouped detail, uniform vertical role glyphs. No frozen math/template changes.",
+    "authorization": "User 2026-11-02 explicitly requests all screenshot typography fixes and only the two-sentence source-based severity summary on the first tab.",
+    "prior_manifest_sha256": "7a5fc3cdeac2448a0c32f3742affbf0e2cce5dcd9c799ae6b91046782e1e920b"
   }
 }

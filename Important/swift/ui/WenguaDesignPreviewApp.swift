@@ -533,6 +533,7 @@ struct ProfessionalChartScreen: View {
                     .foregroundStyle(QStyle.secondary)
                 Spacer(minLength:0)
             }
+            WenguaCivilDateRow(iso:chart.iso,timezone:chart.timezone)
             HStack(spacing:4) {
                 pillarMini("年",chart.pillars.year)
                 pillarMini("月",chart.pillars.month)
@@ -553,7 +554,7 @@ struct ProfessionalChartScreen: View {
                 Text(String(stem.suffix(1))).foregroundStyle(QFive.shade("branch",String(stem.suffix(1))))
             }
             .font(.system(size:24,weight:.semibold,design:.monospaced))
-            Text(label).font(.system(size:12,weight:.medium)).foregroundStyle(QStyle.secondary)
+
         }
         .frame(maxWidth:.infinity)
         .lineLimit(1)
@@ -857,12 +858,13 @@ struct ProfessionalPalaceTile: View {
     }
 
     private var roleColumn:some View {
-        VStack(spacing:4) {
+        HStack(alignment:.top,spacing:4) {
             ForEach(Array(identityLabels.enumerated()),id:\.offset) { entry in
-                Text(entry.element)
+                Text(entry.element.map(String.init).joined(separator:"\n"))
                     .font(.system(size:12,weight:.semibold,design:.serif))
+                    .lineSpacing(2)
                     .foregroundStyle(identityInk)
-                    .lineLimit(3).minimumScaleFactor(0.9)
+                    .fixedSize(horizontal:false,vertical:true)
                     .multilineTextAlignment(.center)
                     .frame(maxWidth:.infinity)
             }
@@ -1169,14 +1171,15 @@ struct CastSetupScreen: View {
                 VStack(alignment: .leading, spacing: 17) {
                     if phase == 0 {
                         Text(topic.domainTitle + "／" + topic.title)
-                            .font(.system(size: 28, weight: .medium))
+                            .font(.system(size:28,weight:.semibold,design:.serif))
+                            .multilineTextAlignment(.center).frame(maxWidth:.infinity)
                         Text("同一件具体事情，15天内只起一次。")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                         VStack(alignment:.leading,spacing:18) {
-                            Text("本次事项："+topic.title).font(.headline)
+                            Text("本次事项："+topic.title).wenguaHeading()
                             Text("盘面由时刻决定；人物和实际条件影响专题取用与解读。")
-                                .font(.caption).foregroundStyle(QStyle.secondary)
-                            Text("问事人与自己的关系").font(.headline)
+                                .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
+                            Text("问事人与自己的关系").wenguaHeading()
                             Picker("问事人与自己的关系", selection: $subject) {
                                 ForEach(relations, id: \.self) { relation in
                                     Text(["哥哥":"哥哥（家里的哥哥）",
@@ -1185,7 +1188,7 @@ struct CastSetupScreen: View {
                                           "妹妹":"妹妹（家里的妹妹）"][relation] ?? relation).tag(relation)
                                 }
                             }
-                            .pickerStyle(.menu).labelsHidden()
+                            .pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                             .onChange(of:subject) { _, _ in
                                 familyRelativeConfirmed=false
@@ -1195,31 +1198,31 @@ struct CastSetupScreen: View {
                             }
                             TextField("问事人称呼（可选）", text: $subjectName)
                             if topic.enabled {
-                            Text("出生年份（记录用，可选）").font(.subheadline.weight(.semibold))
+                            Text("出生年份（记录用，可选）").wenguaHeading()
                             TextField("例如1988；不作为出生年命推断",text:$birthYear)
                                 .keyboardType(.numberPad)
                             if subject=="父母" ||
                                subject=="配偶" || subject=="同事" || subject=="朋友" ||
                                subject=="其他长辈" || subject=="孩子" {
-                                Text("问事人性别").font(.subheadline.weight(.semibold))
+                                Text("问事人性别").wenguaHeading()
                                 Picker(subject=="朋友" ? "朋友性别（必选）" :
                                        "病人性别（请按实际选择）",selection:$patientSex) {
                                     Text("未说明").tag("unspecified")
                                     Text("男").tag("male")
                                     Text("女").tag("female")
-                                }.pickerStyle(.menu).labelsHidden()
+                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                             }
                             if subject=="朋友" {
-                                Text("朋友与自己的年龄关系（必选）").font(.subheadline.weight(.semibold))
+                                Text("朋友与自己的年龄关系（必选）").wenguaHeading()
                                 Picker("朋友比你年长还是年幼（必选）",selection:$friendRelativeAge) {
                                      Text("未说明").tag("unspecified")
                                      Text("比我大").tag("older")
                                      Text("比我小").tag("younger")
-                                 }.pickerStyle(.menu).labelsHidden()
+                                 }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                                  Text("朋友仍取真实月干，不借亲属辅助宫。")
-                                    .font(.caption).foregroundStyle(QStyle.secondary)
+                                    .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             }
                             if ["哥哥","姐姐","弟弟","妹妹"].contains(subject) {
                                  Toggle(["哥哥":"确认是家里的哥哥（不是男性朋友）",
@@ -1229,22 +1232,22 @@ struct CastSetupScreen: View {
                                         "确认是本人家庭亲属",isOn:$familyRelativeConfirmed)
                              }
                              if ["儿子","女儿","孩子","侄子"].contains(subject) {
-                                Text("出生排行（可选）").font(.subheadline.weight(.semibold))
+                                Text("出生排行（可选）").wenguaHeading()
                                 Picker("出生排行（可选）",selection:$birthOrder) {
                                     Text("未说明").tag("unspecified")
                                     Text("长").tag("eldest")
                                     Text("中").tag("middle")
                                     Text("幼").tag("youngest")
-                                }.pickerStyle(.menu).labelsHidden()
+                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                             }
-                            Text("出生年命干支（已知再填）").font(.subheadline.weight(.semibold))
+                            Text("出生年命干支（已知再填）").wenguaHeading()
                             TextField("例如辛酉；不确定请留空",text:$patientBirthGanzhi)
                                 .textInputAutocapitalization(.never)
                             Text("请按实际关系填写，人物关系决定专题取用；出生年份不会自动补作年命。")
-                                .font(.caption).foregroundStyle(QStyle.secondary)
+                                .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             if topic.id=="health.discomfort" {
-                                Text("伤损情况（必选）").font(.headline)
+                                Text("伤损情况（必选）").wenguaHeading()
                                 Picker("病位问题属于哪一种情况（必选）",selection:$injuryContext) {
                                     Text("请先选择").tag("unspecified")
                                     Text("普通身体不适（无以下特殊情况）").tag("none")
@@ -1253,15 +1256,15 @@ struct CastSetupScreen: View {
                                     Text("出血：刀伤、开放性伤口或急性大量出血").tag("bleeding")
                                     Text("明显剧烈疼痛").tag("severe_pain")
                                     Text("已经手术或准备手术").tag("surgery")
-                                }.pickerStyle(.menu).labelsHidden()
+                                }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                                 Text("伤损、出血或剧痛，优先看伤门落宫；手术另看伤门所示部位。普通不适不启用独立伤门判断。未选择不能起局。")
-                                   .font(.caption).foregroundStyle(QStyle.secondary)
+                                   .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             }
-                            Text("病程（记录用，可选）").font(.headline)
+                            Text("病程（记录用，可选）").wenguaHeading()
                             Picker("病程（仅记录，可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
-                            }.pickerStyle(.menu).labelsHidden()
+                            }.pickerStyle(.menu).labelsHidden().wenguaChoice()
                                 .frame(maxWidth:.infinity,alignment:.leading)
                             }
                         }
@@ -1271,11 +1274,13 @@ struct CastSetupScreen: View {
                         .background(QStyle.surface, in: RoundedRectangle(cornerRadius: 18))
                         WenguaCastTimePicker(mode:castMode,candidates:$timeCandidates,timezone:$eventTimeZone)
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("静心起局").font(.headline)
+                            Text("静心起局").wenguaHeading()
                             Text("信息填写完毕后，请闭目、端坐，完整静心30秒。确保心平气和、意念集中于所问之事，方可动手起局（无事勿惊，不诚不占）。")
                                 .font(.subheadline)
                         }
-                        .padding(15)
+                        .padding(20)
+                        .frame(maxWidth:.infinity,alignment:.leading)
+                        .fixedSize(horizontal:false,vertical:true)
                         .background(QStyle.surface,
                                     in: RoundedRectangle(cornerRadius: 14))
                         if !validationMessage.isEmpty {
@@ -1287,13 +1292,14 @@ struct CastSetupScreen: View {
                             .frame(maxWidth: .infinity)
                     } else {
                         Text("静心 · 默想所问")
-                            .font(.system(size: 28, weight: .medium))
+                            .font(.system(size:28,weight:.semibold,design:.serif))
+                            .multilineTextAlignment(.center).frame(maxWidth:.infinity)
                             .frame(maxWidth: .infinity)
                         Text("心诚则灵，尊重事实")
                             .font(.subheadline).foregroundStyle(QStyle.secondary)
                             .frame(maxWidth: .infinity)
                         Text(castMode == .plannedEvent ? "按所选预定时辰起局" : "确认起局时采集当下时辰")
-                            .font(.caption).foregroundStyle(QStyle.secondary)
+                            .font(.caption).foregroundStyle(QStyle.secondary).fixedSize(horizontal:false,vertical:true)
                             .frame(maxWidth:.infinity)
                         TimelineView(.periodic(from: .now, by: 0.25)) { context in
                             let remaining = calmEnds.map { max(0, Int(ceil($0.timeIntervalSince(context.date)))) } ?? 30

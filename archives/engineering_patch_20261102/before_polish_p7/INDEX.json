@@ -1,0 +1,8 @@
+{
+  "data/releases/health_frozen_20261102.json": "7a5fc3cdeac2448a0c32f3742affbf0e2cce5dcd9c799ae6b91046782e1e920b",
+  "tests/test_ios_premium_result_ui_20261028.py": "401c32e085edb9a35fef89c7bf458828a1ecd64c97bba28980c1422459016a53",
+  "tests/verify_ios_premium_verdict_runtime_20261028.py": "06157d76ebeb4a3cc5c10323e870cfafcc58668671255de08ff91cc301fde797",
+  "tests/test_ios_setup_palace_ui_20261102.py": "42f49b9a9796e876edf94596b807275827e1d679d6aa4bda280c4e349ab52369",
+  "tests/test_ios_first_viewport_palace_layout_20261028.py": "17b4b91f1aa3146086b8ceeb73000f08f83a29051e8d6b541b11557b89b1c805",
+  "tests/test_ios_health_grade_copy_20261028.py": "a8719ee978e73ac8ed8becdbc8b994a7f01a30a427297ac33771e7c6b6a90786"
+}

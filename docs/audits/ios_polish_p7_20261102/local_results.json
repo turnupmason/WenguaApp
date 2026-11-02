@@ -1,0 +1,21 @@
+{
+  "tests": 857,
+  "failures": 0,
+  "errors": 0,
+  "existing_skips": 3,
+  "new_skips": 0,
+  "logs": [
+    {
+      "path": "docs/audits/ios_polish_p7_20261102/first_migration_failure.log.gz",
+      "sha256": "f00cc056c77f58138ebbcfb1139e96d4708243da0788fccb452892f25a2db893"
+    },
+    {
+      "path": "docs/audits/ios_polish_p7_20261102/full_857_pass.log.gz",
+      "sha256": "79b900f1b7fdbe6f177e51132bc8fd0e90d1e2ec46c92d0c0216a468dbd81ac9"
+    },
+    {
+      "path": "docs/audits/ios_polish_p7_20261102/second_migration.log.gz",
+      "sha256": "fe1eab29d947eb4fafa49558992a5359f47181849801adc43e21b25a5083a9b5"
+    }
+  ]
+}

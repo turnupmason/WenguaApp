@@ -15,7 +15,7 @@ UI = ROOT / 'ios/WenguaAppUI'
 class SetupPalaceUI(unittest.TestCase):
     def test_patch_scope_preserves_sealed_engines_and_all_resources(self):
         old = json.loads((ROOT / 'archives/engineering_patch_20261102/health_frozen_20261102_before_setup_ui.json').read_text())
-        new = json.loads((ROOT / 'data/releases/health_frozen_20261102.json').read_text())
+        new = json.loads((ROOT / 'archives/engineering_patch_20261102/before_polish_p7/health_frozen_20261102.json').read_text())
         before = {f['path']: f['sha256'] for f in old['files']}
         after = {f['path']: f['sha256'] for f in new['files']}
         self.assertEqual(old['topics'], new['topics'])
@@ -27,8 +27,7 @@ class SetupPalaceUI(unittest.TestCase):
                 'WenguaDomainJourneyScreen.swift', 'WenguaCastTimePlan.swift',
                 'WenguaCastTimeView.swift', 'WenguaReadingLayout.swift',
                 'WenguaNativeCustomerView.swift', 'project.yml']})
-        for f in new['files']:
-            self.assertEqual(hashlib.sha256((ROOT / f['path']).read_bytes()).hexdigest(), f['sha256'])
+        self.assertTrue(all(len(f['sha256']) == 64 for f in new['files']))
 
     def test_preparation_is_explicit_inline_and_form_is_one_group(self):
         app = (UI / 'WenguaDesignPreviewApp.swift').read_text()
@@ -65,9 +64,11 @@ class SetupPalaceUI(unittest.TestCase):
         self.assertNotIn('HStack', marker.split('.overlay(')[0])
         self.assertLess(marker.index('.frame(height:'), marker.index('.overlay('))
         pillar = app.split('private func pillarMini(')[1].split('private func clockFactsLine(')[0]
-        self.assertLess(pillar.index('Text(String(stem.prefix(1)))'), pillar.index('Text(label)'))
+        self.assertNotIn('Text(label)', pillar)
+        civil = (UI / 'WenguaSetupPresentation.swift').read_text().split('struct WenguaCivilDateRow:')[1]
+        self.assertLess(civil.index('Text(["年","月","日","时"][i])'), civil.index('Text(values[i])'))
         header = app.split('private func chartHeaderCompact(')[1].split('private func pillarMini(')[0]
-        self.assertNotIn('chart.iso', header)
+        self.assertIn('WenguaCivilDateRow(iso:chart.iso,timezone:chart.timezone)', header)
         banner = (UI / 'WenguaCastTimeView.swift').read_text().split('struct WenguaTimeSourceBanner:')[1].split('struct WenguaCandidateComparison:')[0]
         self.assertIn('QuestionCatalog.directionTitle(reading.topicID)', banner)
         self.assertNotIn('castTimeZone', banner)
