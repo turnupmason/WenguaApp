@@ -41,12 +41,12 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 | 验收 | 实测结果 |
 |---|---|
-| 正式 macOS Xcode Simulator 编译、实际包内资源 SHA/白名单、两个 Bundle 路由 4 次调用、Python/Swift 完整中文逐字、六伤损条件及 1080 数据检查 | [#41454559739 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41454559739) |
-| 独立 iOS 原生历法、断词回归及真实 App 编译 | [#41453149593 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41453149593) |
-| 封存轻重 Python/Swift 原生逐字回归 | [#41453149280 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41453149280) |
-| 封存交接提交的 Python 3.11/3.12 主 CI | [#41455074815 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41455074815) |
+| 正式 macOS Xcode Simulator 编译、实际包内资源 SHA/白名单、两个 Bundle 路由 4 次调用、Python/Swift 完整中文逐字、六伤损条件及 1080 数据检查 | [#41460320838 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41460320838) |
+| 独立 iOS 原生历法、断词回归及真实 App 编译 | [#41460320720 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41460320720) |
+| 封存轻重 Python/Swift 原生逐字回归 | [#41460320478 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41460320478) |
+| 工程补丁 p1 的 Python 3.11/3.12 主 CI | [#41460321192 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41460321192) |
 
-[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。上述通过记录各自绑定其源码提交，最新分支状态见页首 CI。
+[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。上述通过记录各自绑定其源码提交，最新分支状态见页首 CI。
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 
