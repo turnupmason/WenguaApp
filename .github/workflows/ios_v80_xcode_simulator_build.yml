@@ -13,6 +13,7 @@ on:
       - 'tests/verify_ios_discomfort_frontpage_runtime_20261102.py'
       - 'tests/test_ios_qimen_lunji_release_20261102.py'
       - 'tests/test_ios_manual_event_time_20261102.py'
+      - 'tests/test_ios_domain_interfaces_layout_20261102.py'
       - 'tests/verify_ios_manual_event_time_runtime_20261102.py'
       - 'data/mobile/health_vnext/health_energy_200.json'
       - 'data/templates/health_severity_vnext/reading_template.json'
@@ -56,6 +57,7 @@ jobs:
             tests.test_health_earth_stem_audit_patch_20261102 \
             tests.test_ios_qimen_lunji_release_20261102 \
             tests.test_ios_manual_event_time_20261102 \
+            tests.test_ios_domain_interfaces_layout_20261102 \
             tests.test_discomfort_v27_hour_parity_regression_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \

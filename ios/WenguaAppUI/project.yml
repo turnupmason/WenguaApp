@@ -23,6 +23,7 @@ targets:
       - path: WenguaMeditationView.swift
       - path: WenguaCastTimePlan.swift
       - path: WenguaCastTimeView.swift
+      - path: WenguaReadingLayout.swift
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift

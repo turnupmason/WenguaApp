@@ -427,7 +427,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/project.yml",
       "snapshot": "Important/swift/project/project.yml",
-      "sha": "1a6cdb8c94bff0a7d72a6093291d69dc37b1b6e9"
+      "sha": "71fccce55c34f0c2e5a4d360a6354271c42535ff"
     },
     {
       "platform": "swift",
@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "e9c224b8251561be9ddc7364205db182e1795bd6"
+      "sha": "90178a69b88fc39b5efef7d104820b6c95debdfe"
     },
     {
       "platform": "swift",
@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
       "snapshot": "Important/swift/ui/WenguaLocalHistoryView.swift",
-      "sha": "156bfe10fe5f2db3300caf912a0190070512cc0a"
+      "sha": "1ccee7e6124feded0ece64a2096891ee0c24045f"
     },
     {
       "platform": "swift",
@@ -475,7 +475,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
       "snapshot": "Important/swift/ui/WenguaNativeCustomerView.swift",
-      "sha": "e8dbee8f8bf98e40b2a5e14939b7528f1de23b60"
+      "sha": "a86ef685fb503c249254910ce3240edfb1db21eb"
     },
     {
       "platform": "swift",
@@ -487,7 +487,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "8459cdb413effd023935dec9ddb89a931eb84fa8"
+      "sha": "cb95f098e7359de5e20bb565007ea34e90e5aab4"
     },
     {
       "platform": "swift",
@@ -535,7 +535,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "928e2cda001f611693e6a75272a9308d4e34bc9a"
+      "sha": "8930d5d592f41d9a463553e7b48e1c3f0ff2f9e0"
     },
     {
       "platform": "swift",
@@ -547,7 +547,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
       "snapshot": "Important/swift/ui/WenguaDomainJourneyScreen.swift",
-      "sha": "98480fa3bf0ca12508a2aa58da9f9523c5c51f2d"
+      "sha": "88059d767b97f13a5c540977ae6865110bb81646"
     },
     {
       "platform": "swift",
@@ -571,7 +571,7 @@
       "platform": "python",
       "canonical": "tests/test_ios_first_viewport_palace_layout_20261028.py",
       "snapshot": "Important/python/tests/test_ios_first_viewport_palace_layout_20261028.py",
-      "sha": "d99fa815a401faa1725acb4052ba92813dcc27bc"
+      "sha": "a8528b2a346d1b608d96090611b5f1c21eb5fd2b"
     },
     {
       "platform": "python",
@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "a8ae3d3a2db1399858feb000a59015d85685f9f9"
+      "sha": "94d25a21d2664f21948f55355645892ce5563bbb"
     },
     {
       "platform": "python",
@@ -781,13 +781,13 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "db1b7960caa3cdd22369e47a2004b9eb68d6fe89"
+      "sha": "444440899f5aa2a2650ce098ee2a50a8c181075c"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_source_draft_20261029.py",
       "snapshot": "Important/python/tests/test_health_discomfort_source_draft_20261029.py",
-      "sha": "88e71e79db90f8955985caf6084bedf4b4264ec3"
+      "sha": "9805f1c0efe2d3b796fddf6ca60cf11c1153e750"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "e10e37b4e1ad25142bc366950d51f6f6b32aa2bf"
+      "sha": "4e0c0beab922b4dd7721e29fc4b80af4d497f162"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "e10e37b4e1ad25142bc366950d51f6f6b32aa2bf"
+      "sha": "4e0c0beab922b4dd7721e29fc4b80af4d497f162"
     },
     {
       "platform": "python",
@@ -895,25 +895,37 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimePlan.swift",
       "snapshot": "Important/swift/engine/WenguaCastTimePlan.swift",
-      "sha": "4be0fa63a077bd86984b2de0312274121c58bb06"
+      "sha": "c6f75e8eb3ca0a04ad97052d08ac21f74fb55c24"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "snapshot": "Important/swift/ui/WenguaCastTimeView.swift",
-      "sha": "56a7d96cb9df2b89b8a20b997f2a66fbb9169d74"
+      "sha": "9b5e11f9fbf7230a0f9cf82848385ac28b9358dc"
     },
     {
       "platform": "python",
       "canonical": "tests/test_ios_manual_event_time_20261102.py",
       "snapshot": "Important/python/tests/test_ios_manual_event_time_20261102.py",
-      "sha": "68a8687caebaf85f6ff982b9c35f53555215cf29"
+      "sha": "3ca51a85e2b9c4b72426aa350e5739f5d5f4fbf7"
     },
     {
       "platform": "python",
       "canonical": "tests/verify_ios_manual_event_time_runtime_20261102.py",
       "snapshot": "Important/python/tests/verify_ios_manual_event_time_runtime_20261102.py",
-      "sha": "ded5d8d5dcdcdd4af64796246be017c833f9235c"
+      "sha": "9d854400710bb57096ef66b56aabe7d5f250b02f"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaReadingLayout.swift",
+      "snapshot": "Important/swift/ui/WenguaReadingLayout.swift",
+      "sha": "201d6ae499802a32ff164782db087961bb86578b"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_domain_interfaces_layout_20261102.py",
+      "snapshot": "Important/python/tests/test_ios_domain_interfaces_layout_20261102.py",
+      "sha": "2a96c0303b8cdfde83ff13d2708fd6824e86076c"
     }
   ]
 }

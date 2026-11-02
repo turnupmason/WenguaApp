@@ -16,12 +16,12 @@ class FirstViewportAndGrid(unittest.TestCase):
         cls.chart=(UI/"WenguaDesignPreviewApp.swift").read_text()
     def test_continue_action_is_safe_area_anchored_not_scrolled(self):
         self.assertIn(".safeAreaInset(edge:.bottom,spacing:0)",self.journey)
-        self.assertIn("Text(selected.enabled ? \"继续 · 填写问事信息\"",self.journey)
-        self.assertEqual(self.journey.count('Text(selected.enabled ? "继续 · 填写问事信息"'),1)
+        self.assertIn("selected.enabled ? \"继续 · 填写问事信息\"",self.journey)
+        self.assertEqual(self.journey.count('selected.enabled ? "继续 · 填写问事信息"'),1)
         self.assertIn(".frame(height:54)",self.journey)
         self.assertIn(".frame(height:domain == nil ? 222 : 152)",self.journey)
         self.assertIn(".padding(.vertical,12)",self.journey)
-        self.assertIn("if selected.enabled { select(selected) }",self.journey)
+        self.assertIn("if selected.canCast { select(selected) }",self.journey)
     def test_all_nine_readable_titles_are_real_named_palaces(self):
         self.assertIn('Text(palace.name+"宫")',self.chart)
         self.assertIn('.font(.system(size:16,weight:.bold,design:.serif))',self.chart)

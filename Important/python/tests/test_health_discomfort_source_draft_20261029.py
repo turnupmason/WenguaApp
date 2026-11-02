@@ -61,7 +61,7 @@ class TraditionalBodySite(unittest.TestCase):
         self.assertEqual(manifest["release_status"],"research_draft_not_enabled")
         self.assertIsNone(manifest["approved_customer_template"])
         self.assertIn('static let supportedTopics = ["health.severity"]',router)
-        self.assertIn('guard topic.enabled && WenguaCastTimePlan.supports(topic.id)',ui)
+        self.assertIn('guard topic.canCast && WenguaCastTimePlan.supports(topic.id)',ui)
         self.assertIn('if topicID=="health.discomfort"',router)
         self.assertTrue(manifest["no_15_day_lock_until_verified"])
 

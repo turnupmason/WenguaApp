@@ -18,7 +18,9 @@ struct WenguaNativeCustomerView: View {
                         .font(.system(size:23,weight:.semibold,design:.serif))
                         .foregroundStyle(QStyle.text)
                 }
-                Text("逐项保留九宫、人物用神、星门神干、天地格、空墓刑迫与应期依据；首页摘要不代替详细原文。")
+                Text(WenguaDomainContract.lookup(reading.topicID)?.interpretationReady == true ?
+                     "分项查看盘面、人物用神与条件依据。" :
+                     "真实历法与九宫事实；专题取用与断词仍在开发中。")
                     .font(.system(size:13))
                     .foregroundStyle(QStyle.secondary)
                     .fixedSize(horizontal:false,vertical:true)
@@ -74,11 +76,32 @@ struct WenguaNativeCustomerView: View {
     }
 
     private func customerParagraph(_ text:String)->some View {
-        Text(text)
-            .font(.system(size:15,weight:.regular,design:.serif))
-            .lineSpacing(6)
-            .foregroundStyle(QStyle.text)
-            .fixedSize(horizontal:false,vertical:true)
-            .textSelection(.enabled)
+        let blocks=WenguaReadingLayout.blocks(text)
+        return VStack(alignment:.leading,spacing:18) {
+            ForEach(blocks.indices,id:\.self) { index in
+                let block=blocks[index]
+                VStack(alignment:.leading,spacing:10) {
+                    if let heading=block.heading {
+                        Text(heading).font(.subheadline.weight(.semibold)).foregroundStyle(gold)
+                    }
+                    ForEach(block.runs.indices,id:\.self) { row in
+                        let raw=block.runs[row]
+                        let prefix=(block.heading ?? "")+"："
+                        let visible=(row==0 && block.heading != nil && raw.hasPrefix(prefix)) ?
+                            String(raw.dropFirst(prefix.count)) : raw
+                        let paragraph=visible.trimmingCharacters(in:.whitespacesAndNewlines)
+                        if !paragraph.isEmpty {
+                            Text(paragraph)
+                                .font(.system(.body,design:.serif))
+                                .lineSpacing(5)
+                                .foregroundStyle(QStyle.text)
+                                .fixedSize(horizontal:false,vertical:true)
+                                .textSelection(.enabled)
+                                .frame(maxWidth:.infinity,alignment:.leading)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

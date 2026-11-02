@@ -66,9 +66,9 @@ struct WenguaDomainJourneyScreen: View {
                             }
                         }
                         if let selected {
-                            Text(selected.enabled ?
-                                 "之后填写人物信息，选择当前问事或事项时辰，静心30秒后确认起局。" :
-                                 "每个领域使用独立用神与断案模板；未验收时不套用疾病规则。")
+                            Text(selected.isElective ?
+                                 "选吉日将使用独立的日子比较流程，接口已预留，后续接入。" :
+                                 "可用当前或预定时辰排盘；专题取用、吉凶和解读按本领域模板逐步接入。")
                                 .font(.caption).foregroundStyle(QStyle.secondary)
                         }
                     } else {
@@ -78,16 +78,6 @@ struct WenguaDomainJourneyScreen: View {
                             Text("从疑惑开始，逐层明晰。")
                                 .font(.subheadline).foregroundStyle(QStyle.secondary)
                         }
-                        Button { select(QuestionCatalog.plannedTimingTopic) } label: {
-                            VStack(alignment:.leading,spacing:6) {
-                                Label("挑日子 · 按事项时间排盘",systemImage:"calendar.badge.clock")
-                                    .font(.headline)
-                                Text("旅游、约会、婚礼、手术等候选时辰可并列排盘；专项吉凶评级开发中。")
-                                    .font(.caption).foregroundStyle(QStyle.secondary)
-                            }
-                            .frame(maxWidth:.infinity,alignment:.leading).padding(16)
-                            .background(QStyle.surface,in:RoundedRectangle(cornerRadius:16))
-                        }.buttonStyle(.plain)
                         LazyVGrid(columns:columns,spacing:12) {
                             ForEach(QuestionCatalog.domains.indices,id:\.self) { index in
                                 let item=QuestionCatalog.domains[index]
@@ -143,12 +133,13 @@ struct WenguaDomainJourneyScreen: View {
             .safeAreaInset(edge:.bottom,spacing:0) {
                 if let selected {
                     Button {
-                        if selected.enabled { select(selected) }
+                        if selected.canCast { select(selected) }
                     } label: {
                         HStack {
-                            Text(selected.enabled ? "继续 · 填写问事信息" : "此专题开发中")
+                            Text(selected.isElective ? "选吉日 · 后续开发" :
+                                 selected.enabled ? "继续 · 填写问事信息" : "继续 · 按时刻排盘")
                             Spacer()
-                            Image(systemName:selected.enabled ? "arrow.right":"lock")
+                            Image(systemName:selected.canCast ? "arrow.right":"lock")
                         }
                         .font(.system(size:16,weight:.semibold))
                         .padding(.horizontal,19)
@@ -157,8 +148,8 @@ struct WenguaDomainJourneyScreen: View {
                         .background(Color(red:0.91,green:0.79,blue:0.57),
                                     in:RoundedRectangle(cornerRadius:16))
                     }
-                    .disabled(!selected.enabled)
-                    .opacity(selected.enabled ? 1 : 0.48)
+                    .disabled(!selected.canCast)
+                    .opacity(selected.canCast ? 1 : 0.48)
                     .buttonStyle(.plain)
                     .padding(.horizontal,18)
                     .padding(.top,8)
@@ -205,11 +196,12 @@ struct WenguaDomainJourneyScreen: View {
                     Text(item.title)
                         .font(.system(size:16,weight:.semibold))
                         .foregroundStyle(QStyle.text)
-                    Text(item.enabled ? "已接入独立规则解盘" : "独立模板校验中")
+                    Text(item.isElective ? "接口预留 · 后续开发" :
+                         item.enabled ? "已接入独立规则解盘" : "排盘可用 · 专题解读开发中")
                         .font(.caption).foregroundStyle(QStyle.secondary)
                 }
                 Spacer()
-                if !item.enabled {
+                if item.isElective {
                     Image(systemName:"lock")
                         .font(.caption)
                         .foregroundStyle(QStyle.secondary)

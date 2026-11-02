@@ -21,6 +21,7 @@ struct WenguaNativeCustomerReading: Codable {
     var rolePalaces: [String:Int]? = nil
     // Optional time provenance keeps old saved readings decodable. It does
     // not change any frozen narration section or engine score.
+    var topicTitle: String? = nil
     var castMode: String? = nil
     var castTimeZone: String? = nil
     var confirmedISO: String? = nil
@@ -41,19 +42,81 @@ struct WenguaNativeCustomerReading: Codable {
         let grade = String(last.dropFirst(prefix.count).prefix(while: {
             $0 != "。" && $0 != "；" && $0 != "\n" && $0 != "\r"
         })).trimmingCharacters(in: .whitespacesAndNewlines)
-        return ["极大吉", "大吉", "中吉", "小吉", "极小吉", "不凶不吉",
-                "极小凶", "小凶", "中凶", "大凶", "极大凶"].contains(grade) ? grade : nil
+        return WenguaGradeScale.labels.contains(grade) ? grade : nil
     }
 
     var timingHeadline: String? {
         guard castMode == "planned_event" else { return nil }
-        if ["health.severity", "health.discomfort"].contains(topicID),
-           timingGradeScope == "health.severity.V9/V11", let grade = timingGrade,
-           ["极大吉", "大吉", "中吉", "小吉", "极小吉", "不凶不吉",
-            "极小凶", "小凶", "中凶", "大凶", "极大凶"].contains(grade) {
+        if let contract=WenguaDomainContract.lookup(topicID),
+           contract.gradeScope != nil, contract.gradeScope == timingGradeScope,
+           let grade=timingGrade, WenguaGradeScale.labels.contains(grade) {
             return "此时辰：" + grade
         }
         return "此时辰：吉凶待核"
+    }
+
+}
+
+// Shared vocabulary and request contract; domain templates decide which
+// independent symbols/relationships participate. No universal disease scorer.
+enum WenguaGradeScale {
+    static let labels=["极大吉","大吉","中吉","小吉","极小吉","不凶不吉",
+                       "极小凶","小凶","中凶","大凶","极大凶"]
+    // Domain providers supply an approved FINAL signed net score. This is
+    // never a symbol-strength mapping or permission to borrow health rules.
+    static let finalNetRange = -5...5
+    static func label(forFinalNetScore score:Int) -> String? {
+        finalNetRange.contains(score) ? labels[5-score] : nil
+    }
+}
+
+struct WenguaDomainContract {
+    enum Capability: Equatable { case healthSeverity, healthLocation, chartOnly, electiveReserved, legacyOnly }
+    let domainID: String
+    let topicID: String
+    let capability: Capability
+    var canCast: Bool { capability != .electiveReserved && capability != .legacyOnly }
+    var interpretationReady: Bool { capability == .healthSeverity || capability == .healthLocation }
+    var acceptsPlannedTime: Bool { canCast }
+    var gradeScope: String? { interpretationReady ? "health.severity.V9/V11" : nil }
+    var selectedRoleIDs: [String] {
+        switch capability {
+        case .healthSeverity: return ["illness","doctor","medicine","patient","hour","chief","natal_if_provided","qualified_auxiliary"]
+        case .healthLocation: return ["illness","patient","hour","injury_if_selected"]
+        default: return [] // Await each domain's reviewed template; never copy health roles.
+        }
+    }
+    static let ordinaryTopicCounts=["marriage":3,"career":3,"business":3,"education":2,
+        "travel":2,"missing":2,"property":2,"lawsuit":2,"crime":1,"weather":1,
+        "sports":1,"geography":1,"life":1,"other":1]
+    static let electiveTitles=["health":"看病／手术","marriage":"约会／结婚",
+        "travel":"旅游／出行","career":"面试／入职","business":"开业／交易",
+        "education":"考试／报名","missing":"寻访／会面","property":"查找／取回",
+        "lawsuit":"调解／诉讼","crime":"相关事项","weather":"户外安排",
+        "sports":"参赛／活动","geography":"搬迁／动土","life":"重要安排","other":"具体事项"]
+    static func lookup(_ topic: String) -> WenguaDomainContract? {
+        let parts=topic.split(separator:".").map(String.init)
+        guard parts.count==2 else {return nil}
+        let domain=parts[0], key=parts[1]
+        guard electiveTitles[domain] != nil else {
+            return topic=="timing.planned" ? .init(domainID:"timing",topicID:topic,capability:.legacyOnly) : nil
+        }
+        let capability:Capability
+        if key=="elective" {capability = .electiveReserved}
+        else if topic=="health.severity" {capability = .healthSeverity}
+        else if topic=="health.discomfort" {capability = .healthLocation}
+        else if ["health.treatment","health.recovery"].contains(topic) {capability = .chartOnly}
+        else if let count=ordinaryTopicCounts[domain],let index=Int(key),index>=0,index<count {
+            capability = .chartOnly
+        } else {return nil}
+        return .init(domainID:domain,topicID:topic,capability:capability)
+    }
+    func approvedGrade(primary: WenguaNativeCustomerReading,
+                       reference: WenguaNativeCustomerReading) -> String? {
+        guard interpretationReady, reference.topicID=="health.severity",
+              primary.topicID==topicID, reference.iso==primary.iso,
+              reference.relationship==primary.relationship else {return nil}
+        return reference.resolvedHealthGrade
     }
 }
 

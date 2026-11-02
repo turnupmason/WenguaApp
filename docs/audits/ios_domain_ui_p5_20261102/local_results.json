@@ -1,0 +1,16 @@
+{
+  "full_python": {
+    "tests": 849,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 3,
+    "log": "python_unittest_full.log.gz",
+    "sha256": "149ce4b49f8ee3862ce0eebf94e3cf37123beddb80fbe8ff3e70c09a0e27779c"
+  },
+  "targeted": {
+    "tests": 15,
+    "failures": 0
+  },
+  "first_migration_failure": "first_full_contract_failure.log.gz",
+  "swift_xcode": "Pending p5 Actions; local environment lacks Swift/Xcode"
+}

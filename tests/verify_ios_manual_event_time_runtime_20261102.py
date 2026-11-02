@@ -16,6 +16,10 @@ UI=ROOT/'ios/WenguaAppUI'
 def check(native_jsonl, bundle):
     app=(UI/'WenguaDesignPreviewApp.swift').read_text()
     record=app[app.index('struct LocalNativeCase: Codable {'):app.index('struct CastSetupScreen: View {')]
+    catalog=app[app.index('struct QuestionTopic:'):app.index('struct WenguaMark:')]
+    policy=app[app.index('enum QIssuePolicy {'):app.index('struct LocalNativeCase:')]
+    history=(UI/'WenguaLocalHistoryView.swift').read_text()
+    store=history[history.index('struct WenguaStoredCase:'):history.index('// Keep List')]
     source=r'''
 struct Input: Decodable { let chart: WenguaNativeChart; let reading: WenguaNativeCustomerReading }
 let data=try String(contentsOfFile:CommandLine.arguments[1],encoding:.utf8)
@@ -112,15 +116,62 @@ rejects {
 guard defaults.dictionaryRepresentation().filter({$0.key.hasPrefix("wengua:nativecase:")}).count==1 else {
     fatalError("Failed choice left a partial group")
 }
+// p5: real catalogs, shared grading contract and lossless reading layout.
+guard QuestionCatalog.domains.count==15 else {fatalError("Domain catalog lost a domain")}
+for domain in QuestionCatalog.domains {
+    let elective=domain.topics.filter(\.isElective)
+    guard elective.count==1,!elective[0].canCast,elective[0].contract?.gradeScope==nil else {
+        fatalError("Elective day choice must be reserved inside every domain")
+    }
+    for topic in domain.topics where !topic.isElective {
+        guard topic.canCast,topic.contract?.acceptsPlannedTime==true else {fatalError("Scheduled clock interface missing")}
+        if topic.contract?.interpretationReady != true {
+            let reading=WenguaCastTimePlan.chartOnlyReading(chart:inputs[0].chart,eventKind:topic.title,topicID:topic.id)
+            let projected=WenguaCastTimePlan.annotate(reading,mode:.plannedEvent,timezone:zone,
+                confirmedAt:confirmed,groupID:"DOMAIN",index:0,eventKind:topic.title)
+            guard projected.topicID==topic.id,projected.timingGrade==nil,
+                  projected.rolePalaces==nil else {fatalError("Unready domain inherited medical rules")}
+        }
+    }
+}
+guard WenguaGradeScale.label(forFinalNetScore:5)=="极大吉",
+      WenguaGradeScale.label(forFinalNetScore:0)=="不凶不吉",
+      WenguaGradeScale.label(forFinalNetScore:-5)=="极大凶",
+      WenguaGradeScale.label(forFinalNetScore:6)==nil else {fatalError("Common final net scale invalid")}
+for input in inputs {
+    for section in input.reading.sections {
+        let layout=WenguaReadingLayout.blocks(section.text)
+        guard layout.flatMap(\.runs).joined()==section.text else {fatalError("Reading layout altered source characters")}
+        if section.id=="01_location" {
+            guard layout.count>1,layout.flatMap(\.runs).count>5 else {fatalError("Still a single wall of text")}
+        }
+    }
+}
+let legacyNow=confirmed.addingTimeInterval(60)
+let legacyKey=records[0].issueFingerprint
+let encodedOld=try JSONEncoder().encode(records[0])
+defaults.set(encodedOld,forKey:"wengua:nativecase:legacy")
+defaults.set(confirmed,forKey:"wengua:completed:"+legacyKey)
+let structuredKey=QIssuePolicy.structuredSignature(topic:records[0].topicID,relation:records[0].relation,subject:"")
+guard QIssuePolicy.nextPermittedIssue(structuredKey,topic:records[0].topicID,
+    relation:records[0].relation,asOf:legacyNow,defaults:defaults) != nil else {fatalError("Removing description reset legacy 15-day lock")}
+defaults.removeObject(forKey:"wengua:nativecase:legacy")
+// Remove the original group too: an orphan receipt still cannot disappear.
+for name in defaults.dictionaryRepresentation().keys where name.hasPrefix("wengua:nativecase:") {defaults.removeObject(forKey:name)}
+guard QIssuePolicy.nextPermittedIssue(structuredKey,topic:records[0].topicID,
+    relation:records[0].relation,asOf:legacyNow,defaults:defaults) != nil else {fatalError("Orphan old receipt silently unlocked")}
+let cleanDisplay=WenguaCastTimePlan.display(inputs[0].chart.iso,timezone:zone)
+guard !cleanDisplay.contains("-05:00") else {fatalError("Picker offset leaked into human date display")}
+print("PASS DOMAIN_UI 15 domain schedules; 15 reserved elective routes; common grade scale; exact reading source roundtrip; old receipt locks")
 print("PASS MANUAL_EVENT_TIME current vs chosen minute; actual two-clock calendar/9-palace/grade; DST; invalid choices; one atomic group; legacy history; no cross-domain grade")
 '''
     names=['WenguaNativeCore','WenguaHealthTemplateBridge','WenguaNativeEnergyBundle',
            'WenguaNativeActorBinding','WenguaNativeReadingRouter','WenguaNativeVNextEngine',
            'WenguaVNextCustomerComposer','WenguaVNextReasoner','WenguaVNextTianrui25',
-           'WenguaPythonVNextVerbatim','WenguaNativeDiscomfortV15','WenguaCastTimePlan']
+           'WenguaPythonVNextVerbatim','WenguaNativeDiscomfortV15','WenguaCastTimePlan','WenguaReadingLayout']
     with tempfile.TemporaryDirectory(prefix='wengua-event-time-') as tmp:
         folder=Path(tmp); main=folder/'main.swift'
-        main.write_text('import Foundation\n'+record+'\n'+source)
+        main.write_text('import Foundation\nimport CryptoKit\n'+record+'\n'+catalog+'\n'+policy+'\n'+store+'\n'+source)
         binary=folder/'event_time'
         subprocess.run(['swiftc','-warnings-as-errors','-D','WENGUA_BODY_SITE',
             *[str(UI/(name+'.swift')) for name in names],str(main),'-o',str(binary)],check=True)

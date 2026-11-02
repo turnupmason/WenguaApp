@@ -258,8 +258,8 @@ struct WenguaPremiumVerdictCard: View {
                      "此事项的择时评级仍在开发中。")
                     .font(.system(size:13)).foregroundStyle(muted)
             }
-            if reading.topicID=="timing.planned" {
-                Text("择时排盘 · " + (reading.plannedEventKind ?? "计划事项"))
+            if WenguaDomainContract.lookup(reading.topicID)?.interpretationReady != true {
+                Text(reading.topicTitle ?? reading.plannedEventKind ?? "事项排盘")
                     .font(.system(size:18,weight:.semibold,design:.serif)).foregroundStyle(muted)
                 Text("已按所选时刻排出真实九宫")
                     .font(.system(size:24,weight:.semibold,design:.serif)).foregroundStyle(gold)
@@ -318,7 +318,7 @@ struct WenguaPremiumVerdictCard: View {
             }
 
             Rectangle().fill(gold.opacity(0.22)).frame(height:1)
-            Text(reading.topicID=="timing.planned" ?
+            Text(WenguaDomainContract.lookup(reading.topicID)?.interpretationReady != true ?
                  "传统排盘用于古籍文化研究；各事项吉凶规则未完成前，不据此推荐最优日期。" : notice)
                 .font(.system(size:11))
                 .lineSpacing(4)

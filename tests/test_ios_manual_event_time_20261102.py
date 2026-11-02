@@ -10,7 +10,7 @@ UI=ROOT/'ios/WenguaAppUI'
 class EventTimeEntry(unittest.TestCase):
     def test_release_has_explicit_scope_and_unchanged_rule_resources(self):
         old=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_manual_time.json').read_text())
-        current=json.loads((ROOT/'data/releases/health_frozen_20261102.json').read_text())
+        current=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_domain_ui.json').read_text())
         previous={e['path']:e['sha256'] for e in old['files']}
         now={e['path']:e['sha256'] for e in current['files']}
         self.assertEqual(old['topics'],current['topics'])
@@ -49,13 +49,13 @@ class EventTimeEntry(unittest.TestCase):
         helper=(UI/'WenguaCastTimePlan.swift').read_text()
         card=(UI/'WenguaPremiumReadingView.swift').read_text()
         history=(UI/'WenguaLocalHistoryView.swift').read_text()
-        self.assertIn('reference.iso == reading.iso',helper)
-        self.assertIn('reference.resolvedHealthGrade',helper)
+        self.assertIn('reference.iso==primary.iso',router)
+        self.assertIn('reference.resolvedHealthGrade',router)
         self.assertIn('actual_chart_only_domain_timing_grade_pending',helper)
         self.assertIn('此时辰：',router)
         self.assertIn('reading.timingHeadline',card)
         self.assertIn('timingGradeScope',card)
-        self.assertIn('healthRoles:nativeReading?.topicID != "timing.planned"',(UI/'WenguaDesignPreviewApp.swift').read_text())
+        self.assertIn('?.interpretationReady == true',(UI/'WenguaDesignPreviewApp.swift').read_text())
         self.assertIn('record.chart.iso',history)
         self.assertIn('WenguaCaseBatchStore.decode(data)',history)
         self.assertIn('SWIFT_TREAT_WARNINGS_AS_ERRORS: YES',(UI/'project.yml').read_text())

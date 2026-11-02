@@ -35,7 +35,7 @@ class ImmersiveJourney(unittest.TestCase):
         self.assertIn("chosenDomain=item.id",self.journey)
         self.assertIn("chosenTopic=item.id",self.journey)
         self.assertIn(".delay(Double(index)*0.045)",self.journey)
-        self.assertIn("if selected.enabled { select(selected) }",self.journey)
+        self.assertIn("if selected.canCast { select(selected) }",self.journey)
     def test_current_or_event_time_and_30sec_invariant(self):
         self.assertIn("let confirmedAt=Date()",self.main)
         self.assertIn("guard let calmEnds, Date() >= calmEnds",self.main)

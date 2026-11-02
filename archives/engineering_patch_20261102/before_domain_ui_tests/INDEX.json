@@ -1,0 +1,35 @@
+{
+  "authorization": "User removes standalone day selection; per-domain reserved elective interfaces, scheduled ordinary readings, no mandatory inert description, clean source-preserving typography.",
+  "entries": [
+    {
+      "source": "tests/test_ios_manual_event_time_20261102.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_ios_manual_event_time_20261102.py",
+      "sha256": "56a99e90bed244dbe6859f2848dcc26a1d787a30bd3c795fbd3a49728636340c"
+    },
+    {
+      "source": "tests/test_ios_design_v1_contract.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_ios_design_v1_contract.py",
+      "sha256": "0e1444b9ffcfcee2986233d89954131340ae84f67226127fe1d03b4e96ac2ae5"
+    },
+    {
+      "source": "tests/test_ios_immersive_journey_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_ios_immersive_journey_20261028.py",
+      "sha256": "7d693b13ba509f9490ba5a9898452b4c7af1f24ae9f82307c3a41228c51c8b7a"
+    },
+    {
+      "source": "tests/test_ios_health_grade_copy_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_ios_health_grade_copy_20261028.py",
+      "sha256": "a8719ee978e73ac8ed8becdbc8b994a7f01a30a427297ac33771e7c6b6a90786"
+    },
+    {
+      "source": "tests/test_health_discomfort_source_draft_20261029.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_health_discomfort_source_draft_20261029.py",
+      "sha256": "203cefa7d7719b3cbfaa70ae34184d8f1c320735ae111894f71b304c840ce318"
+    },
+    {
+      "source": "tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "archive": "archives/engineering_patch_20261102/before_domain_ui_tests/test_ios_first_viewport_palace_layout_20261028.py",
+      "sha256": "1c21ae6bcb9b9bfb4a2063796252891c4b3d651b59d2987730a0812a14e85d4e"
+    }
+  ]
+}

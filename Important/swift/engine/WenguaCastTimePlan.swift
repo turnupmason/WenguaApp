@@ -3,12 +3,13 @@ import Foundation
 enum WenguaCastClockMode: String, CaseIterable {
     case currentInquiry = "current_inquiry"
     case plannedEvent = "planned_event"
-    var title: String { self == .currentInquiry ? "当前时辰问事" : "事项时辰择时" }
+    var title: String { self == .currentInquiry ? "当前时辰问事" : "预定时辰起局" }
 }
 
 struct WenguaTimeCandidate: Identifiable {
     let id = UUID()
     var date: Date
+    var isConfirmed = false
 }
 
 enum WenguaCastTimeError: Error, LocalizedError {
@@ -28,7 +29,7 @@ enum WenguaCastTimePlan {
     static let eventKinds = ["旅游出发", "约会", "结婚", "手术", "其它计划事项"]
 
     static func supports(_ topic: String) -> Bool {
-        ["health.severity", "health.discomfort", plannedTopicID].contains(topic)
+        WenguaDomainContract.lookup(topic)?.canCast == true
     }
 
     static func resolve(mode: WenguaCastClockMode, candidates: [Date],
@@ -66,16 +67,21 @@ enum WenguaCastTimePlan {
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.locale = Locale(identifier: "zh_CN")
-        formatter.timeZone = timezone.flatMap { TimeZone(identifier: $0) } ?? TimeZone.current
-        formatter.dateFormat = "yyyy年M月d日 HH:mm ZZZZZ"
+        guard let zone=timezone.flatMap({ TimeZone(identifier:$0) }) else {
+            return iso.replacingOccurrences(of:"T",with:" ")
+        }
+        formatter.timeZone = zone
+        formatter.dateFormat = "yyyy年M月d日 HH:mm"
         return formatter.string(from: date)
     }
 
-    static func chartOnlyReading(chart: WenguaNativeChart, eventKind: String) -> WenguaNativeCustomerReading {
+    static func chartOnlyReading(chart: WenguaNativeChart, eventKind: String,
+                                 topicID: String = plannedTopicID,
+                                 relationship: String = "本人") -> WenguaNativeCustomerReading {
         let pillars = [chart.pillars.year, chart.pillars.month, chart.pillars.day, chart.pillars.hour]
         return WenguaNativeCustomerReading(
-            version: "planned_event_chart_only_v1_20261102", topicID: plannedTopicID,
-            relationship: "本人", iso: chart.iso,
+            version: "planned_event_chart_only_v1_20261102", topicID: topicID,
+            relationship: relationship, iso: chart.iso,
             evidenceStatus: "actual_chart_only_domain_timing_grade_pending",
             sections: [
                 .init(id: "time_basis", title: "所选事项与时间",
@@ -101,11 +107,10 @@ enum WenguaCastTimePlan {
         result.timingReferenceSections = nil
         result.timingReferenceVersion = nil
         let reference = healthReference ?? reading
-        if mode == .plannedEvent && ["health.severity", "health.discomfort"].contains(reading.topicID),
-           reference.iso == reading.iso, reference.relationship == reading.relationship,
-           let grade = reference.resolvedHealthGrade {
+        if mode == .plannedEvent, let contract=WenguaDomainContract.lookup(reading.topicID),
+           let grade=contract.approvedGrade(primary:reading,reference:reference) {
             result.timingGrade = grade
-            result.timingGradeScope = "health.severity.V9/V11"
+            result.timingGradeScope = contract.gradeScope
             if reading.topicID == "health.discomfort" {
                 result.timingReferenceSections = reference.sections
                 result.timingReferenceVersion = reference.version

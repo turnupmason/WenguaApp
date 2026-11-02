@@ -12,8 +12,8 @@ enum WenguaRecordStore {
     static let recordPrefix="wengua:nativecase:"
     static let issuePrefix="wengua:completed:"
 
-    static func load() -> [WenguaStoredCase] {
-        UserDefaults.standard.dictionaryRepresentation().flatMap { key, value -> [WenguaStoredCase] in
+    static func load(defaults:UserDefaults = .standard) -> [WenguaStoredCase] {
+        defaults.dictionaryRepresentation().flatMap { key, value -> [WenguaStoredCase] in
             guard key.hasPrefix(recordPrefix),let data=value as? Data else {return []}
             return WenguaCaseBatchStore.decode(data).enumerated().map { index,record in
                 WenguaStoredCase(id:key+"#"+String(index),record:record)
@@ -41,7 +41,7 @@ enum WenguaRecordStore {
         // and the local-only lock hashes. Caller must confirm in UI.
         let keys=UserDefaults.standard.dictionaryRepresentation().keys
         for key in keys where key.hasPrefix(recordPrefix) ||
-                               key.hasPrefix(issuePrefix) {
+                               key.hasPrefix(issuePrefix) || key.hasPrefix("wengua:structured-key:") {
             UserDefaults.standard.removeObject(forKey:key)
         }
     }
@@ -54,7 +54,8 @@ private struct WenguaStoredCaseRow: View {
         VStack(alignment:.leading,spacing:5) {
             Text(record.topicID=="health.severity" ? "健康 · 病情轻重" :
                  record.topicID=="health.discomfort" ? "健康 · 奇门论疾" :
-                 record.topicID=="timing.planned" ? "择时排盘" : record.topicID)
+                 record.topicID=="timing.planned" ? "择时排盘（历史）" :
+                 (record.reading?.topicTitle ?? QuestionCatalog.topicTitle(record.topicID)))
                 .font(.headline)
             Text(record.relation + " · 记录于 " +
                  record.completedAt.formatted(date:.abbreviated,time:.shortened))
