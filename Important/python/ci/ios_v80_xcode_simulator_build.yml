@@ -42,6 +42,7 @@ jobs:
             tests.test_health_discomfort_injury_gate_20261102 \
             tests.test_frozen_health_release_20261102 \
             tests.test_health_earth_stem_audit_patch_20261102 \
+            tests.test_ios_qimen_lunji_release_20261102 \
             tests.test_discomfort_v27_hour_parity_regression_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \
@@ -225,6 +226,9 @@ jobs:
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 哥哥' /tmp/wengua-v80-xcode/v27_requested_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v27_requested_parity.log
           python3 -m scripts.report_v27_requested_20261102 /tmp/wengua-v80-xcode/v27_requested.jsonl > /tmp/wengua-v80-xcode/v27_requested_readings.md
+          python3 tests/verify_ios_discomfort_frontpage_runtime_20261102.py \
+            --native-jsonl /tmp/wengua-v80-xcode/v27_requested.jsonl \
+            | tee /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log
       - name: Exercise both sealed production router APIs using actual Xcode app resources
         run: |
           set -euo pipefail
@@ -302,7 +306,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs
-          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
             RESULT=PASS
             MESSAGE="Actual Simulator build, sealed V9/V11 and V27 exact resources, two-topic bundle router and native text parity passed"
           else
@@ -337,8 +341,13 @@ jobs:
               echo "## Four clocks times six explicit injury choices"
               cat /tmp/wengua-v80-xcode/injury_py_swift_parity.log
             fi
-            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
+            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
               cat /tmp/wengua-v80-xcode/v27_requested_readings.md
+            fi
+            if [ -f /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
+              echo
+              echo '## Qimen Lunji actual first-page summary runtime check'
+              cat /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log
             fi
             if [ -f /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
               echo

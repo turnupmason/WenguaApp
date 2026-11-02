@@ -254,7 +254,7 @@ enum QuestionCatalog {
             QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
             // Independent V15 body-location rules use offline original-source candidates;
             // no disease score, no medical diagnosis and no V8 template inheritance.
-            QuestionTopic(id:"health.discomfort",title:"伤病在哪里",domainTitle:"疾病健康",enabled:true),
+            QuestionTopic(id:"health.discomfort",title:"奇门论疾",domainTitle:"疾病健康",enabled:true),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
         domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),

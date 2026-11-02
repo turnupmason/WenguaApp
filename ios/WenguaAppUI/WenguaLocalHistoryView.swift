@@ -46,7 +46,8 @@ private struct WenguaStoredCaseRow: View {
     let record: LocalNativeCase
     var body: some View {
         VStack(alignment:.leading,spacing:5) {
-            Text(record.topicID=="health.severity" ? "健康 · 病情轻重" : record.topicID)
+            Text(record.topicID=="health.severity" ? "健康 · 病情轻重" :
+                 record.topicID=="health.discomfort" ? "健康 · 奇门论疾" : record.topicID)
                 .font(.headline)
             Text(record.relation + " · " +
                  record.completedAt.formatted(date:.abbreviated,time:.shortened))

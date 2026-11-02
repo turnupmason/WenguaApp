@@ -61,7 +61,7 @@ class FullSourceV15Test(unittest.TestCase):
         self.assertIn("native_discomfort_v15.json",y)
         self.assertIn('if topicID=="health.discomfort"',reader)
         self.assertIn('QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true)',app)
-        self.assertIn('QuestionTopic(id:"health.discomfort",title:"伤病在哪里",domainTitle:"疾病健康",enabled:true)',app)
+        self.assertIn('QuestionTopic(id:"health.discomfort",title:"奇门论疾",domainTitle:"疾病健康",enabled:true)',app)
 
 if __name__=="__main__":
     unittest.main()

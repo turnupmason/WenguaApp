@@ -55,7 +55,7 @@ class EarthStemAuditPatch(unittest.TestCase):
 
     def test_release_patch_scope_preserves_all_templates_and_other_pins(self):
         previous=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_patch.json').read_text())
-        current=json.loads((ROOT/'data/releases/health_frozen_20261102.json').read_text())
+        current=json.loads((ROOT/'archives/engineering_patch_20261102/health_frozen_20261102_before_frontpage.json').read_text())
         old={r['path']:r['sha256'] for r in previous['files']}
         new={r['path']:r['sha256'] for r in current['files']}
         self.assertEqual(set(old),set(new))

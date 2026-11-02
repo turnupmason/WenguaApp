@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p1",
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p2",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "1e500eac1993c28677f45df57f8d3d770cf9e74be148b7f2e4bc8ac86418ec7c"
+      "sha256": "ba80923e90ef203d3a40abcd944ad6f41c82145dfb4558af6f22316e8149b10d"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "00289e759d33e13eb6d7fbe22ffc03c93198743331c6638d74d8aa3bed9fc56c"
+      "sha256": "9cfb056a0dcf51169e309729f2faefb74725caf69a02f344f88b6a927c542845"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -141,7 +141,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
       "kind": "source",
-      "sha256": "d0ae08b871a37ab8108dad1d48d343e9b4c502cc18a37eb673ee5beb304d0185"
+      "sha256": "6d837edea538ac5c4442ff72056ee86f4f85b781fc730e8773f66983cf930c2e"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeEnergyBundle.swift",
@@ -180,9 +180,9 @@
     }
   ],
   "engineering_patch": {
-    "id": "p1_earth_stem_audit",
-    "prior_manifest_sha256": "07c00c0347c6d1e335a56202c6f23847678a25258d9d6b3bad7c2de5b4cd4827",
-    "scope": "Diagnostic earth-stem provenance and empty-pair crash only; scoring rules and customer templates unchanged",
-    "authorization": "User 2026-11-02: proceed with failure cleanup in stated order"
+    "id": "p2_discomfort_frontpage_and_title",
+    "prior_manifest_sha256": "8e305b7f3c7bf88cce7cbea56f246d7459ceb263566b098a211a472d61ff41b6",
+    "scope": "UI consumes the existing V27 09_conclusion; display title 奇门论疾, historical topic IDs unchanged. Scoring, templates and reading sections unchanged.",
+    "authorization": "User 2026-11-02 explicitly requests real first-page summary and title 奇门论疾"
   }
 }

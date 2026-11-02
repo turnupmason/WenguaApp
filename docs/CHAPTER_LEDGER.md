@@ -1670,3 +1670,8 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 2026-11-02 · Command＋R说明入README，下一重点病愈应期
 README已写从已有仓库终端进入、pull、XcodeGen生成工程、选择WenguaApp/iPhone Simulator、⌘R运行、Runtime缺失排查及逐项手动UI测试；明确⌘U尚无整套XCUITest、手动时辰未实现。用户另指定下一重点health.recovery，看传统病愈应期；已建立 docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md 和来源SHA清单。核对既有20条通用方法、日/月候选基础设施及两书疾病来源索引；婚姻通用计算不当病愈验证，病愈UI仍disabled。先核事件目标/病程/真实用神和原书前提，再择应期、计算真实历法窗口；不得把吉凶分兑换康复天数或用后来结局筛窗口。V9/V11、V27与p1工程封存不改，既有缺口/失败保留；本轮通用历法应期测试8项0失败/错误、原有可选参考skip1，SHA检查通过；未重跑Swift/Xcode、未声称病愈模块已实现。
+
+
+### 2026-11-02 · 用户要求奇门论疾首页实际摘要与统一名称（p2）
+实际根因：Premium卡仍读旧06_conclusion，V27真实结论是09_conclusion。现首页直接读取同一V27结论，首句金色突出主位，余下症候/旁证完整接入；不独立算分、不虚造次病位排序。产品入口、结果卡、历史统一“奇门论疾”，内部health.discomfort/存储/15天键不变，完整原始断词及已保存V27快照不改。用户截图仅UI回归文字，无时辰不补盘。详见 docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md。
+工程manifest明确p2，原p1清单归档；只有3份生产UI源pin变化，V9/V11与V27模板/200/81/人物/规则源码逐字不变。专项25通过，全库841 tests仅原2个手动时辰失败/0错误/3原skip；新增真正Swift摘要适配器与两张native JSONL运行验证接入正式Xcode。Important镜像/SHA同步。实际新CI/Swift/Xcode结果待本提交完成后另记，不提前称通过；病愈应期仍后续重点，不因UI修复改变或开放未验收应期。

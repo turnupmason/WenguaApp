@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "27262afe516a84b58c5c1dda283a55f008a14562"
+      "sha": "9c3493f6c6f488e3e4ae0c32ce1eff1b6bcc9954"
     },
     {
       "platform": "swift",
@@ -457,7 +457,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
       "snapshot": "Important/swift/ui/WenguaLocalHistoryView.swift",
-      "sha": "4a701693ed6a6d972a36ff6100a46ec43e8bb995"
+      "sha": "a3d00e2d945c191e415e7ff105e4fdde5f416661"
     },
     {
       "platform": "swift",
@@ -535,7 +535,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "055b80591a0147b10b82c2b6197ffd61eb1579eb"
+      "sha": "853253218a81ce7ce6d6b4fcfbe3d4cc4599fbdd"
     },
     {
       "platform": "swift",
@@ -727,7 +727,7 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_full255_native_v15_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_full255_native_v15_20261101.py",
-      "sha": "5022cda8a64c4cceb95e3bc3c67bc3975099979b"
+      "sha": "59d9621aaefdc2b43057843c3bd62eda35aedf55"
     },
     {
       "platform": "swift",
@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "2bb30404cbd174283e75d90b17d594d301c66148"
+      "sha": "6234893d56b1ab318b1be8b5edeafb005421289e"
     },
     {
       "platform": "python",
@@ -781,19 +781,19 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "eb03d8fc549f9b59229a2349e3147f38c545d2fe"
+      "sha": "48673019e24f6ee7e4764c5b211d1aac37819bf9"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_source_draft_20261029.py",
       "snapshot": "Important/python/tests/test_health_discomfort_source_draft_20261029.py",
-      "sha": "9875d33878b90be823fbed531355bd316d423347"
+      "sha": "17baa3eaa199f2a04f846bc20680a54e013cf55e"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_traditional_notes_20261029.py",
       "snapshot": "Important/python/tests/test_health_discomfort_traditional_notes_20261029.py",
-      "sha": "ec4ae80c880e9a6b2838f18d17cba0f6ae69a169"
+      "sha": "101e7d12f5b79337e0cdd2993b45a4f9fed6f601"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "ccd5d45b925082406ae96c36e0cc57d9e310dde0"
+      "sha": "5345b386ba2c96cdafd1af30e3809dc203c7c9e9"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "ccd5d45b925082406ae96c36e0cc57d9e310dde0"
+      "sha": "5345b386ba2c96cdafd1af30e3809dc203c7c9e9"
     },
     {
       "platform": "python",
@@ -859,7 +859,19 @@
       "platform": "python",
       "canonical": "tests/test_health_earth_stem_audit_patch_20261102.py",
       "snapshot": "Important/python/tests/test_health_earth_stem_audit_patch_20261102.py",
-      "sha": "c8921e007457b9a9a36628560f8f9aa0d6791b97"
+      "sha": "f20c05ad36bea7645802e56f7c1c3d9d3af3a8a1"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/verify_ios_discomfort_frontpage_runtime_20261102.py",
+      "snapshot": "Important/python/tests/verify_ios_discomfort_frontpage_runtime_20261102.py",
+      "sha": "e9471aecad5ae8a3bb04a1d4029b801e507ecb4b"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_ios_qimen_lunji_release_20261102.py",
+      "snapshot": "Important/python/tests/test_ios_qimen_lunji_release_20261102.py",
+      "sha": "29a4b99f5fa9f36557f00686b8d305c9c1044c6d"
     }
   ]
 }

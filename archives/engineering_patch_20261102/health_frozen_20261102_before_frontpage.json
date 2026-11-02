@@ -1,0 +1,188 @@
+{
+  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p1",
+  "status": "user_accepted_frozen",
+  "accepted_on": "2026-11-02",
+  "topics": {
+    "health.severity": {
+      "scoring": "V9.0",
+      "base_scoring": "V8.0 remains unchanged; V9.0 condition-gated sibling auxiliary extension",
+      "template": "V11",
+      "template_schema": "health_severity_user_editable_template_v20261031_v11_full_evidence",
+      "template_path": "data/templates/health_severity_vnext/reading_template.json"
+    },
+    "health.discomfort": {
+      "template": "V27",
+      "template_schema": "wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+      "template_path": "data/templates/health_discomfort_v11/native_discomfort_v15.json"
+    }
+  },
+  "policy": "No legacy fallback. Changing sealed files requires an explicit new version and user authorization. Acceptance concerns traditional software behavior, not clinical validation.",
+  "files": [
+    {
+      "path": "data/templates/health_severity_vnext/reading_template.json",
+      "kind": "resource",
+      "sha256": "d42dfd158e92a1ae42e0acbc2394c2485f45a7d66d112fb3fb6f47491b71cd7f"
+    },
+    {
+      "path": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
+      "kind": "resource",
+      "sha256": "210b7178c63b2dea9535f615f2e9aa7dff53902d953392ac6ced3538487c24d3"
+    },
+    {
+      "path": "data/mobile/health_vnext/health_energy_200.json",
+      "kind": "resource",
+      "sha256": "192e2c74d5991321e7a79770356e051fde977afdbef79825260055d387ebc9e7"
+    },
+    {
+      "path": "data/knowledge/health_81_excel_20261025/81_pairs.tsv",
+      "kind": "resource",
+      "sha256": "c0aaf8f093498c22bb736b6796e8a256f6682166a37543ed3e2b369ce1bc7776"
+    },
+    {
+      "path": "data/knowledge/phrase_library/health_v20/actor_profiles.json",
+      "kind": "resource",
+      "sha256": "814f74926797f9167a4b8639ceed63efde2540e4a6336d8d533263c7b2c881a2"
+    },
+    {
+      "path": "data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json",
+      "kind": "resource",
+      "sha256": "31c5750341895824f31c5bdd9f441036040ab426cacf26b91941818a09008af1"
+    },
+    {
+      "path": "data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json",
+      "kind": "resource",
+      "sha256": "80d102875bbd6bd3de9f79da0a85872b9d21bed01deb47a8ad7741549cb65f18"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
+      "kind": "source",
+      "sha256": "1e500eac1993c28677f45df57f8d3d770cf9e74be148b7f2e4bc8ac86418ec7c"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
+      "kind": "source",
+      "sha256": "3ee3b563ca93bbe0e76f73238ca7a629ac514e0592a316b38646b53519432572"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaCloudWelcome.swift",
+      "kind": "source",
+      "sha256": "14d4a16a1fca1cab14f0aae22b0c70ee76cca1599ad03205d955838194c0c392"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaDomainJourneyScreen.swift",
+      "kind": "source",
+      "sha256": "adb1abab2fe00859a8ffca877571415add6b1278037c02d5c8a4493f6130f906"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
+      "kind": "source",
+      "sha256": "00289e759d33e13eb6d7fbe22ffc03c93198743331c6638d74d8aa3bed9fc56c"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
+      "kind": "source",
+      "sha256": "26a69a0e0454a8da6bfb1c6fcf8318609d4b02c9c5ee478a3b645d867b618264"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaHealthTemplateBridge.swift",
+      "kind": "source",
+      "sha256": "a8999f12d0afccda31a1396418e1f01743b9a64dfc440529146e372b83a2c531"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
+      "kind": "source",
+      "sha256": "c6bda590053537b6e868bae9531f873de52c5c73d4c8e3a8aea347904bacbeea"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
+      "kind": "source",
+      "sha256": "dadf9f9fb7a086392218e098f72c8b2714a13340ffa0e0e8074c479365dfd9d9"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeActorBinding.swift",
+      "kind": "source",
+      "sha256": "e0e1935ed3ee369b7779160ed6a6c4ed9c9d1d6181673be354d8f6b245e47e15"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeVNextEngine.swift",
+      "kind": "source",
+      "sha256": "7e56c7d48ce18001011adfbb372dbc69035bdc30ec06f7d4c792fd2fa902cb7b"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaSelectedSignifierGraphV80.swift",
+      "kind": "source",
+      "sha256": "1b6d1eb21592109a28614ab9fe52833b39e3b02b4669d7c5c1eb51991f270a69"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaVNextCustomerComposer.swift",
+      "kind": "source",
+      "sha256": "cee7bdba294bbc4a06316abf77becb4e20c14eef63bfcbc2b912262604cb0f4b"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaVNextReasoner.swift",
+      "kind": "source",
+      "sha256": "2734d7dfce5e62cdbba721e6df42367bc08122af145586c95030ec88049792f1"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift",
+      "kind": "source",
+      "sha256": "e28c46a4d05995becab41f340906c0b0b1a02de1766bfad7e591b1934976db34"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaVNextTianrui25.swift",
+      "kind": "source",
+      "sha256": "c8efefb5e396f0ddc5e6ad8c2551d249cb5446cacc8e7a72349dd0cb9a96fff7"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeCustomerView.swift",
+      "kind": "source",
+      "sha256": "b782e2f18fd9827c376ce5b490b835579ad94e7ba75e54ce05b81ba4ee0ca62d"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaLocalHistoryView.swift",
+      "kind": "source",
+      "sha256": "d0ae08b871a37ab8108dad1d48d343e9b4c502cc18a37eb673ee5beb304d0185"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeEnergyBundle.swift",
+      "kind": "source",
+      "sha256": "196b925e34063c141e82c37de07db7fee65c0ba30b46cefe89a39cb8034fb6d3"
+    },
+    {
+      "path": "src/wengua/health_quant_overlay_vnext.py",
+      "kind": "source",
+      "sha256": "0ed3c0a61fa3e43a880da1bf69fce4f87b45838dd79ad8605d21c5fbe865d9b9"
+    },
+    {
+      "path": "src/wengua/domain_selected_energy_vnext.py",
+      "kind": "source",
+      "sha256": "183fb9e03571d5890685eee1146178807b5a441ef9367566a847f7f0213bbce4"
+    },
+    {
+      "path": "src/wengua/health_reading_template_vnext.py",
+      "kind": "source",
+      "sha256": "a120aa6de397bc52f6893eeb6c7c8d12a75d8f63d17fe9de7be487aea533cc1c"
+    },
+    {
+      "path": "src/wengua/health_text_pipeline_vnext_review.py",
+      "kind": "source",
+      "sha256": "35ae0f83c360875552077a255011d5e6107fd952fa6affc527bbe504e4b8cdd2"
+    },
+    {
+      "path": "src/wengua/health_discomfort_v19_parity.py",
+      "kind": "source",
+      "sha256": "93ad0ba2a9fd8d071a813d4e1468769657d8fcdbcba6e1e0e2ddfe0e89f4383a"
+    },
+    {
+      "path": "ios/WenguaAppUI/project.yml",
+      "kind": "source",
+      "sha256": "3612f1bdfcd015d2d2deb2ef9157ef1a053ca2af621f1c4b8159750a2df6fad3"
+    }
+  ],
+  "engineering_patch": {
+    "id": "p1_earth_stem_audit",
+    "prior_manifest_sha256": "07c00c0347c6d1e335a56202c6f23847678a25258d9d6b3bad7c2de5b4cd4827",
+    "scope": "Diagnostic earth-stem provenance and empty-pair crash only; scoring rules and customer templates unchanged",
+    "authorization": "User 2026-11-02: proceed with failure cleanup in stated order"
+  }
+}

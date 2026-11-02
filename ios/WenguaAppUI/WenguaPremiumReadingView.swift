@@ -3,6 +3,36 @@ import SwiftUI
 // Presentation only. The sole source of the verdict and timing remains the
 // real V8 native reading's exact, parity-checked customer sections.
 // Never compute a grade or alter a Python/Swift narration section in the UI.
+// V27 already supplies a complete site conclusion. Presentation only:
+// use 09_conclusion, never the retired 06_conclusion or severity grades.
+struct WenguaDiscomfortVerdictPresentation {
+    let conclusion: String
+    let headline: String
+    let details: String
+
+    static func from(_ reading: WenguaNativeCustomerReading) -> WenguaDiscomfortVerdictPresentation? {
+        guard reading.topicID == "health.discomfort",
+              let original = reading.sections.first(where: { $0.id == "09_conclusion" })?.text else {
+            return nil
+        }
+        let conclusion = original.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !conclusion.isEmpty else { return nil }
+        let stop = conclusion.firstIndex(of: "。")
+        var headline = stop.map { String(conclusion[..<$0]) } ?? conclusion
+        let details = stop.map { String(conclusion[conclusion.index(after: $0)...]) }
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) } ?? ""
+        // Drop only the known introductory words; do not reinterpret evidence
+        // or promote a separate clue into a second ranked diagnosis.
+        let intro = "综上，" + reading.relationship
+        if headline.hasPrefix(intro) {
+            headline = String(headline.dropFirst(intro.count))
+        }
+        headline = headline.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !headline.isEmpty else { return nil }
+        return .init(conclusion: conclusion, headline: headline, details: details)
+    }
+}
+
 struct WenguaVerdictPresentation {
     let conclusion: String
     let grade: String?
@@ -218,19 +248,27 @@ struct WenguaPremiumVerdictCard: View {
             Rectangle().fill(gold.opacity(0.32)).frame(height:1)
 
             if reading.topicID=="health.discomfort" {
-                // A body-site is NOT a V8 ten-grade illness-severity verdict.
-                Text("伤病在哪里 · 古籍类象")
+                Text("奇门论疾 · 古籍类象")
                     .font(.system(size:18,weight:.semibold,design:.serif))
                     .foregroundStyle(muted)
-                Text("可能关注的身体区域")
-                    .font(.system(size:27,weight:.semibold,design:.serif))
-                    .foregroundStyle(gold)
-                Text(reading.sections.first(where:{$0.id=="06_conclusion"})?.text ??
-                     "当前无足够实际盘面依据来确定传统部位候选。")
-                    .font(.system(size:17,design:.serif))
-                    .lineSpacing(6)
-                    .foregroundStyle(ink)
-                    .fixedSize(horizontal:false,vertical:true)
+                if let verdict=WenguaDiscomfortVerdictPresentation.from(reading) {
+                    Text(verdict.headline)
+                        .font(.system(size:27,weight:.semibold,design:.serif))
+                        .foregroundStyle(gold)
+                        .fixedSize(horizontal:false,vertical:true)
+                        .accessibilityAddTraits(.isHeader)
+                    if !verdict.details.isEmpty {
+                        Text(verdict.details)
+                            .font(.system(size:17,design:.serif))
+                            .lineSpacing(6)
+                            .foregroundStyle(ink)
+                            .fixedSize(horizontal:false,vertical:true)
+                    }
+                } else {
+                    Text("奇门论疾结论未完整生成，请查看专业解盘。")
+                        .font(.system(size:17,design:.serif))
+                        .foregroundStyle(ink)
+                }
             } else if let verdict=WenguaVerdictPresentation.from(reading) {
                 if let grade=verdict.grade,
                    let caption=WenguaHealthGradeCaption.forGrade(grade) {
