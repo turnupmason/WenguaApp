@@ -3124,3 +3124,10 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-11-02 · V28 病位先后结论与iOS摘要接线
+- 用户已认可主体并要求完善细节：首段和结尾同一份“先看/再看”病位摘要，墓刑实干对应部位优先关注；按真正原200力排序异常，不将弱干改为极大或认定医学实际损伤。综合天芮实宫干、81格、门神、独立强干、时干及人物；伤门继续显式门控，none无独立伤门。V8轻重、原著/200/81/255与真实人物源均不变。
+- Python与Swift schema V28，新增bodySiteSummary供首段/结尾/首页共同读取。修复WenguaPremiumReadingView病位卡误读旧06_conclusion，改读同一DTO或实际09_conclusion。Important与MANIFEST Git blob SHA同提交。
+- 旧#41392726907实际Xcode编译及bundle已PASS，但独立parity因“与天芮同宫”/“两者同宫”等近义文本不同失败；本次同步自然关系文字，旧失败留档。V28初跑旧V23断言旧bodyEvidence容器不符，改验新归并路径；原源400/45测试保留。
+- 新随机爷爷none时辰2026-11-12 19:00 -05，丙午/己亥/庚寅/丙戌，阴遁三局，年干丙兼时干丙，参乾六、无年命。详见docs/HEALTH_DISCOMFORT_V28_GRANDFATHER_NONE_20261102.md，审计docs/HEALTH_DISCOMFORT_V28_ORDERED_SUMMARY_UI_AUDIT_20261102.md。本次真实Python/Swift严格parity、Xcode/bundle结果须按新SHA实际Actions填，未通过不声称。

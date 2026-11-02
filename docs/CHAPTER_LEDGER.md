@@ -1616,3 +1616,10 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 真正独立 Python↔Swift 客户整段逐字对照三张 PASS：弟弟 `2026-11-18T09:00:00-05:00`（6段）、妻子 `2027-02-16T19:00:00-05:00`（5段）、已揭晓女儿 `2027-02-07T11:00:00-05:00`（4段；不是盲测）。同时主 Python CI [#41381718877](https://github.com/turnupmason/WenguaApp/actions/runs/41381718877)、V8宫位关系 [#41381718856](https://github.com/turnupmason/WenguaApp/actions/runs/41381718856)、V7.7 [#41381718810](https://github.com/turnupmason/WenguaApp/actions/runs/41381718810) 均 **success**。
 - 失败仍永久保留：本轮 #41380198099、#41380423349、#41380922874、#41381249170 的实际错误分别为旧schema断言、随机盘原书占位未净化、V21旧文案断言、V23女儿已揭晓案例旧文案守门。V7.4旧年命单案任务 #41380923004 单独断言失败尚未修，不可宣称全库所有历史工作流PASS。
 - 剩余非阻断文案提示：随机真Swift日志会打印 `V18_GUARD_FAILURE ending`（旧警告要求“不是/不等于”字面；正文已给医疗检查说明），需另审其必要性，不能冒充真正失败或掩盖。V26病位文案仍供用户审稿，不是科学预后证据；无签名iPhone真机和App Store验收，用户已装旧App不会因仓库更新自动变新。
+
+
+### 2026-11-02 · V28 病位先后结论与iOS摘要接线
+- 用户已认可主体并要求完善细节：首段和结尾同一份“先看/再看”病位摘要，墓刑实干对应部位优先关注；按真正原200力排序异常，不将弱干改为极大或认定医学实际损伤。综合天芮实宫干、81格、门神、独立强干、时干及人物；伤门继续显式门控，none无独立伤门。V8轻重、原著/200/81/255与真实人物源均不变。
+- Python与Swift schema V28，新增bodySiteSummary供首段/结尾/首页共同读取。修复WenguaPremiumReadingView病位卡误读旧06_conclusion，改读同一DTO或实际09_conclusion。Important与MANIFEST Git blob SHA同提交。
+- 旧#41392726907实际Xcode编译及bundle已PASS，但独立parity因“与天芮同宫”/“两者同宫”等近义文本不同失败；本次同步自然关系文字，旧失败留档。V28初跑旧V23断言旧bodyEvidence容器不符，改验新归并路径；原源400/45测试保留。
+- 新随机爷爷none时辰2026-11-12 19:00 -05，丙午/己亥/庚寅/丙戌，阴遁三局，年干丙兼时干丙，参乾六、无年命。详见docs/HEALTH_DISCOMFORT_V28_GRANDFATHER_NONE_20261102.md，审计docs/HEALTH_DISCOMFORT_V28_ORDERED_SUMMARY_UI_AUDIT_20261102.md。本次真实Python/Swift严格parity、Xcode/bundle结果须按新SHA实际Actions填，未通过不声称。

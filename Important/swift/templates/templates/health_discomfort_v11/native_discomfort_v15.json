@@ -1,7 +1,7 @@
 {
-  "schema": "wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+  "schema": "wengua_health_discomfort_native_v28_ordered_summary_tomb_priority_20261102",
   "topic_id": "health.discomfort",
-  "status": "v27_internal_review_pending_user_approval",
+  "status": "v28_user_requested_detail_revision",
   "sections": [
     {
       "id": "01_location",
@@ -129,5 +129,18 @@
       "white_tiger_with_injury"
     ],
     "note": "伤损及剧痛优先按伤门真实落宫定位；手术分列伤门所示手术部位与天芮病位。未选择阻断，普通不适不启用独立伤门角色。本病位专题不改V8轻重计分。"
+  },
+  "ordered_summary_policy": {
+    "revision": "v28_20261102",
+    "first_paragraph_and_ui": "bodySiteSummary",
+    "priority": [
+      "activated_injury_primary",
+      "real_tomb_or_striking",
+      "tianrui_palace_and_independent_strong_stems",
+      "hour_and_patient_corroboration"
+    ],
+    "tomb_strength_policy": "Priority only; preserve original source 200 tier. Never assert confirmed medical injury.",
+    "full_evidence": "All marked stems remain in palace details; summary highlights two original strongest marked symbols and up to four distinct sites.",
+    "surgery": "List operation site separately. none omits independent injury role."
   }
 }

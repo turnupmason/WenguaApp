@@ -22,6 +22,8 @@ on:
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
@@ -37,6 +39,7 @@ jobs:
             tests.test_health_discomfort_v23_dual_branch_integrated_20261101 \
             tests.test_health_discomfort_v26_precise_site_prose_20261101 \
             tests.test_health_discomfort_v27_ding_gods_hour_20261101 \
+            tests.test_health_discomfort_v28_ordered_summary_20261102 \
             tests.test_health_discomfort_injury_gate_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \
@@ -187,7 +190,24 @@ jobs:
             | tee /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 弟弟' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 爷爷' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 女儿' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+      - name: Print requested grandfather no-injury native V28 preview
+        run: |
+          python3 - <<'PYCODE'
+          import json
+          from pathlib import Path
+          rows=[json.loads(x) for x in Path('/tmp/wengua-v80-xcode/v19_native_two_fresh_clocks.jsonl').read_text().splitlines()]
+          case=next(x for x in rows if x['reading']['relationship']=='爷爷')
+          assert case['injuryContext']=='none'
+          assert 'injury' not in case['reading']['rolePalaces']
+          body='V28_GRANDFATHER_NATIVE_PREVIEW '+case['chart']['iso']+'\n'
+          body+=' / '.join(case['chart']['pillars'].values())+'\n'
+          for section in case['reading']['sections']:
+              body+='\n'+section['title']+'\n'+section['text']+'\n'
+          print(body)
+          Path('/tmp/wengua-v80-xcode/v28_grandfather_native_preview.md').write_text(body)
+          PYCODE
       - name: Verify all six injury choices on four real clocks and strict Python Swift text parity
         run: |
           set -euo pipefail
@@ -226,6 +246,7 @@ jobs:
           path: |
             /tmp/wengua-v80-xcode/*.log
             /tmp/wengua-v80-xcode/*.jsonl
+            /tmp/wengua-v80-xcode/*.md
           retention-days: 90
           if-no-files-found: warn
       - name: Check full 1080 canonical boards in repository without misclaiming in-app bundled atlas
@@ -240,7 +261,7 @@ jobs:
           path: /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app
           retention-days: 30
       - name: Append actual Xcode build pass or failure; preserve previous versions
-        if: always()
+        if: always() && github.event_name != 'pull_request' 
         run: |
           set -euo pipefail
           mkdir -p docs
@@ -272,6 +293,13 @@ jobs:
               echo '## Independent Python and Swift V19 all nine paragraphs two fresh clocks'
               echo '~~~text'
               cat /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+              echo '~~~'
+            fi
+            if [ -f /tmp/wengua-v80-xcode/v19_native_two_fresh_clocks.jsonl ]; then
+              echo
+              echo '## Native requested grandfather / no injury preview and raw parity inputs'
+              echo '~~~jsonl'
+              cat /tmp/wengua-v80-xcode/v19_native_two_fresh_clocks.jsonl
               echo '~~~'
             fi
             if [ -f /tmp/wengua-v80-xcode/injury_py_swift_parity.log ]; then

@@ -55,7 +55,7 @@ enum WenguaNativeDiscomfortV15 {
               let mapping=stemDoc["mapping"] as? [String:[String:[String]]],
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
-              words["schema"] as? String=="wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+              words["schema"] as? String=="wengua_health_discomfort_native_v28_ordered_summary_tomb_priority_20261102",
               let injuryPolicy=words["injury_policy"] as? [String:Any],
               let activeContexts=injuryPolicy["active_contexts"] as? [String],
               Set(activeContexts)==allowedContexts.subtracting(["none"]),
@@ -696,7 +696,7 @@ enum WenguaNativeDiscomfortV15 {
         let actorSiteHit=sourceLocation(patientPalace).first(where:{
             matched($0,leadSites)
         })
-        let personFull:String
+        var personFull:String
         if patientPalace.id==illness.id && hourPalace.id==illness.id &&
            actorCarrier==hourCarrier {
             personFull="\(relationship)用神\(actor.mainStem)就是时干，二者同符同落\(label(illness))宫，与天芮合看，不重复计位。"
@@ -708,6 +708,10 @@ enum WenguaNativeDiscomfortV15 {
             personFull="\(relationship)用神\(actor.mainStem)在\(label(patientPalace))宫，另见\(hit)，与主位相合。"
         } else {
             personFull="\(relationship)用神\(actor.mainStem)在\(label(patientPalace))宫，与病星分宫取证。"
+        }
+        if actorCarrier != hourCarrier {
+            let direction=natural[palaceRelation(patientPalace)] ?? palaceRelation(patientPalace)
+            personFull+="此干主\(stemFocus(actor.mainStem))，力量\(patientPower)；\(direction)。"
         }
         let auxFull=auxiliaries.map { entry ->String in
             let p=entry.0
@@ -935,50 +939,56 @@ enum WenguaNativeDiscomfortV15 {
         else if lead=="外阴" || lead=="下部" {focusRegion="下身会阴一带"}
         else if lead=="左肺" {focusRegion="左侧胸部"}
         else {focusRegion=lead}
-        // Only truly matching, independent physical symbols can sharpen
-        // the chosen anatomy; the star's low energy does not erase an
-        // independently strong earth stem on the same real palace.
-        // Conservative corroboration: if both original branch rows are
-        // at least 大, the image is salient without inventing ONE tier.
-        let earthFacts=try stemBranchFacts(illness.earthStem,illness,illness.earthStages)
-        let skyFacts=try stemBranchFacts(sky,illness,illnessStar.stages)
-        let earthStrong=tier(earthPower)>=4 || earthFacts.allSatisfy{tier($0.1)>=4}
-        let skyStrong=tier(skyPower)>=4 || skyFacts.allSatisfy{tier($0.1)>=4}
-        var bodyEvidence:[String]=[]
-        if let earthSite=earthSites.first(where:{matched($0,leadSites)}),
-           earthStrong {
-            let energyText=tier(earthPower)>0 ? "力量\(earthPower)" : "两支原格力量均至少为大"
-            bodyEvidence.append("地盘\(illness.earthStem)主\(earthSite)，\(energyText)，与天芮同宫，定位更偏向\(earthSite)一带")
-        } else if let skySite=skySites.first(where:{matched($0,leadSites)}),
-                  skyStrong {
-            let energyText=tier(skyPower)>0 ? "力量\(skyPower)" : "两支原格力量均至少为大"
-            bodyEvidence.append("天盘\(sky)主\(skySite)，\(energyText)，与天芮同宫")
+        // V28 concern priority does not change the original source strength.
+        var marked:[(WenguaNativePalace,String,String,[String])]=[]
+        for p in chart.palaces.filter({physical.contains($0.id)}).sorted(by:{$0.id<$1.id}) {
+            for stem in Set(p.heavenStars.map{$0.carriedStem}+[p.earthStem]).sorted() {
+                let signs=badSigns(stem,p)
+                if !signs.isEmpty {marked.append((p,stem,try stemPower(stem,p),signs))}
+            }
         }
-        if tier(doorPower)>=4 && !trauma {
-            bodyEvidence.append("\(door)力量\(doorPower)，旧籍\(doorClue)所指的\(door=="伤门" ? "筋脉牵扯" : "伴随征象")更显")
+        marked.sort {
+            if tier($0.2) != tier($1.2) {return tier($0.2)>tier($1.2)}
+            if $0.0.id != $1.0.id {return $0.0.id<$1.0.id}
+            return $0.1<$1.1
         }
-        if mainFormation.contains("伏吟") {
-            bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
-        } else if formationNames.dropFirst().contains(where:{$0.contains("伏吟")}) {
-            bodyEvidence.append(tier(birdPower)>=3 ?
-                "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证" :
-                "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
+        func specificSite(_ stem:String,_ p:WenguaNativePalace)->String {
+            let names=stemSites(stem).filter{!["脏腑泛象","相应部位"].contains($0)}
+            return names.isEmpty ? "脏腑泛象" :
+                names.prefix(2).joined(separator:"、")
         }
-        if let first=crossEvents.first,
-           let p=chart.palaces.first(where:{$0.id==first.1}) {
-            let rawSite=stemSites(first.2).first ?? "相应部位"
-            let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
-            let signs=badSigns(first.2,p)
-            let summary=signs.count==2 ? "伤痛损伤兼隐伏" :
-                signs.contains("六仪击刑") ? "伤痛或损伤" : "闭藏不显"
-            bodyEvidence.append("另见\(label(p))宫\(first.2)主\(site)，有\(summary)之象，与主病位分开核对")
+        var ordered:[String]=[]
+        func addSite(_ site:String) {
+            if !site.isEmpty && !["脏腑泛象","相应部位"].contains(site) && !matched(site,ordered) {ordered.append(site)}
         }
-        let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
-        let conclusion=[
-            "综上，\(relationship)本次\(conclusionFocus)\(focusRegion)。",
-            operationSite,closing,
-            "以上为传统病位和症候象意，需以实际检查核实。"
-        ].joined()
+        if injuryPrimary {addSite(focusRegion)}
+        for item in marked.prefix(2) {addSite(specificSite(item.1,item.0))}
+        addSite(injuryPrimary ? originalFocus : focusRegion)
+        var strong:[(WenguaNativePalace,String,String)]=[
+            (illness,sky,skyPower),(illness,illness.earthStem,earthPower)]
+        if let bird {strong.append((illness,bird,birdStemPower))}
+        strong.append((hourPalace,hourStem,hourPower))
+        strong.append((patientPalace,actor.mainStem,patientPower))
+        strong.sort{tier($0.2)>tier($1.2)}
+        for item in strong where tier(item.2)>=4 && ordered.count<4 {
+            addSite(specificSite(item.1,item.0))
+        }
+        if injuryContext=="surgery" {addSite(injurySiteNames)}
+        let orderTail=ordered.count>1 ? "，再看"+ordered.dropFirst().joined(separator:"、") : ""
+        var openingSummary="\(relationship)本次\(conclusionFocus)\(ordered[0])\(orderTail)。"
+        if !marked.isEmpty {
+            let notices=marked.prefix(2).map{item in
+                "\(label(item.0))宫\(item.1)\(item.3.joined(separator:"、"))所指\(specificSite(item.1,item.0))"
+            }
+            openingSummary+="其中"+notices.joined(separator:"；")+"须优先核对。"
+        }
+        var synthesis="天芮在\(label(illness))宫，\(skyText)；\(earthText)。"
+        synthesis+=orderedFormations.joined(separator:"；")+"；\(door)与\(deity)合看\(deityText)。"
+        synthesis+="时干\(hourStem)主\(stemFocus(hourStem))，力量\(hourPower)；"
+        synthesis+="\(relationship)用神\(actor.mainStem)主\(stemFocus(actor.mainStem))，力量\(patientPower)。"
+        if !marked.isEmpty {synthesis+="其余刑墓部位与主病位分开核对。"}
+        let conclusion=["综上，",openingSummary,operationSite,synthesis,
+            "以上为传统病位和症候象意，需以实际检查核实。"].joined()
         let values:[String:String]=[
             "palace":palaceName,"dun":chart.bureau.dun=="yang" ? "阳":"阴",
             "sector":sector,"region":region,"primary":primary,"external":external,
@@ -1058,8 +1068,11 @@ enum WenguaNativeDiscomfortV15 {
         if useInjury,let idx=sections.firstIndex(where:{$0.id=="02_injury"}) {
             let activated=sections.remove(at:idx);sections.insert(activated,at:0)
         }
+        let first=sections[0]
+        sections[0]=WenguaNativeCustomerSection(id:first.id,title:first.title,
+            text:openingSummary+"\n"+first.text)
         return WenguaNativeCustomerReading(
-            version:"discomfort_v27_ding_gods_inner_outer_hour_20261101",
+            version:"discomfort_v28_ordered_summary_tomb_priority_20261102",
             topicID:"health.discomfort",relationship:relationship,iso:chart.iso,
             evidenceStatus:"traditional_textual_location_not_medical_diagnosis",
             sections:sections,rolePalaces:(
@@ -1067,6 +1080,6 @@ enum WenguaNativeDiscomfortV15 {
                 ["illness":illness.id,"patient":actor.mainPalace,
                  "injury":injury.id,"hour":hourPalace.id] :
                 ["illness":illness.id,"patient":actor.mainPalace,
-                 "hour":hourPalace.id]))
+                 "hour":hourPalace.id]),bodySiteSummary:openingSummary)
     }
 }
