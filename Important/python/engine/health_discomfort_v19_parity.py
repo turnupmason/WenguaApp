@@ -616,7 +616,10 @@ def compose(chart,actor,relationship,injury_context,sources=None):
             if _tier(source_strength("star","天禽星",illness))>=3 else
             "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
     if crossEvents:
-        bodyEvidence.append(f"另有{crossEvents[0][3]}，只是跨宫需要核实的传统线索，不能据此断言对应器官已经受损")
+        first=crossEvents[0]
+        p=palaces[first[1]]
+        signs="、".join(flags(first[2],p))
+        bodyEvidence.append(f"另外{label(p)}宫{first[2]}出现{signs}，{first[4]}，传统上提示另宫牵连，不足以证明病因")
     closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
     final=(f"综上，{relationship}本次"+
            ("因属伤损，先从伤门落宫看" if trauma else "病位先看")+
