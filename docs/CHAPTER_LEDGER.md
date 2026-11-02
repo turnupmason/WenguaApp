@@ -1641,3 +1641,12 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41453149280
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码58c5c91e13e916b48659d56e0f35264e5a074a47。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41453149280_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 2026-11-02 · 两主题封存正式最终验收完成
+- 用户指定并封存：疾病轻重 **V9.0计分＋V11模板**；伤病在哪里 **V27**。正式清单 `data/releases/health_frozen_20261102.json`，接口/清退记录 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md`。V8基础计分及V9已有条件扩展均未改。
+- **真正macOS Xcode #41454559739 success**（源码 `9094e763cac2a2ecb7ac1bdbd7773962592ca1c1`）：完整SwiftUI Simulator编译、200/81/人物/两模板/255/三源与封存清单实际包内字节白名单、两主题正式Bundle路由哥哥/妻子共4次调用、Python/Swift全文逐字、4时辰×6伤损条件、1080数据集全部通过。原样全文 `docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md`。原任务 #41452844633 长时间未分配runner，仅取消重复排队，不伪称该run执行通过。
+- 独立 **iOS Offline Native Casting #41453149593 success**（含真实App Xcode构建及全部独立原生回归）；最新源码主CI **#41453149251 success**（Python3.11/3.12）、轻重原生逐字 **#41453149280 success**。审计提交的dirty生成文件＋并发远端变更，本地临时bare仓库真实复现修复通过。
+- 23份旧模板/草稿/固定样例清出正式目录，原内容SHA无损归档；旧模板冗余Important镜像清除，当前两模板和封存清单双镜像/MANIFEST同步；38项旧版自动构建/预览改手动审计，原测试与历史记录不删。现役自动parity读取实际封存版本写交接，不再回写过时V10.1标识。
+- 全库835 tests仍41 failures、11 errors、3 skipped，与此前相同52条历史失败标识；当前正式门槛全部通过但不能称全库零失败。迁移早期旧路径遗漏、镜像同步过程失败、旧workflow重复键 #41452840714/#41452954223 与归档写回 #41452844599 均保留记录，不以删除失败求全绿。
+- 这是unsigned Simulator及软件接口验收；没有签名iPhone真机/App Store交付。用户已安装旧App不会随GitHub提交自动更新，需使用本封存工程重新构建安装。
