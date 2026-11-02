@@ -19,6 +19,8 @@ struct WenguaNativeCustomerReading: Codable {
     // UI-only actual V8 selected role -> physical palace. Optional for old
     // saved readings; never a customer score or a second interpretation.
     var rolePalaces: [String:Int]? = nil
+    // The exact composer summary, shared by the first paragraph and UI card.
+    var bodySiteSummary: String? = nil
 }
 
 enum WenguaNativeReadingError: Error, LocalizedError {

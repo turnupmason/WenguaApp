@@ -199,8 +199,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         if GENERATES[b]==a:return "此宫生病宫"
         raise ValueError("Missing directed relation")
     def natural(p):
-        return {"同宫":"两者同宫","比和":"两宫比和","病宫克此宫":"此宫受病宫所克",
-         "此宫克病宫":"此宫克病宫","病宫生此宫":"此宫得病宫相生",
+        return {"同宫":"与天芮同宫","比和":"与病宫比和","病宫克此宫":"受病宫所克",
+         "此宫克病宫":"此宫克病宫","病宫生此宫":"得病宫相生",
          "此宫生病宫":"此宫生扶病宫"}[relation(p)]
     month=_monthly(chart["pillars"]["month"][-1])
     def source_strength(kind,symbol,p,stages=()):
@@ -439,6 +439,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
                     f"另见{actorOverlap}，与主位相合。")
     else:
         personFull=f"{relationship}用神{actor['mainStem']}在{label(patient)}宫，与病星分宫取证。"
+    if actorCarrier != hourCarrier:
+        personFull+=f"此干主{stem_focus(actor['mainStem'])}，力量{patientPower}；{natural(patient)}。"
     auxTexts=[]
     for p,star,power in aux:
         name=("已确认的亲属排行辅助" if p["id"]==actor.get("siblingAuxiliaryPalace") else
@@ -621,44 +623,45 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     elif lead in ("外阴","下部"):focusRegion="下身会阴一带"
     elif lead=="左肺":focusRegion="左侧胸部"
     else:focusRegion=lead
-    earthFacts=stem_branch_facts(illness["earthStem"],illness,illness["earthStages"])
-    skyFacts=stem_branch_facts(sky,illness,next(x["stages"] for x in illness["heavenStars"] if x["star"]=="天芮星"))
-    earthStrong=_tier(earthPower)>=4 or all(_tier(v)>=4 for _,v in earthFacts)
-    skyStrong=_tier(skyPower)>=4 or all(_tier(v)>=4 for _,v in skyFacts)
-    bodyEvidence=[]
-    earthSite=next((x for x in earthSites if _matched(x,leadSites)),None)
-    skySite=next((x for x in skySites if _matched(x,leadSites)),None)
-    if earthSite and earthStrong:
-        energyText=f"力量{earthPower}" if _tier(earthPower)>0 else "两支原格力量均至少为大"
-        bodyEvidence.append(f"地盘{illness['earthStem']}主{earthSite}，{energyText}，与天芮同宫，定位更偏向{earthSite}一带")
-    elif skySite and skyStrong:
-        energyText=f"力量{skyPower}" if _tier(skyPower)>0 else "两支原格力量均至少为大"
-        bodyEvidence.append(f"天盘{sky}主{skySite}，{energyText}，与天芮同宫")
-    if _tier(doorPower)>=4 and not trauma:
-        bodyEvidence.append(f"{door}力量{doorPower}，旧籍{doorClue}所指的"+
-                            ("筋脉牵扯" if door=="伤门" else "伴随征象")+"更显")
-    if "伏吟" in formation[0]:
-        bodyEvidence.append("本宫天地干伏吟，传统取反复迟滞之象")
-    elif any("伏吟" in x for x in formation[1:]):
-        bodyEvidence.append(
-            "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证"
-            if _tier(source_strength("star","天禽星",illness))>=3 else
-            "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
-    if crossEvents:
-        first=crossEvents[0]
-        p=palaces[first[1]]
-        sites=stem_sites(first[2])
-        site=("脏腑泛象" if sites and sites[0]=="脏（笼统）" else
-                      sites[0] if sites else "相应部位")
-        signs=flags(first[2],p)
-        summary=("伤痛损伤兼隐伏" if len(signs)==2 else
-                 "伤痛或损伤" if "六仪击刑" in signs else "闭藏不显")
-        bodyEvidence.append(f"另见{label(p)}宫{first[2]}主{site}，有{summary}之象，与主病位分开核对")
-    closing="盘中"+"；".join(bodyEvidence)+"。" if bodyEvidence else ""
+    # V28: concern priority is separate from the unchanged original 200 tiers.
+    # A true tomb/striking marker never manufactures an extreme source power.
+    marked=[]
+    for p in sorted((p for p in palaces.values() if p['id'] in PHYSICAL),key=lambda p:p['id']):
+        for stem in sorted({s['carriedStem'] for s in p['heavenStars']}|{p['earthStem']}):
+            signs=flags(stem,p)
+            if signs:
+                marked.append((p,stem,stem_power(stem,p),signs))
+    marked.sort(key=lambda x:(-_tier(x[2]),x[0]['id'],x[1]))
+    def specific_site(stem,p):
+        names=[s for s in stem_sites(stem) if s not in {'脏腑泛象','相应部位'}]
+        return '、'.join(names[:2]) if names else '脏腑泛象'
+    ordered=[]
+    def add_site(site):
+        if site and site not in {'脏腑泛象','相应部位'} and not _matched(site,ordered):ordered.append(site)
+    if injury_primary:add_site(focusRegion)
+    for p,stem,power,signs in marked[:2]:add_site(specific_site(stem,p))
+    add_site(originalFocus if injury_primary else focusRegion)
+    strong=[(illness,sky,skyPower),(illness,illness['earthStem'],earthPower)]
+    if bird:strong.append((illness,bird,birdStemPower))
+    strong.extend([(hour,hourStem,hourPower),(patient,actor['mainStem'],patientPower)])
+    strong.sort(key=lambda x:-_tier(x[2]))
+    for p,stem,power in strong:
+        if _tier(power)>=4 and len(ordered)<4:add_site(specific_site(stem,p))
+    if injury_context=='surgery':add_site(injurySiteNames)
+    orderTail=('，再看'+'、'.join(ordered[1:]) if len(ordered)>1 else '')
     conclusionFocus=("因属伤损，先从伤门落宫看" if trauma else
                      "剧烈疼痛先从伤门落宫看" if injury_context=="severe_pain" else "病位先看")
+    openingSummary=f"{relationship}本次{conclusionFocus}{ordered[0]}{orderTail}。"
+    if marked:
+        notices=[f"{label(p)}宫{stem}{'、'.join(signs)}所指{specific_site(stem,p)}" for p,stem,power,signs in marked[:2]]
+        openingSummary+='其中'+'；'.join(notices)+'须优先核对。'
     operationSite=(f"伤门所示手术部位另看{injurySiteNames}。" if injury_context=="surgery" else "")
-    final=(f"综上，{relationship}本次"+conclusionFocus+focusRegion+"。"+operationSite+closing+
+    synthesis=(f"天芮在{label(illness)}宫，{skyText}；{earthText}。"
+               +'；'.join(orderedFormations)+f"；{door}与{deity}合看{deityText}。"
+               +f"时干{hourStem}主{stem_focus(hourStem)}，力量{hourPower}；"
+               +f"{relationship}用神{actor['mainStem']}主{stem_focus(actor['mainStem'])}，力量{patientPower}。")
+    if marked:synthesis+='其余刑墓部位与主病位分开核对。'
+    final=("综上，"+openingSummary+operationSite+synthesis+
            "以上为传统病位和症候象意，需以实际检查核实。")
     values={
        "person":relationship,"palace":label(illness)+"宫","dun":"阴" if yin else "阳",
@@ -678,11 +681,13 @@ def compose(chart,actor,relationship,injury_context,sources=None):
     if use_injury:
         injury_section=next(x for x in sections if x["id"]=="02_injury")
         sections.remove(injury_section);sections.insert(0,injury_section)
+    sections[0]['text']=openingSummary+'\n'+sections[0]['text']
     return {"sections":sections,
+            "bodySiteSummary":openingSummary,
             "rolePalaces":dict({"illness":ip,"patient":patient["id"],
                                 "hour":hour["id"]},
                                **({"injury":inj["id"]} if use_injury else {})),
-            "version":"discomfort_v27_ding_gods_inner_outer_hour_20261101","topicID":"health.discomfort"}
+            "version":"discomfort_v28_ordered_summary_tomb_priority_20261102","topicID":"health.discomfort"}
 
 def compare_jsonl(path):
     sources=load_sources()
@@ -697,7 +702,7 @@ def compare_jsonl(path):
         seen.add(identity)
         actual=compose(board,actor,relationship,case["injuryContext"],sources)
         expected=case["reading"]
-        for key in ("version","topicID","sections","rolePalaces"):
+        for key in ("version","topicID","sections","rolePalaces","bodySiteSummary"):
             if actual[key]!=expected[key]:
                 from difflib import unified_diff
                 left=json.dumps(expected[key],ensure_ascii=False,indent=2)

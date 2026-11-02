@@ -40,6 +40,11 @@ import Foundation
                       (reading.rolePalaces?["injury"] != nil)==activated else {
                     throw NSError(domain:"InjuryGateOrOrder",code:3)
                 }
+                guard let summary=reading.bodySiteSummary,
+                      reading.sections.first!.text.hasPrefix(summary+"\n"),
+                      reading.sections.last!.text.hasPrefix("综上，"+summary) else {
+                    throw NSError(domain:"V28InjurySummaryDisconnected",code:28)
+                }
                 if activated {
                     guard reading.rolePalaces?["injury"]==injury.id,
                           reading.sections[0].text.contains("伤门力量"),

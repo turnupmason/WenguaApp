@@ -24,7 +24,9 @@ import Foundation
             ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!),
             // Previously revealed V22 location case, now a frozen
             // development regression; NEVER present as a blind test.
-            ("yang","女儿",2027,2,7,11)
+            ("yang","女儿",2027,2,7,11),
+            // Fresh requested random draw, frozen only after sampling: grandfather / none.
+            ("yin","爷爷",2026,11,12,19)
         ]
         let encoder=JSONEncoder()
         encoder.outputFormatting=[.sortedKeys]
@@ -51,7 +53,10 @@ import Foundation
                   (person=="妻子" && actor.profileID=="wife" &&
                    actor.mainStem=="乙" && actor.siblingAuxiliaryPalace==nil) ||
                   (person=="女儿" && actor.profileID=="daughter" &&
-                   actor.mainStem==String(chart.pillars.hour.prefix(1)))
+                   actor.mainStem==String(chart.pillars.hour.prefix(1))) ||
+                  (person=="爷爷" && actor.profileID=="grandfather" &&
+                   actor.genderPalace==6 && actor.natalPalace==nil &&
+                   actor.sourceGanzhi==chart.pillars.year)
             else {throw NSError(domain:"V19ParityActor",code:4)}
             let injuryContext=person=="妻子" ? "surgery" : "none"
             let reading=try WenguaNativeDiscomfortV15.compose(
@@ -91,6 +96,11 @@ import Foundation
                     FileHandle.standardError.write(Data(diag.utf8))
                     throw NSError(domain:"V23ExposedDaughterEvidence",code:23)
                 }
+            }
+            guard let summary=reading.bodySiteSummary,
+                  reading.sections.first!.text.hasPrefix(summary+"\n"),
+                  reading.sections.last!.text.hasPrefix("综上，"+summary) else {
+                throw NSError(domain:"V28SummaryNotConnected",code:28)
             }
             var actorJSON:[String:Any]=[
                 "mainStem":actor.mainStem,

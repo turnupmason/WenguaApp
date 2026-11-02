@@ -225,7 +225,8 @@ struct WenguaPremiumVerdictCard: View {
                 Text("可能关注的身体区域")
                     .font(.system(size:27,weight:.semibold,design:.serif))
                     .foregroundStyle(gold)
-                Text(reading.sections.first(where:{$0.id=="06_conclusion"})?.text ??
+                Text(reading.bodySiteSummary ??
+                     reading.sections.first(where:{$0.id=="09_conclusion"})?.text ??
                      "当前无足够实际盘面依据来确定传统部位候选。")
                     .font(.system(size:17,design:.serif))
                     .lineSpacing(6)

@@ -499,7 +499,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "7b1be4ee6a27b7960569eedf55c0e2c1aa9e13f8"
+      "sha": "2473dc1ef9c3dc80bb8f368e200cd3eda96b8877"
     },
     {
       "platform": "swift",
@@ -547,7 +547,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "055b80591a0147b10b82c2b6197ffd61eb1579eb"
+      "sha": "d98d5904e152e0e55b92202b73eb1489e241e1e3"
     },
     {
       "platform": "swift",
@@ -733,19 +733,19 @@
       "platform": "python",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/python/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "7583dc7773beca719fbb59d28b7a441c045360b7"
+      "sha": "6d7b3cf22fc6170f147750271b639352fdc6d586"
     },
     {
       "platform": "swift",
       "canonical": "data/templates/health_discomfort_v11/native_discomfort_v15.json",
       "snapshot": "Important/swift/templates/templates/health_discomfort_v11/native_discomfort_v15.json",
-      "sha": "7583dc7773beca719fbb59d28b7a441c045360b7"
+      "sha": "6d7b3cf22fc6170f147750271b639352fdc6d586"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
       "snapshot": "Important/swift/engine/WenguaNativeDiscomfortV15.swift",
-      "sha": "f3e4c0cf6bded0d9e45a0d71d8677357be028398"
+      "sha": "d73502260e4d2d79d6ba6f0642c614d067a36d29"
     },
     {
       "platform": "python",
@@ -763,25 +763,25 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "887a3b49891d25d76410f664a5c02b5aa2cf2b0c"
+      "sha": "e8f0e581d5bb2432a15d7fae08a97aafa00881cb"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_power_v17_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_power_v17_20261101.py",
-      "sha": "72dbfaf36e55455a856ec0d786d312bb1d7412d5"
+      "sha": "d933ecb4d94bde1bbec133fe8b2a934731fa2121"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/health_discomfort_v19_parity.py",
       "snapshot": "Important/python/engine/health_discomfort_v19_parity.py",
-      "sha": "73ea7ec7592ed533a08b50bf8bb29f546e4974ee"
+      "sha": "a1b361c6a321578d11eadc8de583377f4de477b2"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeDiscomfortV19Parity.swift",
       "snapshot": "Important/swift/tests/NativeDiscomfortV19Parity.swift",
-      "sha": "23bde82f23d7d2f1ea0c18247eb3db6f80d7160f"
+      "sha": "9660de06fc7a53776f5de5ad901cd7a6ceda61d5"
     },
     {
       "platform": "python",
@@ -793,13 +793,13 @@
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v19_full_sequence_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v19_full_sequence_20261101.py",
-      "sha": "3fcb288765c783e80ef71dc9e36c7083d5febc4b"
+      "sha": "49c773d8341f2f5c0ca87e8ecbf99b0e9df64ef6"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
       "snapshot": "Important/python/tests/test_health_discomfort_v23_dual_branch_integrated_20261101.py",
-      "sha": "faa2e4603cc32d65b61c34f4d2bdf2641714c009"
+      "sha": "cda11da7266f0d85573742eba44b77d3d5fc9df0"
     },
     {
       "platform": "python",
@@ -829,7 +829,25 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeInjuryContextAcceptance.swift",
       "snapshot": "Important/swift/tests/NativeInjuryContextAcceptance.swift",
-      "sha": "79685c62590c4adbd846a6f6bdc7d35a060060bd"
+      "sha": "889a247ed034a6fccbfebb18e4f1f9cf7b84ae00"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v28_ordered_summary_20261102.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v28_ordered_summary_20261102.py",
+      "sha": "212431ae07cf0b97d065577df4a98ea3b0284114"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v26_precise_site_prose_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v26_precise_site_prose_20261101.py",
+      "sha": "fda2b651204f50330e6f4d1d5f71f94bbbaaae78"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_discomfort_v27_ding_gods_hour_20261101.py",
+      "snapshot": "Important/python/tests/test_health_discomfort_v27_ding_gods_hour_20261101.py",
+      "sha": "d842118485d153b270397481f11d1c4e37023757"
     }
   ]
 }
