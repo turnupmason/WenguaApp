@@ -105,7 +105,7 @@ import Foundation
                 !reading.sections.joinedDescription.contains(")"),
                 reading.sections.first!.text.contains("天芮星力量"),
                 reading.sections.first!.text.contains("天地格"),
-                reading.sections.first!.text.contains("本宫"),
+                reading.sections.first!.text.contains("天盘"),
                 !reading.sections.contains(where:{$0.id=="07_formation" || $0.id=="08_constraints"}),
                 !reading.sections.joinedDescription.contains("干力"),
                 !reading.sections.joinedDescription.contains("病星力量"),
