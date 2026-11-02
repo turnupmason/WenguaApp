@@ -44,3 +44,6 @@ p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致
 
 
 p4补齐独立iOS原生/Xcode workflow的5份现役UI与时辰源触发路径，避免仅修改新手动时辰helper时漏触发该工作流；正式V9/V11/V27 Xcode已有ios目录通配触发。此次只有CI/MANIFEST镜像变化，生产源码与封存pin保持4ee16bca状态。
+
+
+p4正式最终Xcode #41479754723（源4ee16bca）及手动时辰/两健康主题实测通过，完整源日志已入docs。独立iOS的macos-15 App任务长时间等待容量，独立App构建改用已被本轮正式完整验证的macos-latest；步骤、真实编译、原生断词与资源守门全保留，正式封存workflow仍保留macos-15及手动备选。仅CI宿主配置变化，生产源码和pin不变；独立新run须实测后另报。

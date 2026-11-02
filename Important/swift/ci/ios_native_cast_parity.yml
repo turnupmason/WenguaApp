@@ -430,7 +430,9 @@ jobs:
         run: |
           swiftc -frontend -parse ios/WenguaAppUI/WenguaDesignPreviewApp.swift
   real_ios_xcode_build:
-    runs-on: macos-15
+    # Formal sealed-release CI retains macos-15 plus its explicit fallback.
+    # Independent App build follows the available latest Apple SDK runner.
+    runs-on: macos-latest
     needs: native_core
     steps:
       - uses: actions/checkout@v4
