@@ -71,11 +71,9 @@ import Foundation
             for section in reading.sections {
                 print("V18_DIAGNOSTIC_"+relationship+"_"+section.id+" "+section.text)
             }
-            if !reading.sections.last!.text.contains("不是") && !reading.sections.last!.text.contains("不等于") {
-                print("V18_GUARD_FAILURE ending")
-            }
-            if reading.sections.joinedDescription.contains("原书") {
-                print("V18_GUARD_FAILURE source_name")
+            guard reading.sections.last!.text.contains("需以实际检查核实"),
+                  !reading.sections.joinedDescription.contains("原书") else {
+                throw NSError(domain:"SiteCustomerEvidenceBoundary",code:27)
             }
             let ids=reading.sections.map{ $0.id }
             let allowed=(injuryContext=="none" ? ["01_location"] : ["02_injury","01_location"])+["03_assist_doors",

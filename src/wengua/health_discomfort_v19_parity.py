@@ -199,8 +199,8 @@ def compose(chart,actor,relationship,injury_context,sources=None):
         if GENERATES[b]==a:return "此宫生病宫"
         raise ValueError("Missing directed relation")
     def natural(p):
-        return {"同宫":"两者同宫","比和":"两宫比和","病宫克此宫":"此宫受病宫所克",
-         "此宫克病宫":"此宫克病宫","病宫生此宫":"此宫得病宫相生",
+        return {"同宫":"与天芮同宫","比和":"与病宫比和","病宫克此宫":"受病宫所克",
+         "此宫克病宫":"此宫克病宫","病宫生此宫":"得病宫相生",
          "此宫生病宫":"此宫生扶病宫"}[relation(p)]
     month=_monthly(chart["pillars"]["month"][-1])
     def source_strength(kind,symbol,p,stages=()):
