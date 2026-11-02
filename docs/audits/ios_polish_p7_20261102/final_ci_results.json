@@ -1,0 +1,27 @@
+{
+  "xcode": {
+    "id": 41506181795,
+    "head_sha": "077a7b5e48a1394c62626b5c0d74c0f74bab3e89",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41506181795"
+  },
+  "independent_ios": {
+    "id": 41506160061,
+    "head_sha": "077a7b5e48a1394c62626b5c0d74c0f74bab3e89",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41506160061"
+  },
+  "native_parity": {
+    "id": 41506159875,
+    "head_sha": "077a7b5e48a1394c62626b5c0d74c0f74bab3e89",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41506159875"
+  },
+  "main_ci": {
+    "id": 41506159979,
+    "head_sha": "077a7b5e48a1394c62626b5c0d74c0f74bab3e89",
+    "conclusion": "success",
+    "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/41506159979"
+  },
+  "xcode_log_sha256": "3001e1738dd771b99a08ee60b0df5c125bf2b1334561ffb68d8241d7f5cbbfe1"
+}
