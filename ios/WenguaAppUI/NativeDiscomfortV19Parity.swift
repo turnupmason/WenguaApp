@@ -21,7 +21,10 @@ import Foundation
         let slots=[1,3,5,7,9,11,13,15,17,19,21]
         let selected:[(String,String,Int,Int,Int,Int)]=[
             ("yin","弟弟",2026,11,Int.random(in:9...23),slots.randomElement()!),
-            ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!)
+            ("yang","妻子",2027,2,Int.random(in:7...20),slots.randomElement()!),
+            // Previously revealed V22 location case, now a frozen
+            // development regression; NEVER present as a blind test.
+            ("yang","女儿",2027,2,7,11)
         ]
         let encoder=JSONEncoder()
         encoder.outputFormatting=[.sortedKeys]
@@ -46,9 +49,11 @@ import Foundation
                    actor.siblingAuxiliaryPalace==8 &&
                    actor.sourceGanzhi==chart.pillars.month) ||
                   (person=="妻子" && actor.profileID=="wife" &&
-                   actor.mainStem=="乙" && actor.siblingAuxiliaryPalace==nil)
+                   actor.mainStem=="乙" && actor.siblingAuxiliaryPalace==nil) ||
+                  (person=="女儿" && actor.profileID=="daughter" &&
+                   actor.mainStem==String(chart.pillars.hour.prefix(1)))
             else {throw NSError(domain:"V19ParityActor",code:4)}
-            let injuryContext=person=="弟弟" ? "none" : "surgery"
+            let injuryContext=person=="妻子" ? "surgery" : "none"
             let reading=try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:person,actor:actor,
                 injuryContext:injuryContext,rules:rules,stems:stems,template:template,
@@ -56,6 +61,24 @@ import Foundation
             guard reading.sections.count>=2,
                   reading.sections.contains(where:{$0.id=="02_injury"})==(injuryContext != "none") else {
                 throw NSError(domain:"V19ParitySections",code:5)
+            }
+            if person=="女儿" {
+                guard let illness=chart.palaces.first(where:{
+                          $0.heavenStars.contains(where:{$0.star=="天芮星"})
+                      }),illness.id==4,illness.earthStem=="乙",
+                      illness.door=="伤门",illness.deity=="螣蛇",
+                      illness.heavenStars.first(where:{$0.star=="天芮星"})?.carriedStem=="丁",
+                      reading.sections.first!.text.contains("辰衰为大"),
+                      reading.sections.first!.text.contains("巳帝旺为极大"),
+                      reading.sections.first!.text.contains("地盘乙主胆"),
+                      reading.sections.last!.text.contains("地盘乙所指胆"),
+                      reading.sections.last!.text.contains("伤门力量极大"),
+                      reading.sections.last!.text.contains("伏吟"),
+                      !reading.sections.joinedDescription.contains("待核"),
+                      !reading.sections.joinedDescription.contains("（"),
+                      !reading.sections.joinedDescription.contains("）") else {
+                    throw NSError(domain:"V23ExposedDaughterEvidence",code:23)
+                }
             }
             var actorJSON:[String:Any]=[
                 "mainStem":actor.mainStem,
