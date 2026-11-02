@@ -6,7 +6,7 @@ import re
 import unittest
 from pathlib import Path
 
-from src.wengua.health_discomfort_v19_parity import _power
+from src.wengua.health_discomfort_v19_parity import _power, _discomfort_power, _tier
 
 ROOT=Path(__file__).resolve().parents[1]
 CORE=ROOT/"ios/WenguaAppUI/WenguaNativeCore.swift"
@@ -55,8 +55,16 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         self.assertEqual(len(conflicting),45)
         self.assertTrue(any(x[:3]==("丁",4,"木") and x[3]==["大","极大"]
                             for x in conflicting))
-        # A specific *previously approved* Geng/Xun exception is not a
-        # license to invent an "always take highest strength" global rule.
+        # V24: each of 45 conflicting combinations must pick the genuine
+        # higher source level; immutable original values remain available.
+        for stem,palace,month,rows in conflicting:
+            stages_for=[{"branch":b,"stage":stages[stem][b]} for b in PALACES[palace]]
+            actual=_discomfort_power("stem",stem,{"id":palace},month,tables,stages_for)
+            self.assertEqual(actual,max(rows,key=_tier))
+        self.assertEqual(_discomfort_power(
+            "stem","丁",{"id":4},"木",tables,
+            [{"branch":"辰","stage":"衰"},{"branch":"巳","stage":"帝旺"}]),"极大")
+        # The older frozen-V8 global exception remains untouched.
         self.assertIn('gengXun=symbol=="庚" && palace==4',(
             ROOT/"ios/WenguaAppUI/WenguaNativeVNextEngine.swift").read_text())
     def test_public_single_palace_contains_all_original_powers(self):
@@ -64,7 +72,7 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         py=PYTHON.read_text(encoding="utf8")
         tmpl=json.loads(TEMPLATE.read_text(encoding="utf8"))
         self.assertEqual(tmpl["schema"],
-            "wengua_health_discomfort_native_v23_integrated_palace_20261101")
+            "wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101")
         self.assertIn("stemBranchFacts",swift)
         self.assertIn("stem_branch_facts",py)
         self.assertIn("sourceStrength(\"stem\",stem,p,[stage])",swift)
@@ -77,7 +85,12 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         self.assertIn('bodyEvidence.append',py)
         self.assertIn("本宫天地干伏吟",swift)
         self.assertIn("本宫天地干伏吟",py)
-        self.assertNotIn('取最旺作为单一档位',swift)
+        self.assertIn('if kind=="stem" && stages.count>1',swift)
+        self.assertIn('_discomfort_power(kind,symbol,p,month,tables,stages)',py)
+        self.assertIn('for p in chart.palaces.filter',swift)
+        self.assertIn('for p in sorted((p for p in chart["palaces"]',py)
+        self.assertIn('全盘墓刑互证：',swift)
+        self.assertIn('全盘墓刑互证：',py)
     def test_real_native_random_case_guards_no_brackets_or_waiting(self):
         smoke=(ROOT/"ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift").read_text()
         self.assertIn('!reading.sections.joinedDescription.contains("待核")',smoke)
