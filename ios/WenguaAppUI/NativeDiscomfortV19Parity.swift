@@ -64,7 +64,10 @@ import Foundation
             }
             if person=="女儿" {
                 let wholeCustomer=reading.sections.map{$0.text}.joined(separator:"\n")
-                guard let illness=chart.palaces.first(where:{
+                let actualHourID=WenguaNativeActorSource.actualStem(String(chart.pillars.hour.prefix(1)),chart:chart,sourceGanzhi:chart.pillars.hour)
+                let actualInner=Set([1,8,3,4]).contains(actualHourID ?? -1) ? "内盘":"外盘"
+                guard reading.rolePalaces?["hour"]==actualHourID,
+                      let illness=chart.palaces.first(where:{
                           $0.heavenStars.contains(where:{$0.star=="天芮星"})
                       }),illness.id==4,illness.earthStem=="乙",
                       illness.door=="伤门",illness.deity=="螣蛇",
@@ -75,7 +78,7 @@ import Foundation
                       reading.sections.first!.text.contains("阳遁内盘"),
                       reading.sections.first!.text.contains("螣蛇力量"),
                       reading.sections.first!.text.contains("惊吓不安"),
-                      reading.sections.contains(where:{$0.id=="04_hour" && $0.text.contains("时干") && $0.text.contains("遁外盘") && $0.text.contains("力量")}),
+                      reading.sections.contains(where:{$0.id=="04_hour" && $0.text.contains("时干") && $0.text.contains("遁"+actualInner) && $0.text.contains("力量")}),
                       reading.sections.first!.text.contains("伤门力量"),
                       reading.sections.last!.text.contains("伏吟"),
                       !wholeCustomer.contains("按较高一档取"),
@@ -83,8 +86,8 @@ import Foundation
                       !wholeCustomer.contains("待核"),
                       !wholeCustomer.contains("（"),
                       !wholeCustomer.contains("）") else {
-                    let diag="V27_DAUGHTER_ACTUAL\n"+wholeCustomer+"\n"+
-                        "V27_HOUR="+(reading.sections.first(where:{$0.id=="04_hour"})?.text ?? "NO_HOUR")+"\n"
+                    let diag=["V27_DAUGHTER_ACTUAL",wholeCustomer,
+                        "V27_HOUR="+(reading.sections.first(where:{$0.id=="04_hour"})?.text ?? "NO_HOUR"),""].joined(separator:"\n")
                     FileHandle.standardError.write(Data(diag.utf8))
                     throw NSError(domain:"V23ExposedDaughterEvidence",code:23)
                 }

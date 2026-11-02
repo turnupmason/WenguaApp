@@ -254,7 +254,7 @@ enum QuestionCatalog {
             QuestionTopic(id:"health.severity",title:"病情轻重",domainTitle:"疾病健康",enabled:true),
             // Independent V15 body-location rules use offline original-source candidates;
             // no disease score, no medical diagnosis and no V8 template inheritance.
-            QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:true),
+            QuestionTopic(id:"health.discomfort",title:"伤病在哪里",domainTitle:"疾病健康",enabled:true),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
             QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)]),
         domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),
@@ -1086,6 +1086,7 @@ struct LocalNativeCase: Codable {
     let completedAt: Date
     let chart: WenguaNativeChart
     let reading: WenguaNativeCustomerReading?
+    var injuryContext: String? = nil
 }
 
 struct CastSetupScreen: View {
@@ -1186,13 +1187,13 @@ struct CastSetupScreen: View {
                                 Picker("病位问题属于哪一种情况（必选）",selection:$injuryContext) {
                                     Text("请先选择").tag("unspecified")
                                     Text("普通身体不适（无以下特殊情况）").tag("none")
-                                    Text("意外受伤（车祸、跌倒、砸伤等）").tag("accident")
-                                    Text("骨肉受损（骨折、拉伤、脱臼等）").tag("bone")
-                                    Text("伤口或流血").tag("bleeding")
+                                    Text("意外受伤：车祸、跌倒、砸伤、运动或机器损伤").tag("accident")
+                                    Text("骨肉受损：骨折、骨裂、脱臼、肌肉或韧带损伤").tag("bone")
+                                    Text("出血：刀伤、开放性伤口或急性大量出血").tag("bleeding")
                                     Text("明显剧烈疼痛").tag("severe_pain")
                                     Text("已经手术或准备手术").tag("surgery")
                                 }.pickerStyle(.menu)
-                                Text("只有确认伤损、剧痛或手术时，才结合伤门的实际落宫、宫中星神干与条件。普通不适不取伤门。")
+                                Text("伤损、出血或剧痛，优先看伤门落宫；手术另看伤门所示部位。普通不适不启用独立伤门判断。未选择不能起局。")
                                    .font(.caption).foregroundStyle(QStyle.secondary)
                             }
                             Picker("病程（可选）", selection: $duration) {
@@ -1321,7 +1322,8 @@ struct CastSetupScreen: View {
             let record=LocalNativeCase(topicID:topic.id,issueFingerprint:key,relation:subject,
                                        optionalBirthYear:Int(birthYear),
                                        course:duration=="未说明" ? nil : duration,
-                                       completedAt:Date(),chart:result,reading:reading)
+                                       completedAt:Date(),chart:result,reading:reading,
+                                       injuryContext:topic.id=="health.discomfort" ? injuryContext : nil)
             let encoded=try JSONEncoder().encode(record)
             let recordId="wengua:nativecase:"+UUID().uuidString
             UserDefaults.standard.set(encoded,forKey:recordId)

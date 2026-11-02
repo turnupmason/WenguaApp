@@ -78,12 +78,12 @@ import Foundation
                 print("V18_GUARD_FAILURE source_name")
             }
             let ids=reading.sections.map{ $0.id }
-            let allowed=["01_location","02_injury","03_assist_doors",
+            let allowed=(injuryContext=="none" ? ["01_location"] : ["02_injury","01_location"])+["03_assist_doors",
                           "04_hour","05_person","06_auxiliary",
                           "07_formation","08_constraints","09_conclusion"]
             guard reading.topicID=="health.discomfort",
                 ids.count>=2,
-                ids.first=="01_location",ids.last=="09_conclusion",
+                ids.first==(injuryContext=="none" ? "01_location":"02_injury"),ids.last=="09_conclusion",
                 ids.contains("02_injury")==(injuryContext != "none"),
                 (reading.rolePalaces?["injury"] != nil)==(injuryContext != "none"),
                 Set(ids).count==ids.count,
@@ -103,9 +103,9 @@ import Foundation
                 !reading.sections.joinedDescription.contains("）"),
                 !reading.sections.joinedDescription.contains("("),
                 !reading.sections.joinedDescription.contains(")"),
-                reading.sections.first!.text.contains("天芮星力量"),
-                reading.sections.first!.text.contains("天地格"),
-                reading.sections.first!.text.contains("天盘"),
+                reading.sections.first(where:{$0.id=="01_location"})!.text.contains("天芮星力量"),
+                reading.sections.first(where:{$0.id=="01_location"})!.text.contains("天地格"),
+                reading.sections.first(where:{$0.id=="01_location"})!.text.contains("天盘"),
                 !reading.sections.contains(where:{$0.id=="07_formation" || $0.id=="08_constraints"}),
                 !reading.sections.joinedDescription.contains("断定骨折"),
                 !reading.sections.joinedDescription.contains("绝对受损"),

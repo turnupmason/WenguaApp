@@ -51,7 +51,7 @@ class HealthDiscomfortExternalNotes(unittest.TestCase):
         ui=(ROOT/"ios/WenguaAppUI/WenguaDesignPreviewApp.swift").read_text()
         router=(ROOT/"ios/WenguaAppUI/WenguaNativeReadingRouter.swift").read_text()
         profile=json.loads((ROOT/"data/knowledge/health_discomfort/body_location_profile_20261029.json").read_text())
-        self.assertIn('QuestionTopic(id:"health.discomfort",title:"难受部位",domainTitle:"疾病健康",enabled:true)',ui)
+        self.assertIn('QuestionTopic(id:"health.discomfort",title:"伤病在哪里",domainTitle:"疾病健康",enabled:true)',ui)
         self.assertIn('static let supportedTopics = ["health.severity"]',router)
         self.assertIn('if topicID=="health.discomfort"',router)
         self.assertIsNone(profile["approved_customer_template"])

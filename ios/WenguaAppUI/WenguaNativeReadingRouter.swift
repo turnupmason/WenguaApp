@@ -22,7 +22,7 @@ struct WenguaNativeCustomerReading: Codable {
 }
 
 enum WenguaNativeReadingError: Error, LocalizedError {
-    case unsupportedTopic, unsupportedRelationship, missingRole, missingPhrases, missingEnergy, invalidPhrase
+    case unsupportedTopic, unsupportedRelationship, missingRole, missingPhrases, missingEnergy, invalidPhrase, missingInjuryContext
     var errorDescription: String? {
         switch self {
         case .unsupportedTopic: return "这个细分领域的断案规则还没有通过原生一致性验收"
@@ -30,6 +30,7 @@ enum WenguaNativeReadingError: Error, LocalizedError {
         case .missingRole: return "真实九宫中无法唯一确定本次选定的人物或病象用神"
         case .missingPhrases: return "本地最新断案话术模板缺失"
         case .missingEnergy: return "本机能量规则数据缺失，无法生成本次专业断词"
+        case .missingInjuryContext: return "请先选择普通不适、意外受伤、骨肉受损、出血、剧痛或手术"
         case .invalidPhrase: return "断词模板有未定义的占位符"
         }
     }
@@ -75,7 +76,7 @@ enum WenguaNativeReadingRouter {
                 chart:chart,inquiry:request,index:profile)
             guard let injuryContext=request.injuryContext,
                   WenguaNativeDiscomfortV15.allowedContexts.contains(injuryContext) else {
-                throw WenguaNativeReadingError.unsupportedTopic
+                throw WenguaNativeReadingError.missingInjuryContext
             }
             return try WenguaNativeDiscomfortV15.compose(
                 chart:chart,relationship:relationship,actor:actor,

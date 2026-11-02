@@ -1,0 +1,94 @@
+name: WenguaApp CI (current V8.0 only)
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  v80_current:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Complete Yin/Yang 9 bureaus x 60 hours center-door host source invariants
+        run: python -m unittest discover -s tests -p 'test_casting_centre_door_20261029.py' -v
+      - name: Health site/discomfort independent research rules and explicit disabled iOS UI
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_source_draft_20261029.py' -v
+      - name: V19 native site/source rank, full nine-stage evidence and real family gate (Python 3.11/3.12)
+        run: |
+          python -m unittest discover -s tests -p 'test_health_discomfort_power_v17_20261101.py' -v
+          python -m unittest discover -s tests -p 'test_health_discomfort_v19_full_sequence_20261101.py' -v
+      - name: Explicit injury gate on real clocks and both surgery conditions
+        run: python -m unittest tests.test_health_discomfort_injury_gate_20261102 -v
+      - name: V11 body-discomfort standalone draft real chart and actor contract
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_v11_draft_20261031.py' -v
+      - name: Body location inner outer yin yang source candidate real chart regression
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_inner_outer_v12_20261031.py' -v
+      - name: V13 body-region, illness-versus-patient door and three carriers 1080 actual charts
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_v13_detail_20261101.py' -v
+      - name: V14 cross-book source variants 255 workbook and 1080 true-char directional gates
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_cross_text_v14_20261101.py' -v
+      - name: External body-location note draft integrity and no medical conclusions
+        run: python -m unittest discover -s tests -p 'test_health_discomfort_traditional_notes_20261029.py' -v
+      - name: Current V8.0 original 5x5 power and 72 cohost rules
+        run: python -m unittest discover -s tests -p 'test_health_v79_independent_cohost_matrix_20261027.py' -v
+      - name: All eight role complete environments, pairs, triples and palace restrictions
+        run: python -m unittest discover -s tests -p 'test_selected_signifier_graph_v80_20261027.py' -v
+      - name: No deprecated customer wording or obsolete source metadata in live iPhone app
+        run: python -m unittest discover -s tests -p 'test_ios_live_copy_cleanup_20261028.py' -v
+      - name: Premium iOS result screen source contract
+        run: python -m unittest discover -s tests -p 'test_ios_premium_result_ui_20261028.py' -v
+      - name: Immersive offline iPhone journey, frozen V8 and role UI contract
+        run: python -m unittest discover -s tests -p 'test_ios_immersive_journey_20261028.py' -v
+      - name: Health V8.0 branded verdict and ten-grade customer-only copy
+        run: python -m unittest discover -s tests -p 'test_ios_health_grade_copy_20261028.py' -v
+      - name: Disease-only independent Tianrui/Tianqin 81 source and cohost contract
+        run: python -m unittest discover -s tests -p 'test_health_v80_disease_dual_sky_20261028.py' -v
+      - name: 2026-10-28 13:44 same-clock self and colleague source audit
+        run: python -m unittest discover -s tests -p 'test_health_20261028_1344_two_person_audit.py' -v
+      - name: V8 grandparent real roles and 0 verdict
+        run: python -m unittest discover -s tests -p 'test_health_v80_grandparents_neutral_20261028.py' -v
+      - name: Real 200-grid centered palace and elder-only Qian Kun source contract
+        run: python -m unittest discover -s tests -p 'test_ios_palace_source_power_20261028.py' -v
+      - name: Mac launch helper shell syntax (display/build only)
+        run: bash -n scripts/打开问卦模拟器.command
+      - name: Device viewport and fixed nine-palace source UI layout
+        run: python -m unittest discover -s tests -p 'test_ios_first_viewport_palace_layout_20261028.py' -v
+      - name: Tianxian per-unique-palace floor-once and permanent Kun-2 centre-earth host
+        run: python -m unittest discover -s tests -p 'test_tianxian_tianqin_host_20261028.py' -v
+      - name: Confirm friend direct proxy and concise actual V8 same-clock customer text
+        run: python -m unittest discover -s tests -p 'test_health_v80_concise_friend_20261028.py' -v
+      - name: V11 friend-month-only versus four real family sibling auxiliary palaces
+        run: python -m unittest discover -s tests -p 'test_health_v11_friend_family_aux_20261031.py' -v
+      - name: Geng Xun dual-stage source 12-month regression
+        run: python -m unittest discover -s tests -p 'test_geng_xun_primary_changsheng_20261031.py' -v
+      - name: Six-Jia all four columns source-identity regression
+        run: python -m unittest discover -s tests -p 'test_independent_six_jia_role_columns_20261029.py' -v
+      - name: Historical father Jia failures converted to approved rule regressions
+        run: python -m unittest discover -s tests -p 'test_father_jia_year_binding_known_gap_20261029.py' -v
+      - name: V10.2 decisive facts concise verdict regression
+        run: python -m unittest discover -s tests -p 'test_health_v102_summary_20261028.py' -v
+      - name: V10.1 true-symbol prose dedup regression
+        run: python -m unittest discover -s tests -p 'test_health_v101_cohost_customer_20261028.py' -v
+      - name: User-approved Tianxian/Fuyin and permanent Kun narrated from one editable template
+        run: python -m unittest discover -s tests -p 'test_tianxian_kun_template_narration_20261028.py' -v
+      - name: Real source/snapshot Important byte integrity
+        run: python -m unittest discover -s tests -p 'test_important_mirror_integrity_20261026.py' -v
+      - name: Twelve manually pending prewritten prose candidates obey frozen score map
+        run: python -m unittest discover -s tests -p 'test_health_v80_twelve_prewrite_guard_20261029.py' -v
+      - name: GPT editorial V1 1080-index and 12 real-fact immutability guard
+        run: python -m unittest discover -s tests -p 'test_health_editorial_batch_v1_20261029.py' -v
+      - name: Persisted 1080 full physical plate, void and source81 coverage
+        run: python -m unittest discover -s tests -p 'test_physical_1080_atlas_dataset_20261029.py' -v
+      - name: Existing database schema and 1080 index smoke
+        run: |
+          set -euo pipefail
+          mkdir -p local
+          python -m scripts.init_database --db local/ci.sqlite3
+          python -m scripts.generate_states --output local/ci-states.json

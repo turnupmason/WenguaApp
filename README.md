@@ -1,5 +1,7 @@
 # 问卦 · WenguaApp
 
+> **2026-11-02 · 伤病在哪里 · V27伤门条件接线**：iOS「疾病健康 → 伤病在哪里」已开放，必须先选普通不适、意外受伤、骨肉受损、出血、剧烈疼痛或已做/拟做手术。未选禁止静心起局和模板调用；普通不适不启用独立伤门角色。伤损/出血/剧痛以伤门真实落宫优先定位，手术另列伤门所示部位并核对开门宫克伤门宫、伤门临白虎。启用时先显示伤门完整宫象，再看天芮、旁宫、时干、患者及结论。病宫恰好临伤门仍保留其本宫八门事实。Python/Swift与离线模板同步；V8病情轻重计分保持冻结。真实验收与历史失败见[伤门专项审计](docs/HEALTH_DISCOMFORT_INJURY_GATE_AUDIT_20261102.md)。
+
 > **2026-10-31 · 疾病规则与断词 V11（现行修订，验收状态以本次 Actions 为准）**：以 V8.0 已核准的 200格、81格及克病矩阵为计分基线，家属的哥哥/姐姐/弟弟/妹妹按实际关系选月干并按 V9 已建立的震三/巽四/艮八/兑七独立辅助宫；**朋友不是亲属，仅取本次月干，不问性别、不问相对年龄，也不取震巽艮兑、乾坤等亲属辅助宫**。无出生年命不补造。一个物理宫计一次基础分、每枚不同用神读取自身源力量，已授权的克病/同宫等条件分别核算，不将净宫分当源强。**V11 客户描述**在原 V10.1 完整宫位及古籍格局的基础上，补回独立病星、患者、天心、乙奇、时干、值符、实际亲属辅助、年命（若真实提供）、空墓刑迫和应期；严禁为了压缩文字遗失有效证据，且不显示内部评分。旧V10.1/V10.2及V9失败历史不删除。[本次审计](docs/HEALTH_V11_FRIEND_FAMILY_AND_DESCRIPTION_20261031.md)。
 
 > **2026-10-28 专业解卦最新展示**：云境首页采用「借天地之势，成自己之事」；九宫右侧用神标「病宫／被测人宫」等真实落宫，复星紧凑缩写、四柱逐干支五行着色；「专业解卦」先用已核准V8级别匹配十档文学象意和严格健康免责声明，另一「专业解盘」保留全部原始证据。详情：[品牌与十档UI变更](docs/IOS_HEALTH_GRADE_BRAND_UI_20261028.md)。
@@ -11,7 +13,7 @@
 
 **最新原生 UI**：云境欢迎页 → 疑惑/领域/细项渐显 → 人物与具体事项 → 30秒静心 → **点击确认瞬间按手机真实时间离线起局** → 九宫与接卦语／专业解盘。可选日间、夜间或跟随系统；真V8用神对应各宫透明身份字，多角色「／」并列。详情：[新UI交付](docs/IOS_IMMERSIVE_UI_FLOW_20261028.md)。
 
-**当前疾病基础计分源：V8.0；人物辅助条件：V9 家属修订；正式用户文字模板：V11（验收中）。** 本项目是持续开发的原生离线奇门遁甲 iPhone 应用，不是重新起盘或新建项目。当前正式投入开发与验收的专题是 **健康 → 病情轻重**；婚姻、工作、求财、出行等以后依其古籍用神规则分别开发，**绝不把疾病的加分模板套进其他领域**。
+**当前疾病基础计分源：V8.0；人物辅助条件：V9 家属修订；正式用户文字模板：V11（验收中）。** 本项目是持续开发的原生离线奇门遁甲 iPhone 应用，不是重新起盘或新建项目。当前已接入的专题为 **健康 → 病情轻重** 与独立的 **伤病在哪里**；婚姻、工作、求财、出行等以后依其古籍用神规则分别开发，**绝不把疾病的加分模板套进其他领域**。
 
 [开始阅读项目规范](AGENTS.md) · [最新项目状态](docs/PROJECT_STATUS.md) · [新窗口交接指令](docs/PROJECT_START_PROMPT_V80_20261027.md) · [中文分类导航](项目导航/README.md) · [完整规则审计](docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md)
 
@@ -43,7 +45,7 @@ xcodegen generate --spec project.yml
 open WenguaApp.xcodeproj
 ```
 
-在 Xcode 选择 `WenguaApp` Scheme 与 iPhone Simulator，直接运行 **问卦**。工程入口是 `WenguaDesignPreviewApp.swift`，实际调用 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；不存在第二套网络端的正式疾病引擎。完整设备准备参见 [Mac Xcode 使用说明](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
+在 Xcode 选择 `WenguaApp` Scheme 与 iPhone Simulator，直接运行 **问卦**。工程入口是 `WenguaDesignPreviewApp.swift`；病位走 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeDiscomfortV15`，轻重实际调用 `WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；不存在第二套网络端的正式疾病引擎。完整设备准备参见 [Mac Xcode 使用说明](docs/MAC_XCODE_LOCAL_DEVELOPMENT.md)。
 
 ## 四、开发与验收
 

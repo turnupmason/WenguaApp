@@ -40,6 +40,7 @@ enum WenguaNativeDiscomfortV15 {
         }
         let useInjury=injuryContext != "none"
         let trauma=["accident","bone","bleeding"].contains(injuryContext)
+        let injuryPrimary=trauma || injuryContext=="severe_pain"
         let powerCatalog=try WenguaNativeEnergyBundle.fromData(energy)
         guard let pairText=String(data:pairs,encoding:.utf8),
               pairText.split(separator:"\n",omittingEmptySubsequences:true).count==82 else {
@@ -55,6 +56,11 @@ enum WenguaNativeDiscomfortV15 {
               mapping.count==10,
               let words=try JSONSerialization.jsonObject(with:template) as? [String:Any],
               words["schema"] as? String=="wengua_health_discomfort_native_v27_ding_gods_inner_outer_hour_20261101",
+              let injuryPolicy=words["injury_policy"] as? [String:Any],
+              let activeContexts=injuryPolicy["active_contexts"] as? [String],
+              Set(activeContexts)==allowedContexts.subtracting(["none"]),
+              let primaryContexts=injuryPolicy["primary_contexts"] as? [String],
+              Set(primaryContexts)==Set(["accident","bone","bleeding","severe_pain"]),
               let stemOverrides=words["customer_stem_overrides"] as? [String:[String:Any]],
               let dingSites=stemOverrides["丁"]?["sites"] as? [String],dingSites==["心脏","眼睛"],
               let godImages=words["deity_disease_images"] as? [String:[String:String]],
@@ -368,10 +374,10 @@ enum WenguaNativeDiscomfortV15 {
         func tier(_ value:String)->Int {
             ["极小","小","中等","大","极大"].firstIndex(of:value).map{$0+1} ?? 0
         }
-        func sourceLocation(_ p:WenguaNativePalace)->[String] {
+        func sourceLocation(_ p:WenguaNativePalace,_ explicitScope:String?=nil)->[String] {
             let code=label(p)
-            let scope=(chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id)
-                ? "体内" : "体表"
+            let scope=explicitScope ?? ((chart.bureau.dun=="yang" ? innerYang:innerYin).contains(p.id)
+                ? "体内" : "体表")
             let rows=allRules.filter{
                 ($0["类别"] as? String)=="九宫定位" &&
                 ($0["子类"] as? String)=="神奇之门-"+scope &&
@@ -421,7 +427,7 @@ enum WenguaNativeDiscomfortV15 {
         // source sign is in true stem-specific tomb/striking, OR (b) a second,
         // distinct physical palace independently corroborates the same site.
         // Thus a single attractive door does not invent extra organs.
-        let injurySites=useInjury ? sourceLocation(injury) : []
+        let injurySites=useInjury ? (trauma ? sourceLocation(injury,"体表") : sourceLocation(injury)) : []
         guard !useInjury || !injurySites.isEmpty else {
             throw WenguaNativeReadingError.missingRole
         }
@@ -434,22 +440,21 @@ enum WenguaNativeDiscomfortV15 {
         // manufacture new distant organs by agreeing with one another.
         // An actual reported injury/bone damage/bleeding selects the true
         // 伤门 *palace* as the principal traditional site. No inferred diagnosis.
-        var candidateSites=trauma ? injurySites : originalSites
-        if trauma {
+        var candidateSites=injuryPrimary ? injurySites : originalSites
+        if injuryPrimary {
             for site in originalSites where !matched(site,candidateSites) {
                 candidateSites.append(site)
             }
         }
-        // Severe pain / surgery: 伤门 is a required conditional witness,
-        // but ONLY explicit trauma / bone damage / bleeding can promote
-        // the independent injury palace ahead of the real Tianrui site.
+        // Confirmed injury and severe pain prioritize the injury palace.
+        // Surgery names its operation site separately from the Tianrui site.
         // V21: patient, hour and auxiliary palaces are witnesses, NOT new
         // body-site origins. Even a strong striking symbol cannot overwrite
         // the Tianrui/explicit-injury primary location with a remote organ.
         let ranked:[(String,Int,Int)]=candidateSites.enumerated().map{ entry in
             let site=entry.element
             var rank=matched(site,originalSites) ? tier(illnessPower) : 0
-            if trauma && matched(site,injurySites) {
+            if injuryPrimary && matched(site,injurySites) {
                 // Priority class, not an invented 200-cell source strength or
                 // a symptom/severity score. Preserve source five-tier within.
                 rank+=25+tier(injuryPower)
@@ -495,7 +500,12 @@ enum WenguaNativeDiscomfortV15 {
                 if counted.insert(key).inserted {rank+=tier(power)}
             }
             return (site,rank,entry.offset)
-        }.sorted{ $0.1==$1.1 ? $0.2<$1.2 : $0.1>$1.1 }
+        }.sorted {
+            let a=injuryPrimary && matched($0.0,injurySites)
+            let b=injuryPrimary && matched($1.0,injurySites)
+            if a != b {return a}
+            return $0.1==$1.1 ? $0.2<$1.2 : $0.1>$1.1
+        }
         // The selected injury palace gets a location even when its door
         // strength is small: low force limits emphasis, not anatomy evidence.
         let leadSites=ranked.prefix(1).map{$0.0}
@@ -556,12 +566,12 @@ enum WenguaNativeDiscomfortV15 {
             "bleeding":"伤口或出血","severe_pain":"剧烈疼痛",
             "surgery":"已做或拟做手术"
         ]
-        let selectedInjurySites=(trauma ?
+        let selectedInjurySites=(injuryPrimary ?
             ranked.map{$0.0}.filter{matched($0,injurySites)} :
             injurySites).prefix(1).map{$0}
         let injurySiteNames=selectedInjurySites.joined(separator:"、")
-        let injuryScope=(chart.bureau.dun=="yang" ? innerYang:innerYin)
-            .contains(injury.id) ? "体内" : "体表"
+        let injuryScope=trauma ? "体表伤损部位" :
+            (chart.bureau.dun=="yang" ? innerYang:innerYin).contains(injury.id) ? "体内" : "体表"
         let injuryOverlap=injurySites.first(where:{matched($0,originalSites)})
         let injuryRelation:String
         if injury.id==illness.id {
@@ -579,19 +589,32 @@ enum WenguaNativeDiscomfortV15 {
                     WenguaVNextEngine.elements[p.id] ?? ""] ==
                     WenguaVNextEngine.elements[injury.id]
             } == true
-        let surgicalClue:String
+        var surgicalClue=""
         if surgicalControl,let opening=openPalace {
-            surgicalClue="开门所在\(label(opening))宫五行克伤门宫，传统上有医伤相制之象，不据此认定必须手术。"
-        } else {surgicalClue=""}
+            surgicalClue="开门所在\(label(opening))宫五行克伤门宫，传统有外科处理之象。"
+        }
+        if injuryContext=="surgery" && injury.deity=="白虎" {
+            surgicalClue+="伤门同宫临白虎，传统有开刀、外科处理之象。"
+        }
+        if !surgicalClue.isEmpty {surgicalClue+="具体手术部位与是否手术，须以实际诊疗为准。"}
         // Inspect the activated 伤门 palace, not the meaning of the
         // character 伤: its stars, carried stems, ground stem, deity,
         // door-palace relation, tomb/striking and real 81 formation.
         // Each 200-grid factor is evaluated for its OWN physical symbol.
         var injuryRoomEvidence:[String]=[]
         if useInjury {
+            guard let god=injury.deity,
+                  let element=WenguaVNextEngine.godElement[god],
+                  let pe=WenguaVNextEngine.elements[injury.id],
+                  let gp=WenguaVNextEngine.godTiers[try WenguaVNextEngine.directed(element,pe)],
+                  let image=godImages[god]?[tier(gp)>=3 ? "strong":"subtle"] else {
+                throw WenguaNativeReadingError.missingPhrases
+            }
+            injuryRoomEvidence.append("伤门力量\(injuryPower)；\(god)力量\(gp)，传统有\(image)。")
             for star in injury.heavenStars {
                 let starPower=try sourceStrength("star",star.star,injury)
                 let carrierPower=try stemPower(star.carriedStem,injury)
+                injuryRoomEvidence.append("宫中\(star.star)力量\(starPower)，天盘\(star.carriedStem)主\(stemFocus(star.carriedStem))，力量\(carrierPower)。")
                 let candidates=stemSites(star.carriedStem)
                 if tier(starPower)>=2 && tier(carrierPower)>=2,
                    let site=candidates.first(where:{matched($0,selectedInjurySites)}) {
@@ -601,6 +624,21 @@ enum WenguaNativeDiscomfortV15 {
             }
             let earthPower=try sourceStrength("stem",injury.earthStem,
                                                injury,injury.earthStages)
+            injuryRoomEvidence.append("地盘\(injury.earthStem)主\(stemFocus(injury.earthStem))，力量\(earthPower)。")
+            for star in injury.heavenStars {
+                let ground=star.star=="天禽星" ? chart.palaces.first(where:{$0.id==5})!.earthStem : injury.earthStem
+                guard let name=formation(star.carriedStem,ground) else {
+                    throw WenguaNativeReadingError.missingPhrases
+                }
+                injuryRoomEvidence.append("天盘\(star.carriedStem)加地盘\(ground)为\(name)。")
+            }
+            for carrier in Set(injury.heavenStars.map{$0.carriedStem}+[injury.earthStem]).sorted() {
+                let signs=badSigns(carrier,injury)
+                if !signs.isEmpty {
+                    injuryRoomEvidence.append("\(carrier)主\(stemFocus(carrier))，见\(signs.joined(separator:"、"))。")
+                }
+            }
+            if injury.horseBranch != nil {injuryRoomEvidence.append("此宫见驿马，传统有动作、迁动之象。")}
             let earthSites=stemSites(injury.earthStem)
             if tier(earthPower)>=2,
                let site=earthSites.first(where:{matched($0,selectedInjurySites)}) {
@@ -881,7 +919,9 @@ enum WenguaNativeDiscomfortV15 {
         // real tomb/striking/void/pressure. No second disconnected heading.
         let locationFull=[originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull]
             .filter{ !$0.isEmpty }.joined(separator:"\n")
-        let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" : "病位先看"
+        let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" :
+            injuryContext=="severe_pain" ? "剧烈疼痛先从伤门落宫看" : "病位先看"
+        let operationSite=injuryContext=="surgery" ? "伤门所示手术部位另看\(injurySiteNames)。" : ""
         // Do not invent anatomic laterality: 左肺 cannot be renamed 右侧内脏.
         let focusRegion:String
         if lead=="肝胆" {focusRegion="右上腹肝胆一带"}
@@ -936,7 +976,7 @@ enum WenguaNativeDiscomfortV15 {
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
             "综上，\(relationship)本次\(conclusionFocus)\(focusRegion)。",
-            closing,
+            operationSite,closing,
             "以上为传统病位和症候象意，需以实际检查核实。"
         ].joined()
         let values:[String:String]=[
@@ -1014,6 +1054,9 @@ enum WenguaNativeDiscomfortV15 {
               },
               sections.contains(where:{$0.id=="02_injury"})==useInjury else {
             throw WenguaNativeReadingError.invalidPhrase
+        }
+        if useInjury,let idx=sections.firstIndex(where:{$0.id=="02_injury"}) {
+            let activated=sections.remove(at:idx);sections.insert(activated,at:0)
         }
         return WenguaNativeCustomerReading(
             version:"discomfort_v27_ding_gods_inner_outer_hour_20261101",

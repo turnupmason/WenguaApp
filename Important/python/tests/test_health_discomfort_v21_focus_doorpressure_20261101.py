@@ -55,11 +55,11 @@ class V21FocusedDoorPressure(unittest.TestCase):
             self.assertIn(token,PYTHON)
         self.assertIn('doorRel=="符号克宫"',SWIFT)
         self.assertIn('doorRel=="符号克宫"',PYTHON)
-    def test_surgery_and_severe_pain_cannot_replace_tianrui_site(self):
-        self.assertIn('var candidateSites=trauma ? injurySites : originalSites',SWIFT)
+    def test_explicit_pain_prioritizes_injury_but_surgery_keeps_separate_site(self):
+        self.assertIn('var candidateSites=injuryPrimary ? injurySites : originalSites',SWIFT)
         self.assertIn('injurySites).prefix(1).map{$0}',SWIFT)
-        self.assertIn('candidates=list(injurySites if trauma else originalSites)',PYTHON)
-        self.assertIn('if trauma else injurySites[:1])',PYTHON)
+        self.assertIn('candidates=list(injurySites if injury_primary else originalSites)',PYTHON)
+        self.assertIn('if injury_primary else injurySites[:1])',PYTHON)
         self.assertNotIn('else if useInjury {\n            for site in injurySites',SWIFT)
         self.assertNotIn('elif use_injury:\n        for site in injurySites:',PYTHON)
     def test_no_unconditional_injury_or_natal(self):

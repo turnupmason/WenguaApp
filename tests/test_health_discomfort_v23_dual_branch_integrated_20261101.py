@@ -96,7 +96,7 @@ class V23BranchSourceAndPalace(unittest.TestCase):
         self.assertIn('!reading.sections.joinedDescription.contains("待核")',smoke)
         self.assertIn('!reading.sections.joinedDescription.contains("（")',smoke)
         self.assertIn('!reading.sections.joinedDescription.contains("）")',smoke)
-        self.assertIn('reading.sections.first!.text.contains("天地格")',smoke)
+        self.assertIn('reading.sections.first(where:{$0.id=="01_location"})!.text.contains("天地格")',smoke)
         self.assertIn('id=="07_formation" || $0.id=="08_constraints"',smoke)
 
 if __name__=="__main__":

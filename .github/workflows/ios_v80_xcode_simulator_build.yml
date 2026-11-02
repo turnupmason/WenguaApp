@@ -17,6 +17,8 @@ on:
       - 'data/templates/health_discomfort_v11/native_discomfort_v15.json'
       - 'src/wengua/health_discomfort_v19_parity.py'
       - 'ios/WenguaAppUI/NativeDiscomfortV19Parity.swift'
+      - 'ios/WenguaAppUI/NativeInjuryContextAcceptance.swift'
+      - 'tests/test_health_discomfort_injury_gate_20261102.py'
       - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
       - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
       - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
@@ -35,6 +37,7 @@ jobs:
             tests.test_health_discomfort_v23_dual_branch_integrated_20261101 \
             tests.test_health_discomfort_v26_precise_site_prose_20261101 \
             tests.test_health_discomfort_v27_ding_gods_hour_20261101 \
+            tests.test_health_discomfort_injury_gate_20261102 \
             tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
             tests.test_health_discomfort_power_v17_20261101 \
             tests.test_health_discomfort_v19_full_sequence_20261101
@@ -117,6 +120,8 @@ jobs:
           assert all(set(y)=={'qimen_secret_vol13','sanming_viscera','sanming_body_surface'} for y in families.values())
           native=json.loads((p/'native_discomfort_v15.json').read_text())
           assert native['topic_id']=='health.discomfort' and len(native['sections'])==9
+          assert native['injury_policy']['required_selection'] is True
+          assert set(native['injury_policy']['primary_contexts'])=={'accident','bone','bleeding','severe_pain'}
           (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
              'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
           PY
@@ -183,6 +188,36 @@ jobs:
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 弟弟' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
           grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 女儿' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+      - name: Verify all six injury choices on four real clocks and strict Python Swift text parity
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeInjuryContextAcceptance.swift \
+            -o /tmp/wengua-v80-xcode/native_injury_acceptance \
+            2>&1 | tee /tmp/wengua-v80-xcode/injury_compile.log
+          /tmp/wengua-v80-xcode/native_injury_acceptance \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            > /tmp/wengua-v80-xcode/injury_six_choices.jsonl
+          python3 -m src.wengua.health_discomfort_v19_parity \
+            /tmp/wengua-v80-xcode/injury_six_choices.jsonl \
+            | tee /tmp/wengua-v80-xcode/injury_py_swift_parity.log
+          test "$(wc -l < /tmp/wengua-v80-xcode/injury_py_swift_parity.log | tr -d ' ')" -eq 24
+          echo "PASS 24 native injury choices and full independent Python text parity" > /tmp/wengua-v80-xcode/injury_validation.txt
       - name: Keep all build logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
@@ -209,7 +244,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs
-          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ]; then
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ]; then
             RESULT=PASS
             MESSAGE="Actual iOS Simulator Xcode build, byte-exact V8/V15 bundle, and two V18 father and sister true random source-checked Swift clocks passed"
           else
@@ -238,6 +273,11 @@ jobs:
               echo '~~~text'
               cat /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
               echo '~~~'
+            fi
+            if [ -f /tmp/wengua-v80-xcode/injury_py_swift_parity.log ]; then
+              echo
+              echo "## Four clocks times six explicit injury choices"
+              cat /tmp/wengua-v80-xcode/injury_py_swift_parity.log
             fi
             if [ -f /tmp/wengua-v80-xcode/build.log ]; then
               echo

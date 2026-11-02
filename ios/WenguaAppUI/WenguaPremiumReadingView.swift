@@ -219,7 +219,7 @@ struct WenguaPremiumVerdictCard: View {
 
             if reading.topicID=="health.discomfort" {
                 // A body-site is NOT a V8 ten-grade illness-severity verdict.
-                Text("难受部位 · 古籍类象")
+                Text("伤病在哪里 · 古籍类象")
                     .font(.system(size:18,weight:.semibold,design:.serif))
                     .foregroundStyle(muted)
                 Text("可能关注的身体区域")

@@ -18,7 +18,7 @@ class V19LocationFamily(unittest.TestCase):
                          '(patientPalace,actorCarrier,patientPower)','(hourPalace,hourStem,hourPower)','tier(injuryPower)',
                          'WenguaVNextEngine.striking[stem]','p.tombs.contains',
                          'formationNames.joined','if illnessVoid=="true_void"',
-                         'var candidateSites=trauma ? injurySites : originalSites','actualRolePower(hourStem,hourCarrier',
+                         'var candidateSites=injuryPrimary ? injurySites : originalSites','actualRolePower(hourStem,hourCarrier',
                          'WenguaNativeCore.stages["甲"]','selectedStemImage','formationMeaning','orderedFormations'):
             self.assertIn(required,swift)
         self.assertNotIn("WenguaVNextEngine.compute(",swift)

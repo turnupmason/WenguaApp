@@ -105,5 +105,29 @@
     }
   },
   "deity_v27_boundary": "八神仅作为传统病位症候，白虎外象重不等于死亡风险低，螣蛇不能证明病转移，六合不等于医学确诊多种病，九天也不能证明真高血压。神取本神五行宫力，V8轻重计分不改。",
-  "inner_outer_v27": "阳遁内盘：坎一艮八震三巽四；阴遁内盘：离九坤二兑七乾六，余实宫为外盘。按实际病宫及时干宫确定，时干独立原200强度+五行关系，同符患者不重复算。"
+  "inner_outer_v27": "阳遁内盘：坎一艮八震三巽四；阴遁内盘：离九坤二兑七乾六，余实宫为外盘。按实际病宫及时干宫确定，时干独立原200强度+五行关系，同符患者不重复算。",
+  "injury_policy": {
+    "revision": "explicit_injury_gate_20261102",
+    "required_selection": true,
+    "inactive_context": "none",
+    "active_contexts": [
+      "accident",
+      "bone",
+      "bleeding",
+      "severe_pain",
+      "surgery"
+    ],
+    "primary_contexts": [
+      "accident",
+      "bone",
+      "bleeding",
+      "severe_pain"
+    ],
+    "first_section_when_active": "02_injury",
+    "surgery_signals": [
+      "opening_palace_controls_injury_palace",
+      "white_tiger_with_injury"
+    ],
+    "note": "伤损及剧痛优先按伤门真实落宫定位；手术分列伤门所示手术部位与天芮病位。未选择阻断，普通不适不启用独立伤门角色。本病位专题不改V8轻重计分。"
+  }
 }
