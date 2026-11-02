@@ -1185,7 +1185,8 @@ struct CastSetupScreen: View {
                                           "妹妹":"妹妹（家里的妹妹）"][relation] ?? relation).tag(relation)
                                 }
                             }
-                            .pickerStyle(.menu)
+                            .pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                             .onChange(of:subject) { _, _ in
                                 familyRelativeConfirmed=false
                                 patientSex="unspecified"
@@ -1206,7 +1207,8 @@ struct CastSetupScreen: View {
                                     Text("未说明").tag("unspecified")
                                     Text("男").tag("male")
                                     Text("女").tag("female")
-                                }.pickerStyle(.menu)
+                                }.pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                             }
                             if subject=="朋友" {
                                 Text("朋友与自己的年龄关系（必选）").font(.subheadline.weight(.semibold))
@@ -1214,7 +1216,8 @@ struct CastSetupScreen: View {
                                      Text("未说明").tag("unspecified")
                                      Text("比我大").tag("older")
                                      Text("比我小").tag("younger")
-                                 }.pickerStyle(.menu)
+                                 }.pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                                  Text("朋友仍取真实月干，不借亲属辅助宫。")
                                     .font(.caption).foregroundStyle(QStyle.secondary)
                             }
@@ -1232,7 +1235,8 @@ struct CastSetupScreen: View {
                                     Text("长").tag("eldest")
                                     Text("中").tag("middle")
                                     Text("幼").tag("youngest")
-                                }.pickerStyle(.menu)
+                                }.pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                             }
                             Text("出生年命干支（已知再填）").font(.subheadline.weight(.semibold))
                             TextField("例如辛酉；不确定请留空",text:$patientBirthGanzhi)
@@ -1249,14 +1253,16 @@ struct CastSetupScreen: View {
                                     Text("出血：刀伤、开放性伤口或急性大量出血").tag("bleeding")
                                     Text("明显剧烈疼痛").tag("severe_pain")
                                     Text("已经手术或准备手术").tag("surgery")
-                                }.pickerStyle(.menu)
+                                }.pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                                 Text("伤损、出血或剧痛，优先看伤门落宫；手术另看伤门所示部位。普通不适不启用独立伤门判断。未选择不能起局。")
                                    .font(.caption).foregroundStyle(QStyle.secondary)
                             }
                             Text("病程（记录用，可选）").font(.headline)
                             Picker("病程（仅记录，可选）", selection: $duration) {
                                 ForEach(["未说明", "新病", "久病"], id: \.self) { Text($0) }
-                            }
+                            }.pickerStyle(.menu).labelsHidden()
+                                .frame(maxWidth:.infinity,alignment:.leading)
                             }
                         }
                         .textFieldStyle(.roundedBorder)

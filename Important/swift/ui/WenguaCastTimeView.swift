@@ -20,11 +20,13 @@ struct WenguaCastTimePicker: View {
                 Text("预定时辰起局").font(.headline)
                 Text("请选择事项实际发生／约定的未来时刻。吉日专用评级仍在开发中，当前提供真实排盘。")
                     .font(.subheadline).foregroundStyle(QStyle.secondary)
+                Text("事项发生地时区").font(.subheadline.weight(.semibold))
                 Picker("事项发生地时区", selection: $timezone) {
                     ForEach(Array(Set(TimeZone.knownTimeZoneIdentifiers + [timezone])).sorted(), id: \.self) { zone in
                         Text(zone).tag(zone)
                     }
-                }.pickerStyle(.menu)
+                }.pickerStyle(.menu).labelsHidden()
+                    .frame(maxWidth:.infinity,alignment:.leading)
                 Button {
                     draftClock=WenguaScheduledClock(date:candidates.first?.date ?? Date(),timezone:timezone)
                     occurrence=0

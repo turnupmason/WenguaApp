@@ -24,3 +24,5 @@ p5封存清单原样归档为archives/engineering_patch_20261102/health_frozen_2
 本地完整回归与本提交真实macOS Swift、Xcode零Swift警告、实际bundle资源／路由及Python／Swift逐字验收，待实际执行后追加。本轮没有新增古籍章节或病例，也没有签名真机、像素手测或全套XCUITest；不以软件检查代替这些验收。
 
 本地最终完整回归855 tests：0 failures、0 errors、3既有skip；专项33项通过。原失败和最终原日志／SHA已存docs/audits/ios_setup_palace_ui_20261102/，未删除旧测试或新加skip。实际Swift与Xcode仍待本提交Actions执行。
+
+最后核对为所有表单菜单隐藏控件内重复标题，关系／伤损／病程／时区等标题单独放在上方，选项左对齐；完整855项再次0失败／0错误／3原skip。最终日志python_full_picker_final.log.gz已存。

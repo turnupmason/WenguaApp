@@ -23,8 +23,13 @@
       "sha256": "fd2bd02d003e761e800a524cbb79b90e8d8be412198f4c731023165cba908928"
     },
     {
+      "path": "docs/audits/ios_setup_palace_ui_20261102/python_full_picker_final.log.gz",
+      "sha256": "2e2f84d04ba5a04102d1b1a41dd661ceebe67f409f839999f1f8ce515cb773ae"
+    },
+    {
       "path": "docs/audits/ios_setup_palace_ui_20261102/targeted_33_pass.log.gz",
       "sha256": "d941df6071d3febd602a22e570b99c723c92aa307a1d2552e38b9c1ae00aca25"
     }
-  ]
+  ],
+  "final_clock_and_picker_titles_tests": 855
 }

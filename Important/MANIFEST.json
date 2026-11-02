@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "80f09453481fe91fa98d6c4e07c32b4e9994dee6"
+      "sha": "6c99e5e200a8c6bf62d93e7acd332c223eac059e"
     },
     {
       "platform": "swift",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "99fdae1312af74ffb76bc29d5a4c046395f5959e"
+      "sha": "8b71a2f7fd90e90bb181e405ff5f4cc50dfebc54"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "99fdae1312af74ffb76bc29d5a4c046395f5959e"
+      "sha": "8b71a2f7fd90e90bb181e405ff5f4cc50dfebc54"
     },
     {
       "platform": "python",
@@ -901,7 +901,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "snapshot": "Important/swift/ui/WenguaCastTimeView.swift",
-      "sha": "42b7d3bb75f625352e804cded6634a9d2cfec4a5"
+      "sha": "910c5cd0a6715adf77b3cb0497ca39c561dd8e27"
     },
     {
       "platform": "python",

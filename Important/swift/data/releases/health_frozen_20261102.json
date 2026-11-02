@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "1c589d49c03c8d0a91a966e4b808c15c9ba4126dd9cbc44253582f8a65f6bbab"
+      "sha256": "4629afd491028bc6edf52221b649ceed39ad41a248b6eb96bd176ed145d09e40"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -191,7 +191,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaCastTimeView.swift",
       "kind": "source",
-      "sha256": "949d2cf24b41c926e2aa8a0827d63df42aaa06f17cd757520ef11e046e7f0aba"
+      "sha256": "af74fc6c9513adbafb15c1ca8a0ea2c36f691a70352bea2916f91a87ff802b74"
     },
     {
       "path": "ios/WenguaAppUI/WenguaReadingLayout.swift",
