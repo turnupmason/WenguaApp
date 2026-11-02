@@ -3134,3 +3134,8 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-11-02 · V27 哥哥/妻子本轮最终实测 PASS
+源码 `23787f32ff5ddb6a5e81a4aa878728acfedb72b0`，真正 macOS Xcode #41449228405 **success**：正式 SwiftUI Simulator 编译、bundle 200/81/人物/模板、两张请求盘独立历法与九宫、Python↔Swift 中文全文逐字、四时辰×六伤损条件与1080数据集检查均通过。全文 `docs/IOS_V80_XCODE_PASS_RUN_41449228405_ATTEMPT_1.md`；哥哥纽约2026-11-19 11:00，丙午/己亥/丁酉/丙午，天芮艮八阴遁外盘，传统主位左足；妻子纽约2026-12-18 03:00，丙午/庚子/丙寅/庚寅，天芮坤二阴遁内盘，传统主位脾胃。未补年命，不是临床诊断或秘密盲测。
+同源码主CI #41449228608（Python3.11/3.12）、V8原生关系 #41449228321、V7.7 #41449228323 全success。旧V7.4 #41449228575 仍在固定旧评分断言失败；全库831项的41 failures/11 errors/3 skipped也保留，不能说全库或全部历史Actions零失败。本次Xcode无失败；无签名真机/App Store验收。Important双镜像/SHA已随源码同步，V8计分冻结未变。
