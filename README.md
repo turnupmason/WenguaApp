@@ -20,7 +20,7 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 - **当前模板目录只保留两份正式模板。** 23 份旧模板、草稿及固定样例已清出原位，带原始 SHA [归档保留](archives/retired_health_templates_20261102/INDEX.json)，不参与手机打包或运行回退；38 项旧版自动构建/预览改为手动审计。
 - 婚姻、工作、求财、出行、升学、刑事、失物等领域尚未完成正式验收，仍标开发中，不能套用疾病模板。
 
-工程补丁 **p5** 整理领域内普通预定时刻／选吉日接口、共用等级基础、专业解盘分项排版和有效输入，详见[本轮接口与排版记录](docs/IOS_DOMAIN_LAYOUT_INPUTS_20261102.md)（新原生/Xcode结果待本轮Actions追加）。此前p4记录见[手动事项时辰](docs/IOS_MANUAL_EVENT_TIME_20261102.md)。此前 **p1** 纠正地盘审计字段；**p2** 接入奇门论疾首页及统一名称；**p3** 将首页收为直接病位一句话、增加30秒小和尚敲木鱼与诵念文字动画，并清理Swift警告。两份模板和数值规则未变，旧封存清单已原样保留。[首页修复记录](docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md) · [简明摘要、动画与警告清理](docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md)（正式Xcode与Swift零警告实测通过）。规则疑点和真机待验项见[本轮规则复核](docs/HEALTH_RULE_QUESTIONS_AUDIT_20261102.md)。
+工程补丁 **p5** 整理领域内普通预定时刻／选吉日接口、共用等级基础、专业解盘分项排版和有效输入，详见[本轮接口与排版记录](docs/IOS_DOMAIN_LAYOUT_INPUTS_20261102.md)（本轮真实原生、Xcode零警告及App包资源验收通过）。此前p4记录见[手动事项时辰](docs/IOS_MANUAL_EVENT_TIME_20261102.md)。此前 **p1** 纠正地盘审计字段；**p2** 接入奇门论疾首页及统一名称；**p3** 将首页收为直接病位一句话、增加30秒小和尚敲木鱼与诵念文字动画，并清理Swift警告。两份模板和数值规则未变，旧封存清单已原样保留。[首页修复记录](docs/IOS_QIMEN_LUNJI_FRONTPAGE_20261102.md) · [简明摘要、动画与警告清理](docs/IOS_QIMEN_MEDITATION_WARNINGS_20261102.md)（正式Xcode与Swift零警告实测通过）。规则疑点和真机待验项见[本轮规则复核](docs/HEALTH_RULE_QUESTIONS_AUDIT_20261102.md)。
 
 ## 手机流程与正式接线
 
@@ -50,12 +50,12 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 
 | 验收 | 实测结果 |
 |---|---|
-| 正式 macOS Xcode Simulator 编译、Swift源码零警告、实际包内资源 SHA/白名单、两个 Bundle 路由 4 次调用、Python/Swift 完整中文逐字、六伤损条件、手动时辰候选组/同盘等级及 1080 数据检查 | [#41479754723 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41479754723) |
-| 独立 iOS 原生历法、断词回归及真实 App 编译 | [#41481224006 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41481224006) |
-| 封存轻重 Python/Swift 逐字回归、奇门论疾真实输出的首页摘要运行检查 | [#41481223986 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41481223986) |
-| 工程补丁 p4 的 Python 3.11/3.12 主 CI | [#41481223879 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41481223879) |
+| 正式 macOS Xcode Simulator 编译、Swift源码零警告、实际包内资源 SHA/白名单、两个 Bundle 路由 4 次调用、Python/Swift 完整中文逐字、六伤损条件、15领域接口/原文分项排版/同盘等级及 1080 数据检查 | [#41494696931 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494696931) |
+| 独立 iOS 原生历法、断词回归及真实 App 编译 | [#41494641926 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641926) |
+| 封存轻重 Python/Swift 逐字回归、奇门论疾真实输出的首页摘要运行检查 | [#41494641874 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641874) |
+| 工程补丁 p5 的 Python 3.11/3.12 主 CI | [#41494641830 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41494641830) |
 
-[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。下表当前为p4历史验收记录；p5须在新Actions实测后更新，不能拿旧源码通过替代。最新分支状态见页首 CI。手动时辰验证包含当前／未来输入、同盘同人物等级、两张实际盘Python/Swift全文、DST、整组保存与旧历史兼容。动画已随App编译通过，滚轮与动画的人工视觉UI验收仍须在模拟器/真机操作。
+[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。上述均为p5生产源码 `0c8a668d` 的实际验收；独立iOS构建为该run第2次尝试。后续只补充记录，生产源pin保持相同。最新分支状态见页首 CI。实测包含15领域时刻/预留选吉日边界、共用净分等级、原文分项重组、真实两盘Python/Swift全文、DST、旧回执和历史兼容。动画已随App编译通过，滚轮与动画的人工视觉UI验收仍须在模拟器/真机操作。
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 

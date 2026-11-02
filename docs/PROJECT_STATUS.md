@@ -3287,3 +3287,10 @@ p4清单与6份测试原件/SHA归档，现行manifest明确p5：9个既有展�
 
 ### 当前封存轻重回归实测 · run 41494641874
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0c8a668daee84a952f4f9696bb35dbed20591088。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41494641874_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 2026-11-02 · p5领域内接口、分项排版及真实输入最终验收完成
+生产源0c8a668daee84a952f4f9696bb35dbed20591088：正式macOS Xcode #41494696931 success，完整App编译、Swift源警告0、实际包内资源SHA/白名单、两主题4次Bundle路由、V27逐字与6伤损条件/1080源盘通过。新增PASS DOMAIN_UI实测15领域普通预定时刻、15个electiveReserved阻断、共用最终净分等级、V27每节分项runs原文重组、旧描述和孤立回执限制；同盘同人物健康全文/用神宫位Python与Swift逐字相等。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md。
+同源主CI #41494641830（Python3.11/3.12）、原生轻重/病位摘要 #41494641874 success。独立iOS #41494641926 attempt2 success：原5项Foundation原生成功保留，独立完整App重跑成功，合计6 jobs均success。其attempt1长时间排队，在取消操作与刚分配runner之间发生竞态，中断了刚开始的App步骤；已如实重跑该job，原cancelled记录保留，不称attempt1通过。重复排队正式任务 #41494641971 cancelled，未虚报执行通过。
+本地专项15项与完整849 tests 0失败/0错误/3原有skip；首轮旧CTA断言1条迁移失败原日志/原测试SHA继续保留，无删除测试或新skip。p4清单归档、p5源pin及Important镜像/MANIFEST同步通过。V9计分/V11、V27模板和原生/Python数学源码与7份规则资源未改；仅做UI/接口/输入与历史承接。没有新增章节/病例、签名真机、全套XCUITest或像素视觉手测，不将文化盘象说成科学预测有效性。
+当前入口：首页仅领域；领域内普通问事可当前/一个已定时刻真实排盘，15领域各有选吉日预留项，暂不进普通完整解读；只有健康两专题已接评级/解读，其它模板逐步开发。专业解盘分块分短行，底层断词原文不删。手动入口只显示选择时辰，明确确认才使用；必填自由描述已移除、15天旧限制保守承接。README已同步。本轮可按README重新生成Xcode工程后⌘R检查实际UI。

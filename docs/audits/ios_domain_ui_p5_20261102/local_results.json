@@ -12,5 +12,35 @@
     "failures": 0
   },
   "first_migration_failure": "first_full_contract_failure.log.gz",
-  "swift_xcode": "Pending p5 Actions; local environment lacks Swift/Xcode"
+  "swift_xcode": {
+    "source_sha": "0c8a668daee84a952f4f9696bb35dbed20591088",
+    "formal_xcode": {
+      "run": 41494696931,
+      "conclusion": "success",
+      "swift_warnings": 0
+    },
+    "independent_ios": {
+      "run": 41494641926,
+      "attempt": 2,
+      "conclusion": "success",
+      "prior_attempt": "cancelled after queued-to-started race; logs preserved"
+    },
+    "native_parity": {
+      "run": 41494641874,
+      "conclusion": "success"
+    },
+    "main_python": {
+      "run": 41494641830,
+      "conclusion": "success"
+    },
+    "runtime_domain_interfaces": 15,
+    "runtime_elective_reserved": 15,
+    "lossless_reading_roundtrip": "PASS",
+    "same_chart_health_full_text_python_swift": "PASS",
+    "unexecuted": [
+      "signed iPhone",
+      "full XCUITest",
+      "visual wheel/paragraph manual QA"
+    ]
+  }
 }
