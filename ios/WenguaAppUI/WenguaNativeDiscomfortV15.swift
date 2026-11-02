@@ -793,6 +793,60 @@ enum WenguaNativeDiscomfortV15 {
         if !doorText.isEmpty {danger.append(doorText)}
         let dangerFull=danger.isEmpty ? "" :
             "本宫条件："+danger.joined(separator:"；")+"。"
+        // V24 complete board: independently audit actual physical stem
+        // identities and true tomb/striking, including unrelated palaces.
+        // This evidence is a traditional warning, never a proven damaged
+        // organ or proven cause. Do not fabricate a marker in mid-five.
+        var crossEvents:[(Int,Int,String,String,String)]=[]
+        for p in chart.palaces.filter({physical.contains($0.id) &&
+                                     $0.id != illness.id}).sorted(by:{$0.id<$1.id}) {
+            let realStems=Set(p.heavenStars.map{$0.carriedStem}+[p.earthStem])
+            for stem in realStems.sorted() {
+                let conditions=badSigns(stem,p)
+                if conditions.isEmpty {continue}
+                let sourceSites=parts((mapping[stem]?["qimen_secret_vol13"] ?? [])
+                    .joined(separator:"/"))
+                let rawSite=sourceSites.first ?? "身体相应部位"
+                let site=rawSite=="脏（笼统）" ? "脏腑泛象" : rawSite
+                let power=try stemPower(stem,p)
+                guard tier(power)>0 else {throw WenguaNativeReadingError.missingPhrases}
+                let rel=palaceRelation(p)
+                let relationText:String
+                let priority:Int
+                switch rel {
+                case "此宫克病宫":
+                    priority=0
+                    relationText="此宫克病宫，传统上可能牵制主病位，但不能据此认定病因"
+                case "此宫生病宫":
+                    priority=1
+                    relationText="此宫生扶病宫，属于关联旁证，不能反推为病源"
+                case "病宫克此宫":
+                    priority=2
+                    relationText="病宫克此宫，可考虑此处受到病事牵连的象意"
+                case "病宫生此宫":
+                    priority=3
+                    relationText="病宫生此宫，可考虑向外耗泄的象意"
+                default:
+                    priority=4
+                    relationText="两宫比和，仅表示同类宫象"
+                }
+                let conditionText=conditions.contains("六仪击刑") &&
+                    conditions.contains("入墓") ?
+                    "刑墓并见，古法主受制、疼痛与潜伏难显的象意" :
+                    conditions.contains("六仪击刑") ?
+                    "击刑主牵扯、疼痛或损伤之象" :
+                    "入墓主闭藏、受压、不易显露之象"
+                let message="\(label(p))宫\(stem)所指\(site)，原力\(power)，实见\(conditions.joined(separator:"、"))，\(conditionText)；\(relationText)"
+                crossEvents.append((priority,p.id,stem,message,rel))
+            }
+        }
+        crossEvents.sort{
+            if $0.0 != $1.0 {return $0.0<$1.0}
+            if $0.1 != $1.1 {return $0.1<$1.1}
+            return $0.2<$1.2
+        }
+        let crossFull=crossEvents.isEmpty ? "" :
+            "全盘墓刑互证："+crossEvents.map{$0.3}.joined(separator:"；")+"。"
         let ending="。"
         let dn=chart.bureau.dun=="yang" ? "阳" : "阴"
         let originalFocus=(!trauma && matched(lead,originalSites)) ?
@@ -803,7 +857,7 @@ enum WenguaNativeDiscomfortV15 {
         // V23: A single disease-palace account contains star, door,
         // deity, distinct sky/earth, hosted Tianqin, formations and all
         // real tomb/striking/void/pressure. No second disconnected heading.
-        let locationFull=[originalLocation,starDoorGodFull,formsFull,dangerFull]
+        let locationFull=[originalLocation,starDoorGodFull,formsFull,dangerFull,crossFull]
             .filter{ !$0.isEmpty }.joined(separator:"\n")
         let conclusionFocus=trauma ? "因属伤损，先从伤门落宫看" : "病位先看"
         // Do not invent anatomic laterality: 左肺 cannot be renamed 右侧内脏.
@@ -850,6 +904,9 @@ enum WenguaNativeDiscomfortV15 {
             bodyEvidence.append(tier(birdPower)>=3 ?
                 "天禽同宫又逢伏吟，传统取反复牵滞之象，可作旁证" :
                 "天禽所携干虽见伏吟，但天禽力量偏弱，反复之象只作次要线索")
+        }
+        if let first=crossEvents.first {
+            bodyEvidence.append("另有\(first.3)，只是跨宫需要核实的传统线索，不能据此断言对应器官已经受损")
         }
         let closing=bodyEvidence.isEmpty ? "" : "盘中"+bodyEvidence.joined(separator:"；")+"。"
         let conclusion=[
