@@ -2970,3 +2970,11 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+## 2026-11-01 · V23 病宫完整证据合断和原200格双支查全记录
+- 用户不接受V22将病宫星门神、天盘地盘干、81格和墓刑分别读而综合只报器官，要求在一个病宫段合断具体古籍病象，最终区分主位、独立强干和有条件症候；客户无中文/英文括号；新模板status为 v23_internal_review_pending_user_approval。
+- 唯一用户已批准庚巽长生例外继续保留。十干×8实宫×五个月令共400组真实源200格全查，45组双地支不同档，不缺200表源单元格。Swift stemBranchFacts 与Python stem_branch_facts 逐支输出真实十二长生、原格力量，不擅自把大与极大统一成一档。两支均达到大以上时视作可靠强旁证，但不创造源力量等级，也不等于实际疾病轻重。
+- 仅改 health.discomfort 原生Swift WenguaNativeDiscomfortV15.swift、独立Python health_discomfort_v19_parity.py、native_discomfort_v15.json及关联测试/流程，不动冻结V8疾病轻重、原200/81/255或真实人物。星门八神、两层干、天禽第二格、真实墓刑空迫及门克宫条件已在同一病宫首段组合，原模板07/08审计占位不再在观众中重复展示；伤门独立用神仍按特殊情境门控，天芮病宫实临伤门始终按宫内八门参与。
+- 将用户此前已见女儿真盘2027-02-07 11:00 -05, 丁未壬寅丁巳丙午纳入固定回归（绝不声称秘密盲测），验真实巽四宫丁辰衰大/巳帝旺极大、乙胆极大、伤门螣蛇极大、弱天禽附伏吟；另两张随机弟弟/妻子由独立Python↔Swift客户全文逐字核验。完整独立审计docs/HEALTH_DISCOMFORT_V23_INTEGRATED_PALACE_AND_TWO_BRANCH_ENERGY_AUDIT_20261101.md。
+- 真实失败均留存：Xcode #41368524138 Swift换行+语法，Python主全库 #41368783135 工作流Important镜像缺失，Xcode #41368843949 病宫重复星门神/过严措辞guard，#41369104890 旧禁止门力文本误杀真实伤门力量，#41369802592/#41369876564 新固定案独立parity烟测误用局部joinedDescription扩展，分别已按真实日志修复。
+- 早期本轮真实macOS unsigned Xcode Simulator+离线bundle与两真随机Python-Swift全文PASS #41369404510、#41369592751/#41369605433（各自源码SHA见原存档）；新增固定女儿案严格逐字验证必须查后续对应SHA独立Actions，不能借前一版PASS宣称通过。用户文案仍待审批，未签名真机、无临床验证。
