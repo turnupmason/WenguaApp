@@ -3014,3 +3014,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
 - 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID} ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
+
+
+### 2026-11-01 · V24 精简跨宫收束后真实校验
+- V24 全八实宫真墓刑仍全量报告，但综合段不再整段重复首条墓刑，只摘要其真实实宫、干、墓刑和对病宫五行方向。此改动在真实 macOS Xcode [#41377678550](https://github.com/turnupmason/WenguaApp/actions/runs/41377678550) **PASS**，源码 SHA `1b265fd7115f17eec3b36016ba7fd669ea18c5b8`，原文记录 `docs/IOS_V80_XCODE_PASS_RUN_41377678550_ATTEMPT_1.md`，包括Python400/45专项、原生Simulator与离线bundle、四新随机人时真盘、另外三张Python/Swift整段严格parity（女儿已见固定案仅冻结回归）。前一新摘要过渡提交Swift/Python不同步导致 #41377648150 失败，档案永存，非临床、非签名真机、未获用户文案批准。专题详细审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
