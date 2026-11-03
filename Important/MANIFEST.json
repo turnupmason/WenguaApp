@@ -1093,7 +1093,7 @@
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/active_release.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/active_release.json",
-      "sha": "7bbf796058ac96eb4cc0446fc2ccb62634789d65"
+      "sha": "eea8ed39f52ecf2a1e51e680e4ccc7f5617bbfa7"
     },
     {
       "canonical": "src/wengua/health_recovery_v4.py",
@@ -1105,7 +1105,7 @@
       "canonical": "scripts/check_health_recovery_v4_native_20261103.py",
       "platform": "python",
       "snapshot": "Important/python/scripts/check_health_recovery_v4_native_20261103.py",
-      "sha": "d0265d0d220632bd9b4e3cd48e09a5267a39330d"
+      "sha": "08d3fe84be9f748ec613c18133f1868f5a018671"
     },
     {
       "canonical": "tests/test_health_recovery_v4_convergence_20261103.py",

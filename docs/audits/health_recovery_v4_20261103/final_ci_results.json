@@ -1,0 +1,167 @@
+{
+  "schema": "health_recovery_v4_source_and_native_acceptance",
+  "verification_source_sha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 41556690074,
+      "headSha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+      "name": "Disease recovery V4 five-path source convergence",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41556690074",
+      "jobs": [
+        {
+          "name": "actual_native_parity",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41556690045,
+      "headSha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+      "name": "Sealed V9 V11 and V27 production Xcode iOS Simulator build",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41556690045",
+      "jobs": [
+        {
+          "name": "build_and_validate_real_app_bundle",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41556690063,
+      "headSha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41556690063",
+      "jobs": [
+        {
+          "name": "power_pair_full_text_parity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41556690137,
+      "headSha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41556690137",
+      "jobs": [
+        {
+          "name": "v80_current (3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "source_witness_replay": {
+    "kind": "retrospective_adverse_source_reconstruction_not_recovery_prediction",
+    "month_branch": "申",
+    "duration_days": [
+      30,
+      38
+    ],
+    "duration_is_case_specific": true,
+    "natal_hidden_branch": "寅",
+    "natal_palace_join": [
+      "亥"
+    ],
+    "year_clash_palace_branches": [
+      "辰"
+    ],
+    "year_half_join": true,
+    "natal_tomb_branch": "未",
+    "day_branch": "丑",
+    "executor_stems": [
+      "丁",
+      "辛"
+    ],
+    "executor_stem_sources": [
+      "天芮星",
+      "天禽星"
+    ],
+    "executor_month_stage": "旺",
+    "case_numbers": [
+      3,
+      8
+    ],
+    "month_evidence": {
+      "month_branch": "申",
+      "palace_stage": "死",
+      "illness_star_stage": "旺",
+      "palace_controls_star": true
+    },
+    "computed_dates": [
+      {
+        "date": "2009-08-24",
+        "ganzhi": "辛丑",
+        "elapsed_days": 37
+      }
+    ],
+    "original_exact_date_prediction_made": false
+  },
+  "native_comparison_cases": 40,
+  "independent_original_source_palace_witnesses_checked": true,
+  "source_is_retrospective_not_initial_exact_day_prediction": true,
+  "full_local_suite": {
+    "source_sha": "d9202f1ed2a19ec6521a621d4eba20e6cedaf0dc",
+    "worktree_diff_sha256": "0e953c5eb39e6e8f2fa881931af6a9e5a7eae57e63049fe5219246547add745b",
+    "sealed_manifest_sha256": "90e8e3ce804bbedb26f5d50f70e57849ebee907d89856614dfcd9348d3c807f0",
+    "tests_run": 917,
+    "failures": 0,
+    "errors": 0,
+    "skipped": [
+      {
+        "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+        "reason": "Optional Moshier external cross-reference not installed"
+      },
+      {
+        "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+        "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+      },
+      {
+        "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+        "reason": "V7.8 historical fixture; active V7.9 tested independently"
+      }
+    ],
+    "full_log_sha256": "8ec07c73ab43bbb5609a8730b4204643828e94bc171e86bf3c43c4700c5ce5c7",
+    "records": []
+  },
+  "source_error_correction": {
+    "rejected_gui_xun_chen_tomb": true,
+    "actual_jia_stages": [
+      "衰",
+      "病"
+    ],
+    "actual_gui_stages": [
+      "养",
+      "胎"
+    ],
+    "old_original_random_trial_20261120_invalidated": true,
+    "corrected_original_random_release_day": "2026-12-15 癸亥"
+  },
+  "original_seven_resources_unchanged": true,
+  "frozen_severity_and_body_site_math_unchanged": true,
+  "new_original_printed_charts": 0,
+  "clinical_validation_claimed": false,
+  "runtime_sha256": "35ac3646f1bdec37b6436db0b6008f4d15934df62d3d61ed0d1a2c6fb0793c2b"
+}

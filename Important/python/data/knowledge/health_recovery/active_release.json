@@ -7,8 +7,8 @@
   "question": "病什么时候好",
   "app_route_enabled": true,
   "engine_implemented": true,
-  "native_parity_status": "pending_new_actual_v4_run",
-  "xcode_status": "pending_new_actual_v4_run",
+  "native_parity_status": "passed_v4_source_witness_and_40_native_cases",
+  "xcode_status": "passed_v4_actual_app_resources_router_history",
   "drafts_preserved": [
     "reading_template_v1_draft.json",
     "reading_template_v2_user_timing.json"
@@ -16,5 +16,12 @@
   "conditional_only": true,
   "clinical_validation_claimed": false,
   "prior_release_preserved": "archives/engineering_patch_20261103/before_recovery_v4/data/knowledge/health_recovery/active_release.json",
-  "source_evidence": "user_five_paths_source_20261103.json"
+  "source_evidence": "user_five_paths_source_20261103.json",
+  "verification_source_sha": "884997574c60d7d233ba7080f3cd03588fb1229f",
+  "verification_receipt": "docs/audits/health_recovery_v4_20261103/final_ci_results.json",
+  "native_parity_run": 41556690074,
+  "xcode_run": 41556690045,
+  "source_case_is_retrospective": true,
+  "show_timezone_in_reading": false,
+  "output_style": "single_date_with_professional_evidence"
 }

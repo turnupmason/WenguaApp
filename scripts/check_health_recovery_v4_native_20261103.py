@@ -22,7 +22,7 @@ def generate(folder):
   e={'id':c['id'],'result':r}
   if c.get('source_replay'):e['replay']=source_five_path_replay(f,ctx)
   expected.append(e)
- (folder/'input.json').write_text(json.dumps({'cases':cases,'no_selection_by_outcome':True,'source_replay_is_retrospective_not_blind_prediction':True},ensure_ascii=False,indent=2)+'\n')
+ (folder/'input.json').write_text(json.dumps({'cases':cases,'random_software_clocks_not_filtered_by_verdict':True,'source_case_selection':'user_supplied_known_adverse_case','source_replay_is_retrospective_not_blind_prediction':True},ensure_ascii=False,indent=2)+'\n')
  (folder/'expected.json').write_text(json.dumps(expected,ensure_ascii=False,indent=2)+'\n')
  return cases,expected
 
