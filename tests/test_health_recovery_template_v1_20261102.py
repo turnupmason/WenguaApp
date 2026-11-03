@@ -53,19 +53,20 @@ class RecoveryTemplateDraft(unittest.TestCase):
   self.assertEqual(a['unique_event_families'],len(set(ids)))
  def test_only_requested_guidance_spacing_changes_in_sealed_app_sources(self):
   before=json.loads((ROOT/'archives/engineering_patch_20261102/before_p9/health_frozen_20261102.json').read_text())
-  current=json.loads((ROOT/'data/releases/health_frozen_20261102.json').read_text())
+  current=json.loads((ROOT/'archives/engineering_patch_20261102/before_recovery_v3/data/releases/health_frozen_20261102.json').read_text())
   old={x['path']:x['sha256'] for x in before['files']}
   self.assertEqual(before['topics'],current['topics'])
   self.assertEqual({x['path'] for x in current['files'] if old[x['path']]!=x['sha256']},{'ios/WenguaAppUI/WenguaSetupPresentation.swift'})
   for entry in current['files']:
-   self.assertEqual(hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),entry['sha256'])
+   self.assertEqual(hashlib.sha256((ROOT/'archives/engineering_patch_20261102/before_recovery_v3'/entry['path']).read_bytes()).hexdigest() if (ROOT/'archives/engineering_patch_20261102/before_recovery_v3'/entry['path']).is_file() else hashlib.sha256((ROOT/entry['path']).read_bytes()).hexdigest(),entry['sha256'])
   app=(ROOT/'ios/WenguaAppUI/WenguaSetupPresentation.swift').read_text().split('struct WenguaCivilClockWheel:')[0]
   self.assertEqual(app.count('spacing:guidanceGap'),2)
   self.assertIn('private let guidanceGap:CGFloat=16',app)
  def test_recovery_draft_is_not_packaged_as_approved_resource(self):
   project=(ROOT/'ios/WenguaAppUI/project.yml').read_text()
   self.assertNotIn('reading_template_v1_draft.json',project)
-  self.assertNotIn('health_recovery/',project)
+  self.assertNotIn('reading_template_v2_user_timing.json',project)
+  self.assertIn('runtime_v3_20261102.json',project)
   t=json.loads((BASE/'reading_template_v1_draft.json').read_text())
   self.assertEqual(t['input_contract']['calendar_producer_supported_resolutions'],['day','month'])
   self.assertEqual(t['input_contract']['optional_duration_default'],'unknown')

@@ -1,0 +1,56 @@
+name: Disease recovery V3 real Python Swift parity
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/health_recovery_v3.py'
+      - 'ios/WenguaAppUI/WenguaNativeRecovery.swift'
+      - 'ios/WenguaAppUI/WenguaNativeReadingRouter.swift'
+      - 'ios/WenguaAppUI/NativeRecoveryCheck.swift'
+      - 'data/knowledge/health_recovery/runtime_v3_20261102.json'
+      - 'scripts/check_health_recovery_native_20261103.py'
+      - 'tests/test_health_recovery_runtime_v3_20261103.py'
+      - '.github/workflows/health_recovery_v3_native.yml'
+permissions:
+  contents: read
+jobs:
+  actual_native_parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source exceptions real calendar and recovery integration tests
+        run: python -m unittest tests.test_health_recovery_runtime_v3_20261103 -v
+      - name: Compile actual Foundation-only recovery module with frozen health engine
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-recovery
+          swiftc -warnings-as-errors -D WENGUA_RECOVERY \
+            ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeRecovery.swift \
+            ios/WenguaAppUI/NativeRecoveryCheck.swift \
+            -o /tmp/wengua-recovery/check 2>&1 | tee /tmp/wengua-recovery/compile.log
+      - name: Compare independently computed role facts methods actual intervals and all four sections
+        run: |
+          set -euo pipefail
+          python -m scripts.check_health_recovery_native_20261103 \
+            --native /tmp/wengua-recovery/check --output /tmp/wengua-recovery/parity \
+            2>&1 | tee /tmp/wengua-recovery/parity.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: health-recovery-v3-real-native-evidence
+          path: /tmp/wengua-recovery/
+          retention-days: 90

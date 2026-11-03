@@ -1,0 +1,1527 @@
+{
+  "schema": "wengua_health_recovery_runtime_v3",
+  "version": "health.recovery.V3",
+  "source_id": "user_timing_notes_20261102",
+  "source_sha256": "db098ffb881fb1665b05a712ca634974c1365e0e40462b899a986d0dfe546fb5",
+  "status": "implemented_traditional_conditional_not_clinically_validated",
+  "target": "病什么时候好",
+  "rule_refs": {
+    "T001": {
+      "lines": [
+        2,
+        6,
+        7,
+        8,
+        9,
+        112,
+        113,
+        115,
+        120
+      ],
+      "summary": "先确定事件以年、月、日还是时运作及其已知期限；不能只凭宫数猜单位。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T002": {
+      "lines": [
+        2,
+        8,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "summary": "远慢倾向年／月，近快倾向日／时；仍须服从事件已知时间表。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T003": {
+      "lines": [
+        2,
+        103
+      ],
+      "summary": "先确定地支应期，再兼看天干，不把仅有天干候选误作完整干支日期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T004": {
+      "lines": [
+        2,
+        109,
+        110
+      ],
+      "summary": "符应在先、使应在后，需结合确须符／使参与的事件，不能等同一律先取最近值符日期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T005": {
+      "lines": [
+        3,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        110
+      ],
+      "summary": "值符相关的刑冲参合、空亡参填实／出旬；适用前提是用神与符使确有关联。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T006": {
+      "lines": [
+        4,
+        107,
+        108
+      ],
+      "summary": "对天盘六仪所带六甲地支检查冲合，合取冲、冲取合；区分暗支与宫支。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T007": {
+      "lines": [
+        5,
+        107,
+        108
+      ],
+      "summary": "天盘暗支既无冲又无合时，再按星门生克找生／克的触发时间。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T008": {
+      "lines": [
+        10,
+        11
+      ],
+      "summary": "坤未申、巽辰巳等是候选；何时填、何时冲须结合预测起点和期限。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T009": {
+      "lines": [
+        9,
+        10,
+        11,
+        115,
+        120
+      ],
+      "summary": "事件限定当年或当月时，不能选到下一年／月同一支；需要在当前期限内查候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T010": {
+      "lines": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        20,
+        23,
+        56,
+        64,
+        117,
+        123
+      ],
+      "summary": "值使所在宫数可提示时长与范围，不能直接把数当成确定日历日期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T011": {
+      "lines": [
+        14,
+        15,
+        20,
+        21,
+        22,
+        23
+      ],
+      "summary": "有明确事情节奏时以洛书后天宫数为主；不另用五行数替代。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T012": {
+      "lines": [
+        14,
+        15,
+        20
+      ],
+      "summary": "伏吟可延、反吟可提前；兑、坎的举例不是可任意推广的乘除公式。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T013": {
+      "lines": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "summary": "已知分钟级前提、当前时辰内的场面可参值使数；大事件不照搬。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T014": {
+      "lines": [
+        21,
+        22,
+        23
+      ],
+      "summary": "不知道何年何月的事可参先后天数作约量范围，资料没有给出唯一合数算法。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T015": {
+      "lines": [
+        24,
+        25,
+        26,
+        27
+      ],
+      "summary": "先辨领域和具体事件，再绑定应期宫；不能所有领域都只看同一种符号。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T016": {
+      "lines": [
+        27
+      ],
+      "summary": "天气参值符九星，地理风水参宫支，人事工作参八门和值使；这些是入口，不能代替具体事件取用。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T017": {
+      "lines": [
+        28,
+        29,
+        30,
+        31,
+        32,
+        114,
+        119
+      ],
+      "summary": "先绑定被测人和事件，按相关宫之间的作用判断哪个状态才是本次应期点。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T018": {
+      "lines": [
+        28,
+        29,
+        30,
+        31
+      ],
+      "summary": "示例中伤灾参冲克来源兑宫，得财参生助来源坎宫，不能都按日干震宫断卯期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T019": {
+      "lines": [
+        32
+      ],
+      "summary": "事体难以另取专用符号时可参时干；时干数／干仍需事例与时程检验。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T020": {
+      "lines": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "summary": "找工作须分求职者准备状态与工作机会；朋友取月干，开门表示岗位状况及标准，二者共同限定时机。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T021": {
+      "lines": [
+        35,
+        36,
+        37,
+        38,
+        114
+      ],
+      "summary": "岗位或求职者任一尚受空等限制，机会期不自动等于人已能落实；分清哪个条件须先解除。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T022": {
+      "lines": [
+        40
+      ],
+      "summary": "阳遁一八三四为内，九二七六为外；内近快、外远慢。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T023": {
+      "lines": [
+        40
+      ],
+      "summary": "阴遁九二七六为内，一八三四为外；不沿用阳遁分组。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T024": {
+      "lines": [
+        41
+      ],
+      "summary": "星门伏吟空间可近、时间可慢；不能把近与快视作同义。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T025": {
+      "lines": [
+        41
+      ],
+      "summary": "反吟空间可远、时间可快；不因空间远就改成慢。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T026": {
+      "lines": [
+        42,
+        43,
+        44
+      ],
+      "summary": "日干、时干均内偏近快；均外偏远慢；一内一外讲义仍偏远慢。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T027": {
+      "lines": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "summary": "先按已完成的事实判断此事件可成；疾病能愈才转入病愈成功类取期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T028": {
+      "lines": [
+        49
+      ],
+      "summary": "以所选实际用神旺相或当令时段作候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T029": {
+      "lines": [
+        50
+      ],
+      "summary": "确需生扶的对象，以能生扶它的时间作候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T030": {
+      "lines": [
+        51
+      ],
+      "summary": "确需被制的对象，以能制住它的时间作候选；不能混淆患者与病神。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T031": {
+      "lines": [
+        52
+      ],
+      "summary": "所选用神旬空，以填实或冲实作候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T032": {
+      "lines": [
+        53
+      ],
+      "summary": "用神确属入库，以冲库作候选；先辨墓库。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T033": {
+      "lines": [
+        54
+      ],
+      "summary": "用神确逢刑冲，参能合解该对象的时间。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T034": {
+      "lines": [
+        55
+      ],
+      "summary": "相关马星当令或被冲作候选，不等于任意四马支都是该盘马星。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T035": {
+      "lines": [
+        56
+      ],
+      "summary": "数与干提供范围／触发线索，时间单位仍需另定。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T036": {
+      "lines": [
+        57,
+        58
+      ],
+      "summary": "已判不能成的事件另取失败期，不把不利应期倒转成病愈期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T037": {
+      "lines": [
+        59
+      ],
+      "summary": "用神休囚死墓绝时段为该失败目标的候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T038": {
+      "lines": [
+        60
+      ],
+      "summary": "忌神旺且用神受克的时间作失败候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T039": {
+      "lines": [
+        61
+      ],
+      "summary": "此失败类原段仅列填实；与后文一般填冲并存，不能擅自加冲实。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T040": {
+      "lines": [
+        62
+      ],
+      "summary": "按失败目标下的合、刑冲条件取触发。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T041": {
+      "lines": [
+        63
+      ],
+      "summary": "按失败目标查相关马星触发。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T042": {
+      "lines": [
+        64
+      ],
+      "summary": "作为失败事件期限／触发参考，不能改作病愈时间。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T043": {
+      "lines": [
+        65,
+        66,
+        67,
+        100,
+        101
+      ],
+      "summary": "破获、找寻、阻止以庚的阻隔作用定期；好坏随事件，不把庚一律判凶。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T044": {
+      "lines": [
+        68,
+        69
+      ],
+      "summary": "天盘庚加对应地盘年／月／日／时干，分别指该年／月／日／时内的范围。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T045": {
+      "lines": [
+        70
+      ],
+      "summary": "日干为用、无直接庚格，阴干查地盘庚上的天干。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T046": {
+      "lines": [
+        70
+      ],
+      "summary": "日干为用、无直接庚格，阳干查天盘庚下的地盘干。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T047": {
+      "lines": [
+        71
+      ],
+      "summary": "时干为用且无直接格，阴星查庚上；阴阳星分类须有另行来源。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T048": {
+      "lines": [
+        71
+      ],
+      "summary": "时干为用且无直接格，阳星查庚下；不把取干直接变作已知日期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T049": {
+      "lines": [
+        72
+      ],
+      "summary": "庚格所在实际宫逢空，则该庚格不成立。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T050": {
+      "lines": [
+        72
+      ],
+      "summary": "庚与乙在同一层同现而合，削弱阻隔而不成该格；不能跨层拼成。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T051": {
+      "lines": [
+        73,
+        74
+      ],
+      "summary": "本段先查用神宫空亡，填或冲按先遇；有其他状态也先处理空。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T052": {
+      "lines": [
+        73,
+        74,
+        77,
+        89,
+        91,
+        92,
+        95
+      ],
+      "summary": "在同一事件期限和同一单位下，按真实预测时间向前找符合条件的先遇，不循环选已过去的月份。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T053": {
+      "lines": [
+        74,
+        77
+      ],
+      "summary": "四正、四马、四库的用事时间可细分丑／寅或交接段，需先明确“用事时间”取哪一时间层。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T054": {
+      "lines": [
+        74
+      ],
+      "summary": "坎子例随用事三组有子期、亥子交接或子丑交接的前后差异，不强缩成单日。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T055": {
+      "lines": [
+        75,
+        76
+      ],
+      "summary": "顺转填冲与逆转／反跳有别，后两类另有空宫天盘干再现候选；原文只称不少情况，不能当必然替代。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T056": {
+      "lines": [
+        77
+      ],
+      "summary": "明确不空而临相关马星，查冲马或马动的先遇；同气可影响候选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T057": {
+      "lines": [
+        78,
+        79
+      ],
+      "summary": "不空、不临马时，实际墓库条件可参冲墓或入墓，方向须看事体。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T058": {
+      "lines": [
+        79
+      ],
+      "summary": "回款示例取开墓，老年病危示例另取入墓的不利期；病危不直接转成病愈。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T059": {
+      "lines": [
+        79
+      ],
+      "summary": "辰戌丑未月日时可能交杂，同气和季节交接使精确层次待核；须呈现不确定。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T060": {
+      "lines": [
+        80
+      ],
+      "summary": "已排除空、马、墓后，实际刑冲参合解；不是只见六仪名称就取合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T061": {
+      "lines": [
+        81,
+        82
+      ],
+      "summary": "午午、辰辰等暗支自刑举例参合解，记录辛、壬的寄干背景与疑字。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T062": {
+      "lines": [
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "summary": "分清外来六甲暗支和本宫支，逐个保留击刑例外，不统一套六合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T063": {
+      "lines": [
+        84
+      ],
+      "summary": "甲寅癸巽例以墓重于刑，不能先套寅亥合；墓的层次和定义需核。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T064": {
+      "lines": [
+        85
+      ],
+      "summary": "普通用神甲子戊震例常参卯戌合，也列子午冲，并非一概子丑合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T065": {
+      "lines": [
+        86
+      ],
+      "summary": "甲戌己坤例列辰期与沐浴类比，不能凭一句话改墓表或所有己土规则。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T066": {
+      "lines": [
+        86,
+        90
+      ],
+      "summary": "庚艮例并有墓、刑、马之地，需事体与当前时间合参申／丑／寅等，不能仅取巳。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T067": {
+      "lines": [
+        87
+      ],
+      "summary": "甲辰壬巽例可能入墓为应，不能无条件等到辰酉合；保留原文疑字。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T068": {
+      "lines": [
+        88,
+        89
+      ],
+      "summary": "戊辛子午、壬己辰戌、庚癸寅申冲分组保留，不与一般十干相冲混同。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T069": {
+      "lines": [
+        88,
+        89
+      ],
+      "summary": "辛与地盘戊所成冲格例可取丙辛合的干期，不只枚举地支六合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T070": {
+      "lines": [
+        89
+      ],
+      "summary": "辰戌争执例可参合走其中一方，按当前时间看哪一方能先被合解。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T071": {
+      "lines": [
+        90,
+        91,
+        92
+      ],
+      "summary": "六个寄干落宫冲例分别检查，不把所有候选合支一并当确定期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T072": {
+      "lines": [
+        90
+      ],
+      "summary": "庚艮、癸坤在该段转按墓／冲墓，不先套普通冲合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T073": {
+      "lines": [
+        91,
+        92
+      ],
+      "summary": "甲子戊离例的丑／未依当前巳／酉等时间筛选，已过去的合期不得倒用。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T074": {
+      "lines": [
+        93
+      ],
+      "summary": "在该段适用前提下，逢合可参冲开；若另有刑冲同现，资料未给完整互斥表。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T075": {
+      "lines": [
+        94,
+        95
+      ],
+      "summary": "戊癸、庚乙、辛丙、壬丁及逆序组作为合格线索，须保留层序与实际用神。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T076": {
+      "lines": [
+        95
+      ],
+      "summary": "丁壬震例参兑宫时段的冲，不等于任意干合都直接取宫数。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T077": {
+      "lines": [
+        95,
+        96
+      ],
+      "summary": "天干合或暗支合的冲候选有多方，按上下文与先遇筛选。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T078": {
+      "lines": [
+        96
+      ],
+      "summary": "六甲暗支与宫支合时，讲义强调外来暗支的冲较常应、本宫支不易冲走；不把所有对冲平权。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T079": {
+      "lines": [
+        97
+      ],
+      "summary": "无前述限制时，依事件方向和用神需要查生旺墓绝、生逢生、克逢克。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T080": {
+      "lines": [
+        98
+      ],
+      "summary": "伏吟局可参冲期，仍合参具体应事用神与上位条件，不能只按局名定日。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T081": {
+      "lines": [
+        98
+      ],
+      "summary": "反吟局可参合期，不能无视空、马、墓及符使适用背景。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T082": {
+      "lines": [
+        99
+      ],
+      "summary": "日支、时支的合刑冲克害仅列参考，不能自动提为主应期。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T083": {
+      "lines": [
+        100,
+        101
+      ],
+      "summary": "非阻截领域只有应事用神恰临相应庚格时才作特殊候选；找工作庚加月干例保留为条件例。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T084": {
+      "lines": [
+        104
+      ],
+      "summary": "六甲值符落对冲宫的例子，按值符外来支之合定期，不混普通用神的另一段例外。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T085": {
+      "lines": [
+        105
+      ],
+      "summary": "甲戌坤、甲子震、甲寅巽的值符刑例按外来支参合。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T086": {
+      "lines": [
+        106
+      ],
+      "summary": "值符落旬空按出旬、空支填实及阴阳比的原段说明；不是普通宫空任意冲填的完全同义。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T087": {
+      "lines": [
+        107,
+        108
+      ],
+      "summary": "在已排除值符冲、刑、空后查天盘六仪暗支冲合，再无冲合才查星门生克。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T088": {
+      "lines": [
+        110
+      ],
+      "summary": "确需值符／值使办的事才提升相应落宫；这不是值使宫数定时长的同一个方法。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T089": {
+      "lines": [
+        111
+      ],
+      "summary": "用神和值使同宫可有已启动／宜执行之象，但值使空或墓则不能据此认定已经发生。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T090": {
+      "lines": [
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "summary": "判断只在对应事件阶段和时限内有效；过期不能沿用原局推到无限未来。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T091": {
+      "lines": [
+        116,
+        117,
+        122,
+        123
+      ],
+      "summary": "九天内的机会范围不等于第九天必发生；区分有效期限与选定的候选时间。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    },
+    "T092": {
+      "lines": [
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "summary": "同一事反复起局容易混乱；整体与现阶段意义要分开，不改既有15天产品限制。",
+      "evidence_level": "user_supplied_explicit_or_contextual_statement"
+    }
+  },
+  "calendar": {
+    "method": "strict_utc_moshier_2025_2040_v2",
+    "crossings_utc_ms": [
+      1736044366945,
+      1737316808263,
+      1738591828922,
+      1739873194714,
+      1741162036988,
+      1742461289361,
+      1743770913703,
+      1745092560987,
+      1746424631370,
+      1747767278151,
+      1749117391446,
+      1750473736475,
+      1751832300145,
+      1753190968379,
+      1754545895660,
+      1755894832442,
+      1757235116345,
+      1758565160085,
+      1759884071133,
+      1761191455386,
+      1762488242671,
+      1763775334923,
+      1765055075166,
+      1766329385075,
+      1767601389286,
+      1768873495710,
+      1770148928051,
+      1771429915780,
+      1772719139894,
+      1774017958291,
+      1775328000061,
+      1776649147279,
+      1777981724073,
+      1779323804382,
+      1780674502081,
+      1782030270812,
+      1783389417895,
+      1784747585428,
+      1786102964817,
+      1787451528637,
+      1788792077367,
+      1790121913297,
+      1791440958239,
+      1792748276539,
+      1794045124819,
+      1795332201139,
+      1796611952429,
+      1797886214539,
+      1799158197906,
+      1800430191096,
+      1801705578134,
+      1802986409344,
+      1804275572042,
+      1805574282586,
+      1806884250017,
+      1808205458316,
+      1809537911611,
+      1810880294770,
+      1812230748831,
+      1813587050473,
+      1814945824450,
+      1816304680622,
+      1817659606884,
+      1819008859508,
+      1820348906440,
+      1821679302990,
+      1822997824277,
+      1824305572117,
+      1825601913753,
+      1826889373641,
+      1828168660481,
+      1829443329414,
+      1830714878523,
+      1831987315595,
+      1833262274193,
+      1834543561385,
+      1835832289002,
+      1837131429686,
+      1838440987153,
+      1839762570548,
+      1841094732396,
+      1842437389644,
+      1843787760540,
+      1845144121152,
+      1846503018989,
+      1847861639938,
+      1849216870698,
+      1850565656663,
+      1851906129919,
+      1853235919372,
+      1854554910520,
+      1855862002498,
+      1857158835547,
+      1858445663015,
+      1859725480283,
+      1860999580462,
+      1862271714831,
+      1863543653170,
+      1864819246007,
+      1866100075850,
+      1867389455899,
+      1868688119260,
+      1869998302344,
+      1871319342946,
+      1872652065874,
+      1873994152800,
+      1875344998649,
+      1876700898158,
+      1878060144709,
+      1879418526053,
+      1880773905180,
+      1882122697085,
+      1883463114311,
+      1884793110511,
+      1886111887802,
+      1887419287644,
+      1888715805488,
+      1890002963206,
+      1891282427785,
+      1892556847176,
+      1893828634309,
+      1895100863074,
+      1896376108019,
+      1897657196735,
+      1898946198947,
+      1900245126538,
+      1901554861549,
+      1902876215889,
+      1904208378792,
+      1905550865535,
+      1906901070305,
+      1908257479232,
+      1909616129387,
+      1910975094257,
+      1912330040343,
+      1913679384361,
+      1915019569954,
+      1916350013236,
+      1917668715787,
+      1918976433552,
+      1920272923424,
+      1921560275968,
+      1922839657227,
+      1924114177721,
+      1925385788163,
+      1926658077909,
+      1927933098104,
+      1929214254705,
+      1930503061325,
+      1931802058276,
+      1933111702620,
+      1934433074744,
+      1935765311817,
+      1937107676431,
+      1938458142597,
+      1939814228772,
+      1941173330934,
+      1942531827699,
+      1943887375864,
+      1945236198938,
+      1946577010344,
+      1947906919212,
+      1949226178109,
+      1950533367125,
+      1951830339720,
+      1953117156802,
+      1954396972815,
+      1955670933005,
+      1956942965549,
+      1958214677614,
+      1959490136890,
+      1960770732858,
+      1962060012975,
+      1963358513531,
+      1964668655808,
+      1965989648229,
+      1967322352496,
+      1968664500211,
+      1970015280312,
+      1971371326621,
+      1972730455607,
+      1974089085003,
+      1975444362725,
+      1976793499080,
+      1978133872727,
+      1979464251999,
+      1980783022861,
+      1982090773707,
+      1983387256187,
+      1984674671831,
+      1985953999776,
+      1987228556468,
+      1988500087071,
+      1989772367154,
+      1991047295215,
+      1992328427834,
+      1993617139934,
+      1994916162430,
+      1996225686296,
+      1997547186839,
+      1998879225805,
+      2000221858574,
+      2001572006519,
+      2002928468766,
+      2004287097350,
+      2005645969258,
+      2007000944978,
+      2008350111380,
+      2009690421394,
+      2011020700538,
+      2012339635533,
+      2013647256053,
+      2014944064091,
+      2016231369489,
+      2017511095477,
+      2018785559382,
+      2020057470598,
+      2021329636524,
+      2022604868770,
+      2023885810843,
+      2025174742592,
+      2026473448822,
+      2027783173485,
+      2029104222518,
+      2030436548633,
+      2031778613138,
+      2033129200945,
+      2034485052023,
+      2035844258598,
+      2037202581155,
+      2038558145937,
+      2039906865136,
+      2041247638874,
+      2042577573710,
+      2043896827430,
+      2045204187270,
+      2046501220085,
+      2047788297510,
+      2049068208656,
+      2050342439001,
+      2051614541487,
+      2052886455296,
+      2054161893260,
+      2055442569619,
+      2056731697656,
+      2058030163218,
+      2059340030610,
+      2060660938391,
+      2061993295522,
+      2063335406669,
+      2064685849984,
+      2066041988220,
+      2067400870046,
+      2068759721491,
+      2070114860947,
+      2071464250043,
+      2072804550078,
+      2074135136532,
+      2075453861131,
+      2076761770118,
+      2078058230954,
+      2079345793109,
+      2080625130961,
+      2081899852096,
+      2083171409766,
+      2084443861563,
+      2085718794860,
+      2087000056684,
+      2088288709409,
+      2089587770423,
+      2090897176258,
+      2092218629365,
+      2093550563046,
+      2094893092819,
+      2096243219725,
+      2097599534011,
+      2098958252577,
+      2100316960703,
+      2101672134637,
+      2103021143740,
+      2104361698187,
+      2105691798917,
+      2107010937865,
+      2108318330021,
+      2109615278549,
+      2110902317436,
+      2112182160499,
+      2113456372176,
+      2114728442750,
+      2116000424357,
+      2117275897279,
+      2118556735287,
+      2119845971570,
+      2121144616031,
+      2122454642151,
+      2123775618713,
+      2125108167473,
+      2126450127023,
+      2127800809865,
+      2129156545251,
+      2130515708308,
+      2131873955687,
+      2133229383088,
+      2134578121458,
+      2135918734674,
+      2137248784556,
+      2138567869378,
+      2139875392227,
+      2141172244874,
+      2142459503909,
+      2143739238466,
+      2145013664951,
+      2146285607547,
+      2147557729969,
+      2148833026938,
+      2150113927488,
+      2151402929737,
+      2152701638319,
+      2154011368304,
+      2155332512000,
+      2156664671501,
+      2158006961558,
+      2159357137711,
+      2160713363185,
+      2162071950848,
+      2163430793792,
+      2164785678001,
+      2166135008295,
+      2167475176838,
+      2168805736237,
+      2170124494943,
+      2171432441627,
+      2172729051621,
+      2174016679518,
+      2175296183592,
+      2176570939839,
+      2177842599897,
+      2179115020226,
+      2180389974460,
+      2181671144422,
+      2182959782459,
+      2184258722232,
+      2185568147606,
+      2186889467588,
+      2188221488840,
+      2189563853202,
+      2190914128920,
+      2192270244643,
+      2193629168249,
+      2194987689038,
+      2196343085429,
+      2197691919031,
+      2199032642576,
+      2200362575946,
+      2201681836872,
+      2202989103421,
+      2204286174408,
+      2205573132198,
+      2206853106040,
+      2208127236165,
+      2209399416360,
+      2210671262957,
+      2211946792576,
+      2213227428428,
+      2214516673098,
+      2215815100766,
+      2217125130229,
+      2218445972758,
+      2219778560904,
+      2221120543328,
+      2222471282054,
+      2223827183230,
+      2225186354118,
+      2226544849148,
+      2227900202461,
+      2229249199075,
+      2230589646097,
+      2231919894744,
+      2233238730995,
+      2234546383826,
+      2235842957528,
+      2237130330154,
+      2238409802867,
+      2239684370770,
+      2240956087976
+    ],
+    "first_term_index": 1,
+    "day_anchor": "1995-06-11",
+    "day_anchor_ganzhi": "癸酉",
+    "day_boundary": "civil_midnight",
+    "late_zi": "hour_23_not_supported_no_cross_midnight_zi_forecast"
+  },
+  "tables": {
+    "branches": [
+      "子",
+      "丑",
+      "寅",
+      "卯",
+      "辰",
+      "巳",
+      "午",
+      "未",
+      "申",
+      "酉",
+      "戌",
+      "亥"
+    ],
+    "stems": [
+      "甲",
+      "乙",
+      "丙",
+      "丁",
+      "戊",
+      "己",
+      "庚",
+      "辛",
+      "壬",
+      "癸"
+    ],
+    "palace_branches": {
+      "1": [
+        "子"
+      ],
+      "2": [
+        "未",
+        "申"
+      ],
+      "3": [
+        "卯"
+      ],
+      "4": [
+        "辰",
+        "巳"
+      ],
+      "6": [
+        "戌",
+        "亥"
+      ],
+      "7": [
+        "酉"
+      ],
+      "8": [
+        "丑",
+        "寅"
+      ],
+      "9": [
+        "午"
+      ]
+    },
+    "hidden": {
+      "戊": "子",
+      "己": "戌",
+      "庚": "申",
+      "辛": "午",
+      "壬": "辰",
+      "癸": "寅"
+    },
+    "join": {
+      "子": "丑",
+      "丑": "子",
+      "寅": "亥",
+      "亥": "寅",
+      "卯": "戌",
+      "戌": "卯",
+      "辰": "酉",
+      "酉": "辰",
+      "巳": "申",
+      "申": "巳",
+      "午": "未",
+      "未": "午"
+    },
+    "clash": {
+      "子": "午",
+      "丑": "未",
+      "寅": "申",
+      "卯": "酉",
+      "辰": "戌",
+      "巳": "亥",
+      "午": "子",
+      "未": "丑",
+      "申": "寅",
+      "酉": "卯",
+      "戌": "辰",
+      "亥": "巳"
+    },
+    "stem_join": {
+      "甲": "己",
+      "乙": "庚",
+      "丙": "辛",
+      "丁": "壬",
+      "戊": "癸",
+      "己": "甲",
+      "庚": "乙",
+      "辛": "丙",
+      "壬": "丁",
+      "癸": "戊"
+    },
+    "stem_elements": {
+      "甲": "木",
+      "乙": "木",
+      "丙": "火",
+      "丁": "火",
+      "戊": "土",
+      "己": "土",
+      "庚": "金",
+      "辛": "金",
+      "壬": "水",
+      "癸": "水"
+    },
+    "branch_elements": {
+      "子": "水",
+      "丑": "土",
+      "寅": "木",
+      "卯": "木",
+      "辰": "土",
+      "巳": "火",
+      "午": "火",
+      "未": "土",
+      "申": "金",
+      "酉": "金",
+      "戌": "土",
+      "亥": "水"
+    },
+    "star_elements": {
+      "天芮星": "土",
+      "天心星": "金"
+    },
+    "palace_elements": {
+      "1": "水",
+      "2": "土",
+      "3": "木",
+      "4": "木",
+      "6": "金",
+      "7": "金",
+      "8": "土",
+      "9": "火"
+    },
+    "generated_by": {
+      "木": "水",
+      "火": "木",
+      "土": "火",
+      "金": "土",
+      "水": "金"
+    },
+    "strong_cells": [
+      "有效克制",
+      "高效克制",
+      "强力主克",
+      "绝对主克",
+      "极限压制",
+      "有效主克",
+      "完全清除"
+    ],
+    "ordinary_punishment": {
+      "戊:3": [
+        "戌",
+        "午"
+      ],
+      "己:2": [
+        "辰"
+      ],
+      "庚:8": [
+        "申",
+        "丑",
+        "寅"
+      ],
+      "辛:9": [
+        "未"
+      ],
+      "壬:4": [
+        "戌"
+      ],
+      "癸:4": [
+        "戌"
+      ]
+    },
+    "timing_tombs": {
+      "戊:6": [
+        "戌"
+      ],
+      "己:8": [
+        "丑"
+      ],
+      "庚:8": [
+        "丑"
+      ],
+      "辛:4": [
+        "辰"
+      ],
+      "壬:4": [
+        "辰"
+      ],
+      "癸:2": [
+        "未"
+      ],
+      "癸:4": [
+        "辰"
+      ]
+    },
+    "home_stars": {
+      "天蓬星": 1,
+      "天芮星": 2,
+      "天冲星": 3,
+      "天辅星": 4,
+      "天心星": 6,
+      "天柱星": 7,
+      "天任星": 8,
+      "天英星": 9
+    },
+    "home_doors": {
+      "休门": 1,
+      "死门": 2,
+      "伤门": 3,
+      "杜门": 4,
+      "开门": 6,
+      "惊门": 7,
+      "生门": 8,
+      "景门": 9
+    },
+    "opposite": {
+      "1": 9,
+      "2": 8,
+      "3": 7,
+      "4": 6,
+      "6": 4,
+      "7": 3,
+      "8": 2,
+      "9": 1
+    }
+  },
+  "policy": {
+    "support_roles": [
+      "doctor",
+      "medicine",
+      "patient",
+      "hour",
+      "chief",
+      "gender",
+      "sibling",
+      "natal"
+    ],
+    "success_requires_effective_control": true,
+    "net_grade_is_not_recovery_premise": true,
+    "void_flow_unknown_retains_stem_alternative": true,
+    "unit_unknown_compute_day_and_month_separately": true,
+    "maximum_windows_per_scale": 3,
+    "horizons": {
+      "hour": 7,
+      "day": 60,
+      "month": 740,
+      "year": 4383
+    },
+    "role_priority": [
+      "doctor",
+      "medicine",
+      "patient",
+      "hour",
+      "chief",
+      "gender",
+      "sibling",
+      "natal"
+    ],
+    "same_qi_not_generalized_from_examples": true,
+    "number_duration_not_cure_date": true
+  },
+  "text": {
+    "titles": [
+      "病愈时间",
+      "应期缓急",
+      "取期依据",
+      "综合断语"
+    ],
+    "role_names": {
+      "doctor": "天心医生",
+      "medicine": "乙奇医药",
+      "patient": "患者用神",
+      "hour": "时干事体",
+      "chief": "值符护持",
+      "gender": "长辈辅助",
+      "sibling": "手足辅助",
+      "natal": "年命辅助"
+    },
+    "units": {
+      "day": "日",
+      "month": "月",
+      "hour": "时",
+      "year": "年"
+    },
+    "premise_missing": "本盘尚无条件完整的有效制病依据，暂不能确定病愈时间。",
+    "premise_conflict": "本盘同时存在有效制病与病宫制患者的相反依据，暂不取定病愈时段。",
+    "method_conflict": "相关用神同时存在刑冲与合，取期方法有分歧，暂不合成单一病愈时段。",
+    "no_candidate": "在本次检索期限内未找到条件相合的候选期，暂不定病愈日期。",
+    "precision_missing": "所需历法精度或时间范围尚无完整依据，暂不强定具体日期。",
+    "flow_conflict": "用神逢空，但顺逆转／反跳的取法尚未确定；冲填与天盘干再临分别保留，暂不取定单一病愈时段。",
+    "unknown_axis": "病程的时间单位尚未明确，以下日、月候选分别成立，不能合并为确定病愈日期。",
+    "known_axis": "本次依据已知时间脉络，按{unit}取期。",
+    "scale_line": "按{unit}看：{windows}。",
+    "support": "{role}在{palace}宫，已有{cell}的制病依据。",
+    "conditions": "以该制病关系持续有效、患者相关限制得到解除为成立条件。",
+    "summary": "恢复转机重点观察上述条件候选期；仍须以实际恢复情况核实。",
+    "footer": "以上为传统应期参考，需以实际恢复情况核实。",
+    "not_ready_summary": "目前尚不能取定明确病愈时间。",
+    "method_names": {
+      "void": "旬空冲填",
+      "horse": "马星当令或逢冲",
+      "tomb": "冲开相关墓库",
+      "punishment": "刑冲逢合及原文特例",
+      "clash": "暗支相冲逢合",
+      "combination": "合局逢冲",
+      "fuyin": "伏吟参冲",
+      "fanyin": "反吟参合",
+      "growth": "用神得令生扶",
+      "stem_recurrence": "空宫天盘干再临"
+    },
+    "role_method": "{role}在{palace}宫，实见{fact}，取{method}，候选{branches}。",
+    "fact_names": {
+      "void": "旬空",
+      "horse": "本宫驿马",
+      "tomb": "相关墓库",
+      "punishment": "刑冲",
+      "clash": "暗支相冲",
+      "combination": "合局",
+      "fuyin": "伏吟",
+      "fanyin": "反吟",
+      "growth": "无前列限制",
+      "stem_recurrence": "空宫天盘干"
+    },
+    "window_zone": "以下均为{zone}当地时间，区间以起点为含、终点为不含。"
+  },
+  "limitations": [
+    "资料来源与特殊取法仍为可审研究规则，不代表现实医疗预测有效性。",
+    "顺逆转／反跳识别、同气过渡边界及先后天合数没有完整算法；遇相关歧义明确输出未决，不臆造日期。",
+    "不输出病重不治或死亡日期，不把失败类／截获类时间套作病愈。"
+  ]
+}

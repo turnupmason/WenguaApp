@@ -32,6 +32,9 @@ struct WenguaNativeCustomerReading: Codable {
     var timingGradeScope: String? = nil
     var timingReferenceSections: [WenguaNativeCustomerSection]? = nil
     var timingReferenceVersion: String? = nil
+    var recoveryState: String? = nil
+    var recoveryWindows: [String]? = nil
+    var recoverySourceVersion: String? = nil
 
     var resolvedHealthGrade: String? {
         guard topicID == "health.severity",
@@ -71,19 +74,20 @@ enum WenguaGradeScale {
 }
 
 struct WenguaDomainContract {
-    enum Capability: Equatable { case healthSeverity, healthLocation, chartOnly, electiveReserved, legacyOnly }
+    enum Capability: Equatable { case healthSeverity, healthLocation, healthRecovery, chartOnly, electiveReserved, legacyOnly }
     let domainID: String
     let topicID: String
     let capability: Capability
     var canCast: Bool { capability != .legacyOnly }
-    var interpretationReady: Bool { capability == .healthSeverity || capability == .healthLocation }
+    var interpretationReady: Bool { capability == .healthSeverity || capability == .healthLocation || capability == .healthRecovery }
     var acceptsPlannedTime: Bool { capability == .electiveReserved }
     var acceptsCurrentTime: Bool { canCast && capability != .electiveReserved }
-    var gradeScope: String? { interpretationReady ? "health.severity.V9/V11" : nil }
+    var gradeScope: String? { (capability == .healthSeverity || capability == .healthLocation) ? "health.severity.V9/V11" : nil }
     var selectedRoleIDs: [String] {
         switch capability {
         case .healthSeverity: return ["illness","doctor","medicine","patient","hour","chief","natal_if_provided","qualified_auxiliary"]
         case .healthLocation: return ["illness","patient","hour","injury_if_selected"]
+        case .healthRecovery: return ["illness","patient","doctor","medicine","hour","qualified_effective_control"]
         default: return [] // Await each domain's reviewed template; never copy health roles.
         }
     }
@@ -106,7 +110,8 @@ struct WenguaDomainContract {
         if key=="elective" {capability = .electiveReserved}
         else if topic=="health.severity" {capability = .healthSeverity}
         else if topic=="health.discomfort" {capability = .healthLocation}
-        else if ["health.treatment","health.recovery"].contains(topic) {capability = .chartOnly}
+        else if topic=="health.recovery" {capability = .healthRecovery}
+        else if topic=="health.treatment" {capability = .chartOnly}
         else if let count=ordinaryTopicCounts[domain],let index=Int(key),index>=0,index<count {
             capability = .chartOnly
         } else {return nil}
@@ -114,7 +119,7 @@ struct WenguaDomainContract {
     }
     func approvedGrade(primary: WenguaNativeCustomerReading,
                        reference: WenguaNativeCustomerReading) -> String? {
-        guard interpretationReady, reference.topicID=="health.severity",
+        guard interpretationReady, gradeScope != nil, reference.topicID=="health.severity",
               primary.topicID==topicID, reference.iso==primary.iso,
               reference.relationship==primary.relationship else {return nil}
         return reference.resolvedHealthGrade
@@ -162,6 +167,12 @@ enum WenguaNativeReadingRouter {
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
                         inquiry:WenguaNativeInquiry? = nil,
                         bundle:Bundle = .main) throws -> WenguaNativeCustomerReading {
+        #if canImport(UIKit) || WENGUA_RECOVERY
+        if topicID=="health.recovery" {
+            return try WenguaNativeRecovery.compose(chart:chart,relationship:relationship,
+                                                    inquiry:inquiry,bundle:bundle)
+        }
+        #endif
         guard ["health.severity","health.discomfort"].contains(topicID) else {
             throw WenguaNativeReadingError.unsupportedTopic
         }

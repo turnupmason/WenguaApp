@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_engineering_p9",
+  "release_id": "wengua_two_health_topics_frozen_20261102_recovery_integration_p10",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -56,7 +56,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "kind": "source",
-      "sha256": "72f1073c4db669ce7027faff7762e72497c05d99afe0049cc00c77bc6ad45a19"
+      "sha256": "40dbe956eafcf0ca6106428fbdf31b00b531f2c50e7d1abbef9668eda933049a"
     },
     {
       "path": "ios/WenguaAppUI/WenguaPalacePowerDetail.swift",
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "81726acf222e6e7ddc50f8be92e09aefc66d5cfcc54401e349961ec3e40b1dd0"
+      "sha256": "c1c9f1196a4b28d58195d77eecde58db8b12728ecaf6523577eabd24bdb84a55"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -91,7 +91,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "kind": "source",
-      "sha256": "57c2c93169b06156d38e59b8c944a8ec656dd961bfc119afc968b1f2167bb795"
+      "sha256": "2c5d656b87a8d094264bcbc455e37181568d3e6a6d29c19f3a9ad9b9ed78ee7c"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
@@ -176,7 +176,7 @@
     {
       "path": "ios/WenguaAppUI/project.yml",
       "kind": "source",
-      "sha256": "48b0f3f2e679d8ab1fdfd84e122039f597132c45dfa765c5026277790d5f6a67"
+      "sha256": "c1e6cb4d21124f2cd4aa058f8e5a539f178f3f611697189d3cd97d1638bf6603"
     },
     {
       "path": "ios/WenguaAppUI/WenguaMeditationView.swift",
@@ -202,12 +202,22 @@
       "path": "ios/WenguaAppUI/WenguaSetupPresentation.swift",
       "kind": "source",
       "sha256": "d09005434573c402eaa482d76c89d1d0fce29983cdb505d2a78b40ce9fddf66a"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeRecovery.swift",
+      "kind": "source",
+      "sha256": "8d25f7fcf29358cdb4a358b880cedb76a53f6b80bdb7cbb6a117afdcba72f35e"
+    },
+    {
+      "path": "data/knowledge/health_recovery/runtime_v3_20261102.json",
+      "kind": "resource",
+      "sha256": "e1cd067a9f9c43b1ae83db29c054e59b098c7bf141efe012e108eec7b3ffad90"
     }
   ],
   "engineering_patch": {
-    "id": "p9_equal_preparation_guidance_gaps",
-    "authorization": "User corrects previous request: center current-time guidance vertically between the two headings, then start disease recovery timing template.",
-    "scope": "Only shared equal vertical spacing in WenguaPreparationCard; recovery draft stays outside approved resources and is not App-enabled.",
-    "prior_manifest_sha256": "69f6ffc9ca788881d5e66a2594d752c2b7c490f98dbce3933100c03025111a93"
+    "id": "p10_health_recovery_independent_runtime",
+    "authorization": "User 2026-11-03: 全部接通。 Authorizes disease recovery engine, native entry, rendering and offline resources.",
+    "scope": "Sealed severity V9/V11 and body-site V27 math/templates/7 original resources stay exact. Add independent recovery V3 source and runtime; enable third health topic without sharing health grade.",
+    "prior_manifest_sha256": "e08ba7bdb48116c6a64589a5709579ba83c650362e5b9fff78c33c3fb8288364"
   }
 }

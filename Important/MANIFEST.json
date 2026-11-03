@@ -427,7 +427,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/project.yml",
       "snapshot": "Important/swift/project/project.yml",
-      "sha": "28364c61ba92089a1978d4303169aa2c070f612e"
+      "sha": "2cef916f13bb0fe9735b7999eae81f1e795fd654"
     },
     {
       "platform": "swift",
@@ -445,7 +445,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
       "snapshot": "Important/swift/ui/WenguaDesignPreviewApp.swift",
-      "sha": "eb6fc21a4eaa5d8e5df72fd747cc1186c0d8371f"
+      "sha": "9ec79091da662ac1e74291e1a98fba1756ff4ba8"
     },
     {
       "platform": "swift",
@@ -487,7 +487,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "snapshot": "Important/swift/engine/WenguaNativeReadingRouter.swift",
-      "sha": "9b3efb57649a9ace9f192bed96c39a14673a7dc2"
+      "sha": "734946a2c3e0554e8e27b3270aaa8a61520f2d70"
     },
     {
       "platform": "swift",
@@ -535,7 +535,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "snapshot": "Important/swift/ui/WenguaPremiumReadingView.swift",
-      "sha": "4f44060939f1c95be3aa58d0456bf518a8ebd151"
+      "sha": "9cd13a21d2f6df0dad4ab296fb2abd05f72ebfc5"
     },
     {
       "platform": "swift",
@@ -739,7 +739,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ios_v80_xcode_simulator_build.yml",
       "snapshot": "Important/python/ci/ios_v80_xcode_simulator_build.yml",
-      "sha": "0c0580353531a499119a15ae700c0c6a238be84c"
+      "sha": "e7e28a42e1b2644e42f75ede829ffac393529d51"
     },
     {
       "platform": "python",
@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "1e3f968d406126c944f0da82866d7ce4d3fbacf4"
+      "sha": "f4344c1fadf679cf517424028d40f69b0215a69c"
     },
     {
       "platform": "python",
@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "0da0b6124aa2a794b2e889167cd201ac6930144a"
+      "sha": "bdc4aed57dcab5d1aed82c042d3847cc0285c537"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "0da0b6124aa2a794b2e889167cd201ac6930144a"
+      "sha": "bdc4aed57dcab5d1aed82c042d3847cc0285c537"
     },
     {
       "platform": "python",
@@ -955,7 +955,7 @@
       "platform": "python",
       "canonical": "tests/test_health_recovery_template_v1_20261102.py",
       "snapshot": "Important/python/tests/test_health_recovery_template_v1_20261102.py",
-      "sha": "aaeb6a7f987f6552f14ee6f9f1989b066c1ea504"
+      "sha": "be541f409881208ffd8e86b15d3395b712c37033"
     },
     {
       "platform": "python",
@@ -1046,6 +1046,54 @@
       "canonical": "data/knowledge/health_recovery/reading_template_v2_user_timing.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/reading_template_v2_user_timing.json",
       "sha": "344f0f95492e229441053f107bf0706ad6052206"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/health_recovery_v3.py",
+      "snapshot": "Important/python/engine/health_recovery_v3.py",
+      "sha": "5cc802770c36312fb68815930473461daaab5386"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_health_recovery_native_20261103.py",
+      "snapshot": "Important/python/scripts/check_health_recovery_native_20261103.py",
+      "sha": "cb154a30d0d0cd5e16ef6852aa64a6591f5cbf29"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_health_recovery_runtime_v3_20261103.py",
+      "snapshot": "Important/python/tests/test_health_recovery_runtime_v3_20261103.py",
+      "sha": "94a20307520299a1f9a791d0c8e08320e0583fde"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/runtime_v3_20261102.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/runtime_v3_20261102.json",
+      "sha": "5a127ddee1f941a04877dca393d3d9f3c7daba66"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/WenguaNativeRecovery.swift",
+      "snapshot": "Important/swift/engine/WenguaNativeRecovery.swift",
+      "sha": "b6419f18cd97a363ef82d8919067e83808633362"
+    },
+    {
+      "platform": "swift",
+      "canonical": "ios/WenguaAppUI/NativeRecoveryCheck.swift",
+      "snapshot": "Important/swift/validation/NativeRecoveryCheck.swift",
+      "sha": "765223e2ad002cf2fb58b5598c77cebb3052469c"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/health_recovery_v3_native.yml",
+      "snapshot": "Important/python/ci/health_recovery_v3_native.yml",
+      "sha": "d2a53e7061c45812fcf31d6f4e5481314f963ff8"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/health_recovery/active_release.json",
+      "snapshot": "Important/python/data/knowledge/health_recovery/active_release.json",
+      "sha": "991bed5fc1977b11679fba62f3232c1d5cd12932"
     }
   ]
 }

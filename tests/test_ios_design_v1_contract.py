@@ -157,7 +157,8 @@ class V3SourceUI(unittest.TestCase):
     def test_consumer_entry_has_fifteen_domains_one_explicitly_supported_topic(self):
         self.assertEqual(len(re.findall(r'^\s*domain\("',self.swift,re.M)),14)
         self.assertIn('QuestionDomain(id:"health"',self.swift)
-        self.assertEqual(self.swift.count('enabled:true'),2)
+        self.assertEqual(self.swift.count('enabled:true'),3)
+        self.assertIn('QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:true)',self.swift)
         self.assertIn('topic.canCast && WenguaCastTimePlan.supports(topic.id)',self.swift)
         self.assertIn('self.topic=nil',self.swift)
         self.assertIn('WenguaCloudWelcomeScreen',self.swift)

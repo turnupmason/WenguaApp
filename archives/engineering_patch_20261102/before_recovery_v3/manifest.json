@@ -1,0 +1,29 @@
+{
+  "purpose": "Prior accepted sources before user-authorized recovery integration",
+  "files": [
+    {
+      "path": "data/releases/health_frozen_20261102.json",
+      "sha256": "e08ba7bdb48116c6a64589a5709579ba83c650362e5b9fff78c33c3fb8288364"
+    },
+    {
+      "path": "scripts/verify_frozen_health_release_20261102.py",
+      "sha256": "a0a5c3c12af5c694ab46fb976e7b8891b54d7b142f0940b94ecdf50752a8cb31"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
+      "sha256": "57c2c93169b06156d38e59b8c944a8ec656dd961bfc119afc968b1f2167bb795"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaDesignPreviewApp.swift",
+      "sha256": "72f1073c4db669ce7027faff7762e72497c05d99afe0049cc00c77bc6ad45a19"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
+      "sha256": "81726acf222e6e7ddc50f8be92e09aefc66d5cfcc54401e349961ec3e40b1dd0"
+    },
+    {
+      "path": "ios/WenguaAppUI/project.yml",
+      "sha256": "48b0f3f2e679d8ab1fdfd84e122039f597132c45dfa765c5026277790d5f6a67"
+    }
+  ]
+}

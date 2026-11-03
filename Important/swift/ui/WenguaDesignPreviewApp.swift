@@ -259,7 +259,7 @@ enum QuestionCatalog {
             // no disease score, no medical diagnosis and no V8 template inheritance.
             QuestionTopic(id:"health.discomfort",title:"奇门论疾",domainTitle:"疾病健康",enabled:true),
             QuestionTopic(id:"health.treatment",title:"医药效果",domainTitle:"疾病健康",enabled:false),
-            QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:false)] + electiveTopics("health","疾病健康")),
+            QuestionTopic(id:"health.recovery",title:"病愈应期",domainTitle:"疾病健康",enabled:true)] + electiveTopics("health","疾病健康")),
         domain("marriage","恋爱婚姻","heart",["恋爱进展","婚姻关系","复合与分离"]),
         domain("career","工作就业","briefcase",["求职面试","在职发展","升迁调动"]),
         domain("business","经营求财","chart.line.uptrend.xyaxis",["经营项目","投资求财","债务借贷"]),

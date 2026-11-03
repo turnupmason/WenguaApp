@@ -25,6 +25,9 @@ targets:
       - path: WenguaCastTimeView.swift
       - path: WenguaReadingLayout.swift
       - path: WenguaSetupPresentation.swift
+      - path: WenguaNativeRecovery.swift
+      - path: ../../data/knowledge/health_recovery/runtime_v3_20261102.json
+        buildPhase: resources
       - path: WenguaNativeCore.swift
       - path: WenguaHealthTemplateBridge.swift
       - path: WenguaNativeReadingRouter.swift

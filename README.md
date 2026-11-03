@@ -1,3 +1,5 @@
+> **2026-11-03 疾病应期 V3 接线：** 新增病愈应期入口，固定“病什么时候好”，同盘患者／医药条件→历法候选→四段解读→离线历史已实现；实际原生与 Xcode 验收结果见[接通记录](docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md)。条件不足或取法冲突明确不定日期，未知病程单位日月分开。轻重 V9/V11、病位 V27 原数学与七份资源不变。下面“尚未接通”的 V1/V2 记录保留作历史。
+
 # 问卦 · WenguaApp
 
 [![当前封存版本 CI](https://github.com/turnupmason/WenguaApp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/turnupmason/WenguaApp/actions/workflows/ci.yml)

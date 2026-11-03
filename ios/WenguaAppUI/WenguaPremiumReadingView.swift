@@ -245,6 +245,17 @@ struct WenguaPremiumVerdictCard: View {
                     .font(.system(size:18,weight:.semibold,design:.serif)).foregroundStyle(muted)
                 Text("已按所选时刻排出真实九宫")
                     .font(.system(size:24,weight:.semibold,design:.serif)).foregroundStyle(gold)
+            } else if reading.topicID=="health.recovery" {
+                Text("病愈应期")
+                    .font(.system(size:24,weight:.semibold,design:.serif))
+                    .foregroundStyle(gold)
+                    .frame(maxWidth:.infinity,alignment:.center)
+                ForEach(reading.sections.filter { ["01_recovery_time","04_summary"].contains($0.id) }) { section in
+                    Text(section.text)
+                        .font(.system(size:17,design:.serif))
+                        .lineSpacing(6).foregroundStyle(ink)
+                        .fixedSize(horizontal:false,vertical:true)
+                }
             } else if reading.topicID=="health.discomfort" {
                 Text("奇门论疾 · 古籍类象")
                     .font(.system(size:18,weight:.semibold,design:.serif))

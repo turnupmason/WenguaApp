@@ -1,0 +1,18 @@
+{
+  "schema": "wengua_health_recovery_active_release_v1",
+  "version": "health.recovery.V3",
+  "runtime": "runtime_v3_20261102.json",
+  "runtime_sha256": "e1cd067a9f9c43b1ae83db29c054e59b098c7bf141efe012e108eec7b3ffad90",
+  "goal": "recovery",
+  "question": "病什么时候好",
+  "app_route_enabled": true,
+  "engine_implemented": true,
+  "native_parity_status": "pending_actual_new_run",
+  "xcode_status": "pending_actual_new_run",
+  "drafts_preserved": [
+    "reading_template_v1_draft.json",
+    "reading_template_v2_user_timing.json"
+  ],
+  "conditional_only": true,
+  "clinical_validation_claimed": false
+}
