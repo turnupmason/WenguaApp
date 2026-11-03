@@ -1,0 +1,139 @@
+{
+  "implementation_source_sha": "28985ab77305100c7b884e61f13c9a2e8348ce7b",
+  "runs": [
+    {
+      "conclusion": "success",
+      "headSha": "f39d6caaf31e83e99e190106e3893324c2ff490d",
+      "jobs": [
+        {
+          "name": "v80_current (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085559/job/125694320289"
+        },
+        {
+          "name": "v80_current (3.11)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085559/job/125694320614"
+        }
+      ],
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085559",
+      "run_id": 41568085559
+    },
+    {
+      "conclusion": "success",
+      "headSha": "f39d6caaf31e83e99e190106e3893324c2ff490d",
+      "jobs": [
+        {
+          "name": "local_model_cpu (3.11)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085590/job/125694320128"
+        },
+        {
+          "name": "local_model_cpu (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085590/job/125694320498"
+        }
+      ],
+      "name": "Local probability research CPU compatibility (not predictive validation)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085590",
+      "run_id": 41568085590
+    },
+    {
+      "conclusion": "success",
+      "headSha": "f39d6caaf31e83e99e190106e3893324c2ff490d",
+      "jobs": [
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085571/job/125694320259"
+        },
+        {
+          "name": "power_pair_full_text_parity",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085571/job/125694320552"
+        }
+      ],
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568085571",
+      "run_id": 41568085571
+    },
+    {
+      "conclusion": "success",
+      "headSha": "28985ab77305100c7b884e61f13c9a2e8348ce7b",
+      "jobs": [
+        {
+          "name": "v80_current (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279803/job/125694943463"
+        },
+        {
+          "name": "v80_current (3.11)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279803/job/125694943775"
+        }
+      ],
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279803",
+      "run_id": 41568279803
+    },
+    {
+      "conclusion": "success",
+      "headSha": "28985ab77305100c7b884e61f13c9a2e8348ce7b",
+      "jobs": [
+        {
+          "name": "local_model_cpu (3.12)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279730/job/125694942257"
+        },
+        {
+          "name": "local_model_cpu (3.11)",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279730/job/125694942425"
+        }
+      ],
+      "name": "Local probability research CPU compatibility (not predictive validation)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279730",
+      "run_id": 41568279730
+    },
+    {
+      "conclusion": "success",
+      "headSha": "28985ab77305100c7b884e61f13c9a2e8348ce7b",
+      "jobs": [
+        {
+          "name": "power_pair_full_text_parity",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279643/job/125694942061"
+        },
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279643/job/125694942299"
+        }
+      ],
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41568279643",
+      "run_id": 41568279643
+    }
+  ],
+  "gpu_executed": false,
+  "clinical_or_predictive_validation": false
+}
