@@ -115,6 +115,7 @@ struct WenguaRecoveryRuntime: Decodable {
         let titles:[String];let role_names:[String:String];let units:[String:String]
         let premise_missing:String;let premise_conflict:String;let method_conflict:String
         let no_candidate:String;let precision_missing:String;let flow_conflict:String
+        let context_conflict:String;let stem_branch_conflict:String;let chief_xun_conflict:String
         let unknown_axis:String;let known_axis:String;let scale_line:String;let support:String
         let conditions:String;let summary:String;let footer:String;let not_ready_summary:String
         let method_names:[String:String];let role_method:String;let fact_names:[String:String];let window_zone:String
@@ -291,9 +292,10 @@ enum WenguaNativeRecovery {
         }
         if let h=role.horse_branch {return out("horse",[h,t.clash[h]!],["T034","T056"])}
         let tombs=Array(Set(role.tomb_branches+(t.timing_tombs[key] ?? [])))
+        if key=="庚:8" {return out("tomb",["申","丑","寅","未"],["T057","T066","T072"],"tomb_context_conflict")}
         if !tombs.isEmpty {return out("tomb",tombs.map{t.clash[$0]!},["T032","T057","T058","T063"])}
         if (pun || clash) && join && !(c=="辛" && p==2 && e=="戊") {return out("clash",[],["T060","T074"],"method_conflict")}
-        if let special=t.ordinary_punishment[key] {return out("punishment",special,["T060","T064","T065","T066","T067"])}
+        if let special=t.ordinary_punishment[key] {return out("punishment",special,["T060","T064","T065","T066","T067"],key=="己:2" ? "punishment_context_conflict":"selected")}
         if let a,a==b,["辰","午"].contains(a) {return out("punishment",[t.join[a]!],["T061"])}
         if clash {
             let all=[a,b].compactMap{$0}+pb
@@ -361,9 +363,10 @@ enum WenguaNativeRecovery {
                 }
             }
             if windows.isEmpty {
-                if alternatives.contains(where:{$0.status=="method_conflict"}) {state="method_conflict";reason=tx.method_conflict}
+                if alternatives.contains(where:{["tomb_context_conflict","punishment_context_conflict"].contains($0.status)}) {state="method_conflict";reason=tx.context_conflict}
+                else if alternatives.contains(where:{$0.status=="method_conflict"}) {state="method_conflict";reason=tx.method_conflict}
                 else if alternatives.contains(where:{["void_flow_unresolved","chief_out_xun_requires_time_layer","stem_branch_alternatives"].contains($0.status)}) {
-                    state="method_conflict";reason=alternatives.contains(where:{$0.status=="void_flow_unresolved"}) ? tx.flow_conflict:tx.method_conflict
+                    state="method_conflict";reason=alternatives.contains(where:{$0.status=="void_flow_unresolved"}) ? tx.flow_conflict:alternatives.contains(where:{$0.status=="chief_out_xun_requires_time_layer"}) ? tx.chief_xun_conflict:tx.stem_branch_conflict
                 } else if !precision.isEmpty {state="precision_unavailable";reason=tx.precision_missing}
                 else {state="missing_condition";reason=tx.no_candidate}
             }

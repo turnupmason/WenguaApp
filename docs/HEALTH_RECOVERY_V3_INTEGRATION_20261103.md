@@ -29,3 +29,5 @@
 `health_recovery_v3_native.yml` 实际编译新原生模块，对固定、顺序随机时辰及角色特定甲源核对真实盘面、患者、控制条件、方法、所有窗口及四段全文。独立的 synthetic 用例仅验证歧义分支，不作真实盘或命中样本。正式 Xcode workflow 再从真正构建的 App 资源调用应期 router 并编码／解码历史。软件回归不等于医疗有效性或签名真机视觉验收。
 
 完整本地复验：903 tests，0 failures、0 errors、3 既有 skips。原日志与结构化回执在 `docs/audits/health_recovery_v3_20261102/full_final_python/`。实际原生和 Xcode 状态仍待新提交运行。
+
+原生首轮 `41550736813` 实际失败在验收 CLI 的 guard 中尾随闭包歧义警告（warnings-as-errors），不是运行通过；原日志 gzip 已归档。明确括号修正后继续新编译。另按 L86 收紧普通庚艮和己坤的上下文特例：庚艮保留申／丑／寅及通用冲墓未的分歧，普通己坤“有时辰”不自动当唯一应法；值符章相应明确例仍独立。新增相应中文未决解释，903 项完整复验再次全通过（原日志 `full_source_context_final/`）。

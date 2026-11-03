@@ -40,7 +40,8 @@ class RecoverySourceMethods(unittest.TestCase):
     def test_geng_gen_ordinary_tomb_differs_from_chief_clash(self):
         normal=self.method(synthetic_role(palace=8,carrier='庚',earth='丙'))
         chief=self.method(synthetic_role(id='chief',palace=8,carrier='庚',earth='丙'))
-        self.assertEqual((normal['method'],normal['branches']),('tomb',['未']))
+        self.assertEqual((normal['method'],normal['branches']),('tomb',['丑','寅','未','申']))
+        self.assertEqual(normal['status'],'tomb_context_conflict')
         self.assertEqual((chief['method'],chief['branches']),('clash',['巳']))
     def test_self_punishment_and_hidden_palace_join(self):
         m=self.method(synthetic_role(palace=7,carrier='辛',earth='辛'))

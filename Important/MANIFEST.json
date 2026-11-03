@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "bdc4aed57dcab5d1aed82c042d3847cc0285c537"
+      "sha": "6f72371f65069120d044aaa5e01770d9f0ec33a1"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "bdc4aed57dcab5d1aed82c042d3847cc0285c537"
+      "sha": "6f72371f65069120d044aaa5e01770d9f0ec33a1"
     },
     {
       "platform": "python",
@@ -1051,7 +1051,7 @@
       "platform": "python",
       "canonical": "src/wengua/health_recovery_v3.py",
       "snapshot": "Important/python/engine/health_recovery_v3.py",
-      "sha": "5cc802770c36312fb68815930473461daaab5386"
+      "sha": "a5bebb75bcce9ddf467a7695247740b4ed45f827"
     },
     {
       "platform": "python",
@@ -1063,25 +1063,25 @@
       "platform": "python",
       "canonical": "tests/test_health_recovery_runtime_v3_20261103.py",
       "snapshot": "Important/python/tests/test_health_recovery_runtime_v3_20261103.py",
-      "sha": "94a20307520299a1f9a791d0c8e08320e0583fde"
+      "sha": "c5baf0b55774708b0c5c8fc75760ea56a222ad78"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/runtime_v3_20261102.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/runtime_v3_20261102.json",
-      "sha": "5a127ddee1f941a04877dca393d3d9f3c7daba66"
+      "sha": "1e1225a46fceb5141aca5f6f44ba44fe48aad428"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeRecovery.swift",
       "snapshot": "Important/swift/engine/WenguaNativeRecovery.swift",
-      "sha": "b6419f18cd97a363ef82d8919067e83808633362"
+      "sha": "11574b862275cd92578cc9c341cfd8f58ba378d1"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeRecoveryCheck.swift",
       "snapshot": "Important/swift/validation/NativeRecoveryCheck.swift",
-      "sha": "765223e2ad002cf2fb58b5598c77cebb3052469c"
+      "sha": "d6ebe979478702972dd855c4f4b83756ac5a389f"
     },
     {
       "platform": "python",
@@ -1093,7 +1093,7 @@
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/active_release.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/active_release.json",
-      "sha": "991bed5fc1977b11679fba62f3232c1d5cd12932"
+      "sha": "148871d8821cba6330d0c0e10fad7a7240b969c5"
     }
   ]
 }

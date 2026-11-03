@@ -211,10 +211,13 @@ def role_method(role, facts, runtime=None):
     if role['horse_branch']:
         h=role['horse_branch'];return out('horse',[h,t['clash'][h]],['T034','T056'])
     tombs=sorted(set(role['tomb_branches']+t['timing_tombs'].get(punishment_key,[])))
+    if punishment_key=='庚:8':
+        return out('tomb',['申','丑','寅','未'],['T057','T066','T072'],'tomb_context_conflict')
     if tombs:return out('tomb',[t['clash'][x] for x in tombs],['T032','T057','T058','T063'])
     if (pun or clash) and join and not (c=='辛' and p==2 and e=='戊'):return out('clash',[],['T060','T074'],'method_conflict')
     if punishment_key in t['ordinary_punishment']:
-        return out('punishment',t['ordinary_punishment'][punishment_key],['T060','T064','T065','T066','T067'])
+        return out('punishment',t['ordinary_punishment'][punishment_key],['T060','T064','T065','T066','T067'],
+                   'punishment_context_conflict' if punishment_key=='己:2' else 'selected')
     if a==b and a in ('辰','午'):
         return out('punishment',[t['join'][a]],['T061'])
     if clash:
@@ -296,8 +299,9 @@ def analyze_recovery(facts, *, time_scale=None, deadline_iso=None, runtime=None)
                 traces.append({'support_role':support['role'],'scale':scale,'searched_periods':len(periods),'matching_periods':len(matched),
                                'calendar_end_iso':periods[-1]['end_iso'] if periods else None})
         if not windows:
-            if any(m['status']=='method_conflict' for m in alternatives):state='method_conflict';reason=tx['method_conflict']
-            elif any(m['status'] in ('void_flow_unresolved','chief_out_xun_requires_time_layer','stem_branch_alternatives') for m in alternatives):state='method_conflict';reason=tx['flow_conflict'] if any(m['status']=='void_flow_unresolved' for m in alternatives) else tx['method_conflict']
+            if any(m['status'] in ('tomb_context_conflict','punishment_context_conflict') for m in alternatives):state='method_conflict';reason=tx['context_conflict']
+            elif any(m['status']=='method_conflict' for m in alternatives):state='method_conflict';reason=tx['method_conflict']
+            elif any(m['status'] in ('void_flow_unresolved','chief_out_xun_requires_time_layer','stem_branch_alternatives') for m in alternatives):state='method_conflict';reason=tx['flow_conflict'] if any(m['status']=='void_flow_unresolved' for m in alternatives) else tx['chief_xun_conflict'] if any(m['status']=='chief_out_xun_requires_time_layer' for m in alternatives) else tx['stem_branch_conflict']
             elif precision:state='precision_unavailable';reason=tx['precision_missing']
             else:state='missing_condition';reason=tx['no_candidate']
     # Compute ambiguous alternatives for audit only; never label these cure

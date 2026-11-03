@@ -31,7 +31,7 @@ import Foundation
                       reading.resolvedHealthGrade==nil,reading.timingGrade==nil else {throw WenguaRecoveryError.invalidFacts}
                 let saved=try JSONEncoder().encode(reading)
                 let reopened=try JSONDecoder().decode(WenguaNativeCustomerReading.self,from:saved)
-                guard reopened.sections.map{$0.text}==reading.sections.map{$0.text},
+                guard reopened.sections.map({$0.text})==reading.sections.map({$0.text}),
                       reopened.recoveryState==reading.recoveryState,reopened.recoveryWindows==reading.recoveryWindows else {throw WenguaRecoveryError.invalidFacts}
                 print("RECOVERY_BUNDLE_HISTORY_PASS",person,reading.recoveryState!,reading.recoveryWindows?.count ?? 0)
             }
