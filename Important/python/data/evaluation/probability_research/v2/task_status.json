@@ -1,0 +1,43 @@
+[
+  {
+    "task": "lost.recovered_at_last_report",
+    "status": "trained_experimental_book_report_only",
+    "events": 11
+  },
+  {
+    "task": "health.body_site",
+    "status": "not_trained_missing_qualified_task_labels",
+    "features_connected": true,
+    "probability_available": false
+  },
+  {
+    "task": "health.severity",
+    "status": "not_trained_missing_qualified_task_labels",
+    "features_connected": true,
+    "probability_available": false
+  },
+  {
+    "task": "health.recovery_hazard",
+    "status": "not_trained_missing_event_time_labels_and_survival_fitter",
+    "features_connected": true,
+    "probability_available": false
+  },
+  {
+    "task": "lost.direction",
+    "status": "not_trained_missing_qualified_task_labels",
+    "features_connected": true,
+    "probability_available": false
+  },
+  {
+    "task": "lost.environment",
+    "status": "not_trained_missing_qualified_task_labels",
+    "features_connected": true,
+    "probability_available": false
+  },
+  {
+    "task": "lost.recovery_hazard",
+    "status": "not_trained_missing_event_time_labels_and_survival_fitter",
+    "features_connected": true,
+    "probability_available": false
+  }
+]

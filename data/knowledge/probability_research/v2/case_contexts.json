@@ -1,0 +1,158 @@
+{
+  "version": 2,
+  "protocol": "Explicit case-specific initial context; no feedback or author reasoning used. No Gregorian-to-ganzhi birth guess.",
+  "cases": [
+    {
+      "case_id": "shenqi.health.19960316.self_surgery",
+      "known_before_sha256": "a1e05fa517747b10ae2d2c48e5a3d95f83294f8c012f8d453b6fe8cfd7c202a1",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self",
+        "subject_species": "human"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "shenqi.health.19960727.father_illness",
+      "known_before_sha256": "6f7ed3230d4053ce54ed1184df4ecc5703e753bedeac603b7406f3b2e29493c4",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "father",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "male",
+        "patient_birth_ganzhi": "辛酉"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "shenqi.health.19960509.nephew_discharge",
+      "known_before_sha256": "925add97e6df030c034796a41c56f28df7ad1fee242ecff8db09d0a4b420d79b",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "nephew",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "male"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "shenqi.health.19960523.aunt_illness",
+      "known_before_sha256": "cc661d14632489a27216cd758b450c273c091f103ac8e264f858195c986e3486",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "older_relative",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "female"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "known_before_sha256": "8d6f90363dfa53515be59c0a6419e91f81f14ba7268e1019a09e47e4b1974437",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self",
+        "subject_species": "human"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "known_before_sha256": "185504304419a3eb495256d3c463100579d79d7b475c7e3f54f20b436a3be187",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "wife",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "female"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.health.19960923.nasal_cancer",
+      "known_before_sha256": "c31a49618c51517f5ec76c0ba7f393bb491ff8095d852c5c2932dcf5fe0c3a94",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "colleague",
+        "consultation_context": "event_news",
+        "subject_species": "human"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.health.19950219.brother_paralysis",
+      "known_before_sha256": "37a0796ab5d9bba2f23629a3bfc7857f7cca975ba3ac8572dc68eff1c744ffd5",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "younger_brother",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "male",
+        "patient_birth_ganzhi": "癸丑"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.health.19980616.hen_illness",
+      "known_before_sha256": "02c6cc32f2ecfa17c6a17e6eaa4c89e337471f758261d963a204617b73debb56",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "animal_hen",
+        "consultation_context": "direct_proxy",
+        "subject_species": "chicken"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.health.19980621.rooster_illness",
+      "known_before_sha256": "acd8b85ee31afb9c73dad530af2e665aa6064b1cde3a7f1ae1900d2cb7ca3b58",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "animal_rooster",
+        "consultation_context": "direct_proxy",
+        "subject_species": "chicken"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.health.19991020.wang_craniotomy",
+      "known_before_sha256": "526b20e306766c3b6f77c2a341a9d4d2636f5ee6aafe69f0de27feb8a05965f6",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "self",
+        "consultation_context": "direct_self",
+        "subject_species": "human"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    },
+    {
+      "case_id": "kaiwu.final.recovery",
+      "known_before_sha256": "42b1e8845d09f4b4afd1d11d4ca4eee5ae443b6d18c9856389241da07b9f6781",
+      "inquiry": {
+        "intent": "severity",
+        "relationship": "son_in_law",
+        "consultation_context": "direct_proxy",
+        "subject_species": "human",
+        "patient_sex": "male"
+      },
+      "evidence_column": "cases.known_before",
+      "status": "source_context_interpretation_not_external_validation"
+    }
+  ]
+}

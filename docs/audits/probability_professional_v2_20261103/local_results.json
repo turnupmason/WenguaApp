@@ -1,0 +1,29 @@
+{
+  "source_archive_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "parameter_sweep": {
+    "unlabelled_synthetic_combinations": 1080,
+    "independent_training_events_added": 0,
+    "feature_count": 4606,
+    "passed": true
+  },
+  "model_inference": {
+    "logistic_professional_and_facts": true,
+    "catboost_professional_and_facts": true,
+    "v1_both_backends_compatibility": true
+  },
+  "gpu_executed_here": false,
+  "pycharm_gui_clicks_executed": false,
+  "full_run": "docs/audits/probability_professional_v2_20261103/full_run/results.json",
+  "public_summary_lf_normalized": true,
+  "raw_local_run": "local/probability_v2/verified_complete_cpu",
+  "source_files": {
+    "src/wengua/probability_features_v2.py": "2a041e5510d4c6fa48431e4e687d09c692d827178ae61b50cd386ed81dc105d0",
+    "src/wengua/probability_dataset_v2.py": "e6699b931991630d7ce6d760bfbf7e621dcb19a39a6c3b0185a815010343ce22",
+    "src/wengua/probability_research.py": "dd58b99e181e6707f2a238a41dbf2941567cd6a8d778ff30b458bafc670d9728",
+    "scripts/probability_research.py": "41d1111edbcfcfe520928ce98e05ee1f3d794a39bf02a7b1abeb9874fc74701b",
+    "scripts/probability_professional.py": "e7b5f1731987e86d0c670399af159b85e820de99bc330b17b826d1667f00c67c",
+    "scripts/check_probability_professional.py": "b5141d3eba74c4d72a53fb395de343985b050ce19016066c93f4539af41e488e",
+    "run_professional_training.py": "d00f2367152cc740c260eff2164a2287275e24cd0fb457f7953b867397b94fd1",
+    "tests/test_probability_professional_v2.py": "b15a766b18ba7bc3c0a1656a0786c97139229292143a7133b7d843bb778a998d"
+  }
+}

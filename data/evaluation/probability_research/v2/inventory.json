@@ -1,0 +1,85 @@
+{
+  "source_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "case_count": 194,
+  "event_family_count": 194,
+  "chapter_count": 43,
+  "domains": {
+    "business_profit": 24,
+    "competition_evaluation": 2,
+    "criminal_case": 10,
+    "education": 9,
+    "employment": 9,
+    "geography_environment_historical_source": 4,
+    "health": 12,
+    "industrial_safety": 1,
+    "life_opportunity_book_study": 15,
+    "litigation": 11,
+    "lost_property": 13,
+    "marriage": 14,
+    "military_history_source": 3,
+    "miscellaneous_historical_source": 5,
+    "missing_person": 16,
+    "politics_elections": 3,
+    "pregnancy": 6,
+    "sports_competition": 13,
+    "travel_abroad": 14,
+    "weather": 1,
+    "weather_historical_source": 8,
+    "world_affairs": 1
+  },
+  "external_validation": false,
+  "production_enabled": false,
+  "exported_rows": 12,
+  "exported_event_families": 11,
+  "label_counts": {
+    "recovered": 10,
+    "not_recovered": 2
+  },
+  "excluded": [
+    {
+      "case_id": "kaiwu.lost_property.case04",
+      "target_item": "motorbike",
+      "reason": "initial_sixyao_not_qimen_at_query_later_qimen_learning_and_replay_not_same_initial_protocol"
+    },
+    {
+      "case_id": "kaiwu.final.license",
+      "target_item": "license",
+      "reason": "no_complete_primary_literal_chart_in_selected_adapter"
+    }
+  ],
+  "unlabelled_tasks": [
+    "health.body_site",
+    "health.severity",
+    "health.recovery_hazard",
+    "lost.direction",
+    "lost.environment",
+    "lost.recovery_hazard"
+  ],
+  "limitations": [
+    "Selected published cases; source-book reports have no independent external verification.",
+    "Unequal or missing follow-up duration; this pilot target must not be advertised as an eventual recovery probability.",
+    "A returned bag and its missing cash are separate items in one event family.",
+    "The final license case is retained in the registry but excluded by the first chart adapter; this does not mean no chart exists elsewhere.",
+    "Direction, environment, body site, clinical severity and survival times are not inferred from recovery labels."
+  ],
+  "feature_schema": "professional_features_v2_20261103",
+  "atlas_coverage": {
+    "cases": 194,
+    "nine_source_cells": 160,
+    "calendar_day_hour": 160,
+    "calendar_month": 160,
+    "plane_convention_resolved": 151,
+    "palace_nodes": 1746,
+    "directed_pair_positions": 15714,
+    "additional_source_casts": 19,
+    "additional_nine_source_cells": 19,
+    "all_palace_nodes": 1917,
+    "all_directed_pair_positions": 17253
+  },
+  "context_corrections": [
+    "shenqi.lost_property.case03",
+    "shenqi.lost_property.case07"
+  ],
+  "v1_metrics_not_directly_comparable": true,
+  "professional_features_use_outcomes": false
+}

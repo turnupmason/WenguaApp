@@ -33,13 +33,15 @@ def stable_json(value) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
 
 
-def features(row: dict, include_chart: bool = True) -> dict:
+def features(row: dict, include_chart: bool = True, *, mode: str = 'raw') -> dict:
     """Only explicit pre-question context and literal board symbols are inputs.
 
     No free prose, IDs, labels, author verdicts, feedback or source-book identity.
     Literal door/star stem strings retain their source layer names; they are not
     silently reinterpreted as verified heaven/earth stems or derived host rules.
     """
+    if mode not in ('raw', 'professional_facts', 'professional'):
+        raise ValueError('Unknown feature mode')
     result = {'task': row['task']}
     context = row.get('context', {})
     if row['task'] == 'lost.direction':
@@ -68,6 +70,10 @@ def features(row: dict, include_chart: bool = True) -> dict:
                 if any(ch not in alphabet for ch in value):
                     raise ValueError('Unexpected free text in a chart feature')
                 result[f'p{palace}.{field}'] = value or '__missing__'
+        if mode != 'raw':
+            from .probability_features_v2 import features_for_row
+            result.update({'professional.' + k: v for k, v in features_for_row(
+                row, include_heuristics=mode == 'professional').items()})
     return result
 
 

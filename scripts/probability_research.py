@@ -17,17 +17,32 @@ def weights(rows):
     return [1.0 / counts[r['event_family_id']] for r in rows]
 
 
-def fit(train, backend, include_chart, device, seed):
+def fit(train, backend, include_chart, device, seed, feature_mode='raw', *, filter_constants=None):
     # Imports are local so inventory/core/inference need no training libraries.
     from sklearn.feature_extraction import DictVectorizer
     from sklearn.linear_model import LogisticRegression
     import numpy as np
 
     vectorizer = DictVectorizer(sparse=False)
-    x = vectorizer.fit_transform([features(r, include_chart) for r in train])
+    x = vectorizer.fit_transform([features(r, include_chart, mode=feature_mode) for r in train])
     y = [r['label'] for r in train]
     if len(set(y)) < 2:
         raise ValueError('Training partition must contain at least two observed classes')
+    if filter_constants is None:
+        filter_constants = feature_mode != 'raw'
+    if filter_constants:
+        # The audit retains every professional field. A constant in THIS
+        # training partition has no learnable contrast; do not fit thousands
+        # of duplicate intercepts or inspect the heldout partition to select it.
+        keep = np.ptp(x, axis=0) > 0
+        if not keep.any():
+            if include_chart:
+                raise ValueError('No varying chart predictors in the training partition')
+            from sklearn.dummy import DummyClassifier
+            prior = DummyClassifier(strategy='prior').fit(x, y, sample_weight=np.asarray(weights(train)))
+            return vectorizer, prior
+        vectorizer.restrict(keep)
+        x = x[:, keep]
     if backend == 'logistic':
         if device != 'CPU':
             raise ValueError('Logistic baseline uses CPU; choose catboost for GPU')
@@ -43,10 +58,10 @@ def fit(train, backend, include_chart, device, seed):
     return vectorizer, model
 
 
-def probabilities(fitted, rows, include_chart, classes):
+def probabilities(fitted, rows, include_chart, classes, feature_mode='raw'):
     import numpy as np
     vectorizer, model = fitted
-    raw = model.predict_proba(vectorizer.transform([features(r, include_chart) for r in rows]))
+    raw = model.predict_proba(vectorizer.transform([features(r, include_chart, mode=feature_mode) for r in rows]))
     aligned = np.zeros((len(rows), len(classes)))
     for i, cls in enumerate(model.classes_):
         aligned[:, classes.index(str(cls))] = raw[:, i]
@@ -123,9 +138,16 @@ def partition(groups):
     return result
 
 
-def train(rows, output, backend='logistic', device='CPU', seed=1080):
+def train(rows, output, backend='logistic', device='CPU', seed=1080, *, feature_mode='raw', progress=None):
     import numpy as np
     validate_rows(rows)
+    if feature_mode not in ('raw', 'professional'):
+        raise ValueError('Choose raw or complete professional ablations')
+    if feature_mode == 'professional':
+        from src.wengua.probability_features_v2 import source_fingerprint
+        initial_rule_fingerprint = source_fingerprint()
+        for row in rows:
+            features(row, mode='professional')
     output.mkdir(parents=True, exist_ok=True)
     classes = sorted({r['label'] for r in rows})
     if len(classes) < 2:
@@ -160,25 +182,38 @@ def train(rows, output, backend='logistic', device='CPU', seed=1080):
                        'calibration_status': 'temperature_on_reserved_calibration_only'})
     else:
         report['partitions'] = {'leave_one_event_out': groups}
-    for name in ['prior', 'context', 'chart']:
+    names = ['prior', 'context', 'chart'] + (['professional_facts', 'professional'] if feature_mode == 'professional' else [])
+    deployment = names[-1]
+    report['feature_mode'] = feature_mode
+    report['professional_preprocessing'] = 'training_partition_only_zero_variance_filter' if feature_mode == 'professional' else 'original_v1_vectorizer'
+    report['deployed_research_model'] = deployment
+    ablation_predictions = {}
+    for name in names:
+        active_mode = name if name in ('professional_facts', 'professional') else 'raw'
+        if progress:
+            progress(f'{name}: start, {len(groups)} independent events')
         scores = np.zeros((len(rows), len(classes)))
         temperature = 1.0
         folds = [(subsets['train'], subsets['test'])] if holdout else [
             ([r for r in rows if r['event_family_id'] != g],
              [r for r in rows if r['event_family_id'] == g]) for g in groups]
         index = {id(r): i for i, r in enumerate(rows)}
-        for train_rows, test_rows in folds:
+        for fold_index, (train_rows, test_rows) in enumerate(folds, 1):
+            if progress:
+                progress(f'{name}: fold {fold_index}/{len(folds)}; train={len(train_rows)}, test={len(test_rows)}')
             if name == 'prior':
                 counts = {c: sum(w for r, w in zip(train_rows, weights(train_rows)) if r['label'] == c)
                           for c in classes}
                 prior = np.array([counts[c] + 1 for c in classes])
                 raw = np.tile(prior / prior.sum(), (len(test_rows), 1))
             else:
-                fitted = fit(train_rows, backend, name == 'chart', device, seed)
-                raw = probabilities(fitted, test_rows, name == 'chart', classes)
+                include_chart = name != 'context'
+                fitted = fit(train_rows, backend, include_chart, device, seed, active_mode,
+                             filter_constants=feature_mode == 'professional')
+                raw = probabilities(fitted, test_rows, include_chart, classes, active_mode)
                 if holdout:
                     from scipy.optimize import minimize_scalar
-                    cal = probabilities(fitted, subsets['calibration'], name == 'chart', classes)
+                    cal = probabilities(fitted, subsets['calibration'], include_chart, classes, active_mode)
                     objective = lambda t: metrics(subsets['calibration'], temperature_scale(cal, t), classes)['log_loss']
                     solution = minimize_scalar(objective, bounds=(0.25, 10), method='bounded')
                     temperature = float(solution.x)
@@ -187,7 +222,10 @@ def train(rows, output, backend='logistic', device='CPU', seed=1080):
                 scores[index[id(row)]] = p
         evaluated = subsets['test'] if holdout else rows
         report['metrics'][name] = metrics(evaluated, np.array([scores[index[id(r)]] for r in evaluated]), classes)
-        if name == 'chart':
+        ablation_predictions[name] = [{'case_id': row['case_id'], 'event_family_id': row['event_family_id'],
+                                      'target_item': row['target_item'], 'label': row['label'],
+                                      'class_scores': dict(zip(classes, scores[index[id(row)]].tolist()))} for row in evaluated]
+        if name == deployment:
             for row in evaluated:
                 p = scores[index[id(row)]].tolist()
                 predictions.append({'case_id': row['case_id'], 'event_family_id': row['event_family_id'],
@@ -196,13 +234,32 @@ def train(rows, output, backend='logistic', device='CPU', seed=1080):
                                     'research_percentages': dict(zip(classes, [100 * x for x in p])) if holdout else None,
                                     'user_facing_percentages': None})
             deployment_training = subsets['train'] if holdout else rows
-            final = fitted if holdout else fit(deployment_training, backend, True, device, seed)
-            save_model(final, output, classes, rows[0]['task'], backend, temperature, holdout)
+            final = fitted if holdout else fit(deployment_training, backend, True, device, seed, active_mode,
+                                              filter_constants=feature_mode == 'professional')
+            if feature_mode == 'professional' and source_fingerprint() != initial_rule_fingerprint:
+                raise ValueError('Professional source files changed during training; preserve this run and restart from a fixed revision')
+            save_model(final, output, classes, rows[0]['task'], backend, temperature, holdout, feature_mode=active_mode)
+            vectorizer, estimator = final
+            importance = (abs(estimator.coef_).mean(axis=0).tolist() if backend == 'logistic'
+                          else estimator.get_feature_importance().tolist())
+            names_in_order = vectorizer.get_feature_names_out().tolist()
+            write_json(output / 'feature_importance.json', {
+                'meaning': 'training_model_diagnostic_not_causality_or_independent_predictive_evidence',
+                'feature_mode': active_mode,
+                'features': sorted([{'feature': k, 'importance': float(v)} for k, v in zip(names_in_order, importance)],
+                                   key=lambda r: (-r['importance'], r['feature']))})
     report['descriptive_chart_brier_lower_than_context'] = report['metrics']['chart']['brier_multiclass_sum'] < report['metrics']['context']['brier_multiclass_sum']
     report['versions'] = {p: importlib.metadata.version(p) for p in
                           ['numpy', 'scikit-learn', 'scipy'] + (['catboost'] if backend == 'catboost' else [])}
     write_json(output / 'evaluation.json', report)
     write_json(output / 'heldout_predictions.json', predictions)
+    if feature_mode == 'professional':
+        from src.wengua.probability_features_v2 import source_fingerprint
+        report['professional_source_fingerprint'] = source_fingerprint()
+        report['professional_inputs_from_outcomes'] = False
+        report['fixed_user_heuristics_separately_ablated'] = True
+        write_json(output / 'ablation_predictions.json', ablation_predictions)
+        write_json(output / 'evaluation.json', report)
     return report
 
 
@@ -211,11 +268,15 @@ def write_json(path, value):
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
 
 
-def save_model(fitted, output, classes, task, backend, temperature, calibrated):
+def save_model(fitted, output, classes, task, backend, temperature, calibrated, *, feature_mode='raw'):
     vectorizer, model = fitted
     doc = {'version': 1, 'task': task, 'backend': backend, 'classes': classes,
            'feature_vocabulary': vectorizer.vocabulary_, 'temperature': temperature,
-           'reserved_calibration_used': calibrated, 'production_enabled': False}
+           'reserved_calibration_used': calibrated, 'production_enabled': False,
+           'feature_mode': feature_mode}
+    if feature_mode != 'raw':
+        from src.wengua.probability_features_v2 import source_fingerprint
+        doc['professional_source_fingerprint'] = source_fingerprint()
     if backend == 'logistic':
         doc.update({'coefficients': model.coef_.tolist(), 'intercept': model.intercept_.tolist()})
     else:
@@ -230,11 +291,17 @@ def predict(path, row):
     model = json.loads((path / 'model.json').read_text(encoding='utf8'))
     if row['task'] != model['task']:
         raise ValueError('Model target mismatch')
+    mode = model.get('feature_mode', 'raw')
+    if mode != 'raw':
+        from src.wengua.probability_features_v2 import source_fingerprint
+        if model['professional_source_fingerprint'] != source_fingerprint():
+            raise ValueError('Professional feature rules differ from the training version; use its recorded source revision')
     x = [0.0] * len(model['feature_vocabulary'])
-    for key, value in features(row).items():
-        index = model['feature_vocabulary'].get(key + '=' + value)
+    for key, value in features(row, mode=mode).items():
+        encoded = key + '=' + value if isinstance(value, str) else key
+        index = model['feature_vocabulary'].get(encoded)
         if index is not None:
-            x[index] = 1.0
+            x[index] = 1.0 if isinstance(value, str) else float(value)
     if model['backend'] == 'logistic':
         z = [(sum(a * b for a, b in zip(coef, x)) + b) / model['temperature']
              for coef, b in zip(model['coefficients'], model['intercept'])]
@@ -269,6 +336,8 @@ def main():
     training.add_argument('--output', type=Path, default=Path('local/probability_v1/logistic'))
     training.add_argument('--backend', choices=['logistic', 'catboost'], default='logistic')
     training.add_argument('--device', choices=['CPU', 'GPU'], default='CPU')
+    training.add_argument('--features', choices=['raw', 'professional'], default='raw')
+    training.add_argument('--progress', action='store_true')
     inference = sub.add_parser('predict')
     inference.add_argument('--model', type=Path, required=True)
     inference.add_argument('--input', type=Path, required=True, help='One input row as JSON')
@@ -285,7 +354,8 @@ def main():
             raise SystemExit('Output already exists; use a new version directory to preserve earlier runs')
         rows = [json.loads(line) for line in args.input.read_text(encoding='utf8').splitlines() if line.strip()]
         args.output.mkdir(parents=True)
-        report = train(rows, args.output, args.backend, args.device)
+        report = train(rows, args.output, args.backend, args.device, feature_mode=args.features,
+                       progress=(lambda message: print(message, flush=True)) if args.progress else None)
         print(json.dumps(report, ensure_ascii=False, indent=2))
     else:
         print(json.dumps(predict(args.model, json.loads(args.input.read_text(encoding='utf8'))), ensure_ascii=False, indent=2))

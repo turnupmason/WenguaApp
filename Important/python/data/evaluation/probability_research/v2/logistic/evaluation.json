@@ -1,0 +1,238 @@
+{
+  "task": "lost.recovered_at_last_report",
+  "backend": "logistic",
+  "device": "CPU",
+  "seed": 1080,
+  "classes": [
+    "not_recovered",
+    "recovered"
+  ],
+  "rows": 12,
+  "event_families": 11,
+  "production_enabled": false,
+  "calibration_status": "not_fitted_small_cohort",
+  "protocol": "group_leave_one_event_out",
+  "cohort_sha256": "9d8f1fce89afd0dfb6dda8bec7093fed918679acec98f784f37a986a05059051",
+  "external_validation": false,
+  "metrics": {
+    "prior": {
+      "rows": 12,
+      "event_families": 11,
+      "log_loss": 0.4699105195749443,
+      "brier_multiclass_sum": 0.2758838383838384,
+      "accuracy": 0.8636363636363636,
+      "reliability_bins": [
+        {
+          "class": "not_recovered",
+          "range": [
+            0,
+            0.2
+          ],
+          "rows": 3,
+          "mean_score": 0.14583333333333331,
+          "observed_fraction": 0.75
+        },
+        {
+          "class": "not_recovered",
+          "range": [
+            0.2,
+            0.4
+          ],
+          "rows": 9,
+          "mean_score": 0.20833333333333334,
+          "observed_fraction": 0.0
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.6,
+            0.8
+          ],
+          "rows": 9,
+          "mean_score": 0.7916666666666666,
+          "observed_fraction": 1.0
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.8,
+            1
+          ],
+          "rows": 3,
+          "mean_score": 0.8541666666666667,
+          "observed_fraction": 0.25
+        }
+      ]
+    },
+    "context": {
+      "rows": 12,
+      "event_families": 11,
+      "log_loss": 0.5163561779206608,
+      "brier_multiclass_sum": 0.276060842471597,
+      "accuracy": 0.8636363636363636,
+      "reliability_bins": [
+        {
+          "class": "not_recovered",
+          "range": [
+            0,
+            0.2
+          ],
+          "rows": 12,
+          "mean_score": 0.1367296431665432,
+          "observed_fraction": 0.13636363636363635
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.8,
+            1
+          ],
+          "rows": 12,
+          "mean_score": 0.8632703568334567,
+          "observed_fraction": 0.8636363636363636
+        }
+      ]
+    },
+    "chart": {
+      "rows": 12,
+      "event_families": 11,
+      "log_loss": 0.49488790027205654,
+      "brier_multiclass_sum": 0.27028112633618323,
+      "accuracy": 0.8636363636363636,
+      "reliability_bins": [
+        {
+          "class": "not_recovered",
+          "range": [
+            0,
+            0.2
+          ],
+          "rows": 11,
+          "mean_score": 0.1105120494454241,
+          "observed_fraction": 0.15
+        },
+        {
+          "class": "not_recovered",
+          "range": [
+            0.2,
+            0.4
+          ],
+          "rows": 1,
+          "mean_score": 0.23256534016050667,
+          "observed_fraction": 0.0
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.6,
+            0.8
+          ],
+          "rows": 1,
+          "mean_score": 0.7674346598394933,
+          "observed_fraction": 1.0
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.8,
+            1
+          ],
+          "rows": 11,
+          "mean_score": 0.889487950554576,
+          "observed_fraction": 0.85
+        }
+      ]
+    },
+    "professional_facts": {
+      "rows": 12,
+      "event_families": 11,
+      "log_loss": 0.6902892387660112,
+      "brier_multiclass_sum": 0.27229434202569086,
+      "accuracy": 0.8636363636363636,
+      "reliability_bins": [
+        {
+          "class": "not_recovered",
+          "range": [
+            0,
+            0.2
+          ],
+          "rows": 12,
+          "mean_score": 0.041573062526934726,
+          "observed_fraction": 0.13636363636363635
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.8,
+            1
+          ],
+          "rows": 12,
+          "mean_score": 0.9584269374730653,
+          "observed_fraction": 0.8636363636363636
+        }
+      ]
+    },
+    "professional": {
+      "rows": 12,
+      "event_families": 11,
+      "log_loss": 0.6984474643960497,
+      "brier_multiclass_sum": 0.2718183726595887,
+      "accuracy": 0.8636363636363636,
+      "reliability_bins": [
+        {
+          "class": "not_recovered",
+          "range": [
+            0,
+            0.2
+          ],
+          "rows": 12,
+          "mean_score": 0.03730418188620759,
+          "observed_fraction": 0.13636363636363635
+        },
+        {
+          "class": "recovered",
+          "range": [
+            0.8,
+            1
+          ],
+          "rows": 12,
+          "mean_score": 0.9626958181137923,
+          "observed_fraction": 0.8636363636363636
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Book selection bias; not a prospective cohort.",
+    "Last-report recovery has unequal/unknown follow-up.",
+    "Context baseline is item kind, not full real-world background.",
+    "Historical group holdout is not a chronological or prospective validation.",
+    "Software tests do not validate divination or clinical prediction."
+  ],
+  "partitions": {
+    "leave_one_event_out": [
+      "kaiwu.lost_property.case01",
+      "kaiwu.lost_property.case02",
+      "kaiwu.lost_property.case03",
+      "shenqi.lost_property.case01",
+      "shenqi.lost_property.case02",
+      "shenqi.lost_property.case03",
+      "shenqi.lost_property.case04",
+      "shenqi.lost_property.case05",
+      "shenqi.lost_property.case06",
+      "shenqi.lost_property.case07",
+      "shenqi.lost_property.case08"
+    ]
+  },
+  "feature_mode": "professional",
+  "professional_preprocessing": "training_partition_only_zero_variance_filter",
+  "deployed_research_model": "professional",
+  "descriptive_chart_brier_lower_than_context": true,
+  "versions": {
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0"
+  },
+  "professional_source_fingerprint": "45b65313a59b757533e544e4b19bfcd06acd7f624ceda6b60656b691436c3fce",
+  "professional_inputs_from_outcomes": false,
+  "fixed_user_heuristics_separately_ablated": true
+}

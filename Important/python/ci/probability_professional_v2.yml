@@ -1,0 +1,54 @@
+name: Professional features V2 Linux Windows CPU and PyCharm launcher
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/probability*.py'
+      - 'scripts/probability*.py'
+      - 'scripts/check_probability*.py'
+      - 'run_professional_training.py'
+      - '.run/**'
+      - 'tests/test_probability*.py'
+      - 'data/knowledge/probability_research/**'
+      - 'requirements-probability.txt'
+      - '.github/workflows/probability_professional_v2.yml'
+permissions:
+  contents: read
+jobs:
+  professional:
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.11'
+          - os: ubuntu-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.12'
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-probability.txt
+      - run: python -m pip install -r requirements-probability.txt
+      - run: python -m unittest tests.test_probability_research_v1 tests.test_probability_professional_v2 tests.test_important_mirror_integrity_20261026 -v
+      - run: python -m scripts.check_probability_professional --parameter-sweep
+      - run: python -m scripts.check_probability_professional --backend logistic
+      - run: python -m scripts.check_probability_professional --backend catboost
+      - run: python run_professional_training.py run --device CPU --output local/professional-ci
+      - uses: actions/upload-artifact@v4
+        with:
+          name: professional-${{ matrix.os }}-py${{ matrix.python }}
+          path: |
+            local/professional-ci/run_status.json
+            local/professional-ci/summary.tsv
+            local/professional-ci/task_status.json
+            local/professional-ci/data/inventory.json
+            local/professional-ci/data/feature_catalog.json
+            local/professional-ci/data/case_quality.json
+            local/professional-ci/models/**/*.json
+            local/professional-ci/models/**/*.cbm

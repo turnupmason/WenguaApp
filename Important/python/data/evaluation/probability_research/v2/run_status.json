@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "backend": "both",
+  "device": "CPU",
+  "elapsed_seconds": 42.86793595299969,
+  "production_enabled": false,
+  "research_probability_calibrated": false
+}

@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Independent probability research contracts and read-only cohort (stdlib)
-        run: python -m unittest tests.test_probability_research_v1 -v
+        run: python -m unittest tests.test_probability_research_v1 tests.test_probability_professional_v2 -v
       - name: Verify sealed V9 scoring V11 wording and V27 site release
         run: python -m unittest tests.test_frozen_health_release_20261102 tests.test_health_earth_stem_audit_patch_20261102 tests.test_health_door_break_exception_vnext tests.test_ios_qimen_lunji_release_20261102 tests.test_ios_manual_event_time_20261102 tests.test_ios_domain_interfaces_layout_20261102 tests.test_ios_setup_palace_ui_20261102 tests.test_ios_polish_p7_20261102 tests.test_ios_inputs_hitarea_p8_20261102 tests.test_health_recovery_template_v1_20261102 tests.test_user_timing_material_20261102 -v
       - name: Disease recovery V4 independent five-path source witness and date-only reading
