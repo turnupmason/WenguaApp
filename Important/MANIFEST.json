@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "1787a4a530cea91eac83fc5bdac5ec614ca9cf08"
+      "sha": "7cef9ba0faab1c079141d03ea051d72c842afa43"
     },
     {
       "platform": "python",
@@ -1382,6 +1382,60 @@
       "canonical": "data/evaluation/probability_research/v2/catboost/heldout_predictions.json",
       "snapshot": "Important/python/data/evaluation/probability_research/v2/catboost/heldout_predictions.json",
       "sha": "171bcd9f252fcdfce8891f45d9470e772fac03c9"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_research.py",
+      "snapshot": "Important/python/engine/qwen_research.py",
+      "sha": "45a5c3b9b81605dfbf1773dd2b0e931dd20978ef"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_finetune.py",
+      "snapshot": "Important/python/engine/qwen_finetune.py",
+      "sha": "3d933c55f44add5d62c89bf39b94617ce9ea1cb5"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/qwen_research.py",
+      "snapshot": "Important/python/scripts/qwen_research.py",
+      "sha": "4b54edf3b098b8789ce6aae4b8535a499905d729"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_qwen_training.py",
+      "snapshot": "Important/python/scripts/check_qwen_training.py",
+      "sha": "0572ee333e359327360ae0710589165ce8ebdab8"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_research_v1.py",
+      "snapshot": "Important/python/tests/test_qwen_research_v1.py",
+      "sha": "131a6968aa8c88ff87bb01b7b3326cb956ac6b6f"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/qwen32b_v1.json",
+      "snapshot": "Important/python/configs/qwen32b_v1.json",
+      "sha": "531ead05f77986affc8cd700cc8c96ea324b23e5"
+    },
+    {
+      "platform": "python",
+      "canonical": "requirements-qwen.txt",
+      "snapshot": "Important/python/requirements-qwen.txt",
+      "sha": "79b1625e227e386592c3b243ecdc198de0e5df79"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_research.py",
+      "snapshot": "Important/python/run_qwen_research.py",
+      "sha": "4f0c35b9e718faae3bc06a847bdacde310dddb8b"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/qwen_research_v1.yml",
+      "snapshot": "Important/python/ci/qwen_research_v1.yml",
+      "sha": "d67eb692eb42550f0582d9f48fce542f5a2a9e4f"
     }
   ]
 }

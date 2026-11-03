@@ -1,0 +1,61 @@
+{
+  "schema": "wengua_qwen32b_v1",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "section_count": 43,
+  "case_count": 194,
+  "event_group_count": 194,
+  "author_reasoning_steps": 1008,
+  "sft_rows": 793,
+  "sft_tasks": {
+    "source_rule": 602,
+    "author_case_reconstruction": 191
+  },
+  "sft_splits": {
+    "train": 639,
+    "test": 76,
+    "validation": 78
+  },
+  "event_splits": {
+    "train": 161,
+    "test": 15,
+    "validation": 18
+  },
+  "documents": 3513,
+  "fresh_question_documents": 842,
+  "production_enabled": false,
+  "forecast_supervision_rows": 0,
+  "independently_validated_prediction_model": false,
+  "notes": [
+    "Case supervision is source reconstruction, including reported feedback.",
+    "Raw chapters are reference-only and never used by the default retriever.",
+    "Only whitelisted foundations in case-free sections enter fresh-question retrieval.",
+    "Rule SFT is grounded reading/citation practice; not thousands of independent events.",
+    "Human domain-rule and question-time dialogue supervision still needed."
+  ],
+  "token_coverage": {
+    "train": {
+      "accepted": 623,
+      "accepted_tasks": {
+        "source_rule": 481,
+        "author_case_reconstruction": 142
+      },
+      "excluded_long_rows": 16
+    },
+    "validation": {
+      "accepted": 76,
+      "accepted_tasks": {
+        "source_rule": 60,
+        "author_case_reconstruction": 16
+      },
+      "excluded_long_rows": 2
+    },
+    "test": {
+      "accepted": 75,
+      "accepted_tasks": {
+        "source_rule": 61,
+        "author_case_reconstruction": 14
+      },
+      "excluded_long_rows": 1
+    }
+  }
+}

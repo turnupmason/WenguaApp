@@ -3467,3 +3467,16 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码dcdec2e191842b24e799f4534e0f610da49b8136。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41578469088_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 专业特征V2最终源码dcdec2e1实际验收：新V2工作流#41578469091的Windows3.12、Linux3.11/3.12三项全部success，包含完整字段/层次/时序/辅助宫、1080无标签参数、双后端专业模型保存重载及PyCharm根入口实际CPU双算法十组训练。主CI#41578469169双Python、旧V1模型兼容#41578469125双Python、旧健康原生#41578469088均success，完整收据docs/audits/probability_professional_v2_20261103/implementation_ci.json。本地953项0失败/0错误/3原有skip与阶段日志保留。已合入自动原生归档，最后仅文档交接，训练/特征源、字典、原库与封存App资源和该实测源码一致。没有实际4090/PyCharm人工点击或医学/定位/应期预测效度声明。新会话从active_research.json、根run_professional_training.py和V2指南继续，V1原版仅历史复现。
+
+
+### 2026-11-03 · 用户选择Qwen32B领域模型，新增独立研究路线
+
+用户明确希望以Qwen32B加入古籍与案例搭建自己的问卦模型，并确认使用4090。新路线授权优先于旧的27B不开发约束；不恢复或复制旧QimenLLM数据。官方Qwen3-32B实际模型卡/API/config已读，328亿参数、Apache-2.0、固定revision9216db5781bf21249d130ec9da846c4624c16137。入口run_qwen_research.py，细节docs/QWEN32B_RESEARCH_V1_20261103.md；不改App/原始库/原Excel。
+
+源库194事件/43章/1008作者分析不变；独立私有导出793条SFT（602去重基础阅读+191整案作者复盘），639训练/78验证/76测试，登记事件161/18/15。3案缺专门分析行不造监督；原known_before可能混后续披露，明确标回顾性摘要。3513文档/842保守基础文档可用于新问事；领域和整章资料保留reference，不让含反馈的全文绕过留出。整案分组、同段去重、assistant-only遮罩、超长不截断、引用成员检查与固定源哈希已实现。新问事完整多轮/用神组合与所有4606字段尚未自动接入该LLM入口，不称模型已经学会所有领域。
+
+4090候选NF4 QLoRA r8 q/v、2048上下文、batch1、累积8、检查点，只存适配器；doctor/长度审计/两步GPU短跑/正式训练/直接适配器推理/已运行端点RAG/PyCharm配置已实现。正式tokenizer本地2048核验：训练623可用（481基础+142整案）、16长案排除；验证76可用/2排除；测试75可用/1排除。原长案仍在私有数据，不假称全部训练。
+
+本地10项新契约测试通过；官方32B tokenizer+微型随机Qwen3真实CPU LoRA两步参数更新与独立基座重载logits一致通过。这不验证32B/NF4/4090或真实未来预测。当前未下载32B、未操作用户4090、未完成大模型留出回答评测，event_probability保持null。新增原书章0/历史事件0。完整回归、新CI待实际执行后追加。
+
+Qwen32B V1本地完整验收：963 tests，0 failures/0 errors/3既有skip；10项新契约与镜像通过，官方tokenizer+独立微型Qwen3 CPU LoRA两步/参数更新/保存重载一致实际通过。完整日志docs/audits/qwen32b_v1_20261103/full_run，长度与导出统计source_export_summary.json。无32B实训、NF4显存、4090或生成问卦质量验证声明。新CI仍待本次推送实际结果。

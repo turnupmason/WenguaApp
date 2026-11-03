@@ -1,0 +1,14 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_lora",
+  "steps": 2,
+  "tokenizer": "Qwen/Qwen3-32B",
+  "tokenizer_revision": "9216db5781bf21249d130ec9da846c4624c16137",
+  "assistant_mask_tokens": 213,
+  "total_tokens": 247,
+  "trainable_weights_changed": true,
+  "adapter_reload_logits_equal": true,
+  "loss": 11.912251949310303,
+  "real_32b_trained": false,
+  "cuda_nf4_tested": false
+}

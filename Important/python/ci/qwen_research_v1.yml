@@ -1,0 +1,45 @@
+name: Qwen32B source research and tiny CPU adapter contract
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/qwen_*.py'
+      - 'scripts/qwen_research.py'
+      - 'scripts/check_qwen_training.py'
+      - 'tests/test_qwen_research_v1.py'
+      - 'configs/qwen32b_v1.json'
+      - 'requirements-qwen.txt'
+      - 'run_qwen_research.py'
+      - '.github/workflows/qwen_research_v1.yml'
+  pull_request:
+    paths:
+      - 'src/wengua/qwen_*.py'
+      - 'scripts/*qwen*.py'
+      - 'tests/test_qwen_research_v1.py'
+      - 'configs/qwen32b_v1.json'
+      - 'requirements-qwen.txt'
+permissions:
+  contents: read
+jobs:
+  cpu-interface-not-32b-training:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-qwen.txt
+      - name: Source splits retrieval chart and no-outcome-supervision contracts (stdlib)
+        run: python -m unittest tests.test_qwen_research_v1 -v
+      - name: Tiny CPU test dependencies (no bitsandbytes or 32B weights)
+        run: |
+          python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install transformers==4.57.1 peft==0.17.1 accelerate==1.10.1
+      - name: Real Qwen3 tokenizer plus tiny random Qwen3 LoRA fit and independent reload
+        run: python -m scripts.check_qwen_training
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tiny-qwen3-cpu-contract-not-32b-or-cuda
+          path: local/qwen32b_v1/tiny_integration.json

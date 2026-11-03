@@ -1,0 +1,22 @@
+{
+  "schema": "wengua_qwen32b_v1",
+  "model_id": "Qwen/Qwen3-32B",
+  "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+  "license": "Apache-2.0",
+  "quantization": "nf4_double_quant",
+  "max_seq_length": 2048,
+  "inference_max_context": 4096,
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.05,
+  "target_modules": ["q_proj", "v_proj"],
+  "batch_size": 1,
+  "gradient_accumulation_steps": 8,
+  "learning_rate": 0.0001,
+  "epochs": 2,
+  "seed": 3407,
+  "gradient_checkpointing": true,
+  "enable_thinking": false,
+  "production_enabled": false,
+  "event_probabilities_enabled": false
+}
