@@ -8,7 +8,7 @@ from collections import Counter
 from pathlib import Path
 
 from src.wengua.probability_research import (
-    SOURCE_DB, SOURCE_SHA256, digest, extract, features, stable_json, validate_direction,
+    CONTRACTS, SOURCE_DB, SOURCE_SHA256, digest, extract, features, stable_json, validate_direction,
 )
 
 
@@ -89,6 +89,12 @@ def validate_rows(rows):
         raise ValueError('Censoring-aware time-to-event fitting is not implemented; do not treat it as ordinary classification')
     if rows[0]['task'] == 'health.body_site':
         raise ValueError('Define a separate task ID for one anatomical region, with observed positive/negative labels')
+    contract = next((t for t in json.loads(CONTRACTS.read_text(encoding='utf8'))['targets']
+                     if t['id'] == rows[0]['task']), None)
+    if contract and 'classes' in contract:
+        observed = {r.get('label') for r in rows}
+        if observed != set(contract['classes']):
+            raise ValueError('Declared outcome classes must all be observed; absent categories cannot be assigned zero probability')
     seen = set()
     for row in rows:
         if not row.get('available_before_prediction'):

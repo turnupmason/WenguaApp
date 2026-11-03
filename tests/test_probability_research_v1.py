@@ -95,7 +95,9 @@ class ProbabilityResearchTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_rows([row])
         row['context'].update({'reference_frame': 'home', 'location_time': 'at_query'})
-        validate_rows([row])
+        features(row)
+        with self.assertRaisesRegex(ValueError, 'absent categories'):
+            validate_rows([row])
 
     def test_survival_labels_cannot_be_sent_to_plain_classifier(self):
         row = copy.deepcopy(self.pack['rows'][0])
