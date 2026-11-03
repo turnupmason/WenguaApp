@@ -3475,3 +3475,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41578469088
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码dcdec2e191842b24e799f4534e0f610da49b8136。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41578469088_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+专业特征V2最终源码dcdec2e1实际验收：新V2工作流#41578469091的Windows3.12、Linux3.11/3.12三项全部success，包含完整字段/层次/时序/辅助宫、1080无标签参数、双后端专业模型保存重载及PyCharm根入口实际CPU双算法十组训练。主CI#41578469169双Python、旧V1模型兼容#41578469125双Python、旧健康原生#41578469088均success，完整收据docs/audits/probability_professional_v2_20261103/implementation_ci.json。本地953项0失败/0错误/3原有skip与阶段日志保留。已合入自动原生归档，最后仅文档交接，训练/特征源、字典、原库与封存App资源和该实测源码一致。没有实际4090/PyCharm人工点击或医学/定位/应期预测效度声明。新会话从active_research.json、根run_professional_training.py和V2指南继续，V1原版仅历史复现。

@@ -14,7 +14,7 @@ git pull --ff-only
 用 PyCharm 打开 `WenguaApp` 文件夹，将项目解释器设为之前已安装好依赖的：
 
 ```text
-C:\Users\wtmas\WenguaApp\local\probability_env\Scripts\python.exe
+C:\Users\<你的用户名>\WenguaApp\local\probability_env\Scripts\python.exe
 ```
 
 右键根目录 `run_professional_training.py` → Run。也可以选择仓库提供的 `Professional GPU` 运行配置。默认自动执行：
@@ -121,3 +121,5 @@ models/catboost/lost-recovery/   CatBoost模型及逐事件结果
 本地实际CPU终版：逻辑回归与CatBoost各五组、相同12物品/11事件，保存重载通过；完整运行约43秒。CatBoost原盘Brier 0.285914，来源专业事实0.252152，含固定用户表0.257795；先验0.275884。Log loss对应0.486435、0.462516、0.479280，先验0.469911。逻辑回归专业版Log loss约0.698，原盘约0.495，没有因加入字段而自动改善。两个最终专业模型仍全部判找回，准确率与先验相同约86.36%，不能据此宣布预测有效；不按测试成绩选择赢家。源规则、压缩全字典及小样本报告位于data/knowledge/probability_research/v2/和data/evaluation/probability_research/v2/。旧阶段完整运行目录仍在local，旧V1公开文件不动。
 
 本地终版完整回归实际953 tests、0失败、0错误、3个既有skip，全部日志与结构化结果在 `docs/audits/probability_professional_v2_20261103/full_run/`。专项36项加镜像1项实际通过；两个后端的专业/纯事实保存重载与标签泄漏不变性、旧V1兼容检查均通过；新4606字段层实际遍历1080个无标签参数组合，新增真实训练事件0。公开TSV只统一LF换行，原始本地运行原样保留。GitHub Linux/Windows与最新main状态待推送后另据实追加。
+
+专业特征V2最终源码dcdec2e1实际验收：新V2工作流#41578469091的Windows3.12、Linux3.11/3.12三项全部success，包含完整字段/层次/时序/辅助宫、1080无标签参数、双后端专业模型保存重载及PyCharm根入口实际CPU双算法十组训练。主CI#41578469169双Python、旧V1模型兼容#41578469125双Python、旧健康原生#41578469088均success，完整收据docs/audits/probability_professional_v2_20261103/implementation_ci.json。本地953项0失败/0错误/3原有skip与阶段日志保留。已合入自动原生归档，最后仅文档交接，训练/特征源、字典、原库与封存App资源和该实测源码一致。没有实际4090/PyCharm人工点击或医学/定位/应期预测效度声明。新会话从active_research.json、根run_professional_training.py和V2指南继续，V1原版仅历史复现。
