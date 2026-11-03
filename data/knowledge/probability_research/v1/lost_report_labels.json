@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "status": "experimental_source_abstract_not_clinical_or_prospective_labels",
+  "task": "lost.recovered_at_last_report",
+  "definition": "Whether this specific item was reported recovered by the last source-book feedback; NOT eventual recovery or recovery within any fixed number of days.",
+  "limitations": [
+    "Selected published cases; source-book reports have no independent external verification.",
+    "Unequal or missing follow-up duration; this pilot target must not be advertised as an eventual recovery probability.",
+    "A returned bag and its missing cash are separate items in one event family.",
+    "The final license case is retained in the registry but excluded by the first chart adapter; this does not mean no chart exists elsewhere.",
+    "Direction, environment, body site, clinical severity and survival times are not inferred from recovery labels."
+  ],
+  "labels": [
+    {
+      "case_id": "shenqi.lost_property.case01",
+      "target_item": "invoice",
+      "item_kind": "document",
+      "label": "recovered",
+      "feedback_sha256": "b5f422842a178bebfe212cf71c8dbfddf2a58294915538a76eee9b7949c0656a",
+      "feedback_source_lines": [
+        47
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case02",
+      "target_item": "identity_card",
+      "item_kind": "identity_document",
+      "label": "recovered",
+      "feedback_sha256": "6ce150e22a40292b35c95f2c053484e86952e1d81f644d376e246a46f6188f6f",
+      "feedback_source_lines": [
+        87
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case03",
+      "target_item": "coat",
+      "item_kind": "clothing",
+      "label": "recovered",
+      "feedback_sha256": "4b70f2d66f066b54cf68c8bbf10cde04947c8c2e1be085be93fc721a85318ecf",
+      "feedback_source_lines": [
+        121
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case04",
+      "target_item": "pager",
+      "item_kind": "electronics",
+      "label": "recovered",
+      "feedback_sha256": "88d42156c1685969f61b7636c8bd4835e59af6c9b3ee334689935b3b8ecb47da",
+      "feedback_source_lines": [
+        159
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case05",
+      "target_item": "cash",
+      "item_kind": "cash",
+      "label": "recovered",
+      "feedback_sha256": "81b1629159cefdb25543971d74a38cadf74a44504c6c7b0f5ef9067511d044f3",
+      "feedback_source_lines": [
+        197
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case06",
+      "target_item": "files",
+      "item_kind": "document",
+      "label": "recovered",
+      "feedback_sha256": "271baf9179fa0bf1283d0e11435a70f18d46fbad8722ff66cd121765f7c99710",
+      "feedback_source_lines": [
+        251
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case07",
+      "target_item": "identity_card",
+      "item_kind": "identity_document",
+      "label": "recovered",
+      "feedback_sha256": "acbea6bf4063401ec107f1dbb7e0a7e424ed731c2f67752e98754fae304f7c25",
+      "feedback_source_lines": [
+        305
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case08",
+      "target_item": "car",
+      "item_kind": "vehicle",
+      "label": "not_recovered",
+      "feedback_sha256": "4e5de82027827332957cb5c4ba2fbfc7e8bb5fd2f337eb3f0779bba4401e6f21",
+      "feedback_source_lines": [
+        353
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case01",
+      "target_item": "bag",
+      "item_kind": "bag",
+      "label": "recovered",
+      "feedback_sha256": "fded2d9f10b73eae1fccd775670889b420dcd495e3af4852042946f79f83d0b1",
+      "feedback_source_lines": [
+        11
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case01",
+      "target_item": "cash_inside_bag",
+      "item_kind": "cash",
+      "label": "not_recovered",
+      "feedback_sha256": "fded2d9f10b73eae1fccd775670889b420dcd495e3af4852042946f79f83d0b1",
+      "feedback_source_lines": [
+        11
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case02",
+      "target_item": "motorbike",
+      "item_kind": "vehicle",
+      "label": "recovered",
+      "feedback_sha256": "83a91b83eefb93be86cf90914b781ce209fdd0913e04272c3e248c7b8578575a",
+      "feedback_source_lines": [
+        52
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case03",
+      "target_item": "earrings",
+      "item_kind": "jewelry",
+      "label": "recovered",
+      "feedback_sha256": "0234888b1983cf9edb61b631afd1730d4ff337a0676c06ae20d8807b1fa916a3",
+      "feedback_source_lines": [
+        123
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case04",
+      "target_item": "motorbike",
+      "item_kind": "vehicle",
+      "label": "recovered",
+      "feedback_sha256": "44c0a9db398cb08f9d601f169b2063db8a2052e5cba5b3b195479abe7eb3e7d8",
+      "feedback_source_lines": [
+        180
+      ],
+      "exclude_reason": "initial_sixyao_not_qimen_at_query_later_qimen_learning_and_replay_not_same_initial_protocol"
+    },
+    {
+      "case_id": "kaiwu.final.license",
+      "target_item": "license",
+      "item_kind": "identity_document",
+      "label": "not_recovered",
+      "feedback_sha256": "49023b817adfa0dfc68560246c8620dfaef66f345c3608b2c104091cb442b117",
+      "feedback_source_lines": []
+    }
+  ]
+}

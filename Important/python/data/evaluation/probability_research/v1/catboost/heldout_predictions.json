@@ -1,0 +1,146 @@
+[
+  {
+    "case_id": "shenqi.lost_property.case01",
+    "event_family_id": "shenqi.lost_property.case01",
+    "target_item": "invoice",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.03524343956325471,
+      "recovered": 0.9647565604367453
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case02",
+    "event_family_id": "shenqi.lost_property.case02",
+    "target_item": "identity_card",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.35616616993375094,
+      "recovered": 0.6438338300662491
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case03",
+    "event_family_id": "shenqi.lost_property.case03",
+    "target_item": "coat",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.03582102903061102,
+      "recovered": 0.964178970969389
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case04",
+    "event_family_id": "shenqi.lost_property.case04",
+    "target_item": "pager",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.035912463971352504,
+      "recovered": 0.9640875360286475
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case05",
+    "event_family_id": "shenqi.lost_property.case05",
+    "target_item": "cash",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.14658498068383896,
+      "recovered": 0.853415019316161
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case06",
+    "event_family_id": "shenqi.lost_property.case06",
+    "target_item": "files",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.04657174084297189,
+      "recovered": 0.9534282591570281
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case07",
+    "event_family_id": "shenqi.lost_property.case07",
+    "target_item": "identity_card",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.03261182469070811,
+      "recovered": 0.9673881753092919
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "shenqi.lost_property.case08",
+    "event_family_id": "shenqi.lost_property.case08",
+    "target_item": "car",
+    "observed_label": "not_recovered",
+    "class_scores": {
+      "not_recovered": 0.04989395331390212,
+      "recovered": 0.9501060466860979
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "kaiwu.lost_property.case01",
+    "event_family_id": "kaiwu.lost_property.case01",
+    "target_item": "bag",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.07814091998614758,
+      "recovered": 0.9218590800138524
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "kaiwu.lost_property.case01",
+    "event_family_id": "kaiwu.lost_property.case01",
+    "target_item": "cash_inside_bag",
+    "observed_label": "not_recovered",
+    "class_scores": {
+      "not_recovered": 0.08021300506926654,
+      "recovered": 0.9197869949307335
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "kaiwu.lost_property.case02",
+    "event_family_id": "kaiwu.lost_property.case02",
+    "target_item": "motorbike",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.10869695570061422,
+      "recovered": 0.8913030442993858
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  },
+  {
+    "case_id": "kaiwu.lost_property.case03",
+    "event_family_id": "kaiwu.lost_property.case03",
+    "target_item": "earrings",
+    "observed_label": "recovered",
+    "class_scores": {
+      "not_recovered": 0.03491088256611863,
+      "recovered": 0.9650891174338814
+    },
+    "research_percentages": null,
+    "user_facing_percentages": null
+  }
+]

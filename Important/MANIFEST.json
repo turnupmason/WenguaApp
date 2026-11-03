@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "6daf1490a7bbfc37841a45c0397a4e19b621150a"
+      "sha": "a051a191e44f088f8edf7d0456b63895eda955a0"
     },
     {
       "platform": "python",
@@ -1142,6 +1142,102 @@
       "platform": "python",
       "snapshot": "Important/python/ci/health_recovery_v4_native.yml",
       "sha": "ded4f5737275579a5bf42b9b01782e32c2d4734d"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/probability_research.py",
+      "snapshot": "Important/python/engine/probability_research.py",
+      "sha": "623093de13bf7d62319ef9f61be7fc8fe8307c50"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/probability_research.py",
+      "snapshot": "Important/python/scripts/probability_research.py",
+      "sha": "93e33a15bdc714e64307d30ebca7e51e23e7975e"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_probability_training.py",
+      "snapshot": "Important/python/scripts/check_probability_training.py",
+      "sha": "d8fbbe2f94ee5044e9ef130f5742b7685b716deb"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_probability_research_v1.py",
+      "snapshot": "Important/python/tests/test_probability_research_v1.py",
+      "sha": "628f50d851efdcaa3f5e14680a7800ed4998d00a"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/probability_research/v1/targets.json",
+      "snapshot": "Important/python/data/knowledge/probability_research/v1/targets.json",
+      "sha": "182a2c9c28eeeab3a75b4240dc994b214d831c3d"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/probability_research/v1/lost_report_labels.json",
+      "snapshot": "Important/python/data/knowledge/probability_research/v1/lost_report_labels.json",
+      "sha": "7e9e6f8bf1d118b00410890e0bf5d3cdcf70c9e2"
+    },
+    {
+      "platform": "python",
+      "canonical": "requirements-probability.txt",
+      "snapshot": "Important/python/requirements-probability.txt",
+      "sha": "a2443640e870bfa9afce4be5fb8aea7fb048e3ac"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/probability_research_local_v1.yml",
+      "snapshot": "Important/python/ci/probability_research_local_v1.yml",
+      "sha": "ad958e505a4cd1920c2571d4d4f2d9b5e7ff3d29"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/catboost/evaluation.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/catboost/evaluation.json",
+      "sha": "f9a0eaeb4ab06acef9c07a1529e5c46a6238bff6"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/catboost/heldout_predictions.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/catboost/heldout_predictions.json",
+      "sha": "15f28ff4054e82135e9b2e900ae584f2db35f6ce"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/catboost/model.cbm",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/catboost/model.cbm",
+      "sha": "17ed9ba6feec0818742dfcdeb6211c2bd53476d8"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/catboost/model.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/catboost/model.json",
+      "sha": "2643239cb736e7e3dd35dd795c994a004525aa58"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/inventory.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/inventory.json",
+      "sha": "b5df1c632e20974fef47b9b1c46f51b81ae9784d"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/logistic/evaluation.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/logistic/evaluation.json",
+      "sha": "cc83923e25754d7fffbb4ae0417f1c60ebcd3cd7"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/logistic/heldout_predictions.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/logistic/heldout_predictions.json",
+      "sha": "df67e1cef57aadcec45b745900cdfd31bbedb948"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/evaluation/probability_research/v1/logistic/model.json",
+      "snapshot": "Important/python/data/evaluation/probability_research/v1/logistic/model.json",
+      "sha": "7c534fbdb3aafd936e7b92e6309327e396fffff8"
     }
   ]
 }

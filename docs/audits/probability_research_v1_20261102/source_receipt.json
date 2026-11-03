@@ -1,0 +1,16 @@
+{
+  "type": "tested_worktree_source_byte_receipt",
+  "files": {
+    "src/wengua/probability_research.py": "1151160e3d1bbbec30cfaa606bf9abf9e2c98db6c418fb117c13891a3a45c281",
+    "scripts/probability_research.py": "d30548ebd98d929470f0a49dee5fb60694edc4a0a2892463c08e261eb683b92b",
+    "scripts/check_probability_training.py": "6435ccaa6fdb2fd7cff3fe59ec2be20979ac6ef33ffee753999dd03a20c7afcf",
+    "tests/test_probability_research_v1.py": "dcbf1f08251348e7a4e48eda03f76179f061ee2f71e8de52089c87e44a04153a",
+    "requirements-probability.txt": "5a674175b5223917406b2f865cb01eb9fbdd0f37f426f0200410135fc7b505fc",
+    "data/knowledge/probability_research/v1/targets.json": "cb813ff08de68d221fc9f09c2be34cc2db6fc19dd3801c59f7d3d6eb32ea268d",
+    "data/knowledge/probability_research/v1/lost_report_labels.json": "8c6448d43857a1d963db803103f28b7aa05f00e933173dc711c6c60a45896315"
+  },
+  "source_db_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "gpu_executed": false,
+  "independent_real_events": 11,
+  "synthetic_calibration_fixture_in_real_cohort": false
+}

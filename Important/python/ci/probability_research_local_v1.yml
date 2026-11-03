@@ -1,0 +1,43 @@
+name: Local probability research CPU compatibility (not predictive validation)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/probability_research.py'
+      - 'scripts/probability_research.py'
+      - 'scripts/check_probability_training.py'
+      - 'tests/test_probability_research_v1.py'
+      - 'data/knowledge/probability_research/**'
+      - 'requirements-probability.txt'
+      - '.github/workflows/probability_research_local_v1.yml'
+permissions:
+  contents: read
+jobs:
+  local_model_cpu:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-probability.txt
+      - run: python -m pip install -r requirements-probability.txt
+      - run: python -m unittest tests.test_probability_research_v1 tests.test_important_mirror_integrity_20261026 -v
+      - run: python -m scripts.check_probability_training --backend logistic
+      - run: python -m scripts.check_probability_training --backend catboost
+      - run: python -m scripts.probability_research export
+      - run: python -m scripts.probability_research train --backend catboost --device CPU --output local/probability_v1/catboost
+      - uses: actions/upload-artifact@v4
+        with:
+          name: probability-research-cpu-${{ matrix.python-version }}
+          path: |
+            local/probability_v1/data/inventory.json
+            local/probability_v1/catboost/evaluation.json
+            local/probability_v1/catboost/heldout_predictions.json
+            local/probability_v1/catboost/model.json
+            local/probability_v1/catboost/model.cbm
