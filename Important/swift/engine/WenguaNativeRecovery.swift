@@ -116,6 +116,7 @@ struct WenguaRecoveryRuntime: Decodable {
         let premise_missing:String;let premise_conflict:String;let method_conflict:String
         let no_candidate:String;let precision_missing:String;let flow_conflict:String
         let context_conflict:String;let stem_branch_conflict:String;let chief_xun_conflict:String
+        let hour_coverage_limit:String;let partial_precision:String
         let unknown_axis:String;let known_axis:String;let scale_line:String;let support:String
         let conditions:String;let summary:String;let footer:String;let not_ready_summary:String
         let method_names:[String:String];let role_method:String;let fact_names:[String:String];let window_zone:String
@@ -337,6 +338,7 @@ enum WenguaNativeRecovery {
         var state="recovery_premise_unresolved",reason=tx.premise_missing
         var methods:[WenguaRecoveryMethod]=[],windows:[WenguaRecoveryPeriod]=[],alternatives:[WenguaRecoveryMethod]=[]
         var traces:[WenguaRecoverySearch]=[],precision:[WenguaRecoveryPrecision]=[]
+        if scales.contains("hour") {precision.append(.init(scale:"hour",reason:tx.hour_coverage_limit))}
         if !supporters.isEmpty && !counter.isEmpty {state="recovery_premise_conflict";reason=tx.premise_conflict}
         else if !supporters.isEmpty {
             state=timeScale==nil ? "conditional_scales":"conditional_windows";reason=""
@@ -405,7 +407,7 @@ enum WenguaNativeRecovery {
         if !counter.isEmpty {basis.append(tx.premise_conflict)}
         if !alternatives.isEmpty {basis.append(windows.isEmpty ? reason:"部分取法仍有分歧，未用其候选替代已成立的条件路径。")}
         if basis.isEmpty {basis.append("现有分析未形成条件完整的制病链，不能仅凭全盘等级套用成功类应期。")}
-        if !precision.isEmpty {basis.append(tx.precision_missing)}
+        if !precision.isEmpty {basis.append(windows.isEmpty ? tx.precision_missing:tx.partial_precision)}
         let contents=[timeText,paceText,basis.joined(separator:"\n\n"),summary]
         let ids=["01_recovery_time","02_pace","03_method","04_summary"]
         let sections=(0..<4).map{WenguaNativeCustomerSection(id:ids[$0],title:tx.titles[$0],text:contents[$0])}

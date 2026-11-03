@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "f7eaaaa6eeb7accfa9710ee8b1fb991e970e20ce"
+      "sha": "9a4f8f12cf885b1a4daf147ff9b511a045c15364"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "f7eaaaa6eeb7accfa9710ee8b1fb991e970e20ce"
+      "sha": "9a4f8f12cf885b1a4daf147ff9b511a045c15364"
     },
     {
       "platform": "python",
@@ -1051,31 +1051,31 @@
       "platform": "python",
       "canonical": "src/wengua/health_recovery_v3.py",
       "snapshot": "Important/python/engine/health_recovery_v3.py",
-      "sha": "4e8b68f86605db8a853062c62cb3aa7ce679d09e"
+      "sha": "007064d260e0f8ea0af5e11cacaa57e7232d853d"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_health_recovery_native_20261103.py",
       "snapshot": "Important/python/scripts/check_health_recovery_native_20261103.py",
-      "sha": "67b14dcfc2bab44553477efe89007c859d55449b"
+      "sha": "4018213e7723659d538f63f88752aaa522678eaa"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_recovery_runtime_v3_20261103.py",
       "snapshot": "Important/python/tests/test_health_recovery_runtime_v3_20261103.py",
-      "sha": "d1b56c1541d220aa7d86162041460e24e855efde"
+      "sha": "44657322a4bef533f099393b7d2baa7f57578b6b"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/runtime_v3_20261102.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/runtime_v3_20261102.json",
-      "sha": "812a49cdb37401adbb8e0cee0cb2efde63f33a59"
+      "sha": "05bcec291cce3ad242180db8b48cfa3a325ade17"
     },
     {
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/WenguaNativeRecovery.swift",
       "snapshot": "Important/swift/engine/WenguaNativeRecovery.swift",
-      "sha": "11574b862275cd92578cc9c341cfd8f58ba378d1"
+      "sha": "dd408f0f1a48aca2f0e3b558005270b4c98c5872"
     },
     {
       "platform": "swift",
@@ -1093,7 +1093,7 @@
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/active_release.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/active_release.json",
-      "sha": "58088aa5392f6ecb5f66945e970071b97c12780e"
+      "sha": "499cbcac1bccb2a363ce7490032480395095c082"
     }
   ]
 }

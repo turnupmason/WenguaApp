@@ -2,7 +2,7 @@
   "schema": "wengua_health_recovery_active_release_v1",
   "version": "health.recovery.V3",
   "runtime": "runtime_v3_20261102.json",
-  "runtime_sha256": "89b24dcea6f186488f4c4143fa6f39fa13c767dc64dc496ea87b8b2829e8825d",
+  "runtime_sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267",
   "goal": "recovery",
   "question": "病什么时候好",
   "app_route_enabled": true,

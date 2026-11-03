@@ -61,17 +61,19 @@ def generate(folder):
         ('hidden_join',synthetic_role(palace=8,carrier='戊',earth='丙')),
         ('mixed_conflict',synthetic_role(palace=9,carrier='戊',earth='癸')),
         ('stem_branch',synthetic_role(palace=2,carrier='辛',earth='戊')),
-        ('fuyin',synthetic_role()),('fanyin',synthetic_role()),('growth',synthetic_role())]
+        ('fuyin',synthetic_role()),('fanyin',synthetic_role()),('growth',synthetic_role()),
+        ('zi_hour',synthetic_role(palace=9))]
     for name,role in synthetic:
         f=copy.deepcopy(base)
         f['reference_iso']='2026-10-10T09:00:00-04:00'
-        f['fuyin']=name=='fuyin';f['fanyin']=name=='fanyin'
+        f['fuyin']=name in ('fuyin','zi_hour');f['fanyin']=name=='fanyin'
         f['roles']=[synthetic_role(id='illness',palace=2),synthetic_role(id='hour',palace=4)]
         if role['id']!='patient':f['roles'].append(synthetic_role())
         f['roles'].append(role)
         f['controls']=[{'role':role['id'],'direction':'克','cell':'有效克制','eligible':True,'attacker':role['id']}]
-        result=analyze_recovery(f,time_scale='day')
-        case={'id':'synthetic_'+name,'kind':'synthetic_unit_only_not_real_chart','facts':f,'time_scale':'day'}
+        scale='hour' if name=='zi_hour' else 'day'
+        result=analyze_recovery(f,time_scale=scale)
+        case={'id':'synthetic_'+name,'kind':'synthetic_unit_only_not_real_chart','facts':f,'time_scale':scale}
         cases.append(case);expected.append({'id':case['id'],'facts':f,'result':result})
     (folder/'input.json').write_text(json.dumps({'seed':seed,'selection':'all accepted fixed and sequential seeded clocks; no score/outcome filtering','rejected':rejected,'cases':cases},ensure_ascii=False,indent=2)+'\n')
     (folder/'expected.json').write_text(json.dumps(expected,ensure_ascii=False,indent=2)+'\n')
@@ -86,7 +88,7 @@ def compare(folder,native):
     if run.returncode:raise RuntimeError(f'Native recovery failed ({run.returncode}): {run.stderr[:2500]}')
     actual=[json.loads(line) for line in run.stdout.splitlines() if line.strip()]
     assert len(actual)==len(expected),(len(actual),len(expected))
-    keys=['status','sections','windows','methods','alternative_windows','support','counterevidence','calendar_search']
+    keys=['version','topic_id','status','sections','windows','methods','alternative_windows','support','counterevidence','calendar_search','precision_limits','source_id','source_sha256','conditional_only','medical_validity_claimed']
     errors=[]
     def equal(a,b,label):
         if normalize(a)!=normalize(b):
@@ -100,7 +102,9 @@ def compare(folder,native):
             ee=sorted(e['facts'][key],key=lambda v:v['id'] if key=='roles' else v['role'])
             equal(aa,ee,[a['id'],'facts',key])
         for key in ('reference_iso','timezone','pillars','dun','fuyin','fanyin'):
-            equal(a['facts'][key],e['facts'][key],[a['id'],'facts',key])
+            if key=='reference_iso':
+                equal(datetime.fromisoformat(a['facts'][key]).timestamp(),datetime.fromisoformat(e['facts'][key]).timestamp(),[a['id'],'facts',key])
+            else:equal(a['facts'][key],e['facts'][key],[a['id'],'facts',key])
         for key in keys:
             equal(a['result'][key],e['result'][key],[a['id'],key])
     (folder/'differences.json').write_text(json.dumps(errors,ensure_ascii=False,indent=2)+'\n')

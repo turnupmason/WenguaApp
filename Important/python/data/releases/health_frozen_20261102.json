@@ -206,12 +206,12 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeRecovery.swift",
       "kind": "source",
-      "sha256": "970c89ed46461c793c1d6b7090597bb7514a4db0609e5aaf0d13673b7ba4e626"
+      "sha256": "982c249da6d25fb3bf27a090c7ad297fe44d7c63eebe3f38453a5f196fef2b82"
     },
     {
       "path": "data/knowledge/health_recovery/runtime_v3_20261102.json",
       "kind": "resource",
-      "sha256": "89b24dcea6f186488f4c4143fa6f39fa13c767dc64dc496ea87b8b2829e8825d"
+      "sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267"
     }
   ],
   "engineering_patch": {

@@ -114,6 +114,16 @@ class RecoveryEndToEnd(unittest.TestCase):
     def test_original_random_draw_does_not_gain_invented_cure_date(self):
         self.assertEqual(self.bad['status'],'recovery_premise_unresolved');self.assertEqual(self.bad['windows'],[])
         self.assertIn('伏吟',self.bad['sections'][1]['text'])
+    def test_unimplemented_zi_hour_is_disclosed_instead_of_silently_skipped(self):
+        f=copy.deepcopy(self.good['facts'])
+        f['reference_iso']='2026-10-10T09:00:00-04:00'
+        f['roles']=[synthetic_role(id='illness',palace=2),synthetic_role(id='hour',palace=4),synthetic_role(palace=9)]
+        f['fuyin']=True;f['fanyin']=False
+        f['controls']=[{'role':'patient','direction':'克','cell':'有效克制','eligible':True,'attacker':'patient'}]
+        r=analyze_recovery(f,time_scale='hour')
+        self.assertEqual(r['windows'],[]);self.assertEqual(r['status'],'precision_unavailable')
+        self.assertIn('子时',r['precision_limits'][0]['reason'])
+
     def test_non_control_relations_do_not_claim_an_attacker(self):
         for c in self.bad['facts']['controls']:
             if c['direction'] not in ('克','被克'):

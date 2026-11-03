@@ -268,6 +268,7 @@ def analyze_recovery(facts, *, time_scale=None, deadline_iso=None, runtime=None)
     if deadline_iso and _instant(deadline_iso,facts['timezone']) <= _instant(facts['reference_iso'],facts['timezone']):
         raise ValueError('Event deadline must follow the reference instant')
     state='recovery_premise_unresolved';reason=tx['premise_missing'];methods=[];windows=[];alternatives=[];traces=[];precision=[]
+    if 'hour' in scales:precision.append({'scale':'hour','reason':tx['hour_coverage_limit']})
     if supporters and counter:state='recovery_premise_conflict';reason=tx['premise_conflict']
     elif supporters:
         state='conditional_windows' if time_scale else 'conditional_scales';reason=''
@@ -337,7 +338,7 @@ def analyze_recovery(facts, *, time_scale=None, deadline_iso=None, runtime=None)
     if counter:basis.append(tx['premise_conflict'])
     if alternatives:basis.append('部分取法仍有分歧，未用其候选替代已成立的条件路径。' if windows else reason)
     if not basis:basis.append('现有分析未形成条件完整的制病链，不能仅凭全盘等级套用成功类应期。')
-    if precision:basis.append(tx['precision_missing'])
+    if precision:basis.append(tx['partial_precision'] if windows else tx['precision_missing'])
     sections=[{'id':i,'title':title,'text':text} for i,title,text in zip(
         ['01_recovery_time','02_pace','03_method','04_summary'],tx['titles'],[time_text,pace_text,'\n\n'.join(basis),summary])]
     return {'version':r['version'],'topic_id':'health.recovery','status':state,'reference_iso':facts['reference_iso'],

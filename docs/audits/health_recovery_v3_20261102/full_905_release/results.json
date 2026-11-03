@@ -1,0 +1,24 @@
+{
+  "source_sha": "866f3d1b1fcf832952d1527fee6caa57316130f9",
+  "worktree_diff_sha256": "b9c7b4303317cba7592f4ede014374a04f33c87c679efd654d3fd588355a849a",
+  "sealed_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c",
+  "tests_run": 905,
+  "failures": 0,
+  "errors": 0,
+  "skipped": [
+    {
+      "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+      "reason": "Optional Moshier external cross-reference not installed"
+    },
+    {
+      "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+      "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+    },
+    {
+      "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+      "reason": "V7.8 historical fixture; active V7.9 tested independently"
+    }
+  ],
+  "full_log_sha256": "6470c5126085eb2c83cc1e79a358563856f318456c7c52b1d15e0b0ef278ea6a",
+  "records": []
+}
