@@ -116,5 +116,27 @@
   "new_historical_cases": 0,
   "clinical_validation_claimed": false,
   "runtime_sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267",
-  "frozen_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c"
+  "frozen_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c",
+  "post_release_metadata_checks": {
+    "source_sha": "061993e0f5c426342f90497b965fa537fb23f4a0",
+    "runs": [
+      {
+        "conclusion": "success",
+        "databaseId": 41552594963,
+        "headSha": "061993e0f5c426342f90497b965fa537fb23f4a0",
+        "name": "Sealed health V9 scoring V11 template Python native parity",
+        "status": "completed",
+        "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41552594963"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 41552594962,
+        "headSha": "061993e0f5c426342f90497b965fa537fb23f4a0",
+        "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+        "status": "completed",
+        "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41552594962"
+      }
+    ],
+    "production_source_and_resource_pins_unchanged_from_verified_build": true
+  }
 }
