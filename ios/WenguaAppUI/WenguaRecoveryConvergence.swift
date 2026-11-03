@@ -118,6 +118,9 @@ enum WenguaRecoveryConvergence {
     }
     static func scopedMethod(_ role:WenguaRecoveryRole,_ facts:WenguaRecoveryFacts,_ shared:WenguaRecoveryRuntime)throws->WenguaRecoveryMethod {
         let t=shared.tables
+        if role.carrier=="癸",role.palace==4,role.tomb_branches.isEmpty,["not_void","fake_void"].contains(role.void_state),role.horse_branch==nil {
+            return .init(role:role.id,palace:4,method:"punishment",branches:["亥"],stems:[],rule_ids:["T060","T063","U006"],status:"selected")
+        }
         if ["not_void","fake_void"].contains(role.void_state),role.horse_branch==nil,role.tomb_branches.isEmpty,
            let a=t.hidden[role.carrier],let joined=t.join[a],t.palace_branches[String(role.palace)]!.contains(joined) {
             return .init(role:role.id,palace:role.palace,method:"combination",branches:[t.clash[a]!],stems:[],rule_ids:["T078","U003"],status:"selected")
@@ -198,6 +201,7 @@ enum WenguaRecoveryConvergence {
             basis.append(try c.phrase("control",["role":shared.text.role_names[path.role]!,"palace":c.palaces[String(role.palace)]!,"cell":path.cell!]))
             basis.append(try c.phrase("method",["method":shared.text.method_names[method.method]!,"branches":method.branches.joined(separator:"、")]))
             if let ready {basis.append(try c.phrase("patient_ready",["date":try humanDate(ready)]))}
+            if method.rule_ids.contains("U006") {basis.append(try c.phrase("verified_striking"))}
             if !path.eligible {basis.append(try c.phrase("release_condition"))}
             if counter {basis.append(try c.phrase("patient_counter"))}
             break

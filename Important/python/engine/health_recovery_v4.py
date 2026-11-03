@@ -58,6 +58,12 @@ def scoped_method(role,facts):
     This selects its external branch's clash, never silently combines layers.
     """
     t=load_runtime()['tables'];a=t['hidden'].get(role['carrier']);pb=t['palace_branches'][str(role['palace'])]
+    if role['carrier']=='癸' and role['palace']==4 and not role['tomb_branches'] and role['void_state'] in ('not_void','fake_void') and not role['horse_branch']:
+        # Both Jia and Gui have no tomb at Chen/Si in the sealed 120-stage
+        # table. The notes' bare 'tomb' wording cannot invent a Chen tomb.
+        # The independently explicit Yin-Si striking is relieved by Hai join.
+        return {'role':role['id'],'palace':4,'method':'punishment','branches':['亥'],'stems':[],
+                'rule_ids':['T060','T063','U006'],'status':'selected'}
     if role['void_state'] in ('not_void','fake_void') and not role['horse_branch'] and not role['tomb_branches'] and a and t['join'][a] in pb:
         return {'role':role['id'],'palace':role['palace'],'method':'combination','branches':[t['clash'][a]],'stems':[],
                 'rule_ids':['T078','U003'],'status':'selected'}
@@ -181,6 +187,7 @@ def analyze_recovery_v4(facts,context,*,duration=None):
         basis.append(fill(tx['control'],role=r['text']['role_names'][path['role']],palace=c['palaces'][str(role['palace'])],cell=path['cell']))
         basis.append(fill(tx['method'],method=r['text']['method_names'][method['method']],branches='、'.join(method['branches'])))
         if ready_date:basis.append(fill(tx['patient_ready'],date=human_date(ready_date)))
+        if 'U006' in method['rule_ids']:basis.append(tx['verified_striking'])
         if not path['eligible']:basis.append(tx['release_condition'])
         if counter:basis.append(tx['patient_counter'])
         break

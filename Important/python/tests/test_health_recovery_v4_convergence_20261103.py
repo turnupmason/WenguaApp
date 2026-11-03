@@ -62,9 +62,13 @@ class RecoveryDayPresentation(unittest.TestCase):
  def run_clock(self,iso):return auto_cast_health_recovery_v4(iso=iso,timezone_name='America/New_York',inquiry={'intent':'recovery','relationship':'self','consultation_context':'direct_self'})
  def test_actual_original_random_cast_yields_sourced_release_day(self):
   r=self.run_clock('2026-11-10T04:00:00-05:00')
-  self.assertEqual(r['status'],'release_day');self.assertEqual(r['selected_day']['ganzhi'],'戊戌')
-  self.assertEqual(r['selected_day']['start_iso'][:10],'2026-11-20')
-  self.assertIn('2026年11月20日',r['sections'][0]['text']);self.assertIn('戌日',r['sections'][2]['text'])
+  self.assertEqual(r['status'],'release_day');self.assertEqual(r['selected_day']['ganzhi'],'癸亥')
+  self.assertEqual(r['selected_day']['start_iso'][:10],'2026-12-15')
+  self.assertIn('2026年12月15日',r['sections'][0]['text']);self.assertIn('亥日',r['sections'][2]['text'])
+  self.assertIn('未见墓',r['sections'][2]['text']);self.assertEqual(r['methods'][0]['method'],'punishment')
+  table=source_full12()
+  self.assertEqual([table['甲']['branch_to_stage'][b] for b in ('辰','巳')],['衰','病'])
+  self.assertEqual([table['癸']['branch_to_stage'][b] for b in ('辰','巳')],['养','胎'])
  def test_executor_stem_refines_branch_to_a_single_real_day(self):
   r=self.run_clock('2026-10-27T05:00:00-04:00')
   self.assertEqual(r['selected_day']['ganzhi'],'辛卯');self.assertTrue(r['selected_day']['executor_stem_matched'])
