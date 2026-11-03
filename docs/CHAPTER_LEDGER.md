@@ -1950,3 +1950,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 本地10项新契约测试通过；官方32B tokenizer+微型随机Qwen3真实CPU LoRA两步参数更新与独立基座重载logits一致通过。这不验证32B/NF4/4090或真实未来预测。当前未下载32B、未操作用户4090、未完成大模型留出回答评测，event_probability保持null。新增原书章0/历史事件0。完整回归、新CI待实际执行后追加。
 
 Qwen32B V1本地完整验收：963 tests，0 failures/0 errors/3既有skip；10项新契约与镜像通过，官方tokenizer+独立微型Qwen3 CPU LoRA两步/参数更新/保存重载一致实际通过。完整日志docs/audits/qwen32b_v1_20261103/full_run，长度与导出统计source_export_summary.json。无32B实训、NF4显存、4090或生成问卦质量验证声明。新CI仍待本次推送实际结果。
+
+
+### 当前封存轻重回归实测 · run 41694212011
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码63557bd4c3e701e5c5a67c92f3d3f9cc1c63203d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694212011_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
