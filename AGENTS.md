@@ -3380,3 +3380,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 用户要求全部接通，新增独立 health_recovery_v3.py、WenguaNativeRecovery.swift 与共用 runtime_v3_20261102.json；复用冻结患者绑定／真假空／条件制病结果，不改轻重或病位数值。固定“病什么时候好”，四段时间／缓急／依据／断语，未知单位日月分开。日时历法与真实节月／立春年区间、时区／DST、当前周期裁剪、截止时间和冲突分支有实际实现。App第三健康入口、专业页和首页、可选历史字段已接。模板和取法矛盾仍保守输出，不保证任意盘有日期；不输出死亡日或使用反馈。来源／专项／旧UI契约迁移和验收详见docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md；Swift与Xcode待新提交真实执行追加。旧p9源／测试及失败日志保留，Important逐字同步，原七资源不动。
 
 本轮完整本地最终 903 tests，0 failures／0 errors／3 既有 skip。新专项 23、来源／旧草稿／镜像联合 45 项通过。实际原生和 Xcode 待新提交执行，未预报通过。
+
+
+### 当前封存轻重回归实测 · run 41550736856
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6cb634c15155f1d7071949b5227ee1d7cc28a093。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41550736856_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
