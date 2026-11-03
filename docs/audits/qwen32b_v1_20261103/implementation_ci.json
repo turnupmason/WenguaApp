@@ -1,0 +1,106 @@
+{
+  "implementation_source_sha": "6b543fb22a3358f2811e569930841a0bf7917651",
+  "remote_verified_files": {
+    "src/wengua/qwen_research.py": "7725ac7d704295cd1917b3773d8a0f7bdca7b64a872b084aba31e05fd93f04c3",
+    "src/wengua/qwen_finetune.py": "2d89b58a6aef4a312b0abf626343c396802390afeabace592c7e82fc33f17381",
+    "scripts/qwen_research.py": "d4912a117175704674f3287b16e40d216ebaa79854a1f845e07b6453379a5f1c",
+    "scripts/check_qwen_training.py": "86c11dd6f92824e6afcdfeb1689b03b39f123a5e139aaec3f098c0e49fb29ec3",
+    "configs/qwen32b_v1.json": "e8024a3df1eae90a37a001b8d04634a6ecf29582266d673ab40849aa831e7da1",
+    "requirements-qwen.txt": "ac791dad2f673e4a609caefa196185a0f0117f1d5d1f0d1d72bf636d26a0bbbb",
+    "run_qwen_research.py": "9cfbb175375d86721e43997862c66adb8d993178f3a5f619540506075890f08e",
+    "tests/test_qwen_research_v1.py": "59a887253eeb4e91d145703d4762bade838eefea6eb9b33d78139c953aeba843",
+    ".github/workflows/qwen_research_v1.yml": "2ee6e8f86614739c6395ecd9bac1238d713287303f4ae7bc364fa2fb63a7e894"
+  },
+  "github_runs": [
+    {
+      "databaseId": 41694870045,
+      "name": "Qwen32B source research and tiny CPU adapter contract",
+      "headSha": "6b543fb22a3358f2811e569930841a0bf7917651",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41694870045",
+      "jobs": [
+        {
+          "name": "cpu-interface-not-32b-training",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41694870087,
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "headSha": "6b543fb22a3358f2811e569930841a0bf7917651",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41694870087",
+      "jobs": [
+        {
+          "name": "v80_current (3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41694870046,
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "headSha": "6b543fb22a3358f2811e569930841a0bf7917651",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41694870046",
+      "jobs": [
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "power_pair_full_text_parity",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41694212374,
+      "name": "Professional features V2 Linux Windows CPU and PyCharm launcher",
+      "headSha": "63557bd4c3e701e5c5a67c92f3d3f9cc1c63203d",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41694212374",
+      "jobs": [
+        {
+          "name": "professional (ubuntu-latest, 3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "professional (windows-latest, 3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "professional (ubuntu-latest, 3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "local_tests": {
+    "tests_run": 963,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "actual_32b_training": false,
+  "actual_cuda_nf4_memory_fit": false,
+  "actual_domain_answer_generation_evaluation": false,
+  "event_probabilities_enabled": false
+}
