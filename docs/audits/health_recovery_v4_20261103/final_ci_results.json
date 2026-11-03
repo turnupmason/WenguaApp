@@ -163,5 +163,36 @@
   "frozen_severity_and_body_site_math_unchanged": true,
   "new_original_printed_charts": 0,
   "clinical_validation_claimed": false,
-  "runtime_sha256": "35ac3646f1bdec37b6436db0b6008f4d15934df62d3d61ed0d1a2c6fb0793c2b"
+  "runtime_sha256": "35ac3646f1bdec37b6436db0b6008f4d15934df62d3d61ed0d1a2c6fb0793c2b",
+  "post_release_metadata_and_source_chronology_checks": {
+    "source_sha": "b9eb350bfa0d78f73b8df5d7d674c7586a13bc98",
+    "runs": [
+      {
+        "conclusion": "success",
+        "databaseId": 41557868042,
+        "headSha": "b9eb350bfa0d78f73b8df5d7d674c7586a13bc98",
+        "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+        "status": "completed",
+        "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41557868042"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 41557867928,
+        "headSha": "b9eb350bfa0d78f73b8df5d7d674c7586a13bc98",
+        "name": "Disease recovery V4 five-path source convergence",
+        "status": "completed",
+        "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41557867928"
+      },
+      {
+        "conclusion": "success",
+        "databaseId": 41557867906,
+        "headSha": "b9eb350bfa0d78f73b8df5d7d674c7586a13bc98",
+        "name": "Sealed health V9 scoring V11 template Python native parity",
+        "status": "completed",
+        "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41557867906"
+      }
+    ],
+    "app_source_and_packaged_resources_unchanged_from_verified_build": true,
+    "known_source_case_is_not_described_as_blind_selection": true
+  }
 }
