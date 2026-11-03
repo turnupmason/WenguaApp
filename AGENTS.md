@@ -3500,3 +3500,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 4090显存准备补充：未使用PEFT整批非量化参数上转FP32的默认准备，改为冻结基座、仅一维归一化FP32、大词嵌入/输出矩阵保留BF16/FP16，非重入检查点及CUDA混合精度；并记录真实运行显存峰值。微型CPU BF16 LoRA两步及独立重载数值一致实际通过，开发过程autocast/输出dtype检查与日志保留在bf16_development_notes.json；不代表NF4/32B/4090验证。提示中保留资料draft与抽象/原话标记，引用不混淆。新增源后重新完整回归，见full_run_memory/。
 
 显存准备终版完整回归再次通过：963 tests、0 failures/0 errors/3既有skip，日志full_run_memory/。首版63557bd4的新Qwen32B CPU接口CI#41694212140、主CI#41694212472双Python及旧健康原生#41694212011均success；显存准备新源码待本次推送实际CI，不能借首版通过替代。
+
+
+### 当前封存轻重回归实测 · run 41694870046
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6b543fb22a3358f2811e569930841a0bf7917651。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694870046_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
