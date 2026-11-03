@@ -1,5 +1,5 @@
 {
-  "release_id": "wengua_two_health_topics_frozen_20261102_recovery_integration_p10",
+  "release_id": "wengua_two_health_topics_frozen_20261102_recovery_correction_p11",
   "status": "user_accepted_frozen",
   "accepted_on": "2026-11-02",
   "topics": {
@@ -76,7 +76,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaPremiumReadingView.swift",
       "kind": "source",
-      "sha256": "c1c9f1196a4b28d58195d77eecde58db8b12728ecaf6523577eabd24bdb84a55"
+      "sha256": "71c461f5052c7a5e6b1ddc72dda4996c5335fde79befb93ce54ccee2d8513a23"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeCore.swift",
@@ -91,7 +91,7 @@
     {
       "path": "ios/WenguaAppUI/WenguaNativeReadingRouter.swift",
       "kind": "source",
-      "sha256": "2c5d656b87a8d094264bcbc455e37181568d3e6a6d29c19f3a9ad9b9ed78ee7c"
+      "sha256": "5baddf9a22ec343b59f3942a97cd354cd7e6d05bb68bb4cacad7827b56bdeea5"
     },
     {
       "path": "ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift",
@@ -176,7 +176,7 @@
     {
       "path": "ios/WenguaAppUI/project.yml",
       "kind": "source",
-      "sha256": "c1e6cb4d21124f2cd4aa058f8e5a539f178f3f611697189d3cd97d1638bf6603"
+      "sha256": "43feeb81148cf1c9a204ac6e0a2bf68d5e4901809c1b6dce9fcd1048228f1ac5"
     },
     {
       "path": "ios/WenguaAppUI/WenguaMeditationView.swift",
@@ -212,12 +212,22 @@
       "path": "data/knowledge/health_recovery/runtime_v3_20261102.json",
       "kind": "resource",
       "sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267"
+    },
+    {
+      "path": "ios/WenguaAppUI/WenguaRecoveryConvergence.swift",
+      "kind": "source",
+      "sha256": "2052a784964d52fccbdf10ea43e02be7478e816e41982c4851a1a4feee47a062"
+    },
+    {
+      "path": "data/knowledge/health_recovery/runtime_v4_20261103.json",
+      "kind": "resource",
+      "sha256": "eb9955828a8d5147a6b2546a6dbbb433c0e5c7dd1d36f69b31cde332627a0780"
     }
   ],
   "engineering_patch": {
-    "id": "p10_health_recovery_independent_runtime",
-    "authorization": "User 2026-11-03: 全部接通。 Authorizes disease recovery engine, native entry, rendering and offline resources.",
-    "scope": "Sealed severity V9/V11 and body-site V27 math/templates/7 original resources stay exact. Add independent recovery V3 source and runtime; enable third health topic without sharing health grade.",
-    "prior_manifest_sha256": "e08ba7bdb48116c6a64589a5709579ba83c650362e5b9fff78c33c3fb8288364"
+    "id": "p11_source_five_path_recovery_correction",
+    "authorization": "User rejects V3: implement supplied five-path reasoning and show the date directly without America timezone text. User provided original clock 2009-07-18 09:45 and clarified the adverse outcome.",
+    "scope": "Independent recovery V4; preserve V9/V11 and V27 mathematics and original seven resources; retain V3 history. Source death replay is retrospective and never emitted as recovery forecast.",
+    "prior_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c"
   }
 }

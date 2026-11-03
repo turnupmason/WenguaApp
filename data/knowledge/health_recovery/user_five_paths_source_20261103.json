@@ -1,0 +1,45 @@
+{
+  "source_id": "user_health_timing_five_paths_20261103",
+  "source_sha256": "96854c90da84dc2e1447b01fcd9ff66273b884cc8bca7d0dac631b1be82d7f0f",
+  "original_private_path": "local/user_timing_notes/20261103_five_paths/original.txt",
+  "source_type": "user_supplied_case_excerpt_without_full_chart_or_cast_time",
+  "reported_event": "adverse_not_recovery",
+  "five_paths_chronology": "retrospective_after_reported_outcome_author_explicitly_did_not_make_exact_initial_timing",
+  "full_chart_available": false,
+  "new_complete_historical_cases": 0,
+  "ocr_issues": [
+    "震二宫 conflicts with 震宫; no silent palace-number correction",
+    "半+癸 remains raw, 辛 is only a candidate",
+    "王申 remains raw; 壬申 independently checked calendar candidate",
+    "甲成 remains raw; 戌 candidate only"
+  ],
+  "birth_identity_versions": [
+    {
+      "phase": "initial",
+      "year": 1934,
+      "ganzhi_literal": "甲成"
+    },
+    {
+      "phase": "July22_correction",
+      "year": 1933,
+      "ganzhi_literal": "癸酉"
+    }
+  ],
+  "forecast_target_in_app": "recovery_only_no_death_date",
+  "specific_30_38_days_is_not_general_zhen_rule": true,
+  "cast_time_user_supplied": "2009-07-18 09:45",
+  "calendar_zone_basis": "Beijing civil time inferred for reconstruction; validated against the five supplied palace witnesses",
+  "calculated_pillars": {
+    "year": "己丑",
+    "month": "辛未",
+    "day": "甲子",
+    "hour": "己巳"
+  },
+  "computed_chart_status": "independent_reconstruction_matches_five_paths_no_original_printed_diagram",
+  "book_title_and_author": "not_supplied",
+  "original_printed_chart_count": 0,
+  "reconstructed_charts": 1,
+  "source_residual_qi_claim": "未月木有余气; preserve separately from ordinary monthly stage 囚",
+  "all_pillars_outer_claim": "literal narrative says 年月日时 all outer; reconstructed day JiaZi carrier Wu is Dui7 inner in Yin bureau, disagreement retained",
+  "time_clarification_sha256": "6bbb12a499576c954de9035d13106e782bdc03679d77b479d1e8ed50b65344c6"
+}

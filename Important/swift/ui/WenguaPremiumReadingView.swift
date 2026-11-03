@@ -250,7 +250,7 @@ struct WenguaPremiumVerdictCard: View {
                     .font(.system(size:24,weight:.semibold,design:.serif))
                     .foregroundStyle(gold)
                     .frame(maxWidth:.infinity,alignment:.center)
-                ForEach(reading.sections.filter { ["01_recovery_time","04_summary"].contains($0.id) }) { section in
+                ForEach(reading.sections.filter { $0.id=="01_recovery_time" || (reading.version != "health.recovery.V4" && $0.id=="04_summary") }) { section in
                     Text(section.text)
                         .font(.system(size:17,design:.serif))
                         .lineSpacing(6).foregroundStyle(ink)

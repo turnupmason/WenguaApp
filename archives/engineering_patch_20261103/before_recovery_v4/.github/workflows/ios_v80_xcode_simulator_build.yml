@@ -1,0 +1,448 @@
+name: Sealed V9 V11 and V27 production Xcode iOS Simulator build
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ios_v80_xcode_simulator_build.yml'
+      - 'ios/WenguaAppUI/**'
+      - 'data/releases/health_frozen_20261102.json'
+      - 'scripts/verify_frozen_health_release_20261102.py'
+      - 'tests/test_health_discomfort_v21_focus_doorpressure_20261101.py'
+      - 'tests/test_health_discomfort_v26_precise_site_prose_20261101.py'
+      - 'tests/verify_ios_premium_verdict_runtime_20261028.py'
+      - 'tests/verify_ios_discomfort_frontpage_runtime_20261102.py'
+      - 'tests/test_ios_qimen_lunji_release_20261102.py'
+      - 'tests/test_ios_manual_event_time_20261102.py'
+      - 'tests/test_ios_domain_interfaces_layout_20261102.py'
+      - 'tests/test_ios_setup_palace_ui_20261102.py'
+      - 'tests/verify_ios_manual_event_time_runtime_20261102.py'
+      - 'data/mobile/health_vnext/health_energy_200.json'
+      - 'data/templates/health_severity_vnext/reading_template.json'
+      - 'data/knowledge/health_81_excel_20261025/81_pairs.tsv'
+      - 'data/knowledge/phrase_library/health_v20/actor_profiles.json'
+      - 'data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json'
+      - 'data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json'
+      - 'data/templates/health_discomfort_v11/native_discomfort_v15.json'
+      - 'src/wengua/health_discomfort_v19_parity.py'
+      - 'ios/WenguaAppUI/NativeDiscomfortV19Parity.swift'
+      - 'ios/WenguaAppUI/NativeInjuryContextAcceptance.swift'
+      - 'tests/test_health_discomfort_injury_gate_20261102.py'
+      - 'scripts/wengua_bigfish_518400_offline_editorial_20261029.py'
+      - 'tests/test_bigfish_518400_role_and_natal_20261029.py'
+      - 'data/atlas/shijia_zhuanpan_physical_1080_v1.jsonl'
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: Hosted macOS runner (fallback when macos-15 is queued)
+        type: choice
+        options:
+          - macos-15
+          - macos-latest
+        default: macos-15
+permissions:
+  contents: write
+jobs:
+  build_and_validate_real_app_bundle:
+    runs-on: ${{ inputs.runner || 'macos-15' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run V23 exhaustive Python stem branch and full site rule regressions
+        run: |
+          set -euo pipefail
+          python3 -m unittest \
+            tests.test_health_discomfort_v23_dual_branch_integrated_20261101 \
+            tests.test_health_discomfort_v26_precise_site_prose_20261101 \
+            tests.test_health_discomfort_v27_ding_gods_hour_20261101 \
+            tests.test_health_discomfort_injury_gate_20261102 \
+            tests.test_frozen_health_release_20261102 \
+            tests.test_health_earth_stem_audit_patch_20261102 \
+            tests.test_ios_qimen_lunji_release_20261102 \
+            tests.test_ios_manual_event_time_20261102 \
+            tests.test_ios_domain_interfaces_layout_20261102 \
+            tests.test_ios_setup_palace_ui_20261102 \
+            tests.test_ios_polish_p7_20261102 \
+            tests.test_ios_inputs_hitarea_p8_20261102 \
+            tests.test_discomfort_v27_hour_parity_regression_20261102 \
+            tests.test_health_discomfort_v21_focus_doorpressure_20261101 \
+            tests.test_health_discomfort_power_v17_20261101 \
+            tests.test_health_discomfort_v19_full_sequence_20261101
+      - name: Install XcodeGen and generate actual SwiftUI app project
+        run: |
+          set -euo pipefail
+          xcodebuild -version
+          if ! command -v xcodegen >/dev/null 2>&1; then brew install xcodegen; fi
+          (cd ios/WenguaAppUI && xcodegen generate --spec project.yml)
+          xcodebuild -project ios/WenguaAppUI/WenguaApp.xcodeproj -list
+      - name: Build real V8.0 SwiftUI iPhone target for simulator with all source Swift files
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/wengua-v80-xcode
+          xcodebuild -project ios/WenguaAppUI/WenguaApp.xcodeproj \
+            -scheme WenguaApp -configuration Debug -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath /tmp/wengua-v80-xcode/derived \
+            CODE_SIGNING_ALLOWED=NO build > /tmp/wengua-v80-xcode/build.log 2>&1 || {
+              tail -n 160 /tmp/wengua-v80-xcode/build.log
+              exit 1
+            }
+      - name: Require zero production Swift compiler warnings
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          log=Path('/tmp/wengua-v80-xcode/build.log').read_text()
+          warnings=re.findall(r'^.*\.swift:\d+:\d+: warning:.*$',log,re.M)
+          assert not warnings, '\n'.join(warnings)
+          report='PASS SWIFT_PRODUCTION_WARNINGS_ZERO; SWIFT_TREAT_WARNINGS_AS_ERRORS=YES\n'
+          Path('/tmp/wengua-v80-xcode/swift_warnings.txt').write_text(report)
+          print(report,end='')
+          PY
+      - name: Run REAL Swift result UI grade parser on all 11 grades and five archived V10.2 native verdicts
+        run: |
+          set -euo pipefail
+          python3 tests/verify_ios_premium_verdict_runtime_20261028.py
+      - name: Verify bundled 200 cells 81 formations native templates and actors in actual app binary
+        run: |
+          set -euo pipefail
+          APP="/tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app"
+          test -d "$APP"
+          python3 -m scripts.verify_frozen_health_release_20261102 --bundle "$APP"
+          test -f "$APP/health_energy_200.json"
+          test -f "$APP/reading_template.json"
+          test -f "$APP/81_pairs.tsv"
+          test -f "$APP/actor_profiles.json"
+          test -f "$APP/complete_255_rules_v15_20261101.json"
+          test -f "$APP/three_source_stem_variants_v14_20261101.json"
+          test -f "$APP/native_discomfort_v15.json"
+          # PRODUCT_NAME is 问卦; read the actual executable
+          # name from Info.plist instead of assuming the Xcode target name.
+          EXE=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$APP/Info.plist")
+          test -n "$EXE"
+          test -f "$APP/$EXE"
+          python3 - "$APP" <<'PY'
+          from pathlib import Path
+          import json,sys,csv
+          p=Path(sys.argv[1])
+          template=json.loads((p/'reading_template.json').read_text())
+          assert template['schema']=='health_severity_user_editable_template_v20261031_v11_full_evidence'
+          for key in ('tianxian_regular','tianxian_fuyin',
+                       'tianxian_evidence_regular','tianxian_evidence_fuyin',
+                       'kun_host_note','palace_compact','macro_five_customer',
+                       'macro_pace_slow','summary_concise'):
+            assert template['macros'].get(key), key
+          assert 'FLOOR ONCE' in template['final_scoring_v80']['tianxian_scope']
+          assert 'Kun-2' in template['final_scoring_v80']['kun_centre_earth']
+          energy=json.loads((p/'health_energy_200.json').read_text())
+          assert len(energy['tables'])==8 and set(energy['tables'])=={
+            'star','door','stem','normal','fake_void_attacker',
+            'fake_void_target','true_void_attacker','true_void_target'}
+          assert len((p/'81_pairs.tsv').read_text().strip().splitlines())==82
+          profiles=json.loads((p/'actor_profiles.json').read_text())['profiles']
+          byid={x['id']:x for x in profiles}
+          assert len(profiles)==24 and len(byid)==24  # V9 four siblings distinct, no old composites
+          assert byid['grandfather']['palaces']==[6]
+          assert byid['grandmother']['palaces']==[2]
+          # Source-exact bundled V15 site records; V8 grade/resources unchanged.
+          v15_sources={
+            'complete_255_rules_v15_20261101.json':'data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json',
+            'three_source_stem_variants_v14_20261101.json':'data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json',
+            'native_discomfort_v15.json':'data/templates/health_discomfort_v11/native_discomfort_v15.json'
+          }
+          for packaged,source in v15_sources.items():
+            assert (p/packaged).read_bytes()==Path(source).read_bytes(), packaged
+          full=json.loads((p/'complete_255_rules_v15_20261101.json').read_text())
+          assert len(full['rules'])==255 and len({x['ID'] for x in full['rules']})==255
+          assert len(full['cases'])==12 and len(full['conflicts'])==20
+          families=json.loads((p/'three_source_stem_variants_v14_20261101.json').read_text())['mapping']
+          assert set(families)==set('甲乙丙丁戊己庚辛壬癸')
+          assert all(set(y)=={'qimen_secret_vol13','sanming_viscera','sanming_body_surface'} for y in families.values())
+          native=json.loads((p/'native_discomfort_v15.json').read_text())
+          assert native['topic_id']=='health.discomfort' and len(native['sections'])==9
+          assert native['injury_policy']['required_selection'] is True
+          assert set(native['injury_policy']['primary_contexts'])=={'accident','bone','bleeding','severe_pain'}
+          (Path('/tmp/wengua-v80-xcode/bundle_validation.txt')).write_text(
+             'PASS real unsigned iOS Simulator app with 200 original tables, 81 pairs, 22 actual roles including paternal grandparents, V8 editable template.\n')
+          PY
+      - name: Random father and older sister real hours from V18 site-only Swift
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeDiscomfortV15Smoke.swift \
+            -o /tmp/wengua-v80-xcode/native_site_v15 2>&1 | tee /tmp/wengua-v80-xcode/native_site_compile.log
+          /tmp/wengua-v80-xcode/native_site_v15 \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            | tee /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 父亲 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 姐姐 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 弟弟 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 妻子 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 妹妹 yin' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          grep -q 'V18_NATIVE_SITE_PASS 哥哥 yang' /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
+          echo "PASS V20 six selected scenarios: accident, pain, ordinary, surgery, bone, bleeding" > /tmp/wengua-v80-xcode/native_site_validation.txt
+      - name: Independent Python vs Swift V19 nine-section exact parity on two fresh real clocks (brother / wife)
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeDiscomfortV19Parity.swift \
+            -o /tmp/wengua-v80-xcode/native_site_v19_parity \
+            2>&1 | tee /tmp/wengua-v80-xcode/v19_parity_compile.log
+          /tmp/wengua-v80-xcode/native_site_v19_parity \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            > /tmp/wengua-v80-xcode/v19_native_two_fresh_clocks.jsonl
+          python3 -m src.wengua.health_discomfort_v19_parity \
+            /tmp/wengua-v80-xcode/v19_native_two_fresh_clocks.jsonl \
+            | tee /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 弟弟' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 女儿' /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+      - name: Requested V27 older brother and wife retained random clocks exact parity
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeDiscomfortV27Requested.swift \
+            -o /tmp/wengua-v80-xcode/native_site_v27_requested \
+            2>&1 | tee /tmp/wengua-v80-xcode/v27_requested_compile.log
+          /tmp/wengua-v80-xcode/native_site_v27_requested \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            > /tmp/wengua-v80-xcode/v27_requested.jsonl
+          python3 -m src.wengua.health_discomfort_v19_parity \
+            /tmp/wengua-v80-xcode/v27_requested.jsonl \
+            | tee /tmp/wengua-v80-xcode/v27_requested_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 哥哥' /tmp/wengua-v80-xcode/v27_requested_parity.log
+          grep -q 'V19_PYTHON_SWIFT_BYTE_EXACT_PASS 妻子' /tmp/wengua-v80-xcode/v27_requested_parity.log
+          python3 -m scripts.report_v27_requested_20261102 /tmp/wengua-v80-xcode/v27_requested.jsonl > /tmp/wengua-v80-xcode/v27_requested_readings.md
+          python3 tests/verify_ios_discomfort_frontpage_runtime_20261102.py \
+            --native-jsonl /tmp/wengua-v80-xcode/v27_requested.jsonl \
+            | tee /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log
+      - name: Exercise both sealed production router APIs using actual Xcode app resources
+        run: |
+          set -euo pipefail
+          swiftc -D WENGUA_BODY_SITE ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeFrozenHealthBundleCheck.swift \
+            -o /tmp/wengua-v80-xcode/native_frozen_bundle_check \
+            2>&1 | tee /tmp/wengua-v80-xcode/frozen_bundle_compile.log
+          /tmp/wengua-v80-xcode/native_frozen_bundle_check \
+            /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
+            | tee /tmp/wengua-v80-xcode/frozen_bundle_router.log
+          test "$(grep -c '^SEALED_BUNDLE_ROUTER_PASS' /tmp/wengua-v80-xcode/frozen_bundle_router.log)" -eq 4
+      - name: Execute recovery V3 and saved history from actual built App resources
+        run: |
+          set -euo pipefail
+          swiftc -warnings-as-errors -D WENGUA_RECOVERY \
+            ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeRecovery.swift \
+            ios/WenguaAppUI/NativeRecoveryCheck.swift \
+            -o /tmp/wengua-v80-xcode/recovery_check \
+            2>&1 | tee /tmp/wengua-v80-xcode/recovery_compile.log
+          python3 -m scripts.check_health_recovery_native_20261103 \
+            --native /tmp/wengua-v80-xcode/recovery_check \
+            --output /tmp/wengua-v80-xcode/recovery_parity \
+            2>&1 | tee /tmp/wengua-v80-xcode/recovery_parity.log
+          /tmp/wengua-v80-xcode/recovery_check --bundle \
+            /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
+            | tee /tmp/wengua-v80-xcode/recovery_bundle_history.log
+          test "$(grep -c '^RECOVERY_BUNDLE_HISTORY_PASS' /tmp/wengua-v80-xcode/recovery_bundle_history.log)" -eq 2
+      - name: Execute real manual event-time choices grouped history and same-chart grades against built App
+        run: |
+          set -euo pipefail
+          python3 tests/verify_ios_manual_event_time_runtime_20261102.py \
+            --native-jsonl /tmp/wengua-v80-xcode/v27_requested.jsonl \
+            --bundle /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app \
+            | tee /tmp/wengua-v80-xcode/manual_event_time.log
+      - name: Verify all six injury choices on four real clocks and strict Python Swift text parity
+        run: |
+          set -euo pipefail
+          swiftc ios/WenguaAppUI/WenguaNativeCore.swift \
+            ios/WenguaAppUI/WenguaHealthTemplateBridge.swift \
+            ios/WenguaAppUI/WenguaNativeEnergyBundle.swift \
+            ios/WenguaAppUI/WenguaNativeActorBinding.swift \
+            ios/WenguaAppUI/WenguaNativeReadingRouter.swift \
+            ios/WenguaAppUI/WenguaNativeVNextEngine.swift \
+            ios/WenguaAppUI/WenguaVNextCustomerComposer.swift \
+            ios/WenguaAppUI/WenguaVNextReasoner.swift \
+            ios/WenguaAppUI/WenguaVNextTianrui25.swift \
+            ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift \
+            ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift \
+            ios/WenguaAppUI/NativeInjuryContextAcceptance.swift \
+            -o /tmp/wengua-v80-xcode/native_injury_acceptance \
+            2>&1 | tee /tmp/wengua-v80-xcode/injury_compile.log
+          /tmp/wengua-v80-xcode/native_injury_acceptance \
+            data/knowledge/phrase_library/health_v20/actor_profiles.json \
+            data/knowledge/health_discomfort/complete_255_rules_v15_20261101.json \
+            data/knowledge/health_discomfort/three_source_stem_variants_v14_20261101.json \
+            data/templates/health_discomfort_v11/native_discomfort_v15.json \
+            data/mobile/health_vnext/health_energy_200.json \
+            data/knowledge/health_81_excel_20261025/81_pairs.tsv \
+            > /tmp/wengua-v80-xcode/injury_six_choices.jsonl
+          python3 -m src.wengua.health_discomfort_v19_parity \
+            /tmp/wengua-v80-xcode/injury_six_choices.jsonl \
+            | tee /tmp/wengua-v80-xcode/injury_py_swift_parity.log
+          test "$(wc -l < /tmp/wengua-v80-xcode/injury_py_swift_parity.log | tr -d ' ')" -eq 24
+          echo "PASS 24 native injury choices and full independent Python text parity" > /tmp/wengua-v80-xcode/injury_validation.txt
+      - name: Keep all build logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-full-iPhone-xcode-simulator-build-logs
+          path: |
+            /tmp/wengua-v80-xcode/*.log
+            /tmp/wengua-v80-xcode/*.jsonl
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Check full 1080 canonical boards in repository without misclaiming in-app bundled atlas
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tests -p 'test_physical_1080_atlas_dataset_20261029.py' -v
+      - name: Archive actual unsigned simulator app for future UI design
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v80-unsigned-ios-simulator-app
+          path: /tmp/wengua-v80-xcode/derived/Build/Products/Debug-iphonesimulator/问卦.app
+          retention-days: 30
+      - name: Append actual Xcode build pass or failure; preserve previous versions
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p docs
+          if [ -f /tmp/wengua-v80-xcode/bundle_validation.txt ] && [ -f /tmp/wengua-v80-xcode/native_site_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ] && [ -f /tmp/wengua-v80-xcode/injury_validation.txt ] && [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ] && [ -s /tmp/wengua-v80-xcode/manual_event_time.log ]; then
+            RESULT=PASS
+            MESSAGE="Actual Simulator build, sealed V9/V11 and V27 exact resources, two-topic bundle router and native text parity passed"
+          else
+            RESULT=FAIL
+            MESSAGE="Xcode/resources/new independent V15 two-clock Swift runtime failed; see preserved logs"
+          fi
+          FILE="docs/IOS_V80_XCODE_${RESULT}_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
+          {
+            echo "# iOS sealed V9/V11 + V27 Xcode simulator ${RESULT}"
+            echo
+            echo "Run: https://github.com/turnupmason/WenguaApp/actions/runs/${GITHUB_RUN_ID}"
+            echo "Source SHA: ${GITHUB_SHA}"
+            echo "Result: ${MESSAGE}"
+            echo
+            echo "Unsigned simulator build is NOT a signed iPhone installation, not an App Store shipment, and not proof of forecast validity."
+            if [ -f /tmp/wengua-v80-xcode/native_site_two_clocks.log ]; then
+              echo
+              echo '## Two random Swift V18 father/older sister full site-only readings'
+              echo '~~~text'
+              cat /tmp/wengua-v80-xcode/native_site_two_clocks.log
+              echo '~~~'
+            fi
+            if [ -f /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log ]; then
+              echo
+              echo '## Independent Python and Swift V19 all nine paragraphs two fresh clocks'
+              echo '~~~text'
+              cat /tmp/wengua-v80-xcode/v19_py_swift_strict_parity.log
+              echo '~~~'
+            fi
+            if [ -f /tmp/wengua-v80-xcode/injury_py_swift_parity.log ]; then
+              echo
+              echo "## Four clocks times six explicit injury choices"
+              cat /tmp/wengua-v80-xcode/injury_py_swift_parity.log
+            fi
+            if [ -s /tmp/wengua-v80-xcode/v27_requested_readings.md ] && [ -s /tmp/wengua-v80-xcode/frozen_bundle_router.log ] && [ -s /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ] && [ -s /tmp/wengua-v80-xcode/manual_event_time.log ]; then
+              cat /tmp/wengua-v80-xcode/v27_requested_readings.md
+            fi
+            if [ -f /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log ]; then
+              echo
+              echo '## Qimen Lunji actual first-page summary runtime check'
+              cat /tmp/wengua-v80-xcode/qimen_lunji_frontpage.log
+            fi
+            if [ -f /tmp/wengua-v80-xcode/frozen_bundle_router.log ]; then
+              echo
+              echo '## Sealed V9 scoring V11 template and V27 actual app bundle router'
+              cat /tmp/wengua-v80-xcode/frozen_bundle_router.log
+            fi
+            if [ -f /tmp/wengua-v80-xcode/manual_event_time.log ]; then
+              echo
+              echo '## Manual event time grouped real-router acceptance'
+              cat /tmp/wengua-v80-xcode/manual_event_time.log
+            fi
+            if [ -f /tmp/wengua-v80-xcode/swift_warnings.txt ]; then
+              echo
+              echo '## Production Swift compiler warnings'
+              cat /tmp/wengua-v80-xcode/swift_warnings.txt
+            fi
+            if [ -f /tmp/wengua-v80-xcode/build.log ]; then
+              echo
+              echo '## Build tail (append-only)'
+              echo '~~~text'
+              tail -n 90 /tmp/wengua-v80-xcode/build.log
+              echo '~~~'
+            fi
+          } > "$FILE"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git commit -m "Archive V8 Xcode ${RESULT} actual iOS simulator build and bundled resources"
+          for n in 1 2 3 4 5; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1

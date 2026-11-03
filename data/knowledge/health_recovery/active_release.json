@@ -1,22 +1,20 @@
 {
   "schema": "wengua_health_recovery_active_release_v1",
-  "version": "health.recovery.V3",
-  "runtime": "runtime_v3_20261102.json",
-  "runtime_sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267",
+  "version": "health.recovery.V4",
+  "runtime": "runtime_v4_20261103.json",
+  "runtime_sha256": "eb9955828a8d5147a6b2546a6dbbb433c0e5c7dd1d36f69b31cde332627a0780",
   "goal": "recovery",
   "question": "病什么时候好",
   "app_route_enabled": true,
   "engine_implemented": true,
-  "native_parity_status": "passed_actual_python_and_swift_53_cases",
-  "xcode_status": "passed_actual_ios_app_bundle_router_and_history",
+  "native_parity_status": "pending_new_actual_v4_run",
+  "xcode_status": "pending_new_actual_v4_run",
   "drafts_preserved": [
     "reading_template_v1_draft.json",
     "reading_template_v2_user_timing.json"
   ],
   "conditional_only": true,
   "clinical_validation_claimed": false,
-  "verification_source_sha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
-  "verification_receipt": "docs/audits/health_recovery_v3_20261102/final_ci_results.json",
-  "native_parity_run": 41551867899,
-  "xcode_run": 41551867963
+  "prior_release_preserved": "archives/engineering_patch_20261103/before_recovery_v4/data/knowledge/health_recovery/active_release.json",
+  "source_evidence": "user_five_paths_source_20261103.json"
 }

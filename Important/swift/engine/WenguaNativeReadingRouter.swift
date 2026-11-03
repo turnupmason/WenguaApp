@@ -167,7 +167,12 @@ enum WenguaNativeReadingRouter {
     static func compose(chart:WenguaNativeChart, topicID:String, relationship:String,
                         inquiry:WenguaNativeInquiry? = nil,
                         bundle:Bundle = .main) throws -> WenguaNativeCustomerReading {
-        #if canImport(UIKit) || WENGUA_RECOVERY
+        #if canImport(UIKit) || WENGUA_RECOVERY_V4
+        if topicID=="health.recovery" {
+            return try WenguaRecoveryConvergence.compose(chart:chart,relationship:relationship,
+                                                        inquiry:inquiry,bundle:bundle)
+        }
+        #elseif WENGUA_RECOVERY
         if topicID=="health.recovery" {
             return try WenguaNativeRecovery.compose(chart:chart,relationship:relationship,
                                                     inquiry:inquiry,bundle:bundle)
