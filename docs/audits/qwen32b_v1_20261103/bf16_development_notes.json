@@ -1,0 +1,6 @@
+{
+  "initial_cpu_bf16_check": "FP32 norm output vs BF16 linear input required autocast; added actual CPU BF16 autocast through Trainer. CUDA Trainer already has BF16/FP16 autocast.",
+  "second_check": "Training succeeded; Accelerate-trained forward returned FP32 vs independent reload BF16. Compared numerical values in FP32 without loosening tolerance.",
+  "final_check": "tiny_bf16_integration.json",
+  "actual_cuda_32b_tested": false
+}

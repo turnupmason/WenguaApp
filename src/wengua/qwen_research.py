@@ -269,7 +269,8 @@ def make_prompt(question, documents, *, mode='traditional_reading', explicit_cha
     if not isinstance(question, str) or not question.strip():
         raise ValueError('Question required')
     docs = retrieve(documents, question, mode=mode)
-    references = [{k: d[k] for k in ('id', 'book_id', 'source_sha256', 'content')} for d in docs]
+    references = [{k: d[k] for k in ('id', 'book_id', 'source_sha256', 'content', 'review_status', 'excerpt_kind')
+                   if k in d} for d in docs]
     payload = {'mode': mode, 'question': question, 'program_chart': trusted_chart(explicit_chart),
                'references': references, 'no_references': not docs}
     if explicit_chart is None:

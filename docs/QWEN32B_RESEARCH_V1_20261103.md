@@ -54,7 +54,7 @@ local/qwen_env/bin/python run_qwen_research.py audit-tokens \
   --output local/qwen32b_v1/run1/token_audit_before_training.json
 ```
 
-先做**两步真实显存验证**，不是直接长时间训练。默认2048 tokens、batch1、梯度累积8、q/v投影LoRA-r8、梯度检查点、NF4双重量化。它是保守候选配置，不是已实测的4090显存承诺：
+先做**两步真实显存验证**，不是直接长时间训练。默认2048 tokens、batch1、梯度累积8、q/v投影LoRA-r8、梯度检查点、NF4双重量化。冻结基座准备只将一维归一化参数保留FP32，保留大词嵌入/输出矩阵的BF16/FP16，避免PEFT默认整批上转FP32造成额外数GB开销。CUDA混合精度仍由Trainer管理，运行结束记录实际显存峰值。它是保守候选配置，不是已实测的4090显存承诺：
 
 ```bash
 local/qwen_env/bin/python run_qwen_research.py train \

@@ -107,6 +107,26 @@ def collator(pad_id):
     return collate
 
 
+def prepare_frozen_base(model, *, gradient_checkpointing=True):
+    """Freeze NF4 base without PEFT's blanket FP32 expansion of 2 large matrices.
+
+    Qwen3-32B has untied vocab embeddings/head. Promoting both to FP32 can
+    consume several extra GiB, even before activations. Norm vectors remain
+    FP32; frozen large matrices retain the loader's BF16/FP16 dtype. The
+    non-reentrant checkpoint path does not require embedding-output hooks.
+    This does not establish that a particular 24GB GPU fits the whole run.
+    """
+    import torch
+    for parameter in model.parameters():
+        parameter.requires_grad_(False)
+        if parameter.ndim == 1 and parameter.is_floating_point():
+            parameter.data = parameter.data.to(torch.float32)
+    model.config.use_cache = False
+    if gradient_checkpointing:
+        model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': False})
+    return model
+
+
 def load_cuda_base(config, *, training):
     import torch
     from transformers import AutoModelForCausalLM, BitsAndBytesConfig
@@ -139,7 +159,7 @@ def train(data, output, *, config_path=DEFAULT_CONFIG, max_steps=-1, max_length=
     output.mkdir(parents=True, exist_ok=False)
     write_json(output / 'run_status.json', {'state': 'preparing', 'config': config, 'environment': report})
     from transformers import AutoTokenizer, Trainer, TrainingArguments, set_seed
-    from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+    from peft import LoraConfig, get_peft_model
     set_seed(config['seed'])
     tokenizer = AutoTokenizer.from_pretrained(config['model_id'], revision=config['revision'], trust_remote_code=False)
     tokenizer.pad_token = tokenizer.pad_token or tokenizer.eos_token
@@ -151,9 +171,10 @@ def train(data, output, *, config_path=DEFAULT_CONFIG, max_steps=-1, max_length=
     if not prepared['train']:
         raise ValueError('No train rows fit; inspect token_audit.json. No target is silently truncated.')
     try:
+        import torch
+        torch.cuda.reset_peak_memory_stats()
         model, compute = load_cuda_base(config, training=True)
-        model = prepare_model_for_kbit_training(model, use_gradient_checkpointing=config['gradient_checkpointing'],
-                                              gradient_checkpointing_kwargs={'use_reentrant': False})
+        model = prepare_frozen_base(model, gradient_checkpointing=config['gradient_checkpointing'])
         model = get_peft_model(model, LoraConfig(r=config['lora_r'], lora_alpha=config['lora_alpha'],
                     lora_dropout=config['lora_dropout'], target_modules=config['target_modules'],
                     bias='none', task_type='CAUSAL_LM'))
@@ -179,6 +200,8 @@ def train(data, output, *, config_path=DEFAULT_CONFIG, max_steps=-1, max_length=
                    'dataset_manifest_sha256': digest((Path(data) / 'manifest.json').read_bytes()),
                    'source_database_sha256': manifest['source_database_sha256'], 'token_audit': token_audit,
                    'training_metrics': result.metrics, 'validation_language_loss': validation,
+                   'peak_gpu_allocated_gib': torch.cuda.max_memory_allocated() / 2**30,
+                   'peak_gpu_reserved_gib': torch.cuda.max_memory_reserved() / 2**30,
                    'test_generation_evaluated': False, 'prediction_accuracy_verified': False,
                    'production_enabled': False, 'artifact': 'adapter', 'max_steps': max_steps})
         return {'output': str(output), 'state': 'complete', 'production_enabled': False}

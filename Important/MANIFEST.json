@@ -1387,13 +1387,13 @@
       "platform": "python",
       "canonical": "src/wengua/qwen_research.py",
       "snapshot": "Important/python/engine/qwen_research.py",
-      "sha": "45a5c3b9b81605dfbf1773dd2b0e931dd20978ef"
+      "sha": "029d450dd11014f7b28040fc545c413c92caeac5"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/qwen_finetune.py",
       "snapshot": "Important/python/engine/qwen_finetune.py",
-      "sha": "3d933c55f44add5d62c89bf39b94617ce9ea1cb5"
+      "sha": "7ad899d30a3383464eed58a97fd52bb7a8a425e3"
     },
     {
       "platform": "python",
@@ -1405,7 +1405,7 @@
       "platform": "python",
       "canonical": "scripts/check_qwen_training.py",
       "snapshot": "Important/python/scripts/check_qwen_training.py",
-      "sha": "0572ee333e359327360ae0710589165ce8ebdab8"
+      "sha": "d48666d700d662eb5ba3816693c7b604ce223a64"
     },
     {
       "platform": "python",

@@ -3480,3 +3480,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 本地10项新契约测试通过；官方32B tokenizer+微型随机Qwen3真实CPU LoRA两步参数更新与独立基座重载logits一致通过。这不验证32B/NF4/4090或真实未来预测。当前未下载32B、未操作用户4090、未完成大模型留出回答评测，event_probability保持null。新增原书章0/历史事件0。完整回归、新CI待实际执行后追加。
 
 Qwen32B V1本地完整验收：963 tests，0 failures/0 errors/3既有skip；10项新契约与镜像通过，官方tokenizer+独立微型Qwen3 CPU LoRA两步/参数更新/保存重载一致实际通过。完整日志docs/audits/qwen32b_v1_20261103/full_run，长度与导出统计source_export_summary.json。无32B实训、NF4显存、4090或生成问卦质量验证声明。新CI仍待本次推送实际结果。
+
+4090显存准备补充：未使用PEFT整批非量化参数上转FP32的默认准备，改为冻结基座、仅一维归一化FP32、大词嵌入/输出矩阵保留BF16/FP16，非重入检查点及CUDA混合精度；并记录真实运行显存峰值。微型CPU BF16 LoRA两步及独立重载数值一致实际通过，开发过程autocast/输出dtype检查与日志保留在bf16_development_notes.json；不代表NF4/32B/4090验证。提示中保留资料draft与抽象/原话标记，引用不混淆。新增源后重新完整回归，见full_run_memory/。
+
+显存准备终版完整回归再次通过：963 tests、0 failures/0 errors/3既有skip，日志full_run_memory/。首版63557bd4的新Qwen32B CPU接口CI#41694212140、主CI#41694212472双Python及旧健康原生#41694212011均success；显存准备新源码待本次推送实际CI，不能借首版通过替代。

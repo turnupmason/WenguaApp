@@ -4,7 +4,7 @@ from copy import deepcopy
 from pathlib import Path
 import tempfile
 
-from src.wengua.qwen_finetune import collator, encode_sample, load_config
+from src.wengua.qwen_finetune import collator, encode_sample, load_config, prepare_frozen_base
 from src.wengua.qwen_research import ROOT, sample, write_json
 
 
@@ -28,6 +28,11 @@ def main():
     model = Qwen3ForCausalLM(Qwen3Config(vocab_size=len(tokenizer), hidden_size=32,
                 intermediate_size=64, num_hidden_layers=1, num_attention_heads=2,
                 num_key_value_heads=1, head_dim=16, max_position_embeddings=4096))
+    model = prepare_frozen_base(model.to(torch.bfloat16))
+    assert model.get_input_embeddings().weight.dtype == torch.bfloat16
+    assert model.get_output_embeddings().weight.dtype == torch.bfloat16
+    assert all(not p.requires_grad for p in model.parameters())
+    assert all(p.dtype == torch.float32 for p in model.parameters() if p.ndim == 1)
     independent_base = deepcopy(model)
     model = get_peft_model(model, LoraConfig(r=8, lora_alpha=16, target_modules=['q_proj', 'v_proj'],
                                            lora_dropout=0.0, task_type='CAUSAL_LM'))
@@ -35,7 +40,7 @@ def main():
     with tempfile.TemporaryDirectory(dir=ROOT / 'local') as temp:
         args = TrainingArguments(output_dir=temp, max_steps=2, per_device_train_batch_size=1,
                                  learning_rate=0.001, report_to='none', save_strategy='no', logging_steps=1,
-                                 use_cpu=True, dataloader_pin_memory=False, seed=3407)
+                                 use_cpu=True, bf16=True, dataloader_pin_memory=False, seed=3407)
         trainer = Trainer(model=model, args=args, train_dataset=[encoded], processing_class=tokenizer,
                           data_collator=collator(tokenizer.pad_token_id))
         result = trainer.train()
@@ -46,14 +51,17 @@ def main():
         # Test serialization independently from the trained adapter instance.
         batch = collator(tokenizer.pad_token_id)([encoded])
         model.eval()
-        with torch.no_grad():
+        with torch.no_grad(), torch.autocast('cpu', dtype=torch.bfloat16):
             original = model(**batch).logits
             actual = restored(**batch).logits
-        assert torch.allclose(original, actual, atol=1e-6)
+        # Accelerate wraps the trained forward and upcasts its output to FP32;
+        # the independently reloaded model returns BF16. Compare same values.
+        assert torch.allclose(original.float(), actual.float(), atol=1e-6)
         receipt = {'state': 'passed', 'test': 'tiny_random_qwen3_cpu_lora', 'steps': 2,
                    'tokenizer': config['model_id'], 'tokenizer_revision': config['revision'],
                    'assistant_mask_tokens': first, 'total_tokens': length,
                    'trainable_weights_changed': True, 'adapter_reload_logits_equal': True,
+                   'frozen_large_matrices_keep_bf16': True, 'norm_vectors_fp32': True,
                    'loss': result.training_loss, 'real_32b_trained': False, 'cuda_nf4_tested': False}
     output = ROOT / 'local/qwen32b_v1/tiny_integration.json'
     output.parent.mkdir(parents=True, exist_ok=True)
