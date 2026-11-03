@@ -829,13 +829,13 @@
       "platform": "python",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/python/data/releases/health_frozen_20261102.json",
-      "sha": "6f72371f65069120d044aaa5e01770d9f0ec33a1"
+      "sha": "f7eaaaa6eeb7accfa9710ee8b1fb991e970e20ce"
     },
     {
       "platform": "swift",
       "canonical": "data/releases/health_frozen_20261102.json",
       "snapshot": "Important/swift/data/releases/health_frozen_20261102.json",
-      "sha": "6f72371f65069120d044aaa5e01770d9f0ec33a1"
+      "sha": "f7eaaaa6eeb7accfa9710ee8b1fb991e970e20ce"
     },
     {
       "platform": "python",
@@ -1051,25 +1051,25 @@
       "platform": "python",
       "canonical": "src/wengua/health_recovery_v3.py",
       "snapshot": "Important/python/engine/health_recovery_v3.py",
-      "sha": "a5bebb75bcce9ddf467a7695247740b4ed45f827"
+      "sha": "4e8b68f86605db8a853062c62cb3aa7ce679d09e"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_health_recovery_native_20261103.py",
       "snapshot": "Important/python/scripts/check_health_recovery_native_20261103.py",
-      "sha": "8a307883d39f5a3f251a2bd2956472942ede72b2"
+      "sha": "67b14dcfc2bab44553477efe89007c859d55449b"
     },
     {
       "platform": "python",
       "canonical": "tests/test_health_recovery_runtime_v3_20261103.py",
       "snapshot": "Important/python/tests/test_health_recovery_runtime_v3_20261103.py",
-      "sha": "c5baf0b55774708b0c5c8fc75760ea56a222ad78"
+      "sha": "d1b56c1541d220aa7d86162041460e24e855efde"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/runtime_v3_20261102.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/runtime_v3_20261102.json",
-      "sha": "1e1225a46fceb5141aca5f6f44ba44fe48aad428"
+      "sha": "812a49cdb37401adbb8e0cee0cb2efde63f33a59"
     },
     {
       "platform": "swift",
@@ -1093,7 +1093,7 @@
       "platform": "python",
       "canonical": "data/knowledge/health_recovery/active_release.json",
       "snapshot": "Important/python/data/knowledge/health_recovery/active_release.json",
-      "sha": "148871d8821cba6330d0c0e10fad7a7240b969c5"
+      "sha": "58088aa5392f6ecb5f66945e970071b97c12780e"
     }
   ]
 }

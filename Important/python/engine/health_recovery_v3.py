@@ -175,7 +175,7 @@ def facts_from_assessment(assessment, inquiry=None):
     for key,c in n['role_group_reviews'].items():
         controls.append({'role':key,'direction':c['relation'],'cell':c.get('control_result'),
                          'eligible':c.get('control_status')=='matched' and c.get('direction') in ('favorable','adverse'),
-                         'attacker':c.get('actual_control_source')})
+                         'attacker':c.get('actual_control_source') if c['relation'] in ('克','被克') else '无克制方向'})
     return {'reference_iso':assessment['instant'],'timezone':assessment['timezone'],
             'pillars':assessment['four_pillars'],'dun':assessment['bureau']['dun'],
             'fuyin':assessment['macro_fuyin_fanyin']['both_fuyin'],

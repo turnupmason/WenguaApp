@@ -114,6 +114,11 @@ class RecoveryEndToEnd(unittest.TestCase):
     def test_original_random_draw_does_not_gain_invented_cure_date(self):
         self.assertEqual(self.bad['status'],'recovery_premise_unresolved');self.assertEqual(self.bad['windows'],[])
         self.assertIn('伏吟',self.bad['sections'][1]['text'])
+    def test_non_control_relations_do_not_claim_an_attacker(self):
+        for c in self.bad['facts']['controls']:
+            if c['direction'] not in ('克','被克'):
+                self.assertEqual(c['attacker'],'无克制方向')
+
     def test_positive_grade_alone_never_supplies_recovery_premise(self):
         f=copy.deepcopy(self.good['facts']);f['controls']=[];f['net_grade']='极大吉'
         r=analyze_recovery(f);self.assertEqual(r['windows'],[])

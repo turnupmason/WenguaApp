@@ -87,6 +87,10 @@ def compare(folder,native):
     actual=[json.loads(line) for line in run.stdout.splitlines() if line.strip()]
     assert len(actual)==len(expected),(len(actual),len(expected))
     keys=['status','sections','windows','methods','alternative_windows','support','counterevidence','calendar_search']
+    errors=[]
+    def equal(a,b,label):
+        if normalize(a)!=normalize(b):
+            errors.append({'case_field':label,'actual':a,'expected':b})
     for a,e in zip(actual,expected):
         assert a['id']==e['id']
         # Role and control maps are unordered internally; their facts must be
@@ -94,11 +98,14 @@ def compare(folder,native):
         for key in ['roles','controls']:
             aa=sorted(a['facts'][key],key=lambda v:v['id'] if key=='roles' else v['role'])
             ee=sorted(e['facts'][key],key=lambda v:v['id'] if key=='roles' else v['role'])
-            assert normalize(aa)==normalize(ee),(a['id'],'facts',key,aa,ee)
+            equal(aa,ee,[a['id'],'facts',key])
         for key in ('reference_iso','timezone','pillars','dun','fuyin','fanyin'):
-            assert a['facts'][key]==e['facts'][key],(a['id'],'facts',key)
+            equal(a['facts'][key],e['facts'][key],[a['id'],'facts',key])
         for key in keys:
-            assert normalize(a['result'][key])==normalize(e['result'][key]),(a['id'],key,a['result'][key],e['result'][key])
+            equal(a['result'][key],e['result'][key],[a['id'],key])
+    (folder/'differences.json').write_text(json.dumps(errors,ensure_ascii=False,indent=2)+'\n')
+    for err in errors:print('RECOVERY_MISMATCH',json.dumps(err,ensure_ascii=False)[:4500])
+    assert not errors, f'{len(errors)} recovery native differences; all cases compared, see differences.json'
     statuses={e['result']['status'] for e in expected}
     assert any(e['result']['windows'] for e in expected), 'No dated execution exercised'
     assert 'recovery_premise_unresolved' in statuses

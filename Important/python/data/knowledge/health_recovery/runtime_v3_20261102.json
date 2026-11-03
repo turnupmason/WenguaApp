@@ -1501,7 +1501,7 @@
       "combination": "合局逢冲",
       "fuyin": "伏吟参冲",
       "fanyin": "反吟参合",
-      "growth": "用神得令生扶",
+      "growth": "用神得令",
       "stem_recurrence": "空宫天盘干再临"
     },
     "role_method": "{role}在{palace}宫，实见{fact}，取{method}，候选{branches}。",
