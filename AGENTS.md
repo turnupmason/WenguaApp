@@ -1,8 +1,8 @@
-> **当前开发入口（2026-11-03，用户“全部接通”授权）：疾病应期 V3 独立运行包与 Python／Swift／手机入口已实现，正式验收状态见 `docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md` 最后追加。轻重 V9/V11、病位 V27 数学与原七份资源不变。下面 V1/V2 未接通记载是历史，V1/V2 草稿继续原样保留。**
+> **当前开发入口（2026-11-03，用户“全部接通”授权）：疾病应期 V3 独立运行包与 Python／Swift／手机入口已接通，53 项原生对照及正式 Xcode／包内资源／历史重读已实测通过，验收状态见 `docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md` 最后追加。轻重 V9/V11、病位 V27 数学与原七份资源不变。下面 V1/V2 未接通记载是历史，V1/V2 草稿继续原样保留。**
 
 > **当前封存入口（2026-11-02，用户已确认）：疾病轻重 V9.0计分＋V11模板；奇门论疾 V27。** 见 [正式封存与接口记录](docs/HEALTH_PRODUCTION_RELEASE_20261102.md)。以下旧版本记载是历史，不得覆盖本入口。
 
-> **下一工作入口（用户最新明确）：病愈只问“病什么时候好”；当前活动草稿为 `data/knowledge/health_recovery/active_draft.json` 指向的V2。用户本次124行完整应期资料已入共用库 `data/knowledge/timing_methods/user_notes_20261102/`，后续工作等领域复用其条件与例外；不得回到V1多目标选择或重写已完成轻重／病位。详见 `docs/TIMING_METHODS_USER_NOTES_20261102.md`。**
+> **V2资料阶段历史入口（现由上列V3接线承接，旧草稿保留）：病愈只问“病什么时候好”；当前活动草稿为 `data/knowledge/health_recovery/active_draft.json` 指向的V2。用户本次124行完整应期资料已入共用库 `data/knowledge/timing_methods/user_notes_20261102/`，后续工作等领域复用其条件与例外；不得回到V1多目标选择或重写已完成轻重／病位。详见 `docs/TIMING_METHODS_USER_NOTES_20261102.md`。**
 
 # AGENTS.md — WenguaApp 长期开发代理执行规范
 
@@ -3400,3 +3400,9 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41551867925
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码870dcb77869e01a9b22a7b27c6e0f0268b089fe0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551867925_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+### 2026-11-03 · 疾病应期 V3 正式全链路验收收口
+
+正式源870dcb77869e01a9b22a7b27c6e0f0268b089fe0：新原生#41551867899 success（53=38真实时辰／明确单位＋15单独标记synthetic条件用例）；正式Xcode#41551867963 success，完整App零Swift警告、包内资源校验、病愈router与历史编码重读2例、macOS再次53逐事实／方法／窗口／精度／四段全文相同。原V9/V11兼容#41551867925与双Python主CI#41551867994 success。本地最终905 tests 0失败／0错误／3既有skip。实际日志、源／资源SHA与CI收据docs/audits/health_recovery_v3_20261102/final_ci_results.json；最终详稿docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md，软件预览docs/HEALTH_RECOVERY_V3_TWO_SOFTWARE_PREVIEWS_20261103.md。
+
+活动发布索引为data/knowledge/health_recovery/active_release.json；V1/V2及active_draft旧草稿原样保留，不重新当作手机未接通状态。新引擎在src/wengua/health_recovery_v3.py与ios/WenguaAppUI/WenguaNativeRecovery.swift，共用runtime_v3_20261102.json。固定只问病什么时候好，复用既有患者绑定、实际真假空与有效制病条件，非全盘分数换天数；未知单位分开日月，条件不足、阴阳流转歧义／刑墓取法冲突及未校定子时／历法精度均如实说明。旧V9/V11、V27数学和七份资源逐字不变，p10只独立增加应期及必要入口／工程。旧失败与旧测试／源仍全留，Important同步。原随机6415423284196702084的2026-11-10 04:00纽约盘未重抽，新链路仍以无有效恢复前提不定日；其它满足条件盘实际生成窗口。没有医疗准确性、真机签名／人工像素点击验收声明，新增原书章0／历史完整病例0。本轮疾病告一段落，不擅自开发工作等新领域；后续按用户指令复用共用92条资料及例外。

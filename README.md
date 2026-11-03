@@ -120,7 +120,7 @@ cd WenguaApp
 | 6 | 关闭再打开 App，再查看相同测试事项 | 本地记录保留；已完成的同一事项受15天限制 |
 | 7 | 换小屏／大屏、深浅色和大字体，断网再运行 | 布局不截断，两个已验收健康主题能离线起盘和读取资源 |
 
-**当前边界：**普通问事仅当前时刻，领域内选吉日仅未来时刻，滚轮明确五列年月日时分；“病愈应期”及旅游、婚礼、手术等专项择时吉凶评级仍开发中。⌘R 用于启动 App 后手动测试界面。⌘U 用于已配置测试 Target 的自动化测试，当前工程尚未接入整套 XCUITest，不能把编译成功当作全部按钮已测试。
+**当前边界：**普通问事仅当前时刻，领域内选吉日仅未来时刻，滚轮明确五列年月日时分；“病愈应期”已接入独立 V3，旅游、婚礼、手术等专项择时吉凶评级仍开发中。⌘R 用于启动 App 后手动测试界面。⌘U 用于已配置测试 Target 的自动化测试，当前工程尚未接入整套 XCUITest，不能把编译成功当作全部按钮已测试。
 
 ### 可选：终端一键启动模拟器
 
@@ -132,15 +132,15 @@ cd WenguaApp
 
 模拟器 App 不是真机 IPA，也不是可直接在普通 Mac Finder 打开的 Mac 应用。真正 iPhone 的签名安装与实测另见 [真机验收准备](docs/IOS_TRUE_DEVICE_ACCEPTANCE_PENDING_20261102.md)。
 
-## 下一开发重点：病愈应期
+## 病愈应期 V3 与历史草稿
 
-当前以用户最新资料生成的[病愈应期V2](docs/HEALTH_RECOVERY_TEMPLATE_V2_20261102.md)为活动草稿：固定只问“病什么时候好”，复用已完成的轻重和病位，不再要求选择好转／出院／临床治愈目标。[共用应期详稿](docs/TIMING_METHODS_USER_NOTES_20261102.md)记录全文124行、92条结构化记录、29组讲义示例及9组情境分歧，供后续工作、求财等领域复用。[结构化规则库](data/knowledge/timing_methods/user_notes_20261102/source_manifest.json)与[活动草稿索引](data/knowledge/health_recovery/active_draft.json)可核对SHA与版本。原文完整保存在本地Git忽略目录，公开库保存原创整理和来源收据。
+当前使用[病愈应期V3接通记录](docs/HEALTH_RECOVERY_V3_INTEGRATION_20261103.md)与[真实软件预览](docs/HEALTH_RECOVERY_V3_TWO_SOFTWARE_PREVIEWS_20261103.md)。此前以用户资料生成的[病愈应期V2](docs/HEALTH_RECOVERY_TEMPLATE_V2_20261102.md)为活动草稿：固定只问“病什么时候好”，复用已完成的轻重和病位，不再要求选择好转／出院／临床治愈目标。[共用应期详稿](docs/TIMING_METHODS_USER_NOTES_20261102.md)记录全文124行、92条结构化记录、29组讲义示例及9组情境分歧，供后续工作、求财等领域复用。[结构化规则库](data/knowledge/timing_methods/user_notes_20261102/source_manifest.json)与[活动草稿索引](data/knowledge/health_recovery/active_draft.json)可核对SHA与版本。原文完整保存在本地Git忽略目录，公开库保存原创整理和来源收据。
 
-本轮完成资料／模板更新，尚未开启手机病愈日期计算；不重复修改轻重／病位或UI。日月历法区间已有，年／时及新增取期法须分别实现和验证。
+V2阶段历史：当时完成资料／模板更新，尚未开启手机病愈日期计算；不重复修改轻重／病位或UI。日月历法区间已有，年／时及新增取期法须分别实现和验证。
 
 此前已建立[疾病应期模板V1审阅稿](docs/HEALTH_RECOVERY_TEMPLATE_V1_20261102.md)和[结构化草稿](data/knowledge/health_recovery/reading_template_v1_draft.json)，包含6段断词与6类状态；[来源审计](data/knowledge/health_recovery/source_review_v1.json)保留12来源条目／11事件家族、8通用候选方法与排除条件。疾病专属择法／同盘候选窗口及Swift接线尚待验证，当前不是已开放手机模板。准备页说明上下间距已按用户纠正改为相等（p9），其余界面保持。
 
-用户已指定下一重点为“根据病情判断传统病愈应期”。继续保留轻重V9／V11、病位V27的封存版本，独立开发 `health.recovery`，通过来源与原生验收前不开放。先区分好转、康复、出院等目标，核对原书适用条件，再由真实历法计算有凭据的候选窗口；不能把吉凶分直接换成康复天数，也不能承诺现实医疗康复日期。现状与开发顺序见 [病愈应期启动审计](docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md)。
+V1启动阶段历史（已由固定病愈目标的V2／V3承接，以下保留原计划）：用户已指定下一重点为“根据病情判断传统病愈应期”。继续保留轻重V9／V11、病位V27的封存版本，独立开发 `health.recovery`，通过来源与原生验收前不开放。先区分好转、康复、出院等目标，核对原书适用条件，再由真实历法计算有凭据的候选窗口；不能把吉凶分直接换成康复天数，也不能承诺现实医疗康复日期。现状与开发顺序见 [病愈应期启动审计](docs/HEALTH_RECOVERY_TIMING_KICKOFF_20261102.md)。
 
 ## 开发检查
 

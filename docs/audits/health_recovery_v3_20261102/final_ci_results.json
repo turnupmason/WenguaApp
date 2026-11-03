@@ -1,0 +1,120 @@
+{
+  "schema": "wengua_health_recovery_v3_verification_v1",
+  "production_source_sha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 41551867899,
+      "headSha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
+      "name": "Disease recovery V3 real Python Swift parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41551867899",
+      "jobs": [
+        {
+          "name": "actual_native_parity",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41551867963,
+      "headSha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
+      "name": "Sealed V9 V11 and V27 production Xcode iOS Simulator build",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41551867963",
+      "jobs": [
+        {
+          "name": "build_and_validate_real_app_bundle",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41551867925,
+      "headSha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41551867925",
+      "jobs": [
+        {
+          "name": "power_pair_full_text_parity",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41551867994,
+      "headSha": "870dcb77869e01a9b22a7b27c6e0f0268b089fe0",
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41551867994",
+      "jobs": [
+        {
+          "name": "v80_current (3.11)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.12)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "python_full_suite": {
+    "source_sha": "866f3d1b1fcf832952d1527fee6caa57316130f9",
+    "worktree_diff_sha256": "b9c7b4303317cba7592f4ede014374a04f33c87c679efd654d3fd588355a849a",
+    "sealed_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c",
+    "tests_run": 905,
+    "failures": 0,
+    "errors": 0,
+    "skipped": [
+      {
+        "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+        "reason": "Optional Moshier external cross-reference not installed"
+      },
+      {
+        "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+        "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+      },
+      {
+        "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+        "reason": "V7.8 historical fixture; active V7.9 tested independently"
+      }
+    ],
+    "full_log_sha256": "6470c5126085eb2c83cc1e79a358563856f318456c7c52b1d15e0b0ef278ea6a",
+    "records": []
+  },
+  "new_native_comparison": {
+    "cases": 53,
+    "real_clock_and_explicit_unit_cases": 38,
+    "synthetic_contract_cases": 15,
+    "actual_linux_swift": true,
+    "actual_macos_swift": true,
+    "actual_xcode_ios_app_build": true,
+    "production_swift_warnings": 0,
+    "actual_bundle_router_and_history_reopen_cases": 2,
+    "precision_limits_compared": true,
+    "windows_and_four_sections_exact": true,
+    "only_source_utc_instant_compared_semantically_Z_equals_plus_zero": true
+  },
+  "original_seven_resources_unchanged": true,
+  "severity_v9_v11_and_location_v27_math_unchanged": true,
+  "new_book_chapters": 0,
+  "new_historical_cases": 0,
+  "clinical_validation_claimed": false,
+  "runtime_sha256": "3e9e98118460130c0dd44cdf6d32093ebaa4b5506ee2fc8812fc843661d8b267",
+  "frozen_manifest_sha256": "b8a6fd484e3291a68def68d49ed74ec9d5fd4f9f64104ea5fee7e4dbd587374c"
+}
