@@ -44,6 +44,7 @@ import Foundation
         let pairs=try String(contentsOfFile:args[4],encoding:.utf8)
         let fixture=try JSONDecoder().decode(Fixture.self,from:Data(contentsOf:URL(fileURLWithPath:args[5])))
         for item in fixture.cases {
+            fputs("RECOVERY_CASE "+item.id+"\n",stderr)
             let facts:WenguaRecoveryFacts
             if let supplied=item.facts {facts=supplied}
             else {

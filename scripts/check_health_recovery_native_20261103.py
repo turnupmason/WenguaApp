@@ -34,6 +34,7 @@ def generate(folder):
     for draw,(iso,rel,label,zone) in enumerate(clocks):
         inquiry={'intent':'recovery','relationship':rel,'consultation_context':'direct_self' if rel=='self' else 'direct_proxy'}
         if rel=='wife':inquiry['patient_sex']='female'
+        elif rel=='friend':inquiry['patient_sex']='male'
         try:result=auto_cast_health_recovery_text(iso=iso,timezone_name=zone,inquiry=inquiry)
         except (ValueError,LookupError,KeyError) as e:
             rejected.append({'draw':draw,'iso':iso,'relationship':rel,'reason':str(e)});continue

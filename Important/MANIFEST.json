@@ -1057,7 +1057,7 @@
       "platform": "python",
       "canonical": "scripts/check_health_recovery_native_20261103.py",
       "snapshot": "Important/python/scripts/check_health_recovery_native_20261103.py",
-      "sha": "cb154a30d0d0cd5e16ef6852aa64a6591f5cbf29"
+      "sha": "8a307883d39f5a3f251a2bd2956472942ede72b2"
     },
     {
       "platform": "python",
@@ -1081,7 +1081,7 @@
       "platform": "swift",
       "canonical": "ios/WenguaAppUI/NativeRecoveryCheck.swift",
       "snapshot": "Important/swift/validation/NativeRecoveryCheck.swift",
-      "sha": "d6ebe979478702972dd855c4f4b83756ac5a389f"
+      "sha": "2a38e67cd32066fa3ed034ede89d942875816885"
     },
     {
       "platform": "python",
