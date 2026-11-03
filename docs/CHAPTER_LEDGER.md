@@ -1875,3 +1875,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41551030390
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5065bd68b65e4d137e725f87245fa04f14ba7018。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551030390_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41551228726
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码72b51fab8616602dabd905b494d3c74b5307d8ac。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551228726_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
