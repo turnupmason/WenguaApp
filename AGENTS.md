@@ -3526,3 +3526,5 @@ Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、�
 
 ### 当前封存轻重回归实测 · run 41758203947
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a353a6319ca35292039719a4b2f1824aaf6d841d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41758203947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+14B终版源码a353a631实际CI：主CI#41758204013双Python3.11/3.12、新Qwen14B/32B CPU接口#41758204130、旧健康原生#41758203947、旧量化V2兼容#41758204122的Linux3.11/3.12和Windows3.12全部success；远端八项关键源/配置已逐字节核对，32B原配置SHA未变。完整收据docs/audits/qwen14b_rtx4080_v1_20261103/implementation_ci.json。已接收自动原生文档8851ceb8，最后仅交接/缓存位置说明，不再改变训练源码、配置或数据。用户本机14B下载/NF4显存/完整训练/生成留出评测仍待实际执行，不把CPU微型测试冒充4080实训；下一步按当前14B Windows指南更新→doctor→prepare→audit-tokens→两步smoke。新增原章0/历史事件0。

@@ -39,7 +39,7 @@ local\qwen_env\Scripts\python.exe run_qwen_research.py audit-tokens --data local
 local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen14b_v1\run1\data --output local\qwen14b_v1\run1\smoke --max-steps 2
 ```
 
-这一步才首次下载原始基座（约30GB）并在加载时量化，建议磁盘至少预留60GB用于缓存、环境和输出。首次下载可能耗时较长。不要把下载进度当训练进度；`run_status.json`显示`complete`、实际走完两个优化步骤且没有OOM后，才算该短跑完成。其结果会记录分配/保留显存峰值，不是问卦准确率。
+这一步才首次下载原始基座（约30GB）并在加载时量化，建议磁盘至少预留60GB用于缓存、环境和输出。基座默认缓存在`%USERPROFILE%\.cache\huggingface`（可被HF_HOME覆盖），需检查缓存所在盘的可用空间；自己的训练适配器保存在项目`local/`。首次下载可能耗时较长。不要把下载进度当训练进度；`run_status.json`显示`complete`、实际走完两个优化步骤且没有OOM后，才算该短跑完成。其结果会记录分配/保留显存峰值，不是问卦准确率。
 
 确认短跑完成后，用新目录正式训练，配置与短跑一致：
 

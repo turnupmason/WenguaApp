@@ -1,0 +1,98 @@
+{
+  "source_sha": "a353a6319ca35292039719a4b2f1824aaf6d841d",
+  "github_runs": [
+    {
+      "databaseId": 41758204013,
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "headSha": "a353a6319ca35292039719a4b2f1824aaf6d841d",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41758204013",
+      "jobs": [
+        {
+          "name": "v80_current (3.11)",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.12)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41758204130,
+      "name": "Qwen14B and 32B source research and tiny CPU adapter contract",
+      "headSha": "a353a6319ca35292039719a4b2f1824aaf6d841d",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41758204130",
+      "jobs": [
+        {
+          "name": "cpu-interface-not-32b-training",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41758203947,
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "headSha": "a353a6319ca35292039719a4b2f1824aaf6d841d",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41758203947",
+      "jobs": [
+        {
+          "name": "power_pair_full_text_parity",
+          "conclusion": "success"
+        },
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41758204122,
+      "name": "Professional features V2 Linux Windows CPU and PyCharm launcher",
+      "headSha": "a353a6319ca35292039719a4b2f1824aaf6d841d",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41758204122",
+      "jobs": [
+        {
+          "name": "professional (ubuntu-latest, 3.12)",
+          "conclusion": "success"
+        },
+        {
+          "name": "professional (ubuntu-latest, 3.11)",
+          "conclusion": "success"
+        },
+        {
+          "name": "professional (windows-latest, 3.12)",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "remote_verified_files": {
+    "configs/qwen14b_v1.json": "cd2cb23d1f5d8d0b328140dfde10dccdf7501a648c5fd30ea49cbfd6e6a8750f",
+    "configs/qwen32b_v1.json": "e8024a3df1eae90a37a001b8d04634a6ecf29582266d673ab40849aa831e7da1",
+    "src/wengua/qwen_finetune.py": "6b968a151a3c17f6bc3870a9a31c0da3962fba9c8935e5705cebfc0ec95f48c2",
+    "src/wengua/qwen_research.py": "c0ea31f176c2acf025c89356a743be51a02ca8a7b14bdd59f59d157cd916980d",
+    "scripts/qwen_research.py": "7a74721247245e2f6722685ea5ac5b24758b41023201cea088422cb3bea4340d",
+    "scripts/check_qwen_training.py": "95e097dc3457fef9333a1a604f5768e2dd4a080dab7753cce5bbde66e36744dc",
+    "tests/test_qwen_research_v1.py": "717ac27e8fa7243a444911d3ee20a7dd085dbca58f20e0fd4135c1d028d626cd",
+    ".github/workflows/qwen_research_v1.yml": "8b13292dfd323a737cf368d9b438f3445e44e02a793f7b654f910bf5bf69bdc7"
+  },
+  "previous_32b_configuration_unchanged": true,
+  "actual_full_size_training_verified": false,
+  "actual_4080_gpu_training_tested_here": false,
+  "user_reported_gpu": {
+    "name": "NVIDIA GeForce RTX 4080",
+    "total_gib": 15.99,
+    "free_gib": 14.72,
+    "cuda_available": true
+  },
+  "local_tests": {
+    "tests_run": 968,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  }
+}
