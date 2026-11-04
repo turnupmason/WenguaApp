@@ -1,0 +1,67 @@
+{
+  "source_sha": "2521f86478eacb68ab9ba2f25131c2dca260b416",
+  "github_runs": [
+    {
+      "databaseId": 41771130300,
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "headSha": "2521f86478eacb68ab9ba2f25131c2dca260b416",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41771130300",
+      "jobs": [
+        {
+          "name": "v80_current (3.12)",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.11)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41771130369,
+      "name": "Qwen14B and 32B source research and tiny CPU adapter contract",
+      "headSha": "2521f86478eacb68ab9ba2f25131c2dca260b416",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41771130369",
+      "jobs": [
+        {
+          "name": "cpu-interface-not-32b-training",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41771130292,
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "headSha": "2521f86478eacb68ab9ba2f25131c2dca260b416",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41771130292",
+      "jobs": [
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "conclusion": "success"
+        },
+        {
+          "name": "power_pair_full_text_parity",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "remote_files": {
+    "src/wengua/qwen_finetune.py": "3ff1321e026923f56bc81e93968f46b3b197160e10ca83798d0aaa7944ba11bf",
+    "scripts/qwen_research.py": "b7bcbf946394e0c5537fb39c4bef68dc218f898e9cfa78419fbfebea93ce8920",
+    "scripts/check_qwen_training.py": "42fbec6157debaac9ef735d0c1ae219e7935cec0ce2ae71f6efba779becb74be",
+    "tests/test_qwen_research_v1.py": "ac1ea50cef5ab07b40570a426f711c1e4b095f2cf1ee9d10db906d33fe7d5959"
+  },
+  "local_full_tests": {
+    "tests_run": 974,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "actual_14b_cuda_generation_tested_here": false,
+  "domain_answer_quality_verified": false,
+  "user_reported_full_training_receipt": "docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_full_training.json"
+}
