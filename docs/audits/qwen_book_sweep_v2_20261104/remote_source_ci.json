@@ -1,0 +1,42 @@
+{
+  "state": "passed",
+  "source_sha": "adcb245987713fd8f9193d6bf9e5e297a592a9be",
+  "qwen_run_id": 41898463745,
+  "windows_job_id": 126814184923,
+  "windows_tests": 43,
+  "windows_cli_plan_and_cmd_guard_passed": true,
+  "cpu_job_id": 126814184520,
+  "main_run_id": 41898463885,
+  "main_python_jobs": [
+    126814185958,
+    126814186482
+  ],
+  "complete_logs_match_source_and_have_no_process_errors": true,
+  "artifact_id": 13357706411,
+  "artifact_zip_sha256": "5c0260c31ebf044118cb5ce9b863ea93636283d226a4b90a3c7b60855fdc4669",
+  "artifact_receipt_count": 5,
+  "continuous_book_sweep_receipt": {
+    "state": "passed",
+    "test": "tiny_random_qwen3_cpu_continuous_optimizer_staged_sweep",
+    "two_epochs_same_adam_object_and_monotonic_adam_scheduler_steps": true,
+    "partial_epoch_no_false_validation_or_early_stop": true,
+    "interrupted_and_uninterrupted_final_adapter_tensors_match": true,
+    "explicit_checkpoint_restored_optimizer_step_1": true,
+    "power_cut_before_epoch_validation_recovers_evaluation_and_matches_uninterrupted_weights": true,
+    "new_trials_start_step_zero_empty_optimizer": true,
+    "all_seven_projection_modules_exercised": true,
+    "four_format_macro_validation_losses_recorded": true,
+    "two_contexts_byte_identical_common_validation_and_test": true,
+    "long_validation_base_and_selected_generation_path_exercised": true,
+    "adaptive_stages_reuse_identical_configuration_without_retraining": true,
+    "one_final_selected_test_after_all_stages": true,
+    "completed_resume_does_not_reload_or_retest": true,
+    "power_cut_after_final_checkpoint_no_extra_update": true,
+    "official_tokenizer": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "real_14b_weights_loaded": false,
+    "cuda_nf4_tested": false
+  },
+  "actual_14b_cuda_tested": false,
+  "verification_basis": "decoded complete matching-source logs and downloaded artifact; no queued status substituted for actual execution"
+}

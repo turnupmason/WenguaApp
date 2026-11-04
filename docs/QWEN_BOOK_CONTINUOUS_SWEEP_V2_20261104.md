@@ -88,3 +88,5 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output
 配置：`configs/qwen14b_book_sweep_v2.json`。开训前可调整限定的阶段候选和公共训练条件；改已开始实验的参数、代码、上下文、数据或总epoch须使用新目录，例如run2。保持旧run1、旧日志与适配器。最终候选仍须看专业回答，不能仅按最低loss宣称已经训练到位。
 
 云端只做真实官方tokenizer、微型随机Qwen3 CPU训练、来源文件核对与控制流程验收；没有在云端加载14B权重或运行4080 NF4。真实显存、吞吐和回答能力以用户本地运行结果为准。
+
+源码adcb2459的[远端Qwen验收](https://github.com/turnupmason/WenguaApp/actions/runs/41898463745)与[双Python主CI](https://github.com/turnupmason/WenguaApp/actions/runs/41898463885)已实际完成并通过；Windows43项、新连续训练CPU及长验证分支产物已下载核验。[远端审计](audits/qwen_book_sweep_v2_20261104/remote_source_ci.json)记录来源SHA、job、ZIP哈希和真实验收字段。初次失败日志保留。

@@ -3715,3 +3715,6 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41898463642
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码adcb245987713fd8f9193d6bf9e5e297a592a9be。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41898463642_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+连续SFT V2同源码远端最终验收：adcb245987713fd8f9193d6bf9e5e297a592a9be，Qwen#41898463745，Windows job126814184923完整日志43项OK、新V2计划/帮助/CMD缺环境阻断均通过；CPU job126814184520完整日志continuous_optimizer_staged_sweep passed，跨epoch同Adam与scheduler、半epoch恢复张量一致、epoch末验证前断电补验后张量一致、最终步收尾不多更新、长验证原模/候选生成均实跑。实际下载产物13357706411，ZIP SHA256 5c0260c31ebf044118cb5ce9b863ea93636283d226a4b90a3c7b60855fdc4669，5份验收JSON；不是用queued快照或旧源码结果充数。主CI#41898463885双Python job126814185958/126814186482完整日志匹配adcb2459且无进程错误。证据docs/audits/qwen_book_sweep_v2_20261104/remote_source_ci.json，首轮失败日志继续保留，原断言未删除/skip。14B/4080实际NF4仍需用户本机，云端只实跑官方tokenizer与微型CPU模型。当前本机入口run_book_research_v2_windows.cmd，结果local/qwen_book_sweep_v2/run1/results.html。
