@@ -3705,3 +3705,7 @@ Windows分步CI最终实证：源码5df92aa3的Qwen#41879397874，Windows job126
 
 ### 当前封存轻重回归实测 · run 41879397715
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5df92aa355835938f9b3a06d28683b8414e2195c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41879397715_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41883929493
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a3e4d39acab78f2632ccf31897bb27ec60c4bc5f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41883929493_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
