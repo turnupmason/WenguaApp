@@ -8,7 +8,7 @@ import time
 from src.wengua import qwen_book_continuous_v1 as engine
 from src.wengua import qwen_book_sweep_v2 as sweep
 from src.wengua.qwen_book_continuous_v1 import book
-from src.wengua.qwen_book_process_v1 import isolated_execution
+from src.wengua.qwen_book_process_v1 import isolated_execution,launch,execution_contract,PRE_PID_FIX_SHA,FILES
 
 
 def fixture_factory():
@@ -51,6 +51,13 @@ def main():
         with book.job_lock(job/'run.lock'):probe=engine.fit(job,config,deadline,probe=True,cpu_factory=fixture_factory)
         assert probe['state']=='complete'
         original_contract=book.file_sha(job/'job_contract.json');original_probe=book.file_sha(job/'smoke/stage_status.json')
+        old=execution_contract(True);old.pop('receipt_protocol');old['code_sha256'][FILES[0]]=PRE_PID_FIX_SHA
+        book.atomic_json(root/'process_execution.json',old)
+        # Parent previously rejected a successful receipt. The completed stage
+        # must return without another optimizer update or rewriting its status.
+        recovered=launch(job,config,deadline,'fit',probe=True,cpu_fixture=True)
+        assert recovered['state']=='complete' and book.file_sha(job/'smoke/stage_status.json')==original_probe
+        assert list(root.glob('process_execution.before_pid_fix-*.json'))
         status=book.read_json(root/'sweep_status.json');status['trials'][tid]={'id':tid,'state':'feasible','probe_state':'complete','config':config}
         book.atomic_json(root/'sweep_status.json',status)
         with isolated_execution(root,cpu_fixture=True,fixture_stop_once=1):
@@ -64,15 +71,16 @@ def main():
         assert book.file_sha(job/'smoke/stage_status.json')==original_probe
         assert list((job/'worker_calls').glob('*.json'))
         results=[book.read_json(p) for p in root.glob('trials/*/worker_calls/*.result.json')]
-        assert len(results)==5 and all(r['ok'] for r in results)
-        pids=[r['pid'] for r in results];assert len(set(pids))==5 and os.getpid() not in pids
+        assert len(results)==6 and all(r['ok'] for r in results)
+        pids=[r['pid'] for r in results];assert len(set(pids))==6 and os.getpid() not in pids
         for row in done['trials'].values():assert row['steps']==4 and len(row['per_format_loss'])==4
         history=book.read_json(job/'cycle_01/stage_status.json');assert history['resume_checkpoint']==str(cp)
         before=list(root.glob('trials/*/worker_calls/*.result.json'))
         with isolated_execution(root,cpu_fixture=True):
             again=sweep.run(root,spec,deadline,resume=True,base=c,cpu_factory=object(),tokenizer=tok,pack=pack)
         assert again['state']=='complete' and before==list(root.glob('trials/*/worker_calls/*.result.json'))
-    receipt={'state':'passed','test':'actual_spawned_tiny_qwen3_cpu_training','distinct_child_processes':5,
+    receipt={'state':'passed','test':'actual_spawned_tiny_qwen3_cpu_training','distinct_child_processes':6,
+        'successful_stage_recovered_without_retraining_after_parent_receipt_failure':True,'known_transport_upgrade_preserves_backup':True,
         'existing_completed_probe_and_contract_preserved':True,'sealed_step_1_optimizer_resumed_in_new_process':True,
         'two_formal_configurations_finish_with_four_format_validation':True,'final_test_isolated_after_selection':True,
         'completed_resume_spawns_no_workers':True,'real_14b_weights_loaded':False,'cuda_allocator_release_verified':False}

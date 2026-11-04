@@ -11,6 +11,7 @@ from contextlib import contextmanager
 import os
 from pathlib import Path
 import signal
+import shutil
 import subprocess
 import sys
 import time
@@ -24,17 +25,33 @@ from .qwen_book_continuous_v1 import book
 
 SCHEMA='wengua_book_process_v1'
 FILES=('src/wengua/qwen_book_process_v1.py','run_qwen_book_worker.py','scripts/qwen_book_sweep_v2.py')
+PRE_PID_FIX_SHA='cde42de244c35dc1efe8d3ec6ec515f47ed2561e50739b3dbf290a1499398358'
 
 
 def execution_contract(cpu_fixture=False):
     return {'schema':SCHEMA,'mode':'fresh_process_per_training_unit','training_kernel_unchanged':True,
-        'cpu_fixture':cpu_fixture,'code_sha256':{name:book.digest((book.ROOT/name).read_text(encoding='utf8')) for name in FILES}}
+        'cpu_fixture':cpu_fixture,'receipt_protocol':2,
+        'code_sha256':{name:book.digest((book.ROOT/name).read_text(encoding='utf8')) for name in FILES}}
 
 
 def ensure_execution(root,contract):
     root=book.private_output(root);path=root/'process_execution.json'
     if path.exists():
-        if book.read_json(path)!=contract:raise ValueError('Process execution code changed; use a new experiment directory')
+        old=book.read_json(path)
+        if old!=contract:
+            # One narrowly identified transport-only upgrade. Never rewrite
+            # sweep/job/stage contracts, data, adapter or optimizer receipts.
+            legacy=dict(contract);legacy.pop('receipt_protocol',None)
+            legacy['code_sha256']=dict(contract['code_sha256'])
+            legacy['code_sha256'][FILES[0]]=PRE_PID_FIX_SHA
+            if old!=legacy:raise ValueError('Process execution code changed; use a new experiment directory')
+            backup=path.with_name('process_execution.before_pid_fix-'+PRE_PID_FIX_SHA[:12]+'.json')
+            if backup.exists():
+                if book.read_json(backup)!=old:raise ValueError('Execution upgrade backup mismatch')
+            else:shutil.copy2(path,backup)
+            book.atomic_json(root/'process_pid_fix_upgrade.json',{'old':old,'new':contract,
+                'backup_sha256':book.file_sha(backup),'training_contracts_changed':False})
+            book.atomic_json(path,contract)
     elif (root/'sweep_contract.json').exists():book.atomic_json(path,contract)
     # The existing coordinator creates the root and its original contract first.
 
@@ -54,10 +71,11 @@ def launch(job,c,deadline,operation,*,probe=False,checkpoint=None,best=None,cpu_
     job=book.private_output(job);root=job.parent.parent
     ensure_execution(root,execution_contract(cpu_fixture))
     calls=job/'worker_calls';calls.mkdir(exist_ok=True)
-    request=calls/(str(time.time_ns())+'-'+uuid.uuid4().hex+'.json')
+    call_id=uuid.uuid4().hex;request=calls/(str(time.time_ns())+'-'+call_id+'.json')
     book.atomic_json(request,{'schema':SCHEMA,'job':str(job),'config':c,'deadline':deadline,'operation':operation,
         'probe':probe,'checkpoint':str(checkpoint) if checkpoint is not None else None,'best':best,
-        'cpu_fixture':cpu_fixture,'fixture_stop_step':stop_step})
+        'cpu_fixture':cpu_fixture,'fixture_stop_step':stop_step,'call_id':call_id})
+    request_sha=book.file_sha(request)
     result_path=request.with_suffix('.result.json')
     command=[sys.executable,'-X','utf8',str(book.ROOT/'run_qwen_book_worker.py'),str(request)]
     process=subprocess.Popen(command,cwd=book.ROOT,env=os.environ.copy(),
@@ -69,8 +87,12 @@ def launch(job,c,deadline,operation,*,probe=False,checkpoint=None,best=None,cpu_
     book.progress('isolated_worker_exited',operation=operation,pid=process.pid,exit_code=code)
     if not result_path.exists():raise RuntimeError('Worker exited without a result; outputs preserved: '+str(request))
     result=book.read_json(result_path)
-    if result.get('request_sha256')!=book.file_sha(request) or result.get('pid')!=process.pid:
+    # Windows venv redirector PID can differ from the actual Python PID.
+    # Bind the result to this immutable request, not to launcher identity.
+    if (result.get('request_sha256')!=request_sha or book.file_sha(request)!=request_sha
+        or result.get('call_id')!=call_id or type(result.get('pid')) is not int or result['pid']<=0):
         raise ValueError('Worker result/request provenance mismatch')
+    book.progress('worker_receipt_accepted',launcher_pid=process.pid,worker_pid=result['pid'],same_pid=process.pid==result['pid'])
     if code or not result.get('ok'):
         error=result.get('error',{})
         if error.get('type')=='KeyboardInterrupt':raise KeyboardInterrupt()
@@ -124,7 +146,7 @@ def worker(request):
             callbacks=(Stop(),)
     def interrupt(signum,frame):raise KeyboardInterrupt()
     if os.name=='nt':signal.signal(signal.SIGBREAK,interrupt)
-    out={'schema':SCHEMA,'pid':os.getpid(),'request_sha256':book.file_sha(request),'cpu_fixture':cpu_fixture}
+    out={'schema':SCHEMA,'pid':os.getpid(),'request_sha256':book.file_sha(request),'cpu_fixture':cpu_fixture,'call_id':payload['call_id']}
     try:
         with book.job_lock(job.parent.parent/'isolated_gpu_worker.lock'):
             args=(job,config,payload['deadline'])

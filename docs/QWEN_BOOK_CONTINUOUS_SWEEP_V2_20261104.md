@@ -4,6 +4,8 @@
 
 ## Windows CMD启动
 
+Windows虚拟环境的启动器PID可能不同于实际Python worker PID。回执协议2按请求原始SHA＋随机call_id校验，两个PID分别记录，不再要求相等。已有已知版本`process_execution.json`会先逐字节备份再作执行器协议升级，训练合同/数据/检查点不变；若此前worker退出0但父进程误拒绝回执，重跑会读取已保存complete短测状态，不重新训练这两步。未知来源合同仍拒绝自动改写。
+
 使用已经装好CUDA依赖的 `local\qwen_env`，无需重装Python/torch。此入口要求此前已完整下载固定revision权重与tokenizer。需首次下载时用直接CLI省略`--offline`并指定新的输出目录。离线启动不会自动联网补文件。
 
 ```bat

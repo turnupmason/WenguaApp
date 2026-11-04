@@ -16,6 +16,34 @@ from src.wengua.qwen_book_continuous_v1 import book
 
 
 class ContinuousStagedContracts(unittest.TestCase):
+    def test_known_pid_transport_upgrade_preserves_old_receipt_and_training_contract(self):
+        with TemporaryDirectory(dir=book.ROOT/'local') as tmp:
+            root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'original':True})
+            digest=book.file_sha(root/'sweep_contract.json');new=processes.execution_contract()
+            old=deepcopy(new);old.pop('receipt_protocol');old['code_sha256'][processes.FILES[0]]=processes.PRE_PID_FIX_SHA
+            book.atomic_json(root/'process_execution.json',old);original=(root/'process_execution.json').read_bytes()
+            processes.ensure_execution(root,new)
+            self.assertEqual(book.read_json(root/'process_execution.json'),new)
+            self.assertEqual(next(root.glob('process_execution.before_pid_fix-*.json')).read_bytes(),original)
+            self.assertEqual(book.file_sha(root/'sweep_contract.json'),digest)
+
+    def test_worker_receipt_accepts_redirector_pid_but_rejects_wrong_call_or_checksum(self):
+        for wrong in (None,'nonce','sha'):
+            with self.subTest(wrong=wrong),TemporaryDirectory(dir=book.ROOT/'local') as tmp:
+                root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'fixture':True});job=root/'trials'/'case';job.mkdir(parents=True)
+                def popen(command,**kwargs):
+                    request=Path(command[-1]);child=Mock(pid=12345)
+                    def wait():
+                        payload=book.read_json(request)
+                        book.atomic_json(request.with_suffix('.result.json'),{'pid':54321,'request_sha256':'wrong' if wrong=='sha' else book.file_sha(request),
+                            'call_id':'wrong' if wrong=='nonce' else payload['call_id'],'ok':True,'result':{'state':'complete'}})
+                        return 0
+                    child.wait.side_effect=wait;return child
+                with patch.object(processes.subprocess,'Popen',side_effect=popen):
+                    if wrong is None:self.assertEqual(processes.launch(job,engine.base_config(),time.time()+3600,'fit')['state'],'complete')
+                    else:
+                        with self.assertRaisesRegex(ValueError,'provenance'):processes.launch(job,engine.base_config(),time.time()+3600,'fit')
+
     def test_actual_fresh_interpreters_exit_without_importing_torch(self):
         with TemporaryDirectory(dir=book.ROOT/'local') as tmp,patch.dict(os.environ,{'HF_HUB_OFFLINE':'1'}):
             root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'fixture':True})
@@ -58,7 +86,7 @@ class ContinuousStagedContracts(unittest.TestCase):
                 self.assertIsInstance(command,list);self.assertNotIn('shell',kwargs)
                 request=Path(command[-1]);child=Mock(pid=12345)
                 def wait():
-                    book.atomic_json(request.with_suffix('.result.json'),{'pid':12345,'request_sha256':book.file_sha(request),
+                    book.atomic_json(request.with_suffix('.result.json'),{'pid':12345,'request_sha256':book.file_sha(request),'call_id':book.read_json(request)['call_id'],
                         'ok':False,'error':{'type':'OutOfMemoryError','cuda_oom':True,'message':'fixture OOM'}})
                     return 1
                 child.wait.side_effect=wait;return child

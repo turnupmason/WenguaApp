@@ -109,6 +109,13 @@ jobs:
           python-version: '3.12'
       - name: Windows locks, source-only resume contracts and UTF-8 CLI (no GPU)
         run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 tests.test_qwen_book_sweep_v1 tests.test_qwen_book_sweep_v2 -v
+      - name: Actual Windows virtualenv redirector PID and worker receipts (stdlib only)
+        shell: pwsh
+        run: |
+          python -m venv --without-pip local/worker_contract_env
+          if ($LASTEXITCODE -ne 0) { throw "venv creation failed" }
+          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen_book_sweep_v2 -v
+          if ($LASTEXITCODE -ne 0) { throw "venv worker contract failed" }
       - name: Windows UTF-8 launcher help
         run: python -X utf8 run_qwen_book_loop.py --help
       - name: CMD launcher preserves absent environment without starting training

@@ -40,6 +40,8 @@
 
 > **当前4080修复：独立进程隔离，继续原run3。** 用户实测allocated仅0.01587GiB但reserved6.76367GiB、free7.89258GiB，GC/empty_cache未释放分配器显存段，不能再称GC修复成功。Windows同名入口现用qwen_book_process_v1在每个probe/整组连续训练/最后测试新解释器运行，等待进程退出后下一组。未改原训练内核文件／合同／数据／参数；新process_execution.json单独固定执行器源码，已有run3完成probe与检查点原样复用，无需run4。CPU真实子进程与Windows进程控制另核，实际4080新方案仍待本机。
 
+> **Windows venv回执修复：** 用户worker exit0但父进程PID校验拒绝。启动器PID与实际Python PID可不同，现用原始请求SHA＋随机call_id关联回执，PID仅诊断；错误nonce/hash仍拒绝。只允许已知cde42de2执行器合同备份升级到回执协议2，不改训练合同/检查点。继续run3，已保存complete短测直接返回，不再训练两步。CI新增真实Windows venv（非普通Python）验证，实际PID差异另据日志确认。
+
 # AGENTS.md — WenguaApp 长期开发代理执行规范
 
 > **最高优先级更新：所有用户逐章提供的原书案例直接作为项目认可历史案例入库，不再请求用户逐例人工审核；跨书同领域共用事件库。必须保留原书错误、事后修正和原始来源。详见本文最新最高优先级指令。**

@@ -3755,3 +3755,10 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f58fc4147ee3a90fdb25cf87c18be8f621380cad。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41922015486_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 独立进程同源码f58fc4147ee3a90fdb25cf87c18be8f621380cad远端验收：Qwen#41922015455 Windows job126896634335完整日志53项OK，含实际fresh interpreter启动/退出/环境继承；CPU job126896634050完整日志真实5子进程、原完成probe/合同未改、step1优化器新进程恢复、两组四格式训练与所选最终测试全部通过。主CI#41922015622双Python job126896634466/126896634658日志均匹配源码、无error且cleanup完成。证据docs/audits/qwen_book_process_isolation_20261104/remote_source_ci.json及unchanged_training_kernels.json（原run3六个内核哈希逐一相同）。继续原run3；实际4080独立进程显存回收仍待本机日志，不使用CPU结果替代。
+
+
+### 2026-11-04 · Windows venv启动器PID与实际worker PID回执修复
+
+用户子进程fit已exit0，父进程因Worker result/request provenance mismatch停止。原逻辑错误要求Popen.pid==os.getpid()，Windows venv重定向启动器可为独立进程；普通Windows Python测试未覆盖此层。新协议按初始请求SHA＋随机call_id核验，PID仅诊断；原始请求被改、错误SHA/nonce仍拒绝。只允许已知旧执行器源码SHA cde42de244c35dc1efe8d3ec6ec515f47ed2561e50739b3dbf290a1499398358合同先备份再升级回执协议2；原训练内核/合同/优化器/数据不改。继续run3，已完成stage在新进程直接返回不再训练；未知合同仍拒绝。新增真实Windows无pip venv检查（非普通Python）；CPU六子进程实测恢复已完成stage且其状态哈希不变、旧执行合同备份、step1优化器跨进程恢复均通过。真实Windows PID差异和本机后续GPU组间回收另核，不以CPU代替。
+
+PID回执修复本地1083项全量0失败/0错误，3项既有skip。26项V2控制测试通过：不同launcher/worker PID接受、错误SHA或nonce拒绝、已知旧执行合同逐字节备份升级且训练合同不变。真实六个CPU子进程证明父进程回执失败后已完成stage原字节复用不再训练、原step1优化器跨进程恢复、两组四格式及最终测试仍通过。证据docs/audits/qwen_book_windows_venv_pid_20261104/；真实Windows venv异PID远端另核。
