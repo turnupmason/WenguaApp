@@ -83,3 +83,5 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep.py run --output lo
 若全部OOM，总状态为no_feasible_trial，不会虚构优胜者；释放显存后可在选择尚未冻结前用原配置加 `--retry-oom --resume` 再试。已冻结并做过最终测试的实验不能原地换组选；继续研究用新目录，旧结果全部保留。
 
 本地已验证std契约、真实官方tokenizer上的微型随机Qwen3 CPU训练/Adam恢复/两组独立初始化/测试隔离；并核对真实原库准备后的两组数据SHA完全相同。云端没有加载14B权重或执行4080 NF4，真实显存及生成能力以用户本地结果为准。
+
+源码51a48dd9的[远端Qwen验收](https://github.com/turnupmason/WenguaApp/actions/runs/41884207036)与[双Python主CI](https://github.com/turnupmason/WenguaApp/actions/runs/41884207344)均已实际通过；Windows29项及CPU两组合训练产物已取回核验。详见[远端审计](audits/qwen_book_sweep_v1_20261104/remote_source_ci.json)。首次Windows短路径断言失败保留，修正后未跳过任何新增测试。

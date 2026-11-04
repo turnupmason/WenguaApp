@@ -3697,3 +3697,6 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41884207254
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码51a48dd9dfd4786e5f3205ea311e2de4f85dbee0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41884207254_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+参数实验最终远端验收（同源码51a48dd9dfd4786e5f3205ea311e2de4f85dbee0）：Qwen#41884207036，Windows job126764171094完整日志29项OK，参数计划/两个CMD缺环境阻断均通过；CPU job126764171674完整日志新两组合sweep passed。实际下载产物13351385392，ZIP SHA256 2115c9c0a211fc14432a56198ef990045b9cf062499bf42a38eb838ef1256fdd，含4份微型验收JSON，新sweep确认Trainer/Adam起始0→恢复1→另一组0、逐字节相同数据、全组完成才一次所选最终测试、完成恢复不重跑。主CI#41884207344的Python3.11/3.12 job126764172259/126764172103完整日志均匹配51a48dd9且无进程错误；本地该提交无工作区差异全量1057项通过。首次Windows短路径测试失败元数据仍保留，未skip/删除测试；本条依据修正后的实际日志及产物。详见docs/audits/qwen_book_sweep_v1_20261104/remote_source_ci.json。14B/4080 NF4实训仍未在云端执行。

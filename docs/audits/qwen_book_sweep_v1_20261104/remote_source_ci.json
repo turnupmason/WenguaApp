@@ -1,0 +1,35 @@
+{
+  "state": "passed",
+  "source_sha": "51a48dd9dfd4786e5f3205ea311e2de4f85dbee0",
+  "qwen_run_id": 41884207036,
+  "windows_job_id": 126764171094,
+  "windows_tests": 29,
+  "windows_plan_and_both_cmd_guards_passed": true,
+  "cpu_job_id": 126764171674,
+  "main_run_id": 41884207344,
+  "main_python_jobs": [
+    126764172103,
+    126764172259
+  ],
+  "complete_logs_match_source_and_have_no_process_errors": true,
+  "artifact_id": 13351385392,
+  "artifact_zip_sha256": "2115c9c0a211fc14432a56198ef990045b9cf062499bf42a38eb838ef1256fdd",
+  "book_sweep_receipt": {
+    "state": "passed",
+    "test": "tiny_random_qwen3_cpu_two_config_sweep",
+    "two_trials_fresh_base_and_new_adapter": true,
+    "explicit_checkpoint_restored_optimizer_step_1_to_2": true,
+    "identical_shared_train_and_evaluation_files": true,
+    "trainer_and_adam_optimizer_step_states_observed_0_1_0": true,
+    "trial_final_tests_deferred": true,
+    "exactly_one_selected_trial_test_after_all_trials": true,
+    "complete_resume_no_model_reload_or_retest": true,
+    "html_and_csv_written": true,
+    "official_tokenizer": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "real_14b_weights_loaded": false,
+    "cuda_nf4_tested": false
+  },
+  "actual_14b_cuda_tested": false,
+  "verification_basis": "decoded complete source-matching logs plus downloaded artifact; not queued API snapshots"
+}
