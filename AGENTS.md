@@ -3569,3 +3569,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 新增review只读旧UTF-8 trace并给出字段名/期望与实际类型，不自动转换错误值；chat拒绝时直接输出rejected原答和诊断、保存trace、退出2而非泛化堆栈。根入口UTF-8输出；chat默认本地缓存，避免可选custom_generate HEAD连接重置，缓存缺失显式allow-model-download，dtype替代弃用别名（数值设置不变）。详见docs/QWEN14B_UTF8_TRACE_AND_ROLE_RETRIEVAL_20261103.md；更新后adapter/base需用同一新提示重跑，不能混用旧错源回答做评测。专项25项已通过，实际新14B生成仍待用户；新完整回归/微型CPU/CI待执行。新增原章0/历史事件0。
 
 本轮本地终版验收：25专项+镜像1通过；真实官方14B tokenizer确认新题保留病例前第9/11行两段（输入691、回答预算768、总1459≤2048），不再只给转盘段。缓存本地dtype加载、微型CPU BF16 LoRA/独立重载一致通过；全库978 tests、0 failures/0 errors/3既有skip，日志docs/audits/qwen14b_trace_repair_20261103/full_run。用户随后用Python UTF-8读取原raw_output，中文已正常，实际missing_information仍字符串且回答仍为转盘段，与私有恢复诊断一致。新prompt的真实GPU回答未测，旧回答仍判不合格；新CI待推送核验。
+
+
+### 当前封存轻重回归实测 · run 41773156840
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41773156840_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
