@@ -80,3 +80,5 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_curriculum.py ask --job local
 Windows换行兼容：UTF-8源码按LF规范哈希，内容修改仍拒绝；SQLite按原字节核验。只固定启动入口的LF属性，兼容先前已经打开的等待器，不改变其他封存资源的换行。
 
 补充6条独立的初始追问目标（与同情境后续回答绑定同组），避免最后一轮assistant掩码让前面的追问永远不参与损失；追问策略明确标为课程设计，不冒充原作者说过的话。
+
+当前checked-ready研究版本及实际CI收据见 [implementation_ci.json](audits/qwen_curriculum_v2_20261103/implementation_ci.json)。全库999项通过，3项既有skip；此状态不代表已经在用户本机启动或完成新14B训练。

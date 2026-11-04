@@ -2058,3 +2058,6 @@ Windows发布前补验：发现core.autocrlf会令旧等待器的逐字源码哈
 
 
 最终增补6个初始追问的直接监督目标：仅作为多轮上文的assistant不受最后一轮mask训练，现明确教会澄清文武职、求财类型、贷款方向、走失起局情境、已婚关系及父病问测情境。追问是课程设计，非伪造原作者说过的话；与后续回答同源同组。当前13,341条（知识2765/流程4132/原抄6444），接收11101训练/1120验证/1055测试，仍65超长留档；课程3756/4548，计划470/569步。此前13,335条是本次增补前版本，保留原审计，不混作独立新案例。
+
+
+问答课程V2现已发布checked-ready研究版：源码0585edf48ea32422d92ae6e130a5f7e33b6118f4实测主CI#41780475146（3.11/3.12）、真实微型Qwen恢复与双生成#41780475167、封存原生#41780475152均success。最终全库999 tests、0 failures/0 errors、3既有skip（final_full_run）；追问目标、换行差异/内容篡改阻断和真实Git CRLF→LF拉取均通过。overnight_release.json ready仅代表来源/分组/token/执行检查，semantic_expert_review_complete及预测验证仍false；50文本源码规范换行哈希+原SQLite二进制哈希+稳定LF入口校验。旧11952候选不参与、不获批；旧“preparing”条目是历史。已启动并仍在15小时窗口的本机等待器可自动启动固定新课程，未启动的用户按指南prepare查看CSV后run。未收到本地新job日志，不能说用户GPU正在跑或已训完。CI收据docs/audits/qwen_curriculum_v2_20261103/implementation_ci.json。

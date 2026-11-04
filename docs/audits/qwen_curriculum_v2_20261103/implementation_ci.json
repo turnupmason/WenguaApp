@@ -1,0 +1,56 @@
+{
+  "implementation_commit": "0585edf48ea32422d92ae6e130a5f7e33b6118f4",
+  "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 41780475146,
+      "headSha": "0585edf48ea32422d92ae6e130a5f7e33b6118f4",
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780475146",
+      "jobs": [
+        {
+          "name": "v80_current (3.11)",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.12)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41780475167,
+      "headSha": "0585edf48ea32422d92ae6e130a5f7e33b6118f4",
+      "name": "Qwen14B and 32B source research and tiny CPU adapter contract",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780475167",
+      "jobs": [
+        {
+          "name": "cpu-interface-not-32b-training",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41780475152,
+      "headSha": "0585edf48ea32422d92ae6e130a5f7e33b6118f4",
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780475152",
+      "jobs": [
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "conclusion": "success"
+        },
+        {
+          "name": "power_pair_full_text_parity",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "new_14b_gpu_training_performed": false
+}
