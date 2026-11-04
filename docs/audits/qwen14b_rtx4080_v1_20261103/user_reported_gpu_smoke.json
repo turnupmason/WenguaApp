@@ -1,0 +1,47 @@
+{
+  "evidence_type": "user_reported_terminal_log",
+  "independently_reproduced_here": false,
+  "model_id_expected_from_command": "Qwen/Qwen3-14B",
+  "gpu_identity_from_earlier_user_doctor": "NVIDIA GeForce RTX 4080",
+  "gpu_total_gib_from_earlier_user_doctor": 15.99,
+  "output_relative": "local/qwen14b_v1/run1/smoke",
+  "reported_state": "complete",
+  "reported_production_enabled": false,
+  "trainable_parameters": 5242880,
+  "all_parameters_including_adapter": 14773550080,
+  "trainable_percent_reported": 0.0355,
+  "completed_training_steps": 2,
+  "completed_validation_batches": 71,
+  "training_runtime_seconds": 31.4074,
+  "training_loss": 1.96933251619339,
+  "step_metrics": [
+    {
+      "loss": 2.4056,
+      "grad_norm": 0.571891188621521,
+      "learning_rate": 0.0,
+      "epoch": 0.01
+    },
+    {
+      "loss": 1.5331,
+      "grad_norm": 0.5584897994995117,
+      "learning_rate": 0.0001,
+      "epoch": 0.03
+    }
+  ],
+  "adapter_save_completed_by_program_control_flow": true,
+  "adapter_files_inspected_here": false,
+  "validation_loss_in_log": null,
+  "peak_gpu_memory_in_log": null,
+  "context_length_expected_from_supplied_config": 1536,
+  "context_length_printed_in_log": null,
+  "user_runtime_code_revision_in_log": null,
+  "full_two_epoch_training_observed_complete": false,
+  "domain_answer_generation_evaluated": false,
+  "prediction_accuracy_verified": false,
+  "notes": [
+    "Observed via user log; not a cloud CUDA or independent hardware reproduction.",
+    "Token-ID alignment message is informational; run reached complete.",
+    "Loss on two steps is not divination accuracy, calibration or clinical validation.",
+    "Next full run uses the same config and a separate output directory."
+  ]
+}

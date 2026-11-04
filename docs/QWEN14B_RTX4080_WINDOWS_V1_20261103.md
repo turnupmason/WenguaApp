@@ -36,7 +36,7 @@ local\qwen_env\Scripts\python.exe run_qwen_research.py audit-tokens --data local
 先执行两步真实GPU试跑：
 
 ```bat
-local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen14b_v1\run1\data --output local\qwen14b_v1\run1\smoke --max-steps 2
+local\qwen_env\Scripts\python.exe run_qwen_research.py train --config configs/qwen14b_v1.json --data local\qwen14b_v1\run1\data --output local\qwen14b_v1\run1\smoke --max-steps 2
 ```
 
 这一步才首次下载原始基座（约30GB）并在加载时量化，建议磁盘至少预留60GB用于缓存、环境和输出。基座默认缓存在`%USERPROFILE%\.cache\huggingface`（可被HF_HOME覆盖），需检查缓存所在盘的可用空间；自己的训练适配器保存在项目`local/`。首次下载可能耗时较长。不要把下载进度当训练进度；`run_status.json`显示`complete`、实际走完两个优化步骤且没有OOM后，才算该短跑完成。其结果会记录分配/保留显存峰值，不是问卦准确率。
@@ -44,7 +44,7 @@ local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen14
 确认短跑完成后，用新目录正式训练，配置与短跑一致：
 
 ```bat
-local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen14b_v1\run1\data --output local\qwen14b_v1\run1\full
+local\qwen_env\Scripts\python.exe run_qwen_research.py train --config configs/qwen14b_v1.json --data local\qwen14b_v1\run1\data --output local\qwen14b_v1\run1\full
 ```
 
 1536长度会排除部分长案，原始整案仍保留，不自动截断教师答案。要扩大到2048，需先以新输出目录加`--max-seq-length 2048 --max-steps 2`重新验证显存，再在正式训练中使用同样长度；只通过1536短跑不能宣称2048可用。不覆盖原运行目录或删除失败记录。
@@ -55,6 +55,6 @@ PyCharm解释器使用`local\qwen_env\Scripts\python.exe`，依次运行`Qwen 40
 
 ## 验收边界
 
-本机用户已验证的是CUDA可用和依赖版本；新代码的纯函数显存筛查测试使用明确标注的硬件夹具，不能写成实际操作了用户4080。微型随机Qwen3 CPU训练只验证tokenizer/遮罩/LoRA/保存重载接口。真实14B权重下载、NF4训练显存与生成回答质量均待用户本机短跑和后续留出评测。病位/严重性/日期/百分比不是因为切换到14B就获得医学或统计有效性。
+用户最新终端回传已确认本机14B短跑：2/2训练、71/71验证，程序state=complete，train_runtime31.4074秒、train_loss1.96933251619339。根据程序顺序，验证与适配器保存已完成；未直接读取用户文件或峰值显存。收据在`docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_gpu_smoke.json`。这是用户日志证据，不是代理云端CUDA独立复现；完整两轮正式训练与领域生成留出评测尚未观察完成。此前CPU微型模型测试与硬件夹具测试的记录继续保留，不再以“用户只验证CUDA可用”描述当前状态。病位/严重性/日期/百分比不是因为切换到14B就获得医学或统计有效性。
 
 原量化V2、封存疾病App、原始数据库、原Excel与全部旧32B运行/收据保留；新增原书章0/历史事件0。

@@ -1,3 +1,5 @@
+> **14B当前实机进度：** 用户回传RTX4080短跑2步训练+71条验证完成，程序state=complete；完整两轮训练/生成质量仍待观察。来源及边界见docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_gpu_smoke.json。
+
 > **当前用户授权更新：RTX4080/16GB先做Qwen3-14B。** 本机doctor实报4080总15.99GiB/空闲14.72GiB，非此前假定4090。用户已明确选14B本地首版、以后升级32B；DEFAULT_CONFIG指configs/qwen14b_v1.json，当前指南docs/QWEN14B_RTX4080_WINDOWS_V1_20261103.md。旧32B配置逐字保留且使用时显式--config；资料分组/原库/封存App不变。新增模型与所选GPU显存启动筛查，不足在下载前拒绝；筛查通过不等于实训或回答质量验证。
 
 > **当前用户授权：Qwen32B独立领域模型研究。** 用户明确改用Qwen 32B+古籍+案例；按本轮新授权推进，不再以旧“27B/LLM不开发”条款阻止新路线。入口run_qwen_research.py、configs/qwen32b_v1.json、docs/QWEN32B_RESEARCH_V1_20261103.md。Qwen3-32B固定revision、私有检索、回顾性SFT、4090 NF4 QLoRA与源引用检查；不复用旧QimenLLM未核训练集。194事件原库只读，封存App与量化V2对照保留。32B实际显存/训练/回答评测待用户本地4090，不得把微型CPU接口测试称为32B实训，不能从语言输出宣称真实概率。
@@ -3528,3 +3530,10 @@ Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a353a6319ca35292039719a4b2f1824aaf6d841d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41758203947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 14B终版源码a353a631实际CI：主CI#41758204013双Python3.11/3.12、新Qwen14B/32B CPU接口#41758204130、旧健康原生#41758203947、旧量化V2兼容#41758204122的Linux3.11/3.12和Windows3.12全部success；远端八项关键源/配置已逐字节核对，32B原配置SHA未变。完整收据docs/audits/qwen14b_rtx4080_v1_20261103/implementation_ci.json。已接收自动原生文档8851ceb8，最后仅交接/缓存位置说明，不再改变训练源码、配置或数据。用户本机14B下载/NF4显存/完整训练/生成留出评测仍待实际执行，不把CPU微型测试冒充4080实训；下一步按当前14B Windows指南更新→doctor→prepare→audit-tokens→两步smoke。新增原章0/历史事件0。
+
+
+### 2026-11-03 · 用户本机14B GPU短跑已完成
+
+用户回传Windows4080短跑日志：14,773,550,080总参数、5,242,880可训练参数（0.0355%）；2/2训练、71/71验证，训练31.4074秒，train_loss1.96933251619339，程序state=complete、production_enabled=false。根据已知程序顺序，complete在验证与适配器保存之后；未直接检查用户适配器文件。来源是用户终端回传，并非代理云端CUDA独立复现。收据docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_gpu_smoke.json，不公开用户绝对路径。
+
+当前可准确称“用户4080上的14B短跑通过”；完整两轮训练、峰值显存、验证loss、源commit及问卦生成质量未在此次日志中提供，不造数、不称全部训练完成或预测准确。PAD/BOS/EOS提示是自动对齐，程序已成功结束。下一步同一配置使用新full目录正式训练，基座缓存复用、smoke记录保留。本轮仅记录实际进展和更新指南，不改训练源码/模型配置/源数据库/封存App；新增原章0/历史事件0。
