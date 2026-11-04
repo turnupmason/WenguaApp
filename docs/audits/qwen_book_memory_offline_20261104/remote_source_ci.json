@@ -1,0 +1,25 @@
+{
+  "source_sha": "873ac3f08f8af23b9d813fb76857bc3db8aae249",
+  "qwen_run": 41918410079,
+  "windows_job": 126884133955,
+  "windows_tests": 48,
+  "cpu_job": 126884133437,
+  "main_run": 41918410058,
+  "main_jobs": [
+    126884132938,
+    126884133415
+  ],
+  "decoded_logs_all_match_source": true,
+  "decoded_logs_all_reached_cleanup_without_error_markers": true,
+  "offline_cpu_step_env": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "all_loaded_trial_models_released_in_tiny_cpu_fixture": true,
+  "actual_4080_memory_release_verified": false,
+  "local_full_suite_tests": 1076,
+  "local_failures": 0,
+  "local_errors": 0,
+  "output": "local/qwen_book_sweep_v2/run3_memory_offline",
+  "old_runs_preserved": true
+}

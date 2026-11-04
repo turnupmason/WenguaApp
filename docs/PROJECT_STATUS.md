@@ -3740,3 +3740,5 @@ run2实机日志已通过上一组探测/生成，下一组预检仅free7.89GiB�
 
 ### 当前封存轻重回归实测 · run 41918409947
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码873ac3f08f8af23b9d813fb76857bc3db8aae249。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41918409947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+组间回收/离线修复同源码873ac3f08f8af23b9d813fb76857bc3db8aae249远端验收：Qwen#41918410079，Windows job126884133955完整日志48项OK，CPU job126884133437在HF_HUB_OFFLINE/TRANSFORMERS_OFFLINE=1下完成全部恢复/生成/模型弱引用回收断言；主CI#41918410058的126884132938/126884133415完整日志均匹配源码、无error且已cleanup。证据docs/audits/qwen_book_memory_offline_20261104/remote_source_ci.json。真实4080多组运行仍待本机，不把CPU回收当GPU实测。
