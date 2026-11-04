@@ -2212,3 +2212,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 用户run3记录：首probe开始free14.720703GiB/allocated0/reserved0；完成后free7.892578125/allocated0.0158700943/reserved6.763671875，第二probe原值不变被12GiB门槛挡住。不是首次启动只有7GiB；CPU模型引用回收不等于GPU分配器显存池释放，原GC修复不足，旧证据保留。新qwen_book_process_v1显式执行代理把probe、整组连续正式训练、最后测试放入独立Python子进程，等待exit后下一组；训练内核/controller原文件与哈希未改，process_execution.json另固定执行器。继续run3，已完成probe与原始合同/检查点原样复用，无迁移篡改、无run4；正式组内仍一个Trainer跨epoch连续Adam/cosine。子进程异常/OOM回传并保留任务回执，Ctrl+C转发和独立worker锁防重叠。CPU真实5子进程实跑复用完成probe、step1优化器跨进程恢复、两正式配置四格式验证、所选最终测试、完成恢复不再spawn；尚非4080分配器回收实测。
 
 独立进程版本地1081项全量0失败/0错误、3项既有skip；24项V2合同/子进程测试含真实标准库fresh interpreter执行和退出、环境继承、不导入torch、错误/OOM传递、执行回执且原训练合同不变。真实微型Qwen3五个独立CPU子进程已实跑，复用既有完成probe/原合同并跨进程恢复step1优化器后完成两组，最后测试后完成恢复零新worker。证据docs/audits/qwen_book_process_isolation_20261104/，实际4080新方案待本机；不将CPU验证冒充显存释放验证。
+
+
+### 当前封存轻重回归实测 · run 41922015486
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f58fc4147ee3a90fdb25cf87c18be8f621380cad。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41922015486_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
