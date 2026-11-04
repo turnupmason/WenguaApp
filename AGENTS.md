@@ -1,3 +1,5 @@
+> **当前训练入口：连续SFT＋分阶段调参V2。** 用户已授权按讨论重做，尚未本机开训。[指南](docs/QWEN_BOOK_CONTINUOUS_SWEEP_V2_20261104.md)，入口run_book_research_v2_windows.cmd。官方Qwen3-14B/NF4；同组Adam/cosine跨epoch持续，4种结构×2048/4096先显存短测，再调LR与dropout/warmup，最多13个不同正式配置；共同四格式验证NLL选候选，最后测试只评所选组。下方V1逐轮重建优化器入口保留复现，不能混用目录/检查点。旧计分、非古籍teacher和旧适配器继续禁用，真实4080结果待本机。
+
 > **当前训练入口：纯古籍4080参数实验loop。** 用户尚未开训，现用 [9组独立QLoRA实验](docs/QWEN_BOOK_SWEEP_V1_20261104.md)，入口run_book_sweep_windows.cmd；同一2048上下文与同字节数据，每组官方基模独立开始，参数组合内完整检查点恢复，全部组合验证后仅所选模型做最后测试。旧单配置入口保留，旧教材／旧适配器／旧计分继续禁用；没有云端14B/4080实训证明。
 
 > **当前训练入口：纯古籍4080自动loop。** [Windows指南](docs/QWEN_BOOK_LOOP_V3_20261104.md)。run_book_training_windows.cmd自动显存短测4096→仅OOM时2048、最多6轮／单次48小时、检查点恢复、逐轮原模对照与最后测试，结果集中results.html。第一轮只用官方Qwen3-14B新建适配器；旧教材／旧适配器仍禁用。云端仅做数据与CPU微型控制验证，真实14B训练须以用户本机日志为准。

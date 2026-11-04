@@ -13,6 +13,12 @@ on:
       - 'run_qwen_overnight.py'
       - 'run_qwen_book_loop.py'
       - 'run_qwen_book_sweep.py'
+      - 'run_qwen_book_sweep_v2.py'
+      - 'run_book_research_v2_windows.cmd'
+      - 'configs/qwen14b_book_sweep_v2.json'
+      - 'scripts/qwen_book_sweep_v2.py'
+      - 'scripts/check_qwen_book_continuous_training.py'
+      - 'tests/test_qwen_book_sweep_v2.py'
       - 'run_book_sweep_windows.cmd'
       - 'configs/qwen14b_book_sweep_v1.json'
       - 'scripts/qwen_book_sweep.py'
@@ -71,6 +77,8 @@ jobs:
         run: python -m scripts.check_qwen_book_loop_training
       - name: Actual tiny Qwen3 independent parameter trials, explicit restore and test isolation
         run: python -m scripts.check_qwen_book_sweep_training
+      - name: Continuous Adam across epochs, exact optimizer resume and adaptive-stage isolation
+        run: python -m scripts.check_qwen_book_continuous_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
@@ -79,6 +87,7 @@ jobs:
             local/qwen_curriculum_v2/tiny_integration.json
             local/qwen_book_loop_v3/tiny_integration.json
             local/qwen_book_sweep_v1/tiny_integration.json
+            local/qwen_book_sweep_v2/tiny_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest
@@ -88,7 +97,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Windows locks, source-only resume contracts and UTF-8 CLI (no GPU)
-        run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 tests.test_qwen_book_sweep_v1 -v
+        run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 tests.test_qwen_book_sweep_v1 tests.test_qwen_book_sweep_v2 -v
       - name: Windows UTF-8 launcher help
         run: python -X utf8 run_qwen_book_loop.py --help
       - name: CMD launcher preserves absent environment without starting training
@@ -105,5 +114,15 @@ jobs:
         shell: pwsh
         run: |
           cmd /c run_book_sweep_windows.cmd
+          if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal" }
+          exit 0
+      - name: Windows continuous staged research help
+        run: python -X utf8 run_qwen_book_sweep_v2.py --help
+      - name: Windows staged plan includes all-linear r32 and 4096
+        run: python -X utf8 run_qwen_book_sweep_v2.py plan
+      - name: CMD continuous research launcher absent environment guard
+        shell: pwsh
+        run: |
+          cmd /c run_book_research_v2_windows.cmd
           if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal" }
           exit 0

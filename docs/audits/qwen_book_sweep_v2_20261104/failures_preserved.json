@@ -1,0 +1,17 @@
+{
+  "attempts": [
+    {
+      "log": "tiny_first_attempt.log.gz",
+      "sha256": "a8956e30f78dae33bf71734f2e035f4b0544c7582d58a193af3f71c2b7e69914",
+      "cause_and_fix": "Completed probe was confused with paused formal trial during resume; probe feasibility is now independent of formal state.",
+      "original_assertions_preserved": true
+    },
+    {
+      "log": "tiny_probe_resume_fix.log.gz",
+      "sha256": "99c7ddab95936711b38a064990aa739005aae221b76ba233f66b9027bbfc9f81",
+      "cause_and_fix": "Fresh control and cached-probe trial consumed different RNG before first update because baseline evaluation was skipped in one path; fresh training is now reseeded immediately before Trainer.train, then resume restores saved RNG.",
+      "original_assertions_preserved": true
+    }
+  ],
+  "no_failed_test_removed_or_skipped": true
+}

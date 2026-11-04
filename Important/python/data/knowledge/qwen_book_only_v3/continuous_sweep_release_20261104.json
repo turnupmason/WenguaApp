@@ -1,0 +1,41 @@
+{
+  "release_id": "qwen_book_sweep_v2_20261104",
+  "status": "implemented_cpu_and_real_source_verified_14b_gpu_pending",
+  "entrypoint": "run_book_research_v2_windows.cmd",
+  "guide": "docs/QWEN_BOOK_CONTINUOUS_SWEEP_V2_20261104.md",
+  "model_id": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "quantization": "NF4_double_quantization_QLoRA",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "maximum_distinct_formal_trials": 13,
+  "maximum_epochs_per_trial": 5,
+  "effective_batch_size": 16,
+  "continuous_optimizer_and_cosine_across_epochs": true,
+  "same_common_validation_and_test_bytes_across_contexts": true,
+  "selection_basis": "macro_average_format_language_NLL",
+  "test_used_for_selection": false,
+  "old_adapters_allowed": false,
+  "non_book_teachers_allowed": false,
+  "professional_correctness_verified": false,
+  "actual_14b_cuda_verified_in_cloud": false,
+  "production_enabled": false,
+  "data_audit": "docs/audits/qwen_book_sweep_v2_20261104/actual_preparation_final.json",
+  "canonical_text_sha256": {
+    "configs/qwen14b_book_sweep_v2.json": "d10f2293d91d93ee8e40bea8e05e53887c1770e79662290040015a1446a3038e",
+    "src/wengua/qwen_book_continuous_v1.py": "c5ac22ec5d178789faccc8f912a604e71331a36d5f627fbd0934bc6099822283",
+    "src/wengua/qwen_book_sweep_v2.py": "37b0375b8327c5d5a2282b258da79d5163f4a7e11db84085bb8708784dee2b12",
+    "scripts/qwen_book_sweep_v2.py": "7495cb415622b7453dc9472dd9cb8d4f6f62d18dea778bfdd874c438836e1991",
+    "scripts/check_qwen_book_continuous_training.py": "e5ee1f4dfcbb5638891db06f1e84a47577ff057a0c119d494babf39c3ccfe122",
+    "tests/test_qwen_book_sweep_v2.py": "c64a374da0a7cfa6b7bd394fdc0717205fbe757556f4b53d695be7acce261af1",
+    "run_qwen_book_sweep_v2.py": "3b0775896584afe9a43c38e072008ae17b3730947e61f26f669e4eb759963727",
+    "run_book_research_v2_windows.cmd": "b5ddc481990f74468ce2de5b0377428ffdd1fc9b05f43d51347fb430da29858d"
+  },
+  "cpu_audit": "docs/audits/qwen_book_sweep_v2_20261104/tiny_integration.json",
+  "local_full_suite": {
+    "tests": 1071,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3,
+    "audit": "docs/audits/qwen_book_sweep_v2_20261104/final_full_run/results.json"
+  }
+}

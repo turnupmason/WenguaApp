@@ -1,0 +1,109 @@
+{
+  "state": "passed",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "contexts": [
+    {
+      "context": 2048,
+      "training_views": 4815,
+      "core_tasks_covered": 4446,
+      "case_ids_covered": 161,
+      "source_groups": 890,
+      "formats": {
+        "chart_application": {
+          "rows": 2536,
+          "input_and_target_tokens": 2116202,
+          "supervised_tokens": 111096,
+          "share_of_supervised_tokens": 0.27842841425424364
+        },
+        "foundation_qa": {
+          "rows": 869,
+          "input_and_target_tokens": 144380,
+          "supervised_tokens": 53906,
+          "share_of_supervised_tokens": 0.13509903235750392
+        },
+        "conditional_dialogue": {
+          "rows": 1295,
+          "input_and_target_tokens": 367329,
+          "supervised_tokens": 195955,
+          "share_of_supervised_tokens": 0.4911017490745869
+        },
+        "complete_case": {
+          "rows": 115,
+          "input_and_target_tokens": 170364,
+          "supervised_tokens": 38054,
+          "share_of_supervised_tokens": 0.09537080431366554
+        }
+      },
+      "updates_per_epoch": 301,
+      "maximum_updates": 1505,
+      "no_truncation": true,
+      "one_assistant_prefix_view_per_epoch": true,
+      "million_synonyms_replayed": false,
+      "common_evaluation_context": 2048,
+      "common_evaluation_sha256": {
+        "validation_loss.jsonl.gz": "94e76ddc616def49505351c5e791bfd88236a2e5dfbc2405f9264269c4061d4f",
+        "validation_prompts.jsonl.gz": "c56ba36880c1080bf83897013c1f41b7df9bc2206b7b5a84081e27fdd6b0b092",
+        "test_prompts.jsonl.gz": "20ccafdc983638249fa1d9828963cd299aef15b891a07e3c96d04a2036753d56"
+      },
+      "extended_validation": null
+    },
+    {
+      "context": 4096,
+      "training_views": 4876,
+      "core_tasks_covered": 4506,
+      "case_ids_covered": 161,
+      "source_groups": 890,
+      "formats": {
+        "chart_application": {
+          "rows": 2536,
+          "input_and_target_tokens": 2116202,
+          "supervised_tokens": 111096,
+          "share_of_supervised_tokens": 0.24665691252578223
+        },
+        "foundation_qa": {
+          "rows": 869,
+          "input_and_target_tokens": 144380,
+          "supervised_tokens": 53906,
+          "share_of_supervised_tokens": 0.1196828646091202
+        },
+        "conditional_dialogue": {
+          "rows": 1299,
+          "input_and_target_tokens": 377661,
+          "supervised_tokens": 205762,
+          "share_of_supervised_tokens": 0.45683570637223664
+        },
+        "complete_case": {
+          "rows": 172,
+          "input_and_target_tokens": 317063,
+          "supervised_tokens": 79643,
+          "share_of_supervised_tokens": 0.1768245164928609
+        }
+      },
+      "updates_per_epoch": 305,
+      "maximum_updates": 1525,
+      "no_truncation": true,
+      "one_assistant_prefix_view_per_epoch": true,
+      "million_synonyms_replayed": false,
+      "common_evaluation_context": 2048,
+      "common_evaluation_sha256": {
+        "validation_loss.jsonl.gz": "94e76ddc616def49505351c5e791bfd88236a2e5dfbc2405f9264269c4061d4f",
+        "validation_prompts.jsonl.gz": "c56ba36880c1080bf83897013c1f41b7df9bc2206b7b5a84081e27fdd6b0b092",
+        "test_prompts.jsonl.gz": "20ccafdc983638249fa1d9828963cd299aef15b891a07e3c96d04a2036753d56"
+      },
+      "extended_validation": {
+        "rows": 4,
+        "max_new_tokens": 1536,
+        "used_for_selection": false,
+        "split": "validation",
+        "source_groups": 4
+      }
+    }
+  ],
+  "common_validation_and_test_byte_identical": true,
+  "no_source_or_answer_truncation": true,
+  "verified_existing_source_token_cache": true,
+  "extra_long_validation_tokenized_and_budget_checked": true,
+  "source_only_core_tasks": 5250,
+  "model_weights_loaded": false,
+  "actual_cuda_tested": false
+}

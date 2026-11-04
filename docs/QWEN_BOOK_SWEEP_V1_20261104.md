@@ -1,3 +1,5 @@
+> 当前默认已升级为[连续SFT＋分阶段调参V2](QWEN_BOOK_CONTINUOUS_SWEEP_V2_20261104.md)。用户此前尚未开训；本页9组逐轮重建优化器方案保留复现，勿与新目录混用。
+
 # 纯古籍 Qwen3-14B 参数实验与完整检查点恢复
 
 用户尚未启动上一版自动loop；本入口新增独立参数比较。默认在RTX4080/16GB上用NF4双重量化QLoRA，固定官方 `Qwen/Qwen3-14B` revision `40c069824f4251a91eefaf281ebe4c544efd3e18`。全精度/BF16的14B基础权重本身约28GiB，因此本轮不安排未经实测的全GPU普通LoRA。QLoRA仍能调整LoRA秩、alpha、作用层、dropout和学习率。
