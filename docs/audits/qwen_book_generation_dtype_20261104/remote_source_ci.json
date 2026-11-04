@@ -1,0 +1,21 @@
+{
+  "source_sha": "e7cc2122913b4f6c88206a1705e404eb75784e12",
+  "qwen_run": 41915653074,
+  "windows_job": 126874484106,
+  "windows_tests": 44,
+  "cpu_job": 126874483723,
+  "main_run": 41915652931,
+  "main_jobs": [
+    126874483171,
+    126874483788
+  ],
+  "decoded_logs_all_match_source": true,
+  "decoded_logs_all_reached_cleanup_without_error_markers": true,
+  "mixed_head_failure_reproduced_and_autocast_fixed_on_tiny_cpu": true,
+  "actual_4080_fix_verified": false,
+  "local_full_suite_tests": 1072,
+  "local_failures": 0,
+  "local_errors": 0,
+  "output": "local/qwen_book_sweep_v2/run2_dtype_fix",
+  "old_run1_preserved": true
+}
