@@ -2002,3 +2002,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 新指南docs/QWEN14B_FIRST_ANSWER_REVIEW_20261103.md。不改训练过程、模型配置、原库、分组或封存App；没有增加轮数/实现续训/更改用户模型。新增原章0/历史事件0。21项专项通过；真实官方tokenizer预算与微型CPU LoRA、完整回归/CI待本轮执行。
 
 首版回答入口本地终版验收：21专项+镜像1通过，官方14B tokenizer真实预算（source_study原输入16450→保留完整一段909，回答768，总1677≤2048）、微型随机Qwen3 CPU BF16 LoRA/保存重载均通过。全库974 tests、0 failures/0 errors/3既有skip，日志docs/audits/qwen14b_answer_review_v1_20261103/full_run。未执行代理侧14B生成；新CUDA提问/原版对照仍待用户运行，不把CPU测试当真实回答质量。训练源码流程、模型配置和已训练权重未改；新GitHub CI待本次推送核验。
+
+
+### 当前封存轻重回归实测 · run 41771130292
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码2521f86478eacb68ab9ba2f25131c2dca260b416。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41771130292_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
