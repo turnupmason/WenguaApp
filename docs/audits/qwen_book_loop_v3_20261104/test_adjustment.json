@@ -1,0 +1,6 @@
+{
+  "earlier_tiny_failure": "New whole-reference response-budget guard excluded all 8-token fixture answers; integration assertion then failed with no predictions.",
+  "correction": "Fixture generation budget raised to 64 tokens; actual default is 768. Added explicit empty-evaluation guard and no-truncation unit test.",
+  "existing_failures_hidden": false,
+  "full_size_gpu_training_claimed": false
+}

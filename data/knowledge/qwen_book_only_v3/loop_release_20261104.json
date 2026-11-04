@@ -1,0 +1,48 @@
+{
+  "release_id": "qwen_book_loop_v3_20261104",
+  "status": "implemented_cpu_verified_local_14b_gpu_probe_pending",
+  "user_authorized_local_research_training": true,
+  "entrypoint": "run_book_training_windows.cmd",
+  "cli": "run_qwen_book_loop.py",
+  "model_id": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "books": [
+    "shenqi",
+    "kaiwu"
+  ],
+  "old_adapters_allowed": false,
+  "non_book_teachers_allowed": false,
+  "maximum_cycles": 6,
+  "default_hours_per_invocation": 48,
+  "probe_contexts": [
+    4096,
+    2048
+  ],
+  "training_data_route": "rebuild literal book core and individually tokenize actual selected cycle views",
+  "unfiltered_million_pool_training_approved": false,
+  "test_used_for_selection": false,
+  "professional_correctness_verified": false,
+  "actual_14b_cuda_smoke_observed_in_cloud": false,
+  "production_enabled": false,
+  "guide": "docs/QWEN_BOOK_LOOP_V3_20261104.md",
+  "actual_tokenization_audit": "docs/audits/qwen_book_loop_v3_20261104/actual_preparation.json",
+  "tiny_cpu_flow_audit": "docs/audits/qwen_book_loop_v3_20261104/tiny_integration.json",
+  "canonical_text_sha256": {
+    "configs/qwen14b_book_loop_v3.json": "ced2a33dd25edec567259fe894c7156235b7656cab5d5ff8d3fd2c8c08f4648d",
+    "run_qwen_book_loop.py": "7118833e150104e7a9ddb111d7e52104d403dea50ab81743af30bbd33dc7f96c",
+    "run_book_training_windows.cmd": "5af435654d86d1428eea914f0c21e1133ace5bad8dddf4ee5b02b09331d68d5e",
+    "scripts/qwen_book_loop.py": "e65c73b6ea375536b2db08b57466ea81c91702cfc92cc0e23952d07336173a1c",
+    "scripts/check_qwen_book_loop_training.py": "081eff692f96527609822e7734f16c01efe4ac61ff7b3a88f93087862b160947",
+    "src/wengua/qwen_book_loop_v3.py": "dbf0940292c633e7997f47ab9ef73835d8e7b06ee6ec5b51ca6aa89f4627482e",
+    "src/wengua/qwen_book_dataset_v3.py": "834cf20e937db83b4093289ed03be9c8dbc20aa9c6adb8032db11075dee947e3",
+    "src/wengua/qwen_finetune.py": "385b7a5e10848c90ab3e727fcc2cd567578f8df026ae3af44123fd01212e2d69"
+  },
+  "local_full_suite": {
+    "tests": 1043,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "source_and_software_checks_passed": true
+}

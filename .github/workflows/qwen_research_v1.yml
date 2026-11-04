@@ -11,6 +11,12 @@ on:
       - 'scripts/check_qwen_curriculum_training.py'
       - 'run_qwen_curriculum.py'
       - 'run_qwen_overnight.py'
+      - 'run_qwen_book_loop.py'
+      - 'run_book_training_windows.cmd'
+      - 'configs/qwen14b_book_loop_v3.json'
+      - 'scripts/qwen_book_loop.py'
+      - 'scripts/check_qwen_book_loop_training.py'
+      - 'tests/test_qwen_book_loop_v3.py'
       - 'tests/test_qwen_curriculum_v2.py'
       - 'tests/test_qwen_overnight_worker.py'
       - 'configs/qwen14b_curriculum_v2.json'
@@ -55,9 +61,30 @@ jobs:
         run: python -m scripts.check_qwen_training
       - name: Actual tiny Qwen3 optimizer checkpoint resume, stage continuation and paired generation
         run: python -m scripts.check_qwen_curriculum_training
+      - name: Actual tiny Qwen3 book-only loop, interruption restore and final report
+        run: python -m scripts.check_qwen_book_loop_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
           path: |
             local/qwen14b_v1/tiny_integration.json
             local/qwen_curriculum_v2/tiny_integration.json
+            local/qwen_book_loop_v3/tiny_integration.json
+
+  windows-book-loop-contract:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Windows locks, source-only resume contracts and UTF-8 CLI (no GPU)
+        run: |
+          python -X utf8 -m unittest tests.test_qwen_book_loop_v3 -v
+          python -X utf8 run_qwen_book_loop.py --help
+      - name: CMD launcher preserves absent environment without starting training
+        shell: pwsh
+        run: |
+          cmd /c run_book_training_windows.cmd
+          if ($LASTEXITCODE -ne 1) { throw "Expected a missing-env refusal in fresh CI checkout" }
+          exit 0
