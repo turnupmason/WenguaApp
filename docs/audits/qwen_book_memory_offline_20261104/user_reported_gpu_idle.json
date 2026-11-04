@@ -1,0 +1,14 @@
+{
+  "evidence": "user_pasted_nvidia_smi",
+  "reported_local_datetime": "2026-11-04 16:43:57",
+  "gpu": "NVIDIA GeForce RTX 4080",
+  "driver": "610.60",
+  "driver_model": "WDDM",
+  "total_mib": 16376,
+  "used_mib": 441,
+  "gpu_utilization_percent": 0,
+  "python_compute_process_listed": false,
+  "observed_after_failed_python_process_exited": true,
+  "interpretation": "Current idle GPU has sufficient free VRAM for the 12 GiB launch screen. This supports investigating retained allocations during inter-trial execution; it does not establish the precise owner of the earlier 7.89 GiB free-memory reading.",
+  "fixed_multi_trial_cuda_run_verified": false
+}
