@@ -2174,3 +2174,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 恢复实现处理中途半epoch暂停、epoch末保存后验证前断电补验、最终更新已存但状态未写的收尾；参数组合间官方基模新建适配器/优化器，不能串训。首次CPU实测暴露已完成probe与暂停formal混淆、基模验证缓存改变首步随机流两处，原失败日志保留；修正后保持原断言，最终微型CPU实测/真实token审计另记docs/audits/qwen_book_sweep_v2_20261104/。guide docs/QWEN_BOOK_CONTINUOUS_SWEEP_V2_20261104.md；真实14B NF4/4080尚未云端执行。
 
 连续SFT V2本地最终全量1071项，0失败/0错误，3项既有skip；真实官方tokenizer＋随机微型Qwen3 CPU已实跑：跨epoch同一Adam、optimizer/scheduler步数连续，中断/不中断最终LoRA张量一致，epoch末验证前断电补验后亦一致，最终检查点收尾不多更新；长验证原模/候选生成分支也实跑。真实源4096额外4个验证来源组完整token核对，1536输出预算，未用作选模。失败日志保留不skip测试；14B/4080实际NF4仍待本机，远端Windows与同源码CPU检查随后核对。
+
+
+### 当前封存轻重回归实测 · run 41898463642
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码adcb245987713fd8f9193d6bf9e5e297a592a9be。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41898463642_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
