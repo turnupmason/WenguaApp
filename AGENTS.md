@@ -36,6 +36,8 @@
 
 > **4080生成精度修复：** 用户已启动V2，两步训练探测完成后独立生成Float/BFloat16冲突；qwen_book_loop_v3.generate_rows补CUDA autocast，bf16支持则bf16，否则fp16，CPU不改。旧run1原样保留，代码合同变化不能原目录续跑；Windows同名入口改用local/qwen_book_sweep_v2/run2_dtype_fix重新探测，缓存权重复用。真实4080修复后结果待回传。
 
+> **当前4080运行入口补正：** 已有缓存的Windows V2入口改为run3_memory_offline/--offline；run1和run2不删。上组fit返回后、下组预检前再次GC/empty_cache并记allocated/reserved/free，保留12GiB门槛；PEFT保存检查禁止联网。run2用户日志证明生成精度修复已过、下一组因free7.89GiB阻断；尚不能仅凭free数断定外部进程或内部引用。真实GPU连续组间释放仍待本机，CPU弱引用回收和离线控制可复测。
+
 # AGENTS.md — WenguaApp 长期开发代理执行规范
 
 > **最高优先级更新：所有用户逐章提供的原书案例直接作为项目认可历史案例入库，不再请求用户逐例人工审核；跨书同领域共用事件库。必须保留原书错误、事后修正和原始来源。详见本文最新最高优先级指令。**

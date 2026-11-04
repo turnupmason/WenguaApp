@@ -1,10 +1,10 @@
 # 纯古籍连续SFT与分阶段参数实验V2
 
-用户已在4080启动：两步探测训练完成，随后生成遇到Float/BFloat16输出层冲突。修复版为独立生成补上CUDA autocast，与训练精度一致；CPU路径保持原精度。旧run1完整保留，因代码哈希合同变更，当前入口 `run_book_research_v2_windows.cmd` 使用新目录 `local/qwen_book_sweep_v2/run2_dtype_fix`，从官方基模重做探测。权重缓存继续复用，无需重装环境。此前V1逐教学轮重建优化器，保留复现；本版为**每个组合一个Trainer连续训练多个epoch**，同一个Adam和一条完整余弦学习率计划跨epoch继续。
+用户已在4080启动：生成精度修复后已通过生成并进入下一组，随后可用显存7.89GiB被12GiB启动门槛阻断。当前版在训练函数返回后和下一组预检前再次GC/释放CUDA缓存，记录allocated/reserved/free；没有调低门槛。Windows入口增加`--offline`，禁止PEFT保存阶段对HF的隐藏配置探测；要求完整官方权重和tokenizer已经缓存，不完整时明确报缺失。当前入口 `run_book_research_v2_windows.cmd` 使用新目录 `local/qwen_book_sweep_v2/run3_memory_offline`，旧run1/run2_dtype_fix全部保留，代码合同变更后从官方基模重做探测；缓存权重复用，无需重装环境。本版**每个组合一个Trainer连续训练多个epoch**，同一Adam和完整余弦计划跨epoch继续。
 
 ## Windows CMD启动
 
-使用已经装好CUDA依赖的 `local\qwen_env`，无需重装Python/torch。完整官方权重缓存存在时离线读取，缺文件才下载固定revision。
+使用已经装好CUDA依赖的 `local\qwen_env`，无需重装Python/torch。此入口要求此前已完整下载固定revision权重与tokenizer。需首次下载时用直接CLI省略`--offline`并指定新的输出目录。离线启动不会自动联网补文件。
 
 ```bat
 cd /d "%USERPROFILE%\WenguaApp"
@@ -15,7 +15,7 @@ run_book_research_v2_windows.cmd
 等价CLI：
 
 ```bat
-local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output local\qwen_book_sweep_v2\run2_dtype_fix --hours 168 --resume
+local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output local\qwen_book_sweep_v2\run3_memory_offline --hours 168 --resume --offline
 ```
 
 中断或到时后重复同一命令自动恢复。每次最多168小时，全部试验可能需要多日；关闭电脑时不会继续执行。普通中止优先一次Ctrl+C，最新未完整保存的一小段更新需重跑。Windows进程运行时请求系统保持唤醒。
@@ -26,7 +26,7 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output
 local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py plan
 ```
 
-PyCharm：解释器选 `local\qwen_env\Scripts\python.exe`，脚本 `run_qwen_book_sweep_v2.py`，参数 `run --output local\qwen_book_sweep_v2\run2_dtype_fix --hours 168 --resume`。根入口自动切到仓库。
+PyCharm：解释器选 `local\qwen_env\Scripts\python.exe`，脚本 `run_qwen_book_sweep_v2.py`，参数 `run --output local\qwen_book_sweep_v2\run3_memory_offline --hours 168 --resume --offline`。根入口自动切到仓库。
 
 ## 训练条件与阶段
 
@@ -72,7 +72,7 @@ PyCharm：解释器选 `local\qwen_env\Scripts\python.exe`，脚本 `run_qwen_bo
 手动指定（将组合名和数字替换为本机真实目录）：
 
 ```bat
-local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output local\qwen_book_sweep_v2\run2_dtype_fix --hours 168 --resume --resume-from-checkpoint "local\qwen_book_sweep_v2\run2_dtype_fix\trials\r32_4096_实际哈希\cycle_01\trainer\checkpoint-250"
+local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output local\qwen_book_sweep_v2\run3_memory_offline --hours 168 --resume --offline --resume-from-checkpoint "local\qwen_book_sweep_v2\run3_memory_offline\trials\r32_4096_实际哈希\cycle_01\trainer\checkpoint-250"
 ```
 
 不同参数组、旧训练入口、非最新完整点和外来检查点拒绝。训练已完成只剩生成时用普通 `--resume`；已冻结最终选择不能回滚后换组。OOM组保留，释放显存后在新输出目录重试，不在已经比较完的实验里偷偷改变上下文。
@@ -81,7 +81,9 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output
 
 ## 查看结果和下一轮
 
-双击 `local\qwen_book_sweep_v2\run2_dtype_fix\results.html`。总览含结构、上下文、LR/dropout/warmup、状态、训练视图和各格式监督token占比、最佳epoch、各格式loss、实际更新、显存、路径与阶段决策。点每组进入逐epoch/原模/长案例的原始回答、完整提问、作者参照和出处。各组有 `loss.svg`、全部 `training_steps.csv`；train loss与格式等权验证NLL并非同一统计口径，曲线只辅助看趋势。
+双击 `local\qwen_book_sweep_v2\run3_memory_offline\results.html`。总览含结构、上下文、LR/dropout/warmup、状态、训练视图和各格式监督token占比、最佳epoch、各格式loss、实际更新、显存、路径与阶段决策。点每组进入逐epoch/原模/长案例的原始回答、完整提问、作者参照和出处。各组有 `loss.svg`、全部 `training_steps.csv`；train loss与格式等权验证NLL并非同一统计口径，曲线只辅助看趋势。
+
+每组`trial_memory_ready`与报告`memory_before_preflight/memory_after_trial`区分本进程allocated/reserved和设备free。若清理后本进程allocated很低而设备free仍低，请另开CMD执行`nvidia-smi`查占用者；退出确定无用的旧训练窗口，不自动结束其他进程。现有日志只能确定7.89GiB被门槛阻断，不能仅凭该数断定一定是程序残留或外部进程。
 
 `answer_review.json`按任务记录空答、输出到上限，以及原抄盘星位题中的宫位集合是否与参照相同；该机械诊断不理解否定语义，不能称专业准确率，也不参与选择。条件追问、用神关系、同宫不同符号、矛盾证据、领域切换和应期有无依据，继续看原始回答核对。
 

@@ -3,6 +3,7 @@ from copy import deepcopy
 from pathlib import Path
 import tempfile
 import time
+import weakref
 from unittest.mock import patch
 
 from src.wengua import qwen_book_continuous_v1 as engine
@@ -44,8 +45,11 @@ def main():
             generated=mixed.generate(inputs,max_new_tokens=1,do_sample=False)
     assert generated.shape[-1]==4
     del mixed
-    loads=[]
-    def factory():loads.append(1);return tok,deepcopy(base),torch.float32
+    loads=[];loaded_refs=[];strict_controller=[True]
+    def factory():
+        if strict_controller[0]:assert all(ref() is None for ref in loaded_refs),'Previous model still live before next load'
+        loads.append(1);model=deepcopy(base);loaded_refs.append(weakref.ref(model))
+        return tok,model,torch.float32
     records=[];units={};formats=['foundation_qa','conditional_dialogue','chart_application','complete_case']
     for split,count in [('train',3),('validation',4),('test',1)]:
         for i in range(count):
@@ -95,6 +99,7 @@ def main():
             sweep.run(root,spec,deadline,resume=True,base=c,cpu_factory=factory,tokenizer=tok,pack=pack)
             assert before==len(loads) and final.call_count==1
         # Exact same config without interruption should reach the same final LoRA tensors.
+        strict_controller[0]=False
         reference=engine.open_job(Path(tmp)/'uninterrupted',cfg,resume=False)
         engine.prepare_shared(root,reference,cfg,reference_context=512,tokenizer=tok,pack=pack)
         uninterrupted=engine.run_trial(reference,cfg,deadline,cpu_factory=factory)
@@ -132,7 +137,10 @@ def main():
         assert repaired['steps']==4 and repaired['training_metrics']['finalized_without_extra_update']
         preview=book.ROOT/'local/qwen_book_sweep_v2/tiny_cpu_report_not_14b.html'
         preview.parent.mkdir(parents=True,exist_ok=True);preview.write_bytes((root/'results.html').read_bytes())
+    sweep.release_trial_memory(cpu=True)
+    assert all(ref() is None for ref in loaded_refs),'Trial model retained after caller-boundary cleanup'
     receipt={'state':'passed','test':'tiny_random_qwen3_cpu_continuous_optimizer_staged_sweep',
+        'all_loaded_trial_models_released_after_caller_boundary_collection':True,
         'two_epochs_same_adam_object_and_monotonic_adam_scheduler_steps':True,'partial_epoch_no_false_validation_or_early_stop':True,
         'mixed_bfloat16_hidden_float32_head_reproduced_and_autocast_fixed_on_cpu':True,
         'interrupted_and_uninterrupted_final_adapter_tensors_match':True,'explicit_checkpoint_restored_optimizer_step_1':True,

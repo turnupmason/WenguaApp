@@ -78,6 +78,9 @@ jobs:
       - name: Actual tiny Qwen3 independent parameter trials, explicit restore and test isolation
         run: python -m scripts.check_qwen_book_sweep_training
       - name: Continuous Adam across epochs, exact optimizer resume and adaptive-stage isolation
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
         run: python -m scripts.check_qwen_book_continuous_training
       - uses: actions/upload-artifact@v4
         with:

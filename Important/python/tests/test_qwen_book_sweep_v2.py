@@ -7,6 +7,7 @@ from unittest.mock import patch
 from unittest.mock import Mock
 from types import SimpleNamespace
 import sys
+import os
 
 from src.wengua import qwen_book_continuous_v1 as engine
 from src.wengua import qwen_book_sweep_v2 as sweep
@@ -14,6 +15,45 @@ from src.wengua.qwen_book_continuous_v1 import book
 
 
 class ContinuousStagedContracts(unittest.TestCase):
+    def test_offline_cli_sets_flags_before_cache_check_and_runs(self):
+        from scripts import qwen_book_sweep_v2 as cli
+        def cached(config):
+            self.assertEqual(os.environ['HF_HUB_OFFLINE'],'1')
+            self.assertEqual(os.environ['TRANSFORMERS_OFFLINE'],'1')
+            return True
+        with patch.dict(os.environ,{}),patch.object(book,'official_model_cached',side_effect=cached),patch.object(sweep,'run',return_value={}) as run,patch('builtins.print'):
+            cli.main(['run','--offline','--resume'])
+            run.assert_called_once()
+
+    def test_offline_cli_missing_cache_does_not_start_or_change_job(self):
+        from scripts import qwen_book_sweep_v2 as cli
+        with patch.dict(os.environ,{}),patch.object(book,'official_model_cached',return_value=False),patch.object(sweep,'run') as run,patch('sys.stderr'):
+            with self.assertRaises(SystemExit):cli.main(['run','--offline'])
+            run.assert_not_called()
+
+    def test_trial_memory_collects_before_emptying_cuda_and_records_live_memory(self):
+        order=[];torch=Mock();torch.cuda.empty_cache.side_effect=lambda:order.append('empty')
+        torch.cuda.mem_get_info.return_value=(14*2**30,16*2**30)
+        torch.cuda.memory_allocated.return_value=0;torch.cuda.memory_reserved.return_value=0
+        with patch.object(sweep.gc,'collect',side_effect=lambda:order.append('collect') or 3),patch.dict(sys.modules,{'torch':torch}):
+            result=sweep.release_trial_memory()
+        self.assertEqual(order,['collect','empty']);self.assertEqual(result['free_gib'],14)
+        self.assertEqual(result['allocated_gib'],0)
+
+    def test_caller_boundary_collects_cycles_left_by_returned_training_frame(self):
+        import gc,weakref
+        class Object:pass
+        enabled=gc.isenabled();gc.disable()
+        try:
+            def training_frame():
+                model=Object();trainer=Object();model.trainer=trainer;trainer.model=model
+                return weakref.ref(model),weakref.ref(trainer)
+            refs=training_frame();self.assertTrue(all(r() is not None for r in refs))
+            sweep.release_trial_memory(cpu=True)
+            self.assertTrue(all(r() is None for r in refs))
+        finally:
+            if enabled:gc.enable()
+
     def test_generation_precision_cuda_bf16_fp16_and_cpu_noop(self):
         torch=Mock();torch.cuda.device.return_value.__enter__=Mock()
         torch.cuda.device.return_value.__exit__=Mock(return_value=False)

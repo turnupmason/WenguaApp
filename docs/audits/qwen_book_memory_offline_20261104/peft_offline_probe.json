@@ -1,0 +1,7 @@
+{
+  "peft": "0.17.1",
+  "offline_flag_prevents_save_config_network_probe": true,
+  "online_positive_control_calls_mocked_probe": true,
+  "real_network_requests_made": false,
+  "tested_function": "peft.utils.other.check_file_exists_on_hf_hub"
+}

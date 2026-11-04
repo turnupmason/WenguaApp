@@ -23,12 +23,12 @@
   "canonical_text_sha256": {
     "configs/qwen14b_book_sweep_v2.json": "d10f2293d91d93ee8e40bea8e05e53887c1770e79662290040015a1446a3038e",
     "src/wengua/qwen_book_continuous_v1.py": "c5ac22ec5d178789faccc8f912a604e71331a36d5f627fbd0934bc6099822283",
-    "src/wengua/qwen_book_sweep_v2.py": "37b0375b8327c5d5a2282b258da79d5163f4a7e11db84085bb8708784dee2b12",
-    "scripts/qwen_book_sweep_v2.py": "a38d4b2b89e4daafd324e411c9edac5ab92defa396d3b84fb4a4364a1d7ac341",
-    "scripts/check_qwen_book_continuous_training.py": "3eeece62c5732f6446b16f930ff690686226299e4fcd5fbd5d3071c779097a3c",
-    "tests/test_qwen_book_sweep_v2.py": "0e67f20e41bbd01804e9b1e4e112629510077f40f056d84825db170e3aab288b",
+    "src/wengua/qwen_book_sweep_v2.py": "9234745816ebfa34ae0fb6d7517112c258aa6d243bb05a055be6f29321dde955",
+    "scripts/qwen_book_sweep_v2.py": "e2d89c92a87df8ad4b163706fa75b11b6a1d4911c43f21924052d63405297055",
+    "scripts/check_qwen_book_continuous_training.py": "4dd908309d22f783d0647d39a74057d51cf86d6f005ecc33e64227ad5b440354",
+    "tests/test_qwen_book_sweep_v2.py": "aea6a5f86b6aca51cefa327627030e33d555edab78abd70fc74e9130cb55e298",
     "run_qwen_book_sweep_v2.py": "3b0775896584afe9a43c38e072008ae17b3730947e61f26f669e4eb759963727",
-    "run_book_research_v2_windows.cmd": "268eeeb1f752facae472aea87651d0c4e299a4732d41b7ea48b60de8e4deac68",
+    "run_book_research_v2_windows.cmd": "96d1f2942277b88fd52a522ee71777507e60cda192fdecd2536965e0d77b21cc",
     "src/wengua/qwen_book_loop_v3.py": "9eb0e2f7f1e262f7cc3384042db82f3bbe42efcf046582c5add34042523ca8ee"
   },
   "cpu_audit": "docs/audits/qwen_book_sweep_v2_20261104/tiny_integration.json",
@@ -45,5 +45,14 @@
     "old_run1_preserved": true,
     "current_launcher_output": "local/qwen_book_sweep_v2/run2_dtype_fix",
     "actual_4080_fix_verified": false
+  },
+  "current_launcher_output": "local/qwen_book_sweep_v2/run3_memory_offline",
+  "memory_offline_fix": {
+    "caller_boundary_gc_and_empty_cache": true,
+    "vram_gate_gib": 12,
+    "allocated_reserved_free_recorded": true,
+    "windows_cached_offline_entry": true,
+    "old_runs_preserved": true,
+    "actual_4080_memory_release_verified": false
   }
 }

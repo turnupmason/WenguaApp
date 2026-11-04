@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "05dcf78bb7256a56640479fe3dca0ed7cbeb1a5e"
+      "sha": "1c95c35d515e30a1f84d8c4d8720c7d2437f9817"
     },
     {
       "platform": "python",
@@ -1729,25 +1729,25 @@
       "platform": "python",
       "canonical": "src/wengua/qwen_book_sweep_v2.py",
       "snapshot": "Important/python/engine/qwen_book_sweep_v2.py",
-      "sha": "00225930f000e16e68d5444028bf0bb1408ccb20"
+      "sha": "515fbfa347ca6fcf1171dd62dfd60a1c97eec709"
     },
     {
       "platform": "python",
       "canonical": "scripts/qwen_book_sweep_v2.py",
       "snapshot": "Important/python/scripts/qwen_book_sweep_v2.py",
-      "sha": "c9307b7ef2188e0c3f410fcea3741ac7180df905"
+      "sha": "f8990b11f5f046d56a9c78aaa091c2df1dbecee7"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_qwen_book_continuous_training.py",
       "snapshot": "Important/python/scripts/check_qwen_book_continuous_training.py",
-      "sha": "fe81b4082d3fd6ba73f10ae3a56bd8ac5efea395"
+      "sha": "c3a124e0d39216c048ddb646e7f74f3e0430ee7d"
     },
     {
       "platform": "python",
       "canonical": "tests/test_qwen_book_sweep_v2.py",
       "snapshot": "Important/python/tests/test_qwen_book_sweep_v2.py",
-      "sha": "3f9fa6954b42091b2247fd113096b68b27a8fdfa"
+      "sha": "f2abb57b787a18c6605ace8ed776b8eb94a3c8dd"
     },
     {
       "platform": "python",
@@ -1759,13 +1759,13 @@
       "platform": "python",
       "canonical": "run_book_research_v2_windows.cmd",
       "snapshot": "Important/python/run_book_research_v2_windows.cmd",
-      "sha": "20fdab38a4755787e92cbe1e95e55c99df100c8a"
+      "sha": "6dcc158a43004835e2b50c38d108caad54cbce78"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/qwen_book_only_v3/continuous_sweep_release_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen_book_only_v3/continuous_sweep_release_20261104.json",
-      "sha": "ad8d170deb0b3eed130bda0f0b4df61753cf8fc1"
+      "sha": "b9bf12dc3ae798882e2f335d9024813aa11858cc"
     }
   ]
 }

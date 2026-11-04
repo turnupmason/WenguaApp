@@ -107,6 +107,21 @@ def render(root,status):
     (root/'results.html').write_text(''.join(body),encoding='utf8');book.atomic_json(root/'summary.json',status)
 
 
+def release_trial_memory(*,cpu=False):
+    """Collect after fit's frame has unwound, then release unused CUDA blocks.
+
+    Trainer/Accelerate/model hooks may form cycles that are still reachable
+    while fit's own finally block runs. Do not lower the VRAM preflight gate.
+    """
+    collected=gc.collect()
+    if cpu:return {'collected_objects':collected,'cuda':False}
+    import torch
+    torch.cuda.empty_cache()
+    free,total=torch.cuda.mem_get_info()
+    return {'collected_objects':collected,'cuda':True,'free_gib':free/2**30,'total_gib':total/2**30,
+        'allocated_gib':torch.cuda.memory_allocated()/2**30,'reserved_gib':torch.cuda.memory_reserved()/2**30}
+
+
 def run(output,spec,deadline,*,resume=False,resume_from_checkpoint=None,cpu_factory=None,tokenizer=None,pack=None,base=None,extra_callbacks=()):
     setup=plan(spec,base);root=book.private_output(output)
     contract={'schema':SCHEMA,'spec':spec,'plan':setup,'code_sha256':engine.code_hashes(),'source_database_sha256':book.SOURCE_SHA256,
@@ -143,6 +158,8 @@ def run(output,spec,deadline,*,resume=False,resume_from_checkpoint=None,cpu_fact
                 'learning_rate':c['learning_rate'],'lora_dropout':c['lora_dropout'],'warmup_ratio':c['warmup_ratio']}
             status['trials'][tid]=row;save()
             try:
+                row['memory_before_preflight']=release_trial_memory(cpu=cpu_factory is not None)
+                book.progress('trial_memory_ready',trial=tid,**row['memory_before_preflight'])
                 if cpu_factory is None:
                     from .qwen_finetune import environment_report
                     doctor=environment_report(c);book.atomic_json(job/'doctor.json',doctor)
@@ -158,6 +175,7 @@ def run(output,spec,deadline,*,resume=False,resume_from_checkpoint=None,cpu_fact
                     smoke=job/'smoke/stage_status.json'
                     if not smoke.exists() or book.read_json(smoke)['state']!='complete':
                         with book.job_lock(job/'run.lock'):result=engine.fit(job,c,deadline,probe=True,cpu_factory=cpu_factory)
+                        row['memory_after_probe']=release_trial_memory(cpu=cpu_factory is not None)
                         if result['state']!='complete':row['state']='paused_probe';save();return row
                     result=engine.run_trial(job,c,deadline,cpu_factory=cpu_factory,extra_callbacks=extra_callbacks,
                         resume_from_checkpoint=resume_from_checkpoint if tid==owner else None)
@@ -173,7 +191,11 @@ def run(output,spec,deadline,*,resume=False,resume_from_checkpoint=None,cpu_fact
                     import torch
                     torch.cuda.empty_cache()
                 return row
-            finally:save()
+            finally:
+                # fit has returned: its locals and callback classes are no
+                # longer GC roots. Also collect between successful probes.
+                row['memory_after_trial']=release_trial_memory(cpu=cpu_factory is not None)
+                save()
         try:
             status.pop('error',None)
             for c in setup['structures']:
