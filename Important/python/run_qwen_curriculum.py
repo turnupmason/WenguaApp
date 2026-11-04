@@ -8,5 +8,7 @@ if __name__ == '__main__':
     os.chdir(Path(__file__).resolve().parent)
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, 'reconfigure'):stream.reconfigure(encoding='utf8')
-    from scripts.qwen_curriculum import main
+    from scripts.qwen_curriculum import main, verify_release_sources
+    # Also verifies canonical sources for an older already-running worker.
+    verify_release_sources()
     main()

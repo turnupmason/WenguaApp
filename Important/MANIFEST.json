@@ -1453,13 +1453,13 @@
       "platform": "python",
       "canonical": "run_qwen_overnight.py",
       "snapshot": "Important/python/run_qwen_overnight.py",
-      "sha": "ec4dfc8294bb1f57f281cd84816e93c2c54acf1d"
+      "sha": "c70ed4ce87164b8c4fdc616c6b7757068686768d"
     },
     {
       "platform": "python",
       "canonical": "tests/test_qwen_overnight_worker.py",
       "snapshot": "Important/python/tests/test_qwen_overnight_worker.py",
-      "sha": "5baaf00fb9b8c40a57496c9bc56bc00c023b99d1"
+      "sha": "8ecef849068e8c9327d97e60af26e5e1d6dd2b79"
     },
     {
       "platform": "python",
@@ -1483,7 +1483,7 @@
       "platform": "python",
       "canonical": "src/wengua/qwen_curriculum_v2.py",
       "snapshot": "Important/python/engine/qwen_curriculum_v2.py",
-      "sha": "1002728df612168eea0d3f27e40ef9eb44a6a530"
+      "sha": "7fde083e6b831ede340b1996d33b1750bc1eecca"
     },
     {
       "platform": "python",
@@ -1495,7 +1495,7 @@
       "platform": "python",
       "canonical": "scripts/qwen_curriculum.py",
       "snapshot": "Important/python/scripts/qwen_curriculum.py",
-      "sha": "e77339c038fe9c9216c42447c1d38e292c677778"
+      "sha": "7ebeea63179e090d03307923b7e29355d205c355"
     },
     {
       "platform": "python",
@@ -1507,7 +1507,7 @@
       "platform": "python",
       "canonical": "run_qwen_curriculum.py",
       "snapshot": "Important/python/run_qwen_curriculum.py",
-      "sha": "bff4882aa1923d07ece461789e2be8a0a93a5762"
+      "sha": "5f6bc90eb738d3269354147b7120da799e49c7d1"
     },
     {
       "platform": "python",
@@ -1519,7 +1519,7 @@
       "platform": "python",
       "canonical": "tests/test_qwen_curriculum_v2.py",
       "snapshot": "Important/python/tests/test_qwen_curriculum_v2.py",
-      "sha": "5c589934113b36088afa8fc6e68de93a6305467e"
+      "sha": "634b1f12d4760231f38a19993a6cab6b369af484"
     },
     {
       "platform": "python",
@@ -1538,6 +1538,12 @@
       "canonical": ".run/Qwen Dialogue V2 Train.run.xml",
       "snapshot": "Important/python/pycharm/Qwen Dialogue V2 Train.run.xml",
       "sha": "45fe81234005dbf1aafd3488a9c8295a3614d3c8"
+    },
+    {
+      "platform": "python",
+      "canonical": ".gitattributes",
+      "snapshot": "Important/python/configs/qwen_bootstrap_git_attributes.txt",
+      "sha": "8d402195e55de88b3aa9a1ae34d287e448bc2117"
     }
   ]
 }

@@ -42,6 +42,13 @@ def check_release(release):
     for name, sha in fingerprints.items():
         if hashlib.sha256(safe_relative(name).read_bytes()).hexdigest() != sha:
             raise ValueError('Release source hash mismatch: ' + name)
+    for name,sha in release.get('canonical_text_sha256',{}).items():
+        raw=safe_relative(name).read_bytes();raw.decode('utf8')
+        if hashlib.sha256(raw.replace(b'\r\n',b'\n')).hexdigest()!=sha:
+            raise ValueError('Release canonical text hash mismatch: '+name)
+    for name,sha in release.get('binary_source_sha256',{}).items():
+        if hashlib.sha256(safe_relative(name).read_bytes()).hexdigest()!=sha:
+            raise ValueError('Release binary source hash mismatch: '+name)
     return True
 
 

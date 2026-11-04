@@ -1,0 +1,3 @@
+# Stable raw-byte bootstrap for workers started before the EOL-aware checker.
+# Other existing sources and frozen resources keep their checkout settings.
+/run_qwen_curriculum.py text eol=lf

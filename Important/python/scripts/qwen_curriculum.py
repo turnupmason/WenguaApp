@@ -18,6 +18,16 @@ CONTRACT_FILES=['src/wengua/qwen_curriculum_v2.py','src/wengua/qwen_curriculum_t
                 'scripts/qwen_curriculum.py','configs/qwen14b_curriculum_v2.json','run_qwen_overnight.py']
 
 
+def verify_release_sources():
+    """The raw-LF bootstrap also protects workers loaded before this checker."""
+    import run_qwen_overnight as worker
+    release=json.loads(worker.RELEASE.read_text(encoding='utf8'))
+    if release.get('state')=='ready':
+        if 'scripts/qwen_curriculum.py' not in release.get('canonical_text_sha256',{}):
+            raise ValueError('Checked canonical source fingerprints missing')
+        worker.check_release(release)
+
+
 def config_checked(path=CONFIG):
     config=load_config(path)
     if config.get('curriculum_schema')!=VERSION:raise ValueError('Curriculum V2 config required')

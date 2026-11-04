@@ -12,8 +12,8 @@
     "source_assertion_count": 2860,
     "source_author_paragraphs": 1008,
     "source_additional_casts": 19,
-    "source_units": 5765,
-    "dialogue_samples": 13335,
+    "source_units": 5770,
+    "dialogue_samples": 13341,
     "source_database_table_inventory": {
       "books": 2,
       "sections": 43,
@@ -680,6 +680,7 @@
       "author_stage_dialogue": 817,
       "domain_specific_question": 23,
       "domain_role_dialogue": 5,
+      "domain_initial_clarification": 6,
       "source_chart_cell": 4833,
       "source_chart_row": 1611,
       "user_rule": 142,
@@ -689,13 +690,13 @@
       "user_qualification": 9
     },
     "splits": {
-      "train": 11144,
+      "train": 11150,
       "validation": 1129,
       "test": 1062
     },
     "stages": {
       "knowledge": 2765,
-      "workflow": 4126,
+      "workflow": 4132,
       "chart": 6444
     },
     "source_anchor_status": {
@@ -720,19 +721,19 @@
       "case_source_spans.json": "8aa9bac72cc009f89190c4c8fa57a3c2ffa861c6432a3ee697ce4c4d6a9960c4",
       "corpus.jsonl": "520fa9a43683b421f8b72dda2d013471c2ef9a138d724378282ead450220b690",
       "original_source_tables.json": "6aa6fa0805fd137f172dd392fdae72041b0dc787d59dc90faf9979647c06ac28",
-      "qa_review.csv": "2ed9806cb5f4ce5feef382ebc326b626426ca9972e6cfa3de5f19e80c8646b04",
-      "quality_audit.json": "1c3032cc7e3e5c05adca4678390a52d454dc7e4fef87fa69ca3a2d8b8ce63d0c",
+      "qa_review.csv": "3903d168e6597d16a3f7a89f596ce2e8a07f0581cd31c47ecb6df0305833e63b",
+      "quality_audit.json": "6c5b1d7345bc4d0941813908190a58060f7963261aaaaa685c9ac85249535e81",
       "source_audit_issues.json": "281b6e318e51006b55a2370145e60235efdbbb05d426867fc3b2c1a15d1cb642",
-      "source_units.jsonl": "07a37175b3a487f49f0bd61c3efffd0ff84b85d9d378c7bf4a53629b181c93e6",
+      "source_units.jsonl": "ef4d4fdc264cdbe7f3025a46a6008294ff759613ec2edc9d54149a65c2ad3427",
       "test.jsonl": "8ee77e18f550eb90d30a5b8bc638a2a7be3b8f82a0f2d6cfaba15085854be148",
-      "train.jsonl": "71f38dbb0eb905774c25e6a2bc293a36ccd0edba7e5d53bb530150da702136d4",
+      "train.jsonl": "4c2070307934e6f79d726ddc32c1566265a366863bacaa2dfc319e85d303f649",
       "validation.jsonl": "ba233ac1cf8e221596d86b293233d81de60536c02306e3f9e23ac73f3bb493c1"
     }
   },
   "quality_audit": {
     "passed": true,
     "errors": [],
-    "unique_answers": 7056,
+    "unique_answers": 7062,
     "task_counts": {
       "source_meaning": 2074,
       "source_conclusion": 1089,
@@ -744,6 +745,7 @@
       "author_stage_dialogue": 817,
       "domain_specific_question": 23,
       "domain_role_dialogue": 5,
+      "domain_initial_clarification": 6,
       "source_chart_cell": 4833,
       "source_chart_row": 1611,
       "user_rule": 142,
@@ -752,7 +754,7 @@
       "role_context_switch": 1,
       "user_qualification": 9
     },
-    "sample_count": 13335,
+    "sample_count": 13341,
     "original_case_count": 194,
     "independent_prediction_validation": false,
     "semantic_expert_review_complete": false
@@ -769,7 +771,7 @@
     "max_seq_length": 1536,
     "audits": {
       "train": {
-        "accepted": 11095,
+        "accepted": 11101,
         "accepted_tasks": {
           "source_meaning": 1669,
           "source_conclusion": 882,
@@ -782,6 +784,7 @@
           "author_stage_source_reading_short_view": 8,
           "domain_specific_question": 19,
           "domain_role_dialogue": 5,
+          "domain_initial_clarification": 6,
           "source_chart_cell": 4077,
           "source_chart_row": 1359,
           "user_rule": 117,
@@ -791,7 +794,7 @@
           "user_qualification": 8
         },
         "adaptations": {
-          "original": 11087,
+          "original": 11093,
           "needs_longer_context_original_retained": 49,
           "intact_author_paragraph_view": 8
         },
@@ -1176,7 +1179,7 @@
     },
     "stage_counts": {
       "knowledge": 3756,
-      "workflow": 4540
+      "workflow": 4548
     },
     "training_cases_independent_of_question_count": true,
     "production_enabled": false

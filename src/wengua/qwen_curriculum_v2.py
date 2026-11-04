@@ -461,6 +461,19 @@ def build_curriculum(db_path=SOURCE_DB):
             seed['question'],_answer(strip_number(text),uid,text),'passage:'+digest(text),[uid],
             dialogue=dialogue,context={'book':source['book_id'],'chapter':source['section_title'],
                     'scope':'本书本方法的明确情境；不能无条件跨领域套用','source':uid},stage='workflow'))
+        if dialogue:
+            # Last-turn masking does not supervise an earlier assistant turn.
+            # Teach the clarification itself too, attributed to this curriculum
+            # design rather than fabricated as an original author utterance.
+            guidance='teaching-clarification:'+seed['id']
+            units.append({'id':guidance,'kind':'curated_teaching_clarification','text':seed['clarify'],
+                'file':str(seed_file.relative_to(ROOT)),'file_sha256':digest(seed_file.read_bytes()),
+                'source_record':seed,'linked_cases':[],
+                'provenance':'curriculum_clarification_design_not_original_author_quote'})
+            cards.append(_card('domain:'+seed['id']+':initial','domain_initial_clarification',
+                seed['initial'],_answer(seed['clarify'],guidance,seed['clarify'],
+                    missing=['尚需明确所问的具体情境和采用的方法']),group='passage:'+digest(text),source_ids=[guidance],
+                context={'scope':'课程设计的追问示范，不冒充原作者原话'},stage='workflow'))
 
     # Read only literal rows, with source row/column labels. No guessed heaven/
     # earth convention, no recasting damaged source diagrams.
@@ -535,6 +548,12 @@ def build_curriculum(db_path=SOURCE_DB):
     units.append({'id':override_uid,'kind':'user_context_override','text':json_text(override),
                   'file':actor_file,'file_sha256':digest((ROOT/actor_file).read_bytes()),
                   'source_record':override,'linked_cases':[],'provenance':'versioned_project_rule_not_book_quote'})
+    clarification=_answer('先明确是父亲本人自问、你直接代问，还是闻讯后按事件时刻起局；出生年命有真实信息再提供。情境未明确时不直接混套年干、年命或辅助宫。',
+                    actor_uid,father['note'],missing=['起局情境','真实出生年命如有'])
+    clarification['evidence'].append({'citation':override_uid,'statement':json_text(override)})
+    cards.append(_card(actor_uid+':initial','domain_initial_clarification','爸爸看病，用神是什么？',
+                clarification,group,[actor_uid,override_uid],stage='workflow',
+                context={'scope':'按具名人物规则先问清起局情境；追问为课程示范'}))
     cards.append(_card(actor_uid+':event-news','role_context_switch',
         '如果明确改成闻讯后按事件时刻占父亲病情，还能不加区分地套上一条取用吗？',
         _answer('不能混用情境。此版本明确的闻讯占事覆盖规则以日干代表事件病人；这不是父病一律日干。',override_uid,json_text(override)),

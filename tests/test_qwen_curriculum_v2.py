@@ -79,6 +79,9 @@ class DialogueSourceContracts(unittest.TestCase):
     def test_dialogues_distinguish_contexts_and_use_consistent_json_arrays(self):
         rows={r['id']:r for r in self.pack['samples']}
         self.assertIn('domain:business_borrow',rows)
+        initial=rows['domain:business_borrow:initial']
+        self.assertEqual([m['role'] for m in initial['messages']],['system','user','assistant'])
+        self.assertTrue(json.loads(initial['messages'][-1]['content'])['missing_information'])
         self.assertEqual([m['role'] for m in rows['domain:business_borrow']['messages']],
                          ['system','user','assistant','user','assistant'])
         switches=[r for r in rows.values() if r['task']=='role_context_switch']
