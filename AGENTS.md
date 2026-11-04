@@ -3584,3 +3584,7 @@ UTF8/只读review/通则检索终版06e7cfef实际CI：主CI#41773156818双Pytho
 
 ### 当前封存轻重回归实测 · run 41775145668
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee49f9277ab4c1c50663ca266433b23e07374e8。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41775145668_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41778071759
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码29a46d21da5037b3db72703fad6890e4d95a8ca5。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41778071759_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
