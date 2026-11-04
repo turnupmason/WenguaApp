@@ -1,0 +1,206 @@
+{
+  "schema": "wengua_application_four_task_v3_final_candidates",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "source_book_cases": 194,
+  "source_author_paragraphs": 1008,
+  "historical_cases_with_explicit_initial_question_events": 29,
+  "book_case_calendar_layout_links": 160,
+  "validated_physical_layouts": 1080,
+  "real_calendar_teaching_instants": 96,
+  "generated_health_rule_reports": 672,
+  "core_tasks": 22854,
+  "core_task_categories": {
+    "basic": 11846,
+    "conditional": 3580,
+    "case_analysis": 2785,
+    "correction": 4643
+  },
+  "core_task_types": {
+    "source_meaning": 2074,
+    "source_conclusion": 1089,
+    "source_fact_lookup": 856,
+    "source_conditions": 625,
+    "source_chapter_method": 138,
+    "author_stage": 1008,
+    "author_explicit_condition_link": 94,
+    "author_stage_dialogue": 817,
+    "domain_specific_question": 23,
+    "domain_role_dialogue": 5,
+    "domain_initial_clarification": 6,
+    "source_chart_cell": 4833,
+    "source_chart_row": 1611,
+    "user_rule": 142,
+    "user_rule_conditions": 9,
+    "role_clarification_dialogue": 1,
+    "role_context_switch": 1,
+    "user_qualification": 9,
+    "complete_historical_source_reconstruction": 194,
+    "directed_palace_relation_on_valid_layout": 1080,
+    "same_board_different_domain_roles": 672,
+    "wrong_domain_signifier": 672,
+    "real_chart_context_role_binding": 672,
+    "complete_real_calendar_rule_application": 672,
+    "natal": 672,
+    "repeat": 672,
+    "single": 672,
+    "timing": 672,
+    "controlled_same_board_query_change": 576,
+    "friend_father_requires_relationship_context": 96,
+    "unknown_birth_does_not_block_known_analysis": 96,
+    "same_palace_distinct_symbol_strength": 112,
+    "approved_5x5_control_and_void_combinations": 125,
+    "void_tombs_striking_door_and_fuyin_facts": 672,
+    "signed_grade_vs_independent_symbol_power": 672,
+    "bare_xunkong_not_automatically_true_void": 499,
+    "same_illness_palace_real_calendar_contrast": 15
+  },
+  "core_splits": {
+    "train": 18009,
+    "validation": 2484,
+    "test": 2361
+  },
+  "pool_rows": 388000,
+  "category_quotas": {
+    "basic": 58200,
+    "conditional": 97000,
+    "case_analysis": 155200,
+    "correction": 77600
+  },
+  "all_contexts_and_paraphrases_family_grouped": true,
+  "actual_condition_coverage": {
+    "patient_illness_same_doctor_elsewhere": 173,
+    "void_not_void": 2418,
+    "void_true_void": 248,
+    "void_fake_void": 316,
+    "patient_doctor_same_palace": 75,
+    "doctor_medicine_same_palace": 112,
+    "same_palace_resolved_different_strengths": 63,
+    "same_palace_pending_strength_retained": 7
+  },
+  "independent_binding_checks": {
+    "rows": 672,
+    "errors": [],
+    "friend_auxiliary_errors": []
+  },
+  "natal_alias_invariance_checks": {
+    "pairs": 96,
+    "errors": []
+  },
+  "official_tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "max_seq_length_audited": 1536,
+  "accepted_core_by_split": {
+    "train": 17549,
+    "validation": 2414,
+    "test": 2279
+  },
+  "accepted_core_by_category": {
+    "basic": 11798,
+    "conditional": 3445,
+    "case_analysis": 2617,
+    "correction": 4382
+  },
+  "natural_binding_explanations_explicit": 672,
+  "natural_binding_explanations_retokenized": 672,
+  "end_to_end_generated_reading_domains": [
+    "health"
+  ],
+  "other_domains_do_not_claim_complete_generated_verdicts": true,
+  "automatic_full_semantic_professional_verification": false,
+  "all_wording_variants_individually_token_audited": false,
+  "current_v2_training_changed": false,
+  "new_training_started": false,
+  "semantic_expert_review_complete": false,
+  "production_enabled": false,
+  "all_core_tasks_present_in_wording_pool": true,
+  "positive_structured_reference_answers_checked": 9319,
+  "negative_actual_checker_tests": [
+    {
+      "test": "wrong_patient_carrier",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "invented_natal",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "fabricated_date",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "duplicate_palace",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "copied_doctor_strength",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "wrong_domain",
+      "passed": true,
+      "errors": [
+        "claims_disagree_with_source_derived_facts"
+      ]
+    },
+    {
+      "test": "natural_final_grade_conflict",
+      "passed": true,
+      "errors": [
+        "natural_final_grade_conflicts_with_evidence"
+      ]
+    }
+  ],
+  "all_core_excel_readback_counts": {
+    "basic": 11846,
+    "conditional": 3580,
+    "case_analysis": 2785,
+    "correction": 4643
+  },
+  "application_selection_rows": 34,
+  "status": "draft_application_curriculum_not_auto_training",
+  "created_date": "2026-11-04",
+  "oversize_core_tasks_count": 612,
+  "prediction_validated": false,
+  "private_source_and_training_text_not_published": true,
+  "documentation": "docs/QWEN_APPLICATION_CURRICULUM_V3_20261104.md",
+  "private_artifacts": {
+    "Wengua_V3_All_Core_Tasks_22854.xlsx": {
+      "bytes": 6505911,
+      "sha256": "0feeeea6438a824ebd728c04542915f07415d214bd884d2d55ae705eb6d98132"
+    },
+    "Wengua_V3_Four_Task_Pool_388000.csv.gz": {
+      "bytes": 58022057,
+      "sha256": "72ab91674e8d9d2b986774e753ebdfcb9c9a9cd29fa096f32b8db14f4183bd7b"
+    },
+    "core_tasks_compact.jsonl.gz": {
+      "bytes": 8312527,
+      "sha256": "cb9ac2536b8df6d2f59043779ac4ec4eed7fac961a9cfc966dee4217ea2209b2"
+    },
+    "training_core_views_1536.jsonl.gz": {
+      "bytes": 4722292,
+      "sha256": "34668cfedde798af9d082148b5d6154c89f961975ee2660c3a4b7d6dc10bfc01"
+    },
+    "manifest.json": {
+      "bytes": 225298,
+      "sha256": "c64766b074f7393857db7f24b3cd6cd58ddf21c0938f1fa6dd0fbde7a329e549"
+    },
+    "Wengua_V3_Core_Review_Pack.zip": {
+      "bytes": 19020935,
+      "sha256": "c5b41eb84a9309b604f9b590d6d802de67586ac33defa1984c489fc60f119f6e"
+    }
+  }
+}

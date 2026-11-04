@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "796167ec5c4a82d6e575ad3eb90f1b087d54b555"
+      "sha": "37c5a6e9fca377e07324233aff31d1126031b10c"
     },
     {
       "platform": "python",
@@ -1544,6 +1544,24 @@
       "canonical": ".gitattributes",
       "snapshot": "Important/python/configs/qwen_bootstrap_git_attributes.txt",
       "sha": "8d402195e55de88b3aa9a1ae34d287e448bc2117"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_application_checks_v3.py",
+      "snapshot": "Important/python/engine/qwen_application_checks_v3.py",
+      "sha": "7160c6fb467a9a14e4d6aefa55daa57a91cba5bf"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_application_checks_v3.py",
+      "snapshot": "Important/python/tests/test_qwen_application_checks_v3.py",
+      "sha": "bf8153f5c6a3cb9872dc516ddb6f66d899c1bbd5"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_application_v3/candidate_manifest_20261104.json",
+      "snapshot": "Important/python/data/knowledge/qwen_application_v3/candidate_manifest_20261104.json",
+      "sha": "c3bf04014044966b2418739bda33dd3ee40265bb"
     }
   ]
 }
