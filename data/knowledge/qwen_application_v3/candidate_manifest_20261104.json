@@ -89,14 +89,14 @@
   "official_tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
   "max_seq_length_audited": 1536,
   "accepted_core_by_split": {
-    "train": 17549,
-    "validation": 2414,
-    "test": 2279
+    "train": 17348,
+    "validation": 2389,
+    "test": 2244
   },
   "accepted_core_by_category": {
     "basic": 11798,
     "conditional": 3445,
-    "case_analysis": 2617,
+    "case_analysis": 2356,
     "correction": 4382
   },
   "natural_binding_explanations_explicit": 672,
@@ -173,34 +173,36 @@
   "application_selection_rows": 34,
   "status": "draft_application_curriculum_not_auto_training",
   "created_date": "2026-11-04",
-  "oversize_core_tasks_count": 612,
+  "oversize_core_tasks_count": 873,
   "prediction_validated": false,
   "private_source_and_training_text_not_published": true,
   "documentation": "docs/QWEN_APPLICATION_CURRICULUM_V3_20261104.md",
   "private_artifacts": {
     "Wengua_V3_All_Core_Tasks_22854.xlsx": {
-      "bytes": 6505911,
-      "sha256": "0feeeea6438a824ebd728c04542915f07415d214bd884d2d55ae705eb6d98132"
+      "bytes": 6589014,
+      "sha256": "65c560e57bc9a54fbd7888c534fac2926dbfb63cba5a378dcce8c634bd4e7f45"
     },
     "Wengua_V3_Four_Task_Pool_388000.csv.gz": {
-      "bytes": 58022057,
-      "sha256": "72ab91674e8d9d2b986774e753ebdfcb9c9a9cd29fa096f32b8db14f4183bd7b"
+      "bytes": 59627649,
+      "sha256": "8b6ad6981a6fb152fdb5a2e0c94ba969cf2b9d9edb631632cb997916c37ad062"
     },
     "core_tasks_compact.jsonl.gz": {
-      "bytes": 8312527,
-      "sha256": "cb9ac2536b8df6d2f59043779ac4ec4eed7fac961a9cfc966dee4217ea2209b2"
+      "bytes": 8535301,
+      "sha256": "b96a5edd1dc2fea006a5e223a793bbeb2a59e8a422714894ef6e116381f04f8d"
     },
     "training_core_views_1536.jsonl.gz": {
-      "bytes": 4722292,
-      "sha256": "34668cfedde798af9d082148b5d6154c89f961975ee2660c3a4b7d6dc10bfc01"
+      "bytes": 4642962,
+      "sha256": "002e08210581bc6c618a80adb6d8a3b8d38f0058a23123ca2b0d0b056e176c6e"
     },
     "manifest.json": {
-      "bytes": 225298,
-      "sha256": "c64766b074f7393857db7f24b3cd6cd58ddf21c0938f1fa6dd0fbde7a329e549"
+      "bytes": 332272,
+      "sha256": "001e054cfc4ee7920750c1a35ddf770542442d0a848f76769de2a51358065add"
     },
     "Wengua_V3_Core_Review_Pack.zip": {
-      "bytes": 19020935,
-      "sha256": "c5b41eb84a9309b604f9b590d6d802de67586ac33defa1984c489fc60f119f6e"
+      "bytes": 19253412,
+      "sha256": "c302d071eb03ff7b4e7ca30b5c193385148c70185105ac337fc90f907a8cca12"
     }
-  }
+  },
+  "complete_analysis_role_explanations_explicit": 672,
+  "complete_analysis_role_explanations_retokenized": 672
 }

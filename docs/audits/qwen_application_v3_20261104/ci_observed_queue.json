@@ -1,0 +1,23 @@
+{
+  "checked_source_commit": "bc9af622c062b45e4fc6789f44484537f8537192",
+  "main_ci": {
+    "id": 41864168513,
+    "status": "queued"
+  },
+  "tiny_qwen_contract": {
+    "id": 41864168794,
+    "status": "queued"
+  },
+  "sealed_native_parity": {
+    "id": 41864168530,
+    "status": "queued"
+  },
+  "no_remote_success_claim": true,
+  "local_full_suite": {
+    "tests": 1008,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "later_artifact_update_changed_checker_source": false
+}
