@@ -2081,3 +2081,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 V3候选软件实测：完整1008 tests、0 failures／0 errors、3既有skip；新增检查器9项通过。50份V2文本输入规范哈希、原SQLite二进制哈希及现用数据清单全部复核未变。实测日志docs/audits/qwen_application_v3_20261104/full_run/；检查通过只限来源／结构／软件一致性，不冒称中文专业语义全部通过。远端CI待本次源码提交触发后核验。
+
+
+### 当前封存轻重回归实测 · run 41864168530
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码bc9af622c062b45e4fc6789f44484537f8537192。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864168530_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
