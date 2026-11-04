@@ -8,6 +8,8 @@ on:
       - 'scripts/qwen_research.py'
       - 'scripts/check_qwen_training.py'
       - 'tests/test_qwen_research_v1.py'
+      - 'tests/test_qwen_curriculum_candidate_v1.py'
+      - 'data/knowledge/qwen_curriculum_v2/candidate_11952_manifest.json'
       - 'configs/qwen32b_v1.json'
       - 'configs/qwen14b_v1.json'
       - 'requirements-qwen.txt'
@@ -36,7 +38,7 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-qwen.txt
       - name: Source splits retrieval chart and no-outcome-supervision contracts (stdlib)
-        run: python -m unittest tests.test_qwen_research_v1 -v
+        run: python -m unittest tests.test_qwen_research_v1 tests.test_qwen_curriculum_candidate_v1 -v
       - name: Tiny CPU test dependencies (no bitsandbytes or 32B weights)
         run: |
           python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu

@@ -3566,3 +3566,8 @@ UTF8/只读review/通则检索终版06e7cfef实际CI：主CI#41773156818双Pytho
 
 ### 当前封存轻重回归实测 · run 41775145668
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee49f9277ab4c1c50663ca266433b23e07374e8。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41775145668_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 2026-11-03 · Qwen dialogue instruction dataset candidate V1 · 11,952 rows (not gold release)
+
+User requested >=10,000 sourced basic knowledge, conditional role and multi-turn case-study training dialogues. Local Excel and candidate JSONL generated with 11,952 deduplicated prompts/responses, 406 source units, 65 case event families in selected **index-only** examples, 1,015 multi-turn exchanges. Groups: 4,428 basic; 5,196 conditional; 1,536 palace relations; 792 case-index replays. Exactly 0 new reviewed gold SFT rows approved in this delivery. Complete details and artifact SHA receipts in [candidate curriculum audit](QWEN_DIALOGUE_CURRICULUM_CANDIDATE_V1_20261103.md). The workbook/JSONL were sent privately via conversation, not uploaded as book text to public GitHub. New manifest in `data/knowledge/qwen_curriculum_v2/candidate_11952_manifest.json` is mirrored under Important and indexed in `Important/MANIFEST.json`; new source-only audit test checks counts, mirrored bytes and unchanged release gate. Existing frozen V9/V11/V27 and user-trained LoRA unchanged. `overnight_release.json` remains preparing/checks_passed=false; **no training on this candidate corpus**. This is knowledge phrasing augmentation, not 11,952 independently discovered sources or outcome-labelled cases.

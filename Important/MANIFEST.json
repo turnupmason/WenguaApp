@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "6098360bd31e308dd219540a7332d0730aee630d"
+      "sha": "6f9aaea8008ee717c12431499766d51cfc5ad5ea"
     },
     {
       "platform": "python",
@@ -1466,6 +1466,18 @@
       "canonical": "data/knowledge/qwen_curriculum_v2/overnight_release.json",
       "snapshot": "Important/python/data/knowledge/qwen_curriculum_v2/overnight_release.json",
       "sha": "4912e54379011b9c89f152f3c3588ad4568f5c82"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_curriculum_v2/candidate_11952_manifest.json",
+      "snapshot": "Important/python/data/knowledge/qwen_curriculum_v2/candidate_11952_manifest.json",
+      "sha": "d8a57eb9d1f9a29f7e0b68d449993bde3d4ea448"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_curriculum_candidate_v1.py",
+      "snapshot": "Important/python/tests/test_qwen_curriculum_candidate_v1.py",
+      "sha": "b3486fc512def2186d41e0b139498581c0992685"
     }
   ]
 }

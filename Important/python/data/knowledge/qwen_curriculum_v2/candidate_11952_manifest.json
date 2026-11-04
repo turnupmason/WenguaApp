@@ -1,0 +1,59 @@
+{
+  "schema": "wengua_qwen_instruction_dialogue_candidate_v1",
+  "generated_local_date": "2026-11-03",
+  "source_repository": "turnupmason/WenguaApp",
+  "source_commit": "cfb742db2fa98f6b3e72929dba0ab2405f6a16d5",
+  "source_mode": "public_source_concept_and_case_index_only",
+  "input_archive_untouched": true,
+  "local_private_book_sqlite_reopened_for_this_batch": false,
+  "outputs": {
+    "workbook": {
+      "name": "Wengua_古籍指令问答与多轮对话_11952条_20261103.xlsx",
+      "sha256": "e9c6c964b0784caf31504ab2d4176b93aeb5a8f44d754c45e1bdefd78f5988a1",
+      "shared_in_conversation_only": true
+    },
+    "candidate_jsonl": {
+      "name": "Wengua_古籍指令对话_11952条_候选.jsonl",
+      "sha256": "82e924f908b9c0eef592b7488f57f8509fe3ad19351cbb557b3ff325fc42b59f",
+      "shared_in_conversation_only": true
+    },
+    "generator_snapshot": {
+      "name": "build_wengua_curriculum.py",
+      "sha256": "05920c7592b6d28d9c27088e6f17b40db76b819da9125ce27ef29e93525a0535",
+      "shared_in_conversation_only": true
+    }
+  },
+  "data_counts": {
+    "rows": 11952,
+    "source_units": 406,
+    "case_event_families_unique": 65,
+    "questions_basic": 4428,
+    "questions_conditional": 5196,
+    "palace_relations": 1536,
+    "case_index_replays": 792,
+    "multi_turn": 1015,
+    "review_status_counts": {
+      "candidate_requires_human_review": 11076,
+      "needs_source_detail_and_human_review": 84,
+      "NOT_TRAIN_AS_AUTHOR_REASONING_until_full_source_checked": 792
+    },
+    "group_split_source_units": {
+      "train": 316,
+      "valid": 38,
+      "test": 52
+    }
+  },
+  "training_policy": {
+    "all_rows_candidate_not_gold": true,
+    "trainable_gold_rows_approved_in_this_delivery": 0,
+    "artifact_not_committed_to_public_git": true,
+    "case_index_replays_are_not_actual_author_analysis": true,
+    "historical_author_feedback_not_observed_ground_truth": true,
+    "avoid_independent_event_claims": true,
+    "same_source_and_case_family_group_isolation": true,
+    "no_existing_model_or_adapter_changed": true,
+    "auto_train_enabled": false,
+    "release_gate_status": "preparing_unchanged"
+  },
+  "notes": "User asked for >=10000 sourced instructional exchanges. Count is rewritten questions per source concept, not independent facts. All rows require source/condition/answer human review. Do not unlock overnight training solely based on this generated artifact."
+}
