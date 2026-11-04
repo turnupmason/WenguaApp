@@ -41,7 +41,8 @@ def main(argv=None):
             command.add_argument('--model', default='qwen3:14b', help='Running endpoint model ID; RAG alone is NOT a trained adapter')
         if name == 'chat':
             command.add_argument('--adapter-run', type=Path, required=True)
-            command.add_argument('--max-new-tokens', type=int, default=256)
+            command.add_argument('--max-new-tokens', type=int, default=512)
+            command.add_argument('--base-only', action='store_true', help='Use the same base/tokenizer/prompt without the trained LoRA')
     reference = commands.add_parser('reference', help='Explicit private source browser; excluded from evaluation retrieval')
     reference.add_argument('--data', type=Path, required=True)
     reference.add_argument('--id', required=True)
@@ -88,7 +89,8 @@ def main(argv=None):
             else:
                 if args.command == 'chat':
                     from src.wengua.qwen_finetune import local_answer
-                    content = local_answer(messages, args.adapter_run, args.max_new_tokens)
+                    content, docs, generation = local_answer(messages, args.adapter_run, args.max_new_tokens,
+                                documents=docs, base_only=args.base_only, return_details=True)
                 else:
                     payload = {'model': args.model, 'messages': messages, 'stream': False,
                                'temperature': 0.7, 'top_p': 0.8, 'max_tokens': 2048,
@@ -103,7 +105,28 @@ def main(argv=None):
                         content = json.loads(raw)['choices'][0]['message']['content']
                 # A non-JSON / invented citation result is rejected, not shown as
                 # supported divination just because a server returned HTTP 200.
-                result = check_answer(json.loads(content), docs, args.mode)
+                if args.command == 'chat':
+                    stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
+                    trace_dir = private_path(args.adapter_run) / 'inference'
+                    trace_dir.mkdir(exist_ok=True)
+                    trace_path = trace_dir / (stamp + '_' + generation['variant'] + '.json')
+                    sent_messages = generation.pop('_sent_messages', None)
+                    trace = {'question': args.question, 'mode': args.mode, 'generation': generation,
+                             'raw_output': content, 'sent_reference_ids': [d['id'] for d in docs],
+                             'sent_messages': sent_messages,
+                             'prediction_validated': False, 'production_enabled': False}
+                    try:
+                        result = check_answer(json.loads(content), docs, args.mode)
+                    except (ValueError, TypeError, KeyError) as error:
+                        trace.update(status='rejected', error=str(error))
+                        write_json(trace_path, trace)
+                        raise ValueError('Model answer rejected; raw output saved at ' + str(trace_path) + ': ' + str(error)) from error
+                    trace.update(status='parsed', checked_answer=result)
+                    write_json(trace_path, trace)
+                    result['generation'] = generation
+                    result['trace_path'] = str(trace_path)
+                else:
+                    result = check_answer(json.loads(content), docs, args.mode)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

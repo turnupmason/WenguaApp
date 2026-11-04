@@ -4,8 +4,8 @@ from copy import deepcopy
 from pathlib import Path
 import tempfile
 
-from src.wengua.qwen_finetune import collator, encode_sample, load_config, prepare_frozen_base
-from src.wengua.qwen_research import ROOT, sample, write_json
+from src.wengua.qwen_finetune import collator, encode_sample, fit_inference_prompt, load_config, prepare_frozen_base
+from src.wengua.qwen_research import ROOT, build_pack, make_prompt, sample, write_json
 
 
 def main():
@@ -18,6 +18,10 @@ def main():
     config = load_config()
     tokenizer = AutoTokenizer.from_pretrained(config['model_id'], revision=config['revision'], trust_remote_code=False)
     tokenizer.pad_token = tokenizer.pad_token or tokenizer.eos_token
+    prompt, documents = make_prompt('古籍中天芮星与天心星的作用有什么区别？', build_pack()['documents'], mode='source_study')
+    _, kept, budget = fit_inference_prompt(prompt, documents, tokenizer, context_limit=2048, max_new_tokens=768)
+    assert budget['input_tokens'] + budget['max_new_tokens'] <= 2048
+    assert kept and budget['dropped_reference_ids']
     row = sample('integration', 'synthetic_no_historical_event', '说明来源。',
                  {'mode': 'source_study', 'summary': '这是程序夹具。', 'evidence': [],
                   'counter_evidence': [], 'missing_information': [], 'event_probability': None}, 'synthetic')
@@ -62,6 +66,7 @@ def main():
                    'assistant_mask_tokens': first, 'total_tokens': length,
                    'trainable_weights_changed': True, 'adapter_reload_logits_equal': True,
                    'frozen_large_matrices_keep_bf16': True, 'norm_vectors_fp32': True,
+                   'official_tokenizer_inference_budget': budget,
                    'loss': result.training_loss, 'real_32b_trained': False,
                    'real_full_size_model_trained': False, 'cuda_nf4_tested': False}
     profile = 'qwen14b_v1' if config['model_id'] == 'Qwen/Qwen3-14B' else 'qwen32b_v1'

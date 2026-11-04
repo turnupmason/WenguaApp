@@ -12,7 +12,7 @@ import platform
 from pathlib import Path
 import sys
 
-from .qwen_research import DEFAULT_CONFIG, VERSION, digest, private_path, read_rows, write_json
+from .qwen_research import DEFAULT_CONFIG, VERSION, digest, json_text, private_path, read_rows, write_json
 
 
 def load_config(path=DEFAULT_CONFIG):
@@ -252,8 +252,52 @@ def train(data, output, *, config_path=DEFAULT_CONFIG, max_steps=-1, max_length=
         raise
 
 
-def local_answer(messages, adapter_run, max_new_tokens=512):
-    """Direct 4090 inference using the saved original NF4 base + LoRA adapter."""
+def fit_inference_prompt(messages, documents, tokenizer, *, context_limit, max_new_tokens):
+    """Keep whole retrieved references that fit, preserving question/chart/system.
+
+    Count the actual official chat template. Never truncate palace facts or
+    silently allow citations to references that were not sent to the model.
+    Retrieval order is preserved; an oversized first hit must not exclude all
+    smaller useful references. This verifies length, not semantic relevance.
+    """
+    if not 1 <= max_new_tokens < context_limit:
+        raise ValueError('Reserve a positive input token budget')
+    if not messages or messages[-1].get('role') != 'user':
+        raise ValueError('Expected final structured user message')
+    payload = json.loads(messages[-1]['content'])
+    candidates = payload['references']
+    by_id = {d['id']: d for d in documents}
+    if any(r['id'] not in by_id for r in candidates):
+        raise ValueError('Prompt contains an unregistered source reference')
+
+    def render(references):
+        value = dict(payload, references=list(references), no_references=not references)
+        return [dict(m) for m in messages[:-1]] + [dict(messages[-1], content=json_text(value))]
+
+    def count(value):
+        return len(tokenizer.apply_chat_template(value, tokenize=True, add_generation_prompt=True,
+                                                  enable_thinking=False))
+
+    budget = context_limit - max_new_tokens
+    selected, dropped = [], []
+    if count(render([])) > budget:
+        raise ValueError('Question, system instructions and program chart exceed input budget; none were truncated.')
+    for reference in candidates:
+        if count(render(selected + [reference])) <= budget:
+            selected.append(reference)
+        else:
+            dropped.append(reference['id'])
+    fitted = render(selected)
+    return fitted, [by_id[r['id']] for r in selected], {
+        'context_limit': context_limit, 'max_new_tokens': max_new_tokens,
+        'original_input_tokens': count(messages), 'input_tokens': count(fitted),
+        'kept_reference_ids': [r['id'] for r in selected], 'dropped_reference_ids': dropped,
+        'question_chart_and_system_truncated': False, 'reference_content_truncated': False}
+
+
+def local_answer(messages, adapter_run, max_new_tokens=512, *, documents=None,
+                 base_only=False, return_details=False):
+    """Direct CUDA inference, optionally comparing the identical base without LoRA."""
     from transformers import AutoTokenizer
     from peft import PeftModel
     run = private_path(adapter_run)
@@ -265,16 +309,32 @@ def local_answer(messages, adapter_run, max_new_tokens=512):
     if not 1 <= max_new_tokens < context_limit:
         raise ValueError('Reserve a positive input token budget')
     tokenizer = AutoTokenizer.from_pretrained(run / 'adapter', trust_remote_code=False)
+    audit = None
+    kept = documents
+    if documents is not None:
+        messages, kept, audit = fit_inference_prompt(messages, documents, tokenizer,
+                    context_limit=context_limit, max_new_tokens=max_new_tokens)
     inputs = tokenizer.apply_chat_template(messages, tokenize=True, add_generation_prompt=True,
                                            enable_thinking=False, return_tensors='pt')
     if inputs.shape[1] + max_new_tokens > context_limit:
         raise ValueError('Prompt + response exceed this adapter context budget; reduce references or response length.')
     model, _ = load_cuda_base(config, training=False)
-    model = PeftModel.from_pretrained(model, run / 'adapter').eval()
+    if not base_only:
+        model = PeftModel.from_pretrained(model, run / 'adapter')
+    model.eval()
     inputs = inputs.to(model.device)
     import torch
+    from transformers import set_seed
+    set_seed(config['seed'])
     with torch.inference_mode():
         output = model.generate(inputs, attention_mask=torch.ones_like(inputs), max_new_tokens=max_new_tokens,
                                 do_sample=True, temperature=0.7, top_p=0.8, top_k=20,
                                 pad_token_id=tokenizer.pad_token_id)
-    return tokenizer.decode(output[0, inputs.shape[1]:], skip_special_tokens=True)
+    content = tokenizer.decode(output[0, inputs.shape[1]:], skip_special_tokens=True)
+    if return_details:
+        return content, kept, {'variant': 'base_only' if base_only else 'adapter', 'model_id': config['model_id'],
+                               'seed': config['seed'], 'prompt_budget': audit,
+                               'prompt_sha256': digest(json_text(messages)), '_sent_messages': messages,
+                               'generated_tokens': int(output.shape[1] - inputs.shape[1]),
+                               'reached_token_limit': int(output.shape[1] - inputs.shape[1]) >= max_new_tokens}
+    return content

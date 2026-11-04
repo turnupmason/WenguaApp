@@ -1393,25 +1393,25 @@
       "platform": "python",
       "canonical": "src/wengua/qwen_finetune.py",
       "snapshot": "Important/python/engine/qwen_finetune.py",
-      "sha": "79981287a93cc39f9db6f1fcff927eb8cdbf55fb"
+      "sha": "f536c28e13889ebffd4d3a905e7bd4dce4b01c88"
     },
     {
       "platform": "python",
       "canonical": "scripts/qwen_research.py",
       "snapshot": "Important/python/scripts/qwen_research.py",
-      "sha": "b3630b30ba6461eac81ff7b3eb9b1ed0c229fc12"
+      "sha": "49418d3049c4ed3e06820db2a1bef7eaa050c78a"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_qwen_training.py",
       "snapshot": "Important/python/scripts/check_qwen_training.py",
-      "sha": "b1e27bab620b34fdd912c7996e4d4f21d59d9a9c"
+      "sha": "67a7b0edfd5227ed83956f5c2165c4580181df95"
     },
     {
       "platform": "python",
       "canonical": "tests/test_qwen_research_v1.py",
       "snapshot": "Important/python/tests/test_qwen_research_v1.py",
-      "sha": "fb4d7330561823b532c29280e70419cb113aae75"
+      "sha": "816cc4a64fac14a727bf8bf17e21dd844490d098"
     },
     {
       "platform": "python",

@@ -8,7 +8,8 @@ from unittest.mock import patch
 
 from src.wengua.qwen_research import (ROOT, build_pack, check_answer, export_pack, make_prompt,
                                      retrieve, split_for, terms, trusted_chart)
-from src.wengua.qwen_finetune import assess_gpu_capacity, checked_splits, encode_sample, load_config, train
+from src.wengua.qwen_finetune import (assess_gpu_capacity, checked_splits, encode_sample,
+                                     fit_inference_prompt, load_config, train)
 
 
 class QwenResearch(unittest.TestCase):
@@ -178,6 +179,91 @@ class ActualGpuCapacity(unittest.TestCase):
         self.assertEqual(result['status'], 'ready_for_smoke_test')
         self.assertFalse(result['actual_training_fit_verified'])
         self.assertEqual(assess_gpu_capacity(self.report(15.99, 9), config)['status'], 'blocked')
+
+
+class InferenceBudget(unittest.TestCase):
+    class Tokenizer:
+        def apply_chat_template(self, messages, **kwargs):
+            return list(range(sum(len(m['content']) for m in messages)))
+
+    def fixture(self):
+        docs = [{'id': 'huge', 'content': '大' * 4000}, {'id': 'small', 'content': '来源短文'},
+                {'id': 'huge2', 'content': '长' * 4000}]
+        payload = {'question': '原问题', 'program_chart': {'p1': '原宫位'},
+                   'references': docs, 'mode': 'source_study', 'no_references': False}
+        return [{'role': 'system', 'content': '原系统要求'},
+                {'role': 'user', 'content': json.dumps(payload, ensure_ascii=False)}], docs
+
+    def test_whole_short_sources_fit_without_losing_question_chart_or_system(self):
+        messages, docs = self.fixture()
+        fitted, kept, audit = fit_inference_prompt(messages, docs, self.Tokenizer(),
+                                                  context_limit=800, max_new_tokens=256)
+        self.assertEqual([d['id'] for d in kept], ['small'])
+        self.assertEqual(fitted[0], messages[0])
+        before, after = json.loads(messages[-1]['content']), json.loads(fitted[-1]['content'])
+        for key in ('question', 'program_chart', 'mode'):
+            self.assertEqual(before[key], after[key])
+        self.assertEqual(after['references'][0], docs[1])
+        self.assertFalse(after['no_references'])
+        self.assertLessEqual(audit['input_tokens'] + audit['max_new_tokens'], 800)
+        self.assertEqual(audit['dropped_reference_ids'], ['huge', 'huge2'])
+
+    def test_essential_facts_are_never_silently_truncated(self):
+        messages, docs = self.fixture()
+        messages[0]['content'] = '规则' * 1000
+        with self.assertRaisesRegex(ValueError, 'none were truncated'):
+            fit_inference_prompt(messages, docs, self.Tokenizer(), context_limit=800, max_new_tokens=256)
+
+    def test_unregistered_source_is_not_added_to_allowed_citations(self):
+        messages, docs = self.fixture()
+        with self.assertRaisesRegex(ValueError, 'unregistered'):
+            fit_inference_prompt(messages, docs[:1], self.Tokenizer(), context_limit=800, max_new_tokens=256)
+
+    def test_missing_sources_are_explicit_when_no_whole_reference_fits(self):
+        messages, docs = self.fixture()
+        docs = [docs[0]]
+        payload = json.loads(messages[-1]['content']); payload['references'] = docs
+        messages[-1]['content'] = json.dumps(payload, ensure_ascii=False)
+        fitted, kept, audit = fit_inference_prompt(messages, docs, self.Tokenizer(), context_limit=800, max_new_tokens=256)
+        self.assertEqual(kept, [])
+        self.assertTrue(json.loads(fitted[-1]['content'])['no_references'])
+
+
+class InferenceTrace(unittest.TestCase):
+    def check_trace(self, content, *, valid):
+        from contextlib import redirect_stdout
+        from io import StringIO
+        from scripts.qwen_research import main
+        (ROOT / 'local').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=ROOT / 'local') as temp:
+            run = Path(temp) / 'run'; run.mkdir()
+            data = Path(temp) / 'data'; data.mkdir(); (data / 'corpus.jsonl').write_text('', encoding='utf8')
+            generation = {'variant': 'base_only', 'prompt_budget': {}, '_sent_messages': ['actual sent prompt fixture']}
+            with patch('src.wengua.qwen_finetune.local_answer', return_value=(content, [], generation)) as model:
+                args = ['chat', '--data', str(data), '--adapter-run', str(run), '--question', '夹具', '--base-only']
+                with redirect_stdout(StringIO()):
+                    if valid:
+                        main(args)
+                    else:
+                        with self.assertRaisesRegex(ValueError, 'raw output saved'):
+                            main(args)
+                self.assertTrue(model.call_args.kwargs['base_only'])
+            paths = list((run / 'inference').glob('*.json'))
+            self.assertEqual(len(paths), 1)
+            trace = json.loads(paths[0].read_text(encoding='utf8'))
+            self.assertEqual(trace['raw_output'], content)
+            self.assertEqual(trace['status'], 'parsed' if valid else 'rejected')
+            self.assertEqual(trace['sent_messages'], ['actual sent prompt fixture'])
+            self.assertFalse(trace['prediction_validated'])
+            self.assertNotIn('_sent_messages', trace['generation'])
+
+    def test_bad_model_json_is_saved_before_rejection(self):
+        self.check_trace('not valid JSON', valid=False)
+
+    def test_valid_response_keeps_raw_text_and_base_comparison_label(self):
+        answer = {'mode': 'traditional_reading', 'summary': '资料不足', 'evidence': [],
+                  'counter_evidence': [], 'missing_information': ['没有来源'], 'event_probability': None}
+        self.check_trace(json.dumps(answer, ensure_ascii=False), valid=True)
 
 
 if __name__ == '__main__':

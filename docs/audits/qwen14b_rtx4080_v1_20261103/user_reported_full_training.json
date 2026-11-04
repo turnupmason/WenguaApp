@@ -1,0 +1,84 @@
+{
+  "evidence_type": "user_supplied_run_status_json_in_terminal_log",
+  "independently_reproduced_here": false,
+  "state": "complete",
+  "model_id": "Qwen/Qwen3-14B",
+  "model_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "max_seq_length": 1536,
+  "epochs": 2.0,
+  "dataset_manifest_sha256": "955841c76c1d029eb8c5fbc5832fbdcd767e730d146e66effb90dcd0af777ee3",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "config": {
+    "schema": "wengua_qwen32b_v1",
+    "model_id": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "license": "Apache-2.0",
+    "quantization": "nf4_double_quant",
+    "max_seq_length": 1536,
+    "inference_max_context": 2048,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "learning_rate": 0.0001,
+    "epochs": 2,
+    "seed": 3407,
+    "gradient_checkpointing": true,
+    "enable_thinking": false,
+    "production_enabled": false,
+    "event_probabilities_enabled": false
+  },
+  "training_metrics": {
+    "train_runtime": 1794.7307,
+    "train_samples_per_second": 0.654,
+    "train_steps_per_second": 0.082,
+    "total_flos": 7.121534719543296e+16,
+    "train_loss": 0.9354344996589969,
+    "epoch": 2.0
+  },
+  "validation_language_loss": {
+    "eval_loss": 0.26438117027282715,
+    "eval_runtime": 35.518,
+    "eval_samples_per_second": 1.999,
+    "eval_steps_per_second": 1.999,
+    "epoch": 2.0
+  },
+  "reported_gpu": {
+    "index": 0,
+    "name": "NVIDIA GeForce RTX 4080",
+    "total_gib": 15.99,
+    "free_gib": 14.72
+  },
+  "reported_peak_gpu_allocated_gib": 13.161079406738281,
+  "reported_peak_gpu_reserved_gib": 24.490234375,
+  "memory_interpretation": "Reserved exceeds reported physical VRAM. Cause unverified; do not treat as usable headroom or a larger physical GPU.",
+  "environment_snapshot_phase": "before training; its fit_verified false flags are not a completed-run failure.",
+  "token_coverage": {
+    "train": {
+      "accepted": 587,
+      "accepted_tasks": {
+        "source_rule": 479,
+        "author_case_reconstruction": 108
+      },
+      "excluded_long_rows": 52
+    },
+    "validation": {
+      "accepted": 71,
+      "accepted_tasks": {
+        "source_rule": 59,
+        "author_case_reconstruction": 12
+      },
+      "excluded_long_rows": 7
+    }
+  },
+  "artifact_reported": "adapter",
+  "adapter_files_inspected_here": false,
+  "test_generation_evaluated": false,
+  "prediction_accuracy_verified": false,
+  "production_enabled": false
+}

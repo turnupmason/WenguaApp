@@ -1,3 +1,5 @@
+> **14B最新实机阶段：** 用户两轮LoRA已完成（train_loss0.9354、71条验证loss0.2644），尚未完成实际生成留出评测。接下来按docs/QWEN14B_FIRST_ANSWER_REVIEW_20261103.md做原模型/适配器同题对照；保留训练结果，不盲目继续加轮数。
+
 > **14B当前实机进度：** 用户回传RTX4080短跑2步训练+71条验证完成，程序state=complete；完整两轮训练/生成质量仍待观察。来源及边界见docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_gpu_smoke.json。
 
 > **当前用户授权更新：RTX4080/16GB先做Qwen3-14B。** 本机doctor实报4080总15.99GiB/空闲14.72GiB，非此前假定4090。用户已明确选14B本地首版、以后升级32B；DEFAULT_CONFIG指configs/qwen14b_v1.json，当前指南docs/QWEN14B_RTX4080_WINDOWS_V1_20261103.md。旧32B配置逐字保留且使用时显式--config；资料分组/原库/封存App不变。新增模型与所选GPU显存启动筛查，不足在下载前拒绝；筛查通过不等于实训或回答质量验证。
@@ -3537,3 +3539,14 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 用户回传Windows4080短跑日志：14,773,550,080总参数、5,242,880可训练参数（0.0355%）；2/2训练、71/71验证，训练31.4074秒，train_loss1.96933251619339，程序state=complete、production_enabled=false。根据已知程序顺序，complete在验证与适配器保存之后；未直接检查用户适配器文件。来源是用户终端回传，并非代理云端CUDA独立复现。收据docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_gpu_smoke.json，不公开用户绝对路径。
 
 当前可准确称“用户4080上的14B短跑通过”；完整两轮训练、峰值显存、验证loss、源commit及问卦生成质量未在此次日志中提供，不造数、不称全部训练完成或预测准确。PAD/BOS/EOS提示是自动对齐，程序已成功结束。下一步同一配置使用新full目录正式训练，基座缓存复用、smoke记录保留。本轮仅记录实际进展和更新指南，不改训练源码/模型配置/源数据库/封存App；新增原章0/历史事件0。
+
+
+### 2026-11-03 · 用户14B两轮正式训练完成，进入回答检查
+
+用户贴回完整run_status：state=complete、epoch2.0、训练1794.7307秒/train_loss0.9354345、71条验证eval_loss0.2643812/35.518秒，587训练（479基础+108整案）、52长记录排除。实机报告allocated峰值13.161GiB、reserved24.490GiB，高于物理15.99GiB的reserved原因未独立诊断，不当余量。环境中的false是训练前快照。模型/样本/来源SHA及汇总在docs/audits/qwen14b_rtx4080_v1_20261103/user_reported_full_training.json，来自用户终端，非代理GPU复现，原适配器文件未直读。
+
+当前可称两轮LoRA完成，不能从低验证loss称问卦准确或没有过拟合；验证多数是带资料基础阅读，未有原版同题对照或生成留出测评。真实tokenizer发现默认4参考使某天芮/天心问题超2048；新增完整参考预算选择，不截断系统/问题/盘面；仅实际发送引用可通过校验。chat保存私有原始回答/发送提示/预算/解析状态，无效JSON先留证再拒绝；新增base-only相同提示/seed对照，答案默认上限512。第一题推荐768回答预算，实际输入909/总1677已计数；不声称代理执行了14B生成。
+
+新指南docs/QWEN14B_FIRST_ANSWER_REVIEW_20261103.md。不改训练过程、模型配置、原库、分组或封存App；没有增加轮数/实现续训/更改用户模型。新增原章0/历史事件0。21项专项通过；真实官方tokenizer预算与微型CPU LoRA、完整回归/CI待本轮执行。
+
+首版回答入口本地终版验收：21专项+镜像1通过，官方14B tokenizer真实预算（source_study原输入16450→保留完整一段909，回答768，总1677≤2048）、微型随机Qwen3 CPU BF16 LoRA/保存重载均通过。全库974 tests、0 failures/0 errors/3既有skip，日志docs/audits/qwen14b_answer_review_v1_20261103/full_run。未执行代理侧14B生成；新CUDA提问/原版对照仍待用户运行，不把CPU测试当真实回答质量。训练源码流程、模型配置和已训练权重未改；新GitHub CI待本次推送核验。
