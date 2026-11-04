@@ -3601,3 +3601,7 @@ Windows发布前补验：发现core.autocrlf会令旧等待器的逐字源码哈
 
 ### 当前封存轻重回归实测 · run 41780475152
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0585edf48ea32422d92ae6e130a5f7e33b6118f4。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780475152_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41780798773
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d554281205b4ace3f38075d16d124d771afa2a77。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780798773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
