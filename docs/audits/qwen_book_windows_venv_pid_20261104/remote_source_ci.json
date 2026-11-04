@@ -1,0 +1,35 @@
+{
+  "source_sha": "876f30eddcf86fd367fd785fc7f541a42a4a8f22",
+  "qwen_run": 41924812385,
+  "windows_job": 126906302285,
+  "windows_base_tests": 55,
+  "windows_actual_venv_tests": 26,
+  "windows_actual_venv_command": "local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen_book_sweep_v2 -v",
+  "actual_venv_launcher_worker_pid_pairs": [
+    [
+      2360,
+      9136
+    ],
+    [
+      6212,
+      7064
+    ]
+  ],
+  "unequal_real_venv_pids_accepted": true,
+  "cpu_job": 126906302809,
+  "actual_cpu_workers": 6,
+  "completed_stage_recovered_without_retraining": true,
+  "old_execution_receipt_backed_up_and_upgraded": true,
+  "main_run": 41924812618,
+  "main_jobs": [
+    126906304939,
+    126906305342
+  ],
+  "all_decoded_logs_match_source_and_cleanup_without_errors": true,
+  "local_full_suite_tests": 1083,
+  "local_failures": 0,
+  "local_errors": 0,
+  "training_kernels_unchanged": true,
+  "actual_user_worker_pid_not_reported": true,
+  "actual_4080_followup_run_pending": true
+}

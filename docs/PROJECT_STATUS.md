@@ -3766,3 +3766,5 @@ PID回执修复本地1083项全量0失败/0错误，3项既有skip。26项V2控�
 
 ### 当前封存轻重回归实测 · run 41924812430
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码876f30eddcf86fd367fd785fc7f541a42a4a8f22。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41924812430_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：Qwen#41924812385 Windows job126906302285普通Python55项＋真实无pip venv26项均OK；venv实际launcher/worker PID2360/9136与6212/7064不同，修复后回执接受（不是仅模拟PID测试）。CPU job126906302809六子进程恢复已完成stage不重训、旧合同备份升级、优化器恢复均通过；主CI#41924812618双Python job126906304939/126906305342完整日志均匹配源码、无error且cleanup。证据docs/audits/qwen_book_windows_venv_pid_20261104/remote_source_ci.json。继续原run3，已成功worker的stage读取复用；原训练内核和来源不变，实际4080后续组日志待本机。
