@@ -24,11 +24,12 @@
     "configs/qwen14b_book_sweep_v2.json": "d10f2293d91d93ee8e40bea8e05e53887c1770e79662290040015a1446a3038e",
     "src/wengua/qwen_book_continuous_v1.py": "c5ac22ec5d178789faccc8f912a604e71331a36d5f627fbd0934bc6099822283",
     "src/wengua/qwen_book_sweep_v2.py": "37b0375b8327c5d5a2282b258da79d5163f4a7e11db84085bb8708784dee2b12",
-    "scripts/qwen_book_sweep_v2.py": "7495cb415622b7453dc9472dd9cb8d4f6f62d18dea778bfdd874c438836e1991",
-    "scripts/check_qwen_book_continuous_training.py": "e5ee1f4dfcbb5638891db06f1e84a47577ff057a0c119d494babf39c3ccfe122",
-    "tests/test_qwen_book_sweep_v2.py": "c64a374da0a7cfa6b7bd394fdc0717205fbe757556f4b53d695be7acce261af1",
+    "scripts/qwen_book_sweep_v2.py": "a38d4b2b89e4daafd324e411c9edac5ab92defa396d3b84fb4a4364a1d7ac341",
+    "scripts/check_qwen_book_continuous_training.py": "3eeece62c5732f6446b16f930ff690686226299e4fcd5fbd5d3071c779097a3c",
+    "tests/test_qwen_book_sweep_v2.py": "0e67f20e41bbd01804e9b1e4e112629510077f40f056d84825db170e3aab288b",
     "run_qwen_book_sweep_v2.py": "3b0775896584afe9a43c38e072008ae17b3730947e61f26f669e4eb759963727",
-    "run_book_research_v2_windows.cmd": "b5ddc481990f74468ce2de5b0377428ffdd1fc9b05f43d51347fb430da29858d"
+    "run_book_research_v2_windows.cmd": "268eeeb1f752facae472aea87651d0c4e299a4732d41b7ea48b60de8e4deac68",
+    "src/wengua/qwen_book_loop_v3.py": "9eb0e2f7f1e262f7cc3384042db82f3bbe42efcf046582c5add34042523ca8ee"
   },
   "cpu_audit": "docs/audits/qwen_book_sweep_v2_20261104/tiny_integration.json",
   "local_full_suite": {
@@ -37,5 +38,12 @@
     "errors": 0,
     "existing_skips": 3,
     "audit": "docs/audits/qwen_book_sweep_v2_20261104/final_full_run/results.json"
+  },
+  "generation_precision_fix": {
+    "cuda_autocast": true,
+    "cpu_precision_unchanged": true,
+    "old_run1_preserved": true,
+    "current_launcher_output": "local/qwen_book_sweep_v2/run2_dtype_fix",
+    "actual_4080_fix_verified": false
   }
 }

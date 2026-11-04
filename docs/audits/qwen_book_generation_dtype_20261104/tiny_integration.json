@@ -1,0 +1,23 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_continuous_optimizer_staged_sweep",
+  "two_epochs_same_adam_object_and_monotonic_adam_scheduler_steps": true,
+  "partial_epoch_no_false_validation_or_early_stop": true,
+  "mixed_bfloat16_hidden_float32_head_reproduced_and_autocast_fixed_on_cpu": true,
+  "interrupted_and_uninterrupted_final_adapter_tensors_match": true,
+  "explicit_checkpoint_restored_optimizer_step_1": true,
+  "power_cut_before_epoch_validation_recovers_evaluation_and_matches_uninterrupted_weights": true,
+  "new_trials_start_step_zero_empty_optimizer": true,
+  "all_seven_projection_modules_exercised": true,
+  "four_format_macro_validation_losses_recorded": true,
+  "two_contexts_byte_identical_common_validation_and_test": true,
+  "long_validation_base_and_selected_generation_path_exercised": true,
+  "adaptive_stages_reuse_identical_configuration_without_retraining": true,
+  "one_final_selected_test_after_all_stages": true,
+  "completed_resume_does_not_reload_or_retest": true,
+  "power_cut_after_final_checkpoint_no_extra_update": true,
+  "official_tokenizer": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "real_14b_weights_loaded": false,
+  "cuda_nf4_tested": false
+}

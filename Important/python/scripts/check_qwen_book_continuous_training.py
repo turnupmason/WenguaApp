@@ -22,6 +22,28 @@ def main():
     tok.pad_token=tok.pad_token or tok.eos_token
     base=Qwen3ForCausalLM(Qwen3Config(vocab_size=len(tok),hidden_size=32,intermediate_size=64,
         num_hidden_layers=1,num_attention_heads=2,num_key_value_heads=1,head_dim=16,max_position_embeddings=1024))
+    # Reproduce the reported output-head dtype mismatch with real Qwen3 ops.
+    # CPU bf16 exercises the arithmetic; mocked CUDA dispatch is not a GPU test.
+    from contextlib import nullcontext
+    from types import SimpleNamespace
+    mixed=deepcopy(base).to(torch.bfloat16).eval();mixed.lm_head.float()
+    inputs=torch.tensor([[1,2,3]])
+    try:
+        with torch.inference_mode():mixed.generate(inputs,max_new_tokens=1,do_sample=False)
+    except RuntimeError as error:
+        assert 'dtype' in str(error) or 'scalar type' in str(error),str(error)
+    else:raise AssertionError('Mixed output head fixture must fail without autocast')
+    real_autocast=torch.autocast
+    def cpu_dispatch(*args,**kwargs):
+        if kwargs.get('device_type')=='cuda':
+            assert kwargs['dtype']==torch.bfloat16
+            return real_autocast(device_type='cpu',dtype=kwargs['dtype'])
+        return real_autocast(*args,**kwargs)
+    with patch.object(torch.cuda,'device',return_value=nullcontext()),patch.object(torch.cuda,'is_bf16_supported',return_value=True),patch.object(torch,'autocast',side_effect=cpu_dispatch):
+        with book.generation_autocast(SimpleNamespace(device=torch.device('cuda:0'))),torch.inference_mode():
+            generated=mixed.generate(inputs,max_new_tokens=1,do_sample=False)
+    assert generated.shape[-1]==4
+    del mixed
     loads=[]
     def factory():loads.append(1);return tok,deepcopy(base),torch.float32
     records=[];units={};formats=['foundation_qa','conditional_dialogue','chart_application','complete_case']
@@ -112,6 +134,7 @@ def main():
         preview.parent.mkdir(parents=True,exist_ok=True);preview.write_bytes((root/'results.html').read_bytes())
     receipt={'state':'passed','test':'tiny_random_qwen3_cpu_continuous_optimizer_staged_sweep',
         'two_epochs_same_adam_object_and_monotonic_adam_scheduler_steps':True,'partial_epoch_no_false_validation_or_early_stop':True,
+        'mixed_bfloat16_hidden_float32_head_reproduced_and_autocast_fixed_on_cpu':True,
         'interrupted_and_uninterrupted_final_adapter_tensors_match':True,'explicit_checkpoint_restored_optimizer_step_1':True,
         'power_cut_before_epoch_validation_recovers_evaluation_and_matches_uninterrupted_weights':True,
         'new_trials_start_step_zero_empty_optimizer':True,'all_seven_projection_modules_exercised':True,

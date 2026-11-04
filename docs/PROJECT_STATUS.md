@@ -3718,3 +3718,10 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 连续SFT V2同源码远端最终验收：adcb245987713fd8f9193d6bf9e5e297a592a9be，Qwen#41898463745，Windows job126814184923完整日志43项OK、新V2计划/帮助/CMD缺环境阻断均通过；CPU job126814184520完整日志continuous_optimizer_staged_sweep passed，跨epoch同Adam与scheduler、半epoch恢复张量一致、epoch末验证前断电补验后张量一致、最终步收尾不多更新、长验证原模/候选生成均实跑。实际下载产物13357706411，ZIP SHA256 5c0260c31ebf044118cb5ce9b863ea93636283d226a4b90a3c7b60855fdc4669，5份验收JSON；不是用queued快照或旧源码结果充数。主CI#41898463885双Python job126814185958/126814186482完整日志匹配adcb2459且无进程错误。证据docs/audits/qwen_book_sweep_v2_20261104/remote_source_ci.json，首轮失败日志继续保留，原断言未删除/skip。14B/4080实际NF4仍需用户本机，云端只实跑官方tokenizer与微型CPU模型。当前本机入口run_book_research_v2_windows.cmd，结果local/qwen_book_sweep_v2/run1/results.html。
+
+
+### 2026-11-04 · 4080独立生成Float/BFloat16修复
+
+用户实机两步探测训练已完成，随后smoke_generation在lm_head因Float/BFloat16冲突退出，尚未正式训练。QLoRA准备提升未量化输出层为float32，独立生成缺少Trainer的autocast。generate_rows现按当前CUDA设备bf16支持选择bf16或fp16 autocast，CPU保持原精度；无修改书源/教材/LoRA结构。旧run1保存，入口改为run2_dtype_fix，新代码合同从官方基模重做探测，缓存权重复用；不迁移或篡改旧检查点合同。回归覆盖CUDA bf16/fp16分派和CPU不变、真实微型Qwen3混合输出层先复现失败再验证修复，CPU不是4080 NF4验证，修复后实机日志待用户回传。首个CPU夹具mock漏转发enabled参数的失败日志保留。
+
+生成精度修复本地验收：1072项全量测试0失败/0错误，3项既有skip；45项针对性合同测试通过。真实微型Qwen3 CPU混合头复现与修复、连续优化器及恢复张量一致性全通过。证据docs/audits/qwen_book_generation_dtype_20261104/。远端同源码CI随后核对；不能称4080修复后已经实跑。

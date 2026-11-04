@@ -323,6 +323,19 @@ def answer_diagnostic(answer,expected):
         'literal_character_f1':2*overlap/(len(answer)+len(expected) or 1),'semantic_correctness_verified':False}
 
 
+def generation_autocast(model):
+    """Match CUDA Trainer precision when generating outside Accelerate.
+
+    k-bit preparation promotes unquantized weights (including lm_head) to
+    float32; quantized layers can still emit bf16/fp16 hidden states.
+    """
+    import torch
+    if model.device.type!='cuda':return nullcontext()
+    with torch.cuda.device(model.device):
+        dtype=torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+    return torch.autocast(device_type='cuda',dtype=dtype)
+
+
 def generate_rows(model,tokenizer,rows,path,c,deadline,variant,disable_adapter=False):
     import torch
     from transformers import set_seed
@@ -346,7 +359,7 @@ def generate_rows(model,tokenizer,rows,path,c,deadline,variant,disable_adapter=F
             tokens=tokenizer.apply_chat_template(prompt_messages,tokenize=True,add_generation_prompt=True,enable_thinking=False)
             if len(tokens)+c['eval_max_new_tokens']>c['inference_max_context']:raise ValueError('Unchecked generation length')
             prompt=torch.tensor([tokens],device=model.device);set_seed(c['seed'])
-            with (model.disable_adapter() if disable_adapter else nullcontext()),torch.inference_mode():
+            with (model.disable_adapter() if disable_adapter else nullcontext()),torch.inference_mode(),generation_autocast(model):
                 ids=model.generate(input_ids=prompt,attention_mask=torch.ones_like(prompt),do_sample=False,
                     max_new_tokens=c['eval_max_new_tokens'],pad_token_id=tokenizer.pad_token_id,
                     eos_token_id=tokenizer.eos_token_id,use_cache=True)

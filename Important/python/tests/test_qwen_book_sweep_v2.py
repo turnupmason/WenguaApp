@@ -4,6 +4,9 @@ from tempfile import TemporaryDirectory
 import time
 import unittest
 from unittest.mock import patch
+from unittest.mock import Mock
+from types import SimpleNamespace
+import sys
 
 from src.wengua import qwen_book_continuous_v1 as engine
 from src.wengua import qwen_book_sweep_v2 as sweep
@@ -11,6 +14,18 @@ from src.wengua.qwen_book_continuous_v1 import book
 
 
 class ContinuousStagedContracts(unittest.TestCase):
+    def test_generation_precision_cuda_bf16_fp16_and_cpu_noop(self):
+        torch=Mock();torch.cuda.device.return_value.__enter__=Mock()
+        torch.cuda.device.return_value.__exit__=Mock(return_value=False)
+        with patch.dict(sys.modules,{'torch':torch}):
+            for supported,dtype in [(True,torch.bfloat16),(False,torch.float16)]:
+                torch.cuda.is_bf16_supported.return_value=supported
+                book.generation_autocast(SimpleNamespace(device=SimpleNamespace(type='cuda')))
+                torch.autocast.assert_called_with(device_type='cuda',dtype=dtype)
+            torch.autocast.reset_mock()
+            with book.generation_autocast(SimpleNamespace(device=SimpleNamespace(type='cpu'))):pass
+            torch.autocast.assert_not_called()
+
     def setUp(self):
         (book.ROOT/'local').mkdir(exist_ok=True);self.spec=book.read_json(sweep.SPEC)
 
