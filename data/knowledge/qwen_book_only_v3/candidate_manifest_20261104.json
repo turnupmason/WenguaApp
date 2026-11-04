@@ -1,0 +1,153 @@
+{
+  "schema": "wengua_book_only_curriculum_v3",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "source_books": [
+    "shenqi",
+    "kaiwu"
+  ],
+  "source_chapters": 43,
+  "original_cases": 194,
+  "original_author_paragraphs": 1008,
+  "author_paragraphs_located": 1008,
+  "unlocated_registry_fields_excluded_from_training": true,
+  "cases_with_located_judgment_parts": 187,
+  "source_units": 4843,
+  "core_tasks": 5250,
+  "core_formats": {
+    "foundation_qa": 1068,
+    "conditional_dialogue": 1093,
+    "chart_application": 2873,
+    "complete_case": 216
+  },
+  "core_tasks_by_type": {
+    "book_concept": 1068,
+    "book_conditions": 430,
+    "book_condition_followup": 430,
+    "source_grounded_correction": 210,
+    "domain_original_workflow": 23,
+    "printed_star_location": 1435,
+    "author_inference_completion": 295,
+    "author_case_conditions": 430,
+    "author_evidence_organization": 713,
+    "complete_author_case_lesson": 191,
+    "explicit_initial_author_response": 25
+  },
+  "core_split_counts": {
+    "train": 4522,
+    "validation": 429,
+    "test": 299
+  },
+  "candidate_dialogues": 1000000,
+  "candidate_formats": {
+    "foundation_qa": 200000,
+    "conditional_dialogue": 300000,
+    "chart_application": 300000,
+    "complete_case": 200000
+  },
+  "candidate_split_counts": {
+    "train": 853309,
+    "validation": 92828,
+    "test": 53863
+  },
+  "candidate_id_sequence_sha256": "40fd65541768d8a2aa370bb67019c92a4ed0db815d98b799e9c5cdc642c821f8",
+  "supervised_turn_views": 5680,
+  "materialized_full_dialogues": true,
+  "wording_generation": "task_specific_semantic_rephrasing_plus_finite_expression_templates",
+  "million_rows_are_not_a_million_distinct_reasoning_tasks": true,
+  "old_qa_or_engine_outputs_read": false,
+  "non_book_supplements_used": false,
+  "legacy_score_teachers_used": false,
+  "old_adapters_allowed": false,
+  "initialization": "official Qwen base only",
+  "paraphrases_are_not_independent_cases": true,
+  "variant_weights_sum_to_one_per_core": true,
+  "all_variants_same_group_and_split_as_core": true,
+  "natural_chinese_assistant_output": true,
+  "semantic_review_complete": false,
+  "all_variants_token_audited": false,
+  "training_started": false,
+  "auto_training_enabled": false,
+  "real_world_prediction_validated": false,
+  "source_coordinate_index_contains_only_source_boundaries": true,
+  "public_coordinate_index_rebuild_matches_all_core_records": true,
+  "materialized_separate_split_files": true,
+  "independent_readback_audit": {
+    "all_materialized_dialogues_read_back": 1000000,
+    "all_indexed_pool_rows_read_back": 1000000,
+    "all_core_tasks_referenced": 5250,
+    "source_books_only": true,
+    "all_chapter_sha256_match": 43,
+    "all_author_originals_identical": 1008,
+    "all_case_ids_preserved": 194,
+    "source_group_conflicts": 0,
+    "legacy_teacher_markers": 0,
+    "answers_and_full_context_match_core": true,
+    "book_judgment_word_tasks_preserved": 212,
+    "professional_semantic_review_complete": false,
+    "million_variant_token_audit_complete": false
+  },
+  "source_location_issue_counts": {
+    "unlocated_original_retained_in_archive": 12
+  },
+  "token_audit": {
+    "tokenizer": "Qwen/Qwen3-14B",
+    "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+    "supervised_turn_views": 5680,
+    "accepted_by_limit_and_split": {
+      "2048": {
+        "train": 4815,
+        "validation": 473,
+        "test": 301
+      },
+      "4096": {
+        "train": 4876,
+        "validation": 481,
+        "test": 305
+      }
+    },
+    "accepted_by_limit_and_format": {
+      "2048": {
+        "foundation_qa": 1068,
+        "conditional_dialogue": 1507,
+        "chart_application": 2873,
+        "complete_case": 141
+      },
+      "4096": {
+        "foundation_qa": 1068,
+        "conditional_dialogue": 1517,
+        "chart_application": 2873,
+        "complete_case": 204
+      }
+    },
+    "no_truncation": true,
+    "all_assistant_prefixes_match": true,
+    "million_variants_individually_token_audited": false,
+    "actual_14b_gpu_memory_fit_checked": false
+  },
+  "status": "book_only_four_format_candidate_materialized_not_training_release",
+  "training_permitted": false,
+  "created_date": "2026-11-04",
+  "documentation": "docs/QWEN_BOOK_ONLY_DATASET_V3_20261104.md",
+  "private_artifacts": {
+    "Wengua_Book_Only_5250_Core_and_All_194_Cases.xlsx": {
+      "bytes": 2596428,
+      "sha256": "e34e4c6cfefb22a5bdb68779d8519177e07a93e06416259ad64051b1ae65a017"
+    },
+    "Wengua_Book_Only_Million_Candidate_Data.zip": {
+      "bytes": 134836017,
+      "sha256": "8c5707dfd2dfff263be57a7f24dd35a254b9df95ee6af839cceb11e17ed4beda"
+    },
+    "million_dialogues.jsonl.gz": {
+      "bytes": 127347615,
+      "sha256": "eabb72a13ed9a418fdf5d4f26fc0a19aef1d3af6fe9c8aac6d52b1333c22f22b"
+    },
+    "core_tasks.jsonl.gz": {
+      "bytes": 1996519,
+      "sha256": "29377294d00def5ae56aca5915e6e85e33542fb8434eaaf3cd159424268a7a39"
+    },
+    "manifest.json": {
+      "bytes": 10836,
+      "sha256": "1712001476eef350ab63aa9d1066a69dbe95d35c04d9b87b061923519d8f8d89"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "tokenizer": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "supervised_turn_views": 5680,
+  "accepted_by_limit_and_split": {
+    "2048": {
+      "train": 4815,
+      "validation": 473,
+      "test": 301
+    },
+    "4096": {
+      "train": 4876,
+      "validation": 481,
+      "test": 305
+    }
+  },
+  "accepted_by_limit_and_format": {
+    "2048": {
+      "foundation_qa": 1068,
+      "conditional_dialogue": 1507,
+      "chart_application": 2873,
+      "complete_case": 141
+    },
+    "4096": {
+      "foundation_qa": 1068,
+      "conditional_dialogue": 1517,
+      "chart_application": 2873,
+      "complete_case": 204
+    }
+  },
+  "no_truncation": true,
+  "all_assistant_prefixes_match": true,
+  "million_variants_individually_token_audited": false,
+  "actual_14b_gpu_memory_fit_checked": false
+}

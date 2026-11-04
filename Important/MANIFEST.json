@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "abfd6fd39ec6ca2639508bfde2d48aa2c338d263"
+      "sha": "fd66ed999af508df268095388aa58ebf4fb1fc3f"
     },
     {
       "platform": "python",
@@ -1586,6 +1586,36 @@
       "canonical": "data/knowledge/qwen_application_v3/source_only_recovery_audit_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen_application_v3/source_only_recovery_audit_20261104.json",
       "sha": "3427ed0fc71e4741bdd38516b2dcc9acb5dcd2f5"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_book_dataset_v3.py",
+      "snapshot": "Important/python/engine/qwen_book_dataset_v3.py",
+      "sha": "d4e29384c2c9b68bfc02b078cde8cfe219612ee2"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/qwen_book_dataset.py",
+      "snapshot": "Important/python/scripts/qwen_book_dataset.py",
+      "sha": "329ca08b9a880c12e7f4cc7f7076429ed8f90dd7"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_book_dataset_v3.py",
+      "snapshot": "Important/python/tests/test_qwen_book_dataset_v3.py",
+      "sha": "78395a3c1773c2ce4f13aa0eee736e4d884d6385"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_book_only_v3/case_source_coordinates_20261104.json",
+      "snapshot": "Important/python/data/knowledge/qwen_book_only_v3/case_source_coordinates_20261104.json",
+      "sha": "ef88ff5d2934b51f2c59d30705e51ac84d4993b5"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_book_only_v3/candidate_manifest_20261104.json",
+      "snapshot": "Important/python/data/knowledge/qwen_book_only_v3/candidate_manifest_20261104.json",
+      "sha": "222074e6bb67e2080f15ab8e431f261e847cf846"
     }
   ]
 }

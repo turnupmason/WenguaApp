@@ -1,0 +1,15 @@
+{
+  "all_materialized_dialogues_read_back": 1000000,
+  "all_indexed_pool_rows_read_back": 1000000,
+  "all_core_tasks_referenced": 5250,
+  "source_books_only": true,
+  "all_chapter_sha256_match": 43,
+  "all_author_originals_identical": 1008,
+  "all_case_ids_preserved": 194,
+  "source_group_conflicts": 0,
+  "legacy_teacher_markers": 0,
+  "answers_and_full_context_match_core": true,
+  "book_judgment_word_tasks_preserved": 212,
+  "professional_semantic_review_complete": false,
+  "million_variant_token_audit_complete": false
+}

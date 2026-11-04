@@ -1,0 +1,2184 @@
+{
+  "5": [
+    {
+      "case_id": "shenqi.health.19960316.self_surgery",
+      "lines": [
+        15,
+        67
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960727.father_illness",
+      "lines": [
+        69,
+        109
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960509.nephew_discharge",
+      "lines": [
+        111,
+        154
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960523.aunt_illness",
+      "lines": [
+        156,
+        197
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "lines": [
+        199,
+        244
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "lines": [
+        246,
+        290
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960316.self_surgery",
+      "lines": [
+        15,
+        67
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960727.father_illness",
+      "lines": [
+        69,
+        109
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960509.nephew_discharge",
+      "lines": [
+        111,
+        154
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960523.aunt_illness",
+      "lines": [
+        156,
+        197
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19961102.on_site_health",
+      "lines": [
+        199,
+        244
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19971227.spouse_travel_for_treatment",
+      "lines": [
+        246,
+        290
+      ]
+    }
+  ],
+  "9": [
+    {
+      "case_id": "shenqi.employment.graduation_first_job",
+      "lines": [
+        21,
+        54
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.mother_son_ministries",
+      "lines": [
+        56,
+        105
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.military_officer_removed",
+      "lines": [
+        107,
+        140
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.du_self_transfer_telecom",
+      "lines": [
+        142,
+        181
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.village_party_secretary_election",
+      "lines": [
+        183,
+        228
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.graduation_first_job",
+      "lines": [
+        21,
+        54
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.mother_son_ministries",
+      "lines": [
+        56,
+        105
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.military_officer_removed",
+      "lines": [
+        107,
+        140
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.du_self_transfer_telecom",
+      "lines": [
+        142,
+        181
+      ]
+    },
+    {
+      "case_id": "shenqi.employment.village_party_secretary_election",
+      "lines": [
+        183,
+        228
+      ]
+    }
+  ],
+  "10": [
+    {
+      "case_id": "shenqi.business.lease_restaurant",
+      "lines": [
+        65,
+        102
+      ]
+    },
+    {
+      "case_id": "shenqi.business.foreign_financed_mall",
+      "lines": [
+        103,
+        140
+      ]
+    },
+    {
+      "case_id": "shenqi.business.mall_opening_profit",
+      "lines": [
+        141,
+        196
+      ]
+    },
+    {
+      "case_id": "shenqi.business.retail_unit_investment",
+      "lines": [
+        197,
+        233
+      ]
+    },
+    {
+      "case_id": "shenqi.business.joint_venture_factory",
+      "lines": [
+        234,
+        269
+      ]
+    },
+    {
+      "case_id": "shenqi.business.network_marketing_supplement",
+      "lines": [
+        270,
+        303
+      ]
+    },
+    {
+      "case_id": "shenqi.business.mall_property_rental",
+      "lines": [
+        304,
+        357
+      ]
+    },
+    {
+      "case_id": "shenqi.business.art_purchase_resale",
+      "lines": [
+        358,
+        417
+      ]
+    },
+    {
+      "case_id": "shenqi.business.fertilizer_factory_recovery",
+      "lines": [
+        418,
+        463
+      ]
+    },
+    {
+      "case_id": "shenqi.business.bank_loan_application",
+      "lines": [
+        464,
+        507
+      ]
+    },
+    {
+      "case_id": "shenqi.business.coal_brokerage_flood",
+      "lines": [
+        508,
+        543
+      ]
+    },
+    {
+      "case_id": "shenqi.business.charity_prize_draw",
+      "lines": [
+        544,
+        644
+      ]
+    },
+    {
+      "case_id": "shenqi.business.debt_collected",
+      "lines": [
+        645,
+        680
+      ]
+    },
+    {
+      "case_id": "shenqi.business.debt_collection_failed",
+      "lines": [
+        681,
+        717
+      ]
+    },
+    {
+      "case_id": "shenqi.business.lease_restaurant",
+      "lines": [
+        65,
+        102
+      ]
+    },
+    {
+      "case_id": "shenqi.business.foreign_financed_mall",
+      "lines": [
+        103,
+        140
+      ]
+    },
+    {
+      "case_id": "shenqi.business.mall_opening_profit",
+      "lines": [
+        141,
+        196
+      ]
+    },
+    {
+      "case_id": "shenqi.business.retail_unit_investment",
+      "lines": [
+        197,
+        233
+      ]
+    },
+    {
+      "case_id": "shenqi.business.joint_venture_factory",
+      "lines": [
+        234,
+        269
+      ]
+    },
+    {
+      "case_id": "shenqi.business.network_marketing_supplement",
+      "lines": [
+        270,
+        303
+      ]
+    },
+    {
+      "case_id": "shenqi.business.mall_property_rental",
+      "lines": [
+        304,
+        357
+      ]
+    },
+    {
+      "case_id": "shenqi.business.art_purchase_resale",
+      "lines": [
+        358,
+        417
+      ]
+    },
+    {
+      "case_id": "shenqi.business.fertilizer_factory_recovery",
+      "lines": [
+        418,
+        463
+      ]
+    },
+    {
+      "case_id": "shenqi.business.bank_loan_application",
+      "lines": [
+        464,
+        507
+      ]
+    },
+    {
+      "case_id": "shenqi.business.coal_brokerage_flood",
+      "lines": [
+        508,
+        543
+      ]
+    },
+    {
+      "case_id": "shenqi.business.charity_prize_draw",
+      "lines": [
+        544,
+        644
+      ]
+    },
+    {
+      "case_id": "shenqi.business.debt_collected",
+      "lines": [
+        645,
+        680
+      ]
+    },
+    {
+      "case_id": "shenqi.business.debt_collection_failed",
+      "lines": [
+        681,
+        717
+      ]
+    }
+  ],
+  "11": [
+    {
+      "case_id": "shenqi.travel.flight_brother_scheduled_departure",
+      "lines": [
+        23,
+        55
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.south_business_trip",
+      "lines": [
+        56,
+        90
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.friend_car_trip",
+      "lines": [
+        91,
+        147
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.italy_trip_and_later_reused_chart",
+      "lines": [
+        148,
+        246
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.family_lake_tour",
+      "lines": [
+        247,
+        283
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.germany_business_trip_two_casts",
+      "lines": [
+        284,
+        350
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.south_business_trip",
+      "lines": [
+        56,
+        90
+      ]
+    },
+    {
+      "case_id": "shenqi.travel.family_lake_tour",
+      "lines": [
+        247,
+        283
+      ]
+    }
+  ],
+  "12": [
+    {
+      "case_id": "shenqi.missing.brother_fisherman",
+      "lines": [
+        17,
+        58
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.student_two_casts",
+      "lines": [
+        59,
+        134
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.high_school_girl",
+      "lines": [
+        135,
+        172
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.kidnapped_toddler",
+      "lines": [
+        173,
+        208
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.daughter_wrong_first_call",
+      "lines": [
+        209,
+        248
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.nephew_return",
+      "lines": [
+        249,
+        286
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.missing_girl_investigation",
+      "lines": [
+        287,
+        330
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.teenage_nephew_return",
+      "lines": [
+        331,
+        370
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.niece_wrong_first_call",
+      "lines": [
+        371,
+        416
+      ]
+    },
+    {
+      "case_id": "shenqi.missing.taxi_driver_student_wrong_teacher_revised",
+      "lines": [
+        417,
+        477
+      ]
+    }
+  ],
+  "13": [
+    {
+      "case_id": "shenqi.lost_property.case01",
+      "lines": [
+        16,
+        49
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case02",
+      "lines": [
+        50,
+        89
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case03",
+      "lines": [
+        90,
+        123
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case04",
+      "lines": [
+        124,
+        161
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case05",
+      "lines": [
+        162,
+        199
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case06",
+      "lines": [
+        200,
+        255
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case07",
+      "lines": [
+        256,
+        309
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case08",
+      "lines": [
+        310,
+        355
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case01",
+      "lines": [
+        16,
+        49
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case02",
+      "lines": [
+        50,
+        89
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case03",
+      "lines": [
+        90,
+        123
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case04",
+      "lines": [
+        124,
+        161
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case05",
+      "lines": [
+        162,
+        199
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case06",
+      "lines": [
+        200,
+        255
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case07",
+      "lines": [
+        256,
+        309
+      ]
+    },
+    {
+      "case_id": "shenqi.lost_property.case08",
+      "lines": [
+        310,
+        355
+      ]
+    }
+  ],
+  "14": [
+    {
+      "case_id": "shenqi.criminal_case.case01",
+      "lines": [
+        29,
+        63
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case02",
+      "lines": [
+        64,
+        112
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case03",
+      "lines": [
+        113,
+        149
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case04",
+      "lines": [
+        150,
+        228
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case05",
+      "lines": [
+        229,
+        261
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case01",
+      "lines": [
+        29,
+        63
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case02",
+      "lines": [
+        64,
+        112
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case03",
+      "lines": [
+        113,
+        149
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case04",
+      "lines": [
+        150,
+        228
+      ]
+    },
+    {
+      "case_id": "shenqi.criminal_case.case05",
+      "lines": [
+        229,
+        261
+      ]
+    }
+  ],
+  "15": [
+    {
+      "case_id": "shenqi.litigation.case01",
+      "lines": [
+        19,
+        59
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case02",
+      "lines": [
+        60,
+        92
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case03",
+      "lines": [
+        93,
+        133
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case04",
+      "lines": [
+        134,
+        178
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case05",
+      "lines": [
+        179,
+        223
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case06",
+      "lines": [
+        224,
+        267
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case01",
+      "lines": [
+        19,
+        59
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case02",
+      "lines": [
+        60,
+        92
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case03",
+      "lines": [
+        93,
+        133
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case04",
+      "lines": [
+        134,
+        178
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case05",
+      "lines": [
+        179,
+        223
+      ]
+    },
+    {
+      "case_id": "shenqi.litigation.case06",
+      "lines": [
+        224,
+        267
+      ]
+    }
+  ],
+  "16": [
+    {
+      "case_id": "shenqi.sports.case01",
+      "lines": [
+        11,
+        47
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case02",
+      "lines": [
+        48,
+        88
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case03",
+      "lines": [
+        89,
+        135
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case04",
+      "lines": [
+        136,
+        166
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case05",
+      "lines": [
+        167,
+        203
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case06",
+      "lines": [
+        204,
+        238
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case07",
+      "lines": [
+        239,
+        276
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case01",
+      "lines": [
+        11,
+        47
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case02",
+      "lines": [
+        48,
+        88
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case03",
+      "lines": [
+        89,
+        135
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case04",
+      "lines": [
+        136,
+        166
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case05",
+      "lines": [
+        167,
+        203
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case06",
+      "lines": [
+        204,
+        238
+      ]
+    },
+    {
+      "case_id": "shenqi.sports.case07",
+      "lines": [
+        239,
+        276
+      ]
+    }
+  ],
+  "17": [
+    {
+      "case_id": "shenqi.military.case01",
+      "lines": [
+        29,
+        71
+      ]
+    },
+    {
+      "case_id": "shenqi.military.case02",
+      "lines": [
+        72,
+        183
+      ]
+    },
+    {
+      "case_id": "shenqi.military.case01",
+      "lines": [
+        29,
+        71
+      ]
+    },
+    {
+      "case_id": "shenqi.military.case02",
+      "lines": [
+        72,
+        183
+      ]
+    }
+  ],
+  "18": [
+    {
+      "case_id": "shenqi.weather.case01",
+      "lines": [
+        17,
+        43
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case02",
+      "lines": [
+        44,
+        72
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case03",
+      "lines": [
+        73,
+        101
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case04",
+      "lines": [
+        102,
+        129
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case05",
+      "lines": [
+        130,
+        156
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case01",
+      "lines": [
+        17,
+        43
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case02",
+      "lines": [
+        44,
+        72
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case03",
+      "lines": [
+        73,
+        101
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case04",
+      "lines": [
+        102,
+        129
+      ]
+    },
+    {
+      "case_id": "shenqi.weather.case05",
+      "lines": [
+        130,
+        156
+      ]
+    }
+  ],
+  "19": [
+    {
+      "case_id": "shenqi.geography.case01",
+      "lines": [
+        15,
+        49
+      ]
+    },
+    {
+      "case_id": "shenqi.geography.case02",
+      "lines": [
+        51,
+        81
+      ]
+    },
+    {
+      "case_id": "shenqi.geography.case01",
+      "lines": [
+        15,
+        49
+      ]
+    },
+    {
+      "case_id": "shenqi.geography.case02",
+      "lines": [
+        51,
+        81
+      ]
+    }
+  ],
+  "20": [
+    {
+      "case_id": "shenqi.life.case01",
+      "lines": [
+        30,
+        81
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case02",
+      "lines": [
+        83,
+        156
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case03",
+      "lines": [
+        158,
+        191
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case04",
+      "lines": [
+        193,
+        221
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case05",
+      "lines": [
+        223,
+        273
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case01",
+      "lines": [
+        30,
+        81
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case02",
+      "lines": [
+        83,
+        156
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case03",
+      "lines": [
+        158,
+        191
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case04",
+      "lines": [
+        193,
+        221
+      ]
+    },
+    {
+      "case_id": "shenqi.life.case05",
+      "lines": [
+        223,
+        273
+      ]
+    }
+  ],
+  "21": [
+    {
+      "case_id": "shenqi.misc.case01",
+      "lines": [
+        5,
+        109
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case02",
+      "lines": [
+        110,
+        142
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case03",
+      "lines": [
+        143,
+        181
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case04",
+      "lines": [
+        182,
+        248
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case05",
+      "lines": [
+        249,
+        280
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case01",
+      "lines": [
+        5,
+        109
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case02",
+      "lines": [
+        110,
+        142
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case03",
+      "lines": [
+        143,
+        181
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case04",
+      "lines": [
+        182,
+        248
+      ]
+    },
+    {
+      "case_id": "shenqi.misc.case05",
+      "lines": [
+        249,
+        280
+      ]
+    }
+  ],
+  "28": [
+    {
+      "case_id": "kaiwu.hot.clinton",
+      "lines": [
+        5,
+        100
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.nato",
+      "lines": [
+        101,
+        170
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.river_jump",
+      "lines": [
+        171,
+        254
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.apocalypse",
+      "lines": [
+        255,
+        308
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.women_world_cup",
+      "lines": [
+        309,
+        378
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.rail_xinle_1998",
+      "lines": [
+        379,
+        418
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.rail_xingtai_1999",
+      "lines": [
+        419,
+        456
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.world_outlook_2000",
+      "lines": [
+        457,
+        498
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.taiwan_2000",
+      "lines": [
+        499,
+        556
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.beijing_2008",
+      "lines": [
+        557,
+        604
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.beijing_2008",
+      "lines": [
+        851,
+        913
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.us_election_2000",
+      "lines": [
+        605,
+        740
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.israel_2001",
+      "lines": [
+        741,
+        778
+      ]
+    },
+    {
+      "case_id": "kaiwu.hot.shijiazhuang_2001",
+      "lines": [
+        779,
+        850
+      ]
+    }
+  ],
+  "29": [
+    {
+      "case_id": "kaiwu.marriage.case01",
+      "lines": [
+        5,
+        46
+      ]
+    },
+    {
+      "case_id": "kaiwu.marriage.case02",
+      "lines": [
+        47,
+        94
+      ]
+    },
+    {
+      "case_id": "kaiwu.marriage.case03",
+      "lines": [
+        95,
+        136
+      ]
+    },
+    {
+      "case_id": "kaiwu.marriage.case04",
+      "lines": [
+        137,
+        182
+      ]
+    },
+    {
+      "case_id": "kaiwu.marriage.case05",
+      "lines": [
+        183,
+        250
+      ]
+    },
+    {
+      "case_id": "kaiwu.marriage.case06",
+      "lines": [
+        251,
+        305
+      ]
+    }
+  ],
+  "30": [
+    {
+      "case_id": "kaiwu.employment.19960514.publisher_wife_transfer",
+      "lines": [
+        3,
+        35
+      ]
+    },
+    {
+      "case_id": "kaiwu.employment.1998.supply_cooperative_director",
+      "lines": [
+        37,
+        76
+      ]
+    },
+    {
+      "case_id": "kaiwu.employment.19971218.zhang_application_and_accident",
+      "lines": [
+        77,
+        150
+      ]
+    },
+    {
+      "case_id": "kaiwu.employment.19960514.publisher_wife_transfer",
+      "lines": [
+        3,
+        35
+      ]
+    },
+    {
+      "case_id": "kaiwu.employment.1998.supply_cooperative_director",
+      "lines": [
+        37,
+        76
+      ]
+    },
+    {
+      "case_id": "kaiwu.employment.19971218.zhang_application_and_accident",
+      "lines": [
+        77,
+        150
+      ]
+    }
+  ],
+  "32": [
+    {
+      "case_id": "kaiwu.missing.19980409.zhao_niece",
+      "lines": [
+        3,
+        60
+      ]
+    },
+    {
+      "case_id": "kaiwu.missing.19980802.zhao_student",
+      "lines": [
+        61,
+        95
+      ]
+    },
+    {
+      "case_id": "kaiwu.missing.19980826.two_waitresses",
+      "lines": [
+        96,
+        128
+      ]
+    },
+    {
+      "case_id": "kaiwu.missing.19990309.hao_male_taxi",
+      "lines": [
+        129,
+        167
+      ]
+    },
+    {
+      "case_id": "kaiwu.missing.20000811.zhou_female_student",
+      "lines": [
+        168,
+        200
+      ]
+    }
+  ],
+  "33": [
+    {
+      "case_id": "kaiwu.business.case01",
+      "lines": [
+        3,
+        45
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case02",
+      "lines": [
+        46,
+        84
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case03",
+      "lines": [
+        85,
+        134
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case04",
+      "lines": [
+        135,
+        173
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case05",
+      "lines": [
+        174,
+        203
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case06",
+      "lines": [
+        204,
+        251
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case07",
+      "lines": [
+        252,
+        287
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case08",
+      "lines": [
+        288,
+        333
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case09",
+      "lines": [
+        334,
+        365
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case10",
+      "lines": [
+        366,
+        429
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case11",
+      "lines": [
+        430,
+        467
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case01",
+      "lines": [
+        3,
+        45
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case02",
+      "lines": [
+        46,
+        84
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case03",
+      "lines": [
+        85,
+        134
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case04",
+      "lines": [
+        135,
+        173
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case05",
+      "lines": [
+        174,
+        203
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case06",
+      "lines": [
+        204,
+        251
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case07",
+      "lines": [
+        252,
+        287
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case08",
+      "lines": [
+        288,
+        333
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case09",
+      "lines": [
+        334,
+        365
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case10",
+      "lines": [
+        366,
+        429
+      ]
+    },
+    {
+      "case_id": "kaiwu.business.case11",
+      "lines": [
+        430,
+        467
+      ]
+    }
+  ],
+  "34": [
+    {
+      "case_id": "kaiwu.lost_property.case01",
+      "lines": [
+        5,
+        45
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case02",
+      "lines": [
+        46,
+        88
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case03",
+      "lines": [
+        89,
+        124
+      ]
+    },
+    {
+      "case_id": "kaiwu.lost_property.case04",
+      "lines": [
+        125,
+        180
+      ]
+    }
+  ],
+  "35": [
+    {
+      "case_id": "kaiwu.travel.case01",
+      "lines": [
+        3,
+        35
+      ]
+    },
+    {
+      "case_id": "kaiwu.travel.case02",
+      "lines": [
+        36,
+        66
+      ]
+    },
+    {
+      "case_id": "kaiwu.travel.case03",
+      "lines": [
+        67,
+        136
+      ]
+    },
+    {
+      "case_id": "kaiwu.travel.case04",
+      "lines": [
+        137,
+        169
+      ]
+    },
+    {
+      "case_id": "kaiwu.travel.case05",
+      "lines": [
+        170,
+        201
+      ]
+    },
+    {
+      "case_id": "kaiwu.travel.case06",
+      "lines": [
+        202,
+        230
+      ]
+    }
+  ],
+  "36": [
+    {
+      "case_id": "kaiwu.criminal.case01",
+      "lines": [
+        5,
+        50
+      ]
+    },
+    {
+      "case_id": "kaiwu.criminal.case02",
+      "lines": [
+        51,
+        100
+      ]
+    },
+    {
+      "case_id": "kaiwu.criminal.case01",
+      "lines": [
+        5,
+        50
+      ]
+    },
+    {
+      "case_id": "kaiwu.criminal.case02",
+      "lines": [
+        51,
+        100
+      ]
+    }
+  ],
+  "37": [
+    {
+      "case_id": "kaiwu.weather.case01",
+      "lines": [
+        16,
+        32
+      ]
+    },
+    {
+      "case_id": "kaiwu.weather.case02",
+      "lines": [
+        52,
+        67
+      ]
+    },
+    {
+      "case_id": "kaiwu.weather.case01",
+      "lines": [
+        3,
+        46
+      ]
+    },
+    {
+      "case_id": "kaiwu.weather.case02",
+      "lines": [
+        47,
+        79
+      ]
+    }
+  ],
+  "39": [
+    {
+      "case_id": "kaiwu.recent_fortune.case01",
+      "lines": [
+        3,
+        56
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case02",
+      "lines": [
+        57,
+        106
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case03",
+      "lines": [
+        107,
+        158
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case04",
+      "lines": [
+        159,
+        213
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case05",
+      "lines": [
+        214,
+        245
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case06",
+      "lines": [
+        246,
+        284
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case01",
+      "lines": [
+        3,
+        56
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case02",
+      "lines": [
+        57,
+        106
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case03",
+      "lines": [
+        107,
+        158
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case04",
+      "lines": [
+        159,
+        213
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case05",
+      "lines": [
+        214,
+        245
+      ]
+    },
+    {
+      "case_id": "kaiwu.recent_fortune.case06",
+      "lines": [
+        246,
+        284
+      ]
+    }
+  ],
+  "40": [
+    {
+      "case_id": "kaiwu.geography.case02",
+      "lines": [
+        36,
+        73
+      ]
+    },
+    {
+      "case_id": "kaiwu.geography.case03",
+      "lines": [
+        74,
+        103
+      ]
+    },
+    {
+      "case_id": "shenqi.geography.case02",
+      "lines": [
+        3,
+        35
+      ]
+    },
+    {
+      "case_id": "kaiwu.geography.case02",
+      "lines": [
+        36,
+        73
+      ]
+    },
+    {
+      "case_id": "kaiwu.geography.case03",
+      "lines": [
+        74,
+        103
+      ]
+    }
+  ],
+  "41": [
+    {
+      "case_id": "kaiwu.litigation.case01",
+      "lines": [
+        5,
+        47
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case02",
+      "lines": [
+        48,
+        103
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case03",
+      "lines": [
+        104,
+        161
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case04",
+      "lines": [
+        162,
+        203
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case01",
+      "lines": [
+        5,
+        47
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case02",
+      "lines": [
+        48,
+        103
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case03",
+      "lines": [
+        104,
+        161
+      ]
+    },
+    {
+      "case_id": "kaiwu.litigation.case04",
+      "lines": [
+        162,
+        203
+      ]
+    }
+  ],
+  "42": [
+    {
+      "case_id": "kaiwu.competition.case01",
+      "lines": [
+        3,
+        73
+      ]
+    },
+    {
+      "case_id": "kaiwu.competition.case02",
+      "lines": [
+        75,
+        120
+      ]
+    },
+    {
+      "case_id": "kaiwu.competition.case01",
+      "lines": [
+        3,
+        73
+      ]
+    },
+    {
+      "case_id": "kaiwu.competition.case02",
+      "lines": [
+        75,
+        120
+      ]
+    }
+  ],
+  "43": [
+    {
+      "case_id": "kaiwu.final.taiwan_zhang",
+      "lines": [
+        52,
+        78
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.taiwan_tang",
+      "lines": [
+        79,
+        113
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.committee_chen",
+      "lines": [
+        116,
+        154
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.license",
+      "lines": [
+        212,
+        251
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.opera",
+      "lines": [
+        254,
+        310
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.missing_daughter",
+      "lines": [
+        313,
+        378
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.divorce",
+      "lines": [
+        381,
+        413
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.remarriage",
+      "lines": [
+        381,
+        413
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.weather",
+      "lines": [
+        416,
+        448
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.football",
+      "lines": [
+        451,
+        523
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.transfer",
+      "lines": [
+        528,
+        570
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.recovery",
+      "lines": [
+        555,
+        571
+      ]
+    },
+    {
+      "case_id": "kaiwu.final.exam",
+      "lines": [
+        563,
+        569
+      ]
+    }
+  ],
+  "31": [
+    {
+      "case_id": "kaiwu.education.19990717.pan_son",
+      "lines": [
+        5,
+        60
+      ]
+    },
+    {
+      "case_id": "kaiwu.education.19990702.wang_daughter",
+      "lines": [
+        61,
+        118
+      ]
+    },
+    {
+      "case_id": "kaiwu.education.20000711.zhang_sisters",
+      "lines": [
+        119,
+        151
+      ]
+    }
+  ],
+  "27": [
+    {
+      "case_id": "kaiwu.health.19960923.nasal_cancer",
+      "lines": [
+        5,
+        44
+      ]
+    },
+    {
+      "case_id": "kaiwu.health.19950219.brother_paralysis",
+      "lines": [
+        49,
+        63
+      ]
+    },
+    {
+      "case_id": "shenqi.health.19960727.father_illness",
+      "lines": [
+        65,
+        89
+      ]
+    },
+    {
+      "case_id": "kaiwu.health.19980616.hen_illness",
+      "lines": [
+        91,
+        119
+      ]
+    },
+    {
+      "case_id": "kaiwu.health.19980621.rooster_illness",
+      "lines": [
+        121,
+        157
+      ]
+    },
+    {
+      "case_id": "kaiwu.health.19991020.wang_craniotomy",
+      "lines": [
+        159,
+        211
+      ]
+    }
+  ],
+  "38": [
+    {
+      "case_id": "shenqi.life.case05",
+      "lines": [
+        3,
+        83
+      ]
+    },
+    {
+      "case_id": "kaiwu.life.case02",
+      "lines": [
+        84,
+        123
+      ]
+    },
+    {
+      "case_id": "kaiwu.life.case03",
+      "lines": [
+        124,
+        181
+      ]
+    },
+    {
+      "case_id": "kaiwu.life.case04",
+      "lines": [
+        182,
+        236
+      ]
+    },
+    {
+      "case_id": "kaiwu.life.case05",
+      "lines": [
+        237,
+        266
+      ]
+    }
+  ],
+  "8": [
+    {
+      "case_id": "shenqi.education.father_son_university",
+      "lines": [
+        24,
+        87
+      ]
+    },
+    {
+      "case_id": "shenqi.education.mother_son_exam",
+      "lines": [
+        89,
+        150
+      ]
+    },
+    {
+      "case_id": "shenqi.education.father_son_self_funded",
+      "lines": [
+        152,
+        203
+      ]
+    },
+    {
+      "case_id": "shenqi.education.self_phd_exam",
+      "lines": [
+        205,
+        260
+      ]
+    },
+    {
+      "case_id": "shenqi.education.us_medical_exam_dispute",
+      "lines": [
+        262,
+        349
+      ]
+    }
+  ],
+  "6": [
+    {
+      "case_id": "shenqi.marriage.mother_asks_son_courtship",
+      "lines": [
+        17,
+        68
+      ]
+    },
+    {
+      "case_id": "shenqi.marriage.mother_asks_daughter_marriage",
+      "lines": [
+        70,
+        130
+      ]
+    },
+    {
+      "case_id": "shenqi.marriage.young_man_divorce",
+      "lines": [
+        132,
+        184
+      ]
+    },
+    {
+      "case_id": "shenqi.marriage.middle_aged_woman_divorce",
+      "lines": [
+        186,
+        247
+      ]
+    },
+    {
+      "case_id": "shenqi.marriage.third_party_asks_marriage",
+      "lines": [
+        249,
+        309
+      ]
+    },
+    {
+      "case_id": "shenqi.marriage.wife_asks_husband_affair",
+      "lines": [
+        311,
+        367
+      ]
+    }
+  ],
+  "7": [
+    {
+      "case_id": "shenqi.pregnancy.daughter_pregnancy_timing",
+      "lines": [
+        20,
+        65
+      ]
+    },
+    {
+      "case_id": "shenqi.pregnancy.daughter_delivery_date",
+      "lines": [
+        67,
+        116
+      ]
+    },
+    {
+      "case_id": "shenqi.pregnancy.pregnant_woman_imminent_birth",
+      "lines": [
+        118,
+        159
+      ]
+    },
+    {
+      "case_id": "shenqi.pregnancy.phone_premature_birth",
+      "lines": [
+        161,
+        206
+      ]
+    },
+    {
+      "case_id": "shenqi.pregnancy.student_wife_delivery",
+      "lines": [
+        208,
+        253
+      ]
+    },
+    {
+      "case_id": "shenqi.pregnancy.prenatal_imaging_concern",
+      "lines": [
+        255,
+        304
+      ]
+    }
+  ]
+}
