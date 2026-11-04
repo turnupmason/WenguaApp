@@ -1,0 +1,12 @@
+{
+  "baseline_run3_source": "873ac3f08f8af23b9d813fb76857bc3db8aae249",
+  "all_training_kernel_hashes_unchanged": true,
+  "kernel_text_sha256": {
+    "src/wengua/qwen_book_loop_v3.py": "9eb0e2f7f1e262f7cc3384042db82f3bbe42efcf046582c5add34042523ca8ee",
+    "src/wengua/qwen_book_dataset_v3.py": "834cf20e937db83b4093289ed03be9c8dbc20aa9c6adb8032db11075dee947e3",
+    "src/wengua/qwen_finetune.py": "385b7a5e10848c90ab3e727fcc2cd567578f8df026ae3af44123fd01212e2d69",
+    "src/wengua/qwen_book_sweep_v1.py": "e9142c379f4a93f48db163624a8de674748eb9db990ec72dcf584a65e22e5282",
+    "src/wengua/qwen_book_continuous_v1.py": "c5ac22ec5d178789faccc8f912a604e71331a36d5f627fbd0934bc6099822283",
+    "src/wengua/qwen_book_sweep_v2.py": "9234745816ebfa34ae0fb6d7517112c258aa6d243bb05a055be6f29321dde955"
+  }
+}
