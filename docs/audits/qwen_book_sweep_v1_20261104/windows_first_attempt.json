@@ -1,0 +1,10 @@
+{
+  "source_sha": "a3e4d39acab78f2632ccf31897bb27ec60c4bc5f",
+  "run_id": 41883929419,
+  "job_id": 126763207583,
+  "state": "failed_preserved",
+  "test": "test_explicit_checkpoint_is_latest_intact_same_job_and_unfinished",
+  "cause": "Windows temp path 8.3 RUNNER~1 alias compared literally to resolved runneradmin path; function correctly canonicalized ownership",
+  "planned_fix": "Compare to new.resolve() and assert is_relative_to(job.resolve()); no checkpoint integrity or ownership assertion removed",
+  "training_started": false
+}

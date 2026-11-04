@@ -76,7 +76,8 @@ class BookSweepContracts(unittest.TestCase):
         with TemporaryDirectory() as tmp:
             job=Path(tmp)/'job';old=self.checkpoint(job,1);new=self.checkpoint(job,2)
             owner,path=loop.requested_checkpoint(job,new)
-            self.assertEqual(owner,'cycle_01');self.assertEqual(path,new)
+            self.assertEqual(owner,'cycle_01');self.assertEqual(path,new.resolve())
+            self.assertTrue(path.is_relative_to(job.resolve()))
             with self.assertRaisesRegex(ValueError,'latest intact'):loop.requested_checkpoint(job,old)
             with self.assertRaisesRegex(ValueError,'exact job'):loop.requested_checkpoint(job/'other',new)
             loop.atomic_json(job/'cycle_01/stage_status.json',{'state':'complete'})

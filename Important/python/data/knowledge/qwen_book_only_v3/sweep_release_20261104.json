@@ -34,7 +34,7 @@
     "scripts/qwen_book_sweep.py": "1327544b58222e72d5a1933e0a160db8b4b63457205b5357942a7498560cfc7f",
     "scripts/check_qwen_book_sweep_training.py": "7055929281a1e5f47d806d96f29009eea62afda5fe2211d024e68adf86c2f47a",
     "src/wengua/qwen_book_sweep_v1.py": "e9142c379f4a93f48db163624a8de674748eb9db990ec72dcf584a65e22e5282",
-    "tests/test_qwen_book_sweep_v1.py": "847235819d81f76aac4167ae7b46d9207e0e4ecd7692d730cc40734d40d224e1",
+    "tests/test_qwen_book_sweep_v1.py": "938607837e4f67b3eb25a5743013b395d5b30689fe82593ea88960b1d1e55b7b",
     "src/wengua/qwen_book_loop_v3.py": "964c45d78a03ccec1b61a06634cf3d6ee530a087a86ad1d93b9f50c2d7743fd5",
     "scripts/qwen_book_loop.py": "16060c354cefeb86aa006a0f6bd63096a7af08aaaa52110ba91231c2a4e8d2f6"
   },

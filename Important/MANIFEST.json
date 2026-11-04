@@ -1705,13 +1705,13 @@
       "platform": "python",
       "canonical": "tests/test_qwen_book_sweep_v1.py",
       "snapshot": "Important/python/tests/test_qwen_book_sweep_v1.py",
-      "sha": "a44105c42c74cba7220b948aeaa0f3ff4a710b39"
+      "sha": "46d5441a0b7116f791ce103ee7447b6d3f119d07"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/qwen_book_only_v3/sweep_release_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen_book_only_v3/sweep_release_20261104.json",
-      "sha": "8467ac95e277671ae5321b873e1ed3df89c61a90"
+      "sha": "1ca479ab9a941d667c0bff38b01412c778b9571e"
     }
   ]
 }
