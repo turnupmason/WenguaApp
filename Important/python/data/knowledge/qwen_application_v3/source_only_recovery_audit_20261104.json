@@ -1,0 +1,47 @@
+{
+  "status": "previous_v3_rejected_legacy_teacher_distillation",
+  "previous_v3_core_tasks": 22854,
+  "old_388000_pool_training_permitted": false,
+  "legacy_engine_or_dependent_teacher_rows": 6895,
+  "legacy_teacher_source_counts": {
+    "frozen_project_rule_teacher": 6083,
+    "controlled_query_context_pair": 576,
+    "versioned_actor_rule_boundary": 96,
+    "abstract_approved_rule_exercise": 125,
+    "matched_real_chart_pair": 15
+  },
+  "source_recovered_rows": 13364,
+  "source_recovered_by_category": {
+    "basic": 10624,
+    "conditional": 630,
+    "case_analysis": 2110
+  },
+  "excluded_reason_counts": {
+    "non_book_or_unresolved_citation": 171,
+    "non_book_task_requires_separate_rebuild": 2424,
+    "legacy_engine_or_dependent_teacher": 6895
+  },
+  "located_source_ids": 5025,
+  "original_case_inventory": 194,
+  "author_original_paragraphs_retained": 1008,
+  "book_judgment_word_rows_preserved": {
+    "book_grade_word_rows_preserved": 148
+  },
+  "source_recovery_is_not_qa_approval": true,
+  "new_training_started": false,
+  "automatic_full_chart_golds_generated": false,
+  "current_v2_training_withdrawn": true,
+  "current_v2_data_and_weights_preserved": true,
+  "new_model_initialization": "official Qwen base only; no old adapters",
+  "needed_now": "source-faithful QA and author case application reconstruction, not more paraphrase counts or new user books",
+  "evaluation_target": "author/source/condition fidelity on held-out cases, never match legacy scores",
+  "file_sha256": {
+    "book_material_recovered.jsonl": "2297cae84848e20a6233ebca7891b1576c1095924eb5fb77f0945144d233f783",
+    "excluded_task_index.jsonl": "1100edc75322f42fa6f0242969072f7a5718d77b31704bbd7320ce7387dc390e",
+    "case_registry_194.jsonl": "5ea7f5740a0cf488eb4acf4461bb970f5d24750d366a89d37c47c647fd662a68"
+  },
+  "non_book_supplements_permitted": false,
+  "legacy_score_teacher_permitted": false,
+  "old_adapter_resume_permitted": false,
+  "old_v2_release_withdrawn": true
+}

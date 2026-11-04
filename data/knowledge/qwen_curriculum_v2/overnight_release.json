@@ -1,8 +1,8 @@
 {
   "release_id": "qwen_curriculum_v2_20261103",
   "worker_protocol": 1,
-  "state": "ready",
-  "checks_passed": true,
+  "state": "withdrawn",
+  "checks_passed": false,
   "checks_scope": "source_fidelity_grouping_tokenization_and_software_execution_only",
   "dataset_basis": "full_readonly_source_archive_reconstruction",
   "candidate_11952_used": false,
@@ -84,5 +84,9 @@
     41780475146,
     41780475167,
     41780475152
-  ]
+  ],
+  "training_permitted": false,
+  "withdrawal_reason": "User requires book-only new model; V2 contains non-book supplements. Preserve historical data and adapters; do not resume them for the new model.",
+  "withdrawal_date": "2026-11-04",
+  "new_model_initialization": "official Qwen base only; no old adapters"
 }

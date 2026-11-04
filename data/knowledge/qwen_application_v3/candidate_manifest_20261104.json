@@ -171,7 +171,7 @@
     "correction": 4643
   },
   "application_selection_rows": 34,
-  "status": "draft_application_curriculum_not_auto_training",
+  "status": "rejected_non_book_legacy_teacher_contamination",
   "created_date": "2026-11-04",
   "oversize_core_tasks_count": 873,
   "prediction_validated": false,
@@ -204,5 +204,8 @@
     }
   },
   "complete_analysis_role_explanations_explicit": 672,
-  "complete_analysis_role_explanations_retokenized": 672
+  "complete_analysis_role_explanations_retokenized": 672,
+  "training_permitted": false,
+  "rejection_reason": "User requires ONLY classical-book knowledge, domain workflows and author cases. Legacy engine scores and all non-book supplements are prohibited.",
+  "replaced_by_status": "book_source_recovery_only_not_training_approved"
 }

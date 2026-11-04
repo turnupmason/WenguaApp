@@ -22,6 +22,8 @@ def verify_release_sources():
     """The raw-LF bootstrap also protects workers loaded before this checker."""
     import run_qwen_overnight as worker
     release=json.loads(worker.RELEASE.read_text(encoding='utf8'))
+    if release.get('state')=='withdrawn':
+        raise ValueError('Curriculum V2 withdrawn: new model requires book-only data and a fresh official Qwen base; do not resume old adapters.')
     if release.get('state')=='ready':
         if 'scripts/qwen_curriculum.py' not in release.get('canonical_text_sha256',{}):
             raise ValueError('Checked canonical source fingerprints missing')
@@ -88,6 +90,7 @@ def prepare_job(output,config,*,resume=False):
 
 
 def run_job(output,config,deadline,*,resume=False):
+    verify_release_sources()
     from src.wengua.qwen_finetune import environment_report
     from src.wengua.qwen_curriculum_train import train_stage, evaluate_pair
     output,manifest,token_audit=prepare_job(output,config,resume=resume)

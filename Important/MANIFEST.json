@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "37c5a6e9fca377e07324233aff31d1126031b10c"
+      "sha": "abfd6fd39ec6ca2639508bfde2d48aa2c338d263"
     },
     {
       "platform": "python",
@@ -1465,7 +1465,7 @@
       "platform": "python",
       "canonical": "data/knowledge/qwen_curriculum_v2/overnight_release.json",
       "snapshot": "Important/python/data/knowledge/qwen_curriculum_v2/overnight_release.json",
-      "sha": "19c26ffd3e6e3eabda5932df92bd98a581472483"
+      "sha": "80921a1e79608e3b44b4f20de9d1c5fae59c9b20"
     },
     {
       "platform": "python",
@@ -1477,7 +1477,7 @@
       "platform": "python",
       "canonical": "tests/test_qwen_curriculum_candidate_v1.py",
       "snapshot": "Important/python/tests/test_qwen_curriculum_candidate_v1.py",
-      "sha": "4172828b56d3e097c706896fa403b272af419a10"
+      "sha": "ffb963b635ec01a7984720d77b07a10f4abb68ea"
     },
     {
       "platform": "python",
@@ -1495,7 +1495,7 @@
       "platform": "python",
       "canonical": "scripts/qwen_curriculum.py",
       "snapshot": "Important/python/scripts/qwen_curriculum.py",
-      "sha": "7ebeea63179e090d03307923b7e29355d205c355"
+      "sha": "e44b75fc0c99768f41bd0787b794552655e9ec24"
     },
     {
       "platform": "python",
@@ -1561,7 +1561,31 @@
       "platform": "python",
       "canonical": "data/knowledge/qwen_application_v3/candidate_manifest_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen_application_v3/candidate_manifest_20261104.json",
-      "sha": "c51fa5c6524fc3527c3100ac7f89910bb9a8af7c"
+      "sha": "d3a9d7da6989c7e092abfc801194ef428ee5bb0d"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_source_policy_v3.py",
+      "snapshot": "Important/python/engine/qwen_source_policy_v3.py",
+      "sha": "9d4e30c5df11cccd0149fcc5d4bf415691effa9b"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_source_policy_v3.py",
+      "snapshot": "Important/python/tests/test_qwen_source_policy_v3.py",
+      "sha": "f6ed78a8721e5354ad496597d6fc8312af15ed04"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_curriculum_v2/history/overnight_release_ready_20261103.json",
+      "snapshot": "Important/python/data/knowledge/qwen_curriculum_v2/history/overnight_release_ready_20261103.json",
+      "sha": "19c26ffd3e6e3eabda5932df92bd98a581472483"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_application_v3/source_only_recovery_audit_20261104.json",
+      "snapshot": "Important/python/data/knowledge/qwen_application_v3/source_only_recovery_audit_20261104.json",
+      "sha": "3427ed0fc71e4741bdd38516b2dcc9acb5dcd2f5"
     }
   ]
 }

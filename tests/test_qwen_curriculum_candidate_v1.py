@@ -42,7 +42,12 @@ class QwenDialogueCandidateV1Tests(unittest.TestCase):
         self.assertTrue(p["case_index_replays_are_not_actual_author_analysis"])
         self.assertFalse(p["auto_train_enabled"])
         release = json.loads(RELEASE.read_text(encoding="utf8"))
-        if release['state']=='preparing':
+        if release['state']=='withdrawn':
+            self.assertFalse(release['checks_passed'])
+            self.assertFalse(release['training_permitted'])
+            import run_qwen_overnight as worker
+            with self.assertRaises(ValueError):worker.check_release(release)
+        elif release['state']=='preparing':
             self.assertFalse(release['checks_passed'])
         else:
             # A later reconstruction from the complete archive can have its
