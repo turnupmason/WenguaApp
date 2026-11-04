@@ -1,0 +1,34 @@
+{
+  "validation_tasks": 429,
+  "formats": {
+    "chart_application": 146,
+    "complete_case": 16,
+    "conditional_dialogue": 146,
+    "foundation_qa": 121
+  },
+  "common_validation_questions": 16,
+  "long_diagnostic_questions": 4,
+  "answer_review_rows": 20,
+  "source_units": 288,
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "training_files_changed": false,
+  "test_questions_exported": false,
+  "human_ratings_prefilled": false,
+  "model_answers_prefilled": false,
+  "training_eligible": false,
+  "independent_new_case_evaluation": false,
+  "exporter_text_sha256": "0d801b155e651028c31a8c6bdb80fbfdabb0e51df9678a4e7cf6a8e3040d3ca9",
+  "input_sha256": {
+    "core_tasks": "29377294d00def5ae56aca5915e6e85e33542fb8434eaaf3cd159424268a7a39",
+    "common_validation": "c56ba36880c1080bf83897013c1f41b7df9bc2206b7b5a84081e27fdd6b0b092"
+  },
+  "files": {
+    "开始这里.csv": "a9cb4adedf1dee89cbe6ef09c0b8f0e57105d7cf151c3e3fb0023cded81c9cf9",
+    "模型验收.csv": "0a1ca4605989d1aeccde8774b2ffa23a4155b85d59cf254dcbad2576a91ac9f0",
+    "出处.csv": "06022b05c0935f4962e95211e23b65e755d2698d97602d34467691d3cf5ad20d",
+    "教材复核.csv": "707ad16a29eabc2c02a2b12ddffbb5126ab9ecf6fb29535b453a30cd31540c02",
+    "来源关联.csv": "bc09ca0401c178dd0d0cdc61aa5addc27c104bafb972f34b6f63f895767acc59",
+    "review.html": "0ec7dd3b0aab9a0f756f7ba0f253c956f69414410eab9193669c9903dc3267c2",
+    "Wengua_Validation_Review.xlsx": "75e9630adc59e3529e6fe31d1358ff16a64125a5a13cf19db8a41131a5fb8d9d"
+  }
+}

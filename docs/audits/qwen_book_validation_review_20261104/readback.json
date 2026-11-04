@@ -1,0 +1,11 @@
+{
+  "validation_rows_read_back": 429,
+  "model_review_rows_read_back": 20,
+  "source_units_read_back": 288,
+  "all_questions_and_references_exact": true,
+  "all_source_quotes_reconstructed_exactly": true,
+  "ratings_and_model_answers_blank": true,
+  "xlsx_bytes": 377929,
+  "initial_readback_accessor_error_preserved": "Initial audit called Worksheet.values as a function; corrected to its generator property. Workbook/source data unchanged.",
+  "running_training_and_process_contract_files_unchanged": true
+}

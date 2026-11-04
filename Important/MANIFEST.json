@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "398fa97f8f71017d0984d1d9d61cbe57b27ce495"
+      "sha": "3bc1857a0af7fc35ef1ec6d8c603d7de687d3010"
     },
     {
       "platform": "python",
@@ -1784,6 +1784,18 @@
       "canonical": "src/wengua/qwen_book_process_v1.py",
       "snapshot": "Important/python/engine/qwen_book_process_v1.py",
       "sha": "6b5a09a153a42df5d0d1d8b8802fbe9c5c1196bb"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/prepare_book_validation_review.py",
+      "snapshot": "Important/python/scripts/prepare_book_validation_review.py",
+      "sha": "1a661079565903934f9d3ea6fb83930fd974a87e"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_book_validation_review.py",
+      "snapshot": "Important/python/tests/test_book_validation_review.py",
+      "sha": "dcb1056140b4bad83d8831bd7835436290b5a74e"
     }
   ]
 }

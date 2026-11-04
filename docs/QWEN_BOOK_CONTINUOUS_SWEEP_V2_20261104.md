@@ -4,6 +4,16 @@
 
 ## Windows CMD启动
 
+**训练期间可并行人工复核：** 独立工具`scripts/prepare_book_validation_review.py`只读导出已有validation核心池，不动训练内核、数据、模型、执行合同或检查点，不运行GPU。429条验证任务含121基础问答、146条件对话、146盘面应用、16整案；先审当前共同生成验证16题＋长诊断4题。429是验证任务数，不是429个新独立案例，也不是194原案全集。模型回答和人工结论初始空白，必须等真实回答后填；旧算分不进入。长题未由2048实验生成不能记作失败。原书辅助复盘保持资料方式标记，不冒充新盘盲测。
+
+已有完整核心教材导出时，可在Mac或Windows单独运行以下命令（不需要Torch；Excel的`--xlsx`仅在已有openpyxl时可选）：
+
+```text
+python -m scripts.prepare_book_validation_review --dataset local/qwen_book_only_v3_20261104_final --prepared local/qwen_book_sweep_v2/run3_memory_offline/data/context_2048/prepared --output local/qwen_validation_review_new
+```
+
+若有4096比较缓存，可加`--long-prepared local/qwen_book_sweep_v2/run3_memory_offline/data/context_4096/compared/prepared`。输出CSV、完整出处和浏览器HTML；可选Excel含五页。遇到已有人审目录拒绝覆盖。人工意见独立保存，不自动回灌训练、不改当前选模与最终测试策略；对应事实和出处须由人核对，不按机械相似度宣称专业正确。
+
 **4080共享内存回退实测补充：** 用户七模块r16/2048短测半小时仍0/2，nvidia-smi显示15997/16376MiB、GPU100%但功耗76.46W；任务管理器同时专用15.6GB、共享8.8→8.9GB，总计24.5GB。这是训练已使用系统共享内存的实机证据，显卡物理显存仍16GB，不应继续把长时间0/2解释成单纯等待梯度累积。
 
 先在训练窗口一次Ctrl+C并等待worker退出。按[NVIDIA官方说明](https://nvidia.custhelp.com/app/answers/detail/a_id/5490)，在NVIDIA控制面板→管理3D设置→程序设置，为实际Python主程序设置`CUDA - Sysmem Fallback Policy`为`Prefer No Sysmem Fallback`并应用。项目CMD中可执行`local\qwen_env\Scripts\python.exe -c "import sys; print(sys._base_executable)"`查主程序路径；Windows venv启动器与实际Python可能不同，选择实际主程序。该程序级策略可恢复`Driver Default`，不需要全局修改。

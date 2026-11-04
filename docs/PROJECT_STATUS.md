@@ -3770,3 +3770,10 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：Qwen#41924812385 Windows job126906302285普通Python55项＋真实无pip venv26项均OK；venv实际launcher/worker PID2360/9136与6212/7064不同，修复后回执接受（不是仅模拟PID测试）。CPU job126906302809六子进程恢复已完成stage不重训、旧合同备份升级、优化器恢复均通过；主CI#41924812618双Python job126906304939/126906305342完整日志均匹配源码、无error且cleanup。证据docs/audits/qwen_book_windows_venv_pid_20261104/remote_source_ci.json。继续原run3，已成功worker的stage读取复用；原训练内核和来源不变，实际4080后续组日志待本机。
 
 4080吞吐诊断：七模块r16/2048短测约半小时0/2，GPU100%/15997MiB/76.46W；用户两张任务管理器截图专用15.6GB、共享8.8→8.9GB、合计24.5GB，确认系统共享GPU内存已在使用。按NVIDIA官方5490建议停止worker后，对实际Python主程序设置CUDA Sysmem Fallback Policy=Prefer No Sysmem Fallback，再继续原run3；既有loop明确CUDA OOM会记录跳过。仅文档与用户回传证据，无训练源码/数据/参数变更，不重复全量测试；用户实际应用策略及后续吞吐尚待确认。证据docs/audits/qwen_book_process_isolation_20261104/user_reported_shared_memory_fallback.json。
+
+
+### 2026-11-04 · 训练并行验证资料人工复核包
+
+用户询问训练期间可并行做什么。独立只读导出器scripts/prepare_book_validation_review.py从纯古籍固定validation池生成429核心任务（121基础、146条件、146盘面、16整案）、当前共同生成验证16＋长诊断4题、288关联出处；Excel五页/CSV/HTML均保留完整输入、原样参考和source_mode。未导出最终test题，原书辅助复盘不冒充独立新盘。模型答题和人工评判初始留空，七项仅人工复核维度，不是旧吉凶算分/概率或自动专业正确率，不回灌训练、不改当前选模。新代码不在运行内核/执行器合同列表中，各已固定源码哈希逐一与HEAD核对相同，可与本机训练并行。private交付local/qwen_validation_review_20261104_release/，429是验证任务，不是新案例或194原案全集。真实Excel重新打开核对429问答/288全文出处完全一致，20答题栏全空，原型审计把openpyxl.values误当函数的错误修正后重读通过。默认导出无Torch/无需GPU，已有openpyxl时可选Excel，现有人工目录不覆盖。
+
+并行复核工具本地全量1086项0失败/0错误、3项既有skip；新增3项验证只导出validation/不预填模型答案/不覆盖人审、问题参考变更与测试题混入拒绝、准备缓存原文与核心教材不一致拒绝。真实Excel读回429完整问答/288出处全部相等，20模型答题和人工判定为空；训练内核与执行器固定文件SHA逐项未变。公开仅程序、元数据和审计，含书源内容的Excel/CSV/HTML/ZIP留private目录。

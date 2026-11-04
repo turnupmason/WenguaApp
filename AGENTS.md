@@ -44,6 +44,8 @@
 
 > **4080吞吐实机新证据：** 七模块r16/2048短测半小时0/2，GPU15997/16376MiB/100%/76.46W；任务管理器专用15.6GB＋共享8.9GB＝24.5GB，证实已使用系统共享GPU内存。指导按NVIDIA官方5490对实际Python主程序设CUDA Sysmem Fallback Policy→Prefer No Sysmem Fallback，停止后重启同run3；明确CUDA OOM由既有loop记录跳过。无源码／数据／超参数修改；驱动设置后实际吞吐仍待本机。不要再次归为首次只有7GiB或简单等待累积。
 
+> **训练并行人工复核：** 新独立scripts/prepare_book_validation_review.py只读导出429条validation核心任务、共同16题＋长诊断4题、288出处，模型回答/人工判定留空；CSV/HTML及可选Excel，不导出最终test题、不回灌训练。原训练内核和进程合同文件逐一与HEAD对照未改，继续run3无需中断。private包local/qwen_validation_review_20261104_release/，不是194全集或独立新盘盲测。实际Excel重新读回问答/出处全文一致；人工疑点独立备注，本轮先不改教材。
+
 # AGENTS.md — WenguaApp 长期开发代理执行规范
 
 > **最高优先级更新：所有用户逐章提供的原书案例直接作为项目认可历史案例入库，不再请求用户逐例人工审核；跨书同领域共用事件库。必须保留原书错误、事后修正和原始来源。详见本文最新最高优先级指令。**
