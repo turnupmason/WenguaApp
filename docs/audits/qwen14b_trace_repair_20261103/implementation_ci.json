@@ -1,0 +1,71 @@
+{
+  "source_sha": "06e7cfef",
+  "github_runs": [
+    {
+      "databaseId": 41773156818,
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "headSha": "06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41773156818",
+      "jobs": [
+        {
+          "name": "v80_current (3.11)",
+          "conclusion": "success"
+        },
+        {
+          "name": "v80_current (3.12)",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41773156698,
+      "name": "Qwen14B and 32B source research and tiny CPU adapter contract",
+      "headSha": "06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41773156698",
+      "jobs": [
+        {
+          "name": "cpu-interface-not-32b-training",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "databaseId": 41773156840,
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "headSha": "06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b",
+      "conclusion": "success",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41773156840",
+      "jobs": [
+        {
+          "name": "qimen_lunji_frontpage_runtime",
+          "conclusion": "success"
+        },
+        {
+          "name": "power_pair_full_text_parity",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "remote_files_verified": {
+    "src/wengua/qwen_research.py": "5cc5f5cef4e0c983f0dff3680518f1584b4ddb1c5ec00757b4a59d7d377eee9e",
+    "src/wengua/qwen_finetune.py": "385b7a5e10848c90ab3e727fcc2cd567578f8df026ae3af44123fd01212e2d69",
+    "scripts/qwen_research.py": "153bd5894ac6a91dbe3d6f6129c3e52e04b93dab59914c70a5c8b41711953265",
+    "scripts/check_qwen_training.py": "446f469fb170db1f1272ddb464c0b53299ae21865cf2242e8309a28e7ce89605",
+    "tests/test_qwen_research_v1.py": "dcdd3f5532765b4a4889a89cd22b77537728de2aad40b16072b3b75cb4abfcaa",
+    "run_qwen_research.py": "11fbfa23d36d81e00c2c4ceea41f3370fad53299f7b482f713893b674297fb03",
+    "data/knowledge/qwen_research/v1/safe_general_rule_scopes.json": "1268886a7bd1d14e5359a60a3d29495d9d56853cf1b26c24cfe4a2d37991c73f"
+  },
+  "local_tests": {
+    "tests_run": 978,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "old_answer_passed_schema": false,
+  "old_answer_answered_question": false,
+  "actual_updated_14b_GPU_answer_evaluated_here": false,
+  "training_weights_modified": false
+}
