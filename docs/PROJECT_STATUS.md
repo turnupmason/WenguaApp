@@ -3689,3 +3689,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 本轮本地最终全量回归1057项，0失败/0错误，3项既有skip；原单配置CPU训练回归亦通过。实源5250核心在2048完整输入上六轮分别4815/4813/4812/4812/4814/4813训练视图，890源分组，64条验证loss/16条验证生成/64条最终测试；两组准备文件全SHA一致。审计docs/audits/qwen_book_sweep_v1_20261104/，14B/GPU未在云端运行，远端CI随后核对同源码。
 
 参数loop首个Windows CI源码a3e4d39a，Qwen#41883929419 job126763207583：29项中1项路径断言失败。临时路径RUNNER~1别名与函数正确返回的resolve长路径等价，测试改为new.resolve并保留同job归属断言；不删除/skip此测试，不改检查点逻辑。首次失败元数据保存在windows_first_attempt.json，修正后需核对新源码远端检查。
+
+
+### 当前封存轻重回归实测 · run 41883929493
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a3e4d39acab78f2632ccf31897bb27ec60c4bc5f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41883929493_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
