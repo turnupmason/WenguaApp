@@ -3624,3 +3624,7 @@ V3最终完整合断672题也补入实际情境的中文取用理由及人物规
 
 ### 当前封存轻重回归实测 · run 41864168530
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码bc9af622c062b45e4fc6789f44484537f8537192。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864168530_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41864689397
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码754522ae4ff34b610f9ea3178e7ce257aaf96c33。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864689397_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
