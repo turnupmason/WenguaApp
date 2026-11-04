@@ -71,6 +71,8 @@ def load_config(path=CONFIG,cycles=None):
         if not lo<=c[key]<=hi:raise ValueError('Invalid bounded '+key)
     if c['eval_max_new_tokens']>=c['inference_max_context']:raise ValueError('Generation context budget')
     if not 0<c['learning_rate']<=0.001 or not 0<=c['minimum_loss_improvement']<1:raise ValueError('Invalid optimization settings')
+    if c.get('final_test_policy','selected_after_loop') not in ('selected_after_loop','defer_to_sweep'):
+        raise ValueError('Invalid final test policy')
     return c
 
 
@@ -430,7 +432,22 @@ def load_book_cuda(c,training):
     return model,compute
 
 
-def train_unit(job,stage_name,c,deadline,*,initial_adapter=None,cpu_factory=None,extra_callbacks=()):
+def requested_checkpoint(job,path):
+    """Explicit restore may only select this job's latest intact unfinished cycle."""
+    path=Path(path).resolve();job=Path(job).resolve();stage=path.parent.parent
+    if stage.parent!=job or not stage.name.startswith('cycle_') or path.parent.name!='trainer':
+        raise ValueError('resume_from_checkpoint must belong to a cycle of this exact job')
+    try:cycle=int(stage.name[6:])
+    except ValueError:raise ValueError('Invalid checkpoint cycle') from None
+    if stage.name!=f'cycle_{cycle:02d}' or cycle<1:raise ValueError('Invalid checkpoint cycle')
+    status=read_json(stage/'stage_status.json') if (stage/'stage_status.json').exists() else {}
+    if status.get('state') in ('complete','trained_pending_evaluation'):
+        raise ValueError('Cycle already trained; use ordinary --resume to continue evaluation, not checkpoint rollback')
+    if checkpoint_latest(stage)!=path:raise ValueError('Explicit checkpoint is not the latest intact sealed optimizer checkpoint')
+    return stage.name,path
+
+
+def train_unit(job,stage_name,c,deadline,*,initial_adapter=None,cpu_factory=None,extra_callbacks=(),resume_from_checkpoint=None):
     import torch
     from transformers import AutoTokenizer,Trainer,TrainingArguments,TrainerCallback,set_seed
     from peft import LoraConfig,PeftModel,get_peft_model
@@ -456,6 +473,10 @@ def train_unit(job,stage_name,c,deadline,*,initial_adapter=None,cpu_factory=None
         if not (stage/'stage_contract.json').exists() or read_json(stage/'stage_contract.json')!=contract:raise ValueError('Stage resume contract mismatch')
     else:stage.mkdir();atomic_json(stage/'stage_contract.json',contract)
     statusfile=stage/'stage_status.json';prior=read_json(statusfile) if statusfile.exists() else {}
+    explicit=None
+    if resume_from_checkpoint is not None:
+        owner,explicit=requested_checkpoint(job,resume_from_checkpoint)
+        if owner!=stage_name:raise ValueError('Checkpoint belongs to a different cycle')
     if prior.get('state')=='complete':checked_adapter(prior['adapter']);return prior
     if time.time()>=deadline-240:return prior|{'state':'paused_before_model_load','cycle':cycle}
     progress('book_unit_start',unit=stage_name,rows=len(rows),planned_steps=steps,fresh_base=initial_adapter is None)
@@ -496,7 +517,7 @@ def train_unit(job,stage_name,c,deadline,*,initial_adapter=None,cpu_factory=None
         started=time.time()
         if not cpu:torch.cuda.reset_peak_memory_stats()
         if not evaluation_only:
-            checkpoint=checkpoint_latest(stage)
+            checkpoint=explicit or checkpoint_latest(stage)
             if prior.get('steps',0)>0 and checkpoint is None:raise ValueError('No intact optimizer checkpoint; prior outputs preserved')
             atomic_json(statusfile,{'state':'training','cycle':cycle,'steps':int(checkpoint.name[11:]) if checkpoint else 0,
                 'planned_steps':steps,'resume_checkpoint':str(checkpoint) if checkpoint else None})
@@ -600,9 +621,12 @@ def final_test(job,c,best,deadline,cpu_factory=None):
         if cpu_factory is None:torch.cuda.empty_cache()
 
 
-def run_loop(job,c,deadline,*,resume=False,cpu_factory=None,tokenizer=None,pack=None,extra_callbacks=()):
+def run_loop(job,c,deadline,*,resume=False,cpu_factory=None,tokenizer=None,pack=None,extra_callbacks=(),resume_from_checkpoint=None):
+    if resume_from_checkpoint is not None and not resume:raise ValueError('Explicit checkpoint requires --resume')
     job=open_job(job,c,resume=resume)
     with job_lock(job/'run.lock'),keep_awake():
+        explicit=requested_checkpoint(job,resume_from_checkpoint) if resume_from_checkpoint is not None else None
+        if explicit and int(explicit[0][6:])>c['cycles']:raise ValueError('Explicit checkpoint cycle is outside this job schedule')
         status_path=job/'job_status.json'
         prior=read_json(status_path) if status_path.exists() else {}
         if prior.get('state')=='complete':
@@ -625,7 +649,8 @@ def run_loop(job,c,deadline,*,resume=False,cpu_factory=None,tokenizer=None,pack=
                 if time.time()>deadline-240:status['state']='paused_deadline';break
                 previous=status['cycles'][-1]['adapter'] if status['cycles'] else None
                 unit=train_unit(job,f'cycle_{cycle:02d}',c,deadline,initial_adapter=previous,
-                    cpu_factory=cpu_factory,extra_callbacks=extra_callbacks)
+                    cpu_factory=cpu_factory,extra_callbacks=extra_callbacks,
+                    resume_from_checkpoint=explicit[1] if explicit and explicit[0]==f'cycle_{cycle:02d}' else None)
                 status['cycles'].append(unit);status['state']='training_loop';atomic_json(status_path,status);render_report(job,status)
                 if unit['state']!='complete':status['state']='paused_cycle';break
                 best,stop=select_best(status['cycles'],c)
@@ -641,8 +666,12 @@ def run_loop(job,c,deadline,*,resume=False,cpu_factory=None,tokenizer=None,pack=
                 status['selected_adapter']=best['adapter'];status['selected_cycle']=best['cycle']
                 status['validation_loss_better_than_base']=best['validation_loss']<best.get('base_validation_loss',math.inf)
                 status['selection_scope']='best_adapter_by_validation_language_loss; professional answers still require review'
-                status['final_test']=final_test(job,c,best,deadline,cpu_factory=cpu_factory)
-                status['state']='complete' if status['final_test']['state']=='complete' else 'paused_final_test'
+                if c.get('final_test_policy')=='defer_to_sweep':
+                    status['final_test']={'state':'deferred_to_sweep','used_for_selection':False}
+                    status['state']='complete'
+                else:
+                    status['final_test']=final_test(job,c,best,deadline,cpu_factory=cpu_factory)
+                    status['state']='complete' if status['final_test']['state']=='complete' else 'paused_final_test'
             return status
         except BaseException as error:
             status['state']='interrupted' if isinstance(error,KeyboardInterrupt) else 'failed'

@@ -1,0 +1,16 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_two_config_sweep",
+  "two_trials_fresh_base_and_new_adapter": true,
+  "explicit_checkpoint_restored_optimizer_step_1_to_2": true,
+  "identical_shared_train_and_evaluation_files": true,
+  "trainer_and_adam_optimizer_step_states_observed_0_1_0": true,
+  "trial_final_tests_deferred": true,
+  "exactly_one_selected_trial_test_after_all_trials": true,
+  "complete_resume_no_model_reload_or_retest": true,
+  "html_and_csv_written": true,
+  "official_tokenizer": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "real_14b_weights_loaded": false,
+  "cuda_nf4_tested": false
+}

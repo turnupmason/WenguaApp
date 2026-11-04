@@ -12,6 +12,12 @@ on:
       - 'run_qwen_curriculum.py'
       - 'run_qwen_overnight.py'
       - 'run_qwen_book_loop.py'
+      - 'run_qwen_book_sweep.py'
+      - 'run_book_sweep_windows.cmd'
+      - 'configs/qwen14b_book_sweep_v1.json'
+      - 'scripts/qwen_book_sweep.py'
+      - 'scripts/check_qwen_book_sweep_training.py'
+      - 'tests/test_qwen_book_sweep_v1.py'
       - 'run_book_training_windows.cmd'
       - 'configs/qwen14b_book_loop_v3.json'
       - 'scripts/qwen_book_loop.py'
@@ -63,6 +69,8 @@ jobs:
         run: python -m scripts.check_qwen_curriculum_training
       - name: Actual tiny Qwen3 book-only loop, interruption restore and final report
         run: python -m scripts.check_qwen_book_loop_training
+      - name: Actual tiny Qwen3 independent parameter trials, explicit restore and test isolation
+        run: python -m scripts.check_qwen_book_sweep_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
@@ -70,6 +78,7 @@ jobs:
             local/qwen14b_v1/tiny_integration.json
             local/qwen_curriculum_v2/tiny_integration.json
             local/qwen_book_loop_v3/tiny_integration.json
+            local/qwen_book_sweep_v1/tiny_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest
@@ -79,7 +88,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Windows locks, source-only resume contracts and UTF-8 CLI (no GPU)
-        run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 -v
+        run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 tests.test_qwen_book_sweep_v1 -v
       - name: Windows UTF-8 launcher help
         run: python -X utf8 run_qwen_book_loop.py --help
       - name: CMD launcher preserves absent environment without starting training
@@ -87,4 +96,14 @@ jobs:
         run: |
           cmd /c run_book_training_windows.cmd
           if ($LASTEXITCODE -ne 1) { throw "Expected a missing-env refusal in fresh CI checkout" }
+          exit 0
+      - name: Windows parameter sweep CLI help
+        run: python -X utf8 run_qwen_book_sweep.py --help
+      - name: Windows sweep plan has nine configs and starts no training
+        run: python -X utf8 run_qwen_book_sweep.py plan
+      - name: CMD sweep launcher absent environment guard
+        shell: pwsh
+        run: |
+          cmd /c run_book_sweep_windows.cmd
+          if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal" }
           exit 0

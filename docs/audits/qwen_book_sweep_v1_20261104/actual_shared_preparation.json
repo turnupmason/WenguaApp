@@ -1,0 +1,112 @@
+{
+  "state": "passed",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "core_tasks": 5250,
+  "cycles": [
+    {
+      "cycle": 1,
+      "rows": 4815,
+      "formats": {
+        "chart_application": 2536,
+        "foundation_qa": 869,
+        "conditional_dialogue": 1295,
+        "complete_case": 115
+      },
+      "groups": 890,
+      "planned_steps": 602
+    },
+    {
+      "cycle": 2,
+      "rows": 4813,
+      "formats": {
+        "chart_application": 2536,
+        "conditional_dialogue": 1295,
+        "foundation_qa": 869,
+        "complete_case": 113
+      },
+      "groups": 890,
+      "planned_steps": 602
+    },
+    {
+      "cycle": 3,
+      "rows": 4812,
+      "formats": {
+        "chart_application": 2536,
+        "foundation_qa": 869,
+        "conditional_dialogue": 1295,
+        "complete_case": 112
+      },
+      "groups": 890,
+      "planned_steps": 602
+    },
+    {
+      "cycle": 4,
+      "rows": 4812,
+      "formats": {
+        "foundation_qa": 869,
+        "chart_application": 2536,
+        "conditional_dialogue": 1295,
+        "complete_case": 112
+      },
+      "groups": 890,
+      "planned_steps": 602
+    },
+    {
+      "cycle": 5,
+      "rows": 4814,
+      "formats": {
+        "chart_application": 2536,
+        "foundation_qa": 869,
+        "conditional_dialogue": 1295,
+        "complete_case": 114
+      },
+      "groups": 890,
+      "planned_steps": 602
+    },
+    {
+      "cycle": 6,
+      "rows": 4813,
+      "formats": {
+        "foundation_qa": 869,
+        "conditional_dialogue": 1295,
+        "chart_application": 2536,
+        "complete_case": 113
+      },
+      "groups": 890,
+      "planned_steps": 602
+    }
+  ],
+  "validation_loss_rows": 64,
+  "selected_test_prompts": 64,
+  "trial_count_checked": 2,
+  "identical_bytes_for_all_train_validation_test_and_source_files": true,
+  "config_optimization_axes_differ": true,
+  "no_truncation": true,
+  "selection_uses_test": false,
+  "all_million_rows_trained": false,
+  "file_sha256": {
+    "cycle_05.jsonl.gz": "4741c63edbd93415f98554eb429408cc3396653b7537d94ab8c7edfd864a80fb",
+    "validation_loss.jsonl.gz": "78db68e472481c6043477caa574b4b1fd6a29295cdd6b6938a0875dab55183d0",
+    "cycle_01.jsonl.gz": "705866f21647a788787255d8aed11904ac5767698d860c2379397f159a69f91f",
+    "test_prompts.jsonl.gz": "9d2cce04cb19c5d77d707f27ce6d6d730f7c3b26479263741c76c2da4daf0d28",
+    "source_units.jsonl.gz": "9648c11bee1c03432b1c5a6f0e01a198356729144f52547735b24e678e47b26b",
+    "cycle_04.jsonl.gz": "b5c071bd809c98e045be8d8ef807a5c62017b26017720a90a8bffe7ffbedf417",
+    "validation_prompts.jsonl.gz": "6c7e4594d52a9698548d7b8b892e1c71a6296cfb82e983f40bbe6b0b7f23d2e8",
+    "smoke.jsonl.gz": "79afdac661e5c3c1f7b3b7564e57cf8915a353b1ce7a0d5a5aabb0e68c2bea7d",
+    "length_exclusions.json": "41dae2b2da91bc3cf7b86ed3b901ff2c462525626a1037de1f803f230c5a0ad4",
+    "core_records.jsonl.gz": "2c20bc37d196cd163f6029b636558c26507e8cfe304f30b9a81455f4626b1f49",
+    "cycle_02.jsonl.gz": "b7dc07f20c922b8224722d5e217f31991e031914068309df9158224b365cca56",
+    "cycle_06.jsonl.gz": "80d51cd2c23b9c7f5b11fdbe06549b6de7e448317e90e14e7ab318b9ecbdcb67",
+    "generation_budget_exclusions.json": "a485265cd66ab266ea63f8a0fa36ae92e6e55611c515fca145a7e8cb39998482",
+    "cycle_03.jsonl.gz": "ae9fef5db0a8ebabc4a72c94e577ea8d1521ce216efb3dec582222ec2d267962",
+    "tokenizer/tokenizer_config.json": "443bfa629eb16387a12edbf92a76f6a6f10b2af3b53d87ba1550adfcf45f7fa0",
+    "tokenizer/chat_template.jinja": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8",
+    "tokenizer/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer/merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+    "tokenizer/added_tokens.json": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+    "tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+    "tokenizer/special_tokens_map.json": "b82ed33617eedfa71a8e8dda13de1bb8a5443fdf9910cc23e47a6a1585b8a951"
+  },
+  "real_14b_weights_loaded": false,
+  "actual_gpu_training_verified": false
+}

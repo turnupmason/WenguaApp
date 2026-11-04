@@ -13,6 +13,7 @@ def main(argv=None):
             p.add_argument('--cycles',type=int)
         if name=='run':
             p.add_argument('--hours',type=float,default=48);p.add_argument('--fixed-context',action='store_true')
+            p.add_argument('--resume-from-checkpoint',type=Path)
     a=parser.parse_args(argv);c=load_config(a.config,getattr(a,'cycles',None))
     if a.command=='doctor':
         from src.wengua.qwen_finetune import environment_report
@@ -21,7 +22,9 @@ def main(argv=None):
     else:
         if not 0<a.hours<=168:parser.error('--hours must be positive and <=168; finite cycles still bound the job')
         deadline=time.time()+a.hours*3600
-        result=(run_loop if a.fixed_context else run_auto)(a.output,c,deadline,resume=a.resume)
+        if a.resume_from_checkpoint and not a.fixed_context:parser.error('Explicit checkpoint requires --fixed-context; point --output to the actual training job')
+        extra={'resume_from_checkpoint':a.resume_from_checkpoint} if a.fixed_context else {}
+        result=(run_loop if a.fixed_context else run_auto)(a.output,c,deadline,resume=a.resume,**extra)
     print(json.dumps(result,ensure_ascii=False,indent=2),flush=True)
 
 

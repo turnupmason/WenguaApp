@@ -32,17 +32,23 @@
     "configs/qwen14b_book_loop_v3.json": "ced2a33dd25edec567259fe894c7156235b7656cab5d5ff8d3fd2c8c08f4648d",
     "run_qwen_book_loop.py": "7118833e150104e7a9ddb111d7e52104d403dea50ab81743af30bbd33dc7f96c",
     "run_book_training_windows.cmd": "5af435654d86d1428eea914f0c21e1133ace5bad8dddf4ee5b02b09331d68d5e",
-    "scripts/qwen_book_loop.py": "e65c73b6ea375536b2db08b57466ea81c91702cfc92cc0e23952d07336173a1c",
+    "scripts/qwen_book_loop.py": "16060c354cefeb86aa006a0f6bd63096a7af08aaaa52110ba91231c2a4e8d2f6",
     "scripts/check_qwen_book_loop_training.py": "081eff692f96527609822e7734f16c01efe4ac61ff7b3a88f93087862b160947",
-    "src/wengua/qwen_book_loop_v3.py": "dbf0940292c633e7997f47ab9ef73835d8e7b06ee6ec5b51ca6aa89f4627482e",
+    "src/wengua/qwen_book_loop_v3.py": "964c45d78a03ccec1b61a06634cf3d6ee530a087a86ad1d93b9f50c2d7743fd5",
     "src/wengua/qwen_book_dataset_v3.py": "834cf20e937db83b4093289ed03be9c8dbc20aa9c6adb8032db11075dee947e3",
     "src/wengua/qwen_finetune.py": "385b7a5e10848c90ab3e727fcc2cd567578f8df026ae3af44123fd01212e2d69"
   },
   "local_full_suite": {
-    "tests": 1043,
+    "tests": 1057,
     "failures": 0,
     "errors": 0,
-    "existing_skips": 3
+    "existing_skips": 3,
+    "audit": "docs/audits/qwen_book_sweep_v1_20261104/final_full_run/results.json"
   },
-  "source_and_software_checks_passed": true
+  "source_and_software_checks_passed": true,
+  "compatible_extensions": [
+    "explicit_resume_from_checkpoint",
+    "deferred_final_test_for_independent_sweep"
+  ],
+  "superseding_default_entrypoint": "run_book_sweep_windows.cmd"
 }

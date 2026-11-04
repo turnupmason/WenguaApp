@@ -1,0 +1,17 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_book_loop",
+  "official_tokenizer": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "smoke_not_used_as_initial_formal_adapter": true,
+  "paused_step_1_then_resumed_optimizer_to_step_2": true,
+  "adapter_weights_changed_after_resume": true,
+  "next_cycle_same_job_adapter_new_optimizer": true,
+  "base_and_each_cycle_identical_validation_prompts": true,
+  "final_test_selected_only_after_loop": true,
+  "complete_job_resume_does_not_repeat_training_or_test": true,
+  "max_step_checkpoint_after_power_cut_finalized_without_extra_training_step": true,
+  "natural_chinese_answer_report_written": true,
+  "real_14b_weights_loaded": false,
+  "cuda_nf4_tested": false
+}
