@@ -52,5 +52,39 @@
       ]
     }
   ],
-  "new_14b_gpu_training_performed": false
+  "new_14b_gpu_training_performed": false,
+  "published_ready_gate_commit": "d554281205b4ace3f38075d16d124d771afa2a77",
+  "published_ready_gate_runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 41780798651,
+      "headSha": "d554281205b4ace3f38075d16d124d771afa2a77",
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780798651"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41780798678,
+      "headSha": "d554281205b4ace3f38075d16d124d771afa2a77",
+      "name": "Qwen14B and 32B source research and tiny CPU adapter contract",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780798678"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 41780798773,
+      "headSha": "d554281205b4ace3f38075d16d124d771afa2a77",
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "status": "completed",
+      "url": "https://github.com/turnupmason/WenguaApp/actions/runs/41780798773"
+    }
+  ],
+  "local_post_ready_gate_contracts_passed": 22,
+  "full_local_suite": {
+    "tests": 999,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  }
 }

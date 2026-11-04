@@ -2068,3 +2068,6 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41780798773
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d554281205b4ace3f38075d16d124d771afa2a77。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780798773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+课程V2发布后实际就绪门槛验收：d554281205b4ace3f38075d16d124d771afa2a77的主CI#41780798651、微型Qwen检查点恢复/同题双生成#41780798678、原生封存逐字#41780798773全部success；这是ready=true、50源码规范哈希及SQLite逐字校验已生效后的实跑，非复用preparing阶段结果。就绪后22项课程/worker/旧候选隔离/镜像专项及--check-only=release_ready通过，training_started=false。原候选、此前失败与各版完整审计均保留；当前本地新14B训练须以用户job_status/原始对照日志为准。最终只补交接，不再更改课程、配置、已训旧权重或封存App。
