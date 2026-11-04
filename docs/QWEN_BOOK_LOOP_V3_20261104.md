@@ -67,3 +67,6 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_loop.py run --output loc
 
 
 自动loop最终软件实测：1043 tests、0失败／0错误、3既有skip；15项loop标准库专项（含缓存／源合同／回退／恢复）及镜像通过。官方分词器的2048／4096六轮实际语料与独立64组loss、16组验证生成／64组最终测试预算均完成检查。真实微型随机Qwen3 CPU重放短测／中断恢复／两轮接权重／原模对照／最终测试通过；不是14B/CUDA实训。此前8-token微型夹具预算不足造成的失败原日志保留，改用64-token夹具并新增完整预算阻断；实际默认768。CI新增真实Windows锁与CMD入口专项及Linux微型book-loop，远端实跑结果随后核验。
+
+
+自动loop源码7f91ab68实际远端验证：主CI#41878747465双Python日志无错误；Qwen#41878747788已下载新book-loop passed产物；Windows job126745366447日志15项OK、UTF-8帮助及CMD缺环境阻断均实跑。API最初queued快照滞后，验收依据是实际完整日志／产物，未拿queued冒充通过。Windows单测与帮助现分成独立步骤，避免PowerShell后续成功命令掩盖先前非零退出。14B／4080真实显存短测仍由用户本机执行，云端只验证CPU微型控制。

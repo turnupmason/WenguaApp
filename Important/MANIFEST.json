@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "46d1f6e1de0c2cdb0e95786211138673406072ec"
+      "sha": "364c3d2a41ef9034f471fe89e396c917c01a2030"
     },
     {
       "platform": "python",

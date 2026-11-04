@@ -79,9 +79,9 @@ jobs:
         with:
           python-version: '3.12'
       - name: Windows locks, source-only resume contracts and UTF-8 CLI (no GPU)
-        run: |
-          python -X utf8 -m unittest tests.test_qwen_book_loop_v3 -v
-          python -X utf8 run_qwen_book_loop.py --help
+        run: python -X utf8 -m unittest tests.test_qwen_book_loop_v3 -v
+      - name: Windows UTF-8 launcher help
+        run: python -X utf8 run_qwen_book_loop.py --help
       - name: CMD launcher preserves absent environment without starting training
         shell: pwsh
         run: |
