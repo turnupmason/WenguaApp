@@ -1,3 +1,5 @@
+> **首次实际回答未合格，已有修正：** CMD查看编码、具体字段诊断和作用问题的通则检索见[本轮排错](QWEN14B_UTF8_TRACE_AND_ROLE_RETRIEVAL_20261103.md)。更新后请重新跑同一版本提示的两组对照；旧失败trace原样保留。
+
 # 14B首版完整训练后的回答检查
 
 ## 已经观察到的结果
@@ -38,7 +40,7 @@ local\qwen_env\Scripts\python.exe run_qwen_research.py chat --data local\qwen14b
 local\qwen_env\Scripts\python.exe run_qwen_research.py chat --data local\qwen14b_v1\run1\data --adapter-run local\qwen14b_v1\run1\full --mode source_study --max-new-tokens 768 --base-only --question "古籍中天芮星与天心星的作用有什么区别？"
 ```
 
-两次分别加载、退出，复用已有基座缓存。768是回答上限，程序从2048总量中为它保留预算，不是扩大训练上下文；按当前资料与tokenizer，这题可保留一段完整来源，输入约909 tokens，总预算1677，长度检查已实际执行，不等于已在代理侧运行14B生成。
+两次分别加载、退出，复用已有基座缓存。768是回答上限，程序从2048总量中为它保留预算，不是扩大训练上下文；旧版首次保留的是一段转盘步骤（909输入），实际回答未切题；当前改用病例前第9/11行通则，完整来源经tokenizer预算检查后才发送，不等于已在代理侧运行14B生成。
 
 检查：是否回答了问题、来源是否支持、有没有擅自补盘/出生信息、相反条件是否保留、JSON是否完整、引用是否真实。先区分格式/引用失败和专业推理错误，不能拿一条基础题就宣布模型比原版强。真正的留出评测应按事件隔离、排除同案资料，验证集用于选择版本，测试集不反复用于调参；目前尚未完成该生成评测程序及分任务人工审校。
 

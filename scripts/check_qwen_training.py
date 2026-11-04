@@ -10,7 +10,7 @@ from src.wengua.qwen_research import ROOT, build_pack, make_prompt, sample, writ
 
 def main():
     import torch
-    from transformers import AutoTokenizer, Qwen3Config, Qwen3ForCausalLM, Trainer, TrainingArguments, set_seed
+    from transformers import AutoModelForCausalLM, AutoTokenizer, Qwen3Config, Qwen3ForCausalLM, Trainer, TrainingArguments, set_seed
     from peft import LoraConfig, PeftModel, get_peft_model
     torch.set_num_threads(2)
     (ROOT / 'local').mkdir(exist_ok=True)
@@ -22,6 +22,8 @@ def main():
     _, kept, budget = fit_inference_prompt(prompt, documents, tokenizer, context_limit=2048, max_new_tokens=768)
     assert budget['input_tokens'] + budget['max_new_tokens'] <= 2048
     assert kept and budget['dropped_reference_ids']
+    assert {(9, 9), (11, 11)} <= {tuple(d.get('lines', [])) for d in kept
+                                if d.get('section_key') == 'health_prediction_ch01'}
     row = sample('integration', 'synthetic_no_historical_event', '说明来源。',
                  {'mode': 'source_study', 'summary': '这是程序夹具。', 'evidence': [],
                   'counter_evidence': [], 'missing_information': [], 'event_probability': None}, 'synthetic')
@@ -42,6 +44,11 @@ def main():
                                            lora_dropout=0.0, task_type='CAUSAL_LM'))
     before = {k: v.detach().clone() for k, v in model.named_parameters() if v.requires_grad}
     with tempfile.TemporaryDirectory(dir=ROOT / 'local') as temp:
+        independent_base.save_pretrained(Path(temp) / 'cached_base')
+        cached = AutoModelForCausalLM.from_pretrained(Path(temp) / 'cached_base', dtype=torch.bfloat16,
+                                                    local_files_only=True, trust_remote_code=False)
+        assert cached.get_input_embeddings().weight.dtype == torch.bfloat16
+        del cached
         args = TrainingArguments(output_dir=temp, max_steps=2, per_device_train_batch_size=1,
                                  learning_rate=0.001, report_to='none', save_strategy='no', logging_steps=1,
                                  use_cpu=True, bf16=True, dataloader_pin_memory=False, seed=3407)
@@ -67,6 +74,7 @@ def main():
                    'trainable_weights_changed': True, 'adapter_reload_logits_equal': True,
                    'frozen_large_matrices_keep_bf16': True, 'norm_vectors_fp32': True,
                    'official_tokenizer_inference_budget': budget,
+                   'offline_cached_dtype_loader': True,
                    'loss': result.training_loss, 'real_32b_trained': False,
                    'real_full_size_model_trained': False, 'cuda_nf4_tested': False}
     profile = 'qwen14b_v1' if config['model_id'] == 'Qwen/Qwen3-14B' else 'qwen32b_v1'

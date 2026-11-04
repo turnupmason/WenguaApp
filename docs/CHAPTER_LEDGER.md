@@ -2008,3 +2008,14 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码2521f86478eacb68ab9ba2f25131c2dca260b416。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41771130292_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 回答检查终版源码2521f864实际CI：主CI#41771130300双Python3.11/3.12、Qwen14B/32B微型CPU接口#41771130369、旧健康原生兼容#41771130292全部success，四项关键源码远端字节核对通过，收据docs/audits/qwen14b_answer_review_v1_20261103/implementation_ci.json。已接收ea58e562自动旧原生归档；最后仅交接记录，无训练配置/权重/源数据变化。本轮实际新增的是可复查的单题提问和原版对照入口，不是已完成14B生成评测；用户完整两轮训练的真实日志证据已独立保存，不与CPU接口测试混称。下一步按首版回答检查指南跑相同题的adapter/base-only，核查引用支持、JSON模式、实际盘面和未知条件，暂不继续增加轮数。
+
+
+### 2026-11-03 · 首次回答真实失败：CMD显示、schema和来源三层修正
+
+用户首问已生成249 tokens且无截断，随后missing_information字符串被数组校验拒绝。用户type副本出现CP437错解UTF-8，可在私有分析副本无损还原；恢复提示SHA3f0fd2d…与trace完全一致，不能称训练数据乱码损坏。此前直接type命令缺少CMD编码说明，已补chcp65001/PythonUTF-8，只读review无需GPU/联网。恢复原答确实复制转盘步骤、未解释天芮/天心，第一次内容不合格；失败摘要docs/audits/qwen14b_trace_repair_20261103/user_trace_diagnosis.json，不公开长原书或改原trace。
+
+检索原白名单过窄漏掉疾病章一般通则，现用新增safe_general_rule_scopes.json仅放行原书病例前第9/11行health_yongshen，逐章节SHA/行号/原段内容SHA匹配，重复段落排重；作用问题优先通则，排盘/明确其他领域不加疾病优先。病例后披露规则不放行，draft不升格，无SFT/分组/旧语料/配置/已训练权重变更，不需重训或重新prepare。新推理指令明确数组类型、资料学习不必起新盘；仍不保证模型遵守。
+
+新增review只读旧UTF-8 trace并给出字段名/期望与实际类型，不自动转换错误值；chat拒绝时直接输出rejected原答和诊断、保存trace、退出2而非泛化堆栈。根入口UTF-8输出；chat默认本地缓存，避免可选custom_generate HEAD连接重置，缓存缺失显式allow-model-download，dtype替代弃用别名（数值设置不变）。详见docs/QWEN14B_UTF8_TRACE_AND_ROLE_RETRIEVAL_20261103.md；更新后adapter/base需用同一新提示重跑，不能混用旧错源回答做评测。专项25项已通过，实际新14B生成仍待用户；新完整回归/微型CPU/CI待执行。新增原章0/历史事件0。
+
+本轮本地终版验收：25专项+镜像1通过；真实官方14B tokenizer确认新题保留病例前第9/11行两段（输入691、回答预算768、总1459≤2048），不再只给转盘段。缓存本地dtype加载、微型CPU BF16 LoRA/独立重载一致通过；全库978 tests、0 failures/0 errors/3既有skip，日志docs/audits/qwen14b_trace_repair_20261103/full_run。用户随后用Python UTF-8读取原raw_output，中文已正常，实际missing_information仍字符串且回答仍为转盘段，与私有恢复诊断一致。新prompt的真实GPU回答未测，旧回答仍判不合格；新CI待推送核验。

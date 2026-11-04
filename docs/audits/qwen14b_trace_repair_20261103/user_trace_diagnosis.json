@@ -1,0 +1,23 @@
+{
+  "source": "user_pasted_CMD_type_display_of_UTF8_trace",
+  "original_trace_relative": "local/qwen14b_v1/run1/full/inference/20261104T041245995264Z_adapter.json",
+  "copy_recovery_applied_only_in_private_analysis": "encode cp437 then decode UTF-8; original files never edited",
+  "recovered_prompt_sha256_matches_recorded": true,
+  "recorded_prompt_sha256": "3f0fd2d30147413b491603add404ba1b9254336c19ea60cba955e6d0dd8d2ad9",
+  "variant": "adapter",
+  "generated_tokens": 249,
+  "reached_token_limit": false,
+  "schema_issues": [
+    {
+      "field": "missing_information",
+      "expected": "array",
+      "actual": "string"
+    }
+  ],
+  "original_status": "rejected",
+  "recheck_passed": false,
+  "semantic_review": "The supplied reference and copied response describe star rotation, not the requested illness/doctor roles. Not a qualified answer.",
+  "trained_weights_modified": false,
+  "new_GPU_generation_independently_tested": false,
+  "prediction_validated": false
+}

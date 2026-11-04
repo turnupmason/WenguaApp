@@ -1,0 +1,19 @@
+{
+  "schema": "qwen_reference_general_scope_v1",
+  "purpose": "Retrieval-only source adapters; never change SFT eligibility or case splits.",
+  "adapters": [
+    {
+      "book_id": "shenqi",
+      "section_key": "health_prediction_ch01",
+      "source_sha256": "3f9a01be996e6230c73cc7df27f00c11134f9308e4115cf934f59fead6de0e3a",
+      "assertion_kind": "health_yongshen",
+      "scope": "general_signifier_roles_before_registered_cases",
+      "domain_keywords": ["疾病", "看病", "医药", "医生", "病星", "天芮星", "天心星"],
+      "other_domain_keywords": ["工作", "求职", "升职", "求财", "经营", "婚姻", "考试", "官司", "诉讼", "出行", "失物"],
+      "allowed_passages": [
+        {"lines": [9, 9], "content_sha256": "015cbdcec6a335c672e2044c1932153712b096a697a0acf55d8aa47dd49c4165"},
+        {"lines": [11, 11], "content_sha256": "c7b5d63d6d411cae554a2564ffd5aa2d219e49a1401b6921a92f4d2aae52717b"}
+      ]
+    }
+  ]
+}

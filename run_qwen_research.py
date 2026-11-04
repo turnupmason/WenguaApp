@@ -7,5 +7,9 @@ if __name__ == '__main__':
     if sys.version_info < (3, 11):
         raise SystemExit('Select Python 3.11 or 3.12.')
     os.chdir(Path(__file__).resolve().parent)
+    if os.name == 'nt':
+        for stream in (sys.stdout, sys.stderr):
+            if hasattr(stream, 'reconfigure'):
+                stream.reconfigure(encoding='utf-8')
     from scripts.qwen_research import main
     main()

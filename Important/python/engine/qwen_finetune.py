@@ -166,7 +166,7 @@ def prepare_frozen_base(model, *, gradient_checkpointing=True):
     return model
 
 
-def load_cuda_base(config, *, training):
+def load_cuda_base(config, *, training, allow_download=False):
     import torch
     assessment = assess_gpu_capacity(environment_report(config), config)
     if assessment['status'] == 'blocked':
@@ -177,7 +177,8 @@ def load_cuda_base(config, *, training):
                                bnb_4bit_use_double_quant=True, bnb_4bit_compute_dtype=compute)
     model = AutoModelForCausalLM.from_pretrained(config['model_id'], revision=config['revision'],
                 quantization_config=quant, device_map={'': torch.cuda.current_device()},
-                torch_dtype=compute, attn_implementation='sdpa', trust_remote_code=False)
+                dtype=compute, attn_implementation='sdpa', trust_remote_code=False,
+                local_files_only=not (training or allow_download))
     model.config.use_cache = not training
     return model, compute
 
@@ -296,7 +297,7 @@ def fit_inference_prompt(messages, documents, tokenizer, *, context_limit, max_n
 
 
 def local_answer(messages, adapter_run, max_new_tokens=512, *, documents=None,
-                 base_only=False, return_details=False):
+                 base_only=False, return_details=False, allow_model_download=False):
     """Direct CUDA inference, optionally comparing the identical base without LoRA."""
     from transformers import AutoTokenizer
     from peft import PeftModel
@@ -308,7 +309,7 @@ def local_answer(messages, adapter_run, max_new_tokens=512, *, documents=None,
     context_limit = config.get('inference_max_context', config['max_seq_length'])
     if not 1 <= max_new_tokens < context_limit:
         raise ValueError('Reserve a positive input token budget')
-    tokenizer = AutoTokenizer.from_pretrained(run / 'adapter', trust_remote_code=False)
+    tokenizer = AutoTokenizer.from_pretrained(run / 'adapter', trust_remote_code=False, local_files_only=True)
     audit = None
     kept = documents
     if documents is not None:
@@ -318,9 +319,9 @@ def local_answer(messages, adapter_run, max_new_tokens=512, *, documents=None,
                                            enable_thinking=False, return_tensors='pt')
     if inputs.shape[1] + max_new_tokens > context_limit:
         raise ValueError('Prompt + response exceed this adapter context budget; reduce references or response length.')
-    model, _ = load_cuda_base(config, training=False)
+    model, _ = load_cuda_base(config, training=False, allow_download=allow_model_download)
     if not base_only:
-        model = PeftModel.from_pretrained(model, run / 'adapter')
+        model = PeftModel.from_pretrained(model, run / 'adapter', local_files_only=True)
     model.eval()
     inputs = inputs.to(model.device)
     import torch

@@ -1,0 +1,34 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_lora",
+  "steps": 2,
+  "tokenizer": "Qwen/Qwen3-14B",
+  "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "assistant_mask_tokens": 213,
+  "total_tokens": 247,
+  "trainable_weights_changed": true,
+  "adapter_reload_logits_equal": true,
+  "frozen_large_matrices_keep_bf16": true,
+  "norm_vectors_fp32": true,
+  "official_tokenizer_inference_budget": {
+    "context_limit": 2048,
+    "max_new_tokens": 768,
+    "original_input_tokens": 13442,
+    "input_tokens": 691,
+    "kept_reference_ids": [
+      "section:5:L9-9:10a30e163b",
+      "section:5:L11-11:60e4275fab"
+    ],
+    "dropped_reference_ids": [
+      "section:24:L40-52:8bc2c4bf91",
+      "case:shenqi.life.case02"
+    ],
+    "question_chart_and_system_truncated": false,
+    "reference_content_truncated": false
+  },
+  "offline_cached_dtype_loader": true,
+  "loss": 11.912134170532227,
+  "real_32b_trained": false,
+  "real_full_size_model_trained": false,
+  "cuda_nf4_tested": false
+}

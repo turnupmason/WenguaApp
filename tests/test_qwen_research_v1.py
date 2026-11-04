@@ -7,7 +7,8 @@ import unittest
 from unittest.mock import patch
 
 from src.wengua.qwen_research import (ROOT, build_pack, check_answer, export_pack, make_prompt,
-                                     retrieve, split_for, terms, trusted_chart)
+                                     retrieve, split_for, terms, trusted_chart, GENERAL_SCOPES,
+                                     general_reference_scope, json_text, digest, review_inference_trace)
 from src.wengua.qwen_finetune import (assess_gpu_capacity, checked_splits, encode_sample,
                                      fit_inference_prompt, load_config, train)
 
@@ -110,6 +111,27 @@ class QwenResearch(unittest.TestCase):
         self.assertEqual(len(config['revision']), 40)
         self.assertEqual(config['target_modules'], ['q_proj', 'v_proj'])
         self.assertFalse(config['enable_thinking'])
+
+    def test_role_question_retrieves_distinct_pre_case_illness_and_doctor_rules(self):
+        question = '古籍中天芮星与天心星的作用有什么区别？'
+        docs = retrieve(self.pack['documents'], question, mode='source_study')
+        self.assertEqual({tuple(d['lines']) for d in docs[:2]}, {(9, 9), (11, 11)})
+        self.assertTrue(all(d['role_source_priority'] for d in docs[:2]))
+        self.assertTrue(all(d['section_key'] == 'health_prediction_ch01' for d in docs[:2]))
+        other_domain = retrieve(self.pack['documents'], '工作预测中天心星的作用是什么？', mode='source_study')
+        self.assertFalse(any(d['role_source_priority'] for d in other_domain))
+        for mode in ('source_study', 'traditional_reading'):
+            found = retrieve(self.pack['documents'], question, mode=mode)
+            self.assertEqual(len(found), len({(d.get('section_id'), tuple(d.get('lines', [])), d['content']) for d in found}))
+        messages, _ = make_prompt(question, self.pack['documents'], mode='source_study')
+        self.assertNotIn('missing_chart', json.loads(messages[-1]['content']))
+
+    def test_reference_scope_rejects_changed_text_case_lines_and_wrong_source(self):
+        adapters = json.loads(GENERAL_SCOPES.read_text())['adapters']
+        doc = next(d for d in self.pack['documents'] if d.get('concept_id') == 'health:role:doctor_star')
+        self.assertIsNotNone(general_reference_scope(doc, adapters))
+        for patch_value in ({'content': doc['content'] + '后来反馈'}, {'lines': [67, 67]}, {'source_sha256': '0' * 64}):
+            self.assertIsNone(general_reference_scope(dict(doc, **patch_value), adapters))
 
 
 class AssistantMask(unittest.TestCase):
@@ -241,12 +263,18 @@ class InferenceTrace(unittest.TestCase):
             generation = {'variant': 'base_only', 'prompt_budget': {}, '_sent_messages': ['actual sent prompt fixture']}
             with patch('src.wengua.qwen_finetune.local_answer', return_value=(content, [], generation)) as model:
                 args = ['chat', '--data', str(data), '--adapter-run', str(run), '--question', '夹具', '--base-only']
-                with redirect_stdout(StringIO()):
+                stream = StringIO()
+                with redirect_stdout(stream):
                     if valid:
                         main(args)
                     else:
-                        with self.assertRaisesRegex(ValueError, 'raw output saved'):
+                        with self.assertRaises(SystemExit) as exit_status:
                             main(args)
+                        self.assertEqual(exit_status.exception.code, 2)
+                printed = json.loads(stream.getvalue())
+                if not valid:
+                    self.assertEqual(printed['status'], 'rejected')
+                    self.assertEqual(printed['raw_output'], content)
                 self.assertTrue(model.call_args.kwargs['base_only'])
             paths = list((run / 'inference').glob('*.json'))
             self.assertEqual(len(paths), 1)
@@ -264,6 +292,39 @@ class InferenceTrace(unittest.TestCase):
         answer = {'mode': 'traditional_reading', 'summary': '资料不足', 'evidence': [],
                   'counter_evidence': [], 'missing_information': ['没有来源'], 'event_probability': None}
         self.check_trace(json.dumps(answer, ensure_ascii=False), valid=True)
+
+    def test_string_missing_information_is_rejected_with_named_field(self):
+        answer = {'mode': 'source_study', 'summary': '原始回答', 'evidence': [],
+                  'counter_evidence': [], 'missing_information': '没有新盘', 'event_probability': None}
+        with self.assertRaisesRegex(ValueError, 'missing_information expected array, got string'):
+            check_answer(answer, [], 'source_study')
+        self.assertIsInstance(answer['missing_information'], str)
+
+    def test_review_utf8_trace_is_read_only_and_never_loads_gpu(self):
+        from scripts.qwen_research import main
+        from contextlib import redirect_stdout
+        from io import StringIO
+        (ROOT / 'local').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=ROOT / 'local') as temp:
+            path = Path(temp) / '原始回答.json'
+            messages = [{'role': 'user', 'content': json_text({'references': []})}]
+            answer = {'mode': 'source_study', 'summary': '中文不是乱码', 'evidence': [],
+                      'counter_evidence': [], 'missing_information': '原值保留', 'event_probability': None}
+            trace = {'question': '天芮与天心', 'raw_output': json_text(answer), 'mode': 'source_study',
+                     'sent_messages': messages, 'generation': {'variant': 'adapter', 'prompt_sha256': digest(json_text(messages))},
+                     'status': 'rejected'}
+            path.write_text(json_text(trace), encoding='utf8')
+            before = path.read_bytes()
+            with patch('src.wengua.qwen_finetune.local_answer', side_effect=AssertionError('GPU must not load')) as gpu:
+                stream = StringIO()
+                with redirect_stdout(stream):
+                    main(['review', '--trace', str(path)])
+                gpu.assert_not_called()
+            report = json.loads(stream.getvalue())
+            self.assertEqual(report['parsed_output']['summary'], '中文不是乱码')
+            self.assertEqual(report['schema_issues'][0]['field'], 'missing_information')
+            self.assertFalse(report['recheck_passed'])
+            self.assertEqual(path.read_bytes(), before)
 
 
 if __name__ == '__main__':

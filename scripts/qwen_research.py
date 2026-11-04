@@ -6,7 +6,8 @@ from pathlib import Path
 import urllib.request
 
 from src.wengua.qwen_research import (ROOT, DEFAULT_CONFIG, check_answer, export_pack,
-                                     make_prompt, read_rows, retrieve, private_path, write_json)
+                                     make_prompt, read_rows, retrieve, private_path, write_json,
+                                     response_type_issues, review_inference_trace)
 from src.wengua.qwen_finetune import (checked_splits, environment_report, load_config,
                                      tokenize_split, train)
 
@@ -14,6 +15,8 @@ from src.wengua.qwen_finetune import (checked_splits, environment_report, load_c
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command')
+    review = commands.add_parser('review', help='Read an existing UTF-8 inference trace; no GPU, network or regeneration')
+    review.add_argument('--trace', type=Path, required=True)
     prepare = commands.add_parser('prepare', help='Read-only source export, private outputs; no GPU or model download')
     prepare.add_argument('--output', type=Path)
     doctor = commands.add_parser('doctor', help='Local environment and GPU report; no checkpoint download')
@@ -43,11 +46,15 @@ def main(argv=None):
             command.add_argument('--adapter-run', type=Path, required=True)
             command.add_argument('--max-new-tokens', type=int, default=512)
             command.add_argument('--base-only', action='store_true', help='Use the same base/tokenizer/prompt without the trained LoRA')
+            command.add_argument('--allow-model-download', action='store_true',
+                                 help='Opt into Hub access if the pinned base is absent from the local cache')
     reference = commands.add_parser('reference', help='Explicit private source browser; excluded from evaluation retrieval')
     reference.add_argument('--data', type=Path, required=True)
     reference.add_argument('--id', required=True)
     args = parser.parse_args(argv)
-    if args.command in (None, 'prepare'):
+    if args.command == 'review':
+        result = review_inference_trace(args.trace)
+    elif args.command in (None, 'prepare'):
         stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
         output = getattr(args, 'output', None) or ROOT / 'local/qwen14b_v1' / stamp / 'data'
         result = {'output': str(output), **export_pack(output)}
@@ -90,7 +97,8 @@ def main(argv=None):
                 if args.command == 'chat':
                     from src.wengua.qwen_finetune import local_answer
                     content, docs, generation = local_answer(messages, args.adapter_run, args.max_new_tokens,
-                                documents=docs, base_only=args.base_only, return_details=True)
+                                documents=docs, base_only=args.base_only, return_details=True,
+                                allow_model_download=args.allow_model_download)
                 else:
                     payload = {'model': args.model, 'messages': messages, 'stream': False,
                                'temperature': 0.7, 'top_p': 0.8, 'max_tokens': 2048,
@@ -119,8 +127,16 @@ def main(argv=None):
                         result = check_answer(json.loads(content), docs, args.mode)
                     except (ValueError, TypeError, KeyError) as error:
                         trace.update(status='rejected', error=str(error))
+                        try:
+                            trace['schema_issues'] = response_type_issues(json.loads(content))
+                        except (ValueError, TypeError):
+                            trace['schema_issues'] = []
                         write_json(trace_path, trace)
-                        raise ValueError('Model answer rejected; raw output saved at ' + str(trace_path) + ': ' + str(error)) from error
+                        print(json.dumps({'status': 'rejected', 'error': str(error),
+                                          'schema_issues': trace['schema_issues'], 'raw_output': content,
+                                          'trace_path': str(trace_path), 'prediction_validated': False},
+                                         ensure_ascii=False, indent=2))
+                        raise SystemExit(2) from None
                     trace.update(status='parsed', checked_answer=result)
                     write_json(trace_path, trace)
                     result['generation'] = generation
