@@ -1,0 +1,18 @@
+{
+  "evidence": "user_pasted_nvidia_smi_and_task_manager_screenshots",
+  "trial": "r16_2048_00d82869e3a5",
+  "probe_optimizer_progress": "0/2 after approximately 30 minutes",
+  "nvidia_smi_memory_used_mib": 15997,
+  "nvidia_smi_memory_total_mib": 16376,
+  "gpu_utilization_percent": 100,
+  "gpu_power_watts": 76.46,
+  "task_manager_dedicated_gb": 15.6,
+  "task_manager_shared_gb": 8.9,
+  "task_manager_combined_gb": 24.5,
+  "system_shared_gpu_memory_in_use_verified": true,
+  "recommended_per_program_policy": "CUDA - Sysmem Fallback Policy: Prefer No Sysmem Fallback",
+  "official_source": "https://nvidia.custhelp.com/app/answers/detail/a_id/5490",
+  "policy_applied_by_user_verified": false,
+  "post_policy_training_throughput_verified": false,
+  "training_kernel_changes": false
+}

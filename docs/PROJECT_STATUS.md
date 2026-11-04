@@ -3768,3 +3768,5 @@ PID回执修复本地1083项全量0失败/0错误，3项既有skip。26项V2控�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码876f30eddcf86fd367fd785fc7f541a42a4a8f22。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41924812430_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：Qwen#41924812385 Windows job126906302285普通Python55项＋真实无pip venv26项均OK；venv实际launcher/worker PID2360/9136与6212/7064不同，修复后回执接受（不是仅模拟PID测试）。CPU job126906302809六子进程恢复已完成stage不重训、旧合同备份升级、优化器恢复均通过；主CI#41924812618双Python job126906304939/126906305342完整日志均匹配源码、无error且cleanup。证据docs/audits/qwen_book_windows_venv_pid_20261104/remote_source_ci.json。继续原run3，已成功worker的stage读取复用；原训练内核和来源不变，实际4080后续组日志待本机。
+
+4080吞吐诊断：七模块r16/2048短测约半小时0/2，GPU100%/15997MiB/76.46W；用户两张任务管理器截图专用15.6GB、共享8.8→8.9GB、合计24.5GB，确认系统共享GPU内存已在使用。按NVIDIA官方5490建议停止worker后，对实际Python主程序设置CUDA Sysmem Fallback Policy=Prefer No Sysmem Fallback，再继续原run3；既有loop明确CUDA OOM会记录跳过。仅文档与用户回传证据，无训练源码/数据/参数变更，不重复全量测试；用户实际应用策略及后续吞吐尚待确认。证据docs/audits/qwen_book_process_isolation_20261104/user_reported_shared_memory_fallback.json。

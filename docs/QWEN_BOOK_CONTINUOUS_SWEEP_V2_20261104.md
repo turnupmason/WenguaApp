@@ -4,6 +4,12 @@
 
 ## Windows CMD启动
 
+**4080共享内存回退实测补充：** 用户七模块r16/2048短测半小时仍0/2，nvidia-smi显示15997/16376MiB、GPU100%但功耗76.46W；任务管理器同时专用15.6GB、共享8.8→8.9GB，总计24.5GB。这是训练已使用系统共享内存的实机证据，显卡物理显存仍16GB，不应继续把长时间0/2解释成单纯等待梯度累积。
+
+先在训练窗口一次Ctrl+C并等待worker退出。按[NVIDIA官方说明](https://nvidia.custhelp.com/app/answers/detail/a_id/5490)，在NVIDIA控制面板→管理3D设置→程序设置，为实际Python主程序设置`CUDA - Sysmem Fallback Policy`为`Prefer No Sysmem Fallback`并应用。项目CMD中可执行`local\qwen_env\Scripts\python.exe -c "import sys; print(sys._base_executable)"`查主程序路径；Windows venv启动器与实际Python可能不同，选择实际主程序。该程序级策略可恢复`Driver Default`，不需要全局修改。
+
+设置后重新运行同名入口，继续原run3。短测若明确CUDA OOM，现有loop会记录该配置并跳过；不会因驱动自动回退而持续用共享内存慢跑。其他错误仍保留并停止，不伪装OOM。不修改数据、LoRA参数或已有合同。关闭回退后的实际吞吐／可行配置仍待用户本机确认，不能从截图保证七模块配置能装下。
+
 Windows虚拟环境的启动器PID可能不同于实际Python worker PID。回执协议2按请求原始SHA＋随机call_id校验，两个PID分别记录，不再要求相等。已有已知版本`process_execution.json`会先逐字节备份再作执行器协议升级，训练合同/数据/检查点不变；若此前worker退出0但父进程误拒绝回执，重跑会读取已保存complete短测状态，不重新训练这两步。未知来源合同仍拒绝自动改写。
 
 使用已经装好CUDA依赖的 `local\qwen_env`，无需重装Python/torch。此入口要求此前已完整下载固定revision权重与tokenizer。需首次下载时用直接CLI省略`--offline`并指定新的输出目录。离线启动不会自动联网补文件。

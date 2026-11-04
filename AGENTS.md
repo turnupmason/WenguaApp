@@ -42,6 +42,8 @@
 
 > **Windows venv回执修复：** 用户worker exit0但父进程PID校验拒绝。启动器PID与实际Python PID可不同，现用原始请求SHA＋随机call_id关联回执，PID仅诊断；错误nonce/hash仍拒绝。只允许已知cde42de2执行器合同备份升级到回执协议2，不改训练合同/检查点。继续run3，已保存complete短测直接返回，不再训练两步。CI新增真实Windows venv（非普通Python）验证，实际PID差异另据日志确认。
 
+> **4080吞吐实机新证据：** 七模块r16/2048短测半小时0/2，GPU15997/16376MiB/100%/76.46W；任务管理器专用15.6GB＋共享8.9GB＝24.5GB，证实已使用系统共享GPU内存。指导按NVIDIA官方5490对实际Python主程序设CUDA Sysmem Fallback Policy→Prefer No Sysmem Fallback，停止后重启同run3；明确CUDA OOM由既有loop记录跳过。无源码／数据／超参数修改；驱动设置后实际吞吐仍待本机。不要再次归为首次只有7GiB或简单等待累积。
+
 # AGENTS.md — WenguaApp 长期开发代理执行规范
 
 > **最高优先级更新：所有用户逐章提供的原书案例直接作为项目认可历史案例入库，不再请求用户逐例人工审核；跨书同领域共用事件库。必须保留原书错误、事后修正和原始来源。详见本文最新最高优先级指令。**
