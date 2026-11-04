@@ -1,0 +1,20 @@
+{
+  "source_sha": "718ae4ff746900a56f964ec7e5cc42ce95c89584",
+  "main_run": 41935207377,
+  "python_jobs": [
+    126941818174,
+    126941818220
+  ],
+  "both_decoded_logs_match_source_and_cleanup_without_errors": true,
+  "new_review_tests_per_job": 3,
+  "local_full_suite_tests": 1086,
+  "local_failures": 0,
+  "local_errors": 0,
+  "real_xlsx_readback_validated": true,
+  "validation_tasks": 429,
+  "answer_review_rows": 20,
+  "source_units": 288,
+  "training_kernel_and_process_contract_files_unchanged": true,
+  "test_questions_exported": false,
+  "model_answers_or_human_ratings_prefilled": false
+}
