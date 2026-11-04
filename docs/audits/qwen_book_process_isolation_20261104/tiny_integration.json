@@ -1,0 +1,12 @@
+{
+  "state": "passed",
+  "test": "actual_spawned_tiny_qwen3_cpu_training",
+  "distinct_child_processes": 5,
+  "existing_completed_probe_and_contract_preserved": true,
+  "sealed_step_1_optimizer_resumed_in_new_process": true,
+  "two_formal_configurations_finish_with_four_format_validation": true,
+  "final_test_isolated_after_selection": true,
+  "completed_resume_spawns_no_workers": true,
+  "real_14b_weights_loaded": false,
+  "cuda_allocator_release_verified": false
+}

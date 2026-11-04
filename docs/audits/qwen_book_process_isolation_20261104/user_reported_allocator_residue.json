@@ -1,0 +1,12 @@
+{
+  "source": "user_pasted_run3_sweep_status",
+  "first_trial": "r8_2048_2b9c0549c8dc",
+  "first_probe_state": "complete",
+  "before": {"free_gib":14.720703125,"allocated_gib":0.0,"reserved_gib":0.0},
+  "after": {"free_gib":7.892578125,"allocated_gib":0.015870094299316406,"reserved_gib":6.763671875},
+  "blocked_next_trial": "r16_2048_09850ffb1a83",
+  "next_preflight": {"free_gib":7.892578125,"allocated_gib":0.015870094299316406,"reserved_gib":6.763671875},
+  "interpretation": "The same CUDA process retained allocator segments despite caller-boundary GC and empty_cache. CPU weak-reference collection did not demonstrate CUDA allocator release. The first trial did start with normal free memory.",
+  "precise_cuda_allocator_internal_cause_verified": false,
+  "new_process_isolation_actual_4080_run_verified": false
+}

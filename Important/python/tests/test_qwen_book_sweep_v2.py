@@ -11,10 +11,61 @@ import os
 
 from src.wengua import qwen_book_continuous_v1 as engine
 from src.wengua import qwen_book_sweep_v2 as sweep
+from src.wengua import qwen_book_process_v1 as processes
 from src.wengua.qwen_book_continuous_v1 import book
 
 
 class ContinuousStagedContracts(unittest.TestCase):
+    def test_actual_fresh_interpreters_exit_without_importing_torch(self):
+        with TemporaryDirectory(dir=book.ROOT/'local') as tmp,patch.dict(os.environ,{'HF_HUB_OFFLINE':'1'}):
+            root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'fixture':True})
+            c=engine.base_config();job=engine.open_job(root/'trials'/'case',c,resume=False)
+            first=processes.launch(job,c,time.time()+3600,'ping')
+            second=processes.launch(job,c,time.time()+3600,'ping')
+            self.assertNotEqual(first['pid'],second['pid']);self.assertNotEqual(first['pid'],os.getpid())
+            self.assertFalse(first['torch_imported']);self.assertFalse(second['torch_imported'])
+            self.assertEqual(first['offline'],'1');self.assertEqual(second['offline'],'1')
+
+    def test_interrupted_parent_signals_and_waits_for_worker(self):
+        child=Mock();child.poll.return_value=None
+        processes.stop_child(child)
+        child.send_signal.assert_called_once();child.wait.assert_called_once_with(timeout=60)
+        child.terminate.assert_not_called()
+
+    def test_process_delegate_preserves_kernel_hashes_and_restores_functions(self):
+        with TemporaryDirectory(dir=book.ROOT/'local') as tmp,patch.object(processes,'launch',return_value={'state':'complete'}) as launch:
+            original=engine.fit;hashes=engine.code_hashes()
+            with self.assertRaisesRegex(RuntimeError,'fixture'):
+                with processes.isolated_execution(Path(tmp)/'run'):
+                    engine.fit(Path(tmp)/'job',engine.base_config(),time.time()+3600,probe=True)
+                    self.assertEqual(engine.code_hashes(),hashes)
+                    launch.assert_called_once();raise RuntimeError('fixture')
+            self.assertIs(engine.fit,original)
+
+    def test_execution_receipt_adopts_existing_root_without_rewriting_training_contract(self):
+        with TemporaryDirectory(dir=book.ROOT/'local') as tmp:
+            root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'original':True})
+            old=book.file_sha(root/'sweep_contract.json');contract=processes.execution_contract()
+            processes.ensure_execution(root,contract);processes.ensure_execution(root,contract)
+            self.assertEqual(book.file_sha(root/'sweep_contract.json'),old)
+            with self.assertRaisesRegex(ValueError,'execution code changed'):
+                processes.ensure_execution(root,contract|{'changed':True})
+
+    def test_worker_oom_is_reported_only_after_child_exit(self):
+        with TemporaryDirectory(dir=book.ROOT/'local') as tmp:
+            root=Path(tmp);book.atomic_json(root/'sweep_contract.json',{'fixture':True});job=root/'trials'/'case';job.mkdir(parents=True)
+            def popen(command,**kwargs):
+                self.assertIsInstance(command,list);self.assertNotIn('shell',kwargs)
+                request=Path(command[-1]);child=Mock(pid=12345)
+                def wait():
+                    book.atomic_json(request.with_suffix('.result.json'),{'pid':12345,'request_sha256':book.file_sha(request),
+                        'ok':False,'error':{'type':'OutOfMemoryError','cuda_oom':True,'message':'fixture OOM'}})
+                    return 1
+                child.wait.side_effect=wait;return child
+            with patch.object(processes.subprocess,'Popen',side_effect=popen):
+                with self.assertRaisesRegex(RuntimeError,'CUDA out of memory'):
+                    processes.launch(job,engine.base_config(),time.time()+3600,'fit',probe=True)
+
     def test_offline_cli_sets_flags_before_cache_check_and_runs(self):
         from scripts import qwen_book_sweep_v2 as cli
         def cached(config):

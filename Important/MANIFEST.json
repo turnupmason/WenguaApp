@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "1c95c35d515e30a1f84d8c4d8720c7d2437f9817"
+      "sha": "247fd5640d9916f77fb28a98d6f29f96cb90c6f7"
     },
     {
       "platform": "python",
@@ -1735,7 +1735,7 @@
       "platform": "python",
       "canonical": "scripts/qwen_book_sweep_v2.py",
       "snapshot": "Important/python/scripts/qwen_book_sweep_v2.py",
-      "sha": "f8990b11f5f046d56a9c78aaa091c2df1dbecee7"
+      "sha": "15bcb4b199b499bb7d1d21fc9568ce6b1e20e292"
     },
     {
       "platform": "python",
@@ -1747,7 +1747,7 @@
       "platform": "python",
       "canonical": "tests/test_qwen_book_sweep_v2.py",
       "snapshot": "Important/python/tests/test_qwen_book_sweep_v2.py",
-      "sha": "f2abb57b787a18c6605ace8ed776b8eb94a3c8dd"
+      "sha": "1a80ab0ca2fee118ecc99f2a15a8b448f87ff1b7"
     },
     {
       "platform": "python",
@@ -1765,7 +1765,25 @@
       "platform": "python",
       "canonical": "data/knowledge/qwen_book_only_v3/continuous_sweep_release_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen_book_only_v3/continuous_sweep_release_20261104.json",
-      "sha": "b9bf12dc3ae798882e2f335d9024813aa11858cc"
+      "sha": "93a7eb58eeba00dad795897b0777a6e23660b995"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_book_worker.py",
+      "snapshot": "Important/python/run_qwen_book_worker.py",
+      "sha": "4372a4f65f18aed72047342d05f82d660a0aa196"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_qwen_book_isolated_training.py",
+      "snapshot": "Important/python/scripts/check_qwen_book_isolated_training.py",
+      "sha": "54b7fbbcef4fce9ba505a34d1e2905b6422708ea"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_book_process_v1.py",
+      "snapshot": "Important/python/engine/qwen_book_process_v1.py",
+      "sha": "f0ce354f254b1cf7318f19cedbf28b9b8eba97c3"
     }
   ]
 }

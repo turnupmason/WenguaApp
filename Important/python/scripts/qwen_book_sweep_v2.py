@@ -5,6 +5,7 @@ from pathlib import Path
 import time
 from src.wengua import qwen_book_sweep_v2 as sweep
 from src.wengua.qwen_book_continuous_v1 import book
+from src.wengua.qwen_book_process_v1 import isolated_execution
 
 
 def main(argv=None):
@@ -24,7 +25,8 @@ def main(argv=None):
         if not 0<a.hours<=168:p.error('hours must be positive and <=168; same command resumes the remaining work')
         if a.offline and not book.official_model_cached(sweep.plan(spec)['structures'][0]):
             p.error('Offline run requires the complete pinned model cache. Populate it online first; no output was changed.')
-        result=sweep.run(a.output,spec,time.time()+3600*a.hours,resume=a.resume,resume_from_checkpoint=a.resume_from_checkpoint)
+        with isolated_execution(a.output):
+            result=sweep.run(a.output,spec,time.time()+3600*a.hours,resume=a.resume,resume_from_checkpoint=a.resume_from_checkpoint)
     print(book.json.dumps(result,ensure_ascii=False,indent=2),flush=True)
 
 

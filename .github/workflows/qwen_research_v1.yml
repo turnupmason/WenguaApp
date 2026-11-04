@@ -14,6 +14,8 @@ on:
       - 'run_qwen_book_loop.py'
       - 'run_qwen_book_sweep.py'
       - 'run_qwen_book_sweep_v2.py'
+      - 'run_qwen_book_worker.py'
+      - 'scripts/check_qwen_book_isolated_training.py'
       - 'run_book_research_v2_windows.cmd'
       - 'configs/qwen14b_book_sweep_v2.json'
       - 'scripts/qwen_book_sweep_v2.py'
@@ -82,6 +84,11 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python -m scripts.check_qwen_book_continuous_training
+      - name: Fresh process per unit, existing probe reuse and cross-process optimizer restore
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+        run: python -m scripts.check_qwen_book_isolated_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
@@ -91,6 +98,7 @@ jobs:
             local/qwen_book_loop_v3/tiny_integration.json
             local/qwen_book_sweep_v1/tiny_integration.json
             local/qwen_book_sweep_v2/tiny_integration.json
+            local/qwen_book_sweep_v2/isolated_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest

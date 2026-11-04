@@ -1,6 +1,6 @@
 # 纯古籍连续SFT与分阶段参数实验V2
 
-用户已在4080启动：生成精度修复后已通过生成并进入下一组，随后可用显存7.89GiB被12GiB启动门槛阻断。当前版在训练函数返回后和下一组预检前再次GC/释放CUDA缓存，记录allocated/reserved/free；没有调低门槛。Windows入口增加`--offline`，禁止PEFT保存阶段对HF的隐藏配置探测；要求完整官方权重和tokenizer已经缓存，不完整时明确报缺失。当前入口 `run_book_research_v2_windows.cmd` 使用新目录 `local/qwen_book_sweep_v2/run3_memory_offline`，旧run1/run2_dtype_fix全部保留，代码合同变更后从官方基模重做探测；缓存权重复用，无需重装环境。本版**每个组合一个Trainer连续训练多个epoch**，同一Adam和完整余弦计划跨epoch继续。
+用户实机run3已定位：第一组开始free14.72GiB，结束后allocated0.01587GiB、reserved6.76367GiB、free7.89258GiB。GC/empty_cache并未释放这些显存段，之前CPU弱引用测试不能证明CUDA分配器池已回收。当前改用**每个探测、每组正式连续训练、最后测试各自独立进程**；父进程只协调，等待子进程完全退出后才下一组。仍使用 `run_book_research_v2_windows.cmd` 和原目录 `local/qwen_book_sweep_v2/run3_memory_offline`，已有完成probe跳过，检查点按原合同恢复，不另建run4。原训练内核文件／合同／数据／参数均未改写；`process_execution.json`另固定执行器源码。旧run1/run2保留。正式训练一个子进程内跨epoch保持同一Adam和完整余弦计划。
 
 ## Windows CMD启动
 
@@ -18,7 +18,7 @@ run_book_research_v2_windows.cmd
 local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output local\qwen_book_sweep_v2\run3_memory_offline --hours 168 --resume --offline
 ```
 
-中断或到时后重复同一命令自动恢复。每次最多168小时，全部试验可能需要多日；关闭电脑时不会继续执行。普通中止优先一次Ctrl+C，最新未完整保存的一小段更新需重跑。Windows进程运行时请求系统保持唤醒。
+中断或到时后重复同一命令自动恢复。每次最多168小时，全部试验可能需要多日；关闭电脑时不会继续执行。普通中止优先一次Ctrl+C，协调器向训练子进程转发中止并等待退出，最新未完整保存的一小段更新需重跑。Windows进程运行时请求系统保持唤醒。`isolated_worker_started/exited`打印PID；每个trial的`worker_calls/`保存任务和结果回执。独立worker锁防止同一实验重叠执行，不会自动结束其他程序。
 
 只看计划，不开训：
 
@@ -83,7 +83,7 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_sweep_v2.py run --output
 
 双击 `local\qwen_book_sweep_v2\run3_memory_offline\results.html`。总览含结构、上下文、LR/dropout/warmup、状态、训练视图和各格式监督token占比、最佳epoch、各格式loss、实际更新、显存、路径与阶段决策。点每组进入逐epoch/原模/长案例的原始回答、完整提问、作者参照和出处。各组有 `loss.svg`、全部 `training_steps.csv`；train loss与格式等权验证NLL并非同一统计口径，曲线只辅助看趋势。
 
-每组`trial_memory_ready`与报告`memory_before_preflight/memory_after_trial`区分本进程allocated/reserved和设备free。若清理后本进程allocated很低而设备free仍低，请另开CMD执行`nvidia-smi`查占用者；退出确定无用的旧训练窗口，不自动结束其他进程。现有日志只能确定7.89GiB被门槛阻断，不能仅凭该数断定一定是程序残留或外部进程。
+每组`trial_memory_ready`与报告`memory_before_preflight/memory_after_trial`记录父进程allocated/reserved和设备free。用户已证实旧方案同一进程保留6.76GiB分配器池；新方案依赖子进程结束释放其CUDA上下文，不依赖同进程GC。12GiB启动门槛保留，是否能装下某个结构仍由真实短测决定。若子进程结束后设备free仍低，再用`nvidia-smi`查其他占用；不自动结束其他程序。CPU多进程验收只证明进程控制、原合同复用和恢复，不称实际4080显存验证。
 
 `answer_review.json`按任务记录空答、输出到上限，以及原抄盘星位题中的宫位集合是否与参照相同；该机械诊断不理解否定语义，不能称专业准确率，也不参与选择。条件追问、用神关系、同宫不同符号、矛盾证据、领域切换和应期有无依据，继续看原始回答核对。
 
