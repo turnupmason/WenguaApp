@@ -3494,3 +3494,8 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6b543fb22a3358f2811e569930841a0bf7917651。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694870046_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、主CI#41694870087双Python3.11/3.12、旧健康原生#41694870046全部success；首版旧量化V2兼容#41694212374的Linux3.11/3.12和Windows3.12亦全部success。远端关键文件字节已逐一核对，收据docs/audits/qwen32b_v1_20261103/implementation_ci.json。已快进接收自动健康归档6fedc417；最后仅写交接文档，不再改训练/检索源码、配置、镜像或原库。963项本地全回归0失败/0错误/3原skip，CPU微型BF16 LoRA及保存重载通过；真实32B/4090/NF4显存、领域生成留出评测仍未执行，不能称自有模型已训练完成。下一步在用户4090按指南doctor→token审计→两步短跑→正式训练，并继续审计领域条件规则与问前多轮监督。新增原章0/历史事件0。
+
+
+### 2026-11-03 · Qwen运行指南补齐Windows CMD路径
+
+用户实际终端C:\Users\…>误用了此前Linux/WSL命令。QWEN32B_RESEARCH_V1_20261103.md已将Windows CMD与Linux/Bash明确分开：cd /d到用户目录下现有WenguaApp、py -3.12、虚拟环境Scripts\python.exe；缺Python时winget指定--source winget，避免之前msstore证书源问题。安装链使用CMD行末^与&&，只做独立环境/CUDA检查，不下载32B或启动训练；补Windows准备/长度审计/两步短跑及PyCharm解释器。原生Windows CUDA/bitsandbytes/32B实际运行仍需用户doctor与短跑确认，不把Linux CPU CI称Windows GPU已测。仅文档修改，无程序/配置/镜像/源数据库变化，新增原章0/历史事件0，不为路径说明新增实现镜像测试。主CI待本次文档提交核对。

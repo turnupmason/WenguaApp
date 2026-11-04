@@ -24,7 +24,53 @@ SFT只计算assistant答案的loss，system/user被遮罩；使用官方Qwen3聊
 
 ## RTX4090安装与运行
 
-推荐在4090电脑的Linux或WSL2中运行；先确认该环境执行`nvidia-smi`能看见GPU。Mac可以执行数据准备、检索，或连接已运行的模型接口。此CUDA训练入口不支持Mac/MPS；不用把CatBoost环境改成LLM环境。
+先根据当前终端选择下面的命令。提示符为`C:\Users\...>`是Windows CMD；它不能直接执行`cd ~/WenguaApp`、`python3.12`或`local/qwen_env/bin/python`。这些分别要改为Windows项目路径、`py -3.12`和`local\qwen_env\Scripts\python.exe`。此前只有Linux命令的说明不适用于CMD。
+
+### Windows CMD：先检查环境
+
+使用之前已克隆的项目，执行：
+
+```bat
+cd /d "%USERPROFILE%\WenguaApp" && git pull --ff-only origin main && dir requirements-qwen.txt
+py -3.12 --version
+nvidia-smi
+```
+
+如果项目目录不存在，先执行`git clone https://github.com/turnupmason/WenguaApp.git "%USERPROFILE%\WenguaApp"`，再重新执行上面第一行。不要在用户主目录直接`git pull`。如果项目有未提交修改/无法快进，保留修改，先查看具体错误，不使用reset强行覆盖。
+
+如果`py -3.12`提示未安装或找不到命令，先安装Python，完成后重新打开CMD，再运行上述检查：
+
+```bat
+winget install -e --id Python.Python.3.12 --source winget
+```
+
+指定`--source winget`避开此前msstore源的证书错误。每行是独立命令，不要把`py`和`winget`拼成同一条。
+
+确认Python显示3.12、项目目录正确后，执行下面这一整段。CMD续行符`^`必须保留在行末；`&&`确保前一步失败时不继续安装。仅创建独立环境和检查，不下载32B权重、不启动训练：
+
+```bat
+py -3.12 -m venv local\qwen_env && ^
+local\qwen_env\Scripts\python.exe -m pip install --upgrade pip && ^
+local\qwen_env\Scripts\python.exe -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cu128 && ^
+local\qwen_env\Scripts\python.exe -m pip install -r requirements-qwen.txt && ^
+local\qwen_env\Scripts\python.exe run_qwen_research.py doctor
+```
+
+原生Windows的CUDA/bitsandbytes组合需要在用户机器核验；当前Qwen微型训练CI是Linux CPU，不代表Windows32B训练已测过。以doctor实际输出的依赖版本、`cuda_available`、显卡名称和`total_gib/free_gib`为准，不凭“4090”型号假定可用显存。不需要仅为了修正路径就先重装系统或安装WSL。若原生依赖/CUDA仍不兼容，再根据实际报错使用下方Linux/WSL2路线。
+
+doctor正常后，Windows CMD的数据准备、长度检查和两步训练命令为：
+
+```bat
+local\qwen_env\Scripts\python.exe run_qwen_research.py prepare --output local\qwen32b_v1\run1\data
+local\qwen_env\Scripts\python.exe run_qwen_research.py audit-tokens --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\token_audit_before_training.json
+local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\smoke --max-steps 2
+```
+
+逐条执行并检查结果，已有输出目录会拒绝覆盖。最后一条才会首次获取大模型权重并尝试GPU训练；前两条不证明显存足够。Windows PyCharm解释器为项目下`local\qwen_env\Scripts\python.exe`。
+
+### Linux／WSL2：Bash命令
+
+推荐GPU训练在4090电脑的Linux或WSL2中运行；先确认该环境执行`nvidia-smi`能看见GPU。Mac可以执行数据准备、检索，或连接已运行的模型接口。此CUDA训练入口不支持Mac/MPS；不用把CatBoost环境改成LLM环境。
 
 在项目根目录执行（已有项目先pull，不覆盖本地修改）：
 
