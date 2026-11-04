@@ -2116,3 +2116,7 @@ V2同样包含非古籍补充，旧ready清单已带原哈希归档并撤回；�
 
 ### 当前封存轻重回归实测 · run 41866760773
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5650ad79f4f8103be2c5da417a79e2f109e42318。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41866760773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+### 当前封存轻重回归实测 · run 41870921834
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码ddadf875a3a04a24b302725d9fdd31e43a6d4188。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41870921834_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
