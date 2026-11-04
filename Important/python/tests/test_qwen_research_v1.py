@@ -4,10 +4,11 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from src.wengua.qwen_research import (ROOT, build_pack, check_answer, export_pack, make_prompt,
                                      retrieve, split_for, terms, trusted_chart)
-from src.wengua.qwen_finetune import checked_splits, encode_sample, load_config
+from src.wengua.qwen_finetune import assess_gpu_capacity, checked_splits, encode_sample, load_config, train
 
 
 class QwenResearch(unittest.TestCase):
@@ -104,7 +105,7 @@ class QwenResearch(unittest.TestCase):
     def test_chinese_search_and_research_only_config(self):
         self.assertIn('天芮', terms('天芮星不是西文单词'))
         config = load_config()
-        self.assertEqual(config['model_id'], 'Qwen/Qwen3-32B')
+        self.assertEqual(config['model_id'], 'Qwen/Qwen3-14B')
         self.assertEqual(len(config['revision']), 40)
         self.assertEqual(config['target_modules'], ['q_proj', 'v_proj'])
         self.assertFalse(config['enable_thinking'])
@@ -127,6 +128,56 @@ class AssistantMask(unittest.TestCase):
                 return [1, 2] if add_generation_prompt else [9, 2, 3]
         with self.assertRaisesRegex(ValueError, 'prefix mismatch'):
             encode_sample({'messages': [{}, {}]}, BadTokenizer(), 100)
+
+
+class ActualGpuCapacity(unittest.TestCase):
+    @staticmethod
+    def config32():
+        return load_config(ROOT / 'configs/qwen32b_v1.json')
+
+    @staticmethod
+    def report(total=15.99, free=14.72):
+        return {'cuda_available': True, 'current_device_index': 0,
+                'cuda_devices': [{'index': 0, 'name': 'NVIDIA GeForce RTX 4080',
+                                  'total_gib': total, 'free_gib': free}]}
+
+    def test_reported_4080_cannot_be_mistaken_for_training_ready_4090(self):
+        result = assess_gpu_capacity(self.report(), self.config32())
+        self.assertEqual(result['status'], 'blocked')
+        self.assertIn('RTX 4080', result['reason'])
+        self.assertFalse(result['actual_training_fit_verified'])
+
+    def test_16gb_rejection_precedes_dataset_read_and_output_creation(self):
+        output = ROOT / 'local/this_blocked_4080_run_must_not_be_created'
+        with patch('src.wengua.qwen_finetune.environment_report', return_value=self.report()), \
+             patch('src.wengua.qwen_finetune.checked_splits') as read:
+            with self.assertRaisesRegex(RuntimeError, 'RTX 4080'):
+                train('does_not_exist', output, config_path=ROOT / 'configs/qwen32b_v1.json')
+            read.assert_not_called()
+            self.assertFalse(output.exists())
+
+    def test_24gb_screen_is_not_training_verification(self):
+        result = assess_gpu_capacity(self.report(23.99, 22.0), self.config32())
+        self.assertEqual(result['status'], 'ready_for_smoke_test')
+        self.assertFalse(result['actual_training_fit_verified'])
+        self.assertEqual(assess_gpu_capacity(self.report(23.99, 14.72), self.config32())['status'], 'blocked')
+
+    def test_assessment_uses_selected_gpu_not_a_larger_other_card(self):
+        report = self.report()
+        report['cuda_devices'].append({'index': 1, 'name': 'Larger GPU', 'total_gib': 80, 'free_gib': 78})
+        self.assertEqual(assess_gpu_capacity(report, self.config32())['status'], 'blocked')
+        report['current_device_index'] = 1
+        self.assertEqual(assess_gpu_capacity(report, self.config32())['status'], 'ready_for_smoke_test')
+        self.assertEqual(assess_gpu_capacity({'cuda_available': False}, self.config32())['status'], 'blocked')
+
+    def test_user_authorized_14b_is_default_and_4080_only_passes_startup_screen(self):
+        config = load_config()
+        self.assertEqual(config['model_id'], 'Qwen/Qwen3-14B')
+        self.assertEqual(config['max_seq_length'], 1536)
+        result = assess_gpu_capacity(self.report(), config)
+        self.assertEqual(result['status'], 'ready_for_smoke_test')
+        self.assertFalse(result['actual_training_fit_verified'])
+        self.assertEqual(assess_gpu_capacity(self.report(15.99, 9), config)['status'], 'blocked')
 
 
 if __name__ == '__main__':

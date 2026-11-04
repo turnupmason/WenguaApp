@@ -1,4 +1,4 @@
-"""PyCharm/terminal entry. Defaults to preparing private data, never downloads 32B."""
+"""PyCharm/terminal entry. Defaults to private data preparation, no model weights."""
 import os
 from pathlib import Path
 import sys

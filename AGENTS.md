@@ -1,3 +1,5 @@
+> **当前用户授权更新：RTX4080/16GB先做Qwen3-14B。** 本机doctor实报4080总15.99GiB/空闲14.72GiB，非此前假定4090。用户已明确选14B本地首版、以后升级32B；DEFAULT_CONFIG指configs/qwen14b_v1.json，当前指南docs/QWEN14B_RTX4080_WINDOWS_V1_20261103.md。旧32B配置逐字保留且使用时显式--config；资料分组/原库/封存App不变。新增模型与所选GPU显存启动筛查，不足在下载前拒绝；筛查通过不等于实训或回答质量验证。
+
 > **当前用户授权：Qwen32B独立领域模型研究。** 用户明确改用Qwen 32B+古籍+案例；按本轮新授权推进，不再以旧“27B/LLM不开发”条款阻止新路线。入口run_qwen_research.py、configs/qwen32b_v1.json、docs/QWEN32B_RESEARCH_V1_20261103.md。Qwen3-32B固定revision、私有检索、回顾性SFT、4090 NF4 QLoRA与源引用检查；不复用旧QimenLLM未核训练集。194事件原库只读，封存App与量化V2对照保留。32B实际显存/训练/回答评测待用户本地4090，不得把微型CPU接口测试称为32B实训，不能从语言输出宣称真实概率。
 
 > **当前量化研究V2（用户明确要求全部专业特征和PyCharm）：** 入口 `run_professional_training.py`，指南 `docs/PROBABILITY_PROFESSIONAL_V2_PYCHARM_20261103.md`，活动索引 `data/knowledge/probability_research/active_research.json`。4606字段/194主记录/19真实补盘，9节点/81有向关系，问前人物/辅助宫、两类旺衰、120长生、空墓刑马、条件格局、用神完整环境和同宫排重。默认逻辑回归CPU+CatBoost指定设备、各五组，同一11事件。未知/不适用不填假阴性，后验原文不进输入；其他任务真实标签和删失拟合未完成，不称医学/定位/应期模型已训练。旧V1是历史复现，App冻结数值/七资源/原始库不动。
@@ -3511,3 +3513,12 @@ Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、�
 ### 2026-11-03 · Qwen运行指南补齐Windows CMD路径
 
 用户实际终端C:\Users\…>误用了此前Linux/WSL命令。QWEN32B_RESEARCH_V1_20261103.md已将Windows CMD与Linux/Bash明确分开：cd /d到用户目录下现有WenguaApp、py -3.12、虚拟环境Scripts\python.exe；缺Python时winget指定--source winget，避免之前msstore证书源问题。安装链使用CMD行末^与&&，只做独立环境/CUDA检查，不下载32B或启动训练；补Windows准备/长度审计/两步短跑及PyCharm解释器。原生Windows CUDA/bitsandbytes/32B实际运行仍需用户doctor与短跑确认，不把Linux CPU CI称Windows GPU已测。仅文档修改，无程序/配置/镜像/源数据库变化，新增原章0/历史事件0，不为路径说明新增实现镜像测试。主CI待本次文档提交核对。
+
+
+### 2026-11-03 · 实际4080硬件与用户选择14B本地首版
+
+用户doctor回传Windows/Python3.12.10、RTX4080总15.99GiB/空闲14.72GiB，CUDA和全部固定依赖可用；先前4090属于用户口头描述，不能继续当当前实测。用户明确选择先做14B，之后升级32B。默认改Qwen3-14B固定官方revision40c069824f4251a91eefaf281ebe4c544efd3e18，API/config实际读取，Apache-2.0；1536上下文/r8 qv/batch1/累积8/NF4与半精度冻结基座。依赖不变，无需重装。旧32B JSON逐字不改、旧4090 PyCharm显式指定32B，新增4080三配置、Windows14B指南、原32B指南加显式配置防默认错位。
+
+新增按当前CUDA卡而非其他大卡的启动筛查：14B总/空闲12GiB、32B20GiB，只是保守启动策略，不称精确最低显存或实训成功。32B在16GB硬件夹具上会在读数据/建目录/下载前拒绝；14B在用户所报空闲量只显示可短跑，actual_training_fit_verified仍false。模型切换来自用户明确授权，无静默降档。793教学/194事件/43章与既有schema/分组复用，不把14B适配器直接加载32B。原长案不截断，1536排除量见真实tokenizer报告，不能称全部案已训练。原数据库/原量化V2/封存App/Excel均未改，新增原章0/历史事件0。专项15项已通过；完整回归/新微型CPU训练及CI待本次执行补记。
+
+14B本地终版验收：1536长度为最终默认；训练587条（479基础+108整案）/排除52，验证71/排除7，测试72/排除4，全部793教学仍保留。微型随机Qwen3 CPU BF16 LoRA使用官方14B tokenizer真实两步/参数更新/独立重载一致通过，不称14B实训。专项15+镜像1通过；全库968 tests/0 failures/0 errors/3既有skip，原日志docs/audits/qwen14b_rtx4080_v1_20261103/full_run。官方32B配置逐字未改；新CI与用户本机实际14B权重/NF4训练待推送后核验。

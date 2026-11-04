@@ -1,4 +1,4 @@
-"""Qwen32B private data / retrieval / optional CUDA adapter commands."""
+"""Qwen14B/32B private data / retrieval / optional CUDA adapter commands."""
 import argparse
 from datetime import datetime, timezone
 import json
@@ -16,12 +16,14 @@ def main(argv=None):
     commands = parser.add_subparsers(dest='command')
     prepare = commands.add_parser('prepare', help='Read-only source export, private outputs; no GPU or model download')
     prepare.add_argument('--output', type=Path)
-    commands.add_parser('doctor', help='Local environment and GPU report; no checkpoint download')
+    doctor = commands.add_parser('doctor', help='Local environment and GPU report; no checkpoint download')
+    doctor.add_argument('--config', type=Path, default=DEFAULT_CONFIG)
     audit = commands.add_parser('audit-tokens', help='Download tokenizer only; inspect context coverage before downloading weights')
     audit.add_argument('--data', type=Path, required=True)
-    audit.add_argument('--max-seq-length', type=int, default=2048)
+    audit.add_argument('--max-seq-length', type=int)
+    audit.add_argument('--config', type=Path, default=DEFAULT_CONFIG)
     audit.add_argument('--output', type=Path)
-    fit = commands.add_parser('train', help='Actual CUDA NF4 QLoRA; first downloads pinned 32B base')
+    fit = commands.add_parser('train', help='Actual CUDA NF4 QLoRA; first downloads the configured pinned base')
     fit.add_argument('--data', type=Path, required=True)
     fit.add_argument('--output', type=Path, required=True)
     fit.add_argument('--config', type=Path, default=DEFAULT_CONFIG)
@@ -36,7 +38,7 @@ def main(argv=None):
             command.add_argument('--chart', type=Path, help='Explicit JSON dun/ju/hour_ganzhi; no model calendar inference')
         if name == 'ask':
             command.add_argument('--base-url', default='http://127.0.0.1:11434/v1')
-            command.add_argument('--model', default='qwen3:32b', help='Running endpoint model ID; RAG alone is NOT a trained adapter')
+            command.add_argument('--model', default='qwen3:14b', help='Running endpoint model ID; RAG alone is NOT a trained adapter')
         if name == 'chat':
             command.add_argument('--adapter-run', type=Path, required=True)
             command.add_argument('--max-new-tokens', type=int, default=256)
@@ -46,17 +48,20 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.command in (None, 'prepare'):
         stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ')
-        output = getattr(args, 'output', None) or ROOT / 'local/qwen32b_v1' / stamp / 'data'
+        output = getattr(args, 'output', None) or ROOT / 'local/qwen14b_v1' / stamp / 'data'
         result = {'output': str(output), **export_pack(output)}
     elif args.command == 'doctor':
-        result = environment_report()
+        result = environment_report(load_config(args.config))
     elif args.command == 'audit-tokens':
         from transformers import AutoTokenizer
-        config = load_config()
+        config = load_config(args.config)
         splits, _ = checked_splits(args.data)
         tokenizer = AutoTokenizer.from_pretrained(config['model_id'], revision=config['revision'], trust_remote_code=False)
-        result = {s: tokenize_split(rows, tokenizer, args.max_seq_length)[1] for s, rows in splits.items()}
-        result['max_seq_length'] = args.max_seq_length
+        length = args.max_seq_length if args.max_seq_length is not None else config['max_seq_length']
+        if length < 128:
+            raise ValueError('max_seq_length must be >= 128')
+        result = {s: tokenize_split(rows, tokenizer, length)[1] for s, rows in splits.items()}
+        result['max_seq_length'] = length
         result['model_weights_downloaded'] = False
         if args.output:
             path = private_path(args.output)

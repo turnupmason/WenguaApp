@@ -3499,3 +3499,14 @@ Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、�
 ### 2026-11-03 · Qwen运行指南补齐Windows CMD路径
 
 用户实际终端C:\Users\…>误用了此前Linux/WSL命令。QWEN32B_RESEARCH_V1_20261103.md已将Windows CMD与Linux/Bash明确分开：cd /d到用户目录下现有WenguaApp、py -3.12、虚拟环境Scripts\python.exe；缺Python时winget指定--source winget，避免之前msstore证书源问题。安装链使用CMD行末^与&&，只做独立环境/CUDA检查，不下载32B或启动训练；补Windows准备/长度审计/两步短跑及PyCharm解释器。原生Windows CUDA/bitsandbytes/32B实际运行仍需用户doctor与短跑确认，不把Linux CPU CI称Windows GPU已测。仅文档修改，无程序/配置/镜像/源数据库变化，新增原章0/历史事件0，不为路径说明新增实现镜像测试。主CI待本次文档提交核对。
+
+
+### 2026-11-03 · 实际4080硬件与用户选择14B本地首版
+
+用户doctor回传Windows/Python3.12.10、RTX4080总15.99GiB/空闲14.72GiB，CUDA和全部固定依赖可用；先前4090属于用户口头描述，不能继续当当前实测。用户明确选择先做14B，之后升级32B。默认改Qwen3-14B固定官方revision40c069824f4251a91eefaf281ebe4c544efd3e18，API/config实际读取，Apache-2.0；1536上下文/r8 qv/batch1/累积8/NF4与半精度冻结基座。依赖不变，无需重装。旧32B JSON逐字不改、旧4090 PyCharm显式指定32B，新增4080三配置、Windows14B指南、原32B指南加显式配置防默认错位。
+
+新增按当前CUDA卡而非其他大卡的启动筛查：14B总/空闲12GiB、32B20GiB，只是保守启动策略，不称精确最低显存或实训成功。32B在16GB硬件夹具上会在读数据/建目录/下载前拒绝；14B在用户所报空闲量只显示可短跑，actual_training_fit_verified仍false。模型切换来自用户明确授权，无静默降档。793教学/194事件/43章与既有schema/分组复用，不把14B适配器直接加载32B。原长案不截断，1536排除量见真实tokenizer报告，不能称全部案已训练。原数据库/原量化V2/封存App/Excel均未改，新增原章0/历史事件0。专项15项已通过；完整回归/新微型CPU训练及CI待本次执行补记。
+
+14B实际tokenizer比较：1024训练仅20个完整案；1536可用479基础+108整案共587条，排除52；2048可142整案但需更大激活显存。最终默认1536，在用户4080实测前仍不称训练可容纳。验证71条/排除7，测试72条/排除4；793原始教学记录与旧数据分组不变。
+
+14B本地终版验收：1536长度为最终默认；训练587条（479基础+108整案）/排除52，验证71/排除7，测试72/排除4，全部793教学仍保留。微型随机Qwen3 CPU BF16 LoRA使用官方14B tokenizer真实两步/参数更新/独立重载一致通过，不称14B实训。专项15+镜像1通过；全库968 tests/0 failures/0 errors/3既有skip，原日志docs/audits/qwen14b_rtx4080_v1_20261103/full_run。官方32B配置逐字未改；新CI与用户本机实际14B权重/NF4训练待推送后核验。

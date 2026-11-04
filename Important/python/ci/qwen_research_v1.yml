@@ -1,4 +1,4 @@
-name: Qwen32B source research and tiny CPU adapter contract
+name: Qwen14B and 32B source research and tiny CPU adapter contract
 on:
   workflow_dispatch:
   push:
@@ -9,6 +9,7 @@ on:
       - 'scripts/check_qwen_training.py'
       - 'tests/test_qwen_research_v1.py'
       - 'configs/qwen32b_v1.json'
+      - 'configs/qwen14b_v1.json'
       - 'requirements-qwen.txt'
       - 'run_qwen_research.py'
       - '.github/workflows/qwen_research_v1.yml'
@@ -18,6 +19,7 @@ on:
       - 'scripts/*qwen*.py'
       - 'tests/test_qwen_research_v1.py'
       - 'configs/qwen32b_v1.json'
+      - 'configs/qwen14b_v1.json'
       - 'requirements-qwen.txt'
 permissions:
   contents: read
@@ -42,4 +44,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
-          path: local/qwen32b_v1/tiny_integration.json
+          path: local/qwen14b_v1/tiny_integration.json

@@ -24,10 +24,46 @@ def load_config(path=DEFAULT_CONFIG):
     return config
 
 
-def environment_report():
+def assess_gpu_capacity(report, config):
+    """Reject a known unsuitable card before downloads, without claiming fit.
+
+    Qwen3-32B's ~32.8B parameters alone need ~15.3 GiB at ideal 4 bits;
+    the untied non-quantized vocab matrices increase that, before metadata,
+    activations or CUDA buffers. A 16 GiB card cannot fit this all-GPU route.
+    The per-model total/free screen is a conservative launch policy, NOT a
+    measured minimum or a promise that a card can finish training.
+    Only assess this configured loader, not all possible offload frameworks.
+    """
+    result = {'model_id': config['model_id'], 'status': 'blocked',
+              'actual_training_fit_verified': False}
+    if not report.get('cuda_available'):
+        return dict(result, reason='CUDA GPU unavailable; data preparation remains usable.')
+    selected = report.get('current_device_index', 0)
+    device = next((d for d in report.get('cuda_devices', []) if d['index'] == selected), None)
+    if device is None:
+        return dict(result, reason='Current CUDA device memory is unknown; run doctor.')
+    result['selected_device'] = device
+    minimum = {'Qwen/Qwen3-32B': 20, 'Qwen/Qwen3-14B': 12}.get(config['model_id'])
+    if minimum is None:
+        return dict(result, status='not_assessed', reason='No memory launch policy for this model.')
+    result['minimum_total_gib_screen'] = minimum
+    result['minimum_free_gib_screen'] = minimum
+    if device['total_gib'] < minimum:
+        return dict(result, reason=f"{device['name']} has {device['total_gib']} GiB total VRAM. "
+                    f"The configured {config['model_id']} all-GPU NF4 route excludes cards below the {minimum} GiB launch screen. "
+                    'No weights downloaded; use a larger-memory GPU or explicitly choose a smaller model.')
+    if device['free_gib'] < minimum:
+        return dict(result, reason=f"Only {device['free_gib']} GiB free VRAM on the selected GPU; "
+                    f'release other GPU workloads before retrying the {minimum} GiB launch screen.')
+    return dict(result, status='ready_for_smoke_test',
+                reason='Launch screen passed; real model loading and training memory fit remain unverified.')
+
+
+def environment_report(config=None):
     report = {'python': sys.version.split()[0], 'platform': platform.system(),
               'cuda_available': False, 'cuda_devices': [],
-              'actual_32b_training_verified': False, 'dependencies': {}}
+              'actual_32b_training_verified': False, 'actual_full_size_training_verified': False,
+              'dependencies': {}}
     for package in ('torch', 'transformers', 'peft', 'accelerate', 'bitsandbytes'):
         try:
             report['dependencies'][package] = importlib.metadata.version(package)
@@ -37,13 +73,16 @@ def environment_report():
         import torch
         report['cuda_available'] = torch.cuda.is_available()
         if report['cuda_available']:
+            report['current_device_index'] = torch.cuda.current_device()
             for index in range(torch.cuda.device_count()):
                 free, total = torch.cuda.mem_get_info(index)
                 report['cuda_devices'].append({'index': index, 'name': torch.cuda.get_device_name(index),
                                                'total_gib': round(total / 2**30, 2), 'free_gib': round(free / 2**30, 2)})
     except ImportError:
         pass
-    report['training_route'] = 'CUDA NF4 QLoRA; RTX 4090 memory fit requires a real smoke run'
+    config = config if config is not None else load_config()
+    report['training_route'] = config['model_id'] + ' CUDA NF4 QLoRA; inspect training_preflight on the actual selected GPU'
+    report['training_preflight'] = assess_gpu_capacity(report, config)
     return report
 
 
@@ -129,9 +168,10 @@ def prepare_frozen_base(model, *, gradient_checkpointing=True):
 
 def load_cuda_base(config, *, training):
     import torch
+    assessment = assess_gpu_capacity(environment_report(config), config)
+    if assessment['status'] == 'blocked':
+        raise RuntimeError(assessment['reason'])
     from transformers import AutoModelForCausalLM, BitsAndBytesConfig
-    if not torch.cuda.is_available():
-        raise RuntimeError('CUDA GPU required for this 32B QLoRA route. Mac is a client/data-preparation machine.')
     compute = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
     quant = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type='nf4',
                                bnb_4bit_use_double_quant=True, bnb_4bit_compute_dtype=compute)
@@ -149,12 +189,13 @@ def train(data, output, *, config_path=DEFAULT_CONFIG, max_steps=-1, max_length=
         if max_length < 128:
             raise ValueError('max_length must be >= 128')
         config['max_seq_length'] = max_length
-    rows, manifest = checked_splits(data)
-    report = environment_report()
-    if not report['cuda_available']:
-        raise RuntimeError('No CUDA GPU: use the RTX 4090 machine / WSL2, then run doctor.')
+    report = environment_report(config)
+    assessment = assess_gpu_capacity(report, config)
+    if assessment['status'] == 'blocked':
+        raise RuntimeError(assessment['reason'])
     if any(v is None for v in report['dependencies'].values()):
         raise RuntimeError('Install requirements-qwen.txt in a separate environment first.')
+    rows, manifest = checked_splits(data)
     output = private_path(output)
     output.mkdir(parents=True, exist_ok=False)
     write_json(output / 'run_status.json', {'state': 'preparing', 'config': config, 'environment': report})

@@ -1387,31 +1387,31 @@
       "platform": "python",
       "canonical": "src/wengua/qwen_research.py",
       "snapshot": "Important/python/engine/qwen_research.py",
-      "sha": "029d450dd11014f7b28040fc545c413c92caeac5"
+      "sha": "761dcb219d2d36b5dbabd062c3028fba1beeb102"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/qwen_finetune.py",
       "snapshot": "Important/python/engine/qwen_finetune.py",
-      "sha": "7ad899d30a3383464eed58a97fd52bb7a8a425e3"
+      "sha": "79981287a93cc39f9db6f1fcff927eb8cdbf55fb"
     },
     {
       "platform": "python",
       "canonical": "scripts/qwen_research.py",
       "snapshot": "Important/python/scripts/qwen_research.py",
-      "sha": "4b54edf3b098b8789ce6aae4b8535a499905d729"
+      "sha": "b3630b30ba6461eac81ff7b3eb9b1ed0c229fc12"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_qwen_training.py",
       "snapshot": "Important/python/scripts/check_qwen_training.py",
-      "sha": "d48666d700d662eb5ba3816693c7b604ce223a64"
+      "sha": "b1e27bab620b34fdd912c7996e4d4f21d59d9a9c"
     },
     {
       "platform": "python",
       "canonical": "tests/test_qwen_research_v1.py",
       "snapshot": "Important/python/tests/test_qwen_research_v1.py",
-      "sha": "131a6968aa8c88ff87bb01b7b3326cb956ac6b6f"
+      "sha": "fb4d7330561823b532c29280e70419cb113aae75"
     },
     {
       "platform": "python",
@@ -1429,13 +1429,19 @@
       "platform": "python",
       "canonical": "run_qwen_research.py",
       "snapshot": "Important/python/run_qwen_research.py",
-      "sha": "4f0c35b9e718faae3bc06a847bdacde310dddb8b"
+      "sha": "f64500fc004c66305d9838532585aceed73beff6"
     },
     {
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "d67eb692eb42550f0582d9f48fce542f5a2a9e4f"
+      "sha": "994bc07cd296f7c18bde4ffef678cd389b99d259"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/qwen14b_v1.json",
+      "snapshot": "Important/python/configs/qwen14b_v1.json",
+      "sha": "4fe4d2fdc5751039624d96b2c02fde74f6cb44e8"
     }
   ]
 }

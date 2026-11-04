@@ -1,0 +1,17 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_lora",
+  "steps": 2,
+  "tokenizer": "Qwen/Qwen3-14B",
+  "tokenizer_revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "assistant_mask_tokens": 213,
+  "total_tokens": 247,
+  "trainable_weights_changed": true,
+  "adapter_reload_logits_equal": true,
+  "frozen_large_matrices_keep_bf16": true,
+  "norm_vectors_fp32": true,
+  "loss": 11.912134170532227,
+  "real_32b_trained": false,
+  "real_full_size_model_trained": false,
+  "cuda_nf4_tested": false
+}

@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Qwen 4080 Smoke" type="PythonConfigurationType" factoryName="Python">
+    <module name="WenguaApp" />
+    <option name="IS_MODULE_SDK" value="true" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_qwen_research.py" />
+    <option name="PARAMETERS" value="train --config configs/qwen14b_v1.json --data local/qwen14b_v1/pycharm_run1/data --output local/qwen14b_v1/pycharm_run1/smoke --max-steps 2" />
+    <option name="MODULE_MODE" value="false" />
+    <envs><env name="PYTHONUNBUFFERED" value="1" /></envs>
+    <method v="2" />
+  </configuration>
+</component>

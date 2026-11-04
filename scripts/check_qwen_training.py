@@ -62,8 +62,10 @@ def main():
                    'assistant_mask_tokens': first, 'total_tokens': length,
                    'trainable_weights_changed': True, 'adapter_reload_logits_equal': True,
                    'frozen_large_matrices_keep_bf16': True, 'norm_vectors_fp32': True,
-                   'loss': result.training_loss, 'real_32b_trained': False, 'cuda_nf4_tested': False}
-    output = ROOT / 'local/qwen32b_v1/tiny_integration.json'
+                   'loss': result.training_loss, 'real_32b_trained': False,
+                   'real_full_size_model_trained': False, 'cuda_nf4_tested': False}
+    profile = 'qwen14b_v1' if config['model_id'] == 'Qwen/Qwen3-14B' else 'qwen32b_v1'
+    output = ROOT / 'local' / profile / 'tiny_integration.json'
     output.parent.mkdir(parents=True, exist_ok=True)
     write_json(output, receipt)
     print(json.dumps(receipt, indent=2))

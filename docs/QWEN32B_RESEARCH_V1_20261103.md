@@ -1,3 +1,5 @@
+> **当前默认已改为14B：** 用户实测RTX4080/16GB，并选择先做14B本地版本。请从[4080 Windows指南](QWEN14B_RTX4080_WINDOWS_V1_20261103.md)继续。本页保留32B路线；以下训练/doctor/长度检查均显式指定旧32B配置，不会自动换模型。
+
 # 问卦 Qwen32B：本地知识库与领域适配器 V1
 
 用户在2026-11-03明确选择：在Qwen 32B基础上加入自己的古籍和案例，建立自己的问卦模型。该授权新增独立LLM研究路线，取代此前“本项目不开发27B路线”对本轮新工作的限制；没有复用旧QimenLLM训练集，也没有删除现有CatBoost对照。
@@ -53,7 +55,7 @@ py -3.12 -m venv local\qwen_env && ^
 local\qwen_env\Scripts\python.exe -m pip install --upgrade pip && ^
 local\qwen_env\Scripts\python.exe -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cu128 && ^
 local\qwen_env\Scripts\python.exe -m pip install -r requirements-qwen.txt && ^
-local\qwen_env\Scripts\python.exe run_qwen_research.py doctor
+local\qwen_env\Scripts\python.exe run_qwen_research.py doctor --config configs/qwen32b_v1.json
 ```
 
 原生Windows的CUDA/bitsandbytes组合需要在用户机器核验；当前Qwen微型训练CI是Linux CPU，不代表Windows32B训练已测过。以doctor实际输出的依赖版本、`cuda_available`、显卡名称和`total_gib/free_gib`为准，不凭“4090”型号假定可用显存。不需要仅为了修正路径就先重装系统或安装WSL。若原生依赖/CUDA仍不兼容，再根据实际报错使用下方Linux/WSL2路线。
@@ -62,8 +64,8 @@ doctor正常后，Windows CMD的数据准备、长度检查和两步训练命令
 
 ```bat
 local\qwen_env\Scripts\python.exe run_qwen_research.py prepare --output local\qwen32b_v1\run1\data
-local\qwen_env\Scripts\python.exe run_qwen_research.py audit-tokens --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\token_audit_before_training.json
-local\qwen_env\Scripts\python.exe run_qwen_research.py train --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\smoke --max-steps 2
+local\qwen_env\Scripts\python.exe run_qwen_research.py audit-tokens --config configs/qwen32b_v1.json --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\token_audit_before_training.json
+local\qwen_env\Scripts\python.exe run_qwen_research.py train --config configs/qwen32b_v1.json --data local\qwen32b_v1\run1\data --output local\qwen32b_v1\run1\smoke --max-steps 2
 ```
 
 逐条执行并检查结果，已有输出目录会拒绝覆盖。最后一条才会首次获取大模型权重并尝试GPU训练；前两条不证明显存足够。Windows PyCharm解释器为项目下`local\qwen_env\Scripts\python.exe`。
@@ -81,7 +83,7 @@ python3.12 -m venv local/qwen_env
 local/qwen_env/bin/python -m pip install --upgrade pip
 local/qwen_env/bin/python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cu128
 local/qwen_env/bin/python -m pip install -r requirements-qwen.txt
-local/qwen_env/bin/python run_qwen_research.py doctor
+local/qwen_env/bin/python run_qwen_research.py doctor --config configs/qwen32b_v1.json
 ```
 
 PyTorch CUDA12.8轮子需要兼容的NVIDIA驱动；以doctor的`cuda_available=true`与本机显存报告为准。不能靠“pip安装成功”认定CUDA可用。首次获取原始BF16基座文件需约66GB下载和相应磁盘空间，运行时才量化为NF4；建议给环境、缓存、适配器留100GB以上可用磁盘，训练前自行查看剩余空间。4位权重仍有量化元数据、激活、优化器与缓存开销，24GB显存能否容纳该配置必须实际试跑。
@@ -95,7 +97,7 @@ python3.12 run_qwen_research.py prepare --output local/qwen32b_v1/run1/data
 检查长度只下载tokenizer，不下载32B权重：
 
 ```bash
-local/qwen_env/bin/python run_qwen_research.py audit-tokens \
+local/qwen_env/bin/python run_qwen_research.py audit-tokens --config configs/qwen32b_v1.json \
   --data local/qwen32b_v1/run1/data \
   --output local/qwen32b_v1/run1/token_audit_before_training.json
 ```
@@ -103,7 +105,7 @@ local/qwen_env/bin/python run_qwen_research.py audit-tokens \
 先做**两步真实显存验证**，不是直接长时间训练。默认2048 tokens、batch1、梯度累积8、q/v投影LoRA-r8、梯度检查点、NF4双重量化。冻结基座准备只将一维归一化参数保留FP32，保留大词嵌入/输出矩阵的BF16/FP16，避免PEFT默认整批上转FP32造成额外数GB开销。CUDA混合精度仍由Trainer管理，运行结束记录实际显存峰值。它是保守候选配置，不是已实测的4090显存承诺：
 
 ```bash
-local/qwen_env/bin/python run_qwen_research.py train \
+local/qwen_env/bin/python run_qwen_research.py train --config configs/qwen32b_v1.json \
   --data local/qwen32b_v1/run1/data \
   --output local/qwen32b_v1/run1/smoke \
   --max-steps 2
@@ -112,7 +114,7 @@ local/qwen_env/bin/python run_qwen_research.py train \
 确实完成且显存稳定后，使用新目录正式训练：
 
 ```bash
-local/qwen_env/bin/python run_qwen_research.py train \
+local/qwen_env/bin/python run_qwen_research.py train --config configs/qwen32b_v1.json \
   --data local/qwen32b_v1/run1/data \
   --output local/qwen32b_v1/run1/full
 ```
