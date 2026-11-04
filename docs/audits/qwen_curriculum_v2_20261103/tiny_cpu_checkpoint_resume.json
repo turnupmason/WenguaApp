@@ -1,0 +1,36 @@
+{
+  "state": "passed",
+  "test": "tiny_random_qwen3_cpu_curriculum_checkpoint_resume",
+  "official_tokenizer": "Qwen/Qwen3-14B",
+  "revision": "40c069824f4251a91eefaf281ebe4c544efd3e18",
+  "stop_after_first_optimizer_step": true,
+  "restored_optimizer_rng_scheduler_step_2": true,
+  "new_stage_loads_adapter_with_new_optimizer": true,
+  "same_prompt_base_adapter_generations": true,
+  "development_pair": {
+    "state": "complete",
+    "requested_prompts": 1,
+    "completed_generations": 2,
+    "budget_skips": [],
+    "variants": {
+      "base": {
+        "generations": 1,
+        "schema_and_citation_passed": 0,
+        "generic_summaries": 0,
+        "truncated": 1
+      },
+      "adapter": {
+        "generations": 1,
+        "schema_and_citation_passed": 0,
+        "generic_summaries": 0,
+        "truncated": 1
+      }
+    },
+    "split": "validation",
+    "test_used": false,
+    "semantic_expert_review_complete": false,
+    "production_enabled": false
+  },
+  "real_14b_weights_loaded": false,
+  "cuda_nf4_tested": false
+}

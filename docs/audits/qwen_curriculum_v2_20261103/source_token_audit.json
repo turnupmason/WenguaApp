@@ -1,0 +1,1189 @@
+{
+  "schema": "wengua_curriculum_v2_source_software_audit",
+  "basis": "full_readonly_source_archive_reconstruction",
+  "candidate_11952_used": false,
+  "manifest": {
+    "schema": "wengua_dialogue_curriculum_v2",
+    "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+    "section_count": 43,
+    "case_registry_count": 194,
+    "original_event_family_count": 194,
+    "conservative_evidence_components": 190,
+    "source_assertion_count": 2860,
+    "source_author_paragraphs": 1008,
+    "source_additional_casts": 19,
+    "source_units": 5765,
+    "dialogue_samples": 13335,
+    "source_database_table_inventory": {
+      "books": 2,
+      "sections": 43,
+      "cases": 194,
+      "rules": 0,
+      "reading_releases": 0,
+      "chart_checks": 0,
+      "chapter_knowledge": 43,
+      "casting_knowledge_entries": 0,
+      "semantic_assertions": 2860,
+      "incomplete_historical_cases": 0,
+      "local_import_state": 1,
+      "historical_chart_cells": 1440,
+      "historical_case_reasoning": 1008,
+      "historical_case_disclosures": 175,
+      "historical_case_protocol": 194,
+      "historical_case_book_verdicts": 187,
+      "historical_case_source_segments": 44,
+      "historical_event_candidates": 5,
+      "historical_case_additional_casts": 19,
+      "historical_case_additional_cast_cells": 171,
+      "historical_case_reasoning_trace": 1008,
+      "historical_palace_standardization": 1611,
+      "historical_case_review_audit": 194,
+      "chapter_archival_versions": 30,
+      "historical_outcome_reclassification_audit": 1,
+      "historical_center_derivation_rule": 1,
+      "historical_case_phase_events": 164,
+      "historical_case_reasoning_corrections": 4,
+      "historical_sports_cast_qualification": 2,
+      "historical_source_literal_anomalies": 1,
+      "historical_military_cast_protocol": 4,
+      "historical_military_source_caveat": 1,
+      "historical_weather_cast_context": 7,
+      "historical_geography_source_context": 2,
+      "historical_life_case_context": 9,
+      "historical_life_source_error_segments": 5,
+      "historical_misc_cast_context": 7,
+      "cross_book_concept_tracks": 1603,
+      "cross_book_example_references": 48,
+      "kaiwu_didactic_figures": 14,
+      "kaiwu_didactic_figure_cells": 126,
+      "kaiwu_ordered_stem_pair_occurrences": 81,
+      "kaiwu_timing_source_methods": 20,
+      "kaiwu_classical_verse_explanations": 12,
+      "kaiwu_classical_fate_motifs": 101,
+      "health_crossbook_case_witnesses": 6,
+      "health_crossbook_witness_palaces": 54,
+      "health_crossbook_comparison_steps": 6,
+      "health_crossbook_case_phases": 32,
+      "historic_book_case_acceptance": 86,
+      "hot_topic_event_source_witnesses": 20,
+      "hot_topic_witness_palaces": 180,
+      "hot_topic_source_phases": 125,
+      "hot_topic_multifacet_domains": 25,
+      "hot_topic_annual_forecast_parts": 7,
+      "hot_topic_correction_audits": 1,
+      "crossbook_relationship_cast_witnesses": 6,
+      "crossbook_relationship_literal_palaces": 54,
+      "crossbook_relationship_case_phases": 54,
+      "crossbook_relationship_event_links": 1,
+      "unified_case_domain_facets": 146,
+      "crossbook_relationship_missing_casts": 2,
+      "crossbook_relationship_source_errors": 1,
+      "crossbook_employment_source_charts": 3,
+      "crossbook_employment_source_palaces": 27,
+      "crossbook_employment_case_issues": 4,
+      "crossbook_employment_source_phases": 31,
+      "crossbook_employment_source_caveats": 4,
+      "education_crossbook_source_casts": 3,
+      "education_crossbook_source_palaces": 27,
+      "education_crossbook_candidates": 4,
+      "education_crossbook_book_claims": 6,
+      "education_crossbook_source_phases": 33,
+      "missing_crossbook_casts": 6,
+      "missing_crossbook_palaces": 54,
+      "missing_crossbook_phases": 41,
+      "missing_crossbook_subjects": 2,
+      "missing_crossbook_claim_checks": 1,
+      "kaiwu_business_source_casts": 11,
+      "kaiwu_business_literal_palaces": 99,
+      "kaiwu_business_case_phases": 65,
+      "kaiwu_business_claim_verdicts": 3,
+      "kaiwu_business_related_projects": 2,
+      "kaiwu_lost_source_charts": 4,
+      "kaiwu_lost_source_palaces": 36,
+      "kaiwu_lost_chronological_phases": 24,
+      "kaiwu_lost_issue_outcomes": 4,
+      "kaiwu_lost_temporal_caveats": 4,
+      "kaiwu_travel_source_casts": 7,
+      "kaiwu_travel_original_palaces": 63,
+      "kaiwu_travel_chronology": 44,
+      "kaiwu_travel_scoped_outcomes": 8,
+      "kaiwu_travel_source_context_links": 2,
+      "kaiwu_travel_missing_cast_mentions": 1,
+      "kaiwu_criminal_source_casts": 2,
+      "kaiwu_criminal_original_palaces": 18,
+      "kaiwu_criminal_source_phases": 28,
+      "kaiwu_criminal_scoped_claims": 8,
+      "kaiwu_criminal_unprinted_cast_mentions": 1,
+      "kaiwu_weather_raw_cast_fragments": 2,
+      "kaiwu_weather_raw_fragment_lines": 33,
+      "kaiwu_weather_source_claims": 8,
+      "kaiwu_weather_chronology": 21,
+      "kaiwu_life_source_witnesses": 5,
+      "kaiwu_life_original_chart_lines": 85,
+      "kaiwu_life_author_step_witnesses": 74,
+      "kaiwu_life_source_phases": 16,
+      "kaiwu_recent_panels": 6,
+      "kaiwu_recent_panel_lines": 84,
+      "kaiwu_recent_source_phases": 90,
+      "kaiwu_recent_author_steps": 51,
+      "kaiwu_recent_unprinted_anecdotes": 2,
+      "kaiwu_recent_source_corrections": 2,
+      "kaiwu_geography_source_witnesses": 3,
+      "kaiwu_geography_raw_lines": 41,
+      "kaiwu_geography_author_steps": 14,
+      "kaiwu_geography_source_phases": 28,
+      "kaiwu_geography_method_candidates": 11,
+      "kaiwu_litigation_source_panels": 4,
+      "kaiwu_litigation_panel_lines": 56,
+      "kaiwu_litigation_transcribed_palaces": 36,
+      "kaiwu_litigation_source_phases": 56,
+      "kaiwu_litigation_author_steps": 25,
+      "kaiwu_litigation_source_timing_criticisms": 3,
+      "kaiwu_litigation_source_claim_conflicts": 2,
+      "kaiwu_litigation_conditional_methods": 16,
+      "kaiwu_competition_source_episodes": 4,
+      "kaiwu_competition_raw_casts": 3,
+      "kaiwu_competition_raw_lines": 51,
+      "kaiwu_competition_source_phases": 37,
+      "kaiwu_competition_author_steps": 14,
+      "kaiwu_competition_conditional_methods": 12,
+      "kaiwu_final_subsections": 14,
+      "kaiwu_final_qa": 15,
+      "kaiwu_final_event_witnesses": 14,
+      "kaiwu_final_raw_casts": 16,
+      "kaiwu_final_raw_cast_lines": 295,
+      "kaiwu_final_cast_case_links": 19,
+      "kaiwu_final_source_phases": 67,
+      "kaiwu_final_reasoning_units": 115,
+      "kaiwu_final_error_audit": 18,
+      "kaiwu_final_method_candidates": 27,
+      "phrase_domain_progress": 1,
+      "phrase_template_drafts": 4,
+      "phrase_source_links": 9,
+      "phrase_context_instances": 0,
+      "phrase_pipeline_audit": 2,
+      "phrase_version_progress": 1,
+      "phrase_outcome_timing_contracts": 4,
+      "phrase_instance_timing_windows": 0,
+      "phrase_intent_workflows": 9,
+      "phrase_intent_workflow_steps": 72,
+      "phrase_intent_evidence_links": 30,
+      "phrase_intent_workflow_audit": 1,
+      "domain_six_layer_contract": 1,
+      "marriage22_scenario_protocol": 22,
+      "marriage22_six_layer_steps": 132,
+      "marriage22_original_case_links": 89,
+      "six_layer_instance_trace": 0,
+      "marriage22_scene_catalog_audit": 1,
+      "marriage_runtime_source_cast_fixture": 2,
+      "marriage_runtime_scenario_study": 44,
+      "marriage_runtime_study_audit": 1,
+      "book_timing_method_source_rules": 20,
+      "marriage_author_time_source_studies": 1,
+      "marriage_author_timing_month_windows": 2,
+      "marriage_author_time_feedback_validation": 2,
+      "marriage_v15_astro_method_audit": 1,
+      "marriage_v16_judgment_contract": 1,
+      "marriage_v16_historical_holdout_inputs": 3,
+      "marriage_v16_historical_initial_verdicts": 3,
+      "marriage_v16_post_inference_labels": 3,
+      "marriage_v16_family_dev_audit": 1,
+      "marriage_v17_book_conditional_rules": 27,
+      "marriage_v17_new_event_family_replays": 2,
+      "marriage_v17_rule_change_and_error_audit": 1,
+      "marriage_v18_optional_nianming_protocol": 1,
+      "marriage_v18_book_optional_role_sources": 10,
+      "marriage_v18_optional_year_scene_methods": 22,
+      "marriage_v18_missing_year_dev_studies": 2,
+      "marriage_v18_optional_year_archive_audit": 1,
+      "health_severity_v19_protocol": 1,
+      "health_severity_v19_template_sections": 21,
+      "health_severity_v19_archive_audit": 1,
+      "health_v20_actor_role_profiles": 14,
+      "health_v20_intent_templates": 5,
+      "health_v20_intent_steps": 66,
+      "health_v20_archive_audit": 1,
+      "health_v21_directed_palace_relations": 5,
+      "health_v21_calendar_guard": 1,
+      "health_v21_archive_audit": 1,
+      "health_v22_customer_severity_sections": 21,
+      "health_v22_source_pair_explanations": 1,
+      "health_v22_acceptance_receipt": 1,
+      "health_v23_display_groups": 1,
+      "health_v23_role_auxiliary": 1,
+      "health_v23_acceptance_audit": 1,
+      "health_v24_corrected_father_prose": 4,
+      "health_v24_acceptance_audit": 1,
+      "health_v25_concise_sections": 11,
+      "health_v25_evidence_acceptance": 1,
+      "health_v26_strict_customer_template": 11,
+      "health_v26_acceptance_receipt": 1,
+      "health_v27_fixed_customer_sections": 11,
+      "health_v27_conditional_rule_registry": 3,
+      "health_v27_sealed_historical_predictions": 2,
+      "health_v27_acceptance_history": 1,
+      "health_v28_fixed_customer_sections": 11,
+      "health_v28_medical_timing_rules": 5,
+      "health_v28_historical_review": 2,
+      "health_v29_no_duplicate_medical_template": 11,
+      "health_v29_archival_readouts": 2,
+      "health_v30_method_curriculum": 8,
+      "health_v30_stem_pair_rules": 42,
+      "health_v30_composite_rule_index": 17,
+      "health_v30_fixed_template": 11,
+      "health_v30_historical_readout_seals": 2,
+      "health_v30_version_receipt": 1,
+      "health_v31_hour_patient_fixed_templates": 1,
+      "health_v31_correction_archive": 2,
+      "health_v31_version_receipt": 1,
+      "health_v32_pre_disclosure_history": 2,
+      "health_v32_handoff_gate": 1,
+      "health_v33_all_historical_health_replay": 12,
+      "health_v33_user_disease_curriculum_appendix": 1,
+      "health_v34_role_and_condition_replay": 12,
+      "health_v34_source_rule_audit": 1,
+      "health_v35_patient_first_replay": 12,
+      "health_v35_complete_parent_archive": 1,
+      "health_v36_source_horse_and_value_door": 12,
+      "health_v36_full_archive_audit": 1,
+      "health_v37_ordered_81_pair_policy": 1,
+      "health_v37_user_noon_test": 1,
+      "health_v37_full_archive_audit": 1,
+      "health_v38_case_readouts": 3,
+      "health_v38_latest_full_archive": 1,
+      "health_v39_concise_user_readings": 3,
+      "health_v39_appendonly_full_audit": 1,
+      "health_v40_symbolic_score_model": 1,
+      "health_v40_three_symbolic_score_trials": 3,
+      "health_v41_candidate_ordered_pair_weights": 81,
+      "health_v41_real_chart_81_pair_checks": 27,
+      "health_v41_scoring_3_fixed_cases": 3,
+      "health_v41_source_gate_archive_policy": 1,
+      "health_v42_book_anchored_twelve_stages": 120,
+      "health_v42_unified_five_qualitative_numeric": 5,
+      "health_v42_six_module_ledger": 30,
+      "health_v42_appendonly_full_original_retention": 1,
+      "health_v391_active_narrative_policy": 1,
+      "health_v391_random_hour_narratives": 4,
+      "health_v391_actual_role_lifecycle": 20
+    },
+    "verbatim_exported_tables": [
+      "sections",
+      "cases",
+      "historical_case_protocol",
+      "semantic_assertions",
+      "historical_case_reasoning",
+      "historical_chart_cells",
+      "historical_case_additional_casts",
+      "historical_case_additional_cast_cells",
+      "historical_case_disclosures",
+      "historical_case_phase_events",
+      "historical_case_book_verdicts"
+    ],
+    "section_index_coverage": [
+      {
+        "section_id": 1,
+        "book_id": "shenqi",
+        "title": "时家奇门的起局方法",
+        "original_nonblank_lines": 117,
+        "indexed_assertion_or_author_lines": 100,
+        "literal_index_line_coverage": 0.8547,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 2,
+        "book_id": "shenqi",
+        "title": "奇门预测符号的象数理含义",
+        "original_nonblank_lines": 250,
+        "indexed_assertion_or_author_lines": 208,
+        "literal_index_line_coverage": 0.832,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 3,
+        "book_id": "shenqi",
+        "title": "奇门预测的判断依据",
+        "original_nonblank_lines": 381,
+        "indexed_assertion_or_author_lines": 356,
+        "literal_index_line_coverage": 0.9344,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 4,
+        "book_id": "shenqi",
+        "title": "奇门遁甲应用概述",
+        "original_nonblank_lines": 124,
+        "indexed_assertion_or_author_lines": 85,
+        "literal_index_line_coverage": 0.6855,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 5,
+        "book_id": "shenqi",
+        "title": "人体疾病预测",
+        "original_nonblank_lines": 244,
+        "indexed_assertion_or_author_lines": 34,
+        "literal_index_line_coverage": 0.1393,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 6,
+        "book_id": "shenqi",
+        "title": "恋爱婚姻预测",
+        "original_nonblank_lines": 261,
+        "indexed_assertion_or_author_lines": 29,
+        "literal_index_line_coverage": 0.1111,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 7,
+        "book_id": "shenqi",
+        "title": "怀孕分娩预测",
+        "original_nonblank_lines": 223,
+        "indexed_assertion_or_author_lines": 30,
+        "literal_index_line_coverage": 0.1345,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 8,
+        "book_id": "shenqi",
+        "title": "求学考试预测",
+        "original_nonblank_lines": 248,
+        "indexed_assertion_or_author_lines": 36,
+        "literal_index_line_coverage": 0.1452,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 9,
+        "book_id": "shenqi",
+        "title": "工作就业预测",
+        "original_nonblank_lines": 157,
+        "indexed_assertion_or_author_lines": 34,
+        "literal_index_line_coverage": 0.2166,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 10,
+        "book_id": "shenqi",
+        "title": "经营求财预测",
+        "original_nonblank_lines": 486,
+        "indexed_assertion_or_author_lines": 107,
+        "literal_index_line_coverage": 0.2202,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 11,
+        "book_id": "shenqi",
+        "title": "出行出国预测",
+        "original_nonblank_lines": 221,
+        "indexed_assertion_or_author_lines": 38,
+        "literal_index_line_coverage": 0.1719,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 12,
+        "book_id": "shenqi",
+        "title": "行人走失预测",
+        "original_nonblank_lines": 327,
+        "indexed_assertion_or_author_lines": 63,
+        "literal_index_line_coverage": 0.1927,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 13,
+        "book_id": "shenqi",
+        "title": "钱物丢失预测",
+        "original_nonblank_lines": 229,
+        "indexed_assertion_or_author_lines": 40,
+        "literal_index_line_coverage": 0.1747,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 14,
+        "book_id": "shenqi",
+        "title": "刑事案件预测",
+        "original_nonblank_lines": 169,
+        "indexed_assertion_or_author_lines": 39,
+        "literal_index_line_coverage": 0.2308,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 15,
+        "book_id": "shenqi",
+        "title": "官司诉讼预测",
+        "original_nonblank_lines": 173,
+        "indexed_assertion_or_author_lines": 31,
+        "literal_index_line_coverage": 0.1792,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 16,
+        "book_id": "shenqi",
+        "title": "体育竞赛预测",
+        "original_nonblank_lines": 184,
+        "indexed_assertion_or_author_lines": 33,
+        "literal_index_line_coverage": 0.1793,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 17,
+        "book_id": "shenqi",
+        "title": "军事事件预测",
+        "original_nonblank_lines": 118,
+        "indexed_assertion_or_author_lines": 31,
+        "literal_index_line_coverage": 0.2627,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 18,
+        "book_id": "shenqi",
+        "title": "天时气象预测",
+        "original_nonblank_lines": 128,
+        "indexed_assertion_or_author_lines": 20,
+        "literal_index_line_coverage": 0.1562,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 19,
+        "book_id": "shenqi",
+        "title": "地理环境预测",
+        "original_nonblank_lines": 69,
+        "indexed_assertion_or_author_lines": 10,
+        "literal_index_line_coverage": 0.1449,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 20,
+        "book_id": "shenqi",
+        "title": "人生机遇预测",
+        "original_nonblank_lines": 245,
+        "indexed_assertion_or_author_lines": 67,
+        "literal_index_line_coverage": 0.2735,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 21,
+        "book_id": "shenqi",
+        "title": "其他杂项预测",
+        "original_nonblank_lines": 193,
+        "indexed_assertion_or_author_lines": 31,
+        "literal_index_line_coverage": 0.1606,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 22,
+        "book_id": "kaiwu",
+        "title": "奇门遁甲是中国人认知世界的一种时空模型",
+        "original_nonblank_lines": 179,
+        "indexed_assertion_or_author_lines": 85,
+        "literal_index_line_coverage": 0.4749,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 23,
+        "book_id": "kaiwu",
+        "title": "关乎事物成败的四大要素",
+        "original_nonblank_lines": 205,
+        "indexed_assertion_or_author_lines": 82,
+        "literal_index_line_coverage": 0.4,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 24,
+        "book_id": "kaiwu",
+        "title": "纸上井字格起局法的步骤",
+        "original_nonblank_lines": 155,
+        "indexed_assertion_or_author_lines": 129,
+        "literal_index_line_coverage": 0.8323,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 25,
+        "book_id": "kaiwu",
+        "title": "第四章 如何分析判断奇门格局",
+        "original_nonblank_lines": 350,
+        "indexed_assertion_or_author_lines": 228,
+        "literal_index_line_coverage": 0.6514,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 26,
+        "book_id": "kaiwu",
+        "title": "第五章 人生命运预测古文详解",
+        "original_nonblank_lines": 49,
+        "indexed_assertion_or_author_lines": 24,
+        "literal_index_line_coverage": 0.4898,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 27,
+        "book_id": "kaiwu",
+        "title": "第二章 日常百事预测评析 / 第一节 人体疾病预测(共6例)",
+        "original_nonblank_lines": 136,
+        "indexed_assertion_or_author_lines": 28,
+        "literal_index_line_coverage": 0.2059,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 28,
+        "book_id": "kaiwu",
+        "title": "第一章 热门话题预测评析",
+        "original_nonblank_lines": 557,
+        "indexed_assertion_or_author_lines": 97,
+        "literal_index_line_coverage": 0.1741,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 29,
+        "book_id": "kaiwu",
+        "title": "第二章 日常百事预测评析 / 第二节 恋爱婚姻预测(共6例)",
+        "original_nonblank_lines": 189,
+        "indexed_assertion_or_author_lines": 26,
+        "literal_index_line_coverage": 0.1376,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 30,
+        "book_id": "kaiwu",
+        "title": "第四节 工作就业预测（共3例）",
+        "original_nonblank_lines": 97,
+        "indexed_assertion_or_author_lines": 13,
+        "literal_index_line_coverage": 0.134,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 31,
+        "book_id": "kaiwu",
+        "title": "第二章 日常百事预测评析 / 第三节 求学考试预测(共3例)",
+        "original_nonblank_lines": 94,
+        "indexed_assertion_or_author_lines": 16,
+        "literal_index_line_coverage": 0.1702,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 32,
+        "book_id": "kaiwu",
+        "title": "第七节 行人走失预测（共5例）",
+        "original_nonblank_lines": 183,
+        "indexed_assertion_or_author_lines": 29,
+        "literal_index_line_coverage": 0.1585,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 33,
+        "book_id": "kaiwu",
+        "title": "第五节经营求财预测(共11例)",
+        "original_nonblank_lines": 359,
+        "indexed_assertion_or_author_lines": 64,
+        "literal_index_line_coverage": 0.1783,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 34,
+        "book_id": "kaiwu",
+        "title": "第二章 日常百事预测评析 / 第八节 钱物丢失预测（共4例）",
+        "original_nonblank_lines": 131,
+        "indexed_assertion_or_author_lines": 34,
+        "literal_index_line_coverage": 0.2595,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 35,
+        "book_id": "kaiwu",
+        "title": "第六节 出行、出国预测（共6例）",
+        "original_nonblank_lines": 210,
+        "indexed_assertion_or_author_lines": 34,
+        "literal_index_line_coverage": 0.1619,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 36,
+        "book_id": "kaiwu",
+        "title": "第二章 日常百事预测评析 / 第九节 刑事案件预测（共2例）",
+        "original_nonblank_lines": 64,
+        "indexed_assertion_or_author_lines": 13,
+        "literal_index_line_coverage": 0.2031,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 37,
+        "book_id": "kaiwu",
+        "title": "第十三节 天时气象预测(共2例)",
+        "original_nonblank_lines": 65,
+        "indexed_assertion_or_author_lines": 12,
+        "literal_index_line_coverage": 0.1846,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 38,
+        "book_id": "kaiwu",
+        "title": "第十六节 人生终身命运预测(共5例)",
+        "original_nonblank_lines": 205,
+        "indexed_assertion_or_author_lines": 93,
+        "literal_index_line_coverage": 0.4537,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 39,
+        "book_id": "kaiwu",
+        "title": "第十五节 人生近期运气预测(共6例)",
+        "original_nonblank_lines": 219,
+        "indexed_assertion_or_author_lines": 66,
+        "literal_index_line_coverage": 0.3014,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 40,
+        "book_id": "kaiwu",
+        "title": "第十四节 地理风水预测(共3例)",
+        "original_nonblank_lines": 80,
+        "indexed_assertion_or_author_lines": 14,
+        "literal_index_line_coverage": 0.175,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 41,
+        "book_id": "kaiwu",
+        "title": "第十节 官司诉讼预测（共4例）",
+        "original_nonblank_lines": 129,
+        "indexed_assertion_or_author_lines": 25,
+        "literal_index_line_coverage": 0.1938,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 42,
+        "book_id": "kaiwu",
+        "title": "第十二节 竞争评比预测(共2例)",
+        "original_nonblank_lines": 97,
+        "indexed_assertion_or_author_lines": 15,
+        "literal_index_line_coverage": 0.1546,
+        "not_a_semantic_completeness_score": true
+      },
+      {
+        "section_id": 43,
+        "book_id": "kaiwu",
+        "title": "第三章 答疑解惑与错例剖析",
+        "original_nonblank_lines": 541,
+        "indexed_assertion_or_author_lines": 127,
+        "literal_index_line_coverage": 0.2348,
+        "not_a_semantic_completeness_score": true
+      }
+    ],
+    "tasks": {
+      "source_meaning": 2074,
+      "source_conclusion": 1089,
+      "source_fact_lookup": 856,
+      "source_conditions": 625,
+      "source_chapter_method": 138,
+      "author_stage": 1008,
+      "author_explicit_condition_link": 94,
+      "author_stage_dialogue": 817,
+      "domain_specific_question": 23,
+      "domain_role_dialogue": 5,
+      "source_chart_cell": 4833,
+      "source_chart_row": 1611,
+      "user_rule": 142,
+      "user_rule_conditions": 9,
+      "role_clarification_dialogue": 1,
+      "role_context_switch": 1,
+      "user_qualification": 9
+    },
+    "splits": {
+      "train": 11144,
+      "validation": 1129,
+      "test": 1062
+    },
+    "stages": {
+      "knowledge": 2765,
+      "workflow": 4126,
+      "chart": 6444
+    },
+    "source_anchor_status": {
+      "abstract_or_unlocated": 8,
+      "literal_unique": 2730,
+      "literal_repeated": 49,
+      "whitespace_normalized_only": 69
+    },
+    "source_audit_issues": 212,
+    "all_knowledge_proven_error_free": false,
+    "prediction_accuracy_verified": false,
+    "production_enabled": false,
+    "notes": [
+      "QA count is not independent cases; chart reading is a separate capped task.",
+      "Author paragraphs and verdicts remain unchanged; no invented atomic reasoning.",
+      "Shared-event evidence uses holdout precedence test > validation > train.",
+      "Unlocated abstract records stay in archive, not automatically approved as literal gold.",
+      "User additions are versioned separately from original books."
+    ],
+    "file_sha256": {
+      "case_registry.jsonl": "5ea7f5740a0cf488eb4acf4461bb970f5d24750d366a89d37c47c647fd662a68",
+      "case_source_spans.json": "8aa9bac72cc009f89190c4c8fa57a3c2ffa861c6432a3ee697ce4c4d6a9960c4",
+      "corpus.jsonl": "520fa9a43683b421f8b72dda2d013471c2ef9a138d724378282ead450220b690",
+      "original_source_tables.json": "6aa6fa0805fd137f172dd392fdae72041b0dc787d59dc90faf9979647c06ac28",
+      "qa_review.csv": "2ed9806cb5f4ce5feef382ebc326b626426ca9972e6cfa3de5f19e80c8646b04",
+      "quality_audit.json": "1c3032cc7e3e5c05adca4678390a52d454dc7e4fef87fa69ca3a2d8b8ce63d0c",
+      "source_audit_issues.json": "281b6e318e51006b55a2370145e60235efdbbb05d426867fc3b2c1a15d1cb642",
+      "source_units.jsonl": "07a37175b3a487f49f0bd61c3efffd0ff84b85d9d378c7bf4a53629b181c93e6",
+      "test.jsonl": "8ee77e18f550eb90d30a5b8bc638a2a7be3b8f82a0f2d6cfaba15085854be148",
+      "train.jsonl": "71f38dbb0eb905774c25e6a2bc293a36ccd0edba7e5d53bb530150da702136d4",
+      "validation.jsonl": "ba233ac1cf8e221596d86b293233d81de60536c02306e3f9e23ac73f3bb493c1"
+    }
+  },
+  "quality_audit": {
+    "passed": true,
+    "errors": [],
+    "unique_answers": 7056,
+    "task_counts": {
+      "source_meaning": 2074,
+      "source_conclusion": 1089,
+      "source_fact_lookup": 856,
+      "source_conditions": 625,
+      "source_chapter_method": 138,
+      "author_stage": 1008,
+      "author_explicit_condition_link": 94,
+      "author_stage_dialogue": 817,
+      "domain_specific_question": 23,
+      "domain_role_dialogue": 5,
+      "source_chart_cell": 4833,
+      "source_chart_row": 1611,
+      "user_rule": 142,
+      "user_rule_conditions": 9,
+      "role_clarification_dialogue": 1,
+      "role_context_switch": 1,
+      "user_qualification": 9
+    },
+    "sample_count": 13335,
+    "original_case_count": 194,
+    "independent_prediction_validation": false,
+    "semantic_expert_review_complete": false
+  },
+  "issue_counts": {
+    "retain_abstract_not_verbatim_quote": 8,
+    "navigation_or_short_fragment_not_answer_gold": 88,
+    "normalized_field_not_literally_supported_for_lookup": 107,
+    "missing_source_or_empty_excerpt": 4,
+    "unregistered_source_anecdote_archived_not_forecast_gold": 5
+  },
+  "token_audit": {
+    "schema": "wengua_dialogue_curriculum_v2",
+    "max_seq_length": 1536,
+    "audits": {
+      "train": {
+        "accepted": 11095,
+        "accepted_tasks": {
+          "source_meaning": 1669,
+          "source_conclusion": 882,
+          "source_fact_lookup": 776,
+          "source_conditions": 497,
+          "source_chapter_method": 107,
+          "author_stage": 820,
+          "author_explicit_condition_link": 81,
+          "author_stage_dialogue": 663,
+          "author_stage_source_reading_short_view": 8,
+          "domain_specific_question": 19,
+          "domain_role_dialogue": 5,
+          "source_chart_cell": 4077,
+          "source_chart_row": 1359,
+          "user_rule": 117,
+          "user_rule_conditions": 5,
+          "role_clarification_dialogue": 1,
+          "role_context_switch": 1,
+          "user_qualification": 8
+        },
+        "adaptations": {
+          "original": 11087,
+          "needs_longer_context_original_retained": 49,
+          "intact_author_paragraph_view": 8
+        },
+        "excluded": [
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1705,
+            "id": "assert:9fb50e8c74c47052b06b603d59d39ea611227aa2ebfa188fe32c6b357c9a2212:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1639,
+            "id": "assert:9fb50e8c74c47052b06b603d59d39ea611227aa2ebfa188fe32c6b357c9a2212:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1630,
+            "id": "assert:9fb50e8c74c47052b06b603d59d39ea611227aa2ebfa188fe32c6b357c9a2212:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1578,
+            "id": "assert:e3e36fc3ab03e794072d392a886d23ca0905300101ea2507e35784675a47abbb:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1949,
+            "id": "assert:d9078b3b3bf6e2634bf7e2e735cd06032fb7ffb1a3e0252306c7e50e61b69d97:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1904,
+            "id": "assert:d9078b3b3bf6e2634bf7e2e735cd06032fb7ffb1a3e0252306c7e50e61b69d97:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1892,
+            "id": "assert:d9078b3b3bf6e2634bf7e2e735cd06032fb7ffb1a3e0252306c7e50e61b69d97:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3318,
+            "id": "assert:6ce42de14dcf975a80bac1eb60a88ca884c147360566ddf61a2c182707f8b62d:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3328,
+            "id": "assert:6ce42de14dcf975a80bac1eb60a88ca884c147360566ddf61a2c182707f8b62d:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3284,
+            "id": "assert:6ce42de14dcf975a80bac1eb60a88ca884c147360566ddf61a2c182707f8b62d:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1944,
+            "id": "assert:763483dd5d1322b91eec6e54fa04ac16ab0d91fa25ed79b5557d3a95e75797cc:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1891,
+            "id": "assert:763483dd5d1322b91eec6e54fa04ac16ab0d91fa25ed79b5557d3a95e75797cc:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1878,
+            "id": "assert:763483dd5d1322b91eec6e54fa04ac16ab0d91fa25ed79b5557d3a95e75797cc:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1645,
+            "id": "assert:deedeb780c37beafe4e4cddf8f548330174d454a4203470649e404d7e12dd95a:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1631,
+            "id": "assert:deedeb780c37beafe4e4cddf8f548330174d454a4203470649e404d7e12dd95a:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1591,
+            "id": "assert:deedeb780c37beafe4e4cddf8f548330174d454a4203470649e404d7e12dd95a:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1628,
+            "id": "assert:cd8d80c5dfc86b3ce0ab773410808c40788e8cb357181dbc2f699573a151dad2:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3196,
+            "id": "assert:99c6a971240f43325ee3f5984e019f94c75d8b0b21a09c2b9398e3e0c69e2a77:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3197,
+            "id": "assert:99c6a971240f43325ee3f5984e019f94c75d8b0b21a09c2b9398e3e0c69e2a77:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3177,
+            "id": "assert:99c6a971240f43325ee3f5984e019f94c75d8b0b21a09c2b9398e3e0c69e2a77:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2154,
+            "id": "assert:b0d381d367121103b4c23317cfe39e7aff919d0d3bf6dc682975b87166e55d1f:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2133,
+            "id": "assert:b0d381d367121103b4c23317cfe39e7aff919d0d3bf6dc682975b87166e55d1f:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2133,
+            "id": "assert:b0d381d367121103b4c23317cfe39e7aff919d0d3bf6dc682975b87166e55d1f:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1797,
+            "id": "assert:2c668ead035c3468338155f030e3d90aabe0537af6e7c46db45df746b109c141:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1823,
+            "id": "assert:2c668ead035c3468338155f030e3d90aabe0537af6e7c46db45df746b109c141:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1779,
+            "id": "assert:2c668ead035c3468338155f030e3d90aabe0537af6e7c46db45df746b109c141:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2827,
+            "id": "assert:6f1c7ce811e122f051d03ea3d4c74f851d955915c15ccb34758acc941271c721:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2811,
+            "id": "assert:6f1c7ce811e122f051d03ea3d4c74f851d955915c15ccb34758acc941271c721:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2811,
+            "id": "assert:6f1c7ce811e122f051d03ea3d4c74f851d955915c15ccb34758acc941271c721:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1629,
+            "id": "assert:c744c7486f15166905a82c2652cad522cafbad4bef9004777b552d2750820e95:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1604,
+            "id": "assert:c744c7486f15166905a82c2652cad522cafbad4bef9004777b552d2750820e95:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1604,
+            "id": "assert:c744c7486f15166905a82c2652cad522cafbad4bef9004777b552d2750820e95:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3831,
+            "id": "assert:98ba1593cf36609bf2105f656097002f4c3cf1d7e77eed4c6fcd6db6923dc6a5:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3779,
+            "id": "assert:98ba1593cf36609bf2105f656097002f4c3cf1d7e77eed4c6fcd6db6923dc6a5:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3779,
+            "id": "assert:98ba1593cf36609bf2105f656097002f4c3cf1d7e77eed4c6fcd6db6923dc6a5:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3064,
+            "id": "assert:6534f5eb806bfcb6c5b8777d3e136e557557384c293112e8b72935bf484c81f2:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3007,
+            "id": "assert:6534f5eb806bfcb6c5b8777d3e136e557557384c293112e8b72935bf484c81f2:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 3007,
+            "id": "assert:6534f5eb806bfcb6c5b8777d3e136e557557384c293112e8b72935bf484c81f2:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 4368,
+            "id": "assert:dfc329fad918ded702cc3d01a5f675115f9d438aba3990f7206247237f7aa4bd:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 4502,
+            "id": "assert:dfc329fad918ded702cc3d01a5f675115f9d438aba3990f7206247237f7aa4bd:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 4343,
+            "id": "assert:dfc329fad918ded702cc3d01a5f675115f9d438aba3990f7206247237f7aa4bd:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2302,
+            "id": "assert:b0bb402fc3d539e959b0add4357c12827206d6d0cd273f1c90339b07e7796379:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2285,
+            "id": "assert:b0bb402fc3d539e959b0add4357c12827206d6d0cd273f1c90339b07e7796379:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2285,
+            "id": "assert:b0bb402fc3d539e959b0add4357c12827206d6d0cd273f1c90339b07e7796379:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1541,
+            "id": "assert:chapter:4:L166-166:method"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2062,
+            "id": "user:2896685b4460a2c8560e313f5e97853a07938ad59e6b58e55e5f83d0fac1e322:limits"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1892,
+            "id": "user:6e5a5b164f0a832cd0ddbd300c997e15042bf6007c6214bcb4fedac946d19284:limits"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2342,
+            "id": "user:35a483e85c581ef290917f8346b26246681169bc74f17d09dca449f73e8017d2:limits"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1674,
+            "id": "user:eda966fee28e449d7f6a8ffcb85ed81aee27c4dec993ec1f81aad7ef2054ad48:limits"
+          }
+        ],
+        "accepted_event_components": 156
+      },
+      "validation": {
+        "accepted": 1120,
+        "accepted_tasks": {
+          "source_meaning": 199,
+          "source_conclusion": 95,
+          "source_fact_lookup": 50,
+          "source_conditions": 57,
+          "source_chapter_method": 13,
+          "author_stage": 98,
+          "author_stage_dialogue": 80,
+          "author_explicit_condition_link": 9,
+          "domain_specific_question": 1,
+          "source_chart_cell": 378,
+          "source_chart_row": 126,
+          "user_rule": 14
+        },
+        "adaptations": {
+          "original": 1120,
+          "needs_longer_context_original_retained": 9
+        },
+        "excluded": [
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1909,
+            "id": "assert:ebf7af9aae22bd3973617a8b291bd878289e4ce2d5001265b5cf6a6a3ebc011e:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1891,
+            "id": "assert:ebf7af9aae22bd3973617a8b291bd878289e4ce2d5001265b5cf6a6a3ebc011e:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1883,
+            "id": "assert:ebf7af9aae22bd3973617a8b291bd878289e4ce2d5001265b5cf6a6a3ebc011e:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1717,
+            "id": "assert:a2ed4b7e728d8c570f776b44765da50f0aa0a9e3777490baabe5244a3d6de6a1:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1804,
+            "id": "assert:a2ed4b7e728d8c570f776b44765da50f0aa0a9e3777490baabe5244a3d6de6a1:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1697,
+            "id": "assert:a2ed4b7e728d8c570f776b44765da50f0aa0a9e3777490baabe5244a3d6de6a1:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1800,
+            "id": "assert:0e816838320570d90e62483cca94dd92da3c4a64c6d261b043c00032624d78c3:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1746,
+            "id": "assert:0e816838320570d90e62483cca94dd92da3c4a64c6d261b043c00032624d78c3:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1744,
+            "id": "assert:0e816838320570d90e62483cca94dd92da3c4a64c6d261b043c00032624d78c3:conditions"
+          }
+        ],
+        "accepted_event_components": 18
+      },
+      "test": {
+        "accepted": 1055,
+        "accepted_tasks": {
+          "source_meaning": 186,
+          "source_conclusion": 91,
+          "source_fact_lookup": 30,
+          "source_conditions": 52,
+          "source_chapter_method": 17,
+          "author_stage": 87,
+          "author_stage_dialogue": 70,
+          "author_explicit_condition_link": 3,
+          "domain_specific_question": 3,
+          "source_chart_cell": 378,
+          "source_chart_row": 126,
+          "user_rule": 11,
+          "user_qualification": 1
+        },
+        "adaptations": {
+          "original": 1055,
+          "needs_longer_context_original_retained": 7
+        },
+        "excluded": [
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 1555,
+            "id": "assert:7034052bf0c9fa11f5ec9df5469a282ba9c670f100c47c4410ba904d08936847:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2323,
+            "id": "assert:7840588841c143112e312e65cf1ba794a9362279127ced457981ddcaa60c9a12:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2315,
+            "id": "assert:7840588841c143112e312e65cf1ba794a9362279127ced457981ddcaa60c9a12:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2304,
+            "id": "assert:7840588841c143112e312e65cf1ba794a9362279127ced457981ddcaa60c9a12:conditions"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2101,
+            "id": "assert:92e156cb055f6147dcdf10b406d6870511d324d79857ab938baab23755d59713:meaning"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2076,
+            "id": "assert:92e156cb055f6147dcdf10b406d6870511d324d79857ab938baab23755d59713:conclusion"
+          },
+          {
+            "action": "needs_longer_context_original_retained",
+            "tokens": 2076,
+            "id": "assert:92e156cb055f6147dcdf10b406d6870511d324d79857ab938baab23755d59713:conditions"
+          }
+        ],
+        "accepted_event_components": 15
+      }
+    },
+    "stage_counts": {
+      "knowledge": 3756,
+      "workflow": 4540
+    },
+    "training_cases_independent_of_question_count": true,
+    "production_enabled": false
+  },
+  "official_tokenizer": "Qwen/Qwen3-14B",
+  "actual_14b_curriculum_training_executed_here": false,
+  "all_knowledge_proven_error_free": false,
+  "real_world_prediction_validated": false,
+  "public_metadata_only": true
+}

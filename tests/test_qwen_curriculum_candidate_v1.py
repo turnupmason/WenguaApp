@@ -34,7 +34,7 @@ class QwenDialogueCandidateV1Tests(unittest.TestCase):
             self.assertRegex(artifact["sha256"], r"^[0-9a-f]{64}$")
             self.assertTrue(artifact["shared_in_conversation_only"])
 
-    def test_not_gold_and_release_gate_still_closed(self):
+    def test_index_only_candidate_cannot_authorize_training_release(self):
         d = json.loads(CANON.read_text(encoding="utf8"))
         p = d["training_policy"]
         self.assertTrue(p["all_rows_candidate_not_gold"])
@@ -42,8 +42,15 @@ class QwenDialogueCandidateV1Tests(unittest.TestCase):
         self.assertTrue(p["case_index_replays_are_not_actual_author_analysis"])
         self.assertFalse(p["auto_train_enabled"])
         release = json.loads(RELEASE.read_text(encoding="utf8"))
-        self.assertEqual(release["state"], "preparing")
-        self.assertFalse(release["checks_passed"])
+        if release['state']=='preparing':
+            self.assertFalse(release['checks_passed'])
+        else:
+            # A later reconstruction from the complete archive can have its
+            # own checked release; this workbook remains excluded permanently.
+            import run_qwen_overnight as worker
+            self.assertFalse(release['candidate_11952_used'])
+            self.assertEqual(release['dataset_basis'],'full_readonly_source_archive_reconstruction')
+            self.assertTrue(worker.check_release(release))
 
 
 if __name__ == "__main__":

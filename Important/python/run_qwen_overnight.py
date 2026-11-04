@@ -30,6 +30,12 @@ def check_release(release):
         return False
     if release.get('state') != 'ready' or not release.get('checks_passed'):
         raise ValueError('Release is not checked and ready')
+    proof=release.get('checks',{})
+    if release.get('dataset_basis')!='full_readonly_source_archive_reconstruction' or release.get('candidate_11952_used') is not False:
+        raise ValueError('Index-only candidate data cannot authorize this training release')
+    required=('literal_source_audit','group_holdout_audit','official_token_budget_audit','tiny_checkpoint_resume_test')
+    if any(proof.get(key) is not True for key in required):
+        raise ValueError('Missing full-source or executable training checks')
     fingerprints = release.get('source_sha256', {})
     if 'run_qwen_curriculum.py' not in fingerprints:
         raise ValueError('Missing checked curriculum entrypoint')
