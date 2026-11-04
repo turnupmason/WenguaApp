@@ -1,0 +1,7 @@
+{
+  "release_id": "qwen_curriculum_v2_20261103",
+  "worker_protocol": 1,
+  "state": "preparing",
+  "checks_passed": false,
+  "note": "No training is launched until the rebuilt curriculum, checks and entrypoint are ready."
+}

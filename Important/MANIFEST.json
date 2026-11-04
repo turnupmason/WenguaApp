@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "7cef9ba0faab1c079141d03ea051d72c842afa43"
+      "sha": "1d568671ce0a8091d075e9202cc0d71b7176f429"
     },
     {
       "platform": "python",
@@ -1448,6 +1448,24 @@
       "canonical": "data/knowledge/qwen_research/v1/safe_general_rule_scopes.json",
       "snapshot": "Important/python/data/knowledge/qwen_research/v1/safe_general_rule_scopes.json",
       "sha": "68c5f0fa4bc098ccd1f6ed24715aef13432ae97e"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_overnight.py",
+      "snapshot": "Important/python/run_qwen_overnight.py",
+      "sha": "c1d6c381488de6a0956a8f043c2561c4a52b6384"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_overnight_worker.py",
+      "snapshot": "Important/python/tests/test_qwen_overnight_worker.py",
+      "sha": "475f597ed111b72cf9a60f732622dc26bbde633b"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_curriculum_v2/overnight_release.json",
+      "snapshot": "Important/python/data/knowledge/qwen_curriculum_v2/overnight_release.json",
+      "sha": "4912e54379011b9c89f152f3c3588ad4568f5c82"
     }
   ]
 }
