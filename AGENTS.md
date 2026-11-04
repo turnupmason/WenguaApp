@@ -3697,3 +3697,6 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41878747481
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f91ab68aff38c21ee98bb187ac73cf5f048ab01。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41878747481_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+
+Windows分步CI最终实证：源码5df92aa3的Qwen#41879397874，Windows job126747687544完整日志15项OK、帮助和CMD防误启动各独立步骤通过；Linux job126747687858完整日志新book-loop passed且无error，产物13348891096存在。新增的步骤隔离已实跑，不把前一版通过冒充此版。模型／数据／训练代码未再改变，下面仅补交接记录；本机14B／4080显存和质量仍待用户启动实跑。

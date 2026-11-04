@@ -1,14 +1,14 @@
 {
-  "source_commit": "7f91ab68aff38c21ee98bb187ac73cf5f048ab01",
-  "qwen_workflow_run": 41878747788,
-  "windows_job": 126745366447,
+  "source_commit": "5df92aa355835938f9b3a06d28683b8414e2195c",
+  "qwen_workflow_run": 41879397874,
+  "windows_job": 126747687544,
   "windows_test_count": 15,
   "windows_test_log_ok": true,
   "windows_utf8_cli_help_and_missing_env_refusal_observed": true,
   "windows_log_sha256": "a6a46835d4e4b7fd26d5de4b4ef6e5201c45b3df82f435bd07f2b2a27c73233a",
-  "cpu_job": 126745366078,
+  "cpu_job": 126747687858,
   "book_tiny_cpu_artifact_passed": true,
-  "artifact_id": 13348366140,
+  "artifact_id": 13348891096,
   "main_ci_run": 41878747465,
   "main_python_jobs": [
     126745365204,
@@ -17,5 +17,9 @@
   "evidence_basis": "decoded completed job logs and downloaded passed artifact; queued REST job snapshot was stale",
   "linux_python_311_312_logs_no_error_annotations": true,
   "actual_cuda_14b_fit_verified": false,
-  "next_workflow_only_change": "Split Windows unittest and CLI help into separate steps so a failing first native command cannot be masked by later success."
+  "next_workflow_only_change": "Split Windows unittest and CLI help into separate steps so a failing first native command cannot be masked by later success.",
+  "previous_verified_source": "7f91ab68aff38c21ee98bb187ac73cf5f048ab01",
+  "windows_isolated_steps_verified_from_complete_log": true,
+  "cpu_book_loop_passed_from_complete_log": true,
+  "main_ci_for_source": 41879397718
 }

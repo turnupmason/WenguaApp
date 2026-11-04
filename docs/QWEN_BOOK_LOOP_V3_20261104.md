@@ -70,3 +70,6 @@ local\qwen_env\Scripts\python.exe -X utf8 run_qwen_book_loop.py run --output loc
 
 
 自动loop源码7f91ab68实际远端验证：主CI#41878747465双Python日志无错误；Qwen#41878747788已下载新book-loop passed产物；Windows job126745366447日志15项OK、UTF-8帮助及CMD缺环境阻断均实跑。API最初queued快照滞后，验收依据是实际完整日志／产物，未拿queued冒充通过。Windows单测与帮助现分成独立步骤，避免PowerShell后续成功命令掩盖先前非零退出。14B／4080真实显存短测仍由用户本机执行，云端只验证CPU微型控制。
+
+
+Windows分步CI最终实证：源码5df92aa3的Qwen#41879397874，Windows job126747687544完整日志15项OK、帮助和CMD防误启动各独立步骤通过；Linux job126747687858完整日志新book-loop passed且无error，产物13348891096存在。新增的步骤隔离已实跑，不把前一版通过冒充此版。模型／数据／训练代码未再改变，下面仅补交接记录；本机14B／4080显存和质量仍待用户启动实跑。
