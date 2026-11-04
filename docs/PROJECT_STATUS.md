@@ -3598,3 +3598,6 @@ Windows发布前补验：发现core.autocrlf会令旧等待器的逐字源码哈
 
 
 问答课程V2现已发布checked-ready研究版：源码0585edf48ea32422d92ae6e130a5f7e33b6118f4实测主CI#41780475146（3.11/3.12）、真实微型Qwen恢复与双生成#41780475167、封存原生#41780475152均success。最终全库999 tests、0 failures/0 errors、3既有skip（final_full_run）；追问目标、换行差异/内容篡改阻断和真实Git CRLF→LF拉取均通过。overnight_release.json ready仅代表来源/分组/token/执行检查，semantic_expert_review_complete及预测验证仍false；50文本源码规范换行哈希+原SQLite二进制哈希+稳定LF入口校验。旧11952候选不参与、不获批；旧“preparing”条目是历史。已启动并仍在15小时窗口的本机等待器可自动启动固定新课程，未启动的用户按指南prepare查看CSV后run。未收到本地新job日志，不能说用户GPU正在跑或已训完。CI收据docs/audits/qwen_curriculum_v2_20261103/implementation_ci.json。
+
+### 当前封存轻重回归实测 · run 41780475152
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0585edf48ea32422d92ae6e130a5f7e33b6118f4。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780475152_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
