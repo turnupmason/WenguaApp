@@ -3736,3 +3736,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 run2实机日志已通过上一组探测/生成，下一组预检仅free7.89GiB，12GiB门槛阻断。控制器在fit返回后及下组预检前新增GC/empty_cache，记录本进程allocated/reserved和设备free，未调低门槛；真实占用原因还需nvidia-smi及新显存记录区分。PEFT保存默认auto会探测远端config，CLI --offline在HF导入前设置离线环境，已缓存Windows入口启用并改run3_memory_offline；原run1/run2和日志完整保留。代码合同变更新目录重做探测，不能把旧短测适配器作正式起点。数据/参数方案不变，新增CPU真实模型弱引用回收与离线生成/恢复回归；真实4080组间释放待本机，不声称CPU是NF4验证。
 
 本地最终1076项全量0失败/0错误，3项既有skip；CPU离线实跑确认每次新模型加载前上一模型弱引用已失效，含调参组probe→formal切换；恢复张量一致性与长生成仍通过。PEFT0.17.1配置探测离线零调用、在线阳性对照有调用（均不真实联网）。证据docs/audits/qwen_book_memory_offline_20261104/；真实GPU多组显存回收待用户回传，远端同源码检查另记。
+
+
+### 当前封存轻重回归实测 · run 41918409947
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码873ac3f08f8af23b9d813fb76857bc3db8aae249。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41918409947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
