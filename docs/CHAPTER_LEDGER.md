@@ -2272,3 +2272,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41943048218
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e7fa9e9790bcf6313e221b78b136bc2378a50120。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41943048218_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+下载修复源码e7fa9e9790bcf6313e221b78b136bc2378a50120实际远端主CI#41943048219双Python均success；Qwen#41943048161 Windows真实venv 11专项及全部CPU微型训练/恢复亦success，完整日志核对相同源码/无error/cleanup完成。三个关键改动文件远端逐字匹配；官方固定8B revision API返回200且SHA一致（仅云端观察，不代表用户网络）。证据本轮remote_source_ci/remote_bytes/public_revision_check。已接收785f88b9自动原生归档，最后只交接文档，不改已经通过的下载/训练源码。用户下一步更新后重复8B启动，缓存保留；本机网络恢复及真实8B训练仍待用户日志。

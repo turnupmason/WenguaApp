@@ -1,0 +1,58 @@
+{
+  "source_commit": "e7fa9e9790bcf6313e221b78b136bc2378a50120",
+  "main_run": 41943048219,
+  "qwen_run": 41943048161,
+  "completed_jobs": [
+    {
+      "job_id": 126968359172,
+      "source_commit": "e7fa9e9790bcf6313e221b78b136bc2378a50120",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T00:40:38.2961891Z [00:40:38] qwen8b_worker_exited {\"launcher_pid\":6416,\"worker_pid\":4900,\"exit_code\":0}",
+        "2026-11-05T00:40:38.8043958Z [00:40:38] qwen8b_worker_exited {\"launcher_pid\":5648,\"worker_pid\":4324,\"exit_code\":0}",
+        "2026-11-05T00:40:39.0762055Z Ran 11 tests in 1.307s"
+      ]
+    },
+    {
+      "job_id": 126968359312,
+      "source_commit": "e7fa9e9790bcf6313e221b78b136bc2378a50120",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T00:40:44.2836905Z [00:40:44] qwen8b_worker_exited {\"launcher_pid\":2361,\"worker_pid\":2361,\"exit_code\":0}",
+        "2026-11-05T00:40:44.7872745Z [00:40:44] qwen8b_worker_exited {\"launcher_pid\":2362,\"worker_pid\":2362,\"exit_code\":0}",
+        "2026-11-05T00:40:44.9965696Z Ran 11 tests in 1.227s"
+      ]
+    },
+    {
+      "job_id": 126968360402,
+      "source_commit": "e7fa9e9790bcf6313e221b78b136bc2378a50120",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T00:40:45.2385616Z [00:40:45] qwen8b_worker_exited {\"launcher_pid\":2409,\"worker_pid\":2409,\"exit_code\":0}",
+        "2026-11-05T00:40:45.7416672Z [00:40:45] qwen8b_worker_exited {\"launcher_pid\":2410,\"worker_pid\":2410,\"exit_code\":0}",
+        "2026-11-05T00:40:45.9579906Z Ran 11 tests in 1.230s"
+      ]
+    }
+  ],
+  "real_user_huggingface_connectivity_verified": false,
+  "cuda_training_executed": false,
+  "cpu_job": {
+    "id": 126968359725,
+    "conclusion": "success",
+    "source_commit_verified_in_full_log": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "tiny_8b_profile_training_and_restore_passed": true,
+    "actual_8b_weights_loaded": false,
+    "cuda_memory_fit_verified": false
+  }
+}

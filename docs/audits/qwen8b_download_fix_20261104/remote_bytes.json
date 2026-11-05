@@ -1,0 +1,20 @@
+{
+  "source_commit": "e7fa9e9790bcf6313e221b78b136bc2378a50120",
+  "files": [
+    {
+      "path": "scripts/qwen8b_research.py",
+      "remote_bytes_match": true,
+      "sha256": "202cf4e5c91b133862595823d292c7a5da83030c85182b6591eb8168f746535d"
+    },
+    {
+      "path": "tests/test_qwen8b_book_v1.py",
+      "remote_bytes_match": true,
+      "sha256": "168cfb3414b29cc206e3d37f8400816b07b1465ebdc2279feaca6105889714c3"
+    },
+    {
+      "path": "data/knowledge/qwen8b_book_v1/release_20261104.json",
+      "remote_bytes_match": true,
+      "sha256": "2190c642dc22619ccaf4d272575b15246568aa01cc5b408cdaa2db26d125003d"
+    }
+  ]
+}
