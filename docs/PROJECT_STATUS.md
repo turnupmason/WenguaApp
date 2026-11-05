@@ -3866,3 +3866,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 42034924608
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码9afdb3de1a12deae73e897bd285631c83d0de97c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42034924608_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+2026-11-05 课程审查软件验收：源码9afdb3de，1111测试0失败/错误、3既有skip；主CI42034924675双Python，Qwen42034924705三job均已读取完整源码匹配日志确认success。Windows实际CLI在CUDA/联网前退出3，8个新课程检查纳入25项通过；CPU九次隔离worker恢复和Windows真实Trainer冷/热路径通过。完整5250答案Excel重新拼回逐字相等，77修订草稿无相同问题不同目标。专业课程仍未准入，35步ValueError根因仍未定位；下步继续修语义和独立证据链，不恢复旧数据扫描、不承诺100%。新书章/原始事件增加0，源库/16训练文件及旧检查点不改。证据docs/audits/qwen_book_course_review_20261105/remote_source_ci.json。

@@ -22,9 +22,10 @@
 
 ## 全课程机械审查与已确认缺陷
 
-运行只读审查：
+运行只读审查。Excel 导出另需 openpyxl 3.1.5，不改变训练依赖或加载模型：
 
 ```powershell
+.\local\qwen_env\Scripts\python.exe -m pip install openpyxl==3.1.5
 .\local\qwen_env\Scripts\python.exe -X utf8 -m scripts.audit_qwen_book_course --output local\qwen_book_course_review_new
 ```
 
@@ -55,3 +56,7 @@
 5. 逐题语义审核、独立证据链评测与纠错题通过之后，另建新版本再训练。自动出处检查、低 loss、题量增加都不能替代专业审核。此次没有发布新训练就绪数据，更没有承诺百分百预测正确。
 
 用户无需重抄书、重录 194 案或逐题替代研发审查。先修课程再决定训练组合；不继续靠扩大 rank、增加轮数重复训练已知有问题的课题。
+
+## 软件实测边界
+
+本轮全库 1111 项测试通过，0 失败/错误、3 个既有 skip。源码 `9afdb3de1a12deae73e897bd285631c83d0de97c` 的远端双 Python 主 CI、Windows 课程阻断与 25 项相关检查、Windows 真实 Transformers 冷/热 Trainer、CPU 九次隔离 worker 和检查点恢复均已读取完整日志核实成功；证据 `docs/audits/qwen_book_course_review_20261105/remote_source_ci.json`。这些证明软件防护和旧恢复合同，不证明新教材语义全部合格，也未复现或解决用户第 35 步模块遍历异常。原模型不重训，课程暂停状态继续有效。

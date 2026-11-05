@@ -1,0 +1,68 @@
+{
+  "source_sha": "9afdb3de1a12deae73e897bd285631c83d0de97c",
+  "jobs": [
+    {
+      "job_id": 127270457503,
+      "run_id": 42034924675,
+      "name": "v80_current (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "full_log_read": true,
+      "full_log_source_sha_match": true,
+      "no_error_exit_in_log": true
+    },
+    {
+      "job_id": 127270457825,
+      "run_id": 42034924675,
+      "name": "v80_current (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "full_log_read": true,
+      "full_log_source_sha_match": true,
+      "no_error_exit_in_log": true
+    },
+    {
+      "job_id": 127270457338,
+      "run_id": 42034924705,
+      "name": "cpu-interface-not-32b-training",
+      "status": "completed",
+      "conclusion": "success",
+      "full_log_read": true,
+      "full_log_source_sha_match": true,
+      "no_error_exit_in_log": true
+    },
+    {
+      "job_id": 127270457528,
+      "run_id": 42034924705,
+      "name": "windows-8b-real-loss-route",
+      "status": "completed",
+      "conclusion": "success",
+      "full_log_read": true,
+      "full_log_source_sha_match": true,
+      "no_error_exit_in_log": true
+    },
+    {
+      "job_id": 127270457681,
+      "run_id": 42034924705,
+      "name": "windows-book-loop-contract",
+      "status": "completed",
+      "conclusion": "success",
+      "full_log_read": true,
+      "full_log_source_sha_match": true,
+      "no_error_exit_in_log": true,
+      "new_eight_course_audit_tests_passed": true,
+      "real_windows_cli_paused_before_model_work": true
+    }
+  ],
+  "local_full_suite": {
+    "tests": 1111,
+    "failures": 0,
+    "errors": 0,
+    "existing_skips": 3
+  },
+  "new_course_released": false,
+  "semantic_quality_100_percent_certified": false,
+  "user_step35_root_cause_verified": false,
+  "training_kernel_files_unchanged": true,
+  "actual_user_weights_retrained_in_cloud": false
+}
