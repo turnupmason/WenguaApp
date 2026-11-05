@@ -1,0 +1,8 @@
+{
+  "v51_first_run": 42087140145,
+  "v51_second_run": 42087247767,
+  "reason": "Clean fixture local/ missing; Windows autocrlf changes bytes compared to frozen Linux source hashes. Assertions unchanged; create fixture parent and check out exact bytes in CI only. Existing user V4 files not normalized.",
+  "historical_tag_run": 42087221982,
+  "historical_tag_head": "f6535db5131ca69c1df6082deccb21de0cb5fb27",
+  "historical_reason": "Tag creation activated legacy BigFish audit: existing missing health_v20/reading_template.json. Unrelated to new data/trainer, historical failure retained; no health math, assertions or resources rewritten."
+}

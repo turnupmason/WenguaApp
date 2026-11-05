@@ -2191,7 +2191,7 @@
       "platform": "python",
       "canonical": ".github/workflows/course_repair_v51.yml",
       "snapshot": "Important/python/ci/course_repair_v51.yml",
-      "sha": "35d282876c3f4f1fcbfdb183bba4329fa294fd28"
+      "sha": "e9475a63ce0fe4736cb33fcba71bf7c04ab4836e"
     },
     {
       "platform": "python",
@@ -2269,7 +2269,7 @@
       "platform": "python",
       "canonical": "tests/test_course_repair_v51.py",
       "snapshot": "Important/python/tests/test_course_repair_v51.py",
-      "sha": "0ac66c723a4fc98171287145c0710ddaa6ba1889"
+      "sha": "03c4bc303ea93504edafa83f550436bd0dd5275e"
     },
     {
       "platform": "python",
@@ -2293,7 +2293,7 @@
       "platform": "python",
       "canonical": "scripts/check_course_v51_training.py",
       "snapshot": "Important/python/scripts/check_course_v51_training.py",
-      "sha": "c014ad19aae5a3b0cc3f416fb0f0c367ec3f59d7"
+      "sha": "14567ceddb0aab6adf92acb81a85313a566c4712"
     },
     {
       "platform": "python",

@@ -10,6 +10,10 @@ from src.wengua import qwen_course_training_v4 as v4
 from tests.test_course_complete_v5 import fixture
 
 
+def setUpModule():
+    (parent.ROOT/'local').mkdir(parents=True,exist_ok=True)
+
+
 class EvidenceRepair(unittest.TestCase):
     def pack(self):
         p=fixture();p.update(dossiers=[],review_notes=[])

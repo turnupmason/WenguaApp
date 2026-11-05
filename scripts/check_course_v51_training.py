@@ -26,6 +26,7 @@ def main():
     p=course.profile(testing=True);c=p.engine.base_config()|dict(max_seq_length=512,inference_max_context=512,
         num_train_epochs=2,smoke_steps=2,gradient_accumulation_steps=1,save_steps=2,
         eval_max_new_tokens=16,validation_rows=8,validation_generation_rows=1,test_generation_rows=1)
+    (b.ROOT/'local').mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(dir=b.ROOT/'local') as tmp:
         root=Path(tmp);parent=root/'v4/trials/fixture';stage=parent/'cycle_01';adapter=stage/'adapters/step-9'
         pc=v4.load(v4.CONFIG)
