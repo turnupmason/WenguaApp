@@ -2298,3 +2298,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 新增显式重复KV并保留HF因果/mask/scale/dropout/缓存语义；每GPU worker在加载8B前实测64/3866/4096及单token缓存查询前后向，自动选可用Flash/Efficient/CuDNN单一融合后端，实际调用禁math回退。无融合内核则保存原因并停止，不伪称某配置OOM；实际模型OOM仍按既有流程跳过。后端/设备/dtype合同固定并进入压力证明哈希，不能跨后端复用显存结论；按调用计数核对实际模型进入新路径，异常也保留最后Q/K长度。默认新run3_attention_fix，旧run1/2保留，缓存复用且新建适配器；教材/训练参数搜索/原14B内核不变。新增原章0/实际事件0。CPU数学与微型HF训练/缓存生成、worker恢复通过，真实4080融合核及8B容量须本机新报告，不以开关或CPU测试承诺4096稳定。指南QWEN8B_WINDOWS_FUSED_ATTENTION_V1_20261104.md，证据docs/audits/qwen8b_fused_attention_20261104/。
 
 融合SDPA兼容路径本地终版完整回归1098项、0失败/0错误、3项既有skip；13项8B/镜像检查通过。CPU原生GQA与显式KV的输出/全部QKV梯度、掩码/缓存生成、非法路径拒绝/异常恢复、真实worker注意力调用、后端合同进入压力证明且缓存复用、Adam恢复与不中断LoRA权重一致均通过；压缩日志/逐测试记录完整保留。无本地CUDA硬件，实际8B GPU融合后端/容量仍需用户新入口实测；远端同源码Windows/CPU验收待本次推送。
+
+
+### 当前封存轻重回归实测 · run 41954529487
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码173230f4034f992d01badcccdd8103f70aef501c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41954529487_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
