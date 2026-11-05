@@ -2259,3 +2259,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41941627504
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41941627504_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+8B终版源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40远端主CI#41941627494双Python3.11/3.12、Qwen软件CI#41941627266 Windows实际虚拟环境与CPU集成均success。Windows8B启动器/worker PID实际8136/8284及6972/6880，nonce请求回执通过；新7项全过。CPU真实微型Qwen3原生/分块loss及全LoRA梯度、独立子进程训练、精确optimizer恢复和不中断权重对照均通过，未加载真实8B权重/CUDA。关键六文件远端内容逐字核对；证据remote_source_ci.json、remote_canonical_bytes.json。已快进接收c428b53f自动原生旧健康归档；最后交接只改文档，不改已验源码/配置/教材。用户下一步PowerShell更新后运行run_qwen8b_research_windows.cmd，新输出local/qwen8b_book_v1/run1；实际4080压力、完整训练及专业留出回答仍待用户本机日志。

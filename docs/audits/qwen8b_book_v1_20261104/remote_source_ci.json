@@ -1,0 +1,55 @@
+{
+  "source_commit": "a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40",
+  "qwen_run": 41941627266,
+  "main_run": 41941627494,
+  "windows": {
+    "job": 126963613952,
+    "conclusion": "success",
+    "source_commit_present": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "new_8b_tests_passed": 7,
+    "actual_venv_pid_pairs": [
+      {
+        "launcher": 8136,
+        "worker": 8284
+      },
+      {
+        "launcher": 6972,
+        "worker": 6880
+      }
+    ]
+  },
+  "main_jobs": [
+    {
+      "id": 126963613873,
+      "python": "3.11",
+      "conclusion": "success",
+      "source_commit_present": true,
+      "cleanup_completed": true,
+      "no_error_markers": true,
+      "new_8b_tests_passed": 7
+    },
+    {
+      "id": 126963613899,
+      "python": "3.12",
+      "conclusion": "success",
+      "source_commit_present": true,
+      "cleanup_completed": true,
+      "no_error_markers": true,
+      "new_8b_tests_passed": 7
+    }
+  ],
+  "cpu": {
+    "job": 126963613512,
+    "conclusion": "success",
+    "source_commit_present": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "proof_lines": [
+      "2026-11-05T00:32:25.6427493Z {\"state\":\"passed\",\"test\":\"8b_profile_tiny_cpu_not_real_8b\",\"native_and_chunked_loss_match\":true,\"all_trainable_gradients_match\":true,\"input_labels_unchanged\":true,\"vocabulary_projection_chunk_bound_verified\":true,\"explicit_batch_token_normalization_matches\":true,\"actual_child_process_training_and_generation\":true,\"same_adam_across_epochs\":true,\"step_1_optimizer_restored_in_new_process\":true,\"interrupted_and_uninterrupted_lora_tensors_match\":true,\"structural_pressure_proof_reused_without_loading_its_adapter_for_training\":true,\"training_workers_offline\":true,\"completed_resume_spawns_nothing\":true,\"actual_8b_weights_loaded\":false,\"cuda_memory_fit_verified\":false}"
+    ]
+  },
+  "actual_8b_cuda_memory_verified": false,
+  "actual_8b_generation_quality_verified": false
+}
