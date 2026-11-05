@@ -1,0 +1,19 @@
+{
+  "source": "user Windows Application event output",
+  "reported_date": "2026-11-05",
+  "event_1000_clock": "03:22:02",
+  "event_1001_clock": "03:22:16",
+  "exception_code": "0xC0000005",
+  "classification": "native_access_violation",
+  "faulting_module": null,
+  "fault_offset": "0x0",
+  "event_pid_hex": "0xA730",
+  "event_pid_decimal": 42800,
+  "wer_bucket_kind": "BEX64",
+  "three_records_share_same_report_id": true,
+  "time_correlates_with_training_failure": true,
+  "old_heartbeat_pid_match_checked": false,
+  "minidump_analyzed": false,
+  "root_cause_component_identified": false,
+  "ordinary_cuda_oom_evidence": false
+}

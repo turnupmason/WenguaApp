@@ -2,6 +2,8 @@
 
 用户日志中第一组完成1525更新/5epoch，train_runtime14065.5181秒、train_loss1.1770542628330285；后续验证/生成完成，03:21:04 worker以exit_code0退出。随后r16_4096_3987e4a0e627正式训练到第3步，启动器返回而没有result.json。原错误没有打印退出码，也没有Python训练异常栈；不能据此称CUDA OOM、驱动故障或已定位某原生库错误。
 
+用户随后回传Windows事件：2026-11-05 03:22:02 Event1000，python.exe发生0xC0000005访问违规，故障模块unknown、offset0，PID0xA730（42800）。随后03:22:16两条Event1001/BEX64共享相同Report ID，与Event1000是同一故障报告，不计三次崩溃。事件时间与第二组退出吻合；尚未直接核对旧heartbeat的真实PID，也未分析minidump。已确认该时间段Python原生访问违规，具体组件仍未知，StackHash/BEX64不能定位某DLL或证明具体漏洞/硬件损坏。
+
 本次仅增加独立诊断包装。原8B训练/损失/注意力/调参/数据/配置及它们的代码哈希逐项不变，不迁移或重写旧合同，不换GPU内核，不改参数，不自动重试崩溃，也不把未知退出标成OOM。原CMD入口转到run_qwen8b_diagnostic.py，再调用原CLI；仍为local/qwen8b_book_v1/run3_attention_fix和--resume。
 
 ```powershell

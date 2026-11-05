@@ -2321,3 +2321,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b28e16ca055c5aee0ad6181edfad431f670aca52。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42026802613_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 诊断源码b28e16ca055c5aee0ad6181edfad431f670aca52实际主CI#42026802647双Python3.11/3.12、Qwen#42026802506三job全部success。Windows真实venv 17项（原12+新5）通过，硬退出测试记录启动器8988/真实worker8956、step3、exit7、无回执而日志完整；正常/超时/退出解码均通过。Linux新I/O包装下9个实际微型worker完成，原完整数学/实际attention/loss/检查点恢复/权重对照/完成后不再启动断言通过，冻结训练哈希不变。每job完整日志核对同源码/无error/cleanup完成，五关键诊断文件远端逐字匹配。已快进接收22b68677自动原生旧归档，最后仅交接文档。Windows事件尚未回传，用户native退出根因仍未确定；按当前指南更新后同run3恢复，跳过已完成第一组，不声称已修复真实崩溃。
+
+随后用户已回传Windows事件：2026-11-05 03:22:02 Event1000/python.exe/0xC0000005访问违规，模块unknown/offset0/PID0xA730=42800；03:22:16两条Event1001/BEX64共享相同Report ID，三条是同一故障。时间吻合第二组退出，未核对旧心跳PID/未分析dump，不进一步声称某DLL或硬件故障。native访问违规类型有用户事件支持，根因组件仍未确定；继续同run3诊断恢复，不更改冻结训练文件。归一化证据user_windows_event.json，无复制dump或外部发送。

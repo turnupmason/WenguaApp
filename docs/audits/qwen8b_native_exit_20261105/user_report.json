@@ -13,7 +13,9 @@
     "last_completed_step": 3,
     "receipt_missing": true,
     "exit_code": null,
-    "native_error_root_cause": null
+    "native_error_root_cause": null,
+    "reported_windows_exception_code": "0xC0000005",
+    "native_access_violation_event_received": true
   },
   "production_enabled": false,
   "professional_or_predictive_accuracy_verified": false
