@@ -1,4 +1,4 @@
-> **资料主仓库已迁至[WenguaQuant](https://github.com/turnupmason/WenguaQuant)。** 后续古籍、分类、核心课程对照、RAG和私有资料库在那里更新。WenguaApp保留起盘/应用和正在运行的V5.1固定依赖，旧数据快照作为兼容保留。第三书卷一至四第二批已在Quant处理，574材料/510课程候选/11疑点，完整资料未丢；静应缺两项不补造。Quant恢复入口`python -m wengua_corpus restore --include-course-v51`，使用此前口令；当前V5.1不变。
+> **资料主仓库已迁至[WenguaQuant](https://github.com/turnupmason/WenguaQuant)。** 后续古籍、分类、核心课程对照、RAG和私有资料库在那里更新。WenguaApp保留起盘/应用和正在运行的V5.1固定依赖，旧数据快照作为兼容保留。第三书卷一至四第二批已在Quant处理，574材料/509课程候选/11疑点，完整资料未丢；静应缺两项不补造。Quant恢复入口`python -m wengua_corpus restore --include-course-v51`，使用此前口令；当前V5.1不变。
 
 > 第三本首批已入来源库与RAG：[金函总序校订与更新入口](docs/JINHAN_PREFACE_20261105.md)。原贴保留、37处校订、15组疑点单列；V5.1继续原训练。
 
