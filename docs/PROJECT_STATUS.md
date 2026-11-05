@@ -3852,3 +3852,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 5项真实子进程测试通过，原微型Qwen3完整数学/attention/loss/优化器恢复/权重对照/完成后无新进程断言在新包装下通过，9个实际worker均正常回执/日志，冻结训练哈希未变。完整回归与新Windows CI待追加。原书章/真实事件新增0，不将低语言NLL称专业准确率。指南QWEN8B_NATIVE_EXIT_DIAGNOSTICS_20261105.md，证据docs/audits/qwen8b_native_exit_20261105/；真实native根因仍需本机事件或再次运行日志，诊断就绪不等于根因已修复。
 
 无回执诊断本地终版完整回归1103项、0失败/0错误、3项既有skip。5项真实子进程退出/tee/超时/状态解码通过；9个真实微型worker在新I/O包装下完成，原数学/attention/loss/检查点恢复/权重对照/完成后无新worker断言通过，所有冻结训练文件与HEAD逐字相同。没有获得本机Windows事件或原始退出码，native根因仍未验证，不能报告已修复崩溃。新同源码Windows真实venv/CPU集成CI待推送核验。
+
+
+### 当前封存轻重回归实测 · run 42026802613
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b28e16ca055c5aee0ad6181edfad431f670aca52。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42026802613_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
