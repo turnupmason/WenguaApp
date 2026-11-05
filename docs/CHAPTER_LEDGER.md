@@ -2302,3 +2302,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41954529487
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码173230f4034f992d01badcccdd8103f70aef501c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41954529487_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+融合SDPA源码173230f4034f992d01badcccdd8103f70aef501c远端主CI#41954529510双Python3.11/3.12、Qwen#41954529460三个job全部success。Windows实际库/venv冷热Trainer与显式KV注意力输出/梯度/掩码/缓存生成及非法策略拒绝通过；Linux真实worker显式注意力/分块loss实际调用、后端合同压力证明缓存、精确恢复及不中断权重一致通过。逐job完整日志核对同源码/无error/cleanup完成；六关键文件远端逐字匹配。证据remote_source_ci/remote_canonical_bytes。已快进接收4171cbbf自动原生旧健康归档；最后仅交接文档，不改已验程序/配置。下一步用户旧窗口退出→更新→原CMD入口，默认新run3_attention_fix；本机先GPU融合探测再完整压力，实际GPU内核/4096容量仍未由云端证明。

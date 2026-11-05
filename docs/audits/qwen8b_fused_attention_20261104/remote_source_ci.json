@@ -1,0 +1,74 @@
+{
+  "source_commit": "173230f4034f992d01badcccdd8103f70aef501c",
+  "main_run": 41954529510,
+  "qwen_run": 41954529460,
+  "main_and_stdlib_windows": [
+    {
+      "job_id": 127006132253,
+      "source_commit": "173230f4034f992d01badcccdd8103f70aef501c",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T02:20:34.1030131Z [02:20:34] qwen8b_worker_exited {\"launcher_pid\":608,\"worker_pid\":4704,\"exit_code\":0}",
+        "2026-11-05T02:20:34.6102321Z [02:20:34] qwen8b_worker_exited {\"launcher_pid\":6084,\"worker_pid\":3400,\"exit_code\":0}",
+        "2026-11-05T02:20:34.7574765Z Ran 12 tests in 1.170s"
+      ]
+    },
+    {
+      "job_id": 127006132126,
+      "source_commit": "173230f4034f992d01badcccdd8103f70aef501c",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T02:20:44.2079793Z [02:20:44] qwen8b_worker_exited {\"launcher_pid\":2376,\"worker_pid\":2376,\"exit_code\":0}",
+        "2026-11-05T02:20:44.7111670Z [02:20:44] qwen8b_worker_exited {\"launcher_pid\":2377,\"worker_pid\":2377,\"exit_code\":0}",
+        "2026-11-05T02:20:44.9156284Z Ran 12 tests in 1.219s",
+        "2026-11-05T02:20:45.9573943Z Ran 12 tests in 0.313s"
+      ]
+    },
+    {
+      "job_id": 127006132583,
+      "source_commit": "173230f4034f992d01badcccdd8103f70aef501c",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T02:20:45.5409667Z [02:20:45] qwen8b_worker_exited {\"launcher_pid\":2475,\"worker_pid\":2475,\"exit_code\":0}",
+        "2026-11-05T02:20:46.0446589Z [02:20:46] qwen8b_worker_exited {\"launcher_pid\":2476,\"worker_pid\":2476,\"exit_code\":0}",
+        "2026-11-05T02:20:46.2551079Z Ran 12 tests in 1.228s",
+        "2026-11-05T02:20:47.4764147Z Ran 12 tests in 0.383s"
+      ]
+    }
+  ],
+  "windows_actual_libraries_cpu": {
+    "job_id": 127006132150,
+    "source_match": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "proof_lines": [
+      "2026-11-05T02:22:43.3244184Z {\"case\": \"cold_root\", \"state\": \"passed\", \"actual_train_and_eval_use_bounded_loss\": true, \"full_causal_forward_with_labels_bypassed\": true, \"loss_audit\": {\"route\": \"canonical_trainer_compute_loss_v2\", \"chunk_tokens\": 128, \"compute_loss_calls\": 8, \"train_loss_calls\": 4, \"eval_loss_calls\": 4, \"max_projected_positions\": 128}, \"actual_8b_weights_loaded\": false}",
+      "2026-11-05T02:22:43.3248971Z {\"case\": \"warm_alias\", \"state\": \"passed\", \"actual_train_and_eval_use_bounded_loss\": true, \"full_causal_forward_with_labels_bypassed\": true, \"loss_audit\": {\"route\": \"canonical_trainer_compute_loss_v2\", \"chunk_tokens\": 128, \"compute_loss_calls\": 8, \"train_loss_calls\": 4, \"eval_loss_calls\": 4, \"max_projected_positions\": 128}, \"actual_8b_weights_loaded\": false}",
+      "2026-11-05T02:22:47.3853029Z {\"state\": \"passed\", \"cases\": [{\"query_tokens\": 7, \"key_tokens\": 7, \"masked\": false, \"output_and_qkv_gradients_match\": true}, {\"query_tokens\": 1, \"key_tokens\": 7, \"masked\": false, \"output_and_qkv_gradients_match\": true}, {\"query_tokens\": 7, \"key_tokens\": 7, \"masked\": true, \"output_and_qkv_gradients_match\": true}], \"actual_hf_training_and_cached_generation_use_explicit_kv\": true, \"cached_generation_tokens_match\": true, \"native_gqa_bypass_rejected\": true, \"math_backend_rejected_for_real_runs\": true, \"global_bindings_restored_on_error\": true, \"audit\": {\"policy\": \"explicit_kv_fused_sdpa_v1\", \"selected_backend\": \"cpu_fixture\", \"calls\": 4, \"cuda_calls\": 0, \"max_query_tokens\": 7, \"max_key_tokens\": 9, \"native_gqa_calls\": 0, \"math_fallback_allowed\": true, \"software_fixture\": true, \"current_query_tokens\": 1, \"current_key_tokens\": 9}, \"cuda_backend_verified\": false, \"official_8b_weights_loaded\": false}"
+    ]
+  },
+  "linux_actual_worker_cpu": {
+    "job_id": 127006131809,
+    "conclusion": "success",
+    "source_match": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "explicit_attention_cases": [
+      "2026-11-05T02:23:12.7418968Z {\"state\": \"passed\", \"cases\": [{\"query_tokens\": 7, \"key_tokens\": 7, \"masked\": false, \"output_and_qkv_gradients_match\": true}, {\"query_tokens\": 1, \"key_tokens\": 7, \"masked\": false, \"output_and_qkv_gradients_match\": true}, {\"query_tokens\": 7, \"key_tokens\": 7, \"masked\": true, \"output_and_qkv_gradients_match\": true}], \"actual_hf_training_and_cached_generation_use_explicit_kv\": true, \"cached_generation_tokens_match\": true, \"native_gqa_bypass_rejected\": true, \"math_backend_rejected_for_real_runs\": true, \"global_bindings_restored_on_error\": true, \"audit\": {\"policy\": \"explicit_kv_fused_sdpa_v1\", \"selected_backend\": \"cpu_fixture\", \"calls\": 4, \"cuda_calls\": 0, \"max_query_tokens\": 7, \"max_key_tokens\": 9, \"native_gqa_calls\": 0, \"math_fallback_allowed\": true, \"software_fixture\": true, \"current_query_tokens\": 1, \"current_key_tokens\": 9}, \"cuda_backend_verified\": false, \"official_8b_weights_loaded\": false}"
+    ],
+    "worker_integration": [
+      "2026-11-05T02:24:12.3591045Z {\"state\":\"passed\",\"test\":\"8b_profile_tiny_cpu_not_real_8b\",\"native_and_chunked_loss_match\":true,\"all_trainable_gradients_match\":true,\"input_labels_unchanged\":true,\"vocabulary_projection_chunk_bound_verified\":true,\"explicit_batch_token_normalization_matches\":true,\"actual_child_process_training_and_generation\":true,\"same_adam_across_epochs\":true,\"step_1_optimizer_restored_in_new_process\":true,\"interrupted_and_uninterrupted_lora_tensors_match\":true,\"structural_pressure_proof_reused_without_loading_its_adapter_for_training\":true,\"actual_worker_training_and_validation_bounded_loss_route_verified\":true,\"actual_worker_explicit_kv_attention_route_verified_cpu_only\":true,\"training_workers_offline\":true,\"completed_resume_spawns_nothing\":true,\"actual_8b_weights_loaded\":false,\"cuda_memory_fit_verified\":false}"
+    ]
+  },
+  "actual_fused_cuda_backend_verified": false,
+  "actual_fixed_8b_gpu_fit_verified": false
+}

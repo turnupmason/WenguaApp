@@ -1,0 +1,35 @@
+{
+  "source_commit": "173230f4034f992d01badcccdd8103f70aef501c",
+  "files": [
+    {
+      "path": "src/wengua/qwen8b_attention_v1.py",
+      "remote_bytes_match": true,
+      "sha256": "e2fcbf71c1bbd1ecd73bbe9173eb29b70ca6ec6597cf0cabdde4866fb41f65f5"
+    },
+    {
+      "path": "src/wengua/qwen8b_process_v1.py",
+      "remote_bytes_match": true,
+      "sha256": "6c9e7fae351b6db47c10cff2ebc1efa62169b1ddaeb2420ce837f5edeac76d18"
+    },
+    {
+      "path": "src/wengua/qwen8b_book_v1.py",
+      "remote_bytes_match": true,
+      "sha256": "d205c40c0a94c9cffeedec819d5ffb51d6e5cae3d49cd3992e209808ed9258f4"
+    },
+    {
+      "path": "run_qwen8b_research_windows.cmd",
+      "remote_bytes_match": true,
+      "sha256": "0d25271ad5f8cae3faf84d409124d9b613bc69ef4502c4808fb4925f3db68973"
+    },
+    {
+      "path": "configs/qwen8b_book_v1.json",
+      "remote_bytes_match": true,
+      "sha256": "480b6b803097f6686a77bcde1f42c358d38554fa3e66632ed6ff47130055bdc4"
+    },
+    {
+      "path": "data/knowledge/qwen8b_book_v1/release_20261104.json",
+      "remote_bytes_match": true,
+      "sha256": "b73e17c3aaeba3321365e44521320ed55eee7851c30d44b11d7b8154d8e9d18f"
+    }
+  ]
+}
