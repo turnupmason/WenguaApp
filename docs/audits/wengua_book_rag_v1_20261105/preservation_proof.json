@@ -1,0 +1,12 @@
+{
+  "baseline_commit": "ceec2a3e2c102354c20b9cb0f98878957d046029",
+  "protected_existing_files": 753,
+  "all_protected_file_bytes_unchanged": true,
+  "v51_runtime_contract_files": 49,
+  "v51_runtime_hashes_unchanged": true,
+  "raw_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "baseline_hash_map_sha256": "5b715f86e55c46c8d9967a27681f06e6d69337dc9b684657c7965f33ac919eab",
+  "v51_hash_map_sha256": "c70e00e5e46891676e2c985333f00df890a07bdbc0a36311db57ee5efcca8891",
+  "casting_delegates_existing_functions": true,
+  "other_casting_engines_deleted_merged_or_modified": false
+}

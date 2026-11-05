@@ -1,0 +1,25 @@
+{
+  "schema": "wengua_book_rag_v1",
+  "books": 2,
+  "chapters": 43,
+  "documents": 5320,
+  "document_kinds": {
+    "rule": 2049,
+    "reference": 361,
+    "case": 2910
+  },
+  "cases": 194,
+  "unaccounted_nonblank_lines": 0,
+  "source_characters": 577780,
+  "all_chapter_hashes_and_literal_parts_verified": true,
+  "qa_answers_indexed": false,
+  "model_quality_or_predictive_accuracy_verified": false,
+  "located_case_analysis_records": 1008,
+  "original_index_review_records": 1008,
+  "inventory_materials": 1451,
+  "inventory_dispositions": {
+    "reference_only_no_teaching_target": 39,
+    "reviewed_rule_bundle": 1375,
+    "reference_only_historical_overlap": 37
+  }
+}

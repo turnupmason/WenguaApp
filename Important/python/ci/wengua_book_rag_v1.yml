@@ -1,0 +1,45 @@
+name: WenguaApp source RAG and protected existing casting
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/book_rag*.py'
+      - 'scripts/*rag*.py'
+      - '*wengua_rag.py'
+      - 'tests/test_book_rag.py'
+      - 'requirements-wengua-rag.txt'
+      - 'data/knowledge/book_rag_v1/**'
+      - 'data/delivery/book_rag_v1/**'
+      - '.github/workflows/wengua_book_rag_v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-source-casting:
+    runs-on: windows-latest
+    steps:
+      - name: Preserve canonical source bytes in CI only
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements-wengua-rag.txt
+      - run: python -X utf8 -m unittest tests.test_book_rag -v
+      - run: python -X utf8 -m scripts.check_wengua_rag_windows
+      - run: python -X utf8 run_wengua_rag.py --help
+  tiny-qwen-lora-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install transformers==4.57.1 peft==0.17.1 accelerate==1.10.1
+      - run: python -m scripts.check_wengua_rag_training_bridge
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rag-real-tiny-cpu-not-8b-quality
+          path: local/wengua_rag/tiny_bridge.json

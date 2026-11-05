@@ -1,0 +1,8 @@
+{
+  "checks": 46,
+  "passed": 46,
+  "failures": 0,
+  "meaning": "Targeted source-retrieval regression only, not model-answer or event-prediction accuracy",
+  "dense_embeddings_used": false,
+  "actual_llm_inference_tested": false
+}

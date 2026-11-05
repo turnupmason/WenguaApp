@@ -1,0 +1,3 @@
+# Pure timezone data for the existing WenguaApp IANA clock API on Windows.
+# Existing Qwen/PyTorch versions are intentionally untouched.
+tzdata==2025.2

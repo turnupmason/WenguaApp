@@ -1,0 +1,11 @@
+{
+  "actual_tiny_qwen_cpu_inference": true,
+  "literal_source_retrieval_to_prompt_to_lora_generate": true,
+  "verified_adapter_provenance": true,
+  "same_prompt_base_and_adapter_variants": true,
+  "active_training_rejected_before_model_load": true,
+  "adapter_weights_unchanged": true,
+  "frozen_training_runtime_unchanged": true,
+  "citation_checks_not_semantic_proof": true,
+  "actual_8b_or_cuda_inference_verified": false
+}

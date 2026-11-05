@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "35f158515923b145ff10922b17b2e41148b611e5"
+      "sha": "7eb7264efce132f5309b3591d3c3cea830d42a87"
     },
     {
       "platform": "python",
@@ -2300,6 +2300,102 @@
       "canonical": "scripts/check_course_v51_windows.py",
       "snapshot": "Important/python/scripts/check_course_v51_windows.py",
       "sha": "3f4df9d1b850170d2bd4c7f99f81fa49e16dab8c"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/wengua_book_rag_v1.yml",
+      "snapshot": "Important/python/ci/wengua_book_rag_v1.yml",
+      "sha": "d57c645ffcd4853b1de302df3012b16f5212c036"
+    },
+    {
+      "platform": "python",
+      "canonical": "requirements-wengua-rag.txt",
+      "snapshot": "Important/python/requirements-wengua-rag.txt",
+      "sha": "9afc0b73b3e66e2b9eba0f0689b58b6698815daf"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_wengua_rag.py",
+      "snapshot": "Important/python/entrypoints/run_wengua_rag.py",
+      "sha": "ee3effccaa1025c0f3b3df1947aaa3dfe06aaeb4"
+    },
+    {
+      "platform": "python",
+      "canonical": "unlock_wengua_rag.py",
+      "snapshot": "Important/python/entrypoints/unlock_wengua_rag.py",
+      "sha": "7d802156b589a3f3c73cb74b38804ceaf44af2c5"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/wengua_rag.py",
+      "snapshot": "Important/python/scripts/wengua_rag.py",
+      "sha": "25da54560aae23fb782239e6311c701e231b5e4a"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/build_wengua_rag_sources.py",
+      "snapshot": "Important/python/scripts/build_wengua_rag_sources.py",
+      "sha": "c0c46fda9e86be1b7319d408b3e5f76714df429a"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_wengua_rag_training_bridge.py",
+      "snapshot": "Important/python/scripts/check_wengua_rag_training_bridge.py",
+      "sha": "9243ea34ed4bce370fd5b0f4f3c2dc6e5ec5cb97"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_wengua_rag_windows.py",
+      "snapshot": "Important/python/scripts/check_wengua_rag_windows.py",
+      "sha": "25f64c2a4dd79e1b61d2ce2685f4692abac29277"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag.py",
+      "snapshot": "Important/python/engine/book_rag.py",
+      "sha": "8eed23f10edac7e370ea57cf02296dec1ba2da56"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag_audit.py",
+      "snapshot": "Important/python/engine/book_rag_audit.py",
+      "sha": "3de4ad79bee81130044cd22645027c99b21fb768"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag_inference.py",
+      "snapshot": "Important/python/engine/book_rag_inference.py",
+      "sha": "c8e3672bbe411956665c9bf109c82472a8c4ec69"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag_query.py",
+      "snapshot": "Important/python/engine/book_rag_query.py",
+      "sha": "2cd459d9a348aff3c1a2e50675e9e9605479f7ab"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag_sources.py",
+      "snapshot": "Important/python/engine/book_rag_sources.py",
+      "sha": "2a687241c51d35f8e041b8d4157b1af7970af682"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_book_rag.py",
+      "snapshot": "Important/python/tests/test_book_rag.py",
+      "sha": "eadd55cd42c0008c410cb5bc3a63314c5446b998"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/book_rag_v1/release.json",
+      "snapshot": "Important/python/data/knowledge/book_rag_v1/release.json",
+      "sha": "098f25658b487a3fabd04a6c7422342ea4d5242f"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/delivery/book_rag_v1/manifest.json",
+      "snapshot": "Important/python/data/delivery/book_rag_v1/manifest.json",
+      "sha": "44be7b78c21e6fdb7918febb3930e122d8c6503b"
     }
   ]
 }

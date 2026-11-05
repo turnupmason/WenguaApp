@@ -1,0 +1,16 @@
+{
+  ".github/workflows/wengua_book_rag_v1.yml": "813017583506bd49a21f81795eb8a6648af2cb8b531117ac8aadb81027cfb294",
+  "requirements-wengua-rag.txt": "15a43b22aa197b700a5ceab2b781754eac7ef49194d4fdbcf70885ac3dc5f10d",
+  "run_wengua_rag.py": "87f0a0a7debdb7205f2de2ad564897c1fd067b1f4a5320b475594177af37d688",
+  "scripts/build_wengua_rag_sources.py": "3f147fb0545acb5b95a0ee6b959741c94d9e121d7274553f7db4d800aefb3f31",
+  "scripts/check_wengua_rag_training_bridge.py": "a60b470ed9632ab68d671b628eec1d49769a5351a938bdba1336f52770eebb9d",
+  "scripts/check_wengua_rag_windows.py": "4d80e09c0c32071ee5814ed249d36ef59ee79a95657909ba897943a6c3820be8",
+  "scripts/wengua_rag.py": "5b1a8984c6c28f55177416e20441f62aa6bcf5598901239766502e22753eebec",
+  "src/wengua/book_rag.py": "464b4b2f027cb77658d94b26b616dbefa7d3627ed5a90d09660c33007e1a073e",
+  "src/wengua/book_rag_audit.py": "bc63299736f1b5738ceb06d82309423f680a779fb78f433ccb56bd5062d928ce",
+  "src/wengua/book_rag_inference.py": "9cad65ca8ea3bf8723330b8bea93e26bef431b295746701d43d957c40672e83a",
+  "src/wengua/book_rag_query.py": "1d4e56d9feee05a2583a986b2a85eeeb0d1023439ecebee0086f04a56d72f179",
+  "src/wengua/book_rag_sources.py": "3a736fd7d35bea9a2fb64c2357cc57e9b0cdb404f4f2aaac7891aa5ae233588b",
+  "tests/test_book_rag.py": "5eed4dad298e1d93e87efc7c206b4e846ef0e4ab67853b4d38eba63f2207f5c6",
+  "unlock_wengua_rag.py": "594a8b2a96b085fafdae68419fb532ab210dd9371b5e552e71b101b8db5c3cd9"
+}

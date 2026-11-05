@@ -1,0 +1,9 @@
+{
+  "actual_official_tokenizer": "Qwen/Qwen3-8B@b968826d9c46dd6066d109eabc6255188de91218",
+  "prompts_checked": 52,
+  "max_input_tokens": 3327,
+  "context_limit": 4096,
+  "max_new_tokens": 768,
+  "truncation": false,
+  "actual_llm_or_gpu_loaded": false
+}

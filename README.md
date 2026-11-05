@@ -2,28 +2,29 @@
 
 # 问卦 · WenguaApp
 
-两本书来源库、离线 iPhone App，以及独立的 Qwen3-8B 课程训练。
+两本书来源库、原有确定性起盘、离线 iPhone App，以及独立的 Qwen3-8B 课程训练和来源 RAG。
 
 [![CI](https://github.com/turnupmason/WenguaApp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/turnupmason/WenguaApp/actions/workflows/ci.yml)
 
 ## 当前模型课程
 
-**V4 已在用户电脑运行，继续保留原数据、参数、代码合同和检查点。** 补齐后的 V5 使用新目录、新适配器，不向正在运行的 V4 注入新教材。
+当前训练为 **V5.1继承V4补课**，见[当前训练指南](docs/COURSE_REPAIR_V51_20261105.md)。V4/V5和全部起盘代码保留；当前V5.1的教材、参数、源码与恢复合同冻结。
 
-[V5 课程与训练说明](docs/COURSE_COMPLETE_V5_20261105.md)：11,196 核心任务，逐项处置 1,451 个知识单元、194 原案、1,008 索引分析，并补入索引外正文、老师按语和原表读取。全部目标经官方 tokenizer 验证，无长度丢弃。只用两书来源，排除旧人工计分。
+[两书独立RAG及Windows入口](docs/WENGUA_TWO_BOOK_RAG_20261105.md)：43章、194案、1,008索引分析和全文来源，5,320项独立检索记录；附私有Excel/HTML审阅。CPU构建/检索可与当前训练并行，模型问答等训练完成后再启动。程序起盘沿用现有代码；不让模型起盘，不混旧人工计分。
 
 课程覆盖指已经入库的 43 个章节。原书错断、学生意见、后续反馈、字形疑点和作者假说明确标记；不声称原书或模型百分之百正确，不把案例复盘分数称为现实命中率。
 
-Windows PowerShell，在 V4 结束后：
+Windows PowerShell，先恢复RAG来源并用CPU检索：
 
 ```powershell
 Set-Location "$env:USERPROFILE\WenguaApp"
 git pull --ff-only origin main
-.\local\qwen_env\Scripts\python.exe -X utf8 unlock_course_v5.py
-.\train_wengua_v5.cmd
+.\local\qwen_env\Scripts\python.exe -X utf8 unlock_wengua_rag.py
+.\local\qwen_env\Scripts\python.exe -X utf8 run_wengua_rag.py build
+.\local\qwen_env\Scripts\python.exe -X utf8 run_wengua_rag.py search --question "天芮和天心的作用有什么区别？"
 ```
 
-解密时使用此前私有对话中的 V4 密钥；明文课程和 Excel 自动恢复到 Downloads。公开仓库只有密文、源码、来源索引和摘要。不要同时启动两套 GPU 训练。
+解密时使用此前V4/V5.1教材口令；来源ZIP自动恢复到Downloads，构建时安装至`local/wengua_rag/sources_v1`。公开仓库只有密文、源码、来源索引和摘要。其余八本尚未收到，按章归档、核对来源后增加新索引；数据库持续更新，模型按版本集中微调。
 
 ## 目录
 
