@@ -1,12 +1,10 @@
 {
-  "core_tasks": 11167,
-  "assistant_views": 11177,
+  "core_tasks": 11196,
+  "assistant_views": 11206,
   "exclusions": [],
   "max_tokens": 1734,
   "max_assistant_tokens": 378,
   "generation_skips": [],
-  "generation_fits": 11167,
-  "tokenizer": "Qwen/Qwen3-8B",
-  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
-  "truncation": false
+  "generation_fits": 11196,
+  "policy": "no truncation; all assistant turns masked with official pinned tokenizer; universal rules trained, case holdouts fixed"
 }

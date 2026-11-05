@@ -36,6 +36,21 @@ class CompleteCourse(unittest.TestCase):
         declared=compiler.declared_strategies([{'typed_groups':[{'strategy':s} for s in compiler.STRATEGIES]}])
         self.assertEqual(len(declared),30)
 
+    def test_title_with_substantive_body_is_not_a_structure_only_exclusion(self):
+        source={'original_quote':'第五节 软件测试接口 '+('软件完整条件不能随标题丢弃。'*20)}
+        self.assertIsNone(compiler.classify_nonlesson(source,''))
+        self.assertEqual(compiler.classify_nonlesson({'original_quote':'第五节 软件测试接口'},''),'structure_heading')
+
+    def test_reviewed_numbered_proposition_has_real_target_before_heading_filter(self):
+        from collections import defaultdict
+        from types import SimpleNamespace
+        c=SimpleNamespace(sections={1:{'book_id':'shenqi','original_text':'(1)软件夹具的条件说明。','title':'软件夹具'}},
+            inventory=[],ranges=defaultdict(list),reviewed_line_lessons={(1,1):{'question':'软件条件是什么？','answer':'软件夹具的条件说明。'}})
+        c.raw=lambda *args:'software-source';c.add=lambda *args,**kwargs:'software-task'
+        report,_=compiler.add_line_accounting(c)
+        self.assertEqual(report[0]['state'],'reviewed_short_rule_teaching')
+        self.assertEqual(report[0]['task_ids'],['software-task'])
+
     def test_condition_connector_and_and_or_lists_do_not_lose_antecedents(self):
         text='软件前提甲和乙同时成立。若丙缺失，则改用丁或戊。否则保持甲。另一个独立的软件事项。'
         parts=compiler.semantic_chunks(text,9)

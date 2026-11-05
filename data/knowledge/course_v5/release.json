@@ -1,38 +1,38 @@
 {
   "schema": "wengua_source_accounted_course_v5",
   "archive_name": "Wengua_course_v5_complete_20261105.zip",
-  "archive_sha256": "69b7c493e5edb887949d907e162fb76c4ca6b6f63ea8535d9c22ae95bc1632cd",
+  "archive_sha256": "24b38b84deb263538a648ed242eae7b33231333cb4e90bc9f11452ad3469cf88",
   "files": {
     "README.txt": "661470acd386c8c64c2088296f84620994b2c64425b0587251069e998603e7af",
-    "Wengua_两书完整课程_v5.xlsx": "42b7db0a28ed9357701d112e529890594df1bab6beff7db6b0446d5be80c57c3",
+    "Wengua_两书完整课程_v5.xlsx": "0c273f22c34041407f5901f1f07c40cae9429875b8d12b38a4f81f7865996274",
     "author_step_coverage.json": "e8a3f23145bbbf8830060a572abdec8fca0174c9aeaafc62d55acf0993b8917a",
     "case_paragraph_coverage.json": "af739a38cb5a79612ad3db31c9ed4bc8cc3690f1faf70a820d29e9c378835cbd",
     "chart_cell_coverage.json": "bc954c0f506373586bf2f1d7ddf801cdca4d398b773b578c1943ace45f085b03",
-    "excel_audit.json": "716182d840891ce78e4d8c612337b9c571224e029202b7cf2da3639bddbed6fc",
-    "general_coverage.json": "6fe9741e632f32ea3cf03d20f2323e05d328adca468f00e32bceaa6ec879e114",
-    "pack.json": "611575fc0645d177cc69911ebb030215226e9051e3c49ffa96a651efead0343d",
-    "recovered_lines_review.json": "5f445a35292171492d9f8ca4ecc353db43507682ad7f4339023d73a74283efbf",
-    "review_inputs.json": "777794960794679ba88068439212abb8e1be81c221d2a340798c63a27bc5f216",
-    "source_line_coverage.json": "aa66a82e8552c518a1b1869cc794851dabfb2de553276130120497119c36060e",
+    "excel_audit.json": "3961698b8da068d88cad3aca6ffff717cb70bb953db59aa80de0d1e5d786e072",
+    "general_coverage.json": "f310e0110e8fed43372a3b49a152ce6c1dc92ee1837d3d7953b54a86a6aa8ce5",
+    "pack.json": "be4f65a2eadb1cb80689de0734cae46546280639f2a954e291585c0f5c6bf7b2",
+    "recovered_lines_review.json": "6fb55c1f30eaac44400f49602dba59f870dd9a95b9367eb1ce7ce0e4c7193b17",
+    "review_inputs.json": "9bb5f02297585ebba8f3657db4b86c075197cac0af1453add7be519d043b2592",
+    "source_line_coverage.json": "ed6bea0e2e254681b132fc8e62ba0b4786063f59a789050c727aa6c45226ece3",
     "source_uncertainties.json": "a1ec134bb186a71f81ab5c6ce44140a11f9f4eca504e458bf96f68ba680ab2f6",
     "strategy_dispatch.json": "9a2005ea865a2f39d087279f22fc7fac8e75bdb6fa26283438e611b954756d12",
-    "summary.json": "19045c35476886269133f4f784253d764da7778918b98308e736bb8f332b70df",
-    "teaching_fragments.json": "a30ee9e6e4fb73a0091df65436a5de23d078d706167712c9c7058e8c1266bbff",
-    "token_audit.json": "6505e03048d1ea0183435f85c1f1063cc03e7982c445a71e5cbeecc71b6e010c",
-    "token_lengths.json": "d4625dbef1aa9b000079a631981c3e4ccf01ed30d70d3323e9571b2d9e99a474"
+    "summary.json": "6179ae8d6b9f69f6826c8c76370c42adfd139f123b8648f8f535168f1098d66a",
+    "teaching_fragments.json": "daf0c613e5ebee45ddca4490c3592cfb1e9e9b3401cdc2c1fc1b268f8e77ff0c",
+    "token_audit.json": "acd5ef5cf14e110e94ce31a90d240dc3631f96f850c2ce441eba18b888e826d2",
+    "token_lengths.json": "66b8706ed9cd1b3f4fc943f128dd554119672a55aae510e8a3002935464da8df"
   },
   "summary": {
     "general_units_accounted": 1451,
     "general_units_total": 1451,
     "unaccounted_general_units": 0,
     "dispositions": {
-      "source_supported_lessons": 759,
+      "source_supported_lessons": 760,
       "literal_target_or_exact_duplicate": 630,
       "context_restored_fragment": 13,
-      "structure_heading": 8,
+      "structure_heading": 6,
       "table_cells_and_explanations": 13,
-      "reading_scaffolding": 15,
-      "scope_or_comparison_explained": 10,
+      "reading_scaffolding": 7,
+      "scope_or_comparison_explained": 19,
       "editorial_source_note": 3
     },
     "declared_groups": 31,
@@ -43,22 +43,23 @@
     "source_nonblank_lines_accounted": 8841,
     "line_dispositions": {
       "verified_heading_or_transition": 60,
-      "chapter_heading_or_diagram_label": 155,
+      "chapter_heading_or_diagram_label": 140,
       "general_source_disposition": 1739,
       "recovered_source_teaching": 97,
       "table_border": 72,
-      "structure_caption": 31,
+      "reviewed_short_rule_teaching": 16,
+      "structure_caption": 30,
       "historical_case_source": 6687
     },
-    "core_tasks": 11167,
+    "core_tasks": 11196,
     "formats": {
-      "foundation_qa": 2769,
-      "conditional_dialogue": 429,
+      "foundation_qa": 2790,
+      "conditional_dialogue": 436,
       "chart_application": 4161,
-      "complete_case": 3808
+      "complete_case": 3809
     },
     "splits": {
-      "train": 9503,
+      "train": 9532,
       "test": 895,
       "validation": 769
     },
@@ -72,22 +73,21 @@
     "case_source_paragraphs_accounted": 2805,
     "supplementary_case_lessons": 2365,
     "source_checks": {
-      "located_literal_or_whitespace_only": 5986,
+      "located_literal_or_whitespace_only": 6003,
       "separately_labelled_sqlite_transcription": 1611
     }
   },
   "token_audit": {
-    "core_tasks": 11167,
-    "assistant_views": 11177,
+    "core_tasks": 11196,
+    "assistant_views": 11206,
     "exclusions": [],
     "max_tokens": 1734,
     "max_assistant_tokens": 378,
     "generation_skips": [],
-    "generation_fits": 11167,
-    "tokenizer": "Qwen/Qwen3-8B",
-    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
-    "truncation": false
+    "generation_fits": 11196,
+    "policy": "no truncation; all assistant turns masked with official pinned tokenizer; universal rules trained, case holdouts fixed"
   },
   "reviewed_book_scope": "the 43 sections supplied in the immutable two-book database; not unprovided print editions",
-  "model_ability_verified": false
+  "model_ability_verified": false,
+  "parent_v4_pack_sha256": "de1a1f757ab99adc9504b3f58fd30b2ebf63423ba8f0397e7330db808e72c21d"
 }

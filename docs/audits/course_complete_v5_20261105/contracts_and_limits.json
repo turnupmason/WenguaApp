@@ -2,21 +2,22 @@
   "v4_contract_files_verified_unchanged": 26,
   "changed_files": [],
   "immutable_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
-  "course_archive_sha256": "69b7c493e5edb887949d907e162fb76c4ca6b6f63ea8535d9c22ae95bc1632cd",
+  "course_archive_sha256": "24b38b84deb263538a648ed242eae7b33231333cb4e90bc9f11452ad3469cf88",
   "semantic_review_notes_private_and_hash_pinned": true,
-  "all_target_views_encoded": 11177,
+  "all_target_views_encoded": 11206,
   "dropped_training_targets": 0,
   "historical_case_source_rows_are_retrospective": true,
   "actual_8b_cuda_training_verified": false,
   "semantic_perfection_claimed": false,
   "preserved_fixture_failures": "tiny_run was launched before release creation; tiny_run2 lacked chapter in software fixture and failed generation; fixture corrected, tiny_run3 completed 40 updates with optimizer resume",
   "full_suite": {
-    "tests": 1144,
+    "tests": 1146,
     "failures": 0,
     "errors": 0,
     "historical_skips": 3,
-    "evidence": "full_run_3/results.json"
+    "evidence": "full_run_4/results.json"
   },
   "fresh_ci_fixture_directory_fixed": true,
-  "historical_auto_snapshot_rebuilds_retired": 46
+  "historical_auto_snapshot_rebuilds_retired": 46,
+  "source_caption_and_numbered_rule_review_added": true
 }

@@ -311,7 +311,9 @@ def classify_nonlesson(u,reason):
     q=u['original_quote'].strip();k=u.get('review_key','')
     if any(s in q for s in ('原输入','所提供原文只有图题','本文件仅清理','OCR错位','提供的OCR','原输入只有','原图未提供')):
         return 'editorial_source_note'
-    if re.fullmatch(r'(?:[（(]?[一二三四五六七八九十0-9]+[)）]?[、.．]?)?(?:第[一二三四五六七八九十]+[章节篇].*|图\d+.*)',q):
+    # A container may start with a title and continue with real rules. Never
+    # discard the body merely because its first words name a chapter.
+    if len(q)<=80 and re.fullmatch(r'(?:[（(]?[一二三四五六七八九十0-9]+[)）]?[、.．]?)?(?:第[一二三四五六七八九十]+[章节篇].*|图\d+.*)',q):
         return 'structure_heading'
     if reason and any(s in reason for s in ('教学开场','没有独立知识判断','导言','结束过渡','过渡句','学习要求','练习鼓励','器具介绍','方法推广与宣传','开场','纯宣传')):
         return 'reading_scaffolding'
@@ -489,6 +491,15 @@ def add_line_accounting(c):
             if general:
                 entry.update(state='general_source_disposition',source_ids=[u['id'] for u in general],review_keys=[u['review_key'] for u in general])
             elif cases:entry.update(state='historical_case_source',case_ids=sorted(set(cases)))
+            elif (sid,n) in getattr(c,'reviewed_line_lessons',{}):
+                decision=c.reviewed_line_lessons[(sid,n)]
+                uid=c.raw(sid,n,n);refs=[uid]
+                for source_sid,lo,hi in decision.get('additional_source_spans',[]):refs.append(c.raw(source_sid,lo,hi))
+                rid=c.add(decision['question'],decision['answer'],refs,task='reviewed_short_source_proposition',
+                    fmt=decision.get('format','foundation_qa'),context=decision.get('context',''),
+                    mode=decision.get('source_mode','source_rule_explanation'),review='explicit_review_of_substantive_caption_or_numbered_rule')
+                entry.update(state='reviewed_short_rule_teaching',source_ids=refs,task_ids=[rid])
+                residual.append({'section_id':sid,'line':n,'original':line,'task_ids':[rid]})
             elif (sid,n) in {(1,1),(1,20),(1,76),(1,108),(1,120),(1,147),(1,149),(2,1),(2,219),(2,285),(2,349),
               (3,7),(3,27),(3,47),(3,67),(3,485),(4,2),(4,14),(4,22),(4,82),(4,86),(4,98),(4,106),(4,120),(4,136),(4,140),(4,158),(4,222),
               (22,1),(22,179),(23,31),(23,73),(23,184),(24,160),(25,45),(25,80),(25,89),(25,121),(25,145),(25,177),(25,194),(25,208),(25,216),(25,244),(25,434),(25,508),(25,606),(25,634),
@@ -555,6 +566,7 @@ def build(review_inputs,v4_pack,database,coordinates,output):
         db.row_factory=sqlite3.Row;sections={r['section_id']:dict(r) for r in db.execute('SELECT * FROM sections')}
     c=Curriculum(load(v4_pack),inputs['inventory'],reviews,sections,load(coordinates))
     c.semantic_overrides=inputs.get('semantic_overrides',{})
+    c.reviewed_line_lessons={(x['section_id'],x['line']):x for x in inputs.get('reviewed_line_lessons',[])}
     c.case_correction_required=set(inputs.get('case_correction_required',[]))
     import_v4_targets(c)
     for review in reviews:

@@ -1,9 +1,9 @@
 {
   "schema": "wengua_private_delivery_aes256cbc_hmacsha256_v1",
   "file": "data/delivery/course_v5/delivery_v5.enc",
-  "ciphertext_sha256": "28e8fb8a84e9771e4b43f2ba21286a3ac3ece29bb86a9e4d566c3e0f66f1003f",
+  "ciphertext_sha256": "3d50612aee1c1b12533afdadea0ae19392ae0179ad3ce30cddf63e9c8a191aec",
   "archive_name": "Wengua_course_v5_complete_20261105.zip",
-  "archive_sha256": "69b7c493e5edb887949d907e162fb76c4ca6b6f63ea8535d9c22ae95bc1632cd",
+  "archive_sha256": "24b38b84deb263538a648ed242eae7b33231333cb4e90bc9f11452ad3469cf88",
   "master_key_published": false,
   "plaintext_book_or_qa_published": false,
   "key_delivery": "same private conversation key as v4; never commit"

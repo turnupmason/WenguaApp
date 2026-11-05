@@ -2065,7 +2065,7 @@
       "platform": "python",
       "canonical": "src/wengua/course_complete_v5.py",
       "snapshot": "Important/python/src/wengua/course_complete_v5.py",
-      "sha": "c434e85b39b1b07e0fa1552aa890d3eba2a8eb3e"
+      "sha": "8d49155046d0b9be15a7a05889fd8b8e8ce38dc4"
     },
     {
       "platform": "python",
@@ -2161,13 +2161,13 @@
       "platform": "python",
       "canonical": "data/knowledge/course_v5/release.json",
       "snapshot": "Important/python/data/knowledge/course_v5/release.json",
-      "sha": "60344464d21b0c1f55c847cc2c475668a95deabf"
+      "sha": "63bc1da3137af6119d22a609d0cceb23c0d9c5e8"
     },
     {
       "platform": "python",
       "canonical": "data/delivery/course_v5/manifest.json",
       "snapshot": "Important/python/data/delivery/course_v5/manifest.json",
-      "sha": "669e7e3f32d051a1894af942e9d95ffc308607e4"
+      "sha": "843e2bfc53050693ed684957cc51c67a4dbe25f7"
     },
     {
       "platform": "python",
@@ -2179,7 +2179,7 @@
       "platform": "python",
       "canonical": "tests/test_course_complete_v5.py",
       "snapshot": "Important/python/tests/test_course_complete_v5.py",
-      "sha": "c100a4aab55c9805ac6c37e416bbb6832945e3d4"
+      "sha": "99efd96d4bca3c669b34969fbcead1aeab9d58ce"
     },
     {
       "platform": "python",
