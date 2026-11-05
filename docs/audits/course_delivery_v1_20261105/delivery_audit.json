@@ -6,7 +6,7 @@
   "original_training_runtime_contract_unchanged": true,
   "source_pack_changed": false,
   "private_server_roundtrip_verified": true,
-  "windows_actual_decryption": "pending_source_matched_ci",
+  "windows_actual_decryption": "passed: real Windows builtin .NET, full CLI and 4 MiB software fixture",
   "private_repo_create": "403; no repository created",
   "draft_release_upload": "401; no plaintext assets uploaded; empty draft deleted"
 }

@@ -1,0 +1,30 @@
+{
+  "source_commit": "3ef569bbf0f2288d58c3e3087650b72f36e59c9b",
+  "main_run": 42055347279,
+  "windows_delivery_run": 42055347259,
+  "jobs": [
+    {
+      "job_id": 127342110390,
+      "full_log_sha256": "84448f9b5005edf470ec698c6a1e80ef391650512c1001a4222f14141e372059",
+      "source_matches": true,
+      "errors": false,
+      "cleanup": true
+    },
+    {
+      "job_id": 127342110143,
+      "full_log_sha256": "bee95c101c6847e90d8c30085d93cc2093908f77ed3ae32ed4192ff39b6cfcc8",
+      "source_matches": true,
+      "errors": false,
+      "cleanup": true
+    },
+    {
+      "job_id": 127342110705,
+      "full_log_sha256": "cbd025bdc6b8a939c6eba274ed6147a498bb817765ad8221cc810139f1e8432e",
+      "source_matches": true,
+      "errors": false,
+      "cleanup": true
+    }
+  ],
+  "original_training_code_changed": false,
+  "private_course_or_actual_key_used_in_ci": false
+}

@@ -3807,3 +3807,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 42055347215
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码3ef569bbf0f2288d58c3e3087650b72f36e59c9b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42055347215_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+加密交付源码3ef569bb的主CI42055347279双Python、Windows交付CI42055347259均success。三job完整日志已核对源码、无error及cleanup；真实Windows内置.NET完成跨实现Unicode解密、完整CLI和4MiB数据往返，MAC破坏拒绝、旧文件保护通过。全套1130测试0失败/错误。密钥未进Git/CI，教材原ZIP SHA和全部既有训练代码合同未改。证据docs/audits/course_delivery_v1_20261105/remote_source_ci.json。

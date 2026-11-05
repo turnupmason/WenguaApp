@@ -50,3 +50,5 @@ run_qwen_course_v4_windows.cmd --resume-from-checkpoint "C:\Users\wtmas\WenguaAp
 公开仓库仅含编译代码、运行代码、测试、摘要和说明。私有 ZIP 含原书材料和训练问答，不上传公共 CI。
 
 源码 `908d8ecf5556a08205bf956e50d9f20da23e1164` 的主CI `42051657768` 双Python、Qwen CI `42051657846` 三job均success。已逐job读取完整日志并核对checkout源码、无error标记及cleanup完成。Windows真实venv/实际HF参数图、Trainer loss及注意力路径通过；Linux新入口40更新和优化器恢复通过。证据 `docs/audits/qwen_course_v4_20261105/remote_source_ci.json`。这些是软件验收，不是本机GPU或预测正确率验收。
+
+加密交付源码3ef569bb的主CI42055347279双Python、Windows交付CI42055347259均success。三job完整日志已核对源码、无error及cleanup；真实Windows内置.NET完成跨实现Unicode解密、完整CLI和4MiB数据往返，MAC破坏拒绝、旧文件保护通过。全套1130测试0失败/错误。密钥未进Git/CI，教材原ZIP SHA和全部既有训练代码合同未改。证据docs/audits/course_delivery_v1_20261105/remote_source_ci.json。
