@@ -1,0 +1,8 @@
+{
+  "initial_failure": "contextmanager wrappers carried the original module name but contextlib globals; naive clone lost _GeneratorContextManager",
+  "fix": "Only clone functions whose __globals__ is the source module dictionary; preserve generic contextlib lock/wake wrappers",
+  "original_integration_assertions_preserved": true,
+  "first_failure_log": "first_binder_failure.log.gz",
+  "fixed_real_cpu_integration_passed": true,
+  "actual_gpu_training_verified": false
+}

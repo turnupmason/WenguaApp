@@ -5,6 +5,14 @@ on:
     branches: [main]
     paths:
       - 'src/wengua/qwen_*.py'
+      - 'src/wengua/qwen8b_*.py'
+      - 'scripts/qwen8b_research.py'
+      - 'scripts/check_qwen8b_training.py'
+      - 'tests/test_qwen8b_book_v1.py'
+      - 'run_qwen8b_research.py'
+      - 'run_qwen8b_worker.py'
+      - 'run_qwen8b_research_windows.cmd'
+      - 'configs/qwen8b_book*.json'
       - 'scripts/qwen_research.py'
       - 'scripts/check_qwen_training.py'
       - 'scripts/qwen_curriculum.py'
@@ -47,6 +55,8 @@ on:
   pull_request:
     paths:
       - 'src/wengua/qwen_*.py'
+      - 'src/wengua/qwen8b_*.py'
+      - 'tests/test_qwen8b_book_v1.py'
       - 'scripts/*qwen*.py'
       - 'tests/test_qwen_research_v1.py'
       - 'configs/qwen32b_v1.json'
@@ -89,6 +99,8 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python -m scripts.check_qwen_book_isolated_training
+      - name: 8B pinned tokenizer, chunked loss and gradient equivalence, pressure reuse and optimizer restore (CPU only)
+        run: python -m scripts.check_qwen8b_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
@@ -99,6 +111,7 @@ jobs:
             local/qwen_book_sweep_v1/tiny_integration.json
             local/qwen_book_sweep_v2/tiny_integration.json
             local/qwen_book_sweep_v2/isolated_integration.json
+            local/qwen8b_book_v1/tiny_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest
@@ -116,6 +129,21 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "venv creation failed" }
           & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen_book_sweep_v2 -v
           if ($LASTEXITCODE -ne 0) { throw "venv worker contract failed" }
+      - name: 8B profile and fresh workers in actual Windows virtualenv (no GPU or model weights)
+        shell: pwsh
+        run: |
+          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen8b_book_v1 -v
+          if ($LASTEXITCODE -ne 0) { throw "8B venv worker contract failed" }
+      - name: 8B UTF-8 help, bounded plan and missing environment guard
+        shell: pwsh
+        run: |
+          python -X utf8 run_qwen8b_research.py --help
+          if ($LASTEXITCODE -ne 0) { throw "8B help failed" }
+          python -X utf8 run_qwen8b_research.py plan
+          if ($LASTEXITCODE -ne 0) { throw "8B plan failed" }
+          cmd /c run_qwen8b_research_windows.cmd
+          if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal for 8B" }
+          exit 0
       - name: Windows UTF-8 launcher help
         run: python -X utf8 run_qwen_book_loop.py --help
       - name: CMD launcher preserves absent environment without starting training

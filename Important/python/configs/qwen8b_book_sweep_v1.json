@@ -1,0 +1,12 @@
+{
+  "schema": "wengua_qwen8b_sweep_v1",
+  "contexts": [4096, 2048],
+  "structures": [
+    {"lora_r": 8, "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj"]},
+    {"lora_r": 16, "target_modules": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]}
+  ],
+  "shared_overrides": {},
+  "learning_rates": [0.00002, 0.00003, 0.00005],
+  "dropouts": [0.01, 0.05],
+  "warmup_ratios": [0.03, 0.08]
+}

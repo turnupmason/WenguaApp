@@ -2246,3 +2246,12 @@ PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码718ae4ff746900a56f964ec7e5cc42ce95c89584。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41935207282_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 只读复核工具同源码718ae4ff746900a56f964ec7e5cc42ce95c89584远端主CI#41935207377双Python job126941818174/126941818220完整日志均匹配源码、新3项复核隔离测试OK、无error且cleanup完成；本轮无需启动模型训练/GPU验证，训练相关固定文件未改。证据docs/audits/qwen_book_validation_review_20261104/remote_source_ci.json。private实际交付429验证任务/20优先答题/288出处；全部原文不进入公开Git。
+
+
+### 2026-11-04 · 用户授权切换独立Qwen3-8B / RTX4080
+
+14B实际八组无可行组，两个2048正式候选约37步后OOM；用户明确改用8B。新增固定官方Qwen/Qwen3-8B revision b968826d9c46dd6066d109eabc6255188de91218、独立配置/Windows入口/进程及输出目录；旧14B程序、数据、检查点逐字保留。仅两书5250有出处核心任务、194原事件/1008作者段；新增原书章0/真实事件0，不混旧人工吉凶计分、非古籍teacher或旧适配器。四结构/上下文压力候选，每个100优化步并覆盖长短及密集监督；最多9个正式参数组合，最多5连续epoch，完整Adam/调度器检查点恢复。
+
+新增分块监督位置CE避免训练时全位置大词表logits，未截答案/改label/改归一化；真实微型Qwen3 CPU核对原生loss及全部LoRA梯度、跨进程恢复后权重与不中断对照一致、跨epoch同Adam、显存压力证明复用不加载旧权重均通过。实际官方8B tokenizer：2048接收4815视图/301步每epoch；4096接收4876/305步，每种均取1600变长压力样本；原案仍191有作者分析、3案不造金标。实际8B大权重/CUDA/NF4/4080显存及专业生成尚未执行，不能将CPU接口通过称训练完成。Windows虚拟环境PID/主CI待本次源码提交后据实追加。指南docs/QWEN8B_RTX4080_BOOK_RESEARCH_V1_20261104.md，证据docs/audits/qwen8b_book_v1_20261104/。
+
+8B源码本地完整回归1093项、0失败/0错误、3项既有skip；原始逐测试记录与压缩日志full_run/保留，微型CPU实训及数学证明另存tiny_integration.json。Important镜像同步核对通过。远端同源码Windows venv和CPU集成尚待本次推送实跑。
