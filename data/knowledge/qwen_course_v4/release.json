@@ -1,0 +1,61 @@
+{
+  "schema": "wengua_reviewed_course_v4",
+  "archive_name": "Wengua_course_v4_reviewed_20261105.zip",
+  "archive_sha256": "e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8",
+  "files": {
+    "README.txt": "4a2f26603219478a2215cedb7b7c21758051aef1e042b5a6b007f8a644f284f3",
+    "Wengua_课程语义审阅_v4.xlsx": "bb289ad39665dcb7e50f2aec7fc00c0c02ab9468cf7ce8966cb5e1ac9d738360",
+    "coverage.json": "bb56439facb3b7829fe88ba7f90ad508033c8faa0804a6f7f869abc8689033f1",
+    "pack.json": "de1a1f757ab99adc9504b3f58fd30b2ebf63423ba8f0397e7330db808e72c21d",
+    "review_decisions/case_notes.jsonl": "067168f50c737c8d0ae61d5c2d178988e5aed94cd69c5eaad73cf47d30530c67",
+    "review_decisions/dialogue_decisions.json": "b29f6456d7ef5907f2fef6dac4ce91a815f8d82ee7848c697882e11405b64b2c",
+    "review_decisions/general_inventory.json": "b6a98ec2d73a59e83a082d9fe89d79043c094f0c84c879f74217f95c645c8b5f",
+    "review_decisions/review_G0001_G0055.json": "d4cb33a5981fb4d5cf403bfb041692779739970128068e17b3125beb37d71e6f",
+    "review_decisions/review_G0056_G0215.json": "0febaa6ec4f1ef9d1b78e1448fe4d5269653ec89d91965da2ab0ce3c84ddc71f",
+    "review_decisions/review_G0216_G0480.json": "d4e519052343ce8ca09852f4fdfe5b3d14e39a22a001004b1a2aed7a38a37312",
+    "review_decisions/review_G0481_G0563.json": "e7acad7f04e2f871fb53fafe726d3ee280bb8a334eb0764e44ebd3bd2162a321",
+    "review_decisions/review_G0564_G0624.json": "4094b1db2aad85769ec797d90f57280b73cf2f2a1d8a4abd10ceca38049899a8",
+    "review_decisions/review_G0625_G0701.json": "fb7c3731b60d5c352cc9c051260f18fe563da5b17adb20869701b8a07caf66af",
+    "review_decisions/review_G0702_G0842.json": "bec4b7061ab4344f3d82386d8b17cadc10a2891b122015c04bb3088b27c824e5",
+    "review_decisions/review_G0843_G0939.json": "9d91eb4508f6fe15ff5a77c198d93f04a5b065ff21babcbffb2e746c57bd99e7",
+    "review_decisions/review_G0940_G0982.json": "af648c476ea0e1f9a8b88b09b0b849cc80f5268cfe3344fa877ce5ffb58c65ee",
+    "review_decisions/review_G0983_G1090.json": "2635a7a1965d24a413890fba87901fce658badba4362bae6c0c4d794994935e2",
+    "review_decisions/review_G1091_G1271.json": "bbde9201c84264a8acba1194df22f35a2fa2fbcce5a50154580abcc0651c4c97",
+    "review_decisions/review_G1272_G1421.json": "95bedbb5a324e8e79f68cadf27988cf50a0a0855c50f36767062e25991f6ead9",
+    "review_decisions/review_G1422_G1451.json": "d2233ef8d56715be5d9b7f0dc7888d1643daea925dea7d1004bccd806d64502d",
+    "review_decisions/short_answer_resolutions.json": "0731806b9414680c026210b19b125f3877f2d0af8a008ac1d65c15804d0ac644",
+    "summary.json": "1ac68b2b2d01a4c30a742ec35f8dabcf66355b8a271452ed0e87cff8c0c320c3"
+  },
+  "summary": {
+    "rows": 3129,
+    "groups": 696,
+    "formats": {
+      "foundation_qa": 961,
+      "conditional_dialogue": 413,
+      "chart_application": 1561,
+      "complete_case": 194
+    },
+    "splits": {
+      "train": 2571,
+      "test": 262,
+      "validation": 296
+    },
+    "conflicting_prompts": 0,
+    "family_and_source_leakage": 0,
+    "production_enabled": false,
+    "schema": "wengua_reviewed_course_v4",
+    "source_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+    "general_entries_reviewed": 1451,
+    "cases_reviewed": 194,
+    "author_steps_preserved": 1008,
+    "review_policy": "manual source reading and written decisions; fallibility retained",
+    "source_checks": {
+      "located_quote": 3447,
+      "separately_labelled_sqlite_transcription": 1611
+    },
+    "general_entries_used": 825,
+    "raw_general_entries_retained": 1451,
+    "unseen_full_case_prediction_verified": false,
+    "case_supervision": "retrospective review, chronological correction and literal chart reading"
+  }
+}

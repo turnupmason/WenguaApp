@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
     paths:
+      - 'data/knowledge/qwen_course_v4/**'
+      - 'configs/qwen_course_v4*.json'
+      - 'scripts/*qwen_course_v4*.py'
+      - 'run_qwen_course_v4*'
+      - 'tests/test_qwen_course_v4.py'
       - 'src/wengua/qwen_*.py'
       - 'src/wengua/qwen8b_*.py'
       - 'scripts/qwen8b_research.py'
@@ -62,6 +67,11 @@ on:
       - '.github/workflows/qwen_research_v1.yml'
   pull_request:
     paths:
+      - 'data/knowledge/qwen_course_v4/**'
+      - 'configs/qwen_course_v4*.json'
+      - 'scripts/*qwen_course_v4*.py'
+      - 'run_qwen_course_v4*'
+      - 'tests/test_qwen_course_v4.py'
       - 'src/wengua/qwen_*.py'
       - 'src/wengua/qwen8b_*.py'
       - 'tests/test_qwen8b_book_v1.py'
@@ -114,6 +124,8 @@ jobs:
         run: python -m scripts.check_qwen8b_attention
       - name: 8B math, pressure reuse, exact restore and completed resume under diagnostic-only I/O (CPU)
         run: python -m scripts.check_qwen8b_diagnostics
+      - name: Reviewed course actual masked turns, 40 tiny CPU updates and exact optimizer resume
+        run: python -m scripts.check_qwen_course_v4_training
       - uses: actions/upload-artifact@v4
         with:
           name: tiny-qwen3-cpu-contract-not-32b-or-cuda
@@ -128,6 +140,7 @@ jobs:
             local/qwen8b_book_v1/loss_route_integration.json
             local/qwen8b_book_v1/attention_integration.json
             local/qwen8b_book_v1/diagnostics_integration.json
+            local/qwen_course_v4/tiny_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest
@@ -148,7 +161,7 @@ jobs:
       - name: 8B profile and fresh workers in actual Windows virtualenv (no GPU or model weights)
         shell: pwsh
         run: |
-          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen8b_book_v1 tests.test_qwen8b_worker_diagnostics tests.test_qwen_book_course_audit -v
+          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen8b_book_v1 tests.test_qwen8b_worker_diagnostics tests.test_qwen_book_course_audit tests.test_qwen_course_v4 -v
           if ($LASTEXITCODE -ne 0) { throw "8B venv worker contract failed" }
       - name: 8B UTF-8 help, bounded plan and missing environment guard
         shell: pwsh
@@ -163,6 +176,14 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "8B plan failed" }
           cmd /c run_qwen8b_research_windows.cmd
           if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal for 8B" }
+          exit 0
+      - name: Reviewed course CMD and six-trial plan (no private data or GPU)
+        shell: pwsh
+        run: |
+          python -X utf8 run_qwen_course_v4.py plan
+          if ($LASTEXITCODE -ne 0) { throw "Reviewed course plan failed" }
+          cmd /c run_qwen_course_v4_windows.cmd
+          if ($LASTEXITCODE -ne 2) { throw "Expected missing-env guard for reviewed course" }
           exit 0
       - name: Windows UTF-8 launcher help
         run: python -X utf8 run_qwen_book_loop.py --help
@@ -216,6 +237,11 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "Actual Windows Trainer loss route failed" }
           & local/loss_route_env/Scripts/python.exe -X utf8 -m scripts.check_qwen8b_attention
           if ($LASTEXITCODE -ne 0) { throw "Actual Windows explicit KV attention failed" }
+      - name: Real Windows Qwen parameter graph and FLOP telemetry restoration
+        shell: pwsh
+        run: |
+          & local/loss_route_env/Scripts/python.exe -X utf8 -c "from transformers import Qwen3Config,Qwen3ForCausalLM,Trainer; from src.wengua.qwen_course_training_v4 import parameter_signature,training_integrity; m=Qwen3ForCausalLM(Qwen3Config(vocab_size=97,hidden_size=32,intermediate_size=64,num_hidden_layers=1,num_attention_heads=2,num_key_value_heads=1,head_dim=16)); s=parameter_signature(m); old=Trainer.floating_point_ops; ctx=training_integrity(); ctx.__enter__(); assert Trainer.floating_point_ops is not old; ctx.__exit__(None,None,None); assert Trainer.floating_point_ops is old; assert parameter_signature(m)==s; print('Reviewed course graph and telemetry verified; CUDA not tested')"
+          if ($LASTEXITCODE -ne 0) { throw "Reviewed course real HF graph failed" }
       - uses: actions/upload-artifact@v4
         with:
           name: windows-8b-actual-trainer-loss-route-not-cuda

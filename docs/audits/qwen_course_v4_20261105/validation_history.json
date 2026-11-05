@@ -1,0 +1,6 @@
+{
+  "initial_cpu_failure": "Missing chapter field exposed by report generation; fixed in literal source units and software fixtures; full original failure retained.",
+  "later_cpu_runs": "40 updates and optimizer resume passed; no Windows GPU capacity claim.",
+  "full_run": "1121 tests passed before final alias-normalization hardening; original logs retained.",
+  "full_run_final": "Final source and normalized board family check rerun; see results.json."
+}

@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "15791b68490776321d8ff40170ea8fe66364959b"
+      "sha": "4e25de97aa8b670e86b4df388c0402dbd40e8f77"
     },
     {
       "platform": "python",
@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "802164d19e14ca627393fe566bd3a7de8ee858ec"
+      "sha": "53de1575f76206801c6bb7d282dcace69ff4f79e"
     },
     {
       "platform": "python",
@@ -1934,6 +1934,84 @@
       "canonical": "tests/test_qwen_book_course_audit.py",
       "snapshot": "Important/python/tests/test_qwen_book_course_audit.py",
       "sha": "a50c39451155db5450184367356bf52833e95ff1"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_course_v4.py",
+      "snapshot": "Important/python/engine/qwen_course_v4.py",
+      "sha": "56ad795d1d335e2cbc703a3241208ddedcc6a7c8"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_course_training_v4.py",
+      "snapshot": "Important/python/engine/qwen_course_training_v4.py",
+      "sha": "3473759957aa9a3722f3a6651826029947042d09"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_course_process_v4.py",
+      "snapshot": "Important/python/engine/qwen_course_process_v4.py",
+      "sha": "7ea78f9c5523a116a8066d1ae73823c988bf0c07"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/qwen_course_v4.py",
+      "snapshot": "Important/python/scripts/qwen_course_v4.py",
+      "sha": "32b4dcb9eade23b54e46d28181e0adca330f98fd"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/export_qwen_course_v4_review.py",
+      "snapshot": "Important/python/scripts/export_qwen_course_v4_review.py",
+      "sha": "67d30265046cbac923c83e9570c311649249edbe"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_qwen_course_v4_training.py",
+      "snapshot": "Important/python/scripts/check_qwen_course_v4_training.py",
+      "sha": "ed5236846e70b2bd94192f5630a9750b71edd6eb"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_course_v4.py",
+      "snapshot": "Important/python/tests/test_qwen_course_v4.py",
+      "sha": "14853db0b94c139296764cf5a4b65c61684d0d9b"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_course_v4.py",
+      "snapshot": "Important/python/run_qwen_course_v4.py",
+      "sha": "e8b59966da3386c711ac2fdf0a7aa886d58ffab2"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_course_v4_worker.py",
+      "snapshot": "Important/python/run_qwen_course_v4_worker.py",
+      "sha": "e75418cef87bcb4b06a8246a629335a11a23302b"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_qwen_course_v4_windows.cmd",
+      "snapshot": "Important/python/run_qwen_course_v4_windows.cmd",
+      "sha": "2b8ba4c1950126976236d5368a801f5ec412365b"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/qwen_course_v4.json",
+      "snapshot": "Important/python/configs/qwen_course_v4.json",
+      "sha": "54527af58e2fc946840b3b5f67d7c031de7dda0f"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/qwen_course_v4_sweep.json",
+      "snapshot": "Important/python/configs/qwen_course_v4_sweep.json",
+      "sha": "4b0090d16de4df6c25cec489ba01a35a99f41a6c"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/qwen_course_v4/release.json",
+      "snapshot": "Important/python/data/knowledge/qwen_course_v4/release.json",
+      "sha": "bf612be7ed53eaf722c1a664e3a7af7dd9df3401"
     }
   ]
 }
