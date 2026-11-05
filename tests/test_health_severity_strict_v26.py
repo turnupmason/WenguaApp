@@ -16,6 +16,13 @@ from src.wengua.health_severity_v22 import FORBIDDEN_CUSTOMER
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class RealSelfGengshenStrictTemplateV26(unittest.TestCase):
     def test_real_self_chart_no_old_hour_or_father_substitution(self):
         r=run()

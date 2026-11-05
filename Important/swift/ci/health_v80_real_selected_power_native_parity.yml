@@ -348,58 +348,17 @@ jobs:
           path: /tmp/wengua-v80/
           retention-days: 90
           if-no-files-found: warn
-      - name: Preserve new-version failed validation, append-only without hiding it
-        if: failure()
+      - name: Publish actual source report in job summary without repository churn
+        if: always()
         run: |
-          set -euo pipefail
-          archive="docs/HEALTH_V80_FAILURE_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
           {
-            printf '# V8.0 实际 CI 未通过，保留全部失败现场\\n\\nRun: https://github.com/turnupmason/WenguaApp/actions/runs/%s\\n\\n' "$GITHUB_RUN_ID"
-            for f in /tmp/wengua-v80/*.log /tmp/wengua-v80/*_diff.md; do
-              if [ -f "$f" ]; then
-                printf '\\n## %s\\n\\n\`\`\`text\\n' "$(basename "$f")"
-                tail -n 180 "$f" || true
-                printf '\\n\`\`\`\\n'
-              fi
-            done
-          } > "$archive"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$archive"
-          git commit -m "Archive failed V8.0 native Python source strength validation"
-          for i in 1 2 3 4 5; do
-            git pull --rebase origin main
-            if git push origin HEAD:main; then exit 0; fi
-          done
-          exit 1
-      - name: Append only successful actual test output; never overwrite old V7/V8
-        run: |
-          set -euo pipefail
-          archive="docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_${GITHUB_RUN_ID}_ATTEMPT_${GITHUB_RUN_ATTEMPT}.md"
-          cp /tmp/wengua-v80/two_fixed_clocks_v80.md "$archive"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$archive"
-          python3 - <<'PY_NOTE'
-          import json,os
-          from pathlib import Path
-          release=json.loads(Path('data/releases/health_frozen_20261102.json').read_text())
-          assert release['status']=='user_accepted_frozen'
-          run=os.environ['GITHUB_RUN_ID']; sha=os.environ['GITHUB_SHA']
-          note=(f"\n\n### 当前封存轻重回归实测 · run {run}\n"
-                f"V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码{sha}。"
-                f"全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_{run}_ATTEMPT_{os.environ['GITHUB_RUN_ATTEMPT']}.md。"
-                "既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。\n")
-          for name in ('AGENTS.md','docs/PROJECT_STATUS.md','docs/CHAPTER_LEDGER.md'):
-              with Path(name).open('a') as f:f.write(note)
-          PY_NOTE
-          git add AGENTS.md docs/PROJECT_STATUS.md docs/CHAPTER_LEDGER.md
-          git commit -m "Archive sealed V9 scoring V11 template native regression and actual handoff"
-          for i in 1 2 3 4 5; do
-            git pull --rebase origin main
-            if git push origin HEAD:main; then exit 0; fi
-          done
-          exit 1
+            printf '# Sealed health native regression\n\nSource SHA: %s\n\nRun: %s/%s/actions/runs/%s\n\n' "$GITHUB_SHA" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
+            if [ -f /tmp/wengua-v80/two_fixed_clocks_v80.md ]; then
+              cat /tmp/wengua-v80/two_fixed_clocks_v80.md
+            else
+              printf 'Validation did not complete. Inspect the full always-uploaded logs and attempted outputs artifact.\n'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
   qimen_lunji_frontpage_runtime:
     runs-on: ubuntu-latest

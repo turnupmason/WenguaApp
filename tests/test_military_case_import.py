@@ -1,5 +1,6 @@
 """Original-source military HISTORICAL study; offline complete archive regression."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib
 import importlib.util
 import json
@@ -10,8 +11,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BUILDER=ROOT/'scripts/build_shenqi_17_from_16.py'
 SRC=ROOT/'sources/shenqi/神奇之门_军事事件预测_精校完整版(1).txt'
-BASE=ROOT/'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3'
-ARCHIVE=ROOT/'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3'
+BASE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3')
+ARCHIVE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3')
 MANIFEST=ROOT/'archives/sqlite/17chapters_86cases_manifest.json'
 
 class MilitaryStudyRegression(unittest.TestCase):

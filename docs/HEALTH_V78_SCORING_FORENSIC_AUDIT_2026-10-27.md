@@ -1,6 +1,6 @@
 # V7.8 两个固定时辰逐宫计分复核（只读审计，不改当前评分算法）
 
-日期：2026-10-27。来源：`docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md` 和当时 `src/wengua/health_quant_overlay_vnext.py`、`src/wengua/health_five_level_quant_vnext.py`、`ios/WenguaAppUI/WenguaNativeVNextEngine.swift`、`tests/test_health_v78_illness_special_cohost_20261027.py`。这是既有用户时辰的诊断，不是新增原书案例、秘密盲测、医疗评估或规则修订。现有 V7.3.1--V7.8 历史文件、失败日志、200 格与 81 格、冻结 V3.9.1 均不动。
+日期：2026-10-27。来源：`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md` 和当时 `src/wengua/health_quant_overlay_vnext.py`、`src/wengua/health_five_level_quant_vnext.py`、`ios/WenguaAppUI/WenguaNativeVNextEngine.swift`、`tests/test_health_v78_illness_special_cohost_20261027.py`。这是既有用户时辰的诊断，不是新增原书案例、秘密盲测、医疗评估或规则修订。现有 V7.3.1--V7.8 历史文件、失败日志、200 格与 81 格、冻结 V3.9.1 均不动。
 
 ## 计算总式
 `final=clamp(sum(one score per DISTINCT selected physical palace after void) + eligible_control + auspice + weak_drain - (five_not ? 2*distinct_palace_count : 0), -5, +5)`。

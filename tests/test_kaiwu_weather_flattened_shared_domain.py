@@ -4,12 +4,13 @@ Keep 33 literal source lines intact and ZERO invented nine-palace cells.
 Shared weather_historical_source domain with five older Shenqi weather cases.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_weather_from_criminal import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,validate,build,CASES
 )
-PARENT=ROOT/"archives/sqlite"/BASE_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_天时气象预测.txt"
 class KaiwuWeatherUnresolvedOriginalTest(unittest.TestCase):
  @classmethod

@@ -1,12 +1,13 @@
 """Five indivisible authored stories; never leak retrospective or medical outcomes."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib, importlib.util, json, sqlite3, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'sources/shenqi/神奇之门_人生机遇预测_精校完整版(1).txt'
 BUILDER=ROOT/'scripts/build_shenqi_20_from_19.py'
-BASE=ROOT/'archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3'
-ARCHIVE=ROOT/'archives/sqlite/WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3'
+BASE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3')
+ARCHIVE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3')
 MANIFEST=ROOT/'archives/sqlite/20chapters_98cases_manifest.json'
 class LifeHistoryRegression(unittest.TestCase):
  @classmethod

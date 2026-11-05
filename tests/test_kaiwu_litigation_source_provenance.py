@@ -1,11 +1,12 @@
 """Append-only Kaiwu litigation source phase, book cautions and SQL parent regression."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_litigation_from_geography import (
  ROOT,BASE_SHA,BASE_NAME,NEW_NAME,SOURCE_SHA,CASES,METHODS,validate,
  transcribed_palaces,build)
-BASE=ROOT/'archives/sqlite'/BASE_NAME
+BASE=source_database(ROOT/'archives/sqlite'/BASE_NAME)
 SOURCE=ROOT/'sources/kaiwu/开悟之门_官司诉讼预测.txt'
 class KaiwuLitigation(unittest.TestCase):
  @classmethod

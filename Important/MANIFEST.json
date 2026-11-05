@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "1d68580a7d844f089ce3180dcdba5a7c10cec89e"
+      "sha": "c3c5ca1308c59d5f1f72af5233466933ff9453fe"
     },
     {
       "platform": "python",
@@ -877,13 +877,13 @@
       "platform": "python",
       "canonical": ".github/workflows/health_v80_real_selected_power_native_parity.yml",
       "snapshot": "Important/python/ci/health_v80_real_selected_power_native_parity.yml",
-      "sha": "f498ae0d55e892b906c877de5ac4f76f5205c40f"
+      "sha": "df87dfef7e278c56e1a6b783c1b91384521cb612"
     },
     {
       "platform": "swift",
       "canonical": ".github/workflows/health_v80_real_selected_power_native_parity.yml",
       "snapshot": "Important/swift/ci/health_v80_real_selected_power_native_parity.yml",
-      "sha": "f498ae0d55e892b906c877de5ac4f76f5205c40f"
+      "sha": "df87dfef7e278c56e1a6b783c1b91384521cb612"
     },
     {
       "platform": "swift",
@@ -2054,6 +2054,138 @@
       "canonical": ".github/workflows/course_delivery_v1.yml",
       "snapshot": "Important/python/ci/course_delivery_v1.yml",
       "sha": "897215c3ae9ce88a9cb7c1a16587f1cf01c24af7"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/course_complete_v5.yml",
+      "snapshot": "Important/python/ci/course_complete_v5.yml",
+      "sha": "fb1a60d75c36e8152bb85d275ab3db1bd2e80e88"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_complete_v5.py",
+      "snapshot": "Important/python/src/wengua/course_complete_v5.py",
+      "sha": "c434e85b39b1b07e0fa1552aa890d3eba2a8eb3e"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_training_v5.py",
+      "snapshot": "Important/python/src/wengua/course_training_v5.py",
+      "sha": "d553095f1a01e34be98adcc94946ffda80e6ccec"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_process_v5.py",
+      "snapshot": "Important/python/src/wengua/course_process_v5.py",
+      "sha": "bcd2e699900b5699262d124a700fb1a91f6d1438"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/archive_snapshots.py",
+      "snapshot": "Important/python/src/wengua/archive_snapshots.py",
+      "sha": "d07d115e1666781385195dd14ef86fc936b18521"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/build_course_complete_v5.py",
+      "snapshot": "Important/python/scripts/build_course_complete_v5.py",
+      "sha": "a26ae440df134582db14da065935b1fb18d741f6"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/course_v5.py",
+      "snapshot": "Important/python/scripts/course_v5.py",
+      "sha": "6e976c49d9dc3c5555a6e8244b29a28f3dea4d69"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_course_v5_training.py",
+      "snapshot": "Important/python/scripts/check_course_v5_training.py",
+      "sha": "7e57fd517f50947b2155402e3215f36de9671f9f"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_course_v5_windows.py",
+      "snapshot": "Important/python/scripts/check_course_v5_windows.py",
+      "sha": "f112444432ecfc2c7688bed29a718d4264a7b067"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/restore_source_archives.py",
+      "snapshot": "Important/python/scripts/restore_source_archives.py",
+      "sha": "bff7e6a7aa8ea8c99a54c7f6eb870f2d4adde132"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/restore_ci_history.py",
+      "snapshot": "Important/python/scripts/restore_ci_history.py",
+      "sha": "34caffa7e8d6c594093d6f83a80bb23a85803bda"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_course_v5.py",
+      "snapshot": "Important/python/run_course_v5.py",
+      "sha": "cfc10141b04e8c9ad41e88772af9f0fcb7162011"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_course_v5_worker.py",
+      "snapshot": "Important/python/run_course_v5_worker.py",
+      "sha": "5213f9ad176151a980a3af92a196f02823beabe9"
+    },
+    {
+      "platform": "python",
+      "canonical": "unlock_course_v5.py",
+      "snapshot": "Important/python/unlock_course_v5.py",
+      "sha": "6732cd0db397e3c5ea2e301229ba9400ff632cde"
+    },
+    {
+      "platform": "python",
+      "canonical": "train_wengua_v5.cmd",
+      "snapshot": "Important/python/train_wengua_v5.cmd",
+      "sha": "ae563ef767cc8f85035685a688d0faa9ec5ffc31"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/course_v5.json",
+      "snapshot": "Important/python/configs/course_v5.json",
+      "sha": "975ce319f269781883e51aeeb02ac6563e18df12"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/course_v5_sweep.json",
+      "snapshot": "Important/python/configs/course_v5_sweep.json",
+      "sha": "45a893710a20cb2dd88007aeb90c1bb51cf582d4"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/course_v5/release.json",
+      "snapshot": "Important/python/data/knowledge/course_v5/release.json",
+      "sha": "60344464d21b0c1f55c847cc2c475668a95deabf"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/delivery/course_v5/manifest.json",
+      "snapshot": "Important/python/data/delivery/course_v5/manifest.json",
+      "sha": "669e7e3f32d051a1894af942e9d95ffc308607e4"
+    },
+    {
+      "platform": "python",
+      "canonical": "archives/sqlite/source_archive_catalog.json",
+      "snapshot": "Important/python/archives/sqlite/source_archive_catalog.json",
+      "sha": "5eeff3c6dce72d777db322675cbcc767356165a2"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_course_complete_v5.py",
+      "snapshot": "Important/python/tests/test_course_complete_v5.py",
+      "sha": "1e79fd8a07ef8290ea88d06f92ade79f25b13b7e"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_archive_snapshots.py",
+      "snapshot": "Important/python/tests/test_archive_snapshots.py",
+      "sha": "9eb705cf7d5efba027d5306e2d0bec82e29db75d"
     }
   ]
 }

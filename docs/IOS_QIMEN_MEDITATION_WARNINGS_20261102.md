@@ -39,6 +39,6 @@ p2清单逐字保存在 `archives/engineering_patch_20261102/health_frozen_20261
 
 
 ### 2026-11-02 · p3简明首页、静心动画及Swift零警告实测完成
-生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
+生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
 共享原生 #41474512713 success：首页普通/伤损/剧痛简明文案、真实两张V27输出、保留完整原reading、木鱼周期/停止状态实际Swift运行通过；主CI #41474512568（Python3.11/3.12）与独立iOS真实App Xcode/全部原生回归 #41474512484 success。本轮这四个Actions均无失败；全库843 tests原2个手动时辰入口失败与3个原skip另行原样保留，不称全库全绿。
 README、Important字节镜像/Git blob SHA及封存p3清单已同步。两个模板/7份规则资源/Python/评分源pin不变。没有进行真机签名、动画截图或整套XCUITest像素/按钮验收；动画为本地矢量与诵念文字，默认静音。Mac须按README pull后重新xcodegen generate并⌘R，将新增动画文件加入现有工程；历史V27结论直接使用新首页展示。病愈应期尚未开放。

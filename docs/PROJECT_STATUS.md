@@ -1,3 +1,5 @@
+> **2026-11-05 当前最高交接：V4 正在用户机器运行，保持全部原合同；补齐两书课程使用独立 V5。** 本条高于下方所有历史“当前”措辞。[完整说明](COURSE_COMPLETE_V5_20261105.md)。旧 V4 编译器仅实现30种策略中的7种；新 V5 31/31分组显式处理，1451知识单元逐项处置，194案/1008索引分析及漏索引正文、老师评论补齐。11167核心/11177助手目标，无长度丢弃；案例错断、后知反馈、学生与老师身份、两书异说和字形疑点分别保留，不称语义完美或已会未见断案。V5入口train_wengua_v5.cmd、输出local/course_v5/run1；私有教材通过unlock_course_v5.py用此前V4私钥恢复，公开只放密文与哈希；V4完成后才启动。旧人工评分/非书知识/旧适配器禁入。按用户授权清理66个重复展开历史库与836个重复CI报告，逐字节核对的压缩原件和清理前Git标签保留；测试显式恢复所需历史库，原断言不删。健康CI保留真实计算及artifact，停止每跑一次自动提交新报告/重复交接。当前原库与旧16冻结训练文件/V4运行哈希不变；后续实际CI与全量测试结果按审计追加。
+
 > **V4下载修复：工作区路径不是可下载附件。** 现用加密数据随git同步，入口unlock_qwen_course_v4.py，解密码仅私有对话，不进入Git或CI。AES256-CBC＋HMAC-SHA256先验MAC，再用Windows内置.NET解密并核对原ZIP SHA，自动保存到当前用户Downloads。公开只有密文和软件夹具；明文、实际密钥继续local/私有对话。原训练代码/教材ZIP/参数/恢复合同均未改，继续run_qwen_course_v4_windows.cmd。GitHub私有库创建403、草稿附件上传401；空草稿已删除，没有上传明文。
 
 > **当前课程：纯两书短答 V4，独立新适配器。** [完整指南](QWEN_COURSE_V4_REVIEWED_20261105.md)。逐条批注覆盖1451知识材料、194案例和1008作者段；3129核心任务，全部原案保留，长段/异说/初断错误不自动当正向答案。全部答案最长189字，知识直答、案例结果与原因证据不重复；旧人工评分和旧适配器禁用。入口run_qwen_course_v4_windows.cmd，新目录local/qwen_course_v4/run1；先下载私有ZIP到Downloads，校验SHA后才可加载模型。最多6组，100更新压力＋连续3epoch；同组完整检查点恢复，旧16冻结文件不改。案例复盘不冒充未见预测，不能承诺语义100%或实际CUDA已测；本轮验收见新指南。下方旧bookv3暂停仍有效。
@@ -660,7 +662,7 @@ Github代码与来源输出：schema/migrations/033_kaiwu_recent_fortune_six_cas
 
 本次14子节和前四节15组Q/A原书保真；十六份OCR源盘295原文字行和逐行SHA/19张跨案例关联，但新增真正可确认印刷盘0，旧179张完整原盘、1440主格、19附盘171格未变。新增源码方法候选27均为draft，案例推理来源单元115，半途后验不能充当最初判断。跨领域实例包含赴台手续一准一错、政协补选预测落空、学生驾驶证遗失起局误用阴阳遁、戏曲赛按错时起局但赛果符合、女教师走失初说平安但书报遇难（事后凶手推断不得冒称警方事实）、两名婚姻当事人共盘各自不同预测错案、天气已发生后回看仍误断、同场足球两次错误推断、同一张图给桂林行政调动/河北术后康复/广东高考三个不同问事。已通过GitHub Archive工作流，整库 `sqlite3.backup()` 旧记录无损，integrity_check='ok'，foreign_key_check=0。
 
-准确最新完整归档 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3`，大小13498368字节、SHA256 `c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83`；同名 `.sqlite3.xz` 大小1111588字节、SHA256 `0cbc754dbe7a89707d915467bdd4524a19304f903c3c70e51c495182ee9a1f2c`，`archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json`。归档机器人提交 `32b3bc5b34299e2c0d4bea760fcd9806f15cddf9`。累计表计数：`sections=43,cases=194,historical_case_reasoning=1008,historical_case_reasoning_trace=1008,semantic_assertions=2860,cross_book_concept_tracks=1603,historic_book_case_acceptance=86,unified_case_domain_facets=146,kaiwu_final_subsections=14,kaiwu_final_qa=15,kaiwu_final_event_witnesses=14,kaiwu_final_raw_casts=16,kaiwu_final_raw_cast_lines=295,kaiwu_final_cast_case_links=19,kaiwu_final_source_phases=67,kaiwu_final_reasoning_units=115,kaiwu_final_error_audit=18,kaiwu_final_method_candidates=27`。原目录新增 migration037、`scripts/build_kaiwu_ch03_source_final_194.py`、`tests/test_kaiwu_final_two_books_complete.py`及已有GitHub Action，不新建workflow文件夹，不做UI。
+准确最新完整归档 `archives/sqlite/WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3`，大小13498368字节、SHA256 `c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83`；同名 `.sqlite3.xz` 大小1111678字节、SHA256 `0cbc754dbe7a89707d915467bdd4524a19304f903c3c70e51c495182ee9a1f2c`，`archives/sqlite/shenqi21_kaiwu22_final_194cases_manifest.json`。归档机器人提交 `32b3bc5b34299e2c0d4bea760fcd9806f15cddf9`。累计表计数：`sections=43,cases=194,historical_case_reasoning=1008,historical_case_reasoning_trace=1008,semantic_assertions=2860,cross_book_concept_tracks=1603,historic_book_case_acceptance=86,unified_case_domain_facets=146,kaiwu_final_subsections=14,kaiwu_final_qa=15,kaiwu_final_event_witnesses=14,kaiwu_final_raw_casts=16,kaiwu_final_raw_cast_lines=295,kaiwu_final_cast_case_links=19,kaiwu_final_source_phases=67,kaiwu_final_reasoning_units=115,kaiwu_final_error_audit=18,kaiwu_final_method_candidates=27`。原目录新增 migration037、`scripts/build_kaiwu_ch03_source_final_194.py`、`tests/test_kaiwu_final_two_books_complete.py`及已有GitHub Action，不新建workflow文件夹，不做UI。
 
 之后拟议 `1080×60×3×2=388800` 只是**候选解盘情境数**。用户还未给最终短语prompt，必须等待其后续方案协商；保留作者第十一小节反对万能固定句和第十四小节同盘不同问事的约束，决不可一次性当作388800正确解盘答案提前训练。
 
@@ -1651,7 +1653,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 ### V7.8 最终独立 Python↔原生 Swift 双盘真实通过（2026-10-27）
 
-- GitHub Actions **[#40603882731](https://github.com/turnupmason/WenguaApp/actions/runs/40603882731)** 的独立 `both_original_user_clocks` **completed/success**：对新 `test_health_v78_illness_special_cohost_20261027.py` 的真实条件、两个固定原时辰、Important字节SHA执行核验，编译最新iOS Swift 引擎，逐案生成Python源JSON与原生Swift每节中文标题、标点及全文，`compare_gpt_ios_exact_wording_20261026.py` 全部逐字 **True**。同事5实宫 +2 +特殊吉助8 +有效独立克病3 -五不遇时10 = **+3中吉**；1920长辈女4实宫 -3 +同宫特殊吉助6 +克病0 -五不遇时0 = **+3中吉**。两盘均无整盘伏吟或反吟。正式本次独立成功全文及宫分**新档追加、不覆盖历史**：[`docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md)，原第一份V7.8档、V7.7及更早历史成功失败均保留。
+- GitHub Actions **[#40603882731](https://github.com/turnupmason/WenguaApp/actions/runs/40603882731)** 的独立 `both_original_user_clocks` **completed/success**：对新 `test_health_v78_illness_special_cohost_20261027.py` 的真实条件、两个固定原时辰、Important字节SHA执行核验，编译最新iOS Swift 引擎，逐案生成Python源JSON与原生Swift每节中文标题、标点及全文，`compare_gpt_ios_exact_wording_20261026.py` 全部逐字 **True**。同事5实宫 +2 +特殊吉助8 +有效独立克病3 -五不遇时10 = **+3中吉**；1920长辈女4实宫 -3 +同宫特殊吉助6 +克病0 -五不遇时0 = **+3中吉**。两盘均无整盘伏吟或反吟。正式本次独立成功全文及宫分**新档追加、不覆盖历史**：[`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V78_CONDITIONAL_TWO_FIXED_CASES_RUN_40603882731_ATTEMPT_1.md)，原第一份V7.8档、V7.7及更早历史成功失败均保留。
 - **验收边界**：本轮仅实际两固定盘两语言逻辑一致，并非全部iOS模拟器构建或古籍领域测试PASS；同事月干戊取用仍是研究候选，1920女性真实长辈身份与生辰干支条件仍待核。两张新V7.8传统软件标签等待用户审定，绝非真实医学病情判断。
 
 
@@ -1684,7 +1686,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 ## 2026-10-27 · V8.0 最终实际独立原生验收成功：GitHub Actions #40621011300
 
 - **已获得真正 GitHub CI 成功证据**：[`#40621011300`](https://github.com/turnupmason/WenguaApp/actions/runs/40621011300)，job `power_pair_full_text_parity` completed/success，完整每一步 success：用户源5×5所有25组两用神能量组合及变化符号正负宫分无影响、72组独立同宫吉助/空亡测试、8个 Python unittest，全 `Important/MANIFEST.json` 字节镜像测试通过；`swiftc` 实际编译核心起盘、原生逐字断词器及测试，两个用户提供的原四柱/原时辰逐案 Python vs Swift 全文标题/段落/标点**EXACT MATCH**，12组原始新 seed 及8组妻子盘实际 Swift/native 全文全部通过，一共 **22张真实时辰盘**（2旧固定+20新随机）与 72组合/25能力矩阵范围的**软件工程回归 PASS**。请勿把双端一致等同作者古籍盲测通过、实机完整UI通过或现实医学预后证据。
-- 真实成功源码及**不覆盖旧盘**的新档为 [`docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40621011300_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40621011300_ATTEMPT_1.md)，由 Actions 本次自动追加；后续不得把旧 V7.8 历史+3/+3冒充V8成绩。曾发生的 Important SHA 未同步、Swift 换行运算符编译错误、UTF-8 stdout/stderr 混写、天盘乙和地盘乙同号重复出词均在此前真实红色 `docs/HEALTH_V80_FAILURE_RUN_*.md` 独立留痕，已在对应源和镜像修正，**不删除失败档**。
+- 真实成功源码及**不覆盖旧盘**的新档为 [`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40621011300_ATTEMPT_1.md`](https://github.com/turnupmason/WenguaApp/blob/main/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40621011300_ATTEMPT_1.md)，由 Actions 本次自动追加；后续不得把旧 V7.8 历史+3/+3冒充V8成绩。曾发生的 Important SHA 未同步、Swift 换行运算符编译错误、UTF-8 stdout/stderr 混写、天盘乙和地盘乙同号重复出词均在此前真实红色 `docs/HEALTH_V80_FAILURE_RUN_*.md` 独立留痕，已在对应源和镜像修正，**不删除失败档**。
 - 本次同事原四柱 `己丑／戊辰／辛卯／丁酉`（2009-04-16 17:00 EDT），五个独立实宫坎1 -5、震3 +3、艮8 -5、兑7 +5、巽4 +4，宫分合 `+2`；震3真实年命乙与独立天心同宫，天心极小特殊 +2；天盘乙不能自己临乙、时干丁不能自己临丁，额外本组仅 `+2`。戊用神真实力量**不能唯一核定**，故即使艮8为极大凶 `-5`、五行土克水，也不得按 `abs(-5)=5` 误奖克病+3，实际克病补分 `0`；五不遇时5实宫每宫-2，即 `-10`；原始 `+2+2+0-10=-6`，最后 `-5，极大凶`传统象意。原书人物取用月干戊仍为研究候选、年命仅用户提供的乙年干，不能当作真实疾病确诊或预后。
 - 本次1920年女性长辈原四柱 `己丑／庚午／丁亥／乙巳`（2009-06-11 09:00 EDT），离9天芮星与实际天盘乙/地盘丁同宫 +3（奇助一组），坤2长辈女辅助同宫值符 +3；四独立宫离9 +5、兑7 -5、震3 0、坤2 -3，宫分合 `-3`；跨宫制病 `0`、五不遇时 `0`，`-3+6=+3`，最终 `中吉`传统象意。1920庚申年命绑定必须是本人真实立春后生，长辈具体身份为条件性，并非现实医学结果。
 - **模板用户重复强调，现确实验收**：唯一可编辑模板 `data/templates/health_severity_vnext/reading_template.json` schema `health_severity_user_editable_template_v20261027_v8_selected_signifier_all_relations`，所有真实九宫/角色/用神力量动态填充，天心与乙同宫各自保留独立力量/关系；宫基础只说一次，最终严格二段：第一段动态全局缓急、五不遇时、全部实宫/用神、唯一实际成立临宫吉助；第二段给出本次传统吉凶结论及文化免责声明；正文无内部计分、百分比、SHA、调试标签。Python/Swift 在两固定案及20随机案严格全文相同。不虚构应期；原始源81格古文及可编辑九宫分节仍保留。源200格/81格、古籍章节及历史多版本/失败保留原样。
@@ -1694,7 +1696,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 - **用户本轮最终决定**：同事（原`己丑 戊辰 辛卯 丁酉`）V8 `-5极大凶`，1920女长辈（原`己丑 庚午 丁亥 乙巳`）V8 `+3中吉`；用户现实反馈前者后来病逝，后者一段时间后恢复。这是用户已见答案两例的追认反馈，**不是未见盲测、更不构成科学验证疾病预测有效**。当前 V8.0 的标准、完整断词和两固定盘冻结，待UI推进，禁止为了新增“其他角色同宫”悄悄改变这两盘。
 - **最重要通用设计要求**：不仅天心、乙、值符，还要天芮、患者、时干、年命、乾坤以及未来任意领域任何`(role, kind, symbol, real_palace, source_strength)`组合，分别保存真实200格/八神本神独立强弱和有向关系证据，绝不将净宫吉凶`abs(±5)`替代力量、也不借同宫其他用神的200格结果；同物理宫基础吉凶只算一次，同一实际符号兼职不可自临/叠分，真实不同符号不可因为同宫而丢掉其独立证据。克/被克依真实施力方向查源正常/真假空定向5×5；生/被生/比和/同宫无来源授权不能套克制格或造新奖。诸领域有自己不同取用神和应期规则，不能偷套疾病天芮的补分体系。
-- **实际工程完成**：当前 SwiftUI App 真正包含 V8 原生调用链`WenguaDesignPreviewApp.swift → WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；已将用户可见的“V-next”和“200格尚未移植”过时提示改为真实离线解读文案，不改变当前模型。更新 Important 对应 UI 镜像及 Manifest SHA。新增 macOS XcodeGen/Xcode 16.4 实际 iOS Simulator 构建和打包原始200格/81格/20 actor/V8模板的校验工作流`.github/workflows/ios_v80_xcode_simulator_build.yml`；**[#40622696702 SUCCESS](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702)**；真实结果存档`docs/IOS_V80_XCODE_PASS_RUN_40622696702_ATTEMPT_1.md`，同时保留首次脚本误把中文`PRODUCT_NAME=问卦`认为`WenguaApp`的失败`docs/IOS_V80_XCODE_FAIL_RUN_40622411511_ATTEMPT_1.md`。通过 Info.plist `CFBundleExecutable` 修复校验脚本。Artifacts 是未签名模拟器App和日志，**尚未 iPhone 真机签名/手动 UI 互动测试**。之前 V8 原始 #40621011300 的2固定+20随机Python↔Swift完整字节一致仍为基线；#40622334292 最新子集回归成功。
+- **实际工程完成**：当前 SwiftUI App 真正包含 V8 原生调用链`WenguaDesignPreviewApp.swift → WenguaNativeCore → WenguaNativeReadingRouter → WenguaNativeVNextEngine → WenguaPythonVNextVerbatim → WenguaNativeCustomerView`；已将用户可见的“V-next”和“200格尚未移植”过时提示改为真实离线解读文案，不改变当前模型。更新 Important 对应 UI 镜像及 Manifest SHA。新增 macOS XcodeGen/Xcode 16.4 实际 iOS Simulator 构建和打包原始200格/81格/20 actor/V8模板的校验工作流`.github/workflows/ios_v80_xcode_simulator_build.yml`；**[#40622696702 SUCCESS](https://github.com/turnupmason/WenguaApp/actions/runs/40622696702)**；真实结果存档`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_40622696702_ATTEMPT_1.md`，同时保留首次脚本误把中文`PRODUCT_NAME=问卦`认为`WenguaApp`的失败`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_40622411511_ATTEMPT_1.md`。通过 Info.plist `CFBundleExecutable` 修复校验脚本。Artifacts 是未签名模拟器App和日志，**尚未 iPhone 真机签名/手动 UI 互动测试**。之前 V8 原始 #40621011300 的2固定+20随机Python↔Swift完整字节一致仍为基线；#40622334292 最新子集回归成功。
 - **已做16项真实源码链路审核，审计永久文档**：`docs/V80_RULE_ENERGY_AND_XCODE_AUDIT_20261027.md`。已核八神无独立月令、81格82行81唯一有序格、真/假空落宫正负3、四类源分一宫只计、五不遇时每实宫-2、不同实际符号分别查两端源强。**未解决需下一版用户确认**：(1) 当前疾病`health_quant_overlay_vnext.py:auspice_hosts`及Swift`hostTags`仅 illness/patient/hour/natal/gender，不包含 doctor/medicine/chief 作为特殊“被辅助宿主”，目前不是自动全面组合的领域无关引擎；(2) `weak_disease && 被生`一宫+3尚没有对应的已批准生扶生效矩阵，只在两端已确定力量时给分，仍需专业来源核准；(3) 克病按物理宫取max，但缺同宫多不同施力符号各自积分归因，不能把其中一个角色的奖励称给另一个；(4) `health_role_majority_vnext.py`同物理证据有相反结论时同排名选择先到角色，须设计冲突状态；(5) 先按原宫净分裁切，再空亡±3可能跨零，需保留原声明并测试边界；(6) GitHub全库旧测试在某轮 624项中22个 FAIL/3 SKIP，含V7.5/7.6旧口径与现存矩阵条件断言，不能删/跳过而冒称全绿。上述**保留为待审问题而未偷改用户刚认可的V8计算和两张盘**。
 - **给用户直接粘贴到 Project Instructions 的约1500个汉字完整prompt**：`docs/PROJECT_START_PROMPT_V80_20261027.md`（含全部通用约束、V8双端强度、两案例反馈、Xcode真实绿灯和未来领域框架）。每个新窗口读本文、根AGENTS、项目状态、章节账本及Swift工程，直接接续修复和GitHub提交；不要重新造规则/另立项目。下一阶段用户才安排UI；任何逻辑调整先按审计清单以新增未见盘做不泄漏回归，并同步源双镜像/Manifest SHA、保留所有旧失败与版本。没有新书章/新案例入库。
 
@@ -1759,7 +1761,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 ## 2026-10-28 本次病宫双天盘规则实际CI/Xcode与两固定案复验
 
 - 本轮真正提交 SHA `6b905a271edd505a00c7bd73c232e55eb528b7e8`（用户确认的病宫例外，不是偷偷改旧V8）：现行主CI `#40737074563` Python3.11/3.12、重要镜像和合成源测试 **PASS**；现行V8.0两固定+随机Python/Swift客户完整中文逐字相等专项 `#40737074271` **PASS**；真实macOS iOS Simulator XcodeGen/完整 SwiftUI 编译及包内200格、81格、人物与模板资源验收 `#40737074257` **PASS**，但没有签名真机/App Store/真实视觉测试。
-- GitHub追加原始可复现输出：`docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40737074271_ATTEMPT_1.md`。同事原始己丑/戊辰/辛卯/丁酉，**病宫两格分别 -5、+4**，物理病宫并非两次计基础分；全局**-5 极大凶**不变。1920年女性长辈原始己丑/庚午/丁亥/乙巳，**病宫两格分别 +5、-5**，全局**+3 中吉**不变。两案均属先验已知反馈的冻结回归，不是新的盲测；两个格局各来自一颗真实天盘星所携干与**同一地盘干**有序配对，辅助候选按源200力量另算。
+- GitHub追加原始可复现输出：`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40737074271_ATTEMPT_1.md`。同事原始己丑/戊辰/辛卯/丁酉，**病宫两格分别 -5、+4**，物理病宫并非两次计基础分；全局**-5 极大凶**不变。1920年女性长辈原始己丑/庚午/丁亥/乙巳，**病宫两格分别 +5、-5**，全局**+3 中吉**不变。两案均属先验已知反馈的冻结回归，不是新的盲测；两个格局各来自一颗真实天盘星所携干与**同一地盘干**有序配对，辅助候选按源200力量另算。
 - 旧混合专项并非全绿，失败永久保留：`#40737074390`（历史V-next preview测试与旧4案约束冲突）、`#40737074374`（旧V7.4人物/加分静态口径）、`#40737074400`（旧V7.3女性、V7男性朋友和V6.1历史归档等子任务）。过去的老源码和旧失败审计不得因本轮通过而删除；也不能宣称所有历史算法测试均通过。当前正式V8两端现行逐字一致与真实App构建分别有以上确切PASS。
 - 「微恙／病势平缓」只对应**已核出0分**、原文「不凶不吉」；对无足够源格的未定结果只能继续显示「尚未定局」，不许把未知病情误称稳定。1行5个标签、简化人物关系说明、星携干成对显示均是正式UI展示调整，非专业医疗建议。
 
@@ -1787,15 +1789,15 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 ## 2026-10-28 本次真盘修正的实际回归结果（失败先留档）
 
-- 首提交 `81b84fc`：现行Python V8主CI `#40744813221` 3.11与3.12 PASS。原生全文 parity `#40744813493` FAIL：不是算分或Swift失配，`scripts/ios_v80_same_clock_neutral_parity_20261028.py` 第33行仍错误断言「0分不许输出不凶不吉」；失败归档 `docs/HEALTH_V80_FAILURE_RUN_40744813493_ATTEMPT_1.md` 永久保留。修正于 `bb42698`，主CI `#40745150935` PASS，V8真盘+20随机Native Swift逐字 `#40745151126` PASS。
+- 首提交 `81b84fc`：现行Python V8主CI `#40744813221` 3.11与3.12 PASS。原生全文 parity `#40744813493` FAIL：不是算分或Swift失配，`scripts/ios_v80_same_clock_neutral_parity_20261028.py` 第33行仍错误断言「0分不许输出不凶不吉」；失败归档 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_FAILURE_RUN_40744813493_ATTEMPT_1.md` 永久保留。修正于 `bb42698`，主CI `#40745150935` PASS，V8真盘+20随机Native Swift逐字 `#40745151126` PASS。
 - 进一步扩大到四种人物：`de86559`更新同一真时辰源数据导出，`4bfbaaf`更新专项CI循环；全套原生Swift与Python逐字对照 `#40745505469` PASS（本人、同事、爷爷、奶奶，同一真实13:44）。总分分别0、0、5、5，爷爷奶奶实际未封顶和分别9、7，并非复用人物；这些均为传统计分，不能声称预后准确。
-- 初始本次macOS Xcode Simulator工作流 `#40744813002` FAIL：SwiftUI真正编译成功，**bundle验收脚本仍断言20角色**，新增后实际22；旧失败文件 `docs/IOS_V80_XCODE_FAIL_RUN_40744813002_ATTEMPT_1.md` 已保留。修正于 `3618af6`，验收明确检查22身份和爷爷乾6／奶奶坤2。新构建 `#40745274121` 启动并等待返回最终结果，未返回前不得宣称PASS或bundle验收成功。
+- 初始本次macOS Xcode Simulator工作流 `#40744813002` FAIL：SwiftUI真正编译成功，**bundle验收脚本仍断言20角色**，新增后实际22；旧失败文件 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_40744813002_ATTEMPT_1.md` 已保留。修正于 `3618af6`，验收明确检查22身份和爷爷乾6／奶奶坤2。新构建 `#40745274121` 启动并等待返回最终结果，未返回前不得宣称PASS或bundle验收成功。
 - 最新V8主CI `#40745504665` Python3.11/3.12 PASS。原200/81、冻结两已揭晓原盘、旧失败历史没有被修改。
 
 
 ### 2026-10-28 新增验收结论：真实 XcodeGen / Simulator / bundle 全部通过
 
-- `#40745274121`（基于 `3618af6`）macOS XcodeGen 生成现存工程、完整 SwiftUI iOS Simulator `xcodebuild`、未签名原生 App 包二进制，以及随包 200格、81格、V8 template、22种人物规则（爷爷乾6／奶奶坤2）全数 **PASS**；workflow 上传真实未签名模拟器 App Artifact `12841573107` 与编译日志 Artifact `12840408966`。成功记录 `docs/IOS_V80_XCODE_PASS_RUN_40745274121_ATTEMPT_1.md` 永久保留。之前旧20人断言失败 `#40744813002` 仍保留原失败记录，绝不清除。
+- `#40745274121`（基于 `3618af6`）macOS XcodeGen 生成现存工程、完整 SwiftUI iOS Simulator `xcodebuild`、未签名原生 App 包二进制，以及随包 200格、81格、V8 template、22种人物规则（爷爷乾6／奶奶坤2）全数 **PASS**；workflow 上传真实未签名模拟器 App Artifact `12841573107` 与编译日志 Artifact `12840408966`。成功记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_40745274121_ATTEMPT_1.md` 永久保留。之前旧20人断言失败 `#40744813002` 仍保留原失败记录，绝不清除。
 - 最终V8人体角色 Python→Swift 同盘全文对照 `#40745505469` **PASS**，现行主CI Python 3.11/3.12 `#40745504665` **PASS**。上述仅验证实际离线软件数据和一致性，未验收签名真机、App Store，更不能作为疾病医学预测有效性的依据。
 
 
@@ -1831,7 +1833,7 @@ iOS SwiftUI `CastSetupScreen` 已恢复**出生公历年份选填**，严格要�
 
 - 真实用户反馈：金色「继续 · 填写问事信息」处在ScrollView末尾被遮半；九宫标题11pt看不清且无「宫」，病宫双星丁/戊令行位不齐。只修 `WenguaDomainJourneyScreen.swift` 与 `WenguaDesignPreviewApp.swift`：按钮用 `safeAreaInset(edge:.bottom)` 固定54pt完整露出，选领域后头图减至152pt；九宫每格16pt粗体「巽四宫／离九宫…」，五个固定行槽神→单行星→同宽天盘一/二真干→同宽地盘真干→门，右侧横排短身份标签。乾坤/天芮与天禽事实仍从真实Native传入；只有视觉排布改变，不改任何V8模板、起盘、200/81、计分、Swift/Python业务引擎。
 - 首修源码commit `37ef6699a1385cf29d53bbfa010ca6f1479cfdd5`，旧 `test_ios_immersive_journey_20261028.py` 仍强求以前 `max(76)` 和逐字竖排，首次主CI `#40751967365` FAIL；静态布局旧断言已更新commit `3794a3b009cc23146674641c1c135f87b1c0f9cc`，**现行V8主CI #40752136755 PASS**（Python3.11/3.12、视觉边界、Important SHA）。原V8 Python/Swift逐字专项 `#40751967463` PASS；旧非现行V7通用 workflow `#40751967827` FAIL 与原日志保留，不为UI改V8规则。
-- **新源码真实 macOS XcodeGen + iOS Simulator xcodebuild + package资源验收 #40751967636 PASS**，源码SHA `37ef6699`。四个资源真实在App包内：`health_energy_200.json`、`81_pairs.tsv`、`reading_template.json`、`actor_profiles.json`（22角色），有真正未签名 `问卦.app`。模拟器 App Artifact `12843124943`，编译日志 Artifact `12844936601`；正式验收归档 `docs/IOS_V80_XCODE_PASS_RUN_40751967636_ATTEMPT_1.md`。这证明iOS Simulator能构建打包，**不代表已在用户真机操作/可直接双击在macOS运行**；视觉硬件实机试用仍需用户确认。
+- **新源码真实 macOS XcodeGen + iOS Simulator xcodebuild + package资源验收 #40751967636 PASS**，源码SHA `37ef6699`。四个资源真实在App包内：`health_energy_200.json`、`81_pairs.tsv`、`reading_template.json`、`actor_profiles.json`（22角色），有真正未签名 `问卦.app`。模拟器 App Artifact `12843124943`，编译日志 Artifact `12844936601`；正式验收归档 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_40751967636_ATTEMPT_1.md`。这证明iOS Simulator能构建打包，**不代表已在用户真机操作/可直接双击在macOS运行**；视觉硬件实机试用仍需用户确认。
 
 
 ## 2026-10-28 · 用户新批准规则：天显时整盘+4、天禽中宫地干寄宿与UI空中宫
@@ -1897,27 +1899,27 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 ## 2026-10-28 · 用户确认朋友月干 + V10精简古籍客户断词（不改V8计分）
 用户确认直接代问朋友真实月干早已验收，应取消误标research_candidate_only，仅朋友对应actor_profiles.json的casting_month_stem来源记录标记user_explicit_direction_verified_by_actual_chart，保留闻讯已发生事件event_news独立改日干、不补年命、非长辈不带乾坤，其它人物保持现状。Python bind_patient和Swift WenguaNativeActorSource.bind均读取同一人物规则JSON，取用时实际落宫再检查；新状态只影响人物依据资格，不改真实盘和强度源表。
 当前疾病V8原始计分源200格、81个有序格、真实双星坤二、空墓刑门迫、跨宫原5x5、天显每宫+2/伏吟+1.5统一最后取整、五不遇时各实宫-2均不改。新v10客户模板：各宫用真实天盘/地盘、八神九星门、81有序名称和源极性作短文；原81格古文/古诀大意/取象仍存原书表和审计，不丢字、不改内容，但不在公众每段重复。十二长生单/多宫地支的各源分支全部保留于内部source factor，客户只展示已核独立用神源强（极大/大/中等/小/极小），不伪称某单一长生阶段；若力量未核保留待核。五不遇时和伏反吟改成自然古籍叙述，内部每宫扣两分绝不展示；综合断案源用神独立真强度、每宫一次基础分及已核真实跨宫效果不变。Python src/wengua/domain_selected_energy_vnext.py / src/wengua/health_macro_facts_vnext.py / src/wengua/health_palace_detailed_vnext.py + Swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift 用共同data/templates/health_severity_vnext/reading_template.json，schema=v20261028_v10_concise_confirmed_friend。
-新测试tests/test_health_v80_concise_friend_20261028.py，固定**已见**随机盘2025-12-28T17:00:00-05:00（乙巳/戊子/辛未/丁酉，阳遁7）为回归基准，必须同实盘原±5分且Swift/Python全章节逐字一致，不能冒充新盲测或真实医疗预后。旧v9全文保留于docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40781030045_ATTEMPT_1.md及Git旧提交；新版本必须真实独立执行Python主CI、Ubuntu原生Swift严格对照、macOS真Xcode+bundle资源验收。错误失败都追加而不删。
+新测试tests/test_health_v80_concise_friend_20261028.py，固定**已见**随机盘2025-12-28T17:00:00-05:00（乙巳/戊子/辛未/丁酉，阳遁7）为回归基准，必须同实盘原±5分且Swift/Python全章节逐字一致，不能冒充新盲测或真实医疗预后。旧v9全文保留于https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40781030045_ATTEMPT_1.md及Git旧提交；新版本必须真实独立执行Python主CI、Ubuntu原生Swift严格对照、macOS真Xcode+bundle资源验收。错误失败都追加而不删。
 
 ### 2026-10-28 · V10第一次CI/Swift对照真实失败，独立修复记录
 首轮主CI #40783200978 的 tests/test_health_v80_disease_dual_sky_20261028.py 静态契约仍断言旧客户原文实现`let chosen=formation.sentences`，实际现已在`let names=formation.sentences.map`只截取真实有序81格名、极性，原81分数和source pair不变；已据真实代码改旧静态断言，原失败日志照留。
-首轮V8原生逐字专项 #40783200831 真实Swift可编译、200格/原分与Python一致，朋友同一2025-12-28 17:00仍双方score=-5，但Swift customer由于先以`phrase("palace_compact")`解析含占位符的**原始模板**，在实际字段尚未填入时触发`WenguaNativeReadingError.invalidPhrase`；修复是先从macros取raw字串并在palaceText绑定完整九宫源事实再检查占位符，不能放宽最终严格校验。失败原始Swift stderr和日志见docs/HEALTH_V80_FAILURE_RUN_40783200831_ATTEMPT_1.md。首轮真实macOS Xcode iOS simulator/四源资源验收 #40783200973 PASS，但对源码修复后的提交需重新验收。此次故障绝不以虚构汉字断词填补，完整Swift结果必须在后续CI真PASS后才交付。
+首轮V8原生逐字专项 #40783200831 真实Swift可编译、200格/原分与Python一致，朋友同一2025-12-28 17:00仍双方score=-5，但Swift customer由于先以`phrase("palace_compact")`解析含占位符的**原始模板**，在实际字段尚未填入时触发`WenguaNativeReadingError.invalidPhrase`；修复是先从macros取raw字串并在palaceText绑定完整九宫源事实再检查占位符，不能放宽最终严格校验。失败原始Swift stderr和日志见https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_FAILURE_RUN_40783200831_ATTEMPT_1.md。首轮真实macOS Xcode iOS simulator/四源资源验收 #40783200973 PASS，但对源码修复后的提交需重新验收。此次故障绝不以虚构汉字断词填补，完整Swift结果必须在后续CI真PASS后才交付。
 
 ### 2026-10-28 V10简明断词原生验收
 本次真正Swift/Python逐字验收 #40783640943 PASS、Python3.11/3.12 CI #40783640857 PASS、macOS Xcode模拟器编译和200/81/22人物/V10模板资源校验 #40783640929 PASS。修复前失败 #40783200831（Swift提前展开原模板占位符）和 #40783200978（旧81源文案静态测试）均留历史。本轮补改成功归档中错误的朋友“候选”标记为用户确认月干，并把综合断词生硬“力量或限制待核”改成“制病能否成势未明”；只改文字不改冻结V8计算，仍用同一2025-12-28 17:00已见盘重跑。
 
 ### 2026-10-28 · V10最终同一时辰真Swift验收
-最新commit 498cc54d 的 Python3.11/3.12正式V8 CI #40784209740 PASS，V8全源200/81真正原生Swift逐字核对 #40784209983 PASS，macOS XcodeGen真实iOS Simulator编译与完整App四资源/20261028 V10模板bundle验收 #40784209785 PASS。固定已见朋友盘2025-12-28 17:00 EST，四柱乙巳、戊子、辛未、丁酉，冬至阳遁七局；人物规则是已确认朋友用月干戊，艮八宫，年命未给不补，最终原V8 -5 极大凶不变。现在公众九宫只报星门神、真实天盘地盘、81有序格名吉凶与关键墓刑迫，去掉全部古文引号堆叠、多个十二长生并写、开发者口吻和每宫内部扣分；古书原文本/完整多支事实未改。原生Swift全文及对照归档docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40784209983_ATTEMPT_1.md，1/1 EXACT MATCH，无差异。此前失败#40783200831/#40783200978的真实现场保留。不代表医疗有效性、签名真机或App Store上架。
+最新commit 498cc54d 的 Python3.11/3.12正式V8 CI #40784209740 PASS，V8全源200/81真正原生Swift逐字核对 #40784209983 PASS，macOS XcodeGen真实iOS Simulator编译与完整App四资源/20261028 V10模板bundle验收 #40784209785 PASS。固定已见朋友盘2025-12-28 17:00 EST，四柱乙巳、戊子、辛未、丁酉，冬至阳遁七局；人物规则是已确认朋友用月干戊，艮八宫，年命未给不补，最终原V8 -5 极大凶不变。现在公众九宫只报星门神、真实天盘地盘、81有序格名吉凶与关键墓刑迫，去掉全部古文引号堆叠、多个十二长生并写、开发者口吻和每宫内部扣分；古书原文本/完整多支事实未改。原生Swift全文及对照归档https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40784209983_ATTEMPT_1.md，1/1 EXACT MATCH，无差异。此前失败#40783200831/#40783200978的真实现场保留。不代表医疗有效性、签名真机或App Store上架。
 
 ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
 - 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
 - 最新模板schema health_severity_user_editable_template_v20261028_v10_1_concise_cohost_dedup；Python、Swift、Important双镜像、MANIFEST SHA、真iOS bundle模板版本检查及新专项测试已接入。原200、81、V8计分、坤二寄中五、天显/伏吟半分合总后取整、五不遇及旧失败不改。
-- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/40793239030 ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md。父亲才取长辈乾坤辅助，其他人不补年命。
+- 本次新seed202610282259，严格5盘父亲、本人、本人、女儿、朋友，不按吉凶筛盘；Python真实自动时家排盘、独立人物/宫位和本版完整中文与实际swiftc原生Swift逐字比对均成功，Actions https://github.com/turnupmason/WenguaApp/actions/runs/40793239030 ；全部五盘真实时辰、四柱、宫位、V8得分及全文见 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md。父亲才取长辈乾坤辅助，其他人不补年命。
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
 
 ### 2026-10-28 · V10.1 本轮最终真实 Actions 状态（源测试后核验）
-- 首次 V10.1 原生测试 #40793025806 FAIL：旧 Swift 专项测试还硬断言废弃的「全部因素推断后，此宫为」，非分数变化；失败完整日志 docs/HEALTH_V80_FAILURE_RUN_40793025806_ATTEMPT_1.md 永久保留。只更新源码 ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift 与 Important 镜像/MANIFEST 旧文字断言，未放宽盘面、用神、81或评分验证。
-- 修复后的正式 Python 3.11/3.12 主CI #40793239027 PASS；原生 Swift 独立实盘全文V8评分+V10.1模板 #40793239030 PASS，含严格按预定人物顺序生成的五张新盘，五张无文字差异（5/5 EXACT MATCH）；真实 macOS XcodeGen/Xcode Simulator 编译和 V10.1 四类App包内数据 #40793239020 PASS。完整五盘实际原文档 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md；原著/200/81未变。
+- 首次 V10.1 原生测试 #40793025806 FAIL：旧 Swift 专项测试还硬断言废弃的「全部因素推断后，此宫为」，非分数变化；失败完整日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_FAILURE_RUN_40793025806_ATTEMPT_1.md 永久保留。只更新源码 ios/WenguaAppUI/VNextThreeRandomNativeFullCheck.swift 与 Important 镜像/MANIFEST 旧文字断言，未放宽盘面、用神、81或评分验证。
+- 修复后的正式 Python 3.11/3.12 主CI #40793239027 PASS；原生 Swift 独立实盘全文V8评分+V10.1模板 #40793239030 PASS，含严格按预定人物顺序生成的五张新盘，五张无文字差异（5/5 EXACT MATCH）；真实 macOS XcodeGen/Xcode Simulator 编译和 V10.1 四类App包内数据 #40793239020 PASS。完整五盘实际原文档 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md；原著/200/81未变。
 - 另有旧版通用 iOS Offline Native Casting Parity #40793239166 仍 FAIL，不能笼统称「所有工作流通过」；这是不同的旧专项校验，保留待逐条追查，正式当前V8.0和V10.1严格双端客户断词专项上面实报PASS。无真机签名或医疗有效性证明。
 
 ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
@@ -2013,7 +2015,7 @@ macOS XcodeGen+Xcode 16.4 的 App SwiftUI 编译实际成功，首次新版构�
 2026-10-29 首屏语言研究：冻结V8等级仍作内部匹配，不直接面向用户展示「极大凶」字样。SwiftUI改用无医学预后承诺的自然文字；第二页完整V10.2原始细断一字不删。Important两镜像及MANIFEST哈希同步。纯九宫对照只读取 docs/HEALTH_TWO_CLOCKS_RAW_NINE_ONLY_20261029.json；不算独立盲测，详见 docs/HEALTH_FIRSTPAGE_STYLE_GUIDE_20261029.md。
 
 ## 2026-10-29 · V8病情轻重GPT文章工厂准备与真实首批数量
-已固定专业润色 Prompt prompts/health_severity_gpt_editorial_v1_20261029.md 和独立在线原书核查 Prompt prompts/health_severity_online_rule_audit_v1_20261029.md。用户选择页面1明确传统结论、自然中文约200字；页面2保留V8/V10.2真实详细用神宫完整证据，各宫之后可分别GPT专业润色；输入人物/完整九宫/天心乙奇值符/时干/独立200/81力量和克病条件为只读，人工审批和版本归档后才是本机可匹配资源。遇证据疑点记录待审，不自动更改V8冻结评分。脚本 scripts/health_editorial_batch_v1.py 已生成1080个阴阳18局×60时的基础排盘索引（都标不完整，缺年日月令等），与10月28日06:00/10:00父母爷奶姐弟共12真实完整冻结V8事实输入。专门Actions #40901654390 PASS，归档docs/HEALTH_EDITORIAL_PREBATCH_RUN_40901654390_ATTEMPT_1.md、artifact；该工作流不调用GPT接口/未联网自动审核，正式已GPT润色稿=0、人工批准=0。OpenAI Batch requests generator需真API模型ID和授权，不将占位模型/假密钥当作已执行。本次额外核查待核：长姐巽4、小弟艮8须按原著及排行/年龄条件，不默加。文档 docs/HEALTH_GPT_EDITORIAL_BATCH_AUDIT_20261029.md；主CI新测试后查实际GitHub Run，不等于全部历史测试/新Swift parity或新Xcode通过。
+已固定专业润色 Prompt prompts/health_severity_gpt_editorial_v1_20261029.md 和独立在线原书核查 Prompt prompts/health_severity_online_rule_audit_v1_20261029.md。用户选择页面1明确传统结论、自然中文约200字；页面2保留V8/V10.2真实详细用神宫完整证据，各宫之后可分别GPT专业润色；输入人物/完整九宫/天心乙奇值符/时干/独立200/81力量和克病条件为只读，人工审批和版本归档后才是本机可匹配资源。遇证据疑点记录待审，不自动更改V8冻结评分。脚本 scripts/health_editorial_batch_v1.py 已生成1080个阴阳18局×60时的基础排盘索引（都标不完整，缺年日月令等），与10月28日06:00/10:00父母爷奶姐弟共12真实完整冻结V8事实输入。专门Actions #40901654390 PASS，归档https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_EDITORIAL_PREBATCH_RUN_40901654390_ATTEMPT_1.md、artifact；该工作流不调用GPT接口/未联网自动审核，正式已GPT润色稿=0、人工批准=0。OpenAI Batch requests generator需真API模型ID和授权，不将占位模型/假密钥当作已执行。本次额外核查待核：长姐巽4、小弟艮8须按原著及排行/年龄条件，不默加。文档 docs/HEALTH_GPT_EDITORIAL_BATCH_AUDIT_20261029.md；主CI新测试后查实际GitHub Run，不等于全部历史测试/新Swift parity或新Xcode通过。
 
 ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
 - 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
@@ -2704,7 +2706,7 @@ iOS `QuestionCatalog` 保持 `health.discomfort` 的 `enabled:false`，明确注
 
 iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」「弟弟（家里的弟弟）」「妹妹（家里的妹妹）」逐项明确；每一关系拥有独立真实家庭亲属确认文字，Swift fail-closed；姐姐=家中大姐（需长女条件），朋友永不借家族辅助宫。NativeActorProfileCheck 新增四类未确认不得绑定回归。V8评分冻结不改。
 
-真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
+真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
 
 历史 Xcode失败 #41341934448 因独立Python读取中五宫 p['door'] 错误：中五无普通门，已改为 get() 后 #41342466896 PASS，记录保留。旧综合 iOS Offline Native Casting Parity 仍有 V7过时文案断言及 unresolvedRole，不能冒称全库通过；继续逐案审查。未签名真机/App Store 验收。
 
@@ -2826,7 +2828,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 - 原因缺陷：旧 V19 客户稿对普通不适仍无条件说“伤门在某宫，筋骨旁证”；现在 health.discomfort 必须选 none/accident/bone/bleeding/severe_pain/surgery，未选不进入 30 秒静心或写入 15 天限制。仅五种伤痛/手术情况读取伤门实际物理宫及宫中星、携干、地干、白虎、开门实宫相克、真假空、墓刑迫；none 的天芮若碰巧临伤门亦不得借门迫文字泄露伤门。创伤类别伤门实宫部位优先，伤痛/手术须与天芮和人物真实宫位独立比较。
 - 客户文案是具象证据因果：出于具体宫位、实宫阴阳体表内外、真正独立携干与地盘干及匹配的器官部位才输出，宫与宫的相同部位是互证；不同部位不假装同一病灶，体例允许省略无证据段落。不再套用所有人的“筋骨旁证”。源码 `ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift`、`src/wengua/health_discomfort_v19_parity.py`、iOS UI 和模板，Important 镜像/MANIFEST 已同步。
-- **实际最新来源 SHA `67a23b23ea9af90839a6c87c9cbae23caa6fa0d5`**：macOS XcodeGen + unsigned iOS Simulator 真实构建、bundle 200/81/255/模板、六种条件各新抽的真实时辰 Swift 及独立 Python vs Swift 两新时辰客户中文逐字比较 [#41349563076](https://github.com/turnupmason/WenguaApp/actions/runs/41349563076) **PASS**。源全文在 `docs/IOS_V80_XCODE_PASS_RUN_41349563076_ATTEMPT_1.md`。弟弟 none 2026-11-11 03:00 -05 共四节无伤门；妻子 surgery 2027-02-14 17:00 -05，伤门震三，额外宫中天蓬携庚实取肺部线索，并辨开门乾六克伤门震三；妹妹 bone 2026-11-23 05:00 -05，伤门离九且真空减看；哥哥 bleeding 2027-02-14 19:00 -05，震三伤门与哥哥真实月干/排行宫证据交集。两份独立逐字测试：弟弟 2026-11-19 01:00 -05 四节 PASS；妻子 2027-02-14 19:00 -05 五节 PASS。病位盘文全都来自 Swift 实时自动起盘，不得视为现实病史、医生诊断或古籍原著中的未见盲测。
+- **实际最新来源 SHA `67a23b23ea9af90839a6c87c9cbae23caa6fa0d5`**：macOS XcodeGen + unsigned iOS Simulator 真实构建、bundle 200/81/255/模板、六种条件各新抽的真实时辰 Swift 及独立 Python vs Swift 两新时辰客户中文逐字比较 [#41349563076](https://github.com/turnupmason/WenguaApp/actions/runs/41349563076) **PASS**。源全文在 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41349563076_ATTEMPT_1.md`。弟弟 none 2026-11-11 03:00 -05 共四节无伤门；妻子 surgery 2027-02-14 17:00 -05，伤门震三，额外宫中天蓬携庚实取肺部线索，并辨开门乾六克伤门震三；妹妹 bone 2026-11-23 05:00 -05，伤门离九且真空减看；哥哥 bleeding 2027-02-14 19:00 -05，震三伤门与哥哥真实月干/排行宫证据交集。两份独立逐字测试：弟弟 2026-11-19 01:00 -05 四节 PASS；妻子 2027-02-14 19:00 -05 五节 PASS。病位盘文全都来自 Swift 实时自动起盘，不得视为现实病史、医生诊断或古籍原著中的未见盲测。
 - 相同源 SHA 的主 Python3.11/3.12 CI [#41349563077](https://github.com/turnupmason/WenguaApp/actions/runs/41349563077) PASS；冻结 V8 选用神与原生 Python/Swift parity [#41349563147](https://github.com/turnupmason/WenguaApp/actions/runs/41349563147) PASS；V7.7专项 [#41349563172](https://github.com/turnupmason/WenguaApp/actions/runs/41349563172) PASS。**旧独立 V7.4 colleague/natal historical audit [#41349563095](https://github.com/turnupmason/WenguaApp/actions/runs/41349563095) FAIL**，失败保留，不能冒充全套旧工作流通过。非签名真机/App Store验收。
 - 残余审计：用户三种伤门应用场景只是本次得到授权的用户业务规则，尚未逐条找到原著版本/章节/行号/hash和独立反例；不得称古籍全部直接认可或对真实外伤/痛点/手术有医学预测效力。保留冻结 V8 病情轻重算法，外伤和位置只做传统符号位置排序，绝不以五档力量推断疼痛程度、死亡或疾病轻重。
 
@@ -2838,12 +2840,12 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 2026-11-01 · 四预览第一轮真实失败不得删
-- 新测试源码 `654968ceee9ce85ccc9d07c3b8f3eacf01bc8f8c` 的实际 macOS/Xcode Action [#41355230355](https://github.com/turnupmason/WenguaApp/actions/runs/41355230355) **FAIL**；Xcode iOS Simulator 主 App `BUILD SUCCEEDED`，但 CLI `NativeDiscomfortV15Smoke.swift:134-135` 多行字符串拼接以 `+` 结尾被 Swift 解析为后缀运算符，导致 `expected ',' separator`，四例未生成。原日志 `docs/IOS_V80_XCODE_FAIL_RUN_41355230355_ATTEMPT_1.md` 原样保留。
+- 新测试源码 `654968ceee9ce85ccc9d07c3b8f3eacf01bc8f8c` 的实际 macOS/Xcode Action [#41355230355](https://github.com/turnupmason/WenguaApp/actions/runs/41355230355) **FAIL**；Xcode iOS Simulator 主 App `BUILD SUCCEEDED`，但 CLI `NativeDiscomfortV15Smoke.swift:134-135` 多行字符串拼接以 `+` 结尾被 Swift 解析为后缀运算符，导致 `expected ',' separator`，四例未生成。原日志 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_41355230355_ATTEMPT_1.md` 原样保留。
 - 仅测试文案日志的构造改成 `metaFields.joined(separator:" ")`，新源码 `a49297c98f7f6b707a3814ce3fda7d5700254f5b`，镜像和 MANIFEST 随后同步；不修改健康业务引擎，不擅称后续 PASS。
 
 
 ### 2026-11-01 · V20 四组真实随机病位全文：第二轮 macOS 真实通过
-- 修复后的 **源 SHA `a49297c98f7f6b707a3814ce3fda7d5700254f5b`**：实际 macOS Xcode Simulator 编译、200/81/255和模板 bundle、Swift CLI 原生运行及独立新随机弟弟/妻子 Python↔Swift 逐字检查在 [#41355421616](https://github.com/turnupmason/WenguaApp/actions/runs/41355421616) **PASS**；原文、实际四柱和程序输出记录 `docs/IOS_V80_XCODE_PASS_RUN_41355421616_ATTEMPT_1.md`，先前 #41355230355 失败不删除。不是签名真机/App Store验收，更非现实医学验证。本轮四个新用户指定情境由 Swift 实际自动起盘及 V20 引擎生成；独立跨语言全文比对是同轮另外两随机盘，**并非**这四盘一一 Python 对比。
+- 修复后的 **源 SHA `a49297c98f7f6b707a3814ce3fda7d5700254f5b`**：实际 macOS Xcode Simulator 编译、200/81/255和模板 bundle、Swift CLI 原生运行及独立新随机弟弟/妻子 Python↔Swift 逐字检查在 [#41355421616](https://github.com/turnupmason/WenguaApp/actions/runs/41355421616) **PASS**；原文、实际四柱和程序输出记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41355421616_ATTEMPT_1.md`，先前 #41355230355 失败不删除。不是签名真机/App Store验收，更非现实医学验证。本轮四个新用户指定情境由 Swift 实际自动起盘及 V20 引擎生成；独立跨语言全文比对是同轮另外两随机盘，**并非**这四盘一一 Python 对比。
 - 随机父亲 none：2026-11-15 17:00 -05，丙午/己亥/癸巳/辛酉，阴遁；天芮巽四，父亲年干丙同宫；主左肩、左耳；次左臂、头发；没有伤门段。
 - 随机父亲 accident：2026-11-23 13:00 -05，丙午/己亥/辛丑/乙未，阴遁；天芮离九，伤门坎一兼白虎；伤门外阴/下部优先，天芮心脏/心血管另立，不伪称两宫交集。
 - 随机妻子 surgery：2027-02-12 05:00 -05，丁未/壬寅/壬戌/癸卯，阳遁；天芮兑七，伤门震三兼白虎，开门乾六克伤门宫，杜门巽四辅助肝胆；主肝胆、左肺；次右肋、右腰。
@@ -2890,7 +2892,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 2026-11-01 · V21 左右部位精准小修后正式原生验证
-- 真实运行 [#41359689564](https://github.com/turnupmason/WenguaApp/actions/runs/41359689564) **PASS**，源码 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0`，实际 macOS XcodeGen/unsigned iOS Simulator build、200格/81格/255及V21模板 bundle字节核对、全六条件 Swift 原生自动真盘、用户指定父亲普通/父亲意外/妻子手术/女儿普通四个新随机时辰全文，以及**另外两张随机弟弟/妻子**独立 Python↔Swift 逐段严格一致。完整原始全文 `docs/IOS_V80_XCODE_PASS_RUN_41359689564_ATTEMPT_1.md`。
+- 真实运行 [#41359689564](https://github.com/turnupmason/WenguaApp/actions/runs/41359689564) **PASS**，源码 SHA `7b7b6c76ce33e498f4404ac77c908ad707161ee0`，实际 macOS XcodeGen/unsigned iOS Simulator build、200格/81格/255及V21模板 bundle字节核对、全六条件 Swift 原生自动真盘、用户指定父亲普通/父亲意外/妻子手术/女儿普通四个新随机时辰全文，以及**另外两张随机弟弟/妻子**独立 Python↔Swift 逐段严格一致。完整原始全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41359689564_ATTEMPT_1.md`。
 - 本轮四盘：①父亲意外 2026-11-13 21:00 -05，丙午己亥辛卯己亥，病宫兑七、伤门艮八，伤门木迫土宫，最终左足；②妻子手术 2027-02-16 19:00 -05，丁未壬寅丙寅戊戌，天芮艮八、伤门离九，最终肠胃；③父亲普通 2026-11-10 21:00 -05，丙午己亥戊子癸亥，天芮坤二，最终脾胃，没有伤门段；④女儿普通 2027-02-15 15:00 -05，丁未壬寅乙丑甲申，天芮坤二，最终右耳周围，女儿甲与时干同符同宫且未补年命、无伤门段。
 - 同源码 Python/Swift 独立 V21 全段严格比对另两张弟弟2026-11-13 17:00 -05（7段）/妻子2027-02-18 11:00 -05（7段）通过；**不能说本次四份各自都做了 Python 跨语言比对**。这属于程序真实性验收，**用户的新文案尚未审批，绝非临床病灶或实际预后有效性证明**。历史旧失败永久保留；同一源 SHA 的主全量 Python3.11/3.12 CI 最终结果应另查，不挪用 Xcode 工作流。
 
@@ -2933,7 +2935,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 2026-11-01 · V22 最终单独实测（恢复V16实宫病象+双源格）
-- 真正 macOS Xcode Simulator 原生构建、离线包内资源与随机 Swift 八场景，以及独立 Python↔Swift 同盘客户全词逐字一致，全部来自 [#41362808893](https://github.com/turnupmason/WenguaApp/actions/runs/41362808893) **PASS**，绑定源码SHA `869388609c743ee5db49b81553855117f953a54d`，原始逐字全文 `docs/IOS_V80_XCODE_PASS_RUN_41362808893_ATTEMPT_1.md`。源码包含正式 `wengua_health_discomfort_native_v22_v16_evidence_restored_20261101` 模板，源200格/81格/255来源+关系源、九宫，V8疾病轻重冻结未动；不是签名真机/App Store或真实医疗有效性。
+- 真正 macOS Xcode Simulator 原生构建、离线包内资源与随机 Swift 八场景，以及独立 Python↔Swift 同盘客户全词逐字一致，全部来自 [#41362808893](https://github.com/turnupmason/WenguaApp/actions/runs/41362808893) **PASS**，绑定源码SHA `869388609c743ee5db49b81553855117f953a54d`，原始逐字全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41362808893_ATTEMPT_1.md`。源码包含正式 `wengua_health_discomfort_native_v22_v16_evidence_restored_20261101` 模板，源200格/81格/255来源+关系源、九宫，V8疾病轻重冻结未动；不是签名真机/App Store或真实医疗有效性。
 - 该run四份全新的真历法随机预览：父亲意外2026-11-15 21:00 -05，丙午己亥癸巳癸亥，天芮坤二体内脾胃，伤门震三体表足并临白虎，真实己己/丙丙双格，己势大而击刑，最后伤损取足；妻子手术2027-02-11 07:00 -05，丁未壬寅辛酉壬辰，天芮与伤门同艮八、肠胃，戊丁吉格与天禽辛辛凶格并存，伤门木迫土宫、丁入墓，末肠胃；父亲普通2026-11-12 09:00 -05，丙午己亥庚寅辛巳，天芮离九体内心，己辛凶格与天禽丙丙凶格，惊门被离宫克（非门迫），没有独立伤门段，末心脏；女儿普通2027-02-07 11:00 -05，丁未壬寅丁巳丙午，天芮巽四体内肝胆，地盘乙势极大、丁乙与天禽戊戊双格，病宫实临伤门且伤门势极大可说明宫门病象但不额外另立独立伤门宫，末右上腹肝胆。
 - 本次 Swift/Python 严格全文比对**另两张独立随机**弟弟2026-11-10 01:00 -05（7段）、妻子2027-02-18 17:00 -05（7段）通过。不能拿这两张冒充四份本身也都做了跨语言逐字比对；四份都由原生Swift新真时辰生成。真正用户自然中文质量依然待审。
 - 此前本轮实际 #41361412371 Swift多行拼接、#41361706120 Python伤门地干覆写、#41362485436 Python/Switch新伤门优先分支不一致，均已定位修复且原 CI FAIL 文档保留；不能擦除。此次修复后已同步 Important/python、Important/swift 源镜像及 MANIFEST Git blob SHA。Python 3.11/3.12 **全库测试未在此run单列验收**，不误称全部通过。
@@ -2991,7 +2993,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 ### 2026-11-01 · V23固定女儿真实回归和 macOS 最终通过
 - [GitHub Actions #41370186316](https://github.com/turnupmason/WenguaApp/actions/runs/41370186316) **PASS**，实际源码 SHA d39dc050c9ce50336ec0437f12e3a32a219223dc，Python4专项含400种200格逐支真核、真实XcodeGen+unsigned Simulator、离线bundle资源、四组用户指定随机Swift真时辰顾客完整文字均跑通。
-- [实际全文与报告](docs/IOS_V80_XCODE_PASS_RUN_41370186316_ATTEMPT_1.md)：独立跨语言Python↔Swift原字严格PASS三张：弟弟2026-11-12 15:00 -05，妻子2027-02-12 21:00 -05，用户早已见过的女儿2027-02-07 11:00 -05；第三张是冻结回归非秘密盲测。四份另外新随机 Swift 预览不是全部做了独立Python对照。固定女儿盘确有天芮巽四丁辰衰大/巳帝旺极大，乙胆极大，宫临伤门螣蛇和副星戊戊伏吟，按源真实力区分，断词无括号、无待核。
+- [实际全文与报告](https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41370186316_ATTEMPT_1.md)：独立跨语言Python↔Swift原字严格PASS三张：弟弟2026-11-12 15:00 -05，妻子2027-02-12 21:00 -05，用户早已见过的女儿2027-02-07 11:00 -05；第三张是冻结回归非秘密盲测。四份另外新随机 Swift 预览不是全部做了独立Python对照。固定女儿盘确有天芮巽四丁辰衰大/巳帝旺极大，乙胆极大，宫临伤门螣蛇和副星戊戊伏吟，按源真实力区分，断词无括号、无待核。
 - 在先前原生 fixture 校验错误 #41369802592/#41369876564 的实际失败之后修复Swift局部拼接，失败日志保留。V23实际审计docs/HEALTH_DISCOMFORT_V23_INTEGRATED_PALACE_AND_TWO_BRANCH_ENERGY_AUDIT_20261101.md，Important双源镜像及MANIFEST源SHA均已同步；V8冻结未动，文本尚未获用户批准，不是签名真机或医疗结论验证。
 
 ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
@@ -3017,7 +3019,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 ### 2026-11-01 · V24 双支取高档和整盘墓刑真实验收
 - 用户本次定稿的新病位专题规则：原200格十干×8实宫×五行月令400组合，其中45组双支来源档不同，**每支源力真实计算、取高档**用于本专题象意；原格/次高档保留。不修改已冻结V8病情轻重/其`factor`共享评分。例丁巽辰衰大/巳帝旺极大取极大，己巽辰衰小/巳帝旺大取大。Swift源 `ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift` 本地`sourceStrength`，Python `src/wengua/health_discomfort_v19_parity.py` `_discomfort_power` 全独立运行，V24 schema=`wengua_health_discomfort_native_v24_upper_branch_and_full_chart_20261101`，客户不要括号。
 - 全盘八实宫每个真实天盘携干/地盘干的`tombs`/六仪击刑逐符号核对，不把中宫伪造普通神门星；输出所指传统部位、实际高档源力、真刑墓、相对病宫的克/被克、生/被生/比和方向。若其它宫克病宫，可写成「古籍所视的牵连/底层线索」，不能说这就证明临床器官损坏、潜伏疾病或确切病因。入墓受压、击刑伤痛都作为传统象意重点审视而非医学结论。整段归于病宫完整解读，结尾最多点一个真实跨宫重点，保持聚焦。V8冻结、两书、81/255/200真实源、年命条件、失败记录不动。
-- **真实 macOS XcodeGen + unsigned iOS Simulator + App离线资源 / 本轮4个Python专项400/45核算 + 四份新Swift随机盘+三盘独立Python-Swift全文逐字通过**：[Actions #41377054256](https://github.com/turnupmason/WenguaApp/actions/runs/41377054256)，源码SHA `c4b8cb0060dc242da75531d89171316162cbe530`，原始四盘和全部成功记录 `docs/IOS_V80_XCODE_PASS_RUN_41377054256_ATTEMPT_1.md`，审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。另外3盘严格 parity 中包括已见女儿冻回归，不当秘密盲测；四新随机盘本身不是全部独立Python对照。历史失败 #41376069338、#41376216509、#41376794003 留档。未验证签名真机、App Store 或医学预测能力，用户手机装的旧版不会因提交GitHub而自动升级；模板待用户文案批准。
+- **真实 macOS XcodeGen + unsigned iOS Simulator + App离线资源 / 本轮4个Python专项400/45核算 + 四份新Swift随机盘+三盘独立Python-Swift全文逐字通过**：[Actions #41377054256](https://github.com/turnupmason/WenguaApp/actions/runs/41377054256)，源码SHA `c4b8cb0060dc242da75531d89171316162cbe530`，原始四盘和全部成功记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41377054256_ATTEMPT_1.md`，审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。另外3盘严格 parity 中包括已见女儿冻回归，不当秘密盲测；四新随机盘本身不是全部独立Python对照。历史失败 #41376069338、#41376216509、#41376794003 留档。未验证签名真机、App Store 或医学预测能力，用户手机装的旧版不会因提交GitHub而自动升级；模板待用户文案批准。
 
 ## 2026-10-28 V10.1正式接线与五份新关系盘原生验证
 - 断词改动：短宫句仅写「宫象{grade}」，合断同一宫同一符号兼任不同角色时不再重复200源力量/生克方向，保留两个角色身份和真实同宫。不同符号各保留独立源强/关系，宫基础分仍按物理宫唯一计。
@@ -3027,7 +3029,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 2026-11-01 · V24 精简跨宫收束后真实校验
-- V24 全八实宫真墓刑仍全量报告，但综合段不再整段重复首条墓刑，只摘要其真实实宫、干、墓刑和对病宫五行方向。此改动在真实 macOS Xcode [#41377678550](https://github.com/turnupmason/WenguaApp/actions/runs/41377678550) **PASS**，源码 SHA `1b265fd7115f17eec3b36016ba7fd669ea18c5b8`，原文记录 `docs/IOS_V80_XCODE_PASS_RUN_41377678550_ATTEMPT_1.md`，包括Python400/45专项、原生Simulator与离线bundle、四新随机人时真盘、另外三张Python/Swift整段严格parity（女儿已见固定案仅冻结回归）。前一新摘要过渡提交Swift/Python不同步导致 #41377648150 失败，档案永存，非临床、非签名真机、未获用户文案批准。专题详细审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
+- V24 全八实宫真墓刑仍全量报告，但综合段不再整段重复首条墓刑，只摘要其真实实宫、干、墓刑和对病宫五行方向。此改动在真实 macOS Xcode [#41377678550](https://github.com/turnupmason/WenguaApp/actions/runs/41377678550) **PASS**，源码 SHA `1b265fd7115f17eec3b36016ba7fd669ea18c5b8`，原文记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41377678550_ATTEMPT_1.md`，包括Python400/45专项、原生Simulator与离线bundle、四新随机人时真盘、另外三张Python/Swift整段严格parity（女儿已见固定案仅冻结回归）。前一新摘要过渡提交Swift/Python不同步导致 #41377648150 失败，档案永存，非临床、非签名真机、未获用户文案批准。专题详细审计 `docs/HEALTH_DISCOMFORT_V24_UPPER_BRANCH_FULL_BOARD_TOMB_STRIKING_AUDIT_20261101.md`。
 
 ### 2026-11-01 · V26 病位文案针对V25审稿修正
 - 删除“按较高一档取”“这一干象较突出”“可考虑此处受到病事牵连的象意”；真实十干按源200双支较高档不变，刑及墓须写具体实际天干对应部位与不同古籍象意（己坤二击刑→胃的伤痛损伤象）。用户已见女儿盘属回归不属盲测。Python/Swift V26及 Important 镜像同提交；V8轻重冻结，旧失败和原著不动；详见 `docs/HEALTH_DISCOMFORT_V26_PRECISE_SITE_PROSE_AUDIT_20261101.md`。文案待用户审批，新提交Actions必须重新实际检查。
@@ -3088,7 +3090,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 - 本记录只在本轮native strict parity成功后追加；正式Python全量/专用CI及macOS Xcode请分别核实本SHA真实Actions。不是签名真机/App Store或科学医疗预测能力。
 
 ### 2026-11-01 · V26最终真实构建与双语言逐字验收 PASS（保留所有失败）
-- 最终真正签名前的macOS Xcode Simulator CI [#41381718805](https://github.com/turnupmason/WenguaApp/actions/runs/41381718805) **success**，对应冻结验收源 SHA `1fdf854e644a9d8032df0a59e28161da395abcfd`；GitHub自动原样归档 `docs/IOS_V80_XCODE_PASS_RUN_41381718805_ATTEMPT_1.md`。XcodeGen、原生 SwiftUI iPhone Simulator 真编译、包内200格/81格/24人物及V26模板逐字源资源、8张真实Swift随机时辰、1080盘完整数据集核查均跑过。
+- 最终真正签名前的macOS Xcode Simulator CI [#41381718805](https://github.com/turnupmason/WenguaApp/actions/runs/41381718805) **success**，对应冻结验收源 SHA `1fdf854e644a9d8032df0a59e28161da395abcfd`；GitHub自动原样归档 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41381718805_ATTEMPT_1.md`。XcodeGen、原生 SwiftUI iPhone Simulator 真编译、包内200格/81格/24人物及V26模板逐字源资源、8张真实Swift随机时辰、1080盘完整数据集核查均跑过。
 - 真正独立 Python↔Swift 客户整段逐字对照三张 PASS：弟弟 `2026-11-18T09:00:00-05:00`（6段）、妻子 `2027-02-16T19:00:00-05:00`（5段）、已揭晓女儿 `2027-02-07T11:00:00-05:00`（4段；不是盲测）。同时主 Python CI [#41381718877](https://github.com/turnupmason/WenguaApp/actions/runs/41381718877)、V8宫位关系 [#41381718856](https://github.com/turnupmason/WenguaApp/actions/runs/41381718856)、V7.7 [#41381718810](https://github.com/turnupmason/WenguaApp/actions/runs/41381718810) 均 **success**。
 - 失败仍永久保留：本轮 #41380198099、#41380423349、#41380922874、#41381249170 的实际错误分别为旧schema断言、随机盘原书占位未净化、V21旧文案断言、V23女儿已揭晓案例旧文案守门。V7.4旧年命单案任务 #41380923004 单独断言失败尚未修，不可宣称全库所有历史工作流PASS。
 - 剩余非阻断文案提示：随机真Swift日志会打印 `V18_GUARD_FAILURE ending`（旧警告要求“不是/不等于”字面；正文已给医疗检查说明），需另审其必要性，不能冒充真正失败或掩盖。V26病位文案仍供用户审稿，不是科学预后证据；无签名iPhone真机和App Store验收，用户已装旧App不会因仓库更新自动变新。
@@ -3147,7 +3149,7 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 2026-11-02 · V27 哥哥/妻子本轮最终实测 PASS
-源码 `23787f32ff5ddb6a5e81a4aa878728acfedb72b0`，真正 macOS Xcode #41449228405 **success**：正式 SwiftUI Simulator 编译、bundle 200/81/人物/模板、两张请求盘独立历法与九宫、Python↔Swift 中文全文逐字、四时辰×六伤损条件与1080数据集检查均通过。全文 `docs/IOS_V80_XCODE_PASS_RUN_41449228405_ATTEMPT_1.md`；哥哥纽约2026-11-19 11:00，丙午/己亥/丁酉/丙午，天芮艮八阴遁外盘，传统主位左足；妻子纽约2026-12-18 03:00，丙午/庚子/丙寅/庚寅，天芮坤二阴遁内盘，传统主位脾胃。未补年命，不是临床诊断或秘密盲测。
+源码 `23787f32ff5ddb6a5e81a4aa878728acfedb72b0`，真正 macOS Xcode #41449228405 **success**：正式 SwiftUI Simulator 编译、bundle 200/81/人物/模板、两张请求盘独立历法与九宫、Python↔Swift 中文全文逐字、四时辰×六伤损条件与1080数据集检查均通过。全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41449228405_ATTEMPT_1.md`；哥哥纽约2026-11-19 11:00，丙午/己亥/丁酉/丙午，天芮艮八阴遁外盘，传统主位左足；妻子纽约2026-12-18 03:00，丙午/庚子/丙寅/庚寅，天芮坤二阴遁内盘，传统主位脾胃。未补年命，不是临床诊断或秘密盲测。
 同源码主CI #41449228608（Python3.11/3.12）、V8原生关系 #41449228321、V7.7 #41449228323 全success。旧V7.4 #41449228575 仍在固定旧评分断言失败；全库831项的41 failures/11 errors/3 skipped也保留，不能说全库或全部历史Actions零失败。本次Xcode无失败；无签名真机/App Store验收。Important双镜像/SHA已随源码同步，V8计分冻结未变。
 
 
@@ -3156,20 +3158,20 @@ iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」
 
 
 ### 当前封存轻重回归实测 · run 41452844672
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码43b49a2d5ec6adc05af1bba84b4f904868d630f8。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41452844672_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码43b49a2d5ec6adc05af1bba84b4f904868d630f8。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41452844672_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41453013812
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f23c2eccd4b593ac2b53303583406ddb5bd326db。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41453013812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f23c2eccd4b593ac2b53303583406ddb5bd326db。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41453013812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41453149280
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码58c5c91e13e916b48659d56e0f35264e5a074a47。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41453149280_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码58c5c91e13e916b48659d56e0f35264e5a074a47。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41453149280_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · 两主题封存正式最终验收完成
 - 用户指定并封存：疾病轻重 **V9.0计分＋V11模板**；伤病在哪里 **V27**。正式清单 `data/releases/health_frozen_20261102.json`，接口/清退记录 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md`。V8基础计分及V9已有条件扩展均未改。
-- **真正macOS Xcode #41454559739 success**（源码 `9094e763cac2a2ecb7ac1bdbd7773962592ca1c1`）：完整SwiftUI Simulator编译、200/81/人物/两模板/255/三源与封存清单实际包内字节白名单、两主题正式Bundle路由哥哥/妻子共4次调用、Python/Swift全文逐字、4时辰×6伤损条件、1080数据集全部通过。原样全文 `docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md`。原任务 #41452844633 长时间未分配runner，仅取消重复排队，不伪称该run执行通过。
+- **真正macOS Xcode #41454559739 success**（源码 `9094e763cac2a2ecb7ac1bdbd7773962592ca1c1`）：完整SwiftUI Simulator编译、200/81/人物/两模板/255/三源与封存清单实际包内字节白名单、两主题正式Bundle路由哥哥/妻子共4次调用、Python/Swift全文逐字、4时辰×6伤损条件、1080数据集全部通过。原样全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md`。原任务 #41452844633 长时间未分配runner，仅取消重复排队，不伪称该run执行通过。
 - 独立 **iOS Offline Native Casting #41453149593 success**（含真实App Xcode构建及全部独立原生回归）；最新源码主CI **#41453149251 success**（Python3.11/3.12）、轻重原生逐字 **#41453149280 success**。审计提交的dirty生成文件＋并发远端变更，本地临时bare仓库真实复现修复通过。
 - 23份旧模板/草稿/固定样例清出正式目录，原内容SHA无损归档；旧模板冗余Important镜像清除，当前两模板和封存清单双镜像/MANIFEST同步；38项旧版自动构建/预览改手动审计，原测试与历史记录不删。现役自动parity读取实际封存版本写交接，不再回写过时V10.1标识。
 - 全库835 tests仍41 failures、11 errors、3 skipped，与此前相同52条历史失败标识；当前正式门槛全部通过但不能称全库零失败。迁移早期旧路径遗漏、镜像同步过程失败、旧workflow重复键 #41452840714/#41452954223 与归档写回 #41452844599 均保留记录，不以删除失败求全绿。
@@ -3187,11 +3189,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41460320478
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41460320478_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41460320478_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · 清账与p1工程补丁正式验收完成
-源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1：主CI #41460321192（Python3.11/3.12）、轻重原生逐字 #41460320478、独立iOS编译/原生回归 #41460320720、正式macOS Xcode/实际包资源SHA/四次Bundle路由/V27逐字/六伤损条件/1080数据 #41460320838 均success。新Xcode原始全文 docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md，未用旧run替代。
+源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1：主CI #41460321192（Python3.11/3.12）、轻重原生逐字 #41460320478、独立iOS编译/原生回归 #41460320720、正式macOS Xcode/实际包资源SHA/四次Bundle路由/V27逐字/六伤损条件/1080数据 #41460320838 均success。新Xcode原始全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md，未用旧run替代。
 完整本地839 tests的2 failures/0 errors/3 skipped单独保留，不能声称全库全绿：两失败均为手动真实时辰入口缺失；三skip原已存在（可选Moshier软件交叉参考未安装，V7.7/V7.8两历史class版本门槛），本轮未增加skip或xfail。原52条逐项账、修改前测试原件/SHA和完整失败日志均可复现。四原时辰分数、完整中文SHA及两个模板/200/81/人物/Swift源码pin未变，唯一冻结源位改动是ordinary_bottom地盘审计字段，manifest明确engineering_p1并保留前版原件。
 顺序进度：1）50条已验证解决，另2条功能缺口按第4步保留；2）360真时辰及1080物理组合复核完成，弱病泄耗/特殊宿主来源未核定不改分；3）真实iPhone无连接/签名/用户实测，验收清单已备、仍全部未执行；4）手动入口尚未实现，不越过真机条件伪报已交付。
 
@@ -3206,19 +3208,19 @@ README已写从已有仓库终端进入、pull、XcodeGen生成工程、选择We
 
 
 ### 当前封存轻重回归实测 · run 41468305325
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码251d977f32821f16448a287b9dc5ad55d5c88d51。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41468305325_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码251d977f32821f16448a287b9dc5ad55d5c88d51。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41468305325_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41470201781
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e8e52ad56635ccaea392ec1552d55dc1230169d0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41470201781_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e8e52ad56635ccaea392ec1552d55dc1230169d0。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41470201781_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41470986685
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5da7fc7e2c25126e009a957464626d48c79769bb。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41470986685_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5da7fc7e2c25126e009a957464626d48c79769bb。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41470986685_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · 奇门论疾p2首页接线正式验收完成
-正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
+正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
 早期 #41468305370 顶层failure、job cancelled、无任何执行步骤，GitHub原注释为“The job was not acquired by Runner of type hosted even after multiple attempts”，另报macOS arm64容量限制；不是代码编译失败，原记录保留。#41470986648/#41470987628为正式运行启动后取消的重复排队，不称通过。
 本地841 tests仍2 failures/0 errors/3原有skip，保留手动真实时辰入口缺口；专项25项、封存SHA和Important镜像通过。此次仅改首页真实09结论展示及产品名“奇门论疾”，两模板/计分/详细断词不变；旧V27记录兼容。未作签名真机或全套XCUITest验收。更新代码后重新⌘R才能看到新UI；病愈应期仍待后续独立研究。
 
@@ -3230,11 +3232,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41474512713
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41474512713_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41474512713_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p3简明首页、静心动画及Swift零警告实测完成
-生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
+生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
 共享原生 #41474512713 success：首页普通/伤损/剧痛简明文案、真实两张V27输出、保留完整原reading、木鱼周期/停止状态实际Swift运行通过；主CI #41474512568（Python3.11/3.12）与独立iOS真实App Xcode/全部原生回归 #41474512484 success。本轮这四个Actions均无失败；全库843 tests原2个手动时辰入口失败与3个原skip另行原样保留，不称全库全绿。
 README、Important字节镜像/Git blob SHA及封存p3清单已同步。两个模板/7份规则资源/Python/评分源pin不变。没有进行真机签名、动画截图或整套XCUITest像素/按钮验收；动画为本地矢量与诵念文字，默认静音。Mac须按README pull后重新xcodegen generate并⌘R，将新增动画文件加入现有工程；历史V27结论直接使用新首页展示。病愈应期尚未开放。
 
@@ -3249,39 +3251,39 @@ p4本地完整复核：846 tests，0 failures、0 errors、3原有skip；专项3
 
 
 ### 当前封存轻重回归实测 · run 41478154050
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6015ad82c542d6b9af371589a646849dfcebe163。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41478154050_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6015ad82c542d6b9af371589a646849dfcebe163。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41478154050_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
-p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
+p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
 
 
 ### 当前封存轻重回归实测 · run 41479119926
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f8bae8bc58e9166eeb4ae5d460feb24761d537c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479119926_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f8bae8bc58e9166eeb4ae5d460feb24761d537c。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479119926_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致；新实测脚本对同一实际时辰的另一个人等级明确拒绝，并对两张原时辰的健康全文/用神宫位做独立Python逐字比对。此处只约束引用身份，不改原生或Python评分。完整846 tests再次0失败/0错误/3原skip。一次同步镜像前的专项预检出现1条字节不一致，已同步并复跑7项全通过；原预检日志无损保存 docs/audits/ios_manual_event_time_20261102/pre_mirror_sync_targeted.log.gz，不冒称该次预检通过。等待本最终源码的新Xcode/真实bundle执行结果。
 
 
 ### 当前封存轻重回归实测 · run 41479744448
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee16bca3334b4203551218215fea2fee32a1c63。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479744448_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee16bca3334b4203551218215fea2fee32a1c63。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479744448_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 p4补齐独立iOS原生/Xcode workflow的5份现役UI与时辰源触发路径，避免仅修改新手动时辰helper时漏触发该工作流；正式V9/V11/V27 Xcode已有ios目录通配触发。此次只有CI/MANIFEST镜像变化，生产源码与封存pin保持4ee16bca状态。
 
 
 ### 当前封存轻重回归实测 · run 41479969343
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4cb3b0d0747887564a7b95efe55f1515844d45f6。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479969343_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4cb3b0d0747887564a7b95efe55f1515844d45f6。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41479969343_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 p4正式最终Xcode #41479754723（源4ee16bca）及手动时辰/两健康主题实测通过，完整源日志已入docs。独立iOS的macos-15 App任务长时间等待容量，独立App构建改用已被本轮正式完整验证的macos-latest；步骤、真实编译、原生断词与资源守门全保留，正式封存workflow仍保留macos-15及手动备选。仅CI宿主配置变化，生产源码和pin不变；独立新run须实测后另报。
 
 
 ### 当前封存轻重回归实测 · run 41481223986
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7403dbbea15ac7fff4b3720163ece5d5351de535。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41481223986_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7403dbbea15ac7fff4b3720163ece5d5351de535。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41481223986_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p4手动事项时辰、候选组与等级接口最终实测完成
-正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
+正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
 同一生产源码/资源pin、仅CI配置后续变化的7403dbbe：独立 iOS Offline Native Casting #41481224006（全部6 jobs，含完整真实App Xcode）、轻重与病位摘要原生 #41481223986、Python3.11/3.12主CI #41481223879 全success。完整本地846 tests 0 failures、0 errors、3既有skip；此前两项手动时辰真实缺口已交付，原测试与失败历史未删。Important双镜像/源pin/SHA验证通过。
 中间真实编译超时失败 #41478402093及镜像同步前1条失败原日志保留，已修复后复验。排队重复/被最新源码替代的 #41478154115/#41478154090/#41479119490/#41479744446/#41479969232按实际cancelled保留，不冒称运行通过；#41479156312虽曾取消接口返回500，其实际后来success，亦按实际记录。没有签名真机或全套XCUITest/滚轮视觉手测；这次没有生成秘密盲测或医疗安全证据。
 用户使用：普通问事选当前；有计划选事项时辰，通过滚轮和发生地时区填1至6候选，一次静心后同组切换，15天只登记一组，历史也可对照。健康等级仅为同一事项传统盘象，不代表全天万事吉凶；旅游/约会/婚礼/手术专项择时评级仍待核，只提供真实排盘，禁止借疾病分宣称手术安全。病愈应期仍未开放。README已更新入口、限制及本轮实测链接；Mac按其说明重新XcodeGen后⌘R查看。
@@ -3294,11 +3296,11 @@ p4清单与6份测试原件/SHA归档，现行manifest明确p5：9个既有展�
 
 
 ### 当前封存轻重回归实测 · run 41494641874
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0c8a668daee84a952f4f9696bb35dbed20591088。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41494641874_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0c8a668daee84a952f4f9696bb35dbed20591088。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41494641874_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p5领域内接口、分项排版及真实输入最终验收完成
-生产源0c8a668daee84a952f4f9696bb35dbed20591088：正式macOS Xcode #41494696931 success，完整App编译、Swift源警告0、实际包内资源SHA/白名单、两主题4次Bundle路由、V27逐字与6伤损条件/1080源盘通过。新增PASS DOMAIN_UI实测15领域普通预定时刻、15个electiveReserved阻断、共用最终净分等级、V27每节分项runs原文重组、旧描述和孤立回执限制；同盘同人物健康全文/用神宫位Python与Swift逐字相等。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md。
+生产源0c8a668daee84a952f4f9696bb35dbed20591088：正式macOS Xcode #41494696931 success，完整App编译、Swift源警告0、实际包内资源SHA/白名单、两主题4次Bundle路由、V27逐字与6伤损条件/1080源盘通过。新增PASS DOMAIN_UI实测15领域普通预定时刻、15个electiveReserved阻断、共用最终净分等级、V27每节分项runs原文重组、旧描述和孤立回执限制；同盘同人物健康全文/用神宫位Python与Swift逐字相等。完整原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md。
 同源主CI #41494641830（Python3.11/3.12）、原生轻重/病位摘要 #41494641874 success。独立iOS #41494641926 attempt2 success：原5项Foundation原生成功保留，独立完整App重跑成功，合计6 jobs均success。其attempt1长时间排队，在取消操作与刚分配runner之间发生竞态，中断了刚开始的App步骤；已如实重跑该job，原cancelled记录保留，不称attempt1通过。重复排队正式任务 #41494641971 cancelled，未虚报执行通过。
 本地专项15项与完整849 tests 0失败/0错误/3原有skip；首轮旧CTA断言1条迁移失败原日志/原测试SHA继续保留，无删除测试或新skip。p4清单归档、p5源pin及Important镜像/MANIFEST同步通过。V9计分/V11、V27模板和原生/Python数学源码与7份规则资源未改；仅做UI/接口/输入与历史承接。没有新增章节/病例、签名真机、全套XCUITest或像素视觉手测，不将文化盘象说成科学预测有效性。
 当前入口：首页仅领域；领域内普通问事可当前/一个已定时刻真实排盘，15领域各有选吉日预留项，暂不进普通完整解读；只有健康两专题已接评级/解读，其它模板逐步开发。专业解盘分块分短行，底层断词原文不删。手动入口只显示选择时辰，明确确认才使用；必填自由描述已移除、15天旧限制保守承接。README已同步。本轮可按README重新生成Xcode工程后⌘R检查实际UI。
@@ -3312,15 +3314,15 @@ p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／�
 
 
 ### 当前封存轻重回归实测 · run 41502334812
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码879f8500be1626da4a2fbd5e1c49643bcbbcfa42。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41502334812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码879f8500be1626da4a2fbd5e1c49643bcbbcfa42。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41502334812_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41503297213
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5be81c807d1d15a5d1a9485ed4d8b5176323cea3。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41503297213_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5be81c807d1d15a5d1a9485ed4d8b5176323cea3。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41503297213_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p6截图界面与独立时间模式最终验收完成
-生产源d594d5d6a0423b04bbafe11318357018286b80cc：正式Xcode #41502545254 success，完整iPhone Simulator App、零Swift源警告、实际包SHA／资源白名单、两主题4次Bundle路由、V27逐字／六伤损／1080源盘通过。PASS SETUP_UI实际执行15领域普通仅当前、15领域选吉日仅未来的双向拒绝、五列公历对应的闰日／DST缺口／重复时刻、两张真盘×六伤损分支的逐节原文／段落重组；同盘同人物健康Python／Swift全文逐字相等，旧分组、孤立回执及15天限制保留。原日志 docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md。
+生产源d594d5d6a0423b04bbafe11318357018286b80cc：正式Xcode #41502545254 success，完整iPhone Simulator App、零Swift源警告、实际包SHA／资源白名单、两主题4次Bundle路由、V27逐字／六伤损／1080源盘通过。PASS SETUP_UI实际执行15领域普通仅当前、15领域选吉日仅未来的双向拒绝、五列公历对应的闰日／DST缺口／重复时刻、两张真盘×六伤损分支的逐节原文／段落重组；同盘同人物健康Python／Swift全文逐字相等，旧分组、孤立回执及15天限制保留。原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md。
 同源独立iOS #41502545252 全部6 jobs success；主CI #41502544972 Python3.11／3.12 success。原生轻重／病位首页最终独立 #41503297213 success（5be81c80，仅历史文档后续变化，生产源码、资源、manifest与d594d5d6全部一致）。完整本地855 tests 0失败／0错误／3既有skip，专项33通过；旧测试与失败原日志／SHA保留，无删除测试或新增skip。结果总表 docs/audits/ios_setup_palace_ui_20261102/final_ci_results.json。
 中途原生 #41502544938 attempt1／2的全部计算与逐字步骤成功，但自动审计文档尾部rebase冲突使workflow实际failure；两次完整原日志保留。由最新main独立dispatch #41503297213后完整计算及归档均success，未覆盖旧失败。旧源／冗余正式 #41502335031／#41502344251／#41502555446、旧独立iOS #41502334854在确认剩余App任务尚queued后取消，按实际cancelled保留，不称通过。
 准备页先显示，按按钮进入页内表单；普通只当前、选吉日只未来；五列年／月／日／时／分，表单标题上置无重复；坤二刑墓overlay、四柱下置标签、方向栏、伤门／结论分组、宫位标题居中及角色放大均已编译接入。V9/V11、V27数学与模板及7份资源逐字未变。选吉日的专用吉凶评级／多候选筛选继续开发；当前只真实排盘。README及Important镜像同步。本轮无新原书章节／病例、签名真机、像素视觉手测或全套XCUITest；Mac须重新XcodeGen后⌘R查看实际界面。
@@ -3334,11 +3336,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41506159875
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码077a7b5e48a1394c62626b5c0d74c0f74bab3e89。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41506159875_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码077a7b5e48a1394c62626b5c0d74c0f74bab3e89。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41506159875_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p7最新截图修正最终实测完成
-生产源077a7b5e48a1394c62626b5c0d74c0f74bab3e89：正式macOS Xcode #41506181795 success，完整App、Swift源警告0、实际包资源SHA／白名单、两主题4次Bundle路由、原文逐字／六伤损／1080源盘、新时间与段落验收全部通过。首页真实V11六例摘要51–54字，仅“病宫…患者宫…医药与辅助还须合参。全盘判为…：…。”两句，11等级解析通过；专业解盘原文完整。原始报告docs/IOS_V80_XCODE_PASS_RUN_41506181795_ATTEMPT_1.md。
+生产源077a7b5e48a1394c62626b5c0d74c0f74bab3e89：正式macOS Xcode #41506181795 success，完整App、Swift源警告0、实际包资源SHA／白名单、两主题4次Bundle路由、原文逐字／六伤损／1080源盘、新时间与段落验收全部通过。首页真实V11六例摘要51–54字，仅“病宫…患者宫…医药与辅助还须合参。全盘判为…：…。”两句，11等级解析通过；专业解盘原文完整。原始报告https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41506181795_ATTEMPT_1.md。
 独立iOS #41506160061全部6 jobs success；原生轻重／病位 #41506159875 success；主CI #41506159979 Python3.11／3.12 success。全量本地857项0失败／0错误／3原有skip，新加2项；两条旧排版契约失败与原测试／SHA均保留后迁移，不删方法、不新加skip。Important镜像／manifest同步。公历年月日时标签下显示实际数值和HH:mm、等宽时间卡冒号标题、明显下拉底框、完整换行、标题居中放大、综合断语分组、同字号同字距竖排角色均实际随App编译。仍无签名真机／人工像素视觉或全套XCUITest，不能将编译与接口通过写为视觉手测完成。两封存模板、数学引擎及7份资源未变。README与交接同步；Mac按README重新XcodeGen后⌘R查看。
 
 
@@ -3351,11 +3353,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41527891765
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41527891765_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41527891765_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p8整框菜单、有效输入、等级标题与动画最终验收
-生产源aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4：正式Xcode #41527892038 success，完整App与Canvas动画、零Swift源警告、包资源SHA／白名单、两个主题4次Bundle路由、两盘逐字／六伤损／1080及时间／段落检查通过。全11等级与六份真实V11简短总结验收通过，首屏“等级：既定说词”标题已恢复。原报告docs/IOS_V80_XCODE_PASS_RUN_41527892038_ATTEMPT_1.md。
+生产源aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4：正式Xcode #41527892038 success，完整App与Canvas动画、零Swift源警告、包资源SHA／白名单、两个主题4次Bundle路由、两盘逐字／六伤损／1080及时间／段落检查通过。全11等级与六份真实V11简短总结验收通过，首屏“等级：既定说词”标题已恢复。原报告https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41527892038_ATTEMPT_1.md。
 独立iOS #41527891786的5项原生jobs成功，额外Mac App job仍等待执行器，整体尚未完成，不记为success；真实NativeActorProfileCheck执行男性朋友不填年龄仍与原朋友同月干／同宫且无亲属辅助；Python原月干规则已不要求年龄，原生仅删除旧输入门槛，无改月干绑定或任何算分。轻重／病位原生 #41527891765、主CI #41527891753 Python3.11／3.12 success。完整本地859项0失败／0错误／3原有skip；旧显示契约与新测试标签定位修正原日志保留，无新skip／删方法。
 全框可点击的Menu label、删除年命干支／病程／朋友年龄、公历年份仅记录、等级标题、蛇与食物进度动画、固定干槽旁墓刑标记、58点方向卡垂直居中均已接入编译。两模板、数值／选宫逻辑与7份资源未改，p8清单／Important镜像／README／交接同步。备用正式 #41527935971在主正式成功后确认仍queued才取消，不作为通过；独立Mac额外复核仍排队，如实保留未完成状态；正式Xcode完整App已实际成功，不用其代替尚未完成的独立job状态。无签名真机、人工点击／像素手测或全套XCUITest声明。Mac重新XcodeGen后⌘R查看。
 
@@ -3370,7 +3372,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41531553317
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码ca5b997d040fb14c672c4c128e69e349ecf9bc48。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41531553317_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码ca5b997d040fb14c672c4c128e69e349ecf9bc48。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41531553317_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · p9等间距修正与疾病应期V1草稿最终记录
@@ -3389,7 +3391,7 @@ p8旧独立工作流 #41527891786后来已完成全部6 jobs success；先前排
 
 
 ### 当前封存轻重回归实测 · run 41538806575
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f879453c789cd55cdf27f9d84b29d4e870d86665。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41538806575_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f879453c789cd55cdf27f9d84b29d4e870d86665。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41538806575_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-02 · 用户应期资料完整整理与疾病V2模板最终校验
@@ -3398,23 +3400,23 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41550736856
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6cb634c15155f1d7071949b5227ee1d7cc28a093。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41550736856_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6cb634c15155f1d7071949b5227ee1d7cc28a093。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41550736856_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41551030390
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5065bd68b65e4d137e725f87245fa04f14ba7018。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551030390_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5065bd68b65e4d137e725f87245fa04f14ba7018。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551030390_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41551228726
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码72b51fab8616602dabd905b494d3c74b5307d8ac。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551228726_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码72b51fab8616602dabd905b494d3c74b5307d8ac。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551228726_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41551481865
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码866f3d1b1fcf832952d1527fee6caa57316130f9。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551481865_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码866f3d1b1fcf832952d1527fee6caa57316130f9。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551481865_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41551867925
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码870dcb77869e01a9b22a7b27c6e0f0268b089fe0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551867925_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码870dcb77869e01a9b22a7b27c6e0f0268b089fe0。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41551867925_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 ## 2026-11-03 · 病愈应期 V3 已接通并通过实际原生／App 验收
 
@@ -3422,15 +3424,15 @@ Python与Swift共用来源条件及历法，手机疾病健康→病愈应期已
 
 
 ### 当前封存轻重回归实测 · run 41552594963
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码061993e0f5c426342f90497b965fa537fb23f4a0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41552594963_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码061993e0f5c426342f90497b965fa537fb23f4a0。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41552594963_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41556054449
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d9202f1ed2a19ec6521a621d4eba20e6cedaf0dc。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41556054449_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d9202f1ed2a19ec6521a621d4eba20e6cedaf0dc。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41556054449_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41556690063
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码884997574c60d7d233ba7080f3cd03588fb1229f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41556690063_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码884997574c60d7d233ba7080f3cd03588fb1229f。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41556690063_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 ## 2026-11-03 · 用户否定V3后的应期V4来源修正
 
@@ -3438,7 +3440,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41557867906
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b9eb350bfa0d78f73b8df5d7d674c7586a13bc98。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41557867906_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b9eb350bfa0d78f73b8df5d7d674c7586a13bc98。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41557867906_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 ### 本轮用户授权：独立量化模型与本地4090训练框架 V1
 
@@ -3450,11 +3452,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41568085571
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f39d6caaf31e83e99e190106e3893324c2ff490d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41568085571_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f39d6caaf31e83e99e190106e3893324c2ff490d。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41568085571_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41568279643
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码28985ab77305100c7b884e61f13c9a2e8348ce7b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41568279643_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码28985ab77305100c7b884e61f13c9a2e8348ce7b。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41568279643_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 本轮量化框架最终源码28985ab7：新模型CPU双Python #41568279730、主CI #41568279803（3.11/3.12）、原疾病原生兼容 #41568279643均实际success，详细收据 `docs/audits/probability_research_v1_20261102/implementation_ci.json`。较早f39d6caa三项成功亦保留。已接收自动归档，最后只补文档交接，训练/推理源、模型、原始数据库、封存App资源与该实测源码一致；本地930项/0失败/0错误/3既有skip。GPU本机运行、医学/位置/删失应期训练与实证效度仍未声明完成。下一步按当前目标定义从已有资料分任务提取和审计真实标签，避免再次回到无依据百分比。
 
@@ -3470,7 +3472,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41578469088
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码dcdec2e191842b24e799f4534e0f610da49b8136。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41578469088_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码dcdec2e191842b24e799f4534e0f610da49b8136。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41578469088_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 专业特征V2最终源码dcdec2e1实际验收：新V2工作流#41578469091的Windows3.12、Linux3.11/3.12三项全部success，包含完整字段/层次/时序/辅助宫、1080无标签参数、双后端专业模型保存重载及PyCharm根入口实际CPU双算法十组训练。主CI#41578469169双Python、旧V1模型兼容#41578469125双Python、旧健康原生#41578469088均success，完整收据docs/audits/probability_professional_v2_20261103/implementation_ci.json。本地953项0失败/0错误/3原有skip与阶段日志保留。已合入自动原生归档，最后仅文档交接，训练/特征源、字典、原库与封存App资源和该实测源码一致。没有实际4090/PyCharm人工点击或医学/定位/应期预测效度声明。新会话从active_research.json、根run_professional_training.py和V2指南继续，V1原版仅历史复现。
 
@@ -3489,7 +3491,7 @@ Qwen32B V1本地完整验收：963 tests，0 failures/0 errors/3既有skip；10�
 
 
 ### 当前封存轻重回归实测 · run 41694212011
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码63557bd4c3e701e5c5a67c92f3d3f9cc1c63203d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694212011_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码63557bd4c3e701e5c5a67c92f3d3f9cc1c63203d。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694212011_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 4090显存准备补充：未使用PEFT整批非量化参数上转FP32的默认准备，改为冻结基座、仅一维归一化FP32、大词嵌入/输出矩阵保留BF16/FP16，非重入检查点及CUDA混合精度；并记录真实运行显存峰值。微型CPU BF16 LoRA两步及独立重载数值一致实际通过，开发过程autocast/输出dtype检查与日志保留在bf16_development_notes.json；不代表NF4/32B/4090验证。提示中保留资料draft与抽象/原话标记，引用不混淆。新增源后重新完整回归，见full_run_memory/。
 
@@ -3497,7 +3499,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41694870046
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6b543fb22a3358f2811e569930841a0bf7917651。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694870046_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码6b543fb22a3358f2811e569930841a0bf7917651。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41694870046_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、主CI#41694870087双Python3.11/3.12、旧健康原生#41694870046全部success；首版旧量化V2兼容#41694212374的Linux3.11/3.12和Windows3.12亦全部success。远端关键文件字节已逐一核对，收据docs/audits/qwen32b_v1_20261103/implementation_ci.json。已快进接收自动健康归档6fedc417；最后仅写交接文档，不再改训练/检索源码、配置、镜像或原库。963项本地全回归0失败/0错误/3原skip，CPU微型BF16 LoRA及保存重载通过；真实32B/4090/NF4显存、领域生成留出评测仍未执行，不能称自有模型已训练完成。下一步在用户4090按指南doctor→token审计→两步短跑→正式训练，并继续审计领域条件规则与问前多轮监督。新增原章0/历史事件0。
 
@@ -3519,7 +3521,7 @@ Qwen32B显存准备终版源码6b543fb2实际CI：新Qwen接口#41694870045、�
 
 
 ### 当前封存轻重回归实测 · run 41758203947
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a353a6319ca35292039719a4b2f1824aaf6d841d。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41758203947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a353a6319ca35292039719a4b2f1824aaf6d841d。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41758203947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 14B终版源码a353a631实际CI：主CI#41758204013双Python3.11/3.12、新Qwen14B/32B CPU接口#41758204130、旧健康原生#41758203947、旧量化V2兼容#41758204122的Linux3.11/3.12和Windows3.12全部success；远端八项关键源/配置已逐字节核对，32B原配置SHA未变。完整收据docs/audits/qwen14b_rtx4080_v1_20261103/implementation_ci.json。已接收自动原生文档8851ceb8，最后仅交接/缓存位置说明，不再改变训练源码、配置或数据。用户本机14B下载/NF4显存/完整训练/生成留出评测仍待实际执行，不把CPU微型测试冒充4080实训；下一步按当前14B Windows指南更新→doctor→prepare→audit-tokens→两步smoke。新增原章0/历史事件0。
 
@@ -3543,7 +3545,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41771130292
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码2521f86478eacb68ab9ba2f25131c2dca260b416。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41771130292_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码2521f86478eacb68ab9ba2f25131c2dca260b416。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41771130292_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 回答检查终版源码2521f864实际CI：主CI#41771130300双Python3.11/3.12、Qwen14B/32B微型CPU接口#41771130369、旧健康原生兼容#41771130292全部success，四项关键源码远端字节核对通过，收据docs/audits/qwen14b_answer_review_v1_20261103/implementation_ci.json。已接收ea58e562自动旧原生归档；最后仅交接记录，无训练配置/权重/源数据变化。本轮实际新增的是可复查的单题提问和原版对照入口，不是已完成14B生成评测；用户完整两轮训练的真实日志证据已独立保存，不与CPU接口测试混称。下一步按首版回答检查指南跑相同题的adapter/base-only，核查引用支持、JSON模式、实际盘面和未知条件，暂不继续增加轮数。
 
@@ -3560,7 +3562,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41773156840
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41773156840_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码06e7cfefea1c10e8d4682b6f6f4a2b95ecb5965b。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41773156840_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 UTF8/只读review/通则检索终版06e7cfef实际CI：主CI#41773156818双Python3.11/3.12、Qwen微型CPU接口#41773156698、旧健康原生#41773156840全部success；七项关键源码/检索范围配置远端字节已核对，收据docs/audits/qwen14b_trace_repair_20261103/implementation_ci.json。已接收9d57180a自动旧原生归档，最后仅交接，不改当前语料、配置、已训适配器。旧回答仍因字符串类型且未答角色区别不合格；新实际14B回答需用户重新chat，代码/CPU通过不能冒充质量通过。用户已用Python UTF8确认旧文件中文正常，不应转码或重训。
 
@@ -3571,7 +3573,7 @@ UTF8/只读review/通则检索终版06e7cfef实际CI：主CI#41773156818双Pytho
 
 
 ### 当前封存轻重回归实测 · run 41775145668
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee49f9277ab4c1c50663ca266433b23e07374e8。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41775145668_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码4ee49f9277ab4c1c50663ca266433b23e07374e8。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41775145668_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-03 · Qwen dialogue instruction dataset candidate V1 · 11,952 rows (not gold release)
@@ -3580,7 +3582,7 @@ User requested >=10,000 sourced basic knowledge, conditional role and multi-turn
 
 
 ### 当前封存轻重回归实测 · run 41778071759
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码29a46d21da5037b3db72703fad6890e4d95a8ca5。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41778071759_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码29a46d21da5037b3db72703fad6890e4d95a8ca5。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41778071759_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-03 · 完整原库问答课程V2与可恢复两阶段训练
@@ -3594,7 +3596,7 @@ V2条件保真终版：摘要除具体首/末句外保留本段明确的若、�
 
 
 ### 当前封存轻重回归实测 · run 41779713766
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码68a3d180186d6e2a31fc5f3e5656d5c37753307b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41779713766_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码68a3d180186d6e2a31fc5f3e5656d5c37753307b。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41779713766_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 Windows发布前补验：发现core.autocrlf会令旧等待器的逐字源码哈希拒绝等价CRLF，新增仅针对run_qwen_curriculum.py的LF属性（不改其他资源换行）、UTF8源码规范换行哈希、二进制原库逐字哈希及入口二次校验。真实临时Git仓库core.autocrlf=true克隆得到CRLF，拉取属性+入口更新后LF，已复现实测；内容变更仍拒绝。旧已运行worker可经稳定LF入口进入新校验，不要求冒险重置用户仓库。完整997项及68a3d180的主CI#41779713842双Python、真实微型Qwen恢复#41779713789、Windows/双Linux专业回归#41779714136、原生#41779713766均通过；EOL修补另验，不把上轮通过充作新修补通过。
@@ -3606,11 +3608,11 @@ Windows发布前补验：发现core.autocrlf会令旧等待器的逐字源码哈
 问答课程V2现已发布checked-ready研究版：源码0585edf48ea32422d92ae6e130a5f7e33b6118f4实测主CI#41780475146（3.11/3.12）、真实微型Qwen恢复与双生成#41780475167、封存原生#41780475152均success。最终全库999 tests、0 failures/0 errors、3既有skip（final_full_run）；追问目标、换行差异/内容篡改阻断和真实Git CRLF→LF拉取均通过。overnight_release.json ready仅代表来源/分组/token/执行检查，semantic_expert_review_complete及预测验证仍false；50文本源码规范换行哈希+原SQLite二进制哈希+稳定LF入口校验。旧11952候选不参与、不获批；旧“preparing”条目是历史。已启动并仍在15小时窗口的本机等待器可自动启动固定新课程，未启动的用户按指南prepare查看CSV后run。未收到本地新job日志，不能说用户GPU正在跑或已训完。CI收据docs/audits/qwen_curriculum_v2_20261103/implementation_ci.json。
 
 ### 当前封存轻重回归实测 · run 41780475152
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0585edf48ea32422d92ae6e130a5f7e33b6118f4。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780475152_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码0585edf48ea32422d92ae6e130a5f7e33b6118f4。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780475152_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41780798773
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d554281205b4ace3f38075d16d124d771afa2a77。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780798773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码d554281205b4ace3f38075d16d124d771afa2a77。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41780798773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 课程V2发布后实际就绪门槛验收：d554281205b4ace3f38075d16d124d771afa2a77的主CI#41780798651、微型Qwen检查点恢复/同题双生成#41780798678、原生封存逐字#41780798773全部success；这是ready=true、50源码规范哈希及SQLite逐字校验已生效后的实跑，非复用preparing阶段结果。就绪后22项课程/worker/旧候选隔离/镜像专项及--check-only=release_ready通过，training_started=false。原候选、此前失败与各版完整审计均保留；当前本地新14B训练须以用户job_status/原始对照日志为准。最终只补交接，不再更改课程、配置、已训旧权重或封存App。
@@ -3629,11 +3631,11 @@ V3候选软件实测：完整1008 tests、0 failures／0 errors、3既有skip；
 V3最终完整合断672题也补入实际情境的中文取用理由及人物规则引用，不仅在分项题解释。补充后重新用官方tokenizer测长，接收21,981核心任务（17,348／2389／2244）；873超长仍完整保留，新增长合断关联同盘取用、条件和纠错阶段任务。全量Excel／ZIP／38.8万池同步更新并重新读回9319结构答案、7错误变体、全部核心关联和固定分组。源码检查器未再改动，全库1008项实测仍适用。bc9af622对应主CI#41864168513、微型Qwen#41864168794及封存原生#41864168530目前均queued，未报告为通过。
 
 ### 当前封存轻重回归实测 · run 41864168530
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码bc9af622c062b45e4fc6789f44484537f8537192。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864168530_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码bc9af622c062b45e4fc6789f44484537f8537192。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864168530_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41864689397
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码754522ae4ff34b610f9ea3178e7ce257aaf96c33。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864689397_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码754522ae4ff34b610f9ea3178e7ce257aaf96c33。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41864689397_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ## 2026-11-04：用户明确纯古籍重置，撤回混合V3并停止旧V2续训
@@ -3658,7 +3660,7 @@ V2同样包含非古籍补充，旧ready清单已带原哈希归档并撤回；�
 纯古籍四格式构建器实测：完整1028 tests、0失败／0错误、3既有skip；新增11项覆盖原文定位、条件不截断、作者依据补全、初问反馈隔离、四格式、同案分组、登记摘要不冒充原话、任务改问、独立split文件和多轮监督目标。实际百万逐条回读／43章哈希／1008作者原字一致的审计与token长度统计另有记录，不能把软件通过当已证明独立断案能力。远端CI须按本次源码提交核验。
 
 ### 当前封存轻重回归实测 · run 41866760773
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5650ad79f4f8103be2c5da417a79e2f109e42318。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41866760773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5650ad79f4f8103be2c5da417a79e2f109e42318。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41866760773_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ## 2026-11-04：4080纯古籍自动训练循环
@@ -3673,19 +3675,19 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 自动loop最终软件实测：1043 tests、0失败／0错误、3既有skip；15项loop标准库专项（含缓存／源合同／回退／恢复）及镜像通过。官方分词器的2048／4096六轮实际语料与独立64组loss、16组验证生成／64组最终测试预算均完成检查。真实微型随机Qwen3 CPU重放短测／中断恢复／两轮接权重／原模对照／最终测试通过；不是14B/CUDA实训。此前8-token微型夹具预算不足造成的失败原日志保留，改用64-token夹具并新增完整预算阻断；实际默认768。CI新增真实Windows锁与CMD入口专项及Linux微型book-loop，远端实跑结果随后核验。
 
 ### 当前封存轻重回归实测 · run 41870921834
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码ddadf875a3a04a24b302725d9fdd31e43a6d4188。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41870921834_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码ddadf875a3a04a24b302725d9fdd31e43a6d4188。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41870921834_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 自动loop源码7f91ab68实际远端验证：主CI#41878747465双Python日志无错误；Qwen#41878747788已下载新book-loop passed产物；Windows job126745366447日志15项OK、UTF-8帮助及CMD缺环境阻断均实跑。API最初queued快照滞后，验收依据是实际完整日志／产物，未拿queued冒充通过。Windows单测与帮助现分成独立步骤，避免PowerShell后续成功命令掩盖先前非零退出。14B／4080真实显存短测仍由用户本机执行，云端只验证CPU微型控制。
 
 ### 当前封存轻重回归实测 · run 41878747481
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f91ab68aff38c21ee98bb187ac73cf5f048ab01。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41878747481_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码7f91ab68aff38c21ee98bb187ac73cf5f048ab01。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41878747481_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 Windows分步CI最终实证：源码5df92aa3的Qwen#41879397874，Windows job126747687544完整日志15项OK、帮助和CMD防误启动各独立步骤通过；Linux job126747687858完整日志新book-loop passed且无error，产物13348891096存在。新增的步骤隔离已实跑，不把前一版通过冒充此版。模型／数据／训练代码未再改变，下面仅补交接记录；本机14B／4080显存和质量仍待用户启动实跑。
 
 ### 当前封存轻重回归实测 · run 41879397715
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5df92aa355835938f9b3a06d28683b8414e2195c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41879397715_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码5df92aa355835938f9b3a06d28683b8414e2195c。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41879397715_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-04 · 用户未开训：纯古籍QLoRA参数实验与显式恢复
@@ -3698,11 +3700,11 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41883929493
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a3e4d39acab78f2632ccf31897bb27ec60c4bc5f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41883929493_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a3e4d39acab78f2632ccf31897bb27ec60c4bc5f。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41883929493_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 41884207254
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码51a48dd9dfd4786e5f3205ea311e2de4f85dbee0。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41884207254_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码51a48dd9dfd4786e5f3205ea311e2de4f85dbee0。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41884207254_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 参数实验最终远端验收（同源码51a48dd9dfd4786e5f3205ea311e2de4f85dbee0）：Qwen#41884207036，Windows job126764171094完整日志29项OK，参数计划/两个CMD缺环境阻断均通过；CPU job126764171674完整日志新两组合sweep passed。实际下载产物13351385392，ZIP SHA256 2115c9c0a211fc14432a56198ef990045b9cf062499bf42a38eb838ef1256fdd，含4份微型验收JSON，新sweep确认Trainer/Adam起始0→恢复1→另一组0、逐字节相同数据、全组完成才一次所选最终测试、完成恢复不重跑。主CI#41884207344的Python3.11/3.12 job126764172259/126764172103完整日志均匹配51a48dd9且无进程错误；本地该提交无工作区差异全量1057项通过。首次Windows短路径测试失败元数据仍保留，未skip/删除测试；本条依据修正后的实际日志及产物。详见docs/audits/qwen_book_sweep_v1_20261104/remote_source_ci.json。14B/4080 NF4实训仍未在云端执行。
@@ -3720,7 +3722,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41898463642
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码adcb245987713fd8f9193d6bf9e5e297a592a9be。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41898463642_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码adcb245987713fd8f9193d6bf9e5e297a592a9be。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41898463642_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 连续SFT V2同源码远端最终验收：adcb245987713fd8f9193d6bf9e5e297a592a9be，Qwen#41898463745，Windows job126814184923完整日志43项OK、新V2计划/帮助/CMD缺环境阻断均通过；CPU job126814184520完整日志continuous_optimizer_staged_sweep passed，跨epoch同Adam与scheduler、半epoch恢复张量一致、epoch末验证前断电补验后张量一致、最终步收尾不多更新、长验证原模/候选生成均实跑。实际下载产物13357706411，ZIP SHA256 5c0260c31ebf044118cb5ce9b863ea93636283d226a4b90a3c7b60855fdc4669，5份验收JSON；不是用queued快照或旧源码结果充数。主CI#41898463885双Python job126814185958/126814186482完整日志匹配adcb2459且无进程错误。证据docs/audits/qwen_book_sweep_v2_20261104/remote_source_ci.json，首轮失败日志继续保留，原断言未删除/skip。14B/4080实际NF4仍需用户本机，云端只实跑官方tokenizer与微型CPU模型。当前本机入口run_book_research_v2_windows.cmd，结果local/qwen_book_sweep_v2/run1/results.html。
@@ -3734,7 +3736,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41915653244
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e7cc2122913b4f6c88206a1705e404eb75784e12。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41915653244_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e7cc2122913b4f6c88206a1705e404eb75784e12。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41915653244_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 2026-11-04 · 连续组间显存与离线保存修复
@@ -3745,7 +3747,7 @@ run2实机日志已通过上一组探测/生成，下一组预检仅free7.89GiB�
 
 
 ### 当前封存轻重回归实测 · run 41918409947
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码873ac3f08f8af23b9d813fb76857bc3db8aae249。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41918409947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码873ac3f08f8af23b9d813fb76857bc3db8aae249。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41918409947_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 组间回收/离线修复同源码873ac3f08f8af23b9d813fb76857bc3db8aae249远端验收：Qwen#41918410079，Windows job126884133955完整日志48项OK，CPU job126884133437在HF_HUB_OFFLINE/TRANSFORMERS_OFFLINE=1下完成全部恢复/生成/模型弱引用回收断言；主CI#41918410058的126884132938/126884133415完整日志均匹配源码、无error且已cleanup。证据docs/audits/qwen_book_memory_offline_20261104/remote_source_ci.json。真实4080多组运行仍待本机，不把CPU回收当GPU实测。
 
@@ -3758,7 +3760,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41922015486
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f58fc4147ee3a90fdb25cf87c18be8f621380cad。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41922015486_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码f58fc4147ee3a90fdb25cf87c18be8f621380cad。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41922015486_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 独立进程同源码f58fc4147ee3a90fdb25cf87c18be8f621380cad远端验收：Qwen#41922015455 Windows job126896634335完整日志53项OK，含实际fresh interpreter启动/退出/环境继承；CPU job126896634050完整日志真实5子进程、原完成probe/合同未改、step1优化器新进程恢复、两组四格式训练与所选最终测试全部通过。主CI#41922015622双Python job126896634466/126896634658日志均匹配源码、无error且cleanup完成。证据docs/audits/qwen_book_process_isolation_20261104/remote_source_ci.json及unchanged_training_kernels.json（原run3六个内核哈希逐一相同）。继续原run3；实际4080独立进程显存回收仍待本机日志，不使用CPU结果替代。
 
@@ -3771,7 +3773,7 @@ PID回执修复本地1083项全量0失败/0错误，3项既有skip。26项V2控�
 
 
 ### 当前封存轻重回归实测 · run 41924812430
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码876f30eddcf86fd367fd785fc7f541a42a4a8f22。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41924812430_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码876f30eddcf86fd367fd785fc7f541a42a4a8f22。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41924812430_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：Qwen#41924812385 Windows job126906302285普通Python55项＋真实无pip venv26项均OK；venv实际launcher/worker PID2360/9136与6212/7064不同，修复后回执接受（不是仅模拟PID测试）。CPU job126906302809六子进程恢复已完成stage不重训、旧合同备份升级、优化器恢复均通过；主CI#41924812618双Python job126906304939/126906305342完整日志均匹配源码、无error且cleanup。证据docs/audits/qwen_book_windows_venv_pid_20261104/remote_source_ci.json。继续原run3，已成功worker的stage读取复用；原训练内核和来源不变，实际4080后续组日志待本机。
 
@@ -3786,7 +3788,7 @@ PID协议2同源码876f30eddcf86fd367fd785fc7f541a42a4a8f22远端最终验收：
 
 
 ### 当前封存轻重回归实测 · run 41935207282
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码718ae4ff746900a56f964ec7e5cc42ce95c89584。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41935207282_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码718ae4ff746900a56f964ec7e5cc42ce95c89584。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41935207282_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 只读复核工具同源码718ae4ff746900a56f964ec7e5cc42ce95c89584远端主CI#41935207377双Python job126941818174/126941818220完整日志均匹配源码、新3项复核隔离测试OK、无error且cleanup完成；本轮无需启动模型训练/GPU验证，训练相关固定文件未改。证据docs/audits/qwen_book_validation_review_20261104/remote_source_ci.json。private实际交付429验证任务/20优先答题/288出处；全部原文不进入公开Git。
 
@@ -3801,7 +3803,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41941627504
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41941627504_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41941627504_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 8B终版源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40远端主CI#41941627494双Python3.11/3.12、Qwen软件CI#41941627266 Windows实际虚拟环境与CPU集成均success。Windows8B启动器/worker PID实际8136/8284及6972/6880，nonce请求回执通过；新7项全过。CPU真实微型Qwen3原生/分块loss及全LoRA梯度、独立子进程训练、精确optimizer恢复和不中断权重对照均通过，未加载真实8B权重/CUDA。关键六文件远端内容逐字核对；证据remote_source_ci.json、remote_canonical_bytes.json。已快进接收c428b53f自动原生旧健康归档；最后交接只改文档，不改已验源码/配置/教材。用户下一步PowerShell更新后运行run_qwen8b_research_windows.cmd，新输出local/qwen8b_book_v1/run1；实际4080压力、完整训练及专业留出回答仍待用户本机日志。
 
@@ -3814,7 +3816,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41943048218
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e7fa9e9790bcf6313e221b78b136bc2378a50120。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41943048218_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码e7fa9e9790bcf6313e221b78b136bc2378a50120。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41943048218_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 下载修复源码e7fa9e9790bcf6313e221b78b136bc2378a50120实际远端主CI#41943048219双Python均success；Qwen#41943048161 Windows真实venv 11专项及全部CPU微型训练/恢复亦success，完整日志核对相同源码/无error/cleanup完成。三个关键改动文件远端逐字匹配；官方固定8B revision API返回200且SHA一致（仅云端观察，不代表用户网络）。证据本轮remote_source_ci/remote_bytes/public_revision_check。已接收785f88b9自动原生归档，最后只交接文档，不改已经通过的下载/训练源码。用户下一步更新后重复8B启动，缓存保留；本机网络恢复及真实8B训练仍待用户日志。
 
@@ -3829,7 +3831,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41950736153
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a707962dd0aa549c16ef41572b7b9f70cf74bc0f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41950736153_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a707962dd0aa549c16ef41572b7b9f70cf74bc0f。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41950736153_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 修复源码a707962dd0aa549c16ef41572b7b9f70cf74bc0f远端主CI#41950736165双Python3.11/3.12、Qwen#41950736258三个job（Windows原venv契约、新Windows真实Torch/Transformers冷/热导入、Linux完整CPU集成）全部success。Windows真实venv两种导入各4训练/4验证实际分块调用、最大投影128且禁止带labels的整段模型forward；Linux实际worker回调收据、精确恢复及不中断权重一致均通过。逐job完整日志核对源码/无error/cleanup完成，五关键文件远端字节匹配，lazy_module_cause_probe单独证明旧根对象patch失效。已接收1963b5ec自动原生历史归档，最后只交接文档；真实修复后8B/4080/4096仍待用户在新run2_loss_fix重测，缓存复用，旧run1不续用。
 
@@ -3844,7 +3846,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 41954529487
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码173230f4034f992d01badcccdd8103f70aef501c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41954529487_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码173230f4034f992d01badcccdd8103f70aef501c。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41954529487_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 融合SDPA源码173230f4034f992d01badcccdd8103f70aef501c远端主CI#41954529510双Python3.11/3.12、Qwen#41954529460三个job全部success。Windows实际库/venv冷热Trainer与显式KV注意力输出/梯度/掩码/缓存生成及非法策略拒绝通过；Linux真实worker显式注意力/分块loss实际调用、后端合同压力证明缓存、精确恢复及不中断权重一致通过。逐job完整日志核对同源码/无error/cleanup完成；六关键文件远端逐字匹配。证据remote_source_ci/remote_canonical_bytes。已快进接收4171cbbf自动原生旧健康归档；最后仅交接文档，不改已验程序/配置。下一步用户旧窗口退出→更新→原CMD入口，默认新run3_attention_fix；本机先GPU融合探测再完整压力，实际GPU内核/4096容量仍未由云端证明。
 
@@ -3861,7 +3863,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 42026802613
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b28e16ca055c5aee0ad6181edfad431f670aca52。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42026802613_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码b28e16ca055c5aee0ad6181edfad431f670aca52。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42026802613_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 诊断源码b28e16ca055c5aee0ad6181edfad431f670aca52实际主CI#42026802647双Python3.11/3.12、Qwen#42026802506三job全部success。Windows真实venv 17项（原12+新5）通过，硬退出测试记录启动器8988/真实worker8956、step3、exit7、无回执而日志完整；正常/超时/退出解码均通过。Linux新I/O包装下9个实际微型worker完成，原完整数学/实际attention/loss/检查点恢复/权重对照/完成后不再启动断言通过，冻结训练哈希不变。每job完整日志核对同源码/无error/cleanup完成，五关键诊断文件远端逐字匹配。已快进接收22b68677自动原生旧归档，最后仅交接文档。Windows事件尚未回传，用户native退出根因仍未确定；按当前指南更新后同run3恢复，跳过已完成第一组，不声称已修复真实崩溃。
 
@@ -3869,16 +3871,21 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 
 ### 当前封存轻重回归实测 · run 42034924608
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码9afdb3de1a12deae73e897bd285631c83d0de97c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42034924608_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码9afdb3de1a12deae73e897bd285631c83d0de97c。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42034924608_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 2026-11-05 课程审查软件验收：源码9afdb3de，1111测试0失败/错误、3既有skip；主CI42034924675双Python，Qwen42034924705三job均已读取完整源码匹配日志确认success。Windows实际CLI在CUDA/联网前退出3，8个新课程检查纳入25项通过；CPU九次隔离worker恢复和Windows真实Trainer冷/热路径通过。完整5250答案Excel重新拼回逐字相等，77修订草稿无相同问题不同目标。专业课程仍未准入，35步ValueError根因仍未定位；下步继续修语义和独立证据链，不恢复旧数据扫描、不承诺100%。新书章/原始事件增加0，源库/16训练文件及旧检查点不改。证据docs/audits/qwen_book_course_review_20261105/remote_source_ci.json。
 
 
 ### 当前封存轻重回归实测 · run 42051657998
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码908d8ecf5556a08205bf956e50d9f20da23e1164。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42051657998_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码908d8ecf5556a08205bf956e50d9f20da23e1164。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42051657998_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 
 ### 当前封存轻重回归实测 · run 42055347215
-V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码3ef569bbf0f2288d58c3e3087650b72f36e59c9b。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42055347215_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码3ef569bbf0f2288d58c3e3087650b72f36e59c9b。全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42055347215_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 加密交付源码3ef569bb的主CI42055347279双Python、Windows交付CI42055347259均success。三job完整日志已核对源码、无error及cleanup；真实Windows内置.NET完成跨实现Unicode解密、完整CLI和4MiB数据往返，MAC破坏拒绝、旧文件保护通过。全套1130测试0失败/错误。密钥未进Git/CI，教材原ZIP SHA和全部既有训练代码合同未改。证据docs/audits/course_delivery_v1_20261105/remote_source_ci.json。
+
+
+### 2026-11-05 · V5覆盖与清理本地实测
+
+11167核心/11177助手目标，9513实际训练回合，完整长度及生成预算0排除；Excel201609格读回一致；最终40更新微型CPU工作进程在第1步断点恢复并完成，非8B/CUDA实测。全套1144项0失败0错误、3既有跳过；清理首轮旧默认路径缺库失败现场保留，补显式准备后通过，68份历史测试原断言AST未变。当前源库SHA与V4全部26运行合同文件不变。66历史展开库/836重复报告已按逐字节校验压缩副本清理，健康CI停止重复提交报告；远端同源码CI另据真实结果追加。

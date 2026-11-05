@@ -1,4 +1,5 @@
 """Source-anchored Kaiwu chapter 4 regression: asymmetric 81 pairs; full old V1."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 
@@ -8,7 +9,7 @@ from scripts.build_kaiwu_04_from_03 import (
  timings,assertions
 )
 
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_第四章.txt"
 
 class KaiwuFourthChapterTests(unittest.TestCase):

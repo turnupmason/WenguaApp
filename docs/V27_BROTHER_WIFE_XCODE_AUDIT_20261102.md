@@ -77,5 +77,5 @@ FAILED (failures=41, errors=11, skipped=3)
 
 
 ### 2026-11-02 · V27 哥哥/妻子本轮最终实测 PASS
-源码 `23787f32ff5ddb6a5e81a4aa878728acfedb72b0`，真正 macOS Xcode #41449228405 **success**：正式 SwiftUI Simulator 编译、bundle 200/81/人物/模板、两张请求盘独立历法与九宫、Python↔Swift 中文全文逐字、四时辰×六伤损条件与1080数据集检查均通过。全文 `docs/IOS_V80_XCODE_PASS_RUN_41449228405_ATTEMPT_1.md`；哥哥纽约2026-11-19 11:00，丙午/己亥/丁酉/丙午，天芮艮八阴遁外盘，传统主位左足；妻子纽约2026-12-18 03:00，丙午/庚子/丙寅/庚寅，天芮坤二阴遁内盘，传统主位脾胃。未补年命，不是临床诊断或秘密盲测。
+源码 `23787f32ff5ddb6a5e81a4aa878728acfedb72b0`，真正 macOS Xcode #41449228405 **success**：正式 SwiftUI Simulator 编译、bundle 200/81/人物/模板、两张请求盘独立历法与九宫、Python↔Swift 中文全文逐字、四时辰×六伤损条件与1080数据集检查均通过。全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41449228405_ATTEMPT_1.md`；哥哥纽约2026-11-19 11:00，丙午/己亥/丁酉/丙午，天芮艮八阴遁外盘，传统主位左足；妻子纽约2026-12-18 03:00，丙午/庚子/丙寅/庚寅，天芮坤二阴遁内盘，传统主位脾胃。未补年命，不是临床诊断或秘密盲测。
 同源码主CI #41449228608（Python3.11/3.12）、V8原生关系 #41449228321、V7.7 #41449228323 全success。旧V7.4 #41449228575 仍在固定旧评分断言失败；全库831项的41 failures/11 errors/3 skipped也保留，不能说全库或全部历史Actions零失败。本次Xcode无失败；无签名真机/App Store验收。Important双镜像/SHA已随源码同步，V8计分冻结未变。

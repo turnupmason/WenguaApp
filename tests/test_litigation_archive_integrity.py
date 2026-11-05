@@ -1,10 +1,11 @@
 """stdlib CI: verify complete 15-section SQLite, author stages, legacy continuity."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib, importlib.util, json, sqlite3, tempfile, unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-BASE=ROOT/'archives/sqlite/WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3'
-NEW=ROOT/'archives/sqlite/WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3'
+BASE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3')
+NEW=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3')
 D=ROOT/'data/knowledge/shenqi/litigation_prediction_ch11'
 MAN=ROOT/'archives/sqlite/15chapters_77cases_manifest.json'
 

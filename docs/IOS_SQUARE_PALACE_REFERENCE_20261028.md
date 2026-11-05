@@ -24,4 +24,4 @@
 
 ## Xcode 实际失败及修复记录（不删旧失败）
 
-本轮macOS Xcode Simulator #40725801556 实测失败：`WenguaDesignPreviewApp.swift:724-725` SwiftUI `.padding(.horizontal:max(...))`、`.padding(.vertical:max(...))` 写错参数逗号，应改为`.padding(.horizontal,max(...))`和`.padding(.vertical,max(...))`；已只修这两行UI语法，镜像SHA同步，重新跑Xcode。失败run和`docs/IOS_V80_XCODE_FAIL_RUN_40725801556_ATTEMPT_1.md`原样保留，不能拿旧PASS冒充本轮。
+本轮macOS Xcode Simulator #40725801556 实测失败：`WenguaDesignPreviewApp.swift:724-725` SwiftUI `.padding(.horizontal:max(...))`、`.padding(.vertical:max(...))` 写错参数逗号，应改为`.padding(.horizontal,max(...))`和`.padding(.vertical,max(...))`；已只修这两行UI语法，镜像SHA同步，重新跑Xcode。失败run和`https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_40725801556_ATTEMPT_1.md`原样保留，不能拿旧PASS冒充本轮。

@@ -1,7 +1,7 @@
 # V10.2 疾病综合断语精简与原生接入审计（2026-10-28）
 
 ## 复现问题
-V10.1真实原生随机五盘存于 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md。综合段虽对同符号乙去重，仍把天芮、天心、乙、患者、时干、值符、长辈辅助各宫分和关系重复读一次。用户要求精简自然中文，不改V8真实事实或分数。
+V10.1真实原生随机五盘存于 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40793239030_ATTEMPT_1.md。综合段虽对同符号乙去重，仍把天芮、天心、乙、患者、时干、值符、长辈辅助各宫分和关系重复读一次。用户要求精简自然中文，不改V8真实事实或分数。
 
 ## 本次仅修改客户显示层
 - Python src/wengua/domain_selected_energy_vnext.py:selected_health_sections、Swift ios/WenguaAppUI/WenguaPythonVNextVerbatim.swift:sections 同构重写编号90综合段；模板 data/templates/health_severity_vnext/reading_template.json 新增 macros.summary_concise，schema health_severity_user_editable_template_v20261028_v10_2_evidence_first。

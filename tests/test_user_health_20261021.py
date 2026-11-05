@@ -6,6 +6,7 @@ as an explicitly conditional development fixture and do not approve other
 health intents. This file NEVER hardcodes a divination chart, layout or verdict.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 
 import json
 import unittest
@@ -20,7 +21,7 @@ EXPECTED = {"year": "丙午", "month": "戊戌", "day": "戊辰", "hour": "壬�
 WALL_TIME = "2026-10-21T19:30:00-04:00"
 TIMEZONE = "America/New_York"
 AUDIT_MARKER = "USER_REQUEST_20261021_HEALTH_SEVERITY_TEST"
-FULL_DB = Path(__file__).resolve().parents[1] / "archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3"
+FULL_DB = source_database(Path(__file__).resolve().parents[1] / "archives/sqlite/WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3")
 
 
 def run_case():

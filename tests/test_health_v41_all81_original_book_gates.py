@@ -6,6 +6,13 @@ from src.wengua.health_symbolic_score_v41 import (all81_proposed,
 from src.wengua.health_severity_v37 import load_81_book_pairs
 from scripts.run_health_v41_source_gated_3_cases import evaluate,PARENT,PARENT_SHA
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V41Book81Context(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -13,7 +13,7 @@
 
 ## 实际 GitHub Actions
 首轮真实运行 **#40901654390 PASS**，source commit `9fa86ceef50548306d9dc0be1cff80ef18cdb58d`：1080完整索引 / 12个既有真实时辰人物原始事实准备成功；Python专用测试已通过。
-存档 `docs/HEALTH_EDITORIAL_PREBATCH_RUN_40901654390_ATTEMPT_1.md`；artifact 名 `health-v80-editorial-v1-topology1080-and-12-real-source-jobs`。最新确认Action随后的docs归档提交 SHA `29ef7ac1bbf26939fdfde962901823682a7692c6`。
+存档 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_EDITORIAL_PREBATCH_RUN_40901654390_ATTEMPT_1.md`；artifact 名 `health-v80-editorial-v1-topology1080-and-12-real-source-jobs`。最新确认Action随后的docs归档提交 SHA `29ef7ac1bbf26939fdfde962901823682a7692c6`。
 本次GPT API调用=0；联网审核作为Prompt与工作程序准则建立，不声称已逐12篇自动做完联网比对；人工最终批准=0；新iOS JSON loader尚未接入。代码未改正式疾病V8计分、原始两本书、200/81、已接受模板或 iOS 界面。已有2026-10-28真实12篇文学候选仍与这批结构化新工作项不同，不要声称重新生成并审过12篇。
 
 ## 为什么1080不等于1080篇父亲断词

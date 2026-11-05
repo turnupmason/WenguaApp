@@ -1,9 +1,10 @@
 """Source-hash checked all 20 timing methods, actual astronomy and immutable full DB."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_astro_v15 import ROOT,PARENT_NAME,OUTPUT_NAME,PARENT_SHA,build
 from src.wengua.book_timing_runtime import book_case01_marriage_timing_study
-PARENT=ROOT/"archives/sqlite"/PARENT_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/PARENT_NAME)
 class BookAstronomyFullDatabaseV15(unittest.TestCase):
  def test_all_source_cases_preserved_and_real_jie_windows_are_not_feedback_leakage(self):
   self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

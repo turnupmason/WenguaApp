@@ -5,12 +5,13 @@ No OCR source reconstruction, no hindsight as first prediction, no per-case
 approval, and no repeated old Shenqi female-taxi event.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_missing_from_education import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,validate_source,parse,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_行人走失预测.txt"
 
 class KaiwuMissingPersonFullArchiveTests(unittest.TestCase):

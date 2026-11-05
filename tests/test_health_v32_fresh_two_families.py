@@ -9,6 +9,13 @@ import hashlib,json,unittest
 from unittest.mock import patch
 from scripts.replay_two_new_historical_health_v32 import evaluate,PARENT_SHA,DB,CASES
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class SourceFamilyV32HistoricalCheck(unittest.TestCase):
     def test_exact_latest_v31_complete_parent_and_original_family_split(self):
         self.assertTrue(DB.is_file())

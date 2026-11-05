@@ -6,6 +6,13 @@ from src.wengua.health_dynamic_v21 import bind_patient
 from scripts.replay_all_historical_health_v34 import evaluate, CASES, PARENT, PARENT_SHA
 from src.wengua.health_severity_v34 import analyze_health_severity_v34, _pair_catalog, _composite_catalog, CATALOG
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class HealthV34AllRules(unittest.TestCase):
     def test_exact_parent_and_preserve_twelve_unique_families(self):
         self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

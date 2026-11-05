@@ -1,10 +1,11 @@
 """Kaiwu geography source regression: one SAME old cemetery, only TWO new events."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_geography_from_recent import (ROOT,BASE_SHA,BASE_NAME,NEW_NAME,
  SOURCE_SHA,CASES,METHODS,validate,build)
-BASE=ROOT/'archives/sqlite'/BASE_NAME
+BASE=source_database(ROOT/'archives/sqlite'/BASE_NAME)
 SOURCE=ROOT/'sources/kaiwu/开悟之门_地理风水预测.txt'
 class GeographyCrossBookTest(unittest.TestCase):
  @classmethod

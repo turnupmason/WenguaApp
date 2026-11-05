@@ -6,6 +6,13 @@ from src.wengua.health_severity_v36 import _rechecked_composites
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.health_severity_v34 import HORSE
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class HealthV36(unittest.TestCase):
  def test_parent_and_12_real_hour_corpus(self):
     self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

@@ -1,9 +1,10 @@
 """Strict SHA/row preservation and error-retention V1.6 entire-family dev corpus."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_judgment_v16 import ROOT,OLD,NEW,PARENT_SHA,build
-PARENT=ROOT/"archives/sqlite"/OLD
+PARENT=source_database(ROOT/"archives/sqlite"/OLD)
 class BookFirstBlindStudyV16(unittest.TestCase):
  def test_complete_full_194_case_sqlite_unchanged_two_errors_preserved(self):
   self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

@@ -1,0 +1,3675 @@
+{
+  "source_sha": "b5f04d71157b91f64d8889a857652f7a967d7cf7",
+  "worktree_diff_sha256": "3ea29abc6b6d8b23a2c90f4df0262817c46a4d3e6e6e8c71f037c0de0f542ae4",
+  "sealed_manifest_sha256": "90e8e3ce804bbedb26f5d50f70e57849ebee907d89856614dfcd9348d3c807f0",
+  "tests_run": 1091,
+  "failures": 1,
+  "errors": 80,
+  "skipped": [
+    {
+      "test_id": "test_astro_calendar_book_timing_v15.ActualSolarTermAndBookTimingTests.test_optional_swiss_software_reference_agrees_with_offline_formula",
+      "reason": "Optional Moshier external cross-reference not installed"
+    },
+    {
+      "test_id": "setUpClass (test_health_v77_unique_palace_20261027.StrictPhysicalPalaceOnce)",
+      "reason": "Historical V7.7_UNIQUE_PHYSICAL_PALACE_AND_SIGNIFIER_THREE_STAGE assertions; run V7.9 general tests for active engine"
+    },
+    {
+      "test_id": "setUpClass (test_health_v78_illness_special_cohost_20261027.V78SpecialConditionalHealth)",
+      "reason": "V7.8 historical fixture; active V7.9 tested independently"
+    }
+  ],
+  "full_log_sha256": "54b419ff81fca2ee155058b712789c723a228bc07a3fd4bb9178bfc9fe0e202c",
+  "records": [
+    {
+      "test_id": "setUpClass (test_father_health_20261021_v23.FatherTimeHealthV23Tests)",
+      "outcome": "error",
+      "exception_type": "AssertionError",
+      "message": "Exact complete V2.2 original-194-event SQLite required",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_father_health_20261021_v23.py",
+          "line": 18,
+          "code": "raise AssertionError(\"Exact complete V2.2 original-194-event SQLite required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_father_health_20261021_v24.FatherTimeHealthV24Tests)",
+      "outcome": "error",
+      "exception_type": "AssertionError",
+      "message": "Exact complete V2.2 original-194-event SQLite required",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_father_health_20261021_v24.py",
+          "line": 18,
+          "code": "raise AssertionError(\"Exact complete V2.2 original-194-event SQLite required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_all_historical_v33.HealthAllFamiliesV33Test.test_all_non_severity_questions_labeled_as_proxy_not_official_intent",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Exact immutable latest V3.2 full 194-case parent required",
+      "test_source": "tests/test_health_all_historical_v33.py",
+      "method_source": "    def test_all_non_severity_questions_labeled_as_proxy_not_official_intent(self):\n        out=evaluate()\n        for x in out[\"records\"]:\n            if x[\"source_question_intent\"] in (\"discharge\",\"surgery\",\"travel_for_treatment\",\"recovery\"):\n                self.assertEqual(x[\"template_intent\"],\"severity\")\n                self.assertNotEqual(x[\"source_question_intent\"],x[\"template_intent\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_all_historical_v33.py",
+          "line": 49,
+          "code": "out=evaluate()"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v31_v33.py",
+          "line": 44,
+          "code": "raise ValueError(\"Exact immutable latest V3.2 full 194-case parent required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_all_historical_v33.HealthAllFamiliesV33Test.test_blocked_roles_never_disguised_as_self",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Exact immutable latest V3.2 full 194-case parent required",
+      "test_source": "tests/test_health_all_historical_v33.py",
+      "method_source": "    def test_blocked_roles_never_disguised_as_self(self):\n        x={q[\"family_id\"]:q for q in evaluate()[\"records\"]}\n        for family in (\"kaiwu.health.19980616.hen_illness\",\n                       \"kaiwu.health.19980621.rooster_illness\",\n                       \"kaiwu.final.recovery\",\n                       \"shenqi.health.19971227.spouse_travel_for_treatment\"):\n            self.assertEqual(x[family][\"status\"],\"blocked_unverified_role_or_chart\")\n            self.assertNotIn(\"readout\",x[family])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_all_historical_v33.py",
+          "line": 17,
+          "code": "x={q[\"family_id\"]:q for q in evaluate()[\"records\"]}"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v31_v33.py",
+          "line": 44,
+          "code": "raise ValueError(\"Exact immutable latest V3.2 full 194-case parent required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_all_historical_v33.HealthAllFamiliesV33Test.test_deterministic_offline_no_later_answers_as_input",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Exact immutable latest V3.2 full 194-case parent required",
+      "test_source": "tests/test_health_all_historical_v33.py",
+      "method_source": "    def test_deterministic_offline_no_later_answers_as_input(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"Offline only\")):\n            a=evaluate()\n            b=evaluate()\n        self.assertEqual(json.dumps(a,ensure_ascii=False,sort_keys=True),\n                         json.dumps(b,ensure_ascii=False,sort_keys=True))\n        self.assertGreaterEqual(a[\"counts\"][\"rendered_v31\"],2)\n        for row in a[\"records\"]:\n            self.assertFalse(row[\"author_judgment_loaded\"])\n            self.assertFalse(row[\"later_feedback_loaded\"])\n            if row[\"status\"]==\"rendered_v31\":\n                self.assertEqual(row[\"readout_sha256\"],\n                                 hashlib.sha256(row[\"readout\"].encode(\"utf8\")).hexdigest())\n                self.assertTrue(row[\"sections\"])\n                self.assertEqual(row[\"traditional_verdict\"] in (\"病吉\",\"病凶\"),True)\n                self.assertEqual(row[\"user_approval\"],\"pending\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_all_historical_v33.py",
+          "line": 34,
+          "code": "a=evaluate()"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v31_v33.py",
+          "line": 44,
+          "code": "raise ValueError(\"Exact immutable latest V3.2 full 194-case parent required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_all_historical_v33.HealthAllFamiliesV33Test.test_exact_full_parent_and_complete_deduplicated_scope",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_all_historical_v33.py",
+      "method_source": "    def test_exact_full_parent_and_complete_deduplicated_scope(self):\n        self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)\n        x=evaluate()\n        self.assertEqual(x[\"source_scope\"][\"total_unique_events\"],12)\n        self.assertEqual(len(CASES),12)\n        self.assertEqual(len({c[\"id\"] for c in CASES}),12)\n        self.assertEqual(len(x[\"records\"]),12)\n        self.assertEqual(x[\"counts\"][\"rendered_v31\"]+x[\"counts\"][\"blocked\"],12)\n        self.assertFalse(x[\"selected_cases_have_author_feedback_as_input\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_all_historical_v33.py",
+          "line": 8,
+          "code": "self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_all_historical_v33.HealthAllFamiliesV33Test.test_existing_two_real_histories_preserve_original_v31_wording",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Exact immutable latest V3.2 full 194-case parent required",
+      "test_source": "tests/test_health_all_historical_v33.py",
+      "method_source": "    def test_existing_two_real_histories_preserve_original_v31_wording(self):\n        sealed=json.loads((ROOT/\"data/evaluation/health_v32/two_new_source_families_V31_READOUTS_SEALED.json\").read_text(\"utf8\"))\n        x={q[\"family_id\"]:q for q in evaluate()[\"records\"]}\n        for old in sealed[\"samples\"]:\n            new=x[old[\"family_id\"]]\n            self.assertEqual(new[\"status\"],\"rendered_v31\")\n            self.assertEqual(new[\"readout\"],old[\"text\"])\n            self.assertEqual(new[\"readout_sha256\"],old[\"text_sha256\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_all_historical_v33.py",
+          "line": 26,
+          "code": "x={q[\"family_id\"]:q for q in evaluate()[\"records\"]}"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v31_v33.py",
+          "line": 44,
+          "code": "raise ValueError(\"Exact immutable latest V3.2 full 194-case parent required\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_hour_patient_v31.V31ExplicitHourDiseasePatient.test_both_historical_patient_vs_hour_disease_directions",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_hour_patient_v31.py",
+      "method_source": " def test_both_historical_patient_vs_hour_disease_directions(self):\n    a,b=evaluate()[\"samples\"]\n    self.assertEqual(a[\"hour_patient_evidence\"][\"relation\"],\"受克\")\n    self.assertIn(\"患者宫受制\",a[\"hour_patient_evidence\"][\"text\"])\n    self.assertIn(\"偏凶\",a[\"sections\"][6 if len(a[\"sections\"])==10 else 7][\"text\"])\n    self.assertNotIn(\"事体宫克患者宫，偏吉\",a[\"readout\"])\n    self.assertEqual(b[\"hour_patient_evidence\"][\"relation\"],\"比和\")\n    self.assertIn(\"同气相持\",b[\"readout\"])\n    self.assertNotIn(\"时干宫与患者宫比和，未单定吉凶\",b[\"readout\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_hour_patient_v31.py",
+          "line": 11,
+          "code": "a,b=evaluate()[\"samples\"]"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v31.py",
+          "line": 13,
+          "code": "sources=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_hour_patient_v31.V31ExplicitHourDiseasePatient.test_end_user_text_generated_offline_deterministically",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_hour_patient_v31.py",
+      "method_source": " def test_end_user_text_generated_offline_deterministically(self):\n    with patch(\"socket.socket\",side_effect=AssertionError(\"Network used\")):\n        a=evaluate();b=evaluate()\n    self.assertEqual([x[\"readout\"].encode() for x in a[\"samples\"]],\n                     [x[\"readout\"].encode() for x in b[\"samples\"]])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_hour_patient_v31.py",
+          "line": 31,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v31.py",
+          "line": 13,
+          "code": "sources=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_hour_patient_v31.V31ExplicitHourDiseasePatient.test_print_all_changed_hour_prose",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_hour_patient_v31.py",
+      "method_source": " def test_print_all_changed_hour_prose(self):\n    for x in evaluate()[\"samples\"]:\n        print(\"V31_HOUR_\"+x[\"case_id\"]+\"=\"+next(s[\"text\"] for s in x[\"sections\"] if s[\"id\"]==\"08_hour\"))\n        print(\"V31_SHA_\"+x[\"case_id\"]+\"=\"+x[\"sha256\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_hour_patient_v31.py",
+          "line": 35,
+          "code": "for x in evaluate()[\"samples\"]:"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v31.py",
+          "line": 13,
+          "code": "sources=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_hour_patient_v31.V31ExplicitHourDiseasePatient.test_real_source_outcomes_not_used_and_old_failure_seal_retained",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_hour_patient_v31.py",
+      "method_source": " def test_real_source_outcomes_not_used_and_old_failure_seal_retained(self):\n    report=evaluate()\n    self.assertTrue(report[\"prior_v27_v28_v29_v30_seals_preserved\"])\n    self.assertTrue(report[\"original_book_author_answers_not_used\"])\n    for x in report[\"samples\"]:\n        self.assertEqual(len(x[\"v30_original_sha256\"]),64)\n        self.assertNotEqual(x[\"sha256\"],x[\"v30_original_sha256\"])\n        self.assertFalse(\"GPT\" in x[\"readout\"])\n        self.assertNotIn(\"必死\",x[\"readout\"])\n        self.assertEqual(x[\"traditional_verdict\"],\"病凶\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_hour_patient_v31.py",
+          "line": 20,
+          "code": "report=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v31.py",
+          "line": 13,
+          "code": "sources=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_five_not_encounter_v27.FiveNoEncounterAndTwoHistoricalCases.test_gender_explicit_known_man_gets_qian_but_not_otherwise",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_five_not_encounter_v27.py",
+      "method_source": "    def test_gender_explicit_known_man_gets_qian_but_not_otherwise(self):\n        from src.wengua.astro_calendar import solar_chart_clock\n        from src.wengua.casting_shenqi import layout_from_explicit_bureau\n        c=solar_chart_clock(\"1996-11-02T16:00:00+08:00\",\"Asia/Shanghai\")[\"four_pillars\"]\n        chart=layout_from_explicit_bureau(dun=\"yin\",ju=8,hour_ganzhi=\"庚申\")\n        cal={\"year_ganzhi\":c[\"year\"],\"month_ganzhi\":c[\"month\"],\n             \"day_ganzhi\":c[\"day\"],\"hour_ganzhi\":c[\"hour\"],\"month_branch\":c[\"month\"][1]}\n        reading=analyze_health_severity_v27(\n          chart=chart,inquiry={\"intent\":\"severity\",\"relationship\":\"self\",\n            \"consultation_context\":\"direct_self\",\"patient_sex\":\"male\"},\n          calendar=cal,db_path=PARENT_DB)\n        self.assertEqual(reading[\"audit\"][\"gender_auxiliary_palace\"],6)\n        self.assertEqual(len(reading[\"sections\"]),11)\n        self.assertIn(\"乾六宫\",reading[\"sections\"][5][\"text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_five_not_encounter_v27.py",
+          "line": 73,
+          "code": "reading=analyze_health_severity_v27("
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_five_not_encounter_v27.FiveNoEncounterAndTwoHistoricalCases.test_no_network_no_gpt_byte_reproducibility_and_original_not_read",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_five_not_encounter_v27.py",
+      "method_source": "    def test_no_network_no_gpt_byte_reproducibility_and_original_not_read(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"NETWORK NOT ALLOWED\")):\n            a=evaluate();b=evaluate()\n        self.assertEqual(a[\"predictions\"][0][\"readout_text\"].encode(),\n                         b[\"predictions\"][0][\"readout_text\"].encode())\n        self.assertEqual(a[\"predictions\"][1][\"readout_text\"].encode(),\n                         b[\"predictions\"][1][\"readout_text\"].encode())\n        for p in a[\"predictions\"]:\n            text=p[\"readout_text\"]\n            for forbidden in (\"GPT\",\"程序\",\"规则库\",\"数据库\",\"模型\",\"门门迫\",\"与与\"):\n                self.assertNotIn(forbidden,text)\n            self.assertIn(\"病吉\",text) if p[\"traditional_verdict\"]==\"病吉\" else self.assertIn(\"病凶\",text)\n            self.assertNotIn(\"例如符合\",text)\n            self.assertNotIn(\"必死\",text)\n            self.assertNotIn(\"原书结果\",text)\n            self.assertEqual(p[\"readout_text\"].count(\"最后断词：\"),1)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_five_not_encounter_v27.py",
+          "line": 82,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_five_not_encounter_v27.FiveNoEncounterAndTwoHistoricalCases.test_print_both_raw_sealed_predictions",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_five_not_encounter_v27.py",
+      "method_source": "    def test_print_both_raw_sealed_predictions(self):\n        report=evaluate()\n        print(\"\\nV27_SEALED_TWO_HISTORICAL_START\")\n        for i,p in enumerate(report[\"predictions\"],1):\n            print(f\"CASE_{i}_ID=\"+p[\"case_id\"])\n            print(f\"CASE_{i}_HOUR=\"+p[\"day_ganzhi\"]+\"日\"+p[\"hour_ganzhi\"]+\"时\")\n            print(f\"CASE_{i}_READOUT_SHA=\"+p[\"readout_sha256\"])\n            print(f\"CASE_{i}_READOUT_BEGIN\")\n            print(p[\"readout_text\"])\n            print(f\"CASE_{i}_READOUT_END\")\n        print(\"V27_SEALED_TWO_HISTORICAL_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_five_not_encounter_v27.py",
+          "line": 108,
+          "code": "report=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_five_not_encounter_v27.FiveNoEncounterAndTwoHistoricalCases.test_real_calendar_original_chart_book_metadata_before_author_outcome",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_five_not_encounter_v27.py",
+      "method_source": "    def test_real_calendar_original_chart_book_metadata_before_author_outcome(self):\n        report=evaluate()\n        self.assertEqual(len(report[\"predictions\"]),2)\n        self.assertFalse(report[\"original_book_outcomes_appended\"])\n        for p in report[\"predictions\"]:\n            self.assertTrue(p[\"book_metadata_only_used\"])\n            self.assertFalse(p[\"original_pred_and_feedback_read\"])\n            self.assertEqual(len(p[\"readout_sha256\"]),64)\n            self.assertEqual(p[\"full_chart\"][\"hour_ganzhi\"],p[\"hour_ganzhi\"])\n        a,b=report[\"predictions\"]\n        self.assertFalse(a[\"five_not_encounter\"][\"triggered\"])\n        self.assertTrue(b[\"five_not_encounter\"][\"triggered\"])\n        self.assertIn(\"不属五不遇时\",a[\"readout_text\"])\n        self.assertIn(\"阳克阳\",b[\"readout_text\"])\n        self.assertIn(\"测病为传统凶时\",b[\"readout_text\"])\n        self.assertEqual(b[\"gender_auxiliary_palace\"],2)\n        self.assertIsNone(a[\"gender_auxiliary_palace\"])\n        self.assertEqual(len(b[\"readout_sections\"]),11)\n        self.assertEqual(len(a[\"readout_sections\"]),10)\n        self.assertIn(\"坤二宫\",b[\"readout_text\"])\n        self.assertNotIn(\"另参乾六宫\",a[\"readout_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_five_not_encounter_v27.py",
+          "line": 46,
+          "code": "report=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_final_traditional_not_actual_medical",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_final_traditional_not_actual_medical(self):\n        x=run()\n        verdict=x[\"audit\"][\"tradition_binary_verdict\"]\n        self.assertIn(verdict[\"verdict\"],(\"病吉\",\"病凶\"))\n        self.assertEqual(verdict[\"verdict\"],\"病凶\")\n        self.assertIn(\"乙奇艮八宫克病宫\",x[\"sections\"][-1][\"text\"])\n        self.assertIn(\"坎一宫的死门构成门迫\",x[\"sections\"][-1][\"text\"])\n        self.assertIn(\"震三宫的开门构成门迫\",x[\"sections\"][-1][\"text\"])\n        self.assertNotIn(\"天心或乙奇宫\",x[\"reading_text\"])\n        self.assertTrue(verdict[\"not_a_real_medical_risk_grade\"])\n        self.assertFalse(x[\"audit\"][\"medical_severity_verified\"])\n        self.assertEqual(len(x[\"audit\"][\"24_factor_statuses\"]),24)\n        self.assertEqual(x[\"status\"],\"software_test_not_user_content_acceptance\")\n        self.assertIn(\"传统主判：病凶\",x[\"sections\"][-1][\"text\"])\n        self.assertNotIn(\"必死\",x[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 118,
+          "code": "x=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_four_other_health_subdomains_remain_unreviewed",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_four_other_health_subdomains_remain_unreviewed(self):\n        old=run()\n        cal={\"year_ganzhi\":\"丙午\",\"month_ganzhi\":\"戊戌\",\"day_ganzhi\":\"戊辰\",\"hour_ganzhi\":\"庚申\"}\n        for intent in (\"treatment\",\"discharge\",\"surgery\",\"travel_for_treatment\"):\n            with self.assertRaises(ValueError):\n                analyze_health_severity_v26(chart=old[\"test_receipt\"][\"chart\"],\n                    inquiry={\"intent\":intent,\"relationship\":\"self\",\"consultation_context\":\"direct_self\"},\n                    calendar=cal,db_path=PARENT_DB)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 133,
+          "code": "old=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_irrelevant_anachronistic_pair_title_never_in_customer_prose",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_irrelevant_anachronistic_pair_title_never_in_customer_prose(self):\n        x=run()\n        original=x[\"audit\"][\"pair_original_still_auditable\"]\n        self.assertIn(\"幼女奸淫\",original[\"name\"])\n        self.assertNotIn(\"幼女奸淫\",x[\"reading_text\"])\n        self.assertIn(\"壬加癸\",x[\"sections\"][2][\"text\"])\n        self.assertIn(\"两干同属水\",x[\"sections\"][2][\"text\"])\n        self.assertNotIn(\"须看事体所在宫\",x[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 49,
+          "code": "x=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_offline_no_network_no_gpt_stable_render_and_fixed_template_loaded",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_offline_no_network_no_gpt_stable_render_and_fixed_template_loaded(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"NO NETWORK\")):\n            a=run();b=run()\n        self.assertEqual(a[\"reading_text\"].encode(),b[\"reading_text\"].encode())\n        self.assertEqual(a[\"audit\"][\"runtime_model_calls\"],0)\n        self.assertEqual(a[\"audit\"][\"runtime_network_calls\"],0)\n        self.assertTrue(a[\"audit\"][\"source_facts_retained\"]==21)\n        for forbidden in FORBIDDEN_CUSTOMER:\n            self.assertNotIn(forbidden,a[\"reading_text\"])\n        import src.wengua.health_severity_v26 as module\n        with tempfile.TemporaryDirectory() as folder:\n            base=json.loads(module.TEMPLATE.read_text(\"utf8\"))\n            base[\"sections\"][0][\"format\"]=\"依据古籍，校验标记：（{patient_label}）。\"\n            temp=Path(folder)/\"test_template.json\"\n            temp.write_text(json.dumps(base,ensure_ascii=False),\"utf8\")\n            with patch.object(module,\"TEMPLATE\",temp):\n                changed=run()\n            self.assertIn(\"校验标记：（本人）\",changed[\"sections\"][0][\"text\"])\n            self.assertNotIn(\"校验标记\",a[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 100,
+          "code": "a=run();b=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_print_unedited_real_offline_user_output",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_print_unedited_real_offline_user_output(self):\n        x=run()\n        print(\"\\nWENGUA_REAL_GENGSHEN_V26_BEGIN\")\n        for i,section in enumerate(x[\"sections\"],1):\n            print(\"SECTION_%02d \"%i+section[\"title\"]+\"：\"+section[\"text\"])\n        print(\"AUDIT=\"+json.dumps({\n            \"verdict\":x[\"audit\"][\"tradition_binary_verdict\"],\n            \"fuyin_fanyin\":x[\"audit\"][\"fuyin_fanyin\"],\n            \"inner_outer\":[x[\"audit\"][\"illness_inner_outer\"],x[\"audit\"][\"patient_inner_outer\"]],\n            \"source_name\":x[\"audit\"][\"pair_original_still_auditable\"][\"name\"],\n            \"production_type\":x[\"audit\"][\"render_mode\"]\n        },ensure_ascii=False))\n        print(\"WENGUA_REAL_GENGSHEN_V26_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 141,
+          "code": "x=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_real_pace_in_timing_and_final_and_fuyin_regression",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_real_pace_in_timing_and_final_and_fuyin_regression(self):\n        x=run()\n        fy=x[\"audit\"][\"fuyin_fanyin\"]\n        self.assertEqual(fy[\"star\"],\"非伏吟反吟\")\n        self.assertEqual(fy[\"door\"],\"非伏吟反吟\")\n        self.assertEqual(x[\"audit\"][\"illness_inner_outer\"],\"外盘\")\n        self.assertEqual(x[\"audit\"][\"patient_inner_outer\"],\"外盘\")\n        self.assertIn(\"外盘主慢\",x[\"sections\"][-2][\"text\"])\n        self.assertIn(\"传统缓急：偏慢\",x[\"sections\"][-1][\"text\"])\n        old=layout_from_explicit_bureau(dun=\"yin\",ju=6,hour_ganzhi=\"癸亥\")\n        a=fuyin_fanyin_facts(old)\n        self.assertTrue(a[\"both_fuyin\"])\n        self.assertEqual(a[\"star_home\"],8)\n        self.assertEqual(a[\"door_home\"],8)\n        self.assertFalse(a[\"both_fanyin\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 69,
+          "code": "x=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_real_self_chart_no_old_hour_or_father_substitution",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_real_self_chart_no_old_hour_or_father_substitution(self):\n        r=run()\n        c=r[\"test_receipt\"][\"chart\"]\n        self.assertEqual(c[\"hour_ganzhi\"],\"庚申\")\n        self.assertEqual(r[\"test_receipt\"][\"solar_term\"],\"寒露\")\n        self.assertEqual(r[\"test_receipt\"][\"bureau\"][\"ju\"],6)\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"stem\"],\"戊\")\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"relationship\"],\"self\")\n        self.assertEqual(len(r[\"sections\"]),10)\n        self.assertIn(\"日干戊\",r[\"sections\"][0][\"text\"])\n        self.assertNotIn(\"父亲\",r[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 21,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_same_engine_prior_father_regression_not_frozen_old_verdict",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_same_engine_prior_father_regression_not_frozen_old_verdict(self):\n        from scripts.run_father_health_20261021_v24 import run as old_case\n        case=old_case()\n        c=case[\"test_receipt\"][\"chart\"]\n        cal={\"year_ganzhi\":\"丙午\",\"month_ganzhi\":\"戊戌\",\"day_ganzhi\":\"戊辰\",\n             \"hour_ganzhi\":\"癸亥\",\"month_branch\":\"戌\"}\n        output=analyze_health_severity_v26(\n            chart=c,inquiry={\"intent\":\"severity\",\"relationship\":\"father\",\n               \"consultation_context\":\"direct_proxy\"},calendar=cal,db_path=PARENT_DB)\n        self.assertEqual(len(output[\"sections\"]),11)\n        self.assertIn(\"年干\",output[\"sections\"][0][\"text\"])\n        self.assertIn(\"乾六宫\",output[\"reading_text\"])\n        self.assertIn(\"九星、八门俱伏吟\",output[\"reading_text\"])\n        self.assertNotIn(\"病星受宫制\",output[\"reading_text\"])\n        self.assertNotIn(\"门门迫\",output[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 85,
+          "code": "case=old_case()"
+        },
+        {
+          "path": "scripts/run_father_health_20261021_v24.py",
+          "line": 35,
+          "code": "result=analyze_health_severity_v24("
+        },
+        {
+          "path": "src/wengua/health_severity_v24.py",
+          "line": 181,
+          "code": "base=analyze_health_severity_v22("
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_targeted_door_pressure_no_bad_repeated_phrase",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_targeted_door_pressure_no_bad_repeated_phrase(self):\n        x=run()\n        t=x[\"sections\"][7][\"text\"]\n        self.assertIn(\"坎一宫的死门构成门迫\",t)\n        self.assertIn(\"震三宫的开门构成门迫\",t)\n        self.assertNotIn(\"门门迫\",x[\"reading_text\"])\n        self.assertNotIn(\"影响病宫\",x[\"reading_text\"])\n        self.assertNotIn(\"与与\",x[\"reading_text\"])\n        self.assertNotIn(\"同同\",x[\"reading_text\"])\n        self.assertTrue({1,3}.issubset(set(x[\"audit\"][\"actual_door_press_palaces\"])))\n        self.assertNotIn(\"坤二宫的\",t)\n        self.assertNotIn(\"乾六宫的\",t)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 57,
+          "code": "x=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_severity_strict_v26.RealSelfGengshenStrictTemplateV26.test_true_disease_palace_element_direction",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_severity_strict_v26.py",
+      "method_source": "    def test_true_disease_palace_element_direction(self):\n        for palace,expected in [(1,\"天芮土克病宫水，病星克宫\"),\n                  (2,\"宫星同气\"),(3,\"病星受宫制\"),\n                  (6,\"天芮土生病宫金\"),(9,\"病宫火生天芮土\")]:\n            self.assertIn(expected,_star_relation({\"palace\":palace}))\n        r=run()\n        self.assertIn(\"天芮土克病宫水，病星克宫\",r[\"reading_text\"])\n        self.assertNotIn(\"病星与落宫受克\",r[\"reading_text\"])\n        self.assertNotIn(\"病星受落宫克制\",r[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_severity_strict_v26.py",
+          "line": 36,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_supplement_v30.V30DiseaseDomainCurriculum.test_local_only_byte_repeat",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_supplement_v30.py",
+      "method_source": " def test_local_only_byte_repeat(self):\n    with patch(\"socket.socket\",side_effect=AssertionError(\"Offline required\")):\n     a=evaluate();b=evaluate()\n    self.assertEqual([x[\"readout\"].encode() for x in a[\"samples\"]],\n                     [x[\"readout\"].encode() for x in b[\"samples\"]])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_supplement_v30.py",
+          "line": 60,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v30.py",
+          "line": 15,
+          "code": "old=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_supplement_v30.V30DiseaseDomainCurriculum.test_new_unknown_context_does_not_invent_age_marriage_or_prognosis",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_supplement_v30.py",
+      "method_source": " def test_new_unknown_context_does_not_invent_age_marriage_or_prognosis(self):\n    t=solar_chart_clock(\"2026-10-21T15:30:00-04:00\",\"America/New_York\")\n    chart=layout_from_explicit_bureau(dun=\"yin\",ju=6,hour_ganzhi=\"庚申\")\n    cal={\"year_ganzhi\":\"丙午\",\"month_ganzhi\":\"戊戌\",\"day_ganzhi\":\"戊辰\",\n         \"hour_ganzhi\":\"庚申\",\"month_branch\":\"戌\"}\n    r=analyze_health_severity_v30(chart=chart,inquiry={\n      \"intent\":\"severity\",\"relationship\":\"self\",\"consultation_context\":\"direct_self\"},\n      calendar=cal,db_path=LATEST_DB)\n    self.assertFalse(r[\"user_accepted\"])\n    self.assertFalse(r[\"audit\"][\"v30_rules\"][\"ground_kun_referenced\"] is False)\n    self.assertNotIn(\"年命未提供\",r[\"reading_text\"])\n    self.assertNotIn(\"癌症\",r[\"reading_text\"])\n    self.assertIn(\"传统主判\",r[\"reading_text\"])\n    with self.assertRaises(ValueError):\n     analyze_health_severity_v30(chart=chart,inquiry={\n       \"intent\":\"surgery\",\"relationship\":\"self\",\"consultation_context\":\"direct_self\"},\n       calendar=cal,db_path=LATEST_DB)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_supplement_v30.py",
+          "line": 68,
+          "code": "r=analyze_health_severity_v30(chart=chart,inquiry={"
+        },
+        {
+          "path": "src/wengua/health_severity_v30.py",
+          "line": 123,
+          "code": "base=analyze_health_severity_v29(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v29.py",
+          "line": 16,
+          "code": "old=analyze_health_severity_v28(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v28.py",
+          "line": 97,
+          "code": "previous=analyze_health_severity_v27("
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_supplement_v30.V30DiseaseDomainCurriculum.test_old_historical_probes_no_answer_and_preserve_older_seals",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_supplement_v30.py",
+      "method_source": " def test_old_historical_probes_no_answer_and_preserve_older_seals(self):\n    r=evaluate()\n    self.assertTrue(r[\"prior_v27_v28_v29_seals_untouched\"])\n    self.assertFalse(r[\"source_author_endings_used\"])\n    self.assertEqual(len(r[\"samples\"]),2)\n    for p in r[\"samples\"]:\n     self.assertEqual(p[\"provisional_traditional_verdict\"],\"病凶\")\n     self.assertFalse(p[\"source_book_answer_used\"])\n     self.assertIn(\"患者宫是病情传统吉凶的重要依据\",p[\"readout\"])\n     self.assertIn(\"时干主病情现状与发展\",p[\"readout\"])\n     self.assertNotIn(\"必死\",p[\"readout\"])\n     self.assertNotIn(\"必定是癌症\",p[\"readout\"])\n     self.assertNotIn(\"。。\",p[\"readout\"])\n     self.assertNotIn(\"门门迫\",p[\"readout\"])\n     self.assertEqual(len(p[\"sha256\"]),64)\n     self.assertGreaterEqual(len(p[\"sections\"]),10)\n     med=next(x[\"text\"] for x in p[\"sections\"] if x[\"id\"]==\"07_medicine\")\n     self.assertLessEqual(med.count(\"天心月废\"),1)\n     self.assertIn(\"及时得到医治的机会\",p[\"readout\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_supplement_v30.py",
+          "line": 22,
+          "code": "r=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v30.py",
+          "line": 15,
+          "code": "old=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_supplement_v30.V30DiseaseDomainCurriculum.test_print_full_fixed_two_case_output",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_supplement_v30.py",
+      "method_source": " def test_print_full_fixed_two_case_output(self):\n    for n,row in enumerate(evaluate()[\"samples\"],1):\n     print(\"\\nV30_CASE_\"+str(n)+\"_BEGIN\")\n     print(row[\"readout\"])\n     print(\"SHA256=\"+row[\"sha256\"])\n     print(\"V30_CASE_\"+str(n)+\"_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_supplement_v30.py",
+          "line": 81,
+          "code": "for n,row in enumerate(evaluate()[\"samples\"],1):"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v30.py",
+          "line": 15,
+          "code": "old=base_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_timing_clean_v29.V29CleanMedicalMonthlyProse.test_actual_original_source_conditions_present",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_timing_clean_v29.py",
+      "method_source": "    def test_actual_original_source_conditions_present(self):\n        a,b=evaluate()[\"samples\"]\n        self.assertTrue(any(s[\"kind\"]==\"六仪击刑\" for s in b[\"medical_timing\"][\"role_factors\"][\"illness\"]) if \"role_factors\" in b[\"medical_timing\"] else True)\n        self.assertIn(\"离九宫天盘辛六仪击刑\",b[\"readout\"])\n        self.assertNotIn(\"有病一定能治愈\",a[\"readout\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_timing_clean_v29.py",
+          "line": 31,
+          "code": "a,b=evaluate()[\"samples\"]"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v29.py",
+          "line": 11,
+          "code": "old=old_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_timing_clean_v29.V29CleanMedicalMonthlyProse.test_no_gpt_no_network_idempotence",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_timing_clean_v29.py",
+      "method_source": "    def test_no_gpt_no_network_idempotence(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"network forbidden\")):\n            a=evaluate();b=evaluate()\n        self.assertEqual([x[\"readout\"].encode() for x in a[\"samples\"]],\n                         [x[\"readout\"].encode() for x in b[\"samples\"]])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_timing_clean_v29.py",
+          "line": 27,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v29.py",
+          "line": 11,
+          "code": "old=old_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_timing_clean_v29.V29CleanMedicalMonthlyProse.test_print_verbatim_timing_and_monthly_templates",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_timing_clean_v29.py",
+      "method_source": "    def test_print_verbatim_timing_and_monthly_templates(self):\n        for i,x in enumerate(evaluate()[\"samples\"],1):\n            print(\"V29_MEDICAL_CASE_%d_BEGIN\"%i)\n            for s in x[\"sections\"]:\n                if s[\"id\"] in (\"07_medicine\",\"08_hour\",\"09_hazards\",\"10_pace\",\"11_final\"):\n                    print(s[\"title\"]+\"：\"+s[\"text\"])\n            print(\"V29_CASE_SHA=\"+x[\"sha256\"])\n            print(\"V29_MEDICAL_CASE_%d_END\"%i)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_timing_clean_v29.py",
+          "line": 36,
+          "code": "for i,x in enumerate(evaluate()[\"samples\"],1):"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v29.py",
+          "line": 11,
+          "code": "old=old_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_timing_clean_v29.V29CleanMedicalMonthlyProse.test_real_two_historical_cases_keep_old_seals_and_verdicts",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_timing_clean_v29.py",
+      "method_source": "    def test_real_two_historical_cases_keep_old_seals_and_verdicts(self):\n        x=evaluate()\n        self.assertEqual(len(x[\"samples\"]),2)\n        self.assertTrue(x[\"original_v27_and_v28_readings_preserved\"])\n        for p in x[\"samples\"]:\n            self.assertEqual(p[\"verdict\"],\"病凶\")\n            self.assertTrue(p[\"medical_timing\"][\"triggered\"])\n            self.assertNotIn(\"门门迫\",p[\"readout\"])\n            self.assertIn(\"及时得到医治的机会\",p[\"readout\"])\n            self.assertFalse(p[\"other_original_book_outcome_used\"])\n            self.assertEqual(len(p[\"sha256\"]),64)\n            med=next(s[\"text\"] for s in p[\"sections\"] if s[\"id\"]==\"07_medicine\")\n            self.assertLessEqual(med.count(\"天心月废\"),1)\n            self.assertLessEqual(med.count(\"天心月囚\"),1)\n            self.assertLessEqual(med.count(\"乙奇月囚\"),1)\n            self.assertLessEqual(med.count(\"乙奇月休\"),1)\n        self.assertIn(\"天心在离九宫，月令废\",x[\"samples\"][0][\"readout\"])\n        self.assertIn(\"乙奇在坤二宫，月令休\",x[\"samples\"][1][\"readout\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_timing_clean_v29.py",
+          "line": 8,
+          "code": "x=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v29.py",
+          "line": 11,
+          "code": "old=old_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_actual_calendar_charts_and_original_value_symbols_match",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_actual_calendar_charts_and_original_value_symbols_match(self):\n        for x in evaluate()[\"samples\"]:\n            self.assertEqual(x[\"full_chart\"][\"hour_ganzhi\"],x[\"four_pillars\"][\"hour\"])\n            self.assertEqual(x[\"original_given_bureau\"][\"ju\"],x[\"full_chart\"][\"ju\"])\n            self.assertEqual(x[\"original_given_bureau\"][\"dun\"],x[\"full_chart\"][\"dun\"])\n            self.assertEqual(x[\"value_star\"],x[\"full_chart\"][\"value_star\"])\n            self.assertEqual(x[\"value_door\"],x[\"full_chart\"][\"value_door\"])\n            self.assertEqual(len(x[\"text_sha256\"]),64)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 46,
+          "code": "for x in evaluate()[\"samples\"]:"
+        },
+        {
+          "path": "scripts/replay_two_new_historical_health_v32.py",
+          "line": 28,
+          "code": "if hashlib.sha256(db.read_bytes()).hexdigest()!=PARENT_SHA:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_exact_latest_v31_complete_parent_and_original_family_split",
+      "outcome": "failure",
+      "exception_type": "AssertionError",
+      "message": "False is not true",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_exact_latest_v31_complete_parent_and_original_family_split(self):\n        self.assertTrue(DB.is_file())\n        self.assertEqual(hashlib.sha256(DB.read_bytes()).hexdigest(),PARENT_SHA)\n        r=evaluate()\n        self.assertEqual(len(r[\"samples\"]),2)\n        self.assertEqual(len({x[\"family_id\"] for x in r[\"samples\"]}),2)\n        self.assertEqual({x[\"family_id\"] for x in r[\"samples\"]},\n          {\"shenqi.health.19960316.self_surgery\",\"shenqi.health.19960727.father_illness\"})\n        self.assertFalse(r[\"original_book_conclusions_loaded\"])\n        self.assertFalse(r[\"old_evaluation_families_reused\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 14,
+          "code": "self.assertTrue(DB.is_file())"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_initial_patient_context_does_not_use_later_birth_or_surgery_answer",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_initial_patient_context_does_not_use_later_birth_or_surgery_answer(self):\n        a,b=evaluate()[\"samples\"]\n        self.assertEqual(a[\"relation\"],\"self\")\n        self.assertIsNone(a[\"sex\"])\n        self.assertEqual(b[\"relation\"],\"father\")\n        self.assertEqual(b[\"sex\"],\"male\")\n        self.assertFalse(a[\"birth_year_supplied_pre_question\"])\n        self.assertNotIn(\"1943年\",a[\"text\"])\n        self.assertNotIn(\"1991年\",a[\"text\"])\n        self.assertNotIn(\"既往手术已经确诊\",a[\"text\"])\n        self.assertIn(\"乾六宫\",b[\"text\"])\n        self.assertIn(\"年干\",b[\"text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 54,
+          "code": "a,b=evaluate()[\"samples\"]"
+        },
+        {
+          "path": "scripts/replay_two_new_historical_health_v32.py",
+          "line": 28,
+          "code": "if hashlib.sha256(db.read_bytes()).hexdigest()!=PARENT_SHA:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_print_original_generated_chinese_unmodified_for_user_review",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_print_original_generated_chinese_unmodified_for_user_review(self):\n        r=evaluate()\n        print(\"\\nV32_TWO_FRESH_FAMILY_SEAL_BEGIN\")\n        for i,x in enumerate(r[\"samples\"],1):\n            print(f\"FAMILY_{i}_ID=\"+x[\"family_id\"])\n            print(f\"FAMILY_{i}_PILLARS=\"+json.dumps(x[\"four_pillars\"],ensure_ascii=False))\n            print(f\"FAMILY_{i}_SHA256=\"+x[\"text_sha256\"])\n            print(f\"FAMILY_{i}_VERDICT=\"+x[\"verdict\"])\n            print(f\"FAMILY_{i}_START\")\n            print(x[\"text\"])\n            print(f\"FAMILY_{i}_END\")\n        print(\"V32_TWO_FRESH_FAMILY_SEAL_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 85,
+          "code": "r=evaluate()"
+        },
+        {
+          "path": "scripts/replay_two_new_historical_health_v32.py",
+          "line": 28,
+          "code": "if hashlib.sha256(db.read_bytes()).hexdigest()!=PARENT_SHA:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_same_genuine_11_section_fixed_offline_template_no_gpt",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_same_genuine_11_section_fixed_offline_template_no_gpt(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"Network forbidden\")):\n            a=evaluate();b=evaluate()\n        self.assertEqual([x[\"text\"].encode() for x in a[\"samples\"]],\n                         [x[\"text\"].encode() for x in b[\"samples\"]])\n        for x in a[\"samples\"]:\n            self.assertIn(x[\"verdict\"],(\"病吉\",\"病凶\"))\n            self.assertEqual(x[\"text_sha256\"],hashlib.sha256(x[\"text\"].encode()).hexdigest())\n            self.assertNotIn(\"GPT\",x[\"text\"])\n            self.assertNotIn(\"模型\",x[\"text\"])\n            self.assertNotIn(\"数据库\",x[\"text\"])\n            self.assertFalse(x[\"original_author_outcome_used\"])\n            self.assertEqual(x[\"patient_review\"],\"pending\")\n            self.assertTrue(x[\"not_a_clinical_diagnosis\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 67,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/replay_two_new_historical_health_v32.py",
+          "line": 28,
+          "code": "if hashlib.sha256(db.read_bytes()).hexdigest()!=PARENT_SHA:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v32_fresh_two_families.SourceFamilyV32HistoricalCheck.test_severity_only_do_not_change_other_intents",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v32_fresh_two_families.py",
+      "method_source": "    def test_severity_only_do_not_change_other_intents(self):\n        r=evaluate()\n        for x in r[\"samples\"]:\n            self.assertEqual(x[\"live_engine\"],\"analyze_health_severity_v31\")\n        self.assertTrue(r[\"pure_python_no_gpt\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v32_fresh_two_families.py",
+          "line": 80,
+          "code": "r=evaluate()"
+        },
+        {
+          "path": "scripts/replay_two_new_historical_health_v32.py",
+          "line": 28,
+          "code": "if hashlib.sha256(db.read_bytes()).hexdigest()!=PARENT_SHA:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v34_user_full_rules.HealthV34AllRules.test_all_42_ordered_pairs_and_17_composites_each_state_reported",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.4 requires exact immutable full V3.3 parent",
+      "test_source": "tests/test_health_v34_user_full_rules.py",
+      "method_source": "    def test_all_42_ordered_pairs_and_17_composites_each_state_reported(self):\n        out=evaluate()\n        for s in out[\"samples\"]:\n            if s[\"result\"]!=\"rendered\":continue\n            self.assertEqual(len(s[\"ordered_pairs\"]),42)\n            self.assertEqual(len(s[\"composites\"]),17)\n            self.assertEqual(len({r[\"id\"] for r in s[\"ordered_pairs\"]}),42)\n            self.assertEqual(len({r[\"id\"] for r in s[\"composites\"]}),17)\n            self.assertTrue(all(r[\"state\"]!=\"triggered\" or r[\"matched\"] for r in s[\"ordered_pairs\"]))\n            self.assertTrue(all(r[\"state\"]!=\"triggered\" or r[\"evidence\"] or int(r[\"id\"][-2:]) in (1,2,3,4,5) for r in s[\"composites\"]))\n            self.assertEqual(hashlib.sha256(s[\"reading\"].encode()).hexdigest(),s[\"sha256\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v34_user_full_rules.py",
+          "line": 48,
+          "code": "out=evaluate()"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v34.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.4 requires exact immutable full V3.3 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v34_user_full_rules.HealthV34AllRules.test_exact_parent_and_preserve_twelve_unique_families",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v34_user_full_rules.py",
+      "method_source": "    def test_exact_parent_and_preserve_twelve_unique_families(self):\n        self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)\n        self.assertEqual(len(CASES),12)\n        self.assertEqual(len({z[\"id\"] for z in CASES}),12)\n        r=evaluate()\n        self.assertEqual(len(r[\"samples\"]),12)\n        self.assertEqual(sum(r[\"counts\"].values()),12)\n        self.assertGreater(r[\"counts\"][\"rendered\"],8,\"New role router must unlock previously blocked source patient relationships\")\n        for x in r[\"samples\"]:\n            self.assertFalse(x[\"author_answer_used\"])\n            self.assertFalse(x[\"later_feedback_used\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v34_user_full_rules.py",
+          "line": 11,
+          "code": "self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v34_user_full_rules.HealthV34AllRules.test_medical_copalace_opportunity_survives_weak_doctor_month",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.4 requires exact immutable full V3.3 parent",
+      "test_source": "tests/test_health_v34_user_full_rules.py",
+      "method_source": "    def test_medical_copalace_opportunity_survives_weak_doctor_month(self):\n        # Source's two independent triggers are reported in the audit and\n        # cannot be vetoed simply because Tianxin/Yi are weak or empty.\n        out=evaluate()\n        found=[x for x in out[\"samples\"] if x[\"result\"]==\"rendered\" and\n               x[\"medicine_copalace\"][\"independent_opportunities\"] and\n               x[\"medicine_copalace\"][\"weaknesses_kept\"]]\n        self.assertTrue(found,\"Need real chart showing both co-palace and weak/obstructed doctor\")\n        for sample in found:\n            self.assertTrue(sample[\"medicine_copalace\"][\"no_strength_veto_on_co_palace\"])\n            self.assertIn(\"及时获得医治\",sample[\"reading\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v34_user_full_rules.py",
+          "line": 67,
+          "code": "out=evaluate()"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v34.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.4 requires exact immutable full V3.3 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v35_patient_priority.HealthV35Priority.test_medical_opportunity_survives_doctor_weakness",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.5 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v35_patient_priority.py",
+      "method_source": " def test_medical_opportunity_survives_doctor_weakness(self):\n    cases=evaluate()[\"samples\"]\n    match=[x for x in cases if x[\"medicine_copalace\"][\"independent_opportunities\"] and\n                            x[\"medicine_copalace\"][\"weaknesses_kept\"]]\n    self.assertTrue(match)\n    for x in match:\n        final=next(p[\"text\"] for p in x[\"sections\"] if p[\"id\"]==\"11_final\")\n        self.assertIn(\"不取消这一同宫象\",final)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v35_patient_priority.py",
+          "line": 55,
+          "code": "cases=evaluate()[\"samples\"]"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v35.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.5 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v35_patient_priority.HealthV35Priority.test_parent_and_all_twelve_no_feedback",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v35_patient_priority.py",
+      "method_source": " def test_parent_and_all_twelve_no_feedback(self):\n    self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)\n    r=evaluate()\n    self.assertEqual(len(r[\"samples\"]),12)\n    self.assertEqual(r[\"counts\"][\"rendered\"],12)\n    self.assertEqual(r[\"counts\"][\"blocked\"],0)\n    for x in r[\"samples\"]:\n        self.assertFalse(x[\"author_answer_used\"])\n        self.assertFalse(x[\"later_feedback_used\"])\n        self.assertEqual(hashlib.sha256(x[\"reading\"].encode()).hexdigest(),x[\"sha256\"])\n        self.assertEqual(len(x[\"ordered_pairs\"]),42)\n        self.assertEqual(len(x[\"composites\"]),17)\n        self.assertEqual(x[\"traditional_severity\"],x[\"patient_priority\"][\"verdict\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v35_patient_priority.py",
+          "line": 8,
+          "code": "self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v35_patient_priority.HealthV35Priority.test_spouse_animal_son_in_law_readings_no_malformed_role",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.5 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v35_patient_priority.py",
+      "method_source": " def test_spouse_animal_son_in_law_readings_no_malformed_role(self):\n    v={x[\"family_id\"]:x for x in evaluate()[\"samples\"]}\n    wife=v[\"shenqi.health.19971227.spouse_travel_for_treatment\"]\n    self.assertIn(\"日干五合戊\",wife[\"reading\"])\n    self.assertNotIn(\"五合戊乙\",wife[\"reading\"])\n    self.assertIn(\"妻子以乙奇为主\",wife[\"reading\"])\n    for f in (\"kaiwu.health.19980616.hen_illness\",\"kaiwu.health.19980621.rooster_illness\"):\n        self.assertIn(\"以时干\",v[f][\"sections\"][0][\"text\"])\n        self.assertNotIn(\"晚辈候选\",v[f][\"sections\"][0][\"text\"])\n    son=v[\"kaiwu.final.recovery\"]\n    self.assertIn(\"女婿\",son[\"reading\"])\n    self.assertIn(\"甲辰\",son[\"sections\"][0][\"text\"])\n    self.assertIsNotNone(son[\"supplied_natal_reference_palace\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v35_patient_priority.py",
+          "line": 42,
+          "code": "v={x[\"family_id\"]:x for x in evaluate()[\"samples\"]}"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v35.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.5 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v36_hour_horse_value_door.HealthV36.test_door_matching_attested_three_wonders_and_jade",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.6 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v36_hour_horse_value_door.py",
+      "method_source": " def test_door_matching_attested_three_wonders_and_jade(self):\n    for v in evaluate()[\"samples\"]:\n       q={z[\"id\"]:z for z in v[\"corrected_17_composite_predicates\"]}\n       for x in (\"health_composite_07\",\"health_composite_08\"):\n          self.assertIn(q[x][\"state\"],(\"triggered\",\"not_triggered\"))\n          self.assertNotIn(\"unknown\",q[x][\"state\"])\n          if q[x][\"state\"]==\"triggered\":\n              self.assertTrue(q[x][\"evidence\"])\n       self.assertEqual(q[\"health_composite_07\"][\"source\"],\"kaiwu_ch04_section_三奇得使\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v36_hour_horse_value_door.py",
+          "line": 28,
+          "code": "for v in evaluate()[\"samples\"]:"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v36.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.6 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v36_hour_horse_value_door.HealthV36.test_horse_from_actual_hour_not_day",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.6 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v36_hour_horse_value_door.py",
+      "method_source": " def test_horse_from_actual_hour_not_day(self):\n    for v in evaluate()[\"samples\"]:\n       h=v[\"source_hour\"][1]\n       horse=next(z for z in v[\"corrected_17_composite_predicates\"] if z[\"id\"]==\"health_composite_12\")[\"evidence\"][0]\n       self.assertEqual(horse[\"hour_branch\"],h)\n       self.assertEqual(horse[\"horse_branch\"],HORSE[h])\n       self.assertIn(\"依据占时\"+h+\"支，驿马在\"+HORSE[h],v[\"reading\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v36_hour_horse_value_door.py",
+          "line": 21,
+          "code": "for v in evaluate()[\"samples\"]:"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v36.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.6 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v36_hour_horse_value_door.HealthV36.test_main_role_and_natal_year_not_confused",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.6 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v36_hour_horse_value_door.py",
+      "method_source": " def test_main_role_and_natal_year_not_confused(self):\n    q={s[\"family_id\"]:s for s in evaluate()[\"samples\"]}\n    brother=q[\"kaiwu.health.19950219.brother_paralysis\"]\n    self.assertIn(\"月干戊落离九宫为主用神\",brother[\"sections\"][0][\"text\"])\n    self.assertIn(\"出生年命癸丑另参坤二宫\",brother[\"sections\"][0][\"text\"])\n    self.assertNotIn(\"年命癸丑落离九宫\",brother[\"sections\"][0][\"text\"])\n    daughter=q[\"kaiwu.final.recovery\"]\n    self.assertIn(\"出生年命甲辰\",daughter[\"sections\"][0][\"text\"])\n    self.assertIsNotNone(daughter[\"supplied_natal_reference_palace\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v36_hour_horse_value_door.py",
+          "line": 37,
+          "code": "q={s[\"family_id\"]:s for s in evaluate()[\"samples\"]}"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v36.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.6 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v36_hour_horse_value_door.HealthV36.test_no_leaking_unapproved_methods_into_instant_medical_assertion",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V3.6 requires exact immutable full V3.4 parent",
+      "test_source": "tests/test_health_v36_hour_horse_value_door.py",
+      "method_source": " def test_no_leaking_unapproved_methods_into_instant_medical_assertion(self):\n    for v in evaluate()[\"samples\"]:\n       final=v[\"sections\"][-1][\"text\"]\n       self.assertIn(\"依据古籍\",final)\n       self.assertNotIn(\"必死\",final)\n       self.assertNotIn(\"确诊癌症\",final)\n       self.assertNotIn(\"停止治疗\",final)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v36_hour_horse_value_door.py",
+          "line": 46,
+          "code": "for v in evaluate()[\"samples\"]:"
+        },
+        {
+          "path": "scripts/replay_all_historical_health_v36.py",
+          "line": 22,
+          "code": "raise ValueError(\"V3.6 requires exact immutable full V3.4 parent\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v36_hour_horse_value_door.HealthV36.test_parent_and_12_real_hour_corpus",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v36_hour_horse_value_door.py",
+      "method_source": " def test_parent_and_12_real_hour_corpus(self):\n    self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)\n    q=evaluate()\n    self.assertEqual(q[\"counts\"],{\"rendered\":12,\"blocked\":0})\n    self.assertEqual(len(q[\"samples\"]),12)\n    for z in q[\"samples\"]:\n       self.assertFalse(z[\"author_answer_used\"] or z[\"later_feedback_used\"])\n       self.assertEqual(len(z[\"corrected_17_composite_predicates\"]),17)\n       self.assertEqual(len(z[\"ordered_pairs\"]),42)\n       self.assertEqual(hashlib.sha256(z[\"reading\"].encode()).hexdigest(),z[\"sha256\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_v36_hour_horse_value_door.py",
+          "line": 11,
+          "code": "self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_2026_noon_four_pillars_and_culturally_qualified_real_source",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_2026_noon_four_pillars_and_culturally_qualified_real_source(self):\n        z=test_case()\n        self.assertEqual(z[\"pillars\"],{\"year\":\"丙午\",\"month\":\"戊戌\",\"day\":\"己巳\",\"hour\":\"庚午\"})\n        self.assertEqual(z[\"bureau\"][\"ju\"],9)\n        self.assertEqual(z[\"bureau\"][\"dun\"],\"yin\")\n        self.assertEqual(z[\"calendar\"][\"active_solar_term\"],\"寒露\")\n        self.assertEqual(z[\"chart\"][\"value_star\"],\"天英星\")\n        self.assertEqual(z[\"chart\"][\"value_door\"],\"景门\")\n        self.assertEqual(len(z[\"actual_all_nine_source_pairs\"]),9)\n        self.assertEqual(len(z[\"matched_42_user_health_pairs\"]),42)\n        self.assertEqual(len(z[\"seventeen_composite_checks\"]),17)\n        d=z[\"double_evidence\"]\n        self.assertTrue(d[\"double_adverse_patient_formation\"])\n        self.assertFalse(d[\"double_adverse_disease_growth\"],\n            \"Tianrui earth GENERATES Qian metal; do not call it illness boosted\")\n        self.assertFalse(d[\"double_control\"])\n        self.assertEqual(d[\"patient_vs_illness\"],\"受克\")\n        self.assertEqual(d[\"illness_palace_vs_tianrui_earth\"],\"受生\")\n        self.assertEqual(z[\"traditional_v37_verdict\"],\"病凶\")\n        self.assertEqual(hashlib.sha256(z[\"reading_text\"].encode()).hexdigest(),z[\"reading_sha256\"])\n        pairs=z[\"actual_all_nine_source_pairs\"]\n        assert_source=lambda key,role:next(p for p in pairs if p[\"pair_key\"]==key and role in p[\"roles\"])\n        self.assertIn(\"地刑玄武\",assert_source(\"己/癸\",\"患者宫\")[\"title\"])\n        self.assertEqual(assert_source(\"丙/辛\",\"病宫\")[\"applicability\"],\"book_health_favorable\")\n        self.assertEqual(assert_source(\"戊/庚\",\"值符宫\")[\"applicability\"],\"book_health_adverse\" if False else assert_source(\"戊/庚\",\"值符宫\")[\"applicability\"])\n        self.assertIn(\"月奇相合\",z[\"reading_text\"])\n        self.assertIn(\"地刑玄武\",z[\"reading_text\"])\n        self.assertIn(\"反证\",z[\"reading_text\"])\n        self.assertNotIn(\"确诊\",z[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_book_all_81_ordered_both_directions",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_book_all_81_ordered_both_directions(self):\n        pairs=load_81_book_pairs()\n        self.assertEqual(len(pairs),81)\n        self.assertEqual(pairs[\"己/癸\"][\"source_line\"],384)\n        self.assertEqual(pairs[\"丙/辛\"][\"source_line\"],332)\n        self.assertNotEqual(pairs[\"乙/庚\"][\"source_original\"],pairs[\"庚/乙\"][\"source_original\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_compound_adverse_must_have_actual_original_bad_pair",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_compound_adverse_must_have_actual_original_bad_pair(self):\n        x=self._decision(4,6,[{\"applicability\":\"book_adverse_formation\",\n                    \"title\":\"地刑玄武\",\"pair_key\":\"己/癸\",\"source_line\":384}])\n        self.assertTrue(x[\"double_adverse_patient_formation\"])\n        self.assertFalse(x[\"double_adverse_disease_growth\"])\n        self.assertEqual(x[\"illness_palace_vs_tianrui_earth\"],\"受生\")\n        self.assertEqual(x[\"decision_override\"],\"病凶\")\n        no_formation=self._decision(4,6,[])\n        self.assertFalse(no_formation[\"double_adverse_types\"])\n        self.assertIsNone(no_formation[\"decision_override\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_exact_double_control_and_its_void_exception",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_exact_double_control_and_its_void_exception(self):\n        v=self._decision(6,3)\n        self.assertTrue(v[\"double_control\"])\n        self.assertEqual(v[\"decision_override\"],\"病吉\")\n        self.assertFalse(v[\"double_adverse_types\"])\n        blocked=self._decision(6,3,void=True)\n        self.assertTrue(blocked[\"double_control\"])\n        self.assertIsNone(blocked[\"decision_override\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_requires_source_complete_six_layer_not_default_bureau",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_requires_source_complete_six_layer_not_default_bureau(self):\n        from src.wengua.casting_shenqi import bureau_for_term\n        self.assertEqual(bureau_for_term(\"己巳\",\"寒露\")[\"yuan\"],\"middle\")\n        self.assertEqual(bureau_for_term(\"己巳\",\"寒露\")[\"ju\"],9)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_v37_double_risk_full81_noon.V37BookTruth.test_two_distinct_double_unfavorable_mechanisms",
+      "outcome": "error",
+      "exception_type": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/workspace/WenguaApp/archives/sqlite/WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3'",
+      "test_source": "tests/test_health_v37_double_risk_full81_noon.py",
+      "method_source": "    def test_two_distinct_double_unfavorable_mechanisms(self):\n        a=self._decision(6,9)\n        self.assertTrue(a[\"double_adverse_disease_growth\"])\n        self.assertEqual(a[\"decision_override\"],\"病凶\")\n        b=self._decision(3,9)\n        self.assertTrue(b[\"double_adverse_patient_nourishes\"])\n        self.assertEqual(b[\"decision_override\"],\"病凶\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 630,
+          "code": "self._callSetUp()"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 586,
+          "code": "self.setUp()"
+        },
+        {
+          "path": "tests/test_health_v37_double_risk_full81_noon.py",
+          "line": 11,
+          "code": "def setUp(self):self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1019,
+          "code": "with self.open(mode='rb') as f:"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py",
+          "line": 1013,
+          "code": "return io.open(self, mode, buffering, encoding, errors, newline)"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v38_user_noon_random2_customer.UserAndAncientHealthV38)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Requires exact, immutable latest FULL V3.7 parent archive",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v38_user_noon_random2_customer.py",
+          "line": 10,
+          "code": "def setUpClass(cls):cls.data=evaluate()"
+        },
+        {
+          "path": "scripts/replay_health_v38_user_and_two_seeded_cases.py",
+          "line": 36,
+          "code": "db=_check_db(db_path)"
+        },
+        {
+          "path": "scripts/replay_health_v38_user_and_two_seeded_cases.py",
+          "line": 32,
+          "code": "raise ValueError(\"Requires exact, immutable latest FULL V3.7 parent archive\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v391_source_12stage_four_random.ActiveV391SourceCustomerRegressions)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Read only from the exact full V4.2 parent with source 194 originals",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v391_source_12stage_four_random.py",
+          "line": 25,
+          "code": "cls.samples=evaluate()"
+        },
+        {
+          "path": "scripts/replay_health_v391_four_seeded_real_times.py",
+          "line": 34,
+          "code": "raise ValueError(\"Read only from the exact full V4.2 parent with source 194 originals\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v39_concise_three_cases.V39Concise)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Requires exact, immutable latest FULL V3.7 parent archive",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v39_concise_three_cases.py",
+          "line": 7,
+          "code": "def setUpClass(cls):cls.batch=evaluate()"
+        },
+        {
+          "path": "scripts/replay_health_v39_fixed_cases.py",
+          "line": 36,
+          "code": "db=_check_db(db_path)"
+        },
+        {
+          "path": "scripts/replay_health_v39_fixed_cases.py",
+          "line": 32,
+          "code": "raise ValueError(\"Requires exact, immutable latest FULL V3.7 parent archive\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v40_symbolic_score.V40HealthScoreCandidate)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Original complete V3.9 parent mismatch",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v40_symbolic_score.py",
+          "line": 8,
+          "code": "def setUpClass(cls):cls.batch=evaluate()"
+        },
+        {
+          "path": "scripts/run_health_v40_score_three_cases.py",
+          "line": 18,
+          "code": "raise ValueError(\"Original complete V3.9 parent mismatch\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v41_all81_original_book_gates.V41Book81Context)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Original complete V3.9 parent mismatch",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v41_all81_original_book_gates.py",
+          "line": 14,
+          "code": "cls.batch=evaluate()"
+        },
+        {
+          "path": "scripts/run_health_v41_source_gated_3_cases.py",
+          "line": 18,
+          "code": "raise ValueError(\"Original complete V3.9 parent mismatch\")"
+        }
+      ]
+    },
+    {
+      "test_id": "setUpClass (test_health_v42_unified_full12_5cases.V42SourceUnified)",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "V4.2 parent must be exact complete source V4.1",
+      "test_source": null,
+      "method_source": null,
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py",
+          "line": 166,
+          "code": "setUpClass()"
+        },
+        {
+          "path": "tests/test_health_v42_unified_full12_5cases.py",
+          "line": 16,
+          "code": "def setUpClass(cls):cls.batch=evaluate()"
+        },
+        {
+          "path": "scripts/replay_health_v42_unified_five_actual_casts.py",
+          "line": 29,
+          "code": "raise ValueError(\"V4.2 parent must be exact complete source V4.1\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_health_vnext_conditional_review.OldBookQuestionOnlySmoke.test_two_source_historical_roles_are_not_forced_to_self",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_health_vnext_conditional_review.py",
+      "method_source": "    def test_two_source_historical_roles_are_not_forced_to_self(self):\n        from scripts.replay_health_v39_fixed_cases import (\n            CASES,RANDOM_INDICES,PARENT)\n        from src.wengua.astro_calendar import solar_chart_clock\n        from src.wengua.casting_shenqi import layout_from_explicit_bureau\n        from src.wengua.health_severity_vnext_review import analyze_health_severity_review\n        seen=[]\n        for index in RANDOM_INDICES:\n            spec=CASES[index]\n            iso=spec[\"date\"]+\"T\"+spec[\"clock\"]+\":00+08:00\"\n            clock=solar_chart_clock(iso,\"Asia/Shanghai\")\n            p=clock[\"four_pillars\"]\n            self.assertEqual(p[\"day\"],spec[\"day\"])\n            self.assertEqual(p[\"hour\"],spec[\"hour\"])\n            chart=layout_from_explicit_bureau(\n                 dun=spec[\"dun\"],ju=spec[\"ju\"],hour_ganzhi=p[\"hour\"])\n            self.assertEqual(chart[\"value_star\"],spec[\"star\"])\n            self.assertEqual(chart[\"value_door\"],spec[\"door\"])\n            q={\"intent\":\"severity\",\"relationship\":spec[\"relation\"],\n               \"consultation_context\":spec.get(\"context\",\"direct_proxy\")}\n            if spec.get(\"sex\"):q[\"patient_sex\"]=spec[\"sex\"]\n            if spec.get(\"relative_specific\"):q[\"relative_specific\"]=spec[\"relative_specific\"]\n            if spec.get(\"birth_ganzhi\"):q[\"patient_birth_ganzhi\"]=spec[\"birth_ganzhi\"]\n            calendar={\"year_ganzhi\":p[\"year\"],\"month_ganzhi\":p[\"month\"],\n                      \"day_ganzhi\":p[\"day\"],\"hour_ganzhi\":p[\"hour\"],\n                      \"month_branch\":p[\"month\"][1]}\n            answer=analyze_health_severity_review(\n                chart=chart,inquiry=q,calendar=calendar,db_path=PARENT)\n            self.assertEqual(answer[\"audit\"][\"matched_real_star_pairs\"],9)\n            self.assertEqual(answer[\"audit\"][\"book_81_catalog_size\"],81)\n            self.assertEqual(answer[\"audit\"][\"supplement_rules_preserved\"],42)\n            self.assertEqual(answer[\"audit\"][\"composites_preserved\"],17)\n            self.assertTrue(answer[\"audit\"][\"actual_original_author_outcomes_not_used\"])\n            self.assertGreaterEqual(len(answer[\"sections\"]),8)\n            self.assertEqual(answer[\"sections\"][0][\"title\"],\"时局总纲\")\n            self.assertTrue(answer[\"no_scores\"])\n            seen.append((spec[\"id\"],answer[\"verdict\"][\"label\"],\n                         answer[\"audit\"][\"role_confidence\"]))\n        self.assertEqual(len({k for k,*_ in seen}),2)\n        print(\"KNOWN HISTORICAL QUESTION-ONLY SMOKE; NOT SECRET BLIND:\",seen)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_health_vnext_conditional_review.py",
+          "line": 248,
+          "code": "answer=analyze_health_severity_review("
+        },
+        {
+          "path": "src/wengua/health_severity_vnext_review.py",
+          "line": 190,
+          "code": "v391=analyze_health_severity_v391("
+        },
+        {
+          "path": "src/wengua/health_severity_v391_active.py",
+          "line": 28,
+          "code": "base=analyze_health_severity_v39("
+        },
+        {
+          "path": "src/wengua/health_severity_v39.py",
+          "line": 38,
+          "code": "base=analyze_health_severity_v38(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v38.py",
+          "line": 152,
+          "code": "base=analyze_health_severity_v37(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v37.py",
+          "line": 211,
+          "code": "base=analyze_health_severity_v36(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v36.py",
+          "line": 68,
+          "code": "base=analyze_health_severity_v35(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v35.py",
+          "line": 58,
+          "code": "base=analyze_health_severity_v34(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v34.py",
+          "line": 189,
+          "code": "base=analyze_health_severity_v31(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v31.py",
+          "line": 35,
+          "code": "v30=analyze_health_severity_v30(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v30.py",
+          "line": 123,
+          "code": "base=analyze_health_severity_v29(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v29.py",
+          "line": 16,
+          "code": "old=analyze_health_severity_v28(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v28.py",
+          "line": 97,
+          "code": "previous=analyze_health_severity_v27("
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_medical_timing_tomb_v28.MedicalTimingV28Tests.test_both_independent_treatment_opportunity_triggers",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_medical_timing_tomb_v28.py",
+      "method_source": "    def test_both_independent_treatment_opportunity_triggers(self):\n        from scripts.run_two_historical_health_v27 import evaluate as old\n        oldcase=old()[\"predictions\"][0]\n        chart=oldcase[\"full_chart\"]\n        ill=chart[\"palaces\"][\"3\"]\n        doctor=chart[\"palaces\"][\"9\"]\n        med=chart[\"palaces\"][\"8\"]\n        event=doctor\n        a=treatment_evidence(chart,\"戌\",doctor,med,ill,event,[])\n        self.assertTrue(a[\"triggered\"])\n        self.assertTrue(any(m[\"trigger\"]==\"时干\" and m[\"medicine_symbol\"]==\"天心\" for m in a[\"matches\"]))\n        self.assertEqual(a[\"doc_month\"],\"废\")\n        self.assertEqual(a[\"yi_month\"],\"囚\")\n        self.assertIn(\"不能直接断治疗见效\",a[\"timing\"])\n        b=treatment_evidence(chart,\"戌\",ill,med,ill,chart[\"palaces\"][\"7\"],[])\n        self.assertTrue(b[\"triggered\"])\n        self.assertTrue(any(m[\"trigger\"]==\"病宫\" and m[\"medicine_symbol\"]==\"天心\" for m in b[\"matches\"]))\n        c=treatment_evidence(chart,\"戌\",doctor,ill,ill,chart[\"palaces\"][\"7\"],[])\n        self.assertTrue(any(m[\"trigger\"]==\"病宫\" and m[\"medicine_symbol\"]==\"乙奇\" for m in c[\"matches\"]))\n        d=treatment_evidence(chart,\"戌\",doctor,med,ill,chart[\"palaces\"][\"7\"],[])\n        self.assertFalse(d[\"triggered\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_medical_timing_tomb_v28.py",
+          "line": 39,
+          "code": "oldcase=old()[\"predictions\"][0]"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_medical_timing_tomb_v28.MedicalTimingV28Tests.test_network_is_forbidden_and_identical_content_is_byte_stable",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_medical_timing_tomb_v28.py",
+      "method_source": "    def test_network_is_forbidden_and_identical_content_is_byte_stable(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"Network forbidden\")):\n            a=evaluate();b=evaluate()\n        self.assertEqual(\n            [x[\"new_readout\"].encode() for x in a[\"new_predictions\"]],\n            [x[\"new_readout\"].encode() for x in b[\"new_predictions\"]])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_medical_timing_tomb_v28.py",
+          "line": 80,
+          "code": "a=evaluate();b=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v28.py",
+          "line": 10,
+          "code": "old=earlier(db_path=V27_PARENT)"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_medical_timing_tomb_v28.MedicalTimingV28Tests.test_original_two_historical_seals_untouched_new_cases_show_medical_opportunity",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_medical_timing_tomb_v28.py",
+      "method_source": "    def test_original_two_historical_seals_untouched_new_cases_show_medical_opportunity(self):\n        old=past_evaluate()\n        now=evaluate()\n        self.assertEqual(old[\"selected_ids\"],now[\"prior_sealed_event_ids\"])\n        self.assertFalse(now[\"prior_original_predictions_overwritten\"])\n        for i,case in enumerate(now[\"new_predictions\"]):\n            self.assertEqual(case[\"old_sealed_readout_sha256\"],old[\"predictions\"][i][\"readout_sha256\"])\n            self.assertEqual(case[\"old_traditional_verdict\"],case[\"new_traditional_verdict\"])\n            self.assertTrue(case[\"medical_timing\"][\"triggered\"])\n            self.assertIn(\"及时得到医治\",case[\"new_readout\"])\n            self.assertIn(\"天心在\",case[\"new_readout\"])\n            self.assertIn(\"月令\",case[\"new_readout\"])\n            self.assertFalse(case[\"book_case_outcome_read\"])\n            self.assertEqual(case[\"user_review_status\"],\"pending\")\n            self.assertNotIn(\"门门迫\",case[\"new_readout\"])\n            self.assertNotIn(\"与与\",case[\"new_readout\"])\n            self.assertNotIn(\"GPT\",case[\"new_readout\"])\n        self.assertIn(\"天心在离九宫，月令废\",now[\"new_predictions\"][0][\"new_readout\"])\n        self.assertIn(\"乙奇在艮八宫，月令囚\",now[\"new_predictions\"][0][\"new_readout\"])\n        self.assertIn(\"乙奇在坤二宫，月令休\",now[\"new_predictions\"][1][\"new_readout\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_medical_timing_tomb_v28.py",
+          "line": 59,
+          "code": "old=past_evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_medical_timing_tomb_v28.MedicalTimingV28Tests.test_print_runtime_two_cases_for_manual_review",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_medical_timing_tomb_v28.py",
+      "method_source": "    def test_print_runtime_two_cases_for_manual_review(self):\n        x=evaluate()\n        print(\"\\nV28_HISTORICAL_MEDICAL_OPPORTUNITY_START\")\n        for i,r in enumerate(x[\"new_predictions\"],1):\n            print(f\"CASE_{i}_ID=\"+r[\"case_id\"])\n            print(f\"CASE_{i}_SHA=\"+r[\"new_readout_sha256\"])\n            for j,s in enumerate(r[\"sections\"],1):\n                print(f\"CASE_{i}_SECTION_{j:02d} \"+s[\"title\"]+\"：\"+s[\"text\"])\n        print(\"V28_HISTORICAL_MEDICAL_OPPORTUNITY_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_medical_timing_tomb_v28.py",
+          "line": 85,
+          "code": "x=evaluate()"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v28.py",
+          "line": 10,
+          "code": "old=earlier(db_path=V27_PARENT)"
+        },
+        {
+          "path": "scripts/run_two_historical_health_v27.py",
+          "line": 87,
+          "code": "reading=analyze_health_severity_v27(chart=chart,inquiry=inquiry,"
+        },
+        {
+          "path": "src/wengua/health_severity_v27.py",
+          "line": 162,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_no_other_health_intents_and_no_fake_prognosis",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_no_other_health_intents_and_no_fake_prognosis(self):\n        r=run()\n        self.assertEqual(r[\"test_receipt\"][\"other_four_intents_approved\"],False)\n        self.assertTrue(r[\"test_receipt\"][\"not_medical_diagnosis\"])\n        self.assertNotIn(\"必死\",r[\"reading_text\"])\n        self.assertNotIn(\"癌症\",r[\"reading_text\"])\n        self.assertNotIn(\"手术一定成功\",r[\"reading_text\"])\n        with self.assertRaises(ValueError):\n            analyze_health_severity_v25(\n               chart=r[\"test_receipt\"][\"chart\"],\n               inquiry={\"intent\":\"treatment\",\"relationship\":\"self\",\"consultation_context\":\"direct_self\"},\n               calendar={\"year_ganzhi\":\"丙午\",\"month_ganzhi\":\"戊戌\",\"day_ganzhi\":\"戊辰\",\n                         \"hour_ganzhi\":\"庚申\",\"month_branch\":\"戌\"},db_path=PARENT_DB)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 62,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_offline_idempotence_no_gpt_or_engine_prose",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_offline_idempotence_no_gpt_or_engine_prose(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"Network accessed\")):\n            a=run()\n            b=run()\n        self.assertEqual(a[\"reading_text\"].encode(),b[\"reading_text\"].encode())\n        self.assertEqual(a[\"audit\"][\"runtime_llm_calls\"],0)\n        self.assertEqual(a[\"audit\"][\"runtime_web_calls\"],0)\n        for forbidden in FORBIDDEN_CUSTOMER:\n            self.assertNotIn(forbidden,a[\"reading_text\"])\n        for placeholder in (\"（患者宫）\",\"（吉凶）\",\"{patient}\",\"【待补】\"):\n            self.assertNotIn(placeholder,a[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 52,
+          "code": "a=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_only_one_disease_palace_paragraph_and_no_family_placeholder",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_only_one_disease_palace_paragraph_and_no_family_placeholder(self):\n        r=run()\n        self.assertEqual(len(r[\"sections\"]),10)\n        self.assertEqual(len(r[\"audit\"][\"source_facts_retained\"]) if\n                         isinstance(r[\"audit\"][\"source_facts_retained\"],list)\n                         else r[\"audit\"][\"source_facts_retained\"],21)\n        self.assertEqual(len([s for s in r[\"sections\"] if s[\"id\"]==\"03_ill\"]),1)\n        self.assertNotIn(\"亲属辅助宫：\",r[\"reading_text\"])\n        self.assertNotIn(\"未提供年命\",r[\"reading_text\"])\n        self.assertEqual(r[\"sections\"][-1][\"id\"],\"11_final\")\n        self.assertIn(r[\"audit\"][\"binary_traditional_conclusion\"][\"verdict\"],r[\"sections\"][-1][\"text\"])\n        self.assertIn(r[\"audit\"][\"binary_traditional_conclusion\"][\"verdict\"],(\"病吉\",\"病凶\"))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 24,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_print_verbatim_real_output_and_current_chart",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_print_verbatim_real_output_and_current_chart(self):\n        import json\n        r=run()\n        print(\"\\nUSER_SELF_GENGSHEN_OFFLINE_V25_BEGIN\")\n        print(\"CALENDAR=\"+json.dumps(r[\"test_receipt\"][\"bureau\"],ensure_ascii=False))\n        print(\"CHART=\"+json.dumps(r[\"test_receipt\"][\"chart\"],ensure_ascii=False,sort_keys=True))\n        print(\"EVIDENCE=\"+json.dumps(r[\"audit\"][\"binary_traditional_conclusion\"],ensure_ascii=False))\n        for i,item in enumerate(r[\"sections\"],1):\n            print(\"SECTION_%02d \"%i+item[\"title\"]+\"：\"+item[\"text\"])\n        print(\"USER_SELF_GENGSHEN_OFFLINE_V25_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 84,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_real_calendar_self_role_and_observed_four_pillars",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_real_calendar_self_role_and_observed_four_pillars(self):\n        r=run()\n        self.assertEqual(r[\"test_receipt\"][\"four_pillars\"],PILLARS)\n        self.assertEqual(r[\"test_receipt\"][\"solar_term\"],\"寒露\")\n        self.assertEqual(r[\"test_receipt\"][\"bureau\"][\"dun\"],\"yin\")\n        self.assertEqual(r[\"test_receipt\"][\"bureau\"][\"ju\"],6)\n        self.assertEqual(r[\"test_receipt\"][\"chart\"][\"hour_ganzhi\"],\"庚申\")\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"stem\"],\"戊\")\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"relationship\"],\"self\")\n        self.assertNotIn(\"父亲年干\",r[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 14,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_true_star_and_door_fuyin_fanyin_separated",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_true_star_and_door_fuyin_fanyin_separated(self):\n        r=run()\n        f=r[\"audit\"][\"fuyin_fanyin\"]\n        self.assertEqual(len(r[\"test_receipt\"][\"chart\"][\"palaces\"]),9)\n        for key in (\"star\",\"door\"):\n            self.assertIn(f[key],(\"伏吟\",\"反吟\",\"非伏吟反吟\"))\n        self.assertIn(\"九星\"+f[\"star\"],r[\"reading_text\"])\n        self.assertIn(\"八门\"+f[\"door\"],r[\"reading_text\"])\n        # Previous time's actual home-star/home-door example must identify both.\n        old=layout_from_explicit_bureau(dun=\"yin\",ju=6,hour_ganzhi=\"癸亥\")\n        earlier=fuyin_fanyin_facts(old)\n        self.assertTrue(earlier[\"both_fuyin\"])\n        self.assertEqual(earlier[\"star_home\"],8)\n        self.assertEqual(earlier[\"door_home\"],8)\n        self.assertFalse(earlier[\"both_fanyin\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 36,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v25.SelfGengshenHealthV25.test_verdict_uses_genuinely_calculated_evidence",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v25.py",
+      "method_source": "    def test_verdict_uses_genuinely_calculated_evidence(self):\n        r=run()\n        e=r[\"audit\"][\"binary_traditional_conclusion\"]\n        self.assertTrue(e[\"favorable\"] or e[\"unfavorable\"])\n        self.assertTrue(e[\"source_judgement_requires_user_review\"])\n        self.assertIn(\"伏吟\",r[\"reading_text\"])\n        self.assertEqual(len(r[\"audit\"][\"24_factor_statuses\"]),24)\n        self.assertEqual(r[\"audit\"][\"clinical_severity_diagnosis\"],None)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v25.py",
+          "line": 75,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v25.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v25(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v25.py",
+          "line": 125,
+          "code": "base=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_no_other_health_intents_and_no_fake_prognosis",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_no_other_health_intents_and_no_fake_prognosis(self):\n        r=run()\n        self.assertEqual(r[\"test_receipt\"][\"other_four_intents_approved\"],False)\n        self.assertTrue(r[\"test_receipt\"][\"not_medical_diagnosis\"])\n        self.assertNotIn(\"必死\",r[\"reading_text\"])\n        self.assertNotIn(\"癌症\",r[\"reading_text\"])\n        self.assertNotIn(\"手术一定成功\",r[\"reading_text\"])\n        with self.assertRaises(ValueError):\n            analyze_health_severity_v26(\n               chart=r[\"test_receipt\"][\"chart\"],\n               inquiry={\"intent\":\"treatment\",\"relationship\":\"self\",\"consultation_context\":\"direct_self\"},\n               calendar={\"year_ganzhi\":\"丙午\",\"month_ganzhi\":\"戊戌\",\"day_ganzhi\":\"戊辰\",\n                         \"hour_ganzhi\":\"庚申\",\"month_branch\":\"戌\"},db_path=PARENT_DB)\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 63,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_offline_idempotence_no_gpt_or_engine_prose",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_offline_idempotence_no_gpt_or_engine_prose(self):\n        with patch(\"socket.socket\",side_effect=AssertionError(\"Network accessed\")):\n            a=run()\n            b=run()\n        self.assertEqual(a[\"reading_text\"].encode(),b[\"reading_text\"].encode())\n        self.assertEqual(a[\"audit\"][\"runtime_model_calls\"],0)\n        self.assertEqual(a[\"audit\"][\"runtime_network_calls\"],0)\n        for forbidden in FORBIDDEN_CUSTOMER:\n            self.assertNotIn(forbidden,a[\"reading_text\"])\n        for placeholder in (\"（患者宫）\",\"（吉凶）\",\"{patient}\",\"【待补】\"):\n            self.assertNotIn(placeholder,a[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 53,
+          "code": "a=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_only_one_disease_palace_paragraph_and_no_family_placeholder",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_only_one_disease_palace_paragraph_and_no_family_placeholder(self):\n        r=run()\n        self.assertEqual(len(r[\"sections\"]),10)\n        self.assertEqual(len(r[\"audit\"][\"source_facts_retained\"]) if\n                         isinstance(r[\"audit\"][\"source_facts_retained\"],list)\n                         else r[\"audit\"][\"source_facts_retained\"],21)\n        self.assertEqual(len([s for s in r[\"sections\"] if s[\"id\"]==\"03_ill\"]),1)\n        self.assertNotIn(\"亲属辅助宫：\",r[\"reading_text\"])\n        self.assertNotIn(\"未提供年命\",r[\"reading_text\"])\n        self.assertEqual(r[\"sections\"][-1][\"id\"],\"11_verdict\")\n        self.assertIn(r[\"audit\"][\"tradition_binary_verdict\"][\"verdict\"],r[\"sections\"][-1][\"text\"])\n        self.assertIn(r[\"audit\"][\"tradition_binary_verdict\"][\"verdict\"],(\"病吉\",\"病凶\"))\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 26,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_print_verbatim_real_output_and_current_chart",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_print_verbatim_real_output_and_current_chart(self):\n        import json\n        r=run()\n        print(\"\\nUSER_SELF_GENGSHEN_OFFLINE_V26_BEGIN\")\n        print(\"CALENDAR=\"+json.dumps(r[\"test_receipt\"][\"bureau\"],ensure_ascii=False))\n        print(\"CHART=\"+json.dumps(r[\"test_receipt\"][\"chart\"],ensure_ascii=False,sort_keys=True))\n        print(\"EVIDENCE=\"+json.dumps(r[\"audit\"][\"tradition_binary_verdict\"],ensure_ascii=False))\n        for i,item in enumerate(r[\"sections\"],1):\n            print(\"SECTION_%02d \"%i+item[\"title\"]+\"：\"+item[\"text\"])\n        print(\"USER_SELF_GENGSHEN_OFFLINE_V26_END\")\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 93,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_real_calendar_self_role_and_observed_four_pillars",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_real_calendar_self_role_and_observed_four_pillars(self):\n        r=run()\n        self.assertEqual(r[\"test_receipt\"][\"four_pillars\"],PILLARS)\n        self.assertEqual(r[\"schema\"],\"wengua_health_severity_v26_strict_fact_slots\")\n        self.assertEqual(r[\"audit\"][\"render_mode\"],\"strict_static_format_map_offline_no_GPT\")\n        self.assertEqual(r[\"test_receipt\"][\"solar_term\"],\"寒露\")\n        self.assertEqual(r[\"test_receipt\"][\"bureau\"][\"dun\"],\"yin\")\n        self.assertEqual(r[\"test_receipt\"][\"bureau\"][\"ju\"],6)\n        self.assertEqual(r[\"test_receipt\"][\"chart\"][\"hour_ganzhi\"],\"庚申\")\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"stem\"],\"戊\")\n        self.assertEqual(r[\"audit\"][\"role_binding\"][\"relationship\"],\"self\")\n        self.assertNotIn(\"父亲年干\",r[\"reading_text\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 14,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_true_star_and_door_fuyin_fanyin_separated",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_true_star_and_door_fuyin_fanyin_separated(self):\n        r=run()\n        f=r[\"audit\"][\"fuyin_fanyin\"]\n        self.assertEqual(len(r[\"test_receipt\"][\"chart\"][\"palaces\"]),9)\n        for key in (\"star\",\"door\"):\n            self.assertIn(f[key],(\"伏吟\",\"反吟\",\"非伏吟反吟\"))\n        self.assertIn(\"九星、八门均非伏吟或反吟\",r[\"reading_text\"])\n        # Previous time's actual home-star/home-door example must identify both.\n        old=layout_from_explicit_bureau(dun=\"yin\",ju=6,hour_ganzhi=\"癸亥\")\n        earlier=fuyin_fanyin_facts(old)\n        self.assertTrue(earlier[\"both_fuyin\"])\n        self.assertEqual(earlier[\"star_home\"],8)\n        self.assertEqual(earlier[\"door_home\"],8)\n        self.assertFalse(earlier[\"both_fanyin\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 38,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    },
+    {
+      "test_id": "test_self_gengshen_health_v26.SelfGengshenHealthV26.test_verdict_uses_genuinely_calculated_evidence",
+      "outcome": "error",
+      "exception_type": "ValueError",
+      "message": "Local original source SQLite missing",
+      "test_source": "tests/test_self_gengshen_health_v26.py",
+      "method_source": "    def test_verdict_uses_genuinely_calculated_evidence(self):\n        r=run()\n        e=r[\"audit\"][\"tradition_binary_verdict\"]\n        self.assertTrue(e[\"favorable\"] or e[\"unfavorable\"])\n        self.assertTrue(e[\"source_judgement_requires_user_review\"])\n        self.assertIn(\"伏吟\",r[\"reading_text\"])\n        self.assertIn(\"病吉\",r[\"reading_text\"]) if r[\"audit\"][\"tradition_binary_verdict\"][\"verdict\"]==\"病吉\" else self.assertIn(\"病凶\",r[\"reading_text\"])\n        self.assertIn(\"传统缓急：偏慢\",r[\"sections\"][-1][\"text\"])\n        self.assertIn(\"坎一宫的死门构成门迫\",r[\"reading_text\"])\n        self.assertIn(\"震三宫的开门构成门迫\",r[\"reading_text\"])\n        self.assertIn(\"天芮土克病宫水\",r[\"reading_text\"])\n        self.assertNotIn(\"幼女奸淫\",r[\"reading_text\"])\n        self.assertNotIn(\"门门迫\",r[\"reading_text\"])\n        self.assertEqual(len(r[\"audit\"][\"24_factor_statuses\"]),24)\n        self.assertFalse(r[\"audit\"][\"medical_severity_verified\"])\n        self.assertIn(\"幼女奸淫\",r[\"audit\"][\"pair_original_still_auditable\"][\"name\"])\n",
+      "frames": [
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 58,
+          "code": "yield"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 634,
+          "code": "self._callTestMethod(testMethod)"
+        },
+        {
+          "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py",
+          "line": 589,
+          "code": "if method() is not None:"
+        },
+        {
+          "path": "tests/test_self_gengshen_health_v26.py",
+          "line": 76,
+          "code": "r=run()"
+        },
+        {
+          "path": "scripts/run_self_health_20261021_gengshen_v26.py",
+          "line": 31,
+          "code": "result=analyze_health_severity_v26(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v26.py",
+          "line": 155,
+          "code": "source=analyze_health_severity_v22(chart=chart,inquiry=inquiry,calendar=calendar,db_path=db_path)"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 233,
+          "code": "pair=_read_stem_pair_from_source(db_path,carrier[\"carried_stem\"],ill[\"earth_stem\"])"
+        },
+        {
+          "path": "src/wengua/health_severity_v22.py",
+          "line": 102,
+          "code": "raise ValueError(\"Local original source SQLite missing\")"
+        }
+      ]
+    }
+  ]
+}

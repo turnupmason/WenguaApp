@@ -11,6 +11,13 @@ from src.wengua.health_severity_v42_integrated import (
     _route_weight,budgeted_score_from_source)
 from src.wengua.symbol_relations import stem_stage
 from src.wengua.marriage_runtime import PALACE_BRANCHES
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V42SourceUnified(unittest.TestCase):
  @classmethod
  def setUpClass(cls):cls.batch=evaluate()

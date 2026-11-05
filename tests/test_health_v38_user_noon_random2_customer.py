@@ -5,6 +5,13 @@ from scripts.replay_health_v38_user_and_two_seeded_cases import evaluate,PARENT,
 from src.wengua.health_severity_v38 import _customer_clean
 from src.wengua.symbol_relations import stem_stage
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class UserAndAncientHealthV38(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.data=evaluate()

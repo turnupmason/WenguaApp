@@ -21,6 +21,13 @@ SAMPLE=ROOT/"data/evaluation/health_v391/four_fixed_random_real_hour_charts_SOUR
 SELF={"intent":"severity","relationship":"self","consultation_context":"direct_self"}
 
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class PureDecisionTests(unittest.TestCase):
     def base(self,**kwargs):
         options={

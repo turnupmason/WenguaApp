@@ -9,6 +9,13 @@ from src.wengua.health_severity_v26 import (
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class SelfGengshenHealthV26(unittest.TestCase):
     def test_real_calendar_self_role_and_observed_four_pillars(self):
         r=run()

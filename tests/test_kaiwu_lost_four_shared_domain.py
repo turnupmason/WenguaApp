@@ -5,12 +5,13 @@ thefts versus bag loss and mislaid earring, six-yao-first case04 chronology,
 and verified full 149-case parent copied without changing any old rows.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_lost_from_business import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,prepare,events,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_钱物丢失预测.txt"
 class KaiwuLostUnifiedFullArchiveTests(unittest.TestCase):
  @classmethod

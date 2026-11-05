@@ -9,6 +9,13 @@ from scripts.run_two_historical_health_v27 import evaluate as past_evaluate
 from src.wengua.semantic_lookup import nine_star_month_status
 from src.wengua.health_severity_template import MONTH_ELEMENTS
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class MedicalTimingV28Tests(unittest.TestCase):
     @staticmethod
     def fake_cell(p,stem):

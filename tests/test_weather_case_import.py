@@ -1,12 +1,13 @@
 """Ensure the original new weather chapter is studied as five COMPLETE source events."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import importlib.util,hashlib,json,sqlite3,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT/'sources/shenqi/神奇之门_天时气象预测_精校完整版(1).txt'
 BUILDER=ROOT/'scripts/build_shenqi_18_from_17.py'
-BASE=ROOT/'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3'
-ARCHIVE=ROOT/'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3'
+BASE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3')
+ARCHIVE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3')
 MANIFEST=ROOT/'archives/sqlite/18chapters_91cases_manifest.json'
 class WeatherWholeCaseRegression(unittest.TestCase):
  @classmethod

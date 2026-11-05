@@ -6,6 +6,13 @@ from src.wengua.health_severity_v31 import patient_vs_disease_hour_relation
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.health_dynamic_v21 import bind_patient
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V31ExplicitHourDiseasePatient(unittest.TestCase):
  def test_both_historical_patient_vs_hour_disease_directions(self):
     a,b=evaluate()["samples"]

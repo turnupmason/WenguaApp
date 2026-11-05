@@ -5,6 +5,7 @@ The first marriage case has already been used in a V1.5 historical timing
 regression, so it is NOT counted as an unseen blind success here.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 from pathlib import Path
 import sqlite3,unittest
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
@@ -13,7 +14,7 @@ from src.wengua.marriage_judgment_v16 import (
  grounded_factor_extensions,_traditional_decision,_load_rules_and_source)
 from src.wengua.astro_calendar import solar_chart_clock
 ROOT=Path(__file__).resolve().parents[1]
-DB=ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3"
+DB=source_database(ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3")
 def chart_packet(*,dun,ju,day,hour,date,month,year,term,subject,partner,
                  scene="marriage.scene.02",question="这段感情可否谈成？"):
  return {

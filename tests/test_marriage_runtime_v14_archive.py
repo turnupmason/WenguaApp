@@ -1,10 +1,11 @@
 """194 historical cases unchanged; 22 marriage reading routes × 2 true original casting examples."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_runtime_v14 import ROOT,PARENT_NAME,NEW_NAME,PARENT_SHA,build
 from src.wengua.marriage_runtime import inspect_marriage_study_cast
-OLD=ROOT/"archives/sqlite"/PARENT_NAME
+OLD=source_database(ROOT/"archives/sqlite"/PARENT_NAME)
 class V14CastingRuntimeArchive(unittest.TestCase):
  def test_original_source_chart_fixtures_are_not_fake_divination_outcomes(self):
   self.assertEqual(hashlib.sha256(OLD.read_bytes()).hexdigest(),PARENT_SHA)

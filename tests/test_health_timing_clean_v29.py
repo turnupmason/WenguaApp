@@ -3,6 +3,13 @@ import unittest
 from unittest.mock import patch
 from scripts.run_two_historical_health_v29 import evaluate
 from src.wengua.health_severity_v28 import treatment_evidence,related_special_facts
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V29CleanMedicalMonthlyProse(unittest.TestCase):
     def test_real_two_historical_cases_keep_old_seals_and_verdicts(self):
         x=evaluate()

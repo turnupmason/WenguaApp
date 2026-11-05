@@ -53,7 +53,7 @@ V9.0 保留 V8 基础计分，并包含按真实亲属条件成立的长幼辅�
 | 封存轻重 Python/Swift 逐字回归、奇门论疾真实输出的首页摘要运行检查 | [#41481223986 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41481223986) |
 | 工程补丁 p4 的 Python 3.11/3.12 主 CI | [#41481223879 · PASS](https://github.com/turnupmason/WenguaApp/actions/runs/41481223879) |
 
-[本轮 Xcode 完整原始日志与断词](docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。正式Xcode绑定生产源码 `4ee16bca`，其后 `7403dbbe` 仅补充CI配置和记录，生产源码及资源pin相同；主CI/原生/独立iOS均使用该相同生产版本实际通过。最新分支状态见页首 CI。手动时辰验证包含当前／未来输入、同盘同人物等级、两张实际盘Python/Swift全文、DST、整组保存与旧历史兼容。动画已随App编译通过，滚轮与动画的人工视觉UI验收仍须在模拟器/真机操作。
+[本轮 Xcode 完整原始日志与断词](https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md)保留了实际源码 SHA 和四次正式路由返回版本。正式Xcode绑定生产源码 `4ee16bca`，其后 `7403dbbe` 仅补充CI配置和记录，生产源码及资源pin相同；主CI/原生/独立iOS均使用该相同生产版本实际通过。最新分支状态见页首 CI。手动时辰验证包含当前／未来输入、同盘同人物等级、两张实际盘Python/Swift全文、DST、整组保存与旧历史兼容。动画已随App编译通过，滚轮与动画的人工视觉UI验收仍须在模拟器/真机操作。
 
 **验收边界：**当前是未签名 iPhone Simulator App 和软件接口验收，尚非签名 iPhone 真机安装或 App Store 交付。手机上已经安装的旧 App 不会随 GitHub 更新，需使用本工程重新构建安装。
 

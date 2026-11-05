@@ -3,6 +3,13 @@ from __future__ import annotations
 import hashlib,unittest
 from scripts.replay_all_historical_health_v35 import evaluate,PARENT,PARENT_SHA
 from src.wengua.health_severity_v35 import patient_first_decision
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class HealthV35Priority(unittest.TestCase):
  def test_parent_and_all_twelve_no_feedback(self):
     self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

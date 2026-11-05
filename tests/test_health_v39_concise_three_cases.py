@@ -2,6 +2,13 @@
 from __future__ import annotations
 import hashlib,unittest
 from scripts.replay_health_v39_fixed_cases import evaluate,PARENT,PARENT_SHA,RANDOM_INDICES,PINNED_CASE_IDS
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V39Concise(unittest.TestCase):
  @classmethod
  def setUpClass(cls):cls.batch=evaluate()

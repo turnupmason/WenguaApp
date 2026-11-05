@@ -13,8 +13,8 @@ V18 已复现的真实缺陷：`ios/WenguaAppUI/WenguaNativeDiscomfortV15.swift`
 ## 失败与复现及修复
 
 - 旧基线 main SHA `312ba59`，主CI run #41337733981 PASS。
-- 人物 guard 提交 `2b5f818`；扩九节 `3155ace`。CI run #41339353432 的 Xcode 真 macOS 编译 FAILED：`WenguaNativeDiscomfortV15.swift` 多处多行字符串尾部 `+` 拼接语法错误，原始失败记录 `docs/IOS_V80_XCODE_FAIL_RUN_41339353432_ATTEMPT_1.md` 不得删除。
-- run #41339353399 六甲来源V8原生一致性 FAILED：测试旧“哥哥”案例未显式确认亲属，原生 `unsupportedRelationship` 被拒；先修复测试输入而非放松生产人物 guard。失败记录 `docs/HEALTH_V80_FAILURE_RUN_41339353399_ATTEMPT_1.md` 保留。
+- 人物 guard 提交 `2b5f818`；扩九节 `3155ace`。CI run #41339353432 的 Xcode 真 macOS 编译 FAILED：`WenguaNativeDiscomfortV15.swift` 多处多行字符串尾部 `+` 拼接语法错误，原始失败记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_41339353432_ATTEMPT_1.md` 不得删除。
+- run #41339353399 六甲来源V8原生一致性 FAILED：测试旧“哥哥”案例未显式确认亲属，原生 `unsupportedRelationship` 被拒；先修复测试输入而非放松生产人物 guard。失败记录 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_FAILURE_RUN_41339353399_ATTEMPT_1.md` 保留。
 - `03d85b6` 修复新增Swift文本拼接、V8夹具上“哥哥”等真亲属关系输入，并在iOS切换人物时清理先前亲属确认。必须**以后续同SHA CI结果为准**；当前阶段不能把旧V18的Xcode PASS冒充V19已经验收。
 - 本轮不新增原书章节、原书案例或所谓独立盲测。V8旧已揭晓回顾固定案例不改历史结论；V19 Python研究稿和Swift客户九节的**逐字同盘 parity 仍是单独验收项**。真机签名/App Store未验收。
 
@@ -48,7 +48,7 @@ Picker 四个直接写：哥哥（家里的哥哥）、姐姐（家里的大姐�
 
 iOS Picker 对「哥哥（家里的哥哥）」「姐姐（家里的大姐）」「弟弟（家里的弟弟）」「妹妹（家里的妹妹）」逐项明确；每一关系拥有独立真实家庭亲属确认文字，Swift fail-closed；姐姐=家中大姐（需长女条件），朋友永不借家族辅助宫。NativeActorProfileCheck 新增四类未确认不得绑定回归。V8评分冻结不改。
 
-真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
+真 macOS Xcode Simulator #41341637870 PASS，随机弟弟2026-11-14 11:00 -05、妻子2027-02-14 05:00 -05 各9段原生客户文字在 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41341637870_ATTEMPT_1.md。独立 Python V19读取同一张 Swift 物理盘的原始事实、自行用200格、81格和255源/人物用神求部位及重组九段中文；实际另随机弟弟2026-11-15 05:00 -05、妻子2027-02-12 21:00 -05 各9/9段文字、标题与落宫严格一致，真 macOS Xcode #41342466896 PASS。此 parity 验的是跨语言断词和源表，原盘排盘在别的既有专项验证；不是医学有效性证明。
 
 历史 Xcode失败 #41341934448 因独立Python读取中五宫 p['door'] 错误：中五无普通门，已改为 get() 后 #41342466896 PASS，记录保留。旧综合 iOS Offline Native Casting Parity 仍有 V7过时文案断言及 unresolvedRole，不能冒称全库通过；继续逐案审查。未签名真机/App Store 验收。
 

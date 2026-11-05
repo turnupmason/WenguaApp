@@ -1,12 +1,13 @@
 """Kaiwu original ch2 section9 robbery/murder source and immutable whole SQLite."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_criminal_from_travel import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,CLAIMS,
  check_source,validate_cases,build
 )
-PARENT=ROOT/"archives/sqlite"/BASE_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_刑事案件预测.txt"
 
 class KaiwuCriminalTwoCasesFullSourceTests(unittest.TestCase):

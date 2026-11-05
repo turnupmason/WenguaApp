@@ -1,0 +1,55 @@
+{
+  "general_units_accounted": 1451,
+  "general_units_total": 1451,
+  "unaccounted_general_units": 0,
+  "dispositions": {
+    "source_supported_lessons": 759,
+    "literal_target_or_exact_duplicate": 630,
+    "context_restored_fragment": 13,
+    "structure_heading": 8,
+    "table_cells_and_explanations": 13,
+    "reading_scaffolding": 15,
+    "scope_or_comparison_explained": 10,
+    "editorial_source_note": 3
+  },
+  "declared_groups": 31,
+  "dispatched_groups": 31,
+  "unknown_strategy_skipped": false,
+  "original_cases": 194,
+  "original_author_steps": 1008,
+  "source_nonblank_lines_accounted": 8841,
+  "line_dispositions": {
+    "verified_heading_or_transition": 60,
+    "chapter_heading_or_diagram_label": 155,
+    "general_source_disposition": 1739,
+    "recovered_source_teaching": 97,
+    "table_border": 72,
+    "structure_caption": 31,
+    "historical_case_source": 6687
+  },
+  "core_tasks": 11167,
+  "formats": {
+    "foundation_qa": 2769,
+    "conditional_dialogue": 429,
+    "chart_application": 4161,
+    "complete_case": 3808
+  },
+  "splits": {
+    "train": 9503,
+    "test": 895,
+    "validation": 769
+  },
+  "case_holdout_leakage": 0,
+  "all_knowledge_learned_by_model": false,
+  "semantic_infallibility_claimed": false,
+  "coverage_definition": "Each supplied source unit is dispositioned; teacher tasks retain source conditions. This is not an independent prediction or completeness-of-human-interpretation score.",
+  "schema": "wengua_source_accounted_course_v5",
+  "production_enabled": false,
+  "literal_chart_cells_taught": 1611,
+  "case_source_paragraphs_accounted": 2805,
+  "supplementary_case_lessons": 2365,
+  "source_checks": {
+    "located_literal_or_whitespace_only": 5986,
+    "separately_labelled_sqlite_transcription": 1611
+  }
+}

@@ -1,11 +1,12 @@
 """Nine book-grounded marital question workflows, with immutable source/history."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_intent_workflows_v12 import (
  ROOT,CONF,PARENT_NAME,OUTPUT_NAME,PARENT_SHA,EXPECTED_IDS,
  validate_config,compile_workflows)
-PARENT=ROOT/"archives/sqlite"/PARENT_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/PARENT_NAME)
 class MarriageIntentWorkflowSourceTest(unittest.TestCase):
  @classmethod
  def setUpClass(cls):

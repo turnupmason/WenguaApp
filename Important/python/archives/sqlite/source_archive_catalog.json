@@ -1,0 +1,613 @@
+{
+  "schema": "wengua_lossless_source_archive_catalog_v1",
+  "active_source": "WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3",
+  "pre_cleanup_git_sha": "b5f04d71157b91f64d8889a857652f7a967d7cf7",
+  "entries": [
+    {
+      "name": "WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3",
+      "sha256": "f90e9de80b24a852c26d4957e4e91234f86b76c9289cbc9f4738eb1b735bf01a",
+      "bytes": 15122432,
+      "compressed": "WenguaApp_双书194案例_81原书病情格局校核V4_1_完整研究库.sqlite3.xz",
+      "compressed_sha256": "629ac1aaba471bc08dd5372edbb73157db64b7b9449ac0059f8a151ca7e41d83",
+      "compressed_bytes": 1206556,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3",
+      "sha256": "f927956e98bb4c193b0be6291c1e01edd31ee61a60b150900095fea0264931d7",
+      "bytes": 15048704,
+      "compressed": "WenguaApp_双书194案例_81组天地干与双重吉凶V3_7_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0569bfa310ce54699883800d9714cd33803870e97e870836a01d71883ca968d6",
+      "compressed_bytes": 1201420,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3",
+      "sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+      "bytes": 15175680,
+      "compressed": "WenguaApp_双书194案例_V391纯断词十二长生_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0e9c5e7ebd32ad2e3a9a66149267c4099532d1a4082205b50eb83c4ac1f23d2a",
+      "compressed_bytes": 1213824,
+      "expanded_tracked": true
+    },
+    {
+      "name": "WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3",
+      "sha256": "0e565ff5c4fea8d0510b155ab264b1af4c8ab9b63a173eb8cf96a00909c04ed1",
+      "bytes": 15071232,
+      "compressed": "WenguaApp_双书194案例_三例精简自然断词V3_9_完整研究库.sqlite3.xz",
+      "compressed_sha256": "9123fd9a91bace23b97ef780500f3bf22214e896c600f07d3d78dfea8aae1cb8",
+      "compressed_bytes": 1202644,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3",
+      "sha256": "f101804acdaa839b89cb1dd2eee5e6391fb3e28f390ffad225b9f6db34f2838e",
+      "bytes": 15060992,
+      "compressed": "WenguaApp_双书194案例_丙墓绝空与三例用户断词V3_8_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0ec31414526ce9a702752aa9999774344738012de8516a37b70aa2cb5a993827",
+      "compressed_bytes": 1201720,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3",
+      "sha256": "e4110828bbfb621e1bb7ed972284d4602d2ab361a12edc48d6f4750c965dddf9",
+      "bytes": 14977024,
+      "compressed": "WenguaApp_双书194案例_两例新家族V31离线回测V3_2_完整研究库.sqlite3.xz",
+      "compressed_sha256": "efd9bd33181ef79f79ea0f9494778ec0ff62ad782f87ec53596921826980cea0",
+      "compressed_bytes": 1195832,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3",
+      "sha256": "abf440356da21a3513bb85817ce74c635940debe3b0fc1c0da0f4a9473e434f5",
+      "bytes": 14993408,
+      "compressed": "WenguaApp_双书194案例_全病案V31回测V3_3_完整研究库.sqlite3.xz",
+      "compressed_sha256": "9d2e5109d464cfb3e6057ae44c025c08261b85686f11aeb29fc7d309fb42642d",
+      "compressed_bytes": 1196340,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3",
+      "sha256": "9008f8803a6a2f95352b5d8bc62c332cba371c8cfdcad0473462c16f7e249bf4",
+      "bytes": 15007744,
+      "compressed": "WenguaApp_双书194案例_六亲动物全病案规则V3_4_完整研究库.sqlite3.xz",
+      "compressed_sha256": "39a0311e5df4147699f4f7d14941e05c4e22403e9aeeb802c1ca0bfc430df15a",
+      "compressed_bytes": 1197420,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3",
+      "sha256": "1837107123d78f1da47e1046c9043827484985e6cb1ff01689e70057c7d6c301",
+      "bytes": 14897152,
+      "compressed": "WenguaApp_双书194案例_及时医治入墓击刑V2_8_完整研究库.sqlite3.xz",
+      "compressed_sha256": "13564ef12952bd3c29f72874276342d71b0588ac9249b958306186e313a9a404",
+      "compressed_bytes": 1187840,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3",
+      "sha256": "0eda2e3996192c31b7e75aeaf45745c6659dd2a73f5fe74bbf495dece36e6857",
+      "bytes": 14043136,
+      "compressed": "WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3.xz",
+      "compressed_sha256": "d48491d9ce044d63f3e0ccdd4603e823ae3016c4fce55bf50fa548433006b827",
+      "compressed_bytes": 1143472,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3",
+      "sha256": "89cd5eb51f4eec7e41092a2bb8f5f624c1c6e7e4eb2225d00051e2d6c8e4a5f4",
+      "bytes": 14534656,
+      "compressed": "WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3.xz",
+      "compressed_sha256": "168db015644c9ad4e86a8d1f8573703de80f7555dd400404d85b50a0afea8942",
+      "compressed_bytes": 1154228,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3",
+      "sha256": "619867ef0f81234c662fbc1796de1c6844e9c1ecf12f59a904d20f9c90b757f3",
+      "bytes": 14495744,
+      "compressed": "WenguaApp_双书194案例_婚姻原书应期天文推算V1_5_完整研究库.sqlite3.xz",
+      "compressed_sha256": "e1ceb920ac1e675e869aad0b30c11f7db26e6db7710d41ffab8446283b605159",
+      "compressed_bytes": 1151600,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3",
+      "sha256": "2119735b5772feb0177c03b032be8070fef629060b509d30a26b5ce204c9aa2d",
+      "bytes": 13688832,
+      "compressed": "WenguaApp_双书194案例_婚姻各类问事流程V1_2_完整研究库.sqlite3.xz",
+      "compressed_sha256": "39ab745b390d80acb10bf9c8bf2266dd9b5e1617b4b22dbe56cf5a199a8764b2",
+      "compressed_bytes": 1130404,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3",
+      "sha256": "e6bc297b10b0f911b1cc03392afe7e53bc51a34d8acffecd674a9f5e343af675",
+      "bytes": 14616576,
+      "compressed": "WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3.xz",
+      "compressed_sha256": "9c3efdd1a5da012dcc385b4ff3398fb14ed3d7cd6894a66ef95904067b519653",
+      "compressed_bytes": 1162220,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3",
+      "sha256": "53bab00cefa4754753ab124b0653c0b7b2f68f0d63dae7783f6eea3d387f0e75",
+      "bytes": 13557760,
+      "compressed": "WenguaApp_双书194案例_婚姻断语V1_1_应期强制_完整研究库.sqlite3.xz",
+      "compressed_sha256": "4eb0a732505fab4fff8856b6c4fccb722dcbb890b0ef52bed130dc2bfdcbb8d6",
+      "compressed_bytes": 1118600,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3",
+      "sha256": "4c57e8bfdc4d745c19711542039c3f24aa95b7574de00843e64c1676082d4968",
+      "bytes": 13539328,
+      "compressed": "WenguaApp_双书194案例_婚姻断语V1_完整研究库.sqlite3.xz",
+      "compressed_sha256": "1607be07f470c94c7739e218e14185cabbb38500650e54e61a6d2e7805adff5e",
+      "compressed_bytes": 1116872,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3",
+      "sha256": "fbd2f6a5475e9f54cb9a98a42b1f96800cf8c1dd8d96f884951d900c7f287536",
+      "bytes": 14673920,
+      "compressed": "WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3.xz",
+      "compressed_sha256": "48c01e5603baac1f37baae41c9c32e6f5c70f7ab4abfa088f2a9e3b53e9f75cb",
+      "compressed_bytes": 1166504,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3",
+      "sha256": "ac4401378302319799e0cbf07c906ffdc06ffb2f91ce49e149aac40261c235da",
+      "bytes": 14454784,
+      "compressed": "WenguaApp_双书194案例_婚姻真实排盘接入V1_4_完整研究库.sqlite3.xz",
+      "compressed_sha256": "369669099fe98654f8f8e5bdcfbb839349fd7586df13a2bc4707dbad331fd6d0",
+      "compressed_bytes": 1149336,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3",
+      "sha256": "f76b26200d8ed945621139217fcd63d55dddd010c1e4a2848d4e9ad544b3ec66",
+      "bytes": 15155200,
+      "compressed": "WenguaApp_双书194案例_完整十二长生合并V39评分V4_2_完整研究库.sqlite3.xz",
+      "compressed_sha256": "7c8754cb965f44308e1d3a38ce87f310f362a2b41f32638014c6cd794740baf0",
+      "compressed_bytes": 1211272,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3",
+      "sha256": "d16f31598433541e239285ba2af2e1085a6ccf9d11057d1b53c338d2f5122304",
+      "bytes": 15083520,
+      "compressed": "WenguaApp_双书194案例_实验病势量化V4_0_完整研究库.sqlite3.xz",
+      "compressed_sha256": "07ee0225737307cacf59a8db18bab621fbc4b5122eeed68a87fc34342daab3b8",
+      "compressed_bytes": 1203080,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_庚申时本人病情精简模板纠错V2_6_完整研究库.sqlite3",
+      "sha256": "e6dff53d3c1f403650581877b8563db00b49958d75b0a3e8a459d6c7bb4cfa17",
+      "bytes": 14864384,
+      "compressed": "WenguaApp_双书194案例_庚申时本人病情精简模板纠错V2_6_完整研究库.sqlite3.xz",
+      "compressed_sha256": "8bd9c30181b896fc434d0e2bc8097bbd6dbae43b925dd4133a0e7959ffd0100a",
+      "compressed_bytes": 1185116,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3",
+      "sha256": "35940c872435cb3017710557b83bc8600fcff436e35510212b33b3f202ae2b9a",
+      "bytes": 15020032,
+      "compressed": "WenguaApp_双书194案例_患者双重制病优先V3_5_完整研究库.sqlite3.xz",
+      "compressed_sha256": "d0ad78377fa8355b71127dadca74a0f3770172671ca3053d15910247df03ff74",
+      "compressed_bytes": 1199148,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3",
+      "sha256": "3a72dbb798d73413c2ebb994e232b83039a483d91cfa8a8f60f246d4ad84b529",
+      "bytes": 14966784,
+      "compressed": "WenguaApp_双书194案例_患者时干病事有向修正V3_1_完整研究库.sqlite3.xz",
+      "compressed_sha256": "6652672be87874aa194a82e0669799760a0e12934bbfb3465d0f2f9382d46f16",
+      "compressed_bytes": 1194692,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3",
+      "sha256": "91464a3392d4aa6887e030204d6eedbaa710e35d3355a366d9d720e62176568d",
+      "bytes": 15202304,
+      "compressed": "WenguaApp_双书194案例_新增四格_81组合完整断案20261024_VnextV3_完整研究库.sqlite3.xz",
+      "compressed_sha256": "ed1c91ea9cd7e12bae7feeba8e562a96361aeac9fb28cdda53b55a0f043b69ce",
+      "compressed_bytes": 1215144,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3",
+      "sha256": "dc086d67e2ebb477b47ce27f39e7d58879ac33bbd56715152230e638862be9d8",
+      "bytes": 15032320,
+      "compressed": "WenguaApp_双书194案例_时支驿马三奇得使V3_6_完整研究库.sqlite3.xz",
+      "compressed_sha256": "d29c187f8b80b756247fa5a65c15e88197a6431cdc4eae2f888ea693cd65ad3b",
+      "compressed_bytes": 1199456,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_本人庚申时疾病断词校正V2_6_完整研究库.sqlite3",
+      "sha256": "6d82189831a75b25fd81990c574c1207b2709d62bd9f56181b1cc10047301519",
+      "bytes": 14864384,
+      "compressed": "WenguaApp_双书194案例_本人庚申时疾病断词校正V2_6_完整研究库.sqlite3.xz",
+      "compressed_sha256": "4e31db4dd55c51a5d3ffad9ee03b264ee0fbe5ff5e557cc8ca3fe25887b41fc2",
+      "compressed_bytes": 1185076,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_本人庚申时病情轻重伏吟反吟V2_5_完整研究库.sqlite3",
+      "sha256": "6b4dd75729d76f99bfd089c09606ddf39b316a12b80a96949373d884fd098bdf",
+      "bytes": 14854144,
+      "compressed": "WenguaApp_双书194案例_本人庚申时病情轻重伏吟反吟V2_5_完整研究库.sqlite3.xz",
+      "compressed_sha256": "050c79baf9e43910214b8730f5180ed26c77faf8430b3fafa2931f135099152a",
+      "compressed_bytes": 1184228,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3",
+      "sha256": "2634ffff6f6033861a333cc0ee3007a261d76fb97bac3a597fa70f06a16569ad",
+      "bytes": 14833664,
+      "compressed": "WenguaApp_双书194案例_父亲测病与病宫合并断词V2_3_完整研究库.sqlite3.xz",
+      "compressed_sha256": "7427808e9277e97ede6ac3a89139c9966b197c9e69a12e3d72a953ae331c63e5",
+      "compressed_bytes": 1182380,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3",
+      "sha256": "9b5e574543bf7fc298412ac98ededf09445dc3c555312ad7b525f92f22aa41e0",
+      "bytes": 14843904,
+      "compressed": "WenguaApp_双书194案例_父亲测病断词复核修正V2_4_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0d7d41e87ecaef08b3238fc31e04b8565d392109fd4e1005bf1bfd40b8b3da7d",
+      "compressed_bytes": 1183304,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3",
+      "sha256": "9ff6962828f2201592d5e3c3be1ffff4280948bec2d3af024fde654e27446bdc",
+      "bytes": 15163392,
+      "compressed": "WenguaApp_双书194案例_用户星门神81格吉凶定位20261024_Vnext_完整研究库.sqlite3.xz",
+      "compressed_sha256": "e6b0151dc6691304992052834aed96919d70acd462d5bf6228f63e83da14a3d1",
+      "compressed_bytes": 1212452,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3",
+      "sha256": "b0b2aeaf9bfbb94be3f435391e8fb2b066b9c9da7a5a6675e3d22cf50c6ce55f",
+      "bytes": 14714880,
+      "compressed": "WenguaApp_双书194案例_疾病严重程度动态断词V1_9_完整研究库.sqlite3.xz",
+      "compressed_sha256": "bfcef5a333c9500c77534ab53b7ee4f028860bfeef57dc429d6a5c01257d4a40",
+      "compressed_bytes": 1169532,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3",
+      "sha256": "2e0929d0823d2e69547ed09bd5cd2927d705f484965662d092bdd02fead627f7",
+      "bytes": 14882816,
+      "compressed": "WenguaApp_双书194案例_疾病五不遇时乾坤与两例封存V2_7_完整研究库.sqlite3.xz",
+      "compressed_sha256": "abc023f9e3eed1282f3b557219ccb95a778721d2280ffdad44325d94223dee7f",
+      "compressed_bytes": 1186876,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3",
+      "sha256": "8c3914f47b3433d23ddf16b6ecf8fc2e2dc4380165646c010f49e87212fb913e",
+      "bytes": 14782464,
+      "compressed": "WenguaApp_双书194案例_疾病五问事动态断词与人物关系V2_0_完整研究库.sqlite3.xz",
+      "compressed_sha256": "94d8be866314faebee1987ceb43394c3220e9f131c25c51af10a048b293f461d",
+      "compressed_bytes": 1178468,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3",
+      "sha256": "713081aed68bb38172ae506d78c1cf59a1853f64daf14be360507e6670baf27b",
+      "bytes": 14952448,
+      "compressed": "WenguaApp_双书194案例_疾病古籍补充规则V3_0_完整研究库.sqlite3.xz",
+      "compressed_sha256": "a07ccdf2fb25165c380f567cc9b2b12f475dd96597284ae739685e5617fcaa35",
+      "compressed_bytes": 1194168,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3",
+      "sha256": "25d95ed8df42ed0739d82cc930fcd5127ba187740c0b871fc3ae488d69bc81f3",
+      "bytes": 14798848,
+      "compressed": "WenguaApp_双书194案例_疾病有向生克修正与历法校验V2_1_完整研究库.sqlite3.xz",
+      "compressed_sha256": "a3a69f7bc8971cf9a90f4cc5e4fed2f4d5521e1b2bdccb256f3dfbf00980d372",
+      "compressed_bytes": 1180032,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3",
+      "sha256": "db993ba9f5ff6511f2fb4104d881a3e9008f1f4cc19df7e68cbbe788f24a15f6",
+      "bytes": 14817280,
+      "compressed": "WenguaApp_双书194案例_疾病轻重纯离线21段断词V2_2_完整研究库.sqlite3.xz",
+      "compressed_sha256": "15985cf964c97884e66e89c3b1b159f6f6a40e62b415750caa101015d249f003",
+      "compressed_bytes": 1182388,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3",
+      "sha256": "511f3b18404d72d185d1e01c79258ac53d5f3aab66235092d9fd7c2e03c27f19",
+      "bytes": 14907392,
+      "compressed": "WenguaApp_双书194案例_精简医药旺衰应期V2_9_完整研究库.sqlite3.xz",
+      "compressed_sha256": "d0ce80a3265816fb0ae98ed21eebcb4a15f160f44b1eabd6d672de2ec191facd",
+      "compressed_bytes": 1188484,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门10节_133案例_完整研究库.sqlite3",
+      "sha256": "320347f0c25ccd050171b391611d7188f8e822d99f3d1dbd67d98688b03431dc",
+      "bytes": 9060352,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门10节_133案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "fd5fd39b2952040e870a3359adfea5a7d469b00b08bd94c01f2f0c4eb1f651e8",
+      "compressed_bytes": 736020,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3",
+      "sha256": "9107e3e440a1448cce93fdef288a48c88a8440b3998c5adcf041e2f770172ae7",
+      "bytes": 9353216,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门11节_138案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "3355abaafc24454771fbeb4d6d164777327f674a97bf09d81eec0e0493b28f85",
+      "compressed_bytes": 759324,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3",
+      "sha256": "cd1f9e1d4e352644b062bc048afb977dcc457c40bf76a5673a6e39ae93f21ac5",
+      "bytes": 9811968,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门12节_149案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "88c0b6f0c581ca99ed6555c85563134cc13d8f2510e1c1bf66d0ba73856b426c",
+      "compressed_bytes": 800264,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3",
+      "sha256": "3e92bdf9a356edb0685bcb803122319ed56477ab97d0fd38b23a2f5c16fc2185",
+      "bytes": 10035200,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门13节_153案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0b3f82937856b3228f168ac6f762923c809b93a42b42cdc8e55c1c0da2cac945",
+      "compressed_bytes": 818232,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3",
+      "sha256": "aa48d1f492e398c3216e7be15eb80653ab2bc57482c73f29a8d293d06b0ad47a",
+      "bytes": 10391552,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门14节_159案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "b9b518f874e27b974a4c8640576851f321f25e89766a451b21321c75251912bd",
+      "compressed_bytes": 848620,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3",
+      "sha256": "70b31dbe6005aa1d24af5faf298796effe0d06a87b2c1faf0af55d461cb5a1b9",
+      "bytes": 10561536,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门15节_161案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "80d7f62af08f6e33d181d291650d431214d06682bbceabc34519bf8a4c706696",
+      "compressed_bytes": 863280,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3",
+      "sha256": "72cba2eea151a4a515e2a3739243c2f6e73489ca0b7fd4845df19bf23dd8e74c",
+      "bytes": 10668032,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门16节_163案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "9046b976be5944d814ab69c2c85a1d3b2077ae79f2cf78fe070c6066e66eefc4",
+      "compressed_bytes": 874424,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3",
+      "sha256": "17e25c0bf612636e9223d2691339b6859188ee07ab337a6aec1bb6b597c8e1d3",
+      "bytes": 11192320,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门17节_167案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "dd9671f87f8fabb58f3560144f19bd72a62f4ac50b894e8df3b9ed7f2a67b4e1",
+      "compressed_bytes": 917944,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门18节_173案例_完整研究库.sqlite3",
+      "sha256": "31f0ec9382dbe5adf4f254b732b473e163a15e7ff3ae2e482797c966a7ec78f3",
+      "bytes": 11677696,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门18节_173案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0b445142f9a8b1125a3d4e681c8a280e3aee3e4fc5f779138e1a2285255ba56e",
+      "compressed_bytes": 960880,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3",
+      "sha256": "ce0929cafce50d69c1782464cc7ef84de19da507c8ef268c8787493929efb0a0",
+      "bytes": 11853824,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门19节_175案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "fd288db82ba07b2f3c0f62cee000582d9c5382e0789fce186d437bbec48b7bb7",
+      "compressed_bytes": 974804,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3",
+      "sha256": "e245f90fadba5a9af8fb2c14220cc38a7de82659c5c22aeb0bf441a2b9de313a",
+      "bytes": 5003264,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门1篇_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "6ba66d59207751285fe0c19ef6ffff39ed94eec6173121e8bc60e18ffd237734",
+      "compressed_bytes": 421100,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门20节_179案例_完整研究库.sqlite3",
+      "sha256": "fc96be68917a5132f4499e06a61dbe13db54b282814e4d69aa1a84cb44608a35",
+      "bytes": 12224512,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门20节_179案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "3c3bb730830e634ecb1528973ba48fb803db944b2f02d7ee75de01b9b74e56d6",
+      "compressed_bytes": 1011968,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3",
+      "sha256": "a5641d2b420380e218f5f537facd578ce7a0758db1c55d69975c3ecb2153d9b5",
+      "bytes": 12515328,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门21节_181案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "467ca13944bc9034a1c11088e85a8fdfc0468d35534f9409b8222bba22892152",
+      "compressed_bytes": 1036288,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3",
+      "sha256": "c57153c296b1369e2b9bd78039dbe0cc191d67721f5042828e5ef54e70895e83",
+      "bytes": 13498368,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门22节_194案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "0cbc754dbe7a89707d915467bdd4524a19304f903c3c70e51c495182ee9a1f2c",
+      "compressed_bytes": 1111588,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3",
+      "sha256": "7b6cbd1d82cb87175d5610aec4f21409658e8fa872ae9f5985a1627ae66a2726",
+      "bytes": 5599232,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门2章_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "364947cb589037f233452af2fc2a140ccc41b908ad41c7bac966bf7815791dc9",
+      "compressed_bytes": 459728,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3",
+      "sha256": "91aca58f7b30a577d9ca9dad231980604b718fe3d151b9ecba4086aea2ebd85f",
+      "bytes": 5908480,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门3章_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "b1d2eac9f4a70eb5e41bb0435c5679d5cd61b6235c814f57187d296472d9986e",
+      "compressed_bytes": 482084,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门4章_103案例_完整研究库.sqlite3",
+      "sha256": "eeb1a6ee67e49eb76bb3f982c44c78db830d8eaf827316860c519e687497507d",
+      "bytes": 6803456,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门4章_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "46850c8dcf5d7d07979dcd69cd7161fbeed5ab44e3a85e3e957052de8f734504",
+      "compressed_bytes": 550812,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3",
+      "sha256": "1c445680fa5bb4ea928b5154f7cc8c1f0957681cd94dc062e02ffb601461ba9e",
+      "bytes": 7344128,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门5章_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "bbf670eca1fe6fe1b0ef63b293a88845fd4231d95ea496fd1ed7e4663a9437c4",
+      "compressed_bytes": 583816,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3",
+      "sha256": "79b30135e42129f6596c66f09eec66496ae5d08afb8786f2831581f3fe7c6b05",
+      "bytes": 7581696,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门6节_108案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "5717b4742430bc34d73856ce69bb846aaf1f3c1423dbf2a83552be5f8ef090f5",
+      "compressed_bytes": 604676,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3",
+      "sha256": "6dfe4337697e64a100f63de0b9d5144ad00e3b2e3fa818d9d314ea304a92a10d",
+      "bytes": 8431616,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门7节_121案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "3866c9dc0eb3c4db6fca4173fe9a05e26d6881ad9fe6370ad0a5d80e7a36ed1b",
+      "compressed_bytes": 682008,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3",
+      "sha256": "64a01b16828dff326e1d0a2bd759147032fb8ef30869aa595be7aae04d492339",
+      "bytes": 8730624,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门8节_127案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "03b2f0fd7371b077ed965c5669564cbe549cdaa27eea2c45b4163c6286e86f88",
+      "compressed_bytes": 708184,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3",
+      "sha256": "ff1e066f53674abcfed14e0bdaeafcb1fe4613e88122a43f8375ba6b3157f5a2",
+      "bytes": 8906752,
+      "compressed": "WenguaApp_神奇之门21章_开悟之门9节_130案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "15fad3344d550b227c66e28a27a3e6e5c51051afecfb52febedb90802b1bbeb4",
+      "compressed_bytes": 722632,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3",
+      "sha256": "bcffc72c0801dfd46ea0fffad3b67550a4aa533764a0bf2d46373031912a8dd2",
+      "bytes": 2912256,
+      "compressed": "WenguaApp_神奇之门_14章_71案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "cc65627460bc45b7e2235365587c8af6ce5d89add83ceed9542c0209ad402a03",
+      "compressed_bytes": 272468,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3",
+      "sha256": "44efe2ed11023c763558f3eabd4cc98f55c515482515d89a78a7641cdb1fde4e",
+      "bytes": 3031040,
+      "compressed": "WenguaApp_神奇之门_15章_77案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "8529acf811cea80b62f6bfe279ab78f21ed2c21e1734f4139d9e4889cdc9947c",
+      "compressed_bytes": 285432,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3",
+      "sha256": "a3573b3b147c24b2eb149fb43f6c6582d7a10a722c25f6c863571f4d4a29efb9",
+      "bytes": 3248128,
+      "compressed": "WenguaApp_神奇之门_16章_84案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "da1e1c9346afe9bf33c3867fc883f714fcf5c235e4723dca19ddf9fde69e598d",
+      "compressed_bytes": 302428,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3",
+      "sha256": "d29cfc5cd0779cf0a334b168a48c07f7145d51f0fe1424c5c0954b76e1133867",
+      "bytes": 3516416,
+      "compressed": "WenguaApp_神奇之门_17章_86案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "bfa383f11c8c1a146d82faa0156df03b32924625a2a2041c7cc4babfe17c1394",
+      "compressed_bytes": 319752,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3",
+      "sha256": "c20edf3611a71d31a241f45d10f9b4a175212081659ac05908b980fd8854c31c",
+      "bytes": 3692544,
+      "compressed": "WenguaApp_神奇之门_18章_91案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "574b5d502f315c2b74e6da2fd756f53aac14c337f0795795c447e2af5d6de4c0",
+      "compressed_bytes": 333528,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3",
+      "sha256": "9412c314a10827b34f6d2e1930124b672f389156d86692d58db1ffdff5ada4b0",
+      "bytes": 3807232,
+      "compressed": "WenguaApp_神奇之门_19章_93案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "11f9808f88bbad35fdf153ecc8a549d073256a65067af1da3b816e34f9be15b4",
+      "compressed_bytes": 342280,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3",
+      "sha256": "1332fe460c1e73bd74939760c59a376980c888bb8d9e41c3b7416fadd4bbdaa3",
+      "bytes": 4261888,
+      "compressed": "WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "1f9afae4f3a8063ca76d79d4f006ef9f481036354c043b2b084f1fd0db2d3ce6",
+      "compressed_bytes": 370172,
+      "expanded_tracked": false
+    },
+    {
+      "name": "WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3",
+      "sha256": "31707ea58f3854b948c58cee4dc3b0d3d3705ba36a2318812ba092b0ade016e8",
+      "bytes": 4544512,
+      "compressed": "WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3.xz",
+      "compressed_sha256": "f468f1cadcfc4052092029f38e7030d351a36d60d04cd0a8d5f455299ed59b52",
+      "compressed_bytes": 389228,
+      "expanded_tracked": false
+    }
+  ],
+  "all_compressed_roundtrips_verified": true,
+  "expanded_copies_removable": 66,
+  "expanded_bytes_removable": 767690752
+}

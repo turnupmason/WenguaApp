@@ -1,11 +1,12 @@
 """Six-layer all-domain hard gate; 22 marriage scenarios exact book-source lineage."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_22_six_layers_v13 import (
  ROOT,OLD,NEW,PARENT_SHA,CONF,verify_config,build)
 from src.wengua.six_layer_contract import LAYERS,audit_all_domains
 from src.wengua.phrase_pipeline import FACTOR_IDS
-PARENT=ROOT/"archives/sqlite"/OLD
+PARENT=source_database(ROOT/"archives/sqlite"/OLD)
 class GlobalSixLayerMarriage22(unittest.TestCase):
  def test_six_stages_are_compulsory_for_any_domain(self):
   self.assertEqual(len(LAYERS),6)

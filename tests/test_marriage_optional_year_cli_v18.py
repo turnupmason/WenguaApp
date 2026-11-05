@@ -1,12 +1,13 @@
 """Runnable CLI handles unknown birth years, not an unresolved missing-year failure."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import json,tempfile,unittest
 from pathlib import Path
 from scripts.run_marriage_judgment_v18 import main
 from scripts.evaluate_marriage_other_families_v17 import CASES
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 ROOT=Path(__file__).resolve().parents[1]
-DB=ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3"
+DB=source_database(ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻无年命作者取用方法V1_8_完整研究库.sqlite3")
 class OptionalBirthYearCli(unittest.TestCase):
  def test_research_answer_for_book_cast_with_no_birth_year(self):
   case=CASES[1]

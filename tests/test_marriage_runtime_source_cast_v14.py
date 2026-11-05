@@ -5,6 +5,7 @@ nine-palace examples are from the *casting chapter*, not marriage. Tests make
 sure all intents can retrieve actual book sources without using later feedback
 as first-judgment evidence.
 """
+from src.wengua.archive_snapshots import source_database
 import unittest
 from pathlib import Path
 from src.wengua.marriage_runtime import (
@@ -13,7 +14,7 @@ from src.wengua.marriage_runtime import (
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.phrase_pipeline import FACTOR_IDS
 ROOT=Path(__file__).resolve().parents[1]
-FULL_DB=ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3"
+FULL_DB=source_database(ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻22场景六层流程V1_3_完整研究库.sqlite3")
 EXAMPLES={
  "shenqi_casting_example_1995_06_11":{
   "day_ganzhi":"癸酉","solar_term":"芒种","hour_ganzhi":"丁巳"},

@@ -6,7 +6,7 @@
 - 模板 schema：`health_severity_user_editable_template_v20261028_v10_concise_confirmed_friend`。
 - 真正双端原生工作流：[run #40791724841](https://github.com/turnupmason/WenguaApp/actions/runs/40791724841) **PASS**，包含新妻子单盘及朋友/两已揭晓盘/13:44四角色/其它随机盘；单盘 Python↔Swift 严格章节 ID、标题、正文逐字一致，1/1 EXACT MATCH。
 - 当前主 V8 CI：[run #40791724790](https://github.com/turnupmason/WenguaApp/actions/runs/40791724790) **PASS**。对相同 V10 源码的最近真 macOS XcodeGen + Xcode Simulator + 四类包内资源校验：[run #40784209785](https://github.com/turnupmason/WenguaApp/actions/runs/40784209785) **PASS**；该构建为之前同一应用源码（498cc54d），不是本次工作流测试提交的新构建，不可偷换成新 Xcode run。
-- 原生完整客户输出和原始对照结果：[追加归档](HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40791724841_ATTEMPT_1.md)；保留历史版本和失败记录。
+- 原生完整客户输出和原始对照结果：[追加归档](https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_40791724841_ATTEMPT_1.md)；保留历史版本和失败记录。
 
 ## 随机方法（非已见朋友案例重用）
 

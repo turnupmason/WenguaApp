@@ -1,4 +1,5 @@
 """Kaiwu Part 1: source-accurate multi-book provenance and immutable 21-chapter parent."""
+from src.wengua.archive_snapshots import source_database
 import hashlib
 import json
 import sqlite3
@@ -11,7 +12,7 @@ from scripts.build_kaiwu_01_from_21 import (
  build, extract, figure_index, lines_of, ROOT
 )
 
-BASE=ROOT/"archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3"
+BASE=source_database(ROOT/"archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3")
 SOURCE=ROOT/"sources/kaiwu/开悟之门_第一篇.txt"
 MIGRATION=ROOT/"schema/migrations/017_cross_book_multitrack.sql"
 

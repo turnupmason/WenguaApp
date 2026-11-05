@@ -1,11 +1,12 @@
 """Hot topics unified-domain, 20 genuine boards, 13 events, author error retention."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_hot_topics_from_health import (
  BASE_NAME,BASE_SHA,SOURCE_SHA,ROOT,CHAPTER,EVENTS,NEW_NAME,STARTS,
  validate_source,parsed,build,chart
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_热门话题预测评析.txt"
 
 class HotTopicsTests(unittest.TestCase):

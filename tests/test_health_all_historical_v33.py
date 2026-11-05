@@ -3,6 +3,13 @@ import hashlib, json, unittest
 from unittest.mock import patch
 from scripts.replay_all_historical_health_v31_v33 import evaluate, CASES, PARENT, PARENT_SHA, ROOT
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class HealthAllFamiliesV33Test(unittest.TestCase):
     def test_exact_full_parent_and_complete_deduplicated_scope(self):
         self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

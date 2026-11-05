@@ -19,6 +19,13 @@ from src.wengua.casting_shenqi import bureau_for_term
 
 ROOT=Path(__file__).resolve().parents[1]
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class ActiveV391SourceCustomerRegressions(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

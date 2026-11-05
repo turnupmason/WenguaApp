@@ -1,5 +1,6 @@
 """Marriage book 194-case source archive, 4 draft prototypes, concrete timing gate."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 from datetime import datetime
 from hashlib import sha256
 import sqlite3,tempfile,unittest
@@ -8,7 +9,7 @@ from scripts.seed_marriage_phrase_library import ROOT,BASE_SHA,OLD,NEW,PHRASES,s
 from src.wengua.phrase_pipeline import (
  AGE_BANDS,SEXES,FACTOR_IDS,matrix_cardinality,matrix_base_key,inspect_marriage_input)
 from src.wengua.timing_engine import derive_timing_candidates,finalize_traditional_decision
-BASE=ROOT/"archives/sqlite"/OLD
+BASE=source_database(ROOT/"archives/sqlite"/OLD)
 class Pilot(unittest.TestCase):
  def test_1080_distinct_state_coordinates_not_1080_verified_nine_palaces(self):
   self.assertEqual(matrix_cardinality(),388800)

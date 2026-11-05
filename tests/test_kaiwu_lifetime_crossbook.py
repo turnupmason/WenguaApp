@@ -1,11 +1,12 @@
 """Source-level & full-parent no-loss tests for Kaiwu lifetime source case witnesses."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_lifetime_from_weather import (
  ROOT,BASE_NAME,NEW_NAME,BASE_SHA,SOURCE_SHA,CASES,validate,get_steps,build
 )
-BASE=ROOT/'archives/sqlite'/BASE_NAME
+BASE=source_database(ROOT/'archives/sqlite'/BASE_NAME)
 SOURCE=ROOT/'sources/kaiwu/开悟之门_人生命运预测.txt'
 class KaiwuLifetimeSourceTest(unittest.TestCase):
  @classmethod

@@ -8,6 +8,13 @@ from src.wengua.health_severity_v27 import (
 from scripts.run_two_historical_health_v27 import (
    draw,evaluate,CHOSEN_EXPECTED,PARENT_DB,SEED,fnv32,CASE_METADATA)
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class FiveNoEncounterAndTwoHistoricalCases(unittest.TestCase):
     def test_formula_correct_same_polarity_and_true_hour_controls_day(self):
         a=five_not_encounter("庚申","丙戌")

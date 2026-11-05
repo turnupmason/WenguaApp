@@ -1,11 +1,12 @@
 """Actually execute public JSON-in source-method outcome interface without labels."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 from pathlib import Path
 import json,tempfile,unittest
 from scripts.run_marriage_judgment_v16 import main
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 ROOT=Path(__file__).resolve().parents[1]
-DB=ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3"
+DB=source_database(ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻作者式判断与家族留出评测V1_6_完整研究库.sqlite3")
 class PublicJSONDecisionV16(unittest.TestCase):
  def test_first_outcome_and_computed_month_from_actual_book_calendar(self):
   document={

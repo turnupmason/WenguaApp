@@ -1,8 +1,9 @@
 """Regression: immutable 167-case baseline plus six correctly typed recent-fortune events."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_recent_from_lifetime import ROOT,BASE_SHA,BASE_NAME,NEW_NAME,SOURCE_SHA,CASES,validate,build
-BASE=ROOT/'archives/sqlite'/BASE_NAME
+BASE=source_database(ROOT/'archives/sqlite'/BASE_NAME)
 SOURCE=ROOT/'sources/kaiwu/开悟之门_人生运气预测.txt'
 class RecentSourceTest(unittest.TestCase):
  @classmethod

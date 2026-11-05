@@ -1,12 +1,13 @@
 """Kaiwu exam three source cases share Shenqi education domain: 3 casts/4 students."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_education_from_employment import (
  ROOT,BASE_SHA,BASE_NAME,NEW_NAME,SOURCE_SHA,SPECS,CANDIDATES,CLAIMS,
  read_original,events,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_求学考试预测.txt"
 
 class KaiwuEducationFullArchiveTests(unittest.TestCase):

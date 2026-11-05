@@ -1,0 +1,20 @@
+{
+  "v4_contract_files_verified_unchanged": 26,
+  "changed_files": [],
+  "immutable_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "course_archive_sha256": "69b7c493e5edb887949d907e162fb76c4ca6b6f63ea8535d9c22ae95bc1632cd",
+  "semantic_review_notes_private_and_hash_pinned": true,
+  "all_target_views_encoded": 11177,
+  "dropped_training_targets": 0,
+  "historical_case_source_rows_are_retrospective": true,
+  "actual_8b_cuda_training_verified": false,
+  "semantic_perfection_claimed": false,
+  "preserved_fixture_failures": "tiny_run was launched before release creation; tiny_run2 lacked chapter in software fixture and failed generation; fixture corrected, tiny_run3 completed 40 updates with optimizer resume",
+  "full_suite": {
+    "tests": 1144,
+    "failures": 0,
+    "errors": 0,
+    "historical_skips": 3,
+    "evidence": "full_run_2/results.json"
+  }
+}

@@ -1,8 +1,9 @@
 """Last Kaiwu source chapter must not leak hindsight into 194-event full database."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_ch03_source_final_194 import ROOT,CFG,SOURCE,PARENT,OUTPUT,verify,build
-BASE=ROOT/"archives/sqlite"/PARENT
+BASE=source_database(ROOT/"archives/sqlite"/PARENT)
 class FinalTwoBooksTest(unittest.TestCase):
  @classmethod
  def setUpClass(cls):

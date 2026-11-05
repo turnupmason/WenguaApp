@@ -37,7 +37,7 @@
 p4本地完整复核：846 tests，0 failures、0 errors、3原有skip；专项32项全部通过。原来2个手动入口失败现已由真正时间入口接入解决，不删除它们，旧失败记录及修改前测试保留。原日志 docs/audits/ios_manual_event_time_20261102/python_unittest_full.log.gz 与local_results.json可核SHA；新Swift/Xcode仍待实际Actions结果，不预报通过。
 
 
-p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
+p4首轮真实Xcode #41478402093失败：新macos-latest编译器在原有WenguaDesignPreviewApp.swift:614的多段Text字符串+拼接发生类型检查超时。原失败全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_FAIL_RUN_41478402093_ATTEMPT_1.md 保留；只将同一文字提取为纯String插值helper clockFactsLine，输出内容、盘面事实和任何评分均不变，继续重跑完整构建与真实手动时辰验收。原推送 #41478154115 在备用runner开始后取消重复排队，未称通过。
 
 
 p4等级引用再加同一人物硬校验：除同ISO外必须relationship一致；新实测脚本对同一实际时辰的另一个人等级明确拒绝，并对两张原时辰的健康全文/用神宫位做独立Python逐字比对。此处只约束引用身份，不改原生或Python评分。完整846 tests再次0失败/0错误/3原skip。一次同步镜像前的专项预检出现1条字节不一致，已同步并复跑7项全通过；原预检日志无损保存 docs/audits/ios_manual_event_time_20261102/pre_mirror_sync_targeted.log.gz，不冒称该次预检通过。等待本最终源码的新Xcode/真实bundle执行结果。
@@ -50,7 +50,7 @@ p4正式最终Xcode #41479754723（源4ee16bca）及手动时辰/两健康主题
 
 
 ### 2026-11-02 · p4手动事项时辰、候选组与等级接口最终实测完成
-正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
+正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
 同一生产源码/资源pin、仅CI配置后续变化的7403dbbe：独立 iOS Offline Native Casting #41481224006（全部6 jobs，含完整真实App Xcode）、轻重与病位摘要原生 #41481223986、Python3.11/3.12主CI #41481223879 全success。完整本地846 tests 0 failures、0 errors、3既有skip；此前两项手动时辰真实缺口已交付，原测试与失败历史未删。Important双镜像/源pin/SHA验证通过。
 中间真实编译超时失败 #41478402093及镜像同步前1条失败原日志保留，已修复后复验。排队重复/被最新源码替代的 #41478154115/#41478154090/#41479119490/#41479744446/#41479969232按实际cancelled保留，不冒称运行通过；#41479156312虽曾取消接口返回500，其实际后来success，亦按实际记录。没有签名真机或全套XCUITest/滚轮视觉手测；这次没有生成秘密盲测或医疗安全证据。
 用户使用：普通问事选当前；有计划选事项时辰，通过滚轮和发生地时区填1至6候选，一次静心后同组切换，15天只登记一组，历史也可对照。健康等级仅为同一事项传统盘象，不代表全天万事吉凶；旅游/约会/婚礼/手术专项择时评级仍待核，只提供真实排盘，禁止借疾病分宣称手术安全。病愈应期仍未开放。README已更新入口、限制及本轮实测链接；Mac按其说明重新XcodeGen后⌘R查看。

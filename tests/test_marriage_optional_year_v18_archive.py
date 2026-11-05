@@ -1,9 +1,10 @@
 """V1.8 complete SQLite append-only regression with optional 年命 book methods."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 from pathlib import Path
 import hashlib,sqlite3,tempfile,unittest
 from scripts.build_marriage_optional_year_v18 import ROOT,PARENT_NAME,OUTPUT_NAME,PARENT_SHA,build
-PARENT=ROOT/"archives/sqlite"/PARENT_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/PARENT_NAME)
 class OptionalYearCompleteArchive(unittest.TestCase):
  def test_exact_parent_preservation_22_routes_10_sources_two_historical_errors(self):
   self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

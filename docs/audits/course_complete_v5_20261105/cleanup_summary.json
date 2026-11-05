@@ -1,0 +1,14 @@
+{
+  "expanded_database_copies_removed": 66,
+  "expanded_database_bytes_removed": 767690752,
+  "compressed_snapshots_preserved": 67,
+  "all_database_compressed_roundtrips_verified": true,
+  "ci_report_copies_archived": 836,
+  "ci_original_bytes": 20689093,
+  "ci_archive_bytes": 186560,
+  "all_ci_members_roundtrip_verified": true,
+  "history_rewritten": false,
+  "pre_cleanup_tag": "course-v4-before-cleanup-20261105",
+  "user_local_weights_or_checkpoints_removed": false,
+  "running_v4_contract_changes": 0
+}

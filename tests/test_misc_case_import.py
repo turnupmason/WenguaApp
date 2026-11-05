@@ -1,11 +1,12 @@
 """Original book cases: one event may have many charts; no leaked retrospective result."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,importlib.util,json,sqlite3,unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 FILE=ROOT/'sources/shenqi/神奇之门_第十七章_其他杂项预测_精校完整版(1).txt'
 MOD=ROOT/'scripts/build_shenqi_21_from_20.py'
-BASE=ROOT/'archives/sqlite/WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3'
-ARCHIVE=ROOT/'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3'
+BASE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_20章_98案例_完整研究库.sqlite3')
+ARCHIVE=source_database(ROOT/'archives/sqlite/WenguaApp_神奇之门_21章_103案例_完整研究库.sqlite3')
 MANIFEST=ROOT/'archives/sqlite/21chapters_103cases_manifest.json'
 class MiscHistoryRegression(unittest.TestCase):
  @classmethod

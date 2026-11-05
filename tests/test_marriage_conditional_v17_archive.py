@@ -1,9 +1,10 @@
 """V1.7 append-only source book citations + genuine absent-data holdout gates."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_marriage_conditional_v17 import ROOT,PARENT_NAME,NEW_NAME,PARENT_SHA,build
-PARENT=ROOT/"archives/sqlite"/PARENT_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/PARENT_NAME)
 class MarriageOriginalConditionalFullArchive(unittest.TestCase):
  def test_source_sha_27_rules_two_other_families_old_194_cases_and_two_misses_kept(self):
   self.assertEqual(hashlib.sha256(PARENT.read_bytes()).hexdigest(),PARENT_SHA)

@@ -6,13 +6,14 @@ When only one year is known, that one may inform an overlay; missing years
 must not be fabricated.  All source citations include book,line,whole SHA.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import copy,json,unittest
 from pathlib import Path
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.marriage_no_year_v18 import analyze_marriage_v18,_original_rules
 from scripts.evaluate_marriage_other_families_v17 import CASES,_compare_printed_chart
 ROOT=Path(__file__).resolve().parents[1]
-DB=ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3"
+DB=source_database(ROOT/"archives/sqlite/WenguaApp_双书194案例_婚姻多证据条件与新增家族验证V1_7_完整研究库.sqlite3")
 def packet(original,*,no_year=True):
  chart=layout_from_explicit_bureau(
   dun=original["dun"],ju=original["ju"],hour_ganzhi=original["hour"])

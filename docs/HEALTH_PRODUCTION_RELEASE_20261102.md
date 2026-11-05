@@ -82,7 +82,7 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 
 ### 2026-11-02 · 两主题封存正式最终验收完成
 - 用户指定并封存：疾病轻重 **V9.0计分＋V11模板**；伤病在哪里 **V27**。正式清单 `data/releases/health_frozen_20261102.json`，接口/清退记录 `docs/HEALTH_PRODUCTION_RELEASE_20261102.md`。V8基础计分及V9已有条件扩展均未改。
-- **真正macOS Xcode #41454559739 success**（源码 `9094e763cac2a2ecb7ac1bdbd7773962592ca1c1`）：完整SwiftUI Simulator编译、200/81/人物/两模板/255/三源与封存清单实际包内字节白名单、两主题正式Bundle路由哥哥/妻子共4次调用、Python/Swift全文逐字、4时辰×6伤损条件、1080数据集全部通过。原样全文 `docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md`。原任务 #41452844633 长时间未分配runner，仅取消重复排队，不伪称该run执行通过。
+- **真正macOS Xcode #41454559739 success**（源码 `9094e763cac2a2ecb7ac1bdbd7773962592ca1c1`）：完整SwiftUI Simulator编译、200/81/人物/两模板/255/三源与封存清单实际包内字节白名单、两主题正式Bundle路由哥哥/妻子共4次调用、Python/Swift全文逐字、4时辰×6伤损条件、1080数据集全部通过。原样全文 `https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41454559739_ATTEMPT_1.md`。原任务 #41452844633 长时间未分配runner，仅取消重复排队，不伪称该run执行通过。
 - 独立 **iOS Offline Native Casting #41453149593 success**（含真实App Xcode构建及全部独立原生回归）；最新源码主CI **#41453149251 success**（Python3.11/3.12）、轻重原生逐字 **#41453149280 success**。审计提交的dirty生成文件＋并发远端变更，本地临时bare仓库真实复现修复通过。
 - 23份旧模板/草稿/固定样例清出正式目录，原内容SHA无损归档；旧模板冗余Important镜像清除，当前两模板和封存清单双镜像/MANIFEST同步；38项旧版自动构建/预览改手动审计，原测试与历史记录不删。现役自动parity读取实际封存版本写交接，不再回写过时V10.1标识。
 - 全库835 tests仍41 failures、11 errors、3 skipped，与此前相同52条历史失败标识；当前正式门槛全部通过但不能称全库零失败。迁移早期旧路径遗漏、镜像同步过程失败、旧workflow重复键 #41452840714/#41452954223 与归档写回 #41452844599 均保留记录，不以删除失败求全绿。
@@ -96,7 +96,7 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 
 
 ### 2026-11-02 · 清账与p1工程补丁正式验收完成
-源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1：主CI #41460321192（Python3.11/3.12）、轻重原生逐字 #41460320478、独立iOS编译/原生回归 #41460320720、正式macOS Xcode/实际包资源SHA/四次Bundle路由/V27逐字/六伤损条件/1080数据 #41460320838 均success。新Xcode原始全文 docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md，未用旧run替代。
+源码f8d1b1e0c0af5db51cadbcdcc3ab83fc3dd265d1：主CI #41460321192（Python3.11/3.12）、轻重原生逐字 #41460320478、独立iOS编译/原生回归 #41460320720、正式macOS Xcode/实际包资源SHA/四次Bundle路由/V27逐字/六伤损条件/1080数据 #41460320838 均success。新Xcode原始全文 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41460320838_ATTEMPT_1.md，未用旧run替代。
 完整本地839 tests的2 failures/0 errors/3 skipped单独保留，不能声称全库全绿：两失败均为手动真实时辰入口缺失；三skip原已存在（可选Moshier软件交叉参考未安装，V7.7/V7.8两历史class版本门槛），本轮未增加skip或xfail。原52条逐项账、修改前测试原件/SHA和完整失败日志均可复现。四原时辰分数、完整中文SHA及两个模板/200/81/人物/Swift源码pin未变，唯一冻结源位改动是ordinary_bottom地盘审计字段，manifest明确engineering_p1并保留前版原件。
 顺序进度：1）50条已验证解决，另2条功能缺口按第4步保留；2）360真时辰及1080物理组合复核完成，弱病泄耗/特殊宿主来源未核定不改分；3）真实iPhone无连接/签名/用户实测，验收清单已备、仍全部未执行；4）手动入口尚未实现，不越过真机条件伪报已交付。
 
@@ -107,7 +107,7 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 
 
 ### 2026-11-02 · 奇门论疾p2首页接线正式验收完成
-正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
+正式macOS Xcode #41469280778 success，源码9b9a2606934c32a68022bd1669d3556bea4202ad：完整双架构Simulator App构建、封存实际包内资源检查、哥哥/妻子两个主题共4次Bundle路由、Python/Swift全文逐字、六伤损条件及1080数据检查通过。真正首页适配器运行检查同时通过截图原文、错误06字段陷阱、缺失/空白/错误主题阻断和2份真实V27 native结论，日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41469280778_ATTEMPT_1.md。最新共享原生 #41470986685（含真实病位首页运行）、主CI #41470986700 success，源码5da7fc7e；独立iOS完整App编译 #41468305381 success。工作流/记录后续变更未改生产源码或资源pin。
 早期 #41468305370 顶层failure、job cancelled、无任何执行步骤，GitHub原注释为“The job was not acquired by Runner of type hosted even after multiple attempts”，另报macOS arm64容量限制；不是代码编译失败，原记录保留。#41470986648/#41470987628为正式运行启动后取消的重复排队，不称通过。
 本地841 tests仍2 failures/0 errors/3原有skip，保留手动真实时辰入口缺口；专项25项、封存SHA和Important镜像通过。此次仅改首页真实09结论展示及产品名“奇门论疾”，两模板/计分/详细断词不变；旧V27记录兼容。未作签名真机或全套XCUITest验收。更新代码后重新⌘R才能看到新UI；病愈应期仍待后续独立研究。
 
@@ -119,7 +119,7 @@ Important内已退役模板的冗余镜像同时删除，MANIFEST删除对应条
 
 
 ### 2026-11-02 · p3简明首页、静心动画及Swift零警告实测完成
-生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
+生产源码f7c0ab453f3d295abf6db4cd1f946d93a09b4211：正式macOS Xcode #41474512486 success，Swift源码警告0，正式Target以警告即错误编译；实际App资源SHA/白名单、哥哥/妻子两主题4次Bundle调用、V27全文逐字、全部6伤损条件及1080数据集通过。完整原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41474512486_ATTEMPT_1.md 含PASS SWIFT_PRODUCTION_WARNINGS_ZERO和PASS QIMEN_LUNJI_FRONT_PAGE。
 共享原生 #41474512713 success：首页普通/伤损/剧痛简明文案、真实两张V27输出、保留完整原reading、木鱼周期/停止状态实际Swift运行通过；主CI #41474512568（Python3.11/3.12）与独立iOS真实App Xcode/全部原生回归 #41474512484 success。本轮这四个Actions均无失败；全库843 tests原2个手动时辰入口失败与3个原skip另行原样保留，不称全库全绿。
 README、Important字节镜像/Git blob SHA及封存p3清单已同步。两个模板/7份规则资源/Python/评分源pin不变。没有进行真机签名、动画截图或整套XCUITest像素/按钮验收；动画为本地矢量与诵念文字，默认静音。Mac须按README pull后重新xcodegen generate并⌘R，将新增动画文件加入现有工程；历史V27结论直接使用新首页展示。病愈应期尚未开放。
 
@@ -131,7 +131,7 @@ p3清单/原5份测试逐字归档；现manifest明确p4，7份已有展示/DTO/
 
 
 ### 2026-11-02 · p4手动事项时辰、候选组与等级接口最终实测完成
-正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
+正式macOS Xcode #41479754723 success（生产源4ee16bca3334b4203551218215fea2fee32a1c63）：完整App编译、Swift源警告0、实际包内SHA白名单、两健康主题4次Bundle路由、V27逐字/6伤损条件/1080源盘检查通过。新手动时辰真实执行通过当前/选中时刻区分、两张未来时辰完整历法与九宫复现、同盘同人物V11等级、跨时辰/人物/领域拒绝借分、DST重复时刻、无效候选、整组一个存储值、旧单条兼容；两盘健康章节/全文/用神宫位独立Python与Swift逐字相等。原始日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41479754723_ATTEMPT_1.md。
 同一生产源码/资源pin、仅CI配置后续变化的7403dbbe：独立 iOS Offline Native Casting #41481224006（全部6 jobs，含完整真实App Xcode）、轻重与病位摘要原生 #41481223986、Python3.11/3.12主CI #41481223879 全success。完整本地846 tests 0 failures、0 errors、3既有skip；此前两项手动时辰真实缺口已交付，原测试与失败历史未删。Important双镜像/源pin/SHA验证通过。
 中间真实编译超时失败 #41478402093及镜像同步前1条失败原日志保留，已修复后复验。排队重复/被最新源码替代的 #41478154115/#41478154090/#41479119490/#41479744446/#41479969232按实际cancelled保留，不冒称运行通过；#41479156312虽曾取消接口返回500，其实际后来success，亦按实际记录。没有签名真机或全套XCUITest/滚轮视觉手测；这次没有生成秘密盲测或医疗安全证据。
 用户使用：普通问事选当前；有计划选事项时辰，通过滚轮和发生地时区填1至6候选，一次静心后同组切换，15天只登记一组，历史也可对照。健康等级仅为同一事项传统盘象，不代表全天万事吉凶；旅游/约会/婚礼/手术专项择时评级仍待核，只提供真实排盘，禁止借疾病分宣称手术安全。病愈应期仍未开放。README已更新入口、限制及本轮实测链接；Mac按其说明重新XcodeGen后⌘R查看。
@@ -144,7 +144,7 @@ p4清单与6份测试原件/SHA归档，现行manifest明确p5：9个既有展�
 
 
 ### 2026-11-02 · p5领域内接口、分项排版及真实输入最终验收完成
-生产源0c8a668daee84a952f4f9696bb35dbed20591088：正式macOS Xcode #41494696931 success，完整App编译、Swift源警告0、实际包内资源SHA/白名单、两主题4次Bundle路由、V27逐字与6伤损条件/1080源盘通过。新增PASS DOMAIN_UI实测15领域普通预定时刻、15个electiveReserved阻断、共用最终净分等级、V27每节分项runs原文重组、旧描述和孤立回执限制；同盘同人物健康全文/用神宫位Python与Swift逐字相等。完整原日志 docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md。
+生产源0c8a668daee84a952f4f9696bb35dbed20591088：正式macOS Xcode #41494696931 success，完整App编译、Swift源警告0、实际包内资源SHA/白名单、两主题4次Bundle路由、V27逐字与6伤损条件/1080源盘通过。新增PASS DOMAIN_UI实测15领域普通预定时刻、15个electiveReserved阻断、共用最终净分等级、V27每节分项runs原文重组、旧描述和孤立回执限制；同盘同人物健康全文/用神宫位Python与Swift逐字相等。完整原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41494696931_ATTEMPT_1.md。
 同源主CI #41494641830（Python3.11/3.12）、原生轻重/病位摘要 #41494641874 success。独立iOS #41494641926 attempt2 success：原5项Foundation原生成功保留，独立完整App重跑成功，合计6 jobs均success。其attempt1长时间排队，在取消操作与刚分配runner之间发生竞态，中断了刚开始的App步骤；已如实重跑该job，原cancelled记录保留，不称attempt1通过。重复排队正式任务 #41494641971 cancelled，未虚报执行通过。
 本地专项15项与完整849 tests 0失败/0错误/3原有skip；首轮旧CTA断言1条迁移失败原日志/原测试SHA继续保留，无删除测试或新skip。p4清单归档、p5源pin及Important镜像/MANIFEST同步通过。V9计分/V11、V27模板和原生/Python数学源码与7份规则资源未改；仅做UI/接口/输入与历史承接。没有新增章节/病例、签名真机、全套XCUITest或像素视觉手测，不将文化盘象说成科学预测有效性。
 当前入口：首页仅领域；领域内普通问事可当前/一个已定时刻真实排盘，15领域各有选吉日预留项，暂不进普通完整解读；只有健康两专题已接评级/解读，其它模板逐步开发。专业解盘分块分短行，底层断词原文不删。手动入口只显示选择时辰，明确确认才使用；必填自由描述已移除、15天旧限制保守承接。README已同步。本轮可按README重新生成Xcode工程后⌘R检查实际UI。
@@ -158,7 +158,7 @@ p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／�
 
 
 ### 2026-11-02 · p6截图界面与独立时间模式最终验收完成
-生产源d594d5d6a0423b04bbafe11318357018286b80cc：正式Xcode #41502545254 success，完整iPhone Simulator App、零Swift源警告、实际包SHA／资源白名单、两主题4次Bundle路由、V27逐字／六伤损／1080源盘通过。PASS SETUP_UI实际执行15领域普通仅当前、15领域选吉日仅未来的双向拒绝、五列公历对应的闰日／DST缺口／重复时刻、两张真盘×六伤损分支的逐节原文／段落重组；同盘同人物健康Python／Swift全文逐字相等，旧分组、孤立回执及15天限制保留。原日志 docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md。
+生产源d594d5d6a0423b04bbafe11318357018286b80cc：正式Xcode #41502545254 success，完整iPhone Simulator App、零Swift源警告、实际包SHA／资源白名单、两主题4次Bundle路由、V27逐字／六伤损／1080源盘通过。PASS SETUP_UI实际执行15领域普通仅当前、15领域选吉日仅未来的双向拒绝、五列公历对应的闰日／DST缺口／重复时刻、两张真盘×六伤损分支的逐节原文／段落重组；同盘同人物健康Python／Swift全文逐字相等，旧分组、孤立回执及15天限制保留。原日志 https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41502545254_ATTEMPT_1.md。
 同源独立iOS #41502545252 全部6 jobs success；主CI #41502544972 Python3.11／3.12 success。原生轻重／病位首页最终独立 #41503297213 success（5be81c80，仅历史文档后续变化，生产源码、资源、manifest与d594d5d6全部一致）。完整本地855 tests 0失败／0错误／3既有skip，专项33通过；旧测试与失败原日志／SHA保留，无删除测试或新增skip。结果总表 docs/audits/ios_setup_palace_ui_20261102/final_ci_results.json。
 中途原生 #41502544938 attempt1／2的全部计算与逐字步骤成功，但自动审计文档尾部rebase冲突使workflow实际failure；两次完整原日志保留。由最新main独立dispatch #41503297213后完整计算及归档均success，未覆盖旧失败。旧源／冗余正式 #41502335031／#41502344251／#41502555446、旧独立iOS #41502334854在确认剩余App任务尚queued后取消，按实际cancelled保留，不称通过。
 准备页先显示，按按钮进入页内表单；普通只当前、选吉日只未来；五列年／月／日／时／分，表单标题上置无重复；坤二刑墓overlay、四柱下置标签、方向栏、伤门／结论分组、宫位标题居中及角色放大均已编译接入。V9/V11、V27数学与模板及7份资源逐字未变。选吉日的专用吉凶评级／多候选筛选继续开发；当前只真实排盘。README及Important镜像同步。本轮无新原书章节／病例、签名真机、像素视觉手测或全套XCUITest；Mac须重新XcodeGen后⌘R查看实际界面。
@@ -170,7 +170,7 @@ p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／�
 
 
 ### 2026-11-02 · p7最新截图修正最终实测完成
-生产源077a7b5e48a1394c62626b5c0d74c0f74bab3e89：正式macOS Xcode #41506181795 success，完整App、Swift源警告0、实际包资源SHA／白名单、两主题4次Bundle路由、原文逐字／六伤损／1080源盘、新时间与段落验收全部通过。首页真实V11六例摘要51–54字，仅“病宫…患者宫…医药与辅助还须合参。全盘判为…：…。”两句，11等级解析通过；专业解盘原文完整。原始报告docs/IOS_V80_XCODE_PASS_RUN_41506181795_ATTEMPT_1.md。
+生产源077a7b5e48a1394c62626b5c0d74c0f74bab3e89：正式macOS Xcode #41506181795 success，完整App、Swift源警告0、实际包资源SHA／白名单、两主题4次Bundle路由、原文逐字／六伤损／1080源盘、新时间与段落验收全部通过。首页真实V11六例摘要51–54字，仅“病宫…患者宫…医药与辅助还须合参。全盘判为…：…。”两句，11等级解析通过；专业解盘原文完整。原始报告https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41506181795_ATTEMPT_1.md。
 独立iOS #41506160061全部6 jobs success；原生轻重／病位 #41506159875 success；主CI #41506159979 Python3.11／3.12 success。全量本地857项0失败／0错误／3原有skip，新加2项；两条旧排版契约失败与原测试／SHA均保留后迁移，不删方法、不新加skip。Important镜像／manifest同步。公历年月日时标签下显示实际数值和HH:mm、等宽时间卡冒号标题、明显下拉底框、完整换行、标题居中放大、综合断语分组、同字号同字距竖排角色均实际随App编译。仍无签名真机／人工像素视觉或全套XCUITest，不能将编译与接口通过写为视觉手测完成。两封存模板、数学引擎及7份资源未变。README与交接同步；Mac按README重新XcodeGen后⌘R查看。
 
 
@@ -181,7 +181,7 @@ p5清单和7份原测试／脚本及SHA归档，p6仅8份既有展示／DTO／�
 
 
 ### 2026-11-02 · p8整框菜单、有效输入、等级标题与动画最终验收
-生产源aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4：正式Xcode #41527892038 success，完整App与Canvas动画、零Swift源警告、包资源SHA／白名单、两个主题4次Bundle路由、两盘逐字／六伤损／1080及时间／段落检查通过。全11等级与六份真实V11简短总结验收通过，首屏“等级：既定说词”标题已恢复。原报告docs/IOS_V80_XCODE_PASS_RUN_41527892038_ATTEMPT_1.md。
+生产源aeb950e90d0ab67cfb5bff273c21fb4f3d1a5ba4：正式Xcode #41527892038 success，完整App与Canvas动画、零Swift源警告、包资源SHA／白名单、两个主题4次Bundle路由、两盘逐字／六伤损／1080及时间／段落检查通过。全11等级与六份真实V11简短总结验收通过，首屏“等级：既定说词”标题已恢复。原报告https://github.com/turnupmason/WenguaApp/blob/course-v4-before-cleanup-20261105/docs/IOS_V80_XCODE_PASS_RUN_41527892038_ATTEMPT_1.md。
 独立iOS #41527891786的5项原生jobs成功，额外Mac App job仍等待执行器，整体尚未完成，不记为success；真实NativeActorProfileCheck执行男性朋友不填年龄仍与原朋友同月干／同宫且无亲属辅助；Python原月干规则已不要求年龄，原生仅删除旧输入门槛，无改月干绑定或任何算分。轻重／病位原生 #41527891765、主CI #41527891753 Python3.11／3.12 success。完整本地859项0失败／0错误／3原有skip；旧显示契约与新测试标签定位修正原日志保留，无新skip／删方法。
 全框可点击的Menu label、删除年命干支／病程／朋友年龄、公历年份仅记录、等级标题、蛇与食物进度动画、固定干槽旁墓刑标记、58点方向卡垂直居中均已接入编译。两模板、数值／选宫逻辑与7份资源未改，p8清单／Important镜像／README／交接同步。备用正式 #41527935971在主正式成功后确认仍queued才取消，不作为通过；独立Mac额外复核仍排队，如实保留未完成状态；正式Xcode完整App已实际成功，不用其代替尚未完成的独立job状态。无签名真机、人工点击／像素手测或全套XCUITest声明。Mac重新XcodeGen后⌘R查看。
 

@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "real_tiny_cpu_training": true,
+  "updates": 40,
+  "exact_optimizer_resume_from_step": 1,
+  "all_assistant_turn_prefixes_masked": true,
+  "new_worker_transport": true,
+  "frozen_old_kernels_edited": false,
+  "actual_8b_or_cuda_verified": false,
+  "parameter_signature_checked": true,
+  "telemetry_patch_restored": true
+}

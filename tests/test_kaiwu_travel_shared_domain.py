@@ -6,12 +6,13 @@ and feedback only reports interview passage. Raw OCR and the source's added
 fifth rows must be preserved without fabricated normalized stems.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_travel_from_lost import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,validate,prepare_cases,build
 )
-PARENT=ROOT/"archives/sqlite"/BASE_NAME
+PARENT=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_出行出国预测.txt"
 
 class KaiwuTravelAdditiveSixEventsTests(unittest.TestCase):

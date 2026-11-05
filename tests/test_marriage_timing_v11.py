@@ -1,9 +1,10 @@
 """V1.1 preserves V1 and blocks 'maybe later' readings without real timing."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.upgrade_marriage_phrase_timing_v11 import ROOT,OLD,NEW,BASE_SHA,run
 from src.wengua.timing_engine import derive_timing_candidates,finalize_traditional_decision
-OLD_FILE=ROOT/"archives/sqlite"/OLD
+OLD_FILE=source_database(ROOT/"archives/sqlite"/OLD)
 class MarriageV11(unittest.TestCase):
  def test_upgraded_194_and_old_four_draft_phrases_unchanged(self):
   self.assertEqual(hashlib.sha256(OLD_FILE.read_bytes()).hexdigest(),BASE_SHA)

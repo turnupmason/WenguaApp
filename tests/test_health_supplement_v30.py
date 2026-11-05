@@ -8,6 +8,13 @@ from src.wengua.health_severity_v30 import (
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 from src.wengua.astro_calendar import solar_chart_clock
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V30DiseaseDomainCurriculum(unittest.TestCase):
  def test_full_supplement_catalog_and_immutable_prior(self):
     bank=json.loads(PAIRS.read_text("utf8"))

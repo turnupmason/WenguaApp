@@ -3,6 +3,13 @@ from __future__ import annotations
 import hashlib,unittest
 from scripts.run_health_v40_score_three_cases import evaluate,PARENT,PARENT_SHA
 from src.wengua.health_symbolic_score_v40 import _tomb_and_horse
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class V40HealthScoreCandidate(unittest.TestCase):
     @classmethod
     def setUpClass(cls):cls.batch=evaluate()

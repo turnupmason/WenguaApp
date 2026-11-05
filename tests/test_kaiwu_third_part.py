@@ -1,5 +1,6 @@
 """Kaiwu 3: verify entire input and each printed source didactic palace, no historical leakage."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_03_from_02 import (
@@ -11,7 +12,7 @@ from src.wengua.casting_shenqi import (
  hour_branch_from_wall_clock
 )
 
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_第三章.txt"
 
 class KaiwuThirdChapterTests(unittest.TestCase):

@@ -1,9 +1,10 @@
 """Source-grounded, immutable full-parent regression for Kaiwu school/debate."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_competition_from_litigation import (
  ROOT,BASE_SHA,BASE_NAME,NEW_NAME,SOURCE_SHA,CASES,CASTS,METHODS,validate,build)
-BASE=ROOT/'archives/sqlite'/BASE_NAME
+BASE=source_database(ROOT/'archives/sqlite'/BASE_NAME)
 SOURCE=ROOT/'sources/kaiwu/开悟之门_竞争评比预测.txt'
 class CompetitionFullSourceTest(unittest.TestCase):
  @classmethod

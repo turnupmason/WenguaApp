@@ -4,13 +4,14 @@ The same 1997 cast includes two issues but only one historical event/board.
 Keep 1999 post-incident exact-day deduction separate from 1997 initial warning.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_employment_from_marriage import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,SPECS,ISSUES,
  parse_source,parse_events,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_工作就业预测.txt"
 
 class KaiwuEmploymentUnifiedTests(unittest.TestCase):

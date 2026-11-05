@@ -5,12 +5,13 @@ linked same-company or same-mall events remain independently dated questions.
 Keep all unreadable OCR placeholders, host rows, and mid-five printed literals.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_business_from_missing import (
  ROOT,BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,SPEC,prepare,events,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_经营求财预测.txt"
 class KaiwuBusiness11FullArchiveTests(unittest.TestCase):
  @classmethod

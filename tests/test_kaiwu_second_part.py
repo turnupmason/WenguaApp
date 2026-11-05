@@ -1,4 +1,5 @@
 """Regression for second Kaiwu chapter: exact source, 120 stem stages, immutable V1."""
+from src.wengua.archive_snapshots import source_database
 import hashlib
 import json
 import sqlite3
@@ -12,7 +13,7 @@ from scripts.build_kaiwu_02_from_01 import (
  references,source_lines,ROOT
 )
 
-BASE=ROOT/"archives/sqlite"/BASE_ARCHIVE
+BASE=source_database(ROOT/"archives/sqlite"/BASE_ARCHIVE)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_第二章.txt"
 
 class KaiwuSecondPartTests(unittest.TestCase):

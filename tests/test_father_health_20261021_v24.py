@@ -11,6 +11,13 @@ from src.wengua.astro_calendar import solar_chart_clock
 from src.wengua.casting_shenqi import layout_from_explicit_bureau
 
 
+
+# Explicit restoration for frozen legacy runners and their full parent chain.
+def setUpModule():
+    from src.wengua.archive_snapshots import restore_historical_inputs
+    restore_historical_inputs()
+
+
 class FatherTimeHealthV24Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

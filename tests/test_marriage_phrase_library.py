@@ -1,11 +1,12 @@
 """Marriage first-domain phrase corpus and 1080 x 60 x 3 x 2 review gates."""
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from src.wengua.core import state_index
 from src.wengua.phrase_pipeline import (matrix_cardinality,matrix_base_key,
  FACTOR_IDS,inspect_marriage_input)
 from scripts.seed_marriage_phrase_library import ROOT,BASE_SHA,OLD,NEW,PHRASES,seed
-BASE=ROOT/"archives/sqlite"/OLD
+BASE=source_database(ROOT/"archives/sqlite"/OLD)
 class MarriagePhrasePilotTest(unittest.TestCase):
  def test_1080_immutable_unique_states_not_assumed_full_charts(self):
   s=state_index()

@@ -1,0 +1,39 @@
+{
+  "schema": "wengua_source_accounted_course_v5",
+  "contexts": [
+    4096
+  ],
+  "structures": [
+    {
+      "lora_r": 8,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ]
+    },
+    {
+      "lora_r": 16,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ]
+    }
+  ],
+  "shared_overrides": {},
+  "learning_rates": [
+    2e-05,
+    3e-05
+  ],
+  "dropouts": [
+    0.01,
+    0.05
+  ],
+  "warmup_ratios": [
+    0.03,
+    0.08
+  ]
+}

@@ -1,5 +1,6 @@
 """Kaiwu health chapter: 5 new events + 1 ShinQi same-event witness, all six real boards."""
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_health_from_05 import (
@@ -7,7 +8,7 @@ from scripts.build_kaiwu_health_from_05 import (
  DATA,EDITOR,original,scenarios,source_assertions,scenario_phases,build
 )
 SOURCE=ROOT/"sources/kaiwu/开悟之门_人体疾病预测.txt"
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 
 class KaiwuHealthCrossBookTests(unittest.TestCase):
  @classmethod

@@ -2,13 +2,14 @@
 Case6 has explicitly incorrect initial reading and two unprinted mentioned casts.
 """
 from __future__ import annotations
+from src.wengua.archive_snapshots import source_database
 import hashlib,json,sqlite3,tempfile,unittest
 from pathlib import Path
 from scripts.build_kaiwu_marriage_from_hot_topics import (
  BASE_NAME,BASE_SHA,NEW_NAME,SOURCE_SHA,ROOT,SPEC,
  parse_original,board,parsed,build
 )
-BASE=ROOT/"archives/sqlite"/BASE_NAME
+BASE=source_database(ROOT/"archives/sqlite"/BASE_NAME)
 SOURCE=ROOT/"sources/kaiwu/开悟之门_恋爱婚姻预测.txt"
 
 class KaiwuRelationshipTests(unittest.TestCase):
