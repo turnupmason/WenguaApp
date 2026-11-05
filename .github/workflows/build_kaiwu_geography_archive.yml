@@ -1,13 +1,6 @@
 name: Archive Kaiwu geography three original examples and two new events
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_地理风水预测.txt'
-      - 'scripts/build_kaiwu_geography_from_recent.py'
-      - 'schema/migrations/034_kaiwu_geography_crossbook_fengshui.sql'
-      - 'tests/test_kaiwu_geography_crossbook.py'
-      - '.github/workflows/build_kaiwu_geography_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

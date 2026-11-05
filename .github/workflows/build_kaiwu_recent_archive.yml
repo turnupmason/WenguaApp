@@ -1,13 +1,6 @@
 name: Archive Kaiwu recent fortune 6 source cases
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_人生运气预测.txt'
-      - 'scripts/build_kaiwu_recent_from_lifetime.py'
-      - 'schema/migrations/033_kaiwu_recent_fortune_six_cases.sql'
-      - 'tests/test_kaiwu_recent_six_cases.py'
-      - '.github/workflows/build_kaiwu_recent_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

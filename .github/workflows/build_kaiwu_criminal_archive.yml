@@ -1,13 +1,6 @@
 name: Archive Kaiwu criminal two source cases with explicit first errors
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_刑事案件预测.txt'
-      - 'scripts/build_kaiwu_criminal_from_travel.py'
-      - 'schema/migrations/030_kaiwu_criminal_shared_domain_two_cases.sql'
-      - 'tests/test_kaiwu_criminal_shared_domain.py'
-      - '.github/workflows/build_kaiwu_criminal_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -10,6 +10,10 @@ from src.wengua import course_training_v5 as course
 from src.wengua import qwen_course_training_v4 as v4
 
 
+def setUpModule():
+    (course.ROOT/'local').mkdir(exist_ok=True)
+
+
 def fixture():
     rows=[];units={};owners={'fixture:heldout':'test','fixture:train':'train'}
     for split in ('train','validation','test'):

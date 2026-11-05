@@ -20,6 +20,7 @@ def main():
     tokenizer.pad_token=tokenizer.pad_token or tokenizer.eos_token
     os.environ['HF_HUB_OFFLINE']='1';os.environ['TRANSFORMERS_OFFLINE']='1'
     p=course.profile(testing=True);b=p.book
+    (b.ROOT/'local').mkdir(exist_ok=True)
     c=p.engine.base_config()|dict(max_seq_length=512,inference_max_context=512,num_train_epochs=2,
         smoke_steps=2,gradient_accumulation_steps=1,save_steps=2,eval_max_new_tokens=16,
         validation_rows=8,validation_generation_rows=1,test_generation_rows=1)

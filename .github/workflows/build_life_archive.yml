@@ -1,11 +1,6 @@
 name: Build and archive twentieth life-opportunity source SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_shenqi_20_from_19.py'
-      - 'sources/shenqi/神奇之门_人生机遇预测_精校完整版(1).txt'
-      - 'schema/migrations/015_life_case_phase.sql'
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,13 +1,6 @@
 name: Archive Kaiwu marriage cases into shared Shenqi domain
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_恋爱婚姻预测.txt'
-      - 'scripts/build_kaiwu_marriage_from_hot_topics.py'
-      - 'schema/migrations/023_kaiwu_marriage_unified_case_provenance.sql'
-      - 'tests/test_kaiwu_marriage_unified_domain.py'
-      - '.github/workflows/build_kaiwu_marriage_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,4 +1,5 @@
 name: V2.4 Corrected Father Health and Grouped Palace Acceptance
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

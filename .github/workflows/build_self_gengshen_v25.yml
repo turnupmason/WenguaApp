@@ -1,4 +1,5 @@
 name: V2.5 Gengshen Self Health - Offline 11-Section Test and Archive
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

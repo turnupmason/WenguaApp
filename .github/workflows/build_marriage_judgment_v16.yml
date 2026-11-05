@@ -1,16 +1,6 @@
 name: Archive 194-case Marriage V1.6 Author-Initial Judgment and Historical Family Holdouts
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/marriage_judgment_v16.py'
-      - 'scripts/evaluate_marriage_family_holdout_v16.py'
-      - 'schema/migrations/044_marriage_source_initial_judgment_and_family_holdout_v16.sql'
-      - 'scripts/build_marriage_judgment_v16.py'
-      - 'tests/test_marriage_source_blind_v16.py'
-      - 'tests/test_marriage_family_eval_v16.py'
-      - 'tests/test_marriage_judgment_v16_archive.py'
-      - '.github/workflows/build_marriage_judgment_v16.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,13 +1,6 @@
 name: Archive Kaiwu lost property four cases into unified Shenqi domain
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_钱物丢失预测.txt'
-      - 'scripts/build_kaiwu_lost_from_business.py'
-      - 'schema/migrations/028_kaiwu_lost_property_crossbook_four_cases.sql'
-      - 'tests/test_kaiwu_lost_four_shared_domain.py'
-      - '.github/workflows/build_kaiwu_lost_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

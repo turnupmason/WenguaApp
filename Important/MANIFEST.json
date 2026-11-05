@@ -2101,7 +2101,7 @@
       "platform": "python",
       "canonical": "scripts/check_course_v5_training.py",
       "snapshot": "Important/python/scripts/check_course_v5_training.py",
-      "sha": "7e57fd517f50947b2155402e3215f36de9671f9f"
+      "sha": "fc20d7cdc65be8ec0b17844685523f040b0a36f5"
     },
     {
       "platform": "python",
@@ -2179,7 +2179,7 @@
       "platform": "python",
       "canonical": "tests/test_course_complete_v5.py",
       "snapshot": "Important/python/tests/test_course_complete_v5.py",
-      "sha": "1e79fd8a07ef8290ea88d06f92ade79f25b13b7e"
+      "sha": "c100a4aab55c9805ac6c37e416bbb6832945e3d4"
     },
     {
       "platform": "python",

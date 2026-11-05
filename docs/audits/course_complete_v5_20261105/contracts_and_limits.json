@@ -15,6 +15,8 @@
     "failures": 0,
     "errors": 0,
     "historical_skips": 3,
-    "evidence": "full_run_2/results.json"
-  }
+    "evidence": "full_run_3/results.json"
+  },
+  "fresh_ci_fixture_directory_fixed": true,
+  "historical_auto_snapshot_rebuilds_retired": 46
 }

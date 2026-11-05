@@ -1,14 +1,6 @@
 name: Archive Marriage 22 Scenarios and Global Six Layer Evidence Contract
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'schema/migrations/041_global_six_layers_marriage22_scenarios.sql'
-      - 'scripts/build_marriage_22_six_layers_v13.py'
-      - 'src/wengua/six_layer_contract.py'
-      - 'data/knowledge/phrase_library/marriage_v1_3/twenty_two_scene_methods.json'
-      - 'tests/test_marriage_22_six_layers_v13.py'
-      - '.github/workflows/build_marriage_22_six_layers_v13.yml'
   workflow_dispatch:
 permissions:
   contents: write

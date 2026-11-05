@@ -1,11 +1,6 @@
 name: Build and archive next military history chapter SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_shenqi_17_from_16.py'
-      - 'sources/shenqi/神奇之门_军事事件预测_精校完整版(1).txt'
-      - 'schema/migrations/012_military_event_provenance.sql'
   workflow_dispatch:
 permissions:
   contents: write

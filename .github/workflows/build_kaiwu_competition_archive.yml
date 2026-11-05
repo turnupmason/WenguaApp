@@ -1,13 +1,6 @@
 name: Archive Kaiwu competition evaluation 2 cases and 3 flat OCR casts
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_竞争评比预测.txt'
-      - 'scripts/build_kaiwu_competition_from_litigation.py'
-      - 'schema/migrations/036_kaiwu_competition_multicast_unprinted.sql'
-      - 'tests/test_kaiwu_competition_multicast.py'
-      - '.github/workflows/build_kaiwu_competition_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

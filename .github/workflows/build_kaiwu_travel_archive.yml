@@ -1,13 +1,6 @@
 name: Archive Kaiwu travel six events seven original casts
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_出行出国预测.txt'
-      - 'scripts/build_kaiwu_travel_from_lost.py'
-      - 'schema/migrations/029_kaiwu_travel_two_casts_retrospective.sql'
-      - 'tests/test_kaiwu_travel_shared_domain.py'
-      - '.github/workflows/build_kaiwu_travel_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

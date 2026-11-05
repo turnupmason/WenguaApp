@@ -1,17 +1,6 @@
 name: Archive Complete Marriage V1.7 Multi-Evidence Rules and Honest Other-Family Tests
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'src/wengua/marriage_book_combinator_v17.py'
-      - 'data/knowledge/phrase_library/marriage_v1_7/original_combo_rules.json'
-      - 'scripts/evaluate_marriage_other_families_v17.py'
-      - 'schema/migrations/045_marriage_conditional_combinations_other_family_v17.sql'
-      - 'scripts/build_marriage_conditional_v17.py'
-      - 'tests/test_marriage_combinator_v17.py'
-      - 'tests/test_marriage_other_families_v17.py'
-      - 'tests/test_marriage_conditional_v17_archive.py'
-      - '.github/workflows/build_marriage_conditional_v17.yml'
   workflow_dispatch:
 permissions:
   contents: write

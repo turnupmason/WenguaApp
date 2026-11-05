@@ -1,13 +1,6 @@
 name: Archive Kaiwu weather two OCR-fragment source cases
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_天时气象预测.txt'
-      - 'scripts/build_kaiwu_weather_from_criminal.py'
-      - 'schema/migrations/031_kaiwu_weather_flattened_original_panels.sql'
-      - 'tests/test_kaiwu_weather_flattened_shared_domain.py'
-      - '.github/workflows/build_kaiwu_weather_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

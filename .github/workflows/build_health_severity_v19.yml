@@ -1,4 +1,5 @@
 name: Archive V1.9 Health Severity Dynamic Template
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

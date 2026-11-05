@@ -1,13 +1,6 @@
 name: Archive Kaiwu litigation 4 complete historical source events
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_官司诉讼预测.txt'
-      - 'scripts/build_kaiwu_litigation_from_geography.py'
-      - 'schema/migrations/035_kaiwu_litigation_four_source_ocr_panels.sql'
-      - 'tests/test_kaiwu_litigation_source_provenance.py'
-      - '.github/workflows/build_kaiwu_litigation_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,11 +1,6 @@
 name: Build and archive twenty-first miscellaneous source SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_shenqi_21_from_20.py'
-      - 'sources/shenqi/神奇之门_第十七章_其他杂项预测_精校完整版(1).txt'
-      - 'schema/migrations/016_misc_cast_context.sql'
   workflow_dispatch:
 permissions:
   contents: write

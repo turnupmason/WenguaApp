@@ -1,0 +1,186 @@
+[
+  {
+    "path": ".github/workflows/build_father_health_v23.yml",
+    "name": "V2.3 Offline Father Health and Grouped Palace Acceptance"
+  },
+  {
+    "path": ".github/workflows/build_father_health_v24.yml",
+    "name": "V2.4 Corrected Father Health and Grouped Palace Acceptance"
+  },
+  {
+    "path": ".github/workflows/build_geography_archive.yml",
+    "name": "Build and archive nineteenth geography source SQLite"
+  },
+  {
+    "path": ".github/workflows/build_health_severity_v19.yml",
+    "name": "Archive V1.9 Health Severity Dynamic Template"
+  },
+  {
+    "path": ".github/workflows/build_health_severity_v22.yml",
+    "name": "Verify and Archive V2.2 Offline Health Severity Only"
+  },
+  {
+    "path": ".github/workflows/build_health_severity_v27.yml",
+    "name": "V27 Seal Two Historical Health Readings"
+  },
+  {
+    "path": ".github/workflows/build_health_v20.yml",
+    "name": "Archive V2.0 Five Health Dynamic Intents"
+  },
+  {
+    "path": ".github/workflows/build_health_v21.yml",
+    "name": "Archive V2.1 Correct Directed Health Relations"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_02_archive.yml",
+    "name": "Archive Kaiwu chapter two with immutable multibook tracks"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_03_archive.yml",
+    "name": "Archive Kaiwu chapter three source and didactic casting boards"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_04_archive.yml",
+    "name": "Archive Kaiwu chapter four directional judgment and timing"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_05_archive.yml",
+    "name": "Archive Kaiwu fifth chapter classical verses and explanations"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_archive.yml",
+    "name": "Build and archive Kaiwu first source part (multibook)"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_business_archive.yml",
+    "name": "Archive Kaiwu business 11 cases in shared cross-book domains"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_competition_archive.yml",
+    "name": "Archive Kaiwu competition evaluation 2 cases and 3 flat OCR casts"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_criminal_archive.yml",
+    "name": "Archive Kaiwu criminal two source cases with explicit first errors"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_education_archive.yml",
+    "name": "Archive Kaiwu exam cases in shared Shenqi education domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_employment_archive.yml",
+    "name": "Archive Kaiwu employment cases into shared Shenqi domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_final_two_books_archive.yml",
+    "name": "Archive Kaiwu final book chapter 14 subsections 194 cases"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_geography_archive.yml",
+    "name": "Archive Kaiwu geography three original examples and two new events"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_health_archive.yml",
+    "name": "Archive Kaiwu health cases in shared Shenqi health domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_hot_topics_archive.yml",
+    "name": "Archive Kaiwu hot topics shared-domain historical corpus"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_lifetime_archive.yml",
+    "name": "Archive Kaiwu lifetime 5 source examples (4 new events)"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_litigation_archive.yml",
+    "name": "Archive Kaiwu litigation 4 complete historical source events"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_lost_archive.yml",
+    "name": "Archive Kaiwu lost property four cases into unified Shenqi domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_marriage_archive.yml",
+    "name": "Archive Kaiwu marriage cases into shared Shenqi domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_missing_archive.yml",
+    "name": "Archive Kaiwu missing persons in unified Shenqi domain"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_recent_archive.yml",
+    "name": "Archive Kaiwu recent fortune 6 source cases"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_travel_archive.yml",
+    "name": "Archive Kaiwu travel six events seven original casts"
+  },
+  {
+    "path": ".github/workflows/build_kaiwu_weather_archive.yml",
+    "name": "Archive Kaiwu weather two OCR-fragment source cases"
+  },
+  {
+    "path": ".github/workflows/build_life_archive.yml",
+    "name": "Build and archive twentieth life-opportunity source SQLite"
+  },
+  {
+    "path": ".github/workflows/build_marriage_22_six_layers_v13.yml",
+    "name": "Archive Marriage 22 Scenarios and Global Six Layer Evidence Contract"
+  },
+  {
+    "path": ".github/workflows/build_marriage_astro_v15.yml",
+    "name": "Archive Kaiwu Marriage Author Timing and Astronomical Jie-Months V1.5"
+  },
+  {
+    "path": ".github/workflows/build_marriage_conditional_v17.yml",
+    "name": "Archive Complete Marriage V1.7 Multi-Evidence Rules and Honest Other-Family Tests"
+  },
+  {
+    "path": ".github/workflows/build_marriage_intent_workflows_v12.yml",
+    "name": "Archive Marriage Nine Intent Workflows in Full 194-Case SQLite"
+  },
+  {
+    "path": ".github/workflows/build_marriage_judgment_v16.yml",
+    "name": "Archive 194-case Marriage V1.6 Author-Initial Judgment and Historical Family Holdouts"
+  },
+  {
+    "path": ".github/workflows/build_marriage_optional_year_v18.yml",
+    "name": "Archive Marriage V1.8 Optional Birth-Year Author Methods"
+  },
+  {
+    "path": ".github/workflows/build_marriage_phrase_archive.yml",
+    "name": "Archive first marriage phrase corpus in full 194 historical case SQLite"
+  },
+  {
+    "path": ".github/workflows/build_marriage_phrase_pilot.yml",
+    "name": "Archive Marriage V1.1 Decisive Outcome and Timing"
+  },
+  {
+    "path": ".github/workflows/build_marriage_runtime_v14.yml",
+    "name": "Archive Marriage V1.4 Deterministic Source Casting Runtime Bridge"
+  },
+  {
+    "path": ".github/workflows/build_military_archive.yml",
+    "name": "Build and archive next military history chapter SQLite"
+  },
+  {
+    "path": ".github/workflows/build_misc_archive.yml",
+    "name": "Build and archive twenty-first miscellaneous source SQLite"
+  },
+  {
+    "path": ".github/workflows/build_self_gengshen_v25.yml",
+    "name": "V2.5 Gengshen Self Health - Offline 11-Section Test and Archive"
+  },
+  {
+    "path": ".github/workflows/build_self_gengshen_v26.yml",
+    "name": "V2.6 Strict Gengshen Self Health Template and Acceptance"
+  },
+  {
+    "path": ".github/workflows/build_sports_archive.yml",
+    "name": "Build and archive next sports chapter SQLite"
+  },
+  {
+    "path": ".github/workflows/build_weather_archive.yml",
+    "name": "Build and archive eighteenth weather source SQLite"
+  }
+]

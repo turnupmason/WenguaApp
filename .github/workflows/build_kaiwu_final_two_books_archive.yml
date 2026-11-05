@@ -1,14 +1,6 @@
 name: Archive Kaiwu final book chapter 14 subsections 194 cases
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/kaiwu_ch03_questions_and_case_reviews.txt'
-      - 'data/knowledge/kaiwu/final_ch03_source_anchors.json'
-      - 'scripts/build_kaiwu_ch03_source_final_194.py'
-      - 'schema/migrations/037_kaiwu_final_method_and_error_provenance.sql'
-      - 'tests/test_kaiwu_final_two_books_complete.py'
-      - '.github/workflows/build_kaiwu_final_two_books_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

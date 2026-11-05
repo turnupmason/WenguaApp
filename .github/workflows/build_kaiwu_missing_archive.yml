@@ -1,13 +1,6 @@
 name: Archive Kaiwu missing persons in unified Shenqi domain
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_行人走失预测.txt'
-      - 'scripts/build_kaiwu_missing_from_education.py'
-      - 'schema/migrations/026_kaiwu_missing_crossbook_ocr_multicast.sql'
-      - 'tests/test_kaiwu_missing_shared_domain.py'
-      - '.github/workflows/build_kaiwu_missing_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

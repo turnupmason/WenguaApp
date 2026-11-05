@@ -1,11 +1,6 @@
 name: Build and archive eighteenth weather source SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_shenqi_18_from_17.py'
-      - 'sources/shenqi/神奇之门_天时气象预测_精校完整版(1).txt'
-      - 'schema/migrations/013_weather_case_time.sql'
   workflow_dispatch:
 permissions:
   contents: write

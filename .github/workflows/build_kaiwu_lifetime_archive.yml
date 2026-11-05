@@ -1,13 +1,6 @@
 name: Archive Kaiwu lifetime 5 source examples (4 new events)
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_人生命运预测.txt'
-      - 'scripts/build_kaiwu_lifetime_from_weather.py'
-      - 'schema/migrations/032_kaiwu_lifetime_crossbook_retrospectives.sql'
-      - 'tests/test_kaiwu_lifetime_crossbook.py'
-      - '.github/workflows/build_kaiwu_lifetime_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

@@ -1,4 +1,5 @@
 name: V2.6 Strict Gengshen Self Health Template and Acceptance
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

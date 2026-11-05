@@ -1,13 +1,6 @@
 name: Archive Kaiwu exam cases in shared Shenqi education domain
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_求学考试预测.txt'
-      - 'scripts/build_kaiwu_education_from_employment.py'
-      - 'schema/migrations/025_kaiwu_education_shared_domain.sql'
-      - 'tests/test_kaiwu_education_unified_domain.py'
-      - '.github/workflows/build_kaiwu_education_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

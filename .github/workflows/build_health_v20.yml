@@ -1,4 +1,5 @@
 name: Archive V2.0 Five Health Dynamic Intents
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

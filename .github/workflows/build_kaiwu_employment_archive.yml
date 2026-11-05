@@ -1,13 +1,6 @@
 name: Archive Kaiwu employment cases into shared Shenqi domain
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'sources/kaiwu/开悟之门_工作就业预测.txt'
-      - 'scripts/build_kaiwu_employment_from_marriage.py'
-      - 'schema/migrations/024_kaiwu_employment_shared_domain_multi_issue.sql'
-      - 'tests/test_kaiwu_employment_unified_domain.py'
-      - '.github/workflows/build_kaiwu_employment_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

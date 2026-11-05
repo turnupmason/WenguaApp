@@ -26,7 +26,7 @@
   "total_original_historical_casts": 177,
   "previous_nine_explicit_case_errors_unchanged": true,
   "parent_sha256": "3e92bdf9a356edb0685bcb803122319ed56477ab97d0fd38b23a2f5c16fc2185",
-  "new_database_sha256": "94354792115a0815727b586f095287fab2d9b5028ba77c5fb48ea8aefaca62af",
+  "new_database_sha256": "aa48d1f492e398c3216e7be15eb80653ab2bc57482c73f29a8d293d06b0ad47a",
   "all_old_tables_and_rows_unchanged": true,
   "counts": {
     "sections": 35,

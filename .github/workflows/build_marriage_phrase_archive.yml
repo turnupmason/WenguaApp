@@ -1,15 +1,6 @@
 name: Archive first marriage phrase corpus in full 194 historical case SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'schema/migrations/038_marriage_phrase_library.sql'
-      - 'prompts/marriage_reading_v1.md'
-      - 'docs/PHRASE_GENERATION_PROTOCOL.md'
-      - 'src/wengua/phrase_pipeline.py'
-      - 'scripts/seed_marriage_phrase_library.py'
-      - 'tests/test_marriage_phrase_library.py'
-      - '.github/workflows/build_marriage_phrase_archive.yml'
   workflow_dispatch:
 permissions:
   contents: write

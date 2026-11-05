@@ -55,3 +55,5 @@ SHA256：`21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405`。
 App 原有封存数学和资源不随模型课程修改：[封存说明](docs/HEALTH_PRODUCTION_RELEASE_20261102.md)、[应期 V4](docs/HEALTH_RECOVERY_V4_SOURCE_CORRECTION_20261103.md)。模型研究与 App 保持独立。
 
 继续开发先读 [AGENTS.md](AGENTS.md)、[当前状态](docs/PROJECT_STATUS.md)、[章节流程](docs/CHAPTER_WORKFLOW.md)。历史开发细节保留在章节台账和历史记录中。
+
+历史数据库构建与归档工作流改为手动重放，日常代码/课程更新不再自动重建旧快照。原回归测试保留；私有原始来源需要按历史流程准备。

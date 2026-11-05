@@ -1,11 +1,6 @@
 name: Build and archive Kaiwu first source part (multibook)
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_kaiwu_01_from_21.py'
-      - 'sources/kaiwu/开悟之门_第一篇.txt'
-      - 'schema/migrations/017_cross_book_multitrack.sql'
   workflow_dispatch:
 permissions:
   contents: write

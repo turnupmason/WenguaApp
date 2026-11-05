@@ -1,11 +1,6 @@
 name: Archive Marriage V1.4 Deterministic Source Casting Runtime Bridge
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'schema/migrations/042_marriage_source_cast_runtime_bridge.sql'
-      - 'scripts/build_marriage_runtime_v14.py'
-      - '.github/workflows/build_marriage_runtime_v14.yml'
   workflow_dispatch:
 permissions:
   contents: write

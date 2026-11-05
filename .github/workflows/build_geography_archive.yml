@@ -1,11 +1,6 @@
 name: Build and archive nineteenth geography source SQLite
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/build_shenqi_19_from_18.py'
-      - 'sources/shenqi/神奇之门_地理环境预测_精校完整版(1).txt'
-      - 'schema/migrations/014_geography_source_context.sql'
   workflow_dispatch:
 permissions:
   contents: write

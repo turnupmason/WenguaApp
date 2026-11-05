@@ -1,4 +1,5 @@
 name: Verify and Archive V2.2 Offline Health Severity Only
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

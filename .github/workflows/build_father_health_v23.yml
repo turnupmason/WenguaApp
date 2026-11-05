@@ -1,4 +1,5 @@
 name: V2.3 Offline Father Health and Grouped Palace Acceptance
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:

@@ -1,4 +1,5 @@
 name: Archive V2.1 Correct Directed Health Relations
+# Historical source snapshot: explicit replay only; never regenerate it on normal commits.
 on:
   workflow_dispatch:
 permissions:
