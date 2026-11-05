@@ -1,0 +1,34 @@
+{
+  "schema": "wengua_book_course_triage_v1",
+  "core_rows": 5250,
+  "case_count": 194,
+  "identical_prompt_multi_target_groups": 60,
+  "identical_prompt_multi_target_rows": 219,
+  "affected_training_core_rows": 159,
+  "flag_counts": {
+    "identical_prompt_different_target_scope": 219,
+    "specific_condition_question_review_required": 1070,
+    "commentary_speaker_review_required": 363,
+    "complete_case_without_nine_primary_cells": 31,
+    "confirmed_speaker_misattribution": 3
+  },
+  "quarantined_rows": 1636,
+  "pending_semantic_review_rows": 3614,
+  "scoped_question_repair_proposals": 77,
+  "cases_with_commentary_markers": 44,
+  "capability_counts": {
+    "book_knowledge": 2161,
+    "literal_chart_reading": 1435,
+    "author_written_premise_application": 295,
+    "source_organization_not_unseen_chart_reasoning": 1334,
+    "initial_judgment_reconstruction_not_full_evidence_chain": 25
+  },
+  "source_records_digest": "4695dc6656167f903edf8954726da5abdf0ceec6ee5904a31c631d43df65b3ff",
+  "original_book_and_registry_modified": false,
+  "all_rows_mechanically_checked": true,
+  "all_rows_semantically_reviewed": false,
+  "approved_training_rows": 0,
+  "training_ready": false,
+  "style_instruction_for_next_course": "先直接回答问题，再给必要依据。概念题通常一至三句；条件题说清成立条件和例外；案例题按证据给出分析和结论。只答所问，不复述问题，不加固定开场和结束套话，不重复句子。不得为简短删掉必要条件，不编造人物、宫位或日期。",
+  "scope_warning": "A flag is a review requirement, not proof the original book is wrong. Missing flags do not certify a target. Source-assisted tasks are not blind evaluation."
+}

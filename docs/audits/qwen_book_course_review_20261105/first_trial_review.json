@@ -1,0 +1,174 @@
+{
+  "input_zip_sha256": "3b4841075765354d2ae973379bda3a42c4772b876cbf91be201acbf21fb32613",
+  "model": "Qwen/Qwen3-8B",
+  "trial_id": "r8_4096_609850684da1",
+  "selected_epoch": 4,
+  "steps": 1525,
+  "base_validation_loss": 2.2604349926114082,
+  "selected_validation_loss": 0.6205501105432631,
+  "peak_reserved_gib": 15.15234375,
+  "unique_reviewed_questions": 20,
+  "unique_reviewed_source_groups": 18,
+  "generated_records_structurally_checked": 104,
+  "all_input_and_target_source_checks_match": true,
+  "all_20_are_validation": true,
+  "final_test_opened": false,
+  "ready_as_reliable_qimen_model": false,
+  "professional_accuracy_not_estimated": true,
+  "runtime_training_files_changed": false,
+  "statistics_are_textual_not_professional_accuracy": true,
+  "variant_statistics": {
+    "epoch_02_validation": {
+      "rows": 16,
+      "exact_text_matches": 5,
+      "reached_generation_limit": 6,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    },
+    "epoch_01_validation": {
+      "rows": 16,
+      "exact_text_matches": 4,
+      "reached_generation_limit": 8,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    },
+    "epoch_04_validation": {
+      "rows": 16,
+      "exact_text_matches": 6,
+      "reached_generation_limit": 4,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    },
+    "extended_validation_base": {
+      "rows": 4,
+      "exact_text_matches": 0,
+      "reached_generation_limit": 0,
+      "formats": {
+        "complete_case": 3,
+        "conditional_dialogue": 1
+      }
+    },
+    "epoch_05_validation": {
+      "rows": 16,
+      "exact_text_matches": 6,
+      "reached_generation_limit": 4,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    },
+    "extended_validation_selected": {
+      "rows": 4,
+      "exact_text_matches": 3,
+      "reached_generation_limit": 0,
+      "formats": {
+        "complete_case": 3,
+        "conditional_dialogue": 1
+      }
+    },
+    "validation_base": {
+      "rows": 16,
+      "exact_text_matches": 0,
+      "reached_generation_limit": 6,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    },
+    "epoch_03_validation": {
+      "rows": 16,
+      "exact_text_matches": 6,
+      "reached_generation_limit": 3,
+      "formats": {
+        "chart_application": 4,
+        "complete_case": 4,
+        "conditional_dialogue": 4,
+        "foundation_qa": 4
+      }
+    }
+  },
+  "epoch_losses": [
+    {
+      "epoch": 1,
+      "steps": 305,
+      "validation_loss": 0.6921365702874027,
+      "per_format_loss": {
+        "chart_application": 0.0028384027536958456,
+        "complete_case": 0.022194890305399895,
+        "conditional_dialogue": 0.8844854831695557,
+        "foundation_qa": 1.8590275049209595
+      }
+    },
+    {
+      "epoch": 2,
+      "steps": 610,
+      "validation_loss": 0.6584841746807797,
+      "per_format_loss": {
+        "chart_application": 0.00029927276773378253,
+        "complete_case": 0.003917334135621786,
+        "conditional_dialogue": 0.8546953201293945,
+        "foundation_qa": 1.7750247716903687
+      }
+    },
+    {
+      "epoch": 3,
+      "steps": 915,
+      "validation_loss": 0.6241118792531779,
+      "per_format_loss": {
+        "chart_application": 0.0004662729916162789,
+        "complete_case": 0.0017918028170242906,
+        "conditional_dialogue": 0.8548924326896667,
+        "foundation_qa": 1.6392970085144043
+      }
+    },
+    {
+      "epoch": 4,
+      "steps": 1220,
+      "validation_loss": 0.6205501105432631,
+      "per_format_loss": {
+        "chart_application": 0.0005253712297417223,
+        "complete_case": 0.002387208165600896,
+        "conditional_dialogue": 0.8578778505325317,
+        "foundation_qa": 1.6214100122451782
+      }
+    },
+    {
+      "epoch": 5,
+      "steps": 1525,
+      "validation_loss": 0.6206538611004362,
+      "per_format_loss": {
+        "chart_application": 0.0005818275385536253,
+        "complete_case": 0.002171880565583706,
+        "conditional_dialogue": 0.8599487543106079,
+        "foundation_qa": 1.6199129819869995
+      }
+    }
+  ],
+  "confirmed_reference_issue": {
+    "case_id": "kaiwu.final.weather",
+    "affected_split": "validation",
+    "student_source_line": 418,
+    "actual_author_correction_lines": [
+      439,
+      445
+    ],
+    "wrong_speaker_attribution_confirmed": true,
+    "same_issue_in_training_not_established": true
+  }
+}

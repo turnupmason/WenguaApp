@@ -1,0 +1,16 @@
+{
+  "input_log_sha256": "20f410a57cf97c5aba8c57c5b4c228c0d288c54bf0f6c427990724eb67f44db6",
+  "trial": "r16_4096_3987e4a0e627",
+  "last_heartbeat_step": 35,
+  "exit_code": 1,
+  "exit_code_hex32": "0x00000001",
+  "receipt_exists": true,
+  "stderr_drained": true,
+  "exception": "ValueError: too many values to unpack (expected 2)",
+  "path": "Trainer.floating_point_ops -> num_parameters -> named_parameters -> Module._named_members",
+  "cuda_oom_shown": false,
+  "same_as_prior_native_access_violation": false,
+  "root_cause_verified": false,
+  "statistics_bypassed": false,
+  "training_default_paused_for_course_repair": true
+}

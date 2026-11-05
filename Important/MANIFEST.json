@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "08201a437dee5be488ccf6b5d79f6cb21a5344ec"
+      "sha": "802164d19e14ca627393fe566bd3a7de8ee858ec"
     },
     {
       "platform": "python",
@@ -1867,7 +1867,7 @@
       "platform": "python",
       "canonical": "run_qwen8b_research_windows.cmd",
       "snapshot": "Important/python/run_qwen8b_research_windows.cmd",
-      "sha": "eaff8420f59c920f918015a07cf8a8cc2b6f31ba"
+      "sha": "d119e59bc70cf687a89469407199f6ae7109d339"
     },
     {
       "platform": "python",
@@ -1897,7 +1897,7 @@
       "platform": "python",
       "canonical": "scripts/qwen8b_diagnostic.py",
       "snapshot": "Important/python/scripts/qwen8b_diagnostic.py",
-      "sha": "00875494e349528d026ad2d4aa83ebc3a86d5f8f"
+      "sha": "43a47556a246eb1942ea5e8b687049c7feabf6f1"
     },
     {
       "platform": "python",
@@ -1916,6 +1916,24 @@
       "canonical": "tests/test_qwen8b_worker_diagnostics.py",
       "snapshot": "Important/python/tests/test_qwen8b_worker_diagnostics.py",
       "sha": "f81dbfd171baa80d78aa554ec827919170695d6a"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/qwen_book_course_audit_v1.py",
+      "snapshot": "Important/python/engine/qwen_book_course_audit_v1.py",
+      "sha": "151f2f5c9892f84fc59be5505c7ed56d7459cda4"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/audit_qwen_book_course.py",
+      "snapshot": "Important/python/scripts/audit_qwen_book_course.py",
+      "sha": "6dd35fc7ba976866e3a1cc935841a607fded2541"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_qwen_book_course_audit.py",
+      "snapshot": "Important/python/tests/test_qwen_book_course_audit.py",
+      "sha": "a50c39451155db5450184367356bf52833e95ff1"
     }
   ]
 }

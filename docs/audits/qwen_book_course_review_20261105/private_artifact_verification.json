@@ -1,0 +1,17 @@
+{
+  "all_5250_answers_reopened_and_reassembled_exactly": true,
+  "all_194_cases_in_review_workbook": true,
+  "files": [
+    {
+      "local_private_path": "local/qwen_book_course_review_20261105_final/Wengua_全课题质量审查.xlsx",
+      "bytes": 1212516,
+      "sha256": "5673e986d877cbacdec001f879a74f5ee79424cf76622ae69bcaf06258aba80c"
+    },
+    {
+      "local_private_path": "local/qwen8b_first_trial_review_20261105/Wengua_first_trial_review.xlsx",
+      "bytes": 138046,
+      "sha256": "ad686096cc219ca82244d3a04f58bdcc7350160ceb36753c2a80f65be649ac8e"
+    }
+  ],
+  "copyright_full_text_committed": false
+}

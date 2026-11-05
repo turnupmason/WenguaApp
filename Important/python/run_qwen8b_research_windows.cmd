@@ -10,6 +10,7 @@ if not exist "%QWEN8B_PY%" (
 set "QWEN8B_RESULT=%ERRORLEVEL%"
 echo.
 echo Report: local\qwen8b_book_v1\run3_attention_fix\results.html
-if not "%QWEN8B_RESULT%"=="0" echo Stopped. Preserve the output and repeat this command to resume after checking the error.
+if "%QWEN8B_RESULT%"=="3" echo Course quality review: training paused. Preserve all models and checkpoints. See docs\QWEN_BOOK_COURSE_REVIEW_20261105.md.
+if not "%QWEN8B_RESULT%"=="0" if not "%QWEN8B_RESULT%"=="3" echo Stopped. Preserve the output and check the error before retrying.
 pause
 exit /b %QWEN8B_RESULT%

@@ -12,6 +12,8 @@ on:
       - 'scripts/check_qwen8b_attention.py'
       - 'scripts/check_qwen8b_diagnostics.py'
       - 'scripts/qwen8b_diagnostic.py'
+      - 'scripts/audit_qwen_book_course.py'
+      - 'tests/test_qwen_book_course_audit.py'
       - 'run_qwen8b_diagnostic.py'
       - 'tests/test_qwen8b_worker_diagnostics.py'
       - 'tests/test_qwen8b_book_v1.py'
@@ -146,7 +148,7 @@ jobs:
       - name: 8B profile and fresh workers in actual Windows virtualenv (no GPU or model weights)
         shell: pwsh
         run: |
-          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen8b_book_v1 tests.test_qwen8b_worker_diagnostics -v
+          & local/worker_contract_env/Scripts/python.exe -X utf8 -m unittest tests.test_qwen8b_book_v1 tests.test_qwen8b_worker_diagnostics tests.test_qwen_book_course_audit -v
           if ($LASTEXITCODE -ne 0) { throw "8B venv worker contract failed" }
       - name: 8B UTF-8 help, bounded plan and missing environment guard
         shell: pwsh
@@ -155,6 +157,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "8B help failed" }
           python -X utf8 run_qwen8b_diagnostic.py --help
           if ($LASTEXITCODE -ne 0) { throw "8B diagnostic help failed" }
+          python -X utf8 run_qwen8b_diagnostic.py --output local/course_gate_fixture run --resume
+          if ($LASTEXITCODE -ne 3) { throw "Old course must stop before CUDA/model/network work" }
           python -X utf8 run_qwen8b_research.py plan
           if ($LASTEXITCODE -ne 0) { throw "8B plan failed" }
           cmd /c run_qwen8b_research_windows.cmd
