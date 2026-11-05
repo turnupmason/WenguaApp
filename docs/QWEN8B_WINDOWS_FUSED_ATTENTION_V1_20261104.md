@@ -1,5 +1,7 @@
 # Qwen3-8B：Windows融合注意力兼容修复
 
+> 用户第一组完整5epoch已完成，第二组曾无回执退出。现原CMD在不更改冻结训练文件/合同的前提下增加诊断包装，仍续同一run3；见[无回执诊断与恢复](QWEN8B_NATIVE_EXIT_DIAGNOSTICS_20261105.md)。不要为此新建run4或重跑已完成组。
+
 当前默认入口仍为run_qwen8b_research_windows.cmd，输出改为local/qwen8b_book_v1/run3_attention_fix。run1、run2_loss_fix原日志/检查点保留；不沿用它们的压力/OOM结论或适配器。已下载的官方8B缓存复用，不重装环境、不重新下载基模。
 
 旧运行窗口按一次Ctrl+C，等子进程退出后，在PowerShell执行：

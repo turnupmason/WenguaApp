@@ -3841,3 +3841,14 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码173230f4034f992d01badcccdd8103f70aef501c。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41954529487_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 融合SDPA源码173230f4034f992d01badcccdd8103f70aef501c远端主CI#41954529510双Python3.11/3.12、Qwen#41954529460三个job全部success。Windows实际库/venv冷热Trainer与显式KV注意力输出/梯度/掩码/缓存生成及非法策略拒绝通过；Linux真实worker显式注意力/分块loss实际调用、后端合同压力证明缓存、精确恢复及不中断权重一致通过。逐job完整日志核对同源码/无error/cleanup完成；六关键文件远端逐字匹配。证据remote_source_ci/remote_canonical_bytes。已快进接收4171cbbf自动原生旧健康归档；最后仅交接文档，不改已验程序/配置。下一步用户旧窗口退出→更新→原CMD入口，默认新run3_attention_fix；本机先GPU融合探测再完整压力，实际GPU内核/4096容量仍未由云端证明。
+
+
+### 2026-11-05 · 8B第一组完成与第二组无回执退出诊断
+
+用户第一组1525更新/5epoch完成，train_runtime14065.5181秒、train_loss1.1770542628330285，03:21:04 worker exit_code0；下一组r16_4096_3987e4a0e627第3步后启动器返回却无结果回执，旧报错未打印退出码。不是整轮完成，也无依据称OOM或锁定驱动/某DLL。Windows事件记录已请求，根因未决。
+
+新增独立诊断包装，由原CMD调用新run_qwen8b_diagnostic.py后转原CLI；同一run3/--resume，所有冻结训练源码/配置/教材/合同哈希逐字未变，不重写旧合同、不换内核、不改参数、不自动重试或将未知退出标OOM。仅worker增加faulthandler/unbuffered、实时stderr tee、逐请求native_stderr.log和exit_diagnostic.json（十进制/十六进制退出码、真实心跳PID/step与启动器PID分开、请求字节完整性、无回执也落盘）。完成的第一组按原控制器跳过，第二组若未到25步检查点，仅此组从头；保留原成果。
+
+5项真实子进程测试通过，原微型Qwen3完整数学/attention/loss/优化器恢复/权重对照/完成后无新进程断言在新包装下通过，9个实际worker均正常回执/日志，冻结训练哈希未变。完整回归与新Windows CI待追加。原书章/真实事件新增0，不将低语言NLL称专业准确率。指南QWEN8B_NATIVE_EXIT_DIAGNOSTICS_20261105.md，证据docs/audits/qwen8b_native_exit_20261105/；真实native根因仍需本机事件或再次运行日志，诊断就绪不等于根因已修复。
+
+无回执诊断本地终版完整回归1103项、0失败/0错误、3项既有skip。5项真实子进程退出/tee/超时/状态解码通过；9个真实微型worker在新I/O包装下完成，原数学/attention/loss/检查点恢复/权重对照/完成后无新worker断言通过，所有冻结训练文件与HEAD逐字相同。没有获得本机Windows事件或原始退出码，native根因仍未验证，不能报告已修复崩溃。新同源码Windows真实venv/CPU集成CI待推送核验。

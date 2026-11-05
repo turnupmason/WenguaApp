@@ -4,7 +4,7 @@
   "revision": "b968826d9c46dd6066d109eabc6255188de91218",
   "entrypoint": "run_qwen8b_research_windows.cmd",
   "output": "local/qwen8b_book_v1/run3_attention_fix",
-  "guide": "docs/QWEN8B_WINDOWS_FUSED_ATTENTION_V1_20261104.md",
+  "guide": "docs/QWEN8B_NATIVE_EXIT_DIAGNOSTICS_20261105.md",
   "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
   "pressure_updates_per_new_structure": 100,
   "max_distinct_formal_trials": 9,
@@ -42,5 +42,9 @@
   "runtime_training_and_validation_loss_assertions": true,
   "attention_mode": "explicit_kv_fused_sdpa_v1",
   "cuda_math_fallback_allowed": false,
-  "actual_fused_cuda_backend_verified": false
+  "actual_fused_cuda_backend_verified": false,
+  "diagnostic_entrypoint": "run_qwen8b_diagnostic.py",
+  "diagnostics_change_frozen_training_contract": false,
+  "user_reported_first_gpu_formal_group_complete": true,
+  "native_exit_root_cause_verified": false
 }

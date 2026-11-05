@@ -1,0 +1,10 @@
+{
+  "state": "passed",
+  "test": "diagnostic_io_over_unchanged_tiny_training",
+  "actual_worker_count": 9,
+  "frozen_training_hashes_unchanged": true,
+  "native_stderr_tee_and_sidecars_verified": true,
+  "original_checkpoint_restore_and_completed_resume_assertions_passed": true,
+  "actual_8b_weights_loaded": false,
+  "user_native_crash_root_cause_verified": false
+}

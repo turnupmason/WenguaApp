@@ -1,0 +1,20 @@
+{
+  "first_group": {
+    "steps": 1525,
+    "epoch": 5.0,
+    "train_runtime_seconds": 14065.5181,
+    "train_loss": 1.1770542628330285,
+    "worker_exit_code": 0,
+    "reported_clock": "03:21:04",
+    "source_commit_not_supplied_by_user": true
+  },
+  "second_group": {
+    "trial": "r16_4096_3987e4a0e627",
+    "last_completed_step": 3,
+    "receipt_missing": true,
+    "exit_code": null,
+    "native_error_root_cause": null
+  },
+  "production_enabled": false,
+  "professional_or_predictive_accuracy_verified": false
+}
