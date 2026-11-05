@@ -14,6 +14,8 @@ git pull --ff-only origin main
 
 首次自动下载官方`Qwen/Qwen3-8B`固定revision `b968826d9c46dd6066d109eabc6255188de91218`，原始权重约16GB，缓存和14B分开。完整下载后训练worker离线读取，PEFT保存阶段不会再联网探测；下载中断后重复入口复用缓存。保持此前对实际Python主程序设置的NVIDIA `Prefer No Sysmem Fallback`。
 
+下载连接重置10054与Hub的LocalEntryNotFoundError表示网络中断且缓存未齐，发生在训练前，不代表显存不足。下载入口现默认单文件并发；元数据超时60秒、文件读取超时120秒（保留用户已有环境覆盖），对连接中断/超时、408/429/5xx最多5次尝试，间隔5/10/20/40秒。每次仍为同一固定revision及标准Hub缓存，已完成文件复用、未完文件由Hub续传，不清缓存/不强制重下；权限、仓库或revision错误不盲重试。5次网络失败明确报告训练尚未开始。持续10054仍须修复到huggingface.co的网络/代理；重试不是连通性保证，未禁用TLS校验。
+
 新报告：`local/qwen8b_book_v1/run1/results.html`。同一命令恢复，不改已经启动的配置、数据或总epoch；旧14B入口不用于新8B。PyCharm脚本`run_qwen8b_research.py`，解释器`local/qwen_env/Scripts/python.exe`，参数`run --output local/qwen8b_book_v1/run1 --hours 168 --resume`。每次最多168小时，到时同入口继续。
 
 单独下载或查看计划：

@@ -3798,3 +3798,10 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41941627504_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 8B终版源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40远端主CI#41941627494双Python3.11/3.12、Qwen软件CI#41941627266 Windows实际虚拟环境与CPU集成均success。Windows8B启动器/worker PID实际8136/8284及6972/6880，nonce请求回执通过；新7项全过。CPU真实微型Qwen3原生/分块loss及全LoRA梯度、独立子进程训练、精确optimizer恢复和不中断权重对照均通过，未加载真实8B权重/CUDA。关键六文件远端内容逐字核对；证据remote_source_ci.json、remote_canonical_bytes.json。已快进接收c428b53f自动原生旧健康归档；最后交接只改文档，不改已验源码/配置/教材。用户下一步PowerShell更新后运行run_qwen8b_research_windows.cmd，新输出local/qwen8b_book_v1/run1；实际4080压力、完整训练及专业留出回答仍待用户本机日志。
+
+
+### 2026-11-04 · 8B下载网络10054修复
+
+用户8B尚在snapshot_download查询Hub元数据阶段即10054/LocalEntryNotFoundError，未开始训练；不是OOM。只改8B启动下载：单文件并发、保留用户覆盖的60秒元数据/120秒读取超时、最多5次网络尝试及5/10/20/40秒退避、完整缓存直接跳过、同固定revision复用标准缓存且不force_download。仅重试网络/408/429/5xx；权限/仓库/revision及普通本地错误原样拒绝，缓存未齐不能训练。未改8B训练参数/教材/损失/14B内核；下载不能保证修复持续网络封锁，未更改TLS或自动切第三方站。原书章/真实案例新增均0。新4项覆盖恢复、上限、永久HTTP失败、缓存已齐；原7项保留，实际已安装Hub异常类/惰性导入路径另实测，无实际大权重下载。完整回归及远端本次CI完成后据实追加。
+
+下载修复本地最终回归1097项、0失败/0错误、3项既有skip；11项8B专项与Important镜像核对通过。完整原始日志/逐测试结果保留full_run；真实Hub异常类型分支验证只模拟网络，不称用户网络恢复。远端Windows/双Python/CPU同源码检查待推送执行。

@@ -28,10 +28,12 @@
     "src/wengua/qwen8b_book_v1.py": "a37875138c6c45000f27579e85249527a7fd1eeff819e52426984d7f06fa66a0",
     "src/wengua/qwen8b_loss_v1.py": "78704e9ab1985e63a6e1b3665827ae4362ac2ab87bc6e3e0c81408d4a76873e7",
     "src/wengua/qwen8b_process_v1.py": "b94d27e0a2876bab28cfc0bc082b76c5d109e19e0da141b2447a8c8d9ef3290a",
-    "scripts/qwen8b_research.py": "0c17ce3b91309a631dce19b8bfd726212bc989a297e5bc47f7f4780b0dc4a456",
+    "scripts/qwen8b_research.py": "202cf4e5c91b133862595823d292c7a5da83030c85182b6591eb8168f746535d",
     "run_qwen8b_research.py": "80dd74dd30f938e5a1ff8b07a3fe75dfcedb0ada21f94ad14382025dcb269484",
     "run_qwen8b_worker.py": "995013b9786fbc314e442502ae8106428fb901cc6fd9dc8eec7d52518b88a96a",
     "configs/qwen8b_book_v1.json": "6ed5a6a479dbcd33513ef4b31a2820e58b377eeccf23e3a38b40f36145458048",
     "configs/qwen8b_book_sweep_v1.json": "3f3f06b1b10acb8e88aa0afb52da8af3082a5bf4dbde4996a0e56e4681aba9fc"
-  }
+  },
+  "download_retries": 5,
+  "download_max_workers": 1
 }

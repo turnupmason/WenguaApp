@@ -11,6 +11,9 @@ from src.wengua import qwen_book_continuous_v1 as old_engine
 from src.wengua import qwen_book_sweep_v2 as old_sweep
 from src.wengua.qwen8b_book_v1 import profile,validate,stress_rows,MODEL,REVISION,SWEEP_SCHEMA
 from src.wengua.qwen8b_process_v1 import launch,execution,pressure_signature
+from scripts import qwen8b_research as cli
+from types import SimpleNamespace
+from unittest.mock import Mock
 
 
 class Qwen8BProfile(unittest.TestCase):
@@ -78,6 +81,45 @@ class Qwen8BProfile(unittest.TestCase):
             first=launch(p,job,c,time.time()+3600,'ping');second=launch(p,job,c,time.time()+3600,'ping')
             self.assertNotEqual(first['pid'],os.getpid());self.assertNotEqual(first['pid'],second['pid'])
             self.assertFalse(first['torch_imported']);self.assertEqual(first['offline'],'1')
+
+    def test_download_retries_network_reset_using_same_pinned_cache(self):
+        download=Mock(side_effect=[ConnectionResetError(10054,'reset'),None]);wait=Mock();book=SimpleNamespace(progress=Mock())
+        with patch.object(cli,'cache_ready',side_effect=[False,False,True]):
+            cli.download_cached_model(book,{},download=download,retryable=lambda e:isinstance(e,ConnectionResetError),wait=wait)
+        self.assertEqual(download.call_count,2);wait.assert_called_once_with(5)
+        self.assertEqual(download.call_args_list[0],download.call_args_list[1])
+        kwargs=download.call_args.kwargs
+        self.assertEqual(kwargs['revision'],REVISION);self.assertEqual(kwargs['repo_id'],MODEL)
+        self.assertEqual(kwargs['max_workers'],1);self.assertNotIn('force_download',kwargs)
+
+    def test_download_complete_cache_skips_network_and_permanent_failure_is_not_retried(self):
+        download=Mock();book=SimpleNamespace(progress=Mock());wait=Mock()
+        with patch.object(cli,'cache_ready',return_value=True):
+            cli.download_cached_model(book,{},download=download,retryable=lambda e:True,wait=wait)
+        download.assert_not_called();wait.assert_not_called()
+        download.side_effect=PermissionError('denied')
+        with patch.object(cli,'cache_ready',return_value=False),self.assertRaises(PermissionError):
+            cli.download_cached_model(book,{},download=download,retryable=lambda e:False,wait=wait)
+        self.assertEqual(download.call_count,1);wait.assert_not_called()
+
+    def test_persistent_download_failure_is_bounded_and_never_signals_training_started(self):
+        book=SimpleNamespace(progress=Mock());wait=Mock();download=Mock(side_effect=ConnectionResetError(10054,'reset'))
+        with patch.object(cli,'cache_ready',return_value=False),self.assertRaisesRegex(RuntimeError,'training has NOT started'):
+            cli.download_cached_model(book,{},download=download,retryable=lambda e:True,wait=wait)
+        self.assertEqual(download.call_count,5);self.assertEqual([x.args[0] for x in wait.call_args_list],[5,10,20,40])
+        incomplete=Mock()
+        with patch.object(cli,'cache_ready',return_value=False),self.assertRaisesRegex(RuntimeError,'cache incomplete'):
+            cli.download_cached_model(book,{},download=incomplete,retryable=lambda e:True,wait=wait)
+        self.assertEqual(incomplete.call_count,1)
+
+    def test_download_http_auth_revision_errors_are_not_retried(self):
+        class NetworkError(Exception):pass
+        class BadRevision(NetworkError):pass
+        self.assertTrue(cli.transient_download_failure(NetworkError(),(NetworkError,),(BadRevision,)))
+        self.assertFalse(cli.transient_download_failure(BadRevision(),(NetworkError,),(BadRevision,)))
+        for status in (401,403,404,408,429,500,503):
+            error=NetworkError();error.response=SimpleNamespace(status_code=status)
+            self.assertEqual(cli.transient_download_failure(error,(NetworkError,),()),status in (408,429,500,503))
 
 
 if __name__=='__main__':unittest.main()

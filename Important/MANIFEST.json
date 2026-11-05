@@ -1831,7 +1831,7 @@
       "platform": "python",
       "canonical": "scripts/qwen8b_research.py",
       "snapshot": "Important/python/scripts/qwen8b_research.py",
-      "sha": "45ef19b34d049b4c9ec8faa25c3216e95ebccd52"
+      "sha": "6d6ddb2ee2585499e0ee516fad7b4d37e5100462"
     },
     {
       "platform": "python",
@@ -1843,13 +1843,13 @@
       "platform": "python",
       "canonical": "tests/test_qwen8b_book_v1.py",
       "snapshot": "Important/python/tests/test_qwen8b_book_v1.py",
-      "sha": "bf53bda8fd40502daf5d4ecce4d03662529fdd83"
+      "sha": "ae56a98dcf5e5dd0ee812467f6c04af72c9870c8"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/qwen8b_book_v1/release_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen8b_book_v1/release_20261104.json",
-      "sha": "8b6c055149b4e77eb0c9fb84e5788ac771d57eee"
+      "sha": "c8a6479fd40333807130d2a9d06a9dd51b6bd869"
     },
     {
       "platform": "python",

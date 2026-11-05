@@ -1,0 +1,8 @@
+{
+  "real_installed_hub_exception_types_checked": true,
+  "actual_hub_lazy_import_path_with_injected_network_reset_passed": true,
+  "actual_weights_downloaded": false,
+  "user_network_connectivity_verified": false,
+  "training_parameters_changed": false,
+  "focused_tests": 11
+}
