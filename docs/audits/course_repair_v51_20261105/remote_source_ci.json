@@ -1,0 +1,119 @@
+{
+  "source_sha": "d7c51d6240f844782591cec09c1bc24bdef7003b",
+  "all_8_jobs_success": true,
+  "runs": [
+    {
+      "run_id": 42087520585,
+      "head_sha": "d7c51d6240f844782591cec09c1bc24bdef7003b",
+      "name": "WenguaApp CI (sealed V9 scoring V11 template and V27)",
+      "conclusion": "success",
+      "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520585",
+      "jobs": [
+        {
+          "job_id": 127456508780,
+          "name": "v80_current (3.11)",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520585/job/127456508780",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456508780.log.gz",
+          "full_log_bytes": 308945,
+          "full_log_sha256": "85f4f6241a92109d7efa132aa71c197528b8b93bf41b3218b77b8f995267343e"
+        },
+        {
+          "job_id": 127456509083,
+          "name": "v80_current (3.12)",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520585/job/127456509083",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456509083.log.gz",
+          "full_log_bytes": 308945,
+          "full_log_sha256": "35f9388b748147d03e7697f1399c00a471f1f9f1b8718ee018a7cfad6ae4e728"
+        }
+      ]
+    },
+    {
+      "run_id": 42087520558,
+      "head_sha": "d7c51d6240f844782591cec09c1bc24bdef7003b",
+      "name": "V5.1 evidence-visible course and V4 LoRA continuation",
+      "conclusion": "success",
+      "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520558",
+      "jobs": [
+        {
+          "job_id": 127456508982,
+          "name": "tiny-cpu-warm-start-resume",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520558/job/127456508982",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456508982.log.gz",
+          "full_log_bytes": 125216,
+          "full_log_sha256": "ec9c3dbda166897c8d7db21dfc828e1900144106c009e9cfdca583c7f6ec45c1"
+        },
+        {
+          "job_id": 127456509376,
+          "name": "windows-stdlib",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520558/job/127456509376",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456509376.log.gz",
+          "full_log_bytes": 26884,
+          "full_log_sha256": "4dcccafe31584a2a8e17d59938ea136532b31f47f46c32a8ad8ad290fead5a79"
+        }
+      ]
+    },
+    {
+      "run_id": 42087520618,
+      "head_sha": "d7c51d6240f844782591cec09c1bc24bdef7003b",
+      "name": "Sealed health V9 scoring V11 template Python native parity",
+      "conclusion": "success",
+      "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520618",
+      "jobs": [
+        {
+          "job_id": 127456509018,
+          "name": "power_pair_full_text_parity",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520618/job/127456509018",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456509018.log.gz",
+          "full_log_bytes": 116697,
+          "full_log_sha256": "23b13e87526c22a2de0e5efb60ca244942cf4340976b60b5118bcbc59e6f9034"
+        },
+        {
+          "job_id": 127456509397,
+          "name": "qimen_lunji_frontpage_runtime",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520618/job/127456509397",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456509397.log.gz",
+          "full_log_bytes": 28068,
+          "full_log_sha256": "16f9813aba9656098b7dbc9291a91edc118f5b8789cbf44c84732bd3fc4d2502"
+        }
+      ]
+    },
+    {
+      "run_id": 42087520687,
+      "head_sha": "d7c51d6240f844782591cec09c1bc24bdef7003b",
+      "name": "Two-book complete curriculum v5 and Windows delivery",
+      "conclusion": "success",
+      "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520687",
+      "jobs": [
+        {
+          "job_id": 127456510686,
+          "name": "windows-stdlib",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520687/job/127456510686",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456510686.log.gz",
+          "full_log_bytes": 33490,
+          "full_log_sha256": "13867d5df06883e9af50c098078c9238d98a96514a3800373d700cea4f4a0f10"
+        },
+        {
+          "job_id": 127456511504,
+          "name": "tiny-cpu-resume",
+          "conclusion": "success",
+          "html_url": "https://github.com/turnupmason/WenguaApp/actions/runs/42087520687/job/127456511504",
+          "full_log_path": "docs/audits/course_repair_v51_20261105/remote_d7c51d62/127456511504.log.gz",
+          "full_log_bytes": 108768,
+          "full_log_sha256": "3e175612e5727e4370c5927dc47a7caa08877cd76b9a7d0f7a050bb872ac7e96"
+        }
+      ]
+    }
+  ],
+  "actual_8b_or_cuda_training_verified": false,
+  "actual_windows_stdlib_and_12mib_authenticated_delivery": true,
+  "real_tiny_cpu_parent_load_fresh_optimizer_exact_resume": true,
+  "original_v4_v5_byte_contracts_unchanged": true,
+  "historical_tag_failure_is_separate_and_preserved": "preserved_remote_failures.json"
+}

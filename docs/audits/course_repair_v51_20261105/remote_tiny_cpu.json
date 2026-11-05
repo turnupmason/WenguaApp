@@ -1,0 +1,13 @@
+{
+  "state": "complete",
+  "real_tiny_cpu_training": true,
+  "parent_parameters_verified_before_update": true,
+  "new_phase_optimizer_initial_state_empty": true,
+  "training_kv_cache_disabled_after_parent_generation": true,
+  "exact_resume_from_step": 1,
+  "updates": 10,
+  "resumed_weights_equal_uninterrupted": true,
+  "parent_source_unchanged": true,
+  "actual_8b_or_cuda_verified": false,
+  "final_test_used": false
+}
