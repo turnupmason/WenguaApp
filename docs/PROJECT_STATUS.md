@@ -3792,3 +3792,7 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 新增分块监督位置CE避免训练时全位置大词表logits，未截答案/改label/改归一化；真实微型Qwen3 CPU核对原生loss及全部LoRA梯度、跨进程恢复后权重与不中断对照一致、跨epoch同Adam、显存压力证明复用不加载旧权重均通过。实际官方8B tokenizer：2048接收4815视图/301步每epoch；4096接收4876/305步，每种均取1600变长压力样本；原案仍191有作者分析、3案不造金标。实际8B大权重/CUDA/NF4/4080显存及专业生成尚未执行，不能将CPU接口通过称训练完成。Windows虚拟环境PID/主CI待本次源码提交后据实追加。指南docs/QWEN8B_RTX4080_BOOK_RESEARCH_V1_20261104.md，证据docs/audits/qwen8b_book_v1_20261104/。
 
 8B源码本地完整回归1093项、0失败/0错误、3项既有skip；原始逐测试记录与压缩日志full_run/保留，微型CPU实训及数学证明另存tiny_integration.json。Important镜像同步核对通过。远端同源码Windows venv和CPU集成尚待本次推送实跑。
+
+
+### 当前封存轻重回归实测 · run 41941627504
+V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a638a4f3e6b0c8bd0fa24a5bb01f14439837cd40。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41941627504_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
