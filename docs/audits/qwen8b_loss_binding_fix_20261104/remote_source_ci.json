@@ -1,0 +1,71 @@
+{
+  "source_commit": "a707962dd0aa549c16ef41572b7b9f70cf74bc0f",
+  "main_run": 41950736165,
+  "qwen_run": 41950736258,
+  "main_and_stdlib_windows": [
+    {
+      "job_id": 126993794990,
+      "source_commit": "a707962dd0aa549c16ef41572b7b9f70cf74bc0f",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T01:46:29.9513004Z [01:46:29] qwen8b_worker_exited {\"launcher_pid\":9012,\"worker_pid\":7576,\"exit_code\":0}",
+        "2026-11-05T01:46:30.4599790Z [01:46:30] qwen8b_worker_exited {\"launcher_pid\":3380,\"worker_pid\":3440,\"exit_code\":0}",
+        "2026-11-05T01:46:30.7356511Z Ran 12 tests in 1.313s"
+      ]
+    },
+    {
+      "job_id": 126993793796,
+      "source_commit": "a707962dd0aa549c16ef41572b7b9f70cf74bc0f",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T01:46:27.3938527Z [01:46:27] qwen8b_worker_exited {\"launcher_pid\":2182,\"worker_pid\":2182,\"exit_code\":0}",
+        "2026-11-05T01:46:27.8961206Z [01:46:27] qwen8b_worker_exited {\"launcher_pid\":2183,\"worker_pid\":2183,\"exit_code\":0}",
+        "2026-11-05T01:46:28.0222018Z Ran 12 tests in 1.136s",
+        "2026-11-05T01:46:28.6871848Z Ran 12 tests in 0.202s"
+      ]
+    },
+    {
+      "job_id": 126993794025,
+      "source_commit": "a707962dd0aa549c16ef41572b7b9f70cf74bc0f",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "focused_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T01:46:35.3730941Z [01:46:35] qwen8b_worker_exited {\"launcher_pid\":2468,\"worker_pid\":2468,\"exit_code\":0}",
+        "2026-11-05T01:46:35.8761463Z [01:46:35] qwen8b_worker_exited {\"launcher_pid\":2469,\"worker_pid\":2469,\"exit_code\":0}",
+        "2026-11-05T01:46:36.0781673Z Ran 12 tests in 1.216s",
+        "2026-11-05T01:46:37.1166890Z Ran 12 tests in 0.301s"
+      ]
+    }
+  ],
+  "windows_actual_library_cold_and_warm_routes": {
+    "job_id": 126993795020,
+    "source_match": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "actual_windows_venv_real_transformers": true,
+    "proof_lines": [
+      "2026-11-05T01:48:22.6477665Z {\"case\": \"cold_root\", \"state\": \"passed\", \"actual_train_and_eval_use_bounded_loss\": true, \"full_causal_forward_with_labels_bypassed\": true, \"loss_audit\": {\"route\": \"canonical_trainer_compute_loss_v2\", \"chunk_tokens\": 128, \"compute_loss_calls\": 8, \"train_loss_calls\": 4, \"eval_loss_calls\": 4, \"max_projected_positions\": 128}, \"actual_8b_weights_loaded\": false}",
+      "2026-11-05T01:48:22.6480819Z {\"case\": \"warm_alias\", \"state\": \"passed\", \"actual_train_and_eval_use_bounded_loss\": true, \"full_causal_forward_with_labels_bypassed\": true, \"loss_audit\": {\"route\": \"canonical_trainer_compute_loss_v2\", \"chunk_tokens\": 128, \"compute_loss_calls\": 8, \"train_loss_calls\": 4, \"eval_loss_calls\": 4, \"max_projected_positions\": 128}, \"actual_8b_weights_loaded\": false}"
+    ]
+  },
+  "fixed_real_8b_cuda_memory_fit_verified": false,
+  "cpu_actual_worker_integration": {
+    "job_id": 126993794532,
+    "conclusion": "success",
+    "source_commit_in_full_log": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "actual_cold_and_warm_trainer_cases_passed": 2,
+    "worker_training_and_validation_route_verified": true,
+    "optimizer_restore_and_uninterrupted_weight_match": true,
+    "official_8b_weights_loaded": false
+  }
+}

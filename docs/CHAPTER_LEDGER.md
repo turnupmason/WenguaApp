@@ -2287,3 +2287,5 @@ V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归�
 
 ### 当前封存轻重回归实测 · run 41950736153
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码a707962dd0aa549c16ef41572b7b9f70cf74bc0f。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_41950736153_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+修复源码a707962dd0aa549c16ef41572b7b9f70cf74bc0f远端主CI#41950736165双Python3.11/3.12、Qwen#41950736258三个job（Windows原venv契约、新Windows真实Torch/Transformers冷/热导入、Linux完整CPU集成）全部success。Windows真实venv两种导入各4训练/4验证实际分块调用、最大投影128且禁止带labels的整段模型forward；Linux实际worker回调收据、精确恢复及不中断权重一致均通过。逐job完整日志核对源码/无error/cleanup完成，五关键文件远端字节匹配，lazy_module_cause_probe单独证明旧根对象patch失效。已接收1963b5ec自动原生历史归档，最后只交接文档；真实修复后8B/4080/4096仍待用户在新run2_loss_fix重测，缓存复用，旧run1不续用。

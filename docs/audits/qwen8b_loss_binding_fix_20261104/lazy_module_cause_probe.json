@@ -1,0 +1,7 @@
+{
+  "root_module_replaced_during_first_trainer_lookup": true,
+  "old_root_attribute_patch_reaches_actual_import": false,
+  "actual_import_still_native_trainer": true,
+  "real_library_probe_only": true,
+  "official_weights_loaded": false
+}
