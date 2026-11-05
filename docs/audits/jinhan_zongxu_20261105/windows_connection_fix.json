@@ -1,0 +1,11 @@
+{
+  "failing_source": "570ff7219c405b1b308ab673730a9d9dad1be20f",
+  "run_id": 42114860469,
+  "job_id": 127551684602,
+  "error": "WinError32 during temporary SQLite cleanup",
+  "cause": "sqlite3 connection context commits/rolls back but does not close; production and fixture connections needed explicit closure",
+  "fix": "contextlib.closing plus explicit commit; real source/output rename assertion before GC or process exit",
+  "original_assertions_removed": false,
+  "new_skips": 0,
+  "book_data_or_training_contract_changed": false
+}

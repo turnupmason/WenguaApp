@@ -1,0 +1,5 @@
+{
+  "src/wengua/book_rag_editorial.py": "3cbfde8e1da8bc48f51c8ec9b0d8dda60d35ed5bee1008d9f7e4041b82466e89",
+  "tests/test_book_rag_editorial.py": "5ecbc1cbc80191a582df2d3294105c82c76bcd19d1c47b50b167ed69eef25bce",
+  "schema/migrations/072_source_editorial_reading_versions.sql": "86ebd42b9474d09f7ec73795ea840230d1cd34430f9fc591b7b6dbb247d8deb7"
+}

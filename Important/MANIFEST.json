@@ -2401,13 +2401,13 @@
       "platform": "python",
       "canonical": "src/wengua/book_rag_editorial.py",
       "snapshot": "Important/python/engine/book_rag_editorial.py",
-      "sha": "06bb30fee3fa5e6e8f59bda2838f2451631906c9"
+      "sha": "9e70bea1c930dea96497f1f43ed0692b92d002c8"
     },
     {
       "platform": "python",
       "canonical": "tests/test_book_rag_editorial.py",
       "snapshot": "Important/python/tests/test_book_rag_editorial.py",
-      "sha": "27e26d5872a6802de3b3381592e9dd719df24d40"
+      "sha": "62da8dfb1810706b7cba8d69b45387ce974b80cd"
     },
     {
       "platform": "python",

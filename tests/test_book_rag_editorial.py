@@ -1,5 +1,6 @@
 """Non-book software prose: reversible editing, raw provenance and safe scope."""
 from copy import deepcopy
+from contextlib import closing
 from pathlib import Path
 import json,sqlite3,tempfile,unittest,zipfile
 from src.wengua import book_rag as r,book_rag_editorial as e
@@ -64,13 +65,18 @@ class EditorialIntegrity(unittest.TestCase):
         with r.Index(path) as index:self.assertEqual(index.search('软件规则',method_id=r.METHOD)['documents'],[])
     def test_append_database_preserves_source_cases_and_all_original_rows(self):
         source=self.root/'old.sqlite3';output=self.root/'new.sqlite3'
-        with sqlite3.connect(source) as db:
+        with closing(sqlite3.connect(source)) as db:
             db.executescript((r.ROOT/'schema/schema.sql').read_text());db.execute('INSERT INTO books(book_id,title) VALUES(?,?)',('old','软件旧书'))
             db.execute('INSERT INTO sections(book_id,section_key,title,original_text,sha256,content_version) VALUES(?,?,?,?,?,?)',('old','1','旧章','旧原字',r.digest('旧原字'),1))
             db.execute('INSERT INTO cases(case_id,section_id,event_family_id,domain_id,known_before,author_yongshen_steps) VALUES(?,?,?,?,?,?)',('software-case',1,'software-event','software','初始','原步骤'))
+            db.commit()
         before=r.digest(source.read_bytes());proof=e.append_database(source,output,self.library,self.units)
         self.assertEqual(before,r.digest(source.read_bytes()));self.assertEqual(proof['new_cases'],0)
-        with sqlite3.connect(output) as db:
+        # Windows denies renaming an SQLite file while a leaked connection
+        # owns it. Check the real files before any GC or process exit.
+        for path in (source,output):
+            moved=path.with_suffix('.closed.sqlite3');path.rename(moved);moved.rename(path)
+        with closing(sqlite3.connect(output)) as db:
             self.assertEqual(db.execute('SELECT COUNT(*) FROM cases').fetchone()[0],1)
             self.assertEqual(db.execute('SELECT original_text FROM sections WHERE section_id=1').fetchone()[0],'旧原字')
             self.assertEqual(db.execute('SELECT COUNT(*) FROM source_editorial_editions').fetchone()[0],1)

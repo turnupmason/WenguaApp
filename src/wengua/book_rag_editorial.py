@@ -1,5 +1,6 @@
 """Auditable prose cleanup; the pasted original and all casting code stay intact."""
 from pathlib import Path
+from contextlib import closing
 import bisect,json,re,sqlite3
 from . import book_rag as r
 
@@ -130,7 +131,7 @@ def append_database(source,output,library,units):
     output=r.private(output)
     if output.exists():raise ValueError('Preserve prior database; choose a new version')
     source=Path(source).resolve();before=r.digest(source.read_bytes());output.parent.mkdir(parents=True,exist_ok=True)
-    with sqlite3.connect(source.as_uri()+'?mode=ro',uri=True) as old,sqlite3.connect(output) as db:
+    with closing(sqlite3.connect(source.as_uri()+'?mode=ro',uri=True)) as old,closing(sqlite3.connect(output)) as db:
         old.backup(db);db.execute('PRAGMA foreign_keys=ON')
         db.executescript((r.ROOT/'schema/migrations/072_source_editorial_reading_versions.sql').read_text(encoding='utf8'))
         chapter=library['chapters'][0];bid=chapter['book_id'];book=library['books'][bid]
@@ -147,8 +148,9 @@ def append_database(source,output,library,units):
         # Editorial review does not create executable/approved rule rows or
         # add fictional cases. Source rules remain in the independent RAG.
         assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+        db.commit()
     if r.digest(source.read_bytes())!=before:raise ValueError('Original database changed')
-    with sqlite3.connect(output) as db:
+    with closing(sqlite3.connect(output)) as db:
         if db.execute('SELECT original_text FROM sections WHERE section_id=?',(sid,)).fetchone()[0]!=chapter['original_text']:raise ValueError('Stored original differs')
         if db.execute('SELECT cleaned_text FROM source_editorial_editions WHERE section_id=?',(sid,)).fetchone()[0]!=e['cleaned_reading_text']:raise ValueError('Stored reading differs')
     return {'source_database_sha256':before,'output_database_sha256':r.digest(output.read_bytes()),
