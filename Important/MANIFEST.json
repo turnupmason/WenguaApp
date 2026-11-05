@@ -1435,7 +1435,7 @@
       "platform": "python",
       "canonical": ".github/workflows/qwen_research_v1.yml",
       "snapshot": "Important/python/ci/qwen_research_v1.yml",
-      "sha": "0a69bba986bec8d3faccfd0ab67ffa02414224de"
+      "sha": "06121ca40b3df53d2b3c8358b10936a1c212f7f6"
     },
     {
       "platform": "python",
@@ -1819,37 +1819,37 @@
       "platform": "python",
       "canonical": "src/wengua/qwen8b_loss_v1.py",
       "snapshot": "Important/python/engine/qwen8b_loss_v1.py",
-      "sha": "6bdf1c1634e56902e57f29a9990bd250e5eef2a7"
+      "sha": "1d5b985b2bd45cd22b2165792f8824e7092996a4"
     },
     {
       "platform": "python",
       "canonical": "src/wengua/qwen8b_process_v1.py",
       "snapshot": "Important/python/engine/qwen8b_process_v1.py",
-      "sha": "ab4199d881a82f211a48620aedeaa2492f84ad47"
+      "sha": "d6f7a3107c0eb055a465acb37d067a19f2994c44"
     },
     {
       "platform": "python",
       "canonical": "scripts/qwen8b_research.py",
       "snapshot": "Important/python/scripts/qwen8b_research.py",
-      "sha": "6d6ddb2ee2585499e0ee516fad7b4d37e5100462"
+      "sha": "2b251c638ff95f41bed8cbcda87b2deebd33e638"
     },
     {
       "platform": "python",
       "canonical": "scripts/check_qwen8b_training.py",
       "snapshot": "Important/python/scripts/check_qwen8b_training.py",
-      "sha": "276d54fece6bd5f0b3ce18d7de5cb398f98f8a14"
+      "sha": "2025b533c3453946062e53dac9c55d5f317401ec"
     },
     {
       "platform": "python",
       "canonical": "tests/test_qwen8b_book_v1.py",
       "snapshot": "Important/python/tests/test_qwen8b_book_v1.py",
-      "sha": "ae56a98dcf5e5dd0ee812467f6c04af72c9870c8"
+      "sha": "cef47425bcaf2a04fe1333ae2d2b2819d45ebb9d"
     },
     {
       "platform": "python",
       "canonical": "data/knowledge/qwen8b_book_v1/release_20261104.json",
       "snapshot": "Important/python/data/knowledge/qwen8b_book_v1/release_20261104.json",
-      "sha": "c8a6479fd40333807130d2a9d06a9dd51b6bd869"
+      "sha": "fea0dc6c6e4c1380854ca0441fdc1a015046e85c"
     },
     {
       "platform": "python",
@@ -1867,7 +1867,13 @@
       "platform": "python",
       "canonical": "run_qwen8b_research_windows.cmd",
       "snapshot": "Important/python/run_qwen8b_research_windows.cmd",
-      "sha": "e11d544500be5951f6d909dc668374fc6aa29bc0"
+      "sha": "945888d98c3b41c2a9ba51cc77f4b836d16acf47"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_qwen8b_loss_path.py",
+      "snapshot": "Important/python/scripts/check_qwen8b_loss_path.py",
+      "sha": "0fe742e7ed5c4a18aafdef19fdcc95faeef3516a"
     }
   ]
 }

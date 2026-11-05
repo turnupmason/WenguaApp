@@ -1,5 +1,11 @@
 # Qwen3-8B：RTX4080纯古籍连续训练
 
+> **当前入口已修复损失接线，输出改为run2_loss_fix。** 用户run1的两组4096均约44/100步OOM；完整栈显示进入原生Trainer.compute_loss和整段CE。首次读取Trainer会更换Transformers根LazyModule，原来的根属性替换可能落在旧对象上。此前独立损失/梯度数学核对仍有效，但旧微型loop没有证明实际Trainer使用该函数，现补足该缺口。这两次OOM不能证明正确分块路径下4096必定装不下。
+
+修复直接绑定规范transformers.trainer.Trainer.compute_loss，既有别名与后续导入均生效，worker退出/异常时恢复；不改教材、label、训练参数或原14B文件。实际训练和验证回调逐次检查调用计数及最大投影位置≤128；走错路径即报普通错误停机，不冒充OOM跳过。控制台先显示qwen8b_bounded_loss_installed，实际算过loss后分别显示qwen8b_bounded_loss_verified（validation/train），worker_calls/*.loss_path.json保留实测计数。
+
+更新前在旧窗口按一次Ctrl+C，等待子进程退出；更新后重复同一个CMD入口。默认新目录local/qwen8b_book_v1/run2_loss_fix，不复用旧run1的OOM状态、压力证明或适配器；run1原日志/检查点保留。官方8B下载缓存直接复用，无需重新下载。新目录也必须重新压力测试，正确接通并不保证实际4096一定够显存。
+
 用户已明确转做8B。此前14B八个配置均OOM，两组2048正式训练在约37/1505步的反向传播中申请560MiB失败，最终no_feasible_trial；两步短测不能证明全程稳定。14B目录、权重缓存、日志、检查点与内核原文件全部保留。8B使用独立输出，不加载14B适配器。
 
 ## PowerShell启动
@@ -16,7 +22,7 @@ git pull --ff-only origin main
 
 下载连接重置10054与Hub的LocalEntryNotFoundError表示网络中断且缓存未齐，发生在训练前，不代表显存不足。下载入口现默认单文件并发；元数据超时60秒、文件读取超时120秒（保留用户已有环境覆盖），对连接中断/超时、408/429/5xx最多5次尝试，间隔5/10/20/40秒。每次仍为同一固定revision及标准Hub缓存，已完成文件复用、未完文件由Hub续传，不清缓存/不强制重下；权限、仓库或revision错误不盲重试。5次网络失败明确报告训练尚未开始。持续10054仍须修复到huggingface.co的网络/代理；重试不是连通性保证，未禁用TLS校验。
 
-新报告：`local/qwen8b_book_v1/run1/results.html`。同一命令恢复，不改已经启动的配置、数据或总epoch；旧14B入口不用于新8B。PyCharm脚本`run_qwen8b_research.py`，解释器`local/qwen_env/Scripts/python.exe`，参数`run --output local/qwen8b_book_v1/run1 --hours 168 --resume`。每次最多168小时，到时同入口继续。
+新报告：`local/qwen8b_book_v1/run2_loss_fix/results.html`。同一命令恢复，不改已经启动的配置、数据或总epoch；旧14B入口不用于新8B。PyCharm脚本`run_qwen8b_research.py`，解释器`local/qwen_env/Scripts/python.exe`，参数`run --output local/qwen8b_book_v1/run2_loss_fix --hours 168 --resume`。每次最多168小时，到时同入口继续。
 
 单独下载或查看计划：
 
@@ -56,7 +62,7 @@ allocator在Torch导入前固定`backend:native,max_split_size_mb:128`；不启�
 完整优化器/调度器/RNG、早停历史和数据/代码哈希随检查点封存。必要时明确指定当前实验的最新完整点：
 
 ```powershell
-.\local\qwen_env\Scripts\python.exe -X utf8 run_qwen8b_research.py run --output local/qwen8b_book_v1/run1 --hours 168 --resume --resume-from-checkpoint "local/qwen8b_book_v1/run1/trials/实际ID/cycle_01/trainer/checkpoint-25"
+.\local\qwen_env\Scripts\python.exe -X utf8 run_qwen8b_research.py run --output local/qwen8b_book_v1/run2_loss_fix --hours 168 --resume --resume-from-checkpoint "local/qwen8b_book_v1/run2_loss_fix/trials/实际ID/cycle_01/trainer/checkpoint-25"
 ```
 
 阶段名仍为cycle_01，但组内包含全部连续epoch。已完成训练而仅生成待继续时用普通--resume。跨模型、参数、数据、source schema或旧14B检查点均拒绝，不把8B适配器直接加载14B。

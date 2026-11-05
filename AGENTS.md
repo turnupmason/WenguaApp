@@ -1,3 +1,5 @@
+> **当前8B入口已修复实际Trainer分块损失接线。** [Windows指南](docs/QWEN8B_RTX4080_BOOK_RESEARCH_V1_20261104.md)，入口run_qwen8b_research_windows.cmd，新目录local/qwen8b_book_v1/run2_loss_fix。用户run1两组4096约44/100步OOM实际走原生整段CE；根LazyModule属性patch冷导入时失效已真实复现，不能凭旧OOM认定正确分块路径4096装不下。现规范Trainer类方法绑定，训练/验证逐调用计数与128位置投影断言，实际调用标记qwen8b_bounded_loss_verified及loss_path.json。旧run1及所有14B源/输出保留，不载入其适配器/压力状态。仍为同一纯两书教材/100步压力/最多9组/连续Adam，CPU数学与实际控制路径待本次验收收据；修复后真实4080显存和专业留出质量须本机重测。下方旧入口/下载阶段均为历史。
+
 > **当前用户授权：改用独立Qwen3-8B纯古籍QLoRA。** [8B Windows指南](docs/QWEN8B_RTX4080_BOOK_RESEARCH_V1_20261104.md)，新入口run_qwen8b_research_windows.cmd，新目录local/qwen8b_book_v1/run1。用户4080/16GB上的14B八组均OOM，正式训练约37步失败，不能继续声称可行。8B固定官方revision，新建适配器，不加载14B权重；100优化步变长压力测试、4结构/上下文与最多9正式配置、同组连续Adam及完整检查点恢复。教材仍仅两书/194事件/1008作者段，不混旧人工算分。CPU损失/梯度等价及跨进程恢复已测，实际8B/NF4显存和专业断案能力待本机；8B成功不保证14B一定更好。下方14B入口均为历史，原文件和结果保留。
 
 > **8B当前进度：下载网络10054，尚未进入训练。** 仅下载入口补单文件并发、较长超时和最多5次瞬时网络重试，固定revision/缓存保留；不更改教材或训练参数。持续断连须检查本机到huggingface.co的网络/代理，不能称8B OOM或已跑通CUDA。见8B指南及docs/audits/qwen8b_download_fix_20261104/；下方14B历史仍不作为活动入口。

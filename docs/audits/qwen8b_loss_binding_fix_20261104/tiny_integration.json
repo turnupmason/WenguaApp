@@ -1,0 +1,19 @@
+{
+  "state": "passed",
+  "test": "8b_profile_tiny_cpu_not_real_8b",
+  "native_and_chunked_loss_match": true,
+  "all_trainable_gradients_match": true,
+  "input_labels_unchanged": true,
+  "vocabulary_projection_chunk_bound_verified": true,
+  "explicit_batch_token_normalization_matches": true,
+  "actual_child_process_training_and_generation": true,
+  "same_adam_across_epochs": true,
+  "step_1_optimizer_restored_in_new_process": true,
+  "interrupted_and_uninterrupted_lora_tensors_match": true,
+  "structural_pressure_proof_reused_without_loading_its_adapter_for_training": true,
+  "actual_worker_training_and_validation_bounded_loss_route_verified": true,
+  "training_workers_offline": true,
+  "completed_resume_spawns_nothing": true,
+  "actual_8b_weights_loaded": false,
+  "cuda_memory_fit_verified": false
+}

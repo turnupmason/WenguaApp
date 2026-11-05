@@ -8,6 +8,7 @@ on:
       - 'src/wengua/qwen8b_*.py'
       - 'scripts/qwen8b_research.py'
       - 'scripts/check_qwen8b_training.py'
+      - 'scripts/check_qwen8b_loss_path.py'
       - 'tests/test_qwen8b_book_v1.py'
       - 'run_qwen8b_research.py'
       - 'run_qwen8b_worker.py'
@@ -99,6 +100,8 @@ jobs:
           HF_HUB_OFFLINE: '1'
           TRANSFORMERS_OFFLINE: '1'
         run: python -m scripts.check_qwen_book_isolated_training
+      - name: Actual cold and warm Trainer loss routes, bounded projection and restoration (no weights)
+        run: python -m scripts.check_qwen8b_loss_path
       - name: 8B pinned tokenizer, chunked loss and gradient equivalence, pressure reuse and optimizer restore (CPU only)
         run: python -m scripts.check_qwen8b_training
       - uses: actions/upload-artifact@v4
@@ -112,6 +115,7 @@ jobs:
             local/qwen_book_sweep_v2/tiny_integration.json
             local/qwen_book_sweep_v2/isolated_integration.json
             local/qwen8b_book_v1/tiny_integration.json
+            local/qwen8b_book_v1/loss_route_integration.json
 
   windows-book-loop-contract:
     runs-on: windows-latest
@@ -172,3 +176,29 @@ jobs:
           cmd /c run_book_research_v2_windows.cmd
           if ($LASTEXITCODE -ne 1) { throw "Expected missing-env refusal" }
           exit 0
+
+  windows-8b-real-loss-route:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Actual Transformers and CPU Torch dependencies (no CUDA or model downloads)
+        run: |
+          python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install transformers==4.57.1 peft==0.17.1 accelerate==1.10.1
+      - name: Actual Windows venv cold imports and previously bound Trainer alias
+        shell: pwsh
+        env:
+          HF_HUB_OFFLINE: '1'
+          TRANSFORMERS_OFFLINE: '1'
+        run: |
+          python -m venv --system-site-packages --without-pip local/loss_route_env
+          if ($LASTEXITCODE -ne 0) { throw "loss-route venv failed" }
+          & local/loss_route_env/Scripts/python.exe -X utf8 -m scripts.check_qwen8b_loss_path
+          if ($LASTEXITCODE -ne 0) { throw "Actual Windows Trainer loss route failed" }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-8b-actual-trainer-loss-route-not-cuda
+          path: local/qwen8b_book_v1/loss_route_integration.json

@@ -8,7 +8,7 @@ from contextlib import contextmanager
 from unittest.mock import patch
 
 
-def supervised_loss(model,inputs,*,chunk_tokens=128,num_items_in_batch=None):
+def supervised_loss(model,inputs,*,chunk_tokens=128,num_items_in_batch=None,audit=None):
     import torch
     import torch.nn.functional as F
     from torch.utils.checkpoint import checkpoint
@@ -22,6 +22,8 @@ def supervised_loss(model,inputs,*,chunk_tokens=128,num_items_in_batch=None):
     data.update(use_cache=False,return_dict=True)
     hidden=base.model(**data).last_hidden_state
     def projected_ce(h,t):
+        if h.shape[1]>chunk_tokens:raise RuntimeError('Vocabulary projection exceeded bounded-loss chunk size')
+        if audit is not None:audit['max_projected_positions']=max(audit['max_projected_positions'],int(h.shape[1]))
         logits=base.lm_head(h).float()
         return F.cross_entropy(logits.reshape(-1,logits.shape[-1]),t.reshape(-1),ignore_index=-100,reduction='sum')
     total=None
@@ -37,14 +39,19 @@ def supervised_loss(model,inputs,*,chunk_tokens=128,num_items_in_batch=None):
 
 @contextmanager
 def memory_trainer(chunk_tokens):
-    import transformers
-    original=transformers.Trainer
-    class MemoryTrainer(original):
-        def compute_loss(self,model,inputs,return_outputs=False,num_items_in_batch=None):
-            if self.accelerator.num_processes!=1:raise ValueError('Single-GPU normalization required')
-            with self.accelerator.autocast():
-                loss=supervised_loss(model,inputs,chunk_tokens=chunk_tokens,num_items_in_batch=num_items_in_batch)
-            return (loss,{'loss':loss}) if return_outputs else loss
-    # Worker lifetime only. The unchanged 14B modules and other interpreters
-    # keep their own Trainer; no global patch is persisted to disk.
-    with patch.object(transformers,'Trainer',MemoryTrainer):yield
+    # Loading Trainer can replace transformers' root LazyModule object. Patch
+    # the canonical class method, so both later imports and existing aliases
+    # see the same implementation. Root-module attribute patches are unsafe.
+    from transformers.trainer import Trainer
+    audit={'route':'canonical_trainer_compute_loss_v2','chunk_tokens':chunk_tokens,
+        'compute_loss_calls':0,'train_loss_calls':0,'eval_loss_calls':0,'max_projected_positions':0}
+    def compute_loss(self,model,inputs,return_outputs=False,num_items_in_batch=None):
+        if self.accelerator.num_processes!=1:raise ValueError('Single-GPU normalization required')
+        audit['compute_loss_calls']+=1
+        audit['train_loss_calls' if model.training else 'eval_loss_calls']+=1
+        with self.accelerator.autocast():
+            loss=supervised_loss(model,inputs,chunk_tokens=chunk_tokens,num_items_in_batch=num_items_in_batch,audit=audit)
+        return (loss,{'loss':loss}) if return_outputs else loss
+    # Worker lifetime only; restore the canonical method even on OOM/interrupt.
+    # Old 14B modules on disk and other interpreter processes stay unchanged.
+    with patch.object(Trainer,'compute_loss',compute_loss):yield audit

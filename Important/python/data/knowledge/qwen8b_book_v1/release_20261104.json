@@ -3,7 +3,7 @@
   "model_id": "Qwen/Qwen3-8B",
   "revision": "b968826d9c46dd6066d109eabc6255188de91218",
   "entrypoint": "run_qwen8b_research_windows.cmd",
-  "output": "local/qwen8b_book_v1/run1",
+  "output": "local/qwen8b_book_v1/run2_loss_fix",
   "guide": "docs/QWEN8B_RTX4080_BOOK_RESEARCH_V1_20261104.md",
   "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
   "pressure_updates_per_new_structure": 100,
@@ -26,14 +26,17 @@
     "src/wengua/qwen_book_sweep_v2.py": "9234745816ebfa34ae0fb6d7517112c258aa6d243bb05a055be6f29321dde955",
     "src/wengua/qwen_book_process_v1.py": "2b40d0040d744f3bdc209a7833f6e94f8a0d46c9960a873fe9854d59361dbd36",
     "src/wengua/qwen8b_book_v1.py": "a37875138c6c45000f27579e85249527a7fd1eeff819e52426984d7f06fa66a0",
-    "src/wengua/qwen8b_loss_v1.py": "78704e9ab1985e63a6e1b3665827ae4362ac2ab87bc6e3e0c81408d4a76873e7",
-    "src/wengua/qwen8b_process_v1.py": "b94d27e0a2876bab28cfc0bc082b76c5d109e19e0da141b2447a8c8d9ef3290a",
-    "scripts/qwen8b_research.py": "202cf4e5c91b133862595823d292c7a5da83030c85182b6591eb8168f746535d",
+    "src/wengua/qwen8b_loss_v1.py": "7f32fd1d58ca4bd9b33ae94e6ef0966c8bbe2981fa271190a9f373634be20596",
+    "src/wengua/qwen8b_process_v1.py": "94f6acabf64be19a79ef13c9514757985a0eb59b71df32d145fb9a3a02028690",
+    "scripts/qwen8b_research.py": "25952e10822f4a08d71e1ffe1a9a2c6a8bdd55956047c9756de8c8d1406b14a3",
     "run_qwen8b_research.py": "80dd74dd30f938e5a1ff8b07a3fe75dfcedb0ada21f94ad14382025dcb269484",
     "run_qwen8b_worker.py": "995013b9786fbc314e442502ae8106428fb901cc6fd9dc8eec7d52518b88a96a",
     "configs/qwen8b_book_v1.json": "6ed5a6a479dbcd33513ef4b31a2820e58b377eeccf23e3a38b40f36145458048",
     "configs/qwen8b_book_sweep_v1.json": "3f3f06b1b10acb8e88aa0afb52da8af3082a5bf4dbde4996a0e56e4681aba9fc"
   },
   "download_retries": 5,
-  "download_max_workers": 1
+  "download_max_workers": 1,
+  "loss_runtime_route": "canonical_trainer_compute_loss_v2",
+  "previous_native_ce_run1_results_reusable": false,
+  "runtime_training_and_validation_loss_assertions": true
 }

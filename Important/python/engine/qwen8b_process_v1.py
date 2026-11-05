@@ -22,7 +22,8 @@ MEMORY_KEYS=('model_id','revision','max_seq_length','inference_max_context','lor
 def execution(root,p):
     b=p.book;root=b.private_output(root)
     contract={'schema':SCHEMA,'code_sha256':hashes(),'software_fixture':p.testing,'process_per_unit':True,
-        'receipt_protocol':'request_sha_and_nonce','memory_loss':'checkpointed_supervised_ce_v1'}
+        'receipt_protocol':'request_sha_and_nonce','memory_loss':'checkpointed_supervised_ce_v1',
+        'loss_runtime_route':'canonical_trainer_compute_loss_v2'}
     if (root/'sweep_contract.json').exists() and b.read_json(root/'sweep_contract.json')['schema']!=SWEEP_SCHEMA:
         raise ValueError('8B cannot adopt a 14B/legacy experiment')
     path=root/'process_execution.json'
@@ -133,8 +134,21 @@ def worker(request):
         from scripts.check_qwen8b_training import fixture_factory
         factory=fixture_factory
     from transformers import TrainerCallback
+    loss_audit=None
     class Heartbeat(TrainerCallback):
-        count=0;printed=0;epochs=[]
+        count=0;printed=0;epochs=[];last_train_calls=0;last_eval_calls=0
+        def checked_loss(self,phase,state):
+            key='train_loss_calls' if phase=='train' else 'eval_loss_calls'
+            previous=self.last_train_calls if phase=='train' else self.last_eval_calls
+            if (loss_audit is None or loss_audit[key]<=previous
+                or not 0<loss_audit['max_projected_positions']<=c['loss_chunk_tokens']):
+                raise RuntimeError('Actual Trainer bypassed bounded loss; refusing unverified memory results')
+            if previous==0:
+                b.progress('qwen8b_bounded_loss_verified',phase=phase,route=loss_audit['route'],
+                    max_projected_positions=loss_audit['max_projected_positions'],chunk_tokens=c['loss_chunk_tokens'])
+            if phase=='train':self.last_train_calls=loss_audit[key]
+            else:self.last_eval_calls=loss_audit[key]
+            b.atomic_json(request.with_suffix('.loss_path.json'),dict(loss_audit,checked_phase=phase,step=state.global_step))
         def on_train_begin(self,args,state,control,**kwargs):
             steps=[int(v['step']) for v in kwargs['optimizer'].state.values() if 'step' in v]
             b.atomic_json(request.with_suffix('.training_start.json'),{'step':state.global_step,'optimizer_steps':steps,'pid':os.getpid()})
@@ -143,18 +157,22 @@ def worker(request):
             self.epochs.append({'step':state.global_step,'optimizer_id':id(kwargs['optimizer']),'scheduler_step':kwargs['lr_scheduler'].last_epoch})
             b.atomic_json(request.with_suffix('.epochs.json'),self.epochs)
         def on_substep_end(self,args,state,control,**kwargs):
+            self.checked_loss('train',state)
             self.count+=1;beat('train',step=state.global_step,micro_batches=self.count)
             if time.time()-self.printed>30:self.printed=time.time();b.progress('qwen8b_microbatch_progress',step=state.global_step,micro_batches=self.count)
         def on_step_end(self,args,state,control,**kwargs):
+            self.checked_loss('train',state)
             beat('train',step=state.global_step)
             if p.testing and payload.get('fixture_stop_step') and state.global_step>=payload['fixture_stop_step']:
                 control.should_save=True;control.should_training_stop=True
-        def on_prediction_step(self,args,state,control,**kwargs):beat('validation',step=state.global_step)
+        def on_prediction_step(self,args,state,control,**kwargs):
+            self.checked_loss('validation',state);beat('validation',step=state.global_step)
         def on_train_end(self,args,state,control,**kwargs):beat('generation',step=state.global_step)
     callbacks=(Heartbeat(),)
     reply={'schema':SCHEMA,'nonce':payload['nonce'],'request_sha256':b.file_sha(request),'pid':os.getpid(),'software_fixture':p.testing}
     try:
-        with b.job_lock(job.parent.parent/'isolated_gpu_worker.lock'),memory_trainer(c['loss_chunk_tokens']):
+        with b.job_lock(job.parent.parent/'isolated_gpu_worker.lock'),memory_trainer(c['loss_chunk_tokens']) as loss_audit:
+            b.progress('qwen8b_bounded_loss_installed',route=loss_audit['route'],chunk_tokens=loss_audit['chunk_tokens'])
             if payload['operation']=='fit':result=p.engine.fit(job,c,payload['deadline'],probe=payload['probe'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
             elif payload['operation']=='trial':result=p.engine.run_trial(job,c,payload['deadline'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
             elif payload['operation']=='final':result=b.final_test(job,c,payload['best'],payload['deadline'],cpu_factory=factory)

@@ -61,7 +61,7 @@ def download_cached_model(book,c,*,download=None,retryable=None,wait=time.sleep)
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command',choices=('plan','doctor','download','run'))
-    parser.add_argument('--spec',type=Path,default=SPEC);parser.add_argument('--output',type=Path,default=Path('local/qwen8b_book_v1/run1'))
+    parser.add_argument('--spec',type=Path,default=SPEC);parser.add_argument('--output',type=Path,default=Path('local/qwen8b_book_v1/run2_loss_fix'))
     parser.add_argument('--hours',type=float,default=168);parser.add_argument('--resume',action='store_true')
     parser.add_argument('--resume-from-checkpoint',type=Path);parser.add_argument('--offline',action='store_true')
     args=parser.parse_args(argv)

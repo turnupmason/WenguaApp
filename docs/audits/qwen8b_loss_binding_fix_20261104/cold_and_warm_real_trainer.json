@@ -1,0 +1,36 @@
+{
+  "state": "passed",
+  "cases": [
+    {
+      "case": "cold_root",
+      "state": "passed",
+      "actual_train_and_eval_use_bounded_loss": true,
+      "full_causal_forward_with_labels_bypassed": true,
+      "loss_audit": {
+        "route": "canonical_trainer_compute_loss_v2",
+        "chunk_tokens": 128,
+        "compute_loss_calls": 8,
+        "train_loss_calls": 4,
+        "eval_loss_calls": 4,
+        "max_projected_positions": 128
+      },
+      "actual_8b_weights_loaded": false
+    },
+    {
+      "case": "warm_alias",
+      "state": "passed",
+      "actual_train_and_eval_use_bounded_loss": true,
+      "full_causal_forward_with_labels_bypassed": true,
+      "loss_audit": {
+        "route": "canonical_trainer_compute_loss_v2",
+        "chunk_tokens": 128,
+        "compute_loss_calls": 8,
+        "train_loss_calls": 4,
+        "eval_loss_calls": 4,
+        "max_projected_positions": 128
+      },
+      "actual_8b_weights_loaded": false
+    }
+  ],
+  "cuda_memory_fit_verified": false
+}

@@ -14,6 +14,9 @@ from src.wengua.qwen8b_process_v1 import launch,execution,pressure_signature
 from scripts import qwen8b_research as cli
 from types import SimpleNamespace
 from unittest.mock import Mock
+import sys
+from types import ModuleType
+from src.wengua.qwen8b_loss_v1 import memory_trainer
 
 
 class Qwen8BProfile(unittest.TestCase):
@@ -120,6 +123,24 @@ class Qwen8BProfile(unittest.TestCase):
         for status in (401,403,404,408,429,500,503):
             error=NetworkError();error.response=SimpleNamespace(status_code=status)
             self.assertEqual(cli.transient_download_failure(error,(NetworkError,),()),status in (408,429,500,503))
+
+    def test_loss_binding_reaches_old_and_new_root_aliases_and_restores_on_error(self):
+        class Trainer:
+            def compute_loss(self,*args,**kwargs):return 'native'
+        original=Trainer.compute_loss
+        old_root=ModuleType('transformers');old_root.Trainer=Trainer
+        new_root=ModuleType('transformers');new_root.__path__=[];new_root.Trainer=Trainer
+        canonical=ModuleType('transformers.trainer');canonical.Trainer=Trainer
+        with patch.dict(sys.modules,{'transformers':new_root,'transformers.trainer':canonical}):
+            with self.assertRaisesRegex(RuntimeError,'fixture interruption'):
+                with memory_trainer(128) as audit:
+                    self.assertIs(old_root.Trainer.compute_loss,new_root.Trainer.compute_loss)
+                    self.assertIsNot(Trainer.compute_loss,original)
+                    self.assertEqual(Trainer.compute_loss.__module__,'src.wengua.qwen8b_loss_v1')
+                    self.assertEqual(audit['route'],'canonical_trainer_compute_loss_v2')
+                    raise RuntimeError('fixture interruption')
+            self.assertIs(old_root.Trainer.compute_loss,original)
+            self.assertIs(new_root.Trainer.compute_loss,original)
 
 
 if __name__=='__main__':unittest.main()
