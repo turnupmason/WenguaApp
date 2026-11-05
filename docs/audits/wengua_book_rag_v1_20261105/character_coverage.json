@@ -1,0 +1,8 @@
+{
+  "chapters_checked": 43,
+  "normalized_nonblank_characters_without_indexed_literal_selector": 0,
+  "full_original_text_retained_and_sha256_verified": true,
+  "method": "Union exact line-relative character ranges of every literal selector, then count uncovered non-whitespace characters across every complete chapter; no lines or characters inferred from QA answers.",
+  "source_database_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "index_library_source_digest": "d74c5f94ffc4c60cde0ac7e12069233ff5556bf6028f74b5a22d7d5353106d20"
+}
