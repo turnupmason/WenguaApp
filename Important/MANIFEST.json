@@ -2282,6 +2282,24 @@
       "canonical": "unlock_course_v51.py",
       "snapshot": "Important/python/entrypoints/unlock_course_v51.py",
       "sha": "22799f00bcaf5e1e7ae8f08320567cfdc06b660b"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_course_v51_worker.py",
+      "snapshot": "Important/python/entrypoints/run_course_v51_worker.py",
+      "sha": "b27270988634a606c272a6eaaacb4a3e0425761c"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_course_v51_training.py",
+      "snapshot": "Important/python/scripts/check_course_v51_training.py",
+      "sha": "c014ad19aae5a3b0cc3f416fb0f0c367ec3f59d7"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_course_v51_windows.py",
+      "snapshot": "Important/python/scripts/check_course_v51_windows.py",
+      "sha": "3f4df9d1b850170d2bd4c7f99f81fa49e16dab8c"
     }
   ]
 }
