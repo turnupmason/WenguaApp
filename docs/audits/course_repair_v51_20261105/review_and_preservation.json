@@ -1,0 +1,48 @@
+{
+  "v4_runtime_hash_contract_unchanged": true,
+  "v4_runtime_files": 26,
+  "v5_runtime_files_byte_identical_to_parent_commit": [
+    "src/wengua/course_complete_v5.py",
+    "src/wengua/course_training_v5.py",
+    "src/wengua/course_process_v5.py",
+    "scripts/course_v5.py",
+    "run_course_v5.py",
+    "run_course_v5_worker.py",
+    "train_wengua_v5.cmd",
+    "configs/course_v5.json",
+    "configs/course_v5_sweep.json",
+    "data/knowledge/course_v5/release.json"
+  ],
+  "raw_source_sha256": "21362e6f0266c03dcdc4a7ef35f45954ba274ae6458de0ba341132abca7d0405",
+  "reviewed_outputs": 192,
+  "unique_versions_excluding_duplicate_base": 168,
+  "logged_training_updates_reviewed": 972,
+  "two_complete_trials": {
+    "r8": {
+      "macro_nll": [
+        2.3962410502135754,
+        2.2773681516118813,
+        2.265369344080682
+      ]
+    },
+    "r16": {
+      "macro_nll": [
+        2.315374209312722,
+        2.219219947081001,
+        2.2114234022665187
+      ]
+    }
+  },
+  "third_trial": "KeyboardInterrupt during model loading; no formal update; not CUDA OOM",
+  "final_test_results_provided": false,
+  "all_sources_in_revised_pack_identical_to_v5": true,
+  "core_tasks": 11913,
+  "assistant_views": 12012,
+  "train_assistant_views": 10272,
+  "new_source_based_tasks": 808,
+  "parent_course": "completed formal V4 adapter, as explicitly requested by user",
+  "parent_optimizer_reused_across_new_data": false,
+  "original_weights_or_checkpoints_overwritten": false,
+  "private_zip_sha256": "8eb7b6f0eabf86a9c34b369af020c6ad9a3c9af5cbbc24eade4e54b5b151d435",
+  "model_ability_or_semantic_infallibility_verified": false
+}

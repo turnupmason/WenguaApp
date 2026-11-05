@@ -32,6 +32,8 @@ jobs:
         run: python -m unittest tests.test_qwen_course_v4 -v
       - name: Lossless compressed historical source restoration
         run: python -m unittest tests.test_archive_snapshots -v
+      - name: V5.1 evidence-visible repair, no hidden feedback targets and preserved V4 contracts
+        run: python -m unittest tests.test_course_repair_v51 -v
       - name: Complete v5 source dispatch, scope, holdout and independent worker contracts
         run: python -m unittest tests.test_course_complete_v5 -v
       - name: Verify sealed V9 scoring V11 wording and V27 site release

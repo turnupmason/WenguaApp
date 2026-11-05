@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "c3c5ca1308c59d5f1f72af5233466933ff9453fe"
+      "sha": "35f158515923b145ff10922b17b2e41148b611e5"
     },
     {
       "platform": "python",
@@ -2186,6 +2186,102 @@
       "canonical": "tests/test_archive_snapshots.py",
       "snapshot": "Important/python/tests/test_archive_snapshots.py",
       "sha": "9eb705cf7d5efba027d5306e2d0bec82e29db75d"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/course_repair_v51.yml",
+      "snapshot": "Important/python/ci/course_repair_v51.yml",
+      "sha": "35d282876c3f4f1fcbfdb183bba4329fa294fd28"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/course_v51.json",
+      "snapshot": "Important/python/configs/course_v51.json",
+      "sha": "7827b807a1be76c75b492fedc7dd6242ddb12dda"
+    },
+    {
+      "platform": "python",
+      "canonical": "configs/course_v51_sweep.json",
+      "snapshot": "Important/python/configs/course_v51_sweep.json",
+      "sha": "e86463859d3f16c05ba02038c9ea13453d64ec2a"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/delivery/course_v51/manifest.json",
+      "snapshot": "Important/python/data/delivery/course_v51/manifest.json",
+      "sha": "01b1b46cfd9bcec6aa236b849806a4e74649d39a"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/course_v51/release.json",
+      "snapshot": "Important/python/data/knowledge/course_v51/release.json",
+      "sha": "4f7536e61df431352c8bc0f056d21f1230399bbd"
+    },
+    {
+      "platform": "python",
+      "canonical": "run_course_v51.py",
+      "snapshot": "Important/python/entrypoints/run_course_v51.py",
+      "sha": "819279314d3c32587fc6c214b1872a25e26ed1ef"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/build_course_repair_v51.py",
+      "snapshot": "Important/python/scripts/build_course_repair_v51.py",
+      "sha": "23d96832a990dc665d31770b6cd0a727fe77ff59"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/course_v51.py",
+      "snapshot": "Important/python/scripts/course_v51.py",
+      "sha": "95e32417e13efbd835846554b42e122f5ba0c0b3"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_fit_v51.py",
+      "snapshot": "Important/python/engine/course_fit_v51.py",
+      "sha": "85b66fc2e55afc64c87707849cf2b87d76f21ae9"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_parent_v51.py",
+      "snapshot": "Important/python/engine/course_parent_v51.py",
+      "sha": "7aa690e6f15256722134348f02088a32eed5b846"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_process_v51.py",
+      "snapshot": "Important/python/engine/course_process_v51.py",
+      "sha": "32801a186cbeb7983f342307a4a7e3a3dfceabf3"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_repair_v51.py",
+      "snapshot": "Important/python/engine/course_repair_v51.py",
+      "sha": "a3ff07e5e345f410f81dd9f7ab3aa741b0a2d723"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_training_v51.py",
+      "snapshot": "Important/python/engine/course_training_v51.py",
+      "sha": "69b93df790de06ca61e94a5136920e75c2ab6088"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_course_repair_v51.py",
+      "snapshot": "Important/python/tests/test_course_repair_v51.py",
+      "sha": "0ac66c723a4fc98171287145c0710ddaa6ba1889"
+    },
+    {
+      "platform": "python",
+      "canonical": "train_wengua_v51.cmd",
+      "snapshot": "Important/python/entrypoints/train_wengua_v51.cmd",
+      "sha": "336c59572c70223abc69ffdfb9bc641c5e13be1d"
+    },
+    {
+      "platform": "python",
+      "canonical": "unlock_course_v51.py",
+      "snapshot": "Important/python/entrypoints/unlock_course_v51.py",
+      "sha": "22799f00bcaf5e1e7ae8f08320567cfdc06b660b"
     }
   ]
 }

@@ -1,0 +1,56 @@
+[
+  {
+    "trial": "r16_4096_e3990a8f9f2f",
+    "epoch": 1,
+    "logged_updates": 162,
+    "mean_logged_loss": 3.246145061728395,
+    "min_logged_loss": 1.3179,
+    "max_logged_loss": 6.661,
+    "max_grad_norm": 15.394734382629395
+  },
+  {
+    "trial": "r16_4096_e3990a8f9f2f",
+    "epoch": 2,
+    "logged_updates": 162,
+    "mean_logged_loss": 2.3146172839506174,
+    "min_logged_loss": 1.0898,
+    "max_logged_loss": 3.2946,
+    "max_grad_norm": 6.948619365692139
+  },
+  {
+    "trial": "r16_4096_e3990a8f9f2f",
+    "epoch": 3,
+    "logged_updates": 162,
+    "mean_logged_loss": 2.223612962962963,
+    "min_logged_loss": 1.0113,
+    "max_logged_loss": 3.235,
+    "max_grad_norm": 6.8773040771484375
+  },
+  {
+    "trial": "r8_4096_947a41ac106e",
+    "epoch": 1,
+    "logged_updates": 162,
+    "mean_logged_loss": 3.455287654320988,
+    "min_logged_loss": 1.4673,
+    "max_logged_loss": 6.8519,
+    "max_grad_norm": 18.57657241821289
+  },
+  {
+    "trial": "r8_4096_947a41ac106e",
+    "epoch": 2,
+    "logged_updates": 162,
+    "mean_logged_loss": 2.4141932098765433,
+    "min_logged_loss": 1.1128,
+    "max_logged_loss": 3.4386,
+    "max_grad_norm": 8.638652801513672
+  },
+  {
+    "trial": "r8_4096_947a41ac106e",
+    "epoch": 3,
+    "logged_updates": 162,
+    "mean_logged_loss": 2.3275141975308644,
+    "min_logged_loss": 1.0691,
+    "max_logged_loss": 3.3523,
+    "max_grad_norm": 5.622411727905273
+  }
+]

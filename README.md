@@ -1,3 +1,5 @@
+> 当前本地模型入口：**V5.1继承已训练V4补课**。先读[逐epoch审核与PowerShell启动](docs/COURSE_REPAIR_V51_20261105.md)，使用 `unlock_course_v51.py` 和 `train_wengua_v51.cmd`。旧V4/V5目录保留，下列旧模型入口仅供复现。
+
 # 问卦 · WenguaApp
 
 两本书来源库、离线 iPhone App，以及独立的 Qwen3-8B 课程训练。
