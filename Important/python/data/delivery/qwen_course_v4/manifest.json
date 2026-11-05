@@ -1,0 +1,11 @@
+{
+  "schema": "wengua_private_delivery_aes256cbc_hmacsha256_v1",
+  "file": "data/delivery/qwen_course_v4/delivery_v4.enc",
+  "ciphertext_sha256": "4fbf3dd14c4966f746446e408bb2f4b542ddf6e2b71e72023205f3422b015f86",
+  "archive_name": "Wengua_course_v4_reviewed_20261105.zip",
+  "archive_sha256": "e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8",
+  "master_key_published": false,
+  "plaintext_book_or_qa_published": false,
+  "original_training_contract_changed": false,
+  "key_delivery": "private conversation only"
+}

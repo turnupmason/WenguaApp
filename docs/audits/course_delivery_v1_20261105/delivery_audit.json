@@ -1,0 +1,12 @@
+{
+  "delivery_mode": "authenticated_encrypted_git_file",
+  "archive_sha256": "e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8",
+  "ciphertext_sha256": "4fbf3dd14c4966f746446e408bb2f4b542ddf6e2b71e72023205f3422b015f86",
+  "private_key_in_git": false,
+  "original_training_runtime_contract_unchanged": true,
+  "source_pack_changed": false,
+  "private_server_roundtrip_verified": true,
+  "windows_actual_decryption": "pending_source_matched_ci",
+  "private_repo_create": "403; no repository created",
+  "draft_release_upload": "401; no plaintext assets uploaded; empty draft deleted"
+}

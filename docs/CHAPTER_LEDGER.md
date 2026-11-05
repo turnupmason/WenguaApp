@@ -2349,3 +2349,10 @@ V4本地最终验收：1122项全套测试0失败/错误，3项既有skip另列�
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码908d8ecf5556a08205bf956e50d9f20da23e1164。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42051657998_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
 
 V4远端验收：源码908d8ecf主CI42051657768双Python、Qwen42051657846三job均success；五份完整源码匹配日志、无error/清理完成已存remote_source_ci.json。Windows真实HF参数图和遥测恢复、venv入口及六组计划通过；新CPU worker完成40步和完整优化器恢复。已快进接收3dd2f343自动原生归档，课程/16冻结内核/私有ZIP未改。私有交付ZIP SHA256 e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8，完整Excel已逐条读回一致。
+
+
+### 2026-11-05 V4数据交付路径修正
+
+> **V4下载修复：工作区路径不是可下载附件。** 现用加密数据随git同步，入口unlock_qwen_course_v4.py，解密码仅私有对话，不进入Git或CI。AES256-CBC＋HMAC-SHA256先验MAC，再用Windows内置.NET解密并核对原ZIP SHA，自动保存到当前用户Downloads。公开只有密文和软件夹具；明文、实际密钥继续local/私有对话。原训练代码/教材ZIP/参数/恢复合同均未改，继续run_qwen_course_v4_windows.cmd。GitHub私有库创建403、草稿附件上传401；空草稿已删除，没有上传明文。
+
+用户无法从聊天下载/workspace路径，这个路径不可继续当有效附件发。新Git只分发AES256-CBC+独立HMAC-SHA256认证密文；根密钥随机256位，仅忽略local文件及本对话交付，绝不提交。Windows标准库入口通过内置.NET解密，MAC与原ZIP SHA均通过后写Downloads；已有不同文件不覆盖。代码不导入Torch、不开训、不变更任何已有数据或训练合同。真实Windows内置AES与Unicode往返另设CI，不在CI解密真实教材。

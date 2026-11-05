@@ -1,0 +1,7 @@
+{
+  "software_fixture_only": true,
+  "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "plaintext_utf8": "Software fixture only / 中文解密测试。",
+  "envelope_base64": "V1E0RU5DMQAAAQIDBAUGBwgJCgsMDQ4P4XT9nasC7+hL7WC/AWD1toBkpZ4uoWkmGe0nDxSthowDlfhjtmCrEfTP/oaKOkudCiF3XB6XbD5z7xejF3BMdD22K6pdjOe0qr4yzAGJ8Dc=",
+  "plain_sha256": "48f30fcd409015b3b884c305a4f587242f70f5122abc934d0e47bcb0754e44da"
+}

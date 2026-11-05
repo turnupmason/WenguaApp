@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "4e25de97aa8b670e86b4df388c0402dbd40e8f77"
+      "sha": "1d68580a7d844f089ce3180dcdba5a7c10cec89e"
     },
     {
       "platform": "python",
@@ -2012,6 +2012,48 @@
       "canonical": "data/knowledge/qwen_course_v4/release.json",
       "snapshot": "Important/python/data/knowledge/qwen_course_v4/release.json",
       "sha": "bf612be7ed53eaf722c1a664e3a7af7dd9df3401"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/course_delivery_v1.py",
+      "snapshot": "Important/python/engine/course_delivery_v1.py",
+      "sha": "3640a8312a589bfe24689f1a2cc9ebc8a0007e9c"
+    },
+    {
+      "platform": "python",
+      "canonical": "unlock_qwen_course_v4.py",
+      "snapshot": "Important/python/unlock_qwen_course_v4.py",
+      "sha": "a5f19dde404a9812b0cd199192c253e7d247a842"
+    },
+    {
+      "platform": "python",
+      "canonical": "scripts/check_course_delivery_v1.py",
+      "snapshot": "Important/python/scripts/check_course_delivery_v1.py",
+      "sha": "8e474b32549ed510f898d3905f8fd61ec2a31220"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_course_delivery_v1.py",
+      "snapshot": "Important/python/tests/test_course_delivery_v1.py",
+      "sha": "de372e1d441deab01d5770a65c562f604eb19efb"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/fixtures/course_delivery_cipher.json",
+      "snapshot": "Important/python/tests/fixtures/course_delivery_cipher.json",
+      "sha": "eaafcbc0747c9b2277369a176e29347d01a137be"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/delivery/qwen_course_v4/manifest.json",
+      "snapshot": "Important/python/data/delivery/qwen_course_v4/manifest.json",
+      "sha": "2483a23eaac6cf405d778209f85922784d915470"
+    },
+    {
+      "platform": "python",
+      "canonical": ".github/workflows/course_delivery_v1.yml",
+      "snapshot": "Important/python/ci/course_delivery_v1.yml",
+      "sha": "897215c3ae9ce88a9cb7c1a16587f1cf01c24af7"
     }
   ]
 }

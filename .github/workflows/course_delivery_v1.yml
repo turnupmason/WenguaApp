@@ -1,0 +1,29 @@
+name: Encrypted private course delivery (no model or private key)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/wengua/course_delivery_v1.py'
+      - 'unlock_qwen_course_v4.py'
+      - 'scripts/check_course_delivery_v1.py'
+      - 'tests/test_course_delivery_v1.py'
+      - 'tests/fixtures/course_delivery_cipher.json'
+      - 'data/delivery/qwen_course_v4/**'
+      - '.github/workflows/course_delivery_v1.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actual-windows-built-in-aes:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Authentication, tampering, no overwrite and pinned release hash
+        run: python -X utf8 -m unittest tests.test_course_delivery_v1 -v
+      - name: Real Windows PowerShell .NET AES CBC and Unicode SHA round trip
+        run: python -X utf8 -m scripts.check_course_delivery_v1
+      - name: Standard library CLI needs no Torch, extra package or model load
+        run: python -X utf8 unlock_qwen_course_v4.py --help

@@ -12,15 +12,19 @@
 
 ## 下载与启动
 
-私有交付文件 `Wengua_course_v4_reviewed_20261105.zip`，不进入公开 Git。其 SHA256 及每个文件摘要见 `data/knowledge/qwen_course_v4/release.json`。将 ZIP 放进 Windows 用户 Downloads 文件夹，保留原名。新入口会在任何模型加载前校验 ZIP 和全部文件，安装到 `local/qwen_course_v4_data`。
+聊天中的工作区文件路径不是有效附件，现已改成加密数据随 Git 同步，无需从聊天下载 ZIP。公开仓库只有 AES256-CBC＋HMAC-SHA256 密文，实际解密码仅在私有对话交付，不进入 Git。此方式不依赖 GitHub 附件上传权限。
 
-在 **CMD** 执行：
+在 **PowerShell** 当前 WenguaApp 目录运行（把“本对话中的解密码”替换为收到的64位十六进制码）：
 
-```bat
-cd /d "%USERPROFILE%\WenguaApp"
+```powershell
 git pull --ff-only origin main
-run_qwen_course_v4_windows.cmd
+.\local\qwen_env\Scripts\python.exe -X utf8 unlock_qwen_course_v4.py --key "本对话中的解密码"
+.\run_qwen_course_v4_windows.cmd
 ```
+
+解密入口使用 Windows 内置 .NET AES，无需安装新包；先认证 HMAC，解密后核对原 ZIP SHA256 `e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8`，再自动保存到 `Downloads/Wengua_course_v4_reviewed_20261105.zip`，不用解压。旧有不同文件会保留并报告错误；不会覆盖。密文分发与解密器不在原训练合同文件列表中，原教材、配置、所有训练源码逐字未改。
+
+ZIP 内含完整 Excel，可以在自动保存后从 Downloads 解压查看。明文不提交到 Git。
 
 仍使用现有 `local\qwen_env` 和官方 8B 缓存。需要手动指定 ZIP 时：
 

@@ -26,6 +26,8 @@ jobs:
         run: python -m unittest tests.test_qwen8b_book_v1 -v
       - name: 8B native exit status, stderr tee, timeout and unchanged non-worker subprocess contracts
         run: python -m unittest tests.test_qwen8b_worker_diagnostics -v
+      - name: Encrypted private delivery hash, authentication and no-overwrite contracts
+        run: python -m unittest tests.test_course_delivery_v1 -v
       - name: Reviewed course private release, family isolation and fresh worker contracts
         run: python -m unittest tests.test_qwen_course_v4 -v
       - name: Verify sealed V9 scoring V11 wording and V27 site release
