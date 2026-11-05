@@ -2347,3 +2347,5 @@ V4本地最终验收：1122项全套测试0失败/错误，3项既有skip另列�
 
 ### 当前封存轻重回归实测 · run 42051657998
 V9.0计分＋V11模板（原V8基础保留），Python/原生Swift逐字回归成功；源码908d8ecf5556a08205bf956e50d9f20da23e1164。全文 docs/HEALTH_V80_SELECTED_POWER_TWO_FIXED_CLOCKS_RUN_42051657998_ATTEMPT_1.md。既有时辰仅为软件回归，不称新盲测或临床验证；Xcode须另核同源码实测。病位仍为用户封存V27。
+
+V4远端验收：源码908d8ecf主CI42051657768双Python、Qwen42051657846三job均success；五份完整源码匹配日志、无error/清理完成已存remote_source_ci.json。Windows真实HF参数图和遥测恢复、venv入口及六组计划通过；新CPU worker完成40步和完整优化器恢复。已快进接收3dd2f343自动原生归档，课程/16冻结内核/私有ZIP未改。私有交付ZIP SHA256 e704510f43c20fc87ca636e39107450313215ea1add0f25a60ffd58de0bf21c8，完整Excel已逐条读回一致。

@@ -1,0 +1,45 @@
+{
+  "source_commit": "908d8ecf5556a08205bf956e50d9f20da23e1164",
+  "main_run": 42051657768,
+  "qwen_run": 42051657846,
+  "jobs": [
+    {
+      "job_id": 127329035459,
+      "full_log_sha256": "1610a2bab2a402d11b92b026ff076c6fefd5cd92d9fe38e5de58796fedaf132a",
+      "source_matches": true,
+      "error_markers": 0,
+      "cleanup_complete": true
+    },
+    {
+      "job_id": 127329036009,
+      "full_log_sha256": "2eefc4a80e45ee8f7809ab776f36a1070a6300827876ea46c83a47f2fd1fd67c",
+      "source_matches": true,
+      "error_markers": 0,
+      "cleanup_complete": true
+    },
+    {
+      "job_id": 127329036409,
+      "full_log_sha256": "8dea72148cf3670fbe4b9f8e219405c34a9a3abf0b0815bb9a4caebed0ec1c6c",
+      "source_matches": true,
+      "error_markers": 0,
+      "cleanup_complete": true
+    },
+    {
+      "job_id": 127329036369,
+      "full_log_sha256": "4fb79f6aa1d19fb10124db6e82b0172e08bd59bc9ae5166b6b3429a6c09b9acf",
+      "source_matches": true,
+      "error_markers": 0,
+      "cleanup_complete": true
+    },
+    {
+      "job_id": 127329035762,
+      "full_log_sha256": "159ee875aecdd695946a7badbc43a144b59d99c6d3238bc58ea5bdbf37c9fd62",
+      "source_matches": true,
+      "error_markers": 0,
+      "cleanup_complete": true
+    }
+  ],
+  "all_jobs_success": true,
+  "cuda_training_verified": false,
+  "semantic_infallibility_claimed": false
+}
