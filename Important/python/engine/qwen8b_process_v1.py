@@ -12,18 +12,19 @@ from unittest.mock import patch
 
 from .qwen8b_book_v1 import profile,hashes,SWEEP_SCHEMA
 from .qwen8b_loss_v1 import memory_trainer
+from .qwen8b_attention_v1 import cuda_probe,attention_route,POLICY
 from .qwen_book_process_v1 import stop_child
 
 SCHEMA='wengua_qwen8b_process_v1'
 MEMORY_KEYS=('model_id','revision','max_seq_length','inference_max_context','lora_r','lora_alpha','target_modules',
-    'gradient_accumulation_steps','gradient_checkpointing','loss_mode','loss_chunk_tokens','allocator_config','smoke_steps','seed')
+    'gradient_accumulation_steps','gradient_checkpointing','loss_mode','loss_chunk_tokens','attention_mode','allocator_config','smoke_steps','seed')
 
 
 def execution(root,p):
     b=p.book;root=b.private_output(root)
     contract={'schema':SCHEMA,'code_sha256':hashes(),'software_fixture':p.testing,'process_per_unit':True,
         'receipt_protocol':'request_sha_and_nonce','memory_loss':'checkpointed_supervised_ce_v1',
-        'loss_runtime_route':'canonical_trainer_compute_loss_v2'}
+        'loss_runtime_route':'canonical_trainer_compute_loss_v2','attention_runtime_route':POLICY}
     if (root/'sweep_contract.json').exists() and b.read_json(root/'sweep_contract.json')['schema']!=SWEEP_SCHEMA:
         raise ValueError('8B cannot adopt a 14B/legacy experiment')
     path=root/'process_execution.json'
@@ -35,7 +36,9 @@ def execution(root,p):
 def pressure_signature(job,c,p):
     b=p.book;doctor=b.read_json(job/'doctor.json') if (job/'doctor.json').exists() else {}
     devices=[{k:v for k,v in d.items() if k!='free_gib'} for d in doctor.get('cuda_devices',[])]
+    backend=job.parent.parent/'attention_backend.json'
     return {'config':{k:c[k] for k in MEMORY_KEYS},'code_sha256':hashes(),'software_fixture':p.testing,
+        'attention_backend_sha256':b.file_sha(backend) if backend.exists() else None,
         'smoke_data_sha256':b.file_sha(job/'prepared/smoke.jsonl.gz'),
         'validation_data_sha256':b.file_sha(job/'prepared/validation_loss.jsonl.gz'),
         'devices':devices,'stack':b.stack_versions()}
@@ -89,6 +92,8 @@ def launch(p,job,c,deadline,operation,*,probe=False,checkpoint=None,best=None,st
         raise RuntimeError(('CUDA out of memory: ' if error['cuda_oom'] else '8B worker failed: ')+error['message'])
     result=reply['result']
     if cache is not None and result['state']=='complete':
+        # The first real worker establishes the immutable backend contract.
+        pressure=pressure_signature(job,c,p);cache=root/'pressure_proofs'/(b.digest(b.dumps(pressure))+'.json')
         b.atomic_json(cache,{'signature':pressure,'job':str(job),'status_sha256':b.file_sha(job/'smoke/stage_status.json')})
     return result
 
@@ -134,21 +139,28 @@ def worker(request):
         from scripts.check_qwen8b_training import fixture_factory
         factory=fixture_factory
     from transformers import TrainerCallback
-    loss_audit=None
+    loss_audit=attention_audit=None
     class Heartbeat(TrainerCallback):
-        count=0;printed=0;epochs=[];last_train_calls=0;last_eval_calls=0
+        count=0;printed=0;epochs=[];last_train_calls=0;last_eval_calls=0;last_attention_calls=0
         def checked_loss(self,phase,state):
             key='train_loss_calls' if phase=='train' else 'eval_loss_calls'
             previous=self.last_train_calls if phase=='train' else self.last_eval_calls
             if (loss_audit is None or loss_audit[key]<=previous
                 or not 0<loss_audit['max_projected_positions']<=c['loss_chunk_tokens']):
                 raise RuntimeError('Actual Trainer bypassed bounded loss; refusing unverified memory results')
+            if (attention_audit is None or attention_audit['calls']<=self.last_attention_calls
+                or (not p.testing and not attention_audit['cuda_calls'])):
+                raise RuntimeError('Actual model bypassed verified SDPA route')
+            self.last_attention_calls=attention_audit['calls']
             if previous==0:
                 b.progress('qwen8b_bounded_loss_verified',phase=phase,route=loss_audit['route'],
                     max_projected_positions=loss_audit['max_projected_positions'],chunk_tokens=c['loss_chunk_tokens'])
+                b.progress('qwen8b_attention_verified',phase=phase,backend=attention_audit['selected_backend'],
+                    native_gqa=False,math_fallback_allowed=attention_audit['math_fallback_allowed'])
             if phase=='train':self.last_train_calls=loss_audit[key]
             else:self.last_eval_calls=loss_audit[key]
             b.atomic_json(request.with_suffix('.loss_path.json'),dict(loss_audit,checked_phase=phase,step=state.global_step))
+            b.atomic_json(request.with_suffix('.attention_path.json'),dict(attention_audit,checked_phase=phase,step=state.global_step))
         def on_train_begin(self,args,state,control,**kwargs):
             steps=[int(v['step']) for v in kwargs['optimizer'].state.values() if 'step' in v]
             b.atomic_json(request.with_suffix('.training_start.json'),{'step':state.global_step,'optimizer_steps':steps,'pid':os.getpid()})
@@ -171,14 +183,26 @@ def worker(request):
     callbacks=(Heartbeat(),)
     reply={'schema':SCHEMA,'nonce':payload['nonce'],'request_sha256':b.file_sha(request),'pid':os.getpid(),'software_fixture':p.testing}
     try:
-        with b.job_lock(job.parent.parent/'isolated_gpu_worker.lock'),memory_trainer(c['loss_chunk_tokens']) as loss_audit:
-            b.progress('qwen8b_bounded_loss_installed',route=loss_audit['route'],chunk_tokens=loss_audit['chunk_tokens'])
-            if payload['operation']=='fit':result=p.engine.fit(job,c,payload['deadline'],probe=payload['probe'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
-            elif payload['operation']=='trial':result=p.engine.run_trial(job,c,payload['deadline'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
-            elif payload['operation']=='final':result=b.final_test(job,c,payload['best'],payload['deadline'],cpu_factory=factory)
-            else:raise ValueError('Unknown 8B worker operation')
+        with b.job_lock(job.parent.parent/'isolated_gpu_worker.lock'):
+            report=None if p.testing else cuda_probe()
+            b.atomic_json(request.with_suffix('.attention_probe.json'),report or {'software_fixture':True,'cuda_verified':False})
+            if report is not None and report['state']!='ready':raise RuntimeError(report['reason']+'; see '+str(request.with_suffix('.attention_probe.json')))
+            backend={'policy':POLICY,'software_fixture':p.testing,'selected_backend':report['selected_backend'] if report else 'cpu_fixture',
+                'device':report['device'] if report else 'cpu_fixture','dtype':report['dtype'] if report else 'torch.float32'}
+            backend_path=job.parent.parent/'attention_backend.json'
+            if backend_path.exists():
+                if b.read_json(backend_path)!=backend:raise RuntimeError('Attention backend changed within experiment; preserve it and choose a new output')
+            else:b.atomic_json(backend_path,backend)
+            with attention_route(testing=p.testing,report=report) as attention_audit,memory_trainer(c['loss_chunk_tokens']) as loss_audit:
+                b.progress('qwen8b_bounded_loss_installed',route=loss_audit['route'],chunk_tokens=loss_audit['chunk_tokens'])
+                if report is not None:b.progress('qwen8b_fused_attention_probe_passed',backend=report['selected_backend'],math_fallback_allowed=False,test_lengths=[64,3866,4096,1])
+                if payload['operation']=='fit':result=p.engine.fit(job,c,payload['deadline'],probe=payload['probe'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
+                elif payload['operation']=='trial':result=p.engine.run_trial(job,c,payload['deadline'],cpu_factory=factory,extra_callbacks=callbacks,resume_from_checkpoint=payload['checkpoint'])
+                elif payload['operation']=='final':result=b.final_test(job,c,payload['best'],payload['deadline'],cpu_factory=factory)
+                else:raise ValueError('Unknown 8B worker operation')
         reply.update(ok=True,result=result);code=0
     except BaseException as error:
+        if attention_audit is not None:b.atomic_json(request.with_suffix('.attention_path.json'),dict(attention_audit,checked_phase='failed',error_type=type(error).__name__))
         traceback.print_exc();reply.update(ok=False,error={'type':type(error).__name__,'message':str(error),'cuda_oom':b.is_cuda_oom(error)})
         code=130 if isinstance(error,KeyboardInterrupt) else 1
     b.atomic_json(request.with_suffix('.result.json'),reply);return code

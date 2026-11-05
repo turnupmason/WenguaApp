@@ -94,6 +94,9 @@ def main():
         assert len(loss_paths)>=4, 'Actual worker loss route receipts missing'
         assert all(r['route']=='canonical_trainer_compute_loss_v2' and 0<r['max_projected_positions']<=128 for r in loss_paths)
         assert any(r['train_loss_calls']>0 and r['eval_loss_calls']>0 for r in loss_paths)
+        attention_paths=[b.read_json(path) for path in root.glob('trials/*/worker_calls/*.attention_path.json')]
+        assert len(attention_paths)>=4
+        assert all(r['policy']=='explicit_kv_fused_sdpa_v1' and r['calls']>0 and r['native_gqa_calls']==0 and r['software_fixture'] for r in attention_paths)
         source=b.read_json(job/'cycle_01/stage_status.json')
         refroot=Path(tmp)/'reference'
         p.sweep.run(refroot,spec,time.time(),base=c,cpu_factory=object())
@@ -111,6 +114,7 @@ def main():
         'step_1_optimizer_restored_in_new_process':True,'interrupted_and_uninterrupted_lora_tensors_match':True,
         'structural_pressure_proof_reused_without_loading_its_adapter_for_training':True,
         'actual_worker_training_and_validation_bounded_loss_route_verified':True,
+        'actual_worker_explicit_kv_attention_route_verified_cpu_only':True,
         'training_workers_offline':True,
         'completed_resume_spawns_nothing':True,'actual_8b_weights_loaded':False,'cuda_memory_fit_verified':False}
     b.atomic_json(b.ROOT/'local/qwen8b_book_v1/tiny_integration.json',receipt);print(b.dumps(receipt))

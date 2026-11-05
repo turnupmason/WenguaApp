@@ -60,8 +60,8 @@ def download_cached_model(book,c,*,download=None,retryable=None,wait=time.sleep)
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=('plan','doctor','download','run'))
-    parser.add_argument('--spec',type=Path,default=SPEC);parser.add_argument('--output',type=Path,default=Path('local/qwen8b_book_v1/run2_loss_fix'))
+    parser.add_argument('command',choices=('plan','doctor','attention-doctor','download','run'))
+    parser.add_argument('--spec',type=Path,default=SPEC);parser.add_argument('--output',type=Path,default=Path('local/qwen8b_book_v1/run3_attention_fix'))
     parser.add_argument('--hours',type=float,default=168);parser.add_argument('--resume',action='store_true')
     parser.add_argument('--resume-from-checkpoint',type=Path);parser.add_argument('--offline',action='store_true')
     args=parser.parse_args(argv)
@@ -73,6 +73,9 @@ def main(argv=None):
     p=profile();c=p.engine.base_config();spec=p.book.read_json(args.spec)
     if args.command=='plan':print(p.book.dumps(p.sweep.plan(spec)));return 0
     if args.command=='doctor':print(p.book.dumps(p.doctor(c)));return 0
+    if args.command=='attention-doctor':
+        from src.wengua.qwen8b_attention_v1 import cuda_probe
+        report=cuda_probe();print(p.book.dumps(report));return 0 if report['state']=='ready' else 2
     if args.command=='run':
         if not 0<args.hours<=168:parser.error('hours must be >0 and <=168; repeat the same command to resume')
         assessment=p.doctor(c)

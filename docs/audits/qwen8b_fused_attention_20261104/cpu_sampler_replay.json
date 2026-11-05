@@ -1,0 +1,121 @@
+{
+  "sampler": "actual Trainer+Accelerate CPU dataloader; no model training",
+  "data_seed": 3407,
+  "rows": 1600,
+  "update_after_44": [
+    {
+      "microbatch": 705,
+      "row_index": 545,
+      "tokens": 1157,
+      "supervised_tokens": 271,
+      "attention_fp32_32heads_gib": 0.16
+    },
+    {
+      "microbatch": 706,
+      "row_index": 1395,
+      "tokens": 886,
+      "supervised_tokens": 18,
+      "attention_fp32_32heads_gib": 0.094
+    },
+    {
+      "microbatch": 707,
+      "row_index": 1314,
+      "tokens": 965,
+      "supervised_tokens": 27,
+      "attention_fp32_32heads_gib": 0.111
+    },
+    {
+      "microbatch": 708,
+      "row_index": 982,
+      "tokens": 907,
+      "supervised_tokens": 39,
+      "attention_fp32_32heads_gib": 0.098
+    },
+    {
+      "microbatch": 709,
+      "row_index": 641,
+      "tokens": 835,
+      "supervised_tokens": 27,
+      "attention_fp32_32heads_gib": 0.083
+    },
+    {
+      "microbatch": 710,
+      "row_index": 1348,
+      "tokens": 811,
+      "supervised_tokens": 18,
+      "attention_fp32_32heads_gib": 0.078
+    },
+    {
+      "microbatch": 711,
+      "row_index": 999,
+      "tokens": 939,
+      "supervised_tokens": 80,
+      "attention_fp32_32heads_gib": 0.105
+    },
+    {
+      "microbatch": 712,
+      "row_index": 1149,
+      "tokens": 3866,
+      "supervised_tokens": 1282,
+      "attention_fp32_32heads_gib": 1.782
+    },
+    {
+      "microbatch": 713,
+      "row_index": 1240,
+      "tokens": 838,
+      "supervised_tokens": 18,
+      "attention_fp32_32heads_gib": 0.084
+    },
+    {
+      "microbatch": 714,
+      "row_index": 468,
+      "tokens": 787,
+      "supervised_tokens": 18,
+      "attention_fp32_32heads_gib": 0.074
+    },
+    {
+      "microbatch": 715,
+      "row_index": 575,
+      "tokens": 238,
+      "supervised_tokens": 54,
+      "attention_fp32_32heads_gib": 0.007
+    },
+    {
+      "microbatch": 716,
+      "row_index": 535,
+      "tokens": 1610,
+      "supervised_tokens": 1458,
+      "attention_fp32_32heads_gib": 0.309
+    },
+    {
+      "microbatch": 717,
+      "row_index": 495,
+      "tokens": 776,
+      "supervised_tokens": 17,
+      "attention_fp32_32heads_gib": 0.072
+    },
+    {
+      "microbatch": 718,
+      "row_index": 897,
+      "tokens": 932,
+      "supervised_tokens": 42,
+      "attention_fp32_32heads_gib": 0.104
+    },
+    {
+      "microbatch": 719,
+      "row_index": 1112,
+      "tokens": 804,
+      "supervised_tokens": 18,
+      "attention_fp32_32heads_gib": 0.077
+    },
+    {
+      "microbatch": 720,
+      "row_index": 1381,
+      "tokens": 849,
+      "supervised_tokens": 34,
+      "attention_fp32_32heads_gib": 0.086
+    }
+  ],
+  "longest_before_44": 3232,
+  "requires_same_data_bytes_and_windows_sampler_for_exact_match": true
+}

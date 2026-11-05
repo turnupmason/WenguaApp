@@ -1,0 +1,43 @@
+{
+  "state": "passed",
+  "cases": [
+    {
+      "query_tokens": 7,
+      "key_tokens": 7,
+      "masked": false,
+      "output_and_qkv_gradients_match": true
+    },
+    {
+      "query_tokens": 1,
+      "key_tokens": 7,
+      "masked": false,
+      "output_and_qkv_gradients_match": true
+    },
+    {
+      "query_tokens": 7,
+      "key_tokens": 7,
+      "masked": true,
+      "output_and_qkv_gradients_match": true
+    }
+  ],
+  "actual_hf_training_and_cached_generation_use_explicit_kv": true,
+  "cached_generation_tokens_match": true,
+  "native_gqa_bypass_rejected": true,
+  "math_backend_rejected_for_real_runs": true,
+  "global_bindings_restored_on_error": true,
+  "audit": {
+    "policy": "explicit_kv_fused_sdpa_v1",
+    "selected_backend": "cpu_fixture",
+    "calls": 4,
+    "cuda_calls": 0,
+    "max_query_tokens": 7,
+    "max_key_tokens": 9,
+    "native_gqa_calls": 0,
+    "math_fallback_allowed": true,
+    "software_fixture": true,
+    "current_query_tokens": 1,
+    "current_key_tokens": 9
+  },
+  "cuda_backend_verified": false,
+  "official_8b_weights_loaded": false
+}

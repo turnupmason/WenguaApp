@@ -42,7 +42,7 @@ class Qwen8BProfile(unittest.TestCase):
             with self.p.book.job_lock(Path(tmp)/'lock'):pass
 
     def test_14b_revision_legacy_teachers_and_short_real_probe_rejected(self):
-        for key,value in [('model_id','Qwen/Qwen3-14B'),('revision','main'),('smoke_steps',2),('old_adapters_allowed',True),('non_book_teachers_allowed',True),('initial_adapter','old')]:
+        for key,value in [('model_id','Qwen/Qwen3-14B'),('revision','main'),('smoke_steps',2),('old_adapters_allowed',True),('non_book_teachers_allowed',True),('initial_adapter','old'),('attention_mode','math')]:
             with self.subTest(key=key),self.assertRaises(ValueError):validate(self.c|{key:value})
         validate(self.c|{'smoke_steps':2},testing=True)
 

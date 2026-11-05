@@ -21,7 +21,7 @@ SWEEP_SCHEMA='wengua_qwen8b_sweep_v1'
 ALLOCATOR='backend:native,max_split_size_mb:128'
 FILES=(*old_book.KERNELS,'src/wengua/qwen_book_sweep_v1.py','src/wengua/qwen_book_continuous_v1.py',
     'src/wengua/qwen_book_sweep_v2.py','src/wengua/qwen_book_process_v1.py','src/wengua/qwen8b_book_v1.py',
-    'src/wengua/qwen8b_loss_v1.py','src/wengua/qwen8b_process_v1.py','scripts/qwen8b_research.py',
+    'src/wengua/qwen8b_loss_v1.py','src/wengua/qwen8b_attention_v1.py','src/wengua/qwen8b_process_v1.py','scripts/qwen8b_research.py',
     'run_qwen8b_research.py','run_qwen8b_worker.py','configs/qwen8b_book_v1.json','configs/qwen8b_book_sweep_v1.json')
 
 
@@ -60,6 +60,7 @@ def validate(c,*,testing=False):
     if not modules or len(set(modules))!=len(modules) or any(m not in ('q_proj','k_proj','v_proj','o_proj','gate_proj','up_proj','down_proj') for m in modules):raise ValueError('Explicit projection targets required')
     if c.get('loss_mode')!='checkpointed_supervised_ce_v1' or c.get('loss_chunk_tokens')!=128 or c.get('allocator_config')!=ALLOCATOR:
         raise ValueError('Pinned bounded-memory loss/allocator required')
+    if c.get('attention_mode')!='explicit_kv_fused_sdpa_v1':raise ValueError('Explicit KV and verified fused attention required')
     return c
 
 

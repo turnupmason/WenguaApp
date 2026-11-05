@@ -24,6 +24,7 @@
   "seed": 3407,
   "loss_mode": "checkpointed_supervised_ce_v1",
   "loss_chunk_tokens": 128,
+  "attention_mode": "explicit_kv_fused_sdpa_v1",
   "allocator_config": "backend:native,max_split_size_mb:128",
   "production_enabled": false,
   "old_adapters_allowed": false,

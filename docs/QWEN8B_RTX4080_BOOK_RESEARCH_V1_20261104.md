@@ -1,5 +1,7 @@
 # Qwen3-8B：RTX4080纯古籍连续训练
 
+> 当前默认输出已更新为run3_attention_fix，见[Windows融合注意力修复](QWEN8B_WINDOWS_FUSED_ATTENTION_V1_20261104.md)。下方run2_loss_fix为上一版损失接线修复记录，原样保留，不能继续用于新代码恢复。
+
 > **当前入口已修复损失接线，输出改为run2_loss_fix。** 用户run1的两组4096均约44/100步OOM；完整栈显示进入原生Trainer.compute_loss和整段CE。首次读取Trainer会更换Transformers根LazyModule，原来的根属性替换可能落在旧对象上。此前独立损失/梯度数学核对仍有效，但旧微型loop没有证明实际Trainer使用该函数，现补足该缺口。这两次OOM不能证明正确分块路径下4096必定装不下。
 
 修复直接绑定规范transformers.trainer.Trainer.compute_loss，既有别名与后续导入均生效，worker退出/异常时恢复；不改教材、label、训练参数或原14B文件。实际训练和验证回调逐次检查调用计数及最大投影位置≤128；走错路径即报普通错误停机，不冒充OOM跳过。控制台先显示qwen8b_bounded_loss_installed，实际算过loss后分别显示qwen8b_bounded_loss_verified（validation/train），worker_calls/*.loss_path.json保留实测计数。

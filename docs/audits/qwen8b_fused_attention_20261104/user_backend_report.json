@@ -1,0 +1,9 @@
+{
+  "torch": "2.8.0+cu128",
+  "flash_compiled": false,
+  "flash_enabled": true,
+  "efficient_enabled": true,
+  "math_enabled": true,
+  "source": "user PowerShell output",
+  "actual_old_kernel_directly_observed": false
+}
