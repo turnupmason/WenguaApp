@@ -1,0 +1,30 @@
+{
+  "source_commit": "b28e16ca055c5aee0ad6181edfad431f670aca52",
+  "files": [
+    {
+      "path": "src/wengua/qwen8b_diagnostics_v1.py",
+      "remote_bytes_match": true,
+      "sha256": "d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb"
+    },
+    {
+      "path": "run_qwen8b_diagnostic.py",
+      "remote_bytes_match": true,
+      "sha256": "18217c0e6f47f2f37ff65739dfa7111d1fb0009c573ded18c802ef941c11ea6f"
+    },
+    {
+      "path": "run_qwen8b_research_windows.cmd",
+      "remote_bytes_match": true,
+      "sha256": "e511f6aeff8d4ae98bdcf0c0696c018a2be6034018db85f051bc8bc581961b2e"
+    },
+    {
+      "path": "scripts/qwen8b_diagnostic.py",
+      "remote_bytes_match": true,
+      "sha256": "93fdc5d2dab53a73f874e2edc6fe2dbd28f3b986a1a7175c22f173d9423c43ae"
+    },
+    {
+      "path": "data/knowledge/qwen8b_book_v1/release_20261104.json",
+      "remote_bytes_match": true,
+      "sha256": "6d0ea5bdc0af0ce39efc447da8fb7f2181ce5aab4c6fab08084485eac51ddbd4"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "source_commit": "b28e16ca055c5aee0ad6181edfad431f670aca52",
+  "main_run": 42026802647,
+  "qwen_run": 42026802506,
+  "main_and_stdlib_windows": [
+    {
+      "job_id": 127242929243,
+      "source_commit": "b28e16ca055c5aee0ad6181edfad431f670aca52",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "diagnostic_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T12:24:33.7476832Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 7, \"exit_code_hex32\": \"0x00000007\", \"platform\": \"nt\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 8988, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": 8956, \"last_heartbeat_phase\": \"train\", \"last_heartbeat_step\": 3, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"C:\\\\Users\\\\runneradmin\\\\AppData\\\\Local\\\\Temp\\\\tmpfsuzjglg\\\\worker_calls\\\\request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.05161333084106445, \"diagnostic_wrapper_sha256\": \"1d7c3e9dc645c7138be95683e8b4262c1ccfa40c3c70eb68317c044fe69419f9\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:33.8009523Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 0, \"exit_code_hex32\": \"0x00000000\", \"platform\": \"nt\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 7136, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": true, \"stderr_path\": \"C:\\\\Users\\\\runneradmin\\\\AppData\\\\Local\\\\Temp\\\\tmp_kcsmk7b\\\\worker_calls\\\\request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.04961276054382324, \"diagnostic_wrapper_sha256\": \"1d7c3e9dc645c7138be95683e8b4262c1ccfa40c3c70eb68317c044fe69419f9\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:33.8315254Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 1, \"exit_code_hex32\": \"0x00000001\", \"platform\": \"nt\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 5704, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"C:\\\\Users\\\\runneradmin\\\\AppData\\\\Local\\\\Temp\\\\tmp9_fl5ykb\\\\worker_calls\\\\request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.023728370666503906, \"diagnostic_wrapper_sha256\": \"1d7c3e9dc645c7138be95683e8b4262c1ccfa40c3c70eb68317c044fe69419f9\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:33.8617358Z Ran 17 tests in 1.492s"
+      ]
+    },
+    {
+      "job_id": 127242928939,
+      "source_commit": "b28e16ca055c5aee0ad6181edfad431f670aca52",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "diagnostic_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T12:24:34.0763409Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 7, \"exit_code_hex32\": \"0x00000007\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 2351, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": 2351, \"last_heartbeat_phase\": \"train\", \"last_heartbeat_step\": 3, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"/tmp/tmptpyagn7a/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.021038293838500977, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:34.1014555Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 0, \"exit_code_hex32\": \"0x00000000\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 2353, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": true, \"stderr_path\": \"/tmp/tmp2isatt1a/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.02364635467529297, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:34.1141047Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": -15, \"exit_code_hex32\": \"0xFFFFFFF1\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": 15, \"launcher_pid\": 2355, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"/tmp/tmp5hhpq75o/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.011554956436157227, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:34.1252114Z Ran 5 tests in 0.072s",
+        "2026-11-05T12:24:35.6711045Z Ran 5 tests in 0.002s",
+        "2026-11-05T12:24:38.4845744Z Ran 5 tests in 1.206s",
+        "2026-11-05T12:24:41.7334570Z Ran 5 tests in 0.002s",
+        "2026-11-05T12:24:42.6929784Z Ran 5 tests in 0.001s",
+        "2026-11-05T12:24:42.7658209Z Ran 5 tests in 0.002s"
+      ]
+    },
+    {
+      "job_id": 127242929224,
+      "source_commit": "b28e16ca055c5aee0ad6181edfad431f670aca52",
+      "source_match": true,
+      "no_error_markers": true,
+      "cleanup_completed": true,
+      "diagnostic_tests_passed": true,
+      "proof_lines": [
+        "2026-11-05T12:24:36.6660043Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 7, \"exit_code_hex32\": \"0x00000007\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 2393, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": 2393, \"last_heartbeat_phase\": \"train\", \"last_heartbeat_step\": 3, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"/tmp/tmpcd7rdd_s/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.025040388107299805, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:36.6950411Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": 0, \"exit_code_hex32\": \"0x00000000\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": null, \"launcher_pid\": 2395, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": true, \"stderr_path\": \"/tmp/tmpbau41gfi/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.027323246002197266, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:36.7079191Z [qwen8b_exit_diagnostic] {\"schema\": \"wengua_qwen8b_exit_diagnostic_v1\", \"exit_code\": -15, \"exit_code_hex32\": \"0xFFFFFFF1\", \"platform\": \"posix\", \"windows_status_hint\": null, \"posix_signal\": 15, \"launcher_pid\": 2397, \"request_sha256\": \"ede3173983278822d63529aea18974a9540ece57d9a76ea9347d786c55f6da16\", \"worker_pid\": null, \"last_heartbeat_phase\": null, \"last_heartbeat_step\": null, \"request_bytes_unchanged\": true, \"receipt_exists\": false, \"stderr_path\": \"/tmp/tmpx4z706na/worker_calls/request.native_stderr.log\", \"stderr_drained\": true, \"stderr_error\": null, \"fault_handler_enabled\": true, \"elapsed_seconds\": 0.011700868606567383, \"diagnostic_wrapper_sha256\": \"d3fbf2d2d4fbebba5ada5d50ca30bc40a8e10c728bf87aa5eb1d9126c5948fcb\", \"training_behavior_changed\": false, \"automatic_retry\": false}",
+        "2026-11-05T12:24:36.7205632Z Ran 5 tests in 0.081s",
+        "2026-11-05T12:24:38.5256489Z Ran 5 tests in 0.003s",
+        "2026-11-05T12:24:41.7878994Z Ran 5 tests in 1.397s",
+        "2026-11-05T12:24:45.5606460Z Ran 5 tests in 0.002s",
+        "2026-11-05T12:24:46.6147758Z Ran 5 tests in 0.001s",
+        "2026-11-05T12:24:46.6970102Z Ran 5 tests in 0.003s"
+      ]
+    }
+  ],
+  "windows_real_libraries": {
+    "job_id": 127242928642,
+    "source_match": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "real_windows_cpu_loss_and_attention_tests_passed": true
+  },
+  "linux_diagnostic_training_cpu": {
+    "job_id": 127242929124,
+    "source_match": true,
+    "no_error_markers": true,
+    "cleanup_completed": true,
+    "proof_lines": [
+      "2026-11-05T12:27:04.5780410Z {\"state\": \"passed\", \"test\": \"diagnostic_io_over_unchanged_tiny_training\", \"actual_worker_count\": 9, \"frozen_training_hashes_unchanged\": true, \"native_stderr_tee_and_sidecars_verified\": true, \"original_checkpoint_restore_and_completed_resume_assertions_passed\": true, \"actual_8b_weights_loaded\": false, \"user_native_crash_root_cause_verified\": false}"
+    ]
+  },
+  "user_native_crash_root_cause_verified": false,
+  "original_run3_frozen_training_files_changed": false
+}
