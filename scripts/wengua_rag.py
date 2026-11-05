@@ -129,7 +129,10 @@ def main(argv=None):
                 print('原书检索结果（CPU，不加载模型）：')
                 for number,doc in enumerate(result['documents'],1):
                     print('[S'+str(number)+'] '+'；'.join('《'+s['book_title']+'》'+s['chapter']+' 原文第'+str(s['lines'][0])+'—'+str(s['lines'][1])+'行' for s in doc['sources']))
-                    print(doc['content'])
+                    if doc.get('editorial_notice'):print(doc['editorial_notice'])
+                    if doc.get('source_uncertainties'):print('待校勘：'+r.dumps(doc['source_uncertainties']))
+                    if doc.get('interpretation_limits'):print('整理范围：'+r.dumps(doc['interpretation_limits']))
+                    print(doc.get('reading_content',doc['content']))
                 if not result['documents']:print('未检到符合当前来源范围的片段；请明确领域、书目或案例编号。')
             return 0
         from transformers import AutoTokenizer

@@ -7,6 +7,11 @@ on:
       - 'scripts/*rag*.py'
       - '*wengua_rag.py'
       - 'tests/test_book_rag.py'
+      - 'tests/test_book_rag_editorial.py'
+      - 'update_wengua_books.py'
+      - 'schema/migrations/072_source_editorial_reading_versions.sql'
+      - 'data/knowledge/jinhan/**'
+      - 'data/delivery/book_chapters/**'
       - 'requirements-wengua-rag.txt'
       - 'data/knowledge/book_rag_v1/**'
       - 'data/delivery/book_rag_v1/**'
@@ -26,7 +31,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements-wengua-rag.txt
-      - run: python -X utf8 -m unittest tests.test_book_rag -v
+      - run: python -X utf8 -m unittest tests.test_book_rag tests.test_book_rag_editorial -v
       - run: python -X utf8 -m scripts.check_wengua_rag_windows
       - run: python -X utf8 run_wengua_rag.py --help
   tiny-qwen-lora-bridge:

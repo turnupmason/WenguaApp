@@ -33,7 +33,7 @@ jobs:
       - name: Lossless compressed historical source restoration
         run: python -m unittest tests.test_archive_snapshots -v
       - name: Independent WenguaApp source RAG, phase boundaries and existing time-casting delegates
-        run: python -m unittest tests.test_book_rag -v
+        run: python -m unittest tests.test_book_rag tests.test_book_rag_editorial -v
       - name: V5.1 evidence-visible repair, no hidden feedback targets and preserved V4 contracts
         run: python -m unittest tests.test_course_repair_v51 -v
       - name: Complete v5 source dispatch, scope, holdout and independent worker contracts

@@ -1,0 +1,10 @@
+{
+  "schema/migrations/072_source_editorial_reading_versions.sql": "86ebd42b9474d09f7ec73795ea840230d1cd34430f9fc591b7b6dbb247d8deb7",
+  "scripts/check_wengua_rag_training_bridge.py": "30a60552775f89c7878e141db90efac26248ecb10d6305398d7edc58732e1ed4",
+  "scripts/wengua_rag.py": "e5a485989fe6c13815a5248ebf56acf2ed3799c96e0cac6eb450578ab737e08f",
+  "src/wengua/book_rag.py": "8486817a767e6b4153c4a09d81b3e5623e31314926da331419af46ffba8f4887",
+  "src/wengua/book_rag_editorial.py": "a46434559b6e903f27ef8af4523d34ef3959ecece46194f8dd32b94d31b10fa2",
+  "src/wengua/book_rag_query.py": "80fee73f85e479c6c19c973b7aa68653b947e3314b9baf61285037279edb26e3",
+  "tests/test_book_rag_editorial.py": "7e1d9bc50f24de3e91c6ec246260c4cac76fb39b26708dd5e7c119b75164a03d",
+  "update_wengua_books.py": "ced9b89116e2e2d726af96ba82d27d61fc6b7db1a06c94bcf1e4ff107417e76a"
+}

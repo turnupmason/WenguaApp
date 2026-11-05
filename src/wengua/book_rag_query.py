@@ -75,7 +75,11 @@ def make_prompt(result,question,tokenizer,*,packet=None,facts=None,max_context=4
     for doc in result['documents']:
         label='S'+str(len(kept)+1)
         bibliography='；'.join('《'+s['book_title']+'》'+s['chapter']+' 原文第'+str(s['lines'][0])+'—'+str(s['lines'][1])+'行' for s in doc['sources'])
-        block='['+label+'] '+bibliography+'\n资料性质：'+doc['kind']+'；阶段：'+doc['phase']+'。\n'+doc['content']
+        block='['+label+'] '+bibliography+'\n资料性质：'+doc['kind']+'；阶段：'+doc['phase']+'。\n'
+        if doc.get('editorial_notice'):block+=doc['editorial_notice']+'\n'
+        if doc.get('source_uncertainties'):block+='文本疑点（整理批注，不能当作已核准规则）：'+r.dumps(doc['source_uncertainties'])+'\n'
+        if doc.get('interpretation_limits'):block+='适用范围（整理批注，非作者新增断语）：'+r.dumps(doc['interpretation_limits'])+'\n'
+        block+=doc.get('reading_content',doc['content'])
         if doc['kind']=='case':
             block+='\n这是历史部分片段；同案已登记的其他阶段：'+r.dumps(doc.get('related_case_phases',[]))
             if doc.get('analysis_annotations'):block+='\n原分析身份与更正核对（整理标记，非原书引文）：'+r.dumps(doc['analysis_annotations'])

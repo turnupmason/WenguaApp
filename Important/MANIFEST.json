@@ -781,7 +781,7 @@
       "platform": "python",
       "canonical": ".github/workflows/ci.yml",
       "snapshot": "Important/python/ci/ci.yml",
-      "sha": "7eb7264efce132f5309b3591d3c3cea830d42a87"
+      "sha": "48e10f6348707f0e0a05e4aee67813c0c928d944"
     },
     {
       "platform": "python",
@@ -2305,7 +2305,7 @@
       "platform": "python",
       "canonical": ".github/workflows/wengua_book_rag_v1.yml",
       "snapshot": "Important/python/ci/wengua_book_rag_v1.yml",
-      "sha": "d57c645ffcd4853b1de302df3012b16f5212c036"
+      "sha": "1deff5401206ba8a38911501e8c1136a930e65d8"
     },
     {
       "platform": "python",
@@ -2329,7 +2329,7 @@
       "platform": "python",
       "canonical": "scripts/wengua_rag.py",
       "snapshot": "Important/python/scripts/wengua_rag.py",
-      "sha": "25da54560aae23fb782239e6311c701e231b5e4a"
+      "sha": "f018eddafe4cdda85d433d15f1d07d38bb67cebe"
     },
     {
       "platform": "python",
@@ -2341,7 +2341,7 @@
       "platform": "python",
       "canonical": "scripts/check_wengua_rag_training_bridge.py",
       "snapshot": "Important/python/scripts/check_wengua_rag_training_bridge.py",
-      "sha": "9243ea34ed4bce370fd5b0f4f3c2dc6e5ec5cb97"
+      "sha": "414d5f2463cb399dddd1da0bb86bc4b9cda7a11d"
     },
     {
       "platform": "python",
@@ -2353,7 +2353,7 @@
       "platform": "python",
       "canonical": "src/wengua/book_rag.py",
       "snapshot": "Important/python/engine/book_rag.py",
-      "sha": "8eed23f10edac7e370ea57cf02296dec1ba2da56"
+      "sha": "2082a1268cf67d66e9e86de2fa8fb356266b9003"
     },
     {
       "platform": "python",
@@ -2371,7 +2371,7 @@
       "platform": "python",
       "canonical": "src/wengua/book_rag_query.py",
       "snapshot": "Important/python/engine/book_rag_query.py",
-      "sha": "2cd459d9a348aff3c1a2e50675e9e9605479f7ab"
+      "sha": "e55ce7c52e9a8f24ada0fbfa6e9304bcd76a78ec"
     },
     {
       "platform": "python",
@@ -2396,6 +2396,60 @@
       "canonical": "data/delivery/book_rag_v1/manifest.json",
       "snapshot": "Important/python/data/delivery/book_rag_v1/manifest.json",
       "sha": "44be7b78c21e6fdb7918febb3930e122d8c6503b"
+    },
+    {
+      "platform": "python",
+      "canonical": "src/wengua/book_rag_editorial.py",
+      "snapshot": "Important/python/engine/book_rag_editorial.py",
+      "sha": "06bb30fee3fa5e6e8f59bda2838f2451631906c9"
+    },
+    {
+      "platform": "python",
+      "canonical": "tests/test_book_rag_editorial.py",
+      "snapshot": "Important/python/tests/test_book_rag_editorial.py",
+      "sha": "27e26d5872a6802de3b3381592e9dd719df24d40"
+    },
+    {
+      "platform": "python",
+      "canonical": "update_wengua_books.py",
+      "snapshot": "Important/python/entrypoints/update_wengua_books.py",
+      "sha": "d2dcaac92304ddc8591516c5a7d9e714abccf832"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/jinhan/zongxu_20261105/release.json",
+      "snapshot": "Important/python/data/knowledge/jinhan/zongxu_20261105/release.json",
+      "sha": "7d6c70c58791b384c135556ece9695d9c92a73b3"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/jinhan/zongxu_20261105/chapter_manifest.json",
+      "snapshot": "Important/python/data/knowledge/jinhan/zongxu_20261105/chapter_manifest.json",
+      "sha": "150ca142af5fd35e8409fe47a50e92d644a1e5c6"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/jinhan/zongxu_20261105/knowledge_index.json",
+      "snapshot": "Important/python/data/knowledge/jinhan/zongxu_20261105/knowledge_index.json",
+      "sha": "532084cfd9ee96e2b3e75af9b5d739438fcbdc65"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/knowledge/jinhan/zongxu_20261105/source_audit.json",
+      "snapshot": "Important/python/data/knowledge/jinhan/zongxu_20261105/source_audit.json",
+      "sha": "3c731b19a8759e934d1c995fb0139a8f11f873bf"
+    },
+    {
+      "platform": "python",
+      "canonical": "data/delivery/book_chapters/jinhan_zongxu_20261105/manifest.json",
+      "snapshot": "Important/python/data/delivery/book_chapters/jinhan_zongxu_20261105/manifest.json",
+      "sha": "0d5bae2abc135ce9dac5934b5e28c41fdbe0506f"
+    },
+    {
+      "platform": "python",
+      "canonical": "schema/migrations/072_source_editorial_reading_versions.sql",
+      "snapshot": "Important/python/schema/migrations/072_source_editorial_reading_versions.sql",
+      "sha": "1416c5ff9bedd7cdb25674b17fa92e9c1ec97007"
     }
   ]
 }

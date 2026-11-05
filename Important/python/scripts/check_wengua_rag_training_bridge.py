@@ -12,7 +12,7 @@ def main():
     from src.wengua.book_rag_query import make_prompt
     from src.wengua.book_rag_inference import answer,verified_adapter
     from scripts.check_qwen8b_training import fixture_factory
-    from tests.test_book_rag import fixture
+    from tests.test_book_rag_editorial import fixture
     torch.set_num_threads(2)
     # Download/tokenizer metadata only, never full 8B weights.
     AutoTokenizer.from_pretrained(course.old.MODEL,revision=course.old.REVISION)
@@ -27,10 +27,11 @@ def main():
             if 'lora_B' in name:param.data.fill_(0.01)
         adapter=b.save_adapter(model,tok,stage,1);b.atomic_json(stage/'stage_status.json',{'state':'complete','adapter':str(adapter)})
         digest=r.digest((adapter/'adapter_model.safetensors').read_bytes())
-        path=root/'source.sqlite3';r.build_index([fixture()],path)
+        path=root/'source.sqlite3';r.build_index([fixture()[0]],path)
         with r.Index(path) as index:retrieved=index.search('软件完整条件')
         prompt=make_prompt(retrieved,'软件完整条件是什么？',tok,max_context=1024,max_new_tokens=16)
         assert prompt['state']=='ready'
+        assert '校订阅读稿' in prompt['messages'][-1]['content']
         result=answer(prompt,adapter,root/'answer.json',cpu_factory=fixture_factory)
         trace=r.read(root/'answer.json');assert trace['attention_path']['calls']>0 and not trace['actual_cuda_inference']
         assert trace['adapter_provenance']['adapter_sha256']==digest and trace['prompt']['references']

@@ -1,3 +1,5 @@
+> 第三本首批已入来源库与RAG：[金函总序校订与更新入口](docs/JINHAN_PREFACE_20261105.md)。原贴保留、37处校订、15组疑点单列；V5.1继续原训练。
+
 > 当前本地模型入口：**V5.1继承已训练V4补课**。先读[逐epoch审核与PowerShell启动](docs/COURSE_REPAIR_V51_20261105.md)，使用 `unlock_course_v51.py` 和 `train_wengua_v51.cmd`。旧V4/V5目录保留，下列旧模型入口仅供复现。
 
 # 问卦 · WenguaApp

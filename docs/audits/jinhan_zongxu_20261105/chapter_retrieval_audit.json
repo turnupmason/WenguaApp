@@ -1,0 +1,7 @@
+{
+  "checks": 7,
+  "passed": 7,
+  "unresolved_text_excluded_from_fresh_rule_evidence": true,
+  "legacy_method_not_auto_applied_to_current_app": true,
+  "not_model_or_event_prediction_accuracy": true
+}

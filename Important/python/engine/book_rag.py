@@ -121,6 +121,9 @@ def validate_library(library):
             if doc['kind']=='case' and not set(matching).intersection(doc['case_ids']):raise ValueError('Case evidence is outside its registered source range: '+doc['id']+' '+repr(doc['case_ids'])+' '+repr(part))
             covered[part['chapter']].update(range(part['lines'][0],part['lines'][1]+1))
         cases.update(doc['case_ids'])
+        if doc.get('editorial_reading'):
+            from .book_rag_editorial import reading_for_document
+            reading_for_document(chapters,doc)
     expected=set(library['cases'])
     if cases!=expected:raise ValueError('Case registry/evidence coverage mismatch')
     missing={k:[i for i,line in enumerate(c['original_text'].splitlines(),1) if line.strip() and i not in covered[k]] for k,c in chapters.items()}
@@ -210,13 +213,18 @@ class Index:
         if doc['kind']!='rule' and mode!='study':raise ValueError('Historical/reference evidence requires source-study mode')
         return self.expand(doc)
     def expand(self,doc):
-        return doc|{'content':document_text(self.chapters,doc),'sources':[{
+        expanded=doc|{'content':document_text(self.chapters,doc),'sources':[{
             'book_id':self.chapters[p['chapter']]['book_id'],
             'book_title':self.chapters[p['chapter']]['book_title'],
             'chapter':self.chapters[p['chapter']]['title'],
             'source_revision':self.chapters[p['chapter']]['source_revision'],
             'method_id':self.chapters[p['chapter']]['method_id'],
             **p} for p in doc['parts']]}
+        if doc.get('editorial_reading'):
+            from .book_rag_editorial import reading_for_document
+            expanded['reading_content']=reading_for_document(self.chapters,doc)
+            expanded['editorial_notice']='校订阅读稿，非逐字原文；原贴、逐项改动及原始坐标均保留。'
+        return expanded
     def case(self,cid):
         row=self.db.execute('SELECT payload FROM cases WHERE id=?',(cid,)).fetchone()
         if not row:raise KeyError('Unknown case')
